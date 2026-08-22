@@ -6,7 +6,7 @@
   <atom:link href="https://www.internzo.in/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 22 Aug 2026 18:48:59 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 22 Aug 2026 19:18:37 GMT</lastBuildDate>
   <item>
     <title>Graduate Trainee — Tata Electronics</title>
     <link>https://www.internzo.in/jobs/tata-electronics-graduate-trainee-4456676004</link>
@@ -27,6 +27,16 @@
 • Work with cloud and enterprise tools like AWS, Azure, and Service Now
 • Collaborate on framework rollouts and system integration
 • Contribute to project documentation and vendor management</description>
+  </item>
+  <item>
+    <title>Co-op/ Intern — Arctic Wolf</title>
+    <link>https://www.internzo.in/jobs/arctic-wolf-co-op-intern-ats-workday-arcticwolf-wd1-external-r26-932</link>
+    <guid isPermaLink="true">https://www.internzo.in/jobs/arctic-wolf-co-op-intern-ats-workday-arcticwolf-wd1-external-r26-932</guid>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    <description>Company: Arctic Wolf · Location: Bengaluru, IND · Duration: 0–1 years
+• Develop software services using Java, Python, Golang, and microservices
+• Work on AI-enabled systems with LLMs and machine learning for threat detection
+• Contribute to CI/CD pipelines and automated testing in AWS and Kubernetes</description>
   </item>
   <item>
     <title>Apprentice - ADL — Piramal</title>
@@ -503,16 +513,6 @@
 • Fix broken pages, redirect errors, and site speed issues
 • Implement schema markup on product and collection pages
 • Assist with tracking scripts for analytics and pixel tracking</description>
-  </item>
-  <item>
-    <title>Trainee — AtkinsRéalis</title>
-    <link>https://www.internzo.in/jobs/atkinsr-alis-trainee-4455736268</link>
-    <guid isPermaLink="true">https://www.internzo.in/jobs/atkinsr-alis-trainee-4455736268</guid>
-    <pubDate>Tue, 18 Aug 2026 12:34:30 GMT</pubDate>
-    <description>Company: AtkinsRéalis · Location: Noida, Uttar Pradesh, India
-• Develop real-time 3D apps with Unreal Engine and Unity
-• Work on digital twins and simulation environments
-• Collaborate with global teams on cross-platform projects</description>
   </item>
 </channel>
 </rss>
