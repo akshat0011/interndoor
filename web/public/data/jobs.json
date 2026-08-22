@@ -1,7 +1,7 @@
 {
- "generatedAt": 1787422721672,
- "count": 137,
- "techCount": 137,
+ "generatedAt": 1787424539548,
+ "count": 138,
+ "techCount": 138,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -75,6 +75,7 @@
   "Simple Energy",
   "State Street",
   "Stripe",
+  "Tata Electronics",
   "TeamLease Regtech Pvt. Ltd.",
   "Teli Labs",
   "Tonbo Imaging",
@@ -99,6 +100,7 @@
   "Bengaluru East, Karnataka, India",
   "Bengaluru, Karnataka, India",
   "Chandigarh, Chandigarh, India",
+  "Chengalpattu, Tamil Nadu, India",
   "Chennai",
   "Chennai, Tamil Nadu, India",
   "Delhi, India",
@@ -126,6 +128,44 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4456676004",
+   "title": "Graduate Trainee",
+   "company": "Tata Electronics",
+   "matchedWatchlist": "Tata Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "logo": "/logos/tata-electronics.jpg",
+   "location": "Chengalpattu, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "1 applicant",
+   "easyApply": false,
+   "skills": [],
+   "summary": "The Graduate Trainee supports manufacturing and engineering teams by analyzing data, optimizing processes, and documenting procedures. Ideal for engineering students seeking hands-on experience in semiconductor and electronics manufacturing. Structured learning and mentorship opportunities available.",
+   "bullets": [
+    "Support manufacturing teams with data analysis and process optimization",
+    "Use spreadsheets and technical software for reporting and documentation",
+    "Work in semiconductor and electronics manufacturing environment"
+   ],
+   "roleLabel": "Manufacturing Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "data analysis",
+    "process optimization",
+    "technical software",
+    "documentation"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "3 minutes ago",
+   "postedAt": 1787424285944,
+   "firstSeenAt": 1787424465952,
+   "url": "https://www.linkedin.com/jobs/view/4456676004/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4456676004/",
+   "description": null
+  },
   {
    "id": "4447193370",
    "title": "Interim Intern_OneIT",
