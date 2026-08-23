@@ -1,6 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import { PATHS, ensureDirs } from './paths.js';
 import { resolveRegion, UNKNOWN } from './regions.js';
+import { log } from './logger.js';
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS jobs (
@@ -417,9 +418,44 @@ export class Store {
 
   // ---- runs -----------------------------------------------------------------
 
+  /**
+   * How long a run can plausibly still be alive.
+   *
+   * The scan budget is limits.maxRuntimeMinutes (90), plus enrichment and
+   * publish after it. Three hours is comfortably past any real run and well
+   * short of a genuinely orphaned one — the shortest orphan this was written
+   * for was four hours old.
+   */
+  static #RUN_STALE_MS = 3 * 3_600_000;
+
+  /**
+   * Close out runs that never finished, then open a new one.
+   *
+   * A run is marked `running` when it starts and rewritten by finishRun when it
+   * ends. Anything that kills the process in between — a battery dying mid-scan,
+   * a kill, a crash — leaves the row saying `running` forever, because nothing
+   * ever comes back to correct it. Nine had accumulated by 24 Aug, the oldest
+   * from 26 July.
+   *
+   * They are harmless to the pipeline: resolveWindowHours measures from the last
+   * `ok` run, so a phantom `running` cannot widen or narrow a window. They do
+   * distort every count of run health, which is the first thing anyone reads
+   * when asking whether collection is working.
+   *
+   * Reconciled here rather than by hand, because the condition that creates them
+   * is exactly the condition that stops any cleanup code from running. The next
+   * run to start is the first moment anything CAN notice.
+   */
   startRun(runId) {
+    const orphaned = this.db.prepare(
+      "UPDATE runs SET status = 'interrupted', finished_at = started_at, error = COALESCE(error, 'process died before finishing') WHERE status = 'running' AND started_at < ?",
+    ).run(Date.now() - Store.#RUN_STALE_MS);
+    if (orphaned.changes) {
+      log.info(`Marked ${orphaned.changes} unfinished run${orphaned.changes === 1 ? '' : 's'} as interrupted.`);
+    }
     this.db.prepare('INSERT INTO runs (run_id, started_at, status) VALUES (?, ?, ?)')
       .run(runId, Date.now(), 'running');
+    return orphaned.changes;
   }
 
   finishRun(runId, { status, pagesScanned = 0, cardsSeen = 0, detailsExtracted = 0, newJobs = 0, skippedNote = null, error = null }) {
