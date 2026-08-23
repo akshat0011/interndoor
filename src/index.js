@@ -14,6 +14,7 @@ import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs } from './ollama.js';
 import { postNewJobs } from './telegram.js';
+import { publishedRegions } from './regions.js';
 import { classifyRole, needsDescription, builtInPolarity } from './roles.js';
 import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js';
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
@@ -209,7 +210,7 @@ async function backfillDescriptions(page, store, cfg, clock, counters) {
  */
 async function enrichNewJobs(store, cfg) {
   const limit = cfg.enrich?.perRunLimit ?? 24;
-  const pending = store.needingEnrichment(limit);
+  const pending = store.needingEnrichment(limit, publishedRegions(cfg).map((r) => r.code));
   if (!pending.length) return;
 
   log.info(`Enriching ${pending.length} new posting${pending.length === 1 ? '' : 's'}\u2026`);

@@ -284,14 +284,6 @@ export async function writeJobsFile(store, cfg) {
     log.warn(`Held back ${dropped} stored job${dropped === 1 ? '' : 's'} whose company no longer matches the watchlist.`);
   }
 
-  if (droppedNonTech) {
-    log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);
-  }
-
-  if (dropped) {
-    log.warn(`Held back ${dropped} stored job${dropped === 1 ? '' : 's'} whose company no longer matches the watchlist.`);
-  }
-
   // Every posting this employer has ever run, not just the live ones.
   //
   // A company hub is evergreen — it ranks for "<company> internship" over

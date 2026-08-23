@@ -19,6 +19,7 @@ import { loadConfig } from '../src/config.js';
 import { enrichJobs } from '../src/ollama.js';
 import { writeJobsFile } from '../src/publish.js';
 import { log } from '../src/logger.js';
+import { publishedRegions } from '../src/regions.js';
 
 const ROOT = join(import.meta.dirname, '..');
 
@@ -45,7 +46,7 @@ async function main() {
     log.info(`--all: cleared enrichment on ${n} row(s); every posting will be re-sent.`);
   }
 
-  const pending = store.needingEnrichment(limit);
+  const pending = store.needingEnrichment(limit, publishedRegions(cfg).map((r) => r.code));
   if (!pending.length) {
     log.ok('Nothing to enrich — every posting with a description already has bullets.');
     store.close();

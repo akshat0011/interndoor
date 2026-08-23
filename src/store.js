@@ -227,7 +227,33 @@ export class Store {
   }
 
   /** Postings that still need a Gemini pass — enriched rows are never re-sent. */
-  needingEnrichment(limit = 500) {
+  /**
+   * Postings still waiting for bullets, newest first — but a PUBLISHED region
+   * always ahead of one that is merely collected.
+   *
+   * The ordering matters now that every region is collected. A single ATS poll
+   * stores ~60 postings worldwide against India's ~29 a day, and enrichment is
+   * a local model on a wall-clock budget (enrich.budgetMinutes), so a plain
+   * newest-first queue would let a burst of roles nobody can see yet push
+   * India's fresh listings past the budget and onto the board without bullets —
+   * which also means noindex, since isIndexable needs two.
+   *
+   * Unpublished regions are still enriched, last. That is what makes a region
+   * ready to switch on: a board whose pages all lack bullets is a board of
+   * noindex pages on day one.
+   *
+   * @param {string[]} published ISO codes to prioritise; empty means no preference
+   */
+  needingEnrichment(limit = 500, published = []) {
+    // Inlined rather than bound, because SQLite has no array parameter. The
+    // values come from the region registry, never from user input.
+    const codes = published
+      .filter((c) => /^[A-Z]{2}$/.test(String(c)))
+      .map((c) => `'${c}'`);
+    const priority = codes.length
+      ? `CASE WHEN region IN (${codes.join(',')}) THEN 0 ELSE 1 END,`
+      : '';
+
     return this.db.prepare(`
       -- location is selected because the enricher writes the page's summary and
       -- names the city in it. Without it the model was told "not stated" and
@@ -236,7 +262,7 @@ export class Store {
       SELECT job_id, title, company, location, description, salary_text AS stipend
       FROM jobs
       WHERE bullets IS NULL AND length(description) > 200
-      ORDER BY first_seen_at DESC
+      ORDER BY ${priority} first_seen_at DESC
       LIMIT ?
     `).all(limit);
   }
