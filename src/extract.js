@@ -2,7 +2,6 @@
  * Pulling structured facts out of free-text job descriptions.
  * Everything here is offline and deterministic — no API calls, no key required.
  */
-import { resolveRegion } from './regions.js';
 
 const CURRENCY_SYMBOLS = {
   '₹': 'INR', 'rs': 'INR', 'rs.': 'INR', 'inr': 'INR',
@@ -403,22 +402,3 @@ export function jobIdFromUrl(url) {
   return null;
 }
 
-/**
- * Is this location in India?
- *
- * Kept as a named function because it reads well at the call sites that are
- * genuinely about India, but the gazetteer it used to own now lives in
- * src/regions.js alongside every other country's. There was only ever one board
- * when this was written; there are several now, and one region owning the
- * world's place names while the rest borrow them is how they drift apart.
- *
- * The behaviour is unchanged, including the blank-location exception: both
- * collectors leave it empty often, the LinkedIn sweep is already scoped by its
- * search, and dropping blanks lost real roles to fix a problem they were not
- * causing. `resolveRegion` expresses that as an explicit fallback rather than a
- * special case, so the ATS poller — which has no region to fall back to, since
- * one board carries every office — gets `unknown` instead.
- */
-export function isIndianLocation(location) {
-  return resolveRegion(location, { fallback: 'IN' }) === 'IN';
-}

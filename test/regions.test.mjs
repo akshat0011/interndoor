@@ -2,7 +2,6 @@ import {
   resolveRegion, regionOf, regionBySlug, regionPath, publishedRegions,
   isPublishedRegion, collectsRegion, ALL_REGIONS, UNKNOWN,
 } from '../src/regions.js';
-import { isIndianLocation } from '../src/extract.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -87,9 +86,14 @@ check('linkedin passes its search region', resolveRegion('', { fallback: 'IN' })
 check('ats passes nothing', resolveRegion('', {}), UNKNOWN);
 check('a real location ignores the fallback', resolveRegion('Chicago, IL', { fallback: 'IN' }), 'US');
 
-console.log('\n== isIndianLocation is unchanged for everything it used to accept ==');
-// It is now a wrapper over resolveRegion. These are the exact cases the old
-// gazetteer was built from, plus the ones that caused it to be written.
+console.log('\n== the old India gate, reproduced exactly ==');
+// isIndianLocation is gone -- it had no callers left once publish and the ATS
+// poller moved to regions, and a second unused export in this codebase is the
+// same trap src/gemini.js already is. What it MEANT is pinned here instead:
+// India, with a blank location falling back to India, which is what the
+// LinkedIn collector passes. These are the exact cases the old gazetteer was
+// built from, plus the ones that caused it to be written.
+const isIndianLocation = (loc) => resolveRegion(loc, { fallback: 'IN' }) === 'IN';
 check('bengaluru', isIndianLocation('Bengaluru, Karnataka, India'), true);
 check('blank is still kept', isIndianLocation(''), true);
 check('singapore still refused', isIndianLocation('MSB, Singapore'), false);
