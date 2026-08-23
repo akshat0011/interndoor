@@ -738,9 +738,37 @@ export const FIRST_PARTY_BOARDS = {
   Uber: ['uber', 'IND'],
 };
 
+/**
+ * Pull an ATS board out of a URL or a page's HTML.
+ *
+ * Exported so the link shapes can be pinned by a test without a network call.
+ * Workday is the one that matters here: its token is `tenant:wdN:site` and none
+ * of it is guessable, so if this misses the link the board is unreachable.
+ */
+export function parseAtsLink(text) {
+  const m = String(text ?? '').match(ATS_LINK);
+  if (!m) return null;
+  const [, wdTenant, wdNum, wdSite, ghEmbed, gh, lever, ashby, recruitee, workable, smart] = m;
+  if (wdTenant && wdNum && wdSite) return { provider: 'workday', token: `${wdTenant}:${wdNum}:${wdSite}` };
+  if (ghEmbed) return { provider: 'greenhouse', token: ghEmbed };
+  if (gh) return { provider: 'greenhouse', token: gh };
+  if (lever) return { provider: 'lever', token: lever };
+  if (ashby) return { provider: 'ashby', token: ashby };
+  if (recruitee) return { provider: 'recruitee', token: recruitee };
+  if (workable) return { provider: 'workable', token: workable };
+  if (smart) return { provider: 'smartrecruiters', token: smart };
+  return null;
+}
+
 /** Every ATS link shape we know how to read, for scraping off a careers page. */
 const ATS_LINK = new RegExp([
-  String.raw`([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com\/(?:[a-z]{2}-[A-Z]{2}\/)?([A-Za-z0-9_-]+)`,
+  // Workday serves career sites from TWO domains — myworkdayjobs.com and
+  // myworkdaysite.com — and the locale segment is optional and inconsistently
+  // cased (`/en-US/`, `/en_US/`, or absent entirely). Missing either the second
+  // domain or an unusual locale loses the whole tenant, and a Workday tenant
+  // cannot be recovered any other way: the token is `tenant:wdN:site` and no
+  // part of `site` is guessable ("CareerDepot", "CSC_Careers", "External").
+  String.raw`([a-z0-9-]+)\.(wd\d+)\.myworkday(?:jobs|site)\.com\/(?:[a-z]{2}[-_][A-Za-z]{2}\/)?([A-Za-z0-9_-]+)`,
   // The embed form puts the real token in a query parameter, not the path:
   // boards.greenhouse.io/embed/job_board?for=cloudsek. Matching the path first
   // would capture the literal word "embed" as the board name.
@@ -764,7 +792,14 @@ function candidateDomains(name) {
   // guessing only .com/.in was why its Lever board went undiscovered even though
   // its careers page links jobs.lever.co/cred in plain sight. Ordered by how
   // often each actually resolves, and the search stops at the first that does.
-  return [`${slug}.com`, `${slug}.in`, `${slug}.co.in`, `${slug}.io`, `${slug}.club`, `${slug}.ai`, `${slug}.co`];
+  // `careers.` and `jobs.` first: large US employers put the careers site on
+  // its own subdomain and leave nothing on the marketing page — Home Depot is
+  // careers.homedepot.com, and www.homedepot.com/careers is a redirect at best.
+  return [
+    `careers.${slug}.com`, `jobs.${slug}.com`,
+    `${slug}.com`, `${slug}.in`, `${slug}.co.in`, `${slug}.io`,
+    `${slug}.club`, `${slug}.ai`, `${slug}.co`,
+  ];
 }
 
 /**
@@ -920,7 +955,7 @@ export async function discoverViaCareersPage(companyName) {
  * Find which board, if any, belongs to this company.
  * Returns { provider, token, count } or null.
  */
-export async function discover(companyName, { providers = PROVIDER_NAMES } = {}) {
+export async function discover(companyName, { providers = PROVIDER_NAMES, viaCareers = true } = {}) {
   const tokens = candidateTokens(companyName);
 
   for (const providerName of providers) {
@@ -942,6 +977,28 @@ export async function discover(companyName, { providers = PROVIDER_NAMES } = {})
       }
       return { provider: providerName, token, count: jobs.length };
     }
+  }
+
+  /**
+   * Nothing guessable — now read the careers page.
+   *
+   * This is not a nicety, it is the ONLY way Workday is ever found. Every other
+   * provider keys on a token derived from the company name, which
+   * `candidateTokens` can guess; a Workday board is `tenant:wdN:site`, where the
+   * datacenter number and the site name are arbitrary — `homedepot:wd5:CareerDepot`,
+   * `nordstrom:wd501:nordstrom_careers`, `columbiasportswearcompany:wd5:CSC_Careers`.
+   * No amount of guessing reaches those.
+   *
+   * Careers-page discovery already existed but sat behind a `--careers` flag, so
+   * the scheduled path never ran it. A sample of 120 companies with no board
+   * found NINE of thirty-three careers pages advertising a Workday tenant in
+   * plain sight — more than any unsupported provider in the same sample.
+   *
+   * Runs last, so a company whose board is guessable costs no extra request.
+   */
+  if (viaCareers) {
+    const hit = await discoverViaCareersPage(companyName);
+    if (hit) return hit;
   }
   return null;
 }
