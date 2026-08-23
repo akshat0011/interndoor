@@ -23,8 +23,30 @@
  */
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { regionOf, regionPath } from './regions.js';
 
 export const SITE = 'https://www.internzo.in';
+
+/**
+ * Every page is rendered FOR a region, and India is the default.
+ *
+ * India is served at the site root and every other region under `/<slug>/`.
+ * That asymmetry is deliberate and permanent: ~130 job pages and 125 company
+ * hubs are already indexed at `/jobs/…` and `/companies/…`, and moving them
+ * under `/in/` to make the scheme symmetrical would 404 every one at once.
+ * `regionPath` returns '' for India, so every link below concatenates safely.
+ */
+export const DEFAULT_REGION = regionOf('IN');
+
+/** Absolute URL for a path within a region: base('/jobs/x', US) -> '/us/jobs/x'. */
+function regionUrl(path, region) {
+  return `${SITE}${regionPath(region.code)}${path}`;
+}
+
+/** Root-relative href within a region, for links inside a page. */
+function regionHref(path, region) {
+  return `${regionPath(region.code)}${path}`;
+}
 
 /** HTML-escape. Company names and titles come from LinkedIn and are not trusted. */
 function esc(s) {
@@ -106,9 +128,9 @@ export function companySlug(company) {
  * employer hires for, not a live signal, and printing "2 days ago" beside a
  * posting nobody can apply to reads as though it were still open.
  */
-export function monthLabel(ms) {
+export function monthLabel(ms, region = DEFAULT_REGION) {
   if (!ms) return '';
-  return new Date(ms).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' });
+  return new Date(ms).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: region.timeZone });
 }
 
 /** Postings age out of the public file after 14 days; tell Google the same. */
@@ -128,7 +150,7 @@ export function isIndexable(job) {
  * structured-data manual action affects the whole domain — so every field here is
  * one we actually hold, and nothing is invented to fill a slot.
  */
-function jobPostingLd(job, url) {
+function jobPostingLd(job, url, region = DEFAULT_REGION) {
   const description = `<p>${esc(job.roleLabel || job.title)}</p><ul>${
     (job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')
   }</ul>`;
@@ -152,14 +174,18 @@ function jobPostingLd(job, url) {
   if (job.location) {
     ld.jobLocation = {
       '@type': 'Place',
-      address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: 'IN' },
+      // The region's ISO code, never a constant. Emitting addressCountry: 'IN'
+      // for a role in Chicago is not a cosmetic error — Google Jobs reads this
+      // field, and wrong structured data risks a manual action across the whole
+      // domain, which is the single risk this function is written around.
+      address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: region.code },
     };
   }
   if (job.workplaceType === 'Remote') {
     ld.jobLocationType = 'TELECOMMUTE';
     // Required alongside TELECOMMUTE. Without it Google cannot tell who may
     // apply, and every remote page was flagged incomplete — six of them.
-    ld.applicantLocationRequirements = { '@type': 'Country', name: 'India' };
+    ld.applicantLocationRequirements = { '@type': 'Country', name: region.name };
   }
   if (job.logo) ld.hiringOrganization.logo = `${SITE}${job.logo}`;
 
@@ -203,10 +229,17 @@ function crest(name, logo, { cls = 'jp-crest', href = '' } = {}) {
 
 const DAY = 86_400_000;
 
-/** "11 Aug 2026" — IST, because every reader of this site is in India. */
-function dayLabel(ms) {
+/**
+ * "11 Aug 2026", stamped in the READER'S region rather than in IST.
+ *
+ * This used to be hardcoded to Asia/Kolkata on the reasoning that every reader
+ * was in India. With a US board that reasoning inverts: a role posted at
+ * 21:00 in New York is already tomorrow in Kolkata, so an IST stamp would date
+ * half the US listings a day into the future. The date is the region's own.
+ */
+function dayLabel(ms, region = DEFAULT_REGION) {
   if (!ms) return '';
-  return new Date(ms).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' });
+  return new Date(ms).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: region.timeZone });
 }
 function isoDay(ms) {
   return ms ? new Date(ms).toISOString().slice(0, 10) : '';
@@ -306,7 +339,7 @@ function statusPills(job) {
  * strip page.js builds from jobs.json, and the company hub's live list — so a
  * reader meets one shape everywhere and page.js has one markup to mirror.
  */
-function tile(job, { showCompany = true } = {}) {
+function tile(job, { showCompany = true, region = DEFAULT_REGION } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
   const age = posted ? Date.now() - posted : Infinity;
   const cls = age < DAY ? ' is-hot' : '';
@@ -314,12 +347,12 @@ function tile(job, { showCompany = true } = {}) {
     // The inner <time> is not decoration: page.js finds the text to rewrite by
     // looking for it, and without one the tile kept its absolute date while the
     // pill above went relative.
-    posted ? `<span class="tile-age${age < DAY ? ' is-hot' : age < 3 * DAY ? ' is-fresh' : ''}" data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted))}</time></span>` : '',
-    esc(cityOf(job.location)),
+    posted ? `<span class="tile-age${age < DAY ? ' is-hot' : age < 3 * DAY ? ' is-fresh' : ''}" data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>` : '',
+    esc(cityOf(job.location, region)),
     modeText(job) ? esc(modeText(job)) : '',
   ].filter(Boolean).join('<span aria-hidden="true">·</span>');
 
-  return `<a class="tile${cls}" href="/jobs/${jobSlug(job)}">
+  return `<a class="tile${cls}" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
         ${showCompany ? `<span class="tile-top">${crest(job.company, job.logo, { cls: 'tile-crest' })}<span class="tile-co">${esc(job.company)}</span></span>` : ''}
         <span class="tile-role">${esc(job.title)}</span>
         ${job.roleLabel && !showCompany ? `<span class="tile-co">${esc(job.roleLabel)}</span>` : ''}
@@ -335,9 +368,9 @@ function tile(job, { showCompany = true } = {}) {
  * separator dot at the end of the one above. Every listing here is in India, so
  * the state and the country are the two least useful words on the card.
  */
-function cityOf(location) {
+function cityOf(location, region = DEFAULT_REGION) {
   const first = String(location ?? '').split(',')[0].trim();
-  return first || 'India';
+  return first || region.name;
 }
 
 /** Newest first, and only ones worth opening. */
@@ -345,17 +378,69 @@ function newestFirst(jobs) {
   return [...jobs].sort((a, b) => (b.postedAt ?? b.firstSeenAt ?? 0) - (a.postedAt ?? a.firstSeenAt ?? 0));
 }
 
+/**
+ * hreflang links between the same page in different regions.
+ *
+ * Only ever passed for pages that genuinely HAVE an equivalent elsewhere: the
+ * board itself and the company directory. A job page does not — a Stripe
+ * internship in Dublin is not a translation or a regional variant of one in
+ * Bengaluru, it is a different vacancy — and claiming otherwise tells Google two
+ * unrelated URLs are the same page. Company hubs are excluded for the same
+ * reason: an employer hiring in both places has two hubs with different roles on
+ * them, not one page served two ways.
+ *
+ * `x-default` points at India, which is where an unmatched visitor lands.
+ */
+function alternateLinks(path, regions) {
+  if (!regions || regions.length < 2) return '';
+  const links = regions.map((r) =>
+    `<link rel="alternate" hreflang="${r.hreflang}" href="${esc(regionUrl(path, r))}">`);
+  const fallback = regions.find((r) => r.code === 'IN') ?? regions[0];
+  links.push(`<link rel="alternate" hreflang="x-default" href="${esc(regionUrl(path, fallback))}">`);
+  return `${links.join('\n')}\n`;
+}
+
+/**
+ * The region switch.
+ *
+ * A NAVIGATION control, not a filter — each region is a separate URL with its
+ * own title, its own listings and its own JSON-LD country, because a
+ * client-side toggle would leave Google one page whose title says India for
+ * every region on the site. Rendered as plain anchors so it works before any
+ * script runs and a crawler can follow it; page.js only adds the "you appear to
+ * be in X" suggestion on top.
+ *
+ * Deliberately absent when only one region is published: a switch with one
+ * option is furniture.
+ */
+function regionSwitch(current, regions) {
+  if (!regions || regions.length < 2) return '';
+  const opts = regions.map((r) => {
+    const here = r.code === current.code;
+    return `<a class="rg-opt${here ? ' is-on' : ''}" href="${esc(regionUrl('/', r))}"`
+      + `${here ? ' aria-current="true"' : ''} data-region="${r.code}">${esc(r.name)}</a>`;
+  }).join('');
+  return `      <div class="rg" id="region-switch" data-current="${current.code}">
+        <button class="rg-btn" type="button" aria-expanded="false" aria-controls="rg-menu">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          <span>${esc(current.name)}</span>
+        </button>
+        <div class="rg-menu" id="rg-menu" hidden>${opts}</div>
+      </div>
+`;
+}
+
 /** Shared <head> and page chrome, so every generated page carries the same rules. */
-function head({ title, description, canonical, indexable, extraLd = '' }) {
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/' }) {
   return `<!doctype html>
-<html lang="en">
+<html lang="${region.hreflang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
-${indexable ? '' : '<meta name="robots" content="noindex,follow">\n'}<meta name="color-scheme" content="dark light">
+${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robots" content="noindex,follow">\n'}<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="article">
@@ -369,7 +454,7 @@ ${indexable ? '' : '<meta name="robots" content="noindex,follow">\n'}<meta name=
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="alternate" type="application/rss+xml" title="Internzo — new internships" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Internzo — new internships" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
@@ -382,7 +467,7 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
 <div class="grain" aria-hidden="true"></div>
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="/" aria-label="Internzo">
+    <a class="brand" href="${regionHref('/', region)}" aria-label="Internzo">
       <span class="scope" aria-hidden="true">
         <svg viewBox="0 0 44 44">
           <circle class="s-ring" cx="22" cy="22" r="20"/><circle class="s-ring" cx="22" cy="22" r="13"/>
@@ -395,7 +480,7 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
     </a>
 
     <div class="bar-right">
-      <a class="alerts" href="https://t.me/internzo" target="_blank" rel="noopener noreferrer">
+${regionSwitch(region, alternates)}      <a class="alerts" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         <span>Get alerts</span>
       </a>
@@ -417,25 +502,25 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
  * moment on a sentence about sources of truth. That sentence is still here —
  * underneath, in the footer, where a disclaimer belongs.
  */
-function foot({ headline, sub }) {
+function foot({ headline, sub, region = DEFAULT_REGION }) {
   return `
 <section class="outro">
   <div class="wrap">
     <b>${headline}</b>
     <p>${sub}</p>
     <div class="outro-acts">
-      <a class="a-1" href="https://t.me/internzo" target="_blank" rel="noopener noreferrer">
+      <a class="a-1" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         Get every new role on Telegram
       </a>
-      <a class="a-2" href="/">Browse all live internships</a>
+      <a class="a-2" href="${regionHref('/', region)}">Browse all live internships</a>
     </div>
   </div>
 </section>
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by Internzo; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies/">All companies</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -453,20 +538,20 @@ function foot({ headline, sub }) {
  * filled by page.js from jobs.json rather than baked in, because a baked list
  * of the newest roles would rewrite all ~130 job pages every time one arrived.
  */
-export function renderJobPage(job, siblings = []) {
-  const url = `${SITE}/jobs/${jobSlug(job)}`;
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
   const posted = job.postedAt ?? job.firstSeenAt ?? Date.now();
   const year = new Date(posted).getFullYear();
-  const hub = `/companies/${companySlug(job.company)}`;
+  const hub = regionHref(`/companies/${companySlug(job.company)}`, region);
 
   // Title shaped the way people actually search: company, role, the word
-  // internship, then India and the year.
-  const pageTitle = `${job.company} ${job.title} Internship ${year} — India | Internzo`;
+  // internship, then the country and the year.
+  const pageTitle = `${job.company} ${job.title} Internship ${year} — ${region.name} | Internzo`;
   const description = (job.bullets ?? [])[0]
     ? `${job.company} is hiring: ${job.title}. ${(job.bullets ?? [])[0]}.`
-    : `${job.company} is hiring a ${job.title} intern in India.`;
+    : `${job.company} is hiring a ${job.title} intern ${region.inName}.`;
 
   const facts = [
     job.location ? ['Location', esc(job.location)] : null,
@@ -478,10 +563,10 @@ export function renderJobPage(job, siblings = []) {
     // Same fallback as validThrough and the JSON-LD above. It was the one date
     // here without it, and toISOString on an Invalid Date throws — which would
     // not lose one page, it would abort writePages and with it the whole publish.
-    ['Posted', `<time datetime="${isoDay(posted)}">${esc(dayLabel(posted))}</time>`],
+    ['Posted', `<time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time>`],
   ].filter(Boolean);
 
-  const postingLd = jobPostingLd(job, url);
+  const postingLd = jobPostingLd(job, url, region);
   const where = apply ? applyTarget(apply) : '';
   // ONE apply button on the page, in the rail. It is sticky on a desktop and
   // sits under the headline on a phone, and the dock catches a reader who has
@@ -505,12 +590,19 @@ export function renderJobPage(job, siblings = []) {
     description,
     canonical: url,
     indexable,
+    region,
+    // No hreflang on a job page. A Stripe internship in Dublin is not a
+    // regional variant of one in Bengaluru, it is a different vacancy, and
+    // telling Google two unrelated URLs are the same page is a real error.
+    // The switch is still rendered from `alternates` in the chrome.
+    alternates,
+    alternatePath: null,
     extraLd: postingLd ? `<script type="application/ld+json">${jsonLd(postingLd)}</script>\n` : '',
   })}
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> <i aria-hidden="true">›</i>
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
       <a href="${hub}">${esc(job.company)}</a> <i aria-hidden="true">›</i>
       <span>${esc(job.title)}</span>
     </nav>
@@ -549,7 +641,7 @@ export function renderJobPage(job, siblings = []) {
         <section>
           <h2>How to apply</h2>
           <div class="apply-band">
-            <p>${apply ? '' : 'Apply through the original posting. '}Internships in India often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
+            <p>${apply ? '' : 'Apply through the original posting. '}Internships ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
           <p class="note">This summary was written by Internzo from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
         </section>
@@ -564,7 +656,7 @@ export function renderJobPage(job, siblings = []) {
           <dl class="facts">
             ${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n            ')}
           </dl>
-          <a class="jp-sub" href="https://t.me/internzo" target="_blank" rel="noopener noreferrer">
+          <a class="jp-sub" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             Get roles like this the minute they post
           </a>
@@ -577,13 +669,13 @@ export function renderJobPage(job, siblings = []) {
         <h2>More at ${esc(job.company)}</h2>
         <a class="strip-more" href="${hub}">All ${esc(job.company)} roles →</a>
       </div>
-      <div class="tiles">${others.map((j) => tile(j, { showCompany: false })).join('')}</div>
+      <div class="tiles">${others.map((j) => tile(j, { showCompany: false, region })).join('')}</div>
     </section>` : ''}
 
-    <section class="strip" id="fresh" hidden>
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
         <h2>Just landed on Internzo</h2>
-        <a class="strip-more" href="/">See all live roles →</a>
+        <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
       </div>
       <div class="tiles" id="fresh-list"></div>
     </section>
@@ -596,7 +688,8 @@ ${apply ? `<div class="dock" id="dock" aria-hidden="true">
 </div>` : ''}
 ${foot({
     headline: 'Do not let the next one pass you by',
-    sub: 'Every engineering internship in India, on the board within minutes of going live.',
+    sub: `Every engineering internship ${region.inName}, on the board within minutes of going live.`,
+    region,
   })}`;
 }
 
@@ -616,8 +709,8 @@ ${foot({
  * posting as a live one is the thing that earns a structured-data manual
  * action, and the whole domain pays for that.
  */
-export function renderCompanyPage(company, jobs, past = [], logo = '') {
-  const url = `${SITE}/companies/${companySlug(company)}`;
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = regionUrl(`/companies/${companySlug(company)}`, region);
   const live = newestFirst(jobs.filter(isIndexable));
   // Newest first, de-duplicated by title against both the live roles and each
   // other, and capped — a hub is a landing page, not an archive. An employer
@@ -637,12 +730,13 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
   // and nothing to show behind them is exactly the thin page to keep out.
   const indexable = live.length > 0 || history.length >= 2;
 
-  const pageTitle = `${company} Internships in India ${new Date().getFullYear()} — ${live.length} open role${live.length === 1 ? '' : 's'} | Internzo`;
+  const where = region.inName.replace(/^in /, '');
+  const pageTitle = `${company} Internships in ${where} ${new Date().getFullYear()} — ${live.length} open role${live.length === 1 ? '' : 's'} | Internzo`;
   const description = live.length
-    ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} in India, updated every 30 minutes. ${live.slice(0, 3).map((j) => j.title).join(', ')}.`
+    ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes. ${live.slice(0, 3).map((j) => j.title).join(', ')}.`
     : history.length
-      ? `${company} internships in India. No live openings right now; ${history.length} tracked since we started following them, updated every 30 minutes.`
-      : `${company} internships in India, tracked by Internzo and updated every 30 minutes.`;
+      ? `${company} internships ${region.inName}. No live openings right now; ${history.length} tracked since we started following them, updated every 30 minutes.`
+      : `${company} internships ${region.inName}, tracked by Internzo and updated every 30 minutes.`;
 
   const listLd = {
     '@context': 'https://schema.org/',
@@ -650,7 +744,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
     itemListElement: live.map((j, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${SITE}/jobs/${jobSlug(j)}`,
+      url: regionUrl(`/jobs/${jobSlug(j)}`, region),
       name: `${j.company} — ${j.title}`,
     })),
   };
@@ -662,20 +756,25 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
     description,
     canonical: url,
     indexable,
+    region,
+    // No hreflang: an employer hiring in two regions has two hubs carrying
+    // different roles, not one page served two ways.
+    alternates,
+    alternatePath: null,
     extraLd: live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : '',
   })}
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> <i aria-hidden="true">›</i>
-      <a href="/companies/">Companies</a> <i aria-hidden="true">›</i>
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <a href="${regionHref('/companies/', region)}">Companies</a> <i aria-hidden="true">›</i>
       <span>${esc(company)}</span>
     </nav>
 
     <header class="hub-hero">
       ${crest(company, logo)}
       <div class="hub-hero-t">
-        <h1>${esc(company)} internships in India</h1>
+        <h1>${esc(company)} internships ${esc(region.inName)}</h1>
         <div class="hub-count pills">
           <span class="pill ${live.length ? 'is-fresh' : ''}"><i aria-hidden="true"></i>${live.length} live opening${live.length === 1 ? '' : 's'}</span>
           ${cities.length ? `<span class="pill">${esc(cities.slice(0, 3).join(' · '))}</span>` : ''}
@@ -687,7 +786,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
     <section class="strip">
       <div class="strip-head"><h2>${live.length ? 'Open right now' : 'Open right now'}</h2></div>
       ${live.length
-        ? `<div class="tiles">${live.map((j) => tile(j, { showCompany: false })).join('')}</div>`
+        ? `<div class="tiles">${live.map((j) => tile(j, { showCompany: false, region })).join('')}</div>`
         : `<div class="empty">
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
@@ -701,14 +800,14 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
         <li>
           <b>${esc(p.title)}</b>
           ${p.roleLabel ? `<span class="qual">${esc(p.roleLabel)}</span>` : ''}
-          ${p.postedAt ? `<time datetime="${isoDay(p.postedAt)}">${esc(monthLabel(p.postedAt))}</time>` : ''}
+          ${p.postedAt ? `<time datetime="${isoDay(p.postedAt)}">${esc(monthLabel(p.postedAt, region))}</time>` : ''}
         </li>`).join('')}</ul>
     </section>` : ''}
 
-    <section class="strip" id="fresh" hidden>
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
         <h2>Just landed on Internzo</h2>
-        <a class="strip-more" href="/">See all live roles →</a>
+        <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
       </div>
       <div class="tiles" id="fresh-list"></div>
     </section>
@@ -716,7 +815,8 @@ export function renderCompanyPage(company, jobs, past = [], logo = '') {
 </main>
 ${foot({
     headline: `Know before anyone else applies to ${esc(company)}`,
-    sub: 'One message the minute a new engineering internship goes live in India. No email, no account.',
+    sub: `One message the minute a new engineering internship goes live ${region.inName}. No email, no account.`,
+    region,
   })}`;
 }
 
@@ -729,8 +829,8 @@ ${foot({
  * static link from the homepage reaches it, and from here every company hub and
  * then every job page is reachable by following ordinary anchors.
  */
-export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos = new Map()) {
-  const url = `${SITE}/companies/`;
+export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos = new Map(), { region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = regionUrl('/companies/', region);
   // Employers with no live role are still listed, below the ones hiring. This
   // page is the only crawl path to the hubs — the homepage list is built by
   // JavaScript — so a hub missing from here is a hub Google reaches through the
@@ -747,7 +847,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
   const hiring = rows.filter((r) => r.live > 0).length;
   const total = rows.reduce((n, r) => n + r.live, 0);
 
-  const card = (r) => `<a class="dir-card${r.live ? '' : ' is-quiet'}" href="/companies/${companySlug(r.company)}" data-name="${esc(r.company.toLowerCase())}">
+  const card = (r) => `<a class="dir-card${r.live ? '' : ' is-quiet'}" href="${regionHref(`/companies/${companySlug(r.company)}`, region)}" data-name="${esc(r.company.toLowerCase())}">
         ${crest(r.company, logos.get(r.company), { cls: 'tile-crest' })}
         <span class="dir-t">
           <span class="dir-name">${esc(r.company)}</span>
@@ -758,21 +858,27 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
   const open = rows.filter((r) => r.live > 0);
   const quiet = rows.filter((r) => r.live === 0);
 
+  const where = region.inName.replace(/^in /, '');
   return `${head({
-    title: `Internships in India by company — ${hiring} companies hiring | Internzo`,
-    description: `Browse ${total} live internships across ${hiring} companies in India, plus every employer we track. Updated every 30 minutes.`,
+    title: `Internships in ${where} by company — ${hiring} companies hiring | Internzo`,
+    description: `Browse ${total} live internships across ${hiring} companies ${region.inName}, plus every employer we track. Updated every 30 minutes.`,
     canonical: url,
     indexable: rows.length > 0,
+    region,
+    // The directory DOES have a true equivalent in every region — same page,
+    // same purpose, different employers — so this one carries hreflang.
+    alternates,
+    alternatePath: '/companies/',
   })}
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> <i aria-hidden="true">›</i>
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
       <span>Companies</span>
     </nav>
 
     <header class="dir-hero">
-      <h1>Internships by company</h1>
+      <h1>Internships by company ${esc(region.inName)}</h1>
       <div class="stats">
         <div class="stat"><b>${total}</b><span>Live openings</span></div>
         <div class="stat"><b>${hiring}</b><span>Hiring right now</span></div>
@@ -801,7 +907,8 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
 </main>
 ${foot({
     headline: 'Never refresh this page again',
-    sub: 'Every new engineering internship in India, pushed to Telegram within minutes of going live.',
+    sub: `Every new engineering internship ${region.inName}, pushed to Telegram within minutes of going live.`,
+    region,
   })}`;
 }
 
@@ -810,50 +917,154 @@ function writeIfChanged(path, contents) {
 }
 
 /**
- * Put the listings into the homepage's HTML.
+ * The region-varying half of the homepage's <head>.
  *
- * This is the fix for the thing Search Console actually reported. Every job
- * page came back "URL is unknown to Google", with both discovery routes empty:
- * "No referring sitemaps detected" and "Referring page: None detected". The
- * homepage is the one URL Google had crawled, and it shipped an empty <ol> that
- * JavaScript filled afterwards — so a crawler arriving there found marketing
- * copy, one link to /companies/, and no way to reach a single listing. Crawl
- * depth to a job page was three on a domain with no authority; now it is one.
- *
- * Every live job is listed rather than a sample, because the point is that each
- * job page gains a referring link. app.js calls replaceChildren() on this list,
- * so the moment the script runs these rows are gone and the interactive board
- * takes over — no duplication, and nothing here is hidden from users to feed a
- * crawler something different.
- *
- * Only the region between the two markers is touched. If they are missing the
- * file is left completely alone: silently rewriting a hand-maintained page is a
- * far worse failure than not adding links to it.
+ * Everything here differs per region and nothing else in index.html does, which
+ * is what makes one hand-authored file serve every board. Generated rather than
+ * hand-maintained per region because there is no version of "keep eleven copies
+ * of a <head> in sync" that survives contact with a copy-edit.
  */
-function writeHomeListings(jobs, publicDir) {
-  const path = join(publicDir, 'index.html');
-  if (!existsSync(path)) return 0;
+function homeHead(region, alternates) {
+  const url = regionUrl('/', region);
+  const where = region.inName.replace(/^in /, '');
+  const title = `Internzo — Engineering Internships in ${where}`;
+  const description = `Engineering internships ${region.inName}, listed minutes after they go live. `
+    + 'Fresh openings refreshed every 30 minutes — apply while the queue is still short.';
+  const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
+  const imageAlt = `Internzo — be early. Software internships ${region.inName}, listed minutes after they go live.`;
 
-  const html = readFileSync(path, 'utf8');
-  const open = '<!--LISTINGS-->';
-  const close = '<!--/LISTINGS-->';
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${SITE}/#organization`,
+        name: 'Internzo',
+        url: `${SITE}/`,
+        logo: `${SITE}/favicon-96.png`,
+        description: `Internzo lists engineering internships ${region.inName} within minutes of them going live.`,
+        areaServed: { '@type': 'Country', name: region.name },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${url}#website`,
+        url,
+        name: 'Internzo',
+        description: `Engineering internships ${region.inName}, listed within minutes of going live.`,
+        inLanguage: region.hreflang,
+        publisher: { '@id': `${SITE}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: { '@type': 'EntryPoint', urlTemplate: `${url}?q={search_term_string}` },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+    ],
+  };
+
+  return `<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<link rel="canonical" href="${esc(url)}">
+${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads. The region is in the URL, but
+     a rewrite can serve this file from more than one path, so the page states
+     which region it IS rather than inferring it. -->
+<meta name="internzo-region" content="${region.code}">
+<meta name="internzo-data" content="${regionHref('/data/jobs.json', region)}">
+<link rel="alternate" type="application/rss+xml" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
+<link rel="alternate" type="application/feed+json" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
+<meta property="og:url" content="${esc(url)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(social)}">
+<meta property="og:image:alt" content="${esc(imageAlt)}">
+<meta name="twitter:description" content="${esc(social)}">
+<meta name="twitter:image:alt" content="${esc(imageAlt)}">
+<script type="application/ld+json">${jsonLd(ld)}</script>`;
+}
+
+/** Replace everything between a marker pair. Returns null if the pair is absent. */
+function fillMarker(html, name, contents) {
+  const open = `<!--${name}-->`;
+  const close = `<!--/${name}-->`;
   const from = html.indexOf(open);
   const to = html.indexOf(close);
-  if (from === -1 || to === -1 || to < from) {
-    console.warn('  index.html has no <!--LISTINGS--> markers — homepage links not written.');
-    return 0;
+  if (from === -1 || to === -1 || to < from) return null;
+  return `${html.slice(0, from + open.length)}\n${contents}\n${html.slice(to)}`;
+}
+
+/**
+ * Root-relative links that belong to a region, and the complete list of them.
+ *
+ * An allowlist rather than a blanket rewrite of every `href="/…"`, because the
+ * same document also links to `/styles.css`, `/favicon.ico`, `/og.jpg` and
+ * `/_vercel/…`, none of which are per-region and all of which would 404 under a
+ * prefix. Job links are generated below and already carry theirs.
+ */
+const REGION_LINKS = ['/companies/', '/feed.xml', '/feed.json', '/data/jobs.json'];
+
+function localiseLinks(html, region) {
+  const prefix = regionPath(region.code);
+  if (!prefix) return html;
+  let out = html.replace(/href="\/"/g, `href="${prefix}/"`);
+  for (const path of REGION_LINKS) {
+    out = out.split(`"${path}"`).join(`"${prefix}${path}"`);
   }
+  return out;
+}
+
+/**
+ * Write one region's homepage.
+ *
+ * `web/public/index.html` is hand-authored and is the TEMPLATE for every region,
+ * India's included. India writes back over itself in place, so its file is
+ * unchanged except inside the markers; every other region is written to
+ * `<slug>/index.html`.
+ *
+ * One template rather than a generated page per region because the board is a
+ * designed thing — a two-pane layout, a filter rail, a resume tailor — and the
+ * moment each region owns a copy they drift, so switching region would change
+ * the design as well as the listings.
+ *
+ * The listings inside <!--LISTINGS--> are the fix for the thing Search Console
+ * actually reported: every job page came back "URL is unknown to Google" with
+ * both discovery routes empty, because the homepage shipped an empty <ol> that
+ * JavaScript filled afterwards. Crawl depth to a job page was three on a domain
+ * with no authority; now it is one. app.js calls replaceChildren() on this list,
+ * so these rows are gone the moment the script runs — nothing is hidden from
+ * users to feed a crawler something different.
+ *
+ * If the markers are missing the file is left completely alone: silently
+ * rewriting a hand-maintained page is a far worse failure than not adding links.
+ */
+function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null) {
+  const templatePath = join(publicDir, 'index.html');
+  if (!existsSync(templatePath)) return 0;
+  const template = readFileSync(templatePath, 'utf8');
 
   const rows = jobs.map((j) => {
-    const facts = [j.location, j.workplaceType]
-      .filter(Boolean).map((s) => esc(s)).join(' · ');
-    return `<li><a href="/jobs/${jobSlug(j)}">${esc(j.company)} — ${esc(j.title)}</a>`
+    const facts = [j.location, j.workplaceType].filter(Boolean).map((s) => esc(s)).join(' · ');
+    return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.company)} — ${esc(j.title)}</a>`
       + (facts ? `<span class="tiny"> ${facts}</span>` : '')
       + '</li>';
   }).join('\n');
 
-  const next = `${html.slice(0, from + open.length)}\n${rows}\n${html.slice(to)}`;
-  if (next !== html) writeFileSync(path, next);
+  let html = fillMarker(template, 'LISTINGS', rows);
+  if (html === null) {
+    console.warn('  index.html has no <!--LISTINGS--> markers — homepage links not written.');
+    return 0;
+  }
+  // The region markers are optional so a half-migrated index.html still
+  // publishes India correctly rather than failing the whole run.
+  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates)) ?? html;
+  html = fillMarker(html, 'REGION:LEDE',
+    `<strong>Engineering internships ${esc(region.inName)}</strong>`) ?? html;
+  html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
+  html = html.replace('<html lang="en">', `<html lang="${region.hreflang}">`);
+  html = localiseLinks(html, region);
+
+  const outDir = join(publicDir, ...(region.slug ? [region.slug] : []));
+  mkdirSync(outDir, { recursive: true });
+  const outPath = join(outDir, 'index.html');
+  if (html !== template || outPath !== templatePath) writeFileSync(outPath, html);
   return jobs.length;
 }
 
@@ -898,9 +1109,13 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
-export function writePages(jobs, publicDir, history = []) {
-  const jobsDir = join(publicDir, 'jobs');
-  const compDir = join(publicDir, 'companies');
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null } = {}) {
+  // India is at the root and every other region under its slug. `regionPath`
+  // returns '' for India, so this resolves to exactly the paths that already
+  // exist and nothing indexed moves.
+  const root = join(publicDir, ...(region.slug ? [region.slug] : []));
+  const jobsDir = join(root, 'jobs');
+  const compDir = join(root, 'companies');
   mkdirSync(jobsDir, { recursive: true });
   mkdirSync(compDir, { recursive: true });
 
@@ -917,7 +1132,8 @@ export function writePages(jobs, publicDir, history = []) {
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
-    writeIfChanged(join(jobsDir, name), renderJobPage(job, byCompany.get(job.company) ?? []));
+    writeIfChanged(join(jobsDir, name),
+      renderJobPage(job, byCompany.get(job.company) ?? [], { region, alternates }));
   }
 
   const logos = companyLogos(jobs, publicDir);
@@ -938,13 +1154,14 @@ export function writePages(jobs, publicDir, history = []) {
     wanted.add(join(compDir, name));
     writeIfChanged(join(compDir, name),
       renderCompanyPage(company, byCompany.get(company) ?? [], pastByCompany.get(company) ?? [],
-        logos.get(company) ?? ''));
+        logos.get(company) ?? '', { region, alternates }));
   }
 
   // The directory, at /companies/. index.html rather than a slug so the bare
   // directory URL resolves on Vercel and on the dev server alike.
   wanted.add(join(compDir, 'index.html'));
-  writeIfChanged(join(compDir, 'index.html'), renderCompanyIndex(byCompany, pastByCompany, logos));
+  writeIfChanged(join(compDir, 'index.html'),
+    renderCompanyIndex(byCompany, pastByCompany, logos, { region, alternates }));
 
   let removed = 0;
   for (const dir of [jobsDir, compDir]) {
@@ -956,22 +1173,55 @@ export function writePages(jobs, publicDir, history = []) {
   }
 
   const indexable = jobs.filter(isIndexable).length;
-  writeSitemap(jobs, byCompany, publicDir, pastByCompany);
-  writeRobots(publicDir);
-  const feedItems = writeFeeds(jobs, publicDir);
-  const homeLinks = writeHomeListings(jobs, publicDir);
+  writeSitemap(jobs, byCompany, root, pastByCompany, region);
+  const feedItems = writeFeeds(jobs, root, region);
+  const homeLinks = writeHomePage(jobs, publicDir, region, alternates);
 
   return { jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks };
 }
 
+/**
+ * Render every published region, then the one file they share.
+ *
+ * robots.txt is written once from the full set rather than per region, because
+ * it lives at the root and names every region's sitemap. Writing it inside
+ * writePages would mean the last region rendered silently won.
+ *
+ * Regions are rendered in the order given, which is the order the switch lists
+ * them and the order `regions.publish` is written in config.json.
+ *
+ * @param {Map<string, object[]>} jobsByRegion    region code -> live jobs
+ * @param {Map<string, object[]>} historyByRegion region code -> past postings
+ * @param {object[]} regions                      published regions, in order
+ */
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions) {
+  const alternates = regions.length > 1 ? regions : null;
+  const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
+  const perRegion = [];
+
+  for (const region of regions) {
+    const result = writePages(
+      jobsByRegion.get(region.code) ?? [],
+      publicDir,
+      historyByRegion.get(region.code) ?? [],
+      { region, alternates },
+    );
+    for (const k of Object.keys(totals)) totals[k] += result[k];
+    perRegion.push({ region, ...result });
+  }
+
+  writeRobots(publicDir, regions);
+  return { ...totals, perRegion };
+}
+
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
-function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map()) {
+function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION) {
   const now = new Date().toISOString();
   const urls = [
-    { loc: `${SITE}/`, priority: '1.0', lastmod: now },
-    { loc: `${SITE}/companies/`, priority: '0.7', lastmod: now },
+    { loc: regionUrl('/', region), priority: '1.0', lastmod: now },
+    { loc: regionUrl('/companies/', region), priority: '0.7', lastmod: now },
     ...jobs.filter(isIndexable).map((j) => ({
-      loc: `${SITE}/jobs/${jobSlug(j)}`,
+      loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',
       lastmod: new Date(j.postedAt ?? j.firstSeenAt).toISOString(),
     })),
@@ -983,7 +1233,7 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map()) {
     ...[...new Set([...byCompany.keys(), ...pastByCompany.keys()])]
       .filter((company) => (byCompany.get(company) ?? []).some(isIndexable)
         || (pastByCompany.get(company) ?? []).length >= 2)
-      .map((company) => ({ loc: `${SITE}/companies/${companySlug(company)}`, priority: '0.6', lastmod: now })),
+      .map((company) => ({ loc: regionUrl(`/companies/${companySlug(company)}`, region), priority: '0.6', lastmod: now })),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -994,11 +1244,25 @@ ${urls.map((u) => `  <url><loc>${esc(u.loc)}</loc><lastmod>${u.lastmod}</lastmod
   writeFileSync(join(publicDir, 'sitemap.xml'), xml);
 }
 
-function writeRobots(publicDir) {
+/**
+ * robots.txt, listing one sitemap per published region.
+ *
+ * Deliberately NOT a sitemap index. India's sitemap is already submitted in
+ * Search Console at /sitemap.xml, and turning that URL into an index — or
+ * moving it to make room for one — churns the single entry point Google has for
+ * the whole site. Multiple `Sitemap:` lines are standard, cost nothing, and
+ * leave the existing URL exactly where it is.
+ *
+ * Written once at the root, from the full published set, rather than per region
+ * — so it is the caller's job to pass every region, not just the one being
+ * rendered.
+ */
+function writeRobots(publicDir, regions = [DEFAULT_REGION]) {
+  const sitemaps = regions.map((r) => `Sitemap: ${regionUrl('/sitemap.xml', r)}`).join('\n');
   writeFileSync(join(publicDir, 'robots.txt'), `User-agent: *
 Allow: /
 
-Sitemap: ${SITE}/sitemap.xml
+${sitemaps}
 `);
 }
 
@@ -1015,7 +1279,7 @@ Sitemap: ${SITE}/sitemap.xml
  * Newest 50 only. A feed reader wants what is new, not a catalogue, and every
  * item here is also a page a crawler can reach through the sitemap.
  */
-function writeFeeds(jobs, publicDir) {
+function writeFeeds(jobs, publicDir, region = DEFAULT_REGION) {
   const recent = [...jobs]
     .sort((a, b) => (b.postedAt ?? b.firstSeenAt ?? 0) - (a.postedAt ?? a.firstSeenAt ?? 0))
     .slice(0, 50);
@@ -1033,7 +1297,7 @@ function writeFeeds(jobs, publicDir) {
   const body = (j) => [facts(j), ...(j.bullets ?? []).map((b) => `• ${b}`)].filter(Boolean).join('\n');
 
   const items = recent.map((j) => {
-    const url = `${SITE}/jobs/${jobSlug(j)}`;
+    const url = regionUrl(`/jobs/${jobSlug(j)}`, region);
     const date = new Date(j.postedAt ?? j.firstSeenAt ?? Date.now());
     return `  <item>
     <title>${esc(`${j.title} — ${j.company ?? ''}`.trim())}</title>
@@ -1047,11 +1311,11 @@ function writeFeeds(jobs, publicDir) {
   writeFileSync(join(publicDir, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Internzo — engineering internships in India</title>
-  <link>${SITE}/</link>
-  <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>
-  <description>New engineering internships, listed within minutes of going live.</description>
-  <language>en-in</language>
+  <title>Internzo — engineering internships ${esc(region.inName)}</title>
+  <link>${regionUrl('/', region)}</link>
+  <atom:link href="${regionUrl('/feed.xml', region)}" rel="self" type="application/rss+xml"/>
+  <description>New engineering internships ${esc(region.inName)}, listed within minutes of going live.</description>
+  <language>${region.hreflang.toLowerCase()}</language>
   <lastBuildDate>${now}</lastBuildDate>
 ${items}
 </channel>
@@ -1060,13 +1324,13 @@ ${items}
 
   writeFileSync(join(publicDir, 'feed.json'), `${JSON.stringify({
     version: 'https://jsonfeed.org/version/1.1',
-    title: 'Internzo — engineering internships in India',
-    home_page_url: `${SITE}/`,
-    feed_url: `${SITE}/feed.json`,
-    description: 'New engineering internships, listed within minutes of going live.',
+    title: `Internzo — engineering internships ${region.inName}`,
+    home_page_url: regionUrl('/', region),
+    feed_url: regionUrl('/feed.json', region),
+    description: `New engineering internships ${region.inName}, listed within minutes of going live.`,
     items: recent.map((j) => ({
-      id: `${SITE}/jobs/${jobSlug(j)}`,
-      url: `${SITE}/jobs/${jobSlug(j)}`,
+      id: regionUrl(`/jobs/${jobSlug(j)}`, region),
+      url: regionUrl(`/jobs/${jobSlug(j)}`, region),
       title: `${j.title} — ${j.company ?? ''}`.trim(),
       content_text: body(j),
       date_published: new Date(j.postedAt ?? j.firstSeenAt ?? Date.now()).toISOString(),

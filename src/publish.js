@@ -1,15 +1,26 @@
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { ROOT } from './paths.js';
 import { log } from './logger.js';
-import { formatStipend, isIndianLocation } from './extract.js';
+import { formatStipend } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
-import { writePages } from './pages.js';
+import { writeSite } from './pages.js';
+import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 
-const WEB_DATA_DIR = join(ROOT, 'web', 'public', 'data');
-const JOBS_FILE = join(WEB_DATA_DIR, 'jobs.json');
+const PUBLIC_DIR = join(ROOT, 'web', 'public');
+
+/**
+ * Where a region's board is written.
+ *
+ * India keeps `/data/jobs.json` exactly where it has always been — that path is
+ * in vercel.json's cache rules and is what the live app.js fetches — and every
+ * other region gets the same filename under its own prefix.
+ */
+function jobsFileFor(region) {
+  return join(PUBLIC_DIR, ...(region.slug ? [region.slug] : []), 'data', 'jobs.json');
+}
 
 /**
  * Shape a stored job into what the public site shows.
@@ -84,9 +95,13 @@ export async function writeJobsFile(store, cfg) {
 
   const techOnly = cfg.publish?.techRolesOnly !== false;
 
+  const regions = publishedRegions(cfg);
+  const wanted = new Set(regions.map((r) => r.code));
+
   let dropped = 0;
   let droppedForeign = 0;
   let droppedNonTech = 0;
+  const droppedByRegion = {};
   const jobs = store
     .recentJobs(Date.now() - maxAgeMs)
     // Re-run the company match at publish time instead of trusting what was
@@ -112,15 +127,22 @@ export async function writeJobsFile(store, cfg) {
       log.debug(`Not publishing "${row.title}" — "${row.company}" no longer matches the watchlist.`);
       return false;
     })
-    // India only, enforced HERE and not just at collection. The collectors gate
-    // what is stored, but the table already held roles in Singapore, Malaysia
-    // and Hannover from when that gate was open — 90 of 174 published. Applying
-    // it at publish means those stop appearing without deleting anything, and
-    // one flag brings them all back.
-    .filter(({ row }) => {
-      if (cfg.publish?.indiaOnly === false) return true;
-      if (isIndianLocation(row.location)) return true;
+    // Published regions only, enforced HERE and not just at collection. The
+    // collectors decide what is STORED; this decides what is shown. Everything
+    // is collected now and only the regions in `regions.publish` are shown, so
+    // a region fills up quietly and goes live by adding one code to a list —
+    // nothing is deleted either way, and nothing has to be re-collected.
+    //
+    // The region is re-derived from the location rather than read off the
+    // stored column, for the same reason matchCompany is re-run above: a row
+    // captured before a gazetteer fix carries the old answer. It is also what
+    // keeps the documented remedy for a bad geocode working —
+    // `UPDATE jobs SET location=…` still moves a posting off the board.
+    .map((entry) => ({ ...entry, region: resolveRowRegion(entry.row) }))
+    .filter(({ region }) => {
+      if (wanted.has(region)) return true;
       droppedForeign++;
+      droppedByRegion[region] = (droppedByRegion[region] ?? 0) + 1;
       return false;
     })
     // Engineering only. Applied here rather than in the SQL so that older rows
@@ -137,7 +159,7 @@ export async function writeJobsFile(store, cfg) {
       droppedNonTech++;
       return false;
     })
-    .map(({ row, matchedNow }) => ({ row, matchedNow }));
+    .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
   // ---- one posting, two collectors -----------------------------------------
   // The scraper and the ATS poller find the same role independently: a company
@@ -245,11 +267,13 @@ export async function writeJobsFile(store, cfg) {
   );
 
   const publicJobs = jobs
-    .map(({ row, matchedNow }) => toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }))
+    .map(({ row, matchedNow, region }) => ({ ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }), region }))
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   if (droppedForeign) {
-    log.info(`Held back ${droppedForeign} posting${droppedForeign === 1 ? '' : 's'} outside India.`);
+    const detail = Object.entries(droppedByRegion).sort((a, b) => b[1] - a[1])
+      .map(([r, n]) => `${r} ${n}`).join(' · ');
+    log.info(`Held back ${droppedForeign} posting${droppedForeign === 1 ? '' : 's'} outside the published regions (${detail}).`);
   }
 
   if (droppedNonTech) {
@@ -260,21 +284,13 @@ export async function writeJobsFile(store, cfg) {
     log.warn(`Held back ${dropped} stored job${dropped === 1 ? '' : 's'} whose company no longer matches the watchlist.`);
   }
 
-  const techCount = publicJobs.filter((j) => j.isTech).length;
-  const payload = {
-    generatedAt: Date.now(),
-    count: publicJobs.length,
-    techCount,
-    otherCount: publicJobs.length - techCount,
-    companies: [...new Set(publicJobs.map((j) => j.company))].sort(),
-    locations: [...new Set(publicJobs.map((j) => j.location).filter(Boolean))].sort(),
-    jobs: publicJobs,
-  };
+  if (droppedNonTech) {
+    log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);
+  }
 
-  mkdirSync(WEB_DATA_DIR, { recursive: true });
-
-  const next = `${JSON.stringify(payload, null, 1)}\n`;
-  writeFileSync(JOBS_FILE, next);
+  if (dropped) {
+    log.warn(`Held back ${dropped} stored job${dropped === 1 ? '' : 's'} whose company no longer matches the watchlist.`);
+  }
 
   // Every posting this employer has ever run, not just the live ones.
   //
@@ -298,24 +314,63 @@ export async function writeJobsFile(store, cfg) {
   // the posting, NOT company_matched. Using the watchlist label here would slug
   // to a different URL and quietly fork every hub in two.
   const history = store.recentJobs(0)
-    .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist) }))
-    .filter(({ row, matchedNow }) => row.is_tech === 1
+    .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist), region: resolveRowRegion(row) }))
+    .filter(({ row, matchedNow, region }) => row.is_tech === 1
       && !isBlockedCompany(row.company)
       && (!cfg.matching?.requireCompanyMatch || matchedNow)
-      && (cfg.publish?.indiaOnly === false || isIndianLocation(row.location)))
-    .map(({ row, matchedNow }) => ({
+      && wanted.has(region))
+    .map(({ row, matchedNow, region }) => ({
       company: row.company || matchedNow || 'Unknown',
       title: row.title,
       roleLabel: row.role_label ?? '',
       postedAt: row.posted_at || row.first_seen_at || 0,
+      region,
     }));
+
+  // ---- one board per published region ---------------------------------------
+  // Partitioned here rather than in SQL, exactly like techRolesOnly above: a
+  // region that is switched off simply stops appearing, nothing is deleted, and
+  // switching it on shows everything already collected for it.
+  const groupBy = (rows) => {
+    const map = new Map(regions.map((r) => [r.code, []]));
+    for (const row of rows) map.get(row.region)?.push(row);
+    return map;
+  };
+  const jobsByRegion = groupBy(publicJobs);
+  const historyByRegion = groupBy(history);
+
+  const written = [];
+  for (const region of regions) {
+    const regionJobs = jobsByRegion.get(region.code) ?? [];
+    const techCount = regionJobs.filter((j) => j.isTech).length;
+    const payload = {
+      generatedAt: Date.now(),
+      region: region.code,
+      regionName: region.name,
+      count: regionJobs.length,
+      techCount,
+      otherCount: regionJobs.length - techCount,
+      companies: [...new Set(regionJobs.map((j) => j.company))].sort(),
+      locations: [...new Set(regionJobs.map((j) => j.location).filter(Boolean))].sort(),
+      jobs: regionJobs,
+    };
+
+    const file = jobsFileFor(region);
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, `${JSON.stringify(payload, null, 1)}\n`);
+    written.push({ region, count: regionJobs.length, techCount, path: file });
+  }
 
   // Static pages for search engines. The JSON above serves the app; these serve
   // crawlers, which cannot run the JavaScript that turns it into listings.
-  const pages = writePages(publicJobs, join(ROOT, 'web', 'public'), history);
+  const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions);
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
-  return { count: publicJobs.length, techCount, path: JOBS_FILE, withLogo, logoBytes: logoDirSize(), pages };
+  const techCount = publicJobs.filter((j) => j.isTech).length;
+  return {
+    count: publicJobs.length, techCount, withLogo, logoBytes: logoDirSize(), pages, written,
+    path: written[0]?.path ?? jobsFileFor(regions[0]),
+  };
 }
 
 function git(args, { allowFail = false } = {}) {
@@ -367,6 +422,17 @@ function pushWithRetry(branch, attempts = 3) {
  * Commit and push the jobs file. Vercel is watching the repo, so the push is
  * what makes the site update — usually live within a minute.
  */
+/**
+ * The URL prefixes that publish owns, India excluded.
+ *
+ * Read from the registry rather than from config, deliberately: a region that
+ * was published yesterday and switched off today still has a tree on disk, and
+ * leaving it out of the allowlist would mean its removal never got committed.
+ */
+function regionSlugs() {
+  return ALL_REGIONS.map((r) => r.slug).filter(Boolean);
+}
+
 export function pushToSite(newJobCount) {
   if (!existsSync(join(ROOT, '.git'))) {
     log.warn('Not a git repository — skipping publish. Run `git init` and connect the GitHub remote first.');
@@ -379,7 +445,13 @@ export function pushToSite(newJobCount) {
   // the region between the LISTINGS markers, everything else is hand-authored.
   const PUBLISHED = ['web/public/data', 'web/public/logos', 'web/public/jobs',
     'web/public/companies', 'web/public/sitemap.xml', 'web/public/robots.txt',
-    'web/public/feed.xml', 'web/public/feed.json', 'web/public/index.html'];
+    'web/public/feed.xml', 'web/public/feed.json', 'web/public/index.html',
+    // Every non-India region writes a whole tree under its own slug — data,
+    // jobs, companies, sitemap, feeds and its homepage. Listed by directory so
+    // switching a region on in config.json needs no change here; India stays
+    // enumerated above because it lives at the root beside files that are NOT
+    // published (styles.css, app.js, page.css, page.js, vercel.json).
+    ...regionSlugs().map((slug) => `web/public/${slug}`)];
 
   const status = git(['status', '--porcelain', ...PUBLISHED], { allowFail: true });
   if (!status) {
@@ -425,10 +497,15 @@ export async function publish(store, cfg, newJobCount) {
   if (cfg.publish?.enabled === false) return;
 
   try {
-    const { count, techCount, path, withLogo, logoBytes, pages } = await writeJobsFile(store, cfg);
-    log.info(`Wrote ${count} jobs (${techCount} tech, ${count - techCount} other) to ${path.replace(ROOT, '.')} — ${withLogo} with a logo, ${Math.round(logoBytes / 1024)} KB stored`);
+    const { count, techCount, withLogo, logoBytes, pages, written } = await writeJobsFile(store, cfg);
+    log.info(`Wrote ${count} jobs (${techCount} tech, ${count - techCount} other) — ${withLogo} with a logo, ${Math.round(logoBytes / 1024)} KB stored`);
+    // One line per board. A single total hides the thing worth watching once
+    // more than one region is live: whether any of them is empty.
+    for (const w of written) {
+      log.info(`  ${w.region.name}: ${w.count} live → ${w.path.replace(ROOT, '.')}`);
+    }
     log.info(`Generated ${pages.jobPages} job pages and ${pages.companyPages} company pages (${pages.indexable} indexable${pages.removed ? `, ${pages.removed} stale removed` : ''}).`);
-    log.info(`Homepage carries ${pages.homeLinks} crawlable listing link${pages.homeLinks === 1 ? '' : 's'}.`);
+    log.info(`Homepages carry ${pages.homeLinks} crawlable listing link${pages.homeLinks === 1 ? '' : 's'}.`);
     if (cfg.publish?.autoPush !== false) pushToSite(newJobCount);
   } catch (err) {
     log.warn(`Publish step failed: ${err.message}`);
