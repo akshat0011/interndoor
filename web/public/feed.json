@@ -6,6 +6,54 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://www.internzo.in/jobs/state-street-apprentice-ats-workday-statestreet-wd1-global-r-796419",
+      "url": "https://www.internzo.in/jobs/state-street-apprentice-ats-workday-statestreet-wd1-global-r-796419",
+      "title": "Apprentice — State Street",
+      "content_text": "Company: State Street · Location: Bangalore, India\n• Support application design, development, testing, and deployment\n• Work with AWS, Azure, Jenkins, Git, Splunk, and Grafana\n• Collaborate with teams on cloud, DevOps, and infrastructure projects",
+      "date_published": "2026-08-24T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "State Street"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/jobs/harman-india-digital-signal-processing-intern-4455827085",
+      "url": "https://www.internzo.in/jobs/harman-india-digital-signal-processing-intern-4455827085",
+      "title": "Digital Signal Processing - Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India · Duration: 9 months\n• Develop embedded software for amplifier applications using C/C++ and real-time systems\n• Test and optimize code with debuggers, emulators, and hardware tools like oscilloscopes\n• Follow MISRA guidelines and participate in code reviews to ensure quality",
+      "date_published": "2026-08-23T22:52:19.047Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4458114854",
+      "url": "https://www.internzo.in/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4458114854",
+      "title": "Software Developer Trainee - Java & AI/ML | 6-Month Fixed-Term Contract | 2026 Graduates — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Build secure, high-performance solutions for customer-centric platforms\n• Work with Java and AI/ML tools, integrating APIs across systems\n• Collaborate in permanent teams on full software life cycles",
+      "date_published": "2026-08-23T21:44:54.808Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4458123019",
+      "url": "https://www.internzo.in/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4458123019",
+      "title": "Software Developer Trainee - Java & AI/ML | 6-Month Fixed-Term Contract | 2026 Graduates — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Build secure, high-performance solutions for customer-centric platforms\n• Work with Java and AI/ML tools, integrating APIs and testing systems\n• Collaborate in permanent teams handling full software life cycles",
+      "date_published": "2026-08-23T21:44:25.439Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
       "id": "https://www.internzo.in/jobs/convin-data-labs-intern-4456818373",
       "url": "https://www.internzo.in/jobs/convin-data-labs-intern-4456818373",
       "title": "Data Labs Intern — Convin",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://www.internzo.in/jobs/roche-intern-4456177737",
-      "url": "https://www.internzo.in/jobs/roche-intern-4456177737",
-      "title": "Intern — Roche",
-      "content_text": "Company: Roche · Location: Chennai, Tamil Nadu, India · Duration: 0-1 years\n• Analyze data and build reports for business teams\n• Use python sql and excel to solve real problems\n• Work with global stakeholders in analytics and tech",
-      "date_published": "2026-08-19T09:53:48.687Z",
-      "authors": [
-        {
-          "name": "Roche"
-        }
-      ]
-    },
-    {
-      "id": "https://www.internzo.in/jobs/microsoft-research-sciences-intern-ats-microsoft-india-1970393556971804",
-      "url": "https://www.internzo.in/jobs/microsoft-research-sciences-intern-ats-microsoft-india-1970393556971804",
-      "title": "Research Sciences INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: India, Karnataka, Bangalore\n• Analyze codebases using AI and formal methods\n• Collaborate with researchers on real-world software problems\n• Based in bangalore with access to microsoft research",
-      "date_published": "2026-08-19T09:28:13.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://www.internzo.in/jobs/joveo-software-engineering-intern-full-stack-4453427249",
-      "url": "https://www.internzo.in/jobs/joveo-software-engineering-intern-full-stack-4453427249",
-      "title": "Software Engineering Intern (Full Stack) — Joveo",
-      "content_text": "Company: Joveo · Location: Bangalore Urban, Karnataka, India\n• Build greenfield ai products from whiteboard to working prototype\n• Ship full stack with react next.js front end and node express back end\n• Collaborate directly with leadership from first week",
-      "date_published": "2026-08-19T08:13:54.606Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://www.internzo.in/jobs/pearson-apprentice-full-stack-engineer-4456101986",
-      "url": "https://www.internzo.in/jobs/pearson-apprentice-full-stack-engineer-4456101986",
-      "title": "Apprentice, Full Stack Engineer — Pearson",
-      "content_text": "Company: Pearson · Location: Bengaluru East, Karnataka, India · Duration: 0-2 years\n• Build web apps with react.js and java\n• Work on frontend/backend with rest apis\n• Code in typescript/javascript and debug issues",
-      "date_published": "2026-08-19T02:07:29.638Z",
-      "authors": [
-        {
-          "name": "Pearson"
         }
       ]
     }
