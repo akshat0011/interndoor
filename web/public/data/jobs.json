@@ -1,7 +1,7 @@
 {
- "generatedAt": 1787492896769,
- "count": 138,
- "techCount": 138,
+ "generatedAt": 1787494714613,
+ "count": 139,
+ "techCount": 139,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -130,6 +130,48 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4456818373",
+   "title": "Data Labs Intern",
+   "company": "Convin",
+   "matchedWatchlist": "Convin",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "logo": "/logos/convin.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": "₹1,000 / month",
+   "duration": null,
+   "applicants": "29 applicants",
+   "easyApply": false,
+   "skills": [
+    "tableau",
+    "power bi",
+    "excel"
+   ],
+   "summary": "This internship involves analyzing conversational data to uncover insights that support business decisions. You'll work closely with founders and cross-functional teams to translate findings into actionable strategies. Ideal for students with strong analytical skills and interest in AI and enterprise tech.",
+   "bullets": [
+    "Analyze conversational data to find patterns and trends",
+    "Use tools like excel and tableau to create visual reports",
+    "Work with founders on product shaping and strategy"
+   ],
+   "roleLabel": "Data Analysis",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "excel",
+    "tableau",
+    "power bi",
+    "statistical analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "25 minutes ago",
+   "postedAt": 1787493151361,
+   "firstSeenAt": 1787494651373,
+   "url": "https://www.linkedin.com/jobs/view/4456818373/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4456818373/",
+   "description": null
+  },
   {
    "id": "4456676004",
    "title": "Graduate Trainee",
