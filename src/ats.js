@@ -79,11 +79,26 @@ async function getJson(url, { method = 'GET', body = null, headers = {}, retries
 }
 
 /** Normalised shape every adapter returns, so the rest of the app sees one thing. */
-function job({ id, title, location, url, postedAt, department, remote, description, externalPath }) {
+/**
+ * `locationAlt` is a second opinion on where the role is, used ONLY when the
+ * primary location cannot be placed.
+ *
+ * Some boards put a workplace type in the location slot. Cloudflare's
+ * Greenhouse board answers `location: {name: "In-Office"}` for every posting
+ * while carrying `offices[0].location: "Austin, TX, United States"` alongside
+ * it — so eleven live engineering internships read as nowhere at all, and the
+ * same board hides "Bengaluru, India" behind the word "Hybrid". Preferring the
+ * office outright would be the wrong fix: for most boards `location.name` is
+ * the more specific of the two. So the office is a fallback, consulted only
+ * when the primary resolves to `unknown`, which cannot regress a board that
+ * was already placing correctly.
+ */
+function job({ id, title, location, locationAlt, url, postedAt, department, remote, description, externalPath }) {
   return {
     id: String(id),
     title: String(title ?? '').trim(),
     location: location ? String(location).trim() : null,
+    locationAlt: (locationAlt ?? []).map((s) => String(s ?? '').trim()).filter(Boolean),
     url,
     postedAt: postedAt ? new Date(postedAt).getTime() : null,
     department: department ?? null,
@@ -220,6 +235,9 @@ export const PROVIDERS = {
         id: p.id,
         title: p.title,
         location: p.location?.name,
+        // `offices[].location` is a full "City, ST, Country"; `.name` is often
+        // just "Austin, TX". Both are better than a workplace type.
+        locationAlt: (p.offices ?? []).flatMap((o) => [o.location, o.name]),
         url: p.absolute_url,
         postedAt: p.updated_at ?? p.first_published,
         department: p.departments?.[0]?.name,

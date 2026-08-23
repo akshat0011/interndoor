@@ -1,5 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 import { PATHS, ensureDirs } from './paths.js';
+import { resolveRegion, UNKNOWN } from './regions.js';
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS jobs (
@@ -133,10 +134,40 @@ export class Store {
       // until a posting has been enriched, which is what the card falls back on.
       ['bullets', 'TEXT'], ['role_label', 'TEXT'], ['degree_level', 'TEXT'], ['degree_text', 'TEXT'],
       ['key_skills', 'TEXT'], ['stipend_status', 'TEXT'],
+      // Which country the posting is in, resolved once at ingest. Stored rather
+      // than computed at read time because publish partitions on it every run,
+      // the gazetteer will keep improving, and a stored value can be re-derived
+      // by a migration where a computed one has to be recomputed everywhere.
+      ['region', 'TEXT'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);
       }
+    }
+
+    if (!jobCols.includes('region')) this.#backfillRegions();
+  }
+
+  /**
+   * Give every pre-existing row a region, once.
+   *
+   * The fallback for an empty location is the thing that has to be right here,
+   * and it differs by collector — which is recoverable from the id, because a
+   * LinkedIn id is digits and an ATS id is `ats:provider:token:n`. Every
+   * LinkedIn row in the table was collected by a search scoped to India, so a
+   * blank location on one of those genuinely means India. An ATS board carries
+   * every office a company has and says nothing about which, so a blank there
+   * is honestly unknown and must not inherit India.
+   *
+   * Runs once, in the migration that adds the column. Rows written afterwards
+   * carry their region from the collector that stored them.
+   */
+  #backfillRegions() {
+    const rows = this.db.prepare('SELECT job_id, location FROM jobs').all();
+    const stmt = this.db.prepare('UPDATE jobs SET region = ? WHERE job_id = ?');
+    for (const row of rows) {
+      const fromLinkedIn = !String(row.job_id ?? '').startsWith('ats:');
+      stmt.run(resolveRegion(row.location, { fallback: fromLinkedIn ? 'IN' : null }), row.job_id);
     }
   }
 
@@ -665,8 +696,8 @@ export class Store {
         posted_text, posted_at, salary_text, stipend_min, stipend_max,
         stipend_currency, stipend_period, applicants, easy_apply, apply_url,
         job_url, duration, skills, description, summary, search_keywords,
-        logo_url, is_tech, role_source, first_seen_at, last_seen_at, first_run_id, reported
-      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)
+        logo_url, is_tech, role_source, region, first_seen_at, last_seen_at, first_run_id, reported
+      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)
     `).run(
       job.jobId,
       job.title ?? '(untitled)',
@@ -693,6 +724,11 @@ export class Store {
       job.logoUrl ?? null,
       job.isTech == null ? null : (job.isTech ? 1 : 0),
       job.roleSource ?? null,
+      // What the collector believed. Publish re-derives from the location every
+      // run and only falls back to this when there is no location text at all —
+      // see resolveRowRegion. Storing it is what makes the region queryable and
+      // what lets a blank-location LinkedIn card keep its search's region.
+      job.region ?? resolveRegion(job.location, { fallback: job.regionFallback ?? null }),
       now,
       now,
       runId,
@@ -721,6 +757,24 @@ export class Store {
     return this.db.prepare(
       'SELECT * FROM jobs WHERE first_seen_at >= ? ORDER BY first_seen_at DESC',
     ).all(sinceMs).map(hydrate);
+  }
+
+  /**
+   * How many stored postings sit in each region, engineering only.
+   *
+   * Reporting rather than publishing — publish re-derives the region per row —
+   * but it is the cheap way to see whether a region has enough inventory to be
+   * worth showing anybody before it is switched on.
+   */
+  regionCounts({ sinceMs = 0, techOnly = true } = {}) {
+    const rows = this.db.prepare(`
+      SELECT COALESCE(region, ?) AS region, COUNT(*) AS n
+      FROM jobs
+      WHERE first_seen_at >= ? ${techOnly ? 'AND is_tech = 1' : ''}
+      GROUP BY COALESCE(region, ?)
+      ORDER BY n DESC
+    `).all(UNKNOWN, sinceMs, UNKNOWN);
+    return Object.fromEntries(rows.map((r) => [r.region, r.n]));
   }
 
   stats() {

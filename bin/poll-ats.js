@@ -20,7 +20,8 @@ import { loadConfig, matchCompany, matchTitle } from '../src/config.js';
 import { Store } from '../src/store.js';
 import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS } from '../src/ats.js';
 import { classifyRole } from '../src/roles.js';
-import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, isIndianLocation } from '../src/extract.js';
+import { extractStipend, extractDuration, extractSkills, extractWorkplaceType } from '../src/extract.js';
+import { resolveRegion, collectsRegion, UNKNOWN } from '../src/regions.js';
 import { summarize } from '../src/summarize.js';
 import { publish } from '../src/publish.js';
 import { log } from '../src/logger.js';
@@ -94,18 +95,24 @@ if (!boards.length && !workdayNow.length) {
 }
 
 /**
- * India only.
+ * Which regions this poller keeps.
  *
- * These boards are global — a Greenhouse board carries every office — so
- * without this the site fills with roles no student here can take. The rule
- * itself lives in src/extract.js so that publish enforces exactly the same one
- * on rows captured earlier, and a location naming nowhere recognisably Indian
- * counts as foreign: the permissive version let "Bayan Lepas, my", "MSB,
- * Singapore" and "Hannover, de" through.
+ * These boards have no country. One Greenhouse board carries every office a
+ * company has — Stripe's returns Dublin, San Francisco, Bengaluru and Singapore
+ * in a single response — so geography is a property of the ROWS, never of the
+ * request. That is the whole reason a worldwide board is affordable: collecting
+ * every region costs exactly the same number of requests as collecting one.
  *
- * Set ats.indiaOnly false in config.json to collect worldwide again.
+ * It used to keep India alone, and a census on 23 Aug of the 170 non-Workday
+ * boards already discovered found 189 live engineering internships, of which
+ * 13 were in India. The other 176 were fetched, classified and thrown away on
+ * every single run.
+ *
+ * `unknown` is collected and never published. A location the gazetteer cannot
+ * read yet is still a real posting, and storing it means a better gazetteer
+ * picks it up later without re-reading a single board.
  */
-const INDIA_ONLY = cfg.ats?.indiaOnly !== false;
+const collected = (region) => collectsRegion(cfg, region);
 
 /**
  * How old a posting may be and still count as news.
@@ -123,7 +130,8 @@ const OLDEST_ACCEPTABLE = Date.now() - MAX_POSTING_AGE_DAYS * 86_400_000;
 let checked = 0;
 let stored = 0;
 let skippedNonIntern = 0;
-let skippedNonIndia = 0;
+let skippedRegion = 0;
+const keptByRegion = {};
 let skippedNonTech = 0;
 let skippedStale = 0;
 let failed = 0;
@@ -146,7 +154,22 @@ async function pollOne(board) {
 
   for (const j of jobs) {
     if (!matchTitle(j.title, cfg.titleTerms)) { skippedNonIntern++; continue; }
-    if (INDIA_ONLY && !isIndianLocation(j.location)) { skippedNonIndia++; continue; }
+    // No fallback: a board that lists every office says nothing about which one
+    // a blank location means, so a blank is honestly unknown. The LinkedIn
+    // collector passes its search's region here instead, because a card with no
+    // location text is still known to be inside the search that returned it.
+    let region = resolveRegion(j.location, {});
+    // Only when the primary said nowhere. Where an office does place the role,
+    // its text also REPLACES the location, because a slot holding "In-Office"
+    // was never a location and "Austin, TX, United States" is what the reader
+    // should see on the card.
+    if (region === UNKNOWN) {
+      for (const alt of j.locationAlt ?? []) {
+        const better = resolveRegion(alt, {});
+        if (better !== UNKNOWN) { region = better; j.location = alt; break; }
+      }
+    }
+    if (!collected(region)) { skippedRegion++; continue; }
     // A posting with no date is kept — some providers omit it — but a known-old
     // one is not, however open it still is.
     if (j.postedAt && j.postedAt < OLDEST_ACCEPTABLE) { skippedStale++; continue; }
@@ -176,8 +199,9 @@ async function pollOne(board) {
     const jobId = `ats:${board.provider}:${board.token}:${j.id}`;
 
     if (DRY_RUN) {
-      preview.push(`${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
+      preview.push(`[${region}] ${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
       stored++;
+      keptByRegion[region] = (keptByRegion[region] ?? 0) + 1;
       continue;
     }
 
@@ -201,10 +225,12 @@ async function pollOne(board) {
       searchKeywords: `ats:${board.provider}`,
       isTech,
       roleSource: `ats-${board.provider}`,
+      region,
     }, `ats-${new Date().toISOString().slice(0, 10)}`);
 
     if (isNew) {
       stored++;
+      keptByRegion[region] = (keptByRegion[region] ?? 0) + 1;
       log.ok(`  + ${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
     }
   }
@@ -233,7 +259,16 @@ if (workdayNow.length) {
 
 console.log(`\n=== ${checked}/${boards.length + workdayNow.length} boards read${failed ? `, ${failed} failed` : ''} ===`);
 console.log(`  ${stored} new internship${stored === 1 ? '' : 's'} stored`);
-console.log(`  skipped: ${skippedNonIntern} not an internship · ${skippedNonIndia} outside India · ${skippedStale} older than ${MAX_POSTING_AGE_DAYS}d · ${skippedNonTech} non-engineering`);
+console.log(`  skipped: ${skippedNonIntern} not an internship · ${skippedRegion} outside the collected regions · ${skippedStale} older than ${MAX_POSTING_AGE_DAYS}d · ${skippedNonTech} non-engineering`);
+// By region, because a single total hides the thing worth watching: whether a
+// region has enough inventory to be worth publishing, and how much of the
+// intake the gazetteer is still failing to place.
+const byRegion = Object.entries(keptByRegion).sort((a, b) => b[1] - a[1]);
+if (byRegion.length) {
+  console.log(`  by region: ${byRegion.map(([r, n]) => `${r} ${n}`).join(' · ')}`);
+  const unplaced = keptByRegion[UNKNOWN] ?? 0;
+  if (unplaced) console.log(`  ${unplaced} could not be placed — stored, never published. Add their locations to src/regions.js.`);
+}
 
 if (DRY_RUN) {
   console.log('\n--dry-run, nothing written. Would have stored:');

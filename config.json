@@ -956,14 +956,21 @@
     "disableBraveShields": true,
     "_disableBraveShields_note": "Passes --disable-brave-extension. Mostly belt-and-braces: on a fresh profile Shields has no filter lists to work from, and LinkedIn was verified to load fine either way."
   },
+  "regions": {
+    "_note": "Where postings are collected from, and where they are shown. Collecting a region and publishing one are separate settings on purpose: collection is cheap and reversible - an ATS board is read once whatever its rows turn out to be - while publishing a region is a public commitment to a board that has to look worth visiting. Keeping them apart is what lets a region fill up quietly for a month before anyone is shown it.",
+    "collect": "all",
+    "_collect_note": "'all' (default) collects every region src/regions.js knows, plus 'unknown'. A location the gazetteer cannot read is STORED and never published, so a better gazetteer reads it later without re-collecting anything. An array of ISO codes narrows it, e.g. [\"IN\",\"US\"].",
+    "publish": ["IN"],
+    "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
+    "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
+  },
   "publish": {
     "enabled": true,
     "autoPush": true,
     "_autoPush_note": "After each run, commit web/public/data/jobs.json and push. Vercel is watching the repo, so the push is what makes the public site update.",
     "maxAgeDays": 14,
     "_maxAgeDays_note": "How long a job stays on the public site after it was first seen.",
-    "indiaOnly": true,
-    "_indiaOnly_publish_note": "Enforced at publish as well as collection, so anything captured while the collection gate was open stops appearing. Set false to show roles outside India again; nothing is deleted either way.",
+    "_regions_publish_note": "Which regions get a published board is set in the top-level 'regions' block, not here. It replaced publish.indiaOnly, which was a boolean on a site that only ever had one board.",
     "techRolesOnly": true,
     "_techRolesOnly_note": "Only postings the classifier called technical reach the site. Applied at publish time, not in SQL, so rows stored back when the site carried every role simply stop appearing - nothing is deleted and flipping this to false brings them all back. A row whose verdict has not run yet (is_tech NULL) is NOT published: unclassified must not be treated as maybe-technical.",
     "includeFullDescription": false,
@@ -983,8 +990,7 @@
     "model": "claude-haiku-4-5-20251001"
   },
   "ats": {
-    "indiaOnly": true,
-    "_indiaOnly_note": "true = only collect postings whose location reads as Indian, using isIndianLocation in src/extract.js. Off for a while, and the result was 90 of 174 published roles in Singapore, Malaysia and Hannover on a site that promises internships in India. publish.indiaOnly enforces the same rule again at publish time, so rows already stored while this was off stop appearing without being deleted.",
+    "_regions_collect_note": "Which regions are collected is set in the top-level 'regions' block. It replaced ats.indiaOnly. An ATS board is global by nature - one Greenhouse board carries every office a company has - so collecting every region costs exactly the same number of requests as collecting one, while refusing them threw away 176 of the 189 live engineering internships these boards already carry.",
     "maxPostingAgeDays": 60,
     "_maxPostingAgeDays_note": "Raised from 30 to 60 because a first-party board dates a posting by when the REQUISITION was created, not when it was last advertised. Microsoft's API reports 'Applied Sciences INTERN' as 36 days old while LinkedIn was actively promoting it as 4 days old; at 30 we dropped it, along with Software Engineering INTERN (35d) and Data Science INTERN (36d). 60 admits those and still refuses the genuinely dead - Research Sciences INTERN reports 159 days. How old an ATS posting may be and still be collected. The LinkedIn scan never needed this because it searches with a time window; an ATS board has none and lists whatever is still open, so the first real poll surfaced roles 159 and 214 days old. Being first to a seven-month-old listing is not being early.",
     "_note": "Applicant-tracking-system job boards - the source LinkedIn copies from. Discovery is cached in the company_ats table by bin/discover-ats.js; bin/poll-ats.js reads it. No browser and no ToS problem: these are the public endpoints a company careers page calls to render itself."

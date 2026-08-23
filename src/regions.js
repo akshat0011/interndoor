@@ -347,6 +347,34 @@ export function resolveRegion(location, { fallback = null } = {}) {
   return UNKNOWN;
 }
 
+/**
+ * The region of a stored row, re-derived at read time.
+ *
+ * Publish calls this rather than trusting `jobs.region`, for the same reason it
+ * re-runs `matchCompany` instead of trusting `company_matched`: a row captured
+ * before a fix carries the old answer, and the gazetteer here will go on
+ * improving. Re-deriving means an improvement reaches every historical row on
+ * the next run with no migration.
+ *
+ * It also keeps the documented remedy for a bad geocode working. LinkedIn
+ * placed a Valeo posting in Kanda, Fukuoka as "Kanda, Uttarakhand, India", and
+ * the fix is to correct the row rather than delete it — deleting it leaves
+ * `card_keys` pointing at a dead id, so the card is simply reopened next
+ * sighting. If publish partitioned on a stored region column, that UPDATE would
+ * silently stop working.
+ *
+ *   UPDATE jobs SET location='Kanda, Fukuoka, Japan' WHERE job_id='4414679303';
+ *
+ * A real location therefore always decides. The stored column is consulted only
+ * when the location is blank, where it carries what the collector knew: the
+ * LinkedIn sweep is scoped to a region by its search parameters, so a card with
+ * no location text is still placed, while an ATS board knows nothing and leaves
+ * it unknown.
+ */
+export function resolveRowRegion(row) {
+  return resolveRegion(row?.location, { fallback: row?.region ?? null });
+}
+
 /** The region record for a code, or null. UNKNOWN has no record. */
 export function regionOf(code) {
   return REGIONS[String(code ?? '').toUpperCase()] ?? null;
