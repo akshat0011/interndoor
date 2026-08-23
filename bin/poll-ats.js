@@ -22,6 +22,7 @@ import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS } from '../src/ats.js';
 import { classifyRole } from '../src/roles.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType } from '../src/extract.js';
 import { resolveRegion, collectsRegion, UNKNOWN } from '../src/regions.js';
+import { employmentType, INTERN } from '../src/employment.js';
 import { summarize } from '../src/summarize.js';
 import { publish } from '../src/publish.js';
 import { log } from '../src/logger.js';
@@ -153,7 +154,13 @@ async function pollOne(board) {
   if (!jobs) { failed++; log.debug(`${board.company}: the board returned no jobs payload.`); return; }
 
   for (const j of jobs) {
-    if (!matchTitle(j.title, cfg.titleTerms)) { skippedNonIntern++; continue; }
+    // Internship, or a full-time role aimed at the same people? US campus
+    // hiring writes "New Grad" and "Early Career" where India writes "Intern",
+    // and refusing those threw away 139 US/UK roles a student would want. They
+    // are collected and LABELLED, never filed as internships — employmentType
+    // is a field Google reads.
+    const kind = employmentType(j.title, (t) => matchTitle(t, cfg.titleTerms));
+    if (!kind) { skippedNonIntern++; continue; }
     // No fallback: a board that lists every office says nothing about which one
     // a blank location means, so a blank is honestly unknown. The LinkedIn
     // collector passes its search's region here instead, because a card with no
@@ -199,7 +206,7 @@ async function pollOne(board) {
     const jobId = `ats:${board.provider}:${board.token}:${j.id}`;
 
     if (DRY_RUN) {
-      preview.push(`[${region}] ${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
+      preview.push(`[${region}${kind === INTERN ? '' : '/FT'}] ${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
       stored++;
       keptByRegion[region] = (keptByRegion[region] ?? 0) + 1;
       continue;
@@ -226,6 +233,7 @@ async function pollOne(board) {
       isTech,
       roleSource: `ats-${board.provider}`,
       region,
+      employmentType: kind,
     }, `ats-${new Date().toISOString().slice(0, 10)}`);
 
     if (isNew) {

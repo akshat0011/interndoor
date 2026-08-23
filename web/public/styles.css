@@ -209,6 +209,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 :root:not([data-theme="light"]) .i-moon { display: block; }
 
 /* ---------- region switch ---------- */
+/* Upgraded from a plain dropdown once more than one region shipped: it is the
+   control that changes WHICH BOARD you are on, so it should read as heavier
+   than a filter and lighter than the Apply button. */
 
 /* A <details> disclosure, so it needs no JavaScript.
    The chrome it sits in is rendered by src/pages.js and loaded by app.js on the
@@ -224,9 +227,16 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: inline-flex; align-items: center; gap: 7px;
   height: 33px; padding: 0 10px 0 11px; border-radius: var(--r);
   border: 1px solid var(--rule); color: var(--ink-2);
+  background: color-mix(in oklab, var(--ink) 4%, transparent);
   font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
   white-space: nowrap; cursor: pointer; list-style: none;
-  transition: color .16s, border-color .16s;
+  transition: color .16s, border-color .16s, background .16s;
+}
+/* The live dot. Same language as the .beat in the freshness ticker, so the
+   header reads as one family rather than three unrelated controls. */
+.rg > summary::before {
+  content: ''; width: 5px; height: 5px; flex: none; border-radius: 50%;
+  background: var(--live); box-shadow: 0 0 0 3px color-mix(in oklab, var(--live) 18%, transparent);
 }
 /* Both are needed: WebKit uses the pseudo-element, everything else the property. */
 .rg > summary::-webkit-details-marker { display: none; }
@@ -256,11 +266,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .rg-opt {
   display: flex; align-items: center; gap: 9px;
-  padding: 8px 10px; border-radius: 3px;
+  padding: 9px 10px; border-radius: 3px;
   color: var(--ink-2); text-decoration: none;
   font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
   transition: background .14s, color .14s;
 }
+/* The two-letter code, set in the mono face like every other hard fact on the
+   site — the ages, the counts, the chips. */
+.rg-opt::before {
+  content: attr(data-region);
+  font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
+  padding: 3px 5px; border-radius: 3px; min-width: 26px; text-align: center;
+  background: var(--card-2); color: var(--ink-3);
+  transition: background .14s, color .14s;
+}
+.rg-opt.is-on::before { background: var(--live); color: var(--live-ink); }
 .rg-opt.is-on { color: var(--live); font-weight: 650; }
 .rg-opt.is-on::after { content: '✓'; margin-left: auto; font-size: .8125rem; }
 
@@ -987,9 +1007,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
      like a plain full-width control that had been clipped. */
   .picks select { max-width: 28vw; }
 
-  /* Redundant here: the count is repeated as "N ROLES" directly above the
-     first card, which is where the eye already is. */
-  .seg { display: none; }
+  /* Was hidden when it was only a count, which the "N ROLES" line above the
+     first card already gave. It is a real control again — internship vs
+     full-time — so it stays, just tighter. */
+  .seg { order: -1; }
+  .seg-b { padding: 8px 12px; font-size: 12.5px; }
 
   .ticker { display: none; }
   /* Stays on mobile. The ticker goes so this can: a visitor who arrived from an

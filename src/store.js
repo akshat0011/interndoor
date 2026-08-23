@@ -157,6 +157,9 @@ export class Store {
       // the gazetteer will keep improving, and a stored value can be re-derived
       // by a migration where a computed one has to be recomputed everywhere.
       ['region', 'TEXT'],
+      // 'intern' or 'fulltime'. Rows written before this existed are NULL and
+      // are treated as internships, which is what the site was until now.
+      ['employment_type', 'TEXT'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);
@@ -740,8 +743,8 @@ export class Store {
         posted_text, posted_at, salary_text, stipend_min, stipend_max,
         stipend_currency, stipend_period, applicants, easy_apply, apply_url,
         job_url, duration, skills, description, summary, search_keywords,
-        logo_url, is_tech, role_source, region, first_seen_at, last_seen_at, first_run_id, reported
-      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)
+        logo_url, is_tech, role_source, region, employment_type, first_seen_at, last_seen_at, first_run_id, reported
+      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)
     `).run(
       job.jobId,
       job.title ?? '(untitled)',
@@ -773,6 +776,7 @@ export class Store {
       // see resolveRowRegion. Storing it is what makes the region queryable and
       // what lets a blank-location LinkedIn card keep its search's region.
       job.region ?? resolveRegion(job.location, { fallback: job.regionFallback ?? null }),
+      job.employmentType ?? 'intern',
       now,
       now,
       runId,

@@ -39,8 +39,11 @@ const el = (tag, cls, text) => {
 
 const state = {
   jobs: [],
-  // Which tab is showing. A job with an unknown verdict counts as "other" so it
-  // is still reachable rather than hidden.
+  // Which tab is showing: 'intern' or 'fulltime'. Internships are the default
+  // because that is what this site is for; full-time is US campus hiring —
+  // "New Grad", "Early Career" — which is aimed at the same people but is not
+  // an internship and must not be presented as one.
+  kind: 'intern',
   filtered: [],
   selectedId: null,
   resumeText: '',
@@ -190,9 +193,22 @@ function renderFreshness() {
     : 'standing by';
 }
 
+/** A row written before the intern/full-time split is an internship. */
+const kindOf = (j) => j.employmentType || 'intern';
+
 function renderTotal() {
-  const el = $('n-total');
-  if (el) el.textContent = state.jobs.length;
+  const counts = { intern: 0, fulltime: 0 };
+  for (const j of state.jobs) counts[kindOf(j)] = (counts[kindOf(j)] ?? 0) + 1;
+  for (const k of ['intern', 'fulltime']) {
+    const el = $(`n-${k}`);
+    if (el) el.textContent = counts[k] ?? 0;
+  }
+  // Hide the whole control when a region has no full-time roles at all — a tab
+  // that only ever shows "nothing here" is worse than no tab.
+  const seg = $('seg-kind');
+  if (seg) seg.hidden = !counts.fulltime;
+  const legacy = $('n-total');
+  if (legacy) legacy.textContent = state.jobs.length;
 }
 
 function populateFilters() {
@@ -213,6 +229,7 @@ function applyFilters() {
   const easyOnly = $('f-easy').getAttribute('aria-pressed') === 'true';
 
   const list = state.jobs.filter((j) => {
+    if (kindOf(j) !== state.kind) return false;
     if (company && j.company !== company) return false;
     if (location && j.location !== location) return false;
     if (mode && (j.workplaceType ?? '').toLowerCase() !== mode.toLowerCase()) return false;
@@ -891,6 +908,24 @@ function wireFilterStrip() {
 function wireControls() {
   const rerun = () => applyFilters();
   wireFilterStrip();
+
+  // Internship / full-time. A real tablist rather than a filter dropdown,
+  // because it is the one choice that changes what the board IS rather than
+  // narrowing it — and the selection has to survive the detail pane, so it
+  // clears the selected job when it flips.
+  for (const btn of document.querySelectorAll('#seg-kind .seg-b')) {
+    btn.addEventListener('click', () => {
+      const kind = btn.dataset.kind;
+      if (kind === state.kind) return;
+      state.kind = kind;
+      for (const b of document.querySelectorAll('#seg-kind .seg-b')) {
+        b.setAttribute('aria-selected', String(b.dataset.kind === kind));
+      }
+      state.selectedId = null;
+      rerun();
+    });
+  }
+
   $('q').addEventListener('input', () => {
     $('clear-q').hidden = !$('q').value;
     rerun();

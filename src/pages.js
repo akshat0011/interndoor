@@ -24,6 +24,7 @@
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
+import { schemaEmploymentType } from './employment.js';
 
 export const SITE = 'https://www.internzo.in';
 
@@ -179,7 +180,10 @@ function jobPostingLd(job, url, region = DEFAULT_REGION) {
     identifier: { '@type': 'PropertyValue', name: job.company, value: String(job.id) },
     datePosted: new Date(job.postedAt ?? job.firstSeenAt ?? Date.now()).toISOString(),
     validThrough: validThrough(job),
-    employmentType: 'INTERN',
+    // Read by Google. A full-time graduate role marked INTERN is not a
+    // cosmetic error — wrong structured data risks a manual action across the
+    // whole domain, which is the risk this function is written around.
+    employmentType: schemaEmploymentType(job.employmentType),
     hiringOrganization: { '@type': 'Organization', name: job.company },
     // We are not the apply destination — LinkedIn is. Saying otherwise is the
     // single most common way sites earn a JobPosting penalty.

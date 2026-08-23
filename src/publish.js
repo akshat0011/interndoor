@@ -59,6 +59,9 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     // an unknown verdict as non-tech rather than hiding the job.
     isTech: row.is_tech == null ? null : !!row.is_tech,
     roleSource: row.role_source ?? null,
+    // 'intern' | 'fulltime'. NULL on rows written before the split, and the
+    // site was internships only then, so NULL means intern.
+    employmentType: row.employment_type || 'intern',
     // Local path, never LinkedIn's CDN — see src/logos.js for why.
     logo: logoPathFor(row.company || matchedNow || '', logoIndex),
     location: row.location || null,
