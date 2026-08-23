@@ -412,7 +412,12 @@ function newestFirst(jobs) {
  * `x-default` points at India, which is where an unmatched visitor lands.
  */
 function alternateLinks(path, regions) {
-  if (!regions || regions.length < 2) return '';
+  // `path === null` is how a caller says THIS PAGE HAS NO EQUIVALENT — job
+  // pages and company hubs pass it deliberately. Without this guard the null
+  // fell through into regionUrl and every job page shipped three alternates
+  // pointing at "https://www.internzo.innull", which is a 404 advertised to
+  // Google as the same page in another language.
+  if (!regions || regions.length < 2 || path == null) return '';
   const links = regions.map((r) =>
     `<link rel="alternate" hreflang="${r.hreflang}" href="${esc(regionUrl(path, r))}">`);
   const fallback = regions.find((r) => r.code === 'IN') ?? regions[0];
