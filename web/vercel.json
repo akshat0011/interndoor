@@ -28,7 +28,6 @@
       ]
     },
     {
-      "_comment": "The board data must never be served stale - it is the one file whose whole purpose is being current. Two explicit rules rather than one clever pattern: India is at the root and every other region under its slug.",
       "source": "/data/jobs.json",
       "headers": [
         {
