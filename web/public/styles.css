@@ -633,7 +633,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* The bloom. Static, and on the button rather than the wrapper so it traces
    the button's own radius. */
 .apply-glow > .go, .apply-glow > .btn-apply {
-  box-shadow: 0 0 34px 3px color-mix(in oklab, var(--live) 52%, transparent);
+  box-shadow:
+    0 0 14px 0 color-mix(in oklab, var(--live) 85%, transparent),
+    0 0 52px 8px color-mix(in oklab, var(--live) 60%, transparent);
   transition: box-shadow .2s;
 }
 
@@ -700,8 +702,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
    nothing more. Smaller than the two big buttons get: at their strength a
    column of lime pills glowing at full power reads as a fault rather than as
    emphasis. */
-.card-go { box-shadow: 0 0 14px 0 color-mix(in oklab, var(--live) 34%, transparent); }
-.row.is-hot .card-go { box-shadow: 0 0 14px 0 color-mix(in oklab, var(--hot) 40%, transparent); }
+/* Two shadows, not one: a tight bright core and a wide soft falloff. A single
+   large blur at high alpha reads as fog around the pill rather than as light
+   coming off it — the core is what makes it read as emission. Still a plain
+   box-shadow, so 145 of them are 145 paints and no compositor layers, which is
+   the whole reason the card buttons can have this at all. */
+.card-go {
+  box-shadow:
+    0 0 10px 0 color-mix(in oklab, var(--live) 78%, transparent),
+    0 0 30px 4px color-mix(in oklab, var(--live) 46%, transparent);
+}
+.row.is-hot .card-go {
+  box-shadow:
+    0 0 10px 0 color-mix(in oklab, var(--hot) 80%, transparent),
+    0 0 30px 4px color-mix(in oklab, var(--hot) 50%, transparent);
+}
 
 .feed > li:nth-child(6n+1) .card-go { --go-lag: .8s; }
 .feed > li:nth-child(6n+2) .card-go { --go-lag: 1.23s; }
@@ -719,10 +734,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
    nothing should keep breathing under a finger already on it. */
 @media (hover: hover) and (pointer: fine) {
   .apply-glow:hover > .go, .apply-glow:hover > .btn-apply {
-    box-shadow: 0 0 44px 6px color-mix(in oklab, var(--live) 80%, transparent);
+    box-shadow:
+      0 0 18px 0 color-mix(in oklab, var(--live) 95%, transparent),
+      0 0 66px 12px color-mix(in oklab, var(--live) 85%, transparent);
   }
   .apply-glow > .go:hover::after { animation: sheen-loop .62s linear; }
   .apply-glow > .go:hover .card-go-a { animation: none; transform: translateX(3px); }
+  .card-go:hover {
+    box-shadow:
+      0 0 14px 0 color-mix(in oklab, var(--live) 95%, transparent),
+      0 0 42px 8px color-mix(in oklab, var(--live) 70%, transparent);
+  }
   .card-go:hover::after { animation: sheen-loop .62s linear; }
   .card-go:hover .card-go-a { animation: none; transform: translateX(3px); }
 }
@@ -751,7 +773,23 @@ button, input, select, textarea { font: inherit; color: inherit; }
    under the button at the dark theme's strength. */
 :root[data-theme="light"] .apply-glow > .go,
 :root[data-theme="light"] .apply-glow > .btn-apply {
-  box-shadow: 0 0 22px 1px color-mix(in oklab, var(--live) 26%, transparent);
+  box-shadow:
+    0 0 12px 0 color-mix(in oklab, var(--live) 44%, transparent),
+    0 0 34px 4px color-mix(in oklab, var(--live) 30%, transparent);
+}
+/* The card pills too, at less again. Olive on cream carries far less light
+   than lime on black before it stops reading as glow and starts reading as a
+   smudge under the button — this is deliberately about a third of the dark
+   theme's alpha, not a match for it. */
+:root[data-theme="light"] .card-go {
+  box-shadow:
+    0 0 8px 0 color-mix(in oklab, var(--live) 40%, transparent),
+    0 0 22px 3px color-mix(in oklab, var(--live) 24%, transparent);
+}
+:root[data-theme="light"] .row.is-hot .card-go {
+  box-shadow:
+    0 0 8px 0 color-mix(in oklab, var(--hot) 42%, transparent),
+    0 0 22px 3px color-mix(in oklab, var(--hot) 26%, transparent);
 }
 
 /* ---------- reduced motion ---------- */

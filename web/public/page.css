@@ -381,6 +381,22 @@ a.jp-crest:active { transform: scale(.97); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .dock .btn-apply { width: auto; flex: none; height: 42px; padding: 0 18px; font-size: 14px; }
+/* The dock used to be the one apply button with no bloom, on the grounds that
+   it sits on its own blurred bar and does not need help competing. It is also
+   the ONLY apply button a phone reader sees once they have scrolled past the
+   rail, which makes it the last one that should be quiet. It gets the glow
+   without a wrapper — the dock has no overflow:hidden to escape, because it
+   carries no sheen. */
+.dock .btn-apply {
+  box-shadow:
+    0 0 12px 0 color-mix(in oklab, var(--live) 80%, transparent),
+    0 0 34px 5px color-mix(in oklab, var(--live) 50%, transparent);
+}
+:root[data-theme="light"] .dock .btn-apply {
+  box-shadow:
+    0 0 9px 0 color-mix(in oklab, var(--live) 42%, transparent),
+    0 0 24px 3px color-mix(in oklab, var(--live) 26%, transparent);
+}
 
 /* ============================================================
    TILES — the shared "here is another role" object

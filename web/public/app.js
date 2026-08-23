@@ -226,14 +226,12 @@ function applyFilters() {
   const location = $('f-location').value;
   const mode = $('f-mode').value;
   const sort = $('f-sort').value;
-  const easyOnly = $('f-easy').getAttribute('aria-pressed') === 'true';
 
   const list = state.jobs.filter((j) => {
     if (kindOf(j) !== state.kind) return false;
     if (company && j.company !== company) return false;
     if (location && j.location !== location) return false;
     if (mode && (j.workplaceType ?? '').toLowerCase() !== mode.toLowerCase()) return false;
-    if (easyOnly && !j.easyApply) return false;
     if (q) {
       const blob = [j.title, j.company, j.location, j.summary, (j.skills || []).join(' ')]
         .filter(Boolean).join(' ').toLowerCase();
@@ -252,7 +250,7 @@ function applyFilters() {
 
 function anyFilterActive() {
   return $('q').value.trim() || $('f-company').value || $('f-location').value ||
-    $('f-mode').value || $('f-easy').getAttribute('aria-pressed') === 'true';
+    $('f-mode').value;
 }
 
 /* ---------------- rendering ---------------- */
@@ -407,7 +405,6 @@ function jobCard(job, index) {
     if (job.workplaceType) meta.append(el('span', null, job.workplaceType));
   }
   if (job.duration) meta.append(el('span', null, job.duration));
-  if (job.easyApply) meta.append(el('span', 'ea', 'easy apply'));
   if (meta.children.length) mid.append(meta);
 
   const skills = (job.keySkills ?? []).slice(0, 4);
@@ -939,20 +936,12 @@ function wireControls() {
   for (const id of ['f-company', 'f-location', 'f-mode', 'f-sort']) {
     $(id).addEventListener('change', rerun);
   }
-  for (const id of ['f-easy']) {
-    $(id).addEventListener('click', () => {
-      const btn = $(id);
-      btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-      rerun();
-    });
-  }
 
   $('reset').addEventListener('click', () => {
     $('q').value = '';
     $('clear-q').hidden = true;
     for (const id of ['f-company', 'f-location', 'f-mode']) $(id).value = '';
     $('f-sort').value = 'new';
-    $('f-easy').setAttribute('aria-pressed', 'false');
     rerun();
   });
 }
