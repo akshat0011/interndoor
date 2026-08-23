@@ -113,6 +113,24 @@ export class Store {
     ensureDirs();
     this.db = new DatabaseSync(PATHS.db);
     this.db.exec('PRAGMA journal_mode = WAL');
+    /**
+     * Wait for a busy writer instead of failing on one.
+     *
+     * WAL lets readers and a writer coexist, but it does NOT let two writers
+     * coexist — and this database has several processes that write: the scan,
+     * the ATS poller, the enricher and bin/discover-ats.js, all of which the
+     * scheduler can have in flight while somebody runs a tool by hand.
+     *
+     * Without a timeout the loser does not queue, it throws
+     * `SQLITE_BUSY: database is locked` and takes the whole process with it.
+     * That killed a discovery run 128 companies into 293 on 23 Aug, losing the
+     * other 165 with no way to tell from the exit code — the crash was inside a
+     * Promise.all worker and the pipeline still reported success.
+     *
+     * Five seconds is far longer than any write here takes; the writes are
+     * single-row upserts, not batches.
+     */
+    this.db.exec('PRAGMA busy_timeout = 5000');
     this.db.exec('PRAGMA foreign_keys = ON');
     this.db.exec(SCHEMA);
     this.#migrate();
