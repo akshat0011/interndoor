@@ -797,10 +797,46 @@ export class Store {
     for (const id of jobIds) stmt.run(id);
   }
 
-  recentJobs(sinceMs) {
-    return this.db.prepare(
-      'SELECT * FROM jobs WHERE first_seen_at >= ? ORDER BY first_seen_at DESC',
-    ).all(sinceMs).map(hydrate);
+  /**
+   * Postings recent enough to publish.
+   *
+   * Two rules, because the collectors mean different things by "still open".
+   *
+   * LINKEDIN: `first_seen_at` within the window. A LinkedIn posting genuinely
+   * expires, we cannot see when, and 14 days from first sighting is the proxy
+   * the site has always used.
+   *
+   * ATS: still ON THE BOARD. The board is the source of truth — if a company
+   * still lists the role, it is still open, and `last_seen_at` says whether we
+   * saw it on the most recent poll. Windowing those on `first_seen_at` was
+   * throwing away live vacancies: on 23 Aug it dropped 37 US and 11 UK roles
+   * that were on their boards that morning, which was more than half the US
+   * board. India was losing them too, just less visibly, because LinkedIn keeps
+   * refilling it.
+   *
+   * `postedFloorMs` still caps how old an ATS posting may be, so a requisition
+   * a company leaves open for a year does not sit here forever — being first to
+   * a seven-month-old listing is not being early.
+   *
+   * @param {number} sinceMs        first-seen floor, for LinkedIn rows
+   * @param {object} [ats]          ATS rules; omit to apply sinceMs to everything
+   * @param {number} ats.seenSinceMs   last-seen floor: still on the board
+   * @param {number} ats.postedFloorMs oldest posted_at still worth showing
+   */
+  recentJobs(sinceMs, ats = null) {
+    if (!ats) {
+      return this.db.prepare(
+        'SELECT * FROM jobs WHERE first_seen_at >= ? ORDER BY first_seen_at DESC',
+      ).all(sinceMs).map(hydrate);
+    }
+    return this.db.prepare(`
+      SELECT * FROM jobs
+      WHERE first_seen_at >= ?
+         OR (job_id LIKE 'ats:%'
+             AND last_seen_at >= ?
+             AND COALESCE(posted_at, first_seen_at) >= ?)
+      ORDER BY first_seen_at DESC
+    `).all(sinceMs, ats.seenSinceMs, ats.postedFloorMs).map(hydrate);
   }
 
   /**

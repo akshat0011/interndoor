@@ -133,11 +133,27 @@ export function monthLabel(ms, region = DEFAULT_REGION) {
   return new Date(ms).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: region.timeZone });
 }
 
-/** Postings age out of the public file after 14 days; tell Google the same. */
+/**
+ * When Google should consider this posting closed.
+ *
+ * Getting this wrong is the expensive kind of wrong: serving a JobPosting whose
+ * validThrough has passed, or keeping a closed role live, is what earns a
+ * structured-data manual action across the whole domain.
+ *
+ * A LinkedIn row ages out 14 days after we first saw it, which is what the
+ * public file does, so the two agree. An ATS row is different — it stays on the
+ * site while it is still ON the employer's board, so its validThrough has to
+ * move with it. Anchoring to `lastSeenAt` does that: every poll that still finds
+ * the role pushes the date out, and the moment the company removes it the date
+ * stops moving and expires on its own, a couple of days after the row leaves the
+ * site. The two are driven by the same fact and cannot drift apart.
+ */
 const VALID_DAYS = 14;
 
 function validThrough(job) {
-  return new Date((job.postedAt ?? job.firstSeenAt ?? Date.now()) + VALID_DAYS * 86_400_000).toISOString();
+  const firstSeenBasis = (job.postedAt ?? job.firstSeenAt ?? Date.now()) + VALID_DAYS * 86_400_000;
+  const stillListed = job.lastSeenAt ? job.lastSeenAt + VALID_DAYS * 86_400_000 : 0;
+  return new Date(Math.max(firstSeenBasis, stillListed)).toISOString();
 }
 
 /** Enough substance to deserve a place in the index. */

@@ -80,6 +80,9 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     postedText: row.posted_text || null,
     postedAt: row.posted_at || row.first_seen_at,
     firstSeenAt: row.first_seen_at,
+    // The last poll that saw this on its board. Drives validThrough in the
+    // JSON-LD: a role still being listed must not advertise a date in the past.
+    lastSeenAt: row.last_seen_at,
     url: row.job_url,
     applyUrl: row.apply_url || row.job_url,
     // Only carried when explicitly enabled; the tailor endpoint works fine
@@ -95,6 +98,19 @@ export async function writeJobsFile(store, cfg) {
 
   const techOnly = cfg.publish?.techRolesOnly !== false;
 
+  /**
+   * An ATS row counts as live while it is still on the board.
+   *
+   * Two days of slack on `last_seen_at`: polls run every 30 minutes, but a
+   * provider can fail for a few consecutive polls (Workday is read on rotation,
+   * four tenants a run) and a role must not vanish from the site because one
+   * fetch 500'd.
+   */
+  const atsWindow = {
+    seenSinceMs: Date.now() - 2 * 86_400_000,
+    postedFloorMs: Date.now() - (cfg.ats?.maxPostingAgeDays ?? 60) * 86_400_000,
+  };
+
   const regions = publishedRegions(cfg);
   const wanted = new Set(regions.map((r) => r.code));
 
@@ -103,7 +119,7 @@ export async function writeJobsFile(store, cfg) {
   let droppedNonTech = 0;
   const droppedByRegion = {};
   const jobs = store
-    .recentJobs(Date.now() - maxAgeMs)
+    .recentJobs(Date.now() - maxAgeMs, atsWindow)
     // Re-run the company match at publish time instead of trusting what was
     // stored. Rows captured before a matcher fix can carry a stale, wrong
     // label — an early bug filed "SolarSquare" under "Ola" — and publishing

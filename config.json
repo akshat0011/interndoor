@@ -993,7 +993,7 @@
   },
   "ats": {
     "_regions_collect_note": "Which regions are collected is set in the top-level 'regions' block. It replaced ats.indiaOnly. An ATS board is global by nature - one Greenhouse board carries every office a company has - so collecting every region costs exactly the same number of requests as collecting one, while refusing them threw away 176 of the 189 live engineering internships these boards already carry.",
-    "maxPostingAgeDays": 60,
+    "maxPostingAgeDays": 120,
     "_maxPostingAgeDays_note": "Raised from 30 to 60 because a first-party board dates a posting by when the REQUISITION was created, not when it was last advertised. Microsoft's API reports 'Applied Sciences INTERN' as 36 days old while LinkedIn was actively promoting it as 4 days old; at 30 we dropped it, along with Software Engineering INTERN (35d) and Data Science INTERN (36d). 60 admits those and still refuses the genuinely dead - Research Sciences INTERN reports 159 days. How old an ATS posting may be and still be collected. The LinkedIn scan never needed this because it searches with a time window; an ATS board has none and lists whatever is still open, so the first real poll surfaced roles 159 and 214 days old. Being first to a seven-month-old listing is not being early.",
     "_note": "Applicant-tracking-system job boards - the source LinkedIn copies from. Discovery is cached in the company_ats table by bin/discover-ats.js; bin/poll-ats.js reads it. No browser and no ToS problem: these are the public endpoints a company careers page calls to render itself."
   },
