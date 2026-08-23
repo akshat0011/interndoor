@@ -167,8 +167,14 @@
 
   <div class="rail">
     <div class="wrap rail-in">
-      <div class="seg" aria-live="polite">
-        <span class="seg-b seg-static">Engineering <b id="n-total">0</b></span>
+      <!-- Internship vs full-time. US campus hiring writes "New Grad" and
+           "Early Career" where India writes "Intern", and those are genuinely
+           full-time roles — so they are labelled rather than filed as
+           internships, and the reader switches. Server-rendered as real
+           buttons; app.js binds them. -->
+      <div class="seg" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite">
+        <button class="seg-b" id="tab-intern" type="button" role="tab" aria-selected="true" data-kind="intern">Internships <b id="n-intern">0</b></button>
+        <button class="seg-b" id="tab-fulltime" type="button" role="tab" aria-selected="false" data-kind="fulltime">Full-time <b id="n-fulltime">0</b></button>
       </div>
 
       <div class="find">
@@ -284,6 +290,7 @@
 <li><a href="/jobs/silicon-labs-intern-sqa-4453484371">Silicon Labs — Intern - SQA</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
 <li><a href="/jobs/pearson-apprentice-quality-assurance-engineer-4455459292">Pearson — Apprentice, Quality Assurance Engineer</a><span class="tiny"> India · Remote</span></li>
 <li><a href="/jobs/silicon-labs-intern-sw-design-4453467035">Silicon Labs — Intern - SW Design</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
+<li><a href="/jobs/enterpret-backend-onsite-software-engineering-intern-ats-greenhouse-enterpret-7847134003">Enterpret — [Backend, Onsite] Software Engineering Intern</a><span class="tiny"> Bengaluru, Onsite · On-site</span></li>
 <li><a href="/jobs/icertis-intern-sdet-4456322346">Icertis — Intern, SDET</a><span class="tiny"> Pune Division, Maharashtra, India · On-site</span></li>
 <li><a href="/jobs/monotype-information-security-trainee-4456323114">Monotype — Information Security Trainee</a><span class="tiny"> Noida, Uttar Pradesh, India · On-site</span></li>
 <li><a href="/jobs/dentsu-creative-graduate-trainee-video-editor-and-motion-graphics-4454993775">Dentsu Creative — Graduate Trainee - Video Editor &amp; Motion Graphics</a><span class="tiny"> Mumbai, Maharashtra, India · On-site</span></li>
@@ -383,12 +390,12 @@
 <li><a href="/jobs/kyc-hub-product-management-intern-4449546075">KYC Hub — Product Management Intern</a><span class="tiny"> India · Remote</span></li>
 <li><a href="/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-unity-developer-intern-c-chennai-4451105855">National Technology Centre for Ports, Waterways and Coasts (NTCPWC) — Unity Developer Intern | C# | Chennai</a><span class="tiny"> Kanchipuram, Tamil Nadu, India · On-site</span></li>
 <li><a href="/jobs/janitri-ui-ux-designer-intern-4451103635">Janitri — UI/UX Designer Intern</a><span class="tiny"> Greater Bengaluru Area · On-site</span></li>
-<li><a href="/jobs/intuit-intern-software-engineering-4450965062">Intuit — Intern, Software Engineering</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/microsoft-technology-consulting-intern-ats-microsoft-india-1970393556955253">Microsoft — Technology Consulting INTERN</a><span class="tiny"> India, Telangana, Hyderabad · onsite</span></li>
 <li><a href="/jobs/sprinklr-design-intern-ats-workday-sprinklr-wd1-careers-113310-job">Sprinklr — Design Intern</a><span class="tiny"> India - Haryana - Gurgaon</span></li>
 <li><a href="/jobs/paytm-product-management-intern-ats-lever-paytm-1155c0e3-bf03-4b46-97f0-44673b6518f7">Paytm — Product Management - Intern</a><span class="tiny"> Noida, Uttar Pradesh · onsite</span></li>
 <li><a href="/jobs/microsoft-software-engineering-intern-ats-microsoft-india-1970393556911730">Microsoft — Software Engineering INTERN</a><span class="tiny"> India, Multiple Locations, Multiple Locations · onsite</span></li>
 <li><a href="/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115">Glance — UX Design - Intern</a><span class="tiny"> Bengaluru</span></li>
+<li><a href="/jobs/paytm-product-management-intern-insurance-ats-lever-paytm-4a97658f-ac6f-4a86-b483-ae50dd5c7a46">Paytm — Product Management Intern- Insurance</a><span class="tiny"> Noida, Uttar Pradesh · onsite</span></li>
 <!--/LISTINGS--></ul>
       </details>
     </div>

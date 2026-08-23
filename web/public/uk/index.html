@@ -167,8 +167,14 @@
 
   <div class="rail">
     <div class="wrap rail-in">
-      <div class="seg" aria-live="polite">
-        <span class="seg-b seg-static">Engineering <b id="n-total">0</b></span>
+      <!-- Internship vs full-time. US campus hiring writes "New Grad" and
+           "Early Career" where India writes "Intern", and those are genuinely
+           full-time roles — so they are labelled rather than filed as
+           internships, and the reader switches. Server-rendered as real
+           buttons; app.js binds them. -->
+      <div class="seg" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite">
+        <button class="seg-b" id="tab-intern" type="button" role="tab" aria-selected="true" data-kind="intern">Internships <b id="n-intern">0</b></button>
+        <button class="seg-b" id="tab-fulltime" type="button" role="tab" aria-selected="false" data-kind="fulltime">Full-time <b id="n-fulltime">0</b></button>
       </div>
 
       <div class="find">
@@ -247,9 +253,14 @@
         <ul><!--LISTINGS-->
 <li><a href="/uk/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6147283004">Epic Games — Engine Programmer Intern</a><span class="tiny"> London,England,United Kingdom</span></li>
 <li><a href="/uk/jobs/cloudflare-software-engineer-intern-fall-2026-ats-greenhouse-cloudflare-8118855">Cloudflare — Software Engineer Intern (Fall 2026)</a><span class="tiny"> London, United Kingdom</span></li>
+<li><a href="/uk/jobs/jump-trading-campus-systems-engineer-full-time-ats-greenhouse-jumptrading-7215943">Jump Trading — Campus Systems Engineer (Full-Time)</a><span class="tiny"> London</span></li>
+<li><a href="/uk/jobs/jump-trading-campus-ml-research-engineer-full-time-ats-greenhouse-jumptrading-7977132">Jump Trading — Campus ML Research Engineer (Full-Time)</a><span class="tiny"> London</span></li>
+<li><a href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-full-time-ats-greenhouse-jumptrading-7976923">Jump Trading — Campus AI Researcher, PhD/Postdoc (Full-Time)</a><span class="tiny"> London</span></li>
 <li><a href="/uk/jobs/epic-games-machine-learning-intern-ats-greenhouse-epicgames-6138134004">Epic Games — Machine Learning Intern</a><span class="tiny"> London, England, United Kingdom</span></li>
 <li><a href="/uk/jobs/tower-research-capital-quantitative-research-internship-6-months-central-execution-research-ats-greenhouse-towerresearchcapital-8113986">Tower Research Capital — Quantitative Research Internship - 6 Months, Central Execution Research</a><span class="tiny"> London</span></li>
 <li><a href="/uk/jobs/squarepoint-capital-intern-software-developer-london-2027-ats-greenhouse-squarepointcapital-7231006">Squarepoint Capital — Intern Software Developer - London - 2027</a><span class="tiny"> London</span></li>
+<li><a href="/uk/jobs/jump-trading-campus-quantitative-trader-full-time-ats-greenhouse-jumptrading-8050801">Jump Trading — Campus Quantitative Trader (Full-Time)</a><span class="tiny"> London; Amsterdam</span></li>
+<li><a href="/uk/jobs/jump-trading-campus-quantitative-researcher-full-time-ats-greenhouse-jumptrading-8050796">Jump Trading — Campus Quantitative Researcher (Full-Time)</a><span class="tiny"> London; Amsterdam</span></li>
 <li><a href="/uk/jobs/canva-phd-research-scientist-intern-edge-ai-ats-smartrecruiters-canva-6000000001295782">Canva — PhD Research Scientist Intern - Edge AI</a><span class="tiny"> London, gb</span></li>
 <li><a href="/uk/jobs/canva-phd-research-scientist-intern-reinforcement-learning-for-diffusion-mod-ats-smartrecruiters-canva-6000000001295209">Canva — PhD Research Scientist Intern - Reinforcement Learning for Diffusion Modelling</a><span class="tiny"> London, gb</span></li>
 <li><a href="/uk/jobs/cloudflare-network-strategy-intern-fall-2026-ats-greenhouse-cloudflare-8031027">Cloudflare — Network Strategy Intern (Fall 2026)</a><span class="tiny"> London, United Kingdom</span></li>
