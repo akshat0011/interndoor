@@ -6,7 +6,7 @@
   <atom:link href="https://www.internzo.in/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 23 Aug 2026 16:31:23 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 23 Aug 2026 17:01:30 GMT</lastBuildDate>
   <item>
     <title>[2027] Software Engineer, Early Career — Roblox</title>
     <link>https://www.internzo.in/us/jobs/roblox-2027-software-engineer-early-career-ats-greenhouse-roblox-8072244</link>
@@ -32,6 +32,16 @@
     <description>Company: Anduril Industries · Location: Costa Mesa, California, United States · Duration: 3 months</description>
   </item>
   <item>
+    <title>Software Engineer I - New Grad, SF — Samsara</title>
+    <link>https://www.internzo.in/us/jobs/samsara-software-engineer-i-new-grad-sf-ats-greenhouse-samsara-8097343</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/samsara-software-engineer-i-new-grad-sf-ats-greenhouse-samsara-8097343</guid>
+    <pubDate>Sat, 22 Aug 2026 18:20:49 GMT</pubDate>
+    <description>Company: Samsara · Location: San Francisco - SF9
+• Build scalable backend systems for IoT platform with 15k+ hardware assets
+• Work with go, typescript, react, graphql, and react native
+• Join full-time team with hybrid office in san francisco</description>
+  </item>
+  <item>
     <title>Software Engineering Intern (2027 Start) - Winter — Databricks</title>
     <link>https://www.internzo.in/us/jobs/databricks-software-engineering-intern-2027-start-winter-ats-greenhouse-databricks-8732364002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/databricks-software-engineering-intern-2027-start-winter-ats-greenhouse-databricks-8732364002</guid>
@@ -40,6 +50,16 @@
 • Build features for Databricks platform with a dedicated mentor
 • Work on scalable systems with focus on quality and security
 • Based in Bellevue, Mountain View, or San Francisco</description>
+  </item>
+  <item>
+    <title>Electrical Engineering Intern (Winter/Spring 2027) — Formlabs</title>
+    <link>https://www.internzo.in/us/jobs/formlabs-electrical-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8148283</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/formlabs-electrical-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8148283</guid>
+    <pubDate>Fri, 21 Aug 2026 19:55:12 GMT</pubDate>
+    <description>Company: Formlabs · Location: Somerville, MA · Duration: Spring 2027
+• Design and build electronics for 3D printers and medical devices
+• Work with microcontrollers, sensors, and PCBs in a hardware team
+• Get hands-on with firmware, motor control, and product testing</description>
   </item>
   <item>
     <title>Quantitative Developer Intern — Point72</title>
@@ -64,6 +84,23 @@
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/anduril-industries-2026-early-career-flight-test-engineer-mission-autonomy-ats-greenhouse-andurilindustries-5185089007</guid>
     <pubDate>Thu, 20 Aug 2026 19:00:24 GMT</pubDate>
     <description>Company: Anduril Industries · Location: Costa Mesa, California, United States</description>
+  </item>
+  <item>
+    <title>2026 Early Career Test &amp; Evaluation Systems Integrator — Anduril Industries</title>
+    <link>https://www.internzo.in/us/jobs/anduril-industries-2026-early-career-test-and-evaluation-systems-integrator-ats-greenhouse-andurilindustries-5185888007</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/anduril-industries-2026-early-career-test-and-evaluation-systems-integrator-ats-greenhouse-andurilindustries-5185888007</guid>
+    <pubDate>Thu, 20 Aug 2026 19:00:22 GMT</pubDate>
+    <description>Company: Anduril Industries · Location: Costa Mesa, California, United States</description>
+  </item>
+  <item>
+    <title>Software Engineering Internship - San Francisco — Samsara</title>
+    <link>https://www.internzo.in/us/jobs/samsara-software-engineering-internship-san-francisco-ats-greenhouse-samsara-8082091</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/samsara-software-engineering-internship-san-francisco-ats-greenhouse-samsara-8082091</guid>
+    <pubDate>Thu, 20 Aug 2026 18:53:51 GMT</pubDate>
+    <description>Company: Samsara · Location: San Francisco - SF9 · Duration: Fall 2028
+• Build backend systems for IoT platform handling 15k+ hardware assets
+• Work with golang, typescript, react, graphql, and react native
+• Hybrid role in san francisco with relocation support</description>
   </item>
   <item>
     <title>Software Engineering Intern (Winter) — Datadog</title>
@@ -175,14 +212,20 @@
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-application-software-ats-greenhouse-spacex-8730567002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-application-software-ats-greenhouse-spacex-8730567002</guid>
     <pubDate>Wed, 19 Aug 2026 19:20:00 GMT</pubDate>
-    <description>Company: SpaceX · Location: Hawthorne, CA · Duration: 3 weeks</description>
+    <description>Company: SpaceX · Location: Hawthorne, CA · Duration: 3 weeks
+• Develop real-time software for mission-critical systems
+• Work with C++, Python, and distributed systems
+• Collaborate on Starship and Starlink software projects</description>
   </item>
   <item>
     <title>Machine Learning Engineer Perception LLM/VLM (PhD, New Grad) — Waymo</title>
     <link>https://www.internzo.in/us/jobs/waymo-machine-learning-engineer-perception-llm-vlm-phd-new-grad-ats-greenhouse-waymo-7488508</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/waymo-machine-learning-engineer-perception-llm-vlm-phd-new-grad-ats-greenhouse-waymo-7488508</guid>
     <pubDate>Wed, 19 Aug 2026 19:18:48 GMT</pubDate>
-    <description>Company: Waymo · Location: Mountain View, CA USA;  San Francisco, CA USA;</description>
+    <description>Company: Waymo · Location: Mountain View, CA USA;  San Francisco, CA USA;
+• Build models that learn from real-world driving data
+• Use python and frameworks like pytorch or tensorflow
+• Work on pre-training and fine-tuning for autonomous vehicles</description>
   </item>
   <item>
     <title>Intern - Device Build — Navi</title>
@@ -207,7 +250,10 @@
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-starship-ats-greenhouse-spacex-8729121002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-starship-ats-greenhouse-spacex-8729121002</guid>
     <pubDate>Wed, 19 Aug 2026 04:48:14 GMT</pubDate>
-    <description>Company: SpaceX · Location: Starbase, TX</description>
+    <description>Company: SpaceX · Location: Starbase, TX
+• Design and test software for flight systems and simulations
+• Work with hardware and software teams on real-time systems
+• Contribute to high-performance, mission-critical software</description>
   </item>
   <item>
     <title>New Graduate Engineer, Manufacturing (Starship) — SpaceX</title>
@@ -257,6 +303,26 @@
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/databricks-associate-product-manager-new-grad-2027-start-ats-greenhouse-databricks-7586263002</guid>
     <pubDate>Tue, 18 Aug 2026 17:17:07 GMT</pubDate>
     <description>Company: Databricks · Location: Bellevue, Washington; Mountain View, California; San Francisco, California · Duration: Fall 2026</description>
+  </item>
+  <item>
+    <title>Mechanical Engineering Intern (Winter/Spring 2027) — Formlabs</title>
+    <link>https://www.internzo.in/us/jobs/formlabs-mechanical-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8130829</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/formlabs-mechanical-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8130829</guid>
+    <pubDate>Tue, 18 Aug 2026 15:13:12 GMT</pubDate>
+    <description>Company: Formlabs · Location: Somerville, MA · Duration: Spring 2027
+• Design and test 3d printer components using cad software
+• Collaborate with vendors to resolve production issues
+• Work onsite in somerville with a paid internship</description>
+  </item>
+  <item>
+    <title>Print Production Intern (Fall 2026) — Formlabs</title>
+    <link>https://www.internzo.in/us/jobs/formlabs-print-production-intern-fall-2026-ats-greenhouse-formlabs-8138459</link>
+    <guid isPermaLink="true">https://www.internzo.in/us/jobs/formlabs-print-production-intern-fall-2026-ats-greenhouse-formlabs-8138459</guid>
+    <pubDate>Tue, 18 Aug 2026 04:55:48 GMT</pubDate>
+    <description>Company: Formlabs · Location: Somerville, MA · Duration: Fall 2026
+• Support 3d print production including printing, troubleshooting, and maintenance
+• Assist with post-processing, sanding, and finishing 3d printed parts
+• Help maintain showroom and production spaces for safety and efficiency</description>
   </item>
   <item>
     <title>Deployed Engineer (Early Career-NYC) — LangChain</title>
@@ -335,70 +401,40 @@
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696097002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696097002</guid>
     <pubDate>Fri, 14 Aug 2026 16:22:47 GMT</pubDate>
-    <description>Company: SpaceX · Location: Bastrop, TX</description>
+    <description>Company: SpaceX · Location: Bastrop, TX
+• Design and develop real-time software for Starlink&#39;s satellite and ground systems
+• Work with C, C++, Python, and distributed systems technologies
+• Collaborate across engineering disciplines on global internet infrastructure</description>
   </item>
   <item>
     <title>New Graduate Engineer, Software - &#39;26/&#39;27 (Starlink) — SpaceX</title>
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696080002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696080002</guid>
     <pubDate>Fri, 14 Aug 2026 16:22:28 GMT</pubDate>
-    <description>Company: SpaceX · Location: Palo Alto, CA · Duration: 3 weeks</description>
+    <description>Company: SpaceX · Location: Palo Alto, CA · Duration: 3 weeks
+• Build real-time software for Starlink&#39;s satellite network
+• Work with C/C++/Python on distributed systems and security
+• Collaborate on global internet infrastructure projects</description>
   </item>
   <item>
     <title>New Graduate Engineer, Software - &#39;26/&#39;27 (Starlink) — SpaceX</title>
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696058002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-26-27-starlink-ats-greenhouse-spacex-8696058002</guid>
     <pubDate>Fri, 14 Aug 2026 16:22:04 GMT</pubDate>
-    <description>Company: SpaceX · Location: Redmond, WA · Duration: 3 weeks</description>
+    <description>Company: SpaceX · Location: Redmond, WA · Duration: 3 weeks
+• Develop real-time software for Starlink&#39;s satellite network
+• Work with C++, Python, and distributed systems tools
+• Collaborate on global internet infrastructure projects</description>
   </item>
   <item>
     <title>New Graduate Engineer, Software Security - &#39;26/&#39;27 (Starlink) — SpaceX</title>
     <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696158002</link>
     <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696158002</guid>
     <pubDate>Fri, 14 Aug 2026 16:21:38 GMT</pubDate>
-    <description>Company: SpaceX · Location: Palo Alto, CA · Duration: 3 weeks</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, Software Security - &#39;26/&#39;27 (Starlink) — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696156002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696156002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:21:32 GMT</pubDate>
-    <description>Company: SpaceX · Location: Bastrop, TX</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, Software Security - &#39;26/&#39;27 (Starlink) — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696143002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-software-security-26-27-starlink-ats-greenhouse-spacex-8696143002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:21:23 GMT</pubDate>
-    <description>Company: SpaceX · Location: Redmond, WA · Duration: 3 weeks</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, GNC- &#39;26/&#39;27 (Starlink) — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-gnc-26-27-starlink-ats-greenhouse-spacex-8696124002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-gnc-26-27-starlink-ats-greenhouse-spacex-8696124002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:20:07 GMT</pubDate>
-    <description>Company: SpaceX · Location: Bastrop, TX</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, GNC- &#39;26/&#39;27 (Starlink) — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-gnc-26-27-starlink-ats-greenhouse-spacex-8696105002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-gnc-26-27-starlink-ats-greenhouse-spacex-8696105002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:19:32 GMT</pubDate>
-    <description>Company: SpaceX · Location: Redmond, WA · Duration: 3 weeks</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, Silicon Engineering — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-silicon-engineering-ats-greenhouse-spacex-8706885002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-silicon-engineering-ats-greenhouse-spacex-8706885002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:18:56 GMT</pubDate>
-    <description>Company: SpaceX · Location: Redmond, WA · Duration: 3 weeks</description>
-  </item>
-  <item>
-    <title>New Graduate Engineer, Silicon Engineering — SpaceX</title>
-    <link>https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-silicon-engineering-ats-greenhouse-spacex-8706884002</link>
-    <guid isPermaLink="true">https://www.internzo.in/us/jobs/spacex-new-graduate-engineer-silicon-engineering-ats-greenhouse-spacex-8706884002</guid>
-    <pubDate>Fri, 14 Aug 2026 16:18:55 GMT</pubDate>
-    <description>Company: SpaceX · Location: Irvine, CA · Duration: 3 weeks</description>
+    <description>Company: SpaceX · Location: Palo Alto, CA · Duration: 3 weeks
+• Design secure systems for Starlink satellites and ground infrastructure
+• Work with cryptography, TPMs, and HSMs to protect networked systems
+• Collaborate with engineering teams to improve security across large-scale systems</description>
   </item>
 </channel>
 </rss>
