@@ -78,7 +78,23 @@ if (ONLY) boards = boards.filter((b) => b.company.toLowerCase() === ONLY.toLower
  * ample for enterprise postings that stay open for weeks, at about a tenth of
  * the traffic.
  */
-const WORKDAY_PER_RUN = 4;
+/**
+ * Workday tenants read per run, and why it is so small.
+ *
+ * Every other provider here publishes its board API and is happy to be read.
+ * Workday publishes nothing — the endpoint is the one its own careers pages
+ * call — and reading 38 tenants every 15 minutes came to ~3,650 requests a day,
+ * at which point it began answering every tenant with careers-page HTML instead
+ * of data. Four a run keeps each board read several times a day at about a
+ * tenth of that traffic, which is ample for enterprise postings that stay open
+ * for weeks.
+ *
+ * `--workday-limit N` overrides it for a ONE-OFF seed. Discovery can add
+ * tenants faster than the rotation surfaces them — the Workday fix on 23 Aug
+ * added 21 at once, which is seven hours at four a run — and a single pass over
+ * all of them is 59 requests, not 3,650. Do not put this in the scheduler.
+ */
+const WORKDAY_PER_RUN = Number(valueOf('--workday-limit') ?? 4);
 const workdayAll = boards.filter((b) => b.provider === 'workday');
 const others = boards.filter((b) => b.provider !== 'workday');
 const workdayNow = ONLY ? workdayAll : [...workdayAll]
