@@ -962,7 +962,7 @@
     "_note": "Where postings are collected from, and where they are shown. Collecting a region and publishing one are separate settings on purpose: collection is cheap and reversible - an ATS board is read once whatever its rows turn out to be - while publishing a region is a public commitment to a board that has to look worth visiting. Keeping them apart is what lets a region fill up quietly for a month before anyone is shown it.",
     "collect": "all",
     "_collect_note": "'all' (default) collects every region src/regions.js knows, plus 'unknown'. A location the gazetteer cannot read is STORED and never published, so a better gazetteer reads it later without re-collecting anything. An array of ISO codes narrows it, e.g. [\"IN\",\"US\"].",
-    "publish": ["IN"],
+    "publish": ["IN", "US", "GB"],
     "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
     "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
   },
