@@ -115,16 +115,51 @@ function job({ id, title, location, locationAlt, url, postedAt, department, remo
  * newlines so bullet lists survive as lines rather than collapsing into one
  * run-on paragraph.
  */
-function stripHtml(html) {
-  return String(html)
-    .replace(/<\s*(br|\/p|\/div|\/li|\/h[1-6])\s*\/?>/gi, '\n')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&')
+/** Named entities, commonest first. `&amp;` is decoded LAST, deliberately. */
+function decodeEntities(text) {
+  return String(text)
+    .replace(/&nbsp;/gi, ' ')
     .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>')
-    .replace(/&#39;|&rsquo;/gi, "'").replace(/&quot;|&ldquo;|&rdquo;/gi, '"')
+    .replace(/&#0?39;|&apos;|&rsquo;|&lsquo;/gi, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/gi, '"')
+    .replace(/&ndash;/gi, '\u2013').replace(/&mdash;/gi, '\u2014')
+    .replace(/&hellip;/gi, '\u2026').replace(/&bull;/gi, '\u2022')
+    // Last, or "&amp;lt;" decodes to "<" in one pass instead of "&lt;".
+    .replace(/&amp;/gi, '&');
+}
+
+/**
+ * Descriptions arrive as HTML and everything downstream wants readable text.
+ * The stipend and duration parsers, the summariser and the enrichment prompt
+ * are all made worse by markup. Block-level tags become newlines so bullet
+ * lists survive as lines rather than collapsing into one run-on paragraph.
+ *
+ * SOME BOARDS RETURN THE DOCUMENT ENTITY-ESCAPED. Greenhouse answers with
+ * `&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;…`, so there is not a
+ * single literal `<` in it. Stripping tags first found nothing to strip, and
+ * the entity decode that ran afterwards then turned the escaped markup into
+ * visible text — Roblox's card on the US board read
+ * "<p><br><strong>You Will:</strong></p> There, you'll gain access to…".
+ *
+ * So an escaped document is decoded BEFORE tags are stripped. The test for one
+ * is deliberately narrow: escaped tags present AND no real tags anywhere. A
+ * frontend posting that genuinely writes about `&lt;div&gt;` elements inside
+ * real markup keeps them, because that document has real tags too.
+ */
+export function stripHtml(html) {
+  const raw = String(html);
+  const escaped = /&lt;\s*\/?[a-z]/i.test(raw) && !/<\s*\/?[a-z]/i.test(raw);
+  const source = escaped ? decodeEntities(raw) : raw;
+
+  return decodeEntities(
+    source
+      .replace(/<\s*(br|\/p|\/div|\/li|\/h[1-6])\s*\/?>/gi, '\n')
+      .replace(/<[^>]+>/g, ''),
+  )
     .replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n')
     .trim();
 }
+
 
 /**
  * Name → candidate tokens.

@@ -28,7 +28,17 @@
       ]
     },
     {
+      "_comment": "The board data must never be served stale - it is the one file whose whole purpose is being current. Two explicit rules rather than one clever pattern: India is at the root and every other region under its slug.",
       "source": "/data/jobs.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/:region/data/jobs.json",
       "headers": [
         {
           "key": "Cache-Control",
@@ -61,5 +71,17 @@
     }
   },
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/in",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/in/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
+  ]
 }

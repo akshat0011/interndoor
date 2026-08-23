@@ -175,7 +175,7 @@ function mode(job) {
 }
 
 // Mirrors the `tile()` markup in src/pages.js. One shape everywhere.
-function tileHtml(job) {
+function tileHtml(job, prefix = '') {
   const posted = job.postedAt || job.firstSeenAt || 0;
   const meta = [
     posted ? `<span class="tile-age ${freshness(posted)}" data-ago="${posted}"><time>${esc(relTime(posted))}</time></span>` : '',
@@ -183,7 +183,7 @@ function tileHtml(job) {
     mode(job) ? esc(mode(job)) : '',
   ].filter(Boolean).join('<span aria-hidden="true">·</span>');
 
-  return `<a class="tile${posted && Date.now() - posted < DAY ? ' is-hot' : ''}" href="/jobs/${jobPageSlug(job)}">
+  return `<a class="tile${posted && Date.now() - posted < DAY ? ' is-hot' : ''}" href="${prefix}/jobs/${jobPageSlug(job)}">
     <span class="tile-top">
       <span class="tile-crest">${esc(initials(job.company))}${job.logo ? `<img src="${esc(job.logo)}" alt="" loading="lazy" decoding="async">` : ''}</span>
       <span class="tile-co">${esc(job.company)}</span>
@@ -198,9 +198,16 @@ function tileHtml(job) {
   const list = document.getElementById('fresh-list');
   if (!strip || !list) return;
 
+  // This page's own region, carried on the strip by src/pages.js. A US job page
+  // filling its "just landed" rail from India's board would be showing roles
+  // the reader cannot take — and linking them under /us/, where they 404.
+  // Falls back to the root so an older cached page behaves as it always did.
+  const feed = strip.dataset.feed || '/data/jobs.json';
+  const prefix = feed.replace(/\/data\/jobs\.json$/, '');
+
   let jobs;
   try {
-    const res = await fetch('/data/jobs.json', { cache: 'no-cache' });
+    const res = await fetch(feed, { cache: 'no-cache' });
     if (!res.ok) return;
     const data = await res.json();
     jobs = Array.isArray(data) ? data : (data.jobs || data.items || []);
@@ -213,8 +220,11 @@ function tileHtml(job) {
   const shown = new Set();
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) shown.add(canonical.href.split('/jobs/')[1] || '');
-  for (const a of document.querySelectorAll('.tile[href^="/jobs/"]')) {
-    shown.add(a.getAttribute('href').slice('/jobs/'.length));
+  // Match on the region's own prefix, or a /us/ page would compare its tiles
+  // against a bare "/jobs/" that never appears on it and repeat every role the
+  // "more at this employer" strip is already showing.
+  for (const a of document.querySelectorAll(`.tile[href^="${prefix}/jobs/"]`)) {
+    shown.add(a.getAttribute('href').slice(`${prefix}/jobs/`.length));
   }
 
   const picks = jobs
@@ -224,7 +234,7 @@ function tileHtml(job) {
     .slice(0, 6);
 
   if (!picks.length) return;
-  list.innerHTML = picks.map(tileHtml).join('');
+  list.innerHTML = picks.map((j) => tileHtml(j, prefix)).join('');
   strip.hidden = false;
   stagger(list);
 }());

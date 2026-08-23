@@ -23,7 +23,7 @@
  */
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { regionOf, regionPath } from './regions.js';
+import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 
 export const SITE = 'https://www.internzo.in';
 
@@ -403,12 +403,17 @@ function alternateLinks(path, regions) {
 /**
  * The region switch.
  *
- * A NAVIGATION control, not a filter — each region is a separate URL with its
- * own title, its own listings and its own JSON-LD country, because a
- * client-side toggle would leave Google one page whose title says India for
- * every region on the site. Rendered as plain anchors so it works before any
- * script runs and a crawler can follow it; page.js only adds the "you appear to
- * be in X" suggestion on top.
+ * A NAVIGATION control, not a filter. Each region is a separate URL with its own
+ * title, its own listings and its own JSON-LD country, because a client-side
+ * toggle would leave Google one page whose <title> says India for every region
+ * on the site — and the site's entire traffic model is Google.
+ *
+ * Built on <details>/<summary> so it needs NO JavaScript at all. That matters
+ * more than it looks: the switch appears in the shared chrome, which is loaded
+ * by app.js on the board and by page.js on generated pages, and a scripted
+ * dropdown would have to exist in both and stay in sync. It is also keyboard
+ * accessible and open to a crawler by default, so every region's board is
+ * reachable by following an ordinary anchor from any page on the site.
  *
  * Deliberately absent when only one region is published: a switch with one
  * option is furniture.
@@ -418,15 +423,19 @@ function regionSwitch(current, regions) {
   const opts = regions.map((r) => {
     const here = r.code === current.code;
     return `<a class="rg-opt${here ? ' is-on' : ''}" href="${esc(regionUrl('/', r))}"`
-      + `${here ? ' aria-current="true"' : ''} data-region="${r.code}">${esc(r.name)}</a>`;
-  }).join('');
-  return `      <div class="rg" id="region-switch" data-current="${current.code}">
-        <button class="rg-btn" type="button" aria-expanded="false" aria-controls="rg-menu">
+      + `${here ? ' aria-current="page"' : ''} data-region="${r.code}">`
+      + `<span class="rg-name">${esc(r.name)}</span></a>`;
+  }).join('\n          ');
+  return `      <details class="rg" id="region-switch" data-current="${current.code}">
+        <summary aria-label="Change region — currently ${esc(current.name)}">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
-          <span>${esc(current.name)}</span>
-        </button>
-        <div class="rg-menu" id="rg-menu" hidden>${opts}</div>
-      </div>
+          <span class="rg-cur">${esc(current.name)}</span>
+          <svg class="rg-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="rg-menu">
+          ${opts}
+        </div>
+      </details>
 `;
 }
 
@@ -944,6 +953,7 @@ function homeHead(region, alternates) {
         logo: `${SITE}/favicon-96.png`,
         description: `Internzo lists engineering internships ${region.inName} within minutes of them going live.`,
         areaServed: { '@type': 'Country', name: region.name },
+        sameAs: [region.telegram],
       },
       {
         '@type': 'WebSite',
@@ -973,9 +983,9 @@ ${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads
 <link rel="alternate" type="application/rss+xml" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
 <link rel="alternate" type="application/feed+json" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
 <meta property="og:url" content="${esc(url)}">
-<meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(social)}">
 <meta property="og:image:alt" content="${esc(imageAlt)}">
+<meta property="og:locale" content="${region.hreflang.replace('-', '_')}">
 <meta name="twitter:description" content="${esc(social)}">
 <meta name="twitter:image:alt" content="${esc(imageAlt)}">
 <script type="application/ld+json">${jsonLd(ld)}</script>`;
@@ -1058,7 +1068,11 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   html = fillMarker(html, 'REGION:LEDE',
     `<strong>Engineering internships ${esc(region.inName)}</strong>`) ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
-  html = html.replace('<html lang="en">', `<html lang="${region.hreflang}">`);
+  // A regex, not a literal swap: the template's own lang is en-IN (it IS the
+  // India board), so matching `lang="en"` silently did nothing and every region
+  // shipped en-IN. Caught in the browser, not by a test — the tests render
+  // pages, and only this path rewrites an existing document.
+  html = html.replace(/<html lang="[^"]*">/, `<html lang="${region.hreflang}">`);
   html = localiseLinks(html, region);
 
   const outDir = join(publicDir, ...(region.slug ? [region.slug] : []));
@@ -1211,7 +1225,36 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions) {
   }
 
   writeRobots(publicDir, regions);
+  totals.removed += removeUnpublishedRegions(publicDir, regions);
   return { ...totals, perRegion };
+}
+
+/**
+ * Delete the tree of a region that is no longer published.
+ *
+ * Without this, switching a region off in config.json leaves its board frozen on
+ * disk and still served — a page of listings that stopped being updated, which
+ * is worse than no page at all, and every one of them stays in Google's index
+ * advertising stale vacancies.
+ *
+ * Scoped to slugs that belong to a REGION and nothing else. `web/public` also
+ * holds `jobs`, `companies`, `logos`, `data` and `vendor`, and a rule that
+ * removed any directory not named by the current config would delete India's
+ * entire board the first time it ran. India is never a candidate: its slug is
+ * empty, so it is not in this list at all.
+ */
+function removeUnpublishedRegions(publicDir, regions) {
+  const live = new Set(regions.map((r) => r.slug).filter(Boolean));
+  let removed = 0;
+  for (const r of ALL_REGIONS) {
+    if (!r.slug || live.has(r.slug)) continue;
+    const dir = join(publicDir, r.slug);
+    if (!existsSync(dir)) continue;
+    rmSync(dir, { recursive: true, force: true });
+    removed++;
+    console.warn(`  removed /${r.slug}/ — ${r.name} is no longer in regions.publish.`);
+  }
+  return removed;
 }
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */

@@ -208,6 +208,80 @@ button, input, select, textarea { font: inherit; color: inherit; }
 :root:not([data-theme="light"]) .i-sun { display: none; }
 :root:not([data-theme="light"]) .i-moon { display: block; }
 
+/* ---------- region switch ---------- */
+
+/* A <details> disclosure, so it needs no JavaScript.
+   The chrome it sits in is rendered by src/pages.js and loaded by app.js on the
+   board and page.js on generated pages; a scripted dropdown would have to live
+   in both files and stay in sync. Native <details> is also keyboard accessible
+   and open to a crawler, which is what makes every region's board reachable by
+   following an ordinary anchor.
+
+   Present only when more than one region is published. */
+.rg { position: relative; }
+
+.rg > summary {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 33px; padding: 0 10px 0 11px; border-radius: var(--r);
+  border: 1px solid var(--rule); color: var(--ink-2);
+  font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
+  white-space: nowrap; cursor: pointer; list-style: none;
+  transition: color .16s, border-color .16s;
+}
+/* Both are needed: WebKit uses the pseudo-element, everything else the property. */
+.rg > summary::-webkit-details-marker { display: none; }
+.rg > summary::marker { content: ''; }
+.rg > summary:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+
+.rg-caret { transition: transform .18s var(--snap); }
+.rg[open] > summary { color: var(--ink); border-color: color-mix(in oklab, var(--ink) 35%, transparent); }
+.rg[open] .rg-caret { transform: rotate(180deg); }
+
+@media (hover: hover) and (pointer: fine) {
+  .rg > summary:hover { color: var(--live); border-color: var(--live); }
+}
+
+.rg-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+  min-width: 190px; padding: 5px;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  box-shadow: 0 18px 40px -12px rgb(0 0 0 / .55);
+  display: flex; flex-direction: column; gap: 1px;
+  transform-origin: top right;
+  animation: rg-open .16s var(--snap) both;
+}
+/* Named for this file only — `pop` and `sheen` are already taken twice over,
+   and the later definition silently wins. */
+@keyframes rg-open { from { opacity: 0; transform: translateY(-4px); } }
+
+.rg-opt {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: 3px;
+  color: var(--ink-2); text-decoration: none;
+  font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
+  transition: background .14s, color .14s;
+}
+.rg-opt.is-on { color: var(--live); font-weight: 650; }
+.rg-opt.is-on::after { content: '✓'; margin-left: auto; font-size: .8125rem; }
+
+@media (hover: hover) and (pointer: fine) {
+  .rg-opt:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); color: var(--ink); }
+  .rg-opt.is-on:hover { color: var(--live); }
+}
+
+/* The header runs out of room long before the listings do. Below 720px the
+   globe alone carries it — the current region is still announced to a screen
+   reader through the summary's aria-label. */
+@media (max-width: 720px) {
+  .rg-cur, .rg-caret { display: none; }
+  .rg > summary { padding: 0 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rg-menu { animation: none; }
+  .rg-caret { transition: none; }
+}
+
 /* ---------- lede ---------- */
 
 /* Deliberately compact. The headline is a label, not a billboard — the

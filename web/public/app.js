@@ -7,6 +7,23 @@
 // else's server at page load is the one thing that could quietly break that
 // promise: whoever controls that host controls code running next to the file.
 // Vendored at 4.6.82, verified byte-identical to the CDN copy at the time.
+/**
+ * Which board this page is, and where its data lives.
+ *
+ * Read from the meta tags src/pages.js writes into the head rather than parsed
+ * out of location.pathname. The region IS in the URL, but a Vercel rewrite can
+ * serve one file from more than one path, and a page that infers its identity
+ * from the address bar gets it wrong the moment routing changes. The document
+ * states what it is.
+ *
+ * Both fall back to India at the root, so an older cached index.html with no
+ * meta tags behaves exactly as it did before.
+ */
+const REGION = document.querySelector('meta[name="internzo-region"]')?.content || 'IN';
+const DATA_URL = document.querySelector('meta[name="internzo-data"]')?.content || '/data/jobs.json';
+/** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
+const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
+
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const HOT_MS = 60 * 60 * 1000;      // "just posted"
@@ -156,7 +173,7 @@ function toast(message) {
 
 async function loadJobs() {
   try {
-    const res = await fetch(`/data/jobs.json?t=${Date.now()}`, { cache: 'no-store' });
+    const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     state.jobs = data.jobs ?? [];
@@ -581,7 +598,7 @@ function renderDetail(job) {
   // the internal link that lets a crawler reach a page the feed otherwise hides
   // behind JavaScript.
   const page = el('a', 'alt', 'Open full page ↗');
-  page.href = `/jobs/${jobPageSlug(job)}`;
+  page.href = `${REGION_PATH}/jobs/${jobPageSlug(job)}`;
   actions.append(page);
 
   d.append(actions);
