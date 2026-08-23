@@ -1,0 +1,105 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Internzo — engineering internships in the UK",
+  "home_page_url": "https://www.internzo.in/uk/",
+  "feed_url": "https://www.internzo.in/uk/feed.json",
+  "description": "New engineering internships in the UK, listed within minutes of going live.",
+  "items": [
+    {
+      "id": "https://www.internzo.in/uk/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6147283004",
+      "url": "https://www.internzo.in/uk/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6147283004",
+      "title": "Engine Programmer Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: London,England,United Kingdom\n• Design and implement serialization features in C++ for Unreal Engine\n• Collaborate with cross-functional teams to integrate data systems\n• Build tools for data visualization and versioning workflows",
+      "date_published": "2026-08-20T21:46:27.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/cloudflare-software-engineer-intern-fall-2026-ats-greenhouse-cloudflare-8118855",
+      "url": "https://www.internzo.in/uk/jobs/cloudflare-software-engineer-intern-fall-2026-ats-greenhouse-cloudflare-8118855",
+      "title": "Software Engineer Intern (Fall 2026) — Cloudflare",
+      "content_text": "Company: Cloudflare · Location: London, United Kingdom · Duration: 12-14 weeks\n• Write code that affects millions of websites and apps globally\n• Use Typescript, Go, Rust, and Python in a microservices architecture\n• Work with experienced engineers and present projects company-wide",
+      "date_published": "2026-08-20T16:26:40.000Z",
+      "authors": [
+        {
+          "name": "Cloudflare"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/epic-games-machine-learning-intern-ats-greenhouse-epicgames-6138134004",
+      "url": "https://www.internzo.in/uk/jobs/epic-games-machine-learning-intern-ats-greenhouse-epicgames-6138134004",
+      "title": "Machine Learning Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: London, England, United Kingdom · Duration: 6-12 months\n• Build machine learning models for player safety and AI characters\n• Work with research scientists on real-time graphics and game tech\n• Deploy models at scale with Unreal Engine tools",
+      "date_published": "2026-08-13T17:13:37.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/tower-research-capital-quantitative-research-internship-6-months-central-execution-research-ats-greenhouse-towerresearchcapital-8113986",
+      "url": "https://www.internzo.in/uk/jobs/tower-research-capital-quantitative-research-internship-6-months-central-execution-research-ats-greenhouse-towerresearchcapital-8113986",
+      "title": "Quantitative Research Internship - 6 Months, Central Execution Research — Tower Research Capital",
+      "content_text": "Company: Tower Research Capital · Location: London · Duration: 6 months\n• Analyzing market microstructure for liquidity patterns and trading costs\n• Building tools and simulations for execution analysis and decision support\n• Working with large datasets to design data-processing pipelines\n• Contributing to research libraries and production workflows",
+      "date_published": "2026-08-12T12:52:34.000Z",
+      "authors": [
+        {
+          "name": "Tower Research Capital"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/squarepoint-capital-intern-software-developer-london-2027-ats-greenhouse-squarepointcapital-7231006",
+      "url": "https://www.internzo.in/uk/jobs/squarepoint-capital-intern-software-developer-london-2027-ats-greenhouse-squarepointcapital-7231006",
+      "title": "Intern Software Developer - London - 2027 — Squarepoint Capital",
+      "content_text": "Company: Squarepoint Capital · Location: London · Duration: 12 weeks\n• Write code for trading systems using python or c++\n• Work on real projects with visible business impact\n• Collaborate with engineers on low-latency platforms",
+      "date_published": "2026-08-10T12:53:20.000Z",
+      "authors": [
+        {
+          "name": "Squarepoint Capital"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/canva-phd-research-scientist-intern-edge-ai-ats-smartrecruiters-canva-6000000001295782",
+      "url": "https://www.internzo.in/uk/jobs/canva-phd-research-scientist-intern-edge-ai-ats-smartrecruiters-canva-6000000001295782",
+      "title": "PhD Research Scientist Intern - Edge AI — Canva",
+      "content_text": "Company: Canva · Location: London, gb",
+      "date_published": "2026-08-07T15:41:43.698Z",
+      "authors": [
+        {
+          "name": "Canva"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/canva-phd-research-scientist-intern-reinforcement-learning-for-diffusion-mod-ats-smartrecruiters-canva-6000000001295209",
+      "url": "https://www.internzo.in/uk/jobs/canva-phd-research-scientist-intern-reinforcement-learning-for-diffusion-mod-ats-smartrecruiters-canva-6000000001295209",
+      "title": "PhD Research Scientist Intern - Reinforcement Learning for Diffusion Modelling — Canva",
+      "content_text": "Company: Canva · Location: London, gb",
+      "date_published": "2026-08-07T07:43:11.234Z",
+      "authors": [
+        {
+          "name": "Canva"
+        }
+      ]
+    },
+    {
+      "id": "https://www.internzo.in/uk/jobs/cloudflare-network-strategy-intern-fall-2026-ats-greenhouse-cloudflare-8031027",
+      "url": "https://www.internzo.in/uk/jobs/cloudflare-network-strategy-intern-fall-2026-ats-greenhouse-cloudflare-8031027",
+      "title": "Network Strategy Intern (Fall 2026) — Cloudflare",
+      "content_text": "Company: Cloudflare · Location: London, United Kingdom · Duration: Fall 2026\n• Support interconnection managers with peering and transit relationship tracking\n• Conduct data analysis to inform network growth and cost efficiency decisions\n• Track KPIs and report progress on operational projects\n• Work in London, UK, 3-5 days a week in-office",
+      "date_published": "2026-08-06T19:17:31.000Z",
+      "authors": [
+        {
+          "name": "Cloudflare"
+        }
+      ]
+    }
+  ]
+}
