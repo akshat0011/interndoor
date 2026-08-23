@@ -63,6 +63,8 @@ function deepMerge(base, override) {
  * Normalise a company name for comparison: lowercase, drop legal suffixes and
  * punctuation, collapse whitespace. "Razorpay Software Pvt. Ltd." -> "razorpay".
  */
+import { regionOf } from './regions.js';
+
 export function normaliseCompany(name) {
   return String(name || '')
     .toLowerCase()
@@ -130,11 +132,31 @@ export function loadConfig() {
 
   // A search may be written as a bare keyword string, which picks up
   // defaultLocation — 50 entries are far more readable that way.
-  cfg.searches = (cfg.searches ?? []).map((entry) =>
-    typeof entry === 'string'
-      ? { keywords: entry, location: cfg.defaultLocation ?? '' }
-      : { ...entry, location: entry.location ?? cfg.defaultLocation ?? '' },
-  );
+  //
+  // `region` is what a card's location falls back to when LinkedIn renders
+  // none, which it does often. A LinkedIn sweep is scoped to one region by its
+  // search parameters, so a blank card is still known to be inside it — unlike
+  // an ATS board, which carries every office a company has and can fall back to
+  // nothing.
+  //
+  // `geoId` is NOT filled in from the region, deliberately. The registry knows
+  // every id, and buildSearchUrl has always supported the parameter, but this
+  // search has never sent one: the redirect to /jobs/search-results/ drops
+  // `location=` and results come back Indian from account geo bias alone.
+  // Adding an id would change what LinkedIn returns on the one collector the
+  // whole board depends on, for no benefit — India is unaffected by regions,
+  // and every other region is served from ATS boards, which have no search at
+  // all. Set it explicitly on a search when a second LinkedIn region is added.
+  cfg.searches = (cfg.searches ?? []).map((entry) => {
+    const base = typeof entry === 'string' ? { keywords: entry } : { ...entry };
+    const region = regionOf(base.region ?? cfg.defaultRegion ?? 'IN');
+    return {
+      ...base,
+      location: base.location ?? cfg.defaultLocation ?? '',
+      region: region?.code ?? 'IN',
+      geoId: base.geoId ?? null,
+    };
+  });
 
   cfg.titleTerms = (cfg.matching.titleMustMatch || []).map((t) => t.toLowerCase());
 

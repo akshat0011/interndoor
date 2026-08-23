@@ -641,6 +641,11 @@ async function main() {
               jobUrl: li.jobUrl(card.jobId),
               logoUrl: card.logoUrl || null,
               searchKeywords: search.label ?? search.keywords,
+              // The search's own region, used only when LinkedIn renders no
+              // location at all — which it does often. A card with no location
+              // text is still known to be inside the search that returned it,
+              // unlike an ATS row, which can fall back to nothing.
+              regionFallback: search.region ?? null,
               // Already decided; the batch pass will leave it alone.
               isTech: false,
               roleSource: 'offline-card',
@@ -730,6 +735,9 @@ async function main() {
             skills: extractSkills(description),
             description,
             searchKeywords: search.label ?? search.keywords,
+            // See the note on the other upsertJob call: this is the fallback for
+            // a card LinkedIn rendered with no location, not an override.
+            regionFallback: search.region ?? null,
             // Detail-pane logo is higher resolution; fall back to the card's.
             logoUrl: detail.logoUrl || card.logoUrl || null,
           };

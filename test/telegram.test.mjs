@@ -1,4 +1,5 @@
 import { compose } from '../src/telegram.js';
+import { regionOf } from '../src/regions.js';
 
 let pass = 0, fail = 0;
 function ok(label, cond, extra = '') {
@@ -40,6 +41,27 @@ ok('does not truncate mid-tag', (big.match(/<a /g) || []).length === (big.match(
 
 console.log('\n== degenerate input ==');
 ok('missing location does not print a stray dash', !compose([job({ location: null, workplace_type: null })]).includes(' — \n'));
+
+console.log('\n== every link carries its region ==');
+// A listing links to its page on the site, and those pages live under the
+// region's own prefix. A US role posted with an India link is a 404 sent
+// straight to a subscriber.
+const us = compose([job({ company: 'Databricks', location: 'San Francisco, CA' })], regionOf('US'));
+ok('job link is prefixed', us.includes('https://www.internzo.in/us/jobs/'));
+ok('footer link is prefixed', us.includes('<a href="https://www.internzo.in/us/">'));
+ok('no unprefixed job link leaks in', !us.includes('internzo.in/jobs/'));
+
+const uk = compose([job()], regionOf('GB'));
+ok('GB is served at /uk/, not /gb/', uk.includes('internzo.in/uk/jobs/') && !uk.includes('/gb/'));
+
+console.log('\n== India is unchanged, and is the default ==');
+// India sits at the ROOT, so its links must carry no prefix at all — and
+// compose() with no region argument must still produce exactly that.
+const inExplicit = compose([job()], regionOf('IN'));
+const inDefault = compose([job()]);
+ok('default region is India', inDefault === inExplicit);
+ok('no prefix on an India link', inDefault.includes('internzo.in/jobs/'));
+ok('no double slash from the empty slug', !inDefault.includes('internzo.in//'));
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

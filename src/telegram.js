@@ -12,6 +12,7 @@
  */
 import { log } from './logger.js';
 import { jobSlug, SITE } from './pages.js';
+import { resolveRowRegion, regionOf, regionPath, publishedRegions } from './regions.js';
 
 const API = 'https://api.telegram.org';
 
@@ -41,7 +42,8 @@ function esc(s) {
  * A run that finds six roles firing six notifications is how a channel gets
  * muted. The site's own promise is the lead: these are minutes old.
  */
-export function compose(jobs) {
+export function compose(jobs, region = regionOf('IN')) {
+  const prefix = regionPath(region.code);
   const n = jobs.length;
   const head = n === 1
     ? '<b>1 new internship</b>'
@@ -49,7 +51,7 @@ export function compose(jobs) {
 
   const lines = [];
   for (const j of jobs.slice(0, MAX_LISTED)) {
-    const url = `${SITE}/jobs/${jobSlug({ company: j.company, title: j.title, id: j.job_id })}`;
+    const url = `${SITE}${prefix}/jobs/${jobSlug({ company: j.company, title: j.title, id: j.job_id })}`;
     const where = [j.location, j.workplace_type].filter(Boolean).join(' · ');
     lines.push(
       `\n<a href="${url}"><b>${esc(j.title)}</b></a>\n`
@@ -59,29 +61,53 @@ export function compose(jobs) {
 
   let body = `${head}\n${lines.join('\n')}`;
   if (n > MAX_LISTED) body += `\n\n…and ${n - MAX_LISTED} more on the site.`;
-  body += `\n\n<a href="${SITE}/">See every live role →</a>`;
+  body += `\n\n<a href="${SITE}${prefix}/">See every live role →</a>`;
 
   // Truncating mid-tag would produce invalid HTML and a 400 from Telegram, so
   // drop whole listings until it fits rather than slicing the string.
   while (body.length > MAX_CHARS && lines.length > 1) {
     lines.pop();
     body = `${head}\n${lines.join('\n')}\n\n…and ${n - lines.length} more on the site.`
-      + `\n\n<a href="${SITE}/">See every live role →</a>`;
+      + `\n\n<a href="${SITE}${prefix}/">See every live role →</a>`;
   }
   return body;
 }
 
 /**
+ * Which channel a region's listings go to.
+ *
+ * `chatId` predates regions and is India's channel; it is kept as the fallback
+ * for India alone, so nothing about the existing setup changes. Every other
+ * region must be named explicitly in `channels`, and a region with no channel
+ * gets no post — because the alternative is posting US listings to people who
+ * subscribed for internships in India, which is how a channel gets muted.
+ */
+function channelFor(conf, code) {
+  const explicit = conf.channels?.[code];
+  if (explicit) return explicit;
+  return code === 'IN' ? (conf.chatId ?? null) : null;
+}
+
+/**
+ * One message per region per run.
+ *
+ * Grouped by region because every listing links to its page on the site, and
+ * those pages live under the region's own prefix — a US role posted with an
+ * India link is a 404 sent to a subscriber.
+ *
+ * Only PUBLISHED regions are posted at all. A region that is collected but not
+ * published has no pages written for it, so every link would 404 no matter
+ * which channel it went to.
+ *
  * @param {object[]} jobs rows from store.jobsForRun()
  * @param {object} cfg loaded config
- * @returns {Promise<boolean>} true if a message was sent
+ * @returns {Promise<boolean>} true if at least one message was sent
  */
 export async function postNewJobs(jobs, cfg) {
   const conf = cfg.notifications?.telegram ?? {};
   if (!conf.enabled || !jobs.length) return false;
 
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = conf.chatId;
 
   // A missing token is a setup mistake, not a runtime error — say so once,
   // clearly, rather than throwing into the middle of a successful run.
@@ -89,12 +115,31 @@ export async function postNewJobs(jobs, cfg) {
     log.warn('Telegram is enabled but TELEGRAM_BOT_TOKEN is not set — skipping the channel post.');
     return false;
   }
-  if (!chatId) {
-    log.warn('Telegram is enabled but notifications.telegram.chatId is empty — skipping the channel post.');
-    return false;
-  }
 
-  const text = compose(jobs);
+  const live = new Set(publishedRegions(cfg).map((r) => r.code));
+  const byRegion = new Map();
+  for (const job of jobs) {
+    const code = resolveRowRegion(job);
+    if (!live.has(code)) continue;
+    if (!byRegion.has(code)) byRegion.set(code, []);
+    byRegion.get(code).push(job);
+  }
+  if (!byRegion.size) return false;
+
+  let sent = false;
+  for (const [code, group] of byRegion) {
+    const chatId = channelFor(conf, code);
+    if (!chatId) {
+      log.info(`No Telegram channel configured for ${code} — ${group.length} listing${group.length === 1 ? '' : 's'} not posted. Add notifications.telegram.channels.${code}.`);
+      continue;
+    }
+    if (await postGroup(token, chatId, group, regionOf(code))) sent = true;
+  }
+  return sent;
+}
+
+async function postGroup(token, chatId, jobs, region) {
+  const text = compose(jobs, region);
 
   try {
     const res = await fetch(`${API}/bot${token}/sendMessage`, {
@@ -116,7 +161,7 @@ export async function postNewJobs(jobs, cfg) {
       log.warn(`Telegram post failed (${res.status}): ${data.description ?? 'no detail'}`);
       return false;
     }
-    log.ok(`Posted ${jobs.length} listing${jobs.length === 1 ? '' : 's'} to the Telegram channel.`);
+    log.ok(`Posted ${jobs.length} ${region.name} listing${jobs.length === 1 ? '' : 's'} to ${chatId}.`);
     return true;
   } catch (err) {
     // Network flake, timeout, Telegram down — none of it should mark the run bad.
