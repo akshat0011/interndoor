@@ -415,14 +415,35 @@ function pushWithRetry(branch, attempts = 3) {
  * what makes the site update — usually live within a minute.
  */
 /**
- * The URL prefixes that publish owns, India excluded.
+ * The region trees publish owns, India excluded.
  *
  * Read from the registry rather than from config, deliberately: a region that
- * was published yesterday and switched off today still has a tree on disk, and
- * leaving it out of the allowlist would mean its removal never got committed.
+ * was published yesterday and switched off today still has a tree to REMOVE,
+ * and leaving it out of the allowlist would mean the deletion never got
+ * committed — the pages would go on being served.
+ *
+ * **Filtered to paths git can actually resolve, and that is not tidiness.**
+ * `git add` fails hard on a pathspec matching nothing:
+ *
+ *     fatal: pathspec 'web/public/us' did not match any files
+ *
+ * The registry knows ten regions and only the published ones have a directory,
+ * so passing all ten aborted `git add` — which aborted the commit, which meant
+ * publish wrote every file correctly and then pushed NOTHING. The site froze
+ * while the scan, the enrichment and the Telegram post all reported success.
+ *
+ * A path counts if it exists on disk OR is tracked in git. The second half is
+ * what lets a switched-off region's deletion be staged: the directory is gone
+ * from the working tree, but git still knows the files and resolves the
+ * pathspec against the index.
  */
-function regionSlugs() {
-  return ALL_REGIONS.map((r) => r.slug).filter(Boolean);
+function regionPaths() {
+  return ALL_REGIONS
+    .map((r) => r.slug)
+    .filter(Boolean)
+    .map((slug) => `web/public/${slug}`)
+    .filter((rel) => existsSync(join(ROOT, rel))
+      || !!git(['ls-files', '--', rel], { allowFail: true }));
 }
 
 export function pushToSite(newJobCount) {
@@ -443,7 +464,7 @@ export function pushToSite(newJobCount) {
     // switching a region on in config.json needs no change here; India stays
     // enumerated above because it lives at the root beside files that are NOT
     // published (styles.css, app.js, page.css, page.js, vercel.json).
-    ...regionSlugs().map((slug) => `web/public/${slug}`)];
+    ...regionPaths()];
 
   const status = git(['status', '--porcelain', ...PUBLISHED], { allowFail: true });
   if (!status) {
