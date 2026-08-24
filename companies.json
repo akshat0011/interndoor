@@ -510,7 +510,13 @@
     "Onsurity",
     "Refyne",
     "Jai Kisan",
-    "Samunnati"
+    "Samunnati",
+    {
+      "name": "Fam",
+      "aliases": [
+        "FamPay"
+      ]
+    }
   ],
   "indian-consumer-ecommerce": [
     "Flipkart",
