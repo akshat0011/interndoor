@@ -241,7 +241,7 @@ check('and it is labelled honestly', idx.includes('no live roles'), true);
 
 console.log('\n== writePages keeps a hub whose jobs have all expired ==');
 {
-  const dir = mkdtempSync(join(tmpdir(), 'internzo-pages-'));
+  const dir = mkdtempSync(join(tmpdir(), 'gradkite-pages-'));
   // Sweep one: the employer is hiring.
   writePages([live('Systems Intern')], dir, [past('Systems Intern', 2026, 6), past('Older', 2026, 4)]);
   const hub = join(dir, 'companies', 'qualcomm.html');

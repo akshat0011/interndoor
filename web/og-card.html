@@ -18,13 +18,13 @@
     padding:58px 64px; display:flex; flex-direction:column; justify-content:space-between;
   }
 
-  /* radar bleeding off the right edge — the mark as environment, not sticker */
-  .scope-bleed { position:absolute; right:-170px; top:50%; transform:translateY(-50%);
-                 width:720px; height:720px; }
-  .scope-bleed svg { width:100%; height:100%; display:block; }
-  .ring { fill:none; stroke:var(--live); stroke-width:1.4; opacity:.22; }
-  .ring.faint { opacity:.11; }
-  .cross { stroke:var(--live); stroke-width:1.4; opacity:.10; }
+  /* the kite bleeding off the right edge — the mark as environment, not sticker */
+  .kite-bleed { position:absolute; right:-150px; top:50%; transform:translateY(-50%);
+                width:720px; height:720px; }
+  .kite-bleed svg { width:100%; height:100%; display:block; }
+  .b-sail { fill:none; stroke:var(--live); stroke-width:1.8; opacity:.20; stroke-linejoin:round; }
+  .b-spar { fill:none; stroke:var(--live); stroke-width:1.4; opacity:.11; }
+  .b-tail { fill:none; stroke:var(--live); stroke-width:2.4; opacity:.16; stroke-linecap:round; }
 
   /* film grain, same recipe and opacity as the site */
   .grain { position:absolute; inset:0; pointer-events:none; opacity:.038;
@@ -37,9 +37,10 @@
   .brand { display:flex; align-items:center; gap:16px; }
   .brand .mark { width:46px; height:46px; flex:none; }
   .brand .mark svg { width:100%; height:100%; display:block; overflow:visible; }
-  .m-ring { fill:none; stroke:var(--live); stroke-width:1.6; opacity:.34; }
-  .m-sweep { fill:var(--live); opacity:.32; }
-  .m-dot { fill:var(--live); }
+  .m-sail { fill:none; stroke:var(--live); stroke-width:1.6; stroke-linejoin:round; opacity:.6; }
+  .m-spar { fill:none; stroke:var(--live); stroke-width:1; opacity:.3; }
+  .m-lit { fill:var(--live); opacity:.92; }
+  .m-tail { fill:none; stroke:var(--live); stroke-width:1.4; stroke-linecap:round; opacity:.5; }
   .word { font-family:var(--display); font-weight:900; font-size:42px;
           letter-spacing:-.045em; line-height:1; }
   .word em { font-style:normal; color:var(--live); }
@@ -73,24 +74,18 @@
 
 <div id="card">
 
-  <div class="scope-bleed">
+  <div class="kite-bleed">
     <svg viewBox="0 0 720 720">
-      <circle class="ring faint" cx="360" cy="360" r="352"/>
-      <circle class="ring" cx="360" cy="360" r="272"/>
-      <circle class="ring faint" cx="360" cy="360" r="192"/>
-      <circle class="ring" cx="360" cy="360" r="112"/>
-      <line class="cross" x1="8" y1="360" x2="712" y2="360"/>
-      <line class="cross" x1="360" y1="8" x2="360" y2="712"/>
       <defs>
-        <linearGradient id="sw" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#c8ff00" stop-opacity="0"/>
-          <stop offset="1" stop-color="#c8ff00" stop-opacity=".30"/>
+        <linearGradient id="sail" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#c8ff00" stop-opacity=".26"/>
+          <stop offset="1" stop-color="#c8ff00" stop-opacity="0"/>
         </linearGradient>
       </defs>
-      <path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#sw)"/>
-      <circle cx="360" cy="360" r="7" fill="#c8ff00"/>
-      <circle cx="486" cy="243" r="6.5" fill="#c8ff00" opacity=".85"/>
-      <circle cx="424" cy="470" r="5" fill="#c8ff00" opacity=".45"/>
+      <path d="M360 20 560 280 360 280Z" fill="url(#sail)"/>
+      <path class="b-sail" d="M360 20 560 280 360 540 160 280Z"/>
+      <path class="b-spar" d="M360 20V540M160 280H560"/>
+      <path class="b-tail" d="M360 540c40 33-38 53-3 85 26 26-26 39-4 61"/>
     </svg>
   </div>
 
@@ -100,14 +95,13 @@
     <div class="brand">
       <span class="mark">
         <svg viewBox="0 0 44 44">
-          <circle class="m-ring" cx="22" cy="22" r="20"/>
-          <circle class="m-ring" cx="22" cy="22" r="13"/>
-          <circle class="m-ring" cx="22" cy="22" r="6"/>
-          <path class="m-sweep" d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/>
-          <circle class="m-dot" cx="22" cy="22" r="2.9"/>
+          <path class="m-lit" d="M22 3.5 34.5 16.5 22 16.5Z"/>
+          <path class="m-sail" d="M22 3.5 34.5 16.5 22 33 9.5 16.5Z"/>
+          <path class="m-spar" d="M22 3.5V33M9.5 16.5H34.5"/>
+          <path class="m-tail" d="M22 33c2.9 2.3-2.7 3.7-.2 6.1"/>
         </svg>
       </span>
-      <span class="word">INTERN<em>ZO</em></span>
+      <span class="word">GRAD<em>KITE</em></span>
     </div>
     <div class="stamp"><i class="beat"></i>Live</div>
   </div>
@@ -122,7 +116,7 @@
     <span class="chip">Free</span>
     <span class="chip">No signup</span>
     <span class="spacer"></span>
-    <span class="url">internzo.in</span>
+    <span class="url">gradkite.com</span>
   </div>
 
 </div>

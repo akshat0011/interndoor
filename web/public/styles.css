@@ -1,5 +1,5 @@
 /* ============================================================
-   Internzo
+   GradKite
    Live-ticker / terminal register. Acid lime on warm black,
    heavy condensed display type, monospace figures, film grain.
    ============================================================ */
@@ -150,13 +150,49 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .bar-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 
 .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
-.scope { width: 30px; height: 30px; flex: none; }
-.scope svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.s-ring { fill: none; stroke: var(--live); stroke-width: 1.1; opacity: .3; }
-.s-sweep { transform-origin: 22px 22px; animation: sweep 2.6s linear infinite; }
-.s-sweep path { fill: var(--live); opacity: .3; }
-.s-dot { fill: var(--live); }
-@keyframes sweep { to { transform: rotate(360deg); } }
+/* The kite. Four elements, because the mark has to survive being a 16px
+   favicon as well as this 30px slot: an outlined sail for the silhouette, two
+   spars for the structure, one solid panel so it still reads as a shape when
+   the strokes disappear, and the tail. */
+.mark { width: 30px; height: 30px; flex: none; }
+.mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.k-sail { fill: none; stroke: var(--live); stroke-width: 1.6; stroke-linejoin: round; opacity: .55; }
+.k-spar { fill: none; stroke: var(--live); stroke-width: 1; opacity: .28; }
+.k-lit { fill: var(--live); opacity: .9; }
+.k-tail { fill: none; stroke: var(--live); stroke-width: 1.4; stroke-linecap: round; opacity: .45; }
+
+/* Light theme needs MORE ink, not less, and this is the opposite of the rule
+   the apply button follows. That button's sheen is an additive white highlight,
+   so olive-on-cream needs about half the strength lime-on-black does. The mark
+   is the reverse case: ink laid on a light ground. Composited against #f4f3ee,
+   olive at .55 measures 2.11:1 where lime on #0a0a0b measures 5.43:1 — the same
+   alpha buys less than half the contrast. Raised until the silhouette clears
+   the 3:1 non-text bar on its own: sail 3.42, tail 3.14, solid panel 3.73.
+   The spars stay under it deliberately — they are interior detail, and every
+   part of the shape they describe is already carried by the outline. */
+:root[data-theme="light"] .k-sail { opacity: .85; }
+:root[data-theme="light"] .k-tail { opacity: .8; }
+:root[data-theme="light"] .k-spar { opacity: .5; }
+
+/* Swings from the top point, where a real kite's line attaches — pivoting on
+   the sail's centre reads as a wobble rather than as something being flown.
+   Transform only, so this stays on the compositor and never repaints; the
+   whole mark is 30px and sits in its own flex slot, so the promoted layer
+   never overlaps the wordmark beside it. */
+.k-fly { transform-origin: 22px 4px; animation: kite-fly 5.2s ease-in-out infinite; }
+/* Same arc from the kite's own tip, started part-way in so the tail trails the
+   sail instead of swinging rigidly with it. */
+.k-tail-swing {
+  transform-origin: 22px 33px;
+  animation: kite-tail 5.2s ease-in-out infinite;
+  animation-delay: -.62s;
+}
+/* Both rest at 0deg at 0% AND 100%. The reduced-motion rule below collapses
+   every animation to one .001ms iteration, which lands on the 100% frame — so
+   ending upright is what makes the calmed-down mark match its own markup
+   instead of freezing at a tilt. */
+@keyframes kite-fly { 0%, 100% { transform: none; } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+@keyframes kite-tail { 0%, 100% { transform: none; } 25% { transform: rotate(-11deg); } 75% { transform: rotate(11deg); } }
 
 .word {
   font-family: var(--display); font-weight: 900; font-size: 18px;

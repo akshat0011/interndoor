@@ -1,4 +1,4 @@
-/* Internzo — listings browser + resume tailoring */
+/* GradKite — listings browser + resume tailoring */
 
 // pdf.js is served from this origin, not a CDN.
 //
@@ -19,8 +19,13 @@
  * Both fall back to India at the root, so an older cached index.html with no
  * meta tags behaves exactly as it did before.
  */
-const REGION = document.querySelector('meta[name="internzo-region"]')?.content || 'IN';
-const DATA_URL = document.querySelector('meta[name="internzo-data"]')?.content || '/data/jobs.json';
+const meta = (name) => document.querySelector(`meta[name="${name}"]`)?.content;
+// `internzo-*` is the pre-rebrand name of these tags, read as a fallback so a
+// cached copy of the OLD index.html still resolves its region against this new
+// script. Drop it with the matching pair in src/pages.js once the old HTML has
+// aged out of every cache.
+const REGION = meta('gradkite-region') || meta('internzo-region') || 'IN';
+const DATA_URL = meta('gradkite-data') || meta('internzo-data') || '/data/jobs.json';
 /** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
 const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 

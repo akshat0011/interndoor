@@ -26,7 +26,7 @@ import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { schemaEmploymentType } from './employment.js';
 
-export const SITE = 'https://www.internzo.in';
+export const SITE = 'https://gradkite.com';
 
 /**
  * Every page is rendered FOR a region, and India is the default.
@@ -415,7 +415,7 @@ function alternateLinks(path, regions) {
   // `path === null` is how a caller says THIS PAGE HAS NO EQUIVALENT — job
   // pages and company hubs pass it deliberately. Without this guard the null
   // fell through into regionUrl and every job page shipped three alternates
-  // pointing at "https://www.internzo.innull", which is a 404 advertised to
+  // pointing at "https://gradkite.comnull", which is a 404 advertised to
   // Google as the same page in another language.
   if (!regions || regions.length < 2 || path == null) return '';
   const links = regions.map((r) =>
@@ -478,17 +478,17 @@ ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robo
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Internzo">
+<meta property="og:site_name" content="GradKite">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-<meta property="og:image" content="${SITE}/og.jpg?v=3">
+<meta property="og:image" content="${SITE}/og.jpg?v=4">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${SITE}/og.jpg?v=3">
+<meta name="twitter:image" content="${SITE}/og.jpg?v=4">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="alternate" type="application/rss+xml" title="Internzo — new internships" href="${regionHref('/feed.xml', region)}">
+<link rel="alternate" type="application/rss+xml" title="GradKite — new internships" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
@@ -501,16 +501,18 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
 <div class="grain" aria-hidden="true"></div>
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="${regionHref('/', region)}" aria-label="Internzo">
-      <span class="scope" aria-hidden="true">
+    <a class="brand" href="${regionHref('/', region)}" aria-label="GradKite">
+      <span class="mark" aria-hidden="true">
         <svg viewBox="0 0 44 44">
-          <circle class="s-ring" cx="22" cy="22" r="20"/><circle class="s-ring" cx="22" cy="22" r="13"/>
-          <circle class="s-ring" cx="22" cy="22" r="6"/>
-          <g class="s-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
-          <circle class="s-dot" cx="22" cy="22" r="2.8"/>
+          <g class="k-fly">
+            <path class="k-lit" d="M22 3.5 34.5 16.5 22 16.5Z"/>
+            <path class="k-sail" d="M22 3.5 34.5 16.5 22 33 9.5 16.5Z"/>
+            <path class="k-spar" d="M22 3.5V33M9.5 16.5H34.5"/>
+            <g class="k-tail-swing"><path class="k-tail" d="M22 33c2.9 2.3-2.7 3.7-.2 6.1"/></g>
+          </g>
         </svg>
       </span>
-      <span class="word">INTERN<em>ZO</em></span>
+      <span class="word">GRAD<em>KITE</em></span>
     </a>
 
     <div class="bar-right">
@@ -553,7 +555,7 @@ function foot({ headline, sub, region = DEFAULT_REGION }) {
 </section>
 <footer class="foot">
   <div class="wrap">
-    <p>Every listing links back to its original posting — always apply there. Summaries are written by Internzo; the linked posting is the source of truth.</p>
+    <p>Every listing links back to its original posting — always apply there. Summaries are written by GradKite; the linked posting is the source of truth.</p>
     <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
@@ -582,7 +584,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
 
   // Title shaped the way people actually search: company, role, the word
   // internship, then the country and the year.
-  const pageTitle = `${job.company} ${job.title} Internship ${year} — ${region.name} | Internzo`;
+  const pageTitle = `${job.company} ${job.title} Internship ${year} — ${region.name} | GradKite`;
   const description = (job.bullets ?? [])[0]
     ? `${job.company} is hiring: ${job.title}. ${(job.bullets ?? [])[0]}.`
     : `${job.company} is hiring a ${job.title} intern ${region.inName}.`;
@@ -677,7 +679,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <div class="apply-band">
             <p>${apply ? '' : 'Apply through the original posting. '}Internships ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
-          <p class="note">This summary was written by Internzo from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
+          <p class="note">This summary was written by GradKite from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
         </section>
       </div>
 
@@ -708,7 +710,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
-        <h2>Just landed on Internzo</h2>
+        <h2>Just landed on GradKite</h2>
         <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
       </div>
       <div class="tiles" id="fresh-list"></div>
@@ -765,12 +767,12 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   const indexable = live.length > 0 || history.length >= 2;
 
   const where = region.inName.replace(/^in /, '');
-  const pageTitle = `${company} Internships in ${where} ${new Date().getFullYear()} — ${live.length} open role${live.length === 1 ? '' : 's'} | Internzo`;
+  const pageTitle = `${company} Internships in ${where} ${new Date().getFullYear()} — ${live.length} open role${live.length === 1 ? '' : 's'} | GradKite`;
   const description = live.length
     ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes. ${live.slice(0, 3).map((j) => j.title).join(', ')}.`
     : history.length
       ? `${company} internships ${region.inName}. No live openings right now; ${history.length} tracked since we started following them, updated every 30 minutes.`
-      : `${company} internships ${region.inName}, tracked by Internzo and updated every 30 minutes.`;
+      : `${company} internships ${region.inName}, tracked by GradKite and updated every 30 minutes.`;
 
   const listLd = {
     '@context': 'https://schema.org/',
@@ -840,7 +842,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
-        <h2>Just landed on Internzo</h2>
+        <h2>Just landed on GradKite</h2>
         <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
       </div>
       <div class="tiles" id="fresh-list"></div>
@@ -894,7 +896,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
 
   const where = region.inName.replace(/^in /, '');
   return `${head({
-    title: `Internships in ${where} by company — ${hiring} companies hiring | Internzo`,
+    title: `Internships in ${where} by company — ${hiring} companies hiring | GradKite`,
     description: `Browse ${total} live internships across ${hiring} companies ${region.inName}, plus every employer we track. Updated every 30 minutes.`,
     canonical: url,
     indexable: rows.length > 0,
@@ -961,11 +963,11 @@ function writeIfChanged(path, contents) {
 function homeHead(region, alternates) {
   const url = regionUrl('/', region);
   const where = region.inName.replace(/^in /, '');
-  const title = `Internzo — Engineering Internships in ${where}`;
+  const title = `GradKite — Engineering Internships in ${where}`;
   const description = `Engineering internships ${region.inName}, listed minutes after they go live. `
     + 'Fresh openings refreshed every 30 minutes — apply while the queue is still short.';
   const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
-  const imageAlt = `Internzo — be early. Software internships ${region.inName}, listed minutes after they go live.`;
+  const imageAlt = `GradKite — be early. Software internships ${region.inName}, listed minutes after they go live.`;
 
   const ld = {
     '@context': 'https://schema.org',
@@ -973,10 +975,10 @@ function homeHead(region, alternates) {
       {
         '@type': 'Organization',
         '@id': `${SITE}/#organization`,
-        name: 'Internzo',
+        name: 'GradKite',
         url: `${SITE}/`,
         logo: `${SITE}/favicon-96.png`,
-        description: `Internzo lists engineering internships ${region.inName} within minutes of them going live.`,
+        description: `GradKite lists engineering internships ${region.inName} within minutes of them going live.`,
         areaServed: { '@type': 'Country', name: region.name },
         sameAs: [region.telegram],
       },
@@ -984,7 +986,7 @@ function homeHead(region, alternates) {
         '@type': 'WebSite',
         '@id': `${url}#website`,
         url,
-        name: 'Internzo',
+        name: 'GradKite',
         description: `Engineering internships ${region.inName}, listed within minutes of going live.`,
         inLanguage: region.hreflang,
         publisher: { '@id': `${SITE}/#organization` },
@@ -1002,11 +1004,23 @@ function homeHead(region, alternates) {
 <link rel="canonical" href="${esc(url)}">
 ${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads. The region is in the URL, but
      a rewrite can serve this file from more than one path, so the page states
-     which region it IS rather than inferring it. -->
+     which region it IS rather than inferring it.
+
+     The internzo- pair is the pre-rebrand name of these two tags, emitted
+     alongside the new one on purpose and TEMPORARY. app.js is cached for
+     10 minutes with a 24h stale-while-revalidate, so for up to a day after the
+     rebrand a returning reader can be served this new HTML with the OLD cached
+     app.js, which queries the internzo- names. Without the legacy pair that
+     read misses, app.js falls back to India at the root, and the US and UK
+     boards silently render India's listings. Delete both legacy lines once the
+     old script has aged out of every cache — 24h after the rebrand deploy.
+     (No backticks in this comment: it sits inside a template literal.) -->
+<meta name="gradkite-region" content="${region.code}">
+<meta name="gradkite-data" content="${regionHref('/data/jobs.json', region)}">
 <meta name="internzo-region" content="${region.code}">
 <meta name="internzo-data" content="${regionHref('/data/jobs.json', region)}">
-<link rel="alternate" type="application/rss+xml" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
-<link rel="alternate" type="application/feed+json" title="Internzo — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
+<link rel="alternate" type="application/rss+xml" title="GradKite — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
+<link rel="alternate" type="application/feed+json" title="GradKite — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:description" content="${esc(social)}">
 <meta property="og:image:alt" content="${esc(imageAlt)}">
@@ -1379,7 +1393,7 @@ function writeFeeds(jobs, publicDir, region = DEFAULT_REGION) {
   writeFileSync(join(publicDir, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Internzo — engineering internships ${esc(region.inName)}</title>
+  <title>GradKite — engineering internships ${esc(region.inName)}</title>
   <link>${regionUrl('/', region)}</link>
   <atom:link href="${regionUrl('/feed.xml', region)}" rel="self" type="application/rss+xml"/>
   <description>New engineering internships ${esc(region.inName)}, listed within minutes of going live.</description>
@@ -1392,7 +1406,7 @@ ${items}
 
   writeFileSync(join(publicDir, 'feed.json'), `${JSON.stringify({
     version: 'https://jsonfeed.org/version/1.1',
-    title: `Internzo — engineering internships ${region.inName}`,
+    title: `GradKite — engineering internships ${region.inName}`,
     home_page_url: regionUrl('/', region),
     feed_url: regionUrl('/feed.json', region),
     description: `New engineering internships ${region.inName}, listed within minutes of going live.`,
