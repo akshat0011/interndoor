@@ -1,8 +1,8 @@
-# GradKite
+# InternDoor
 
 **Be early.**
 
-### 🔗 [gradkite.com](https://gradkite.com)
+### 🔗 [interndoor.com](https://interndoor.com)
 
 A free job board for engineering internships in India, built for students who keep finding the
 good postings two days late.
@@ -17,7 +17,7 @@ hundred — and at that point your resume matters less than your timing.
 
 Checking LinkedIn ten times a day works. Nobody actually does it.
 
-## What GradKite does
+## What InternDoor does
 
 It checks for you, every 15 minutes, and puts what it finds on one page — newest first, with the
 details you actually decide on already pulled out of the posting.
@@ -42,15 +42,15 @@ tabs to compare two roles.
 **Filter it down.** Narrow by company, location or workplace type. Show only paid roles, or only
 Easy Apply ones. Sort by newest, by stipend, or by company.
 
-**Apply at the source.** Every listing links straight to the original posting. GradKite finds
+**Apply at the source.** Every listing links straight to the original posting. InternDoor finds
 and summarises — you apply on the real thing.
 
 **A page per listing.** Every internship has its own shareable page, so you can send someone one
 job instead of "go look at the site".
 
 **A feed, so you don't have to remember to check.** New roles are published to
-[RSS](https://gradkite.com/feed.xml) and
-[JSON Feed](https://gradkite.com/feed.json) — point a reader at it and being early stops
+[RSS](https://interndoor.com/feed.xml) and
+[JSON Feed](https://interndoor.com/feed.json) — point a reader at it and being early stops
 depending on your habits.
 
 Works on a phone, has a dark mode, and remembers which one you picked.
@@ -93,7 +93,7 @@ production dependency.
 
 ## A note on the data
 
-Every listing links back to the original job posting. GradKite shows only its own short summary of
+Every listing links back to the original job posting. InternDoor shows only its own short summary of
 a role and deliberately does not republish the employer's job description, which is their
 copyrighted text.
 

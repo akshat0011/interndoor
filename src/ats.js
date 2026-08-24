@@ -34,7 +34,7 @@ import { log } from './logger.js';
  * good day on a good connection and the failure it guards against is silent.
  */
 const TIMEOUT_MS = 45_000;
-const UA = 'gradkite (+https://gradkite.com)';
+const UA = 'interndoor (+https://interndoor.com)';
 
 async function getJson(url, { method = 'GET', body = null, headers = {}, retriesLeft = 2 } = {}) {
   const controller = new AbortController();
@@ -831,7 +831,7 @@ async function fetchText(url, timeoutMs = 9000) {
     const res = await fetch(url, {
       redirect: 'follow',
       signal: controller.signal,
-      headers: { 'user-agent': 'Mozilla/5.0 (compatible; gradkite/1.0; +https://gradkite.com)' },
+      headers: { 'user-agent': 'Mozilla/5.0 (compatible; interndoor/1.0; +https://interndoor.com)' },
     });
     clearTimeout(timer);
     if (!res.ok) return null;
@@ -924,7 +924,7 @@ export async function discoverViaCareersPage(companyName) {
         res = await fetch(url, {
           redirect: 'follow',
           signal: controller.signal,
-          headers: { 'user-agent': 'Mozilla/5.0 (compatible; gradkite/1.0; +https://gradkite.com)' },
+          headers: { 'user-agent': 'Mozilla/5.0 (compatible; interndoor/1.0; +https://interndoor.com)' },
         });
         clearTimeout(timer);
       } catch { continue; }

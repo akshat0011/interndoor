@@ -1,4 +1,4 @@
-/* GradKite — listings browser + resume tailoring */
+/* InternDoor — listings browser + resume tailoring */
 
 // pdf.js is served from this origin, not a CDN.
 //
@@ -20,12 +20,13 @@
  * meta tags behaves exactly as it did before.
  */
 const meta = (name) => document.querySelector(`meta[name="${name}"]`)?.content;
-// `internzo-*` is the pre-rebrand name of these tags, read as a fallback so a
-// cached copy of the OLD index.html still resolves its region against this new
-// script. Drop it with the matching pair in src/pages.js once the old HTML has
-// aged out of every cache.
-const REGION = meta('gradkite-region') || meta('internzo-region') || 'IN';
-const DATA_URL = meta('gradkite-data') || meta('internzo-data') || '/data/jobs.json';
+// The gradkite-/internzo- names are what these tags were called under the two
+// previous brands. Read as fallbacks so this script still resolves its region
+// against an older cached index.html. src/pages.js no longer EMITS them — a new
+// origin cannot serve a stale script, so nothing needs the alias — but the read
+// side is kept because it costs two || branches and fails silently if dropped.
+const REGION = meta('interndoor-region') || meta('gradkite-region') || meta('internzo-region') || 'IN';
+const DATA_URL = meta('interndoor-data') || meta('gradkite-data') || meta('internzo-data') || '/data/jobs.json';
 /** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
 const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 

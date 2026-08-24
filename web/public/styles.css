@@ -1,5 +1,5 @@
 /* ============================================================
-   GradKite
+   InternDoor
    Live-ticker / terminal register. Acid lime on warm black,
    heavy condensed display type, monospace figures, film grain.
    ============================================================ */
@@ -150,84 +150,49 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .bar-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 
 .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
-/* The kite, flying inside a radar scope. The scope came back on request: the
-   sweep is the same 61-degree wedge on the same 2.6s linear rotation the old
-   InternRadar mark used, now running BEHIND the kite rather than instead of it.
-   Five elements, because the kite still has to survive being a 16px favicon —
-   an outlined sail for the silhouette, two spars for structure, one solid panel
-   so it reads as a shape once the strokes disappear, and the tail. */
-.mark { width: 40px; height: 40px; flex: none; }
-.mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
-
-/* ONE ring, not the old three. The kite occupies the interior now, and a second
-   ring lands almost exactly on its top and bottom points. */
-.k-ring { fill: none; stroke: var(--live); stroke-width: 1; opacity: .22; }
-
-/* Transform only, so the sweep stays on the compositor and never repaints. */
-.k-sweep { transform-origin: 22px 22px; animation: sweep 2.6s linear infinite; }
-.k-sweep path { fill: var(--live); opacity: .26; }
+/* The radar scope, restored from InternZo unchanged. Three concentric rings, a
+   61-degree wedge sweeping them on a 2.6s linear rotation, and a solid centre
+   dot — the dot is what keeps the mark legible once the strokes disappear at
+   favicon sizes, the same job the kite's solid panel used to do.
+   Transform-only, so the sweep stays on the compositor and never repaints. It
+   also needs no reduced-motion resting frame: a full 360 turn ends exactly
+   where it started, so the global rule that collapses an animation to one
+   .001ms iteration lands on the geometry already in the markup. The kite
+   keyframes needed 0% AND 100% rest frames precisely because they did not. */
+.scope { width: 30px; height: 30px; flex: none; }
+.scope svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.s-ring { fill: none; stroke: var(--live); stroke-width: 1.1; opacity: .3; }
+.s-sweep { transform-origin: 22px 22px; animation: sweep 2.6s linear infinite; }
+.s-sweep path { fill: var(--live); opacity: .3; }
+.s-dot { fill: var(--live); }
 @keyframes sweep { to { transform: rotate(360deg); } }
 
-.k-sail { fill: none; stroke: var(--live); stroke-width: 1.5; stroke-linejoin: round; opacity: .6; }
-.k-spar { fill: none; stroke: var(--live); stroke-width: .9; opacity: .3; }
-.k-lit { fill: var(--live); opacity: .95; }
-.k-tail { fill: none; stroke: var(--live); stroke-width: 1.3; stroke-linecap: round; opacity: .5; }
-
-/* Light theme needs MORE ink, not less, and this is the opposite of the rule
-   the apply button follows. That button's sheen is an additive white highlight,
-   so olive-on-cream needs about half the strength lime-on-black does. The mark
-   is the reverse case: ink laid on a light ground. Composited against #f4f3ee,
-   olive at .55 measures 2.11:1 where lime on #0a0a0b measures 5.43:1 — the same
-   alpha buys less than half the contrast. Raised until the silhouette clears
-   the 3:1 non-text bar on its own. The spars stay under it deliberately — they
-   are interior detail, and every part of the shape they describe is already
-   carried by the outline. The ring and sweep are ambient and stay under it too,
-   but need lifting or they vanish entirely on cream. */
-:root[data-theme="light"] .k-sail { opacity: .85; }
-:root[data-theme="light"] .k-tail { opacity: .8; }
-:root[data-theme="light"] .k-spar { opacity: .5; }
-:root[data-theme="light"] .k-ring { opacity: .4; }
-:root[data-theme="light"] .k-sweep path { opacity: .34; }
-
-/* The kite swings from its top point, where a real kite's line attaches —
-   pivoting on the sail's centre reads as a wobble rather than as something
-   being flown. Amplitude is deliberately smaller than it was when the sway was
-   the only motion: the sweep carries the mark now, and two big motions at 40px
-   read as fidgeting. */
-.k-fly { transform-origin: 22px 6px; animation: kite-fly 5.2s ease-in-out infinite; }
-/* Same arc from the kite's own tip, started part-way in so the tail trails the
-   sail instead of swinging rigidly with it. */
-.k-tail-swing {
-  transform-origin: 22px 32px;
-  animation: kite-tail 5.2s ease-in-out infinite;
-  animation-delay: -.62s;
-}
-/* kite-fly and kite-tail rest at 0deg at 0% AND 100%. The reduced-motion rule
-   below collapses every animation to one .001ms iteration, which lands on the
-   100% frame — so ending upright is what makes the calmed-down kite match its
-   own markup instead of freezing at a tilt. `sweep` needs no such care: a full
-   360 turn ends where it started. */
-@keyframes kite-fly { 0%, 100% { transform: none; } 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
-@keyframes kite-tail { 0%, 100% { transform: none; } 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
-
-/* The 40px mark does not fit the smallest phones. The header bar is a fixed
-   budget: brand + bar-right must clear the viewport minus 15px of padding each
-   side, and at 375px that is 345px total. At 40px the brand is 149 and the
-   right cluster is 206 — 355, which overflows by ten and gives the whole page
-   a horizontal scroll. 32px with a tighter gap brings the brand back to 139 and
-   the total to 345. Measure, do not eyeball: `document.documentElement`
-   scrollWidth must equal clientWidth at 375. Anything 481px and up keeps the
-   full-size mark, which covers every phone in landscape and every tablet. */
-@media (max-width: 480px) {
-  .mark { width: 32px; height: 32px; }
-  .brand { gap: 9px; }
-}
 
 .word {
   font-family: var(--display); font-weight: 900; font-size: 18px;
   letter-spacing: -.045em; line-height: 1;
 }
 .word em { font-style: normal; color: var(--live); }
+
+/* The masthead is a fixed width budget: brand + bar-right must clear the
+   viewport minus 15px of padding a side, which is 345px at 375. The right
+   cluster measures 206, so the brand gets 139 and not a pixel more.
+
+   INTERNDOOR is two characters longer than INTERNZO, and that is what makes
+   this rule bigger than the one the kite needed. Measured at 375 before
+   touching anything: mark 30 + gap 9 + word 127 = 166, which is 27 over
+   budget and gave the whole page a horizontal scroll. The word is the
+   dominant term, so the font size is the lever that actually moves it —
+   shrinking the mark alone recovers 4px of the 27.
+
+   Measure, do not eyeball: document.documentElement.scrollWidth must equal
+   clientWidth at 375. Note the Browser pane reports innerWidth one pixel over
+   clientWidth, so a 1px reading is the baseline, not a regression. */
+@media (max-width: 480px) {
+  .scope { width: 26px; height: 26px; }
+  .brand { gap: 8px; }
+  .word { font-size: 14.5px; letter-spacing: -.05em; }
+}
 
 .bar-right { display: flex; align-items: center; gap: 10px; }
 

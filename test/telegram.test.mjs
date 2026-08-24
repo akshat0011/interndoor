@@ -19,7 +19,7 @@ ok('singular when there is one', compose([job()]).includes('<b>1 new internship<
 ok('every role is named', ['Engineering Intern', 'Backend Intern', 'QA Intern'].every((t) => three.includes(t)));
 
 console.log('\n== links point at the site, not LinkedIn ==');
-ok('links to the job page on gradkite.com', three.includes('https://gradkite.com/jobs/nobroker-com-engineering-intern-4449259269'));
+ok('links to the job page on interndoor.com', three.includes('https://interndoor.com/jobs/nobroker-com-engineering-intern-4449259269'));
 ok('closes with a link to the feed', three.includes('>See every live role →</a>'));
 ok('no linkedin.com links', !three.includes('linkedin.com'));
 
@@ -47,12 +47,12 @@ console.log('\n== every link carries its region ==');
 // region's own prefix. A US role posted with an India link is a 404 sent
 // straight to a subscriber.
 const us = compose([job({ company: 'Databricks', location: 'San Francisco, CA' })], regionOf('US'));
-ok('job link is prefixed', us.includes('https://gradkite.com/us/jobs/'));
-ok('footer link is prefixed', us.includes('<a href="https://gradkite.com/us/">'));
-ok('no unprefixed job link leaks in', !us.includes('gradkite.com/jobs/'));
+ok('job link is prefixed', us.includes('https://interndoor.com/us/jobs/'));
+ok('footer link is prefixed', us.includes('<a href="https://interndoor.com/us/">'));
+ok('no unprefixed job link leaks in', !us.includes('interndoor.com/jobs/'));
 
 const uk = compose([job()], regionOf('GB'));
-ok('GB is served at /uk/, not /gb/', uk.includes('gradkite.com/uk/jobs/') && !uk.includes('/gb/'));
+ok('GB is served at /uk/, not /gb/', uk.includes('interndoor.com/uk/jobs/') && !uk.includes('/gb/'));
 
 console.log('\n== India is unchanged, and is the default ==');
 // India sits at the ROOT, so its links must carry no prefix at all — and
@@ -60,8 +60,8 @@ console.log('\n== India is unchanged, and is the default ==');
 const inExplicit = compose([job()], regionOf('IN'));
 const inDefault = compose([job()]);
 ok('default region is India', inDefault === inExplicit);
-ok('no prefix on an India link', inDefault.includes('gradkite.com/jobs/'));
-ok('no double slash from the empty slug', !inDefault.includes('gradkite.com//'));
+ok('no prefix on an India link', inDefault.includes('interndoor.com/jobs/'));
+ok('no double slash from the empty slug', !inDefault.includes('interndoor.com//'));
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -15,43 +15,46 @@
      says nothing a search engine can match, and on the brand query alone it
      loses to any unrelated company of the same name, because nothing on the
      page tells Google this one is about internships. Brand first, then what it
-     is. og:title and twitter:title are NOT in here — "GradKite — be early" is
+     is. og:title and twitter:title are NOT in here — "InternDoor — be early" is
      brand copy, the same in every region, and deliberately different from
      <title>. -->
 <!--REGION:HEAD-->
-<title>GradKite — Engineering Internships in the US</title>
+<title>InternDoor — Engineering Internships in the US</title>
 <meta name="description" content="Engineering internships in the US, listed minutes after they go live. Fresh openings refreshed every 30 minutes — apply while the queue is still short.">
-<link rel="canonical" href="https://gradkite.com/us/">
-<link rel="alternate" hreflang="en-IN" href="https://gradkite.com/">
-<link rel="alternate" hreflang="en-US" href="https://gradkite.com/us/">
-<link rel="alternate" hreflang="en-GB" href="https://gradkite.com/uk/">
-<link rel="alternate" hreflang="x-default" href="https://gradkite.com/">
+<link rel="canonical" href="https://interndoor.com/us/">
+<link rel="alternate" hreflang="en-IN" href="https://interndoor.com/">
+<link rel="alternate" hreflang="en-US" href="https://interndoor.com/us/">
+<link rel="alternate" hreflang="en-GB" href="https://interndoor.com/uk/">
+<link rel="alternate" hreflang="x-default" href="https://interndoor.com/">
 <!-- Read by app.js to pick the board it loads. The region is in the URL, but
      a rewrite can serve this file from more than one path, so the page states
      which region it IS rather than inferring it.
 
-     The internzo- pair is the pre-rebrand name of these two tags, emitted
-     alongside the new one on purpose and TEMPORARY. app.js is cached for
-     10 minutes with a 24h stale-while-revalidate, so for up to a day after the
-     rebrand a returning reader can be served this new HTML with the OLD cached
-     app.js, which queries the internzo- names. Without the legacy pair that
-     read misses, app.js falls back to India at the root, and the US and UK
-     boards silently render India's listings. Delete both legacy lines once the
-     old script has aged out of every cache — 24h after the rebrand deploy.
+     NO legacy alias pair here, unlike the GradKite rebrand which carried the
+     internzo- names for a day. That existed because app.js is cached for 10
+     minutes with a 24h stale-while-revalidate, so a returning reader could be
+     served new HTML with an old cached script that queried the previous names,
+     miss the read, and silently get India's listings on the US or UK board.
+     It cannot happen here: interndoor.com is a NEW ORIGIN, and the HTTP cache
+     is keyed per origin. Nobody holds a script cached under interndoor.com, so
+     every reader gets this HTML and its matching app.js together. Readers
+     arriving on internzo.in or internradar.info are 308'd here before any
+     document is served, so their old cached scripts are never executed against
+     this page either. app.js still falls back tolerantly, which costs two ||
+     branches and covers the case where this ever gets served from an origin
+     that previously ran an older build.
      (No backticks in this comment: it sits inside a template literal.) -->
-<meta name="gradkite-region" content="US">
-<meta name="gradkite-data" content="/us/data/jobs.json">
-<meta name="internzo-region" content="US">
-<meta name="internzo-data" content="/us/data/jobs.json">
-<link rel="alternate" type="application/rss+xml" title="GradKite — new engineering internships" href="https://gradkite.com/us/feed.xml">
-<link rel="alternate" type="application/feed+json" title="GradKite — new engineering internships" href="https://gradkite.com/us/feed.json">
-<meta property="og:url" content="https://gradkite.com/us/">
+<meta name="interndoor-region" content="US">
+<meta name="interndoor-data" content="/us/data/jobs.json">
+<link rel="alternate" type="application/rss+xml" title="InternDoor — new engineering internships" href="https://interndoor.com/us/feed.xml">
+<link rel="alternate" type="application/feed+json" title="InternDoor — new engineering internships" href="https://interndoor.com/us/feed.json">
+<meta property="og:url" content="https://interndoor.com/us/">
 <meta property="og:description" content="Software internships in the US, listed minutes after they go live. Apply while the queue is still short.">
-<meta property="og:image:alt" content="GradKite — be early. Software internships in the US, listed minutes after they go live.">
+<meta property="og:image:alt" content="InternDoor — be early. Software internships in the US, listed minutes after they go live.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:description" content="Software internships in the US, listed minutes after they go live. Apply while the queue is still short.">
-<meta name="twitter:image:alt" content="GradKite — be early. Software internships in the US, listed minutes after they go live.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://gradkite.com/#organization","name":"GradKite","url":"https://gradkite.com/","logo":"https://gradkite.com/favicon-96.png","description":"GradKite lists engineering internships in the US within minutes of them going live.","areaServed":{"@type":"Country","name":"United States"},"sameAs":["https://t.me/gradkite"]},{"@type":"WebSite","@id":"https://gradkite.com/us/#website","url":"https://gradkite.com/us/","name":"GradKite","description":"Engineering internships in the US, listed within minutes of going live.","inLanguage":"en-US","publisher":{"@id":"https://gradkite.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://gradkite.com/us/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
+<meta name="twitter:image:alt" content="InternDoor — be early. Software internships in the US, listed minutes after they go live.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://interndoor.com/#organization","name":"InternDoor","url":"https://interndoor.com/","logo":"https://interndoor.com/favicon-96.png","description":"InternDoor lists engineering internships in the US within minutes of them going live.","areaServed":{"@type":"Country","name":"United States"},"sameAs":["https://t.me/interndoor"]},{"@type":"WebSite","@id":"https://interndoor.com/us/#website","url":"https://interndoor.com/us/","name":"InternDoor","description":"Engineering internships in the US, listed within minutes of going live.","inLanguage":"en-US","publisher":{"@id":"https://interndoor.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://interndoor.com/us/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
 <!--/REGION:HEAD-->
 
 <!-- Link previews. WhatsApp/iMessage will not render a card without og:image, and it
@@ -60,17 +63,17 @@
      thumbnail-beside-text one. Crawlers cache hard and key on the image URL, so bump
      ?v= when og.jpg is regenerated, otherwise the old card sticks around for weeks. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="GradKite">
-<meta property="og:title" content="GradKite — be early">
-<meta property="og:image" content="https://gradkite.com/og.jpg?v=4">
-<meta property="og:image:secure_url" content="https://gradkite.com/og.jpg?v=4">
+<meta property="og:site_name" content="InternDoor">
+<meta property="og:title" content="InternDoor — be early">
+<meta property="og:image" content="https://interndoor.com/og.jpg?v=4">
+<meta property="og:image:secure_url" content="https://interndoor.com/og.jpg?v=4">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GradKite — be early">
-<meta name="twitter:image" content="https://gradkite.com/og.jpg?v=4">
+<meta name="twitter:title" content="InternDoor — be early">
+<meta name="twitter:image" content="https://interndoor.com/og.jpg?v=4">
 
 
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
@@ -113,20 +116,17 @@
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="/us/" aria-label="GradKite">
-      <span class="mark" aria-hidden="true">
+    <a class="brand" href="/us/" aria-label="InternDoor">
+      <span class="scope" aria-hidden="true">
         <svg viewBox="0 0 44 44">
-          <circle class="k-ring" cx="22" cy="22" r="21"/>
-          <g class="k-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40.4 11.8 Z"/></g>
-          <g class="k-fly">
-            <path class="k-lit" d="M22 6 32.5 19 22 19Z"/>
-            <path class="k-sail" d="M22 6 32.5 19 22 32 11.5 19Z"/>
-            <path class="k-spar" d="M22 6V32M11.5 19H32.5"/>
-            <g class="k-tail-swing"><path class="k-tail" d="M22 32c2.6 2.1-2.4 3.3-.2 5.4"/></g>
-          </g>
+          <circle class="s-ring" cx="22" cy="22" r="20"/>
+          <circle class="s-ring" cx="22" cy="22" r="13"/>
+          <circle class="s-ring" cx="22" cy="22" r="6"/>
+          <g class="s-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+          <circle class="s-dot" cx="22" cy="22" r="2.8"/>
         </svg>
       </span>
-      <span class="word">GRAD<em>KITE</em></span>
+      <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
     <div class="bar-right">
@@ -142,14 +142,14 @@
           <svg class="rg-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="rg-menu">
-          <a class="rg-opt" href="https://gradkite.com/" data-region="IN"><span class="rg-name">India</span></a>
-          <a class="rg-opt is-on" href="https://gradkite.com/us/" aria-current="page" data-region="US"><span class="rg-name">United States</span></a>
-          <a class="rg-opt" href="https://gradkite.com/uk/" data-region="GB"><span class="rg-name">United Kingdom</span></a>
+          <a class="rg-opt" href="https://interndoor.com/" data-region="IN"><span class="rg-name">India</span></a>
+          <a class="rg-opt is-on" href="https://interndoor.com/us/" aria-current="page" data-region="US"><span class="rg-name">United States</span></a>
+          <a class="rg-opt" href="https://interndoor.com/uk/" data-region="GB"><span class="rg-name">United Kingdom</span></a>
         </div>
       </details>
 
 <!--/REGION:SWITCH-->
-      <a class="alerts" href="https://t.me/gradkite" target="_blank" rel="noopener noreferrer">
+      <a class="alerts" href="https://t.me/interndoor" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         <span>Get alerts</span>
       </a>
