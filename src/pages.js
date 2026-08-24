@@ -504,11 +504,13 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
     <a class="brand" href="${regionHref('/', region)}" aria-label="GradKite">
       <span class="mark" aria-hidden="true">
         <svg viewBox="0 0 44 44">
+          <circle class="k-ring" cx="22" cy="22" r="21"/>
+          <g class="k-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40.4 11.8 Z"/></g>
           <g class="k-fly">
-            <path class="k-lit" d="M22 3.5 34.5 16.5 22 16.5Z"/>
-            <path class="k-sail" d="M22 3.5 34.5 16.5 22 33 9.5 16.5Z"/>
-            <path class="k-spar" d="M22 3.5V33M9.5 16.5H34.5"/>
-            <g class="k-tail-swing"><path class="k-tail" d="M22 33c2.9 2.3-2.7 3.7-.2 6.1"/></g>
+            <path class="k-lit" d="M22 6 32.5 19 22 19Z"/>
+            <path class="k-sail" d="M22 6 32.5 19 22 32 11.5 19Z"/>
+            <path class="k-spar" d="M22 6V32M11.5 19H32.5"/>
+            <g class="k-tail-swing"><path class="k-tail" d="M22 32c2.6 2.1-2.4 3.3-.2 5.4"/></g>
           </g>
         </svg>
       </span>
@@ -1104,8 +1106,20 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
   html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates)) ?? html;
+  // No region in the lede, on purpose (24 Aug). The header's own region switch
+  // already names the board, so repeating it here said the same thing twice.
+  // The paragraph still NAMES THE SUBJECT, which is the whole reason it exists:
+  // when it did not, Google discarded the meta description and wrote the search
+  // snippet out of a job blurb, describing the site as an AI video company.
+  // "Engineering internships" keeps that fixed. The place is still carried by
+  // <title>, the meta description, hreflang and the JSON-LD areaServed.
+  // The comma rides INSIDE the fill. fillMarker always writes a newline before
+  // the closing marker, and that newline renders as a space — so a comma left in
+  // the template sat one space away from the word: "internships , listed". That
+  // was live and visible on the homepage until 24 Aug. Punctuation belongs with
+  // the phrase it punctuates anyway.
   html = fillMarker(html, 'REGION:LEDE',
-    `<strong>Engineering internships ${esc(region.inName)}</strong>`) ?? html;
+    '<strong>Engineering internships</strong>,') ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
   // A regex, not a literal swap: the template's own lang is en-IN (it IS the
   // India board), so matching `lang="en"` silently did nothing and every region
