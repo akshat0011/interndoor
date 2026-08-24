@@ -24,6 +24,7 @@
  */
 import { log } from './logger.js';
 import { classifyRole, vetoNonTech } from './roles.js';
+import { POST_SYSTEM, POST_SCHEMA, postPrompt } from './postgen.js';
 
 const HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
 
@@ -496,5 +497,57 @@ export async function enrichJobs(items, cfg = {}) {
 
   if (guarded) log.info(`Guard removed unstated details from ${guarded} posting(s).`);
   if (copies) log.info(`Dropped ${copies} summary(ies) that copied the posting.`);
+  return out;
+}
+
+/* ----------------------------------------------------- LinkedIn post drafts */
+
+/**
+ * Draft the two prose pieces of a LinkedIn post for each queued posting.
+ *
+ * Off the critical path, unlike everything else in this file: nobody is waiting
+ * for a listing to reach the site, he has already clicked the button and is
+ * looking at a progress bar. So this may take its time and use a bigger model,
+ * and a failure costs nothing — buildPost falls back to prose written from the
+ * facts, so a post is still produced.
+ *
+ * Temperature is deliberately higher than the 0.2 the extractors use. This is
+ * the one call in the project that is asked to WRITE rather than to read, and
+ * at 0.2 every hook came back as the same sentence with the company name
+ * swapped, which is exactly what makes a feed of these posts unreadable.
+ *
+ * @param {Array<{facts: object, description: string}>} items
+ * @param {object} cfg
+ * @param {(done: number, total: number) => void} [onProgress]
+ * @returns {Promise<Map<number, object>>} keyed by index into `items`
+ */
+export async function writePostDrafts(items, cfg = {}, onProgress = null) {
+  const out = new Map();
+  if (!items.length) return out;
+  if (!(await ollamaAvailable())) {
+    log.warn(`Ollama not reachable at ${HOST} — ${items.length} post(s) will be written from the stored facts alone.`);
+    return out;
+  }
+
+  const model = cfg.postQueue?.model || cfg.ollama?.model || 'qwen3:8b';
+  const timeoutMs = (cfg.postQueue?.timeoutSeconds ?? cfg.ollama?.timeoutSeconds ?? 180) * 1000;
+
+  for (const [i, item] of items.entries()) {
+    const description = String(item.description ?? '');
+    const res = await chatJson({
+      model,
+      system: POST_SYSTEM,
+      user: postPrompt(item.facts, description),
+      schema: POST_SCHEMA,
+      numCtx: ctxFor(description.length),
+      timeoutMs,
+      temperature: 0.75,
+    });
+
+    if (res.ok) out.set(i, res.value);
+    else log.warn(`  post draft failed (${res.reason}) for "${item.facts.title}" — falling back to the stored facts.`);
+
+    onProgress?.(i + 1, items.length);
+  }
   return out;
 }

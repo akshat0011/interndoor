@@ -29,6 +29,11 @@ export const PATHS = {
   screenshots: join(STATE, 'screenshots'),
   latestReport: join(STATE, 'reports', 'latest.html'),
 
+  /** Generated LinkedIn posts, one page per batch, plus a stable latest.html. */
+  posts: join(STATE, 'posts'),
+  latestPosts: join(STATE, 'posts', 'latest.html'),
+  latestWeekly: join(STATE, 'posts', 'weekly-latest.html'),
+
   logs: LOGS,
 
   /** Where install-schedule.sh puts the script launchd actually executes. */
@@ -36,7 +41,7 @@ export const PATHS = {
 };
 
 /** Directories that must exist before use. launchd never creates them for us. */
-const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'logs'];
+const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs'];
 
 export function ensureDirs() {
   for (const key of MANAGED) {

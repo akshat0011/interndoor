@@ -45,6 +45,29 @@ fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') [START] node=$NODE args=$*" >> "$LOG"
 
 # ---------------------------------------------------------------------------
+# The post-queue helper, started here rather than as a second launchd agent.
+#
+# bin/queue-server.js serves the run report over http://127.0.0.1 so that its
+# "Add to post queue" buttons have a same-origin API to talk to; a report opened
+# as a file:// document has nowhere to send a click. It has to be long-lived —
+# he queues listings across several runs and generates when he is ready — so it
+# cannot be started and stopped around a scan.
+#
+# This file is the right place for it because it is the one that already knows
+# where node is (launchd hands a job a minimal PATH; see find_node above), and
+# because running every 30 minutes makes the check a free supervisor: if the
+# helper ever dies, the next scan brings it back.
+#
+# Started only when nothing is answering on the port, and queue-server.js exits
+# 0 on EADDRINUSE anyway, so a copy started by hand with `npm run queue` is
+# never disturbed. Failure is silent by design — a scan must not depend on it.
+# ---------------------------------------------------------------------------
+if ! /usr/bin/curl -sS --max-time 2 -o /dev/null "http://127.0.0.1:${QUEUE_PORT:-4322}/api/health" 2>/dev/null; then
+  "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/queue-server.js" >> "$LOG" 2>&1 &
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [QUEUE] started the post-queue helper (pid $!)" >> "$LOG"
+fi
+
+# ---------------------------------------------------------------------------
 # ATS boards first, and deliberately so.
 #
 # This half needs no browser, no login and no pacing — it is JSON over HTTPS
@@ -69,4 +92,23 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 STATUS=$?
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
+
+# ---------------------------------------------------------------------------
+# The weekly roundup, asked about on every scan and written once a week.
+#
+# bin/weekly.js exits immediately unless it is on or after the configured hour
+# on the configured weekday AND that calendar week has not been written yet, so
+# this costs a process start 47 times a week and does real work once.
+#
+# Asked here rather than from a cron entry because this Mac is asleep for large
+# parts of the day: a job that fires only at 10:00 exactly would be missed
+# outright, while this one lands on the first scan after the machine wakes.
+#
+# After the scan and after publish, so the job pages every link points at are
+# already on the site. Its exit status is deliberately discarded — a roundup is
+# the least important thing this file does and must never change how the
+# scheduler treats the scan.
+# ---------------------------------------------------------------------------
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/weekly.js" >> "$LOG" 2>&1 || true
+
 exit $STATUS

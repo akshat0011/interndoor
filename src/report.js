@@ -67,11 +67,14 @@ input[type=search]:focus{outline:2px solid var(--accent);outline-offset:-1px}
   margin-bottom:12px;box-shadow:var(--shadow)}
 .job.hide{display:none}
 .top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
-.title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin:0 0 3px;line-height:1.35}
-.title a{color:var(--ink);text-decoration:none}
+/* Employer first and large. This page is a shortlist: the decision it exists to
+   support is "is this company worth a LinkedIn post", and the role only tells
+   two of the same employer's listings apart. The public board inverts this
+   deliberately — a student scans for the ROLE — but this is not that page. */
+.co{font-size:22px;font-weight:700;letter-spacing:-.025em;line-height:1.15;color:var(--ink);margin:0 0 3px}
+.title{font-size:15.5px;font-weight:550;letter-spacing:-.01em;margin:0;line-height:1.35}
+.title a{color:var(--ink-2);text-decoration:none}
 .title a:hover{color:var(--accent);text-decoration:underline}
-.co{font-size:14px;color:var(--ink-2)}
-.co b{color:var(--ink);font-weight:550}
 .posted{white-space:nowrap;font-size:12.5px;color:var(--ink-2);text-align:right}
 .fresh{color:var(--good);font-weight:600}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0 0}
@@ -91,6 +94,27 @@ summary:hover{color:var(--accent)}
 .desc{margin-top:10px;padding:13px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;
   font-size:13.5px;white-space:pre-wrap;max-height:440px;overflow:auto;color:var(--ink-2)}
 .empty{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:40px 20px;text-align:center;color:var(--ink-2)}
+
+/* The post queue. Everything below is inert unless the page is being served by
+   bin/queue-server.js — a report opened straight off disk has nowhere to send a
+   click, so the bar says so rather than pretending to work. */
+.qbtn{border:1px solid var(--line);background:transparent;color:var(--ink-2);border-radius:7px;
+  padding:8px 13px;font-size:13px;font-family:inherit;cursor:pointer}
+.qbtn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.qbtn:disabled{opacity:.45;cursor:default}
+.qbtn[aria-pressed=true]{background:var(--good-bg);border-color:var(--good);color:var(--good);font-weight:600}
+.qbar{position:sticky;bottom:0;z-index:5;margin:22px -20px -72px;padding:13px 20px;
+  background:var(--panel);border-top:1px solid var(--line);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  box-shadow:0 -2px 14px rgba(16,24,40,.07)}
+.qbar b{font-variant-numeric:tabular-nums}
+.qbar .grow{flex:1}
+.qbar button{font-family:inherit;font-size:13.5px;border-radius:7px;padding:9px 15px;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.qbar button.go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.qbar button:disabled{opacity:.45;cursor:default}
+.qbar .why{font-size:12.5px;color:var(--ink-2)}
+.qbar code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
 footer{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-2);font-size:12.5px}
 footer code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
 .note{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:11px 13px;font-size:13px;margin-bottom:16px}
@@ -121,6 +145,101 @@ for (const c of chips){
     apply();
   });
 }
+
+/* ---- post queue -------------------------------------------------------- */
+/* Same-origin calls only, so there is no host or port written down here: the
+   report is served by bin/queue-server.js and these paths resolve against it.
+   Opened as a file instead, every call would fail — so the UI is disabled up
+   front and says why, rather than failing one click at a time. */
+const bar = document.getElementById('qbar');
+const count = document.getElementById('qcount');
+const genBtn = document.getElementById('qgen');
+const clearBtn = document.getElementById('qclear');
+const why = document.getElementById('qwhy');
+const qbtns = [...document.querySelectorAll('.qbtn')];
+
+/* A drafted row stays in the queue so its post can be copied again, so the
+   button state tracks EVERY queue row while the Generate button tracks only the
+   ones still waiting to be written. */
+function paint(state){
+  const set = new Set(state.ids);
+  for (const b of qbtns){
+    const on = set.has(b.dataset.id);
+    b.setAttribute('aria-pressed', String(on));
+    b.textContent = on ? '✓ Queued' : '+ Add to post queue';
+  }
+  count.innerHTML = '<b>' + state.queued + '</b> waiting to be written'
+    + (state.drafted ? ' · <b>' + state.drafted + '</b> already written (<a href="/posts/latest">view</a>)' : '');
+  genBtn.disabled = state.queued === 0;
+  clearBtn.disabled = set.size === 0;
+}
+
+async function api(path, body){
+  const res = await fetch(path, body ? {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(body),
+  } : undefined);
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+if (location.protocol !== 'http:'){
+  for (const b of qbtns) b.disabled = true;
+  genBtn.disabled = true;
+  clearBtn.disabled = true;
+  why.innerHTML = 'The post queue needs the local helper — this page is open as a file, which cannot reach it. Start it with <code>npm run queue</code> and reopen the report at the address it prints.';
+} else {
+  api('/api/queue').then(paint).catch(() => {
+    why.textContent = 'The local helper is not answering — start it with npm run queue.';
+  });
+
+  for (const b of qbtns){
+    b.addEventListener('click', async () => {
+      const on = b.getAttribute('aria-pressed') === 'true';
+      b.disabled = true;
+      try { paint(await api('/api/queue', { jobId: b.dataset.id, action: on ? 'remove' : 'add' })); }
+      catch { why.textContent = 'Could not reach the local helper.'; }
+      b.disabled = false;
+    });
+  }
+
+  clearBtn.addEventListener('click', async () => {
+    try { paint(await api('/api/queue/clear', {})); } catch {}
+  });
+
+  genBtn.addEventListener('click', async () => {
+    genBtn.disabled = true;
+    genBtn.textContent = 'Writing…';
+    why.textContent = 'Asking the local model — this takes a few seconds per posting.';
+    try {
+      await api('/api/generate', {});
+    } catch (err) {
+      genBtn.disabled = false;
+      genBtn.textContent = 'Generate LinkedIn posts';
+      why.textContent = 'Could not start: ' + err.message;
+      return;
+    }
+    const poll = setInterval(async () => {
+      let s;
+      try { s = await api('/api/generate/status'); } catch { return; }
+      if (s.total) why.textContent = 'Written ' + s.done + ' of ' + s.total + '…';
+      if (s.error){
+        clearInterval(poll);
+        genBtn.disabled = false;
+        genBtn.textContent = 'Generate LinkedIn posts';
+        why.textContent = 'Generation failed: ' + s.error;
+      } else if (s.finishedAt){
+        clearInterval(poll);
+        genBtn.textContent = 'Posts ready';
+        why.innerHTML = 'Opened in a new tab — <a href="/posts/latest">view them</a>.';
+        // The drafted rows have moved out of "waiting" — repaint so the bar
+        // agrees with the server rather than showing the pre-generation count.
+        api('/api/queue').then(paint).catch(() => {});
+      }
+    }, 1500);
+  });
+}
 `;
 
 function jobCard(job) {
@@ -147,11 +266,11 @@ function jobCard(job) {
     .filter(Boolean).join(' ').toLowerCase();
 
   return `
-<article class="job" data-company="${esc(job.company_matched || job.company || 'Other')}" data-search="${esc(searchBlob)}">
+<article class="job" data-id="${esc(job.job_id)}" data-company="${esc(job.company_matched || job.company || 'Other')}" data-search="${esc(searchBlob)}">
   <div class="top">
     <div>
+      <div class="co">${esc(job.company || 'Unknown company')}</div>
       <h2 class="title"><a href="${esc(job.job_url)}" target="_blank" rel="noreferrer">${esc(job.title)}</a></h2>
-      <div class="co"><b>${esc(job.company || 'Unknown company')}</b></div>
     </div>
     <div class="posted">
       <div class="${isFresh ? 'fresh' : ''}">${esc(job.posted_text || relTime(postedMs))}</div>
@@ -164,6 +283,7 @@ function jobCard(job) {
   <div class="actions">
     <a class="btn" href="${esc(applyUrl)}" target="_blank" rel="noreferrer">${external ? 'Apply on company site' : 'Apply on LinkedIn'}</a>
     ${external ? `<a class="btn ghost" href="${esc(job.job_url)}" target="_blank" rel="noreferrer">View on LinkedIn</a>` : ''}
+    <button class="qbtn" data-id="${esc(job.job_id)}" aria-pressed="false">+ Add to post queue</button>
   </div>
   ${job.description ? `<details><summary>Full description</summary><div class="desc">${esc(job.description)}</div></details>` : ''}
 </article>`;
@@ -219,6 +339,13 @@ ${body}
   ${esc(stats.skipped ?? 0)} non-matching cards remembered so they are not re-opened next run.<br>
   Edit <code>config.json</code> to change the company watchlist, search terms, or pacing.
 </footer>
+
+${jobs.length ? `<div class="qbar" id="qbar">
+  <span id="qcount"><b>0</b> waiting to be written</span>
+  <button class="go" id="qgen" disabled>Generate LinkedIn posts</button>
+  <button id="qclear" disabled>Clear queue</button>
+  <span class="why grow" id="qwhy"></span>
+</div>` : ''}
 </div>
 ${jobs.length ? `<script>${JS}</script>` : ''}
 </body></html>`;

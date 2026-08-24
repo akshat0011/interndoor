@@ -107,6 +107,31 @@ CREATE TABLE IF NOT EXISTS company_ids (
 );
 
 CREATE INDEX IF NOT EXISTS idx_company_ids_status ON company_ids(status);
+
+-- Postings picked out by hand for a LinkedIn post on his own account.
+--
+-- Separate from the reported column, which records that a job appeared in the
+-- run report and is set automatically. This is the opposite: nothing enters it
+-- without a click, because the whole point of the queue is that he decides
+-- which employers are worth putting his own name behind.
+--
+-- No foreign key to jobs. Every read joins, so an orphan row simply stops
+-- appearing rather than failing a write in a different process, and this table
+-- must never be able to break a scan.
+CREATE TABLE IF NOT EXISTS post_queue (
+  job_id     TEXT PRIMARY KEY,
+  added_at   INTEGER NOT NULL,
+  -- 'queued' until a draft exists, then 'drafted'. A drafted row STAYS here so
+  -- the post can be re-read and re-copied after the tab is closed; clearing is
+  -- an explicit action.
+  status     TEXT NOT NULL DEFAULT 'queued',
+  batch_id   TEXT,
+  post_text  TEXT,
+  post_meta  TEXT,
+  drafted_at INTEGER
+);
+
+CREATE INDEX IF NOT EXISTS idx_post_queue_batch ON post_queue(batch_id);
 `;
 
 export class Store {
@@ -895,6 +920,79 @@ export class Store {
       ORDER BY n DESC
     `).all(UNKNOWN, sinceMs, UNKNOWN);
     return Object.fromEntries(rows.map((r) => [r.region, r.n]));
+  }
+
+  /* ------------------------------------------------- the LinkedIn post queue */
+
+  /**
+   * Mark a posting for a hand-written LinkedIn post. Idempotent.
+   *
+   * A row already drafted is left exactly as it is: re-clicking Add on a job
+   * whose post has been written must not throw the post away, because the queue
+   * page is where he goes to copy it back.
+   */
+  queueAdd(jobId) {
+    this.db.prepare(
+      'INSERT INTO post_queue (job_id, added_at) VALUES (?, ?) ON CONFLICT(job_id) DO NOTHING',
+    ).run(jobId, Date.now());
+  }
+
+  queueRemove(jobId) {
+    this.db.prepare('DELETE FROM post_queue WHERE job_id = ?').run(jobId);
+  }
+
+  /** Empty the queue. `status` narrows it, e.g. clear only what has been drafted. */
+  queueClear(status = null) {
+    if (status) this.db.prepare('DELETE FROM post_queue WHERE status = ?').run(status);
+    else this.db.exec('DELETE FROM post_queue');
+  }
+
+  queuedIds() {
+    return this.db.prepare('SELECT job_id FROM post_queue').all().map((r) => r.job_id);
+  }
+
+  /**
+   * Queued postings with their full job row.
+   *
+   * An inner join on purpose: a queue row whose job has since been removed has
+   * nothing to write a post from, so it should simply stop appearing.
+   */
+  queuedJobs(status = null) {
+    const where = status ? 'WHERE q.status = ?' : '';
+    const rows = this.db.prepare(`
+      SELECT j.*, q.added_at AS queued_at, q.status AS queue_status,
+             q.batch_id, q.post_text, q.post_meta, q.drafted_at
+      FROM post_queue q JOIN jobs j ON j.job_id = q.job_id
+      ${where}
+      ORDER BY q.added_at
+    `).all(...(status ? [status] : []));
+    return rows.map(hydrate);
+  }
+
+  /** Every posting in one generated batch, in the order it was queued. */
+  draftedBatch(batchId) {
+    return this.db.prepare(`
+      SELECT j.*, q.added_at AS queued_at, q.status AS queue_status,
+             q.batch_id, q.post_text, q.post_meta, q.drafted_at
+      FROM post_queue q JOIN jobs j ON j.job_id = q.job_id
+      WHERE q.batch_id = ?
+      ORDER BY q.added_at
+    `).all(batchId).map(hydrate);
+  }
+
+  saveDraft(jobId, batchId, postText, meta = null) {
+    this.db.prepare(`
+      UPDATE post_queue
+      SET status = 'drafted', batch_id = ?, post_text = ?, post_meta = ?, drafted_at = ?
+      WHERE job_id = ?
+    `).run(batchId, postText, meta ? JSON.stringify(meta) : null, Date.now(), jobId);
+  }
+
+  queueCounts() {
+    const rows = this.db.prepare('SELECT status, COUNT(*) AS n FROM post_queue GROUP BY status').all();
+    const counts = { queued: 0, drafted: 0 };
+    for (const r of rows) counts[r.status] = r.n;
+    return counts;
   }
 
   stats() {

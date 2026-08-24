@@ -23,6 +23,7 @@ import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, p
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
+import { reportTarget } from './postqueue.js';
 
 const ARGS = new Set(process.argv.slice(2));
 const DRY_RUN = ARGS.has('--dry-run');
@@ -1076,7 +1077,11 @@ async function main() {
       );
     }
     if (cfg.notifications.openReportWhenDone && !NO_OPEN) {
-      await openFile(file);
+      // Over http when bin/queue-server.js is listening, so the "Add to post
+      // queue" buttons in the report have a same-origin API to talk to; the
+      // file otherwise. Same bytes either way — the report is never withheld
+      // because a convenience is down.
+      await openFile(await reportTarget(runId, file, cfg));
     }
 
     // The phone is the point: a banner on a sleeping Mac is a notification nobody
