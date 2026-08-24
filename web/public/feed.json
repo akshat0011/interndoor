@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/slb-eto-engineer-trainee-4455866430",
+      "url": "https://interndoor.com/jobs/slb-eto-engineer-trainee-4455866430",
+      "title": "ETO Engineer Trainee — SLB",
+      "content_text": "Company: SLB · Location: Coimbatore, Tamil Nadu, India\n• Assist in designing subsea products and procedures\n• Work with 2d/3d cad, stress calculations, and load analysis\n• Rotate through product groups like wellheads and manifolds",
+      "date_published": "2026-08-24T10:22:14.898Z",
+      "authors": [
+        {
+          "name": "SLB"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/crisil-internship-trainee-ai-engg-4456889299",
       "url": "https://interndoor.com/jobs/crisil-internship-trainee-ai-engg-4456889299",
       "title": "Internship Trainee - AI Engg. — Crisil",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Enterpret"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/icertis-intern-sdet-4456322346",
-      "url": "https://interndoor.com/jobs/icertis-intern-sdet-4456322346",
-      "title": "Intern, SDET — Icertis",
-      "content_text": "Company: Icertis · Location: Pune Division, Maharashtra, India\n• Write automated tests with python and ai tools\n• Review code and improve software quality\n• Work on performance and load testing\n• Collaborate with developers on project goals",
-      "date_published": "2026-08-19T14:36:54.996Z",
-      "authors": [
-        {
-          "name": "Icertis"
         }
       ]
     }
