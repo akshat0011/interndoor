@@ -966,6 +966,18 @@
     "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
     "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
   },
+  "discovery": {
+    "_note": "Find postings an employer does not index on its own board, by asking Google Programmable Search. Amazon's India board lists 2,538 roles and four internships, none engineering, while its SDE internship sits at a live URL Amazon's own search will not return - and Google has that page, because it is public, server-rendered and allowed by robots.txt. Runs ONCE A DAY from bin/run.sh: the free tier is 100 queries a day and the scheduler fires 48 times, so a per-scan sweep would spend the quota by lunch for no extra freshness. Needs GOOGLE_CSE_KEY and GOOGLE_CSE_CX in .env; without them it is a silent no-op.",
+    "enabled": true,
+    "sites": ["amazon.jobs"],
+    "_sites_note": "One search per site per query, so sites x queries IS the daily budget. Keep it to boards whose own search is known to be poor - anything with a working board is already read by bin/poll-ats.js far more cheaply.",
+    "queries": ["intern India", "internship 2027 India"],
+    "_queries_note": "Narrow on purpose. A broad query returns careers landing pages, 'life at' articles and PDFs, and each of those costs a fetch to discover it is not a posting.",
+    "dateRestrict": "d7",
+    "_dateRestrict_note": "Google's freshness window: d7 = the last week. An internship is worth finding in its first week; without a limit every sweep returns the same aged pages and spends its budget re-checking them.",
+    "maxPerRun": 20,
+    "_maxPerRun_note": "How many NEW links are resolved per sweep. Already-seen URLs are remembered in the discovered_urls table and never re-fetched, so this only bites on a first run or a sudden burst."
+  },
   "publish": {
     "enabled": true,
     "autoPush": true,

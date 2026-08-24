@@ -111,4 +111,15 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # ---------------------------------------------------------------------------
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/weekly.js" >> "$LOG" 2>&1 || true
 
+# Web discovery, asked every scan and answered once a day.
+#
+# bin/discover-urls.js exits immediately unless today's sweep is outstanding.
+# Once a day rather than once a scan because Google's free tier is 100 queries
+# a day and this file fires 48 times; the searches are date-restricted anyway,
+# so 48 sweeps would return the same pages and spend the quota by lunch.
+#
+# Status discarded for the same reason as the roundup: finding nothing, or
+# finding no key, must never change how the scheduler treats the scan.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/discover-urls.js" >> "$LOG" 2>&1 || true
+
 exit $STATUS

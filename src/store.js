@@ -132,6 +132,21 @@ CREATE TABLE IF NOT EXISTS post_queue (
 );
 
 CREATE INDEX IF NOT EXISTS idx_post_queue_batch ON post_queue(batch_id);
+
+-- Careers URLs a web search has already offered us, and what came of each.
+--
+-- Without this every daily sweep re-fetches every result it has ever seen. The
+-- searches are deliberately date-restricted, so the same pages come back for
+-- days; re-resolving them means a request to somebody else's careers site per
+-- page per day for a posting we already decided about. The verdict is worth
+-- remembering even when it was no: a role refused as non-engineering on Monday
+-- is still non-engineering on Tuesday.
+CREATE TABLE IF NOT EXISTS discovered_urls (
+  url        TEXT PRIMARY KEY,
+  first_seen INTEGER NOT NULL,
+  status     TEXT,
+  job_id     TEXT
+);
 `;
 
 export class Store {
@@ -1009,6 +1024,27 @@ export class Store {
     const counts = { queued: 0, drafted: 0 };
     for (const r of rows) counts[r.status] = r.n;
     return counts;
+  }
+
+  /* ------------------------------------------------- web-discovered URLs */
+
+  /** True the first time this URL is offered, false every time after. */
+  noteDiscovered(url, status = 'pending', jobId = null) {
+    const before = this.db.prepare('SELECT url FROM discovered_urls WHERE url = ?').get(url);
+    this.db.prepare(`
+      INSERT INTO discovered_urls (url, first_seen, status, job_id) VALUES (?, ?, ?, ?)
+      ON CONFLICT(url) DO UPDATE SET status = excluded.status, job_id = COALESCE(excluded.job_id, job_id)
+    `).run(url, Date.now(), status, jobId);
+    return !before;
+  }
+
+  seenDiscovered(url) {
+    return !!this.db.prepare('SELECT url FROM discovered_urls WHERE url = ?').get(url);
+  }
+
+  discoveryStats() {
+    const rows = this.db.prepare('SELECT status, COUNT(*) AS n FROM discovered_urls GROUP BY status').all();
+    return Object.fromEntries(rows.map((r) => [r.status, r.n]));
   }
 
   stats() {
