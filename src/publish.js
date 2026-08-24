@@ -330,11 +330,28 @@ export async function writeJobsFile(store, cfg) {
       && !isBlockedCompany(row.company)
       && (!cfg.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))
+    // Widened 24 Aug. This used to carry title/roleLabel/postedAt only, which
+    // was enough to LIST past roles but not to say anything about them. The
+    // company hub now aggregates over an employer's whole tracked history —
+    // the skills they ask for, who is eligible, which cities they hire in —
+    // and that is the only unique, evergreen content a hub has. The rows are
+    // already in memory here; carrying six more fields costs nothing.
     .map(({ row, matchedNow, region }) => ({
       company: row.company || matchedNow || 'Unknown',
       title: row.title,
       roleLabel: row.role_label ?? '',
       postedAt: row.posted_at || row.first_seen_at || 0,
+      location: row.location || null,
+      workplaceType: row.workplace_type || null,
+      duration: row.duration || null,
+      applicants: row.applicants || null,
+      degreeLevel: row.degree_level || null,
+      skills: row.skills || [],
+      keySkills: parseJsonArray(row.key_skills),
+      stipend: formatStipend({
+        min: row.stipend_min, max: row.stipend_max,
+        currency: row.stipend_currency, period: row.stipend_period,
+      }),
       region,
     }));
 

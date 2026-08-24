@@ -662,9 +662,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // "Accenture in India" is a real employer name, so appending the region gave
   // "at Accenture in India in India". Skip the suffix when the name already
   // ends with it.
-  const alreadyPlaced = region?.inName
-    && job.company.toLowerCase().trim().endsWith(region.inName.toLowerCase().replace(/^in /, '').trim());
-  const descLead = `${job.title} at ${job.company}${region && !alreadyPlaced ? ` ${region.inName}` : ''}.`;
+  const descLead = `${job.title} at ${job.company}${placeSuffix(job.company, region)}.`;
   const description = clampWords([descLead, descFacts, (job.bullets ?? [])[0]]
     .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(), 155);
 
@@ -824,6 +822,180 @@ ${foot({
  * posting as a live one is the thing that earns a structured-data manual
  * action, and the whole domain pays for that.
  */
+/**
+ * Aggregate everything we know about one employer, across their LIVE and their
+ * closed postings.
+ *
+ * This exists because a company hub had 122 visible words, of which about 25
+ * were unique to the company — the rest was nav, footer and the Telegram CTA.
+ * That is the page Google shows for "<company> internships", and it was losing
+ * to Glassdoor and the employer's own careers site because there was nothing on
+ * it. The aggregate is the only content here nobody else has: we watched these
+ * postings go up and recorded what they asked for.
+ *
+ * SAMPLE SIZE IS THE WHOLE PROBLEM. Of 242 tracked employers, 123 have exactly
+ * ONE posting and only 73 have three or more. So this returns counts and lets
+ * the caller choose its wording — "typically" is a lie at n=1, and inventing
+ * confident statistics for a single data point is worse than saying nothing.
+ */
+export function companyProfile(all, region = DEFAULT_REGION) {
+  const rows = (all ?? []).filter(Boolean);
+  const tally = (pick) => {
+    const m = new Map();
+    for (const j of rows) {
+      for (const raw of [].concat(pick(j) ?? [])) {
+        const v = String(raw ?? '').trim();
+        if (v) m.set(v, (m.get(v) ?? 0) + 1);
+      }
+    }
+    return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([value, count]) => ({ value, count }));
+  };
+
+  // keySkills is the model's short list; skills is the raw extraction. Prefer
+  // the short list where it exists, or one verbose posting swamps the tally.
+  //
+  // The raw values arrive lowercase and overlapping — a real Infineon tally read
+  // "python 4 ... python programming 2", which is one skill printed twice. Drop
+  // any phrase that already contains a more-common one as a whole word, and
+  // title-case what survives so the chips do not read like log output.
+  const rawSkills = tally((j) => (j.keySkills?.length ? j.keySkills : j.skills));
+  const skills = [];
+  for (const cand of rawSkills) {
+    const covered = skills.some((kept) => {
+      const re = new RegExp(`\\b${kept.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      return re.test(cand.value);
+    });
+    if (!covered) skills.push({ ...cand, value: titleCaseSkill(cand.value) });
+  }
+  const dates = rows.map((j) => j.postedAt).filter(Boolean).sort((a, b) => a - b);
+  const applicants = rows.map((j) => Number(j.applicants))
+    .filter((v) => Number.isFinite(v) && v > 0).sort((a, b) => a - b);
+
+  return {
+    n: rows.length,
+    skills,
+    cities: tally((j) => cityOf(j.location, region)),
+    degrees: tally((j) => j.degreeLevel),
+    modes: tally((j) => modeText(j)),
+    durations: tally((j) => durationText(j)),
+    roleKinds: tally((j) => j.roleLabel),
+    stipends: rows.map((j) => stipendText(j)).filter(Boolean),
+    medianApplicants: applicants.length ? applicants[Math.floor(applicants.length / 2)] : null,
+    firstPostedAt: dates[0] ?? null,
+    lastPostedAt: dates[dates.length - 1] ?? null,
+  };
+}
+
+/**
+ * Skills are stored lowercase. Title-case for display, but leave anything
+ * already carrying capitals or digits alone — "SQL", "C++", "AWS" and "Node.js"
+ * are all wrong after a naive capitalise, and so is "OOPS" if it is lowercased.
+ */
+const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'apis', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'oops', 'orm', 'jvm', 'cad', 'iot', 'rtl', 'fpga', 'vlsi', 'etl', 'llm', 'llms', 'ci/cd', 'saas', 'rest', 'crm', 'erp', 'qa', 'os', 'db', 'ds']);
+function titleCaseSkill(raw) {
+  return String(raw ?? '').trim().split(/\s+/).map((w) => {
+    const low = w.toLowerCase();
+    if (SKILL_UPPER.has(low)) return low.toUpperCase();
+    // Anything carrying capitals, digits or punctuation after the first letter
+    // keeps its own shape — Node.js, PyTorch, S3, C++ — but the FIRST letter is
+    // still raised, because the store holds them lowercase and "c++" rendered
+    // as a chip reading "c++".
+    const tail = /[A-Z0-9+#.]/.test(w.slice(1)) ? w.slice(1) : low.slice(1);
+    return w.charAt(0).toUpperCase() + tail;
+  }).join(' ');
+}
+
+/**
+ * " in India" unless the employer is already called that. "HARMAN India" and
+ * "Accenture in India" are real names on real postings, and appending the
+ * region to them rendered "at HARMAN India in India".
+ */
+export function placeSuffix(company, region) {
+  const place = String(region?.inName ?? '').replace(/^in /, '').trim();
+  if (!place) return '';
+  const name = String(company ?? '').toLowerCase().trim();
+  return name.endsWith(place.toLowerCase()) ? '' : ` ${esc(region.inName)}`;
+}
+
+/** A plain-English list: "a, b and c". */
+function andList(items) {
+  const a = items.filter(Boolean);
+  if (a.length <= 1) return a[0] ?? '';
+  return `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`;
+}
+
+/**
+ * The evergreen half of a company hub.
+ *
+ * Everything here survives a posting closing, which is the point: job pages
+ * expire and this does not, so it is the only part of the site that can
+ * accumulate authority for "<company> internships" over years.
+ */
+function profileSections(company, prof, region) {
+  if (!prof.n) return '';
+  const co = esc(company);
+  const many = prof.n >= 3;
+  const out = [];
+
+  // --- what they ask for. Works at n=1 and is the single most useful block:
+  // "what skills do I need" is the question behind the query.
+  if (prof.skills.length >= 3) {
+    out.push(`<section class="strip">
+      <div class="strip-head"><h2>Skills ${co} asks for</h2></div>
+      <p class="cp-note">Taken from ${many ? `the ${prof.n} ${co} internships we have tracked` : `the ${co} ${prof.n === 1 ? 'internship' : 'internships'} we have tracked`} ${esc(region.inName)} &mdash; these are the skills named in the postings themselves, not a generic list.</p>
+      <ul class="cp-chips">${prof.skills.slice(0, 14).map((s) =>
+        `<li>${esc(s.value)}${many && s.count > 1 ? `<b>${s.count}</b>` : ''}</li>`).join('')}</ul>
+    </section>`);
+  }
+
+  // --- who can apply. Students filter on this harder than on anything else.
+  if (prof.degrees.length) {
+    out.push(`<section class="strip">
+      <div class="strip-head"><h2>Who ${co} accepts</h2></div>
+      <p class="cp-note">Eligibility stated on ${co} postings: ${esc(andList(prof.degrees.map((d) => d.value)))}.</p>
+    </section>`);
+  }
+
+  // --- where. One city is still a fact worth stating; several is a real answer.
+  if (prof.cities.length) {
+    out.push(`<section class="strip">
+      <div class="strip-head"><h2>Where ${co} hires interns</h2></div>
+      <p class="cp-note">${prof.cities.length === 1
+        ? `Every ${co} internship we have seen ${esc(region.inName)} was based in ${esc(prof.cities[0].value)}.`
+        : `${co} has posted internships in ${esc(andList(prof.cities.slice(0, 6).map((c) => c.value)))}${prof.cities.length > 6 ? ` and ${prof.cities.length - 6} more` : ''}.`}</p>
+      ${many && prof.cities.length > 1 ? `<ul class="cp-chips">${prof.cities.slice(0, 10).map((c) =>
+        `<li>${esc(c.value)}${c.count > 1 ? `<b>${c.count}</b>` : ''}</li>`).join('')}</ul>` : ''}
+    </section>`);
+  }
+
+  // --- the numbers. Held back below three postings, where an "average" is a
+  // single observation wearing a hat.
+  if (many) {
+    // A rate needs a span. Six postings inside one fortnight is not "6 a month",
+    // it is six postings inside one fortnight — the tracked window is younger
+    // than the claim. Only quote a rate over 60 days or more.
+    const spanMs = prof.firstPostedAt && prof.lastPostedAt ? prof.lastPostedAt - prof.firstPostedAt : 0;
+    const months = spanMs >= 60 * 86400000 ? spanMs / (30 * 86400000) : null;
+    const facts = [
+      ['Roles tracked', String(prof.n)],
+      ['Since', prof.firstPostedAt ? esc(monthLabel(prof.firstPostedAt, region)) : null],
+      months ? ['Posting rate', `about ${(prof.n / months).toFixed(1)} a month`] : null,
+      prof.cities.length > 1 ? ['Locations', String(prof.cities.length)] : null,
+      prof.modes.length ? ['Usual mode', esc(prof.modes[0].value)] : null,
+      prof.durations.length ? ['Usual length', esc(prof.durations[0].value)] : null,
+      prof.stipends.length ? ['Stipend seen', esc(prof.stipends[0])] : null,
+      prof.medianApplicants ? ['Typical applicants', `${prof.medianApplicants}`] : null,
+    ].filter((f) => f && f[1]);
+    out.push(`<section class="strip">
+      <div class="strip-head"><h2>${co} internships at a glance</h2></div>
+      <dl class="cp-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
+    </section>`);
+  }
+
+  return out.join('\n    ');
+}
+
 export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alternates = null } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
   const live = newestFirst(jobs.filter(isIndexable));
@@ -841,6 +1013,11 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     if (history.length === 12) break;
   }
 
+  // The profile spans every posting we hold for this employer — the unfiltered
+  // `jobs`, not `live`, because a role dropped by isIndexable for having one
+  // bullet still told us a city, a skill list and an eligibility line.
+  const profile = companyProfile([...(jobs ?? []), ...(past ?? [])], region);
+
   // Indexable when there is something worth indexing. A hub with no live roles
   // and nothing to show behind them is exactly the thin page to keep out.
   const indexable = live.length > 0 || history.length >= 2;
@@ -855,11 +1032,18 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     where ? `in ${where}` : null,
     new Date().getFullYear(),
   ]);
-  const description = live.length
-    ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes. ${live.slice(0, 3).map((j) => j.title).join(', ')}.`
-    : history.length
-      ? `${company} internships ${region.inName}. No live openings right now; ${history.length} tracked since we started following them, updated every 30 minutes.`
+  // Lead with the live count when there is one, then the two facts a searcher
+  // is actually weighing: what it asks for and where it is.
+  const descTail = [
+    profile.skills.length >= 3 ? `Skills asked for: ${profile.skills.slice(0, 4).map((x) => x.value).join(', ')}.` : null,
+    profile.cities.length ? `Locations: ${profile.cities.slice(0, 3).map((c) => c.value).join(', ')}.` : null,
+  ].filter(Boolean).join(' ');
+  const descHead = live.length
+    ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes.`
+    : profile.n
+      ? `${company} internships ${region.inName}. No live openings today; ${profile.n} tracked so far, updated every 30 minutes.`
       : `${company} internships ${region.inName}, tracked by InternDoor and updated every 30 minutes.`;
+  const description = clampWords(`${descHead} ${descTail}`.replace(/\s+/g, ' ').trim(), 155);
 
   const listLd = {
     '@context': 'https://schema.org/',
@@ -903,6 +1087,9 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
           ${cities.length ? `<span class="pill">${esc(cities.slice(0, 3).join(' · '))}</span>` : ''}
           <span class="pill">Refreshed every 30 min</span>
         </div>
+        <p class="hub-lede">${profile.n >= 3
+          ? `We have tracked <b>${profile.n} engineering internships</b> at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
+          : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live &mdash; this page is checked every 30 minutes.`}</p>
       </div>
     </header>
 
@@ -915,6 +1102,8 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
            </div>`}
     </section>
+
+    ${profileSections(company, profile, region)}
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>

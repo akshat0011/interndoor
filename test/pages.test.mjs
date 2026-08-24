@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords } from '../src/pages.js';
+import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix } from '../src/pages.js';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -299,6 +299,56 @@ check('no dangling punctuation after the cut',
   /[,;:\\-]$/.test(clampWords('Bengaluru, Karnataka, India On-site, six months', 30)), false);
 check('the result never exceeds the budget',
   clampWords('a'.repeat(200), 155).length <= 155, true);
+
+console.log('\n== company profile aggregates an employer\'s whole history ==');
+const hist = [
+  { title: 'SDE Intern', postedAt: 1_700_000_000_000, location: 'Bengaluru, Karnataka, India',
+    keySkills: ['Python', 'SQL'], degreeLevel: 'B.Tech', workplaceType: 'On-site', duration: '6 months', applicants: 40 },
+  { title: 'Data Intern', postedAt: 1_702_000_000_000, location: 'Hyderabad, Telangana, India',
+    keySkills: ['Python', 'Pandas'], degreeLevel: 'B.Tech', workplaceType: 'Hybrid', applicants: 100 },
+  { title: 'ML Intern', postedAt: 1_704_000_000_000, location: 'Bengaluru, Karnataka, India',
+    skills: ['Python'], degreeLevel: 'M.Tech', workplaceType: 'On-site', applicants: 10 },
+];
+const prof = companyProfile(hist);
+check('counts every posting', prof.n, 3);
+// keySkills is preferred over skills, or one verbose posting swamps the tally.
+check('skills are ranked by how often they are asked for', prof.skills[0], { value: 'Python', count: 3 });
+check('cities are ranked and de-duplicated', prof.cities[0], { value: 'Bengaluru', count: 2 });
+check('a second city is still counted', prof.cities.length, 2);
+check('degree levels are tallied', prof.degrees.map((d) => d.value).sort(), ['B.Tech', 'M.Tech']);
+check('applicants use the median, not the mean', prof.medianApplicants, 40);
+check('the earliest posting sets the start date', prof.firstPostedAt, 1_700_000_000_000);
+// n=1 is the common case: 123 of 242 employers. It must not throw or invent.
+const solo = companyProfile([{ title: 'Intern', postedAt: 1, location: 'Pune, India', keySkills: ['Go'] }]);
+check('a single posting still profiles cleanly', solo.n, 1);
+check('a single posting yields one city', solo.cities, [{ value: 'Pune', count: 1 }]);
+check('an empty employer does not throw', companyProfile([]).n, 0);
+check('null input does not throw', companyProfile(null).n, 0);
+check('medianApplicants is null when nobody reported one', solo.medianApplicants, null);
+// A real Infineon tally read "python 4 ... python programming 2" — one skill
+// printed twice. The more-common phrase wins and the longer one is dropped.
+const dup = companyProfile([
+  { keySkills: ['python', 'python programming'], postedAt: 1 },
+  { keySkills: ['python'], postedAt: 2 },
+  { keySkills: ['python', 'sql'], postedAt: 3 },
+]);
+check('a phrase already covered by a commoner skill is dropped',
+  dup.skills.map((x) => x.value), ['Python', 'SQL']);
+check('acronyms are upper-cased, not Title-Cased',
+  companyProfile([{ keySkills: ['sql', 'aws', 'fpga'], postedAt: 1 }]).skills.map((x) => x.value),
+  ['AWS', 'FPGA', 'SQL']);
+check('c++ gets its capital without losing its plusses',
+  companyProfile([{ keySkills: ['c++'], postedAt: 1 }]).skills[0].value, 'C++');
+// "HARMAN India in India" and "Accenture in India in India" were both rendered.
+check('the region is not repeated when the name already carries it',
+  placeSuffix('HARMAN India', { inName: 'in India' }), '');
+check('and not repeated for "Accenture in India" either',
+  placeSuffix('Accenture in India', { inName: 'in India' }), '');
+check('an ordinary employer still gets the region',
+  placeSuffix('Adobe', { inName: 'in India' }), ' in India');
+check('mixed-case technology names survive intact',
+  companyProfile([{ keySkills: ['Node.js', 'C++'], postedAt: 1 }]).skills.map((x) => x.value).sort(),
+  ['C++', 'Node.js']);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
