@@ -573,6 +573,65 @@ function foot({ headline, sub, region = DEFAULT_REGION }) {
  * filled by page.js from jobs.json rather than baked in, because a baked list
  * of the newest roles would rewrite all ~130 job pages every time one arrived.
  */
+/**
+ * Build a <title> that survives Google's ~60-character truncation.
+ *
+ * The old format was `${company} ${title} Internship ${year} — ${region} | InternDoor`
+ * and it produced "Airmeet Outreach Campaign Intern Internship 2026 — India |
+ * InternDoor" (71 chars) and "AppVersal Golang Developer Internship in Noida
+ * Internship 2026 — India | InternDoor" (85). Two faults: the word Internship
+ * was appended even when the role title already said it, and the tail
+ * "— India | InternDoor" spent 20 characters on the two least useful words in
+ * the string. Measured across the rendered pages, titles ran 60-85 characters
+ * against a limit near 60, so the year and the brand were being cut off in the
+ * SERP anyway.
+ *
+ * Parts are dropped from the END as needed, so the part that matches what
+ * people actually search — "<company> <role> intern" — is never the part that
+ * gets truncated. The region left the title entirely; it is in the URL for
+ * US/UK and in the meta description everywhere.
+ */
+const TITLE_MAX = 60;
+export function buildTitle(parts, brand = 'InternDoor') {
+  const kept = parts.filter(Boolean).map((s) => String(s).replace(/\s+/g, ' ').trim()).filter(Boolean);
+  // Longest prefix of the optional parts that still leaves room for the brand.
+  for (let n = kept.length; n >= 1; n--) {
+    const head = kept.slice(0, n).join(' ');
+    if (`${head} | ${brand}`.length <= TITLE_MAX) return `${head} | ${brand}`;
+  }
+  // Nothing fits even with everything optional dropped, because some employers
+  // write titles like "Intern Software development engineering (AI/ML/NLP &
+  // Cybersecurity), Graduation Year (2026)" — 112 characters before the company
+  // name is added. Trim at a word boundary and drop the brand rather than
+  // spending 13 of the remaining characters on a name nobody is searching for
+  // yet; Google appends the site name itself, so it is not actually lost. The
+  // company and the start of the role survive, which is the part that matches
+  // "<company> <role> intern".
+  const head = kept[0];
+  if (head.length <= TITLE_MAX) return head;
+  const cut = head.slice(0, TITLE_MAX);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > TITLE_MAX * 0.6 ? cut.slice(0, lastSpace) : cut).trim();
+}
+
+/**
+ * Trim to a length at a WORD boundary. Slicing mid-word left descriptions
+ * ending "...and internal" / "...then contribute", which is what the SERP then
+ * shows before its own ellipsis.
+ */
+export function clampWords(text, max) {
+  const t = String(text || '').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.\-–—]+$/, '').trim();
+}
+
+/** True when the role title already contains an internship word. */
+export function saysIntern(title) {
+  return /\b(intern|interns|internship|internships|trainee|apprentice|apprenticeship|co-?op)\b/i.test(title || '');
+}
+
 export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
@@ -583,10 +642,31 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
 
   // Title shaped the way people actually search: company, role, the word
   // internship, then the country and the year.
-  const pageTitle = `${job.company} ${job.title} Internship ${year} — ${region.name} | InternDoor`;
-  const description = (job.bullets ?? [])[0]
-    ? `${job.company} is hiring: ${job.title}. ${(job.bullets ?? [])[0]}.`
-    : `${job.company} is hiring a ${job.title} intern ${region.inName}.`;
+  // "Intern Internship" was a real rendered title. Only add the word when the
+  // role title has not already said it.
+  const roleHead = `${job.company} ${job.title}`.replace(/\s+/g, ' ').trim();
+  const pageTitle = buildTitle([
+    saysIntern(job.title) ? roleHead : `${roleHead} Internship`,
+    year,
+  ]);
+
+  // Lead with the facts a student scans for — where, how, how much — rather
+  // than a generic "is hiring" opener. The first bullet is kept as the tail
+  // because it is the only sentence that says what the work actually is.
+  const descFacts = [
+    job.location || null,
+    modeText(job) || null,
+    stipendText(job) ? `stipend ${stipendText(job)}` : null,
+    durationText(job) || null,
+  ].filter(Boolean).join(' · ');
+  // "Accenture in India" is a real employer name, so appending the region gave
+  // "at Accenture in India in India". Skip the suffix when the name already
+  // ends with it.
+  const alreadyPlaced = region?.inName
+    && job.company.toLowerCase().trim().endsWith(region.inName.toLowerCase().replace(/^in /, '').trim());
+  const descLead = `${job.title} at ${job.company}${region && !alreadyPlaced ? ` ${region.inName}` : ''}.`;
+  const description = clampWords([descLead, descFacts, (job.bullets ?? [])[0]]
+    .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(), 155);
 
   const facts = [
     job.location ? ['Location', esc(job.location)] : null,
@@ -766,7 +846,15 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   const indexable = live.length > 0 || history.length >= 2;
 
   const where = region.inName.replace(/^in /, '');
-  const pageTitle = `${company} Internships in ${where} ${new Date().getFullYear()} — ${live.length} open role${live.length === 1 ? '' : 's'} | InternDoor`;
+  // The live-role COUNT left the title on purpose. It changed on almost every
+  // publish, which rewrote the <title> of 150 pages and churned both the commit
+  // and the thing Google re-evaluates. It still appears in the description,
+  // where freshness belongs and where a rewrite costs nothing.
+  const pageTitle = buildTitle([
+    `${company} Internships`,
+    where ? `in ${where}` : null,
+    new Date().getFullYear(),
+  ]);
   const description = live.length
     ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes. ${live.slice(0, 3).map((j) => j.title).join(', ')}.`
     : history.length

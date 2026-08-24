@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages } from '../src/pages.js';
+import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords } from '../src/pages.js';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -259,6 +259,46 @@ console.log('\n== writePages keeps a hub whose jobs have all expired ==');
   check('no hub for an employer with no history', existsSync(join(dir, 'companies', 'adobe.html')), false);
   rmSync(dir, { recursive: true, force: true });
 }
+
+console.log('\n== titles fit the SERP and do not repeat themselves ==');
+// "Airmeet Outreach Campaign Intern Internship 2026 - India | InternDoor" was a
+// real rendered title: 71 characters, with the word Internship in it twice.
+check('a title already saying Intern is not given the word again',
+  saysIntern('Outreach Campaign Intern'), true);
+check('a title saying Internship is caught too', saysIntern('Golang Developer Internship in Noida'), true);
+check('Trainee counts', saysIntern('Young Graduate Trainee'), true);
+check('Apprentice counts', saysIntern('AI Engineer Apprentice'), true);
+check('Co-op counts', saysIntern('Co-op/ Intern'), true);
+check('a plain role does not', saysIntern('Software Engineer'), false);
+// The head is what people search; it must never be the part that gets cut.
+check('short title keeps every part and the brand',
+  buildTitle(['Adobe Apprentice Tech Internship', 2026]),
+  'Adobe Apprentice Tech Internship 2026 | InternDoor');
+check('the year is dropped before the brand is',
+  buildTitle(['AppVersal Golang Developer Internship in Noida', 2026]).endsWith('| InternDoor'), true);
+check('nothing rendered exceeds the 60-character budget',
+  buildTitle(['AppVersal Golang Developer Internship in Noida', 2026]).length <= 60, true);
+// Real employer titles run to 112 characters. Cap them at a word boundary so
+// the tail is our choice rather than Google's mid-word ellipsis.
+check('an over-long head is capped at the budget',
+  buildTitle(['American Express Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year (2026)', 2026]).length <= 60, true);
+check('the cap lands on a word boundary',
+  buildTitle(['American Express Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year (2026)', 2026]).endsWith(' '), false);
+check('the company survives the cap',
+  buildTitle(['American Express Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year (2026)', 2026]).startsWith('American Express'), true);
+check('an unbroken over-long head is still cut to the budget',
+  buildTitle(['A'.repeat(80), 2026]).length, 60);
+check('falsy parts are skipped, not printed', buildTitle(['Zoho Internships', null, 2026]),
+  'Zoho Internships 2026 | InternDoor');
+
+console.log('\n== meta descriptions end on a whole word ==');
+check('short text is returned untouched', clampWords('Adobe is hiring.', 155), 'Adobe is hiring.');
+check('a long string is cut at a space, not mid-word',
+  clampWords('Maintain GRC policies, documentation, and internal controls', 40).endsWith('internal'), false);
+check('no dangling punctuation after the cut',
+  /[,;:\\-]$/.test(clampWords('Bengaluru, Karnataka, India On-site, six months', 30)), false);
+check('the result never exceeds the budget',
+  clampWords('a'.repeat(200), 155).length <= 155, true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
