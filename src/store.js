@@ -256,6 +256,22 @@ export class Store {
     `).run(company, provider, token, jobCount ?? 0, Date.now());
   }
 
+  /**
+   * Which company a board token belongs to.
+   *
+   * The reverse of getAts, and the reason it exists: a URL carries the TOKEN,
+   * which is usually the company name lower-cased and mangled — "zscaler",
+   * "paytm", "voleon". Storing that as the employer puts a lower-case name on a
+   * public card. The discovery pass already recorded the real name against the
+   * token, so this reads it back instead of guessing at capitalisation.
+   */
+  companyForBoard(provider, token) {
+    this.ensureAtsTable();
+    return this.db.prepare(
+      'SELECT company FROM company_ats WHERE provider = ? AND lower(token) = lower(?) LIMIT 1',
+    ).get(provider, token)?.company ?? null;
+  }
+
   /** Every company with a board worth polling. */
   atsBoards() {
     return this.db.prepare(

@@ -1004,6 +1004,14 @@ export async function discover(companyName, { providers = PROVIDER_NAMES, viaCar
 }
 
 /** Fetch the current postings for a discovered board. */
+/**
+ * Exported so a single posting fetched by URL is shaped exactly like one that
+ * came off a board — same fields, same stripHtml, same date parsing. Anything
+ * that built the shape by hand would drift from the boards the moment either
+ * side changed. See src/joburl.js.
+ */
+export { job as normalisePosting };
+
 export async function fetchBoard(providerName, token) {
   const provider = PROVIDERS[providerName];
   if (!provider) return null;
