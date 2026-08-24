@@ -6,6 +6,42 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-sde-i-intern-amazon-university-talent-acquisition-ats-amazon-ind-10506481",
+      "url": "https://interndoor.com/jobs/amazon-sde-i-intern-amazon-university-talent-acquisition-ats-amazon-ind-10506481",
+      "title": "SDE I Intern , Amazon University Talent Acquisition — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, KA, India · Duration: 6 months\n• Design scalable systems for distributed computing environments\n• Work with AWS and large-scale data technologies\n• Collaborate with senior engineers on mission-critical projects",
+      "date_published": "2026-08-24T16:16:06.966Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/times-internet-quality-assurance-intern-4456506067",
+      "url": "https://interndoor.com/jobs/times-internet-quality-assurance-intern-4456506067",
+      "title": "Quality Assurance Intern — Times Internet",
+      "content_text": "Company: Times Internet · Location: Noida, Uttar Pradesh, India · Duration: 6 months\n• Test web and api apps for bugs and usability issues\n• Use jira to track defects and automate test scripts\n• Work with developers and product teams in noida",
+      "date_published": "2026-08-24T15:52:25.527Z",
+      "authors": [
+        {
+          "name": "Times Internet"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jacobs-apprentice-engineer-piping-4458231439",
+      "url": "https://interndoor.com/jobs/jacobs-apprentice-engineer-piping-4458231439",
+      "title": "Apprentice Engineer - Piping — Jacobs",
+      "content_text": "Company: Jacobs · Location: Gurgaon, Haryana, India",
+      "date_published": "2026-08-24T15:51:29.920Z",
+      "authors": [
+        {
+          "name": "Jacobs"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/chegg-india-intern-cloud-operations-engineering-4447907250",
       "url": "https://interndoor.com/jobs/chegg-india-intern-cloud-operations-engineering-4447907250",
       "title": "Intern - Cloud Operations Engineering — Chegg India",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "AppVersal"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fyntune-solution-private-limited-devops-engineer-internship-in-delhi-delhi-4456414581",
-      "url": "https://interndoor.com/jobs/fyntune-solution-private-limited-devops-engineer-internship-in-delhi-delhi-4456414581",
-      "title": "DevOps Engineer Internship in Delhi, Delhi — FynTune Solution Private Limited",
-      "content_text": "Company: FynTune Solution Private Limited · Location: Delhi, India\n• Manage linux servers and troubleshoot issues\n• Configure aws infrastructure and ci/cd pipelines\n• Write shell scripts and maintain cron jobs",
-      "date_published": "2026-08-20T00:06:23.330Z",
-      "authors": [
-        {
-          "name": "FynTune Solution Private Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/silicon-labs-intern-sqa-4453484371",
-      "url": "https://interndoor.com/jobs/silicon-labs-intern-sqa-4453484371",
-      "title": "Intern - SQA — Silicon Labs",
-      "content_text": "Company: Silicon Labs · Location: Hyderabad, Telangana, India\n• Test software and hardware for wireless connectivity products\n• Use python and automation tools for test scripts\n• Work with cross-functional teams on embedded systems",
-      "date_published": "2026-08-19T22:12:52.155Z",
-      "authors": [
-        {
-          "name": "Silicon Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pearson-apprentice-quality-assurance-engineer-4455459292",
-      "url": "https://interndoor.com/jobs/pearson-apprentice-quality-assurance-engineer-4455459292",
-      "title": "Apprentice, Quality Assurance Engineer — Pearson",
-      "content_text": "Company: Pearson · Location: India\n• Execute manual and automated tests for software features\n• Use selenium or playwright for test automation\n• Report and resolve defects with qa and dev teams",
-      "date_published": "2026-08-19T20:01:11.807Z",
-      "authors": [
-        {
-          "name": "Pearson"
         }
       ]
     }
