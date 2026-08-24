@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://gradkite.com/jobs/fam-devops-engineering-intern-4458164979",
+      "url": "https://gradkite.com/jobs/fam-devops-engineering-intern-4458164979",
+      "title": "DevOps Engineering Intern — Fam",
+      "content_text": "Company: Fam · Location: Bengaluru, Karnataka, India · Duration: 3–6 months\n• Build and maintain CI/CD pipelines for frontend and backend services\n• Use Infrastructure as Code to manage cloud resources and Kubernetes clusters\n• Troubleshoot production issues and improve system reliability and uptime",
+      "date_published": "2026-08-24T09:22:58.142Z",
+      "authors": [
+        {
+          "name": "Fam"
+        }
+      ]
+    },
+    {
       "id": "https://gradkite.com/jobs/greedygame-product-design-intern-4456845947",
       "url": "https://gradkite.com/jobs/greedygame-product-design-intern-4456845947",
       "title": "Product Design Intern — GreedyGame",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Dentsu Creative"
-        }
-      ]
-    },
-    {
-      "id": "https://gradkite.com/jobs/infineon-technologies-young-graduate-trainee-4456198762",
-      "url": "https://gradkite.com/jobs/infineon-technologies-young-graduate-trainee-4456198762",
-      "title": "Young Graduate Trainee — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India · Duration: 0 to 3 years\n• Validate wifi radio and debug rf socip for iot products\n• Write scripts and generate rf test reports\n• Work with rf systems and integration teams",
-      "date_published": "2026-08-19T13:13:31.068Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
         }
       ]
     }
