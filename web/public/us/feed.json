@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/verkada-mobile-software-engineering-intern-2027-ats-greenhouse-verkada-5219131007",
+      "url": "https://interndoor.com/us/jobs/verkada-mobile-software-engineering-intern-2027-ats-greenhouse-verkada-5219131007",
+      "title": "Mobile Software Engineering Intern 2027 — Verkada",
+      "content_text": "Company: Verkada · Location: San Mateo, CA United States · Duration: Summer 2027\n• Develop native mobile apps for security systems using Swift or Kotlin\n• Collaborate with cross-functional teams on new features and improvements\n• Work in sprints to design, build, and test mobile solutions",
+      "date_published": "2026-08-25T18:14:00.000Z",
+      "authors": [
+        {
+          "name": "Verkada"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/verkada-security-software-engineering-intern-2027-ats-greenhouse-verkada-5213881007",
+      "url": "https://interndoor.com/us/jobs/verkada-security-software-engineering-intern-2027-ats-greenhouse-verkada-5213881007",
+      "title": "Security Software Engineering Intern 2027 — Verkada",
+      "content_text": "Company: Verkada · Location: San Mateo, CA United States · Duration: Summer 2027\n• Build scalable systems for global device networks\n• Work with Redis, DynamoDB, Postgres, Kafka, and Terraform\n• Collaborate on high-reliability microservices and computer vision",
+      "date_published": "2026-08-25T18:12:08.000Z",
+      "authors": [
+        {
+          "name": "Verkada"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/verkada-frontend-software-engineering-intern-2027-ats-greenhouse-verkada-5210942007",
+      "url": "https://interndoor.com/us/jobs/verkada-frontend-software-engineering-intern-2027-ats-greenhouse-verkada-5210942007",
+      "title": "Frontend Software Engineering Intern 2027 — Verkada",
+      "content_text": "Company: Verkada · Location: San Mateo, CA United States · Duration: Summer 2027\n• Build web and mobile interfaces for security platforms using React and React Native\n• Collaborate with product and design teams to ship polished, user-focused features\n• Work on-site at Verkada HQ in San Mateo, CA during winter or summer 2027",
+      "date_published": "2026-08-25T18:12:05.000Z",
+      "authors": [
+        {
+          "name": "Verkada"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/verkada-embedded-software-engineering-intern-2027-ats-greenhouse-verkada-5211595007",
+      "url": "https://interndoor.com/us/jobs/verkada-embedded-software-engineering-intern-2027-ats-greenhouse-verkada-5211595007",
+      "title": "Embedded Software Engineering Intern 2027 — Verkada",
+      "content_text": "Company: Verkada · Location: San Mateo, CA United States · Duration: Summer 2027\n• Develop and maintain embedded software for Verkada devices using C, C++, and Go\n• Collaborate with hardware and product teams to ship features globally\n• Work on firmware, drivers, and OTA updates for deployed systems",
+      "date_published": "2026-08-25T18:12:01.000Z",
+      "authors": [
+        {
+          "name": "Verkada"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/verkada-backend-software-engineering-intern-2027-ats-greenhouse-verkada-5210813007",
+      "url": "https://interndoor.com/us/jobs/verkada-backend-software-engineering-intern-2027-ats-greenhouse-verkada-5210813007",
+      "title": "Backend Software Engineering Intern 2027 — Verkada",
+      "content_text": "Company: Verkada · Location: San Mateo, CA United States · Duration: Summer 2027\n• Build scalable systems for global device networks\n• Work with Redis, DynamoDB, Postgres, Kafka\n• Deploy via Terraform and Kubernetes",
+      "date_published": "2026-08-25T18:11:58.000Z",
+      "authors": [
+        {
+          "name": "Verkada"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/philips-co-op-robotics-mechatronics-surgical-robotics-cambridge-ma-fall-2026-4457616475",
       "url": "https://interndoor.com/us/jobs/philips-co-op-robotics-mechatronics-surgical-robotics-cambridge-ma-fall-2026-4457616475",
       "title": "Co-op - Robotics Mechatronics, Surgical Robotics - Cambridge, MA - Fall 2026 — Philips",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/procter-and-gamble-engineering-internship-summer-2027-4456939320",
-      "url": "https://interndoor.com/us/jobs/procter-and-gamble-engineering-internship-summer-2027-4456939320",
-      "title": "Engineering Internship, Summer 2027 — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Phoenix, AZ · Duration: 12 weeks\n• Support design and implementation of control systems, robotics, and AI/ML for process automation\n• Work with Rockwell PLCs, 3D CAD, and industrial networks on manufacturing projects\n• Relocate for 12-week internship in Phoenix, AZ, with potential for future mobility",
-      "date_published": "2026-08-25T14:55:04.959Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-cybersecurity-analyst-apprentice-4446241758",
-      "url": "https://interndoor.com/us/jobs/ibm-cybersecurity-analyst-apprentice-4446241758",
-      "title": "Cybersecurity Analyst Apprentice — IBM",
-      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 12 months\n• Monitor networks/systems for security threats and respond to incidents\n• Use security tools to detect vulnerabilities and maintain system infrastructure\n• Work with teams to investigate breaches and report findings\n• Maintain awareness of cyber trends and operate security toolsets",
-      "date_published": "2026-08-25T14:54:18.017Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/voleon-group-software-engineer-university-hire-2027-ats-ashby-voleon-d732fd5a-ac98-4985-9e60-d1d59f02a66c",
-      "url": "https://interndoor.com/us/jobs/voleon-group-software-engineer-university-hire-2027-ats-ashby-voleon-d732fd5a-ac98-4985-9e60-d1d59f02a66c",
-      "title": "Software Engineer - University Hire 2027 — Voleon Group",
-      "content_text": "Company: Voleon Group · Location: Berkeley, CA\n• Build and maintain high-performance software for trading and research platforms\n• Work with Python, R, Java, Go, and C/C++ in Linux environments\n• Collaborate with traders and researchers on scalable, resilient solutions",
-      "date_published": "2026-08-25T14:20:14.967Z",
-      "authors": [
-        {
-          "name": "Voleon Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boeing-boeing-summer-2027-internship-program-paid-information-digital-technol-4448810097",
-      "url": "https://interndoor.com/us/jobs/boeing-boeing-summer-2027-internship-program-paid-information-digital-technol-4448810097",
-      "title": "Boeing Summer 2027 Internship Program (Paid) – Information Digital Technology & Security (IDT&S) — Boeing",
-      "content_text": "Company: Boeing · Location: Everett, WA · Duration: 10-12 weeks\n• Develop secure digital solutions for global aerospace systems\n• Use Python, cloud platforms, and cybersecurity tools\n• Work onsite in Everett, WA with experienced engineers",
-      "date_published": "2026-08-25T14:05:14.693Z",
-      "authors": [
-        {
-          "name": "Boeing"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-refining-electrical-engineering-spring-2027-4364957181",
-      "url": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-refining-electrical-engineering-spring-2027-4364957181",
-      "title": "Intern/Co-op - Refining Electrical Engineering (Spring 2027) — Marathon Petroleum Corporation",
-      "content_text": "Company: Marathon Petroleum Corporation · Location: El Paso, TX · Duration: Spring 2027\n• Work on electrical and instrumentation projects in refinery settings\n• Use software for arc flash studies and equipment maintenance\n• Collaborate with teams on process control systems and troubleshooting",
-      "date_published": "2026-08-25T14:04:46.431Z",
-      "authors": [
-        {
-          "name": "Marathon Petroleum Corporation"
         }
       ]
     }
