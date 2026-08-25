@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/signzy-quality-assurance-intern-4457456765",
+      "url": "https://interndoor.com/jobs/signzy-quality-assurance-intern-4457456765",
+      "title": "Quality Assurance Intern — Signzy",
+      "content_text": "Company: Signzy · Location: Bengaluru, Karnataka, India · Duration: 3 months\n• Create test cases and scenarios based on documents\n• Execute tests, report defects, and do regression testing\n• Work with APIs, Node.js, Postman, and Python\n• 3-month in-office internship starting immediately",
+      "date_published": "2026-08-25T09:15:53.922Z",
+      "authors": [
+        {
+          "name": "Signzy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456597052",
+      "url": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456597052",
+      "title": "Application developer Intern- IBM cloud full stack — IBM",
+      "content_text": "Company: IBM · Location: Coimbatore, Tamil Nadu, India\n• Monitor applications, analyze incidents, and perform simple fixes\n• Administer services, configure non-code settings, and maintain docs\n• Support senior consultants, learn on the job, and triage issues",
+      "date_published": "2026-08-25T08:38:51.218Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456595056",
       "url": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456595056",
       "title": "Application developer Intern- IBM cloud full stack — IBM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/silicon-labs-intern-hw-4454105959",
-      "url": "https://interndoor.com/jobs/silicon-labs-intern-hw-4454105959",
-      "title": "Intern - HW — Silicon Labs",
-      "content_text": "Company: Silicon Labs · Location: Hyderabad, Telangana, India\n• Support development of hardware modules for smart home devices\n• Work with cadence tools and simulation software\n• Collaborate with cross-functional teams on product integration",
-      "date_published": "2026-08-20T15:48:52.969Z",
-      "authors": [
-        {
-          "name": "Silicon Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valeo-graduate-trainee-gisocc-r-and-d-dsis-4446823345",
-      "url": "https://interndoor.com/jobs/valeo-graduate-trainee-gisocc-r-and-d-dsis-4446823345",
-      "title": "Graduate Trainee - GISOCC R&D DSIS — Valeo",
-      "content_text": "Company: Valeo · Location: Chennai, Tamil Nadu, India\n• Support key users and coe centres with catia v5\n• Collaborate on cad topics with team members\n• Assist with mechanical l2 support logic",
-      "date_published": "2026-08-20T15:42:57.530Z",
-      "authors": [
-        {
-          "name": "Valeo"
         }
       ]
     }
