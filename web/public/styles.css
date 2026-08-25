@@ -579,6 +579,10 @@ a, button, summary, label, [role="button"], .row {
 .role .qual::before { content: "·"; margin: 0 7px; color: var(--ink-3); }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em; color: var(--ink-3); text-transform: uppercase; }
 .meta .cash { color: var(--cash); font-weight: 700; }
+/* The city list on a role advertised in more than one place. Slightly brighter
+   than the rest of the meta line because it is replacing the single location,
+   which is the fact a reader scans this line for. */
+.meta .cities { color: var(--ink-2); }
 .meta .ea { color: var(--hot); }
 .meta .unpaid { color: var(--ink-3); }
 .meta .dunno { color: var(--ink-3); opacity: .72; }
@@ -937,6 +941,22 @@ a, button, summary, label, [role="button"], .row {
 .p-co { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: .96; letter-spacing: -.045em; text-transform: uppercase; }
 .p-role { margin-top: 9px; font-size: 16px; color: var(--ink); }
 .p-loc { margin-top: 6px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+
+/* Every city a collapsed role is open in, each its own posting and its own page.
+   Chips rather than a sentence: they are links, and they have to look like it. */
+.p-places { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.place {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
+  border-radius: 3px; padding: 3px 7px; text-decoration: none;
+  transition: border-color .16s, color .16s;
+}
+/* The one already showing in this pane. Marked so the reader can tell which of
+   twenty-one cities they are currently reading. */
+.place.is-here { color: var(--live); border-color: var(--live); }
+@media (hover: hover) and (pointer: fine) {
+  .place:hover { color: var(--ink); border-color: var(--ink-3); }
+}
 
 .p-acts { display: flex; gap: 9px; margin: 22px 0; flex-wrap: wrap; }
 

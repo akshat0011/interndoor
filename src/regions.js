@@ -137,6 +137,17 @@ const REGION_LIST = [
       'georgia', 'colorado', 'arizona', 'oregon', 'michigan', 'pennsylvania',
       'north carolina', 'new jersey', 'ohio', 'utah', 'minnesota', 'wisconsin',
       'maryland', 'tennessee', 'missouri', 'indiana', 'connecticut',
+      // The rest of the fifty, completed 25 Aug once US LinkedIn collection
+      // started and the gaps became visible — "Iowa City, IA" resolved to
+      // `unknown` purely because `iowa` was missing. A spelled-out state name
+      // is unambiguous against every other region in the registry, so this is
+      // the cheap half of the problem. The expensive half is left alone: see
+      // the note on the six excluded codes below.
+      'alabama', 'alaska', 'arkansas', 'delaware', 'hawaii', 'idaho', 'iowa',
+      'kansas', 'kentucky', 'louisiana', 'maine', 'mississippi', 'montana',
+      'nebraska', 'nevada', 'new hampshire', 'new mexico', 'north dakota',
+      'oklahoma', 'rhode island', 'south carolina', 'south dakota', 'vermont',
+      'washington', 'west virginia', 'wyoming',
     ],
   },
   {
@@ -158,6 +169,23 @@ const REGION_LIST = [
       'belfast', 'cardiff', 'liverpool', 'sheffield', 'nottingham', 'newcastle',
       'oxford', 'reading', 'brighton', 'southampton', 'aberdeen', 'coventry',
       'milton keynes', 'basingstoke', 'swindon', 'leicester'],
+    // Deleting these outright — the cambridge/birmingham treatment — is NOT an
+    // option here, and the measurement says why: of 30 live GB rows only 7 name
+    // the country at all, and 13 are the bare word "London". Removing them
+    // would send most of the UK board to `unknown`.
+    //
+    // So they stay, as WEAK evidence instead. Each also names a real US city,
+    // and the US writes "City, ST" — which the city pass used to swallow before
+    // the code pass ever ran. Every one of these was measured misfiling to GB:
+    // Reading PA, Manchester NH, Bristol CT, Oxford MS, Newcastle WA,
+    // Brighton MI, Leicester MA, Southampton NY, Liverpool NY, Sheffield AL,
+    // Nottingham MD, Coventry RI, London KY, Glasgow DE, Cardiff CA, Leeds AL,
+    // Aberdeen SD. "Reading, PA" turned up in the first 24 cards of the very
+    // first US sweep, so this is not hypothetical.
+    ambiguousCities: ['london', 'manchester', 'bristol', 'oxford', 'newcastle',
+      'brighton', 'leicester', 'southampton', 'liverpool', 'sheffield',
+      'nottingham', 'coventry', 'cardiff', 'glasgow', 'reading', 'aberdeen',
+      'leeds'],
   },
   {
     code: 'CA',
@@ -176,6 +204,16 @@ const REGION_LIST = [
     cities: ['toronto', 'vancouver', 'montreal', 'montréal', 'ottawa', 'waterloo',
       'calgary', 'edmonton', 'mississauga', 'kitchener', 'quebec', 'québec',
       'winnipeg', 'halifax', 'ontario', 'british columbia'],
+    // Same weak-evidence treatment as GB's, for the three that name real US
+    // places a US feed will actually write: Vancouver WA (Portland metro),
+    // Ottawa IL/KS, Waterloo NY. Prophylactic rather than observed — unlike
+    // GB's list, none of these has turned up misfiled yet.
+    //
+    // `ontario` is deliberately NOT here. Ontario, California is real, but
+    // "Ontario, CA" is the exact shape the city-before-code rule exists to get
+    // right, and flipping it would resolve the province to the United States.
+    // `toronto` is absent for the same documented reason.
+    ambiguousCities: ['vancouver', 'ottawa', 'waterloo'],
   },
   {
     code: 'DE',
@@ -318,6 +356,12 @@ const MATCHERS = REGION_LIST.map((region) => ({
   code2: region.codes.length
     ? new RegExp(`(?:,\\s*(?:${region.codes.join('|')})\\s*$)|(?:^\\s*(?:${region.codes.join('|')})-)`, 'i')
     : null,
+  /**
+   * City names this region shares with a real place in another one. A match on
+   * one of these is held back rather than returned, so an explicit code
+   * elsewhere in the string can outrank it. See resolveRegion.
+   */
+  ambiguous: anyOf(region.ambiguousCities ?? []),
 }));
 
 /**
@@ -341,10 +385,33 @@ export function resolveRegion(location, { fallback = null } = {}) {
   if (!text) return fallback ?? UNKNOWN;
 
   for (const m of MATCHERS) if (m.country?.test(text)) return m.code;
-  for (const m of MATCHERS) if (m.city?.test(text)) return m.code;
+
+  // A city usually settles it outright, and city still beats code — "Toronto,
+  // CA" and "San Jose, CA" are the same shape and mean different continents,
+  // and resolving the city first is the only thing that gets both right.
+  //
+  // The exception is a city name that another country also uses. Those are held
+  // as WEAK: remembered, but not returned until the code pass has had its turn.
+  // Without this, "Reading, PA" resolved to the United Kingdom — `reading`
+  // matched Britain before `pa` was ever looked at — and so did seventeen other
+  // measured US places, every one of them a US role that would have been
+  // published on the UK board. A bare "London" still resolves to Britain,
+  // because nothing outranks it.
+  // The FIRST city match in region order wins, exactly as it always has — a
+  // posting listing several offices ("London; Amsterdam") must not change
+  // country because one of its cities happens to be ambiguous. Being weak buys
+  // the code pass a chance to outrank it, and nothing else.
+  let weak = null;
+  for (const m of MATCHERS) {
+    if (!m.city?.test(text)) continue;
+    if (!m.ambiguous?.test(text)) return m.code;
+    weak = m.code;
+    break;
+  }
+
   for (const m of MATCHERS) if (m.code2?.test(text)) return m.code;
 
-  return UNKNOWN;
+  return weak ?? UNKNOWN;
 }
 
 /**

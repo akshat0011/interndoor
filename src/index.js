@@ -3,7 +3,7 @@
  * One scan of LinkedIn for new internships at the watchlist companies.
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
-import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isBlockedCompany } from './config.js';
+import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany } from './config.js';
 import { join } from 'node:path';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
@@ -99,6 +99,19 @@ const COVERED_MARGIN_MS = 45 * 60_000;
 
 /** Consecutive fully-covered pages before pagination gives up on a search. */
 const COVERED_PAGES_BEFORE_STOP = 2;
+
+/**
+ * Fewest cards a page may average before the sweep is treated as not having
+ * rendered at all.
+ *
+ * A rendered page of results is 20-25 cards; a session LinkedIn has stopped
+ * serving draws the list as the single job in the detail pane and nothing else,
+ * measuring exactly 1.0. The two states do not overlap, checked against 40 runs.
+ *
+ * Module scope because it is now applied twice: once per search, to decide
+ * whether that region's baseline may move, and once per run for the status.
+ */
+const CARDS_PER_PAGE_FLOOR = 5;
 
 /** Tracks the wall-clock ceiling so a run can never sprawl unattended. */
 function budget(maxMinutes) {
@@ -346,34 +359,64 @@ async function main() {
 
   store.startRun(runId);
 
-  // Size the lookback from the gap since the last successful run. A fixed wide
-  // window would make every hourly run re-paginate a day of postings to find
-  // the newest hour; a fixed narrow one would lose everything posted while the
-  // lid was shut. This does both jobs.
+  // Size the lookback from the gap since that REGION last finished a sweep. A
+  // fixed wide window would make every hourly run re-paginate a day of postings
+  // to find the newest hour; a fixed narrow one would lose everything posted
+  // while the lid was shut. This does both jobs.
+  //
+  // Measured per region, not per run. Two searches now cover different
+  // countries, and a run that swept India and marked itself `ok` says nothing
+  // about when the US was last walked — see Store.lastRegionSweep.
+  //
+  // A region with no baseline of its own falls back to the RUN-level one, and
+  // that fallback does two jobs. It leaves India unchanged on the first run
+  // after this ships, rather than reading as never-swept and jumping to the 36h
+  // maximum. And it gives a newly added region a soft start instead of the most
+  // expensive request burst the account would ever make: with no baseline at
+  // all a cold region takes maxWindowHours, and against US supply — 24
+  // intern-titled cards per 12 minutes, measured — 36 hours is several thousand
+  // results, so the walk would hit the 40-page cap, never reach a real end,
+  // never record a baseline, and do the same thing again on every run forever.
+  // Starting from the last run instead means a cold region collects the most
+  // recent slice, completes, records its baseline, and is in steady state from
+  // its second sweep.
+  //
+  // The cost is that a new region does NOT backfill its history. That is
+  // deliberate: `--window-hours` exists for exactly that, and already disables
+  // the early stop so a deep walk is not cut short.
   const lastRun = store.lastFullSweep();
-  cfg.filters.postedWithinHours = resolveWindowHours(lastRun?.started_at ?? null, cfg.filters);
-  log.info(lastRun?.started_at
-    ? `Lookback window: ${cfg.filters.postedWithinHours}h (last run ${((Date.now() - lastRun.started_at) / 3_600_000).toFixed(1)}h ago).`
-    : `Lookback window: ${cfg.filters.postedWithinHours}h (no previous run to measure from).`);
 
-  // Everything older than this was already walked by an earlier sweep.
-  //
-  // The window has a 3-hour floor while the loop runs every half hour, so a
-  // scan re-paginates hours of postings to reach the few minutes of genuinely
-  // new ones. Measured over the scheduled runs: 873 page loads produced 16
-  // opens, and every one but a single card sat on pages 1-3. The rest was the
-  // same junk re-read, and page loads are the request budget that a rate limit
-  // is eventually spent on.
-  //
-  // Deliberately NOT applied when --window-hours was passed: that override
-  // exists to walk deliberately deep after an outage, and stopping early would
-  // defeat the one job it has.
-  const coveredHorizon = (!OVERRIDES.windowHours && lastRun?.started_at)
-    ? lastRun.started_at - COVERED_MARGIN_MS
-    : null;
+  /**
+   * The lookback window and covered-ground horizon for one search.
+   *
+   * coveredHorizon is the load-bearing half. Results are date-descending, so
+   * once two consecutive pages carry nothing newer than the last sweep covered,
+   * everything past them is older still. Measured over the scheduled runs: 873
+   * page loads produced 16 opens, and every one but a single card sat on pages
+   * 1-3. The rest was the same junk re-read, and page loads are the request
+   * budget that a rate limit is eventually spent on.
+   *
+   * Both are deliberately disabled when --window-hours was passed: that
+   * override exists to walk deliberately deep after an outage, and stopping
+   * early would defeat the one job it has.
+   */
+  const planSweep = (region) => {
+    const baseline = store.lastRegionSweep(region) ?? lastRun?.started_at ?? null;
+    const hours = resolveWindowHours(baseline, cfg.filters);
+    return {
+      filters: { ...cfg.filters, postedWithinHours: hours },
+      coveredHorizon: (!OVERRIDES.windowHours && baseline) ? baseline - COVERED_MARGIN_MS : null,
+      baseline,
+    };
+  };
 
   const clock = budget(cfg.limits.maxRuntimeMinutes);
   const notes = [];
+  // The lookback each search actually used. Regions are swept on their own
+  // baselines, so there is no longer a single run-wide window to quote in the
+  // summary — India can be on its 3h floor while a region that has just been
+  // switched on is still walking its first 36h.
+  const windowsUsed = new Set();
   const counters = { pagesScanned: 0, cardsSeen: 0, detailsExtracted: 0, newJobs: 0, skippedStale: 0, skippedCompany: 0, skippedTitle: 0, techRoles: 0, nonTechRoles: 0, geminiJudged: 0, termsLearned: 0, nearMisses: 0, skippedViewed: 0, listedWithoutOpening: 0, logosBackfilled: 0, skippedKnown: 0, failedDetails: 0, descriptionsBackfilled: 0, cardsWithoutId: 0, cardKeysMigrated: 0 };
 
   log.section(`Run ${runId}`);
@@ -410,9 +453,25 @@ async function main() {
     // next cursor `0 + searchesDone` — rewinding the rotation to searches that
     // had just been covered and skipping the ones still waiting for their turn.
     searchStart = cursor;
-    const ordered = [...allSearches.slice(cursor), ...allSearches.slice(0, cursor)];
+    const rotation = [...allSearches.slice(cursor), ...allSearches.slice(0, cursor)];
     if (cursor > 0) {
       log.info(`Resuming the rotation at position ${cursor + 1} of ${allSearches.length}.`);
+    }
+
+    // How many searches one run may walk. 0 (the default) means all of them.
+    //
+    // This is the request-budget dial, and it exists because a second LinkedIn
+    // region doubles the page loads made against the one account the whole
+    // board depends on — the account LinkedIn dropped twice in August, without
+    // ever answering 429. Setting it to 1 makes the regions take turns instead:
+    // each is swept half as often, and total request volume stays exactly where
+    // it was on a single region. The cursor above already rotates the starting
+    // point, so capping the queue is the whole change — no region is skipped,
+    // it just waits its turn.
+    const perRun = Number(cfg.limits.searchesPerRun ?? 0);
+    const ordered = perRun > 0 ? rotation.slice(0, perRun) : rotation;
+    if (perRun > 0 && allSearches.length > perRun) {
+      log.info(`Walking ${ordered.length} of ${allSearches.length} searches this run — the rest take their turn next.`);
     }
 
     searchLoop:
@@ -422,12 +481,60 @@ async function main() {
         : `${search.keywords}${search.location ? ` @ ${search.location}` : ''}`;
       log.section(`Search: ${label} — ${searchIndex + 1}/${ordered.length}`);
 
+      // This search's own region baseline, resolved here rather than once for
+      // the run: two searches can be walking different countries with different
+      // last-swept times.
+      const region = search.region ?? 'IN';
+      const { filters, coveredHorizon, baseline } = planSweep(region);
+
+      // A search may run less often than the loop ticks.
+      //
+      // This is per SEARCH, which is what makes it different from
+      // limits.searchesPerRun: that dial makes every region take turns at the
+      // same rate, whereas this lets India keep its 30-minute freshness while a
+      // denser, less time-critical region is walked hourly. Freshness is the
+      // whole promise on the India board; the US board is fed by an employer
+      // pool that posts steadily all day.
+      //
+      // Skipping is NOT the same as failing. The baseline is left exactly where
+      // it was, so when the search does run its window has stretched to cover
+      // the gap and nothing is missed — the adaptive window already does this
+      // for an outage, and an intentional skip is the same shape.
+      const intervalMin = Number(search.intervalMinutes ?? 0);
+      if (!OVERRIDES.windowHours && !isSearchDue(baseline, intervalMin)) {
+        const elapsedMin = (Date.now() - baseline) / 60_000;
+        log.info(`${region}: last swept ${elapsedMin.toFixed(0)}m ago, runs every ${intervalMin}m — skipping this run.`);
+        searchesDone++;
+        continue;
+      }
+
+      windowsUsed.add(filters.postedWithinHours);
+      const searchStartedAt = Date.now();
+      // Cards seen by THIS search, for the per-search render floor below. A
+      // run-wide average blurs the moment two searches return different
+      // volumes: a thin region could drag a healthy run's mean under the floor
+      // and have it recorded `partial`, which stretches the next window and
+      // walks MORE pages — the opposite of what the floor is for.
+      const before = { pages: counters.pagesScanned, cards: counters.cardsSeen };
+      log.info(baseline
+        ? `${region}: ${filters.postedWithinHours}h window (last swept ${((Date.now() - baseline) / 3_600_000).toFixed(1)}h ago).`
+        : `${region}: ${filters.postedWithinHours}h window — never swept, so no early stop this run.`);
+
       // Resuming a partial backfill starts deeper into the result set. The page
       // budget counts from there, and LinkedIn's own Next control still decides
       // where the results actually end.
       const firstPage = OVERRIDES.startPage ? OVERRIDES.startPage - 1 : 0;
       const lastPage = firstPage + cfg.limits.maxPagesPerSearch;
       let coveredPages = 0;
+      // Whether pagination reached a real end — LinkedIn said there was no
+      // next page, the results ran out, or the walk caught up with ground an
+      // earlier sweep already covered. Only then may this region's baseline
+      // move forward. A walk cut short by a failed navigation or by the page
+      // cap has NOT covered its window, and recording it as swept would put
+      // everything it never paginated to behind the next run's horizon, where
+      // nothing would ever look at it again. Same reasoning as lastFullSweep
+      // restricting itself to 'ok'.
+      let walkComplete = false;
       // Whether any page of THIS search has rendered cards. Once one has, an
       // empty page is the end of the results rather than a selector break —
       // see assertListRendered.
@@ -451,7 +558,7 @@ async function main() {
           break searchLoop;
         }
 
-        const url = li.buildSearchUrl(search, cfg.filters, { start: pageIndex * li.RESULTS_PER_PAGE });
+        const url = li.buildSearchUrl(search, filters, { start: pageIndex * li.RESULTS_PER_PAGE });
         log.info(`Page ${pageIndex + 1} — ${url}`);
 
         const nav = {};
@@ -477,9 +584,9 @@ async function main() {
         counters.cardsSeen += cards.length;
         log.info(`Found ${cards.length} job cards.`);
 
-        if (cards.length === 0) break;
+        if (cards.length === 0) { walkComplete = true; break; }
 
-        const cutoff = Date.now() - cfg.filters.postedWithinHours * 3_600_000;
+        const cutoff = Date.now() - filters.postedWithinHours * 3_600_000;
         let openedOnThisPage = 0;
 
         for (const card of cards) {
@@ -774,6 +881,7 @@ async function main() {
             coveredPages = 0;
           } else if (++coveredPages >= COVERED_PAGES_BEFORE_STOP) {
             log.ok(`Page ${pageIndex + 1} and the one before it were entirely older than the last sweep — stopping "${label}" here.`);
+            walkComplete = true;
             break;
           }
         }
@@ -785,10 +893,12 @@ async function main() {
         const more = await li.hasNextPage(page);
         if (more === false) {
           log.ok(`No Next button — all ${pageIndex + 1} pages of "${label}" have been searched.`);
+          walkComplete = true;
           break;
         }
         if (more === null && cards.length < li.RESULTS_PER_PAGE) {
           log.info(`No pagination control and a short page — treating page ${pageIndex + 1} as the last.`);
+          walkComplete = true;
           break;
         }
         if (pageIndex === lastPage - 1) {
@@ -799,6 +909,36 @@ async function main() {
       }
 
       searchesDone++;
+
+      // Move this region's baseline forward, but only on a walk that both
+      // reached a real end AND actually rendered results.
+      //
+      // The render check is the important half, and it is the per-search
+      // equivalent of the run-level floor further down. A degraded session
+      // returns one card a page while still serving a result count and a
+      // working Next button, so pagination ends "cleanly" having collected
+      // almost nothing. Recording that as a completed sweep would advance the
+      // baseline over a window that was never really read, and the covered
+      // horizon would then skip that ground on every later run — the exact
+      // silent hole that keeping lastFullSweep to 'ok' exists to prevent.
+      const pagesHere = counters.pagesScanned - before.pages;
+      const cardsHere = counters.cardsSeen - before.cards;
+      const rendered = pagesHere > 0 && cardsHere / pagesHere >= CARDS_PER_PAGE_FLOOR;
+
+      if (!DRY_RUN && walkComplete && rendered) {
+        store.markRegionSweep(region, searchStartedAt);
+        log.ok(`${region} swept — ${cardsHere} cards across ${pagesHere} page(s).`);
+      } else if (!DRY_RUN && pagesHere > 0 && !rendered) {
+        status = 'partial';
+        notes.push(
+          `The ${region} search averaged ${(cardsHere / pagesHere).toFixed(1)} cards across ${pagesHere} page(s) — ` +
+          'the results list did not render, so that region\'s baseline was left where it was. ' +
+          'The LinkedIn session is the usual cause; check it with `npm run login`.',
+        );
+        log.warn(`${region} did not render (${cardsHere} cards / ${pagesHere} pages) — baseline unchanged.`);
+      } else if (!DRY_RUN && !walkComplete) {
+        log.info(`${region} did not finish its walk — baseline unchanged, next run re-covers the window.`);
+      }
 
       if (searchIndex < ordered.length - 1) {
         log.info('Pausing between searches…');
@@ -956,7 +1096,7 @@ async function main() {
   const summaryLine =
     `${counters.cardsSeen} cards scanned · ${counters.detailsExtracted} opened · ${counters.newJobs} new · ` +
     `skipped ${counters.skippedCompany} off-watchlist, ${counters.skippedTitle} title not an internship, ` +
-    `${counters.skippedStale} older than ${cfg.filters.postedWithinHours}h, ${counters.skippedKnown} already known, ` +
+    `${counters.skippedStale} older than ${[...windowsUsed].sort((a, b) => a - b).join('/') || cfg.filters.postedWithinHours}h, ${counters.skippedKnown} already known, ` +
     `${counters.skippedViewed} already viewed · ${counters.listedWithoutOpening} listed without opening` +
     (counters.descriptionsBackfilled ? ` · ${counters.descriptionsBackfilled} descriptions backfilled` : '') +
     (counters.failedDetails ? ` · ${counters.failedDetails} failed to read` : '') +
@@ -1027,7 +1167,6 @@ async function main() {
   // pins the next lookback to its 3h minimum, leaving the missed postings
   // behind for good. As partial, the baseline stays put and the window stretches
   // over the gap (to maxWindowHours) on the next healthy run.
-  const CARDS_PER_PAGE_FLOOR = 5;
   if (
     status === 'ok' && !DRY_RUN &&
     counters.pagesScanned > 0 &&

@@ -51,11 +51,93 @@ const state = {
   // an internship and must not be presented as one.
   kind: 'intern',
   filtered: [],
+  // roleKey -> every posting of that role currently on screen, so the detail
+  // pane can list a collapsed card's other cities. Rebuilt by renderList.
+  groups: new Map(),
   selectedId: null,
   resumeText: '',
   tailored: null,
   generatedAt: null,
 };
+
+/**
+ * One role at one employer, however many cities it is advertised in.
+ *
+ * Some employers post a single opening separately for every location: Procter &
+ * Gamble ran 21 copies of "Engineering Internship, Summer 2027" on the US board,
+ * one per city, and IBM three of "Cybersecurity Analyst Apprentice". Each really
+ * is a distinct vacancy with its own job id and its own page — `card_keys` keys
+ * on location precisely so they are not collapsed during collection, because
+ * collapsing them there would lose every city but the first.
+ *
+ * That is right for the STORE and wrong for the FEED, where twenty-one identical
+ * headlines read as a fault. So they are collapsed here, at render time only:
+ * jobs.json still carries every posting, every posting still has its own page,
+ * and the crawlable list on the homepage still links to all of them.
+ *
+ * Company and title alone are NOT enough, and getting this wrong in either
+ * direction is bad. Employers also file several genuinely different jobs under
+ * one title — Emerson has seven "Graduate Engineer Trainee" postings that are
+ * five different roles, Valeo six "Intern" that are six — and merging those
+ * would hide real openings behind one card.
+ *
+ * `roleFingerprint` is a hash of the posting's own text, written by publish.js,
+ * and it is the only field that separates the two cases. None of the
+ * model-generated ones can: Siemens posted ONE role in 13 cities and the local
+ * model gave it three different roleLabels, while P&G's single 24-city opening
+ * produced four different summaries. A row with no fingerprint — nothing was
+ * scraped for it — falls back to its own id, so it stands alone rather than
+ * being merged on a guess. That is the safe direction: an extra card costs a
+ * little repetition, a wrongly merged one costs somebody a job.
+ */
+const roleKey = (j) => [
+  String(j.company ?? '').toLowerCase().trim(),
+  String(j.title ?? '').toLowerCase().trim(),
+  j.roleFingerprint || `id:${j.id}`,
+].join('|');
+
+/**
+ * Group an already-filtered, already-sorted list into one entry per role.
+ *
+ * A Map keeps insertion order, so the groups come out in the order the sort put
+ * them and the first posting in each is the representative — the newest under
+ * the default sort. Grouping AFTER filtering is what makes a city filter behave:
+ * pick one city and the group collapses to the postings in it.
+ */
+function groupByRole(list) {
+  const groups = new Map();
+  for (const j of list) {
+    const key = roleKey(j);
+    const g = groups.get(key);
+    if (g) g.push(j);
+    else groups.set(key, [j]);
+  }
+  return groups;
+}
+
+/** "Cincinnati, OH" -> "Cincinnati". The state and country add nothing on a chip. */
+const cityOf = (loc) => String(loc ?? '').split(',')[0].trim();
+
+/**
+ * The cities of a collapsed group, deduplicated and in order.
+ *
+ * Case-insensitive, keeping the better-capitalised spelling — the same employer
+ * writes the same city differently on different postings ("Gurgaon" and
+ * "gurgaon" both appear), and a chip list that shows both looks broken.
+ */
+function citiesOf(group) {
+  const seen = new Map();
+  for (const j of group) {
+    const city = cityOf(j.location);
+    if (!city) continue;
+    const key = city.toLowerCase();
+    const prev = seen.get(key);
+    if (!prev || (prev[0] === prev[0].toLowerCase() && city[0] !== city[0].toLowerCase())) {
+      seen.set(key, city);
+    }
+  }
+  return [...seen.values()];
+}
 
 /* ---------------- theme ---------------- */
 
@@ -205,8 +287,12 @@ function renderFreshness() {
 const kindOf = (j) => j.employmentType || 'intern';
 
 function renderTotal() {
-  const counts = { intern: 0, fulltime: 0 };
-  for (const j of state.jobs) counts[kindOf(j)] = (counts[kindOf(j)] ?? 0) + 1;
+  // Distinct ROLES, not postings, so the tab badge matches the number of cards
+  // the reader will actually count in the list below it. Without this, P&G's
+  // 21-city opening made the badge read 21 higher than the list.
+  const seen = { intern: new Set(), fulltime: new Set() };
+  for (const j of state.jobs) seen[kindOf(j)]?.add(roleKey(j));
+  const counts = { intern: seen.intern.size, fulltime: seen.fulltime.size };
   for (const k of ['intern', 'fulltime']) {
     const el = $(`n-${k}`);
     if (el) el.textContent = counts[k] ?? 0;
@@ -375,7 +461,7 @@ function roleLine(job) {
   return { node: p, usedFirstBullet: q.usedFirstBullet };
 }
 
-function jobCard(job, index) {
+function jobCard(job, index, group = [job]) {
   const li = document.createElement('li');
   const row = el('article', 'row');
   row.tabIndex = 0;
@@ -405,10 +491,19 @@ function jobCard(job, index) {
   const degree = degreeTag(job);
   if (degree) meta.append(degree);
 
-  // Enrichment runs against a daily API quota, so at any moment some postings have
-  // eligibility and skills and some do not. Where they do, that is the row. Where
-  // they do not, fall back to city and work mode so the row is not left empty.
-  if (!enriched(job)) {
+  // A role advertised in several cities says so here, whether or not it is
+  // enriched — it is the most useful thing on the card for someone deciding
+  // whether to read further, and it replaces the single city that would
+  // otherwise misrepresent the opening as being in one place.
+  const cities = group.length > 1 ? citiesOf(group) : [];
+  if (cities.length > 1) {
+    const shown = cities.slice(0, 3).join(' · ');
+    const rest = cities.length - 3;
+    meta.append(el('span', 'cities', rest > 0 ? `${shown} +${rest} more` : shown));
+  } else if (!enriched(job)) {
+    // Enrichment runs on a wall-clock budget, so at any moment some postings have
+    // eligibility and skills and some do not. Where they do, that is the row. Where
+    // they do not, fall back to city and work mode so the row is not left empty.
     if (job.location) meta.append(el('span', null, job.location));
     if (job.workplaceType) meta.append(el('span', null, job.workplaceType));
   }
@@ -546,7 +641,12 @@ function renderList() {
   rowLoops?.disconnect();
   list.replaceChildren();
 
-  const n = state.filtered.length;
+  state.groups = groupByRole(state.filtered);
+  const groups = [...state.groups.values()];
+
+  // Counted in ROLES, matching the cards on screen. A role advertised in
+  // twenty-one cities is one row here and says so on its own face.
+  const n = groups.length;
   $('result-count').textContent = state.jobs.length === 0
     ? 'nothing on the radar yet'
     : `${n} ${n === 1 ? 'role' : 'roles'}${anyFilterActive() ? ` / ${state.jobs.length}` : ''}`;
@@ -570,7 +670,7 @@ function renderList() {
   empty.hidden = true;
 
   const frag = document.createDocumentFragment();
-  state.filtered.forEach((job, i) => frag.append(jobCard(job, i)));
+  groups.forEach((group, i) => frag.append(jobCard(group[0], i, group)));
   list.append(frag);
   if (rowLoops) for (const li of list.children) rowLoops.observe(li);
 }
@@ -635,7 +735,28 @@ function renderDetail(job) {
 
   d.append(el('div', 'p-co', job.company));
   d.append(el('p', 'p-role', job.title));
-  if (job.location) d.append(el('div', 'p-loc', job.location));
+
+  // The other cities this same role is open in.
+  //
+  // The card collapses them into one row; this is where the collapsed postings
+  // become reachable again. Each is a genuinely separate vacancy with its own
+  // id, its own page and its own apply link, so every one gets a real link
+  // rather than a line of text — otherwise collapsing the card would be the
+  // only thing standing between a reader and twenty of the openings.
+  const siblings = state.groups.get(roleKey(job)) ?? [job];
+  if (siblings.length > 1) {
+    d.append(el('div', 'p-loc', `${siblings.length} locations`));
+    const places = el('div', 'p-places');
+    for (const s of siblings) {
+      const a = el('a', s.id === job.id ? 'place is-here' : 'place', cityOf(s.location) || s.location || 'Unspecified');
+      a.href = `${REGION_PATH}/jobs/${jobPageSlug(s)}`;
+      a.title = s.location || '';
+      places.append(a);
+    }
+    d.append(places);
+  } else if (job.location) {
+    d.append(el('div', 'p-loc', job.location));
+  }
 
   const actions = el('div', 'p-acts');
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);

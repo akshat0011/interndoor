@@ -139,5 +139,80 @@ check('collect covers unknown too', collectsRegion({}, UNKNOWN), true);
 check('an explicit collect list', collectsRegion({ regions: { collect: ['IN'] } }, 'US'), false);
 check('publishing without collecting is possible to express', collectsRegion({ regions: { collect: ['IN', 'US'] } }, 'US'), true);
 
+console.log('\n== a shared city name loses to an explicit state code ==');
+// Every one of these is a real US place whose name Britain also uses, written
+// the way LinkedIn writes US locations. They ALL resolved to GB before the
+// weak-city rule, because the city pass ran before the code pass — and
+// "Reading, PA" turned up in the first 24 cards of the first US sweep, so this
+// was a live route for US roles onto the UK board.
+at('reading pennsylvania', 'Reading, PA', 'US');
+at('manchester new hampshire', 'Manchester, NH', 'US');
+at('bristol connecticut', 'Bristol, CT', 'US');
+at('oxford mississippi', 'Oxford, MS', 'US');
+at('newcastle washington', 'Newcastle, WA', 'US');
+at('brighton michigan', 'Brighton, MI', 'US');
+at('southampton new york', 'Southampton, NY', 'US');
+at('liverpool new york', 'Liverpool, NY', 'US');
+at('sheffield alabama', 'Sheffield, AL', 'US');
+at('nottingham maryland', 'Nottingham, MD', 'US');
+at('coventry rhode island', 'Coventry, RI', 'US');
+at('london kentucky', 'London, KY', 'US');
+at('cardiff california', 'Cardiff, CA', 'US');
+at('leicester massachusetts', 'Leicester, MA', 'US');
+
+console.log('\n== but a bare british city is still british ==');
+// The whole reason these names stay in the gazetteer rather than being deleted
+// the way cambridge and birmingham were: of 30 live GB rows only 7 name the
+// country, and 13 are the bare word "London". Deleting them would send most of
+// the UK board to `unknown`. Every string here is verbatim from a stored row.
+at('bare london', 'London', 'GB');
+at('bare bristol', 'Bristol', 'GB');
+at('london spelled out', 'London,England,United Kingdom', 'GB');
+at('london with a code', 'London, gb', 'GB');
+at('london with the country', 'London, United Kingdom', 'GB');
+at('london with a suffix', 'London - UK2', 'GB');
+at('milton keynes office', 'Milton Keynes Office', 'GB');
+
+console.log('\n== a weak city is outranked by a code, never by another city ==');
+// A posting listing several offices must not change country because one of its
+// cities is ambiguous. An earlier version of the rule let a later STRONG city
+// match win, and these three flipped to NL and FR.
+at('two offices', 'London; Amsterdam', 'GB');
+at('london and paris', 'London; Paris', 'GB');
+at('four offices', 'London, Paris, Hong Kong, Tokyo', 'GB');
+
+console.log('\n== every US state name resolves, not just the first 23 ==');
+// "Iowa City, IA" resolved to `unknown` purely because `iowa` was missing from
+// the gazetteer while `california` and `texas` were in it. Found on the first
+// US sweep; the list is now all fifty.
+at('iowa city', 'Iowa City, IA', 'US');
+at('delaware spelled out', 'Wilmington, Delaware', 'US');
+at('maine spelled out', 'Portland, Maine', 'US');
+at('iowa spelled out', 'Des Moines, Iowa', 'US');
+at('washington state', 'Seattle, Washington', 'US');
+at('hawaii', 'Honolulu, Hawaii', 'US');
+at('new hampshire', 'Nashua, New Hampshire', 'US');
+
+console.log('\n== the six excluded codes are still a known gap ==');
+// `in`, `de`, `or`, `ia`, `me`, `hi` are deliberately absent from US codes —
+// they collide with India, Germany and ordinary English words. The cost is that
+// a US posting written "City, ST" in one of those six states cannot be placed
+// unless its city or state is spelled out. These are STORED as unknown, never
+// published, so a later gazetteer improvement picks them up with no
+// re-collection. Pinned so the behaviour is deliberate rather than a surprise.
+at('maine by code alone', 'Auburn, ME', UNKNOWN);
+at('indiana by code alone', 'Fort Wayne, IN', UNKNOWN);
+
+console.log('\n== city still beats code, which is what the rule protects ==');
+// The documented collision the ordering exists for: CA is Canada's ISO code AND
+// California's postal abbreviation, so these two are the same shape and mean
+// different continents. Neither toronto nor ontario is marked ambiguous.
+at('toronto is canadian', 'Toronto, CA', 'CA');
+at('san jose is californian', 'San Jose, CA', 'US');
+at('ontario the province', 'Ontario, CA', 'CA');
+// Tamil Nadu and Tennessee share TN. `chennai` is unambiguous, so it settles it
+// before the code pass is ever reached.
+at('chennai not tennessee', 'Chennai, TN', 'IN');
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

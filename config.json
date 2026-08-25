@@ -811,10 +811,22 @@
   },
   "defaultLocation": "India",
   "_defaultLocation_note": "Applied to any search written as a plain string. Change this one value to move the whole watch to another city or country.",
-  "_searches_note": "One broad search, paginated to exhaustion, then filtered locally by title, role and company. The boolean form matters: a plain 'internship' keyword misses postings titled only 'Intern' (Salesforce's 'Summer 2027 Intern - Software Engineer' is one), and the OR list covers every phrasing the title filter accepts. Keep it as ONE entry - each extra search costs a full pagination pass.",
+  "_searches_note": "One broad search PER REGION, paginated to exhaustion, then filtered locally by title, role and company. The boolean form matters: a plain 'internship' keyword misses postings titled only 'Intern' (Salesforce's 'Summer 2027 Intern - Software Engineer' is one), and the OR list covers every phrasing the title filter accepts. Keep it to one entry per region - each extra search costs a full pagination pass against the single account everything depends on, so add a region only when its board is worth the requests, and see limits.searchesPerRun for how to make regions take turns instead.",
+  "_searches_region_note": "'region' is what a card's location falls back to when LinkedIn renders none, and it is also the key each region's own lookback window and covered-ground baseline are stored under. 'geoId' is what actually scopes the results: the redirect to /jobs/search-results/ DROPS 'location=' but keeps 'geoId', so the location string is cosmetic and the id is load-bearing. India's entry deliberately carries NO geoId - it has always come back Indian from account geo bias alone, and sending an id would change what LinkedIn returns on the collector that supplies 91% of the India board. The ids live in src/regions.js.",
   "searches": [
-    "(intern OR internship OR trainee OR \"co-op\" OR apprentice)"
+    {
+      "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
+      "region": "IN"
+    },
+    {
+      "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
+      "region": "US",
+      "location": "United States",
+      "geoId": 103644278,
+      "intervalMinutes": 60
+    }
   ],
+  "_searches_interval_note": "'intervalMinutes' makes ONE search run less often than the loop ticks, which is different from limits.searchesPerRun - that dial makes every region take turns at the same rate, this one sets a rate per region. India has none, so it is swept every 30-minute tick and keeps the freshness the board promises. The US runs hourly: its supply is dense and steady all day (24 intern-titled cards in a 12-minute window when measured), so half the sweeps buys most of the roles at half the page loads against the one account everything depends on. Skipping is not failing - the region's baseline is left alone, so the next sweep's adaptive window has stretched to cover the gap and nothing is missed.",
   "filters": {
     "adaptiveWindow": true,
     "_adaptiveWindow_note": "Sizes the lookback from how long ago the last successful run was, instead of using one fixed number. With hourly runs a fixed 30-hour window would re-paginate 30 hours of postings every time to find the newest hour - roughly 30x the page loads for nothing. After a normal hourly run the window is ~3h; after an overnight sleep it stretches to cover the gap, so nothing is missed.",
@@ -923,6 +935,8 @@
     "maxRuntimeMinutes": 90,
     "maxPagesPerSearch": 40,
     "maxDetailsPerRun": 100,
+    "searchesPerRun": 0,
+    "_searchesPerRun_note": "How many of the searches above one run may walk. 0 (the default) means all of them, so every region is swept every tick. Set it to 1 to make the regions TAKE TURNS: the rotation cursor already remembers where the last run stopped, so nothing is skipped - each region is simply swept half as often and total request volume stays exactly where it was on a single region. That matters because LinkedIn dropped this session twice in August without ever answering 429, and page loads are the budget a rate limit is eventually spent on. Raise the region count and this is the first dial to reach for.",
     "_maxRuntimeMinutes_note": "There is no schedule slot to overrun any more, so this no longer has to stay under the interval. bin/loop.sh runs one scan at a time and starts the next when the previous one finishes, so a long run costs nothing but its own time - it can never collide with, or be skipped by, another run. Raised from 20 to 90 so a scan is not cut off mid-pagination: the budget is a backstop against a genuinely stuck run, not the normal stopping point. Paging normally ends when LinkedIn's Next button runs out.",
     "_note": "Safety backstops, not the normal stopping point. Paging normally ends when LinkedIn's 'Next' button runs out, which means every job in the window has been seen. These caps only bite if a search is unusually deep - and when one does bite, the report says so explicitly rather than pretending the search finished.",
     "_maxPagesPerSearch_note": "40 pages x 25 = 1000 results, which is roughly LinkedIn's own ceiling for a single search. With the 24-hour filter on, most searches end far sooner."
@@ -936,7 +950,8 @@
     "telegram": {
       "enabled": true,
       "chatId": "@interndoor",
-      "channels": { "IN": "@interndoor" },
+      "channels": { "IN": "@interndoor", "US": "@interndoorusa" },
+      "_channels_ids_note": "Numeric ids, for recovery if a channel is ever renamed: IN @interndoor = -1004300938042, US @interndoorusa = -1004479304597. The usernames are used above because they are readable, but a rename breaks them and the numeric id cannot change - this project renamed its brand twice in one day, so keep these written down. Verified 25 Aug: @Internzobot is an administrator of both with can_post_messages true. GB has no channel and therefore gets no post.",
       "_channels_note": "One channel per region, keyed by ISO code. A region with no entry here gets NO post - posting US listings to people who subscribed for internships in India is how a channel gets muted. chatId above predates regions and is kept as India's fallback, so an empty channels map behaves exactly as before. Only published regions are posted at all: a region that is collected but not published has no pages written for it, so every link would 404.",
       "_note": "Posts one message per run listing the new roles, each linking to its page on the site. One message rather than one per job: a run that finds six roles firing six notifications is how a channel gets muted. Set enabled to true and chatId to your channel (\"@yourchannel\", or the numeric -100... id for a private one), and put TELEGRAM_BOT_TOKEN in .env. The bot must be an administrator of the channel with permission to post, or Telegram returns 403 and the post is skipped. Everything here fails soft - a channel that is misconfigured, rate-limited or down never fails the scrape."
     }

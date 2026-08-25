@@ -547,6 +547,45 @@ export class Store {
     return this.db.prepare('SELECT * FROM runs ORDER BY started_at DESC LIMIT ?').all(limit);
   }
 
+  /**
+   * When a REGION's own search last finished its walk.
+   *
+   * lastFullSweep() above is per-RUN, and that was the right granularity while
+   * every search covered the same ground. It stops being right the moment two
+   * searches cover different regions: a run that swept India and marked itself
+   * `ok` would become the baseline for the US search too, and the US sweep
+   * would then measure its lookback — and its covered-ground early stop — from
+   * a run that never issued a single US request.
+   *
+   * The concrete failure that motivates this is the early stop, not the window.
+   * coveredHorizon halts a search once two consecutive pages carry nothing
+   * newer than the baseline. On a region's FIRST sweeps there is a backlog and
+   * no baseline should exist at all, but the run-level one does, so the walk
+   * would stop about two pages in — truncating exactly the ground those first
+   * sweeps exist to cover. A region with no row here returns null, which the
+   * caller reads as "never swept": full window, no early stop.
+   *
+   * Kept in `settings` rather than as a column on `runs` because one run can
+   * complete some regions and abort partway through another, so the fact being
+   * recorded belongs to the region and not to the run.
+   */
+  lastRegionSweep(region) {
+    const at = Number(this.getSetting(`sweep_ok_at:${region}`) ?? 0);
+    return Number.isFinite(at) && at > 0 ? at : null;
+  }
+
+  /**
+   * Record that `region` finished a full walk, starting at `startedAt`.
+   *
+   * The SEARCH'S OWN START is stored, never Date.now(). A sweep that takes
+   * twelve minutes would otherwise declare the twelve minutes it spent walking
+   * as already-covered ground, and every posting that went up during the walk
+   * would fall behind the next run's horizon without ever having been read.
+   */
+  markRegionSweep(region, startedAt) {
+    this.setSetting(`sweep_ok_at:${region}`, startedAt);
+  }
+
   // ---- settings / cooldown --------------------------------------------------
 
   setSetting(key, value) {

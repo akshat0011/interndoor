@@ -325,3 +325,41 @@ export function resolveWindowHours(lastRunStartedAt, filters, now = Date.now()) 
 
   return Math.round(Math.min(max, Math.max(min, gapHours + 2)));
 }
+
+/**
+ * How much of its interval a search must have waited before it is due again.
+ *
+ * A search set to run hourly cannot simply demand 60 minutes to have elapsed.
+ * The loop ticks every 30 and each tick starts at a slightly different moment —
+ * startup jitter, and a run that begins only once the previous one finished — so
+ * at the 60-minute tick the real gap is as likely to read 58 as 61. Requiring
+ * the full interval would skip that tick and wait for the next, turning an
+ * hourly search into a 90-minute one, and the drift compounds from there.
+ *
+ * Three quarters puts the threshold squarely between one tick and two for any
+ * sensible pairing, so the search runs on the tick it was meant to and never on
+ * the one before.
+ */
+export const INTERVAL_DUE_FRACTION = 0.75;
+
+/**
+ * Is a search due to run, given when its region was last swept?
+ *
+ * Due when it has no interval, when the region has never been swept (there is
+ * no gap to measure and skipping would mean never starting), or when enough of
+ * the interval has passed.
+ *
+ * @param {number|null} lastSweptAt  epoch ms of that region's last completed sweep
+ * @param {number} intervalMinutes   0 or absent means "every run"
+ */
+export function isSearchDue(lastSweptAt, intervalMinutes, now = Date.now()) {
+  const interval = Number(intervalMinutes ?? 0);
+  if (!Number.isFinite(interval) || interval <= 0) return true;
+  if (!lastSweptAt) return true;
+
+  const elapsedMin = (now - lastSweptAt) / 60_000;
+  // A clock skew or a future timestamp must not wedge a search off forever.
+  if (!Number.isFinite(elapsedMin) || elapsedMin < 0) return true;
+
+  return elapsedMin >= interval * INTERVAL_DUE_FRACTION;
+}

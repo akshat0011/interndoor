@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { ROOT } from './paths.js';
 import { log } from './logger.js';
 import { formatStipend } from './extract.js';
@@ -91,7 +92,43 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     // Only carried when explicitly enabled; the tailor endpoint works fine
     // from the summary and skills alone.
     description: includeFullDescription ? row.description : null,
+    // Which postings are the SAME role advertised in different cities.
+    //
+    // The board collapses those into one card, and it needs a way to tell them
+    // from several different jobs an employer has filed under one title. None
+    // of the model-generated fields can do it, measured both ways: Siemens
+    // posted one role in 13 cities and the local model gave it three different
+    // roleLabels, while Procter & Gamble's single 24-city opening produced four
+    // different summaries and eight different skill sets. Grouping on any of
+    // those would both split real duplicates and merge real jobs.
+    //
+    // The posting's own text settles it, because a multi-city blast is
+    // literally the same description filed against several locations. Measured
+    // over 30 days: P&G 24 postings / 1 description, Siemens 13 / 1, IBM 7 / 1
+    // — against Emerson 7 postings / 5 descriptions and Valeo 6 / 6, which are
+    // genuinely different jobs and must stay apart.
+    //
+    // A hash rather than the text: the full description is deliberately kept
+    // out of this file for size, and ten hex characters answers the only
+    // question the board actually asks. Hashed over the WHOLE description, not
+    // a prefix — Marmon's four postings share their first 400 characters and
+    // diverge after.
+    roleFingerprint: row.description ? fingerprint(row.description) : null,
   };
+}
+
+/**
+ * A stable short hash of a posting's text, for grouping identical postings.
+ *
+ * Whitespace-normalised first, so a description that differs only in line
+ * wrapping between two scrapes still groups. Not security-sensitive — sha1 is
+ * used for its speed and short digest, and a collision would merge two cards.
+ */
+function fingerprint(text) {
+  return createHash('sha1')
+    .update(String(text).replace(/\s+/g, ' ').trim().toLowerCase())
+    .digest('hex')
+    .slice(0, 10);
 }
 
 /** Write the public jobs payload. Returns { count, path, changed }. */
