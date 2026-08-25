@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/abbott-2027-it-intern-4455578302",
+      "url": "https://interndoor.com/us/jobs/abbott-2027-it-intern-4455578302",
+      "title": "2027 IT Intern — Abbott",
+      "content_text": "Company: Abbott · Location: Waukegan, IL\n• Support IT projects with focus on system and network administration\n• Use tools like DevOps, Agile, and cloud development platforms\n• Work at Abbott's Corporate Headquarters in Waukegan, IL",
+      "date_published": "2026-08-25T22:35:45.613Z",
+      "authors": [
+        {
+          "name": "Abbott"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/panasonic-north-america-it-sourcing-intern-4456985001",
+      "url": "https://interndoor.com/us/jobs/panasonic-north-america-it-sourcing-intern-4456985001",
+      "title": "IT Sourcing Intern — Panasonic North America",
+      "content_text": "Company: Panasonic North America · Location: Newark, NJ\n• Analyze it systems and vendors to support global consolidation\n• Use excel, powerbi, and sql for data analysis and reporting\n• Collaborate with it and procurement teams on process improvements",
+      "date_published": "2026-08-25T22:32:51.434Z",
+      "authors": [
+        {
+          "name": "Panasonic North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-systems-safety-engineering-intern-huntsville-al-4459066275",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-systems-safety-engineering-intern-huntsville-al-4459066275",
+      "title": "2027 Systems Safety Engineering Intern- Huntsville AL — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Huntsville, AL · Duration: 10 weeks\n• Analyze system requirements and translate into hardware/software specs\n• Use technical planning and risk analysis tools for system integration\n• Work on defense systems with Secret clearance requirements",
+      "date_published": "2026-08-25T22:25:12.202Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hca-healthcare-technical-it-resident-intern-4459056022",
+      "url": "https://interndoor.com/us/jobs/hca-healthcare-technical-it-resident-intern-4459056022",
+      "title": "Technical IT Resident Intern — HCA Healthcare",
+      "content_text": "Company: HCA Healthcare · Location: San Antonio, TX\n• Support IT teams on sponsored projects with assigned mentors\n• Use healthcare tech tools to improve patient care and operations\n• Work in San Antonio, TX with potential full-time conversion",
+      "date_published": "2026-08-25T21:56:56.239Z",
+      "authors": [
+        {
+          "name": "HCA Healthcare"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-science-pa-4457069398",
       "url": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-science-pa-4457069398",
       "title": "College to Corporate IT Internship - Data Science (PA) — Vanguard",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-cybersecurity-analyst-apprentice-4446238778",
-      "url": "https://interndoor.com/us/jobs/ibm-cybersecurity-analyst-apprentice-4446238778",
-      "title": "Cybersecurity Analyst Apprentice — IBM",
-      "content_text": "Company: IBM · Location: Jersey City, NJ · Duration: 12 months\n• Monitor networks/systems for security threats and respond to incidents\n• Use security tools to detect vulnerabilities and maintain system infrastructure\n• Work with teams to investigate breaches and report findings\n• Maintain awareness of cyber trends and operate security toolsets",
-      "date_published": "2026-08-25T15:28:29.142Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/celonis-engineering-intern-ats-greenhouse-celonis-7974381003",
-      "url": "https://interndoor.com/us/jobs/celonis-engineering-intern-ats-greenhouse-celonis-7974381003",
-      "title": "Engineering Intern — Celonis",
-      "content_text": "Company: Celonis · Location: Remote, US, Massachusetts · Duration: 24 weeks\n• Write clean code using Angular, Spring Boot, C++17, and Kubernetes\n• Work on real product features with ownership of specific components\n• Collaborate with senior engineers and mentors on large-scale systems",
-      "date_published": "2026-08-25T15:16:13.000Z",
-      "authors": [
-        {
-          "name": "Celonis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-analyst-nc-4457057528",
-      "url": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-analyst-nc-4457057528",
-      "title": "College to Corporate IT Internship - Data Analyst (NC) — Vanguard",
-      "content_text": "Company: Vanguard · Location: Charlotte, NC\n• Analyze data to uncover insights that drive business decisions\n• Use tools like sql and tableau to support client outcomes\n• Work in a hybrid environment with mentorship and coaching",
-      "date_published": "2026-08-25T15:06:22.707Z",
-      "authors": [
-        {
-          "name": "Vanguard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-nc-4457058475",
-      "url": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-nc-4457058475",
-      "title": "College to Corporate IT Internship - Risk & Security - Analyst (NC) — Vanguard",
-      "content_text": "Company: Vanguard · Location: Charlotte, NC\n• Analyze risks and design security strategies to protect investors\n• Work with Agile and LEAN methods on real-world cybersecurity projects\n• Mentorship from senior leaders and regular feedback sessions",
-      "date_published": "2026-08-25T15:05:59.540Z",
-      "authors": [
-        {
-          "name": "Vanguard"
         }
       ]
     }
