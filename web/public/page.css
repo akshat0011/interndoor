@@ -247,9 +247,9 @@ a.jp-crest:active { transform: scale(.97); }
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--live) 20%, transparent);
   }
   .btn-apply:hover em { transform: translateX(3px); }
-  .btn-apply:hover::after { animation: sheen .62s var(--snap); }
+  .btn-apply:hover::after { animation: sheen-page .62s linear; }
 }
-@keyframes sheen { to { transform: translateX(130%); } }
+@keyframes sheen-page { to { transform: translateX(130%); } }
 
 /* ---------- the ambient loop ---------- */
 
@@ -290,7 +290,7 @@ a.jp-crest:active { transform: scale(.97); }
    the shared rule in styles.css. */
 @media (hover: hover) and (pointer: fine) {
   .jp-card-top .btn-apply:hover em { animation: none; transform: translateX(3px); }
-  .jp-card-top .btn-apply:hover::after { animation: sheen .62s var(--snap); }
+  .jp-card-top .btn-apply:hover::after { animation: sheen-page .62s linear; }
 }
 
 .jp-card-note {
@@ -699,6 +699,19 @@ a.jp-crest:active { transform: scale(.97); }
    entrance, everything that moves or pulses stops.
    ============================================================ */
 
+/* The dock is the only translucent surface on a generated page, so it needs
+   the same two fallbacks styles.css gives .bar and .rail. Without them a
+   reader who asked for less transparency still got a blurred see-through bar. */
+@media (prefers-reduced-transparency: reduce) {
+  .dock { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .dock {
+    background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none;
+    border-top-color: var(--rule-2);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tiles.in > *, .dir.in > * { animation: none; }
   .pill.is-hot i { animation: none; }
@@ -707,8 +720,15 @@ a.jp-crest:active { transform: scale(.97); }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* Narrow the property list, do not zero the duration.
+     This file loads after styles.css, so `transition-duration: .01ms` here was
+     overriding the policy there and killing the colour and opacity fades that
+     explain what just changed — the exact opposite of the "gentler, not zero"
+     line at the top of this block. Keep the timing, drop the movement. */
+  *, *::before, *::after {
+    transition-property: color, background-color, border-color, box-shadow, opacity !important;
   }
 }
 

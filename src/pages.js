@@ -470,7 +470,7 @@ function head({ title, description, canonical, indexable, extraLd = '', region =
 <html lang="${region.hreflang}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
@@ -515,7 +515,7 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
     </a>
 
     <div class="bar-right">
-${regionSwitch(region, alternates)}      <a class="alerts" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
+${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alerts" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         <span>Get alerts</span>
       </a>

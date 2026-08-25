@@ -111,7 +111,8 @@ function companyBadge(job) {
     img.alt = '';               // decorative: the company name is right beside it
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.addEventListener('load', () => badge.classList.add('lit'));
+    const lit = () => badge.classList.add('lit');
+    img.addEventListener('load', lit);
 
     // A failed logo is RETRIED, not written off.
     //
@@ -137,6 +138,7 @@ function companyBadge(job) {
     });
 
     img.src = job.logo;         // set last, so both handlers are already attached
+    if (img.complete && img.naturalWidth > 0) lit();   // already in cache: no load event coming
     badge.append(img);
   }
   return badge;
@@ -475,6 +477,57 @@ function jobCard(job, index) {
   return li;
 }
 
+/* Decorative loops on the apply buttons run only while a row is near the
+   viewport. The board renders every listing at once — 264 on a normal day —
+   and each row carried an infinite nudge and sheen whether or not it was on
+   screen, so 262 of them composited forever for nobody.
+   styles.css keeps them off by default and this switch turns them on, so a
+   browser without IntersectionObserver loses the decoration, never a listing.
+   The margin gives a screen of headroom either side, so a loop is already
+   running by the time a row is scrolled into view rather than starting under
+   the reader mid-sweep. */
+const rowLoops = 'IntersectionObserver' in window
+  ? new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) e.target.classList.toggle('on', e.isIntersecting);
+    },
+    { rootMargin: '200px 0px' },
+  )
+  : null;
+
+/* The filters live in the URL, so a filtered board can be linked, bookmarked
+   and reloaded instead of resetting to everything.
+   replaceState, not pushState: the search box reruns on every keystroke, and
+   one history entry per character would make Back unusable. A fragment-only
+   URL resolves against the current one, so selectJob()'s `#job-<id>` keeps the
+   query string and this keeps the fragment. */
+const URL_FILTERS = { q: 'q', company: 'f-company', city: 'f-location', mode: 'f-mode', sort: 'f-sort' };
+
+function syncUrl() {
+  const params = new URLSearchParams();
+  for (const [key, id] of Object.entries(URL_FILTERS)) {
+    const value = $(id).value.trim();
+    // 'new' is the default sort; leaving it out keeps a shared link clean.
+    if (value && !(key === 'sort' && value === 'new')) params.set(key, value);
+  }
+  const query = params.toString();
+  history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+}
+
+function readUrl() {
+  const params = new URLSearchParams(location.search);
+  for (const [key, id] of Object.entries(URL_FILTERS)) {
+    const value = params.get(key);
+    if (value === null) continue;
+    const node = $(id);
+    // A company or city that has aged off the board would otherwise blank the
+    // <select> and silently filter to nothing.
+    if (node.tagName === 'SELECT' && !Array.from(node.options).some((o) => o.value === value)) continue;
+    node.value = value;
+  }
+  $('clear-q').hidden = !$('q').value;
+}
+
 function renderList() {
   const list = $('joblist');
 
@@ -488,6 +541,9 @@ function renderList() {
   list.classList.toggle('intro', !renderList.painted);
   renderList.painted = true;
 
+  // Stop observing the rows we are about to drop; the observer keeps a
+  // strong reference to every target until it is disconnected.
+  rowLoops?.disconnect();
   list.replaceChildren();
 
   const n = state.filtered.length;
@@ -516,6 +572,7 @@ function renderList() {
   const frag = document.createDocumentFragment();
   state.filtered.forEach((job, i) => frag.append(jobCard(job, i)));
   list.append(frag);
+  if (rowLoops) for (const li of list.children) rowLoops.observe(li);
 }
 
 function selectJob(id, { silent = false } = {}) {
@@ -909,7 +966,7 @@ function wireFilterStrip() {
 }
 
 function wireControls() {
-  const rerun = () => applyFilters();
+  const rerun = () => { syncUrl(); applyFilters(); };
   wireFilterStrip();
 
   // Internship / full-time. A real tablist rather than a filter dropdown,
@@ -1051,6 +1108,7 @@ async function init() {
   renderFreshness();
   renderTotal();
   populateFilters();
+  readUrl();          // after populateFilters(): the <option>s must exist first
   applyFilters();
 
   const hash = location.hash.match(/^#job-(.+)$/);

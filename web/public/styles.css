@@ -7,7 +7,7 @@
 :root {
   --ink:        #f2f2ec;
   --ink-2:      #9d9d94;
-  --ink-3:      #6a6a62;
+  --ink-3:      #82827a;
   --bg:         #0a0a0b;
   --bg-2:       #0f0f11;
   --card:       #121214;
@@ -77,10 +77,10 @@
 :root[data-theme="light"] {
   --ink:      #131311;
   --ink-2:    #56564e;
-  --ink-3:    #86867c;
+  --ink-3:    #66665e;
   --bg:       #f4f3ee;
   --bg-2:     #eceae3;
-  --card:     #ffffff;
+  --card:     #fcfbf8;
   --card-2:   #f7f6f1;
   --rule:     #dddbd2;
   --rule-2:   #c6c4b9;
@@ -124,9 +124,20 @@ p { margin: 0; }
 ol, ul, dl { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; }
 button, input, select, textarea { font: inherit; color: inherit; }
+/* No 300ms double-tap wait on anything tappable, and no stock blue flash over
+   a lime brand. Everything listed here carries its own :active state. */
+a, button, summary, label, [role="button"], .row {
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
 :focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 
-.wrap { width: min(1320px, 100% - 44px); margin-inline: auto; }
+/* The inset padding is 0px on every screen without a notch. In landscape on
+   one, the 22px each side that this width leaves is not enough to clear it,
+   and both boards now opt into viewport-fit=cover. */
+.wrap {
+  width: min(1320px, 100% - 44px); margin-inline: auto;
+  padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);
+}
 
 .skip { position: absolute; left: -9999px; }
 .skip:focus { left: 0; top: 0; z-index: 1000; background: var(--live); color: var(--live-ink); padding: 10px 16px; }
@@ -192,6 +203,32 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .scope { width: 26px; height: 26px; }
   .brand { gap: 8px; }
   .word { font-size: 14.5px; letter-spacing: -.05em; }
+}
+
+/* Below ~400px the masthead stopped fitting. It was tuned to sit at exactly
+   375px — 341 against a 345 budget — so a 360px Android (S8, S9, and a long
+   tail of others) overflowed the document by 12px and scrolled the WHOLE page
+   sideways. Buy the width back from the page gutter and the wordmark rather
+   than dropping one of the four controls.
+   Must stay BELOW the 480px block: a media query adds no specificity, so a
+   .word rule placed above it silently loses to the plain one. */
+/* 320px (an older SE, and a long tail of cheap Androids) cannot fit four
+   controls and a wordmark however tightly they are set. The LABEL collapses,
+   not the control: the anchor carries aria-label, so the accessible name
+   survives and only the redundant visible copy goes. */
+@media (max-width: 340px) {
+  .alerts span { display: none; }
+  .alerts { padding-inline: 9px; }
+}
+
+@media (max-width: 400px) {
+  .scope { width: 24px; height: 24px; }
+  .brand { gap: 6px; }
+  .word { font-size: 12.5px; }
+  .bar-right { gap: 6px; }
+  /* The matching .wrap gutter override lives at the foot of this file: a later
+     @media (max-width: 1024px) rule sets .wrap width at equal specificity, so
+     an override here would silently lose to it. */
 }
 
 .bar-right { display: flex; align-items: center; gap: 10px; }
@@ -403,6 +440,16 @@ button, input, select, textarea { font: inherit; color: inherit; }
   background-repeat: no-repeat; background-position: right center; background-size: 11px;
 }
 .picks label:hover { border-color: var(--rule-2); }
+.picks label:focus-within { border-color: var(--live); }
+
+/* Both controls clear their own outline above, and that also clears the global
+   :focus-visible ring: a bare :focus-visible is (0,1,0) and loses to
+   .find input / .picks select at (0,1,1). Keyboard focus was therefore
+   invisible on the whole filter bar. The ring goes on the WRAPPER instead,
+   gated through :has(:focus-visible) so a mouse click does not raise one.
+   page.css already does the border half of this for the directory filter. */
+.find:has(:focus-visible),
+.picks label:has(:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
 
 .flags { display: flex; gap: 8px; }
 .flag {
@@ -461,15 +508,16 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* the lit edge — how selection and freshness are signalled */
 .row::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-  background: transparent; transition: background .16s, width .2s var(--snap);
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  transform: scaleX(.5); transform-origin: left;
+  background: transparent; transition: background .16s, transform .2s var(--snap);
 }
 .row:hover { border-color: var(--rule-2); }
 .row:hover::before { background: var(--rule-2); }
 .row[aria-current="true"] {
   border-color: var(--live); background: var(--card-2);
 }
-.row[aria-current="true"]::before { background: var(--live); width: 4px; }
+.row[aria-current="true"]::before { background: var(--live); transform: scaleX(1); }
 .row.is-hot::before { background: var(--hot); }
 .row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
 
@@ -479,7 +527,20 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--ink-2);
   border: 1px solid var(--rule);
 }
-.crest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 4px; background: #fff; }
+/* The initials sit underneath; the logo fades over them once it decodes.
+   app.js has always added .lit on the image load event, but the rule it was
+   waiting for did not exist, so every logo hard-swapped over the initials. */
+.crest img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  padding: 4px; background: #fff;
+}
+/* .lit is added on the image's load event and plays a one-shot fade. It is
+   written this way round on purpose: the resting state is VISIBLE, so a load
+   event that never arrives — a throttled tab, a cached decode we missed — costs
+   the fade and not the logo. Holding the image at opacity 0 until a class
+   arrives would make a missed event hide the logo for the life of the page. */
+@keyframes logoIn { from { opacity: 0; } }
+.crest.lit img { animation: logoIn .16s ease-out; }
 
 /* Hierarchy, corrected.
    ------------------------------------------------------------------------
@@ -755,6 +816,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .feed > li:nth-child(6n+5) .card-go { --go-lag: 2.53s; }
 .feed > li:nth-child(6n+6) .card-go { --go-lag: 2.97s; }
 
+/* The loops are decoration, so they run only on rows the reader can see.
+   Measured on the live board: 264 rows carried 264 infinite nudge animations
+   and exactly 2 were on screen. The other 262 composited forever, off screen,
+   on the phones this board is mostly read on.
+   renderList() observes each row and sets .on. Default-OFF is deliberate: if
+   the observer never runs, the cost is decoration, never content. */
+.feed > li:not(.on) .card-go::after,
+.feed > li:not(.on) .card-go-a { animation: none; }
+
 /* ---------- hover ---------- */
 
 /* Hover CANCELS the loops rather than pausing them. Paused, a sheen freezes as
@@ -877,7 +947,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   transition: transform .14s var(--snap), background .16s, border-color .16s, color .16s;
 }
 .go { background: var(--live); border: 1px solid var(--live); color: var(--live-ink); }
-.go:active { transform: none; }
+/* Press feedback. This was `transform: none`, so the detail pane primary
+   Apply — and Tailor it, and Download PDF — answered a press with nothing at
+   all on touch, where there is no hover lift for it to be cancelling. */
+.go:active, .alt:active, .bare:active { transform: scale(.97); }
 .go:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 .go-block { width: 100%; }
 .alt { background: none; border: 1px solid var(--rule-2); color: var(--ink); }
@@ -901,7 +974,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- footer ---------- */
 
-.foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 52px; font-size: 12px; color: var(--ink-3); }
+/* The bottom pad clears the home indicator. index.html opts this page into
+   viewport-fit=cover, which pushes the layout under it; without an inset here
+   the last line of the footer sits beneath the bar. */
+.foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 calc(52px + env(safe-area-inset-bottom)); font-size: 12px; color: var(--ink-3); }
 .foot p { max-width: 80ch; }
 .dim { margin-top: 8px; opacity: .75; }
 
@@ -995,10 +1071,20 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .row:hover { transform: translateY(-2px); }
   .go:hover { transform: translateY(-2px); }
   .alt:hover { transform: translateY(-2px); }
-  .card-go:hover { transform: translateY(-2px); box-shadow: 0 6px 18px -6px color-mix(in oklab, var(--live) 70%, transparent); }
-  .card-go:hover .card-go-a { transform: translateX(3px); }
-  .card-go:hover::after { animation: sheen .62s var(--snap); }
-  .row.is-hot .card-go:hover { box-shadow: 0 6px 18px -6px color-mix(in oklab, var(--hot) 70%, transparent); }
+  /* LIFT ONLY. The bloom and the LINEAR sheen are declared once, ~230 lines
+     above. Re-declaring box-shadow or the sheen here silently reverted both,
+     because this block is later at equal specificity: the halo collapsed into
+     a downward drop shadow on hover instead of brightening, and the sheen ran
+     on --snap, the easing that block records as tried and rejected. The hot
+     variant keeps the bloom shape and swaps only the hue. */
+  .card-go:hover { transform: translateY(-2px); }
+  .row.is-hot .card-go:hover {
+    box-shadow:
+      0 0 14px 0 color-mix(in oklab, var(--hot) 95%, transparent),
+      0 0 42px 8px color-mix(in oklab, var(--hot) 70%, transparent);
+  }
+  /* Press outranks the hover lift: :hover:active is (0,3,0) against (0,2,0). */
+  .go:hover:active, .alt:hover:active, .bare:hover:active { transform: scale(.97); }
 }
 
 /* ---------- responsive ---------- */
@@ -1038,7 +1124,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
      say better by simply being there.
      Removing it puts real roles above the fold, which is the only thing
      that earns the second scroll. */
-  .lede { display: none; }
+  /* Visually gone, still in the accessibility tree. `display: none` also took
+     the page's only <h1> out of the document, so the mobile board opened on an
+     <h3> and a screen-reader reader got no page-level heading at all. Absolute
+     + 1px costs exactly the same zero layout as display:none, so the fold
+     argument above is untouched. */
+  .lede {
+    position: absolute; width: 1px; height: 1px; padding: 0; border: 0;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
 
   /* The filter rail was three stacked rows (~400px): a search box, four
      dropdowns wrapped 2x2, then the toggles. Together with the hero the
@@ -1162,7 +1256,28 @@ button, input, select, textarea { font: inherit; color: inherit; }
    deliberate; on a 390px screen it is 30px of wasted width. */
 @media (max-width: 600px) {
   .feed { margin-inline: -15px; }
-  .row { border-radius: 0; padding-inline: var(--s4); }
+  /* Edge-to-edge means the card padding is the only thing between text and a
+     notch once the screen is rotated, so it takes the inset when there is one. */
+  .row {
+    border-radius: 0;
+    padding-left: max(var(--s4), env(safe-area-inset-left));
+    padding-right: max(var(--s4), env(safe-area-inset-right));
+  }
+}
+
+/* Narrowest screens. Both rules have to sit here, after every other .wrap and
+   .feed rule, because they all carry equal specificity and order is what
+   decides — and they have to move TOGETHER. .feed's negative margin exists to
+   cancel .wrap's gutter exactly, so that the cards reach the screen edge; the
+   two numbers are one decision written twice. Changing the gutter alone pushed
+   the feed 5px past both edges and scrolled the page sideways. */
+@media (max-width: 400px) {
+  .wrap { width: calc(100% - 20px); }
+  .feed { margin-inline: -10px; }
+  /* .picks bleeds to the edge the same way and is the third copy of the same
+     number. Worth turning the gutter into a token: it is one decision written
+     in three places, and it broke twice while being changed once. */
+  .picks { margin-inline: -10px; padding-inline: 10px; scroll-padding-left: 10px; }
 }
 
 /* Translucency is a preference, not a given. Someone who has asked for less of
@@ -1199,7 +1314,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   }
   /* No lift, no press travel, no arrow slide. */
   .row:hover, .go:hover, .alt:hover, .card-go:hover,
-  .card-go:hover .card-go-a, .card-go:active { transform: none !important; }
+  .card-go:hover .card-go-a, .card-go:active,
+  .go:active, .go:hover:active, .alt:active, .alt:hover:active,
+  .bare:active, .bare:hover:active { transform: none !important; }
   .grain { display: none; }
 }
 
