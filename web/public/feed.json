@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/dun-and-bradstreet-intern-r-19804-4458732377",
+      "url": "https://interndoor.com/jobs/dun-and-bradstreet-intern-r-19804-4458732377",
+      "title": "Intern (R-19804) — Dun & Bradstreet",
+      "content_text": "Company: Dun & Bradstreet · Location: Mumbai Metropolitan Region · Duration: 3 months\n• Manage data cleaning, allocation, and distribution to sales teams using excel\n• Create reports and dashboards with power bi and power query\n• Support lead management and email campaigns through marketo",
+      "date_published": "2026-08-25T10:55:08.528Z",
+      "authors": [
+        {
+          "name": "Dun & Bradstreet"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/janitri-back-end-developer-intern-4457471044",
+      "url": "https://interndoor.com/jobs/janitri-back-end-developer-intern-4457471044",
+      "title": "Back End Developer - Intern — Janitri",
+      "content_text": "Company: Janitri · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build scalable backend systems for healthcare apps\n• Work with postgres/mysql and django rest framework\n• Contribute to aws deployments and ci/cd pipelines",
+      "date_published": "2026-08-25T10:38:13.701Z",
+      "authors": [
+        {
+          "name": "Janitri"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4457462953",
       "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4457462953",
       "title": "Manual & Automation Test Engineer Intern — D Square Consulting Services Pvt Ltd",
@@ -38,6 +62,30 @@
       "authors": [
         {
           "name": "Signzy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456577972",
+      "url": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456577972",
+      "title": "Application developer Intern- IBM cloud full stack — IBM",
+      "content_text": "Company: IBM · Location: Hyderabad, Telangana, India\n• Monitor applications, analyze incidents, and perform simple fixes\n• Administer services, configure applications, and maintain documentation\n• Support senior consultants and learn on the job\n• Based in hyderabad",
+      "date_published": "2026-08-25T09:10:10.175Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456591859",
+      "url": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456591859",
+      "title": "Application developer Intern- IBM cloud full stack — IBM",
+      "content_text": "Company: IBM · Location: Greater Lucknow Area\n• Monitor applications, analyze incidents, and perform simple fixes\n• Administer services, configure settings, and maintain documentation\n• Support senior consultants and learn on the job\n• Based in greater lucknow area",
+      "date_published": "2026-08-25T09:10:05.413Z",
+      "authors": [
+        {
+          "name": "IBM"
         }
       ]
     },
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/s-and-p-global-apprentice-software-development-engineering-4456222088",
-      "url": "https://interndoor.com/jobs/s-and-p-global-apprentice-software-development-engineering-4456222088",
-      "title": "Apprentice, Software Development/Engineering — S&P Global",
-      "content_text": "Company: S&P Global · Location: Gurugram, Haryana, India\n• Track project milestones, deliverables, and timelines across workstreams\n• Use Azure DevOps, JIRA, MS Project, and Power BI for reporting\n• Work with cross-functional teams on stakeholder coordination",
-      "date_published": "2026-08-21T08:52:09.328Z",
-      "authors": [
-        {
-          "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/freight-tiger-data-analytics-intern-4457083427",
-      "url": "https://interndoor.com/jobs/freight-tiger-data-analytics-intern-4457083427",
-      "title": "Data Analytics Intern — Freight Tiger",
-      "content_text": "Company: Freight Tiger · Location: Bengaluru, Karnataka, India\n• Clean, transform, and analyze structured and semi-structured datasets\n• Use sql, python, and excel to automate reports and workflows\n• Collaborate with product and engineering teams on data-driven solutions",
-      "date_published": "2026-08-21T06:32:06.324Z",
-      "authors": [
-        {
-          "name": "Freight Tiger"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/whatfix-ai-intern-4456792001",
-      "url": "https://interndoor.com/jobs/whatfix-ai-intern-4456792001",
-      "title": "AI Intern — Whatfix",
-      "content_text": "Company: Whatfix · Location: Bengaluru, Karnataka, India\n• Design and build AI agents to automate business processes across Sales, HR, and Finance\n• Integrate LLMs with CRMs and APIs to create autonomous workflow agents\n• Collaborate with stakeholders to define automation goals and success metrics",
-      "date_published": "2026-08-20T18:44:16.760Z",
-      "authors": [
-        {
-          "name": "Whatfix"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-intern-4456023598",
-      "url": "https://interndoor.com/jobs/micron-technology-intern-4456023598",
-      "title": "Intern — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Work on semiconductor design, data science, and AI solutions\n• Tools include AI, machine learning, and engineering platforms\n• Based in hyderabad with opportunities in manufacturing and operations",
-      "date_published": "2026-08-20T18:26:39.487Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }
