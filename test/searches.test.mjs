@@ -6,10 +6,10 @@
  * is that India's entry has not quietly gained a geoId, and a fixture could not
  * tell anyone that.
  */
-import { loadConfig, isSearchDue, INTERVAL_DUE_FRACTION } from '../src/config.js';
+import { loadConfig, isSearchDue, INTERVAL_DUE_FRACTION, resolveWindowHours } from '../src/config.js';
 import { resolveSearches } from '../src/searches.js';
 import { buildSearchUrl } from '../src/linkedin.js';
-import { regionOf } from '../src/regions.js';
+import { regionOf, resolveRowRegion } from '../src/regions.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -113,6 +113,67 @@ check('US runs hourly', byRegion.get('US')?.intervalMinutes, 60);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byRegion.get('US')?.intervalMinutes));
 ok('US is due 60m after its sweep', due(agoMin(60), byRegion.get('US')?.intervalMinutes));
+
+console.log('\n== a dense region narrows its own lookback ==');
+// The US sweep was walking its whole 3h result set to exhaustion — 21 pages,
+// ~480 cards — to collect one hour of new postings, because the global window
+// defaults were tuned for one India search on a 30-minute loop. Measured
+// density is ~161 US cards an hour, so every extra hour of window is ~7 pages.
+const winOf = (search, gapHours) => {
+  const f = {
+    ...cfg.filters,
+    ...(search.minWindowHours != null ? { minWindowHours: search.minWindowHours } : {}),
+    ...(search.windowMarginHours != null ? { windowMarginHours: search.windowMarginHours } : {}),
+  };
+  return resolveWindowHours(NOW_W - gapHours * 3_600_000, f, NOW_W);
+};
+const NOW_W = 1_700_000_000_000;
+const IN_S = byRegion.get('IN'), US_S = byRegion.get('US');
+
+check('India is unchanged at its 30-minute cadence', winOf(IN_S, 0.5), 3);
+check('India after a 6h sleep still stretches', winOf(IN_S, 6), 8);
+check('US at its hourly cadence takes 2h, not 3', winOf(US_S, 1.1), 2);
+check('US on the dot takes 2h', winOf(US_S, 1.0), 2);
+// The floor and the slack change; the adaptive rule does not.
+check('US after a 6h sleep still stretches', winOf(US_S, 6), 7);
+check('US is capped like everything else', winOf(US_S, 500), cfg.filters.maxWindowHours ?? 36);
+
+// The defaults must not move — India depends on them.
+check('default floor', cfg.filters.minWindowHours, 3);
+check('default slack is 2h', resolveWindowHours(NOW_W - 0.5 * 3_600_000, { adaptiveWindow: true, minWindowHours: 0, maxWindowHours: 36 }, NOW_W), 3);
+check('an explicit slack is honoured', resolveWindowHours(NOW_W - 0.5 * 3_600_000, { adaptiveWindow: true, minWindowHours: 0, maxWindowHours: 36, windowMarginHours: 0.75 }, NOW_W), 1);
+
+console.log('\n== only the home region interrupts him ==');
+// He applies to internships in India. Every region is still collected,
+// published and posted to its own Telegram channel; what is scoped is the Mac
+// banner, the phone push and auto-opening the report. One run produced 86 new
+// listings of which 76 were American, so leaving this unscoped would turn an
+// "apply in the first hour" alert into mostly noise.
+const home = cfg.notifications.homeRegion ?? 'IN';
+check('home region is India', home, 'IN');
+
+// The filter index.js applies, on rows shaped like the store's.
+const rows = [
+  { company: 'Zoho', location: 'Chennai, Tamil Nadu, India', region: 'IN' },
+  { company: 'Stripe', location: 'San Francisco, CA', region: 'US' },
+  { company: 'P&G', location: 'Mason, OH', region: 'US' },
+  { company: 'Monzo', location: 'London', region: 'GB' },
+  // No location text at all — this is the one case the stored column decides.
+  { company: 'Acme', location: null, region: 'IN' },
+];
+const mine = rows.filter((r) => resolveRowRegion(r) === home);
+check('two India rows alert', mine.length, 2);
+check('and they are the right two', mine.map((r) => r.company), ['Zoho', 'Acme']);
+check('three rows are published but silent', rows.length - mine.length, 3);
+
+// Re-derived from the LOCATION, never trusted from the column — same rule
+// publish follows, because a row captured before a gazetteer fix carries the
+// old answer. A US row mislabelled IN in the column must not alert.
+check('a stale IN column on a US location does not alert',
+  resolveRowRegion({ location: 'Austin, TX', region: 'IN' }), 'US');
+// And the fix from earlier this session holds on this path too.
+check('Reading PA does not alert as a UK role',
+  resolveRowRegion({ location: 'Reading, PA', region: null }), 'US');
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 if (fail) process.exit(1);

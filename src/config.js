@@ -315,6 +315,16 @@ export function matchTitle(title, titleTerms) {
 export function resolveWindowHours(lastRunStartedAt, filters, now = Date.now()) {
   const min = filters.minWindowHours ?? 3;
   const max = filters.maxWindowHours ?? 36;
+  /**
+   * Slack added on top of the gap since the last sweep.
+   *
+   * Overridable per search because the right amount depends on how dense the
+   * region is and how often it is swept, and the defaults here were tuned when
+   * this was one India search on a 30-minute loop. On a dense region the slack
+   * is not free: US results run about 161 cards an hour, so every extra hour of
+   * window is roughly seven more pages walked against the single account.
+   */
+  const margin = filters.windowMarginHours ?? 2;
 
   if (!filters.adaptiveWindow) return filters.postedWithinHours ?? 24;
   if (!lastRunStartedAt) return max;
@@ -323,7 +333,7 @@ export function resolveWindowHours(lastRunStartedAt, filters, now = Date.now()) 
   // A clock skew or a future timestamp must not produce a negative window.
   if (!Number.isFinite(gapHours) || gapHours < 0) return max;
 
-  return Math.round(Math.min(max, Math.max(min, gapHours + 2)));
+  return Math.round(Math.min(max, Math.max(min, gapHours + margin)));
 }
 
 /**

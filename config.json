@@ -823,9 +823,12 @@
       "region": "US",
       "location": "United States",
       "geoId": 103644278,
-      "intervalMinutes": 60
+      "intervalMinutes": 60,
+      "minWindowHours": 2,
+      "windowMarginHours": 0.75
     }
   ],
+  "_searches_window_note": "The US search narrows its own lookback. The global filters are minWindowHours 3 and a 2-hour slack on top of the gap, both tuned when this was one India search on a 30-minute loop - and on a dense region they are wildly too wide. Measured: US results run about 161 cards an hour, so a 3-hour window is roughly 21 pages, and the US sweep was walking every one of them to exhaustion to collect a single hour of new postings, because two thirds of what LinkedIn returned was newer than the covered-ground horizon and kept resetting the early stop. An hourly sweep needs the gap (1h) plus the 45-minute margin the horizon already uses, so 2 hours - about 14 pages. This changes the FLOOR and the SLACK, not the rule: a region missed for six hours still stretches its window to cover the gap.",
   "_searches_interval_note": "'intervalMinutes' makes ONE search run less often than the loop ticks, which is different from limits.searchesPerRun - that dial makes every region take turns at the same rate, this one sets a rate per region. India has none, so it is swept every 30-minute tick and keeps the freshness the board promises. The US runs hourly: its supply is dense and steady all day (24 intern-titled cards in a 12-minute window when measured), so half the sweeps buys most of the roles at half the page loads against the one account everything depends on. Skipping is not failing - the region's baseline is left alone, so the next sweep's adaptive window has stretched to cover the gap and nothing is missed.",
   "filters": {
     "adaptiveWindow": true,
@@ -946,7 +949,9 @@
     "onNewJobs": true,
     "onError": true,
     "openReportWhenDone": true,
-    "_openReportWhenDone_note": "Auto-open the HTML report in your default browser when new jobs are found.",
+    "_openReportWhenDone_note": "Auto-open the HTML report in your default browser when new jobs are found IN THE HOME REGION - see homeRegion below.",
+    "homeRegion": "IN",
+    "_homeRegion_note": "The only region whose new listings interrupt HIM: the Mac banner, the phone push, and auto-opening the report. Everything that serves READERS is unaffected - every region is still collected, still published, and still posted to its own Telegram channel. He applies to internships in India, so a US listing is worth all of those things and worth nothing as a banner on his Mac at 2am. Left unscoped this got much worse the moment US collection went live: one run produced 86 new listings, 76 of them American, so an alert meant to say 'apply in the first hour' would mostly announce roles he will never open. Set to 'all' to be alerted about every region, or to another ISO code if he ever moves. The report itself still contains every region and is still written every run - only the decision to OPEN it is scoped, because its post-queue buttons are useful for a role he would post about but not apply to.",
     "telegram": {
       "enabled": true,
       "chatId": "@interndoor",

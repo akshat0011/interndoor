@@ -14,7 +14,7 @@ import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs } from './ollama.js';
 import { postNewJobs } from './telegram.js';
-import { publishedRegions } from './regions.js';
+import { publishedRegions, resolveRowRegion } from './regions.js';
 import { classifyRole, needsDescription, builtInPolarity } from './roles.js';
 import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js';
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
@@ -400,11 +400,27 @@ async function main() {
    * override exists to walk deliberately deep after an outage, and stopping
    * early would defeat the one job it has.
    */
-  const planSweep = (region) => {
+  const planSweep = (region, search = {}) => {
     const baseline = store.lastRegionSweep(region) ?? lastRun?.started_at ?? null;
-    const hours = resolveWindowHours(baseline, cfg.filters);
+    // A search may narrow its own window. The defaults were tuned for one India
+    // search on a 30-minute loop, and they are far too wide for a dense region
+    // swept hourly: the US sweep was walking its whole 3h result set to
+    // exhaustion — 21 pages, ~480 cards — to collect one hour of new postings,
+    // because two thirds of what LinkedIn returned was newer than the
+    // covered-ground horizon and kept resetting the early stop.
+    //
+    // Adaptive behaviour is preserved: these change the FLOOR and the SLACK,
+    // not the rule, so a region that was missed for six hours still stretches
+    // its window to cover the gap.
+    const base = {
+      ...cfg.filters,
+      ...(search.minWindowHours != null ? { minWindowHours: search.minWindowHours } : {}),
+      ...(search.windowMarginHours != null ? { windowMarginHours: search.windowMarginHours } : {}),
+      ...(search.maxWindowHours != null ? { maxWindowHours: search.maxWindowHours } : {}),
+    };
+    const hours = resolveWindowHours(baseline, base);
     return {
-      filters: { ...cfg.filters, postedWithinHours: hours },
+      filters: { ...base, postedWithinHours: hours },
       coveredHorizon: (!OVERRIDES.windowHours && baseline) ? baseline - COVERED_MARGIN_MS : null,
       baseline,
     };
@@ -485,7 +501,7 @@ async function main() {
       // the run: two searches can be walking different countries with different
       // last-swept times.
       const region = search.region ?? 'IN';
-      const { filters, coveredHorizon, baseline } = planSweep(region);
+      const { filters, coveredHorizon, baseline } = planSweep(region, search);
 
       // A search may run less often than the loop ticks.
       //
@@ -1205,13 +1221,39 @@ async function main() {
   const file = writeReport(html, runId);
   log.ok(`Report: ${file}`);
 
-  if (newJobs.length) {
-    store.markReported(newJobs.map((j) => j.job_id));
+  // Everything that interrupts HIM is scoped to the region he actually applies
+  // in; everything that serves READERS stays per-region.
+  //
+  // He applies to internships in India. A US listing is worth collecting,
+  // publishing and posting to @interndoorusa, and worth nothing at all as a
+  // banner on his Mac at 2am — it is not an opportunity he will act on. Left
+  // unscoped this got noticeably worse the moment US collection went live: one
+  // run alone produced 86 new listings, 76 of them American, so the alert that
+  // exists to say "apply in the first hour" would mostly be announcing roles he
+  // will never open.
+  //
+  // The region is re-derived from the location rather than read off the stored
+  // column, for the same reason publish does it: a row captured before a
+  // gazetteer fix carries the old answer, and this gazetteer keeps improving.
+  //
+  // The REPORT ITSELF still contains every region and is still written every
+  // run — it is the record of what happened, and its "Add to post queue"
+  // buttons are useful for a US role he might post about even though he would
+  // not apply to it. Only the decision to OPEN it is scoped.
+  const homeRegion = cfg.notifications.homeRegion ?? 'IN';
+  const homeJobs = homeRegion === 'all'
+    ? newJobs
+    : newJobs.filter((j) => resolveRowRegion(j) === homeRegion);
+  const elsewhere = newJobs.length - homeJobs.length;
+
+  if (newJobs.length) store.markReported(newJobs.map((j) => j.job_id));
+
+  if (homeJobs.length) {
     if (cfg.notifications.onNewJobs) {
-      const top = newJobs.slice(0, 3).map((j) => `${j.company}: ${j.title}`).join('\n');
+      const top = homeJobs.slice(0, 3).map((j) => `${j.company}: ${j.title}`).join('\n');
       await notify(
-        `${newJobs.length} new internship${newJobs.length === 1 ? '' : 's'}`,
-        top + (newJobs.length > 3 ? `\n…and ${newJobs.length - 3} more` : ''),
+        `${homeJobs.length} new internship${homeJobs.length === 1 ? '' : 's'}`,
+        top + (homeJobs.length > 3 ? `\n…and ${homeJobs.length - 3} more` : ''),
         { sound: 'Ping', subtitle: 'Click to open the report' },
       );
     }
@@ -1225,14 +1267,19 @@ async function main() {
 
     // The phone is the point: a banner on a sleeping Mac is a notification nobody
     // sees, and this whole project is about applying in the first hour.
-    const tech = newJobs.filter((j) => j.is_tech);
-    const lead = (tech.length ? tech : newJobs).slice(0, 4);
+    const tech = homeJobs.filter((j) => j.is_tech);
+    const lead = (tech.length ? tech : homeJobs).slice(0, 4);
     await pushToPhone(
-      `${newJobs.length} new internship${newJobs.length === 1 ? '' : 's'}`,
+      `${homeJobs.length} new internship${homeJobs.length === 1 ? '' : 's'}`,
       lead.map((j) => `${j.company} — ${j.title}`).join('\n')
-        + (newJobs.length > lead.length ? `\n…and ${newJobs.length - lead.length} more` : ''),
+        + (homeJobs.length > lead.length ? `\n…and ${homeJobs.length - lead.length} more` : ''),
       { url: 'https://interndoor.com/', tags: ['satellite'], priority: 4 },
     );
+  } else if (elsewhere) {
+    // Said out loud rather than passed over in silence: the run DID find
+    // listings, they went to the site and the channel, and the only thing that
+    // did not happen is the part aimed at him.
+    log.info(`${elsewhere} new listing${elsewhere === 1 ? '' : 's'} outside ${homeRegion} — published, not alerted. Report: ${file}`);
   } else {
     log.info('No new matching internships this run.');
   }
