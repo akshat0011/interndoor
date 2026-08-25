@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/adobe-apprentice-tech-4457612403",
+      "url": "https://interndoor.com/jobs/adobe-apprentice-tech-4457612403",
+      "title": "Apprentice Tech — Adobe",
+      "content_text": "Company: Adobe · Location: Bengaluru East, Karnataka, India\n• Support product development with daily coding and testing\n• Work with React and TypeScript in a fast-paced team\n• Gain hands-on experience with AI-driven tools and platforms",
+      "date_published": "2026-08-25T16:46:51.171Z",
+      "authors": [
+        {
+          "name": "Adobe"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
+      "url": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
+      "title": "Electronics Intern — Copeland",
+      "content_text": "Company: Copeland · Location: Pune Division, Maharashtra, India · Duration: 6 months\n• Develop simulation workflows for EMI/EMC, thermal, and signal integrity analysis\n• Use Python and ANSYS tools to automate and standardize simulation processes\n• Collaborate with R&D teams to validate models and support design decisions",
+      "date_published": "2026-08-25T16:33:55.148Z",
+      "authors": [
+        {
+          "name": "Copeland"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/monotype-trainee-market-intelligence-4458765455",
       "url": "https://interndoor.com/jobs/monotype-trainee-market-intelligence-4458765455",
       "title": "Trainee, Market Intelligence — Monotype",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Icertis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/workday-software-development-engineer-intern-4454640334",
-      "url": "https://interndoor.com/jobs/workday-software-development-engineer-intern-4454640334",
-      "title": "Software Development Engineer - Intern — Workday",
-      "content_text": "Company: Workday · Location: Greater Chennai Area\n• Work on features for enterprise applications using proprietary language and business logic\n• Learn full development lifecycle with object-oriented design and UML\n• Join a team building tools for 37 million users in a Fortune 500 company",
-      "date_published": "2026-08-21T13:19:31.150Z",
-      "authors": [
-        {
-          "name": "Workday"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tonbo-imaging-intern-junior-engineer-manufacturing-engineering-documentation-4456230063",
-      "url": "https://interndoor.com/jobs/tonbo-imaging-intern-junior-engineer-manufacturing-engineering-documentation-4456230063",
-      "title": "Intern Junior Engineer – Manufacturing Engineering Documentation — Tonbo Imaging",
-      "content_text": "Company: Tonbo Imaging · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Create and update technical documents for production line efficiency and quality assurance\n• Work with CAD files and BOMs to produce assembly guides and checklists\n• Collaborate with engineering, production, and quality teams across 6 months",
-      "date_published": "2026-08-21T13:19:24.305Z",
-      "authors": [
-        {
-          "name": "Tonbo Imaging"
         }
       ]
     }
