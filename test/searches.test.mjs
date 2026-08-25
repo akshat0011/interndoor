@@ -143,12 +143,13 @@ check('default floor', cfg.filters.minWindowHours, 3);
 check('default slack is 2h', resolveWindowHours(NOW_W - 0.5 * 3_600_000, { adaptiveWindow: true, minWindowHours: 0, maxWindowHours: 36 }, NOW_W), 3);
 check('an explicit slack is honoured', resolveWindowHours(NOW_W - 0.5 * 3_600_000, { adaptiveWindow: true, minWindowHours: 0, maxWindowHours: 36, windowMarginHours: 0.75 }, NOW_W), 1);
 
-console.log('\n== only the home region interrupts him ==');
+console.log('\n== only the home region reaches him ==');
 // He applies to internships in India. Every region is still collected,
 // published and posted to its own Telegram channel; what is scoped is the Mac
-// banner, the phone push and auto-opening the report. One run produced 86 new
-// listings of which 76 were American, so leaving this unscoped would turn an
-// "apply in the first hour" alert into mostly noise.
+// banner, the phone push, auto-opening the report, AND THE REPORT'S CONTENTS —
+// that page is his personal applying page. One run produced 86 new listings of
+// which 76 were American, so leaving this unscoped would have made the page
+// mostly roles he will never open.
 const home = cfg.notifications.homeRegion ?? 'IN';
 check('home region is India', home, 'IN');
 

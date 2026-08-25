@@ -484,14 +484,29 @@ async function main() {
     // it was on a single region. The cursor above already rotates the starting
     // point, so capping the queue is the whole change — no region is skipped,
     // it just waits its turn.
+    // The budget counts searches actually WALKED, not searches considered.
+    //
+    // Slicing the queue instead looks equivalent and is not, once a search can
+    // also be skipped for not being due (intervalMinutes). With
+    // searchesPerRun: 1 and the cursor sitting on an hourly region on a tick it
+    // is not due, the sliced queue holds exactly that one search, it is skipped,
+    // and the run walks NOTHING — having launched Brave and signed in for it.
+    // India would then be swept every other run. Counting walks instead lets the
+    // skip fall through to the next search in the rotation, which is the whole
+    // point of a rotation.
     const perRun = Number(cfg.limits.searchesPerRun ?? 0);
-    const ordered = perRun > 0 ? rotation.slice(0, perRun) : rotation;
+    const ordered = rotation;
+    let walked = 0;
     if (perRun > 0 && allSearches.length > perRun) {
-      log.info(`Walking ${ordered.length} of ${allSearches.length} searches this run — the rest take their turn next.`);
+      log.info(`Walking at most ${perRun} of ${allSearches.length} searches this run — the rest take their turn next.`);
     }
 
     searchLoop:
     for (const [searchIndex, search] of ordered.entries()) {
+      if (perRun > 0 && walked >= perRun) {
+        log.info(`Walked ${walked} search${walked === 1 ? '' : 'es'} — the rest are first in the queue next run.`);
+        break;
+      }
       const label = search.label
         ? `${search.label} (${search.companyCount} companies)`
         : `${search.keywords}${search.location ? ` @ ${search.location}` : ''}`;
@@ -925,6 +940,7 @@ async function main() {
       }
 
       searchesDone++;
+      walked++;
 
       // Move this region's baseline forward, but only on a walk that both
       // reached a real end AND actually rendered results.
@@ -1212,40 +1228,52 @@ async function main() {
   if (!DRY_RUN) await enrichNewJobs(store, cfg);
 
   const newJobs = store.jobsForRun(runId);
-  const html = buildReport({
-    jobs: newJobs,
-    run: { runId, startedAt: Date.now() - clock.elapsedSeconds() * 1000, finishedAt: Date.now(), ...counters },
-    notes,
-    stats: store.stats(),
-  });
-  const file = writeReport(html, runId);
-  log.ok(`Report: ${file}`);
 
-  // Everything that interrupts HIM is scoped to the region he actually applies
-  // in; everything that serves READERS stays per-region.
+  // THE REPORT IS HIS PERSONAL APPLYING PAGE, and it is HOME REGION ONLY.
   //
-  // He applies to internships in India. A US listing is worth collecting,
-  // publishing and posting to @interndoorusa, and worth nothing at all as a
-  // banner on his Mac at 2am — it is not an opportunity he will act on. Left
-  // unscoped this got noticeably worse the moment US collection went live: one
-  // run alone produced 86 new listings, 76 of them American, so the alert that
-  // exists to say "apply in the first hour" would mostly be announcing roles he
-  // will never open.
+  // Everything that serves readers stays per-region — every region is still
+  // collected, published and posted to its own Telegram channel. This page is
+  // the one surface that exists solely for him, and he applies to internships
+  // in India. A US role on it is something he will not act on, and once US
+  // collection went live it would have been most of the page: one run produced
+  // 86 new listings of which 76 were American.
+  //
+  // Every tile in the report derives from this array — new jobs, companies,
+  // stipend listed, easy apply, the filter chips — so filtering here keeps the
+  // whole page consistent rather than leaving counters that disagree with the
+  // list under them.
   //
   // The region is re-derived from the location rather than read off the stored
   // column, for the same reason publish does it: a row captured before a
-  // gazetteer fix carries the old answer, and this gazetteer keeps improving.
-  //
-  // The REPORT ITSELF still contains every region and is still written every
-  // run — it is the record of what happened, and its "Add to post queue"
-  // buttons are useful for a US role he might post about even though he would
-  // not apply to it. Only the decision to OPEN it is scoped.
+  // gazetteer fix carries the old answer.
   const homeRegion = cfg.notifications.homeRegion ?? 'IN';
   const homeJobs = homeRegion === 'all'
     ? newJobs
     : newJobs.filter((j) => resolveRowRegion(j) === homeRegion);
   const elsewhere = newJobs.length - homeJobs.length;
 
+  // Said on the page rather than left to look like a quiet scan. Without this,
+  // a run that collected 76 US roles and no Indian ones renders as "none were
+  // new postings from your watchlist companies", which is not what happened.
+  const reportNotes = elsewhere
+    ? [...notes, `${elsewhere} new listing${elsewhere === 1 ? '' : 's'} outside ${homeRegion} are not shown here — they are on the site and in their own Telegram channel.`]
+    : notes;
+
+  const html = buildReport({
+    jobs: homeJobs,
+    run: { runId, startedAt: Date.now() - clock.elapsedSeconds() * 1000, finishedAt: Date.now(), ...counters, newJobs: homeJobs.length },
+    notes: reportNotes,
+    stats: store.stats(),
+  });
+  const file = writeReport(html, runId);
+  log.ok(`Report: ${file}`);
+
+  // Everything that interrupts HIM — the banner, the phone push, opening the
+  // report — is scoped to the same home region the report itself is, above.
+  //
+  // markReported covers EVERY new row, not just the home ones. It records that
+  // a posting has been through this pass; a US row is deliberately never shown
+  // to him, so leaving it unmarked would queue it forever as unreported.
   if (newJobs.length) store.markReported(newJobs.map((j) => j.job_id));
 
   if (homeJobs.length) {
