@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212",
+      "url": "https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212",
+      "title": "Cyber Security - IT Apprentice — Mizuho",
+      "content_text": "Company: Mizuho · Location: Chennai, Tamil Nadu, India\n• Monitor security using siem tools and analyze threats\n• Maintain logs and reports for security operations\n• Collaborate with it teams on secure configurations",
+      "date_published": "2026-08-25T06:39:32.037Z",
+      "authors": [
+        {
+          "name": "Mizuho"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/sprinklr-design-intern-ats-workday-sprinklr-wd1-careers-113312-job",
       "url": "https://interndoor.com/jobs/sprinklr-design-intern-ats-workday-sprinklr-wd1-careers-113312-job",
       "title": "Design Intern — Sprinklr",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Biocon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dehaat-data-analyst-data-engineer-intern-4455603847",
-      "url": "https://interndoor.com/jobs/dehaat-data-analyst-data-engineer-intern-4455603847",
-      "title": "Data Analyst/Data Engineer Intern — DeHaat",
-      "content_text": "Company: DeHaat · Location: Gurugram, Haryana, India · Duration: 6–9 months\n• Build and maintain data pipelines across AWS, Redshift, and internal systems\n• Develop dashboards and tools using Frappe and Python\n• Work on real data workflows with SQL, APIs, and automation",
-      "date_published": "2026-08-20T07:17:34.904Z",
-      "authors": [
-        {
-          "name": "DeHaat"
         }
       ]
     }
