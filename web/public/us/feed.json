@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297",
+      "title": "Digital Physical Design (P&R) Intern — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Chandler, AZ\n• Run cadence tools for digital backend flow from synthesis to gds2\n• Analyze rtl implementations and tool options for area optimization\n• Collaborate with team to improve script efficiency and process quality",
+      "date_published": "2026-08-26T09:30:54.272Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/general-mills-internship-digital-and-technology-associate-4448962050",
+      "url": "https://interndoor.com/us/jobs/general-mills-internship-digital-and-technology-associate-4448962050",
+      "title": "Internship - Digital & Technology Associate — General Mills",
+      "content_text": "Company: General Mills · Location: Minneapolis, MN · Duration: 12 months\n• Design and build tech solutions for business impact\n• Work with global teams on data and platform projects\n• 10-week paid internship in Minneapolis",
+      "date_published": "2026-08-26T09:18:46.839Z",
+      "authors": [
+        {
+          "name": "General Mills"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/general-mills-internship-research-and-development-engineer-4448960077",
+      "url": "https://interndoor.com/us/jobs/general-mills-internship-research-and-development-engineer-4448960077",
+      "title": "Internship - Research & Development Engineer — General Mills",
+      "content_text": "Company: General Mills · Location: Minneapolis, MN · Duration: Winter 2027\n• Design and test new processes for product development and scaling\n• Collaborate with engineering and manufacturing teams globally\n• Use digital tools to solve technical challenges and improve efficiency",
+      "date_published": "2026-08-26T09:18:41.797Z",
+      "authors": [
+        {
+          "name": "General Mills"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-research-return-intern-4457231077",
       "url": "https://interndoor.com/us/jobs/ibm-research-return-intern-4457231077",
       "title": "Research Return Intern — IBM",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/honeywell-technologies-information-systems-it-cyber-engineer-and-data-science-summer-2027-int-4459075188",
-      "url": "https://interndoor.com/us/jobs/honeywell-technologies-information-systems-it-cyber-engineer-and-data-science-summer-2027-int-4459075188",
-      "title": "Information Systems, IT, Cyber Engineer & Data Science - Summer 2027 Intern (US Person Required) — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: United States · Duration: Summer 2027\n• Design and implement IT solutions for business needs\n• Analyze security protocols and recommend cybersecurity improvements\n• Collaborate with data science teams for actionable insights",
-      "date_published": "2026-08-25T23:49:34.262Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-us-person-required-4459087027",
-      "url": "https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-us-person-required-4459087027",
-      "title": "Embedded Engineer - Summer 2027 Intern (US Person Required) — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: United States · Duration: Summer 2027\n• Develop and test embedded software for devices and systems\n• Use C/C++, ADA, Matlab, Simulink, and LabView\n• Work on real-time systems and I/O performance optimization",
-      "date_published": "2026-08-25T23:49:17.742Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459048835",
-      "url": "https://interndoor.com/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459048835",
-      "title": "Embedded Software Engineer Intern (Spring 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Develop embedded software for drones and ground systems\n• Work with C/C++/Python/Rust and real-time OS/Linux\n• Collaborate with cross-functional teams on global deployment",
-      "date_published": "2026-08-25T23:05:41.949Z",
-      "authors": [
-        {
-          "name": "Zipline"
         }
       ]
     }
