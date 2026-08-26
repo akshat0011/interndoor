@@ -6,7 +6,48 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 26 Aug 2026 23:24:25 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 26 Aug 2026 23:51:54 GMT</lastBuildDate>
+  <item>
+    <title>Machine Learning/AI Scientist PhD Intern, Winter 2027 — Netflix</title>
+    <link>https://interndoor.com/us/jobs/netflix-machine-learning-ai-scientist-phd-intern-winter-2027-4457712553</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/netflix-machine-learning-ai-scientist-phd-intern-winter-2027-4457712553</guid>
+    <pubDate>Wed, 26 Aug 2026 23:44:28 GMT</pubDate>
+    <description>Company: Netflix · Location: Los Gatos, CA · Duration: 12 weeks
+• Build and evaluate ML models for personalization, NLP, and computer vision
+• Work with PyTorch/TensorFlow on large-scale distributed systems
+• Collaborate with research teams on cutting-edge AI projects</description>
+  </item>
+  <item>
+    <title>IT Intern — Magna International</title>
+    <link>https://interndoor.com/us/jobs/magna-international-it-intern-4459612258</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/magna-international-it-intern-4459612258</guid>
+    <pubDate>Wed, 26 Aug 2026 23:39:51 GMT</pubDate>
+    <description>Company: Magna International · Location: Liberty, MO
+• Support network infrastructure and security initiatives
+• Work with switches, routers, and wireless systems
+• Gain hands-on experience in manufacturing IT/OT environments</description>
+  </item>
+  <item>
+    <title>Intern- Engineering (Design) — Microchip Technology Inc.</title>
+    <link>https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-design-4459607893</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-design-4459607893</guid>
+    <pubDate>Wed, 26 Aug 2026 22:59:36 GMT</pubDate>
+    <description>Company: Microchip Technology Inc. · Location: Chandler, AZ · Duration: Summer 2027
+• Develop RTL for digital logic blocks using Verilog/System Verilog
+• Create automated design flows and AI tools for efficiency
+• Work part-time up to 25 hours weekly on storage controller SOC</description>
+  </item>
+  <item>
+    <title>Intern- Engineering (Verification) — Microchip Technology Inc.</title>
+    <link>https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-verification-4459610888</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-verification-4459610888</guid>
+    <pubDate>Wed, 26 Aug 2026 22:59:13 GMT</pubDate>
+    <description>Company: Microchip Technology Inc. · Location: Chandler, AZ · Duration: Summer 2027
+• Write testbenches and analyze simulations for storage controller SOC products
+• Develop AI tools and scripts to improve verification efficiency
+• Collaborate with engineers on next-gen storage solutions
+• Part-time role up to 25 hours/week with flexible schedule</description>
+  </item>
   <item>
     <title>Embedded Software Engineer Intern (Spring 2027) — Zipline</title>
     <link>https://interndoor.com/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459610865</link>
@@ -470,47 +511,6 @@
 • Develop and execute hardware and system-level test solutions for product quality
 • Build automation and software tools for validation and manufacturing workflows
 • Collaborate with cross-functional teams on semiconductor and system engineering challenges</description>
-  </item>
-  <item>
-    <title>Software Developer Intern — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-software-developer-intern-4457237008</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-software-developer-intern-4457237008</guid>
-    <pubDate>Wed, 26 Aug 2026 05:51:48 GMT</pubDate>
-    <description>Company: IBM · Location: San Jose, CA
-• Design develop test maintain software solutions for hybrid cloud and enterprise systems
-• Work with git linux docker and cloud technologies like openshift and ibm cloud
-• Participate in agile sprints and contribute to architecture and code reviews</description>
-  </item>
-  <item>
-    <title>Global Facility Management Process Intern 2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086</guid>
-    <pubDate>Wed, 26 Aug 2026 05:51:25 GMT</pubDate>
-    <description>Company: IBM · Location: Armonk, NY
-• Support process development, documentation, and optimization for global facility management
-• Work with TRIRIGA, Maximo, and Power BI to enhance digital transformation initiatives
-• Analyze performance data and create reports to improve operational efficiency and compliance</description>
-  </item>
-  <item>
-    <title>Software QA Development (Apprentice Conversion) — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101</guid>
-    <pubDate>Wed, 26 Aug 2026 05:51:21 GMT</pubDate>
-    <description>Company: IBM · Location: Lowell, MA
-• Write tests to find bugs and improve software quality
-• Use agile methods and work with cross-functional teams
-• Build automation for unit, integration, and functional tests</description>
-  </item>
-  <item>
-    <title>Software Developer Intern — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-software-developer-intern-4457221014</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-software-developer-intern-4457221014</guid>
-    <pubDate>Wed, 26 Aug 2026 05:51:17 GMT</pubDate>
-    <description>Company: IBM · Location: Austin, TX
-• Design develop test maintain software solutions for hybrid cloud and enterprise systems
-• Work with cross-functional teams on scalable secure applications and backend components
-• Participate in agile processes and contribute to architecture reviews and code quality
-• Based in austin tx for 12 month internship with competitive stipend</description>
   </item>
 </channel>
 </rss>
