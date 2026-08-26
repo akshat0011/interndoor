@@ -37,6 +37,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { homedir } from 'node:os';
 import { scriptText } from '../src/reelscript.js';
 import { PATHS } from '../src/paths.js';
+import { pickBgm, commitBgm } from '../src/reelbgm.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CARD = join(ROOT, 'web', 'reel-card.html');
@@ -253,20 +254,31 @@ function makeVoice(text) {
 /* ---------- music ---------- */
 
 /**
- * Pick a track at random and shape it to the reel.
+ * Measure a slice of audio so loudnorm can be given a target it will actually
+ * hit.
  *
- * Chosen by index rather than by name so adding or renaming files needs no
- * change here. Returns null when the folder is empty, and the reel is simply
- * rendered without music — a missing track must never fail a render.
+ * Single-pass loudnorm is DYNAMIC: it adapts gain across the clip, which on an
+ * 11-second bed means the music breathes against the voice instead of sitting
+ * under it. Two-pass with `linear=true` applies one constant gain. Measured on
+ * a real slice: single pass landed at -32.46 LUFS against a -32 target, two
+ * pass at -32.00. The 0.46 LU is not the point; the constant gain is.
+ *
+ * Measured on the SLICE, not the file — these tracks are an hour long, and
+ * measuring the whole of one to normalise eleven seconds of it would be both
+ * slow and wrong.
  */
-function pickBgm() {
-  if (!existsSync(BGM_DIR)) return null;
-  const tracks = readdirSync(BGM_DIR)
-    .filter(f => /\.(mp3|m4a|wav|aac|ogg)$/i.test(f))
-    .sort();
-  if (!tracks.length) return null;
-  const f = join(BGM_DIR, tracks[Math.floor(Math.random() * tracks.length)]);
-  return { file: f, name: tracks.find(t => join(BGM_DIR, t) === f), seconds: probeSeconds(f) };
+function measureLoudness(file, start, seconds, target) {
+  try {
+    const err = execFileSync('ffmpeg', ['-hide_banner', '-nostats',
+      '-ss', String(start), '-t', String(seconds), '-i', file,
+      '-af', `loudnorm=I=${target}:TP=-2:LRA=11:print_format=json`,
+      '-f', 'null', '-'], { encoding: 'utf8', stdio: ['ignore', 'ignore', 'pipe'] });
+    return JSON.parse(err.slice(err.lastIndexOf('{'), err.lastIndexOf('}') + 1));
+  } catch {
+    /* A bed that cannot be measured is still better than no bed: fall back to
+       single-pass rather than dropping the music. */
+    return null;
+  }
 }
 
 /* ---------- render ---------- */
@@ -310,9 +322,18 @@ async function main() {
     ? Math.min(Number(args.max || 20), voice.seconds + TAIL)
     : Number(args.duration || 11);
 
-  const bgm = args['no-bgm'] ? null : pickBgm();
-  if (bgm) console.log(`  music: ${bgm.name} (${bgm.seconds.toFixed(0)}s source, ${BGM_LUFS} LUFS, ${VO_LUFS - BGM_LUFS} LU under the voice)`);
-  else if (!args['no-bgm']) console.log(`  music: none — drop MP3s in ${BGM_DIR}`);
+  const bgm = args['no-bgm'] ? null : pickBgm({
+    dir: BGM_DIR,
+    need: duration,
+    indexPath: join(PATHS.reels, 'bgm-index.json'),
+    usagePath: join(PATHS.reels, 'bgm-usage.json'),
+    onWarn: (m) => console.log(`  music: ${m}`),
+  });
+  if (bgm) {
+    const at = `${Math.floor(bgm.start / 60)}m${String(Math.floor(bgm.start % 60)).padStart(2, '0')}s`;
+    console.log(`  music: ${bgm.name} @ ${at} of ${(bgm.seconds / 60).toFixed(0)}m`
+      + `${bgm.reused ? ' (repeat)' : ''}, ${BGM_LUFS} LUFS, ${VO_LUFS - BGM_LUFS} LU under the voice`);
+  } else if (!args['no-bgm']) console.log(`  music: none — drop MP3s in ${BGM_DIR}`);
 
   const browser = await chromium.launch({ executablePath: exe, headless: true });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
@@ -346,13 +367,28 @@ async function main() {
     `asetpts=N/SR/TB,aresample=48000[vo]`);
 
   if (bgm) {
-    inputs.push('-stream_loop', '-1', '-i', bgm.file);
+    /* -ss BEFORE -i so ffmpeg seeks rather than decoding an hour to reach the
+       eleven seconds it wants. It used to take atrim=0:<length> — always the
+       HEAD of the file, so five tracks meant five beds in existence and the
+       same music came round several times a day. It is also the worst slice:
+       m1's first 11s measures 8.2 dB below its middle, because a long track
+       opens on a fade-in that the levelling below then drags back up. */
+    inputs.push('-ss', String(bgm.start), '-stream_loop', '-1', '-i', bgm.file);
+    const m = measureLoudness(bgm.file, bgm.start, total, BGM_LUFS);
+    /* Two-pass where the measurement worked. Single-pass loudnorm adapts its
+       gain across the clip, so the bed breathes against the voice; linear=true
+       applies one constant gain. */
+    const level = m
+      ? `loudnorm=I=${BGM_LUFS}:TP=-2:LRA=11:measured_I=${m.input_i}:measured_TP=${m.input_tp}`
+        + `:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}`
+        + `:offset=${m.target_offset}:linear=true`
+      : `loudnorm=I=${BGM_LUFS}:TP=-2:LRA=11`;
     /* Looped so a short track still covers the reel, trimmed to length, and
        faded at both ends — a hard cut into music reads as a mistake. */
     chains.push(
       `[2:a]atrim=0:${total.toFixed(3)},asetpts=N/SR/TB,` +
       /* Levelled BEFORE the fades, or the fades would be normalised back up. */
-      `loudnorm=I=${BGM_LUFS}:TP=-2:LRA=11,` +
+      `${level},` +
       `afade=t=in:st=0:d=0.5,afade=t=out:st=${Math.max(0, total - 1.2).toFixed(3)}:d=1.2,` +
       `aresample=48000[bg]`);
     /* normalize=0 or amix halves everything to avoid clipping, which would
@@ -396,6 +432,10 @@ async function main() {
 
   await done;
   await browser.close();
+
+  /* Only now. A span recorded for a render that then failed would be burned
+     out of the pool for nothing. */
+  if (bgm) commitBgm(join(PATHS.reels, 'bgm-usage.json'), { ...bgm, need: total });
 
   /* Two streams or it cannot be posted — Instagram rejects video-only. */
   const streams = execFileSync('ffprobe', ['-v', 'error', '-show_entries',
