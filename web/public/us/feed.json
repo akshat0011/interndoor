@@ -6,38 +6,146 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-4457681530",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-4457681530",
-      "title": "2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: South San Francisco, CA\n• Build and maintain enterprise applications across the stack\n• Use Java, Spring Boot, APIs, and data pipelines\n• Work on data infrastructure and analytics foundations",
-      "date_published": "2026-08-26T03:52:58.213Z",
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-intern-4457223019",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-intern-4457223019",
+      "title": "Software Developer Intern — IBM",
+      "content_text": "Company: IBM · Location: Tucson, AZ\n• Design develop test maintain software solutions for enterprise infrastructure\n• Work with cross-functional teams on scalable secure applications and services\n• Participate in agile processes and contribute to architecture and code reviews",
+      "date_published": "2026-08-26T05:37:19.609Z",
       "authors": [
         {
-          "name": "AbbVie"
+          "name": "IBM"
         }
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457682528",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457682528",
-      "title": "2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: South San Francisco, CA\n• Troubleshoot and resolve platform issues with business and IT teams\n• Support cloud platforms using AWS, Azure, and DevOps tools\n• Work on performance, security, and governance across teams",
-      "date_published": "2026-08-26T03:52:27.772Z",
+      "id": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457236008",
+      "url": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457236008",
+      "title": "Product Manager Intern - RTP 2027 — IBM",
+      "content_text": "Company: IBM · Location: Research Park, California, United States\n• Support development of lifecycle service offerings across hardware, software, and hybrid environments\n• Collaborate with engineering, solutioning, and delivery teams to define service scope and pricing\n• Track metrics to assess adoption, profitability, and client satisfaction\n• Oversee execution of contractual deliverables for assigned clients",
+      "date_published": "2026-08-26T05:36:36.322Z",
       "authors": [
         {
-          "name": "AbbVie"
+          "name": "IBM"
         }
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457683532",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457683532",
-      "title": "2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: Irvine, CA\n• Troubleshoot and resolve platform issues with business and IT teams\n• Support cloud platforms using AWS, Azure, and DevOps tools\n• Work on performance, security, and governance across teams",
-      "date_published": "2026-08-26T03:52:00.363Z",
+      "id": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457223016",
+      "url": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457223016",
+      "title": "Product Manager Intern - RTP 2027 — IBM",
+      "content_text": "Company: IBM · Location: Durham, NC\n• Support development of lifecycle service offerings across hardware, software, and hybrid environments\n• Collaborate with engineering, solutioning, and delivery teams to define service scope and value propositions\n• Track metrics to assess adoption, profitability, and client satisfaction\n• Oversee execution of contractual deliverables for assigned clients",
+      "date_published": "2026-08-26T05:36:32.222Z",
       "authors": [
         {
-          "name": "AbbVie"
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065",
+      "url": "https://interndoor.com/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065",
+      "title": "User Experience Design, Research and Content Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Conduct user research for software products or web interfaces\n• Create technical documentation using xml and github\n• Work on ibm z product stack with design and content teams",
+      "date_published": "2026-08-26T05:36:26.853Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015",
+      "title": "Hardware and Systems Developer Intern 2027 -Austin, TX — IBM",
+      "content_text": "Company: IBM · Location: Austin, TX\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, optical, and firmware projects\n• Develop scripts in Python, C/C++, or Bash for testing and validation",
+      "date_published": "2026-08-26T05:36:21.050Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006",
+      "title": "Hardware and Systems Developer Intern 2027 -New York — IBM",
+      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems with SolidWorks, Cadence, and MATLAB\n• Develop automation scripts in Python, C/C++, or Bash for testing and validation",
+      "date_published": "2026-08-26T05:36:12.387Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457232014",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457232014",
+      "title": "Hardware and Systems Developer Intern 2027 -New York — IBM",
+      "content_text": "Company: IBM · Location: Hopewell Junction, NY\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems with SolidWorks, Cadence, and MATLAB\n• Develop automation scripts in Python, C/C++, or Bash for testing and validation",
+      "date_published": "2026-08-26T05:36:07.752Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009",
+      "url": "https://interndoor.com/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009",
+      "title": "Software Strategy and M&A Summer Intern — IBM",
+      "content_text": "Company: IBM · Location: Cambridge, MA\n• Support strategy development for software growth and m&a initiatives\n• Work with cross-functional teams including product, sales, and finance\n• Engage in market research and interact with potential m&a candidates",
+      "date_published": "2026-08-26T05:35:59.032Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025",
+      "url": "https://interndoor.com/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025",
+      "title": "2027 Software Engineering Intern – Agentic AI & Workflow Automation — IBM",
+      "content_text": "Company: IBM · Location: Armonk, NY\n• Build python services and ai workflows with kubernetes and vector databases\n• Work on agentic ai patterns and backend systems with senior engineers\n• Participate in agile teams and contribute to enterprise-scale projects",
+      "date_published": "2026-08-26T05:35:55.122Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013",
+      "title": "Hardware and Systems Developer Intern 2027 -Rochester, MN — IBM",
+      "content_text": "Company: IBM · Location: Rochester, MN\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems\n• Develop firmware and automation scripts in Python, C/C++, or Bash",
+      "date_published": "2026-08-26T05:35:49.959Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001",
+      "title": "Hardware Developer Intern 2027 -Poughkeepsie — IBM",
+      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Develop and execute hardware and system-level test solutions\n• Build automation tools for validation and manufacturing\n• Collaborate with cross-functional teams on product reliability",
+      "date_published": "2026-08-26T05:35:45.753Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008",
+      "url": "https://interndoor.com/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008",
+      "title": "Firmware and Systems Developer Intern 2027 -Poughkeepsie, NY — IBM",
+      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Write scripts and automation tools for testing and validation\n• Work with cadence tools and simulation software for design\n• Collaborate on firmware and hardware development projects",
+      "date_published": "2026-08-26T05:35:40.949Z",
+      "authors": [
+        {
+          "name": "IBM"
         }
       ]
     },
@@ -50,30 +158,6 @@
       "authors": [
         {
           "name": "Vanguard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-4457684519",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-4457684519",
-      "title": "2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: Irvine, CA\n• Build and maintain enterprise applications across the stack\n• Use Java, Spring Boot, APIs, and data pipelines\n• Work on data infrastructure and analytics foundations",
-      "date_published": "2026-08-26T03:51:22.208Z",
-      "authors": [
-        {
-          "name": "AbbVie"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457691210",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-4457691210",
-      "title": "2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: North Chicago, IL\n• Troubleshoot and resolve platform issues with business and IT teams\n• Support cloud platforms using AWS, Azure, and DevOps tools\n• Work on performance, security, and governance across U.S. Locations",
-      "date_published": "2026-08-26T03:51:02.004Z",
-      "authors": [
-        {
-          "name": "AbbVie"
         }
       ]
     },
@@ -102,18 +186,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/epic-games-gameplay-programmer-intern-4457664876",
-      "url": "https://interndoor.com/us/jobs/epic-games-gameplay-programmer-intern-4457664876",
-      "title": "Gameplay Programmer Intern — Epic Games",
-      "content_text": "Company: Epic Games · Location: Cary, NC\n• Implement gameplay features in Unreal Engine with C++\n• Collaborate with designers and artists on feature prototyping\n• Debug and test gameplay systems for Fortnite Reload",
-      "date_published": "2026-08-26T01:53:58.412Z",
-      "authors": [
-        {
-          "name": "Epic Games"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/honeywell-technologies-electrical-engineering-summer-2027-intern-us-person-required-4459079129",
       "url": "https://interndoor.com/us/jobs/honeywell-technologies-electrical-engineering-summer-2027-intern-us-person-required-4459079129",
       "title": "Electrical Engineering - Summer 2027 Intern (US Person Required) — Honeywell Technologies",
@@ -122,42 +194,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/verkada-security-software-engineering-intern-2027-4459075219",
-      "url": "https://interndoor.com/us/jobs/verkada-security-software-engineering-intern-2027-4459075219",
-      "title": "Security Software Engineering Intern 2027 — Verkada",
-      "content_text": "Company: Verkada · Location: San Mateo, CA · Duration: Summer 2027\n• Build scalable systems for global device networks\n• Work with Redis, DynamoDB, Postgres, Kafka\n• Deploy via Terraform and Kubernetes",
-      "date_published": "2026-08-26T00:59:28.408Z",
-      "authors": [
-        {
-          "name": "Verkada"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/verkada-frontend-software-engineering-intern-2027-4459077236",
-      "url": "https://interndoor.com/us/jobs/verkada-frontend-software-engineering-intern-2027-4459077236",
-      "title": "Frontend Software Engineering Intern 2027 — Verkada",
-      "content_text": "Company: Verkada · Location: San Mateo, CA · Duration: Summer 2027\n• Build product experiences across Command web platform and mobile apps\n• Work with React and React Native, collaborate cross-functionally\n• Based in San Mateo, CA, on-site during winter or summer 2027",
-      "date_published": "2026-08-26T00:59:04.057Z",
-      "authors": [
-        {
-          "name": "Verkada"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/verkada-mobile-software-engineering-intern-2027-4459083109",
-      "url": "https://interndoor.com/us/jobs/verkada-mobile-software-engineering-intern-2027-4459083109",
-      "title": "Mobile Software Engineering Intern 2027 — Verkada",
-      "content_text": "Company: Verkada · Location: San Mateo, CA · Duration: Summer 2027\n• Develop native mobile apps in Swift or Kotlin for security systems\n• Collaborate with cross-functional teams on new features and improvements\n• Work in sprints with automation and testing for reliable releases",
-      "date_published": "2026-08-26T00:58:35.074Z",
-      "authors": [
-        {
-          "name": "Verkada"
         }
       ]
     },
@@ -378,30 +414,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/verkada-backend-software-engineering-intern-2027-4459086087",
-      "url": "https://interndoor.com/us/jobs/verkada-backend-software-engineering-intern-2027-4459086087",
-      "title": "Backend Software Engineering Intern 2027 — Verkada",
-      "content_text": "Company: Verkada · Location: San Mateo, CA · Duration: Summer 2027\n• Build scalable systems for global device networks\n• Work with Redis, DynamoDB, and Kubernetes\n• Collaborate on high-reliability microservices",
-      "date_published": "2026-08-25T23:53:36.075Z",
-      "authors": [
-        {
-          "name": "Verkada"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/verkada-embedded-software-engineering-intern-2027-4459085098",
-      "url": "https://interndoor.com/us/jobs/verkada-embedded-software-engineering-intern-2027-4459085098",
-      "title": "Embedded Software Engineering Intern 2027 — Verkada",
-      "content_text": "Company: Verkada · Location: San Mateo, CA · Duration: Summer 2027\n• Develop and maintain embedded software for Verkada devices using C, C++, and Go\n• Collaborate with hardware and product teams to build secure, scalable firmware\n• Ship features OTA and contribute to codebase with cross-functional teams",
-      "date_published": "2026-08-25T23:53:28.869Z",
-      "authors": [
-        {
-          "name": "Verkada"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/philips-co-op-robotics-mechatronics-surgical-robotics-cambridge-ma-january-202-4457648564",
       "url": "https://interndoor.com/us/jobs/philips-co-op-robotics-mechatronics-surgical-robotics-cambridge-ma-january-202-4457648564",
       "title": "Co-op - Robotics Mechatronics, Surgical Robotics - Cambridge, MA - January 2027 — Philips",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Nokia"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/globalfoundries-facilities-engineering-intern-electrical-distribution-systems-summer-2-4457643147",
-      "url": "https://interndoor.com/us/jobs/globalfoundries-facilities-engineering-intern-electrical-distribution-systems-summer-2-4457643147",
-      "title": "Facilities Engineering Intern, Electrical Distribution Systems (Summer 2027) — GlobalFoundries",
-      "content_text": "Company: GlobalFoundries · Location: Essex Junction, VT · Duration: Summer 2027\n• Analyze electrical systems to improve energy efficiency and monitoring\n• Work with data collection and reporting tools for energy management\n• Collaborate on training materials and procedures for technicians",
-      "date_published": "2026-08-25T20:38:01.301Z",
-      "authors": [
-        {
-          "name": "GlobalFoundries"
         }
       ]
     }
