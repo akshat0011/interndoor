@@ -350,5 +350,62 @@ check('mixed-case technology names survive intact',
   companyProfile([{ keySkills: ['Node.js', 'C++'], postedAt: 1 }]).skills.map((x) => x.value).sort(),
   ['C++', 'Node.js']);
 
+
+console.log('\n== a role in many cities does not make many identical titles ==');
+// Measured before this: 109 of 445 job pages shared a <title> with another,
+// across 37 distinct titles — Procter & Gamble had TWENTY-TWO pages reading
+// "Procter & Gamble Engineering Internship, Summer 2027". Search Console
+// reports duplicate titles directly, and Google's response to a set of
+// near-identical pages is to pick one and treat the rest as duplicates.
+const titleOf = (html) => (html.match(/<title>(.*?)<\/title>/s) ?? [])[1]?.trim() ?? '';
+const decode = (s) => s.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+const mk = (id, title, location, company = 'Procter & Gamble') =>
+  ({ id, company, title, location, postedAt: Date.UTC(2026, 7, 25), firstSeenAt: Date.UTC(2026, 7, 25), bullets: ['a', 'b'] });
+
+const pgA = mk('1', 'Engineering Internship, Summer 2027', 'Mason, OH');
+const pgB = mk('2', 'Engineering Internship, Summer 2027', 'Boston, MA');
+const pgFam = [pgA, pgB];
+check('twins get different titles', titleOf(renderJobPage(pgA, pgFam)) !== titleOf(renderJobPage(pgB, pgFam)), true);
+check('and the city is what distinguishes them', titleOf(renderJobPage(pgA, pgFam)).includes('in Mason'), true);
+
+// The 336 pages that were already unique must NOT change: a title rewrite on a
+// page Google has settled on is churn for nothing, and `<company> <role>` is
+// the part that matches what people search.
+const lone = mk('3', 'Data Science Intern', 'Pune, Maharashtra, India', 'Zoho');
+check('a role with no twin keeps its title', titleOf(renderJobPage(lone, [lone])).includes(' in '), false);
+
+// A posting whose location is only the country resolves to the country, and
+// "… in India" on the India board disambiguates nothing.
+const countryOnly = [mk('4', 'Research Sciences INTERN', 'India', 'Microsoft'), mk('5', 'Research Sciences INTERN', 'India', 'Microsoft')];
+check('the region name is not used as a city', titleOf(renderJobPage(countryOnly[0], countryOnly)).includes('in India'), false);
+
+// The city is reserved room rather than appended, because buildTitle keeps the
+// longest prefix that fits the BRAND and would drop a part added after a long
+// head — which is exactly the part making the title unique.
+const longFam = [
+  mk('6', 'Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year', 'Mason, OH'),
+  mk('7', 'Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year', 'Boston, MA'),
+];
+check('a very long title still gets its city', titleOf(renderJobPage(longFam[0], longFam)).includes('in Mason'), true);
+check('and still fits the 60-char budget', decode(titleOf(renderJobPage(longFam[0], longFam))).length <= 60, true);
+
+console.log('\n== a hub lists roles, not postings ==');
+// The hub is the page Google serves for "<company> internships" and the only
+// asset here that accumulates authority over years, since job pages expire.
+// P&G's repeated one title 42 times.
+const many = Array.from({ length: 22 }, (_, i) =>
+  ({ ...mk(String(100 + i), 'Engineering Internship, Summer 2027', `City${i}, OH`), roleFingerprint: 'samehash11', bullets: ['a', 'b'], summary: 's' }));
+const hub = renderCompanyPage('Procter & Gamble', many, [], '');
+check('one tile, not twenty-two', (hub.match(/class="tile[ "]/g) ?? []).length, 1);
+check('and it says how many cities', hub.includes('22 locations'), true);
+
+// Different jobs filed under one title must stay apart — Emerson has seven
+// "Graduate Engineer Trainee" postings that are five different roles.
+const distinct = [
+  { ...mk('200', 'Graduate Engineer Trainee', 'Pune, India', 'Emerson'), roleFingerprint: 'aaa', summary: 's' },
+  { ...mk('201', 'Graduate Engineer Trainee', 'Pune, India', 'Emerson'), roleFingerprint: 'bbb', summary: 's' },
+];
+check('different roles under one title stay apart', (renderCompanyPage('Emerson', distinct, [], '').match(/class="tile[ "]/g) ?? []).length, 2);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -359,7 +359,7 @@ function statusPills(job) {
  * strip page.js builds from jobs.json, and the company hub's live list — so a
  * reader meets one shape everywhere and page.js has one markup to mirror.
  */
-function tile(job, { showCompany = true, region = DEFAULT_REGION } = {}) {
+function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1 } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
   const age = posted ? Date.now() - posted : Infinity;
   const cls = age < DAY ? ' is-hot' : '';
@@ -368,7 +368,10 @@ function tile(job, { showCompany = true, region = DEFAULT_REGION } = {}) {
     // looking for it, and without one the tile kept its absolute date while the
     // pill above went relative.
     posted ? `<span class="tile-age${age < DAY ? ' is-hot' : age < 3 * DAY ? ' is-fresh' : ''}" data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>` : '',
-    esc(cityOf(job.location, region)),
+    // A collapsed role says how many cities it covers rather than naming the
+    // one posting that happened to be newest — which would be a tile claiming
+    // an opening is in Mason when it is open in twenty-two places.
+    locations > 1 ? `${locations} locations` : esc(cityOf(job.location, region)),
     modeText(job) ? esc(modeText(job)) : '',
   ].filter(Boolean).join('<span aria-hidden="true">·</span>');
 
@@ -592,6 +595,24 @@ function foot({ headline, sub, region = DEFAULT_REGION }) {
  * US/UK and in the meta description everywhere.
  */
 const TITLE_MAX = 60;
+
+/**
+ * One role at one employer, however many cities it is advertised in.
+ *
+ * Mirrors `roleKey` in web/public/app.js — see the long note there. The
+ * fingerprint is a hash of the posting's own description, written by
+ * publish.js, and it is the only field that separates "one role in 22 cities"
+ * from "22 different jobs an employer filed under one title". A row without one
+ * falls back to its own id so it stands alone rather than being merged on a
+ * guess.
+ */
+export function roleKey(job) {
+  return [
+    String(job.company ?? '').toLowerCase().trim(),
+    String(job.title ?? '').toLowerCase().trim(),
+    job.roleFingerprint || `id:${job.id}`,
+  ].join('|');
+}
 export function buildTitle(parts, brand = 'InternDoor') {
   const kept = parts.filter(Boolean).map((s) => String(s).replace(/\s+/g, ' ').trim()).filter(Boolean);
   // Longest prefix of the optional parts that still leaves room for the brand.
@@ -645,10 +666,43 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // "Intern Internship" was a real rendered title. Only add the word when the
   // role title has not already said it.
   const roleHead = `${job.company} ${job.title}`.replace(/\s+/g, ' ').trim();
-  const pageTitle = buildTitle([
-    saysIntern(job.title) ? roleHead : `${roleHead} Internship`,
-    year,
-  ]);
+
+  // The city goes in the title ONLY when another live posting would otherwise
+  // carry the same one.
+  //
+  // Measured before this: 109 of 445 job pages shared a <title> with another
+  // page across 37 distinct titles — Procter & Gamble had TWENTY-TWO pages
+  // reading "Procter & Gamble Engineering Internship, Summer 2027", IBM seven.
+  // Search Console reports that directly, and Google's own response to a set of
+  // near-identical pages is to pick one and treat the rest as duplicates, which
+  // is the whole set of city pages thrown away.
+  //
+  // Only when needed, because the alternative — a city on every title — trims
+  // the role text on the 336 pages that were already unique, and `<company>
+  // <role>` is the part that matches what people search. This also keeps the
+  // change off those pages entirely: a title rewrite on a page Google has
+  // already settled on is churn for nothing.
+  const twin = siblings.some((s) => String(s.id) !== String(job.id)
+    && String(s.title ?? '').trim().toLowerCase() === String(job.title ?? '').trim().toLowerCase());
+  const city = twin ? cityOf(job.location, region) : '';
+  // A posting whose location is only the country resolves to the country, and
+  // "Microsoft Research Sciences INTERN in India" on the India board neither
+  // disambiguates anything nor tells a reader something they did not know from
+  // the URL. Same rule placeSuffix already applies to the description.
+  const suffix = city && city.toLowerCase() !== region.name.toLowerCase() ? ` in ${city}` : '';
+
+  // NOT named `head` — that is the module-level function this page is built
+  // with a few lines below, and shadowing it threw "head is not a function".
+  let titleHead = saysIntern(job.title) ? roleHead : `${roleHead} Internship`;
+  // Reserve the room rather than letting buildTitle drop the city: it keeps the
+  // longest prefix that still fits the BRAND, so a part appended after a long
+  // role head is exactly what it discards — and here that part is the only
+  // thing making the title unique. The brand is the right thing to lose;
+  // Google appends the site name itself.
+  if (suffix && titleHead.length + suffix.length > TITLE_MAX) {
+    titleHead = clampWords(titleHead, TITLE_MAX - suffix.length);
+  }
+  const pageTitle = buildTitle([`${titleHead}${suffix}`, year]);
 
   // Lead with the facts a student scans for — where, how, how much — rather
   // than a generic "is hiring" opener. The first bullet is kept as the tail
@@ -696,7 +750,24 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     ? `<a class="btn-apply" href="${apply}" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a>`
     : '';
 
-  const others = newestFirst(siblings.filter((j) => String(j.id) !== String(job.id))).slice(0, 6);
+  // One tile per ROLE, not per posting.
+  //
+  // This strip is the page's only second click, and for an employer that files
+  // one opening in every city it was six links to the same job — six internal
+  // links all pointing at near-identical pages, which is both useless to a
+  // reader and a poor internal-linking signal. Collapsed, the six become six
+  // genuinely different roles. The role a reader is already on is excluded
+  // whole, so its other cities are not offered back as "more".
+  const here = roleKey(job);
+  const seenRoles = new Set([here]);
+  const others = newestFirst(siblings.filter((j) => String(j.id) !== String(job.id)))
+    .filter((j) => {
+      const k = roleKey(j);
+      if (seenRoles.has(k)) return false;
+      seenRoles.add(k);
+      return true;
+    })
+    .slice(0, 6);
 
   return `${head({
     title: pageTitle,
@@ -998,7 +1069,30 @@ function profileSections(company, prof, region) {
 
 export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alternates = null } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
-  const live = newestFirst(jobs.filter(isIndexable));
+
+  // One tile per ROLE. An employer that files one opening in every city was
+  // rendering a tile each: Procter & Gamble's hub repeated
+  // "Engineering Internship, Summer 2027" twenty-two times, IBM's seven.
+  //
+  // This is the page Google serves for "<company> internships", and it is the
+  // only asset on this site that accumulates authority over years — job pages
+  // expire by design. Twenty-two identical rows is thin, repetitive content on
+  // exactly the page that can least afford it. Collapsed, the same hub reads as
+  // the handful of distinct openings the employer actually has, and each tile
+  // says how many cities it covers.
+  //
+  // The newest posting of each role represents it, so the hub still leads with
+  // the freshest thing the employer has done.
+  const liveAll = newestFirst(jobs.filter(isIndexable));
+  const roleCount = new Map();
+  for (const j of liveAll) roleCount.set(roleKey(j), (roleCount.get(roleKey(j)) ?? 0) + 1);
+  const seenLive = new Set();
+  const live = liveAll.filter((j) => {
+    const k = roleKey(j);
+    if (seenLive.has(k)) return false;
+    seenLive.add(k);
+    return true;
+  });
   // Newest first, de-duplicated by title against both the live roles and each
   // other, and capped — a hub is a landing page, not an archive. An employer
   // that reposts the same role monthly would otherwise fill the page with one
@@ -1096,7 +1190,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     <section class="strip">
       <div class="strip-head"><h2>${live.length ? 'Open right now' : 'Open right now'}</h2></div>
       ${live.length
-        ? `<div class="tiles">${live.map((j) => tile(j, { showCompany: false, region })).join('')}</div>`
+        ? `<div class="tiles">${live.map((j) => tile(j, { showCompany: false, region, locations: roleCount.get(roleKey(j)) ?? 1 })).join('')}</div>`
         : `<div class="empty">
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
