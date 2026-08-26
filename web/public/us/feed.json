@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/parsons-corporation-software-intern-summer-2027-4459355113",
+      "url": "https://interndoor.com/us/jobs/parsons-corporation-software-intern-summer-2027-4459355113",
+      "title": "Software Intern (Summer 2027) — Parsons Corporation",
+      "content_text": "Company: Parsons Corporation · Location: Denver, CO · Duration: Summer 2027\n• Develop full-stack software and deploy applications\n• Work with Java, Angular, Docker, and Kubernetes\n• Collaborate with government teams on defense projects",
+      "date_published": "2026-08-26T17:39:48.890Z",
+      "authors": [
+        {
+          "name": "Parsons Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bosch-usa-phone-as-a-key-software-engineering-intern-4457282449",
+      "url": "https://interndoor.com/us/jobs/bosch-usa-phone-as-a-key-software-engineering-intern-4457282449",
+      "title": "Phone as a Key Software Engineering - Intern — Bosch USA",
+      "content_text": "Company: Bosch USA · Location: Plymouth, MI\n• Run unit and integration tests for vehicle systems\n• Work with ROS/ROS2, C/C++, Python, and CAPL\n• Support HIL bench setup and ASPICE Level 2 certification",
+      "date_published": "2026-08-26T17:11:37.700Z",
+      "authors": [
+        {
+          "name": "Bosch USA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-gto-engineering-co-op-4459314448",
       "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-gto-engineering-co-op-4459314448",
       "title": "GTO Engineering Co-op — Johnson & Johnson MedTech",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-4459079267",
-      "url": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-4459079267",
-      "title": "Mechatronic Apprentice I — Amazon",
-      "content_text": "Company: Amazon · Location: Tracy, CA\n• Maintain and repair automated packaging equipment\n• Work with robotics and material handling systems\n• Complete preventative maintenance on conveyance systems",
-      "date_published": "2026-08-26T00:55:48.213Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-ats-smartrecruiters-abbvie-3743990014860391",
-      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-ats-smartrecruiters-abbvie-3743990014860391",
-      "title": "2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) — AbbVie",
-      "content_text": "Company: AbbVie · Location: South San Francisco, us",
-      "date_published": "2026-08-26T00:54:51.383Z",
-      "authors": [
-        {
-          "name": "AbbVie"
         }
       ]
     }
