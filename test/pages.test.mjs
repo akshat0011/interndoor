@@ -389,6 +389,19 @@ const longFam = [
 check('a very long title still gets its city', titleOf(renderJobPage(longFam[0], longFam)).includes('in Mason'), true);
 check('and still fits the 60-char budget', decode(titleOf(renderJobPage(longFam[0], longFam))).length <= 60, true);
 
+// A city cannot disambiguate postings that already share one, and making room
+// for it costs title text. AbbVie files two long, DIFFERENT titles both in
+// South San Francisco; clamping the head to fit " in South San Francisco" cut
+// it to "AbbVie 2027 Business Technology" and turned two distinct titles into
+// four identical ones.
+const abbA = mk('10', '2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate)', 'South San Francisco, CA', 'AbbVie');
+const abbB = mk('11', '2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate)', 'South San Francisco, CA', 'AbbVie');
+const abbC = mk('12', '2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate)', 'South San Francisco, CA', 'AbbVie');
+const abbFam = [abbA, abbB, abbC];
+check('same title in the SAME city gets no city suffix', titleOf(renderJobPage(abbA, abbFam)).includes('in South San Francisco'), false);
+check('so the differing titles stay differing',
+  titleOf(renderJobPage(abbA, abbFam)) !== titleOf(renderJobPage(abbC, abbFam)), true);
+
 console.log('\n== a hub lists roles, not postings ==');
 // The hub is the page Google serves for "<company> internships" and the only
 // asset here that accumulates authority over years, since job pages expire.

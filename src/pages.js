@@ -682,27 +682,68 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // <role>` is the part that matches what people search. This also keeps the
   // change off those pages entirely: a title rewrite on a page Google has
   // already settled on is churn for nothing.
-  const twin = siblings.some((s) => String(s.id) !== String(job.id)
+  // A twin is a sibling with the SAME title in a DIFFERENT city — that is the
+  // only shape the city actually fixes, and the distinction matters because
+  // making room for it costs title text.
+  //
+  // AbbVie files "…Intern - Cloud Engineering" and "…Intern - Data & Software
+  // Engineering" both in South San Francisco. Their titles already differ, but
+  // they are long: clamping the head to fit " in South San Francisco" cut it to
+  // "AbbVie 2027 Business Technology" and destroyed the very words that told
+  // them apart, turning two distinct titles into four identical ones. A city
+  // cannot disambiguate postings that share one.
+  const sameTitle = siblings.filter((s) => String(s.id) !== String(job.id)
     && String(s.title ?? '').trim().toLowerCase() === String(job.title ?? '').trim().toLowerCase());
-  const city = twin ? cityOf(job.location, region) : '';
-  // A posting whose location is only the country resolves to the country, and
-  // "Microsoft Research Sciences INTERN in India" on the India board neither
-  // disambiguates anything nor tells a reader something they did not know from
-  // the URL. Same rule placeSuffix already applies to the description.
-  const suffix = city && city.toLowerCase() !== region.name.toLowerCase() ? ` in ${city}` : '';
+  const myCity = cityOf(job.location, region);
+  const twin = sameTitle.some((s) => cityOf(s.location, region).toLowerCase() !== myCity.toLowerCase());
 
-  // NOT named `head` — that is the module-level function this page is built
-  // with a few lines below, and shadowing it threw "head is not a function".
-  let titleHead = saysIntern(job.title) ? roleHead : `${roleHead} Internship`;
-  // Reserve the room rather than letting buildTitle drop the city: it keeps the
-  // longest prefix that still fits the BRAND, so a part appended after a long
-  // role head is exactly what it discards — and here that part is the only
-  // thing making the title unique. The brand is the right thing to lose;
-  // Google appends the site name itself.
-  if (suffix && titleHead.length + suffix.length > TITLE_MAX) {
-    titleHead = clampWords(titleHead, TITLE_MAX - suffix.length);
-  }
-  const pageTitle = buildTitle([`${titleHead}${suffix}`, year]);
+  /**
+   * The two titles this posting could carry: with its city, and without.
+   *
+   * Adding the city is not free — the head has to be clamped to make room, and
+   * on a long title the clamp can cut the very words that told two postings
+   * apart. AbbVie files "…Intern - Cloud Engineering (Undergraduate)" and
+   * "…Intern - Data & Software Engineering (Undergraduate)"; both clamp to
+   * "AbbVie 2027 Business Technology", so adding the city turned two distinct
+   * titles into two identical ones. IBM has the opposite problem — one title in
+   * seven cities, where the city is the ONLY thing that can distinguish them.
+   *
+   * Neither case can be settled by a rule about length, so the choice is made
+   * by actually checking for a collision against the siblings below.
+   */
+  const candidates = (j) => {
+    const rh = `${j.company} ${j.title}`.replace(/\s+/g, ' ').trim();
+    const base = saysIntern(j.title) ? rh : `${rh} Internship`;
+    const c = cityOf(j.location, region);
+    // A posting whose location is only the country resolves to the country, and
+    // "Microsoft Research Sciences INTERN in India" on the India board neither
+    // disambiguates anything nor tells a reader something they did not know
+    // from the URL. Same rule placeSuffix already applies to the description.
+    const suf = c && c.toLowerCase() !== region.name.toLowerCase() ? ` in ${c}` : '';
+    // Reserve the room rather than letting buildTitle drop the city: it keeps
+    // the longest prefix that still fits the BRAND, so a part appended after a
+    // long head is exactly what it discards — and here that part is the only
+    // thing making the title unique. The brand is the right thing to lose;
+    // Google appends the site name itself.
+    const clamped = suf && base.length + suf.length > TITLE_MAX
+      ? clampWords(base, TITLE_MAX - suf.length)
+      : base;
+    const y = new Date(j.postedAt ?? j.firstSeenAt ?? Date.now()).getFullYear();
+    return { withCity: buildTitle([`${clamped}${suf}`, y]), plain: buildTitle([base, y]) };
+  };
+
+  const mine = candidates(job);
+  // Only the postings that could actually collide — the same employer's.
+  const rivals = siblings.filter((s) => String(s.id) !== String(job.id)).map(candidates);
+  const collides = (t, pick) => rivals.some((r) => pick(r) === t);
+
+  // Prefer the city when a sibling shares this title, since then it is the only
+  // discriminator — but fall back to the full untrimmed title if adding the
+  // city would collide with a sibling anyway, because a longer distinct title
+  // beats a shorter identical one.
+  const pageTitle = twin && !collides(mine.withCity, (r) => r.withCity)
+    ? mine.withCity
+    : (collides(mine.plain, (r) => r.plain) && twin ? mine.withCity : mine.plain);
 
   // Lead with the facts a student scans for — where, how, how much — rather
   // than a generic "is hiring" opener. The first bullet is kept as the tail

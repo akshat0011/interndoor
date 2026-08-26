@@ -284,7 +284,24 @@ export async function writeJobsFile(store, cfg) {
     for (const [alias, canonical] of CITY_ALIASES) {
       if (new RegExp(`\\b${alias}\\b`).test(flat)) return canonical;
     }
-    return flat.replace(/[^a-z0-9]+/g, ' ').trim();
+    // Only the CITY, not the whole string.
+    //
+    // The aliases above are Indian, so before regions existed every location
+    // that mattered hit one and this fallback was nearly dead code. It became
+    // live with the US board, and it kept the state or country — which the two
+    // collectors write differently for the same place. AbbVie's
+    // "2027 Business Technology Solutions Intern - Cloud Engineering" is
+    // "South San Francisco, us" from SmartRecruiters and "South San Francisco,
+    // CA" from LinkedIn, so the pair produced different keys and was published
+    // twice. Measured across 30 days: 19 rows collapse once this is the city
+    // alone, every one of them a genuine ATS+LinkedIn twin, and nothing else
+    // merges.
+    //
+    // Dropping the state does mean two same-named cities in different states
+    // share a key. That risk is already taken for India, where the alias path
+    // returns a bare city name, and it needs the same employer to run the same
+    // title in both — none exist in the store today.
+    return flat.split(',')[0].replace(/[^a-z0-9]+/g, ' ').trim();
   };
 
   const dedupeKey = (row) => {
