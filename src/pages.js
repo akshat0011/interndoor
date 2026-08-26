@@ -653,7 +653,15 @@ export function saysIntern(title) {
   return /\b(intern|interns|internship|internships|trainee|apprentice|apprenticeship|co-?op)\b/i.test(title || '');
 }
 
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null } = {}) {
+/**
+ * @param {object[]} siblings this employer's other live roles IN THIS REGION.
+ * @param {{job: object, region: object}[]} opts.foreign the same employer's live
+ *   roles on the OTHER published boards, each tagged with the region that
+ *   renders it. Used only to keep <title> unique site-wide — the visible "more
+ *   at this employer" strip stays regional, because a role in another country
+ *   is not a second click a reader of this board wants.
+ */
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [] } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
@@ -692,10 +700,24 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // "AbbVie 2027 Business Technology" and destroyed the very words that told
   // them apart, turning two distinct titles into four identical ones. A city
   // cannot disambiguate postings that share one.
-  const sameTitle = siblings.filter((s) => String(s.id) !== String(job.id)
-    && String(s.title ?? '').trim().toLowerCase() === String(job.title ?? '').trim().toLowerCase());
+  //
+  // A rival can also sit on ANOTHER BOARD. A <title> has to be unique across
+  // the whole site, not within one region, and Jump Trading runs the same six
+  // campus roles in Chicago and in London — so /us/jobs/… and /uk/jobs/…
+  // rendered byte-identical titles while each page's collision check saw only
+  // its own region's siblings. Seven pairs were colliding that way. Each rival
+  // is judged in ITS OWN region, because the city suffix is dropped when it
+  // equals the region's name and "London" means something different on the UK
+  // board than on the US one.
+  const rivalry = [
+    ...siblings.map((s) => ({ job: s, region })),
+    ...foreign,
+  ].filter((s) => String(s.job.id) !== String(job.id));
+
+  const sameTitle = rivalry.filter((s) => String(s.job.title ?? '').trim().toLowerCase()
+    === String(job.title ?? '').trim().toLowerCase());
   const myCity = cityOf(job.location, region);
-  const twin = sameTitle.some((s) => cityOf(s.location, region).toLowerCase() !== myCity.toLowerCase());
+  const twin = sameTitle.some((s) => cityOf(s.job.location, s.region).toLowerCase() !== myCity.toLowerCase());
 
   /**
    * The two titles this posting could carry: with its city, and without.
@@ -711,15 +733,22 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
    * Neither case can be settled by a rule about length, so the choice is made
    * by actually checking for a collision against the siblings below.
    */
-  const candidates = (j) => {
+  const candidates = (j, r = region) => {
     const rh = `${j.company} ${j.title}`.replace(/\s+/g, ' ').trim();
     const base = saysIntern(j.title) ? rh : `${rh} Internship`;
-    const c = cityOf(j.location, region);
+    // The FIRST city only. A board that advertises one role in two offices
+    // writes them into one string — "Chicago; New York", "London; Amsterdam" —
+    // and 19 characters of second city is room the role text needs more:
+    // "Jump Trading Campus Quantitative in Chicago; New York" is what that
+    // costs, against "Jump Trading Campus Quantitative Trader in Chicago".
+    // Narrowed here rather than in cityOf, which also feeds the tiles and the
+    // hub, where dropping the second office would hide a real location.
+    const c = cityOf(j.location, r).split(';')[0].trim();
     // A posting whose location is only the country resolves to the country, and
     // "Microsoft Research Sciences INTERN in India" on the India board neither
     // disambiguates anything nor tells a reader something they did not know
     // from the URL. Same rule placeSuffix already applies to the description.
-    const suf = c && c.toLowerCase() !== region.name.toLowerCase() ? ` in ${c}` : '';
+    const suf = c && c.toLowerCase() !== r.name.toLowerCase() ? ` in ${c}` : '';
     // Reserve the room rather than letting buildTitle drop the city: it keeps
     // the longest prefix that still fits the BRAND, so a part appended after a
     // long head is exactly what it discards — and here that part is the only
@@ -733,8 +762,9 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   };
 
   const mine = candidates(job);
-  // Only the postings that could actually collide — the same employer's.
-  const rivals = siblings.filter((s) => String(s.id) !== String(job.id)).map(candidates);
+  // Only the postings that could actually collide — the same employer's, on
+  // every board.
+  const rivals = rivalry.map((s) => candidates(s.job, s.region));
   const collides = (t, pick) => rivals.some((r) => pick(r) === t);
 
   // Prefer the city when a sibling shares this title, since then it is the only
@@ -1588,7 +1618,7 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map() } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -1612,7 +1642,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
     writeIfChanged(join(jobsDir, name),
-      renderJobPage(job, byCompany.get(job.company) ?? [], { region, alternates }));
+      renderJobPage(job, byCompany.get(job.company) ?? [],
+        { region, alternates, foreign: foreign.get(job.company) ?? [] }));
   }
 
   const logos = companyLogos(jobs, publicDir);
@@ -1678,12 +1709,30 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions) {
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
 
+  // Every live posting, by employer, across every board — the input a job page
+  // needs to keep its <title> unique SITE-wide rather than region-wide. Built
+  // here because this is the only place that holds all the regions at once;
+  // writePages sees one board and cannot know another exists.
+  const byCompanyEverywhere = new Map();
   for (const region of regions) {
+    for (const job of jobsByRegion.get(region.code) ?? []) {
+      if (!byCompanyEverywhere.has(job.company)) byCompanyEverywhere.set(job.company, []);
+      byCompanyEverywhere.get(job.company).push({ job, region });
+    }
+  }
+
+  for (const region of regions) {
+    const foreign = new Map();
+    for (const [company, entries] of byCompanyEverywhere) {
+      const elsewhere = entries.filter((e) => e.region.code !== region.code);
+      if (elsewhere.length) foreign.set(company, elsewhere);
+    }
+
     const result = writePages(
       jobsByRegion.get(region.code) ?? [],
       publicDir,
       historyByRegion.get(region.code) ?? [],
-      { region, alternates },
+      { region, alternates, foreign },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     perRegion.push({ region, ...result });

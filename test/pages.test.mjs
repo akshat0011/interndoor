@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { regionOf } from '../src/regions.js';
 import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix } from '../src/pages.js';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -419,6 +420,55 @@ const distinct = [
   { ...mk('201', 'Graduate Engineer Trainee', 'Pune, India', 'Emerson'), roleFingerprint: 'bbb', summary: 's' },
 ];
 check('different roles under one title stay apart', (renderCompanyPage('Emerson', distinct, [], '').match(/class="tile[ "]/g) ?? []).length, 2);
+
+
+console.log('\n== a <title> is unique across BOARDS, not just within one ==');
+// Jump Trading runs the same six campus roles in Chicago and in London, so
+// /us/jobs/... and /uk/jobs/... rendered byte-identical titles: each page's
+// collision check only ever saw the siblings on its own board. Seven pairs
+// were colliding this way on the live site.
+const US = regionOf('US'), GB = regionOf('GB');
+const jtUs = mk('10', 'Campus Systems Engineer (Intern)', 'Chicago', 'Jump Trading');
+const jtGb = mk('11', 'Campus Systems Engineer (Intern)', 'London', 'Jump Trading');
+const jtUsPage = renderJobPage(jtUs, [jtUs], { region: US, foreign: [{ job: jtGb, region: GB }] });
+const jtGbPage = renderJobPage(jtGb, [jtGb], { region: GB, foreign: [{ job: jtUs, region: US }] });
+check('cross-region twins get different titles', titleOf(jtUsPage) !== titleOf(jtGbPage), true);
+check('the US page names its city', titleOf(jtUsPage).includes('in Chicago'), true);
+check('the UK page names its city', titleOf(jtGbPage).includes('in London'), true);
+check('both still fit the budget',
+  Math.max(decode(titleOf(jtUsPage)).length, decode(titleOf(jtGbPage)).length) <= 60, true);
+
+// No rival anywhere must mean no change at all. Rewriting the title of a page
+// Google has already settled on is churn for nothing, so the foreign list must
+// not disturb the pages that were always unique.
+const jtSolo = mk('12', 'Campus FPGA Engineer (Intern)', 'Chicago', 'Jump Trading');
+check('a role with no rival on any board is untouched',
+  titleOf(renderJobPage(jtSolo, [jtSolo], { region: US, foreign: [] })),
+  titleOf(renderJobPage(jtSolo, [jtSolo], { region: US })));
+check('and it carries no city', titleOf(renderJobPage(jtSolo, [jtSolo], { region: US })).includes(' in '), false);
+
+// Each rival is judged in ITS OWN region, because the city suffix is dropped
+// when it equals that region's name: "United Kingdom" is a city on the US board
+// and is not one on the UK board. Judging a foreign rival in the local region
+// would compare a title neither page will ever render.
+const cfUs = mk('13', 'Network Strategy Intern', 'Austin, TX', 'Cloudflare');
+const cfGb = mk('14', 'Network Strategy Intern', 'United Kingdom', 'Cloudflare');
+check('the region name is still not used as a city on its own board',
+  titleOf(renderJobPage(cfGb, [cfGb], { region: GB, foreign: [{ job: cfUs, region: US }] })).includes('in United Kingdom'), false);
+check('while the other board still gets its city',
+  titleOf(renderJobPage(cfUs, [cfUs], { region: US, foreign: [{ job: cfGb, region: GB }] })).includes('in Austin'), true);
+
+
+// One role in two offices arrives as a single string. The second city is room
+// the role text needs more than the title does.
+const jtMulti = mk('15', 'Campus Quantitative Trader (Full-Time)', 'Chicago; New York', 'Jump Trading');
+const jtMultiGb = mk('16', 'Campus Quantitative Trader (Full-Time)', 'London; Amsterdam', 'Jump Trading');
+const multiUs = titleOf(renderJobPage(jtMulti, [jtMulti], { region: US, foreign: [{ job: jtMultiGb, region: GB }] }));
+const multiGb = titleOf(renderJobPage(jtMultiGb, [jtMultiGb], { region: GB, foreign: [{ job: jtMulti, region: US }] }));
+check('only the first city reaches the title', multiUs.includes('New York'), false);
+check('and the role text survives', multiUs.includes('Quantitative Trader'), true);
+check('the two boards still differ', multiUs !== multiGb, true);
+check('each names its own first city', [multiUs.includes('in Chicago'), multiGb.includes('in London')], [true, true]);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
