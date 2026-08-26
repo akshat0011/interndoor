@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infineon-technologies-trainee-specialist-hardware-engineer-4459306099",
+      "url": "https://interndoor.com/jobs/infineon-technologies-trainee-specialist-hardware-engineer-4459306099",
+      "title": "Trainee Specialist - Hardware Engineer — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India\n• Design and test microcontroller boards, debug hardware and software issues\n• Use Cadence tools for schematic and PCB layout, follow industry standards\n• Collaborate with software and system teams for integration and documentation",
+      "date_published": "2026-08-26T13:09:55.258Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/baxter-international-inc-intern-4457250602",
+      "url": "https://interndoor.com/jobs/baxter-international-inc-intern-4457250602",
+      "title": "Intern — Baxter International Inc.",
+      "content_text": "Company: Baxter International Inc. · Location: Bengaluru, Karnataka, India\n• Design build test assemble support configure applications\n• Integrate new technologies into existing solutions\n• Work independently on small tasks with team collaboration",
+      "date_published": "2026-08-26T13:07:59.993Z",
+      "authors": [
+        {
+          "name": "Baxter International Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/philips-intern-embedded-system-4457939009",
       "url": "https://interndoor.com/jobs/philips-intern-embedded-system-4457939009",
       "title": "Intern - Embedded System — Philips",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Wipro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cloudsek-devops-intern-ats-greenhouse-cloudsek-6149788004",
-      "url": "https://interndoor.com/jobs/cloudsek-devops-intern-ats-greenhouse-cloudsek-6149788004",
-      "title": "DevOps Intern — CloudSEK",
-      "content_text": "Company: CloudSEK · Location: Bengaluru, Karnataka, India\n• Deploy and manage Kubernetes clusters across cloud platforms\n• Build monitoring and logging systems for observability\n• Automate workflows and reduce manual operational tasks",
-      "date_published": "2026-08-24T09:49:29.000Z",
-      "authors": [
-        {
-          "name": "CloudSEK"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fam-devops-engineering-intern-4458164979",
-      "url": "https://interndoor.com/jobs/fam-devops-engineering-intern-4458164979",
-      "title": "DevOps Engineering Intern — Fam",
-      "content_text": "Company: Fam · Location: Bengaluru, Karnataka, India · Duration: 3–6 months\n• Build and maintain CI/CD pipelines for frontend and backend services\n• Use Infrastructure as Code to manage cloud resources and Kubernetes clusters\n• Troubleshoot production issues and improve system reliability and uptime",
-      "date_published": "2026-08-24T09:22:58.142Z",
-      "authors": [
-        {
-          "name": "Fam"
         }
       ]
     }
