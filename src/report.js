@@ -371,10 +371,18 @@ const rbtns = [...document.querySelectorAll('.rbtn')];
 function paintReels(state){
   const by = new Map((state.posts || []).map(p => [p.jobId, p]));
   const busy = state.running && !state.running.finishedAt;
+  const queue = state.queue || [];
   for (const b of rbtns){
     const p = by.get(b.dataset.id);
     const isMe = busy && state.running.jobId === b.dataset.id;
-    if (isMe){
+    const waiting = queue.indexOf(b.dataset.id);
+    if (waiting >= 0 && !isMe){
+      /* Claimed and waiting for the worker. The press already succeeded, so
+         this must not look like nothing happened. */
+      b.dataset.state = 'busy';
+      b.textContent = '⏳ ' + (waiting === 0 ? 'Next up…' : (waiting + 1) + 'th in line');
+      b.disabled = true;
+    } else if (isMe){
       b.dataset.state = 'busy';
       /* Name the stage. The tunnel step alone took 1m45s on the first real
          publish, and a flat "Publishing…" for three minutes reads as a hang. */
@@ -398,9 +406,12 @@ function paintReels(state){
       b.title = p.error || '';
       b.disabled = false;
     } else {
+      /* NOT disabled while another reel is working. The press returns as soon
+         as the job is claimed, so three good jobs are three clicks — the
+         waiting is the server's problem, not the button's. */
       b.dataset.state = '';
       b.textContent = '📹 Reel → Instagram';
-      b.disabled = busy;
+      b.disabled = false;
     }
   }
 }
@@ -409,7 +420,7 @@ let reelTimer = null;
 async function pollReels(){
   const state = await api('/api/reel/status');
   paintReels(state);
-  const busy = state.running && !state.running.finishedAt;
+  const busy = (state.running && !state.running.finishedAt) || (state.queue || []).length > 0;
   const queued = (state.posts || []).some(p => p.status === 'scheduled');
   clearTimeout(reelTimer);
   /* Fast while something is in flight, slow while something is merely waiting
@@ -435,9 +446,9 @@ for (const b of rbtns){
       + 'later slot rather than posted straight away.\\n\\n'
       + 'This posts publicly and cannot be undone from here.')) return;
     b.disabled = true;
-    b.textContent = '⏳ Rendering…';
+    b.textContent = '⏳ Queued…';
     const res = await api('/api/reel', { jobId: b.dataset.id });
-    if (res && res.error){ alert('Could not start: ' + res.error); }
+    if (res && res.error){ alert('Could not start: ' + res.error); b.disabled = false; }
     pollReels();
   });
 }

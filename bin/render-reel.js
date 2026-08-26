@@ -73,11 +73,19 @@ const STORYGASTED = join(homedir(), 'Desktop', 'projects', 'storygasted');
  * spoken too fast is a URL nobody can type. If it needs to go faster than
  * ~1.6x, shorten the script instead — see src/reelscript.js.
  */
-const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || cfg.reels?.voiceTempo || 1.5);
+const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || cfg.reels?.voiceTempo || 1.6);
+
+/** Overridden by `reels.voiceInstruct`. See the note where it is used. */
+const DEFAULT_INSTRUCT = 'An upbeat young presenter announcing a job opening to students. '
+  + 'Bright, confident and energetic, with the quick forward pace of a short social promo. '
+  + 'Keep the momentum up throughout, do not dwell on any word, and take no long pauses.';
 
 /* A tail after the voice ends, so the CTA is on screen in silence for a beat
    rather than cutting the instant the last word lands. */
 const TAIL = 0.9;
+
+/** Shortest reel worth making. Overridden by `reels.minSeconds`. */
+const MIN_SECONDS = Number(cfg.reels?.minSeconds || 10);
 
 /* Playwright-core ships no browsers. The Chromium in the shared cache is the
    one the scraper's own install put there; resolve it explicitly so a missing
@@ -259,9 +267,17 @@ function makeVoice(text) {
   const raw = join(WORK, 'vo-raw.wav');
   const out = join(WORK, 'vo.wav');
 
+  /* THE DELIVERY DIRECTION MATTERS AS MUCH AS THE TEMPO.
+   *
+   * Without one, storygasted's own default applies — "a young adult American
+   * woman telling a personal story to a close friend, natural conversational
+   * pacing, warm and intimate, NEVER ANNOUNCER-LIKE" — which is a storytelling
+   * voice, and precisely the unhurried delivery a job promo does not want.
+   * Every reel inherited it until this was passed. */
+  const instruct = cfg.reels?.voiceInstruct || DEFAULT_INSTRUCT;
   const res = execFileSync('uv', [
     'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'tts_once.py'),
-    '--text', text, '--out', raw
+    '--text', text, '--out', raw, '--instruct', instruct
   ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
 
   const line = String(res).trim().split('\n').filter(Boolean).pop();
@@ -372,8 +388,19 @@ async function main() {
     }
   }
 
+  /* A FLOOR, because speeding the voice up shortened the reel.
+   *
+   * At 1.6x with a short posting the voiceover runs under five seconds, and
+   * the card lays its scenes out as FRACTIONS of the total — so a 5.8s reel
+   * gave the CTA 0.9s, which is not long enough to read "INTERNDOOR.COM", let
+   * alone type it. The last scene is the only one that asks the viewer to do
+   * something; it cannot be the one that gets squeezed.
+   *
+   * Padding the tail rather than slowing the voice back down: the pace was the
+   * complaint, and a beat of music under the CTA is not dead air, it is the
+   * pause that lets the address land. */
   const duration = voice
-    ? Math.min(Number(args.max || 20), voice.seconds + TAIL)
+    ? Math.min(Number(args.max || 20), Math.max(MIN_SECONDS, voice.seconds + TAIL))
     : Number(args.duration || 11);
 
   const bgm = args['no-bgm'] ? null : pickBgm({

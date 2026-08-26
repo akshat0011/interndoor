@@ -74,33 +74,72 @@ function speakable(title) {
  * card is proportioned for.
  */
 export function reelScript(d, { site = 'InternDoor dot com' } = {}) {
-  const lines = [];
   const role = speakable(d.title);
   const where = d.city ? ` in ${d.city}` : '';
-
-  if (d.stipendText && d.stipendAmount) {
-    lines.push(`${amountInWords(d.stipendAmount)} rupees${per(d.stipendPeriod)}.`);
-    lines.push(`${d.company} is hiring a ${role}${where}.`);
-  } else if (d.zeroApplicants) {
-    lines.push(`Nobody has applied to this one yet.`);
-    lines.push(`${d.company} just posted a ${role}${where}.`);
-  } else {
-    lines.push(`${d.company} is hiring interns${where}.`);
-    lines.push(`They are looking for a ${role}.`);
-  }
-
-  /* Urgency only when the number supports it. An applicant count is stored
-     for about half of India rows, and inventing scarcity is the fastest way
-     to lose the audience this is meant to build. */
   const n = Number(d.applicantsCount);
-  if (Number.isFinite(n) && n > 0 && n <= 60) {
-    lines.push(`Only ${small(n)} people have applied so far.`);
+
+  /* ONE SENTENCE UNTIL THE CTA, NOT FOUR.
+   *
+   * Every full stop is a pause the model inserts, and four of them in twenty
+   * seconds is what "reading a paragraph and stopping in between" sounds like.
+   * The first version pushed four separate sentences joined with a space, so
+   * the voice halted four times in a reel whose whole job is to hold somebody
+   * for fifteen seconds.
+   *
+   * Clauses are joined with a comma and a conjunction instead. A comma is a
+   * breath; a full stop is a stop, and the model treats them differently.
+   * Contractions ("nobody's", "you'd") for the same reason — the expanded
+   * forms read as written English rather than as speech.
+   *
+   * Each branch is punctuated by hand rather than through a generic joiner. A
+   * rule that inserted a comma before every clause produced "twenty thousand
+   * rupees a month, for a Back End Developer", which is a breath in the middle
+   * of a prepositional phrase — exactly the halt being removed.
+   *
+   * THE CTA KEEPS ITS OWN SENTENCE. It is the one line that should land
+   * separately, and the single pause before it is the only one worth having.
+   */
+  let head;
+  if (d.stipendText && d.stipendAmount) {
+    head = `${d.company} is paying ${amountInWords(d.stipendAmount)} rupees${per(d.stipendPeriod)} for ${article(role)} ${role}${where}`;
   } else if (d.zeroApplicants) {
-    lines.push(`You would be first in the queue.`);
+    head = `${d.company} just posted ${article(role)} ${role}${where} and nobody's applied yet`;
+  } else {
+    head = `${d.company} is hiring ${article(role)} ${role}${where}`;
   }
 
-  lines.push(`Find it on ${site}.`);
-  return lines;
+  /* Urgency only when the number supports it. An applicant count is stored for
+     about half of India rows, and inventing scarcity is the fastest way to
+     lose the audience this is meant to build. */
+  if (Number.isFinite(n) && n > 0 && n <= 60) {
+    head += `, and only ${small(n)} people have applied so far`;
+  } else if (d.zeroApplicants) {
+    head += `, so you'd be first in the queue`;
+  }
+
+  /* Still an array: bin/render-reel.js aligns against the whole text, and a
+     future version may synthesise each beat separately and land the cuts on
+     the pauses the way storygasted does. */
+  return [`${head}.`, `Find it on ${site}.`];
+}
+
+/**
+ * "a" or "an".
+ *
+ * Spoken, not written: the model says the article it is given, so "a Intern
+ * Embedded System" is heard as a stumble. Decided on the SOUND of the first
+ * letter, which is why the vowel test is not enough on its own — "an SDE" is
+ * right because the letter is said "ess", and "a UX" is right because "you"
+ * starts with a consonant sound.
+ */
+function article(next) {
+  const w = String(next || '').trim();
+  if (!w) return 'a';
+  const first = w[0].toUpperCase();
+  /* A leading capital that is read letter by letter: SDE, ML, R&D, FPGA. */
+  if (/^[A-Z]{2,}\b/.test(w)) return 'AEFHILMNORSX'.includes(first) ? 'an' : 'a';
+  if (/^[uU](?:ni|se|ser|x|i)/.test(w)) return 'a';        // "university", "UX" -> "you"
+  return /^[aeiouAEIOU]/.test(w) ? 'an' : 'a';
 }
 
 export function scriptText(d, opts) {

@@ -205,6 +205,57 @@ function safeMeta(raw) {
 let reelRunning = null;
 
 /**
+ * Jobs claimed and waiting for the worker.
+ *
+ * The route used to answer 409 while anything was in flight, so three good
+ * jobs could not be pressed in three clicks: the first press publishes
+ * immediately and that takes about four minutes end to end (render, tunnel,
+ * Instagram's fetch), and both other buttons were dead for the whole of it.
+ *
+ * Now a press CLAIMS the job and returns straight away, and this queue is
+ * drained one at a time. Serial on purpose — two renders at once would both
+ * drive Playwright and both hold a tunnel — but the waiting is the server's
+ * problem rather than the button's.
+ */
+const reelQueue = [];
+let reelWorking = false;
+
+async function pumpReels() {
+  if (reelWorking) return;
+  reelWorking = true;
+  try {
+    while (reelQueue.length) {
+      const jobId = reelQueue.shift();
+      await publishReel(jobId).catch((e) => log.warn(`Reel ${jobId}: ${e.message}`));
+    }
+    /* A slot may have fallen due while the queue was being worked. */
+    await drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));
+  } finally {
+    reelWorking = false;
+  }
+}
+
+/**
+ * Claim a job and put it in the queue.
+ *
+ * The claim happens HERE, synchronously, not in the worker: it is what makes a
+ * double-click harmless, and it has to happen before the request is answered
+ * or two presses race into the queue twice.
+ */
+function enqueueReel(jobId) {
+  if (reelQueue.includes(jobId)) return { error: 'already queued' };
+  const job = publicJob(jobId);
+  if (!job) return { error: `job ${jobId} is not on the published board` };
+  if (!store.reelClaim(jobId)) {
+    const row = store.reelPost(jobId);
+    return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
+  }
+  reelQueue.push(jobId);
+  pumpReels().catch((e) => log.warn(`Reel pump: ${e.message}`));
+  return { queued: true, position: reelQueue.length };
+}
+
+/**
  * The job as the SITE has it, not as the database has it.
  *
  * Same rule bin/render-reel.js follows and for the same reason: the public
@@ -293,12 +344,9 @@ async function doPublish(row) {
  * cannot arrive to find the model down or Playwright broken.
  */
 async function publishReel(jobId) {
-  const job = publicJob(jobId);
-  if (!job) return { error: `job ${jobId} is not on the published board` };
-  if (!store.reelClaim(jobId)) {
-    const row = store.reelPost(jobId);
-    return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
-  }
+  /* Already claimed by enqueueReel — claiming here too would refuse the job it
+     was handed. */
+  const job = publicJob(jobId) ?? { company: jobId, title: '' };
 
   reelRunning = { jobId, company: job.company, title: job.title, stage: 'rendering',
     startedAt: Date.now(), url: null, error: null };
@@ -352,6 +400,7 @@ async function publishReel(jobId) {
  */
 async function drainReels() {
   if (reelRunning && !reelRunning.finishedAt) return;
+  if (reelQueue.length) return;   // the pump will call this when it is empty
   const due = store.reelDue();
   if (due) await doPublish(due);
 }
@@ -413,18 +462,17 @@ const server = createServer(async (req, res) => {
   if (path === '/api/reel' && req.method === 'POST') {
     const body = await readJson(req, res);
     if (!body) return undefined;
-    if (reelRunning && !reelRunning.finishedAt) {
-      return json(res, 409, { error: 'a reel is already being made' });
-    }
     if (!body.jobId) return json(res, 400, { error: 'jobId is required' });
-    /* Not awaited: the page polls /api/reel/status. */
-    publishReel(String(body.jobId));
-    return json(res, 202, { started: true });
+    /* Answers as soon as the job is CLAIMED, not when it is finished. The
+       work happens on the queue; the page polls /api/reel/status. */
+    const out = enqueueReel(String(body.jobId));
+    return out.error ? json(res, 409, out) : json(res, 202, out);
   }
 
   if (path === '/api/reel/status') {
     return json(res, 200, {
       running: reelRunning,
+      queue: reelQueue.slice(),
       posts: store.reelPosts().map((r) => ({
         jobId: r.job_id, status: r.status, url: r.permalink, error: r.error,
         slot: r.publish_at ?? null,
