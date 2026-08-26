@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { regionOf } from '../src/regions.js';
-import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix } from '../src/pages.js';
+import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix, stipendText, verifiedAt, startDate, degreeLabel, placesOf, payRange, eligibilityCounts } from '../src/pages.js';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -410,7 +410,7 @@ console.log('\n== a hub lists roles, not postings ==');
 const many = Array.from({ length: 22 }, (_, i) =>
   ({ ...mk(String(100 + i), 'Engineering Internship, Summer 2027', `City${i}, OH`), roleFingerprint: 'samehash11', bullets: ['a', 'b'], summary: 's' }));
 const hub = renderCompanyPage('Procter & Gamble', many, [], '');
-check('one tile, not twenty-two', (hub.match(/class="tile[ "]/g) ?? []).length, 1);
+check('one card, not twenty-two', (hub.match(/class="role-card[ "]/g) ?? []).length, 1);
 check('and it says how many cities', hub.includes('22 locations'), true);
 
 // Different jobs filed under one title must stay apart — Emerson has seven
@@ -419,7 +419,7 @@ const distinct = [
   { ...mk('200', 'Graduate Engineer Trainee', 'Pune, India', 'Emerson'), roleFingerprint: 'aaa', summary: 's' },
   { ...mk('201', 'Graduate Engineer Trainee', 'Pune, India', 'Emerson'), roleFingerprint: 'bbb', summary: 's' },
 ];
-check('different roles under one title stay apart', (renderCompanyPage('Emerson', distinct, [], '').match(/class="tile[ "]/g) ?? []).length, 2);
+check('different roles under one title stay apart', (renderCompanyPage('Emerson', distinct, [], '').match(/class="role-card[ "]/g) ?? []).length, 2);
 
 
 console.log('\n== a <title> is unique across BOARDS, not just within one ==');
@@ -469,6 +469,115 @@ check('only the first city reaches the title', multiUs.includes('New York'), fal
 check('and the role text survives', multiUs.includes('Quantitative Trader'), true);
 check('the two boards still differ', multiUs !== multiGb, true);
 check('each names its own first city', [multiUs.includes('in Chicago'), multiGb.includes('in London')], [true, true]);
+
+console.log('\n== a "verified" badge is a claim we made a check ==');
+// THE COLLECTOR DECIDES THIS. bin/poll-ats.js re-reads every ATS board every
+// 30 minutes, so lastSeenAt on an ATS row genuinely means "seen on their board,
+// then". A LinkedIn card falls out of the time-windowed search in ~90 minutes
+// and is almost never re-encountered: measured on the live boards the median
+// LinkedIn row has lastSeenAt === firstSeenAt and is 21h stale in the US, 293h
+// in India. Saying "confirmed open" over that is not a stale number, it is a
+// false statement about a check that never happened.
+const HOUR = 3600000;
+const atsFresh = { id: 'ats:greenhouse:x:1', lastSeenAt: Date.now() - 20 * 60000 };
+const atsStale = { id: 'ats:greenhouse:x:2', lastSeenAt: Date.now() - 30 * HOUR };
+const liFresh  = { id: '4441247638', lastSeenAt: Date.now() - 20 * 60000 };
+check('a freshly-read ATS row can be confirmed', verifiedAt(atsFresh) !== null, true);
+check('a LinkedIn row NEVER can, however recent', verifiedAt(liFresh), null);
+check('a stale ATS reading is not a confirmation either', verifiedAt(atsStale), null);
+check('a row with no reading at all is not', verifiedAt({ id: 'ats:greenhouse:x:3' }), null);
+
+// And the rule has to survive into the rendered page, not just the helper.
+const liveLi = { id: '999', company: 'Adobe', title: 'Backend Intern', location: 'Pune, India',
+  postedAt: Date.UTC(2026, 7, 25), firstSeenAt: Date.UTC(2026, 7, 25), lastSeenAt: Date.now(),
+  bullets: ['a', 'b'], summary: 's' };
+check('a LinkedIn-only hub shows no confirmation badge',
+  renderCompanyPage('Adobe', [liveLi], [], '').includes('Confirmed open'), false);
+const liveAts = { ...liveLi, id: 'ats:greenhouse:adobe:1' };
+check('an ATS hub does', renderCompanyPage('Adobe', [liveAts], [], '').includes('Confirmed open'), true);
+
+console.log('\n== a US salary is not grouped the Indian way ==');
+// The extractor groups lakh-first because that is right for the board it was
+// written for. On the live US board 103 of 272 printable stipends carried it,
+// and "$1,75,000" reads as a typo or as $1.75 — on the one figure most likely
+// to decide whether somebody applies.
+check('lakh grouping is regrouped on a dollar amount', stipendText({ stipend: '$1,75,000 – $2,50,000' }), '$175,000 – $250,000');
+check('a plain dollar amount is untouched', stipendText({ stipend: '$85,000 / year' }), '$85,000 / year');
+check('western millions are not mangled', stipendText({ stipend: '$1,000,000 / year' }), '$1,000,000 / year');
+// Rupees are LEFT ALONE: lakh grouping is correct there and "12,00,000" is
+// what an Indian posting means to write.
+check('rupees keep Indian grouping', stipendText({ stipend: '₹12,00,000 / year' }), '₹12,00,000 / year');
+check('an LPA figure is untouched', stipendText({ stipend: '4,50,000 LPA' }), '4,50,000 LPA');
+check('a bare number is still refused', stipendText({ stipend: '2,026' }), '');
+// 68 live rows held "₹0", 30 of them on the US board. Zero is missing data, not
+// a wage — an employer that really pays nothing is recorded in stipendStatus.
+check('a zero stipend is not an amount', stipendText({ stipend: '₹0' }), '');
+check('nor is it with trailing space', stipendText({ stipend: '₹0 ' }), '');
+check('nor "$0 / month"', stipendText({ stipend: '$0 / month' }), '');
+check('but a real figure containing a zero survives', stipendText({ stipend: '₹20,000 / month' }), '₹20,000 / month');
+// A range whose low bound is zero says "somewhere between nothing and X".
+check('a range opening at zero is refused', stipendText({ stipend: '$0 – $1,000 / hour' }), '');
+check('a zero-floor rupee range too', stipendText({ stipend: '₹0 - ₹15,000 / month' }), '');
+
+console.log('\n== every office on a role, not the first comma-segment ==');
+// "Chicago, IL or New York, NY" read as "Chicago", so a hub claimed one office
+// while a role was genuinely open in two.
+check('both offices survive', placesOf('Chicago, IL or New York, NY'), ['Chicago', 'New York']);
+check('a plain location is unchanged', placesOf('Bengaluru, Karnataka, India'), ['Bengaluru']);
+check('a slash-separated pair splits too', placesOf('London / Dublin'), ['London', 'Dublin']);
+check('the comma does NOT split a city from its state', placesOf('Austin, TX'), ['Austin']);
+check('an empty location yields nothing', placesOf(''), []);
+
+console.log('\n== a start date is read from the title or not at all ==');
+check('an explicit start is read', startDate({ title: 'Software Engineer – 2027 Internship Program (June Start)' }), 'Jun 2027');
+check('and another', startDate({ title: 'Quantitative Trader – 2027 Graduate Program (February Start)' }), 'Feb 2027');
+check('a title with no start says nothing', startDate({ title: 'Engineering Internship, Summer 2027' }), '');
+check('a season is not treated as a month', startDate({ title: 'Summer Analyst 2027' }), '');
+
+console.log('\n== a pay range is refused when it would be arithmetic on two questions ==');
+const inr = { stipend: '₹25,000 / month' }, usd = { stipend: '$150,000 / year' };
+check('mixed currencies produce no range', payRange([inr, usd]), null);
+check('mixed periods produce no range', payRange([{ stipend: '$5,000 / month' }, usd]), null);
+check('one currency and one period does', payRange([usd, { stipend: '$200,000 / year' }]).text, '$150k – $200k');
+check('a single figure is not rendered as a range', payRange([usd]).text, '$150k');
+check('nothing stated is null', payRange([{ stipend: '' }]), null);
+
+console.log('\n== silence is not a refusal ==');
+// A level no posting mentioned must never render as a cross. The postings did
+// not exclude undergraduates; they said nothing, and turning that into a "no"
+// talks somebody out of an application they were entitled to make.
+const eg = eligibilityCounts([
+  { degreeLevel: 'UG', degreeText: '' },
+  { degreeLevel: 'UG/PG', degreeText: '' },
+  { degreeLevel: 'PG', degreeText: 'Ph.D./Masters' },
+]);
+check('undergrad roles are counted', eg.ug, 2);
+check('postgrad roles are counted', eg.pg, 2);
+check('PhD is counted only where a posting says so', eg.phd, 1);
+check('a bare PG does not become a PhD', eligibilityCounts([{ degreeLevel: 'PG', degreeText: '' }]).phd, 0);
+const quiet = renderCompanyPage('Zoho', [{ id: '1', company: 'Zoho', title: 'Intern', location: 'Chennai, India',
+  degreeLevel: 'UG', postedAt: Date.UTC(2026, 7, 25), firstSeenAt: Date.UTC(2026, 7, 25), bullets: ['a', 'b'], summary: 's' }], [], '');
+check('an unstated level reads "Not stated", never a cross', quiet.includes('Not stated'), true);
+check('and no cross is drawn anywhere', quiet.includes('✗'), false);
+
+console.log('\n== the hub still says what it always said ==');
+// The tracking sentence MOVED out of the hero; it must not have been dropped.
+// It is the authority this page accumulates and the reason a hub outranks a
+// job board's own listing page.
+const tracked = Array.from({ length: 4 }, (_, i) => ({
+  id: `ats:greenhouse:omc:${i}`, company: 'Old Mission Capital', title: `Role ${i}`,
+  location: 'Chicago, IL', postedAt: Date.UTC(2026, 6, 1) + i * 86400000,
+  firstSeenAt: Date.UTC(2026, 6, 1), lastSeenAt: Date.now(), bullets: ['a', 'b'], summary: 's',
+  degreeLevel: 'UG', stipend: '$1,75,000 – $2,50,000',
+}));
+const omc = renderCompanyPage('Old Mission Capital', tracked, [], '');
+check('the tracking sentence survives the move', omc.includes('We have tracked'), true);
+check('the regrouped salary reaches the page', omc.includes('$175,000'), true);
+check('and the lakh form does not', omc.includes('$1,75,000'), false);
+check('breadcrumb markup is emitted', omc.includes('"BreadcrumbList"'), true);
+// A bare Organization would assert this page IS the employer's. It is not.
+check('the hub is a CollectionPage about them', omc.includes('"CollectionPage"'), true);
+check('and never a bare Organization node', /"@type"\s*:\s*"Organization"\s*,\s*"name"[^}]*}\s*}\s*<\/script>/.test(omc) || omc.includes('"about"'), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

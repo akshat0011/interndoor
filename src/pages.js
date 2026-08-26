@@ -297,7 +297,45 @@ function agePill(ms) {
 export function stipendText(job) {
   const raw = String(job.stipend ?? '').trim();
   if (!raw) return '';
-  return /[₹$]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw) ? raw : '';
+  if (!/[₹$]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw)) return '';
+  // ZERO IS NOT AN AMOUNT. 68 live rows hold "₹0" — 30 of them on the US board,
+  // where the currency is wrong as well as the figure. It is missing data, not
+  // a wage: an employer that genuinely pays nothing is recorded in
+  // `stipendStatus`, which the caller renders as "Unpaid" on purpose. Printing
+  // it was survivable while a stipend was one line in a fact table; it is not
+  // now that pay is the headline fact on a card and reads as a claim about what
+  // somebody pays.
+  // A zero ANYWHERE a currency introduces an amount, not merely an all-zero
+  // figure: the live board also holds "$0 – $1,000 / hour", a range running
+  // from nothing to an impossible wage. A bound of zero tells a reader nothing
+  // and still renders as a confident green figure.
+  if (/[₹$£€]\s*0(?![\d.])/.test(raw)) return '';
+  if (!/[1-9]/.test(raw.replace(/[^\d]/g, ''))) return '';
+  return regroupWestern(raw);
+}
+
+/**
+ * "$1,75,000" -> "$175,000".
+ *
+ * The extractor groups digits the Indian way — lakh-first, 1,75,000 — because
+ * that is right for the board it was written for. On a US salary it is not a
+ * cosmetic slip: "$1,75,000" reads as either a typo or $1.75, and this figure
+ * is the most persuasive fact on the page. Measured on the live US board, 103
+ * of 272 printable stipends carried it.
+ *
+ * Rupee amounts are LEFT ALONE — lakh grouping is correct there, and so is the
+ * "12,00,000" an Indian posting writes on purpose. The test is the currency,
+ * not the shape.
+ */
+function regroupWestern(raw) {
+  if (/₹|\brs\.?\b|\blpa\b|\blakh|\bcrore?\b/i.test(raw)) return raw;
+  return raw.replace(/\d[\d,]*\d/g, (num) => {
+    // Lakh grouping is a 2-digit group sitting between two commas. Western
+    // thousands never produce one, so this cannot fire on "1,000,000".
+    if (!/\d,\d{2},/.test(num)) return num;
+    const n = Number(num.replace(/,/g, ''));
+    return Number.isFinite(n) ? n.toLocaleString('en-US') : num;
+  });
 }
 
 /**
@@ -336,6 +374,104 @@ function applicantsText(job) {
   if (!n) return '';
   if (/clicked/i.test(raw)) return `${n} clicked apply`;
   return `${n} applicant${n === '1' ? '' : 's'}`;
+}
+
+/**
+ * How long ago we last CONFIRMED this posting was still on the employer's
+ * board — and null whenever we cannot honestly say.
+ *
+ * THE COLLECTOR DECIDES THIS, and the difference between the two is not small.
+ * `bin/poll-ats.js` re-reads every ATS board every 30 minutes, so board
+ * presence is ground truth and `lastSeenAt` genuinely means "seen there, then".
+ * A LinkedIn card falls out of the time-windowed search in about ninety
+ * minutes and is almost never re-encountered: measured across the live boards,
+ * the median LinkedIn row has `lastSeenAt === firstSeenAt` and is 21h stale in
+ * the US and 293h — twelve days — in India.
+ *
+ * So a "verified" badge on a LinkedIn row would be the `posted_text` bug with
+ * higher stakes: not a stale number, a false claim about a check we never made.
+ * ATS only, and only while the reading is fresh — the same shape as the
+ * Format D freshness gate, and for the same reason.
+ */
+const VERIFY_MAX_AGE_MS = 6 * 3_600_000;
+export function verifiedAt(job) {
+  if (!String(job?.id ?? '').startsWith('ats:')) return null;
+  const seen = Number(job.lastSeenAt);
+  if (!Number.isFinite(seen) || seen <= 0) return null;
+  return Date.now() - seen <= VERIFY_MAX_AGE_MS ? seen : null;
+}
+
+/**
+ * "Software Engineer – 2027 Internship Program (June Start)" -> "Jun 2027".
+ *
+ * A start date is one of the two facts a student weighs hardest and it is not
+ * a stored column — but employers running graduate tracks put it in the title,
+ * because that is what distinguishes their three otherwise identical postings.
+ * Read from the title or not at all: nothing here is inferred from the season.
+ */
+const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july',
+  'august', 'september', 'october', 'november', 'december'];
+export function startDate(job) {
+  const t = String(job?.title ?? '');
+  const m = t.match(/\(([A-Za-z]+)\s+start\)/i) || t.match(/\b(starts?|starting)\s+([A-Za-z]+)\b/i);
+  const word = String((m && (m[2] || m[1])) ?? '').toLowerCase();
+  const idx = MONTHS.indexOf(word);
+  if (idx < 0) return '';
+  const year = (t.match(/\b(20\d{2})\b/) || [])[1];
+  const mon = word[0].toUpperCase() + word.slice(1, 3);
+  return year ? `${mon} ${year}` : mon;
+}
+
+/** "Jun 2027" -> a sortable number. Month order, then year. */
+function startKey(label) {
+  const [mon, year] = String(label ?? '').split(' ');
+  const m = MONTHS.findIndex((x) => x.startsWith(String(mon ?? '').toLowerCase()));
+  return (Number(year) || 0) * 12 + (m < 0 ? 0 : m);
+}
+
+/**
+ * The degree a posting asks for, in words a student uses.
+ *
+ * `degreeText` is the posting's own phrasing and is far better when it exists
+ * ("Ph.D./Masters", "Computer Science/Computer Engineering") — but it is
+ * present on only about 30% of rows, and it is not always a LEVEL: sometimes it
+ * names a field of study. `degreeLevel` is on 68-83% and is always a level. So
+ * the text is preferred when it is short enough to read as a chip, and the
+ * level is the fallback rather than the other way round.
+ */
+export function degreeLabel(job) {
+  const text = String(job?.degreeText ?? '').trim();
+  const lvl = String(job?.degreeLevel ?? '').trim().toUpperCase();
+  // `degreeText` is used ONLY when it names a level. It is free text and it
+  // mixes two axes: "Ph.D./Masters" is a level, "Computer Science/Computer
+  // Engineering" is a field of study — and the second, sitting in the slot
+  // where the card promises a degree requirement, reads as though a bachelor's
+  // were not enough. When it names a field, the level is the honest answer and
+  // the field is already in the skills.
+  const namesLevel = /bachelor|master|ph\.?\s?d|doctora|undergrad|postgrad|b\.?tech|m\.?tech|b\.?e\b|m\.?s\b/i;
+  if (text && text.length <= 34 && namesLevel.test(text)) return text;
+  if (lvl === 'UG') return 'Bachelor’s';
+  if (lvl === 'PG') return 'Master’s / PhD';
+  if (lvl === 'UG/PG' || lvl === 'PG/UG') return 'Bachelor’s / Master’s';
+  return text || '';
+}
+
+/**
+ * Every city a posting names, not just the first.
+ *
+ * `cityOf` takes the first comma-segment and that is right for a tile and for
+ * the title builder, which deliberately spends its characters on the role. It
+ * is wrong for a card: "Chicago, IL or New York, NY" is two real offices and
+ * rendering it as "Chicago" hides one from somebody who can only take the
+ * other. Split on the connectives an employer actually writes, never on the
+ * comma — the comma separates a city from its state.
+ */
+export function placesOf(location, region = DEFAULT_REGION) {
+  const raw = String(location ?? '').trim();
+  if (!raw) return [];
+  const parts = raw.split(/\s+or\s+|\s*[;/]\s*|\s*\|\s*/i)
+    .map((p) => cityOf(p, region)).filter(Boolean);
+  return [...new Set(parts)];
 }
 
 /** The badges under the headline: freshness, pay, competition. */
@@ -1017,7 +1153,12 @@ export function companyProfile(all, region = DEFAULT_REGION) {
   return {
     n: rows.length,
     skills,
-    cities: tally((j) => cityOf(j.location, region)),
+    // EVERY office, not the first comma-segment. With `cityOf` here the hub
+    // contradicted itself on the first real render: the questions block read
+    // "Chicago and New York" off the live roles while "Where they hire" read
+    // "was based in Chicago", because one counted both offices and the other
+    // silently dropped the second.
+    cities: tally((j) => placesOf(j.location, region)),
     degrees: tally((j) => j.degreeLevel),
     modes: tally((j) => modeText(j)),
     durations: tally((j) => durationText(j)),
@@ -1074,7 +1215,7 @@ function andList(items) {
  * expire and this does not, so it is the only part of the site that can
  * accumulate authority for "<company> internships" over years.
  */
-function profileSections(company, prof, region) {
+function profileSections(company, prof, region, { skipDegrees = false, lede = '' } = {}) {
   if (!prof.n) return '';
   const co = esc(company);
   const many = prof.n >= 3;
@@ -1092,7 +1233,10 @@ function profileSections(company, prof, region) {
   }
 
   // --- who can apply. Students filter on this harder than on anything else.
-  if (prof.degrees.length) {
+  // Skipped on the company hub, where `eligibilityBlock` answers the same
+  // question from the LIVE roles as three counts rather than as the run-on
+  // "Eligibility stated on X postings: UG/PG, PG and UG." that this produced.
+  if (prof.degrees.length && !skipDegrees) {
     out.push(`<section class="strip">
       <div class="strip-head"><h2>Who ${co} accepts</h2></div>
       <p class="cp-note">Eligibility stated on ${co} postings: ${esc(andList(prof.degrees.map((d) => d.value)))}.</p>
@@ -1131,11 +1275,243 @@ function profileSections(company, prof, region) {
     ].filter((f) => f && f[1]);
     out.push(`<section class="strip">
       <div class="strip-head"><h2>${co} internships at a glance</h2></div>
+      ${lede ? `<p class="hub-lede">${lede}</p>` : ''}
       <dl class="cp-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
     </section>`);
   }
 
+  // A hub below three postings has no at-a-glance panel to carry the tracking
+  // sentence, and that is exactly the hub with the least on it — so it lands
+  // on its own rather than being dropped with the panel. It keeps a heading:
+  // 143 of 255 hubs have a single live role, so this is the COMMON layout, and
+  // a paragraph floating under a rule with no label reads as leftover text.
+  if (lede && !many) {
+    out.push(`<section class="strip">
+      <div class="strip-head"><h2>How this page stays current</h2></div>
+      <p class="hub-lede">${lede}</p>
+    </section>`);
+  }
+
   return out.join('\n    ');
+}
+
+/**
+ * The pay range across a set of postings, or null when a single range would be
+ * a lie.
+ *
+ * Two things make it a lie, and both occur in the live data. MIXED CURRENCIES
+ * are obvious. MIXED PERIODS are not: an India posting states ₹25,000 a month
+ * and a US one $150,000 a year, and "₹25,000 – $150,000" is arithmetic
+ * performed on two different questions. A range is only offered when every
+ * contributing figure agrees on both.
+ */
+export function payRange(jobs) {
+  const nums = [];
+  let cur = null;
+  let period = null;
+  for (const j of jobs ?? []) {
+    const s = stipendText(j);
+    if (!s) continue;
+    const sym = (s.match(/[₹$£€]/) || [])[0] ?? null;
+    if (!sym) continue;
+    const per = (s.match(/month|year|annual|week/i) || [null])[0]?.toLowerCase() ?? null;
+    if (cur && sym !== cur) return null;
+    if (period && per && per !== period) return null;
+    cur = sym; period = period ?? per;
+    for (const m of s.matchAll(/[\d,]+/g)) {
+      const n = Number(String(m[0]).replace(/,/g, ''));
+      if (Number.isFinite(n) && n >= 1000) nums.push(n);
+    }
+  }
+  if (!nums.length) return null;
+  const lo = Math.min(...nums);
+  const hi = Math.max(...nums);
+  const fmt = (n) => cur === '₹'
+    ? (n >= 100000 ? `₹${(n / 100000).toFixed(n % 100000 ? 1 : 0)}L` : `₹${n.toLocaleString('en-IN')}`)
+    : `${cur}${n >= 1000 ? `${Math.round(n / 1000)}k` : n}`;
+  // lo and hi are handed back separately as well as joined. A caller that
+  // wants to emphasise the two ends has to be able to wrap each one — splitting
+  // the joined string and injecting tags into it means escaping markup you just
+  // wrote, which rendered "$150k</b> to <b>$250k" as visible text on the first
+  // real page this produced.
+  return { text: lo === hi ? fmt(lo) : `${fmt(lo)} – ${fmt(hi)}`, lo: fmt(lo), hi: fmt(hi), count: nums.length };
+}
+
+/**
+ * How many live roles each degree level can apply to.
+ *
+ * A level nobody stated renders as "not stated", NEVER as a cross. The
+ * postings did not say undergraduates are excluded — they said nothing, and
+ * turning silence into a refusal would talk a student out of an application
+ * they were entitled to make. PhD is counted only from `degreeText` saying so
+ * outright, because "PG" covers a master's and a doctorate together and
+ * splitting it would be inventing the distinction.
+ */
+export function eligibilityCounts(live) {
+  const rows = (live ?? []).filter(Boolean);
+  const lvl = (j) => String(j.degreeLevel ?? '').toUpperCase();
+  const txt = (j) => String(j.degreeText ?? '');
+  return {
+    total: rows.length,
+    ug: rows.filter((j) => /\bUG\b/.test(lvl(j)) || /bachelor|undergrad|b\.?tech|b\.?e\b/i.test(txt(j))).length,
+    pg: rows.filter((j) => /\bPG\b/.test(lvl(j)) || /master|m\.?tech|m\.?s\b|postgrad/i.test(txt(j))).length,
+    phd: rows.filter((j) => /ph\.?\s?d|doctora/i.test(txt(j)) || /ph\.?\s?d/i.test(String(j.title ?? ''))).length,
+  };
+}
+
+/**
+ * One live role, as a card that can be acted on.
+ *
+ * Deliberately NOT `tile()`. That shape is mirrored byte for byte by
+ * `tileHtml` in page.js for the "just landed" strip and is reused on job
+ * pages, so widening it would change three surfaces to fix one. This card
+ * exists because the hub is the only one of the three where the reader has
+ * already chosen the employer and is now choosing a ROLE — so it carries the
+ * facts that decide that (pay, place, start, degree) and an explicit CTA,
+ * where a tile carries only enough to be worth a click.
+ */
+function roleCard(job, { region = DEFAULT_REGION, locations = 1 } = {}) {
+  const posted = job.postedAt ?? job.firstSeenAt;
+  const verified = verifiedAt(job);
+  const money = stipendText(job);
+  const places = placesOf(job.location, region);
+  const start = startDate(job);
+  const degree = degreeLabel(job);
+
+  const facts = [
+    money ? `<span class="f-item is-cash">${esc(money)}</span>` : '',
+    locations > 1
+      ? `<span class="f-item">${locations} locations</span>`
+      : places.length ? `<span class="f-item">${esc(places.join(' · '))}</span>` : '',
+    start ? `<span class="f-item">Starts ${esc(start)}</span>` : '',
+    degree ? `<span class="f-item">${esc(degree)}</span>` : '',
+    modeText(job) ? `<span class="f-item">${esc(modeText(job))}</span>` : '',
+  ].filter(Boolean).join('');
+
+  // Absolute date in the file, rewritten to "27d ago" by page.js — a relative
+  // label baked in here would rewrite every hub on nearly every 30-minute run.
+  const age = posted
+    ? `<span class="rc-age" data-ago="${posted}">Posted <time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>`
+    : '';
+  const vfy = verified
+    ? `<span class="vfy" data-ago="${verified}"><i aria-hidden="true"></i>Confirmed open <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
+    : '';
+
+  return `<a class="role-card" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
+        <span class="rc-t">${esc(job.title)}</span>
+        ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
+        ${facts ? `<span class="rc-facts">${facts}</span>` : ''}
+        <span class="rc-foot">
+          <span class="rc-when">${age}${vfy}</span>
+          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
+        </span>
+      </a>`;
+}
+
+/**
+ * The four questions a searcher arrived with, answered before the list.
+ *
+ * This is the block that earns the compression: the hero it replaces spent the
+ * same vertical space on a headline the reader had already read in the search
+ * result. Every cell is withheld rather than guessed — a hub with no stated pay
+ * simply has three cells.
+ */
+function answerBar(live, prof, region) {
+  const pay = payRange(live);
+  const paid = (live ?? []).filter((j) => stipendText(j)).length;
+  const eg = eligibilityCounts(live);
+  const levels = [eg.ug ? 'Bachelor’s' : '', eg.pg ? 'Master’s' : '', eg.phd ? 'PhD' : ''].filter(Boolean);
+  const places = [...new Set((live ?? []).flatMap((j) => placesOf(j.location, region)))];
+  const modes = [...new Set((live ?? []).map((j) => modeText(j)).filter(Boolean))];
+
+  // The freshest confirmation across the live roles. One badge for the page is
+  // right because they come off ONE board read in one pass.
+  const verified = (live ?? []).map(verifiedAt).filter(Boolean).sort((a, b) => b - a)[0] ?? null;
+
+  const cell = (k, v, sub, cls = '') => `<div class="ans${cls}">
+        <dt>${esc(k)}</dt><dd>${v}</dd>${sub ? `<p>${sub}</p>` : ''}</div>`;
+
+  const cells = [
+    pay ? cell('They pay', esc(pay.text),
+      paid === live.length ? `on all ${live.length} open role${live.length === 1 ? '' : 's'}`
+        : `stated on ${paid} of ${live.length} roles`, ' is-cash') : '',
+    levels.length ? cell('Who they take', esc(levels.join(' · ')),
+      levels.length > 1 ? 'varies by role' : '') : '',
+    places.length ? cell('Where', esc(places.slice(0, 3).join(' · ')),
+      modes.length === 1 ? esc(modes[0].toLowerCase()) : '') : '',
+    verified ? cell('Last verified',
+      `<span data-ago="${verified}"><time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`,
+      'on the employer’s own careers page', ' is-live') : '',
+  ].filter(Boolean);
+
+  // Two cells is a fact list; one is an orphan sitting where a grid should be.
+  return cells.length >= 2 ? `<dl class="hub-answer">${cells.join('')}</dl>` : '';
+}
+
+/**
+ * The questions block.
+ *
+ * Real headings with real answers, and NO FAQPage markup — Google restricted
+ * those rich results to government and health sites in 2023, so the schema buys
+ * nothing while inviting a structured-data problem on a domain whose whole
+ * risk model is the JobPosting manual action. What earns the featured snippet
+ * and the AI Overview citation is the visible structure, which is free.
+ *
+ * Every answer is assembled from stored facts. A question we cannot answer
+ * from the data is dropped, and below two survivors the block is dropped
+ * whole — the same thin-content rule the at-a-glance panel follows.
+ */
+function qaBlock(company, live, prof, region) {
+  const co = esc(company);
+  const pay = payRange(live);
+  const paid = (live ?? []).filter((j) => stipendText(j)).length;
+  const eg = eligibilityCounts(live);
+  // Sorted by the date they name, not by which posting happened to be newest —
+  // the first render read "Aug 2027, Jun 2027 and Feb 2027", which looks like a
+  // list that lost its sort.
+  const starts = [...new Set((live ?? []).map(startDate).filter(Boolean))]
+    .sort((a, b) => startKey(a) - startKey(b));
+  const places = [...new Set((live ?? []).flatMap((j) => placesOf(j.location, region)))];
+  const modes = [...new Set((live ?? []).map((j) => modeText(j)).filter(Boolean))];
+  const unpaid = (live ?? []).filter((j) => j.stipendStatus === 'unpaid').length;
+
+  const qa = [
+    pay ? [`Does ${co} pay its interns?`,
+      `${paid === live.length ? 'Yes — every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.${unpaid ? ` ${unpaid} tracked ${co} posting${unpaid === 1 ? ' was' : 's were'} unpaid.` : ''}`] : null,
+    // "for a Old Mission Capital internship" — an employer name is as likely to
+    // start with a vowel as not, and the article is wrong half the time. Naming
+    // the employer with "at" sidesteps it and reads better anyway.
+    (eg.ug || eg.pg || eg.phd) ? [`What degree do you need at ${co}?`,
+      [eg.ug ? `<b>${eg.ug} of ${eg.total}</b> open role${eg.ug === 1 ? '' : 's'} accept undergraduates` : '',
+        eg.pg ? `<b>${eg.pg}</b> accept a master’s` : '',
+        eg.phd ? `<b>${eg.phd}</b> ask for a PhD` : ''].filter(Boolean).join(', ')
+      + '. The exact requirement is on each posting.'] : null,
+    places.length ? [`Where are ${co} internships based?`,
+      `${places.length === 1 ? `Every open role is in <b>${esc(places[0])}</b>` : `<b>${esc(andList(places.slice(0, 4).map(esc)))}</b>`}.${modes.length === 1 ? ` All are ${esc(modes[0].toLowerCase())}.` : ''}`] : null,
+    starts.length ? [`When do ${co} internships start?`,
+      `${starts.length === 1 ? `The open role starts <b>${esc(starts[0])}</b>` : `Start dates on the open roles are <b>${esc(andList(starts.map(esc)))}</b>`}.`] : null,
+  ].filter(Boolean);
+
+  if (qa.length < 2) return '';
+  return `<section class="strip">
+      <div class="strip-head"><h2>Questions students ask</h2></div>
+      <div class="qa">${qa.map(([q, a]) =>
+        `<div><h3>${q}</h3><p>${a}</p></div>`).join('')}</div>
+    </section>`;
+}
+
+/** Who can apply, as three counts rather than a run-on sentence. */
+function eligibilityBlock(company, live) {
+  const eg = eligibilityCounts(live);
+  if (!eg.total || !(eg.ug || eg.pg || eg.phd)) return '';
+  const cell = (k, n) => `<div${n ? '' : ' class="is-quiet"'}>
+        <dt>${esc(k)}</dt>
+        <dd>${n ? `<b aria-hidden="true">✓</b> ${n} of ${eg.total} role${eg.total === 1 ? '' : 's'}` : 'Not stated'}</dd></div>`;
+  return `<section class="strip">
+      <div class="strip-head"><h2>Who ${esc(company)} accepts</h2></div>
+      <dl class="eg">${cell('Undergraduate', eg.ug)}${cell('Master’s', eg.pg)}${cell('PhD', eg.phd)}</dl>
+      <p class="cp-note">Taken from each posting’s own wording. A level reading &ldquo;not stated&rdquo; was not ruled out &mdash; those postings simply did not say. Check the individual role for graduation-year requirements.</p>
+    </section>`;
 }
 
 export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alternates = null } = {}) {
@@ -1221,7 +1597,49 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     })),
   };
 
-  const cities = [...new Set(live.map((j) => String(j.location ?? '').split(',')[0].trim()).filter(Boolean))];
+  // The trail is already on the page and already crawlable; this is the same
+  // three links in the form Google draws a breadcrumb SERP from. It describes
+  // navigation, not a vacancy, so it carries none of the JobPosting risk that
+  // governs everything else marked up on this site.
+  const crumbLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: regionUrl('/', region) },
+      { '@type': 'ListItem', position: 2, name: 'Companies', item: regionUrl('/companies/', region) },
+      { '@type': 'ListItem', position: 3, name: company },
+    ],
+  };
+
+  // CollectionPage ABOUT an Organization, never a bare Organization node. The
+  // distinction matters: a bare one asserts this page IS the employer's, which
+  // it is not, and that is the kind of claim that gets a domain re-evaluated.
+  // "A page about them" is exactly what a hub is.
+  const aboutLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'CollectionPage',
+    url,
+    name: `${company} internships ${region.inName}`,
+    about: {
+      '@type': 'Organization',
+      name: company,
+      ...(logo ? { logo: `${SITE}${logo}` } : {}),
+    },
+  };
+
+  // Every city on the live roles, not the first comma-segment of each. The old
+  // expression read "Chicago, IL or New York, NY" as "Chicago", so a hub
+  // claimed one office while a role was open in two.
+  const cities = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
+
+  // The tracking sentence. It used to sit in the hero, above the openings,
+  // where it pushed the thing the reader came for below the fold — but the
+  // words are the authority this page accumulates, so it MOVES rather than
+  // going. Its home is with the at-a-glance panel, which is about the same
+  // thing: what we have watched this employer do over time.
+  const lede = profile.n >= 3
+    ? `We have tracked <b>${profile.n} engineering internships</b> at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
+    : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live &mdash; this page is checked every 30 minutes.`;
 
   return `${head({
     title: pageTitle,
@@ -1233,7 +1651,9 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     // different roles, not one page served two ways.
     alternates,
     alternatePath: null,
-    extraLd: live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : '',
+    extraLd: `<script type="application/ld+json">${jsonLd(crumbLd)}</script>\n`
+      + `<script type="application/ld+json">${jsonLd(aboutLd)}</script>\n`
+      + (live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : ''),
   })}
 <main class="page">
   <div class="wrap">
@@ -1245,30 +1665,27 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
     <header class="hub-hero">
       ${crest(company, logo)}
-      <div class="hub-hero-t">
-        <h1>${esc(company)} internships ${esc(region.inName)}</h1>
-        <div class="hub-count pills">
-          <span class="pill ${live.length ? 'is-fresh' : ''}"><i aria-hidden="true"></i>${live.length} live opening${live.length === 1 ? '' : 's'}</span>
-          ${cities.length ? `<span class="pill">${esc(cities.slice(0, 3).join(' · '))}</span>` : ''}
-          <span class="pill">Refreshed every 30 min</span>
-        </div>
-        <p class="hub-lede">${profile.n >= 3
-          ? `We have tracked <b>${profile.n} engineering internships</b> at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
-          : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live &mdash; this page is checked every 30 minutes.`}</p>
-      </div>
+      <h1>${esc(company)} internships ${esc(region.inName)}</h1>
+      <span class="pill ${live.length ? 'is-fresh' : ''} hub-live"><i aria-hidden="true"></i>${live.length} open now</span>
     </header>
 
+    ${answerBar(live, profile, region)}
+
     <section class="strip">
-      <div class="strip-head"><h2>${live.length ? 'Open right now' : 'Open right now'}</h2></div>
+      <div class="strip-head"><h2>Open internships${live.length ? ` &middot; ${live.length}` : ''}</h2></div>
       ${live.length
-        ? `<div class="tiles">${live.map((j) => tile(j, { showCompany: false, region, locations: roleCount.get(roleKey(j)) ?? 1 })).join('')}</div>`
+        ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1 })).join('')}</div>`
         : `<div class="empty">
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
            </div>`}
     </section>
 
-    ${profileSections(company, profile, region)}
+    ${qaBlock(company, live, profile, region)}
+
+    ${eligibilityBlock(company, live)}
+
+    ${profileSections(company, profile, region, { skipDegrees: true, lede })}
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>

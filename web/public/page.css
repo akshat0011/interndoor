@@ -484,17 +484,18 @@ a.jp-crest:active { transform: scale(.97); }
    THE COMPANY HUB
    ============================================================ */
 
+/* One row, not a block. The hero used to be crest + headline + three pills +
+   a two-line lede, which is 240-odd pixels spent restating the search result
+   the reader just clicked — on a page whose whole job is to show the openings.
+   The lede moved to the at-a-glance panel and the pills became the answer bar
+   below; what is left is the identity and the one number that changes. */
 .hub-hero {
-  display: flex; align-items: center; gap: 20px;
-  padding-bottom: 26px; border-bottom: 1px solid var(--rule);
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 16px;
+  padding-bottom: 18px; flex-wrap: wrap;
 }
-.hub-hero .jp-crest { width: 72px; height: 72px; font-size: 24px; }
-.hub-hero-t { min-width: 0; flex: 1 1 320px; }
-.hub-hero h1 { font-size: clamp(28px, 4.4vw, 46px); }
-.hub-count {
-  margin-top: 12px; display: flex; flex-wrap: wrap; gap: 7px;
-}
+.hub-hero .jp-crest { width: 48px; height: 48px; font-size: 17px; flex: none; }
+.hub-hero h1 { font-size: clamp(23px, 3.1vw, 34px); flex: 1 1 300px; min-width: 0; }
+.hub-live { flex: none; }
 
 /* Past roles. Deliberately quieter than the live list and deliberately not
    links — marking up or linking a closed posting is what earns a
@@ -791,4 +792,159 @@ a.jp-crest:active { transform: scale(.97); }
 .cp-facts dd {
   margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink);
   text-align: right; overflow-wrap: anywhere;
+}
+
+/* ============================================================
+   THE COMPANY HUB — ANSWER BAR, ROLE CARDS, Q&A
+   Added when the hub was rebuilt around the four questions a
+   searcher arrives with. Everything here is hub-only; the job
+   page and the "just landed" strip still use .tile, whose
+   markup page.js mirrors byte for byte.
+   ============================================================ */
+
+/* The four answers, before the list. Auto-fit rather than a fixed four
+   columns: a hub with no stated pay renders three cells and they should fill
+   the row, not leave a gap where a fact would have been. */
+.hub-answer {
+  display: grid; gap: 9px; margin: 4px 0 6px;
+  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+}
+.ans {
+  padding: 14px 16px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r-2);
+}
+.ans dt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.ans dd {
+  margin: 7px 0 0; font-size: 19px; font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.2;
+}
+.ans p { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-3); line-height: 1.45; }
+.ans.is-cash dd { color: var(--cash); }
+.ans.is-live dd { color: var(--live); }
+
+/* Role cards. A row, not a grid cell: the hub is the one page where the reader
+   has already chosen the employer and is choosing between roles, so the facts
+   that decide that get a full line each instead of being clipped into a tile. */
+.roles { display: grid; gap: 9px; }
+.role-card {
+  display: flex; flex-direction: column; gap: 5px;
+  padding: 17px 19px; text-decoration: none;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
+  transition: border-color .16s, background .16s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .role-card:hover { border-color: var(--rule-2); background: var(--card-2); }
+}
+.role-card:active { border-color: var(--rule-2); }
+.rc-t {
+  font-size: var(--t-title); font-weight: 700;
+  letter-spacing: var(--t-title-tr); line-height: var(--t-title-lh); color: var(--ink);
+}
+.rc-sub {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.rc-facts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+.f-item {
+  font-size: 13px; color: var(--ink-2); background: var(--bg-2);
+  border: 1px solid var(--rule); border-radius: var(--r-pill); padding: 3px 10px;
+}
+/* Pay is the fact the reader is looking for and the only one that gets colour. */
+.f-item.is-cash {
+  color: var(--cash); font-weight: 700;
+  border-color: color-mix(in oklab, var(--cash) 30%, transparent);
+  background: color-mix(in oklab, var(--cash) 7%, var(--bg-2));
+}
+/* Measured, not eyeballed: --cash on the tinted chip lands at 3.91 in the light
+   theme, under the 4.5 AA needs for text this size — and this is the single
+   figure the page is built to deliver. The dark theme is already past it, so
+   only the light one is darkened. */
+:root[data-theme="light"] .f-item.is-cash {
+  color: color-mix(in oklab, var(--cash) 74%, #000);
+}
+.rc-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+.rc-when {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+/* The confirmation badge. Present ONLY on ATS rows inside the freshness
+   window — see verifiedAt() in src/pages.js — because a LinkedIn card is seen
+   once and never re-checked, and this badge is a claim that we looked. */
+.vfy { display: inline-flex; align-items: center; gap: 6px; color: var(--cash); }
+.vfy i {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: block;
+}
+.rc-go {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  height: 34px; padding: 0 15px; border-radius: var(--r);
+  background: var(--live); color: var(--live-ink);
+  font-size: 13.5px; font-weight: 700; letter-spacing: -.01em;
+}
+.rc-go em { font-style: normal; transition: transform .16s var(--snap); }
+@media (hover: hover) and (pointer: fine) {
+  .role-card:hover .rc-go em { transform: translateX(3px); }
+}
+
+/* Who can apply. Three counts, and a level nobody stated reads "not stated"
+   rather than as a refusal — the postings were silent, not exclusionary. */
+.eg {
+  display: grid; gap: 9px; margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.eg > div {
+  padding: 13px 15px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r-2);
+}
+.eg dt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.eg dd {
+  margin: 7px 0 0; font-size: 15px; font-weight: 600;
+  display: flex; align-items: center; gap: 8px; color: var(--cash);
+}
+.eg dd b { color: var(--cash); font-weight: 900; }
+.eg > div.is-quiet dd { color: var(--ink-3); font-weight: 400; }
+
+/* The questions block. No FAQPage markup — Google restricted those rich
+   results in 2023, so the visible structure is what earns the snippet. */
+/* Two columns, not three. auto-fit at 300px gave three across a 1120px wrap
+   and left the fourth question alone on its own row, which reads as a card
+   that failed to load rather than as a deliberate layout. */
+.qa {
+  display: grid; gap: 10px; margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+}
+.qa > div {
+  padding: 16px 18px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r-2);
+}
+.qa h3 {
+  font-family: var(--ui); font-size: 15px; font-weight: 700;
+  letter-spacing: -.01em; line-height: 1.35; color: var(--ink);
+}
+.qa p { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+.qa p b { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .hub-hero { gap: 13px; padding-bottom: 14px; }
+  .hub-hero .jp-crest { width: 42px; height: 42px; font-size: 15px; }
+  .hub-answer { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .ans { padding: 11px 13px; }
+  .ans dd { font-size: 16px; }
+  .role-card { padding: 15px 16px; }
+  /* The CTA spans the card on a phone: the widest target on the screen,
+     sitting where the thumb already rests. Same rule the board's Apply
+     follows below 1024px. */
+  .rc-foot { gap: 10px; }
+  .rc-go { width: 100%; justify-content: center; height: 40px; }
+  .qa, .eg { grid-template-columns: 1fr; }
 }
