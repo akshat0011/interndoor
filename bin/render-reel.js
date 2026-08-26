@@ -35,7 +35,7 @@ import { readFileSync, existsSync, mkdirSync, statSync, readdirSync } from 'node
 import { join, dirname, extname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { homedir } from 'node:os';
-import { scriptText } from '../src/reelscript.js';
+import { scriptText, reelScript } from '../src/reelscript.js';
 import { PATHS } from '../src/paths.js';
 import { loadConfig } from '../src/config.js';
 import { durationText, modeText } from '../src/pages.js';
@@ -73,7 +73,7 @@ const STORYGASTED = join(homedir(), 'Desktop', 'projects', 'storygasted');
  * spoken too fast is a URL nobody can type. If it needs to go faster than
  * ~1.6x, shorten the script instead — see src/reelscript.js.
  */
-const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || cfg.reels?.voiceTempo || 1.6);
+const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || cfg.reels?.voiceTempo || 1.15);
 
 /** Overridden by `reels.voiceInstruct`. See the note where it is used. */
 const DEFAULT_INSTRUCT = 'An upbeat young presenter announcing a job opening to students. '
@@ -262,10 +262,26 @@ function probeSeconds(f) {
  * weights live; bin/tts_once.py is the adapter and prints one JSON line.
  * Roughly 17s for a 12s line including a cold model load.
  */
-function makeVoice(text) {
+/**
+ * Synthesise the voiceover BEAT BY BEAT, then join with a pause we choose.
+ *
+ * One long utterance was the problem. In isolation the CTA line synthesises in
+ * 2.40s with no internal gaps at all; inside the full script the same words
+ * came out as "on … InternDoor … dot … com" with 0.77s, 0.25s and 0.21s of
+ * silence in them, and a 1.35s hole before "Find". The model's pacing drifts
+ * over a long stretch and the `instruct` does not hold it.
+ *
+ * So each line is synthesised on its own — every beat gets the model's best
+ * pacing — and the join is a fixed `beatPause` rather than whatever the model
+ * felt like. It is what storygasted does, and what the note on `reelScript`
+ * has said to do since it was written: that function returns an ARRAY for
+ * exactly this.
+ */
+function makeVoice(text, lines) {
   mkdirSync(WORK, { recursive: true });
   const raw = join(WORK, 'vo-raw.wav');
   const out = join(WORK, 'vo.wav');
+  const beats = (lines?.length ? lines : [text]).filter((l) => String(l).trim());
 
   /* THE DELIVERY DIRECTION MATTERS AS MUCH AS THE TEMPO.
    *
@@ -275,17 +291,50 @@ function makeVoice(text) {
    * voice, and precisely the unhurried delivery a job promo does not want.
    * Every reel inherited it until this was passed. */
   const instruct = cfg.reels?.voiceInstruct || DEFAULT_INSTRUCT;
-  const res = execFileSync('uv', [
-    'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'tts_once.py'),
-    '--text', text, '--out', raw, '--instruct', instruct
-  ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
+  const pause = Number(cfg.reels?.beatPause ?? 0.22);
 
-  const line = String(res).trim().split('\n').filter(Boolean).pop();
-  const info = JSON.parse(line);
+  const parts = beats.map((line, i) => {
+    const dst = join(WORK, `vo-beat-${i}.wav`);
+    const res = execFileSync('uv', [
+      'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'tts_once.py'),
+      '--text', line, '--out', dst, '--instruct', instruct
+    ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
+    const info = JSON.parse(String(res).trim().split('\n').filter(Boolean).pop());
+    return { text: line, wav: info.wav, seconds: info.seconds };
+  });
 
-  execFileSync('ffmpeg', ['-y', '-v', 'error', '-i', info.wav,
-    '-filter:a', `atempo=${VO_TEMPO}`, out]);
-  return { wav: out, seconds: probeSeconds(out), raw: info.seconds, rawWav: info.wav, text };
+  /* Concatenated with silence between. 24kHz mono is what the model emits;
+     anullsrc has to match or concat refuses the mismatched streams. */
+  if (parts.length === 1) {
+    execFileSync('ffmpeg', ['-y', '-v', 'error', '-i', parts[0].wav, '-c', 'copy', raw]);
+  } else {
+    const inputs = [];
+    const chain = [];
+    parts.forEach((p, i) => {
+      if (i) {
+        inputs.push('-f', 'lavfi', '-t', String(pause), '-i', 'anullsrc=r=24000:cl=mono');
+        chain.push(`[${inputs.filter((x) => x === '-i').length - 1}:a]`);
+      }
+      inputs.push('-i', p.wav);
+      chain.push(`[${inputs.filter((x) => x === '-i').length - 1}:a]`);
+    });
+    execFileSync('ffmpeg', ['-y', '-v', 'error', ...inputs,
+      '-filter_complex', `${chain.join('')}concat=n=${chain.length}:v=0:a=1[a]`,
+      '-map', '[a]', '-c:a', 'pcm_s16le', raw]);
+  }
+
+  execFileSync('ffmpeg', ['-y', '-v', 'error', '-i', raw, '-filter:a', `atempo=${VO_TEMPO}`, out]);
+
+  /* Each beat's offset on the RAW timeline, so the aligner can be run per beat
+     and the timings shifted into place. */
+  let at = 0;
+  const beatsOut = parts.map((p, i) => {
+    const start = at;
+    at += p.seconds + (i < parts.length - 1 ? pause : 0);
+    return { ...p, start };
+  });
+
+  return { wav: out, seconds: probeSeconds(out), raw: probeSeconds(raw), rawWav: raw, text, beats: beatsOut };
 }
 
 /**
@@ -301,12 +350,24 @@ function makeVoice(text) {
  */
 function alignVoice(voice) {
   try {
-    const res = execFileSync('uv', [
-      'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'align_once.py'),
-      '--wav', voice.rawWav, '--text', voice.text, '--tempo', String(VO_TEMPO)
-    ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
-    const line = String(res).trim().split('\n').filter(Boolean).pop();
-    return captionsFor(JSON.parse(line).words ?? []);
+    /* Per BEAT, against that beat's own wav. Aligning the concatenated file
+       would ask the model to account for silence it never spoke, and the
+       timings drift across it. */
+    const words = [];
+    for (const b of voice.beats ?? [{ wav: voice.rawWav, text: voice.text, start: 0 }]) {
+      const res = execFileSync('uv', [
+        'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'align_once.py'),
+        '--wav', b.wav, '--text', b.text, '--tempo', '1'
+      ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
+      const got = JSON.parse(String(res).trim().split('\n').filter(Boolean).pop()).words ?? [];
+      /* Shifted onto the raw timeline, then scaled once for the tempo — the
+         same order bin/align_once.py uses, for the same reason. */
+      for (const w of got) {
+        words.push({ word: w.word,
+          start: (w.start + b.start) / VO_TEMPO, end: (w.end + b.start) / VO_TEMPO });
+      }
+    }
+    return captionsFor(words);
   } catch (err) {
     console.log(`  captions: skipped — ${String(err.message).split('\n')[0]}`);
     return [];
@@ -374,10 +435,11 @@ async function main() {
   let voice = null;
   let captions = [];
   const text = scriptText(data);
+  const lines = reelScript(data);
   if (!args['no-voice']) {
     console.log(`\n  script: ${text}`);
     process.stdout.write('  synthesising…');
-    voice = makeVoice(text);
+    voice = makeVoice(text, lines);
     console.log(`\r  voice: ${voice.seconds.toFixed(1)}s (${voice.raw.toFixed(1)}s raw, ${VO_TEMPO}x)   `);
     if (!args['no-captions']) {
       captions = alignVoice(voice);

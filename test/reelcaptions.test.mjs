@@ -139,7 +139,17 @@ const cues = captionsFor(real);
 check('it produces a readable number of cues', cues.length >= 5 && cues.length <= 9, true);
 check('no cue overflows the band', cues.every((c) => c.text.length <= CAPTION.maxChars), true);
 check('no cue is a single word', cues.every((c) => c.words.length > 1), true);
-check('every word is used exactly once', cues.flatMap((c) => c.words).length, real.length);
+// NOT a word count: "InternDoor dot com." collapses into one displayed word,
+// "interndoor.com", so three spoken words become one shown one. What must hold
+// is that nothing is LOST — every spoken word still appears somewhere.
+const shown = cues.map((c) => c.text).join(' ').toLowerCase();
+check('nothing is dropped', real.every((w) => {
+  const t = w.word.toLowerCase().replace(/[^a-z0-9']/g, '');
+  return !t || shown.includes(t) || 'dotcom'.includes(t);
+}), true);
+check('the domain is shown as a domain, not as speech',
+  cues.some((c) => c.text.includes('interndoor.com')), true);
+check('and never as "dot com"', /dot com/i.test(shown), false);
 check('cues never overlap', cues.every((c, i) => i === 0 || c.start >= cues[i - 1].start), true);
 check('the first cue starts with the first word', cues[0].start, 0.06);
 console.log(`         ${cues.length} cues: ${cues.map((c) => `"${c.text}"`).join(' | ')}`);

@@ -48,6 +48,31 @@ export const CAPTION = {
 };
 
 const display = (w) => String(w ?? '').trim();
+
+/**
+ * Words a cue must not END on.
+ *
+ * A caption that stops on "in" or "a" reads as a sentence cut in half, because
+ * it is one — the eye finishes the line and the phrase is not finished. It got
+ * much worse when the script became ONE running sentence: with four sentences
+ * the cues fell on full stops by luck, and with one they were chopped every
+ * five words wherever the count ran out, giving "Zoho CRM Developer in" and
+ * "yet, so you'd be first" on a real reel.
+ *
+ * Articles, prepositions, conjunctions and auxiliaries — the words that only
+ * make sense attached to what comes next.
+ */
+const DANGLING = new Set(['a', 'an', 'the', 'in', 'on', 'at', 'to', 'of', 'for', 'and', 'or',
+  'so', 'but', 'with', 'by', 'from', 'as', 'is', 'are', 'was', 'were', 'be', 'been', 'has',
+  'have', 'had', 'they', 'you', 'your', 'their', 'its', 'it', 'this', 'that', 'just', 'only', 'dot']);
+
+/** True when the word closes a clause — a natural place to end a cue. */
+const closesClause = (w) => /[,.;:!?]$/.test(display(w.word));
+
+const bare = (w) => display(w.word).toLowerCase().replace(/[^a-z']/g, '');
+
+/** A capitalised word that is not merely the start of a sentence. */
+const capitalised = (w) => /^[A-Z]/.test(display(w.word));
 const width = (words) => words.reduce((n, w) => n + display(w.word).length + 1, -1);
 
 /**
@@ -67,7 +92,27 @@ export function groupCues(words, opts = {}) {
     if (cur.length) {
       const gap = w.start - cur[cur.length - 1].end;
       const span = w.end - cur[0].start;
-      if (gap > cfg.maxGap || span > cfg.maxDur || cur.length >= cfg.maxWords
+      const prev = cur[cur.length - 1];
+      /* A comma or a full stop is where a reader expects the line to end, so
+         break there rather than waiting for the word count to run out — that
+         is what keeps a cue a phrase instead of five arbitrary words. Only
+         once the cue is worth reading on its own: breaking after a one-word
+         clause would just make the stutter this avoids elsewhere. */
+      const atClause = closesClause(prev) && cur.length >= 2;
+      /* DO NOT BREAK INSIDE A RUN OF CAPITALISED WORDS. A job title, a city or
+         a company is a single thing to a reader, and splitting it across two
+         cues reads as a stumble: the first published Philips reel showed
+         "Philips is hiring an Intern" and then "Embedded System in Pune
+         Division", which cuts the role in half at exactly the moment somebody
+         is deciding whether it is for them. The word cap yields to this; the
+         character budget does not, because that is the width of the band. */
+      const insideName = capitalised(prev) && capitalised(w) && !closesClause(prev);
+      /* The word cap AND the duration cap both yield to a name. Only the
+         character budget and a real pause still force a break: the budget is
+         the physical width of the band, and a gap is the speaker stopping. */
+      const overCap = cur.length >= cfg.maxWords && !insideName;
+      const tooLong = span > cfg.maxDur && !insideName;
+      if (atClause || gap > cfg.maxGap || tooLong || overCap
           || width([...cur, w]) > cfg.maxChars) {
         cues.push(cur);
         cur = [];
@@ -76,6 +121,24 @@ export function groupCues(words, opts = {}) {
     cur.push(w);
   }
   if (cur.length) cues.push(cur);
+
+  /* Never end a cue on a dangling word. Pushing it into the next cue is
+     cheaper than re-planning the break: the next cue gains a word, and the
+     caps below already tolerate one over for the orphan rescue. */
+  for (let i = 0; i < cues.length - 1; i++) {
+    /* Bounded by the BAND, not by the word count. A cue one or two words over
+       still reads fine; a cue ending on "in" does not, so the caps that
+       decided the break do not get to veto the repair. The character budget
+       still does — it is the physical width of the band. */
+    let moved = 0;
+    while (cues[i].length > 1 && moved < 3
+           && DANGLING.has(bare(cues[i][cues[i].length - 1]))
+           && !closesClause(cues[i][cues[i].length - 1])
+           && width([cues[i][cues[i].length - 1], ...cues[i + 1]]) <= cfg.maxChars) {
+      cues[i + 1].unshift(cues[i].pop());
+      moved++;
+    }
+  }
 
   // A cue of ONE word reads as a stutter — it flashes up and is gone before it
   // can be read. Pull it back onto the cue before it, walking backwards so a
@@ -90,20 +153,55 @@ export function groupCues(words, opts = {}) {
   // a worse readability outcome than the six-word cue it was protecting
   // against. One over, never two: a cue already carrying a rescued orphan does
   // not take another.
+  /* Rescues a cue of ONE OR TWO words, not just one. "dot com." is two, and
+     splitting the site's own address across two cues is the same fault as a
+     one-word stutter — the domain is the thing the reel exists to have read.
+     Bounded by the character budget rather than the word cap, for the reason
+     above it: the budget is the band, the cap is a preference. */
   for (let i = cues.length - 1; i > 0; i--) {
-    if (cues[i].length !== 1) continue;
+    if (cues[i].length > 2) continue;
     const prev = cues[i - 1];
-    const one = cues[i][0];
-    if (prev.length > cfg.maxWords) continue;
-    const gap = one.start - prev[prev.length - 1].end;
-    const span = one.end - prev[0].start;
-    if (gap <= cfg.maxGap && span <= cfg.maxDur && width([...prev, one]) <= cfg.maxChars) {
-      prev.push(one);
+    const tail = cues[i];
+    /* A clause boundary is a deliberate break, not an accident — do not undo
+       one to tidy up a short cue. */
+    if (closesClause(prev[prev.length - 1])) continue;
+    const gap = tail[0].start - prev[prev.length - 1].end;
+    const span = tail[tail.length - 1].end - prev[0].start;
+    if (gap <= cfg.maxGap && span <= cfg.maxDur * 1.4 && width([...prev, ...tail]) <= cfg.maxChars) {
+      prev.push(...tail);
       cues.splice(i, 1);
     }
   }
 
-  return cues.map((group) => shape(group, cfg));
+  return cues.map((group) => shape(collapseDomain(group), cfg));
+}
+
+/**
+ * "InternDoor dot com." -> "interndoor.com"
+ *
+ * The voice has to SAY "dot com" or the model spells nothing useful, but a
+ * reader should see the address they are meant to type. The three spoken words
+ * collapse into one displayed word carrying their combined span, so the
+ * highlight still lands on it at the right moment.
+ *
+ * Done here rather than in the script, because the script is what gets spoken
+ * and what the aligner matches against — changing it there would break both.
+ */
+function collapseDomain(group) {
+  const out = [];
+  for (let i = 0; i < group.length; i++) {
+    const a = group[i], b = group[i + 1], c = group[i + 2];
+    if (b && c && bare(b) === 'dot' && /^com[.,!?]?$/i.test(display(c.word))) {
+      /* NO trailing full stop. It is the last thing on screen and it is an
+         address, not a sentence — "interndoor.com." invites somebody to type
+         the stop as part of it. */
+      out.push({ word: `${display(a.word).toLowerCase()}.com`, start: a.start, end: c.end });
+      i += 2;
+      continue;
+    }
+    out.push(a);
+  }
+  return out;
 }
 
 /**

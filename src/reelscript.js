@@ -74,53 +74,87 @@ function speakable(title) {
  * card is proportioned for.
  */
 export function reelScript(d, { site = 'InternDoor dot com' } = {}) {
-  const role = speakable(d.title);
+  const role = roleOnly(d.title);
   const where = d.city ? ` in ${d.city}` : '';
   const n = Number(d.applicantsCount);
 
-  /* ONE SENTENCE UNTIL THE CTA, NOT FOUR.
+  /* "…hiring an intern, and the role is X" RATHER THAN "…hiring an Intern X".
    *
-   * Every full stop is a pause the model inserts, and four of them in twenty
-   * seconds is what "reading a paragraph and stopping in between" sounds like.
-   * The first version pushed four separate sentences joined with a space, so
-   * the voice halted four times in a reel whose whole job is to hold somebody
-   * for fifteen seconds.
+   * The title runs straight into the generic word before it — "hiring an Intern
+   * Embedded System" — and a listener cannot hear where the job description
+   * starts. Naming the role in its own clause gives the comma a job to do: it
+   * is the one beat the sentence wants, right before the thing somebody is
+   * deciding on.
    *
-   * Clauses are joined with a comma and a conjunction instead. A comma is a
-   * breath; a full stop is a stop, and the model treats them differently.
-   * Contractions ("nobody's", "you'd") for the same reason — the expanded
-   * forms read as written English rather than as speech.
+   * It also stops the caption cutting the role in half, because the clause
+   * boundary is now where the cue break wants to be anyway.
    *
-   * Each branch is punctuated by hand rather than through a generic joiner. A
-   * rule that inserted a comma before every clause produced "twenty thousand
-   * rupees a month, for a Back End Developer", which is a breath in the middle
-   * of a prepositional phrase — exactly the halt being removed.
-   *
-   * THE CTA KEEPS ITS OWN SENTENCE. It is the one line that should land
-   * separately, and the single pause before it is the only one worth having.
+   * ONE SENTENCE UNTIL THE CTA. Every full stop is a pause the model inserts,
+   * and four of them was what "reading a paragraph and stopping in between"
+   * sounded like. Clauses are joined with a comma and a conjunction instead: a
+   * comma is a breath, a full stop is a stop, and the model treats them
+   * differently. Contractions for the same reason.
    */
-  let head;
-  if (d.stipendText && d.stipendAmount) {
-    head = `${d.company} is paying ${amountInWords(d.stipendAmount)} rupees${per(d.stipendPeriod)} for ${article(role)} ${role}${where}`;
-  } else if (d.zeroApplicants) {
-    head = `${d.company} just posted ${article(role)} ${role}${where} and nobody's applied yet`;
-  } else {
-    head = `${d.company} is hiring ${article(role)} ${role}${where}`;
-  }
+  /* "Baxter International Inc." puts a full stop in the middle of the
+     sentence, and the model pauses on it exactly as it would on a real one.
+     The abbreviation reads the same without it. */
+  const company = String(d.company ?? '').replace(/\.+$/, '').trim();
+
+  const head = d.stipendText && d.stipendAmount
+    ? `${company} is paying ${amountInWords(d.stipendAmount)} rupees${per(d.stipendPeriod)} for an intern${where}`
+    : `${company} is hiring an intern${where}`;
+
+  const parts = [head];
+  if (role) parts.push(`and the role is ${role}`);
 
   /* Urgency only when the number supports it. An applicant count is stored for
      about half of India rows, and inventing scarcity is the fastest way to
      lose the audience this is meant to build. */
-  if (Number.isFinite(n) && n > 0 && n <= 60) {
-    head += `, and only ${small(n)} people have applied so far`;
-  } else if (d.zeroApplicants) {
-    head += `, so you'd be first in the queue`;
+  if (d.zeroApplicants) {
+    parts.push(`and nobody's applied yet`);
+  } else if (Number.isFinite(n) && n > 0 && n <= 60) {
+    parts.push(`and only ${small(n)} people have applied so far`);
   }
 
-  /* Still an array: bin/render-reel.js aligns against the whole text, and a
-     future version may synthesise each beat separately and land the cuts on
-     the pauses the way storygasted does. */
-  return [`${head}.`, `Find it on ${site}.`];
+  /* ONE BEAT PER CLAUSE, not one beat per sentence.
+   *
+   * bin/render-reel.js synthesises each entry separately and joins them with a
+   * pause it chooses. A 22-word beat is still long enough for the model's
+   * pacing to wander inside it — measured: 0.96s of silence after "only",
+   * mid-phrase, in a line that had no punctuation there. Short beats do not
+   * give it room to.
+   *
+   * The trailing comma is kept on every clause but the last: it tells the model
+   * the phrase is not finished, and it is what src/reelcaptions.js reads to
+   * break a cue on a clause rather than on a word count.
+   */
+  const clauses = parts.map((part, i) => (i < parts.length - 1 ? `${part},` : `${part}.`));
+  return [...clauses, `Find it on ${site}.`];
+}
+
+/**
+ * The role, with the generic internship words taken off the front and back.
+ *
+ * The sentence already says "an intern", so "the role is Intern Embedded
+ * System" says it twice. Titles carry it in every position — "Intern -
+ * Embedded System", "Zoho CRM Developer Intern", "Graduate Engineer Trainee" —
+ * so both ends are trimmed.
+ *
+ * If trimming leaves nothing the title WAS the generic word, and the whole
+ * clause is dropped rather than saying "the role is" and trailing off.
+ */
+function roleOnly(title) {
+  const words = /** @type {string} */ (speakable(title)).split(' ').filter(Boolean);
+  /* Only the words that are REDUNDANT with "an intern", and only where they
+     are decoration rather than part of the name. "Trainee" and "apprentice"
+     are kept: "Young Graduate Trainee" is the whole role, and trimming it left
+     "the role is Young Graduate", which is not a job. "Intern - Embedded
+     System" and "Zoho CRM Developer Intern" are the shapes worth trimming. */
+  const redundant = /^(intern|interns|internship|internships)$/i;
+  const trailingNoise = /^(job|jobs|opportunity|role|position|intern|interns|internship|internships)$/i;
+  while (words.length && redundant.test(words[0])) words.shift();
+  while (words.length && trailingNoise.test(words[words.length - 1])) words.pop();
+  return words.join(' ');
 }
 
 /**
