@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/citadel-software-engineer-intern-us-4457275979",
+      "url": "https://interndoor.com/us/jobs/citadel-software-engineer-intern-us-4457275979",
+      "title": "Software Engineer – Intern (US) — Citadel",
+      "content_text": "Company: Citadel · Location: New York, United States\n• Build systems and platforms for financial research and trading\n• Work with distributed computing and machine learning tools\n• Collaborate with senior engineers in small teams",
+      "date_published": "2026-08-26T19:47:34.860Z",
+      "authors": [
+        {
+          "name": "Citadel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/citadel-securities-software-engineer-intern-us-4457292432",
+      "url": "https://interndoor.com/us/jobs/citadel-securities-software-engineer-intern-us-4457292432",
+      "title": "Software Engineer – Intern (US) — Citadel Securities",
+      "content_text": "Company: Citadel Securities · Location: New York, United States\n• Build high-performance data research platforms\n• Work in small teams on financial technology projects\n• Collaborate with senior engineers and researchers",
+      "date_published": "2026-08-26T19:45:39.087Z",
+      "authors": [
+        {
+          "name": "Citadel Securities"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/aecom-civil-highway-engineer-intern-hiring-event-with-aecom-philadelphia-4457277948",
+      "url": "https://interndoor.com/us/jobs/aecom-civil-highway-engineer-intern-hiring-event-with-aecom-philadelphia-4457277948",
+      "title": "Civil/Highway Engineer Intern - Hiring Event with AECOM - Philadelphia — AECOM",
+      "content_text": "Company: AECOM · Location: Newark, DE · Duration: Summer 2027\n• Assist in roadway design using MicroStation, OpenRoads, and AutoCAD\n• Support calculations, reports, and construction plans under supervision\n• Work on transportation projects in Delaware and Pennsylvania",
+      "date_published": "2026-08-26T19:23:23.289Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-image-science-engineer-4459339500",
+      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-image-science-engineer-4459339500",
+      "title": "Intern C, Image Science Engineer — L3Harris Technologies",
+      "content_text": "Company: L3Harris Technologies · Location: Rochester, NY\n• Analyze digital imagery quality and processing algorithms for remote sensing systems\n• Use Python, C, C++, and MATLAB for engineering-level software development\n• Work on geospatial intelligence and EO system analysis in a national security context",
+      "date_published": "2026-08-26T18:59:59.626Z",
+      "authors": [
+        {
+          "name": "L3Harris Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/mercury-marine-mercury-racing-systems-engineering-co-op-4459361444",
       "url": "https://interndoor.com/us/jobs/mercury-marine-mercury-racing-systems-engineering-co-op-4459361444",
       "title": "Mercury Racing Systems Engineering Co-Op — Mercury Marine",
@@ -551,54 +599,6 @@
       "title": "Mercury Marine: Materials Engineering Intern — Mercury Marine",
       "content_text": "Company: Mercury Marine · Location: Fond du Lac, WI\n• Evaluate materials and manufacturing processes for marine engines\n• Use lab equipment like SEM and X-ray diffractometer\n• Prepare reports on test results and recommendations",
       "date_published": "2026-08-26T00:58:03.127Z",
-      "authors": [
-        {
-          "name": "Mercury Marine"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-4459063985",
-      "url": "https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-4459063985",
-      "title": "Embedded Engineer - Summer 2027 Intern — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: United States · Duration: Summer 2027\n• Develop and test embedded software for devices and systems\n• Use C/C++, ADA, Matlab, Simulink, and LabView\n• Work on real-time systems and hardware integration\n• Relocation benefits for distant locations",
-      "date_published": "2026-08-26T00:57:39.841Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-data-engineering-winter-spring-co-op-jan-june-27-4459086533",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-data-engineering-winter-spring-co-op-jan-june-27-4459086533",
-      "title": "Data Engineering Winter/Spring Co-Op (Jan-June '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: 6 months\n• Build data pipelines with Python, SQL, PySpark, and Databricks\n• Work with Azure Data Lake and Delta Lake for data governance\n• Collaborate with engineers and stakeholders on data products",
-      "date_published": "2026-08-26T00:57:35.694Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/fujitsu-network-engineering-co-op-4459072476",
-      "url": "https://interndoor.com/us/jobs/fujitsu-network-engineering-co-op-4459072476",
-      "title": "Network Engineering Co-op — Fujitsu",
-      "content_text": "Company: Fujitsu · Location: Dallas, TX · Duration: 6-12 months\n• Support network discovery, inventory validation, and infrastructure assessments\n• Work with IP/MPLS, Segment Routing, and multi-vendor environments\n• Create network diagrams, MOPs, and migration plans\n• Develop automation scripts for network tasks",
-      "date_published": "2026-08-26T00:57:11.596Z",
-      "authors": [
-        {
-          "name": "Fujitsu"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-foundry-engineering-co-op-4459079584",
-      "url": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-foundry-engineering-co-op-4459079584",
-      "title": "Mercury Marine - Foundry Engineering Co-op — Mercury Marine",
-      "content_text": "Company: Mercury Marine · Location: Fond du Lac, WI\n• Support additive manufacturing projects with 3D printing and casting processes\n• Use CAD software to create models and documentation for tooling and processes\n• Analyze data to improve casting quality and plant efficiency\n• Work on cross-functional teams to optimize workflows and layouts",
-      "date_published": "2026-08-26T00:57:07.372Z",
       "authors": [
         {
           "name": "Mercury Marine"
