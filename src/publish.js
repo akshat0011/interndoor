@@ -131,6 +131,179 @@ function fingerprint(text) {
     .slice(0, 10);
 }
 
+/**
+ * One posting per role per place, however many collectors found it.
+ *
+ * Pulled out of writeJobsFile so it can be tested directly: it decides what
+ * the site shows, and the only alternative was driving a whole publish.
+ *
+ * @param {{row: object, region: string}[]} jobs live rows, region already resolved.
+ * @returns {{row: object, region: string}[]} the survivors, in no useful order.
+ */
+export function dedupePostings(jobs) {
+  // ---- one posting, two collectors -----------------------------------------
+  // The scraper and the ATS poller find the same role independently: a company
+  // posts to its ATS, and the LinkedIn copy appears later. Both are stored,
+  // because each is the truth about where it was seen — but the site must show
+  // it once.
+  //
+  // The ATS row wins on a tie. It carries the employer's real apply URL rather
+  // than a LinkedIn redirect, and its posted date is the actual publish time
+  // rather than "3 days ago" parsed from a card.
+  //
+  // But only when the two are plausibly the SAME posting. That preference used
+  // to be unconditional, and it is a preference between collectors, not between
+  // postings — so a months-old ATS row silently suppressed a fresh relisting of
+  // the same role. Stripe's "Software Engineer, Intern" was scraped 11 minutes
+  // after going up on 14 Aug and did not reach the site for 9h46m: a Greenhouse
+  // row for the same role, posted 22 Jul, held the slot. It was not fixed, it
+  // expired — the ATS row left the 14-day window at 05:21 on 15 Aug and the
+  // next run published the LinkedIn one at 05:50.
+  //
+  // Beyond this gap they are two postings, not two views of one, and the newer
+  // is the one still open. Three days is deliberately generous: the ATS copy
+  // goes up first and LinkedIn's follows within hours, so a genuine pair stays
+  // well inside it and keeps the better apply URL.
+  const SAME_POSTING_MS = 3 * 24 * 3_600_000;
+  //
+  // Where neither is from an ATS, the NEWEST posting wins. This used to keep the
+  // row we saw first, on the reasoning that the freshness label stays honest —
+  // but the duplicates it actually meets are LinkedIn reposts of one role under
+  // a new job_id, and keeping the earliest inverted the thing it was protecting.
+  // Intuit reposted "Intern, Software Engineering" in Bengaluru on 9 Aug; the
+  // site went on showing the 4 Aug copy, six days stale, while the fresh row sat
+  // in the table unpublished. Fourteen live cards were doing this at once.
+  //
+  // Company and title alone are not enough to call two rows the same job.
+  // Bajaj Finserv lists "Functional Trainee" in Ranchi, Sandila, Rasulpur,
+  // Lucknow, Pune, Bareilly, Bengaluru and Bhopal — eight real vacancies a
+  // student would choose between, and keying on company+title would silently
+  // publish one and throw seven away.
+  //
+  // But the city has to be compared loosely, because the two collectors write it
+  // differently: the ATS says "Bangalore" where LinkedIn says "Bengaluru,
+  // Karnataka, India". So the key uses a canonical city rather than the raw
+  // string, and falls back to the whole normalised location when the city is not
+  // one we recognise.
+  const CITY_ALIASES = new Map(Object.entries({
+    bangalore: 'bengaluru', bengaluru: 'bengaluru',
+    gurgaon: 'gurugram', gurugram: 'gurugram',
+    bombay: 'mumbai', mumbai: 'mumbai',
+    'new delhi': 'delhi', delhi: 'delhi', noida: 'noida',
+    calcutta: 'kolkata', kolkata: 'kolkata',
+    madras: 'chennai', chennai: 'chennai',
+    hyderabad: 'hyderabad', pune: 'pune', ahmedabad: 'ahmedabad',
+    jaipur: 'jaipur', indore: 'indore', kochi: 'kochi', chandigarh: 'chandigarh',
+    mysore: 'mysuru', mysuru: 'mysuru',
+    trivandrum: 'thiruvananthapuram', thiruvananthapuram: 'thiruvananthapuram',
+    vizag: 'visakhapatnam', visakhapatnam: 'visakhapatnam',
+    coimbatore: 'coimbatore', nagpur: 'nagpur', bhopal: 'bhopal',
+    lucknow: 'lucknow', ranchi: 'ranchi', bareilly: 'bareilly',
+    bhubaneswar: 'bhubaneswar', remote: 'remote',
+  }));
+
+  // A location that names nothing more specific than the country. It cannot be
+  // keyed on a city, and inventing one from it is what published a role twice:
+  // Microsoft's India board writes "India, Karnataka, Bangalore" while LinkedIn
+  // writes plain "India" for the same vacancy, so the pair keyed `bengaluru`
+  // and `india` and got two pages. '' marks the city UNKNOWN instead, and the
+  // reconciliation pass below folds it into the specific row.
+  //
+  // Singapore is deliberately absent: it is a city as much as a country, so
+  // "Singapore" IS the most specific location there is, and Jump Trading's
+  // Singapore internships have to keep a key of their own.
+  const CITY_STATES = new Set(['singapore']);
+  const BARE_COUNTRY = new Set([
+    ...ALL_REGIONS.map((r) => r.name.toLowerCase()),
+    'usa', 'u s a', 'us', 'united states of america',
+    'uk', 'u k', 'britain', 'great britain',
+  ].filter((n) => !CITY_STATES.has(n)));
+
+  const cityOf = (location) => {
+    const flat = String(location ?? '').toLowerCase();
+    if (!flat.trim()) return '';
+    if (BARE_COUNTRY.has(flat.replace(/[^a-z0-9]+/g, ' ').trim())) return '';
+    for (const [alias, canonical] of CITY_ALIASES) {
+      if (new RegExp(`\\b${alias}\\b`).test(flat)) return canonical;
+    }
+    // Only the CITY, not the whole string.
+    //
+    // The aliases above are Indian, so before regions existed every location
+    // that mattered hit one and this fallback was nearly dead code. It became
+    // live with the US board, and it kept the state or country — which the two
+    // collectors write differently for the same place. AbbVie's
+    // "2027 Business Technology Solutions Intern - Cloud Engineering" is
+    // "South San Francisco, us" from SmartRecruiters and "South San Francisco,
+    // CA" from LinkedIn, so the pair produced different keys and was published
+    // twice. Measured across 30 days: 19 rows collapse once this is the city
+    // alone, every one of them a genuine ATS+LinkedIn twin, and nothing else
+    // merges.
+    //
+    // Dropping the state does mean two same-named cities in different states
+    // share a key. That risk is already taken for India, where the alias path
+    // returns a bare city name, and it needs the same employer to run the same
+    // title in both — none exist in the store today.
+    return flat.split(',')[0].replace(/[^a-z0-9]+/g, ' ').trim();
+  };
+
+  const dedupeKey = (row) => {
+    const norm = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    return `${norm(row.company_matched || row.company)}|${norm(row.title)}|${cityOf(row.location)}`;
+  };
+  const isAts = (row) => String(row.job_id ?? '').startsWith('ats:');
+  // Same fallback the public card uses, so the row that wins here is the row
+  // carrying the date the site will actually print.
+  const postedAtOf = (row) => row.posted_at || row.first_seen_at || 0;
+
+  // ATS wins a cross-collector tie because it carries the real apply URL, but
+  // only for two postings close enough in time to be the same one; otherwise
+  // the newest wins. Shared by both passes below so they cannot drift.
+  const challengerWins = (challenger, holder) => {
+    const gap = Math.abs(postedAtOf(challenger.row) - postedAtOf(holder.row));
+    return isAts(challenger.row) !== isAts(holder.row) && gap <= SAME_POSTING_MS
+      ? isAts(challenger.row)
+      : postedAtOf(challenger.row) > postedAtOf(holder.row);
+  };
+
+  const bestByKey = new Map();
+  for (const entry of jobs) {
+    const key = dedupeKey(entry.row);
+    const existing = bestByKey.get(key);
+    if (!existing) { bestByKey.set(key, entry); continue; }
+    if (challengerWins(entry, existing)) bestByKey.set(key, entry);
+  }
+
+  // Fold a country-only row into the same role filed against a real city.
+  //
+  // The pass above cannot: an unknown city keys as '' and never matches
+  // `bengaluru`, however obviously the two are one vacancy. So look them up by
+  // employer, title and region instead — but ONLY when that role runs in
+  // exactly one city there. An employer advertising one title in several cities
+  // is the case `dedupeKey` exists to protect (Bajaj Finserv files "Functional
+  // Trainee" in eight), and merging a nationally-advertised row into an
+  // arbitrary one of them would drop a vacancy a student could have chosen.
+  const roleOf = (entry) => {
+    const norm = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    return `${norm(entry.row.company_matched || entry.row.company)}|${norm(entry.row.title)}|${entry.region}`;
+  };
+  const placedByRole = new Map();
+  for (const [key, entry] of bestByKey) {
+    if (!cityOf(entry.row.location)) continue;
+    const role = roleOf(entry);
+    if (!placedByRole.has(role)) placedByRole.set(role, []);
+    placedByRole.get(role).push({ key, entry });
+  }
+  for (const [bareKey, bare] of [...bestByKey]) {
+    if (cityOf(bare.row.location)) continue;
+    const placed = placedByRole.get(roleOf(bare)) ?? [];
+    if (placed.length !== 1) continue;
+    bestByKey.delete(bareKey);
+    if (challengerWins(bare, placed[0].entry)) bestByKey.set(placed[0].key, bare);
+  }
+
+  return [...bestByKey.values()];
+}
+
 /** Write the public jobs payload. Returns { count, path, changed }. */
 export async function writeJobsFile(store, cfg) {
   const maxAgeMs = (cfg.publish?.maxAgeDays ?? 14) * 86_400_000;
@@ -217,116 +390,7 @@ export async function writeJobsFile(store, cfg) {
     })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
-  // ---- one posting, two collectors -----------------------------------------
-  // The scraper and the ATS poller find the same role independently: a company
-  // posts to its ATS, and the LinkedIn copy appears later. Both are stored,
-  // because each is the truth about where it was seen — but the site must show
-  // it once.
-  //
-  // The ATS row wins on a tie. It carries the employer's real apply URL rather
-  // than a LinkedIn redirect, and its posted date is the actual publish time
-  // rather than "3 days ago" parsed from a card.
-  //
-  // But only when the two are plausibly the SAME posting. That preference used
-  // to be unconditional, and it is a preference between collectors, not between
-  // postings — so a months-old ATS row silently suppressed a fresh relisting of
-  // the same role. Stripe's "Software Engineer, Intern" was scraped 11 minutes
-  // after going up on 14 Aug and did not reach the site for 9h46m: a Greenhouse
-  // row for the same role, posted 22 Jul, held the slot. It was not fixed, it
-  // expired — the ATS row left the 14-day window at 05:21 on 15 Aug and the
-  // next run published the LinkedIn one at 05:50.
-  //
-  // Beyond this gap they are two postings, not two views of one, and the newer
-  // is the one still open. Three days is deliberately generous: the ATS copy
-  // goes up first and LinkedIn's follows within hours, so a genuine pair stays
-  // well inside it and keeps the better apply URL.
-  const SAME_POSTING_MS = 3 * 24 * 3_600_000;
-  //
-  // Where neither is from an ATS, the NEWEST posting wins. This used to keep the
-  // row we saw first, on the reasoning that the freshness label stays honest —
-  // but the duplicates it actually meets are LinkedIn reposts of one role under
-  // a new job_id, and keeping the earliest inverted the thing it was protecting.
-  // Intuit reposted "Intern, Software Engineering" in Bengaluru on 9 Aug; the
-  // site went on showing the 4 Aug copy, six days stale, while the fresh row sat
-  // in the table unpublished. Fourteen live cards were doing this at once.
-  //
-  // Company and title alone are not enough to call two rows the same job.
-  // Bajaj Finserv lists "Functional Trainee" in Ranchi, Sandila, Rasulpur,
-  // Lucknow, Pune, Bareilly, Bengaluru and Bhopal — eight real vacancies a
-  // student would choose between, and keying on company+title would silently
-  // publish one and throw seven away.
-  //
-  // But the city has to be compared loosely, because the two collectors write it
-  // differently: the ATS says "Bangalore" where LinkedIn says "Bengaluru,
-  // Karnataka, India". So the key uses a canonical city rather than the raw
-  // string, and falls back to the whole normalised location when the city is not
-  // one we recognise.
-  const CITY_ALIASES = new Map(Object.entries({
-    bangalore: 'bengaluru', bengaluru: 'bengaluru',
-    gurgaon: 'gurugram', gurugram: 'gurugram',
-    bombay: 'mumbai', mumbai: 'mumbai',
-    'new delhi': 'delhi', delhi: 'delhi', noida: 'noida',
-    calcutta: 'kolkata', kolkata: 'kolkata',
-    madras: 'chennai', chennai: 'chennai',
-    hyderabad: 'hyderabad', pune: 'pune', ahmedabad: 'ahmedabad',
-    jaipur: 'jaipur', indore: 'indore', kochi: 'kochi', chandigarh: 'chandigarh',
-    mysore: 'mysuru', mysuru: 'mysuru',
-    trivandrum: 'thiruvananthapuram', thiruvananthapuram: 'thiruvananthapuram',
-    vizag: 'visakhapatnam', visakhapatnam: 'visakhapatnam',
-    coimbatore: 'coimbatore', nagpur: 'nagpur', bhopal: 'bhopal',
-    lucknow: 'lucknow', ranchi: 'ranchi', bareilly: 'bareilly',
-    bhubaneswar: 'bhubaneswar', remote: 'remote',
-  }));
-
-  const cityOf = (location) => {
-    const flat = String(location ?? '').toLowerCase();
-    if (!flat.trim()) return '';
-    for (const [alias, canonical] of CITY_ALIASES) {
-      if (new RegExp(`\\b${alias}\\b`).test(flat)) return canonical;
-    }
-    // Only the CITY, not the whole string.
-    //
-    // The aliases above are Indian, so before regions existed every location
-    // that mattered hit one and this fallback was nearly dead code. It became
-    // live with the US board, and it kept the state or country — which the two
-    // collectors write differently for the same place. AbbVie's
-    // "2027 Business Technology Solutions Intern - Cloud Engineering" is
-    // "South San Francisco, us" from SmartRecruiters and "South San Francisco,
-    // CA" from LinkedIn, so the pair produced different keys and was published
-    // twice. Measured across 30 days: 19 rows collapse once this is the city
-    // alone, every one of them a genuine ATS+LinkedIn twin, and nothing else
-    // merges.
-    //
-    // Dropping the state does mean two same-named cities in different states
-    // share a key. That risk is already taken for India, where the alias path
-    // returns a bare city name, and it needs the same employer to run the same
-    // title in both — none exist in the store today.
-    return flat.split(',')[0].replace(/[^a-z0-9]+/g, ' ').trim();
-  };
-
-  const dedupeKey = (row) => {
-    const norm = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-    return `${norm(row.company_matched || row.company)}|${norm(row.title)}|${cityOf(row.location)}`;
-  };
-  const isAts = (row) => String(row.job_id ?? '').startsWith('ats:');
-  // Same fallback the public card uses, so the row that wins here is the row
-  // carrying the date the site will actually print.
-  const postedAtOf = (row) => row.posted_at || row.first_seen_at || 0;
-
-  const bestByKey = new Map();
-  for (const entry of jobs) {
-    const key = dedupeKey(entry.row);
-    const existing = bestByKey.get(key);
-    if (!existing) { bestByKey.set(key, entry); continue; }
-
-    const gap = Math.abs(postedAtOf(entry.row) - postedAtOf(existing.row));
-    const challengerWins = isAts(entry.row) !== isAts(existing.row) && gap <= SAME_POSTING_MS
-      ? isAts(entry.row)
-      : postedAtOf(entry.row) > postedAtOf(existing.row);
-
-    if (challengerWins) bestByKey.set(key, entry);
-  }
-  const deduped = [...bestByKey.values()];
+  const deduped = dedupePostings(jobs);
   const collapsed = jobs.length - deduped.length;
   if (collapsed) {
     log.info(`Collapsed ${collapsed} duplicate posting${collapsed === 1 ? '' : 's'} found by both collectors.`);
