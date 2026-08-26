@@ -411,8 +411,13 @@ for (const b of rbtns){
     if (b.disabled) return;
     const card = b.closest('article');
     const who = card ? card.querySelector('h2, h3, .role, .co') : null;
-    if (!confirm('Render a reel for this posting and publish it to Instagram?\n\n'
-      + (who ? who.textContent.trim() + '\n\n' : '')
+    /* \\n, not \n. This whole page is built inside a TEMPLATE LITERAL, so a
+       single backslash is consumed here at build time and a REAL newline is
+       emitted into a single-quoted string in the output — which is a syntax
+       error, and one that kills the ENTIRE inline script, not just this
+       handler. The queue buttons went dead with it. */
+    if (!confirm('Render a reel for this posting and publish it to Instagram?\\n\\n'
+      + (who ? who.textContent.trim() + '\\n\\n' : '')
       + 'This posts publicly and cannot be undone from here.')) return;
     b.disabled = true;
     b.textContent = '⏳ Rendering…';
