@@ -178,6 +178,10 @@ CREATE TABLE IF NOT EXISTS reel_posts (
   permalink   TEXT,
   caption     TEXT,
   video_path  TEXT,
+  -- When it may go out. NULL means "as soon as it is rendered". Set for the
+  -- second and later reels of a sitting, so three good jobs found at once
+  -- become three separate posts rather than one burst.
+  publish_at  INTEGER,
   error       TEXT
 );
 
@@ -251,6 +255,11 @@ export class Store {
     if (!cardCols.includes('job_count')) {
       this.db.exec('ALTER TABLE card_keys ADD COLUMN job_count INTEGER NOT NULL DEFAULT 1');
       this.#seedCardKeyCounts();
+    }
+
+    const reelCols = this.db.prepare('PRAGMA table_info(reel_posts)').all().map((c) => c.name);
+    if (!reelCols.includes('publish_at')) {
+      this.db.exec('ALTER TABLE reel_posts ADD COLUMN publish_at INTEGER');
     }
 
     if (!jobCols.includes('region')) this.#backfillRegions();
@@ -1189,11 +1198,45 @@ export class Store {
     return info.changes > 0;
   }
 
-  reelRendered(jobId, videoPath, caption) {
+  reelRendered(jobId, videoPath, caption, publishAt = null) {
+    /* A reel that is due now goes straight to publishing; one with a slot in
+       the future waits as 'scheduled'. Rendering happens either way, and it
+       happens NOW rather than at the slot: he is at the keyboard when he
+       presses the button, which is when a render failure is worth surfacing. */
+    const status = publishAt && publishAt > Date.now() ? 'scheduled' : 'publishing';
     this.db.prepare(`
-      UPDATE reel_posts SET status = 'publishing', video_path = ?, caption = ?
+      UPDATE reel_posts SET status = ?, video_path = ?, caption = ?, publish_at = ?
       WHERE job_id = ?
-    `).run(videoPath, caption, jobId);
+    `).run(status, videoPath, caption, publishAt ?? null, jobId);
+    return status;
+  }
+
+  /** The next scheduled reel whose slot has arrived, if any. */
+  reelDue(now = Date.now()) {
+    return this.db.prepare(`
+      SELECT * FROM reel_posts
+      WHERE status = 'scheduled' AND publish_at IS NOT NULL AND publish_at <= ?
+      ORDER BY publish_at LIMIT 1
+    `).get(now) ?? null;
+  }
+
+  /** Everything still waiting, soonest first — what the next slot is measured from. */
+  reelPending() {
+    return this.db.prepare(`
+      SELECT * FROM reel_posts WHERE status IN ('scheduled', 'rendering', 'publishing')
+      ORDER BY COALESCE(publish_at, started_at)
+    `).all();
+  }
+
+  /** The most recent time a reel actually went out. */
+  reelLastPublishedAt() {
+    const r = this.db.prepare(
+      "SELECT MAX(finished_at) AS t FROM reel_posts WHERE status = 'published'").get();
+    return r?.t ?? null;
+  }
+
+  reelPublishing(jobId) {
+    this.db.prepare("UPDATE reel_posts SET status = 'publishing' WHERE job_id = ?").run(jobId);
   }
 
   reelPublished(jobId, { mediaId, permalink }) {

@@ -118,6 +118,7 @@ summary:hover{color:var(--accent)}
 .rbtn{font-family:inherit;font-size:13.5px;border-radius:7px;padding:9px 15px;cursor:pointer;
   border:1px solid var(--rule);background:transparent;color:var(--ink)}
 .rbtn[data-state="busy"]{opacity:.6;cursor:progress}
+.rbtn[data-state="queued"]{border-color:var(--accent);color:var(--accent);cursor:default}
 .rbtn[data-state="published"]{border-color:#2f7d4f;color:#2f7d4f;cursor:default}
 .rbtn[data-state="failed"]{border-color:#a33;color:#a33}
 .qbar .why{font-size:12.5px;color:var(--ink-2)}
@@ -375,8 +376,17 @@ function paintReels(state){
     const isMe = busy && state.running.jobId === b.dataset.id;
     if (isMe){
       b.dataset.state = 'busy';
-      b.textContent = state.running.stage === 'publishing' ? '⏳ Publishing…' : '⏳ Rendering…';
+      /* Name the stage. The tunnel step alone took 1m45s on the first real
+         publish, and a flat "Publishing…" for three minutes reads as a hang. */
+      b.textContent = state.running.stage === 'publishing' ? '⏳ Uploading…' : '⏳ Rendering…';
       b.disabled = true;
+    } else if (p && p.status === 'scheduled'){
+      /* Rendered and waiting for its slot. Naming the time is the whole point:
+         "queued" alone leaves him wondering whether it worked. */
+      b.dataset.state = 'queued';
+      b.textContent = '🕐 ' + (p.slotLabel || 'Queued');
+      b.disabled = true;
+      b.title = 'Rendered and waiting for its slot';
     } else if (p && p.status === 'published'){
       b.dataset.state = 'published';
       b.textContent = '✓ On Instagram';
@@ -400,10 +410,13 @@ async function pollReels(){
   const state = await api('/api/reel/status');
   paintReels(state);
   const busy = state.running && !state.running.finishedAt;
+  const queued = (state.posts || []).some(p => p.status === 'scheduled');
   clearTimeout(reelTimer);
-  /* Only poll while something is happening. A report left open in a tab all
+  /* Fast while something is in flight, slow while something is merely waiting
+     for its slot, and not at all otherwise — a report left open in a tab all
      day should not talk to the server every two seconds forever. */
   if (busy) reelTimer = setTimeout(pollReels, 2000);
+  else if (queued) reelTimer = setTimeout(pollReels, 30000);
 }
 
 for (const b of rbtns){
@@ -418,6 +431,8 @@ for (const b of rbtns){
        handler. The queue buttons went dead with it. */
     if (!confirm('Render a reel for this posting and publish it to Instagram?\\n\\n'
       + (who ? who.textContent.trim() + '\\n\\n' : '')
+      + 'It renders now. If another reel went out recently it is queued for a '
+      + 'later slot rather than posted straight away.\\n\\n'
       + 'This posts publicly and cannot be undone from here.')) return;
     b.disabled = true;
     b.textContent = '⏳ Rendering…';

@@ -35,6 +35,7 @@ import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
 import { reelCaption } from '../src/reelcaption.js';
+import { nextSlot, slotLabel } from '../src/reelslots.js';
 import { jobSlug } from '../src/pages.js';
 import { utmUrl } from '../src/postgen.js';
 import { spawn } from 'node:child_process';
@@ -231,39 +232,32 @@ function run(cmd, args, label) {
   });
 }
 
-async function publishReel(jobId) {
-  const job = publicJob(jobId);
-  if (!job) return { error: `job ${jobId} is not on the published board` };
-  if (!store.reelClaim(jobId)) {
-    const row = store.reelPost(jobId);
-    return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
-  }
-
+/**
+ * Upload an already-rendered reel and publish it.
+ *
+ * Split out from the queue step so the drain loop below can call it when a
+ * scheduled slot arrives, without re-rendering. The video is on disk from the
+ * moment the button was pressed.
+ */
+async function doPublish(row) {
+  const jobId = row.job_id;
+  const job = publicJob(jobId) ?? { company: jobId, title: '' };
   const account = cfg.reels?.account || 'interndoor';
-  reelRunning = { jobId, company: job.company, title: job.title, stage: 'rendering',
+
+  reelRunning = { jobId, company: job.company, title: job.title, stage: 'publishing',
     startedAt: Date.now(), url: null, error: null };
-  log.info(`Reel for ${job.company} — ${job.title}: rendering…`);
+  store.reelPublishing(jobId);
+  log.info(`Reel for ${job.company}: publishing to @${account}…`);
 
   try {
-    await run(process.execPath, ['--no-warnings=ExperimentalWarning',
-      join(PATHS.root, 'bin', 'render-reel.js'), `--job=${jobId}`], 'render-reel');
-
-    const video = join(PATHS.reelsOut, `${jobId}.mp4`);
-    if (!existsSync(video)) throw new Error('the render produced no file');
-
-    const page = utmUrl(`https://interndoor.com/jobs/${jobSlug({ ...job, id: jobId })}`,
-      { campaign: 'reel', content: String(jobId), source: 'instagram' }, cfg);
-    const caption = reelCaption(job, { url: page });
-    store.reelRendered(jobId, video, caption);
-
-    reelRunning = { ...reelRunning, stage: 'publishing' };
-    log.info(`Reel for ${job.company}: publishing to @${account}…`);
+    const video = row.video_path;
+    if (!video || !existsSync(video)) throw new Error('the rendered file is gone');
 
     /* The caption goes on a FILE. It is multi-line and carries emoji and
        hashtags, and argv quoting for that across uv, sh and Python is a way to
        silently truncate somebody's post. */
     const capFile = join(tmpdir(), `interndoor-reel-${jobId}.txt`);
-    writeFileSync(capFile, caption);
+    writeFileSync(capFile, row.caption ?? '');
 
     const seconds = Number(await run('ffprobe', ['-v', 'error', '-show_entries',
       'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', video], 'ffprobe'));
@@ -289,6 +283,80 @@ async function publishReel(jobId) {
     return { error: err.message };
   }
 }
+
+/**
+ * Render a reel now, then publish it now or at its slot.
+ *
+ * RENDERING ALWAYS HAPPENS IMMEDIATELY, even for a reel that will not go out
+ * for hours: he is at the keyboard when he presses the button, which is the
+ * only moment a render failure is worth surfacing. It also means the slot
+ * cannot arrive to find the model down or Playwright broken.
+ */
+async function publishReel(jobId) {
+  const job = publicJob(jobId);
+  if (!job) return { error: `job ${jobId} is not on the published board` };
+  if (!store.reelClaim(jobId)) {
+    const row = store.reelPost(jobId);
+    return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
+  }
+
+  reelRunning = { jobId, company: job.company, title: job.title, stage: 'rendering',
+    startedAt: Date.now(), url: null, error: null };
+  log.info(`Reel for ${job.company} — ${job.title}: rendering…`);
+
+  try {
+    await run(process.execPath, ['--no-warnings=ExperimentalWarning',
+      join(PATHS.root, 'bin', 'render-reel.js'), `--job=${jobId}`], 'render-reel');
+
+    const video = join(PATHS.reelsOut, `${jobId}.mp4`);
+    if (!existsSync(video)) throw new Error('the render produced no file');
+
+    const page = utmUrl(`https://interndoor.com/jobs/${jobSlug({ ...job, id: jobId })}`,
+      { campaign: 'reel', content: String(jobId), source: 'instagram' }, cfg);
+    const caption = reelCaption(job, { url: page });
+
+    /* Slots already promised to queued reels count, not just the last publish
+       — otherwise three presses inside a minute all measure from the same
+       moment and collide on one slot. This row is excluded: it has no slot yet
+       and is what we are computing one for. */
+    const slot = nextSlot({
+      now: Date.now(),
+      lastPublishedAt: store.reelLastPublishedAt(),
+      pendingSlots: store.reelPending().filter((r) => r.job_id !== jobId).map((r) => r.publish_at),
+    }, cfg.reels ?? {});
+
+    const state = store.reelRendered(jobId, video, caption, slot);
+    if (state === 'scheduled') {
+      reelRunning = { ...reelRunning, stage: 'scheduled', slot,
+        slotLabel: slotLabel(slot, cfg.reels ?? {}), finishedAt: Date.now() };
+      log.ok(`Reel for ${job.company} rendered — queued for ${slotLabel(slot, cfg.reels ?? {})}`);
+      return { ok: true, scheduled: slot };
+    }
+
+    return await doPublish(store.reelPost(jobId));
+  } catch (err) {
+    store.reelFailed(jobId, err.message);
+    reelRunning = { ...reelRunning, stage: 'failed', error: err.message, finishedAt: Date.now() };
+    log.warn(`Reel for ${job.company} failed — ${err.message}`);
+    return { error: err.message };
+  }
+}
+
+/**
+ * Publish whatever is due.
+ *
+ * Polled rather than timed, so a slot that fell while this Mac was asleep, or
+ * while the helper was being restarted by bin/run.sh, goes out on the next
+ * tick instead of being missed. The state is in the database, so a restart
+ * loses nothing. One at a time: `reelDue` returns the soonest only.
+ */
+async function drainReels() {
+  if (reelRunning && !reelRunning.finishedAt) return;
+  const due = store.reelDue();
+  if (due) await doPublish(due);
+}
+
+setInterval(() => { drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`)); }, 60_000);
 
 /* ------------------------------------------------------------------- routes */
 
@@ -359,6 +427,8 @@ const server = createServer(async (req, res) => {
       running: reelRunning,
       posts: store.reelPosts().map((r) => ({
         jobId: r.job_id, status: r.status, url: r.permalink, error: r.error,
+        slot: r.publish_at ?? null,
+        slotLabel: r.publish_at ? slotLabel(r.publish_at, cfg.reels ?? {}) : null,
       })),
     });
   }

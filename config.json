@@ -1087,6 +1087,11 @@
     "account": "interndoorin",
     "_account_note": "The Instagram USERNAME that must own IG_ACCESS_TOKEN. bin/ig_publish.py asks the live account who it is and refuses to publish unless this matches, because storygasted's .env holds credentials for a DIFFERENT account (storygasted) under the same variable names - and a reel posted to the wrong account cannot be taken back. It is 'interndoorin', not 'interndoor': the Instagram handle and the Telegram channel are not the same string.",
     "voiceTempo": 1.5,
-    "_voiceTempo_note": "How much the voiceover is sped up after synthesis. Raw Qwen3-TTS runs about 1.7 words/second; 1.25 put that at ~2.1 w/s, which was still too slow watching a real reel back. 1.5 is ~2.55 w/s, the ordinary range for Reels narration. THE CTA IS WHAT LIMITS THIS - the last scene reads out a domain, and a URL spoken too fast is a URL nobody can type. Past ~1.6 shorten the script in src/reelscript.js instead of speeding it up further. REEL_VO_TEMPO in the environment overrides this."
+    "_voiceTempo_note": "How much the voiceover is sped up after synthesis. Raw Qwen3-TTS runs about 1.7 words/second; 1.25 put that at ~2.1 w/s, which was still too slow watching a real reel back. 1.5 is ~2.55 w/s, the ordinary range for Reels narration. THE CTA IS WHAT LIMITS THIS - the last scene reads out a domain, and a URL spoken too fast is a URL nobody can type. Past ~1.6 shorten the script in src/reelscript.js instead of speeding it up further. REEL_VO_TEMPO in the environment overrides this.",
+    "spacingMinutes": 180,
+    "windowStartHour": 10,
+    "windowEndHour": 22,
+    "timeZone": "Asia/Kolkata",
+    "_spacing_note": "Three good jobs found in one sitting become three posts, not one burst - not because Instagram punishes bursts (it does not, and at zero followers there is no follower feed for them to compete in) but because three reels dropped into one slot is ONE measurement, not three, and measurement is what the bandit will read. THE FIRST REEL OF A SITTING IS NEVER DELAYED: he pressed the button because he wants it out. windowStartHour/windowEndHour keep slots off the small hours - the board's own intake data puts weekday attention in the 16:00-20:00 IST block against almost nothing at 08:00-12:00, so a reel scheduled for 03:00 is a wasted reel however well spaced. Set start == end for a 24-hour window."
   }
 }
