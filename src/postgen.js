@@ -153,13 +153,18 @@ export function sourceLabel(row) {
  * `<link rel="canonical">` pointing at the clean URL, so a tagged link cannot
  * become a second indexed copy of the page.
  */
-export function utmUrl(url, { campaign, content } = {}, cfg = {}) {
+export function utmUrl(url, { campaign, content, source } = {}, cfg = {}) {
   const conf = cfg.postQueue?.utm ?? {};
   if (conf.enabled === false) return url;
   if (!url || !String(url).startsWith(SITE)) return url;
   try {
     const u = new URL(url);
-    u.searchParams.set('utm_source', conf.source || 'linkedin');
+    /* `source` overrides the config default, because these tags are shared by
+       more than one channel now. The default is 'linkedin' because that is
+       what this function was written for; the first published reel went out
+       tagged utm_source=linkedin, which would have filed every click from
+       Instagram under LinkedIn in Vercel Analytics. */
+    u.searchParams.set('utm_source', source || conf.source || 'linkedin');
     u.searchParams.set('utm_medium', conf.medium || 'social');
     if (campaign) u.searchParams.set('utm_campaign', campaign);
     if (content) u.searchParams.set('utm_content', content);

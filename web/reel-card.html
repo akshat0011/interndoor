@@ -245,7 +245,7 @@ const SAMPLE = {
   company:"Janitri", title:"Back End Developer - Intern", city:"Bengaluru",
   stipendText:"₹20,000", stipendAmount:20000, stipendPeriod:"month",
   duration:"6 months", mode:"On-site", applicantsText:"47 applied",
-  logo:null, ageText:"2h ago", duration_s:11.0
+  logo:null, ageText:"2h ago", reelSeconds:11.0
 };
 const D = window.REEL || SAMPLE;
 
@@ -260,10 +260,32 @@ const D = window.REEL || SAMPLE;
    the first two seconds and this is the only scene that can move it. The
    "what you'd do" bullet scene was CUT for the same reason — most text,
    least motion, sitting exactly where viewers drop off. */
-const SPLIT = [0, 0.34, 0.56, 0.84];   /* hook | company | role | cta */
-const DURATION = Number(D.duration) > 0 ? Number(D.duration) : 11.0;
+/* THE LOGO OPENS THE REEL. It is the one frame that identifies the employer
+   without being read, and a viewer deciding in the first second recognises a
+   mark faster than a wordmark. The text hook that used to open said the same
+   sentence the logo scene says — both illustrate the voiceover's first line,
+   "<company> is hiring interns in <city>" — so leading with the logo does not
+   displace anything, it just puts the stronger of two versions first.
+
+   The logo gets 24%, not the hook's old 34%: it is a STATIC image, and four
+   seconds of a motionless logo is dead air where the hook at least counted a
+   stipend up. The hook follows it and keeps its own moment.
+
+   NO LOGO, OLD ORDER. 271 of 274 India rows carry one, but Tower Research and
+   AlphaGrep do not, and opening those on an empty box would be worse than what
+   this replaces. */
+const HAS_LOGO = !!D.logo;
+const SPLIT = HAS_LOGO
+  ? [0, 0.24, 0.52, 0.84]   /* company | hook | role | cta */
+  : [0, 0.34, 0.56, 0.84];  /* hook | company | role | cta */
+const ORDER = HAS_LOGO ? ["s2", "s1", "s3", "s5"] : ["s1", "s2", "s3", "s5"];
+/* reelSeconds, NOT duration. `duration` is the JOB's ("6 months"), and the
+   renderer used to spread the reel's own length over the top of it under the
+   same name — so the role scene rendered a pill reading "15.167", the reel's
+   runtime, where a duration should have been. Every reel did this. */
+const DURATION = Number(D.reelSeconds) > 0 ? Number(D.reelSeconds) : 11.0;
 window.REEL_DURATION = DURATION;
-const SCENES = SPLIT.map((f, i) => ({ el: ["s1", "s2", "s3", "s5"][i], at: f * DURATION }));
+const SCENES = SPLIT.map((f, i) => ({ el: ORDER[i], at: f * DURATION }));
 
 /* Captions start at SCENE 2, not at zero.
    Through the hook the scene IS the sentence — it reads "PHILIPS / is hiring

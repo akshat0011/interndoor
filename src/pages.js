@@ -294,7 +294,7 @@ function agePill(ms) {
  * figure with no currency and no period is not a stipend, and printing one on a
  * student-facing page is worse than printing nothing.
  */
-function stipendText(job) {
+export function stipendText(job) {
   const raw = String(job.stipend ?? '').trim();
   if (!raw) return '';
   return /[₹$]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw) ? raw : '';
@@ -307,7 +307,7 @@ function stipendText(job) {
  * that landed in the duration slot. Anything opening with a zero, or reading as
  * a range of years, is not how long an internship lasts.
  */
-function durationText(job) {
+export function durationText(job) {
   const raw = String(job.duration ?? '').trim();
   if (!raw) return '';
   if (/^0\b/.test(raw)) return '';
@@ -316,7 +316,7 @@ function durationText(job) {
 }
 
 /** "On-site" and "onsite" both occur. One spelling reaches the page. */
-function modeText(job) {
+export function modeText(job) {
   const raw = String(job.workplaceType ?? '').trim();
   if (!raw) return '';
   if (/^on-?site$/i.test(raw)) return 'On-site';

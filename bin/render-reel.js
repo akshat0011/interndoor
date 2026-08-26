@@ -37,9 +37,12 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { homedir } from 'node:os';
 import { scriptText } from '../src/reelscript.js';
 import { PATHS } from '../src/paths.js';
+import { loadConfig } from '../src/config.js';
+import { durationText, modeText } from '../src/pages.js';
 import { pickBgm, commitBgm } from '../src/reelbgm.js';
 import { captionsFor } from '../src/reelcaptions.js';
 
+const cfg = loadConfig();
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CARD = join(ROOT, 'web', 'reel-card.html');
 const PUBLIC = join(ROOT, 'web', 'public');
@@ -58,7 +61,19 @@ const STORYGASTED = join(homedir(), 'Desktop', 'projects', 'storygasted');
    words a second raw, against the 2.1 a listener expects. storygasted solves
    this the same way, with atempo after generation rather than the model's own
    coarse speed presets. */
-const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || 1.25);
+/**
+ * How much the voiceover is sped up after synthesis.
+ *
+ * Raw Qwen3-TTS runs about 1.7 words/second. 1.25x put that at ~2.1 w/s, which
+ * was the number a reel listener was assumed to expect — and watching a real
+ * one back, it is still too slow for the format. 1.5x is ~2.55 w/s, which sits
+ * in the ordinary range for Reels narration.
+ *
+ * The last scene is what limits this: the CTA reads out a domain, and a URL
+ * spoken too fast is a URL nobody can type. If it needs to go faster than
+ * ~1.6x, shorten the script instead — see src/reelscript.js.
+ */
+const VO_TEMPO = Number(process.env.REEL_VO_TEMPO || cfg.reels?.voiceTempo || 1.5);
 
 /* A tail after the voice ends, so the CTA is on screen in silence for a beat
    rather than cutting the instant the last word lands. */
@@ -207,8 +222,13 @@ function shape(job) {
     stipendAmount: s.amount,
     stipendPeriod: s.period,
     currency: CURRENCY[REGION] || '\u20b9',
-    duration: job.duration || null,
-    mode: job.workplaceType || null,
+    /* Through the site's own filter. `duration` is dirty in the store — it
+       holds "0 to 1 years" and "0-11 months", which are EXPERIENCE
+       requirements that landed in the duration slot — and pages.js already
+       refuses to print those, so a reel was stating something its own job
+       page would not. */
+    duration: durationText(job) || null,
+    mode: modeText(job) || null,
     applicantsText: a.text,
     zeroApplicants: a.zero,
     applicantsCount: a.count,
@@ -372,7 +392,7 @@ async function main() {
   const browser = await chromium.launch({ executablePath: exe, headless: true });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
 
-  await page.addInitScript(d => { window.REEL = d; }, { ...data, duration, captions });
+  await page.addInitScript(d => { window.REEL = d; }, { ...data, reelSeconds: duration, captions });
   await page.goto(pathToFileURL(CARD).href, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
   /* Sizes are chosen from measured text, so they are only correct once the

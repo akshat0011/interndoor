@@ -13,6 +13,8 @@
  * not eligible for. A caption assembled from the row cannot do that.
  */
 
+import { stipendText, durationText, modeText } from './pages.js';
+
 const SITE = 'https://interndoor.com';
 
 /** Instagram's own cap. Captions are truncated at a word boundary well before. */
@@ -51,6 +53,9 @@ export function cityOf(location) {
   return first;
 }
 
+/** "₹0", "₹ 0", "0", "0.00" — a figure that says the pay is nothing. */
+const zeroish = (v) => /^[^\d]*0+(?:[.,]0+)?\s*$/.test(String(v ?? '').trim()) && /\d/.test(String(v ?? ''));
+
 /** Trim at a word boundary rather than mid-word. */
 function clamp(text, max) {
   const t = String(text ?? '').trim();
@@ -63,17 +68,37 @@ function clamp(text, max) {
 /**
  * The facts line.
  *
- * Only what the row actually holds. A blank stipend is left out rather than
- * written as "unpaid" or "not disclosed" — the posting did not say, and
- * guessing either way is a claim about somebody's employer.
+ * READ THROUGH THE SITE'S OWN DISPLAY FILTERS, not off the row. `stipend` and
+ * `duration` are dirty in the store: `duration` holds "0 to 1 years" and
+ * "0-11 months", which are EXPERIENCE requirements that landed in the duration
+ * slot, and `stipend` holds "₹0" and the stray "2,026" from a copyright line.
+ * pages.js already refuses to print those, so the first published reel said
+ * "⏳ 0 to 1 years" while the job page it linked to said nothing of the kind.
+ *
+ * Importing the same functions is the point. Re-implementing the rules here
+ * would drift on the first fix to either, and this caption's whole claim is
+ * that it cannot state something the job page does not.
+ *
+ * A blank stipend is left out rather than written as "unpaid" or "not
+ * disclosed" — the posting did not say, and guessing either way is a claim
+ * about somebody's employer.
  */
 function facts(job) {
   const out = [];
   const city = cityOf(job.location);
+  const mode = modeText(job);
+  // A ZERO STIPEND IS NOT A STIPEND. `stipendText` lets "₹0" through because it
+  // only asks for a currency or a period, and ₹0 has a currency — so the site
+  // prints it on 37 of 274 India cards. On a job page a "₹0" pill reads as a
+  // data quirk; in a caption it reads as a claim about what the employer pays,
+  // next to an "Apply →" link. Left out here, and the site's own behaviour is
+  // deliberately NOT changed from inside a caption module.
+  const money = zeroish(stipendText(job)) ? '' : stipendText(job);
+  const howLong = durationText(job);
   if (city) out.push(`📍 ${city}`);
-  if (job.mode) out.push(`💼 ${job.mode}`);
-  if (job.stipendText) out.push(`💰 ${job.stipendText}`);
-  if (job.duration) out.push(`⏳ ${job.duration}`);
+  if (mode) out.push(`💼 ${mode}`);
+  if (money) out.push(`💰 ${money}`);
+  if (howLong) out.push(`⏳ ${howLong}`);
   return out;
 }
 

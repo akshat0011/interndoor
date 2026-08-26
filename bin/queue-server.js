@@ -252,7 +252,7 @@ async function publishReel(jobId) {
     if (!existsSync(video)) throw new Error('the render produced no file');
 
     const page = utmUrl(`https://interndoor.com/jobs/${jobSlug({ ...job, id: jobId })}`,
-      { campaign: 'reel', content: String(jobId) }, cfg);
+      { campaign: 'reel', content: String(jobId), source: 'instagram' }, cfg);
     const caption = reelCaption(job, { url: page });
     store.reelRendered(jobId, video, caption);
 

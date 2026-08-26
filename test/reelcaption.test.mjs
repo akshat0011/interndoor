@@ -16,10 +16,15 @@ function check(label, actual, expected) {
   else { fail++; console.log(`  FAIL  ${label}\n          got:  ${a}\n          want: ${e}`); }
 }
 
+// THE PUBLISHED SHAPE, field for field. The first version of this fixture used
+// `stipendText` and `mode`, which are not what jobs.json carries — so it passed
+// while the real caption silently dropped both, and printed a raw `duration`
+// the job page refuses to print. A fixture that invents field names tests
+// nothing.
 const job = {
   id: '123', company: 'Philips', title: 'Intern - Embedded System',
-  location: 'Pune Division, Maharashtra, India', mode: 'On-site',
-  stipendText: '₹20,000', duration: '6 months', applicantsText: '13 applicants',
+  location: 'Pune Division, Maharashtra, India', workplaceType: 'On-site',
+  stipend: '₹20,000/month', duration: '6 months', applicants: '13 applicants',
   keySkills: ['C++', 'Embedded Linux', 'RTOS'],
 };
 
@@ -40,6 +45,8 @@ check('it names the employer', c.includes('Philips'), true);
 check('it names the role', c.includes('Intern - Embedded System'), true);
 check('it names the city', c.includes('Pune Division'), true);
 check('it carries the stipend the row has', c.includes('₹20,000'), true);
+check('and the workplace mode', c.includes('On-site'), true);
+check('and a real duration', c.includes('6 months'), true);
 check('and the link', c.includes('https://interndoor.com/jobs/x'), true);
 
 // A blank stipend is LEFT OUT, never written as "unpaid" or "not disclosed" —
@@ -50,13 +57,44 @@ check('no stipend means no stipend line', /stipend|unpaid|not disclosed|₹/i.te
 check('no applicant data means no urgency line', /applicant/i.test(bare), false);
 check('but the employer and role survive', bare.includes('Acme') && bare.includes('Software Intern'), true);
 
+console.log('\n== dirty columns are filtered, not printed ==');
+// The bug that shipped on the first real reel. `duration` holds EXPERIENCE
+// requirements that landed in the duration slot, and `stipend` holds "₹0" and
+// the stray "2,026" from a copyright line. pages.js already refuses to print
+// these, and the caption imports those same functions rather than repeating
+// the rules — its whole claim is that it cannot say what the job page will not.
+const dirty = reelCaption({
+  company: 'Infineon Technologies', title: 'Young Graduate Trainee',
+  location: 'Bengaluru East, Karnataka, India', workplaceType: 'On-site',
+  stipend: '₹0', duration: '0 to 1 years', applicants: '47 people clicked apply',
+});
+check('an experience range is not a duration', dirty.includes('0 to 1 years'), false);
+check('₹0 is not a stipend', dirty.includes('₹0'), false);
+check('but the real facts survive', dirty.includes('Bengaluru East') && dirty.includes('On-site'), true);
+// Each dirty value tested against the field it actually lands in. The first
+// version passed the same string as BOTH duration and stipend, which conflated
+// two filters and reported a failure against the wrong one.
+for (const bad of ['0-11 months', '0 to 3 years', '0 to 1 years']) {
+  const d = reelCaption({ company: 'X', title: 'Intern', location: 'Pune, India', duration: bad });
+  check(`duration "${bad}" never reaches the caption`, d.includes(bad), false);
+}
+// The stray year from a copyright line, which lands in the STIPEND slot.
+for (const bad of ['2,026', '2026', '0']) {
+  const d = reelCaption({ company: 'X', title: 'Intern', location: 'Pune, India', stipend: bad });
+  check(`stipend "${bad}" never reaches the caption`, d.includes(`💰 ${bad}`), false);
+}
+// A real stipend still does.
+check('a real stipend survives',
+  reelCaption({ company: 'X', title: 'Intern', location: 'Pune, India', stipend: '₹25,000/month' })
+    .includes('₹25,000/month'), true);
+
 console.log('\n== the applicant line is stated AS OF LISTING ==');
 // `applicants` is frozen at scrape time. Anything that reads as current will be
 // wrong within the hour, which is the exact bug `posted_text` caused on the
 // live board.
 check('it says when the number was true', c.includes('when this was listed'), true);
 check('it never claims to be live', /right now|currently|so far today/i.test(c), false);
-const zero = reelCaption({ ...job, applicantsText: '0 applicants' });
+const zero = reelCaption({ ...job, applicants: '0 applicants' });
 check('zero applicants is worth saying', zero.includes('No applicants yet'), true);
 
 console.log('\n== hashtags ==');
