@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 26 Aug 2026 12:26:51 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 26 Aug 2026 13:00:24 GMT</lastBuildDate>
+  <item>
+    <title>Silicon Engineering INTERN — Microsoft</title>
+    <link>https://interndoor.com/us/jobs/microsoft-silicon-engineering-intern-4459189124</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/microsoft-silicon-engineering-intern-4459189124</guid>
+    <pubDate>Wed, 26 Aug 2026 12:43:57 GMT</pubDate>
+    <description>Company: Microsoft · Location: Santa Clara, CA
+• Design and test digital circuits for microelectronics systems
+• Use simulation and emulation tools for verification testing
+• Collaborate with engineers on pre-silicon validation projects</description>
+  </item>
   <item>
     <title>UIUC Research Park Intern - Machine Learning Compiler — Rivian</title>
     <link>https://interndoor.com/us/jobs/rivian-uiuc-research-park-intern-machine-learning-compiler-4439936248</link>
@@ -491,16 +501,6 @@
 • Implement gameplay features in Unreal Engine with C++
 • Collaborate with designers and artists on feature prototyping
 • Debug and test gameplay systems for Fortnite Reload</description>
-  </item>
-  <item>
-    <title>Automation Engineer Apprentice — Amazon</title>
-    <link>https://interndoor.com/us/jobs/amazon-automation-engineer-apprentice-4458739737</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/amazon-automation-engineer-apprentice-4458739737</guid>
-    <pubDate>Tue, 25 Aug 2026 23:58:08 GMT</pubDate>
-    <description>Company: Amazon · Location: Fredericksburg, VA · Duration: 20 weeks
-• Maintain and repair robotics and material handling equipment
-• Work with PLCs and electrical systems in high automation settings
-• Perform preventative maintenance and troubleshooting on conveyors and sortation systems</description>
   </item>
 </channel>
 </rss>
