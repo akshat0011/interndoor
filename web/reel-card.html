@@ -1,0 +1,383 @@
+<meta charset="utf-8">
+<title>InternDoor reel card</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ------------------------------------------------------------------
+     FORMAT A — "company is hiring".  1080x1920, seeked frame by frame.
+
+     Every moving thing is a CSS @keyframes animation on one shared
+     timeline.  bin/render-reel.js seeks by setting currentTime on
+     document.getAnimations(), so NOTHING here may animate from JS —
+     a JS-driven transform cannot be seeked and would render as a
+     frozen frame.  Derived text (the count-up) is the one exception
+     and is recomputed from t in tick(), which is pure.
+     ------------------------------------------------------------------ */
+  :root {
+    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
+    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036;
+    --live:#c8ff00;
+    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
+    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --snap:cubic-bezier(.16,1,.3,1);
+  }
+  * { box-sizing:border-box; margin:0; }
+  html,body { background:var(--bg); }
+
+  #reel {
+    position:absolute; top:0; left:0; width:1080px; height:1920px; overflow:hidden;
+    background:var(--bg); color:var(--ink); font-family:var(--ui);
+  }
+
+  /* ---- persistent background ------------------------------------- */
+  /* Radar bleeds off the bottom-right.  It turns for the whole reel so
+     no frame is completely static, which is what stops a card reading
+     as a still image in the feed. */
+  .scope-bleed { position:absolute; right:-320px; bottom:-300px;
+                 width:1180px; height:1180px; opacity:.9; }
+  .scope-bleed svg { width:100%; height:100%; display:block; }
+  .ring  { fill:none; stroke:var(--live); stroke-width:1.6; opacity:.15; }
+  .ring.faint { opacity:.075; }
+  .cross { stroke:var(--live); stroke-width:1.6; opacity:.07; }
+  .sweep-g { transform-origin:360px 360px; animation:spin 8s linear infinite; }
+
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  .grain { position:absolute; inset:0; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* Keeps the lower third readable over the radar, and darkens the strip
+     Instagram covers with its own caption + buttons. */
+  .floor { position:absolute; left:0; right:0; bottom:0; height:620px;
+           background:linear-gradient(to bottom,rgba(10,10,11,0),rgba(10,10,11,.92) 55%,var(--bg));
+           pointer-events:none; }
+
+  /* ---- brand lockup, always on ----------------------------------- */
+  .brand { position:absolute; top:118px; left:72px; z-index:6;
+           display:flex; align-items:center; gap:16px; }
+  .brand .mark { width:52px; height:52px; flex:none; }
+  .brand .mark svg { width:100%; height:100%; display:block; overflow:visible; }
+  .m-ring  { fill:none; stroke:var(--live); stroke-width:1.7; opacity:.34; }
+  .m-sweep { fill:var(--live); opacity:.32; transform-origin:22px 22px;
+             animation:spin 2.6s linear infinite; }
+  .m-dot   { fill:var(--live); }
+  .word { font-family:var(--display); font-weight:900; font-size:44px;
+          letter-spacing:-.045em; line-height:1; }
+  .word em { font-style:normal; color:var(--live); }
+
+  .live-stamp { position:absolute; top:118px; right:72px; z-index:6;
+    font-family:var(--mono); font-size:21px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink-2);
+    border:1px solid var(--rule-2); border-radius:5px; padding:12px 18px;
+    display:flex; align-items:center; gap:11px; background:rgba(10,10,11,.6); }
+  .beat { width:10px; height:10px; background:var(--live); flex:none;
+          animation:beat 1.6s steps(1,end) infinite; }
+  @keyframes beat { 0%,60% { opacity:1; } 61%,100% { opacity:.15; } }
+
+  /* ---- the stage --------------------------------------------------
+     Every scene is a layer in the same box.  Content is vertically
+     centred in the SAFE band (y 250-1330): Instagram's own UI eats the
+     bottom ~360px and the right ~170px, and burned-in VO captions will
+     later sit at y~1400.  Nothing that must be read goes below 1330. */
+  .stage { position:absolute; left:72px; right:72px; top:250px; height:1080px; z-index:5; }
+  .scene { position:absolute; inset:0; display:flex; flex-direction:column;
+           justify-content:center; opacity:0; }
+
+  .eyebrow { font-family:var(--mono); font-size:26px; letter-spacing:.2em;
+             text-transform:uppercase; color:var(--live); margin-bottom:26px; }
+
+  /* Scene 1 — the hook.  Deliberately the least animated thing in the
+     reel: a scroller decides in well under a second, so the payload is
+     legible at t=0.12s rather than sliding in over half a second. */
+  #s1 .huge { font-family:var(--display); font-weight:900; font-size:168px;
+              line-height:.86; letter-spacing:-.05em; text-transform:uppercase; }
+  #s1 .huge .lit { color:var(--live); }
+  #s1 .huge .per { font-size:62px; letter-spacing:-.02em; color:var(--ink-2);
+                   text-transform:lowercase; margin-left:6px; }
+  #s1 .under { margin-top:34px; font-size:42px; line-height:1.3; color:var(--ink-2); }
+  #s1 .under b { color:var(--ink); font-weight:600; }
+
+  /* Scene 2 — who */
+  .logo-wrap { width:250px; height:250px; border-radius:32px; overflow:hidden;
+               background:#fff; display:flex; align-items:center; justify-content:center;
+               margin-bottom:44px; }
+  .logo-wrap img { width:100%; height:100%; object-fit:contain; }
+  .logo-fallback { font-family:var(--display); font-weight:900; font-size:104px;
+                   color:#0a0a0b; letter-spacing:-.04em; }
+  #s2 .co { font-family:var(--display); font-weight:900; font-size:118px;
+            line-height:.9; letter-spacing:-.045em; }
+  #s2 .hiring { margin-top:24px; font-family:var(--mono); font-size:34px;
+                letter-spacing:.16em; text-transform:uppercase; color:var(--live); }
+
+  /* Scene 3 — what */
+  #s3 .role { font-family:var(--display); font-weight:900; font-size:104px;
+              line-height:.92; letter-spacing:-.04em; }
+  .pills { display:flex; flex-wrap:wrap; gap:16px; margin-top:48px; }
+  .pill { font-family:var(--mono); font-size:30px; letter-spacing:.06em;
+          text-transform:uppercase; color:var(--ink-2);
+          border:1px solid var(--rule-2); border-radius:6px; padding:16px 24px;
+          background:rgba(10,10,11,.66); }
+  .pill.hot { color:var(--live); border-color:rgba(200,255,0,.4); }
+
+  /* Scene 5 — CTA */
+  #s5 { justify-content:center; }
+  #s5 .cta-big { font-family:var(--display); font-weight:900; font-size:98px;
+                 line-height:.9; letter-spacing:-.045em; }
+  #s5 .cta-big em { font-style:normal; color:var(--live); }
+  #s5 .cta-sub { margin-top:36px; font-size:44px; color:var(--ink-2); line-height:1.3; }
+  #s5 .cta-sub b { color:var(--ink); font-weight:600; }
+
+  /* ---- scene in/out ------------------------------------------------
+     fill-mode:both is what makes a seek land correctly before a scene's
+     delay has elapsed — without it every scene renders at opacity 0
+     until its own start and the reel is blank on early frames. */
+  .scene { animation-fill-mode:both; animation-timing-function:var(--snap); }
+  @keyframes scene-in  { from { opacity:0; } to { opacity:1; } }
+  @keyframes scene-out { from { opacity:1; } to { opacity:0; } }
+
+  .rise { animation-fill-mode:both; animation-timing-function:var(--snap); }
+  @keyframes rise { from { opacity:0; transform:translateY(46px); }
+                    to   { opacity:1; transform:translateY(0); } }
+  @keyframes pop  { from { opacity:0; transform:scale(.82); }
+                    to   { opacity:1; transform:scale(1); } }
+</style>
+
+<div id="reel">
+
+  <div class="scope-bleed">
+    <svg viewBox="0 0 720 720">
+      <circle class="ring faint" cx="360" cy="360" r="352"/>
+      <circle class="ring" cx="360" cy="360" r="272"/>
+      <circle class="ring faint" cx="360" cy="360" r="192"/>
+      <circle class="ring" cx="360" cy="360" r="112"/>
+      <line class="cross" x1="8" y1="360" x2="712" y2="360"/>
+      <line class="cross" x1="360" y1="8" x2="360" y2="712"/>
+      <defs>
+        <linearGradient id="sw" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#c8ff00" stop-opacity="0"/>
+          <stop offset="1" stop-color="#c8ff00" stop-opacity=".26"/>
+        </linearGradient>
+      </defs>
+      <g class="sweep-g">
+        <path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#sw)"/>
+      </g>
+      <circle cx="360" cy="360" r="8" fill="#c8ff00"/>
+    </svg>
+  </div>
+
+  <div class="grain"></div>
+  <div class="floor"></div>
+
+  <div class="brand">
+    <span class="mark">
+      <svg viewBox="0 0 44 44">
+        <circle class="m-ring" cx="22" cy="22" r="20"/>
+        <circle class="m-ring" cx="22" cy="22" r="13"/>
+        <circle class="m-ring" cx="22" cy="22" r="6"/>
+        <path class="m-sweep" d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/>
+        <circle class="m-dot" cx="22" cy="22" r="2.9"/>
+      </svg>
+    </span>
+    <span class="word">INTERN<em>DOOR</em></span>
+  </div>
+  <div class="live-stamp"><i class="beat"></i><span id="stamp">Live</span></div>
+
+  <div class="stage">
+    <div class="scene" id="s1">
+      <div class="eyebrow" id="s1-eyebrow">Paid internship</div>
+      <div class="huge" id="s1-huge"></div>
+      <div class="under" id="s1-under"></div>
+    </div>
+
+    <div class="scene" id="s2">
+      <div class="logo-wrap" id="logo-wrap"></div>
+      <div class="co" id="s2-co"></div>
+      <div class="hiring">is hiring interns</div>
+    </div>
+
+    <div class="scene" id="s3">
+      <div class="eyebrow">The role</div>
+      <div class="role" id="s3-role"></div>
+      <div class="pills" id="s3-pills"></div>
+    </div>
+
+    <div class="scene" id="s5">
+      <div class="cta-big">INTERN<em>DOOR</em>.COM</div>
+      <div class="cta-sub" id="s5-sub"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Sample data so the file can be opened straight in a browser. The
+   renderer overwrites window.REEL before this runs. */
+const SAMPLE = {
+  company:"Janitri", title:"Back End Developer - Intern", city:"Bengaluru",
+  stipendText:"₹20,000", stipendAmount:20000, stipendPeriod:"month",
+  duration:"6 months", mode:"On-site", applicantsText:"47 applied",
+  logo:null, ageText:"2h ago", duration_s:11.0
+};
+const D = window.REEL || SAMPLE;
+
+/* ---- the timeline -------------------------------------------------
+   THE VOICEOVER SETS THE LENGTH, not this file. bin/render-reel.js
+   synthesises the VO first, measures it, and passes the total in
+   D.duration; the scenes are laid out as FRACTIONS of it. With a fixed
+   13.2s timeline the VO either ran past the last frame or left the CTA
+   sitting in silence, and neither is fixable by nudging one number.
+
+   The hook takes the largest share on purpose: retention is decided in
+   the first two seconds and this is the only scene that can move it. The
+   "what you'd do" bullet scene was CUT for the same reason — most text,
+   least motion, sitting exactly where viewers drop off. */
+const SPLIT = [0, 0.34, 0.56, 0.84];   /* hook | company | role | cta */
+const DURATION = Number(D.duration) > 0 ? Number(D.duration) : 11.0;
+window.REEL_DURATION = DURATION;
+const SCENES = SPLIT.map((f, i) => ({ el: ["s1", "s2", "s3", "s5"][i], at: f * DURATION }));
+
+/* 0.12s is ~4 frames at 30fps: enough that a cut is not a pop, too short
+   for two dense text scenes to read as a double exposure. */
+const FADE = 0.12;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s);
+
+/* ---- fitting real data ---------------------------------------------
+   Runs once at load, before any seek, so it is layout and not animation:
+   a size chosen here is identical on every frame.
+
+   clamp() exists because a 172-character title is not a headline at any
+   size. The full title is on the job page; the reel gets the front of it. */
+function clamp(str, n) {
+  const t = String(str == null ? "" : str).trim();
+  if (t.length <= n) return t;
+  const cut = t.slice(0, n);
+  const sp = cut.lastIndexOf(" ");
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,\-–—:]+$/, "") + "…";
+}
+
+function fit(el, startPx, minPx, maxH) {
+  let s = startPx;
+  el.style.fontSize = s + "px";
+  /* Width matters as much as height: a single unbreakable word
+     ("APPLICANTS" at 168px) runs off the right edge without ever growing
+     the block, so a height-only check reports it as fitting. */
+  const over = () => el.scrollHeight > maxH || el.scrollWidth > el.clientWidth + 1;
+  while (s > minPx && over()) { s -= 4; el.style.fontSize = s + "px"; }
+}
+
+/* Fitting must happen AFTER the webfonts land — Archivo is far wider than
+   the Helvetica fallback, so a size measured at load overflows the moment
+   the real face arrives. The renderer calls window.layout() once
+   document.fonts.ready resolves; the call at the bottom of this file is
+   only so that opening the card by hand still looks right. */
+const FITS = [];
+function later(el, start, min, maxH) { FITS.push([el, start, min, maxH]); }
+window.layout = function () { for (const f of FITS) fit(f[0], f[1], f[2], f[3]); };
+
+/* ---- fill the text ------------------------------------------------ */
+/* The hook is chosen by which fact is strongest, not by a fixed slot.
+   Only 39 of 384 India rows carry a stipend, so a card built around money
+   would be blank nine times in ten. */
+let hookLines, hookEyebrow, hookUnder;
+if (D.stipendText) {
+  hookEyebrow = "Paid internship";
+  hookLines = `<span class="lit" id="cnt">${esc(D.stipendText)}</span>` +
+              (D.stipendPeriod ? `<span class="per">/${esc(D.stipendPeriod)}</span>` : "");
+  hookUnder = `<b>${esc(D.company)}</b> is hiring in ${esc(D.city)}.`;
+} else if (D.zeroApplicants) {
+  hookEyebrow = "Nobody has applied yet";
+  hookLines = `<span class="lit">0</span><br>applicants`;
+  hookUnder = `<b>${esc(D.company)}</b> just posted this in ${esc(D.city)}.`;
+} else {
+  hookEyebrow = "Just posted";
+  hookLines = esc(D.company);
+  hookUnder = `is hiring interns in <b>${esc(D.city)}</b>.`;
+}
+$("s1-eyebrow").textContent = hookEyebrow;
+$("s1-huge").innerHTML = hookLines;
+$("s1-under").innerHTML = hookUnder;
+later($("s1-huge"), 168, 82, 420);
+
+$("s2-co").textContent = clamp(D.company, 42);
+later($("s2-co"), 118, 56, 260);
+$("logo-wrap").innerHTML = D.logo
+  ? `<img src="${esc(D.logo)}" alt="">`
+  : `<span class="logo-fallback">${esc(D.company).slice(0, 2).toUpperCase()}</span>`;
+
+$("s3-role").textContent = clamp(D.title, 58);
+later($("s3-role"), 104, 52, 360);
+const pills = [];
+if (D.city)        pills.push([D.city, false]);
+if (D.mode)        pills.push([D.mode, false]);
+if (D.duration)    pills.push([D.duration, false]);
+if (D.stipendText) pills.push([D.stipendText + (D.stipendPeriod ? "/" + D.stipendPeriod : ""), true]);
+$("s3-pills").innerHTML = pills
+  .map(([t, hot], i) => `<span class="pill${hot ? " hot" : ""}" data-i="${i}">${esc(t)}</span>`).join("");
+
+$("s5-sub").innerHTML = D.applicantsText
+  ? `<b>${esc(D.applicantsText)}</b> so far — apply while the queue is short.`
+  : `Free. No signup. <b>Follow for daily internships.</b>`;
+if (D.ageText) $("stamp").textContent = D.ageText;
+
+/* ---- wire the animations -------------------------------------------
+   Content offsets are ABSOLUTE (a 0.12s rise is 0.12s whatever the reel
+   length); only the scene starts scale. Written inline rather than as
+   classes because a stylesheet cannot know a timeline computed at load. */
+const at = {};
+SCENES.forEach((s, i) => {
+  at[s.el] = s.at;
+  const next = SCENES[i + 1];
+  /* linear, not --snap: a cross-dissolve wants the two opacities to be
+     complements of each other, and an ease-out on both makes them dip. */
+  let a = `scene-in ${FADE}s linear ${s.at}s both`;
+  if (next) a += `, scene-out ${FADE}s linear ${next.at}s forwards`;
+  $(s.el).style.animation = a;
+});
+
+const rise = (el, delay, dur) => { el.style.animation = `rise ${dur || .46}s var(--snap) ${delay}s both`; };
+const pop  = (el, delay, dur) => { el.style.animation = `pop ${dur || .46}s var(--snap) ${delay}s both`; };
+
+/* Scene 1 lands almost immediately — a scroller decides in well under a
+   second, so the payload is legible at t=0.12s rather than sliding in. */
+rise($("s1-eyebrow"), at.s1 + 0.10, .40);
+rise($("s1-huge"),    at.s1 + 0.12);
+rise($("s1-under"),   at.s1 + 0.34);
+
+pop ($("logo-wrap"),  at.s2 + 0.12, .52);
+rise($("s2-co"),      at.s2 + 0.34, .48);
+rise(document.querySelector("#s2 .hiring"), at.s2 + 0.52, .44);
+
+rise($("s3-role"),    at.s3 + 0.12, .48);
+document.querySelectorAll("#s3-pills .pill").forEach(p => {
+  pop(p, at.s3 + 0.36 + p.dataset.i * 0.10, .42);
+});
+
+rise(document.querySelector("#s5 .cta-big"), at.s5 + 0.12, .50);
+rise($("s5-sub"),     at.s5 + 0.34);
+
+/* ---- seeking ------------------------------------------------------- */
+/* Derived text CSS cannot express. Pure in t, so a re-seek to the same t
+   always produces the same pixels — which is what lets a failed render be
+   resumed frame for frame. */
+function tick(t) {
+  const c = $("cnt");
+  if (c && D.stipendAmount) {
+    const p = Math.max(0, Math.min(1, (t - 0.12) / 0.30));
+    const eased = 1 - Math.pow(1 - p, 3);
+    c.textContent = (D.currency || "₹") +
+      Math.round(D.stipendAmount * eased).toLocaleString("en-IN");
+  }
+}
+
+window.seek = function (t) {
+  tick(t);
+  for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; }
+};
+
+/* Idle at the first frame so opening the card by hand shows the hook
+   rather than an empty stage. */
+window.layout();
+window.seek(0);
+</script>
