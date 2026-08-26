@@ -34,6 +34,12 @@ import { buildPostsPage, writePostsPage } from '../src/postpage.js';
 import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
+import { reelCaption } from '../src/reelcaption.js';
+import { jobSlug } from '../src/pages.js';
+import { utmUrl } from '../src/postgen.js';
+import { spawn } from 'node:child_process';
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
@@ -180,6 +186,110 @@ function safeMeta(raw) {
   try { return raw ? JSON.parse(raw) : null; } catch { return null; }
 }
 
+
+/* ------------------------------------------------- instagram reels */
+
+/**
+ * One reel at a time, and the state the page polls.
+ *
+ * Rendering is ~30s of frames and a TTS call; publishing adds a Cloudflare
+ * tunnel and however long Instagram takes to fetch the video. That is far too
+ * long to hold a request open, so this follows the same shape as /api/generate:
+ * answer 202 immediately, report progress on a status endpoint.
+ *
+ * Serialised deliberately. Two renders at once would both drive Playwright and
+ * both hold a tunnel, and the whole point of this button is that he presses it
+ * on the ones he likes — not that it becomes a batch.
+ */
+let reelRunning = null;
+
+/**
+ * The job as the SITE has it, not as the database has it.
+ *
+ * Same rule bin/render-reel.js follows and for the same reason: the public
+ * projection has already been through every cleaning rule the site uses, so a
+ * caption cannot state something the job page does not. Re-deriving from raw
+ * columns would let the two drift on the first fix to either.
+ */
+function publicJob(jobId) {
+  const file = join(PATHS.root, 'web', 'public', 'data', 'jobs.json');
+  if (!existsSync(file)) return null;
+  const data = JSON.parse(readFileSync(file, 'utf8'));
+  return (data.jobs ?? []).find((j) => String(j.id) === String(jobId)) ?? null;
+}
+
+function run(cmd, args, label) {
+  return new Promise((resolve, reject) => {
+    const p = spawn(cmd, args, { cwd: PATHS.root, stdio: ['ignore', 'pipe', 'pipe'] });
+    let out = '', err = '';
+    p.stdout.on('data', (c) => { out += c; });
+    p.stderr.on('data', (c) => { err += c; });
+    p.on('error', reject);
+    p.on('close', (code) => code === 0
+      ? resolve(out)
+      : reject(new Error(`${label} exited ${code}: ${(err || out).trim().split('\n').slice(-3).join(' ')}`)));
+  });
+}
+
+async function publishReel(jobId) {
+  const job = publicJob(jobId);
+  if (!job) return { error: `job ${jobId} is not on the published board` };
+  if (!store.reelClaim(jobId)) {
+    const row = store.reelPost(jobId);
+    return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
+  }
+
+  const account = cfg.reels?.account || 'interndoor';
+  reelRunning = { jobId, company: job.company, title: job.title, stage: 'rendering',
+    startedAt: Date.now(), url: null, error: null };
+  log.info(`Reel for ${job.company} — ${job.title}: rendering…`);
+
+  try {
+    await run(process.execPath, ['--no-warnings=ExperimentalWarning',
+      join(PATHS.root, 'bin', 'render-reel.js'), `--job=${jobId}`], 'render-reel');
+
+    const video = join(PATHS.reelsOut, `${jobId}.mp4`);
+    if (!existsSync(video)) throw new Error('the render produced no file');
+
+    const page = utmUrl(`https://interndoor.com/jobs/${jobSlug({ ...job, id: jobId })}`,
+      { campaign: 'reel', content: String(jobId) }, cfg);
+    const caption = reelCaption(job, { url: page });
+    store.reelRendered(jobId, video, caption);
+
+    reelRunning = { ...reelRunning, stage: 'publishing' };
+    log.info(`Reel for ${job.company}: publishing to @${account}…`);
+
+    /* The caption goes on a FILE. It is multi-line and carries emoji and
+       hashtags, and argv quoting for that across uv, sh and Python is a way to
+       silently truncate somebody's post. */
+    const capFile = join(tmpdir(), `interndoor-reel-${jobId}.txt`);
+    writeFileSync(capFile, caption);
+
+    const seconds = Number(await run('ffprobe', ['-v', 'error', '-show_entries',
+      'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', video], 'ffprobe'));
+
+    const out = await run('uv', ['run', '--project',
+      join(process.env.HOME, 'Desktop', 'projects', 'storygasted'), 'python',
+      join(PATHS.root, 'bin', 'ig_publish.py'),
+      '--video', video, '--caption-file', capFile,
+      '--duration', seconds.toFixed(2), '--account', account], 'ig_publish');
+
+    const res = JSON.parse(String(out).trim().split('\n').filter(Boolean).pop());
+    if (!res.ok) throw new Error(res.error);
+
+    store.reelPublished(jobId, { mediaId: res.id, permalink: res.url });
+    reelRunning = { ...reelRunning, stage: 'published', url: res.url, finishedAt: Date.now() };
+    log.ok(`Published reel for ${job.company} — ${res.url}`);
+    notify(`Reel published — ${job.company}`, job.title, res.url);
+    return { ok: true, url: res.url };
+  } catch (err) {
+    store.reelFailed(jobId, err.message);
+    reelRunning = { ...reelRunning, stage: 'failed', error: err.message, finishedAt: Date.now() };
+    log.warn(`Reel for ${job.company} failed — ${err.message}`);
+    return { error: err.message };
+  }
+}
+
 /* ------------------------------------------------------------------- routes */
 
 const server = createServer(async (req, res) => {
@@ -230,6 +340,27 @@ const server = createServer(async (req, res) => {
 
   if (path === '/api/generate/status') {
     return json(res, 200, running ?? { done: 0, total: 0 });
+  }
+
+  if (path === '/api/reel' && req.method === 'POST') {
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+    if (reelRunning && !reelRunning.finishedAt) {
+      return json(res, 409, { error: 'a reel is already being made' });
+    }
+    if (!body.jobId) return json(res, 400, { error: 'jobId is required' });
+    /* Not awaited: the page polls /api/reel/status. */
+    publishReel(String(body.jobId));
+    return json(res, 202, { started: true });
+  }
+
+  if (path === '/api/reel/status') {
+    return json(res, 200, {
+      running: reelRunning,
+      posts: store.reelPosts().map((r) => ({
+        jobId: r.job_id, status: r.status, url: r.permalink, error: r.error,
+      })),
+    });
   }
 
   if (path === '/' || path === '/report' || path === '/report/') {

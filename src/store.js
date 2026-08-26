@@ -151,6 +151,36 @@ CREATE INDEX IF NOT EXISTS idx_post_queue_batch ON post_queue(batch_id);
 -- page per day for a posting we already decided about. The verdict is worth
 -- remembering even when it was no: a role refused as non-engineering on Monday
 -- is still non-engineering on Tuesday.
+/*
+ * One row per job that has been through the Instagram reel flow.
+ *
+ * In jobs.db beside post_queue rather than in a reels.db of its own. The
+ * reels.db note in CLAUDE.md is about the AUTOMATED 10-20/day agent, which gets
+ * its own process and must never be able to fail a scan; this is the manual
+ * queue, driven by a click in the run report, in the same process and with the
+ * same reasoning post_queue already carries — WAL plus the 5s busy timeout
+ * cover a second writer.
+ *
+ * No foreign key to jobs, exactly like post_queue: an orphan row must stop
+ * appearing rather than fail a write in a different process.
+ *
+ * The row exists BEFORE the render starts, so a job cannot be published twice
+ * by double-clicking, and so a crash mid-publish leaves evidence rather than
+ * looking like it never happened.
+ */
+CREATE TABLE IF NOT EXISTS reel_posts (
+  job_id      TEXT PRIMARY KEY,
+  -- rendering -> publishing -> published, or failed at any point.
+  status      TEXT NOT NULL,
+  started_at  INTEGER NOT NULL,
+  finished_at INTEGER,
+  media_id    TEXT,
+  permalink   TEXT,
+  caption     TEXT,
+  video_path  TEXT,
+  error       TEXT
+);
+
 CREATE TABLE IF NOT EXISTS discovered_urls (
   url        TEXT PRIMARY KEY,
   first_seen INTEGER NOT NULL,
@@ -1126,6 +1156,58 @@ export class Store {
       SET status = 'drafted', batch_id = ?, post_text = ?, post_meta = ?, drafted_at = ?
       WHERE job_id = ?
     `).run(batchId, postText, meta ? JSON.stringify(meta) : null, Date.now(), jobId);
+  }
+
+  /* ---- Instagram reels ------------------------------------------------ */
+
+  reelPost(jobId) {
+    return this.db.prepare('SELECT * FROM reel_posts WHERE job_id = ?').get(jobId) ?? null;
+  }
+
+  reelPosts() {
+    return this.db.prepare('SELECT * FROM reel_posts ORDER BY started_at DESC').all();
+  }
+
+  /**
+   * Claim a job for publishing.
+   *
+   * Returns false when the job is already published or in flight, which is what
+   * makes a double-click harmless — the check and the write are one statement,
+   * so two requests cannot both win. A previously FAILED row is allowed through:
+   * a tunnel that did not come up is worth retrying, and refusing would strand
+   * the job forever.
+   */
+  reelClaim(jobId) {
+    const info = this.db.prepare(`
+      INSERT INTO reel_posts (job_id, status, started_at)
+      VALUES (?, 'rendering', ?)
+      ON CONFLICT(job_id) DO UPDATE
+        SET status = 'rendering', started_at = excluded.started_at,
+            finished_at = NULL, error = NULL
+        WHERE reel_posts.status = 'failed'
+    `).run(jobId, Date.now());
+    return info.changes > 0;
+  }
+
+  reelRendered(jobId, videoPath, caption) {
+    this.db.prepare(`
+      UPDATE reel_posts SET status = 'publishing', video_path = ?, caption = ?
+      WHERE job_id = ?
+    `).run(videoPath, caption, jobId);
+  }
+
+  reelPublished(jobId, { mediaId, permalink }) {
+    this.db.prepare(`
+      UPDATE reel_posts SET status = 'published', media_id = ?, permalink = ?, finished_at = ?
+      WHERE job_id = ?
+    `).run(mediaId ?? null, permalink ?? null, Date.now(), jobId);
+  }
+
+  reelFailed(jobId, error) {
+    this.db.prepare(`
+      UPDATE reel_posts SET status = 'failed', error = ?, finished_at = ?
+      WHERE job_id = ?
+    `).run(String(error ?? '').slice(0, 500), Date.now(), jobId);
   }
 
   queueCounts() {

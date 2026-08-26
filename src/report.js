@@ -113,6 +113,13 @@ summary:hover{color:var(--accent)}
   border:1px solid var(--line);background:var(--panel);color:var(--ink)}
 .qbar button.go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .qbar button:disabled{opacity:.45;cursor:default}
+/* The reel button is deliberately NOT the accent colour. It publishes, and it
+   must not look like the apply link sitting beside it. */
+.rbtn{font-family:inherit;font-size:13.5px;border-radius:7px;padding:9px 15px;cursor:pointer;
+  border:1px solid var(--rule);background:transparent;color:var(--ink)}
+.rbtn[data-state="busy"]{opacity:.6;cursor:progress}
+.rbtn[data-state="published"]{border-color:#2f7d4f;color:#2f7d4f;cursor:default}
+.rbtn[data-state="failed"]{border-color:#a33;color:#a33}
 .qbar .why{font-size:12.5px;color:var(--ink-2)}
 .qbar code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
 footer{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-2);font-size:12.5px}
@@ -284,6 +291,7 @@ function jobCard(job) {
     <a class="btn" href="${esc(applyUrl)}" target="_blank" rel="noreferrer">${external ? 'Apply on company site' : 'Apply on LinkedIn'}</a>
     ${external ? `<a class="btn ghost" href="${esc(job.job_url)}" target="_blank" rel="noreferrer">View on LinkedIn</a>` : ''}
     <button class="qbtn" data-id="${esc(job.job_id)}" aria-pressed="false">+ Add to post queue</button>
+    <button class="rbtn" data-id="${esc(job.job_id)}">📹 Reel → Instagram</button>
   </div>
   ${job.description ? `<details><summary>Full description</summary><div class="desc">${esc(job.description)}</div></details>` : ''}
 </article>`;
@@ -347,7 +355,74 @@ ${jobs.length ? `<div class="qbar" id="qbar">
   <span class="why grow" id="qwhy"></span>
 </div>` : ''}
 </div>
-${jobs.length ? `<script>${JS}</script>` : ''}
+${jobs.length ? `<script>${JS}
+/* ---- reel -> instagram -------------------------------------------------
+   One press renders a reel for this posting and publishes it to Instagram.
+   It is a PUBLISH button, so it confirms first: the render is a minute of
+   work and the post is public the moment it lands, and a misclick on a card
+   in a long list is exactly the kind of mistake that is not worth being
+   clever about.
+
+   State comes from the server, not from this page, because a render outlives
+   a reload and a row already published must never offer the button again. */
+const rbtns = [...document.querySelectorAll('.rbtn')];
+
+function paintReels(state){
+  const by = new Map((state.posts || []).map(p => [p.jobId, p]));
+  const busy = state.running && !state.running.finishedAt;
+  for (const b of rbtns){
+    const p = by.get(b.dataset.id);
+    const isMe = busy && state.running.jobId === b.dataset.id;
+    if (isMe){
+      b.dataset.state = 'busy';
+      b.textContent = state.running.stage === 'publishing' ? '⏳ Publishing…' : '⏳ Rendering…';
+      b.disabled = true;
+    } else if (p && p.status === 'published'){
+      b.dataset.state = 'published';
+      b.textContent = '✓ On Instagram';
+      b.disabled = true;
+      if (p.url) b.title = p.url;
+    } else if (p && p.status === 'failed'){
+      b.dataset.state = 'failed';
+      b.textContent = '↻ Retry reel';
+      b.title = p.error || '';
+      b.disabled = false;
+    } else {
+      b.dataset.state = '';
+      b.textContent = '📹 Reel → Instagram';
+      b.disabled = busy;
+    }
+  }
+}
+
+let reelTimer = null;
+async function pollReels(){
+  const state = await api('/api/reel/status');
+  paintReels(state);
+  const busy = state.running && !state.running.finishedAt;
+  clearTimeout(reelTimer);
+  /* Only poll while something is happening. A report left open in a tab all
+     day should not talk to the server every two seconds forever. */
+  if (busy) reelTimer = setTimeout(pollReels, 2000);
+}
+
+for (const b of rbtns){
+  b.addEventListener('click', async () => {
+    if (b.disabled) return;
+    const card = b.closest('article');
+    const who = card ? card.querySelector('h2, h3, .role, .co') : null;
+    if (!confirm('Render a reel for this posting and publish it to Instagram?\n\n'
+      + (who ? who.textContent.trim() + '\n\n' : '')
+      + 'This posts publicly and cannot be undone from here.')) return;
+    b.disabled = true;
+    b.textContent = '⏳ Rendering…';
+    const res = await api('/api/reel', { jobId: b.dataset.id });
+    if (res && res.error){ alert('Could not start: ' + res.error); }
+    pollReels();
+  });
+}
+pollReels();
+</script>` : ''}
 </body></html>`;
 }
 
