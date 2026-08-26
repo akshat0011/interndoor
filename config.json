@@ -235,7 +235,7 @@
     {
       "name": "TUV SUD",
       "aliases": [
-        "TÜV SÜD",
+        "T\u00dcV S\u00dcD",
         "TUV SUD South Asia",
         "TUV SUD India"
       ]
@@ -485,7 +485,7 @@
       ]
     },
     {
-      "name": "AtkinsRéalis",
+      "name": "AtkinsR\u00e9alis",
       "aliases": [
         "AtkinsRealis",
         "Atkins Realis",
@@ -496,7 +496,7 @@
       "name": "General Mills"
     },
     {
-      "name": "Mondelēz International",
+      "name": "Mondel\u0113z International",
       "aliases": [
         "Mondelez International",
         "Mondelez"
@@ -955,7 +955,10 @@
     "telegram": {
       "enabled": true,
       "chatId": "@interndoor",
-      "channels": { "IN": "@interndoor", "US": "@interndoorusa" },
+      "channels": {
+        "IN": "@interndoor",
+        "US": "@interndoorusa"
+      },
       "_channels_ids_note": "Numeric ids, for recovery if a channel is ever renamed: IN @interndoor = -1004300938042, US @interndoorusa = -1004479304597. The usernames are used above because they are readable, but a rename breaks them and the numeric id cannot change - this project renamed its brand twice in one day, so keep these written down. Verified 25 Aug: @Internzobot is an administrator of both with can_post_messages true. GB has no channel and therefore gets no post.",
       "_channels_note": "One channel per region, keyed by ISO code. A region with no entry here gets NO post - posting US listings to people who subscribed for internships in India is how a channel gets muted. chatId above predates regions and is kept as India's fallback, so an empty channels map behaves exactly as before. Only published regions are posted at all: a region that is collected but not published has no pages written for it, so every link would 404.",
       "_note": "Posts one message per run listing the new roles, each linking to its page on the site. One message rather than one per job: a run that finds six roles firing six notifications is how a channel gets muted. Set enabled to true and chatId to your channel (\"@yourchannel\", or the numeric -100... id for a private one), and put TELEGRAM_BOT_TOKEN in .env. The bot must be an administrator of the channel with permission to post, or Telegram returns 403 and the post is skipped. Everything here fails soft - a channel that is misconfigured, rate-limited or down never fails the scrape."
@@ -982,16 +985,25 @@
     "_note": "Where postings are collected from, and where they are shown. Collecting a region and publishing one are separate settings on purpose: collection is cheap and reversible - an ATS board is read once whatever its rows turn out to be - while publishing a region is a public commitment to a board that has to look worth visiting. Keeping them apart is what lets a region fill up quietly for a month before anyone is shown it.",
     "collect": "all",
     "_collect_note": "'all' (default) collects every region src/regions.js knows, plus 'unknown'. A location the gazetteer cannot read is STORED and never published, so a better gazetteer reads it later without re-collecting anything. An array of ISO codes narrows it, e.g. [\"IN\",\"US\"].",
-    "publish": ["IN", "US", "GB"],
+    "publish": [
+      "IN",
+      "US",
+      "GB"
+    ],
     "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
     "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
   },
   "discovery": {
     "_note": "Find postings an employer does not index on its own board, by asking Google Programmable Search. Amazon's India board lists 2,538 roles and four internships, none engineering, while its SDE internship sits at a live URL Amazon's own search will not return - and Google has that page, because it is public, server-rendered and allowed by robots.txt. Runs ONCE A DAY from bin/run.sh: the free tier is 100 queries a day and the scheduler fires 48 times, so a per-scan sweep would spend the quota by lunch for no extra freshness. Needs GOOGLE_CSE_KEY and GOOGLE_CSE_CX in .env; without them it is a silent no-op.",
     "enabled": true,
-    "sites": ["amazon.jobs"],
+    "sites": [
+      "amazon.jobs"
+    ],
     "_sites_note": "One search per site per query, so sites x queries IS the daily budget. Keep it to boards whose own search is known to be poor - anything with a working board is already read by bin/poll-ats.js far more cheaply.",
-    "queries": ["intern India", "internship 2027 India"],
+    "queries": [
+      "intern India",
+      "internship 2027 India"
+    ],
     "_queries_note": "Narrow on purpose. A broad query returns careers landing pages, 'life at' articles and PDFs, and each of those costs a fetch to discover it is not a posting.",
     "dateRestrict": "d7",
     "_dateRestrict_note": "Google's freshness window: d7 = the last week. An internship is worth finding in its first week; without a limit every sweep returns the same aged pages and spends its budget re-checking them.",
@@ -1070,5 +1082,9 @@
     "_model_note": "qwen3:8b with thinking disabled. 14b was measured slower (24s vs 9s per posting) AND less accurate on eligibility, so bigger is not better here.",
     "timeoutSeconds": 120,
     "_timeoutSeconds_note": "Hard ceiling per call. A stuck model must never delay a listing - the run continues and the posting is enriched next time."
+  },
+  "reels": {
+    "account": "interndoorin",
+    "_account_note": "The Instagram USERNAME that must own IG_ACCESS_TOKEN. bin/ig_publish.py asks the live account who it is and refuses to publish unless this matches, because storygasted's .env holds credentials for a DIFFERENT account (storygasted) under the same variable names - and a reel posted to the wrong account cannot be taken back. It is 'interndoorin', not 'interndoor': the Instagram handle and the Telegram channel are not the same string."
   }
 }
