@@ -31,3 +31,9 @@ book/
 *.db
 *.db-journal
 *.db-wal
+out/
+
+# Operating notes for AI sessions. Kept local, never published: it carries
+# vetting judgements about named companies (same reason vetting/ is ignored)
+# and a detailed account of the scraper's request pacing.
+CLAUDE.md

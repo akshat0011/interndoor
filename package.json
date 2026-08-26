@@ -28,7 +28,8 @@
     "add-job": "node --no-warnings=ExperimentalWarning bin/add-job.js",
     "add-url": "node --no-warnings=ExperimentalWarning bin/add-url.js",
     "discover-urls": "node --no-warnings=ExperimentalWarning bin/discover-urls.js",
-    "near-misses": "node --no-warnings=ExperimentalWarning bin/near-misses.js"
+    "near-misses": "node --no-warnings=ExperimentalWarning bin/near-misses.js",
+    "reel": "node --no-warnings=ExperimentalWarning bin/render-reel.js"
   },
   "dependencies": {
     "playwright-core": "^1.56.0"

@@ -5,7 +5,7 @@
 set -uo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LOG_DIR="$HOME/Library/Logs/linkedin-watcher"
+LOG_DIR="$HOME/Library/Logs/interndoor"
 LOG="$LOG_DIR/run.log"
 
 mkdir -p "$LOG_DIR"

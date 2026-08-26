@@ -4,7 +4,7 @@ import { mkdirSync } from 'node:fs';
 import { homedir } from 'node:os';
 
 export const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
-export const APP_ID = 'linkedin-watcher';
+export const APP_ID = 'interndoor';
 
 /**
  * Runtime state deliberately lives OUTSIDE the project directory.
@@ -29,6 +29,17 @@ export const PATHS = {
   screenshots: join(STATE, 'screenshots'),
   latestReport: join(STATE, 'reports', 'latest.html'),
 
+  /**
+   * Instagram reels. Deliberately beside posts/ and reports/ rather than
+   * inside the project: the MP4s are generated artefacts and app/ is a PUBLIC
+   * git repo. And per the note above, ~/Desktop is TCC-protected — a reel
+   * render spawned by launchd could not write there at all.
+   */
+  reels: join(STATE, 'reels'),
+  reelsBgm: join(STATE, 'reels', 'bgm'),
+  reelsOut: join(STATE, 'reels', 'out'),
+  reelsWork: join(STATE, 'reels', 'work'),
+
   /** Generated LinkedIn posts, one page per batch, plus a stable latest.html. */
   posts: join(STATE, 'posts'),
   latestPosts: join(STATE, 'posts', 'latest.html'),
@@ -41,7 +52,8 @@ export const PATHS = {
 };
 
 /** Directories that must exist before use. launchd never creates them for us. */
-const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs'];
+const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs',
+  'reels', 'reelsBgm', 'reelsOut', 'reelsWork'];
 
 export function ensureDirs() {
   for (const key of MANAGED) {

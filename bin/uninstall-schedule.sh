@@ -2,7 +2,7 @@
 # Removes the 12:00 / 18:00 LaunchAgent. Leaves data/ and config.json alone.
 set -uo pipefail
 
-LABEL="com.akshat0011.linkedin-watcher"
+LABEL="com.akshat0011.interndoor"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 SCRIPT_DIR="$HOME/Library/Application Scripts/$LABEL"
 UID_NUM="$(id -u)"
@@ -14,4 +14,4 @@ launchctl bootout "gui/$UID_NUM/$LABEL" 2>/dev/null && echo "Unloaded $LABEL." |
 
 echo
 echo "Schedule removed. Your collected jobs, reports and LinkedIn session are"
-echo "untouched in ~/Library/Application Support/linkedin-watcher/."
+echo "untouched in ~/Library/Application Support/interndoor/."

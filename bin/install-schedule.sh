@@ -10,7 +10,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-APP_ID="linkedin-watcher"
+APP_ID="interndoor"
 LABEL="com.akshat0011.$APP_ID"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 SCRIPT_DIR="$HOME/Library/Application Scripts/$LABEL"
