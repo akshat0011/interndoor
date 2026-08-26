@@ -265,6 +265,18 @@ const DURATION = Number(D.duration) > 0 ? Number(D.duration) : 11.0;
 window.REEL_DURATION = DURATION;
 const SCENES = SPLIT.map((f, i) => ({ el: ["s1", "s2", "s3", "s5"][i], at: f * DURATION }));
 
+/* Captions start at SCENE 2, not at zero.
+   Through the hook the scene IS the sentence — it reads "PHILIPS / is hiring
+   interns in Pune Division" while the voice says the same words — so a caption
+   under it puts the same text on the frame twice and adds nothing even for a
+   sound-off viewer, which is the only thing captions are for. Everything after
+   the hook is a logo, a role and a CTA, where the voice says things the frame
+   does not.
+
+   Derived from SCENES rather than hard-coded, because the hook's share of the
+   runtime is a retention decision that has already moved once. */
+const CAPS_FROM = SCENES[1].at;
+
 /* 0.12s is ~4 frames at 30fps: enough that a cut is not a pop, too short
    for two dense text scenes to read as a double exposure. */
 const FADE = 0.12;
@@ -407,14 +419,20 @@ function tick(t) {
      seeking jumps backwards as often as forwards. */
   const caps = $("capline");
   if (caps) {
-    const cues = D.captions || [];
+    const cues = t < CAPS_FROM ? [] : (D.captions || []);
     let html = "";
     for (const cue of cues) {
       if (t < cue.start || t >= cue.end) continue;
-      html = cue.words.map((w) => {
-        const on = t >= w.start && t < w.end;
-        return on ? "<b>" + escText(w.word) + "</b>" : escText(w.word);
-      }).join(" ");
+      /* The LAST word whose span has begun, not the one strictly inside its
+         own span. A word's span ends before the next begins, and a cue is held
+         to the start of the next cue, so a strict test left the line entirely
+         unlit for 34% of the captioned run — the lime blinking off and back on
+         mid-sentence. Holding it on the most recent word is both steadier and
+         truer: that IS the word just spoken. */
+      let lit = -1;
+      for (let i = 0; i < cue.words.length; i++) if (t >= cue.words[i].start) lit = i;
+      html = cue.words.map((w, i) =>
+        i === lit ? "<b>" + escText(w.word) + "</b>" : escText(w.word)).join(" ");
       break;
     }
     if (caps.innerHTML !== html) caps.innerHTML = html;

@@ -29,6 +29,22 @@ export const CAPTION = {
   maxDur: 2.4,
   maxGap: 0.45,
   minDur: 0.5,
+  /**
+   * How long a silence may be before the band is allowed to go EMPTY.
+   *
+   * Deliberately larger than `maxGap`, because the two answer different
+   * questions. `maxGap` asks "are these one cue?" — a 0.45s pause is a sentence
+   * boundary and the next sentence deserves its own cue. `closeGap` asks
+   * "should the band blink?", and half a second of empty band at 30fps is
+   * sixteen blank frames, which reads as a dropped caption rather than as a
+   * pause. Measured on a real voiceover: the gaps between its sentences were
+   * 0.39s, 0.52s and 0.39s, so a single 0.45 threshold blanked the band once,
+   * in the middle, for no reason a viewer could interpret.
+   *
+   * It is still bounded: past 0.9s the speaker really has stopped, and holding
+   * a finished line through that reads as a freeze.
+   */
+  closeGap: 0.9,
 };
 
 const display = (w) => String(w ?? '').trim();
@@ -93,12 +109,9 @@ export function groupCues(words, opts = {}) {
 /**
  * A cue's own start and end.
  *
- * The end is stretched to the next cue's start when the gap is small, so the
- * band does not blink empty between two halves of one sentence. Across a real
- * pause it closes shortly after the last word instead, because holding a
- * finished line through three seconds of silence reads as a freeze.
- *
- * `minDur` keeps a genuinely short cue on screen long enough to read.
+ * `minDur` keeps a genuinely short cue on screen long enough to read. The
+ * closing against the NEXT cue happens later, in closeCues, once they are all
+ * known.
  */
 function shape(group, cfg) {
   return {
@@ -109,14 +122,20 @@ function shape(group, cfg) {
   };
 }
 
-/** Close each cue against the next, once they are all known. */
+/**
+ * Close each cue against the next, once they are all known.
+ *
+ * Held to the next cue's start across an ordinary pause, so the band does not
+ * blink empty between two sentences. Across a genuinely long silence it closes
+ * shortly after its last word instead — see `closeGap`.
+ */
 export function closeCues(cues, opts = {}) {
   const cfg = { ...CAPTION, ...opts };
   return cues.map((cue, i) => {
     const next = cues[i + 1];
     if (!next) return { ...cue, end: cue.end + 0.2 };
     const gap = next.start - cue.end;
-    return { ...cue, end: gap <= cfg.maxGap ? next.start : cue.end + 0.12 };
+    return { ...cue, end: gap <= cfg.closeGap ? next.start : cue.end + 0.12 };
   });
 }
 

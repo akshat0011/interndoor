@@ -82,9 +82,27 @@ const apart = closeCues([
   { text: 'first', start: 0, end: 1.0, words: [] },
   { text: 'much later', start: 6.0, end: 7.0, words: [] },
 ]);
-// Across a real pause, holding a finished line reads as a freeze.
-check('a real pause is not closed', apart[0].end, 1.12);
+// Past closeGap the speaker really has stopped; holding a finished line
+// through that reads as a freeze.
+check('a long silence is not closed', apart[0].end, 1.12);
 check('the last cue lingers a little', apart[1].end, 7.2);
+
+// closeGap is LARGER than maxGap on purpose — they answer different questions.
+// A 0.52s pause is a sentence boundary (so a new cue) but not a reason for the
+// band to blink: sixteen blank frames at 30fps reads as a dropped caption.
+// This exact gap appeared in the middle of a real voiceover.
+check('closeGap is more generous than maxGap', CAPTION.closeGap > CAPTION.maxGap, true);
+const sentenceBreak = closeCues([
+  { text: 'intern embedded system.', start: 3.84, end: 5.50, words: [] },
+  { text: 'only thirteen people have applied', start: 6.02, end: 7.68, words: [] },
+]);
+check('a sentence break does not blank the band', sentenceBreak[0].end, 6.02);
+// But it is still two cues: the break is real, the blank is not wanted.
+const stillTwo = groupCues([
+  { word: 'system.', start: 5.2, end: 5.5 },
+  { word: 'only', start: 6.02, end: 6.3 },
+], { maxChars: 99 });
+check('and it is still two cues', stillTwo.length, 2);
 
 console.log('\n== a short cue stays up long enough to read ==');
 const brief = captionsFor(run('go', 0, 0.12));
