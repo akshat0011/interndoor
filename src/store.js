@@ -2,6 +2,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { PATHS, ensureDirs } from './paths.js';
 import { resolveRegion, UNKNOWN } from './regions.js';
 import { log } from './logger.js';
+import { parseCardIdentity } from './linkedin.js';
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS jobs (
@@ -83,7 +84,16 @@ CREATE TABLE IF NOT EXISTS card_keys (
   card_key     TEXT PRIMARY KEY,
   job_id       TEXT NOT NULL,
   posted_at    INTEGER,
-  last_seen_at INTEGER NOT NULL
+  last_seen_at INTEGER NOT NULL,
+  -- How many DIFFERENT postings have ever been bound to this card identity.
+  --
+  -- A card carries no job id until it is clicked, so it is identified by
+  -- company|title|location — and that is not unique for an employer using a
+  -- generic title. American Express files 41 distinct jobs under
+  -- "Apprentice | Gurugram, Haryana, India". Once this passes 1 the identity
+  -- has PROVEN it cannot tell two postings apart, and the already-known
+  -- shortcut must stop trusting it. See the gate in src/index.js.
+  job_count    INTEGER NOT NULL DEFAULT 1
 );
 
 CREATE TABLE IF NOT EXISTS settings (
@@ -207,7 +217,48 @@ export class Store {
       }
     }
 
+    const cardCols = this.db.prepare('PRAGMA table_info(card_keys)').all().map((c) => c.name);
+    if (!cardCols.includes('job_count')) {
+      this.db.exec('ALTER TABLE card_keys ADD COLUMN job_count INTEGER NOT NULL DEFAULT 1');
+      this.#seedCardKeyCounts();
+    }
+
     if (!jobCols.includes('region')) this.#backfillRegions();
+  }
+
+  /**
+   * Give existing card identities their ambiguity count, once.
+   *
+   * Without this the table would have to re-learn from scratch, and it only
+   * learns when the 6-hour repost rule happens to let a second posting through
+   * — which is precisely the rule that is failing. The worst identities would
+   * keep losing postings for another day before correcting themselves.
+   *
+   * Matched with LIKE rather than equality because the two tables hold
+   * different location text: `card_keys` stores what the CARD said
+   * ("Gurugram") and `jobs` stores what the detail pane said ("Gurugram,
+   * Haryana, India"). Company and title agree, so the prefix match on location
+   * is the only join available.
+   */
+  #seedCardKeyCounts() {
+    const rows = this.db.prepare('SELECT card_key FROM card_keys').all();
+    const count = this.db.prepare(`
+      SELECT COUNT(DISTINCT job_id) n FROM jobs
+      WHERE job_id NOT GLOB 'ats:*'
+        AND lower(company) = ?
+        AND lower(title) = ?
+        AND lower(COALESCE(location, '')) LIKE ? || '%'
+    `);
+    const update = this.db.prepare('UPDATE card_keys SET job_count = ? WHERE card_key = ?');
+    let seeded = 0;
+    for (const { card_key: key } of rows) {
+      const id = parseCardIdentity(key);
+      if (!id) continue;
+      const { company, title, location } = id;
+      const n = count.get(company, title, location)?.n ?? 0;
+      if (n > 1) { update.run(n, key); seeded++; }
+    }
+    if (seeded) log.info(`Marked ${seeded} card identit${seeded === 1 ? 'y' : 'ies'} as ambiguous — they map to more than one posting.`);
   }
 
   /**
@@ -802,19 +853,38 @@ export class Store {
   mapCard(cardKey, jobId, postedAt = null) {
     if (!cardKey || !jobId) return;
     this.db.prepare(`
-      INSERT INTO card_keys (card_key, job_id, posted_at, last_seen_at)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO card_keys (card_key, job_id, posted_at, last_seen_at, job_count)
+      VALUES (?, ?, ?, ?, 1)
       ON CONFLICT(card_key) DO UPDATE SET
         job_id       = excluded.job_id,
         posted_at    = COALESCE(excluded.posted_at, card_keys.posted_at),
-        last_seen_at = excluded.last_seen_at
+        last_seen_at = excluded.last_seen_at,
+        -- Binding a DIFFERENT posting to an identity is the moment that
+        -- identity proves it cannot tell two postings apart. Counted, not
+        -- flagged, because the count is also the evidence when someone asks
+        -- why a card is being reopened every sweep.
+        job_count    = card_keys.job_count + (CASE WHEN excluded.job_id <> card_keys.job_id THEN 1 ELSE 0 END)
     `).run(cardKey, jobId, postedAt ?? null, Date.now());
   }
 
-  /** What an earlier run learned this card to be, or null. */
+  /**
+   * What an earlier run learned this card to be, or null.
+   *
+   * `posted_at` comes from the JOB, not from the cached copy on `card_keys`.
+   * The cached one is rewritten to the newest sighting every time a card is
+   * opened, so it slides forward — and the repost rule that compares against it
+   * then never fires. That is how a genuinely new American Express
+   * "Apprentice" posted at 22:47 was refused because a different one had been
+   * seen at 18:02 the same day: 4h45m, under the 6-hour threshold. The job's
+   * own posted time does not move, so it is the honest reference.
+   */
   jobIdForCard(cardKey) {
     if (!cardKey) return null;
-    return this.db.prepare('SELECT job_id, posted_at FROM card_keys WHERE card_key = ?').get(cardKey) ?? null;
+    return this.db.prepare(`
+      SELECT k.job_id, k.job_count, COALESCE(j.posted_at, k.posted_at) AS posted_at
+      FROM card_keys k LEFT JOIN jobs j ON j.job_id = k.job_id
+      WHERE k.card_key = ?
+    `).get(cardKey) ?? null;
   }
 
   /**

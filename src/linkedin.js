@@ -448,6 +448,22 @@ export function cardIdentity({ company, title, location }) {
 }
 
 /**
+ * The inverse of cardIdentity, for reading a stored key back apart.
+ *
+ * Fields are taken from the END, not by splitting into three: an employer name
+ * can itself contain a pipe ("Foo | Bar Labs" is a real shape on LinkedIn), and
+ * splitting left-to-right would file the title as the company and lose the row.
+ * Location and title are always the last two.
+ */
+export function parseCardIdentity(cardKey) {
+  const parts = String(cardKey ?? '').replace(/^card:/, '').split('|');
+  if (parts.length < 3) return null;
+  const location = parts.pop();
+  const title = parts.pop();
+  return { company: parts.join('|'), title, location };
+}
+
+/**
  * The pre-16-Aug-2026 two-part identity, for reading rows written before
  * location was part of the key.
  *

@@ -8,7 +8,7 @@
  * from LinkedIn to the site, so it is checked against the real shapes rather
  * than against invented ones.
  */
-import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity } from '../src/linkedin.js';
+import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity } from '../src/linkedin.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -160,6 +160,25 @@ check('a missing location still keys', cardIdentity({ company: 'IQVIA', title: '
 check('legacy identity is the old two-part key', legacyCardIdentity(a), 'card:iqvia|intern');
 check('legacy identity ignores location',
   legacyCardIdentity({ ...a, location: 'Pune' }), legacyCardIdentity(a));
+
+console.log('\n== reading a stored identity back apart ==');
+// Used to seed card_keys.job_count, which is what stops an identity that maps
+// to 41 different American Express "Apprentice" postings being trusted to say
+// "already known".
+const rt = (o) => parseCardIdentity(cardIdentity(o));
+check('round-trips a plain identity',
+  rt({ company: 'Zoho', title: 'Software Intern', location: 'Chennai' }),
+  { company: 'zoho', title: 'software intern', location: 'chennai' });
+// Fields are taken from the END, because an employer name can contain a pipe
+// and splitting left-to-right would file the title as the company.
+check('a pipe in the company name survives',
+  rt({ company: 'Foo | Bar Labs', title: 'Intern', location: 'Pune, India' }),
+  { company: 'foo | bar labs', title: 'intern', location: 'pune, india' });
+check('a blank location still parses',
+  rt({ company: 'Acme', title: 'Intern', location: '' }),
+  { company: 'acme', title: 'intern', location: '' });
+check('a malformed key returns null', parseCardIdentity('card:justacompany'), null);
+check('an empty key returns null', parseCardIdentity(''), null);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exitCode = fail ? 1 : 0;

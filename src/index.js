@@ -667,13 +667,38 @@ async function main() {
             // stale copy stays on the board while the live one is never opened.
             const isRepost = cardPostedAt && known.posted_at
               && cardPostedAt - known.posted_at > REPOST_GAP_MS;
-            if (!isRepost) {
+
+            // An identity that has already been bound to more than one posting
+            // has proven it cannot identify anything, so it must not be trusted
+            // to say "already known".
+            //
+            // A card carries no job id until it is clicked, so it is keyed on
+            // company|title|location — and American Express files 41 DIFFERENT
+            // jobs under "Apprentice | Gurugram, Haryana, India". The first one
+            // seen claims the identity, and every later one is refused unless
+            // the repost rule happens to fire. That rule is a 6-hour window
+            // measured from the last sighting, so a burst of postings through
+            // one afternoon is silently lost: a real Apprentice posted at 22:47
+            // was dropped because a different one had been seen at 18:02.
+            //
+            // Opening these costs a page load each. That is the correct price:
+            // when the card cannot tell us what it is, the only way to find out
+            // is to look. It is narrowly scoped — an identity earns this only by
+            // demonstrably mapping to two different postings, so the ordinary
+            // one-role-per-identity case keeps the cheap skip, and a role
+            // advertised in twenty-two cities keeps it too because each city is
+            // its own identity with its own single posting.
+            const ambiguous = (known.job_count ?? 1) > 1;
+
+            if (!isRepost && !ambiguous) {
               counters.skippedKnown++;
               store.touchJob(known.job_id);
               if (store.backfillLogo(known.job_id, card.logoUrl)) counters.logosBackfilled++;
               continue;
             }
-            log.debug(`"${card.title}" at ${card.company} looks relisted (${card.postedText}) — opening it rather than trusting the old id.`);
+            log.debug(ambiguous
+              ? `"${card.title}" at ${card.company} sits on an identity that has mapped to ${known.job_count} different postings — opening it rather than guessing.`
+              : `"${card.title}" at ${card.company} looks relisted (${card.postedText}) — opening it rather than trusting the old id.`);
           }
 
           // A blocked employer is unreachable by any route. This is checked on
