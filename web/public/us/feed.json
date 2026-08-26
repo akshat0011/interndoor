@@ -6,6 +6,174 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-engineering-co-op-spring-2027-4459397485",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-engineering-co-op-spring-2027-4459397485",
+      "title": "Software Engineering Co-Op, Spring 2027 — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Cincinnati, OH · Duration: 3-4 months\n• Design and develop software for medical devices integrating mechanical and electrical systems\n• Use C, C++, Python, and test tools like Google Test for product validation\n• Work on IEC 62304 compliant software with rotations and mentorship support",
+      "date_published": "2026-08-26T21:40:32.508Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-electrical-engineering-co-op-spring-2027-4459603408",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-electrical-engineering-co-op-spring-2027-4459603408",
+      "title": "Electrical Engineering Co-Op, Spring 2027 — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Cincinnati, OH · Duration: 3-4 months\n• Design and test electrical systems for surgical robots and medical devices\n• Use MATLAB, Python, and embedded systems for prototyping and analysis\n• Work on product development with rotations across R&D teams",
+      "date_published": "2026-08-26T21:40:01.126Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-data-science-co-op-spring-2027-4459609441",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-data-science-co-op-spring-2027-4459609441",
+      "title": "Data Science Co-Op, Spring 2027 — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Cincinnati, OH · Duration: 3-4 months\n• Analyze surgical data to inform product development\n• Use python and sql for data analysis and visualization\n• Work with hardware engineers on robotics and instruments",
+      "date_published": "2026-08-26T21:39:55.654Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-software-developer-data-scientist-intern-summer-2027-4457701282",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-software-developer-data-scientist-intern-summer-2027-4457701282",
+      "title": "Software Developer/Data Scientist Intern - Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Denver, CO · Duration: Summer 2027\n• Develop and maintain web-based applications and back-end services\n• Work with Java, Python, Docker, and CI/CD tools\n• Collaborate on national security projects with cross-functional teams",
+      "date_published": "2026-08-26T21:32:02.450Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/premier-inc-advisory-services-intern-4459398335",
+      "url": "https://interndoor.com/us/jobs/premier-inc-advisory-services-intern-4459398335",
+      "title": "Advisory Services Intern — Premier Inc.",
+      "content_text": "Company: Premier Inc. · Location: United States\n• Analyze data and present insights to healthcare clients\n• Use tools like R, Python, and Tableau for analysis\n• Work on performance improvement projects with real clients",
+      "date_published": "2026-08-26T21:30:06.790Z",
+      "authors": [
+        {
+          "name": "Premier Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-network-impact-assessment-nia-intern-4457702310",
+      "url": "https://interndoor.com/us/jobs/leidos-network-impact-assessment-nia-intern-4457702310",
+      "title": "Network Impact Assessment (NIA) Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Analyze network impacts on military missions using tools like ServiceNow\n• Work with analysts on global defense network operations\n• Based at Scott AFB, IL, no remote options",
+      "date_published": "2026-08-26T21:16:40.825Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457711217",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457711217",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Odenton, MD\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Review threat intelligence feeds to identify Indicators of Compromise",
+      "date_published": "2026-08-26T21:16:39.143Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457701279",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457701279",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Alexandria, VA\n• Analyze network logs and alerts to detect security threats\n• Work with SOC analysts using enterprise tools in a real SOC\n• Support incident investigations and report findings to customers",
+      "date_published": "2026-08-26T21:16:38.598Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-systems-engineering-intern-4457296406",
+      "url": "https://interndoor.com/us/jobs/leidos-systems-engineering-intern-4457296406",
+      "title": "Systems Engineering Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Odenton, MD\n• Support senior engineers in designing and maintaining IT infrastructure including servers, networks, and storage\n• Work with VMware and ESXi systems, apply DoW security standards, and automate deployments using Python/Bash\n• Onsite at Ft Meade, MD for 100% in-person work, requires DoD Secret clearance and active IAT Level II certification",
+      "date_published": "2026-08-26T21:16:25.567Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457299312",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457299312",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Hill Air Force Base, Utah, United States\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Review threat intel and IOCs to improve detection of cyber threats",
+      "date_published": "2026-08-26T21:16:23.257Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-software-engineering-and-ai-intern-4457700289",
+      "url": "https://interndoor.com/us/jobs/leidos-software-engineering-and-ai-intern-4457700289",
+      "title": "Software Engineering & AI Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Design, develop, and deploy software in Python, Java, and SQL\n• Build real-time data pipelines with Kafka and Elastic\n• Work on AI/ML projects for self-healing networks\n• Attend daily scrums with remote and on-site team",
+      "date_published": "2026-08-26T21:16:03.370Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457704261",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457704261",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Whitehall, OH\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to detect malicious activity\n• Assist in network traffic analysis and incident response with SOC analysts\n• Gain hands-on experience with threat intelligence and IOCs in real-world defense",
+      "date_published": "2026-08-26T21:16:01.399Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-transport-network-engineer-intern-4457293621",
+      "url": "https://interndoor.com/us/jobs/leidos-transport-network-engineer-intern-4457293621",
+      "title": "Transport Network Engineer Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Support network upgrades and troubleshoot optical platforms like SONET and DWDM\n• Maintain ServiceNow ITSM documentation and assist with ASI maintenance scheduling\n• Based in Scott AFB, IL, on-site only, no remote work",
+      "date_published": "2026-08-26T21:15:58.317Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457294592",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457294592",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Learn to identify IOCs and improve threat detection using open-source feeds",
+      "date_published": "2026-08-26T21:15:51.787Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/globalfoundries-sige-hbt-device-modelling-intern-summer-2027-4458317095",
       "url": "https://interndoor.com/us/jobs/globalfoundries-sige-hbt-device-modelling-intern-summer-2027-4458317095",
       "title": "SiGe HBT Device Modelling Intern (Summer 2027) — GlobalFoundries",
@@ -434,174 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457236008",
-      "url": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457236008",
-      "title": "Product Manager Intern - RTP 2027 — IBM",
-      "content_text": "Company: IBM · Location: Research Park, California, United States\n• Support development of lifecycle service offerings across hardware, software, and hybrid environments\n• Collaborate with engineering, solutioning, and delivery teams to define service scope and pricing\n• Track metrics to assess adoption, profitability, and client satisfaction\n• Oversee execution of contractual deliverables for assigned clients",
-      "date_published": "2026-08-26T05:36:36.322Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457223016",
-      "url": "https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457223016",
-      "title": "Product Manager Intern - RTP 2027 — IBM",
-      "content_text": "Company: IBM · Location: Durham, NC\n• Support development of lifecycle service offerings across hardware, software, and hybrid environments\n• Collaborate with engineering, solutioning, and delivery teams to define service scope and value propositions\n• Track metrics to assess adoption, profitability, and client satisfaction\n• Oversee execution of contractual deliverables for assigned clients",
-      "date_published": "2026-08-26T05:36:32.222Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065",
-      "url": "https://interndoor.com/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065",
-      "title": "User Experience Design, Research and Content Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Conduct user research for software products or web interfaces\n• Create technical documentation using xml and github\n• Work on ibm z product stack with design and content teams",
-      "date_published": "2026-08-26T05:36:26.853Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015",
-      "title": "Hardware and Systems Developer Intern 2027 -Austin, TX — IBM",
-      "content_text": "Company: IBM · Location: Austin, TX\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, optical, and firmware projects\n• Develop scripts in Python, C/C++, or Bash for testing and validation",
-      "date_published": "2026-08-26T05:36:21.050Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006",
-      "title": "Hardware and Systems Developer Intern 2027 -New York — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems with SolidWorks, Cadence, and MATLAB\n• Develop automation scripts in Python, C/C++, or Bash for testing and validation",
-      "date_published": "2026-08-26T05:36:12.387Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457232014",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457232014",
-      "title": "Hardware and Systems Developer Intern 2027 -New York — IBM",
-      "content_text": "Company: IBM · Location: Hopewell Junction, NY\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems with SolidWorks, Cadence, and MATLAB\n• Develop automation scripts in Python, C/C++, or Bash for testing and validation",
-      "date_published": "2026-08-26T05:36:07.752Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009",
-      "url": "https://interndoor.com/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009",
-      "title": "Software Strategy and M&A Summer Intern — IBM",
-      "content_text": "Company: IBM · Location: Cambridge, MA\n• Support strategy development for software growth and m&a initiatives\n• Work with cross-functional teams including product, sales, and finance\n• Engage in market research and interact with potential m&a candidates",
-      "date_published": "2026-08-26T05:35:59.032Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025",
-      "url": "https://interndoor.com/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025",
-      "title": "2027 Software Engineering Intern – Agentic AI & Workflow Automation — IBM",
-      "content_text": "Company: IBM · Location: Armonk, NY\n• Build python services and ai workflows with kubernetes and vector databases\n• Work on agentic ai patterns and backend systems with senior engineers\n• Participate in agile teams and contribute to enterprise-scale projects",
-      "date_published": "2026-08-26T05:35:55.122Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013",
-      "title": "Hardware and Systems Developer Intern 2027 -Rochester, MN — IBM",
-      "content_text": "Company: IBM · Location: Rochester, MN\n• Design and test next-gen hardware using CAD, EDA, and simulation tools\n• Work on mechanical, thermal, electrical, and optical systems\n• Develop firmware and automation scripts in Python, C/C++, or Bash",
-      "date_published": "2026-08-26T05:35:49.959Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001",
-      "title": "Hardware Developer Intern 2027 -Poughkeepsie — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Develop and execute hardware and system-level test solutions\n• Build automation tools for validation and manufacturing\n• Collaborate with cross-functional teams on product reliability",
-      "date_published": "2026-08-26T05:35:45.753Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008",
-      "url": "https://interndoor.com/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008",
-      "title": "Firmware and Systems Developer Intern 2027 -Poughkeepsie, NY — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Write scripts and automation tools for testing and validation\n• Work with cadence tools and simulation software for design\n• Collaborate on firmware and hardware development projects",
-      "date_published": "2026-08-26T05:35:40.949Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-pa-4457065452",
-      "url": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-pa-4457065452",
-      "title": "College to Corporate IT Internship - Risk & Security - Analyst (PA) — Vanguard",
-      "content_text": "Company: Vanguard · Location: Malvern, PA\n• Analyze risks and design strategies to protect investor data\n• Work with Agile teams on security and digital ethics projects\n• Receive mentorship and coaching from senior leaders",
-      "date_published": "2026-08-26T03:51:31.881Z",
-      "authors": [
-        {
-          "name": "Vanguard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-traction-power-intern-hiring-event-with-aecom-philadelphia-4456975562",
-      "url": "https://interndoor.com/us/jobs/aecom-traction-power-intern-hiring-event-with-aecom-philadelphia-4456975562",
-      "title": "Traction Power Intern - Hiring Event with AECOM - Philadelphia — AECOM",
-      "content_text": "Company: AECOM · Location: Philadelphia, PA · Duration: Summer 2027\n• Assist in designing and analyzing traction power systems for railways and transit\n• Use AutoCAD and Microsoft Office for schematics and reports\n• Conduct field inspections and support equipment testing",
-      "date_published": "2026-08-26T02:53:09.351Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/databricks-software-engineering-intern-2027-start-winter-4456969534",
-      "url": "https://interndoor.com/us/jobs/databricks-software-engineering-intern-2027-start-winter-4456969534",
-      "title": "Software Engineering Intern (2027 Start) - Winter — Databricks",
-      "content_text": "Company: Databricks · Location: San Francisco, CA · Duration: Fall 2027\n• Build features for the Databricks platform\n• Work with a team on full stack and backend\n• Paid internship in San Francisco",
-      "date_published": "2026-08-26T01:54:33.884Z",
-      "authors": [
-        {
-          "name": "Databricks"
         }
       ]
     }
