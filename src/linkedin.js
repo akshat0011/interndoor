@@ -165,6 +165,23 @@ export async function warmUp(page, cfg) {
   }
 }
 
+/**
+ * Is a recency marker on the page yet?
+ *
+ * Module scope so the two waiters in gotoSearch cannot drift, and deliberately
+ * self-contained: it is handed to `page.waitForFunction`, which serialises it
+ * and runs it in the browser, so it may reference nothing from this file. The
+ * same expression is inlined as `MARK` inside scanCardsInPage for that reason —
+ * keep the three in step.
+ */
+export function hasRecencyMarker() {
+  return /Be an early applicant|Actively reviewing applicants|\d+\s+(minute|hour|day|week)s?\s+ago/i
+    .test(document.body?.innerText ?? '');
+}
+
+/** How long to wait for a recency marker before falling back to the race. */
+const MARKER_TIMEOUT_MS = 12_000;
+
 /** Navigate to a search URL and wait for the results column to exist. */
 export async function gotoSearch(page, url, cfg, outcome = {}) {
   const response = await gotoResilient(page, url, {}, { label: 'the results page' }).catch((err) => {
@@ -192,25 +209,43 @@ export async function gotoSearch(page, url, cfg, outcome = {}) {
 
   await pause(cfg.pacing.afterNavigation);
 
-  // Wait for any of the plausible list containers, or for a "no results" state.
+  // THE RECENCY MARKER FIRST, ON ITS OWN. Only then the race below.
   //
-  // The third racer is the one that fires on the redesigned page: none of the
-  // named containers exist there any more, and the single /jobs/view/ link it
-  // does render belongs to the detail pane rather than the list, so it can
-  // resolve before a single card has painted. A recency marker cannot — it is
-  // card text, so seeing one means the results are actually on screen.
-  const appeared = await Promise.race([
+  // A recency marker is the one signal that means the results are actually
+  // painted, because it is card text. The other two do not: none of the named
+  // containers exists on the redesigned page at all, and the single
+  // /jobs/view/ link that does render belongs to the DETAIL PANE, which paints
+  // before the list.
+  //
+  // That was already the reasoning for adding the marker waiter — but it was
+  // added as a third racer, and Promise.race settles on whichever fires FIRST.
+  // So the /jobs/view/ link went on winning, and the 0.8-2s sleep below was the
+  // only thing between it and scanCardsInPage. scanCardsInPage finds cards BY
+  // the marker, so a list still showing skeleton placeholders reads as zero
+  // cards — and zero cards on page 1 is what assertListRendered is built to
+  // treat as a markup break, so it aborted the whole run and screenshotted a
+  // perfectly healthy page. Six runs died this way between 13 and 26 Aug 2026;
+  // screenshots/empty-list-2026-08-26T11-23-14-171Z.png shows it exactly, the
+  // detail pane fully painted beside a column of grey placeholder bars, while
+  // the run 35 minutes earlier had read 421 cards on the same selectors.
+  //
+  // The race is KEPT as the fallback, for the pages that genuinely never get a
+  // marker: an empty result set, and the tail page where the only card left is
+  // stamped "Viewed". Those are the cases the containers and the link are still
+  // good evidence for. On a healthy page this costs nothing, because the marker
+  // is what appears first anyway.
+  const marked = await page
+    .waitForFunction(hasRecencyMarker, null, { timeout: MARKER_TIMEOUT_MS })
+    .then(() => true).catch(() => false);
+
+  const appeared = marked || await Promise.race([
     page.waitForSelector(LIST_CONTAINERS.join(', '), { timeout: 25_000 }).then(() => true).catch(() => false),
     page.waitForSelector('a[href*="/jobs/view/"]', { timeout: 25_000 }).then(() => true).catch(() => false),
-    page.waitForFunction(
-      () => /Be an early applicant|Actively reviewing applicants|\d+\s+(minute|hour|day|week)s?\s+ago/i.test(document.body?.innerText ?? ''),
-      null,
-      { timeout: 25_000 },
-    ).then(() => true).catch(() => false),
+    page.waitForFunction(hasRecencyMarker, null, { timeout: 25_000 }).then(() => true).catch(() => false),
   ]);
 
   if (!appeared) {
-    log.warn('No results container appeared within 25s.');
+    log.warn('No results container appeared within 37s.');
     return false;
   }
 
