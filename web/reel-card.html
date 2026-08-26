@@ -53,6 +53,33 @@
            background:linear-gradient(to bottom,rgba(10,10,11,0),rgba(10,10,11,.92) 55%,var(--bg));
            pointer-events:none; }
 
+  /* ---- VO captions ------------------------------------------------
+     The band the safe-area note above reserves, clear of BOTH pieces of
+     Instagram's chrome: its buttons run up the right ~170px and its own
+     caption eats below ~1560.
+
+     The box is NARROW AND CENTRED (200 each side, 680px) rather than wide
+     and pushed left. An asymmetric box clears the buttons too, but it
+     centres the text at x490 on a 1080 frame — 50px off, which reads as a
+     mistake rather than as a choice. Narrowing symmetrically clears them
+     by wrapping sooner instead: a full line is 680px wide, so it ends at
+     x880 against buttons that start at 910. Measured, not assumed.
+
+     Drawn here rather than burned in with ffmpeg's subtitles filter so
+     the type is the card's, not libass's — same faces, same --live, and
+     one place where the design lives. It also keeps the reel a pure
+     function of t: the cue is recomputed in tick(), which is what lets a
+     failed render resume frame for frame. */
+  .caps { position:absolute; left:200px; right:200px; top:1372px; height:170px;
+          z-index:7; display:flex; align-items:center; justify-content:center; }
+  .cap-line { font-family:var(--display); font-weight:800; font-size:46px;
+              line-height:1.18; letter-spacing:-.02em; text-align:center;
+              color:#fff; text-shadow:0 2px 18px rgba(10,10,11,.85); }
+  /* The spoken word. Colour, not scale — a per-word transform would have to
+     animate, and nothing in this card may animate from JS or it cannot be
+     seeked. */
+  .cap-line b { font-weight:800; color:var(--live); }
+
   /* ---- brand lockup, always on ----------------------------------- */
   .brand { position:absolute; top:118px; left:72px; z-index:6;
            display:flex; align-items:center; gap:16px; }
@@ -78,8 +105,8 @@
   /* ---- the stage --------------------------------------------------
      Every scene is a layer in the same box.  Content is vertically
      centred in the SAFE band (y 250-1330): Instagram's own UI eats the
-     bottom ~360px and the right ~170px, and burned-in VO captions will
-     later sit at y~1400.  Nothing that must be read goes below 1330. */
+     bottom ~360px and the right ~170px, and the VO captions sit in the
+     band at y 1372-1542.  Nothing that must be read goes below 1330. */
   .stage { position:absolute; left:72px; right:72px; top:250px; height:1080px; z-index:5; }
   .scene { position:absolute; inset:0; display:flex; flex-direction:column;
            justify-content:center; opacity:0; }
@@ -208,6 +235,8 @@
     </div>
   </div>
 </div>
+
+<div class="caps"><span class="cap-line" id="capline"></span></div>
 
 <script>
 /* Sample data so the file can be opened straight in a browser. The
@@ -361,6 +390,9 @@ rise($("s5-sub"),     at.s5 + 0.34);
 /* Derived text CSS cannot express. Pure in t, so a re-seek to the same t
    always produces the same pixels — which is what lets a failed render be
    resumed frame for frame. */
+const escText = (v) => String(v).replace(/[&<>]/g, (ch) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch]));
+
 function tick(t) {
   const c = $("cnt");
   if (c && D.stipendAmount) {
@@ -368,6 +400,24 @@ function tick(t) {
     const eased = 1 - Math.pow(1 - p, 3);
     c.textContent = (D.currency || "₹") +
       Math.round(D.stipendAmount * eased).toLocaleString("en-IN");
+  }
+
+  /* The cue on screen at t, with the word being spoken picked out. Both are
+     found by scanning, not by remembering where the last call got to, because
+     seeking jumps backwards as often as forwards. */
+  const caps = $("capline");
+  if (caps) {
+    const cues = D.captions || [];
+    let html = "";
+    for (const cue of cues) {
+      if (t < cue.start || t >= cue.end) continue;
+      html = cue.words.map((w) => {
+        const on = t >= w.start && t < w.end;
+        return on ? "<b>" + escText(w.word) + "</b>" : escText(w.word);
+      }).join(" ");
+      break;
+    }
+    if (caps.innerHTML !== html) caps.innerHTML = html;
   }
 }
 

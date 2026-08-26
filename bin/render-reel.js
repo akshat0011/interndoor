@@ -38,6 +38,7 @@ import { homedir } from 'node:os';
 import { scriptText } from '../src/reelscript.js';
 import { PATHS } from '../src/paths.js';
 import { pickBgm, commitBgm } from '../src/reelbgm.js';
+import { captionsFor } from '../src/reelcaptions.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CARD = join(ROOT, 'web', 'reel-card.html');
@@ -248,7 +249,32 @@ function makeVoice(text) {
 
   execFileSync('ffmpeg', ['-y', '-v', 'error', '-i', info.wav,
     '-filter:a', `atempo=${VO_TEMPO}`, out]);
-  return { wav: out, seconds: probeSeconds(out), raw: info.seconds };
+  return { wav: out, seconds: probeSeconds(out), raw: info.seconds, rawWav: info.wav, text };
+}
+
+/**
+ * Word timings for the voiceover, via storygasted's MLX forced aligner.
+ *
+ * Handed the RAW wav and told the tempo, NOT the stretched one: aligning
+ * time-stretched audio measurably degrades the timings, so the aligner works on
+ * the original timeline and bin/align_once.py scales the numbers by 1/tempo.
+ *
+ * Captions are worth having and are not worth failing a render for. An aligner
+ * that is missing, slow or wrong returns nothing and the reel goes out without
+ * them — the same rule the music bed follows.
+ */
+function alignVoice(voice) {
+  try {
+    const res = execFileSync('uv', [
+      'run', '--project', STORYGASTED, 'python', join(ROOT, 'bin', 'align_once.py'),
+      '--wav', voice.rawWav, '--text', voice.text, '--tempo', String(VO_TEMPO)
+    ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 24 });
+    const line = String(res).trim().split('\n').filter(Boolean).pop();
+    return captionsFor(JSON.parse(line).words ?? []);
+  } catch (err) {
+    console.log(`  captions: skipped — ${String(err.message).split('\n')[0]}`);
+    return [];
+  }
 }
 
 /* ---------- music ---------- */
@@ -310,12 +336,20 @@ async function main() {
      Rendering frames to a guessed duration and then fitting speech to them
      is what produced either a clipped last word or a silent CTA. */
   let voice = null;
+  let captions = [];
   const text = scriptText(data);
   if (!args['no-voice']) {
     console.log(`\n  script: ${text}`);
     process.stdout.write('  synthesising…');
     voice = makeVoice(text);
     console.log(`\r  voice: ${voice.seconds.toFixed(1)}s (${voice.raw.toFixed(1)}s raw, ${VO_TEMPO}x)   `);
+    if (!args['no-captions']) {
+      captions = alignVoice(voice);
+      if (captions.length) {
+        const words = captions.reduce((n, c) => n + c.words.length, 0);
+        console.log(`  captions: ${captions.length} cues, ${words} words`);
+      }
+    }
   }
 
   const duration = voice
@@ -338,7 +372,7 @@ async function main() {
   const browser = await chromium.launch({ executablePath: exe, headless: true });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
 
-  await page.addInitScript(d => { window.REEL = d; }, { ...data, duration });
+  await page.addInitScript(d => { window.REEL = d; }, { ...data, duration, captions });
   await page.goto(pathToFileURL(CARD).href, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
   /* Sizes are chosen from measured text, so they are only correct once the
