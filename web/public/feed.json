@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/philips-intern-embedded-system-4457939009",
+      "url": "https://interndoor.com/jobs/philips-intern-embedded-system-4457939009",
+      "title": "Intern - Embedded System — Philips",
+      "content_text": "Company: Philips · Location: Pune Division, Maharashtra, India\n• Design and test embedded systems for medical devices\n• Work with c and c++ in a team of engineers\n• Based in pune with potential for full-time role",
+      "date_published": "2026-08-26T11:52:53.929Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/yash-technologies-trainee-consultant-sap-process-integration-process-orchestration-pi-po-4448514424",
       "url": "https://interndoor.com/jobs/yash-technologies-trainee-consultant-sap-process-integration-process-orchestration-pi-po-4448514424",
       "title": "Trainee Consultant - SAP Process Integration/Process Orchestration (PI/PO) Job — YASH Technologies",
@@ -98,6 +110,18 @@
       "authors": [
         {
           "name": "STEMpedia"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/trellix-engineering-intern-ats-workday-trellix-wd1-enterprisecareers-jr0037801",
+      "url": "https://interndoor.com/jobs/trellix-engineering-intern-ats-workday-trellix-wd1-enterprisecareers-jr0037801",
+      "title": "Engineering Intern — Trellix",
+      "content_text": "Company: Trellix · Location: India, Bangalore\n• Resolve customer issues via phone/email with urgency\n• Debug complex network problems in multi-vendor environments\n• Collaborate with support teams and escalate critical issues\n• Document technical analysis and customer communication",
+      "date_published": "2026-08-26T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Trellix"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Fam"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/greedygame-product-design-intern-4456845947",
-      "url": "https://interndoor.com/jobs/greedygame-product-design-intern-4456845947",
-      "title": "Product Design Intern — GreedyGame",
-      "content_text": "Company: GreedyGame · Location: Bangalore Urban, Karnataka, India · Duration: 3-6 months\n• Design user interfaces for mobile apps and dashboards\n• Work with developers to implement design solutions\n• Contribute to product features with real user impact",
-      "date_published": "2026-08-24T06:11:34.078Z",
-      "authors": [
-        {
-          "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/state-street-apprentice-ats-workday-statestreet-wd1-global-r-796419",
-      "url": "https://interndoor.com/jobs/state-street-apprentice-ats-workday-statestreet-wd1-global-r-796419",
-      "title": "Apprentice — State Street",
-      "content_text": "Company: State Street · Location: Bangalore, India\n• Support application design, development, testing, and deployment\n• Work with AWS, Azure, Jenkins, Git, Splunk, and Grafana\n• Collaborate with teams on cloud, DevOps, and infrastructure projects",
-      "date_published": "2026-08-24T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "State Street"
         }
       ]
     }
