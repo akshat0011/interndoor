@@ -566,6 +566,14 @@ function autoSweep() {
   }
 }
 
+/* Anything still marked 'rendering' belongs to a previous life of this process:
+   the queue is in memory, so nothing is working on it. Released here rather
+   than left stranded — see reelReleaseOrphans for why 'publishing' is not. */
+{
+  const freed = store.reelReleaseOrphans();
+  if (freed) log.info(`Reels: released ${freed} row${freed === 1 ? '' : 's'} left rendering by a previous run.`);
+}
+
 setInterval(() => {
   try { autoSweep(); } catch (e) { log.warn(`Reel auto-sweep: ${e.message}`); }
   drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));

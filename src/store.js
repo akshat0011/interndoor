@@ -1242,6 +1242,35 @@ export class Store {
     return row?.n ?? 0;
   }
 
+  /**
+   * Free rows that were mid-render when this process last died.
+   *
+   * A row is CLAIMED as 'rendering' the moment it is queued, and the queue
+   * itself is in memory — so if the helper stops, every 'rendering' row is
+   * orphaned, and `reelClaim` only ever re-claims a FAILED one. Before this
+   * existed they were stranded permanently, and because the sweep tops the
+   * queue up every 60 seconds there was never a moment with nothing in flight:
+   * the helper could not be restarted safely at all once automatic posting was
+   * on. Marking them failed on boot puts them back in reach of the next sweep.
+   *
+   * ONLY 'rendering', NEVER 'publishing'. A row that died in the publishing
+   * step may already be live on Instagram — the upload can succeed and the
+   * process die before the permalink is written — and retrying that would post
+   * the same reel twice, which cannot be undone. Those are left alone
+   * deliberately; they still count against the daily cap, which is the safe
+   * direction to be wrong in.
+   *
+   * Safe because this process is the only writer: nothing else renders.
+   */
+  reelReleaseOrphans() {
+    const info = this.db.prepare(`
+      UPDATE reel_posts SET status = 'failed',
+             error = 'the helper stopped while this was rendering — released for retry'
+      WHERE status = 'rendering'
+    `).run();
+    return info.changes;
+  }
+
   /** Job ids this table already knows about, so a candidate sweep can skip them. */
   reelKnownJobIds() {
     return new Set(this.db.prepare('SELECT job_id FROM reel_posts').all().map((r) => String(r.job_id)));
