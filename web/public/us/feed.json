@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459656733",
+      "url": "https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459656733",
+      "title": "People Analytics Intern (Undergraduate - Summer 2027) — Centene Corporation",
+      "content_text": "Company: Centene Corporation · Location: Elmore County, ID · Duration: Summer 2027\n• Audit workforce data for accuracy and recommend improvements\n• Build dashboards in power bi or tableau for business insights\n• Analyze employee trends to support hiring and retention strategies",
+      "date_published": "2026-08-27T03:32:21.476Z",
+      "authors": [
+        {
+          "name": "Centene Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459636815",
+      "url": "https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459636815",
+      "title": "People Analytics Intern (Undergraduate - Summer 2027) — Centene Corporation",
+      "content_text": "Company: Centene Corporation · Location: Wa Keeney, KS · Duration: Summer 2027\n• Audit workforce data for accuracy and recommend improvements\n• Build dashboards in power bi or tableau for business insights\n• Analyze employee trends to support hiring and retention strategies",
+      "date_published": "2026-08-27T03:32:09.975Z",
+      "authors": [
+        {
+          "name": "Centene Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-asic-design-engineer-intern-4459654575",
+      "url": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-asic-design-engineer-intern-4459654575",
+      "title": "ASIC Design Engineer Intern — VisLab (an Ambarella Inc. company)",
+      "content_text": "Company: VisLab (an Ambarella Inc. company) · Location: Headquarters, KY · Duration: 0-5 years\n• Design video compression and AI accelerator logic in Verilog/System Verilog\n• Develop test benches and verification flows with UVM and C++\n• Optimize RTL for timing, area, and power\n• Participate in chip bring-up and testing",
+      "date_published": "2026-08-27T02:56:15.655Z",
+      "authors": [
+        {
+          "name": "VisLab (an Ambarella Inc. company)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079",
       "url": "https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079",
       "title": "Customer Engineering Co-op — Nokia",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Parker Hannifin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skydio-hardware-test-and-reliability-intern-4449407847",
-      "url": "https://interndoor.com/us/jobs/skydio-hardware-test-and-reliability-intern-4449407847",
-      "title": "Hardware Test & Reliability Intern — Skydio",
-      "content_text": "Company: Skydio · Location: San Mateo, CA · Duration: Fall 2026\n• Design and implement test systems for autonomous drones\n• Analyze data and document results to improve product reliability\n• Collaborate with cross-functional teams to resolve system issues\n• Work on hardware and software testing for real-world use cases",
-      "date_published": "2026-08-26T13:23:13.318Z",
-      "authors": [
-        {
-          "name": "Skydio"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-electrical-reliability-intern-fall-2026-4430596963",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-electrical-reliability-intern-fall-2026-4430596963",
-      "title": "Electrical Reliability Intern (Fall 2026) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Fall 2026\n• Analyze satellite systems for reliability\n• Write code to automate hardware testing\n• Work with flight hardware and DFMEA\n• 12-week paid internship in sf bay area",
-      "date_published": "2026-08-26T12:57:06.164Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-silicon-engineering-intern-4459189124",
-      "url": "https://interndoor.com/us/jobs/microsoft-silicon-engineering-intern-4459189124",
-      "title": "Silicon Engineering INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Santa Clara, CA\n• Design and test digital circuits for microelectronics systems\n• Use simulation and emulation tools for verification testing\n• Collaborate with engineers on pre-silicon validation projects",
-      "date_published": "2026-08-26T12:43:57.810Z",
-      "authors": [
-        {
-          "name": "Microsoft"
         }
       ]
     }
