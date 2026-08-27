@@ -652,7 +652,16 @@ a.jp-crest:active { transform: scale(.97); }
    ============================================================ */
 
 @media (max-width: 1000px) {
-  .jp-grid { grid-template-columns: 1fr; gap: 0; }
+  /* minmax(0, 1fr), not 1fr — the same guard the two-column rule above already
+     carries, and dropping it here is what let a long headline widen the page.
+     A grid item's default min-width is auto, so a bare 1fr track cannot shrink
+     below its content's min-content; `Network/Embedded/Application` is one
+     unbreakable run to the line breaker (no break is allowed after a solidus),
+     so the track floored at 568px inside a 358px .wrap and the page scrolled.
+     h1 already carries overflow-wrap: break-word, which breaks the run once
+     the track can shrink — but break-word is ignored when min-content is
+     computed, so it could never rescue the track on its own. */
+  .jp-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
   /* The rail becomes the first thing under the headline. Somebody on a phone
      has already decided by the time they have read the title; make the button
      the next thing they meet, not the last. */
@@ -690,7 +699,17 @@ a.jp-crest:active { transform: scale(.97); }
   .do-list li { font-size: 15px; }
   .tiles, .dir { grid-template-columns: 1fr; }
   .stat b { font-size: 26px; }
-  .outro { padding: 34px 22px; margin-left: -22px; margin-right: -22px; }
+  /* Padding only — no negative margins. They were here to cancel a .wrap
+     gutter, but .outro is not inside .wrap, it CONTAINS it (see foot() in
+     src/pages.js), and it is a direct child of body, so it is already
+     edge-to-edge with nothing to cancel. What they actually did was make the
+     section 44px wider than the viewport: the -22px right margin put its box
+     at 412px against a 390px screen, and EVERY generated page — job, hub and
+     directory, in all three regions — scrolled sideways because of it. The
+     homepage was clean only because it does not use foot().
+     (.wrap has no horizontal padding to cancel in any case: its gutter is
+     `width: min(…, 100% - 44px)` plus `margin-inline: auto`, in styles.css.) */
+  .outro { padding: 34px 22px; }
   .outro-acts a { width: 100%; justify-content: center; }
 }
 
