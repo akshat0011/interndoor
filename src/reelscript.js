@@ -183,8 +183,77 @@ function formatD(d, { role, where, site }) {
  * If trimming leaves nothing the title WAS the generic word, and the whole
  * clause is dropped rather than saying "the role is" and trailing off.
  */
+/**
+ * The most words of a role worth SAYING.
+ *
+ * The script as a whole targets ~26 words, and the role is one clause of three
+ * or four. At the tempo the renderer applies, nine words is already about three
+ * and a half seconds of one clause.
+ */
+const MAX_ROLE_WORDS = 9;
+
+/**
+ * Cut a title down to the part that is actually the ROLE.
+ *
+ * IT RUNS ON THE RAW TITLE, BEFORE `speakable`, and that ordering is the whole
+ * trick: `speakable` turns `|` and `,` into spaces, so by the time it has run
+ * the structure that says where the role ends is gone.
+ *
+ * The case that forced this is real and was going out automatically:
+ * STEMpedia files a 172-character title — "AI And Robotics Trainer Internship
+ * in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra,
+ * Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad" — and the
+ * voiceover read every city aloud. The card never showed this because it
+ * already clamps and shrinks to fit; only the VO did.
+ *
+ * Measured over all 688 published titles: 28 change, **none is emptied**, and
+ * the spoken role goes to a median of 4 words and a maximum of 9.
+ */
+function clampRole(raw) {
+  let t = String(raw || '').trim();
+
+  /* THE PARENTHETICAL IS SOMETIMES THE WHOLE JOB. `speakable` deletes bracketed
+     text, which is right for "(Remote)" and "(PI/PO)" — but Honeywell files
+     "Intern (Bachelor's)" and Yubi files "Intern (Data Science)", where
+     deleting it leaves the bare word "Intern", which is then stripped as
+     redundant and the reel says no role at all. Unwrapped only when what is
+     left outside the brackets is nothing but a generic intern word, so every
+     ordinary "(Remote)" is still dropped. */
+  const outside = t.replace(/\([^)]*\)/g, ' ').replace(/[^A-Za-z ]/g, ' ').trim();
+  if (/^(intern|interns|internship|internships|trainee|apprentice)?$/i.test(outside)) {
+    t = t.replace(/[()]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  /* " in A, B, C" with three or more comma-separated items is a list of
+     cities, not part of the job. Three, not one: "Internship in Machine
+     Learning" carries no comma and must survive, and the VO has already said
+     the city in the clause before this one. */
+  t = t.replace(/\s+in\s+[^,]+(?:,\s*[^,]+){2,}\s*$/i, '');
+
+  /* A pipe is a separator nobody puts inside a job name:
+     "AI Training | Internship | Job Opportunity | 2026 Graduates". */
+  t = cutBefore(t, /\s*\|\s*/);
+
+  /* A dash is NOT reliably a separator — "Intern - Embedded System" keeps its
+     meaning on the right-hand side — so it is only cut when the title is still
+     too long to say. Cutting unconditionally threw away the informative half
+     of "Trainee Consultant - SAP Process Integration", which already fitted. */
+  if (speakable(t).split(' ').filter(Boolean).length > MAX_ROLE_WORDS) {
+    t = cutBefore(t, /\s+[-–—]\s+/);
+  }
+  return t;
+}
+
+/** Keep what is before the first match, but only if two or more words survive. */
+function cutBefore(t, re) {
+  const m = t.match(re);
+  if (!m) return t;
+  const head = t.slice(0, m.index).trim();
+  return head.split(/\s+/).filter(Boolean).length >= 2 ? head : t;
+}
+
 function roleOnly(title) {
-  const words = /** @type {string} */ (speakable(title)).split(' ').filter(Boolean);
+  const words = /** @type {string} */ (speakable(clampRole(title))).split(' ').filter(Boolean);
   /* Only the words that are REDUNDANT with "an intern", and only where they
      are decoration rather than part of the name. "Trainee" and "apprentice"
      are kept: "Young Graduate Trainee" is the whole role, and trimming it left
@@ -194,7 +263,11 @@ function roleOnly(title) {
   const trailingNoise = /^(job|jobs|opportunity|role|position|intern|interns|internship|internships)$/i;
   while (words.length && redundant.test(words[0])) words.shift();
   while (words.length && trailingNoise.test(words[words.length - 1])) words.pop();
-  return words.join(' ');
+  /* The backstop, for a long title carrying none of the separators above. The
+     noise trim runs again because the cut can expose a new trailing "Job". */
+  const capped = words.slice(0, MAX_ROLE_WORDS);
+  while (capped.length && trailingNoise.test(capped[capped.length - 1])) capped.pop();
+  return capped.join(' ');
 }
 
 /**
