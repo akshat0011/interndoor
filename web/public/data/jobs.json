@@ -1,5 +1,5 @@
 {
- "generatedAt": 1787821304775,
+ "generatedAt": 1787827486182,
  "region": "IN",
  "regionName": "India",
  "count": 280,
@@ -36,7 +36,6 @@
   "CloudSEK",
   "CoinDCX",
   "Colgate-Palmolive",
-  "Collins Aerospace",
   "Continental Industry",
   "Convin",
   "Copeland",
@@ -126,6 +125,7 @@
   "Salesforce",
   "Sanas",
   "Seagate Technology",
+  "Seclore",
   "Siemens",
   "Siemens Gamesa",
   "Siemens Healthineers",
@@ -228,6 +228,45 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4458378217",
+   "title": "Trainee- Product Engineer",
+   "company": "Seclore",
+   "matchedWatchlist": "Seclore",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/seclore.jpg",
+   "location": "Mumbai, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": "₹0 ",
+   "duration": null,
+   "applicants": "69 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a trainee product engineer, you'll design and test security solutions that protect data across global enterprises. You'll work on complex systems that run in unpredictable environments and build tools to make the process efficient. This role suits someone who enjoys solving real-world technical challenges and wants to develop deep technical judgment through hands-on experience.",
+   "bullets": [
+    "Debug security products across thousands of uncontrolled environments",
+    "Work full stack from customer interfaces to OS-level protections",
+    "Automate repetitive tasks and build tools for enterprise software"
+   ],
+   "roleLabel": "Product Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "enterprise software"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "1 hour ago",
+   "postedAt": 1787822886723,
+   "firstSeenAt": 1787826486726,
+   "lastSeenAt": 1787826486726,
+   "url": "https://www.linkedin.com/jobs/view/4458378217/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4458378217/",
+   "description": null,
+   "roleFingerprint": "ff7751da90",
+   "region": "IN"
+  },
   {
    "id": "4459664542",
    "title": "Computer Vision AI Intern",
@@ -12494,51 +12533,6 @@
    "applyUrl": "https://www.linkedin.com/jobs/view/4443257825/",
    "description": null,
    "roleFingerprint": "bfd7beaebf",
-   "region": "IN"
-  },
-  {
-   "id": "4445484720",
-   "title": "Intern: PHM and Digital Twin",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": "6–8 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "deep learning"
-   ],
-   "summary": "IN-KA-BENGALURU-NORTHGATE ~ Sy No 2/2 Venkatala Village ~ SY NO 2/2 VENKATALA VILLAGE, Yelahanka Hobli Position Role Type: At RTX, the world's largest aerospace and defense company, 185,000 great minds are united by purpose and inspired to make a difference solving the world’s most complex problems. If you live within a reasonable commute of an RTX site with other colleagues you interact with, your manager will discuss whether there is a degree of onsite presence associated with this role.",
-   "bullets": [
-    "Develop and validate deep learning models for prognostics in aerospace applications",
-    "Explore and integrate reliability modeling techniques, analyze datasets, and perform predictive analytics",
-    "Work with AI, Machine Learning, and Deep Learning for 6-8 months in Bengaluru"
-   ],
-   "roleLabel": "AI/ML Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.Tech/M.Tech",
-   "keySkills": [
-    "artificial intelligence",
-    "machine learning",
-    "deep learning",
-    "predictive analytics"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 minute ago",
-   "postedAt": 1785231113614,
-   "firstSeenAt": 1785231173620,
-   "lastSeenAt": 1785242345426,
-   "url": "https://www.linkedin.com/jobs/view/4445484720/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4445484720/",
-   "description": null,
-   "roleFingerprint": "b160325e6e",
    "region": "IN"
   },
   {
