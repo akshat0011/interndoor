@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 27 Aug 2026 02:15:39 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 27 Aug 2026 02:51:16 GMT</lastBuildDate>
+  <item>
+    <title>Customer Engineering Co-op — Nokia</title>
+    <link>https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079</guid>
+    <pubDate>Thu, 27 Aug 2026 02:43:32 GMT</pubDate>
+    <description>Company: Nokia · Location: Raleigh, NC · Duration: 3 months
+• Configure and maintain lab network systems and test environments
+• Support testing and troubleshooting of deployment configurations
+• Manage virtual machines and demo environments
+• Collaborate with engineers in a hands-on environment</description>
+  </item>
   <item>
     <title>Video Production Intern — Comcast</title>
     <link>https://interndoor.com/us/jobs/comcast-video-production-intern-4458328239</link>
@@ -501,16 +512,6 @@
 • Develop low-level embedded software for networking systems
 • Work with C/C++ and Linux kernel modules
 • Collaborate on hardware and system integration projects</description>
-  </item>
-  <item>
-    <title>Digital Physical Design (P&amp;R) Intern — NXP Semiconductors</title>
-    <link>https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297</guid>
-    <pubDate>Wed, 26 Aug 2026 09:30:54 GMT</pubDate>
-    <description>Company: NXP Semiconductors · Location: Chandler, AZ
-• Run cadence tools for digital backend flow from synthesis to gds2
-• Analyze rtl implementations and tool options for area optimization
-• Collaborate with team to improve script efficiency and process quality</description>
   </item>
 </channel>
 </rss>

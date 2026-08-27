@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079",
+      "url": "https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079",
+      "title": "Customer Engineering Co-op — Nokia",
+      "content_text": "Company: Nokia · Location: Raleigh, NC · Duration: 3 months\n• Configure and maintain lab network systems and test environments\n• Support testing and troubleshooting of deployment configurations\n• Manage virtual machines and demo environments\n• Collaborate with engineers in a hands-on environment",
+      "date_published": "2026-08-27T02:43:32.506Z",
+      "authors": [
+        {
+          "name": "Nokia"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/comcast-video-production-intern-4458328239",
       "url": "https://interndoor.com/us/jobs/comcast-video-production-intern-4458328239",
       "title": "Video Production Intern — Comcast",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Persistent Systems, LLC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-p-and-r-intern-4440379297",
-      "title": "Digital Physical Design (P&R) Intern — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Chandler, AZ\n• Run cadence tools for digital backend flow from synthesis to gds2\n• Analyze rtl implementations and tool options for area optimization\n• Collaborate with team to improve script efficiency and process quality",
-      "date_published": "2026-08-26T09:30:54.272Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
         }
       ]
     }
