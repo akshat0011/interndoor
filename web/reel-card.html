@@ -274,11 +274,20 @@ const D = window.REEL || SAMPLE;
    NO LOGO, OLD ORDER. 271 of 274 India rows carry one, but Tower Research and
    AlphaGrep do not, and opening those on an empty box would be worse than what
    this replaces. */
+/* FORMAT D WITHHOLDS THE EMPLOYER, so it always leads with the hook — logo or
+   not. The reveal IS the format ("zero applicants… it's at Birlasoft"), and a
+   reel that opens on the logo has already given the answer away. It therefore
+   takes the same order and the same 34% hook share as a logo-less Format A,
+   where the hook leads for the different reason that there is no mark to open
+   on. src/reelscript.js orders its clauses to match; the VO and the picture
+   must say the same thing at the same moment. */
+const IS_D = D.format === "D";
 const HAS_LOGO = !!D.logo;
-const SPLIT = HAS_LOGO
-  ? [0, 0.24, 0.52, 0.84]   /* company | hook | role | cta */
-  : [0, 0.34, 0.56, 0.84];  /* hook | company | role | cta */
-const ORDER = HAS_LOGO ? ["s2", "s1", "s3", "s5"] : ["s1", "s2", "s3", "s5"];
+const HOOK_FIRST = IS_D || !HAS_LOGO;
+const SPLIT = HOOK_FIRST
+  ? [0, 0.34, 0.56, 0.84]   /* hook | company | role | cta */
+  : [0, 0.24, 0.52, 0.84];  /* company | hook | role | cta */
+const ORDER = HOOK_FIRST ? ["s1", "s2", "s3", "s5"] : ["s2", "s1", "s3", "s5"];
 /* reelSeconds, NOT duration. `duration` is the JOB's ("6 months"), and the
    renderer used to spread the reel's own length over the top of it under the
    same name — so the role scene rendered a pill reading "15.167", the reel's
@@ -344,7 +353,34 @@ window.layout = function () { for (const f of FITS) fit(f[0], f[1], f[2], f[3]);
    Only 39 of 384 India rows carry a stipend, so a card built around money
    would be blank nine times in ten. */
 let hookLines, hookEyebrow, hookUnder;
-if (D.stipendText) {
+if (IS_D) {
+  /* THE SCARCITY WINS EVEN WHEN THERE IS A STIPEND. Format A ranks money
+     first because it is the strongest fact it has; a Format D reel is ABOUT
+     the empty queue, and two headline numbers split the one thing it says.
+     The stipend still renders as a pill in the role scene.
+
+     No id="cnt": the count-up in tick() animates a stipend towards its real
+     value, and there is nothing to count towards here — a number rolling up
+     to 0, or to 4, is motion for its own sake. The hook already rises in.
+
+     THE THREE LINES ARE ONE SENTENCE, past tense throughout: "this internship
+     HAD / 0 applicants / when we found it". `applicants` is frozen at scrape
+     time and nothing refreshes it, so a present-tense hook is a claim about
+     now that we are not in a position to make — the same failure `posted_text`
+     caused on the live board. src/reelformat.js refuses to build one of these
+     at all once the reading goes stale; the tense is what keeps it honest
+     inside the window.
+
+     The eyebrow does NOT date the reading, though the first version did. The
+     live-stamp in the corner already reads "18H AGO" and it is on every frame
+     of the reel, so an eyebrow reading "POSTED 18H AGO" put the same three
+     words on the same frame twice — visible only once a frame was pulled out
+     and looked at. */
+  const n = Number(D.applicantsCount) || 0;
+  hookEyebrow = "This internship had";
+  hookLines = '<span class="lit">' + n + "</span><br>applicant" + (n === 1 ? "" : "s");
+  hookUnder = "when we found it. <b>Here's who's hiring →</b>";
+} else if (D.stipendText) {
   hookEyebrow = "Paid internship";
   hookLines = `<span class="lit" id="cnt">${esc(D.stipendText)}</span>` +
               (D.stipendPeriod ? `<span class="per">/${esc(D.stipendPeriod)}</span>` : "");
@@ -379,9 +415,16 @@ if (D.stipendText) pills.push([D.stipendText + (D.stipendPeriod ? "/" + D.stipen
 $("s3-pills").innerHTML = pills
   .map(([t, hot], i) => `<span class="pill${hot ? " hot" : ""}" data-i="${i}">${esc(t)}</span>`).join("");
 
-$("s5-sub").innerHTML = D.applicantsText
-  ? `<b>${esc(D.applicantsText)}</b> so far — apply while the queue is short.`
-  : `Free. No signup. <b>Follow for daily internships.</b>`;
+/* Format D's closing line asks for the FOLLOW, not the apply. The apply is
+   already the whole reel, and at zero followers the only thing this account
+   compounds is subscribers. It also claims nothing about the queue as it
+   stands now — "so far" would be the frozen-count problem again, in the last
+   line of a reel whose first line was careful about it. */
+$("s5-sub").innerHTML = IS_D
+  ? `<b>Follow for internships this early.</b>`
+  : D.applicantsText
+    ? `<b>${esc(D.applicantsText)}</b> so far — apply while the queue is short.`
+    : `Free. No signup. <b>Follow for daily internships.</b>`;
 if (D.ageText) $("stamp").textContent = D.ageText;
 
 /* ---- wire the animations -------------------------------------------

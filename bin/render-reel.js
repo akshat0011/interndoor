@@ -5,6 +5,15 @@
  *   npm run reel                          # newest India job that has bullets
  *   npm run reel -- --job=4457471044
  *   npm run reel -- --region=US --out=/tmp/x.mp4
+ *   npm run reel -- --format=D            # the emptiest fresh queue on the board
+ *   npm run reel -- --job=X --format=A    # force "company is hiring"
+ *
+ * --format is A ("company is hiring"), D ("hidden opportunity") or auto.
+ * AUTO IS THE DEFAULT and lets the posting decide: a fresh row with almost no
+ * applicants becomes Format D, everything else stays Format A. That is what
+ * lets the one press in the run report keep producing the right reel without a
+ * second button beside it. src/reelformat.js holds the rules, including why a
+ * stale applicant count disqualifies a posting outright.
  *
  * WHY IT READS jobs.json AND NOT THE DATABASE
  * -------------------------------------------
@@ -41,6 +50,7 @@ import { loadConfig } from '../src/config.js';
 import { durationText, modeText } from '../src/pages.js';
 import { pickBgm, commitBgm } from '../src/reelbgm.js';
 import { captionsFor } from '../src/reelcaptions.js';
+import { formatFor, formatDCandidates, formatDRefusal, formatDConfig } from '../src/reelformat.js';
 
 const cfg = loadConfig();
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -110,6 +120,12 @@ const REGION = String(args.region || 'IN').toUpperCase();
 const FPS = Number(args.fps || 30);
 const CRF = Number(args.crf || 19);
 
+/* Which reel this is. 'auto' lets the POSTING decide — a fresh row with an
+   empty queue becomes Format D and everything else stays Format A — which is
+   what makes the existing one-press button in the run report produce the right
+   reel without a second button beside it. See src/reelformat.js. */
+const WANT_FORMAT = String(args.format || 'auto');
+
 /* Where the music sits, as an ABSOLUTE loudness target in LUFS — not as a
    cut in dB from wherever the file happened to be mastered.
    
@@ -149,11 +165,44 @@ function pickJob(jobs) {
     if (!j) fail(`job ${args.job} is not in the published ${REGION} data`);
     return j;
   }
+  /* --format=D with no --job means "make one of these", so the format picks
+     the posting rather than the other way round: the emptiest queue that was
+     read most recently. Deliberately NOT the newest posting, which is what a
+     Format A run wants. */
+  if (WANT_FORMAT.toUpperCase() === 'D') {
+    const c = formatDCandidates(jobs, cfg);
+    if (!c.length) fail(coldPoolMessage(jobs));
+    return c[0];
+  }
   /* Bullets are what scene 4 is made of, and 98% of India rows have them, so
      requiring them costs almost nothing and avoids rendering an empty scene. */
   const usable = jobs.filter(j => Array.isArray(j.bullets) && j.bullets.length >= 2);
   if (!usable.length) fail(`no ${REGION} job has bullets yet`);
   return usable.sort((a, b) => (b.postedAt || 0) - (a.postedAt || 0))[0];
+}
+
+/**
+ * Why there is nothing to make a Format D reel out of.
+ *
+ * An empty pool is the ORDINARY state, not a fault: the count has to be fresh
+ * for the claim to be true, and fresh readings arrive a couple a day. "No job
+ * qualifies" would send you looking for a bug, so this names the nearest miss
+ * and how stale it is — which is almost always the answer.
+ */
+function coldPoolMessage(jobs) {
+  const c = formatDConfig(cfg);
+  const near = jobs
+    .filter(j => formatDRefusal(j, cfg)?.startsWith('the count is stale'))
+    .sort((a, b) => (b.lastSeenAt || 0) - (a.lastSeenAt || 0))[0];
+  const lines = [`no ${REGION} posting qualifies for a Format D reel right now`,
+    `  it needs ${c.maxApplicants} applicants or fewer, read in the last ${c.maxCountAgeHours}h`];
+  if (near) {
+    lines.push(`  nearest: ${near.company} — ${formatDRefusal(near, cfg)}`);
+    lines.push(`  fix: wait for the next scan, or raise reels.formatD.maxCountAgeHours`);
+  } else {
+    lines.push(`  fix: wait for a scan to bring in a posting with a short queue`);
+  }
+  return lines.join('\n');
 }
 
 /* ---------- shaping it for the card ---------- */
@@ -219,10 +268,14 @@ function logoDataUri(job) {
   return `data:${mime};base64,${readFileSync(f).toString('base64')}`;
 }
 
-function shape(job) {
+function shape(job, format) {
   const s = stipend(job);
   const a = applicants(job);
   return {
+    /* The card and the script both branch on this: Format D withholds the
+       employer until the second scene, so the two have to agree on which reel
+       they are making or the voice describes a frame that is not there. */
+    format,
     company: job.company,
     title: job.title,
     city: city(job),
@@ -414,7 +467,16 @@ function fail(msg) {
 async function main() {
   const jobs = loadJobs(REGION);
   const job = pickJob(jobs);
-  const data = shape(job);
+  /* Forcing a format the posting cannot carry THROWS rather than falling back
+     to A. A silent downgrade is the worst outcome here: the run looks like it
+     did what was asked and the reel is a different one. */
+  let format;
+  try {
+    format = formatFor(job, { want: WANT_FORMAT }, cfg);
+  } catch (e) {
+    fail(`${e.message}\n  job ${job.id} — ${job.company}`);
+  }
+  const data = shape(job, format);
 
   mkdirSync(OUT_DIR, { recursive: true });
   /* --out=~/... arrives with a literal tilde: the shell does not expand it
@@ -426,7 +488,9 @@ async function main() {
   const exe = chromiumPath();
   if (!exe) fail("Playwright's Chromium is not in ~/Library/Caches/ms-playwright\n  fix: npx playwright install chromium");
 
-  console.log(`\n  ${data.company} — ${data.title}`);
+  const FORMAT_NAME = { A: 'company is hiring', D: 'hidden opportunity' };
+  console.log(`\n  Format ${format} — ${FORMAT_NAME[format]}`);
+  console.log(`  ${data.company} — ${data.title}`);
   console.log(`  ${data.city || '—'} · ${data.stipendText || 'no stipend listed'} · ${data.applicantsText || 'no applicant data'}`);
 
   /* THE VOICE IS SYNTHESISED FIRST, because its length sets the reel's.

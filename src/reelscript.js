@@ -77,6 +77,7 @@ export function reelScript(d, { site = 'InternDoor dot com' } = {}) {
   const role = roleOnly(d.title);
   const where = d.city ? ` in ${d.city}` : '';
   const n = Number(d.applicantsCount);
+  if (d.format === 'D') return formatD(d, { role, where, site });
 
   /* "…hiring an intern, and the role is X" RATHER THAN "…hiring an Intern X".
    *
@@ -128,6 +129,45 @@ export function reelScript(d, { site = 'InternDoor dot com' } = {}) {
    * the phrase is not finished, and it is what src/reelcaptions.js reads to
    * break a cue on a clause rather than on a word count.
    */
+  const clauses = parts.map((part, i) => (i < parts.length - 1 ? `${part},` : `${part}.`));
+  return [...clauses, `Find it on ${site}.`];
+}
+
+/**
+ * FORMAT D — "hidden opportunity".
+ *
+ * THE EMPLOYER IS WITHHELD UNTIL THE SECOND CLAUSE. That is the format: the
+ * scarcity is the hook and the company is the reveal, so naming it first
+ * leaves nothing to reveal. The card puts its scenes in the same order for the
+ * same reason, and the VO and the picture have to agree or the reel reads as
+ * dubbed.
+ *
+ * "WHEN WE LISTED IT" IS NOT A HEDGE, IT IS THE ONLY TRUE TENSE. `applicants`
+ * is frozen at scrape time and nothing refreshes it, so "nobody has applied"
+ * is a claim about now that we cannot make — the same failure `posted_text`
+ * caused on the live board. src/reelformat.js additionally refuses to build
+ * one of these at all once the reading goes stale; this is the second half of
+ * that rule, for the hours inside the window where the number can still move.
+ * It is also the phrase src/reelcaption.js already uses, so the reel and its
+ * caption date the claim the same way.
+ *
+ * THE STIPEND IS DELIBERATELY LEFT OUT even when the row has one. Format A
+ * leads on money because money is the strongest fact it has; here the short
+ * queue is, and a second headline number splits the one thing the reel is
+ * about. It is still on screen as a pill in the role scene, so nothing is
+ * hidden — the picture carries it and the voice stays on the point.
+ */
+function formatD(d, { role, where, site }) {
+  const company = String(d.company ?? '').replace(/\.+$/, '').trim();
+  const n = Number(d.applicantsCount) || 0;
+
+  const lead = n === 0
+    ? 'Zero applicants when we listed it'
+    : `Only ${small(n)} applicant${n === 1 ? '' : 's'} when we listed it`;
+
+  const parts = [lead, `it's at ${company}${where}`];
+  if (role) parts.push(`and the role is ${role}`);
+
   const clauses = parts.map((part, i) => (i < parts.length - 1 ? `${part},` : `${part}.`));
   return [...clauses, `Find it on ${site}.`];
 }

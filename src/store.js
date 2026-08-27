@@ -261,6 +261,29 @@ export class Store {
     if (!reelCols.includes('publish_at')) {
       this.db.exec('ALTER TABLE reel_posts ADD COLUMN publish_at INTEGER');
     }
+    /* Which format the reel was. Rows written before formats existed stay NULL
+       rather than being backfilled to 'A': every one of them WAS a Format A,
+       but the whole reason this column exists is to compare formats against
+       each other, and a guessed value is indistinguishable from a measured one
+       once it is in the table. NULL says "before we were counting". */
+    if (!reelCols.includes('format')) {
+      this.db.exec('ALTER TABLE reel_posts ADD COLUMN format TEXT');
+    }
+    /* WHICH ACCOUNT IT WENT TO. One Instagram account per region, and the
+       platform's 100-per-rolling-day publish quota is PER ACCOUNT, so the daily
+       cap can only be counted if each row knows whose day it spent. NULL on
+       rows written before there were two accounts — every one of them went to
+       the single account that existed then, but a guessed value is
+       indistinguishable from a measured one once it is in the table. */
+    if (!reelCols.includes('region')) {
+      this.db.exec('ALTER TABLE reel_posts ADD COLUMN region TEXT');
+    }
+    /* Whether a human pressed the button or the pipeline chose it. Kept apart
+       so the automatic half can be measured, paused or capped without touching
+       the manual queue, which is a different product with a different rule. */
+    if (!reelCols.includes('source')) {
+      this.db.exec("ALTER TABLE reel_posts ADD COLUMN source TEXT");
+    }
 
     if (!jobCols.includes('region')) this.#backfillRegions();
   }
@@ -1186,28 +1209,54 @@ export class Store {
    * a tunnel that did not come up is worth retrying, and refusing would strand
    * the job forever.
    */
-  reelClaim(jobId) {
+  reelClaim(jobId, { region = null, source = 'manual' } = {}) {
     const info = this.db.prepare(`
-      INSERT INTO reel_posts (job_id, status, started_at)
-      VALUES (?, 'rendering', ?)
+      INSERT INTO reel_posts (job_id, status, started_at, region, source)
+      VALUES (?, 'rendering', ?, ?, ?)
       ON CONFLICT(job_id) DO UPDATE
         SET status = 'rendering', started_at = excluded.started_at,
+            region = excluded.region, source = excluded.source,
             finished_at = NULL, error = NULL
         WHERE reel_posts.status = 'failed'
-    `).run(jobId, Date.now());
+    `).run(jobId, Date.now(), region, source);
     return info.changes > 0;
   }
 
-  reelRendered(jobId, videoPath, caption, publishAt = null) {
+  /**
+   * Reels this region has PUBLISHED or is committed to publishing in the last
+   * `sinceMs`, which is what the daily cap is measured against.
+   *
+   * Counts scheduled and in-flight rows too, not just published ones. The cap
+   * exists to stay inside Instagram's 100-per-rolling-day quota, and a reel
+   * already rendered and holding a slot will spend one of those posts — leaving
+   * it out would let a single drain pass queue the whole day's allowance twice
+   * over before the first one finished.
+   */
+  reelCountSince(region, sinceMs) {
+    const row = this.db.prepare(`
+      SELECT COUNT(*) AS n FROM reel_posts
+      WHERE region = ?
+        AND status IN ('rendering', 'scheduled', 'publishing', 'published')
+        AND COALESCE(publish_at, started_at) >= ?
+    `).get(region, sinceMs);
+    return row?.n ?? 0;
+  }
+
+  /** Job ids this table already knows about, so a candidate sweep can skip them. */
+  reelKnownJobIds() {
+    return new Set(this.db.prepare('SELECT job_id FROM reel_posts').all().map((r) => String(r.job_id)));
+  }
+
+  reelRendered(jobId, videoPath, caption, publishAt = null, format = null) {
     /* A reel that is due now goes straight to publishing; one with a slot in
        the future waits as 'scheduled'. Rendering happens either way, and it
        happens NOW rather than at the slot: he is at the keyboard when he
        presses the button, which is when a render failure is worth surfacing. */
     const status = publishAt && publishAt > Date.now() ? 'scheduled' : 'publishing';
     this.db.prepare(`
-      UPDATE reel_posts SET status = ?, video_path = ?, caption = ?, publish_at = ?
+      UPDATE reel_posts SET status = ?, video_path = ?, caption = ?, publish_at = ?, format = ?
       WHERE job_id = ?
-    `).run(status, videoPath, caption, publishAt ?? null, jobId);
+    `).run(status, videoPath, caption, publishAt ?? null, format ?? null, jobId);
     return status;
   }
 
@@ -1228,10 +1277,22 @@ export class Store {
     `).all();
   }
 
-  /** The most recent time a reel actually went out. */
-  reelLastPublishedAt() {
-    const r = this.db.prepare(
-      "SELECT MAX(finished_at) AS t FROM reel_posts WHERE status = 'published'").get();
+  /**
+   * The most recent time a reel actually went out, optionally for one region.
+   *
+   * SCOPED PER REGION because spacing is per ACCOUNT: two regions post to two
+   * different accounts with two different audiences and two separate quotas, so
+   * a US reel going out says nothing about when India's next one may. Unscoped
+   * it would make one board's activity delay the other's for no reason.
+   * Rows written before there were two accounts carry region NULL and are
+   * counted only by the unscoped call.
+   */
+  reelLastPublishedAt(region = null) {
+    const r = region
+      ? this.db.prepare(
+        "SELECT MAX(finished_at) AS t FROM reel_posts WHERE status = 'published' AND region = ?").get(region)
+      : this.db.prepare(
+        "SELECT MAX(finished_at) AS t FROM reel_posts WHERE status = 'published'").get();
     return r?.t ?? null;
   }
 

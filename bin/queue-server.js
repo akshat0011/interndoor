@@ -36,6 +36,9 @@ import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
 import { reelCaption } from '../src/reelcaption.js';
 import { nextSlot, slotLabel } from '../src/reelslots.js';
+import { formatFor } from '../src/reelformat.js';
+import { publishedRegions, regionPath, regionOf } from '../src/regions.js';
+import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig } from '../src/reelaccounts.js';
 import { jobSlug } from '../src/pages.js';
 import { utmUrl } from '../src/postgen.js';
 import { spawn } from 'node:child_process';
@@ -242,11 +245,15 @@ async function pumpReels() {
  * double-click harmless, and it has to happen before the request is answered
  * or two presses race into the queue twice.
  */
-function enqueueReel(jobId) {
+function enqueueReel(jobId, source = 'manual') {
   if (reelQueue.includes(jobId)) return { error: 'already queued' };
   const job = publicJob(jobId);
   if (!job) return { error: `job ${jobId} is not on the published board` };
-  if (!store.reelClaim(jobId)) {
+  const region = job.__region;
+  if (!accountFor(region, cfg)) {
+    return { error: `no Instagram account configured for ${region} — see reels.accounts` };
+  }
+  if (!store.reelClaim(jobId, { region, source })) {
     const row = store.reelPost(jobId);
     return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
   }
@@ -263,11 +270,35 @@ function enqueueReel(jobId) {
  * caption cannot state something the job page does not. Re-deriving from raw
  * columns would let the two drift on the first fix to either.
  */
+function regionJobsFile(code) {
+  return join(PATHS.root, 'web', 'public', ...(regionPath(code) ? [regionPath(code).slice(1)] : []), 'data', 'jobs.json');
+}
+
+/** Every published board's jobs, newest first, each tagged with its region. */
+function publishedJobs() {
+  const out = [];
+  for (const region of publishedRegions(cfg)) {
+    const file = regionJobsFile(region.code);
+    if (!existsSync(file)) continue;
+    for (const j of JSON.parse(readFileSync(file, 'utf8')).jobs ?? []) {
+      out.push({ ...j, __region: region.code });
+    }
+  }
+  return out;
+}
+
+/**
+ * The job as the SITE has it, searched across EVERY published board.
+ *
+ * It used to read India's data file and nothing else, which was correct while
+ * India was the only board that produced reels. With a US account it is not:
+ * a US job id simply was not found, so the reel could never be queued at all.
+ * The region comes back on the row because everything downstream needs it —
+ * which account to post to, which board to render, and whose daily cap it
+ * spends.
+ */
 function publicJob(jobId) {
-  const file = join(PATHS.root, 'web', 'public', 'data', 'jobs.json');
-  if (!existsSync(file)) return null;
-  const data = JSON.parse(readFileSync(file, 'utf8'));
-  return (data.jobs ?? []).find((j) => String(j.id) === String(jobId)) ?? null;
+  return publishedJobs().find((j) => String(j.id) === String(jobId)) ?? null;
 }
 
 function run(cmd, args, label) {
@@ -293,12 +324,22 @@ function run(cmd, args, label) {
 async function doPublish(row) {
   const jobId = row.job_id;
   const job = publicJob(jobId) ?? { company: jobId, title: '' };
-  const account = cfg.reels?.account || 'interndoor';
+  /* The row's region, not the file's: by the time a scheduled reel publishes,
+     its posting may have aged off the board and publicJob would find nothing.
+     The claim recorded the region precisely so this cannot become a guess. */
+  const region = row.region || job.__region || 'IN';
+  const account = accountFor(region, cfg);
+  if (!account) {
+    const why = `no Instagram account configured for ${region}`;
+    store.reelFailed(jobId, why);
+    log.warn(`Reel for ${job.company} not published — ${why}`);
+    return { error: why };
+  }
 
   reelRunning = { jobId, company: job.company, title: job.title, stage: 'publishing',
     startedAt: Date.now(), url: null, error: null };
   store.reelPublishing(jobId);
-  log.info(`Reel for ${job.company}: publishing to @${account}…`);
+  log.info(`Reel for ${job.company} (${region}): publishing to @${account}…`);
 
   try {
     const video = row.video_path;
@@ -317,7 +358,11 @@ async function doPublish(row) {
       join(process.env.HOME, 'Desktop', 'projects', 'storygasted'), 'python',
       join(PATHS.root, 'bin', 'ig_publish.py'),
       '--video', video, '--caption-file', capFile,
-      '--duration', seconds.toFixed(2), '--account', account], 'ig_publish');
+      '--duration', seconds.toFixed(2), '--account', account,
+      /* --region picks IG_USER_ID_<REGION>/IG_ACCESS_TOKEN_<REGION> out of .env.
+         The guard still asks the live account who it is: with two accounts the
+         bare names collide by design, so the name alone is not proof. */
+      '--region', region], 'ig_publish');
 
     const res = JSON.parse(String(out).trim().split('\n').filter(Boolean).pop());
     if (!res.ok) throw new Error(res.error);
@@ -347,37 +392,66 @@ async function publishReel(jobId) {
   /* Already claimed by enqueueReel — claiming here too would refuse the job it
      was handed. */
   const job = publicJob(jobId) ?? { company: jobId, title: '' };
+  const claimed = store.reelPost(jobId);
+  const region = claimed?.region || job.__region || 'IN';
+  const isAuto = claimed?.source === 'auto';
 
   reelRunning = { jobId, company: job.company, title: job.title, stage: 'rendering',
     startedAt: Date.now(), url: null, error: null };
   log.info(`Reel for ${job.company} — ${job.title}: rendering…`);
 
   try {
+    /* THE FORMAT IS DECIDED ONCE, HERE, and handed to both halves. The
+       renderer would reach the same answer on its own — 'auto' asks the same
+       function — but the caption is built in this process from the same row,
+       and a reel whose picture reveals an employer under a caption that opened
+       by naming them is two posts stapled together. One decision, two
+       consumers. */
+    const format = formatFor(job, { want: 'auto' }, cfg);
+
+    /* --region is not optional now there is more than one board: render-reel
+       loads that region's jobs.json, and without it a US job id is simply not
+       found. */
     await run(process.execPath, ['--no-warnings=ExperimentalWarning',
-      join(PATHS.root, 'bin', 'render-reel.js'), `--job=${jobId}`], 'render-reel');
+      join(PATHS.root, 'bin', 'render-reel.js'),
+      `--job=${jobId}`, `--format=${format}`, `--region=${region}`], 'render-reel');
 
     const video = join(PATHS.reelsOut, `${jobId}.mp4`);
     if (!existsSync(video)) throw new Error('the render produced no file');
 
     const page = utmUrl(`https://interndoor.com/jobs/${jobSlug({ ...job, id: jobId })}`,
       { campaign: 'reel', content: String(jobId), source: 'instagram' }, cfg);
-    const caption = reelCaption(job, { url: page });
+    const caption = reelCaption(job, { url: page, format });
 
     /* Slots already promised to queued reels count, not just the last publish
        — otherwise three presses inside a minute all measure from the same
        moment and collide on one slot. This row is excluded: it has no slot yet
        and is what we are computing one for. */
+    /* Spacing is PER ACCOUNT. Two regions post to two different accounts with
+       two different audiences and two separate quotas, so a US reel holding a
+       slot says nothing about when India's next one may go.
+
+       An automatic reel is spaced by the day's cap rather than by
+       reels.spacingMinutes: that value is 180 and belongs to the manual queue,
+       where a sitting is two or three reels he picked by hand. At 180 the
+       10:00-22:00 window holds four posts, so an automatic cap of 20 would take
+       days to deliver one day's roles and never catch up. */
+    const slotCfg = isAuto
+      ? autoSlotConfig(region, cfg, regionOf(region)?.timeZone)
+      : (cfg.reels ?? {});
     const slot = nextSlot({
       now: Date.now(),
-      lastPublishedAt: store.reelLastPublishedAt(),
-      pendingSlots: store.reelPending().filter((r) => r.job_id !== jobId).map((r) => r.publish_at),
-    }, cfg.reels ?? {});
+      lastPublishedAt: store.reelLastPublishedAt(region),
+      pendingSlots: store.reelPending()
+        .filter((r) => r.job_id !== jobId && (r.region || 'IN') === region)
+        .map((r) => r.publish_at),
+    }, slotCfg);
 
-    const state = store.reelRendered(jobId, video, caption, slot);
+    const state = store.reelRendered(jobId, video, caption, slot, format);
     if (state === 'scheduled') {
       reelRunning = { ...reelRunning, stage: 'scheduled', slot,
-        slotLabel: slotLabel(slot, cfg.reels ?? {}), finishedAt: Date.now() };
-      log.ok(`Reel for ${job.company} rendered — queued for ${slotLabel(slot, cfg.reels ?? {})}`);
+        slotLabel: slotLabel(slot, slotCfg), finishedAt: Date.now() };
+      log.ok(`Reel for ${job.company} rendered — queued for ${slotLabel(slot, slotCfg)}`);
       return { ok: true, scheduled: slot };
     }
 
@@ -405,7 +479,79 @@ async function drainReels() {
   if (due) await doPublish(due);
 }
 
-setInterval(() => { drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`)); }, 60_000);
+/**
+ * Queue reels for newly scraped jobs, with no approval step.
+ *
+ * This is the automatic half. The manual queue is unchanged and still exists:
+ * a press of the button in the run report is a reel he chose, and those are
+ * marked source='manual' so the two can be told apart later.
+ *
+ * ONLY NEW POSTINGS, NEVER THE BACKLOG. Candidates are limited by
+ * `maxAgeHours` on first_seen_at. Without it, switching this on would open with
+ * a day's worth of reels about roles that had been on the board for weeks —
+ * the opposite of what a feed built on "be early" is for, and it would spend
+ * the whole cap before a single fresh listing arrived.
+ *
+ * NEWEST FIRST, and that is what the cap buys. Instagram allows 100 posts per
+ * rolling 24 hours per account and the US board takes a median of 105 tech
+ * listings a day, so not every job CAN become a reel. Choosing explicitly means
+ * the ones that go out are the freshest rather than whichever happened to be
+ * reached before the API started refusing.
+ *
+ * A FEW AT A TIME, not the whole day's allowance at once. Rendering is serial
+ * and takes about 45 seconds a reel, and a row is claimed the moment it is
+ * queued — so claiming twenty would leave eighteen sitting in 'rendering' with
+ * no way back if this process restarted, since reelClaim only ever re-claims a
+ * FAILED row. The sweep runs every 60 seconds and the slots are minutes apart,
+ * so there is nothing to gain by queueing deeper.
+ */
+function autoSweep() {
+  if (!autoEnabled(cfg)) return;
+  if (reelRunning && !reelRunning.finishedAt) return;
+  if (reelQueue.length) return;
+
+  const auto = cfg.reels?.auto ?? {};
+  const perSweep = Number(auto.perSweep ?? 3);
+  const maxAgeMs = Number(auto.maxAgeHours ?? 48) * 3_600_000;
+  const now = Date.now();
+
+  const all = publishedJobs();
+  const known = store.reelKnownJobIds();
+
+  for (const region of autoRegions(cfg)) {
+    const cap = dailyCap(region, cfg);
+    const used = store.reelCountSince(region, now - 86_400_000);
+    let budget = Math.min(cap - used, perSweep);
+    if (budget <= 0) {
+      if (cap - used <= 0) log.info(`Reels: ${region} has used its daily cap (${used}/${cap}) — nothing queued.`);
+      continue;
+    }
+
+    const fresh = all
+      .filter((j) => j.__region === region
+        && j.isTech !== false
+        && !known.has(String(j.id))
+        && (now - (j.firstSeenAt ?? j.postedAt ?? 0)) <= maxAgeMs)
+      .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
+
+    for (const j of fresh) {
+      if (budget <= 0) break;
+      const r = enqueueReel(String(j.id), 'auto');
+      if (r.queued) {
+        known.add(String(j.id));
+        budget--;
+        log.info(`Reels: queued ${region} ${j.company} — ${j.title} (auto, ${used + 1}/${cap} today)`);
+      } else if (r.error && !/already/.test(r.error)) {
+        log.warn(`Reels: could not queue ${j.id} — ${r.error}`);
+      }
+    }
+  }
+}
+
+setInterval(() => {
+  try { autoSweep(); } catch (e) { log.warn(`Reel auto-sweep: ${e.message}`); }
+  drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));
+}, 60_000);
 
 /* ------------------------------------------------------------------- routes */
 

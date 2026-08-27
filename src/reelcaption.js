@@ -140,19 +140,30 @@ export function applicantCount(text) {
  * or one classed non-tech, has no page written for it, so the caption points at
  * the board instead. An "apply here" that 404s is worse than a generic link.
  */
-export function reelCaption(job, { url = null, max = CAPTION_MAX } = {}) {
+export function reelCaption(job, { url = null, max = CAPTION_MAX, format = 'A' } = {}) {
   const company = String(job.company ?? '').trim();
   const title = String(job.title ?? '').trim();
   const link = url || SITE;
 
   const head = company && title ? `${company} is hiring: ${title}` : (title || company || 'New internship');
-  const lines = [clamp(head, 150)];
+  const u = urgency(job);
+
+  /* FORMAT D LEADS ON THE EMPTY QUEUE, because that is what the reel above the
+     caption is about and a caption that opens on a different fact reads as a
+     caption for a different post. The employer still comes second, which
+     mirrors the reel's own reveal.
+
+     The wording is `urgency()` unchanged, not a second phrasing: it already
+     dates the claim ("when this was listed") because `applicants` is frozen at
+     scrape time, and two copies of that sentence would drift the first time
+     either was fixed. It is not repeated lower down — see below. */
+  const dLead = format === 'D' && u;
+  const lines = dLead ? [u, clamp(head, 150)] : [clamp(head, 150)];
 
   const f = facts(job);
   if (f.length) lines.push(f.join('  ·  '));
 
-  const u = urgency(job);
-  if (u) lines.push(u);
+  if (u && !dLead) lines.push(u);
 
   // One link, and it is ours. Instagram does not make caption links clickable,
   // so this is read and typed — which is the whole reason it has to be short

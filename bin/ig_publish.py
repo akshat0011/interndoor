@@ -62,6 +62,7 @@ def main() -> None:
     ap.add_argument("--caption-file", required=True)
     ap.add_argument("--duration", type=float, required=True)
     ap.add_argument("--account", required=True, help="the username that MUST own the token")
+    ap.add_argument("--region", help="ISO code selecting the region's credentials, e.g. US or IN")
     ap.add_argument("--dry-run", action="store_true", help="check everything, publish nothing")
     a = ap.parse_args()
 
@@ -71,11 +72,31 @@ def main() -> None:
     caption = Path(a.caption_file).read_text()
 
     env = load_env(APP / ".env")
-    uid, tok = env.get("IG_USER_ID"), env.get("IG_ACCESS_TOKEN")
+
+    # ONE ACCOUNT PER REGION, so the credential NAMES have to be per region too.
+    # IG_USER_ID_US / IG_ACCESS_TOKEN_US for @interndoorusa, IG_USER_ID_IN /
+    # IG_ACCESS_TOKEN_IN for @interndoorin. The bare names are read only when no
+    # region is given, or when the region's own pair is absent -- they are also
+    # the names storygasted's .env uses for a DIFFERENT account, which is the
+    # whole reason the guard below exists, and with two accounts of our own that
+    # collision stops being hypothetical.
+    names = []
+    if a.region:
+        r = a.region.strip().upper()
+        names.append((f"IG_USER_ID_{r}", f"IG_ACCESS_TOKEN_{r}"))
+    names.append(("IG_USER_ID", "IG_ACCESS_TOKEN"))
+
+    uid = tok = None
+    for user_key, tok_key in names:
+        if env.get(user_key) and env.get(tok_key):
+            uid, tok = env[user_key], env[tok_key]
+            break
+
     if not uid or not tok:
-        die("IG_USER_ID and IG_ACCESS_TOKEN are not in the interndoor .env. "
-            f"They must belong to @{a.account}; storygasted's own credentials are "
-            "for a different account and are deliberately not used.")
+        wanted = " or ".join(f"{u}/{t}" for u, t in names)
+        die(f"no Instagram credentials in the interndoor .env for @{a.account}. "
+            f"Looked for {wanted}. They must belong to @{a.account}; storygasted's "
+            "own credentials are for a different account and are deliberately not used.")
 
     # Injected BEFORE the import, because storygasted's need_env reads the
     # process environment. Overwriting rather than defaulting: if storygasted's
@@ -91,9 +112,12 @@ def main() -> None:
     with contextlib.redirect_stdout(sys.stderr):
         who = instagram.me()
     if who.get("username", "").lower() != a.account.lower():
+        suffix = f"_{a.region.strip().upper()}" if a.region else ""
         die(f"the token belongs to @{who.get('username') or 'unknown'}, not @{a.account} "
-            "— refusing to publish. Put the InternDoor account's own "
-            "IG_USER_ID and IG_ACCESS_TOKEN in the interndoor .env.")
+            "— refusing to publish. With one account per region a mismatch means the "
+            "reel was about to go to the WRONG audience, which cannot be undone. Put "
+            f"@{a.account}'s own IG_USER_ID{suffix} and IG_ACCESS_TOKEN{suffix} in the "
+            "interndoor .env.")
 
     # Instagram's own rule, checked before anything is uploaded so a too-long
     # reel fails in a second rather than after a tunnel and a 60s fetch.

@@ -235,7 +235,7 @@
     {
       "name": "TUV SUD",
       "aliases": [
-        "T\u00dcV S\u00dcD",
+        "TÜV SÜD",
         "TUV SUD South Asia",
         "TUV SUD India"
       ]
@@ -485,7 +485,7 @@
       ]
     },
     {
-      "name": "AtkinsR\u00e9alis",
+      "name": "AtkinsRéalis",
       "aliases": [
         "AtkinsRealis",
         "Atkins Realis",
@@ -496,7 +496,7 @@
       "name": "General Mills"
     },
     {
-      "name": "Mondel\u0113z International",
+      "name": "Mondelēz International",
       "aliases": [
         "Mondelez International",
         "Mondelez"
@@ -1084,7 +1084,25 @@
     "_timeoutSeconds_note": "Hard ceiling per call. A stuck model must never delay a listing - the run continues and the posting is enriched next time."
   },
   "reels": {
-    "account": "interndoorin",
+    "accounts": {
+      "US": "interndoorusa",
+      "IN": "interndoorin"
+    },
+    "_accounts_note": "ONE INSTAGRAM ACCOUNT PER REGION, and they must never be able to cross. @interndoorusa carries US roles, @interndoorin carries Indian ones. A reel posted to the wrong account cannot be taken back. Credentials live in .env under REGION-SUFFIXED names - IG_USER_ID_US/IG_ACCESS_TOKEN_US and IG_USER_ID_IN/IG_ACCESS_TOKEN_IN - because the bare IG_USER_ID/IG_ACCESS_TOKEN names are ALSO what storygasted's .env uses for a different account, which is the trap bin/ig_publish.py's guard was written for; with two accounts that collision stops being hypothetical. The guard still asks the live account who it is and refuses unless the username matches the region's entry here. A region absent from this map gets no reel at all, the same rule Telegram already follows for a region with no channel. Replaced the single 'account' key (was 'interndoorin') on 27 Aug.",
+    "auto": {
+      "enabled": true,
+      "regions": [
+        "US"
+      ],
+      "dailyCap": 20,
+      "dailyCapByRegion": {
+        "US": 20,
+        "IN": 10
+      },
+      "perSweep": 3,
+      "maxAgeHours": 48
+    },
+    "_auto_note": "Publish a reel for newly scraped jobs automatically, with no approval step. THE CAP IS FORCED BY THE PLATFORM, not by taste: Instagram's Content Publishing API allows 100 posts per rolling 24h per account, verified live, and US intake over the fortnight to 27 Aug ran mean 78 tech listings a day, MEDIAN 105 and peak 138. So 'a reel for every new US job' is not something the account is permitted to do - on a normal day the API would start refusing partway through, and the reels lost would be an arbitrary tail rather than the least interesting ones. An explicit cap means the pipeline chooses which roles go out, freshest first. Raise dailyCap when the account has history: a profile with one post jumping to 100/day is the shape Instagram restricts. Spacing is DERIVED from the cap (window hours / cap) rather than taken from spacingMinutes, which is 180 and belongs to the manual queue - at 180 the 10:00-22:00 window holds four posts, so a cap of 20 would take three days to deliver one day's roles. Set auto.spacingMinutes to override. enabled:false stops all automatic posting without unpicking the config; a region listed here but absent from 'accounts' is skipped.",
     "_account_note": "The Instagram USERNAME that must own IG_ACCESS_TOKEN. bin/ig_publish.py asks the live account who it is and refuses to publish unless this matches, because storygasted's .env holds credentials for a DIFFERENT account (storygasted) under the same variable names - and a reel posted to the wrong account cannot be taken back. It is 'interndoorin', not 'interndoor': the Instagram handle and the Telegram channel are not the same string.",
     "voiceTempo": 1.15,
     "_voiceTempo_note": "How much the voiceover is sped up after synthesis. Raw Qwen3-TTS runs about 1.7 words/second. Settled by listening, over several rounds: 1.25 too slow, 1.5 fine, 1.6 a little too fast, 1.45 too fast, 1.3 too fast. TWO THINGS MOVED THE TARGET DOWN and both are about pauses rather than word rate - src/reelscript.js builds one clause per beat instead of four sentences, and bin/render-reel.js synthesises each beat separately and joins them with beatPause. Both removed dead air, and dead air is what made 1.25 feel slow in the first place, so the right tempo ended up BELOW the 1.5 that once felt right rather than above it. Do not re-derive this from words-per-second; it is a felt quantity. REEL_VO_TEMPO=1.05 npm run reel -- --job=<id> compares without editing anything.",
