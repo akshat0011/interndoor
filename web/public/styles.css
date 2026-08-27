@@ -1479,3 +1479,35 @@ a, button, summary, label, [role="button"], .row {
 }
 .chan:active { transform: scale(.995); }
 @media (prefers-reduced-motion: reduce) { .chan:active { transform: none; } }
+
+/* ---- the board's signup band --------------------------------------
+   The same position and weight .outro gives the form on every generated
+   page. The board is the one page that does not call foot(), so its form
+   had been left inside <footer class="foot"> below the disclaimer — the
+   least-read part of the page.
+
+   Defined HERE and not in page.css because the board loads only this
+   file. It is deliberately NOT named .outro: that class carries the
+   generated pages' own two action buttons, and giving the board a
+   half-implemented copy of it is how the two drift. */
+.signup-band {
+  margin-top: 48px; padding: 40px 22px; text-align: center;
+  border-top: 1px solid var(--rule);
+  background:
+    radial-gradient(60% 120% at 50% 0%, color-mix(in oklab, var(--live) 7%, transparent), transparent 70%),
+    var(--bg-2);
+}
+.signup-band b {
+  display: block; font-family: var(--display); font-weight: 900;
+  font-size: clamp(20px, 3vw, 30px); line-height: 1.04; letter-spacing: -.035em;
+  text-transform: uppercase; color: var(--ink);
+}
+.signup-band p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
+.signup-band a { color: var(--live); text-underline-offset: 3px; }
+/* The label repeats the heading above it here, so it is for screen readers
+   only — the band already says what the box is for. */
+.signup-band .sub { margin-top: 20px; }
+.signup-band .sub-l {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

@@ -232,6 +232,35 @@
     </aside>
   </div>
 
+  <!-- The email signup, in a band of its own.
+
+       IT WAS INSIDE <footer class="foot">, below the disclaimer and the
+       crawler's company link, which is the least-read part of the page. Every
+       generated page already gives it the .outro band immediately after the
+       content; the board is the one page that does not call foot(), so it had
+       been left behind. This is the same position, built from the tokens in
+       styles.css rather than page.css, which the board does not load.
+
+       NO data-region: this file is the TEMPLATE for all three boards, and
+       subscribe.js reads <meta name="interndoor-region"> instead. -->
+  <section class="signup-band">
+    <div class="wrap">
+      <b>Never refresh this page again</b>
+      <p>New engineering internships by email, within minutes of going live. Or <a href="/alerts">pick another channel</a>.</p>
+    <form class="sub" method="post" action="/api/subscribe">
+    <label class="sub-l">Get new internships by email — one message, no spam.</label>
+    <div class="sub-row">
+    <input class="sub-i" aria-label="Get new internships by email" type="email" name="email" required
+    autocomplete="email" inputmode="email" spellcheck="false"
+    placeholder="you@college.edu">
+    <button class="sub-b" type="submit">Subscribe</button>
+    </div>
+    <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+    <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
+    </div>
+  </section>
+
   <footer class="foot">
     <div class="wrap">
       <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
@@ -243,29 +272,6 @@
            hub reaches every job page. -->
       <p><a href="/companies/">Browse internships by company →</a></p>
 
-      <!-- The email signup.
-
-           NO data-region HERE, deliberately. This file is the TEMPLATE for
-           every board — writeHomePage() renders it for India, the US and the
-           UK — so a baked-in attribute would tell the US and UK boards they
-           were India. subscribe.js falls back to <meta name="interndoor-region">,
-           which IS filled per region inside the REGION:HEAD marker. A generated
-           job page bakes the attribute in instead, because there it is known at
-           build time and cannot be wrong.
-
-           The markup is otherwise identical to signupForm() in src/pages.js,
-           and .sub lives in styles.css rather than page.css so both get it. -->
-      <form class="sub" method="post" action="/api/subscribe">
-        <label class="sub-l">Get new internships by email — one message, no spam.</label>
-        <div class="sub-row">
-          <input class="sub-i" aria-label="Get new internships by email" type="email" name="email" required
-                 autocomplete="email" inputmode="email" spellcheck="false"
-                 placeholder="you@college.edu">
-          <button class="sub-b" type="submit">Subscribe</button>
-        </div>
-        <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
-        <p class="sub-msg" role="status" aria-live="polite"></p>
-      </form>
 
       <!--
         Every current listing, as real links in the HTML.
