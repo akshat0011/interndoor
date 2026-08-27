@@ -835,11 +835,14 @@ a, button, summary, label, [role="button"], .row {
   container-type: size;
   width: 100%; aspect-ratio: 1; max-width: 372px; margin: 18px auto 4px;
 }
+/* EVERY CHIP SITS AT THE CENTRE and is moved by `transform` from poolFloat().
+   Anchoring them at 50%/50% rather than at their scattered left/top means the
+   loop writes one property and never touches layout — and the starting scatter
+   is carried in as the first frame's translate rather than as a position. */
 .pool-i {
-  position: absolute;
+  position: absolute; left: 50%; top: 50%;
   width: var(--sz); height: var(--sz);
-  margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2);   /* left/top are the CENTRE */
-  animation: pool-x var(--tx) ease-in-out var(--d1) infinite alternate;
+  margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2);
   will-change: transform;
 }
 .pool-c {
@@ -847,20 +850,9 @@ a, button, summary, label, [role="button"], .row {
   width: 100%; height: 100%; padding: 17%;
   background: #fff; border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06);
-  animation: pool-y var(--ty) ease-in-out var(--d2) infinite alternate,
-             pool-tilt var(--tr) ease-in-out var(--d1) infinite alternate;
+  will-change: rotate;
 }
 .pool-c svg { width: 100%; height: 100%; fill: var(--c); overflow: visible; }
-
-@keyframes pool-x    { to { transform: translateX(var(--dx)); } }
-@keyframes pool-y    { to { transform: translateY(var(--dy)); } }
-@keyframes pool-tilt { to { rotate: var(--rot); } }
-
-/* A still, legible pool — the scatter is in the markup, so nothing has to move
-   for it to look like anything. */
-@media (prefers-reduced-motion: reduce) {
-  .pool-i, .pool-c { animation: none !important; }
-}
 
 .idle-n { margin-top: 12px; font-family: var(--mono); font-size: var(--t-micro); color: var(--ink-2); }
 
@@ -951,6 +943,11 @@ a, button, summary, label, [role="button"], .row {
 .fact dt { font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
 .fact dd { margin: 6px 0 0; font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
 .fact dd.cash { color: var(--cash); }
+/* A fact the posting never stated. Deliberately NOT `.dim`, which is the
+   footer's muted paragraph and carries a margin — reusing it would push the
+   value out of its cell. Quieter and lighter than a real value, so the eye
+   skips it without having to read it. */
+.fact dd.unk { color: var(--ink-3); font-weight: 400; }
 
 .pane h3 { font-family: var(--mono); font-weight: 700; font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-2); margin: 22px 0 10px; }
 .p-gist { font-size: 14.5px; white-space: pre-line; }

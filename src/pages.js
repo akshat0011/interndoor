@@ -997,7 +997,15 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     job.roleLabel ? ['Focus', esc(job.roleLabel)] : null,
     job.degreeLevel ? ['Eligibility', esc([job.degreeLevel, job.degreeText].filter(Boolean).join(' · '))] : null,
     durationText(job) ? ['Duration', esc(durationText(job))] : null,
-    stipendText(job) ? ['Stipend', `<span class="cash">${esc(stipendText(job))}</span>`] : null,
+    // A stipend the posting never stated is NOT DISCLOSED, never "Unpaid".
+    // Saying nothing at all left a reader unable to tell "this employer pays
+    // nothing" from "we do not know" — and the field that used to answer that,
+    // `stipendStatus`, is a local-model guess measured wrong on every one of
+    // the 110 rows it marked unpaid. This says exactly what is true: the
+    // posting did not say, and the linked original is where to look.
+    stipendText(job)
+      ? ['Stipend', `<span class="cash">${esc(stipendText(job))}</span>`]
+      : ['Stipend', '<span class="unk">Not disclosed</span>'],
     // Same fallback as validThrough and the JSON-LD above. It was the one date
     // here without it, and toISOString on an Invalid Date throws — which would
     // not lose one page, it would abort writePages and with it the whole publish.

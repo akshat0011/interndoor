@@ -335,6 +335,120 @@ const BRANDS = [
 ];
 
 /**
+ * The pool drifts, bounces off the rim, and the marks collide with each other.
+ *
+ * THIS IS THE ONE PLACE ON THE SITE THAT ANIMATES FROM JAVASCRIPT, and it is a
+ * deliberate exception. CSS keyframes were tried first and cannot express it:
+ * a keyframe is a fixed path known in advance, so twenty marks each ran their
+ * own little loop and nothing ever reacted to anything else — which is exactly
+ * what made it read as static rather than as floating. Collision is a response
+ * to another element's position, and only a frame loop can compute that.
+ *
+ * The cost is bounded and paid for:
+ *   - it runs ONLY while the idle panel is on screen. Opening a role, or
+ *     hiding the tab, stops the loop dead rather than compositing for nobody —
+ *     which is the mistake the apply-button glow made 259 times over.
+ *   - twenty bodies is 190 pair tests a frame, which is nothing.
+ *   - it writes `transform` and `rotate` only, so every frame stays on the
+ *     compositor and nothing reflows.
+ *   - `prefers-reduced-motion` never starts it, and the phyllotaxis scatter
+ *     already looks deliberate standing still.
+ */
+function poolFloat(wall, pts) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (poolFloat.stop) poolFloat.stop();
+
+  let raf = 0;
+  let last = 0;
+  let R = 0;            // pool radius, px
+  const measure = () => { R = wall.getBoundingClientRect().width / 2; };
+  measure();
+
+  // Positions are held in px from the centre so the maths is in one unit; they
+  // start from the percentages the scatter already produced.
+  for (const p of pts) {
+    p.px = (p.x - 50) / 100 * (R * 2);
+    p.py = (p.y - 50) / 100 * (R * 2);
+    p.r = p.sz / 100 * (R * 2) / 2;
+  }
+
+  const frame = (t) => {
+    const dt = Math.min((t - (last || t)) / 1000, 0.05);   // clamp a tab-switch jump
+    last = t;
+
+    for (const p of pts) {
+      p.px += p.vx * dt;
+      p.py += p.vy * dt;
+      p.rot += p.spin * dt;
+
+      // The rim. Reflect the component pointing outwards, and pull the body
+      // back inside — without that a mark that overshoots can stick to the edge
+      // reflecting every frame.
+      const d = Math.hypot(p.px, p.py);
+      const max = R - p.r - 1;
+      if (d > max && d > 0) {
+        const nx = p.px / d; const ny = p.py / d;
+        const dot = p.vx * nx + p.vy * ny;
+        if (dot > 0) { p.vx -= 2 * dot * nx; p.vy -= 2 * dot * ny; }
+        p.px = nx * max; p.py = ny * max;
+      }
+    }
+
+    // Equal-mass elastic collisions: swap the velocity components along the
+    // line of centres and leave the tangential ones alone.
+    for (let a = 0; a < pts.length; a++) {
+      for (let c = a + 1; c < pts.length; c++) {
+        const p = pts[a]; const q = pts[c];
+        const dx = q.px - p.px; const dy = q.py - p.py;
+        const d = Math.hypot(dx, dy);
+        const min = p.r + q.r;
+        if (d === 0 || d >= min) continue;
+        const nx = dx / d; const ny = dy / d;
+        // Separate first, or overlapping bodies trade velocity every frame and
+        // shiver against each other instead of bouncing apart.
+        const push = (min - d) / 2;
+        p.px -= nx * push; p.py -= ny * push;
+        q.px += nx * push; q.py += ny * push;
+        const pn = p.vx * nx + p.vy * ny;
+        const qn = q.vx * nx + q.vy * ny;
+        if (qn - pn >= 0) continue;            // already separating
+        p.vx += (qn - pn) * nx; p.vy += (qn - pn) * ny;
+        q.vx += (pn - qn) * nx; q.vy += (pn - qn) * ny;
+      }
+    }
+
+    for (const p of pts) {
+      p.el.style.transform = `translate3d(${p.px.toFixed(2)}px, ${p.py.toFixed(2)}px, 0)`;
+      p.chip.style.rotate = `${p.rot.toFixed(2)}deg`;
+    }
+    raf = requestAnimationFrame(frame);
+  };
+
+  const running = () => raf !== 0;
+  const start = () => { if (!running()) { last = 0; raf = requestAnimationFrame(frame); } };
+  const halt = () => { if (running()) { cancelAnimationFrame(raf); raf = 0; } };
+
+  // Only while the panel is actually visible to somebody.
+  const idle = $('detail-placeholder');
+  const sync = () => {
+    measure();
+    if (!document.hidden && idle && !idle.hidden) start(); else halt();
+  };
+  const mo = new MutationObserver(sync);
+  if (idle) mo.observe(idle, { attributes: true, attributeFilter: ['hidden'] });
+  document.addEventListener('visibilitychange', sync);
+  addEventListener('resize', sync, { passive: true });
+
+  poolFloat.stop = () => {
+    halt(); mo.disconnect();
+    document.removeEventListener('visibilitychange', sync);
+    removeEventListener('resize', sync);
+    poolFloat.stop = null;
+  };
+  sync();
+}
+
+/**
  * Fill the idle panel: a slow pool of brand marks, and the live employer count.
  *
  * The wall is decorative and the count is not — so the count is computed from
@@ -413,26 +527,19 @@ function renderIdle() {
     BRANDS.forEach((b, i) => {
       const pt = pts[i];
       const cell = el('span', 'pool-i');
-      cell.style.left = `${pt.x}%`;
-      cell.style.top = `${pt.y}%`;
       cell.style.setProperty('--sz', `${pt.sz}cqmin`);
+      // The starting scatter, as the first frame. poolFloat takes over from here
+      // and never writes left/top again, so no frame can trigger layout.
+      cell.style.transform = `translate3d(${(pt.x - 50) / 100 * 372}px, ${(pt.y - 50) / 100 * 372}px, 0)`;
 
-      // Each mark wanders on its own two periods, one per axis. Equal periods
-      // would give every logo a straight diagonal shuttle; unequal ones trace a
-      // slow Lissajous curve that takes minutes to repeat, so nothing in the
-      // pool ever looks like it is on a timer. The travel is small — a chip
-      // that wandered far would reopen the overlaps the relaxation just closed.
-      cell.style.setProperty('--dx', `${(rnd(i, 4) - 0.5) * 13}px`);
-      cell.style.setProperty('--dy', `${(rnd(i, 5) - 0.5) * 13}px`);
-      cell.style.setProperty('--tx', `${9 + rnd(i, 6) * 7}s`);
-      cell.style.setProperty('--ty', `${11 + rnd(i, 7) * 9}s`);
-      cell.style.setProperty('--tr', `${13 + rnd(i, 8) * 10}s`);
-      cell.style.setProperty('--rot', `${(rnd(i, 9) - 0.5) * 14}deg`);
-      // Negative delays start every mark part-way through its own cycle, so the
-      // pool is already in motion on the first frame instead of everything
-      // setting off together from rest.
-      cell.style.setProperty('--d1', `${-rnd(i, 10) * 16}s`);
-      cell.style.setProperty('--d2', `${-rnd(i, 11) * 20}s`);
+      // Seed velocity. Slow — this is a pool, not a screensaver — and
+      // deterministic, so the opening frame is the same every time.
+      const sp = 5 + rnd(i, 4) * 7;                      // px per second
+      const dir = rnd(i, 5) * Math.PI * 2;
+      pt.vx = Math.cos(dir) * sp;
+      pt.vy = Math.sin(dir) * sp;
+      pt.spin = (rnd(i, 6) - 0.5) * 7;                   // degrees per second
+      pt.rot = (rnd(i, 7) - 0.5) * 16;
 
       // Sony's brand colour is #FFFFFF, which on a white chip is an empty
       // circle. Anything this light is darkened rather than dropped — the mark
@@ -463,7 +570,11 @@ function renderIdle() {
       cell.append(chip);
       cell.title = b.n;
       wall.append(cell);
+      pt.el = cell;
+      pt.chip = chip;
     });
+
+    poolFloat(wall, pts);
   }
 
   const live = state.jobs.filter((j) => kindOf(j) === state.kind);
@@ -1257,8 +1368,13 @@ function renderDetail(job) {
   // generated job pages use, so "Rs 0" and the stray "2,026" never render as a
   // wage — and only ever a real figure, never a badge derived from
   // `stipendStatus`, which measurement shows is invented. See factLine.
+  // A figure when there is one, and otherwise NOT DISCLOSED — never "Unpaid".
+  // Silence left a reader unable to tell an unpaid role from an unstated one;
+  // this says which it is. The card stays silent, because a "not disclosed"
+  // chip on three cards in four is noise, not information.
   const money = stipendText(job);
   if (money) addFact('stipend', money, 'cash');
+  else addFact('stipend', 'Not disclosed', 'unk');
   // Eligibility — the one fact that can rule a reader out entirely.
   if (job.degreeLevel) addFact('eligibility', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · '));
   // An unknown fact is OMITTED, never rendered as an em-dash. A grid of stubs
