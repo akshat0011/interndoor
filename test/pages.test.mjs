@@ -619,5 +619,35 @@ const atsLive = vtOf(renderJobPage({ ...ats, postedAt: postedMs, firstSeenAt: po
   lastSeenAt: seen, location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] }));
 check('a still-listed ATS row expires in the future', Date.parse(atsLive) > Date.now(), true);
 
+console.log('\n== the email signup is on every generated page ==');
+/* It is on the GENERATED pages, not only the homepage, because that is where
+   the traffic lands: somebody arriving from Google arrives on a job page. */
+const subJob = renderJobPage(vtJob, [], { region: regionOf('US') });
+const subHub = renderCompanyPage('Adobe', [vtJob], [], '');
+check('the job page carries the form', subJob.includes('<form class="sub"'), true);
+check('and so does the company hub', subHub.includes('<form class="sub"'), true);
+
+/* The API is NOT region-prefixed. REGION_LINKS localises /jobs/ and /companies/
+   and must never touch this, or the US board would post to /us/api/subscribe
+   and 404. */
+check('the action is the bare endpoint on a US page',
+  /action="\/api\/subscribe"/.test(subJob), true);
+check('and is not localised', subJob.includes('/us/api/subscribe'), false);
+
+// The board is baked in at build time, not inferred at runtime.
+check('the US page tags itself US', /data-region="US"/.test(subJob), true);
+check('an India page tags itself IN',
+  /data-region="IN"/.test(renderJobPage(vtJob, [], { region: regionOf('IN') })), true);
+
+/* A real method and action, so a reader with no JavaScript still reaches the
+   list rather than pressing a dead button. */
+check('it degrades to a real POST', /method="post"/.test(subJob), true);
+
+// The honeypot must stay out of the tab order and out of the a11y tree.
+check('the honeypot is aria-hidden', /class="sub-hp" aria-hidden="true"/.test(subJob), true);
+check('and is not tabbable', /name="company" tabindex="-1"/.test(subJob), true);
+// The status line is announced, or a screen-reader user never learns it worked.
+check('the reply is a live region', /class="sub-msg" role="status" aria-live="polite"/.test(subJob), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

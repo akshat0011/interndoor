@@ -686,6 +686,43 @@ ${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alert
  * moment on a sentence about sources of truth. That sentence is still here —
  * underneath, in the footer, where a disclaimer belongs.
  */
+/**
+ * The email signup, on every generated page.
+ *
+ * IT IS HERE AND NOT ONLY ON THE HOMEPAGE because this is where the traffic
+ * actually lands. Somebody arriving from Google arrives on a JOB page — that is
+ * the whole point of 944 indexed pages — reads one posting and leaves, and the
+ * homepage is a page they may never see. Putting the only capture on the
+ * homepage would be putting it where the readers are not.
+ *
+ * It sits BELOW the Telegram and browse buttons deliberately. Telegram is
+ * instant and already works; email is the one that survives someone changing
+ * messaging app, and is worth offering second rather than instead.
+ *
+ * `data-region` is rendered in rather than read from the meta tag: this page
+ * already knows which board it belongs to at build time, and a value baked into
+ * the markup cannot be wrong the way one inferred at runtime can.
+ *
+ * NO-JS BEHAVIOUR IS A REAL POST, NOT A DEAD BUTTON. The action and method are
+ * set, so a reader whose JavaScript never arrives still lands on the list — they
+ * see the endpoint's JSON, which is ugly, but they ARE subscribed. web/api's
+ * `form-action 'self'` in vercel.json already permits it. page.js intercepts
+ * for everyone else and keeps them on the page.
+ */
+function signupForm(region) {
+  return `<form class="sub" method="post" action="/api/subscribe" data-region="${esc(region.code)}">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>`;
+}
+
 function foot({ headline, sub, region = DEFAULT_REGION }) {
   return `
 <section class="outro">
@@ -699,6 +736,7 @@ function foot({ headline, sub, region = DEFAULT_REGION }) {
       </a>
       <a class="a-2" href="${regionHref('/', region)}">Browse all live internships</a>
     </div>
+    ${signupForm(region)}
   </div>
 </section>
 <footer class="foot">

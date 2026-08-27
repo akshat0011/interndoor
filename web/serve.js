@@ -2,9 +2,11 @@
 /**
  * Local preview server for the site.
  *
- * Serves web/public and answers /api/tailor by loading the same handler Vercel
- * runs in production, so the whole flow can be exercised before deploying.
- * Set GEMINI_API_KEY in your shell to test resume tailoring locally.
+ * Serves web/public and answers the /api routes by loading the same handlers
+ * Vercel runs in production, so the whole flow can be exercised before
+ * deploying. Set GEMINI_API_KEY for resume tailoring and BUTTONDOWN_API_KEY for
+ * email signup; without a key each route returns the same refusal it would
+ * live, which is itself worth being able to see.
  *
  *   node web/serve.js          →  http://localhost:4321
  */
@@ -59,9 +61,12 @@ function shimResponse(res) {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
-  if (url.pathname === '/api/tailor') {
+  /* Every file in web/api is a Vercel function in production and is loaded here
+     by the same path, so a route cannot work locally and 404 live. */
+  const API = { '/api/tailor': './api/tailor.js', '/api/subscribe': './api/subscribe.js' };
+  if (API[url.pathname]) {
     try {
-      const { default: handler } = await import('./api/tailor.js');
+      const { default: handler } = await import(API[url.pathname]);
       req.body = await readBody(req);
       return handler(req, shimResponse(res));
     } catch (err) {
