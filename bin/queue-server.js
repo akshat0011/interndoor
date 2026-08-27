@@ -521,6 +521,7 @@ function autoSweep() {
   for (const region of autoRegions(cfg)) {
     const cap = dailyCap(region, cfg);
     const used = store.reelCountSince(region, now - 86_400_000);
+    let spent = used;   // moves as we queue, so the log counts up rather than repeating
     let budget = Math.min(cap - used, perSweep);
     if (budget <= 0) {
       if (cap - used <= 0) log.info(`Reels: ${region} has used its daily cap (${used}/${cap}) — nothing queued.`);
@@ -540,7 +541,8 @@ function autoSweep() {
       if (r.queued) {
         known.add(String(j.id));
         budget--;
-        log.info(`Reels: queued ${region} ${j.company} — ${j.title} (auto, ${used + 1}/${cap} today)`);
+        spent++;
+        log.info(`Reels: queued ${region} ${j.company} — ${j.title} (auto, ${spent}/${cap} today)`);
       } else if (r.error && !/already/.test(r.error)) {
         log.warn(`Reels: could not queue ${j.id} — ${r.error}`);
       }
