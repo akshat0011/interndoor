@@ -644,6 +644,7 @@ ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robo
 <link rel="stylesheet" href="/page.css">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
