@@ -1,5 +1,5 @@
 {
- "generatedAt": 1787827486182,
+ "generatedAt": 1787830504450,
  "region": "IN",
  "regionName": "India",
  "count": 280,
@@ -228,6 +228,43 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4458376472",
+   "title": "AI Training |Internship| Job Opportunity |2026 Graduates",
+   "company": "Krutrim Insights",
+   "matchedWatchlist": "Krutrim",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/krutrim-insights.jpg",
+   "location": "India",
+   "workplaceType": "Remote",
+   "stipend": "₹0 ",
+   "duration": null,
+   "applicants": "3 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship offers recent ai graduates hands-on training with real data and tools, leading to a paid international internship and potential job placement. Ideal for btech, be, or mca graduates in delhi ncr looking to launch their ai careers.",
+   "bullets": [
+    "Train ai models using real-world data sets",
+    "Work with python and tensorflow frameworks",
+    "Eligible for paid internship abroad"
+   ],
+   "roleLabel": "AI Training",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech/B.E./MCA",
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": "42 minutes ago",
+   "postedAt": 1787827503526,
+   "firstSeenAt": 1787830023534,
+   "lastSeenAt": 1787830023534,
+   "url": "https://www.linkedin.com/jobs/view/4458376472/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4458376472/",
+   "description": null,
+   "roleFingerprint": "231cb68bc2",
+   "region": "IN"
+  },
   {
    "id": "4458378217",
    "title": "Trainee- Product Engineer",
@@ -12483,56 +12520,6 @@
    "applyUrl": "https://www.linkedin.com/jobs/view/4443290829/",
    "description": null,
    "roleFingerprint": "93774e3f4a",
-   "region": "IN"
-  },
-  {
-   "id": "4443257825",
-   "title": "Internship - Tools & Development (Python)",
-   "company": "HARMAN India",
-   "matchedWatchlist": "Harman",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/harman-india.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    ".net",
-    "linux"
-   ],
-   "summary": "Introduction: A Career at HARMAN Automotive We’re a global, multi-disciplinary team that’s putting the innovative power of technology to work and transforming tomorrow. At HARMAN Automotive, we give you the keys to fast-track your career. The internship Program brings together experiences that will help our co-ops and interns develop both personally and professionally, Students pursuing their undergraduate and post-graduate degree programs wherein internship is a mandatory requirement of the curriculum or those who have completed their studies and are looking for a short work experience.",
-   "bullets": [
-    "Develop and maintain automated test scripts using Python for embedded software",
-    "Create and execute test plans, cases, and reports to ensure software quality",
-    "Troubleshoot issues with software and hardware engineers",
-    "Work with Linux-based systems and contribute to CI/automation frameworks"
-   ],
-   "roleLabel": "Tools & Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.E/B.Tech",
-   "keySkills": [
-    "python",
-    "embedded c/c++",
-    "java",
-    "oops",
-    "software testing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1785235989751,
-   "firstSeenAt": 1785236529761,
-   "lastSeenAt": 1785245573796,
-   "url": "https://www.linkedin.com/jobs/view/4443257825/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4443257825/",
-   "description": null,
-   "roleFingerprint": "bfd7beaebf",
    "region": "IN"
   },
   {

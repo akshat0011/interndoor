@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/redwood-materials-test-automation-engineer-intern-fall-2026-4449946401",
+      "url": "https://interndoor.com/us/jobs/redwood-materials-test-automation-engineer-intern-fall-2026-4449946401",
+      "title": "Test Automation Engineer Intern - Fall 2026 — Redwood Materials",
+      "content_text": "Company: Redwood Materials · Location: San Francisco, CA · Duration: Fall 2026\n• Write Python tests for firmware and hardware validation using pytest\n• Control power supplies and data acquisition hardware with SCPI and Modbus\n• Help build test stands from wiring to software for new hardware\n• Debug failures across test code, firmware, and battery units",
+      "date_published": "2026-08-27T11:10:57.647Z",
+      "authors": [
+        {
+          "name": "Redwood Materials"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ericsson-customer-solutions-intern-4458372542",
+      "url": "https://interndoor.com/us/jobs/ericsson-customer-solutions-intern-4458372542",
+      "title": "Customer Solutions Intern — Ericsson",
+      "content_text": "Company: Ericsson · Location: Plano, TX · Duration: 12 weeks\n• Support emerging tech like 5G/6G, AI, and cloud-native platforms\n• Collaborate on network transformation and tech strategy projects\n• Analyze data and use AI tools to improve project efficiency",
+      "date_published": "2026-08-27T10:48:10.347Z",
+      "authors": [
+        {
+          "name": "Ericsson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ericsson-swe-automation-intern-4458377467",
+      "url": "https://interndoor.com/us/jobs/ericsson-swe-automation-intern-4458377467",
+      "title": "SWE Automation Intern — Ericsson",
+      "content_text": "Company: Ericsson · Location: Plano, TX · Duration: 12 weeks\n• Develop and integrate software components according to specifications\n• Work with cross-functional teams and use CI/CD tools like Git and Jenkins\n• Contribute to testing and ensure security and compliance in development",
+      "date_published": "2026-08-27T10:47:43.848Z",
+      "authors": [
+        {
+          "name": "Ericsson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ericsson-ai-software-engineer-intern-4458377468",
+      "url": "https://interndoor.com/us/jobs/ericsson-ai-software-engineer-intern-4458377468",
+      "title": "AI Software Engineer Intern — Ericsson",
+      "content_text": "Company: Ericsson · Location: Plano, TX · Duration: 12 weeks\n• Recompile code languages to java using automated tools\n• Create scripts to map data across repositories\n• Deploy apps to kubernetes with helm charts",
+      "date_published": "2026-08-27T10:47:21.973Z",
+      "authors": [
+        {
+          "name": "Ericsson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cloudflare-software-engineer-intern-fall-2026-austin-tx-4438054811",
+      "url": "https://interndoor.com/us/jobs/cloudflare-software-engineer-intern-fall-2026-austin-tx-4438054811",
+      "title": "Software Engineer Intern (Fall 2026) - Austin, TX — Cloudflare",
+      "content_text": "Company: Cloudflare · Location: Austin, TX · Duration: 12-14 weeks\n• Write code that affects millions of websites and apps globally\n• Use Typescript, Go, Rust, and Python in a microservices architecture\n• Work with experienced engineers and present projects company-wide",
+      "date_published": "2026-08-27T10:32:48.339Z",
+      "authors": [
+        {
+          "name": "Cloudflare"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/synopsys-inc-agentic-ai-internship-4459683689",
       "url": "https://interndoor.com/us/jobs/synopsys-inc-agentic-ai-internship-4459683689",
       "title": "Agentic AI Internship — Synopsys Inc",
@@ -539,66 +599,6 @@
       "title": "Systems Engineering Intern — Leidos",
       "content_text": "Company: Leidos · Location: Odenton, MD\n• Support senior engineers in designing and maintaining IT infrastructure including servers, networks, and storage\n• Work with VMware and ESXi systems, apply DoW security standards, and automate deployments using Python/Bash\n• Onsite at Ft Meade, MD for 100% in-person work, requires DoD Secret clearance and active IAT Level II certification",
       "date_published": "2026-08-26T21:16:25.567Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457299312",
-      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457299312",
-      "title": "Cybersecurity Analyst Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Hill Air Force Base, Utah, United States\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Review threat intel and IOCs to improve detection of cyber threats",
-      "date_published": "2026-08-26T21:16:23.257Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457714214",
-      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457714214",
-      "title": "Cybersecurity Analyst Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Pearl City, HI\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Learn to identify IOCs and improve detection using threat intelligence feeds",
-      "date_published": "2026-08-26T21:16:06.061Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-software-engineering-and-ai-intern-4457700289",
-      "url": "https://interndoor.com/us/jobs/leidos-software-engineering-and-ai-intern-4457700289",
-      "title": "Software Engineering & AI Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Design, develop, and deploy software in Python, Java, and SQL\n• Build real-time data pipelines with Kafka and Elastic\n• Work on AI/ML projects for self-healing networks\n• Attend daily scrums with remote and on-site team",
-      "date_published": "2026-08-26T21:16:03.370Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457704261",
-      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457704261",
-      "title": "Cybersecurity Analyst Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Whitehall, OH\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to detect malicious activity\n• Assist in network traffic analysis and incident response with SOC analysts\n• Gain hands-on experience with threat intelligence and IOCs in real-world defense",
-      "date_published": "2026-08-26T21:16:01.399Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-transport-network-engineer-intern-4457293621",
-      "url": "https://interndoor.com/us/jobs/leidos-transport-network-engineer-intern-4457293621",
-      "title": "Transport Network Engineer Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Support network upgrades and troubleshoot optical platforms like SONET and DWDM\n• Maintain ServiceNow ITSM documentation and assist with ASI maintenance scheduling\n• Based in Scott AFB, IL, on-site only, no remote work",
-      "date_published": "2026-08-26T21:15:58.317Z",
       "authors": [
         {
           "name": "Leidos"
