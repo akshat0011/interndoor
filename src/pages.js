@@ -665,7 +665,7 @@ ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.document
     </a>
 
     <div class="bar-right">
-${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alerts" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
+${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alerts" href="${regionHref('/alerts', region)}">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         <span>Get alerts</span>
       </a>
@@ -710,11 +710,17 @@ ${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alert
  * `form-action 'self'` in vercel.json already permits it. page.js intercepts
  * for everyone else and keeps them on the page.
  */
-function signupForm(region) {
+function signupForm(region, { heading = true } = {}) {
+  /* On /alerts the form sits under an "By email" heading, so repeating "Or get
+     them by email" above the box says the same thing twice. The label is still
+     rendered for screen readers, just visually hidden. */
+  const labelText = heading
+    ? 'Or get them by email — one message, no spam.'
+    : 'Your email address';
   return `<form class="sub" method="post" action="/api/subscribe" data-region="${esc(region.code)}">
-      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <label class="sub-l${heading ? '' : ' vh'}">${labelText}</label>
       <div class="sub-row">
-        <input class="sub-i" id="sub-email" type="email" name="email" required
+        <input class="sub-i" aria-label="${esc(labelText)}" type="email" name="email" required
                autocomplete="email" inputmode="email" spellcheck="false"
                placeholder="you@college.edu">
         <button class="sub-b" type="submit">Subscribe</button>
@@ -724,20 +730,20 @@ function signupForm(region) {
     </form>`;
 }
 
-function foot({ headline, sub, region = DEFAULT_REGION }) {
+function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
   return `
 <section class="outro">
   <div class="wrap">
     <b>${headline}</b>
     <p>${sub}</p>
     <div class="outro-acts">
-      <a class="a-1" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
+      <a class="a-1" href="${regionHref('/alerts', region)}">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        Get every new role on Telegram
+        Get every new role
       </a>
       <a class="a-2" href="${regionHref('/', region)}">Browse all live internships</a>
     </div>
-    ${signupForm(region)}
+    ${signup ? signupForm(region) : ''}
   </div>
 </section>
 <footer class="foot">
@@ -1096,7 +1102,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <dl class="facts">
             ${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n            ')}
           </dl>
-          <a class="jp-sub" href="${esc(region.telegram)}" target="_blank" rel="noopener noreferrer">
+          <a class="jp-sub" href="${regionHref('/alerts', region)}">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             Get roles like this the minute they post
           </a>
@@ -1855,6 +1861,82 @@ ${foot({
   })}`;
 }
 
+/**
+ * /alerts — every way to follow this board, in one place.
+ *
+ * IT IS A PAGE, NOT A LINK. The header used to send readers straight to
+ * Telegram, which quietly decided for them that Telegram was the channel they
+ * wanted — and offered nothing at all to somebody who does not use it. Email is
+ * the only channel the site OWNS rather than rents, so it leads here, and the
+ * rest are alternatives rather than the default.
+ *
+ * `channels` is passed in rather than read from config, because this module
+ * takes no config — src/channels.js decides, and its rule is that a region with
+ * NO channel gets no link rather than another region's. GB has neither a
+ * Telegram channel nor an Instagram account, so its page honestly offers email
+ * alone. Adding WhatsApp later is a config entry and nothing here.
+ */
+export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = regionUrl('/alerts', region);
+  const where = region.inName.replace(/^in /, '');
+  const others = channels.filter((c) => c.kind !== 'email');
+
+  const icon = {
+    telegram: '<path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>',
+    whatsapp: '<path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/>',
+  };
+
+  const card = (c) => `<a class="chan" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">
+        <span class="chan-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon[c.kind] ?? ''}</svg></span>
+        <span class="chan-t">
+          <span class="chan-n">${esc(c.name)}${c.handle ? ` <i>${esc(c.handle)}</i>` : ''}</span>
+          <span class="chan-b">${esc(c.blurb)}</span>
+        </span>
+        <span class="chan-go" aria-hidden="true">↗</span>
+      </a>`;
+
+  return `${head({
+    title: buildTitle([`Get internship alerts ${where}`]),
+    description: `Get new engineering internships ${region.inName} by email, or follow along on ${others.map((c) => c.name).join(' and ') || 'email'}. Free, and you can leave any time.`,
+    canonical: url,
+    indexable: true,
+    region,
+    // Every region has this page, with the same purpose and different channels.
+    alternates,
+    alternatePath: '/alerts',
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <span>Alerts</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>Get internship alerts ${esc(region.inName)}</h1>
+      <p class="hub-lede">New engineering internships, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
+    </header>
+
+    <section class="strip">
+      <div class="strip-head"><h2>By email</h2></div>
+      ${signupForm(region, { heading: false })}
+    </section>
+
+    ${others.length ? `<section class="strip">
+      <div class="strip-head"><h2>Or follow along</h2></div>
+      <div class="chans">${others.map(card).join('')}</div>
+    </section>` : `<p class="cp-note">Email is the only alert channel for this board today. More are coming.</p>`}
+  </div>
+</main>
+${foot({
+    headline: 'Be early, every time',
+    sub: `Every new engineering internship ${region.inName}, the moment we find it.`,
+    region,
+    signup: false,
+  })}`;
+}
+
 function writeIfChanged(path, contents) {
   writeFileSync(path, contents);
 }
@@ -1867,7 +1949,7 @@ function writeIfChanged(path, contents) {
  * hand-maintained per region because there is no version of "keep eleven copies
  * of a <head> in sync" that survives contact with a copy-edit.
  */
-function homeHead(region, alternates) {
+function homeHead(region, alternates, channels = []) {
   const url = regionUrl('/', region);
   const where = region.inName.replace(/^in /, '');
   const title = `InternDoor — Engineering Internships in ${where}`;
@@ -1887,7 +1969,7 @@ function homeHead(region, alternates) {
         logo: `${SITE}/favicon-96.png`,
         description: `InternDoor lists engineering internships ${region.inName} within minutes of them going live.`,
         areaServed: { '@type': 'Country', name: region.name },
-        sameAs: [region.telegram],
+        sameAs: channels.filter((c) => c.url).map((c) => c.url),
       },
       {
         '@type': 'WebSite',
@@ -1958,7 +2040,7 @@ function fillMarker(html, name, contents) {
  * `/_vercel/…`, none of which are per-region and all of which would 404 under a
  * prefix. Job links are generated below and already carry theirs.
  */
-const REGION_LINKS = ['/companies/', '/feed.xml', '/feed.json', '/data/jobs.json'];
+const REGION_LINKS = ['/companies/', '/alerts', '/feed.xml', '/feed.json', '/data/jobs.json'];
 
 function localiseLinks(html, region) {
   const prefix = regionPath(region.code);
@@ -1994,7 +2076,7 @@ function localiseLinks(html, region) {
  * If the markers are missing the file is left completely alone: silently
  * rewriting a hand-maintained page is a far worse failure than not adding links.
  */
-function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null) {
+function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null, channels = []) {
   const templatePath = join(publicDir, 'index.html');
   if (!existsSync(templatePath)) return 0;
   const template = readFileSync(templatePath, 'utf8');
@@ -2013,7 +2095,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   }
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
-  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates)) ?? html;
+  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels)) ?? html;
   // No region in the lede, on purpose (24 Aug). The header's own region switch
   // already names the board, so repeating it here said the same thing twice.
   // The paragraph still NAMES THE SUBJECT, which is the whole reason it exists:
@@ -2084,7 +2166,7 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [] } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -2139,6 +2221,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   writeIfChanged(join(compDir, 'index.html'),
     renderCompanyIndex(byCompany, pastByCompany, logos, { region, alternates }));
 
+  /* /alerts — every way to follow this board. A flat file rather than a
+     directory because vercel.json sets cleanUrls, so alerts.html serves at
+     /alerts, and the dev server resolves it the same way. */
+  writeIfChanged(join(root, 'alerts.html'), renderAlertsPage(channels, { region, alternates }));
+
   let removed = 0;
   for (const dir of [jobsDir, compDir]) {
     if (!existsSync(dir)) continue;
@@ -2151,7 +2238,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   const indexable = jobs.filter(isIndexable).length;
   writeSitemap(jobs, byCompany, root, pastByCompany, region);
   const feedItems = writeFeeds(jobs, root, region);
-  const homeLinks = writeHomePage(jobs, publicDir, region, alternates);
+  const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
 
   return { jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks };
 }
@@ -2170,7 +2257,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -2198,7 +2285,7 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       jobsByRegion.get(region.code) ?? [],
       publicDir,
       historyByRegion.get(region.code) ?? [],
-      { region, alternates, foreign, validDays },
+      { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [] },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     perRegion.push({ region, ...result });
@@ -2243,6 +2330,10 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
   const urls = [
     { loc: regionUrl('/', region), priority: '1.0', lastmod: now },
     { loc: regionUrl('/companies/', region), priority: '0.7', lastmod: now },
+    /* /alerts is thin by design — it is a set of links — but it is a real
+       destination people search for ("interndoor telegram"), and it is the only
+       page that names every channel. Low priority, not omitted. */
+    { loc: regionUrl('/alerts', region), priority: '0.4', lastmod: now },
     ...jobs.filter(isIndexable).map((j) => ({
       loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',

@@ -54,8 +54,10 @@ function regionOf(form) {
 }
 
 (function subscribe() {
-  const form = document.querySelector('form.sub');
-  if (!form) return;
+  document.querySelectorAll('form.sub').forEach(wire);
+})();
+
+function wire(form) {
 
   const msg = form.querySelector('.sub-msg');
   const btn = form.querySelector('.sub-b');
@@ -111,4 +113,4 @@ function regionOf(form) {
       btn.textContent = label;
     }
   });
-})();
+}

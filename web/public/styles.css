@@ -1446,3 +1446,36 @@ a, button, summary, label, [role="button"], .row {
 @media (prefers-reduced-motion: reduce) {
   .sub-b:active { transform: none; }
 }
+
+/* Visually hidden, still announced. Used where a heading already says what the
+   field is and repeating it above the box would say it twice. */
+.vh {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- /alerts channel cards ---------------------------------------- */
+.chans { display: grid; gap: 10px; margin-top: 14px; }
+.chan {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--card); text-decoration: none;
+}
+.chan-i {
+  flex: 0 0 auto; display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: var(--r);
+  background: var(--card-2); color: var(--live);
+}
+/* minmax(0,…) so a long handle wraps instead of widening the row — .outro has
+   already cost this repo one site-wide horizontal scroll. */
+.chan-t { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.chan-n { font-weight: 700; font-size: 15px; }
+.chan-n i { font-style: normal; font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
+.chan-b { font-size: 13.5px; color: var(--ink-2); }
+.chan-go { flex: 0 0 auto; color: var(--ink-2); font-size: 15px; }
+@media (hover: hover) and (pointer: fine) {
+  .chan:hover { border-color: var(--live); }
+  .chan:hover .chan-go { color: var(--live); }
+}
+.chan:active { transform: scale(.995); }
+@media (prefers-reduced-motion: reduce) { .chan:active { transform: none; } }

@@ -8,6 +8,7 @@ import { formatStipend } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite } from './pages.js';
+import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
@@ -515,7 +516,13 @@ export async function writeJobsFile(store, cfg) {
 
   // Static pages for search engines. The JSON above serves the app; these serve
   // crawlers, which cannot run the JavaScript that turns it into listings.
-  const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions, { validDays: maxAgeDays });
+  /* Which alert channels each board actually has. Computed here because
+     pages.js takes no config on purpose; src/channels.js decides, and its rule
+     is that a region with no channel gets no link rather than another
+     region's. */
+  const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
+  const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
+    { validDays: maxAgeDays, channelsByRegion });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;
@@ -619,6 +626,8 @@ export function pushToSite(newJobCount) {
   const PUBLISHED = ['web/public/data', 'web/public/logos', 'web/public/jobs',
     'web/public/companies', 'web/public/sitemap.xml', 'web/public/robots.txt',
     'web/public/feed.xml', 'web/public/feed.json', 'web/public/index.html',
+    // India's /alerts. Every other region's is inside its own tree below.
+    'web/public/alerts.html',
     // Every non-India region writes a whole tree under its own slug — data,
     // jobs, companies, sitemap, feeds and its homepage. Listed by directory so
     // switching a region on in config.json needs no change here; India stays
