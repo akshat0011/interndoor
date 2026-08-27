@@ -311,7 +311,8 @@ export function stipendText(job) {
   // ZERO IS NOT AN AMOUNT. 68 live rows hold "₹0" — 30 of them on the US board,
   // where the currency is wrong as well as the figure. It is missing data, not
   // a wage: an employer that genuinely pays nothing is recorded in
-  // `stipendStatus`, which the caller renders as "Unpaid" on purpose. Printing
+  // `stipendStatus` — which is NOT trustworthy and is no longer rendered
+  // anywhere; see statusPills. Printing
   // it was survivable while a stipend was one line in a fact table; it is not
   // now that pay is the headline fact on a card and reads as a claim about what
   // somebody pays.
@@ -489,10 +490,18 @@ function statusPills(job) {
   const money = stipendText(job);
   return [
     agePill(job.postedAt ?? job.firstSeenAt),
-    money
-      ? `<span class="pill is-paid"><i aria-hidden="true"></i>${esc(money)}</span>`
-      : job.stipendStatus === 'paid' ? '<span class="pill is-paid"><i aria-hidden="true"></i>Paid</span>'
-        : job.stipendStatus === 'unpaid' ? '<span class="pill">Unpaid</span>' : '',
+    // ONLY A REAL AMOUNT. `stipendStatus` used to supply a "Paid" or "Unpaid"
+    // pill when no figure parsed, and it must not: the field is written by the
+    // local model from the prompt "unpaid only if it explicitly says unpaid",
+    // and it does not hold. Checked against the live boards — of 47 India rows
+    // and 63 US rows marked `unpaid`, ZERO contain any unpaid phrasing in their
+    // own description. The pill was therefore telling readers that NatWest,
+    // Seclore, Zycus and ThoughtSpot do not pay their interns. That is a false
+    // claim about a named employer on a public page, which is the one thing
+    // this file is most careful about everywhere else. `paid` is no better
+    // sourced; it is merely harmless-looking. A stipend is stated when there is
+    // a figure to state, and otherwise nothing is said.
+    money ? `<span class="pill is-paid"><i aria-hidden="true"></i>${esc(money)}</span>` : '',
     applicantsText(job) ? `<span class="pill">${esc(applicantsText(job))}</span>` : '',
     modeText(job) ? `<span class="pill">${esc(modeText(job))}</span>` : '',
   ].filter(Boolean).join('');
@@ -1528,11 +1537,10 @@ function qaBlock(company, live, prof, region) {
     .sort((a, b) => startKey(a) - startKey(b));
   const places = [...new Set((live ?? []).flatMap((j) => placesOf(j.location, region)))];
   const modes = [...new Set((live ?? []).map((j) => modeText(j)).filter(Boolean))];
-  const unpaid = (live ?? []).filter((j) => j.stipendStatus === 'unpaid').length;
 
   const qa = [
     pay ? [`Does ${co} pay its interns?`,
-      `${paid === live.length ? 'Yes — every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.${unpaid ? ` ${unpaid} tracked ${co} posting${unpaid === 1 ? ' was' : 's were'} unpaid.` : ''}`] : null,
+      `${paid === live.length ? 'Yes — every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.`] : null,
     // "for a Old Mission Capital internship" — an employer name is as likely to
     // start with a vowel as not, and the article is wrong half the time. Naming
     // the employer with "at" sidesteps it and reads better anyway.

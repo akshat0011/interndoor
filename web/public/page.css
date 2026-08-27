@@ -229,7 +229,7 @@ a.jp-crest:active { transform: scale(.97); }
   background: var(--live); color: var(--live-ink);
   font-size: 15px; font-weight: 700; letter-spacing: -.01em;
   text-decoration: none; text-align: center;
-  transition: transform var(--d-press) var(--snap), filter .18s, box-shadow .2s;
+  transition: transform var(--d-press) var(--snap), filter .18s;
 }
 .btn-apply span { position: relative; z-index: 1; }
 .btn-apply em {
@@ -240,68 +240,16 @@ a.jp-crest:active { transform: scale(.97); }
 }
 .btn-apply:active { transform: scale(.975); }
 
-.btn-apply::after {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(100deg, transparent 16%, rgba(255,255,255,.85) 50%, transparent 84%);
-  transform: translateX(-130%);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .btn-apply:hover { filter: brightness(1.07); }
-  /* The dock's button is the only .btn-apply outside .apply-glow, so it is the
-     only one without the permanent bloom — a ring is its whole hover state.
-     Scoped to the dock rather than left on .btn-apply, because page.css loads
-     after styles.css and an unscoped rule here replaced the rail button's
-     bloom with a 4px ring the moment a pointer touched it. */
-  .dock .btn-apply:hover {
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--live) 20%, transparent);
-  }
   .btn-apply:hover em { transform: translateX(3px); }
-  .btn-apply:hover::after { animation: sheen-page .62s linear; }
 }
-@keyframes sheen-page { to { transform: translateX(130%); } }
-
-/* ---------- the ambient loop ---------- */
-
-/* Only the rail button, and only because it is now the ONLY apply button on
-   the page — the second copy lower down is gone.
- *
- * The frequency rule says do not animate what somebody sees dozens of times a
- * day. This is the opposite case: a stranger arrives from a search, sees this
- * page once, and the button is the single thing the page exists to deliver. So
- * it moves on its own until they touch it.
- *
- * One 3.2s cycle: about 600ms of motion, then two and a half of stillness. A
- * sheen that swept continuously would read as a progress bar, and anything
- * that never rests stops being seen within about three passes. Nothing here
- * touches a layout property — transforms and opacity on compositor layers,
- * and that is the whole cost. */
-
-/* The rail button's own two loops. The keyframes themselves — sheen-loop,
-   nudge, halo and ping — are all defined once in styles.css, which this
-   file loads after; redefining a keyframe name here would silently win and
-   then diverge the next time one of them is edited. */
-.jp-card-top .btn-apply::after { animation: sheen-loop 2.6s linear .8s infinite; }
-.jp-card-top .btn-apply em { animation: nudge 2.6s var(--snap) .8s infinite; }
 
 /* The rail button is full width, so its wrapper has to be a block. styles.css
    defaults it to inline-block for the detail pane, where it sits in a flex row
-   beside other buttons. */
+   beside other buttons. It is a layout wrapper and nothing more — the bloom and
+   the sheen it used to carry are gone; see THE APPLY BUTTON in styles.css. */
 .apply-glow { display: block; }
-
-/* The halo and the ping are shared with the homepage's apply
-   buttons and live in styles.css, on the .apply-glow wrapper. Only the
-   button-specific parts — the sheen inside .btn-apply and its own arrow — are
-   here. */
-/* Hover cancels both loops rather than pausing them — a paused sheen freezes a
-   bright band across the middle of the button, and a paused arrow strands
-   itself mid-lean. Cancelled, each falls back to the transition above and
-   answers the pointer instead. The wrapper's own three loops are cancelled by
-   the shared rule in styles.css. */
-@media (hover: hover) and (pointer: fine) {
-  .jp-card-top .btn-apply:hover em { animation: none; transform: translateX(3px); }
-  .jp-card-top .btn-apply:hover::after { animation: sheen-page .62s linear; }
-}
 
 .jp-card-note {
   margin-top: 12px; font-size: 12px; line-height: 1.5; color: var(--ink-3);
@@ -391,22 +339,6 @@ a.jp-crest:active { transform: scale(.97); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .dock .btn-apply { width: auto; flex: none; height: 42px; padding: 0 18px; font-size: 14px; }
-/* The dock used to be the one apply button with no bloom, on the grounds that
-   it sits on its own blurred bar and does not need help competing. It is also
-   the ONLY apply button a phone reader sees once they have scrolled past the
-   rail, which makes it the last one that should be quiet. It gets the glow
-   without a wrapper — the dock has no overflow:hidden to escape, because it
-   carries no sheen. */
-.dock .btn-apply {
-  box-shadow:
-    0 0 12px 0 color-mix(in oklab, var(--live) 80%, transparent),
-    0 0 34px 5px color-mix(in oklab, var(--live) 50%, transparent);
-}
-:root[data-theme="light"] .dock .btn-apply {
-  box-shadow:
-    0 0 9px 0 color-mix(in oklab, var(--live) 42%, transparent),
-    0 0 24px 3px color-mix(in oklab, var(--live) 26%, transparent);
-}
 
 /* ============================================================
    TILES — the shared "here is another role" object
@@ -751,7 +683,6 @@ a.jp-crest:active { transform: scale(.97); }
 @media (prefers-reduced-motion: reduce) {
   .tiles.in > *, .dir.in > * { animation: none; }
   .pill.is-hot i { animation: none; }
-  .jp-card-top .btn-apply em { animation: none; }
   .dock { transition: none; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
