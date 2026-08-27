@@ -306,7 +306,13 @@ export function dedupePostings(jobs) {
 
 /** Write the public jobs payload. Returns { count, path, changed }. */
 export async function writeJobsFile(store, cfg) {
-  const maxAgeMs = (cfg.publish?.maxAgeDays ?? 14) * 86_400_000;
+  /* ONE window, two consumers. The JSON-LD's `validThrough` has to expire on
+     the same day publish stops writing the page: a page that outlives its own
+     validThrough is an expired JobPosting still sitting in the sitemap, which
+     is what earns a structured-data manual action across the whole domain.
+     These were separate constants and drifted — see validThrough in pages.js. */
+  const maxAgeDays = cfg.publish?.maxAgeDays ?? 14;
+  const maxAgeMs = maxAgeDays * 86_400_000;
   const includeFullDescription = !!cfg.publish?.includeFullDescription;
 
   const techOnly = cfg.publish?.techRolesOnly !== false;
@@ -509,7 +515,7 @@ export async function writeJobsFile(store, cfg) {
 
   // Static pages for search engines. The JSON above serves the app; these serve
   // crawlers, which cannot run the JavaScript that turns it into listings.
-  const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions);
+  const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions, { validDays: maxAgeDays });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;

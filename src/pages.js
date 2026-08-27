@@ -141,19 +141,29 @@ export function monthLabel(ms, region = DEFAULT_REGION) {
  * validThrough has passed, or keeping a closed role live, is what earns a
  * structured-data manual action across the whole domain.
  *
- * A LinkedIn row ages out 14 days after we first saw it, which is what the
- * public file does, so the two agree. An ATS row is different — it stays on the
- * site while it is still ON the employer's board, so its validThrough has to
- * move with it. Anchoring to `lastSeenAt` does that: every poll that still finds
- * the role pushes the date out, and the moment the company removes it the date
- * stops moving and expires on its own, a couple of days after the row leaves the
- * site. The two are driven by the same fact and cannot drift apart.
+ * THE WINDOW IS THE PUBLISH WINDOW AND IS PASSED IN, never a constant of its
+ * own. A LinkedIn row ages out `validDays` after we first saw it, which is
+ * exactly when publish stops writing its page — so the page and the date it
+ * claims to expire on disappear together.
+ *
+ * That invariant was hardcoded as 14 in BOTH places until 24 Aug, when
+ * `publish.maxAgeDays` was raised 14 -> 30 and this was left behind. For the
+ * following sixteen days of its life every LinkedIn page then served markup
+ * saying it had already expired, while staying indexable and in the sitemap;
+ * 99 pages were in that state when it was found. Taking the window from the
+ * caller is what stops the two drifting again.
+ *
+ * An ATS row is different — it stays on the site while it is still ON the
+ * employer's board, so its validThrough has to move with it. Anchoring to
+ * `lastSeenAt` does that: every poll that still finds the role pushes the date
+ * out, and the moment the company removes it the date stops moving and expires
+ * on its own, a couple of days after the row leaves the site.
  */
-const VALID_DAYS = 14;
+const DEFAULT_VALID_DAYS = 30;
 
-function validThrough(job) {
-  const firstSeenBasis = (job.postedAt ?? job.firstSeenAt ?? Date.now()) + VALID_DAYS * 86_400_000;
-  const stillListed = job.lastSeenAt ? job.lastSeenAt + VALID_DAYS * 86_400_000 : 0;
+function validThrough(job, validDays = DEFAULT_VALID_DAYS) {
+  const firstSeenBasis = (job.postedAt ?? job.firstSeenAt ?? Date.now()) + validDays * 86_400_000;
+  const stillListed = job.lastSeenAt ? job.lastSeenAt + validDays * 86_400_000 : 0;
   return new Date(Math.max(firstSeenBasis, stillListed)).toISOString();
 }
 
@@ -167,7 +177,7 @@ export function isIndexable(job) {
  * structured-data manual action affects the whole domain — so every field here is
  * one we actually hold, and nothing is invented to fill a slot.
  */
-function jobPostingLd(job, url, region = DEFAULT_REGION) {
+function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
   const description = `<p>${esc(job.roleLabel || job.title)}</p><ul>${
     (job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')
   }</ul>`;
@@ -179,7 +189,7 @@ function jobPostingLd(job, url, region = DEFAULT_REGION) {
     description,
     identifier: { '@type': 'PropertyValue', name: job.company, value: String(job.id) },
     datePosted: new Date(job.postedAt ?? job.firstSeenAt ?? Date.now()).toISOString(),
-    validThrough: validThrough(job),
+    validThrough: validThrough(job, validDays),
     // Read by Google. A full-time graduate role marked INTERN is not a
     // cosmetic error — wrong structured data risks a manual action across the
     // whole domain, which is the risk this function is written around.
@@ -797,7 +807,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [] } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
@@ -940,7 +950,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     ['Posted', `<time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time>`],
   ].filter(Boolean);
 
-  const postingLd = jobPostingLd(job, url, region);
+  const postingLd = jobPostingLd(job, url, region, validDays);
   const where = apply ? applyTarget(apply) : '';
   // ONE apply button on the page, in the rail. It is sticky on a desktop and
   // sits under the headline on a phone, and the dock catches a reader who has
@@ -2035,7 +2045,7 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map() } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -2060,7 +2070,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(jobsDir, name));
     writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [] }));
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays }));
   }
 
   const logos = companyLogos(jobs, publicDir);
@@ -2121,7 +2131,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -2149,7 +2159,7 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions) {
       jobsByRegion.get(region.code) ?? [],
       publicDir,
       historyByRegion.get(region.code) ?? [],
-      { region, alternates, foreign },
+      { region, alternates, foreign, validDays },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     perRegion.push({ region, ...result });

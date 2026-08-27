@@ -579,5 +579,45 @@ check('breadcrumb markup is emitted', omc.includes('"BreadcrumbList"'), true);
 check('the hub is a CollectionPage about them', omc.includes('"CollectionPage"'), true);
 check('and never a bare Organization node', /"@type"\s*:\s*"Organization"\s*,\s*"name"[^}]*}\s*}\s*<\/script>/.test(omc) || omc.includes('"about"'), true);
 
+console.log('\n== validThrough expires the day the page stops being served ==');
+/* THE BUG THIS PINS. `validThrough` and the publish retention window were two
+   separate hardcoded 14s. On 24 Aug publish.maxAgeDays was raised to 30 and
+   pages.js's VALID_DAYS was not, so for the last sixteen days of its life every
+   LinkedIn page served JobPosting markup saying it had ALREADY EXPIRED while
+   staying indexable and in the sitemap — 99 pages were in that state when it
+   was found, and an expired posting still being served is precisely what earns
+   a structured-data manual action across the whole domain.
+
+   So the window is passed in, and the number the site actually ships is the one
+   in config.json. Asserting the default alone would pass again the next time
+   only the config moves. */
+const cfgJson = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf8'));
+const shipDays = cfgJson.publish?.maxAgeDays ?? 14;
+const DAY = 86_400_000;
+const vtOf = (html) => JSON.parse(
+  html.match(/<script type="application\/ld\+json">(\{[\s\S]*?"@type": ?"JobPosting"[\s\S]*?)<\/script>/)[1]).validThrough;
+
+const postedMs = Date.UTC(2026, 7, 1);
+const vtJob = { ...linkedin, postedAt: postedMs, firstSeenAt: postedMs, lastSeenAt: postedMs,
+  location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] };
+
+const vtDefault = vtOf(renderJobPage(vtJob));
+check('the default window is the retention window', vtDefault,
+  new Date(postedMs + shipDays * DAY).toISOString());
+check('and that is 30 days, not the old 14',
+  Math.round((Date.parse(vtDefault) - postedMs) / DAY), 30);
+
+// The caller decides, so a config change reaches the markup with no code edit.
+check('an explicit window is honoured',
+  vtOf(renderJobPage(vtJob, [], { validDays: 45 })),
+  new Date(postedMs + 45 * DAY).toISOString());
+
+/* An ATS row is anchored to lastSeenAt so its date moves with the board. A row
+   still being polled must never advertise a date in the past. */
+const seen = Date.now();
+const atsLive = vtOf(renderJobPage({ ...ats, postedAt: postedMs, firstSeenAt: postedMs,
+  lastSeenAt: seen, location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] }));
+check('a still-listed ATS row expires in the future', Date.parse(atsLive) > Date.now(), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
