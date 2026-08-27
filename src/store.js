@@ -284,6 +284,13 @@ export class Store {
     if (!reelCols.includes('source')) {
       this.db.exec("ALTER TABLE reel_posts ADD COLUMN source TEXT");
     }
+    /* The posting's own description hash — the SAME key the board collapses
+       one-role-in-many-cities on. Two job ids carrying one description are one
+       opening, and two reels about it are two near-identical posts in the same
+       feed. Recorded so a role can never be posted twice across sweeps. */
+    if (!reelCols.includes('fingerprint')) {
+      this.db.exec('ALTER TABLE reel_posts ADD COLUMN fingerprint TEXT');
+    }
 
     if (!jobCols.includes('region')) this.#backfillRegions();
   }
@@ -1209,17 +1216,35 @@ export class Store {
    * a tunnel that did not come up is worth retrying, and refusing would strand
    * the job forever.
    */
-  reelClaim(jobId, { region = null, source = 'manual' } = {}) {
+  reelClaim(jobId, { region = null, source = 'manual', fingerprint = null } = {}) {
     const info = this.db.prepare(`
-      INSERT INTO reel_posts (job_id, status, started_at, region, source)
-      VALUES (?, 'rendering', ?, ?, ?)
+      INSERT INTO reel_posts (job_id, status, started_at, region, source, fingerprint)
+      VALUES (?, 'rendering', ?, ?, ?, ?)
       ON CONFLICT(job_id) DO UPDATE
         SET status = 'rendering', started_at = excluded.started_at,
             region = excluded.region, source = excluded.source,
+            fingerprint = excluded.fingerprint,
             finished_at = NULL, error = NULL
         WHERE reel_posts.status = 'failed'
-    `).run(jobId, Date.now(), region, source);
+    `).run(jobId, Date.now(), region, source, fingerprint);
     return info.changes > 0;
+  }
+
+  /**
+   * Description hashes this table has already committed to, so one ROLE is
+   * never posted twice.
+   *
+   * The board learned this on 25 Aug: Procter & Gamble filed 22 copies of one
+   * internship, one per city, each a real posting with its own id. Keyed on
+   * company and title alone they would merge genuinely different jobs, so the
+   * discriminator is a hash of the posting's own description. A feed is far
+   * less forgiving than a board — two identical reels back to back read as a
+   * broken bot, not as two vacancies.
+   */
+  reelKnownFingerprints() {
+    return new Set(this.db.prepare(
+      "SELECT DISTINCT fingerprint FROM reel_posts WHERE fingerprint IS NOT NULL AND status != 'failed'")
+      .all().map((r) => r.fingerprint));
   }
 
   /**
@@ -1263,11 +1288,18 @@ export class Store {
    * Safe because this process is the only writer: nothing else renders.
    */
   reelReleaseOrphans() {
-    const info = this.db.prepare(`
-      UPDATE reel_posts SET status = 'failed',
-             error = 'the helper stopped while this was rendering — released for retry'
-      WHERE status = 'rendering'
-    `).run();
+    /* DELETED, not marked failed. Marking them failed looked right and did
+       nothing: `reelKnownJobIds` — which is how the sweep decides what it has
+       already dealt with — returns EVERY row including failed ones, so a
+       released orphan was skipped for ever and the release freed nothing.
+       Deleting is also the honest record: the row asserts that a reel was
+       attempted, and for these nothing was rendered, nothing was uploaded and
+       nothing was published, so there is no attempt to remember. The posting
+       becomes a candidate again on the next sweep, which is the whole point.
+
+       A row that genuinely FAILED is untouched and stays failed, so a broken
+       posting is still skipped rather than retried every 60 seconds. */
+    const info = this.db.prepare("DELETE FROM reel_posts WHERE status = 'rendering'").run();
     return info.changes;
   }
 

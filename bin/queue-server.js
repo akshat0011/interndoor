@@ -245,7 +245,7 @@ async function pumpReels() {
  * double-click harmless, and it has to happen before the request is answered
  * or two presses race into the queue twice.
  */
-function enqueueReel(jobId, source = 'manual') {
+function enqueueReel(jobId, source = 'manual', fingerprint = null) {
   if (reelQueue.includes(jobId)) return { error: 'already queued' };
   const job = publicJob(jobId);
   if (!job) return { error: `job ${jobId} is not on the published board` };
@@ -253,7 +253,7 @@ function enqueueReel(jobId, source = 'manual') {
   if (!accountFor(region, cfg)) {
     return { error: `no Instagram account configured for ${region} — see reels.accounts` };
   }
-  if (!store.reelClaim(jobId, { region, source })) {
+  if (!store.reelClaim(jobId, { region, source, fingerprint: fingerprint ?? job.roleFingerprint ?? null })) {
     const row = store.reelPost(jobId);
     return { error: row?.status === 'published' ? 'already published' : 'already in flight' };
   }
@@ -533,6 +533,13 @@ function autoSweep() {
 
   const all = publishedJobs();
   const known = store.reelKnownJobIds();
+  /* ONE ROLE, ONE REEL. The board already collapses one opening advertised in
+     many cities onto a single card, keyed on a hash of the posting's own
+     description — company and title alone merge genuinely different jobs.
+     Without the same rule here the feed gets the raw postings: a live sweep
+     queued three Micron internships and the SAME StemPedia role twice, which
+     reads as a broken bot rather than as several vacancies. */
+  const seenPrints = store.reelKnownFingerprints();
 
   for (const region of autoRegions(cfg)) {
     const cap = dailyCap(region, cfg);
@@ -551,11 +558,24 @@ function autoSweep() {
         && (now - (j.firstSeenAt ?? j.postedAt ?? 0)) <= maxAgeMs)
       .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
+    /* One employer per sweep as well. Micron alone had eight fresh postings
+       with eight different descriptions, so the fingerprint rule correctly lets
+       them all through — but three Micron reels in a row is still a monotonous
+       feed. They are not dropped, only deferred: the next sweep takes the next
+       one, which spreads one employer's roles across the day instead of
+       spending a third of the cap on them at once. */
+    const seenEmployers = new Set();
+
     for (const j of fresh) {
       if (budget <= 0) break;
-      const r = enqueueReel(String(j.id), 'auto');
+      const print = j.roleFingerprint || `id:${j.id}`;
+      if (seenPrints.has(print)) continue;
+      if (seenEmployers.has(j.company)) continue;
+      const r = enqueueReel(String(j.id), 'auto', print);
       if (r.queued) {
         known.add(String(j.id));
+        seenPrints.add(print);
+        seenEmployers.add(j.company);
         budget--;
         spent++;
         log.info(`Reels: queued ${region} ${j.company} — ${j.title} (auto, ${spent}/${cap} today)`);
@@ -571,7 +591,7 @@ function autoSweep() {
    than left stranded — see reelReleaseOrphans for why 'publishing' is not. */
 {
   const freed = store.reelReleaseOrphans();
-  if (freed) log.info(`Reels: released ${freed} row${freed === 1 ? '' : 's'} left rendering by a previous run.`);
+  if (freed) log.info(`Reels: released ${freed} posting${freed === 1 ? '' : 's'} left rendering by a previous run — they are candidates again.`);
 }
 
 setInterval(() => {
