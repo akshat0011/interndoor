@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934",
+      "title": "Intern - ADV DRAM Process Integration Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and run experiments in R&D fab\n• Analyze data to optimize device performance\n• Collaborate with cross-functional teams on yield issues",
+      "date_published": "2026-08-27T12:13:08.717Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/palantir-technologies-information-security-engineer-internship-4458606898",
+      "url": "https://interndoor.com/us/jobs/palantir-technologies-information-security-engineer-internship-4458606898",
+      "title": "Information Security Engineer, Internship — Palantir Technologies",
+      "content_text": "Company: Palantir Technologies · Location: New York, NY\n• Analyze and secure Palantir's systems to protect critical data\n• Code in Java, C++, Python, or similar languages\n• Work on real projects with ownership and customer impact",
+      "date_published": "2026-08-27T12:10:27.523Z",
+      "authors": [
+        {
+          "name": "Palantir Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/delta-air-lines-intern-reservations-spring-2027-4431470084",
+      "url": "https://interndoor.com/us/jobs/delta-air-lines-intern-reservations-spring-2027-4431470084",
+      "title": "Intern, Reservations (Spring 2027) — Delta Air Lines",
+      "content_text": "Company: Delta Air Lines · Location: Atlanta, GA · Duration: Spring 2027\n• Analyze data to identify process improvements\n• Use sql and power bi for insights\n• Present findings to division leaders",
+      "date_published": "2026-08-27T11:42:47.759Z",
+      "authors": [
+        {
+          "name": "Delta Air Lines"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/redwood-materials-test-automation-engineer-intern-fall-2026-4449946401",
       "url": "https://interndoor.com/us/jobs/redwood-materials-test-automation-engineer-intern-fall-2026-4449946401",
       "title": "Test Automation Engineer Intern - Fall 2026 — Redwood Materials",
@@ -563,42 +599,6 @@
       "title": "Network Impact Assessment (NIA) Intern — Leidos",
       "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Analyze network impacts on military missions using tools like ServiceNow\n• Work with analysts on global defense network operations\n• Based at Scott AFB, IL, no remote options",
       "date_published": "2026-08-26T21:16:40.825Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457711217",
-      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457711217",
-      "title": "Cybersecurity Analyst Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Odenton, MD\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Review threat intelligence feeds to identify Indicators of Compromise",
-      "date_published": "2026-08-26T21:16:39.143Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457701279",
-      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457701279",
-      "title": "Cybersecurity Analyst Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Alexandria, VA\n• Analyze network logs and alerts to detect security threats\n• Work with SOC analysts using enterprise tools in a real SOC\n• Support incident investigations and report findings to customers",
-      "date_published": "2026-08-26T21:16:38.598Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-systems-engineering-intern-4457296406",
-      "url": "https://interndoor.com/us/jobs/leidos-systems-engineering-intern-4457296406",
-      "title": "Systems Engineering Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Odenton, MD\n• Support senior engineers in designing and maintaining IT infrastructure including servers, networks, and storage\n• Work with VMware and ESXi systems, apply DoW security standards, and automate deployments using Python/Bash\n• Onsite at Ft Meade, MD for 100% in-person work, requires DoD Secret clearance and active IAT Level II certification",
-      "date_published": "2026-08-26T21:16:25.567Z",
       "authors": [
         {
           "name": "Leidos"
