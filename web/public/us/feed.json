@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gridos-project-engineer-intern-summer-2027-4460129400",
+      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gridos-project-engineer-intern-summer-2027-4460129400",
+      "title": "GE Vernova - GridOS Project Engineer Intern - Summer 2027 — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bellevue, WA · Duration: Summer 2027\n• Test new DMS applications for functionality and integration in power systems\n• Build test cases and debug software using GitOps and ArgoCD tools\n• Create training materials to help grid operators use new software tools",
+      "date_published": "2026-08-27T23:35:26.006Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-applications-4460135041",
+      "url": "https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-applications-4460135041",
+      "title": "Intern-Engineering (Applications) — Microchip Technology Inc.",
+      "content_text": "Company: Microchip Technology Inc. · Location: Greater Houston\n• Support customer issues with firmware, drivers, and protocols\n• Use Python/Java/Tcl for automation and script development\n• Work on storage protocols like NVMe, SAS/SATA, and SCSI",
+      "date_published": "2026-08-27T22:59:34.401Z",
+      "authors": [
+        {
+          "name": "Microchip Technology Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/abb-ai-robotics-ui-ux-intern-fall-2026-4460125809",
       "url": "https://interndoor.com/us/jobs/abb-ai-robotics-ui-ux-intern-fall-2026-4460125809",
       "title": "AI Robotics UI/UX Intern- Fall 2026 — ABB",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Roblox"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-software-engineer-intern-4459837480",
-      "url": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-software-engineer-intern-4459837480",
-      "title": "Software Engineer Intern — VisLab (an Ambarella Inc. company)",
-      "content_text": "Company: VisLab (an Ambarella Inc. company) · Location: Headquarters, KY\n• Develop microcode for video algorithms on dsp hardware\n• Work with c c++ and scripting languages like python\n• Collaborate with scientists on camera markets like security",
-      "date_published": "2026-08-27T15:24:04.129Z",
-      "authors": [
-        {
-          "name": "VisLab (an Ambarella Inc. company)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-mixed-signal-engineer-intern-4459854355",
-      "url": "https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-mixed-signal-engineer-intern-4459854355",
-      "title": "Mixed Signal Engineer Intern — VisLab (an Ambarella Inc. company)",
-      "content_text": "Company: VisLab (an Ambarella Inc. company) · Location: Headquarters, KY\n• Simulate and verify analog and mixed signal circuits for soc designs\n• Work with senior engineers on pll, dll, serdes and data converter blocks\n• Require ms or phd in electrical engineering with strong circuit design skills",
-      "date_published": "2026-08-27T15:23:37.627Z",
-      "authors": [
-        {
-          "name": "VisLab (an Ambarella Inc. company)"
         }
       ]
     }
