@@ -35,7 +35,7 @@ import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
 import { reelCaption } from '../src/reelcaption.js';
-import { nextSlot, slotLabel } from '../src/reelslots.js';
+import { nextSlot, slotLabel, intoWindow } from '../src/reelslots.js';
 import { formatFor } from '../src/reelformat.js';
 import { publishedRegions, regionPath, regionOf } from '../src/regions.js';
 import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig } from '../src/reelaccounts.js';
@@ -439,13 +439,29 @@ async function publishReel(jobId) {
     const slotCfg = isAuto
       ? autoSlotConfig(region, cfg, regionOf(region)?.timeZone)
       : (cfg.reels ?? {});
-    const slot = nextSlot({
+    let slot = nextSlot({
       now: Date.now(),
       lastPublishedAt: store.reelLastPublishedAt(region),
       pendingSlots: store.reelPending()
         .filter((r) => r.job_id !== jobId && (r.region || 'IN') === region)
         .map((r) => r.publish_at),
     }, slotCfg);
+
+    /* AN AUTOMATIC REEL MUST NEVER BYPASS THE POSTING WINDOW.
+       `nextSlot` answers null for "go out now", and with no anchor — a region
+       that has never published — that is the answer it always gives. For the
+       manual button null is right and deliberate: he pressed it because he
+       wants it out, and making him wait would mean the button did not do what
+       it said. Nobody pressed this one. Left alone, the first reel of a new
+       region publishes at whatever hour the sweep happened to find it, so
+       India's first would have gone out at 4am to an audience asleep — which
+       is the same mistake as running a US account on Kolkata hours, arriving
+       from the other direction. Clamping to the window keeps "now" when now is
+       inside it and pushes to the opening when it is not. */
+    if (isAuto && slot === null) {
+      const opens = intoWindow(Date.now(), slotCfg);
+      slot = opens > Date.now() ? opens : null;
+    }
 
     const state = store.reelRendered(jobId, video, caption, slot, format);
     if (state === 'scheduled') {
