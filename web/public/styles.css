@@ -1116,7 +1116,13 @@ a, button, summary, label, [role="button"], .row {
    1024 rather than 1000 so an iPad Pro in portrait gets the touch design.
    ============================================================ */
 @media (max-width: 1024px) {
-  .board { grid-template-columns: 1fr; }
+  /* minmax(0, 1fr), not 1fr — the same guard the two-column rule above
+     already carries. A grid item's min-width defaults to auto, so a bare
+     1fr track cannot shrink below its content's min-content, and .feed-col
+     floored the track at 333.6px inside a 300px .wrap: the US board scrolled
+     sideways at 320px. Whether it bites is content-dependent, so it was a
+     latent bug on all three boards, not a US one. */
+  .board { grid-template-columns: minmax(0, 1fr); }
   .pane-col { position: fixed; inset: 0; z-index: 80; background: var(--bg); overflow: auto; display: none; }
   /* Opening a role used to be an instant cut to a full screen of new text,
      which on a phone reads as a page load rather than a detail view. Sliding

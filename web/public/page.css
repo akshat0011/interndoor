@@ -39,6 +39,16 @@
    right-hand third of a 1440px screen completely empty while the
    Apply button scrolled away off the top — the one control the
    whole page exists to deliver. The rail fixes both at once. */
+/* minmax(0, ...) rather than a bare 1fr, here and at every grid track in this
+   file, is load-bearing rather than stylistic. A grid item's min-width defaults
+   to auto, so a bare 1fr track cannot shrink below its content's min-content —
+   and the content is company names and role titles, which is exactly where an
+   unbreakable run turns up. Written as 1fr, the mobile override of this very
+   rule put five job pages into horizontal scroll, and .board in styles.css did
+   the same to the US board; both are fixed below. Whether it bites is decided
+   by the content of the day, so every one of these is a latent version of that
+   bug. The guard is inert whenever the content fits — measured across 1016
+   page/width combinations — so carry it everywhere. */
 .jp-grid {
   display: grid; grid-template-columns: minmax(0, 1fr) 336px;
   gap: 44px; align-items: start;
@@ -307,7 +317,7 @@ a.jp-crest:active { transform: scale(.97); }
    wrong: leaving grid-template-columns behind laid the rail out in two columns
    and hyphenated "Maharashtra" down the middle of a card. */
 .jp-card .facts {
-  display: grid; grid-template-columns: 1fr;
+  display: grid; grid-template-columns: minmax(0, 1fr);
   border: 0; border-radius: 0; margin: 0;
 }
 .facts > div {
@@ -410,10 +420,16 @@ a.jp-crest:active { transform: scale(.97); }
   gap: 16px; margin-bottom: 16px; flex-wrap: wrap;
 }
 .strip-head h2 { margin: 0; }
+/* No white-space: nowrap. The label embeds the company name, and
+   "All National Technology Centre for Ports, Waterways and Coasts (NTCPWC)
+   roles" set one unbreakable 580px line that pushed the whole page sideways
+   on a phone. Wrapping costs nothing here: .strip-head is a wrapping flex
+   row, and flex breaks a line before it shrinks an item, so this link still
+   takes its own full-width line and still sets on ONE line for every company
+   whose name is a normal length — which is every company but this one. */
 .strip-more {
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--live); text-decoration: none;
-  white-space: nowrap;
 }
 @media (hover: hover) and (pointer: fine) {
   .strip-more:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -697,7 +713,7 @@ a.jp-crest:active { transform: scale(.97); }
   .hub-hero .jp-crest { width: 58px; height: 58px; font-size: 20px; }
   .summary { font-size: 15px; padding: 17px 18px 17px 20px; }
   .do-list li { font-size: 15px; }
-  .tiles, .dir { grid-template-columns: 1fr; }
+  .tiles, .dir { grid-template-columns: minmax(0, 1fr); }
   .stat b { font-size: 26px; }
   /* Padding only — no negative margins. They were here to cancel a .wrap
      gutter, but .outro is not inside .wrap, it CONTAINS it (see foot() in
@@ -956,7 +972,7 @@ a.jp-crest:active { transform: scale(.97); }
 @media (max-width: 640px) {
   .hub-hero { gap: 13px; padding-bottom: 14px; }
   .hub-hero .jp-crest { width: 42px; height: 42px; font-size: 15px; }
-  .hub-answer { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .hub-answer { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 7px; }
   .ans { padding: 11px 13px; }
   .ans dd { font-size: 16px; }
   .role-card { padding: 15px 16px; }
@@ -965,5 +981,5 @@ a.jp-crest:active { transform: scale(.97); }
      follows below 1024px. */
   .rc-foot { gap: 10px; }
   .rc-go { width: 100%; justify-content: center; height: 40px; }
-  .qa, .eg { grid-template-columns: 1fr; }
+  .qa, .eg { grid-template-columns: minmax(0, 1fr); }
 }
