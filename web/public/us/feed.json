@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/nationwide-summer-2027-commercial-lines-portfolio-management-intern-4457715194",
+      "url": "https://interndoor.com/us/jobs/nationwide-summer-2027-commercial-lines-portfolio-management-intern-4457715194",
+      "title": "Summer 2027 Commercial Lines Portfolio Management Intern — Nationwide",
+      "content_text": "Company: Nationwide · Location: Columbus, OH · Duration: 12 weeks\n• Analyze business data to inform pricing and growth decisions\n• Work with portfolio managers and analysts on real projects\n• Create dashboards and presentations for business leaders",
+      "date_published": "2026-08-27T00:40:13.902Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-infrastructure-engineering-intern-ai-platform-phd--4457711570",
+      "url": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-infrastructure-engineering-intern-ai-platform-phd--4457711570",
+      "title": "Machine Learning/AI Infrastructure Engineering Intern (AI Platform) PhD, Winter 2027 — Netflix",
+      "content_text": "Company: Netflix · Location: Los Gatos, CA · Duration: 12 weeks\n• Design and optimize large-scale ML training and inference systems\n• Work with Python, Go, and distributed frameworks like Ray and Kubernetes\n• Collaborate with modeling teams on system-level ML infrastructure",
+      "date_published": "2026-08-26T23:48:47.494Z",
+      "authors": [
+        {
+          "name": "Netflix"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parsons-corporation-structural-design-intern-4459614123",
+      "url": "https://interndoor.com/us/jobs/parsons-corporation-structural-design-intern-4459614123",
+      "title": "Structural Design Intern — Parsons Corporation",
+      "content_text": "Company: Parsons Corporation · Location: Tallahassee, FL\n• Assist with drafting and design for projects from planning to construction\n• Use engineering software and follow department standards\n• Coordinate with engineers and technicians on design details",
+      "date_published": "2026-08-26T23:48:25.118Z",
+      "authors": [
+        {
+          "name": "Parsons Corporation"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-scientist-phd-intern-winter-2027-4457712553",
       "url": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-scientist-phd-intern-winter-2027-4457712553",
       "title": "Machine Learning/AI Scientist PhD Intern, Winter 2027 — Netflix",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "General Mills"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/general-mills-internship-research-and-development-engineer-4448960077",
-      "url": "https://interndoor.com/us/jobs/general-mills-internship-research-and-development-engineer-4448960077",
-      "title": "Internship - Research & Development Engineer — General Mills",
-      "content_text": "Company: General Mills · Location: Minneapolis, MN · Duration: Winter 2027\n• Design and test new processes for product development and scaling\n• Collaborate with engineering and manufacturing teams globally\n• Use digital tools to solve technical challenges and improve efficiency",
-      "date_published": "2026-08-26T09:18:41.797Z",
-      "authors": [
-        {
-          "name": "General Mills"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-research-return-intern-4457231077",
-      "url": "https://interndoor.com/us/jobs/ibm-research-return-intern-4457231077",
-      "title": "Research Return Intern — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Design and test ai algorithms with mathematical rigor\n• Work with tensorflow and pytorch for research projects\n• Contribute to scalable systems for real-world applications",
-      "date_published": "2026-08-26T05:51:58.716Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011",
-      "title": "Hardware Developer Intern 2027 -Austin — IBM",
-      "content_text": "Company: IBM · Location: Austin, TX\n• Develop and execute hardware and system-level test solutions for product quality\n• Build automation and software tools for validation and manufacturing workflows\n• Collaborate with cross-functional teams on semiconductor and system engineering challenges",
-      "date_published": "2026-08-26T05:51:53.925Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
