@@ -88,6 +88,10 @@ const REGION_LIST = [
       // bare "Gift City". Extending the list with strings actually observed is
       // safer than admitting a class of two-letter state codes to catch them.
       'dahej', 'gift city', 'jamnagar', 'silvassa', 'roorkee', 'vapi',
+      // Same again, 27 Aug: "Turbhe,MH" and "Mahad,MH". No space after the
+      // comma and a state code that is not in the list, so neither the city
+      // pass nor the code pass could see them.
+      'turbhe', 'mahad',
       // States and union territories. Kept in the city list because they appear
       // in exactly the same slot — "Bengaluru, Karnataka, India" — and a state
       // name with no city is still unambiguous evidence.
@@ -148,6 +152,17 @@ const REGION_LIST = [
       'nebraska', 'nevada', 'new hampshire', 'new mexico', 'north dakota',
       'oklahoma', 'rhode island', 'south carolina', 'south dakota', 'vermont',
       'washington', 'west virginia', 'wyoming',
+      // The other half of the six excluded codes, added 27 Aug. Dropping
+      // `in`, `or`, `ia`, `me` and `hi` was right — they collide with India,
+      // Germany, a conjunction and three ordinary words — but it left the
+      // cities in those states unreadable whenever the row abbreviates the
+      // state, which ATS payloads usually do: "Fort Wayne, IN",
+      // "Hillsboro, OR", "Cedar Rapids, IA", "Boise, ID - Main Site".
+      // Naming the city is the remedy the exclusion note already prescribes,
+      // and each of these names only one country. Measured 27 Aug: 15 stored
+      // rows sat in `unknown` for want of exactly this.
+      'boise', 'hillsboro', 'fort wayne', 'cedar rapids', 'little rock',
+      'san bernardino', 'honolulu', 'pearl city',
     ],
   },
   {
@@ -244,7 +259,7 @@ const REGION_LIST = [
     telegram: 'https://t.me/interndoor',
     countries: ['ireland'],
     codes: ['ie'],
-    cities: ['dublin', 'cork', 'galway', 'limerick'],
+    cities: ['dublin', 'cork', 'galway', 'limerick', 'tuam'],
   },
   {
     code: 'NL',
@@ -319,6 +334,37 @@ const REGION_LIST = [
     codes: ['au'],
     cities: ['sydney', 'melbourne', 'brisbane', 'perth', 'adelaide', 'canberra',
       'new south wales', 'victoria, au'],
+  },
+  {
+    code: 'MX',
+    slug: 'mx',
+    name: 'Mexico',
+    inName: 'in Mexico',
+    hreflang: 'es-MX',
+    timeZone: 'America/Mexico_City',
+    currency: 'MXN',
+    // NO geoId, and no LinkedIn search to use one. Collection here is entirely
+    // ATS-side — Valeo alone carries most of it — and `config.js` already reads
+    // `base.geoId ?? null`, so leaving it out is supported rather than missing.
+    // Fill it in only alongside a `searches` entry, or the number is untested.
+    telegram: 'https://t.me/interndoor',
+    // NO `countries: ['mexico']`, and this is the whole reason the region can
+    // be added at all. Matching is `\b(...)\b`, so `mexico` matches the second
+    // word of "New Mexico" — and the country pass runs BEFORE the city pass, so
+    // it would beat US outright and file every New Mexico role in Mexico. That
+    // is the exact failure this module exists to prevent, and `resolveRowRegion`
+    // re-derives on every publish, so it would have rewritten stored rows too.
+    // The cities below read every Mexican row actually held without it: the
+    // country name only ever appears alongside one of them ("Mexico City,
+    // Mexico", "Jalisco, Mexico"), so it buys nothing and costs a US state.
+    countries: [],
+    codes: ['mx'],
+    // Accented and bare spellings both, as Poland does — rows carry "Queretaro"
+    // and "Santiago de Querétaro, mx" in the same board.
+    cities: ['queretaro', 'querétaro', 'san luis potosi', 'san luis potosí',
+      'rio bravo', 'río bravo', 'mexico city', 'ciudad de mexico',
+      'ciudad de méxico', 'guadalajara', 'monterrey', 'jalisco', 'tijuana',
+      'puebla', 'toluca'],
   },
 ];
 

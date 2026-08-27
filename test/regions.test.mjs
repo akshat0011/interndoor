@@ -61,7 +61,8 @@ at('a placeholder', 'BLANK,BLANK,Multiple Locations', UNKNOWN);
 at('a continent is not a country', 'APAC - Remote', UNKNOWN);
 at('bare remote routes nowhere', 'Remote', UNKNOWN);
 at('a country we do not serve', 'Hong Kong', UNKNOWN);
-at('another', 'Santiago de Querétaro, mx', UNKNOWN);
+at('another', 'Auckland, NZ', UNKNOWN);
+at('and another', 'Taguig, Philippines', UNKNOWN);
 
 console.log('\n== ambiguous cities are deliberately absent ==');
 // Cambridge, Birmingham and London, Ontario all exist on both sides of the
@@ -200,8 +201,25 @@ console.log('\n== the six excluded codes are still a known gap ==');
 // unless its city or state is spelled out. These are STORED as unknown, never
 // published, so a later gazetteer improvement picks them up with no
 // re-collection. Pinned so the behaviour is deliberate rather than a surprise.
+// `auburn` is NOT in the gazetteer: Auburn is a town in Maine, Alabama,
+// Washington and New South Wales, so naming it would hand an Australian
+// role to the US board. This is the gap staying open on purpose.
 at('maine by code alone', 'Auburn, ME', UNKNOWN);
-at('indiana by code alone', 'Fort Wayne, IN', UNKNOWN);
+// Franklin is the same shape: Franklin, IN is a real US city and so is
+// Franklin in a dozen other states, but nothing here names it yet.
+at('indiana by code alone', 'Franklin, IN', UNKNOWN);
+// ...and the other half of the note: naming the city IS the remedy, so a
+// city that has been added now reads despite its code being excluded.
+// Fort Wayne, Hillsboro, Cedar Rapids, Boise, Honolulu and Pearl City were
+// 15 stored rows sitting in `unknown` for exactly this reason (27 Aug).
+at('indiana by a named city', 'Fort Wayne, IN', 'US');
+at('oregon by a named city', 'Hillsboro, OR', 'US');
+at('iowa by a named city', 'Cedar Rapids, IA', 'US');
+at('idaho, with trailing junk', 'Boise, ID - Main Site', 'US');
+at('hawaii by a named city', 'Honolulu, HI', 'US');
+at('hawaii, the other one', 'Pearl City, HI', 'US');
+at('a metro area, not a city proper', 'Little Rock Metropolitan Area', 'US');
+at('a warehouse, not a city proper', 'San Bernardino Warehouse', 'US');
 
 console.log('\n== city still beats code, which is what the rule protects ==');
 // The documented collision the ordering exists for: CA is Canada's ISO code AND
@@ -213,6 +231,38 @@ at('ontario the province', 'Ontario, CA', 'CA');
 // Tamil Nadu and Tennessee share TN. `chennai` is unambiguous, so it settles it
 // before the code pass is ever reached.
 at('chennai not tennessee', 'Chennai, TN', 'IN');
+
+console.log('\n== Mexico is read by city and code, never by country name ==');
+// MX carries NO `countries: ['mexico']`, and that is the whole design of the
+// entry. Matching is \b(...)\b and the COUNTRY pass runs before the city pass,
+// so a `mexico` country entry would match the second word of "New Mexico" and
+// beat US outright — filing every New Mexico role in Mexico. Worse, publish
+// re-derives the region of every stored row on each run, so it would have
+// rewritten history too. These four are the regression that guards it.
+at('new mexico is a US state', 'Albuquerque, New Mexico', 'US');
+at('new mexico, bare', 'New Mexico', 'US');
+at('new mexico, spelled out fully', 'Las Cruces, New Mexico, United States', 'US');
+at('new mexico by code', 'Santa Fe, NM', 'US');
+// And the rows that made the region worth adding — all Valeo ATS payloads.
+at('bare mexican city', 'Queretaro', 'MX');
+at('accented, with code', 'Santiago de Querétaro, mx', 'MX');
+at('accented city alone', 'San Luis Potosí, mx', 'MX');
+at('unaccented city alone', 'San Luis Potosi', 'MX');
+at('the country name still reads, via its city', 'Mexico City, Mexico', 'MX');
+at('a state, not a city', 'Jalisco, Mexico', 'MX');
+// Collected, not published — it has no board and must not acquire one by
+// accident. IN, US and GB are the published set.
+check('mexico is collected', collectsRegion({ regions: { collect: 'all' } }, 'MX'), true);
+check('mexico is not published',
+  isPublishedRegion({ regions: { publish: ['IN', 'US', 'GB'] } }, 'MX'), false);
+
+console.log('\n== the two rows that prompted all of this (27 Aug) ==');
+// `bin/poll-ats.js` reported "2 could not be placed" for these two Valeo roles.
+at('tuam, county galway', 'Tuam', 'IE');
+at('a maharashtra town, no space after the comma', 'Turbhe,MH', 'IN');
+at('and its neighbour', 'Mahad,MH', 'IN');
+// The word-boundary check that keeps `mahad` from eating a Bengaluru suburb.
+at('mahad does not match mahadevapura', 'Mahadevapura, Bengaluru', 'IN');
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
