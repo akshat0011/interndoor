@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-pcb-layout-engineer-intern-fall-2026-4449301931",
+      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-pcb-layout-engineer-intern-fall-2026-4449301931",
+      "title": "PCB Layout Engineer Intern (Fall 2026) — Astranis Space Technologies",
+      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Fall 2026\n• Place and route PCB designs with input from engineers\n• Use Altium or similar tools for layout and schematic\n• Create symbols and footprints from specs and models",
+      "date_published": "2026-08-27T13:00:58.691Z",
+      "authors": [
+        {
+          "name": "Astranis Space Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/microsoft-applied-science-phd-microsoft-ai-internship-opportunities-4459809021",
+      "url": "https://interndoor.com/us/jobs/microsoft-applied-science-phd-microsoft-ai-internship-opportunities-4459809021",
+      "title": "Applied Science: PhD Microsoft AI Internship Opportunities — Microsoft",
+      "content_text": "Company: Microsoft · Location: Redmond, WA\n• Design and optimize machine learning models for search, recommendations, and language understanding\n• Work with Azure and cloud technologies to deploy data pipelines and analyze large datasets\n• Collaborate with cross-functional teams to turn product needs into research-driven solutions",
+      "date_published": "2026-08-27T12:43:32.899Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934",
       "url": "https://interndoor.com/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934",
       "title": "Intern - ADV DRAM Process Integration Engineer — Micron Technology",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "CACI International Inc"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/premier-inc-advisory-services-intern-4459398335",
-      "url": "https://interndoor.com/us/jobs/premier-inc-advisory-services-intern-4459398335",
-      "title": "Advisory Services Intern — Premier Inc.",
-      "content_text": "Company: Premier Inc. · Location: United States\n• Analyze data and present insights to healthcare clients\n• Use tools like R, Python, and Tableau for analysis\n• Work on performance improvement projects with real clients",
-      "date_published": "2026-08-26T21:30:06.790Z",
-      "authors": [
-        {
-          "name": "Premier Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-network-impact-assessment-nia-intern-4457702310",
-      "url": "https://interndoor.com/us/jobs/leidos-network-impact-assessment-nia-intern-4457702310",
-      "title": "Network Impact Assessment (NIA) Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Scott AFB, IL\n• Analyze network impacts on military missions using tools like ServiceNow\n• Work with analysts on global defense network operations\n• Based at Scott AFB, IL, no remote options",
-      "date_published": "2026-08-26T21:16:40.825Z",
-      "authors": [
-        {
-          "name": "Leidos"
         }
       ]
     }

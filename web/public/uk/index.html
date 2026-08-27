@@ -54,7 +54,7 @@
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:description" content="Software internships in the UK, listed minutes after they go live. Apply while the queue is still short.">
 <meta name="twitter:image:alt" content="InternDoor — be early. Software internships in the UK, listed minutes after they go live.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://interndoor.com/#organization","name":"InternDoor","url":"https://interndoor.com/","logo":"https://interndoor.com/favicon-96.png","description":"InternDoor lists engineering internships in the UK within minutes of them going live.","areaServed":{"@type":"Country","name":"United Kingdom"},"sameAs":["https://t.me/interndoor"]},{"@type":"WebSite","@id":"https://interndoor.com/uk/#website","url":"https://interndoor.com/uk/","name":"InternDoor","description":"Engineering internships in the UK, listed within minutes of going live.","inLanguage":"en-GB","publisher":{"@id":"https://interndoor.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://interndoor.com/uk/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://interndoor.com/#organization","name":"InternDoor","url":"https://interndoor.com/","logo":"https://interndoor.com/favicon-96.png","description":"InternDoor lists engineering internships in the UK within minutes of them going live.","areaServed":{"@type":"Country","name":"United Kingdom"},"sameAs":[]},{"@type":"WebSite","@id":"https://interndoor.com/uk/#website","url":"https://interndoor.com/uk/","name":"InternDoor","description":"Engineering internships in the UK, listed within minutes of going live.","inLanguage":"en-GB","publisher":{"@id":"https://interndoor.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://interndoor.com/uk/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
 <!--/REGION:HEAD-->
 
 <!-- Link previews. WhatsApp/iMessage will not render a card without og:image, and it
@@ -149,7 +149,7 @@
       </details>
 
 <!--/REGION:SWITCH-->
-      <a class="alerts" aria-label="Get alerts" href="https://t.me/interndoor" target="_blank" rel="noopener noreferrer">
+      <a class="alerts" aria-label="Get alerts" href="/uk/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         <span>Get alerts</span>
       </a>
@@ -232,6 +232,35 @@
     </aside>
   </div>
 
+  <!-- The email signup, in a band of its own.
+
+       IT WAS INSIDE <footer class="foot">, below the disclaimer and the
+       crawler's company link, which is the least-read part of the page. Every
+       generated page already gives it the .outro band immediately after the
+       content; the board is the one page that does not call foot(), so it had
+       been left behind. This is the same position, built from the tokens in
+       styles.css rather than page.css, which the board does not load.
+
+       NO data-region: this file is the TEMPLATE for all three boards, and
+       subscribe.js reads <meta name="interndoor-region"> instead. -->
+  <section class="signup-band">
+    <div class="wrap">
+      <b>Never refresh this page again</b>
+      <p>New engineering internships by email, within minutes of going live. Or <a href="/uk/alerts">pick another channel</a>.</p>
+    <form class="sub" method="post" action="/api/subscribe">
+    <label class="sub-l">Get new internships by email — one message, no spam.</label>
+    <div class="sub-row">
+    <input class="sub-i" aria-label="Get new internships by email" type="email" name="email" required
+    autocomplete="email" inputmode="email" spellcheck="false"
+    placeholder="you@college.edu">
+    <button class="sub-b" type="submit">Subscribe</button>
+    </div>
+    <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+    <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
+    </div>
+  </section>
+
   <footer class="foot">
     <div class="wrap">
       <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
@@ -243,29 +272,6 @@
            hub reaches every job page. -->
       <p><a href="/uk/companies/">Browse internships by company →</a></p>
 
-      <!-- The email signup.
-
-           NO data-region HERE, deliberately. This file is the TEMPLATE for
-           every board — writeHomePage() renders it for India, the US and the
-           UK — so a baked-in attribute would tell the US and UK boards they
-           were India. subscribe.js falls back to <meta name="interndoor-region">,
-           which IS filled per region inside the REGION:HEAD marker. A generated
-           job page bakes the attribute in instead, because there it is known at
-           build time and cannot be wrong.
-
-           The markup is otherwise identical to signupForm() in src/pages.js,
-           and .sub lives in styles.css rather than page.css so both get it. -->
-      <form class="sub" method="post" action="/api/subscribe">
-        <label class="sub-l" for="sub-email">Get new internships by email — one message, no spam.</label>
-        <div class="sub-row">
-          <input class="sub-i" id="sub-email" type="email" name="email" required
-                 autocomplete="email" inputmode="email" spellcheck="false"
-                 placeholder="you@college.edu">
-          <button class="sub-b" type="submit">Subscribe</button>
-        </div>
-        <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
-        <p class="sub-msg" role="status" aria-live="polite"></p>
-      </form>
 
       <!--
         Every current listing, as real links in the HTML.
