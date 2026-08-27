@@ -115,9 +115,12 @@ def main() -> None:
         suffix = f"_{a.region.strip().upper()}" if a.region else ""
         die(f"the token belongs to @{who.get('username') or 'unknown'}, not @{a.account} "
             "— refusing to publish. With one account per region a mismatch means the "
-            "reel was about to go to the WRONG audience, which cannot be undone. Put "
-            f"@{a.account}'s own IG_USER_ID{suffix} and IG_ACCESS_TOKEN{suffix} in the "
-            "interndoor .env.")
+            "reel was about to go to the WRONG audience, which cannot be undone. "
+            f"IG_USER_ID{suffix}/IG_ACCESS_TOKEN{suffix} in the interndoor .env hold "
+            f"@{who.get('username') or 'another account'}'s credentials, but "
+            f"reels.accounts says {a.region or 'this region'} posts as @{a.account}. "
+            "Fix whichever of the two is wrong — do NOT copy this account's token "
+            "into that pair.")
 
     # Instagram's own rule, checked before anything is uploaded so a too-long
     # reel fails in a second rather than after a tunnel and a 60s fetch.

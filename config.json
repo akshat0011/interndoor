@@ -1092,7 +1092,8 @@
     "auto": {
       "enabled": true,
       "regions": [
-        "US"
+        "US",
+        "IN"
       ],
       "dailyCap": 20,
       "dailyCapByRegion": {
