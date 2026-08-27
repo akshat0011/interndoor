@@ -42,6 +42,42 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-test-engineer-co-op-winter-spring-2027-4459618764",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-test-engineer-co-op-winter-spring-2027-4459618764",
+      "title": "Test Engineer Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027\n• Design and implement test procedures for ATE equipment in mixed-signal products\n• Develop test solutions for probe, package, and characterization testing\n• Collaborate with engineering teams and external vendors on test strategy",
+      "date_published": "2026-08-27T00:32:19.146Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-wireless-protocol-engineer-co-op-winter-spring-2027-4459624781",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-wireless-protocol-engineer-co-op-winter-spring-2027-4459624781",
+      "title": "Wireless Protocol Engineer Co-Op (Winter Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027\n• Develop and maintain embedded firmware for wireless communication systems\n• Work with C and Python in embedded systems and automation tasks\n• Collaborate with hardware and software teams on MAC layer development",
+      "date_published": "2026-08-27T00:31:49.386Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-embedded-firmware-engineer-co-op-winter-spring-2027-4459628691",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-embedded-firmware-engineer-co-op-winter-spring-2027-4459628691",
+      "title": "Embedded Firmware Engineer Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027\n• Develop firmware for wireless communication systems\n• Work with C, Python, and embedded development tools\n• Collaborate with hardware and software teams in Hillsboro",
+      "date_published": "2026-08-27T00:31:41.462Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-infrastructure-engineering-intern-ai-platform-phd--4457711570",
       "url": "https://interndoor.com/us/jobs/netflix-machine-learning-ai-infrastructure-engineering-intern-ai-platform-phd--4457711570",
       "title": "Machine Learning/AI Infrastructure Engineering Intern (AI Platform) PhD, Winter 2027 — Netflix",
@@ -263,6 +299,18 @@
       "title": "Cybersecurity Analyst Intern — Leidos",
       "content_text": "Company: Leidos · Location: Hill Air Force Base, Utah, United States\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Review threat intel and IOCs to improve detection of cyber threats",
       "date_published": "2026-08-26T21:16:23.257Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457714214",
+      "url": "https://interndoor.com/us/jobs/leidos-cybersecurity-analyst-intern-4457714214",
+      "title": "Cybersecurity Analyst Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Pearl City, HI\n• Analyze security alerts from SIEM, IDS/IPS, and NetFlow to spot malicious activity\n• Work with SOC analysts on network traffic analysis and incident response\n• Learn to identify IOCs and improve detection using threat intelligence feeds",
+      "date_published": "2026-08-26T21:16:06.061Z",
       "authors": [
         {
           "name": "Leidos"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rivian-uiuc-research-park-intern-machine-learning-compiler-4439936248",
-      "url": "https://interndoor.com/us/jobs/rivian-uiuc-research-park-intern-machine-learning-compiler-4439936248",
-      "title": "UIUC Research Park Intern - Machine Learning Compiler — Rivian",
-      "content_text": "Company: Rivian · Location: Champaign, IL · Duration: Fall 2026\n• Implement graph lowering passes for deep learning models on RAP1\n• Optimize hardware-aware performance and memory efficiency\n• Benchmark across platforms for deployment efficiency",
-      "date_published": "2026-08-26T10:43:26.384Z",
-      "authors": [
-        {
-          "name": "Rivian"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/quantiphi-intern-it-and-facilities-support-4428950899",
-      "url": "https://interndoor.com/us/jobs/quantiphi-intern-it-and-facilities-support-4428950899",
-      "title": "Intern - IT & Facilities Support — Quantiphi",
-      "content_text": "Company: Quantiphi · Location: Boston, MA · Duration: 1-2 years\n• Support users with hardware, software, and network issues\n• Troubleshoot and document technical problems\n• Maintain office systems and assist with facility tasks",
-      "date_published": "2026-08-26T10:32:37.842Z",
-      "authors": [
-        {
-          "name": "Quantiphi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/festo-it-intern-4457235899",
-      "url": "https://interndoor.com/us/jobs/festo-it-intern-4457235899",
-      "title": "IT Intern — Festo",
-      "content_text": "Company: Festo · Location: Islandia, NY\n• Support IT operations and projects daily\n• Use Java/Python for programming tasks\n• Work at Festo's Islandia, NY facility",
-      "date_published": "2026-08-26T10:14:43.423Z",
-      "authors": [
-        {
-          "name": "Festo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/persistent-systems-llc-intern-embedded-software-engineer-fall-2026-4429410998",
-      "url": "https://interndoor.com/us/jobs/persistent-systems-llc-intern-embedded-software-engineer-fall-2026-4429410998",
-      "title": "Intern - Embedded Software Engineer (Fall 2026) — Persistent Systems, LLC",
-      "content_text": "Company: Persistent Systems, LLC · Location: New York, NY · Duration: Fall 2026\n• Develop low-level embedded software for networking systems\n• Work with C/C++ and Linux kernel modules\n• Collaborate on hardware and system integration projects",
-      "date_published": "2026-08-26T09:52:29.211Z",
-      "authors": [
-        {
-          "name": "Persistent Systems, LLC"
         }
       ]
     }
