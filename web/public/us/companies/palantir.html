@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/palantir-product-designer-internship-us-government-ats-lever-palantir-9db71277-3a9a-481b-a2a3-25c3125b0e8a","name":"Palantir — Product Designer, Internship - US Government"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-internship-intel-ats-lever-palantir-9e40d77f-b07c-437b-98e7-def9b0184d89","name":"Palantir — Forward Deployed Software Engineer, Internship - Intel"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-internship-commercial-ats-lever-palantir-d5486403-c050-4920-b2e0-91b69b61ebb2","name":"Palantir — Forward Deployed Software Engineer, Internship - Commercial"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-commercial-ats-lever-palantir-e500bcf3-19d8-4d3c-b340-4d76e4a55b40","name":"Palantir — Forward Deployed Software Engineer, New Grad - Commercial"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/palantir-privacy-and-civil-liberties-engineer-new-grad-ats-lever-palantir-95e0d2b0-437a-4096-a5c6-0f247f426c90","name":"Palantir — Privacy & Civil Liberties Engineer - New Grad"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3","name":"Palantir — Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299","name":"Palantir — Deployment Strategist, New Grad - Intel, US Government"},{"@type":"ListItem","position":8,"url":"https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382","name":"Palantir — Forward Deployed Software Engineer, New Grad - Intel, US Government"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -218,6 +219,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

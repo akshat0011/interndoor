@@ -28,6 +28,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Summer 2027 Intern - Software Engineer","description":"\u003cp>Software engineering\u003c/p>\u003cul>\u003cli>Contribute to software engineering aspects for future releases as part of a Scrum team\u003c/li>\u003cli>Design, develop, test, and deploy software products, integrating solutions into distributed systems\u003c/li>\u003cli>Develop optimized code, contribute to automated tests and testing infrastructure\u003c/li>\u003cli>Help monitor cloud services with real-time tools and frameworks\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Salesforce","value":"4446350750"},"datePosted":"2026-07-28T18:57:27.967Z","validThrough":"2026-08-27T21:43:00.401Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Salesforce","logo":"https://interndoor.com/logos/salesforce.jpg"},"directApply":false,"url":"https://interndoor.com/jobs/salesforce-summer-2027-intern-software-engineer-4446350750","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Hyderabad, Telangana, India","addressCountry":"IN"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -167,6 +168,17 @@
       </a>
       <a class="a-2" href="/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="IN">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

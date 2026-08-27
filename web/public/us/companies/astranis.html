@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/astranis-cad-engineer-librarian-intern-summer-2027-ats-greenhouse-astranis-4704742006","name":"Astranis — CAD Engineer/Librarian Intern (Summer 2027)"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/astranis-cad-engineer-librarian-intern-spring-2027-ats-greenhouse-astranis-4704740006","name":"Astranis — CAD Engineer/Librarian Intern (Spring 2027)"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/astranis-cad-engineer-librarian-intern-winter-2027-ats-greenhouse-astranis-4704748006","name":"Astranis — CAD Engineer/Librarian Intern (Winter 2027)"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/astranis-software-engineer-intern-enterprise-systems-fall-2026-ats-greenhouse-astranis-4699071006","name":"Astranis — Software Engineer Intern - Enterprise Systems (Fall 2026)"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/astranis-reliability-test-intern-fall-2026-ats-greenhouse-astranis-4677973006","name":"Astranis — Reliability Test Intern (Fall 2026)"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/astranis-radiation-effects-engineer-intern-fall-2026-ats-greenhouse-astranis-4694853006","name":"Astranis — Radiation Effects Engineer Intern (Fall 2026)"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/astranis-power-electronics-intern-fall-2026-ats-greenhouse-astranis-4625923006","name":"Astranis — Power Electronics Intern (Fall 2026)"},{"@type":"ListItem","position":8,"url":"https://interndoor.com/us/jobs/astranis-pcb-layout-engineer-intern-fall-2026-ats-greenhouse-astranis-4597409006","name":"Astranis — PCB Layout Engineer Intern (Fall 2026)"},{"@type":"ListItem","position":9,"url":"https://interndoor.com/us/jobs/astranis-flight-software-intern-fall-2026-ats-greenhouse-astranis-4619283006","name":"Astranis — Flight Software Intern (Fall 2026)"},{"@type":"ListItem","position":10,"url":"https://interndoor.com/us/jobs/astranis-environmental-test-engineer-intern-fall-2026-ats-greenhouse-astranis-4676888006","name":"Astranis — Environmental Test Engineer Intern (Fall 2026)"},{"@type":"ListItem","position":11,"url":"https://interndoor.com/us/jobs/astranis-electrical-reliability-intern-fall-2026-ats-greenhouse-astranis-4681472006","name":"Astranis — Electrical Reliability Intern (Fall 2026)"},{"@type":"ListItem","position":12,"url":"https://interndoor.com/us/jobs/astranis-avionics-engineer-intern-fall-2026-ats-greenhouse-astranis-4597413006","name":"Astranis — Avionics Engineer Intern (Fall 2026)"},{"@type":"ListItem","position":13,"url":"https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-fall-2026-ats-greenhouse-astranis-4679080006","name":"Astranis — Assembly, Integration, and Test Intern Fall 2026"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -258,6 +259,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

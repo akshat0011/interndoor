@@ -28,6 +28,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Long-term Internship - Engineering","description":"\u003cp>Aircraft Design\u003c/p>\u003cul>\u003cli>Develop 3D models and 2D drawings for aircraft components\u003c/li>\u003cli>Use CATIA, Isami, NASTRAN, PATRAN for analysis\u003c/li>\u003cli>Work onsite in Wichita, KS for multiple semesters\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Airbus Aircraft","value":"4457274685"},"datePosted":"2026-08-26T18:19:56.613Z","validThrough":"2026-09-25T20:59:41.543Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Airbus Aircraft","logo":"https://interndoor.com/logos/airbus-aircraft.jpg"},"directApply":false,"url":"https://interndoor.com/us/jobs/airbus-aircraft-long-term-internship-engineering-4457274685","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Wichita, KS","addressCountry":"US"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -180,6 +181,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

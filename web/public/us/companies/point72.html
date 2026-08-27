@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/point72-quantitative-developer-intern-ats-greenhouse-point72-8721562002","name":"Point72 — Quantitative Developer Intern"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/point72-quantitative-researcher-intern-ats-greenhouse-point72-7586061002","name":"Point72 — Quantitative Researcher Intern"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/point72-summer-2027-quantitative-research-internship-ats-greenhouse-point72-7297642002","name":"Point72 — Summer 2027 Quantitative Research Internship"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/point72-quantitative-research-intern-nlp-ats-greenhouse-point72-8018862002","name":"Point72 — Quantitative Research Intern (NLP)"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/point72-quantitative-software-developer-intern-ats-greenhouse-point72-7297666002","name":"Point72 — Quantitative Software Developer Intern"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/point72-quantitative-research-intern-ats-greenhouse-point72-7297667002","name":"Point72 — Quantitative Research Intern"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/point72-machine-learning-researcher-intern-ats-greenhouse-point72-7302611002","name":"Point72 — Machine Learning Researcher - Intern"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -211,6 +212,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

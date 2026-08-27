@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/old-mission-capital-quantitative-researcher-ph-d-2027-graduate-program-august-start-ats-greenhouse-oldmissioncapital-7814534003","name":"Old Mission Capital — Quantitative Researcher (Ph.D.) - 2027 Graduate Program - (August Start)"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/old-mission-capital-software-engineer-2027-internship-program-june-start-ats-greenhouse-oldmissioncapital-7796180003","name":"Old Mission Capital — Software Engineer – 2027 Internship Program (June Start)"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/old-mission-capital-software-engineer-2027-graduate-program-august-start-ats-greenhouse-oldmissioncapital-7796048003","name":"Old Mission Capital — Software Engineer – 2027 Graduate Program (August Start)"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/old-mission-capital-quantitative-trader-2027-graduate-program-february-start-ats-greenhouse-oldmissioncapital-7796031003","name":"Old Mission Capital — Quantitative Trader – 2027 Graduate Program (February Start)"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/old-mission-capital-quantitative-trader-2027-graduate-program-august-start-ats-greenhouse-oldmissioncapital-7796044003","name":"Old Mission Capital — Quantitative Trader – 2027 Graduate Program (August Start)"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -195,6 +196,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

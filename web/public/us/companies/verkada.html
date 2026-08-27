@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/verkada-mobile-software-engineering-intern-2027-ats-greenhouse-verkada-5219131007","name":"Verkada — Mobile Software Engineering Intern 2027"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/verkada-security-software-engineering-intern-2027-ats-greenhouse-verkada-5213881007","name":"Verkada — Security Software Engineering Intern 2027"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/verkada-frontend-software-engineering-intern-2027-ats-greenhouse-verkada-5210942007","name":"Verkada — Frontend Software Engineering Intern 2027"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/verkada-embedded-software-engineering-intern-2027-ats-greenhouse-verkada-5211595007","name":"Verkada — Embedded Software Engineering Intern 2027"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/verkada-backend-software-engineering-intern-2027-ats-greenhouse-verkada-5210813007","name":"Verkada — Backend Software Engineering Intern 2027"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -194,6 +195,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

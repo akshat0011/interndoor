@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Internships in the US by company — 103 companies hiring | InternDoor</title>
-<meta name="description" content="Browse 379 live internships across 103 companies in the US, plus every employer we track. Updated every 30 minutes.">
+<title>Internships in the US by company — 104 companies hiring | InternDoor</title>
+<meta name="description" content="Browse 380 live internships across 104 companies in the US, plus every employer we track. Updated every 30 minutes.">
 <link rel="canonical" href="https://interndoor.com/us/companies/">
 <link rel="alternate" hreflang="en-IN" href="https://interndoor.com/companies/">
 <link rel="alternate" hreflang="en-US" href="https://interndoor.com/us/companies/">
@@ -16,8 +16,8 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="InternDoor">
 <meta property="og:url" content="https://interndoor.com/us/companies/">
-<meta property="og:title" content="Internships in the US by company — 103 companies hiring | InternDoor">
-<meta property="og:description" content="Browse 379 live internships across 103 companies in the US, plus every employer we track. Updated every 30 minutes.">
+<meta property="og:title" content="Internships in the US by company — 104 companies hiring | InternDoor">
+<meta property="og:description" content="Browse 380 live internships across 104 companies in the US, plus every employer we track. Updated every 30 minutes.">
 <meta property="og:image" content="https://interndoor.com/og.jpg?v=5">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://interndoor.com/og.jpg?v=5">
@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="/page.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -85,14 +86,14 @@
     <header class="dir-hero">
       <h1>Internships by company in the US</h1>
       <div class="stats">
-        <div class="stat"><b>379</b><span>Live openings</span></div>
-        <div class="stat"><b>103</b><span>Hiring right now</span></div>
-        <div class="stat"><b>104</b><span>Employers tracked</span></div>
+        <div class="stat"><b>380</b><span>Live openings</span></div>
+        <div class="stat"><b>104</b><span>Hiring right now</span></div>
+        <div class="stat"><b>105</b><span>Employers tracked</span></div>
       </div>
       <div class="filter" id="filter">
         <label>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <input type="search" id="filter-input" placeholder="Filter 104 employers — try “Qualcomm”" aria-label="Filter companies">
+          <input type="search" id="filter-input" placeholder="Filter 105 employers — try “Qualcomm”" aria-label="Filter companies">
         </label>
       </div>
     </header>
@@ -575,6 +576,12 @@
           <span class="dir-name">Navi</span>
           <span class="dir-n">1 open role</span>
         </span>
+      </a><a class="dir-card" href="/us/companies/netapp" data-name="netapp">
+        <span class="tile-crest" aria-hidden="true">N<img src="/logos/netapp.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+        <span class="dir-t">
+          <span class="dir-name">NetApp</span>
+          <span class="dir-n">1 open role</span>
+        </span>
       </a><a class="dir-card" href="/us/companies/nvidia" data-name="nvidia">
         <span class="tile-crest" aria-hidden="true">N<img src="/logos/nvidia.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
         <span class="dir-t">
@@ -746,6 +753,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

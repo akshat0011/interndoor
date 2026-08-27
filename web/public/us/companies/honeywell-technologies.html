@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/honeywell-technologies-future-it-leaders-summer-2027-intern-us-person-required-4459638982","name":"Honeywell Technologies — Future IT Leaders - Summer 2027 Intern (US Person Required)"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/honeywell-technologies-electrical-engineering-summer-2027-intern-us-person-required-4459079129","name":"Honeywell Technologies — Electrical Engineering - Summer 2027 Intern (US Person Required)"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-4459063985","name":"Honeywell Technologies — Embedded Engineer - Summer 2027 Intern"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/honeywell-technologies-information-systems-it-cyber-engineer-and-data-science-summer-2027-int-4459072266","name":"Honeywell Technologies — Information Systems, IT, Cyber Engineer & Data Science - Summer 2027 Intern"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/honeywell-technologies-software-engineer-and-computer-science-summer-2027-intern-4459073264","name":"Honeywell Technologies — Software Engineer & Computer Science - Summer 2027 Intern"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/honeywell-technologies-software-engineer-and-computer-science-summer-2027-intern-us-person-re-4459071669","name":"Honeywell Technologies — Software Engineer & Computer Science - Summer 2027 Intern (US Person Required)"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/honeywell-technologies-information-systems-it-cyber-engineer-and-data-science-summer-2027-int-4459075188","name":"Honeywell Technologies — Information Systems, IT, Cyber Engineer & Data Science - Summer 2027 Intern (US Person Required)"},{"@type":"ListItem","position":8,"url":"https://interndoor.com/us/jobs/honeywell-technologies-embedded-engineer-summer-2027-intern-us-person-required-4459087027","name":"Honeywell Technologies — Embedded Engineer - Summer 2027 Intern (US Person Required)"},{"@type":"ListItem","position":9,"url":"https://interndoor.com/us/jobs/honeywell-technologies-artificial-intelligence-machine-learning-summer-2027-intern-4459003367","name":"Honeywell Technologies — Artificial Intelligence/Machine Learning - Summer 2027 Intern"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -225,6 +226,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/ibm-research-return-intern-4457231077","name":"IBM — Research Return Intern"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011","name":"IBM — Hardware Developer Intern 2027 -Austin"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/ibm-software-developer-intern-4457237008","name":"IBM — Software Developer Intern"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086","name":"IBM — Global Facility Management Process Intern 2027"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101","name":"IBM — Software QA Development (Apprentice Conversion)"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/ibm-product-management-intern-2027-4457231055","name":"IBM — Product Management Intern 2027"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/ibm-product-manager-intern-rtp-2027-4457236008","name":"IBM — Product Manager Intern - RTP 2027"},{"@type":"ListItem","position":8,"url":"https://interndoor.com/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065","name":"IBM — User Experience Design, Research and Content Intern 2027"},{"@type":"ListItem","position":9,"url":"https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015","name":"IBM — Hardware and Systems Developer Intern 2027 -Austin, TX"},{"@type":"ListItem","position":10,"url":"https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006","name":"IBM — Hardware and Systems Developer Intern 2027 -New York"},{"@type":"ListItem","position":11,"url":"https://interndoor.com/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009","name":"IBM — Software Strategy and M&A Summer Intern"},{"@type":"ListItem","position":12,"url":"https://interndoor.com/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025","name":"IBM — 2027 Software Engineering Intern – Agentic AI & Workflow Automation"},{"@type":"ListItem","position":13,"url":"https://interndoor.com/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013","name":"IBM — Hardware and Systems Developer Intern 2027 -Rochester, MN"},{"@type":"ListItem","position":14,"url":"https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001","name":"IBM — Hardware Developer Intern 2027 -Poughkeepsie"},{"@type":"ListItem","position":15,"url":"https://interndoor.com/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008","name":"IBM — Firmware and Systems Developer Intern 2027 -Poughkeepsie, NY"},{"@type":"ListItem","position":16,"url":"https://interndoor.com/us/jobs/ibm-cybersecurity-analyst-apprentice-4446245726","name":"IBM — Cybersecurity Analyst Apprentice"},{"@type":"ListItem","position":17,"url":"https://interndoor.com/us/jobs/ibm-2026-intern-conversion-associate-consultant-cybersecurity-x-force-4446242646","name":"IBM — 2026 - Intern Conversion - Associate Consultant, Cybersecurity X-Force"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -290,6 +291,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

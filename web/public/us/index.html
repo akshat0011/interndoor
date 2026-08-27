@@ -243,6 +243,30 @@
            hub reaches every job page. -->
       <p><a href="/us/companies/">Browse internships by company →</a></p>
 
+      <!-- The email signup.
+
+           NO data-region HERE, deliberately. This file is the TEMPLATE for
+           every board — writeHomePage() renders it for India, the US and the
+           UK — so a baked-in attribute would tell the US and UK boards they
+           were India. subscribe.js falls back to <meta name="interndoor-region">,
+           which IS filled per region inside the REGION:HEAD marker. A generated
+           job page bakes the attribute in instead, because there it is known at
+           build time and cannot be wrong.
+
+           The markup is otherwise identical to signupForm() in src/pages.js,
+           and .sub lives in styles.css rather than page.css so both get it. -->
+      <form class="sub" method="post" action="/api/subscribe">
+        <label class="sub-l" for="sub-email">Get new internships by email — one message, no spam.</label>
+        <div class="sub-row">
+          <input class="sub-i" id="sub-email" type="email" name="email" required
+                 autocomplete="email" inputmode="email" spellcheck="false"
+                 placeholder="you@college.edu">
+          <button class="sub-b" type="submit">Subscribe</button>
+        </div>
+        <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+        <p class="sub-msg" role="status" aria-live="polite"></p>
+      </form>
+
       <!--
         Every current listing, as real links in the HTML.
 
@@ -266,6 +290,7 @@
       <details class="all-roles">
         <summary>All current listings</summary>
         <ul><!--LISTINGS-->
+<li><a href="/us/jobs/netapp-software-engineer-intern-4457740797">NetApp — Software Engineer Intern</a><span class="tiny"> San Jose, CA · Hybrid</span></li>
 <li><a href="/us/jobs/conduent-applied-ai-engineer-intern-4459661154">Conduent — Applied AI Engineer Intern</a><span class="tiny"> United States · Remote</span></li>
 <li><a href="/us/jobs/honeywell-technologies-future-it-leaders-summer-2027-intern-us-person-required-4459638982">Honeywell Technologies — Future IT Leaders - Summer 2027 Intern (US Person Required)</a><span class="tiny"> United States · Remote</span></li>
 <li><a href="/us/jobs/northrop-grumman-2027-software-engineering-intern-huntsville-al-4457730674">Northrop Grumman — 2027 Software Engineering Intern- Huntsville AL</a><span class="tiny"> Huntsville, AL · On-site</span></li>
@@ -723,6 +748,7 @@
 
 <div class="snack" id="toast" role="status" aria-live="polite" hidden></div>
 
+<script defer src="/subscribe.js"></script>
 <script src="/app.js" type="module"></script>
 </body>
 </html>

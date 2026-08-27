@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/netapp-software-engineer-intern-4457740797",
+      "url": "https://interndoor.com/us/jobs/netapp-software-engineer-intern-4457740797",
+      "title": "Software Engineer Intern — NetApp",
+      "content_text": "Company: NetApp · Location: San Jose, CA\n• Write and test code for software products\n• Use cloud tools like Kubernetes and databases\n• Work with Java and web development frameworks",
+      "date_published": "2026-08-27T08:39:13.853Z",
+      "authors": [
+        {
+          "name": "NetApp"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/conduent-applied-ai-engineer-intern-4459661154",
       "url": "https://interndoor.com/us/jobs/conduent-applied-ai-engineer-intern-4459661154",
       "title": "Applied AI Engineer Intern — Conduent",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Airbus Aircraft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459344483",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459344483",
-      "title": "Intern, Software Engineer — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Palm Bay, FL\n• Develop software for real-time control systems and tactical radio equipment\n• Work with C++, C#, Java, Python, and embedded OS like VxWorks and QNX\n• Participate in full software lifecycle from design to testing and defect resolution",
-      "date_published": "2026-08-26T18:18:48.980Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
         }
       ]
     }

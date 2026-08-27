@@ -28,6 +28,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"2027 Summer Internship","description":"\u003cp>Semiconductor Manufacturing\u003c/p>\u003cul>\u003cli>Work on real-world semiconductor projects with experienced engineers\u003c/li>\u003cli>Tools include advanced manufacturing systems and simulation software\u003c/li>\u003cli>11-week full-time onsite internship in Taylor, TX\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Samsung Semiconductor","value":"4449013253"},"datePosted":"2026-08-25T17:10:13.024Z","validThrough":"2026-09-24T17:59:13.026Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Samsung Semiconductor","logo":"https://interndoor.com/logos/samsung-semiconductor.jpg"},"directApply":false,"url":"https://interndoor.com/us/jobs/samsung-semiconductor-2027-summer-internship-4449013253","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Taylor, TX","addressCountry":"US"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -167,6 +168,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

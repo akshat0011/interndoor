@@ -1,9 +1,9 @@
 {
- "generatedAt": 1787815899261,
+ "generatedAt": 1787821304779,
  "region": "US",
  "regionName": "United States",
- "count": 388,
- "techCount": 388,
+ "count": 389,
+ "techCount": 389,
  "otherCount": 0,
  "companies": [
   "AECOM",
@@ -66,6 +66,7 @@
   "NXP Semiconductors",
   "Nationwide",
   "Navi",
+  "NetApp",
   "Netflix",
   "Nokia",
   "Northrop Grumman",
@@ -282,6 +283,57 @@
   "Yorktown Heights, NY"
  ],
  "jobs": [
+  {
+   "id": "4457740797",
+   "title": "Software Engineer Intern",
+   "company": "NetApp",
+   "matchedWatchlist": "NetApp",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/netapp.jpg",
+   "location": "San Jose, CA",
+   "workplaceType": "Hybrid",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "6 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "aws",
+    "azure",
+    "kubernetes",
+    "mysql",
+    "microservices",
+    "excel"
+   ],
+   "summary": "This internship involves writing code for software solutions that help large companies manage data in the cloud. You'll work with experienced engineers and learn cloud technologies like Kubernetes and databases. Ideal for students with Java and web development experience looking to gain hands-on experience in cloud-based data management.",
+   "bullets": [
+    "Write and test code for software products",
+    "Use cloud tools like Kubernetes and databases",
+    "Work with Java and web development frameworks"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science/Engineering",
+   "keySkills": [
+    "java",
+    "web development",
+    "cloud technologies",
+    "kubernetes",
+    "databases"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "19 minutes ago",
+   "postedAt": 1787819953853,
+   "firstSeenAt": 1787821093858,
+   "lastSeenAt": 1787821093858,
+   "url": "https://www.linkedin.com/jobs/view/4457740797/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4457740797/",
+   "description": null,
+   "roleFingerprint": "e1c067daa1",
+   "region": "US"
+  },
   {
    "id": "4459661154",
    "title": "Applied AI Engineer Intern",

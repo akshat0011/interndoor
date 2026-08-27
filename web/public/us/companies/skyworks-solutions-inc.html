@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-test-engineer-co-op-winter-spring-2027-4459618764","name":"Skyworks Solutions, Inc. — Test Engineer Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-wireless-protocol-engineer-co-op-winter-spring-2027-4459624781","name":"Skyworks Solutions, Inc. — Wireless Protocol Engineer Co-Op (Winter Spring 2027)"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-embedded-firmware-engineer-co-op-winter-spring-2027-4459628691","name":"Skyworks Solutions, Inc. — Embedded Firmware Engineer Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-data-engineering-winter-spring-co-op-jan-june-27-4459086533","name":"Skyworks Solutions, Inc. — Data Engineering Winter/Spring Co-Op (Jan-June '27)"},{"@type":"ListItem","position":5,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-data-engineering-summer-intern-may-aug-27-4459083537","name":"Skyworks Solutions, Inc. — Data Engineering Summer Intern (May-Aug '27)"},{"@type":"ListItem","position":6,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-module-design-co-op-winter-spring-2027-4459079598","name":"Skyworks Solutions, Inc. — RF Module Design Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":7,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-module-design-co-op-summer-fall-2027-4459074663","name":"Skyworks Solutions, Inc. — RF Module Design Co-Op (Summer/Fall 2027)"},{"@type":"ListItem","position":8,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-validation-engineer-co-op-winter-spring-2027-4459004744","name":"Skyworks Solutions, Inc. — RF Validation Engineer Co-op (Winter/Spring 2027)"},{"@type":"ListItem","position":9,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-baw-saw-filter-design-co-op-winter-spring-2027-4459012644","name":"Skyworks Solutions, Inc. — BAW/SAW Filter Design Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":10,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-filter-design-solutions-co-op-winter-spring-2027-4459007719","name":"Skyworks Solutions, Inc. — Filter Design Solutions Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":11,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-saw-baw-filter-design-co-op-summer-fall-2027-4459000739","name":"Skyworks Solutions, Inc. — SAW/BAW Filter Design Co-op (Summer/Fall 2027)"},{"@type":"ListItem","position":12,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-design-validation-testing-co-op-winter-spring-2027-4459021245","name":"Skyworks Solutions, Inc. — RF Design Validation/Testing Co-Op (Winter/Spring 2027)"},{"@type":"ListItem","position":13,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-analog-design-winter-spring-co-op-jan-june-27-4459012604","name":"Skyworks Solutions, Inc. — Analog Design Winter/Spring Co-Op (Jan-June '27)"},{"@type":"ListItem","position":14,"url":"https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-module-design-engineer-co-op-winter-spring-2027-4459004690","name":"Skyworks Solutions, Inc. — RF Module Design Engineer Co-op (Winter/Spring 2027)"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -265,6 +266,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

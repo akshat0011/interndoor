@@ -30,6 +30,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-pa-4457065452","name":"Vanguard — College to Corporate IT Internship - Risk & Security - Analyst (PA)"},{"@type":"ListItem","position":2,"url":"https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-science-pa-4457069398","name":"Vanguard — College to Corporate IT Internship - Data Science (PA)"},{"@type":"ListItem","position":3,"url":"https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-data-analyst-nc-4457057528","name":"Vanguard — College to Corporate IT Internship - Data Analyst (NC)"},{"@type":"ListItem","position":4,"url":"https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-risk-and-security-analyst-nc-4457058475","name":"Vanguard — College to Corporate IT Internship - Risk & Security - Analyst (NC)"}]}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -185,6 +186,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

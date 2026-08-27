@@ -243,6 +243,30 @@
            hub reaches every job page. -->
       <p><a href="/companies/">Browse internships by company →</a></p>
 
+      <!-- The email signup.
+
+           NO data-region HERE, deliberately. This file is the TEMPLATE for
+           every board — writeHomePage() renders it for India, the US and the
+           UK — so a baked-in attribute would tell the US and UK boards they
+           were India. subscribe.js falls back to <meta name="interndoor-region">,
+           which IS filled per region inside the REGION:HEAD marker. A generated
+           job page bakes the attribute in instead, because there it is known at
+           build time and cannot be wrong.
+
+           The markup is otherwise identical to signupForm() in src/pages.js,
+           and .sub lives in styles.css rather than page.css so both get it. -->
+      <form class="sub" method="post" action="/api/subscribe">
+        <label class="sub-l" for="sub-email">Get new internships by email — one message, no spam.</label>
+        <div class="sub-row">
+          <input class="sub-i" id="sub-email" type="email" name="email" required
+                 autocomplete="email" inputmode="email" spellcheck="false"
+                 placeholder="you@college.edu">
+          <button class="sub-b" type="submit">Subscribe</button>
+        </div>
+        <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+        <p class="sub-msg" role="status" aria-live="polite"></p>
+      </form>
+
       <!--
         Every current listing, as real links in the HTML.
 
@@ -266,6 +290,7 @@
       <details class="all-roles">
         <summary>All current listings</summary>
         <ul><!--LISTINGS-->
+<li><a href="/jobs/zycus-computer-vision-ai-intern-4459664542">Zycus — Computer Vision AI Intern</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
 <li><a href="/jobs/lexsi-labs-ai-research-internship-4458353527">Lexsi Labs — AI Research Internship</a><span class="tiny"> Mumbai Metropolitan Region · Remote</span></li>
 <li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-haryana-jhajjar-ambala-bhiwani-p-4459622396">STEMpedia — AI And Robotics Trainer Internship in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra, Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad</a><span class="tiny"> Haryana, India · On-site</span></li>
 <li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-haryana-jhajjar-ambala-bhiwani-p-4459616449">STEMpedia — AI And Robotics Trainer Internship in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra, Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad</a><span class="tiny"> Ambala, Haryana, India · On-site</span></li>
@@ -614,6 +639,7 @@
 
 <div class="snack" id="toast" role="status" aria-live="polite" hidden></div>
 
+<script defer src="/subscribe.js"></script>
 <script src="/app.js" type="module"></script>
 </body>
 </html>

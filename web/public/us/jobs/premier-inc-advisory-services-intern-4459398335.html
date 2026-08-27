@@ -28,6 +28,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Advisory Services Intern","description":"\u003cp>Healthcare Data Analyst\u003c/p>\u003cul>\u003cli>Analyze data and present insights to healthcare clients\u003c/li>\u003cli>Use tools like R, Python, and Tableau for analysis\u003c/li>\u003cli>Work on performance improvement projects with real clients\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Premier Inc.","value":"4459398335"},"datePosted":"2026-08-26T21:30:06.790Z","validThrough":"2026-09-25T22:57:49.633Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Premier Inc.","logo":"https://interndoor.com/logos/premier-inc.jpg"},"directApply":false,"url":"https://interndoor.com/us/jobs/premier-inc-advisory-services-intern-4459398335","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"United States","addressCountry":"US"}},"jobLocationType":"TELECOMMUTE","applicantLocationRequirements":{"@type":"Country","name":"United States"}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/page.js"></script>
+<script defer src="/subscribe.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -170,6 +171,17 @@
       </a>
       <a class="a-2" href="/us/">Browse all live internships</a>
     </div>
+    <form class="sub" method="post" action="/api/subscribe" data-region="US">
+      <label class="sub-l" for="sub-email">Or get them by email — one message, no spam.</label>
+      <div class="sub-row">
+        <input class="sub-i" id="sub-email" type="email" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@college.edu">
+        <button class="sub-b" type="submit">Subscribe</button>
+      </div>
+      <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <p class="sub-msg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="foot">

@@ -1,9 +1,9 @@
 {
- "generatedAt": 1787815899258,
+ "generatedAt": 1787821304775,
  "region": "IN",
  "regionName": "India",
- "count": 279,
- "techCount": 279,
+ "count": 280,
+ "techCount": 280,
  "otherCount": 0,
  "companies": [
   "ALLEN",
@@ -228,6 +228,56 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4459664542",
+   "title": "Computer Vision AI Intern",
+   "company": "Zycus",
+   "matchedWatchlist": "Zycus",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/zycus.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "40 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "machine learning",
+    "deep learning",
+    "computer vision",
+    "pytorch",
+    "tensorflow"
+   ],
+   "summary": "This internship involves developing AI models for bird identification using images and audio. You'll experiment with computer vision and machine learning techniques to improve accuracy. Ideal for students passionate about AI and biodiversity, with experience in Python and ML frameworks.",
+   "bullets": [
+    "Build models for bird identification from images and audio",
+    "Use PyTorch/TensorFlow for computer vision and audio ML",
+    "Work on real-world biodiversity AI with potential app impact"
+   ],
+   "roleLabel": "Bird Identification AI",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "pytorch",
+    "tensorflow",
+    "audio ml",
+    "image classification"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "38 minutes ago",
+   "postedAt": 1787818618228,
+   "firstSeenAt": 1787820898229,
+   "lastSeenAt": 1787820898229,
+   "url": "https://www.linkedin.com/jobs/view/4459664542/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4459664542/",
+   "description": null,
+   "roleFingerprint": "73923304d3",
+   "region": "IN"
+  },
   {
    "id": "4458353527",
    "title": "AI Research Internship",
