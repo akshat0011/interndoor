@@ -6,10 +6,82 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/delta-air-lines-co-op-crew-technology-strategy-summer-2027-4458649885",
+      "url": "https://interndoor.com/us/jobs/delta-air-lines-co-op-crew-technology-strategy-summer-2027-4458649885",
+      "title": "Co-op Crew Technology Strategy (Summer 2027) — Delta Air Lines",
+      "content_text": "Company: Delta Air Lines · Location: Atlanta, GA · Duration: Summer 2027\n• Support project delivery with process mapping and documentation\n• Collaborate with IT and business teams on tech initiatives\n• Analyze data and create reports for stakeholder insights",
+      "date_published": "2026-08-27T18:37:41.513Z",
+      "authors": [
+        {
+          "name": "Delta Air Lines"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-quality-engineering-intern-summer-2027-4459892191",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-quality-engineering-intern-summer-2027-4459892191",
+      "title": "Quality Engineering Intern-Summer 2027 — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Milpitas, CA · Duration: Summer 2027\n• Support quality engineering processes for aerospace and defense products\n• Work with product specs, quality systems, and military standards\n• Based in milpitas, ca for summer 2027",
+      "date_published": "2026-08-27T18:32:45.884Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236",
+      "title": "Power Amplifier IC Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027\n• Design RF power amplifiers and simulate using Keysight ADS and Ansys HFSS\n• Collaborate with engineers on multi-chip modules and troubleshoot technical issues\n• Work on-site in Irvine for January–June 2027 with global team",
+      "date_published": "2026-08-27T18:32:08.750Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169",
+      "title": "RF EM Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027\n• Design RF filters and passive components for 5G/6G systems\n• Use HFSS and EMX for electromagnetic simulations\n• Work with a technical mentor on product development",
+      "date_published": "2026-08-27T18:32:01.394Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-co-op-4459891211",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-co-op-4459891211",
+      "title": "Co-Op — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Austin, TX\n• Design analog mixed signal ICs for EVs and industrial power applications\n• Use cadence tools and layout skills for CMOS circuits\n• Present design reviews and collaborate with team members",
+      "date_published": "2026-08-27T18:31:33.198Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-product-management-4449326371",
+      "url": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-product-management-4449326371",
+      "title": "Campus Undergraduate Summer Internship Program - 2027 Product Management, Global Merchant & Network Services - Phoenix, AZ — American Express",
+      "content_text": "Company: American Express · Location: Phoenix, AZ\n• Analyze customer needs and market trends to shape product strategy\n• Collaborate with tech teams to prioritize and execute product features\n• Develop business cases and drive product adoption across global teams",
+      "date_published": "2026-08-27T18:12:38.927Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459862999",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459862999",
       "title": "Intern, Software Engineer — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Northampton, MA",
+      "content_text": "Company: L3Harris Technologies · Location: Northampton, MA\n• Develop embedded software for real-time control of tactical radio equipment\n• Work with C++, C#, Java, Python, and real-time operating systems\n• Participate in full software development lifecycle from design to testing",
       "date_published": "2026-08-27T18:09:35.386Z",
       "authors": [
         {
@@ -21,7 +93,7 @@
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-systems-engineer-4459862995",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-systems-engineer-4459862995",
       "title": "Intern C, Systems Engineer — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Fort Wayne, IN",
+      "content_text": "Company: L3Harris Technologies · Location: Fort Wayne, IN\n• Analyze systems requirements and design complex architectures\n• Develop test plans and document results using software tools\n• Support operational analysis and concept of operations design",
       "date_published": "2026-08-27T18:09:27.320Z",
       "authors": [
         {
@@ -33,7 +105,7 @@
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-systems-engineer-4459882072",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-systems-engineer-4459882072",
       "title": "Intern , Systems Engineer — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Fort Wayne, IN",
+      "content_text": "Company: L3Harris Technologies · Location: Fort Wayne, IN\n• Analyze systems requirements and design complex architectures\n• Develop test plans and document results using software tools\n• Support operational analysis and concept of operations design",
       "date_published": "2026-08-27T18:06:00.822Z",
       "authors": [
         {
@@ -54,10 +126,22 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/new-york-life-2027-new-york-life-investment-management-investment-research-and-analy-4459867790",
+      "url": "https://interndoor.com/us/jobs/new-york-life-2027-new-york-life-investment-management-investment-research-and-analy-4459867790",
+      "title": "2027 New York Life Investment Management - Investment Research & Analysis Internship — New York Life",
+      "content_text": "Company: New York Life · Location: New York, NY · Duration: Summer 2027\n• Support portfolio managers with daily trading and reporting tasks\n• Use financial modeling and Bloomberg for credit research and market analysis\n• Collaborate on projects like new deal analysis and portfolio management\n• Based in NYC, Princeton, or El Segundo; 10-week paid internship",
+      "date_published": "2026-08-27T17:45:17.526Z",
+      "authors": [
+        {
+          "name": "New York Life"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nvidia-software-engineering-intern-dynamo-fall-2026-4449317707",
       "url": "https://interndoor.com/us/jobs/nvidia-software-engineering-intern-dynamo-fall-2026-4449317707",
       "title": "Software Engineering Intern, Dynamo - Fall 2026 — NVIDIA",
-      "content_text": "Company: NVIDIA · Location: Santa Clara, CA · Duration: Fall 2026",
+      "content_text": "Company: NVIDIA · Location: Santa Clara, CA · Duration: Fall 2026\n• Design and develop Dynamo Kubernetes stack with Rust and Python\n• Contribute to open-source projects and code reviews\n• Work on distributed inference and GPU scheduling systems",
       "date_published": "2026-08-27T17:35:45.043Z",
       "authors": [
         {
@@ -90,22 +174,10 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/thermo-fisher-scientific-engineering-co-op-4457792655",
-      "url": "https://interndoor.com/us/jobs/thermo-fisher-scientific-engineering-co-op-4457792655",
-      "title": "Engineering Co-Op — Thermo Fisher Scientific",
-      "content_text": "Company: Thermo Fisher Scientific · Location: Greenville, NC",
-      "date_published": "2026-08-27T17:16:32.932Z",
-      "authors": [
-        {
-          "name": "Thermo Fisher Scientific"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-intern-system-architect-4422923903",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-intern-system-architect-4422923903",
       "title": "Intern- System Architect — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Livonia, MI",
+      "content_text": "Company: Infineon Technologies · Location: Livonia, MI\n• Assist in designing system architecture and technical specs\n• Collaborate with engineers and product teams on integration\n• Support testing and validation of system performance",
       "date_published": "2026-08-27T17:15:37.181Z",
       "authors": [
         {
@@ -117,7 +189,7 @@
       "id": "https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-4439921336",
       "url": "https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-4439921336",
       "title": "Software Engineer, Internship — Palantir Technologies",
-      "content_text": "Company: Palantir Technologies · Location: Washington, DC",
+      "content_text": "Company: Palantir Technologies · Location: Washington, DC\n• Write clean code for Palantir Gotham, Foundry, or Apollo products used by scientists and analysts\n• Work with Java, Go, Typescript, Cassandra, Spark, and React in small, focused teams\n• Collaborate with mentors and cross-functional teams to build tools for global institutions",
       "date_published": "2026-08-27T17:15:31.672Z",
       "authors": [
         {
@@ -357,7 +429,7 @@
       "id": "https://interndoor.com/us/jobs/graphcore-graduate-hardware-engineer-ats-greenhouse-graphcore-8747132002",
       "url": "https://interndoor.com/us/jobs/graphcore-graduate-hardware-engineer-ats-greenhouse-graphcore-8747132002",
       "title": "Graduate Hardware Engineer — Graphcore",
-      "content_text": "Company: Graphcore · Location: Austin, Texas, United States",
+      "content_text": "Company: Graphcore · Location: Austin, Texas, United States\n• Support design and debug of server and rack hardware\n• Work with cross-functional teams on power and signal integrity\n• Perform lab tests using oscilloscopes and analyzers",
       "date_published": "2026-08-27T14:00:50.000Z",
       "authors": [
         {
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Optiver"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4459679743",
-      "url": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4459679743",
-      "title": "Software Engineering Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: State College, PA · Duration: Summer 2027\n• Develop software to integrate systems and enable new capabilities\n• Use Java, Git, and agile practices in Unix/Linux environments\n• Work with security clearance and U.S. Citizenship required",
-      "date_published": "2026-08-27T09:38:16.754Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-photo-4449107102",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-photo-4449107102",
-      "title": "Intern - Process Development Engineer, 3D DRAM Photo — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Develop and optimize photolithography processes for 3D DRAM\n• Use Python, MATLAB, and data analysis tools for process improvement\n• Collaborate with engineers to solve manufacturing challenges\n• Present project results to technical and leadership teams",
-      "date_published": "2026-08-27T09:34:37.347Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-pathfinding-dram-dry-etch-4449107101",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-pathfinding-dram-dry-etch-4449107101",
-      "title": "Intern - Process Pathfinding, DRAM Dry Etch — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Support development of plasma etch processes for memory technologies\n• Use AI and digital tools for data analysis and process optimization\n• Collaborate with engineers on semiconductor manufacturing challenges",
-      "date_published": "2026-08-27T09:34:33.057Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-dry-etch-4448990900",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-dry-etch-4448990900",
-      "title": "Intern - Process Development Engineer, 3D DRAM Dry Etch — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Develop and optimize advanced semiconductor etch processes for future DRAM technologies\n• Use AI and data analysis tools to improve engineering efficiency and decision-making\n• Collaborate with cross-functional teams to solve technical challenges and drive improvements",
-      "date_published": "2026-08-27T09:34:11.701Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-photolithography-process-4449103772",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-photolithography-process-4449103772",
-      "title": "Intern - Photolithography Process — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID · Duration: Fall 2027\n• Design and run experiments to optimize photolithography processes in a cleanroom\n• Use AI and data tools to analyze manufacturing data and process images\n• Collaborate with engineers on process development and technology innovation",
-      "date_published": "2026-08-27T09:33:46.419Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-dry-etch-4448985954",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-dry-etch-4448985954",
-      "title": "Intern - Process Development Engineer, Dry Etch — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Develop and optimize dry etch processes for semiconductor manufacturing\n• Use AI, Python, and statistical tools for data analysis and process improvement\n• Collaborate with cross-functional teams on complex technical challenges\n• Present project results to engineering and leadership teams",
-      "date_published": "2026-08-27T09:33:22.337Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }
