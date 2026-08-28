@@ -157,5 +157,26 @@ check('it does not send the reader to their inbox to confirm',
   /check your inbox to confirm/i.test(clientJs), false);
 check('it still confirms the signup worked', clientJs.includes('you are on the list'), true);
 
+
+console.log('\n== the subscriber IP is what unblocks the firewall ==');
+/* Buttondown was refusing EVERY address with `subscriber_blocked`, and its own
+   API console said why: "Improve list quality by passing `ip_address`".
+   Without it every signup arrives from a rotating Vercel serverless IP with no
+   subscriber attached, which is what bulk bot signups look like. */
+{
+  let sent = null;
+  const fake = async (u, init) => { sent = JSON.parse(init.body); return { ok: true, status: 201, json: async () => ({}) }; };
+  await addSubscriber('a@b.com', 'IN', 'k', fake, '203.0.113.9');
+  check('the IP is sent', sent.ip_address, '203.0.113.9');
+  /* Omitted rather than faked: a wrong IP is worse for list quality than none,
+     and it would also be a false consent record. */
+  sent = null;
+  await addSubscriber('a@b.com', 'IN', 'k', fake, null);
+  check('an unknown IP is omitted, never invented', 'ip_address' in sent, false);
+  /* fetchImpl is the FOURTH argument. Passing the IP in its place made the
+     handler call the IP string as a function — caught before shipping. */
+  check('the fetch impl is still the 4th argument', typeof fake, 'function');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

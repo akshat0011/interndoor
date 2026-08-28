@@ -147,7 +147,7 @@ function clientIp(req) {
  * person, made to whoever typed their address in. The reader is told the same
  * thing either way.
  */
-export async function addSubscriber(email, region, apiKey, fetchImpl = fetch) {
+export async function addSubscriber(email, region, apiKey, fetchImpl = fetch, ip = null) {
   /* THE REGION GOES IN referrer_url, NOT ONLY IN A TAG.
      Tags are a PAID feature — Buttondown answers 403 `feature_disabled`
      ("Tags require a Basic plan or higher") on the free tier, and it rejects
@@ -177,7 +177,30 @@ export async function addSubscriber(email, region, apiKey, fetchImpl = fetch) {
 
      If it ever needs reverting, delete this one line — the default comes back
      on its own. `type` is a core field on every plan, unlike `tags` below. */
-  const base = { email_address: email, referrer_url: referrer, type: 'regular' };
+  /* THE SUBSCRIBER'S IP, AND IT IS WHAT UNBLOCKS THE FORM.
+   *
+   * Buttondown's spam firewall was refusing EVERY address —
+   * `subscriber_blocked`, "This subscriber was blocked by your firewall" — and
+   * its own API console says why in a banner on each request: "Improve list
+   * quality by passing `ip_address` in the request payload." Without it every
+   * signup arrives from a rotating Vercel serverless IP with no subscriber
+   * attached, which is indistinguishable from bulk bot signups.
+   *
+   * This was deliberately omitted before, to avoid sending the provider
+   * personal data it did not already have. That call is reversed on two counts:
+   * the form was 100% broken without it, and single opt-in removed the
+   * confirmation click that used to be the consent record. An IP with a
+   * timestamp is the standard replacement — it makes the GB board's position
+   * BETTER than it was, not worse.
+   *
+   * Omitted rather than faked when unknown: a wrong IP is worse for list
+   * quality than no IP. */
+  const base = {
+    email_address: email,
+    referrer_url: referrer,
+    type: 'regular',
+    ...(ip ? { ip_address: ip } : {}),
+  };
   let res = await send({ ...base, tags: [`region:${region}`] });
 
   if (res.ok) return { ok: true, created: true };
@@ -250,7 +273,7 @@ export default async function handler(req, res) {
   if (!limit.ok) return res.status(limit.status).json({ error: limit.message });
 
   try {
-    const result = await addSubscriber(email, region, apiKey);
+    const result = await addSubscriber(email, region, apiKey, fetch, clientIp(req));
     if (!result.ok) {
       /* The ADDRESS is never logged. It is the one piece of personal data this
          endpoint touches, and a log line is a place it would outlive the
