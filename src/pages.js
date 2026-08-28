@@ -487,6 +487,37 @@ export function placesOf(location, region = DEFAULT_REGION) {
 
 /** The badges under the headline: freshness, pay, competition. */
 /**
+ * IS THIS ROLE STILL OPEN? — the question every one of these pages exists to
+ * answer, and the one it was answering only by implication.
+ *
+ * A page that leads with "POSTED 44D AGO" and says nothing else reads as an
+ * archive. It is not: the site publishes a role only while it believes the
+ * role is open, and removes it when that stops being true. That belief is
+ * already asserted to Google in every page's `validThrough`, so stating it to
+ * a human is not a new claim — it is the same claim, said out loud.
+ *
+ * TWO TIERS, because the evidence genuinely differs and flattening them would
+ * be dishonest in one direction or useless in the other:
+ *
+ *  - `verified` — an ATS row re-read within the last six hours. ATS boards are
+ *    polled every 30 minutes, so the posting being there IS ground truth and
+ *    we can name when we looked. 27% of pages.
+ *  - `likely` — everything else, which is mostly LinkedIn. A LinkedIn card
+ *    falls out of the time-windowed search in about ninety minutes and is
+ *    almost never re-encountered, so we cannot say we checked. What we CAN say
+ *    is the rule the board runs on, which is true of every row on it.
+ *
+ * The hedge in "Likely open" is doing real work and must not be dropped. It is
+ * the difference between a fact we verified and a policy we follow.
+ */
+function openState(job) {
+  const at = verifiedAt(job);
+  return at
+    ? { tier: 'verified', label: 'Open now', at }
+    : { tier: 'likely', label: 'Likely open', at: null };
+}
+
+/**
  * "Posted 44d ago" is a trust problem on a board whose whole promise is
  * freshness — it reads as stale even when the role is wide open, and on ATS
  * rows, which persist for months, it is the common case rather than the edge.
@@ -501,13 +532,15 @@ export function placesOf(location, region = DEFAULT_REGION) {
  * confirmed right now — and they are disproportionately the ones whose posted
  * date looks worst.
  */
-function stillListed(job) {
-  const seen = verifiedAt(job);
-  if (!seen) return '';
-  return `<p class="jp-live"><i aria-hidden="true"></i>`
-    + `<strong>Still listed on the employer&rsquo;s own careers page</strong>`
-    + `<span> &middot; checked <time datetime="${new Date(seen).toISOString()}" data-ago="${seen}">`
-    + `${esc(relLabel(seen))}</time></span></p>`;
+function stillListed(job, company) {
+  const st = openState(job);
+  const detail = st.tier === 'verified'
+    ? `Confirmed on ${esc(company)}&rsquo;s own careers page &middot; checked `
+      + `<time datetime="${new Date(st.at).toISOString()}" data-ago="${st.at}">${esc(relLabel(st.at))}</time>`
+    : 'We list a role only while we believe it is still open. Confirm on the posting before you apply.';
+  return `<p class="jp-open is-${st.tier}">`
+    + `<span class="jp-open-b"><i aria-hidden="true"></i>${st.label}</span>`
+    + `<span class="jp-open-d">${detail}</span></p>`;
 }
 
 /** "12 minutes ago". page.js rewrites every data-ago on load, so this is only
@@ -1142,20 +1175,25 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     <div class="jp-grid">
       <div class="jp-main">
         <header class="jp-hero">
-          <div class="jp-id">
-            ${crest(job.company, job.logo, { href: hub })}
-            <div class="jp-id-t">
-              <a class="jp-co" href="${hub}">${esc(job.company)}</a>
+          <!-- ONE LINK, NOT THREE. The crest, the name and the roles count all
+               pointed at the same hub, stacked on top of each other — three
+               targets for one destination, and the crest was already
+               aria-hidden because it was a duplicate. The whole block is a
+               single anchor now: one target, and a bigger one. -->
+          <a class="jp-id" href="${hub}">
+            ${crest(job.company, job.logo)}
+            <span class="jp-id-t">
+              <span class="jp-co">${esc(job.company)}</span>
               <!-- A REASON TO FOLLOW THE LINK, not just a name that happens to
                    be one. The count is this employer's other live roles in this
                    region, which is the only company fact this page holds that a
                    reader can act on; with no others it says so plainly rather
                    than offering a hub that will look empty. -->
-              <a class="jp-co-more" href="${hub}">${others.length
+              <span class="jp-co-more">${others.length
                 ? `${others.length} other open role${others.length === 1 ? '' : 's'} here`
-                : 'See this employer&rsquo;s page'} <i aria-hidden="true">&rarr;</i></a>
-            </div>
-          </div>
+                : 'See this employer&rsquo;s page'} <i aria-hidden="true">&rarr;</i></span>
+            </span>
+          </a>
 
           <!-- The size step is chosen from the TITLE'S OWN LENGTH, not from the
                viewport. Employers write 30-character titles and 112-character
@@ -1166,7 +1204,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           ${job.roleLabel ? `<p class="jp-focus">${esc(job.roleLabel)}</p>` : ''}
 
           <div class="pills">${statusPills(job)}</div>
-          ${stillListed(job)}
+          ${stillListed(job, job.company)}
         </header>
 
         ${standouts(job, locations)}
@@ -1567,9 +1605,15 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1 } = {}) {
   const age = posted
     ? `<span class="rc-age" data-ago="${posted}">Posted <time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>`
     : '';
-  const vfy = verified
-    ? `<span class="vfy" data-ago="${verified}"><i aria-hidden="true"></i>Confirmed open <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
-    : '';
+  /* EVERY CARD SAYS WHETHER THE ROLE IS OPEN, not just the 27% we can confirm.
+     This used to render only for ATS rows, so on the India hubs — which are
+     almost entirely LinkedIn — a list of roles carried no open/closed signal at
+     all and read as an archive of past postings. The unverified tier is the
+     board's own rule rather than a check we did, and it says so. */
+  const st = openState(job);
+  const vfy = st.tier === 'verified'
+    ? `<span class="vfy is-verified" data-ago="${verified}"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
+    : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
 
   return `<a class="role-card" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
         <span class="rc-t">${esc(job.title)}</span>

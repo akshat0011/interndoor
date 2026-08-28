@@ -491,10 +491,19 @@ check('a row with no reading at all is not', verifiedAt({ id: 'ats:greenhouse:x:
 const liveLi = { id: '999', company: 'Adobe', title: 'Backend Intern', location: 'Pune, India',
   postedAt: Date.UTC(2026, 7, 25), firstSeenAt: Date.UTC(2026, 7, 25), lastSeenAt: Date.now(),
   bullets: ['a', 'b'], summary: 's' };
-check('a LinkedIn-only hub shows no confirmation badge',
-  renderCompanyPage('Adobe', [liveLi], [], '').includes('Confirmed open'), false);
+/* PINNED ON THE CLASS, NOT THE WORDING. Every role card now carries an open
+   state — an unverifiable row says "Likely open" rather than nothing — so
+   asserting on the visible copy would pass for the wrong reason the moment
+   either tier is reworded, and the negative assertion in particular would go
+   quietly weak. The class is the contract: is-verified means we checked, and
+   only an ATS row may ever carry it. */
+const liHub = renderCompanyPage('Adobe', [liveLi], [], '');
+check('a LinkedIn hub is never marked as confirmed', liHub.includes('vfy is-verified'), false);
+check('but it does say the role is likely open', liHub.includes('vfy is-likely'), true);
 const liveAts = { ...liveLi, id: 'ats:greenhouse:adobe:1' };
-check('an ATS hub does', renderCompanyPage('Adobe', [liveAts], [], '').includes('Confirmed open'), true);
+const atsHub = renderCompanyPage('Adobe', [liveAts], [], '');
+check('a freshly-read ATS hub is marked confirmed', atsHub.includes('vfy is-verified'), true);
+check('and is not double-marked as merely likely', atsHub.includes('vfy is-likely'), false);
 
 console.log('\n== a US salary is not grouped the Indian way ==');
 // The extractor groups lakh-first because that is right for the board it was

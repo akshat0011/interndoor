@@ -75,7 +75,12 @@
    edge, and a rule here put two of them 30px apart. */
 .jp-hero { padding-bottom: 4px; }
 
-.jp-id { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+/* One anchor now, wrapping the crest, the name and the count — so it needs the
+   link resets a <div> did not. */
+.jp-id {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+  text-decoration: none; color: inherit; width: fit-content; max-width: 100%;
+}
 
 /* The logo. 130 of 131 postings carry one and the old page showed none of
    them — a page of nothing but type is the thing that reads as auto-generated.
@@ -101,8 +106,12 @@ a.jp-crest:active { transform: scale(.97); }
   text-decoration: none; transition: color .16s;
 }
 @media (hover: hover) and (pointer: fine) {
-  .jp-co:hover { color: var(--live); }
+  .jp-id:hover .jp-co { color: var(--live); }
+  .jp-id:hover .jp-co::after { transform: translateX(3px); }
+  .jp-id:hover .jp-co-more { color: var(--live); }
+  .jp-id:hover .jp-co-more i { transform: translateX(2px); }
 }
+.jp-id:focus-visible { outline: 2px solid var(--live); outline-offset: 3px; border-radius: var(--r); }
 .jp-co::after {
   content: "›"; margin-left: 6px; color: var(--ink-3);
   display: inline-block; transition: transform .2s var(--snap);
@@ -252,24 +261,48 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   color: var(--ink-2); text-decoration: none; transition: color .16s;
 }
 .jp-co-more i { font-style: normal; transition: transform .18s var(--snap); }
-@media (hover: hover) and (pointer: fine) {
-  .jp-co-more:hover { color: var(--live); }
-  .jp-co-more:hover i { transform: translateX(2px); }
-}
 
-/* "Posted 44d ago" with nothing beside it reads as dead. This is the sentence
-   that answers it, and it renders only where we can actually stand behind it —
-   see verifiedAt() in pages.js. */
-.jp-live {
-  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
-  margin-top: 12px; font-size: 13px; line-height: 1.5;
+
+/* "POSTED 44D AGO" with nothing beside it reads as an archive. This is the
+   line that answers it, and it renders on EVERY page — the tier says how we
+   know, not whether. See openState() in pages.js.
+   Given real weight on purpose: it is the single question a reader has before
+   they will spend a click, and it was previously either absent or a grey
+   footnote under a grey pill. */
+.jp-open {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 14px; padding: 9px 13px 9px 11px;
+  border-radius: var(--r-2); font-size: 13px; line-height: 1.5;
+  border: 1px solid transparent; width: fit-content; max-width: 100%;
 }
-.jp-live i {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--cash);
-  flex: none; align-self: center;
+.jp-open-b {
+  display: inline-flex; align-items: center; gap: 7px; flex: none;
+  font-weight: 700; letter-spacing: -.01em; font-size: 14px;
 }
-.jp-live strong { color: var(--cash); font-weight: 600; }
-.jp-live span { color: var(--ink-2); }
+.jp-open-b i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+.jp-open-d { color: var(--ink-2); min-width: 0; }
+
+.jp-open.is-verified {
+  background: color-mix(in oklab, var(--cash) 12%, transparent);
+  border-color: color-mix(in oklab, var(--cash) 34%, transparent);
+}
+.jp-open.is-verified .jp-open-b { color: var(--cash); }
+/* The unconfirmed tier is quieter but still unmistakably green — it means the
+   same thing to a reader ("you can still apply"), and only the basis differs.
+   A hollow dot, matching the hub cards. */
+.jp-open.is-likely {
+  background: color-mix(in oklab, var(--live) 8%, transparent);
+  border-color: color-mix(in oklab, var(--live) 26%, transparent);
+}
+.jp-open.is-likely .jp-open-b { color: var(--live); }
+.jp-open.is-likely .jp-open-b i { background: none; box-shadow: inset 0 0 0 2px currentColor; }
+/* MEASURED: --live on a tint of itself loses what the token had spare in the
+   light theme. Fifth time — see .sub-msg, .flag-rank, the board's freshness
+   pill and .jp-sub-t. */
+:root[data-theme="light"] .jp-open.is-likely .jp-open-b { color: #46590a; }
+:root[data-theme="light"] .vfy.is-likely { color: #46590a; }
+/* --cash on a cash tint, same arithmetic, measured at 4.09. */
+:root[data-theme="light"] .jp-open.is-verified .jp-open-b { color: #04503b; }
 
 /* What stands out. Deliberately plain — the facts are doing the work and a
    boxed, tinted, iconned treatment would make three ordinary sentences look
@@ -963,10 +996,21 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 /* The confirmation badge. Present ONLY on ATS rows inside the freshness
    window — see verifiedAt() in src/pages.js — because a LinkedIn card is seen
    once and never re-checked, and this badge is a claim that we looked. */
-.vfy { display: inline-flex; align-items: center; gap: 6px; color: var(--cash); }
+/* TWO TIERS, AND THE COLOUR CARRIES WHICH. A confirmed row is the money
+   colour, filled and unhedged; an unconfirmed one is the accent at lower
+   weight with the word "Likely" doing the hedging in text as well as in tone.
+   Both are green because both mean "you can still apply" — the difference is
+   how we know, not whether. */
+.vfy { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.vfy.is-verified { color: var(--cash); }
+.vfy.is-likely { color: color-mix(in oklab, var(--live) 78%, var(--ink-2)); }
 .vfy i {
   width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: block;
 }
+/* A hollow dot for the tier we did not check, filled for the one we did. The
+   shape says the same thing the word does, for anyone scanning rather than
+   reading. */
+.vfy.is-likely i { background: none; box-shadow: inset 0 0 0 1.5px currentColor; }
 .rc-go {
   display: inline-flex; align-items: center; gap: 8px; flex: none;
   height: 34px; padding: 0 15px; border-radius: var(--r);
