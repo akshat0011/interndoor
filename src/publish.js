@@ -10,6 +10,7 @@ import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
+import { submitUrls, indexNowConfigured } from './indexnow.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 
@@ -689,6 +690,10 @@ export function pushToSite(newJobCount) {
     // never, which looks exactly like a page that renders wrong.
     'web/public/alerts.html',
     'web/public/report.html',
+    /* The IndexNow key file. It MUST be live at the domain root or every
+       submission is refused 403 — and nothing on the site would look wrong.
+       The filename is the key itself and must match indexing.indexNow.key. */
+    'web/public/96d97088a61babe560d257ceb8408820.txt',
     // Every non-India region writes a whole tree under its own slug — data,
     // jobs, companies, sitemap, feeds and its homepage. Listed by directory so
     // switching a region on in config.json needs no change here; India stays
@@ -797,6 +802,21 @@ export async function publish(store, cfg, newJobCount) {
       await indexStep(store, cfg, pages);
     } catch (err) {
       log.warn(`Indexing step failed: ${err.message}`);
+    }
+
+    /* IndexNow, in its own try/catch for the same reason: a search engine being
+       unreachable must not turn a good publish into the `null` that stops
+       Telegram posting. Separate from indexStep because they are different
+       engines with different rules — Google takes job pages only, this takes
+       everything that changed. */
+    try {
+      if (indexNowConfigured(cfg)) {
+        const res = await submitUrls(pages.changedUrls ?? [], cfg);
+        if (res.sent) log.info(`IndexNow: announced ${res.sent} changed page${res.sent === 1 ? '' : 's'} to Bing.`);
+        else if (res.error) log.warn(`IndexNow: ${res.error}`);
+      }
+    } catch (err) {
+      log.warn(`IndexNow step failed: ${err.message}`);
     }
     return publishedIds;
   } catch (err) {

@@ -2287,8 +2287,24 @@ ${foot({
   })}`;
 }
 
+/**
+ * Write only when the bytes actually differ, and SAY whether they did.
+ *
+ * The name was aspirational: it wrote unconditionally. That was survivable —
+ * git commits content, not mtimes, so the churn this guards against never
+ * reached the repo — but it rewrote ~1000 files 48 times a day for nothing, and
+ * it threw away the one signal IndexNow needs.
+ *
+ * The return value IS that signal. Bing's IndexNow wants the URLs that changed,
+ * not the whole sitemap on a timer, and this is the only place that knows.
+ * Existing callers ignore it, so this stays backwards compatible.
+ */
 function writeIfChanged(path, contents) {
+  try {
+    if (existsSync(path) && readFileSync(path, 'utf8') === contents) return false;
+  } catch { /* unreadable — fall through and write */ }
   writeFileSync(path, contents);
+  return true;
 }
 
 /**
@@ -2536,12 +2552,22 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   // now carries its employer's other live roles — the only second click a
   // visitor who arrived from a search has.
   const wanted = new Set();
+
+  /* Pages whose BYTES actually changed this run — the set IndexNow wants.
+     Bing's guidance is to announce what changed, not to re-submit a sitemap on
+     a timer, and writeIfChanged is the only place that knows. Unlike Google's
+     Indexing API this accepts any page type, so hubs, the directory, /alerts
+     and /report all belong here; Google's queue takes job pages alone. */
+  const changedUrls = [];
+  const track = (changed, path) => { if (changed) changedUrls.push(regionUrl(path, region)); };
+
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
-    writeIfChanged(join(jobsDir, name),
+    track(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays }));
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays })),
+      `/jobs/${jobSlug(job)}`);
   }
 
   const logos = companyLogos(jobs, publicDir);
@@ -2560,26 +2586,27 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   for (const company of allCompanies) {
     const name = `${companySlug(company)}.html`;
     wanted.add(join(compDir, name));
-    writeIfChanged(join(compDir, name),
+    track(writeIfChanged(join(compDir, name),
       renderCompanyPage(company, byCompany.get(company) ?? [], pastByCompany.get(company) ?? [],
         logos.get(company) ?? '', {
           region,
           /* The regions where this employer is ALSO live. Deduplicated because
              `foreign` carries one entry per posting, not per region. */
           alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
-        }));
+        })),
+      `/companies/${companySlug(company)}`);
   }
 
   // The directory, at /companies/. index.html rather than a slug so the bare
   // directory URL resolves on Vercel and on the dev server alike.
   wanted.add(join(compDir, 'index.html'));
-  writeIfChanged(join(compDir, 'index.html'),
-    renderCompanyIndex(byCompany, pastByCompany, logos, { region, alternates }));
+  track(writeIfChanged(join(compDir, 'index.html'),
+    renderCompanyIndex(byCompany, pastByCompany, logos, { region, alternates })), '/companies');
 
   /* /alerts — every way to follow this board. A flat file rather than a
      directory because vercel.json sets cleanUrls, so alerts.html serves at
      /alerts, and the dev server resolves it the same way. */
-  writeIfChanged(join(root, 'alerts.html'), renderAlertsPage(channels, { region, alternates }));
+  track(writeIfChanged(join(root, 'alerts.html'), renderAlertsPage(channels, { region, alternates })), '/alerts');
 
   /* /report — the board's own statistics. Written for every published region
      even when thin, because foot() links it from every generated page and a
@@ -2587,8 +2614,9 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      renderReportPage is what keeps a thin one out of the index. `stats` is
      mined once a day by publish.js and passed in, never mined here — see the
      comment on renderReportPage for why that matters to churn and to citation. */
-  writeIfChanged(join(root, 'report.html'),
-    renderReportPage(stats.facts ?? [], { region, alternates, asOf: stats.asOf ?? Date.now(), days: stats.days ?? 30 }));
+  track(writeIfChanged(join(root, 'report.html'),
+    renderReportPage(stats.facts ?? [], { region, alternates, asOf: stats.asOf ?? Date.now(), days: stats.days ?? 30 })),
+    '/report');
 
   let removed = 0;
   /* Job pages that just stopped existing, as URLs. Only job pages: the Google
@@ -2618,7 +2646,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
 
   return {
     jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks,
-    indexUrls, removedUrls,
+    indexUrls, removedUrls, changedUrls,
   };
 }
 
@@ -2645,6 +2673,7 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
      is the set src/indexing.js announces to Google. */
   const indexUrls = [];
   const removedUrls = [];
+  const changedUrls = [];
 
   // Every live posting, by employer, across every board — the input a job page
   // needs to keep its <title> unique SITE-wide rather than region-wide. Built
@@ -2675,12 +2704,13 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);
     removedUrls.push(...result.removedUrls);
+    changedUrls.push(...result.changedUrls);
     perRegion.push({ region, ...result });
   }
 
   writeRobots(publicDir, regions);
   totals.removed += removeUnpublishedRegions(publicDir, regions);
-  return { ...totals, perRegion, indexUrls, removedUrls };
+  return { ...totals, perRegion, indexUrls, removedUrls, changedUrls };
 }
 
 /**

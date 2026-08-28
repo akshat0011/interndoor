@@ -1025,6 +1025,12 @@
     "_perRun_note": "Bounds the wall-clock this adds to a scan, nothing else. The queue drains over days regardless, so spending a whole day's budget in one publish buys no freshness. 25 URLs is a few seconds.",
     "minAgeMinutes": 5,
     "_minAgeMinutes_note": "How long a URL waits after being queued before it may be sent. The API makes Google FETCH the page, and a push takes Vercel up to a minute to deploy - announcing sooner invites a crawl of the previous build, or a 404. In practice this means a page published now goes out on the next run.",
+    "indexNow": {
+      "enabled": true,
+      "key": "96d97088a61babe560d257ceb8408820",
+      "_note": "IndexNow — Bing, and through Bing also Yahoo and much of DuckDuckGo, plus Yandex, Seznam and Naver. Unlike Google's Indexing API it accepts ANY page type, which is the whole reason it is here: hubs, the directories, /alerts and /report cannot be announced to Google at all and would otherwise wait for an ordinary crawl. It submits only pages whose bytes CHANGED this publish, which is what Bing asks for - re-sending an unchanged page every 30 minutes is the abuse the protocol warns against.",
+      "_key_note": "The SAME string must exist at web/public/<key>.txt AND be in the PUBLISHED allowlist in src/publish.js. If that file is not live, every submission is refused 403 and nothing says so on the site."
+    },
     "maxAttempts": 3,
     "_maxAttempts_note": "After this many failures a URL is retired from the queue rather than retried forever. It keeps its error text, so `npm run index-urls -- --status` still shows why."
   },
