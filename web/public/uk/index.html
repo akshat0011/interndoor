@@ -109,7 +109,13 @@
      ~220 job cards, and CLS is the metric that catches exactly that. -->
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
-<body>
+<!-- board-page scopes the reading measure to THIS file.
+     The board, the rail, the hero and the bands all use .wrap, and they have to
+     narrow together or their shared left edge breaks. But .wrap is also loaded
+     by every generated job page and company hub, which are not part of this
+     change — so the cap hangs off a class only this document carries rather
+     than off .wrap itself. See --measure in styles.css. -->
+<body class="board-page">
 
 <a class="skip" href="#results">Skip to listings</a>
 <div class="grain" aria-hidden="true"></div>
@@ -228,15 +234,6 @@
         <label><select id="f-sort" aria-label="Sort listings"><option value="new">Newest first</option><option value="company">By company</option></select></label>
       </div>
 
-      <!-- "Rank against my resume" lived on the vetting panel that the right-hand
-           column used to show, and it has to keep a home now that the column is
-           gone. The rail is a better one than the panel was: loading a resume
-           adds a "best for me" option to the sort control two elements to the
-           left, so the button now sits with the thing it changes. -->
-      <div class="flags">
-        <button class="flag flag-rank" id="rank-resume" type="button">rank against my resume</button>
-        <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
-      </div>
     </div>
   </div>
 
@@ -255,7 +252,20 @@
        see .pane-col in styles.css, which is now a modal on desktop and the
        same full-screen sheet it always was on a phone. -->
   <div class="wrap board" id="results">
-    <div class="feed-head"><span id="result-count">loading</span></div>
+    <!-- The results row carries the counts AND the two chips.
+         They were the third line of the filter rail, and at a 1000px measure
+         the rail could not hold search + four selects + chips on one line — so
+         they wrapped, and the wrap cost more height above the first listing
+         than narrowing the page had saved. This row was a single short label
+         with its whole right-hand side empty, and "reset" belongs beside the
+         count it would reset anyway. -->
+    <div class="feed-head">
+      <span class="feed-count" id="result-count">loading</span>
+      <div class="flags">
+        <button class="flag flag-rank" id="rank-resume" type="button">rank by my resume</button>
+        <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
+      </div>
+    </div>
     <ol class="feed" id="joblist"></ol>
     <div class="void" id="empty" role="status" hidden>
       <span class="void-mark" aria-hidden="true"></span>
