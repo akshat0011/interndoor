@@ -278,20 +278,12 @@ async function loadJobs() {
 }
 
 function renderFreshness() {
-  // "swept" is this project's own word for one pass of the scraper. Nothing on
-  // the page ever taught it, so to a first-time reader the header's only live
-  // signal was jargon. "Checked" needs no glossary and claims exactly the same
-  // thing — and deliberately less than "updated", which would promise that
-  // something NEW arrived on a pass that may well have found nothing.
   $('freshness-text').textContent = state.generatedAt
-    ? `checked ${relTime(state.generatedAt)}`
+    ? `swept ${relTime(state.generatedAt)}`
     : 'standing by';
 }
 
-
-/** How many skill chips a card shows before it collapses to a count. */
-const MAX_CHIPS = 3;
-
+/** A row written before the intern/full-time split is an internship. */
 const kindOf = (j) => j.employmentType || 'intern';
 
 function renderTotal() {
@@ -322,48 +314,7 @@ function populateFilters() {
 
 /* ---------------- filtering ---------------- */
 
-/**
- * Bring the board into line with whatever resume is loaded.
- *
- * Adds "best for me" to the sort control the first time there is something to
- * sort by, and takes it away again when the resume is cleared — an option that
- * cannot do anything is worse than no option, because selecting it looks like a
- * bug rather than like a missing input. Re-renders so scores appear on the
- * cards immediately rather than at the next keystroke.
- */
-function syncRelevance() {
-  setResumeHay(state.resumeText);
-  const sort = $('f-sort');
-  const have = sort.querySelector('option[value="match"]');
-  if (resumeHay && !have) {
-    const opt = el('option', null, 'best for me');
-    opt.value = 'match';
-    sort.append(opt);
-  } else if (!resumeHay && have) {
-    if (sort.value === 'match') sort.value = 'new';
-    have.remove();
-  }
-  document.body.classList.toggle('has-resume', Boolean(resumeHay));
-  applyFilters();
-}
-
-/* Mark every filter that is holding a value.
- *
- * The controls lost their separate text labels when the resting option started
- * naming the filter — which is what removed four copies of the word "any" — so
- * nothing was left to say WHICH of the four are currently narrowing the board.
- * The lit border is that. Sort is excluded: it always holds a value, so lighting
- * it would mean one control is permanently on and the signal stops meaning
- * anything. */
-function markSetFilters() {
-  for (const id of ['f-company', 'f-location', 'f-mode']) {
-    const sel = $(id);
-    sel?.closest('label')?.classList.toggle('is-set', Boolean(sel.value));
-  }
-}
-
 function applyFilters() {
-  markSetFilters();
   const q = $('q').value.trim().toLowerCase();
   const company = $('f-company').value;
   const location = $('f-location').value;
@@ -384,14 +335,7 @@ function applyFilters() {
   });
 
   if (sort === 'company') list.sort((a, b) => a.company.localeCompare(b.company));
-  else if (sort === 'match') {
-    // Fit first, then freshness inside a tie — two roles that suit you equally
-    // are still separated by which one you can get in front of first, which is
-    // what this board is for. Unscorable postings sort last but are NOT hidden:
-    // a thin skills list is our gap, not a judgement about the role.
-    list.sort((a, b) => ((matchFor(b)?.pct ?? -1) - (matchFor(a)?.pct ?? -1))
-      || ((b.postedAt ?? 0) - (a.postedAt ?? 0)));
-  } else list.sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
+  else list.sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   state.filtered = list;
   renderList();
@@ -437,87 +381,6 @@ function safeUrl(url) {
 function enriched(job) {
   return (job.bullets ?? []).length > 0;
 }
-
-/* ---------------- the decision facts ----------------
- *
- * MIRRORS src/pages.js. stipendText/durationText/modeText are the site's own
- * display filters and the generated job pages have used them since 24 Aug; the
- * board never did, which is why 350 of 409 US listings carried a stipend that
- * was never once shown to a reader. Mirrored rather than imported because this
- * file is plain script served to the browser and pages.js is a build-time ES
- * module — the same reason jobPageSlug exists in three copies. Keep them in
- * step: test/pages.test.mjs pins the slug trio, and these belong to the same
- * class of duplication.
- *
- * Both filters exist because the stored values are dirty in ways that read as
- * confident claims rather than as missing data. The stipend column holds "Rs 0"
- * (68 live rows), "2,026" and "AUD 2,018" — years that reached the money slot —
- * and the duration column holds "0 to 3 years" and "0-11 months", which are
- * experience requirements, not internship lengths. Printing either next to an
- * Apply button is worse than printing nothing.
- */
-
-/** A stipend we are willing to state, or '' when the value is not one. */
-function stipendText(job) {
-  const raw = String(job.stipend ?? '').trim();
-  if (!raw) return '';
-  // No currency and no period is not an amount — it is a number that reached
-  // the wrong column.
-  if (!/[₹$£€]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw)) return '';
-  // ZERO IS NOT AN AMOUNT. An employer that genuinely pays nothing is recorded
-  // in stipendStatus and rendered as "Unpaid"; a zero here is missing data. A
-  // zero anywhere a currency introduces an amount counts, including the lower
-  // bound of a range like "$0 – $1,000 / hour".
-  if (/[₹$£€]\s*0(?![\d.])/.test(raw)) return '';
-  if (!/[1-9]/.test(raw.replace(/[^\d]/g, ''))) return '';
-  return raw;
-}
-
-/** A duration, or '' when the value is an experience requirement in disguise. */
-function durationText(job) {
-  const raw = String(job.duration ?? '').trim();
-  if (!raw) return '';
-  if (/^0\b/.test(raw)) return '';
-  if (/\d\s*(?:to|[-–—])\s*\d+\s*(?:\+\s*)?(?:years?|yrs?)\b/i.test(raw)) return '';
-  return raw;
-}
-
-function modeText(job) {
-  const raw = String(job.workplaceType ?? '').trim();
-  if (!raw) return '';
-  if (/^on-?site$/i.test(raw)) return 'On-site';
-  return raw[0].toUpperCase() + raw.slice(1);
-}
-
-/**
- * How many people were already in the queue WHEN THE POSTING WAS READ.
- *
- * The column is text, never a number — "47 people clicked apply", "7 applicants",
- * "Over 100 applicants" — so it is parsed before it is compared. Comparing the
- * raw string against a number silently matches nothing and has already produced
- * one confident wrong answer in this project.
- */
-function applicantCount(job) {
-  const raw = String(job.applicants ?? '').trim();
-  if (!raw) return null;
-  const n = Number((raw.match(/([\d,]+)/) || [])[1]?.replace(/,/g, ''));
-  if (!Number.isFinite(n)) return null;
-  // "Over 100" parses to 100 and means at least that. It must never be read as
-  // a low number: CAST('Over 100 applicants' AS INTEGER) is 0 in SQL, and the
-  // equivalent mistake here would put "only 0 so far" on the most crowded role
-  // on the board.
-  return /\bover\b/i.test(raw) ? n + 1 : n;
-}
-
-/* The queue is only worth showing while it is still SHORT.
- *
- * "69 people clicked apply" is a LinkedIn click count, not applications, and it
- * is frozen at scrape time — so on a crowded role it is both unreliable and
- * purely discouraging, which is the opposite of what this board is for. Below
- * the threshold it is the single best proof the site's promise works, so that
- * is the only case where it reaches a card. Above it, the pane still states it
- * plainly for anyone who opens the role. */
-const QUEUE_SHORT = 25;
 
 /**
  * Who can apply. Highlighted because eligibility is the one fact that makes the
@@ -598,122 +461,6 @@ function roleLine(job) {
   return { node: p, usedFirstBullet: q.usedFirstBullet };
 }
 
-/* ---------------- relevance ----------------
- *
- * Once a resume is loaded, every listing is scored against it and the reader
- * can sort by fit. This is the one thing a job board can do that LinkedIn
- * cannot do without an account, and it costs nothing but the skills already in
- * jobs.json.
- *
- * IT IS HELD IN MEMORY AND NOWHERE ELSE. Not localStorage, not sessionStorage,
- * not a cookie — the footer on this page promises "your resume is processed in
- * memory and never stored here", and that sentence has to stay true. The cost
- * is that scores are gone on reload, which is the correct trade: a resume is
- * the most personal thing anybody hands this site, and persisting it to make a
- * percentage survive a refresh would be a promise broken for a convenience.
- */
-
-/* The resume, lowercased and reduced to single-space-separated tokens, with the
-   characters real skill names actually contain kept. Held as one padded string
-   so a skill can be matched whole-word with a plain includes() — "r" must not
-   match "for", and "go" must not match "algorithm". */
-let resumeHay = '';
-const normSkill = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim();
-
-function setResumeHay(text) {
-  resumeHay = text ? ` ${normSkill(text)} ` : '';
-}
-
-/** Every skill named on a posting, de-duplicated across the two fields. */
-function skillsOf(job) {
-  const out = new Set();
-  for (const raw of [...(job.keySkills ?? []), ...(job.skills ?? [])]) {
-    const k = normSkill(raw);
-    if (k) out.add(k);
-  }
-  return [...out];
-}
-
-/**
- * How well this posting fits the loaded resume.
- *
- * Returns null rather than a low score when there is nothing to judge on. A
- * posting naming two skills would swing between 0% and 100% on a single word,
- * and a confident "0% MATCH" on a role the reader is well suited to is worse
- * than saying nothing — the number would be measuring our own extraction, not
- * their fit.
- *
- * @returns {{pct: number, hit: string[], of: number}|null}
- */
-function matchFor(job) {
-  if (!resumeHay) return null;
-  const skills = skillsOf(job);
-  if (skills.length < 3) return null;
-  const hit = skills.filter((k) => resumeHay.includes(` ${k} `));
-  return { pct: Math.round((hit.length / skills.length) * 100), hit, of: skills.length };
-}
-
-/**
- * The decision line: everything a reader needs to reject or shortlist a role
- * without opening it.
- *
- * ORDER IS FIXED AND CONTENT IS NOT. Most postings are missing most of these —
- * on the India board a stipend is on 26% and a duration on 27% — so a grid with
- * a slot per fact would render a column of em-dashes and teach the eye to skip
- * the row. Instead every fact keeps its place in the order and simply does not
- * appear when it is unknown, which is what lets someone scanning the column
- * still compare like with like: money is always leftmost when there is money.
- */
-function factLine(job, group) {
-  const meta = el('div', 'meta');
-
-  // 1. PAY. First because it is the fact people scan for and the one this board
-  // was not showing at all. "Unpaid" is stated as plainly as an amount — it is
-  // decision-critical, and 47 live India rows carry it.
-  // A FIGURE, OR NOTHING. Never a "Paid"/"Unpaid" badge off `stipendStatus`:
-  // that field is a local-model judgement and measurement says it is wrong —
-  // of 47 India rows and 63 US rows it marks `unpaid`, not one contains any
-  // unpaid phrasing in its own description, and the employers include NatWest
-  // and Seclore. Saying nothing about pay is honest; saying "Unpaid" about a
-  // paid role is a false claim about somebody's employer sitting next to an
-  // Apply button.
-  const money = stipendText(job);
-  if (money) meta.append(el('span', 'cash', money));
-
-  // 2. ELIGIBILITY — the only fact that can rule you out entirely.
-  const degree = degreeTag(job);
-  if (degree) meta.append(degree);
-
-  // 3. WHERE. A role advertised in several cities says so rather than naming
-  // whichever posting happened to be newest, which would claim an opening is in
-  // one place when it is open in twenty-two.
-  const cities = group.length > 1 ? citiesOf(group) : [];
-  if (cities.length > 1) {
-    const shown = cities.slice(0, 2).join(' · ');
-    const rest = cities.length - 2;
-    meta.append(el('span', 'cities', rest > 0 ? `${shown} +${rest}` : shown));
-  } else if (job.location) {
-    // The city alone. Every listing on a board is in that region, so the state
-    // and the country are the two least useful words on the card.
-    meta.append(el('span', 'cities', cityOf(job.location) || job.location));
-  }
-
-  // 4. MODE and 5. DURATION — both filtered, so an experience requirement can
-  // never render as an internship length.
-  const mode = modeText(job);
-  if (mode) meta.append(el('span', null, mode));
-  const dur = durationText(job);
-  if (dur) meta.append(el('span', null, dur));
-
-  // 6. THE QUEUE, and only while it is still short. See QUEUE_SHORT.
-  const queue = applicantCount(job);
-  if (queue != null && queue < QUEUE_SHORT) {
-    meta.append(el('span', 'ea', queue === 0 ? 'no applicants yet' : `only ${queue} so far`));
-  }
-
-  return meta.children.length ? meta : null;
-}
-
 function jobCard(job, index, group = [job]) {
   const li = document.createElement('li');
   const row = el('article', 'row');
@@ -727,6 +474,8 @@ function jobCard(job, index, group = [job]) {
   const blazing = age != null && age < HOT_MS;
   if (blazing) row.classList.add('is-hot');
 
+  // No rank number. It was decoration: the position of a row in a list the
+  // reader is already looking at, restated. It cost a grid column on every card.
   row.append(companyBadge(job));
 
   const mid = el('div');
@@ -735,108 +484,69 @@ function jobCard(job, index, group = [job]) {
   const role = roleLine(job);
   mid.append(role.node);
 
-  const facts = factLine(job, group);
-  if (facts) mid.append(facts);
+  // Eligibility leads. A student's first question is "can I even apply", and
+  // that used to be buried in the description while the card spent its
+  // most-read line on a city they had already filtered by.
+  const meta = el('div', 'meta');
+  const degree = degreeTag(job);
+  if (degree) meta.append(degree);
 
-  // Fit, when a resume has been loaded. Placed under the facts rather than
-  // beside the role: it is a strong signal but it is OURS, not the employer's,
-  // and it must not be mistaken for something the posting said.
-  const fit = matchFor(job);
-  if (fit && fit.hit.length) {
-    // THE SCORE ONLY. It used to name the matching skills too, and they were
-    // the same words the lit chips underneath were already showing — one more
-    // line of text per card saying what the card had just said. The number is
-    // what the eye compares down a sorted column; the chips say which; and the
-    // pane spells out the whole overlap and the gap for the role you open.
-    const m = el('div', `match${fit.pct >= 60 ? ' is-strong' : ''}`);
-    m.append(el('b', null, `${fit.pct}% match`));
-    m.append(el('span', null, `${fit.hit.length} of ${fit.of} skills`));
-    mid.append(m);
+  // A role advertised in several cities says so here, whether or not it is
+  // enriched — it is the most useful thing on the card for someone deciding
+  // whether to read further, and it replaces the single city that would
+  // otherwise misrepresent the opening as being in one place.
+  const cities = group.length > 1 ? citiesOf(group) : [];
+  if (cities.length > 1) {
+    const shown = cities.slice(0, 3).join(' · ');
+    const rest = cities.length - 3;
+    meta.append(el('span', 'cities', rest > 0 ? `${shown} +${rest} more` : shown));
+  } else if (!enriched(job)) {
+    // Enrichment runs on a wall-clock budget, so at any moment some postings have
+    // eligibility and skills and some do not. Where they do, that is the row. Where
+    // they do not, fall back to city and work mode so the row is not left empty.
+    if (job.location) meta.append(el('span', null, job.location));
+    if (job.workplaceType) meta.append(el('span', null, job.workplaceType));
+  }
+  if (job.duration) meta.append(el('span', null, job.duration));
+  if (meta.children.length) mid.append(meta);
+
+  const skills = (job.keySkills ?? []).slice(0, 4);
+  if (skills.length) {
+    const box = el('div', 'skills');
+    for (const s of skills) box.append(el('span', 'skill', s));
+    mid.append(box);
   }
 
-  // THE BULLET LIST IS GONE, and that is the density reduction.
-  //
-  // Every card carried up to three lines of generated prose describing the
-  // work. Stacked down a column of 281 they were the bulk of the reading and
-  // the least scannable part of it — three near-identical grey paragraphs per
-  // card, differing in wording rather than in anything a reader decides on.
-  // The facts above answer "should I open this"; the summary answers "what is
-  // it", which is a question you ask AFTER deciding to look, and the detail
-  // pane and the job page both still carry it in full. Nothing is lost from the
-  // site — one screen of scanning is.
-  //
-  // The role qualifier survives, because a quarter of postings are titled only
-  // "Apprentice" or "Intern" and without it those cards name no job at all.
-
-  /* THE CHIPS ARE BUTTONS NOW, and that is what makes them worth their space.
-     They were decoration: four grey words per card, identical in weight to the
-     four on the card above, doing nothing. Clicking one searches the board for
-     it, which turns a chip into the fastest filter on the page — you see
-     "pytorch" on one listing and get every other listing naming it in one
-     click. It also earns the hover state they now have; a chip that lights up
-     under the cursor and then does nothing is a worse lie than a flat one.
-
-     stopPropagation, or the search would fire AND the card would open behind
-     the newly filtered list — the same guard .card-go already carries. */
-  const skills = (job.keySkills ?? []);
-  if (skills.length) {
-    /* THREE, not four. The cap is about evenness down the column, not about
-       the individual card: an employer that names nine skills and one that
-       names two produced visibly different amounts of texture in the same
-       list, and four was enough for the busy ones to look cluttered next to
-       the sparse ones. Three plus a count reads the same on every card. */
-    const box = el('div', 'skills');
-    for (const sk of skills.slice(0, MAX_CHIPS)) {
-      const chip = el('button', 'skill', sk);
-      chip.type = 'button';
-      chip.title = `Search for ${sk}`;
-      if (resumeHay && resumeHay.includes(` ${normSkill(sk)} `)) chip.classList.add('has');
-      chip.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const q = $('q');
-        q.value = sk;
-        q.dispatchEvent(new Event('input', { bubbles: true }));
-        // Back to the top of the list, or the reader is left mid-feed looking
-        // at a result set that changed above them.
-        $('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-      box.append(chip);
-    }
-    /* A COUNT, NOT A TRUNCATION. Four chips is the cap because five wrap on a
-       tablet, but a card holding nine skills and a card holding exactly four
-       looked identical, which is the "some cards feel richer than others"
-       problem in reverse — the rich ones were being flattened to look like the
-       sparse ones. */
-    if (skills.length > MAX_CHIPS) box.append(el('span', 'skill skill-more', `+${skills.length - MAX_CHIPS}`));
-    mid.append(box);
+  // The role line may have consumed the first bullet as its qualifier; printing it
+  // again here would say the same sentence twice on one card.
+  const bullets = (job.bullets ?? []).slice(role.usedFirstBullet ? 1 : 0);
+  if (bullets.length) {
+    const ul = el('ul', 'gist-list');
+    for (const b of bullets) ul.append(el('li', null, b));
+    mid.append(ul);
+  } else if (job.summary) {
+    // Not yet enriched — the original blurb still beats an empty card.
+    mid.append(el('p', 'gist', job.summary));
   }
   row.append(mid);
 
-  /* THE DRAINING BAR IS GONE.
-     A 2px lime rule under the timestamp, shrinking as a posting aged through
-     its first 24 hours — a nice idea that nobody could read. It carried no
-     label, no scale and no endpoint, so it said "something is running out"
-     without saying what or by when, and it sat directly under a figure that
-     already answers the question in words. The pill it sits under encodes the
-     same thing in a way that needs no key: lime under 24h, hot under an hour,
-     plain after that. One signal, understood on sight, instead of two of which
-     one has to be explained. */
+  // Age, plus a bar that drains over the first 24 hours. Turning "how long do I
+  // have" into something you can see at a glance is the whole point of the site.
   const ageBox = el('div', `age${blazing ? ' blazing' : age != null && age < FRESH_MS ? ' fresh' : ''}`);
   ageBox.append(el('b', null, blazing ? 'JUST NOW' : shortAge(job.postedAt)));
+  if (age != null && age < FRESH_MS) {
+    const bar = el('s');
+    const fill = el('i');
+    fill.style.width = `${Math.max(4, Math.round((1 - age / FRESH_MS) * 100))}%`;
+    bar.append(fill);
+    ageBox.append(bar);
+  }
   // Age and Apply share a footer strip. Applying used to cost two taps and a
   // full-screen context switch — open the role, then find the button — and the
   // detail pane exists to answer questions, not to gate the one action every
   // visitor came to take.
   const foot = el('div', 'card-foot');
   foot.append(ageBox);
-
-  /* "Click for details →" USED TO SIT HERE AND IS GONE.
-     It was a sentence of instructions printed on every one of 251 cards, which
-     is what a UI says when it cannot show what it does. The affordance is now
-     the chevron at the end of the row plus the card's own hover state — the
-     ordinary way a list row says it opens, carrying no words and repeating
-     nothing. The row is still role="button" with its own label, so nothing was
-     lost for a screen reader; that sentence was aria-hidden decoration. */
 
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
   if (applyHref) {
@@ -853,17 +563,6 @@ function jobCard(job, index, group = [job]) {
   }
   row.append(foot);
 
-  /* NO CHEVRON.
-     It was added to replace "Click for details →" and it competed with the
-     thing beside it: a chevron and an "Apply →" arrow both point right, sit on
-     the same edge of the same card, and mean different things — one opens a
-     panel, one leaves the site. Two right-pointing marks is not a clearer
-     affordance than one, it is an ambiguous one.
-     The role title carries it instead (see .role in styles.css): on hover it
-     underlines, which is the one signal every reader already knows means
-     "this opens", and it points at the thing that opens rather than at a
-     corner of the card. */
-
   row.addEventListener('click', () => selectJob(job.id));
   row.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectJob(job.id); }
@@ -872,6 +571,24 @@ function jobCard(job, index, group = [job]) {
   li.append(row);
   return li;
 }
+
+/* Decorative loops on the apply buttons run only while a row is near the
+   viewport. The board renders every listing at once — 264 on a normal day —
+   and each row carried an infinite nudge and sheen whether or not it was on
+   screen, so 262 of them composited forever for nobody.
+   styles.css keeps them off by default and this switch turns them on, so a
+   browser without IntersectionObserver loses the decoration, never a listing.
+   The margin gives a screen of headroom either side, so a loop is already
+   running by the time a row is scrolled into view rather than starting under
+   the reader mid-sweep. */
+const rowLoops = 'IntersectionObserver' in window
+  ? new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) e.target.classList.toggle('on', e.isIntersecting);
+    },
+    { rootMargin: '200px 0px' },
+  )
+  : null;
 
 /* The filters live in the URL, so a filtered board can be linked, bookmarked
    and reloaded instead of resetting to everything.
@@ -921,6 +638,7 @@ function renderList() {
 
   // Stop observing the rows we are about to drop; the observer keeps a
   // strong reference to every target until it is disconnected.
+  rowLoops?.disconnect();
   list.replaceChildren();
 
   state.groups = groupByRole(state.filtered);
@@ -929,53 +647,9 @@ function renderList() {
   // Counted in ROLES, matching the cards on screen. A role advertised in
   // twenty-one cities is one row here and says so on its own face.
   const n = groups.length;
-  /* "N roles from M employers".
-     The employer count used to be the caption under the vetting panel's logo
-     wall, and it is the one fact on that panel worth keeping: it is the size of
-     the vetted list, measured on the live board, and it is the answer to "is
-     this a real board or twelve listings". The header line above the feed is
-     where it costs nothing. Counted on what is SHOWING, so it tracks the
-     filters rather than contradicting them. */
-  const employers = new Set(state.filtered.map((j) => j.company)).size;
-  /* THE NUMBERS ARE THE POINT, so they are typeset as numbers rather than as
-     part of a sentence. This was one run of 11px grey uppercase mono, which is
-     the register this file uses for labels — so the two figures that say how
-     big the board is read as a caption and were skipped. The count is the
-     answer to "is this a real board", and when a filter is on it is the answer
-     to "did that do anything", so it is worth being able to read at a glance.
-     Built as nodes rather than a template string because the figures and the
-     words they label are styled differently. */
-  const head = $('result-count');
-  head.replaceChildren();
-  /* Each figure and its noun are ONE flex item, not two. As separate items the
-     container's column-gap fell between the number and its own word as well as
-     between the two statistics, so "251 roles 151 employers" had four equal
-     gaps and read as four things. Grouping puts a small space inside a pair and
-     a large one between pairs, which is the only reason the line parses at a
-     glance. It also keeps the accessible text readable — as bare siblings it
-     flattened to "251roles151employers". */
-  const stat = (value, word, extra) => {
-    const g = el('span', 'rc-stat');
-    g.append(el('b', null, String(value)), el('span', null, word));
-    if (extra) g.append(el('span', 'rc-of', extra));
-    return g;
-  };
-  if (state.jobs.length === 0) {
-    head.append(el('span', 'rc-none', 'nothing on the radar yet'));
-  } else {
-    /* ROLES AGAINST ROLES. The filtered figure used to be compared against
-       `state.jobs.length`, which is POSTINGS — so a board showing 251 roles
-       said "90 of 265" the moment a filter was applied, because one opening
-       advertised in twenty-one cities is one role and twenty-one postings. It
-       read as a rounding error rather than as the mismatch it was, and only
-       became visible when the line stopped being a slash and started being a
-       sentence. Grouped the same way the visible list is, so the two numbers
-       are the same kind of thing. */
-    const totalRoles = groupByRole(state.jobs.filter((j) => kindOf(j) === state.kind)).size;
-    head.append(stat(n, n === 1 ? 'role' : 'roles',
-                     anyFilterActive() ? `of ${totalRoles}` : null));
-    if (employers) head.append(stat(employers, employers === 1 ? 'employer' : 'employers'));
-  }
+  $('result-count').textContent = state.jobs.length === 0
+    ? 'nothing on the radar yet'
+    : `${n} ${n === 1 ? 'role' : 'roles'}${anyFilterActive() ? ` / ${state.jobs.length}` : ''}`;
   $('reset').hidden = !anyFilterActive();
 
   const empty = $('empty');
@@ -998,6 +672,7 @@ function renderList() {
   const frag = document.createDocumentFragment();
   groups.forEach((group, i) => frag.append(jobCard(group[0], i, group)));
   list.append(frag);
+  if (rowLoops) for (const li of list.children) rowLoops.observe(li);
 }
 
 function selectJob(id, { silent = false } = {}) {
@@ -1015,66 +690,26 @@ function selectJob(id, { silent = false } = {}) {
   // copying the address gives someone a link to a job they never chose.
   if (!silent) history.replaceState(null, '', `#job-${id}`);
 
-  /* THE ROLE OPENS AS A DIALOG AT EVERY WIDTH NOW.
-     ----------------------------------------------------------------------
-     This used to be gated on `(max-width: 1000px)`, because above that the
-     pane was a real column in the page and had nothing to open into. There is
-     no column any more, so the branch is gone and the two sizes differ only in
-     how the same element is painted: a centred modal on desktop, the same
-     full-screen sheet as before on a phone. Both are in styles.css.
-
-     The element the reader came from is remembered rather than looked up on
-     close: filtering rebuilds every .row, and a card that has been replaced
-     cannot be focused. If it is gone by then, focus falls back to the list. */
-  detailOpener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-  $('detail-backdrop').hidden = false;
-  const col = $('detail-col');
-  col.hidden = false;
-  col.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  // Into the dialog, not left behind on the card underneath it. `.back` is the
-  // first focusable thing in the pane and it is the control that closes.
-  requestAnimationFrame(() => $('detail')?.querySelector('.back')?.focus());
-}
-
-/** The card the dialog was opened from, so focus can go back where it started. */
-let detailOpener = null;
-
-/** Drop the selection: no role is open, nothing on the board is current. */
-function deselect() {
-  state.selectedId = null;
-  for (const card of document.querySelectorAll('.row')) card.removeAttribute('aria-current');
-  if (location.hash.startsWith('#job-')) history.replaceState(null, '', location.pathname + location.search);
+  if (matchMedia('(max-width: 1000px)').matches) {
+    $('detail-col').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function closeDetail() {
   const col = $('detail-col');
   document.body.style.overflow = '';
-  if (!col.classList.contains('open')) { deselect(); return; }
 
-  $('detail-backdrop').hidden = true;
-
-  /* Focus goes back to the card that opened this, and it goes back BEFORE the
-     dialog is hidden. Hiding first drops focus to <body>, and the browser then
-     scrolls to wherever the restored element happens to be as a second,
-     separate jump — the page appears to lurch after the dialog has already
-     gone. Restoring first makes it one movement. */
-  const back = detailOpener?.isConnected
-    ? detailOpener
-    : document.querySelector(`.row[data-id="${CSS.escape(String(state.selectedId ?? ''))}"]`);
-  (back ?? $('joblist'))?.focus?.({ preventScroll: true });
-  detailOpener = null;
-
-  // display:none cannot be transitioned, so the dialog has to finish its exit
+  // display:none cannot be transitioned, so the pane has to finish its exit
   // animation before it is hidden. Falling back on a timer as well as the event
-  // matters: if the animation is suppressed — prefers-reduced-motion — then
-  // animationend never fires and the dialog would be left stuck open.
+  // matters: if the animation is suppressed — prefers-reduced-motion, or the
+  // desktop layout where the pane is not an overlay — animationend never fires
+  // and the pane would be left stuck open.
+  if (!col.classList.contains('open')) return;
   col.classList.add('closing');
   const done = () => {
     col.classList.remove('open', 'closing');
-    col.hidden = true;
     col.removeEventListener('animationend', done);
-    deselect();
   };
   col.addEventListener('animationend', done);
   setTimeout(done, 260);
@@ -1082,6 +717,8 @@ function closeDetail() {
 
 function renderDetail(job) {
   const d = $('detail');
+  $('detail-placeholder').hidden = true;
+  d.hidden = false;
   d.replaceChildren();
   d.scrollTop = 0;
   // Replay the entrance animation on every selection. Dropping the class and
@@ -1097,12 +734,7 @@ function renderDetail(job) {
   d.append(back);
 
   d.append(el('div', 'p-co', job.company));
-  // #detail-role is what aria-labelledby on the dialog points at, so the dialog
-  // announces the role rather than an unnamed one. Set here rather than in the
-  // markup because the element is built fresh on every selection.
-  const roleHeading = el('p', 'p-role', job.title);
-  roleHeading.id = 'detail-role';
-  d.append(roleHeading);
+  d.append(el('p', 'p-role', job.title));
 
   // The other cities this same role is open in.
   //
@@ -1155,10 +787,7 @@ function renderDetail(job) {
     + 'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
     + '<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/>'
     + '<circle cx="15" cy="9" r="3"/></svg>';
-  // The label names THIS role. "Tailor my resume" beside a job you are reading
-  // reads as a generic tool that happens to live on the page; "Tailor for this
-  // role" is the next step in the thing you are already doing.
-  tailorBtn.append(document.createTextNode(resumeHay ? 'Tailor for this role' : 'Tailor my resume'));
+  tailorBtn.append(document.createTextNode('Tailor my resume'));
   tailorBtn.addEventListener('click', () => openTailor(job));
   actions.append(tailorBtn);
 
@@ -1179,27 +808,8 @@ function renderDetail(job) {
     f.append(el('dt', null, label), el('dd', cls, value));
     facts.append(f);
   };
-  // PAY LEADS, and it was not here at all until now — the board rendered no
-  // stipend anywhere, on either the card or this pane, while 86% of US listings
-  // and 26% of India's carried one. Filtered through the same rule the
-  // generated job pages use, so "Rs 0" and the stray "2,026" never render as a
-  // wage — and only ever a real figure, never a badge derived from
-  // `stipendStatus`, which measurement shows is invented. See factLine.
-  // A figure when there is one, and otherwise NOT DISCLOSED — never "Unpaid".
-  // Silence left a reader unable to tell an unpaid role from an unstated one;
-  // this says which it is. The card stays silent, because a "not disclosed"
-  // chip on three cards in four is noise, not information.
-  const money = stipendText(job);
-  if (money) addFact('stipend', money, 'cash');
-  else addFact('stipend', 'Not disclosed', 'unk');
-  // Eligibility — the one fact that can rule a reader out entirely.
-  if (job.degreeLevel) addFact('eligibility', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · '));
-  // An unknown fact is OMITTED, never rendered as an em-dash. A grid of stubs
-  // teaches the eye that this block is mostly empty and it stops being read —
-  // and on the India board, where a duration is on 27% of rows, most of it
-  // would have been stubs.
-  addFact('mode', modeText(job));
-  addFact('duration', durationText(job));
+  addFact('mode', job.workplaceType || '\u2014');
+  addFact('duration', job.duration || '\u2014');
   // Computed from the timestamp, NOT from postedText. postedText is the string
   // LinkedIn showed at the moment the scraper opened the posting — "4 minutes
   // ago" — and it never ages. Preferring it meant the detail pane still read
@@ -1208,70 +818,12 @@ function renderDetail(job) {
   // the worst possible field to get wrong: every stale posting looked brand new.
   // postedText is kept only as a fallback for a row with no parsed timestamp.
   addFact('posted', relTime(job.postedAt) || job.postedText);
-  // THE QUEUE, worded as what it is. The stored string is a LinkedIn click
-  // count frozen at scrape time — not applications, and not live — so it is
-  // stamped "when we listed it" rather than presented as the state of play now.
-  // Unlike the card, the pane states it at any size: somebody who has opened
-  // the role is deciding, and withholding a crowded queue from them would be
-  // choosing what they are allowed to weigh. It is the card, where it can only
-  // discourage a reader who has not even looked yet, that holds it back.
-  // The caveat lives in the LABEL, so the value stays a value. Written into the
-  // value it wrapped to four lines and stretched every other cell in the grid
-  // to match — the tallest cell sets the row.
-  const queue = applicantCount(job);
-  if (queue != null) {
-    const clicks = /clicked/i.test(job.applicants);
-    const over = /\bover\b/i.test(job.applicants);
-    addFact(`${clicks ? 'clicked apply' : 'applicants'} · when listed`,
-      queue === 0 ? 'Nobody yet' : over ? `Over ${queue - 1}` : String(queue),
-      queue < QUEUE_SHORT ? 'cash' : null);
-  }
+  if (job.applicants) addFact('applicants', job.applicants);
   d.append(facts);
 
-  // WHAT YOU ALREADY MATCH, AND WHAT YOU DO NOT.
-  //
-  // This is the answer to "Tailor my resume feels disconnected": the button is
-  // an offer with no argument attached until the page can say what the gap
-  // actually is. Naming the skills the posting asks for that the resume never
-  // mentions turns it into a specific piece of work — and those are exactly the
-  // lines the tailoring pass would write.
-  const fit = matchFor(job);
-  if (fit) {
-    const gap = skillsOf(job).filter((k) => !resumeHay.includes(` ${k} `));
-    d.append(el('h3', null, 'your fit'));
-    const box = el('div', `pfit${fit.pct >= 60 ? ' is-strong' : ''}`);
-    box.append(el('b', null, `${fit.pct}%`));
-    // A truncated list says so. "You already name 7 of 7: <six things>" reads as
-    // a miscount rather than as a trim, and the number is the part being trusted.
-    const list = (arr, max = 6) => arr.length > max
-      ? `${arr.slice(0, max).join(', ')} and ${arr.length - max} more`
-      : arr.join(', ');
-    const lines = el('div', 'pfit-t');
-    lines.append(el('span', null, fit.hit.length
-      ? `You already name ${fit.hit.length} of ${fit.of}: ${list(fit.hit)}.`
-      : `Your resume names none of the ${fit.of} skills on this posting.`));
-    if (gap.length) lines.append(el('i', null, `Not on your resume: ${list(gap)}.`));
-    box.append(lines);
-    d.append(box);
-  }
-
-  // THE ROLE — the summary, then the bullets.
-  //
-  // The bullets used to be on every feed card and were removed from there
-  // because 259 of them stacked down a column were the bulk of the reading and
-  // the least scannable part of it. This is where they belong: the reader has
-  // chosen this role and is now asking what the work actually is, which is
-  // exactly the question three specifics answer better than a paragraph.
-  // Summary first as a sentence of context, bullets under it for the detail.
-  if (job.summary || (job.bullets ?? []).length) {
+  if (job.summary) {
     d.append(el('h3', null, 'the role'));
-    if (job.summary) d.append(el('p', 'p-gist', job.summary));
-    const bullets = job.bullets ?? [];
-    if (bullets.length) {
-      const ul = el('ul', 'p-bullets');
-      for (const b of bullets) ul.append(el('li', null, b));
-      d.append(ul);
-    }
+    d.append(el('p', 'p-gist', job.summary));
   }
 
   if (job.skills?.length) {
@@ -1300,21 +852,9 @@ function renderDetail(job) {
 
 let activeJob = null;
 
-/**
- * @param {object|null} job  null opens the modal in RANK mode, from the idle
- *   panel's call to action. There is no role to rewrite against there — the
- *   point is only to get a resume into the tab so every listing can be scored,
- *   which the upload and paste handlers already do on their own. So the modal
- *   changes what it promises and the primary button stops calling /api/tailor,
- *   rather than the button being pointed at an arbitrary role.
- */
 function openTailor(job) {
   activeJob = job;
-  $('tailor-title').textContent = job ? 'Tailor your resume' : 'Rank the whole board';
-  $('tailor-job').textContent = job
-    ? `${job.company} · ${job.title}`
-    : 'Score every open role against your resume, and sort by fit.';
-  $('do-tailor').textContent = job ? 'Tailor it' : 'Rank the board';
+  $('tailor-job').textContent = `${job.company} · ${job.title}`;
   showStep('upload');
   $('tailor-backdrop').hidden = false;
   $('tailor').hidden = false;
@@ -1336,7 +876,6 @@ function showStep(name) {
 
 function setResumeText(text, label, ok = true) {
   state.resumeText = ok ? text : '';
-  syncRelevance();
   const box = $('file-state');
   box.hidden = false;
   box.classList.toggle('bad', !ok);
@@ -1410,19 +949,6 @@ async function runTailor() {
   const resumeText = state.resumeText || $('resume-paste').value.trim();
   if (resumeText.trim().length < 200) {
     setResumeText('', 'Please provide a bit more of your resume — at least a couple of hundred characters.', false);
-    return;
-  }
-
-  // RANK MODE has nothing to send anywhere. The resume is already in memory and
-  // the board is already scored — syncRelevance() ran the moment it was read —
-  // so the button's whole job is to get out of the way and show the result.
-  if (!activeJob) {
-    state.resumeText = resumeText;
-    syncRelevance();
-    $('f-sort').value = 'match';
-    applyFilters();
-    closeTailor();
-    toast('sorted by fit');
     return;
   }
 
@@ -1607,14 +1133,8 @@ function wireControls() {
 function wireTailor() {
   $('tailor-close').addEventListener('click', closeTailor);
   $('tailor-backdrop').addEventListener('click', closeTailor);
-  // Clicking away from a dialog closes it. On the role dialog this is the only
-  // pointer affordance a desktop reader has besides the back button, since the
-  // board behind it is visibly inert while the veil is up.
-  $('detail-backdrop').addEventListener('click', closeDetail);
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    // The tailor sits on top of the role dialog and is closed first, or Escape
-    // would take both down at once when it was opened from a role.
     if (!$('tailor').hidden) closeTailor();
     else if ($('detail-col').classList.contains('open')) closeDetail();
   });
@@ -1638,22 +1158,14 @@ function wireTailor() {
   $('resume-paste').addEventListener('input', (e) => {
     const v = e.target.value.trim();
     state.resumeText = v;
-    syncRelevance();
     $('do-tailor').disabled = v.length < 200;
     if (v.length >= 200) setResumeText(v, 'Pasted resume', true);
   });
-
-  // The rail's call to action. No job is attached: this is the "rank the whole
-  // board" entry point, so openTailor is given null and the modal's per-role
-  // framing falls back to the generic one. It moved here from the vetting panel
-  // the right-hand column used to show, which no longer exists.
-  $('rank-resume')?.addEventListener('click', () => openTailor(null));
 
   $('do-tailor').addEventListener('click', runTailor);
   $('error-retry').addEventListener('click', () => showStep('upload'));
   $('start-over').addEventListener('click', () => {
     state.resumeText = '';
-    syncRelevance();
     state.tailored = null;
     $('resume-file').value = '';
     $('resume-paste').value = '';
@@ -1722,11 +1234,17 @@ async function init() {
 
   const hash = location.hash.match(/^#job-(.+)$/);
   const target = hash && state.jobs.find((j) => j.id === hash[1]);
-  // A ROLE IS OPENED ONLY WHEN SOMEBODY ASKS FOR ONE — by clicking, or by
-  // arriving on a #job- link they were given. Desktop used to auto-open the
-  // newest listing to stop the right-hand column sitting empty; there is no
-  // column to fill now, and opening a dialog over the board on first paint
-  // would be considerably worse than the problem it once solved.
+  /* A ROLE IS OPENED ONLY WHEN SOMEBODY ASKS FOR ONE — by clicking, or by
+     arriving on a #job- link they were given. Otherwise the pane rests on its
+     own placeholder.
+
+     Desktop used to auto-open the newest listing here, to stop the right-hand
+     column sitting empty. It solved an empty panel by creating three worse
+     problems: the reader lands inside a job they did not choose, the newest
+     role is made to look selected rather than merely first, and the pane's own
+     "read the full posting" framing is applied to something nobody asked to
+     read. The placeholder is the honest state — nothing is selected, so the
+     pane says so. */
   if (target) selectJob(target.id);
 
   setInterval(renderFreshness, 60000);

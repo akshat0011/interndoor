@@ -109,13 +109,7 @@
      ~220 job cards, and CLS is the metric that catches exactly that. -->
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
-<!-- board-page scopes the reading measure to THIS file.
-     The board, the rail, the hero and the bands all use .wrap, and they have to
-     narrow together or their shared left edge breaks. But .wrap is also loaded
-     by every generated job page and company hub, which are not part of this
-     change — so the cap hangs off a class only this document carries rather
-     than off .wrap itself. See --measure in styles.css. -->
-<body class="board-page">
+<body>
 
 <a class="skip" href="#results">Skip to listings</a>
 <div class="grain" aria-hidden="true"></div>
@@ -136,10 +130,7 @@
     </a>
 
     <div class="bar-right">
-      <!-- "SWEPT 28M AGO" was jargon: sweep is this project's internal word for
-           one pass of the scraper, and nothing on the page taught it. The title
-           gives the cadence, which is the fact the stamp is really claiming. -->
-      <span class="ticker" id="freshness" title="This board re-checks every source every 30 minutes.">
+      <span class="ticker" id="freshness">
         <i class="beat" aria-hidden="true"></i>
         <span id="freshness-text">—</span>
       </span>
@@ -180,22 +171,13 @@
            snippet out of whichever job summary it liked — for a while the site
            was described to the world as an AI video company, lifted from one
            listing's blurb. Naming it here is what stops that. -->
-      <!-- ONE SENTENCE, and the vetting comes first.
-
-           A live-counts line used to sit under this ("259 open now · newest 5h
-           old · checked every 30 minutes"). It went: the counts restate what
-           the board underneath is already showing, and the freshness stamp in
-           the header says the cadence. What none of that says, and what nothing
-           else on the page says either, is WHOSE roles these are — so the one
-           line the hero gets now spends itself on that. -->
-      <div class="lede-say">
-        <p class="lede-claim">
-          <!--REGION:LEDE-->
+      <p>
+        <!--REGION:LEDE-->
 <strong>Engineering internships</strong>,
-<!--/REGION:LEDE--> from a <strong>vetted list of real employers</strong> —
-          listed minutes after they go live.
-        </p>
-      </div>
+<!--/REGION:LEDE--> listed within minutes of
+        going live. Internships pull <strong>hundreds of applicants inside a day</strong>
+        — so you apply while the queue is still short.
+      </p>
     </div>
   </section>
 
@@ -217,61 +199,37 @@
         <button class="x" id="clear-q" type="button" aria-label="Clear" hidden>&times;</button>
       </div>
 
-      <!-- Each control's resting option NAMES THE FILTER, so the separate label
-           is gone and with it the four repetitions of the word "any" — which
-           was the most-repeated word on the page and told the reader nothing.
-           One phrase per control instead of two, and the control now reads as a
-           sentence in both states: "All companies" becomes "Infineon".
-
-           The label element carried the accessible name, so every select takes
-           an aria-label in its place. "mode" became "work mode" because MODE on
-           its own does not say what it is the mode OF — remote, hybrid or
-           on-site is a fact about where you sit, and the options say so. -->
       <div class="picks">
-        <label><select id="f-company" aria-label="Filter by company"><option value="">All companies</option></select></label>
-        <label><select id="f-location" aria-label="Filter by city"><option value="">All cities</option></select></label>
-        <label><select id="f-mode" aria-label="Filter by work mode"><option value="">Remote, hybrid or on-site</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
-        <label><select id="f-sort" aria-label="Sort listings"><option value="new">Newest first</option><option value="company">By company</option></select></label>
+        <label><span>company</span><select id="f-company"><option value="">any</option></select></label>
+        <label><span>city</span><select id="f-location"><option value="">any</option></select></label>
+        <label><span>mode</span><select id="f-mode"><option value="">any</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
+        <label><span>order</span><select id="f-sort"><option value="new">newest</option><option value="company">company</option></select></label>
       </div>
 
-    </div>
-  </div>
-
-  <!-- ONE COLUMN. The board used to be a two-pane register — a feed on the left
-       and a permanently-occupied right column on the right — and the right
-       column always lost the argument for its own space. Empty it showed a
-       vetting panel with a floating wall of brand marks, which is the most
-       animated, most colourful thing on the page and therefore the first thing
-       the eye goes to; full it showed a role the reader had opened, which is
-       fine, but it kept the listings squeezed into 55% of the width for the
-       entire time nobody had opened anything.
-
-       A job board's product is the listings. Everything that competes with
-       them for attention is costing the thing people came for, so the column
-       is gone and the roles have the page. A role opens in a dialog instead —
-       see .pane-col in styles.css, which is now a modal on desktop and the
-       same full-screen sheet it always was on a phone. -->
-  <div class="wrap board" id="results">
-    <!-- The results row carries the counts AND the two chips.
-         They were the third line of the filter rail, and at a 1000px measure
-         the rail could not hold search + four selects + chips on one line — so
-         they wrapped, and the wrap cost more height above the first listing
-         than narrowing the page had saved. This row was a single short label
-         with its whole right-hand side empty, and "reset" belongs beside the
-         count it would reset anyway. -->
-    <div class="feed-head">
-      <span class="feed-count" id="result-count">loading</span>
       <div class="flags">
-        <button class="flag flag-rank" id="rank-resume" type="button">rank by my resume</button>
         <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
       </div>
     </div>
-    <ol class="feed" id="joblist"></ol>
-    <div class="void" id="empty" role="status" hidden>
-      <span class="void-mark" aria-hidden="true"></span>
-      <h3 id="empty-title">Radar clear</h3>
-      <p id="empty-body">Nothing matching. New roles land here within minutes.</p>
-    </div>
+  </div>
+
+  <div class="wrap board" id="results">
+    <section class="feed-col" aria-label="Listings">
+      <div class="feed-head"><span id="result-count">loading</span></div>
+      <ol class="feed" id="joblist"></ol>
+      <div class="void" id="empty" role="status" hidden>
+        <span class="void-mark" aria-hidden="true"></span>
+        <h3 id="empty-title">Radar clear</h3>
+        <p id="empty-body">Nothing matching. New roles land here within minutes.</p>
+      </div>
+    </section>
+
+    <aside class="pane-col" id="detail-col" aria-label="Selected role">
+      <div class="pane-idle" id="detail-placeholder">
+        <span class="idle-scope" aria-hidden="true"><i></i><i></i><i></i></span>
+        <p>Pick a role.<br><span>Full details, and a resume tailored to it.</span></p>
+      </div>
+      <article class="pane" id="detail" hidden></article>
+    </aside>
   </div>
 
   <!-- The email signup, in a band of its own.
@@ -338,13 +296,14 @@
       <details class="all-roles">
         <summary>All current listings</summary>
         <ul><!--LISTINGS-->
-<li><a href="/jobs/lexsi-labs-ai-agent-engineer-intern-4458640948">Lexsi Labs — AI Agent Engineer Intern</a><span class="tiny"> Mumbai Metropolitan Region · Remote</span></li>
-<li><a href="/jobs/valeo-r-and-d-trainee-apprentice-vie-4459870012">Valeo — R&amp;D Trainee/Apprentice/VIE</a><span class="tiny"> Chennai, Tamil Nadu, India · On-site</span></li>
 <li><a href="/jobs/thoughtspot-intern-business-transformation-4449168247">ThoughtSpot — Intern - Business Transformation</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/krutrim-insights-ai-training-internship-job-opportunity-2026-graduates-4458376472">Krutrim Insights — AI Training |Internship| Job Opportunity |2026 Graduates</a><span class="tiny"> India · Remote</span></li>
 <li><a href="/jobs/seclore-trainee-product-engineer-4458378217">Seclore — Trainee- Product Engineer</a><span class="tiny"> Mumbai, Maharashtra, India · Hybrid</span></li>
 <li><a href="/jobs/zycus-computer-vision-ai-intern-4459664542">Zycus — Computer Vision AI Intern</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
 <li><a href="/jobs/lexsi-labs-ai-research-internship-4458353527">Lexsi Labs — AI Research Internship</a><span class="tiny"> Mumbai Metropolitan Region · Remote</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-haryana-jhajjar-ambala-bhiwani-p-4459622396">STEMpedia — AI And Robotics Trainer Internship in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra, Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad</a><span class="tiny"> Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-haryana-jhajjar-ambala-bhiwani-p-4459616449">STEMpedia — AI And Robotics Trainer Internship in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra, Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad</a><span class="tiny"> Ambala, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-haryana-jhajjar-ambala-bhiwani-p-4459614438">STEMpedia — AI And Robotics Trainer Internship in Haryana, Jhajjar, Ambala, Bhiwani, Palwal, Hisar, Jind, Kurukshetra, Gurgaon, Sirsa, Sonipat, Faridabad, Nuh, Charkhi Dadri, Fatehabad</a><span class="tiny"> Jhajjar, Haryana, India · On-site</span></li>
 <li><a href="/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4459609012">NatWest Group — Software Developer Trainee - Java &amp; AI/ML | 6-Month Fixed-Term Contract | 2026 Graduates</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/natwest-group-software-developer-trainee-java-and-ai-ml-6-month-fixed-term-contract--4459394126">NatWest Group — Software Developer Trainee - Java &amp; AI/ML | 6-Month Fixed-Term Contract | 2026 Graduates</a><span class="tiny"> Chennai, Tamil Nadu, India · On-site</span></li>
 <li><a href="/jobs/pharma-and-powerbi-developer-intern-4457276169">pharma&amp; — PowerBI Developer Intern</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
@@ -354,6 +313,13 @@
 <li><a href="/jobs/baxter-international-inc-intern-4457250602">Baxter International Inc. — Intern</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/philips-intern-embedded-system-4457939009">Philips — Intern - Embedded System</a><span class="tiny"> Pune Division, Maharashtra, India · On-site</span></li>
 <li><a href="/jobs/yash-technologies-trainee-consultant-sap-process-integration-process-orchestration-pi-po-4448514424">YASH Technologies — Trainee Consultant - SAP Process Integration/Process Orchestration (PI/PO) Job</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459077386">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Sonipat, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459088234">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Hisar, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459090168">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Sirsa, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459070862">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Bhiwani, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459075416">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Dharur, Maharashtra, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459072511">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Palwal, Haryana, India · On-site</span></li>
+<li><a href="/jobs/stempedia-ai-and-robotics-trainer-internship-in-charkhi-dadri-hisar-fatehabad-pa-4459090169">STEMpedia — AI And Robotics Trainer Internship in Charkhi Dadri, Hisar, Fatehabad, Palwal, Bhiwani, Sirsa, Sonipat, Jhajjar, Haryana, Nuh, Kurukshetra, Jind, Ambala, Gurgaon, Faridabad</a><span class="tiny"> Charkhi Dadri, Haryana, India · On-site</span></li>
 <li><a href="/jobs/trellix-engineering-intern-ats-workday-trellix-wd1-enterprisecareers-jr0037801">Trellix — Engineering Intern</a><span class="tiny"> India, Bangalore</span></li>
 <li><a href="/jobs/birlasoft-lateral-trainee-consultant-4457651330">Birlasoft — Lateral Trainee Consultant</a><span class="tiny"> Pune/Pimpri-Chinchwad Area · On-site</span></li>
 <li><a href="/jobs/bnp-paribas-data-science-intern-4459038111">BNP Paribas — Data Science Intern</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
@@ -483,6 +449,7 @@
 <li><a href="/jobs/gsk-intern-bios-programming-4450815101">GSK — Intern Bios Programming</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/pharma-and-powerapps-developer-intern-4450483451">pharma&amp; — PowerApps Developer Intern</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
 <li><a href="/jobs/harman-india-certification-intern-4450479358">HARMAN India — Certification Intern</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
+<li><a href="/jobs/lexsi-labs-ai-agent-engineer-intern-4452947106">Lexsi Labs — AI Agent Engineer Intern</a><span class="tiny"> Mumbai Metropolitan Region · Remote</span></li>
 <li><a href="/jobs/calix-india-graduate-trainee-4453687525">Calix India — Graduate Trainee</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
 <li><a href="/jobs/russell-investments-graduate-trainee-apprentice-global-technology-4452910389">Russell Investments — Graduate Trainee (Apprentice), Global Technology</a><span class="tiny"> Mumbai Metropolitan Region</span></li>
 <li><a href="/jobs/larsen-and-toubro-genai-trainee-4453683160">Larsen &amp; Toubro — GenAI Trainee</a><span class="tiny"> Kurla, Maharashtra, India · On-site</span></li>
@@ -592,6 +559,13 @@
 <li><a href="/jobs/newgen-innovation-ai-and-design-thinking-product-management-intern-4443670910">NewGen Innovation : AI &amp; Design Thinking — Product Management Intern</a><span class="tiny"> Mumbai, Maharashtra, India · On-site</span></li>
 <li><a href="/jobs/allen-grc-intern-4446049382">ALLEN — GRC Intern</a><span class="tiny"> Bangalore Urban, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/mizuho-information-technology-apprentice-4435094310">Mizuho — Information Technology apprentice</a><span class="tiny"> Navi Mumbai, Maharashtra, India · On-site</span></li>
+<li><a href="/jobs/pixxel-image-processing-intern-qa-qc-4446528118">Pixxel — Image processing Intern (QA/QC)</a><span class="tiny"> Bengaluru, Karnataka, India · Remote</span></li>
+<li><a href="/jobs/adobe-ai-engineer-apprentice-4445799105">Adobe — AI Engineer Apprentice</a><span class="tiny"> Bengaluru East, Karnataka, India · On-site</span></li>
+<li><a href="/jobs/salesforce-summer-2027-intern-software-engineer-4446350750">Salesforce — Summer 2027 Intern - Software Engineer</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
+<li><a href="/jobs/panasonic-avionics-corporation-ai-software-intern-trainee-pune-india-4443296738">Panasonic Avionics Corporation — AI Software Intern / Trainee - Pune, India</a><span class="tiny"> Pune Division, Maharashtra, India · On-site</span></li>
+<li><a href="/jobs/volvo-group-graduate-apprentice-trainee-4446333277">Volvo Group — Graduate Apprentice Trainee</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
+<li><a href="/jobs/fiserv-technology-apprentice-program-4445745465">Fiserv — Technology Apprentice Program</a><span class="tiny"> Chennai, Tamil Nadu, India · On-site</span></li>
+<li><a href="/jobs/mu-sigma-inc-apprentice-leader-4443290829">Mu Sigma Inc. — Apprentice Leader</a><span class="tiny"> Bengaluru, Karnataka, India · On-site</span></li>
 <li><a href="/jobs/sprinklr-ux-research-intern-ats-workday-sprinklr-wd1-careers-113313-job">Sprinklr — UX Research Intern</a><span class="tiny"> India - Haryana - Gurgaon</span></li>
 <li><a href="/jobs/paytm-product-management-intern-ats-lever-paytm-1155c0e3-bf03-4b46-97f0-44673b6518f7">Paytm — Product Management - Intern</a><span class="tiny"> Noida, Uttar Pradesh · onsite</span></li>
 <li><a href="/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004">CloudSEK — Security Consultant Intern</a><span class="tiny"> Bengaluru, Karnataka, India</span></li>
@@ -608,23 +582,6 @@
     </div>
   </footer>
 </main>
-
-<!-- The opened role.
-
-     It is the same element the mobile layout has always used — a full-screen
-     sheet over the list — and desktop now gets it as a centred dialog rather
-     than as a third of the page standing permanently open. role="dialog" and
-     aria-modal are new: while it was a column it was part of the page and an
-     <aside> was the honest markup for it; as an overlay it is a dialog, and
-     saying so is what makes Escape, the backdrop and the focus move read as
-     one thing to a screen reader.
-
-     It sits below the tailor modal in z-order (84/85 against 90/91), because
-     the tailor is opened FROM a role and has to land on top of it. -->
-<div class="veil veil-job" id="detail-backdrop" hidden></div>
-<div class="pane-col" id="detail-col" role="dialog" aria-modal="true" aria-labelledby="detail-role" hidden>
-  <article class="pane" id="detail"></article>
-</div>
 
 <div class="veil" id="tailor-backdrop" hidden></div>
 <div class="modal" id="tailor" role="dialog" aria-modal="true" aria-labelledby="tailor-title" hidden>

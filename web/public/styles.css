@@ -16,9 +16,6 @@
   --rule-2:     #303036;
 
   --live:       #c8ff00;   /* the one loud colour. never a gradient. */
-  /* Between --ink and --ink-2. The card's facts line needs to outrank a label
-     without reaching the role's weight, and nothing in the ramp sat there. */
-  --ink-15:     #c9c8c2;
   --live-ink:   #14170a;
   --hot:        #ff5c1a;
   --cash:       #00e57a;
@@ -88,7 +85,6 @@
   --rule:     #dddbd2;
   --rule-2:   #c6c4b9;
   --live:     #5d7a00;
-  --ink-15:   #2a2a26;
   --live-ink: #ffffff;
   --hot:      #c2410c;
   --cash:     #067a52;
@@ -138,27 +134,6 @@ a, button, summary, label, [role="button"], .row {
 /* The inset padding is 0px on every screen without a notch. In landscape on
    one, the 22px each side that this width leaves is not enough to clear it,
    and both boards now opt into viewport-fit=cover. */
-/* THE MEASURE, AND WHY IT COULD BE WIDENED AGAIN.
-   ------------------------------------------------------------------------
-   880 was chosen to close the hole between a card's last word and its Apply
-   button, on the reasoning that the gap tracks the measure one-for-one. That
-   was true and it fixed the hole — by making the page narrow enough that a
-   1440 screen showed 280px of nothing down each side, which is the same
-   complaint one level up.
-
-   THE GAP WAS NEVER REALLY ABOUT WIDTH. It read as a hole because the things
-   on the right of it — a timestamp, a rule, a button — were three loose
-   objects floating in the same whitespace as the text, so there was no edge
-   anywhere and the eye had nothing to land on. Giving the action column a
-   divider and a fixed gutter turns that whitespace into the space BETWEEN two
-   defined blocks, which is layout rather than absence. Once it is a gutter the
-   measure is free to be as wide as the text wants.
-
-   1060 is where a role title stops wrapping on most cards (measured: titles
-   wrapping to a second line fall from 6/30 at 880 to 2/30 at 1060) without the
-   line getting long enough to lose. */
-:root { --measure: 1060px; }
-.board-page .wrap { max-width: var(--measure); }
 .wrap {
   width: min(1320px, 100% - 44px); margin-inline: auto;
   padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);
@@ -171,18 +146,11 @@ a, button, summary, label, [role="button"], .row {
 
 .bar {
   position: sticky; top: 0; z-index: 60; height: var(--bar-h);
-  /* THE HEADER IS A DIFFERENT SURFACE FROM THE WORKING AREA, and that is the
-     separation it was missing. It shared --bg with everything under it and
-     announced itself with nothing but a logo, so the brand, the hero and the
-     search all read as one undifferentiated top of page. Sitting it on --bg-2
-     — the same darker ground the bands and cards already use — costs no height
-     and no rule, and gives the eye a place where the chrome stops and the tool
-     starts.
-     Still no hard border: a 1px line draws itself whether or not anything is
-     behind it, and the surface change plus the hero's rule underneath already
-     do the work. */
-  background: color-mix(in oklab, var(--bg-2) 82%, transparent);
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* No hard rule. A 1px border draws a line whether or not anything is behind
+     it; a soft edge only appears where content actually passes under the
+     chrome, which is the thing the divider was standing in for. */
   border-bottom: 0;
 }
 .bar::after {
@@ -359,8 +327,8 @@ a, button, summary, label, [role="button"], .row {
   transform-origin: top right;
   animation: rg-open .16s var(--snap) both;
 }
-/* Named for this file only — `pop` is already taken twice over and the later
-   definition silently wins. Grep for a keyframe name before adding one. */
+/* Named for this file only — `pop` and `sheen` are already taken twice over,
+   and the later definition silently wins. */
 @keyframes rg-open { from { opacity: 0; transform: translateY(-4px); } }
 
 .rg-opt {
@@ -374,7 +342,7 @@ a, button, summary, label, [role="button"], .row {
    site — the ages, the counts, the chips. */
 .rg-opt::before {
   content: attr(data-region);
-  font-family: var(--mono); font-size: var(--t-micro); font-weight: 700; letter-spacing: .04em;
+  font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
   padding: 3px 5px; border-radius: 3px; min-width: 26px; text-align: center;
   background: var(--card-2); color: var(--ink-3);
   transition: background .14s, color .14s;
@@ -405,49 +373,26 @@ a, button, summary, label, [role="button"], .row {
 
 /* Deliberately compact. The headline is a label, not a billboard — the
    listings are the product, and every pixel spent here pushes them down. */
-/* THE HERO IS A BAND, NOT A SPLASH.
-   ------------------------------------------------------------------------
-   It used to spend most of a phone's first screen on a two-word headline and
-   a paragraph, so the first listing — the thing the site is for — started
-   below the fold. The height came down and the INFORMATION went up: the
-   headline shrank, the claim tightened to one sentence, and a live proof line
-   went under it. That is the resolution of the apparent conflict between
-   "shrink this" and "make the value proposition unmissable" — the old block
-   was tall because of leading and type size, not because it said much, and a
-   reader skips a slogan far faster than they skip a number. */
-/* Tighter. Every pixel here is a pixel before the first listing, and the hero
-   is one line of copy that a returning reader has already read. */
-/* THE SPLIT IN THE PAGE IS HERE, not between the filters and the list.
-   The header and the hero are the site introducing itself; everything below is
-   one working surface — search, filters, counts, listings — and it should read
-   as one. So this boundary gets the stronger line and a shoulder of space
-   under it, and the boundaries further down get less. */
-.lede { border-bottom: 1px solid var(--rule-2); padding: 8px 0 10px; }
-.lede-in { display: flex; align-items: baseline; gap: 10px 20px; flex-wrap: wrap; }
-.lede-say { min-width: 0; flex: 1 1 30ch; display: grid; gap: 5px; }
+.lede { border-bottom: 1px solid var(--rule); padding: 22px 0 20px; }
+.lede-in { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
 
 .lede h1 {
-  font-size: clamp(21px, 2.5vw, 28px); line-height: 1;
+  font-size: clamp(26px, 3.4vw, 38px); line-height: 1;
   letter-spacing: -.045em; text-transform: uppercase; flex: none;
 }
 .lede h1::after { content: ""; display: inline-block; width: .13em; height: .13em; margin-left: .05em; background: var(--live); vertical-align: baseline; }
-.lede p { max-width: 74ch; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+.lede p { max-width: 68ch; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
 .lede strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- control rail ---------- */
 
-/* Joined to the results, not fenced off from them. The rail used to close with
-   its own full-width rule and the results row opened with another one, so the
-   controls sat in a boxed strip of their own with the listings starting after
-   it. One boundary above the whole working surface is enough; inside it the
-   controls, the count and the list are the same thing. */
 .rail {
   position: sticky; top: var(--bar-h); z-index: 50;
   background: color-mix(in oklab, var(--bg) 78%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
 }
-.rail-in { display: flex; align-items: center; gap: 8px; padding: 9px 0 10px; flex-wrap: wrap; }
+.rail-in { display: flex; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
 
 .seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
 .seg-b {
@@ -458,7 +403,7 @@ a, button, summary, label, [role="button"], .row {
 }
 .seg-b + .seg-b { border-left: 1px solid var(--rule); }
 .seg-b b {
-  font-family: var(--mono); font-size: var(--t-micro); font-weight: 700;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700;
   padding: 2px 6px; border-radius: 3px; background: var(--card-2); color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
@@ -474,12 +419,9 @@ a, button, summary, label, [role="button"], .row {
 .seg-static b { background: color-mix(in oklab, var(--live-ink) 16%, transparent); color: var(--live-ink); }
 
 .find {
-  flex: 1 1 190px; min-width: 150px; display: flex; align-items: center; gap: 9px;
+  flex: 1 1 240px; min-width: 190px; display: flex; align-items: center; gap: 9px;
   border: 1px solid var(--rule); border-radius: var(--r); padding: 0 12px; height: 34px;
   color: var(--ink-3); transition: border-color .16s;
-}
-@media (hover: hover) and (pointer: fine) {
-  .find:hover { border-color: var(--rule-2); }
 }
 .find:focus-within { border-color: var(--live); }
 .find input { flex: 1; border: 0; background: none; outline: none; font-size: 13.5px; color: var(--ink); min-width: 0; }
@@ -488,39 +430,11 @@ a, button, summary, label, [role="button"], .row {
 .x:hover { color: var(--ink); }
 
 .picks { display: flex; gap: 8px; flex-wrap: wrap; }
-/* THE RAIL IS THE TIGHTEST ROW ON THE PAGE and every wrap costs ~46px directly
-   above the first listing — which is the height the narrower measure was
-   bought to save, given straight back.
-
-   NOT in a media query, and that is the fix. It was written as
-   `@media (max-width: 1180px)` and did nothing at 1440, because the rail is no
-   longer as wide as the viewport: --measure pins it to 880px on every desktop
-   size, so the viewport says nothing about whether its contents fit. The
-   constraint is the CONTAINER. The ≤1024 rules below turn .picks into a
-   scrolling strip and override this, which is the intended phone behaviour.
-
-   The selects give up their intrinsic width (each reserves room for its
-   longest company or city name) and ellipsize instead. */
-/* The rail settles as TWO rows at this measure and that is the better layout,
-   not a failure to fit: 880px cannot hold a search box and four selects side
-   by side without every select ellipsizing its own resting label, and
-   "Remote, hybrid or on-site" truncated to "Remote, hybrid o…" is worse than a
-   second row. Search full width on top, the four filters under it. The 46px
-   this costs is taken back out of the hero, the results row and the rail's own
-   padding rather than out of the controls. */
-.picks { flex: 1 1 100%; min-width: 0; }
-.picks label { flex: 1 1 130px; min-width: 0; }
-.picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
-.picks label { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: var(--r); padding: 0 11px; height: 34px; min-width: 0; }
-/* A filter holding a value is LIT, so the bar says at a glance which of the
-   four are narrowing the list. Without the old text label there is nothing
-   else left to carry that. app.js sets the class on change. */
-.picks label.is-set { border-color: color-mix(in oklab, var(--live) 55%, transparent); }
-.picks label.is-set select { color: var(--live); }
+.picks label { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); border-radius: var(--r); padding: 0 10px 0 11px; height: 34px; }
+.picks span { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
 .picks select {
   appearance: none; -webkit-appearance: none; background: none; border: 0; outline: none;
-  font-size: 13px; color: var(--ink-2); cursor: pointer; max-width: 21ch;
-  text-overflow: ellipsis;
+  font-size: 13px; color: var(--ink); cursor: pointer; max-width: 140px;
   padding-right: 14px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a6a62' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right center; background-size: 11px;
@@ -538,11 +452,10 @@ a, button, summary, label, [role="button"], .row {
 .picks label:has(:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
 
 .flags { display: flex; gap: 8px; }
-.feed-head .flag { height: 27px; padding: 0 10px; }
 .flag {
   background: none; border: 1px solid var(--rule); border-radius: var(--r);
   color: var(--ink-3); height: 34px; padding: 0 13px; cursor: pointer;
-  font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .08em;
+  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em;
   /* Named properties, not `all`: `all` animates whatever else happens to
      change — including layout properties, off the GPU. */
   transition: color .16s, background-color .16s, border-color .16s;
@@ -550,58 +463,15 @@ a, button, summary, label, [role="button"], .row {
 .flag:hover { color: var(--ink); border-color: var(--rule-2); }
 .flag[aria-pressed="true"] { background: var(--live); border-color: var(--live); color: var(--live-ink); font-weight: 700; }
 .flag-reset { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 40%, transparent); }
-/* Reads as an offer, not as a warning — .flag-reset is the destructive one and
-   owns --hot. This one carries the accent the sort control lights up in once a
-   resume is loaded, which is the thing it turns on. */
-.flag-rank { color: var(--live); border-color: color-mix(in oklab, var(--live) 38%, transparent); }
-.flag-rank:hover { color: var(--live-ink); background: var(--live); border-color: var(--live); }
-/* MEASURED, NOT ASSUMED — the same trap .sub-msg hit further down this file.
-   The light theme's --live (#5d7a00) is tuned against --bg, and the rail sits
-   on a translucent layer over it that composites lighter; on that ground the
-   chip measured 4.48 against a 4.5 floor. Darkened here and nowhere else,
-   because the token is correct everywhere it is not sitting on the rail —
-   .back uses the same --live on --card and measures 4.78. */
-:root[data-theme="light"] .flag-rank { color: #4a6100; }
 
 /* ---------- board ---------- */
 
-/* ONE COLUMN, and a plain block rather than a one-track grid.
-   It was `minmax(0,1.15fr) minmax(0,1fr)` — the feed beside a permanently
-   open right-hand column. With the column gone there is one child, and block
-   layout is the honest way to say so; it also sidesteps the min-content trap
-   that a bare `1fr` track carries entirely, rather than guarding against it.
-   See the ≤1024px rule further down, which no longer needs to collapse
-   anything because there is nothing to collapse. */
-.board { padding: 6px 0 80px; }
-/* THE FIGURES ARE READ AS FIGURES.
-   This was one 11px grey uppercase mono run — the register this file uses for
-   LABELS — so the two numbers saying how big the board is looked like a
-   caption and were skipped. They are the answer to "is this a real board", and
-   with a filter on they are the answer to "did that do anything". The numbers
-   take the display face at 17px in full ink; the words stay in the small mono
-   label register beside them, which is what makes the numbers read as numbers. */
+.board { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 26px; align-items: start; padding: 20px 0 80px; }
 .feed-head {
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 6px 16px;
-  font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase;
-  letter-spacing: .1em; color: var(--ink-3); padding-bottom: 10px;
-  /* NO RULE. The rail closes with one and this opened with another, so the
-     controls were fenced into a strip of their own and the listings began
-     after it — which is exactly the disconnection between filtering and
-     results. The count belongs to the list it counts. */
+  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .13em; color: var(--ink-3); padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
 }
-.feed-count { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; }
-/* One statistic = one flex item, so the space INSIDE a pair (4px) and the space
-   BETWEEN pairs (18px) are different numbers. As separate siblings they were
-   the same number and the line read as four unrelated words. */
-.rc-stat { display: inline-flex; align-items: baseline; gap: 5px; }
-.feed-head b {
-  font-family: var(--display); font-size: 17px; font-weight: 800;
-  letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums;
-}
-.feed-head .rc-of { color: var(--ink-3); text-transform: none; letter-spacing: .04em; }
-.feed-head .rc-none { color: var(--ink-3); }
-.feed-head .flags { flex: none; }
 
 /* ---------- the register ---------- */
 
@@ -609,28 +479,12 @@ a, button, summary, label, [role="button"], .row {
 
 /* Each job is its own bordered block. Hairline-separated rows blurred into one
    another; an outline makes every listing a distinct object you can aim at. */
-/* THE TITLE IS WHAT SAYS THE CARD OPENS.
-   A chevron on the trailing edge competed with the Apply arrow beside it —
-   two right-pointing marks on the same edge of the same card meaning different
-   things. An underline appearing under the role on hover is the one signal
-   every reader already knows, and it points at the thing that opens rather
-   than at a corner. Inside (hover: hover) so a tapped card on a phone is not
-   left permanently underlined. */
-@media (hover: hover) and (pointer: fine) {
-  .row:hover .role { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
-}
 .row {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
-  /* logo | content | action column. The chevron's track is gone with the
-     chevron; the action column carries its own divider and gutter now. */
-  grid-template-columns: 56px minmax(0,1fr) auto;
-  /* Tightened from 22/24. The card gained a lot of height when it gained the
-     page, and height is listings-per-screen — the whole reason the right-hand
-     column was removed. The column gap stays generous because that is the one
-     gap doing work; the padding does not need to match it. */
-  gap: 16px; align-items: center;
-  padding: 15px 18px; cursor: pointer;
+  grid-template-columns: 40px minmax(0,1fr) auto;
+  gap: var(--s4); align-items: start;
+  padding: var(--s4); cursor: pointer;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: var(--r-2);
@@ -658,18 +512,8 @@ a, button, summary, label, [role="button"], .row {
   transform: scaleX(.5); transform-origin: left;
   background: transparent; transition: background .16s, transform .2s var(--snap);
 }
-/* THE CARD HAS TO LOOK PRESSABLE, because it is — and the sentence that used
-   to say so has been deleted. Three things move at once and none of them is
-   text: the border lifts, the surface lightens, and the chevron at the end
-   brightens and slides. Gated behind a real pointer so a phone, where every
-   card would otherwise sit in a permanent hover state after a tap, gets none
-   of it. */
-@media (hover: hover) and (pointer: fine) {
-  .row:hover { border-color: var(--rule-2); background: var(--card-2); }
-  .row:hover::before { background: var(--rule-2); }
-  .row:hover .card-foot { border-left-color: var(--rule-2); }
-}
-.row:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+.row:hover { border-color: var(--rule-2); }
+.row:hover::before { background: var(--rule-2); }
 .row[aria-current="true"] {
   border-color: var(--live); background: var(--card-2);
 }
@@ -678,9 +522,9 @@ a, button, summary, label, [role="button"], .row {
 .row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
 
 .crest {
-  width: 56px; height: 56px; border-radius: var(--r); overflow: hidden; position: relative;
+  width: 40px; height: 40px; border-radius: var(--r); overflow: hidden; position: relative;
   display: grid; place-items: center; background: var(--card-2);
-  font-family: var(--display); font-weight: 800; font-size: 19px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--ink-2);
   border: 1px solid var(--rule);
 }
 /* The initials sit underneath; the logo fades over them once it decodes.
@@ -688,7 +532,7 @@ a, button, summary, label, [role="button"], .row {
    waiting for did not exist, so every logo hard-swapped over the initials. */
 .crest img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-  padding: 6px; background: #fff;
+  padding: 4px; background: #fff;
 }
 /* .lit is added on the image's load event and plays a one-shot fade. It is
    written this way round on purpose: the resting state is VISIBLE, so a load
@@ -709,38 +553,22 @@ a, button, summary, label, [role="button"], .row {
 
    The role is now the heading; the company is an eyebrow above it. Emphasis
    comes from weight and colour, not size, so the card stays compact. */
-/* BIGGER, at both levels. The eyebrow was 11px and the role 17px because the
-   card was sharing a 1320px page with a second column and every pixel of height
-   was contested. It is not any more, and 11px uppercase is close to the floor
-   of what is comfortable to read at arm's length — which on a board people scan
-   for a company mark and a job title is the wrong thing to economise on.
-   The role still leads: the eyebrow gains 2.5px and the role gains 3, so the
-   ratio between them widens rather than narrows. */
 .co {
   font-family: var(--ui);
-  font-size: .84375rem; line-height: 1.25;
-  letter-spacing: .07em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink-2);
+  font-size: var(--t-micro); line-height: var(--t-micro-lh);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-weight: 600; color: var(--ink-2);
   /* Two lines maximum. A pathological company name truncates instead of
      taking over the card. */
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   overflow: hidden; overflow-wrap: anywhere;
 }
 .role {
-  margin-top: var(--s2);
-  font-family: var(--ui); font-weight: 650;
-  font-size: 1.25rem; line-height: 1.28;
-  letter-spacing: -.018em;
+  margin-top: var(--s1);
+  font-family: var(--ui); font-weight: 600;
+  font-size: var(--t-title); line-height: var(--t-title-lh);
+  letter-spacing: var(--t-title-tr);
   color: var(--ink); overflow-wrap: anywhere;
-  /* TWO LINES, HARD. Employers write 112-character titles and one of them
-     turns a 143px card into a 190px one, which is what makes a feed look
-     uneven. The wider measure already cut the number that wrap at all from
-     6/30 to 2/30; this bounds the worst case rather than the common one.
-     Two and not one: the tail of a long title is often the only thing telling
-     two postings at the same employer apart, and the full title is on the job
-     page and in the dialog either way. */
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 
 /* What the job actually is, shown only when the title does not say — a quarter of
@@ -749,20 +577,7 @@ a, button, summary, label, [role="button"], .row {
    separator is a pseudo-element so it never appears without a qualifier. */
 .role .qual { color: var(--ink); }
 .role .qual::before { content: "·"; margin: 0 7px; color: var(--ink-3); }
-/* 12.5px, up from 11. This line is city, work mode, stipend and how many
-   people are already in the queue — the facts a reader actually decides on —
-   and it was set two steps below the role in the smallest size this file has,
-   which is the size reserved for labels nobody has to read. */
-/* 13px and a step brighter. It went 11 -> 12.5 last pass and was still the
-   hardest line on the card to scan, which is backwards: city, work mode,
-   duration and queue length are the facts a reader sorts on, and they were set
-   smaller and dimmer than the skill chips underneath them. The mono face is
-   kept — these are values, and tabular mono is what makes a column of them
-   comparable down the page — but it is a face that reads small for its size,
-   so it needs the extra point more than the UI face would. */
-.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 12px; margin-top: 8px; font-family: var(--mono); font-size: .8125rem; line-height: 1.45; letter-spacing: 0; color: var(--ink-15); }
-/* Money is the one value in this line that gets its own colour, and it is the
-   first item in it. Everything else is grey. */
+.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em; color: var(--ink-3); text-transform: uppercase; }
 .meta .cash { color: var(--cash); font-weight: 700; }
 /* The city list on a role advertised in more than one place. Slightly brighter
    than the rest of the meta line because it is replacing the single location,
@@ -782,42 +597,12 @@ a, button, summary, label, [role="button"], .row {
 .elig b { color: var(--live); font-weight: 700; letter-spacing: .08em; }
 .elig i { font-style: normal; color: var(--ink-2); text-transform: none; letter-spacing: .02em; }
 
-.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
-/* A BUTTON, not a span — clicking one searches the board for it. That is what
-   makes a chip worth its space and what earns it a hover state; a chip that
-   lights up and does nothing is worse than a flat one. Reset to look like the
-   tag it replaced, because it is still a tag. */
+.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 .skill {
-  font: inherit; font-family: var(--mono); font-size: .75rem; letter-spacing: .02em;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 8px; cursor: pointer;
-  transition: color .14s, border-color .14s, background .14s;
+  border-radius: 3px; padding: 3px 7px;
 }
-@media (hover: hover) and (pointer: fine) {
-  .skill:hover { color: var(--live); border-color: color-mix(in oklab, var(--live) 50%, transparent); background: color-mix(in oklab, var(--live) 9%, var(--card-2)); }
-}
-.skill:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; }
-/* The overflow count. Not a button — there is nothing to search for — so it
-   drops the cursor and the hover and reads as the number it is. */
-.skill-more { cursor: default; color: var(--ink-3); background: none; }
-/* A skill the loaded resume already names. The chips stop being uniform
-   decoration and become a reason to look at one card over another. */
-.skill.has { color: var(--live); border-color: color-mix(in oklab, var(--live) 45%, transparent); }
-
-/* ---------- fit against a loaded resume ---------- */
-
-.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--mono); font-size: var(--t-micro); }
-.match b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.match.is-strong b { color: var(--live); }
-.match span { color: var(--ink-3); overflow-wrap: anywhere; }
-
-/* The pane's version: the score, what the resume already names, and what it
-   does not — which is the argument the Tailor button never had. */
-.pfit { display: flex; gap: 14px; align-items: flex-start; padding: 14px 15px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--card-2); }
-.pfit > b { flex: none; font-family: var(--display); font-weight: 900; font-size: 1.75rem; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.pfit.is-strong > b { color: var(--live); }
-.pfit-t { display: grid; gap: 5px; min-width: 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
-.pfit-t i { font-style: normal; color: var(--ink-3); }
 
 .gist {
   margin-top: 10px; font-size: 13.5px; color: var(--ink-2); max-width: 62ch;
@@ -836,93 +621,38 @@ a, button, summary, label, [role="button"], .row {
   width: 5px; height: 5px; background: var(--live); opacity: .55;
 }
 
-/* WHAT A CLICK ON THE CARD DOES.
-   ------------------------------------------------------------------------
-   The card is a button that opens the role, and the only thing on it that
-   looked pressable was Apply — so the obvious reading was "this is a listing
-   with one action", and the detail pane went unfound. This says so in as few
-   words as the row can spare, in the quietest voice on the card, next to the
-   age where the eye already goes.
-   It is decoration for a screen reader — the row is already role="button" and
-   announces itself — so it is aria-hidden and the row keeps its own label. */
-.age { text-align: right; }
-/* FRESHNESS IS THE ONE HONEST PER-CARD DIFFERENTIATOR, so it is the one that
-   gets weight. It is measured, it is different on every card, and it is the
-   site's actual promise — "be early" is the headline. A "verified employer"
-   badge was considered and rejected twice over: it would sit on 100% of cards,
-   which carries no information, and this repo cannot stand behind per-company
-   verification anyway (37 additions are recorded unverified and 129 candidates
-   were never researched). That is the same mistake stipendStatus made.
-   Under 24h the age is a bordered pill rather than loose text, so a fresh card
-   is distinguishable from a stale one across the page rather than by reading. */
+.age { text-align: right; padding-top: 4px; }
 .age b {
-  display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
-  color: var(--ink-2); font-variant-numeric: tabular-nums; letter-spacing: .02em;
+  display: block; font-family: var(--mono); font-size: 13px; font-weight: 700;
+  color: var(--ink-2); font-variant-numeric: tabular-nums;
 }
-/* HORIZONTAL PADDING IS LOAD-BEARING, and it is not for the desktop card.
-   There the pill is a block in a 108px column and fills it, so `padding: 2px 0`
-   looked right. On a phone .card-foot is a wrapping ROW and the pill shrinks to
-   its own text — at zero side padding a 999px radius turns "11h" into a lime
-   CIRCLE. Only visible in a rendered phone frame; the desktop measurements were
-   all correct. */
-.age.fresh b, .age.blazing b {
-  border: 1px solid transparent; border-radius: 999px;
-  padding: 2px 9px; text-align: center;
+.age.fresh b { color: var(--live); }
+.age.blazing b { color: var(--hot); }
+.age s {
+  display: block; margin-top: 6px; margin-left: auto; height: 2px; width: 44px;
+  background: var(--rule); text-decoration: none; overflow: hidden;
 }
-.age.fresh b {
-  color: var(--live);
-  border-color: color-mix(in oklab, var(--live) 30%, transparent);
-  background: color-mix(in oklab, var(--live) 8%, transparent);
-}
-.age.blazing b {
-  color: var(--hot);
-  border-color: color-mix(in oklab, var(--hot) 42%, transparent);
-  background: color-mix(in oklab, var(--hot) 11%, transparent);
-}
-/* MEASURED. The pill puts a lime tint UNDER lime text, and in the light theme
-   that pair measured 4.13 against a 4.5 floor — the tint costs what the token
-   had spare. Darkened for the light theme only, on the pill only; --live is
-   correct everywhere it is not sitting on its own tint. Third time this exact
-   trap has been hit here, after .sub-msg and .flag-rank. */
-:root[data-theme="light"] .age.fresh b { color: #4a6100; }
-:root[data-theme="light"] .age.blazing b { color: #8a2b08; }
+.age s i { display: block; height: 100%; background: var(--live); }
+.age.blazing s i { background: var(--hot); }
 
 /* ---------- card footer: age + apply ---------- */
 
-/* ONE BLOCK, WITH AN EDGE — this is the change that makes the right side read
-   as a system rather than as loose parts.
-   ------------------------------------------------------------------------
-   A fixed width already aligned the items with each other. What it could not
-   do is attach them to anything: a timestamp and a button sitting in the same
-   undifferentiated whitespace as the job text are two more things floating in
-   it, and the distance between the text and the button reads as a hole rather
-   than as a boundary. The rule and the gutter give it a boundary. The button
-   is now demonstrably part of THIS card's right-hand column instead of an
-   object that happens to be near it, and the space to its left is the gutter
-   between two blocks — which is why the measure could be widened back out.
-   The divider is --rule, the quietest line in the file: it has to organise,
-   not decorate. */
-.card-foot {
-  display: flex; flex-direction: column; align-items: stretch;
-  justify-content: center; gap: 9px;
-  width: 150px; flex: none;
-  padding-left: 20px;
-  border-left: 1px solid var(--rule);
-  align-self: stretch;
-}
+/* Occupies the slot .age used to hold, so the .row grid is unchanged: on wide
+   screens it is the 4th column and stacks; on a phone it drops under the text
+   and lays out as a row, age left and the button right where a thumb is. */
+.card-foot { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 
 .card-go {
   position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 12px; height: 32px; flex: none;
-  justify-content: center;
-  border-radius: 999px; border: 1px solid color-mix(in oklab, var(--live) 48%, transparent);
-  background: transparent; color: var(--live);
+  padding: 0 14px; height: 34px; flex: none;
+  border-radius: 999px; border: 1px solid var(--live);
+  background: var(--live); color: var(--live-ink);
   font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap; cursor: pointer;
   /* 140ms: button press feedback belongs in 100-160ms. At 180ms the press
      read soft rather than tactile. */
-  transition: transform .14s var(--snap), background .16s, border-color .16s, color .16s;
+  transition: transform .14s var(--snap), box-shadow .18s, filter .18s;
 }
 .card-go-t { position: relative; z-index: 1; }
 
@@ -934,72 +664,244 @@ a, button, summary, label, [role="button"], .row {
   clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
   transition: transform .2s var(--snap);
 }
-/* OUTLINE AT REST, FILLED ON HOVER — and this is the fix for the neon stripe.
-   A solid lime pill on every card put a column of the loudest colour on the
-   page down the entire right edge, repeated 251 times, so it stopped reading
-   as a button and started reading as a texture. The one the cursor is on is
-   filled; the rest are outlined. Nothing is less clickable than it was, and
-   the accent goes back to meaning "this one".
-   The DIALOG's Apply stays solid (.p-acts .go): there it is one button on a
-   role the reader has chosen, which is exactly when a primary should shout. */
-@media (hover: hover) and (pointer: fine) {
-  .row:hover .card-go, .card-go:hover {
-    background: var(--live); border-color: var(--live); color: var(--live-ink);
-  }
-  .card-go:hover { transform: translateY(-1px); }
-}
 .card-go:active { transform: translateY(0) scale(.96); }
 .card-go:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
+/* A sheen that crosses the button on hover. Purely decorative, and skipped
+   entirely under prefers-reduced-motion by the global rule near the bottom. */
+.card-go::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%);
+  transform: translateX(-120%);
+}
+@keyframes sheen { to { transform: translateX(120%); } }
+
 /* A hot role gets the hot colour, so the button matches the urgency the age
    badge is already signalling rather than fighting it. */
-.row.is-hot .card-go { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 50%, transparent); }
-@media (hover: hover) and (pointer: fine) {
-  .row.is-hot:hover .card-go, .row.is-hot .card-go:hover { background: var(--hot); border-color: var(--hot); color: var(--live-ink); }
-}
+.row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
 
 
 /* ============================================================
-   THE APPLY BUTTON — static, on purpose
+   THE APPLY BUTTON — the ambient loop
    ------------------------------------------------------------
-   This button used to carry an ambient loop: a white sheen
-   crossing it twice every 2.6s, an arrow that leaned out as the
-   band reached it, and a permanent two-layer bloom, staggered
-   across six phases down the column.
+   Shared by every apply button on the site: the card list and
+   the detail pane here, and the generated job page's rail
+   button through page.css, which loads after this file.
 
-   IT WAS REMOVED because the board renders every listing at
-   once — 281 on the India board, 409 on the US one — and the
-   argument that justified the loop does not survive that count.
-   The frequency rule it was written against ("do not animate
-   what somebody sees dozens of times a day; Apply is the one
-   action every visitor came to take") holds for a job page,
-   where a stranger from a search sees exactly one button. It
-   inverts in a feed: a reader scanning 281 roles sees 281 of
-   them, roughly a third mid-sweep at any moment, and the motion
-   competes with the reading rather than directing it. The glow
-   compounded it — a column of lime pills each throwing light
-   made every card look identical from three feet away, which is
-   the opposite of what a scannable list needs.
+   The frequency rule says do not animate what somebody sees
+   dozens of times a day. Apply is the opposite case — it is the
+   one action every visitor came to take, and on a job page a
+   stranger from a search sees it exactly once. So it moves on
+   its own until they touch it.
 
-   So the button is now still. It is already the only lime
-   object on the card; saturation at that size is emphasis
-   enough, and it no longer costs the reader anything to look
-   past. Press, hover and focus still answer — feedback on
-   contact is not decoration.
-
-   Removed with it: @keyframes sheen, sheen-loop and nudge, the
-   --go-lag stagger, the .feed > li.on visibility gate and the
-   IntersectionObserver in app.js that drove it, and every
-   box-shadow bloom. The light-theme sheen suppression went too
-   — measured at 4.9:1 falling to 1.2:1, it existed only to stop
-   a sheen that no longer exists.
+   One 2.6s cycle: about 900ms of motion, then most of two
+   seconds of stillness. Anything that never rests stops being
+   seen within about three passes.
    ============================================================ */
 
-/* A layout wrapper only. It survives the loop's removal because the generated
-   job page uses it to make the rail button full-width (page.css .apply-glow),
-   and app.js builds the pane's button inside one so both pages keep one shape. */
+/* The wrapper exists so the halo and the ping can escape the overflow:hidden
+   that the sheen requires. Any button that wants the full treatment gets one;
+   the card buttons do not, for reasons in the stagger note below. */
+/* THE GLOW IS PERMANENT AND EVERY MOVING PART STAYS INSIDE THE BUTTON.
+ *
+ * Both halves are deliberate, and the reason is layer promotion. An animated
+ * element gets its own compositor layer, Chrome promotes whatever overlaps it,
+ * and text on a promoted layer drops from subpixel to greyscale antialiasing —
+ * thinner and greyer. In a dense panel like the detail pane, an effect that
+ * spills past the button (a blurred halo, a ring, an expanding shadow) reaches
+ * the company name, the facts grid and the summary; the sheen and the arrow
+ * are clipped inside the button and reach nothing.
+ *
+ * Caveat worth recording, because it cost a lot of time: the greyed-out pane
+ * is INTERMITTENT and shows up in screenshots only when the capture happens to
+ * catch the promoted state. Two captures of an identical page gave different
+ * results. So it is not something to bisect by eye — several confident
+ * conclusions drawn that way here turned out to be wrong. Keeping the reach of
+ * anything animated inside the button sidesteps the question entirely, and
+ * costs nothing worth having.
+ *
+ * A permanent glow is also simply more visible than one that breathes: it is
+ * never in its off phase. */
+
 .apply-glow { position: relative; display: inline-block; }
 
+/* The bloom. Static, and on the button rather than the wrapper so it traces
+   the button's own radius. */
+.apply-glow > .go, .apply-glow > .btn-apply {
+  box-shadow:
+    0 0 14px 0 color-mix(in oklab, var(--live) 85%, transparent),
+    0 0 52px 8px color-mix(in oklab, var(--live) 60%, transparent);
+  transition: box-shadow .2s;
+}
+
+/* The detail pane's apply button. Rounded like its neighbours, so the halo and
+   the ping follow the same radius. */
+/* relative + overflow so the sheen below can sit inside it. .btn-apply already
+   carries both from page.css. */
+.apply-glow > .go { position: relative; overflow: hidden; }
+.apply-glow > .go .go-t { position: relative; z-index: 1; }
+.apply-glow > .go::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(100deg, transparent 16%, rgba(255,255,255,.85) 50%, transparent 84%);
+  transform: translateX(-130%);
+  animation: sheen-loop 2.6s linear .8s infinite;
+}
+.apply-glow > .go .card-go-a { animation: nudge 2.6s var(--snap) .8s infinite; }
+
+/* LINEAR, not --snap. A sheen is constant motion, like a marquee, and the site
+   curve is a strong ease-out: at --snap the band covered the whole button in
+   180ms and then spent 800ms crawling across dead space off the right edge. It
+   read as a blink. Two passes rather than one — the second is what makes it
+   read as deliberate rather than as a stray reflection. */
+@keyframes sheen-loop {
+  0%   { transform: translateX(-130%); }
+  20%  { transform: translateX(130%); }
+  26%  { transform: translateX(-130%); }
+  42%  { transform: translateX(130%); }
+  100% { transform: translateX(130%); }
+}
+
+/* The arrow leans out as each pass reaches it. The numbers are not decorative:
+   the arrow sits at the right-hand end and the sheen is over that end at 17%
+   and again at 36%, so the leans peak there. Timed any later the two stop
+   reading as one gesture and become a flash followed by an unrelated twitch. */
+@keyframes nudge {
+  0%, 11%   { transform: translateX(0); }
+  17%       { transform: translateX(9px); }
+  26%       { transform: translateX(2px); }
+  36%       { transform: translateX(9px); }
+  48%, 100% { transform: translateX(0); }
+}
+
+/* ---------- the card buttons ---------- */
+
+/* 134 of these are in the DOM at once, so they get the two cheap effects and
+   neither of the expensive ones. No halo: that is 134 blurred layers, each
+   rasterised and composited whether or not it is on screen. No ping: that is
+   134 elements repainting on a timer. Sheen and arrow are transforms on
+   compositor layers and cost effectively nothing at any count.
+   ------------------------------------------------------------------------
+   And they are STAGGERED. Fired in unison, ten lime pills flashing together
+   down a column reads as a fault in the page — the eye cannot pick a target
+   because they all move at once. Offset, the same motion becomes a wave
+   travelling down the list, which is both calmer and far more noticeable.
+   Six phases. Note that the phase count does not change HOW MANY are lit at
+   once — two passes put the band on the button for about 34% of the cycle, so
+   about a third of them are mid-sweep whatever you choose. What the phases
+   decide is whether that third reads as a wave down the column or as ten
+   things twitching at once. Measured on the real list: 46 of 134. */
+.card-go::after { animation: sheen-loop 2.6s linear var(--go-lag, 0s) infinite; }
+.card-go-a { animation: nudge 2.6s var(--snap) var(--go-lag, 0s) infinite; }
+
+/* They get the bloom as well — it is static, so 134 of them are 134 paints and
+   nothing more. Smaller than the two big buttons get: at their strength a
+   column of lime pills glowing at full power reads as a fault rather than as
+   emphasis. */
+/* Two shadows, not one: a tight bright core and a wide soft falloff. A single
+   large blur at high alpha reads as fog around the pill rather than as light
+   coming off it — the core is what makes it read as emission. Still a plain
+   box-shadow, so 145 of them are 145 paints and no compositor layers, which is
+   the whole reason the card buttons can have this at all. */
+.card-go {
+  box-shadow:
+    0 0 10px 0 color-mix(in oklab, var(--live) 78%, transparent),
+    0 0 30px 4px color-mix(in oklab, var(--live) 46%, transparent);
+}
+.row.is-hot .card-go {
+  box-shadow:
+    0 0 10px 0 color-mix(in oklab, var(--hot) 80%, transparent),
+    0 0 30px 4px color-mix(in oklab, var(--hot) 50%, transparent);
+}
+
+.feed > li:nth-child(6n+1) .card-go { --go-lag: .8s; }
+.feed > li:nth-child(6n+2) .card-go { --go-lag: 1.23s; }
+.feed > li:nth-child(6n+3) .card-go { --go-lag: 1.67s; }
+.feed > li:nth-child(6n+4) .card-go { --go-lag: 2.1s; }
+.feed > li:nth-child(6n+5) .card-go { --go-lag: 2.53s; }
+.feed > li:nth-child(6n+6) .card-go { --go-lag: 2.97s; }
+
+/* The loops are decoration, so they run only on rows the reader can see.
+   Measured on the live board: 264 rows carried 264 infinite nudge animations
+   and exactly 2 were on screen. The other 262 composited forever, off screen,
+   on the phones this board is mostly read on.
+   renderList() observes each row and sets .on. Default-OFF is deliberate: if
+   the observer never runs, the cost is decoration, never content. */
+.feed > li:not(.on) .card-go::after,
+.feed > li:not(.on) .card-go-a { animation: none; }
+
+/* ---------- hover ---------- */
+
+/* Hover CANCELS the loops rather than pausing them. Paused, a sheen freezes as
+   a bright band across the middle of the button and the arrow strands itself
+   mid-lean. Cancelled, each falls back to its transition and answers the
+   pointer instead — and the halo settles at its bright end and holds, because
+   nothing should keep breathing under a finger already on it. */
+@media (hover: hover) and (pointer: fine) {
+  .apply-glow:hover > .go, .apply-glow:hover > .btn-apply {
+    box-shadow:
+      0 0 18px 0 color-mix(in oklab, var(--live) 95%, transparent),
+      0 0 66px 12px color-mix(in oklab, var(--live) 85%, transparent);
+  }
+  .apply-glow > .go:hover::after { animation: sheen-loop .62s linear; }
+  .apply-glow > .go:hover .card-go-a { animation: none; transform: translateX(3px); }
+  .card-go:hover {
+    box-shadow:
+      0 0 14px 0 color-mix(in oklab, var(--live) 95%, transparent),
+      0 0 42px 8px color-mix(in oklab, var(--live) 70%, transparent);
+  }
+  .card-go:hover::after { animation: sheen-loop .62s linear; }
+  .card-go:hover .card-go-a { animation: none; transform: translateX(3px); }
+}
+
+/* ---------- the light theme ---------- */
+
+/* NO SHEEN IN THE LIGHT THEME, on any of these buttons.
+ *
+ * The two themes invert them: dark is near-black ink on bright lime, light is
+ * white ink on olive. A white band sweeping over the first LIFTS the label's
+ * contrast, 15.4:1 to 17.5:1. Over the second it erases it — 4.9:1 falls to
+ * 1.2:1, which is white text on a white button, and the word "Apply"
+ * disappearing every few seconds. Measured, not guessed: composite the sheen
+ * alpha over the button colour and run the contrast formula before touching
+ * any of this.
+ *
+ * A dark band would be legible but reads as a shadow crossing the button
+ * rather than as light coming off it. The halo and the arrow carry the light
+ * theme instead, at about half strength — olive on cream needs far less than
+ * lime on black. */
+:root[data-theme="light"] .card-go::after,
+:root[data-theme="light"] .apply-glow > .go::after,
+:root[data-theme="light"] .btn-apply::after { display: none; }
+
+/* Olive on cream, not lime on black: the same bloom reads as a dirty smudge
+   under the button at the dark theme's strength. */
+:root[data-theme="light"] .apply-glow > .go,
+:root[data-theme="light"] .apply-glow > .btn-apply {
+  box-shadow:
+    0 0 12px 0 color-mix(in oklab, var(--live) 44%, transparent),
+    0 0 34px 4px color-mix(in oklab, var(--live) 30%, transparent);
+}
+/* The card pills too, at less again. Olive on cream carries far less light
+   than lime on black before it stops reading as glow and starts reading as a
+   smudge under the button — this is deliberately about a third of the dark
+   theme's alpha, not a match for it. */
+:root[data-theme="light"] .card-go {
+  box-shadow:
+    0 0 8px 0 color-mix(in oklab, var(--live) 40%, transparent),
+    0 0 22px 3px color-mix(in oklab, var(--live) 24%, transparent);
+}
+:root[data-theme="light"] .row.is-hot .card-go {
+  box-shadow:
+    0 0 8px 0 color-mix(in oklab, var(--hot) 42%, transparent),
+    0 0 22px 3px color-mix(in oklab, var(--hot) 26%, transparent);
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .apply-glow > .go::after, .card-go::after { display: none; }
+  .card-go-a, .apply-glow > .go .card-go-a { animation: none; }
+}
 
 /* ---------- empty ---------- */
 
@@ -1014,104 +916,37 @@ a, button, summary, label, [role="button"], .row {
 
 /* ---------- detail pane ---------- */
 
-/* ---------- the opened role ----------
+.pane-col { position: sticky; top: calc(var(--stack-h) + 16px); }
+.pane, .pane-idle { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
+.pane-idle { display: grid; place-items: center; text-align: center; padding: 84px 30px; min-height: 380px; }
+.pane-idle p { font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.03em; }
+.pane-idle p span { display: block; margin-top: 9px; font-family: var(--ui); font-weight: 400; font-size: 13.5px; text-transform: none; letter-spacing: 0; color: var(--ink-3); }
 
-   ONE ELEMENT, TWO PRESENTATIONS, and only the painting differs.
-
-   This was `position: sticky` — a real column in the page, permanently there,
-   showing a vetting panel with a floating wall of brand marks whenever nothing
-   was selected. The panel was the most animated and most colourful thing on a
-   page whose product is the listings, so it took the attention the listings
-   were competing for, and it held 45% of the width to do it.
-
-   It is an overlay at every width now: a centred dialog on desktop, and below
-   1024px the same full-screen sheet the phone layout has always used. The
-   sheet is not a fallback — a dialog boxed inside a 390px screen is worse than
-   a sheet, and the sheet was already built and measured.
-
-   The SHELL carries the chrome and the height cap; .pane is the scrolling body
-   inside it. Splitting them is what lets the close button stay reachable while
-   a long posting scrolls under it, and it is why .pane no longer computes a
-   max-height off --stack-h — there is no sticky header to subtract from. */
-.pane-col {
-  position: fixed; z-index: 85; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(760px, calc(100vw - 40px));
-  max-height: min(88vh, 940px);
-  display: flex; flex-direction: column; overflow: hidden;
-  background: var(--card); border: 1px solid var(--rule-2); border-radius: var(--r-2);
-  /* Shared with the tailor modal, which enters exactly the same way from
-     exactly the same place. Redefined inside the ≤1024px block below, where
-     both become full-screen and a centred transform is wrong. */
-  animation: pop .3s var(--snap);
-}
-/* Not ease-in. It starts slow and delays the moment the reader is watching;
-   ease-out over the same duration reads as faster. */
-.pane-col.closing { animation: popOut .2s var(--snap) both; }
-@keyframes popOut { to { opacity: 0; transform: translate(-50%, calc(-50% + 10px)); } }
-
-/* Sits under the tailor's veil (90/91), because the tailor is opened FROM a
-   role and has to land on top of it rather than behind it.
-
-   WRITTEN AS `.veil.veil-job`, and that is not decoration. `.veil` is declared
-   further down this file and carries z-index 90; at equal specificity the later
-   rule wins, so a plain `.veil-job` here lost and the backdrop painted OVER the
-   dialog — every control inside it was unclickable while looking perfectly
-   normal. Doubling the class outranks the base rule wherever either one sits,
-   so the two cannot be reordered back into a bug. */
-.veil.veil-job { z-index: 84; }
-
-/* .idle-scope shared these rules until the idle panel stopped being a radar
-   mark over the words PICK A ROLE. Only the tailoring modal's waiting state
-   uses them now. */
-.wait-scope { position: relative; display: block; width: 72px; height: 72px; margin-bottom: 26px; }
-.wait-scope i {
+.idle-scope, .wait-scope { position: relative; display: block; width: 72px; height: 72px; margin-bottom: 26px; }
+.idle-scope i, .wait-scope i {
   position: absolute; inset: 0; border: 1px solid var(--live); border-radius: 50%;
   animation: ripple 2.8s var(--snap) infinite;
 }
-.wait-scope i:nth-child(2) { animation-delay: .95s; }
-.wait-scope i:nth-child(3) { animation-delay: 1.9s; }
+.idle-scope i:nth-child(2), .wait-scope i:nth-child(2) { animation-delay: .95s; }
+.idle-scope i:nth-child(3), .wait-scope i:nth-child(3) { animation-delay: 1.9s; }
 @keyframes ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 
-.pane { flex: 1; min-height: 0; padding: 26px 28px 30px; overflow: auto; overscroll-behavior: contain; }
+.pane { padding: 26px; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
 .pane.is-in { animation: rowIn .3s var(--snap) both; }
-/* Visible at every width. It used to be display:none above 1000px, because up
-   there the pane was a column and there was nothing to close — Escape was the
-   only way out and a mouse had none at all. It is a dialog now, so it needs a
-   control that can be clicked, and "all roles" says what closing does. */
 .back {
-  display: inline-block; background: none; border: 0; color: var(--live); cursor: pointer;
+  display: none; background: none; border: 0; color: var(--live); cursor: pointer;
   font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
   padding: 0; margin-bottom: 18px;
 }
-/* THE SAME INVERSION THE CARD ALREADY MADE, applied here at last.
-   ------------------------------------------------------------------------
-   The company was a 34px display-caps headline and the role a 16px line under
-   it — so "SECLORE" was the largest thing in the pane and "Trainee- Product
-   Engineer", the reason anybody opened it, was less than half its size. The
-   card fixed exactly this in its own layout and the pane never followed, which
-   left the two halves of one screen disagreeing about what the subject is.
-   Emphasis now comes from weight and colour rather than size, so a 67-character
-   employer name cannot take the pane over. */
-.p-co {
-  font-family: var(--ui); font-weight: 600;
-  font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
-  color: var(--ink-2); overflow-wrap: anywhere;
-}
-.p-role {
-  margin-top: 7px;
-  font-family: var(--ui); font-weight: 700;
-  font-size: 1.5rem; line-height: 1.18; letter-spacing: -.02em;
-  color: var(--ink); overflow-wrap: anywhere;
-}
+.p-co { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: .96; letter-spacing: -.045em; text-transform: uppercase; }
+.p-role { margin-top: 9px; font-size: 16px; color: var(--ink); }
 .p-loc { margin-top: 6px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
 
 /* Every city a collapsed role is open in, each its own posting and its own page.
    Chips rather than a sentence: they are links, and they have to look like it. */
 .p-places { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 .place {
-  font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .04em;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
   border-radius: 3px; padding: 3px 7px; text-decoration: none;
   transition: border-color .16s, color .16s;
@@ -1146,19 +981,14 @@ a, button, summary, label, [role="button"], .row {
 
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; margin-bottom: 22px; }
 .fact { padding: 12px 14px; box-shadow: 0 0 0 1px var(--rule); }
-.fact dt { font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
-.fact dd { margin: 6px 0 0; font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+.fact dt { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
+.fact dd { margin: 5px 0 0; font-size: 14.5px; font-weight: 600; }
 .fact dd.cash { color: var(--cash); }
-/* A fact the posting never stated. Deliberately NOT `.dim`, which is the
-   footer's muted paragraph and carries a margin — reusing it would push the
-   value out of its cell. Quieter and lighter than a real value, so the eye
-   skips it without having to read it. */
-.fact dd.unk { color: var(--ink-3); font-weight: 400; }
 
-.pane h3 { font-family: var(--mono); font-weight: 700; font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-2); margin: 22px 0 10px; }
+.pane h3 { font-family: var(--mono); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); margin: 22px 0 10px; }
 .p-gist { font-size: 14.5px; white-space: pre-line; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { border: 1px solid var(--rule); border-radius: var(--r); padding: 4px 9px; font-family: var(--mono); font-size: var(--t-micro); color: var(--ink-2); letter-spacing: .03em; }
+.chip { border: 1px solid var(--rule); border-radius: var(--r); padding: 4px 9px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; }
 .src { margin-top: 24px; padding-top: 15px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); }
 .src a { color: var(--ink-2); }
 
@@ -1192,10 +1022,10 @@ a, button, summary, label, [role="button"], .row {
 .drop:hover, .drop.over { border-color: var(--live); color: var(--live); background: color-mix(in oklab, var(--live) 5%, transparent); }
 .drop b { font-family: var(--display); font-weight: 800; font-size: 17px; color: var(--ink); text-transform: uppercase; letter-spacing: -.02em; }
 .drop:hover b, .drop.over b { color: var(--live); }
-.drop span { font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .07em; }
+.drop span { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; }
 
 .paste { margin-top: 14px; }
-.paste summary { cursor: pointer; font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+.paste summary { cursor: pointer; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
 .paste summary:hover { color: var(--live); }
 .paste textarea { width: 100%; margin-top: 10px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--card); color: var(--ink); resize: vertical; font-size: 13px; outline: none; }
 .paste textarea:focus { border-color: var(--live); }
@@ -1208,7 +1038,7 @@ a, button, summary, label, [role="button"], .row {
 
 .wait { display: grid; place-items: center; text-align: center; padding: 60px 20px; }
 .wait b { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.02em; }
-.wait > span { margin-top: 7px; font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+.wait > span { margin-top: 7px; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
 
 .acts { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 18px; }
 .flagbox { border-left: 2px solid var(--hot); background: var(--card); padding: 13px 15px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
@@ -1217,7 +1047,7 @@ a, button, summary, label, [role="button"], .row {
 .flagbox-gap { border-left-color: var(--live); }
 
 .diffs { margin-bottom: 18px; }
-.diffs h4 { margin: 0 0 9px; font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); font-weight: 700; }
+.diffs h4 { margin: 0 0 9px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); font-weight: 700; }
 .diffs ul { display: flex; flex-direction: column; gap: 6px; }
 .diffs li { font-size: 13px; color: var(--ink-2); padding-left: 18px; position: relative; }
 .diffs li::before { content: "+"; position: absolute; left: 0; color: var(--live); font-family: var(--mono); font-weight: 700; }
@@ -1261,12 +1091,18 @@ a, button, summary, label, [role="button"], .row {
   .row:hover { transform: translateY(-2px); }
   .go:hover { transform: translateY(-2px); }
   .alt:hover { transform: translateY(-2px); }
-  /* The apply buttons lift and brighten slightly; the drawn arrow leans. No
-     bloom and no sheen — see THE APPLY BUTTON above for why they went. The hot
-     variant needs nothing of its own now that the hue is the only difference. */
-  .card-go:hover { transform: translateY(-2px); filter: brightness(1.06); }
-  .card-go:hover .card-go-a,
-  .apply-glow > .go:hover .card-go-a { transform: translateX(3px); }
+  /* LIFT ONLY. The bloom and the LINEAR sheen are declared once, ~230 lines
+     above. Re-declaring box-shadow or the sheen here silently reverted both,
+     because this block is later at equal specificity: the halo collapsed into
+     a downward drop shadow on hover instead of brightening, and the sheen ran
+     on --snap, the easing that block records as tried and rejected. The hot
+     variant keeps the bloom shape and swaps only the hue. */
+  .card-go:hover { transform: translateY(-2px); }
+  .row.is-hot .card-go:hover {
+    box-shadow:
+      0 0 14px 0 color-mix(in oklab, var(--hot) 95%, transparent),
+      0 0 42px 8px color-mix(in oklab, var(--hot) 70%, transparent);
+  }
   /* Press outranks the hover lift: :hover:active is (0,3,0) against (0,2,0). */
   .go:hover:active, .alt:hover:active, .bare:hover:active { transform: scale(.97); }
 }
@@ -1280,27 +1116,27 @@ a, button, summary, label, [role="button"], .row {
    1024 rather than 1000 so an iPad Pro in portrait gets the touch design.
    ============================================================ */
 @media (max-width: 1024px) {
-  /* THE SHEET, unchanged in behaviour and now reached by the same code path
-     desktop uses. A centred dialog inside a 390px screen is worse than a
-     full-screen sheet — there is no "behind" left to see, so the box is
-     decoration with a margin — and the sheet was already built and measured.
-     Only the box changes: same element, same open/close, same animation. */
-  .pane-col {
-    inset: 0; top: 0; left: 0; transform: none;
-    width: 100%; max-width: 100%; height: 100%; max-height: 100%;
-    background: var(--bg); border: 0; border-radius: 0;
-    animation: paneIn .3s var(--snap) both;
-  }
+  /* minmax(0, 1fr), not 1fr — the same guard the two-column rule above
+     already carries. A grid item's min-width defaults to auto, so a bare
+     1fr track cannot shrink below its content's min-content, and .feed-col
+     floored the track at 333.6px inside a 300px .wrap: the US board scrolled
+     sideways at 320px. Whether it bites is content-dependent, so it was a
+     latent bug on all three boards, not a US one. */
+  .board { grid-template-columns: minmax(0, 1fr); }
+  .pane-col { position: fixed; inset: 0; z-index: 80; background: var(--bg); overflow: auto; display: none; }
+  /* Opening a role used to be an instant cut to a full screen of new text,
+     which on a phone reads as a page load rather than a detail view. Sliding
+     it up keeps the sense that the list is still underneath. */
+  .pane-col.open { display: block; animation: paneIn .3s var(--snap) both; }
   /* Not ease-in. It starts slow and delays the moment the user is watching;
-     ease-out at the same duration reads as faster. Overrides the base rule's
-     popOut, which translates against a centre this box no longer has. */
+     ease-out at the same duration reads as faster. */
   .pane-col.closing { animation: paneOut .2s var(--snap) both; }
   @keyframes paneIn { from { opacity: 0; transform: translateY(22px); } }
   @keyframes paneOut { to { opacity: 0; transform: translateY(16px); } }
-  /* The veil is redundant under a sheet that covers the screen, and on a phone
-     it is one more full-viewport layer to composite for nothing. */
-  .veil.veil-job { display: none; }
-  .pane { padding: 22px 22px 70px; }
+  .pane-idle { display: none; }
+  .pane { max-height: none; min-height: 100vh; border: 0; border-radius: 0; padding: 22px 22px 70px; }
+  .back { display: inline-block !important; }
+
 }
 
 @media (max-width: 1024px) {
@@ -1319,25 +1155,10 @@ a, button, summary, label, [role="button"], .row {
      <h3> and a screen-reader reader got no page-level heading at all. Absolute
      + 1px costs exactly the same zero layout as display:none, so the fold
      argument above is untouched. */
-  /* THE SLOGAN DOES NOT GET THE FOLD — but the claim does.
-     ----------------------------------------------------------------------
-     The block above is right that a two-word headline plus a paragraph was
-     not worth ~210px of a phone's first screen, and the whole section was
-     clipped for it. That also hid the only sentence saying whose roles these
-     are, on the device most of this traffic arrives on.
-     So the clip moved off the section and onto the h1 alone. "BE EARLY." is
-     the part that was costing the height and saying the least; it stays in
-     the accessibility tree and stays the page's only h1. The claim — vetted
-     employers, real companies, minutes after going live — is about 34px and
-     is shown. */
-  .lede { padding: 9px 0 8px; }
-  .lede-in { gap: 0; }
-  .lede h1 {
+  .lede {
     position: absolute; width: 1px; height: 1px; padding: 0; border: 0;
     overflow: hidden; clip-path: inset(50%); white-space: nowrap;
   }
-  .lede-say { flex: 1 1 100%; }
-  .lede-claim { font-size: 13px; }
 
   /* The filter rail was three stacked rows (~400px): a search box, four
      dropdowns wrapped 2x2, then the toggles. Together with the hero the
@@ -1385,38 +1206,6 @@ a, button, summary, label, [role="button"], .row {
      ad and leaves without following the channel is a visitor paid for twice. */
   .alerts { height: 34px; padding: 0 11px; }
 
-  /* The selects still need min-width:0 and the ellipsis. Their intrinsic width
-     is the widest company or city name in the option list, which without this
-     becomes an unshrinkable floor — that is what used to push the rail ~150px
-     past the viewport and make the whole PAGE scroll sideways. Now only the
-     .picks strip scrolls, and it does so on purpose. */
-  .picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
-
-  /* Only the 62px bar stays pinned. The rail used to wrap to three rows here,
-     and sticking it too froze ~350px — nearly half a phone screen — above every
-     scroll. It scrolls away now; the bar is what you need while scrolling. */
-  .rail { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; }
-  .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
-  @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
-  .sheet { padding: 24px 20px; }
-  .p-co { font-size: 27px; }
-}
-
-/* VARIANT A — THE TOUCH CARD, at ≤900px rather than ≤1024px.
-   ------------------------------------------------------------------------
-   These rules used to live in the ≤1024 block above, which meant a landscape
-   iPad and any 1024-wide laptop got the phone card: 275px tall, two listings
-   on screen, and a full-width 50px Apply on a device with a mouse. Measured at
-   1024x768 before the move — 2 cards visible; the register row shows 5 in the
-   same space.
-
-   900 is the line because it is below every common tablet LANDSCAPE width
-   (1024, 1080, 1112, 1180, 1194) and above every portrait one (768, 810, 834),
-   so a tablet held upright still gets the touch card and one turned sideways
-   gets the register. Nothing else moved: the sheet, the scrolling filter
-   strip, the hidden slogan and the static rail all stay at ≤1024, and the
-   ≤600 phone rules still come after this block and still override it. */
-@media (max-width: 900px) {
   /* ---- The card, rebuilt as the feed card -----------------------------
      One column, not a grid: logo and company sit on a header line, the role
      is the headline beneath it, and Apply is a full-width target at the
@@ -1449,7 +1238,7 @@ a, button, summary, label, [role="button"], .row {
   }
 
   /* Facts become pills rather than a monospace run-on. */
-  .meta { gap: 5px; margin-top: var(--s2); text-transform: none; letter-spacing: .01em; }
+  .meta { gap: 6px; margin-top: var(--s3); text-transform: none; letter-spacing: .01em; }
   .meta > span:not(.elig) {
     font-family: var(--ui); font-size: .75rem; font-weight: 600;
     background: var(--card-2); border-radius: 999px; padding: 5px 11px; color: var(--ink-2);
@@ -1462,57 +1251,37 @@ a, button, summary, label, [role="button"], .row {
 
   /* Apply spans the card. The single biggest target on the screen, sitting
      where the thumb already rests. */
-  /* Age and the hint share a row, then Apply spans under them.
-     It was column-reverse, which put Apply on top and left the hint stranded
-     between the button and the age as a third stacked row — three lines of
-     footer on a card whose whole point is being quick to read. Facts first,
-     then the action, and the button still lands at the bottom of the card
-     where a thumb is. */
   .card-foot {
-    /* flex-direction MUST be restated. The base rule is `column`, and without
-       overriding it `flex: 1 1 100%` on the button set its BASIS ON HEIGHT —
-       a 26px Apply button instead of a full-width 50px one. */
-    display: flex; flex-direction: row; flex-wrap: wrap; align-items: baseline;
-    /* width:100%, NOT the 108px column the desktop card uses — that width is
-       what aligns the right edge of a vertical stack, and here the group is a
-       horizontal row across the full card. */
-    gap: var(--s2) var(--s3); padding-top: var(--s4); width: 100%;
+    display: flex; flex-direction: column-reverse; align-items: stretch;
+    gap: var(--s2); padding-top: var(--s4); width: 100%;
   }
-  /* Age does not grow, or it fills the row and pushes the hint onto its own
-     line — which is the three-row footer this replaced. */
-  .card-foot .age { order: 1; flex: 0 0 auto; text-align: left; padding-top: 0; }
-  .card-foot .card-go { order: 3; flex: 1 1 100%; }
-  /* The phone keeps a SOLID Apply. The neon-stripe problem is a desktop one —
-     it comes from a column of buttons all visible at once — and on a phone
-     roughly one card fits the screen, so there is no stripe to break up and no
-     hover to reveal the fill with. */
-  .card-go { background: var(--live); border-color: var(--live); color: var(--live-ink); }
-  .row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
   .card-go {
     height: 50px; border-radius: 14px; padding: 0;
     justify-content: center; font-size: 1rem; font-weight: 700;
   }
   .age { text-align: left; padding-top: 0; display: flex; align-items: center; gap: 8px; }
-}
+  .age s { margin-left: 0; }
+  /* The selects still need min-width:0 and the ellipsis. Their intrinsic width
+     is the widest company or city name in the option list, which without this
+     becomes an unshrinkable floor — that is what used to push the rail ~150px
+     past the viewport and make the whole PAGE scroll sideways. Now only the
+     .picks strip scrolls, and it does so on purpose. */
+  .picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 
+  /* Only the 62px bar stays pinned. The rail used to wrap to three rows here,
+     and sticking it too froze ~350px — nearly half a phone screen — above every
+     scroll. It scrolls away now; the bar is what you need while scrolling. */
+  .rail { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
+  .sheet { padding: 24px 20px; }
+  .p-co { font-size: 27px; }
+}
 
 /* Phones only: cards run to the screen edges. On a tablet the inset reads as
    deliberate; on a 390px screen it is 30px of wasted width. */
 @media (max-width: 600px) {
   .feed { margin-inline: -15px; }
-  /* 48px rather than 56. The desktop card has 1300px to spend and a phone has
-     ~360px, so the same logo takes a visibly larger share of the line and
-     starts pushing the title into more wraps than it saves. Still up from the
-     40px it was. */
-  /* No grid-template-columns here: the ≤1024px "Variant A" rules above turn
-     .row into `display: block` with the crest floated, so a track list would
-     be dead CSS. Only the crest and the type move. */
-  .crest { width: 46px; height: 46px; font-size: 16px; }
-  /* line-height is what vertically centres the company against the floated
-     logo, so it is the LOGO'S height and moves with it — Variant A set both to
-     34 and changing one alone left the name sitting high in the box. */
-  .co { font-size: .875rem; line-height: 46px; }
-  .row { padding: 18px 18px var(--s3); }
   /* Edge-to-edge means the card padding is the only thing between text and a
      notch once the screen is rotated, so it takes the inset when there is one. */
   .row {
