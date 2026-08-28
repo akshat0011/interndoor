@@ -164,7 +164,11 @@
 <main>
   <section class="lede">
     <div class="wrap lede-in">
-      <h1>Be early.</h1>
+      <!-- NO FULL STOP IN THE TEXT. .lede h1::after draws one as a lime square, so
+           "Be early." rendered as BE EARLY followed by two marks — a typographic
+           period and then the accent — which read as a stray double dot. The
+           square IS the full stop. -->
+      <h1>Be early</h1>
       <!-- This paragraph is the only real prose a crawler gets before the board,
            which is built by JavaScript from jobs.json. When it did not name the
            subject, Google discarded the meta description and wrote the search
@@ -206,7 +210,12 @@
         <label><span>order</span><select id="f-sort"><option value="new">newest</option><option value="company">company</option></select></label>
       </div>
 
+      <!-- Rank the whole board against a resume. It sits with the filters
+           because loading a resume adds a "best for me" option to the sort
+           control beside it — the button and the thing it switches on are the
+           same feature. -->
       <div class="flags">
+        <button class="flag flag-rank" id="rank-resume" type="button">rank by my resume</button>
         <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
       </div>
     </div>
