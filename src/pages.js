@@ -749,6 +749,7 @@ function head({ title, description, canonical, indexable, extraLd = '', region =
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
+<meta name="interndoor-region" content="${region.code}">
 ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robots" content="noindex,follow">\n'}<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
@@ -1751,8 +1752,33 @@ function eligibilityBlock(company, live) {
     </section>`;
 }
 
-export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alternates = null } = {}) {
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [] } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
+
+  /**
+   * A hub DOES have a regional equivalent, and it is the page that decides
+   * whether an American searching "<company> internships" is shown the American
+   * board or India's.
+   *
+   * This is deliberately narrower than the rule for job pages, which carry no
+   * hreflang and must not: a specific vacancy in Dublin is not a regional
+   * variant of a different vacancy in Bengaluru, and saying so tells Google two
+   * unrelated URLs are the same page. A HUB is the opposite case — same
+   * employer, same question ("does this company take interns"), scoped to the
+   * reader's market. That is exactly what hreflang is for.
+   *
+   * Emitted ONLY for regions where this employer is actually live, because
+   * hreflang has to be reciprocal: pointing at a hub that does not exist, or
+   * that does not point back, is ignored at best. `alsoIn` comes from the same
+   * cross-region index `foreign` is built from, so both sides compute the same
+   * set and the links agree in both directions.
+   *
+   * The limit of this, worth knowing before expecting too much: it can only
+   * route to a page that EXISTS. eBay has two India postings and none in the
+   * US, so there is no /us/companies/ebay for Google to prefer and no amount of
+   * markup creates one. That is a supply problem, not a routing one.
+   */
+  const alternates = alsoIn.length ? [region, ...alsoIn] : null;
 
   // One tile per ROLE. An employer that files one opening in every city was
   // rendering a tile each: Procter & Gamble's hub repeated
@@ -1887,7 +1913,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     // No hreflang: an employer hiring in two regions has two hubs carrying
     // different roles, not one page served two ways.
     alternates,
-    alternatePath: null,
+    alternatePath: alternates ? `/companies/${companySlug(company)}` : null,
     extraLd: `<script type="application/ld+json">${jsonLd(crumbLd)}</script>\n`
       + `<script type="application/ld+json">${jsonLd(aboutLd)}</script>\n`
       + (live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : ''),
@@ -2536,7 +2562,12 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(compDir, name));
     writeIfChanged(join(compDir, name),
       renderCompanyPage(company, byCompany.get(company) ?? [], pastByCompany.get(company) ?? [],
-        logos.get(company) ?? '', { region, alternates }));
+        logos.get(company) ?? '', {
+          region,
+          /* The regions where this employer is ALSO live. Deduplicated because
+             `foreign` carries one entry per posting, not per region. */
+          alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
+        }));
   }
 
   // The directory, at /companies/. index.html rather than a slug so the bare

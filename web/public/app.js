@@ -26,6 +26,21 @@ const meta = (name) => document.querySelector(`meta[name="${name}"]`)?.content;
 // origin cannot serve a stale script, so nothing needs the alias — but the read
 // side is kept because it costs two || branches and fails silently if dropped.
 const REGION = meta('interndoor-region') || meta('gradkite-region') || meta('internzo-region') || 'IN';
+
+/**
+ * Remember which board this reader is on, for the edge redirect.
+ *
+ * `web/vercel.json` sends a US or GB visitor from the apex to their own board
+ * ONCE, and only while this cookie is absent. Setting it here means the nudge
+ * happens on a first visit and never again — so a US reader who deliberately
+ * opens the India board keeps it, and nobody can be trapped on a board they
+ * did not choose. The redirect is a 302 and applies to `/` alone, so a deep
+ * link into any region is never bounced.
+ */
+try {
+  var __board = (document.querySelector('meta[name="interndoor-region"]') || {}).content;
+  if (__board) document.cookie = 'board=' + __board + ';path=/;max-age=31536000;samesite=lax';
+} catch (e) { /* a blocked cookie just means the reader is nudged again */ }
 const DATA_URL = meta('interndoor-data') || meta('gradkite-data') || meta('internzo-data') || '/data/jobs.json';
 /** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
 const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');

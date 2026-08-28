@@ -1,3 +1,18 @@
+/**
+ * Remember which board this reader is on, for the edge redirect.
+ *
+ * `web/vercel.json` sends a US or GB visitor from the apex to their own board
+ * ONCE, and only while this cookie is absent. Setting it here means the nudge
+ * happens on a first visit and never again — so a US reader who deliberately
+ * opens the India board keeps it, and nobody can be trapped on a board they
+ * did not choose. The redirect is a 302 and applies to `/` alone, so a deep
+ * link into any region is never bounced.
+ */
+try {
+  var __board = (document.querySelector('meta[name="interndoor-region"]') || {}).content;
+  if (__board) document.cookie = 'board=' + __board + ';path=/;max-age=31536000;samesite=lax';
+} catch (e) { /* a blocked cookie just means the reader is nudged again */ }
+
 /* ============================================================
    Generated pages: the small amount of behaviour they need.
 

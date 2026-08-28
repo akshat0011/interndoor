@@ -73,6 +73,52 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "US"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "board"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([Bb][Oo][Tt]|[Cc][Rr][Aa][Ww][Ll]|[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss][Ll][Uu][Rr][Pp]|facebookexternalhit|WhatsApp|Embedly|Quora Link Preview).*"
+        }
+      ],
+      "destination": "/us",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "GB"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "board"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([Bb][Oo][Tt]|[Cc][Rr][Aa][Ww][Ll]|[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss][Ll][Uu][Rr][Pp]|facebookexternalhit|WhatsApp|Embedly|Quora Link Preview).*"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
       "source": "/in",
       "destination": "/",
       "permanent": true
