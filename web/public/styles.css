@@ -16,6 +16,9 @@
   --rule-2:     #303036;
 
   --live:       #c8ff00;   /* the one loud colour. never a gradient. */
+  /* Between --ink and --ink-2. The card's facts line needs to outrank a label
+     without reaching the role's weight, and nothing in the ramp sat there. */
+  --ink-15:     #c9c8c2;
   --live-ink:   #14170a;
   --hot:        #ff5c1a;
   --cash:       #00e57a;
@@ -85,6 +88,7 @@
   --rule:     #dddbd2;
   --rule-2:   #c6c4b9;
   --live:     #5d7a00;
+  --ink-15:   #2a2a26;
   --live-ink: #ffffff;
   --hot:      #c2410c;
   --cash:     #067a52;
@@ -134,34 +138,26 @@ a, button, summary, label, [role="button"], .row {
 /* The inset padding is 0px on every screen without a notch. In landscape on
    one, the 22px each side that this width leaves is not enough to clear it,
    and both boards now opt into viewport-fit=cover. */
-/* THE CARD IS THE MEASURE, NOT THE SCREEN.
-   With the right-hand column gone the feed inherited the full 1320px, and a
-   full-width row spends the middle third of itself on nothing: the content
-   column stretches, the action column stays pinned to the far edge, and the
-   gap between them grows with the monitor. 1120px is as wide as a card can be
-   before that gap reads as a mistake.
+/* THE MEASURE, AND WHY IT COULD BE WIDENED AGAIN.
+   ------------------------------------------------------------------------
+   880 was chosen to close the hole between a card's last word and its Apply
+   button, on the reasoning that the gap tracks the measure one-for-one. That
+   was true and it fixed the hole — by making the page narrow enough that a
+   1440 screen showed 280px of nothing down each side, which is the same
+   complaint one level up.
 
-   SOME gap is structural and cannot be removed: the action column has to hold
-   a straight right edge or the Apply buttons stop being scannable down the
-   page, so a card with a short title will always have space between its last
-   word and its button. The question is only how much. Measured across the
-   first 30 cards, the gap tracks the measure one-for-one and card height does
-   not move with it at all:
+   THE GAP WAS NEVER REALLY ABOUT WIDTH. It read as a hole because the things
+   on the right of it — a timestamp, a rule, a button — were three loose
+   objects floating in the same whitespace as the text, so there was no edge
+   anywhere and the eye had nothing to land on. Giving the action column a
+   divider and a fixed gutter turns that whitespace into the space BETWEEN two
+   defined blocks, which is layout rather than absence. Once it is a gutter the
+   measure is free to be as wide as the text wants.
 
-       measure   median gap   p90    median card   titles wrapping
-       1120         485       595        141           0 / 30
-       1000         365       475        143           2 / 30
-        880         245       355        143           2 / 30
-        840         205       315        143           2 / 30
-
-   So narrowing costs nothing in height or in wrapped titles and halves the
-   hole. 880 is where it reads as a margin rather than a void; below that the
-   page itself starts to feel narrow for no further gain.
-   It is applied to .wrap under .board-page so the hero, the filter rail, the
-   feed and the bands all narrow TOGETHER — they share a left edge, and moving
-   one alone is what breaks it. Generated pages carry no .board-page and are
-   untouched. */
-:root { --measure: 880px; }
+   1060 is where a role title stops wrapping on most cards (measured: titles
+   wrapping to a second line fall from 6/30 at 880 to 2/30 at 1060) without the
+   line getting long enough to lose. */
+:root { --measure: 1060px; }
 .board-page .wrap { max-width: var(--measure); }
 .wrap {
   width: min(1320px, 100% - 44px); margin-inline: auto;
@@ -175,11 +171,18 @@ a, button, summary, label, [role="button"], .row {
 
 .bar {
   position: sticky; top: 0; z-index: 60; height: var(--bar-h);
-  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  /* THE HEADER IS A DIFFERENT SURFACE FROM THE WORKING AREA, and that is the
+     separation it was missing. It shared --bg with everything under it and
+     announced itself with nothing but a logo, so the brand, the hero and the
+     search all read as one undifferentiated top of page. Sitting it on --bg-2
+     — the same darker ground the bands and cards already use — costs no height
+     and no rule, and gives the eye a place where the chrome stops and the tool
+     starts.
+     Still no hard border: a 1px line draws itself whether or not anything is
+     behind it, and the surface change plus the hero's rule underneath already
+     do the work. */
+  background: color-mix(in oklab, var(--bg-2) 82%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  /* No hard rule. A 1px border draws a line whether or not anything is behind
-     it; a soft edge only appears where content actually passes under the
-     chrome, which is the thing the divider was standing in for. */
   border-bottom: 0;
 }
 .bar::after {
@@ -414,7 +417,12 @@ a, button, summary, label, [role="button"], .row {
    reader skips a slogan far faster than they skip a number. */
 /* Tighter. Every pixel here is a pixel before the first listing, and the hero
    is one line of copy that a returning reader has already read. */
-.lede { border-bottom: 1px solid var(--rule); padding: 8px 0 8px; }
+/* THE SPLIT IN THE PAGE IS HERE, not between the filters and the list.
+   The header and the hero are the site introducing itself; everything below is
+   one working surface — search, filters, counts, listings — and it should read
+   as one. So this boundary gets the stronger line and a shoulder of space
+   under it, and the boundaries further down get less. */
+.lede { border-bottom: 1px solid var(--rule-2); padding: 8px 0 10px; }
 .lede-in { display: flex; align-items: baseline; gap: 10px 20px; flex-wrap: wrap; }
 .lede-say { min-width: 0; flex: 1 1 30ch; display: grid; gap: 5px; }
 
@@ -428,13 +436,18 @@ a, button, summary, label, [role="button"], .row {
 
 /* ---------- control rail ---------- */
 
+/* Joined to the results, not fenced off from them. The rail used to close with
+   its own full-width rule and the results row opened with another one, so the
+   controls sat in a boxed strip of their own with the listings starting after
+   it. One boundary above the whole working surface is enough; inside it the
+   controls, the count and the list are the same thing. */
 .rail {
   position: sticky; top: var(--bar-h); z-index: 50;
   background: color-mix(in oklab, var(--bg) 78%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
 }
-.rail-in { display: flex; align-items: center; gap: 8px; padding: 8px 0; flex-wrap: wrap; }
+.rail-in { display: flex; align-items: center; gap: 8px; padding: 9px 0 10px; flex-wrap: wrap; }
 
 .seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
 .seg-b {
@@ -559,7 +572,7 @@ a, button, summary, label, [role="button"], .row {
    that a bare `1fr` track carries entirely, rather than guarding against it.
    See the ≤1024px rule further down, which no longer needs to collapse
    anything because there is nothing to collapse. */
-.board { padding: 8px 0 80px; }
+.board { padding: 6px 0 80px; }
 /* THE FIGURES ARE READ AS FIGURES.
    This was one 11px grey uppercase mono run — the register this file uses for
    LABELS — so the two numbers saying how big the board is looked like a
@@ -572,7 +585,10 @@ a, button, summary, label, [role="button"], .row {
   flex-wrap: wrap; gap: 6px 16px;
   font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase;
   letter-spacing: .1em; color: var(--ink-3); padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
+  /* NO RULE. The rail closes with one and this opened with another, so the
+     controls were fenced into a strip of their own and the listings began
+     after it — which is exactly the disconnection between filtering and
+     results. The count belongs to the list it counts. */
 }
 .feed-count { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; }
 /* One statistic = one flex item, so the space INSIDE a pair (4px) and the space
@@ -593,14 +609,22 @@ a, button, summary, label, [role="button"], .row {
 
 /* Each job is its own bordered block. Hairline-separated rows blurred into one
    another; an outline makes every listing a distinct object you can aim at. */
+/* THE TITLE IS WHAT SAYS THE CARD OPENS.
+   A chevron on the trailing edge competed with the Apply arrow beside it —
+   two right-pointing marks on the same edge of the same card meaning different
+   things. An underline appearing under the role on hover is the one signal
+   every reader already knows, and it points at the thing that opens rather
+   than at a corner. Inside (hover: hover) so a tapped card on a phone is not
+   left permanently underlined. */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .role { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+}
 .row {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
-  /* logo | content | action column | chevron.
-     The chevron gets a track of its own rather than being crammed into the
-     action stack, which is what lets that stack stay a clean two-item group
-     (age over Apply) instead of a three-item pile. */
-  grid-template-columns: 56px minmax(0,1fr) auto 12px;
+  /* logo | content | action column. The chevron's track is gone with the
+     chevron; the action column carries its own divider and gutter now. */
+  grid-template-columns: 56px minmax(0,1fr) auto;
   /* Tightened from 22/24. The card gained a lot of height when it gained the
      page, and height is listings-per-screen — the whole reason the right-hand
      column was removed. The column gap stays generous because that is the one
@@ -643,7 +667,7 @@ a, button, summary, label, [role="button"], .row {
 @media (hover: hover) and (pointer: fine) {
   .row:hover { border-color: var(--rule-2); background: var(--card-2); }
   .row:hover::before { background: var(--rule-2); }
-  .row:hover .row-go { color: var(--live); transform: translateX(3px); }
+  .row:hover .card-foot { border-left-color: var(--rule-2); }
 }
 .row:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .row[aria-current="true"] {
@@ -708,6 +732,15 @@ a, button, summary, label, [role="button"], .row {
   font-size: 1.25rem; line-height: 1.28;
   letter-spacing: -.018em;
   color: var(--ink); overflow-wrap: anywhere;
+  /* TWO LINES, HARD. Employers write 112-character titles and one of them
+     turns a 143px card into a 190px one, which is what makes a feed look
+     uneven. The wider measure already cut the number that wrap at all from
+     6/30 to 2/30; this bounds the worst case rather than the common one.
+     Two and not one: the tail of a long title is often the only thing telling
+     two postings at the same employer apart, and the full title is on the job
+     page and in the dialog either way. */
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 /* What the job actually is, shown only when the title does not say — a quarter of
@@ -720,7 +753,14 @@ a, button, summary, label, [role="button"], .row {
    people are already in the queue — the facts a reader actually decides on —
    and it was set two steps below the role in the smallest size this file has,
    which is the size reserved for labels nobody has to read. */
-.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 11px; margin-top: 7px; font-family: var(--mono); font-size: .78125rem; line-height: 1.45; letter-spacing: .01em; color: var(--ink-2); }
+/* 13px and a step brighter. It went 11 -> 12.5 last pass and was still the
+   hardest line on the card to scan, which is backwards: city, work mode,
+   duration and queue length are the facts a reader sorts on, and they were set
+   smaller and dimmer than the skill chips underneath them. The mono face is
+   kept — these are values, and tabular mono is what makes a column of them
+   comparable down the page — but it is a face that reads small for its size,
+   so it needs the extra point more than the UI face would. */
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 12px; margin-top: 8px; font-family: var(--mono); font-size: .8125rem; line-height: 1.45; letter-spacing: 0; color: var(--ink-15); }
 /* Money is the one value in this line that gets its own colour, and it is the
    first item in it. Everything else is grey. */
 .meta .cash { color: var(--cash); font-weight: 700; }
@@ -805,19 +845,6 @@ a, button, summary, label, [role="button"], .row {
    age where the eye already goes.
    It is decoration for a screen reader — the row is already role="button" and
    announces itself — so it is aria-hidden and the row keeps its own label. */
-/* The affordance, drawn rather than typed — it replaces "Click for details →".
-   A chevron on the trailing edge of a list row is the oldest and least
-   instructional way to say the row opens, and unlike the sentence it does not
-   repeat itself 251 times down the page in words. */
-.row-go {
-  width: 8px; height: 13px; justify-self: end; flex: none;
-  background: var(--ink-3);
-  clip-path: polygon(18% 0, 100% 50%, 18% 100%, 0 82%, 60% 50%, 0 18%);
-  transition: transform .18s var(--snap), background-color .18s;
-  color: var(--ink-3);
-  background-color: currentColor;
-}
-
 .age { text-align: right; }
 /* FRESHNESS IS THE ONE HONEST PER-CARD DIFFERENTIATOR, so it is the one that
    gets weight. It is measured, it is different on every card, and it is the
@@ -859,28 +886,29 @@ a, button, summary, label, [role="button"], .row {
    trap has been hit here, after .sub-msg and .flag-rank. */
 :root[data-theme="light"] .age.fresh b { color: #4a6100; }
 :root[data-theme="light"] .age.blazing b { color: #8a2b08; }
-/* The bar drains over the first 24 hours. Full width of the action column now
-   rather than a 44px stub floated right, so it reads as belonging to the pill
-   above it instead of as a stray rule. */
-.age s {
-  display: block; margin-top: 5px; height: 2px; width: 100%;
-  background: var(--rule); text-decoration: none; overflow: hidden;
-  border-radius: 2px;
-}
-.age s i { display: block; height: 100%; background: var(--live); }
-.age.blazing s i { background: var(--hot); }
 
 /* ---------- card footer: age + apply ---------- */
 
-/* ONE COLUMN, ONE WIDTH, so the three cards above and below line up with this
-   one. It used to be `align-items: flex-end` with each item taking its own
-   intrinsic width, so "3h", "16h" and "JUST NOW" all started at a different x
-   and the Apply buttons under them did too — a ragged right edge down the
-   whole feed, which is what made these read as three loose items rather than
-   as the card's action column. A fixed width fixes both edges at once. */
+/* ONE BLOCK, WITH AN EDGE — this is the change that makes the right side read
+   as a system rather than as loose parts.
+   ------------------------------------------------------------------------
+   A fixed width already aligned the items with each other. What it could not
+   do is attach them to anything: a timestamp and a button sitting in the same
+   undifferentiated whitespace as the job text are two more things floating in
+   it, and the distance between the text and the button reads as a hole rather
+   than as a boundary. The rule and the gutter give it a boundary. The button
+   is now demonstrably part of THIS card's right-hand column instead of an
+   object that happens to be near it, and the space to its left is the gutter
+   between two blocks — which is why the measure could be widened back out.
+   The divider is --rule, the quietest line in the file: it has to organise,
+   not decorate. */
 .card-foot {
   display: flex; flex-direction: column; align-items: stretch;
-  gap: 8px; width: 108px;
+  justify-content: center; gap: 9px;
+  width: 150px; flex: none;
+  padding-left: 20px;
+  border-left: 1px solid var(--rule);
+  align-self: stretch;
 }
 
 .card-go {
@@ -1453,7 +1481,6 @@ a, button, summary, label, [role="button"], .row {
   /* Age does not grow, or it fills the row and pushes the hint onto its own
      line — which is the three-row footer this replaced. */
   .card-foot .age { order: 1; flex: 0 0 auto; text-align: left; padding-top: 0; }
-  .card-foot .age s { margin-left: 0; }
   .card-foot .card-go { order: 3; flex: 1 1 100%; }
   /* The phone keeps a SOLID Apply. The neon-stripe problem is a desktop one —
      it comes from a column of buttons all visible at once — and on a phone
@@ -1461,15 +1488,11 @@ a, button, summary, label, [role="button"], .row {
      hover to reveal the fill with. */
   .card-go { background: var(--live); border-color: var(--live); color: var(--live-ink); }
   .row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
-  /* No chevron: the phone card is not a row with a trailing edge, it is a
-     block, and the whole-card tap target is unambiguous there. */
-  .row-go { display: none; }
   .card-go {
     height: 50px; border-radius: 14px; padding: 0;
     justify-content: center; font-size: 1rem; font-weight: 700;
   }
   .age { text-align: left; padding-top: 0; display: flex; align-items: center; gap: 8px; }
-  .age s { margin-left: 0; }
 }
 
 

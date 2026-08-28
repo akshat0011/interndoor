@@ -289,6 +289,9 @@ function renderFreshness() {
 }
 
 
+/** How many skill chips a card shows before it collapses to a count. */
+const MAX_CHIPS = 3;
+
 const kindOf = (j) => j.employmentType || 'intern';
 
 function renderTotal() {
@@ -777,8 +780,13 @@ function jobCard(job, index, group = [job]) {
      the newly filtered list — the same guard .card-go already carries. */
   const skills = (job.keySkills ?? []);
   if (skills.length) {
+    /* THREE, not four. The cap is about evenness down the column, not about
+       the individual card: an employer that names nine skills and one that
+       names two produced visibly different amounts of texture in the same
+       list, and four was enough for the busy ones to look cluttered next to
+       the sparse ones. Three plus a count reads the same on every card. */
     const box = el('div', 'skills');
-    for (const sk of skills.slice(0, 4)) {
+    for (const sk of skills.slice(0, MAX_CHIPS)) {
       const chip = el('button', 'skill', sk);
       chip.type = 'button';
       chip.title = `Search for ${sk}`;
@@ -799,22 +807,22 @@ function jobCard(job, index, group = [job]) {
        looked identical, which is the "some cards feel richer than others"
        problem in reverse — the rich ones were being flattened to look like the
        sparse ones. */
-    if (skills.length > 4) box.append(el('span', 'skill skill-more', `+${skills.length - 4}`));
+    if (skills.length > MAX_CHIPS) box.append(el('span', 'skill skill-more', `+${skills.length - MAX_CHIPS}`));
     mid.append(box);
   }
   row.append(mid);
 
-  // Age, plus a bar that drains over the first 24 hours. Turning "how long do I
-  // have" into something you can see at a glance is the whole point of the site.
+  /* THE DRAINING BAR IS GONE.
+     A 2px lime rule under the timestamp, shrinking as a posting aged through
+     its first 24 hours — a nice idea that nobody could read. It carried no
+     label, no scale and no endpoint, so it said "something is running out"
+     without saying what or by when, and it sat directly under a figure that
+     already answers the question in words. The pill it sits under encodes the
+     same thing in a way that needs no key: lime under 24h, hot under an hour,
+     plain after that. One signal, understood on sight, instead of two of which
+     one has to be explained. */
   const ageBox = el('div', `age${blazing ? ' blazing' : age != null && age < FRESH_MS ? ' fresh' : ''}`);
   ageBox.append(el('b', null, blazing ? 'JUST NOW' : shortAge(job.postedAt)));
-  if (age != null && age < FRESH_MS) {
-    const bar = el('s');
-    const fill = el('i');
-    fill.style.width = `${Math.max(4, Math.round((1 - age / FRESH_MS) * 100))}%`;
-    bar.append(fill);
-    ageBox.append(bar);
-  }
   // Age and Apply share a footer strip. Applying used to cost two taps and a
   // full-screen context switch — open the role, then find the button — and the
   // detail pane exists to answer questions, not to gate the one action every
@@ -845,14 +853,16 @@ function jobCard(job, index, group = [job]) {
   }
   row.append(foot);
 
-  /* The affordance, replacing the sentence. A chevron at the end of a row is
-     the oldest "this opens" signal there is and it needs no reading; it sits
-     in its own grid track so the action column above it stays a clean stack
-     rather than having a third item shoved into it. aria-hidden: the row
-     already announces itself as a button. */
-  const chev = el('i', 'row-go');
-  chev.setAttribute('aria-hidden', 'true');
-  row.append(chev);
+  /* NO CHEVRON.
+     It was added to replace "Click for details →" and it competed with the
+     thing beside it: a chevron and an "Apply →" arrow both point right, sit on
+     the same edge of the same card, and mean different things — one opens a
+     panel, one leaves the site. Two right-pointing marks is not a clearer
+     affordance than one, it is an ambiguous one.
+     The role title carries it instead (see .role in styles.css): on hover it
+     underlines, which is the one signal every reader already knows means
+     "this opens", and it points at the thing that opens rather than at a
+     corner of the card. */
 
   row.addEventListener('click', () => selectJob(job.id));
   row.addEventListener('keydown', (e) => {
