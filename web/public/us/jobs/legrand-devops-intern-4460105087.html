@@ -86,16 +86,33 @@
         <header class="jp-hero">
           <div class="jp-id">
             <a class="jp-crest" href="/us/companies/legrand" aria-hidden="true" tabindex="-1">L<img src="/logos/legrand.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></a>
-            <div>
+            <div class="jp-id-t">
               <a class="jp-co" href="/us/companies/legrand">Legrand</a>
+              <!-- A REASON TO FOLLOW THE LINK, not just a name that happens to
+                   be one. The count is this employer's other live roles in this
+                   region, which is the only company fact this page holds that a
+                   reader can act on; with no others it says so plainly rather
+                   than offering a hub that will look empty. -->
+              <a class="jp-co-more" href="/us/companies/legrand">See this employer&rsquo;s page <i aria-hidden="true">&rarr;</i></a>
             </div>
           </div>
 
+          <!-- The size step is chosen from the TITLE'S OWN LENGTH, not from the
+               viewport. Employers write 30-character titles and 112-character
+               ones, and one clamp cannot serve both: at the size that makes a
+               short title land, a long one takes four or five lines and pushes
+               everything a reader came for below the fold. -->
           <h1>DevOps Intern</h1>
           <p class="jp-focus">DevOps Support</p>
 
           <div class="pills"><span class="pill is-hot" data-ago="1787861907591"><i aria-hidden="true"></i>Posted <time datetime="2026-08-27">28 Aug 2026</time></span><span class="pill is-paid"><i aria-hidden="true"></i>$27 – $30 / hour</span><span class="pill">10 clicked apply</span><span class="pill">On-site</span></div>
+          
         </header>
+
+        <section class="jp-why">
+          <h2>What stands out</h2>
+          <ul class="why-list"><li>Pay is stated up front &mdash; <strong>$27 – $30 / hour</strong>. Most postings never say.</li><li><strong>Posted in the last 24 hours.</strong></li></ul>
+        </section>
 
         <section>
           <h2>The gist</h2>
@@ -109,7 +126,12 @@
 
         <section>
           <h2>Skills mentioned</h2>
-          <div class="chips"><span class="chip">linux</span><span class="chip">python</span><span class="chip">git</span><span class="chip">ci/cd</span><span class="chip">prometheus</span></div>
+          <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
+               ended the reader's journey; each is now a search of this board,
+               which turns the end of a job page into the start of the next
+               one. The board already reads ?q= from the URL, so this needs no
+               new route. -->
+          <div class="chips"><a class="chip" href="/us/?q=linux">linux</a><a class="chip" href="/us/?q=python">python</a><a class="chip" href="/us/?q=git">git</a><a class="chip" href="/us/?q=ci%2Fcd">ci/cd</a><a class="chip" href="/us/?q=prometheus">prometheus</a></div>
         </section>
 
         <section>
@@ -135,9 +157,17 @@
             <div><dt>Stipend</dt><dd><span class="cash">$27 – $30 / hour</span></dd></div>
             <div><dt>Posted</dt><dd><time datetime="2026-08-27">27 Aug 2026</time></dd></div>
           </dl>
+          <!-- The one conversion point on the page, and it used to be a single
+               grey-green line that read as a footnote to the facts above it.
+               It is the only thing here that survives the role closing, so it
+               gets a heading, a sentence and a real target. -->
           <a class="jp-sub" href="/us/alerts">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            Get roles like this the minute they post
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="jp-sub-t">
+              <strong>Get internships like this first</strong>
+              <em>New the US roles, the minute they are posted.</em>
+            </span>
+            <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
           </a>
         </div>
       </aside>
