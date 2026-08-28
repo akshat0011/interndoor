@@ -1,4 +1,9 @@
 import { normaliseEmail, normaliseRegion, looksAutomated, rateLimit, addSubscriber, REGIONS } from '../web/api/subscribe.js';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -100,6 +105,14 @@ check('the region travels as a tag', JSON.parse(sent.opts.body).tags, ['region:U
 // below. Buttondown gates tags behind Basic; referrer_url is on every plan.
 check('the region also travels in referrer_url', JSON.parse(sent.opts.body).referrer_url, 'https://interndoor.com/us');
 
+console.log('\n== single opt-in: no confirmation email ==');
+/* Buttondown defaults a new subscriber to `unactivated` and mails them a
+   confirmation link. That CANNOT be disabled globally — there is no toggle in
+   Settings > Subscribing and its docs say as much — so the only lever is
+   per-subscriber, on creation. Drop this field and every signup silently goes
+   back to needing a click in an inbox before it counts. */
+check('the subscriber is created already confirmed', JSON.parse(sent.opts.body).type, 'regular');
+
 console.log('\n== tags are a PAID feature, and a signup is worth more than a label ==');
 // Buttondown answers 403 feature_disabled — "Tags require a Basic plan or
 // higher" — and rejects the WHOLE request rather than dropping the tag, so
@@ -116,6 +129,11 @@ check('exactly one retry', calls.length, 2);
 check('the first attempt carried tags', calls[0].tags, ['region:IN']);
 check('the retry carries none', 'tags' in calls[1], false);
 check('and still carries the region', calls[1].referrer_url, 'https://interndoor.com');
+/* The retry drops TAGS and nothing else. Losing `type` here would send a
+   confirmation email to exactly the free-plan accounts the fallback exists
+   for — i.e. this one. */
+check('the retry still opts out of confirmation', calls[1].type, 'regular');
+check('as did the first attempt', calls[0].type, 'regular');
 
 // NARROW ON PURPOSE. A 403 that is not about tags is a real permission
 // problem and must keep failing loudly rather than being retried into a
@@ -129,6 +147,15 @@ check('and is not swallowed', forbidden.ok, false);
 check('the address is the one given', JSON.parse(sent.opts.body).email_address, 'a@b.com');
 check('the key is a header, never a query param', sent.url.includes('secret'), false);
 check('and it is sent as a token', sent.opts.headers.authorization, 'Token secret');
+
+console.log('\n== the on-page message matches what actually happens ==');
+/* With no confirmation email, this message is the ONLY acknowledgement a
+   reader gets — and telling them to check an inbox that will stay empty is
+   worse than saying nothing. */
+const clientJs = readFileSync(join(ROOT, 'web', 'public', 'subscribe.js'), 'utf8');
+check('it does not send the reader to their inbox to confirm',
+  /check your inbox to confirm/i.test(clientJs), false);
+check('it still confirms the signup worked', clientJs.includes('you are on the list'), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -162,7 +162,22 @@ export async function addSubscriber(email, region, apiKey, fetchImpl = fetch) {
     body: JSON.stringify(body),
   });
 
-  const base = { email_address: email, referrer_url: referrer };
+  /* SINGLE OPT-IN, ON PURPOSE (28 Aug). Buttondown defaults a new subscriber
+     to `unactivated` and mails them a confirmation link, and that CANNOT be
+     turned off globally — its own docs say so, and there is no toggle in
+     Settings > Subscribing. The only lever is per-subscriber: `type: regular`
+     on creation, which marks the address confirmed and sends nothing.
+
+     THE COST IS REAL AND WAS ACCEPTED KNOWINGLY. A confirmation click is what
+     keeps typos, bots and spam traps off a list, and this one is about to be
+     fed by PAID traffic, where all three are commoner. Bounces and complaints
+     are charged against the sending domain's reputation, so the failure mode
+     is not "a few bad addresses", it is the good addresses stopping arriving.
+     Watch the bounce rate in Buttondown's Analytics before the list grows.
+
+     If it ever needs reverting, delete this one line — the default comes back
+     on its own. `type` is a core field on every plan, unlike `tags` below. */
+  const base = { email_address: email, referrer_url: referrer, type: 'regular' };
   let res = await send({ ...base, tags: [`region:${region}`] });
 
   if (res.ok) return { ok: true, created: true };
