@@ -102,6 +102,11 @@ function wire(form) {
            wondering whether the first worked. */
         form.querySelector('.sub-row').hidden = true;
         say('Done — you are on the list. Check your inbox to confirm.', 'good');
+        /* THE conversion worth optimising a paid campaign toward: an address is
+           the only channel this site owns rather than rents. Optional-chained
+           because gtag.js is a no-op with no ID set and is deferred, so this
+           must never be able to throw inside the success path. */
+        window.idTrack?.('subscribe', { region: regionOf(form) });
         return;
       }
       say(data.error || 'Could not add you just now. Please try again.', 'bad');

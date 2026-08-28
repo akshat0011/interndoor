@@ -108,6 +108,13 @@
      particular, because the layout shifts once app.js swaps the empty list for
      ~220 job cards, and CLS is the metric that catches exactly that. -->
 <script defer src="/_vercel/speed-insights/script.js"></script>
+
+<!-- Google Ads conversion tracking. The ID and every conversion label live in
+     /gtag.js — this is deliberately just a reference, so the ID is in ONE file
+     rather than duplicated here and in src/pages.js. That file is a no-op until
+     the ID is set, and it documents the CSP hosts web/vercel.json has to allow
+     (vercel.json itself takes no comment keys). -->
+<script defer src="/gtag.js"></script>
 </head>
 <body>
 
