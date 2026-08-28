@@ -6,10 +6,22 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/epic-games-web-engineer-intern-ats-greenhouse-epicgames-6174265004",
+      "url": "https://interndoor.com/us/jobs/epic-games-web-engineer-intern-ats-greenhouse-epicgames-6174265004",
+      "title": "Web Engineer Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary, North Carolina, United States\n• Build full-stack features with React, Next.js, and TypeScript\n• Contribute to backend services using Node.js and NestJS\n• Work on production systems with AWS and Kubernetes",
+      "date_published": "2026-08-28T23:29:13.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/zipline-electrical-project-engineer-intern-spring-2027-4460520794",
       "url": "https://interndoor.com/us/jobs/zipline-electrical-project-engineer-intern-spring-2027-4460520794",
       "title": "Electrical Project Engineer Intern (Spring 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Design electrical systems for drone charging sites using NEC standards\n• Collaborate with cross-functional teams on site-specific electrical solutions\n• Travel to project sites for field observations and support",
       "date_published": "2026-08-28T23:05:38.846Z",
       "authors": [
         {
@@ -21,7 +33,7 @@
       "id": "https://interndoor.com/us/jobs/zipline-maps-intern-spring-2027-4460543217",
       "url": "https://interndoor.com/us/jobs/zipline-maps-intern-spring-2027-4460543217",
       "title": "Maps Intern (Spring 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Develop and improve path planning algorithms for drone routes\n• Work with spatial data tools and geospatial visualization platforms\n• Collaborate with teams to make global data accessible in real time",
       "date_published": "2026-08-28T23:05:38.739Z",
       "authors": [
         {
@@ -33,7 +45,7 @@
       "id": "https://interndoor.com/us/jobs/zipline-maps-intern-summer-2027-4460523665",
       "url": "https://interndoor.com/us/jobs/zipline-maps-intern-summer-2027-4460523665",
       "title": "Maps Intern (Summer 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Build tools for generating flight routes and spatial data\n• Use geospatial tools to evaluate terrain and serviceability\n• Collaborate with teams to make data accessible globally\n• Improve routing algorithms for safe and efficient delivery",
       "date_published": "2026-08-28T23:05:05.879Z",
       "authors": [
         {
@@ -57,7 +69,7 @@
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460539238",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460539238",
       "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Sunnyvale, CA",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Sunnyvale, CA\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in cross-functional teams\n• Optimize cloud deployment processes for scalability and efficiency",
       "date_published": "2026-08-28T22:56:10.895Z",
       "authors": [
         {
@@ -69,7 +81,7 @@
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460537284",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460537284",
       "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Fort Collins, CO",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Fort Collins, CO\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in Fort Collins office",
       "date_published": "2026-08-28T22:56:07.352Z",
       "authors": [
         {
@@ -105,7 +117,7 @@
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460538251",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460538251",
       "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Roseville, CA",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Roseville, CA\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in Roseville office",
       "date_published": "2026-08-28T22:55:45.055Z",
       "authors": [
         {
@@ -117,7 +129,7 @@
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460541221",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460541221",
       "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Westford, MA",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Westford, MA\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in HPE office",
       "date_published": "2026-08-28T22:55:43.237Z",
       "authors": [
         {
@@ -141,7 +153,7 @@
       "id": "https://interndoor.com/us/jobs/lennox-summer-engineering-intern-4460540250",
       "url": "https://interndoor.com/us/jobs/lennox-summer-engineering-intern-4460540250",
       "title": "Summer Engineering Intern — Lennox",
-      "content_text": "Company: Lennox · Location: Carrollton, TX",
+      "content_text": "Company: Lennox · Location: Carrollton, TX\n• Support product development and testing for hvac components\n• Work with creo and windchill for design and analysis\n• Collaborate with cross-functional teams on engineering projects",
       "date_published": "2026-08-28T22:51:15.720Z",
       "authors": [
         {
@@ -381,7 +393,7 @@
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460532358",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460532358",
       "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bloomington, MN",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Bloomington, MN\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in HPE office",
       "date_published": "2026-08-28T22:36:11.808Z",
       "authors": [
         {
@@ -587,18 +599,6 @@
       "title": "Software Developer Intern - OneIT - Rochester, MN - 2027 — IBM",
       "content_text": "Company: IBM · Location: Rochester, MN\n• Write clean code for backend services and APIs\n• Work with python/java/javascript/golang and git\n• Deploy apps in cloud and hybrid environments",
       "date_published": "2026-08-28T20:17:41.926Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-oneit-rochester-mn-2027-4458427745",
-      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-oneit-rochester-mn-2027-4458427745",
-      "title": "Site Reliability Engineer Intern - OneIT - Rochester, MN - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Rochester, MN\n• Support infrastructure operations and automate tasks with scripting\n• Work with Linux, Unix, and cloud platforms like AWS and Azure\n• Collaborate on incident response and reliability improvements",
-      "date_published": "2026-08-28T20:17:38.876Z",
       "authors": [
         {
           "name": "IBM"
