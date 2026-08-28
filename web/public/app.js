@@ -279,7 +279,7 @@ async function loadJobs() {
 
 function renderFreshness() {
   $('freshness-text').textContent = state.generatedAt
-    ? `swept ${relTime(state.generatedAt)}`
+    ? `checked ${relTime(state.generatedAt)}`
     : 'standing by';
 }
 
@@ -314,6 +314,81 @@ function populateFilters() {
 
 /* ---------------- filtering ---------------- */
 
+/* ---------------- resume matching ----------------
+ *
+ * The one thing this board can do that a general listings site cannot without
+ * an account: score every open role against the reader's own resume and sort
+ * by fit.
+ *
+ * THE RESUME IS HELD IN MEMORY AND NOWHERE ELSE — not localStorage, not
+ * sessionStorage. The footer promises it is "processed in memory and never
+ * stored here" and that sentence has to stay true, so the scores are gone on
+ * reload. That is the correct trade.
+ *
+ * Skills are normalised to a space-padded haystack so a skill can be matched
+ * WHOLE-WORD with a plain includes(): "r" must not match "for", and "go" must
+ * not match "algorithm". */
+let resumeHay = '';
+const normSkill = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim();
+
+function setResumeHay(text) {
+  resumeHay = text ? ` ${normSkill(text)} ` : '';
+}
+
+/** Every skill named on a posting, de-duplicated across the two fields. */
+function skillsOf(job) {
+  const out = new Set();
+  for (const raw of [...(job.keySkills ?? []), ...(job.skills ?? [])]) {
+    const k = normSkill(raw);
+    if (k) out.add(k);
+  }
+  return [...out];
+}
+
+/**
+ * How well this posting fits the loaded resume.
+ *
+ * Returns null rather than a low score when there is nothing to judge on. A
+ * posting naming two skills would swing between 0% and 100% on a single word,
+ * and a confident "0% match" on a role the reader is well suited to is worse
+ * than saying nothing — the number would be measuring our own extraction, not
+ * their fit.
+ *
+ * @returns {{pct: number, hit: string[], of: number}|null}
+ */
+function matchFor(job) {
+  if (!resumeHay) return null;
+  const skills = skillsOf(job);
+  if (skills.length < 3) return null;
+  const hit = skills.filter((k) => resumeHay.includes(` ${k} `));
+  return { pct: Math.round((hit.length / skills.length) * 100), hit, of: skills.length };
+}
+
+/**
+ * Bring the board into line with whatever resume is loaded.
+ *
+ * Adds "best for me" to the sort control the first time there is something to
+ * sort by, and takes it away again when the resume is cleared — an option that
+ * cannot do anything is worse than no option, because selecting it looks like a
+ * bug rather than a missing input. Re-renders so scores appear on the cards
+ * immediately rather than at the next keystroke.
+ */
+function syncRelevance() {
+  setResumeHay(state.resumeText);
+  const sort = $('f-sort');
+  const have = sort.querySelector('option[value="match"]');
+  if (resumeHay && !have) {
+    const opt = el('option', null, 'best for me');
+    opt.value = 'match';
+    sort.append(opt);
+  } else if (!resumeHay && have) {
+    if (sort.value === 'match') sort.value = 'new';
+    have.remove();
+  }
+  document.body.classList.toggle('has-resume', Boolean(resumeHay));
+  applyFilters();
+}
+
 function applyFilters() {
   const q = $('q').value.trim().toLowerCase();
   const company = $('f-company').value;
@@ -335,7 +410,13 @@ function applyFilters() {
   });
 
   if (sort === 'company') list.sort((a, b) => a.company.localeCompare(b.company));
-  else list.sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
+  else if (sort === 'match') {
+    // Unscorable roles (fewer than three named skills) sort to the bottom
+    // rather than to 0% — they were not judged, not judged badly. Newest first
+    // inside an equal score, so the tie-break is still the board's own promise.
+    const pct = (j) => matchFor(j)?.pct ?? -1;
+    list.sort((a, b) => pct(b) - pct(a) || (b.postedAt ?? 0) - (a.postedAt ?? 0));
+  } else list.sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   state.filtered = list;
   renderList();
@@ -510,10 +591,27 @@ function jobCard(job, index, group = [job]) {
   if (job.duration) meta.append(el('span', null, job.duration));
   if (meta.children.length) mid.append(meta);
 
+  /* Fit, when a resume is loaded. Under the facts rather than beside the role:
+     it is a strong signal but it is OURS, not the employer's, and it must not
+     be mistaken for something the posting said. */
+  const fit = matchFor(job);
+  if (fit && fit.hit.length) {
+    const m = el('div', `match${fit.pct >= 60 ? ' is-strong' : ''}`);
+    m.append(el('b', null, `${fit.pct}% match`));
+    m.append(el('span', null, `${fit.hit.length} of ${fit.of} skills`));
+    mid.append(m);
+  }
+
   const skills = (job.keySkills ?? []).slice(0, 4);
   if (skills.length) {
     const box = el('div', 'skills');
-    for (const s of skills) box.append(el('span', 'skill', s));
+    for (const s of skills) {
+      const chip = el('span', 'skill', s);
+      // A skill the loaded resume already names is lit, so the chips stop being
+      // uniform decoration and become a reason to look at one card over another.
+      if (resumeHay && resumeHay.includes(` ${normSkill(s)} `)) chip.classList.add('has');
+      box.append(chip);
+    }
     mid.append(box);
   }
 
@@ -554,7 +652,7 @@ function jobCard(job, index, group = [job]) {
     go.href = applyHref;
     go.target = '_blank';
     go.rel = 'noopener noreferrer';
-    go.append(el('span', 'card-go-t', 'Apply'), el('i', 'card-go-a'));
+    go.textContent = 'Apply';
     go.setAttribute('aria-label', `Apply for ${job.title} at ${job.company}`);
     // The whole card is clickable. Without this, applying would also fire the
     // card's handler and slide the detail pane up behind the new tab.
@@ -571,24 +669,6 @@ function jobCard(job, index, group = [job]) {
   li.append(row);
   return li;
 }
-
-/* Decorative loops on the apply buttons run only while a row is near the
-   viewport. The board renders every listing at once — 264 on a normal day —
-   and each row carried an infinite nudge and sheen whether or not it was on
-   screen, so 262 of them composited forever for nobody.
-   styles.css keeps them off by default and this switch turns them on, so a
-   browser without IntersectionObserver loses the decoration, never a listing.
-   The margin gives a screen of headroom either side, so a loop is already
-   running by the time a row is scrolled into view rather than starting under
-   the reader mid-sweep. */
-const rowLoops = 'IntersectionObserver' in window
-  ? new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) e.target.classList.toggle('on', e.isIntersecting);
-    },
-    { rootMargin: '200px 0px' },
-  )
-  : null;
 
 /* The filters live in the URL, so a filtered board can be linked, bookmarked
    and reloaded instead of resetting to everything.
@@ -636,9 +716,6 @@ function renderList() {
   list.classList.toggle('intro', !renderList.painted);
   renderList.painted = true;
 
-  // Stop observing the rows we are about to drop; the observer keeps a
-  // strong reference to every target until it is disconnected.
-  rowLoops?.disconnect();
   list.replaceChildren();
 
   state.groups = groupByRole(state.filtered);
@@ -672,7 +749,6 @@ function renderList() {
   const frag = document.createDocumentFragment();
   groups.forEach((group, i) => frag.append(jobCard(group[0], i, group)));
   list.append(frag);
-  if (rowLoops) for (const li of list.children) rowLoops.observe(li);
 }
 
 function selectJob(id, { silent = false } = {}) {
@@ -765,19 +841,15 @@ function renderDetail(job) {
     // redesign, plenty of LinkedIn ones too, apply on the employer's own site.
     const host = (applyHref.match(/^https?:\/\/([^/?#]+)/i) || [])[1] || '';
     const where = /(^|\.)linkedin\.com$/i.test(host) ? 'LinkedIn' : 'company site';
-    // Built as label + drawn arrow rather than one string with a "\u2192" in it,
-    // and wrapped, so this button carries the same ambient loop as the card
-    // buttons and the generated job pages: the halo and the ping hang off
-    // .apply-glow, the sheen and the arrow off the button itself. The arrow has
-    // to be an element for it to lean on its own.
+    // Plain label. The drawn arrow and the .apply-glow wrapper are gone with
+    // the ambient loop they existed for — the wrapper's only job was letting a
+    // halo escape the overflow:hidden the sheen needed, and there is no sheen.
     const apply = el('a', 'go');
     apply.href = applyHref;
     apply.target = '_blank';
     apply.rel = 'noopener noreferrer';
-    apply.append(el('span', 'go-t', 'Apply on ' + where), el('i', 'card-go-a'));
-    const glow = el('span', 'apply-glow');
-    glow.append(apply);
-    actions.append(glow);
+    apply.textContent = 'Apply on ' + where;
+    actions.append(apply);
   }
 
   const tailorBtn = el('button', 'alt');
@@ -852,9 +924,18 @@ function renderDetail(job) {
 
 let activeJob = null;
 
+/**
+ * @param {object|null} job  null opens the modal in RANK mode — no role to
+ *   rewrite against, so it scores the whole board and sorts by fit instead.
+ *   Passing a job it does not have would throw on job.company.
+ */
 function openTailor(job) {
   activeJob = job;
-  $('tailor-job').textContent = `${job.company} · ${job.title}`;
+  $('tailor-title').textContent = job ? 'Tailor your resume' : 'Rank the whole board';
+  $('tailor-job').textContent = job
+    ? `${job.company} · ${job.title}`
+    : 'Score every open role against your resume, and sort by fit.';
+  $('do-tailor').textContent = job ? 'Tailor it' : 'Rank the board';
   showStep('upload');
   $('tailor-backdrop').hidden = false;
   $('tailor').hidden = false;
@@ -876,6 +957,7 @@ function showStep(name) {
 
 function setResumeText(text, label, ok = true) {
   state.resumeText = ok ? text : '';
+  syncRelevance();
   const box = $('file-state');
   box.hidden = false;
   box.classList.toggle('bad', !ok);
@@ -949,6 +1031,20 @@ async function runTailor() {
   const resumeText = state.resumeText || $('resume-paste').value.trim();
   if (resumeText.trim().length < 200) {
     setResumeText('', 'Please provide a bit more of your resume — at least a couple of hundred characters.', false);
+    return;
+  }
+
+  /* RANK MODE RETURNS BEFORE THE API CALL. There is no role to rewrite
+     against, and the board is already scored by this point — the upload and
+     paste handlers call syncRelevance() themselves — so all that is left is to
+     sort by fit and get out of the way. Sending this to /api/tailor would cost
+     twenty seconds and a Gemini round trip to produce nothing. */
+  if (!activeJob) {
+    setResumeHay(resumeText);
+    $('f-sort').value = 'match';
+    syncRelevance();
+    closeTailor();
+    toast('Board ranked against your resume.');
     return;
   }
 
@@ -1158,14 +1254,21 @@ function wireTailor() {
   $('resume-paste').addEventListener('input', (e) => {
     const v = e.target.value.trim();
     state.resumeText = v;
+    syncRelevance();
     $('do-tailor').disabled = v.length < 200;
     if (v.length >= 200) setResumeText(v, 'Pasted resume', true);
   });
+
+  /* The rail's call to action. No job is attached: this is the "rank the whole
+     board" entry point, so openTailor is given null and the modal's per-role
+     framing falls back to the generic one. */
+  $('rank-resume')?.addEventListener('click', () => openTailor(null));
 
   $('do-tailor').addEventListener('click', runTailor);
   $('error-retry').addEventListener('click', () => showStep('upload'));
   $('start-over').addEventListener('click', () => {
     state.resumeText = '';
+    syncRelevance();
     state.tailored = null;
     $('resume-file').value = '';
     $('resume-paste').value = '';

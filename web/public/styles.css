@@ -16,6 +16,9 @@
   --rule-2:     #303036;
 
   --live:       #c8ff00;   /* the one loud colour. never a gradient. */
+  /* Between --ink and --ink-2, for text that has to outrank a label without
+     reaching the role's weight. */
+  --ink-15:     #c9c8c2;
   --live-ink:   #14170a;
   --hot:        #ff5c1a;
   --cash:       #00e57a;
@@ -85,6 +88,7 @@
   --rule:     #dddbd2;
   --rule-2:   #c6c4b9;
   --live:     #5d7a00;
+  --ink-15:   #2a2a26;
   --live-ink: #ffffff;
   --hot:      #c2410c;
   --cash:     #067a52;
@@ -146,7 +150,10 @@ a, button, summary, label, [role="button"], .row {
 
 .bar {
   position: sticky; top: 0; z-index: 60; height: var(--bar-h);
-  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  /* Its own surface, so the brand bar and the working area below it are not
+     one undifferentiated top of page. --bg-2 is the same darker ground the
+     cards already sit on, so it costs no height and needs no rule. */
+  background: color-mix(in oklab, var(--bg-2) 84%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
   /* No hard rule. A 1px border draws a line whether or not anything is behind
      it; a soft edge only appears where content actually passes under the
@@ -482,7 +489,7 @@ a, button, summary, label, [role="button"], .row {
 .row {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
-  grid-template-columns: 40px minmax(0,1fr) auto;
+  grid-template-columns: 52px minmax(0,1fr) auto;
   gap: var(--s4); align-items: start;
   padding: var(--s4); cursor: pointer;
   background: var(--card);
@@ -522,9 +529,9 @@ a, button, summary, label, [role="button"], .row {
 .row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
 
 .crest {
-  width: 40px; height: 40px; border-radius: var(--r); overflow: hidden; position: relative;
+  width: 52px; height: 52px; border-radius: var(--r); overflow: hidden; position: relative;
   display: grid; place-items: center; background: var(--card-2);
-  font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--ink-2);
   border: 1px solid var(--rule);
 }
 /* The initials sit underneath; the logo fades over them once it decodes.
@@ -532,7 +539,7 @@ a, button, summary, label, [role="button"], .row {
    waiting for did not exist, so every logo hard-swapped over the initials. */
 .crest img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-  padding: 4px; background: #fff;
+  padding: 5px; background: #fff;
 }
 /* .lit is added on the image's load event and plays a one-shot fade. It is
    written this way round on purpose: the resting state is VISIBLE, so a load
@@ -553,11 +560,16 @@ a, button, summary, label, [role="button"], .row {
 
    The role is now the heading; the company is an eyebrow above it. Emphasis
    comes from weight and colour, not size, so the card stays compact. */
+/* Bigger and brighter than the 11px grey eyebrow it was. The role still leads
+   — it is the line people scan a job board for — but at --t-micro the employer
+   was set in the size this file reserves for labels nobody has to read, and on
+   a board whose whole claim is a vetted employer list that is the wrong thing
+   to economise on. */
 .co {
   font-family: var(--ui);
-  font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
-  font-weight: 600; color: var(--ink-2);
+  font-size: .8125rem; line-height: 1.25;
+  letter-spacing: .06em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink-15);
   /* Two lines maximum. A pathological company name truncates instead of
      taking over the card. */
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
@@ -603,6 +615,25 @@ a, button, summary, label, [role="button"], .row {
   color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
   border-radius: 3px; padding: 3px 7px;
 }
+/* A skill the loaded resume already names. The chips stop being uniform
+   decoration and become a reason to look at one card over another. */
+.skill.has { color: var(--live); border-color: color-mix(in oklab, var(--live) 45%, transparent); }
+
+/* The fit score. Mono and tabular so a column of them compares down the page;
+   the accent only once it is worth acting on, or every card shouts. */
+.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--mono); font-size: var(--t-micro); }
+.match b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.match.is-strong b { color: var(--live); }
+.match span { color: var(--ink-3); overflow-wrap: anywhere; }
+
+/* Reads as an offer, not a warning — .flag-reset is the destructive one and
+   owns --hot. This carries the accent the sort control lights up in once a
+   resume is loaded, which is the thing it turns on. */
+.flag-rank { color: var(--live); border-color: color-mix(in oklab, var(--live) 38%, transparent); }
+.flag-rank:hover { color: var(--live-ink); background: var(--live); border-color: var(--live); }
+/* MEASURED: --live on the rail composites lighter in the light theme and the
+   chip fell under the 4.5 floor. Darkened here and nowhere else. */
+:root[data-theme="light"] .flag-rank { color: #4a6100; }
 
 .gist {
   margin-top: 10px; font-size: 13.5px; color: var(--ink-2); max-width: 62ch;
@@ -654,27 +685,12 @@ a, button, summary, label, [role="button"], .row {
      read soft rather than tactile. */
   transition: transform .14s var(--snap), box-shadow .18s, filter .18s;
 }
-.card-go-t { position: relative; z-index: 1; }
 
-/* The arrow is drawn rather than typed so it can move on its own. */
-.card-go-a {
-  position: relative; z-index: 1;
-  width: 13px; height: 9px; flex: none;
-  background: currentColor;
-  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
-  transition: transform .2s var(--snap);
-}
+
 .card-go:active { transform: translateY(0) scale(.96); }
 .card-go:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-/* A sheen that crosses the button on hover. Purely decorative, and skipped
-   entirely under prefers-reduced-motion by the global rule near the bottom. */
-.card-go::after {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%);
-  transform: translateX(-120%);
-}
-@keyframes sheen { to { transform: translateX(120%); } }
+
 
 /* A hot role gets the hot colour, so the button matches the urgency the age
    badge is already signalling rather than fighting it. */
@@ -699,209 +715,11 @@ a, button, summary, label, [role="button"], .row {
    seen within about three passes.
    ============================================================ */
 
-/* The wrapper exists so the halo and the ping can escape the overflow:hidden
-   that the sheen requires. Any button that wants the full treatment gets one;
-   the card buttons do not, for reasons in the stagger note below. */
-/* THE GLOW IS PERMANENT AND EVERY MOVING PART STAYS INSIDE THE BUTTON.
- *
- * Both halves are deliberate, and the reason is layer promotion. An animated
- * element gets its own compositor layer, Chrome promotes whatever overlaps it,
- * and text on a promoted layer drops from subpixel to greyscale antialiasing —
- * thinner and greyer. In a dense panel like the detail pane, an effect that
- * spills past the button (a blurred halo, a ring, an expanding shadow) reaches
- * the company name, the facts grid and the summary; the sheen and the arrow
- * are clipped inside the button and reach nothing.
- *
- * Caveat worth recording, because it cost a lot of time: the greyed-out pane
- * is INTERMITTENT and shows up in screenshots only when the capture happens to
- * catch the promoted state. Two captures of an identical page gave different
- * results. So it is not something to bisect by eye — several confident
- * conclusions drawn that way here turned out to be wrong. Keeping the reach of
- * anything animated inside the button sidesteps the question entirely, and
- * costs nothing worth having.
- *
- * A permanent glow is also simply more visible than one that breathes: it is
- * never in its off phase. */
-
-.apply-glow { position: relative; display: inline-block; }
-
-/* The bloom. Static, and on the button rather than the wrapper so it traces
-   the button's own radius. */
-.apply-glow > .go, .apply-glow > .btn-apply {
-  box-shadow:
-    0 0 14px 0 color-mix(in oklab, var(--live) 85%, transparent),
-    0 0 52px 8px color-mix(in oklab, var(--live) 60%, transparent);
-  transition: box-shadow .2s;
-}
-
-/* The detail pane's apply button. Rounded like its neighbours, so the halo and
-   the ping follow the same radius. */
-/* relative + overflow so the sheen below can sit inside it. .btn-apply already
-   carries both from page.css. */
-.apply-glow > .go { position: relative; overflow: hidden; }
-.apply-glow > .go .go-t { position: relative; z-index: 1; }
-.apply-glow > .go::after {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(100deg, transparent 16%, rgba(255,255,255,.85) 50%, transparent 84%);
-  transform: translateX(-130%);
-  animation: sheen-loop 2.6s linear .8s infinite;
-}
-.apply-glow > .go .card-go-a { animation: nudge 2.6s var(--snap) .8s infinite; }
-
-/* LINEAR, not --snap. A sheen is constant motion, like a marquee, and the site
-   curve is a strong ease-out: at --snap the band covered the whole button in
-   180ms and then spent 800ms crawling across dead space off the right edge. It
-   read as a blink. Two passes rather than one — the second is what makes it
-   read as deliberate rather than as a stray reflection. */
-@keyframes sheen-loop {
-  0%   { transform: translateX(-130%); }
-  20%  { transform: translateX(130%); }
-  26%  { transform: translateX(-130%); }
-  42%  { transform: translateX(130%); }
-  100% { transform: translateX(130%); }
-}
-
-/* The arrow leans out as each pass reaches it. The numbers are not decorative:
-   the arrow sits at the right-hand end and the sheen is over that end at 17%
-   and again at 36%, so the leans peak there. Timed any later the two stop
-   reading as one gesture and become a flash followed by an unrelated twitch. */
-@keyframes nudge {
-  0%, 11%   { transform: translateX(0); }
-  17%       { transform: translateX(9px); }
-  26%       { transform: translateX(2px); }
-  36%       { transform: translateX(9px); }
-  48%, 100% { transform: translateX(0); }
-}
-
-/* ---------- the card buttons ---------- */
-
-/* 134 of these are in the DOM at once, so they get the two cheap effects and
-   neither of the expensive ones. No halo: that is 134 blurred layers, each
-   rasterised and composited whether or not it is on screen. No ping: that is
-   134 elements repainting on a timer. Sheen and arrow are transforms on
-   compositor layers and cost effectively nothing at any count.
-   ------------------------------------------------------------------------
-   And they are STAGGERED. Fired in unison, ten lime pills flashing together
-   down a column reads as a fault in the page — the eye cannot pick a target
-   because they all move at once. Offset, the same motion becomes a wave
-   travelling down the list, which is both calmer and far more noticeable.
-   Six phases. Note that the phase count does not change HOW MANY are lit at
-   once — two passes put the band on the button for about 34% of the cycle, so
-   about a third of them are mid-sweep whatever you choose. What the phases
-   decide is whether that third reads as a wave down the column or as ten
-   things twitching at once. Measured on the real list: 46 of 134. */
-.card-go::after { animation: sheen-loop 2.6s linear var(--go-lag, 0s) infinite; }
-.card-go-a { animation: nudge 2.6s var(--snap) var(--go-lag, 0s) infinite; }
-
-/* They get the bloom as well — it is static, so 134 of them are 134 paints and
-   nothing more. Smaller than the two big buttons get: at their strength a
-   column of lime pills glowing at full power reads as a fault rather than as
-   emphasis. */
-/* Two shadows, not one: a tight bright core and a wide soft falloff. A single
-   large blur at high alpha reads as fog around the pill rather than as light
-   coming off it — the core is what makes it read as emission. Still a plain
-   box-shadow, so 145 of them are 145 paints and no compositor layers, which is
-   the whole reason the card buttons can have this at all. */
-.card-go {
-  box-shadow:
-    0 0 10px 0 color-mix(in oklab, var(--live) 78%, transparent),
-    0 0 30px 4px color-mix(in oklab, var(--live) 46%, transparent);
-}
-.row.is-hot .card-go {
-  box-shadow:
-    0 0 10px 0 color-mix(in oklab, var(--hot) 80%, transparent),
-    0 0 30px 4px color-mix(in oklab, var(--hot) 50%, transparent);
-}
-
-.feed > li:nth-child(6n+1) .card-go { --go-lag: .8s; }
-.feed > li:nth-child(6n+2) .card-go { --go-lag: 1.23s; }
-.feed > li:nth-child(6n+3) .card-go { --go-lag: 1.67s; }
-.feed > li:nth-child(6n+4) .card-go { --go-lag: 2.1s; }
-.feed > li:nth-child(6n+5) .card-go { --go-lag: 2.53s; }
-.feed > li:nth-child(6n+6) .card-go { --go-lag: 2.97s; }
-
-/* The loops are decoration, so they run only on rows the reader can see.
-   Measured on the live board: 264 rows carried 264 infinite nudge animations
-   and exactly 2 were on screen. The other 262 composited forever, off screen,
-   on the phones this board is mostly read on.
-   renderList() observes each row and sets .on. Default-OFF is deliberate: if
-   the observer never runs, the cost is decoration, never content. */
-.feed > li:not(.on) .card-go::after,
-.feed > li:not(.on) .card-go-a { animation: none; }
-
 /* ---------- hover ---------- */
-
-/* Hover CANCELS the loops rather than pausing them. Paused, a sheen freezes as
-   a bright band across the middle of the button and the arrow strands itself
-   mid-lean. Cancelled, each falls back to its transition and answers the
-   pointer instead — and the halo settles at its bright end and holds, because
-   nothing should keep breathing under a finger already on it. */
-@media (hover: hover) and (pointer: fine) {
-  .apply-glow:hover > .go, .apply-glow:hover > .btn-apply {
-    box-shadow:
-      0 0 18px 0 color-mix(in oklab, var(--live) 95%, transparent),
-      0 0 66px 12px color-mix(in oklab, var(--live) 85%, transparent);
-  }
-  .apply-glow > .go:hover::after { animation: sheen-loop .62s linear; }
-  .apply-glow > .go:hover .card-go-a { animation: none; transform: translateX(3px); }
-  .card-go:hover {
-    box-shadow:
-      0 0 14px 0 color-mix(in oklab, var(--live) 95%, transparent),
-      0 0 42px 8px color-mix(in oklab, var(--live) 70%, transparent);
-  }
-  .card-go:hover::after { animation: sheen-loop .62s linear; }
-  .card-go:hover .card-go-a { animation: none; transform: translateX(3px); }
-}
 
 /* ---------- the light theme ---------- */
 
-/* NO SHEEN IN THE LIGHT THEME, on any of these buttons.
- *
- * The two themes invert them: dark is near-black ink on bright lime, light is
- * white ink on olive. A white band sweeping over the first LIFTS the label's
- * contrast, 15.4:1 to 17.5:1. Over the second it erases it — 4.9:1 falls to
- * 1.2:1, which is white text on a white button, and the word "Apply"
- * disappearing every few seconds. Measured, not guessed: composite the sheen
- * alpha over the button colour and run the contrast formula before touching
- * any of this.
- *
- * A dark band would be legible but reads as a shadow crossing the button
- * rather than as light coming off it. The halo and the arrow carry the light
- * theme instead, at about half strength — olive on cream needs far less than
- * lime on black. */
-:root[data-theme="light"] .card-go::after,
-:root[data-theme="light"] .apply-glow > .go::after,
-:root[data-theme="light"] .btn-apply::after { display: none; }
-
-/* Olive on cream, not lime on black: the same bloom reads as a dirty smudge
-   under the button at the dark theme's strength. */
-:root[data-theme="light"] .apply-glow > .go,
-:root[data-theme="light"] .apply-glow > .btn-apply {
-  box-shadow:
-    0 0 12px 0 color-mix(in oklab, var(--live) 44%, transparent),
-    0 0 34px 4px color-mix(in oklab, var(--live) 30%, transparent);
-}
-/* The card pills too, at less again. Olive on cream carries far less light
-   than lime on black before it stops reading as glow and starts reading as a
-   smudge under the button — this is deliberately about a third of the dark
-   theme's alpha, not a match for it. */
-:root[data-theme="light"] .card-go {
-  box-shadow:
-    0 0 8px 0 color-mix(in oklab, var(--live) 40%, transparent),
-    0 0 22px 3px color-mix(in oklab, var(--live) 24%, transparent);
-}
-:root[data-theme="light"] .row.is-hot .card-go {
-  box-shadow:
-    0 0 8px 0 color-mix(in oklab, var(--hot) 42%, transparent),
-    0 0 22px 3px color-mix(in oklab, var(--hot) 26%, transparent);
-}
-
 /* ---------- reduced motion ---------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .apply-glow > .go::after, .card-go::after { display: none; }
-  .card-go-a, .apply-glow > .go .card-go-a { animation: none; }
-}
 
 /* ---------- empty ---------- */
 
@@ -1091,18 +909,8 @@ a, button, summary, label, [role="button"], .row {
   .row:hover { transform: translateY(-2px); }
   .go:hover { transform: translateY(-2px); }
   .alt:hover { transform: translateY(-2px); }
-  /* LIFT ONLY. The bloom and the LINEAR sheen are declared once, ~230 lines
-     above. Re-declaring box-shadow or the sheen here silently reverted both,
-     because this block is later at equal specificity: the halo collapsed into
-     a downward drop shadow on hover instead of brightening, and the sheen ran
-     on --snap, the easing that block records as tried and rejected. The hot
-     variant keeps the bloom shape and swaps only the hue. */
+  /* Lift only — the button answers the pointer with movement, not light. */
   .card-go:hover { transform: translateY(-2px); }
-  .row.is-hot .card-go:hover {
-    box-shadow:
-      0 0 14px 0 color-mix(in oklab, var(--hot) 95%, transparent),
-      0 0 42px 8px color-mix(in oklab, var(--hot) 70%, transparent);
-  }
   /* Press outranks the hover lift: :hover:active is (0,3,0) against (0,2,0). */
   .go:hover:active, .alt:hover:active, .bare:hover:active { transform: scale(.97); }
 }
@@ -1338,9 +1146,8 @@ a, button, summary, label, [role="button"], .row {
   *, *::before, *::after {
     transition-property: color, background-color, border-color, box-shadow, opacity !important;
   }
-  /* No lift, no press travel, no arrow slide. */
-  .row:hover, .go:hover, .alt:hover, .card-go:hover,
-  .card-go:hover .card-go-a, .card-go:active,
+  /* No lift, no press travel. */
+  .row:hover, .go:hover, .alt:hover, .card-go:hover, .card-go:active,
   .go:active, .go:hover:active, .alt:active, .alt:hover:active,
   .bare:active, .bare:hover:active { transform: none !important; }
   .grain { display: none; }
