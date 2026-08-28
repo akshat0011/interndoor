@@ -448,6 +448,17 @@ export function applyUrlFrom(blob, jobId) {
   if (!found) return null;
   let url = found[1];
 
+  /* The blob may arrive decoded (textContent) or encoded (innerHTML, the
+     fallback for a search variant we have not captured), and LinkedIn's own
+     JSON escapes ampersands as \u0026. A query string is a working URL with
+     `&` and a broken one with `&amp;`, so normalise all three here rather than
+     making the caller care which source it came from. Harmless when already
+     decoded: no real apply URL contains the literal text "&amp;". */
+  url = url
+    .replace(/\\u0026/gi, '&')
+    .replace(/&amp;/gi, '&')
+    .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)));
+
   // The redesign wraps off-site applies in an interstitial: /safety/go/?url=.
   // Storing the wrapper publishes a LinkedIn redirect where the employer's own
   // application page belongs.
@@ -1028,9 +1039,21 @@ export async function openAndExtract(page, card, cfg) {
     let applyBlob = null;
     if (!applyUrl && jobId) {
       const marker = `"entityUrn":"urn:li:fsd_jobPosting:${jobId}"`;
-      for (const code of document.querySelectorAll('code')) {
-        const blob = code.textContent || '';
+      for (const el of document.querySelectorAll('code, script[type="application/json"]')) {
+        const blob = el.textContent || '';
         if (blob.includes(marker) && blob.includes('companyApplyUrl')) { applyBlob = blob; break; }
+      }
+      /* LAST RESORT: THERE ARE TWO SEARCH EXPERIENCES AND LINKEDIN SWITCHES
+         BETWEEN THEM UNANNOUNCED. The measured one is the AI-powered
+         `/jobs/search-results/` page, where the payload sits in
+         `<code id="bpr-guid-…">` (Ember's batched page response). The other
+         variant has never been captured, so nothing here should assume the
+         element. If the marker is on the page at all, take the whole document
+         and let applyUrlFrom find it — innerHTML re-encodes entities, which is
+         exactly why that function decodes. */
+      if (!applyBlob) {
+        const whole = document.documentElement.innerHTML;
+        if (whole.includes(marker) && whole.includes('companyApplyUrl')) applyBlob = whole;
       }
     }
 

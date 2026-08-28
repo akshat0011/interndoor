@@ -433,7 +433,7 @@ async function main() {
   // summary — India can be on its 3h floor while a region that has just been
   // switched on is still walking its first 36h.
   const windowsUsed = new Set();
-  const counters = { pagesScanned: 0, cardsSeen: 0, detailsExtracted: 0, newJobs: 0, skippedStale: 0, skippedCompany: 0, skippedTitle: 0, techRoles: 0, nonTechRoles: 0, geminiJudged: 0, termsLearned: 0, nearMisses: 0, skippedViewed: 0, listedWithoutOpening: 0, logosBackfilled: 0, skippedKnown: 0, failedDetails: 0, descriptionsBackfilled: 0, cardsWithoutId: 0, cardKeysMigrated: 0 };
+  const counters = { pagesScanned: 0, cardsSeen: 0, detailsExtracted: 0, newJobs: 0, skippedStale: 0, skippedCompany: 0, skippedTitle: 0, techRoles: 0, nonTechRoles: 0, geminiJudged: 0, termsLearned: 0, nearMisses: 0, skippedViewed: 0, listedWithoutOpening: 0, logosBackfilled: 0, skippedKnown: 0, failedDetails: 0, descriptionsBackfilled: 0, cardsWithoutId: 0, cardKeysMigrated: 0, applyUrlsFound: 0, applyUrlsMissed: 0 };
 
   log.section(`Run ${runId}`);
   log.info(`${cfg.watchlist.length} watchlist terms across ${cfg.uniqueCompanyCount} companies · mode "${cfg.searchMode ?? 'companies'}" · ${allSearches.length} searches · budget ${cfg.limits.maxRuntimeMinutes}m`);
@@ -864,6 +864,22 @@ async function main() {
           counters.detailsExtracted++;
           openedOnThisPage++;
 
+          /* Whether the employer's own apply URL was recoverable.
+             This is a TRIPWIRE, not a statistic. The URL is read out of an
+             undocumented bootstrap payload, and LinkedIn runs TWO search
+             experiences and has switched between them unannounced before —
+             only the AI-powered one has ever been measured. When that happens
+             applyUrlFrom returns null, which is the safe answer and an
+             invisible one: the button quietly goes back to saying "Apply on
+             LinkedIn" for every posting and nothing looks wrong.
+             The previous breakage ran for weeks and was found by querying the
+             database months later. A ratio on the summary line makes the next
+             one visible on the first run instead. */
+          if (!detail.easyApply) {
+            if (detail.applyUrl) counters.applyUrlsFound++;
+            else counters.applyUrlsMissed++;
+          }
+
           const description = detail.description || '';
           const detailPostedAt = parseRelativeTime(detail.postedText || card.postedText);
 
@@ -1160,7 +1176,14 @@ async function main() {
     (counters.cardsWithoutId ? ` · ${counters.cardsWithoutId} cards could not be read` : '') +
     // Only while the pre-location card keys are still being moved across. Once
     // this stops appearing the migration is done and it can be dropped.
-    (counters.cardKeysMigrated ? ` · ${counters.cardKeysMigrated} card keys migrated` : '');
+    (counters.cardKeysMigrated ? ` · ${counters.cardKeysMigrated} card keys migrated` : '') +
+    /* Reported whenever any non-Easy-Apply posting was opened, INCLUDING when
+       every one succeeded — a tripwire you only see on failure is one nobody
+       recognises the absence of. A sudden 0/N is the search variant having
+       flipped, or LinkedIn having moved the payload again. */
+    (counters.applyUrlsFound + counters.applyUrlsMissed
+      ? ` · apply links ${counters.applyUrlsFound}/${counters.applyUrlsFound + counters.applyUrlsMissed}`
+      : '');
 
   log.section('Summary');
   log.info(summaryLine);
