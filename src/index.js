@@ -1339,13 +1339,36 @@ async function main() {
 
   // Push the public job list. Runs even with 0 new jobs so the site drops
   // listings that have aged out of the window.
-  if (!DRY_RUN) await publish(store, cfg, newJobs.length);
+  const publishedIds = DRY_RUN ? null : await publish(store, cfg, newJobs.length);
 
-  // The channel post goes AFTER publish, deliberately. Every listing in it
-  // links to that job's page on the site, and those pages are written by
-  // publish — posting first would send the channel a burst of links that 404
-  // for however long the deploy takes.
-  if (!DRY_RUN && newJobs.length) await postNewJobs(newJobs, cfg);
+  /* THE CHANNEL POSTS WHAT PUBLISH PUBLISHED — not what the scan collected.
+     ------------------------------------------------------------------------
+     Going after publish was already deliberate, so the pages exist before
+     anyone clicks. But the ORDER was only half of it: the SET was wrong too.
+     postNewJobs was handed every new row and filtered only by published
+     region, while publish additionally holds back non-tech rows (this is an
+     engineering board), rows whose employer no longer matches the watchlist,
+     and the losing half of a cross-collector duplicate. None of those get a
+     page, so each one was a 404 sent to subscribers.
+
+     Measured over the seven days to 28 Aug: 1,033 rows posted, 623 with a
+     page, 410 dead — 40%. Real examples were "Aviation Engineering Intern",
+     "Radiographer Trainee" and "Junior Accountant Intern", all correctly
+     refused by the engineering-only filter and all linked anyway.
+
+     publishedIds is the very array the files were written from, so the two
+     cannot drift. null means publish failed or was skipped — we do not know
+     what is on the site, and a link is only worth sending once we know a page
+     is behind it. */
+  if (!DRY_RUN && newJobs.length && publishedIds) {
+    const live = newJobs.filter((j) => publishedIds.has(String(j.job_id)));
+    const held = newJobs.length - live.length;
+    if (held) {
+      log.info(`Telegram: ${held} of ${newJobs.length} new listing${newJobs.length === 1 ? '' : 's'} `
+        + 'had no page and were not posted (non-tech, off-watchlist, or a duplicate).');
+    }
+    if (live.length) await postNewJobs(live, cfg);
+  }
 
   store.setSetting(LOCK_KEY, 0);
   store.close();

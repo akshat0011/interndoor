@@ -529,6 +529,13 @@ export async function writeJobsFile(store, cfg) {
   return {
     count: publicJobs.length, techCount, withLogo, logoBytes: logoDirSize(), pages, written,
     path: written[0]?.path ?? jobsFileFor(regions[0]),
+    /* THE IDS THAT ACTUALLY GOT A PAGE. The Telegram post links to one page
+       per listing, and it was being handed everything the scan collected —
+       which is not the same set. Anything held back here (non-tech, off the
+       watchlist, deduped away, outside a published region) has no page, so the
+       link 404s. Returning the set is the only way the two cannot drift: it is
+       the very array the files were written from. */
+    publishedIds: new Set(publicJobs.map((j) => String(j.id))),
   };
 }
 
@@ -679,7 +686,7 @@ export async function publish(store, cfg, newJobCount) {
   if (cfg.publish?.enabled === false) return;
 
   try {
-    const { count, techCount, withLogo, logoBytes, pages, written } = await writeJobsFile(store, cfg);
+    const { count, techCount, withLogo, logoBytes, pages, written, publishedIds } = await writeJobsFile(store, cfg);
     log.info(`Wrote ${count} jobs (${techCount} tech, ${count - techCount} other) — ${withLogo} with a logo, ${Math.round(logoBytes / 1024)} KB stored`);
     // One line per board. A single total hides the thing worth watching once
     // more than one region is live: whether any of them is empty.
@@ -689,7 +696,14 @@ export async function publish(store, cfg, newJobCount) {
     log.info(`Generated ${pages.jobPages} job pages and ${pages.companyPages} company pages (${pages.indexable} indexable${pages.removed ? `, ${pages.removed} stale removed` : ''}).`);
     log.info(`Homepages carry ${pages.homeLinks} crawlable listing link${pages.homeLinks === 1 ? '' : 's'}.`);
     if (cfg.publish?.autoPush !== false) pushToSite(newJobCount);
+    return publishedIds;
   } catch (err) {
     log.warn(`Publish step failed: ${err.message}`);
+    /* null, not an empty set, and the caller tells them apart: an empty set
+       means "publish ran and published nothing", while null means "we do not
+       know what is on the site". The Telegram post treats the second as a
+       reason not to post at all — a link is only worth sending once we know a
+       page is behind it. */
+    return null;
   }
 }
