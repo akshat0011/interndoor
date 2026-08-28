@@ -84,18 +84,23 @@
     <div class="jp-grid">
       <div class="jp-main">
         <header class="jp-hero">
-          <div class="jp-id">
-            <a class="jp-crest" href="/us/companies/vanguard" aria-hidden="true" tabindex="-1">V<img src="/logos/vanguard.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></a>
-            <div class="jp-id-t">
-              <a class="jp-co" href="/us/companies/vanguard">Vanguard</a>
+          <!-- ONE LINK, NOT THREE. The crest, the name and the roles count all
+               pointed at the same hub, stacked on top of each other — three
+               targets for one destination, and the crest was already
+               aria-hidden because it was a duplicate. The whole block is a
+               single anchor now: one target, and a bigger one. -->
+          <a class="jp-id" href="/us/companies/vanguard">
+            <span class="jp-crest" aria-hidden="true">V<img src="/logos/vanguard.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+            <span class="jp-id-t">
+              <span class="jp-co">Vanguard</span>
               <!-- A REASON TO FOLLOW THE LINK, not just a name that happens to
                    be one. The count is this employer's other live roles in this
                    region, which is the only company fact this page holds that a
                    reader can act on; with no others it says so plainly rather
                    than offering a hub that will look empty. -->
-              <a class="jp-co-more" href="/us/companies/vanguard">3 other open roles here <i aria-hidden="true">&rarr;</i></a>
-            </div>
-          </div>
+              <span class="jp-co-more">3 other open roles here <i aria-hidden="true">&rarr;</i></span>
+            </span>
+          </a>
 
           <!-- The size step is chosen from the TITLE'S OWN LENGTH, not from the
                viewport. Employers write 30-character titles and 112-character
@@ -106,7 +111,7 @@
           <p class="jp-focus">Risk Analysis</p>
 
           <div class="pills"><span class="pill is-fresh" data-ago="1787716291881"><i aria-hidden="true"></i>Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="pill">79 clicked apply</span><span class="pill">Hybrid</span></div>
-          
+          <p class="jp-open is-likely"><span class="jp-open-b"><i aria-hidden="true"></i>Likely open</span><span class="jp-open-d">We list a role only while we believe it is still open. Confirm on the posting before you apply.</span></p>
         </header>
 
         

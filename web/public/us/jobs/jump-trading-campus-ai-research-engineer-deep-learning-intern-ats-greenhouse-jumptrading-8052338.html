@@ -84,18 +84,23 @@
     <div class="jp-grid">
       <div class="jp-main">
         <header class="jp-hero">
-          <div class="jp-id">
-            <a class="jp-crest" href="/us/companies/jump-trading" aria-hidden="true" tabindex="-1">JT<img src="/logos/jump-trading.png" alt="" loading="lazy" decoding="async" width="80" height="80"></a>
-            <div class="jp-id-t">
-              <a class="jp-co" href="/us/companies/jump-trading">Jump Trading</a>
+          <!-- ONE LINK, NOT THREE. The crest, the name and the roles count all
+               pointed at the same hub, stacked on top of each other — three
+               targets for one destination, and the crest was already
+               aria-hidden because it was a duplicate. The whole block is a
+               single anchor now: one target, and a bigger one. -->
+          <a class="jp-id" href="/us/companies/jump-trading">
+            <span class="jp-crest" aria-hidden="true">JT<img src="/logos/jump-trading.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+            <span class="jp-id-t">
+              <span class="jp-co">Jump Trading</span>
               <!-- A REASON TO FOLLOW THE LINK, not just a name that happens to
                    be one. The count is this employer's other live roles in this
                    region, which is the only company fact this page holds that a
                    reader can act on; with no others it says so plainly rather
                    than offering a hub that will look empty. -->
-              <a class="jp-co-more" href="/us/companies/jump-trading">6 other open roles here <i aria-hidden="true">&rarr;</i></a>
-            </div>
-          </div>
+              <span class="jp-co-more">6 other open roles here <i aria-hidden="true">&rarr;</i></span>
+            </span>
+          </a>
 
           <!-- The size step is chosen from the TITLE'S OWN LENGTH, not from the
                viewport. Employers write 30-character titles and 112-character
@@ -106,7 +111,7 @@
           <p class="jp-focus">AI research engineering</p>
 
           <div class="pills"><span class="pill" data-ago="1784937603000"><i aria-hidden="true"></i>Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="pill is-paid"><i aria-hidden="true"></i>$300,000 / year</span></div>
-          <p class="jp-live"><i aria-hidden="true"></i><strong>Still listed on the employer&rsquo;s own careers page</strong><span> &middot; checked <time datetime="2026-08-28T06:11:54.535Z" data-ago="1787897514535">1 hour ago</time></span></p>
+          <p class="jp-open is-verified"><span class="jp-open-b"><i aria-hidden="true"></i>Open now</span><span class="jp-open-d">Confirmed on Jump Trading&rsquo;s own careers page &middot; checked <time datetime="2026-08-28T06:11:54.535Z" data-ago="1787897514535">2 hours ago</time></span></p>
         </header>
 
         <section class="jp-why">
