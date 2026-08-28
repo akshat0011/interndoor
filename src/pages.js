@@ -2413,20 +2413,35 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   writeIfChanged(join(root, 'alerts.html'), renderAlertsPage(channels, { region, alternates }));
 
   let removed = 0;
+  /* Job pages that just stopped existing, as URLs. Only job pages: the Google
+     Indexing API accepts JobPosting pages and nothing else, and a hub carries
+     no JobPosting markup on purpose. See src/indexing.js. */
+  const removedUrls = [];
   for (const dir of [jobsDir, compDir]) {
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir)) {
       const full = join(dir, f);
-      if (f.endsWith('.html') && !wanted.has(full)) { rmSync(full); removed++; }
+      if (f.endsWith('.html') && !wanted.has(full)) {
+        rmSync(full);
+        removed++;
+        if (dir === jobsDir) removedUrls.push(regionUrl(`/jobs/${f.slice(0, -'.html'.length)}`, region));
+      }
     }
   }
 
   const indexable = jobs.filter(isIndexable).length;
+  /* The same two rules the sitemap applies — isIndexable, then jobSlug — so a
+     page cannot be announced to Google that the sitemap does not also list.
+     Kept beside the count above rather than recomputed by the caller. */
+  const indexUrls = jobs.filter(isIndexable).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
   writeSitemap(jobs, byCompany, root, pastByCompany, region);
   const feedItems = writeFeeds(jobs, root, region);
   const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
 
-  return { jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks };
+  return {
+    jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks,
+    indexUrls, removedUrls,
+  };
 }
 
 /**
@@ -2447,6 +2462,11 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
+  /* Accumulated separately from `totals`, which is summed by key and would turn
+     an array into a string. These are every published board's job pages, which
+     is the set src/indexing.js announces to Google. */
+  const indexUrls = [];
+  const removedUrls = [];
 
   // Every live posting, by employer, across every board — the input a job page
   // needs to keep its <title> unique SITE-wide rather than region-wide. Built
@@ -2474,12 +2494,14 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [] },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
+    indexUrls.push(...result.indexUrls);
+    removedUrls.push(...result.removedUrls);
     perRegion.push({ region, ...result });
   }
 
   writeRobots(publicDir, regions);
   totals.removed += removeUnpublishedRegions(publicDir, regions);
-  return { ...totals, perRegion };
+  return { ...totals, perRegion, indexUrls, removedUrls };
 }
 
 /**

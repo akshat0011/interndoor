@@ -8,6 +8,7 @@ import { formatStipend } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite } from './pages.js';
+import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 
@@ -682,6 +683,38 @@ export function pushToSite(newJobCount) {
 }
 
 /** Full publish step, called at the end of a run. */
+/**
+ * Queue this publish's job pages for the Indexing API and drain what is due.
+ *
+ * Split out so the noisy part — deciding whether to say anything at all — does
+ * not sit in the middle of publish(). A missing key is not a warning: the
+ * feature ships switched off and says so once, the same call src/websearch.js
+ * makes, because a line every 30 minutes about a key nobody has set is noise
+ * that trains you to stop reading the log.
+ */
+async function indexStep(store, cfg, pages) {
+  if (cfg.indexing?.enabled === false) return;
+  if (!indexingConfigured()) {
+    /* Once a day, not once a scan. bin/run.sh fires 48 times a day and a line
+       every 30 minutes about a key nobody has set is how you learn to stop
+       reading the log. Same call src/websearch.js makes for its missing key —
+       and note this throttles only the NOTICE: there is no "done for today"
+       gate, so adding the key at noon starts announcing on the very next run
+       rather than waiting for tomorrow. */
+    const today = new Date().toISOString().slice(0, 10);
+    if (store.getSetting('indexingNoKeyNoticeDay') !== today) {
+      store.setSetting('indexingNoKeyNoticeDay', today);
+      log.info('Indexing API: no service-account key — job pages are not being announced to Google. See src/indexing.js for the four setup steps.');
+    }
+    return;
+  }
+  const { queuedUpdate, queuedDelete } = queueForIndexing(store, pages);
+  const res = await runIndexingSweep(store, cfg);
+  if (queuedUpdate || queuedDelete || res.sent) {
+    log.info(`Indexing API: queued ${queuedUpdate} new and ${queuedDelete} removed, sent ${res.sent}${res.failed ? `, ${res.failed} failed` : ''} (${res.spent ?? 0}/${res.cap ?? '?'} used in 24h).`);
+  }
+}
+
 export async function publish(store, cfg, newJobCount) {
   if (cfg.publish?.enabled === false) return;
 
@@ -696,6 +729,22 @@ export async function publish(store, cfg, newJobCount) {
     log.info(`Generated ${pages.jobPages} job pages and ${pages.companyPages} company pages (${pages.indexable} indexable${pages.removed ? `, ${pages.removed} stale removed` : ''}).`);
     log.info(`Homepages carry ${pages.homeLinks} crawlable listing link${pages.homeLinks === 1 ? '' : 's'}.`);
     if (cfg.publish?.autoPush !== false) pushToSite(newJobCount);
+
+    /* Announce the job pages to Google AFTER the push, and in a try/catch of
+       its own.
+       After, because the API makes Google fetch the URL — announcing a page
+       that is still building on Vercel invites a crawl of the previous build.
+       (`indexing.minAgeMinutes` is the real guard: a URL queued now is not
+       eligible to be sent until the next publish, by which time the deploy has
+       long landed. This ordering is the cheap half of the same argument.)
+       Its own try/catch, because publish()'s catch returns null, and null is
+       how the caller is told "we do not know what is on the site" — which stops
+       Telegram posting. A search-engine hint failing must not do that. */
+    try {
+      await indexStep(store, cfg, pages);
+    } catch (err) {
+      log.warn(`Indexing step failed: ${err.message}`);
+    }
     return publishedIds;
   } catch (err) {
     log.warn(`Publish step failed: ${err.message}`);

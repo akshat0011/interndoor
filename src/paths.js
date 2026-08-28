@@ -45,6 +45,19 @@ export const PATHS = {
   latestPosts: join(STATE, 'posts', 'latest.html'),
   latestWeekly: join(STATE, 'posts', 'weekly-latest.html'),
 
+  /**
+   * Service-account key for the Google Indexing API.
+   *
+   * A file rather than a .env variable because the key JSON carries a PEM
+   * private key whose newlines do not survive .env round-tripping without
+   * escaping, and an escaping mistake reads as an invalid-signature error a
+   * long way from its cause. Outside the repo for the same reason as the
+   * reels: `app/` is a PUBLIC git repo and this is a credential.
+   *
+   * Overridable with GOOGLE_INDEXING_KEY_FILE.
+   */
+  indexingKey: join(STATE, 'google-indexing-key.json'),
+
   logs: LOGS,
 
   /** Where install-schedule.sh puts the script launchd actually executes. */

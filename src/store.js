@@ -185,6 +185,29 @@ CREATE TABLE IF NOT EXISTS reel_posts (
   error       TEXT
 );
 
+/*
+ * What has been announced to Google's Indexing API, and what is still owed.
+ *
+ * The API's quota is 200 URLs a rolling 24h and this site publishes ~110 new
+ * job pages a day plus about as many expiries, so the interesting state is not
+ * "did we send it" but "what do we still owe, and which of it matters most".
+ * Hence a queue with a pending intent rather than a log of sends.
+ *
+ * submitted/submitted_at are what stop a URL being re-announced on every one
+ * of the 48 publishes a day — at 200/day that would spend the whole quota on
+ * the first four pages. (No backticks in this comment: SCHEMA is a template
+ * literal, and a backtick here ends it mid-string.)
+ */
+CREATE TABLE IF NOT EXISTS indexed_urls (
+  url          TEXT PRIMARY KEY,
+  pending      TEXT,
+  queued_at    INTEGER,
+  submitted    TEXT,
+  submitted_at INTEGER,
+  attempts     INTEGER NOT NULL DEFAULT 0,
+  error        TEXT
+);
+
 CREATE TABLE IF NOT EXISTS discovered_urls (
   url        TEXT PRIMARY KEY,
   first_seen INTEGER NOT NULL,
@@ -704,6 +727,116 @@ export class Store {
    */
   markRegionSweep(region, startedAt) {
     this.setSetting(`sweep_ok_at:${region}`, startedAt);
+  }
+
+  // ---- Google Indexing API queue --------------------------------------------
+
+  /**
+   * Record what Google should be told about a set of URLs.
+   *
+   * The model is two fields, not a log: `submitted` is the last thing Google
+   * was told, `pending` is what it should be told next, and a call is owed
+   * exactly when they differ. That is what makes this idempotent across the 48
+   * publishes a day — enqueueing the same live page every run must not re-spend
+   * a quota that is only 200 URLs per rolling 24h.
+   *
+   * Three cases are load-bearing:
+   *  - A URL we have never announced cannot be DELETED. Google was never told
+   *    it existed, so there is nothing to withdraw and the call would be waste.
+   *  - A URL already owed the same action keeps its ORIGINAL `queued_at`.
+   *    Bumping it every run would flatten the ordering `indexDue` sorts on, and
+   *    a page published today would tie with one queued a week ago.
+   *  - A page that is live again before its queued deletion went out has its
+   *    deletion CANCELLED rather than sent and undone. That is an expiry
+   *    followed by a relisting at the same slug, and it is cheaper to say
+   *    nothing than to say two contradictory things.
+   */
+  indexQueue(urls, type, now = Date.now()) {
+    const sel = this.db.prepare('SELECT pending, submitted FROM indexed_urls WHERE url = ?');
+    const ins = this.db.prepare('INSERT INTO indexed_urls (url, pending, queued_at) VALUES (?, ?, ?)');
+    const upd = this.db.prepare('UPDATE indexed_urls SET pending = ?, queued_at = ?, attempts = 0, error = NULL WHERE url = ?');
+    const clr = this.db.prepare('UPDATE indexed_urls SET pending = NULL WHERE url = ?');
+    let queued = 0;
+    for (const url of urls) {
+      const row = sel.get(url);
+      if (!row) {
+        if (type === 'URL_DELETED') continue;
+        ins.run(url, type, now);
+        queued++;
+        continue;
+      }
+      if (row.submitted === type) {
+        if (row.pending) clr.run(url);
+        continue;
+      }
+      if (row.pending === type) continue;
+      upd.run(type, now, url);
+      queued++;
+    }
+    return queued;
+  }
+
+  /**
+   * What to send next, most valuable first.
+   *
+   * Updates outrank deletions because an update is the whole point — a job page
+   * lives 30 days on a domain with no authority, so being crawled in hours
+   * rather than never is the entire return on this API. A deletion is only a
+   * speed-up: the page already 404s, and Google drops a 404 on its own.
+   *
+   * Newest first WITHIN each kind, deliberately, and this is the opposite of a
+   * normal queue. Seeding an existing board puts hundreds of URLs in here at
+   * once; draining oldest-first would park every genuinely new posting behind
+   * that backlog for days, which defeats the reason for using the API at all.
+   */
+  indexDue({ limit = 25, minAgeMs = 0, maxAttempts = 3, now = Date.now() } = {}) {
+    return this.db.prepare(`
+      SELECT url, pending AS type, queued_at, attempts
+      FROM indexed_urls
+      WHERE pending IS NOT NULL AND attempts < ? AND queued_at <= ?
+      ORDER BY (pending = 'URL_UPDATED') DESC, queued_at DESC
+      LIMIT ?
+    `).all(maxAttempts, now - minAgeMs, limit);
+  }
+
+  indexMarkDone(url, type, now = Date.now()) {
+    this.db.prepare(`
+      UPDATE indexed_urls
+      SET submitted = ?, submitted_at = ?, pending = NULL, attempts = 0, error = NULL
+      WHERE url = ?
+    `).run(type, now, url);
+  }
+
+  /** Failures accumulate rather than clearing `pending`: `indexDue` retires a
+   *  URL once `attempts` reaches the cap, so a permanently bad one stops
+   *  blocking the queue without being silently forgotten. */
+  indexMarkFailed(url, message) {
+    this.db.prepare('UPDATE indexed_urls SET attempts = attempts + 1, error = ? WHERE url = ?')
+      .run(String(message).slice(0, 300), url);
+  }
+
+  /**
+   * URLs successfully announced inside a rolling window — the daily-cap input.
+   *
+   * Counts URLs rather than calls, so a URL announced twice in one window
+   * (published, expired, both inside 24h) counts once and this can undercount.
+   * A 30-day page lifetime makes that close to impossible, and the configured
+   * cap leaves headroom under the real 200 for exactly this reason.
+   */
+  indexCountSince(sinceMs) {
+    return this.db.prepare('SELECT COUNT(*) AS n FROM indexed_urls WHERE submitted_at >= ?').get(sinceMs).n;
+  }
+
+  indexStats({ now = Date.now(), maxAttempts = 3 } = {}) {
+    const n = (sql, ...a) => this.db.prepare(sql).get(...a).n;
+    return {
+      pendingUpdate: n("SELECT COUNT(*) AS n FROM indexed_urls WHERE pending = 'URL_UPDATED' AND attempts < ?", maxAttempts),
+      pendingDelete: n("SELECT COUNT(*) AS n FROM indexed_urls WHERE pending = 'URL_DELETED' AND attempts < ?", maxAttempts),
+      retired: n('SELECT COUNT(*) AS n FROM indexed_urls WHERE pending IS NOT NULL AND attempts >= ?', maxAttempts),
+      submittedTotal: n('SELECT COUNT(*) AS n FROM indexed_urls WHERE submitted_at IS NOT NULL'),
+      submitted24h: this.indexCountSince(now - 86400000),
+      lastError: this.db.prepare('SELECT url, error, attempts FROM indexed_urls WHERE error IS NOT NULL ORDER BY queued_at DESC LIMIT 1').get() ?? null,
+    };
   }
 
   // ---- settings / cooldown --------------------------------------------------
