@@ -199,7 +199,17 @@ export async function addSubscriber(email, region, apiKey, fetchImpl = fetch) {
   }
 
   if (res.status === 400 && /already|exists|duplicate/i.test(detail)) return { ok: true, created: false };
-  return { ok: false, status: res.status, detail };
+
+  /* A REFUSED ADDRESS IS PERMANENT, and must not be dressed up as transient.
+     Buttondown's spam firewall answers 400 `subscriber_blocked` — "This
+     subscriber was blocked by your firewall" — and it answers the same way
+     every time. Telling that reader to try again in a minute is exactly the
+     broken promise the 401/403 branch in the handler refuses to make: they
+     retry, fail, and are no more subscribed than before, with nothing on the
+     page suggesting the address itself is the problem. Flagged so the handler
+     can say something true and offer them a channel that will work. */
+  const rejected = res.status === 400 && /blocked|firewall|spam|invalid/i.test(detail);
+  return { ok: false, status: res.status, detail, rejected };
 }
 
 /** '' for India, '/us', '/uk' — the board a subscriber signed up from. */
@@ -254,6 +264,11 @@ export default async function handler(req, res) {
          key is missing, mistyped, or not entitled to the API, which is a
          misconfiguration only we can fix. Functionally the list is not
          switched on, so it says exactly what the no-key branch above says. */
+      /* Permanent for this address — see addSubscriber. 422 rather than 502:
+         nothing is broken on our side and a retry cannot help. */
+      if (result.rejected) {
+        return res.status(422).json({ error: 'We could not accept that address. Try a different one, or follow the Telegram channel instead.' });
+      }
       if (result.status === 401 || result.status === 403) {
         return res.status(503).json({ error: 'Email alerts are not switched on yet. Follow the Telegram channel in the meantime.' });
       }
