@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/tractor-supply-company-it-intern-summer-2027-4460387227",
+      "url": "https://interndoor.com/us/jobs/tractor-supply-company-it-intern-summer-2027-4460387227",
+      "title": "IT Intern | Summer 2027 — Tractor Supply Company",
+      "content_text": "Company: Tractor Supply Company · Location: Brentwood, TN · Duration: Summer 2027\n• Troubleshoot hardware, software, and tech issues for end users\n• Support software development through coding and testing\n• Gain exposure to cybersecurity and network infrastructure\n• Work on cross-functional projects with IT and business teams",
+      "date_published": "2026-08-28T17:29:41.259Z",
+      "authors": [
+        {
+          "name": "Tractor Supply Company"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/samsung-research-america-sra-2026-fall-intern-digital-health-algorithms-4450018131",
+      "url": "https://interndoor.com/us/jobs/samsung-research-america-sra-2026-fall-intern-digital-health-algorithms-4450018131",
+      "title": "2026 Fall Intern, Digital Health Algorithms — Samsung Research America (SRA)",
+      "content_text": "Company: Samsung Research America (SRA) · Location: Mountain View, CA\n• Develop AI models for health applications using self-supervised learning\n• Work with AWS and large-scale time-series data for scalable solutions\n• Contribute to digital biomarker and intervention development\n• Collaborate with multi-disciplinary team on real-world healthcare challenges",
+      "date_published": "2026-08-28T17:27:16.994Z",
+      "authors": [
+        {
+          "name": "Samsung Research America (SRA)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/analog-devices-ai-ml-engineer-intern-4458407281",
       "url": "https://interndoor.com/us/jobs/analog-devices-ai-ml-engineer-intern-4458407281",
       "title": "AI/ML Engineer Intern — Analog Devices",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Sanofi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460320167",
-      "url": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460320167",
-      "title": "University - 2027 Summer Games Cyber Security Intern — Booz Allen Hamilton",
-      "content_text": "Company: Booz Allen Hamilton · Location: El Segundo, CA · Duration: Spring 2027\n• Analyze network traffic for security threats\n• Use virtualization tools to test system vulnerabilities\n• Work on real-world cybersecurity challenges with senior mentors",
-      "date_published": "2026-08-28T08:11:19.885Z",
-      "authors": [
-        {
-          "name": "Booz Allen Hamilton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/atkinsr-alis-its-and-traffic-engineering-intern-summer-2027-4460188896",
-      "url": "https://interndoor.com/us/jobs/atkinsr-alis-its-and-traffic-engineering-intern-summer-2027-4460188896",
-      "title": "ITS & Traffic Engineering Intern - Summer 2027 — AtkinsRéalis",
-      "content_text": "Company: AtkinsRéalis · Location: Denver, CO · Duration: Summer 2027\n• Compile data and prepare reports using CAD software\n• Assist with traffic signal models and design plans\n• Collaborate across teams and attend project meetings",
-      "date_published": "2026-08-28T06:42:21.142Z",
-      "authors": [
-        {
-          "name": "AtkinsRéalis"
         }
       ]
     }
