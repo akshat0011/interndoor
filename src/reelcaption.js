@@ -28,8 +28,35 @@ export const CAPTION_MAX = 2200;
  * to place a post at all. Capped at 12 — past that it reads as spam, and
  * Instagram has said the tail adds nothing.
  */
-const BROAD = ['internship', 'internships', 'hiring', 'jobs', 'freshers',
+const BROAD = ['internship', 'internships', 'hiring', 'jobs',
   'engineeringjobs', 'techjobs', 'interndoor'];
+
+/**
+ * The terms that actually name a market, split by board.
+ *
+ * These were SHARED between the two accounts, and `freshers` was in the shared
+ * list. "Fresher" is an almost exclusively Indian and South-Asian word for an
+ * entry-level candidate and is essentially unused in American job search — so
+ * every @interndoorusa reel shipped telling Instagram's recommender it was for
+ * an Indian audience. Measured on that account's own insights: **90.5% India,
+ * 0.9% United States**, on a reel about a US internship.
+ *
+ * Only market-naming terms are split. The generic half above stays shared
+ * because it is genuinely generic, and duplicating it would just spend the cap.
+ *
+ * Region comes off the published job and defaults to IN — the board that
+ * existed first, and the safer wrong answer: an Indian reel reaching Indians is
+ * at worst a no-op, while the reverse is the thing being fixed here.
+ *
+ * These are ONE signal among several and not the dominant one. Instagram offers
+ * no organic country targeting at all; for an account with no followers the
+ * recommender leans on the account's own locale and on who engages first.
+ */
+const BY_REGION = {
+  IN: ['freshers', 'offcampus', 'campushiring'],
+  US: ['summerinternship', 'techinternships', 'careers', 'stemjobs'],
+  GB: ['graduatejobs', 'placementyear', 'ukjobs'],
+};
 
 const slug = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 
@@ -41,8 +68,16 @@ export function hashtags(job, { max = 12 } = {}) {
     if (v.length > 2 && !out.includes(v)) out.push(v);
   };
   push(job.company);
-  push(cityOf(job.location));
+  /* Cut an office code off the city: Samsara files "London - UK2", which slugs
+     to #londonuk2 — a tag that names nothing, helps no one find the post, and
+     spends one of the twelve. cityOf itself is left alone; the full string is
+     still what the card and the caption print. */
+  push(cityOf(job.location).split(/\s+[-–—]\s+/)[0]);
   for (const s of (job.keySkills ?? job.skills ?? []).slice(0, 3)) push(s);
+  /* Before BROAD, so the market-naming tags survive the twelve-tag cap rather
+     than being crowded out by the generic ones. */
+  const region = job.region ?? job.__region ?? 'IN';
+  for (const t of (BY_REGION[region] ?? BY_REGION.IN)) push(t);
   for (const t of BROAD) push(t);
   return out.slice(0, max);
 }
