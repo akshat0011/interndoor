@@ -1097,7 +1097,7 @@
     },
     "_accounts_note": "ONE INSTAGRAM ACCOUNT PER REGION, and they must never be able to cross. @interndoorusa carries US roles, @interndoorin carries Indian ones. A reel posted to the wrong account cannot be taken back. Credentials live in .env under REGION-SUFFIXED names - IG_USER_ID_US/IG_ACCESS_TOKEN_US and IG_USER_ID_IN/IG_ACCESS_TOKEN_IN - because the bare IG_USER_ID/IG_ACCESS_TOKEN names are ALSO what storygasted's .env uses for a different account, which is the trap bin/ig_publish.py's guard was written for; with two accounts that collision stops being hypothetical. The guard still asks the live account who it is and refuses unless the username matches the region's entry here. A region absent from this map gets no reel at all, the same rule Telegram already follows for a region with no channel. Replaced the single 'account' key (was 'interndoorin') on 27 Aug.",
     "auto": {
-      "enabled": false,
+      "enabled": true,
       "regions": [
         "US",
         "IN"
