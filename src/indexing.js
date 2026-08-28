@@ -210,7 +210,7 @@ export async function runIndexingSweep(store, cfg, {
   const minAgeMs = force ? 0 : (Number(c.minAgeMinutes) ?? 5) * 60_000;
   const spent = store.indexCountSince(now - 86_400_000);
   const room = Math.max(0, dailyCap - spent);
-  if (!room) return { sent: 0, spent, skipped: 'daily-cap' };
+  if (!room) return { sent: 0, spent, cap: dailyCap, skipped: 'daily-cap' };
 
   const batch = store.indexDue({
     limit: Math.min(room, limit ?? Number(c.perRun) ?? 25),
@@ -227,11 +227,12 @@ export async function runIndexingSweep(store, cfg, {
     return {
       sent: 0,
       spent,
+      cap: dailyCap,
       skipped: (pendingUpdate + pendingDelete) ? 'nothing-due-yet' : 'queue-empty',
     };
   }
 
-  if (dryRun) return { sent: 0, spent, wouldSend: batch };
+  if (dryRun) return { sent: 0, spent, cap: dailyCap, wouldSend: batch };
 
   const sa = loadServiceAccount();
   const token = await accessToken(sa, { fetchImpl, now });
