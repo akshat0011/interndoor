@@ -32,6 +32,8 @@
  *    "this month" read out three weeks later is no longer true.
  */
 import { resolveRowRegion } from './regions.js';
+import { formatStipend } from './extract.js';
+import { stipendText } from './pages.js';
 
 /** Windows a fact can be measured over. */
 export const DEFAULT_DAYS = 30;
@@ -74,18 +76,42 @@ const FACTS = [
   {
     id: 'pay-transparency',
     minSample: 40,
-    /** Of the postings we hold, how many say what they pay. */
+    /**
+     * How many postings STATE a stipend we can actually read.
+     *
+     * Derived from the posting's own figure through the site's own display
+     * rule, NEVER from `stipend_status`. That column is model-generated and
+     * does not hold: of 58 India rows it marked `unpaid` over 30 days, **8**
+     * contain any unpaid phrasing at all — it answers "unpaid" where it means
+     * "unknown". `pages.js` stopped rendering it on 27 Aug for exactly that
+     * reason and this file had not caught up, so `npm run stats` was still
+     * printing "58 of them are explicitly unpaid".
+     *
+     * That made it the most dangerous number this project produces. It is the
+     * fact most likely to be quoted — it is the strongest one here — and it was
+     * a first-person claim that named employers do not pay their interns, made
+     * to somebody who will not check it.
+     *
+     * So the claim is only ever about what a POSTING SAYS. "Said nothing"
+     * deliberately covers both a genuinely unpaid role and one that simply
+     * never mentioned money, because nothing in this data can tell those apart.
+     * `stipendText` is the same gate the board uses, so the statistic and the
+     * site can never disagree — and it already rejects the traps: a bare
+     * figure with no currency, and the 68 live rows holding "₹0".
+     */
     mine(rows) {
       const of = rows.length;
-      const paid = rows.filter((r) => r.stipend_status === 'paid').length;
-      const unpaid = rows.filter((r) => r.stipend_status === 'unpaid').length;
-      if (!paid && !unpaid) return null;
+      const stated = rows.filter((r) => stipendText({
+        stipend: formatStipend({
+          min: r.stipend_min, max: r.stipend_max,
+          currency: r.stipend_currency, period: r.stipend_period,
+        }),
+      })).length;
+      if (!stated) return null;
       return {
-        value: paid, of,
-        headline: `Only ${paid} of ${of} engineering internships said what they pay`,
-        detail: unpaid
-          ? `${unpaid} of them are explicitly unpaid, and ${of - paid - unpaid} say nothing at all`
-          : `${of - paid} say nothing at all`,
+        value: stated, of,
+        headline: `Only ${stated} of ${of} engineering internships said what they pay`,
+        detail: `the other ${of - stated} say nothing about pay at all`,
       };
     },
   },

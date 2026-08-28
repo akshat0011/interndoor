@@ -8,6 +8,7 @@
  * truth is 60:1: the raw total dressed up as a rate, wrong by the size of the
  * board, and perfectly plausible to anyone not checking.
  */
+import { readFileSync } from 'node:fs';
 import { mineStats, applicantCount, normaliseMode, DEFAULT_DAYS } from '../src/statsmine.js';
 
 let pass = 0, fail = 0;
@@ -16,6 +17,8 @@ function check(label, actual, expected) {
   if (a === e) { pass++; console.log(`  ok    ${label}`); }
   else { fail++; console.log(`  FAIL  ${label}\n          got:  ${a}\n          want: ${e}`); }
 }
+
+const ok = (label, cond) => check(label, !!cond, true);
 
 const DAY = 86_400_000;
 const NOW = Date.UTC(2026, 7, 26, 12);
@@ -52,6 +55,9 @@ check('missing is null, not zero', applicantCount(null), null);
 
 console.log('\n== every fact carries its denominator ==');
 const many = Array.from({ length: 200 }, (_, i) => row({
+  // 20 state a real figure. 20 more are MARKED unpaid by the model while
+  // stating nothing — the case the pay fact must not repeat as a claim.
+  ...(i < 20 ? { stipend_min: 20000, stipend_max: 20000, stipend_currency: 'INR', stipend_period: 'month' } : {}),
   stipend_status: i < 20 ? 'paid' : i < 40 ? 'unpaid' : 'unknown',
   applicants: i < 10 ? '0 applicants' : i < 30 ? '5 applicants' : `${100 + i} applicants`,
 }));
@@ -69,12 +75,51 @@ console.log('\n== a thin sample is DROPPED, not weakened ==');
 check('nothing is claimed from 5 postings', mineStats(stubStore([row(), row(), row(), row(), row()]), { now: NOW }).length, 0);
 check('nothing is claimed from an empty store', mineStats(stubStore([]), { now: NOW }).length, 0);
 
-console.log('\n== pay transparency ==');
+console.log('\n== pay transparency: what a POSTING SAYS, never what an employer pays ==');
+/* These assertions used to pin the opposite — `stipend_status === 'paid'` for
+   the count, and a sentence reading "20 of them are explicitly unpaid". That
+   pin documented a DECISION, and the decision was wrong: measured on the live
+   store, 58 India rows were marked `unpaid` over 30 days and 8 contained any
+   unpaid phrasing at all. pages.js stopped rendering the field on 27 Aug;
+   statsmine had not caught up, so `npm run stats` was still printing a
+   first-person claim that named employers do not pay their interns. Re-pointed
+   rather than deleted, and now pinned in BOTH directions. */
 const pay = facts.find((f) => f.id === 'pay-transparency');
-check('it counts the paid ones', pay.value, 20);
+check('it counts postings that STATE a figure', pay.value, 20);
 check('against the whole sample', pay.of, 200);
 check('and names both numbers in the sentence', pay.headline.includes('20') && pay.headline.includes('200'), true);
-check('the unpaid are called out separately', pay.detail.includes('20 of them are explicitly unpaid'), true);
+ok('the other 180 are "said nothing", not "unpaid"', pay.detail.includes('180') && pay.detail.includes('nothing'));
+ok('the word unpaid appears NOWHERE in the fact',
+  !/unpaid/i.test(`${pay.headline} ${pay.detail}`));
+
+/* A model-generated verdict must never reach the sentence. 60 rows marked
+   `unpaid` and 60 marked `paid`, none stating a figure: the honest answer is
+   that NOTHING is claimed, not that 60 employers pay nothing. */
+const marked = Array.from({ length: 120 }, (_, i) => row({
+  stipend_status: i < 60 ? 'unpaid' : 'paid',
+}));
+check('a store where only the MODEL says so claims nothing about pay',
+  mineStats(stubStore(marked), { now: NOW }).some((f) => f.id === 'pay-transparency'), false);
+
+/* ₹0 is missing data, not a wage — 68 live rows hold it. stipendText already
+   refuses it, which is the whole reason the fact routes through that gate. */
+const zeroes = Array.from({ length: 120 }, () => row({
+  stipend_min: 0, stipend_max: 0, stipend_currency: 'INR', stipend_period: 'month',
+  stipend_status: 'paid',
+}));
+check('a board of ₹0 rows states no pay fact',
+  mineStats(stubStore(zeroes), { now: NOW }).some((f) => f.id === 'pay-transparency'), false);
+
+/* Structural, so the field cannot creep back in via a new fact either.
+   COMMENTS ARE STRIPPED FIRST: the module explains at length why it does not
+   use this column, and that explanation is the thing most worth keeping — the
+   assertion is that the field is never READ, not that it is never named. */
+const statsSrc = readFileSync('src/statsmine.js', 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^\s*\/\/.*$/gm, '');
+ok('src/statsmine.js never reads stipend_status in code', !statsSrc.includes('stipend_status'));
+ok('…and the module still explains why, in prose',
+  readFileSync('src/statsmine.js', 'utf8').includes('stipend_status'));
 
 console.log('\n== the applicant facts parse before comparing ==');
 const zero = facts.find((f) => f.id === 'no-applicants');
