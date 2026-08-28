@@ -39,14 +39,33 @@ export const SITE = 'https://interndoor.com';
  */
 export const DEFAULT_REGION = regionOf('IN');
 
+/**
+ * `web/vercel.json` sets `trailingSlash: false` and `cleanUrls: true`, so the
+ * form Vercel actually SERVES never carries a trailing slash: `/companies/`
+ * 308s to `/companies` and `/us/` 308s to `/us`. Emitting the slashed form put
+ * a redirect in the sitemap, in the canonical, in the breadcrumb JSON-LD and in
+ * every hreflang alternate at once — and Google files a redirecting sitemap URL
+ * as "Page with redirect", which it does not index. That cost the three company
+ * directories and the US and UK board homepages, and the directory is the only
+ * crawl path to the hubs (the homepage list is built by JavaScript).
+ *
+ * Normalised in the two builders every URL goes through, not at each call site:
+ * a call site that forgets is a redirect nobody notices. The length guard is
+ * what keeps India correct — `regionPath('IN')` is '', so its root is a bare
+ * '/' and must stay one.
+ */
+function trimSlash(path) {
+  return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+}
+
 /** Absolute URL for a path within a region: base('/jobs/x', US) -> '/us/jobs/x'. */
 function regionUrl(path, region) {
-  return `${SITE}${regionPath(region.code)}${path}`;
+  return `${SITE}${trimSlash(`${regionPath(region.code)}${path}`)}`;
 }
 
 /** Root-relative href within a region, for links inside a page. */
 function regionHref(path, region) {
-  return `${regionPath(region.code)}${path}`;
+  return trimSlash(`${regionPath(region.code)}${path}`) || '/';
 }
 
 /** HTML-escape. Company names and titles come from LinkedIn and are not trusted. */
@@ -2207,12 +2226,12 @@ function fillMarker(html, name, contents) {
  * `/_vercel/…`, none of which are per-region and all of which would 404 under a
  * prefix. Job links are generated below and already carry theirs.
  */
-const REGION_LINKS = ['/companies/', '/alerts', '/feed.xml', '/feed.json', '/data/jobs.json'];
+const REGION_LINKS = ['/companies', '/alerts', '/feed.xml', '/feed.json', '/data/jobs.json'];
 
 function localiseLinks(html, region) {
   const prefix = regionPath(region.code);
   if (!prefix) return html;
-  let out = html.replace(/href="\/"/g, `href="${prefix}/"`);
+  let out = html.replace(/href="\/"/g, `href="${prefix}"`);
   for (const path of REGION_LINKS) {
     out = out.split(`"${path}"`).join(`"${prefix}${path}"`);
   }
