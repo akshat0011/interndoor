@@ -479,10 +479,29 @@ a, button, summary, label, [role="button"], .row {
 .flag:hover { color: var(--ink); border-color: var(--rule-2); }
 .flag[aria-pressed="true"] { background: var(--live); border-color: var(--live); color: var(--live-ink); font-weight: 700; }
 .flag-reset { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 40%, transparent); }
+/* Reads as an offer, not as a warning — .flag-reset is the destructive one and
+   owns --hot. This one carries the accent the sort control lights up in once a
+   resume is loaded, which is the thing it turns on. */
+.flag-rank { color: var(--live); border-color: color-mix(in oklab, var(--live) 38%, transparent); }
+.flag-rank:hover { color: var(--live-ink); background: var(--live); border-color: var(--live); }
+/* MEASURED, NOT ASSUMED — the same trap .sub-msg hit further down this file.
+   The light theme's --live (#5d7a00) is tuned against --bg, and the rail sits
+   on a translucent layer over it that composites lighter; on that ground the
+   chip measured 4.48 against a 4.5 floor. Darkened here and nowhere else,
+   because the token is correct everywhere it is not sitting on the rail —
+   .back uses the same --live on --card and measures 4.78. */
+:root[data-theme="light"] .flag-rank { color: #4a6100; }
 
 /* ---------- board ---------- */
 
-.board { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 26px; align-items: start; padding: 20px 0 80px; }
+/* ONE COLUMN, and a plain block rather than a one-track grid.
+   It was `minmax(0,1.15fr) minmax(0,1fr)` — the feed beside a permanently
+   open right-hand column. With the column gone there is one child, and block
+   layout is the honest way to say so; it also sidesteps the min-content trap
+   that a bare `1fr` track carries entirely, rather than guarding against it.
+   See the ≤1024px rule further down, which no longer needs to collapse
+   anything because there is nothing to collapse. */
+.board { padding: 20px 0 80px; }
 .feed-head {
   font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase;
   letter-spacing: .1em; color: var(--ink-3); padding-bottom: 12px;
@@ -498,9 +517,17 @@ a, button, summary, label, [role="button"], .row {
 .row {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
-  grid-template-columns: 40px minmax(0,1fr) auto;
-  gap: var(--s4); align-items: start;
-  padding: var(--s4); cursor: pointer;
+  /* 56px, up from 40. The card is the whole page now rather than 55% of it, so
+     the logo can be the size it should have been: a mark you recognise before
+     you have read anything, which is how anyone actually scans a job board. */
+  grid-template-columns: 56px minmax(0,1fr) auto;
+  /* Roomier than the two-column register was. 16px of padding was right when
+     the card had 55% of the page and the vertical budget was contested by a
+     second column; with the page to itself the listing can be an object you
+     aim at rather than a row in a table, and the breathing room is what stops
+     a full-width card reading as a spreadsheet line. */
+  gap: 22px; align-items: start;
+  padding: 22px 24px; cursor: pointer;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: var(--r-2);
@@ -538,9 +565,9 @@ a, button, summary, label, [role="button"], .row {
 .row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
 
 .crest {
-  width: 40px; height: 40px; border-radius: var(--r); overflow: hidden; position: relative;
+  width: 56px; height: 56px; border-radius: var(--r); overflow: hidden; position: relative;
   display: grid; place-items: center; background: var(--card-2);
-  font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 800; font-size: 19px; color: var(--ink-2);
   border: 1px solid var(--rule);
 }
 /* The initials sit underneath; the logo fades over them once it decodes.
@@ -548,7 +575,7 @@ a, button, summary, label, [role="button"], .row {
    waiting for did not exist, so every logo hard-swapped over the initials. */
 .crest img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-  padding: 4px; background: #fff;
+  padding: 6px; background: #fff;
 }
 /* .lit is added on the image's load event and plays a one-shot fade. It is
    written this way round on purpose: the resting state is VISIBLE, so a load
@@ -569,21 +596,28 @@ a, button, summary, label, [role="button"], .row {
 
    The role is now the heading; the company is an eyebrow above it. Emphasis
    comes from weight and colour, not size, so the card stays compact. */
+/* BIGGER, at both levels. The eyebrow was 11px and the role 17px because the
+   card was sharing a 1320px page with a second column and every pixel of height
+   was contested. It is not any more, and 11px uppercase is close to the floor
+   of what is comfortable to read at arm's length — which on a board people scan
+   for a company mark and a job title is the wrong thing to economise on.
+   The role still leads: the eyebrow gains 2.5px and the role gains 3, so the
+   ratio between them widens rather than narrows. */
 .co {
   font-family: var(--ui);
-  font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
-  font-weight: 600; color: var(--ink-2);
+  font-size: .84375rem; line-height: 1.25;
+  letter-spacing: .07em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink-2);
   /* Two lines maximum. A pathological company name truncates instead of
      taking over the card. */
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   overflow: hidden; overflow-wrap: anywhere;
 }
 .role {
-  margin-top: var(--s1);
-  font-family: var(--ui); font-weight: 600;
-  font-size: var(--t-title); line-height: var(--t-title-lh);
-  letter-spacing: var(--t-title-tr);
+  margin-top: var(--s2);
+  font-family: var(--ui); font-weight: 650;
+  font-size: 1.25rem; line-height: 1.28;
+  letter-spacing: -.018em;
   color: var(--ink); overflow-wrap: anywhere;
 }
 
@@ -666,9 +700,21 @@ a, button, summary, label, [role="button"], .row {
    age where the eye already goes.
    It is decoration for a screen reader — the row is already role="button" and
    announces itself — so it is aria-hidden and the row keeps its own label. */
+/* A CHIP, NOT A WHISPER.
+   This started as 11px grey mono, which is the register this file uses for
+   labels — and it is not a label, it is the only thing on the card that says
+   the card does anything. At that size it read as a caption on the age above
+   it and went unnoticed, which left Apply looking like the row's single
+   action and the whole detail view something you found by accident. It is now
+   the same size and shape as the skill chips it sits near, bordered so it
+   reads as a target, and it lights on hover with the row. */
 .opens {
-  font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .02em;
-  color: var(--ink-3); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .04em;
+  color: var(--ink-2); white-space: nowrap;
+  border: 1px solid var(--rule); border-radius: 999px;
+  padding: 5px 12px;
+  transition: color .16s, border-color .16s, background .16s;
 }
 /* THE WORD IS CHOSEN BY THE INPUT DEVICE, not by a viewport width.
    "Click" on a phone and "Tap" on a desktop are both wrong, and width is a poor
@@ -679,7 +725,11 @@ a, button, summary, label, [role="button"], .row {
    being in the accessibility tree or in textContent. */
 .opens::after { content: "Click for details \2192"; }
 @media (pointer: coarse) { .opens::after { content: "Tap for details \2192"; } }
-.row:hover .opens { color: var(--ink-2); }
+.row:hover .opens {
+  color: var(--live);
+  border-color: color-mix(in oklab, var(--live) 45%, transparent);
+  background: color-mix(in oklab, var(--live) 7%, transparent);
+}
 
 .age { text-align: right; padding-top: 4px; }
 .age b {
@@ -787,77 +837,52 @@ a, button, summary, label, [role="button"], .row {
 
 /* ---------- detail pane ---------- */
 
-.pane-col { position: sticky; top: calc(var(--stack-h) + 16px); }
-.pane, .pane-idle { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
-/* ---------- the idle panel ----------
-   Left-aligned and typeset like a piece of writing, not centred like an empty
-   state. It is not an empty state: it is the page's argument for itself, and
-   centring it would make it read as a placeholder waiting to be replaced. */
-.pane-idle { padding: 26px; }
-.idle-k {
-  font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase;
-  letter-spacing: .12em; color: var(--live);
-}
-.idle-h {
-  margin-top: 10px;
-  font-family: var(--ui); font-weight: 700; font-size: 1.375rem; line-height: 1.24;
-  letter-spacing: -.02em; color: var(--ink);
-}
-.idle-b { margin-top: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-2); max-width: 46ch; }
-.idle-b b { color: var(--ink); font-weight: 600; }
+/* ---------- the opened role ----------
 
-/* ---------------- the brand pool ----------------
- *
- * Twenty brand marks on white chips, scattered and drifting.
- *
- * NOT A RING, AND NOT A GRID. Positions come from a phyllotaxis spiral in
- * renderIdle — the golden angle, the arrangement a sunflower uses — with a
- * jitter on angle and radius on top. Two concentric rings, which this replaced,
- * read as machine-made the moment you noticed them; a spiral spreads evenly
- * without ever forming a ring or a spoke, so it looks scattered while staying
- * balanced, with no clump and no bald patch.
- *
- * EVERY MARK MOVES ON ITS OWN TWO PERIODS, one per axis, which is why the cell
- * is two nested elements: one transform can only carry one timeline. Unequal
- * periods trace a slow Lissajous curve rather than a straight shuttle, so the
- * pool takes minutes to repeat and never looks like it is on a timer. A third,
- * slower rotation on the chip keeps it from reading as a flat plane.
- *
- * All of it is transform and opacity, all of it clipped to this box, and it
- * lives in a panel that is only on screen while nothing is selected — so it can
- * never compete with the listings or grey the text beside it.
- */
-.pool {
-  position: relative;
-  /* A SIZE CONTAINER, so a radius can be expressed against the POOL. The first
-     version used a percentage in translateY, which resolves against the element
-     being translated — 41% of a 34px logo, so all twenty stacked in a heap. */
-  container-type: size;
-  width: 100%; aspect-ratio: 1; max-width: 372px; margin: 18px auto 4px;
-}
-/* EVERY CHIP SITS AT THE CENTRE and is moved by `transform` from poolFloat().
-   Anchoring them at 50%/50% rather than at their scattered left/top means the
-   loop writes one property and never touches layout — and the starting scatter
-   is carried in as the first frame's translate rather than as a position. */
-.pool-i {
-  position: absolute; left: 50%; top: 50%;
-  width: var(--sz); height: var(--sz);
-  margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2);
-  will-change: transform;
-}
-.pool-c {
-  display: grid; place-items: center;
-  width: 100%; height: 100%; padding: 17%;
-  background: #fff; border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06);
-  will-change: rotate;
-}
-.pool-c svg { width: 100%; height: 100%; fill: var(--c); overflow: visible; }
+   ONE ELEMENT, TWO PRESENTATIONS, and only the painting differs.
 
-.idle-n { margin-top: 12px; font-family: var(--mono); font-size: var(--t-micro); color: var(--ink-2); }
+   This was `position: sticky` — a real column in the page, permanently there,
+   showing a vetting panel with a floating wall of brand marks whenever nothing
+   was selected. The panel was the most animated and most colourful thing on a
+   page whose product is the listings, so it took the attention the listings
+   were competing for, and it held 45% of the width to do it.
 
-.pane-idle .go-block { margin-top: 22px; }
-.idle-f { margin-top: 11px; font-size: 12px; line-height: 1.5; color: var(--ink-3); }
+   It is an overlay at every width now: a centred dialog on desktop, and below
+   1024px the same full-screen sheet the phone layout has always used. The
+   sheet is not a fallback — a dialog boxed inside a 390px screen is worse than
+   a sheet, and the sheet was already built and measured.
+
+   The SHELL carries the chrome and the height cap; .pane is the scrolling body
+   inside it. Splitting them is what lets the close button stay reachable while
+   a long posting scrolls under it, and it is why .pane no longer computes a
+   max-height off --stack-h — there is no sticky header to subtract from. */
+.pane-col {
+  position: fixed; z-index: 85; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(760px, calc(100vw - 40px));
+  max-height: min(88vh, 940px);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--card); border: 1px solid var(--rule-2); border-radius: var(--r-2);
+  /* Shared with the tailor modal, which enters exactly the same way from
+     exactly the same place. Redefined inside the ≤1024px block below, where
+     both become full-screen and a centred transform is wrong. */
+  animation: pop .3s var(--snap);
+}
+/* Not ease-in. It starts slow and delays the moment the reader is watching;
+   ease-out over the same duration reads as faster. */
+.pane-col.closing { animation: popOut .2s var(--snap) both; }
+@keyframes popOut { to { opacity: 0; transform: translate(-50%, calc(-50% + 10px)); } }
+
+/* Sits under the tailor's veil (90/91), because the tailor is opened FROM a
+   role and has to land on top of it rather than behind it.
+
+   WRITTEN AS `.veil.veil-job`, and that is not decoration. `.veil` is declared
+   further down this file and carries z-index 90; at equal specificity the later
+   rule wins, so a plain `.veil-job` here lost and the backdrop painted OVER the
+   dialog — every control inside it was unclickable while looking perfectly
+   normal. Doubling the class outranks the base rule wherever either one sits,
+   so the two cannot be reordered back into a bug. */
+.veil.veil-job { z-index: 84; }
 
 /* .idle-scope shared these rules until the idle panel stopped being a radar
    mark over the words PICK A ROLE. Only the tailoring modal's waiting state
@@ -871,10 +896,14 @@ a, button, summary, label, [role="button"], .row {
 .wait-scope i:nth-child(3) { animation-delay: 1.9s; }
 @keyframes ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 
-.pane { padding: 26px; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
+.pane { flex: 1; min-height: 0; padding: 26px 28px 30px; overflow: auto; overscroll-behavior: contain; }
 .pane.is-in { animation: rowIn .3s var(--snap) both; }
+/* Visible at every width. It used to be display:none above 1000px, because up
+   there the pane was a column and there was nothing to close — Escape was the
+   only way out and a mouse had none at all. It is a dialog now, so it needs a
+   control that can be clicked, and "all roles" says what closing does. */
 .back {
-  display: none; background: none; border: 0; color: var(--live); cursor: pointer;
+  display: inline-block; background: none; border: 0; color: var(--live); cursor: pointer;
   font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
   padding: 0; margin-bottom: 18px;
 }
@@ -1074,27 +1103,27 @@ a, button, summary, label, [role="button"], .row {
    1024 rather than 1000 so an iPad Pro in portrait gets the touch design.
    ============================================================ */
 @media (max-width: 1024px) {
-  /* minmax(0, 1fr), not 1fr — the same guard the two-column rule above
-     already carries. A grid item's min-width defaults to auto, so a bare
-     1fr track cannot shrink below its content's min-content, and .feed-col
-     floored the track at 333.6px inside a 300px .wrap: the US board scrolled
-     sideways at 320px. Whether it bites is content-dependent, so it was a
-     latent bug on all three boards, not a US one. */
-  .board { grid-template-columns: minmax(0, 1fr); }
-  .pane-col { position: fixed; inset: 0; z-index: 80; background: var(--bg); overflow: auto; display: none; }
-  /* Opening a role used to be an instant cut to a full screen of new text,
-     which on a phone reads as a page load rather than a detail view. Sliding
-     it up keeps the sense that the list is still underneath. */
-  .pane-col.open { display: block; animation: paneIn .3s var(--snap) both; }
+  /* THE SHEET, unchanged in behaviour and now reached by the same code path
+     desktop uses. A centred dialog inside a 390px screen is worse than a
+     full-screen sheet — there is no "behind" left to see, so the box is
+     decoration with a margin — and the sheet was already built and measured.
+     Only the box changes: same element, same open/close, same animation. */
+  .pane-col {
+    inset: 0; top: 0; left: 0; transform: none;
+    width: 100%; max-width: 100%; height: 100%; max-height: 100%;
+    background: var(--bg); border: 0; border-radius: 0;
+    animation: paneIn .3s var(--snap) both;
+  }
   /* Not ease-in. It starts slow and delays the moment the user is watching;
-     ease-out at the same duration reads as faster. */
+     ease-out at the same duration reads as faster. Overrides the base rule's
+     popOut, which translates against a centre this box no longer has. */
   .pane-col.closing { animation: paneOut .2s var(--snap) both; }
   @keyframes paneIn { from { opacity: 0; transform: translateY(22px); } }
   @keyframes paneOut { to { opacity: 0; transform: translateY(16px); } }
-  .pane-idle { display: none; }
-  .pane { max-height: none; min-height: 100vh; border: 0; border-radius: 0; padding: 22px 22px 70px; }
-  .back { display: inline-block !important; }
-
+  /* The veil is redundant under a sheet that covers the screen, and on a phone
+     it is one more full-viewport layer to composite for nothing. */
+  .veil.veil-job { display: none; }
+  .pane { padding: 22px 22px 70px; }
 }
 
 @media (max-width: 1024px) {
@@ -1270,6 +1299,19 @@ a, button, summary, label, [role="button"], .row {
    deliberate; on a 390px screen it is 30px of wasted width. */
 @media (max-width: 600px) {
   .feed { margin-inline: -15px; }
+  /* 48px rather than 56. The desktop card has 1300px to spend and a phone has
+     ~360px, so the same logo takes a visibly larger share of the line and
+     starts pushing the title into more wraps than it saves. Still up from the
+     40px it was. */
+  /* No grid-template-columns here: the ≤1024px "Variant A" rules above turn
+     .row into `display: block` with the crest floated, so a track list would
+     be dead CSS. Only the crest and the type move. */
+  .crest { width: 46px; height: 46px; font-size: 16px; }
+  /* line-height is what vertically centres the company against the floated
+     logo, so it is the LOGO'S height and moves with it — Variant A set both to
+     34 and changing one alone left the name sitting high in the box. */
+  .co { font-size: .875rem; line-height: 46px; }
+  .row { padding: 18px 18px var(--s3); }
   /* Edge-to-edge means the card padding is the only thing between text and a
      notch once the screen is rotated, so it takes the inset when there is one. */
   .row {

@@ -228,61 +228,40 @@
         <label><select id="f-sort" aria-label="Sort listings"><option value="new">Newest first</option><option value="company">By company</option></select></label>
       </div>
 
+      <!-- "Rank against my resume" lived on the vetting panel that the right-hand
+           column used to show, and it has to keep a home now that the column is
+           gone. The rail is a better one than the panel was: loading a resume
+           adds a "best for me" option to the sort control two elements to the
+           left, so the button now sits with the thing it changes. -->
       <div class="flags">
+        <button class="flag flag-rank" id="rank-resume" type="button">rank against my resume</button>
         <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
       </div>
     </div>
   </div>
 
+  <!-- ONE COLUMN. The board used to be a two-pane register — a feed on the left
+       and a permanently-occupied right column on the right — and the right
+       column always lost the argument for its own space. Empty it showed a
+       vetting panel with a floating wall of brand marks, which is the most
+       animated, most colourful thing on the page and therefore the first thing
+       the eye goes to; full it showed a role the reader had opened, which is
+       fine, but it kept the listings squeezed into 55% of the width for the
+       entire time nobody had opened anything.
+
+       A job board's product is the listings. Everything that competes with
+       them for attention is costing the thing people came for, so the column
+       is gone and the roles have the page. A role opens in a dialog instead —
+       see .pane-col in styles.css, which is now a modal on desktop and the
+       same full-screen sheet it always was on a phone. -->
   <div class="wrap board" id="results">
-    <section class="feed-col" aria-label="Listings">
-      <div class="feed-head"><span id="result-count">loading</span></div>
-      <ol class="feed" id="joblist"></ol>
-      <div class="void" id="empty" role="status" hidden>
-        <span class="void-mark" aria-hidden="true"></span>
-        <h3 id="empty-title">Radar clear</h3>
-        <p id="empty-body">Nothing matching. New roles land here within minutes.</p>
-      </div>
-    </section>
-
-    <aside class="pane-col" id="detail-col" aria-label="Selected role">
-      <!-- WHAT THE RIGHT-HAND COLUMN IS BEFORE ANYTHING IS SELECTED.
-
-           It used to be the words PICK A ROLE over a radar mark, which is why
-           the board opened the newest listing on load instead — 45% of a
-           desktop viewport spent telling somebody to do the obvious is worth
-           avoiding, and auto-opening was the cheap way out.
-
-           It is the wrong way out: it puts a reader inside a job they did not
-           choose, gives that job's URL to the address bar, and makes the first
-           listing look picked rather than merely newest.
-
-           So the panel earns the space instead. It answers the question a
-           first-time visitor actually has — why should I trust a job board I
-           have never heard of — with the one thing this site does that a
-           general listings site does not, and it names the companies rather
-           than asserting quality. The logo wall and the counts are filled from
-           the live board by renderIdle(); the copy is static so a crawler and a
-           no-JS reader still get it. -->
-      <div class="pane-idle" id="detail-placeholder">
-        <p class="idle-k">Vetted employers only</p>
-        <!-- WORDED TO WHAT IS ACTUALLY TRUE. A first draft said "every company
-             on this board was checked by hand", and this repo cannot stand
-             behind that: 37 Tier B additions are recorded as unverified and 129
-             candidates have never been researched at all. What IS true, and is
-             the stronger claim anyway, is the gate — a posting from a company
-             not on the list is dropped before anything else runs, and the
-             turn-away rate is measured. Claim the mechanism, not a per-company
-             guarantee. -->
-        <h2 class="idle-h">We keep a list of real employers. Nothing else gets on this board.</h2>
-        <p class="idle-b">Course sellers, intern mills and pay-to-work schemes are turned away at the door — around <b>sixty postings refused for every one listed</b>.</p>
-        <div class="pool" id="idle-wall" aria-hidden="true"></div>
-        <p class="idle-n" id="idle-n">A few of the companies we watch.</p>
-        <button class="go go-block" id="idle-tailor" type="button">Rank every role against my resume</button>
-        <p class="idle-f">Read in this tab, never uploaded or stored. Or pick any role on the left for the full posting.</p>
-      </div>
-      <article class="pane" id="detail" hidden></article>
-    </aside>
+    <div class="feed-head"><span id="result-count">loading</span></div>
+    <ol class="feed" id="joblist"></ol>
+    <div class="void" id="empty" role="status" hidden>
+      <span class="void-mark" aria-hidden="true"></span>
+      <h3 id="empty-title">Radar clear</h3>
+      <p id="empty-body">Nothing matching. New roles land here within minutes.</p>
+    </div>
   </div>
 
   <!-- The email signup, in a band of its own.
@@ -632,6 +611,23 @@
     </div>
   </footer>
 </main>
+
+<!-- The opened role.
+
+     It is the same element the mobile layout has always used — a full-screen
+     sheet over the list — and desktop now gets it as a centred dialog rather
+     than as a third of the page standing permanently open. role="dialog" and
+     aria-modal are new: while it was a column it was part of the page and an
+     <aside> was the honest markup for it; as an overlay it is a dialog, and
+     saying so is what makes Escape, the backdrop and the focus move read as
+     one thing to a screen reader.
+
+     It sits below the tailor modal in z-order (84/85 against 90/91), because
+     the tailor is opened FROM a role and has to land on top of it. -->
+<div class="veil veil-job" id="detail-backdrop" hidden></div>
+<div class="pane-col" id="detail-col" role="dialog" aria-modal="true" aria-labelledby="detail-role" hidden>
+  <article class="pane" id="detail"></article>
+</div>
 
 <div class="veil" id="tailor-backdrop" hidden></div>
 <div class="modal" id="tailor" role="dialog" aria-modal="true" aria-labelledby="tailor-title" hidden>
