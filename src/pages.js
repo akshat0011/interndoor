@@ -1889,7 +1889,11 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     ${answerBar(live, profile, region)}
 
     <section class="strip">
-      <div class="strip-head"><h2>Open internships${live.length ? ` &middot; ${live.length}` : ''}</h2></div>
+      <!-- The one heading on this page that is not a label but the main event:
+           it is the count of roles a reader can apply to right now. The number
+           is a lime chip rather than a middot and a digit, so it reads as the
+           answer to "is there anything here" from across the page. -->
+      <div class="strip-head"><h2 class="h2-lead">Open internships${live.length ? ` <b>${live.length}</b>` : ''}</h2></div>
       ${live.length
         ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1 })).join('')}</div>`
         : `<div class="empty">

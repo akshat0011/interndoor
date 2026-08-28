@@ -187,11 +187,31 @@ a.jp-crest:active { transform: scale(.97); }
 
 .jp-main > section { padding-top: 34px; }
 
+/* 12px and a step brighter. At 10.5px in --ink-3 with .18em of tracking these
+   were decoration — every section on the page announced itself in the size
+   this file reserves for labels nobody has to read, including the one that
+   says how many roles are open. Tracking comes down with the size going up;
+   .18em is a lot to carry at a readable size. */
 .page h2 {
   font-family: var(--mono); font-weight: 700;
-  font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--ink-3); margin: 0 0 14px;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-2); margin: 0 0 14px;
   display: flex; align-items: center; gap: 11px;
+}
+
+/* THE HUB'S ROLE COUNT IS NOT A LABEL. It is the answer to the question the
+   visitor arrived with — is there anything open here — so it is the one h2 on
+   the site that gets size, full ink and the accent. */
+.page h2.h2-lead {
+  font-family: var(--display); font-weight: 800;
+  font-size: 20px; letter-spacing: -.02em; text-transform: uppercase;
+  color: var(--ink); gap: 12px; margin-bottom: 16px;
+}
+.page h2.h2-lead b {
+  font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: 0;
+  color: var(--live-ink); background: var(--live);
+  padding: 3px 9px; border-radius: 999px; flex: none;
+  font-variant-numeric: tabular-nums;
 }
 /* A hairline that runs from the label to the edge. Cheap, and it stops a page
    of stacked text blocks reading as one undifferentiated column. */
@@ -409,8 +429,8 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .facts > div:last-child { border-bottom: 0; }
 .facts dt {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .13em;
-  text-transform: uppercase; color: var(--ink-3); flex: none;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-2); flex: none;
 }
 .facts dd {
   margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink);
@@ -904,8 +924,8 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
 }
 .cp-facts dt {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .13em;
-  text-transform: uppercase; color: var(--ink-3); flex: none;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-2); flex: none;
 }
 .cp-facts dd {
   margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink);
@@ -931,9 +951,12 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   padding: 14px 16px; background: var(--card);
   border: 1px solid var(--rule); border-radius: var(--r-2);
 }
+/* "WHO THEY TAKE" and "WHERE" name the two facts this bar exists to answer,
+   and at 10px in --ink-3 they were harder to read than the answers under them.
+   11.5px and a step brighter. */
 .ans dt {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .09em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-2);
 }
 .ans dd {
   margin: 7px 0 0; font-size: 19px; font-weight: 700; letter-spacing: -.02em;
