@@ -486,6 +486,71 @@ export function placesOf(location, region = DEFAULT_REGION) {
 }
 
 /** The badges under the headline: freshness, pay, competition. */
+/**
+ * "Posted 44d ago" is a trust problem on a board whose whole promise is
+ * freshness — it reads as stale even when the role is wide open, and on ATS
+ * rows, which persist for months, it is the common case rather than the edge.
+ *
+ * verifiedAt() already encodes exactly when we may say otherwise, and why:
+ * ATS boards are re-read every 30 minutes so board presence is ground truth,
+ * while a LinkedIn card is almost never re-encountered and claiming it is
+ * still open would invent the one fact a reader would most rely on. It was
+ * written, tested and never rendered. This renders it.
+ *
+ * Measured across the three live boards: 213 of 786 rows (27%) can be
+ * confirmed right now — and they are disproportionately the ones whose posted
+ * date looks worst.
+ */
+function stillListed(job) {
+  const seen = verifiedAt(job);
+  if (!seen) return '';
+  return `<p class="jp-live"><i aria-hidden="true"></i>`
+    + `<strong>Still listed on the employer&rsquo;s own careers page</strong>`
+    + `<span> &middot; checked <time datetime="${new Date(seen).toISOString()}" data-ago="${seen}">`
+    + `${esc(relLabel(seen))}</time></span></p>`;
+}
+
+/** "12 minutes ago". page.js rewrites every data-ago on load, so this is only
+    what a crawler and a no-JS reader see. */
+function relLabel(ms) {
+  const mins = Math.max(1, Math.round((Date.now() - ms) / 60000));
+  if (mins < 60) return `${mins} minute${mins === 1 ? '' : 's'} ago`;
+  const h = Math.round(mins / 60);
+  return `${h} hour${h === 1 ? '' : 's'} ago`;
+}
+
+/**
+ * What is unusual about THIS posting, rather than what it says.
+ *
+ * Students do not only want facts, they want to know which of them matter —
+ * and every line here is a stored fact the page already carries, restated as
+ * the reason it is worth noticing. Nothing is generated or inferred: no "great
+ * company", no "strong fit", no compensation band we were not told. Those
+ * would be the stipendStatus mistake with better prose.
+ *
+ * When a posting has none of these the block does not render at all, which is
+ * the point — most postings are ordinary, and a "what stands out" section that
+ * always finds something stands for nothing.
+ */
+function standouts(job, locations = 1) {
+  const out = [];
+  const money = stipendText(job);
+  if (money) out.push(`Pay is stated up front &mdash; <strong>${esc(money)}</strong>. Most postings never say.`);
+  if (/^remote$/i.test(String(job.workplaceType ?? '').trim())) out.push('<strong>Fully remote</strong>, so where you live is not a constraint.');
+  const q = (String(job.applicants ?? '').match(/([\d,]+)/) || [])[1];
+  const n = /over/i.test(String(job.applicants ?? '')) ? null : (q ? Number(q.replace(/,/g, '')) : null);
+  if (n === 0) out.push('<strong>Nobody had applied</strong> when this was listed &mdash; you would be near the front of the queue.');
+  else if (n != null && n < 10) out.push(`Only <strong>${n}</strong> ${n === 1 ? 'person had' : 'people had'} applied when this was listed.`);
+  const posted = job.postedAt ?? job.firstSeenAt;
+  if (posted && Date.now() - posted < DAY) out.push('<strong>Posted in the last 24 hours.</strong>');
+  if (locations > 1) out.push(`The same role is open in <strong>${locations} locations</strong>.`);
+  if (!out.length) return '';
+  return `<section class="jp-why">
+          <h2>What stands out</h2>
+          <ul class="why-list">${out.map((t) => `<li>${t}</li>`).join('')}</ul>
+        </section>`;
+}
+
 function statusPills(job) {
   const money = stipendText(job);
   return [
@@ -1038,6 +1103,10 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // genuinely different roles. The role a reader is already on is excluded
   // whole, so its other cities are not offered back as "more".
   const here = roleKey(job);
+  /* How many postings this same opening has — one per city when an employer
+     advertises a role in several. It is the count the board's cards already
+     collapse on, so the page and the card agree. */
+  const locations = siblings.filter((j) => roleKey(j) === here).length || 1;
   const seenRoles = new Set([here]);
   const others = newestFirst(siblings.filter((j) => String(j.id) !== String(job.id)))
     .filter((j) => {
@@ -1075,16 +1144,32 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <header class="jp-hero">
           <div class="jp-id">
             ${crest(job.company, job.logo, { href: hub })}
-            <div>
+            <div class="jp-id-t">
               <a class="jp-co" href="${hub}">${esc(job.company)}</a>
+              <!-- A REASON TO FOLLOW THE LINK, not just a name that happens to
+                   be one. The count is this employer's other live roles in this
+                   region, which is the only company fact this page holds that a
+                   reader can act on; with no others it says so plainly rather
+                   than offering a hub that will look empty. -->
+              <a class="jp-co-more" href="${hub}">${others.length
+                ? `${others.length} other open role${others.length === 1 ? '' : 's'} here`
+                : 'See this employer&rsquo;s page'} <i aria-hidden="true">&rarr;</i></a>
             </div>
           </div>
 
-          <h1>${esc(job.title)}</h1>
+          <!-- The size step is chosen from the TITLE'S OWN LENGTH, not from the
+               viewport. Employers write 30-character titles and 112-character
+               ones, and one clamp cannot serve both: at the size that makes a
+               short title land, a long one takes four or five lines and pushes
+               everything a reader came for below the fold. -->
+          <h1${job.title.length > 64 ? ' class="is-long"' : job.title.length > 40 ? ' class="is-mid"' : ''}>${esc(job.title)}</h1>
           ${job.roleLabel ? `<p class="jp-focus">${esc(job.roleLabel)}</p>` : ''}
 
           <div class="pills">${statusPills(job)}</div>
+          ${stillListed(job)}
         </header>
+
+        ${standouts(job, locations)}
 
         ${job.summary ? `<section>
           <h2>The gist</h2>
@@ -1098,7 +1183,13 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
 
         ${(job.keySkills ?? []).length ? `<section>
           <h2>Skills mentioned</h2>
-          <div class="chips">${(job.keySkills ?? []).map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>
+          <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
+               ended the reader's journey; each is now a search of this board,
+               which turns the end of a job page into the start of the next
+               one. The board already reads ?q= from the URL, so this needs no
+               new route. -->
+          <div class="chips">${(job.keySkills ?? []).map((sk) =>
+            `<a class="chip" href="${regionHref(`/?q=${encodeURIComponent(sk)}`, region)}">${esc(sk)}</a>`).join('')}</div>
         </section>` : ''}
 
         <section>
@@ -1119,9 +1210,20 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <dl class="facts">
             ${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n            ')}
           </dl>
+          <!-- The one conversion point on the page, and it used to be a single
+               grey-green line that read as a footnote to the facts above it.
+               It is the only thing here that survives the role closing, so it
+               gets a heading, a sentence and a real target. -->
           <a class="jp-sub" href="${regionHref('/alerts', region)}">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            Get roles like this the minute they post
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="jp-sub-t">
+              <strong>Get internships like this first</strong>
+              <!-- inName carries its own preposition ("in the US"), so it goes
+                   AFTER the noun. Stripping the "in " to put it before gave
+                   "New the US roles". -->
+              <em>New engineering internships ${esc(region.inName)}, the minute they are posted.</em>
+            </span>
+            <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
           </a>
         </div>
       </aside>

@@ -15,18 +15,33 @@
    ============================================================ */
 
 .page { padding: 22px 0 0; }
-.page .wrap { max-width: 1120px; }
+/* 1120 left 160px of dead ground down each side of a 1440 screen, and the
+   44px gutter then held the rail visibly apart from the column it belongs to.
+   Wider page, wider rail, tighter gutter: the two blocks read as one layout
+   instead of two things sharing a screen. The prose keeps its own 68ch cap, so
+   the extra width goes to the title and the rail rather than to line length. */
+.page .wrap { max-width: 1200px; }
 
 /* ---------- breadcrumbs ---------- */
 
 .crumbs {
   display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3); margin-bottom: 22px;
+  /* 10.5px uppercase mono in --ink-3 was decoration you could not read. It is
+     a real navigation control on the page Google drops strangers onto — the
+     only route to the employer's hub above the fold — so it takes a legible
+     size and the ordinary text colour. Still mono, still small: it is a path,
+     not a heading. */
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  color: var(--ink-2); margin-bottom: 20px;
 }
-.crumbs a { color: var(--ink-2); text-decoration: none; transition: color .16s; }
+/* The trailing item is the page you are on, so it stays quiet — and it is
+   truncated rather than allowed to wrap the whole path onto three lines. */
+.crumbs > span {
+  max-width: 46ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.crumbs a { color: var(--ink); text-decoration: none; transition: color .16s; }
 .crumbs i { font-style: normal; color: var(--rule-2); }
-.crumbs span { color: var(--ink-3); }
+.crumbs span { color: var(--ink-2); }
 @media (hover: hover) and (pointer: fine) {
   .crumbs a:hover { color: var(--live); }
 }
@@ -50,8 +65,8 @@
    bug. The guard is inert whenever the content fits — measured across 1016
    page/width combinations — so carry it everywhere. */
 .jp-grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) 336px;
-  gap: 44px; align-items: start;
+  display: grid; grid-template-columns: minmax(0, 1fr) 356px;
+  gap: 28px; align-items: start;
 }
 
 /* ---------- hero ---------- */
@@ -99,8 +114,12 @@ a.jp-crest:active { transform: scale(.97); }
 /* The role is the headline and the company is the eyebrow above it — the same
    correction the card list already carries. Nobody arrives searching for
    "FanCode"; they arrive searching for "backend intern". */
+/* THREE STEPS, CHOSEN BY TITLE LENGTH in pages.js, not by viewport.
+   At 52px a 103-character title set three lines and 153px tall, pushing the
+   gist and the facts below the fold on a laptop. A short title still gets the
+   full size; the two longer steps are ~15% and ~27% down from it. */
 .page h1 {
-  font-size: clamp(30px, 4.6vw, 52px); line-height: .98;
+  font-size: clamp(28px, 4vw, 44px); line-height: 1.02;
   letter-spacing: -.04em; text-transform: uppercase;
   overflow-wrap: break-word;
   /* Tracking this tight eats the word space with it, and titles here are full
@@ -108,6 +127,8 @@ a.jp-crest:active { transform: scale(.97); }
      "Internship(Backend)". Put back what the tracking took. */
   word-spacing: .06em;
 }
+.page h1.is-mid  { font-size: clamp(26px, 3.4vw, 38px); }
+.page h1.is-long { font-size: clamp(24px, 2.9vw, 33px); line-height: 1.06; }
 .jp-focus {
   margin-top: 12px; font-size: 17px; font-weight: 500; color: var(--live);
   letter-spacing: -.01em;
@@ -176,7 +197,7 @@ a.jp-crest:active { transform: scale(.97); }
    copy — and it is the paragraph that tells somebody in one breath whether to
    care. It was sitting unused in the data. */
 .summary {
-  position: relative; padding: 20px 22px 20px 24px;
+  position: relative; padding: 15px 18px 15px 20px;
   background: var(--card); border: 1px solid var(--rule);
   border-radius: var(--r-2); overflow: hidden;
   font-size: 16px; line-height: 1.62; color: var(--ink);
@@ -201,11 +222,69 @@ a.jp-crest:active { transform: scale(.97); }
 }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+/* Each chip is a search of the board now, so it is sized and coloured to be
+   read and lit to be pressed. 10.5px uppercase was the size this file uses for
+   labels; these are destinations. */
 .chip {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-2);
+  display: inline-block;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink-2); text-decoration: none;
   background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: var(--r); padding: 5px 10px;
+  border-radius: var(--r); padding: 6px 11px;
+  transition: color .16s, border-color .16s, background .16s;
+}
+@media (hover: hover) and (pointer: fine) {
+  a.chip:hover {
+    color: var(--live);
+    border-color: color-mix(in oklab, var(--live) 50%, transparent);
+    background: color-mix(in oklab, var(--live) 9%, var(--card-2));
+  }
+}
+a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+
+/* The employer, as a section rather than a caption. It was a name that
+   happened to be a link; the second line gives the link a reason and says what
+   is on the other side of it. */
+.jp-id-t { display: grid; gap: 3px; min-width: 0; }
+.jp-co-more {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em;
+  color: var(--ink-2); text-decoration: none; transition: color .16s;
+}
+.jp-co-more i { font-style: normal; transition: transform .18s var(--snap); }
+@media (hover: hover) and (pointer: fine) {
+  .jp-co-more:hover { color: var(--live); }
+  .jp-co-more:hover i { transform: translateX(2px); }
+}
+
+/* "Posted 44d ago" with nothing beside it reads as dead. This is the sentence
+   that answers it, and it renders only where we can actually stand behind it —
+   see verifiedAt() in pages.js. */
+.jp-live {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  margin-top: 12px; font-size: 13px; line-height: 1.5;
+}
+.jp-live i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--cash);
+  flex: none; align-self: center;
+}
+.jp-live strong { color: var(--cash); font-weight: 600; }
+.jp-live span { color: var(--ink-2); }
+
+/* What stands out. Deliberately plain — the facts are doing the work and a
+   boxed, tinted, iconned treatment would make three ordinary sentences look
+   like a promotion. */
+.jp-why { margin-top: 6px; }
+.why-list { display: grid; gap: 9px; max-width: 68ch; }
+.why-list li {
+  position: relative; padding-left: 22px;
+  font-size: 14.5px; line-height: 1.5; color: var(--ink-2);
+}
+.why-list li strong { color: var(--ink); font-weight: 600; }
+.why-list li::before {
+  content: ""; position: absolute; left: 3px; top: .5em;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: color-mix(in oklab, var(--live) 70%, transparent);
 }
 
 /* ---------- the apply rail ---------- */
@@ -260,14 +339,30 @@ a.jp-crest:active { transform: scale(.97); }
    <dl> is for, and assistive tech gets the pairing for free. Rows rather than
    the old auto-fit grid — that grid left a dead empty cell whenever the count
    was not a multiple of the column count, which it usually was not. */
-/* styles.css defines /* A fact the posting never stated. Deliberately NOT `.dim`, which is already
+/* A fact the posting never stated. Deliberately NOT `.dim`, which is already
    the footer's muted paragraph in styles.css and carries a margin that would
    push the value out of its cell — the same class collision that silently
    clamped `.gist` to two lines. Declared in both stylesheets because a
    generated page loads styles.css first and page.css second. */
 .facts dd.unk, .cp-facts dd.unk, .unk { color: var(--ink-3); font-weight: 400; }
 
-.facts as the detail pane's auto-fit column grid. Every
+/* CSS COMMENTS DO NOT NEST, AND THIS RULE WAS DEAD FOR IT.
+   ------------------------------------------------------------------------
+   The note above was once pasted INSIDE the note below, so this block opened
+   with two comment-start sequences and only one close. The first close ended
+   the outer comment and the rest of that sentence was left in the stylesheet
+   as bare text. (Do not write a comment-start sequence inside a comment while
+   explaining this — that is how it happened.) The parser read it as the start of a selector, swallowed
+   `.jp-card .facts` along with it, and this rule never applied on any page.
+
+   What that looked like: styles.css's `.facts` auto-fit grid took over, so a
+   336px rail laid its facts out in TWO 166px columns, and `overflow-wrap:
+   anywhere` on the value then broke words down the middle — real pages read
+   "Comp uter Scien ce/C ompu ter Engin eerin g" and "Developme nt". Every job
+   page in every region, and it looked like a layout choice rather than a
+   parse error.
+
+   styles.css defines .facts as the detail pane's auto-fit column grid. Every
    one of those properties is reset here rather than only the ones that looked
    wrong: leaving grid-template-columns behind laid the rail out in two columns
    and hyphenated "Maharashtra" down the middle of a card. */
@@ -293,11 +388,28 @@ a.jp-crest:active { transform: scale(.97); }
 /* The retention link, repeated where somebody has just decided to apply and is
    at their most willing to hear about the next one. */
 .jp-sub {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 13px 18px; border-top: 1px solid var(--rule);
-  background: var(--card-2); color: var(--live);
-  font-size: 13px; font-weight: 600; text-decoration: none;
+  display: flex; align-items: center; gap: 12px;
+  padding: 15px 18px; border-top: 1px solid var(--rule);
+  background: color-mix(in oklab, var(--live) 7%, var(--card-2));
+  color: var(--live); text-decoration: none;
   transition: background .16s;
+}
+.jp-sub-t { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.jp-sub-t strong { font-size: 13.5px; font-weight: 700; color: var(--live); }
+/* MEASURED. The CTA sits on a lime-tinted ground, and in the light theme
+   --live on its own tint fell to 4.18 against a 4.5 floor — the tint costs
+   exactly what the token had spare. Darkened for that theme and that element
+   only; --live is correct everywhere it is not sitting on itself. Same trap as
+   .sub-msg, .flag-rank and the board's freshness pill. */
+:root[data-theme="light"] .jp-sub-t strong { color: #46590a; }
+:root[data-theme="light"] .jp-sub { color: #46590a; }
+/* Pre-existing, and under the bar for the same reason: the role focus is
+   --live on the card, which measures 4.45 in the light theme. */
+:root[data-theme="light"] .jp-focus { color: #4a6100; }
+.jp-sub-t em { font-style: normal; font-size: 12px; line-height: 1.4; color: var(--ink-2); }
+.jp-sub-go { font-style: normal; flex: none; transition: transform .18s var(--snap); }
+@media (hover: hover) and (pointer: fine) {
+  .jp-sub:hover .jp-sub-go { transform: translateX(3px); }
 }
 .jp-sub svg { flex: none; }
 @media (hover: hover) and (pointer: fine) {

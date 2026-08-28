@@ -203,6 +203,16 @@ export default async function handler(req, res) {
          request. The status and the provider's own message are enough to
          diagnose with. */
       console.error(`subscribe: provider returned ${result.status} ${result.detail}`);
+
+      /* A REJECTED KEY IS NOT A TRANSIENT FAULT, and telling the reader to try
+         again in a minute is a promise that will never come true — they will
+         retry, fail, and be no more subscribed than before. 401/403 means the
+         key is missing, mistyped, or not entitled to the API, which is a
+         misconfiguration only we can fix. Functionally the list is not
+         switched on, so it says exactly what the no-key branch above says. */
+      if (result.status === 401 || result.status === 403) {
+        return res.status(503).json({ error: 'Email alerts are not switched on yet. Follow the Telegram channel in the meantime.' });
+      }
       return res.status(502).json({ error: 'Could not add you just now. Please try again in a minute.' });
     }
     return res.status(200).json({ ok: true });
