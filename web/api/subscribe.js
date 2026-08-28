@@ -148,19 +148,48 @@ function clientIp(req) {
  * thing either way.
  */
 export async function addSubscriber(email, region, apiKey, fetchImpl = fetch) {
-  const res = await fetchImpl(API, {
+  /* THE REGION GOES IN referrer_url, NOT ONLY IN A TAG.
+     Tags are a PAID feature — Buttondown answers 403 `feature_disabled`
+     ("Tags require a Basic plan or higher") on the free tier, and it rejects
+     the WHOLE request rather than dropping the tag. So every signup was
+     failing, and the region would have been lost along with it. The board URL
+     is an ordinary string field on every plan and it names the region exactly,
+     so the segmentation survives whether or not tags do. */
+  const referrer = `https://interndoor.com${regionPathFor(region)}`;
+  const send = (body) => fetchImpl(API, {
     method: 'POST',
     headers: { authorization: `Token ${apiKey}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ email_address: email, tags: [`region:${region}`], referrer_url: 'https://interndoor.com' }),
+    body: JSON.stringify(body),
   });
+
+  const base = { email_address: email, referrer_url: referrer };
+  let res = await send({ ...base, tags: [`region:${region}`] });
 
   if (res.ok) return { ok: true, created: true };
 
   let detail = '';
   try { detail = JSON.stringify(await res.json()); } catch { /* body is not JSON; the status is enough */ }
 
+  /* ONE RETRY WITHOUT TAGS, and only for this exact refusal. A signup is worth
+     more than the tag on it: dropping the address because the account cannot
+     afford a label would be the worst possible trade. It is deliberately
+     narrow — a 403 that is not `feature_disabled` about tags is a real
+     permission problem and must keep failing loudly rather than being retried
+     into a different error. When the plan is upgraded the first call simply
+     succeeds and this never runs. */
+  if (res.status === 403 && /feature_disabled/.test(detail) && /tag/i.test(detail)) {
+    res = await send(base);
+    if (res.ok) return { ok: true, created: true, tagged: false };
+    try { detail = JSON.stringify(await res.json()); } catch { /* status is enough */ }
+  }
+
   if (res.status === 400 && /already|exists|duplicate/i.test(detail)) return { ok: true, created: false };
   return { ok: false, status: res.status, detail };
+}
+
+/** '' for India, '/us', '/uk' — the board a subscriber signed up from. */
+function regionPathFor(code) {
+  return ({ IN: '', US: '/us', GB: '/uk' })[code] ?? '';
 }
 
 export default async function handler(req, res) {

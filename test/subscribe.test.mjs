@@ -96,6 +96,36 @@ await addSubscriber('a@b.com', 'US', 'secret', async (url, opts) => {
   sent = { url, opts }; return { ok: true };
 });
 check('the region travels as a tag', JSON.parse(sent.opts.body).tags, ['region:US']);
+// ...AND in a field that is not a paid feature, so it survives the fallback
+// below. Buttondown gates tags behind Basic; referrer_url is on every plan.
+check('the region also travels in referrer_url', JSON.parse(sent.opts.body).referrer_url, 'https://interndoor.com/us');
+
+console.log('\n== tags are a PAID feature, and a signup is worth more than a label ==');
+// Buttondown answers 403 feature_disabled — "Tags require a Basic plan or
+// higher" — and rejects the WHOLE request rather than dropping the tag, so
+// every signup was failing on the free plan. Retry once without them.
+const TAGS_403 = { ok: false, status: 403, json: async () => ({ code: 'feature_disabled', detail: 'Tags require a Basic plan or higher - please upgrade your account.', metadata: { tags: ['region:IN'] } }) };
+const calls = [];
+const degraded = await addSubscriber('a@b.com', 'IN', 'k', async (url, opts) => {
+  calls.push(JSON.parse(opts.body));
+  return calls.length === 1 ? TAGS_403 : { ok: true };
+});
+check('the subscriber is still added', degraded.ok, true);
+check('and is flagged as untagged', degraded.tagged, false);
+check('exactly one retry', calls.length, 2);
+check('the first attempt carried tags', calls[0].tags, ['region:IN']);
+check('the retry carries none', 'tags' in calls[1], false);
+check('and still carries the region', calls[1].referrer_url, 'https://interndoor.com');
+
+// NARROW ON PURPOSE. A 403 that is not about tags is a real permission
+// problem and must keep failing loudly rather than being retried into a
+// different error.
+let tries = 0;
+const forbidden = await addSubscriber('a@b.com', 'IN', 'k', async () => {
+  tries++; return { ok: false, status: 403, json: async () => ({ code: 'forbidden', detail: 'nope' }) };
+});
+check('an unrelated 403 is not retried', tries, 1);
+check('and is not swallowed', forbidden.ok, false);
 check('the address is the one given', JSON.parse(sent.opts.body).email_address, 'a@b.com');
 check('the key is a header, never a query param', sent.url.includes('secret'), false);
 check('and it is sent as a token', sent.opts.headers.authorization, 'Token secret');
