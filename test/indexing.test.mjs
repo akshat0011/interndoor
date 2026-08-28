@@ -251,6 +251,15 @@ check('…and nothing was requested', f.calls.length, 0);
 res = await runIndexingSweep(freshStore(), cfg({ enabled: false }), { fetchImpl: f.fn });
 check('disabled means disabled', res.skipped, 'disabled');
 
+/* Right after a seed, everything is held back by minAgeMinutes. Reporting that
+   as "queue-empty" sends you hunting for a bug in the seeding that is not
+   there — the guard is working. The two causes must read differently. */
+check('an empty queue says so', (await runIndexingSweep(freshStore(), cfg(), { fetchImpl: f.fn })).skipped, 'queue-empty');
+st = freshStore();
+st.indexQueue([A], UPDATED, T);
+res = await runIndexingSweep(st, cfg({ minAgeMinutes: 5 }), { fetchImpl: f.fn, now: T + 1000 });
+check('a queue held back by minAge does NOT say queue-empty', res.skipped, 'nothing-due-yet');
+
 /* dailyCap is clamped to Google's real ceiling: a bigger number is not a bigger
    allowance, it is the same allowance plus refusals. */
 st = freshStore();

@@ -218,7 +218,18 @@ export async function runIndexingSweep(store, cfg, {
     maxAttempts,
     now,
   });
-  if (!batch.length) return { sent: 0, spent, skipped: 'queue-empty' };
+  if (!batch.length) {
+    /* An empty batch has two very different causes and reporting both as
+       "queue-empty" sends you looking for a bug in the seeding. Right after a
+       seed EVERYTHING is held back by minAgeMinutes, which is the guard doing
+       its job, not an empty queue. */
+    const { pendingUpdate, pendingDelete } = store.indexStats({ now, maxAttempts });
+    return {
+      sent: 0,
+      spent,
+      skipped: (pendingUpdate + pendingDelete) ? 'nothing-due-yet' : 'queue-empty',
+    };
+  }
 
   if (dryRun) return { sent: 0, spent, wouldSend: batch };
 
