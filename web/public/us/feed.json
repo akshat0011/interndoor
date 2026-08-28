@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-backend-engineer-infrastructure-engineering-winter-spring-2-4460185802",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-backend-engineer-infrastructure-engineering-winter-spring-2-4460185802",
+      "title": "Internship, Backend Engineer, Infrastructure Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Design and manage infrastructure for vehicle development\n• Work with Python, Go, and cloud platforms\n• On-site full-time for 12+ weeks in Fremont",
+      "date_published": "2026-08-28T05:32:03.622Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-site-reliability-engineer-infrastructure-engineering-winter-4460186755",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-site-reliability-engineer-infrastructure-engineering-winter-4460186755",
+      "title": "Internship, Site Reliability Engineer, Infrastructure Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Monitor and maintain critical infrastructure dashboards\n• Write automation scripts in Python/Go/Bash for reliability\n• Work on-site in Fremont, CA for 12+ weeks full-time",
+      "date_published": "2026-08-28T05:31:42.799Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006",
       "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006",
       "title": "SSP: Simulation Engineering Co-op (Fall 2026, SIM STS) — Siemens Digital Industries Software",
@@ -575,30 +599,6 @@
       "title": "Quality Engineering Intern-Summer 2027 — Skyworks Solutions, Inc.",
       "content_text": "Company: Skyworks Solutions, Inc. · Location: Milpitas, CA · Duration: Summer 2027\n• Support quality engineering processes for aerospace and defense products\n• Work with product specs, quality systems, and military standards\n• Based in milpitas, ca for summer 2027",
       "date_published": "2026-08-27T18:32:45.884Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236",
-      "title": "Power Amplifier IC Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027\n• Design RF power amplifiers and simulate using Keysight ADS and Ansys HFSS\n• Collaborate with engineers on multi-chip modules and troubleshoot technical issues\n• Work on-site in Irvine for January–June 2027 with global team",
-      "date_published": "2026-08-27T18:32:08.750Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169",
-      "title": "RF EM Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027\n• Design RF filters and passive components for 5G/6G systems\n• Use HFSS and EMX for electromagnetic simulations\n• Work with a technical mentor on product development",
-      "date_published": "2026-08-27T18:32:01.394Z",
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."

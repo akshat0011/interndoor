@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 28 Aug 2026 06:11:34 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 28 Aug 2026 06:16:46 GMT</lastBuildDate>
+  <item>
+    <title>Internship, Backend Engineer, Infrastructure Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-backend-engineer-infrastructure-engineering-winter-spring-2-4460185802</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-backend-engineer-infrastructure-engineering-winter-spring-2-4460185802</guid>
+    <pubDate>Fri, 28 Aug 2026 05:32:03 GMT</pubDate>
+    <description>Company: Tesla · Location: Fremont, CA · Duration: 12 weeks
+• Design and manage infrastructure for vehicle development
+• Work with Python, Go, and cloud platforms
+• On-site full-time for 12+ weeks in Fremont</description>
+  </item>
+  <item>
+    <title>Internship, Site Reliability Engineer, Infrastructure Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-site-reliability-engineer-infrastructure-engineering-winter-4460186755</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-site-reliability-engineer-infrastructure-engineering-winter-4460186755</guid>
+    <pubDate>Fri, 28 Aug 2026 05:31:42 GMT</pubDate>
+    <description>Company: Tesla · Location: Fremont, CA · Duration: 12 weeks
+• Monitor and maintain critical infrastructure dashboards
+• Write automation scripts in Python/Go/Bash for reliability
+• Work on-site in Fremont, CA for 12+ weeks full-time</description>
+  </item>
   <item>
     <title>SSP: Simulation Engineering Co-op (Fall 2026, SIM STS) — Siemens Digital Industries Software</title>
     <link>https://interndoor.com/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006</link>
@@ -496,26 +516,6 @@
 • Support quality engineering processes for aerospace and defense products
 • Work with product specs, quality systems, and military standards
 • Based in milpitas, ca for summer 2027</description>
-  </item>
-  <item>
-    <title>Power Amplifier IC Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.</title>
-    <link>https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-ic-design-co-op-winter-spring-2027-4459890236</guid>
-    <pubDate>Thu, 27 Aug 2026 18:32:08 GMT</pubDate>
-    <description>Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027
-• Design RF power amplifiers and simulate using Keysight ADS and Ansys HFSS
-• Collaborate with engineers on multi-chip modules and troubleshoot technical issues
-• Work on-site in Irvine for January–June 2027 with global team</description>
-  </item>
-  <item>
-    <title>RF EM Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.</title>
-    <link>https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-winter-spring-2027-4459898169</guid>
-    <pubDate>Thu, 27 Aug 2026 18:32:01 GMT</pubDate>
-    <description>Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Spring 2027
-• Design RF filters and passive components for 5G/6G systems
-• Use HFSS and EMX for electromagnetic simulations
-• Work with a technical mentor on product development</description>
   </item>
 </channel>
 </rss>
