@@ -134,6 +134,35 @@ a, button, summary, label, [role="button"], .row {
 /* The inset padding is 0px on every screen without a notch. In landscape on
    one, the 22px each side that this width leaves is not enough to clear it,
    and both boards now opt into viewport-fit=cover. */
+/* THE CARD IS THE MEASURE, NOT THE SCREEN.
+   With the right-hand column gone the feed inherited the full 1320px, and a
+   full-width row spends the middle third of itself on nothing: the content
+   column stretches, the action column stays pinned to the far edge, and the
+   gap between them grows with the monitor. 1120px is as wide as a card can be
+   before that gap reads as a mistake.
+
+   SOME gap is structural and cannot be removed: the action column has to hold
+   a straight right edge or the Apply buttons stop being scannable down the
+   page, so a card with a short title will always have space between its last
+   word and its button. The question is only how much. Measured across the
+   first 30 cards, the gap tracks the measure one-for-one and card height does
+   not move with it at all:
+
+       measure   median gap   p90    median card   titles wrapping
+       1120         485       595        141           0 / 30
+       1000         365       475        143           2 / 30
+        880         245       355        143           2 / 30
+        840         205       315        143           2 / 30
+
+   So narrowing costs nothing in height or in wrapped titles and halves the
+   hole. 880 is where it reads as a margin rather than a void; below that the
+   page itself starts to feel narrow for no further gain.
+   It is applied to .wrap under .board-page so the hero, the filter rail, the
+   feed and the bands all narrow TOGETHER — they share a left edge, and moving
+   one alone is what breaks it. Generated pages carry no .board-page and are
+   untouched. */
+:root { --measure: 880px; }
+.board-page .wrap { max-width: var(--measure); }
 .wrap {
   width: min(1320px, 100% - 44px); margin-inline: auto;
   padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);
@@ -383,7 +412,9 @@ a, button, summary, label, [role="button"], .row {
    "shrink this" and "make the value proposition unmissable" — the old block
    was tall because of leading and type size, not because it said much, and a
    reader skips a slogan far faster than they skip a number. */
-.lede { border-bottom: 1px solid var(--rule); padding: 15px 0 14px; }
+/* Tighter. Every pixel here is a pixel before the first listing, and the hero
+   is one line of copy that a returning reader has already read. */
+.lede { border-bottom: 1px solid var(--rule); padding: 8px 0 8px; }
 .lede-in { display: flex; align-items: baseline; gap: 10px 20px; flex-wrap: wrap; }
 .lede-say { min-width: 0; flex: 1 1 30ch; display: grid; gap: 5px; }
 
@@ -403,7 +434,7 @@ a, button, summary, label, [role="button"], .row {
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
 }
-.rail-in { display: flex; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
+.rail-in { display: flex; align-items: center; gap: 8px; padding: 8px 0; flex-wrap: wrap; }
 
 .seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
 .seg-b {
@@ -430,9 +461,12 @@ a, button, summary, label, [role="button"], .row {
 .seg-static b { background: color-mix(in oklab, var(--live-ink) 16%, transparent); color: var(--live-ink); }
 
 .find {
-  flex: 1 1 240px; min-width: 190px; display: flex; align-items: center; gap: 9px;
+  flex: 1 1 190px; min-width: 150px; display: flex; align-items: center; gap: 9px;
   border: 1px solid var(--rule); border-radius: var(--r); padding: 0 12px; height: 34px;
   color: var(--ink-3); transition: border-color .16s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .find:hover { border-color: var(--rule-2); }
 }
 .find:focus-within { border-color: var(--live); }
 .find input { flex: 1; border: 0; background: none; outline: none; font-size: 13.5px; color: var(--ink); min-width: 0; }
@@ -441,6 +475,29 @@ a, button, summary, label, [role="button"], .row {
 .x:hover { color: var(--ink); }
 
 .picks { display: flex; gap: 8px; flex-wrap: wrap; }
+/* THE RAIL IS THE TIGHTEST ROW ON THE PAGE and every wrap costs ~46px directly
+   above the first listing — which is the height the narrower measure was
+   bought to save, given straight back.
+
+   NOT in a media query, and that is the fix. It was written as
+   `@media (max-width: 1180px)` and did nothing at 1440, because the rail is no
+   longer as wide as the viewport: --measure pins it to 880px on every desktop
+   size, so the viewport says nothing about whether its contents fit. The
+   constraint is the CONTAINER. The ≤1024 rules below turn .picks into a
+   scrolling strip and override this, which is the intended phone behaviour.
+
+   The selects give up their intrinsic width (each reserves room for its
+   longest company or city name) and ellipsize instead. */
+/* The rail settles as TWO rows at this measure and that is the better layout,
+   not a failure to fit: 880px cannot hold a search box and four selects side
+   by side without every select ellipsizing its own resting label, and
+   "Remote, hybrid or on-site" truncated to "Remote, hybrid o…" is worse than a
+   second row. Search full width on top, the four filters under it. The 46px
+   this costs is taken back out of the hero, the results row and the rail's own
+   padding rather than out of the controls. */
+.picks { flex: 1 1 100%; min-width: 0; }
+.picks label { flex: 1 1 130px; min-width: 0; }
+.picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 .picks label { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: var(--r); padding: 0 11px; height: 34px; min-width: 0; }
 /* A filter holding a value is LIT, so the bar says at a glance which of the
    four are narrowing the list. Without the old text label there is nothing
@@ -468,6 +525,7 @@ a, button, summary, label, [role="button"], .row {
 .picks label:has(:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
 
 .flags { display: flex; gap: 8px; }
+.feed-head .flag { height: 27px; padding: 0 10px; }
 .flag {
   background: none; border: 1px solid var(--rule); border-radius: var(--r);
   color: var(--ink-3); height: 34px; padding: 0 13px; cursor: pointer;
@@ -501,12 +559,33 @@ a, button, summary, label, [role="button"], .row {
    that a bare `1fr` track carries entirely, rather than guarding against it.
    See the ≤1024px rule further down, which no longer needs to collapse
    anything because there is nothing to collapse. */
-.board { padding: 20px 0 80px; }
+.board { padding: 8px 0 80px; }
+/* THE FIGURES ARE READ AS FIGURES.
+   This was one 11px grey uppercase mono run — the register this file uses for
+   LABELS — so the two numbers saying how big the board is looked like a
+   caption and were skipped. They are the answer to "is this a real board", and
+   with a filter on they are the answer to "did that do anything". The numbers
+   take the display face at 17px in full ink; the words stay in the small mono
+   label register beside them, which is what makes the numbers read as numbers. */
 .feed-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 6px 16px;
   font-family: var(--mono); font-size: var(--t-micro); text-transform: uppercase;
-  letter-spacing: .1em; color: var(--ink-3); padding-bottom: 12px;
+  letter-spacing: .1em; color: var(--ink-3); padding-bottom: 10px;
   border-bottom: 1px solid var(--rule);
 }
+.feed-count { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; }
+/* One statistic = one flex item, so the space INSIDE a pair (4px) and the space
+   BETWEEN pairs (18px) are different numbers. As separate siblings they were
+   the same number and the line read as four unrelated words. */
+.rc-stat { display: inline-flex; align-items: baseline; gap: 5px; }
+.feed-head b {
+  font-family: var(--display); font-size: 17px; font-weight: 800;
+  letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.feed-head .rc-of { color: var(--ink-3); text-transform: none; letter-spacing: .04em; }
+.feed-head .rc-none { color: var(--ink-3); }
+.feed-head .flags { flex: none; }
 
 /* ---------- the register ---------- */
 
@@ -517,17 +596,17 @@ a, button, summary, label, [role="button"], .row {
 .row {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
-  /* 56px, up from 40. The card is the whole page now rather than 55% of it, so
-     the logo can be the size it should have been: a mark you recognise before
-     you have read anything, which is how anyone actually scans a job board. */
-  grid-template-columns: 56px minmax(0,1fr) auto;
-  /* Roomier than the two-column register was. 16px of padding was right when
-     the card had 55% of the page and the vertical budget was contested by a
-     second column; with the page to itself the listing can be an object you
-     aim at rather than a row in a table, and the breathing room is what stops
-     a full-width card reading as a spreadsheet line. */
-  gap: 22px; align-items: start;
-  padding: 22px 24px; cursor: pointer;
+  /* logo | content | action column | chevron.
+     The chevron gets a track of its own rather than being crammed into the
+     action stack, which is what lets that stack stay a clean two-item group
+     (age over Apply) instead of a three-item pile. */
+  grid-template-columns: 56px minmax(0,1fr) auto 12px;
+  /* Tightened from 22/24. The card gained a lot of height when it gained the
+     page, and height is listings-per-screen — the whole reason the right-hand
+     column was removed. The column gap stays generous because that is the one
+     gap doing work; the padding does not need to match it. */
+  gap: 16px; align-items: center;
+  padding: 15px 18px; cursor: pointer;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: var(--r-2);
@@ -555,8 +634,18 @@ a, button, summary, label, [role="button"], .row {
   transform: scaleX(.5); transform-origin: left;
   background: transparent; transition: background .16s, transform .2s var(--snap);
 }
-.row:hover { border-color: var(--rule-2); }
-.row:hover::before { background: var(--rule-2); }
+/* THE CARD HAS TO LOOK PRESSABLE, because it is — and the sentence that used
+   to say so has been deleted. Three things move at once and none of them is
+   text: the border lifts, the surface lightens, and the chevron at the end
+   brightens and slides. Gated behind a real pointer so a phone, where every
+   card would otherwise sit in a permanent hover state after a tap, gets none
+   of it. */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover { border-color: var(--rule-2); background: var(--card-2); }
+  .row:hover::before { background: var(--rule-2); }
+  .row:hover .row-go { color: var(--live); transform: translateX(3px); }
+}
+.row:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .row[aria-current="true"] {
   border-color: var(--live); background: var(--card-2);
 }
@@ -627,7 +716,11 @@ a, button, summary, label, [role="button"], .row {
    separator is a pseudo-element so it never appears without a qualifier. */
 .role .qual { color: var(--ink); }
 .role .qual::before { content: "·"; margin: 0 7px; color: var(--ink-3); }
-.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 12px; margin-top: 9px; font-family: var(--mono); font-size: var(--t-micro); line-height: 1.5; letter-spacing: .02em; color: var(--ink-2); }
+/* 12.5px, up from 11. This line is city, work mode, stipend and how many
+   people are already in the queue — the facts a reader actually decides on —
+   and it was set two steps below the role in the smallest size this file has,
+   which is the size reserved for labels nobody has to read. */
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 11px; margin-top: 7px; font-family: var(--mono); font-size: .78125rem; line-height: 1.45; letter-spacing: .01em; color: var(--ink-2); }
 /* Money is the one value in this line that gets its own colour, and it is the
    first item in it. Everything else is grey. */
 .meta .cash { color: var(--cash); font-weight: 700; }
@@ -649,12 +742,24 @@ a, button, summary, label, [role="button"], .row {
 .elig b { color: var(--live); font-weight: 700; letter-spacing: .08em; }
 .elig i { font-style: normal; color: var(--ink-2); text-transform: none; letter-spacing: .02em; }
 
-.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+/* A BUTTON, not a span — clicking one searches the board for it. That is what
+   makes a chip worth its space and what earns it a hover state; a chip that
+   lights up and does nothing is worse than a flat one. Reset to look like the
+   tag it replaced, because it is still a tag. */
 .skill {
-  font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .03em;
+  font: inherit; font-family: var(--mono); font-size: .75rem; letter-spacing: .02em;
   color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 7px;
+  border-radius: 3px; padding: 3px 8px; cursor: pointer;
+  transition: color .14s, border-color .14s, background .14s;
 }
+@media (hover: hover) and (pointer: fine) {
+  .skill:hover { color: var(--live); border-color: color-mix(in oklab, var(--live) 50%, transparent); background: color-mix(in oklab, var(--live) 9%, var(--card-2)); }
+}
+.skill:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; }
+/* The overflow count. Not a button — there is nothing to search for — so it
+   drops the cursor and the hover and reads as the number it is. */
+.skill-more { cursor: default; color: var(--ink-3); background: none; }
 /* A skill the loaded resume already names. The chips stop being uniform
    decoration and become a reason to look at one card over another. */
 .skill.has { color: var(--live); border-color: color-mix(in oklab, var(--live) 45%, transparent); }
@@ -700,69 +805,96 @@ a, button, summary, label, [role="button"], .row {
    age where the eye already goes.
    It is decoration for a screen reader — the row is already role="button" and
    announces itself — so it is aria-hidden and the row keeps its own label. */
-/* A CHIP, NOT A WHISPER.
-   This started as 11px grey mono, which is the register this file uses for
-   labels — and it is not a label, it is the only thing on the card that says
-   the card does anything. At that size it read as a caption on the age above
-   it and went unnoticed, which left Apply looking like the row's single
-   action and the whole detail view something you found by accident. It is now
-   the same size and shape as the skill chips it sits near, bordered so it
-   reads as a target, and it lights on hover with the row. */
-.opens {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--mono); font-size: .75rem; letter-spacing: .04em;
-  color: var(--ink-2); white-space: nowrap;
-  border: 1px solid var(--rule); border-radius: 999px;
-  padding: 5px 12px;
-  transition: color .16s, border-color .16s, background .16s;
-}
-/* THE WORD IS CHOSEN BY THE INPUT DEVICE, not by a viewport width.
-   "Click" on a phone and "Tap" on a desktop are both wrong, and width is a poor
-   proxy for either — a touch laptop is wide and a stylus tablet is narrow.
-   `pointer: coarse` asks the actual question. It is generated content, which is
-   fine here precisely because the element is aria-hidden decoration: the row is
-   already role="button" and announces itself, so nothing depends on this text
-   being in the accessibility tree or in textContent. */
-.opens::after { content: "Click for details \2192"; }
-@media (pointer: coarse) { .opens::after { content: "Tap for details \2192"; } }
-.row:hover .opens {
-  color: var(--live);
-  border-color: color-mix(in oklab, var(--live) 45%, transparent);
-  background: color-mix(in oklab, var(--live) 7%, transparent);
+/* The affordance, drawn rather than typed — it replaces "Click for details →".
+   A chevron on the trailing edge of a list row is the oldest and least
+   instructional way to say the row opens, and unlike the sentence it does not
+   repeat itself 251 times down the page in words. */
+.row-go {
+  width: 8px; height: 13px; justify-self: end; flex: none;
+  background: var(--ink-3);
+  clip-path: polygon(18% 0, 100% 50%, 18% 100%, 0 82%, 60% 50%, 0 18%);
+  transition: transform .18s var(--snap), background-color .18s;
+  color: var(--ink-3);
+  background-color: currentColor;
 }
 
-.age { text-align: right; padding-top: 4px; }
+.age { text-align: right; }
+/* FRESHNESS IS THE ONE HONEST PER-CARD DIFFERENTIATOR, so it is the one that
+   gets weight. It is measured, it is different on every card, and it is the
+   site's actual promise — "be early" is the headline. A "verified employer"
+   badge was considered and rejected twice over: it would sit on 100% of cards,
+   which carries no information, and this repo cannot stand behind per-company
+   verification anyway (37 additions are recorded unverified and 129 candidates
+   were never researched). That is the same mistake stipendStatus made.
+   Under 24h the age is a bordered pill rather than loose text, so a fresh card
+   is distinguishable from a stale one across the page rather than by reading. */
 .age b {
-  display: block; font-family: var(--mono); font-size: 13px; font-weight: 700;
-  color: var(--ink-2); font-variant-numeric: tabular-nums;
+  display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+  color: var(--ink-2); font-variant-numeric: tabular-nums; letter-spacing: .02em;
 }
-.age.fresh b { color: var(--live); }
-.age.blazing b { color: var(--hot); }
+/* HORIZONTAL PADDING IS LOAD-BEARING, and it is not for the desktop card.
+   There the pill is a block in a 108px column and fills it, so `padding: 2px 0`
+   looked right. On a phone .card-foot is a wrapping ROW and the pill shrinks to
+   its own text — at zero side padding a 999px radius turns "11h" into a lime
+   CIRCLE. Only visible in a rendered phone frame; the desktop measurements were
+   all correct. */
+.age.fresh b, .age.blazing b {
+  border: 1px solid transparent; border-radius: 999px;
+  padding: 2px 9px; text-align: center;
+}
+.age.fresh b {
+  color: var(--live);
+  border-color: color-mix(in oklab, var(--live) 30%, transparent);
+  background: color-mix(in oklab, var(--live) 8%, transparent);
+}
+.age.blazing b {
+  color: var(--hot);
+  border-color: color-mix(in oklab, var(--hot) 42%, transparent);
+  background: color-mix(in oklab, var(--hot) 11%, transparent);
+}
+/* MEASURED. The pill puts a lime tint UNDER lime text, and in the light theme
+   that pair measured 4.13 against a 4.5 floor — the tint costs what the token
+   had spare. Darkened for the light theme only, on the pill only; --live is
+   correct everywhere it is not sitting on its own tint. Third time this exact
+   trap has been hit here, after .sub-msg and .flag-rank. */
+:root[data-theme="light"] .age.fresh b { color: #4a6100; }
+:root[data-theme="light"] .age.blazing b { color: #8a2b08; }
+/* The bar drains over the first 24 hours. Full width of the action column now
+   rather than a 44px stub floated right, so it reads as belonging to the pill
+   above it instead of as a stray rule. */
 .age s {
-  display: block; margin-top: 6px; margin-left: auto; height: 2px; width: 44px;
+  display: block; margin-top: 5px; height: 2px; width: 100%;
   background: var(--rule); text-decoration: none; overflow: hidden;
+  border-radius: 2px;
 }
 .age s i { display: block; height: 100%; background: var(--live); }
 .age.blazing s i { background: var(--hot); }
 
 /* ---------- card footer: age + apply ---------- */
 
-/* Occupies the slot .age used to hold, so the .row grid is unchanged: on wide
-   screens it is the 4th column and stacks; on a phone it drops under the text
-   and lays out as a row, age left and the button right where a thumb is. */
-.card-foot { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+/* ONE COLUMN, ONE WIDTH, so the three cards above and below line up with this
+   one. It used to be `align-items: flex-end` with each item taking its own
+   intrinsic width, so "3h", "16h" and "JUST NOW" all started at a different x
+   and the Apply buttons under them did too — a ragged right edge down the
+   whole feed, which is what made these read as three loose items rather than
+   as the card's action column. A fixed width fixes both edges at once. */
+.card-foot {
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: 8px; width: 108px;
+}
 
 .card-go {
   position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 14px; height: 34px; flex: none;
-  border-radius: 999px; border: 1px solid var(--live);
-  background: var(--live); color: var(--live-ink);
+  padding: 0 12px; height: 32px; flex: none;
+  justify-content: center;
+  border-radius: 999px; border: 1px solid color-mix(in oklab, var(--live) 48%, transparent);
+  background: transparent; color: var(--live);
   font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap; cursor: pointer;
   /* 140ms: button press feedback belongs in 100-160ms. At 180ms the press
      read soft rather than tactile. */
-  transition: transform .14s var(--snap), box-shadow .18s, filter .18s;
+  transition: transform .14s var(--snap), background .16s, border-color .16s, color .16s;
 }
 .card-go-t { position: relative; z-index: 1; }
 
@@ -774,12 +906,29 @@ a, button, summary, label, [role="button"], .row {
   clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
   transition: transform .2s var(--snap);
 }
+/* OUTLINE AT REST, FILLED ON HOVER — and this is the fix for the neon stripe.
+   A solid lime pill on every card put a column of the loudest colour on the
+   page down the entire right edge, repeated 251 times, so it stopped reading
+   as a button and started reading as a texture. The one the cursor is on is
+   filled; the rest are outlined. Nothing is less clickable than it was, and
+   the accent goes back to meaning "this one".
+   The DIALOG's Apply stays solid (.p-acts .go): there it is one button on a
+   role the reader has chosen, which is exactly when a primary should shout. */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .card-go, .card-go:hover {
+    background: var(--live); border-color: var(--live); color: var(--live-ink);
+  }
+  .card-go:hover { transform: translateY(-1px); }
+}
 .card-go:active { transform: translateY(0) scale(.96); }
 .card-go:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* A hot role gets the hot colour, so the button matches the urgency the age
    badge is already signalling rather than fighting it. */
-.row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
+.row.is-hot .card-go { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 50%, transparent); }
+@media (hover: hover) and (pointer: fine) {
+  .row.is-hot:hover .card-go, .row.is-hot .card-go:hover { background: var(--hot); border-color: var(--hot); color: var(--live-ink); }
+}
 
 
 /* ============================================================
@@ -1208,6 +1357,38 @@ a, button, summary, label, [role="button"], .row {
      ad and leaves without following the channel is a visitor paid for twice. */
   .alerts { height: 34px; padding: 0 11px; }
 
+  /* The selects still need min-width:0 and the ellipsis. Their intrinsic width
+     is the widest company or city name in the option list, which without this
+     becomes an unshrinkable floor — that is what used to push the rail ~150px
+     past the viewport and make the whole PAGE scroll sideways. Now only the
+     .picks strip scrolls, and it does so on purpose. */
+  .picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+
+  /* Only the 62px bar stays pinned. The rail used to wrap to three rows here,
+     and sticking it too froze ~350px — nearly half a phone screen — above every
+     scroll. It scrolls away now; the bar is what you need while scrolling. */
+  .rail { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
+  .sheet { padding: 24px 20px; }
+  .p-co { font-size: 27px; }
+}
+
+/* VARIANT A — THE TOUCH CARD, at ≤900px rather than ≤1024px.
+   ------------------------------------------------------------------------
+   These rules used to live in the ≤1024 block above, which meant a landscape
+   iPad and any 1024-wide laptop got the phone card: 275px tall, two listings
+   on screen, and a full-width 50px Apply on a device with a mouse. Measured at
+   1024x768 before the move — 2 cards visible; the register row shows 5 in the
+   same space.
+
+   900 is the line because it is below every common tablet LANDSCAPE width
+   (1024, 1080, 1112, 1180, 1194) and above every portrait one (768, 810, 834),
+   so a tablet held upright still gets the touch card and one turned sideways
+   gets the register. Nothing else moved: the sheet, the scrolling filter
+   strip, the hidden slogan and the static rail all stay at ≤1024, and the
+   ≤600 phone rules still come after this block and still override it. */
+@media (max-width: 900px) {
   /* ---- The card, rebuilt as the feed card -----------------------------
      One column, not a grid: logo and company sit on a header line, the role
      is the headline beneath it, and Apply is a full-width target at the
@@ -1240,7 +1421,7 @@ a, button, summary, label, [role="button"], .row {
   }
 
   /* Facts become pills rather than a monospace run-on. */
-  .meta { gap: 6px; margin-top: var(--s3); text-transform: none; letter-spacing: .01em; }
+  .meta { gap: 5px; margin-top: var(--s2); text-transform: none; letter-spacing: .01em; }
   .meta > span:not(.elig) {
     font-family: var(--ui); font-size: .75rem; font-weight: 600;
     background: var(--card-2); border-radius: 999px; padding: 5px 11px; color: var(--ink-2);
@@ -1264,36 +1445,33 @@ a, button, summary, label, [role="button"], .row {
        overriding it `flex: 1 1 100%` on the button set its BASIS ON HEIGHT —
        a 26px Apply button instead of a full-width 50px one. */
     display: flex; flex-direction: row; flex-wrap: wrap; align-items: baseline;
+    /* width:100%, NOT the 108px column the desktop card uses — that width is
+       what aligns the right edge of a vertical stack, and here the group is a
+       horizontal row across the full card. */
     gap: var(--s2) var(--s3); padding-top: var(--s4); width: 100%;
   }
   /* Age does not grow, or it fills the row and pushes the hint onto its own
      line — which is the three-row footer this replaced. */
   .card-foot .age { order: 1; flex: 0 0 auto; text-align: left; padding-top: 0; }
   .card-foot .age s { margin-left: 0; }
-  .card-foot .opens { order: 2; margin-left: auto; }
   .card-foot .card-go { order: 3; flex: 1 1 100%; }
+  /* The phone keeps a SOLID Apply. The neon-stripe problem is a desktop one —
+     it comes from a column of buttons all visible at once — and on a phone
+     roughly one card fits the screen, so there is no stripe to break up and no
+     hover to reveal the fill with. */
+  .card-go { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+  .row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
+  /* No chevron: the phone card is not a row with a trailing edge, it is a
+     block, and the whole-card tap target is unambiguous there. */
+  .row-go { display: none; }
   .card-go {
     height: 50px; border-radius: 14px; padding: 0;
     justify-content: center; font-size: 1rem; font-weight: 700;
   }
   .age { text-align: left; padding-top: 0; display: flex; align-items: center; gap: 8px; }
   .age s { margin-left: 0; }
-  /* The selects still need min-width:0 and the ellipsis. Their intrinsic width
-     is the widest company or city name in the option list, which without this
-     becomes an unshrinkable floor — that is what used to push the rail ~150px
-     past the viewport and make the whole PAGE scroll sideways. Now only the
-     .picks strip scrolls, and it does so on purpose. */
-  .picks select { min-width: 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
-
-  /* Only the 62px bar stays pinned. The rail used to wrap to three rows here,
-     and sticking it too froze ~350px — nearly half a phone screen — above every
-     scroll. It scrolls away now; the bar is what you need while scrolling. */
-  .rail { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; }
-  .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
-  @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
-  .sheet { padding: 24px 20px; }
-  .p-co { font-size: 27px; }
 }
+
 
 /* Phones only: cards run to the screen edges. On a tablet the inset reads as
    deliberate; on a 390px screen it is 30px of wasted width. */

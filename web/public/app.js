@@ -765,16 +765,41 @@ function jobCard(job, index, group = [job]) {
   // The role qualifier survives, because a quarter of postings are titled only
   // "Apprentice" or "Intern" and without it those cards name no job at all.
 
-  const skills = (job.keySkills ?? []).slice(0, 4);
+  /* THE CHIPS ARE BUTTONS NOW, and that is what makes them worth their space.
+     They were decoration: four grey words per card, identical in weight to the
+     four on the card above, doing nothing. Clicking one searches the board for
+     it, which turns a chip into the fastest filter on the page — you see
+     "pytorch" on one listing and get every other listing naming it in one
+     click. It also earns the hover state they now have; a chip that lights up
+     under the cursor and then does nothing is a worse lie than a flat one.
+
+     stopPropagation, or the search would fire AND the card would open behind
+     the newly filtered list — the same guard .card-go already carries. */
+  const skills = (job.keySkills ?? []);
   if (skills.length) {
     const box = el('div', 'skills');
-    for (const sk of skills) {
-      const chip = el('span', 'skill', sk);
-      // A skill the reader already has is lit, so the chips stop being uniform
-      // decoration and start being a reason to look.
+    for (const sk of skills.slice(0, 4)) {
+      const chip = el('button', 'skill', sk);
+      chip.type = 'button';
+      chip.title = `Search for ${sk}`;
       if (resumeHay && resumeHay.includes(` ${normSkill(sk)} `)) chip.classList.add('has');
+      chip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const q = $('q');
+        q.value = sk;
+        q.dispatchEvent(new Event('input', { bubbles: true }));
+        // Back to the top of the list, or the reader is left mid-feed looking
+        // at a result set that changed above them.
+        $('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
       box.append(chip);
     }
+    /* A COUNT, NOT A TRUNCATION. Four chips is the cap because five wrap on a
+       tablet, but a card holding nine skills and a card holding exactly four
+       looked identical, which is the "some cards feel richer than others"
+       problem in reverse — the rich ones were being flattened to look like the
+       sparse ones. */
+    if (skills.length > 4) box.append(el('span', 'skill skill-more', `+${skills.length - 4}`));
     mid.append(box);
   }
   row.append(mid);
@@ -797,14 +822,13 @@ function jobCard(job, index, group = [job]) {
   const foot = el('div', 'card-foot');
   foot.append(ageBox);
 
-  // Says what the card itself does. Apply was the only thing on the row that
-  // looked pressable, so the card reading as a button — and the whole detail
-  // pane behind it — was something a reader had to discover by accident.
-  // aria-hidden because the row is already role="button" with its own label;
-  // a screen reader would otherwise hear the affordance twice.
-  const opens = el('span', 'opens');   // the wording is CSS — see .opens::after
-  opens.setAttribute('aria-hidden', 'true');
-  foot.append(opens);
+  /* "Click for details →" USED TO SIT HERE AND IS GONE.
+     It was a sentence of instructions printed on every one of 251 cards, which
+     is what a UI says when it cannot show what it does. The affordance is now
+     the chevron at the end of the row plus the card's own hover state — the
+     ordinary way a list row says it opens, carrying no words and repeating
+     nothing. The row is still role="button" with its own label, so nothing was
+     lost for a screen reader; that sentence was aria-hidden decoration. */
 
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
   if (applyHref) {
@@ -820,6 +844,15 @@ function jobCard(job, index, group = [job]) {
     foot.append(go);
   }
   row.append(foot);
+
+  /* The affordance, replacing the sentence. A chevron at the end of a row is
+     the oldest "this opens" signal there is and it needs no reading; it sits
+     in its own grid track so the action column above it stays a clean stack
+     rather than having a third item shoved into it. aria-hidden: the row
+     already announces itself as a button. */
+  const chev = el('i', 'row-go');
+  chev.setAttribute('aria-hidden', 'true');
+  row.append(chev);
 
   row.addEventListener('click', () => selectJob(job.id));
   row.addEventListener('keydown', (e) => {
@@ -894,10 +927,45 @@ function renderList() {
      where it costs nothing. Counted on what is SHOWING, so it tracks the
      filters rather than contradicting them. */
   const employers = new Set(state.filtered.map((j) => j.company)).size;
-  $('result-count').textContent = state.jobs.length === 0
-    ? 'nothing on the radar yet'
-    : `${n} ${n === 1 ? 'role' : 'roles'}${anyFilterActive() ? ` / ${state.jobs.length}` : ''}`
-      + (employers ? ` from ${employers} employer${employers === 1 ? '' : 's'}` : '');
+  /* THE NUMBERS ARE THE POINT, so they are typeset as numbers rather than as
+     part of a sentence. This was one run of 11px grey uppercase mono, which is
+     the register this file uses for labels — so the two figures that say how
+     big the board is read as a caption and were skipped. The count is the
+     answer to "is this a real board", and when a filter is on it is the answer
+     to "did that do anything", so it is worth being able to read at a glance.
+     Built as nodes rather than a template string because the figures and the
+     words they label are styled differently. */
+  const head = $('result-count');
+  head.replaceChildren();
+  /* Each figure and its noun are ONE flex item, not two. As separate items the
+     container's column-gap fell between the number and its own word as well as
+     between the two statistics, so "251 roles 151 employers" had four equal
+     gaps and read as four things. Grouping puts a small space inside a pair and
+     a large one between pairs, which is the only reason the line parses at a
+     glance. It also keeps the accessible text readable — as bare siblings it
+     flattened to "251roles151employers". */
+  const stat = (value, word, extra) => {
+    const g = el('span', 'rc-stat');
+    g.append(el('b', null, String(value)), el('span', null, word));
+    if (extra) g.append(el('span', 'rc-of', extra));
+    return g;
+  };
+  if (state.jobs.length === 0) {
+    head.append(el('span', 'rc-none', 'nothing on the radar yet'));
+  } else {
+    /* ROLES AGAINST ROLES. The filtered figure used to be compared against
+       `state.jobs.length`, which is POSTINGS — so a board showing 251 roles
+       said "90 of 265" the moment a filter was applied, because one opening
+       advertised in twenty-one cities is one role and twenty-one postings. It
+       read as a rounding error rather than as the mismatch it was, and only
+       became visible when the line stopped being a slash and started being a
+       sentence. Grouped the same way the visible list is, so the two numbers
+       are the same kind of thing. */
+    const totalRoles = groupByRole(state.jobs.filter((j) => kindOf(j) === state.kind)).size;
+    head.append(stat(n, n === 1 ? 'role' : 'roles',
+                     anyFilterActive() ? `of ${totalRoles}` : null));
+    if (employers) head.append(stat(employers, employers === 1 ? 'employer' : 'employers'));
+  }
   $('reset').hidden = !anyFilterActive();
 
   const empty = $('empty');
