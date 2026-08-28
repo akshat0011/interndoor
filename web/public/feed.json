@@ -6,6 +6,54 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440743863",
+      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440743863",
+      "title": "Interim Engineering Intern_2027_HW — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India",
+      "date_published": "2026-08-28T12:11:36.857Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-sw-4440754354",
+      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-sw-4440754354",
+      "title": "Interim Engineering Intern_2027_SW — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area",
+      "date_published": "2026-08-28T12:11:14.741Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fancode-software-engineer-internship-backend-4460319731",
+      "url": "https://interndoor.com/jobs/fancode-software-engineer-internship-backend-4460319731",
+      "title": "Software Engineer Internship (Backend) — FanCode",
+      "content_text": "Company: FanCode · Location: Mumbai, Maharashtra, India\n• Develop and maintain software components for production systems\n• Work with Node.js, Java, REST APIs, and database design\n• Collaborate with engineers on backend services and system reliability",
+      "date_published": "2026-08-28T10:12:28.217Z",
+      "authors": [
+        {
+          "name": "FanCode"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fancode-software-engineer-internship-frontend-4460312823",
+      "url": "https://interndoor.com/jobs/fancode-software-engineer-internship-frontend-4460312823",
+      "title": "Software Engineer Internship (Frontend) — FanCode",
+      "content_text": "Company: FanCode · Location: Mumbai Metropolitan Region",
+      "date_published": "2026-08-28T10:12:04.838Z",
+      "authors": [
+        {
+          "name": "FanCode"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kg-crm-solutions-llp-zoho-authorized-partner-quality-analyst-intern-4458074127",
       "url": "https://interndoor.com/jobs/kg-crm-solutions-llp-zoho-authorized-partner-quality-analyst-intern-4458074127",
       "title": "Quality Analyst Intern — KG CRM Solutions LLP - Zoho Authorized Partner",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457141776",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457141776",
-      "title": "Apprentice - Enterprise Technology Services — American Express",
-      "content_text": "Company: American Express · Location: Chennai, Tamil Nadu, India\n• Write code in java, javascript, python, or .net\n• Work on api specs, code reviews, and automation tools\n• Develop customer-facing apps for web, mobile, and social platforms",
-      "date_published": "2026-08-24T18:17:18.752Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457149576",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457149576",
-      "title": "Apprentice-Enterprise Technology Services — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Write code in java, javascript, python, or .net\n• Work on api specs, code reviews, and automation tools\n• Develop customer-facing apps for web, mobile, and social platforms",
-      "date_published": "2026-08-24T18:17:08.406Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-sde-i-intern-amazon-university-talent-acquisition-ats-amazon-ind-10506481",
-      "url": "https://interndoor.com/jobs/amazon-sde-i-intern-amazon-university-talent-acquisition-ats-amazon-ind-10506481",
-      "title": "SDE I Intern , Amazon University Talent Acquisition — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, KA, India · Duration: 6 months\n• Design scalable systems for distributed computing environments\n• Work with AWS and large-scale data technologies\n• Collaborate with senior engineers on mission-critical projects",
-      "date_published": "2026-08-24T16:16:06.966Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/times-internet-quality-assurance-intern-4456506067",
-      "url": "https://interndoor.com/jobs/times-internet-quality-assurance-intern-4456506067",
-      "title": "Quality Assurance Intern — Times Internet",
-      "content_text": "Company: Times Internet · Location: Noida, Uttar Pradesh, India · Duration: 6 months\n• Test web and api apps for bugs and usability issues\n• Use jira to track defects and automate test scripts\n• Work with developers and product teams in noida",
-      "date_published": "2026-08-24T15:52:25.527Z",
-      "authors": [
-        {
-          "name": "Times Internet"
         }
       ]
     }
