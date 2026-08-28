@@ -9,6 +9,7 @@ import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
+import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 
@@ -307,6 +308,53 @@ export function dedupePostings(jobs) {
 }
 
 /** Write the public jobs payload. Returns { count, path, changed }. */
+/**
+ * The numbers behind /report, mined ONCE A DAY per region and cached.
+ *
+ * Not once a publish, and the reason is not cost — mining is three queries. It
+ * is that `publish` runs 48 times a day into a PUBLIC git repo, and a page
+ * whose figures move every half hour is 48 HTML diffs a day on the one URL that
+ * is meant to look permanent to Google. Cached, the rendered page is
+ * byte-identical between runs and `writeIfChanged` writes nothing at all.
+ *
+ * It is also what makes the page citable. Somebody quoting "36 of 403" has to
+ * still find it there when a reader clicks through; a figure that changes
+ * hourly cannot be quoted at all. Once a day, stamped with the day it was
+ * measured, is the smallest thing that gives both.
+ *
+ * Keyed on the REGION'S OWN calendar day, not UTC — the same rule the rest of
+ * the site stamps dates by, so "measured on 28 August" means the 28th where the
+ * reader is rather than wherever the server thinks it is.
+ */
+function dailyStats(store, regions, now = Date.now()) {
+  const out = new Map();
+  for (const region of regions) {
+    const key = `statsFacts:${region.code}`;
+    // en-CA renders YYYY-MM-DD, which sorts and compares as a plain string.
+    const today = new Date(now).toLocaleDateString('en-CA', { timeZone: region.timeZone });
+    let cached = null;
+    try { cached = JSON.parse(store.getSetting(key) ?? 'null'); } catch { cached = null; }
+    if (cached?.day === today && cached?.days === DEFAULT_DAYS && Array.isArray(cached.facts)) {
+      out.set(region.code, cached);
+      continue;
+    }
+    let facts = [];
+    try {
+      facts = mineStats(store, { region: region.code, days: DEFAULT_DAYS, now });
+    } catch (err) {
+      /* A page of statistics is the least important thing publish does. Fall
+         back to yesterday's rather than failing the run or, worse, rendering an
+         empty report over a good one. */
+      log.warn(`Could not mine statistics for ${region.code}: ${err.message}`);
+      if (cached) { out.set(region.code, cached); continue; }
+    }
+    const fresh = { day: today, asOf: now, days: DEFAULT_DAYS, facts };
+    store.setSetting(key, JSON.stringify(fresh));
+    out.set(region.code, fresh);
+  }
+  return out;
+}
+
 export async function writeJobsFile(store, cfg) {
   /* ONE window, two consumers. The JSON-LD's `validThrough` has to expire on
      the same day publish stops writing the page: a page that outlives its own
@@ -523,7 +571,7 @@ export async function writeJobsFile(store, cfg) {
      region's. */
   const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
   const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
-    { validDays: maxAgeDays, channelsByRegion });
+    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions) });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;
@@ -634,8 +682,13 @@ export function pushToSite(newJobCount) {
   const PUBLISHED = ['web/public/data', 'web/public/logos', 'web/public/jobs',
     'web/public/companies', 'web/public/sitemap.xml', 'web/public/robots.txt',
     'web/public/feed.xml', 'web/public/feed.json', 'web/public/index.html',
-    // India's /alerts. Every other region's is inside its own tree below.
+    // India's /alerts and /report. Every other region's is inside its own tree
+    // below, covered by regionPaths() — India is the one that has to be named,
+    // because its board lives at the root beside files that are NOT published.
+    // A generated page missing from this list is written every run and pushed
+    // never, which looks exactly like a page that renders wrong.
     'web/public/alerts.html',
+    'web/public/report.html',
     // Every non-India region writes a whole tree under its own slug — data,
     // jobs, companies, sitemap, feeds and its homepage. Listed by directory so
     // switching a region on in config.json needs no change here; India stays

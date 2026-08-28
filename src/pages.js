@@ -876,7 +876,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -2062,6 +2062,144 @@ ${foot({
  * Telegram channel nor an Instagram account, so its page honestly offers email
  * alone. Adding WhatsApp later is a config entry and nothing here.
  */
+/**
+ * The board, measured — a permanent, citable page of its own statistics.
+ *
+ * Every other page here expires. A job page is deleted at 30 days by design and
+ * a company hub lives or dies with its employer, so neither can accumulate the
+ * one thing this domain has none of: links. THIS page is the asset that can.
+ * The numbers behind it are the only thing on the site a competitor cannot
+ * copy, because they are not facts about internships — they are facts about a
+ * corpus, and nobody else has the denominator.
+ *
+ * THE FACTS ARE MINED ONCE A DAY AND PASSED IN, never mined here. Two reasons
+ * and both are load-bearing:
+ *  - `publish` runs 48 times a day and this file writes into a PUBLIC git repo.
+ *    A page whose numbers move every half hour is 48 commits of churn a day on
+ *    the one URL that is supposed to look stable to Google.
+ *  - A citation has to survive being followed. "36 of 403" quoted by somebody
+ *    else has to still be on the page when a reader clicks through, and a
+ *    figure that changes hourly makes the page unquotable. Once a day, stamped
+ *    with the date it was measured, is what makes it safe to cite.
+ *
+ * THE METHODOLOGY DELIBERATELY DOES NOT NAME THE SOURCES. The site stopped
+ * describing where listings come from on 10 Aug — the README note, the
+ * homepage, the footers and the hub lede were all changed at once — and a
+ * methodology section is exactly where that would creep back in. "Public job
+ * boards and companies' own careers pages" is true and is as far as it goes.
+ *
+ * The limitations are not a disclaimer, they are the reason this is citable at
+ * all. A journalist checks them; a page that omits them reads as marketing.
+ */
+/**
+ * How many facts a report needs before it is worth indexing.
+ *
+ * Below this the page is still WRITTEN — so the footer link on ~950 generated
+ * pages resolves rather than 404ing — but it is noindex and absent from the
+ * sitemap. Exactly the bar company hubs already apply, and for the same reason:
+ * a URL that exists is cheap, a thin page competing for the domain's crawl
+ * budget is not. A thin region (GB holds a fraction of India's volume) clears
+ * this on its own as it fills.
+ */
+export const REPORT_MIN_FACTS = 4;
+
+export function renderReportPage(facts, { region = DEFAULT_REGION, alternates = null, asOf = Date.now(), days = 30 } = {}) {
+  const url = regionUrl('/report', region);
+  const where = region.inName.replace(/^in /, '');
+  const measured = new Date(asOf).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: region.timeZone,
+  });
+
+  const sample = facts.find((f) => f.sample)?.sample ?? 0;
+  const gate = facts.find((f) => f.id === 'the-gate');
+  const pay = facts.find((f) => f.id === 'pay-transparency');
+
+  /* The lede leads with the strongest fact rather than a summary of the page.
+     It is also the meta description, which is the sentence that decides whether
+     anybody clicks through from a search result at all. */
+  const lede = pay
+    ? `Of ${pay.of} engineering internships ${region.inName} in the last ${days} days, only ${pay.value} said what they pay.`
+    : `What ${sample} engineering internships ${region.inName} actually looked like over ${days} days.`;
+
+  /* `rp-` prefixed, and NOT `.stat`: page.css already uses that for the company
+     hub's at-a-glance tile, whose `.stat span` rule would silently shrink these
+     numbers to a 9.5px uppercase label. Same collision class as `.gist`. */
+  /* Grouped, because the detail lines beneath already read "26,308 refused of
+     28,312" and a bare "26308" directly under one looks like a different
+     number. en-IN is the wrong grouping for the US and UK boards, so the
+     region's own locale decides. */
+  const num = (n) => Number(n).toLocaleString(region.hreflang ?? 'en');
+  const stat = (f) => `<li class="rp-stat">
+        <p class="rp-stat-h">${esc(f.headline)}</p>
+        <p class="rp-stat-d">${esc(f.detail)}</p>
+        <p class="rp-stat-n"><b>${num(f.value)}</b> of <b>${num(f.of)}</b></p>
+      </li>`;
+
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `Engineering internship statistics ${region.inName}`,
+    description: lede,
+    datePublished: new Date(asOf).toISOString(),
+    dateModified: new Date(asOf).toISOString(),
+    isAccessibleForFree: true,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    publisher: { '@type': 'Organization', name: 'InternDoor', url: regionUrl('/', region) },
+  };
+
+  return `${head({
+    title: buildTitle([`Engineering internship statistics ${region.inName}`]),
+    description: `${lede} Measured across ${sample} postings from a vetted list of employers, updated daily. Free to read and cite.`,
+    canonical: url,
+    indexable: facts.length >= REPORT_MIN_FACTS,
+    region,
+    // Every region has this page: same purpose, its own board's numbers.
+    alternates,
+    alternatePath: '/report',
+    extraLd: `<script type="application/ld+json">${jsonLd(ld)}</script>\n`,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <span>The numbers</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>Engineering internships ${esc(region.inName)}, by the numbers</h1>
+      <p class="hub-lede">${esc(lede)}</p>
+      <p class="rp-stamp">Measured over the ${days} days to <strong>${esc(measured)}</strong>${sample ? ` · <strong>${sample}</strong> postings` : ''}. Updated daily.</p>
+    </header>
+
+    <ol class="rp-stats">
+      ${facts.map(stat).join('\n      ')}
+    </ol>
+
+    <section class="rp-note">
+      <h2>How this was measured</h2>
+      <p>We track engineering and software internships as they are published on public job boards and on companies' own careers pages, and record each one the first time we see it. These figures cover every posting we recorded ${esc(region.inName)} in the ${days} days to ${esc(measured)}.</p>
+      <p>A posting only reaches the board if its employer is on a list we keep of companies we believe are real and actually pay interns.${gate ? ` Most are not: we turned away about <strong>${gate.ratio}</strong> listings for every one we published.` : ''} That gate is the point of the site, and it is also the biggest thing to hold in mind when reading these numbers.</p>
+
+      <h2>What these numbers are not</h2>
+      <ul>
+        <li><strong>This is not a census of every internship ${esc(region.inName)}.</strong> It is a census of the ones that got past the gate above, so it describes the market a student would actually want to apply to rather than the whole of it.</li>
+        <li><strong>&ldquo;Said nothing about pay&rdquo; does not mean unpaid.</strong> It means the posting did not state a figure we could read. A genuinely unpaid role and one that simply never mentioned money are indistinguishable here, and we do not guess between them.</li>
+        <li><strong>Applicant counts are frozen at the moment we found the posting.</strong> They are what the listing reported then, not now, which is the whole reason a low one is worth acting on quickly.</li>
+        <li><strong>Only what employers state is counted.</strong> Skills, duration and working arrangements are read from the posting text, so a requirement that goes unmentioned is missing rather than absent.</li>
+      </ul>
+
+      <h2>Using these figures</h2>
+      <p>They are free to quote with a link to this page. Cite them as measured on ${esc(measured)} &mdash; the page is regenerated daily, so the numbers move.</p>
+    </section>
+  </div>
+</main>
+${foot({
+    headline: `See the roles behind the numbers`,
+    sub: `Every posting counted above is on the board, newest first.`,
+    region,
+  })}`;
+}
+
 export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alternates = null } = {}) {
   const url = regionUrl('/alerts', region);
   const where = region.inName.replace(/^in /, '');
@@ -2352,7 +2490,7 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [] } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {} } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -2412,6 +2550,15 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      /alerts, and the dev server resolves it the same way. */
   writeIfChanged(join(root, 'alerts.html'), renderAlertsPage(channels, { region, alternates }));
 
+  /* /report — the board's own statistics. Written for every published region
+     even when thin, because foot() links it from every generated page and a
+     link that 404s is worse than a page that says little; the noindex inside
+     renderReportPage is what keeps a thin one out of the index. `stats` is
+     mined once a day by publish.js and passed in, never mined here — see the
+     comment on renderReportPage for why that matters to churn and to citation. */
+  writeIfChanged(join(root, 'report.html'),
+    renderReportPage(stats.facts ?? [], { region, alternates, asOf: stats.asOf ?? Date.now(), days: stats.days ?? 30 }));
+
   let removed = 0;
   /* Job pages that just stopped existing, as URLs. Only job pages: the Google
      Indexing API accepts JobPosting pages and nothing else, and a hub carries
@@ -2434,7 +2581,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      page cannot be announced to Google that the sitemap does not also list.
      Kept beside the count above rather than recomputed by the caller. */
   const indexUrls = jobs.filter(isIndexable).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
-  writeSitemap(jobs, byCompany, root, pastByCompany, region);
+  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS });
   const feedItems = writeFeeds(jobs, root, region);
   const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
 
@@ -2458,7 +2605,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map() } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -2491,7 +2638,8 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       jobsByRegion.get(region.code) ?? [],
       publicDir,
       historyByRegion.get(region.code) ?? [],
-      { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [] },
+      { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [],
+        stats: statsByRegion.get(region.code) ?? {} },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);
@@ -2533,7 +2681,7 @@ function removeUnpublishedRegions(publicDir, regions) {
 }
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
-function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION) {
+function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false } = {}) {
   const now = new Date().toISOString();
   const urls = [
     { loc: regionUrl('/', region), priority: '1.0', lastmod: now },
@@ -2542,6 +2690,11 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        destination people search for ("interndoor telegram"), and it is the only
        page that names every channel. Low priority, not omitted. */
     { loc: regionUrl('/alerts', region), priority: '0.4', lastmod: now },
+    /* /report is the only page here that does not expire, so it is the only one
+       that can accumulate links over years. Listed above the hubs for that
+       reason — and omitted entirely when it is noindex, because submitting a
+       page you have told Google to ignore is noise. */
+    ...(report ? [{ loc: regionUrl('/report', region), priority: '0.7', lastmod: now }] : []),
     ...jobs.filter(isIndexable).map((j) => ({
       loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',

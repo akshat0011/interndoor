@@ -1101,3 +1101,66 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   .qa, .eg { grid-template-columns: minmax(0, 1fr); }
 }
 
+
+/* /report — the board's own statistics.
+   `rp-` prefixed throughout on purpose: `.stat` is ALREADY the company hub's
+   at-a-glance tile a few hundred lines up, and its `.stat span` rule would
+   quietly render these figures as a 9.5px uppercase label. page.css loads after
+   styles.css but only overrides the properties it names, which is what makes
+   that class of collision invisible until somebody looks at a screenshot. */
+.rp-stamp {
+  margin-top: 14px; font-family: var(--mono); font-size: 12px;
+  letter-spacing: .02em; color: var(--ink-3);
+}
+.rp-stamp strong { color: var(--ink-2); font-weight: 600; }
+
+/* ONE COLUMN, one measure. The stat cards and the methodology prose below are
+   capped to the same width on purpose: this is a document somebody reads top to
+   bottom before quoting it, and cards running the full 1320px .wrap while the
+   prose stops at 68ch reads as two pages stapled together. */
+.rp-stats {
+  list-style: none; margin: 30px 0 0; padding: 0;
+  display: grid; gap: 12px; max-width: 720px;
+}
+
+.rp-stat {
+  padding: 20px 22px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r-2);
+}
+/* The claim is the heading, deliberately — this page is read by somebody
+   scanning for a number to quote, not by somebody reading top to bottom. */
+.rp-stat-h {
+  margin: 0; font-family: var(--display); font-weight: 800;
+  font-size: 21px; line-height: 1.25; letter-spacing: -.02em; color: var(--ink);
+  /* min-width:auto on a grid item cannot shrink below its longest unbreakable
+     run; these headlines carry no long tokens, but the guard costs nothing and
+     every other track in this file already carries it. */
+  overflow-wrap: anywhere;
+}
+.rp-stat-d { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.rp-stat-n {
+  margin: 12px 0 0; font-family: var(--mono); font-size: 11.5px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+}
+/* The denominator is the whole point — a bare "36" is a number, "36 of 403" is
+   a fact — so both figures are raised and the joining word is not. */
+.rp-stat-n b {
+  font-family: var(--display); font-weight: 900; font-size: 15px;
+  letter-spacing: -.01em; color: var(--live); font-variant-numeric: tabular-nums;
+}
+
+.rp-note { margin-top: 40px; max-width: 720px; }
+.rp-note h2 {
+  margin: 30px 0 10px; font-family: var(--display); font-weight: 800;
+  font-size: 19px; letter-spacing: -.02em; color: var(--ink);
+}
+.rp-note p { margin: 0 0 12px; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
+.rp-note ul { margin: 0; padding-left: 20px; }
+.rp-note li { margin-bottom: 10px; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
+.rp-note strong { color: var(--ink); font-weight: 650; }
+
+@media (max-width: 600px) {
+  .rp-stat { padding: 16px 17px; }
+  .rp-stat-h { font-size: 18px; }
+  .rp-stat-d, .rp-note p, .rp-note li { font-size: 14.5px; }
+}
