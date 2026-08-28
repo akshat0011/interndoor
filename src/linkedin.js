@@ -399,6 +399,73 @@ function isMetaLine(line) {
  * browser — this parser is now the only thing standing between the redesign and
  * an empty board, and it is not something to verify by eye.
  */
+/**
+ * The employer's own apply URL, out of LinkedIn's bootstrap JSON.
+ *
+ * WHY THIS EXISTS. `openAndExtract` used to read the destination off the Apply
+ * control's href, and LinkedIn stopped rendering it as an anchor: it is a
+ * <button> that navigates in JavaScript. Measured the week this was written —
+ * **0 of 443** LinkedIn rows carried an off-site URL, against **672 of 722**
+ * postings that are not Easy Apply and therefore have an employer page to point
+ * at. Every one of those readers was being sent to LinkedIn to click Apply a
+ * second time.
+ *
+ * The destination never left the page. LinkedIn bootstraps the pane from JSON
+ * in `<code style="display:none">` blocks, and the JobPosting object carries
+ * `companyApplyUrl` beside its own `entityUrn`.
+ *
+ * NOTHING IS CLICKED, and that is the point. Clicking Apply is the obvious way
+ * to get this URL and it is the wrong one: LinkedIn registers intent on the
+ * account, and automated Apply clicks at ~670 a month is precisely what gets
+ * the single account this entire board depends on restricted. This is a passive
+ * read of a response the page already fetched.
+ *
+ * Takes the WHOLE bootstrap block and the job id, and does its own scoping.
+ * The page hands the block over rather than narrowing it first, deliberately:
+ * the scoping is the dangerous half — a block holds several postings — and
+ * logic inside `page.evaluate` cannot be tested at all. Pure and in Node for
+ * exactly the reason `parseCardLines` is. The block is ~185KB at worst, which
+ * is a few milliseconds to serialise and is paid only on postings that reach
+ * the open.
+ */
+export function applyUrlFrom(blob, jobId) {
+  if (typeof blob !== 'string' || !blob || !jobId) return null;
+
+  /* SCOPE FIRST. One bootstrap block carries several postings — 3 and 5 in the
+     two blocks measured on a real page — so the first `companyApplyUrl` in it
+     is very often somebody else's. Narrow to the region between THIS posting's
+     urn and the next posting's before reading anything. Getting this wrong does
+     not produce a missing field, it sends a student to a different employer's
+     application form, which is the same class of failure the pane/card employer
+     check exists to prevent. */
+  const marker = `"entityUrn":"urn:li:fsd_jobPosting:${jobId}"`;
+  const at = blob.indexOf(marker);
+  if (at === -1) return null;
+  const next = blob.indexOf('"entityUrn":"urn:li:fsd_jobPosting:', at + marker.length);
+  const scope = next === -1 ? blob.slice(at) : blob.slice(at, next);
+
+  const found = scope.match(/"companyApplyUrl":"([^"]+)"/);
+  if (!found) return null;
+  let url = found[1];
+
+  // The redesign wraps off-site applies in an interstitial: /safety/go/?url=.
+  // Storing the wrapper publishes a LinkedIn redirect where the employer's own
+  // application page belongs.
+  const wrapped = url.match(/\/safety\/go\/?\?(?:.*&)?url=([^&]+)/);
+  if (wrapped) {
+    try { url = decodeURIComponent(wrapped[1]); } catch { /* keep the wrapper */ }
+  }
+
+  if (!/^https?:\/\//i.test(url)) return null;
+  /* `companyApplyUrl` is populated for ONSITE applies too, as
+     linkedin.com/job-apply/<id>. That is LinkedIn's own form, not an employer
+     page — publishing it would put "Apply on the company's site" on a link that
+     goes to LinkedIn, which is the exact mislabelling applyTarget() exists to
+     prevent. Drop it and let the posting URL stand. */
+  if (/^https?:\/\/[^/]*\blinkedin\.com\/job-apply\//i.test(url)) return null;
+  return url;
+}
+
 export function parseCardLines(lines) {
   const clean = (lines ?? []).map((l) => String(l ?? '').trim()).filter(Boolean);
   const empty = { title: '', company: '', location: '', workplaceType: null, postedText: '', salaryText: null, easyApply: false, promoted: false, viewed: false };
@@ -949,21 +1016,36 @@ export async function openAndExtract(page, card, cfg) {
       const href = applyButton.getAttribute('href') ?? '';
       if (href && !href.startsWith('#')) {
         applyUrl = href.startsWith('http') ? href : `https://www.linkedin.com${href}`;
-        // The redesign wraps every off-site apply in an interstitial:
-        // /safety/go/?url=<encoded>. Storing the wrapper would publish a
-        // LinkedIn redirect where the employer's own application page belongs.
-        const wrapped = applyUrl.match(/\/safety\/go\/?\?(?:.*&)?url=([^&]+)/);
-        if (wrapped) {
-          try { applyUrl = decodeURIComponent(wrapped[1]); } catch { /* keep the wrapper */ }
-        }
+      }
+    }
+
+    /* The anchor above has matched nothing since LinkedIn made Apply a <button>.
+       Hand the bootstrap block that mentions this posting to applyUrlFrom() in
+       Node — see its comment. NO parsing here: everything inside page.evaluate
+       is untestable, and the scoping this needs is the part most worth testing.
+       textContent, not innerHTML, so the browser decodes the entities: a query
+       string arrives as `&src=` rather than `&amp;src=`. */
+    let applyBlob = null;
+    if (!applyUrl && jobId) {
+      const marker = `"entityUrn":"urn:li:fsd_jobPosting:${jobId}"`;
+      for (const code of document.querySelectorAll('code')) {
+        const blob = code.textContent || '';
+        if (blob.includes(marker) && blob.includes('companyApplyUrl')) { applyBlob = blob; break; }
       }
     }
 
     const detailLogo = pane.querySelector('img[src*="licdn.com"]')?.getAttribute('src') ?? '';
 
-    return { jobId, title, company, location: locationText, workplaceType, applicants, postedText, salaryText, description, easyApply, applyUrl, applyLabel,
+    return { jobId, title, company, location: locationText, workplaceType, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
              logoUrl: /^https?:\/\//.test(detailLogo) ? detailLogo : '' };
   }, DESCRIPTION_SELECTORS);
+
+  // The anchor is gone; recover the employer's URL from the bootstrap JSON the
+  // page already loaded. Parsed here rather than in the page so it is testable.
+  if (!detail.applyUrl && detail.applyBlob) {
+    detail.applyUrl = applyUrlFrom(detail.applyBlob, detail.jobId);
+  }
+  delete detail.applyBlob;
 
   // Is the pane actually showing the card we clicked?
   //
