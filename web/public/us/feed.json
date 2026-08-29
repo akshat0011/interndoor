@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/walt-disney-world-software-engineering-intern-spring-2027-4460577794",
+      "url": "https://interndoor.com/us/jobs/walt-disney-world-software-engineering-intern-spring-2027-4460577794",
+      "title": "Software Engineering Intern, Spring 2027 — Walt Disney World",
+      "content_text": "Company: Walt Disney World · Location: Orlando, FL · Duration: 12 months\n• Write web apps in C#, Java, JavaScript for contact center efficiency\n• Administer databases and integrate with SaaS tools like SSO and incident management\n• Use Git, Jenkins, and Jira for deployment and task tracking\n• Work in Orlando with Disney's global tech teams on enterprise solutions",
+      "date_published": "2026-08-29T05:10:19.335Z",
+      "authors": [
+        {
+          "name": "Walt Disney World"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/walt-disney-world-system-app-dev-and-sustainment-intern-spring-2027-4460573887",
+      "url": "https://interndoor.com/us/jobs/walt-disney-world-system-app-dev-and-sustainment-intern-spring-2027-4460573887",
+      "title": "System App Dev & Sustainment Intern, Spring 2027 — Walt Disney World",
+      "content_text": "Company: Walt Disney World · Location: Orlando, FL · Duration: 12 months\n• Develop apps to support business processes\n• Use HTML, CSS, JavaScript, Java, SQL, and Git\n• Work with multi-functional teams across Disney divisions",
+      "date_published": "2026-08-29T05:09:50.507Z",
+      "authors": [
+        {
+          "name": "Walt Disney World"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cadence-intern-characterization-and-support-fall-2026-4459466590",
+      "url": "https://interndoor.com/us/jobs/cadence-intern-characterization-and-support-fall-2026-4459466590",
+      "title": "Intern - Characterization and Support (Fall 2026) — Cadence",
+      "content_text": "Company: Cadence · Location: San Jose, CA · Duration: 0-2 years\n• Validate silicon test chips for system and electrical performance\n• Debug issues with analog and digital teams using Python/C scripts\n• Work full-time in San Jose with local university enrollment",
+      "date_published": "2026-08-29T04:41:56.083Z",
+      "authors": [
+        {
+          "name": "Cadence"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-energy-business-advisory-technical-consultant-internship-4459468580",
+      "url": "https://interndoor.com/us/jobs/siemens-energy-business-advisory-technical-consultant-internship-4459468580",
+      "title": "Energy Business Advisory Technical Consultant Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Houston, TX\n• Analyze power and gas data to inform strategic decisions\n• Use matlab sql and python for data modeling and visualization\n• Support consulting projects with technical and analytical skills",
+      "date_published": "2026-08-29T04:29:24.023Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016",
       "url": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016",
       "title": "University – Summer 27, Cybersecurity Analyst Intern — Booz Allen Hamilton",
@@ -551,54 +599,6 @@
       "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
       "content_text": "Company: Hewlett Packard Enterprise · Location: Bloomington, MN\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in a hybrid setup\n• Collaborate on cloud infrastructure and automation projects",
       "date_published": "2026-08-28T22:36:24.765Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460543086",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460543086",
-      "title": "Software Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: San Jose, CA\n• Write code for systems software like operating systems and databases\n• Work with development partners on software design and debugging\n• Test and debug code for low to moderately complex products",
-      "date_published": "2026-08-28T22:36:24.532Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460533362",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460533362",
-      "title": "Software Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Andover, MA\n• Write code for systems software including operating systems and databases\n• Work with development partners on software design and debugging\n• Test and debug code for low to moderately complex products",
-      "date_published": "2026-08-28T22:36:22.852Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460522624",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460522624",
-      "title": "Software Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Spring, TX\n• Write code for operating systems and network tools\n• Work with development teams on software systems\n• Debug and test code for multiple platforms",
-      "date_published": "2026-08-28T22:36:20.844Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460539235",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460539235",
-      "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Fort Collins, CO\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in a hybrid setup\n• Collaborate on cloud infrastructure and automation projects",
-      "date_published": "2026-08-28T22:36:19.751Z",
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
