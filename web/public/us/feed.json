@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-quality-engineering-intern-4414913419",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-quality-engineering-intern-4414913419",
+      "title": "Quality Engineering Intern — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Simi Valley, CA · Duration: 0-2 years\n• Support engineers with testing, troubleshooting, and design tasks\n• Use Microsoft Office and follow regulated industry processes\n• Work with aerospace companies like Boeing and Airbus",
+      "date_published": "2026-08-29T13:51:12.139Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-federal-data-scientist-intern-2027-4451022579",
+      "url": "https://interndoor.com/us/jobs/ibm-federal-data-scientist-intern-2027-4451022579",
+      "title": "Federal Data Scientist Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Herndon, VA · Duration: 10 weeks\n• Build data pipelines with python to extract and transform data from repositories\n• Work on client projects using cloud platforms and etl tools for data integration\n• Gain experience in government compliance and security standards for federal clients",
+      "date_published": "2026-08-29T13:49:16.135Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ramp-software-engineer-internship-android-4281931156",
+      "url": "https://interndoor.com/us/jobs/ramp-software-engineer-internship-android-4281931156",
+      "title": "Software Engineer Internship, Android — Ramp",
+      "content_text": "Company: Ramp · Location: San Francisco, CA · Duration: 16 weeks\n• Design and build new features for Ramp’s Android app\n• Work with engineers and designers to ship mobile products\n• Influence engineering processes and technical design",
+      "date_published": "2026-08-29T13:39:20.632Z",
+      "authors": [
+        {
+          "name": "Ramp"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/silicon-critical-materials-research-intern-4459492345",
       "url": "https://interndoor.com/us/jobs/silicon-critical-materials-research-intern-4459492345",
       "title": "Critical Materials Research Intern — Silicon",
@@ -563,42 +599,6 @@
       "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
       "content_text": "Company: Hewlett Packard Enterprise · Location: Sunnyvale, CA\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in cross-functional teams\n• Optimize cloud deployment processes for scalability and efficiency",
       "date_published": "2026-08-28T22:56:10.895Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460537284",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460537284",
-      "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Fort Collins, CO\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in Fort Collins office",
-      "date_published": "2026-08-28T22:56:07.352Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460535321",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-cloud-engineer-intern-4460535321",
-      "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: San Jose, CA\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in cross-functional teams\n• Optimize cloud deployment processes for scalability and efficiency",
-      "date_published": "2026-08-28T22:56:06.467Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460531378",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460531378",
-      "title": "Software Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Chippewa Falls, WI\n• Write code for operating systems and networking tools\n• Work with development partners on software design\n• Debug and test code for low to moderate complexity products",
-      "date_published": "2026-08-28T22:55:52.044Z",
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
