@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016",
+      "url": "https://interndoor.com/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016",
+      "title": "University – Summer 27, Cybersecurity Analyst Intern — Booz Allen Hamilton",
+      "content_text": "Company: Booz Allen Hamilton · Location: McLean, VA · Duration: Winter 2027\n• Analyze technical data to identify security risks and vulnerabilities\n• Use python or similar scripting languages for threat analysis\n• Collaborate with teams to develop solutions for real-world security challenges",
+      "date_published": "2026-08-29T02:11:02.832Z",
+      "authors": [
+        {
+          "name": "Booz Allen Hamilton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ups-spring-2027-industrial-engineering-co-op-4459458105",
+      "url": "https://interndoor.com/us/jobs/ups-spring-2027-industrial-engineering-co-op-4459458105",
+      "title": "Spring 2027 Industrial Engineering Co-Op — UPS",
+      "content_text": "Company: UPS · Location: Louisville, KY · Duration: 24 months\n• Analyze data to improve processes and reduce costs\n• Use power bi, sql, and excel for reporting\n• Work on sustainability projects to cut fuel use",
+      "date_published": "2026-08-29T01:32:19.285Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ups-summer-2027-industrial-engineering-co-op-4459467031",
       "url": "https://interndoor.com/us/jobs/ups-summer-2027-industrial-engineering-co-op-4459467031",
       "title": "Summer 2027 Industrial Engineering Co-Op — UPS",
@@ -575,30 +599,6 @@
       "title": "Cloud Engineer Intern — Hewlett Packard Enterprise",
       "content_text": "Company: Hewlett Packard Enterprise · Location: Fort Collins, CO\n• Design and implement cloud solutions for business needs\n• Work with Java, REST APIs, and Git in a hybrid setup\n• Collaborate on cloud infrastructure and automation projects",
       "date_published": "2026-08-28T22:36:19.751Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460527432",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-software-engineer-intern-4460527432",
-      "title": "Software Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Sunnyvale, CA\n• Write code for operating systems and networking tools\n• Work with development partners on software systems\n• Debug and test code for low to moderate complexity products",
-      "date_published": "2026-08-28T22:36:15.038Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460532358",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-firmware-engineer-intern-4460532358",
-      "title": "Firmware Engineer Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bloomington, MN\n• Write firmware for DSP, embedded systems, and BIOS/UEFI\n• Use C, Python, and real-time OS tools\n• Work hybrid with 2 days in HPE office",
-      "date_published": "2026-08-28T22:36:11.808Z",
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
