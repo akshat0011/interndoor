@@ -1008,6 +1008,102 @@ export function buildTitle(parts, brand = 'InternDoor') {
 }
 
 /**
+ * A title that keeps BOTH ENDS: the employer and the start of the role, and the
+ * tail that actually tells it apart.
+ *
+ * Every other trim here drops from the end, which is right when the end is the
+ * least useful part. It is exactly wrong when the end is the ONLY useful part.
+ * Booz Allen files "University, 2027 Summer Games - Cyber Security Intern",
+ * "- Data Scientist Intern" and "- Software Developer Intern"; the first 48
+ * characters are identical, so all three clamped to one string and three
+ * genuinely different jobs rendered the same <title>.
+ *
+ * ONLY REACHED WHEN THE ORDINARY CANDIDATES COLLIDE, which is what makes it
+ * safe. As a general rule it would be wrong — STEMpedia writes fifteen city
+ * names at the end of a title, and preserving that tail is the worst thing to
+ * keep — but a posting with no rival never gets here.
+ */
+export function elideMiddle(text, max = TITLE_MAX) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+
+  // The distinguishing part is nearly always the last segment after a
+  // separator: "<programme> - Cyber Security Intern".
+  const maxTail = Math.floor(max * 0.55);
+  const seg = t.match(/[-–—:,]\s*([^-–—:,]{3,})$/);
+  let tail = seg && seg[1].trim().length <= maxTail ? seg[1].trim() : '';
+  if (!tail) {
+    // No clean separator, so take as many whole trailing words as fit.
+    const words = t.split(' ');
+    for (let i = words.length - 1; i >= 0; i--) {
+      const next = words[i] + (tail ? ` ${tail}` : '');
+      if (next.length > maxTail) break;
+      tail = next;
+    }
+  }
+  const room = max - tail.length - 2;
+  // Below this the head is too short to name the employer, which is the half
+  // that matches what people search. A plain clamp is the better answer then.
+  if (!tail || room < 14) return clampWords(t, max);
+  const head = clampWords(t, room);
+  // Nothing is gained by eliding a middle that is already empty, and a head
+  // that already contains the tail would just repeat it.
+  if (!head || head.length + tail.length + 2 > max) return clampWords(t, max);
+  if (head.toLowerCase().includes(tail.toLowerCase())) return clampWords(t, max);
+  return `${head}\u2026 ${tail}`;
+}
+
+/**
+ * The tail that tells THIS title apart from the ones it collides with.
+ *
+ * elideMiddle keeps the last few words, which is right when the end happens to
+ * be distinctive and useless when it is not: AbbVie's three roles all end
+ * "(Undergraduate)", so keeping the tail kept the one part they share and threw
+ * away Cybersecurity / Cloud Engineering / Data & Software. The tail has to be
+ * chosen against the RIVALS, not from the string alone.
+ *
+ * So: find how far this title still agrees with each one it must be
+ * distinguished from, take the furthest of those, and start the tail at the
+ * next word boundary. Anything before that point is shared and cannot
+ * disambiguate; anything after it is exactly what does.
+ */
+export function distinguishingTail(base, rivals = [], max = TITLE_MAX) {
+  const t = String(base || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  let cut = 0;
+  for (const r of rivals) {
+    const o = String(r || '').replace(/\s+/g, ' ').trim();
+    if (!o || o === t) continue;
+    let i = 0;
+    while (i < t.length && i < o.length && t[i] === o[i]) i += 1;
+    /* THE LATEST agreement, and the opposite was measured and rejected.
+       Starting from the EARLIEST divergence is the intuitive choice — the tail
+       then carries every part that differs from any rival — but with two dozen
+       siblings the earliest divergence is near the front, so the tail is almost
+       the whole title, gets clamped to fit, and collapses back onto the same
+       string the plain clamp produces. Measured on the live boards: latest
+       leaves 8 duplicate pages, earliest leaves 48. */
+    if (i > cut) cut = i;
+  }
+  if (cut > 0 && cut < t.length) {
+    const sp = t.lastIndexOf(' ', cut);
+    cut = sp > 0 ? sp + 1 : 0;
+  }
+  let tail = cut > 0 ? t.slice(cut).trim() : '';
+  const maxTail = Math.floor(max * 0.62);
+  if (tail.length > maxTail) tail = clampWords(tail, maxTail);
+  // No rivals, or they agree from the first character: nothing to aim at, so
+  // fall back to the generic version.
+  if (!tail) return elideMiddle(t, max);
+  const room = max - tail.length - 2;
+  if (room < 14) return elideMiddle(t, max);
+  const head = clampWords(t, room);
+  if (!head || head.length + tail.length + 2 > max) return elideMiddle(t, max);
+  if (head.toLowerCase().includes(tail.toLowerCase())) return elideMiddle(t, max);
+  return `${head}\u2026 ${tail}`;
+}
+
+/**
  * Trim to a length at a WORD boundary. Slicing mid-word left descriptions
  * ending "...and internal" / "...then contribute", which is what the SERP then
  * shows before its own ellipsis.
@@ -1130,7 +1226,15 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
       ? clampWords(base, TITLE_MAX - suf.length)
       : base;
     const y = new Date(j.postedAt ?? j.firstSeenAt ?? Date.now()).getFullYear();
-    return { withCity: buildTitle([`${clamped}${suf}`, y]), plain: buildTitle([base, y]) };
+    // base and suf are returned too: the tail variants below cannot be built
+    // here, because choosing a tail needs the RIVALS' titles and this function
+    // only ever sees one posting.
+    return {
+      base,
+      suf,
+      withCity: buildTitle([`${clamped}${suf}`, y]),
+      plain: buildTitle([base, y]),
+    };
   };
 
   const mine = candidates(job);
@@ -1139,13 +1243,43 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   const rivals = rivalry.map((s) => candidates(s.job, s.region));
   const collides = (t, pick) => rivals.some((r) => pick(r) === t);
 
-  // Prefer the city when a sibling shares this title, since then it is the only
-  // discriminator — but fall back to the full untrimmed title if adding the
-  // city would collide with a sibling anyway, because a longer distinct title
-  // beats a shorter identical one.
-  const pageTitle = twin && !collides(mine.withCity, (r) => r.withCity)
-    ? mine.withCity
-    : (collides(mine.plain, (r) => r.plain) && twin ? mine.withCity : mine.plain);
+  /* The two tail variants, added in a second pass because each one is chosen
+     against the OTHER postings' titles.
+     BOTH are needed, and they answer different collisions: `tail` separates
+     different roles advertised in the same city, `tailCity` separates them when
+     the same role also runs in several cities — which is Booz Allen exactly,
+     four cities x three roles, where neither the city nor the role alone is
+     enough. */
+  const bases = [mine, ...rivals].map((c) => c.base);
+  const withTails = (c, i) => {
+    const others = bases.filter((_, j) => j !== i);
+    c.tail = distinguishingTail(c.base, others);
+    c.tailCity = c.suf
+      ? `${distinguishingTail(c.base, others, TITLE_MAX - c.suf.length)}${c.suf}`
+      : c.tail;
+  };
+  withTails(mine, 0);
+  rivals.forEach((r, i) => withTails(r, i + 1));
+
+  /* ORDERED BY PREFERENCE, AND THE FIRST ONE THAT IS ACTUALLY UNIQUE WINS.
+     The city goes first when a sibling shares this exact title, because then it
+     is the only discriminator there is; otherwise the untrimmed title leads.
+     The previous expression fell back to `withCity` whenever `plain` collided
+     WITHOUT checking that the city helped — and for Booz Allen it does not,
+     because the colliding roles are all in one city, so it was choosing a
+     variant already known to collide. 95 pages shared 43 titles that way. */
+  const order = twin
+    ? ['withCity', 'tailCity', 'tail', 'plain']
+    : ['plain', 'tail', 'withCity', 'tailCity'];
+  let pageTitle = null;
+  for (const k of order) {
+    if (!collides(mine[k], (r) => r[k])) { pageTitle = mine[k]; break; }
+  }
+  /* Nothing distinguishes it. Prefer the more informative of the two rather
+     than the shorter: two long titles at one employer in the SAME city whose
+     first 60 characters agree are genuinely irreducible without inventing
+     something, and a job id in a title would be worse than the duplicate. */
+  if (!pageTitle) pageTitle = twin ? mine.withCity : mine.plain;
 
   // Lead with the facts a student scans for — where, how, how much — rather
   // than a generic "is hiring" opener. The first bullet is kept as the tail
@@ -2411,7 +2545,11 @@ export function renderReportPage(facts, { region = DEFAULT_REGION, alternates = 
 
   return `${head({
     title: buildTitle([`Engineering internship statistics ${region.inName}`]),
-    description: `${lede} Measured across ${sample} postings from a vetted list of employers, updated daily. Free to read and cite.`,
+    /* Clamped, and the boilerplate shortened to fit. It ran 188-190 characters
+       against a SERP that shows about 155, so "Free to read and cite" — the one
+       line aimed at the journalists this page exists for — was the part Google
+       was cutting off. The lede leads because it carries the actual statistic. */
+    description: clampWords(`${lede} Measured across ${sample} postings from vetted employers, updated daily.`, 158),
     canonical: url,
     indexable: facts.length >= REPORT_MIN_FACTS,
     region,
