@@ -27,8 +27,12 @@ const job = (over = {}) => ({
 
 console.log('\n== one role, one message ==');
 const one = composeJob(job());
-ok('the role is the headline', one.includes('<b><a href="https://interndoor.com/jobs/nobroker-com-engineering-intern-4449259269">Engineering Intern</a></b>'));
-ok('the employer is named under it', one.includes('🏢 NoBroker.com'));
+/* COMPANY FIRST, THEN THE ROLE — the opposite of the board's cards, and
+   deliberately so: a board is scanned for the ROLE, a channel is a feed of
+   single messages and what stops a thumb is the employer's name. It also
+   matches the card directly above it, which leads with the company. */
+ok('the employer is the first line', one.startsWith('🏢 <b>NoBroker.com</b>'));
+ok('the role is second, and is the link', one.split('\n')[1] === '🚀 <b><a href="https://interndoor.com/jobs/nobroker-com-engineering-intern-4449259269">Engineering Intern</a></b>');
 ok('place and mode on one line', one.includes('📍 Bengaluru · On-site'));
 ok('and the age', /🕐 Posted 2h ago/.test(one));
 

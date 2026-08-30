@@ -119,9 +119,14 @@ export function composeJob(job, region = regionOf('IN')) {
      the site's own trimmer, already used for every meta description. */
   const title = clampWords(String(job.title ?? ''), 110);
 
+  /* COMPANY FIRST, THEN THE ROLE. The board's own cards invert this — the role
+     is the heading there, because nobody scans a job BOARD for "NoBroker" —
+     but a channel is a feed of single messages, and what stops a thumb is the
+     employer's name. It also matches the card sitting directly above it, which
+     already leads with the company as its eyebrow. */
   const lines = [
+    `🏢 <b>${esc(job.company)}</b>`,
     `🚀 <b><a href="${page}">${esc(title)}</a></b>`,
-    `🏢 ${esc(job.company)}`,
     '',
   ];
 
