@@ -64,8 +64,16 @@ const fn = readFileSync(join(ROOT, 'web', 'api', 'og.js'), 'utf8');
 // The name appears in the file's own note explaining why it is not used, so
 // this asserts on the IMPORT rather than the mention.
 check('the handler does not import @vercel/og', /from ['"]@vercel\/og['"]/.test(fn), false);
-check('it renders with satori', fn.includes("from 'satori'"), true);
-check('and rasterises with resvg-wasm', fn.includes("from '@resvg/resvg-wasm'"), true);
+/* Imported DYNAMICALLY and inside the guarded path: a static import that fails
+   to resolve throws before any of our code runs, so the whole function 500s
+   instead of falling back to the generic card — which is exactly what the first
+   deploy did, and it was undiagnosable from outside. */
+check('it renders with satori', /import\('satori'\)/.test(fn), true);
+check('and rasterises with resvg-wasm', /import\('@resvg\/resvg-wasm'\)/.test(fn), true);
+check('neither is imported statically',
+  /^import .*(satori|resvg)/m.test(fn), false);
+// A failure that cannot be seen from outside is a failure that cannot be fixed.
+check('a fallback says why on a header', fn.includes("'x-og-error'"), true);
 // The Node runtime, so it can be exercised locally before it ships.
 check('it is not an edge function', /runtime:\s*'edge'/.test(fn), false);
 

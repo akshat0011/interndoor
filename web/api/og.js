@@ -38,8 +38,6 @@
  * reading the published jobs.json means only real listings can ever be drawn.
  */
 import { readFileSync } from 'node:fs';
-import satori from 'satori';
-import { initWasm, Resvg } from '@resvg/resvg-wasm';
 import { buildCard, REGION_PREFIX } from './_card.js';
 
 /* The logo is fetched from the CANONICAL domain, not the request's own origin.
@@ -53,14 +51,28 @@ const asset = (name) => readFileSync(new URL(`./assets/${name}`, import.meta.url
 /* Read once per warm instance, not per request. The fonts are 223KB and the
    rasteriser 2.4MB; paying that on every share would be the whole cost of the
    feature. */
+/* DYNAMIC, and inside the guarded path on purpose. A static import that fails
+   to resolve throws before any of our code runs, so the whole function 500s
+   instead of falling back — which is what happened on the first deploy of this
+   and could not be diagnosed from the outside at all. Imported here, a broken
+   module is just another reason to serve the generic card, and the reason
+   comes back on the x-og-error header. */
 let ready;
 function boot() {
   ready ??= (async () => {
-    await initWasm(asset('resvg.wasm'));
-    return [
-      { name: 'Archivo', data: asset('archivo-900.ttf'), weight: 900, style: 'normal' },
-      { name: 'JetBrains Mono', data: asset('jetbrains-700.ttf'), weight: 700, style: 'normal' },
-    ];
+    const [satoriMod, resvgMod] = await Promise.all([
+      import('satori'),
+      import('@resvg/resvg-wasm'),
+    ]);
+    await resvgMod.initWasm(asset('resvg.wasm'));
+    return {
+      satori: satoriMod.default ?? satoriMod,
+      Resvg: resvgMod.Resvg,
+      fonts: [
+        { name: 'Archivo', data: asset('archivo-900.ttf'), weight: 900, style: 'normal' },
+        { name: 'JetBrains Mono', data: asset('jetbrains-700.ttf'), weight: 700, style: 'normal' },
+      ],
+    };
   })();
   return ready;
 }
@@ -90,7 +102,7 @@ export default async function handler(req, res) {
     const job = (await board.json()).jobs?.find((j) => String(j.id) === id);
     if (!job) return generic(res, url);
 
-    const fonts = await boot();
+    const { satori, Resvg, fonts } = await boot();
     const svg = await satori(buildCard({
       company: job.company ?? '',
       title: job.title ?? '',
@@ -108,10 +120,15 @@ export default async function handler(req, res) {
     res.setHeader('cache-control', 'public, immutable, no-transform, max-age=31536000');
     return res.status(200).end(Buffer.from(png));
   } catch (err) {
-    if (process.env.OG_DEBUG) console.error('og:', err);
     /* NEVER 500. A preview image that errors is a broken card on somebody's
-       shared link; the generic one is a worse card but a working one. */
-    return generic(res, new URL(req.url, origin(req)));
+       shared link; the generic one is a worse card but a working one.
+       The reason travels on a header rather than in the body: a redirect has
+       no body a crawler would read, and a deployed function that quietly falls
+       back is otherwise undiagnosable from outside. It carries the message
+       only, never a stack, and is truncated. */
+    console.error('og:', err);
+    return generic(res, new URL(req.url, origin(req)),
+      String(err?.message ?? err).replace(/\s+/g, ' ').slice(0, 200));
   }
 }
 
@@ -124,7 +141,8 @@ function origin(req) {
   return `${proto}://${req.headers.host}`;
 }
 
-function generic(res, url) {
+function generic(res, url, why = '') {
+  if (why) res.setHeader('x-og-error', why);
   res.setHeader('location', `${url.origin}/og.jpg?v=5`);
   return res.status(302).end();
 }
