@@ -40,6 +40,18 @@ export const PATHS = {
   reelsOut: join(STATE, 'reels', 'out'),
   reelsWork: join(STATE, 'reels', 'work'),
 
+  /**
+   * Open Graph cards, one per posting, for CHANNELS rather than the website.
+   *
+   * In the state directory and NOT in the repo, for exactly the reason the
+   * reels are: these are generated artefacts and `app/` is a PUBLIC git repo.
+   * Telegram uploads the file itself, so the image never needs to be served —
+   * which is what keeps ~110 cards a day out of a repository Vercel clones on
+   * all 48 deploys a day. The website's own copies, drawn only for postings we
+   * SHARE on LinkedIn, live under web/public/og and are committed on purpose.
+   */
+  ogCards: join(STATE, 'og'),
+
   /** Generated LinkedIn posts, one page per batch, plus a stable latest.html. */
   posts: join(STATE, 'posts'),
   latestPosts: join(STATE, 'posts', 'latest.html'),
@@ -66,7 +78,7 @@ export const PATHS = {
 
 /** Directories that must exist before use. launchd never creates them for us. */
 const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs',
-  'reels', 'reelsBgm', 'reelsOut', 'reelsWork'];
+  'reels', 'reelsBgm', 'reelsOut', 'reelsWork', 'ogCards'];
 
 export function ensureDirs() {
   for (const key of MANAGED) {
