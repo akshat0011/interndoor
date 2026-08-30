@@ -737,48 +737,30 @@ writePages(smJobs, smDir2, [], {});
 check('an unchanged board rewrites an identical sitemap',
   readFileSync(join(smDir2, 'sitemap.xml'), 'utf8') === sm, true);
 
-console.log('\n== each posting carries its own preview image ==');
-/* WHY. Every job page served the same generic og.jpg, so every share of every
-   role looked identical — on the one element a reader sees before any text.
-
-   IT IS A URL, NOT A FILE, and that is a storage decision rather than a
-   preference: a committed card is ~46KB and will not compress further
-   (measured at four quality levels and with the film grain removed), which is
-   +44MB for today's board and ~1.7GB a YEAR of git history that cannot be
-   pruned without rewriting a public repo. web/api/og.js draws it on request. */
+console.log('\n== the preview image ==');
+/* THE GENERATOR IS BUILT BUT NOT DEPLOYED. web/api-og.js.disabled draws a card
+   per posting on request; @vercel/og would not bundle for the Edge runtime and
+   the build failed, and A FAILED BUILD FREEZES THE WHOLE SITE — Vercel keeps
+   serving the previous deployment, so every later publish stops reaching
+   readers while Telegram goes on announcing pages that are not live.
+   Until it deploys, every page carries the generic card: pointing at a function
+   that does not exist would 404 the preview on all 987 job pages, which is
+   worse than a repetitive one. The card's own layout is pinned in
+   test/og.test.mjs, which needs no renderer. */
 const ogOf = (html) => (html.match(/<meta property="og:image" content="([^"]+)"/) || [])[1];
 const twOf = (html) => (html.match(/<meta name="twitter:image" content="([^"]+)"/) || [])[1];
 
-const carded = renderJobPage(vtJob);
-/* The ampersand is written &amp; and that is CORRECT, not a bug: a bare & in
-   an HTML attribute is invalid markup, and every crawler decodes the entity
-   back to & before fetching. Asserting the raw form would be asserting broken
-   HTML. */
-check('the card is this posting\'s own', ogOf(carded),
-  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=IN`);
+check('the generic card is served', ogOf(renderJobPage(vtJob)), 'https://interndoor.com/og.jpg?v=5');
 // Two tags, one image: a preview that disagrees with itself between networks
 // is worse than a generic one.
-check('and twitter agrees with open graph', twOf(carded), ogOf(carded));
-// EVERY posting, with nothing to check on disk first — that is the whole point
-// of generating rather than committing.
-check('no page falls back to the generic card', /og\.jpg/.test(carded), false);
-
-/* The region travels with the id. The generator reads that board's own
-   jobs.json, so a US posting asked for against India's file is simply not
-   found — and a card drawn for the wrong board is worse than none. */
-check('a US page asks for the US board',
-  ogOf(renderJobPage(vtJob, [], { region: regionOf('US') })),
-  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=US`);
-
-// An ats: id carries colons and ampersands are not impossible; the id is a
-// query parameter and has to survive as one.
-check('the id is url-encoded',
-  ogOf(renderJobPage({ ...vtJob, id: 'ats:greenhouse:x:1' })),
-  'https://interndoor.com/api/og?id=ats%3Agreenhouse%3Ax%3A1&amp;r=IN');
+check('and twitter agrees with open graph', twOf(renderJobPage(vtJob)), ogOf(renderJobPage(vtJob)));
+check('no page points at a function that is not deployed',
+  /api\/og/.test(renderJobPage(vtJob)), false);
 
 /* ogCardName still exists for src/ogcard.js, which draws TELEGRAM's copies
-   locally — the generator cannot see a posting until Vercel redeploys, about a
-   minute, and that is exactly the window the channel exists for. */
+   locally — and Telegram is why the local renderer stays whatever happens to
+   the generator: a listing is posted seconds after the push, and Vercel needs
+   about a minute to deploy. */
 check('a colon never reaches a filename',
   ogCardName('ats:greenhouse:towerresearchcapital:8143756'),
   'ats-greenhouse-towerresearchcapital-8143756.jpg');

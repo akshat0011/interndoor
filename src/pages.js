@@ -1230,20 +1230,16 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     canonical: url,
     indexable,
     region,
-    /* THIS POSTING'S OWN preview image, drawn on request by web/api/og.js.
-       Every job page served the same generic picture, so every share of every
-       role looked identical in a feed — on the one element a reader sees
-       before any text.
-       IT IS A URL, NOT A FILE, and that is a storage decision: a committed
-       card is ~46KB and will not compress further (measured at four quality
-       levels, and without the film grain), which is +44MB for today's board
-       and ~1.7GB a YEAR of git history that cannot be pruned without
-       rewriting a public repo. Generated on request it costs nothing per job
-       and covers postings that do not exist yet. The function answers with a
-       year-long immutable cache, so it is drawn once per posting however often
-       the link is shared, and it redirects to the generic card rather than
-       erroring if the id is unknown. */
-    image: `${SITE}/api/og?id=${encodeURIComponent(job.id)}&r=${region.code}`,
+    /* TEMPORARILY THE GENERIC CARD AGAIN. The per-posting generator is built
+       (web/api-og.js.disabled + web/api/_card.js) and its layout is verified,
+       but @vercel/og would not bundle for the Edge runtime — the build failed
+       with "referencing unsupported modules", which is the bundler resolving
+       it to the Node build that needs fs. A FAILED BUILD FREEZES THE WHOLE
+       SITE: Vercel serves the previous deployment, so every later publish
+       stops reaching readers while Telegram goes on announcing job pages that
+       are not live yet. Pointing at a function that does not exist would also
+       404 the preview on every job page, which is worse than a repetitive one.
+       Re-point this line the moment the function deploys. */
     // No hreflang on a job page. A Stripe internship in Dublin is not a
     // regional variant of one in Bengaluru, it is a different vacancy, and
     // telling Google two unrelated URLs are the same page is a real error.
