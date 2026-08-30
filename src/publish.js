@@ -690,6 +690,10 @@ export function pushToSite(newJobCount) {
     // never, which looks exactly like a page that renders wrong.
     'web/public/alerts.html',
     'web/public/report.html',
+    /* One Open Graph card per SHARED posting, drawn by bin/render-og.js. Shared
+       by every region — a job id is unique across all of them — so it lives at
+       the root and is named here rather than covered by regionPaths(). */
+    'web/public/og',
     /* The IndexNow key file. It MUST be live at the domain root or every
        submission is refused 403 — and nothing on the site would look wrong.
        The filename is the key itself and must match indexing.indexNow.key. */

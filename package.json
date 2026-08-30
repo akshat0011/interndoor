@@ -31,7 +31,8 @@
     "discover-urls": "node --no-warnings=ExperimentalWarning bin/discover-urls.js",
     "near-misses": "node --no-warnings=ExperimentalWarning bin/near-misses.js",
     "reel": "node --no-warnings=ExperimentalWarning bin/render-reel.js",
-    "stats": "node --no-warnings=ExperimentalWarning bin/statsmine.js"
+    "stats": "node --no-warnings=ExperimentalWarning bin/statsmine.js",
+    "og": "node --no-warnings=ExperimentalWarning bin/render-og.js"
   },
   "dependencies": {
     "playwright-core": "^1.56.0"

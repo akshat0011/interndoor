@@ -1455,6 +1455,25 @@ export class Store {
   }
 
   /** The next scheduled reel whose slot has arrived, if any. */
+  /**
+   * Every posting that has been queued for a LinkedIn post or a reel.
+   *
+   * These are the roles whose links actually get SHARED, which is the only
+   * place an Open Graph card is ever seen. Drawing one per published posting
+   * would be ~50KB x 991 now and ~5.5MB a day forever, in a public repo that
+   * Vercel clones on all 48 deploys a day; drawing them for what is shared is
+   * a few a day. Status is not filtered: a failed or draft row still means the
+   * posting was chosen, and a card costs nothing once drawn.
+   */
+  sharedJobIds() {
+    const rows = this.db.prepare(`
+      SELECT job_id FROM post_queue
+      UNION
+      SELECT job_id FROM reel_posts
+    `).all();
+    return rows.map((r) => String(r.job_id));
+  }
+
   reelDue(now = Date.now()) {
     return this.db.prepare(`
       SELECT * FROM reel_posts

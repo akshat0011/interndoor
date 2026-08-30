@@ -4,7 +4,8 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { regionOf } from '../src/regions.js';
-import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix, stipendText, verifiedAt, startDate, degreeLabel, placesOf, payRange, eligibilityCounts } from '../src/pages.js';
+import { jobSlug, slugify, renderJobPage, renderCompanyPage, renderCompanyIndex, writePages, buildTitle, saysIntern, clampWords, companyProfile, placeSuffix, stipendText, verifiedAt, startDate, degreeLabel, placesOf, payRange, eligibilityCounts, ogCardName
+} from '../src/pages.js';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -695,6 +696,37 @@ check('and carries no data-ago for page.js to rewrite',
 check('the hub verified chip carries no data-ago',
   /vfy is-verified" data-ago/.test(
     renderCompanyPage('AlphaGrep Securities', [polled(pollT1)], [], '')), false);
+
+console.log('\n== each posting can carry its own preview image ==');
+/* WHY. Every job page served the same generic og.jpg, so every share of every
+   role looked identical in a feed — on the one element a reader sees before any
+   text. bin/render-og.js draws a card per posting and this is the <meta> that
+   points at it. */
+const ogOf = (html) => (html.match(/<meta property="og:image" content="([^"]+)"/) || [])[1];
+const twOf = (html) => (html.match(/<meta name="twitter:image" content="([^"]+)"/) || [])[1];
+
+const carded = renderJobPage(vtJob, [], { ogCard: true });
+check('the card is this posting\'s own', ogOf(carded), `https://interndoor.com/og/${ogCardName(vtJob.id)}`);
+// Two tags, one image: a preview that disagrees with itself between networks is
+// worse than a generic one.
+check('and twitter agrees with open graph', twOf(carded), ogOf(carded));
+
+/* FALLING BACK RATHER THAN ASSUMING is what stops a missing file becoming a
+   broken preview — cards are drawn only for postings that get shared, so most
+   pages legitimately have none. */
+check('without one it is the generic card',
+  ogOf(renderJobPage(vtJob, [], { ogCard: false })), 'https://interndoor.com/og.jpg?v=5');
+check('and that is the default', ogOf(renderJobPage(vtJob)), 'https://interndoor.com/og.jpg?v=5');
+
+/* ONE filename rule, exported and shared with bin/render-og.js. A job id can
+   contain colons, which are illegal in a Windows checkout and ugly in a URL —
+   and jobPageSlug already exists in three copies that need a test to stop them
+   drifting. This one is not becoming the fourth. */
+check('a colon never reaches the filename',
+  ogCardName('ats:greenhouse:towerresearchcapital:8143756'),
+  'ats-greenhouse-towerresearchcapital-8143756.jpg');
+check('a numeric id is untouched', ogCardName('4440764006'), '4440764006.jpg');
+check('the name never escapes its directory', /^[A-Za-z0-9_-]+\.jpg$/.test(ogCardName('../../etc/passwd')), true);
 
 console.log('\n== the email signup is on every generated page ==');
 /* It is on the GENERATED pages, not only the homepage, because that is where

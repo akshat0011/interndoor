@@ -66,6 +66,29 @@
           background:rgba(10,10,11,.72); }
   .chip.hot { color:var(--live); border-color:rgba(200,255,0,.34); }
   .spacer { flex:1; }
+  /* ---- job variant. The generic card above is untouched and still renders
+     when nothing is passed; renderJob() swaps the middle and the chips. ---- */
+  .eyebrow { display:flex; align-items:center; gap:18px; margin-bottom:22px; }
+  .eyebrow .logo { width:64px; height:64px; border-radius:12px; flex:none;
+                   object-fit:cover; background:#17171a; }
+  .eyebrow .co { font-family:var(--mono); font-size:26px; letter-spacing:.12em;
+                 text-transform:uppercase; color:var(--live);
+                 overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  /* THE ROLE IS THE HEADLINE AND THE COMPANY IS AN EYEBROW — the same
+     inversion the board's cards make, and for the same reason: nobody scans a
+     job board for the employer's name. */
+  /* The fit loop measures against a real box, so the middle needs a ceiling —
+     without one scrollHeight always equals clientHeight and the loop is inert.
+     630 tall, less 58 padding top and bottom, less the masthead row and the
+     chip row, leaves this. */
+  /* KEEPS ITS 770px MEASURE. The first render set max-width:100% and the
+     headline ran across the radar, which is the one thing the right half of
+     this card is for. Narrower simply means the fit loop shrinks sooner. */
+  #card.is-job .mid { max-height:372px; overflow:hidden; }
+  h1.role { font-family:var(--display); font-weight:900; font-size:92px;
+            line-height:1.02; letter-spacing:-.035em; max-width:100%;
+            overflow-wrap:anywhere; }
+
   .url { font-family:var(--mono); font-size:21px; letter-spacing:.08em;
          text-transform:uppercase; color:var(--ink-3);
          background:rgba(10,10,11,.72); padding-left:14px; }
@@ -126,3 +149,58 @@
   </div>
 
 </div>
+
+<script>
+/* Fill the card for ONE posting. Called by bin/render-og.js after
+   document.fonts.ready — measuring text before the webfonts land measures
+   Helvetica and then Archivo overflows, which is the bug that shipped three
+   times in the reel card. */
+window.renderJob = function (job) {
+  document.getElementById('card').classList.add('is-job');
+  document.querySelector('.stamp').innerHTML = '<i class="beat"></i>Hiring';
+
+  const mid = document.querySelector('.mid');
+  mid.innerHTML = '';
+
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'eyebrow';
+  if (job.logo) {
+    const img = document.createElement('img');
+    img.className = 'logo';
+    img.src = job.logo;
+    eyebrow.appendChild(img);
+  }
+  const co = document.createElement('span');
+  co.className = 'co';
+  co.textContent = job.company || '';
+  eyebrow.appendChild(co);
+
+  const h = document.createElement('h1');
+  h.className = 'role';
+  h.textContent = job.title || '';
+
+  mid.appendChild(eyebrow);
+  mid.appendChild(h);
+
+  const foot = document.querySelector('.foot');
+  foot.innerHTML = '';
+  for (const [i, f] of (job.facts || []).entries()) {
+    const c = document.createElement('span');
+    c.className = i === 0 ? 'chip hot' : 'chip';
+    c.textContent = f;
+    foot.appendChild(c);
+  }
+  const sp = document.createElement('span'); sp.className = 'spacer'; foot.appendChild(sp);
+  const u = document.createElement('span'); u.className = 'url';
+  u.textContent = 'interndoor.com'; foot.appendChild(u);
+
+  /* SHRINK UNTIL IT FITS, checking WIDTH as well as height: a single
+     unbreakable token ("Intern_2027_HW") runs off the right edge without ever
+     growing the block, so a height-only check reports it as fitting. */
+  const room = () => mid.scrollHeight <= mid.clientHeight && h.scrollWidth <= h.clientWidth;
+  for (let size = 92; size >= 40 && !room(); size -= 4) {
+    h.style.fontSize = size + 'px';
+  }
+  return { fontSize: h.style.fontSize || '92px' };
+};
+</script>

@@ -207,6 +207,19 @@ function validThrough(job, validDays = DEFAULT_VALID_DAYS) {
   return endOfUtcDay(Math.max(firstSeenBasis, stillListed));
 }
 
+/**
+ * The file a posting's own Open Graph card is written to.
+ *
+ * ONE rule, exported, because bin/render-og.js writes the file and this module
+ * writes the <meta> that points at it — and a job id can contain a colon
+ * (`ats:greenhouse:x:1`), which is both illegal in a Windows checkout and
+ * ugly in a URL. jobPageSlug already exists in three places and needs a test to
+ * stop them drifting; this one is not going to become the fourth.
+ */
+export function ogCardName(id) {
+  return `${String(id).replace(/[^A-Za-z0-9_-]/g, '-')}.jpg`;
+}
+
 /** Enough substance to deserve a place in the index. */
 export function isIndexable(job) {
   return (job.bullets ?? []).length >= 2;
@@ -764,7 +777,7 @@ function regionSwitch(current, regions) {
 }
 
 /** Shared <head> and page chrome, so every generated page carries the same rules. */
-function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/' }) {
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5` }) {
   return `<!doctype html>
 <html lang="${region.hreflang}">
 <head>
@@ -782,9 +795,9 @@ ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robo
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-<meta property="og:image" content="${SITE}/og.jpg?v=5">
+<meta property="og:image" content="${esc(image)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${SITE}/og.jpg?v=5">
+<meta name="twitter:image" content="${esc(image)}">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -1004,7 +1017,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, ogCard = false } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
@@ -1201,6 +1214,12 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     canonical: url,
     indexable,
     region,
+    /* THIS POSTING'S OWN preview image when one has been drawn, else the
+       generic card. Every job page served the same picture, so every share of
+       every role looked identical in a feed — on the one element a reader sees
+       before any text. Falling back rather than assuming is what stops a
+       missing file becoming a broken preview. */
+    image: ogCard ? `${SITE}/og/${ogCardName(job.id)}` : undefined,
     // No hreflang on a job page. A Stripe internship in Dublin is not a
     // regional variant of one in Bengaluru, it is a different vacancy, and
     // telling Google two unrelated URLs are the same page is a real error.
@@ -2560,6 +2579,17 @@ function companyLogos(jobs, publicDir) {
 }
 
 export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {} } = {}) {
+  /* Which postings have a card of their own, read once rather than stat-ed per
+     page. `og/` sits at the ROOT and is shared by every region — a job id is
+     unique across all of them, so a US posting's card is found from the US
+     tree without a second copy. */
+  const slug = regionPath(region.code);           // '' for India, '/us', '/uk'
+  const rootDir = slug && publicDir.endsWith(slug.slice(1))
+    ? publicDir.slice(0, -slug.length + 1) : publicDir;
+  const ogDir = join(rootDir, 'og');
+  const ogCards = new Set(
+    existsSync(ogDir) ? readdirSync(ogDir).filter((f) => f.endsWith('.jpg')) : [],
+  );
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -2593,7 +2623,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(jobsDir, name));
     track(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays,
+          ogCard: ogCards.has(ogCardName(job.id)) })),
       `/jobs/${jobSlug(job)}`);
   }
 
