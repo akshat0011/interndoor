@@ -697,6 +697,46 @@ check('the hub verified chip carries no data-ago',
   /vfy is-verified" data-ago/.test(
     renderCompanyPage('AlphaGrep Securities', [polled(pollT1)], [], '')), false);
 
+console.log('\n== the sitemap dates content, not the clock ==');
+/* THE BUG. lastmod was new Date() for the board, /companies, /alerts, /report
+   and EVERY company hub — ~159 URLs a region — so all of them claimed to have
+   changed at the moment of writing, on all 48 publishes a day. Three sitemaps
+   rewritten in full every run into a public repo, and worse: GOOGLE ACTS ON
+   LASTMOD only while it is accurate, so a site whose every URL claims it
+   changed thirty minutes ago teaches crawlers to ignore the field site-wide —
+   including on the job pages where it IS true and freshness is the product. */
+const smDir = mkdtempSync(join(tmpdir(), 'sitemap-'));
+const smJob = (over) => ({ ...linkedin, location: 'Bengaluru, Karnataka, India',
+  bullets: ['One', 'Two'], summary: 's', ...over });
+const smJobs = [
+  smJob({ id: '1', company: 'Adobe', title: 'A', postedAt: Date.UTC(2026, 7, 20) }),
+  smJob({ id: '2', company: 'Adobe', title: 'B', postedAt: Date.UTC(2026, 7, 28) }),
+  smJob({ id: '3', company: 'Zoho', title: 'C', postedAt: Date.UTC(2026, 7, 11) }),
+];
+writePages(smJobs, smDir, [], {});
+const sm = readFileSync(join(smDir, 'sitemap.xml'), 'utf8');
+
+// Every date is a plain day. A minute in a sitemap is precision nobody uses
+// and is the thing that made it move.
+const stamps = [...sm.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((m) => m[1]);
+check('every lastmod is day-granular', stamps.every((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)), true);
+check('and there are dates to check', stamps.length >= 4, true);
+
+// None of them is today-by-default: they come from the postings.
+check('the board is dated by its freshest role',
+  /<loc>https:\/\/interndoor\.com\/<\/loc><lastmod>2026-08-28</.test(sm), true);
+check("a hub is dated by that employer's freshest role",
+  /companies\/adobe<\/loc><lastmod>2026-08-28</.test(sm), true);
+check('and a quieter employer keeps its own older date',
+  /companies\/zoho<\/loc><lastmod>2026-08-11</.test(sm), true);
+
+/* THE INVARIANT: two publishes with the same content produce the same bytes.
+   This is the assertion the whole change exists to make true. */
+const smDir2 = mkdtempSync(join(tmpdir(), 'sitemap-'));
+writePages(smJobs, smDir2, [], {});
+check('an unchanged board rewrites an identical sitemap',
+  readFileSync(join(smDir2, 'sitemap.xml'), 'utf8') === sm, true);
+
 console.log('\n== each posting can carry its own preview image ==');
 /* WHY. Every job page served the same generic og.jpg, so every share of every
    role looked identical in a feed — on the one element a reader sees before any

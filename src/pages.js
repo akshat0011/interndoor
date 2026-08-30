@@ -2801,23 +2801,45 @@ function removeUnpublishedRegions(publicDir, regions) {
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
 function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false } = {}) {
-  const now = new Date().toISOString();
+  /* LASTMOD IS A CONTENT DATE, NEVER THE CLOCK, and it is day-granular.
+   *
+   * It was `new Date().toISOString()` for the board, /companies, /alerts,
+   * /report and EVERY company hub — about 159 URLs a region — so all of them
+   * claimed to have changed at the moment of writing, on all 48 publishes a
+   * day. Two costs, and the second is the real one:
+   *
+   *   - three sitemaps rewritten in full every run, 163 lines apiece, into a
+   *     public repo. That is the timestamp churn fixed on the job pages this
+   *     morning, surviving in the one file nobody diffed.
+   *   - GOOGLE ACTS ON LASTMOD, and only while it is accurate. A site whose
+   *     every URL claims it changed thirty minutes ago, always, teaches
+   *     crawlers to ignore the field site-wide — including on the job pages
+   *     where it IS true and where freshness is the entire product.
+   *
+   * So each URL now carries the date of the newest posting BEHIND it: the
+   * board and the directories take the freshest role on the board, a hub takes
+   * that employer's freshest. Day granularity because a sitemap does not need
+   * the minute and because that is what makes it stop moving. */
+  const day = (ms) => new Date(ms || Date.now()).toISOString().slice(0, 10);
+  const newest = (rows) => (rows ?? []).reduce(
+    (max, j) => Math.max(max, j.postedAt ?? j.firstSeenAt ?? 0), 0);
+  const boardDay = day(newest(jobs));
   const urls = [
-    { loc: regionUrl('/', region), priority: '1.0', lastmod: now },
-    { loc: regionUrl('/companies/', region), priority: '0.7', lastmod: now },
+    { loc: regionUrl('/', region), priority: '1.0', lastmod: boardDay },
+    { loc: regionUrl('/companies/', region), priority: '0.7', lastmod: boardDay },
     /* /alerts is thin by design — it is a set of links — but it is a real
        destination people search for ("interndoor telegram"), and it is the only
        page that names every channel. Low priority, not omitted. */
-    { loc: regionUrl('/alerts', region), priority: '0.4', lastmod: now },
+    { loc: regionUrl('/alerts', region), priority: '0.4', lastmod: boardDay },
     /* /report is the only page here that does not expire, so it is the only one
        that can accumulate links over years. Listed above the hubs for that
        reason — and omitted entirely when it is noindex, because submitting a
        page you have told Google to ignore is noise. */
-    ...(report ? [{ loc: regionUrl('/report', region), priority: '0.7', lastmod: now }] : []),
+    ...(report ? [{ loc: regionUrl('/report', region), priority: '0.7', lastmod: boardDay }] : []),
     ...jobs.filter(isIndexable).map((j) => ({
       loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',
-      lastmod: new Date(j.postedAt ?? j.firstSeenAt).toISOString(),
+      lastmod: day(j.postedAt ?? j.firstSeenAt),
     })),
     // Hubs stay in the sitemap whether or not the employer is hiring today.
     // Dropping a URL from the sitemap the week it has no live roles, then
@@ -2827,7 +2849,13 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     ...[...new Set([...byCompany.keys(), ...pastByCompany.keys()])]
       .filter((company) => (byCompany.get(company) ?? []).some(isIndexable)
         || (pastByCompany.get(company) ?? []).length >= 2)
-      .map((company) => ({ loc: regionUrl(`/companies/${companySlug(company)}`, region), priority: '0.6', lastmod: now })),
+      .map((company) => ({
+        loc: regionUrl(`/companies/${companySlug(company)}`, region),
+        priority: '0.6',
+        // The employer's own freshest role, live or past — the hub genuinely
+        // changes when they post, and not otherwise.
+        lastmod: day(Math.max(newest(byCompany.get(company)), newest(pastByCompany.get(company)))),
+      })),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
