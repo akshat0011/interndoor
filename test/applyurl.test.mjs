@@ -13,7 +13,7 @@
  * sent to a different company's application form, under a button that says
  * "Apply on the company's site".
  */
-import { applyUrlFrom } from '../src/linkedin.js';
+import { applyUrlFrom, applyUrlFromResponse } from '../src/linkedin.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -86,6 +86,78 @@ console.log('\n== the id is matched exactly, not as a prefix ==');
    check whole words. */
 check('a shorter id does not match a longer one',
   applyUrlFrom(`[${posting('4441463619', 'https://jobs.acme.com/1')}]`, '444'), null);
+
+console.log('\n== recovered from the graphql response, not the DOM ==');
+/* WHY THIS PATH EXISTS, found 30 Aug. applyUrlFrom reads the DOM, and the DOM
+   only carries this data for the posting LinkedIn server-rendered on arrival.
+   openAndExtract does not navigate — it CLICKS a card in a page that is already
+   loaded — and the SPA answers over graphql and renders from the response
+   WITHOUT writing it into a <code> block. So for every card except whichever
+   happened to be showing on load, the value was never in the document.
+
+   That is why the recovery measured 8 of 8 when it was built and returned
+   nothing in production: it was verified by NAVIGATING to postings, and the
+   scan CLICKS. 34 consecutive runs at `apply links 0/N`, 0 of 563 rows. */
+const GQL = 'https://www.linkedin.com/voyager/api/graphql?variables=(cardSectionTypes:List(TOP_CARD,HOW_YOU_FIT_CARD),jobPostingUrn:urn%3Ali%3Afsd_jobPosting%3A4459729777)&queryId=voyagerJobs';
+const eyBody = `{"data":{"jobs":[${posting('4459729777', 'https://careers.ey.com/ey/job/Gurugram-Trainee/1431704333/')}]}}`;
+
+check('it recovers the employer URL the pane already fetched',
+  applyUrlFromResponse(GQL, eyBody),
+  { jobId: '4459729777', url: 'https://careers.ey.com/ey/job/Gurugram-Trainee/1431704333/' });
+
+/* The url is percent-encoded in the request. Decoding is what lets the id be
+   read out of it at all; without it nothing is ever attributed. */
+check('the encoded urn in the request url is decoded',
+  applyUrlFromResponse(GQL, eyBody).jobId, '4459729777');
+
+console.log('\n== ATTRIBUTION: a payload about several postings is refused ==');
+/* THE FAILURE THIS PREVENTS is the same one the scoping above exists for, and
+   it is worse here because a response body is not a page: the 1.7MB search
+   payload carries every posting on the page. Naming two ids means we cannot
+   know which one the body is answering for, so it is refused rather than
+   guessed — a wrong answer sends a student to another employer's form. */
+/* REAL-LENGTH IDS, and that is not cosmetic. The attribution regex requires
+   six or more digits, so the three-digit ids used elsewhere in this file match
+   NOTHING and every assertion here would pass vacuously — caught by mutation
+   testing, which is the only reason it is written this way. */
+const A = '4459729777', B = '4460556461';
+const twoReal = `{"included":[${posting(A, 'https://jobs.acme.com/1')},${posting(B, 'https://careers.beta.com/2')}]}`;
+const twoIds = `https://www.linkedin.com/voyager/api/graphql?variables=(a:urn%3Ali%3Afsd_jobPosting%3A${A},b:urn%3Ali%3Afsd_jobPosting%3A${B})`;
+check('two postings named in the request url', applyUrlFromResponse(twoIds, twoReal), null);
+// …and it WOULD have found one if the guard were not there, or the above is vacuous.
+check('control: the same body resolves when only one id is named',
+  applyUrlFromResponse(`https://www.linkedin.com/voyager/api/graphql?variables=(jobPostingUrn:urn%3Ali%3Afsd_jobPosting%3A${A})`, twoReal),
+  { jobId: A, url: 'https://jobs.acme.com/1' });
+check('no posting named at all',
+  applyUrlFromResponse('https://www.linkedin.com/voyager/api/graphql?q=all', eyBody), null);
+
+/* Naming ONE id is not enough on its own — the body is still scoped by
+   applyUrlFrom to that posting's own entityUrn. Here the request is about 111
+   and the body only holds 222's URL, so nothing may be returned. */
+const oneIdA = `https://www.linkedin.com/voyager/api/graphql?variables=(jobPostingUrn:urn%3Ali%3Afsd_jobPosting%3A${A})`;
+check('the body is still scoped to the id the request names',
+  applyUrlFromResponse(oneIdA, `[${posting(B, 'https://careers.beta.com/2')}]`), null);
+
+console.log('\n== it inherits every rule applyUrlFrom already enforces ==');
+/* LinkedIn's own onsite form is populated in companyApplyUrl for postings that
+   are not flagged Easy Apply — measured live, most of the India board — and
+   publishing it would put "Apply on the company's site" on a LinkedIn link. */
+check('linkedin onsite apply is refused',
+  applyUrlFromResponse(GQL, `[${posting('4459729777', 'https://www.linkedin.com/job-apply/4459729777')}]`), null);
+check('the safety interstitial is unwrapped',
+  applyUrlFromResponse(GQL,
+    `[${posting('4459729777', 'https://www.linkedin.com/safety/go/?url=https%3A%2F%2Fjobs.acme.com%2F9')}]`).url,
+  'https://jobs.acme.com/9');
+
+console.log('\n== it never throws on the shapes a listener really sees ==');
+/* This runs inside a response handler on every voyager call. A throw there is
+   an unhandled rejection in the middle of a scan. */
+check('a body with no apply url', applyUrlFromResponse(GQL, '{"data":{}}'), null);
+check('an empty body', applyUrlFromResponse(GQL, ''), null);
+check('a non-string body', applyUrlFromResponse(GQL, null), null);
+check('a non-string url', applyUrlFromResponse(null, eyBody), null);
+check('an undecodable url is still tried raw',
+  applyUrlFromResponse('https://x/%E0%A4%A?fsd_jobPosting:4459729777', eyBody).jobId, '4459729777');
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

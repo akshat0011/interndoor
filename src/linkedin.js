@@ -477,6 +477,107 @@ export function applyUrlFrom(blob, jobId) {
   return url;
 }
 
+/**
+ * The same URL, recovered from the response the PANE ALREADY FETCHED.
+ *
+ * WHY THIS IS NEEDED AS WELL AS applyUrlFrom. That function reads the DOM, and
+ * the DOM only carries this data for the posting LinkedIn server-rendered on
+ * arrival. `openAndExtract` does not navigate — it CLICKS a card in a page that
+ * is already loaded — and the SPA answers a click over graphql and renders from
+ * the response WITHOUT ever writing it into a <code> block. So for every card
+ * except the one that happened to be showing when the page loaded, the value
+ * was simply not in the document to be found.
+ *
+ * That is why the recovery measured 8 of 8 when it was built and then returned
+ * NOTHING in production: it was verified by navigating to postings one at a
+ * time, which server-renders the bootstrap, and the scan clicks. Measured 30
+ * Aug: 34 consecutive runs at `apply links 0/N`, 0 of 563 non-Easy-Apply rows
+ * with a URL — while the value sat in the graphql response the whole time
+ * (EY's `careers.ey.com/ey/job/Gurugram-Industrial-Trainee-…` among them).
+ *
+ * STILL NOTHING EXTRA IS REQUESTED. This is a passive read of a response the
+ * page made on its own to render the pane we are already looking at — the same
+ * standing rule as before, and the reason Apply is never clicked: automated
+ * apply clicks at ~670 a month is what gets the one account this board depends
+ * on restricted.
+ *
+ * ATTRIBUTION IS THE DANGEROUS HALF, exactly as it is for the DOM blob, and it
+ * is guarded twice over. The request URL must name EXACTLY ONE posting — a
+ * payload about several (the search list, 1.7MB of it) is refused outright
+ * rather than guessed at — and the body is then handed to applyUrlFrom, which
+ * scopes to that posting's own entityUrn before reading anything. Measured on
+ * the live response: the request names one id, the body carries exactly one
+ * `"entityUrn":"urn:li:fsd_jobPosting:<id>"`, and one companyApplyUrl. Getting
+ * this wrong does not produce a missing field, it sends a student to a
+ * different employer's application form.
+ */
+export function applyUrlFromResponse(requestUrl, body) {
+  if (typeof body !== 'string' || !body.includes('companyApplyUrl')) return null;
+  if (typeof requestUrl !== 'string' || !requestUrl) return null;
+
+  let decoded = requestUrl;
+  try { decoded = decodeURIComponent(requestUrl); } catch { /* keep it raw */ }
+
+  const ids = [...new Set([...decoded.matchAll(/fsd_jobPosting:(\d{6,})/g)].map((m) => m[1]))];
+  if (ids.length !== 1) return null;   // ambiguous payload — never guess
+
+  const url = applyUrlFrom(body, ids[0]);
+  return url ? { jobId: ids[0], url } : null;
+}
+
+/* page -> Map<jobId, employer apply URL>, filled by the listener below.
+   A WeakMap so a closed page does not pin its captures in memory. */
+const APPLY_SEEN = new WeakMap();
+
+/**
+ * Start listening. Idempotent — attaching twice would read every body twice.
+ *
+ * Only responses whose URL names exactly one posting are read at all, which
+ * keeps the big multi-job search payload out of the body reads as well as out
+ * of the attribution.
+ */
+export function watchApplyUrls(page) {
+  let seen = APPLY_SEEN.get(page);
+  if (seen) return seen;
+  seen = new Map();
+  APPLY_SEEN.set(page, seen);
+
+  page.on('response', async (res) => {
+    try {
+      const url = res.url();
+      if (!url.includes('/voyager/api/')) return;
+      if (!/json/i.test(String(res.headers()['content-type'] ?? ''))) return;
+      let decoded = url;
+      try { decoded = decodeURIComponent(url); } catch { /* raw */ }
+      if ([...new Set([...decoded.matchAll(/fsd_jobPosting:(\d{6,})/g)].map((m) => m[1]))].length !== 1) return;
+      const found = applyUrlFromResponse(url, await res.text());
+      if (found) seen.set(found.jobId, found.url);
+    } catch { /* body already consumed, or a navigation raced it — never fatal */ }
+  });
+  return seen;
+}
+
+/**
+ * What was captured for this posting, waiting briefly if it has not landed.
+ *
+ * The response that carries this is the one that RENDERS the top card, and the
+ * caller has already waited for the pane, so in practice it is there before we
+ * ask. The grace period covers only the gap between the response arriving and
+ * its body resolving, and expiring costs nothing: the button falls back to
+ * saying "Apply on LinkedIn", which is what it said before any of this existed.
+ */
+async function applyUrlSeen(page, jobId, { graceMs = 2500, stepMs = 150 } = {}) {
+  const seen = APPLY_SEEN.get(page);
+  if (!seen) return null;
+  const key = String(jobId);
+  for (let waited = 0; waited <= graceMs; waited += stepMs) {
+    const hit = seen.get(key);
+    if (hit) return hit;
+    await sleep(stepMs);
+  }
+  return null;
+}
+
 export function parseCardLines(lines) {
   const clean = (lines ?? []).map((l) => String(l ?? '').trim()).filter(Boolean);
   const empty = { title: '', company: '', location: '', workplaceType: null, postedText: '', salaryText: null, easyApply: false, promoted: false, viewed: false };
@@ -763,6 +864,10 @@ async function expandDescription(page) {
  */
 export async function openAndExtract(page, card, cfg) {
   const before = page.url();
+
+  /* Before the click, or its response is missed. Idempotent, so the cost of
+     calling it on every open is one WeakMap lookup. */
+  watchApplyUrls(page);
 
   // Whatever the pane was showing before the click, so the wait below can tell
   // "the new job has rendered" from "the old one is still on screen".
@@ -1101,6 +1206,14 @@ export async function openAndExtract(page, card, cfg) {
   if (!clicked && page.url() !== before) {
     await page.goBack({ waitUntil: 'domcontentloaded' }).catch(() => {});
     await pause(cfg.pacing.afterNavigation);
+  }
+
+  /* LAST, and deliberately after the employer check above: the DOM blob only
+     ever holds the posting that was server-rendered on arrival, so on a clicked
+     card this is the branch that actually finds anything. Placed below the
+     pane/card comparison so a mismatched pane can never contribute a URL. */
+  if (!detail.applyUrl && detail.jobId) {
+    detail.applyUrl = await applyUrlSeen(page, detail.jobId);
   }
 
   // A real id from the page wins; the caller's own is the fallback so the
