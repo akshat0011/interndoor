@@ -430,7 +430,10 @@ a, button, summary, label, [role="button"], .row {
    hidden is the CONTENT, and it does not return as one block — every visible
    element comes back on its own, outward from the mark.
 
-   ~2.74s: 220ms power on, one 1800ms sweep, 480ms travel, 240ms emergence. */
+   ~1.48s end to end: 100ms power on, one 780ms sweep, 220ms travel into the
+   masthead, 320ms for the page to unfold behind it (the last part starting
+   60ms in). Halved from 2.74s: once the sweep stopped restarting itself on
+   slow devices, a correct single sweep at full length simply felt long. */
 /* THE SVG SCALES, NOT THE SPAN — and that is what makes it sharp.
    A CSS transform does not re-run the vector: the compositor rasterises the
    element ONCE at its layout size and then stretches that bitmap, so a 30px
@@ -449,7 +452,7 @@ html[data-boot] .bar .brand .scope > svg {
   position: absolute; left: 0; top: 0;
   width: var(--bw, 170px); height: var(--bw, 170px);
   transform-origin: 0 0;
-  animation: boot-scope 2500ms both;
+  animation: boot-scope 1100ms both;
 }
 
 /* EXACTLY ONE TURN. Linear, because a radar turns at a constant rate and an
@@ -458,7 +461,7 @@ html[data-boot] .bar .brand .scope > svg {
    same angle the idle loop resumes from, so nothing jumps when the override is
    dropped. */
 html[data-boot] .bar .brand .scope .s-sweep {
-  animation: sweep 1800ms linear 220ms both;
+  animation: sweep 780ms linear 100ms both;
 }
 
 /* THE CONTENT IS HELD BY VISIBILITY, NOT OPACITY, and that is what lets each
@@ -476,19 +479,24 @@ html[data-boot] main,
 html[data-boot] .signup-band,
 html[data-boot] .outro {
   visibility: hidden;
-  animation: boot-failsafe 1ms linear 3400ms forwards;
+  animation: boot-failsafe 1ms linear 2000ms forwards;
 }
 html[data-boot] .bar .brand .scope,
 html[data-boot] .boot-part { visibility: visible; }
 
-/* EVERY ELEMENT AT ONCE, each toward its own place. --tx/--ty are a short step
-   back along the line from the mark to that element, measured by app.js, so
-   each one arrives outward from the logo rather than drifting in a shared
-   direction. Deliberately no stagger: a sequence, however quick, reads as a
-   page loading in pieces. 240ms, ~10px and a 1.6% scale — enough that a careful
-   eye sees where it came from, little enough that most people see the site
-   simply appear. */
-html[data-boot] .boot-part { animation: boot-part 240ms var(--snap) both; }
+/* EVERY ELEMENT AT ONCE, each toward its own place.
+   --tx/--ty are a step back along the line from the mark to that element, and
+   the step GROWS WITH DISTANCE (app.js: ~7% of it, 12-52px). A fixed 10px for
+   everything was the mistake: near the logo it was invisible and far from it
+   the page simply faded in, so the whole thing read as "everything appears at
+   once" rather than as anything radiating. Distance-scaled travel is what makes
+   the origin legible.
+   --bd is a delay of at most 60ms, also by distance. That is under the
+   threshold where a sequence is perceived as a sequence, but it is enough for
+   the eye to catch the direction of travel. */
+html[data-boot] .boot-part {
+  animation: boot-part 320ms var(--snap) var(--bd, 0ms) both;
+}
 
 @keyframes boot-scope {
   /* THE FALLBACKS DO THE WHOLE JOB ON THEIR OWN and app.js only refines them:
@@ -497,18 +505,18 @@ html[data-boot] .boot-part { animation: boot-part 240ms var(--snap) both; }
      (22,16) and a 170px working size, which is what the masthead actually
      gives at every width the brand does not shrink at. */
   0%    { opacity: 0;
-          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
+          transform: translate(var(--x0, calc(50vw - 82px)), var(--y0, calc(50vh - 76px))) scale(1);
           animation-timing-function: var(--snap); }
-  8.8%  { opacity: 1;
-          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
+  9.1%  { opacity: 1;
+          transform: translate(var(--x0, calc(50vw - 82px)), var(--y0, calc(50vh - 76px))) scale(1);
           animation-timing-function: linear; }
-  80.8% { opacity: 1;
-          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
+  80%   { opacity: 1;
+          transform: translate(var(--x0, calc(50vw - 82px)), var(--y0, calc(50vh - 76px))) scale(1);
           animation-timing-function: var(--morph); }
-  100%  { opacity: 1; transform: translate(0px, 0px) scale(var(--s1, .176)); }
+  100%  { opacity: 1; transform: translate(0px, 0px) scale(var(--s1, .25)); }
 }
 @keyframes boot-part {
-  from { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.984); }
+  from { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.958); }
   to   { opacity: 1; transform: none; }
 }
 @keyframes boot-failsafe { to { visibility: visible; } }

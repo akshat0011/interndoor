@@ -1350,8 +1350,18 @@ const BOOT_PARTS = [
   '.signup-band .sub-l', '.signup-band .sub-row',
 ];
 
-/** How far back along the line from the mark each element starts. */
-const BOOT_STEP = 10;
+/* How far back along the line from the mark each element starts, and how long
+   the outermost one waits. The step SCALES WITH DISTANCE (7% of it, floored at
+   12px and capped at 52) because a fixed step did not read: near the logo it
+   was invisible, far from it the page just faded, so the whole thing looked
+   like everything appearing at once rather than anything radiating.
+   BOOT_LAG is the spread across the whole page, not a per-element delay — 60ms
+   is under the threshold at which a sequence reads as a sequence, and it is
+   what lets the eye catch the direction of travel. */
+const BOOT_MIN = 12;
+const BOOT_MAX = 52;
+const BOOT_SPAN = 0.07;
+const BOOT_LAG = 60;
 
 /**
  * The page-load intro: measure the journey, let it play, clear up.
@@ -1410,9 +1420,9 @@ function runIntro() {
     const r = mark.getBoundingClientRect();
     const svg = mark.querySelector('svg');
     if (r.width && svg) {
-      /* Smaller than it was: at 250px it dominated the screen and read as a
-         splash. The mark has to stay a mark. */
-      const size = Math.round(Math.min(Math.min(innerWidth, innerHeight) * 0.26, 170));
+      /* Smaller again: at 250 it was a splash and at 170 it was still the
+         loudest thing on the screen. The mark has to stay a mark. */
+      const size = Math.round(Math.min(Math.min(innerWidth, innerHeight) * 0.21, 120));
       svg.style.setProperty('--bw', `${size}px`);
       svg.style.setProperty('--x0', `${innerWidth / 2 - size / 2 - r.left}px`);
       svg.style.setProperty('--y0', `${innerHeight / 2 - size / 2 - r.top}px`);
@@ -1421,28 +1431,36 @@ function runIntro() {
     }
   } catch { /* fall back to the keyframe's own defaults */ }
 
-  /* Tagged the moment the mark lands, all at once. The step is a fixed ~10px
-     back along the line from the mark, normalised — so a card at the bottom of
-     the page and the wordmark beside the logo move the same small distance,
-     each in its own direction. Scaling the step with distance would fling the
-     far ones across the screen. */
+  /* Tagged the moment the mark lands. Measured first, applied second: every
+     rect is read before a single class goes on, so nothing is measured against
+     a page that is already animating — and the step and the delay both need
+     the FARTHEST element, which is only known once everything is measured. */
   const unfold = () => {
     if (done) return;
+    const parts = [];
+    let far = 1;
     for (const sel of BOOT_PARTS) {
       for (const el of document.querySelectorAll(sel)) {
-        if (centre) {
-          const b = el.getBoundingClientRect();
-          const dx = (b.left + b.width / 2) - centre.x;
-          const dy = (b.top + b.height / 2) - centre.y;
-          const d = Math.hypot(dx, dy) || 1;
-          el.style.setProperty('--tx', `${-(dx / d) * BOOT_STEP}px`);
-          el.style.setProperty('--ty', `${-(dy / d) * BOOT_STEP}px`);
-        }
-        el.classList.add('boot-part');
+        if (!centre) { parts.push({ el }); continue; }
+        const b = el.getBoundingClientRect();
+        const dx = (b.left + b.width / 2) - centre.x;
+        const dy = (b.top + b.height / 2) - centre.y;
+        const d = Math.hypot(dx, dy) || 1;
+        if (d > far) far = d;
+        parts.push({ el, dx, dy, d });
       }
     }
-    // The parts run 240ms; clear up once they have arrived.
-    setTimeout(finish, 300);
+    for (const p of parts) {
+      if (p.d) {
+        const step = Math.min(Math.max(p.d * BOOT_SPAN, BOOT_MIN), BOOT_MAX);
+        p.el.style.setProperty('--tx', `${-(p.dx / p.d) * step}px`);
+        p.el.style.setProperty('--ty', `${-(p.dy / p.d) * step}px`);
+        p.el.style.setProperty('--bd', `${Math.round((p.d / far) * BOOT_LAG)}ms`);
+      }
+      p.el.classList.add('boot-part');
+    }
+    // 320ms each, the last starting 60ms in; clear up once they have arrived.
+    setTimeout(finish, 440);
   };
 
   /* Matched on the target rather than the animation name, so reduced motion —
@@ -1456,7 +1474,7 @@ function runIntro() {
     addEventListener(ev, finish, { once: true, passive: true });
   }
 
-  setTimeout(finish, 3600);
+  setTimeout(finish, 2100);
 }
 
 async function init() {
