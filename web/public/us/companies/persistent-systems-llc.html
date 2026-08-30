@@ -134,6 +134,38 @@
 
     
 
+    <section class="strip">
+      <div class="strip-head">
+        <h2>Similar employers</h2>
+        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
+      </div>
+      <p class="past-note">Companies whose internships ask for the same skills as Persistent Systems, LLC&rsquo;s.</p>
+      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
+           A count would move whenever THAT employer's board moved, rewriting
+           every hub that lists them - one employer's ordinary day churning a
+           dozen other pages. Without it the block changes only when the related
+           SET changes, which tracks slowly-growing history.
+           The .dir and .dir-card classes are the directory's own styles and
+           are already in page.css, so this adds no stylesheet change and
+           nothing new to the PUBLISHED allowlist.
+           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
+           one would end the literal and the failure is a runtime TypeError
+           that node --check cannot see. -->
+      <div class="dir"><a class="dir-card" href="/us/companies/figure-ai">
+          <span class="tile-crest" aria-hidden="true">FA<img src="/logos/figure-ai.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Figure AI</span></span>
+        </a><a class="dir-card" href="/us/companies/johnson-and-johnson-medtech">
+          <span class="tile-crest" aria-hidden="true">JJ<img src="/logos/johnson-and-johnson-medtech.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Johnson &amp; Johnson MedTech</span></span>
+        </a><a class="dir-card" href="/us/companies/l3harris-technologies">
+          <span class="tile-crest" aria-hidden="true">LT<img src="/logos/l3harris-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">L3Harris Technologies</span></span>
+        </a><a class="dir-card" href="/us/companies/cadence">
+          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cadence.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Cadence</span></span>
+        </a></div>
+    </section>
+
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>

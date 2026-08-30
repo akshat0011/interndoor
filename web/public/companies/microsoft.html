@@ -182,6 +182,44 @@
 
     
 
+    <section class="strip">
+      <div class="strip-head">
+        <h2>Similar employers</h2>
+        <a class="strip-more" href="/companies">All companies &rarr;</a>
+      </div>
+      <p class="past-note">Companies whose internships ask for the same skills as Microsoft&rsquo;s.</p>
+      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
+           A count would move whenever THAT employer's board moved, rewriting
+           every hub that lists them - one employer's ordinary day churning a
+           dozen other pages. Without it the block changes only when the related
+           SET changes, which tracks slowly-growing history.
+           The .dir and .dir-card classes are the directory's own styles and
+           are already in page.css, so this adds no stylesheet change and
+           nothing new to the PUBLISHED allowlist.
+           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
+           one would end the literal and the failure is a runtime TypeError
+           that node --check cannot see. -->
+      <div class="dir"><a class="dir-card" href="/companies/alphagrep-securities">
+          <span class="tile-crest" aria-hidden="true">AS</span>
+          <span class="dir-t"><span class="dir-name">AlphaGrep Securities</span></span>
+        </a><a class="dir-card" href="/companies/newton-school">
+          <span class="tile-crest" aria-hidden="true">NS<img src="/logos/newton-school.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Newton School</span></span>
+        </a><a class="dir-card" href="/companies/amazon">
+          <span class="tile-crest" aria-hidden="true">A<img src="/logos/amazon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Amazon</span></span>
+        </a><a class="dir-card" href="/companies/marmon-technologies-india-pvt-ltd">
+          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/marmon-technologies-india-pvt-ltd.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Marmon Technologies India Pvt Ltd</span></span>
+        </a><a class="dir-card" href="/companies/trellix">
+          <span class="tile-crest" aria-hidden="true">T<img src="/logos/trellix.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Trellix</span></span>
+        </a><a class="dir-card" href="/companies/micron-technology">
+          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/micron-technology.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Micron Technology</span></span>
+        </a></div>
+    </section>
+
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>

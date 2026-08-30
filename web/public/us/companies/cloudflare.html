@@ -157,6 +157,50 @@
 
     
 
+    <section class="strip">
+      <div class="strip-head">
+        <h2>Similar employers</h2>
+        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
+      </div>
+      <p class="past-note">Companies whose internships ask for the same skills as Cloudflare&rsquo;s.</p>
+      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
+           A count would move whenever THAT employer's board moved, rewriting
+           every hub that lists them - one employer's ordinary day churning a
+           dozen other pages. Without it the block changes only when the related
+           SET changes, which tracks slowly-growing history.
+           The .dir and .dir-card classes are the directory's own styles and
+           are already in page.css, so this adds no stylesheet change and
+           nothing new to the PUBLISHED allowlist.
+           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
+           one would end the literal and the failure is a runtime TypeError
+           that node --check cannot see. -->
+      <div class="dir"><a class="dir-card" href="/us/companies/palantir-technologies">
+          <span class="tile-crest" aria-hidden="true">PT<img src="/logos/palantir-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Palantir Technologies</span></span>
+        </a><a class="dir-card" href="/us/companies/progress-rail-a-caterpillar-company">
+          <span class="tile-crest" aria-hidden="true">PR<img src="/logos/progress-rail-a-caterpillar-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Progress Rail, A Caterpillar Company</span></span>
+        </a><a class="dir-card" href="/us/companies/samsara">
+          <span class="tile-crest" aria-hidden="true">S<img src="/logos/samsara.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Samsara</span></span>
+        </a><a class="dir-card" href="/us/companies/formlabs">
+          <span class="tile-crest" aria-hidden="true">F<img src="/logos/formlabs.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Formlabs</span></span>
+        </a><a class="dir-card" href="/us/companies/postman-labs">
+          <span class="tile-crest" aria-hidden="true">PL<img src="/logos/postman-labs.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Postman Labs</span></span>
+        </a><a class="dir-card" href="/us/companies/ups">
+          <span class="tile-crest" aria-hidden="true">U<img src="/logos/ups.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">UPS</span></span>
+        </a><a class="dir-card" href="/us/companies/centene-corporation">
+          <span class="tile-crest" aria-hidden="true">CC<img src="/logos/centene-corporation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Centene Corporation</span></span>
+        </a><a class="dir-card" href="/us/companies/nationwide">
+          <span class="tile-crest" aria-hidden="true">N<img src="/logos/nationwide.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
+          <span class="dir-t"><span class="dir-name">Nationwide</span></span>
+        </a></div>
+    </section>
+
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>
