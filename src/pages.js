@@ -2088,7 +2088,13 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
 
   const where = region.inName.replace(/^in /, '');
   return `${head({
-    title: `Internships in ${where} by company — ${hiring} companies hiring | InternDoor`,
+    // NO LIVE COUNT IN THE TITLE, for the same reason a company hub carries
+    // none: it moved on almost every publish, rewriting the <title> of the one
+    // page that is the ONLY crawl path to the hubs — 22 commits in three days.
+    // It also pushed the title to 67-68 rendered characters against a ~60
+    // budget. Freshness belongs in the description, where a rewrite is free,
+    // and both counts are already stated there.
+    title: `Internships in ${where} by company | InternDoor`,
     description: `Browse ${total} live internships across ${hiring} companies ${region.inName}, plus every employer we track. Updated every 30 minutes.`,
     canonical: url,
     indexable: rows.length > 0,
