@@ -34,7 +34,6 @@
     "stats": "node --no-warnings=ExperimentalWarning bin/statsmine.js"
   },
   "dependencies": {
-    "@vercel/og": "^1.0.2",
     "playwright-core": "^1.56.0"
   }
 }

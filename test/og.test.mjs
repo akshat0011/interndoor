@@ -14,7 +14,7 @@
  */
 import { buildCard, roleSize, clampTitle, REGION_PREFIX } from '../web/api/_card.js';
 import { regionPath, publishedRegions } from '../src/regions.js';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -40,6 +40,34 @@ check('GB is served at /uk', REGION_PREFIX.GB, '/uk');
 // An unknown region must be absent, not empty: the handler refuses `undefined`
 // and would otherwise coerce it to India's board.
 check('an unknown region is absent', REGION_PREFIX.ZZ, undefined);
+
+console.log('\n== the function is wired the same way locally and live ==');
+/* A route the dev server does not know about can work live and 404 here, which
+   is the trap web/serve.js exists to close — and the assets have to be shipped
+   into the function bundle or it renders nothing but the fallback. */
+const serve = readFileSync(join(ROOT, 'web', 'serve.js'), 'utf8');
+check('serve.js answers /api/og', serve.includes("'/api/og': './api/og.js'"), true);
+
+const vercel = JSON.parse(readFileSync(join(ROOT, 'web', 'vercel.json'), 'utf8'));
+check('the fonts and the rasteriser are bundled with it',
+  vercel.functions?.['api/og.js']?.includeFiles, 'api/assets/**');
+for (const f of ['archivo-900.ttf', 'jetbrains-700.ttf', 'resvg.wasm']) {
+  check(`${f} is where includeFiles looks`,
+    existsSync(join(ROOT, 'web', 'api', 'assets', f)), true);
+}
+/* @vercel/og is NOT used and must not come back: it is built for Next.js's
+   bundler and fails in both runtimes here — `?module` wasm imports the plain
+   Edge bundler cannot resolve, and a "type": "module" package shipping
+   require("fs") on Node. It cost one failed deploy, and a failed build freezes
+   the whole site because Vercel keeps serving the previous deployment. */
+const fn = readFileSync(join(ROOT, 'web', 'api', 'og.js'), 'utf8');
+// The name appears in the file's own note explaining why it is not used, so
+// this asserts on the IMPORT rather than the mention.
+check('the handler does not import @vercel/og', /from ['"]@vercel\/og['"]/.test(fn), false);
+check('it renders with satori', fn.includes("from 'satori'"), true);
+check('and rasterises with resvg-wasm', fn.includes("from '@resvg/resvg-wasm'"), true);
+// The Node runtime, so it can be exercised locally before it ships.
+check('it is not an edge function', /runtime:\s*'edge'/.test(fn), false);
 
 console.log('\n== the role is sized from its length ==');
 /* Satori cannot fit text to a box the way the HTML card did — there is no

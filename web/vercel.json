@@ -67,6 +67,10 @@
   "functions": {
     "api/tailor.js": {
       "maxDuration": 60
+    },
+    "api/og.js": {
+      "includeFiles": "api/assets/**",
+      "maxDuration": 15
     }
   },
   "cleanUrls": true,

@@ -10,6 +10,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@vercel/og": "^1.0.2"
+    "@resvg/resvg-wasm": "^2.6.2",
+    "satori": "^0.33.4"
   }
 }
