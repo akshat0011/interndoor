@@ -32,6 +32,7 @@
  * ninety roles reads as though the week were a tenth as good as it was.
  */
 import { resolveRowRegion, regionOf } from './regions.js';
+import { normaliseCompany } from './config.js';
 import {
   boldSans, utmUrl, telegramFor, cityOf, tidyTech,
   MAX_POST_CHARS,
@@ -128,6 +129,89 @@ function placeOf(group, region) {
   return `${cities.length} cities`;
 }
 
+/**
+ * How the six featured employers are chosen.
+ *
+ * IT WAS ROLE COUNT AND THAT WAS WRONG. `byCompany` sorts by how many postings
+ * an employer filed this week, and the first version of this format used that
+ * order directly on the strength of ONE week that happened to read well (IBM,
+ * American Express, Qualcomm). Checked across four weeks it does not hold:
+ *
+ *   week -1  Silicon Labs, HARMAN, Valeo, Amex, Arctic Wolf, ARGMAC
+ *   week -2  HARMAN, Marmon Technologies India Pvt Ltd, FanCode, HighLevel
+ *   week -3  Siemens, Emerson, Microsoft, Siemens Healthineers, Citi, GBJ BUZZ
+ *
+ * Role count measures MULTI-CITY BLASTING, not the employer — IBM's seven are
+ * seven city-copies of one opening, which the board itself collapses onto a
+ * single card. It is the same trap this project already wrote down for the
+ * watchlist: "the employers posting the most internships are overwhelmingly
+ * the worst ones; genuine companies post once or twice."
+ *
+ * NO SIGNAL IN THE DATA MEASURES RECOGNISABILITY, which is what actually earns
+ * the click. Ranking by sustained footprint is a real improvement and was
+ * measured — it removes STEMpedia and GBJ BUZZ outright — but it surfaces
+ * Valeo, HARMAN and Micron: entirely real, and not names a student reacts to.
+ * So the judgment lives in config where it can be edited, exactly as the
+ * deleted MARQUEE list did for the vetting panel: the LIST decides which names
+ * are recognised, and the BOARD decides which of them are hiring today.
+ *
+ * Membership only, not order — within the list the footprint decides, so there
+ * is no priority ranking to maintain. Off-list employers are ranked by the same
+ * footprint, so an empty list degrades to that rather than to nothing.
+ *
+ * Ordering is the ONLY thing this affects. Every employer here is already
+ * through the watchlist gate and already published, so a wrong entry costs a
+ * slot, never a bad listing.
+ */
+function recognisedMatcher(names) {
+  const norms = (names ?? []).map((n) => normaliseCompany(n)).filter(Boolean);
+  return (company) => {
+    const c = normaliseCompany(company);
+    if (!c) return false;
+    /* Deliberately NOT matchCompany. That matches in both directions and its
+       own notes record it admitting "HR" and "India (Remote)" — fine for a gate
+       that is checked by hand, wrong for something that silently reorders a
+       post. A prefix either way covers "HARMAN India" against "HARMAN" and
+       stops there. */
+    return norms.some((n) => c === n || c.startsWith(`${n} `) || n.startsWith(`${c} `));
+  };
+}
+
+/**
+ * Distinct roles x distinct days seen, over a bounded window.
+ *
+ * Distinct ROLES rather than postings, so twenty-two copies of one opening in
+ * twenty-two cities count once — the same collapse the board makes. Times the
+ * number of separate days we have seen them, so a single burst scores below a
+ * quiet employer who keeps coming back. Bounded to 90 days because this runs
+ * inside a post composer and the whole table is not needed to tell an
+ * established hirer from a one-off.
+ */
+function footprintScorer(store, now) {
+  const seen = new Map();
+  for (const r of store.recentJobs(now - 90 * 86_400_000)) {
+    if (r.is_tech !== 1) continue;
+    const c = r.company || '';
+    if (!seen.has(c)) seen.set(c, { titles: new Set(), days: new Set() });
+    const f = seen.get(c);
+    f.titles.add(String(r.title ?? '').toLowerCase().trim());
+    f.days.add(Math.floor((r.first_seen_at ?? 0) / 86_400_000));
+  }
+  return (company) => {
+    const f = seen.get(company);
+    return f ? f.titles.size * f.days.size : 0;
+  };
+}
+
+/** Recognised first, then by footprint, then by this week's role count. */
+export function rankForFeature(groups, { isRecognised, score }) {
+  return [...groups].sort((a, b) =>
+    (isRecognised(b.company) ? 1 : 0) - (isRecognised(a.company) ? 1 : 0)
+    || score(b.company) - score(a.company)
+    || b.roles.length - a.roles.length
+    || a.company.localeCompare(b.company));
+}
+
 /** The freshest role an employer opened this week — the one worth linking to. */
 function newestRole(group) {
   return [...group.roles].sort(
@@ -189,14 +273,15 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
   const boardUrl = utmUrl(`${SITE}/`, { campaign: 'weekly', content: 'roundup' }, cfg);
   const telegram = telegramFor(cfg, region);
 
-  /* The employers hiring hardest this week, one role each — byCompany already
-     sorts by role count, and on real weeks that puts IBM, American Express,
-     Qualcomm and CloudSEK at the top on its own, with no curated taste list to
-     maintain. One role EACH rather than the top six roles outright, or a single
-     employer running six postings would take the whole shortlist and the post
-     would name one company. */
+  /* One role EACH rather than the top six roles outright, or a single employer
+     running six postings would take the whole shortlist and the post would name
+     one company. See rankForFeature for how the six are chosen. */
   const wanted = Math.max(1, Number(conf.featured ?? DEFAULT_FEATURED));
-  let featured = groups.slice(0, wanted);
+  const ranked = rankForFeature(groups, {
+    isRecognised: recognisedMatcher(conf.featureFirst),
+    score: footprintScorer(store, now),
+  });
+  let featured = ranked.slice(0, wanted);
 
   const compose = (picked) => {
     const moreRoles = roles.length - picked.length;

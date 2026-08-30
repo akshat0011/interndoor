@@ -1,4 +1,4 @@
-import { weeklyRoundup, byCompany, weekKey, roundupDue, weekRoles } from '../src/weekly.js';
+import { weeklyRoundup, byCompany, rankForFeature, weekKey, roundupDue, weekRoles } from '../src/weekly.js';
 import { plainText, MAX_POST_CHARS } from '../src/postgen.js';
 
 let pass = 0, fail = 0;
@@ -67,6 +67,38 @@ const many = weeklyRoundup(fakeStore(
   ['Bengaluru', 'Pune', 'Chennai', 'Noida'].map((c) => row({ company: 'Wide', location: `${c}, India` })),
 ), CFG);
 ok('four cities collapse to a count', /Wide — 4 cities/.test(plainText(many.post)));
+
+console.log('\n== which six employers get a link ==');
+/* IT WAS ROLE COUNT AND THAT WAS WRONG. The first version of this format used
+   byCompany's order directly, on the strength of ONE week that happened to read
+   well. Across four weeks it does not hold — role count measures MULTI-CITY
+   BLASTING, not the employer, and it put ARGMAC, "Marmon Technologies India Pvt
+   Ltd" and GBJ BUZZ in the shortlist. Same trap the watchlist rules already
+   name: the employers posting the most are overwhelmingly the worst ones. */
+const grp = (company, roles = 1) => ({ company, roles: Array.from({ length: roles }, () => row({ company })), cities: new Set() });
+const rank = (groups, listed, scores = {}) => rankForFeature(groups, {
+  isRecognised: (c) => listed.includes(c),
+  score: (c) => scores[c] ?? 0,
+}).map((g) => g.company);
+
+// A blaster with six postings must not outrank a recognised employer with one.
+ok('recognised beats raw volume',
+  rank([grp('Blaster', 6), grp('Adobe', 1)], ['Adobe'])[0] === 'Adobe');
+
+// Within the list nothing has to be hand-ordered: the footprint decides.
+ok('footprint orders the recognised ones',
+  rank([grp('Adobe'), grp('IBM')], ['Adobe', 'IBM'], { IBM: 90, Adobe: 10 }).join() === 'IBM,Adobe');
+
+/* An off-list employer is still eligible — the list is a preference, not a
+   gate, or a quiet week would produce a post with two roles in it. */
+ok('an off-list employer still appears',
+  rank([grp('Adobe'), grp('Unknown Co')], ['Adobe']).length === 2);
+ok('and ranks by the same footprint when the list is empty',
+  rank([grp('Small'), grp('Established')], [], { Established: 40, Small: 2 })[0] === 'Established');
+
+// This week's role count is the LAST tie-break, not the first.
+ok('role count only breaks a footprint tie',
+  rank([grp('A', 1), grp('B', 5)], [], { A: 9, B: 1 })[0] === 'A');
 
 console.log('\n== the post ==');
 /* THE FORMAT CHANGED ON 30 AUG and these assertions changed with it. It used to
