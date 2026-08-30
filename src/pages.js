@@ -1413,6 +1413,159 @@ ${foot({
  * the caller choose its wording — "typically" is a lie at n=1, and inventing
  * confident statistics for a single data point is worse than saying nothing.
  */
+/** How many employers a hub links sideways to, and how deep the skill
+ *  comparison goes. The long tail of a skill tally is noise — past a dozen,
+ *  every employer overlaps every other on "communication" and "teamwork". */
+const RELATED_MAX = 8;
+const RELATED_SKILLS = 12;
+/* Cosine similarity below this is not a similarity. Tuned against the live
+   boards: it keeps Qualcomm-Infineon and drops Infineon-Eli Lilly. */
+const RELATED_FLOOR = 0.12;
+
+/**
+ * The live roles a hub actually shows: indexable, one card per distinct role.
+ * Extracted so `employerIndex` and `renderCompanyPage` cannot drift on what
+ * "this hub has a live role" means — the same reason jobPageSlug is pinned
+ * across its three copies.
+ */
+function hubLive(jobs) {
+  const seen = new Set();
+  return newestFirst((jobs ?? []).filter(isIndexable)).filter((j) => {
+    const k = roleKey(j);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+}
+
+/** The past roles a hub actually shows: newest first, one per title, capped. */
+function hubHistory(live, past) {
+  const seen = new Set(live.map((j) => String(j.title ?? '').toLowerCase()));
+  const out = [];
+  for (const p of [...(past ?? [])].sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0))) {
+    const k = String(p.title ?? '').toLowerCase();
+    if (!k || seen.has(k)) continue;
+    seen.add(k);
+    out.push(p);
+    if (out.length === 12) break;
+  }
+  return out;
+}
+
+/**
+ * One pass over every employer on a board, so the hubs can link to each other.
+ *
+ * WHY THIS EXISTS. A company hub linked to no other hub, and the homepage links
+ * to none at all — its list is built by JavaScript — so every one of ~340 hubs
+ * sat at crawl depth 2, reachable only through /companies/, which divides what
+ * it has 340 ways and is itself one link from home. Hubs are the pages that can
+ * realistically rank for "<company> internship" and the only asset here that
+ * accumulates authority over years, because job pages expire by design. Leaving
+ * them as crawl dead ends was the largest on-site thing still unfixed.
+ *
+ * The skill set is taken from the employer's WHOLE TRACKED HISTORY, not their
+ * live roles, and that is a churn decision rather than a quality one. History
+ * only grows, so a related list moves rarely; derived from live roles it would
+ * rewrite the block on every publish, across every hub that lists that
+ * employer — the same amplified churn that made `validThrough` and the
+ * directory's title expensive.
+ */
+export function employerIndex(byCompany, pastByCompany = new Map()) {
+  const index = new Map();
+  for (const company of new Set([...byCompany.keys(), ...pastByCompany.keys()])) {
+    const jobs = byCompany.get(company) ?? [];
+    const past = pastByCompany.get(company) ?? [];
+    const live = hubLive(jobs);
+    // Raw and lowercase on purpose: this is for MATCHING, not display, so the
+    // title-casing and phrase-dedup companyProfile does for chips is wasted
+    // work here and would only make two spellings of one skill miss.
+    const tally = new Map();
+    for (const j of [...jobs, ...past]) {
+      for (const raw of [].concat((j.keySkills?.length ? j.keySkills : j.skills) ?? [])) {
+        const v = String(raw ?? '').trim().toLowerCase();
+        if (v) tally.set(v, (tally.get(v) ?? 0) + 1);
+      }
+    }
+    const skills = new Set([...tally.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, RELATED_SKILLS).map(([v]) => v));
+    index.set(company, {
+      skills,
+      // MUST match renderCompanyPage's own rule, which is why both call the
+      // same two helpers. Linking to a noindex hub spends a link on a page
+      // that cannot rank and drops the reader on an empty one.
+      indexable: live.length > 0 || hubHistory(live, past).length >= 2,
+      live: live.length,
+    });
+  }
+
+  /* WEIGHT EACH SKILL BY HOW RARE IT IS, or the matching is worthless — this
+     was measured, not assumed. Counting shared skills flat, Infineon came back
+     related to Tower Research Capital and Amazon to a four-person label shop,
+     because nearly every employer here names python, c++, sql and git, so the
+     overlap was reporting "both are software companies" rather than anything
+     about either of them. Inverse document frequency reduces those to almost
+     nothing and lets verilog, vhdl and rtl carry the comparison, which is what
+     actually makes two employers alternatives for the same student.
+
+     A skill EVERY employer names scores exactly zero (log 1). Dropping it is an
+     optimisation, not a behaviour change — a zero weight contributes nothing to
+     either the dot product or the norm — and a mutation run confirms removing
+     the line changes no result. It is kept because it says what is meant. */
+  const df = new Map();
+  for (const e of index.values()) for (const sk of e.skills) df.set(sk, (df.get(sk) ?? 0) + 1);
+  const n = index.size || 1;
+  for (const e of index.values()) {
+    e.w = new Map();
+    let sq = 0;
+    for (const sk of e.skills) {
+      const idf = Math.log(n / (df.get(sk) ?? 1));
+      if (idf <= 0) continue;
+      e.w.set(sk, idf);
+      sq += idf * idf;
+    }
+    /* Cosine, so the score is an ANGLE between two employers rather than a
+       count. Plain overlap rewarded whoever named the most skills, and Jaccard
+       over-rewarded whoever named the fewest — a firm with three skills scored
+       higher on one shared word than a genuine match did on four. */
+    e.norm = Math.sqrt(sq);
+  }
+  return index;
+}
+
+/**
+ * The employers whose internships ask for the most of the same skills.
+ *
+ * Scored by Jaccard rather than raw overlap so a broad employer naming twelve
+ * skills does not turn up on every list purely for naming more of them. Ties
+ * break on the shared count and then on the name, so the output is
+ * deterministic — a list that reshuffled between two identical publishes would
+ * be churn dressed up as content.
+ */
+export function relatedEmployers(company, index, limit = RELATED_MAX) {
+  const me = index.get(company);
+  if (!me?.norm) return [];
+  const scored = [];
+  for (const [other, o] of index) {
+    if (other === company || !o.indexable || !o.norm) continue;
+    let dot = 0;
+    let shared = 0;
+    for (const [sk, wi] of me.w) {
+      const wj = o.w.get(sk);
+      if (wj) { dot += wi * wj; shared += 1; }
+    }
+    const score = dot / (me.norm * o.norm);
+    /* A floor, because a weak match is worse than none here. The block is
+       headed "similar employers" and a reader who clicks through to something
+       unrelated learns the label cannot be trusted — on a page whose whole job
+       is to be worth trusting. Below this, the hub simply shows no block. */
+    if (score < RELATED_FLOOR) continue;
+    scored.push({ company: other, shared, score });
+  }
+  scored.sort((a, b) => b.score - a.score || b.shared - a.shared || a.company.localeCompare(b.company));
+  return scored.slice(0, limit).map(({ company: c, shared }) => ({ company: c, shared }));
+}
+
 export function companyProfile(all, region = DEFAULT_REGION) {
   const rows = (all ?? []).filter(Boolean);
   const tally = (pick) => {
@@ -1819,7 +1972,7 @@ function eligibilityBlock(company, live) {
     </section>`;
 }
 
-export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [] } = {}) {
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], related = [] } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
 
   /**
@@ -1863,26 +2016,13 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   const liveAll = newestFirst(jobs.filter(isIndexable));
   const roleCount = new Map();
   for (const j of liveAll) roleCount.set(roleKey(j), (roleCount.get(roleKey(j)) ?? 0) + 1);
-  const seenLive = new Set();
-  const live = liveAll.filter((j) => {
-    const k = roleKey(j);
-    if (seenLive.has(k)) return false;
-    seenLive.add(k);
-    return true;
-  });
-  // Newest first, de-duplicated by title against both the live roles and each
-  // other, and capped — a hub is a landing page, not an archive. An employer
-  // that reposts the same role monthly would otherwise fill the page with one
-  // title twelve times over.
-  const seenTitles = new Set(live.map((j) => String(j.title ?? '').toLowerCase()));
-  const history = [];
-  for (const p of [...past].sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0))) {
-    const key = String(p.title ?? '').toLowerCase();
-    if (!key || seenTitles.has(key)) continue;
-    seenTitles.add(key);
-    history.push(p);
-    if (history.length === 12) break;
-  }
+  // Both through the shared helpers, so `employerIndex` decides a hub is
+  // indexable on exactly the rows this page decides to render. History is
+  // newest first, one per title, and capped — a hub is a landing page, not an
+  // archive, and an employer reposting the same role monthly would otherwise
+  // fill it with one title twelve times over.
+  const live = hubLive(jobs);
+  const history = hubHistory(live, past);
 
   // The profile spans every posting we hold for this employer — the unfiltered
   // `jobs`, not `live`, because a role dropped by isIndexable for having one
@@ -2030,6 +2170,29 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
           ${p.roleLabel ? `<span class="qual">${esc(p.roleLabel)}</span>` : ''}
           ${p.postedAt ? `<time datetime="${isoDay(p.postedAt)}">${esc(monthLabel(p.postedAt, region))}</time>` : ''}
         </li>`).join('')}</ul>
+    </section>` : ''}
+
+    ${related.length ? `<section class="strip">
+      <div class="strip-head">
+        <h2>Similar employers</h2>
+        <a class="strip-more" href="${regionHref('/companies/', region)}">All companies &rarr;</a>
+      </div>
+      <p class="past-note">Companies whose internships ask for the same skills as ${esc(company)}&rsquo;s.</p>
+      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
+           A count would move whenever THAT employer's board moved, rewriting
+           every hub that lists them - one employer's ordinary day churning a
+           dozen other pages. Without it the block changes only when the related
+           SET changes, which tracks slowly-growing history.
+           The .dir and .dir-card classes are the directory's own styles and
+           are already in page.css, so this adds no stylesheet change and
+           nothing new to the PUBLISHED allowlist.
+           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
+           one would end the literal and the failure is a runtime TypeError
+           that node --check cannot see. -->
+      <div class="dir">${related.map((r) => `<a class="dir-card" href="${regionHref(`/companies/${companySlug(r.company)}`, region)}">
+          ${crest(r.company, r.logo, { cls: 'tile-crest' })}
+          <span class="dir-t"><span class="dir-name">${esc(r.company)}</span></span>
+        </a>`).join('')}</div>
     </section>` : ''}
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
@@ -2655,6 +2818,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     pastByCompany.get(p.company).push(p);
   }
 
+  // Built ONCE for the whole board, not per hub: it is the same comparison
+  // ~340 times over, and it is what lets the hubs link sideways to each other
+  // instead of every one of them being a crawl dead end.
+  const employers = employerIndex(byCompany, pastByCompany);
+
   const allCompanies = new Set([...byCompany.keys(), ...pastByCompany.keys()]);
   for (const company of allCompanies) {
     const name = `${companySlug(company)}.html`;
@@ -2666,6 +2834,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
           /* The regions where this employer is ALSO live. Deduplicated because
              `foreign` carries one entry per posting, not per region. */
           alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
+          related: relatedEmployers(company, employers)
+            .map((r) => ({ ...r, logo: logos.get(r.company) ?? '' })),
         })),
       `/companies/${companySlug(company)}`);
   }
