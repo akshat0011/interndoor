@@ -468,14 +468,29 @@ html[data-boot] .bar-right { animation: boot-emerge 240ms var(--snap) 2380ms bot
 html[data-boot] main,
 html[data-boot] .outro { animation: boot-emerge 260ms var(--snap) 2400ms both; }
 
+/* THE FALLBACKS DO THE WHOLE JOB ON THEIR OWN, and app.js only refines them.
+   app.js is a module fetched over the network, so on a real connection it runs
+   a few hundred milliseconds after first paint — and the animation has already
+   started by then, using whatever these say. With --cx at 0 the mark simply
+   grew where it sat and hung off the left edge at x=-83 until the measurement
+   landed and yanked it to the middle. Locally that never showed, because JS
+   runs before the first frame.
+   50vw/50vh minus the mark's own resting centre is the same arithmetic the
+   measurement does, and at 1280x820 it produces 603px/379px — exactly what
+   app.js computes. The refinement is then worth a few pixels on a narrow
+   masthead rather than the difference between centred and off-screen. */
 @keyframes boot-scope {
-  /* Centred and large; --cx/--cy/--cs are measured from where the mark
-     actually rests, so it lands exactly on itself. */
-  0%    { opacity: 0; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+  0%    { opacity: 0;
+          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
+                     scale(var(--cs, 8));
           animation-timing-function: var(--snap); }
-  8.9%  { opacity: 1; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+  8.9%  { opacity: 1;
+          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
+                     scale(var(--cs, 8));
           animation-timing-function: linear; }
-  80.6% { opacity: 1; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+  80.6% { opacity: 1;
+          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
+                     scale(var(--cs, 8));
           animation-timing-function: var(--morph); }
   100%  { opacity: 1; transform: none; }
 }
