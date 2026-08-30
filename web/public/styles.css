@@ -440,8 +440,11 @@ a, button, summary, label, [role="button"], .row {
 }
 
 /* Olive on cream reads far quieter than lime on black, so the light theme is
-   given back some of what the darker ink costs it rather than matching the
-   number. Measured on a fresh load in both themes, not by toggling — the pane
+   given back FAR more than the number suggests — .85 against dark's .62. That
+   is not a typo and it is not symmetric on purpose: the marks are drawn at 6-22%
+   alpha inside the mask, and olive at 7% over cream is nothing at all, where
+   lime at 7% over near-black is already a visible line. At .46 the light board
+   still read as having no background. Measured on a fresh load in both themes, not by toggling — the pane
    returns stale paint on a live toggle.
 
    KEYED ON [data-theme], AND DELIBERATELY NOT ON prefers-color-scheme. There
@@ -452,14 +455,14 @@ a, button, summary, label, [role="button"], .row {
    #0a0a0b. The media query therefore put the light theme's opacity on a page
    rendering dark, for every system-light visitor. A rule about the theme has to
    key on whatever actually decides the theme. */
-:root[data-theme="light"] .field { opacity: .46; }
+:root[data-theme="light"] .field { opacity: .85; }
 /* Below 720px the board is edge to edge and the marks sit under the cards
    rather than beside them. The light theme needs its own line: its selector
    carries higher specificity than a bare `.field`, so a single rule here would
    lose to it and a light-theme phone would keep the desktop value. */
 @media (max-width: 720px) {
   .field { opacity: .26; }
-  :root[data-theme="light"] .field { opacity: .22; }
+  :root[data-theme="light"] .field { opacity: .5; }
 }
 
 /* ======================= page-load intro =======================
