@@ -89,7 +89,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=4">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -129,27 +129,18 @@
 <a class="skip" href="#results">Skip to listings</a>
 <!-- THE SAME GROUND THE OG CARDS AND REELS STAND ON: a radar bleeding off the
      right edge, under the film grain that was already here. Deliberately at the
-     edge of visibility — its job is continuity, so that the intro and the site
-     are one environment rather than two backgrounds swapped over, and a reader
-     who never notices it is the intended outcome. -->
-<div class="field" aria-hidden="true">
-  <svg viewBox="0 0 720 720" aria-hidden="true">
-    <circle class="f-ring faint" cx="360" cy="360" r="352"/>
-    <circle class="f-ring" cx="360" cy="360" r="272"/>
-    <circle class="f-ring faint" cx="360" cy="360" r="192"/>
-    <circle class="f-ring" cx="360" cy="360" r="112"/>
-    <line class="f-cross" x1="8" y1="360" x2="712" y2="360"/>
-    <line class="f-cross" x1="360" y1="8" x2="360" y2="712"/>
-    <defs>
-      <linearGradient id="f-sw" x1="0" y1="1" x2="1" y2="0">
-        <stop offset="0" stop-color="#c8ff00" stop-opacity="0"/>
-        <stop offset="1" stop-color="#c8ff00" stop-opacity=".30"/>
-      </linearGradient>
-    </defs>
-    <path class="f-sweep" d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#f-sw)"/>
-    <circle class="f-dot" cx="360" cy="360" r="7"/>
-  </svg>
-</div>
+     edge of visibility — its job is continuity, so the intro and the site are
+     one environment rather than two backgrounds swapped over, and a reader who
+     never notices it is the intended outcome.
+
+     EMPTY ON PURPOSE. The radar is a background-image in styles.css, not markup
+     in here. HTML is served max-age=0 and styles.css with
+     stale-while-revalidate=86400, so a returning reader gets FRESH markup
+     against CSS up to a day old — and an inline <svg> with no stylesheet to
+     size it renders at full page width and pushes the entire site below the
+     fold. That is what happened. An empty div in the same situation is nothing
+     at all. Anything added here must be harmless with no CSS. -->
+<div class="field" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="bar">
@@ -367,6 +358,7 @@
       <details class="all-roles">
         <summary>All current listings</summary>
         <ul><!--LISTINGS-->
+<li><a href="/us/jobs/airbus-aircraft-long-term-internship-cabin-engineering-4458831928">Airbus Aircraft — Long-term Internship - Cabin Engineering</a><span class="tiny"> Mobile, AL · On-site</span></li>
 <li><a href="/us/jobs/shield-ai-electrical-engineering-spring-co-op-january-2027-r4475-4424110045">Shield AI — Electrical Engineering Spring Co-op (January 2027) (R4475)</a><span class="tiny"> San Diego, TX · On-site</span></li>
 <li><a href="/us/jobs/eaton-continuous-improvement-intern-4449255482">Eaton — Continuous Improvement Intern</a><span class="tiny"> Troy, IL · On-site</span></li>
 <li><a href="/us/jobs/susquehanna-international-group-electricity-natural-gas-analyst-internship-summer-2027-4420756764">Susquehanna International Group — Electricity + Natural Gas Analyst Internship: Summer 2027</a><span class="tiny"> Bala-Cynwyd, PA · On-site</span></li>
