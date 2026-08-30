@@ -728,7 +728,8 @@ function renderList() {
   // cards and restarted a keyframe on all of them. Keyframes restart from zero
   // rather than retargeting, so a fast typist saw a list that never settled.
   // Searching is a hundred-times-a-day action; it should not animate at all.
-  list.classList.toggle('intro', !renderList.painted);
+  list.classList.toggle('intro',
+    !renderList.painted && !document.documentElement.hasAttribute('data-boot'));
   renderList.painted = true;
 
   list.replaceChildren();
@@ -1333,23 +1334,48 @@ function syncStickyOffset() {
 /* ---------------- boot ---------------- */
 
 /**
+ * Every visible element the intro brings back, each on its own.
+ *
+ * Individual elements rather than their containers: the point of the sequence
+ * is that the interface unfolds out of the mark, and a container can only move
+ * as one block. Anything not listed simply appears with its parent when the
+ * attribute is dropped, which is the right outcome for wrappers and for the
+ * things a reader is not looking at yet.
+ */
+const BOOT_PARTS = [
+  '.brand .word', '.bar-right > *',
+  '.lede h1', '.lede p',
+  '.rail .seg', '.rail .find', '.rail .picks > *',
+  '.feed-head', '.feed > li', '.void', '.pane-col',
+  '.signup-band .sub-l', '.signup-band .sub-row',
+];
+
+/** How far back along the line from the mark each element starts. */
+const BOOT_STEP = 10;
+
+/**
  * The page-load intro: measure the journey, let it play, clear up.
  *
  * ONE ELEMENT. The masthead's own radar is what animates — it starts large and
  * centred, sweeps once, then travels into its resting place and stays there,
- * because it was never a copy. There is no overlay to remove and no second
- * logo to cross-fade; the previous version faded one out while fading another
- * in, which is precisely what read as a cut rather than a transformation.
+ * because it was never a copy. There is no overlay to remove and no second logo
+ * to cross-fade; the previous version faded one out while fading another in,
+ * which is precisely what read as a cut rather than a transformation.
  *
  * The MOTION is entirely in CSS — it runs off the main thread, and the main
  * thread is busy parsing and rendering the board for exactly the window this
- * plays in. This does the two things CSS cannot: work out where the mark has
- * to start from to be centred, and where the logo sits inside each block that
- * expands out of it.
+ * plays in. This does what CSS cannot: work out where the mark has to start
+ * from, and give every element the direction it arrives from.
+ *
+ * THE PARTS ARE TAGGED WHEN THE MARK LANDS, not on a timer, and that is what
+ * makes it robust rather than merely tidy. A card created while the radar is
+ * still sweeping and one created a moment before it lands both animate at the
+ * same instant, because the animation starts when the class is added rather
+ * than at some absolute offset the element may have missed.
  *
  * IT NEVER TRAPS ANYONE. A safety timer clears the attribute whatever happens,
- * so a browser that never fires animationend still leaves a working page — the
- * failure mode of an intro must be "no intro".
+ * and the stylesheet carries its own failsafe for the case where this file
+ * never arrives at all — the failure mode of an intro must be "no intro".
  */
 function runIntro() {
   const root = document.documentElement;
@@ -1363,64 +1389,71 @@ function runIntro() {
     if (done) return;
     done = true;
     root.removeAttribute('data-boot');
-    // Once a session, not once a page view: a reader moving between the board
-    // and a job page should not sit through it again.
+    for (const el of document.querySelectorAll('.boot-part')) el.classList.remove('boot-part');
     try { sessionStorage.setItem('id-boot', '1'); } catch { /* private mode */ }
   };
 
-  /* WHERE IT STARTS. Measured from where the mark actually rests rather than
-     hardcoded, because the masthead moves — the brand shrinks below 480px and
-     the bar's height changes with the rail. The keyframe's own fallbacks put
-     it roughly centred, so a failed measurement still animates rather than
-     sitting in the corner. */
+  /* WHERE IT STARTS, and where everything else comes from.
+     MEASURED WITH THE ANIMATION SUPPRESSED: it has `both` fill, so its own 0%
+     keyframe — using the fallback scale — is already applied by the time this
+     runs. Measuring straight away returns the mark at several times its size
+     and computes a scale from that, and the radar never grows. */
+  let centre = null;
   try {
-    /* MEASURED WITH THE ANIMATION SUPPRESSED. It has `both` fill, so its 0%
-       keyframe — which uses the fallback scale — is already applied by the
-       time this runs: measuring straight away returns the mark at eight times
-       its size and computes a scale of 1.04 from it, and the radar never grows.
-       Suppressing for one synchronous reflow reads the true resting box; it is
-       restored in the same task, so nothing paints in between. */
-    const held = mark.style.animation;
-    mark.style.animation = 'none';
-    void mark.offsetWidth;
+    /* NO SUPPRESSION NEEDED ANY MORE, and that fixed a real bug rather than
+       tidying one. The span is never transformed — only the svg inside it is —
+       so its rect is always the true resting box. The previous version had to
+       blank the animation to measure, which RESTARTED it: invisible here,
+       where this runs before the first frame, but on a phone it runs a second
+       in and the sweep visibly began again. That is what "more than one sweep,
+       and it takes forever on mobile" was. */
     const r = mark.getBoundingClientRect();
-    mark.style.animation = held;
-    if (r.width) {
-      const big = Math.min(innerWidth, innerHeight) * 0.38;
-      const scale = Math.min(big, 250) / r.width;
-      mark.style.setProperty('--cx', `${innerWidth / 2 - (r.left + r.width / 2)}px`);
-      mark.style.setProperty('--cy', `${innerHeight / 2 - (r.top + r.height / 2)}px`);
-      mark.style.setProperty('--cs', String(scale));
-
-      /* WHERE THE SITE GROWS FROM. The logo's centre expressed inside each
-         expanding block's own box, so the growth radiates from the mark rather
-         than from the middle of the page. */
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
-      for (const el of document.querySelectorAll('.bar, main, .outro')) {
-        const b = el.getBoundingClientRect();
-        el.style.setProperty('--ox', `${cx - b.left}px`);
-        el.style.setProperty('--oy', `${cy - b.top}px`);
-      }
+    const svg = mark.querySelector('svg');
+    if (r.width && svg) {
+      /* Smaller than it was: at 250px it dominated the screen and read as a
+         splash. The mark has to stay a mark. */
+      const size = Math.round(Math.min(Math.min(innerWidth, innerHeight) * 0.26, 170));
+      svg.style.setProperty('--bw', `${size}px`);
+      svg.style.setProperty('--x0', `${innerWidth / 2 - size / 2 - r.left}px`);
+      svg.style.setProperty('--y0', `${innerHeight / 2 - size / 2 - r.top}px`);
+      svg.style.setProperty('--s1', String(r.width / size));
+      centre = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
     }
   } catch { /* fall back to the keyframe's own defaults */ }
 
-  /* Cleared when the CONTENT has finished expanding, not when the mark lands.
-     The mark settles at 2480ms and the expansion runs to 2660ms; clearing on
-     the mark drops the rule the expansion is defined by, so the site snaps to
-     full opacity halfway through its own reveal.
-     Matched on the target rather than the animation name, so reduced motion —
+  /* Tagged the moment the mark lands, all at once. The step is a fixed ~10px
+     back along the line from the mark, normalised — so a card at the bottom of
+     the page and the wordmark beside the logo move the same small distance,
+     each in its own direction. Scaling the step with distance would fling the
+     far ones across the screen. */
+  const unfold = () => {
+    if (done) return;
+    for (const sel of BOOT_PARTS) {
+      for (const el of document.querySelectorAll(sel)) {
+        if (centre) {
+          const b = el.getBoundingClientRect();
+          const dx = (b.left + b.width / 2) - centre.x;
+          const dy = (b.top + b.height / 2) - centre.y;
+          const d = Math.hypot(dx, dy) || 1;
+          el.style.setProperty('--tx', `${-(dx / d) * BOOT_STEP}px`);
+          el.style.setProperty('--ty', `${-(dy / d) * BOOT_STEP}px`);
+        }
+        el.classList.add('boot-part');
+      }
+    }
+    // The parts run 240ms; clear up once they have arrived.
+    setTimeout(finish, 300);
+  };
+
+  /* Matched on the target rather than the animation name, so reduced motion —
      where every animation becomes a plain fade and the names all change —
-     clears on the same line instead of waiting for the safety timer. */
-  const last = document.querySelector('main');
-  (last ?? mark).addEventListener('animationend', (e) => {
-    if (e.target === (last ?? mark)) finish();
-  });
+     unfolds on the same line instead of waiting for the safety timer. */
+  const svg = mark.querySelector('svg') ?? mark;
+  svg.addEventListener('animationend', (e) => { if (e.target === svg) unfold(); });
 
   /* Skippable on the gestures that mean "I am already here". */
-  const skip = () => finish();
   for (const ev of ['pointerdown', 'keydown', 'wheel', 'touchstart']) {
-    addEventListener(ev, skip, { once: true, passive: true });
+    addEventListener(ev, finish, { once: true, passive: true });
   }
 
   setTimeout(finish, 3600);

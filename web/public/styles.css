@@ -387,127 +387,139 @@ a, button, summary, label, [role="button"], .row {
    swapped over, and a reader who never consciously notices it is the intended
    outcome rather than a failure. */
 .field {
-  position: fixed; right: -14vmin; top: 50%; z-index: 0;
-  width: min(86vmin, 980px); aspect-ratio: 1;
-  transform: translateY(-50%); pointer-events: none;
-  opacity: .55;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
   /* THE RADAR IS A BACKGROUND, NOT MARKUP. The element is an empty div, so a
      reader holding a stale stylesheet against fresh HTML — which the cache
      headers actively allow, max-age=0 on the document and
      stale-while-revalidate=86400 on this file — gets an empty div rather than
-     an unsized full-page <svg> that pushes the site below the fold. */
-  background: url("data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720"><circle cx="360" cy="360" r="352" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".08"/><circle cx="360" cy="360" r="272" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".16"/><circle cx="360" cy="360" r="192" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".08"/><circle cx="360" cy="360" r="112" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".16"/><line x1="8" y1="360" x2="712" y2="360" stroke="%23c8ff00" stroke-width="1.4" opacity=".07"/><line x1="360" y1="8" x2="360" y2="712" stroke="%23c8ff00" stroke-width="1.4" opacity=".07"/><defs><linearGradient id="s" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%23c8ff00" stop-opacity="0"/><stop offset="1" stop-color="%23c8ff00" stop-opacity=".3"/></linearGradient></defs><path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(%23s)" opacity=".5"/><circle cx="360" cy="360" r="7" fill="%23c8ff00" opacity=".3"/></svg>") center / contain no-repeat;
+     an unsized full-page <svg> that pushes the site below the fold.
+     Several layers rather than several elements, for the same reason.
+
+     PUSHED INTO THE BOTTOM-RIGHT CORNER and made smaller. Centred and 980px
+     wide it ran straight through the middle of the screen, so during the intro
+     it sat behind the animating mark and the two radars read as one confused
+     shape. A background element has to stay out of the way of the subject.
+
+     The bottom-left carries instrument marks — a ruled edge with ticks and two
+     arcs — rather than a second radar: it balances the composition without
+     repeating the motif or competing for the eye. */
+  background:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><line x1='0' y1='330' x2='300' y2='330' stroke='%23c8ff00' stroke-width='1.2' opacity='.16'/><line x1='34' y1='330' x2='34' y2='316' stroke='%23c8ff00' stroke-width='1.2' opacity='.13'/><line x1='94' y1='330' x2='94' y2='322' stroke='%23c8ff00' stroke-width='1.2' opacity='.10'/><line x1='154' y1='330' x2='154' y2='316' stroke='%23c8ff00' stroke-width='1.2' opacity='.13'/><line x1='214' y1='330' x2='214' y2='322' stroke='%23c8ff00' stroke-width='1.2' opacity='.10'/><line x1='274' y1='330' x2='274' y2='316' stroke='%23c8ff00' stroke-width='1.2' opacity='.13'/><path d='M8 268 A150 150 0 0 1 158 118' fill='none' stroke='%23c8ff00' stroke-width='1.2' opacity='.11'/><path d='M8 214 A96 96 0 0 1 104 118' fill='none' stroke='%23c8ff00' stroke-width='1.2' opacity='.07'/><circle cx='158' cy='118' r='2.6' fill='%23c8ff00' opacity='.2'/><circle cx='60' cy='252' r='1.8' fill='%23c8ff00' opacity='.13'/></svg>")
+      left -3vmin bottom 4vmin / min(38vmin, 420px) auto no-repeat,
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 720'><circle cx='360' cy='360' r='352' fill='none' stroke='%23c8ff00' stroke-width='1.4' opacity='.07'/><circle cx='360' cy='360' r='272' fill='none' stroke='%23c8ff00' stroke-width='1.4' opacity='.13'/><circle cx='360' cy='360' r='192' fill='none' stroke='%23c8ff00' stroke-width='1.4' opacity='.07'/><circle cx='360' cy='360' r='112' fill='none' stroke='%23c8ff00' stroke-width='1.4' opacity='.13'/><line x1='8' y1='360' x2='712' y2='360' stroke='%23c8ff00' stroke-width='1.4' opacity='.06'/><line x1='360' y1='8' x2='360' y2='712' stroke='%23c8ff00' stroke-width='1.4' opacity='.06'/><defs><linearGradient id='s' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='%23c8ff00' stop-opacity='0'/><stop offset='1' stop-color='%23c8ff00' stop-opacity='.22'/></linearGradient></defs><path d='M360 360 L360 88 A272 272 0 0 1 552 168 Z' fill='url(%23s)' opacity='.45'/><circle cx='360' cy='360' r='6' fill='%23c8ff00' opacity='.26'/></svg>")
+      right -12vmin bottom -14vmin / min(52vmin, 620px) auto no-repeat;
+  opacity: .62;
 }
 /* The light theme sits on cream, where the same lime reads far stronger. */
-:root[data-theme="light"] .field { opacity: .3; }
+:root[data-theme="light"] .field { opacity: .34; }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .field { opacity: .3; }
+  :root:not([data-theme="dark"]) .field { opacity: .34; }
 }
-/* Below 720px the board is edge to edge and the rings would sit under the
+/* Below 720px the board is edge to edge and the marks would sit under the
    cards rather than beside them. */
-@media (max-width: 720px) { .field { opacity: .28; right: -34vmin; } }
+@media (max-width: 720px) { .field { opacity: .3; } }
 
 /* ======================= page-load intro =======================
-   ONE ELEMENT, from first frame to last. The header's own radar starts large
-   and centred, sweeps once, then travels and scales into its resting place in
-   the masthead — where it simply stays, because it was never a copy. There is
-   no overlay, no second logo and no handoff; the previous version faded one
-   out while fading another in, and that is exactly what read as a cut.
+   ONE ELEMENT, from first frame to last. The header's own radar starts larger
+   and centred, sweeps once, then travels and scales into its resting place —
+   where it simply stays, because it was never a copy. No overlay, no second
+   logo, no handoff.
+
    No veil either: the background field above is visible from the first frame
    and never changes, so the intro and the site share one ground. What is
-   hidden is the CONTENT, which then expands out of the logo.
+   hidden is the CONTENT, and it does not return as one block — every visible
+   element comes back on its own, outward from the mark.
 
-   ~2.64s: 220ms power on, one 1800ms sweep, 480ms travel, 240ms emergence. */
-html[data-boot] .bar .brand .scope {
-  /* Above the bar's own surface while it is oversized, and above the content
-     it is about to expand into. */
-  position: relative; z-index: 1000;
-  animation: boot-scope 2480ms both;
+   ~2.74s: 220ms power on, one 1800ms sweep, 480ms travel, 240ms emergence. */
+/* THE SVG SCALES, NOT THE SPAN — and that is what makes it sharp.
+   A CSS transform does not re-run the vector: the compositor rasterises the
+   element ONCE at its layout size and then stretches that bitmap, so a 30px
+   mark blown up to 170 is a 30px bitmap blown up to 170. It looked soft on
+   desktop and worse on a 3x phone. Laying the svg out at the LARGE size and
+   scaling it DOWN to rest inverts that — every frame is sampled from a 170px
+   raster.
+   The span keeps its 30px box and stays in flow, so the masthead's layout is
+   untouched and, just as importantly, the span's own rect is always its true
+   resting box: nothing has to be suppressed to measure it. */
+html[data-boot] .bar,
+html[data-boot] .bar-in,
+html[data-boot] .brand { overflow: visible; }
+html[data-boot] .bar .brand .scope { position: relative; z-index: 1000; overflow: visible; }
+html[data-boot] .bar .brand .scope > svg {
+  position: absolute; left: 0; top: 0;
+  width: var(--bw, 170px); height: var(--bw, 170px);
+  transform-origin: 0 0;
+  animation: boot-scope 2500ms both;
 }
 
-/* EXACTLY ONE TURN, and slower than it was: at 1150ms it read as a spinner
-   rather than a sweep. Linear, because a radar turns at a constant rate and an
+/* EXACTLY ONE TURN. Linear, because a radar turns at a constant rate and an
    eased sweep reads as a machine slowing down. It holds at 360 degrees through
-   the travel — the radar has found what it was looking for and is settling —
-   and 360 is the same angle the idle loop resumes from, so nothing jumps when
-   the override is dropped. */
+   the travel — found what it was looking for, now settling — and 360 is the
+   same angle the idle loop resumes from, so nothing jumps when the override is
+   dropped. */
 html[data-boot] .bar .brand .scope .s-sweep {
   animation: sweep 1800ms linear 220ms both;
 }
 
-/* THE SITE EXPANDS OUT OF THE LOGO. --ox/--oy are the logo's centre inside
-   each element's own box, measured by app.js, so the growth genuinely radiates
-   from the mark rather than from the middle of the page.
-   FAST ON PURPOSE: a careful eye sees the expansion, an ordinary one sees the
-   site simply arrive. Anything slower, or staggered element by element, and it
-   becomes a loading screen — which is the one thing this must not be. */
-html[data-boot] .bar,
-html[data-boot] main,
-html[data-boot] .outro { transform-origin: var(--ox, 37px) var(--oy, 31px); }
+/* THE CONTENT IS HELD BY VISIBILITY, NOT OPACITY, and that is what lets each
+   element come back on its own: visibility inherits, but a child may override
+   its parent, so a tagged element can appear while everything around it is
+   still held. Opacity cannot do that — a parent at 0 takes every child with it,
+   which is why the whole page used to arrive as one block.
 
-/* THE MASTHEAD'S OWN SURFACE ARRIVES WITH THE CONTENT, not before it. Left
-   alone, the bar paints its background from the first frame and a lit strip
-   sits across the top for two and a half seconds while the radar sweeps below
-   it — which reads as a page already present, and undoes the idea that
-   everything grows out of the mark. It cannot simply fade the bar: the radar
-   is inside it, and a parent's opacity would take the radar with it. So the
-   surface moves to a pseudo-element that fades on its own. */
-html[data-boot] .bar {
-  background: transparent;
-  backdrop-filter: none; -webkit-backdrop-filter: none;
-  border-color: transparent;
-}
-html[data-boot] .bar::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: color-mix(in oklab, var(--bg-2) 84%, transparent);
-  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  animation: boot-fade 260ms var(--snap) 2400ms both;
-}
-html[data-boot] .brand .word,
-html[data-boot] .bar-right { animation: boot-emerge 240ms var(--snap) 2380ms both; }
+   THE FAILSAFE IS NOT OPTIONAL. The attribute is set by an inline script before
+   paint and the tagging is done by app.js; if that script never arrives, this
+   is what puts the site back rather than leaving it invisible. It is a real
+   state — app.js is served with a day of stale-while-revalidate. */
+html[data-boot] .bar-in,
 html[data-boot] main,
-html[data-boot] .outro { animation: boot-emerge 260ms var(--snap) 2400ms both; }
+html[data-boot] .signup-band,
+html[data-boot] .outro {
+  visibility: hidden;
+  animation: boot-failsafe 1ms linear 3400ms forwards;
+}
+html[data-boot] .bar .brand .scope,
+html[data-boot] .boot-part { visibility: visible; }
 
-/* THE FALLBACKS DO THE WHOLE JOB ON THEIR OWN, and app.js only refines them.
-   app.js is a module fetched over the network, so on a real connection it runs
-   a few hundred milliseconds after first paint — and the animation has already
-   started by then, using whatever these say. With --cx at 0 the mark simply
-   grew where it sat and hung off the left edge at x=-83 until the measurement
-   landed and yanked it to the middle. Locally that never showed, because JS
-   runs before the first frame.
-   50vw/50vh minus the mark's own resting centre is the same arithmetic the
-   measurement does, and at 1280x820 it produces 603px/379px — exactly what
-   app.js computes. The refinement is then worth a few pixels on a narrow
-   masthead rather than the difference between centred and off-screen. */
+/* EVERY ELEMENT AT ONCE, each toward its own place. --tx/--ty are a short step
+   back along the line from the mark to that element, measured by app.js, so
+   each one arrives outward from the logo rather than drifting in a shared
+   direction. Deliberately no stagger: a sequence, however quick, reads as a
+   page loading in pieces. 240ms, ~10px and a 1.6% scale — enough that a careful
+   eye sees where it came from, little enough that most people see the site
+   simply appear. */
+html[data-boot] .boot-part { animation: boot-part 240ms var(--snap) both; }
+
 @keyframes boot-scope {
+  /* THE FALLBACKS DO THE WHOLE JOB ON THEIR OWN and app.js only refines them:
+     it is a module fetched over the network, so the animation has already
+     started by the time it runs. The defaults assume the mark's resting box at
+     (22,16) and a 170px working size, which is what the masthead actually
+     gives at every width the brand does not shrink at. */
   0%    { opacity: 0;
-          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
-                     scale(var(--cs, 8));
+          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
           animation-timing-function: var(--snap); }
-  8.9%  { opacity: 1;
-          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
-                     scale(var(--cs, 8));
+  8.8%  { opacity: 1;
+          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
           animation-timing-function: linear; }
-  80.6% { opacity: 1;
-          transform: translate(var(--cx, calc(50vw - 37px)), var(--cy, calc(50vh - 31px)))
-                     scale(var(--cs, 8));
+  80.8% { opacity: 1;
+          transform: translate(var(--x0, calc(50vw - 107px)), var(--y0, calc(50vh - 101px))) scale(1);
           animation-timing-function: var(--morph); }
-  100%  { opacity: 1; transform: none; }
+  100%  { opacity: 1; transform: translate(0px, 0px) scale(var(--s1, .176)); }
 }
-@keyframes boot-emerge {
-  from { opacity: 0; transform: scale(.972); }
+@keyframes boot-part {
+  from { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.984); }
   to   { opacity: 1; transform: none; }
 }
+@keyframes boot-failsafe { to { visibility: visible; } }
 
 /* Reduced motion: the mark is where it belongs from the first frame and the
-   site fades up. Nothing sweeps, travels or scales. */
+   site fades up. Nothing sweeps, travels or steps outward. */
 @media (prefers-reduced-motion: reduce) {
-  html[data-boot] .bar .brand .scope { animation: boot-fade 200ms linear both; }
+  html[data-boot] .bar .brand .scope > svg { animation: boot-fade 200ms linear both;
+    position: static; width: 100%; height: 100%; transform: none; }
   html[data-boot] .bar .brand .scope .s-sweep { animation: none; }
-  html[data-boot] .brand .word,
-  html[data-boot] .bar-right,
-  html[data-boot] main,
-  html[data-boot] .outro { animation: boot-fade 240ms linear 160ms both; transform: none; }
+  html[data-boot] .boot-part { animation: boot-fade 200ms linear both; transform: none; }
 }
 @keyframes boot-fade { from { opacity: 0; } to { opacity: 1; } }
 
