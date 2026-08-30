@@ -379,131 +379,122 @@ a, button, summary, label, [role="button"], .row {
   .rg-caret { transition: none; }
 }
 
+/* ================= the background field =================
+   The ground the OG cards and the reels already stand on, brought onto the
+   site: a radar bleeding off the right edge, beneath the film grain that was
+   here before it. VERY low contrast on purpose — the job is continuity, so the
+   intro and the site read as one environment rather than two backgrounds
+   swapped over, and a reader who never consciously notices it is the intended
+   outcome rather than a failure. */
+.field {
+  position: fixed; right: -14vmin; top: 50%; z-index: 0;
+  width: min(86vmin, 980px); aspect-ratio: 1;
+  transform: translateY(-50%); pointer-events: none;
+  opacity: .55;
+}
+.field svg { width: 100%; height: 100%; display: block; }
+.f-ring  { fill: none; stroke: var(--live); stroke-width: 1.4; opacity: .16; }
+.f-ring.faint { opacity: .08; }
+.f-cross { stroke: var(--live); stroke-width: 1.4; opacity: .07; }
+.f-sweep { opacity: .5; }
+.f-dot   { fill: var(--live); opacity: .3; }
+/* The light theme sits on cream, where the same lime reads far stronger. */
+:root[data-theme="light"] .field { opacity: .3; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .field { opacity: .3; }
+}
+/* Below 720px the board is edge to edge and the rings would sit under the
+   cards rather than beside them. */
+@media (max-width: 720px) { .field { opacity: .28; right: -34vmin; } }
+
 /* ======================= page-load intro =======================
-   A radar powers on, sweeps ONCE, then docks onto the masthead mark while the
-   site grows in underneath. ~1.9s end to end, once per session.
+   ONE ELEMENT, from first frame to last. The header's own radar starts large
+   and centred, sweeps once, then travels and scales into its resting place in
+   the masthead — where it simply stays, because it was never a copy. There is
+   no overlay, no second logo and no handoff; the previous version faded one
+   out while fading another in, and that is exactly what read as a cut.
+   No veil either: the background field above is visible from the first frame
+   and never changes, so the intro and the site share one ground. What is
+   hidden is the CONTENT, which then expands out of the logo.
 
-   IT IS NOT AN ADDED WAIT. The sweep runs while jobs.json is in flight, so on
-   a cold visit it overlaps a wait that already existed — which is also why it
-   replaces the scanning state rather than queueing behind it.
-
-   Driven entirely by CSS animations rather than rAF: they run off the main
-   thread, and the main thread is busy parsing and rendering the board for
-   exactly the window this plays in. JS only measures where the mark sits,
-   handles the skip, and clears up.
-
-   EVERYTHING IS display:none UNTIL data-boot IS SET, so no-JS, storage
-   failures and returning readers all get the plain site. */
-.boot { display: none; }
-
-html[data-boot] .boot {
-  display: grid; place-items: center;
-  position: fixed; inset: 0; z-index: 300;
-  background: var(--bg);
-  animation: boot-veil 460ms var(--snap) 1510ms both;
+   ~2.64s: 220ms power on, one 1800ms sweep, 480ms travel, 240ms emergence. */
+html[data-boot] .bar .brand .scope {
+  /* Above the bar's own surface while it is oversized, and above the content
+     it is about to expand into. */
+  position: relative; z-index: 1000;
+  animation: boot-scope 2480ms both;
 }
 
-html[data-boot] .boot-eye {
-  display: block; width: min(38vmin, 250px); aspect-ratio: 1;
-  position: fixed; left: 50%; top: 50%;
-  /* ONE animation for the whole arc, not two stacked ones. Two animations that
-     both touch `transform` do not compose — the later one in the list wins for
-     the entire time it is filling, so a separate dock animation with a delay
-     silently cancelled the power-on scale from frame zero. Per-keyframe
-     timing functions give each phase its own curve inside a single timeline.
-     0 -> 17.3%  power on      (--snap, a strong ease-out: it is an entrance)
-     -> 73.6%    hold          (linear; nothing moves, the sweep has the stage)
-     -> 100%     dock          (--morph, ease-in-out: movement across screen)
-     --dx/--dy/--ds are measured by app.js from the real masthead mark; the
-     fallbacks simply shrink it away, so a failed measurement still ends
-     somewhere sensible rather than leaving it stranded mid-screen. */
-  animation: boot-eye 1970ms both;
+/* EXACTLY ONE TURN, and slower than it was: at 1150ms it read as a spinner
+   rather than a sweep. Linear, because a radar turns at a constant rate and an
+   eased sweep reads as a machine slowing down. It holds at 360 degrees through
+   the travel — the radar has found what it was looking for and is settling —
+   and 360 is the same angle the idle loop resumes from, so nothing jumps when
+   the override is dropped. */
+html[data-boot] .bar .brand .scope .s-sweep {
+  animation: sweep 1800ms linear 220ms both;
 }
-html[data-boot] .boot-eye svg { width: 100%; height: 100%; display: block; overflow: visible; }
 
-.i-ring  { fill: none; stroke: var(--live); stroke-width: 1.4; opacity: 0;
-           animation: boot-ring 420ms var(--snap) both; }
-.i-ring:nth-of-type(1) { animation-delay: 40ms; }
-.i-ring:nth-of-type(2) { animation-delay: 110ms; }
-.i-ring:nth-of-type(3) { animation-delay: 180ms; }
-.i-ring:nth-of-type(4) { animation-delay: 250ms; }
-.i-cross { stroke: var(--live); stroke-width: 1.2; opacity: 0;
-           animation: boot-cross 420ms var(--snap) 200ms both; }
-.i-dot   { fill: var(--live); opacity: 0; animation: boot-cross 300ms var(--snap) 300ms both; }
+/* THE SITE EXPANDS OUT OF THE LOGO. --ox/--oy are the logo's centre inside
+   each element's own box, measured by app.js, so the growth genuinely radiates
+   from the mark rather than from the middle of the page.
+   FAST ON PURPOSE: a careful eye sees the expansion, an ordinary one sees the
+   site simply arrive. Anything slower, or staggered element by element, and it
+   becomes a loading screen — which is the one thing this must not be. */
+html[data-boot] .bar,
+html[data-boot] main,
+html[data-boot] .outro { transform-origin: var(--ox, 37px) var(--oy, 31px); }
 
-/* EXACTLY ONE TURN, and it is the one place linear is right: a radar sweeps at
-   a constant rate, and an eased sweep reads as a machine slowing down.
-   300ms -> 1450ms, so it finishes exactly as the dock begins. */
-.i-sweep { transform-origin: 120px 120px;
-           animation: boot-spin 1150ms linear 300ms both; }
-
-/* The blips land as the sweep passes them, which is what makes this read as a
-   radar finding something rather than a spinner.
-   NOT :nth-of-type — every element here is a <circle>, so nth-of-type counts
-   the rings and the centre dot too and the delays matched nothing. */
-.i-blip { fill: var(--live); opacity: 0; animation: boot-blip 700ms var(--snap) both; }
-.i-blip-a { animation-delay: 640ms; }
-.i-blip-b { animation-delay: 1010ms; }
-
-/* The site grows in under the docking radar.
-   OPACITY ONLY ON THE LAYOUT CONTAINERS. A transform on <main> makes it a
-   containing block, and the positioned descendants inside reflow against it:
-   measured mid-animation, .feed went from 647px in its column to 1278px full
-   width and the cards overlapped down the middle of the screen. It settled
-   correctly the moment the transform was removed, which is exactly what makes
-   that class of bug invisible in a still.
-   .bar is sticky and .rail is sticky, so both are left untransformed too. The
-   "rising" is carried by .lede alone — an ordinary block with nothing
-   positioned inside it — which is enough to read as the page arriving. */
-html[data-boot] .bar   { animation: boot-fade 420ms var(--snap) 1490ms both; }
-html[data-boot] main   { animation: boot-fade 460ms var(--snap) 1530ms both; }
-html[data-boot] .lede  { animation: boot-rise 500ms var(--snap) 1570ms both; }
-
-/* The masthead mark stays hidden until the intro radar has arrived on top of
-   it, or the two are briefly on screen together and the morph reads as a
-   duplicate rather than as one object moving. */
-/* THE HANDOFF. The real mark reaches full opacity at 1970ms, which is exactly
-   when the docked radar is removed — the two are the same shape at the same
-   size in the same place by then, so the swap is invisible. Reveal it any
-   later and there is a gap with no logo; any earlier and both are on screen
-   and the morph reads as a duplicate. */
-html[data-boot] .bar .scope { opacity: 0; animation: boot-cross 160ms var(--snap) 1810ms both; }
-
-@keyframes boot-eye {
-  0%     { opacity: 0; transform: translate(-50%, -50%) scale(.92);
-           animation-timing-function: var(--snap); }
-  17.3%  { opacity: 1; transform: translate(-50%, -50%) scale(1);
-           animation-timing-function: linear; }
-  73.6%  { opacity: 1; transform: translate(-50%, -50%) scale(1);
-           animation-timing-function: var(--morph); }
-  100%   { opacity: 1;
-           transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, -34vh)))
-                      scale(var(--ds, .12)); }
+/* THE MASTHEAD'S OWN SURFACE ARRIVES WITH THE CONTENT, not before it. Left
+   alone, the bar paints its background from the first frame and a lit strip
+   sits across the top for two and a half seconds while the radar sweeps below
+   it — which reads as a page already present, and undoes the idea that
+   everything grows out of the mark. It cannot simply fade the bar: the radar
+   is inside it, and a parent's opacity would take the radar with it. So the
+   surface moves to a pseudo-element that fades on its own. */
+html[data-boot] .bar {
+  background: transparent;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-color: transparent;
 }
-@keyframes boot-ring  { from { opacity: 0; } to { opacity: .3; } }
-@keyframes boot-cross { from { opacity: 0; } to { opacity: 1; } }
-@keyframes boot-blip  { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: .5; } }
-@keyframes boot-spin  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes boot-veil  { to { opacity: 0; visibility: hidden; } }
-@keyframes boot-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes boot-rise {
-  from { opacity: 0; transform: translateY(10px) scale(.994); }
+html[data-boot] .bar::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: color-mix(in oklab, var(--bg-2) 84%, transparent);
+  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  animation: boot-fade 260ms var(--snap) 2400ms both;
+}
+html[data-boot] .brand .word,
+html[data-boot] .bar-right { animation: boot-emerge 240ms var(--snap) 2380ms both; }
+html[data-boot] main,
+html[data-boot] .outro { animation: boot-emerge 260ms var(--snap) 2400ms both; }
+
+@keyframes boot-scope {
+  /* Centred and large; --cx/--cy/--cs are measured from where the mark
+     actually rests, so it lands exactly on itself. */
+  0%    { opacity: 0; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+          animation-timing-function: var(--snap); }
+  8.9%  { opacity: 1; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+          animation-timing-function: linear; }
+  80.6% { opacity: 1; transform: translate(var(--cx, 0px), var(--cy, 34vh)) scale(var(--cs, 8));
+          animation-timing-function: var(--morph); }
+  100%  { opacity: 1; transform: none; }
+}
+@keyframes boot-emerge {
+  from { opacity: 0; transform: scale(.972); }
   to   { opacity: 1; transform: none; }
 }
 
-/* Reduced motion: the radar still appears and the site still arrives, but
-   nothing sweeps, travels or scales. Fewer and gentler, not zero. */
+/* Reduced motion: the mark is where it belongs from the first frame and the
+   site fades up. Nothing sweeps, travels or scales. */
 @media (prefers-reduced-motion: reduce) {
-  html[data-boot] .boot { animation: boot-veil 200ms linear 420ms both; }
-  html[data-boot] .boot-eye { animation: boot-cross 200ms linear both; transform: translate(-50%, -50%); }
-  .i-ring { animation: boot-ring 200ms linear both; animation-delay: 0ms; }
-  .i-cross, .i-dot, .i-blip { animation: boot-cross 200ms linear both; animation-delay: 0ms; }
-  .i-sweep { animation: none; }
-  html[data-boot] .bar,
+  html[data-boot] .bar .brand .scope { animation: boot-fade 200ms linear both; }
+  html[data-boot] .bar .brand .scope .s-sweep { animation: none; }
+  html[data-boot] .brand .word,
+  html[data-boot] .bar-right,
   html[data-boot] main,
-  html[data-boot] .lede { animation: boot-fade 240ms linear 420ms both; }
-  html[data-boot] .bar .scope { animation: boot-cross 200ms linear 560ms both; }
+  html[data-boot] .outro { animation: boot-fade 240ms linear 160ms both; transform: none; }
 }
+@keyframes boot-fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- lede ---------- */
 

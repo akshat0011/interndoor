@@ -1333,76 +1333,97 @@ function syncStickyOffset() {
 /* ---------------- boot ---------------- */
 
 /**
- * The page-load intro: measure where it lands, let it play, clear up.
+ * The page-load intro: measure the journey, let it play, clear up.
+ *
+ * ONE ELEMENT. The masthead's own radar is what animates — it starts large and
+ * centred, sweeps once, then travels into its resting place and stays there,
+ * because it was never a copy. There is no overlay to remove and no second
+ * logo to cross-fade; the previous version faded one out while fading another
+ * in, which is precisely what read as a cut rather than a transformation.
  *
  * The MOTION is entirely in CSS — it runs off the main thread, and the main
  * thread is busy parsing and rendering the board for exactly the window this
- * plays in. All this does is the three things CSS cannot: measure the real
- * masthead mark so the radar docks onto it rather than at a guessed point,
- * honour a skip, and take the overlay out of the document afterwards.
+ * plays in. This does the two things CSS cannot: work out where the mark has
+ * to start from to be centred, and where the logo sits inside each block that
+ * expands out of it.
  *
- * IT NEVER TRAPS ANYONE. A safety timer ends it whatever happens, so a browser
- * that never fires animationend, or a measurement that throws, still leaves a
- * working page — the failure mode of an intro must be "no intro".
+ * IT NEVER TRAPS ANYONE. A safety timer clears the attribute whatever happens,
+ * so a browser that never fires animationend still leaves a working page — the
+ * failure mode of an intro must be "no intro".
  */
 function runIntro() {
   const root = document.documentElement;
   if (!root.hasAttribute('data-boot')) return;
 
-  const overlay = $('boot');
-  const eye = $('boot-eye');
   const mark = document.querySelector('.bar .brand .scope');
-  if (!overlay || !eye) { root.removeAttribute('data-boot'); return; }
+  if (!mark) { root.removeAttribute('data-boot'); return; }
 
   let done = false;
   const finish = () => {
     if (done) return;
     done = true;
     root.removeAttribute('data-boot');
-    overlay.remove();
     // Once a session, not once a page view: a reader moving between the board
     // and a job page should not sit through it again.
-    try { sessionStorage.setItem('id-intro', '1'); } catch { /* private mode */ }
+    try { sessionStorage.setItem('id-boot', '1'); } catch { /* private mode */ }
   };
 
-  /* WHERE IT DOCKS. Measured from the real mark rather than hardcoded, because
-     the masthead moves: the brand shrinks below 480px, and the bar's height
-     changes with the rail. Without a measurement the keyframe falls back to
-     shrinking away off the top, which is survivable but not a morph. */
+  /* WHERE IT STARTS. Measured from where the mark actually rests rather than
+     hardcoded, because the masthead moves — the brand shrinks below 480px and
+     the bar's height changes with the rail. The keyframe's own fallbacks put
+     it roughly centred, so a failed measurement still animates rather than
+     sitting in the corner. */
   try {
-    if (mark) {
-      const to = mark.getBoundingClientRect();
-      const from = eye.getBoundingClientRect();
-      if (to.width && from.width) {
-        eye.style.setProperty('--dx', `${(to.left + to.width / 2) - (from.left + from.width / 2)}px`);
-        eye.style.setProperty('--dy', `${(to.top + to.height / 2) - (from.top + from.height / 2)}px`);
-        eye.style.setProperty('--ds', String(to.width / from.width));
+    /* MEASURED WITH THE ANIMATION SUPPRESSED. It has `both` fill, so its 0%
+       keyframe — which uses the fallback scale — is already applied by the
+       time this runs: measuring straight away returns the mark at eight times
+       its size and computes a scale of 1.04 from it, and the radar never grows.
+       Suppressing for one synchronous reflow reads the true resting box; it is
+       restored in the same task, so nothing paints in between. */
+    const held = mark.style.animation;
+    mark.style.animation = 'none';
+    void mark.offsetWidth;
+    const r = mark.getBoundingClientRect();
+    mark.style.animation = held;
+    if (r.width) {
+      const big = Math.min(innerWidth, innerHeight) * 0.38;
+      const scale = Math.min(big, 250) / r.width;
+      mark.style.setProperty('--cx', `${innerWidth / 2 - (r.left + r.width / 2)}px`);
+      mark.style.setProperty('--cy', `${innerHeight / 2 - (r.top + r.height / 2)}px`);
+      mark.style.setProperty('--cs', String(scale));
+
+      /* WHERE THE SITE GROWS FROM. The logo's centre expressed inside each
+         expanding block's own box, so the growth radiates from the mark rather
+         than from the middle of the page. */
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      for (const el of document.querySelectorAll('.bar, main, .outro')) {
+        const b = el.getBoundingClientRect();
+        el.style.setProperty('--ox', `${cx - b.left}px`);
+        el.style.setProperty('--oy', `${cy - b.top}px`);
       }
     }
   } catch { /* fall back to the keyframe's own defaults */ }
 
-  /* Cleared when the VEIL finishes, and matched on the target rather than the
-     animation name. Both matter:
-     - the veil is timed to end with the radar's landing (1970ms), not before
-       it. Ending sooner took the radar off screen at 54px wide, twenty short
-       of the mark it was docking onto — a pop rather than a landing.
-     - reduced motion swaps every animation for a plain fade, so the names all
-       change. Keying on the name meant the listener never fired there and the
-       overlay sat until the safety timer, which is a second and a half of
-       dead screen for exactly the readers least able to tolerate it. */
-  overlay.addEventListener('animationend', (e) => {
-    if (e.target === overlay) finish();
+  /* Cleared when the CONTENT has finished expanding, not when the mark lands.
+     The mark settles at 2480ms and the expansion runs to 2660ms; clearing on
+     the mark drops the rule the expansion is defined by, so the site snaps to
+     full opacity halfway through its own reveal.
+     Matched on the target rather than the animation name, so reduced motion —
+     where every animation becomes a plain fade and the names all change —
+     clears on the same line instead of waiting for the safety timer. */
+  const last = document.querySelector('main');
+  (last ?? mark).addEventListener('animationend', (e) => {
+    if (e.target === (last ?? mark)) finish();
   });
 
-  /* SKIPPABLE, and on the gestures that mean "I am already here" rather than a
-     dedicated button nobody would look for. */
-  const skip = () => { if (!done) { overlay.style.animation = 'none'; finish(); } };
+  /* Skippable on the gestures that mean "I am already here". */
+  const skip = () => finish();
   for (const ev of ['pointerdown', 'keydown', 'wheel', 'touchstart']) {
     addEventListener(ev, skip, { once: true, passive: true });
   }
 
-  // Belt and braces: longer than the sequence, shorter than anyone would wait.
-  setTimeout(finish, 3200);
+  setTimeout(finish, 3600);
 }
 
 async function init() {
