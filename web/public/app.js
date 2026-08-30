@@ -1344,6 +1344,11 @@ async function init() {
   document.fonts?.ready.then(syncStickyOffset);
 
   await loadJobs();
+  /* Hidden here rather than in render(), which also runs on every filter
+     change: the scanning state belongs to the FIRST load only, and the empty
+     state below it is what speaks after that. */
+  const scanning = $('scanning');
+  if (scanning) scanning.hidden = true;
   renderFreshness();
   renderTotal();
   populateFilters();

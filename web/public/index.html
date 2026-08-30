@@ -199,9 +199,16 @@
            full-time roles — so they are labelled rather than filed as
            internships, and the reader switches. Server-rendered as real
            buttons; app.js binds them. -->
-      <div class="seg" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite">
-        <button class="seg-b" id="tab-intern" type="button" role="tab" aria-selected="true" data-kind="intern">Internships <b id="n-intern">0</b></button>
-        <button class="seg-b" id="tab-fulltime" type="button" role="tab" aria-selected="false" data-kind="fulltime">Full-time <b id="n-fulltime">0</b></button>
+      <!-- HIDDEN, AND THE BADGES ARE EMPTY, until the data lands. renderTotal()
+           fills them and decides whether this control belongs on the board at
+           all. Shipped visible with a hardcoded 0 they read "Internships 0 /
+           Full-time 0" for the whole of the first paint, which on a slow
+           connection is a board that looks empty rather than one that is
+           loading — the worst possible first frame for a site whose promise is
+           that it is full of fresh roles. -->
+      <div class="seg" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite" hidden>
+        <button class="seg-b" id="tab-intern" type="button" role="tab" aria-selected="true" data-kind="intern">Internships <b id="n-intern"></b></button>
+        <button class="seg-b" id="tab-fulltime" type="button" role="tab" aria-selected="false" data-kind="fulltime">Full-time <b id="n-fulltime"></b></button>
       </div>
 
       <div class="find">
@@ -230,8 +237,25 @@
 
   <div class="wrap board" id="results">
     <section class="feed-col" aria-label="Listings">
-      <div class="feed-head"><span id="result-count">loading</span></div>
+      <div class="feed-head"><span id="result-count">Scanning…</span></div>
       <ol class="feed" id="joblist"></ol>
+      <!-- THE FIRST FRAME. Until jobs.json lands the feed column is simply
+           empty, and an empty column reads as a dead site — which is the one
+           impression this board cannot afford. The mark is the site's own
+           radar, already sweeping, so the wait says "looking" rather than
+           "nothing here". app.js hides it the moment the data arrives. -->
+      <div class="scan" id="scanning" aria-live="polite">
+        <span class="scan-eye" aria-hidden="true">
+          <svg viewBox="0 0 44 44">
+            <circle class="s-ring" cx="22" cy="22" r="20"/>
+            <circle class="s-ring" cx="22" cy="22" r="13"/>
+            <circle class="s-ring" cx="22" cy="22" r="6"/>
+            <g class="s-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+            <circle class="s-dot" cx="22" cy="22" r="2.8"/>
+          </svg>
+        </span>
+        <p>Scanning for open roles…</p>
+      </div>
       <div class="void" id="empty" role="status" hidden>
         <span class="void-mark" aria-hidden="true"></span>
         <h3 id="empty-title">Radar clear</h3>

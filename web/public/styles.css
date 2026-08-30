@@ -724,6 +724,16 @@ a, button, summary, label, [role="button"], .row {
 /* ---------- empty ---------- */
 
 .void { padding: 66px 20px; text-align: center; border: 1px dashed var(--rule-2); border-radius: var(--r-2); }
+/* The board's first frame, before jobs.json lands. Reuses the masthead radar's
+   own classes, so the sweep animation and the reduced-motion handling are the
+   ones already defined for .scope rather than a second copy. */
+.scan { display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 20px; padding: 78px 20px 96px; text-align: center; }
+.scan-eye { display: block; width: 64px; height: 64px; }
+.scan-eye svg { width: 100%; height: 100%; display: block; }
+.scan p { margin: 0; font-family: var(--mono); font-size: var(--t-micro);
+          letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+
 .void-mark {
   display: block; width: 46px; height: 46px; margin: 0 auto 20px;
   border: 1px solid var(--rule-2); border-radius: 50%; position: relative;

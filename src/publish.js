@@ -694,6 +694,10 @@ export function pushToSite(newJobCount) {
     // A generated page missing from this list is written every run and pushed
     // never, which looks exactly like a page that renders wrong.
     'web/public/alerts.html',
+    /* The 404. Vercel serves its own raw error screen - complete with an
+       internal error id - for any unmatched path unless the deployment carries
+       one, and that page is where a site reads as maintained or generated. */
+    'web/public/404.html',
     'web/public/report.html',
     /* The IndexNow key file. It MUST be live at the domain root or every
        submission is refused 403 — and nothing on the site would look wrong.

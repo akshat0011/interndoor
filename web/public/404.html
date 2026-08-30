@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>Page not found — InternDoor</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .nf { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; }
+  .nf-code { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .16em;
+             text-transform: uppercase; color: var(--live); margin-bottom: 18px; }
+  .nf h1 { font-family: var(--display); font-weight: 900; letter-spacing: -.035em;
+           line-height: 1.02; font-size: clamp(38px, 7vw, 68px); margin: 0 0 18px; }
+  .nf p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 56ch; margin: 0 0 30px; }
+  .nf-acts { display: flex; flex-wrap: wrap; gap: 12px; }
+  /* The primary is the board, because a wrong URL on a job board almost always
+     means a posting that expired — job pages are deleted at 30 days by design,
+     so this is the ORDINARY way a link here goes stale, not an error. */
+  .nf-go { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
+           border-radius: 10px; background: var(--live); color: #0a0a0b;
+           font-weight: 700; font-size: 15px; text-decoration: none; }
+  .nf-alt { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
+            border-radius: 10px; border: 1px solid var(--rule-2); color: var(--ink);
+            font-weight: 600; font-size: 15px; text-decoration: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .nf-go:hover { filter: brightness(1.06); }
+    .nf-alt:hover { border-color: var(--live); color: var(--live); }
+  }
+</style>
+</head>
+<body class="board-page">
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="/" aria-label="InternDoor">
+      <span class="scope" aria-hidden="true">
+        <svg viewBox="0 0 44 44" aria-hidden="true">
+          <circle class="s-ring" cx="22" cy="22" r="20"/>
+          <circle class="s-ring" cx="22" cy="22" r="13"/>
+          <circle class="s-ring" cx="22" cy="22" r="6"/>
+          <g class="s-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+          <circle class="s-dot" cx="22" cy="22" r="2.8"/>
+        </svg>
+      </span>
+      <span class="word">INTERN<em>DOOR</em></span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap nf">
+  <p class="nf-code">Error 404</p>
+  <h1>This page isn&rsquo;t here.</h1>
+  <p>
+    If you followed a link to an internship, it has probably closed &mdash; postings
+    come down once they stop accepting applications. Everything currently open is
+    on the board.
+  </p>
+  <div class="nf-acts">
+    <a class="nf-go" href="/">Browse open internships <span aria-hidden="true">&rarr;</span></a>
+    <a class="nf-alt" href="/companies">Browse by company</a>
+  </div>
+</main>
+
+</body>
+</html>
