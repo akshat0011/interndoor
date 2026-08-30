@@ -45,22 +45,35 @@ console.log('\n== the function is wired the same way locally and live ==');
 /* A route the dev server does not know about can work live and 404 here, which
    is the trap web/serve.js exists to close — and the assets have to be shipped
    into the function bundle or it renders nothing but the fallback. */
+const fn = readFileSync(join(ROOT, 'web', 'api', 'og.js'), 'utf8');
 const serve = readFileSync(join(ROOT, 'web', 'serve.js'), 'utf8');
 check('serve.js answers /api/og', serve.includes("'/api/og': './api/og.js'"), true);
 
 const vercel = JSON.parse(readFileSync(join(ROOT, 'web', 'vercel.json'), 'utf8'));
-check('the fonts and the rasteriser are bundled with it',
-  vercel.functions?.['api/og.js']?.includeFiles, 'api/assets/**');
-for (const f of ['archivo-900.ttf', 'jetbrains-700.ttf', 'resvg.wasm']) {
-  check(`${f} is where includeFiles looks`,
-    existsSync(join(ROOT, 'web', 'api', 'assets', f)), true);
+/* includeFiles is a SINGLE glob string, and the function needs wasm that
+   satori and resvg open out of node_modules at runtime — harfbuzzjs/hb.wasm
+   and satori/yoga.wasm — which Vercel's file tracing cannot see. One glob
+   cannot confidently cover a node_modules wasm tree AND two font files, so the
+   fonts are inlined and the glob carries nothing but wasm. Production told us
+   this: the first deploy fell back with
+   "ENOENT ... /var/task/web/node_modules/harfbuzzjs/hb.wasm". */
+check('the glob carries the wasm', vercel.functions?.['api/og.js']?.includeFiles, '**/*.wasm');
+check('the rasteriser is where it looks',
+  existsSync(join(ROOT, 'web', 'api', 'assets', 'resvg.wasm')), true);
+for (const f of ['harfbuzzjs/hb.wasm', 'satori/yoga.wasm']) {
+  check(`node_modules/${f} is matched by it`,
+    existsSync(join(ROOT, 'web', 'node_modules', f)), true);
 }
+// The fonts are data, not files — nothing traces them and nothing can miss them.
+check('the fonts are inlined, not read from disk',
+  /import \{ FONTS \} from '\.\/_fonts\.js'/.test(fn), true);
+check('and the .ttf sources are kept so they can be regenerated',
+  existsSync(join(ROOT, 'web', 'api', 'assets', 'archivo-900.ttf')), true);
 /* @vercel/og is NOT used and must not come back: it is built for Next.js's
    bundler and fails in both runtimes here — `?module` wasm imports the plain
    Edge bundler cannot resolve, and a "type": "module" package shipping
    require("fs") on Node. It cost one failed deploy, and a failed build freezes
    the whole site because Vercel keeps serving the previous deployment. */
-const fn = readFileSync(join(ROOT, 'web', 'api', 'og.js'), 'utf8');
 // The name appears in the file's own note explaining why it is not used, so
 // this asserts on the IMPORT rather than the mention.
 check('the handler does not import @vercel/og', /from ['"]@vercel\/og['"]/.test(fn), false);

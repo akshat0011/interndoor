@@ -39,6 +39,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { buildCard, REGION_PREFIX } from './_card.js';
+import { FONTS } from './_fonts.js';
 
 /* The logo is fetched from the CANONICAL domain, not the request's own origin.
    Satori refuses a localhost image as an SSRF risk, so the request origin
@@ -68,10 +69,7 @@ function boot() {
     return {
       satori: satoriMod.default ?? satoriMod,
       Resvg: resvgMod.Resvg,
-      fonts: [
-        { name: 'Archivo', data: asset('archivo-900.ttf'), weight: 900, style: 'normal' },
-        { name: 'JetBrains Mono', data: asset('jetbrains-700.ttf'), weight: 700, style: 'normal' },
-      ],
+      fonts: FONTS,
     };
   })();
   return ready;
