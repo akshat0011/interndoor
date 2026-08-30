@@ -548,6 +548,15 @@ const B = boldSans;
  * under LinkedIn's 3,000-character limit can drop whole sections from the least
  * important end, rather than slicing the string and leaving half a URL.
  */
+/**
+ * Above this the applicant count is left out of the post entirely.
+ *
+ * 25 is the board's own threshold for the same field, and the two must not
+ * drift: a card that stays silent about a crowded queue while the post about
+ * it announces one is the site arguing with itself.
+ */
+const APPLICANTS_SHOW_MAX = 25;
+
 export function composePost(facts, ai) {
   const role = facts.title;
   const head = `🚨 ${B(facts.company)} ${B('is Hiring')} ${B(role)}! 💻🔥`;
@@ -572,7 +581,18 @@ export function composePost(facts, ai) {
   // was posted. They are also the only facts that say "you are ahead of the
   // queue", which is the reason to click today rather than bookmark it.
   if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${facts.postedLabel}`);
-  if (facts.applicants != null) {
+  /* ONLY WHILE THE QUEUE IS SHORT, which is the same call the board already
+     makes and for the same reason. This number exists to prove the reader is
+     early. On a crowded role it proves the opposite — "Applicants: 100 when
+     this was listed", printed directly above an apply link, is an argument
+     against clicking it, and it was going out on every such post.
+     Withholding it is not hiding anything: the posting is one click away and
+     shows its own count, and the "Posted" timestamp still carries freshness.
+     STRICTLY under, so LinkedIn's own "Be among the first 25 applicants"
+     prompt could never be read as a real count of 25 — no row in the store
+     carries that phrasing today, so this costs a character rather than a
+     branch. */
+  if (facts.applicants != null && facts.applicants < APPLICANTS_SHOW_MAX) {
     factLines.push(`👥 ${B('Applicants')}: ${facts.applicants} when this was listed`);
   }
 

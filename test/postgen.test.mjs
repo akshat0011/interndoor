@@ -108,6 +108,32 @@ const paid = jobFacts(row({ stipend_min: 50000, stipend_max: 50000, stipend_curr
 ok('formatted from the columns', paid.stipend === '₹50,000 / month');
 ok('absent when nothing was captured', jobFacts(row(), CFG).stipend === null);
 
+console.log('\n== the applicant count is only stated while the queue is short ==');
+/* THE PROBLEM. This number exists to prove the reader is EARLY. On a crowded
+   role it proves the opposite, and it was being printed directly above the
+   apply link on every post — "Applicants: 100 when this was listed" is an
+   argument against clicking. The board already withholds it above 25; the post
+   did not, so the site was arguing with itself about the same field. */
+const AI = { hook: 'A backend role on payments.', tip: 'Lead with Python.', hashtags: [] };
+const shownAt = (n) => plainText(buildPost(row({ applicants: `${n} applicants` }), CFG, AI).text)
+  .includes(`Applicants: ${n} when this was listed`);
+
+ok('a short queue is stated — it is the reason to hurry', shownAt(3));
+ok('and zero is stated, not treated as missing', shownAt(0));
+ok('a crowded queue is left out entirely', !shownAt(100));
+ok('and so is one just over the line', !shownAt(40));
+// Strictly under, so LinkedIn's own "Be among the first 25 applicants" prompt
+// could never be read as a real count of 25.
+ok('25 itself is not stated', !shownAt(25));
+ok('24 is', shownAt(24));
+
+/* Withholding it must not take the freshness signal with it: "Posted" is what
+   still tells a reader the role is new when the count is gone. */
+const crowded = plainText(buildPost(
+  row({ applicants: '100 applicants', posted_at: Date.now() - 3600_000 }), CFG, AI).text);
+ok('the posted line survives a withheld count', /Posted:/.test(crowded));
+ok('and no applicant line is left behind', !/Applicants:/.test(crowded));
+
 console.log('\n== the model is not trusted with facts ==');
 const facts = jobFacts(row(), CFG);
 

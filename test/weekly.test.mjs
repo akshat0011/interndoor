@@ -1,5 +1,5 @@
-import { weeklyRoundup, byCompany, applyComments, weekKey, roundupDue, weekRoles } from '../src/weekly.js';
-import { plainText, MAX_POST_CHARS, MAX_COMMENT_CHARS } from '../src/postgen.js';
+import { weeklyRoundup, byCompany, weekKey, roundupDue, weekRoles } from '../src/weekly.js';
+import { plainText, MAX_POST_CHARS } from '../src/postgen.js';
 
 let pass = 0, fail = 0;
 function ok(label, cond, extra = '') {
@@ -69,44 +69,82 @@ const many = weeklyRoundup(fakeStore(
 ok('four cities collapse to a count', /Wide — 4 cities/.test(plainText(many.post)));
 
 console.log('\n== the post ==');
+/* THE FORMAT CHANGED ON 30 AUG and these assertions changed with it. It used to
+   name every employer of the week and carry ONE link, to the board, with apply
+   links pushed into follow-up comments nobody opens. It is now a SHORTLIST: a
+   few roles with their own apply links, and a count pointing at the board.
+
+   The old assertions pinned the old product decision — "exactly one link",
+   "leads with the employer count", the comment link-dump. They were not wrong;
+   the decision moved. What is kept is the invariant underneath, which has not:
+   the post fits, and what did not fit is said out loud. */
 const real = weeklyRoundup(fakeStore(
   Array.from({ length: 120 }, (_, i) => row({ company: `Company ${i}`, title: `Intern ${i}` })),
 ), CFG);
 const flat = plainText(real.post);
 ok('under the LinkedIn limit', real.post.length <= MAX_POST_CHARS, `${real.post.length}`);
-ok('leads with the employer count', flat.startsWith('🗓️ 120 companies'));
-// A roundup that silently drops half the week reads as though the week were
-// half as good — the count that did not fit has to be in the post itself.
-ok('says how many did not fit', /…and \d+ more companies on the board\./.test(flat));
+// The ROLE count leads, not the employer count: it is the bigger number and the
+// first line is the only one LinkedIn shows before "see more".
+ok('leads with the role count', flat.startsWith('🗓️ 120 engineering internships'));
+// A roundup that silently drops ninety roles reads as though the week were a
+// tenth as good — the count that did not fit has to be in the post itself.
+ok('says how many did not fit', /…and \d+ more roles from \d+ more companies on the board/.test(flat));
 ok('the numbers add up', real.stats.companiesListed + real.stats.companiesDropped === real.stats.companies);
+ok('and so do the roles', real.stats.rolesFeatured + real.stats.rolesRemaining === real.stats.roles);
 
-const links = (real.post.match(/https?:\/\//g) || []).length;
-ok('exactly one link in the post', links === 1, `${links} links`);
-ok('and it is the board', real.post.includes('https://interndoor.com/?utm_'));
+/* EVERY FEATURED ROLE CARRIES ITS OWN APPLY LINK — the whole point of the
+   change. Six of them plus the board link. */
+const urls = real.post.match(/https?:\/\/\S+/g) || [];
+ok('every featured role has an apply link',
+  urls.filter((u) => u.startsWith('https://interndoor.com/jobs/')).length === real.stats.rolesFeatured,
+  urls.join(' '));
+ok('plus the board link', real.post.includes('https://interndoor.com/?utm_'));
 ok('utm names the weekly campaign', real.post.includes('utm_campaign=weekly'));
+ok('the featured links are tagged as such', real.post.includes('utm_content=featured'));
 ok('the channel is named but not linked', flat.includes('@interndoor') && !real.post.includes('t.me'));
+// An apply URL sliced in half is a dead link nobody can repair, and the post is
+// capped as a last resort. Every link that appears has to be a whole one.
+ok('no link is cut in half', urls.every((u) => /^https:\/\/interndoor\.com\/(jobs\/)?\S*utm_content=(featured|roundup)$/.test(u)));
+
+console.log('\n== a long title does not become a paragraph ==');
+/* One real posting names fifteen cities in its title and runs 172 characters,
+   which turns a three-line block into a wall. */
+const longT = weeklyRoundup(fakeStore([row({ company: 'Wide', title: 'AI And Robotics Trainer Internship in Jhajjar, Ambala, Faridabad, Palwal, Nuh, Bhiwani, Kurukshetra, Sonipat, Jind, Fatehabad, Sirsa, Gurgaon, Hisar' })]), CFG);
+const titleLine = plainText(longT.post).split('\n').find((l) => l.includes('AI And Robotics'));
+ok('the title is trimmed', titleLine.trim().length <= 80, `${titleLine.trim().length}`);
+/* The real invariant is not "does not end in a letter" — it ends in Faridabad —
+   but that no WORD was cut through: what survives is a prefix of the original
+   and the original carries on with a space. */
+const LONG = 'AI And Robotics Trainer Internship in Jhajjar, Ambala, Faridabad, Palwal, Nuh, Bhiwani, Kurukshetra, Sonipat, Jind, Fatehabad, Sirsa, Gurgaon, Hisar';
+const shownTitle = titleLine.trim().replace(/…$/, '').trim();
+/* clampWords also drops the trailing comma, so "ends on a space" is too strict.
+   The invariant that matters is that no WORD was cut through: what survives is
+   a prefix, and the original does not continue with a letter or digit. */
+ok('and no word is cut through',
+  LONG.startsWith(shownTitle)
+  && !/[A-Za-z0-9]/.test(LONG[shownTitle.length] ?? ' '),
+  shownTitle);
+
+console.log('\n== only roles the board actually publishes ==');
+/* THE BUG THIS PINS. The store holds far more than publish does — an employer
+   since dropped from the watchlist, the losing half of a cross-collector
+   duplicate, anything past the retention window. The first render of this
+   format featured STEMpedia at number one, two days after it was removed from
+   the watchlist as spam, and every such link is a 404 sent to every reader.
+   Same failure that put 40% of a week's Telegram links on dead pages. */
+const mixedRows = [row({ company: 'Live', job_id: 'L1' }), row({ company: 'Dropped', job_id: 'D1' })];
+const filtered = weeklyRoundup(fakeStore(mixedRows), CFG, { publishedIds: new Set(['L1']) });
+ok('an unpublished role is excluded', filtered.stats.roles === 1);
+ok('and is not linked to', !filtered.post.includes('Dropped'));
+// No set passed means no filtering, so a missing jobs.json cannot empty the week.
+ok('no filter means no filtering', weeklyRoundup(fakeStore(mixedRows), CFG).stats.roles === 2);
 
 console.log('\n== the comments ==');
 ok('the first comment carries the board and the channel',
   real.comments[0].includes('interndoor.com') && real.comments[0].includes('t.me/interndoor'));
-ok('every comment fits', real.comments.every((c) => c.length <= MAX_COMMENT_CHARS),
-  real.comments.map((c) => c.length).join(','));
-// Splitting on characters rather than on whole roles would cut a URL in half,
-// and half a URL in a comment is a dead link nobody can repair. Every link that
-// appears has to be a whole one.
-const commentUrls = real.comments.slice(1).join('\n').match(/https:\/\/\S+/g) || [];
-ok('there are apply links to check', commentUrls.length > 5);
-ok('every one is intact', commentUrls.every((u) => u.startsWith('https://interndoor.com/jobs/') && u.includes('utm_campaign=weekly')));
-// The post is sliced to the limit as a last resort; the reserved tail budget is
-// what keeps that slice away from the one link it carries.
-ok('the post\'s own link survives the cap', /https:\/\/interndoor\.com\/\?utm_source=linkedin&utm_medium=social&utm_campaign=weekly&utm_content=roundup(\s|$)/.test(real.post));
-ok('comments are capped', real.comments.length <= 1 + 4);
-ok('coverage is reported honestly',
-  real.stats.linksCovered + real.stats.linksOmitted === real.stats.roles);
-
-const capped = applyComments(Array.from({ length: 200 }, (_, i) => row({ company: `C${i}` })), CFG, { max: 2 });
-ok('max is respected', capped.comments.length === 2);
-ok('and what it dropped is reported', capped.omitted === 200 - capped.covered && capped.omitted > 0);
+// The link-dump comments are gone with the format: the body carries the links
+// that matter and the board carries the rest.
+ok('there is exactly one comment', real.comments.length === 1, `${real.comments.length}`);
 
 console.log('\n== an empty week ==');
 const empty = weeklyRoundup(fakeStore([]), CFG);
