@@ -180,10 +180,31 @@ export function monthLabel(ms, region = DEFAULT_REGION) {
  */
 const DEFAULT_VALID_DAYS = 30;
 
+/* ROUNDED TO THE END OF ITS DAY, AND UP RATHER THAN DOWN.
+ *
+ * An ATS row is anchored to `lastSeenAt`, which the poller refreshes every 30
+ * minutes, so at millisecond precision this date moved on EVERY publish — and
+ * with it the JSON-LD of every ATS job page. Measured on a real publish commit:
+ * 206 of 217 changed job pages differed by nothing except this timestamp and
+ * the "checked" line below, 48 times a day, into a public repo and out to
+ * IndexNow as ~13,000 daily announcements of pages that had not changed.
+ *
+ * CEIL, NEVER FLOOR. Flooring would pull the date up to 24h EARLIER than the
+ * moment the page actually stops being served, which is the 27 Aug bug exactly:
+ * a served page whose validThrough has passed is what earns a structured-data
+ * manual action across the whole domain. Rounding up can only ever extend the
+ * claim, and a page that 404s before its stated expiry costs nothing — Google
+ * penalises serving past validThrough, not removing a page early. */
+function endOfUtcDay(ms) {
+  const d = new Date(ms);
+  d.setUTCHours(23, 59, 59, 0);
+  return d.toISOString();
+}
+
 function validThrough(job, validDays = DEFAULT_VALID_DAYS) {
   const firstSeenBasis = (job.postedAt ?? job.firstSeenAt ?? Date.now()) + validDays * 86_400_000;
   const stillListed = job.lastSeenAt ? job.lastSeenAt + validDays * 86_400_000 : 0;
-  return new Date(Math.max(firstSeenBasis, stillListed)).toISOString();
+  return endOfUtcDay(Math.max(firstSeenBasis, stillListed));
 }
 
 /** Enough substance to deserve a place in the index. */
@@ -551,24 +572,27 @@ function openState(job) {
  * confirmed right now — and they are disproportionately the ones whose posted
  * date looks worst.
  */
-function stillListed(job, company) {
+function stillListed(job, company, region = DEFAULT_REGION) {
   const st = openState(job);
+  /* THE DATE IS ABSOLUTE AND DAY-GRANULAR, and carries no data-ago.
+     This shipped a millisecond `datetime` AND a baked relative label
+     ("checked 3 minutes ago"), so it rewrote itself on every 30-minute
+     publish — the one thing the rest of this file is careful never to do,
+     and half of the 206-page-per-run churn measured on 30 Aug.
+     Unlike a posted date, which is immutable and so can be shipped exact and
+     hydrated by page.js, "last checked" moves on every poll: there is no
+     precision that is also stable. The day is the honest stable unit. It is
+     deliberately NOT given a data-ago either — page.js would then render a
+     relative label counted from midnight ("checked 23 hours ago" on a role
+     confirmed four minutes earlier), which understates the very freshness
+     this line exists to prove. The hub does the same, for the same reason. */
   const detail = st.tier === 'verified'
     ? `Confirmed on ${esc(company)}&rsquo;s own careers page &middot; checked `
-      + `<time datetime="${new Date(st.at).toISOString()}" data-ago="${st.at}">${esc(relLabel(st.at))}</time>`
+      + `<time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time>`
     : 'We list a role only while we believe it is still open. Confirm on the posting before you apply.';
   return `<p class="jp-open is-${st.tier}">`
     + `<span class="jp-open-b"><i aria-hidden="true"></i>${st.label}</span>`
     + `<span class="jp-open-d">${detail}</span></p>`;
-}
-
-/** "12 minutes ago". page.js rewrites every data-ago on load, so this is only
-    what a crawler and a no-JS reader see. */
-function relLabel(ms) {
-  const mins = Math.max(1, Math.round((Date.now() - ms) / 60000));
-  if (mins < 60) return `${mins} minute${mins === 1 ? '' : 's'} ago`;
-  const h = Math.round(mins / 60);
-  return `${h} hour${h === 1 ? '' : 's'} ago`;
 }
 
 /**
@@ -1225,7 +1249,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           ${job.roleLabel ? `<p class="jp-focus">${esc(job.roleLabel)}</p>` : ''}
 
           <div class="pills">${statusPills(job)}</div>
-          ${stillListed(job, job.company)}
+          ${stillListed(job, job.company, region)}
         </header>
 
         ${standouts(job, locations)}
@@ -1633,7 +1657,10 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1 } = {}) {
      board's own rule rather than a check we did, and it says so. */
   const st = openState(job);
   const vfy = st.tier === 'verified'
-    ? `<span class="vfy is-verified" data-ago="${verified}"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
+    /* No data-ago: `verified` is lastSeenAt, which moves every poll, so shipping
+       it exact rewrote every hub on every publish. The <time> beside it was
+       already day-granular and stable — this attribute was the whole churn. */
+    ? `<span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
     : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
 
   return `<a class="role-card" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
@@ -1679,7 +1706,7 @@ function answerBar(live, prof, region) {
     places.length ? cell('Where', esc(places.slice(0, 3).join(' · ')),
       modes.length === 1 ? esc(modes[0].toLowerCase()) : '') : '',
     verified ? cell('Last verified',
-      `<span data-ago="${verified}"><time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`,
+      `<span><time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`,
       'on the employer’s own careers page', ' is-live') : '',
   ].filter(Boolean);
 

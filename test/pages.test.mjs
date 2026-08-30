@@ -610,16 +610,33 @@ const postedMs = Date.UTC(2026, 7, 1);
 const vtJob = { ...linkedin, postedAt: postedMs, firstSeenAt: postedMs, lastSeenAt: postedMs,
   location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] };
 
+/* The date is rounded to the END of its day (30 Aug) so an ATS row, whose
+   lastSeenAt is refreshed every 30 minutes, stops rewriting its own JSON-LD on
+   every publish. The DECISION this block pins is unchanged and is the one that
+   matters — the window equals the retention window — so it is asserted on the
+   DAY the page expires rather than the millisecond, plus the direction of the
+   rounding, which is the half that carries the manual-action risk. */
+const dayOf = (iso) => String(iso).slice(0, 10);
+
 const vtDefault = vtOf(renderJobPage(vtJob));
-check('the default window is the retention window', vtDefault,
-  new Date(postedMs + shipDays * DAY).toISOString());
+check('the default window is the retention window',
+  dayOf(vtDefault), dayOf(new Date(postedMs + shipDays * DAY).toISOString()));
 check('and that is 30 days, not the old 14',
-  Math.round((Date.parse(vtDefault) - postedMs) / DAY), 30);
+  dayOf(vtDefault), dayOf(new Date(postedMs + 30 * DAY).toISOString()));
+
+/* CEIL, NEVER FLOOR. Flooring would claim the posting expired up to 24h before
+   the page actually stops being served, which is precisely the 27 Aug bug: a
+   served page whose validThrough has passed is what earns a structured-data
+   manual action across the whole domain. */
+check('it never expires before the page stops being served',
+  Date.parse(vtDefault) >= postedMs + shipDays * DAY, true);
+check('and not more than a day after it',
+  Date.parse(vtDefault) - (postedMs + shipDays * DAY) < DAY, true);
 
 // The caller decides, so a config change reaches the markup with no code edit.
 check('an explicit window is honoured',
-  vtOf(renderJobPage(vtJob, [], { validDays: 45 })),
-  new Date(postedMs + 45 * DAY).toISOString());
+  dayOf(vtOf(renderJobPage(vtJob, [], { validDays: 45 }))),
+  dayOf(new Date(postedMs + 45 * DAY).toISOString()));
 
 /* An ATS row is anchored to lastSeenAt so its date moves with the board. A row
    still being polled must never advertise a date in the past. */
@@ -627,6 +644,57 @@ const seen = Date.now();
 const atsLive = vtOf(renderJobPage({ ...ats, postedAt: postedMs, firstSeenAt: postedMs,
   lastSeenAt: seen, location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] }));
 check('a still-listed ATS row expires in the future', Date.parse(atsLive) > Date.now(), true);
+
+console.log('\n== a 30-minute ATS re-poll does not rewrite the page ==');
+/* THE BUG THIS PINS, found 30 Aug. An ATS row is anchored to `lastSeenAt`,
+   which the poller refreshes every 30 minutes. Three fields shipped that value
+   at millisecond precision — `validThrough`, the job page's "checked <time>"
+   (which also baked a RELATIVE label, "checked 3 minutes ago"), and a data-ago
+   on both of the hub's verified elements — so a publish that changed nothing
+   rewrote them anyway.
+
+   Measured on a real publish commit: 206 of 217 changed job pages differed by
+   NOTHING except those timestamps. At 48 publishes a day that is ~9,900 
+   pointless page rewrites, 48 noise commits into a public repo, and ~13,000
+   daily IndexNow announcements to Bing of pages that had not changed — which
+   is the abuse that protocol asks you not to commit, and the opposite of what
+   `writeIfChanged` returning a changed-set was built for.
+
+   Nothing about the content changed between these two renders, so nothing
+   about the bytes may either. This is the assertion the whole change exists
+   to make true, and the one that will catch the next field that forgets. */
+const pollT1 = Date.now();
+/* Both reads must land in the same UTC day (the date legitimately rolls over
+   once a day) and inside verifiedAt's 6h window, or this goes flaky at
+   midnight. Clamping the earlier read to the start of today does both. */
+const pollT0 = Math.max(pollT1 - 30 * 60_000,
+  Date.parse(`${new Date(pollT1).toISOString().slice(0, 10)}T00:00:00.000Z`));
+const polled = (seen) => ({ ...ats, postedAt: postedMs, firstSeenAt: postedMs, lastSeenAt: seen,
+  location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'], summary: 's' });
+
+check('the job page is byte-identical across a re-poll',
+  renderJobPage(polled(pollT0)) === renderJobPage(polled(pollT1)), true);
+check('and so is the company hub',
+  renderCompanyPage('AlphaGrep Securities', [polled(pollT0)], [], '')
+  === renderCompanyPage('AlphaGrep Securities', [polled(pollT1)], [], ''), true);
+
+/* The row is still genuinely confirmed — this must not pass by accident
+   because the verified tier stopped rendering at all. */
+check('and it still says it was confirmed',
+  renderJobPage(polled(pollT1)).includes('jp-open is-verified'), true);
+
+/* The three fields, pinned individually so a failure says WHICH one regressed
+   rather than only that two blobs differ. */
+const polledHtml = renderJobPage(polled(pollT1));
+check('validThrough is rounded to the end of its day',
+  /"validThrough":"[\d-]{10}T23:59:59\.000Z"/.test(polledHtml), true);
+check('the checked date is a day, not a millisecond timestamp',
+  /checked <time datetime="[\d-]{10}">/.test(polledHtml), true);
+check('and carries no data-ago for page.js to rewrite',
+  /checked <time[^>]*data-ago/.test(polledHtml), false);
+check('the hub verified chip carries no data-ago',
+  /vfy is-verified" data-ago/.test(
+    renderCompanyPage('AlphaGrep Securities', [polled(pollT1)], [], '')), false);
 
 console.log('\n== the email signup is on every generated page ==');
 /* It is on the GENERATED pages, not only the homepage, because that is where
