@@ -67,6 +67,9 @@
      One curve family. --snap is a strong ease-out for anything entering or
      responding; --glide is for things moving across the screen. */
   --snap:    cubic-bezier(.2,.9,.25,1);
+  /* Movement across the screen, not an entrance: the intro radar docking
+     onto the masthead. Entrances keep --snap. */
+  --morph:   cubic-bezier(.77,0,.175,1);
   --glide:   cubic-bezier(.77,0,.175,1);
   --d-press: .14s;   /* button press feedback: 100-160ms */
   --d-ui:    .2s;    /* dropdowns, chips */
@@ -374,6 +377,132 @@ a, button, summary, label, [role="button"], .row {
 @media (prefers-reduced-motion: reduce) {
   .rg-menu { animation: none; }
   .rg-caret { transition: none; }
+}
+
+/* ======================= page-load intro =======================
+   A radar powers on, sweeps ONCE, then docks onto the masthead mark while the
+   site grows in underneath. ~1.9s end to end, once per session.
+
+   IT IS NOT AN ADDED WAIT. The sweep runs while jobs.json is in flight, so on
+   a cold visit it overlaps a wait that already existed — which is also why it
+   replaces the scanning state rather than queueing behind it.
+
+   Driven entirely by CSS animations rather than rAF: they run off the main
+   thread, and the main thread is busy parsing and rendering the board for
+   exactly the window this plays in. JS only measures where the mark sits,
+   handles the skip, and clears up.
+
+   EVERYTHING IS display:none UNTIL data-boot IS SET, so no-JS, storage
+   failures and returning readers all get the plain site. */
+.boot { display: none; }
+
+html[data-boot] .boot {
+  display: grid; place-items: center;
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--bg);
+  animation: boot-veil 460ms var(--snap) 1510ms both;
+}
+
+html[data-boot] .boot-eye {
+  display: block; width: min(38vmin, 250px); aspect-ratio: 1;
+  position: fixed; left: 50%; top: 50%;
+  /* ONE animation for the whole arc, not two stacked ones. Two animations that
+     both touch `transform` do not compose — the later one in the list wins for
+     the entire time it is filling, so a separate dock animation with a delay
+     silently cancelled the power-on scale from frame zero. Per-keyframe
+     timing functions give each phase its own curve inside a single timeline.
+     0 -> 17.3%  power on      (--snap, a strong ease-out: it is an entrance)
+     -> 73.6%    hold          (linear; nothing moves, the sweep has the stage)
+     -> 100%     dock          (--morph, ease-in-out: movement across screen)
+     --dx/--dy/--ds are measured by app.js from the real masthead mark; the
+     fallbacks simply shrink it away, so a failed measurement still ends
+     somewhere sensible rather than leaving it stranded mid-screen. */
+  animation: boot-eye 1970ms both;
+}
+html[data-boot] .boot-eye svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+.i-ring  { fill: none; stroke: var(--live); stroke-width: 1.4; opacity: 0;
+           animation: boot-ring 420ms var(--snap) both; }
+.i-ring:nth-of-type(1) { animation-delay: 40ms; }
+.i-ring:nth-of-type(2) { animation-delay: 110ms; }
+.i-ring:nth-of-type(3) { animation-delay: 180ms; }
+.i-ring:nth-of-type(4) { animation-delay: 250ms; }
+.i-cross { stroke: var(--live); stroke-width: 1.2; opacity: 0;
+           animation: boot-cross 420ms var(--snap) 200ms both; }
+.i-dot   { fill: var(--live); opacity: 0; animation: boot-cross 300ms var(--snap) 300ms both; }
+
+/* EXACTLY ONE TURN, and it is the one place linear is right: a radar sweeps at
+   a constant rate, and an eased sweep reads as a machine slowing down.
+   300ms -> 1450ms, so it finishes exactly as the dock begins. */
+.i-sweep { transform-origin: 120px 120px;
+           animation: boot-spin 1150ms linear 300ms both; }
+
+/* The blips land as the sweep passes them, which is what makes this read as a
+   radar finding something rather than a spinner.
+   NOT :nth-of-type — every element here is a <circle>, so nth-of-type counts
+   the rings and the centre dot too and the delays matched nothing. */
+.i-blip { fill: var(--live); opacity: 0; animation: boot-blip 700ms var(--snap) both; }
+.i-blip-a { animation-delay: 640ms; }
+.i-blip-b { animation-delay: 1010ms; }
+
+/* The site grows in under the docking radar.
+   OPACITY ONLY ON THE LAYOUT CONTAINERS. A transform on <main> makes it a
+   containing block, and the positioned descendants inside reflow against it:
+   measured mid-animation, .feed went from 647px in its column to 1278px full
+   width and the cards overlapped down the middle of the screen. It settled
+   correctly the moment the transform was removed, which is exactly what makes
+   that class of bug invisible in a still.
+   .bar is sticky and .rail is sticky, so both are left untransformed too. The
+   "rising" is carried by .lede alone — an ordinary block with nothing
+   positioned inside it — which is enough to read as the page arriving. */
+html[data-boot] .bar   { animation: boot-fade 420ms var(--snap) 1490ms both; }
+html[data-boot] main   { animation: boot-fade 460ms var(--snap) 1530ms both; }
+html[data-boot] .lede  { animation: boot-rise 500ms var(--snap) 1570ms both; }
+
+/* The masthead mark stays hidden until the intro radar has arrived on top of
+   it, or the two are briefly on screen together and the morph reads as a
+   duplicate rather than as one object moving. */
+/* THE HANDOFF. The real mark reaches full opacity at 1970ms, which is exactly
+   when the docked radar is removed — the two are the same shape at the same
+   size in the same place by then, so the swap is invisible. Reveal it any
+   later and there is a gap with no logo; any earlier and both are on screen
+   and the morph reads as a duplicate. */
+html[data-boot] .bar .scope { opacity: 0; animation: boot-cross 160ms var(--snap) 1810ms both; }
+
+@keyframes boot-eye {
+  0%     { opacity: 0; transform: translate(-50%, -50%) scale(.92);
+           animation-timing-function: var(--snap); }
+  17.3%  { opacity: 1; transform: translate(-50%, -50%) scale(1);
+           animation-timing-function: linear; }
+  73.6%  { opacity: 1; transform: translate(-50%, -50%) scale(1);
+           animation-timing-function: var(--morph); }
+  100%   { opacity: 1;
+           transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, -34vh)))
+                      scale(var(--ds, .12)); }
+}
+@keyframes boot-ring  { from { opacity: 0; } to { opacity: .3; } }
+@keyframes boot-cross { from { opacity: 0; } to { opacity: 1; } }
+@keyframes boot-blip  { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: .5; } }
+@keyframes boot-spin  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes boot-veil  { to { opacity: 0; visibility: hidden; } }
+@keyframes boot-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes boot-rise {
+  from { opacity: 0; transform: translateY(10px) scale(.994); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Reduced motion: the radar still appears and the site still arrives, but
+   nothing sweeps, travels or scales. Fewer and gentler, not zero. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-boot] .boot { animation: boot-veil 200ms linear 420ms both; }
+  html[data-boot] .boot-eye { animation: boot-cross 200ms linear both; transform: translate(-50%, -50%); }
+  .i-ring { animation: boot-ring 200ms linear both; animation-delay: 0ms; }
+  .i-cross, .i-dot, .i-blip { animation: boot-cross 200ms linear both; animation-delay: 0ms; }
+  .i-sweep { animation: none; }
+  html[data-boot] .bar,
+  html[data-boot] main,
+  html[data-boot] .lede { animation: boot-fade 240ms linear 420ms both; }
+  html[data-boot] .bar .scope { animation: boot-cross 200ms linear 560ms both; }
 }
 
 /* ---------- lede ---------- */

@@ -181,6 +181,31 @@ for (const [name, html] of [['hub', renderCompanyPage('Adobe', [aRole], [])],
   check(`csp allows every inline script on the ${name}`, allowed, true);
 }
 
+/* THE BOARD'S OWN INLINE SCRIPTS WERE NEVER CHECKED. The block above covers
+   the GENERATED pages, which is where the 21 Aug breakage happened — but
+   web/public/index.html carries inline scripts too (the analytics stub, and
+   the pre-paint gate that decides whether the intro plays), and nothing
+   verified their hashes. A blocked script there is silent in exactly the same
+   way: it works on every local server, because none of them send the header. */
+const boardHtml = readFileSync(join(ROOT, 'web', 'public', 'index.html'), 'utf8');
+const boardScripts = [...boardHtml.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+check('the board carries inline scripts to check', boardScripts.length >= 1, true);
+for (const body of boardScripts) {
+  const hash = `sha256-${createHash('sha256').update(body, 'utf8').digest('base64')}`;
+  check(`csp allows the board's ${body.slice(0, 26).replace(/\s+/g, ' ')}\u2026`, csp.includes(hash), true);
+}
+
+/* THE INTRO OVERLAY MUST NOT SHARE A CLASS WITH THE FEED. app.js puts `intro`
+   on the job list for its row entrance (.feed.intro .row), so an overlay class
+   of `intro` matched the list as well — position:fixed and display:grid landed
+   on it, and the cards laid out full-width down the middle of the screen. It
+   settled correctly the moment the overlay finished, which is what made it
+   invisible in a still and obvious only in a measurement. */
+const boardCss = readFileSync(join(ROOT, 'web', 'public', 'styles.css'), 'utf8');
+check('the overlay does not reuse the feed\'s class',
+  /\[data-boot\][^{]*\.intro[\s{]/.test(boardCss), false);
+check('and the feed keeps its own', boardCss.includes('.feed.intro .row'), true);
+
 //==============================================================================
 // Company hubs are PERMANENT.
 //

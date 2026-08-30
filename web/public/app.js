@@ -1332,8 +1332,82 @@ function syncStickyOffset() {
 
 /* ---------------- boot ---------------- */
 
+/**
+ * The page-load intro: measure where it lands, let it play, clear up.
+ *
+ * The MOTION is entirely in CSS — it runs off the main thread, and the main
+ * thread is busy parsing and rendering the board for exactly the window this
+ * plays in. All this does is the three things CSS cannot: measure the real
+ * masthead mark so the radar docks onto it rather than at a guessed point,
+ * honour a skip, and take the overlay out of the document afterwards.
+ *
+ * IT NEVER TRAPS ANYONE. A safety timer ends it whatever happens, so a browser
+ * that never fires animationend, or a measurement that throws, still leaves a
+ * working page — the failure mode of an intro must be "no intro".
+ */
+function runIntro() {
+  const root = document.documentElement;
+  if (!root.hasAttribute('data-boot')) return;
+
+  const overlay = $('boot');
+  const eye = $('boot-eye');
+  const mark = document.querySelector('.bar .brand .scope');
+  if (!overlay || !eye) { root.removeAttribute('data-boot'); return; }
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    root.removeAttribute('data-boot');
+    overlay.remove();
+    // Once a session, not once a page view: a reader moving between the board
+    // and a job page should not sit through it again.
+    try { sessionStorage.setItem('id-intro', '1'); } catch { /* private mode */ }
+  };
+
+  /* WHERE IT DOCKS. Measured from the real mark rather than hardcoded, because
+     the masthead moves: the brand shrinks below 480px, and the bar's height
+     changes with the rail. Without a measurement the keyframe falls back to
+     shrinking away off the top, which is survivable but not a morph. */
+  try {
+    if (mark) {
+      const to = mark.getBoundingClientRect();
+      const from = eye.getBoundingClientRect();
+      if (to.width && from.width) {
+        eye.style.setProperty('--dx', `${(to.left + to.width / 2) - (from.left + from.width / 2)}px`);
+        eye.style.setProperty('--dy', `${(to.top + to.height / 2) - (from.top + from.height / 2)}px`);
+        eye.style.setProperty('--ds', String(to.width / from.width));
+      }
+    }
+  } catch { /* fall back to the keyframe's own defaults */ }
+
+  /* Cleared when the VEIL finishes, and matched on the target rather than the
+     animation name. Both matter:
+     - the veil is timed to end with the radar's landing (1970ms), not before
+       it. Ending sooner took the radar off screen at 54px wide, twenty short
+       of the mark it was docking onto — a pop rather than a landing.
+     - reduced motion swaps every animation for a plain fade, so the names all
+       change. Keying on the name meant the listener never fired there and the
+       overlay sat until the safety timer, which is a second and a half of
+       dead screen for exactly the readers least able to tolerate it. */
+  overlay.addEventListener('animationend', (e) => {
+    if (e.target === overlay) finish();
+  });
+
+  /* SKIPPABLE, and on the gestures that mean "I am already here" rather than a
+     dedicated button nobody would look for. */
+  const skip = () => { if (!done) { overlay.style.animation = 'none'; finish(); } };
+  for (const ev of ['pointerdown', 'keydown', 'wheel', 'touchstart']) {
+    addEventListener(ev, skip, { once: true, passive: true });
+  }
+
+  // Belt and braces: longer than the sequence, shorter than anyone would wait.
+  setTimeout(finish, 3200);
+}
+
 async function init() {
   initTheme();
+  runIntro();
   wireControls();
   wireTailor();
 

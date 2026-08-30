@@ -69,8 +69,15 @@ check('script-src has no bare wildcard', (directives['script-src'] || []).includ
 check("default-src is still 'self'", directives['default-src'], ["'self'"]);
 check("frame-ancestors is still 'none'", directives['frame-ancestors'], ["'none'"]);
 check("object-src is still 'none'", directives['object-src'], ["'none'"]);
-check('both original inline hashes survive', (directives['script-src'] || [])
-  .filter((v) => v.startsWith("'sha256-")).length, 2);
+/* WHAT THIS PINS is that widening script-src for the tag did not DROP any
+   inline-script hash — not that there are exactly N of them. It was written as
+   a count of 2, which then failed the first time a legitimate third inline
+   script was added (the pre-paint gate for the page-load intro). The exact set
+   is verified where it can be verified properly: test/pages.test.mjs hashes
+   the inline scripts that actually render, on the board and on the generated
+   pages, and checks each against this same file. */
+check('the inline-script hashes survive', (directives['script-src'] || [])
+  .filter((v) => v.startsWith("'sha256-")).length >= 2, true);
 
 console.log('\n== every page loads the tag ==');
 /* index.html is the TEMPLATE for all three boards, so one reference covers
