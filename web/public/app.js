@@ -1420,13 +1420,17 @@ function runIntro() {
     const r = mark.getBoundingClientRect();
     const svg = mark.querySelector('svg');
     if (r.width && svg) {
-      /* Smaller again: at 250 it was a splash and at 170 it was still the
-         loudest thing on the screen. The mark has to stay a mark. */
-      const size = Math.round(Math.min(Math.min(innerWidth, innerHeight) * 0.21, 120));
+      /* Smaller again: 250 was a splash, 170 dominated the screen, 120 was
+         still the largest thing on it. The mark has to read as a mark.
+         The cap is what desktop gets; the vmin term only bites on a phone,
+         which is already smaller than the cap. */
+      const size = Math.round(Math.min(Math.min(innerWidth, innerHeight) * 0.21, 96));
       svg.style.setProperty('--bw', `${size}px`);
       svg.style.setProperty('--x0', `${innerWidth / 2 - size / 2 - r.left}px`);
       svg.style.setProperty('--y0', `${innerHeight / 2 - size / 2 - r.top}px`);
-      svg.style.setProperty('--s1', String(r.width / size));
+      /* The resting box, so the size animation lands on it exactly rather than
+         on a fraction of a hardcoded number. */
+      svg.style.setProperty('--rw', `${r.width}px`);
       centre = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
     }
   } catch { /* fall back to the keyframe's own defaults */ }
