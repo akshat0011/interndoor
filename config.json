@@ -1105,9 +1105,9 @@
     "auto": {
       "enabled": true,
       "regions": [
-        "US",
         "IN"
       ],
+      "_regions_note": "US REMOVED 30 Aug. @interndoorusa still answers OAuthException code 200 'API access blocked' — probed read-only that morning, while @interndoorin returned normally (4 followers, 16 media). The 28 Aug re-enable was half right: India came back and the US account never did, so 36 US reels failed with that error between 28 and 29 Aug. THE FAILURES ARE WHAT MAKE THIS URGENT, not the missed posts: reelCountSince counts rendering|scheduled|publishing|published and NOT failed, so every failure frees a daily-cap slot and the 60-second sweep queues a replacement, which fails too. Hammering an endpoint that is blocking you is the worst thing to be doing while an app restriction is live. Put US back only after a read-only probe of {user-id}?fields=username returns the account instead of code 200 — do not flip this to test, a failing burst is the signal that caused the block.",
       "dailyCap": 20,
       "dailyCapByRegion": {
         "US": 20,
