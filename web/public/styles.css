@@ -442,14 +442,25 @@ a, button, summary, label, [role="button"], .row {
 /* Olive on cream reads far quieter than lime on black, so the light theme is
    given back some of what the darker ink costs it rather than matching the
    number. Measured on a fresh load in both themes, not by toggling — the pane
-   returns stale paint on a live toggle. */
+   returns stale paint on a live toggle.
+
+   KEYED ON [data-theme], AND DELIBERATELY NOT ON prefers-color-scheme. There
+   was a `@media (prefers-color-scheme: light)` twin here and it was wrong: this
+   site defaults to DARK and switches only when the reader asks, so `--bg` and
+   `--live` are keyed on the attribute alone. Verified live — with no stored
+   preference and the OS set to light, `data-theme` is null and `--bg` is
+   #0a0a0b. The media query therefore put the light theme's opacity on a page
+   rendering dark, for every system-light visitor. A rule about the theme has to
+   key on whatever actually decides the theme. */
 :root[data-theme="light"] .field { opacity: .46; }
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .field { opacity: .46; }
-}
 /* Below 720px the board is edge to edge and the marks sit under the cards
-   rather than beside them. */
-@media (max-width: 720px) { .field { opacity: .26; } }
+   rather than beside them. The light theme needs its own line: its selector
+   carries higher specificity than a bare `.field`, so a single rule here would
+   lose to it and a light-theme phone would keep the desktop value. */
+@media (max-width: 720px) {
+  .field { opacity: .26; }
+  :root[data-theme="light"] .field { opacity: .22; }
+}
 
 /* ======================= page-load intro =======================
    ONE ELEMENT, from first frame to last. The header's own radar starts larger
