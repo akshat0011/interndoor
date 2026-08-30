@@ -208,13 +208,29 @@ function validThrough(job, validDays = DEFAULT_VALID_DAYS) {
 }
 
 /**
+ * The three facts an Open Graph card carries, in priority order.
+ *
+ * HERE, AND NOWHERE ELSE. The card is now rendered on request by an edge
+ * function in web/api/og.js, which cannot import this module — and the filters
+ * it needs are not one-liners: stipendText alone refuses a figure with no
+ * currency or period, refuses a zero bound anywhere ("$0 – $1,000 / hour" is a
+ * real row), and regroups Indian digit grouping. Restating them over there
+ * would drift on the first correction to either. So publish bakes the ANSWER
+ * into jobs.json and the function reads it.
+ */
+export function cardFacts(job) {
+  const city = String(job.location ?? '').split(',')[0].trim();
+  return [stipendText(job), city, modeText(job), durationText(job)]
+    .filter(Boolean).slice(0, 3);
+}
+
+/**
  * The file a posting's own Open Graph card is written to.
  *
- * ONE rule, exported, because bin/render-og.js writes the file and this module
- * writes the <meta> that points at it — and a job id can contain a colon
- * (`ats:greenhouse:x:1`), which is both illegal in a Windows checkout and
- * ugly in a URL. jobPageSlug already exists in three places and needs a test to
- * stop them drifting; this one is not going to become the fourth.
+ * Used by src/ogcard.js, which draws Telegram's copies. A job id can contain a
+ * colon (`ats:greenhouse:x:1`), which is illegal in a Windows checkout and ugly
+ * in a filename. The WEBSITE no longer writes these files at all — its cards
+ * are generated on request by web/api/og.js.
  */
 export function ogCardName(id) {
   return `${String(id).replace(/[^A-Za-z0-9_-]/g, '-')}.jpg`;
@@ -1017,7 +1033,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, ogCard = false } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
@@ -1214,12 +1230,20 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     canonical: url,
     indexable,
     region,
-    /* THIS POSTING'S OWN preview image when one has been drawn, else the
-       generic card. Every job page served the same picture, so every share of
-       every role looked identical in a feed — on the one element a reader sees
-       before any text. Falling back rather than assuming is what stops a
-       missing file becoming a broken preview. */
-    image: ogCard ? `${SITE}/og/${ogCardName(job.id)}` : undefined,
+    /* THIS POSTING'S OWN preview image, drawn on request by web/api/og.js.
+       Every job page served the same generic picture, so every share of every
+       role looked identical in a feed — on the one element a reader sees
+       before any text.
+       IT IS A URL, NOT A FILE, and that is a storage decision: a committed
+       card is ~46KB and will not compress further (measured at four quality
+       levels, and without the film grain), which is +44MB for today's board
+       and ~1.7GB a YEAR of git history that cannot be pruned without
+       rewriting a public repo. Generated on request it costs nothing per job
+       and covers postings that do not exist yet. The function answers with a
+       year-long immutable cache, so it is drawn once per posting however often
+       the link is shared, and it redirects to the generic card rather than
+       erroring if the id is unknown. */
+    image: `${SITE}/api/og?id=${encodeURIComponent(job.id)}&r=${region.code}`,
     // No hreflang on a job page. A Stripe internship in Dublin is not a
     // regional variant of one in Bengaluru, it is a different vacancy, and
     // telling Google two unrelated URLs are the same page is a real error.
@@ -2579,17 +2603,6 @@ function companyLogos(jobs, publicDir) {
 }
 
 export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {} } = {}) {
-  /* Which postings have a card of their own, read once rather than stat-ed per
-     page. `og/` sits at the ROOT and is shared by every region — a job id is
-     unique across all of them, so a US posting's card is found from the US
-     tree without a second copy. */
-  const slug = regionPath(region.code);           // '' for India, '/us', '/uk'
-  const rootDir = slug && publicDir.endsWith(slug.slice(1))
-    ? publicDir.slice(0, -slug.length + 1) : publicDir;
-  const ogDir = join(rootDir, 'og');
-  const ogCards = new Set(
-    existsSync(ogDir) ? readdirSync(ogDir).filter((f) => f.endsWith('.jpg')) : [],
-  );
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -2623,8 +2636,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(jobsDir, name));
     track(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays,
-          ogCard: ogCards.has(ogCardName(job.id)) })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays })),
       `/jobs/${jobSlug(job)}`);
   }
 

@@ -8,5 +8,8 @@
   "type": "module",
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@vercel/og": "^1.0.2"
   }
 }

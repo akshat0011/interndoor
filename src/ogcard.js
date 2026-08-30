@@ -1,17 +1,26 @@
 /**
- * One Open Graph card per posting, drawn from web/og-card.html.
+ * Open Graph cards for TELEGRAM, drawn locally with Playwright.
  *
- * TWO CONSUMERS, ONE RENDERER, TWO DESTINATIONS — which is the whole reason
- * this is a module rather than living in the CLI:
+ * THE WEBSITE DOES NOT COME THROUGH HERE ANY MORE. Its cards are generated on
+ * request by web/api/og.js, so nothing is committed and every posting is
+ * covered — see the note there for the storage arithmetic that decided it.
  *
- *   - the WEBSITE, for postings we share on LinkedIn. Those go to
- *     web/public/og and are committed, because a preview image has to be
- *     fetchable by LinkedIn's crawler.
- *   - TELEGRAM, for every new listing. Telegram uploads the file itself, so
- *     the image never has to be served — and that is what keeps ~110 cards a
- *     day out of a public repo that Vercel clones on all 48 deploys a day.
- *     Those go to the state directory, beside the reels, for the same reason
- *     the reels are there.
+ * TELEGRAM STILL RENDERS LOCALLY, and the reason is a race rather than
+ * taste: a listing is posted to the channel seconds after the push, and Vercel
+ * needs about a minute to deploy, so the generator would not yet be able to
+ * see the very posting being announced. It would answer with the generic card
+ * for exactly the freshest roles — the ones this channel exists for. Drawing
+ * locally has no deploy to wait for.
+ *
+ * The cost of that decision is TWO renderers for one design — this one in HTML
+ * and the generator in satori — which can drift. They are close but not
+ * identical by construction (satori is flexbox-only and cannot fit text to a
+ * box, so it sizes the role from its length). Keep the two in step by eye when
+ * either changes, or fold Telegram onto the URL and accept a generic card on
+ * the first minute of a listing's life.
+ *
+ * Cards go to the state directory, beside the reels, for the reason the reels
+ * are there: generated artefacts, and `app/` is a PUBLIC git repo.
  *
  * PLAYWRIGHT'S OWN CHROMIUM, NEVER BRAVE. launchBrave clears and claims the
  * shared profile on its way in and would kill a scrape mid-flight.

@@ -7,7 +7,7 @@ import { log } from './logger.js';
 import { formatStipend } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
-import { writeSite } from './pages.js';
+import { writeSite, cardFacts } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -53,7 +53,7 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     currency: row.stipend_currency, period: row.stipend_period,
   }) || row.salary_text || null;
 
-  return {
+  const job = {
     id: row.job_id,
     // The company shown publicly is the one on the posting, not our watchlist
     // label. A mislabelled employer on a public site is worse than no label.
@@ -119,6 +119,11 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     // diverge after.
     roleFingerprint: row.description ? fingerprint(row.description) : null,
   };
+  /* The card's three facts, decided by the site's own display filters and
+     baked in here because the edge function that draws the card cannot import
+     them. See cardFacts in pages.js. */
+  job.cardFacts = cardFacts(job);
+  return job;
 }
 
 /**
@@ -690,10 +695,6 @@ export function pushToSite(newJobCount) {
     // never, which looks exactly like a page that renders wrong.
     'web/public/alerts.html',
     'web/public/report.html',
-    /* One Open Graph card per SHARED posting, drawn by bin/render-og.js. Shared
-       by every region — a job id is unique across all of them — so it lives at
-       the root and is named here rather than covered by regionPaths(). */
-    'web/public/og',
     /* The IndexNow key file. It MUST be live at the domain root or every
        submission is refused 403 — and nothing on the site would look wrong.
        The filename is the key itself and must match indexing.indexNow.key. */

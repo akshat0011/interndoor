@@ -737,36 +737,53 @@ writePages(smJobs, smDir2, [], {});
 check('an unchanged board rewrites an identical sitemap',
   readFileSync(join(smDir2, 'sitemap.xml'), 'utf8') === sm, true);
 
-console.log('\n== each posting can carry its own preview image ==');
+console.log('\n== each posting carries its own preview image ==');
 /* WHY. Every job page served the same generic og.jpg, so every share of every
-   role looked identical in a feed — on the one element a reader sees before any
-   text. bin/render-og.js draws a card per posting and this is the <meta> that
-   points at it. */
+   role looked identical — on the one element a reader sees before any text.
+
+   IT IS A URL, NOT A FILE, and that is a storage decision rather than a
+   preference: a committed card is ~46KB and will not compress further
+   (measured at four quality levels and with the film grain removed), which is
+   +44MB for today's board and ~1.7GB a YEAR of git history that cannot be
+   pruned without rewriting a public repo. web/api/og.js draws it on request. */
 const ogOf = (html) => (html.match(/<meta property="og:image" content="([^"]+)"/) || [])[1];
 const twOf = (html) => (html.match(/<meta name="twitter:image" content="([^"]+)"/) || [])[1];
 
-const carded = renderJobPage(vtJob, [], { ogCard: true });
-check('the card is this posting\'s own', ogOf(carded), `https://interndoor.com/og/${ogCardName(vtJob.id)}`);
-// Two tags, one image: a preview that disagrees with itself between networks is
-// worse than a generic one.
+const carded = renderJobPage(vtJob);
+/* The ampersand is written &amp; and that is CORRECT, not a bug: a bare & in
+   an HTML attribute is invalid markup, and every crawler decodes the entity
+   back to & before fetching. Asserting the raw form would be asserting broken
+   HTML. */
+check('the card is this posting\'s own', ogOf(carded),
+  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=IN`);
+// Two tags, one image: a preview that disagrees with itself between networks
+// is worse than a generic one.
 check('and twitter agrees with open graph', twOf(carded), ogOf(carded));
+// EVERY posting, with nothing to check on disk first — that is the whole point
+// of generating rather than committing.
+check('no page falls back to the generic card', /og\.jpg/.test(carded), false);
 
-/* FALLING BACK RATHER THAN ASSUMING is what stops a missing file becoming a
-   broken preview — cards are drawn only for postings that get shared, so most
-   pages legitimately have none. */
-check('without one it is the generic card',
-  ogOf(renderJobPage(vtJob, [], { ogCard: false })), 'https://interndoor.com/og.jpg?v=5');
-check('and that is the default', ogOf(renderJobPage(vtJob)), 'https://interndoor.com/og.jpg?v=5');
+/* The region travels with the id. The generator reads that board's own
+   jobs.json, so a US posting asked for against India's file is simply not
+   found — and a card drawn for the wrong board is worse than none. */
+check('a US page asks for the US board',
+  ogOf(renderJobPage(vtJob, [], { region: regionOf('US') })),
+  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=US`);
 
-/* ONE filename rule, exported and shared with bin/render-og.js. A job id can
-   contain colons, which are illegal in a Windows checkout and ugly in a URL —
-   and jobPageSlug already exists in three copies that need a test to stop them
-   drifting. This one is not becoming the fourth. */
-check('a colon never reaches the filename',
+// An ats: id carries colons and ampersands are not impossible; the id is a
+// query parameter and has to survive as one.
+check('the id is url-encoded',
+  ogOf(renderJobPage({ ...vtJob, id: 'ats:greenhouse:x:1' })),
+  'https://interndoor.com/api/og?id=ats%3Agreenhouse%3Ax%3A1&amp;r=IN');
+
+/* ogCardName still exists for src/ogcard.js, which draws TELEGRAM's copies
+   locally — the generator cannot see a posting until Vercel redeploys, about a
+   minute, and that is exactly the window the channel exists for. */
+check('a colon never reaches a filename',
   ogCardName('ats:greenhouse:towerresearchcapital:8143756'),
   'ats-greenhouse-towerresearchcapital-8143756.jpg');
-check('a numeric id is untouched', ogCardName('4440764006'), '4440764006.jpg');
-check('the name never escapes its directory', /^[A-Za-z0-9_-]+\.jpg$/.test(ogCardName('../../etc/passwd')), true);
+check('the name never escapes its directory',
+  /^[A-Za-z0-9_-]+\.jpg$/.test(ogCardName('../../etc/passwd')), true);
 
 console.log('\n== the email signup is on every generated page ==');
 /* It is on the GENERATED pages, not only the homepage, because that is where

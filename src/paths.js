@@ -47,8 +47,8 @@ export const PATHS = {
    * reels are: these are generated artefacts and `app/` is a PUBLIC git repo.
    * Telegram uploads the file itself, so the image never needs to be served —
    * which is what keeps ~110 cards a day out of a repository Vercel clones on
-   * all 48 deploys a day. The website's own copies, drawn only for postings we
-   * SHARE on LinkedIn, live under web/public/og and are committed on purpose.
+   * all 48 deploys a day. Nothing is committed: the WEBSITE's cards are drawn
+   * on request by web/api/og.js and never touch the repo at all.
    */
   ogCards: join(STATE, 'og'),
 

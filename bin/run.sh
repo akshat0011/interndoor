@@ -88,19 +88,6 @@ fi
 ATS_STATUS=$?
 echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 
-# ---------------------------------------------------------------------------
-# One Open Graph card per posting we have SHARED, drawn BEFORE the scan.
-#
-# The order is what makes the card reach the page in the same slot: this reads
-# the jobs.json the LAST publish wrote, and the publish at the end of the scan
-# below is what emits the <meta> pointing at whatever is now on disk. Running it
-# afterwards would leave every new card unreferenced until the next slot.
-#
-# Failure is silent by design and `|| true` is load-bearing: a preview image is
-# a nicety and must never be able to fail a round of collection.
-# ---------------------------------------------------------------------------
-"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/render-og.js" --queued >> "$LOG" 2>&1 || true
-
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" >> "$LOG" 2>&1
 STATUS=$?
 
