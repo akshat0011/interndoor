@@ -391,13 +391,13 @@ a, button, summary, label, [role="button"], .row {
   width: min(86vmin, 980px); aspect-ratio: 1;
   transform: translateY(-50%); pointer-events: none;
   opacity: .55;
+  /* THE RADAR IS A BACKGROUND, NOT MARKUP. The element is an empty div, so a
+     reader holding a stale stylesheet against fresh HTML — which the cache
+     headers actively allow, max-age=0 on the document and
+     stale-while-revalidate=86400 on this file — gets an empty div rather than
+     an unsized full-page <svg> that pushes the site below the fold. */
+  background: url("data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720"><circle cx="360" cy="360" r="352" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".08"/><circle cx="360" cy="360" r="272" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".16"/><circle cx="360" cy="360" r="192" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".08"/><circle cx="360" cy="360" r="112" fill="none" stroke="%23c8ff00" stroke-width="1.4" opacity=".16"/><line x1="8" y1="360" x2="712" y2="360" stroke="%23c8ff00" stroke-width="1.4" opacity=".07"/><line x1="360" y1="8" x2="360" y2="712" stroke="%23c8ff00" stroke-width="1.4" opacity=".07"/><defs><linearGradient id="s" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%23c8ff00" stop-opacity="0"/><stop offset="1" stop-color="%23c8ff00" stop-opacity=".3"/></linearGradient></defs><path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(%23s)" opacity=".5"/><circle cx="360" cy="360" r="7" fill="%23c8ff00" opacity=".3"/></svg>") center / contain no-repeat;
 }
-.field svg { width: 100%; height: 100%; display: block; }
-.f-ring  { fill: none; stroke: var(--live); stroke-width: 1.4; opacity: .16; }
-.f-ring.faint { opacity: .08; }
-.f-cross { stroke: var(--live); stroke-width: 1.4; opacity: .07; }
-.f-sweep { opacity: .5; }
-.f-dot   { fill: var(--live); opacity: .3; }
 /* The light theme sits on cream, where the same lime reads far stronger. */
 :root[data-theme="light"] .field { opacity: .3; }
 @media (prefers-color-scheme: light) {
