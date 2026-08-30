@@ -1295,21 +1295,40 @@ async function main() {
   // column, for the same reason publish does it: a row captured before a
   // gazetteer fix carries the old answer.
   const homeRegion = cfg.notifications.homeRegion ?? 'IN';
+
+  /* THE REPORT SHOWS SEVERAL BOARDS BEHIND A TOGGLE; THE ALERTS DO NOT.
+     They answer different questions. `homeRegion` still decides what
+     interrupts him — the banner, the phone push, opening the report — because
+     that is about roles he will actually apply to at 2am. The report is also
+     where posts are written FOR the InternDoor page, and those cover the US,
+     so it has to carry the US board even though a US role should never buzz
+     his phone. Kept apart rather than merged: see buildReport. */
+  const reportRegions = (cfg.notifications.reportRegions ?? [homeRegion])
+    .filter((c) => c && c !== 'all');
+  const everywhere = homeRegion === 'all' || !reportRegions.length;
+  const reportJobs = (everywhere
+    ? newJobs
+    : newJobs.filter((j) => reportRegions.includes(resolveRowRegion(j))))
+    // Stamped once here so the page never has to re-derive it per card.
+    .map((j) => ({ ...j, __reportRegion: resolveRowRegion(j) }));
   const homeJobs = homeRegion === 'all'
     ? newJobs
     : newJobs.filter((j) => resolveRowRegion(j) === homeRegion);
-  const elsewhere = newJobs.length - homeJobs.length;
+  const elsewhere = newJobs.length - reportJobs.length;
 
   // Said on the page rather than left to look like a quiet scan. Without this,
-  // a run that collected 76 US roles and no Indian ones renders as "none were
-  // new postings from your watchlist companies", which is not what happened.
+  // a run that collected 76 roles on boards this report does not carry renders
+  // as "none were new postings from your watchlist companies", which is not
+  // what happened.
+  const shownBoards = everywhere ? 'any region' : reportRegions.join(' / ');
   const reportNotes = elsewhere
-    ? [...notes, `${elsewhere} new listing${elsewhere === 1 ? '' : 's'} outside ${homeRegion} are not shown here — they are on the site and in their own Telegram channel.`]
+    ? [...notes, `${elsewhere} new listing${elsewhere === 1 ? '' : 's'} outside ${shownBoards} are not shown here — they are on the site and in their own Telegram channel.`]
     : notes;
 
   const html = buildReport({
-    jobs: homeJobs,
-    run: { runId, startedAt: Date.now() - clock.elapsedSeconds() * 1000, finishedAt: Date.now(), ...counters, newJobs: homeJobs.length },
+    jobs: reportJobs,
+    regions: everywhere ? null : reportRegions,
+    run: { runId, startedAt: Date.now() - clock.elapsedSeconds() * 1000, finishedAt: Date.now(), ...counters, newJobs: reportJobs.length },
     notes: reportNotes,
     stats: store.stats(),
   });

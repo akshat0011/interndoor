@@ -248,9 +248,11 @@ function featuredBlock(group, region, cfg) {
  * @param {object} cfg
  * @param {{now?: number, days?: number}} [opts]
  */
-export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishedIds = null } = {}) {
+export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishedIds = null, region: only = null } = {}) {
   const conf = cfg.postQueue?.weekly ?? {};
-  const region = conf.region || 'IN';
+  // Passed in when the caller is walking several boards; falls back to the
+  // configured one so a single-region call is unchanged.
+  const region = only || conf.region || 'IN';
   const zone = regionOf(region)?.timeZone ?? 'Asia/Kolkata';
   const sinceMs = now - days * 86_400_000;
 
@@ -361,10 +363,14 @@ export function weekKey(ms, zone = 'Asia/Kolkata') {
  * Sunday still gets its roundup when it wakes — which is the normal case here,
  * and the reason this is not a cron entry.
  */
-export function roundupDue(cfg, lastKey, now = Date.now()) {
+export function roundupDue(cfg, lastKey, now = Date.now(), region = null) {
   const conf = cfg.postQueue?.weekly ?? {};
   if (conf.enabled === false) return false;
-  const zone = regionOf(conf.region || 'IN')?.timeZone ?? 'Asia/Kolkata';
+  /* The DAY AND HOUR are read in the board's OWN zone, which is the same call
+     the reel slots make: 10:00 on Sunday means 10:00 where the readers are,
+     and a US roundup fired on Kolkata's Sunday morning would go out at 23:30
+     on Saturday in New York. */
+  const zone = regionOf(region || conf.region || 'IN')?.timeZone ?? 'Asia/Kolkata';
   const local = new Date(new Date(now).toLocaleString('en-US', { timeZone: zone }));
 
   if (local.getDay() !== (conf.weekday ?? 0)) return false;

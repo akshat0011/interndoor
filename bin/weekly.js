@@ -38,11 +38,33 @@ const SETTING = 'weeklyRoundupWeek';
 const cfg = loadConfig();
 const store = new Store();
 
-const zone = regionOf(cfg.postQueue?.weekly?.region || 'IN')?.timeZone ?? 'Asia/Kolkata';
-const key = weekKey(Date.now(), zone);
-const last = store.getSetting(SETTING);
+/* ONE ROUNDUP PER BOARD, and they are due independently.
+   `regions` is the list; `region` stays as the single-board fallback so an
+   older config keeps working unchanged. */
+const REGIONS = cfg.postQueue?.weekly?.regions?.length
+  ? cfg.postQueue.weekly.regions
+  : [cfg.postQueue?.weekly?.region || 'IN'];
 
-if (!FORCE && !DRY_RUN && !roundupDue(cfg, last)) {
+const zoneFor = (code) => regionOf(code)?.timeZone ?? 'Asia/Kolkata';
+const keyFor = (code) => weekKey(Date.now(), zoneFor(code));
+const settingFor = (code) => `${SETTING}:${code}`;
+
+/* A ONE-TIME MIGRATION, and it is what stops a duplicate post this week.
+   Before the roundup ran per board the key was bare, and it belonged to
+   whichever single region was configured — so without carrying it across, the
+   first run after this change would see no key for that region and post a
+   second roundup for a week already covered. */
+const legacy = store.getSetting(SETTING);
+if (legacy && !store.getSetting(settingFor(REGIONS[0]))) {
+  store.setSetting(settingFor(REGIONS[0]), legacy);
+}
+
+/* Each board is checked in its OWN zone, so 10:00 on Sunday means 10:00 where
+   its readers are rather than 23:30 on Saturday in New York. */
+const due = REGIONS.filter((code) => FORCE || DRY_RUN
+  || roundupDue(cfg, store.getSetting(settingFor(code)), Date.now(), code));
+
+if (!due.length) {
   store.close();
   process.exit(0);
 }
@@ -76,29 +98,43 @@ function publishedIdsFor(code) {
   }
 }
 
-const roundup = weeklyRoundup(store, cfg, {
-  publishedIds: publishedIdsFor(cfg.postQueue?.weekly?.region || 'IN'),
-});
+const built = [];
+for (const code of due) {
+  const roundup = weeklyRoundup(store, cfg, { region: code, publishedIds: publishedIdsFor(code) });
+  if (!roundup.stats.roles) {
+    log.info(`Weekly roundup: nothing collected this week for ${code} — not writing a post about an empty week.`);
+    // A scheduled run still marks the week done. A week with no listings is a
+    // fact about the week, not a failure to retry every thirty minutes until
+    // Monday. A forced one does not, for the reason given further down.
+    if (!DRY_RUN && !FORCE) store.setSetting(settingFor(code), keyFor(code));
+    continue;
+  }
+  built.push({ code, roundup });
+}
 
-if (!roundup.stats.roles) {
-  log.info('Weekly roundup: nothing collected this week — not writing a post about an empty week.');
-  // A scheduled run still marks the week done. A week with no listings is a
-  // fact about the week, not a failure to retry every thirty minutes until
-  // Monday. A forced one does not, for the reason given further down.
-  if (!DRY_RUN && !FORCE) store.setSetting(SETTING, key);
+if (!built.length) {
   store.close();
   process.exit(0);
 }
 
 if (DRY_RUN) {
-  console.log(JSON.stringify(roundup.stats, null, 2));
-  console.log(`\n${'='.repeat(70)}\nPOST\n${'='.repeat(70)}\n${roundup.post}`);
-  roundup.comments.forEach((c, i) => console.log(`\n${'='.repeat(70)}\nCOMMENT ${i + 1}\n${'='.repeat(70)}\n${c}`));
+  for (const { code, roundup } of built) {
+    console.log(`\n${'#'.repeat(70)}\n${code}\n${'#'.repeat(70)}`);
+    console.log(JSON.stringify(roundup.stats, null, 2));
+    console.log(`\n${'='.repeat(70)}\nPOST\n${'='.repeat(70)}\n${roundup.post}`);
+    roundup.comments.forEach((c, i) => console.log(`\n${'='.repeat(70)}\nCOMMENT ${i + 1}\n${'='.repeat(70)}\n${c}`));
+  }
   store.close();
   process.exit(0);
 }
 
-const file = writeWeeklyPage(buildWeeklyPage(roundup, { generatedAt: Date.now() }), key);
+/* ONE PAGE FOR EVERY BOARD. /weekly/latest serves the most recently written
+   file, so a page per region would mean the second silently replaced the
+   first and only one board's post would ever be seen. */
+const file = writeWeeklyPage(
+  buildWeeklyPage(built.map((b) => b.roundup), { generatedAt: Date.now() }),
+  keyFor(built[0].code),
+);
 
 // A FORCED run does not consume the week's slot.
 //
@@ -107,15 +143,20 @@ const file = writeWeeklyPage(buildWeeklyPage(roundup, { generatedAt: Date.now() 
 // the following Sunday's scheduled run skip itself — silently, and only
 // noticed by the roundup not arriving. --force means "give me one now", not
 // "consider this week handled".
-if (!FORCE) store.setSetting(SETTING, key);
+if (!FORCE) for (const { code } of built) store.setSetting(settingFor(code), keyFor(code));
 
-const { roles, companies, span } = roundup.stats;
-log.ok(`Weekly roundup for ${span}: ${roles} roles from ${companies} employers → ${file}`);
+const totals = built.reduce((a, b) => ({
+  roles: a.roles + b.roundup.stats.roles,
+  companies: a.companies + b.roundup.stats.companies,
+}), { roles: 0, companies: 0 });
+const span = built[0].roundup.stats.span;
+const boards = built.map((b) => b.code).join(' + ');
+log.ok(`Weekly roundup for ${span} (${boards}): ${totals.roles} roles from ${totals.companies} employers → ${file}`);
 
 await notify(
   'This week on the board',
-  `${roles} roles from ${companies} employers, ${span}`,
-  { sound: 'Glass', subtitle: 'One post ready to paste' },
+  `${totals.roles} roles from ${totals.companies} employers, ${span} · ${boards}`,
+  { sound: 'Glass', subtitle: `${built.length} post${built.length === 1 ? '' : 's'} ready to paste` },
 );
 
 if (!NO_OPEN) {

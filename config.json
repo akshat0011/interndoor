@@ -944,6 +944,8 @@
     "onError": true,
     "openReportWhenDone": true,
     "_openReportWhenDone_note": "Auto-open the HTML report in your default browser when new jobs are found IN THE HOME REGION - see homeRegion below.",
+    "_reportRegions_note": "Which boards the LOCAL RUN REPORT shows, behind a toggle. Separate from homeRegion on purpose: homeRegion decides what INTERRUPTS him (banner, phone push, auto-opening the report) and is about roles he will apply to himself, while the report is also where LinkedIn posts are written for the InternDoor page, which targets the US. A US role belongs in the report and does not belong on his phone at 2am. The boards are kept apart by a toggle rather than merged, because every counter on that page - companies, stipend listed, easy apply - means nothing across two countries at once.",
+    "reportRegions": ["IN", "US"],
     "homeRegion": "IN",
     "_homeRegion_note": "The only region whose new listings interrupt HIM: the Mac banner, the phone push, and auto-opening the report. Everything that serves READERS is unaffected - every region is still collected, still published, and still posted to its own Telegram channel. He applies to internships in India, so a US listing is worth all of those things and worth nothing as a banner on his Mac at 2am. Left unscoped this got much worse the moment US collection went live: one run produced 86 new listings, 76 of them American, so an alert meant to say 'apply in the first hour' would mostly announce roles he will never open. Set to 'all' to be alerted about every region, or to another ISO code if he ever moves. The report itself still contains every region and is still written every run - only the decision to OPEN it is scoped, because its post-queue buttons are useful for a role he would post about but not apply to.",
     "telegram": {
@@ -1081,6 +1083,8 @@
     },
     "weekly": {
       "enabled": true,
+      "_regions_note": "One roundup per board, each due in its OWN time zone, all written onto a single /weekly/latest page. `region` below is the single-board fallback for an older config; `regions` is what actually runs. The week is recorded per board (weeklyRoundupWeek:<CODE>) so a quiet US week cannot mark India's as done.",
+      "regions": ["IN", "US"],
       "region": "IN",
       "weekday": 0,
       "hour": 10,

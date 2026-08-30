@@ -29,7 +29,7 @@ import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { PATHS } from '../src/paths.js';
 import { log } from '../src/logger.js';
-import { buildPost, jobFacts } from '../src/postgen.js';
+import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
 import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
@@ -645,6 +645,50 @@ const server = createServer(async (req, res) => {
     // gives up on. The page polls /api/generate/status instead.
     generate(ids);
     return json(res, 202, { started: true });
+  }
+
+  /* ONE POST FOR EVERYTHING IN THE QUEUE, and it answers straight away.
+     No model is involved — every line is a company, a place and a URL, the
+     same call the Sunday roundup makes — so unlike /api/generate there is
+     nothing to poll and no 202. It also does not touch the drafts: a combined
+     post is a different way of saying the same queue, not a replacement for
+     the individual ones, and both end up on the same page. */
+  if (path === '/api/generate/combined' && req.method === 'POST') {
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+
+    const ids = Array.isArray(body.jobIds) ? body.jobIds.map(String) : null;
+    const rows = ids?.length
+      ? store.queuedJobs().filter((r) => ids.includes(String(r.job_id)))
+      : store.queuedJobs();
+    if (!rows.length) return json(res, 400, { error: 'nothing in the queue' });
+
+    const facts = rows.map((row) => jobFacts(row, cfg, 'combined'));
+    const text = composeCombined(facts);
+    // What did not fit is counted in the post itself; this is the same number,
+    // said on the page so he can see it without reading to the bottom.
+    const fitted = (text.match(/\n→ /g) ?? []).length;
+
+    const batchId = new Date().toISOString().replace(/[:.]/g, '-');
+    const drafted = store.queuedJobs('drafted').map((row) => ({
+      row,
+      facts: jobFacts(row, cfg),
+      text: row.post_text,
+      meta: safeMeta(row.post_meta),
+    }));
+    const file = writePostsPage(
+      buildPostsPage(drafted, {
+        batchId,
+        model: cfg.postQueue?.model || cfg.ollama?.model || 'qwen3:8b',
+        generatedAt: Date.now(),
+        combined: { text, count: rows.length, dropped: Math.max(0, rows.length - fitted) },
+      }),
+      batchId,
+    );
+    const url = `http://127.0.0.1:${PORT}/posts/latest`;
+    log.ok(`Combined post ready (${rows.length} postings): ${file}`);
+    await openFile(url);
+    return json(res, 200, { url, count: rows.length, chars: text.length });
   }
 
   if (path === '/api/generate/status') {

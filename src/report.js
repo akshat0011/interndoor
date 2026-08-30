@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
 import { formatStipend } from './extract.js';
+import { regionOf } from './regions.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -98,6 +99,13 @@ summary:hover{color:var(--accent)}
 /* The post queue. Everything below is inert unless the page is being served by
    bin/queue-server.js — a report opened straight off disk has nowhere to send a
    click, so the bar says so rather than pretending to work. */
+.regtabs{display:flex;gap:6px;margin:0 0 14px}
+.regtab{border:1px solid var(--line);background:transparent;color:var(--ink-2);border-radius:9px;
+  padding:8px 15px;font:inherit;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:7px}
+.regtab b{font-size:15px}
+.regtab:hover{border-color:var(--accent);color:var(--accent)}
+.regtab[aria-pressed=true]{background:var(--good-bg);border-color:var(--good);color:var(--good);font-weight:600}
+.chips[hidden]{display:none}
 .qbtn{border:1px solid var(--line);background:transparent;color:var(--ink-2);border-radius:7px;
   padding:8px 13px;font-size:13px;font-family:inherit;cursor:pointer}
 .qbtn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
@@ -132,14 +140,21 @@ const JS = `
 const q = document.getElementById('q');
 const chips = [...document.querySelectorAll('.chipbtn')];
 const jobs = [...document.querySelectorAll('.job')];
+const regtabs = [...document.querySelectorAll('.regtab')];
 let company = 'all';
+/* Null when only one board is being reported, and then the region test below
+   is skipped entirely and the page behaves exactly as it did before. */
+const pressedTab = regtabs.find(t => t.getAttribute('aria-pressed') === 'true');
+let region = pressedTab ? pressedTab.dataset.region : null;
+
 function apply(){
   const term = (q.value || '').toLowerCase().trim();
   let shown = 0;
   for (const j of jobs){
+    const okReg = !region || j.dataset.region === region;
     const okCo = company === 'all' || j.dataset.company === company;
     const okTerm = !term || j.dataset.search.includes(term);
-    const show = okCo && okTerm;
+    const show = okReg && okCo && okTerm;
     j.classList.toggle('hide', !show);
     if (show) shown++;
   }
@@ -154,6 +169,30 @@ for (const c of chips){
   });
 }
 
+function setStat(id, v){ const el = document.getElementById(id); if (el) el.textContent = v; }
+for (const t of regtabs){
+  t.addEventListener('click', () => {
+    regtabs.forEach(x => x.setAttribute('aria-pressed', String(x === t)));
+    region = t.dataset.region;
+    /* The counters belong to the board on screen, not to both at once. */
+    setStat('stat-co', t.dataset.companies);
+    setStat('stat-stipend', t.dataset.stipend);
+    setStat('stat-easy', t.dataset.easy);
+    /* Each board has its own chip row and the company filter does not carry
+       across — Qualcomm on the India board is not a filter the US board has,
+       and leaving it set would show an empty list that looks like a fault. */
+    company = 'all';
+    for (const row of document.querySelectorAll('.chips')){
+      row.hidden = row.dataset.region !== region;
+      for (const c of row.querySelectorAll('.chipbtn')) c.setAttribute('aria-pressed', String(c.dataset.co === 'all'));
+    }
+    apply();
+  });
+}
+/* Run once at load: every card is rendered visible, so without this the
+   inactive board would be on screen until the first interaction. */
+apply();
+
 /* ---- post queue -------------------------------------------------------- */
 /* Same-origin calls only, so there is no host or port written down here: the
    report is served by bin/queue-server.js and these paths resolve against it.
@@ -162,6 +201,7 @@ for (const c of chips){
 const bar = document.getElementById('qbar');
 const count = document.getElementById('qcount');
 const genBtn = document.getElementById('qgen');
+const combBtn = document.getElementById('qcomb');
 const clearBtn = document.getElementById('qclear');
 const why = document.getElementById('qwhy');
 const qbtns = [...document.querySelectorAll('.qbtn')];
@@ -179,6 +219,11 @@ function paint(state){
   count.innerHTML = '<b>' + state.queued + '</b> waiting to be written'
     + (state.drafted ? ' · <b>' + state.drafted + '</b> already written (<a href="/posts/latest">view</a>)' : '');
   genBtn.disabled = state.queued === 0;
+  /* Enabled on the WHOLE queue, not just the rows still waiting to be written.
+     The combined post is a different way of saying the same selection, so a
+     queue whose posts have all been drafted individually can still be rolled
+     into one — and needs no model to do it. */
+  combBtn.disabled = set.size === 0;
   clearBtn.disabled = set.size === 0;
 }
 
@@ -195,6 +240,7 @@ async function api(path, body){
 if (location.protocol !== 'http:'){
   for (const b of qbtns) b.disabled = true;
   genBtn.disabled = true;
+  combBtn.disabled = true;
   clearBtn.disabled = true;
   why.innerHTML = 'The post queue needs the local helper — this page is open as a file, which cannot reach it. Start it with <code>npm run queue</code> and reopen the report at the address it prints.';
 } else {
@@ -214,6 +260,25 @@ if (location.protocol !== 'http:'){
 
   clearBtn.addEventListener('click', async () => {
     try { paint(await api('/api/queue/clear', {})); } catch {}
+  });
+
+  /* ONE post covering everything in the queue, each posting keeping its own
+     link. No model, so this returns in one call rather than the polling the
+     per-job Generate needs. */
+  combBtn.addEventListener('click', async () => {
+    combBtn.disabled = true;
+    combBtn.textContent = 'Building…';
+    why.textContent = '';
+    try {
+      const r = await api('/api/generate/combined', {});
+      combBtn.textContent = 'Combined post ready';
+      why.innerHTML = 'One post covering ' + r.count + ' posting' + (r.count === 1 ? '' : 's')
+        + ', ' + r.chars + ' characters — <a href="/posts/latest">open it</a>.';
+    } catch (err) {
+      combBtn.textContent = 'Generate combined post';
+      combBtn.disabled = false;
+      why.textContent = 'Could not build it: ' + err.message;
+    }
   });
 
   genBtn.addEventListener('click', async () => {
@@ -274,7 +339,7 @@ function jobCard(job) {
     .filter(Boolean).join(' ').toLowerCase();
 
   return `
-<article class="job" data-id="${esc(job.job_id)}" data-company="${esc(job.company_matched || job.company || 'Other')}" data-search="${esc(searchBlob)}">
+<article class="job" data-id="${esc(job.job_id)}" data-region="${esc(job.__reportRegion || 'IN')}" data-company="${esc(job.company_matched || job.company || 'Other')}" data-search="${esc(searchBlob)}">
   <div class="top">
     <div>
       <div class="co">${esc(job.company || 'Unknown company')}</div>
@@ -302,10 +367,51 @@ function jobCard(job) {
  * Build the HTML report. `notes` is a list of honest caveats about the run
  * (caps hit, pages skipped, CAPTCHA encountered) — never silently omitted.
  */
-export function buildReport({ jobs, run, notes = [], stats = {} }) {
-  const companies = [...new Set(jobs.map((j) => j.company_matched || j.company || 'Other'))].sort();
-  const withStipend = jobs.filter((j) => j.stipend_min || j.salary_text).length;
-  const easyApply = jobs.filter((j) => j.easy_apply).length;
+/** India, United States, United Kingdom — but short enough for a tab. */
+function regionLabel(code) {
+  if (code === 'US') return 'USA';
+  if (code === 'GB') return 'UK';
+  return regionOf(code)?.name ?? code;
+}
+
+/**
+ * ONE PAGE, SEVERAL BOARDS, HELD APART RATHER THAN MERGED.
+ *
+ * Every tile on this page derives from the jobs array — new jobs, companies,
+ * stipend listed, easy apply, the company chips — so a page showing two boards
+ * at once would need every one of those to mean something across both, and
+ * "23 companies" spanning two countries answers no question he has. The boards
+ * are separate views instead: one set of cards, tagged by region, with a tab
+ * that switches which set is on screen and repoints the counters at it.
+ *
+ * The per-region facts ride on the tab BUTTONS as data attributes rather than
+ * in a JSON blob in the script. There is exactly one inline script on this
+ * page and a syntax error anywhere in it kills all of it — the reel button,
+ * the queue buttons and the filters together — so the less that is injected
+ * into it, the better.
+ */
+export function buildReport({ jobs, run, notes = [], stats = {}, regions = null }) {
+  const regionOfJob = (j) => j.__reportRegion || 'IN';
+  const codes = (regions && regions.length ? regions : [...new Set(jobs.map(regionOfJob))])
+    .filter((c, i, a) => a.indexOf(c) === i);
+  const facts = (code) => {
+    const rows = jobs.filter((j) => regionOfJob(j) === code);
+    return {
+      code,
+      jobs: rows.length,
+      companies: [...new Set(rows.map((j) => j.company_matched || j.company || 'Other'))].sort(),
+      withStipend: rows.filter((j) => j.stipend_min || j.salary_text).length,
+      easyApply: rows.filter((j) => j.easy_apply).length,
+    };
+  };
+  const all = codes.map(facts);
+  // Open on a board that has something on it, so a quiet India morning does
+  // not present as an empty report while 40 US roles sit one tab away.
+  const first = (all.find((f) => f.jobs > 0) ?? all[0] ?? facts('IN')).code;
+  const cur = all.find((f) => f.code === first) ?? facts('IN');
+  const companies = cur.companies;
+  const withStipend = cur.withStipend;
+  const easyApply = cur.easyApply;
 
   const body = jobs.length
     ? jobs.map(jobCard).join('\n')
@@ -325,20 +431,26 @@ export function buildReport({ jobs, run, notes = [], stats = {} }) {
 
 ${notes.map((n) => `<div class="note">${esc(n)}</div>`).join('')}
 
+${all.length > 1 ? `<div class="regtabs" role="group" aria-label="Board">
+  ${all.map((f) => `<button class="regtab" data-region="${esc(f.code)}" aria-pressed="${String(f.code === first)}"
+    data-jobs="${f.jobs}" data-companies="${f.companies.length}" data-stipend="${f.withStipend}" data-easy="${f.easyApply}"
+  >${esc(regionLabel(f.code))} <b>${f.jobs}</b></button>`).join('')}
+</div>` : ''}
+
 <div class="statbar">
-  <div class="stat"><b><span id="shown">${jobs.length}</span></b><span>new jobs</span></div>
-  <div class="stat"><b>${companies.length}</b><span>companies</span></div>
-  <div class="stat"><b>${withStipend}</b><span>stipend listed</span></div>
-  <div class="stat"><b>${easyApply}</b><span>easy apply</span></div>
+  <div class="stat"><b><span id="shown">${cur.jobs}</span></b><span>new jobs</span></div>
+  <div class="stat"><b id="stat-co">${companies.length}</b><span>companies</span></div>
+  <div class="stat"><b id="stat-stipend">${withStipend}</b><span>stipend listed</span></div>
+  <div class="stat"><b id="stat-easy">${easyApply}</b><span>easy apply</span></div>
   <div class="stat"><b>${esc(stats.total ?? 0)}</b><span>tracked all-time</span></div>
 </div>
 
 ${jobs.length ? `<div class="controls">
   <input type="search" id="q" placeholder="Filter by title, skill, location…" autocomplete="off">
-  <div class="chips">
+  ${all.map((f) => `<div class="chips" data-region="${esc(f.code)}"${f.code === first ? '' : ' hidden'}>
     <button class="chipbtn" data-co="all" aria-pressed="true">All</button>
-    ${companies.map((c) => `<button class="chipbtn" data-co="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}
-  </div>
+    ${f.companies.map((c) => `<button class="chipbtn" data-co="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}
+  </div>`).join('')}
 </div>` : ''}
 
 ${body}
@@ -352,6 +464,7 @@ ${body}
 ${jobs.length ? `<div class="qbar" id="qbar">
   <span id="qcount"><b>0</b> waiting to be written</span>
   <button class="go" id="qgen" disabled>Generate LinkedIn posts</button>
+  <button id="qcomb" disabled>Generate combined post</button>
   <button id="qclear" disabled>Clear queue</button>
   <span class="why grow" id="qwhy"></span>
 </div>` : ''}

@@ -216,6 +216,23 @@ function card(draft) {
  * @param {{batchId: string, model: string, generatedAt: number}} batch
  */
 export function buildPostsPage(drafts, batch) {
+  /* THE COMBINED POST LEADS, when there is one. It is the thing he asked the
+     page for — one post covering everything selected, each posting keeping its
+     own link — so it goes above the individual drafts rather than below them,
+     where a page of ten single posts would bury it.
+     pasteBlock is the Sunday roundup's renderer and is reused verbatim: same
+     copy button, same over-limit counter, same "post it here" link. */
+  const combined = batch.combined && batch.combined.text
+    ? pasteBlock(
+      'All selected postings, as one post',
+      batch.combined.text,
+      `${batch.combined.count} posting${batch.combined.count === 1 ? '' : 's'}, each with its own link`
+        + (batch.combined.dropped ? ` · ${batch.combined.dropped} did not fit and are counted in the post` : ''),
+      MAX_POST_CHARS,
+      true,
+    )
+    : '';
+
   const body = drafts.length
     ? drafts.map(card).join('\n')
     : '<div class="empty"><b>Nothing in the queue.</b><br>Add postings from the run report, then press Generate.</div>';
@@ -229,6 +246,7 @@ export function buildPostsPage(drafts, batch) {
   <h1>${drafts.length} post${drafts.length === 1 ? '' : 's'} ready to paste</h1>
   <div class="sub">Written ${esc(absTime(batch.generatedAt))} by <code>${esc(batch.model)}</code> on this Mac ·
     every fact comes from the stored posting, the model only wrote the opening line and the tip</div>
+  ${combined}
   ${body}
   <footer>
     Copy a post, open LinkedIn and paste it — nothing here publishes anything on your behalf.<br>
@@ -281,30 +299,45 @@ function pasteBlock(label, text, note, limit, primary = false) {
  * @param {{post: string, comments: string[], stats: object}} roundup
  * @param {{generatedAt: number}} meta
  */
-export function buildWeeklyPage(roundup, { generatedAt }) {
-  const s = roundup.stats;
+export function buildWeeklyPage(roundups, { generatedAt }) {
+  /* AN ARRAY NOW, because the roundup runs per board and both belong on ONE
+     page. /weekly/latest serves the most recently written file, so writing a
+     page per region would mean the second silently replaced the first and he
+     would only ever see one board's post. A single roundup is still accepted,
+     so nothing that passed one has to change.
+     The region rides in each block's LABEL rather than a section heading: the
+     labels are what he reads while pasting, and "The post — United States"
+     next to "The post — India" cannot be pasted into the wrong board by
+     mistake. */
+  const list = (Array.isArray(roundups) ? roundups : [roundups]).filter(Boolean);
+  const s = list[0].stats;
+  const many = list.length > 1;
 
   // Say what did not fit, out loud and in numbers. A roundup that silently
   // drops half the week reads as though the week were half as good, and the
   // whole point of this post is showing that the board has depth.
-  const coverage = `
+  const coverageFor = (st) => `
 <div class="flag">
-  <b>${s.roles} roles from ${s.companies} employers</b> in ${esc(s.span)}.
-  The post names <b>${s.companiesListed}</b> of them; the remaining ${s.companiesDropped} are counted but not listed, because
+  ${many ? `<b>${esc(st.region)}</b> — ` : ''}<b>${st.roles} roles from ${st.companies} employers</b> in ${esc(st.span)}.
+  The post names <b>${st.companiesListed}</b> of them; the remaining ${st.companiesDropped} are counted but not listed, because
   LinkedIn stops at ${MAX_POST_CHARS} characters and naming every employer with its roles does not fit.
-  The follow-up comments carry apply links for <b>${s.linksCovered}</b> roles — the other ${s.linksOmitted} are on the board,
+  The follow-up comments carry apply links for <b>${st.linksCovered}</b> roles — the other ${st.linksOmitted} are on the board,
   which is what the single link in the post is for.
 </div>`;
 
-  const blocks = [
-    pasteBlock('The post', roundup.post, 'Paste this first.', MAX_POST_CHARS, true),
-    ...roundup.comments.map((c, i) => pasteBlock(
-      i === 0 ? 'First comment' : `Comment ${i + 1}`,
-      c,
-      i === 0 ? 'The board and the channel.' : 'Apply links — optional, post as a reply.',
-      MAX_COMMENT_CHARS,
-    )),
-  ];
+  const blocks = list.flatMap((r) => {
+    const suffix = many ? ` — ${r.stats.region}` : '';
+    return [
+      coverageFor(r.stats),
+      pasteBlock(`The post${suffix}`, r.post, 'Paste this first.', MAX_POST_CHARS, true),
+      ...r.comments.map((c, i) => pasteBlock(
+        (i === 0 ? 'First comment' : `Comment ${i + 1}`) + suffix,
+        c,
+        i === 0 ? 'The board and the channel.' : 'Apply links — optional, post as a reply.',
+        MAX_COMMENT_CHARS,
+      )),
+    ];
+  });
 
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -313,9 +346,8 @@ export function buildWeeklyPage(roundup, { generatedAt }) {
 <style>${CSS}</style></head><body>
 <div class="wrap">
   <h1>This week on the board</h1>
-  <div class="sub">${esc(s.span)} · ${esc(s.region)} · written ${esc(absTime(generatedAt))} ·
+  <div class="sub">${esc(s.span)} · ${esc(list.map((r) => r.stats.region).join(' + '))} · written ${esc(absTime(generatedAt))} ·
     no model involved, every line is a count or a company name</div>
-  ${coverage}
   ${blocks.join('\n')}
   <footer>
     Post the first block, then add the comments as replies in order. Nothing here publishes anything on your behalf.<br>

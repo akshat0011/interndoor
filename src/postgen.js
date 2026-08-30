@@ -307,11 +307,35 @@ const parseArray = (raw) => {
  * @param {object} row  a jobs row, as store.queuedJobs() returns it
  * @param {object} cfg  loaded config, for which regions have a public board
  */
+/**
+ * "₹0", "₹ 0", "0", "$0.00" — a figure that says the pay is nothing.
+ *
+ * Missing data rather than a wage: an employer that genuinely pays nothing is
+ * recorded in `stipendStatus`, which is NOT trustworthy and is rendered
+ * nowhere. Any zero introduced by a currency counts, not merely an all-zero
+ * string, so "₹0 - ₹0" and "$0/month" are caught too.
+ */
+export function isZeroPay(value) {
+  const v = String(value ?? '').trim();
+  if (!/\d/.test(v)) return false;
+  const figures = v.match(/\d[\d,.\s]*/g) ?? [];
+  return figures.length > 0 && figures.every((f) => Number(f.replace(/[,\s]/g, '')) === 0);
+}
+
 export function jobFacts(row, cfg = {}, campaign = 'post') {
-  const stipend = formatStipend({
+  /* ZERO IS NOT AN AMOUNT, and this path had missed that.
+     `stipendText` in pages.js already drops "₹0" for the site — 68 live rows
+     hold one, 30 of them on the US board where the currency is wrong as well
+     as the figure — but a post is built from the raw columns through
+     formatStipend, which has no such guard, so "💰 ₹0" went out under his own
+     name next to an apply link. On a job page that reads as a data quirk; in a
+     post it reads as a claim about what an employer pays. Same call the reel
+     caption already makes for the same reason. */
+  const rawStipend = formatStipend({
     min: row.stipend_min, max: row.stipend_max,
     currency: row.stipend_currency, period: row.stipend_period,
   }) || row.salary_text || null;
+  const stipend = isZeroPay(rawStipend) ? null : rawStipend;
 
   const region = resolveRowRegion(row);
   const published = new Set(publishedRegions(cfg).map((r) => r.code));
@@ -331,6 +355,10 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
   return {
     jobId: row.job_id,
     postedAt,
+    // Exposed so a caller holding several postings can tell which board each
+    // belongs to. composeCombined needs it to pick ONE footer, and without it
+    // the majority tally silently read every row as India.
+    region,
     postedLabel: postedLabel(postedAt, region),
     // How stale the DRAFT is by the time he looks at it. The posts page warns
     // above a day: pasting a three-day-old listing under a headline that says
@@ -650,6 +678,87 @@ export function composePost(facts, ai) {
     drop.add(next);
   }
   return build(drop).slice(0, MAX_POST_CHARS);
+}
+
+/**
+ * ONE post for everything in the queue, each posting keeping its own link.
+ *
+ * NO MODEL, and that is the same call the Sunday roundup makes for the same
+ * reason: every line here is a company name, a place and a URL. There is
+ * nothing for a model to add that would not be an invented adjective, and
+ * skipping it means the button is instant rather than a minute of Ollama.
+ *
+ * THE PER-JOB LINK IS THE WHOLE POINT, so the rule that a single-job post
+ * carries exactly one link does not apply. That rule exists because a board
+ * link and a job link compete for one click; here the links ARE the content,
+ * and a reader who wants the third role should not have to go and find it.
+ *
+ * WHAT DOES NOT FIT IS COUNTED, NEVER SILENTLY DROPPED — the same discipline
+ * the weekly roundup follows, because a post that quietly loses half its
+ * listings reads as though there were half as many.
+ */
+export function composeCombined(list) {
+  const rows = (list ?? []).filter(Boolean);
+  if (!rows.length) return '';
+
+  /* THE FOOTER FOLLOWS THE ROWS, NOT THE FIRST ONE. Each posting carries the
+     board and channel for its OWN region, so taking them off rows[0] put
+     India's board and @interndoor under a list that was two-thirds American —
+     which is the same mistake the Telegram routing is careful about, arriving
+     from a different direction. The report keeps the boards apart behind a
+     toggle so a queue is normally all one region; when it is not, the majority
+     decides and the minority still keeps its own per-job links. */
+  const tally = new Map();
+  for (const f of rows) {
+    const key = f.region ?? 'IN';
+    tally.set(key, (tally.get(key) ?? 0) + 1);
+  }
+  const main = [...tally.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+  const pick = (get) => get(rows.find((f) => (f.region ?? 'IN') === main) ?? rows[0])
+    ?? get(rows.find((f) => get(f)) ?? {});
+  const board = pick((f) => f?.boardUrl);
+  const tg = pick((f) => f?.telegram);
+
+  const entry = (f) => {
+    const bits = [];
+    if (f.location) {
+      const city = cityOf(f.location) || f.location;
+      bits.push(`📍 ${city}${f.workplaceType ? ` (${f.workplaceType})` : ''}`);
+    }
+    if (f.stipend) bits.push(`💰 ${f.stipend}`);
+    if (f.batch) bits.push(`🎓 ${f.batch}`);
+    const lines = [`${B(f.company)} — ${f.title}`];
+    if (bits.length) lines.push(bits.join(' · '));
+    // The apply link, or the job page where one exists. jobFacts already
+    // decided which, and already refused to tag a URL that is not ours.
+    lines.push(`→ ${f.link}`);
+    return lines.join('\n');
+  };
+
+  const head = `${B(`${rows.length} engineering internship${rows.length === 1 ? '' : 's'} open right now`)} 🚨`;
+  const lede = 'Apply while the queue is still short — the good ones collect hundreds of applicants inside a day.';
+
+  const build = (n) => {
+    const parts = [head, lede, rows.slice(0, n).map(entry).join('\n\n')];
+    const dropped = rows.length - n;
+    if (dropped > 0) parts.push(`…and ${dropped} more on the board.`);
+    const foot = [];
+    if (board) foot.push(`🌐 Every live engineering internship: ${board}`);
+    // Named, not linked. A handle is not an outbound link so it costs the post
+    // nothing, and a subscriber is worth more than a click.
+    if (tg) foot.push(`${tg.handle} on Telegram — new roles the minute they go up.`);
+    if (foot.length) parts.push(foot.join('\n'));
+    return parts.filter(Boolean).join('\n\n');
+  };
+
+  /* Whole entries are shed, never characters. Bold glyphs are surrogate pairs,
+     so slicing the finished string to length would cut one in half and emit a
+     lone surrogate; and half a job listing is worse than one fewer. */
+  for (let n = rows.length; n >= 1; n -= 1) {
+    const text = build(n);
+    if (text.length <= MAX_POST_CHARS) return text;
+  }
+  return build(1);
 }
 
 /**
