@@ -81,7 +81,8 @@ and checked every 30 minutes. Every listing links back to the original posting.
 
 Most internship lists are either stale or unfiltered. This one is neither:
 
-- **Fast.** A role usually appears here within an hour of going live.
+- **Fast.** The board behind this list is checked every 30 minutes, so roles are
+  usually live on the site within the hour. This table is regenerated daily.
 - **Filtered.** A posting is only kept if the employer is on a manually maintained
   list of real companies. Roughly **60 listings are turned away for every one
   published** — this market is full of unpaid "certificate" schemes, and keeping
