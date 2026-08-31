@@ -212,44 +212,92 @@ export async function sessionState(page, { timeoutMs = 45_000 } = {}) {
  * that cannot quietly select the wrong conversation and post a job listing
  * into it.
  */
+/** The composer, which is the only element that both proves which conversation
+ *  is open AND is the thing about to be typed into. */
+function composer(page) {
+  return page.locator('footer div[contenteditable="true"]')
+    .or(page.locator('div[contenteditable="true"][data-tab="10"]')).first();
+}
+
+/**
+ * Refuse to type unless the box itself names the target.
+ *
+ * A channel's header says "4 Updates in Status", not the channel name, so
+ * checking the header would reject a correctly-opened channel. The composer
+ * carries aria-label "Type a message to Interndoor" — it names the
+ * destination, and it is the very element the text goes into, so there is no
+ * gap between what was verified and what is used.
+ */
+async function composerNames(page, name) {
+  const box = composer(page);
+  if (!await box.count()) return { ok: false, error: 'no composer on this screen' };
+  const aria = (await box.getAttribute('aria-label')) ?? '';
+  if (!aria.toLowerCase().includes(String(name).toLowerCase())) {
+    return { ok: false, error: `the message box says "${aria}" — not "${name}"` };
+  }
+  return { ok: true };
+}
+
+/**
+ * Open the channel (or group) to broadcast into, by the name it shows.
+ *
+ * BY NAME, NOT BY POSITION. A list reorders itself the moment anything
+ * arrives, so "the first row" is whatever was most recently active — which on
+ * a number with personal chats on it could be somebody's reply. Nothing here
+ * can select a conversation it was not asked for.
+ *
+ * CHANNELS ARE NOT IN THE CHAT LIST, and searching for one there finds
+ * nothing: they live behind their own nav button, which only appears once the
+ * account has a channel at all. That is why an earlier probe concluded the
+ * client had no channel support — it had none to show. Channels are tried
+ * first and the chat search is the fallback, so a group by the same name still
+ * works.
+ *
+ * The title is matched case-insensitively but WHOLE: the channel is called
+ * "Interndoor" and the config said "InternDoor". Exactness is what stops
+ * "Interndoor" opening "Interndoor feedback"; case is not part of that.
+ */
 export async function findTarget(page, name) {
   const wanted = String(name ?? '').trim();
   if (!wanted) return { ok: false, error: 'no target name configured' };
+  const exactly = new RegExp(`^${wanted.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i');
 
-  const search = page.locator('div[contenteditable="true"][data-tab="3"]')
-    .or(page.getByRole('textbox', { name: /search/i })).first();
+  const channels = page.getByRole('button', { name: /^channels$/i }).first();
+  if (await channels.count()) {
+    try {
+      await channels.click();
+      await page.waitForTimeout(2500);
+      const row = page.getByTitle(exactly).first();
+      if (await row.count()) {
+        await row.click();
+        await page.waitForTimeout(2500);
+        const v = await composerNames(page, wanted);
+        if (v.ok) return { ok: true, how: `channel "${wanted}"` };
+      }
+    } catch { /* fall through to the chat search */ }
+  }
+
   try {
+    await page.getByRole('button', { name: /^chats$/i }).first().click();
+    await page.waitForTimeout(1200);
+    const search = page.locator('div[contenteditable="true"][data-tab="3"]')
+      .or(page.getByRole('textbox', { name: /search/i })).first();
     await search.click({ timeout: 10_000 });
-    // Clear whatever a previous run left behind, or the query concatenates.
     await page.keyboard.press('ControlOrMeta+A');
     await page.keyboard.press('Backspace');
     await page.keyboard.type(wanted, { delay: 40 });
+    await page.waitForTimeout(2000);
+    const row = page.locator('#pane-side').getByTitle(exactly).first();
+    if (!await row.count()) {
+      return { ok: false, error: `nothing called "${wanted}" in the channels list or the chats` };
+    }
+    await row.click();
     await page.waitForTimeout(1800);
+    const v = await composerNames(page, wanted);
+    return v.ok ? { ok: true, how: `chat "${wanted}"` } : { ok: false, error: v.error };
   } catch (e) {
-    return { ok: false, error: `could not reach the search box (${e.message.split('\n')[0]})` };
+    return { ok: false, error: `could not reach "${wanted}" (${e.message.split('\n')[0]})` };
   }
-
-  // The exact title, not a contains: "InternDoor" must never match a chat
-  // called "InternDoor feedback".
-  /* `[role=listitem]` returns ZERO on the current client — the chat list is
-     built from [role=row] — which is why the first version of this could never
-     have found anything. Matched on the title attribute inside the pane rather
-     than on the row, because that is where the name actually lives. */
-  const safe = wanted.replace(/"/g, '\\"');
-  const row = page.locator(`#pane-side [role="row"] span[title="${safe}"]`)
-    .or(page.locator(`#pane-side span[title="${safe}"]`)).first();
-  if (!await row.count()) {
-    return { ok: false, error: `no chat titled exactly "${wanted}" — create it in WhatsApp first, or fix whatsapp.target` };
-  }
-  await row.click();
-  await page.waitForTimeout(1500);
-
-  // Prove the right conversation is open before anything is typed into it.
-  const header = await page.locator('header').first().innerText().catch(() => '');
-  if (!header.includes(wanted)) {
-    return { ok: false, error: `opened a conversation whose header does not say "${wanted}" (saw "${header.slice(0, 60)}")` };
-  }
-  return { ok: true, how: `search → exact title "${wanted}"` };
 }
 
 /**
@@ -260,8 +308,7 @@ export async function findTarget(page, name) {
  * joined with Shift+Enter, and Enter is pressed exactly once, at the end.
  */
 export async function sendOne(page, text) {
-  const box = page.locator('footer div[contenteditable="true"]')
-    .or(page.locator('div[contenteditable="true"][data-tab="10"]')).first();
+  const box = composer(page);
   await box.click({ timeout: 10_000 });
   const lines = String(text).split('\n');
   for (const [i, line] of lines.entries()) {

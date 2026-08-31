@@ -942,9 +942,9 @@
   },
   "_whatsapp_note": "Broadcasting India's new listings to WhatsApp by driving WhatsApp Web through Playwright. THERE IS NO PUBLIC CHANNEL API, so this automates the web client, which is against WhatsApp's Acceptable Use policy and whose documented consequence is the NUMBER being banned - it runs on a throwaway number, on its own Brave profile, slowly, and defaults to OFF. `enabled` stays false until `npm run whatsapp-login` has linked the number and `npm run whatsapp-probe` confirms the target is reachable. `target` is the channel or group by the name it shows in WhatsApp. `sendGapMs` is deliberately slow: this is a UI being driven, not an API, and a burst is what gets a number flagged. `maxPerRun` bounds one scan - the rest wait for the next, which is the same call the reel sweep makes.",
   "whatsapp": {
-    "enabled": false,
+    "enabled": true,
     "regions": ["IN"],
-    "target": "InternDoor",
+    "target": "Interndoor",
     "sendGapMs": 6000,
     "maxPerRun": 8,
     "headless": true
