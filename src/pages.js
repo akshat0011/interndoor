@@ -134,7 +134,22 @@ export function slugify(s, max = 70) {
  * one page and silently drop one of them.
  */
 export function jobSlug(job) {
-  return `${slugify(job.company)}-${slugify(job.title)}-${slugify(job.id, Infinity)}`;
+  /* THE ID IS REQUIRED, AND A MISSING ONE THROWS RATHER THAN DEGRADING.
+     slugify falls back to 'role' on empty input — right for a company or a
+     title, catastrophic for the id, because it turns a missing field into a
+     URL that LOOKS correct and 404s. That is exactly what happened: the
+     WhatsApp broadcaster passed store rows, where the column is `job_id` and
+     `id` is undefined, so every link it sent read
+     `.../jobs/harman-india-intern-role` instead of `...-4458884978`. Both the
+     preview card and the link were dead, and nothing anywhere said so — the
+     message composed fine, sent fine, and looked right.
+     A caller with no id has nothing to link to, so there is no sensible URL to
+     return and refusing is the only honest answer. */
+  const id = job?.id ?? job?.job_id;
+  if (id === undefined || id === null || String(id).trim() === '') {
+    throw new Error(`jobSlug: no id for ${JSON.stringify(job?.company ?? '')} — ${JSON.stringify(job?.title ?? '')}`);
+  }
+  return `${slugify(job.company)}-${slugify(job.title)}-${slugify(id, Infinity)}`;
 }
 
 export function companySlug(company) {

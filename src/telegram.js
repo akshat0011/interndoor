@@ -116,7 +116,7 @@ export function applicantCount(text) {
  */
 export function jobParts(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
-  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id })}`;
+  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
   const apply = job.applyUrl || job.url || page;
   const title = clampWords(String(job.title ?? ''), 110);
 
@@ -145,7 +145,7 @@ export function jobParts(job, region = regionOf('IN')) {
 
 export function composeJob(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
-  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id })}`;
+  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
   const apply = job.applyUrl || job.url || page;
 
   /* THE TITLE IS CLAMPED FIRST, and dropping fact lines is only a backstop.
@@ -224,7 +224,7 @@ function channelFor(conf, code) {
  * projection that has already been through every cleaning rule the site uses,
  * so a message cannot state something the job page does not.
  */
-function publishedIndex(code) {
+export function publishedIndex(code) {
   const prefix = regionPath(code);
   const file = join(PATHS.root, 'web', 'public', ...(prefix ? [prefix.slice(1)] : []), 'data', 'jobs.json');
   const index = new Map();

@@ -27,7 +27,16 @@ check('ats id is fully slugified', jobSlug(ats),
 // A numeric id survives slugify untouched, so no existing LinkedIn URL moves.
 check('linkedin url is unchanged', jobSlug(linkedin), 'adobe-ai-engineer-apprentice-4441247638');
 check('slug is filesystem-safe', /^[a-z0-9-]+$/.test(jobSlug(ats)), true);
-check('missing id does not produce a trailing dash', jobSlug({ id: null, company: 'X', title: 'Y' }), 'x-y-role');
+/* SUPERSEDED 31 Aug. This pinned jobSlug({id:null}) === 'x-y-role', on the
+   reasoning that a missing id should not leave a trailing dash. The reasoning
+   was sound and the remedy was worse than the problem: a trailing dash is an
+   obviously broken URL nobody would ship, while 'x-y-role' is a PLAUSIBLE one
+   — and it shipped, as every link the WhatsApp channel sent for a day, each a
+   404 whose preview card could not render either. A caller with no id has
+   nothing to link to, so refusing is the only honest answer. */
+check('a missing id throws rather than inventing a URL',
+  (() => { try { jobSlug({ id: null, company: 'X', title: 'Y' }); return 'returned a slug'; } catch { return 'threw'; } })(),
+  'threw');
 // Two Workday requisitions from one tenant differ only in their last characters.
 // Capping the id at slugify's 70 would collide them onto a single page.
 const wd = (n) => ({ company: 'Piramal Pharma', title: 'Intern', id: `ats:workday:piramalpharma:wd102:PIRAMAL_EXTERNAL_CAREERS:R0000${n}` });

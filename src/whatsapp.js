@@ -21,7 +21,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { PATHS } from './paths.js';
-import { jobParts } from './telegram.js';
+import { jobParts, publishedIndex } from './telegram.js';
 import { regionOf, resolveRowRegion } from './regions.js';
 import { log } from './logger.js';
 
@@ -480,7 +480,27 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
   if (!conf.enabled) return { sent: 0, reason: 'disabled' };
 
   const regions = new Set(conf.regions ?? ['IN']);
-  const mine = (jobs ?? []).filter((j) => regions.has(resolveRowRegion(j)));
+
+  /* RESOLVE EACH ROW TO ITS PUBLISHED PROJECTION, exactly as postNewJobs does.
+     What arrives here is a STORE row, where the column is `job_id` and `id` is
+     undefined — and jobSlug used to answer that with slugify's 'role' fallback,
+     so every link this sent read `.../jobs/harman-india-intern-role` and 404'd.
+     The message composed, sent and looked perfect; only the link was dead, and
+     with it the preview card, because WhatsApp cannot build one from a 404.
+     Mapping through the published file is not just a way to get the id: it is
+     what makes this function's documented promise true — a listing is only
+     posted once a page is known to exist for it — and it hands the composer the
+     same cleaned fields the job page shows, so a message cannot state something
+     the site does not. */
+  const indexes = new Map();
+  const mine = [];
+  for (const row of jobs ?? []) {
+    const code = resolveRowRegion(row);
+    if (!regions.has(code)) continue;
+    if (!indexes.has(code)) indexes.set(code, publishedIndex(code));
+    const pub = indexes.get(code).get(String(row.job_id ?? row.id));
+    if (pub) mine.push({ job: pub, code });
+  }
   if (!mine.length) return { sent: 0, reason: 'nothing on these boards' };
 
   /* ONE SCAN'S WORTH, and the rest wait for the next — the same call the reel
@@ -514,8 +534,8 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
 
     let carded = 0;
     let tried = 0;
-    for (const job of batch) {
-      const r = await sendOne(page, composeWhatsApp(job, regionOf(resolveRowRegion(job))));
+    for (const { job, code } of batch) {
+      const r = await sendOne(page, composeWhatsApp(job, regionOf(code)));
       tried += 1;
       /* Only a send that was PROVEN to leave the box counts. It used to be
          counted unconditionally, so a listing that never went out was reported
