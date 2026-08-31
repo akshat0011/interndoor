@@ -183,6 +183,27 @@ export function utmUrl(url, { campaign, content, source } = {}, cfg = {}) {
  * different channels. A numeric chat id (a private channel) yields no link,
  * because t.me has no address for one.
  */
+/**
+ * The channel a post should send people to. WhatsApp first where it exists.
+ *
+ * Not a ranking of the channels — an ordering claim about which app the reader
+ * already has open, and for the India board that is not close. A region with
+ * only Telegram is unaffected: this picks a preference, it does not remove
+ * anything, and the same rule the alerts page follows.
+ *
+ * A WHATSAPP CHANNEL HAS NO HANDLE, only an invite URL, which is why `handle`
+ * can be null and callers must not assume one. That matters in the post BODY,
+ * where Telegram's "@interndoor" could be named without spending a link and
+ * WhatsApp cannot — so the body names the channel in words and the link goes
+ * in the first comment, which is where it was going anyway.
+ */
+export function followChannel(cfg, code) {
+  const wa = cfg?.notifications?.whatsapp?.channels?.[code];
+  if (wa) return { name: 'WhatsApp', url: String(wa), handle: null };
+  const tg = telegramFor(cfg, code);
+  return tg ? { name: 'Telegram', url: tg.url, handle: tg.handle } : null;
+}
+
 export function telegramFor(cfg, code) {
   const conf = cfg?.notifications?.telegram ?? {};
   const chat = conf.channels?.[code] ?? (code === 'IN' ? conf.chatId : null);
@@ -366,6 +387,8 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
     ageHours: postedAt ? Math.round((Date.now() - postedAt) / 3_600_000) : null,
     applicants: applicantCount(row.applicants),
     telegram: telegramFor(cfg, region),
+    // Where the post actually sends people: WhatsApp if the region has one.
+    follow: followChannel(cfg, region),
     company: row.company || row.company_matched || 'Unknown company',
     title: row.title,
     roleLabel: row.role_label || null,
@@ -639,8 +662,13 @@ export function composePost(facts, ai) {
   // The channel is still NAMED here without a link. A handle is not an outbound
   // link, so it costs nothing, and a subscriber is worth more than a click: it
   // is the only thing on this site anybody can follow.
-  const follow = facts.telegram
-    ? `📢 Every new internship, the minute it opens: ${facts.telegram.handle} on Telegram — link in the comments.`
+  /* Telegram's handle is naming a channel, not linking one, so it costs the
+     post nothing. A WhatsApp channel has no handle at all, so it is named in
+     words instead — the link is in the first comment either way. */
+  const follow = facts.follow
+    ? (facts.follow.handle
+      ? `📢 Every new internship, the minute it opens: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
+      : `📢 Every new internship, the minute it opens — our ${facts.follow.name} channel, link in the comments.`)
     : '';
 
   const section = {
@@ -717,7 +745,7 @@ export function composeCombined(list) {
   const pick = (get) => get(rows.find((f) => (f.region ?? 'IN') === main) ?? rows[0])
     ?? get(rows.find((f) => get(f)) ?? {});
   const board = pick((f) => f?.boardUrl);
-  const tg = pick((f) => f?.telegram);
+  const tg = pick((f) => f?.follow);
 
   const entry = (f) => {
     const bits = [];
@@ -746,7 +774,11 @@ export function composeCombined(list) {
     if (board) foot.push(`🌐 Every live engineering internship: ${board}`);
     // Named, not linked. A handle is not an outbound link so it costs the post
     // nothing, and a subscriber is worth more than a click.
-    if (tg) foot.push(`${tg.handle} on Telegram — new roles the minute they go up.`);
+    if (tg) {
+      foot.push(tg.handle
+        ? `${tg.handle} on ${tg.name} — new roles the minute they go up.`
+        : `New roles the minute they go up, on ${tg.name} 👉 ${tg.url}`);
+    }
     if (foot.length) parts.push(foot.join('\n'));
     return parts.filter(Boolean).join('\n\n');
   };
@@ -770,8 +802,8 @@ export function composeCombined(list) {
  */
 export function composeComment(facts) {
   const lines = [`Every live engineering internship, updated as they open 👉 ${facts.boardUrl}`];
-  if (facts.telegram) {
-    lines.push(`New roles the minute they go up, on Telegram 👉 ${facts.telegram.url}`);
+  if (facts.follow) {
+    lines.push(`New roles the minute they go up, on ${facts.follow.name} 👉 ${facts.follow.url}`);
   }
   return lines.join('\n\n').slice(0, MAX_COMMENT_CHARS);
 }

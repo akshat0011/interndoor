@@ -60,11 +60,26 @@ export function channelsFor(code, cfg = {}) {
   const region = String(code || '').toUpperCase();
   const out = [emailChannel()];
 
+  /* WHATSAPP BEFORE TELEGRAM, where a region has both. Ordering here is a
+     claim about which one a reader is most likely to already have open, not a
+     ranking of the channels — and for the India board that is not close.
+     A region with only Telegram is unaffected: this is an order, not a
+     replacement, and nothing is hidden because something else exists. */
+  const wa = whatsappFor(region, cfg);
+  if (wa) {
+    out.push({
+      kind: 'whatsapp', name: 'WhatsApp', url: wa.url, handle: wa.handle,
+      blurb: 'Every new role the moment it is listed.',
+    });
+  }
+
   const tg = telegramFor(region, cfg);
   if (tg) {
     out.push({
       kind: 'telegram', name: 'Telegram', url: tg.url, handle: tg.handle,
-      blurb: 'Every new role the moment it is listed.',
+      blurb: wa
+        ? 'The same feed, if you prefer Telegram.'
+        : 'Every new role the moment it is listed.',
     });
   }
 
@@ -73,14 +88,6 @@ export function channelsFor(code, cfg = {}) {
     out.push({
       kind: 'instagram', name: 'Instagram', url: ig.url, handle: ig.handle,
       blurb: 'Short reels on the roles worth knowing about.',
-    });
-  }
-
-  const wa = whatsappFor(region, cfg);
-  if (wa) {
-    out.push({
-      kind: 'whatsapp', name: 'WhatsApp', url: wa.url, handle: wa.handle,
-      blurb: 'New internships on WhatsApp.',
     });
   }
 

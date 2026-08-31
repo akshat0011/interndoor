@@ -959,6 +959,8 @@
     "reportRegions": ["IN", "US"],
     "homeRegion": "IN",
     "_homeRegion_note": "The only region whose new listings interrupt HIM: the Mac banner, the phone push, and auto-opening the report. Everything that serves READERS is unaffected - every region is still collected, still published, and still posted to its own Telegram channel. He applies to internships in India, so a US listing is worth all of those things and worth nothing as a banner on his Mac at 2am. Left unscoped this got much worse the moment US collection went live: one run produced 86 new listings, 76 of them American, so an alert meant to say 'apply in the first hour' would mostly announce roles he will never open. Set to 'all' to be alerted about every region, or to another ISO code if he ever moves. The report itself still contains every region and is still written every run - only the decision to OPEN it is scoped, because its post-queue buttons are useful for a role he would post about but not apply to.",
+    "_whatsapp_channels_note": "The WhatsApp channel's invite link, read by src/channels.js for the /alerts page and the Get alerts pill. Same rule as Telegram: a region with no entry gets NO link rather than another region's. WhatsApp is listed AHEAD of Telegram where a region has both - an ordering claim about which app the reader already has open, not a ranking, and Telegram is still offered.",
+    "whatsapp": { "channels": { "IN": "https://whatsapp.com/channel/0029VbEJ2qLBA1eq3S5hBE3P" } },
     "telegram": {
       "enabled": true,
       "chatId": "@interndoor",
@@ -1138,12 +1140,13 @@
     "auto": {
       "enabled": true,
       "regions": [
-        "IN"
+        "IN",
+        "US"
       ],
-      "_regions_note": "US REMOVED 30 Aug. @interndoorusa still answers OAuthException code 200 'API access blocked' — probed read-only that morning, while @interndoorin returned normally (4 followers, 16 media). The 28 Aug re-enable was half right: India came back and the US account never did, so 36 US reels failed with that error between 28 and 29 Aug. THE FAILURES ARE WHAT MAKE THIS URGENT, not the missed posts: reelCountSince counts rendering|scheduled|publishing|published and NOT failed, so every failure frees a daily-cap slot and the 60-second sweep queues a replacement, which fails too. Hammering an endpoint that is blocking you is the worst thing to be doing while an app restriction is live. Put US back only after a read-only probe of {user-id}?fields=username returns the account instead of code 200 — do not flip this to test, a failing burst is the signal that caused the block.",
+      "_regions_note": "US RESTORED 31 Aug after a read-only probe of {user-id}?fields=username returned @interndoorusa (0 followers, 25 media) instead of the OAuthException code 200 it had been answering since 28 Aug. India was probed the same way and also returned normally. The rule that put it back is the one the previous note set: probe read-only and require the ACCOUNT, never flip this to test, because a failing burst is the signal that caused the block - reelCountSince does not count `failed`, so every failure frees a cap slot and the 60-second sweep queues a replacement that fails too. THE US CAP CAME BACK AT 12, NOT 20. The block followed 30 fully-automated reels a day across two brand-new accounts from one IP, which this file's own post-mortem named as the likeliest cause; 12 + 10 is 22, still well under Instagram's documented 100/day per account, and it can be raised once both accounts have history.",
       "dailyCap": 20,
       "dailyCapByRegion": {
-        "US": 20,
+        "US": 12,
         "IN": 10
       },
       "perSweep": 3,

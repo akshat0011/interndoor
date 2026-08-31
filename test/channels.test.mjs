@@ -43,10 +43,21 @@ check('US', channelsFor('US', cfg).map((c) => c.kind), ['email', 'telegram', 'in
 check('email leads', channelsFor('IN', cfg)[0].kind, 'email');
 check('even with no config at all', channelsFor('IN', {}).map((c) => c.kind), ['email']);
 
-console.log('\n== adding WhatsApp later is a config entry and nothing else ==');
+console.log('\n== adding WhatsApp is a config entry and nothing else ==');
 const withWa = { ...cfg, notifications: { ...cfg.notifications, whatsapp: { channels: { IN: 'https://whatsapp.com/channel/x' } } } };
-check('it appears', channelsFor('IN', withWa).map((c) => c.kind), ['email', 'telegram', 'instagram', 'whatsapp']);
+// WHATSAPP OUTRANKS TELEGRAM WHERE BOTH EXIST (31 Aug), which is a product call and
+// not an accident of ordering: India's readers are on WhatsApp, and the alerts page
+// leads with whichever channel a reader is likeliest to already have open. Email
+// still leads both - it is the only channel the site OWNS rather than rents.
+check('it appears, ahead of Telegram', channelsFor('IN', withWa).map((c) => c.kind), ['email', 'whatsapp', 'telegram', 'instagram']);
 check('and only for its own region', channelsFor('US', withWa).map((c) => c.kind), ['email', 'telegram', 'instagram']);
+// The blurb moves with the ranking. Two channels both claiming to be THE feed reads
+// as a mistake; the second one has to say it is the same feed by another route.
+check('whatsapp claims the feed', channelsFor('IN', withWa).find((c) => c.kind === 'whatsapp').blurb, 'Every new role the moment it is listed.');
+check('telegram defers to it', channelsFor('IN', withWa).find((c) => c.kind === 'telegram').blurb, 'The same feed, if you prefer Telegram.');
+// ...but where WhatsApp does not exist, Telegram is still the feed and must not
+// describe itself as an alternative to something the region has never been offered.
+check('and takes it back where it is alone', channelsFor('US', withWa).find((c) => c.kind === 'telegram').blurb, 'Every new role the moment it is listed.');
 
 console.log('\n== the page ==');
 const inPage = renderAlertsPage(channelsFor('IN', cfg), { region: regionOf('IN') });

@@ -34,7 +34,7 @@
 import { resolveRowRegion, regionOf } from './regions.js';
 import { normaliseCompany } from './config.js';
 import {
-  boldSans, utmUrl, telegramFor, cityOf, tidyTech,
+  boldSans, utmUrl, followChannel, cityOf, tidyTech,
   MAX_POST_CHARS,
 } from './postgen.js';
 import { SITE, jobSlug, clampWords } from './pages.js';
@@ -273,7 +273,9 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     + ` · every one live on the board when I wrote this.`;
 
   const boardUrl = utmUrl(`${SITE}/`, { campaign: 'weekly', content: 'roundup' }, cfg);
-  const telegram = telegramFor(cfg, region);
+  // WhatsApp where the region has one — same preference the posts and the
+  // alerts page follow.
+  const telegram = followChannel(cfg, region);
 
   /* One role EACH rather than the top six roles outright, or a single employer
      running six postings would take the whole shortlist and the post would name
@@ -296,7 +298,11 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     const tail = [
       more,
       `👉 ${B('Every role, with apply links')}: ${boardUrl}`,
-      telegram ? `📢 I list them the minute they open: ${telegram.handle} on Telegram.` : '',
+      telegram
+        ? (telegram.handle
+          ? `📢 I list them the minute they open: ${telegram.handle} on ${telegram.name}.`
+          : `📢 I list them the minute they open — our ${telegram.name} channel, link in the comments.`)
+        : '',
       `Graduating soon, or know someone who is? ${B('Share this')} 🚀`,
       `Follow me for more ${B('Jobs')}, ${B('Internships')} & ${B('Career Opportunities')} 🔥`,
       '#internship #hiring #techjobs #engineering #interndoor #freshers',
@@ -324,7 +330,7 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     post: post.slice(0, MAX_POST_CHARS),
     comments: [
       telegram
-        ? `Every live engineering internship, updated as they open 👉 ${boardUrl}\n\nNew roles the minute they go up, on Telegram 👉 ${telegram.url}`
+        ? `Every live engineering internship, updated as they open 👉 ${boardUrl}\n\nNew roles the minute they go up, on ${telegram.name} 👉 ${telegram.url}`
         : `Every live engineering internship, updated as they open 👉 ${boardUrl}`,
     ],
     stats: {

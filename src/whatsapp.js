@@ -307,7 +307,42 @@ export async function findTarget(page, name) {
  * first newline would post a half-written listing. Every line is typed and
  * joined with Shift+Enter, and Enter is pressed exactly once, at the end.
  */
-export async function sendOne(page, text) {
+/**
+ * Wait for WhatsApp to build the link preview.
+ *
+ * THIS IS WHY THE FIRST POSTS HAD NO CARD. WhatsApp fetches the URL and
+ * renders the preview CLIENT-SIDE, into the composer, and it is not instant:
+ * measured against the live client, the image appears at about five seconds —
+ * while sendOne was pressing Enter after roughly one. The message went out
+ * before the card existed, every time, and nothing about it looked wrong.
+ *
+ * Our own /api/og takes 1.1-2.4s to answer on top of whatever WhatsApp spends,
+ * which is most of that five seconds.
+ *
+ * Returns whether it appeared. A post with no card still beats no post, so a
+ * timeout sends anyway rather than dropping the listing.
+ */
+async function waitForPreview(page, ms) {
+  const deadline = Date.now() + ms;
+  while (Date.now() < deadline) {
+    const ready = await page.evaluate(
+      () => (document.querySelector('footer')?.querySelectorAll('img').length ?? 0) > 0,
+    );
+    if (ready) return true;
+    await page.waitForTimeout(500);
+  }
+  return false;
+}
+
+/**
+ * Type one message and send it.
+ *
+ * ENTER SENDS IN WHATSAPP, so a multi-line message cannot simply be typed: the
+ * first newline would post a half-written listing. Every line is typed and
+ * joined with Shift+Enter, and Enter is pressed exactly once, at the end —
+ * after the preview has had its chance.
+ */
+export async function sendOne(page, text, { previewMs = 15_000 } = {}) {
   const box = composer(page);
   await box.click({ timeout: 10_000 });
   const lines = String(text).split('\n');
@@ -315,8 +350,10 @@ export async function sendOne(page, text) {
     if (line) await page.keyboard.type(line, { delay: 8 });
     if (i < lines.length - 1) await page.keyboard.press('Shift+Enter');
   }
+  const carded = /https?:\/\//.test(text) ? await waitForPreview(page, previewMs) : true;
   await page.keyboard.press('Enter');
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(1500);
+  return { carded };
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -371,13 +408,20 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
       return { sent: 0, reason: 'target not found' };
     }
 
+    let carded = 0;
     for (const job of batch) {
-      await sendOne(page, composeWhatsApp(job, regionOf(resolveRowRegion(job))));
+      const r = await sendOne(page, composeWhatsApp(job, regionOf(resolveRowRegion(job))));
       sent += 1;
+      if (r.carded) carded += 1;
       if (sent < batch.length) await sleep(gap);
     }
     const held = mine.length - batch.length;
-    log.ok(`WhatsApp: posted ${sent} to "${conf.target}"${held ? ` — ${held} held for the next run` : ''}.`);
+    /* The card count is reported even when every one worked. A preview that
+       silently stops appearing is invisible otherwise — which is exactly how
+       the first posts went out bare — and the same reason the apply-link
+       tripwire prints its ratio on every run. */
+    log.ok(`WhatsApp: posted ${sent} to "${conf.target}" (${carded}/${sent} with a preview card)`
+      + `${held ? ` — ${held} held for the next run` : ''}.`);
   } catch (err) {
     log.warn(`WhatsApp: ${err.message.split('\n')[0]} — ${sent} posted before it stopped.`);
   } finally {
