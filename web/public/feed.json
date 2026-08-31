@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/harman-india-intern-4458895896",
+      "url": "https://interndoor.com/jobs/harman-india-intern-4458895896",
+      "title": "Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Write and maintain test scripts for embedded software using Python\n• Collaborate with engineers to debug and troubleshoot test issues\n• Set up Linux-based test environments and CI/CD frameworks",
+      "date_published": "2026-08-31T10:40:26.074Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4461064759",
+      "url": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4461064759",
+      "title": "Intern-Power Greenfield — Emerson",
+      "content_text": "Company: Emerson · Location: Noida, Uttar Pradesh, India\n• Design and develop engineering tools for project efficiency\n• Support tool deployment and train users across teams\n• Automate repetitive tasks to improve deliverable quality",
+      "date_published": "2026-08-31T10:37:30.928Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4458895309",
       "url": "https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4458895309",
       "title": "Flutter Developer Intern — Bugsmirror",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456902007",
-      "url": "https://interndoor.com/jobs/ibm-application-developer-intern-ibm-cloud-full-stack-4456902007",
-      "title": "Application developer Intern- IBM cloud full stack — IBM",
-      "content_text": "Company: IBM · Location: Mumbai Metropolitan Region\n• Monitor applications, analyze faults, and perform simple fixes\n• Administer services, configure apps, and maintain documentation\n• Support senior consultants and learn on the job\n• Based in mumbai metropolitan region",
-      "date_published": "2026-08-25T08:29:25.791Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nxp-semiconductors-technical-internship-2027-4458718434",
-      "url": "https://interndoor.com/jobs/nxp-semiconductors-technical-internship-2027-4458718434",
-      "title": "Technical Internship 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Noida, Uttar Pradesh, India\n• Design and verify digital and mixed-signal IPs\n• Work with experienced engineers on soc design\n• Focus on automotive and iot applications",
-      "date_published": "2026-08-25T08:19:01.356Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
         }
       ]
     }
