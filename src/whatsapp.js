@@ -322,16 +322,101 @@ export async function findTarget(page, name) {
  * Returns whether it appeared. A post with no card still beats no post, so a
  * timeout sends anyway rather than dropping the listing.
  */
+/**
+ * Wait for the link preview to actually resolve, before Enter sends the message.
+ *
+ * WhatsApp builds the card CLIENT-SIDE, and a message sent before it lands goes
+ * out as bare text — which on a channel of job listings is the difference
+ * between the employer's OG card and a line of grey link.
+ *
+ * WATCH `compose-box-link-preview` FOR AN `img`, and nothing else. Two earlier
+ * guesses were both wrong in ways that looked right:
+ *
+ *  - `footer img` never becomes non-zero AT ALL, so it timed out on every
+ *    single post and reported no card while the card was sitting there.
+ *  - The container's mere PRESENCE is not enough either. Measured on a real
+ *    listing, it appears at t=1s holding only the bare domain ("interndoor.com")
+ *    and does not fill in until t=3s, when the title, the description and the
+ *    thumbnail arrive together. Sending on presence sends the skeleton, which
+ *    attaches no card — the same outcome as not waiting.
+ *
+ * The `img` is the last thing to arrive, so it is the honest signal that the
+ * card is complete.
+ */
 async function waitForPreview(page, ms) {
   const deadline = Date.now() + ms;
   while (Date.now() < deadline) {
-    const ready = await page.evaluate(
-      () => (document.querySelector('footer')?.querySelectorAll('img').length ?? 0) > 0,
-    );
+    const ready = await page.evaluate(() => {
+      const c = document.querySelector('[data-testid="compose-box-link-preview"]');
+      return !!c && c.querySelectorAll('img').length > 0;
+    });
     if (ready) return true;
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(400);
   }
   return false;
+}
+
+/** Is anything selected? Guards the Backspace in clearComposer. */
+async function hasSelection(page) {
+  return page.evaluate(() => (window.getSelection()?.toString() ?? '').length > 0);
+}
+
+/** Whatever is sitting in the composer right now. */
+async function composerText(page) {
+  const box = composer(page);
+  if (!await box.count()) return '';
+  return (await box.innerText()).trim();
+}
+
+/**
+ * Empty the composer, and prove it is empty.
+ *
+ * THIS IS THE ONE THAT CORRUPTED A LIVE CHANNEL. `sendOne` used to click the
+ * box and start typing, and a click puts the caret WHERE IT LANDS — so with
+ * anything already in the box the new message is typed into the MIDDLE of it.
+ * WhatsApp Web persists a draft, so a run that dies between typing and Enter
+ * leaves one behind, and the next run splices its message into it. The post
+ * that went out read
+ *
+ *   https://interndoor.com/jobs/joveo-softw🏢 Joveo … interndoor.com/are-engineer-intern-4458863278
+ *
+ * — the previous listing's URL cut at character 39 with a whole listing
+ * inserted between the halves, and its own footer link welded to the tail. Two
+ * unusable links in one message, on a public channel.
+ *
+ * Select-all is scoped to the focused contenteditable, so it cannot reach the
+ * rest of the page. The read-back is not belt-and-braces: if the box will not
+ * empty, typing into it produces exactly the spliced message above, and NOT
+ * sending is unambiguously better than sending that.
+ */
+async function clearComposer(page) {
+  const box = composer(page);
+  await box.click({ timeout: 10_000 });
+  if (!(await composerText(page))) return { ok: true };
+
+  /* Select-all is tried three ways before giving up. The box is a
+     framework-controlled contenteditable, so a single keystroke is not
+     guaranteed to register, and this is not a place to find out by writing a
+     spliced message to a public channel. Select-all is scoped to the focused
+     element and cannot reach the rest of the page. */
+  for (const combo of ['ControlOrMeta+A', 'Meta+A', 'Control+A']) {
+    if (!(await composerText(page))) break;
+    await box.click({ timeout: 10_000 });
+    await page.keyboard.press(combo);
+    /* Only delete if something is actually selected. A bare Backspace after a
+       select-all that did not take deletes ONE CHARACTER — so three attempts
+       silently ate three characters out of a draft this function had already
+       failed to clear, turning "…joveo-software-engineer…" into
+       "…joveo-softe-engineer…". Nothing is sent in that case, but mangling a
+       box you could not clear is not a no-op, and the next run inherits it. */
+    if (!(await hasSelection(page))) continue;
+    await page.keyboard.press('Backspace');
+    await page.waitForTimeout(250);
+  }
+
+  const left = await composerText(page);
+  if (left) return { ok: false, error: `composer would not clear — ${JSON.stringify(left.slice(0, 60))} still in it` };
+  return { ok: true };
 }
 
 /**
@@ -341,19 +426,38 @@ async function waitForPreview(page, ms) {
  * first newline would post a half-written listing. Every line is typed and
  * joined with Shift+Enter, and Enter is pressed exactly once, at the end —
  * after the preview has had its chance.
+ *
+ * The box is CLEARED first and checked EMPTY afterwards. The clear stops a
+ * stranded draft being spliced into (see clearComposer); the check afterwards
+ * is how a failed send is noticed at all — Enter silently doing nothing leaves
+ * the whole message sitting there, which is both a listing that never went out
+ * and the draft that corrupts the next one. Either way the text is removed, so
+ * a bad send costs one message instead of two.
  */
 export async function sendOne(page, text, { previewMs = 15_000 } = {}) {
-  const box = composer(page);
-  await box.click({ timeout: 10_000 });
+  const cleared = await clearComposer(page);
+  if (!cleared.ok) return { sent: false, carded: false, error: cleared.error };
+
   const lines = String(text).split('\n');
   for (const [i, line] of lines.entries()) {
     if (line) await page.keyboard.type(line, { delay: 8 });
     if (i < lines.length - 1) await page.keyboard.press('Shift+Enter');
   }
+
   const carded = /https?:\/\//.test(text) ? await waitForPreview(page, previewMs) : true;
   await page.keyboard.press('Enter');
   await page.waitForTimeout(1500);
-  return { carded };
+
+  const leftover = await composerText(page);
+  if (leftover) {
+    /* Enter did not send. Clear it rather than leave a draft for the next
+       message to be spliced into — the listing is lost either way, and a lost
+       listing is recoverable where a corrupted channel post is not. */
+    await page.keyboard.press('ControlOrMeta+A');
+    await page.keyboard.press('Backspace');
+    return { sent: false, carded, error: 'Enter did not send — the message was still in the box afterwards' };
+  }
+  return { sent: true, carded };
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -409,11 +513,17 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
     }
 
     let carded = 0;
+    let tried = 0;
     for (const job of batch) {
       const r = await sendOne(page, composeWhatsApp(job, regionOf(resolveRowRegion(job))));
-      sent += 1;
-      if (r.carded) carded += 1;
-      if (sent < batch.length) await sleep(gap);
+      tried += 1;
+      /* Only a send that was PROVEN to leave the box counts. It used to be
+         counted unconditionally, so a listing that never went out was reported
+         as posted — and the run that stranded it went on to corrupt the next
+         message with the draft it left behind. */
+      if (r.sent) { sent += 1; if (r.carded) carded += 1; }
+      else log.warn(`WhatsApp: ${job.company ?? 'a listing'} was not posted — ${r.error}`);
+      if (tried < batch.length) await sleep(gap);
     }
     const held = mine.length - batch.length;
     /* The card count is reported even when every one worked. A preview that
