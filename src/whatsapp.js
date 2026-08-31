@@ -17,7 +17,8 @@
  * because the session has to persist somewhere the user can scan a QR into.
  */
 
-import { existsSync, mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { PATHS } from './paths.js';
 import { jobParts } from './telegram.js';
@@ -84,10 +85,45 @@ export function composeWhatsApp(job, region = regionOf('IN')) {
  * scheduled send should not throw a window in front of whatever he is doing
  * every thirty minutes.
  */
+/**
+ * Stop the profile restoring its last session.
+ *
+ * WHATSAPP ALLOWS ONE ACTIVE WEB SESSION AT A TIME. If Brave reopens the
+ * WhatsApp tab it had last time, that restored tab claims the session and the
+ * tab this code drives gets "WhatsApp is open in another window" instead of a
+ * chat list — the automation then does nothing, correctly but uselessly, and
+ * the cause is invisible from the logs.
+ *
+ * `restore_on_startup: 5` is Chromium's "open the New Tab page", so nothing is
+ * restored and only the tab this code opens exists. `exited_cleanly` is set
+ * with it because a profile killed mid-run otherwise shows the "restore pages?"
+ * bubble on the next launch, which is the same problem wearing a hat.
+ *
+ * Written BEFORE the browser starts, because Chromium reads Preferences once
+ * at startup and rewrites the whole file on exit — editing it while Brave is
+ * running achieves nothing.
+ */
+function noSessionRestore(dir) {
+  const file = join(dir, 'Default', 'Preferences');
+  if (!existsSync(file)) return false;          // first run: nothing to fix yet
+  try {
+    const prefs = JSON.parse(readFileSync(file, 'utf8'));
+    prefs.session = { ...(prefs.session ?? {}), restore_on_startup: 5, startup_urls: [] };
+    prefs.profile = { ...(prefs.profile ?? {}), exit_type: 'Normal', exited_cleanly: true };
+    writeFileSync(file, JSON.stringify(prefs));
+    return true;
+  } catch {
+    // A malformed or half-written Preferences file is Brave's to repair, and a
+    // broadcast is not worth failing a scan over.
+    return false;
+  }
+}
+
 export async function openWhatsApp({ headless = true } = {}) {
   const brave = bravePath();
   if (!brave) throw new Error('Brave is not installed at the expected path');
   mkdirSync(PATHS.whatsappProfile, { recursive: true });
+  noSessionRestore(PATHS.whatsappProfile);
   const ctx = await chromium.launchPersistentContext(PATHS.whatsappProfile, {
     executablePath: brave,
     headless,
@@ -95,8 +131,43 @@ export async function openWhatsApp({ headless = true } = {}) {
     args: ['--disable-blink-features=AutomationControlled'],
   });
   const page = ctx.pages()[0] ?? await ctx.newPage();
+
+  /* WHATSAPP REFUSES HEADLESS CHROME BY USER AGENT, and says so in a way that
+     looks like anything but: "WhatsApp works with Google Chrome 100+ — update
+     Chrome". Nothing renders, there is no QR and no chat list, so every
+     selector below reports absence and the session looks broken rather than
+     rejected. The only difference between the two is the word:
+
+       headless  ...(KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36
+       headed    ...(KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36
+
+     Read from the live browser and rewritten rather than hardcoded, so the
+     version can never drift out of step with the binary actually running. */
+  const ua = await page.evaluate(() => navigator.userAgent);
+  if (/HeadlessChrome/.test(ua)) {
+    const cdp = await ctx.newCDPSession(page);
+    await cdp.send('Network.setUserAgentOverride', { userAgent: ua.replace('HeadlessChrome', 'Chrome') });
+  }
+
   await page.goto('https://web.whatsapp.com/', { waitUntil: 'domcontentloaded' });
   return { ctx, page };
+}
+
+/**
+ * "WhatsApp is open in another window. Click Use here."
+ *
+ * A LINKED session that some other window holds the claim on — which is a
+ * third state, and missing it is what made a successful QR scan report as a
+ * timeout: the account was linked, the chat list simply never rendered because
+ * this window had not claimed it. One click takes the claim.
+ */
+export async function claimSession(page) {
+  const btn = page.getByRole('button', { name: /use here/i })
+    .or(page.locator('button:has-text("Use here")')).first();
+  if (!await btn.count()) return false;
+  await btn.click();
+  await page.waitForTimeout(4000);
+  return true;
 }
 
 /**
@@ -114,10 +185,16 @@ export async function sessionState(page, { timeoutMs = 45_000 } = {}) {
       chatList: !!document.querySelector('#pane-side'),
       qr: !!document.querySelector('[data-ref], canvas[aria-label*="scan" i], canvas[aria-label*="QR" i]'),
       loading: /loading|starting/i.test(document.body.innerText.slice(0, 400)),
+      elsewhere: /open in another window|use here/i.test(document.body.innerText.slice(0, 400)),
+      unsupported: /works with google chrome|update chrome/i.test(document.body.innerText.slice(0, 400)),
       text: document.body.innerText.slice(0, 120).replace(/\s+/g, ' '),
     }));
     if (seen.chatList) return { state: 'ready', ...seen };
     if (seen.qr) return { state: 'needs-qr', ...seen };
+    /* Linked, but claimed elsewhere. Take the claim and carry on rather than
+       reporting a broken session — the account is fine. */
+    if (seen.elsewhere && await claimSession(page)) continue;
+    if (seen.unsupported) return { state: 'browser-refused', ...seen };
     await page.waitForTimeout(1000);
   }
   return { state: 'unknown' };
@@ -154,7 +231,13 @@ export async function findTarget(page, name) {
 
   // The exact title, not a contains: "InternDoor" must never match a chat
   // called "InternDoor feedback".
-  const row = page.locator(`#pane-side span[title="${wanted.replace(/"/g, '\\"')}"]`).first();
+  /* `[role=listitem]` returns ZERO on the current client — the chat list is
+     built from [role=row] — which is why the first version of this could never
+     have found anything. Matched on the title attribute inside the pane rather
+     than on the row, because that is where the name actually lives. */
+  const safe = wanted.replace(/"/g, '\\"');
+  const row = page.locator(`#pane-side [role="row"] span[title="${safe}"]`)
+    .or(page.locator(`#pane-side span[title="${safe}"]`)).first();
   if (!await row.count()) {
     return { ok: false, error: `no chat titled exactly "${wanted}" — create it in WhatsApp first, or fix whatsapp.target` };
   }
