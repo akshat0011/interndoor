@@ -675,17 +675,19 @@ function regionPaths() {
       || !!git(['ls-files', '--', rel], { allowFail: true }));
 }
 
-export function pushToSite(newJobCount) {
-  if (!existsSync(join(ROOT, '.git'))) {
-    log.warn('Not a git repository — skipping publish. Run `git init` and connect the GitHub remote first.');
-    return false;
-  }
-
-  // Everything publish regenerates. Narrow on purpose — never `git add .`, or an
-  // unattended run would commit whatever source edit happened to be in progress.
-  // index.html is here because publish now writes the listings into it — only
-  // the region between the LISTINGS markers, everything else is hand-authored.
-  const PUBLISHED = ['web/public/data', 'web/public/logos', 'web/public/jobs',
+/**
+ * Exactly the paths the scheduler commits.
+ *
+ * A GENERATED PAGE MISSING FROM HERE IS WRITTEN EVERY RUN AND PUSHED NEVER,
+ * which looks exactly like a page that renders wrong. That has now happened
+ * three times - /alerts, /report, and the /skills and /locations facet pages,
+ * whose US and UK copies served 200 the whole time because those regions are
+ * allowlisted by DIRECTORY while India is enumerated file by file.
+ * `test/published.test.mjs` renders India and fails if anything it creates at
+ * the root is not covered here.
+ */
+export function publishedPaths() {
+  return ['web/public/data', 'web/public/logos', 'web/public/jobs',
     'web/public/companies', 'web/public/sitemap.xml', 'web/public/robots.txt',
     'web/public/feed.xml', 'web/public/feed.json', 'web/public/index.html',
     // India's /alerts and /report. Every other region's is inside its own tree
@@ -699,6 +701,14 @@ export function pushToSite(newJobCount) {
        one, and that page is where a site reads as maintained or generated. */
     'web/public/404.html',
     'web/public/report.html',
+    /* India's skill and city facet pages. Named here for the same reason
+       /alerts and /report are: every other region's live inside its own tree
+       and are covered by regionPaths(), while India's sit at the root. Missing
+       them cost a live 404 on 47 URLs that were already in India's sitemap —
+       /us/skills/python and /uk/skills served 200 the whole time, because
+       those trees are allowlisted by directory. */
+    'web/public/skills',
+    'web/public/locations',
     /* The IndexNow key file. It MUST be live at the domain root or every
        submission is refused 403 — and nothing on the site would look wrong.
        The filename is the key itself and must match indexing.indexNow.key. */
@@ -709,6 +719,19 @@ export function pushToSite(newJobCount) {
     // enumerated above because it lives at the root beside files that are NOT
     // published (styles.css, app.js, page.css, page.js, vercel.json).
     ...regionPaths()];
+}
+
+export function pushToSite(newJobCount) {
+  if (!existsSync(join(ROOT, '.git'))) {
+    log.warn('Not a git repository — skipping publish. Run `git init` and connect the GitHub remote first.');
+    return false;
+  }
+
+  // Everything publish regenerates. Narrow on purpose — never `git add .`, or an
+  // unattended run would commit whatever source edit happened to be in progress.
+  // index.html is here because publish now writes the listings into it — only
+  // the region between the LISTINGS markers, everything else is hand-authored.
+  const PUBLISHED = publishedPaths();
 
   const status = git(['status', '--porcelain', ...PUBLISHED], { allowFail: true });
   if (!status) {
