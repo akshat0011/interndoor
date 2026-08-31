@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 31 Aug 2026 07:27:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 31 Aug 2026 07:53:08 GMT</lastBuildDate>
+  <item>
+    <title>Flight Software Engineering Intern — AST SpaceMobile</title>
+    <link>https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734</guid>
+    <pubDate>Mon, 31 Aug 2026 07:14:08 GMT</pubDate>
+    <description>Company: AST SpaceMobile · Location: Hyderabad, Telangana, India
+• Write and test small software modules for satellite systems
+• Work with C++ and RTOS in embedded development
+• Collaborate on software specs with sub-system engineers</description>
+  </item>
   <item>
     <title>Software Engineer Intern — Joveo</title>
     <link>https://interndoor.com/jobs/joveo-software-engineer-intern-4458863278</link>
@@ -501,16 +511,6 @@
 • Design and verify digital and mixed-signal IPs
 • Work on SoC hardware for automotive and IoT applications
 • Collaborate on end-to-end SoC design and verification</description>
-  </item>
-  <item>
-    <title>Cyber Security - IT Apprentice — Mizuho</title>
-    <link>https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212</guid>
-    <pubDate>Tue, 25 Aug 2026 06:39:32 GMT</pubDate>
-    <description>Company: Mizuho · Location: Chennai, Tamil Nadu, India
-• Monitor security using siem tools and analyze threats
-• Maintain logs and reports for security operations
-• Collaborate with it teams on secure configurations</description>
   </item>
 </channel>
 </rss>

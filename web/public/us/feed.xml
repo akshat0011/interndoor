@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 31 Aug 2026 07:27:01 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 31 Aug 2026 07:53:09 GMT</lastBuildDate>
+  <item>
+    <title>Applied AI Engineer Intern – Summer 2027 (May/June Start) — GE Aerospace</title>
+    <link>https://interndoor.com/us/jobs/ge-aerospace-applied-ai-engineer-intern-summer-2027-may-june-start-4461039823</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ge-aerospace-applied-ai-engineer-intern-summer-2027-may-june-start-4461039823</guid>
+    <pubDate>Mon, 31 Aug 2026 06:49:54 GMT</pubDate>
+    <description>Company: GE Aerospace · Location: Cincinnati, OH · Duration: Summer 2027
+• Build and present product architectures, write code, and demo apps to stakeholders
+• Work with cloud platforms, databases, AI, and numerical methods on real projects
+• Remote, paid, with mentorship and opportunities for return offers</description>
+  </item>
   <item>
     <title>Test Engineering Intern — Qorvo, Inc.</title>
     <link>https://interndoor.com/us/jobs/qorvo-inc-test-engineering-intern-4461039776</link>
@@ -511,16 +521,6 @@
 • Design analog and mixed-signal circuits with simulation and layout
 • Use Cadence Virtuoso for circuit development and verification
 • Collaborate with mentors on product design and documentation</description>
-  </item>
-  <item>
-    <title>RF Module Design Engineering Intern — Qorvo, Inc.</title>
-    <link>https://interndoor.com/us/jobs/qorvo-inc-rf-module-design-engineering-intern-4461060570</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/qorvo-inc-rf-module-design-engineering-intern-4461060570</guid>
-    <pubDate>Mon, 31 Aug 2026 06:18:23 GMT</pubDate>
-    <description>Company: Qorvo, Inc. · Location: Apopka, FL
-• Design and analyze RF modules for cellular base stations, radar, and satellite systems
-• Use ADS, AWR, HFSS, and Python for simulations and testing
-• Collaborate with teams to produce detailed design documentation</description>
   </item>
 </channel>
 </rss>

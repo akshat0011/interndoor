@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
+      "url": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
+      "title": "Flight Software Engineering Intern — AST SpaceMobile",
+      "content_text": "Company: AST SpaceMobile · Location: Hyderabad, Telangana, India\n• Write and test small software modules for satellite systems\n• Work with C++ and RTOS in embedded development\n• Collaborate on software specs with sub-system engineers",
+      "date_published": "2026-08-31T07:14:08.182Z",
+      "authors": [
+        {
+          "name": "AST SpaceMobile"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/joveo-software-engineer-intern-4458863278",
       "url": "https://interndoor.com/jobs/joveo-software-engineer-intern-4458863278",
       "title": "Software Engineer Intern — Joveo",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "NXP Semiconductors"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212",
-      "url": "https://interndoor.com/jobs/mizuho-cyber-security-it-apprentice-4457460212",
-      "title": "Cyber Security - IT Apprentice — Mizuho",
-      "content_text": "Company: Mizuho · Location: Chennai, Tamil Nadu, India\n• Monitor security using siem tools and analyze threats\n• Maintain logs and reports for security operations\n• Collaborate with it teams on secure configurations",
-      "date_published": "2026-08-25T06:39:32.037Z",
-      "authors": [
-        {
-          "name": "Mizuho"
         }
       ]
     }
