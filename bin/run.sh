@@ -122,4 +122,20 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # finding no key, must never change how the scheduler treats the scan.
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/discover-urls.js" >> "$LOG" 2>&1 || true
 
+# The public GitHub internship list, asked every scan and answered once a day.
+#
+# bin/gh-readme.js exits immediately unless today's regeneration is outstanding,
+# so this costs a process start 47 times a day and does real work once. Daily
+# rather than per publish because that repo's history is PUBLIC: the README is
+# deterministic and would usually be byte-identical, but asking 48 times a day
+# is noise even when the answer is "nothing changed". It is also the only
+# cadence that can always be met — the README says "Updated Daily" — because a
+# fixed-time cron is simply missed while this Mac is asleep.
+#
+# After publish, so every job page the table links to is already on the site.
+# Status discarded for the same reason as the roundup and the discovery sweep:
+# a missing checkout, or a push that failed on a network blip, must never change
+# how the scheduler treats the scan.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/gh-readme.js" --daily >> "$LOG" 2>&1 || true
+
 exit $STATUS

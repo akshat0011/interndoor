@@ -941,6 +941,13 @@
     "_maxPagesPerSearch_note": "40 pages x 25 = 1000 results, which is roughly LinkedIn's own ceiling for a single search. With the 24-hour filter on, most searches end far sooner."
   },
   "_whatsapp_note": "Broadcasting India's new listings to WhatsApp by driving WhatsApp Web through Playwright. THERE IS NO PUBLIC CHANNEL API, so this automates the web client, which is against WhatsApp's Acceptable Use policy and whose documented consequence is the NUMBER being banned - it runs on a throwaway number, on its own Brave profile, slowly, and defaults to OFF. `enabled` stays false until `npm run whatsapp-login` has linked the number and `npm run whatsapp-probe` confirms the target is reachable. `target` is the channel or group by the name it shows in WhatsApp. `sendGapMs` is deliberately slow: this is a UI being driven, not an API, and a burst is what gets a number flagged. `maxPerRun` bounds one scan - the rest wait for the next, which is the same call the reel sweep makes.",
+  "github": {
+    "enabled": true,
+    "repo": "akshat0011/engineering-internship-india",
+    "region": "IN",
+    "_note": "The public GitHub internship list. DAILY, not per publish: the repo history is public and regenerating on every scan would be 48 commits a day of noise, even though the README is deterministic and would usually be unchanged. Daily is also a promise that can always be met - the README says 'Updated Daily' - whereas hourly cannot be, because this Mac sleeps. Asked on every scan and answered once, the same shape as the weekly roundup and the discovery sweep, and for the same reason: a cron entry firing at a fixed time is simply missed when the machine is asleep, while this lands on the first scan after it wakes. India only, because that is the gap - SimplifyJobs already owns the US equivalent with tens of thousands of stars and there is no Indian one. enabled:false stops it without unpicking anything.",
+    "_checkout_note": "The repo is cloned to PATHS.ghList (~/Library/Application Support/interndoor/gh-list). It is deliberately NOT inside app/, which is itself a public repo the scheduler pushes to every 30 minutes - a nested checkout is how one repo ends up committed into the other. A missing checkout is reported once a day and exits 0; this must never be able to fail a scan."
+  },
   "whatsapp": {
     "enabled": true,
     "regions": ["IN"],

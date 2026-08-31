@@ -69,6 +69,17 @@ export const PATHS = {
 
   /** Generated LinkedIn posts, one page per batch, plus a stable latest.html. */
   posts: join(STATE, 'posts'),
+
+  /**
+   * A checkout of the PUBLIC GitHub internship list.
+   *
+   * In the state directory for exactly the reason the reels and the OG cards
+   * are: it is a second git repository, and nesting one inside `app/` — itself
+   * a public repo the scheduler commits to every 30 minutes — is a way to
+   * accidentally commit one into the other. Not on the Desktop either; a
+   * launchd-spawned process gets no TCC grant there and fails silently.
+   */
+  ghList: join(STATE, 'gh-list'),
   latestPosts: join(STATE, 'posts', 'latest.html'),
   latestWeekly: join(STATE, 'posts', 'weekly-latest.html'),
 
