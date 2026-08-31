@@ -6,7 +6,7 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 31 Aug 2026 17:59:49 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 31 Aug 2026 18:19:12 GMT</lastBuildDate>
   <item>
     <title>2027 Summer Internship - Product Management — The Home Depot</title>
     <link>https://interndoor.com/us/jobs/the-home-depot-2027-summer-internship-product-management-4460052463</link>
@@ -16,6 +16,16 @@
 • Analyze customer needs and translate them into product strategies
 • Work with PMs, UX, and engineers to shape product features
 • Collaborate on backlog grooming and prioritize user stories</description>
+  </item>
+  <item>
+    <title>2027 Summer Intern, MS/PhD, Data Science - Commercialization Testing — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-data-science-commercialization-testing-ats-greenhouse-waymo-8167323</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-data-science-commercialization-testing-ats-greenhouse-waymo-8167323</guid>
+    <pubDate>Mon, 31 Aug 2026 17:47:06 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, California, United States
+• Analyze vehicle data to improve autonomous driving safety
+• Use python and sql to process large datasets
+• Work with engineers on testing and simulation projects</description>
   </item>
   <item>
     <title>Co-op-Material Scientist-New Kensington, PA - January-June 2027 — Philips</title>
@@ -499,16 +509,6 @@
 • Support semiconductor material and device development
 • Use tools like SEM/FIB for analysis and testing
 • Work on failure analysis and data interpretation</description>
-  </item>
-  <item>
-    <title>RFIC Design Intern — Qorvo, Inc.</title>
-    <link>https://interndoor.com/us/jobs/qorvo-inc-rfic-design-intern-4461054646</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/qorvo-inc-rfic-design-intern-4461054646</guid>
-    <pubDate>Mon, 31 Aug 2026 06:20:36 GMT</pubDate>
-    <description>Company: Qorvo, Inc. · Location: Chelmsford, MA
-• Design RF circuits for mmWave devices like LNAs and PAs
-• Use ADS, Cadence, and HFSS for simulations and modeling
-• Work with lab equipment to validate designs in real-world conditions</description>
   </item>
 </channel>
 </rss>
