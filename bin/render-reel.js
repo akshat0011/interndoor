@@ -50,7 +50,7 @@ import { loadConfig } from '../src/config.js';
 import { durationText, modeText } from '../src/pages.js';
 import { pickBgm, commitBgm } from '../src/reelbgm.js';
 import { captionsFor } from '../src/reelcaptions.js';
-import { formatFor, formatDCandidates, formatDRefusal, formatDConfig } from '../src/reelformat.js';
+import { formatFor, formatDCandidates, formatDRefusal, formatDConfig, countAgeHours } from '../src/reelformat.js';
 
 const cfg = loadConfig();
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -232,7 +232,22 @@ function stipend(job) {
 /** "47 people clicked apply" / "7 applicants" / "Over 100 applicants". */
 function applicants(job) {
   const raw = String(job.applicants ?? '').trim();
-  if (!raw) return { text: null, zero: false };
+  if (!raw) return { text: null, zero: false, count: null };
+
+  /* A STALE READING MAKES NO SCARCITY CLAIM, IN ANY FORMAT.
+     `applicants` is frozen at scrape time and nothing refreshes it — only about
+     4% of LinkedIn rows are ever re-seen a day later — so "nobody's applied
+     yet" on a week-old posting is a claim about a week-old number, and that is
+     the `posted_text` failure again. Format D has refused to exist without a
+     fresh reading since it was built; the ordinary format had NO such gate and
+     said it anyway.
+     It matters far more now that reels.auto.maxAgeHours reaches back a week
+     rather than two days: before, almost everything was fresh by accident.
+     Dropping the text as well as the count is deliberate — "47 applied" on a
+     seven-day-old row is the same stale claim, only quieter. */
+  if (countAgeHours(job) > formatDConfig(cfg).maxCountAgeHours) {
+    return { text: null, zero: false, count: null };
+  }
   /* "Over 100 applicants" must not reach a numeric band: CAST of it is 0,
      which would read as "nobody has applied". */
   if (/^over\s/i.test(raw)) return { text: raw.replace(/\s*applicants?$/i, '') + ' applied', zero: false, count: null };
