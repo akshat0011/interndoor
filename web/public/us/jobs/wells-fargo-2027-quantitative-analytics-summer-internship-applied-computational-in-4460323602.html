@@ -134,11 +134,14 @@
         <section>
           <h2>Skills mentioned</h2>
           <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
-               ended the reader's journey; each is now a search of this board,
-               which turns the end of a job page into the start of the next
-               one. The board already reads ?q= from the URL, so this needs no
-               new route. -->
-          <div class="chips"><a class="chip" href="/us/?q=python">python</a><a class="chip" href="/us/?q=large%20language%20models">large language models</a><a class="chip" href="/us/?q=rag">rag</a><a class="chip" href="/us/?q=multi-agent%20systems">multi-agent systems</a><a class="chip" href="/us/?q=cloud%20environments">cloud environments</a></div>
+               ended the reader's journey; each is now either a real /skills/
+               page or, for a skill too thin to have one, a search of this
+               board. The facet page is preferred BECAUSE IT IS A PAGE: ?q= is
+               a query string, which Google will not index as its own URL, so a
+               chip pointing there passes nothing on. With ~700 job pages each
+               linking to up to five skill pages, this is the largest internal
+               linking signal the site has. -->
+          <div class="chips"><a class="chip" href="/us/skills/python">python</a><a class="chip" href="/us/?q=large%20language%20models">large language models</a><a class="chip" href="/us/?q=rag">rag</a><a class="chip" href="/us/?q=multi-agent%20systems">multi-agent systems</a><a class="chip" href="/us/?q=cloud%20environments">cloud environments</a></div>
         </section>
 
         <section>
@@ -193,7 +196,7 @@
         
         <span class="tile-role">2027 Corporate Risk Development Program Summer Internship (Core Risk) - Early Careers</span>
         <span class="tile-co">Risk Analysis</span>
-        <span class="tile-meta"><span class="tile-age is-fresh" data-ago="1787932568354"><time datetime="2026-08-28">28 Aug 2026</time></span><span aria-hidden="true">·</span>Charlotte<span aria-hidden="true">·</span>On-site</span>
+        <span class="tile-meta"><span class="tile-age" data-ago="1787932568354"><time datetime="2026-08-28">28 Aug 2026</time></span><span aria-hidden="true">·</span>Charlotte<span aria-hidden="true">·</span>On-site</span>
       </a><a class="tile" href="/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-applied-computational-in-4460318651">
         
         <span class="tile-role">2027 Quantitative Analytics Summer Internship Applied Computational Intelligence (ACI Masters) - Early Careers</span>
@@ -244,7 +247,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

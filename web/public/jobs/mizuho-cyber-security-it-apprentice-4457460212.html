@@ -131,10 +131,13 @@
         <section>
           <h2>Skills mentioned</h2>
           <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
-               ended the reader's journey; each is now a search of this board,
-               which turns the end of a job page into the start of the next
-               one. The board already reads ?q= from the URL, so this needs no
-               new route. -->
+               ended the reader's journey; each is now either a real /skills/
+               page or, for a skill too thin to have one, a search of this
+               board. The facet page is preferred BECAUSE IT IS A PAGE: ?q= is
+               a query string, which Google will not index as its own URL, so a
+               chip pointing there passes nothing on. With ~700 job pages each
+               linking to up to five skill pages, this is the largest internal
+               linking signal the site has. -->
           <div class="chips"><a class="chip" href="/?q=splunk">splunk</a><a class="chip" href="/?q=nessus">nessus</a><a class="chip" href="/?q=wireshark">wireshark</a><a class="chip" href="/?q=tcp%2Fip">tcp/ip</a><a class="chip" href="/?q=windows%2Flinux">windows/linux</a></div>
         </section>
 
@@ -235,7 +238,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

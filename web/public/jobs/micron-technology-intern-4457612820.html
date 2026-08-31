@@ -100,7 +100,7 @@
                    region, which is the only company fact this page holds that a
                    reader can act on; with no others it says so plainly rather
                    than offering a hub that will look empty. -->
-              <span class="jp-co-more">See this employer&rsquo;s page <i aria-hidden="true">&rarr;</i></span>
+              <span class="jp-co-more">1 other open role here <i aria-hidden="true">&rarr;</i></span>
             </span>
           </a>
 
@@ -134,10 +134,13 @@
         <section>
           <h2>Skills mentioned</h2>
           <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
-               ended the reader's journey; each is now a search of this board,
-               which turns the end of a job page into the start of the next
-               one. The board already reads ?q= from the URL, so this needs no
-               new route. -->
+               ended the reader's journey; each is now either a real /skills/
+               page or, for a skill too thin to have one, a search of this
+               board. The facet page is preferred BECAUSE IT IS A PAGE: ?q= is
+               a query string, which Google will not index as its own URL, so a
+               chip pointing there passes nothing on. With ~700 job pages each
+               linking to up to five skill pages, this is the largest internal
+               linking signal the site has. -->
           <div class="chips"><a class="chip" href="/?q=semiconductor%20design">semiconductor design</a><a class="chip" href="/?q=data%20science">data science</a></div>
         </section>
 
@@ -182,7 +185,18 @@
       </aside>
     </div>
 
-    
+    <section class="strip">
+      <div class="strip-head">
+        <h2>More at Micron Technology</h2>
+        <a class="strip-more" href="/companies/micron-technology">All Micron Technology roles →</a>
+      </div>
+      <div class="tiles"><a class="tile is-hot" href="/jobs/micron-technology-intern-fdv-pcv-nand-product-engineering-ats-workday-micron-wd1-external-jr109268">
+        
+        <span class="tile-role">Intern - FDV/PCV, NAND Product Engineering</span>
+        <span class="tile-co">NAND Validation</span>
+        <span class="tile-meta"><span class="tile-age is-hot" data-ago="1788134400000"><time datetime="2026-08-31">31 Aug 2026</time></span><span aria-hidden="true">·</span>Hyderabad - Phoenix Aquila</span>
+      </a></div>
+    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">
@@ -226,7 +240,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

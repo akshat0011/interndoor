@@ -131,11 +131,14 @@
         <section>
           <h2>Skills mentioned</h2>
           <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
-               ended the reader's journey; each is now a search of this board,
-               which turns the end of a job page into the start of the next
-               one. The board already reads ?q= from the URL, so this needs no
-               new route. -->
-          <div class="chips"><a class="chip" href="/?q=figma">figma</a><a class="chip" href="/?q=ai%20design%20tools">ai design tools</a><a class="chip" href="/?q=user%20research">user research</a><a class="chip" href="/?q=agentic%20design">agentic design</a></div>
+               ended the reader's journey; each is now either a real /skills/
+               page or, for a skill too thin to have one, a search of this
+               board. The facet page is preferred BECAUSE IT IS A PAGE: ?q= is
+               a query string, which Google will not index as its own URL, so a
+               chip pointing there passes nothing on. With ~700 job pages each
+               linking to up to five skill pages, this is the largest internal
+               linking signal the site has. -->
+          <div class="chips"><a class="chip" href="/skills/figma">figma</a><a class="chip" href="/?q=ai%20design%20tools">ai design tools</a><a class="chip" href="/?q=user%20research">user research</a><a class="chip" href="/?q=agentic%20design">agentic design</a></div>
         </section>
 
         <section>
@@ -222,7 +225,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>
