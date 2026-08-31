@@ -25,12 +25,23 @@
    THE HEADING was h3 under the page's only h1, on all 610 cards,
    which was the one navigation failure in the accessibility audit.
 
-   THE TOKENS are the seventh occurrence of this file's
-   longest-running trap: the accent colour on a tint of itself.
-   Six elements had already been patched one at a time; the
-   defect was in the token. Ratios here are computed, not
-   eyeballed, because oklab()/color-mix() has produced a
-   phantom failure in this codebase before.
+   THE TOKENS clear AA where they are used as text. NOTE what
+   this does NOT claim: it was originally written believing it
+   fixed the audit's reported contrast failures, and it does
+   not. Those were measured with a hand-rolled canvas harness
+   that ignored element opacity and gradient background layers,
+   so it invented failures and missed the real ones. axe-core
+   is the authority here - it is what Lighthouse and PSI run.
+   The real failures are listed in CLAUDE.md and are a
+   different set. These assertions are still worth keeping:
+   the ratios they pin are genuinely correct and genuinely
+   used. They are simply not the audit fix.
+
+   THE CARD ELEMENT is a div. role="button" is not allowed on
+   <article>, which axe flags as aria-allowed-role on every
+   card - the whole of the "accessibility tree is not
+   well-formed" finding. Verified with axe before and after:
+   237 violations -> 0.
    ============================================================ */
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -65,6 +76,16 @@ check("it uses cache: 'no-cache' — revalidate every load, but send the ETag",
   /cache:\s*'no-cache'/.test(fetchCall), true);
 
 /* ---- the card heading ---- */
+console.log('\n== the card element accepts the role it is given ==');
+const jobCard = (app.match(/function jobCard\(job[\s\S]{0,1200}/) || [''])[0];
+if (!/const row = el\('\w+', 'row'\)/.test(jobCard)) { console.log('  FAIL  jobCard window found no row element'); process.exit(1); }
+check("the card is a div, which accepts any role",
+  /const row = el\('div', 'row'\)/.test(jobCard), true);
+check("and NOT an <article>, where role=button is disallowed",
+  /const row = el\('article', 'row'\)/.test(jobCard), false);
+check("it still carries role=button (the whole card opens the dialog)",
+  /setAttribute\('role', 'button'\)/.test(jobCard), true);
+
 console.log('\n== the card heading is sequential under the page h1 ==');
 // Wide enough to clear the explanatory comment above the call. A window that
 // stops short makes the NEGATIVE assertion below pass on an empty string.

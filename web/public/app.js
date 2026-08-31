@@ -579,7 +579,16 @@ function roleLine(job) {
 
 function jobCard(job, index, group = [job]) {
   const li = document.createElement('li');
-  const row = el('article', 'row');
+  /* A div, NOT an <article>. The card carries role="button" because the whole
+     card opens the detail dialog, and `button` is not an allowed role on
+     <article> — axe's aria-allowed-role flags it on every card, which is the
+     entire "accessibility tree is not well-formed" finding in the agentic
+     browsing category (237 of 237 cards, and the only rule in that audit's
+     set this site breaks). The role already overrode the article semantics,
+     so nothing was being exposed as an article anyway; a div has no implicit
+     role and accepts any. No CSS targets the tag and every query here is by
+     .row, so this is invisible in both look and behaviour. */
+  const row = el('div', 'row');
   row.tabIndex = 0;
   row.setAttribute('role', 'button');
   row.dataset.id = job.id;
