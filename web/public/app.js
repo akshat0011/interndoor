@@ -281,7 +281,22 @@ function toast(message) {
 
 async function loadJobs() {
   try {
-    const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
+    /* CONDITIONAL, NOT CACHE-BUSTED. This used to send `?t=${Date.now()}` with
+       cache: 'no-store', which made the board's own payload the most expensive
+       thing on the site: a unique URL plus no-store means the full file is
+       downloaded on EVERY load, every reload and every back-navigation, and no
+       validator is ever sent. On the US board that is 205 KB and ~1.5s on a
+       throttled connection, paid again by every returning reader.
+       Nothing is gained by it. vercel.json already serves this file
+       `max-age=0, must-revalidate`, so the browser revalidates on every load
+       either way — freshness is identical. 'no-cache' says exactly that and
+       nothing more: always ask the server, but send the validator so an
+       unchanged file comes back 304 with an empty body. Measured against the
+       live file: 200 + 204,814 bytes unconditional, 304 + 0 bytes conditional.
+       Between publishes (30 min) a repeat load now transfers nothing.
+       Do NOT reintroduce a timestamp here to "make sure it is fresh" — it
+       defeats the validator and buys no freshness the header does not give. */
+    const res = await fetch(DATA_URL, { cache: 'no-cache' });
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     state.jobs = data.jobs ?? [];
@@ -546,10 +561,15 @@ function roleQualifier(job) {
  * @returns {{node: HTMLElement, usedFirstBullet: boolean}}
  */
 function roleLine(job) {
-  // An h3, not a p: the role is the card's heading. It used to be a paragraph
-  // under an h3 of the company name, which told a screen reader (and a crawler)
-  // that the employer was the subject and the job was a detail.
-  const p = el('h3', 'role', job.title);
+  // A heading, not a p: the role is the card's heading. It used to be a
+  // paragraph under a heading of the company name, which told a screen reader
+  // (and a crawler) that the employer was the subject and the job a detail.
+  // h2 rather than h3 because the only heading above it is the page's h1, and
+  // 610 cards each opening at h3 made every one of them a skipped level —
+  // "Heading elements are not in a sequentially-descending order", the single
+  // navigation failure in the accessibility audit. The card's look is carried
+  // by .role, not by the tag, so nothing moves visually.
+  const p = el('h2', 'role', job.title);
   if (!titleIsGeneric(job.title)) return { node: p, usedFirstBullet: false };
   const q = roleQualifier(job);
   if (!q) return { node: p, usedFirstBullet: false };

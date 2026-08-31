@@ -90,14 +90,24 @@
 :root[data-theme="light"] {
   --ink:      #131311;
   --ink-2:    #56564e;
-  --ink-3:    #66665e;
+  --ink-3:    #5f5f58;
   --bg:       #eae8de;
   --bg-2:     #e1dfd2;
   --card:     #ffffff;
   --card-2:   #f4f2ea;
   --rule:     #cdc9b9;
   --rule-2:   #aeaa98;
-  --live:     #5d7a00;
+  /* #5d7a00 failed AA as TEXT on three of its four light-theme grounds -
+     4.02 on --bg, 3.69 on --bg-2, and 3.66 for white on top of it - which is
+     the same "accent on a tint of itself" trap this file has patched
+     element-by-element six times (.sub-msg, .flag-rank, the freshness pill,
+     .jp-sub-t strong, .jp-focus, both .jp-open tiers). A seventh override
+     would have been the wrong fix: the defect is in the token, not in the
+     elements. #4a6100 is the value those patches had already converged on.
+     Measured composited through a canvas: 5.70 on --bg, 5.23 on --bg-2, 7.00
+     on --card, and 7.00 for --live-ink white on top. Dark theme is untouched -
+     lime on near-black was never the failing case. */
+  --live:     #4a6100;
   --ink-15:   #2a2a26;
   --live-ink: #ffffff;
   --hot:      #c2410c;
