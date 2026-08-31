@@ -38,7 +38,7 @@ import { reelCaption } from '../src/reelcaption.js';
 import { nextSlot, slotLabel, intoWindow } from '../src/reelslots.js';
 import { formatFor } from '../src/reelformat.js';
 import { publishedRegions, regionPath, regionOf } from '../src/regions.js';
-import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig } from '../src/reelaccounts.js';
+import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig, autoSpacingMinutes } from '../src/reelaccounts.js';
 import { jobSlug } from '../src/pages.js';
 import { utmUrl } from '../src/postgen.js';
 import { spawn } from 'node:child_process';
@@ -523,6 +523,8 @@ async function drainReels() {
  */
 /* Regions the breaker has already spoken about, so it says it once. */
 const breakerWarned = new Set();
+/* Same, for the "this board has gone quiet" tripwire. */
+const staleWarned = new Set();
 
 function autoSweep() {
   if (!autoEnabled(cfg)) return;
@@ -557,6 +559,7 @@ function autoSweep() {
        It clears itself on the next successful publish, so there is nothing to
        reset — see reelFailuresSinceSuccess, which also explains why a row
        cancelled by hand is not a failure. */
+    const spacingMs = autoSpacingMinutes(region, cfg) * 60_000;
     const failures = store.reelFailuresSinceSuccess(region, now - 86_400_000);
     if (failures >= failureLimit) {
       /* Once per region per process. A warning repeated every 60 seconds is
@@ -569,6 +572,23 @@ function autoSweep() {
       continue;
     }
     breakerWarned.delete(region);
+
+    /* A SILENCE MUST NEVER BE INVISIBLE AGAIN. India went from 29 Aug 11:42 to
+       31 Aug 10:30 with no reel — 46 hours — and nothing anywhere said so: the
+       sweep was running, the log was clean, and the only trace was a gap in a
+       table nobody was reading. The pool had simply gone empty under a 48-hour
+       maxAgeHours while India's intake had collapsed to ~2 rows a day. This is
+       the tripwire for that, and like the apply-link one it is worth having
+       precisely because the failure is silent. Reported once per process, at
+       twice the promised gap, so an ordinary spacing wait never trips it. */
+    const lastOut = store.reelLastPublishedAt(region);
+    const staleMs = lastOut ? now - lastOut : null;
+    if (staleMs !== null && staleMs > 2 * spacingMs && !staleWarned.has(region)) {
+      staleWarned.add(region);
+      log.warn(`Reels: ${region} has not published for ${(staleMs / 3_600_000).toFixed(1)}h against a ${(spacingMs / 3_600_000).toFixed(1)}h cadence — the eligible pool may be empty. Check reels.auto.maxAgeHours against that board's intake.`);
+    } else if (staleMs !== null && staleMs <= 2 * spacingMs) {
+      staleWarned.delete(region);
+    }
 
     const cap = dailyCap(region, cfg);
     const used = store.reelCountSince(region, now - 86_400_000);

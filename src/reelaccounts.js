@@ -107,15 +107,29 @@ export function autoSpacingMinutes(region, cfg = {}) {
  * right zone for each board (US -> America/New_York) and stamping dates in it
  * is a rule publish already follows.
  *
- * The HOURS stay shared: 10:00-22:00 is a statement about when people look at
- * their phones, and that travels. Only the zone it is measured in changes.
+ * The ZONE is per region and the HOURS can be too. 10:00-22:00 was a statement
+ * about when people look at their phones and it travels — but it is the MANUAL
+ * queue's statement, and automatic posting has a different job. An auto sweep
+ * runs at whatever hour it finds work, so every slot it handed out overnight
+ * was pushed to the window's opening: a whole day of India's reels was queued
+ * at 05:00 and none could go out before 10:30, on top of a nightly 13-hour
+ * silence between the last slot and the next day's first. India went 46 hours
+ * without a reel that way. So `reels.auto.windowStartHour` / `windowEndHour`
+ * override the shared pair, and are set equal — reelslots.js's spelling of a
+ * 24-hour window — which makes intoWindow a no-op and lets a slot be taken at
+ * the moment it is earned. The manual queue reads the shared pair and is
+ * unchanged: its first reel is never delayed anyway, because he pressed the
+ * button.
  */
 export function autoSlotConfig(region, cfg = {}, regionTimeZone = null) {
   const reels = cfg.reels ?? {};
+  const auto = reels.auto ?? {};
   return {
     ...reels,
     spacingMinutes: autoSpacingMinutes(region, cfg),
-    timeZone: cfg.reels?.auto?.timeZoneByRegion?.[String(region || '').toUpperCase()]
+    windowStartHour: auto.windowStartHour ?? reels.windowStartHour,
+    windowEndHour: auto.windowEndHour ?? reels.windowEndHour,
+    timeZone: auto.timeZoneByRegion?.[String(region || '').toUpperCase()]
       || regionTimeZone || reels.timeZone,
   };
 }
