@@ -80,16 +80,23 @@
   --stack-h: 152px;
 }
 
+/* THE LIGHT THEME HAD NO DEFINITION, and it was not a readability problem —
+   text measured 5.2-5.6 against its own surface, which is fine. It was that
+   nothing separated from anything: a card sat at 1.07 against the page and its
+   border at 1.34 against the card, so a column of listings read as one flat
+   wash rather than as cards. The page is deeper, the cards are pure white and
+   the two rules are stronger; the ink is untouched, because the ink was never
+   the problem. */
 :root[data-theme="light"] {
   --ink:      #131311;
   --ink-2:    #56564e;
   --ink-3:    #66665e;
-  --bg:       #f4f3ee;
-  --bg-2:     #eceae3;
-  --card:     #fcfbf8;
-  --card-2:   #f7f6f1;
-  --rule:     #dddbd2;
-  --rule-2:   #c6c4b9;
+  --bg:       #eae8de;
+  --bg-2:     #e1dfd2;
+  --card:     #ffffff;
+  --card-2:   #f4f2ea;
+  --rule:     #cdc9b9;
+  --rule-2:   #aeaa98;
   --live:     #5d7a00;
   --ink-15:   #2a2a26;
   --live-ink: #ffffff;
@@ -455,6 +462,13 @@ a, button, summary, label, [role="button"], .row {
    #0a0a0b. The media query therefore put the light theme's opacity on a page
    rendering dark, for every system-light visitor. A rule about the theme has to
    key on whatever actually decides the theme. */
+/* --ink-3 on the .outro band measured 4.32 once --bg-2 was darkened, just under
+   AA. Scoped to this element rather than moving the token, which behaves
+   correctly everywhere else — the same call .sub-msg and .flag-rank already
+   made. This is the sixth time a light-theme element has needed it after a
+   ground colour moved; measure anything sitting on --bg-2. */
+:root[data-theme="light"] .dim { color: #5f5f57; }
+
 :root[data-theme="light"] .field { opacity: .85; }
 /* Below 720px the board is edge to edge and the marks sit under the cards
    rather than beside them. The light theme needs its own line: its selector
