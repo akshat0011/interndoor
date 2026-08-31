@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079",
+      "url": "https://interndoor.com/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079",
+      "title": "WDI Project Controls Planning Intern, Spring 2027 — The Walt Disney Company",
+      "content_text": "Company: The Walt Disney Company · Location: Lake Buena Vista, FL · Duration: Spring 2027\n• Develop project schedules using primavera and other software\n• Integrate schedules from design, vendors, and construction teams\n• Monitor risks and present mitigation plans for project timelines",
+      "date_published": "2026-08-31T11:43:48.639Z",
+      "authors": [
+        {
+          "name": "The Walt Disney Company"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zscaler-detection-engineer-skillbridge-intern-4404543443",
+      "url": "https://interndoor.com/us/jobs/zscaler-detection-engineer-skillbridge-intern-4404543443",
+      "title": "Detection Engineer- SkillBridge Intern — Zscaler",
+      "content_text": "Company: Zscaler · Location: United States\n• Analyze edr telemetry and alerts to identify threats\n• Develop and refine detectors using customer data\n• Collaborate on automation to improve detection workflows",
+      "date_published": "2026-08-31T10:49:48.915Z",
+      "authors": [
+        {
+          "name": "Zscaler"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/stryker-summer-2027-internship-electrical-engineering-california-4459781379",
       "url": "https://interndoor.com/us/jobs/stryker-summer-2027-internship-electrical-engineering-california-4459781379",
       "title": "Summer 2027 Internship - Electrical Engineering - California — Stryker",
@@ -575,30 +599,6 @@
       "title": "Test Engineering Intern — Qorvo, Inc.",
       "content_text": "Company: Qorvo, Inc. · Location: Chelmsford, MA\n• Write automated test software to control equipment and analyze results\n• Use python and visual basic to develop measurement tools\n• Work with rf modules and test instruments like oscilloscopes\n• Collaborate with teams to troubleshoot and improve test processes",
       "date_published": "2026-08-31T06:18:34.622Z",
-      "authors": [
-        {
-          "name": "Qorvo, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qorvo-inc-pa-design-engineering-intern-4461040782",
-      "url": "https://interndoor.com/us/jobs/qorvo-inc-pa-design-engineering-intern-4461040782",
-      "title": "PA Design Engineering Intern — Qorvo, Inc.",
-      "content_text": "Company: Qorvo, Inc. · Location: Chelmsford, MA\n• Design power amplifiers for wireless communication modules\n• Use Cadence, ADS, and HFSS for circuit simulations and layouts\n• Test designs with lab equipment and provide feedback for improvements",
-      "date_published": "2026-08-31T06:18:34.532Z",
-      "authors": [
-        {
-          "name": "Qorvo, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qorvo-inc-research-scientist-intern-4461053621",
-      "url": "https://interndoor.com/us/jobs/qorvo-inc-research-scientist-intern-4461053621",
-      "title": "Research Scientist Intern — Qorvo, Inc.",
-      "content_text": "Company: Qorvo, Inc. · Location: Richardson, TX\n• Work on epitaxy growth and semiconductor material characterization\n• Use MOCVD, MBE, X-ray diffraction, and atomic force microscopy\n• Present findings to team in cleanroom environment",
-      "date_published": "2026-08-31T06:18:32.895Z",
       "authors": [
         {
           "name": "Qorvo, Inc."
