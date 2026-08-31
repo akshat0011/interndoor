@@ -197,7 +197,10 @@
     "InfluxData",
     "TimescaleDB",
     "ClickHouse",
-    "Yugabyte"
+    "Yugabyte",
+    "ByteDance",
+    "LinkedIn",
+    "Unisys"
   ],
   "semiconductor-hardware": [
     "Nvidia",
@@ -259,7 +262,10 @@
     "Fujitsu",
     "Toshiba",
     "Canon",
-    "Philips"
+    "Philips",
+    "Mirafra Technologies",
+    "SiMa.ai",
+    "SEMIFIVE"
   ],
   "indian-it-services": [
     {
@@ -315,7 +321,15 @@
     "Caterpillar",
     "John Deere",
     "Danaher",
-    "Thermo Fisher Scientific"
+    "Thermo Fisher Scientific",
+    "Softobiz",
+    "Roxiler Systems",
+    "Kumaran Systems",
+    "Codemonk",
+    "KeyValue",
+    "Envecon",
+    "PearlThoughts",
+    "Accellor"
   ],
   "consulting-analytics": [
     "McKinsey & Company",
@@ -360,7 +374,8 @@
     "Bloomberg",
     "Refinitiv",
     "Crisil",
-    "ICRA"
+    "ICRA",
+    "Impact Analytics"
   ],
   "banking-quant-trading": [
     "Goldman Sachs",
@@ -516,7 +531,8 @@
       "aliases": [
         "FamPay"
       ]
-    }
+    },
+    "Kotak Securities"
   ],
   "indian-consumer-ecommerce": [
     "Flipkart",
@@ -580,7 +596,13 @@
     "Nicobar",
     "FabIndia",
     "Westside",
-    "Max Fashion"
+    "Max Fashion",
+    "Chai Point",
+    "Heads Up For Tails",
+    "Eggoz",
+    "Frido",
+    "Beco",
+    "FRND"
   ],
   "indian-saas-product": [
     "Freshworks",
@@ -657,7 +679,13 @@
     "Rocketium",
     "Toch AI",
     "Gan.ai",
-    "IONIC"
+    "IONIC",
+    "Cactus Communications",
+    "RChilli",
+    "Uffizio",
+    "JungleWorks",
+    "Cryptlex",
+    "Sapaad"
   ],
   "indian-deeptech-ai": [
     "Sarvam AI",
@@ -703,7 +731,13 @@
     "Sedemac",
     "Minus Zero",
     "Swaayatt Robots",
-    "NoBroker"
+    "NoBroker",
+    "QpiAI",
+    "Spyne",
+    "Planys Technologies",
+    "Genrobotics",
+    "Boltzmann Labs",
+    "Darwix AI"
   ],
   "indian-edtech": [
     "BYJU'S",
@@ -803,7 +837,9 @@
     "Boston Scientific",
     "Becton Dickinson",
     "Baxter",
-    "Stryker"
+    "Stryker",
+    "HealthAsyst",
+    "Leucine"
   ],
   "logistics-supplychain": [
     "Delhivery",
@@ -839,7 +875,9 @@
     "UPS",
     "DP World",
     "Kuehne+Nagel",
-    "Flexport"
+    "Flexport",
+    "project44",
+    "Isourse"
   ],
   "media-telecom-gaming": [
     "Bharti Airtel",
@@ -891,7 +929,9 @@
     "Amazon Prime Video",
     "JioSaavn",
     "Gaana",
-    "Wynk"
+    "Wynk",
+    "Speedcast",
+    "Nukebox Studios"
   ],
   "cybersecurity": [
     "Palo Alto Networks",
@@ -930,7 +970,9 @@
     "ArmorCode",
     "Uptycs",
     "Cyware",
-    "Sequretek"
+    "Sequretek",
+    "eSec Forte",
+    "Valency Networks"
   ],
   "automotive-aerospace-industrial": [
     "Maruti Suzuki",
@@ -984,7 +1026,16 @@
     "Uno Minda",
     "Motherson",
     "Endurance Technologies",
-    "Varroc"
+    "Varroc",
+    "Armstrong Fluid Technology",
+    "GKN Aerospace",
+    "Jabil",
+    "Konecranes",
+    "Otis Elevator",
+    "Trelleborg",
+    "Wabtec",
+    "Fronius",
+    "Ingersoll Rand"
   ],
   "fmcg-conglomerates": [
     "Hindustan Unilever",
@@ -1030,7 +1081,9 @@
     "Adani Green Energy",
     "ReNew Power",
     "Suzlon",
-    "Waaree Energies"
+    "Waaree Energies",
+    "Wonder Cement",
+    "ACG World"
   ],
   "_intl_note": "Employers outside India. These reach the site through ATS boards ONLY - there is no LinkedIn search for these regions - so the gate that keeps intern mills off the India board is not the one doing the work here: a company only enters the pipeline if discover-ats.js probes it and the board's own name verifies against ours. That is why this list could be added in bulk where the India one could not. Every name was checked against all 9,215 employers the gate has previously refused and admits none of them. Names that normalise to an ordinary English word are deliberately absent - Linear, Ramp, Render, Wise, Cedar, Loom, Front, Column, Unit, Medium, Railway, Planet Labs, Ripple Labs and Ledger among them - because matchCompany matches BOTH directions, so a bare word admits anything using it. Same reasoning that keeps Iris Software off the India list.",
   "us-devtools-infra": [
@@ -1088,7 +1141,8 @@
     "Midjourney",
     "Abridge",
     "Harvey AI",
-    "Jasper AI"
+    "Jasper AI",
+    "EnCharge AI"
   ],
   "us-fintech-crypto": [
     "Brex",
@@ -1155,7 +1209,9 @@
     "Checkr",
     "Vanta",
     "Drata",
-    "SecureFrame"
+    "SecureFrame",
+    "Epicor",
+    "Five9"
   ],
   "us-consumer-marketplace": [
     "Reddit",
@@ -1240,7 +1296,8 @@
     "Sila Nanotechnologies",
     "Redwood Materials",
     "QuantumScape",
-    "Tesla"
+    "Tesla",
+    "AST SpaceMobile"
   ],
   "uk-ie-tech": [
     "Monzo",
@@ -1343,7 +1400,10 @@
     "Scalapay",
     "Bending Spoons",
     "Vinted",
-    "Nord Security"
+    "Nord Security",
+    "Cyncly",
+    "Infobip",
+    "Irdeto"
   ],
   "us-f500-finance-insurance": [
     "Wells Fargo Bank",
@@ -1384,7 +1444,8 @@
     "Guardian Life Insurance",
     "MassMutual",
     "New York Life Insurance",
-    "Principal Financial"
+    "Principal Financial",
+    "StoneX"
   ],
   "us-f500-retail-consumer": [
     "Costco Wholesale",
@@ -1477,7 +1538,14 @@
     "Xcel Energy",
     "Consolidated Edison",
     "Sempra",
-    "LyondellBasell"
+    "LyondellBasell",
+    "Air Products",
+    "Axalta",
+    "Barry-Wehmiller",
+    "Fluence",
+    "Linde",
+    "Pitney Bowes",
+    "Xylem"
   ],
   "us-f500-health-pharma": [
     "Johnson and Johnson",
@@ -1507,7 +1575,9 @@
     "Cleveland Clinic",
     "Kaiser Permanente",
     "Northwell Health",
-    "Providence Health"
+    "Providence Health",
+    "Revvity",
+    "MSD"
   ],
   "us-f500-telecom-media-travel": [
     "AT and T",
