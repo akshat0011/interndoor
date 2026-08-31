@@ -25,6 +25,21 @@ export const PATHS = {
   state: STATE,
   db: join(STATE, 'jobs.db'),
   profile: join(STATE, 'brave-profile'),
+
+  /**
+   * WhatsApp Web's own Brave profile, and it is SEPARATE for two reasons.
+   *
+   * `profile` above is the scraper's, and launchBrave clears and claims it on
+   * its way in — pointing WhatsApp at that directory would kill a scrape
+   * mid-flight, which is the one thing this repo's browser rule exists to
+   * prevent. And his personal Brave profile is not usable either: a Playwright
+   * persistent context takes an exclusive lock on the directory, so automating
+   * it would mean he cannot have his own browser open.
+   *
+   * A directory of its own means the throwaway number's session lives here,
+   * survives restarts, and touches nothing else.
+   */
+  whatsappProfile: join(STATE, 'whatsapp-profile'),
   reports: join(STATE, 'reports'),
   screenshots: join(STATE, 'screenshots'),
   latestReport: join(STATE, 'reports', 'latest.html'),

@@ -14,6 +14,7 @@ import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs } from './ollama.js';
 import { postNewJobs } from './telegram.js';
+import { postNewJobsWhatsApp } from './whatsapp.js';
 import { publishedRegions, resolveRowRegion } from './regions.js';
 import { classifyRole, needsDescription, builtInPolarity } from './roles.js';
 import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js';
@@ -1410,6 +1411,10 @@ async function main() {
         + 'had no page and were not posted (non-tech, off-watchlist, or a duplicate).');
     }
     if (live.length) await postNewJobs(live, cfg);
+    /* The same array, for the same reason: it is the set publish actually
+       published, so every link has a page behind it. WhatsApp fails soft on
+       its own — a scrape must never depend on a browser being driveable. */
+    if (live.length) await postNewJobsWhatsApp(live, cfg);
   }
 
   store.setSetting(LOCK_KEY, 0);

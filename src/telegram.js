@@ -105,6 +105,44 @@ export function applicantCount(text) {
  * Exported so the WhatsApp channel reuses this wording instead of growing a
  * second copy that drifts out of step.
  */
+/**
+ * The facts of one posting, and their order, with no markup on them.
+ *
+ * Extracted so Telegram and WhatsApp say the SAME thing from one source rather
+ * than growing a second copy that drifts — which is the reason composeJob was
+ * exported in the first place. They cannot share a finished string: Telegram
+ * takes HTML and real hyperlinks, WhatsApp takes *bold* and bare URLs and has
+ * no anchor at all. What they can share is this.
+ */
+export function jobParts(job, region = regionOf('IN')) {
+  const prefix = regionPath(region.code);
+  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id })}`;
+  const apply = job.applyUrl || job.url || page;
+  const title = clampWords(String(job.title ?? ''), 110);
+
+  const facts = [];
+  const where = [job.location, modeText(job)].filter(Boolean).join(' · ');
+  if (where) facts.push(`📍 ${where}`);
+  const money = stipendText(job);
+  if (money) facts.push(`💰 ${money}`);
+  const dur = durationText(job);
+  if (dur) facts.push(`⏳ ${dur}`);
+  if (job.degreeText) facts.push(`🎓 ${job.degreeText}`);
+  const posted = ago(job.postedAt ?? job.firstSeenAt);
+  if (posted) facts.push(`🕐 Posted ${posted}`);
+
+  const n = applicantCount(job.applicants);
+  if (n === 0) {
+    // The strongest line the channel has, and "Only 0 applicants so far" threw
+    // it away on a phrasing.
+    facts.push('👥 No applicants yet — be the first');
+  } else if (n != null && n < APPLICANTS_SHOW_MAX) {
+    facts.push(`👥 Only ${n} applicant${n === 1 ? '' : 's'} so far`);
+  }
+
+  return { company: String(job.company ?? ''), title, page, apply, facts, board: `${SITE}${prefix}/` };
+}
+
 export function composeJob(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
   const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id })}`;
