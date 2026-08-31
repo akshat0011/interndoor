@@ -25,6 +25,7 @@ import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { schemaEmploymentType } from './employment.js';
+import { facetGroups, facetSlug } from './facets.js';
 
 export const SITE = 'https://interndoor.com';
 
@@ -945,7 +946,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -1144,7 +1145,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set() } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = isIndexable(job);
@@ -1456,12 +1457,20 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         ${(job.keySkills ?? []).length ? `<section>
           <h2>Skills mentioned</h2>
           <!-- A CHIP THAT DOES SOMETHING. These were five grey words that
-               ended the reader's journey; each is now a search of this board,
-               which turns the end of a job page into the start of the next
-               one. The board already reads ?q= from the URL, so this needs no
-               new route. -->
-          <div class="chips">${(job.keySkills ?? []).map((sk) =>
-            `<a class="chip" href="${regionHref(`/?q=${encodeURIComponent(sk)}`, region)}">${esc(sk)}</a>`).join('')}</div>
+               ended the reader's journey; each is now either a real /skills/
+               page or, for a skill too thin to have one, a search of this
+               board. The facet page is preferred BECAUSE IT IS A PAGE: ?q= is
+               a query string, which Google will not index as its own URL, so a
+               chip pointing there passes nothing on. With ~700 job pages each
+               linking to up to five skill pages, this is the largest internal
+               linking signal the site has. -->
+          <div class="chips">${(job.keySkills ?? []).map((sk) => {
+            const slug = facetSlug(sk);
+            const href = skillPages.has(slug)
+              ? regionHref(`/skills/${slug}`, region)
+              : regionHref(`/?q=${encodeURIComponent(sk)}`, region);
+            return `<a class="chip" href="${href}">${esc(sk)}</a>`;
+          }).join('')}</div>
         </section>` : ''}
 
         <section>
@@ -2921,6 +2930,130 @@ function companyLogos(jobs, publicDir) {
   };
 }
 
+/* Facet pages — /skills/<slug> and /locations/<slug>.
+   ---------------------------------------------------------------------------
+   The queries people actually type are "python internships" and "internships in
+   bangalore", and the board has always held the data for both while having no
+   page for either: skill chips link to the board's `?q=` filter, and a query
+   string is not a page Google will index.
+
+   AT MOST FACET_TILES ROLES ARE SHOWN. Python carries 415 on the US board and
+   rendering all of them is a ~100KB page of near-identical tiles, which is
+   worse for a reader and no better for a crawler than the newest fifty plus an
+   honest count of the rest. */
+const FACET_TILES = 50;
+
+const FACET_KINDS = {
+  skill: {
+    dir: 'skills',
+    heading: (label, region) => `${titleCaseSkill(label)} internships ${region.inName}`,
+    title: (label, region) => [`${titleCaseSkill(label)} Internships`, region.inName],
+    lede: (label, n, c, region) => `${n} live internship${n === 1 ? '' : 's'} ${region.inName} that ask for ${titleCaseSkill(label)}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
+    siblings: 'Other skills',
+  },
+  city: {
+    dir: 'locations',
+    heading: (label) => `Internships in ${label}`,
+    title: (label) => [`Internships in ${label}`],
+    lede: (label, n, c) => `${n} live engineering internship${n === 1 ? '' : 's'} in ${label}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
+    siblings: 'Other cities',
+  },
+};
+
+/**
+ * One facet page.
+ *
+ * `siblings` is every other facet of the same kind, and passing it is the point
+ * rather than a nicety: without it each of these is a crawl dead end reachable
+ * only from its index, which is exactly the problem the company hubs had until
+ * they were taught to link sideways.
+ */
+export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_REGION } = {}) {
+  const k = FACET_KINDS[kind];
+  if (!k) throw new Error(`renderFacetPage: unknown kind ${kind}`);
+  const path = `/${k.dir}/${facet.slug}`;
+  const rows = facet.jobs.slice()
+    .sort((a, b) => (b.postedAt ?? b.firstSeenAt ?? 0) - (a.postedAt ?? a.firstSeenAt ?? 0));
+  const shown = rows.slice(0, FACET_TILES);
+  const companies = new Set(rows.map((j) => j.company)).size;
+  const lede = k.lede(facet.label, rows.length, companies, region);
+
+  const also = siblings.filter((s) => s.slug !== facet.slug).slice(0, 14);
+
+  return `${head({
+    title: buildTitle(k.title(facet.label, region)),
+    description: clampWords(`${lede} Updated every 30 minutes, from a vetted list of employers.`, 155),
+    canonical: regionUrl(path, region),
+    indexable: true,
+    region,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Internships</a> <span aria-hidden="true">/</span>
+      <a href="${regionHref(`/${k.dir}/`, region)}">${kind === 'skill' ? 'Skills' : 'Locations'}</a> <span aria-hidden="true">/</span>
+      <span>${esc(kind === 'skill' ? titleCaseSkill(facet.label) : facet.label)}</span>
+    </nav>
+    <h1>${esc(k.heading(facet.label, region))}</h1>
+    <p class="summary">${esc(lede)} Every listing links to the employer's own posting.</p>
+
+    <ul class="feed">
+      ${shown.map((j) => `<li>${tile(j, { region })}</li>`).join('\n      ')}
+    </ul>
+    ${rows.length > shown.length
+      ? `<p class="dim">Showing the ${shown.length} most recent of ${rows.length}. <a href="${regionHref('/', region)}">See them all on the board</a>.</p>`
+      : ''}
+
+    ${also.length ? `<section class="strip">
+      <div class="strip-head"><h2>${esc(k.siblings)}</h2></div>
+      <ul class="cp-chips">
+        ${also.map((sib) => `<li><a href="${regionHref(`/${k.dir}/${sib.slug}`, region)}">${esc(kind === 'skill' ? titleCaseSkill(sib.label) : sib.label)}</a></li>`).join('\n        ')}
+      </ul>
+    </section>` : ''}
+  </div>
+</main>
+${foot({ headline: 'Get these as they open', sub: `New ${kind === 'skill' ? titleCaseSkill(facet.label) : facet.label} internships, the day they are listed.`, region })}`;
+}
+
+/** The index at /skills/ or /locations/ — the crawl path to every facet page. */
+export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } = {}) {
+  const k = FACET_KINDS[kind];
+  if (!k) throw new Error(`renderFacetIndex: unknown kind ${kind}`);
+  const noun = kind === 'skill' ? 'Skills' : 'Locations';
+  const total = facets.reduce((n, f) => n + f.jobs.length, 0);
+  const lede = kind === 'skill'
+    ? `Browse live internships ${region.inName} by the skill they ask for.`
+    : `Browse live engineering internships ${region.inName} by city.`;
+
+  return `${head({
+    title: buildTitle([`Internships by ${kind === 'skill' ? 'Skill' : 'City'}`, region.inName]),
+    description: clampWords(`${lede} ${facets.length} ${noun.toLowerCase()} across ${total} listings, updated every 30 minutes.`, 155),
+    canonical: regionUrl(`/${k.dir}/`, region),
+    /* Thin until there is something to browse. One or two facets is a page
+       that adds nothing the board does not already show. */
+    indexable: facets.length >= 3,
+    region,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Internships</a> <span aria-hidden="true">/</span> <span>${esc(noun)}</span>
+    </nav>
+    <h1>Internships ${esc(region.inName)} by ${kind === 'skill' ? 'skill' : 'city'}</h1>
+    <p class="summary">${esc(lede)}</p>
+    <div class="dir">
+      ${facets.map((f) => `<a class="dir-card" href="${regionHref(`/${k.dir}/${f.slug}`, region)}">
+        <span class="dir-t">
+          <span class="dir-name">${esc(kind === 'skill' ? titleCaseSkill(f.label) : f.label)}</span>
+          <span class="dir-n">${f.jobs.length} open role${f.jobs.length === 1 ? '' : 's'}</span>
+        </span>
+      </a>`).join('\n      ')}
+    </div>
+  </div>
+</main>
+${foot({ headline: 'Get new roles as they open', sub: 'One email when something matching lands.', region })}`;
+}
+
 export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {} } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
@@ -2941,6 +3074,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   // now carries its employer's other live roles — the only second click a
   // visitor who arrived from a search has.
   const wanted = new Set();
+  /* Facet directories, collected so the sweep below prunes them too. */
+  const facetDirs = [];
 
   /* Pages whose BYTES actually changed this run — the set IndexNow wants.
      Bing's guidance is to announce what changed, not to re-submit a sitemap on
@@ -2950,12 +3085,18 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   const changedUrls = [];
   const track = (changed, path) => { if (changed) changedUrls.push(regionUrl(path, region)); };
 
+  /* Computed BEFORE the job pages, because each job page's skill chips link to
+     a /skills/ page when one exists and fall back to the board's ?q= filter
+     when it does not. */
+  const facets = facetGroups(jobs.filter(isIndexable));
+  const skillPages = new Set(facets.skills.map((f) => f.slug));
+
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
     track(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages })),
       `/jobs/${jobSlug(job)}`);
   }
 
@@ -2999,6 +3140,35 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   track(writeIfChanged(join(compDir, 'index.html'),
     renderCompanyIndex(byCompany, pastByCompany, logos, { region, alternates })), '/companies');
 
+  /* Skill and location pages — the queries people actually type.
+     ------------------------------------------------------------------------
+     "python internships", "internships in bangalore". The board has always had
+     the data and never had a page: the skill chips point at the board's `?q=`
+     filter, and a query string is not a page Google indexes.
+
+     THE THRESHOLD IS WHAT KEEPS THIS FROM BEING A DOORWAY FARM. A facet is
+     written only once it carries enough roles to be worth reading; everything
+     below is not written at all. Unlike a company hub there is nothing to
+     protect by writing-then-noindexing, because nothing links to a facet page
+     that does not exist. */
+  for (const [kind, list] of [['skill', facets.skills], ['city', facets.cities]]) {
+    const dir = join(root, kind === 'skill' ? 'skills' : 'locations');
+    const seg = kind === 'skill' ? 'skills' : 'locations';
+    mkdirSync(dir, { recursive: true });
+    facetDirs.push([dir, seg]);
+    for (const f of list) {
+      const name = `${f.slug}.html`;
+      wanted.add(join(dir, name));
+      track(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region })),
+        `/${seg}/${f.slug}`);
+    }
+    // The index is the crawl path to every facet page, exactly as /companies/
+    // is to the hubs. Written even when the list is short so the breadcrumb on
+    // each facet page resolves; renderFacetIndex noindexes a thin one itself.
+    wanted.add(join(dir, 'index.html'));
+    track(writeIfChanged(join(dir, 'index.html'), renderFacetIndex(kind, list, { region })), `/${seg}`);
+  }
+
   /* /alerts — every way to follow this board. A flat file rather than a
      directory because vercel.json sets cleanUrls, so alerts.html serves at
      /alerts, and the dev server resolves it the same way. */
@@ -3019,7 +3189,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      Indexing API accepts JobPosting pages and nothing else, and a hub carries
      no JobPosting markup on purpose. See src/indexing.js. */
   const removedUrls = [];
-  for (const dir of [jobsDir, compDir]) {
+  for (const dir of [jobsDir, compDir, ...facetDirs.map(([d]) => d)]) {
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir)) {
       const full = join(dir, f);
@@ -3036,7 +3206,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      page cannot be announced to Google that the sitemap does not also list.
      Kept beside the count above rather than recomputed by the caller. */
   const indexUrls = jobs.filter(isIndexable).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
-  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS });
+  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets });
   const feedItems = writeFeeds(jobs, root, region);
   const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
 
@@ -3138,7 +3308,7 @@ function removeUnpublishedRegions(publicDir, regions) {
 }
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
-function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false } = {}) {
+function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false, facets = { skills: [], cities: [] } } = {}) {
   /* LASTMOD IS A CONTENT DATE, NEVER THE CLOCK, and it is day-granular.
    *
    * It was `new Date().toISOString()` for the board, /companies, /alerts,
@@ -3174,6 +3344,17 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        reason — and omitted entirely when it is noindex, because submitting a
        page you have told Google to ignore is noise. */
     ...(report ? [{ loc: regionUrl('/report', region), priority: '0.7', lastmod: boardDay }] : []),
+    /* Facet indexes and pages. Listed above the job pages because they do not
+       expire: a job page is deleted at 30 days, while /skills/python is a URL
+       that can accumulate authority for as long as the board keeps running. */
+    ...(facets.skills.length >= 3 ? [{ loc: regionUrl('/skills/', region), priority: '0.7', lastmod: boardDay }] : []),
+    ...(facets.cities.length >= 3 ? [{ loc: regionUrl('/locations/', region), priority: '0.7', lastmod: boardDay }] : []),
+    ...facets.skills.map((f) => ({
+      loc: regionUrl(`/skills/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
+    })),
+    ...facets.cities.map((f) => ({
+      loc: regionUrl(`/locations/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
+    })),
     ...jobs.filter(isIndexable).map((j) => ({
       loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',
