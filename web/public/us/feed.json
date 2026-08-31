@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/rippling-machine-learning-software-engineer-intern-winter-2027-4425105258",
+      "url": "https://interndoor.com/us/jobs/rippling-machine-learning-software-engineer-intern-winter-2027-4425105258",
+      "title": "Machine Learning Software Engineer Intern - Winter 2027 — Rippling",
+      "content_text": "Company: Rippling · Location: San Francisco, CA · Duration: 13 weeks\n• Build and deploy machine learning models for real-world business problems\n• Work with Python, PySpark, and PyTorch in a production codebase\n• Collaborate with data engineers and product teams on scalable solutions",
+      "date_published": "2026-08-31T12:45:53.421Z",
+      "authors": [
+        {
+          "name": "Rippling"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-2027-manufacturing-engineering-co-op-4414922158",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-2027-manufacturing-engineering-co-op-4414922158",
+      "title": "2027 Manufacturing Engineering Co-Op — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Manitowoc, WI\n• Support manufacturing processes and solve shop-floor issues\n• Use CAD, SPC, and ERP systems for process improvement\n• Work on fixtures, tooling, and data analysis projects",
+      "date_published": "2026-08-31T12:26:51.765Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-2027-automation-engineering-co-op-4414925148",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-2027-automation-engineering-co-op-4414925148",
+      "title": "2027 Automation Engineering Co-Op — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Manitowoc, WI\n• Assist in design and testing of small machines\n• Work with 3D modeling and robotic systems\n• Collaborate on technical documentation and reports",
+      "date_published": "2026-08-31T12:23:05.400Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079",
       "url": "https://interndoor.com/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079",
       "title": "WDI Project Controls Planning Intern, Spring 2027 — The Walt Disney Company",
@@ -563,42 +599,6 @@
       "title": "Mechanical Engineering Intern — Qorvo, Inc.",
       "content_text": "Company: Qorvo, Inc. · Location: Richardson, TX\n• Design electronics packaging and 3d model product assemblies\n• Perform thermal and structural fea analysis with infrared thermography\n• Collaborate with electrical teams and improve design workflows",
       "date_published": "2026-08-31T06:18:35.272Z",
-      "authors": [
-        {
-          "name": "Qorvo, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qorvo-inc-sales-data-analyst-intern-4461061493",
-      "url": "https://interndoor.com/us/jobs/qorvo-inc-sales-data-analyst-intern-4461061493",
-      "title": "Sales Data Analyst Intern — Qorvo, Inc.",
-      "content_text": "Company: Qorvo, Inc. · Location: Hillsboro, OR\n• Analyze sales data to improve accuracy and efficiency\n• Work with Databricks and SQL to build analytics solutions\n• Collaborate with teams to enhance data processes and reporting",
-      "date_published": "2026-08-31T06:18:34.748Z",
-      "authors": [
-        {
-          "name": "Qorvo, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qorvo-inc-software-engineering-intern-swr-4461039759",
-      "url": "https://interndoor.com/us/jobs/qorvo-inc-software-engineering-intern-swr-4461039759",
-      "title": "Software Engineering Intern, SWR — Qorvo, Inc.",
-      "content_text": "Company: Qorvo, Inc. · Location: Greensboro, NC\n• Write and maintain unit tests for software applications\n• Use python, rest apis, and sql for development tasks\n• Collaborate with mentors on design automation projects",
-      "date_published": "2026-08-31T06:18:34.642Z",
-      "authors": [
-        {
-          "name": "Qorvo, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qorvo-inc-test-engineering-intern-4461046657",
-      "url": "https://interndoor.com/us/jobs/qorvo-inc-test-engineering-intern-4461046657",
-      "title": "Test Engineering Intern — Qorvo, Inc.",
-      "content_text": "Company: Qorvo, Inc. · Location: Chelmsford, MA\n• Write automated test software to control equipment and analyze results\n• Use python and visual basic to develop measurement tools\n• Work with rf modules and test instruments like oscilloscopes\n• Collaborate with teams to troubleshoot and improve test processes",
-      "date_published": "2026-08-31T06:18:34.622Z",
       "authors": [
         {
           "name": "Qorvo, Inc."
