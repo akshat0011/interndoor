@@ -217,9 +217,14 @@ CREATE TABLE IF NOT EXISTS discovered_urls (
 `;
 
 export class Store {
-  constructor() {
+  /**
+   * @param {string} [dbPath] Override the database file. Defaults to the real
+   *   one and every caller uses that; the argument exists so a test can build
+   *   a throwaway store instead of writing rows into the live jobs.db.
+   */
+  constructor(dbPath = PATHS.db) {
     ensureDirs();
-    this.db = new DatabaseSync(PATHS.db);
+    this.db = new DatabaseSync(dbPath);
     this.db.exec('PRAGMA journal_mode = WAL');
     /**
      * Wait for a busy writer instead of failing on one.
@@ -1397,6 +1402,52 @@ export class Store {
         AND status IN ('rendering', 'scheduled', 'publishing', 'published')
         AND COALESCE(publish_at, started_at) >= ?
     `).get(region, sinceMs);
+    return row?.n ?? 0;
+  }
+
+  /**
+   * Publish failures for this region since its last SUCCESSFUL publish.
+   *
+   * This is the number the auto-sweep's circuit breaker reads, and it exists
+   * because the daily cap cannot see a failure at all: `reelCountSince` counts
+   * rendering|scheduled|publishing|published and NOT failed, so every failure
+   * frees a cap slot, the 60-second sweep queues a replacement, and that fails
+   * too. On 28-29 Aug that loop produced 36 failed US reels against a cap of
+   * 20 while Instagram was answering "API access blocked" — and hammering an
+   * endpoint that is blocking you is the worst thing to be doing while an app
+   * restriction is live. Twice now that has been stopped by hand.
+   *
+   * SINCE THE LAST SUCCESS, not a plain window count, so it clears itself: one
+   * reel going out proves the endpoint is answering and the count returns to
+   * zero with nothing to reset by hand. A window is still applied on top, so a
+   * region that failed a fortnight ago and has simply been quiet since is not
+   * held shut for ever.
+   *
+   * A CANCELLATION IS NOT A FAILURE. Rows retired by hand — an employer
+   * dropped from the watchlist, a region switched off — are written as 'failed'
+   * with the reason, deliberately, because `reelKnownJobIds` returns every row
+   * whatever its status and a kept row is what stops the sweep re-queueing that
+   * posting. They must not trip a breaker about Instagram.
+   *
+   * The discriminator is `finished_at`: the publisher stamps it whether the
+   * attempt succeeded or failed, and a row cancelled before it was ever
+   * attempted has none. Measured across the whole table when this was written —
+   * all 36 real API failures carry one, and none of the 11 cancellations does.
+   * There is deliberately no `finished_at IS NOT NULL` clause: the window
+   * comparison below already excludes those rows, because any comparison with
+   * NULL is false, and an explicit guard that no mutation can reach is a line
+   * that only looks like it is doing something.
+   */
+  reelFailuresSinceSuccess(region, sinceMs) {
+    const row = this.db.prepare(`
+      SELECT COUNT(*) AS n FROM reel_posts
+      WHERE region = ?
+        AND status = 'failed'
+        AND finished_at >= ?
+        AND finished_at > COALESCE(
+          (SELECT MAX(finished_at) FROM reel_posts
+            WHERE region = ? AND status = 'published'), 0)
+    `).get(region, sinceMs, region);
     return row?.n ?? 0;
   }
 

@@ -521,6 +521,9 @@ async function drainReels() {
  * FAILED row. The sweep runs every 60 seconds and the slots are minutes apart,
  * so there is nothing to gain by queueing deeper.
  */
+/* Regions the breaker has already spoken about, so it says it once. */
+const breakerWarned = new Set();
+
 function autoSweep() {
   if (!autoEnabled(cfg)) return;
   if (reelRunning && !reelRunning.finishedAt) return;
@@ -528,6 +531,7 @@ function autoSweep() {
 
   const auto = cfg.reels?.auto ?? {};
   const perSweep = Number(auto.perSweep ?? 3);
+  const failureLimit = Number(auto.failureLimit ?? 3);
   const maxAgeMs = Number(auto.maxAgeHours ?? 48) * 3_600_000;
   const now = Date.now();
 
@@ -542,6 +546,30 @@ function autoSweep() {
   const seenPrints = store.reelKnownFingerprints();
 
   for (const region of autoRegions(cfg)) {
+    /* THE CIRCUIT BREAKER. A failure does not count against the daily cap —
+       reelCountSince counts rendering|scheduled|publishing|published and not
+       failed — so a blocked endpoint frees a slot, this sweep refills it 60
+       seconds later, and that fails too. On 28-29 Aug it turned a cap of 20
+       into 36 failed US reels while Instagram answered "API access blocked",
+       and hammering an endpoint that is blocking you is the worst thing to be
+       doing while an app restriction is live. It has been stopped by hand
+       twice; this stops it on its own.
+       It clears itself on the next successful publish, so there is nothing to
+       reset — see reelFailuresSinceSuccess, which also explains why a row
+       cancelled by hand is not a failure. */
+    const failures = store.reelFailuresSinceSuccess(region, now - 86_400_000);
+    if (failures >= failureLimit) {
+      /* Once per region per process. A warning repeated every 60 seconds is
+         one nobody reads, and this one has to be legible in the log the
+         morning after it trips. */
+      if (!breakerWarned.has(region)) {
+        breakerWarned.add(region);
+        log.warn(`Reels: ${region} has failed ${failures} times since its last successful post — automatic posting is paused for this region. Probe the account before re-enabling; it clears itself on the next success.`);
+      }
+      continue;
+    }
+    breakerWarned.delete(region);
+
     const cap = dailyCap(region, cfg);
     const used = store.reelCountSince(region, now - 86_400_000);
     let spent = used;   // moves as we queue, so the log counts up rather than repeating
