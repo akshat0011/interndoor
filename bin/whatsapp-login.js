@@ -16,7 +16,12 @@
 import { openWhatsApp, sessionState } from '../src/whatsapp.js';
 import { PATHS } from '../src/paths.js';
 
-const WAIT_MS = 5 * 60_000;
+/* Long, and a flag can make it longer. The first version waited five minutes
+   and timed out with nothing saved, which is the wrong failure for a step that
+   needs a phone in someone's hand — the QR refreshes itself, so waiting costs
+   nothing but an open window. */
+const argMin = Number((process.argv.find((a) => a.startsWith('--minutes=')) ?? '').split('=')[1]);
+const WAIT_MS = (Number.isFinite(argMin) && argMin > 0 ? argMin : 20) * 60_000;
 
 const { ctx, page } = await openWhatsApp({ headless: false });
 console.log(`profile: ${PATHS.whatsappProfile}`);
@@ -37,8 +42,14 @@ console.log('  WhatsApp → Settings → Linked devices → Link a device\n');
 console.log('Waiting up to 5 minutes…');
 
 const deadline = Date.now() + WAIT_MS;
+let announced = 0;
 while (Date.now() < deadline) {
-  const now = await sessionState(page, { timeoutMs: 5000 });
+  /* sessionState answers IMMEDIATELY while a QR is on screen, so without this
+     sleep the loop spins on page.evaluate for the whole wait. */
+  await page.waitForTimeout(3000);
+  const left = Math.round((deadline - Date.now()) / 60_000);
+  if (left !== announced) { announced = left; process.stdout.write(`  …still waiting, ${left} min left\n`); }
+  const now = await sessionState(page, { timeoutMs: 4000 });
   if (now.state === 'ready') {
     console.log('\nLinked. The session is saved in this profile and survives restarts.');
     // A moment for WhatsApp to finish writing its IndexedDB before the context
@@ -49,6 +60,6 @@ while (Date.now() < deadline) {
     process.exit(0);
   }
 }
-console.log('\nTimed out — nothing was saved. Run it again when the phone is to hand.');
+console.log('\nTimed out — nothing was saved. Re-run: npm run whatsapp-login -- --minutes=30');
 await ctx.close();
 process.exit(1);
