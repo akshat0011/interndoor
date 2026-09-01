@@ -6,6 +6,162 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-hardware-systems-engineering-co-op-winter-spring-2027-4461508855",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-hardware-systems-engineering-co-op-winter-spring-2027-4461508855",
+      "title": "Hardware Systems Engineering Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027",
+      "date_published": "2026-09-01T00:32:33.674Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-software-controls-engineering-intern-4461512709",
+      "url": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-software-controls-engineering-intern-4461512709",
+      "title": "Mercury Marine: Software Controls Engineering Intern — Mercury Marine",
+      "content_text": "Company: Mercury Marine · Location: Fond du Lac, WI\n• Develop control algorithms using Simulink and MATLAB\n• Test embedded software on engines and simulation boards\n• Collaborate with cross-functional teams on control systems",
+      "date_published": "2026-09-01T00:30:38.137Z",
+      "authors": [
+        {
+          "name": "Mercury Marine"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-ai-compute-2027-start-phd-4461523188",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-ai-compute-2027-start-phd-4461523188",
+      "title": "Research Intern (AI Compute) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: Seattle, WA · Duration: 12 weeks\n• Design and build large-scale cluster management systems with high performance and scalability\n• Work with Kubernetes, Ray, vLLM, and TensorRT-LLM on cloud-native GPU infrastructure\n• Collaborate on AI/ML orchestration and inference solutions for global platforms",
+      "date_published": "2026-09-01T00:17:45.877Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-ai-compute-2027-start-phd-4461508432",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-ai-compute-2027-start-phd-4461508432",
+      "title": "Research Intern (AI Compute) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 12 weeks\n• Design and build large-scale cluster management systems with high performance and scalability\n• Work with Kubernetes, Ray, vLLM, and TensorRT-LLM on cloud-native GPU infrastructure\n• Collaborate on AI/ML orchestration and inference solutions for global platforms",
+      "date_published": "2026-09-01T00:17:21.015Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-inference-infrastructure-2027-start-phd-4461506480",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-inference-infrastructure-2027-start-phd-4461506480",
+      "title": "Research Intern (Inference Infrastructure) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 12 weeks\n• Design and build large-scale cluster management systems with high performance and scalability\n• Work with vLLM, SGLang, and TensorRT-LLM to develop inference solutions\n• Collaborate on cloud-native GPU and AI accelerator infrastructure\n• Contribute to open-source projects and integrate best practices into production",
+      "date_published": "2026-09-01T00:17:18.843Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-cloud-acceleration-research-intern-dpu-and-ai-infra-2027-start-phd-4461518230",
+      "url": "https://interndoor.com/us/jobs/bytedance-cloud-acceleration-research-intern-dpu-and-ai-infra-2027-start-phd-4461518230",
+      "title": "Cloud Acceleration Research Intern (DPU & AI Infra) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: Summer 2027\n• Develop techniques to speed up AI training and inference using DPUs, GPUs, and custom hardware\n• Work with hardware and software teams to turn research into real-world cloud solutions\n• Analyze and optimize performance across hardware, OS, and communication systems",
+      "date_published": "2026-09-01T00:17:15.987Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-inference-infrastructure-2027-start-phd-4461521212",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-inference-infrastructure-2027-start-phd-4461521212",
+      "title": "Research Intern (Inference Infrastructure) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: Seattle, WA · Duration: 12 weeks\n• Design and build large-scale cluster management systems with high performance and scalability\n• Work with vLLM, SGLang, and TensorRT-LLM to develop inference solutions\n• Collaborate on cloud-native GPU and AI accelerator infrastructure\n• Contribute to open-source projects and integrate best practices into production",
+      "date_published": "2026-09-01T00:17:12.832Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-frontier-ai-systems-2027-start-phd-4461516361",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-frontier-ai-systems-2027-start-phd-4461516361",
+      "title": "Research Intern (Frontier AI Systems) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and build AI systems for large-scale training, inference, and reinforcement learning\n• Work with researchers and engineers on prototype systems and technical proposals\n• Explore system designs for distributed training, memory architectures, and agent infrastructure",
+      "date_published": "2026-09-01T00:17:03.212Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-aerospace-cyber-security-intern-summer-2027-4461513360",
+      "url": "https://interndoor.com/us/jobs/honeywell-aerospace-cyber-security-intern-summer-2027-4461513360",
+      "title": "Cyber Security Intern - Summer 2027 — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: United States · Duration: Summer 2027\n• Analyze security protocols and recommend improvements\n• Collaborate with data science teams for actionable insights\n• Work on projects that enhance technological capabilities",
+      "date_published": "2026-09-01T00:12:27.283Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-aerospace-r-and-d-intern-summer-2027-u-s-person-required-4461516356",
+      "url": "https://interndoor.com/us/jobs/honeywell-aerospace-r-and-d-intern-summer-2027-u-s-person-required-4461516356",
+      "title": "R&D Intern - Summer 2027 (U.S. Person Required) — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: United States · Duration: Summer 2027\n• Assist in experiments and prototype testing\n• Support data analysis and documentation\n• Collaborate with engineers on project improvements",
+      "date_published": "2026-09-01T00:12:23.037Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-aerospace-r-and-d-intern-summer-2027-4461516359",
+      "url": "https://interndoor.com/us/jobs/honeywell-aerospace-r-and-d-intern-summer-2027-4461516359",
+      "title": "R&D Intern - Summer 2027 — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: United States · Duration: Summer 2027\n• Assist in experiments and prototype testing\n• Support data analysis and documentation\n• Collaborate with engineers on project improvements",
+      "date_published": "2026-09-01T00:12:18.330Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-u-s-person-requ-4461519242",
+      "url": "https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-u-s-person-requ-4461519242",
+      "title": "Information Systems, IT, Data Science Intern - Summer 2027 (U.S. Person Required) — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: United States · Duration: Summer 2027\n• Analyze data and contribute to actionable insights\n• Support cybersecurity initiatives with security protocols\n• Design and implement IT solutions for business needs",
+      "date_published": "2026-09-01T00:12:08.756Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-4461506471",
+      "url": "https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-4461506471",
+      "title": "Information Systems, IT, Data Science Intern - Summer 2027 — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: United States · Duration: Summer 2027\n• Analyze data and contribute to actionable insights\n• Support cybersecurity initiatives with security protocols\n• Work on projects that enhance technological capabilities",
+      "date_published": "2026-09-01T00:11:57.837Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/bytedance-cloud-acceleration-research-intern-dpu-and-ai-infra-2027-start-phd-4461529075",
       "url": "https://interndoor.com/us/jobs/bytedance-cloud-acceleration-research-intern-dpu-and-ai-infra-2027-start-phd-4461529075",
       "title": "Cloud Acceleration Research Intern (DPU & AI Infra) - 2027 Start (PhD) — ByteDance",
@@ -446,162 +602,6 @@
       "authors": [
         {
           "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461273919",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461273919",
-      "title": "2027 Summer Internship - Data Science/Analytics (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Mays Landing, NJ · Duration: 10 weeks\n• Analyze data to support energy solutions\n• Use python and sql for data processing\n• Work with cross-functional teams on real projects",
-      "date_published": "2026-08-31T20:56:34.249Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461272908",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461272908",
-      "title": "2027 Summer Internship - Info Tech (IT) & Computer Science (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Washington, DC · Duration: 10 weeks\n• Support energy projects with data analysis and system improvements\n• Use python, sql, and power bi for insights and reporting\n• Work with cross-functional teams on sustainability initiatives",
-      "date_published": "2026-08-31T20:55:12.074Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461284170",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461284170",
-      "title": "2027 Summer Internship - Info Tech (IT) & Computer Science (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Windsor Mill, MD · Duration: 10 weeks\n• Support energy systems with data analysis and project management\n• Use python, sql, and microsoft tools\n• Work on real-world projects with a team of engineers",
-      "date_published": "2026-08-31T20:54:41.266Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461288103",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461288103",
-      "title": "2027 Summer Internship - Data Science/Analytics (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Newark, DE · Duration: 10 weeks\n• Analyze data to support energy solutions\n• Use python and sql for data processing\n• Work with cross-functional teams on real projects",
-      "date_published": "2026-08-31T20:41:54.216Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461291063",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461291063",
-      "title": "2027 Summer Internship - Data Science/Analytics (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Windsor Mill, MD · Duration: 10 weeks\n• Analyze data to support energy solutions\n• Use python and sql for data processing\n• Work with cross-functional teams on real projects",
-      "date_published": "2026-08-31T20:40:38.649Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461293043",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461293043",
-      "title": "2027 Summer Internship - Info Tech (IT) & Computer Science (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Mays Landing, NJ · Duration: 10 weeks\n• Support energy systems with data analysis and project management\n• Use python, sql, and microsoft tools\n• Work on real-world projects with a team of engineers",
-      "date_published": "2026-08-31T20:40:10.062Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-illinois-4461273934",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-illinois-4461273934",
-      "title": "2027 Summer Internship: Engineering (Illinois) — Exelon",
-      "content_text": "Company: Exelon · Location: Villa Park, IL · Duration: 10 weeks\n• Support energy infrastructure projects under a supervisor\n• Work with engineering software and safety protocols\n• Paid internship lasting 10 weeks in summer",
-      "date_published": "2026-08-31T20:40:01.070Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461282232",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461282232",
-      "title": "2027 Summer Internship - Data Science/Analytics (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Washington, DC · Duration: 10 weeks\n• Analyze energy data to support sustainability goals\n• Use python and sql for data processing\n• Work with cross-functional teams on real projects",
-      "date_published": "2026-08-31T20:39:59.303Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-baltimore-maryland-4461286112",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-baltimore-maryland-4461286112",
-      "title": "2027 Summer Internship - Engineering (Baltimore, Maryland) — Exelon",
-      "content_text": "Company: Exelon · Location: Baltimore, MD · Duration: 10 weeks\n• Support energy infrastructure projects with technical analysis and problem-solving\n• Use python, sql, and data visualization tools for project work\n• Work with a team focused on sustainable energy solutions in baltimore",
-      "date_published": "2026-08-31T20:39:59.270Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-philadelphia-area-4461289079",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-philadelphia-area-4461289079",
-      "title": "2027 Summer Internship - Engineering (Philadelphia Area) — Exelon",
-      "content_text": "Company: Exelon · Location: Philadelphia, PA · Duration: 10 weeks\n• Support energy infrastructure projects with technical analysis and problem-solving\n• Use python and sql for data analysis and system optimization\n• Work with cross-functional teams on grid modernization initiatives",
-      "date_published": "2026-08-31T20:39:45.680Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-delaware-new-jersey-area-4461287070",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-engineering-delaware-new-jersey-area-4461287070",
-      "title": "2027 Summer Internship - Engineering (Delaware/New Jersey Area) — Exelon",
-      "content_text": "Company: Exelon · Location: Penns Grove, NJ · Duration: 10 weeks\n• Support energy infrastructure projects under a supervisor\n• Use python and sql for data analysis and reporting\n• Work on real-world problems with team of engineers",
-      "date_published": "2026-08-31T20:38:50.275Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461270971",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-info-tech-it-and-computer-science-various-exelo-4461270971",
-      "title": "2027 Summer Internship - Info Tech (IT) & Computer Science (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Chicago, IL · Duration: 10 weeks\n• Support energy systems with data analysis and project management\n• Use python, sql, and excel for reporting and automation\n• Work with cross-functional teams on sustainability initiatives",
-      "date_published": "2026-08-31T20:38:40.301Z",
-      "authors": [
-        {
-          "name": "Exelon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461284151",
-      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-data-science-analytics-various-exelon-locations-4461284151",
-      "title": "2027 Summer Internship - Data Science/Analytics (Various Exelon Locations) — Exelon",
-      "content_text": "Company: Exelon · Location: Villa Park, IL · Duration: 10 weeks\n• Analyze data to support energy solutions\n• Use python and sql for data processing\n• Work with cross-functional teams on real projects",
-      "date_published": "2026-08-31T20:38:37.632Z",
-      "authors": [
-        {
-          "name": "Exelon"
         }
       ]
     }
