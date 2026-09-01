@@ -1431,6 +1431,9 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   overflow-wrap: anywhere;
 }
 
+/* While the panel is open the textarea below is showing the same words. */
+.trk tr.is-open .trk-note-r { display: none; }
+
 /* The follow-up flag, in the facts line rather than a column of its own —
    most rows never carry one. */
 .trk-due {

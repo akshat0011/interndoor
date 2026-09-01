@@ -366,6 +366,10 @@
         var meta = T.statusMeta(row.status);
         if (meta.done) tr.className = 'is-done';
         if (T.isDue(row)) tr.classList.add('is-due');
+        // Marks the row whose panel is open, so the read-only copy of the note
+        // under the role can hide — the textarea below it is showing the same
+        // text, and printing it twice reads as a rendering fault.
+        if (expanded.has(row.id)) tr.classList.add('is-open');
 
         tr.append(roleCell(row));
 
