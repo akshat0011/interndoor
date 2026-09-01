@@ -45,7 +45,7 @@ import { join, dirname, extname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { homedir } from 'node:os';
 import { scriptText, reelScript } from '../src/reelscript.js';
-import { PATHS } from '../src/paths.js';
+import { PATHS, storygastedRoot } from '../src/paths.js';
 import { loadConfig } from '../src/config.js';
 import { durationText, modeText } from '../src/pages.js';
 import { pickBgm, commitBgm } from '../src/reelbgm.js';
@@ -65,7 +65,7 @@ const PUBLIC = join(ROOT, 'web', 'public');
 const BGM_DIR = PATHS.reelsBgm;
 const WORK = PATHS.reelsWork;
 const OUT_DIR = PATHS.reelsOut;
-const STORYGASTED = join(homedir(), 'Desktop', 'projects', 'storygasted');
+const STORYGASTED = storygastedRoot();
 
 /* Speech from Qwen3-TTS is slower than reel pacing — measured at about 1.7
    words a second raw, against the 2.1 a listener expects. storygasted solves

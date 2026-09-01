@@ -27,7 +27,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
-import { PATHS } from '../src/paths.js';
+import { PATHS, storygastedRoot } from '../src/paths.js';
 import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
@@ -355,7 +355,7 @@ async function doPublish(row) {
       'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', video], 'ffprobe'));
 
     const out = await run('uv', ['run', '--project',
-      join(process.env.HOME, 'Desktop', 'projects', 'storygasted'), 'python',
+      storygastedRoot(), 'python',
       join(PATHS.root, 'bin', 'ig_publish.py'),
       '--video', video, '--caption-file', capFile,
       '--duration', seconds.toFixed(2), '--account', account,

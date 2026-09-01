@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 
 export const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -116,4 +116,33 @@ export function ensureDirs() {
 export function inProtectedFolder(path = ROOT) {
   const home = homedir();
   return ['Desktop', 'Documents', 'Downloads'].some((d) => path.startsWith(join(home, d)));
+}
+
+/* WHERE STORYGASTED LIVES, resolved rather than hard-coded.
+
+   The reels pipeline borrows storygasted's venv for three things — the MLX
+   Qwen3-TTS voiceover, the forced aligner behind the burned-in captions, and
+   the Graph API client that publishes to Instagram. Each was invoked with a
+   literal `~/Desktop/projects/storygasted`, in five separate places.
+
+   That project moved to ~/projects, and every reel failed for 20 hours:
+   `uv` exits 2 with "Project directory ... does not exist", the publish step
+   dies, and the ONLY place it is visible is reel_posts.error. Nothing else
+   notices, because a render that cannot reach the publisher still looks like
+   a healthy render.
+
+   So: check the known locations, honour STORYGASTED_HOME for anywhere else,
+   and fall back to the historical path so the error message still names
+   something recognisable. Callers pass this to `uv run --project`. */
+const STORYGASTED_CANDIDATES = [
+  process.env.STORYGASTED_HOME,
+  join(homedir(), 'projects', 'storygasted'),
+  join(homedir(), 'Desktop', 'projects', 'storygasted'),
+].filter(Boolean);
+
+export function storygastedRoot() {
+  for (const dir of STORYGASTED_CANDIDATES) {
+    if (existsSync(join(dir, 'pyproject.toml'))) return dir;
+  }
+  return STORYGASTED_CANDIDATES[STORYGASTED_CANDIDATES.length - 1];
 }

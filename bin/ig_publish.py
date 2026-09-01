@@ -1,6 +1,6 @@
 """Publish one rendered reel to Instagram, using storygasted's Graph API client.
 
-    uv run --project ~/Desktop/projects/storygasted \
+    uv run --project "$(storygasted root)" \
         python bin/ig_publish.py --video out/123.mp4 --caption-file cap.txt \
         --duration 11.6 --account interndoor
 
@@ -33,7 +33,19 @@ import os
 import sys
 from pathlib import Path
 
-SG = Path.home() / "Desktop" / "projects" / "storygasted"
+# Resolved, not hard-coded: this project moved from ~/Desktop/projects once
+# already and took every reel down for 20 hours. STORYGASTED_HOME wins.
+def _storygasted_root():
+    import os
+    for d in (os.environ.get("STORYGASTED_HOME"),
+              Path.home() / "projects" / "storygasted",
+              Path.home() / "Desktop" / "projects" / "storygasted"):
+        if d and Path(d, "pyproject.toml").is_file():
+            return Path(d)
+    return Path.home() / "projects" / "storygasted"
+
+
+SG = _storygasted_root()
 APP = Path(__file__).resolve().parent.parent
 
 
