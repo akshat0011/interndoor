@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 01 Sep 2026 06:08:37 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 01 Sep 2026 06:23:25 GMT</lastBuildDate>
+  <item>
+    <title>Legal Tech intern (Mumbai based only) — Volody</title>
+    <link>https://interndoor.com/jobs/volody-legal-tech-intern-mumbai-based-only-4459291056</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volody-legal-tech-intern-mumbai-based-only-4459291056</guid>
+    <pubDate>Tue, 01 Sep 2026 05:46:02 GMT</pubDate>
+    <description>Company: Volody · Location: Mumbai, Maharashtra, India
+• Assist in developing ai-driven legal workflows and automation tools
+• Work on prompt engineering for legal ai use cases
+• Review and analyze contracts using ai tools</description>
+  </item>
   <item>
     <title>SOC Analyst (Trainee) — Gruve</title>
     <link>https://interndoor.com/jobs/gruve-soc-analyst-trainee-4461564239</link>
@@ -498,16 +508,6 @@
 • Build scalable backend systems for healthcare apps
 • Work with postgres/mysql and django rest framework
 • Contribute to aws deployments and ci/cd pipelines</description>
-  </item>
-  <item>
-    <title>Manual &amp; Automation Test Engineer Intern — D Square Consulting Services Pvt Ltd</title>
-    <link>https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4457462953</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4457462953</guid>
-    <pubDate>Tue, 25 Aug 2026 10:16:42 GMT</pubDate>
-    <description>Company: D Square Consulting Services Pvt Ltd · Location: Bengaluru, Karnataka, India · Duration: 0–6 months
-• Execute manual tests and log defects with clear steps
-• Setup and run automation scripts using Java/Selenium
-• Participate in agile ceremonies and track test metrics</description>
   </item>
 </channel>
 </rss>
