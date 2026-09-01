@@ -641,7 +641,14 @@ html[data-boot] .boot-part {
 
 .rail {
   position: sticky; top: var(--bar-h); z-index: 50;
-  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  /* 92%, not 78%. The .field decorative marks are lime and sit behind this
+     sticky bar, so at 78% they composited through and BECAME the background
+     the 9.5px filter labels are read against — axe measured #3b4a08 at
+     412px and #242b09 at 1280px, i.e. olive, giving 2.5:1. No text colour
+     fixes small text over an arbitrary decorative background; the fix is to
+     stop the decoration reaching it. The backdrop blur is untouched, so the
+     frosted-glass read survives — there is just far less of it. */
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
 }
@@ -1073,7 +1080,12 @@ html[data-boot] .boot-part {
    the last line of the footer sits beneath the bar. */
 .foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 calc(52px + env(safe-area-inset-bottom)); font-size: 12px; color: var(--ink-3); }
 .foot p { max-width: 80ch; }
-.dim { margin-top: 8px; opacity: .75; }
+/* NO opacity here. It used to carry `opacity: .75`, which faded .foot's
+   own --ink-3 from a passing 4.94 on --bg-2 to 3.27 — axe reads the faded
+   value as the real foreground, and it is right to. Opacity on text is the
+   anti-pattern: it multiplies the contrast down invisibly, and the colour
+   the design already chose was fine. */
+.dim { margin-top: 8px; }
 
 /* ---------- modal ---------- */
 
@@ -1427,11 +1439,16 @@ html[data-boot] .boot-part {
    originally rendered into the results list, where it flashed as a stack of
    bare links before app.js replaced them. */
 .all-roles { margin: 1.1rem 0 0; }
+/* Same as .dim, and worse: opacity .55 took this to 2.29, on a control
+   somebody is meant to click. It inherits --ink-3 from .foot, which
+   passes at 4.94 unfaded. Hover brightens the COLOUR now rather than
+   raising an opacity, so the feedback survives without the base state
+   being illegible. */
 .all-roles > summary {
   cursor: pointer; font: 600 0.78rem/1.4 var(--mono, ui-monospace, monospace);
-  letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.55;
+  letter-spacing: 0.04em; text-transform: uppercase;
 }
-.all-roles > summary:hover { opacity: 0.85; }
+.all-roles > summary:hover { color: var(--ink); }
 .all-roles > ul {
   margin: 0.8rem 0 0; padding: 0 0 0 1rem; max-height: 22rem; overflow-y: auto;
   columns: 2; column-gap: 2rem;

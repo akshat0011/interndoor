@@ -96,6 +96,28 @@ check("and not an h3, which skipped a level on every card",
   /el\('h3',\s*'role'/.test(roleLine), false);
 
 /* ---- the light-theme tokens ---- */
+console.log('\n== no CSS opacity on text that has to stay legible ==');
+/* Both of these carried an opacity that faded .foot's own --ink-3 (a passing
+   4.94 on --bg-2) below AA without changing a single colour value, which is
+   exactly why it went unnoticed: the token was right and the rendered text
+   was not. axe folds opacity into the foreground and is correct to.
+   .dim was .75 -> 3.27; .all-roles > summary was .55 -> 2.29, on a control
+   somebody is meant to click. */
+const dimRule = (css.match(/\n\.dim \{[^}]*\}/) || [''])[0];
+const sumRule = (css.match(/\.all-roles > summary \{[^}]*\}/) || [''])[0];
+if (!dimRule || !sumRule) { console.log('  FAIL  could not find .dim / .all-roles > summary'); process.exit(1); }
+check('.dim carries no opacity', /opacity/.test(dimRule), false);
+check('.all-roles > summary carries no opacity', /opacity/.test(sumRule), false);
+
+console.log('\n== the sticky rail stays solid enough to read 9.5px labels on ==');
+/* The .field decorative marks are lime and sit behind the rail. At 78% they
+   composited through and became the background the filter labels are read
+   against (axe measured #242b09 at 1280px, 3.8:1). Raising the rail to 92%
+   cleared every desktop violation. Pinned as a floor, not an exact value. */
+const railPct = +((css.match(/\.rail \{[\s\S]{0,700}?background: color-mix\(in oklab, var\(--bg\) (\d+)%/) || [])[1]);
+if (!railPct) { console.log('  FAIL  could not read the .rail background mix'); process.exit(1); }
+atLeast('.rail --bg mix percentage', railPct, 90);
+
 console.log('\n== light-theme tokens clear AA where they are used as text ==');
 const light = (css.match(/:root\[data-theme="light"\]\s*\{[\s\S]*?\n\}/) || [''])[0];
 const tok = (n) => {
