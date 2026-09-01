@@ -50,7 +50,13 @@ function loadStore() {
   const src = read('../web/public/track.js');
   // eslint-disable-next-line no-new-func
   new Function('window', 'localStorage', src)(win, localStorage);
-  return { T: win.IDTrack, raw: () => JSON.parse(store.get(win.IDTrack.KEY) || 'null') };
+  return {
+    T: win.IDTrack,
+    raw: () => JSON.parse(store.get(win.IDTrack.KEY) || 'null'),
+    // Plant bytes directly, bypassing importData — the only way to reach code
+    // that defends against rows read() did not sanitise.
+    plant: (items) => store.set(win.IDTrack.KEY, JSON.stringify({ v: 1, items })),
+  };
 }
 
 const JOB = {
@@ -186,6 +192,234 @@ console.log('\n== a tracked role that has aged off the board still renders ==');
   check('the company survives', row.company, 'HARMAN India');
   check('the title survives', row.title, 'Software Intern');
   check('and so does the link to its page', row.slug, JOB.slug);
+}
+
+console.log('\n== notes ==');
+{
+  const { T } = loadStore();
+  T.track(JOB, 'applied');
+  T.setNote(JOB.id, 'Referred by Priya. OA covered graphs.');
+  check('the note is stored verbatim', T.get(JOB.id).note, 'Referred by Priya. OA covered graphs.');
+  // A note is not an event that happened to the application.
+  check('it does NOT enter the status history', T.get(JOB.id).history.length, 1);
+  const before = T.get(JOB.id).updated;
+  /* WAIT FOR THE CLOCK. Date.now() can return the same millisecond twice, so
+     without this the assertion below passes whether or not the guard exists —
+     which is exactly what a mutation run showed. */
+  while (Date.now() === before) { /* spin one millisecond */ }
+  check('a blur with no edit is a no-op', T.setNote(JOB.id, 'Referred by Priya. OA covered graphs.'), true);
+  check('and does not move `updated`', T.get(JOB.id).updated, before);
+  T.setNote(JOB.id, '');
+  check('it can be cleared', T.get(JOB.id).note, '');
+  check('a note on an untracked role is refused', T.setNote('nope', 'x'), false);
+}
+
+console.log('\n== the follow-up date ==');
+{
+  const { T } = loadStore();
+  T.track(JOB, 'applied');
+  check('stored as the ISO string the date input produces',
+    T.setReminder(JOB.id, '2026-09-05') && T.get(JOB.id).remindAt, '2026-09-05');
+  check('cleared with an empty string',
+    T.setReminder(JOB.id, '') && T.get(JOB.id).remindAt, '');
+
+  // Re-picking the same date is a no-op, the same way re-blurring a note is.
+  T.setReminder(JOB.id, '2026-09-05');
+  const stamp = T.get(JOB.id).updated;
+  while (Date.now() === stamp) { /* spin one millisecond */ }
+  check('re-picking the same date is a no-op', T.setReminder(JOB.id, '2026-09-05'), true);
+  check('and does not move `updated`', T.get(JOB.id).updated, stamp);
+
+  /* REFUSED, NOT STORED. Everything downstream compares these as strings, which
+     is only exact while every value really is a bare ISO date — one free-text
+     value and the comparison silently stops meaning anything. */
+  T.setReminder(JOB.id, '2026-09-05');
+  for (const bad of ['tomorrow', '5/9/2026', '2026-9-5', '2026-09-05T00:00:00Z', '20260905']) {
+    check(`"${bad}" is refused`, T.setReminder(JOB.id, bad), false);
+  }
+  check('and the good value survives every refusal', T.get(JOB.id).remindAt, '2026-09-05');
+  check('a date on an untracked role is refused', T.setReminder('nope', '2026-09-05'), false);
+}
+
+console.log('\n== what counts as due ==');
+{
+  const { T } = loadStore();
+  const day = (n) => {
+    const d = new Date();
+    d.setDate(d.getDate() + n);
+    const p = (x) => String(x).padStart(2, '0');
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  };
+  check('today() is a bare ISO date', /^\d{4}-\d{2}-\d{2}$/.test(T.today()), true);
+  check('and it is today in THIS timezone', T.today(), day(0));
+
+  T.track({ ...JOB, id: 'over' }, 'applied');  T.setReminder('over', day(-3));
+  T.track({ ...JOB, id: 'now' }, 'applied');   T.setReminder('now', day(0));
+  T.track({ ...JOB, id: 'soon' }, 'applied');  T.setReminder('soon', day(4));
+  T.track({ ...JOB, id: 'none' }, 'applied');
+  T.track({ ...JOB, id: 'shut' }, 'rejected'); T.setReminder('shut', day(-3));
+
+  check('overdue is due', T.isDue(T.get('over')), true);
+  check('today is due', T.isDue(T.get('now')), true);
+  check('a future date is not', T.isDue(T.get('soon')), false);
+  check('no date is not', T.isDue(T.get('none')), false);
+  /* A follow-up left on a REJECTED application is a leftover from before the
+     answer arrived. Flagging it sends somebody to chase a reply they have. */
+  check('a closed application is never due', T.isDue(T.get('shut')), false);
+  check('the count agrees', T.dueCount(), 2);
+  check('a garbage row does not throw', T.isDue(null), false);
+}
+
+console.log('\n== the timezone trap this is written around ==');
+{
+  /* `new Date("2026-09-05")` parses as UTC midnight, so west of Greenwich it
+     renders as the 4th. Storing a date STRING and comparing lexicographically
+     touches no timezone at all — and this is the check that proves it, because
+     the bug is invisible when the test runs in IST. */
+  const { execFileSync } = await import('node:child_process');
+  const probe = `
+    import { readFileSync } from 'node:fs';
+    const src = readFileSync('web/public/track.js', 'utf8');
+    const store = new Map();
+    const ls = { getItem: k => store.get(k) ?? null, setItem: (k,v) => store.set(k,String(v)) };
+    const win = { addEventListener(){} };
+    new Function('window','localStorage',src)(win, ls);
+    const T = win.IDTrack;
+    T.track({id:'a',company:'c',title:'t'}, 'applied');
+    T.setReminder('a', T.today());
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, '0');
+    const localToday = d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate());
+    process.stdout.write(JSON.stringify({
+      today: T.today(), local: localToday, utc: d.toISOString().slice(0,10),
+      dueToday: T.isDue(T.get('a')),
+    }));
+  `;
+  for (const tz of ['Asia/Kolkata', 'America/Los_Angeles', 'Pacific/Kiritimati', 'Etc/GMT+12']) {
+    const out = JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', probe],
+      { env: { ...process.env, TZ: tz }, encoding: 'utf8' }));
+    check(`a follow-up set for today is due in ${tz}`, out.dueToday, true);
+    check(`today() is the LOCAL date in ${tz}`, out.today, out.local);
+  }
+  /* And prove the check above is not vacuous: at least one of these zones must
+     be on a different calendar day from UTC right now, or "local" and "UTC"
+     agree everywhere and the assertion is comparing a value to itself. */
+  const spread = new Set();
+  for (const tz of ['Pacific/Kiritimati', 'Etc/GMT+12']) {
+    const out = JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', probe],
+      { env: { ...process.env, TZ: tz }, encoding: 'utf8' }));
+    spread.add(out.local === out.utc);
+  }
+  check('the timezone probe actually spans a date boundary', spread.has(false), true);
+}
+
+console.log('\n== notes and dates survive everything that touches a row ==');
+{
+  const { T } = loadStore();
+  T.track(JOB, 'applied');
+  T.setNote(JOB.id, 'spoke to the recruiter');
+  T.setReminder(JOB.id, '2026-12-01');
+
+  T.track(JOB, 'interview');
+  check('a status change keeps the note', T.get(JOB.id).note, 'spoke to the recruiter');
+  check('and the follow-up date', T.get(JOB.id).remindAt, '2026-12-01');
+
+  /* refresh() copies POSTING fields only. Neither of these is in snapshot(),
+     which is the mechanism — not a list of exceptions that could go stale. */
+  T.refresh([{ ...JOB, title: 'Renamed Role', note: 'CLOBBER', remindAt: '1999-01-01' }]);
+  check('a board refresh cannot overwrite the note', T.get(JOB.id).note, 'spoke to the recruiter');
+  check('nor the follow-up date', T.get(JOB.id).remindAt, '2026-12-01');
+  check('while the title still updates', T.get(JOB.id).title, 'Renamed Role');
+
+  const backup = T.exportData();
+  check('the backup carries the note', backup.items[0].note, 'spoke to the recruiter');
+  check('and the date', backup.items[0].remindAt, '2026-12-01');
+
+  const { T: fresh } = loadStore();
+  fresh.importData(backup);
+  check('and a restore brings both back',
+    [fresh.get(JOB.id).note, fresh.get(JOB.id).remindAt],
+    ['spoke to the recruiter', '2026-12-01']);
+}
+
+console.log('\n== A BACKUP FILE IS UNTRUSTED INPUT ==');
+{
+  /* It is a file off the reader's own disk: corrupt, truncated, hand-edited or
+     written by something else entirely. Nothing here is a script-injection risk
+     (every render uses textContent) but it WAS a data-corruption one — a
+     `history` arriving as a string survived, and the next status change ran
+     "not-an-array".concat([...]) and permanently wrecked the row. */
+  const { T } = loadStore();
+  const res = T.importData({ v: 1, items: [
+    { id: 'a', company: {}, title: ['x'], status: { bad: 1 },
+      history: 'not-an-array', note: { o: 1 }, remindAt: {}, updated: 1 },
+    { id: 'b', company: 'ok', title: 'ok', status: 'applied', updated: 2 },
+    { id: '', company: 'no id' },
+    'not an object',
+    null,
+    [],
+  ] });
+  check('it still imports what it can', res.ok, true);
+  check('and says how much it dropped', res.skipped, 4);
+  check('only the usable rows are kept', T.count(), 2);
+
+  const a = T.get('a');
+  check('status is coerced to a string', typeof a.status, 'string');
+  check('history is coerced to an array', Array.isArray(a.history), true);
+  check('note is coerced to a string', typeof a.note, 'string');
+  check('a nonsense remindAt is dropped, not stored', a.remindAt, '');
+
+  // The bug this exists for: a status change on the corrupted row.
+  T.track({ id: 'a' }, 'oa');
+  check('a later status change keeps history an array', Array.isArray(T.get('a').history), true);
+  check('and appends properly', T.get('a').history[T.get('a').history.length - 1].s, 'oa');
+}
+
+console.log('\n== read() does NOT sanitise, so the writers must defend ==');
+{
+  /* clean() only runs on IMPORT. read() is called by every single operation, so
+     sanitising there would mean re-walking every row on every get() — instead
+     the writers guard themselves. This reaches that guard the only way it can
+     be reached: bytes already in localStorage, from a hand-edit or a future
+     bug. */
+  const { T, plant } = loadStore();
+  plant([{ id: 'a', company: 'C', title: 'T', status: 'applied',
+           history: 'not-an-array', at: 1, updated: 1 }]);
+  check('the row is readable', T.get('a').company, 'C');
+  T.track({ id: 'a' }, 'oa');
+  check('a status change does not string-concat onto it',
+    Array.isArray(T.get('a').history), true);
+  check('and records the change', T.get('a').history.map((h) => h.s), ['oa']);
+}
+
+console.log('\n== but a backup from a NEWER build still round-trips ==');
+{
+  /* Sanitising types must not become sanitising VALUES. An unknown status is
+     the documented way a newer build's file survives an older one. */
+  const { T } = loadStore();
+  T.importData({ v: 1, items: [
+    { id: 'z', company: 'C', title: 'T', status: 'offer-accepted', at: 9, updated: 9 },
+  ] });
+  check('the unknown status is kept verbatim', T.get('z').status, 'offer-accepted');
+  check('and is still flagged unknown', T.statusMeta(T.get('z').status).unknown, true);
+  check('a row with no history gets one built from its status',
+    T.get('z').history.map((h) => h.s), ['offer-accepted']);
+}
+
+console.log('\n== a row written before notes existed ==');
+{
+  /* Anything already in a reader's browser from the first release has neither
+     field. Nothing may throw on it, and nothing may invent a value. */
+  const { T } = loadStore();
+  T.track(JOB, 'applied');
+  const raw = T.exportData();
+  delete raw.items[0].note;
+  delete raw.items[0].remindAt;
+  const { T: old } = loadStore();
+  old.importData(raw);
+  check('it is not due', old.isDue(old.get(JOB.id)), false);
+  check('the count does not throw', old.dueCount(), 0);
+  check('and a note can still be added', old.setNote(JOB.id, 'hello') && old.get(JOB.id).note, 'hello');
 }
 
 console.log('\n== a write that fails is REPORTED, never swallowed ==');

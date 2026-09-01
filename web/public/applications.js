@@ -39,6 +39,14 @@
 
   var filter = 'all';
 
+  /* Which rows have their notes panel open.
+   *
+   * HELD ACROSS RENDERS ON PURPOSE. Saving a note writes to the store, the
+   * store emits, and render() rebuilds the whole tbody — so without this the
+   * panel would slam shut the moment somebody finished typing in it, which
+   * reads as the note having been thrown away. */
+  var expanded = new Set();
+
   function slugPart(s, max) {
     var out = String(s == null ? '' : s)
       .toLowerCase()
@@ -82,6 +90,34 @@
     return d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
   }
 
+  /**
+   * How a follow-up date reads, and how urgent it is.
+   *
+   * Compared as STRINGS. Both sides are 'YYYY-MM-DD', so `<=` is exact for
+   * ISO dates and involves no timezone at all — parsing either into a Date
+   * would reintroduce the UTC-midnight off-by-one that track.js's setReminder
+   * exists to avoid.
+   */
+  function dueState(row) {
+    if (!row.remindAt) return null;
+    var today = T.today();
+    var done = T.statusMeta(row.status).done;
+    if (done) return { cls: 'is-past', text: 'Follow-up ' + humanDate(row.remindAt) };
+    if (row.remindAt < today) return { cls: 'is-over', text: 'Overdue — ' + humanDate(row.remindAt) };
+    if (row.remindAt === today) return { cls: 'is-now', text: 'Follow up today' };
+    return { cls: 'is-soon', text: 'Follow up ' + humanDate(row.remindAt) };
+  }
+
+  /** '2026-09-05' -> '5 Sep'. Built from the parts, never through Date. */
+  function humanDate(iso) {
+    var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var p = String(iso).split('-');
+    if (p.length !== 3) return String(iso);
+    var m = M[Number(p[1]) - 1];
+    if (!m) return String(iso);
+    return Number(p[2]) + ' ' + m;
+  }
+
   /** "12 days ago" — how long this application has been sitting. */
   function since(ms) {
     if (!ms) return '';
@@ -101,25 +137,31 @@
     if (!rows.length) { box.hidden = true; return; }
     box.hidden = false;
 
-    var live = 0, interviews = 0, offers = 0;
+    var live = 0, interviews = 0, offers = 0, due = 0;
     for (var i = 0; i < rows.length; i++) {
       var meta = T.statusMeta(rows[i].status);
       if (!meta.done) live++;
       if (rows[i].status === 'interview' || rows[i].status === 'oa') interviews++;
       if (rows[i].status === 'selected') offers++;
+      if (T.isDue(rows[i])) due++;
     }
 
-    /* Four figures, and "waiting to hear" leads because it is the one somebody
-       opens this page to see. The total is second: it is the number that makes
-       a slow month look like work rather than like nothing. */
-    var tiles = [
-      ['waiting to hear', live],
-      ['applications', rows.length],
-      ['OA or interview', interviews],
-      ['offers', offers],
-    ];
+    /* "Waiting to hear" leads because it is the one somebody opens this page to
+       see. The total is second: it is the number that makes a slow month look
+       like work rather than like nothing.
+
+       THE DUE TILE ONLY APPEARS WHEN SOMETHING IS DUE. A permanent "0 to follow
+       up" is a tile that is right 90% of the time and therefore never read; one
+       that shows up only when it has something to say is the opposite. */
+    var tiles = [];
+    if (due) tiles.push(['to follow up', due, 'is-due']);
+    tiles.push(['waiting to hear', live]);
+    tiles.push(['applications', rows.length]);
+    tiles.push(['OA or interview', interviews]);
+    tiles.push(['offers', offers]);
+
     for (var t = 0; t < tiles.length; t++) {
-      var tile = el('div', 'trk-tile');
+      var tile = el('div', 'trk-tile' + (tiles[t][2] ? ' ' + tiles[t][2] : ''));
       tile.append(el('b', null, String(tiles[t][1])));
       tile.append(el('span', null, tiles[t][0]));
       box.append(tile);
@@ -135,19 +177,26 @@
     box.hidden = false;
 
     var counts = {};
+    var due = 0;
     for (var i = 0; i < rows.length; i++) {
       counts[rows[i].status] = (counts[rows[i].status] || 0) + 1;
+      if (T.isDue(rows[i])) due++;
     }
 
     var opts = [{ id: 'all', label: 'All', n: rows.length }];
+    // Straight after All, because it is the shortlist somebody came to act on.
+    if (due) opts.push({ id: 'due', label: 'To follow up', n: due });
     for (var s = 0; s < T.STATUSES.length; s++) {
       var st = T.STATUSES[s];
       /* A chip for a status nobody is at filters to an empty table, which reads
          as a fault. Only statuses actually in the data get one. */
       if (counts[st.id]) opts.push({ id: st.id, label: st.short, n: counts[st.id] });
     }
-    // A filter that no longer matches anything would leave the table empty.
-    if (filter !== 'all' && !counts[filter]) filter = 'all';
+    // A filter that no longer matches anything would leave the table empty —
+    // including 'due', which empties itself the moment the last one is dealt
+    // with, and which is not a status so it cannot be looked up in `counts`.
+    if (filter === 'due') { if (!due) filter = 'all'; }
+    else if (filter !== 'all' && !counts[filter]) filter = 'all';
 
     for (var o = 0; o < opts.length; o++) {
       (function (opt) {
@@ -212,8 +261,82 @@
        scrolling sideways. CSS shows exactly one of the two at any width. */
     sub.append(el('i', 'trk-when', 'Applied ' + since(row.at)));
     if (row.region && row.region !== REGION) sub.append(el('i', 'trk-rg', row.region));
+
+    /* The follow-up flag sits with the facts, not in a column of its own: most
+       rows never carry one, and a fifth column blank on 90% of them would
+       teach the eye to skip the whole line. */
+    var due = dueState(row);
+    if (due) sub.append(el('i', 'trk-due ' + due.cls, due.text));
     td.append(sub);
+
+    // The note, read-only here. Editing is in the panel below the row.
+    if (row.note) td.append(el('span', 'trk-note-r', row.note));
     return td;
+  }
+
+  /**
+   * The notes and follow-up panel, as its own row spanning the table.
+   *
+   * A ROW RATHER THAN TWO MORE COLUMNS. A textarea and a date input cannot fit
+   * beside four existing columns at any width this site supports, and the
+   * fields are blank on most applications — putting them in columns would cost
+   * every row the space so that a few could use it.
+   */
+  function notesRow(row) {
+    var tr = el('tr', 'trk-more');
+    tr.setAttribute('role', 'row');
+    var td = el('td');
+    td.colSpan = 4;
+
+    var box = el('div', 'trk-more-in');
+
+    var nl = el('label', 'trk-f');
+    nl.append(el('span', null, 'Notes'));
+    var note = el('textarea', 'trk-note');
+    note.rows = 3;
+    note.value = row.note || '';
+    note.placeholder = 'Recruiter name, referral, what the OA covered…';
+    note.setAttribute('aria-label', 'Notes on ' + row.title + ' at ' + row.company);
+    /* SAVED ON `change`, WHICH FIRES ON BLUR — never on `input`.
+       Every write emits, and every emit rebuilds this tbody, so saving per
+       keystroke would tear the textarea out from under the cursor on the first
+       character typed. */
+    note.addEventListener('change', function () {
+      T.setNote(row.id, note.value);
+      var err = T.error();
+      if (err) say(err, true);
+    });
+    nl.append(note);
+    box.append(nl);
+
+    var dl = el('label', 'trk-f trk-f-date');
+    dl.append(el('span', null, 'Follow up on'));
+    var date = el('input', 'trk-date-in');
+    date.type = 'date';
+    date.value = row.remindAt || '';
+    date.setAttribute('aria-label', 'Follow-up date for ' + row.title + ' at ' + row.company);
+    date.addEventListener('change', function () {
+      if (!T.setReminder(row.id, date.value)) {
+        // Refused rather than stored: setReminder takes a bare ISO date only.
+        say('That date could not be read.', true);
+        date.value = T.get(row.id) ? (T.get(row.id).remindAt || '') : '';
+        return;
+      }
+      var err = T.error();
+      if (err) say(err, true);
+      render();
+    });
+    dl.append(date);
+    /* NOTHING NOTIFIES YOU, and the page has to say so where the control is.
+       This is a static site with no account and no server that knows the date
+       exists; a field called "reminder" that never reminds is a promise the
+       page cannot keep. It flags the row and counts it at the top instead. */
+    dl.append(el('span', 'trk-f-hint', 'Flagged here when it arrives. Nothing emails you.'));
+    box.append(dl);
+
+    td.append(box);
+    tr.append(td);
+    return tr;
   }
 
   function renderTable(rows) {
@@ -222,7 +345,11 @@
     var none = $('trk-none');
     body.replaceChildren();
 
-    var shown = rows.filter(function (r) { return filter === 'all' || r.status === filter; });
+    var shown = rows.filter(function (r) {
+      if (filter === 'all') return true;
+      if (filter === 'due') return T.isDue(r);
+      return r.status === filter;
+    });
     table.hidden = !shown.length;
     none.hidden = !!shown.length || !rows.length;
 
@@ -238,6 +365,7 @@
         tr.setAttribute('role', 'row');
         var meta = T.statusMeta(row.status);
         if (meta.done) tr.className = 'is-done';
+        if (T.isDue(row)) tr.classList.add('is-due');
 
         tr.append(roleCell(row));
 
@@ -274,6 +402,22 @@
           go.setAttribute('aria-label', 'Open the posting for ' + row.title + ' at ' + row.company);
           actTd.append(go);
         }
+        /* The notes toggle. Marked when the row already carries something, so
+           a note is discoverable without opening every row in turn. */
+        var open = expanded.has(row.id);
+        var more = el('button', 'trk-more-b' + (row.note || row.remindAt ? ' has' : ''));
+        more.type = 'button';
+        more.textContent = open ? 'Close' : 'Notes';
+        more.setAttribute('aria-expanded', String(open));
+        more.setAttribute('aria-label',
+          (open ? 'Hide' : 'Show') + ' notes and follow-up for ' + row.title + ' at ' + row.company);
+        more.addEventListener('click', function () {
+          if (expanded.has(row.id)) expanded.delete(row.id);
+          else expanded.add(row.id);
+          render();
+        });
+        actTd.append(more);
+
         var del = el('button', 'trk-x');
         del.type = 'button';
         del.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"'
@@ -284,12 +428,16 @@
              server, so a mis-click cannot be undone by reloading. */
           if (!confirm('Remove this application from your tracker?\n\n' + row.company + ' — ' + row.title)) return;
           T.remove(row.id);
+          // Or the id lingers and the panel springs open by itself if the same
+          // role is ever tracked again.
+          expanded.delete(row.id);
           render();
         });
         actTd.append(del);
         tr.append(actTd);
 
         body.append(tr);
+        if (open) body.append(notesRow(row));
       }(shown[i]));
     }
   }
@@ -344,16 +492,56 @@
 
   /* ---------------- render ---------------- */
 
+  /* Is the reader typing inside the table right now?
+   *
+   * NEVER REBUILD UNDER SOMEBODY'S CURSOR. render() runs on any store write —
+   * including one made in ANOTHER TAB, which the store broadcasts — and
+   * renderTable() calls replaceChildren() on the whole tbody. Mid-sentence in a
+   * note that tears the textarea out of the document: the caret vanishes and
+   * so does the half-typed sentence, because the node it was typed into is no
+   * longer attached. IDTrack.strip has the same guard for the same reason; this
+   * is the table's copy, because the table has its own render path.
+   */
+  var pendingRender = false;
+  function editingInTable() {
+    var a = document.activeElement;
+    /* A TEXTAREA ONLY, and the narrowness is the point. A button, a select or
+       the date input has no uncommitted draft to lose — each commits on the
+       event that triggers the render in the first place, and deferring for
+       them would mean the notes toggle sets a pending render and then returns
+       without ever opening the panel. The textarea is the one control here
+       holding text the store has not seen yet. */
+    return !!a && a.tagName === 'TEXTAREA' && $('trk-body').contains(a);
+  }
+
+  /* Once focus leaves the table, do the render that was held back. Deferred a
+     tick because focusout fires BEFORE the new activeElement is set, so
+     checking immediately would see <body> and run a render while the reader is
+     merely moving from the note to the date field beside it. */
+  document.addEventListener('focusout', function () {
+    setTimeout(function () {
+      if (pendingRender && !editingInTable()) render();
+    }, 0);
+  });
+
   function render() {
+    if (editingInTable()) { pendingRender = true; return; }
+    pendingRender = false;
     var rows = T.all();
 
-    /* Live rows first, then the closed ones, and most-recently-touched first
-       within each. A tracker sorted purely by date buries the interview you
-       have on Thursday under six rejections from last week. */
+    /* Anything due first, then live rows, then the closed ones, and
+       most-recently-touched first within each band.
+       A tracker sorted purely by date buries the interview you have on
+       Thursday under six rejections from last week — and a follow-up the
+       reader set for today is, by definition, the thing they came to do, so it
+       outranks recency rather than competing with it. Among the due ones the
+       longest overdue leads. */
     rows.sort(function (a, b) {
-      var da = T.statusMeta(a.status).done ? 1 : 0;
-      var db = T.statusMeta(b.status).done ? 1 : 0;
-      if (da !== db) return da - db;
+      var ra = T.isDue(a) ? 0 : T.statusMeta(a.status).done ? 2 : 1;
+      var rb = T.isDue(b) ? 0 : T.statusMeta(b.status).done ? 2 : 1;
+      if (ra !== rb) return ra - rb;
+      // Both due: the older follow-up date first. ISO strings compare exactly.
+      if (ra === 0 && a.remindAt !== b.remindAt) return a.remindAt < b.remindAt ? -1 : 1;
       return (b.updated || 0) - (a.updated || 0);
     });
 

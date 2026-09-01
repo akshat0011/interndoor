@@ -1415,3 +1415,85 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   .trk-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .trk-void { padding: 20px 17px; }
 }
+
+/* ---- notes and follow-up, on the tracker page --------------------------- */
+
+/* The read-only note under the role. Clamped: a note can be a paragraph, and
+   this is a scannable list, not the place to read one in full. */
+.trk-note-r {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; margin-top: 7px;
+  /* pre-line, so a note typed as several lines does not collapse into one run
+     of text here. Not `pre`: the line-clamp above needs the text to wrap. */
+  white-space: pre-line;
+  font-size: 13px; line-height: 1.5; color: var(--ink-2);
+  padding-left: 9px; border-left: 2px solid var(--rule-2);
+  overflow-wrap: anywhere;
+}
+
+/* The follow-up flag, in the facts line rather than a column of its own —
+   most rows never carry one. */
+.trk-due {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
+  text-transform: uppercase; border-radius: 999px; padding: 2px 8px;
+}
+.trk-due.is-over { color: var(--hot); background: color-mix(in oklab, var(--hot) 13%, transparent); }
+.trk-due.is-now { color: var(--live); background: color-mix(in oklab, var(--live) 15%, transparent); }
+.trk-due.is-soon, .trk-due.is-past { color: var(--ink-3); border: 1px solid var(--rule); padding: 1px 7px; }
+
+/* A due row is marked on its leading edge. NOT a background tint: .is-done
+   already uses the surface, and a row can be both. */
+.trk tr.is-due > .trk-role { box-shadow: inset 3px 0 0 var(--hot); padding-left: 11px; }
+
+.trk-tile.is-due b { color: var(--hot); }
+
+/* The notes toggle. `.has` marks a row that already carries one, so a note is
+   discoverable without opening every row in turn. */
+.trk-more-b {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 30px; padding: 0 10px; margin-right: 6px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 8px;
+  background: none; color: var(--ink-3);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
+  text-transform: uppercase; vertical-align: middle;
+}
+.trk-more-b.has { color: var(--ink-2); border-color: var(--rule-2); }
+.trk-more-b.has::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--live); flex: none;
+}
+.trk-more-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .trk-more-b:hover { color: var(--ink); border-color: var(--rule-2); }
+}
+
+/* The expanded panel, as its own row spanning the table. */
+.trk tr.trk-more > td { padding: 0 14px 16px; }
+.trk-more-in {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+  gap: 14px; align-items: start;
+  padding: 14px; border: 1px solid var(--rule); border-radius: 10px;
+  background: var(--card-2);
+}
+.trk-f { display: grid; gap: 6px; min-width: 0; }
+.trk-f > span:first-child {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.trk-f .trk-f-hint {
+  font-family: var(--ui); font-size: 11.5px; line-height: 1.45;
+  color: var(--ink-3); letter-spacing: 0; text-transform: none;
+}
+
+@media (max-width: 760px) {
+  /* The panel is a card-within-a-card at this width, and two columns inside a
+     343px row leave the date input unusable. */
+  .trk-more-in { grid-template-columns: minmax(0, 1fr); }
+  .trk tr.trk-more {
+    display: block; margin-top: -8px; margin-bottom: 10px;
+    padding: 0; border: 0; background: none;
+  }
+  .trk tr.trk-more > td { padding: 0; }
+  .trk tr.is-due > .trk-role { box-shadow: none; padding-left: 0; }
+  .trk tr.is-due { box-shadow: inset 3px 0 0 var(--hot); }
+}

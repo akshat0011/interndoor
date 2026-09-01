@@ -823,6 +823,12 @@ function trackControl(job) {
  */
 function paintTrackers() {
   for (const box of document.querySelectorAll('.trk-w')) paintTrackControl(box);
+  /* The open detail pane's strip, if there is one. It is not subscribed to the
+     store itself — see trackBar — so this is what keeps it in step with a
+     change made on a card or in another tab. repaint() declines while the
+     cursor is inside it, so this cannot eat a half-typed note. */
+  const bar = document.querySelector('#detail .trk-bar');
+  if (bar && typeof bar.repaint === 'function') bar.repaint();
   renderTrackCount();
 }
 
@@ -1096,95 +1102,24 @@ function renderDetail(job) {
 }
 
 /**
- * The tracker strip in the detail pane — where the FULL status ladder lives.
+ * The tracker strip in the detail pane — the FULL ladder, plus notes and a
+ * follow-up date.
  *
- * The card deliberately offers one step ("Applied") and no way to reach the
- * rest; this is the surface where somebody is looking at one role and can
- * reasonably be asked to pick from seven options. Rebuilt in place rather than
- * through renderDetail() so changing a status does not scroll the pane back to
- * the top under the reader.
+ * Built by IDTrack.strip, which page.js also uses for a job page's side rail.
+ * The card deliberately offers one step and no way to reach the rest; this is
+ * the surface where somebody is looking at one role and can reasonably be
+ * asked to pick from seven, write a note, and set a date.
+ *
+ * NOT subscribed to the store. renderDetail() rebuilds this element on every
+ * role selection, so a self-registered listener would leak one dead closure per
+ * click. paintTrackers() — which IS registered, once — repaints it instead.
  */
 function trackBar(job) {
-  const T = window.IDTrack;
-  if (!T) return null;
-
-  const bar = el('div', 'trk-bar');
-
-  const paint = () => {
-    const row = T.get(job.id);
-    bar.replaceChildren();
-    bar.classList.toggle('is-on', !!row);
-
-    if (!row) {
-      const add = el('button', 'trk-add');
-      add.type = 'button';
-      add.textContent = 'Track this application';
-      add.addEventListener('click', () => {
-        if (T.track(trackable(job), 'applied')) toast('Tracked as Applied');
-        const err = T.error();
-        if (err) toast(err);
-        paint();
-        paintTrackers();
-      });
-      bar.append(add);
-      const hint = el('p', 'trk-hint',
-        'Kept on this device only — nothing is sent to InternDoor.');
-      bar.append(hint);
-      return;
-    }
-
-    const label = el('label', 'trk-lab');
-    label.append(el('span', null, 'Status'));
-    const sel = el('select', 'trk-sel');
-    sel.setAttribute('aria-label', `Application status for ${job.title} at ${job.company}`);
-    let known = false;
-    for (const st of T.STATUSES) {
-      const opt = el('option', null, st.label);
-      opt.value = st.id;
-      if (st.id === row.status) { opt.selected = true; known = true; }
-      sel.append(opt);
-    }
-    /* A status this build does not know can only have come from a backup file
-       written by a newer one. Offered back as its own option so that merely
-       opening the pane cannot rewrite what the reader recorded. */
-    if (!known) {
-      const raw = el('option', null, T.statusMeta(row.status).label);
-      raw.value = row.status;
-      raw.selected = true;
-      sel.append(raw);
-    }
-    sel.addEventListener('change', () => {
-      T.track(trackable(job), sel.value);
-      const err = T.error();
-      if (err) toast(err);
-      paint();
-      paintTrackers();
-    });
-    label.append(sel);
-    bar.append(label);
-
-    const acts = el('div', 'trk-bar-acts');
-    const open = el('a', 'trk-link', 'All my applications →');
-    open.href = `${REGION_PATH}/applications`;
-    acts.append(open);
-
-    const drop = el('button', 'trk-drop');
-    drop.type = 'button';
-    drop.textContent = 'Remove';
-    drop.addEventListener('click', () => {
-      // Confirmed here and not on the card, because by this point the role may
-      // carry a history of status changes and nothing is stored anywhere else.
-      if (!confirm(`Remove this from your applications?\n\n${job.company} — ${job.title}`)) return;
-      T.remove(job.id);
-      paint();
-      paintTrackers();
-    });
-    acts.append(drop);
-    bar.append(acts);
-  };
-
-  paint();
-  return bar;
+  if (!window.IDTrack) return null;
+  return window.IDTrack.strip(job, {
+    appsHref: `${REGION_PATH}/applications`,
+    onChange: paintTrackers,
+  });
 }
 
 /* ---------------- resume tailoring ---------------- */

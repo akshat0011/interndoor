@@ -1657,12 +1657,15 @@ html[data-boot] .boot-part {
 /* ---- the status strip ---------------------------------------------------
    The detail pane (.trk-bar) and a job page's side rail (.trk-mount) render
    the same control, so they share every rule below. */
-.trk-bar, .trk-mount {
+/* The strip itself. .trk-mount is only the empty container src/pages.js ships
+   in a job page's side rail; IDTrack.strip appends .trk-mount-in inside it. */
+.trk-bar, .trk-mount-in {
   display: grid; gap: var(--s3);
-  margin: var(--s5) 0; padding: var(--s4);
+  padding: var(--s4);
   border: 1px solid var(--rule); border-radius: var(--r-2);
   background: var(--card-2);
 }
+.trk-bar { margin: var(--s5) 0; }
 .trk-mount { margin: 0 0 var(--s4); }
 
 .trk-add {
@@ -1695,6 +1698,35 @@ html[data-boot] .boot-part {
   min-width: 0; text-overflow: ellipsis;
 }
 .trk-sel:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+/* ---- notes and the follow-up date --------------------------------------- */
+.trk-note {
+  width: 100%; min-width: 0; resize: vertical;
+  padding: 9px 11px; border: 1px solid var(--rule-2); border-radius: 10px;
+  background: var(--card); color: var(--ink);
+  font-family: var(--ui); font-size: var(--t-small); line-height: 1.5;
+}
+.trk-note::placeholder { color: var(--ink-3); }
+.trk-date-in {
+  width: 100%; min-width: 0; height: 40px; padding: 0 var(--s3);
+  border: 1px solid var(--rule-2); border-radius: 10px;
+  background: var(--card); color: var(--ink);
+  /* 16px, not the .8125rem the other fields use. Below 16px iOS zooms the whole
+     page on focus, and a page that jumps when you tap a date field reads as
+     broken — the same rule .sub-i already carries. */
+  font-family: var(--ui); font-size: 16px;
+}
+.trk-note:focus-visible, .trk-date-in:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 1px;
+}
+/* The date input's own indicator is near-invisible on a dark ground. */
+:root:not([data-theme="light"]) .trk-date-in::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(.7);
+}
+.trk-f-hint {
+  font-family: var(--ui); font-size: var(--t-micro); line-height: 1.45;
+  color: var(--ink-3); text-transform: none; letter-spacing: 0;
+}
 
 .trk-bar-acts { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
 .trk-link {

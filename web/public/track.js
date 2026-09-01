@@ -149,6 +149,65 @@
     return -1;
   }
 
+  /**
+   * Coerce one row from a backup FILE into the shape the rest of this store
+   * assumes. Returns null for a row with nothing usable in it.
+   *
+   * A BACKUP IS UNTRUSTED INPUT. It is a file the reader picked off their own
+   * disk, so it can be corrupt, truncated, hand-edited, or written by something
+   * else entirely — and until this existed every field went in verbatim. That
+   * was not a script-injection risk (everything is rendered with textContent),
+   * but it was a data-corruption one: a `history` that arrived as a STRING
+   * survived import, and the next status change ran
+   * `"not-an-array".concat([{...}])`, permanently turning the row's history
+   * into "not-an-array[object Object]". Nothing threw, so nothing said so.
+   *
+   * Types only. An UNKNOWN STATUS IS STILL KEPT — it is the documented way a
+   * backup from a newer build round-trips — this just guarantees it is a string.
+   */
+  function clean(raw) {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+    var id = raw.id == null ? '' : String(raw.id);
+    if (!id) return null;
+
+    var str = function (v) { return typeof v === 'string' ? v : (v == null ? '' : String(v)); };
+    var num = function (v) { return typeof v === 'number' && isFinite(v) ? v : 0; };
+
+    var row = {
+      id: id,
+      company: str(raw.company),
+      title: str(raw.title),
+      location: str(raw.location),
+      url: str(raw.url),
+      applyUrl: str(raw.applyUrl),
+      slug: str(raw.slug),
+      region: str(raw.region),
+      path: str(raw.path),
+      postedAt: typeof raw.postedAt === 'number' ? raw.postedAt : null,
+      status: str(raw.status) || 'applied',
+      note: str(raw.note),
+      remindAt: /^\d{4}-\d{2}-\d{2}$/.test(str(raw.remindAt)) ? str(raw.remindAt) : '',
+      at: num(raw.at),
+      updated: num(raw.updated),
+    };
+
+    /* A history that is not a list of {s, at} is rebuilt from the status rather
+       than dropped: the row is still a real application and losing it entirely
+       would be worse than losing when its steps happened. */
+    var hist = [];
+    if (Array.isArray(raw.history)) {
+      for (var i = 0; i < raw.history.length; i++) {
+        var h = raw.history[i];
+        if (h && typeof h === 'object' && !Array.isArray(h)) {
+          hist.push({ s: str(h.s), at: num(h.at) });
+        }
+      }
+    }
+    row.history = hist.length ? hist : [{ s: row.status, at: row.at || row.updated }];
+    if (!row.at) row.at = row.history[0].at || row.updated;
+    return row;
+  }
+
   var api = {
     KEY: KEY,
     STATUSES: STATUSES,
@@ -196,6 +255,11 @@
         row.at = now;
         row.updated = now;
         row.history = [{ s: next, at: now }];
+        // The reader's own two fields. Initialised here rather than in
+        // snapshot(), which describes the POSTING — these describe nothing the
+        // board knows, which is exactly why refresh() cannot touch them.
+        row.note = '';
+        row.remindAt = '';
         items.push(row);
       } else {
         var cur = items[at];
@@ -208,9 +272,84 @@
          * days after applying" are the two things a tracker is actually for,
          * and a single current-status field answers neither. Appending costs a
          * few bytes; recovering it after the fact is impossible. */
-        cur.history = (cur.history || []).concat([{ s: next, at: now }]);
+        cur.history = (Array.isArray(cur.history) ? cur.history : [])
+          .concat([{ s: next, at: now }]);
       }
       return write(items);
+    },
+
+    /**
+     * A free-text note on one application.
+     *
+     * NOT part of the status history — that records what happened to the
+     * application, and an edited note is not an event. `updated` does move, so
+     * the row sorts as recently touched and wins an import merge against an
+     * older copy of itself.
+     *
+     * Stored verbatim and rendered with textContent everywhere, never innerHTML.
+     */
+    setNote: function (id, text) {
+      var items = read();
+      var at = findIndex(items, id);
+      if (at === -1) return false;
+      var next = String(text == null ? '' : text);
+      if (items[at].note === next) return true;   // a blur with no edit
+      items[at].note = next;
+      items[at].updated = Date.now();
+      return write(items);
+    },
+
+    /**
+     * The follow-up date, as a plain 'YYYY-MM-DD' string.
+     *
+     * A DATE, NOT A TIMESTAMP, and the distinction is the whole reason this is
+     * not stored in milliseconds. `new Date('2026-09-05')` parses as UTC
+     * midnight, so west of Greenwich it renders as the 4th — an off-by-one that
+     * would show somebody a follow-up a day early on the US board and be
+     * invisible while testing from India. Kept as the string an
+     * `<input type="date">` already produces and compared lexicographically
+     * against today's, which is exact for ISO dates and touches no timezone at
+     * all.
+     *
+     * '' clears it.
+     */
+    setReminder: function (id, date) {
+      var items = read();
+      var at = findIndex(items, id);
+      if (at === -1) return false;
+      var next = String(date == null ? '' : date);
+      // Anything that is not a bare ISO date is refused rather than stored, or
+      // the lexicographic comparison below silently stops meaning anything.
+      if (next && !/^\d{4}-\d{2}-\d{2}$/.test(next)) return false;
+      if (items[at].remindAt === next) return true;
+      items[at].remindAt = next;
+      items[at].updated = Date.now();
+      return write(items);
+    },
+
+    /** Today, in the reader's own timezone, as 'YYYY-MM-DD'. */
+    today: function () {
+      var d = new Date();
+      var p = function (n) { return (n < 10 ? '0' : '') + n; };
+      return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    },
+
+    /**
+     * Is this row asking for something today?
+     *
+     * A follow-up on a CLOSED application is not due — it is a leftover from
+     * before the rejection came in, and flagging it would send somebody to
+     * chase an answer they already have.
+     */
+    isDue: function (row) {
+      if (!row || !row.remindAt) return false;
+      if (statusMeta(row.status).done) return false;
+      return row.remindAt <= api.today();
+    },
+
+    /** How many open applications are due a follow-up today or are overdue. */
+    dueCount: function () {
+      return read().filter(function (r) { return api.isDue(r); }).length;
     },
 
     remove: function (id) {
@@ -264,21 +403,166 @@
         return { ok: false, error: 'That file is not an InternDoor backup.' };
       }
       var items = read();
-      var added = 0, updated = 0;
+      var added = 0, updated = 0, skipped = 0;
       for (var i = 0; i < data.items.length; i++) {
-        var row = data.items[i];
-        if (!row || !row.id) continue;
-        row.id = String(row.id);
+        var row = clean(data.items[i]);
+        if (!row) { skipped++; continue; }
         var at = findIndex(items, row.id);
         if (at === -1) { items.push(row); added++; }
-        else if ((row.updated || 0) > (items[at].updated || 0)) { items[at] = row; updated++; }
+        else if (row.updated > (items[at].updated || 0)) { items[at] = row; updated++; }
       }
       if (!write(items)) return { ok: false, error: lastError };
-      return { ok: true, added: added, updated: updated };
+      return { ok: true, added: added, updated: updated, skipped: skipped };
     },
 
     /** Fires on every local change, and on a change made in another tab. */
     on: function (fn) { listeners.push(fn); },
+
+    /**
+     * The status strip: one control, rendered identically wherever a single
+     * role is on screen — the board's detail pane and a job page's side rail.
+     *
+     * IT LIVES IN THE STORE'S FILE because the alternative was a third copy.
+     * app.js and page.js were already carrying the same forty lines of select,
+     * link and remove button; adding notes and a follow-up date to both would
+     * have made it ninety, in two files that cannot import from each other.
+     * jobPageSlug already needed a test to stop three copies drifting. This is
+     * the tracker's own control, and track.js is the only file every surface
+     * that shows it already loads.
+     *
+     * Returns an element with a `repaint()` on it. It does NOT subscribe to the
+     * store itself: the pane rebuilds this element on every role selection, so
+     * a self-registered listener would leak one dead closure per click and
+     * every one of them would fire on every later change. The caller owns the
+     * subscription it already has.
+     */
+    strip: function (job, opts) {
+      var o = opts || {};
+      var root = document.createElement('div');
+      root.className = o.className || 'trk-bar';
+
+      var el = function (tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text != null) n.textContent = text;
+        return n;
+      };
+
+      function paint() {
+        /* NEVER REDRAW UNDER SOMEBODY'S CURSOR. A repaint is triggered by any
+           store write, including one from another tab, and blowing away a
+           textarea mid-sentence would look exactly like the note being lost. */
+        if (root.contains(document.activeElement) && document.activeElement !== document.body) return;
+
+        var row = api.get(job.id);
+        root.replaceChildren();
+        root.classList.toggle('is-on', !!row);
+
+        if (!row) {
+          var add = el('button', 'trk-add', o.addLabel || 'Track this application');
+          add.type = 'button';
+          add.addEventListener('click', function () {
+            api.track(job, 'applied');
+            paint();
+            if (o.onChange) o.onChange();
+          });
+          root.append(add);
+          root.append(el('p', 'trk-hint',
+            'Kept on this device only. No account, nothing sent to us.'));
+          return;
+        }
+
+        var lab = el('label', 'trk-lab');
+        lab.append(el('span', null, 'Status'));
+        var sel = el('select', 'trk-sel');
+        sel.setAttribute('aria-label', 'Application status for ' + job.title + ' at ' + job.company);
+        var known = false;
+        for (var i = 0; i < STATUSES.length; i++) {
+          var opt = el('option', null, STATUSES[i].label);
+          opt.value = STATUSES[i].id;
+          if (STATUSES[i].id === row.status) { opt.selected = true; known = true; }
+          sel.append(opt);
+        }
+        /* A status this build does not know can only have come from a backup
+           written by a newer one. Offered back rather than snapped to Applied,
+           so merely opening a page cannot rewrite what the reader recorded. */
+        if (!known) {
+          var raw = el('option', null, statusMeta(row.status).label);
+          raw.value = row.status;
+          raw.selected = true;
+          sel.append(raw);
+        }
+        sel.addEventListener('change', function () {
+          api.track(job, sel.value);
+          paint();
+          if (o.onChange) o.onChange();
+        });
+        lab.append(sel);
+        root.append(lab);
+
+        var nl = el('label', 'trk-lab');
+        nl.append(el('span', null, 'Notes'));
+        var note = el('textarea', 'trk-note');
+        note.rows = 2;
+        note.value = row.note || '';
+        note.placeholder = 'Recruiter, referral, what the OA covered…';
+        note.setAttribute('aria-label', 'Notes on ' + job.title + ' at ' + job.company);
+        /* `change`, which fires on blur — never `input`. Every write emits and
+           every emit repaints, so saving per keystroke would tear the textarea
+           out from under the cursor on the first character. */
+        note.addEventListener('change', function () {
+          api.setNote(job.id, note.value);
+          if (o.onChange) o.onChange();
+        });
+        nl.append(note);
+        root.append(nl);
+
+        var dl = el('label', 'trk-lab');
+        dl.append(el('span', null, 'Follow up on'));
+        var date = el('input', 'trk-date-in');
+        date.type = 'date';
+        date.value = row.remindAt || '';
+        date.setAttribute('aria-label', 'Follow-up date for ' + job.title + ' at ' + job.company);
+        date.addEventListener('change', function () {
+          if (!api.setReminder(job.id, date.value)) {
+            var back = api.get(job.id);
+            date.value = back ? (back.remindAt || '') : '';
+          }
+          paint();
+          if (o.onChange) o.onChange();
+        });
+        dl.append(date);
+        /* NOTHING NOTIFIES YOU, and the control has to say so. This is a static
+           site with no account and no server that knows the date exists; a
+           field called "reminder" that never reminds is a promise the page
+           cannot keep. It flags the row on the tracker instead. */
+        dl.append(el('span', 'trk-f-hint', 'Flagged on your applications page. Nothing emails you.'));
+        root.append(dl);
+
+        var acts = el('div', 'trk-bar-acts');
+        var open = el('a', 'trk-link', 'All my applications →');
+        open.href = o.appsHref || '/applications';
+        acts.append(open);
+
+        var drop = el('button', 'trk-drop', 'Remove');
+        drop.type = 'button';
+        drop.addEventListener('click', function () {
+          /* Confirmed: by this point the row can carry a status history and a
+             note, and this is the only copy of either. */
+          if (!window.confirm('Remove this from your applications?\n\n'
+            + job.company + ' — ' + job.title)) return;
+          api.remove(job.id);
+          paint();
+          if (o.onChange) o.onChange();
+        });
+        acts.append(drop);
+        root.append(acts);
+      }
+
+      root.repaint = paint;
+      paint();
+      return root;
+    },
   };
 
   /* Two tabs open on the board is ordinary — one to browse, one on the
