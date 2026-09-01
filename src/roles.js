@@ -267,17 +267,44 @@ export function isSoftwareRole(title, { includeUncertain = false, ...options } =
  * them and only one was ever wired up.
  */
 export function vetoNonTech(title, roleLabel, modelVerdict, cfg = {}) {
+  const extraNegative = cfg.matching?.extraNonTechTerms ?? [];
+  const titleOnly = cfg.matching?.titleOnlyNonTechTerms ?? [];
+
   const options = {
     extraPositive: cfg.matching?.extraTechTerms ?? [],
-    extraNegative: cfg.matching?.extraNonTechTerms ?? [],
+    extraNegative,
   };
-  const verdictOf = (t) => (typeof t === 'string' && t.trim()
-    ? classifyRole(t, options).verdict
+
+  /* THE LABEL PASS IS NARROWER THAN THE TITLE PASS, and this is the whole
+     point of titleOnlyNonTechTerms. A title is written by the employer; a
+     roleLabel is the local model's own free-text summary of the description,
+     so a term blunt enough to be safe on a title can be badly wrong on a
+     label. `technical support` is the measured case: HPE files real
+     engineering internships as the bare title "College Intern" — the posting
+     itself demands a Computer Science degree and Python/Java/C++ — and the
+     model labels the work "Technical Support" because the duties say
+     troubleshoot and support. The title settles nothing, so the label decided
+     and the role was dropped from an engineering-only board.
+
+     Restricting the term to the title costs nothing on the roles it was added
+     for: IBM's "Technical Support Representative Intern" says it in the TITLE
+     and is still refused there, and `support representative` catches it a
+     second time. Measured over 30 days, the term vetoed 10 rows — 7 IBM
+     (title, correctly refused), 2 HPE (label, wrongly refused) and 1 Emerson.
+
+     Same shape as the `risk analyst` term that was tried and removed for
+     flipping Zscaler's Insider Risk Analyst. */
+  const labelOptions = titleOnly.length
+    ? { ...options, extraNegative: extraNegative.filter((t) => !titleOnly.includes(t)) }
+    : options;
+
+  const verdictOf = (t, o = options) => (typeof t === 'string' && t.trim()
+    ? classifyRole(t, o).verdict
     : 'uncertain');
 
   const fromTitle = verdictOf(title);
   if (fromTitle === 'non-tech') return false;
-  if (fromTitle === 'uncertain' && verdictOf(roleLabel) === 'non-tech') return false;
+  if (fromTitle === 'uncertain' && verdictOf(roleLabel, labelOptions) === 'non-tech') return false;
 
   return typeof modelVerdict === 'boolean' ? modelVerdict : null;
 }

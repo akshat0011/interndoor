@@ -67,6 +67,37 @@ check('unsettled, model says tech', vetoNonTech('Apprentice', 'Rotational Progra
 check('unsettled, model says not', vetoNonTech('Apprentice', 'Rotational Programme', false, cfg), false);
 check('no model verdict stays null', vetoNonTech('Apprentice', 'Rotational Programme', null, cfg), null);
 
+console.log('\n== titleOnlyNonTechTerms: blunt on a title, wrong on a label ==');
+/* A title is written by the employer. A roleLabel is the local model
+   summarising the description in its own words, so a term blunt enough to be
+   safe on a title can be badly wrong on a label.
+
+   The measured case: HPE files real engineering internships under the bare
+   title "College Intern" — the posting demands a Computer Science degree and
+   Python/Java/C++ — and the model labels the work "Technical Support" because
+   the duties say troubleshoot and support. The title settles nothing, so the
+   label decided and the role was dropped from an engineering-only board. Over
+   30 days the term vetoed 10 rows: 7 IBM by TITLE (right), 2 HPE by LABEL
+   (wrong), 1 ambiguous. Across the whole store, restricting it changes 4
+   verdicts out of 3,359 rows carrying a label. */
+check('HPE: generic title, support label, is NOT vetoed',
+  vetoNonTech('College Intern', 'Technical Support', true, cfg), true);
+check('HPE: bare Intern, support label, is NOT vetoed',
+  vetoNonTech('Intern', 'Technical Support', true, cfg), true);
+// The term still does the job it was added for, on the title, where it belongs.
+check('IBM: title says technical support, STILL vetoed',
+  vetoNonTech('Technical Support Representative Intern', 'Technical support', true, cfg), false);
+check('title says technical support, any label, STILL vetoed',
+  vetoNonTech('Technical Support Intern', 'Machine Learning', true, cfg), false);
+// Everything NOT on the title-only list must still veto from the label.
+check('a label term not on the list still vetoes',
+  vetoNonTech('Apprentice', 'Credit Risk Analyst', true, cfg), false);
+// The list itself is what makes this work — assert it is actually configured.
+check('technical support is declared title-only',
+  (cfg.matching.titleOnlyNonTechTerms ?? []).includes('technical support'), true);
+check('and it is still a negative term at all',
+  (cfg.matching.extraNonTechTerms ?? []).includes('technical support'), true);
+
 console.log('\n== degenerate input ==');
 check('empty label is ignored', vetoNonTech('Software Engineer Intern', '', true, cfg), true);
 check('missing label is ignored', vetoNonTech('Software Engineer Intern', undefined, true, cfg), true);
