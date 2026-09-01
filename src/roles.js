@@ -71,10 +71,22 @@ const POSITIVE = [
   'mainframe', 'cobol', 'prompt engineering', 'agentic', 'chatbot',
   'engineering intern', 'engineering trainee', 'technical intern',
   'interim engineering',
-  // product & design, adjacent but usually part of a software team
-  'product management', 'product manager', 'associate product manager', 'apm',
+  /* Design, adjacent but usually part of a software team.
+     PRODUCT MANAGEMENT USED TO BE ON THIS LINE AND IS NOW A NEGATIVE — see
+     matching.extraNonTechTerms in config.json. A PM internship is not an
+     engineering internship, and listing `product manager` as a POSITIVE was
+     why Salesforce's "Summer 2026 Intern - Product Manager" reached the top of
+     the India board.
+     `apm` stays, deliberately. It is three letters that also mean Application
+     Performance Monitoring, and making it a negative refused Philips'
+     "Co-op - Software Engineering (APM)" — a real SWE co-op, because
+     `software engineer` does not whole-word-match "Software Engineering" and
+     so no strong positive rescued it. Across 3,955 stored rows that Philips
+     title is the ONLY one containing APM, so the term earns nothing as a
+     negative and costs a genuine role. */
+  'apm',
   'ui/ux', 'ui ux', 'uiux', 'ux', 'ui', 'user experience', 'user interface',
-  'product design', 'ux research', 'ux designer', 'ui designer', 'interaction design',
+  'ux research', 'ux designer', 'ui designer', 'interaction design',
   // Quant roles. Ambiguous on their own, but leaning positive is the safe
   // direction: the company filter runs afterwards, so a trading internship at
   // an unknown shop is still dropped while one at Optiver survives. Leaning

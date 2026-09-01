@@ -1,4 +1,5 @@
-import { classifyRole, isSoftwareRole } from '../src/roles.js';
+import { readFileSync } from 'node:fs';
+import { classifyRole, isSoftwareRole, vetoNonTech } from '../src/roles.js';
 
 let pass = 0, fail = 0;
 function check(title, expected) {
@@ -47,14 +48,61 @@ for (const t of [
   'Blockchain Developer Intern',
   'Database Intern',
   'API Developer Intern',
-  'Product Management Intern',
   'UI/UX Design Intern',
-  'Product Design Intern',
   'Technology Analyst Intern',
   'Graduate Engineer Trainee',
   'Web Development Internship in Bangalore',
   'Business Intelligence Intern',
 ]) check(t, 'tech');
+
+console.log('\n== PRODUCT MANAGEMENT AND PRODUCT DESIGN ARE NOT ENGINEERING ==');
+/* These two used to sit in the tech list above. Listing 'product manager' as a
+   POSITIVE is why Salesforce's "Summer 2026 Intern - Product Manager" reached
+   the top of the India board on 1 Sep 2026. They are negatives now, in
+   config.json's matching.extraNonTechTerms, so the assertion is against the
+   LIVE config rather than the built-in lists.
+   THE BARE WORD 'product' WAS MEASURED AND REJECTED — it costs Micron's
+   "Intern - ML/AI Engineer (Product Engineering, STPG)" and eight more real
+   engineering roles. Only whole phrases naming the job function are used. */
+{
+  const cfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  const refused = (t, label = null) => vetoNonTech(t, label, true, cfg) === false;
+  // check() above classifies the string it is given; these are booleans.
+  const is = (label, actual, expected) => {
+    if (actual === expected) { pass++; console.log(`  ok    ${label}`); }
+    else { fail++; console.log(`  FAIL  ${label}\n          got ${actual}, want ${expected}`); }
+  };
+
+  for (const t of ['Product Management Intern', 'Product Manager Intern',
+    'Summer 2026 Intern - Product Manager', 'Associate Product Manager, New Grad',
+    'Product Design Intern', 'Product Designer Intern', 'Intern-Product Analyst']) {
+    is(`refused — ${t}`, refused(t), true);
+  }
+
+  // And the engineering roles that merely have "product" in the name survive,
+  // because a negative only wins when no MULTI-WORD positive also matches.
+  for (const t of ['Product Engineering Intern', 'Intern - Product Yield Enhancement Eng',
+    'Intern \u2013 ML/AI Engineer (Product Engineering, STPG)', 'Trainee- Product Engineer',
+    'Product Engineer D&A Intern', 'Software Engineering Intern - Production Automation',
+    'Co-op \u2013 Software Engineering (APM) - Cambridge, MA']) {
+    is(`kept — ${t}`, refused(t), false);
+  }
+
+  /* THE LABEL PASS IS ON, and these terms are deliberately NOT in
+     titleOnlyNonTechTerms. Scoping them to the title was tried and reverted:
+     measured over 3,955 stored rows it rescued exactly 8, across two titles —
+     Sprinklr's "Design Intern" and PwC's "Connected Physical Products Intern",
+     both of which SHOULD be refused on an engineering board.
+     An engineering title is protected by its own title classifying tech, not by
+     the scoping: vetoNonTech only consults the label when the title is
+     uncertain, and "ETO Engineering Co-op" is settled by `engineering`. */
+  is('an engineering title is settled before the label is ever read',
+    refused('ETO Engineering Co-op', 'Product Design Engineering'), false);
+  is('a design label refuses an unsettled title',
+    refused('Design Intern', 'Product Design'), true);
+  is('and so does a product-management label',
+    refused('Intern - Product (NFA)', 'Product management'), true);
+}
 
 console.log('\n== should be NON-TECH (real titles from actual runs) ==');
 for (const t of [

@@ -107,12 +107,23 @@ ok('never swept, no interval — due', due(null, 0));
 // A future timestamp must not wedge a search off forever.
 ok('clock skew into the future — due', due(NOW + 60 * 60_000, 60));
 
-console.log('\n== the live config: India every run, US hourly ==');
+console.log('\n== the live config: India every run, US every two hours ==');
+/* These pin a PRODUCT DECISION, not a gap, so they move when the decision does.
+   US went 60 -> 120 minutes on 1 Sep 2026 to cut load on the single LinkedIn
+   account: US sweeps were walking 28-31 pages a run. Halving the sweeps while
+   the window stretches 2h -> 2.75h is a net ~31% fewer page loads a day.
+   INDIA MUST STAY AT EVERY TICK. It feeds 91% of the India board and the
+   board's whole promise is freshness. */
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
-check('US runs hourly', byRegion.get('US')?.intervalMinutes, 60);
+check('US runs two-hourly', byRegion.get('US')?.intervalMinutes, 120);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byRegion.get('US')?.intervalMinutes));
-ok('US is due 60m after its sweep', due(agoMin(60), byRegion.get('US')?.intervalMinutes));
+ok('US is not due 60m after its sweep', !due(agoMin(60), byRegion.get('US')?.intervalMinutes));
+ok('US is due 120m after its sweep', due(agoMin(120), byRegion.get('US')?.intervalMinutes));
+/* The due check deliberately fires a little early — ticks drift, so demanding
+   the full interval turns a two-hourly search into a three-hourly one. */
+ok('and a tick that lands slightly early still counts',
+  due(agoMin(Math.ceil(120 * INTERVAL_DUE_FRACTION) + 1), byRegion.get('US')?.intervalMinutes));
 
 console.log('\n== a dense region narrows its own lookback ==');
 // The US sweep was walking its whole 3h result set to exhaustion — 21 pages,
