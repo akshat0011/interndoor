@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866",
+      "url": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866",
+      "title": "Hardware Developer Intern - Poughkeepsie, NY - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Design and test hardware components for IBM's quantum and AI systems\n• Use VHDL/Verilog, SPICE, and CAD tools for circuit and logic design\n• Work on IBM ZSystems, Power Systems, and Quantum hardware teams",
+      "date_published": "2026-09-01T20:15:55.948Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294",
+      "url": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294",
+      "title": "Edison Engineering Development Program Internship - Hardware — GE HealthCare",
+      "content_text": "Company: GE HealthCare · Location: Waukesha, WI · Duration: Summer 2027\n• Work on power electronics, embedded systems, and thermal management for medical devices\n• Use tools like Creo, FEA, and CFD for design and analysis\n• Relocate to Waukesha, WI or other US locations with housing stipend",
+      "date_published": "2026-09-01T19:24:11.323Z",
+      "authors": [
+        {
+          "name": "GE HealthCare"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ge-healthcare-information-technology-development-program-internship-4462029414",
+      "url": "https://interndoor.com/us/jobs/ge-healthcare-information-technology-development-program-internship-4462029414",
+      "title": "Information Technology Development Program - Internship — GE HealthCare",
+      "content_text": "Company: GE HealthCare · Location: Wisconsin, United States · Duration: 10 weeks\n• Develop digital solutions for healthcare technology projects\n• Work with tools like Python, SQL, and cloud platforms\n• Based in Waukesha, WI or remote U.S. Locations",
+      "date_published": "2026-09-01T19:24:09.063Z",
+      "authors": [
+        {
+          "name": "GE HealthCare"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462040137",
+      "url": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462040137",
+      "title": "Edison Engineering Development Program Internship - Hardware — GE HealthCare",
+      "content_text": "Company: GE HealthCare · Location: Aurora, OH · Duration: Summer 2027\n• Work on hardware projects like power electronics and thermal management\n• Use tools including Creo, FEA, and CFD for design analysis\n• Relocate to Aurora, OH or other locations with housing stipend",
+      "date_published": "2026-09-01T19:23:23.496Z",
+      "authors": [
+        {
+          "name": "GE HealthCare"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-intern-software-4462026460",
       "url": "https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-intern-software-4462026460",
       "title": "Edison Engineering Development Program Intern – Software — GE HealthCare",
@@ -551,54 +599,6 @@
       "title": "2027 Undergrad Compiler Engineering Intern / Co-op — AMD",
       "content_text": "Company: AMD · Location: Boxborough, MA\n• Work on a compiler for P4 language targeting domain-specific ASICs\n• Use LLVM and P4C with new software design principles\n• Collaborate with ASIC teams and compiler customers",
       "date_published": "2026-09-01T14:34:12.249Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459542141",
-      "url": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459542141",
-      "title": "2027 Masters Compiler Engineering Intern / Co-op — AMD",
-      "content_text": "Company: AMD · Location: Boxborough, MA\n• Work on a compiler for P4 language targeting domain-specific ASICs\n• Use LLVM and P4C with new software design principles\n• Collaborate with ASIC teams and compiler customers",
-      "date_published": "2026-09-01T14:34:00.842Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459533281",
-      "url": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459533281",
-      "title": "2027 Masters Compiler Engineering Intern / Co-op — AMD",
-      "content_text": "Company: AMD · Location: Fort Collins, CO\n• Work on compiler for P4 language targeting ASICs\n• Use LLVM and P4C with new software design\n• Collaborate with ASIC team and compiler customers",
-      "date_published": "2026-09-01T14:33:58.453Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459521896",
-      "url": "https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459521896",
-      "title": "2027 Masters Compiler Engineering Intern / Co-op — AMD",
-      "content_text": "Company: AMD · Location: San Jose, CA\n• Work on compiler for P4 language targeting domain-specific ASICs\n• Use LLVM and P4C with new software design principles\n• Collaborate with ASIC team and compiler customers\n• Mentorship from senior engineers in compiler development",
-      "date_published": "2026-09-01T14:33:57.631Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-undergrad-compiler-engineering-intern-co-op-4459533279",
-      "url": "https://interndoor.com/us/jobs/amd-2027-undergrad-compiler-engineering-intern-co-op-4459533279",
-      "title": "2027 Undergrad Compiler Engineering Intern / Co-op — AMD",
-      "content_text": "Company: AMD · Location: Fort Collins, CO\n• Work on compiler for P4 language targeting ASICs\n• Use LLVM and P4C with modern software design\n• Collaborate with ASIC team and compiler customers",
-      "date_published": "2026-09-01T14:33:56.849Z",
       "authors": [
         {
           "name": "AMD"
