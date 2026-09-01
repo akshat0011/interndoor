@@ -6,18 +6,6 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/salesforce-summer-2026-intern-product-manager-4462042134",
-      "url": "https://interndoor.com/jobs/salesforce-summer-2026-intern-product-manager-4462042134",
-      "title": "Summer 2026 Intern - Product Manager — Salesforce",
-      "content_text": "Company: Salesforce · Location: Bengaluru, Karnataka, India · Duration: 0-24 months\n• Analyze user needs and market trends to shape product strategy\n• Collaborate with designers and engineers to build and refine features\n• Present product vision to stakeholders and ship multiple releases yearly",
-      "date_published": "2026-09-01T19:10:51.696Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-intern-masters-embedded-eng-4461799312",
       "url": "https://interndoor.com/jobs/honeywell-technologies-intern-masters-embedded-eng-4461799312",
       "title": "Intern Masters Embedded Eng — Honeywell Technologies",
@@ -90,18 +78,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/volody-legal-tech-intern-mumbai-based-only-4459291056",
-      "url": "https://interndoor.com/jobs/volody-legal-tech-intern-mumbai-based-only-4459291056",
-      "title": "Legal Tech intern (Mumbai based only) — Volody",
-      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Assist in developing ai-driven legal workflows and automation tools\n• Work on prompt engineering for legal ai use cases\n• Review and analyze contracts using ai tools",
-      "date_published": "2026-09-01T05:46:02.789Z",
-      "authors": [
-        {
-          "name": "Volody"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/gruve-soc-analyst-trainee-4461564239",
       "url": "https://interndoor.com/jobs/gruve-soc-analyst-trainee-4461564239",
       "title": "SOC Analyst (Trainee) — Gruve",
@@ -146,18 +122,6 @@
       "authors": [
         {
           "name": "Noise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fyntune-solution-private-limited-product-management-internship-in-delhi-4461519331",
-      "url": "https://interndoor.com/jobs/fyntune-solution-private-limited-product-management-internship-in-delhi-4461519331",
-      "title": "Product Management Internship in Delhi — FynTune Solution Private Limited",
-      "content_text": "Company: FynTune Solution Private Limited · Location: Delhi, India\n• Support product roadmap and feature planning\n• Collaborate with engineering and ux teams\n• Conduct market research and user testing",
-      "date_published": "2026-09-01T00:06:38.774Z",
-      "authors": [
-        {
-          "name": "FynTune Solution Private Limited"
         }
       ]
     },
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/micron-technology-intern-4457612820",
+      "url": "https://interndoor.com/jobs/micron-technology-intern-4457612820",
+      "title": "Intern — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Bengaluru, Karnataka, India\n• Work on semiconductor design and development projects\n• Engage with data science and ai-driven solutions\n• Contribute to engineering and manufacturing processes",
+      "date_published": "2026-08-25T18:12:25.652Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/adobe-apprentice-tech-4457612403",
+      "url": "https://interndoor.com/jobs/adobe-apprentice-tech-4457612403",
+      "title": "Apprentice Tech — Adobe",
+      "content_text": "Company: Adobe · Location: Bengaluru East, Karnataka, India\n• Support product development with daily coding and testing\n• Work with React and TypeScript in a fast-paced team\n• Gain hands-on experience with AI-driven tools and platforms",
+      "date_published": "2026-08-25T16:46:51.171Z",
+      "authors": [
+        {
+          "name": "Adobe"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
+      "url": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
+      "title": "Electronics Intern — Copeland",
+      "content_text": "Company: Copeland · Location: Pune Division, Maharashtra, India · Duration: 6 months\n• Develop simulation workflows for EMI/EMC, thermal, and signal integrity analysis\n• Use Python and ANSYS tools to automate and standardize simulation processes\n• Collaborate with R&D teams to validate models and support design decisions",
+      "date_published": "2026-08-25T16:33:55.148Z",
+      "authors": [
+        {
+          "name": "Copeland"
         }
       ]
     }

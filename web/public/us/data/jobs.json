@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788295072790,
+ "generatedAt": 1788295706125,
  "region": "US",
  "regionName": "United States",
- "count": 1251,
- "techCount": 1251,
+ "count": 1216,
+ "techCount": 1216,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -108,7 +108,6 @@
   "Lennox",
   "Liberty Mutual Insurance",
   "MACOM",
-  "Machina Labs",
   "Magna International",
   "Marathon Petroleum Corporation",
   "Marvell Technology",
@@ -271,7 +270,6 @@
   "Chanhassen, MN",
   "Charleston, SC",
   "Charlotte, NC",
-  "Chatsworth, California, United States",
   "Chelmsford, MA",
   "Chesapeake, VA",
   "Chicago",
@@ -428,7 +426,6 @@
   "New York, Chicago",
   "New York, London, or Paris",
   "New York, NY",
-  "New York, New York, USA",
   "New York, Seattle",
   "New York, United States",
   "Newark, DE",
@@ -503,7 +500,6 @@
   "San Mateo, CA",
   "San Mateo, CA United States",
   "San Mateo, CA, United States",
-  "San Mateo, California, United States",
   "Sandston, VA",
   "Santa Clara, CA",
   "Sarasota, FL",
@@ -11399,54 +11395,6 @@
    "region": "US"
   },
   {
-   "id": "4461567358",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "Boston, MA",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product prototypes and contributing to front-end development using angularjs and css. It suits students interested in user-centered design and product innovation.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Work on user interaction engineering projects"
-   ],
-   "roleLabel": "Product Design Intern",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "47 minutes ago",
-   "postedAt": 1788243260036,
-   "firstSeenAt": 1788246080038,
-   "lastSeenAt": 1788246080038,
-   "url": "https://www.linkedin.com/jobs/view/4461567358/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "Boston",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461554688",
    "title": "Technology Consulting - Intern - Summer 2027",
    "company": "PwC",
@@ -11586,54 +11534,6 @@
    "cardFacts": [
     "$29 – $48",
     "Seattle",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461565388",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "New York, NY",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product designs and prototypes, contributing to front-end development with angularjs and css, and working on user interaction projects. It suits students interested in product innovation and design.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Work on user interaction engineering projects"
-   ],
-   "roleLabel": "Product Design",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "45 minutes ago",
-   "postedAt": 1788243244495,
-   "firstSeenAt": 1788245944497,
-   "lastSeenAt": 1788245944497,
-   "url": "https://www.linkedin.com/jobs/view/4461565388/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "New York",
     "On-site"
    ],
    "region": "US"
@@ -11826,54 +11726,6 @@
    "region": "US"
   },
   {
-   "id": "4461556573",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "Minneapolis, MN",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product prototypes and contributing to front-end development using angularjs and css. You'll work on user research and workflow analysis to improve product design. Ideal for students with a background in engineering or computer science looking to gain hands-on experience in product innovation.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Collaborate on user research and workflow analysis"
-   ],
-   "roleLabel": "Product Design Intern",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "49 minutes ago",
-   "postedAt": 1788243239506,
-   "firstSeenAt": 1788246179507,
-   "lastSeenAt": 1788246179507,
-   "url": "https://www.linkedin.com/jobs/view/4461556573/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "Minneapolis",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461556566",
    "title": "Technology Consulting - Geographic Information Systems Intern - Summer 2027",
    "company": "PwC",
@@ -11916,54 +11768,6 @@
    "cardFacts": [
     "$29 – $48",
     "Chicago",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461557578",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "Rosemont, IL",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product prototypes and contributing to front-end development using angularjs and css. It suits students interested in user-centered design and product innovation. The role offers hands-on experience in developing solutions for client-focused projects.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Work on user interaction engineering projects"
-   ],
-   "roleLabel": "Product Design",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "49 minutes ago",
-   "postedAt": 1788243235800,
-   "firstSeenAt": 1788246175801,
-   "lastSeenAt": 1788246175801,
-   "url": "https://www.linkedin.com/jobs/view/4461557578/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "Rosemont",
     "On-site"
    ],
    "region": "US"
@@ -12156,54 +11960,6 @@
    "cardFacts": [
     "$29 – $48",
     "Atlanta",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461557574",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "Los Angeles, CA",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product prototypes and contributing to front-end development using angularjs and css. It suits students interested in user-centered design and product innovation.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Work on user interaction engineering projects"
-   ],
-   "roleLabel": "Product Design Intern",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "46 minutes ago",
-   "postedAt": 1788243225035,
-   "firstSeenAt": 1788245985036,
-   "lastSeenAt": 1788245985036,
-   "url": "https://www.linkedin.com/jobs/view/4461557574/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "Los Angeles",
     "On-site"
    ],
    "region": "US"
@@ -12486,54 +12242,6 @@
    "cardFacts": [
     "$29 – $48",
     "San Francisco",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461560585",
-   "title": "Connected Physical Products Intern - Summer 2027",
-   "company": "PwC",
-   "matchedWatchlist": "PwC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pwc.jpg",
-   "location": "Washington, DC",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $48",
-   "duration": "5 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves creating product designs and prototypes, contributing to front-end development with angularjs and css, and working on user interaction projects. It suits students interested in product innovation and software development.",
-   "bullets": [
-    "Create mock-ups and prototypes for product design",
-    "Use angularjs and css for front-end development",
-    "Work on user interaction engineering projects"
-   ],
-   "roleLabel": "Product design",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "angularjs",
-    "css",
-    "user research"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "49 minutes ago",
-   "postedAt": 1788243217094,
-   "firstSeenAt": 1788246157096,
-   "lastSeenAt": 1788246157096,
-   "url": "https://www.linkedin.com/jobs/view/4461560585/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS757231WDEXTERNALENUS/Connected-Physical-Products-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds&utm_campaign=core_media&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "e64bdabafa",
-   "cardFacts": [
-    "$29 – $48",
-    "Washington",
     "On-site"
    ],
    "region": "US"
@@ -12853,60 +12561,6 @@
    "cardFacts": [
     "$38 / hour",
     "New York",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460213804",
-   "title": "Campus Graduate Masters Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- Sunrise, FL",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "Sunrise, FL",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves working on digital product initiatives that enhance customer and colleague experiences. You'll collaborate with teams to design and launch technology products, analyze data to inform decisions, and explore AI applications in enterprise platforms. Ideal for students interested in product management and technology innovation.",
-   "bullets": [
-    "Collaborate with cross-functional teams to build technology products that improve customer experiences",
-    "Use data and insights to shape product strategies and define success metrics",
-    "Work on AI-enabled solutions and responsible AI practices in enterprise platforms"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "agile",
-    "user stories",
-    "product roadmaps"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "40 minutes ago",
-   "postedAt": 1788239878876,
-   "firstSeenAt": 1788242278878,
-   "lastSeenAt": 1788242278878,
-   "url": "https://www.linkedin.com/jobs/view/4460213804/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26012145/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "01e07204f2",
-   "cardFacts": [
-    "$24 / hour",
-    "Sunrise",
     "Hybrid"
    ],
    "region": "US"
@@ -13424,61 +13078,6 @@
    "region": "US"
   },
   {
-   "id": "4460229514",
-   "title": "Campus Graduate Masters Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- Phoenix, AZ",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "Phoenix, AZ",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves working on digital product strategies and customer experiences within American Express' technology services. You'll collaborate with teams to define product opportunities, analyze data, and implement solutions that enhance customer and colleague interactions. Ideal for students interested in product management and technology innovation.",
-   "bullets": [
-    "Collaborate with cross-functional teams to shape product strategies and customer experiences",
-    "Use data and insights to define product outcomes and success measures",
-    "Work on AI-enabled solutions and responsible AI practices in enterprise platforms"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "agile",
-    "user stories",
-    "ai",
-    "product roadmaps"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "33 minutes ago",
-   "postedAt": 1788239856176,
-   "firstSeenAt": 1788241836182,
-   "lastSeenAt": 1788241836182,
-   "url": "https://www.linkedin.com/jobs/view/4460229514/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26012681/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "acb82be28b",
-   "cardFacts": [
-    "$24 / hour",
-    "Phoenix",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460217706",
    "title": "Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Phoenix, AZ",
    "company": "American Express",
@@ -13605,54 +13204,6 @@
    "region": "US"
   },
   {
-   "id": "4460232422",
-   "title": "Campus Graduate Masters Summer Internship Program - 2027 Product Management, Global Merchant & Network Services - New York, NY",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "New York, NY",
-   "workplaceType": "Hybrid",
-   "stipend": "$38 / hour",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "express",
-    "agile"
-   ],
-   "summary": "This internship involves shaping digital products that power global payment networks, working with 190+ partners and 200+ countries. You'll design strategies, manage roadmaps, and collaborate across teams to enhance payment solutions for millions of users.",
-   "bullets": [
-    "Design and manage digital products for global payment networks",
-    "Collaborate with cross-functional teams on product strategy and roadmap",
-    "Work with 190+ partners and 200+ countries on payment solutions"
-   ],
-   "roleLabel": "Product Strategy",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "product strategy",
-    "market research"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "32 minutes ago",
-   "postedAt": 1788239851785,
-   "firstSeenAt": 1788241771788,
-   "lastSeenAt": 1788241771788,
-   "url": "https://www.linkedin.com/jobs/view/4460232422/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26012636/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "a93dd69c4a",
-   "cardFacts": [
-    "$38 / hour",
-    "New York",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460220721",
    "title": "Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Phoenix, AZ",
    "company": "American Express",
@@ -13705,68 +13256,6 @@
    "cardFacts": [
     "$24 / hour",
     "Phoenix",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460221680",
-   "title": "Campus Undergraduate Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- New York, NY",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "New York, NY",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "system design",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "As a Digital Product Management intern, you’ll help shape customer experiences by working with cross-functional teams to define product requirements, prioritize features, and support Agile delivery. You’ll gain hands-on experience in product strategy, customer insights, and technology execution within a global enterprise environment.",
-   "bullets": [
-    "Support product teams in defining requirements, user stories, and documentation",
-    "Collaborate with engineers, designers, and analysts on product delivery and tech initiatives",
-    "Participate in Agile ceremonies and track delivery risks with senior leaders"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "confluence",
-    "figma",
-    "excel",
-    "tableau",
-    "power bi",
-    "agile",
-    "safe",
-    "scrum",
-    "kanban"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "40 minutes ago",
-   "postedAt": 1788239846669,
-   "firstSeenAt": 1788242246671,
-   "lastSeenAt": 1788242246671,
-   "url": "https://www.linkedin.com/jobs/view/4460221680/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26011143/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "a788f98833",
-   "cardFacts": [
-    "$24 / hour",
-    "New York",
     "Hybrid"
    ],
    "region": "US"
@@ -13829,123 +13318,6 @@
    "region": "US"
   },
   {
-   "id": "4460223646",
-   "title": "Campus Undergraduate Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- Sunrise, FL",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "Sunrise, FL",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "system design",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "As a digital product management intern, you’ll help shape customer experiences by working with cross-functional teams to define product requirements, prioritize features, and support Agile delivery. You’ll gain hands-on experience in product strategy, customer research, and technology initiatives that drive innovation at a global scale.",
-   "bullets": [
-    "Support product teams in defining requirements, user stories, and documentation",
-    "Collaborate with engineers, designers, and analysts on digital product delivery",
-    "Participate in Agile ceremonies and track delivery risks and dependencies"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "confluence",
-    "figma",
-    "excel",
-    "power bi",
-    "tableau",
-    "agile",
-    "safe",
-    "scrum",
-    "kanban"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "38 minutes ago",
-   "postedAt": 1788239838888,
-   "firstSeenAt": 1788242118891,
-   "lastSeenAt": 1788242118891,
-   "url": "https://www.linkedin.com/jobs/view/4460223646/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26011627/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "a788f98833",
-   "cardFacts": [
-    "$24 / hour",
-    "Sunrise",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460224634",
-   "title": "Campus Graduate Masters Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- New York, NY",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "New York, NY",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves working on digital products and enterprise platforms to enhance customer experiences. You'll collaborate with cross-functional teams, use data and AI to shape product decisions, and contribute to global technology initiatives. Ideal for students interested in product management and technology innovation.",
-   "bullets": [
-    "Collaborate with cross-functional teams to build technology products that improve customer experiences",
-    "Use data and AI to shape product decisions and enhance customer journeys",
-    "Work on enterprise platforms and digital products with global impact"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "agile",
-    "user stories",
-    "ai",
-    "product roadmaps"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "36 minutes ago",
-   "postedAt": 1788239837137,
-   "firstSeenAt": 1788241997143,
-   "lastSeenAt": 1788241997143,
-   "url": "https://www.linkedin.com/jobs/view/4460224634/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26012057/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "acb82be28b",
-   "cardFacts": [
-    "$24 / hour",
-    "New York",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460222695",
    "title": "Campus Graduate I Summer Internship Program - 2027 Data Science, Finance - New York, NY",
    "company": "American Express",
@@ -13995,63 +13367,6 @@
    "cardFacts": [
     "$24 / hour",
     "New York",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460228571",
-   "title": "Campus Undergraduate Summer Internship Program - 2027 Digital Product Management, Enterprise Technology Services- Phoenix, AZ",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "Phoenix, AZ",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express",
-    "generative ai",
-    "system design",
-    "agile",
-    "figma",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "As a Digital Product Management Intern, you’ll help shape customer experiences by working with cross-functional teams to define product requirements, prioritize features, and support Agile delivery. You’ll gain hands-on experience in product strategy, customer research, and technology initiatives that drive innovation at a global scale.",
-   "bullets": [
-    "Support product teams in defining requirements, prioritizing features, and tracking delivery outcomes",
-    "Collaborate with engineers, designers, and analysts using JIRA, Confluence, and Figma",
-    "Contribute to Agile ceremonies and help shape enterprise-scale product strategies"
-   ],
-   "roleLabel": "Digital Product Management",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "confluence",
-    "figma",
-    "agile",
-    "product strategy"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "34 minutes ago",
-   "postedAt": 1788239832452,
-   "firstSeenAt": 1788241872458,
-   "lastSeenAt": 1788241872458,
-   "url": "https://www.linkedin.com/jobs/view/4460228571/",
-   "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26012678/?utm_medium=jobboard&utm_source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "a788f98833",
-   "cardFacts": [
-    "$24 / hour",
-    "Phoenix",
     "Hybrid"
    ],
    "region": "US"
@@ -15249,56 +14564,6 @@
     "Irving",
     "On-site",
     "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460223295",
-   "title": "Product Management, Intern",
-   "company": "Machina Labs",
-   "matchedWatchlist": "Machina Labs",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/machina-labs.jpg",
-   "location": "Chatsworth, California, United States",
-   "workplaceType": "On-site",
-   "stipend": "$20 – $35 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "machine learning"
-   ],
-   "summary": "This internship involves working closely with customers and engineering teams to design and deliver software and hardware solutions for flexible manufacturing. You'll take ownership of product projects and contribute to strategic planning. Ideal for students interested in the intersection of business, design, and engineering with a focus on robotics and AI.",
-   "bullets": [
-    "Partner with customers to design software and hardware solutions",
-    "Collaborate with engineers across robotics and machine learning teams",
-    "Own meaningful product projects from start to finish"
-   ],
-   "roleLabel": "Product design",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.S./M.S.",
-   "keySkills": [
-    "robotics",
-    "ai",
-    "manufacturing systems",
-    "product roadmapping",
-    "sprint management"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "5 minutes ago",
-   "postedAt": 1788234207334,
-   "firstSeenAt": 1788234507342,
-   "lastSeenAt": 1788234507342,
-   "url": "https://www.linkedin.com/jobs/view/4460223295/",
-   "applyUrl": "https://jobs.lever.co/MachinaLabs/c54d0857-09f3-479c-8d8d-cfa55d358be6/apply?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "e6a02aa855",
-   "cardFacts": [
-    "$20 – $35 / hour",
-    "Chatsworth",
-    "On-site"
    ],
    "region": "US"
   },
@@ -17649,53 +16914,6 @@
    "region": "US"
   },
   {
-   "id": "4461283397",
-   "title": "Mechanical Engineering Internship (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Andover, MA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "7 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves mechanical design and documentation for defense systems, supporting radar shelters and launchers. Ideal for students with CAD experience and a focus on mechanical systems.",
-   "bullets": [
-    "Model and document mechanical systems, thermal systems, and hardware components",
-    "Use CREO, Windchill PDM, and Microsoft Office for design and documentation",
-    "Work on defense platform systems including radar shelters and launchers"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "creo",
-    "windchill pdm",
-    "solidworks",
-    "fusion 360"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1788212319782,
-   "firstSeenAt": 1788212979787,
-   "lastSeenAt": 1788212979787,
-   "url": "https://www.linkedin.com/jobs/view/4461283397/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01870151EXTERNALENGLOBAL/Mechanical-Engineering-Internship-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "05316c6f80",
-   "cardFacts": [
-    "$37,000",
-    "Andover",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460072529",
    "title": "2027 Energy Engineering Intern",
    "company": "Trane Technologies",
@@ -20039,54 +19257,6 @@
     "$24 / hour",
     "Atlanta",
     "Remote"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460052463",
-   "title": "2027 Summer Internship - Product Management",
-   "company": "The Home Depot",
-   "matchedWatchlist": "Home Depot",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/the-home-depot.jpg",
-   "location": "Atlanta, GA",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "0-1 years",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves analyzing customer needs and translating them into product strategies. The intern will work with product managers, UX designers, and engineers to shape product features and prioritize user stories. It's ideal for students interested in understanding how products are developed and how they meet business goals.",
-   "bullets": [
-    "Analyze customer needs and translate them into product strategies",
-    "Work with PMs, UX, and engineers to shape product features",
-    "Collaborate on backlog grooming and prioritize user stories"
-   ],
-   "roleLabel": "Product strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "user research",
-    "product backlog",
-    "user stories",
-    "agile methodologies"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "3 minutes ago",
-   "postedAt": 1788198558596,
-   "firstSeenAt": 1788198738599,
-   "lastSeenAt": 1788198738599,
-   "url": "https://www.linkedin.com/jobs/view/4460052463/",
-   "applyUrl": "https://homedepot.contacthr.com/153300170",
-   "description": null,
-   "roleFingerprint": "d19dda6d3e",
-   "cardFacts": [
-    "Atlanta",
-    "On-site"
    ],
    "region": "US"
   },
@@ -24925,59 +24095,6 @@
    "region": "US"
   },
   {
-   "id": "4461059560",
-   "title": "Product Management Intern",
-   "company": "Qorvo, Inc.",
-   "matchedWatchlist": "Qorvo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/qorvo-inc.jpg",
-   "location": "Greensboro, NC",
-   "workplaceType": "On-site",
-   "stipend": "$31 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "azure",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves supporting product management teams to enhance manufacturing processes and assembly yields. Interns will work on AI integration projects and use tools like Jira and Smartsheet. Ideal for students with analytical skills and experience in project management tools.",
-   "bullets": [
-    "Support product teams to improve manufacturing processes and assembly yields",
-    "Use project management tools like Jira and Smartsheet for task tracking",
-    "Collaborate on AI integration projects within PM work practices"
-   ],
-   "roleLabel": "Product Support",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "smartsheet",
-    "excel",
-    "tableau",
-    "power bi"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "39 minutes ago",
-   "postedAt": 1788157094786,
-   "firstSeenAt": 1788159434788,
-   "lastSeenAt": 1788166338106,
-   "url": "https://www.linkedin.com/jobs/view/4461059560/",
-   "applyUrl": "https://careers.qorvo.com/job/Greensboro-Product-Management-Intern-NC-27409/1421954200/?eresc=LinkedIn",
-   "description": null,
-   "roleFingerprint": "5962e56600",
-   "cardFacts": [
-    "$31 / hour",
-    "Greensboro",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461054634",
    "title": "RF Design Engineering Intern",
    "company": "Qorvo, Inc.",
@@ -26581,51 +25698,6 @@
    "region": "US"
   },
   {
-   "id": "ats:workday:homedepot:wd5:CareerDepot:Req191931",
-   "title": "2027 Summer Internship - Product Management",
-   "company": "Home Depot",
-   "matchedWatchlist": "Home Depot",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/home-depot.png",
-   "location": "STORE SUPPORT CENTER, ATLANTA - 9090",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": "0-1 years",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves analyzing customer needs and translating them into product strategies. The intern will collaborate with engineers and designers to shape product features and work on real projects that impact Home Depot's retail and corporate operations. It suits students interested in product development and business strategy.",
-   "bullets": [
-    "Analyze customer needs and translate them into product strategies",
-    "Collaborate with engineers and designers to shape product features",
-    "Work on real projects that impact Home Depot's retail and corporate operations"
-   ],
-   "roleLabel": "Product Strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "user research",
-    "agile methodologies"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1788134400000,
-   "firstSeenAt": 1788189350233,
-   "lastSeenAt": 1788189350233,
-   "url": "https://homedepot.wd5.myworkdayjobs.com/en-US/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Product-Management_Req191931",
-   "applyUrl": "https://homedepot.wd5.myworkdayjobs.com/en-US/CareerDepot/job/STORE-SUPPORT-CENTER-ATLANTA---9090/XMLNAME-2027-Summer-Internship---Product-Management_Req191931",
-   "description": null,
-   "roleFingerprint": "2188708bae",
-   "cardFacts": [
-    "STORE SUPPORT CENTER"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:workday:homedepot:wd5:CareerDepot:Req191937",
    "title": "2027 Summer Internship - Software Engineering",
    "company": "Home Depot",
@@ -26909,56 +25981,6 @@
     "Newaygo",
     "On-site",
     "Summer 2026"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4411574482",
-   "title": "Design/DSP/Verification Intern - PhD Degree",
-   "company": "Marvell Technology",
-   "matchedWatchlist": "Marvell Technology",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/marvell-technology.jpg",
-   "location": "Santa Clara, CA",
-   "workplaceType": "On-site",
-   "stipend": "$28 – $56 / hour",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "algorithms",
-    "system design"
-   ],
-   "summary": "This PhD internship involves working on dsp architecture and system modeling for high-speed data communication products. You'll analyze simulation and lab data to optimize designs, collaborate with peers, and contribute to real-world semiconductor solutions. Ideal for students with strong dsp and communication theory backgrounds.",
-   "bullets": [
-    "Build simulation models and analyze data to optimize designs",
-    "Work with mentor on dsp architecture and system modeling",
-    "Collaborate on lab data and simulation validation"
-   ],
-   "roleLabel": "Dsp architecture",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "dsp",
-    "system modeling",
-    "communication theory",
-    "simulation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "28 minutes ago",
-   "postedAt": 1788101883216,
-   "firstSeenAt": 1788103563221,
-   "lastSeenAt": 1788103563221,
-   "url": "https://www.linkedin.com/jobs/view/4411574482/",
-   "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/Design-DSP-Verification-Intern---PhD-Degree_2502786-1?src=SNS-102&source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "9525e7daf6",
-   "cardFacts": [
-    "$28 – $56 / hour",
-    "Santa Clara",
-    "On-site"
    ],
    "region": "US"
   },
@@ -29926,60 +28948,6 @@
     "$1",
     "El Segundo",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4438734966",
-   "title": "Product Management Intern (Summer 2027)",
-   "company": "Databricks",
-   "matchedWatchlist": "Databricks",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/databricks.png",
-   "location": "San Francisco, CA",
-   "workplaceType": "Remote",
-   "stipend": "$54 – $56",
-   "duration": "12 weeks",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "spring",
-    "rails",
-    "machine learning",
-    "excel"
-   ],
-   "summary": "This internship offers hands-on experience in product management at a leading data and AI company. You'll work on real projects, collaborate with engineers and designers, and contribute to shipping features on a major platform. Ideal for students interested in customer problem-solving and product development.",
-   "bullets": [
-    "Work with engineers and designers to ship features on Databricks platform",
-    "Own project end-to-end from design to launch and iteration",
-    "Collaborate with cross-functional teams across multiple product lines"
-   ],
-   "roleLabel": "Product Management",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "SQL",
-    "Python",
-    "AI tooling",
-    "data-driven decisions"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "31 minutes ago",
-   "postedAt": 1787997297704,
-   "firstSeenAt": 1787999157706,
-   "lastSeenAt": 1787999157706,
-   "url": "https://www.linkedin.com/jobs/view/4438734966/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4438734966/",
-   "description": null,
-   "roleFingerprint": "e523085920",
-   "cardFacts": [
-    "$54 – $56",
-    "San Francisco",
-    "Remote"
    ],
    "region": "US"
   },
@@ -33798,159 +32766,6 @@
    "region": "US"
   },
   {
-   "id": "4458425775",
-   "title": "Storage Product Management Intern 2027 -Tucson, AZ",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Tucson, AZ",
-   "workplaceType": "Hybrid",
-   "stipend": "$67,600 / year",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "docker",
-    "kubernetes",
-    "excel"
-   ],
-   "summary": "This internship involves researching storage technologies and market trends to inform product development. Ideal for students interested in tech and business, with a focus on data analysis and collaboration across teams.",
-   "bullets": [
-    "Analyze market and customer data to shape product strategy",
-    "Use excel and ai tools to create reports and insights",
-    "Work with engineering and sales teams on storage solutions"
-   ],
-   "roleLabel": "Product Research",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "excel",
-    "ai tools",
-    "market research",
-    "competitive analysis"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "12 minutes ago",
-   "postedAt": 1787948201200,
-   "firstSeenAt": 1787948921201,
-   "lastSeenAt": 1787948921201,
-   "url": "https://www.linkedin.com/jobs/view/4458425775/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4458425775/",
-   "description": null,
-   "roleFingerprint": "ed99d141a4",
-   "cardFacts": [
-    "$67,600 / year",
-    "Tucson",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4458425774",
-   "title": "Storage Product Management Intern 2027 -North Carolina",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Durham, NC",
-   "workplaceType": "Hybrid",
-   "stipend": "$74,400 / year",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "docker",
-    "kubernetes",
-    "excel"
-   ],
-   "summary": "This internship involves researching storage markets and customer needs to inform product development. Ideal for students with analytical skills and interest in enterprise tech. Work includes data analysis, competitive research, and cross-functional collaboration.",
-   "bullets": [
-    "Analyze market and customer data to shape product strategy",
-    "Use excel and ai tools for competitive analysis and reporting",
-    "Collaborate across engineering, sales, and marketing teams"
-   ],
-   "roleLabel": "Product Research",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "excel",
-    "ai tools",
-    "market research",
-    "competitive analysis"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "13 minutes ago",
-   "postedAt": 1787948198192,
-   "firstSeenAt": 1787948978194,
-   "lastSeenAt": 1787948978194,
-   "url": "https://www.linkedin.com/jobs/view/4458425774/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4458425774/",
-   "description": null,
-   "roleFingerprint": "abd25b7349",
-   "cardFacts": [
-    "$74,400 / year",
-    "Durham",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4458426767",
-   "title": "Storage Product Management Intern 2027 -North Carolina",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Research Park, California, United States",
-   "workplaceType": "Hybrid",
-   "stipend": "$74,400 / year",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "docker",
-    "kubernetes",
-    "excel"
-   ],
-   "summary": "This internship involves researching storage technologies and market trends to inform product development. Ideal for students interested in tech and business, with a focus on data analysis and collaboration across teams.",
-   "bullets": [
-    "Analyze market and customer data to shape product strategy",
-    "Use excel and ai tools to create reports and insights",
-    "Work with engineering and sales teams on storage solutions"
-   ],
-   "roleLabel": "Product Research",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "excel",
-    "ai tools",
-    "market research",
-    "competitive analysis"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "13 minutes ago",
-   "postedAt": 1787948169027,
-   "firstSeenAt": 1787948949028,
-   "lastSeenAt": 1787948949028,
-   "url": "https://www.linkedin.com/jobs/view/4458426767/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4458426767/",
-   "description": null,
-   "roleFingerprint": "abd25b7349",
-   "cardFacts": [
-    "$74,400 / year",
-    "Research Park",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4458412872",
    "title": "Storage Client Solutions Engineering Intern 2027- North Carolina",
    "company": "IBM",
@@ -36361,60 +35176,6 @@
     "$20 – $40",
     "Malta",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460363002",
-   "title": "Mechanical Engineering Internship - Summer 2027 (Paid)",
-   "company": "CSX",
-   "matchedWatchlist": "CSX Transportation",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/csx.jpg",
-   "location": "Jacksonville, FL",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves analyzing mechanical equipment data to improve reliability and working with cross-functional teams. It suits students interested in engineering analytics and asset management with a focus on real-world operations.",
-   "bullets": [
-    "Review and design analytics platforms to track mechanical equipment reliability and repair",
-    "Collaborate with Facilities and Transportation teams on asset management projects",
-    "Work full-time in Jacksonville, FL, with housing support and competitive pay"
-   ],
-   "roleLabel": "Mechanical Analytics",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "Power BI",
-    "Tableau",
-    "SQL",
-    "Python",
-    "Excel"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "32 minutes ago",
-   "postedAt": 1787924750499,
-   "firstSeenAt": 1787926670502,
-   "lastSeenAt": 1787926670502,
-   "url": "https://www.linkedin.com/jobs/view/4460363002/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4460363002/",
-   "description": null,
-   "roleFingerprint": "fe33109775",
-   "cardFacts": [
-    "Jacksonville",
-    "On-site",
-    "Summer 2027"
    ],
    "region": "US"
   },
@@ -41165,58 +39926,6 @@
    "region": "US"
   },
   {
-   "id": "4449326371",
-   "title": "Campus Undergraduate Summer Internship Program - 2027 Product Management, Global Merchant & Network Services - Phoenix, AZ",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "Phoenix, AZ",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "express",
-    "agile",
-    "excel"
-   ],
-   "summary": "This internship involves shaping product strategy by analyzing customer needs and market trends. You'll work with tech teams to prioritize features and drive product adoption globally. Ideal for students passionate about digital products and payments.",
-   "bullets": [
-    "Analyze customer needs and market trends to shape product strategy",
-    "Collaborate with tech teams to prioritize and execute product features",
-    "Develop business cases and drive product adoption across global teams"
-   ],
-   "roleLabel": "Product strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "hive",
-    "excel",
-    "powerpoint"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "36 minutes ago",
-   "postedAt": 1787854358927,
-   "firstSeenAt": 1787856518933,
-   "lastSeenAt": 1787856518933,
-   "url": "https://www.linkedin.com/jobs/view/4449326371/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4449326371/",
-   "description": null,
-   "roleFingerprint": "78b1abde1b",
-   "cardFacts": [
-    "$24 / hour",
-    "Phoenix",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4459862999",
    "title": "Intern, Software Engineer",
    "company": "L3Harris Technologies",
@@ -41757,58 +40466,6 @@
    "roleFingerprint": "f6c3002932",
    "cardFacts": [
     "$5,000 / week",
-    "New York",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4449322453",
-   "title": "Campus Undergraduate Summer Internship Program - 2027 Product Management, Global Merchant & Network Services - New York, NY",
-   "company": "American Express",
-   "matchedWatchlist": "American Express",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/american-express.jpg",
-   "location": "New York, NY",
-   "workplaceType": "Hybrid",
-   "stipend": "$24 / hour",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "express",
-    "agile",
-    "excel"
-   ],
-   "summary": "This internship involves shaping product strategy by analyzing customer needs and market trends. You'll work with tech teams to prioritize features and drive product adoption globally. Ideal for students interested in product management and digital innovation.",
-   "bullets": [
-    "Analyze customer needs and market trends to shape product strategy",
-    "Collaborate with tech teams to prioritize and execute product features",
-    "Develop business cases and drive product adoption across global teams"
-   ],
-   "roleLabel": "Product strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "hive",
-    "excel",
-    "powerpoint"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "2 hours ago",
-   "postedAt": 1787847449268,
-   "firstSeenAt": 1787854649276,
-   "lastSeenAt": 1787854649276,
-   "url": "https://www.linkedin.com/jobs/view/4449322453/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4449322453/",
-   "description": null,
-   "roleFingerprint": "a31c3e9ca8",
-   "cardFacts": [
-    "$24 / hour",
     "New York",
     "Hybrid"
    ],
@@ -47672,50 +46329,6 @@
    "region": "US"
   },
   {
-   "id": "4457231055",
-   "title": "Product Management Intern 2027",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Poughkeepsie, AR",
-   "workplaceType": "Hybrid",
-   "stipend": "$74,400 / year",
-   "duration": null,
-   "applicants": "3 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "At IBM Infrastructure & Technology, we design and operate the systems that keep the world running. From high-resiliency mainframes and hybrid cloud platforms to networking, automation, and site reliability. Our teams ensure the performance, security, and scalability that clients and industries depend on every day. Your role and responsibilities",
-   "bullets": [
-    "Support product teams in defining requirements and user stories",
-    "Collaborate with engineering, design, and marketing teams",
-    "Analyze market trends and customer feedback for new ideas"
-   ],
-   "roleLabel": "Product support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "product requirements"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "59 minutes ago",
-   "postedAt": 1787723463800,
-   "firstSeenAt": 1787727003801,
-   "lastSeenAt": 1787727003801,
-   "url": "https://www.linkedin.com/jobs/view/4457231055/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457231055/",
-   "description": null,
-   "roleFingerprint": "5a4075daee",
-   "cardFacts": [
-    "$74,400 / year",
-    "Poughkeepsie",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4457223019",
    "title": "Software Developer Intern",
    "company": "IBM",
@@ -47772,108 +46385,6 @@
    "cardFacts": [
     "$55,600 / year",
     "Tucson",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4457236008",
-   "title": "Product Manager Intern - RTP 2027",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Research Park, California, United States",
-   "workplaceType": "Hybrid",
-   "stipend": "$59,400 / year",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves shaping technology service offerings and managing client projects. You'll work with cross-functional teams to define service scope, pricing, and value, while tracking performance metrics and ensuring client satisfaction. Ideal for students interested in product management and enterprise IT services.",
-   "bullets": [
-    "Support development of lifecycle service offerings across hardware, software, and hybrid environments",
-    "Collaborate with engineering, solutioning, and delivery teams to define service scope and pricing",
-    "Track metrics to assess adoption, profitability, and client satisfaction",
-    "Oversee execution of contractual deliverables for assigned clients"
-   ],
-   "roleLabel": "Product lifecycle management",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "cloud",
-    "ai",
-    "agile development",
-    "financial modeling",
-    "pricing strategy"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "13 minutes ago",
-   "postedAt": 1787722596322,
-   "firstSeenAt": 1787723376324,
-   "lastSeenAt": 1787723376324,
-   "url": "https://www.linkedin.com/jobs/view/4457236008/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457236008/",
-   "description": null,
-   "roleFingerprint": "660a270677",
-   "cardFacts": [
-    "$59,400 / year",
-    "Research Park",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4457223016",
-   "title": "Product Manager Intern - RTP 2027",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Durham, NC",
-   "workplaceType": "Hybrid",
-   "stipend": "$59,400 / year",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves shaping technology service offerings and managing client projects. You'll work with cross-functional teams to define service scope, analyze market needs, and ensure successful delivery. Ideal for students interested in product management and enterprise IT services.",
-   "bullets": [
-    "Support development of lifecycle service offerings across hardware, software, and hybrid environments",
-    "Collaborate with engineering, solutioning, and delivery teams to define service scope and value propositions",
-    "Track metrics to assess adoption, profitability, and client satisfaction",
-    "Oversee execution of contractual deliverables for assigned clients"
-   ],
-   "roleLabel": "Product lifecycle management",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "cloud",
-    "ai",
-    "agile development",
-    "financial modeling",
-    "business case development"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "13 minutes ago",
-   "postedAt": 1787722592222,
-   "firstSeenAt": 1787723372225,
-   "lastSeenAt": 1787723372225,
-   "url": "https://www.linkedin.com/jobs/view/4457223016/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457223016/",
-   "description": null,
-   "roleFingerprint": "660a270677",
-   "cardFacts": [
-    "$59,400 / year",
-    "Durham",
     "Hybrid"
    ],
    "region": "US"
@@ -55530,50 +54041,6 @@
    "region": "US"
   },
   {
-   "id": "ats:greenhouse:datadog:8108241",
-   "title": "Product Management Intern",
-   "company": "Datadog",
-   "matchedWatchlist": "Datadog",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/datadog.png",
-   "location": "New York, New York, USA",
-   "workplaceType": null,
-   "stipend": "$1,00,000 / year",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves working on product initiatives with engineering and design teams, analyzing customer feedback, and gaining technical insight into observability platforms. It suits students interested in product development and technical communication.",
-   "bullets": [
-    "Work on product initiatives from concept to launch with engineering and design teams",
-    "Analyze customer feedback and market data to shape product decisions",
-    "Develop technical understanding of observability platforms and cloud infrastructure"
-   ],
-   "roleLabel": "Product Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Software Engineering",
-   "keySkills": [
-    "technical communication",
-    "cross-functional collaboration"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1787230910000,
-   "firstSeenAt": 1787497052303,
-   "lastSeenAt": 1788294835618,
-   "url": "https://careers.datadoghq.com/detail/8108241/?gh_jid=8108241",
-   "applyUrl": "https://careers.datadoghq.com/detail/8108241/?gh_jid=8108241",
-   "description": null,
-   "roleFingerprint": "b8fe3e853c",
-   "cardFacts": [
-    "$100,000 / year",
-    "New York"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:greenhouse:epicgames:6147154004",
    "title": "Tech Art Intern",
    "company": "Epic Games",
@@ -56558,58 +55025,6 @@
    "roleFingerprint": "2c7c5e5b17",
    "cardFacts": [
     "Sunnyvale"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:databricks:7586263002",
-   "title": "Associate Product Manager, New Grad (2027 Start)",
-   "company": "Databricks",
-   "matchedWatchlist": "Databricks",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/databricks.png",
-   "location": "Bellevue, Washington; Mountain View, California; San Francisco, California",
-   "workplaceType": null,
-   "stipend": "$1,33,000 – $1,50,000",
-   "duration": "Fall 2026",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "spring",
-    "rails",
-    "machine learning",
-    "excel"
-   ],
-   "summary": "This internship involves working closely with engineers to develop and launch features on Databricks' data platform. You'll use SQL and Python to test solutions with customers and collaborate with cross-functional teams. Ideal for students with technical skills and a passion for data-driven product development.",
-   "bullets": [
-    "Work with engineers to ship features on Databricks platform",
-    "Use SQL and Python to prototype and test customer solutions",
-    "Collaborate with cross-functional teams to design and launch products"
-   ],
-   "roleLabel": "Product development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer science",
-   "keySkills": [
-    "sql",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787073427000,
-   "firstSeenAt": 1787502634822,
-   "lastSeenAt": 1788294830167,
-   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
-   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
-   "description": null,
-   "roleFingerprint": "53e0c1611b",
-   "cardFacts": [
-    "$133,000 – $150,000",
-    "Bellevue",
-    "Fall 2026"
    ],
    "region": "US"
   },
@@ -60099,95 +58514,6 @@
    "region": "US"
   },
   {
-   "id": "ats:lever:palantir:9db71277-3a9a-481b-a2a3-25c3125b0e8a",
-   "title": "Product Designer, Internship - US Government",
-   "company": "Palantir",
-   "matchedWatchlist": "Palantir",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/palantir.png",
-   "location": "Palo Alto, CA",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "A World-Changing Company Palantir builds the world’s leading software for data-driven decisions and operations. By bringing the right data to the people who need it, our platforms empower our partners to develop lifesaving drugs, forecast supply chain disruptions, locate missing children, and more. The Palantir Design Team is responsible for the human experience of using our software.",
-   "bullets": [
-    "Lead design sprints and create micro-interactions for complex analytical software tasks",
-    "Advocate for UX consistency by building flexible and reusable UI components",
-    "Collaborate closely within a tight-knit product design team"
-   ],
-   "roleLabel": "Product design",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1785533737281,
-   "firstSeenAt": 1785766515835,
-   "lastSeenAt": 1788294850540,
-   "url": "https://jobs.lever.co/palantir/9db71277-3a9a-481b-a2a3-25c3125b0e8a",
-   "applyUrl": "https://jobs.lever.co/palantir/9db71277-3a9a-481b-a2a3-25c3125b0e8a",
-   "description": null,
-   "roleFingerprint": "14a79ef22b",
-   "cardFacts": [
-    "Palo Alto",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:ashby:skydio:1ec2fe3c-3fb2-4485-870d-764a3e5f5baf",
-   "title": "Hardware Product Management Intern",
-   "company": "Skydio",
-   "matchedWatchlist": "Skydio",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/skydio.png",
-   "location": "San Mateo, California, United States",
-   "workplaceType": "Remote",
-   "stipend": "$47 / hour",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "computer vision"
-   ],
-   "summary": "This internship involves defining and shaping hardware products like drones and accessories. You'll work with engineers and stakeholders to execute projects that ship. Ideal for someone interested in product management with a focus on hardware.",
-   "bullets": [
-    "Define hardware products, from drones to accessories, shaping what gets shipped",
-    "Collaborate with engineers, designers, and stakeholders to execute shipping projects",
-    "Work onsite 5 days/week at Skydio HQ in San Mateo, CA"
-   ],
-   "roleLabel": "Hardware Product Management",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "product requirement documents",
-    "product positioning"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1785521849917,
-   "firstSeenAt": 1787503474769,
-   "lastSeenAt": 1788294857336,
-   "url": "https://jobs.ashbyhq.com/skydio/1ec2fe3c-3fb2-4485-870d-764a3e5f5baf",
-   "applyUrl": "https://jobs.ashbyhq.com/skydio/1ec2fe3c-3fb2-4485-870d-764a3e5f5baf",
-   "description": null,
-   "roleFingerprint": "3eb2c8a4ed",
-   "cardFacts": [
-    "$47 / hour",
-    "San Mateo",
-    "Remote"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:smartrecruiters:westerndigital:744000140949875",
    "title": "Summer 2027 Intern - Hardware Engineering",
    "company": "Western Digital",
@@ -60637,53 +58963,6 @@
    "roleFingerprint": "68648dda68",
    "cardFacts": [
     "New York"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:ashby:skydio:ce482813-99c2-4eaa-a165-2ed201249182",
-   "title": "Product Design Engineer Intern",
-   "company": "Skydio",
-   "matchedWatchlist": "Skydio",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/skydio.png",
-   "location": "San Mateo, California, United States",
-   "workplaceType": "Remote",
-   "stipend": "$41 / hour",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing mechanical components for drones and solving engineering challenges. You'll work on real projects with global teams, using CAD tools and manufacturing processes. Ideal for students passionate about product design and hands-on problem-solving.",
-   "bullets": [
-    "Design parts for next-gen prototypes and solve complex product issues",
-    "Use 3D CAD and work with global engineering teams on real projects",
-    "Get hands-on with prototyping, testing, and manufacturing processes"
-   ],
-   "roleLabel": "Mechanical design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "3d cad",
-    "catia",
-    "dfm",
-    "manufacturing processes"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1785263229057,
-   "firstSeenAt": 1787503474765,
-   "lastSeenAt": 1788294857329,
-   "url": "https://jobs.ashbyhq.com/skydio/ce482813-99c2-4eaa-a165-2ed201249182",
-   "applyUrl": "https://jobs.ashbyhq.com/skydio/ce482813-99c2-4eaa-a165-2ed201249182",
-   "description": null,
-   "roleFingerprint": "feb973a7cc",
-   "cardFacts": [
-    "$41 / hour",
-    "San Mateo",
-    "Remote"
    ],
    "region": "US"
   },
@@ -61248,58 +59527,6 @@
    "cardFacts": [
     "$300,000 / year",
     "Chicago; New York"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:databricks:6883068002",
-   "title": "Product Management Intern (Summer 2027)",
-   "company": "Databricks",
-   "matchedWatchlist": "Databricks",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/databricks.png",
-   "location": "Bellevue, Washington; Mountain View, California; San Francisco, California",
-   "workplaceType": null,
-   "stipend": "$54 / hour",
-   "duration": "12 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "spring",
-    "rails",
-    "machine learning",
-    "excel"
-   ],
-   "summary": "As a Product Management Intern, you will join a team that works diligently to understand and solve our customers' most challenging problems. This is a 12 week paid summer internship program in either San Francisco, CA, Mountain View, CA, or Bellevue, WA. Actual compensation packages are based on several factors that are unique to each candidate, including but not limited to job-related skills, depth of experience, relevant certifications and training, and specific work location. Actual compensation packages are based on several factors that are unique to each candidate, including but not limited to job-related…",
-   "bullets": [
-    "Prototype and test early ideas with customers and engineers",
-    "Ship platform features using Python and SQL during 12 weeks",
-    "Own projects end-to-end across AI Platform and Databricks SQL"
-   ],
-   "roleLabel": "Product management",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "sql"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1784935726000,
-   "firstSeenAt": 1785766512261,
-   "lastSeenAt": 1788294830171,
-   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=6883068002",
-   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6883068002",
-   "description": null,
-   "roleFingerprint": "7dfe33a3eb",
-   "cardFacts": [
-    "$54 / hour",
-    "Bellevue",
-    "12 weeks"
    ],
    "region": "US"
   },

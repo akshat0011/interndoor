@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788295072787,
+ "generatedAt": 1788295706122,
  "region": "IN",
  "regionName": "India",
- "count": 263,
- "techCount": 263,
+ "count": 247,
+ "techCount": 247,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -12,7 +12,6 @@
   "Acko",
   "Adobe",
   "Airmeet",
-  "Amazon",
   "American Express",
   "Analog Devices",
   "AppVersal",
@@ -40,8 +39,6 @@
   "Crisil",
   "D Square Consulting Services Pvt Ltd",
   "DeHaat",
-  "Delhivery",
-  "Dentsu Creative",
   "Dun & Bradstreet",
   "Eli Lilly and Company",
   "Emeritus",
@@ -82,7 +79,6 @@
   "Jio",
   "Joveo",
   "KG CRM Solutions LLP - Zoho Authorized Partner",
-  "KYC Hub",
   "Krutrim Insights",
   "Larsen & Toubro",
   "Lexsi Labs",
@@ -102,7 +98,6 @@
   "Nuvama Group",
   "Nvidia",
   "Oceaneering",
-  "Paytm",
   "PearlThoughts",
   "Pearson",
   "Philips",
@@ -117,7 +112,6 @@
   "Russell Investments",
   "S&P Global",
   "SLB",
-  "Salesforce",
   "Sanas",
   "Seagate Technology",
   "Seclore",
@@ -128,7 +122,6 @@
   "Silicon Labs",
   "Simple Energy",
   "Sony Research India",
-  "Sprinklr",
   "State Street",
   "Stripe",
   "Tata Electronics",
@@ -140,7 +133,6 @@
   "Tower Research Capital",
   "Trellix",
   "Valeo",
-  "Volody",
   "WeWork India",
   "Wells Fargo",
   "West Pharmaceutical Services",
@@ -154,7 +146,6 @@
   "eBay",
   "eClerx",
   "pharma&",
-  "slice",
   "upGrad International",
   "upGrad School of Technology"
  ],
@@ -165,7 +156,6 @@
   "Bengaluru",
   "Bengaluru East, Karnataka, India",
   "Bengaluru, IND",
-  "Bengaluru, KA, India",
   "Bengaluru, Karnataka, India",
   "Bengaluru, Karnataka, India (On-site)",
   "Bengaluru, Onsite",
@@ -188,7 +178,6 @@
   "Hyderabad - Phoenix Aquila, India",
   "Hyderabad, Telangana, India",
   "India",
-  "India - Haryana - Gurgaon",
   "India, Bangalore",
   "India, Bengaluru",
   "India, Karnataka, Bangalore",
@@ -204,7 +193,6 @@
   "Mumbai, Maharashtra, India",
   "Mysore, Karnataka, India",
   "Navi Mumbai, Maharashtra, India",
-  "Noida, Uttar Pradesh",
   "Noida, Uttar Pradesh, India",
   "Pune City, Maharashtra, India",
   "Pune Division, Maharashtra, India",
@@ -216,54 +204,6 @@
   "gurgaon"
  ],
  "jobs": [
-  {
-   "id": "4462042134",
-   "title": "Summer 2026 Intern - Product Manager",
-   "company": "Salesforce",
-   "matchedWatchlist": "Salesforce",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/salesforce.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "0-24 months",
-   "applicants": "30 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "llm",
-    "agile"
-   ],
-   "summary": "This internship involves shaping enterprise software products through user research, market analysis, and cross-functional collaboration. Ideal for students passionate about product innovation and with experience in SaaS development. The role offers hands-on involvement in building scalable solutions for a global tech leader.",
-   "bullets": [
-    "Analyze user needs and market trends to shape product strategy",
-    "Collaborate with designers and engineers to build and refine features",
-    "Present product vision to stakeholders and ship multiple releases yearly"
-   ],
-   "roleLabel": "Product Strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "agile methodology",
-    "api experience",
-    "product vision"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "55 minutes ago",
-   "postedAt": 1788289851696,
-   "firstSeenAt": 1788293151706,
-   "lastSeenAt": 1788293151706,
-   "url": "https://www.linkedin.com/jobs/view/4462042134/",
-   "applyUrl": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Bangalore/Summer-2026-Intern---Product-Manager_JR358528?source=LinkedIn_Jobs",
-   "description": null,
-   "roleFingerprint": "88a3c50894",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
   {
    "id": "4461799312",
    "title": "Intern Masters Embedded Eng",
@@ -584,53 +524,6 @@
    "region": "IN"
   },
   {
-   "id": "4459291056",
-   "title": "Legal Tech intern (Mumbai based only)",
-   "company": "Volody",
-   "matchedWatchlist": "Volody",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/volody.jpg",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "17 applicants",
-   "easyApply": false,
-   "skills": [
-    "llm"
-   ],
-   "summary": "This internship involves working on ai-powered legal workflows, researching legal data for ai training, and analyzing contracts with automation tools. It suits students interested in legal tech and ai innovation.",
-   "bullets": [
-    "Assist in developing ai-driven legal workflows and automation tools",
-    "Work on prompt engineering for legal ai use cases",
-    "Review and analyze contracts using ai tools"
-   ],
-   "roleLabel": "Legal AI Support",
-   "degreeLevel": "UG/PG",
-   "degreeText": "LLB/BA LLB/LLM",
-   "keySkills": [
-    "prompt engineering",
-    "legal research",
-    "contract analysis"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "32 minutes ago",
-   "postedAt": 1788241562789,
-   "firstSeenAt": 1788243482796,
-   "lastSeenAt": 1788243482796,
-   "url": "https://www.linkedin.com/jobs/view/4459291056/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4459291056/",
-   "description": null,
-   "roleFingerprint": "711f00f640",
-   "cardFacts": [
-    "Mumbai",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4461564239",
    "title": "SOC Analyst (Trainee)",
    "company": "Gruve",
@@ -828,55 +721,6 @@
    "roleFingerprint": "dd30f96a3a",
    "cardFacts": [
     "Gurgaon",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4461519331",
-   "title": "Product Management Internship in Delhi",
-   "company": "FynTune Solution Private Limited",
-   "matchedWatchlist": "FynTune Solution Private Limited",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/fyntune-solution-private-limited.jpg",
-   "location": "Delhi, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile",
-    "excel"
-   ],
-   "summary": "This internship involves supporting product development by analyzing requirements, planning features, and working with cross-functional teams. It suits students interested in product strategy and digital innovation.",
-   "bullets": [
-    "Support product roadmap and feature planning",
-    "Collaborate with engineering and ux teams",
-    "Conduct market research and user testing"
-   ],
-   "roleLabel": "Product Support",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "product requirement documents",
-    "agile ceremonies",
-    "user acceptance testing",
-    "stakeholder management"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "10 minutes ago",
-   "postedAt": 1788221198774,
-   "firstSeenAt": 1788221798783,
-   "lastSeenAt": 1788221798783,
-   "url": "https://www.linkedin.com/jobs/view/4461519331/",
-   "applyUrl": "https://internshala.com/internship/detail/product-management-internship-in-delhi-at-fyntune-solution-private-limited1788169684/?utm_campaign=linkedin_d2002&utm_source=Linkedin_Partnership",
-   "description": null,
-   "roleFingerprint": "6a8cc4f9d3",
-   "cardFacts": [
-    "Delhi",
     "On-site"
    ],
    "region": "IN"
@@ -3752,53 +3596,6 @@
    "region": "IN"
   },
   {
-   "id": "ats:workday:sprinklr:wd1:careers:113312-JOB",
-   "title": "Design Intern",
-   "company": "Sprinklr",
-   "matchedWatchlist": "Sprinklr",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/sprinklr.jpg",
-   "location": "India - Haryana - Gurgaon",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "figma"
-   ],
-   "summary": "Design intern will contribute to product features and user research, working with AI tools and design systems. Ideal for those interested in creating intuitive experiences with emerging technologies.",
-   "bullets": [
-    "Support product design team on real features and user research",
-    "Work with Figma, AI tools, and agentic design practices",
-    "Collaborate with senior designers on impactful user experiences"
-   ],
-   "roleLabel": "Product Design",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "figma",
-    "ai design tools",
-    "user research",
-    "agentic design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787616000000,
-   "firstSeenAt": 1787638035171,
-   "lastSeenAt": 1787791417003,
-   "url": "https://sprinklr.wd1.myworkdayjobs.com/en-US/careers/job/India---Haryana---Gurgaon/Design-Intern_113312-JOB",
-   "applyUrl": "https://sprinklr.wd1.myworkdayjobs.com/en-US/careers/job/India---Haryana---Gurgaon/Design-Intern_113312-JOB",
-   "description": null,
-   "roleFingerprint": "28e79c8281",
-   "cardFacts": [
-    "India - Haryana - Gurgaon"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4457163439",
    "title": "Apprentice-Enterprise Technology Services",
    "company": "American Express",
@@ -3956,61 +3753,6 @@
    "cardFacts": [
     "Gurugram",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:amazon:IND:10506481",
-   "title": "SDE I Intern , Amazon University Talent Acquisition",
-   "company": "Amazon",
-   "matchedWatchlist": "Amazon",
-   "isTech": true,
-   "roleSource": "manual-url",
-   "employmentType": "intern",
-   "logo": "/logos/amazon.jpg",
-   "location": "Bengaluru, KA, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": "6 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "aws",
-    "data structures",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves building scalable systems for distributed computing, working with AWS and large-scale data technologies, and collaborating with senior engineers on mission-critical projects. It suits students with strong technical backgrounds and experience in distributed systems and algorithms.",
-   "bullets": [
-    "Design scalable systems for distributed computing environments",
-    "Work with AWS and large-scale data technologies",
-    "Collaborate with senior engineers on mission-critical projects"
-   ],
-   "roleLabel": "System Design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "distributed systems",
-    "aws",
-    "algorithms",
-    "data structures",
-    "object-oriented design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787588166966,
-   "firstSeenAt": 1787588166966,
-   "lastSeenAt": 1787588166966,
-   "url": "https://www.amazon.jobs/en-gb/jobs/10506481/sde-i-intern-amazon-university-talent-acquisition",
-   "applyUrl": "https://www.amazon.jobs/en-gb/jobs/10506481/sde-i-intern-amazon-university-talent-acquisition",
-   "description": null,
-   "roleFingerprint": "32c9296546",
-   "cardFacts": [
-    "Bengaluru",
-    "6 months"
    ],
    "region": "IN"
   },
@@ -4437,56 +4179,6 @@
     "Bengaluru",
     "On-site",
     "3–6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4456845947",
-   "title": "Product Design Intern",
-   "company": "GreedyGame",
-   "matchedWatchlist": "GreedyGame",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/greedygame.jpg",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "3-6 months",
-   "applicants": "63 applicants",
-   "easyApply": false,
-   "skills": [
-    "figma"
-   ],
-   "summary": "As a product design intern, you'll shape features for Pubscale, a tool that helps apps and games grow and monetize. You'll design interfaces, collaborate with developers, and create solutions that improve user experience and business outcomes. This role suits designers passionate about solving real problems through thoughtful design.",
-   "bullets": [
-    "Design user interfaces for mobile apps and dashboards",
-    "Work with developers to implement design solutions",
-    "Contribute to product features with real user impact"
-   ],
-   "roleLabel": "Product design",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "figma",
-    "photoshop",
-    "illustrator",
-    "html/css",
-    "after effects"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1787551894078,
-   "firstSeenAt": 1787555494084,
-   "lastSeenAt": 1787555494084,
-   "url": "https://www.linkedin.com/jobs/view/4456845947/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4456845947/",
-   "description": null,
-   "roleFingerprint": "c4f52c9064",
-   "cardFacts": [
-    "Bangalore Urban",
-    "On-site",
-    "3-6 months"
    ],
    "region": "IN"
   },
@@ -5337,55 +5029,6 @@
    "roleFingerprint": "242ae0126a",
    "cardFacts": [
     "Chennai",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4456223026",
-   "title": "Product Designer Intern",
-   "company": "GreedyGame",
-   "matchedWatchlist": "GreedyGame",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/greedygame.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "2 applicants",
-   "easyApply": false,
-   "skills": [
-    "figma"
-   ],
-   "summary": "As a product designer intern, you’ll shape user experiences for apps and platforms used by millions. You’ll design features, create mockups, and work with developers to bring ideas to life. Ideal for someone passionate about UI/UX and eager to contribute to real products with global impact.",
-   "bullets": [
-    "Design mobile apps, websites, and dashboards from concept to handoff",
-    "Use Figma for prototyping and collaborate with developers",
-    "Work on products used by 100M+ daily users in India and globally"
-   ],
-   "roleLabel": "Product Design",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "figma",
-    "ux",
-    "ui",
-    "motion",
-    "design"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "8 minutes ago",
-   "postedAt": 1787304745846,
-   "firstSeenAt": 1787305225854,
-   "lastSeenAt": 1787305225854,
-   "url": "https://www.linkedin.com/jobs/view/4456223026/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4456223026/",
-   "description": null,
-   "roleFingerprint": "544d92e98d",
-   "cardFacts": [
-    "Bengaluru",
     "On-site"
    ],
    "region": "IN"
@@ -6593,52 +6236,6 @@
    "region": "IN"
   },
   {
-   "id": "4454993775",
-   "title": "Graduate Trainee - Video Editor & Motion Graphics",
-   "company": "Dentsu Creative",
-   "matchedWatchlist": "dentsu",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/dentsu-creative.jpg",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "1 applicant",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on experience in video editing and motion graphics, working on real brand campaigns. Ideal for students with a background in animation or design, you'll learn from industry pros and contribute to creative projects. The role requires Adobe skills and a portfolio, with a clear path to a full-time position.",
-   "bullets": [
-    "Edit social media videos using Adobe Premiere Pro",
-    "Create motion graphics and text animations in After Effects",
-    "Work on live brand campaigns with creative teams"
-   ],
-   "roleLabel": "Video Editor",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "adobe premiere pro",
-    "after effects",
-    "motion graphics",
-    "video editing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 hours ago",
-   "postedAt": 1787145267886,
-   "firstSeenAt": 1787152467894,
-   "lastSeenAt": 1787152467894,
-   "url": "https://www.linkedin.com/jobs/view/4454993775/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4454993775/",
-   "description": null,
-   "roleFingerprint": "8fbe6c5dd4",
-   "cardFacts": [
-    "Mumbai",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4454970922",
    "title": "Apprentice - Data Analytics",
    "company": "American Express",
@@ -7097,50 +6694,6 @@
    "region": "IN"
   },
   {
-   "id": "4455706866",
-   "title": "Product Manager Intern",
-   "company": "slice",
-   "matchedWatchlist": "Slice",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/slice.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "15 applicants",
-   "easyApply": true,
-   "skills": [],
-   "summary": "This internship involves working closely with product teams to understand user needs and develop solutions for digital payment challenges. Ideal for students passionate about fintech and product management, the role offers hands-on experience in shaping impactful tech products for young Indians.",
-   "bullets": [
-    "Analyze user needs and partner requirements to shape product solutions",
-    "Collaborate with cross-functional teams to execute product strategies",
-    "Contribute to iterative improvements and roadmap prioritization"
-   ],
-   "roleLabel": "Product Strategy",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "user research",
-    "product roadmap"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1787052630735,
-   "firstSeenAt": 1787053170744,
-   "lastSeenAt": 1787053170744,
-   "url": "https://www.linkedin.com/jobs/view/4455706866/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4455706866/",
-   "description": null,
-   "roleFingerprint": "3f5c5995a8",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4454490931",
    "title": "Wind Turbine Loads Engineer Project Intern",
    "company": "Siemens Gamesa",
@@ -7484,59 +7037,6 @@
     "Bengaluru",
     "On-site",
     "3 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4455587484",
-   "title": "AI-Native Product Manager – Graduate Trainee (2026 Passouts)",
-   "company": "Zycus",
-   "matchedWatchlist": "Zycus",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/zycus.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": "2,026",
-   "duration": null,
-   "applicants": "4 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "llm",
-    "figma",
-    "excel"
-   ],
-   "summary": "This internship involves using AI tools to support product research and documentation, collaborating with senior product managers, and contributing to feature development. It suits students with a background in engineering or computer science who are interested in AI-driven product management and enterprise software.",
-   "bullets": [
-    "Use AI tools for market research, competitive analysis, and user research synthesis",
-    "Collaborate with senior product managers on AI-assisted workflows and requirements",
-    "Ship features end-to-end with engineering, design, and QA teams",
-    "Track product metrics and translate data into actionable insights"
-   ],
-   "roleLabel": "AI Product Management",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ai tools",
-    "product management tools",
-    "rest apis",
-    "sql",
-    "llms"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "8 minutes ago",
-   "postedAt": 1787036493548,
-   "firstSeenAt": 1787036973553,
-   "lastSeenAt": 1787036973553,
-   "url": "https://www.linkedin.com/jobs/view/4455587484/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4455587484/",
-   "description": null,
-   "roleFingerprint": "ad846d78b9",
-   "cardFacts": [
-    "Bengaluru",
-    "Hybrid"
    ],
    "region": "IN"
   },
@@ -9526,55 +9026,6 @@
    "region": "IN"
   },
   {
-   "id": "ats:lever:paytm:5648edd6-b73b-4156-96f5-343f4d851610",
-   "title": "Product Management - Intern - Telco.",
-   "company": "Paytm",
-   "matchedWatchlist": "Paytm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/paytm.png",
-   "location": "Noida, Uttar Pradesh",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "figma",
-    "excel"
-   ],
-   "summary": "This product management internship involves supporting the development of Paytm's SuperApp and digital platforms. The intern will assist with product documentation, market research, and cross-functional coordination. Ideal for students interested in digital product lifecycle and user experience.",
-   "bullets": [
-    "Support product planning, documentation, and user journey analysis",
-    "Use Jira, Confluence, Excel, and Figma for coordination and reporting",
-    "Work on SuperApp initiatives and digital experience improvements"
-   ],
-   "roleLabel": "Product Support",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "confluence",
-    "excel",
-    "figma"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1786447699381,
-   "firstSeenAt": 1786453322936,
-   "lastSeenAt": 1788294853807,
-   "url": "https://jobs.lever.co/paytm/5648edd6-b73b-4156-96f5-343f4d851610",
-   "applyUrl": "https://jobs.lever.co/paytm/5648edd6-b73b-4156-96f5-343f4d851610",
-   "description": null,
-   "roleFingerprint": "921a49811d",
-   "cardFacts": [
-    "Noida",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4448864563",
    "title": "Apprentice",
    "company": "AtkinsRéalis",
@@ -10450,50 +9901,6 @@
    "region": "IN"
   },
   {
-   "id": "ats:lever:paytm:c98325df-98c4-4966-8630-4ceaa7e55909",
-   "title": "Product Management Intern- Paytm Gold",
-   "company": "Paytm",
-   "matchedWatchlist": "Paytm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/paytm.png",
-   "location": "Noida, Uttar Pradesh",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting the development of a digital gold platform, assisting with market research, and working with cross-functional teams to enhance product strategies. It suits students interested in product management and financial technology.",
-   "bullets": [
-    "Support product strategy for digital gold platform",
-    "Assist with market research and competitive analysis",
-    "Collaborate with cross-functional teams on initiatives"
-   ],
-   "roleLabel": "Product Strategy",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "market research",
-    "competitive analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1786361105728,
-   "firstSeenAt": 1787814314664,
-   "lastSeenAt": 1788192921018,
-   "url": "https://jobs.lever.co/paytm/c98325df-98c4-4966-8630-4ceaa7e55909",
-   "applyUrl": "https://jobs.lever.co/paytm/c98325df-98c4-4966-8630-4ceaa7e55909",
-   "description": null,
-   "roleFingerprint": "db1f7bb420",
-   "cardFacts": [
-    "Noida",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4451130333",
    "title": "Project Management Intern",
    "company": "Convin",
@@ -10794,52 +10201,6 @@
    "cardFacts": [
     "Kanchipuram",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4449546075",
-   "title": "Product Management Intern",
-   "company": "KYC Hub",
-   "matchedWatchlist": "KYC Hub",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/kyc-hub.jpg",
-   "location": "India",
-   "workplaceType": "Remote",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This product management internship involves shaping KYC Hub's product roadmap by analyzing user needs, creating feature specs, and supporting sales. Ideal for students with product experience and strong communication skills.",
-   "bullets": [
-    "Gather user research, analyze competitors, and review market trends",
-    "Write product specs, wireframes, and briefs for new features",
-    "Support sales demos and customer documentation",
-    "Work with engineering, design, and marketing teams"
-   ],
-   "roleLabel": "Product management",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "user research",
-    "product specs",
-    "wireframes"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "1 day ago",
-   "postedAt": 1786349302846,
-   "firstSeenAt": 1786435702850,
-   "lastSeenAt": 1786435702850,
-   "url": "https://www.linkedin.com/jobs/view/4449546075/",
-   "applyUrl": "https://forms.gle/Uxf6hFzn7Tk4H7gk9",
-   "description": null,
-   "roleFingerprint": "dd37bf12bb",
-   "cardFacts": [
-    "India",
-    "Remote"
    ],
    "region": "IN"
   },
@@ -12707,53 +12068,6 @@
    "region": "IN"
   },
   {
-   "id": "4445893504",
-   "title": "Product Management Intern",
-   "company": "Delhivery",
-   "matchedWatchlist": "Delhivery",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/delhivery.jpg",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "3 to 6 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "Job Title: Intern, Product Management Location:Gurgaon[5 days On-site role] Duration: 3 to 6 months Role and Responsibilities:",
-   "bullets": [
-    "Support the end-to-end product lifecycle from ideation to launch",
-    "Conduct market research and competitor analysis to guide product strategy",
-    "Analyze user feedback and metrics to define requirements and user stories",
-    "Collaborate with design, engineering, and marketing across a 3 to 6 month duration"
-   ],
-   "roleLabel": "Product management",
-   "degreeLevel": "Pursuing",
-   "degreeText": null,
-   "keySkills": [
-    "market research",
-    "product strategy",
-    "user stories"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "5 minutes ago",
-   "postedAt": 1785754573774,
-   "firstSeenAt": 1785754873780,
-   "lastSeenAt": 1785764916981,
-   "url": "https://www.linkedin.com/jobs/view/4445893504/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4445893504/",
-   "description": null,
-   "roleFingerprint": "8c8dd840ff",
-   "cardFacts": [
-    "Gurugram",
-    "On-site",
-    "3 to 6 months"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4445890480",
    "title": "Trainee Analyst",
    "company": "HDFC Bank Limited",
@@ -13065,57 +12379,6 @@
    "region": "IN"
   },
   {
-   "id": "ats:lever:paytm:1155c0e3-bf03-4b46-97f0-44673b6518f7",
-   "title": "Product Management - Intern",
-   "company": "Paytm",
-   "matchedWatchlist": "Paytm",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/paytm.png",
-   "location": "Noida, Uttar Pradesh",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "figma",
-    "excel"
-   ],
-   "summary": "Title: Product Management Intern About Paytm Group: Paytm is India's leading mobile payments and financial services distribution company. We are looking for enthusiastic Product Interns to join our Product & Integrations team and support the execution of key SuperApp and digital experience initiatives.",
-   "bullets": [
-    "Support product planning and execution for SuperApp and digital experience initiatives",
-    "Assist in preparing PRDs, user stories, and flowcharts, and conduct market research",
-    "Coordinate with design and engineering teams, and support sprint planning and QA",
-    "Familiarity with Jira, Confluence, Excel/Sheets, or Figma is a plus"
-   ],
-   "roleLabel": "Product Management",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "confluence",
-    "excel",
-    "sheets",
-    "figma"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1784712797247,
-   "firstSeenAt": 1785541862136,
-   "lastSeenAt": 1788158717653,
-   "url": "https://jobs.lever.co/paytm/1155c0e3-bf03-4b46-97f0-44673b6518f7",
-   "applyUrl": "https://jobs.lever.co/paytm/1155c0e3-bf03-4b46-97f0-44673b6518f7",
-   "description": null,
-   "roleFingerprint": "921a49811d",
-   "cardFacts": [
-    "Noida",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "ats:greenhouse:cloudsek:6115382004",
    "title": "Security Consultant Intern",
    "company": "CloudSEK",
@@ -13348,55 +12611,6 @@
    "roleFingerprint": "74917f12cc",
    "cardFacts": [
     "Bengaluru"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:lever:paytm:4a97658f-ac6f-4a86-b483-ae50dd5c7a46",
-   "title": "Product Management Intern- Insurance",
-   "company": "Paytm",
-   "matchedWatchlist": "Paytm",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/paytm.png",
-   "location": "Noida, Uttar Pradesh",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "figma"
-   ],
-   "summary": "About Paytm Group: Paytm is India's leading mobile payments and financial services distribution company. Pioneer of the mobile QR payments revolution in India, Paytm builds technologies that help small businesses with payments and commerce. Assist product managers in defining product roadmaps, requirements, and user stories.",
-   "bullets": [
-    "Define product roadmaps, requirements, and user stories for insurance products",
-    "Analyze user behavior and product metrics to optimize user journeys",
-    "Collaborate with tech and design teams during feature development"
-   ],
-   "roleLabel": "Product management",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "jira",
-    "figma",
-    "notion",
-    "google analytics",
-    "mixpanel"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1781882794732,
-   "firstSeenAt": 1785940216956,
-   "lastSeenAt": 1788294853809,
-   "url": "https://jobs.lever.co/paytm/4a97658f-ac6f-4a86-b483-ae50dd5c7a46",
-   "applyUrl": "https://jobs.lever.co/paytm/4a97658f-ac6f-4a86-b483-ae50dd5c7a46",
-   "description": null,
-   "roleFingerprint": "b3de4230f4",
-   "cardFacts": [
-    "Noida",
-    "On-site"
    ],
    "region": "IN"
   }
