@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788262958965,
+ "generatedAt": 1788264506203,
  "region": "IN",
  "regionName": "India",
  "count": 260,
@@ -215,6 +215,58 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4459511244",
+   "title": "Intern",
+   "company": "HARMAN India",
+   "matchedWatchlist": "Harman",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/harman-india.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "70 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    ".net",
+    "linux"
+   ],
+   "summary": "This internship involves writing automated test scripts for embedded software, working with engineers to debug issues, and setting up test environments. It suits students with a technical background in computer science or electronics who are eager to learn and contribute to software quality assurance.",
+   "bullets": [
+    "Write and maintain test scripts for embedded software using Python",
+    "Collaborate with engineers to debug and improve software quality",
+    "Set up Linux-based test environments and automation frameworks"
+   ],
+   "roleLabel": "Software Testing",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "embedded c",
+    "linux",
+    "test automation"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "51 minutes ago",
+   "postedAt": 1788260015042,
+   "firstSeenAt": 1788263075046,
+   "lastSeenAt": 1788263075046,
+   "url": "https://www.linkedin.com/jobs/view/4459511244/",
+   "applyUrl": "https://jobsearch.harman.com/careers/searchjobs/R-55246-2026?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "951ad574a5",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "region": "IN"
+  },
   {
    "id": "4459289674",
    "title": "Information Technology Intern",
@@ -796,57 +848,6 @@
    "cardFacts": [
     "Bengaluru",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4458884978",
-   "title": "Intern",
-   "company": "HARMAN India",
-   "matchedWatchlist": "Harman",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/harman-india.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "java",
-    "c++",
-    ".net",
-    "linux"
-   ],
-   "summary": "This internship involves developing software for embedded systems and automotive technologies. Ideal for students with a technical background in computer science or electronics, the role offers hands-on experience with C/C++, Linux, and Android. The intern will work on complex software systems and contribute to cutting-edge automotive projects.",
-   "bullets": [
-    "Work on embedded systems, Android, and Linux software development",
-    "Collaborate on complex software stacks with niche technical skills",
-    "Work from office in a fast-paced team on automotive tech projects"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "c++",
-    "c",
-    "linux",
-    "android"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "1 hour ago",
-   "postedAt": 1788176901402,
-   "firstSeenAt": 1788180501405,
-   "lastSeenAt": 1788180501405,
-   "url": "https://www.linkedin.com/jobs/view/4458884978/",
-   "applyUrl": "https://jobsearch.harman.com/careers/searchjobs/R-52777-2026?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "38f3b6aecd",
-   "cardFacts": [
-    "Bengaluru",
-    "Hybrid"
    ],
    "region": "IN"
   },
