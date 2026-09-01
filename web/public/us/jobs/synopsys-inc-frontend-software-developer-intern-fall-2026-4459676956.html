@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Frontend Software Developer Intern - Fall 2026","description":"\u003cp>3d visualization development\u003c/p>\u003cul>\u003cli>Integrate 3d visualization viewer into simulation platform\u003c/li>\u003cli>Work with python javascript and git in collaborative team\u003c/li>\u003cli>Collaborate on data processing for automated report generation\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Synopsys Inc","value":"4459676956"},"datePosted":"2026-08-27T10:22:38.132Z","validThrough":"2026-09-26T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Synopsys Inc","logo":"https://interndoor.com/logos/synopsys-inc.jpg"},"directApply":false,"url":"https://interndoor.com/us/jobs/synopsys-inc-frontend-software-developer-intern-fall-2026-4459676956","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"United States","addressCountry":"US"}},"jobLocationType":"TELECOMMUTE","applicantLocationRequirements":{"@type":"Country","name":"United States"}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -159,6 +160,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://www.linkedin.com/jobs/view/4459676956/" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens LinkedIn in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="4459676956" data-company="Synopsys Inc"
+               data-title="Frontend Software Developer Intern - Fall 2026" data-location="United States"
+               data-url="https://www.linkedin.com/jobs/view/4459676956/" data-applyurl="https://www.linkedin.com/jobs/view/4459676956/"
+               data-slug="synopsys-inc-frontend-software-developer-intern-fall-2026-4459676956" data-region="US"
+               data-path="/us"
+               data-apps="/us/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>United States</dd></div>
             <div><dt>Mode</dt><dd>Remote</dd></div>
@@ -242,7 +264,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

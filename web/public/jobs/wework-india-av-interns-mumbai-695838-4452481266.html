@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"AV Interns - Mumbai (695838)","description":"\u003cp>AV Support\u003c/p>\u003cul>\u003cli>Troubleshoot and maintain AV equipment for video conferencing systems\u003c/li>\u003cli>Manage inventory and documentation using Gdoc and ticketing systems\u003c/li>\u003cli>Collaborate with teams and vendors for break-fix issues and walkthroughs\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"WeWork India","value":"4452481266"},"datePosted":"2026-08-11T15:12:01.436Z","validThrough":"2026-09-11T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"WeWork India","logo":"https://interndoor.com/logos/wework-india.jpg"},"directApply":false,"url":"https://interndoor.com/jobs/wework-india-av-interns-mumbai-695838-4452481266","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Mumbai, Maharashtra, India","addressCountry":"IN"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -159,6 +160,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://weworkindia.hire.trakstar.com/jobs/fk0zxdx/" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens the company's site in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="4452481266" data-company="WeWork India"
+               data-title="AV Interns - Mumbai (695838)" data-location="Mumbai, Maharashtra, India"
+               data-url="https://www.linkedin.com/jobs/view/4452481266/" data-applyurl="https://weworkindia.hire.trakstar.com/jobs/fk0zxdx/"
+               data-slug="wework-india-av-interns-mumbai-695838-4452481266" data-region="IN"
+               data-path=""
+               data-apps="/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>Mumbai, Maharashtra, India</dd></div>
             <div><dt>Focus</dt><dd>AV Support</dd></div>
@@ -229,7 +251,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

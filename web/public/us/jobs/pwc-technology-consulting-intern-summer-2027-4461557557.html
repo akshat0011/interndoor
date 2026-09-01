@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Technology Consulting - Intern - Summer 2027","description":"\u003cp>Technology Support\u003c/p>\u003cul>\u003cli>Support teams with client projects and tech implementations\u003c/li>\u003cli>Use tools like Jira and Confluence for project management\u003c/li>\u003cli>Work on enterprise integration and software development tasks\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"PwC","value":"4461557557"},"datePosted":"2026-09-01T06:26:11.499Z","validThrough":"2026-10-01T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"PwC","logo":"https://interndoor.com/logos/pwc.jpg"},"directApply":false,"url":"https://interndoor.com/us/jobs/pwc-technology-consulting-intern-summer-2027-4461557557","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Minneapolis, MN","addressCountry":"US"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -159,6 +160,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS731509WDEXTERNALENUS/Technology-Consulting-Intern-Summer-2027?utm_source=linkedin&amp;utm_medium=phenom-feeds&amp;utm_campaign=core_media&amp;utm_medium=social_media&amp;utm_content=job_posting&amp;ss=paid" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens the company's site in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="4461557557" data-company="PwC"
+               data-title="Technology Consulting - Intern - Summer 2027" data-location="Minneapolis, MN"
+               data-url="https://www.linkedin.com/jobs/view/4461557557/" data-applyurl="https://ad.doubleclick.net/ddm/clk/438405794;254302458;m?https://jobs-us.pwc.com/us/en/job/PUVPUIUS731509WDEXTERNALENUS/Technology-Consulting-Intern-Summer-2027?utm_source=linkedin&amp;utm_medium=phenom-feeds&amp;utm_campaign=core_media&amp;utm_medium=social_media&amp;utm_content=job_posting&amp;ss=paid"
+               data-slug="pwc-technology-consulting-intern-summer-2027-4461557557" data-region="US"
+               data-path="/us"
+               data-apps="/us/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>Minneapolis, MN</dd></div>
             <div><dt>Mode</dt><dd>On-site</dd></div>
@@ -267,7 +289,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

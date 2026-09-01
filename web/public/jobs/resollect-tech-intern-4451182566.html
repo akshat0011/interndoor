@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Tech Intern","description":"\u003cp>Feature Development\u003c/p>\u003cul>\u003cli>Build and ship features across stack, backend, frontend, or AI integration\u003c/li>\u003cli>Work with AI/LLM APIs, debug live product issues, and write technical docs\u003c/li>\u003cli>6-month paid internship with potential full-time conversion for 2026/27 grads\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Resollect","value":"4451182566"},"datePosted":"2026-08-10T14:06:29.911Z","validThrough":"2026-09-10T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Resollect","logo":"https://interndoor.com/logos/resollect.jpg"},"directApply":false,"url":"https://interndoor.com/jobs/resollect-tech-intern-4451182566","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Mumbai, Maharashtra, India","addressCountry":"IN"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -156,6 +157,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://www.linkedin.com/jobs/view/4451182566/" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens LinkedIn in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="4451182566" data-company="Resollect"
+               data-title="Tech Intern" data-location="Mumbai, Maharashtra, India"
+               data-url="https://www.linkedin.com/jobs/view/4451182566/" data-applyurl="https://www.linkedin.com/jobs/view/4451182566/"
+               data-slug="resollect-tech-intern-4451182566" data-region="IN"
+               data-path=""
+               data-apps="/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>Mumbai, Maharashtra, India</dd></div>
             <div><dt>Mode</dt><dd>On-site</dd></div>
@@ -227,7 +249,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

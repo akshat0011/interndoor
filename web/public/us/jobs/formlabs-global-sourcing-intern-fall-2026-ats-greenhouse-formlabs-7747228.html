@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Global Sourcing Intern (Fall 2026)","description":"\u003cp>Global Sourcing\u003c/p>\u003cul>\u003cli>Research and evaluate global suppliers for cost, quality, and reliability\u003c/li>\u003cli>Support supply chain planning for new product launches\u003c/li>\u003cli>Analyze market trends to inform sourcing decisions\u003c/li>\u003cli>Collaborate with engineering teams to improve material sourcing\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Formlabs","value":"ats:greenhouse:formlabs:7747228"},"datePosted":"2026-07-20T14:58:46.000Z","validThrough":"2026-09-26T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Formlabs","logo":"https://interndoor.com/logos/formlabs.png"},"directApply":false,"url":"https://interndoor.com/us/jobs/formlabs-global-sourcing-intern-fall-2026-ats-greenhouse-formlabs-7747228","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Somerville, MA","addressCountry":"US"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -159,6 +160,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://careers.formlabs.com/job/7747228/apply/?gh_jid=7747228" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens the company's site in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="ats:greenhouse:formlabs:7747228" data-company="Formlabs"
+               data-title="Global Sourcing Intern (Fall 2026)" data-location="Somerville, MA"
+               data-url="https://careers.formlabs.com/job/7747228/apply/?gh_jid=7747228" data-applyurl="https://careers.formlabs.com/job/7747228/apply/?gh_jid=7747228"
+               data-slug="formlabs-global-sourcing-intern-fall-2026-ats-greenhouse-formlabs-7747228" data-region="US"
+               data-path="/us"
+               data-apps="/us/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>Somerville, MA</dd></div>
             <div><dt>Focus</dt><dd>Global Sourcing</dd></div>
@@ -260,7 +282,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

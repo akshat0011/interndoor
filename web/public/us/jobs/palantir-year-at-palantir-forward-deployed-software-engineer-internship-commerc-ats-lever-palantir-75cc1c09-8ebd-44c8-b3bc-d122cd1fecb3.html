@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/page.css">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"JobPosting","title":"Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial","description":"\u003cp>Software engineering\u003c/p>\u003cul>\u003cli>Build software for customer projects using ai and data tools\u003c/li>\u003cli>Work with engineers and customers on real-world problems\u003c/li>\u003cli>Join a team shaping future of data-driven operations\u003c/li>\u003c/ul>","identifier":{"@type":"PropertyValue","name":"Palantir","value":"ats:lever:palantir:75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3"},"datePosted":"2026-06-24T19:13:14.474Z","validThrough":"2026-10-01T23:59:59.000Z","employmentType":"INTERN","hiringOrganization":{"@type":"Organization","name":"Palantir","logo":"https://interndoor.com/logos/palantir.png"},"directApply":false,"url":"https://interndoor.com/us/jobs/palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3","jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Chicago, IL","addressCountry":"US"}}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
@@ -156,6 +157,27 @@
             <span class="apply-glow"><a class="btn-apply" href="https://jobs.lever.co/palantir/75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a></span>
             <p class="jp-card-note">Opens the company's site in a new tab. Free — we never ask for a fee.</p>
           </div>
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="ats:lever:palantir:75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3" data-company="Palantir"
+               data-title="Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial" data-location="Chicago, IL"
+               data-url="https://jobs.lever.co/palantir/75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3" data-applyurl="https://jobs.lever.co/palantir/75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3"
+               data-slug="palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3" data-region="US"
+               data-path="/us"
+               data-apps="/us/applications"></div>
           <dl class="facts">
             <div><dt>Location</dt><dd>Chicago, IL</dd></div>
             <div><dt>Mode</dt><dd>On-site</dd></div>
@@ -262,7 +284,7 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/feed.xml">RSS</a></p>
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

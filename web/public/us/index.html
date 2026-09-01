@@ -89,7 +89,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=9">
+<link rel="stylesheet" href="/styles.css?v=10">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -252,6 +252,15 @@
            same feature. -->
       <div class="flags">
         <button class="flag flag-rank" id="rank-resume" type="button">rank by my resume</button>
+        <!-- The application tracker. A real link, server-rendered and always
+             visible, so a reader whose script never arrives still reaches it —
+             app.js only fills the count, and only when there is one. It sits
+             with "rank by my resume" because both are personal tools that act
+             on the whole board rather than filters that narrow it.
+             The href is bare on purpose: /applications is in REGION_LINKS, so
+             localiseLinks rewrites it to /us/applications and /uk/applications
+             when this template is written out for those boards. -->
+        <a class="flag flag-apps" id="my-apps" href="/us/applications">my applications <b></b></a>
         <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
       </div>
     </div>
@@ -1513,6 +1522,11 @@
 
 <div class="snack" id="toast" role="status" aria-live="polite" hidden></div>
 
+<!-- The tracker's store, shared with every generated page. A classic deferred
+     script rather than a module because page.js is classic too and both need
+     it; classic defer scripts and modules run in document order, so this has
+     executed before app.js reads window.IDTrack. -->
+<script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script src="/app.js" type="module"></script>
 </body>

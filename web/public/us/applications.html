@@ -81,13 +81,13 @@
     <div class="trk-tabs" id="trk-tabs" role="group" aria-label="Filter by status" hidden></div>
 
     <div class="trk-scroll">
-      <table class="trk" id="trk-table" hidden>
+      <table class="trk" id="trk-table" role="table" hidden>
         <thead>
-          <tr>
-            <th scope="col">Role</th>
-            <th scope="col">Status</th>
-            <th scope="col" class="trk-c-date">Applied</th>
-            <th scope="col"><span class="vh">Actions</span></th>
+          <tr role="row">
+            <th scope="col" role="columnheader">Role</th>
+            <th scope="col" role="columnheader">Status</th>
+            <th scope="col" role="columnheader" class="trk-c-date">Applied</th>
+            <th scope="col" role="columnheader"><span class="vh">Actions</span></th>
           </tr>
         </thead>
         <tbody id="trk-body"></tbody>
