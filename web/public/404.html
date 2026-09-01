@@ -14,28 +14,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<style>
-  .nf { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; }
-  .nf-code { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .16em;
-             text-transform: uppercase; color: var(--live); margin-bottom: 18px; }
-  .nf h1 { font-family: var(--display); font-weight: 900; letter-spacing: -.035em;
-           line-height: 1.02; font-size: clamp(38px, 7vw, 68px); margin: 0 0 18px; }
-  .nf p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 56ch; margin: 0 0 30px; }
-  .nf-acts { display: flex; flex-wrap: wrap; gap: 12px; }
-  /* The primary is the board, because a wrong URL on a job board almost always
-     means a posting that expired — job pages are deleted at 30 days by design,
-     so this is the ORDINARY way a link here goes stale, not an error. */
-  .nf-go { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
-           border-radius: 10px; background: var(--live); color: #0a0a0b;
-           font-weight: 700; font-size: 15px; text-decoration: none; }
-  .nf-alt { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
-            border-radius: 10px; border: 1px solid var(--rule-2); color: var(--ink);
-            font-weight: 600; font-size: 15px; text-decoration: none; }
-  @media (hover: hover) and (pointer: fine) {
-    .nf-go:hover { filter: brightness(1.06); }
-    .nf-alt:hover { border-color: var(--live); color: var(--live); }
-  }
-</style>
 </head>
 <body class="board-page">
 
