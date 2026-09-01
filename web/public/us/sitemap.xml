@@ -20,11 +20,11 @@
   <url><loc>https://interndoor.com/us/skills/c-sharp</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/data-structures</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/git</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/matlab</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/aws</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/power-bi</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/azure</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kubernetes</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/matlab</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/ci-cd</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/generative-ai</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/react</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -34,10 +34,10 @@
   <url><loc>https://interndoor.com/us/skills/pytorch</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/typescript</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/llm</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/system-design</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/computer-vision</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rust</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/net</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/system-design</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/angular</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/gcp</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/tensorflow</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -89,6 +89,41 @@
   <url><loc>https://interndoor.com/us/locations/mountain-view</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/rochester</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459521896</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/amd-2027-undergrad-compiler-engineering-intern-co-op-4459533279</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/amd-2027-masters-compiler-engineering-intern-co-op-4459533280</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-applications-engineering-4459521817</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-applications-engineering-4459535162</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-system-controls-engineer-4459535163</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459536173</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-digital-integrated-solutions-engineer-4459539102</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459525444</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459541073</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459520859</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459528296</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459541080</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459533221</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459521818</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-applications-engineering-4459530241</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459535171</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459527421</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-early-career-internship-program-engineering-technology-power-electroni-4459531209</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459521808</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-early-career-internship-program-engineering-technology-power-electroni-4459536184</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-switchgear-modernization-engineer-4459527422</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-digital-integrated-solutions-engineer-4459532192</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-digital-integrated-solutions-engineer-4459523751</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459539113</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459527423</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459533214</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459542067</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-systems-engineer-4459531213</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-digital-integrated-solutions-engineer-4459520855</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459531216</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-field-service-engineer-4459521811</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-internship-program-power-system-controls-engineer-4459534187</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/eaton-early-career-internship-program-engineering-technology-embedded-system-4459532197</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-information-technology-summer-2027-4452038634</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/figma-software-engineer-intern-winter-2027-4451438461</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/hermeus-propulsion-engineer-intern-fall-2026-4461755106</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-rda-metrology-process-shift-engineer-td-4460273909</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
@@ -1028,7 +1063,6 @@
   <url><loc>https://interndoor.com/us/jobs/anduril-industries-2027-early-career-manufacturing-engineer-ats-greenhouse-andurilindustries-5136970007</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/anduril-industries-2027-manufacturing-engineer-intern-ats-greenhouse-andurilindustries-5153218007</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/notion-data-science-intern-winter-2027-ats-ashby-notion-a67d6f2b-7c13-41d0-b36b-b2f662c9873e</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/figma-software-engineer-intern-winter-2027-ats-greenhouse-figma-6131089004</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/anduril-industries-2027-software-engineer-intern-ats-greenhouse-andurilindustries-5148079007</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/anduril-industries-2027-early-career-software-engineer-ats-greenhouse-andurilindustries-5162263007</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/spacex-new-graduate-engineer-software-application-software-ats-greenhouse-spacex-8730567002</loc><lastmod>2026-08-19</lastmod><priority>0.8</priority></url>
@@ -1181,7 +1215,12 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/ibm</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/amd</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/eaton</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/zs</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/figma</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/marathon-petroleum-corporation</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hermeus</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/micron-technology</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/microsoft</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -1221,7 +1260,6 @@
   <url><loc>https://interndoor.com/us/companies/hudson-river-trading</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/leidos</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/exelon</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/ibm</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/macom</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/intel</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/epic-games</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
@@ -1249,10 +1287,8 @@
   <url><loc>https://interndoor.com/us/companies/siemens</loc><lastmod>2026-08-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/snyk</loc><lastmod>2026-08-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/airbus-aircraft</loc><lastmod>2026-08-30</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/eaton</loc><lastmod>2026-08-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/susquehanna-international-group</loc><lastmod>2026-08-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/charles-schwab</loc><lastmod>2026-08-29</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/marathon-petroleum-corporation</loc><lastmod>2026-08-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/cohere</loc><lastmod>2026-08-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/new-balance</loc><lastmod>2026-08-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/meta</loc><lastmod>2026-08-29</lastmod><priority>0.6</priority></url>
