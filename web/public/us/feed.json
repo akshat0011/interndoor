@@ -6,10 +6,22 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-nvh-engineering-intern-4461526597",
+      "url": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-nvh-engineering-intern-4461526597",
+      "title": "Mercury Marine: NVH Engineering Intern — Mercury Marine",
+      "content_text": "Company: Mercury Marine · Location: Fond du Lac, WI\n• Support NVH testing and data analysis for marine propulsion products\n• Use MATLAB, Python, and LabVIEW for signal processing and instrumentation\n• Work on-water and in lab environments with experienced engineers",
+      "date_published": "2026-09-01T00:37:11.452Z",
+      "authors": [
+        {
+          "name": "Mercury Marine"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-hardware-systems-engineering-co-op-winter-spring-2027-4461508855",
       "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-hardware-systems-engineering-co-op-winter-spring-2027-4461508855",
       "title": "Hardware Systems Engineering Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Hillsboro, OR · Duration: Spring 2027\n• Review and maintain electronic system designs and layouts\n• Support rf link validation and automate testing procedures\n• Debug customer hardware and system performance issues",
       "date_published": "2026-09-01T00:32:33.674Z",
       "authors": [
         {
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Trane Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-sharepoint-and-systems-engineering-intern-4459232927",
-      "url": "https://interndoor.com/us/jobs/leidos-sharepoint-and-systems-engineering-intern-4459232927",
-      "title": "SharePoint & Systems Engineering Intern — Leidos",
-      "content_text": "Company: Leidos · Location: United States\n• Support migration of legacy systems to modern platforms\n• Develop SharePoint structures and automate workflows with Power Automate\n• Create technical docs and process maps for business tools",
-      "date_published": "2026-08-31T21:15:50.029Z",
-      "authors": [
-        {
-          "name": "Leidos"
         }
       ]
     }
