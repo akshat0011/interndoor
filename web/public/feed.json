@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/houlihan-lokey-data-science-intern-4461799463",
+      "url": "https://interndoor.com/jobs/houlihan-lokey-data-science-intern-4461799463",
+      "title": "Data Science Intern — Houlihan Lokey",
+      "content_text": "Company: Houlihan Lokey · Location: Gurugram, Haryana, India\n• Analyze financial data with excel and python\n• Work with snowflake and power bi for insights\n• Develop tools for global financial markets",
+      "date_published": "2026-09-01T17:58:06.770Z",
+      "authors": [
+        {
+          "name": "Houlihan Lokey"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/harman-india-digital-signal-processing-intern-4459540710",
       "url": "https://interndoor.com/jobs/harman-india-digital-signal-processing-intern-4459540710",
       "title": "Digital Signal Processing - Intern — HARMAN India",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Adobe"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
-      "url": "https://interndoor.com/jobs/copeland-electronics-intern-4456938790",
-      "title": "Electronics Intern — Copeland",
-      "content_text": "Company: Copeland · Location: Pune Division, Maharashtra, India · Duration: 6 months\n• Develop simulation workflows for EMI/EMC, thermal, and signal integrity analysis\n• Use Python and ANSYS tools to automate and standardize simulation processes\n• Collaborate with R&D teams to validate models and support design decisions",
-      "date_published": "2026-08-25T16:33:55.148Z",
-      "authors": [
-        {
-          "name": "Copeland"
         }
       ]
     }
