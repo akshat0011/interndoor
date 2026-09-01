@@ -690,6 +690,12 @@ function jobCard(job, index, group = [job]) {
   const foot = el('div', 'card-foot');
   foot.append(ageBox);
 
+  /* Between the age and Apply. Marking a role applied is the step that happens
+     RIGHT AFTER Apply is pressed, so it belongs on the card the reader is
+     already looking at rather than two taps away inside the detail pane. */
+  const trk = trackControl(job);
+  if (trk) foot.append(trk);
+
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
   if (applyHref) {
     const go = el('a', 'card-go');
@@ -712,6 +718,127 @@ function jobCard(job, index, group = [job]) {
 
   li.append(row);
   return li;
+}
+
+/* ---------------- the application tracker ---------------- */
+
+/* The store is track.js, loaded ahead of this module on every page. Everything
+   here degrades to nothing if it is missing: `trackControl` returns null and no
+   card, pane or rail button is drawn, which is the same page the site had
+   before the tracker existed. */
+
+/** The payload track.js stores for a job — see its snapshot() for each field. */
+function trackable(job) {
+  return {
+    id: job.id,
+    company: job.company,
+    title: job.title,
+    location: job.location,
+    url: job.url,
+    applyUrl: job.applyUrl,
+    slug: jobPageSlug(job),
+    // This board and its URL prefix, so the tracker can link the role's page
+    // without carrying its own copy of the region→path map.
+    region: REGION,
+    path: REGION_PATH,
+  };
+}
+
+/**
+ * The track control on a card.
+ *
+ * A container whose contents are rebuilt on every change, because the control
+ * is a BUTTON in one state and a LINK in another and the element itself has to
+ * change with it.
+ *
+ * THE CARD CAN ONLY UNDO WHAT THE CARD DID. Untracked, it marks the role
+ * Applied; still at Applied, pressing again removes it, which is a real undo
+ * for a mis-click. Once the role has moved past Applied it becomes a status
+ * chip that links to the tracker instead — a role sitting at "Interview
+ * scheduled" carries a history that a stray click on a list of 250 cards must
+ * not be able to delete, and there is nothing on a card to confirm against.
+ */
+function paintTrackControl(box) {
+  const T = window.IDTrack;
+  const job = state.jobs.find((j) => j.id === box.dataset.id);
+  if (!T || !job) return;
+
+  const row = T.get(job.id);
+  const meta = row ? T.statusMeta(row.status) : null;
+  box.replaceChildren();
+  box.classList.toggle('is-on', !!row);
+
+  const stop = (e) => e.stopPropagation();
+
+  if (row && row.status !== 'applied') {
+    const a = el('a', 'trk-b is-set', meta.short);
+    a.href = `${REGION_PATH}/applications`;
+    a.title = `Tracked — ${meta.label}. Open your applications to change it.`;
+    a.setAttribute('aria-label',
+      `${job.title} at ${job.company}: ${meta.label}. Open your applications.`);
+    a.addEventListener('click', stop);
+    box.append(a);
+    return;
+  }
+
+  const b = el('button', row ? 'trk-b is-set' : 'trk-b');
+  b.type = 'button';
+  b.setAttribute('aria-pressed', String(!!row));
+  b.textContent = row ? 'Applied' : 'Track';
+  b.setAttribute('aria-label', row
+    ? `Applied to ${job.title} at ${job.company}. Press to remove from your applications.`
+    : `Mark ${job.title} at ${job.company} as applied`);
+  b.addEventListener('click', (e) => {
+    // The whole card opens the detail pane; without this, tracking would also
+    // slide the pane up over the board.
+    stop(e);
+    if (row) {
+      T.remove(job.id);
+      toast('Removed from your applications');
+    } else if (T.track(trackable(job), 'applied')) {
+      toast('Tracked as Applied — see My applications');
+    }
+    const err = T.error();
+    if (err) toast(err);
+  });
+  box.append(b);
+}
+
+function trackControl(job) {
+  if (!window.IDTrack) return null;
+  const box = el('span', 'trk-w');
+  box.dataset.id = job.id;
+  paintTrackControl(box);
+  return box;
+}
+
+/**
+ * Repaint every track control on the page in place.
+ *
+ * A full renderList() would be correct and is far too heavy: it rebuilds up to
+ * 250 cards, restarts their entrance animation and loses the reader's place,
+ * all to change one word on one chip. This also has to run for a change made
+ * in ANOTHER TAB — track.js emits on the storage event — so it cannot be
+ * folded into the click handler that made the change.
+ */
+function paintTrackers() {
+  for (const box of document.querySelectorAll('.trk-w')) paintTrackControl(box);
+  renderTrackCount();
+}
+
+/**
+ * The rail's entry point: how many applications are on this device.
+ *
+ * The link itself is server-rendered and always visible — it is a real
+ * destination that explains itself, and a reader whose script never arrives
+ * still reaches it. Only the count is filled here, and only when there is one:
+ * a badge reading 0 is noise on a control most visitors will never press.
+ */
+function renderTrackCount() {
+  const btn = $('my-apps');
+  if (!btn || !window.IDTrack) return;
+  const n = window.IDTrack.count();
+  btn.querySelector('b').textContent = n ? String(n) : '';
 }
 
 /* The filters live in the URL, so a filtered board can be linked, bookmarked
@@ -918,6 +1045,9 @@ function renderDetail(job) {
 
   d.append(actions);
 
+  const bar = trackBar(job);
+  if (bar) d.append(bar);
+
   const facts = el('dl', 'facts');
   const addFact = (label, value, cls) => {
     if (!value) return;
@@ -963,6 +1093,98 @@ function renderDetail(job) {
     note.append(document.createTextNode('Check the original posting before you apply — it is the source of truth.'));
   }
   d.append(note);
+}
+
+/**
+ * The tracker strip in the detail pane — where the FULL status ladder lives.
+ *
+ * The card deliberately offers one step ("Applied") and no way to reach the
+ * rest; this is the surface where somebody is looking at one role and can
+ * reasonably be asked to pick from seven options. Rebuilt in place rather than
+ * through renderDetail() so changing a status does not scroll the pane back to
+ * the top under the reader.
+ */
+function trackBar(job) {
+  const T = window.IDTrack;
+  if (!T) return null;
+
+  const bar = el('div', 'trk-bar');
+
+  const paint = () => {
+    const row = T.get(job.id);
+    bar.replaceChildren();
+    bar.classList.toggle('is-on', !!row);
+
+    if (!row) {
+      const add = el('button', 'trk-add');
+      add.type = 'button';
+      add.textContent = 'Track this application';
+      add.addEventListener('click', () => {
+        if (T.track(trackable(job), 'applied')) toast('Tracked as Applied');
+        const err = T.error();
+        if (err) toast(err);
+        paint();
+        paintTrackers();
+      });
+      bar.append(add);
+      const hint = el('p', 'trk-hint',
+        'Kept on this device only — nothing is sent to InternDoor.');
+      bar.append(hint);
+      return;
+    }
+
+    const label = el('label', 'trk-lab');
+    label.append(el('span', null, 'Status'));
+    const sel = el('select', 'trk-sel');
+    sel.setAttribute('aria-label', `Application status for ${job.title} at ${job.company}`);
+    let known = false;
+    for (const st of T.STATUSES) {
+      const opt = el('option', null, st.label);
+      opt.value = st.id;
+      if (st.id === row.status) { opt.selected = true; known = true; }
+      sel.append(opt);
+    }
+    /* A status this build does not know can only have come from a backup file
+       written by a newer one. Offered back as its own option so that merely
+       opening the pane cannot rewrite what the reader recorded. */
+    if (!known) {
+      const raw = el('option', null, T.statusMeta(row.status).label);
+      raw.value = row.status;
+      raw.selected = true;
+      sel.append(raw);
+    }
+    sel.addEventListener('change', () => {
+      T.track(trackable(job), sel.value);
+      const err = T.error();
+      if (err) toast(err);
+      paint();
+      paintTrackers();
+    });
+    label.append(sel);
+    bar.append(label);
+
+    const acts = el('div', 'trk-bar-acts');
+    const open = el('a', 'trk-link', 'All my applications →');
+    open.href = `${REGION_PATH}/applications`;
+    acts.append(open);
+
+    const drop = el('button', 'trk-drop');
+    drop.type = 'button';
+    drop.textContent = 'Remove';
+    drop.addEventListener('click', () => {
+      // Confirmed here and not on the card, because by this point the role may
+      // carry a history of status changes and nothing is stored anywhere else.
+      if (!confirm(`Remove this from your applications?\n\n${job.company} — ${job.title}`)) return;
+      T.remove(job.id);
+      paint();
+      paintTrackers();
+    });
+    acts.append(drop);
+    bar.append(acts);
+  };
+
+  paint();
+  return bar;
 }
 
 /* ---------------- resume tailoring ---------------- */
@@ -1528,6 +1750,16 @@ async function init() {
      state below it is what speaks after that. */
   const scanning = $('scanning');
   if (scanning) scanning.hidden = true;
+
+  /* Bring already-tracked rows up to date with the live board — a corrected
+     title, a recovered apply URL. Only posting fields move; the status, the
+     dates and the history are the reader's and are never touched. A tracked
+     role that has aged off the board is left exactly as it was, which is the
+     whole reason the store keeps a snapshot rather than an id. */
+  window.IDTrack?.refresh(state.jobs);
+  /* Repaint on any change, including one made in another tab. */
+  window.IDTrack?.on(paintTrackers);
+  renderTrackCount();
   renderFreshness();
   renderTotal();
   populateFilters();

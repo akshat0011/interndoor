@@ -1164,3 +1164,254 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   .rp-stat-h { font-size: 18px; }
   .rp-stat-d, .rp-note p, .rp-note li { font-size: 14.5px; }
 }
+
+/* ============================================================
+   /applications — the tracker dashboard.
+
+   page.css only: the board never renders this table. The shared
+   controls (.trk-b, .trk-bar, .trk-sel, .trk-add) are in
+   styles.css, which a generated page loads first.
+
+   Every class here was checked against BOTH stylesheets before
+   being taken — .stat was already the company hub's at-a-glance
+   tile and .pill and .note already exist in this file.
+   ============================================================ */
+
+/* ---- the four figures --------------------------------------------------- */
+.trk-sum {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 10px; margin: 26px 0 18px;
+}
+.trk-tile {
+  padding: 14px 16px; border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--card);
+}
+.trk-tile b {
+  display: block; font-family: var(--display); font-weight: 900;
+  font-size: 26px; line-height: 1; letter-spacing: -.03em; color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.trk-tile span {
+  display: block; margin-top: 6px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+/* The first tile is the one somebody opens this page to read. */
+.trk-tile:first-child b { color: var(--live); }
+
+/* ---- the status filter -------------------------------------------------- */
+.trk-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.trk-tab {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 32px; padding: 0 12px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 999px;
+  background: none; color: var(--ink-3);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.trk-tab b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.trk-tab[aria-pressed="true"] {
+  background: var(--ink); border-color: var(--ink); color: var(--bg); font-weight: 700;
+}
+.trk-tab[aria-pressed="true"] b { color: var(--bg); }
+.trk-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .trk-tab:hover { color: var(--ink); border-color: var(--rule-2); }
+  .trk-tab[aria-pressed="true"]:hover { color: var(--bg); }
+}
+
+/* ---- the table ----------------------------------------------------------
+   A real <table>: this is tabular data and the header association is worth
+   keeping for a screen reader. The wrapper scrolls rather than the page —
+   wide content must never make <body> scroll sideways. */
+.trk-scroll { overflow-x: auto; }
+/* The role column takes the slack; the other three are sized to content.
+   Without this the browser divides four columns evenly and the longest
+   thing on the page — the role title — gets a quarter of the width. */
+.trk-role { width: 100%; }
+.trk {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--card);
+}
+.trk th {
+  text-align: left; padding: 11px 14px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10.5px; font-weight: 400;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  white-space: nowrap;
+}
+.trk td { padding: 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.trk tr:last-child td { border-bottom: 0; }
+/* A closed application recedes through its SURFACE, never through opacity.
+   `opacity` on text is the anti-pattern this codebase has already paid for
+   twice — .dim at .75 and .all-roles > summary at .55 both failed axe for
+   exactly this, with a perfectly good token underneath. An .68 here measured
+   3.12-3.49 on every muted element in a closed row, in the light theme, across
+   all three widths: 58 violations from one line. The ink is untouched and the
+   row still visibly steps back. */
+.trk tr.is-done { background: var(--card-2); }
+
+.trk-role { min-width: 0; }
+.trk-co {
+  display: block; font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3);
+}
+.trk-t {
+  display: block; margin-top: 3px; font-size: 15.5px; font-weight: 650;
+  line-height: 1.3; color: var(--ink); text-decoration: none;
+  /* A title can run to 172 characters — one employer names fifteen cities in
+     it. `anywhere`, not `break-word`: only `anywhere` affects the min-content
+     size a table column is floored at. */
+  overflow-wrap: anywhere;
+}
+a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trk-sub { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 6px; }
+.trk-sub i {
+  font-style: normal; font-size: 12.5px; color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+.trk-rg {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase; border: 1px solid var(--rule);
+  border-radius: 999px; padding: 1px 7px;
+}
+/* Shown only where the date COLUMN is hidden. Exactly one of the two is
+   visible at any width, so the date is never printed twice. */
+.trk-when { display: none; }
+
+/* The dot carries the colour and the select carries the word.
+   NOT `white-space: nowrap` — an earlier version had it, and because a <select>
+   is inline-block it kept the control on the pill's line and spilled it across
+   the date column. A flex row is what actually holds the two together. */
+.trk-st { display: flex; align-items: center; gap: 8px; }
+.trk-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--live);
+}
+.trk-dot.is-good { background: var(--cash); }
+/* A rejection is a close, not an error. Muted rather than red: a page somebody
+   opens to see where they stand should not shout at them about the ones that
+   did not work out. */
+.trk-dot.is-bad { background: var(--rule-2); }
+.trk-st .trk-sel { height: 36px; width: 186px; min-width: 0; }
+
+.trk-date { display: block; white-space: nowrap; }
+.trk-date b {
+  display: block; font-size: 13px; font-weight: 650; color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.trk-date i {
+  display: block; margin-top: 3px; font-style: normal;
+  font-family: var(--mono); font-size: 10.5px; color: var(--ink-3);
+}
+
+.trk-c-act { white-space: nowrap; text-align: right; }
+.trk-go {
+  display: inline-block; margin-right: 6px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--live); text-decoration: none;
+}
+.trk-go:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trk-x {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; padding: 0; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 8px;
+  background: none; color: var(--ink-3); vertical-align: middle;
+}
+.trk-x:hover { color: var(--hot); border-color: var(--hot); }
+.trk-go:focus-visible, .trk-x:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.trk-none { margin: 26px 0; font-size: 15px; color: var(--ink-3); }
+
+/* ---- the empty state, which is what this page ships --------------------- */
+.trk-void {
+  margin: 26px 0; padding: 26px 24px;
+  border: 1px solid var(--rule); border-radius: 14px; background: var(--card);
+}
+.trk-void h2 {
+  font-family: var(--display); font-weight: 900; font-size: 21px;
+  letter-spacing: -.02em; color: var(--ink);
+}
+.trk-void h3 {
+  margin-top: 24px; font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+}
+.trk-void p { margin-top: 9px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.trk-void strong { color: var(--ink); font-weight: 650; }
+.trk-void-go { margin-top: 18px; }
+
+.trk-ladder { margin-top: 12px; counter-reset: trk; display: grid; gap: 8px; }
+.trk-ladder li {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  padding-left: 26px; position: relative; font-size: 14.5px; color: var(--ink-2);
+}
+.trk-ladder li::before {
+  counter-increment: trk; content: counter(trk);
+  position: absolute; left: 0; top: 1px;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--card-2); border: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px; color: var(--ink-3);
+}
+.trk-ladder b { color: var(--ink); font-weight: 650; }
+.trk-ladder span { color: var(--ink-3); font-size: 13.5px; }
+
+/* ---- where this is kept, and the backup controls ------------------------ */
+.trk-priv { margin: 30px 0 10px; }
+.trk-priv h2 {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.trk-priv p { margin-top: 10px; font-size: 14.5px; line-height: 1.65; color: var(--ink-2); }
+.trk-priv strong { color: var(--ink); font-weight: 650; }
+
+.trk-data { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.trk-data > summary {
+  cursor: pointer; font-family: var(--mono); font-size: 11px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2);
+}
+.trk-data > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.trk-data-in p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--ink-3); }
+.trk-data-acts { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+.trk-msg:empty { display: none; }
+.trk-msg { margin-top: 12px; font-size: 13.5px; color: var(--cash); }
+.trk-msg.is-bad { color: var(--hot); }
+
+@media (max-width: 760px) {
+  /* ONE CARD PER APPLICATION, because the columns genuinely do not fit.
+     Measured at 375px: with the date column already dropped, the three that
+     remain left the status <select> 27px wide — a control nobody can use — and
+     the alternative, letting .trk-scroll scroll, is a table whose right-hand
+     end nobody ever sees.
+
+     THE ARIA ROLES IN applications.js ARE WHAT MAKE THIS SAFE. Setting
+     `display` on a table element removes its table semantics from the
+     accessibility tree outright, so a screen reader would stop announcing rows
+     and cells at exactly the width most of this traffic arrives at. The
+     explicit role="table"/"row"/"cell" put them back.
+
+     The header is visually hidden rather than removed: it is still the thing
+     each cell is associated with. */
+  .trk { display: block; border: 0; background: none; }
+  .trk thead {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .trk tbody { display: block; }
+  .trk tr {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px;
+    align-items: center; margin-bottom: 10px; padding: 15px 16px;
+    border: 1px solid var(--rule); border-radius: 12px; background: var(--card);
+  }
+  .trk td { display: block; padding: 0; border: 0; }
+  .trk-role { grid-column: 1 / -1; width: auto; }
+  .trk-c-st { grid-column: 1; }
+  .trk-c-act { grid-column: 2; text-align: right; }
+  /* Exactly one of the two date renderings, at every width. */
+  .trk-c-date { display: none; }
+  .trk-when { display: inline; }
+  .trk-st .trk-sel { width: 100%; }
+  .trk-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trk-void { padding: 20px 17px; }
+}

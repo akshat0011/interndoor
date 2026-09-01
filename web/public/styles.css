@@ -1591,3 +1591,142 @@ html[data-boot] .boot-part {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* ============================================================
+   THE APPLICATION TRACKER — the controls, wherever they appear.
+
+   These live in styles.css and not page.css because a generated
+   page loads BOTH (styles.css first, page.css second) while the
+   board loads only the first. The card button and the status
+   strip appear on both, so they belong in the shared file; only
+   the /applications table itself is page.css.
+
+   The `trk-` prefix was checked against every class in both
+   stylesheets before being taken. `.gist`, `.age`, `.facts`,
+   `.stat` and `@keyframes ripple` have each collided here
+   before, and a later definition silently wins.
+   ============================================================ */
+
+/* ---- the card's control -------------------------------------------------
+   Sits between the age and Apply in .card-foot. OUTLINED at rest, never
+   filled: Apply is the one loud control on a card and a second solid pill
+   beside it would halve the weight of the thing every visitor came to press.
+   Same 34px height so the two read as one group. */
+.trk-w { display: contents; }
+.trk-b {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 34px; padding: 0 13px; flex: none;
+  border: 1px solid var(--rule); border-radius: 999px;
+  background: none; color: var(--ink-3);
+  font-family: var(--mono); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: color var(--d-press) var(--snap), border-color var(--d-press) var(--snap),
+              background-color var(--d-press) var(--snap);
+}
+/* A tracked role reads as settled — filled surface, full-strength ink and a
+   dot — so it is distinguishable from the untracked ones at a glance down a
+   column of 250 cards, without borrowing Apply's lime. */
+.trk-b.is-set {
+  background: var(--card-2); border-color: var(--rule-2); color: var(--ink);
+  font-weight: 700;
+}
+.trk-b.is-set::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--live); flex: none;
+}
+.trk-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .trk-b:hover { color: var(--ink); border-color: var(--rule-2); }
+}
+
+/* ---- the rail's entry point --------------------------------------------- */
+/* A .flag, so it sits with "rank by my resume" — both are personal tools that
+   act on the whole board rather than filters that narrow it. */
+.flag-apps { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+.flag-apps b {
+  font-family: var(--mono); font-size: 10px; font-weight: 700; line-height: 1;
+  color: var(--live-ink); background: var(--live);
+  border-radius: 999px; padding: 3px 6px; min-width: 17px; text-align: center;
+}
+/* Empty until there is a count. :empty keeps the pill from rendering as a bare
+   lime dot on a board where nothing is tracked. */
+.flag-apps b:empty { display: none; }
+
+/* ---- the status strip ---------------------------------------------------
+   The detail pane (.trk-bar) and a job page's side rail (.trk-mount) render
+   the same control, so they share every rule below. */
+.trk-bar, .trk-mount {
+  display: grid; gap: var(--s3);
+  margin: var(--s5) 0; padding: var(--s4);
+  border: 1px solid var(--rule); border-radius: var(--r-2);
+  background: var(--card-2);
+}
+.trk-mount { margin: 0 0 var(--s4); }
+
+.trk-add {
+  width: 100%; height: 42px; padding: 0 var(--s4);
+  border: 1px solid var(--rule-2); border-radius: 999px;
+  background: var(--card); color: var(--ink); cursor: pointer;
+  font-family: var(--ui); font-size: var(--t-small); font-weight: 650;
+}
+.trk-add:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .trk-add:hover { border-color: var(--ink-3); }
+}
+
+.trk-hint { font-size: var(--t-micro); line-height: 1.45; color: var(--ink-3); }
+
+.trk-lab { display: grid; gap: 6px; }
+.trk-lab > span {
+  font-family: var(--mono); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+}
+.trk-sel {
+  width: 100%; height: 40px; padding: 0 var(--s3);
+  border: 1px solid var(--rule-2); border-radius: 10px;
+  background: var(--card); color: var(--ink);
+  font-family: var(--ui); font-size: var(--t-small); font-weight: 600;
+  /* The intrinsic width of a select is its widest option — "Application under
+     review" here — which without this becomes an unshrinkable floor and pushes
+     the side rail past the viewport. The same fix .picks select already
+     carries, and for the same reason. */
+  min-width: 0; text-overflow: ellipsis;
+}
+.trk-sel:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+.trk-bar-acts { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+.trk-link {
+  font-family: var(--mono); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  color: var(--live); text-decoration: none;
+}
+.trk-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trk-drop {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--mono); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+}
+.trk-drop:hover { color: var(--hot); }
+.trk-drop:focus-visible, .trk-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (max-width: 1024px) {
+  /* Variant A puts a full-width 50px Apply at the foot of the card. A third
+     stacked full-width control under it would add ~40px to every card on the
+     device most of this traffic arrives on, so the footer becomes a small grid
+     instead: Apply spans the top, then the age and the track button share the
+     line the age already had. No extra height at all.
+     minmax(0, 1fr), never a bare 1fr — a grid item's min-width defaults to
+     auto, and this repo has already shipped a sideways-scrolling board twice
+     from exactly that. */
+  .card-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "go go" "age trk";
+    align-items: center;
+  }
+  .card-go { grid-area: go; }
+  .age { grid-area: age; }
+  .trk-b { grid-area: trk; justify-self: end; }
+}

@@ -809,7 +809,18 @@ function regionSwitch(current, regions) {
 }
 
 /** Shared <head> and page chrome, so every generated page carries the same rules. */
-function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5` }) {
+/**
+ * `scripts` is for behaviour ONE page needs and the other ~950 do not.
+ *
+ * /applications carries a whole table; a job page carries none of it. Putting
+ * it in page.js would ship it to every generated page on the site to be parsed
+ * and thrown away. Anything added here must be a `'self'` src — vercel.json
+ * ships `script-src 'self'` plus a hash allowlist and no 'unsafe-inline', so an
+ * inline script whose sha256 is absent is silently blocked in production and
+ * works perfectly on every local server. That is exactly how the no-flash theme
+ * script shipped broken on 21 Aug.
+ */
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '' }) {
   return `<!doctype html>
 <html lang="${region.hreflang}">
 <head>
@@ -839,8 +850,9 @@ ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robo
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/page.css">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script defer src="/track.js"></script>
 <script defer src="/page.js"></script>
-<script defer src="/subscribe.js"></script>
+${scripts}<script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -946,7 +958,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -1488,6 +1500,27 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
             <span class="apply-glow">${applyBtn}</span>
             <p class="jp-card-note">Opens ${where} in a new tab. Free — we never ask for a fee.</p>
           </div>` : ''}
+          <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
+               these attributes, because what belongs here depends entirely on
+               what is in the reader's own browser: a page that shipped a
+               "Track" button would show it to somebody who tracked this role
+               last week. The data is carried on the element rather than read
+               back out of the JSON-LD, which is written for a search engine and
+               is not a place to keep an application's own fields.
+
+               THE TWO URLs GO THROUGH safeUrl, exactly like the Apply button
+               above. It rejects anything that is not http(s), so a javascript:
+               URL on a posting cannot reach this attribute — from which page.js
+               would copy it into the store and the tracker would later render
+               it as an href on a page the reader trusts. safeUrl escapes as
+               well as filters, so these are not wrapped in esc() a second
+               time. test/pages.test.mjs catches a regression here. -->
+          <div class="trk-mount" data-id="${esc(job.id)}" data-company="${esc(job.company)}"
+               data-title="${esc(job.title)}" data-location="${esc(job.location ?? '')}"
+               data-url="${safeUrl(job.url)}" data-applyurl="${safeUrl(job.applyUrl)}"
+               data-slug="${esc(jobSlug(job))}" data-region="${esc(region.code)}"
+               data-path="${esc(regionPath(region.code))}"
+               data-apps="${esc(regionHref('/applications', region))}"></div>
           <dl class="facts">
             ${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n            ')}
           </dl>
@@ -2686,6 +2719,125 @@ ${foot({
 }
 
 /**
+ * /applications — the reader's own application tracker.
+ *
+ * WHAT THIS PAGE SHIPS IS THE EMPTY STATE, and that is the whole design. Every
+ * row is built by applications.js out of localStorage, so this file is
+ * identical for every reader and every crawler: the explanation of what the
+ * page is, the status ladder it offers, and how to put something in it.
+ *
+ * IT IS noindex AND IS ABSENT FROM THE SITEMAP, deliberately and permanently.
+ * There is no content here that is the same for two people, so what a crawler
+ * would index is a page with a heading and no listings — thin content, on a
+ * domain that already carries a previous owner's history and is mid-Change-of-
+ * Address on two properties. It is also left out of the Google Indexing API
+ * queue for a harder reason: that API accepts JobPosting and BroadcastEvent
+ * pages and NOTHING else, and Google warns that submitting an unsupported page
+ * type can cost the project its API access.
+ *
+ * The tracker holds applications from EVERY board, not just this one.
+ * localStorage is per-origin, so a student who applied to a role in India and
+ * one in the US has a single list; showing them separately per region would be
+ * an artifact of how the site is routed rather than anything true about them.
+ * Each region still gets its own copy of this page so the masthead, the footer
+ * and the region switch resolve to the board the reader came from.
+ */
+export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
+  const url = regionUrl('/applications', region);
+
+  /* The ladder, rendered server-side so the page explains the feature before
+     anybody has used it. It MUST stay in step with STATUSES in
+     web/public/track.js — test/tracker.test.mjs pins the two against each
+     other, because a status offered here that the store does not know is a
+     promise the dropdown cannot keep. */
+  const LADDER = [
+    ['Applied', 'the day you send it'],
+    ['Application under review', 'the employer has opened it'],
+    ['Shortlisted', 'you are through the first cut'],
+    ['OA received', 'an online assessment has landed'],
+    ['Interview scheduled', 'a date is in the diary'],
+    ['Selected', 'an offer'],
+    ['Rejected', 'a close, and worth recording'],
+  ];
+
+  return `${head({
+    title: buildTitle(['My applications']),
+    description: `Track every internship you have applied to ${region.inName} — status, dates and what is still outstanding, kept on your own device.`,
+    canonical: url,
+    indexable: false,
+    region,
+    scripts: '<script defer src="/applications.js"></script>\n',
+  })}
+<main class="page" id="trk-root" data-feed="${esc(regionHref('/data/jobs.json', region))}">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">&rsaquo;</i>
+      <span>My applications</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>My applications</h1>
+      <p class="hub-lede">Every internship you have applied to, and where each one has got to. Mark a role <strong>Applied</strong> from any listing on the board and it appears here.</p>
+    </header>
+
+    <div class="trk-sum" id="trk-sum" hidden></div>
+    <div class="trk-tabs" id="trk-tabs" role="group" aria-label="Filter by status" hidden></div>
+
+    <div class="trk-scroll">
+      <table class="trk" id="trk-table" role="table" hidden>
+        <thead>
+          <tr role="row">
+            <th scope="col" role="columnheader">Role</th>
+            <th scope="col" role="columnheader">Status</th>
+            <th scope="col" role="columnheader" class="trk-c-date">Applied</th>
+            <th scope="col" role="columnheader"><span class="vh">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="trk-body"></tbody>
+      </table>
+    </div>
+    <p class="trk-none" id="trk-none" hidden>Nothing at that status yet.</p>
+
+    <!-- THE DEFAULT, AND THE ONLY THING A CRAWLER EVER SEES. applications.js
+         hides it the moment there is a row to show. -->
+    <section class="trk-void" id="trk-void">
+      <h2>Nothing tracked yet</h2>
+      <p>Open any role on the board and press <strong>Track</strong>, or use the button on a job page. Nothing is sent anywhere &mdash; see below.</p>
+      <p class="trk-void-go"><a class="a-1" href="${regionHref('/', region)}">Browse live internships</a></p>
+
+      <h3>The stages you can move a role through</h3>
+      <ol class="trk-ladder">
+        ${LADDER.map(([name, when]) => `<li><b>${esc(name)}</b><span>${esc(when)}</span></li>`).join('\n        ')}
+      </ol>
+    </section>
+
+    <section class="trk-priv">
+      <h2>Where this is kept</h2>
+      <p><strong>On this device, in this browser, and nowhere else.</strong> Your application list is never sent to InternDoor and we cannot see it. There is no account and nothing to sign up for.</p>
+      <p>That has a real cost, and it is worth knowing before you rely on it: the list <strong>will not follow you to another browser or another phone</strong>, and clearing your browsing data will delete it. Take a backup file if the list matters to you.</p>
+      <details class="trk-data" id="trk-data">
+        <summary>Backup and restore</summary>
+        <div class="trk-data-in">
+          <p>The backup is a plain JSON file. Restoring merges it with whatever is already here and keeps the newer copy of any role that is in both, so restoring an old backup never throws away newer applications.</p>
+          <div class="trk-data-acts">
+            <button class="alt" id="trk-export" type="button">Download backup</button>
+            <button class="alt" id="trk-import" type="button">Restore from file</button>
+            <input type="file" id="trk-file" accept="application/json,.json" hidden>
+          </div>
+          <p class="trk-msg" id="trk-msg" role="status" aria-live="polite"></p>
+        </div>
+      </details>
+    </section>
+  </div>
+</main>
+${foot({
+    headline: 'Be early on the next one',
+    sub: `Every new engineering internship ${region.inName}, within minutes of going live.`,
+    region,
+  })}`;
+}
+
+/**
  * Write only when the bytes actually differ, and SAY whether they did.
  *
  * The name was aspirational: it wrote unconditionally. That was survivable —
@@ -2804,7 +2956,7 @@ function fillMarker(html, name, contents) {
  * `/_vercel/…`, none of which are per-region and all of which would 404 under a
  * prefix. Job links are generated below and already carry theirs.
  */
-const REGION_LINKS = ['/companies', '/alerts', '/feed.xml', '/feed.json', '/data/jobs.json'];
+const REGION_LINKS = ['/companies', '/alerts', '/applications', '/feed.xml', '/feed.json', '/data/jobs.json'];
 
 function localiseLinks(html, region) {
   const prefix = regionPath(region.code);
@@ -3236,6 +3388,16 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   track(writeIfChanged(join(root, 'report.html'),
     renderReportPage(stats.facts ?? [], { region, alternates, asOf: stats.asOf ?? Date.now(), days: stats.days ?? 30 })),
     '/report');
+
+  /* /applications — the reader's own tracker. Written for every published
+     region so the masthead and footer resolve to the board they came from,
+     though the list itself spans every board.
+     NOT PASSED THROUGH track(): that collects the URLs handed to IndexNow, and
+     this page is noindex by design, so announcing it to Bing asks a crawler to
+     fetch a page we have already told it not to index. It is out of the
+     sitemap for the same reason, and out of Google's Indexing API queue for a
+     harder one — that queue takes JobPosting pages only. */
+  writeIfChanged(join(root, 'applications.html'), renderApplicationsPage({ region }));
 
   let removed = 0;
   /* Job pages that just stopped existing, as URLs. Only job pages: the Google

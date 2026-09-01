@@ -147,6 +147,101 @@ dressAges(document);
   });
 }());
 
+/* ---------------- the application tracker ---------------- */
+
+/* Filled from the .trk-mount element src/pages.js renders into the side rail.
+   Nothing is baked into the HTML: what belongs here depends on what is in this
+   reader's own browser, and a page that shipped a "Track" button would show it
+   to somebody who tracked this role last week. Absent when track.js has not
+   loaded, which leaves the page exactly as it was before the tracker existed. */
+(function tracker() {
+  const mount = document.querySelector('.trk-mount');
+  const T = window.IDTrack;
+  if (!mount || !T) return;
+
+  const d = mount.dataset;
+  const job = {
+    id: d.id,
+    company: d.company,
+    title: d.title,
+    location: d.location,
+    url: d.url,
+    applyUrl: d.applyurl,
+    slug: d.slug,
+    region: d.region,
+    path: d.path,
+  };
+
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  function paint() {
+    const row = T.get(job.id);
+    mount.replaceChildren();
+    mount.classList.toggle('is-on', !!row);
+
+    if (!row) {
+      const add = el('button', 'trk-add');
+      add.type = 'button';
+      add.textContent = 'I applied — track this';
+      add.addEventListener('click', () => { T.track(job, 'applied'); paint(); });
+      mount.append(add);
+      mount.append(el('p', 'trk-hint', 'Kept on this device only. No account, nothing sent to us.'));
+      return;
+    }
+
+    const label = el('label', 'trk-lab');
+    label.append(el('span', null, 'Status'));
+    const sel = el('select', 'trk-sel');
+    sel.setAttribute('aria-label', 'Application status for this role');
+    let known = false;
+    for (const st of T.STATUSES) {
+      const opt = el('option', null, st.label);
+      opt.value = st.id;
+      if (st.id === row.status) { opt.selected = true; known = true; }
+      sel.append(opt);
+    }
+    /* A status written by a newer build, arriving through a restored backup.
+       Offered back rather than snapped to Applied, so opening this page cannot
+       rewrite what the reader recorded. */
+    if (!known) {
+      const raw = el('option', null, T.statusMeta(row.status).label);
+      raw.value = row.status;
+      raw.selected = true;
+      sel.append(raw);
+    }
+    sel.addEventListener('change', () => { T.track(job, sel.value); paint(); });
+    label.append(sel);
+    mount.append(label);
+
+    const acts = el('div', 'trk-bar-acts');
+    const open = el('a', 'trk-link', 'All my applications →');
+    open.href = d.apps || '/applications';
+    acts.append(open);
+
+    const drop = el('button', 'trk-drop');
+    drop.type = 'button';
+    drop.textContent = 'Remove';
+    drop.addEventListener('click', () => {
+      // Confirmed: the row may carry a history of status changes and this is
+      // the only copy of it anywhere.
+      if (!confirm('Remove this from your applications?\n\n' + job.company + ' — ' + job.title)) return;
+      T.remove(job.id);
+      paint();
+    });
+    acts.append(drop);
+    mount.append(acts);
+  }
+
+  // Also repaints for a change made in another tab.
+  T.on(paint);
+  paint();
+}());
+
 /* ---------------- "just landed" ---------------- */
 
 /* Kept out of the HTML on purpose. Baking the newest roles into every job page

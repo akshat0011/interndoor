@@ -759,6 +759,13 @@ export function publishedPaths() {
        one, and that page is where a site reads as maintained or generated. */
     'web/public/404.html',
     'web/public/report.html',
+    /* India's /applications — the reader's own tracker. Same reason as the two
+       above: every other region's lives inside its own tree and is covered by
+       regionPaths(), India's sits at the root. It is noindex and absent from
+       the sitemap, which makes it MORE dangerous to leave out, not less — a
+       missing page here would 404 a link that foot() puts on every one of the
+       ~950 generated pages, and no sitemap report would ever flag it. */
+    'web/public/applications.html',
     /* India's skill and city facet pages. Named here for the same reason
        /alerts and /report are: every other region's live inside its own tree
        and are covered by regionPaths(), while India's sit at the root. Missing
