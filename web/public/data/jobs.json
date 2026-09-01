@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788254515438,
+ "generatedAt": 1788255371416,
  "region": "IN",
  "regionName": "India",
- "count": 259,
- "techCount": 259,
+ "count": 260,
+ "techCount": 260,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -66,6 +66,7 @@
   "Haptik",
   "HaystackAnalytics",
   "Hevo Data",
+  "Hewlett Packard Enterprise",
   "HighLevel",
   "Honeywell Technologies",
   "IBM",
@@ -474,6 +475,56 @@
    "cardFacts": [
     "Bengaluru",
     "Hybrid"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4461573007",
+   "title": "College Intern",
+   "company": "Hewlett Packard Enterprise",
+   "matchedWatchlist": "HPE",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/hewlett-packard-enterprise.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Remote",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "2 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++"
+   ],
+   "summary": "This internship offers hands-on experience in technical support and project collaboration. Ideal for students pursuing engineering or computer science, the role involves troubleshooting, system maintenance, and team learning. It provides a chance to develop practical skills in a supportive environment.",
+   "bullets": [
+    "Support senior team members on technical projects",
+    "Troubleshoot issues and maintain technical systems",
+    "Learn new technologies and collaborate with colleagues"
+   ],
+   "roleLabel": "Technical Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "java",
+    "c++",
+    "scripting"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "10 minutes ago",
+   "postedAt": 1788237415503,
+   "firstSeenAt": 1788238015513,
+   "lastSeenAt": 1788238015513,
+   "url": "https://www.linkedin.com/jobs/view/4461573007/",
+   "applyUrl": "https://careers.hpe.com/us/en/job/1211843/College-Intern?utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "c0d830c03e",
+   "cardFacts": [
+    "Bengaluru",
+    "Remote"
    ],
    "region": "IN"
   },
