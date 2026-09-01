@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/russell-investments-graduate-trainee-apprentice-global-technology-4460608243",
+      "url": "https://interndoor.com/jobs/russell-investments-graduate-trainee-apprentice-global-technology-4460608243",
+      "title": "Graduate Trainee (Apprentice), Global Technology — Russell Investments",
+      "content_text": "Company: Russell Investments · Location: Mumbai Metropolitan Region\n• Develop full-stack applications using C#, .NET, SQL, and React\n• Work with global teams on reporting, dashboards, and data visualization\n• Learn AI-assisted tools and follow secure development practices",
+      "date_published": "2026-09-01T13:50:57.456Z",
+      "authors": [
+        {
+          "name": "Russell Investments"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4459289674",
       "url": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4459289674",
       "title": "Information Technology Intern — Procter & Gamble",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Monotype"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-backend-engineering-intern-4456914897",
-      "url": "https://interndoor.com/jobs/joveo-backend-engineering-intern-4456914897",
-      "title": "Backend Engineering Intern — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to working prototype\n• Ship full stack with react, next.js, node.js, express, and sql\n• Collaborate directly with leadership from first week",
-      "date_published": "2026-08-25T13:10:29.660Z",
-      "authors": [
-        {
-          "name": "Joveo"
         }
       ]
     }
