@@ -3054,7 +3054,49 @@ export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } 
 ${foot({ headline: 'Get new roles as they open', sub: 'One email when something matching lands.', region })}`;
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {} } = {}) {
+/* A REPOSTED ROLE'S OLD URL, POINTED AT THE ONE THAT REPLACED IT.
+
+   When an employer reposts a role under a new id, dedupePostings keeps the
+   newest and the older row's page is deleted — so a URL Google has indexed
+   starts 404ing while a near-identical page appears elsewhere. Measured over 30
+   days: 123 orphaned URLs. This file already learned that lesson once with the
+   company hubs, which were made permanent on 18 Aug for exactly this reason.
+
+   WHY A PAGE AND NOT A REAL 301. A 301 needs web/vercel.json, and that file is
+   NOT in the PUBLISHED allowlist — the scheduler would generate redirects every
+   30 minutes and never deploy one. Worse, vercel.json is schema-validated and a
+   bad write fails EVERY deploy silently while the live site serves the previous
+   build, which this project has already paid for once. Letting an unattended
+   loop rewrite it is a bad trade against the 404s it fixes.
+   web/public/<region>/jobs IS allowlisted, so a stub deploys on the next scan
+   with no infrastructure change and no chance of freezing the site.
+
+   An instant meta refresh plus rel=canonical is how Google is told these are
+   the same page; it consolidates on that pair. Deliberately NO robots noindex —
+   it would suppress the very consolidation the stub exists to cause.
+
+   These are self-cleaning. They are regenerated from each run's dedupe result,
+   so a stub exists only while its winner is published, and both disappear when
+   the role ages out. Nothing accumulates. */
+function renderJobRedirect(target, region) {
+  const url = regionUrl(`/jobs/${target}`, region);
+  return `<!doctype html>
+<html lang="${esc(region.lang ?? 'en')}">
+<head>
+<meta charset="utf-8">
+<title>This role moved — InternDoor</title>
+<link rel="canonical" href="${esc(url)}">
+<meta http-equiv="refresh" content="0; url=${esc(url)}">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+<p>This posting was relisted by the employer. <a href="${esc(url)}">Continue to the current listing</a>.</p>
+</body>
+</html>
+`;
+}
+
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [] } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -3090,6 +3132,17 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      when it does not. */
   const facets = facetGroups(jobs.filter(isIndexable));
   const skillPages = new Set(facets.skills.map((f) => f.slug));
+
+  /* Written BEFORE the real pages so a live page always wins the name: if a
+     slug is somehow both a redirect source and a real posting, the loop below
+     overwrites the stub rather than the stub replacing a listing. */
+  const liveSlugs = new Set(jobs.map((j) => jobSlug(j)));
+  for (const { slug, target } of redirects) {
+    if (liveSlugs.has(slug) || !liveSlugs.has(target)) continue;
+    const name = `${slug}.html`;
+    wanted.add(join(jobsDir, name));
+    track(writeIfChanged(join(jobsDir, name), renderJobRedirect(target, region)), `/jobs/${slug}`);
+  }
 
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
@@ -3230,7 +3283,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map() } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -3265,7 +3318,8 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       publicDir,
       historyByRegion.get(region.code) ?? [],
       { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [],
-        stats: statsByRegion.get(region.code) ?? {} },
+        stats: statsByRegion.get(region.code) ?? {},
+        redirects: redirectsByRegion.get(region.code) ?? [] },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);

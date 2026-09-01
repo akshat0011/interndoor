@@ -7,7 +7,7 @@ import { log } from './logger.js';
 import { formatStipend } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
-import { writeSite, cardFacts } from './pages.js';
+import { writeSite, cardFacts, jobSlug } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -149,7 +149,20 @@ function fingerprint(text) {
  * @param {{row: object, region: string}[]} jobs live rows, region already resolved.
  * @returns {{row: object, region: string}[]} the survivors, in no useful order.
  */
-export function dedupePostings(jobs) {
+/* `superseded`, when given an array, is filled with { loser, winner } for every
+   row this drops in favour of another. It exists for one reason: when an
+   employer REPOSTS a role under a new id, the winner gets a new URL and the
+   loser's page is deleted — so a URL Google has already indexed starts 404ing
+   and a near-identical page appears somewhere else. Measured over 30 days: 71
+   role groups reposted, orphaning 123 indexed URLs, 6.5 days apart on average.
+
+   This file's own history says what that costs. The company hubs used to be
+   rebuilt and deleted the same way, and the note there is explicit: "each cycle
+   404s a URL Google has indexed and discards its accumulated ranking; the churn
+   costs more than the absence, because URL instability burns crawl budget and
+   suppresses the page." Hubs were made permanent on 18 Aug. Reposted roles were
+   not, and they churn faster. */
+export function dedupePostings(jobs, superseded = null) {
   // ---- one posting, two collectors -----------------------------------------
   // The scraper and the ATS poller find the same role independently: a company
   // posts to its ATS, and the LinkedIn copy appears later. Both are stored,
@@ -275,11 +288,17 @@ export function dedupePostings(jobs) {
   };
 
   const bestByKey = new Map();
+  /* Loser -> the KEY it lost at, not the row that beat it. Reposts chain: A is
+     beaten by B, then B by C, and recording the row would leave A pointing at a
+     page that no longer exists. Resolving the key at the end always lands on
+     whoever finally holds it. */
+  const lostAtKey = new Map();
   for (const entry of jobs) {
     const key = dedupeKey(entry.row);
     const existing = bestByKey.get(key);
     if (!existing) { bestByKey.set(key, entry); continue; }
-    if (challengerWins(entry, existing)) bestByKey.set(key, entry);
+    if (challengerWins(entry, existing)) { lostAtKey.set(existing, key); bestByKey.set(key, entry); }
+    else lostAtKey.set(entry, key);
   }
 
   // Fold a country-only row into the same role filed against a real city.
@@ -307,7 +326,23 @@ export function dedupePostings(jobs) {
     const placed = placedByRole.get(roleOf(bare)) ?? [];
     if (placed.length !== 1) continue;
     bestByKey.delete(bareKey);
-    if (challengerWins(bare, placed[0].entry)) bestByKey.set(placed[0].key, bare);
+    const target = placed[0].key;
+    if (challengerWins(bare, placed[0].entry)) {
+      lostAtKey.set(placed[0].entry, target);
+      bestByKey.set(target, bare);
+    } else {
+      lostAtKey.set(bare, target);
+    }
+    // Anything that had already lost at the bare key now belongs to the folded
+    // one, or it would resolve to a key nobody holds.
+    for (const [loser, key] of lostAtKey) if (key === bareKey) lostAtKey.set(loser, target);
+  }
+
+  if (superseded) {
+    for (const [loser, key] of lostAtKey) {
+      const winner = bestByKey.get(key);
+      if (winner && winner !== loser) superseded.push({ loser, winner });
+    }
   }
 
   return [...bestByKey.values()];
@@ -452,7 +487,8 @@ export async function writeJobsFile(store, cfg) {
     })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
-  const deduped = dedupePostings(jobs);
+  const supersededPairs = [];
+  const deduped = dedupePostings(jobs, supersededPairs);
   const collapsed = jobs.length - deduped.length;
   if (collapsed) {
     log.info(`Collapsed ${collapsed} duplicate posting${collapsed === 1 ? '' : 's'} found by both collectors.`);
@@ -468,6 +504,28 @@ export async function writeJobsFile(store, cfg) {
   const publicJobs = jobs
     .map(({ row, matchedNow, region }) => ({ ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }), region }))
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
+
+  /* Superseded URLs -> the page that replaced them, per region.
+     Both sides go through toPublicJob and jobSlug, the very functions the real
+     pages are written with, so the stub cannot land on a slug that was never
+     served. A cross-region pair is dropped: dedupeKey is company|title|city and
+     carries no region, so two boards can in principle collapse, and redirecting
+     a US URL onto an India page would be worse than the 404. */
+  const redirectsByRegion = new Map();
+  for (const { loser, winner } of supersededPairs) {
+    if (loser.region !== winner.region) continue;
+    const from = toPublicJob(loser.row, { matchedNow: loser.matchedNow, logoIndex });
+    const to = toPublicJob(winner.row, { matchedNow: winner.matchedNow, logoIndex });
+    let fromSlug; let toSlug;
+    try { fromSlug = jobSlug(from); toSlug = jobSlug(to); } catch { continue; }
+    if (fromSlug === toSlug) continue;
+    if (!redirectsByRegion.has(loser.region)) redirectsByRegion.set(loser.region, []);
+    redirectsByRegion.get(loser.region).push({ slug: fromSlug, target: toSlug });
+  }
+  if (redirectsByRegion.size) {
+    const n = [...redirectsByRegion.values()].reduce((a, v) => a + v.length, 0);
+    log.info(`Redirecting ${n} superseded posting URL${n === 1 ? '' : 's'} to the reposted role.`);
+  }
 
   if (droppedForeign) {
     const detail = Object.entries(droppedByRegion).sort((a, b) => b[1] - a[1])
@@ -577,7 +635,7 @@ export async function writeJobsFile(store, cfg) {
      region's. */
   const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
   const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
-    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions) });
+    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions), redirectsByRegion });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;

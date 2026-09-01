@@ -110,5 +110,71 @@ const noLoc = row('e1', 'Acme', 'Software Intern', null, { region: 'IN' });
 check('a null location does not throw', dedupePostings([noLoc]).length, 1);
 check('and it folds into the one real city', dedupePostings([noLoc, bengaluru]).length, 1);
 
+console.log('\n== a superseded repost is reported, so its URL can be redirected ==');
+/* WHY THIS EXISTS. When an employer reposts a role under a new id the newest
+   wins, the loser's page is deleted, and a URL Google has already indexed
+   starts 404ing while a near-identical page appears at a new address.
+   Measured over 30 days: 71 role groups reposted, orphaning 123 indexed URLs.
+   This file's own hub post-mortem says what that costs — "each cycle 404s a URL
+   Google has indexed and discards its accumulated ranking". dedupePostings now
+   reports what it dropped so publish can leave a redirect behind. */
+const repostOld = row('r-old', 'Adobe', 'Apprentice Tech', 'Bengaluru', { posted: AUG });
+const repostNew = row('r-new', 'Adobe', 'Apprentice Tech', 'Bengaluru', { posted: AUG + 7 * DAY });
+
+let sup = [];
+check('the repost still collapses to one', dedupePostings([repostOld, repostNew], sup).length, 1);
+check('and one supersession is reported', sup.length, 1);
+check('the loser is the older row', sup[0]?.loser.row.job_id, 'r-old');
+check('pointing at the row that replaced it', sup[0]?.winner.row.job_id, 'r-new');
+
+sup = [];
+dedupePostings([repostNew, repostOld], sup);
+check('input order does not change who lost', sup[0]?.loser.row.job_id, 'r-old');
+
+console.log('\n== a CHAIN of reposts resolves to the final winner, not the middle one ==');
+/* A is beaten by B, then B by C. Recording "A -> B" would leave A pointing at a
+   page that no longer exists, so the loser is tracked against the KEY and
+   resolved once at the end. */
+const c1 = row('c1', 'Micron', 'Intern', 'Hyderabad', { posted: AUG });
+const c2 = row('c2', 'Micron', 'Intern', 'Hyderabad', { posted: AUG + 3 * DAY });
+const c3 = row('c3', 'Micron', 'Intern', 'Hyderabad', { posted: AUG + 6 * DAY });
+sup = [];
+check('three reposts collapse to one', dedupePostings([c1, c2, c3], sup).length, 1);
+check('both losers are reported', sup.length, 2);
+check('and BOTH point at the newest, not at each other',
+  [...new Set(sup.map((x) => x.winner.row.job_id))], ['c3']);
+check('the losers are the two older rows', sup.map((x) => x.loser.row.job_id).sort(), ['c1', 'c2']);
+
+console.log('\n== a loser at the country-only key follows the fold into the city ==');
+/* The narrow case the re-target line in the fold pass exists for. Two
+   country-only rows collapse against each other first, so the loser is recorded
+   against the bare key. The fold then MOVES the survivor onto the city key and
+   deletes the bare one — leaving that loser pointing at a key nobody holds, and
+   its redirect silently lost. Reachable, and it was uncovered until this test. */
+const natOld = row('nat-old', 'Zoho', 'Systems Intern', 'India', { posted: AUG });
+const natNew = row('nat-new', 'Zoho', 'Systems Intern', 'India', { posted: AUG + 5 * DAY });
+const cityRow = row('city', 'Zoho', 'Systems Intern', 'Chennai', { posted: AUG + 1 * DAY });
+sup = [];
+const foldKept = dedupePostings([natOld, natNew, cityRow], sup);
+check('all three collapse to one', foldKept.length, 1);
+check('the newest country-only row survives the fold', ids(foldKept), ['nat-new']);
+check('both losers are reported', sup.length, 2);
+check('and NEITHER is stranded on the deleted bare key',
+  sup.every((x) => x.winner?.row.job_id === 'nat-new'), true);
+check('specifically the pre-fold loser follows through',
+  sup.find((x) => x.loser.row.job_id === 'nat-old')?.winner.row.job_id, 'nat-new');
+
+console.log('\n== nothing is reported when nothing was dropped ==');
+sup = [];
+dedupePostings([msLi], sup);
+check('a single row supersedes nothing', sup.length, 0);
+sup = [];
+dedupePostings(bajaj, sup);
+check('eight real cities supersede nothing', sup.length, 0);
+sup = [];
+dedupePostings([], sup);
+check('an empty list supersedes nothing', sup.length, 0);
+check('and the out-param is optional', dedupePostings([repostOld, repostNew]).length, 1);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
