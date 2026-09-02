@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788325475875,
+ "generatedAt": 1788326152719,
  "region": "IN",
  "regionName": "India",
  "count": 241,
@@ -208,7 +208,7 @@
    "company": "Pearson",
    "matchedWatchlist": "Pearson",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/pearson.jpg",
    "location": "Bengaluru East, Karnataka, India",
@@ -224,13 +224,24 @@
     "azure",
     "git"
    ],
-   "summary": "Software Engineering Intern – Global Payroll Technology Team Location: Bangalore, India (Hybrid) Duration: 3 - 6 Months Internship Department: Payroll Technology & Business Intelligence",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "paid",
+   "summary": "This internship involves developing user interfaces for a global payroll platform using React and TypeScript. The intern will work on dashboards and reports, integrating frontend applications with backend services. Ideal for students interested in modern web development and enterprise systems.",
+   "bullets": [
+    "Build user interfaces with React and TypeScript",
+    "Work on global payroll platform with REST APIs",
+    "Collaborate with developers and business teams"
+   ],
+   "roleLabel": "Frontend Development",
+   "degreeLevel": "UG",
+   "degreeText": "B.E / B.Tech",
+   "keySkills": [
+    "react",
+    "typescript",
+    "html",
+    "css",
+    "git",
+    "rest apis"
+   ],
+   "stipendStatus": "unpaid",
    "postedText": "2 hours ago",
    "postedAt": 1788316266261,
    "firstSeenAt": 1788323466269,
@@ -252,7 +263,7 @@
    "company": "Cisco",
    "matchedWatchlist": "Cisco",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/cisco.jpg",
    "location": "Hyderabad, Telangana, India",
@@ -264,13 +275,19 @@
    "skills": [
     "machine learning"
    ],
-   "summary": "As a trainee, you will gain experience in impactful projects such You will collaborate with top Must have graduated in 2025/2026 and obtained final degree completion certificate or Provisional Degree Certificate Must have good communication skills, passion for technology and the desire to learn with proactive engagement in a team.",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
+   "summary": "This internship involves developing automation tools for operations teams and working on AI-driven projects to optimize network traffic. It suits students passionate about technology and eager to contribute to impactful projects in a collaborative environment.",
+   "bullets": [
+    "Develop tools to automate complex operations tasks",
+    "Work with AI and machine learning to optimize network traffic",
+    "Deploy software upgrades in a large SaaS environment"
+   ],
+   "roleLabel": "Operations Tool Development",
+   "degreeLevel": "UG",
    "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "paid",
+   "keySkills": [
+    "machine learning"
+   ],
+   "stipendStatus": "unpaid",
    "postedText": "6 hours ago",
    "postedAt": 1788301925845,
    "firstSeenAt": 1788323525849,
