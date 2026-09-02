@@ -6,30 +6,6 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/hermeus-manufacturing-engineering-intern-spring-summer-2027-ats-lever-hermeus-1bdf3754-5649-4a50-913e-b05140cb004f",
-      "url": "https://interndoor.com/us/jobs/hermeus-manufacturing-engineering-intern-spring-summer-2027-ats-lever-hermeus-1bdf3754-5649-4a50-913e-b05140cb004f",
-      "title": "Manufacturing Engineering Intern - Spring/Summer 2027 — Hermeus",
-      "content_text": "Company: Hermeus · Location: Atlanta, GA · Duration: 16 weeks\n• Support rapid prototyping of high-speed aircraft systems\n• Use CAD and simulation tools for hardware development\n• Work with military-grade manufacturing processes",
-      "date_published": "2026-09-02T01:22:55.444Z",
-      "authors": [
-        {
-          "name": "Hermeus"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hermeus-structures-mechanical-engineering-intern-spring-summer-2027-ats-lever-hermeus-60b5d40a-1065-4bd2-8c72-6b2fb69d4761",
-      "url": "https://interndoor.com/us/jobs/hermeus-structures-mechanical-engineering-intern-spring-summer-2027-ats-lever-hermeus-60b5d40a-1065-4bd2-8c72-6b2fb69d4761",
-      "title": "Structures/Mechanical Engineering Intern - Spring/Summer 2027 — Hermeus",
-      "content_text": "Company: Hermeus · Location: Atlanta, GA · Duration: 16 weeks\n• Design and build mechanical parts for aircraft systems\n• Use CAD software and prototyping tools\n• Work on flight-critical hardware with real-world impact",
-      "date_published": "2026-09-02T01:04:36.096Z",
-      "authors": [
-        {
-          "name": "Hermeus"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/hermeus-structures-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-6b65768c-a8b2-4c77-8d5f-f407e32bb878",
       "url": "https://interndoor.com/us/jobs/hermeus-structures-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-6b65768c-a8b2-4c77-8d5f-f407e32bb878",
       "title": "Structures Engineering Intern - Spring/Summer/Fall 2027 — Hermeus",
@@ -390,18 +366,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/jacobs-electrical-engineering-intern-summer-2027-4461781852",
-      "url": "https://interndoor.com/us/jobs/jacobs-electrical-engineering-intern-summer-2027-4461781852",
-      "title": "Electrical Engineering Intern - Summer 2027 — Jacobs",
-      "content_text": "Company: Jacobs · Location: Denver, CO · Duration: Summer 2027\n• Design electrical and lighting systems for airports, federal buildings, and labs\n• Use revit, autocad, and ai for drafting and coordination\n• Work with engineers on calculations and design services",
-      "date_published": "2026-09-01T17:04:39.785Z",
-      "authors": [
-        {
-          "name": "Jacobs"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/susquehanna-international-group-technology-co-op-with-drexel-university-4459550135",
       "url": "https://interndoor.com/us/jobs/susquehanna-international-group-technology-co-op-with-drexel-university-4459550135",
       "title": "Technology Co-op with Drexel University — Susquehanna International Group",
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "Hermeus"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-application-development-tx-4461774425",
+      "url": "https://interndoor.com/us/jobs/vanguard-college-to-corporate-it-internship-application-development-tx-4461774425",
+      "title": "College to Corporate IT Internship - Application Development (TX) — Vanguard",
+      "content_text": "Company: Vanguard · Location: Dallas, TX\n• Build and enhance applications for internal systems and client platforms\n• Work with modern tools and agile teams on real projects\n• Full-time paid summer internship in dallas, tx",
+      "date_published": "2026-09-01T15:11:47.021Z",
+      "authors": [
+        {
+          "name": "Vanguard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/airbus-aircraft-long-term-internship-engineering-4409673662",
+      "url": "https://interndoor.com/us/jobs/airbus-aircraft-long-term-internship-engineering-4409673662",
+      "title": "Long-term Internship - Engineering — Airbus Aircraft",
+      "content_text": "Company: Airbus Aircraft · Location: Wichita, KS\n• Support aircraft structural design with 3D modeling, 2D drafting, and analysis\n• Use CATIA, Isami, NASTRAN, PATRAN for design and fatigue studies\n• Work on real aircraft components with global impact",
+      "date_published": "2026-09-01T15:11:26.177Z",
+      "authors": [
+        {
+          "name": "Airbus Aircraft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/sap-sap-ixp-intern-adoption-insights-and-services-tempe-az-4451473070",
+      "url": "https://interndoor.com/us/jobs/sap-sap-ixp-intern-adoption-insights-and-services-tempe-az-4451473070",
+      "title": "SAP iXp Intern - Adoption, Insights & Services [Tempe, AZ] — SAP",
+      "content_text": "Company: SAP · Location: Tempe, AZ · Duration: 12 months\n• Analyze customer contracts and usage data to create measurement docs\n• Build dashboards in Excel, Power BI, and SAP Joule for adoption tracking\n• Test metering tools and automate repetitive tasks with scripts",
+      "date_published": "2026-09-01T14:38:23.080Z",
+      "authors": [
+        {
+          "name": "SAP"
         }
       ]
     }
