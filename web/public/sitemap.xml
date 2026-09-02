@@ -11,8 +11,8 @@
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/java</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/c-plus-plus</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/c-plus-plus</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/machine-learning</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/javascript</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/linux</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -35,7 +35,6 @@
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kubernetes</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/llm</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/mongodb</loc><lastmod>2026-08-20</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -43,6 +42,7 @@
   <url><loc>https://interndoor.com/skills/system-design</loc><lastmod>2026-08-28</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/jenkins</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rag</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tableau</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -281,7 +281,6 @@
   <url><loc>https://interndoor.com/jobs/intel-attraction-req-intern-4447993213</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hdfc-bank-limited-trainee-analyst-4445890480</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eli-lilly-and-company-intern-full-stack-engineer-4448149499</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/pixxel-calibration-intern-4448136135</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/upgrad-international-intern-ai-engineer-4447602250</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-software-engineering-intern-ats-microsoft-india-1970393556911730</loc><lastmod>2026-07-01</lastmod><priority>0.8</priority></url>
@@ -423,9 +422,9 @@
   <url><loc>https://interndoor.com/companies/intel</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/hdfc-bank-limited</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/eli-lilly-and-company</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/pixxel</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/glance</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/piramal-pharma-ltd</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/pixxel</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ebay</loc><lastmod>2026-08-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/sprinklr</loc><lastmod>2026-07-28</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/alphagrep-securities</loc><lastmod>2026-07-07</lastmod><priority>0.6</priority></url>
