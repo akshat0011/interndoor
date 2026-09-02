@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788353393350,
+ "generatedAt": 1788354596434,
  "region": "IN",
  "regionName": "India",
- "count": 243,
- "techCount": 243,
+ "count": 244,
+ "techCount": 244,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -203,6 +203,105 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4462188378",
+   "title": "SOC Analyst (Trainee)",
+   "company": "Gruve",
+   "matchedWatchlist": "Gruve",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/gruve.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": "₹0",
+   "duration": "6 months",
+   "applicants": "37 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "gcp",
+    "linux"
+   ],
+   "summary": "As a soc analyst trainee, you'll monitor security alerts, triage incidents, and document findings in a ticketing system. You'll rotate on 24×7 shifts and learn core security concepts and tools. This role suits students with a background in networking and operating systems.",
+   "bullets": [
+    "Monitor and triage security alerts using exaforce siem",
+    "Document investigations in linear tickets with clear evidence",
+    "Rotate on 24×7 shifts with nights and weekends",
+    "Learn siem, cloud audit, and network fundamentals"
+   ],
+   "roleLabel": "Security Monitoring",
+   "degreeLevel": "UG",
+   "degreeText": "B.E/B.Tech",
+   "keySkills": [
+    "linear tickets",
+    "linux/windows",
+    "security concepts"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "19 minutes ago",
+   "postedAt": 1788353257876,
+   "firstSeenAt": 1788354397882,
+   "lastSeenAt": 1788354397882,
+   "url": "https://www.linkedin.com/jobs/view/4462188378/",
+   "applyUrl": "https://grnh.se/29olonfk8us?gh_src=2dc205461&gh_src=ec0eddf03us&gh_src=6930f6eb2&gh_src=61bee8d12us&gh_src=1f90d4ae3us&gh_src=509adb6f3us&gh_src=7ee3f26a4us",
+   "description": null,
+   "roleFingerprint": "f5e2806c8f",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid",
+    "6 months"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4459961015",
+   "title": "Legal AI Intern",
+   "company": "Volody",
+   "matchedWatchlist": "Volody",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/volody.jpg",
+   "location": "Mumbai, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": "₹0 ",
+   "duration": null,
+   "applicants": "13 applicants",
+   "easyApply": false,
+   "skills": [
+    "llm"
+   ],
+   "summary": "This internship involves working on ai tools for contract analysis and legal automation. You'll help build ai models for legal tasks, test features, and support legal research. Ideal for law students interested in ai and legal tech.",
+   "bullets": [
+    "Review contracts using ai tools",
+    "Create legal datasets and prompts",
+    "Test ai features in legal workflows"
+   ],
+   "roleLabel": "Legal AI Support",
+   "degreeLevel": "UG/PG",
+   "degreeText": "LLB/BA LLB/LLM",
+   "keySkills": [
+    "legal research",
+    "ai tools",
+    "prompt engineering",
+    "contract analysis"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "26 minutes ago",
+   "postedAt": 1788352859294,
+   "firstSeenAt": 1788354419301,
+   "lastSeenAt": 1788354419301,
+   "url": "https://www.linkedin.com/jobs/view/4459961015/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4459961015/",
+   "description": null,
+   "roleFingerprint": "52e1367ead",
+   "cardFacts": [
+    "Mumbai",
+    "On-site"
+   ],
+   "region": "IN"
+  },
   {
    "id": "4462180440",
    "title": "Apprentice",
@@ -872,55 +971,6 @@
    "cardFacts": [
     "Mumbai Metropolitan Region",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4461564239",
-   "title": "SOC Analyst (Trainee)",
-   "company": "Gruve",
-   "matchedWatchlist": "Gruve",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/gruve.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "stipend": "₹0",
-   "duration": "6 months",
-   "applicants": "3 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "gcp",
-    "linux"
-   ],
-   "summary": "As a soc analyst trainee, you'll monitor security alerts and triage them using exaforce siem. You'll document findings in linear tickets and rotate 24×7 shifts. This role suits students with networking and security basics looking for hands-on experience in cybersecurity.",
-   "bullets": [
-    "Monitor and triage security alerts using exaforce siem",
-    "Document findings in linear tickets with clear evidence",
-    "Rotate 24×7 shifts with nights and weekends required"
-   ],
-   "roleLabel": "Security monitoring",
-   "degreeLevel": "UG",
-   "degreeText": "B.E/B.Tech",
-   "keySkills": [
-    "linear tickets",
-    "linux/windows"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788239404262,
-   "firstSeenAt": 1788239824270,
-   "lastSeenAt": 1788239824270,
-   "url": "https://www.linkedin.com/jobs/view/4461564239/",
-   "applyUrl": "https://grnh.se/29olonfk8us?gh_src=2dc205461&gh_src=ec0eddf03us&gh_src=6930f6eb2&gh_src=61bee8d12us&gh_src=1f90d4ae3us&gh_src=509adb6f3us&gh_src=7ee3f26a4us",
-   "description": null,
-   "roleFingerprint": "f5e2806c8f",
-   "cardFacts": [
-    "Pune Division",
-    "Hybrid",
-    "6 months"
    ],
    "region": "IN"
   },
@@ -4583,7 +4633,7 @@
    "postedText": null,
    "postedAt": 1787564969000,
    "firstSeenAt": 1787566342251,
-   "lastSeenAt": 1788352427860,
+   "lastSeenAt": 1788354231485,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6149788004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6149788004",
    "description": null,
@@ -5742,7 +5792,7 @@
    "postedText": null,
    "postedAt": 1787230662000,
    "firstSeenAt": 1787231465482,
-   "lastSeenAt": 1788352455383,
+   "lastSeenAt": 1788354270536,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "description": null,
@@ -6730,7 +6780,7 @@
    "postedText": null,
    "postedAt": 1787131693000,
    "firstSeenAt": 1787135871164,
-   "lastSeenAt": 1788352443325,
+   "lastSeenAt": 1788354255752,
    "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
    "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
    "description": null,
@@ -12256,7 +12306,7 @@
    "postedText": null,
    "postedAt": 1784036805000,
    "firstSeenAt": 1787508855196,
-   "lastSeenAt": 1788352427862,
+   "lastSeenAt": 1788354231487,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "description": null,
@@ -12303,7 +12353,7 @@
    "postedText": null,
    "postedAt": 1782882475000,
    "firstSeenAt": 1785938940218,
-   "lastSeenAt": 1788352442842,
+   "lastSeenAt": 1788354255132,
    "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556911730",
    "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556911730",
    "description": null,
@@ -12444,7 +12494,7 @@
    "postedText": null,
    "postedAt": 1782218042000,
    "firstSeenAt": 1785940207500,
-   "lastSeenAt": 1788352434470,
+   "lastSeenAt": 1788354242393,
    "url": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "applyUrl": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "description": null,
