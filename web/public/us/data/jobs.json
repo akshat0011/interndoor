@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788323668072,
+ "generatedAt": 1788323920636,
  "region": "US",
  "regionName": "United States",
- "count": 1140,
- "techCount": 1140,
+ "count": 1139,
+ "techCount": 1139,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -514,7 +514,6 @@
   "Sunnyvale, CA",
   "Sunrise, FL",
   "Syracuse, NY",
-  "Tallahassee, FL",
   "Taylor, TX",
   "Tempe, AZ",
   "Thousand Oaks, California, United States",
@@ -40242,50 +40241,6 @@
    "cardFacts": [
     "$40 / hour",
     "Los Gatos",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4459614123",
-   "title": "Structural Design Intern",
-   "company": "Parsons Corporation",
-   "matchedWatchlist": "Parsons Corporation",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/parsons-corporation.jpg",
-   "location": "Tallahassee, FL",
-   "workplaceType": "On-site",
-   "stipend": "$23 – $40",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting structural design projects by drafting plans and coordinating with engineers. It suits students pursuing STEM degrees interested in infrastructure and construction.",
-   "bullets": [
-    "Assist with drafting and design for projects from planning to construction",
-    "Use engineering software and follow department standards",
-    "Coordinate with engineers and technicians on design details"
-   ],
-   "roleLabel": "Structural Drafting",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "drafting standards"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "1 hour ago",
-   "postedAt": 1787788105118,
-   "firstSeenAt": 1787791705120,
-   "lastSeenAt": 1787791705120,
-   "url": "https://www.linkedin.com/jobs/view/4459614123/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4459614123/",
-   "description": null,
-   "roleFingerprint": "601200eca6",
-   "cardFacts": [
-    "$23 – $40",
-    "Tallahassee",
     "On-site"
    ],
    "region": "US"
