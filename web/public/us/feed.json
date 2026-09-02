@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/microsoft-software-engineer-cloud-and-distributed-backend-intern-opportunities-f-4448879065",
+      "url": "https://interndoor.com/us/jobs/microsoft-software-engineer-cloud-and-distributed-backend-intern-opportunities-f-4448879065",
+      "title": "Software Engineer: Cloud & Distributed Backend Intern Opportunities for University Students, Redmond — Microsoft",
+      "content_text": "Company: Microsoft · Location: Redmond, WA\n• Build and operate large-scale cloud services and distributed systems\n• Work with engineers on backend services, APIs, and infrastructure\n• Collaborate on high availability and operational excellence systems",
+      "date_published": "2026-09-02T16:40:00.929Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/microsoft-software-engineer-data-platform-analytics-intern-opportunities-for-uni-4448864567",
+      "url": "https://interndoor.com/us/jobs/microsoft-software-engineer-data-platform-analytics-intern-opportunities-for-uni-4448864567",
+      "title": "Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond — Microsoft",
+      "content_text": "Company: Microsoft · Location: Redmond, WA\n• Build data pipelines and analytics platforms for products used by millions\n• Work with SQL, Python, and cloud-based data tools\n• Collaborate on telemetry systems and reporting solutions",
+      "date_published": "2026-09-02T16:35:10.631Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/fm-research-technical-intern-v-4443311724",
+      "url": "https://interndoor.com/us/jobs/fm-research-technical-intern-v-4443311724",
+      "title": "Research Technical Intern V — FM",
+      "content_text": "Company: FM · Location: Norwood, MA · Duration: 3–6 months\n• Design and build lab-scale setups to simulate data center faults and pre-fire conditions\n• Analyze data using Python, MATLAB, or R to model early fire detection methods\n• Write technical reports and present findings on anomaly detection strategies",
+      "date_published": "2026-09-02T16:33:16.332Z",
+      "authors": [
+        {
+          "name": "FM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/builders-firstsource-it-internship-remote-summer-2027-4461306354",
+      "url": "https://interndoor.com/us/jobs/builders-firstsource-it-internship-remote-summer-2027-4461306354",
+      "title": "IT Internship - Remote (Summer 2027) — Builders FirstSource",
+      "content_text": "Company: Builders FirstSource · Location: Irving, TX · Duration: Summer 2027\n• Support project elevate by testing business processes and validating systems\n• Use excel and teams to analyze data and document test results\n• Collaborate with cross-functional teams on enterprise technology initiatives",
+      "date_published": "2026-09-02T16:32:41.681Z",
+      "authors": [
+        {
+          "name": "Builders FirstSource"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/capital-one-current-master-s-data-science-internship-summer-2027-4443073583",
+      "url": "https://interndoor.com/us/jobs/capital-one-current-master-s-data-science-internship-summer-2027-4443073583",
+      "title": "Current Master's - Data Science Internship - Summer 2027 — Capital One",
+      "content_text": "Company: Capital One · Location: San Jose, CA · Duration: 6 months\n• Analyze business data with open-source tools and internal analytics platforms\n• Build data science models to inform customer solutions and leadership decisions\n• Work in a team focused on machine learning and quant initiatives across the enterprise",
+      "date_published": "2026-09-02T16:10:38.273Z",
+      "authors": [
+        {
+          "name": "Capital One"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-software-developer-intern-2027-4453030552",
       "url": "https://interndoor.com/us/jobs/ibm-software-developer-intern-2027-4453030552",
       "title": "Software Developer Intern 2027 — IBM",
@@ -86,6 +146,30 @@
       "authors": [
         {
           "name": "Capital One"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453046494",
+      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453046494",
+      "title": "Site Reliability Engineer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Lowell, MA\n• Monitor and maintain production systems 24/7 to ensure reliability\n• Use CI/CD tools to deploy and configure services at scale\n• Collaborate with teams to troubleshoot and resolve client issues\n• Apply security patches and support product teams on incidents",
+      "date_published": "2026-09-02T15:43:10.975Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/trane-technologies-2027-engineering-intern-4460989964",
+      "url": "https://interndoor.com/us/jobs/trane-technologies-2027-engineering-intern-4460989964",
+      "title": "2027 Engineering Intern — Trane Technologies",
+      "content_text": "Company: Trane Technologies · Location: Davidson, NC\n• Work on product development, failure analysis, and design testing\n• Use engineering tools and collaborate with senior leaders\n• 12-week on-site internship in Davidson, NC",
+      "date_published": "2026-09-02T15:42:29.981Z",
+      "authors": [
+        {
+          "name": "Trane Technologies"
         }
       ]
     },
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-dram-ip-circuits-design-engineer-4451658951",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-dram-ip-circuits-design-engineer-4451658951",
-      "title": "Intern - DRAM IP Circuits Design Engineer — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Support design and simulation of analog and mixed-signal circuits for DRAM IP\n• Use SPICE, Verilog, and AI tools for circuit verification and automation\n• Collaborate with cross-functional teams on memory product development",
-      "date_published": "2026-09-02T09:10:26.254Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4431533760",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4431533760",
-      "title": "Quantitative Research Internship - PhD: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: New York, NY · Duration: Summer 2027\n• Build alphas on actual trading strategies\n• Use python and c++ for data analysis\n• Work with top-tier mentors in quant finance",
-      "date_published": "2026-09-02T09:10:20.603Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-cmp-4451661937",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-cmp-4451661937",
-      "title": "Intern - Process Development Engineer, 3D DRAM CMP — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Develop and evaluate CMP processes for advanced DRAM technologies\n• Use AI tools and statistical analysis to improve process efficiency\n• Present technical findings to engineering teams at internship end",
-      "date_published": "2026-09-02T09:07:31.863Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/elevance-health-information-security-co-op-internship-2027-4462165107",
-      "url": "https://interndoor.com/us/jobs/elevance-health-information-security-co-op-internship-2027-4462165107",
-      "title": "Information Security Co-Op Internship – 2027 — Elevance Health",
-      "content_text": "Company: Elevance Health · Location: Indianapolis, IN · Duration: 12 months\n• Scan servers and networks for security risks before deployment\n• Use tools to check code for vulnerabilities in pre-production apps\n• Respond to security alerts in the Cyber Security Operations Center\n• Work with teams to protect data for millions of members",
-      "date_published": "2026-09-02T09:05:36.689Z",
-      "authors": [
-        {
-          "name": "Elevance Health"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ups-ups-global-finance-summer-2027-analytics-internship-4460949326",
-      "url": "https://interndoor.com/us/jobs/ups-ups-global-finance-summer-2027-analytics-internship-4460949326",
-      "title": "UPS Global Finance Summer 2027 Analytics Internship — UPS",
-      "content_text": "Company: UPS · Location: Atlanta, GA · Duration: 24 months\n• Analyzes data and builds models to support business decisions\n• Uses sql and power bi for reporting and visualization\n• Works with cross-functional teams on cost reduction projects",
-      "date_published": "2026-09-02T07:42:28.702Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-research-algorithm-and-data-science-intern-4462114911",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-research-algorithm-and-data-science-intern-4462114911",
-      "title": "R&D Research Algorithm & Data Science Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: 12 weeks\n• Build deep learning models to predict cardiac events from ECG data\n• Use Python and MATLAB for signal processing and algorithm development\n• Collaborate on AI/ML projects to improve implantable device performance",
-      "date_published": "2026-09-02T06:16:29.611Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925",
-      "title": "Internship, Physics Engine Development Engineer, Optimus (Summer 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop high-fidelity physics simulations for robotics applications\n• Work with hardware and training teams to bridge sim-to-real gaps\n• Requires C++, Python, CUDA, and GPU programming skills",
-      "date_published": "2026-09-02T05:32:25.437Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
