@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4462180440",
+      "url": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4462180440",
+      "title": "Apprentice — AtkinsRéalis",
+      "content_text": "Company: AtkinsRéalis · Location: Bengaluru East, Karnataka, India\n• Build BIM models for highways, rail, bridges using Civil 3D and Revit\n• Support model coordination, clash detection, and quality checks\n• Learn BIM standards, digital workflows, and project management tools",
+      "date_published": "2026-09-02T12:29:41.218Z",
+      "authors": [
+        {
+          "name": "AtkinsRéalis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/gokwik-intern-ai-4460987252",
+      "url": "https://interndoor.com/jobs/gokwik-intern-ai-4460987252",
+      "title": "Intern - AI — GoKwik",
+      "content_text": "Company: GoKwik · Location: Bengaluru, Karnataka, India\n• Analyse brand p&l and identify growth opportunities\n• Build 90-day plans and monitor key d2c metrics\n• Use ai to automate workflows and improve playbooks",
+      "date_published": "2026-09-02T12:19:45.772Z",
+      "authors": [
+        {
+          "name": "GoKwik"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/american-express-apprentice-4460978118",
       "url": "https://interndoor.com/jobs/american-express-apprentice-4460978118",
       "title": "Apprentice — American Express",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Philips"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-trainee-consultant-sap-process-integration-process-orchestration-pi-po-4448514424",
-      "url": "https://interndoor.com/jobs/yash-technologies-trainee-consultant-sap-process-integration-process-orchestration-pi-po-4448514424",
-      "title": "Trainee Consultant - SAP Process Integration/Process Orchestration (PI/PO) Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Hyderabad, Telangana, India\n• Support integration design, development, and deployment of SAP PI/PO solutions\n• Work with OData, SOAP, HTTP, and other adapters for message exchange\n• Perform testing using Postman and SOAPUI for integration flows",
-      "date_published": "2026-08-26T09:06:30.459Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/trellix-engineering-intern-ats-workday-trellix-wd1-enterprisecareers-jr0037801",
-      "url": "https://interndoor.com/jobs/trellix-engineering-intern-ats-workday-trellix-wd1-enterprisecareers-jr0037801",
-      "title": "Engineering Intern — Trellix",
-      "content_text": "Company: Trellix · Location: India, Bangalore\n• Resolve customer issues via phone/email with urgency\n• Debug complex network problems in multi-vendor environments\n• Collaborate with support teams and escalate critical issues\n• Document technical analysis and customer communication",
-      "date_published": "2026-08-26T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Trellix"
         }
       ]
     }
