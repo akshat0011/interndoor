@@ -3688,7 +3688,25 @@ function writeFeeds(jobs, publicDir, region = DEFAULT_REGION) {
     .sort((a, b) => (b.postedAt ?? b.firstSeenAt ?? 0) - (a.postedAt ?? a.firstSeenAt ?? 0))
     .slice(0, 50);
 
-  const now = new Date().toUTCString();
+  /* THE NEWEST ITEM'S OWN DATE, NEVER THE CLOCK.
+     lastBuildDate means "the last time the content of the channel changed",
+     and the channel IS the 50 items below — so the newest one's pubDate is
+     both the honest answer and a stable one. `new Date()` was neither: the
+     feed is rebuilt every 30 minutes whether or not a posting arrived, so the
+     file was rewritten and committed to a public repo 48 times a day per
+     board. Measured over the last 40 commits that touched it: it changed in
+     all 40, and in 20 of them this line was the ONLY difference.
+     Exactly the rule the sitemap already follows — lastmod carries the date of
+     the newest posting behind the URL, not the clock — and for the same
+     reason: a feed that claims to have changed every half hour teaches a
+     reader to stop believing the field. Omitted entirely when there is nothing
+     to date, because it is optional and a guess is worse than silence. */
+  const newestAt = recent.length
+    ? (recent[0].postedAt ?? recent[0].firstSeenAt ?? 0)
+    : 0;
+  const built = newestAt
+    ? `  <lastBuildDate>${new Date(newestAt).toUTCString()}</lastBuildDate>\n`
+    : '';
   const facts = (j) => [
     j.company && `Company: ${j.company}`,
     j.location && `Location: ${j.location}`,
@@ -3720,8 +3738,7 @@ function writeFeeds(jobs, publicDir, region = DEFAULT_REGION) {
   <atom:link href="${regionUrl('/feed.xml', region)}" rel="self" type="application/rss+xml"/>
   <description>New engineering internships ${esc(region.inName)}, listed within minutes of going live.</description>
   <language>${region.hreflang.toLowerCase()}</language>
-  <lastBuildDate>${now}</lastBuildDate>
-${items}
+${built}${items}
 </channel>
 </rss>
 `);

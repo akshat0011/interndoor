@@ -891,6 +891,37 @@ check('and is not tabbable', /name="company" tabindex="-1"/.test(subJob), true);
 check('the reply is a live region', /class="sub-msg" role="status" aria-live="polite"/.test(subJob), true);
 
 //==============================================================================
+console.log('\n== the feed is dated by its newest item, not by the clock ==');
+//==============================================================================
+/* lastBuildDate was `new Date()`, so the feed was rewritten and committed on
+   every 30-minute publish whether or not a posting had arrived. Measured over
+   the last 40 commits that touched web/public/feed.xml: it changed in all 40,
+   and in 20 of them that line was the only difference.
+   The fixture is dated in the PAST on purpose. With a `new Date()` build stamp
+   the two values differ by however long the suite has been running, so this
+   fails immediately and deterministically rather than only when a render
+   happens to straddle a second boundary. */
+const feedDir = mkdtempSync(join(tmpdir(), 'interndoor-feed-'));
+const feedAt = Date.UTC(2026, 6, 15, 9, 30, 0);
+writePages([
+  { id: 'f1', company: 'Acme', title: 'Newer Intern', location: 'Pune, India', bullets: ['a', 'b'], postedAt: feedAt },
+  { id: 'f2', company: 'Acme', title: 'Older Intern', location: 'Pune, India', bullets: ['a', 'b'], postedAt: feedAt - 86_400_000 },
+], feedDir, [], {});
+const feedXml = readFileSync(join(feedDir, 'feed.xml'), 'utf8');
+const builtAt = (feedXml.match(/<lastBuildDate>([^<]*)<\/lastBuildDate>/) || [])[1];
+const firstPub = (feedXml.match(/<pubDate>([^<]*)<\/pubDate>/) || [])[1];
+check('lastBuildDate is present', typeof builtAt, 'string');
+check('and equals the newest item’s own pubDate', builtAt, firstPub);
+check('which is the fixture date, not now', builtAt, new Date(feedAt).toUTCString());
+// Nothing to date is said with silence rather than with a guess.
+const emptyFeedDir = mkdtempSync(join(tmpdir(), 'interndoor-feed-empty-'));
+writePages([], emptyFeedDir, [], {});
+check('an empty feed carries no lastBuildDate at all',
+  /<lastBuildDate>/.test(readFileSync(join(emptyFeedDir, 'feed.xml'), 'utf8')), false);
+rmSync(feedDir, { recursive: true, force: true });
+rmSync(emptyFeedDir, { recursive: true, force: true });
+
+//==============================================================================
 console.log('\n== the hub answer bar is a well-formed definition list ==');
 //==============================================================================
 /* A <div> inside a <dl> may contain ONLY <dt> and <dd>. The sub-line under
