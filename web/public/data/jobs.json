@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788309426484,
+ "generatedAt": 1788309477767,
  "region": "IN",
  "regionName": "India",
- "count": 245,
- "techCount": 245,
+ "count": 241,
+ "techCount": 241,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -53,7 +53,6 @@
   "FynTune Solution Private Limited",
   "GE HealthCare",
   "GE Vernova",
-  "GSK",
   "Glance",
   "GoKwik",
   "GreedyGame",
@@ -132,7 +131,6 @@
   "Tower Research Capital",
   "Trellix",
   "Valeo",
-  "WeWork India",
   "Wells Fargo",
   "West Pharmaceutical Services",
   "Whatfix",
@@ -7951,42 +7949,6 @@
    "region": "IN"
   },
   {
-   "id": "4453215117",
-   "title": "Intern",
-   "company": "Quest Global",
-   "matchedWatchlist": "Quest Global",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/quest-global.jpg",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": "15 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting engineering teams with diverse projects, contributing to problem-solving and innovation. It suits students passionate about making a tangible impact through technical work.",
-   "bullets": [],
-   "roleLabel": "Engineering Support",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "57 minutes ago",
-   "postedAt": 1786640500419,
-   "firstSeenAt": 1786643920429,
-   "lastSeenAt": 1786652879637,
-   "url": "https://www.linkedin.com/jobs/view/4453215117/",
-   "applyUrl": "https://careers.quest-global.com/global/en/job/QGRQGAGLOBALP121027EXTERNALENGLOBAL/Intern?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "0ffc7c97d1",
-   "cardFacts": [
-    "Mumbai"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4450809558",
    "title": "Intern - C++ Linux",
    "company": "HARMAN India",
@@ -8080,49 +8042,6 @@
     "Bengaluru",
     "Hybrid",
     "3–6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4450815101",
-   "title": "Intern Bios Programming",
-   "company": "GSK",
-   "matchedWatchlist": "GSK",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/gsk.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "13 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves writing code under supervision, following technical guidelines, and keeping managers informed of progress. It suits students with a background in programming and an interest in scientific software development.",
-   "bullets": [
-    "Writes code based on specifications under supervision",
-    "Uses programming languages and follows technical documentation",
-    "Communicates progress and issues to manager regularly"
-   ],
-   "roleLabel": "Programming Intern",
-   "degreeLevel": null,
-   "degreeText": "MSc",
-   "keySkills": [
-    "programming languages"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1786632355317,
-   "firstSeenAt": 1786632775325,
-   "lastSeenAt": 1786670742874,
-   "url": "https://www.linkedin.com/jobs/view/4450815101/",
-   "applyUrl": "https://jobs.gsk.com/gb/en/job/446343/Intern-Bios-Programming?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "a41b0ec062",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
    ],
    "region": "IN"
   },
@@ -8873,49 +8792,6 @@
    "cardFacts": [
     "Gurugram",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4452481266",
-   "title": "AV Interns - Mumbai (695838)",
-   "company": "WeWork India",
-   "matchedWatchlist": "WeWork India",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/wework-india.jpg",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting AV systems and infrastructure in a growing workspace company. You'll manage equipment, documentation, and collaborate with teams. Ideal for someone interested in tech support and operational roles.",
-   "bullets": [
-    "Troubleshoot and maintain AV equipment for video conferencing systems",
-    "Manage inventory and documentation using Gdoc and ticketing systems",
-    "Collaborate with teams and vendors for break-fix issues and walkthroughs"
-   ],
-   "roleLabel": "AV Support",
-   "degreeLevel": "UG",
-   "degreeText": "B.Tech",
-   "keySkills": [
-    "gdoc",
-    "av equipment"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1786461121436,
-   "firstSeenAt": 1786461781449,
-   "lastSeenAt": 1786515551395,
-   "url": "https://www.linkedin.com/jobs/view/4452481266/",
-   "applyUrl": "https://weworkindia.hire.trakstar.com/jobs/fk0zxdx/",
-   "description": null,
-   "roleFingerprint": "d2cabd7011",
-   "cardFacts": [
-    "Mumbai"
    ],
    "region": "IN"
   },
@@ -10055,57 +9931,6 @@
     "Bengaluru",
     "Hybrid",
     "6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4449535942",
-   "title": "Software Development Engineer - Mobile & Commerce (Apprentice)",
-   "company": "HighLevel",
-   "matchedWatchlist": "HighLevel",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/highlevel.jpg",
-   "location": "India",
-   "workplaceType": "Remote",
-   "stipend": "₹50,000 / month",
-   "duration": "12 months",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "kubernetes",
-    "ci/cd",
-    "microservices"
-   ],
-   "summary": "This apprenticeship involves testing and automating commerce systems that handle payments and ledger updates. You'll work with Go and distributed systems in a remote team, contributing to real projects with mentorship and structured learning. Ideal for someone passionate about software quality and automation.",
-   "bullets": [
-    "Write tests for commerce systems handling payments and ledger updates",
-    "Work with Go, protobuf, and distributed systems in a remote team",
-    "Merge to main in week two with on-call responsibilities"
-   ],
-   "roleLabel": "Software Testing",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "go",
-    "protobuf",
-    "ci/cd",
-    "api testing"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "22 hours ago",
-   "postedAt": 1786356744613,
-   "firstSeenAt": 1786435944620,
-   "lastSeenAt": 1786439680475,
-   "url": "https://www.linkedin.com/jobs/view/4449535942/",
-   "applyUrl": "https://jobs.lever.co/gohighlevel/f37987e1-cce3-4f4d-b2b1-4f0deccfdf8d/apply?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "5fbfc4fcbf",
-   "cardFacts": [
-    "₹50,000 / month",
-    "India",
-    "Remote"
    ],
    "region": "IN"
   },

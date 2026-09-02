@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788309426487,
+ "generatedAt": 1788309477769,
  "region": "US",
  "regionName": "United States",
- "count": 1220,
- "techCount": 1220,
+ "count": 1216,
+ "techCount": 1216,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -9896,48 +9896,6 @@
    "region": "US"
   },
   {
-   "id": "4461709424",
-   "title": "2027 Summer Intern - Crystal Springs",
-   "company": "Hitachi Energy",
-   "matchedWatchlist": "Hitachi",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/hitachi-energy.jpg",
-   "location": "Raleigh, NC",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "12 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on experience in engineering projects focused on sustainable energy solutions. Ideal for students with a background in engineering or related fields, the role involves working with CAD and simulation tools. The 12-week paid internship is based in Crystal Springs, MS, and provides opportunities to contribute to meaningful projects with a global team.",
-   "bullets": [
-    "Support engineering projects in sustainable energy solutions",
-    "Tools include CAD, simulation software, and project management platforms",
-    "12-week paid internship in Crystal Springs, MS with global team"
-   ],
-   "roleLabel": "Engineering Intern",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Engineering",
-   "keySkills": [],
-   "stipendStatus": "paid",
-   "postedText": "15 minutes ago",
-   "postedAt": 1788258661083,
-   "firstSeenAt": 1788259561084,
-   "lastSeenAt": 1788259561084,
-   "url": "https://www.linkedin.com/jobs/view/4461709424/",
-   "applyUrl": "https://www.hitachienergy.com/careers/open-jobs/details/JID3-212965?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "25e7e03d6a",
-   "cardFacts": [
-    "Raleigh",
-    "On-site",
-    "12 weeks"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461706423",
    "title": "Internship, Fullstack Engineer, Infrastructure Engineering (Winter/Spring 2027)",
    "company": "Tesla",
@@ -17432,51 +17390,6 @@
     "$24 – $33",
     "Livonia",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460076445",
-   "title": "2027 Energy Engineering Intern (Remote)",
-   "company": "Trane Technologies",
-   "matchedWatchlist": "Trane Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/trane-technologies.jpg",
-   "location": "Davidson, NC",
-   "workplaceType": "Remote",
-   "stipend": "$23 – $31",
-   "duration": "12 months",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing energy data, supporting audits, and collaborating on software tools to improve energy efficiency in commercial and industrial buildings. It suits students interested in energy engineering and sustainability.",
-   "bullets": [
-    "Assist in energy audits and project risk assessments for customer facilities",
-    "Collaborate on software tools for energy reporting and usability improvements",
-    "Analyze data trends and support technical qualification of energy opportunities"
-   ],
-   "roleLabel": "Energy Engineering Intern",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "energy analysis",
-    "project management"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "22 minutes ago",
-   "postedAt": 1788211891886,
-   "firstSeenAt": 1788213211889,
-   "lastSeenAt": 1788213211889,
-   "url": "https://www.linkedin.com/jobs/view/4460076445/",
-   "applyUrl": "https://careers.tranetechnologies.com/global/en/job/TRTEGLOBALJR15126EXTERNALENGLOBAL/2027-Energy-Engineering-Intern-Remote?utm_source=APPLICANT_SOURCE_TALENT_MARKETING_JOB_BOARD_LINKEDIN_PINNED_JOB_SLOT__PAID&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7ef8d58b08",
-   "cardFacts": [
-    "$23 – $31",
-    "Davidson",
-    "Remote"
    ],
    "region": "US"
   },
@@ -57905,52 +57818,6 @@
    "region": "US"
   },
   {
-   "id": "ats:greenhouse:formlabs:8108754",
-   "title": "Social Media Engineering Intern (Fall 2026)",
-   "company": "Formlabs",
-   "matchedWatchlist": "Formlabs",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/formlabs.png",
-   "location": "Somerville, MA",
-   "workplaceType": null,
-   "stipend": "$1,050 – $1,400",
-   "duration": "Fall 2026",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves creating and publishing social media content that highlights 3d printing projects. Interns will film, edit, and share videos showcasing engineering and design work. The role suits students passionate about storytelling and tech, with hands-on experience in video editing and 3d printing.",
-   "bullets": [
-    "Film edit and publish social videos from concept to share",
-    "Use 3d printers and video tools to create engaging content",
-    "Work on viral trends and maker community stories",
-    "Based in somerville, ma for full-time internship"
-   ],
-   "roleLabel": "Social media video producer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "video editing",
-    "3d printing"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1785942447000,
-   "firstSeenAt": 1787503459025,
-   "lastSeenAt": 1788271073763,
-   "url": "https://careers.formlabs.com/job/8108754/apply/?gh_jid=8108754",
-   "applyUrl": "https://careers.formlabs.com/job/8108754/apply/?gh_jid=8108754",
-   "description": null,
-   "roleFingerprint": "a83e5b9709",
-   "cardFacts": [
-    "$1,050 – $1,400",
-    "Somerville",
-    "Fall 2026"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:lever:belvederetrading:34369a5c-55c0-4e9f-9d2e-4f21b9418bee",
    "title": "Quantitative Trader - Entry Level 2027",
    "company": "Belvedere Trading",
@@ -59927,55 +59794,6 @@
     "$105,000 – $122,500 / year",
     "Hawthorne",
     "3 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:formlabs:7747228",
-   "title": "Global Sourcing Intern (Fall 2026)",
-   "company": "Formlabs",
-   "matchedWatchlist": "Formlabs",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/formlabs.png",
-   "location": "Somerville, MA",
-   "workplaceType": null,
-   "stipend": "$1,350 – $1,550",
-   "duration": "Fall 2026",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This internship involves sourcing and optimizing global suppliers for Formlabs' 3D printing materials. You'll analyze market trends, support product rollout planning, and work with engineers to enhance supply chain efficiency. Ideal for students with technical or engineering backgrounds interested in procurement and global supply chains.",
-   "bullets": [
-    "Research and evaluate global suppliers for cost, quality, and reliability",
-    "Support supply chain planning for new product launches",
-    "Analyze market trends to inform sourcing decisions",
-    "Collaborate with engineering teams to improve material sourcing"
-   ],
-   "roleLabel": "Global Sourcing",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "market analysis",
-    "supply chain planning",
-    "project management"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1784559526000,
-   "firstSeenAt": 1787503459021,
-   "lastSeenAt": 1787836299795,
-   "url": "https://careers.formlabs.com/job/7747228/apply/?gh_jid=7747228",
-   "applyUrl": "https://careers.formlabs.com/job/7747228/apply/?gh_jid=7747228",
-   "description": null,
-   "roleFingerprint": "914baf9444",
-   "cardFacts": [
-    "$1,350 – $1,550",
-    "Somerville",
-    "Fall 2026"
    ],
    "region": "US"
   },
