@@ -169,6 +169,19 @@ a.jp-crest:active { transform: scale(.97); }
   background: color-mix(in oklab, var(--hot) 10%, transparent);
 }
 .pill.is-hot i { animation: livedot 1.8s var(--snap) infinite; }
+/* THE EIGHTH TIME AN ACCENT HAS BEEN PUT ON A TINT OF ITSELF, and the eighth
+   time it has cost exactly what the token had spare. --hot #c2410c on its own
+   10% tint measures 3.40 on --bg-2, 3.68 on --bg and 4.02 on --card-2 — under
+   AA on every ground a job page actually puts this pill on, at bold 10.5px.
+   #9a3412 is the value .sub-msg already converged on and clears the worst of
+   them at 4.79. Light theme and this element only: the token behaves correctly
+   everywhere it is not sitting on itself.
+   The dot inherits currentColor, so it moves with the text. The border is
+   decoration at 45% and is not held to a text ratio. */
+:root[data-theme="light"] .pill.is-hot { color: #9a3412; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .pill.is-hot { color: #9a3412; }
+}
 .pill.is-fresh {
   color: var(--live); border-color: color-mix(in oklab, var(--live) 40%, transparent);
   background: color-mix(in oklab, var(--live) 8%, transparent);
