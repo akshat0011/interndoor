@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002",
+      "url": "https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002",
+      "title": "Intern Hiring 2027 — AlphaGrep Securities",
+      "content_text": "Company: AlphaGrep Securities · Location: Bengaluru\n• Design and deploy high-frequency trading algorithms\n• Analyze market data for patterns using python or c++\n• Build tools and libraries for market analysis\n• Work on exchange simulators and data modeling",
+      "date_published": "2026-09-02T08:38:41.000Z",
+      "authors": [
+        {
+          "name": "AlphaGrep Securities"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/surveysparrow-intern-salesforce-developer-4462145430",
       "url": "https://interndoor.com/jobs/surveysparrow-intern-salesforce-developer-4462145430",
       "title": "Intern - Salesforce Developer — SurveySparrow",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "BNP Paribas"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-intern-4457499983",
-      "url": "https://interndoor.com/jobs/micron-technology-intern-4457499983",
-      "title": "Intern — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Work on semiconductor design and development projects\n• Engage with data science and ai-driven solutions\n• Collaborate on engineering and manufacturing initiatives",
-      "date_published": "2026-08-25T18:12:58.096Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }
