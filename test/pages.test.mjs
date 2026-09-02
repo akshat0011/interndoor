@@ -37,11 +37,21 @@ check('slug is filesystem-safe', /^[a-z0-9-]+$/.test(jobSlug(ats)), true);
 check('a missing id throws rather than inventing a URL',
   (() => { try { jobSlug({ id: null, company: 'X', title: 'Y' }); return 'returned a slug'; } catch { return 'threw'; } })(),
   'threw');
-// Two Workday requisitions from one tenant differ only in their last characters.
-// Capping the id at slugify's 70 would collide them onto a single page.
-const wd = (n) => ({ company: 'Piramal Pharma', title: 'Intern', id: `ats:workday:piramalpharma:wd102:PIRAMAL_EXTERNAL_CAREERS:R0000${n}` });
-check('long ids are not truncated', jobSlug(wd(2295)) !== jobSlug(wd(2296)), true);
-check('long id survives in full', jobSlug(wd(2295)).endsWith('r00002295'), true);
+/* Two Workday requisitions from one tenant differing only in their last
+   characters. Capping the id at slugify's 70 would collide them onto one page.
+
+   THE FIXTURE HAS TO EXCEED 70, AND THE OLD ONE DID NOT. It used a Piramal id
+   whose slug is 66 characters, so a cap of 70 could never have touched it and
+   both assertions below passed just as loudly against a truncating slugify —
+   the limit they claim to pin was never reached. Caught by mutation on 2 Sep
+   2026. This Rockwell shape slugs to 72 and its two variants differ only at
+   characters 71-72, so a cap collides them: `slugify(a, 70) === slugify(b, 70)`
+   is verified false-when-fixed, true-when-broken. Four real ids on the live
+   boards are over 70, so this is a shipping shape, not a hypothetical. */
+const wd = (n) => ({ company: 'Rockwell Automation', title: 'Intern', id: `ats:workday:rockwellautomation:wd1:External:ROCKWELL_AUTOMATION:R26-504${n}` });
+check('the fixture actually reaches the cap', slugify(wd(2).id, Infinity).length > 70, true);
+check('long ids are not truncated', jobSlug(wd(2)) !== jobSlug(wd(3)), true);
+check('long id survives in full', jobSlug(wd(2)).endsWith('r26-5042'), true);
 
 console.log('\n== slug parity with the browser copies ==');
 // app.js and page.js each duplicate this function to link to the generated
@@ -59,6 +69,36 @@ for (const file of ['app.js', 'page.js']) {
     check(`parity ${file}: ${job.company}`, browserSlug(job), jobSlug(job));
   }
 }
+
+/* applications.js IS THE FOURTH COPY and was not pinned here.
+   It builds the slug from its own `slugPart` rather than an inline helper, so
+   the extractor above cannot reach it — which is exactly why it was missed:
+   the loop looked complete. Its shape differs too (an explicit `Infinity`
+   branch instead of relying on `slice(0, Infinity)`), so it is the copy most
+   likely to drift on an edit. A drift here breaks the "Posting" link on every
+   tracked application, which is the one place a reader returns to weeks later. */
+const appsSlug = (() => {
+  const src = readFileSync(join(ROOT, 'web', 'public', 'applications.js'), 'utf8');
+  const cut = (needle) => {
+    const start = src.indexOf(needle);
+    let i = src.indexOf('{', start), depth = 0, end = i;
+    for (; end < src.length; end++) {
+      if (src[end] === '{') depth++;
+      else if (src[end] === '}') { depth--; if (!depth) { end++; break; } }
+    }
+    return src.slice(start, end);
+  };
+  return new Function(`${cut('function slugPart(s, max) {')}; ${cut('function jobPageSlug(row) {')}; return jobPageSlug;`)();
+})();
+for (const job of [ats, linkedin, { id: 'x', company: 'Ford & Co', title: 'Intern — Data' },
+  { id: 'y', company: '', title: '---' }, { id: 8, company: 'Numeric Id', title: 'Intern' }]) {
+  check(`parity applications.js: ${job.company || '(empty)'}`, appsSlug(job), jobSlug(job));
+}
+// The id must survive whole here too, or a Workday pair collides on the tracker.
+check('parity applications.js: long id not truncated',
+  appsSlug(wd(2)) !== appsSlug(wd(3)), true);
+check('parity applications.js: and matches the server slug',
+  appsSlug(wd(2)), jobSlug(wd(2)));
 
 console.log('\n== slugify ==');
 check('ampersand becomes and', slugify('Ford & Co'), 'ford-and-co');
