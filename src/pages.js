@@ -2116,8 +2116,17 @@ function answerBar(live, prof, region) {
   // right because they come off ONE board read in one pass.
   const verified = (live ?? []).map(verifiedAt).filter(Boolean).sort((a, b) => b - a)[0] ?? null;
 
+  /* THE SUB-LINE GOES INSIDE THE <dd>, NOT BESIDE IT.
+     A <div> inside a <dl> may contain only <dt> and <dd> — that is the whole
+     reason the wrapper is allowed there at all — so a sibling <p> makes the
+     list malformed on every hub that renders one. axe reports it as
+     `definition-list`, serious, and it was on all ~170 of them. A <dd> is flow
+     content, so the paragraph is valid once it is inside; and it belongs to
+     that answer anyway ("varies by role" describes the answer above it, not
+     the grid cell). `.ans p` in page.css resets the weight and tracking the
+     <dd> now passes down to it. */
   const cell = (k, v, sub, cls = '') => `<div class="ans${cls}">
-        <dt>${esc(k)}</dt><dd>${v}</dd>${sub ? `<p>${sub}</p>` : ''}</div>`;
+        <dt>${esc(k)}</dt><dd>${v}${sub ? `<p>${sub}</p>` : ''}</dd></div>`;
 
   const cells = [
     pay ? cell('They pay', esc(pay.text),

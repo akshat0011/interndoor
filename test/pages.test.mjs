@@ -890,5 +890,31 @@ check('and is not tabbable', /name="company" tabindex="-1"/.test(subJob), true);
 // The status line is announced, or a screen-reader user never learns it worked.
 check('the reply is a live region', /class="sub-msg" role="status" aria-live="polite"/.test(subJob), true);
 
+//==============================================================================
+console.log('\n== the hub answer bar is a well-formed definition list ==');
+//==============================================================================
+/* A <div> inside a <dl> may contain ONLY <dt> and <dd>. The sub-line under
+   each answer was a sibling <p>, which made the list malformed on all 319 hubs
+   that render one — axe flags it `definition-list`, serious. It is inside the
+   <dd> now.
+   Asserted on the RENDERED HTML rather than on a helper, because answerBar is
+   module-private and the bug was in the markup it emits, not in what it
+   chooses to say. */
+const dlHub = renderCompanyPage('Qualcomm', [
+  { ...live('Systems Intern'), location: 'Bengaluru, Karnataka, India', workplaceType: 'On-site', degreeLevel: 'UG' },
+  { ...live('SW Intern'), location: 'Bengaluru, Karnataka, India', workplaceType: 'On-site', degreeLevel: 'PG' },
+], []);
+const answerBarHtml = (dlHub.match(/<dl class="hub-answer">[\s\S]*?<\/dl>/) || [''])[0];
+check('the answer bar renders at all', answerBarHtml.length > 0, true);
+// The fixture has to actually produce sub-lines, or this pins nothing: a cell
+// with no sub never emitted a <p> and passed just as loudly when it was broken.
+check('and the fixture really produces sub-lines', /<p>/.test(answerBarHtml), true);
+check('no <p> is a sibling of a <dd>', /<\/dd>\s*<p>/.test(answerBarHtml), false);
+check('every sub-line sits inside its <dd>', /<p>[^<]*<\/p><\/dd>/.test(answerBarHtml), true);
+// Nothing but <dt> and <dd> may be a direct child of the wrapping <div>.
+check('each cell is exactly dt + dd',
+  answerBarHtml.split('<div class="ans').slice(1)
+    .every((c) => /^[^>]*>\s*<dt>[\s\S]*?<\/dt><dd>[\s\S]*?<\/dd><\/div>$/.test(c.replace(/<\/dl>$/, ''))), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
