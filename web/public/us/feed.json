@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-research-algorithm-and-data-science-intern-4462114911",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-research-algorithm-and-data-science-intern-4462114911",
+      "title": "R&D Research Algorithm & Data Science Intern — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: 12 weeks\n• Build deep learning models to predict cardiac events from ECG data\n• Use Python and MATLAB for signal processing and algorithm development\n• Collaborate on AI/ML projects to improve implantable device performance",
+      "date_published": "2026-09-02T06:16:29.611Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925",
       "url": "https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925",
       "title": "Internship, Physics Engine Development Engineer, Optimus (Summer 2027) — Tesla",
@@ -587,18 +599,6 @@
       "title": "Co-op – Software Engineering (APM) - Cambridge, MA - Jan - Aug 2027 — Philips",
       "content_text": "Company: Philips · Location: Cambridge, MA\n• Develop applications and components for patient monitoring systems\n• Work with .NET, C#, SQL, HTML, CSS, JavaScript, and GitHub\n• Collaborate on scalable, secure on-prem services with experienced team",
       "date_published": "2026-09-01T17:53:21.962Z",
-      "authors": [
-        {
-          "name": "Philips"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/philips-co-op-design-release-engineer-cambridge-ma-jan-aug-2027-4460622582",
-      "url": "https://interndoor.com/us/jobs/philips-co-op-design-release-engineer-cambridge-ma-jan-aug-2027-4460622582",
-      "title": "Co-op – Design Release Engineer - Cambridge, MA - Jan - Aug 2027 — Philips",
-      "content_text": "Company: Philips · Location: Cambridge, MA\n• Support software design changes and deliverables for regulated medical devices\n• Collaborate with cross-functional teams to improve processes and ensure quality\n• Work in-person 3 days weekly at Philips Cambridge facility\n• Paid internship with hourly range $25-$28 for BSc, $33-$45 for MSc",
-      "date_published": "2026-09-01T17:53:21.329Z",
       "authors": [
         {
           "name": "Philips"
