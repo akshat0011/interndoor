@@ -22,6 +22,7 @@ import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
 import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary } from './sweeplimits.js';
+import { noteVariant, variantSummary } from './searchvariant.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -459,6 +460,10 @@ async function main() {
   // EXIT_RETRY_SOON block at the end of the run.
   let sawNetworkFailure = false;
   let sawBlocked = false;
+  /* Any search whose surface moved this run. Collected rather than alerted on
+     the spot: a flip is an account-level event, so two regions noticing it in
+     the same run is one thing to be told about, not two. */
+  const variantFlips = [];
   let braveLaunchFailed = false;
   let searchesDone = 0;
   let searchStart = 0;
@@ -634,6 +639,23 @@ async function main() {
         if (!navigated) {
           notes.push(`The job list never finished loading for "${label}" page ${pageIndex + 1}; skipped it.`);
           break;
+        }
+
+        /* WHICH SEARCH EXPERIENCE IS THIS? Once per search, on the first page
+           it renders. LinkedIn is retiring classic job search and moves
+           accounts between the two layouts unannounced, and a flip that
+           quietly degrades extraction reads exactly like supply drying up.
+           Reported every run, so the silence is meaningful. */
+        if (pageIndex === firstPage) {
+          const fp = await li.readVariant(page);
+          const seen = noteVariant(store, region, fp ?? {});
+          log.info(`Search surface: ${variantSummary(fp ?? {})}`);
+          if (seen.changed) {
+            const msg = `LinkedIn moved ${region} from the ${seen.previous} job search to the ${seen.variant} one. Card discovery is text-based and should survive; check the run's open count and the apply-link ratio before trusting it.`;
+            log.warn(msg);
+            notes.push(msg);
+            variantFlips.push({ region, from: seen.previous, to: seen.variant, msg });
+          }
         }
 
         const { cards, unidentified } = await li.enumerateCards(page, cfg);
@@ -1362,6 +1384,26 @@ async function main() {
     sessionExpired: abortState === State.LOGGED_OUT,
     enabled: cfg.notifications?.onError !== false,
   });
+
+  /* A SEARCH-SURFACE FLIP IS THE HIGHEST-RISK CHANGE THIS SCRAPER CAN MEET, and
+     it arrives with no warning. Pushed to the phone because the Mac may be
+     asleep and because the window in which it can be caught cheaply is short —
+     everything after a flip that extracts slightly less is indistinguishable
+     from a quiet week. Priority 4, not the 5 an expired session gets: nothing
+     has necessarily stopped, and it must not read as an emergency.
+
+     Only the CLASSIFICATION changing reaches here, so this cannot fire twice
+     for the same move, and a run that failed to render classifies as unknown
+     and is never treated as a flip. */
+  if (variantFlips.length && cfg.notifications?.onError !== false) {
+    try {
+      await pushToPhone(
+        'InternDoor: LinkedIn changed its job search',
+        variantFlips.map((f) => f.msg).join('\n\n'),
+        { priority: 4, tags: ['warning'] },
+      );
+    } catch { /* a notification must never fail a run that has already recorded itself */ }
+  }
 
   // Enrich before the report and the publish, so a job reaches the site with its
   // bullets, eligibility and skills already attached. Doing this only in bin/enrich.js

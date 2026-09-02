@@ -12,6 +12,7 @@
 import { log } from './logger.js';
 import { pause, sleep, humanClick, humanScrollContainer, rand } from './human.js';
 import { jobIdFromUrl } from './extract.js';
+import { probeVariant } from './searchvariant.js';
 import { normaliseCompany } from './config.js';
 
 export const RESULTS_PER_PAGE = 25;
@@ -796,6 +797,39 @@ export async function enumerateCards(page, cfg) {
  * The bar only renders once the results column is scrolled to the bottom, so
  * this scrolls there first.
  */
+/**
+ * Fingerprint the search surface we are actually on.
+ *
+ * LinkedIn is retiring classic job search and moves accounts between the two
+ * experiences unannounced, so every run records which one it saw — see
+ * `src/searchvariant.js` for why this is structural and never a text match.
+ *
+ * The description selector is resolved HERE rather than inside the probe, so
+ * DESCRIPTION_SELECTORS stays the one place that order is written down. It is
+ * the field that says whether extraction is on its preferred path or a
+ * fallback, which is the difference between "a flip happened" and "a flip
+ * happened and it cost us something".
+ *
+ * Never throws: this is a diagnostic, and a diagnostic must not be able to end
+ * a sweep. A page that will not answer reports as unknown, which is also the
+ * one value `noteVariant` refuses to store.
+ */
+export async function readVariant(page) {
+  return page
+    .evaluate(
+      ({ probeSrc, selectors }) => {
+        // eslint-disable-next-line no-new-func
+        const fp = new Function(`return (${probeSrc})()`)();
+        fp.description = selectors.find((sel) => {
+          try { return !!document.querySelector(sel); } catch { return false; }
+        }) ?? null;
+        return fp;
+      },
+      { probeSrc: probeVariant.toString(), selectors: DESCRIPTION_SELECTORS },
+    )
+    .catch(() => null);
+}
+
 export async function hasNextPage(page) {
   await page.evaluate(() => {
     const list = document.querySelector('[data-watcher-list="1"], .jobs-search-results-list, .scaffold-layout__list');
