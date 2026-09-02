@@ -85,6 +85,43 @@ console.log('\n== through the real renderer ==');
     new Set(cityTitles).size, 3);
   ok('and each names its city', cityTitles.every((t) => /Bengaluru|Hyderabad|Pune/.test(t)));
 
+  /* RIVALS THAT DIVERGE IN DIFFERENT PLACES — the shape a single cut cannot
+     serve, and the one that was live on the US board.
+     Booz Allen files one role in several cities AND several roles in one city,
+     so "…Cyber Security Intern - Atlanta, GA" has a rival agreeing almost to
+     the end (the same role in McLean) and another agreeing only as far as
+     "Summer Games" (Software Developer, also in Atlanta). Taking the LATEST
+     agreement alone gives the tail "Atlanta, GA", and the head is then clamped
+     past the word "Cyber" — so it separated from McLean and collided with
+     Software Developer, every other candidate collided too, and renderJobPage
+     fell back to the plain clamp. Nine pages shared three titles that way. */
+  /* TWO ROLES x TWO CITIES IS THE MINIMUM THAT REPRODUCES IT, and a smaller
+     fixture is why this nearly shipped as an assertion that tested nothing.
+     With one Software row instead of two, that row has no rival sharing its
+     clamp, so it keeps the plain title, all three come out distinct, and the
+     check passes against the broken code as loudly as against the fixed one.
+     Both roles need a same-role rival in another city before the late cut
+     becomes the wrong one. Measured on this fixture: 2 distinct titles of 4
+     under the old single-cut rule, 4 of 4 now. */
+  const bz = (id, title, location) => ({
+    ...job(id, title), company: 'Booz Allen Hamilton', location,
+  });
+  const mixed = [
+    bz('m1', 'University - 2027 Summer Games Cyber Security Intern - Atlanta, GA', 'Atlanta, GA'),
+    bz('m2', 'University - 2027 Summer Games Cyber Security Intern - McLean, VA', 'McLean, VA'),
+    bz('m3', 'University - 2027 Summer Games Software Developer Intern - Atlanta, GA', 'Atlanta, GA'),
+    bz('m4', 'University - 2027 Summer Games Software Developer Intern - McLean, VA', 'McLean, VA'),
+  ];
+  const mixedTitles = mixed.map((j) => dec((renderJobPage(j, mixed, { region, foreign: [], validDays: 30 })
+    .match(/<title>([^<]*)<\/title>/) || [])[1]));
+  check('rivals diverging in different places still get distinct titles',
+    new Set(mixedTitles).size, 4);
+  ok('each still names its city',
+    /Atlanta/.test(mixedTitles[0]) && /McLean/.test(mixedTitles[1])
+    && /Atlanta/.test(mixedTitles[2]) && /McLean/.test(mixedTitles[3]));
+  ok('each still names the employer', mixedTitles.every((t) => t.startsWith('Booz Allen Hamilton')));
+  ok('none exceeds the budget', mixedTitles.every((t) => t.length <= TITLE_MAX));
+
   /* THE CHURN GUARD. A posting with no rival must render exactly as it did
      before any of this existed — rewriting the <title> of a page Google has
      already settled on is churn for nothing. */

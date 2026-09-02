@@ -1098,37 +1098,75 @@ export function elideMiddle(text, max = TITLE_MAX) {
 export function distinguishingTail(base, rivals = [], max = TITLE_MAX) {
   const t = String(base || '').replace(/\s+/g, ' ').trim();
   if (t.length <= max) return t;
-  let cut = 0;
+
+  /* EVERY divergence point is a candidate, and the one that separates the most
+     rivals wins.
+     ------------------------------------------------------------------------
+     This used to take the LATEST agreement across all rivals and nothing else,
+     on the measurement that latest left 8 duplicate pages against earliest's
+     48. Both are the same mistake at opposite ends: ONE cut cannot serve a
+     posting whose rivals diverge in different places.
+
+     Booz Allen is the shape that breaks it. "...2027 Summer Games Cyber
+     Security Intern - Atlanta, GA" has a rival agreeing to character 74 (the
+     same role in McLean) and another agreeing only to 50 (Software Developer,
+     same city). The latest cut yields the tail "Atlanta, GA", and making room
+     for it clamps the head to "Booz Allen Hamilton University - 2027 Summer" --
+     which throws away the word "Cyber", the only thing separating it from the
+     Software row. So the tail collided, every other candidate collided too, and
+     renderJobPage fell all the way back to the plain clamp: NINE pages sharing
+     three titles. Cutting at 50 instead gives "Booz Allen Hamilton... Cyber
+     Security Intern - Atlanta, GA", which separates from both.
+
+     Scored rather than ruled, for the same reason the caller picks a title by
+     collision check rather than by rule: which cut is right is a property of
+     this posting's particular rivals, not of titles in general. Ties keep the
+     LATEST cut, so a posting whose rivals all diverge in one place renders
+     exactly the string it rendered before. */
+  const others = [];
+  const cuts = new Set();
   for (const r of rivals) {
     const o = String(r || '').replace(/\s+/g, ' ').trim();
     if (!o || o === t) continue;
+    others.push(o);
     let i = 0;
     while (i < t.length && i < o.length && t[i] === o[i]) i += 1;
-    /* THE LATEST agreement, and the opposite was measured and rejected.
-       Starting from the EARLIEST divergence is the intuitive choice — the tail
-       then carries every part that differs from any rival — but with two dozen
-       siblings the earliest divergence is near the front, so the tail is almost
-       the whole title, gets clamped to fit, and collapses back onto the same
-       string the plain clamp produces. Measured on the live boards: latest
-       leaves 8 duplicate pages, earliest leaves 48. */
-    if (i > cut) cut = i;
+    cuts.add(i);
   }
-  if (cut > 0 && cut < t.length) {
-    const sp = t.lastIndexOf(' ', cut);
-    cut = sp > 0 ? sp + 1 : 0;
+  // No rivals to aim at, so fall back to the generic version.
+  if (!others.length) return elideMiddle(t, max);
+
+  /* One candidate, rendered. Returns '' when this cut cannot produce a usable
+     title, which is how the loop below skips it. Applied to a RIVAL's string as
+     well as to our own -- that is what makes the score a like-for-like
+     comparison rather than a guess about what the rival will choose. */
+  const render = (s, cut) => {
+    if (!(cut > 0) || cut >= s.length) return '';
+    const sp = s.lastIndexOf(' ', cut);
+    if (!(sp > 0)) return '';
+    let tail = s.slice(sp + 1).trim();
+    const maxTail = Math.floor(max * 0.62);
+    if (tail.length > maxTail) tail = clampWords(tail, maxTail);
+    if (!tail) return '';
+    const room = max - tail.length - 2;
+    if (room < 14) return '';
+    const head = clampWords(s, room);
+    if (!head || head.length + tail.length + 2 > max) return '';
+    if (head.toLowerCase().includes(tail.toLowerCase())) return '';
+    return `${head}… ${tail}`;
+  };
+
+  let best = '';
+  let bestScore = -1;
+  for (const cut of [...cuts].sort((a, b) => b - a)) {
+    const mine = render(t, cut);
+    if (!mine) continue;
+    let score = 0;
+    for (const o of others) if (render(o, cut) !== mine) score += 1;
+    if (score > bestScore) { bestScore = score; best = mine; }
+    if (score === others.length) break;
   }
-  let tail = cut > 0 ? t.slice(cut).trim() : '';
-  const maxTail = Math.floor(max * 0.62);
-  if (tail.length > maxTail) tail = clampWords(tail, maxTail);
-  // No rivals, or they agree from the first character: nothing to aim at, so
-  // fall back to the generic version.
-  if (!tail) return elideMiddle(t, max);
-  const room = max - tail.length - 2;
-  if (room < 14) return elideMiddle(t, max);
-  const head = clampWords(t, room);
-  if (!head || head.length + tail.length + 2 > max) return elideMiddle(t, max);
-  if (head.toLowerCase().includes(tail.toLowerCase())) return elideMiddle(t, max);
-  return `${head}\u2026 ${tail}`;
+  return best || elideMiddle(t, max);
 }
 
 /**
