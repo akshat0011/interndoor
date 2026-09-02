@@ -67,3 +67,36 @@ export function pageIsAllOlderThan(cards, cutoff, parse) {
     return !at || at >= cutoff;
   });
 }
+
+/**
+ * What a page's card ages actually look like, for the log.
+ *
+ * `pageIsAllOlderThan` returning false is INDISTINGUISHABLE from the rule being
+ * off, and a stop that never fires is exactly the kind of silent no-op this
+ * project has shipped before (the apply-URL recovery ran at 0/443 for weeks).
+ * So a search carrying the rule reports what it saw on every page, whether or
+ * not it stopped.
+ *
+ * `undateable` is the number that matters. LinkedIn's recency marker is not
+ * always a time — "Be an early applicant" is one of the strings
+ * `scanCardsInPage` finds cards BY, and it does not parse. Every such card
+ * counts as fresh, so one of them on a page is enough to keep a walk going.
+ * If this column is never zero, the rule can never fire and the reason is here
+ * rather than in a live probe.
+ */
+export function pageAgeSummary(cards, parse, now = Date.now()) {
+  const ages = [];
+  let undateable = 0;
+  for (const card of cards ?? []) {
+    const at = parse(card.postedText);
+    if (!at) undateable++;
+    else ages.push((now - at) / 3_600_000);
+  }
+  if (!ages.length) return { count: cards?.length ?? 0, undateable, newest: null, oldest: null };
+  return {
+    count: cards.length,
+    undateable,
+    newest: Math.min(...ages),
+    oldest: Math.max(...ages),
+  };
+}

@@ -21,7 +21,7 @@ import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan } from './sweeplimits.js';
+import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary } from './sweeplimits.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -1018,6 +1018,10 @@ async function main() {
            India sets nothing and is unaffected — it must walk to the end of its
            results, and a quiet Sunday morning there legitimately returns a first
            page of day-old cards that this rule would stop dead. */
+        if (staleCutoffFor(search) && cards.length) {
+          const a = pageAgeSummary(cards, parseRelativeTime);
+          log.info(`Page ${pageIndex + 1} ages: newest ${a.newest === null ? 'n/a' : a.newest.toFixed(1) + 'h'}, oldest ${a.oldest === null ? 'n/a' : a.oldest.toFixed(1) + 'h'}, ${a.undateable}/${a.count} undateable.`);
+        }
         if (pageIsAllOlderThan(cards, staleCutoffFor(search), parseRelativeTime)) {
           log.ok(`Every card on page ${pageIndex + 1} is over ${search.stopAfterPageOlderThanHours}h old — that is ground the last sweep covered, stopping "${label}" here.`);
           walkComplete = true;

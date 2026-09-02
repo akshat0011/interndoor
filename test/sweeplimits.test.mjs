@@ -108,6 +108,31 @@ const parse = (t) => parseRelativeTime(t, NOW);
     pageIsAllOlderThan([card('9 days ago')], null, parse), false);
 }
 
+console.log('\n== the page-age diagnostic ==');
+{
+  /* A stop that never fires looks exactly like a rule that is switched off.
+     This project has shipped that before — the apply-URL recovery ran at 0/443
+     for weeks. So the rule reports what it saw on every page. */
+  const { pageAgeSummary } = await import('../src/sweeplimits.js');
+  const a = pageAgeSummary(
+    [card('30 minutes ago'), card('3 hours ago'), card('Be an early applicant')], parse, NOW);
+  check('counts the page', a.count, 3);
+  check('newest in hours', Number(a.newest.toFixed(2)), 0.5);
+  check('oldest in hours', Number(a.oldest.toFixed(2)), 3);
+  /* THE UNDATEABLE COLUMN IS THE POINT. "Be an early applicant" is one of the
+     strings scanCardsInPage finds cards BY, and it does not parse — so it counts
+     as fresh, and one per page is enough to keep a walk going for ever. If this
+     is never zero, the stop can never fire, and the reason is in the log rather
+     than needing a live probe against the account. */
+  check('and names the undateable ones', a.undateable, 1);
+
+  const none = pageAgeSummary([card('Be an early applicant')], parse, NOW);
+  check('a page with nothing dateable reports no ages', [none.newest, none.oldest], [null, null]);
+  check('but still counts them', [none.count, none.undateable], [1, 1]);
+  check('an empty page is safe', pageAgeSummary([], parse, NOW).count, 0);
+  check('and a missing one', pageAgeSummary(undefined, parse, NOW).count, 0);
+}
+
 console.log('\n== src/index.js actually applies all three ==');
 {
   /* index.js executes on import, so this reads the source. It asserts the
@@ -115,7 +140,7 @@ console.log('\n== src/index.js actually applies all three ==');
   const { readFileSync } = await import('node:fs');
   const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
   check('imports the module',
-    /import \{ pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan \}/.test(src), true);
+    /import \{[^}]*pageCapFor[^}]*openCapFor[^}]*staleCutoffFor[^}]*pageIsAllOlderThan[^}]*\} from '\.\/sweeplimits\.js'/.test(src), true);
   check('the page cap bounds the walk',
     /const lastPage = firstPage \+ pageCap;/.test(src) &&
     /const pageCap = pageCapFor\(search, cfg\.limits\.maxPagesPerSearch\);/.test(src), true);
@@ -128,6 +153,8 @@ console.log('\n== src/index.js actually applies all three ==');
     /if \(openCap\) \{[\s\S]{0,400}?opensByCompany\.get\(card\.company\)[\s\S]{0,300}?>= openCap[\s\S]{0,300}?continue;/.test(src), true);
   check('the count only advances for a card we are about to open',
     /opensByCompany\.set\(card\.company, seenForCompany \+ 1\);[\s\S]{0,80}?\}\s*\n\s*\n\s*log\.ok\(`Opening:/.test(src), true);
+  check('and every page reports its ages, stop or no stop',
+    /const a = pageAgeSummary\(cards, parseRelativeTime\);[\s\S]{0,300}?undateable/.test(src), true);
   check('the all-old page test ends the walk',
     /if \(pageIsAllOlderThan\(cards, staleCutoffFor\(search\), parseRelativeTime\)\)/.test(src), true);
   check('and it counts as a COMPLETED walk, so the baseline advances',
