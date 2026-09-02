@@ -21,6 +21,7 @@ import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
+import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan } from './sweeplimits.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -567,7 +568,26 @@ async function main() {
       // budget counts from there, and LinkedIn's own Next control still decides
       // where the results actually end.
       const firstPage = OVERRIDES.startPage ? OVERRIDES.startPage - 1 : 0;
-      const lastPage = firstPage + cfg.limits.maxPagesPerSearch;
+      /* A SEARCH MAY CAP ITS OWN DEPTH. India sets nothing and keeps the global
+         cap, because it walks to the end of its results by design — it feeds
+         ~91% of the India board and the whole promise is that nothing is
+         missed. The US caps itself because its results are dense enough to walk
+         30+ pages of ground a previous sweep already covered, and every page is
+         a request against the one account the site depends on. */
+      const pageCap = pageCapFor(search, cfg.limits.maxPagesPerSearch);
+      const lastPage = firstPage + pageCap;
+
+      /* Opens per employer, for THIS search only.
+         One employer can fill a whole sweep: P&G filed 22 copies of one
+         internship across US cities and Siemens 13. Each is a real posting with
+         its own id, so nothing here is a duplicate — but spending the click
+         budget on the 6th through 22nd of them buys almost nothing and costs
+         the account the same as 17 opens of different employers. Reset per
+         search, so a company appearing on two boards gets its own allowance on
+         each rather than one shared one. */
+      const opensByCompany = new Map();
+      const openCap = openCapFor(search);
+      let cappedCompanies = 0;
       let coveredPages = 0;
       // Whether pagination reached a real end — LinkedIn said there was no
       // next page, the results ran out, or the walk caught up with ground an
@@ -835,6 +855,22 @@ async function main() {
           }
 
           // --- worth opening ------------------------------------------------
+          /* One employer may only take so much of a sweep. Counted on the
+             CARD's company, before the click, because the whole point is to
+             avoid the click — the company is one of the few things a card
+             states without being opened. */
+          if (openCap) {
+            const seenForCompany = opensByCompany.get(card.company) ?? 0;
+            if (seenForCompany >= openCap) {
+              cappedCompanies++;
+              store.noteSkippedCard(card.identity,
+                `more than ${openCap} openings from this employer this run`,
+                card.company, card.title);
+              continue;
+            }
+            opensByCompany.set(card.company, seenForCompany + 1);
+          }
+
           log.ok(`Opening: ${card.title} — ${card.company}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
 
           await pause(cfg.pacing.betweenCards);
@@ -970,6 +1006,24 @@ async function main() {
           }
         }
 
+        /* AN ALL-OLD PAGE ENDS A DENSE REGION'S WALK.
+           A separate rule from the one above, and deliberately blunter. The
+           covered-ground stop measures against the last sweep and waits for two
+           consecutive pages, because its margin has to absorb a posted text as
+           coarse as "1 hour ago". This one measures against an ABSOLUTE age and
+           fires on a single page: on an hourly sweep, a page whose every card is
+           already two hours old is a page the previous run walked, and 20 more
+           pages of the same is 20 requests spent re-reading it.
+
+           India sets nothing and is unaffected — it must walk to the end of its
+           results, and a quiet Sunday morning there legitimately returns a first
+           page of day-old cards that this rule would stop dead. */
+        if (pageIsAllOlderThan(cards, staleCutoffFor(search), parseRelativeTime)) {
+          log.ok(`Every card on page ${pageIndex + 1} is over ${search.stopAfterPageOlderThanHours}h old — that is ground the last sweep covered, stopping "${label}" here.`);
+          walkComplete = true;
+          break;
+        }
+
         // Keep paging until LinkedIn's own "Next" control says there is no
         // more, which is the only reliable signal that the result set is
         // exhausted. Fall back to the short-page heuristic only when no
@@ -986,10 +1040,25 @@ async function main() {
           break;
         }
         if (pageIndex === lastPage - 1) {
-          notes.push(`Stopped at the ${cfg.limits.maxPagesPerSearch}-page safety cap for "${label}", and LinkedIn still had a Next page. Raise limits.maxPagesPerSearch in config.json to go deeper.`);
-          log.warn(`Hit the ${cfg.limits.maxPagesPerSearch}-page cap for "${label}" with more pages still available.`);
+          /* A search that set its OWN cap reaching it is the setting working,
+             not a shortfall — the US is capped on purpose and would otherwise
+             warn on every single run, which is how a warning stops being read.
+             Falling short on the GLOBAL cap still warns, because that one is a
+             safety limit nothing is supposed to reach. */
+          if (Number(search.maxPages) > 0) {
+            log.info(`Reached this search's own ${pageCap}-page limit for "${label}".`);
+          } else {
+            notes.push(`Stopped at the ${pageCap}-page cap for "${label}", and LinkedIn still had a Next page. Raise this search's maxPages, or limits.maxPagesPerSearch, to go deeper.`);
+            log.warn(`Hit the ${pageCap}-page cap for "${label}" with more pages still available.`);
+          }
         }
         await pause(cfg.pacing.betweenPages);
+      }
+
+      if (openCap) {
+        log.info(cappedCompanies
+          ? `Employer cap: ${cappedCompanies} card${cappedCompanies === 1 ? '' : 's'} left unopened, ${openCap} already taken from that employer this run.`
+          : `Employer cap: no employer reached ${openCap} openings this run.`);
       }
 
       searchesDone++;

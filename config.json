@@ -815,13 +815,17 @@
     {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "US",
-      "enabled": false,
-      "_enabled_note": "PAUSED BY HAND on 2 Sep 2026 — India only until he says otherwise. Set back to true to resume; nothing else here needs changing. The geoId is verified live and the interval/window pair is tuned to US density, which is why this is a flag rather than a deleted entry. The sweep_ok_at:US baseline is deliberately left where it is, so the first run after resuming stretches its window across the whole pause exactly the way it would after an outage — expect one deep catch-up sweep, then steady state.",
+      "enabled": true,
+      "_enabled_note": "Set to false to pause this board without deleting the entry. Pausing leaves sweep_ok_at:US where it is, so the first run after resuming stretches its window across the whole pause exactly the way it would after an outage — expect one deep catch-up sweep, then steady state.",
       "location": "United States",
       "geoId": 103644278,
-      "intervalMinutes": 120,
+      "intervalMinutes": 60,
       "minWindowHours": 2,
-      "windowMarginHours": 0.75
+      "windowMarginHours": 0.75,
+      "maxPages": 20,
+      "maxOpensPerCompany": 5,
+      "stopAfterPageOlderThanHours": 2,
+      "_throttle_note": "THESE THREE ARE US-ONLY AND INDIA MUST NEVER GET THEM. Everything on this site depends on one LinkedIn account, and page loads are what put it at risk — it was dropped twice in August. India sets none of them and walks to the end of its results every 30 minutes, because it feeds ~91% of the India board and missing a posting there is the one cost not worth paying. The US is dense enough (~161 cards/hour) to spend a whole sweep re-reading ground the previous run already covered, so it is bounded three ways: maxPages caps the walk at 20 pages; maxOpensPerCompany stops one employer taking the click budget (P&G filed 22 copies of one internship across US cities, Siemens 13 — each a real posting, but the 6th through 22nd buy almost nothing and cost the account the same as 17 different employers); and stopAfterPageOlderThanHours ends the walk on the first page whose every card is already 2h old, which on an hourly sweep is a page the previous run walked. That last one does the real work: it is what makes the return to hourly cheaper than the 2-hourly sweeps it replaces, because the walk now ends where the new postings do instead of at the page cap."
     }
   ],
   "_searches_window_note": "The US search narrows its own lookback. The global filters are minWindowHours 3 and a 2-hour slack on top of the gap, both tuned when this was one India search on a 30-minute loop - and on a dense region they are wildly too wide. Measured: US results run about 161 cards an hour, so a 3-hour window is roughly 21 pages, and the US sweep was walking every one of them to exhaustion to collect a single hour of new postings, because two thirds of what LinkedIn returned was newer than the covered-ground horizon and kept resetting the early stop. An hourly sweep needs the gap (1h) plus the 45-minute margin the horizon already uses, so 2 hours - about 14 pages. This changes the FLOOR and the SLACK, not the rule: a region missed for six hours still stretches its window to cover the gap.",

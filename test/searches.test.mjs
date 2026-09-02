@@ -118,18 +118,20 @@ ok('clock skew into the future — due', due(NOW + 60 * 60_000, 60));
 console.log('\n== the live config: India every run, US every two hours ==');
 /* These pin a PRODUCT DECISION, not a gap, so they move when the decision does.
    US went 60 -> 120 minutes on 1 Sep 2026 to cut load on the single LinkedIn
-   account: US sweeps were walking 28-31 pages a run. Halving the sweeps while
-   the window stretches 2h -> 2.75h is a net ~31% fewer page loads a day.
+   account, and BACK TO 60 on 2 Sep once the three per-search limits landed
+   (see test/sweeplimits.test.mjs). Halving the sweeps was a blunt instrument:
+   it cut page loads by making the board half as fresh. The limits cut them by
+   ending each walk where the new postings end, which is strictly better — so
+   the cadence went back.
    INDIA MUST STAY AT EVERY TICK. It feeds 91% of the India board and the
    board's whole promise is freshness. */
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
-// Declared, not active: US is paused, and its cadence must survive the pause.
-check('US runs two-hourly', byDeclared.get('US')?.intervalMinutes, 120);
+// Read off `declaredSearches` so this keeps asserting if US is ever paused.
+check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
-ok('US is not due 60m after its sweep', !due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
-ok('US is due 120m after its sweep', due(agoMin(120), byDeclared.get('US')?.intervalMinutes));
+ok('US is due 60m after its sweep', due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
 /* The due check deliberately fires a little early — ticks drift, so demanding
    the full interval turns a two-hourly search into a three-hourly one. */
 ok('and a tick that lands slightly early still counts',
@@ -213,13 +215,24 @@ console.log('\n== a search can be PAUSED without being deleted ==');
 
   check('the paused US entry is still in the file', !!us, true);
   check('with its verified geoId', us.geoId, 103644278);
-  check('its own cadence', us.intervalMinutes, 120);
+  check('its own cadence', us.intervalMinutes, 60);
   check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [2, 0.75]);
 
-  check('a disabled search is dropped from the active list',
-    cfg.searches.some((s) => s.region === 'US'), false);
-  check('but is still declared', cfg.declaredSearches.some((s) => s.region === 'US'), true);
-  check('and is reported, so it cannot be silently forgotten', cfg.pausedSearches, ['US']);
+  /* ASSERTED AS AN INVARIANT OVER WHATEVER IS PAUSED TODAY, not as a snapshot
+     of it. The first version of this block hardcoded ['US'] because US happened
+     to be paused the day it was written, so resuming US failed three assertions
+     that were about the MECHANISM and had no opinion on US at all. Derive the
+     expectation from the file and it holds either way — including when nothing
+     is paused, which is the state this project is normally in. */
+  const paused = raw.searches.filter((e) => e.enabled === false).map((e) => e.region);
+  const active = raw.searches.filter((e) => e.enabled !== false).map((e) => e.region);
+  check('every disabled search is dropped from the active list',
+    cfg.searches.map((s) => s.region), active);
+  check('but every one is still declared',
+    cfg.declaredSearches.map((s) => s.region), raw.searches.map((e) => e.region));
+  check('and reported, so a pause cannot be silently forgotten', cfg.pausedSearches, paused);
+  check('the two lists cannot overlap',
+    cfg.searches.some((s) => cfg.pausedSearches.includes(s.region)), false);
 
   /* AND THE RUN SAYS SO OUT LOUD. A region that silently stops collecting looks
      exactly like a region with no supply, and this repo has already spent a day
@@ -235,13 +248,14 @@ console.log('\n== a search can be PAUSED without being deleted ==');
   check('and India is running', cfg.searches.some((s) => s.region === 'IN'), true);
 }
 
-console.log('\n== THE PAUSE MUST NOT DISTURB INDIA ==');
+console.log('\n== NOTHING DONE TO THE US MAY DISTURB INDIA ==');
 {
   /* India feeds ~91% of the India board and is the one collector the site
-     cannot lose. Pausing US is a change to the searches array, so these are
-     asserted again after it. */
+     cannot lose. Pausing US, resuming it, capping its pages, capping its opens
+     and stopping its walk early are all changes to the searches array, so these
+     are asserted again after every one of them. */
   const india = cfg.searches.find((s) => s.region === 'IN');
-  check('India is the only active search', cfg.searches.map((s) => s.region), ['IN']);
+  check('India is running', !!india, true);
   check('it still sends no geoId', india.geoId, null);
   check('and still runs on every tick', india.intervalMinutes ?? 0, 0);
   ok('its URL is still geoId-free', !buildSearchUrl(india, cfg.filters, { start: 0 }).includes('geoId='));
