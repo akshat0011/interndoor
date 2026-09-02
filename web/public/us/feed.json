@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/nokia-apprentice-fabrication-process-operator-4449894350",
+      "url": "https://interndoor.com/us/jobs/nokia-apprentice-fabrication-process-operator-4449894350",
+      "title": "Apprentice Fabrication Process Operator — Nokia",
+      "content_text": "Company: Nokia · Location: Sunnyvale, CA\n• Operate semiconductor processing and testing equipment\n• Work 12-hour shifts with overtime and shift differential pay\n• Receive hands-on training and certification in fab operations",
+      "date_published": "2026-09-02T11:35:49.476Z",
+      "authors": [
+        {
+          "name": "Nokia"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/samsara-software-engineering-internship-san-francisco-4446240027",
       "url": "https://interndoor.com/us/jobs/samsara-software-engineering-internship-san-francisco-4446240027",
       "title": "Software Engineering Internship - San Francisco — Samsara",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/toast-summer-2027-engineering-intern-ats-greenhouse-toast-8171800",
-      "url": "https://interndoor.com/us/jobs/toast-summer-2027-engineering-intern-ats-greenhouse-toast-8171800",
-      "title": "Summer 2027 Engineering Intern — Toast",
-      "content_text": "Company: Toast · Location: Boston, MA · Duration: Summer 2027\n• Build scalable web and mobile apps using Java, Kotlin, React, and AWS\n• Develop AI tools for restaurant data analysis and customer experience\n• Collaborate on secure systems and contribute to product design decisions",
-      "date_published": "2026-09-01T20:26:35.000Z",
-      "authors": [
-        {
-          "name": "Toast"
         }
       ]
     }
