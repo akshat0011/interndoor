@@ -138,6 +138,29 @@ console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
     refused('Privacy & Civil Liberties Engineer - New Grad'), false);
   is('but bare "structural" is safe and is one',
     refused('Structural Design Intern'), true);
+
+  /* THE SLASH CASES. A slash where the phrase needed a space, so `civil
+     engineer` and `electrical engineering` both missed them. Fixed with words
+     the titles DO contain rather than by teaching the matcher about slashes. */
+  is('Civil/Highway is caught by `highway`',
+    refused('Civil/Highway Engineer Intern - Hiring Event with AECOM'), true);
+  is('Electrical / Civil is caught by `electrical`',
+    refused('Diploma Trainee \u2013 Electrical / Civil \u2013 Fixed Term contract'), true);
+  is('and Foundry Engineering by `foundry`',
+    refused('Mercury Marine - Foundry Engineering Co-op'), true);
+
+  /* ELECTRICAL IS TITLE-ONLY. As a full negative it also refused two rows on
+     the MODEL'S label, and both are as likely to be embedded firmware as
+     hardware — the `technical support` shape that dropped HPE's CS-degree
+     internships. */
+  is('an electrical LABEL does not refuse an avionics title',
+    refused('Avionics Intern - Neutron Avionics Systems', 'Electrical System Design'), false);
+  is('nor an R&D one', refused('R&D Trainee', 'Electrical Systems Development'), false);
+
+  /* And `computer engineering` is a positive so the new bare `electrical`
+     cannot take a title that names the tech discipline alongside it. */
+  is('Electrical and Computer Engineering survives',
+    refused('Electrical and Computer Engineering Intern'), false);
 }
 
 console.log('\n== PRODUCT MANAGEMENT AND PRODUCT DESIGN ARE NOT ENGINEERING ==');

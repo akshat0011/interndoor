@@ -62,6 +62,7 @@ const POSITIVE = [
      mechanical or PLC work as software, and a positive that guesses wrong
      cancels the whole non-software block for that title. */
   'embedded software', 'embedded systems', 'firmware engineering',
+  'computer engineering',
   'software quality', 'software test', 'security engineering',
   'platform engineering', 'cloud engineering', 'test engineering',
   'solution architect', 'software architect', 'technical architect',
