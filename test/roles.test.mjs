@@ -130,6 +130,14 @@ console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
      deliberate act. */
   is('controls engineering does not rescue a mechanical title',
     refused('Controls Engineering Intern - Mechanical'), true);
+
+  /* A bare `civil` was measured and refused as a term: 21 of the 22 stored
+     titles containing it are civil engineering, and the 22nd is this. Pinned so
+     that adding the term has to be a deliberate act that breaks a test. */
+  is('a bare "civil" is NOT a negative — this Palantir role must survive',
+    refused('Privacy & Civil Liberties Engineer - New Grad'), false);
+  is('but bare "structural" is safe and is one',
+    refused('Structural Design Intern'), true);
 }
 
 console.log('\n== PRODUCT MANAGEMENT AND PRODUCT DESIGN ARE NOT ENGINEERING ==');
