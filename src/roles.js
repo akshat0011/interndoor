@@ -230,7 +230,7 @@ function firstMatch(text, terms) {
  * Mechanical Systems" would otherwise have had nothing but this generic term
  * and would have been refused by `mechanical`.
  */
-const GENERIC_POSITIVE = new Set([
+export const GENERIC_POSITIVE = new Set([
   'engineering intern', 'engineering trainee',
   /* Single words are inert for the strongPositive test above, which requires a
      space — they are here for the `<Role>, <Team>` rescue below, which asks the

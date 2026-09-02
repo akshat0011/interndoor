@@ -28,6 +28,8 @@ import { join } from 'node:path';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { PATHS, storygastedRoot } from '../src/paths.js';
+import { readdirSync } from 'node:fs';
+import { renderReportIndex, runIdFromFile, companiesIn, jobCountIn, INDEX_LIMIT } from '../src/reportindex.js';
 import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
@@ -769,6 +771,32 @@ const server = createServer(async (req, res) => {
     res.statusCode = 302;
     res.setHeader('location', '/report/latest');
     return res.end();
+  }
+
+  /* AN INDEX OF PAST REPORTS. Every run writes one and they have always been
+     served at /report/<runId>, but nothing listed them — so closing the tab
+     lost the report, and there are 1,676 on disk. Read at request time rather
+     than cached: this is a local page opened a few times a day, and a cache
+     would go stale every 30 minutes. */
+  if (path === '/reports' || path === '/reports/') {
+    let entries = [];
+    try {
+      entries = readdirSync(PATHS.reports)
+        .map(runIdFromFile)
+        .filter(Boolean)
+        .sort()
+        .reverse()
+        .slice(0, INDEX_LIMIT)
+        .map((id) => {
+          try {
+            const text = readFileSync(join(PATHS.reports, `report-${id}.html`), 'utf8');
+            return { id, companies: companiesIn(text), jobs: jobCountIn(text) };
+          } catch {
+            return { id, companies: [], jobs: 0 };
+          }
+        });
+    } catch { /* no reports directory yet — render the empty state */ }
+    return html(res, 200, renderReportIndex(entries));
   }
 
   if (path === '/report/latest') {

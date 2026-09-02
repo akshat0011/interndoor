@@ -23,7 +23,7 @@
  * bounded by a timeout and every failure returns empty rather than throwing.
  */
 import { log } from './logger.js';
-import { classifyRole, vetoNonTech } from './roles.js';
+import { classifyRole, vetoNonTech, GENERIC_POSITIVE } from './roles.js';
 import { POST_SYSTEM, POST_SCHEMA, postPrompt } from './postgen.js';
 
 const HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
@@ -408,6 +408,10 @@ export async function enrichJobs(items, cfg = {}) {
 
   let guarded = 0;
   let copies = 0;
+  /* Reported every run, even at zero. A check you only hear about when it
+     fires is one nobody notices the silence of. */
+  let contested = 0;
+  let overturned = 0;
 
   for (const [i, job] of items.entries()) {
     // The run's clock outranks enrichment. Whatever is done by the deadline is
@@ -444,6 +448,56 @@ export async function enrichJobs(items, cfg = {}) {
     }
 
     const { item, dropped } = groundEnrichment(res.value, description);
+
+    /* A SECOND OPINION WHEN THE MODEL CONTRADICTS ITSELF.
+     *
+     * `isTech` is one field of eight in a call whose real job is writing prose,
+     * and chatJson runs at temperature 0.2 — so this verdict is a weighted coin
+     * flip, taken once, and never revisited (needingEnrichment requires
+     * `bullets IS NULL`). IQVIA's "Intern" carried the label "AI Research" off
+     * a description about generative AI, LLMs and RAG pipelines, and came back
+     * NON-TECH; re-running the same description returned tech three times out
+     * of three. A real listing was dropped on a coin flip.
+     *
+     * `classifyOne` is the right authority: one posting per call, a prompt that
+     * does nothing but decide this, and TEMPERATURE 0 — so it is reproducible,
+     * which the enricher's answer is not.
+     *
+     * THE TRIGGER IS ALLOWED TO BE NOISY BECAUSE IT DECIDES NOTHING. It only
+     * says "these two answers disagree, ask the specialist". Measured on the
+     * live store, the same label test used as a FIX would have been wrong on 6
+     * of 10 India rows — it reads "Food quality assurance" and "Commodity
+     * trading" as tech, because `quality assurance` and `trading` are tech in a
+     * software context and nowhere else. Used as a trigger, those rows simply
+     * get asked about and the specialist correctly says non-tech. Verified on
+     * all eight contested rows: IQVIA and HARMAN tech, Licious, Pipraiser,
+     * Pearson, Dana, Tradeshala and Tower Research non-tech.
+     *
+     * IT RUNS AT ENRICHMENT TIME, WHICH IS THE OTHER HALF OF THE POINT. A
+     * retrospective sweep over stored rows cannot do this safely: `is_tech = 0`
+     * also means "a human suppressed this", and nothing distinguishes the two —
+     * the HARMAN row demoted by hand for a dead apply page is byte-identical to
+     * a model mistake. Running before the row is ever saved means there is no
+     * human decision in existence to overrule.
+     *
+     * Only ever asked about a posting the model called NON-tech, so it can add
+     * listings and never remove them. */
+    if (item.isTech === false && Date.now() - started <= budgetMs) {
+      const label = classifyRole(item.roleLabel ?? '', cfg);
+      if (label.verdict === 'tech' && !GENERIC_POSITIVE.has(label.matched)) {
+        contested++;
+        const second = await classifyOne(job, { model, timeoutMs });
+        if (second.ok) {
+          if (second.value.isTech) {
+            overturned++;
+            log.debug(`  second opinion overruled non-tech for "${job.title}" (label "${item.roleLabel}", hinged on "${second.value.keyTerm}").`);
+          }
+          item.isTech = !!second.value.isTech;
+        } else {
+          log.debug(`  second opinion unavailable (${second.reason}) for "${job.title}" — keeping the enricher's verdict.`);
+        }
+      }
+    }
 
     // A posting with no description cannot justify OVERTURNING an existing tech
     // verdict. Bajaj Finserv's "Trainee Technology" carries 122 characters —
@@ -497,6 +551,12 @@ export async function enrichJobs(items, cfg = {}) {
 
   if (guarded) log.info(`Guard removed unstated details from ${guarded} posting(s).`);
   if (copies) log.info(`Dropped ${copies} summary(ies) that copied the posting.`);
+  /* UNCONDITIONAL, like the apply-link ratio and the employer cap. A verdict
+     silently going wrong is exactly the failure this exists to catch, so the
+     check has to be audible when it finds nothing as well as when it does. */
+  if (items.length) {
+    log.info(`Tech verdict: ${contested} contested${contested ? `, ${overturned} overturned by the second opinion` : ''}.`);
+  }
   return out;
 }
 
