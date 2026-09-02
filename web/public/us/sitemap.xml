@@ -20,8 +20,8 @@
   <url><loc>https://interndoor.com/us/skills/data-structures</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/c-sharp</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/git</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/ci-cd</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/matlab</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/ci-cd</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/aws</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/azure</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/generative-ai</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -84,6 +84,8 @@
   <url><loc>https://interndoor.com/us/locations/chandler</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/los-angeles</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/phoenix</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/san-mateo</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/somerville</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/cincinnati</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/essex-junction</loc><lastmod>2026-08-28</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/fremont</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -92,7 +94,10 @@
   <url><loc>https://interndoor.com/us/locations/mountain-view</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/omaha</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/san-mateo</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/formlabs-hardware-systems-integration-intern-winter-spring-2027-ats-greenhouse-formlabs-8172004</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/formlabs-print-optimization-intern-winter-spring-2027-ats-greenhouse-formlabs-8172256</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/verkada-hardware-engineer-winter-co-op-ats-greenhouse-verkada-4321158007</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/toast-summer-2027-engineering-intern-ats-greenhouse-toast-8171800</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
@@ -1298,6 +1303,8 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/formlabs</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/verkada</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/toast</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ibm</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ge-healthcare</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -1461,7 +1468,6 @@
   <url><loc>https://interndoor.com/us/companies/panasonic-north-america</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hca-healthcare</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/the-voleon-group</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/verkada</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/samsung-semiconductor</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/celonis</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/general-dynamics-electric-boat</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
@@ -1473,7 +1479,6 @@
   <url><loc>https://interndoor.com/us/companies/spacex</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/jump-trading</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/anduril-industries</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/formlabs</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/point72</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/datadog</loc><lastmod>2026-08-20</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/notion</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
