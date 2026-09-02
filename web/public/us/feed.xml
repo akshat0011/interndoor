@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 02 Sep 2026 05:46:40 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 02 Sep 2026 06:14:22 GMT</lastBuildDate>
+  <item>
+    <title>Internship, Physics Engine Development Engineer, Optimus (Summer 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-physics-engine-development-engineer-optimus-summer-2027-4462109925</guid>
+    <pubDate>Wed, 02 Sep 2026 05:32:25 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Develop high-fidelity physics simulations for robotics applications
+• Work with hardware and training teams to bridge sim-to-real gaps
+• Requires C++, Python, CUDA, and GPU programming skills</description>
+  </item>
   <item>
     <title>Amtrak Intercity Project Internship- Rolling Stock (Summer 2027) — Siemens</title>
     <link>https://interndoor.com/us/jobs/siemens-amtrak-intercity-project-internship-rolling-stock-summer-2027-4460937695</link>
@@ -503,16 +513,6 @@
 • Collaborate with cross-functional teams to improve processes and ensure quality
 • Work in-person 3 days weekly at Philips Cambridge facility
 • Paid internship with hourly range $25-$28 for BSc, $33-$45 for MSc</description>
-  </item>
-  <item>
-    <title>Co-op-Data Engineering-Reedsville, PA-July-December 2027 — Philips</title>
-    <link>https://interndoor.com/us/jobs/philips-co-op-data-engineering-reedsville-pa-july-december-2027-4460622580</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/philips-co-op-data-engineering-reedsville-pa-july-december-2027-4460622580</guid>
-    <pubDate>Tue, 01 Sep 2026 17:53:08 GMT</pubDate>
-    <description>Company: Philips · Location: Reedsville, PA · Duration: 6 months
-• Develop data engineering tools for R&amp;D reliability team
-• Migrate data and write scripts for CONQ database
-• Collaborate on data analysis and reporting projects</description>
   </item>
 </channel>
 </rss>
