@@ -45,9 +45,9 @@
   <url><loc>https://interndoor.com/us/skills/jenkins</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/ruby</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/golang</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/oop</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kotlin</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pandas</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mysql</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
@@ -90,6 +90,8 @@
   <url><loc>https://interndoor.com/us/locations/omaha</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/redmond</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/exelon-2027-summer-internship-cyber-security-owings-mills-maryland-4462406659</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/phillips-66-2027-university-intern-refining-engineer-4453045800</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453041502</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-software-developer-intern-2027-4453030553</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ge-aerospace-embedded-systems-engineer-co-op-bohemia-ny-spring-2027-4425964141</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
@@ -1223,7 +1225,6 @@
   <url><loc>https://interndoor.com/us/jobs/spacex-new-graduate-engineer-software-ats-greenhouse-spacex-8493079002</loc><lastmod>2026-07-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nuro-software-engineer-ai-platform-new-grad-ats-greenhouse-nuro-7351066</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nuro-software-engineer-ai-platform-intern-ats-greenhouse-nuro-7351061</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/notion-governance-risk-and-compliance-intern-fall-2026-ats-ashby-notion-6ccbc30c-2de0-4395-af14-3641cd15961b</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/old-mission-capital-software-engineer-2027-internship-program-june-start-ats-greenhouse-oldmissioncapital-7796180003</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/akuna-capital-software-engineer-entry-level-python-ats-greenhouse-akunacapital-8013230</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/akuna-capital-software-engineer-intern-python-summer-2027-ats-greenhouse-akunacapital-8018853</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
@@ -1259,11 +1260,12 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/exelon</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/phillips-66</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ibm</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ge-aerospace</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/microsoft</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/micron-technology</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/phillips-66</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/nokia</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/samsara</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/johnson-and-johnson-medtech</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
@@ -1338,7 +1340,6 @@
   <url><loc>https://interndoor.com/us/companies/trane-technologies</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hudson-river-trading</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/leidos</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/exelon</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/macom</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/epic-games</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/qorvo-inc</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>

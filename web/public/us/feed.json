@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-cyber-security-owings-mills-maryland-4462406659",
+      "url": "https://interndoor.com/us/jobs/exelon-2027-summer-internship-cyber-security-owings-mills-maryland-4462406659",
+      "title": "2027 Summer Internship - Cyber Security (Owings Mills, Maryland) — Exelon",
+      "content_text": "Company: Exelon · Location: Owings Mills, MD · Duration: 10 weeks\n• Analyze security threats and vulnerabilities in energy systems\n• Use python and network tools to monitor and protect infrastructure\n• Work with a cross-functional team on real-world cybersecurity projects",
+      "date_published": "2026-09-02T14:38:36.543Z",
+      "authors": [
+        {
+          "name": "Exelon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/phillips-66-2027-university-intern-refining-engineer-4453045800",
+      "url": "https://interndoor.com/us/jobs/phillips-66-2027-university-intern-refining-engineer-4453045800",
+      "title": "2027 University Intern - Refining Engineer — Phillips 66",
+      "content_text": "Company: Phillips 66 · Location: Sweeny, TX\n• Work on refining projects like process optimization and energy efficiency\n• Use modeling and data analysis tools for real-world engineering problems\n• Collaborate with experienced engineers and attend technical training",
+      "date_published": "2026-09-02T13:48:13.542Z",
+      "authors": [
+        {
+          "name": "Phillips 66"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453041502",
       "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453041502",
       "title": "Site Reliability Engineer Intern 2027 — IBM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Clearwater Analytics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/clearwater-analytics-software-development-intern-4459592105",
-      "url": "https://interndoor.com/us/jobs/clearwater-analytics-software-development-intern-4459592105",
-      "title": "Software Development Intern — Clearwater Analytics",
-      "content_text": "Company: Clearwater Analytics · Location: Chicago, IL · Duration: 1 month\n• Write and test code for new features with team\n• Use java and microsoft office tools\n• Work with mentors and peers on real projects",
-      "date_published": "2026-09-02T00:42:48.989Z",
-      "authors": [
-        {
-          "name": "Clearwater Analytics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140",
-      "url": "https://interndoor.com/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140",
-      "title": "Mercury Marine: Mechatronics Intern — Mercury Marine",
-      "content_text": "Company: Mercury Marine · Location: Fond du Lac, WI\n• Develop actuator solutions for marine drives using Matlab or Python\n• Collaborate with engineers on data-based design and troubleshooting\n• Contribute to DFMEA activities for product improvements",
-      "date_published": "2026-09-02T00:42:44.696Z",
-      "authors": [
-        {
-          "name": "Mercury Marine"
         }
       ]
     }
