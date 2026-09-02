@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788354596434,
+ "generatedAt": 1788354696148,
  "region": "IN",
  "regionName": "India",
- "count": 244,
- "techCount": 244,
+ "count": 245,
+ "techCount": 245,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -185,6 +185,7 @@
   "Indore, Madhya Pradesh, India",
   "Kanchipuram, Tamil Nadu, India",
   "Karnataka, India",
+  "Kochi, Kerala, India",
   "Kurla, Maharashtra, India",
   "Mohali district, India",
   "Mumbai",
@@ -498,6 +499,63 @@
    "cardFacts": [
     "Gurugram",
     "On-site",
+    "12 months"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4460973105",
+   "title": "Intern",
+   "company": "IQVIA",
+   "matchedWatchlist": "IQVIA",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/iqvia.jpg",
+   "location": "Kochi, Kerala, India",
+   "workplaceType": "Hybrid",
+   "stipend": "₹0",
+   "duration": "12 months",
+   "applicants": "26 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "aws",
+    "azure",
+    "gcp",
+    "pytorch",
+    "tensorflow",
+    "llm",
+    "generative ai",
+    "rag"
+   ],
+   "summary": "This internship involves working on generative ai and automation projects, focusing on research, model deployment, and team collaboration. Ideal for students passionate about ai and looking to contribute to real-world applications.",
+   "bullets": [
+    "Research and experiment with generative ai models like llms and diffusion models",
+    "Build and deploy ai solutions using azure and cloud platforms",
+    "Collaborate with teams to design and refine ai-driven tools"
+   ],
+   "roleLabel": "AI Research",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "pytorch",
+    "tensorflow",
+    "azure"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "16 minutes ago",
+   "postedAt": 1788346186835,
+   "firstSeenAt": 1788347146851,
+   "lastSeenAt": 1788347146851,
+   "url": "https://www.linkedin.com/jobs/view/4460973105/",
+   "applyUrl": "https://jobs.iqvia.com/jobs/R1566902-0?source=LinkedIn_Slots&utm_source=linkedin.com&utm_medium=job_posting",
+   "description": null,
+   "roleFingerprint": "da846be3b3",
+   "cardFacts": [
+    "Kochi",
+    "Hybrid",
     "12 months"
    ],
    "region": "IN"
