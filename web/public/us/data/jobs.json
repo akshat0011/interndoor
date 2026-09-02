@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788323920636,
+ "generatedAt": 1788324337002,
  "region": "US",
  "regionName": "United States",
- "count": 1139,
- "techCount": 1139,
+ "count": 1125,
+ "techCount": 1125,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -384,7 +384,6 @@
   "Massachusetts, United States",
   "Mays Chapel, MD",
   "Mays Landing, NJ",
-  "McKinney, TX",
   "McLean, VA",
   "Mebane, NC",
   "Mehoopany, PA",
@@ -9882,52 +9881,6 @@
    "region": "US"
   },
   {
-   "id": "4461706290",
-   "title": "Antenna Electrical Design Engineer Intern (Summer 2027)(Onsite)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "McKinney, TX",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing and simulating RF circuits for advanced defense systems. Ideal for electrical engineering students with a focus on antenna and signal processing. Requires U.S. Citizenship and active enrollment in a STEM program.",
-   "bullets": [
-    "Design passive circuits and simulate RF structures using Ansys HFSS",
-    "Work on phased array systems and advanced electrical subsystems",
-    "Require U.S. Citizenship and active enrollment in STEM degree"
-   ],
-   "roleLabel": "Antenna Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ansys hfss",
-    "phased array systems",
-    "passive circuit design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1788255183101,
-   "firstSeenAt": 1788255843103,
-   "lastSeenAt": 1788255843103,
-   "url": "https://www.linkedin.com/jobs/view/4461706290/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01866691EXTERNALENGLOBAL/Antenna-Electrical-Design-Engineer-Intern-Summer-2027-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c5ecf574b4",
-   "cardFacts": [
-    "$37,000",
-    "McKinney",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460232957",
    "title": "UPS Technology Group Summer 2027 Internship – GA",
    "company": "UPS",
@@ -13721,54 +13674,6 @@
    "region": "US"
   },
   {
-   "id": "4461558307",
-   "title": "Electrical Design Engineering Intern",
-   "company": "Emerson",
-   "matchedWatchlist": "Emerson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/emerson.jpg",
-   "location": "Shakopee, MN",
-   "workplaceType": "On-site",
-   "stipend": "$24 – $28 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing and testing electrical systems for automation products, working with cross-functional teams. Ideal for engineering students interested in hands-on product development and real-world problem solving.",
-   "bullets": [
-    "Design and test electrical systems using simulation tools and lab equipment",
-    "Collaborate with engineers across mechanical, software, and systems teams",
-    "Work in-person at Shakopee, MN, full-time, 40 hours per week"
-   ],
-   "roleLabel": "Electrical Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "circuit schematics",
-    "simulations",
-    "oscilloscopes",
-    "multimeters",
-    "signal generators"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "6 minutes ago",
-   "postedAt": 1788238259911,
-   "firstSeenAt": 1788238619912,
-   "lastSeenAt": 1788238619912,
-   "url": "https://www.linkedin.com/jobs/view/4461558307/",
-   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26009762/?utm_medium=jobboard&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "bc38b26417",
-   "cardFacts": [
-    "$24 – $28 / hour",
-    "Shakopee",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461567086",
    "title": "Software Engineering Intern",
    "company": "Emerson",
@@ -13857,54 +13762,6 @@
    "cardFacts": [
     "$24 – $28 / hour",
     "Shakopee",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461565158",
-   "title": "Electrical Design Engineering Intern",
-   "company": "Emerson",
-   "matchedWatchlist": "Emerson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/emerson.jpg",
-   "location": "Eden Prairie, MN",
-   "workplaceType": "On-site",
-   "stipend": "$24 – $28 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting product development by working with engineers to design and test electrical systems. Ideal for engineering students interested in hands-on experience with real-world automation projects. You'll contribute to product innovation and gain practical skills in circuit design and testing.",
-   "bullets": [
-    "Support product design with cross-functional teams from concept to production",
-    "Use electrical tools for schematics, simulations, and electronic testing",
-    "Work in-person at Eden Prairie, MN, full-time, 40 hours/week"
-   ],
-   "roleLabel": "Electrical Design Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "circuit schematics",
-    "simulations",
-    "oscilloscopes",
-    "multimeters",
-    "signal generators"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788238247413,
-   "firstSeenAt": 1788241847414,
-   "lastSeenAt": 1788241847414,
-   "url": "https://www.linkedin.com/jobs/view/4461565158/",
-   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26009762/?utm_medium=jobboard&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "bc38b26417",
-   "cardFacts": [
-    "$24 – $28 / hour",
-    "Eden Prairie",
     "On-site"
    ],
    "region": "US"
@@ -21291,58 +21148,6 @@
    "region": "US"
   },
   {
-   "id": "4461041794",
-   "title": "Electrical CAD Engineer Intern",
-   "company": "Qorvo, Inc.",
-   "matchedWatchlist": "Qorvo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/qorvo-inc.jpg",
-   "location": "Richardson, TX",
-   "workplaceType": "On-site",
-   "stipend": "$31 / hour",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "sql"
-   ],
-   "summary": "This internship involves creating and modifying electrical designs using cad software, working with engineers on design accuracy and documentation, and applying ipc standards to pcb designs. It suits students with experience in electrical engineering and cad tools.",
-   "bullets": [
-    "Create and modify detailed drawings using cad software",
-    "Work with engineers on design accuracy and documentation",
-    "Understand and apply ipc standards and pcb stack up definitions"
-   ],
-   "roleLabel": "Electrical Design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "altium designer",
-    "ads",
-    "solidworks",
-    "python",
-    "cadence/allegro"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "38 minutes ago",
-   "postedAt": 1788157224712,
-   "firstSeenAt": 1788159504713,
-   "lastSeenAt": 1788166319038,
-   "url": "https://www.linkedin.com/jobs/view/4461041794/",
-   "applyUrl": "https://careers.qorvo.com/job/Richardson-Electrical-CAD-Engineer-Intern-TX-75081/1421993600/?eresc=LinkedIn",
-   "description": null,
-   "roleFingerprint": "54494c9462",
-   "cardFacts": [
-    "$31 / hour",
-    "Richardson",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461044720",
    "title": "Full-Stack Web Developer Intern",
    "company": "Qorvo, Inc.",
@@ -28234,56 +28039,6 @@
    "roleFingerprint": "9dfdf3963f",
    "cardFacts": [
     "Cary"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460520794",
-   "title": "Electrical Project Engineer Intern (Spring 2027)",
-   "company": "Zipline",
-   "matchedWatchlist": "Zipline International",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/zipline.jpg",
-   "location": "South San Francisco, CA",
-   "workplaceType": "On-site",
-   "stipend": "$44 / hour",
-   "duration": "Spring 2027",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "This internship involves designing electrical systems for drone charging sites, working with engineering and deployment teams to ensure compliance with safety standards. Ideal for students with a background in electrical engineering and an interest in scalable infrastructure projects.",
-   "bullets": [
-    "Design electrical systems for drone charging sites using NEC standards",
-    "Collaborate with cross-functional teams on site-specific electrical solutions",
-    "Travel to project sites for field observations and support"
-   ],
-   "roleLabel": "Electrical System Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ne",
-    "cad/ecad",
-    "revit",
-    "bluebeam revu",
-    "autocad"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "21 minutes ago",
-   "postedAt": 1787958338846,
-   "firstSeenAt": 1787959598848,
-   "lastSeenAt": 1787959598848,
-   "url": "https://www.linkedin.com/jobs/view/4460520794/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4460520794/",
-   "description": null,
-   "roleFingerprint": "a19b7b1095",
-   "cardFacts": [
-    "$44 / hour",
-    "South San Francisco",
-    "On-site"
    ],
    "region": "US"
   },
@@ -41615,54 +41370,6 @@
    "region": "US"
   },
   {
-   "id": "4457277948",
-   "title": "Civil/Highway Engineer Intern - Hiring Event with AECOM - Philadelphia",
-   "company": "AECOM",
-   "matchedWatchlist": "AECOM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/aecom.jpg",
-   "location": "Newark, DE",
-   "workplaceType": "Hybrid",
-   "stipend": "$21 / hour",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "spring"
-   ],
-   "summary": "As a Highway Engineer Intern, you'll contribute to transportation projects in Delaware and Pennsylvania by supporting design work, calculations, and documentation. Ideal for engineering students seeking hands-on experience with industry software and real-world infrastructure challenges.",
-   "bullets": [
-    "Assist in roadway design using MicroStation, OpenRoads, and AutoCAD",
-    "Support calculations, reports, and construction plans under supervision",
-    "Work on transportation projects in Delaware and Pennsylvania"
-   ],
-   "roleLabel": "Highway Engineer",
-   "degreeLevel": "UG",
-   "degreeText": "Civil Engineering",
-   "keySkills": [
-    "microstation",
-    "openroads",
-    "autocad"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "33 minutes ago",
-   "postedAt": 1787772203289,
-   "firstSeenAt": 1787774183294,
-   "lastSeenAt": 1787774183294,
-   "url": "https://www.linkedin.com/jobs/view/4457277948/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457277948/",
-   "description": null,
-   "roleFingerprint": "bdd09d722f",
-   "cardFacts": [
-    "$21 / hour",
-    "Newark",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4459339500",
    "title": "Intern C, Image Science Engineer",
    "company": "L3Harris Technologies",
@@ -42177,54 +41884,6 @@
     "$47 / hour",
     "San Mateo",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4430596963",
-   "title": "Electrical Reliability Intern (Fall 2026)",
-   "company": "Astranis Space Technologies",
-   "matchedWatchlist": "Astranis",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/astranis-space-technologies.jpg",
-   "location": "San Francisco Bay Area",
-   "workplaceType": "On-site",
-   "stipend": "$29 / hour",
-   "duration": "Fall 2026",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This internship involves analyzing satellite systems for reliability and writing code to automate hardware testing. You'll work with flight hardware and DFMEA processes. Ideal for students with a background in electrical or computer engineering looking to gain hands-on experience in satellite development.",
-   "bullets": [
-    "Analyze satellite systems for reliability",
-    "Write code to automate hardware testing",
-    "Work with flight hardware and DFMEA",
-    "12-week paid internship in sf bay area"
-   ],
-   "roleLabel": "Satellite Reliability",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "dfmea"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "1 hour ago",
-   "postedAt": 1787749026164,
-   "firstSeenAt": 1787752626165,
-   "lastSeenAt": 1787752626165,
-   "url": "https://www.linkedin.com/jobs/view/4430596963/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4430596963/",
-   "description": null,
-   "roleFingerprint": "f0197e0369",
-   "cardFacts": [
-    "$29 / hour",
-    "San Francisco Bay Area",
-    "On-site"
    ],
    "region": "US"
   },
@@ -43883,56 +43542,6 @@
    "region": "US"
   },
   {
-   "id": "4459079584",
-   "title": "Mercury Marine - Foundry Engineering Co-op",
-   "company": "Mercury Marine",
-   "matchedWatchlist": "Mercury Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mercury-marine.jpg",
-   "location": "Fond du Lac, WI",
-   "workplaceType": "On-site",
-   "stipend": "$18 – $28 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves hands-on work in advanced manufacturing, supporting additive projects, casting processes, and data analysis. You'll collaborate with engineers and teams to improve product quality and plant efficiency. Ideal for engineering students with CAD skills and an interest in manufacturing innovation.",
-   "bullets": [
-    "Support additive manufacturing projects with 3D printing and casting processes",
-    "Use CAD software to create models and documentation for tooling and processes",
-    "Analyze data to improve casting quality and plant efficiency",
-    "Work on cross-functional teams to optimize workflows and layouts"
-   ],
-   "roleLabel": "Foundry Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "3d printing",
-    "data analysis",
-    "manufacturing processes"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "4 hours ago",
-   "postedAt": 1787705827372,
-   "firstSeenAt": 1787720227374,
-   "lastSeenAt": 1787720227374,
-   "url": "https://www.linkedin.com/jobs/view/4459079584/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4459079584/",
-   "description": null,
-   "roleFingerprint": "4fed0e250b",
-   "cardFacts": [
-    "$18 – $28 / hour",
-    "Fond du Lac",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4459083537",
    "title": "Data Engineering Summer Intern (May-Aug '27)",
    "company": "Skyworks Solutions, Inc.",
@@ -45278,52 +44887,6 @@
     "Michigan",
     "Hybrid",
     "3 months"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4457643147",
-   "title": "Facilities Engineering Intern, Electrical Distribution Systems (Summer 2027)",
-   "company": "GlobalFoundries",
-   "matchedWatchlist": "GlobalFoundries",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/globalfoundries.jpg",
-   "location": "Essex Junction, VT",
-   "workplaceType": "On-site",
-   "stipend": "$20 – $40 / hour",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing electrical systems to enhance energy efficiency and monitoring. You will work on data collection and reporting tools for energy management and collaborate on training materials for technicians. It suits students with a focus on electrical engineering looking to gain hands-on experience in energy optimization and system design.",
-   "bullets": [
-    "Analyze electrical systems to improve energy efficiency and monitoring",
-    "Work with data collection and reporting tools for energy management",
-    "Collaborate on training materials and procedures for technicians"
-   ],
-   "roleLabel": "Electrical System Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering",
-   "keySkills": [
-    "data collection",
-    "energy management",
-    "reporting tools"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "17 minutes ago",
-   "postedAt": 1787690281301,
-   "firstSeenAt": 1787691301304,
-   "lastSeenAt": 1787691301304,
-   "url": "https://www.linkedin.com/jobs/view/4457643147/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457643147/",
-   "description": null,
-   "roleFingerprint": "7f2f81ebbb",
-   "cardFacts": [
-    "$20 – $40 / hour",
-    "Essex Junction",
-    "On-site"
    ],
    "region": "US"
   },
@@ -51051,53 +50614,6 @@
    "region": "US"
   },
   {
-   "id": "ats:greenhouse:spacex:8729124002",
-   "title": "New Graduate Engineer, Electrical (Starship)",
-   "company": "SpaceX",
-   "matchedWatchlist": "SpaceX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/spacex.png",
-   "location": "Starbase, TX",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "matlab"
-   ],
-   "summary": "This internship involves designing electrical systems for spaceflight and Starbase infrastructure. You'll work on power systems, automation, and high-voltage equipment, collaborating across engineering teams on avionics and production systems. Ideal for students with a strong background in electrical engineering and hands-on experience.",
-   "bullets": [
-    "Design and build electrical systems for spaceflight and Starbase infrastructure",
-    "Work with power systems, automation, and high-voltage equipment",
-    "Collaborate across engineering teams on avionics and production systems"
-   ],
-   "roleLabel": "Electrical Systems Design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "power systems",
-    "automation",
-    "high-voltage equipment",
-    "avionics"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787118903000,
-   "firstSeenAt": 1787502653735,
-   "lastSeenAt": 1788323645238,
-   "url": "https://boards.greenhouse.io/spacex/jobs/8729124002?gh_jid=8729124002",
-   "applyUrl": "https://boards.greenhouse.io/spacex/jobs/8729124002?gh_jid=8729124002",
-   "description": null,
-   "roleFingerprint": "efe5920492",
-   "cardFacts": [
-    "Starbase"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:greenhouse:spacex:8729121002",
    "title": "New Graduate Engineer, Software (Starship)",
    "company": "SpaceX",
@@ -52798,55 +52314,6 @@
    "region": "US"
   },
   {
-   "id": "ats:greenhouse:spacex:8696490002",
-   "title": "New Graduate Engineer, Electrical - '26/'27 (Starlink)",
-   "company": "SpaceX",
-   "matchedWatchlist": "SpaceX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/spacex.png",
-   "location": "Redmond, WA",
-   "workplaceType": null,
-   "stipend": "$1,20,000 – $1,75,000",
-   "duration": "3 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++"
-   ],
-   "summary": "This internship involves designing and building reliable electronics for satellites and spacecraft. You'll work with cross-functional teams to develop hardware from concept to production. Ideal for students with experience in circuit design and hardware development.",
-   "bullets": [
-    "Design and build high-reliability electronics for satellites and spacecraft",
-    "Work with mechanical, software, and test engineers on integrated hardware",
-    "Test, debug, and support satellite and gateway hardware through production"
-   ],
-   "roleLabel": "Satellite Electronics Design",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering",
-   "keySkills": [
-    "pcb layout",
-    "debugging",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1786724335000,
-   "firstSeenAt": 1787502653732,
-   "lastSeenAt": 1788323645235,
-   "url": "https://boards.greenhouse.io/spacex/jobs/8696490002?gh_jid=8696490002",
-   "applyUrl": "https://boards.greenhouse.io/spacex/jobs/8696490002?gh_jid=8696490002",
-   "description": null,
-   "roleFingerprint": "bf9fe3770a",
-   "cardFacts": [
-    "$120,000 – $175,000",
-    "Redmond",
-    "3 weeks"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:greenhouse:spacex:8703552002",
    "title": "New Graduate Engineer, Silicon Engineering",
    "company": "SpaceX",
@@ -52896,55 +52363,6 @@
     "$155,000 – $210,000",
     "Palo Alto",
     "3 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:spacex:8696469002",
-   "title": "New Graduate Engineer, Electrical - '26/'27 (Starlink)",
-   "company": "SpaceX",
-   "matchedWatchlist": "SpaceX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/spacex.png",
-   "location": "Bastrop, TX",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++"
-   ],
-   "summary": "This internship involves designing and testing electronics for Starlink's satellite and consumer products. You'll work on automation, manufacturing processes, and compliance, contributing to global internet access. Ideal for electrical engineering students with hardware experience.",
-   "bullets": [
-    "Design and test complex electronics for satellites and consumer hardware",
-    "Use Python and test equipment to automate and validate product performance",
-    "Work on high-volume manufacturing processes for Starlink hardware",
-    "Collaborate with cross-functional teams on reliability and compliance"
-   ],
-   "roleLabel": "Electrical Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "pcb layout",
-    "test equipment",
-    "automation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1786724281000,
-   "firstSeenAt": 1787502653729,
-   "lastSeenAt": 1788323645237,
-   "url": "https://boards.greenhouse.io/spacex/jobs/8696469002?gh_jid=8696469002",
-   "applyUrl": "https://boards.greenhouse.io/spacex/jobs/8696469002?gh_jid=8696469002",
-   "description": null,
-   "roleFingerprint": "419389e16f",
-   "cardFacts": [
-    "Bastrop"
    ],
    "region": "US"
   },
@@ -53280,54 +52698,6 @@
    "applyUrl": "https://job-boards.greenhouse.io/astranis/jobs/4676888006",
    "description": null,
    "roleFingerprint": "597c515788",
-   "cardFacts": [
-    "$29 / hour",
-    "San Francisco",
-    "Fall 2026"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:astranis:4681472006",
-   "title": "Electrical Reliability Intern (Fall 2026)",
-   "company": "Astranis",
-   "matchedWatchlist": "Astranis",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/astranis.png",
-   "location": "San Francisco",
-   "workplaceType": null,
-   "stipend": "$29 / hour",
-   "duration": "Fall 2026",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This internship involves analyzing satellite systems for reliability and writing code to automate hardware testing. It suits students with a passion for hardware development and hands-on design. The role is based in san francisco and offers paid hourly work.",
-   "bullets": [
-    "Analyze satellite systems for reliability",
-    "Write code to automate hardware testing",
-    "Work with flight hardware and DFMEA",
-    "Paid hourly role in san francisco"
-   ],
-   "roleLabel": "Satellite reliability analysis",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "dfmea"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1786646479000,
-   "firstSeenAt": 1787501648644,
-   "lastSeenAt": 1788323623842,
-   "url": "https://job-boards.greenhouse.io/astranis/jobs/4681472006",
-   "applyUrl": "https://job-boards.greenhouse.io/astranis/jobs/4681472006",
-   "description": null,
-   "roleFingerprint": "97ebc0835c",
    "cardFacts": [
     "$29 / hour",
     "San Francisco",
@@ -55985,57 +55355,6 @@
    "roleFingerprint": "d17111152a",
    "cardFacts": [
     "$125,000 – $145,000 / year",
-    "Hawthorne",
-    "3 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:spacex:8483305002",
-   "title": "New Graduate Engineer, Electrical (Starshield)",
-   "company": "SpaceX",
-   "matchedWatchlist": "SpaceX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/spacex.png",
-   "location": "Hawthorne, CA",
-   "workplaceType": null,
-   "stipend": "$1,05,000 – $1,22,500 / year",
-   "duration": "3 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++"
-   ],
-   "summary": "This internship involves designing and testing electronics for satellite communication systems. You will work on hardware development from concept through production, collaborating with cross-functional teams. Ideal for electrical or computer engineering students with a strong interest in space technology and hardware development.",
-   "bullets": [
-    "Design, develop, and test reliable electronics for satellite communication systems",
-    "Work with cross-functional teams on hardware from concept to production",
-    "Requires bachelor's in electrical or computer engineering, graduating in 2026 or 2027"
-   ],
-   "roleLabel": "Electronics Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "c/c++",
-    "fpga",
-    "ethernet",
-    "serdes"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1784927877000,
-   "firstSeenAt": 1787502653734,
-   "lastSeenAt": 1788323645238,
-   "url": "https://boards.greenhouse.io/spacex/jobs/8483305002?gh_jid=8483305002",
-   "applyUrl": "https://boards.greenhouse.io/spacex/jobs/8483305002?gh_jid=8483305002",
-   "description": null,
-   "roleFingerprint": "3d2a2926bc",
-   "cardFacts": [
-    "$105,000 – $122,500 / year",
     "Hawthorne",
     "3 weeks"
    ],
