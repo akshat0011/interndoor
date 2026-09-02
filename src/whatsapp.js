@@ -257,26 +257,76 @@ async function composerNames(page, name) {
  * "Interndoor" and the config said "InternDoor". Exactness is what stops
  * "Interndoor" opening "Interndoor feedback"; case is not part of that.
  */
+/* How long the nav is given to hydrate, and how long the channels list is given
+   to paint. BOTH ARE MEASURED, not guessed (2 Sep 2026, three cold opens):
+
+     session ready   10.3s · 11.7s · 12.4s
+     Channels button +50ms after ready, every time
+     the channel row  203ms · 433ms · 399ms after the click
+
+   So the row is fast and the HYDRATION is slow, which is the opposite of what
+   the fixed 2500ms sleep this replaces assumed. The nav budget is generous
+   because the send runs at the END of a scan, on a machine that has just spent
+   twelve minutes driving a second browser — which is exactly when the app takes
+   longest to become interactive, and exactly when this failed. */
+const CHANNELS_NAV_MS = 20_000;
+const CHANNEL_ROW_MS = 8_000;
+
 export async function findTarget(page, name) {
   const wanted = String(name ?? '').trim();
   if (!wanted) return { ok: false, error: 'no target name configured' };
   const exactly = new RegExp(`^${wanted.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i');
 
-  const channels = page.getByRole('button', { name: /^channels$/i }).first();
-  if (await channels.count()) {
+  /* WHY EVERY STAGE IS RECORDED. This function failed once on 2 Sep 2026 with
+     `nothing called "Interndoor" in the channels list or the chats`, and that
+     one sentence was reachable from four different causes — the Channels button
+     being absent, the click throwing, the row never appearing, or the composer
+     refusing to confirm the name — because the channels branch fell through
+     silently on all four. The message named both surfaces while only one had
+     actually been tried. A failure that cannot say which stage it was is one
+     nobody can fix afterwards. */
+  const tried = [];
+
+  // --- the channels surface -------------------------------------------------
+  let channelsBtn = page.getByRole('button', { name: /^channels$/i }).first();
+  try {
+    /* WAIT FOR THE NAV, do not sample it. `sessionState` reports ready as soon
+       as #pane-side exists, and that container is present well before the app
+       is interactive — so a single count() here reads 0 on a slow open and
+       skips the ONLY surface a channel can be found on. The fallback below
+       cannot rescue that: a channel is not in the chat list at all (measured —
+       `#pane-side [role="listitem"]` is 0 even while the channel row is on
+       screen), so falling through is falling into a dead end. */
+    await channelsBtn.waitFor({ state: 'visible', timeout: CHANNELS_NAV_MS });
+  } catch {
+    channelsBtn = null;
+    tried.push(`the Channels button never appeared in ${CHANNELS_NAV_MS / 1000}s`);
+  }
+
+  if (channelsBtn) {
     try {
-      await channels.click();
-      await page.waitForTimeout(2500);
+      await channelsBtn.click();
       const row = page.getByTitle(exactly).first();
+      try {
+        await row.waitFor({ state: 'visible', timeout: CHANNEL_ROW_MS });
+      } catch {
+        tried.push(`no channel called "${wanted}" appeared within ${CHANNEL_ROW_MS / 1000}s`);
+      }
       if (await row.count()) {
         await row.click();
         await page.waitForTimeout(2500);
         const v = await composerNames(page, wanted);
         if (v.ok) return { ok: true, how: `channel "${wanted}"` };
+        tried.push(`the channel opened but ${v.error}`);
       }
-    } catch { /* fall through to the chat search */ }
+    } catch (e) {
+      tried.push(`the channels list failed (${e.message.split('\n')[0]})`);
+    }
   }
 
+  // --- the chat list --------------------------------------------------------
+  /* Kept because a GROUP may legitimately carry the same name, which is the
+     shape this ran as before the channel existed. It can never find a channel. */
   try {
     await page.getByRole('button', { name: /^chats$/i }).first().click();
     await page.waitForTimeout(1200);
@@ -289,14 +339,18 @@ export async function findTarget(page, name) {
     await page.waitForTimeout(2000);
     const row = page.locator('#pane-side').getByTitle(exactly).first();
     if (!await row.count()) {
-      return { ok: false, error: `nothing called "${wanted}" in the channels list or the chats` };
+      tried.push(`no chat called "${wanted}" in the chat list`);
+      return { ok: false, error: tried.join('; ') };
     }
     await row.click();
     await page.waitForTimeout(1800);
     const v = await composerNames(page, wanted);
-    return v.ok ? { ok: true, how: `chat "${wanted}"` } : { ok: false, error: v.error };
+    if (v.ok) return { ok: true, how: `chat "${wanted}"` };
+    tried.push(`the chat opened but ${v.error}`);
+    return { ok: false, error: tried.join('; ') };
   } catch (e) {
-    return { ok: false, error: `could not reach "${wanted}" (${e.message.split('\n')[0]})` };
+    tried.push(`the chat search failed (${e.message.split('\n')[0]})`);
+    return { ok: false, error: tried.join('; ') };
   }
 }
 
