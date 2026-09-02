@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-01</lastmod><priority>1.0</priority></url>
-  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-01</lastmod><priority>0.4</priority></url>
-  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-02</lastmod><priority>1.0</priority></url>
+  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-02</lastmod><priority>0.4</priority></url>
+  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -123,6 +123,7 @@
   <url><loc>https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457163439</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457141776</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4457149576</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/amazon-sde-i-intern-amazon-university-talent-acquisition-ats-amazon-ind-10506481</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/times-internet-quality-assurance-intern-4456506067</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/chegg-india-intern-cloud-operations-engineering-4447907250</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/crisil-internship-trainee-ai-engg-4456879321</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
@@ -285,6 +286,8 @@
   <url><loc>https://interndoor.com/jobs/microsoft-data-science-intern-ats-microsoft-india-1970393556917520</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-applied-sciences-intern-ats-microsoft-india-1970393556917519</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/pearson</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/cisco</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/honeywell-technologies</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/houlihan-lokey</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/harman-india</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -333,6 +336,7 @@
   <url><loc>https://interndoor.com/companies/nxp-semiconductors</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/mizuho</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/american-express</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/amazon</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/times-internet</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/chegg-india</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/crisil</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
@@ -345,7 +349,6 @@
   <url><loc>https://interndoor.com/companies/tata-electronics</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/arctic-wolf</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/piramal</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/cisco</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/icertis</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/workday</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ge-vernova</loc><lastmod>2026-08-21</lastmod><priority>0.6</priority></url>
@@ -362,7 +365,6 @@
   <url><loc>https://interndoor.com/companies/ather-energy-ltd</loc><lastmod>2026-08-20</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/appversal</loc><lastmod>2026-08-20</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fyntune-solution-private-limited</loc><lastmod>2026-08-20</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/pearson</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/enterpret</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/quest-global</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/roche</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
