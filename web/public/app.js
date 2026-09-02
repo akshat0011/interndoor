@@ -50,6 +50,13 @@ const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const HOT_MS = 60 * 60 * 1000;      // "just posted"
 const FRESH_MS = 24 * 60 * 60 * 1000; // "new"
 
+/* The width at or below which the detail pane is a full-screen overlay rather
+   than a sticky right-hand column. IT IS A COPY OF THE MEDIA QUERY IN
+   styles.css THAT OWNS .pane-col, and the two must not drift — see the note in
+   selectJob for what happened when they did. Pinned by
+   test/breakpoint.test.mjs, which reads the number out of both files. */
+const PANE_OVERLAY_MAX_PX = 1024;
+
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
   const n = document.createElement(tag);
@@ -944,7 +951,17 @@ function selectJob(id, { silent = false } = {}) {
   // copying the address gives someone a link to a job they never chose.
   if (!silent) history.replaceState(null, '', `#job-${id}`);
 
-  if (matchMedia('(max-width: 1000px)').matches) {
+  /* 1024, AND IT MUST EQUAL THE MEDIA QUERY IN styles.css THAT OWNS .pane-col.
+     This read 1000 while the stylesheet switches the pane to
+     `position: fixed; display: none` at 1024 — so between 1001px and 1024px
+     inclusive the CSS hid the column and the JS never added `.open`. The
+     detail rendered into a pane nobody could see: clicking a role did
+     visibly nothing, which is the silent-click signature. 1024x768 is iPad
+     landscape and a common small-laptop width, so this was not a corner.
+     `test/breakpoint.test.mjs` reads the number out of BOTH files and fails
+     if they ever disagree again — a magic number duplicated across two
+     languages cannot be held in step by hand. */
+  if (matchMedia(`(max-width: ${PANE_OVERLAY_MAX_PX}px)`).matches) {
     $('detail-col').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
