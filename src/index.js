@@ -24,6 +24,7 @@ import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, p
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
+import { alertOnSessionLoss } from './sessionalert.js';
 import { reportTarget } from './postqueue.js';
 
 const ARGS = new Set(process.argv.slice(2));
@@ -442,6 +443,9 @@ async function main() {
   let session;
   let status = 'ok';
   let fatalError = null;
+  // Which RunAborted state ended the run, if one did — read after the catch
+  // so the session-loss alert can tell an expired login from a rate limit.
+  let abortState = null;
   // Set when a page load failed before it ever reached LinkedIn, and when
   // LinkedIn answered with a rate limit. They decide the exit code — see the
   // EXIT_RETRY_SOON block at the end of the run.
@@ -1028,6 +1032,7 @@ async function main() {
     if (err instanceof RunAborted) {
       status = counters.newJobs > 0 ? 'partial' : 'aborted';
       fatalError = err.message;
+      abortState = err.state;
 
       // A rate limit means back off hard rather than trying again in six hours.
       if (err.state === State.RATE_LIMITED && cfg.safety.cooldownHoursAfterRateLimit > 0) {
@@ -1268,6 +1273,14 @@ async function main() {
     newJobs: counters.newJobs,
     skippedNote: summaryLine,
     error: fatalError,
+  });
+
+  /* An expired session is the one failure that stops every board at once, and
+     guard.js only banners the Mac for it. See src/sessionalert.js. */
+  await alertOnSessionLoss(store, {
+    healthy: status === 'ok' || status === 'partial',
+    sessionExpired: abortState === State.LOGGED_OUT,
+    enabled: cfg.notifications?.onError !== false,
   });
 
   // Enrich before the report and the publish, so a job reaches the site with its
