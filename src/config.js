@@ -147,7 +147,19 @@ export function loadConfig() {
   // whole board depends on, for no benefit — India is unaffected by regions,
   // and every other region is served from ATS boards, which have no search at
   // all. Set it explicitly on a search when a second LinkedIn region is added.
-  cfg.searches = (cfg.searches ?? []).map((entry) => {
+  /* `enabled: false` PAUSES A SEARCH WITHOUT DELETING IT.
+   *
+   * Deleting the entry is the obvious way to stop a region and it throws away
+   * everything that made it work — the US search carries a verified `geoId`,
+   * its own `intervalMinutes`, and a `minWindowHours`/`windowMarginHours` pair
+   * that exist because US supply is dense enough to walk 30 pages a sweep.
+   * Re-typing those from memory is how a region comes back subtly wrong.
+   *
+   * A disabled search is dropped here, so nothing downstream has to know: the
+   * rotation, the due check and the sweep baselines all simply never see it.
+   * Its `sweep_ok_at:<CODE>` baseline is left untouched, so re-enabling it
+   * stretches the window over the pause exactly the way an outage does. */
+  const declared = (cfg.searches ?? []).map((entry) => {
     const base = typeof entry === 'string' ? { keywords: entry } : { ...entry };
     const region = regionOf(base.region ?? cfg.defaultRegion ?? 'IN');
     return {
@@ -155,8 +167,18 @@ export function loadConfig() {
       location: base.location ?? cfg.defaultLocation ?? '',
       region: region?.code ?? 'IN',
       geoId: base.geoId ?? null,
+      enabled: base.enabled !== false,
     };
   });
+  /* Every search as WRITTEN, paused ones included. Exposed because a test that
+     walks `cfg.searches` to check a mechanism — that a non-India region is
+     scoped by geoId, say — silently stops asserting anything the moment that
+     region is paused. Pausing US did exactly that: the geoId loop ran zero
+     times and still reported success. Mechanism tests read this; tests about
+     what is running now read `cfg.searches`. */
+  cfg.declaredSearches = declared;
+  cfg.pausedSearches = declared.filter((s) => !s.enabled).map((s) => s.region);
+  cfg.searches = declared.filter((s) => s.enabled);
 
   cfg.titleTerms = (cfg.matching.titleMustMatch || []).map((t) => t.toLowerCase());
 

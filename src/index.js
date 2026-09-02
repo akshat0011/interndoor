@@ -439,6 +439,13 @@ async function main() {
 
   log.section(`Run ${runId}`);
   log.info(`${cfg.watchlist.length} watchlist terms across ${cfg.uniqueCompanyCount} companies · mode "${cfg.searchMode ?? 'companies'}" · ${allSearches.length} searches · budget ${cfg.limits.maxRuntimeMinutes}m`);
+  /* A paused region is said out loud every run. A region that silently stops
+     collecting looks exactly like a region with no supply, and this project has
+     already spent a day chasing "why is India so quiet" that turned out to be
+     the weekend. If it is off, the log says so. */
+  if (cfg.pausedSearches?.length) {
+    log.warn(`Search paused by config: ${cfg.pausedSearches.join(', ')} — set "enabled": true in config.json to resume.`);
+  }
 
   let session;
   let status = 'ok';

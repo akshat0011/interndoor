@@ -815,6 +815,8 @@
     {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "US",
+      "enabled": false,
+      "_enabled_note": "PAUSED BY HAND on 2 Sep 2026 — India only until he says otherwise. Set back to true to resume; nothing else here needs changing. The geoId is verified live and the interval/window pair is tuned to US density, which is why this is a flag rather than a deleted entry. The sweep_ok_at:US baseline is deliberately left where it is, so the first run after resuming stretches its window across the whole pause exactly the way it would after an outage — expect one deep catch-up sweep, then steady state.",
       "location": "United States",
       "geoId": 103644278,
       "intervalMinutes": 120,

@@ -6,6 +6,7 @@
  * is that India's entry has not quietly gained a geoId, and a fixture could not
  * tell anyone that.
  */
+import { readFileSync } from 'node:fs';
 import { loadConfig, isSearchDue, INTERVAL_DUE_FRACTION, resolveWindowHours } from '../src/config.js';
 import { resolveSearches } from '../src/searches.js';
 import { buildSearchUrl } from '../src/linkedin.js';
@@ -43,7 +44,14 @@ ok('India\'s URL carries no geoId param',
 console.log('\n== a non-India region is scoped by geoId, which is load-bearing ==');
 // The redirect to /jobs/search-results/ DROPS `location=` and keeps `geoId`,
 // so the location string is cosmetic and the id is the only real scope.
-for (const s of searches.filter((x) => x.region !== 'IN')) {
+//
+// WALKS THE DECLARED SEARCHES, NOT THE ACTIVE ONES. Pausing US emptied this
+// loop and the section still printed clean — zero assertions reads exactly like
+// zero failures. A paused region's geoId must stay correct, because it is what
+// the region comes back on.
+const foreign = cfg.declaredSearches.filter((x) => x.region !== 'IN');
+check('there is a non-India search to check at all', foreign.length > 0, true);
+for (const s of foreign) {
   const url = buildSearchUrl(s, cfg.filters, { start: 0 });
   ok(`${s.region} sets a geoId`, Number.isFinite(Number(s.geoId)) && Number(s.geoId) > 0);
   ok(`${s.region} matches the registry's id`, Number(s.geoId) === regionOf(s.region).geoId);
@@ -114,16 +122,18 @@ console.log('\n== the live config: India every run, US every two hours ==');
    the window stretches 2h -> 2.75h is a net ~31% fewer page loads a day.
    INDIA MUST STAY AT EVERY TICK. It feeds 91% of the India board and the
    board's whole promise is freshness. */
+const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
-check('US runs two-hourly', byRegion.get('US')?.intervalMinutes, 120);
+// Declared, not active: US is paused, and its cadence must survive the pause.
+check('US runs two-hourly', byDeclared.get('US')?.intervalMinutes, 120);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
-ok('US is not due 30m after its sweep', !due(agoMin(30), byRegion.get('US')?.intervalMinutes));
-ok('US is not due 60m after its sweep', !due(agoMin(60), byRegion.get('US')?.intervalMinutes));
-ok('US is due 120m after its sweep', due(agoMin(120), byRegion.get('US')?.intervalMinutes));
+ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
+ok('US is not due 60m after its sweep', !due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
+ok('US is due 120m after its sweep', due(agoMin(120), byDeclared.get('US')?.intervalMinutes));
 /* The due check deliberately fires a little early — ticks drift, so demanding
    the full interval turns a two-hourly search into a three-hourly one. */
 ok('and a tick that lands slightly early still counts',
-  due(agoMin(Math.ceil(120 * INTERVAL_DUE_FRACTION) + 1), byRegion.get('US')?.intervalMinutes));
+  due(agoMin(Math.ceil(120 * INTERVAL_DUE_FRACTION) + 1), byDeclared.get('US')?.intervalMinutes));
 
 console.log('\n== a dense region narrows its own lookback ==');
 // The US sweep was walking its whole 3h result set to exhaustion — 21 pages,
@@ -139,7 +149,10 @@ const winOf = (search, gapHours) => {
   return resolveWindowHours(NOW_W - gapHours * 3_600_000, f, NOW_W);
 };
 const NOW_W = 1_700_000_000_000;
-const IN_S = byRegion.get('IN'), US_S = byRegion.get('US');
+// DECLARED, not active: US is paused, and its window tuning is precisely what
+// has to survive the pause intact so the region comes back the same.
+const IN_S = byRegion.get('IN'), US_S = byDeclared.get('US');
+check('both searches are resolvable for the window checks', [!!IN_S, !!US_S], [true, true]);
 
 check('India is unchanged at its 30-minute cadence', winOf(IN_S, 0.5), 3);
 check('India after a 6h sleep still stretches', winOf(IN_S, 6), 8);
@@ -186,6 +199,53 @@ check('a stale IN column on a US location does not alert',
 // And the fix from earlier this session holds on this path too.
 check('Reading PA does not alert as a UK role',
   resolveRowRegion({ location: 'Reading, PA', region: null }), 'US');
+
+console.log('\n== a search can be PAUSED without being deleted ==');
+/* Deleting the entry is the obvious way to stop a region and it throws away
+   everything that made it work — the US search carries a verified geoId, its own
+   intervalMinutes, and a minWindowHours/windowMarginHours pair that exists
+   because US supply is dense enough to walk 30 pages a sweep. Re-typing those
+   from memory is how a region comes back subtly wrong.
+   This pins the MECHANISM; the block after it pins today's state. */
+{
+  const raw = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  const us = raw.searches.find((s) => s.region === 'US');
+
+  check('the paused US entry is still in the file', !!us, true);
+  check('with its verified geoId', us.geoId, 103644278);
+  check('its own cadence', us.intervalMinutes, 120);
+  check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [2, 0.75]);
+
+  check('a disabled search is dropped from the active list',
+    cfg.searches.some((s) => s.region === 'US'), false);
+  check('but is still declared', cfg.declaredSearches.some((s) => s.region === 'US'), true);
+  check('and is reported, so it cannot be silently forgotten', cfg.pausedSearches, ['US']);
+
+  /* AND THE RUN SAYS SO OUT LOUD. A region that silently stops collecting looks
+     exactly like a region with no supply, and this repo has already spent a day
+     chasing "why is India so quiet" that turned out to be the weekend.
+     src/index.js executes on import, so this reads the source. */
+  const idx = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  check('the run warns about a paused search', /if \(cfg\.pausedSearches\?\.length\) \{/.test(idx), true);
+  check('and names it', /Search paused by config: \$\{cfg\.pausedSearches\.join/.test(idx), true);
+
+  // Absent means enabled — every other search in this repo omits the flag.
+  const india = cfg.declaredSearches.find((s) => s.region === 'IN');
+  check('an entry with no flag is enabled', india.enabled, true);
+  check('and India is running', cfg.searches.some((s) => s.region === 'IN'), true);
+}
+
+console.log('\n== THE PAUSE MUST NOT DISTURB INDIA ==');
+{
+  /* India feeds ~91% of the India board and is the one collector the site
+     cannot lose. Pausing US is a change to the searches array, so these are
+     asserted again after it. */
+  const india = cfg.searches.find((s) => s.region === 'IN');
+  check('India is the only active search', cfg.searches.map((s) => s.region), ['IN']);
+  check('it still sends no geoId', india.geoId, null);
+  check('and still runs on every tick', india.intervalMinutes ?? 0, 0);
+  ok('its URL is still geoId-free', !buildSearchUrl(india, cfg.filters, { start: 0 }).includes('geoId='));
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 if (fail) process.exit(1);
