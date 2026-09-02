@@ -53,7 +53,8 @@ const POSITIVE = [
   'technology', 'technical', 'r&d', 'research and development',
   // Broader technical vocabulary — added after a real backfill showed several
   // engineering titles falling through to "uncertain".
-  'software development', 'software engineering', 'application developer',
+  'software development', 'software engineering', 'software engineer',
+  'software developer', 'application developer',
   'systems software',
   /* Specific software phrases, so a real role is never left leaning on the
      GENERIC `engineering intern` alone. Each of these is unambiguous. Three
@@ -229,7 +230,15 @@ function firstMatch(text, terms) {
  * Mechanical Systems" would otherwise have had nothing but this generic term
  * and would have been refused by `mechanical`.
  */
-const GENERIC_POSITIVE = new Set(['engineering intern', 'engineering trainee']);
+const GENERIC_POSITIVE = new Set([
+  'engineering intern', 'engineering trainee',
+  /* Single words are inert for the strongPositive test above, which requires a
+     space — they are here for the `<Role>, <Team>` rescue below, which asks the
+     same question of a one-word match: does this term actually say the work is
+     software, or only that it is a job? */
+  'engineer', 'engineering', 'technical', 'technology', 'r&d',
+  'intern', 'trainee', 'apprentice',
+]);
 
 const POSITIVE_SORTED = [...POSITIVE].sort((a, b) => b.length - a.length);
 const NEGATIVE_SORTED = [...NEGATIVE].sort((a, b) => b.length - a.length);
@@ -252,7 +261,37 @@ export function classifyRole(title, options = {}) {
     t.includes(' ') && !GENERIC_POSITIVE.has(t) && hasTerm(text, t));
 
   const neg = firstMatch(text, negative);
-  if (neg && !strongPositive) return { verdict: 'non-tech', matched: neg };
+  if (neg && !strongPositive) {
+    /* `<Role>, <Team>` — the team name must not veto the role.
+     *
+     * AMAZON TITLES EVERY POSTING THIS WAY, and the team is routinely HR,
+     * finance or recruiting vocabulary. Measured live:
+     *
+     *   'SDE I Intern , Amazon University Talent Acquisition' -> non-tech
+     *   'SDE I Intern'                                        -> tech via sde
+     *
+     * A genuine SDE internship refused because of the department that posted
+     * it. `sde` is one word and only a MULTI-word positive outranks a negative,
+     * so nothing could rescue it.
+     *
+     * The head before the first comma wins only when it names the work
+     * SPECIFICALLY — a generic term does not count, which is the same rule
+     * GENERIC_POSITIVE enforces above — and only when the head carries no
+     * negative of its own. Both guards are load-bearing and were measured:
+     * letting ANY tech head win allows 7 rows, four of them SpaceX
+     * "New Graduate Engineer, Electrical/Civil" rescued by the bare word
+     * `engineer`; dropping the generic check allows GlobalFoundries'
+     * "Facilities Engineering Intern, Electrical Distribution Systems" via
+     * `engineering intern`. With both, it is exactly one row in 3,955 — the
+     * Amazon one — and it compounds with every SDE internship Amazon files.
+     */
+    const head = text.split(',')[0].trim();
+    if (head && head.length < text.length && !firstMatch(head, negative)) {
+      const specific = positive.find((t) => !GENERIC_POSITIVE.has(t) && hasTerm(head, t));
+      if (specific) return { verdict: 'tech', matched: specific };
+    }
+    return { verdict: 'non-tech', matched: neg };
+  }
 
   const pos = strongPositive ?? firstMatch(text, positive);
   if (pos) return { verdict: 'tech', matched: pos };

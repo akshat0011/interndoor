@@ -163,6 +163,61 @@ console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
     refused('Electrical and Computer Engineering Intern'), false);
 }
 
+console.log('\n== A TEAM NAME MUST NOT VETO THE ROLE ==');
+/* Amazon titles every posting `<Role>, <Team>` and the team is routinely HR,
+   finance or recruiting vocabulary, so a genuine SDE internship was refused by
+   the department that posted it. The head before the first comma wins only
+   when it names the work SPECIFICALLY and carries no negative of its own.
+   Both guards measured: any-tech-head allows 7 rows (four of them SpaceX
+   electrical/civil via the bare `engineer`); no generic check allows
+   GlobalFoundries Facilities via `engineering intern`. With both: 1 row. */
+{
+  const cfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  const refused = (t, label = null) => vetoNonTech(t, label, true, cfg) === false;
+  const is = (label, actual, expected) => {
+    if (actual === expected) { pass++; console.log(`  ok    ${label}`); }
+    else { fail++; console.log(`  FAIL  ${label}\n          got ${actual}, want ${expected}`); }
+  };
+
+  is('Amazon\'s SDE internship survives its recruiting team',
+    refused('SDE I Intern , Amazon University Talent Acquisition'), false);
+  is('and a normal Amazon SDE title is unaffected',
+    refused('Software Development Engineer Intern, Annapurna Labs - 2027'), false);
+
+  /* THE GENERIC GUARD. A head that says only "this is a job" must not rescue
+     anything — these four SpaceX rows are the measured case. */
+  for (const t of ['New Graduate Engineer, Electrical (Starship)',
+    'New Graduate Engineer, Civil/Structural (Starship)',
+    'Facilities Engineering Intern, Electrical Distribution Systems']) {
+    is(`generic head does not rescue — ${t.slice(0, 44)}`, refused(t), true);
+  }
+
+  /* THE HEAD-NEGATIVE GUARD. If the head itself is non-tech there is nothing
+     to rescue, whatever follows the comma. */
+  is('a non-tech head is not rescued by its own tail',
+    refused('Financial Analyst Intern, GFS FP&A'), true);
+  is('nor is a sales title with a software-sounding word',
+    refused('Sales Trainee - Collections- Retail Frontend - Mumbai'), true);
+
+  /* THESE TWO ARE CONSTRUCTED, not observed, and they are the only way to
+     reach either guard. Every real title where a MULTI-word positive appears
+     is settled by strongPositive on the whole string before the comma path
+     runs at all, so isolating these needs a SINGLE-word specific positive
+     (`sde`). An earlier version asserted on real titles and both guards
+     survived mutation because nothing ever reached them. */
+  is('a head carrying its own negative is not rescued by its specific term',
+    refused('Finance SDE Intern, Platform Team'), true);
+  is('and a specific term in the TAIL does not rescue the head',
+    refused('Program Intern, SDE Talent Acquisition'), true);
+
+  /* `software engineer` was missing from POSITIVE entirely — "Software
+     Engineer" only classified tech through the single word `software`, so any
+     negative beat it. Nothing in the store needed it (measured: 0 rows change),
+     which is exactly why it went unnoticed. */
+  is('a marketing-flavoured SWE title survives',
+    refused('Marketing Software Engineer Intern'), false);
+}
+
 console.log('\n== PRODUCT MANAGEMENT AND PRODUCT DESIGN ARE NOT ENGINEERING ==');
 /* These two used to sit in the tech list above. Listing 'product manager' as a
    POSITIVE is why Salesforce's "Summer 2026 Intern - Product Manager" reached
