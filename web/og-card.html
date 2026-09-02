@@ -35,12 +35,12 @@
 
   .row { display:flex; align-items:center; justify-content:space-between; }
   .brand { display:flex; align-items:center; gap:16px; }
-  .brand .mark { width:46px; height:46px; flex:none; }
+  .brand .mark { width:30px; height:30px; flex:none; }
   .brand .mark svg { width:100%; height:100%; display:block; overflow:visible; }
   .m-ring { fill:none; stroke:var(--live); stroke-width:1.6; opacity:.34; }
   .m-sweep { fill:var(--live); opacity:.32; }
   .m-dot { fill:var(--live); }
-  .word { font-family:var(--display); font-weight:900; font-size:42px;
+  .word { font-family:var(--display); font-weight:900; font-size:26px;
           letter-spacing:-.045em; line-height:1; }
   .word em { font-style:normal; color:var(--live); }
 
@@ -68,11 +68,19 @@
   .spacer { flex:1; }
   /* ---- job variant. The generic card above is untouched and still renders
      when nothing is passed; renderJob() swaps the middle and the chips. ---- */
-  .eyebrow { display:flex; align-items:center; gap:18px; margin-bottom:22px; }
-  .eyebrow .logo { width:64px; height:64px; border-radius:12px; flex:none;
+  /* THE EMPLOYER'S MARK IS THE HERO — mirrored from web/api/_card.js, which is
+     the satori card LinkedIn scrapes. Kept in step by hand because these are
+     two renderers of one design and there is no shared source; the numbers here
+     and there must match. At 64px beside a 42px INTERNDOOR wordmark the logo
+     was the smallest thing on the card, while being the only element with brand
+     equity a student recognises at a glance. Stacked rather than inline so the
+     logo gets its own line and real presence. */
+  .eyebrow { display:flex; flex-direction:column; align-items:flex-start;
+             gap:16px; margin-bottom:16px; }
+  .eyebrow .logo { width:132px; height:132px; border-radius:22px; flex:none;
                    object-fit:cover; background:#17171a; }
-  .eyebrow .co { font-family:var(--mono); font-size:26px; letter-spacing:.12em;
-                 text-transform:uppercase; color:var(--live);
+  .eyebrow .co { font-family:var(--mono); font-size:30px; letter-spacing:.12em;
+                 text-transform:uppercase; color:var(--live); max-width:100%;
                  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   /* THE ROLE IS THE HEADLINE AND THE COMPANY IS AN EYEBROW — the same
      inversion the board's cards make, and for the same reason: nobody scans a
@@ -84,7 +92,10 @@
   /* KEEPS ITS 770px MEASURE. The first render set max-width:100% and the
      headline ran across the radar, which is the one thing the right half of
      this card is for. Narrower simply means the fit loop shrinks sooner. */
-  #card.is-job .mid { max-height:372px; overflow:hidden; }
+  /* Raised with the masthead: it dropped 46px -> 30px, so the middle may have
+     that back. The fit loop needs a real ceiling or scrollHeight always equals
+     clientHeight and it is inert. */
+  #card.is-job .mid { max-height:388px; overflow:hidden; }
   h1.role { font-family:var(--display); font-weight:900; font-size:92px;
             line-height:1.02; letter-spacing:-.035em; max-width:100%;
             overflow-wrap:anywhere; }
@@ -196,11 +207,32 @@ window.renderJob = function (job) {
 
   /* SHRINK UNTIL IT FITS, checking WIDTH as well as height: a single
      unbreakable token ("Intern_2027_HW") runs off the right edge without ever
-     growing the block, so a height-only check reports it as fitting. */
-  const room = () => mid.scrollHeight <= mid.clientHeight && h.scrollWidth <= h.clientWidth;
-  for (let size = 92; size >= 40 && !room(); size -= 4) {
+     growing the block, so a height-only check reports it as fitting.
+
+     THE HEIGHT IS MEASURED AGAINST THE CEILING, NOT AGAINST clientHeight.
+     `.mid` is an auto-height block, so its clientHeight IS its own content
+     height — `scrollHeight <= clientHeight` was comparing the content to
+     itself, a tautology that only ever failed on sub-pixel rounding. Measured
+     2 Sep 2026: the two differed by exactly 2px at every size from 92 down to
+     44, so the loop ran to its 40px floor on EVERY card, including a one-word
+     role like "Apprentice". Every Telegram and WhatsApp card had been shipping
+     its headline at the minimum size. The satori twin in web/api/_card.js is
+     unaffected — it sizes from the title's LENGTH and has no loop — which is
+     why the LinkedIn preview looked right and these looked cramped.
+
+     Read from computed style so the number is not duplicated out of the CSS. */
+  const ceiling = parseFloat(getComputedStyle(mid).maxHeight) || Infinity;
+  const room = () => mid.scrollHeight <= ceiling + 0.5 && h.scrollWidth <= h.clientWidth;
+
+  /* Checked at the size that is APPLIED. The old loop tested room() before
+     setting the size, so it always landed one step below the first size that
+     fits. */
+  let size = 92;
+  h.style.fontSize = size + 'px';
+  while (size > 40 && !room()) {
+    size -= 4;
     h.style.fontSize = size + 'px';
   }
-  return { fontSize: h.style.fontSize || '92px' };
+  return { fontSize: h.style.fontSize };
 };
 </script>
