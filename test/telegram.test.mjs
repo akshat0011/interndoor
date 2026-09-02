@@ -9,7 +9,7 @@
  * ones about things that did not change: escaping untrusted text, the region
  * prefix on every link, and never cutting a message through its own markup.
  */
-import { composeJob, applicantCount, esc } from '../src/telegram.js';
+import { composeJob, applicantCount, esc, retryAfterMs, plannedWait } from '../src/telegram.js';
 import { regionOf } from '../src/regions.js';
 
 let pass = 0, fail = 0;
@@ -125,6 +125,57 @@ const inExplicit = composeJob(job(), regionOf('IN'));
 ok('default region is India', composeJob(job()) === inExplicit);
 ok('no prefix on an India link', inExplicit.includes('interndoor.com/jobs/'));
 ok('no double slash from the empty slug', !inExplicit.includes('interndoor.com//'));
+
+
+console.log('\n== a 429 is Telegram telling us how long to wait ==');
+/* SEND_GAP_MS paces a run at 150 messages a minute, well over what a channel
+   allows, so a burst trips the limiter. postOne used to log the refusal and
+   move on, dropping the listing for good: measured across the logs, 100 posts
+   lost to 429 in three days -- 26 on 31 Aug, 61 on 1 Sep, 13 on 2 Sep -- each
+   one a role that went live on the site and was never announced.
+   These pin the DECISION. Waiting is only ever taken on a 429 that actually
+   carries a number; anything else must return 0, or a malformed caption (400)
+   would be retried three times to fail three times. */
+ok('a 429 with parameters.retry_after waits that long, plus a boundary margin',
+  retryAfterMs(429, { parameters: { retry_after: 9 } }) === 9250,
+  String(retryAfterMs(429, { parameters: { retry_after: 9 } })));
+ok('a top-level retry_after is read too',
+  retryAfterMs(429, { retry_after: 3 }) === 3250);
+ok('a 400 is never waited on -- it is our own markup and will fail again',
+  retryAfterMs(400, { parameters: { retry_after: 9 } }) === 0);
+ok('a 429 with no number at all is not a wait we invent',
+  retryAfterMs(429, {}) === 0 && retryAfterMs(429, { parameters: {} }) === 0);
+ok('a nonsense or non-positive wait is refused',
+  retryAfterMs(429, { parameters: { retry_after: 'soon' } }) === 0
+  && retryAfterMs(429, { parameters: { retry_after: 0 } }) === 0
+  && retryAfterMs(429, { parameters: { retry_after: -5 } }) === 0);
+/* Bounded, so a bad afternoon cannot stall the posting phase. Observed waits
+   run 9-28s; the cap is well clear of those and only bites on an absurd one. */
+ok('an absurd wait is capped rather than obeyed',
+  retryAfterMs(429, { parameters: { retry_after: 86400 } }) === 60000,
+  String(retryAfterMs(429, { parameters: { retry_after: 86400 } })));
+ok('a fractional wait rounds up rather than landing under the window',
+  retryAfterMs(429, { parameters: { retry_after: 1.2 } }) === 2250);
+
+
+console.log('\n== the batch has ONE waiting budget, because per-message bounds do not compose ==');
+/* Three attempts at up to 60s each is two minutes a message, and a run can find
+   forty-five roles -- so without a shared budget a throttled afternoon could sit
+   in the posting phase for over an hour, past the 30-minute interval the
+   scheduler measures from the START of a run. */
+ok('a wait the batch can afford is taken',
+  plannedWait(429, { parameters: { retry_after: 20 } }, 300000) === 20250);
+/* REFUSED, NOT TRUNCATED. Sleeping less than Telegram asked for is not a
+   shorter wait, it is a wasted one -- the retry lands inside the same window
+   and is refused again, having spent the budget for nothing. */
+ok('a wait the batch cannot afford is refused outright, not shortened',
+  plannedWait(429, { parameters: { retry_after: 20 } }, 5000) === 0);
+ok('an exactly-affordable wait is still taken',
+  plannedWait(429, { parameters: { retry_after: 20 } }, 20250) === 20250);
+ok('an exhausted budget stops all waiting',
+  plannedWait(429, { parameters: { retry_after: 1 } }, 0) === 0);
+ok('and a non-429 is still never waited on, budget or no budget',
+  plannedWait(400, { parameters: { retry_after: 1 } }, 300000) === 0);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

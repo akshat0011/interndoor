@@ -45,6 +45,75 @@ const MAX_CAPTION = 950;
 const SEND_GAP_MS = 400;
 
 /**
+ * A 429 is Telegram telling us exactly how long to wait, and it was thrown away.
+ *
+ * `SEND_GAP_MS` paces a run at 150 messages a minute, which is comfortably over
+ * what a channel is allowed, so a burst trips the limiter — and `postOne` logged
+ * the refusal and moved on, dropping the listing for good. Measured across the
+ * logs: 100 posts lost to 429 in three days (26 on 31 Aug, 61 on 1 Sep, 13 on
+ * 2 Sep), every one of them a role that went live on the site and was never
+ * announced to the channel it was meant for.
+ *
+ * The fix is not a wider gap. A fixed gap is a guess at an undocumented limit
+ * and would slow every ordinary run to pay for the rare burst; `retry_after` is
+ * the real number, sent by the server, and honouring it throttles to exactly
+ * what the channel allows exactly when it matters.
+ *
+ * Bounded on both axes so a bad afternoon cannot stall the posting phase:
+ * observed waits run 9–28s, the cap is well clear of that, and a role that
+ * cannot get through in three attempts is logged and left rather than retried
+ * for ever.
+ */
+const MAX_RETRY_WAIT_MS = 60_000;
+const MAX_SEND_ATTEMPTS = 3;
+
+/**
+ * And a budget for the WHOLE batch, because per-message bounds do not compose.
+ *
+ * Three attempts at up to 60s each is two minutes a message, and a run can find
+ * forty-five roles — so a deeply throttled afternoon could sit here for over an
+ * hour, past the 30-minute interval the scheduler measures from the START of a
+ * run. `finishRun` is already written before the posting phase so the run row
+ * stays honest, but the next scan would still be queued behind this one.
+ *
+ * Five minutes is comfortably more than any observed burst needs (the worst was
+ * 61 messages against waits of 9–28s, and honouring the first few waits is what
+ * clears the rest) and is a small fraction of the interval. Past it, sends stop
+ * waiting and fail the way they used to — which is no worse than today.
+ */
+const MAX_TOTAL_RETRY_MS = 300_000;
+
+/**
+ * The wait to actually take: what Telegram asked for, if the batch can afford it.
+ *
+ * Separated from `retryAfterMs` so both halves are testable without a network —
+ * this is the whole decision, and a partial wait is refused rather than
+ * truncated. Sleeping less than Telegram asked for is not a shorter wait, it is
+ * a wasted one: the retry lands inside the same window and is refused again.
+ */
+export function plannedWait(status, data, budgetLeftMs) {
+  const wait = retryAfterMs(status, data);
+  if (!wait) return 0;
+  return wait <= budgetLeftMs ? wait : 0;
+}
+
+/**
+ * How long Telegram asked us to wait, in milliseconds — 0 when it did not ask.
+ *
+ * The number lives at `parameters.retry_after`; older replies and some proxies
+ * put it at the top level, so both are read. A quarter second is added because
+ * waiting exactly the stated window lands on the boundary and is refused again.
+ * Anything absent, unparseable or non-positive means "this is not a wait we
+ * were told to take", and the caller gives up rather than inventing one.
+ */
+export function retryAfterMs(status, data) {
+  if (status !== 429) return 0;
+  const secs = Number(data?.parameters?.retry_after ?? data?.retry_after);
+  if (!Number.isFinite(secs) || secs <= 0) return 0;
+  return Math.min(Math.ceil(secs) * 1000 + 250, MAX_RETRY_WAIT_MS);
+}
+
+/**
  * Above this the applicant count is left out, exactly as the board and the
  * LinkedIn post already do. The number exists to prove the reader is EARLY; on
  * a crowded role, printed next to an apply link, it argues against clicking.
@@ -279,8 +348,11 @@ export async function postNewJobs(jobs, cfg) {
     const cards = await renderCards(public_, PATHS.ogCards).catch(() => new Map());
 
     let ok = 0;
+    /* ONE budget for the whole board, not one per message — see
+       MAX_TOTAL_RETRY_MS. Per-message bounds do not compose. */
+    const budget = { left: MAX_TOTAL_RETRY_MS };
     for (const job of public_) {
-      if (await postOne(token, chatId, job, regionOf(code), cards.get(String(job.id)))) ok++;
+      if (await postOne(token, chatId, job, regionOf(code), cards.get(String(job.id)), budget)) ok++;
       await sleep(SEND_GAP_MS);
     }
     if (ok) {
@@ -299,39 +371,56 @@ export async function postNewJobs(jobs, cfg) {
  * above the caption. Without a card it degrades to sendMessage — a listing
  * still goes out, which is the whole point of failing soft.
  */
-async function postOne(token, chatId, job, region, cardPath) {
+async function postOne(token, chatId, job, region, cardPath, budget = { left: MAX_TOTAL_RETRY_MS }) {
   const caption = composeJob(job, region);
-  try {
-    let res;
+
+  /* Rebuilt per attempt rather than hoisted: a FormData carrying a Blob has
+     already been consumed once it is sent, so a retry that reuses it posts an
+     empty body and fails in a way that looks like a Telegram fault. */
+  const send = () => {
     if (cardPath && existsSync(cardPath)) {
       const form = new FormData();
       form.set('chat_id', String(chatId));
       form.set('caption', caption);
       form.set('parse_mode', 'HTML');
       form.set('photo', new Blob([readFileSync(cardPath)], { type: 'image/jpeg' }), 'card.jpg');
-      res = await fetch(`${API}/bot${token}/sendPhoto`, {
+      return fetch(`${API}/bot${token}/sendPhoto`, {
         method: 'POST', body: form, signal: AbortSignal.timeout(30_000),
       });
-    } else {
-      res = await fetch(`${API}/bot${token}/sendMessage`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId, text: caption, parse_mode: 'HTML',
-          link_preview_options: { is_disabled: true },
-        }),
-        signal: AbortSignal.timeout(15_000),
-      });
     }
+    return fetch(`${API}/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId, text: caption, parse_mode: 'HTML',
+        link_preview_options: { is_disabled: true },
+      }),
+      signal: AbortSignal.timeout(15_000),
+    });
+  };
 
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || data.ok === false) {
+  for (let attempt = 1; attempt <= MAX_SEND_ATTEMPTS; attempt++) {
+    try {
+      const res = await send();
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok !== false) return true;
+
+      /* ONLY a 429 carrying a wait is retried. A 400 is our own malformed
+         markup and will be malformed again next time; retrying it would turn
+         one bad caption into three identical failures in the log. */
+      const wait = plannedWait(res.status, data, budget.left);
+      if (wait && attempt < MAX_SEND_ATTEMPTS) {
+        budget.left -= wait;
+        log.info(`Telegram asked for ${Math.round(wait / 1000)}s before ${job.id} — waiting (attempt ${attempt} of ${MAX_SEND_ATTEMPTS}, ${Math.round(budget.left / 1000)}s of batch budget left).`);
+        await sleep(wait);
+        continue;
+      }
       log.warn(`Telegram post failed for ${job.id} (${res.status}): ${data.description ?? 'no detail'}`);
       return false;
+    } catch (err) {
+      log.warn(`Telegram post skipped for ${job.id} — ${String(err?.message ?? err).split('\n')[0]}`);
+      return false;
     }
-    return true;
-  } catch (err) {
-    log.warn(`Telegram post skipped for ${job.id} — ${String(err?.message ?? err).split('\n')[0]}`);
-    return false;
   }
+  return false;
 }
