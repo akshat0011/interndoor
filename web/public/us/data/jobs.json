@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788326152721,
+ "generatedAt": 1788326287236,
  "region": "US",
  "regionName": "United States",
- "count": 1154,
- "techCount": 1154,
+ "count": 1151,
+ "techCount": 1151,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -1509,56 +1509,6 @@
    "region": "US"
   },
   {
-   "id": "4459568949",
-   "title": "Product Management Intern",
-   "company": "Clearwater Analytics",
-   "matchedWatchlist": "Clearwater Analytics",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/clearwater-analytics.jpg",
-   "location": "New York, NY",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "4 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql"
-   ],
-   "summary": "This internship involves working on a trading platform, analyzing data, and building tools to support product decisions. It suits students interested in technical product management and data analysis.",
-   "bullets": [
-    "Design and implement metrics for product decisions",
-    "Write python code to extract and transform data",
-    "Develop visualization tools with sql and superset"
-   ],
-   "roleLabel": "Product analytics",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "sql",
-    "superset",
-    "neo4j",
-    "grafana"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "4 hours ago",
-   "postedAt": 1788309930481,
-   "firstSeenAt": 1788324330482,
-   "lastSeenAt": 1788324330482,
-   "url": "https://www.linkedin.com/jobs/view/4459568949/",
-   "applyUrl": "https://clearwateranalytics.wd1.myworkdayjobs.com/Clearwater_Analytics_Careers/job/Office---New-York/Product-Management-Intern_R12200/apply",
-   "description": null,
-   "roleFingerprint": "6a43b5f477",
-   "cardFacts": [
-    "New York",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4460678426",
    "title": "Intern Program - Engineering Pathways",
    "company": "Arm",
@@ -1706,56 +1656,6 @@
    "cardFacts": [
     "$73,736",
     "Arden Hills",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4459574526",
-   "title": "Technical Product Management Intern",
-   "company": "Clearwater Analytics",
-   "matchedWatchlist": "Clearwater Analytics",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/clearwater-analytics.jpg",
-   "location": "New York, NY",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "9 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql"
-   ],
-   "summary": "This internship involves working on a trading platform using python to analyze data and create reports. You'll help shape product features and contribute to business strategies. Ideal for students with coding skills and an interest in financial analytics.",
-   "bullets": [
-    "Design and implement metrics for product decisions",
-    "Write python code to extract and transform data",
-    "Develop visualization tools with sql and superset"
-   ],
-   "roleLabel": "Product analytics",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "sql",
-    "superset",
-    "neo4j",
-    "grafana"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "4 hours ago",
-   "postedAt": 1788309783690,
-   "firstSeenAt": 1788324183691,
-   "lastSeenAt": 1788324258556,
-   "url": "https://www.linkedin.com/jobs/view/4459574526/",
-   "applyUrl": "https://clearwateranalytics.wd1.myworkdayjobs.com/Clearwater_Analytics_Careers/job/Office---New-York/Technical-Product-Management-Intern_R12198/apply",
-   "description": null,
-   "roleFingerprint": "1c50ae3527",
-   "cardFacts": [
-    "New York",
     "On-site"
    ],
    "region": "US"
@@ -2162,56 +2062,6 @@
     "$1,425 – $1,750",
     "Somerville",
     "Spring 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462089025",
-   "title": "Electrical Engineering Intern",
-   "company": "Hewlett Packard Enterprise",
-   "matchedWatchlist": "HPE",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/hewlett-packard-enterprise.jpg",
-   "location": "Spring, TX",
-   "workplaceType": "On-site",
-   "stipend": "$35 – $41 / hour",
-   "duration": null,
-   "applicants": "33 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++"
-   ],
-   "summary": "This internship offers hands-on experience in technical projects, supporting senior engineers with hardware and systems. Ideal for students pursuing a bachelor's in engineering or related fields, the role involves problem-solving and learning new technologies in a collaborative environment.",
-   "bullets": [
-    "Support senior engineers on technical projects involving hardware and systems",
-    "Use Python, Java, or C++ to troubleshoot and solve technical problems",
-    "Work onsite in an HPE office during school breaks with potential part-time options"
-   ],
-   "roleLabel": "Technical Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "java",
-    "c++"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "5 hours ago",
-   "postedAt": 1788306659502,
-   "firstSeenAt": 1788324659505,
-   "lastSeenAt": 1788324659505,
-   "url": "https://www.linkedin.com/jobs/view/4462089025/",
-   "applyUrl": "https://careers.hpe.com/us/en/job/1213423/Electrical-Engineering-Intern?utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "675cc1ac8a",
-   "cardFacts": [
-    "$35 – $41 / hour",
-    "Spring",
-    "On-site"
    ],
    "region": "US"
   },
