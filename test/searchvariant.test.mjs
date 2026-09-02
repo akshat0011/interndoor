@@ -224,6 +224,18 @@ console.log('\n== src/index.js runs it once per search and pushes on a flip ==')
     /if \(seen\.changed\) \{[\s\S]{0,400}?variantFlips\.push/.test(src), true);
   check('and pushes to the phone at priority 4, below an expired session',
     /variantFlips\.length[\s\S]{0,600}?pushToPhone\([\s\S]{0,300}?priority: 4/.test(src), true);
+
+  /* THE EVIDENCE IS KEPT. This is the only run that will ever see the moment of
+     the change, and the move has been one-way before, so the alternative is
+     writing the new selectors blind. HTML for the selectors, PNG for a human. */
+  const flip = src.slice(src.indexOf('if (seen.changed) {'));
+  check('the changed page is saved as HTML', /page\.content\(\)/.test(flip.slice(0, 1400)), true);
+  check('and as a screenshot', /page\.screenshot\(\{ path:/.test(flip.slice(0, 1400)), true);
+  check('into the state directory, not the public repo',
+    /PATHS\.screenshots/.test(flip.slice(0, 1400)), true);
+  /* Losing the evidence must not cost the sweep that found it. */
+  check('and a failure there is caught',
+    /catch \(err\) \{[\s\S]{0,140}?Could not save the changed page/.test(flip.slice(0, 1600)), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

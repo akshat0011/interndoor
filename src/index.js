@@ -5,6 +5,7 @@
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany } from './config.js';
 import { join } from 'node:path';
+import { writeFile } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
 import { Store } from './store.js';
@@ -655,6 +656,20 @@ async function main() {
             log.warn(msg);
             notes.push(msg);
             variantFlips.push({ region, from: seen.previous, to: seen.variant, msg });
+            /* KEEP THE PAGE. This is the only run that will ever see the moment
+               of the change, and the move has been one-way before — so the
+               choice is to capture the evidence now or to write the new
+               selectors blind. The HTML is what selectors are written against;
+               the screenshot is what a human reads. Both fail soft: losing the
+               evidence must not cost the sweep that found it. */
+            const stamp = `variant-${region}-${seen.previous}-to-${seen.variant}-${runId}`;
+            try {
+              await writeFile(join(PATHS.screenshots, `${stamp}.html`), await page.content(), 'utf8');
+              await page.screenshot({ path: join(PATHS.screenshots, `${stamp}.png`), fullPage: false });
+              log.info(`Saved the changed page to ${PATHS.screenshots}/${stamp}.{html,png}`);
+            } catch (err) {
+              log.warn(`Could not save the changed page: ${err.message}`);
+            }
           }
         }
 
