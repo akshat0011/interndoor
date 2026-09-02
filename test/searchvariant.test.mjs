@@ -9,7 +9,7 @@
  * degrades extraction cannot masquerade as a quiet week.
  */
 import {
-  classifyVariant, variantSummary, variantChanged, noteVariant, probeVariant, VARIANT_KEY,
+  classifyVariant, variantSummary, variantChanged, noteVariant, probeVariant, VARIANT_KEY, TELLS,
 } from '../src/searchvariant.js';
 
 let pass = 0, fail = 0;
@@ -25,8 +25,8 @@ function check(label, actual, expected) {
    offering AI search. */
 const CLASSIC = {
   path: '/jobs/search/',
-  aboutIds: 0, emberPayloads: 0,
-  jobViewLinks: 24, dataJobIds: 25, listContainers: 1, paginationBar: 1,
+  aboutIds: 0, emberPayloads: 8,
+  jobViewLinks: 9, dataJobIds: 25, listContainers: 1, paginationBar: 1,
   description: '#job-details',
   retirementNotice: true, aiSearchOffered: true,
 };
@@ -56,17 +56,40 @@ console.log('\n== THE CLASSIC PAGE ADVERTISES THE AI ONE, AND MUST NOT BE MISREA
   check('nor does adding them to an AI page', classifyVariant(allText), 'ai');
 }
 
+console.log('\n== EMBER IS NOT A TELL, AND THIS IS THE LIVE PAGE THAT PROVED IT ==');
+{
+  /* Captured 2 Sep 2026 at 12:08 IST, verbatim from the first run that carried
+     the probe. It classified "ai" on `ember 8` alone while every other signal
+     said classic — including the decisive one, that the CLASSIC description
+     selector is the one that answered, which can only happen when the
+     redesign's JobDetails_AboutTheJob_ block is absent.
+
+     code[id^="bpr-guid-"] is Ember's batched page response, and Ember is
+     LinkedIn's framework for BOTH surfaces. Adding it back breaks this. */
+  check('the real live page is classic', classifyVariant(CLASSIC), 'classic');
+  check('even carrying 8 Ember payloads', CLASSIC.emberPayloads, 8);
+  check('because the classic description selector answered', CLASSIC.description, '#job-details');
+  check('and the redesign block was absent', CLASSIC.aboutIds, 0);
+  /* Ember alone must decide nothing, in either direction. */
+  check('Ember alone is not enough to call it AI',
+    classifyVariant({ path: '/jobs/search/', emberPayloads: 40 }), 'unknown');
+  check('and its absence does not make a redesign page classic',
+    classifyVariant({ path: '/jobs/search/', aboutIds: 1, emberPayloads: 0 }), 'ai');
+}
+
 console.log('\n== structural tells decide, and an AI tell is decisive ==');
 {
   check('the redesign', classifyVariant(AI), 'ai');
   check('its URL alone is enough', classifyVariant({ path: '/jobs/search-results/' }), 'ai');
   check('so is a JobDetails_AboutTheJob_ id', classifyVariant({ path: '/x', aboutIds: 1 }), 'ai');
-  check('so is an Ember payload', classifyVariant({ path: '/x', emberPayloads: 2 }), 'ai');
+  check('an Ember payload is NOT a tell', classifyVariant({ path: '/x', emberPayloads: 2 }), 'unknown');
   /* An AI tell outranks the classic ones because a /jobs/view/ anchor can be
      rendered by the detail pane on either surface, while nothing classic emits
      an AboutTheJob id. */
   check('an AI tell beats classic tells on the same page',
     classifyVariant({ path: '/jobs/search/', aboutIds: 1, jobViewLinks: 20, paginationBar: 1 }), 'ai');
+  check('TELLS records ember as diagnostic, not as evidence',
+    [TELLS.ai.includes('emberPayloads'), TELLS.diagnostic.includes('emberPayloads')], [false, true]);
   check('a pagination bar alone reads classic',
     classifyVariant({ path: '/jobs/search/', paginationBar: 1 }), 'classic');
   check('jobs/view anchors alone read classic',
@@ -168,8 +191,8 @@ console.log('\n== the probe is self-contained, because it is serialised into the
   };
   fakeDom({
     '[id^="JobDetails_AboutTheJob_"]': 0,
-    'code[id^="bpr-guid-"]': 0,
-    'a[href*="/jobs/view/"]': 24,
+    'code[id^="bpr-guid-"]': 8,
+    'a[href*="/jobs/view/"]': 9,
     '[data-job-id], [data-occludable-job-id]': 25,
     '.jobs-search-results-list, .scaffold-layout__list, .jobs-search__results-list': 1,
     '.artdeco-pagination, .jobs-search-pagination': 1,
@@ -177,8 +200,8 @@ console.log('\n== the probe is self-contained, because it is serialised into the
 
   const fp = rebuilt();
   check('it runs with no module scope at all', typeof fp, 'object');
-  check('and counts the classic page correctly',
-    [fp.jobViewLinks, fp.paginationBar, fp.aboutIds, fp.emberPayloads], [24, 1, 0, 0]);
+  check('and counts the real classic page correctly',
+    [fp.jobViewLinks, fp.paginationBar, fp.aboutIds, fp.emberPayloads], [9, 1, 0, 8]);
   check('reads the path', fp.path, '/jobs/search/');
   check('spots the retirement banner', fp.retirementNotice, true);
   check('and the AI offer', fp.aiSearchOffered, true);

@@ -31,11 +31,13 @@ export const TELLS = {
   /* The redesign names its description block after the posting it belongs to.
      Nothing on the classic page does this, and it is the id openAndExtract
      prefers because it cannot lag the render the way the URL can. */
-  ai: ['aboutIds', 'emberPayloads'],
+  ai: ['aboutIds'],
   /* The classic list is anchors to /jobs/view/<id>, which is where card.jobId
      comes from before a click, plus a real pagination bar. The redesign has
      neither: its cards are nested divs and its Next control is a bare button. */
   classic: ['jobViewLinks', 'paginationBar'],
+  /* RECORDED, NEVER USED TO CLASSIFY — see `emberPayloads` below. */
+  diagnostic: ['emberPayloads', 'retirementNotice', 'aiSearchOffered'],
 };
 
 /**
@@ -81,7 +83,18 @@ export function probeVariant() {
 export function classifyVariant(fp = {}) {
   if (!fp || typeof fp !== 'object') return 'unknown';
   if (fp.path === '/jobs/search-results/') return 'ai';
-  if (Number(fp.aboutIds) > 0 || Number(fp.emberPayloads) > 0) return 'ai';
+  /* `emberPayloads` IS NOT A TELL AND MUST NOT BECOME ONE. It was one for
+     exactly one run, on 2 Sep 2026, and the first live fingerprint disproved it
+     immediately: a page reading `path /jobs/search/ · about 0 · ember 8 ·
+     jobview 9 · pager 1 · desc #job-details` classified as "ai" on the Ember
+     count alone while every other signal said classic — including the decisive
+     one, that the CLASSIC description selector is the one that answered.
+     `code[id^="bpr-guid-"]` is Ember's batched page response, and Ember is
+     LinkedIn's framework for BOTH surfaces. CLAUDE.md describes it as where the
+     redesign's payload lives, which is true and is not the same as it being
+     absent from the classic page. It is kept in the fingerprint because
+     applyUrlFrom reads those blobs, so its count is worth logging. */
+  if (Number(fp.aboutIds) > 0) return 'ai';
   if (Number(fp.jobViewLinks) > 0 || Number(fp.paginationBar) > 0) return 'classic';
   return 'unknown';
 }
