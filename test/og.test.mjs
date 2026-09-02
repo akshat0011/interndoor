@@ -94,10 +94,15 @@ console.log('\n== the role is sized from its length ==');
 /* Satori cannot fit text to a box the way the HTML card did — there is no
    layout pass to read — so the size is chosen from the length. Real titles run
    from 6 characters to 172, because one employer names fifteen cities in one. */
-check('a short title gets the full size', roleSize(10), 92);
-check('a medium one steps down', roleSize(40) < 92, true);
+/* THE CEILING IS 60, NOT 92, AND THAT IS THE POINT OF THE SCALE.
+   The employer's logo is 248px and has to stay the biggest thing on the card —
+   it is the only element a student recognises at a glance, and ours has no
+   brand equity yet. At 92 a short title like "Apprentice" out-shouted it. */
+check('a short title is capped below the logo', roleSize(10), 60);
+check('and well under the 248px mark', roleSize(10) < 248, true);
+check('a medium one steps down', roleSize(40) < 60, true);
 check('a long one steps down again', roleSize(100) < roleSize(40), true);
-check('and the longest is still legible', roleSize(400) >= 34, true);
+check('and the longest is still legible', roleSize(400) >= 30, true);
 // Monotonic: a longer title must never be drawn LARGER than a shorter one.
 let prev = Infinity;
 let monotonic = true;

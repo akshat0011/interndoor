@@ -77,8 +77,14 @@
      logo gets its own line and real presence. */
   .eyebrow { display:flex; flex-direction:column; align-items:flex-start;
              gap:16px; margin-bottom:16px; }
-  .eyebrow .logo { width:132px; height:132px; border-radius:22px; flex:none;
-                   object-fit:cover; background:#17171a; }
+  /* CONTAIN, NOT COVER. 462 logo files and they are every shape there is —
+     Compass Group's is a wide wordmark and `cover` cropped the compass off the
+     left and the type off both edges. `contain` fits the whole mark inside the
+     box, which is the only correct treatment for somebody's trademark. The
+     padding keeps it off the rounded corners; the white plate is what most of
+     these logos are drawn against. */
+  .eyebrow .logo { width:248px; height:248px; border-radius:36px; flex:none;
+                   object-fit:contain; background:#fff; padding:18px; }
   .eyebrow .co { font-family:var(--mono); font-size:30px; letter-spacing:.12em;
                  text-transform:uppercase; color:var(--live); max-width:100%;
                  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -95,8 +101,8 @@
   /* Raised with the masthead: it dropped 46px -> 30px, so the middle may have
      that back. The fit loop needs a real ceiling or scrollHeight always equals
      clientHeight and it is inert. */
-  #card.is-job .mid { max-height:388px; overflow:hidden; }
-  h1.role { font-family:var(--display); font-weight:900; font-size:92px;
+  #card.is-job .mid { max-height:420px; overflow:hidden; }
+  h1.role { font-family:var(--display); font-weight:900; font-size:60px;
             line-height:1.02; letter-spacing:-.035em; max-width:100%;
             overflow-wrap:anywhere; }
 
@@ -227,9 +233,9 @@ window.renderJob = function (job) {
   /* Checked at the size that is APPLIED. The old loop tested room() before
      setting the size, so it always landed one step below the first size that
      fits. */
-  let size = 92;
+  let size = 60;
   h.style.fontSize = size + 'px';
-  while (size > 40 && !room()) {
+  while (size > 30 && !room()) {
     size -= 4;
     h.style.fontSize = size + 'px';
   }

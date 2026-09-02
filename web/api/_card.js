@@ -56,11 +56,16 @@ const MARK = svgUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44"
  * cities in it.
  */
 export function roleSize(len) {
-  if (len <= 26) return 92;
-  if (len <= 44) return 74;
-  if (len <= 72) return 58;
-  if (len <= 104) return 46;
-  return 38;
+  /* Capped at 60 so the EMPLOYER'S LOGO stays the biggest thing on the card.
+     It was 92, which out-shouted even the 248px mark on a short title like
+     "Apprentice" — and the logo is the only element here a student recognises
+     at a glance. Kept in step by hand with web/og-card.html, which renders the
+     same design through Playwright for Telegram and WhatsApp. */
+  if (len <= 26) return 60;
+  if (len <= 44) return 52;
+  if (len <= 72) return 44;
+  if (len <= 104) return 36;
+  return 30;
 }
 
 /** Trim at a word boundary; a title is not allowed to become the whole card. */
@@ -127,9 +132,13 @@ export function buildCard({ company, title, facts = [], logo = '' }) {
 
     // the employer, then the role
     h('div', { style: { display: 'flex', flexDirection: 'column', maxWidth: 790 } },
-      ...(logo ? [h('div', { style: { display: 'flex', marginBottom: 24 } },
-        h('img', { src: logo, width: 132, height: 132,
-          style: { borderRadius: 22, objectFit: 'cover' } }),
+      /* CONTAIN ON A WHITE PLATE, NOT COVER. 462 logo files and they are every
+         shape there is — Compass Group's is a wide wordmark and `cover` cropped
+         the compass off the left and the type off both edges. Cropping
+         somebody's trademark is the one treatment that is simply wrong. */
+      ...(logo ? [h('div', { style: { display: 'flex', marginBottom: 20 } },
+        h('img', { src: logo, width: 248, height: 248,
+          style: { borderRadius: 36, objectFit: 'contain', backgroundColor: '#fff', padding: 18 } }),
       )] : []),
       h('div', { style: { display: 'flex', alignItems: 'center', marginBottom: 16 } },
         h('div', { style: {
