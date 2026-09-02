@@ -30,6 +30,7 @@ import { loadConfig } from '../src/config.js';
 import { PATHS, storygastedRoot } from '../src/paths.js';
 import { readdirSync } from 'node:fs';
 import { renderReportIndex, runIdFromFile, companiesIn, jobCountIn, INDEX_LIMIT } from '../src/reportindex.js';
+import { postableRegion } from '../src/postregions.js';
 import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
@@ -670,6 +671,16 @@ const server = createServer(async (req, res) => {
     if (!body) return undefined;
     const id = String(body.jobId ?? '');
     if (!id) return json(res, 400, { error: 'jobId is required' });
+    /* The report hides the button for a board with no LinkedIn account, but the
+       endpoint refuses it too: the page is cached HTML and an old tab left open
+       still carries the old buttons. Removal is always allowed — a row queued
+       before the rule changed has to be gettable out. */
+    if (body.action !== 'remove') {
+      const row = store.db.prepare('SELECT region FROM jobs WHERE job_id = ?').get(id);
+      if (row && !postableRegion(cfg, row.region)) {
+        return json(res, 400, { error: `${row.region} listings are not posted to LinkedIn — there is no account for that board.` });
+      }
+    }
     if (body.action === 'remove') store.queueRemove(id);
     else store.queueAdd(id);
     return json(res, 200, { ids: store.queuedIds(), ...store.queueCounts() });

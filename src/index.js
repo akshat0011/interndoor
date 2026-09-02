@@ -1482,6 +1482,7 @@ async function main() {
     run: { runId, startedAt: Date.now() - clock.elapsedSeconds() * 1000, finishedAt: Date.now(), ...counters, newJobs: reportJobs.length },
     notes: reportNotes,
     stats: store.stats(),
+    cfg,
   });
   const file = writeReport(html, runId);
   log.ok(`Report: ${file}`);

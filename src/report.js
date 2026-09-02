@@ -1,4 +1,5 @@
 import { writeFileSync } from 'node:fs';
+import { postableRegion } from './postregions.js';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
 import { formatStipend } from './extract.js';
@@ -315,7 +316,7 @@ if (location.protocol !== 'http:'){
 }
 `;
 
-function jobCard(job) {
+function jobCard(job, cfg = {}) {
   const stipend = formatStipend({
     min: job.stipend_min, max: job.stipend_max,
     currency: job.stipend_currency, period: job.stipend_period,
@@ -338,6 +339,11 @@ function jobCard(job) {
   const searchBlob = [job.title, job.company, job.location, job.summary, (job.skills || []).join(' ')]
     .filter(Boolean).join(' ').toLowerCase();
 
+  /* No LinkedIn account exists for every board, so a post-queue button on a
+     board he cannot post to is a draft nobody can publish. Reels are separate
+     and stay on every card. */
+  const postable = postableRegion(cfg, job.__reportRegion || 'IN');
+
   return `
 <article class="job" data-id="${esc(job.job_id)}" data-region="${esc(job.__reportRegion || 'IN')}" data-company="${esc(job.company_matched || job.company || 'Other')}" data-search="${esc(searchBlob)}">
   <div class="top">
@@ -356,7 +362,9 @@ function jobCard(job) {
   <div class="actions">
     <a class="btn" href="${esc(applyUrl)}" target="_blank" rel="noreferrer">${external ? 'Apply on company site' : 'Apply on LinkedIn'}</a>
     ${external ? `<a class="btn ghost" href="${esc(job.job_url)}" target="_blank" rel="noreferrer">View on LinkedIn</a>` : ''}
-    <button class="qbtn" data-id="${esc(job.job_id)}" aria-pressed="false">+ Add to post queue</button>
+    ${postable ? `<button class="qbtn" data-id="${esc(job.job_id)}" aria-pressed="false">+ Add to post queue</button>` : ''}
+    <!-- The reel button is NOT gated the same way: Instagram has a live US
+         account (@interndoorusa), LinkedIn does not. -->
     <button class="rbtn" data-id="${esc(job.job_id)}">📹 Reel → Instagram</button>
   </div>
   ${job.description ? `<details><summary>Full description</summary><div class="desc">${esc(job.description)}</div></details>` : ''}
@@ -390,7 +398,7 @@ function regionLabel(code) {
  * the queue buttons and the filters together — so the less that is injected
  * into it, the better.
  */
-export function buildReport({ jobs, run, notes = [], stats = {}, regions = null }) {
+export function buildReport({ jobs, run, notes = [], stats = {}, regions = null, cfg = {} }) {
   const regionOfJob = (j) => j.__reportRegion || 'IN';
   const codes = (regions && regions.length ? regions : [...new Set(jobs.map(regionOfJob))])
     .filter((c, i, a) => a.indexOf(c) === i);
@@ -414,7 +422,7 @@ export function buildReport({ jobs, run, notes = [], stats = {}, regions = null 
   const easyApply = cur.easyApply;
 
   const body = jobs.length
-    ? jobs.map(jobCard).join('\n')
+    ? jobs.map((j) => jobCard(j, cfg)).join('\n')
     : `<div class="empty"><b>No new matching internships this run.</b><br>
        Scanned ${esc(run.cardsSeen ?? 0)} job cards across ${esc(run.pagesScanned ?? 0)} pages — none were new postings from your watchlist companies.</div>`;
 

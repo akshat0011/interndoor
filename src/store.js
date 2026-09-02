@@ -273,6 +273,19 @@ export class Store {
       // 'intern' or 'fulltime'. Rows written before this existed are NULL and
       // are treated as internships, which is what the site was until now.
       ['employment_type', 'TEXT'],
+      /* WHY A ROW WAS TAKEN OFF THE BOARD BY HAND.
+       *
+       * `is_tech = 0` was overloaded: it meant BOTH "the classifier said no"
+       * AND "a human pulled this", and nothing distinguished them. That is not
+       * academic — the HARMAN row demoted because HARMAN's own apply page 404s
+       * reads `role_label "Software Testing", is_tech 0, role_source
+       * model-enrich`, which is byte-for-byte the shape of a model mistake. Any
+       * sweep that re-promotes on the label alone puts listings back that point
+       * at dead application pages.
+       *
+       * NULL means the classifier decided. A string means a person did, and
+       * says why. Only NULL rows may ever be re-judged automatically. */
+      ['suppressed_reason', 'TEXT'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);

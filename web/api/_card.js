@@ -97,27 +97,43 @@ export function buildCard({ company, title, facts = [], logo = '' }) {
     h('img', { src: RADAR, width: 720, height: 720,
       style: { position: 'absolute', right: -170, top: -45 } }),
 
-    // masthead
+    /* THE EMPLOYER'S MARK IS THE HERO, and ours is attribution.
+     *
+     * This card is what LinkedIn renders as the preview on his posts, and reach
+     * is what the posts are for. At 64px the employer's logo was a detail
+     * beside a 42px INTERNDOOR wordmark — so the thing a student recognises at
+     * a glance, and the only thing on the card with any brand equity yet, was
+     * the smallest element on it. The wordmark is what nobody knows.
+     *
+     * A COMPANY BANNER WOULD BE BETTER AND WE DO NOT HAVE ONE. 462 logo files,
+     * zero banners — LinkedIn company banners are not in the data, and getting
+     * them means new scraping plus hosting somebody else's brand art. A large
+     * logo is the version of that idea we can actually stand behind: it is
+     * nominative use next to a factual "X is hiring, apply here", which is what
+     * every job board does. */
+    // masthead — ours, deliberately small
     h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
       h('div', { style: { display: 'flex', alignItems: 'center' } },
-        h('img', { src: MARK, width: 46, height: 46, style: { marginRight: 16 } }),
+        h('img', { src: MARK, width: 30, height: 30, style: { marginRight: 11 } }),
         h('div', { style: {
-          display: 'flex', fontFamily: 'Archivo', fontSize: 42, letterSpacing: '-0.045em', color: INK,
+          display: 'flex', fontFamily: 'Archivo', fontSize: 26, letterSpacing: '-0.045em', color: INK,
         } }, 'INTERN'),
         h('div', { style: {
-          display: 'flex', fontFamily: 'Archivo', fontSize: 42, letterSpacing: '-0.045em', color: LIVE,
+          display: 'flex', fontFamily: 'Archivo', fontSize: 26, letterSpacing: '-0.045em', color: LIVE,
         } }, 'DOOR'),
       ),
       chip('Hiring', true),
     ),
 
-    // the role is the headline and the company an eyebrow, as on the board
+    // the employer, then the role
     h('div', { style: { display: 'flex', flexDirection: 'column', maxWidth: 790 } },
-      h('div', { style: { display: 'flex', alignItems: 'center', marginBottom: 22 } },
-        ...(logo ? [h('img', { src: logo, width: 64, height: 64,
-          style: { borderRadius: 12, marginRight: 18, objectFit: 'cover' } })] : []),
+      ...(logo ? [h('div', { style: { display: 'flex', marginBottom: 24 } },
+        h('img', { src: logo, width: 132, height: 132,
+          style: { borderRadius: 22, objectFit: 'cover' } }),
+      )] : []),
+      h('div', { style: { display: 'flex', alignItems: 'center', marginBottom: 16 } },
         h('div', { style: {
-          display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 26, letterSpacing: '0.12em',
+          display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 30, letterSpacing: '0.12em',
           textTransform: 'uppercase', color: LIVE,
         } }, company),
       ),
