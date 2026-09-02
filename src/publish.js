@@ -863,10 +863,10 @@ async function indexStep(store, cfg, pages) {
     }
     return;
   }
-  const { queuedUpdate, queuedDelete } = queueForIndexing(store, pages);
+  const { queuedUpdate, queuedDelete, cleared } = queueForIndexing(store, pages);
   const res = await runIndexingSweep(store, cfg);
-  if (queuedUpdate || queuedDelete || res.sent) {
-    log.info(`Indexing API: queued ${queuedUpdate} new and ${queuedDelete} removed, sent ${res.sent}${res.failed ? `, ${res.failed} failed` : ''} (${res.spent ?? 0}/${res.cap ?? '?'} used in 24h).`);
+  if (queuedUpdate || queuedDelete || cleared || res.sent) {
+    log.info(`Indexing API: queued ${queuedUpdate} new and ${queuedDelete} removed${cleared ? `, dropped ${cleared} now redirecting` : ''}, sent ${res.sent}${res.failed ? `, ${res.failed} failed` : ''} (${res.spent ?? 0}/${res.cap ?? '?'} used in 24h).`);
   }
 }
 

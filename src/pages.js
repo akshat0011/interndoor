@@ -3335,11 +3335,17 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   /* Written BEFORE the real pages so a live page always wins the name: if a
      slug is somehow both a redirect source and a real posting, the loop below
      overwrites the stub rather than the stub replacing a listing. */
+  /* Reported back to the caller so the indexing queue can forget them — a
+     stub carries no JobPosting markup, so an UPDATE owed from when the slug
+     was a real page becomes an unsupported page type the moment it is written
+     here. src/indexing.js clears them; nothing else knows a stub exists. */
+  const redirectUrls = [];
   const liveSlugs = new Set(jobs.map((j) => jobSlug(j)));
   for (const { slug, target } of redirects) {
     if (liveSlugs.has(slug) || !liveSlugs.has(target)) continue;
     const name = `${slug}.html`;
     wanted.add(join(jobsDir, name));
+    redirectUrls.push(regionUrl(`/jobs/${slug}`, region));
     track(writeIfChanged(join(jobsDir, name), renderJobRedirect(target, region)), `/jobs/${slug}`);
   }
 
@@ -3474,7 +3480,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
 
   return {
     jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks,
-    indexUrls, removedUrls, changedUrls,
+    indexUrls, removedUrls, changedUrls, redirectUrls,
   };
 }
 
@@ -3501,6 +3507,7 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
      is the set src/indexing.js announces to Google. */
   const indexUrls = [];
   const removedUrls = [];
+  const redirectUrls = [];
   const changedUrls = [];
 
   // Every live posting, by employer, across every board — the input a job page
@@ -3534,12 +3541,13 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
     indexUrls.push(...result.indexUrls);
     removedUrls.push(...result.removedUrls);
     changedUrls.push(...result.changedUrls);
+    redirectUrls.push(...result.redirectUrls);
     perRegion.push({ region, ...result });
   }
 
   writeRobots(publicDir, regions);
   totals.removed += removeUnpublishedRegions(publicDir, regions);
-  return { ...totals, perRegion, indexUrls, removedUrls, changedUrls };
+  return { ...totals, perRegion, indexUrls, removedUrls, changedUrls, redirectUrls };
 }
 
 /**

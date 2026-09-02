@@ -115,7 +115,7 @@ function freshStore() {
   const db = new DatabaseSync(':memory:');
   db.exec(ddl[0]);
   const s = { db };
-  for (const m of ['indexQueue', 'indexDue', 'indexMarkDone', 'indexMarkFailed', 'indexCountSince', 'indexStats']) {
+  for (const m of ['indexQueue', 'indexDue', 'indexMarkDone', 'indexMarkFailed', 'indexCountSince', 'indexStats', 'indexClearPending']) {
     s[m] = Store.prototype[m].bind(s);
   }
   return s;
@@ -138,6 +138,51 @@ check('a URL Google never saw cannot be DELETED', freshStore().indexQueue([A], D
 check('…but one it did see can', st.indexQueue([A], DELETED, T + 30), 1);
 check('a page that came back cancels its pending deletion', st.indexQueue([A], UPDATED, T + 40), 0);
 check('…and then owes nothing at all', st.indexDue({ limit: 9 }).length, 0);
+
+// ---------------------------------------------------------------------------
+console.log('\n== a URL Google never saw still cannot be DELETED once it has a row ==');
+/* The `!row` branch already refused a deletion for a URL with no row at all,
+   and that is what the assertion above pins. It does NOT cover a URL that was
+   queued for update and never actually sent — Google has still never heard of
+   it, so the deletion is a no-op that costs one of the 190 calls a day. That
+   state was reachable and 99 rows were sitting in it. */
+st = freshStore();
+st.indexQueue([A], UPDATED, T);
+check('an update is queued but never sent', st.indexDue({ limit: 9 }).length, 1);
+check('the page then disappears — the deletion is refused, not queued',
+  st.indexQueue([A], DELETED, T + 10), 0);
+check('and nothing at all is owed for it', st.indexDue({ limit: 9 }).length, 0);
+/* The read side refuses it too, so the rows already in this state drain
+   without a migration. Written straight to the table to reproduce one. */
+st = freshStore();
+st.db.prepare("INSERT INTO indexed_urls (url, pending, queued_at) VALUES (?, 'URL_DELETED', ?)").run(A, T);
+check('an existing never-announced deletion is never handed out', st.indexDue({ limit: 9 }).length, 0);
+st.db.prepare("UPDATE indexed_urls SET submitted = 'URL_UPDATED' WHERE url = ?").run(A);
+check('…but the same row IS handed out once Google has been told', st.indexDue({ limit: 9 }).length, 1);
+
+// ---------------------------------------------------------------------------
+console.log('\n== a slug that became a redirect stub owes nothing ==');
+/* A stub lives at /jobs/<slug> and is structurally a job URL, so isJobPageUrl
+   cannot tell it apart — which is exactly why five were sitting in the queue
+   owed an UPDATE. The stub carries no JobPosting markup, so sending one is the
+   unsupported page type Google warns can cost the project its API access; it
+   answers 200, so a deletion would be wrong too. Say nothing. */
+st = freshStore();
+st.indexQueue([A, B], UPDATED, T);
+check('two pages are queued', st.indexDue({ limit: 9 }).length, 2);
+check('one becomes a stub and is dropped from the queue',
+  queueForIndexing(st, { indexUrls: [B], redirectUrls: [A] }, T + 10).cleared, 1);
+check('…leaving only the live page owed', st.indexDue({ limit: 9 }).map((r) => r.url), [B]);
+/* Cleared BEFORE the queueing calls, or the same publish that turns a slug
+   into a stub could re-queue it from indexUrls in the same breath. */
+st = freshStore();
+st.indexQueue([A], UPDATED, T);
+queueForIndexing(st, { indexUrls: [A], redirectUrls: [A] }, T + 10);
+check('a slug in both lists ends up owing nothing', st.indexDue({ limit: 9 }).length, 0);
+// A stub URL that was never in the queue must not create a row.
+st = freshStore();
+check('clearing an unknown URL is a no-op', st.indexClearPending([A]), 0);
+check('…and creates nothing', st.indexDue({ limit: 9 }).length, 0);
 
 // ---------------------------------------------------------------------------
 console.log('\n== what to send first ==');

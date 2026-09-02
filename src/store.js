@@ -787,6 +787,15 @@ export class Store {
         if (row.pending) clr.run(url);
         continue;
       }
+      /* Removing a page we never announced: there is nothing for Google to
+         delete, so drop whatever was pending rather than replacing it with a
+         deletion. The `!row` branch above already refuses this when the URL is
+         new; a row that was queued for update and never sent is the same case
+         and was falling through to the update below. */
+      if (type === 'URL_DELETED' && !row.submitted) {
+        if (row.pending) clr.run(url);
+        continue;
+      }
       if (row.pending === type) continue;
       upd.run(type, now, url);
       queued++;
@@ -812,9 +821,34 @@ export class Store {
       SELECT url, pending AS type, queued_at, attempts
       FROM indexed_urls
       WHERE pending IS NOT NULL AND attempts < ? AND queued_at <= ?
+        -- A URL NEVER ANNOUNCED CANNOT BE DELETED. Google can only act on a
+        -- removal for a URL we told it about; for anything else the call is a
+        -- no-op that still costs one of the 190 we get a day. indexQueue now
+        -- refuses to create this state, but 99 rows already carried it when
+        -- this was found, so the read side refuses it too and they drain
+        -- without a migration.
+        AND NOT (pending = 'URL_DELETED' AND submitted IS NULL)
       ORDER BY (pending = 'URL_UPDATED') DESC, queued_at DESC
       LIMIT ?
     `).all(maxAttempts, now - minAgeMs, limit);
+  }
+
+  /**
+   * Forget any pending call for these URLs, without touching what was already
+   * sent.
+   *
+   * For a job page that has become a REDIRECT STUB. The row is left in place —
+   * `submitted` still records what Google was told, so a later relisting at the
+   * same slug is not re-announced needlessly — but nothing further is owed:
+   * the stub carries no JobPosting markup, so URL_UPDATED would be an
+   * unsupported page type, and it answers 200, so URL_DELETED would be a lie.
+   * Google follows the canonical on its own.
+   */
+  indexClearPending(urls) {
+    const clr = this.db.prepare('UPDATE indexed_urls SET pending = NULL, attempts = 0, error = NULL WHERE url = ? AND pending IS NOT NULL');
+    let cleared = 0;
+    for (const url of urls) cleared += clr.run(url).changes ? 1 : 0;
+    return cleared;
   }
 
   indexMarkDone(url, type, now = Date.now()) {

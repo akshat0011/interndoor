@@ -273,11 +273,28 @@ export async function runIndexingSweep(store, cfg, {
  * same reason `publishedIds` exists: the set that got a page and the set we
  * announce must be the same set or they drift.
  */
-export function queueForIndexing(store, { indexUrls = [], removedUrls = [] } = {}, now = Date.now()) {
+export function queueForIndexing(store, { indexUrls = [], removedUrls = [], redirectUrls = [] } = {}, now = Date.now()) {
   const live = indexUrls.filter((u) => isJobPageUrl(u));
   const gone = removedUrls.filter((u) => isJobPageUrl(u));
+  /* A SLUG THAT HAS BECOME A REDIRECT STUB IS NEITHER, and `isJobPageUrl`
+     cannot tell — a stub lives at `/jobs/<slug>` and is structurally a job URL,
+     which is exactly why the guard below it never caught this. Five were sitting
+     in the queue owed an UPDATE when it was found, and a stub carries no
+     JobPosting markup at all: submitting one is the unsupported page type
+     Google warns can cost the project its API access. It answers 200, so a
+     DELETE would be wrong too. Say nothing; the stub's own canonical does the
+     consolidating. Cleared FIRST so a slug that is a stub this run cannot be
+     re-queued by the two calls below. */
+  const stubs = new Set(redirectUrls.filter((u) => isJobPageUrl(u)));
+  const cleared = store.indexClearPending(stubs);
+  /* And a stub is excluded from the other two lists rather than trusted not to
+     appear in them. `writePages` already skips a redirect whose slug is still
+     live, so this cannot fire today — but the cost of being wrong here is the
+     project's API access, and a function that is only safe because of what its
+     caller happens to do is one refactor from not being safe at all. */
   return {
-    queuedUpdate: store.indexQueue(live, UPDATED, now),
-    queuedDelete: store.indexQueue(gone, DELETED, now),
+    cleared,
+    queuedUpdate: store.indexQueue(live.filter((u) => !stubs.has(u)), UPDATED, now),
+    queuedDelete: store.indexQueue(gone.filter((u) => !stubs.has(u)), DELETED, now),
   };
 }
