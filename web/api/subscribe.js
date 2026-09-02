@@ -85,7 +85,19 @@ export function normaliseEmail(raw) {
   return e;
 }
 
-/** The board this address asked for. Unknown or missing means India. */
+/**
+ * The board this address asked for.
+ *
+ * MISSING means India — every form on the site renders its own `data-region`,
+ * so an absent field is an old cached page rather than a choice, and the root
+ * board is where an unmatched visitor lands anyway.
+ *
+ * UNKNOWN IS NULL, and the caller turns that into a 400. The two are NOT the
+ * same case and the comment here used to say they were, which is the wrong way
+ * round for the one that matters: coercing "FR" to India subscribes somebody to
+ * a board they did not ask for and cannot use, silently. `test/subscribe.test.mjs`
+ * pins both halves.
+ */
 export function normaliseRegion(raw) {
   const r = String(raw ?? 'IN').toUpperCase();
   return REGIONS.includes(r) ? r : null;
