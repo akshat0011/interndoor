@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453041502",
+      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-intern-2027-4453041502",
+      "title": "Site Reliability Engineer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Austin, TX\n• Monitor and maintain production systems 24/7 to ensure reliability\n• Use CI/CD tools to deploy and configure services at scale\n• Collaborate with teams to troubleshoot and resolve client issues\n• Apply security patches and support product teams on incidents",
+      "date_published": "2026-09-02T13:33:06.157Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-intern-2027-4453030553",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-intern-2027-4453030553",
+      "title": "Software Developer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Durham, NC\n• Design, build, and test software for cloud, AI, and hybrid-platform solutions\n• Work with Python, Java, JavaScript, and other languages in Agile teams\n• Contribute to front-end or back-end services using React or APIs\n• Full-time during May–August 2027 or June–September 2027",
+      "date_published": "2026-09-02T13:18:48.772Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ge-aerospace-embedded-systems-engineer-co-op-bohemia-ny-spring-2027-4425964141",
+      "url": "https://interndoor.com/us/jobs/ge-aerospace-embedded-systems-engineer-co-op-bohemia-ny-spring-2027-4425964141",
+      "title": "Embedded Systems Engineer Co-op (Bohemia, NY) – Spring 2027 — GE Aerospace",
+      "content_text": "Company: GE Aerospace · Location: Bohemia, NY · Duration: Spring 2027\n• Design and maintain software for embedded systems\n• Work with C, C++, C#, MATLAB, and Linux\n• Collaborate on hardware-in-the-loop testing",
+      "date_published": "2026-09-02T13:17:52.885Z",
+      "authors": [
+        {
+          "name": "GE Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/microsoft-data-science-internship-opportunities-redmond-4462189308",
       "url": "https://interndoor.com/us/jobs/microsoft-data-science-internship-opportunities-redmond-4462189308",
       "title": "Data Science: Internship Opportunities - Redmond — Microsoft",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Mercury Marine"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-acoustic-filter-design-co-op-winter-spring-2027-4462097551",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-acoustic-filter-design-co-op-winter-spring-2027-4462097551",
-      "title": "Acoustic Filter Design Co-Op (Winter/Spring 2027) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: 6 months\n• Design acoustic wave filters for RF modules with senior engineer guidance\n• Use Agilent ADS/Cadence and 2.5/3D EM tools for circuit simulation\n• Collaborate with module and systems teams on filter performance goals",
-      "date_published": "2026-09-02T00:42:39.884Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/piramal-trainee-technical-services-ats-workday-piramalpharma-wd102-piramal-external-careers-r00003757",
-      "url": "https://interndoor.com/us/jobs/piramal-trainee-technical-services-ats-workday-piramalpharma-wd102-piramal-external-careers-r00003757",
-      "title": "Trainee - Technical Services — Piramal",
-      "content_text": "Company: Piramal · Location: Ennore, TN\n• Scale products from lab to plant, assist in technology transfer and process safety\n• Support trial batches, documentation, and engineering calculations\n• Work on pilot projects, facility mapping, and operational cost estimates",
-      "date_published": "2026-09-02T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Piramal"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226",
-      "url": "https://interndoor.com/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226",
-      "title": "Hardware R&D Engineering Intern (Winter/Spring 2027) — Formlabs",
-      "content_text": "Company: Formlabs · Location: Somerville, MA · Duration: Spring 2027\n• Design and test new 3d printing methods using experiments and data\n• Work with engineers to improve printer performance and software\n• Build and refine algorithms for support structures and material behavior",
-      "date_published": "2026-09-01T23:58:56.000Z",
-      "authors": [
-        {
-          "name": "Formlabs"
         }
       ]
     }
