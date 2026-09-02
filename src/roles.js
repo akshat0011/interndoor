@@ -53,7 +53,17 @@ const POSITIVE = [
   'technology', 'technical', 'r&d', 'research and development',
   // Broader technical vocabulary — added after a real backfill showed several
   // engineering titles falling through to "uncertain".
-  'software development', 'application developer', 'systems software',
+  'software development', 'software engineering', 'application developer',
+  'systems software',
+  /* Specific software phrases, so a real role is never left leaning on the
+     GENERIC `engineering intern` alone. Each of these is unambiguous. Three
+     were deliberately NOT added — `systems engineering`, `controls
+     engineering` and `automation engineering` are as often aerospace,
+     mechanical or PLC work as software, and a positive that guesses wrong
+     cancels the whole non-software block for that title. */
+  'embedded software', 'embedded systems', 'firmware engineering',
+  'software quality', 'software test', 'security engineering',
+  'platform engineering', 'cloud engineering', 'test engineering',
   'solution architect', 'software architect', 'technical architect',
   'technical program manager', 'tpm', 'release engineering', 'build engineer',
   'observability', 'devsecops', 'automation engineer', 'rpa',
@@ -186,6 +196,40 @@ function firstMatch(text, terms) {
   return null;
 }
 
+/**
+ * Multi-word positives that say "this is an engineering internship" WITHOUT
+ * saying which KIND of engineering.
+ *
+ * They still classify a title as tech on their own — what they lose is the
+ * power to outrank a negative. That override exists so a SPECIFIC phrase can
+ * rescue a title from a generic negative word ("Data Analyst" surviving
+ * `analyst`, "Credit Risk Data Engineer" surviving `credit risk`). A generic
+ * phrase carries no such information, and letting it win inverted the rule:
+ * `mechanical`, `chemical`, `civil engineer` and the rest of the non-software
+ * block are all negatives, and every one of them was being cancelled the moment
+ * a title ended "... Engineering Intern".
+ *
+ * Measured over 3,955 stored titles: `engineering intern` was cancelling a
+ * negative 87 times — beating `mechanical`, `chemical`, `civil engineering`,
+ * `electrical engineering`, `structural engineering`, `materials engineering`,
+ * `process engineering`, `industrial engineering`, `manufacturing
+ * engineering`, `presales`, `social media` and `product management` — and
+ * `engineering trainee` once, on "Graduate Engineering Trainee - Sales
+ * Engineer". Every OTHER multi-word positive doing the same job was specific
+ * and correct and keeps the override: `data analytics` over `business
+ * analytics`, `data science` over `customer success` and `finance`, `data
+ * analyst` over `hr` and `sales`, `computer science` over `supply chain`,
+ * `machine learning` over `medical`.
+ *
+ * A real software title is unaffected because it carries its own specific
+ * phrase. `software engineering` was added to POSITIVE above in the same
+ * change to keep that true — `software engineer` does not whole-word-match
+ * "Software Engineering", so a title like "Software Engineering Intern -
+ * Mechanical Systems" would otherwise have had nothing but this generic term
+ * and would have been refused by `mechanical`.
+ */
+const GENERIC_POSITIVE = new Set(['engineering intern', 'engineering trainee']);
+
 const POSITIVE_SORTED = [...POSITIVE].sort((a, b) => b.length - a.length);
 const NEGATIVE_SORTED = [...NEGATIVE].sort((a, b) => b.length - a.length);
 
@@ -203,7 +247,8 @@ export function classifyRole(title, options = {}) {
   // A specific positive phrase beats a generic negative word: "Data Analyst"
   // and "Business Intelligence" should survive even though "analyst" reads as
   // commercial. Only phrases of two or more words earn this override.
-  const strongPositive = positive.find((t) => t.includes(' ') && hasTerm(text, t));
+  const strongPositive = positive.find((t) =>
+    t.includes(' ') && !GENERIC_POSITIVE.has(t) && hasTerm(text, t));
 
   const neg = firstMatch(text, negative);
   if (neg && !strongPositive) return { verdict: 'non-tech', matched: neg };

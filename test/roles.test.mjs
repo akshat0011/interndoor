@@ -55,6 +55,83 @@ for (const t of [
   'Business Intelligence Intern',
 ]) check(t, 'tech');
 
+console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
+/* `engineering intern` says "this is an engineering internship" without saying
+   WHICH KIND. It used to earn the strongPositive override, which exists so a
+   SPECIFIC phrase can rescue a title from a generic negative word — and a
+   generic phrase carries no such information. The result was that
+   `mechanical`, `chemical`, `civil engineer` and the whole non-software block
+   were cancelled the moment a title ended "... Engineering Intern".
+   Measured over 3,955 stored titles: `engineering intern` was beating a
+   negative 41 times and `engineering trainee` once; every other multi-word
+   positive doing it was specific and correct. Turning them generic refuses 159
+   rows and wrongly allows none — and NOT ONE of the 159 carries a software
+   word in its title. */
+{
+  const cfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  const refused = (t, label = null) => vetoNonTech(t, label, true, cfg) === false;
+  const is = (label, actual, expected) => {
+    if (actual === expected) { pass++; console.log(`  ok    ${label}`); }
+    else { fail++; console.log(`  FAIL  ${label}\n          got ${actual}, want ${expected}`); }
+  };
+
+  // A bare engineering title is still tech — the term keeps its own polarity.
+  is('a bare "Engineering Intern" is still tech', refused('Engineering Intern'), false);
+  is('and so is Qualcomm\'s "Interim Engineering Intern_Systems-2027"',
+    refused('Interim Engineering Intern_Systems-2027'), false);
+
+  // It simply stops rescuing a discipline that is not software.
+  for (const t of ['Mechanical Engineering Intern', 'Chemical Engineering Intern',
+    'Civil Engineering Intern', 'Structural Engineering Intern',
+    'Electrical Engineering Co-Op, Spring 2027', 'Manufacturing Engineering Intern',
+    'Industrial Engineering Co-OP', 'Process Engineering Intern',
+    'Materials Engineering Intern', 'Ground Systems Mechanical Engineering Intern - Neutron',
+    'Presales & Solution Engineering Intern', 'Graduate Engineering Trainee - Sales Engineer']) {
+    is(`refused — ${t}`, refused(t), true);
+  }
+
+  /* A SPECIFIC multi-word positive still outranks a negative, which is the
+     whole point of the override and must not be collateral. Every one of these
+     was measured beating a real negative in the store. */
+  for (const [t, why] of [
+    ['Market Information and Data Analytics (MIDA) - Business Analytics', 'data analytics over business analytics'],
+    ['Data Science Intern (Customer Success)', 'data science over customer success'],
+    ['Intern - HR Data Analyst', 'data analyst over hr'],
+    ['Sales Data Analyst Intern', 'data analyst over sales'],
+    ['Spring 2027 Key User - Supply Chain / Computer Science', 'computer science over supply chain'],
+    ['Internship /Praktikum \u2013 Computer Vision, Machine Learning (Medical)', 'machine learning over medical'],
+    ['Data Engineering Intern', 'data engineering, not the generic term'],
+    ['Software Engineering Intern - Production Automation', 'production automation is not a discipline'],
+  ]) is(`kept — ${why}`, refused(t), false);
+
+  /* THESE TWO ARE THE LOAD-BEARING ONES for the positives added alongside, and
+     each needs a discipline negative in the title to be reachable at all — an
+     earlier version asserted on titles with no negative in them, so removing
+     `software engineering` and widening GENERIC both survived mutation. */
+  is('software engineering rescues a title a discipline word would refuse',
+    refused('Software Engineering Intern - Mechanical Systems'), false);
+  is('data engineering is SPECIFIC and keeps its override',
+    refused('Data Engineering Intern, Mechanical Division'), false);
+
+  /* THE POSITIVES ADDED ALONGSIDE. Without `software engineering` the first
+     case above would have had nothing but the generic term and would have been
+     refused by `ai`. These close the same gap for a discipline word appearing
+     beside a real software role. */
+  for (const t of ['Embedded Software Intern - Mechanical Systems',
+    'Embedded Systems Intern - Mechanical Design',
+    'Security Engineering Intern - Manufacturing',
+    'Platform Engineering Intern (Chemical Division)']) {
+    is(`kept — ${t}`, refused(t), false);
+  }
+
+  /* Three were deliberately NOT made positives — `systems engineering`,
+     `controls engineering` and `automation engineering` are as often
+     aerospace, mechanical or PLC work as software. Pinned so adding one is a
+     deliberate act. */
+  is('controls engineering does not rescue a mechanical title',
+    refused('Controls Engineering Intern - Mechanical'), true);
+}
+
 console.log('\n== PRODUCT MANAGEMENT AND PRODUCT DESIGN ARE NOT ENGINEERING ==');
 /* These two used to sit in the tech list above. Listing 'product manager' as a
    POSITIVE is why Salesforce's "Summer 2026 Intern - Product Manager" reached
