@@ -6,6 +6,126 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450426041",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450426041",
+      "title": "Software Developer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: Lowell, MA · Duration: 16 weeks\n• Design, build, and test software in front-end, back-end, or full-stack environments\n• Use Git, cloud tools like Docker and Kubernetes, and REST APIs\n• Work on real IBM projects with experienced developers in Agile teams",
+      "date_published": "2026-09-03T16:01:43.319Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-early-stage-innovation-r-and-d-co-op-4462866049",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-early-stage-innovation-r-and-d-co-op-4462866049",
+      "title": "Early Stage Innovation R&D Co-Op — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Raritan, NJ\n• Design and test surgical prototypes in an engineering lab\n• Use SolidWorks for 3D modeling and collaborate with suppliers\n• Conduct studies and document test methods and results",
+      "date_published": "2026-09-03T15:59:24.020Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-phd-earl-4454003100",
+      "url": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-phd-earl-4454003100",
+      "title": "2027 Quantitative Analytics Summer Internship Capital Markets (PhD) - Early Careers — Wells Fargo",
+      "content_text": "Company: Wells Fargo · Location: Charlotte, NC · Duration: 10 weeks\n• Develop pricing and simulation models for trading portfolios\n• Use Python, C++, SQL, and Java for data analysis and modeling\n• Work on risk management and model validation projects",
+      "date_published": "2026-09-03T15:54:28.491Z",
+      "authors": [
+        {
+          "name": "Wells Fargo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450445043",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450445043",
+      "title": "Software Developer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: Austin, TX · Duration: 16 weeks\n• Design, build, and test software for cloud, AI, and hybrid platforms\n• Work with Python, Java, JavaScript, and cloud tools like Docker and Kubernetes\n• Collaborate in Agile teams on real projects with global impact",
+      "date_published": "2026-09-03T15:47:39.219Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450428191",
+      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450428191",
+      "title": "Site Reliability Engineer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: Lowell, MA · Duration: 16 weeks\n• Monitor systems 24/7, troubleshoot issues, deploy updates\n• Use ci/cd tools, linux, python, kubernetes, cloud platforms\n• Work with global team, full-time 16 weeks in lowell, ma",
+      "date_published": "2026-09-03T15:47:08.112Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-software-engineering-co-op-fall-2026-4460735380",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-software-engineering-co-op-fall-2026-4460735380",
+      "title": "Software Engineering Co-op - Fall 2026 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: King of Prussia, PA · Duration: Fall 2026\n• Write code for features and test software for reliability\n• Work with Java, Python, or C++ in agile teams\n• Learn from mentors and contribute to documentation",
+      "date_published": "2026-09-03T15:31:47.499Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460720502",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460720502",
+      "title": "Engineering Intern - Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Denver, CO · Duration: 12 weeks\n• Design and maintain antenna systems and related documentation\n• Use Python/MATLAB and CAD tools for simulations and analysis\n• Work on-site in Westminster, CO for 12 weeks starting May 2027",
+      "date_published": "2026-09-03T15:31:44.325Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460728442",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460728442",
+      "title": "Engineering Intern - Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Sterling, VA · Duration: 12 weeks\n• Design and maintain antenna systems with RF link budgets and BOMs\n• Use Python/MATLAB and CAD tools for simulations and system analysis\n• Work on-site in Sterling, VA for 12 weeks starting May",
+      "date_published": "2026-09-03T15:31:15.816Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450443068",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450443068",
+      "title": "Software Developer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: San Jose, CA · Duration: 16 weeks\n• Design, build, and test software for cloud, AI, and hybrid platforms\n• Work with Python, Java, JavaScript, and cloud tools like Docker and Kubernetes\n• Collaborate in Agile teams on real projects with global impact",
+      "date_published": "2026-09-03T15:29:52.291Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450424045",
+      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450424045",
+      "title": "Site Reliability Engineer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: Austin, TX · Duration: 16 weeks\n• Monitor and maintain production systems 24/7 to ensure reliability\n• Use CI/CD tools to deploy and configure services at scale\n• Troubleshoot and resolve client issues with engineering teams",
+      "date_published": "2026-09-03T15:24:10.835Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099",
       "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099",
       "title": "2027 Summer Intern, BS, SysEng Software Engineer — Waymo",
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-fullstack-engineer-ai-tooling-winter-spring-2027-4462776069",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-fullstack-engineer-ai-tooling-winter-spring-2027-4462776069",
-      "title": "Internship, Fullstack Engineer, AI Tooling (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Debug live systems, identify root causes, and fix issues\n• Build web tools with React and Python, work with ML teams\n• On-site in Palo Alto, 40 hours/week, 12+ weeks",
-      "date_published": "2026-09-03T05:38:43.176Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-integration-engineer-battery-management-systems-wi-4462777056",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-integration-engineer-battery-management-systems-wi-4462777056",
-      "title": "Internship, Software Integration Engineer, Battery Management Systems (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Debug system issues and propose solutions\n• Work with firmware and hardware teams\n• Test new features for vehicle platforms",
-      "date_published": "2026-09-03T05:38:18.955Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-launch-and-scale-intern-spring-2027-4462748945",
-      "url": "https://interndoor.com/us/jobs/zipline-launch-and-scale-intern-spring-2027-4462748945",
-      "title": "Launch & Scale Intern (Spring 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Support launch plans by organizing milestones, dependencies, and risks\n• Analyze data to find bottlenecks and improve launch processes\n• Build tools like dashboards or playbooks for operational clarity",
-      "date_published": "2026-09-03T05:05:45.260Z",
-      "authors": [
-        {
-          "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-launch-and-scale-intern-summer-2027-4462770014",
-      "url": "https://interndoor.com/us/jobs/zipline-launch-and-scale-intern-summer-2027-4462770014",
-      "title": "Launch & Scale Intern (Summer 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Support launch plans by organizing milestones and dependencies\n• Analyze data to find bottlenecks and improve processes\n• Build tools like dashboards or playbooks for launch teams\n• Work onsite in South San Francisco with cross-functional teams",
-      "date_published": "2026-09-03T05:05:24.481Z",
-      "authors": [
-        {
-          "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ericsson-people-analytics-and-ai-intern-4461399140",
-      "url": "https://interndoor.com/us/jobs/ericsson-people-analytics-and-ai-intern-4461399140",
-      "title": "People Analytics and AI Intern — Ericsson",
-      "content_text": "Company: Ericsson · Location: Plano, TX · Duration: 12 weeks\n• Design AI tools to help HR teams make better decisions\n• Use Power BI to turn data into clear, actionable insights\n• Work with Snowflake and Power Query to model and transform data\n• Collaborate across HR and analytics teams on real projects",
-      "date_published": "2026-09-03T04:48:29.700Z",
-      "authors": [
-        {
-          "name": "Ericsson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abb-proposals-engineer-intern-summer-2027-4462749912",
-      "url": "https://interndoor.com/us/jobs/abb-proposals-engineer-intern-summer-2027-4462749912",
-      "title": "Proposals Engineer Intern - Summer 2027 — ABB",
-      "content_text": "Company: ABB · Location: Cleveland, OH · Duration: Summer 2027\n• Support marketing and sales by developing proposals with system drawings and equipment lists\n• Collaborate with teams to ensure project timelines and customer needs are met\n• Reside within 50 miles of Cleveland, OH, manage own commute",
-      "date_published": "2026-09-03T04:47:23.760Z",
-      "authors": [
-        {
-          "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-cross-domain-electronics-systems-engineering-4461385949",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-cross-domain-electronics-systems-engineering-4461385949",
-      "title": "Strategic Student Program: Cross-Domain Electronics Systems Engineering Intern (T&I, Spring 2027) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Detroit, MI · Duration: Spring 2027\n• Develop software prototypes and automation tools for engineering workflows\n• Work with EDA and PLM tools to integrate semiconductor and system design\n• Contribute to a silicon-to-rack product development lifecycle project",
-      "date_published": "2026-09-03T04:41:10.753Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-mendix-and-ai-application-development-intern-4461396141",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-mendix-and-ai-application-development-intern-4461396141",
-      "title": "Strategic Student Program: Mendix & AI Application Development Internship (Spring/Summer 2027, GSCS) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Livonia, MI · Duration: Spring 2027\n• Build mendix apps and ai agents for process improvements\n• Use python and gpt tools to optimize internal workflows\n• Collaborate with stakeholders to implement real-world solutions",
-      "date_published": "2026-09-03T04:40:49.399Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-and-engineering-data-internship-spring-20-4461399111",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-and-engineering-data-internship-spring-20-4461399111",
-      "title": "Strategic Student Program: AI & Engineering Data Internship (Spring 2027, GSCS) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Maryland Heights, MO · Duration: Spring 2027\n• Curate engineering datasets for ai and analytics use cases\n• Build dashboards and visualizations for engineering insights\n• Support ai proof-of-concepts and digital thread projects",
-      "date_published": "2026-09-03T04:40:26.584Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-digital-thread-and-systems-engineering-inter-4461605014",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-digital-thread-and-systems-engineering-inter-4461605014",
-      "title": "Strategic Student Program: Digital Thread & Systems Engineering Internship (Spring 2027, GSCS) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Maryland Heights, MO · Duration: Spring 2027\n• Build engineering datasets for aerospace and automotive demos\n• Work on digital thread projects linking systems and software\n• Create technical docs and presentations for customer demos",
-      "date_published": "2026-09-03T04:31:08.587Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
         }
       ]
     }
