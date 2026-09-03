@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/norfolk-southern-electrical-engineering-management-trainee-various-locations-4461690894",
+      "url": "https://interndoor.com/us/jobs/norfolk-southern-electrical-engineering-management-trainee-various-locations-4461690894",
+      "title": "Electrical Engineering Management Trainee (Various Locations) — Norfolk Southern",
+      "content_text": "Company: Norfolk Southern · Location: Atlanta, GA\n• Lead teams of technicians in field operations and maintenance\n• Work with radio tech and electrical systems in outdoor settings\n• Relocate and travel as needed for 44-52+ week program",
+      "date_published": "2026-09-03T19:06:32.545Z",
+      "authors": [
+        {
+          "name": "Norfolk Southern"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/delta-air-lines-graduate-intern-data-scientist-summer-2027-4461695519",
+      "url": "https://interndoor.com/us/jobs/delta-air-lines-graduate-intern-data-scientist-summer-2027-4461695519",
+      "title": "Graduate Intern, Data Scientist (Summer 2027) — Delta Air Lines",
+      "content_text": "Company: Delta Air Lines · Location: Atlanta, GA · Duration: Summer 2027\n• Develop machine learning models to improve airline operations\n• Use sql and cloud platforms for data analysis\n• Present insights to business leaders with visuals\n• Internship runs may 17 to august 6 in atlanta",
+      "date_published": "2026-09-03T18:49:51.380Z",
+      "authors": [
+        {
+          "name": "Delta Air Lines"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/delta-air-lines-co-op-sustainability-analytics-spring-2027-4461690744",
       "url": "https://interndoor.com/us/jobs/delta-air-lines-co-op-sustainability-analytics-spring-2027-4461690744",
       "title": "Co-op, Sustainability Analytics (Spring 2027) — Delta Air Lines",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/epic-games-gameplay-programmer-intern-4452781299",
-      "url": "https://interndoor.com/us/jobs/epic-games-gameplay-programmer-intern-4452781299",
-      "title": "Gameplay Programmer Intern — Epic Games",
-      "content_text": "Company: Epic Games · Location: Cary, NC\n• Implement gameplay features in Unreal Engine with C++\n• Collaborate with designers and artists on feature prototyping\n• Debug and test gameplay systems for LEGO Fortnite updates",
-      "date_published": "2026-09-03T09:25:39.747Z",
-      "authors": [
-        {
-          "name": "Epic Games"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4431972854",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4431972854",
-      "title": "Quantitative Trader Internship: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Chicago, IL · Duration: Summer 2027\n• Analyze market data and support trading decisions using quantitative models\n• Work alongside traders and receive structured training in options and decision science\n• Based in chicago, with housing and meals provided during the 10-week program",
-      "date_published": "2026-09-03T09:14:49.367Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
         }
       ]
     }
