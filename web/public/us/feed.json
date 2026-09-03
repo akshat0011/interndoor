@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bmw-group-intern-interaction-design-spring-2027-4463119380",
+      "url": "https://interndoor.com/us/jobs/bmw-group-intern-interaction-design-spring-2027-4463119380",
+      "title": "Intern, Interaction Design - Spring 2027 — BMW Group",
+      "content_text": "Company: BMW Group · Location: Santa Monica, CA · Duration: Spring 2027\n• Create interactive designs for automotive and consumer products\n• Use Figma, Sketch, and Adobe tools for prototyping\n• Work on AR/VR projects with cross-functional teams",
+      "date_published": "2026-09-03T20:33:43.871Z",
+      "authors": [
+        {
+          "name": "BMW Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caterpillar-inc-2027-summer-corporate-intern-digital-and-analytics-4463122306",
+      "url": "https://interndoor.com/us/jobs/caterpillar-inc-2027-summer-corporate-intern-digital-and-analytics-4463122306",
+      "title": "2027 Summer Corporate Intern – Digital and Analytics — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Peoria, IL · Duration: 12 weeks\n• Design and develop customer-centric digital experiences for premium products\n• Work with data platforms, AI, DevOps, and cybersecurity tools\n• Contribute to analytics projects using IoT data and visualization tools",
+      "date_published": "2026-09-03T20:33:39.771Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/dominion-energy-intern-digital-solutions-supply-chain-4463109316",
       "url": "https://interndoor.com/us/jobs/dominion-energy-intern-digital-solutions-supply-chain-4463109316",
       "title": "Intern - Digital Solutions - Supply Chain — Dominion Energy",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/delta-air-lines-graduate-intern-data-scientist-spring-2027-4452764451",
-      "url": "https://interndoor.com/us/jobs/delta-air-lines-graduate-intern-data-scientist-spring-2027-4452764451",
-      "title": "Graduate Intern, Data Scientist (Spring 2027) — Delta Air Lines",
-      "content_text": "Company: Delta Air Lines · Location: Atlanta, GA · Duration: Spring 2027\n• Develop machine learning models to improve airline operations\n• Use sql and cloud platforms for data analysis\n• Present findings to business leaders with clear visuals\n• Work onsite in atlanta with a team of data scientists",
-      "date_published": "2026-09-03T11:46:11.722Z",
-      "authors": [
-        {
-          "name": "Delta Air Lines"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625",
-      "url": "https://interndoor.com/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625",
-      "title": "FPGA Engineer Intern (Summer 2027 - Austin) — Optiver",
-      "content_text": "Company: Optiver · Location: Austin, TX · Duration: 8 months\n• Design high-speed hardware for trading systems\n• Work with VHDL/Verilog on real-world FPGA projects\n• Collaborate with traders and engineers on low-latency solutions",
-      "date_published": "2026-09-03T10:11:12.747Z",
-      "authors": [
-        {
-          "name": "Optiver"
         }
       ]
     }
