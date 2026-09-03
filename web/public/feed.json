@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4462811461",
+      "url": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4462811461",
+      "title": "Data Science Intern — GE Aerospace",
+      "content_text": "Company: GE Aerospace · Location: Bengaluru, Karnataka, India\n• Analyze data sets using machine learning and statistical methods\n• Work with python and cloud platforms on real projects\n• Collaborate with senior mentors on ai and genai initiatives",
+      "date_published": "2026-09-03T12:48:48.729Z",
+      "authors": [
+        {
+          "name": "GE Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jupiter-business-systems-fzc-qa-trainee-4461644834",
+      "url": "https://interndoor.com/jobs/jupiter-business-systems-fzc-qa-trainee-4461644834",
+      "title": "QA Trainee — Jupiter Business Systems FZC",
+      "content_text": "Company: Jupiter Business Systems FZC · Location: Kerala, India\n• Write test cases and scenarios for web and mobile apps\n• Manual testing and bug reporting with developer collaboration\n• Learn automation tools and maintain testing documentation",
+      "date_published": "2026-09-03T12:47:12.399Z",
+      "authors": [
+        {
+          "name": "Jupiter Business Systems FZC"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-systems-2027-4452381999",
       "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-systems-2027-4452381999",
       "title": "Interim Engineering Intern_Systems- 2027 — Qualcomm",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/thoughtspot-intern-business-transformation-4449168247",
-      "url": "https://interndoor.com/jobs/thoughtspot-intern-business-transformation-4449168247",
-      "title": "Intern - Business Transformation — ThoughtSpot",
-      "content_text": "Company: ThoughtSpot · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines and ETL workflows\n• Use Python, SQL, and APIs for integration tasks\n• Collaborate with cross-functional teams on analytics projects",
-      "date_published": "2026-08-27T11:50:57.268Z",
-      "authors": [
-        {
-          "name": "ThoughtSpot"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/krutrim-insights-ai-training-internship-job-opportunity-2026-graduates-4458376472",
-      "url": "https://interndoor.com/jobs/krutrim-insights-ai-training-internship-job-opportunity-2026-graduates-4458376472",
-      "title": "AI Training |Internship| Job Opportunity |2026 Graduates — Krutrim Insights",
-      "content_text": "Company: Krutrim Insights · Location: India\n• Train ai models using real-world data sets\n• Work with python and tensorflow frameworks\n• Eligible for paid internship abroad",
-      "date_published": "2026-08-27T10:45:03.526Z",
-      "authors": [
-        {
-          "name": "Krutrim Insights"
         }
       ]
     }
