@@ -213,6 +213,26 @@ ok('a workday apply url is untouched', utmUrl('https://a.myworkdayjobs.com/b?x=1
 ok('a linkedin apply url is untouched', utmUrl('https://www.linkedin.com/jobs/view/1', { campaign: 'post' }, CFG) === 'https://www.linkedin.com/jobs/view/1');
 ok('can be switched off', utmUrl('https://interndoor.com/x', { campaign: 'post' }, { postQueue: { utm: { enabled: false } } }) === 'https://interndoor.com/x');
 ok('garbage in, garbage out, not a throw', utmUrl('not a url', { campaign: 'post' }, CFG) === 'not a url');
+/* A LOOKALIKE HOST IS A FOREIGN HOST. The guard used to be
+   `String(url).startsWith(SITE)`, which also accepts
+   `https://interndoor.com.evil.example/…` — our tracking parameters on
+   somebody else's domain, and the reason a foreign host is refused at all is
+   that some ATS routers read the query string and break on it. `isJobPageUrl`
+   guards the same shape and is tested for it; this one was not.
+   Unreachable today because every caller builds its argument from SITE, which
+   is exactly the kind of safety that disappears in a refactor. */
+ok('a lookalike host is not tagged',
+  utmUrl('https://interndoor.com.evil.example/jobs/x', { campaign: 'post' }, CFG)
+    === 'https://interndoor.com.evil.example/jobs/x');
+ok('…nor a subdomain we do not serve from',
+  utmUrl('https://www.interndoor.com/jobs/x', { campaign: 'post' }, CFG)
+    === 'https://www.interndoor.com/jobs/x');
+ok('…nor plain http on our own host',
+  utmUrl('http://interndoor.com/jobs/x', { campaign: 'post' }, CFG)
+    === 'http://interndoor.com/jobs/x');
+// And the ordinary case still works, so the guard did not over-tighten.
+ok('a regional board url is still tagged',
+  /utm_campaign=post/.test(utmUrl('https://interndoor.com/us/', { campaign: 'post' }, CFG)));
 
 console.log('\n== the telegram channel ==');
 ok('read from the same config the channel poster uses', telegramFor(CFG, 'IN').handle === '@interndoor');

@@ -156,9 +156,23 @@ export function sourceLabel(row) {
 export function utmUrl(url, { campaign, content, source } = {}, cfg = {}) {
   const conf = cfg.postQueue?.utm ?? {};
   if (conf.enabled === false) return url;
-  if (!url || !String(url).startsWith(SITE)) return url;
+  if (!url) return url;
+  let u;
   try {
-    const u = new URL(url);
+    u = new URL(String(url));
+  } catch {
+    return url;
+  }
+  /* THE ORIGIN, NOT A STRING PREFIX. `startsWith(SITE)` also accepts
+     `https://interndoor.com.evil.example/…`, which would put our tracking
+     parameters on somebody else's host — and the whole reason this refuses a
+     foreign host is that some ATS routers read the query string and break.
+     Unreachable today: every caller builds its argument from SITE. But
+     `isJobPageUrl` guards the same lookalike and is tested for it, and a
+     function that is safe only because of what its callers happen to pass is
+     one refactor from not being safe. */
+  if (u.origin !== SITE) return url;
+  try {
     /* `source` overrides the config default, because these tags are shared by
        more than one channel now. The default is 'linkedin' because that is
        what this function was written for; the first published reel went out
