@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/fm-cyber-co-op-4462735203",
+      "url": "https://interndoor.com/us/jobs/fm-cyber-co-op-4462735203",
+      "title": "Cyber Co-Op — FM",
+      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Analyze and respond to cyber threats using enterprise security tools\n• Work with professionals in a multifaceted security environment\n• Based in Johnston, RI with possible travel required",
+      "date_published": "2026-09-03T00:36:52.974Z",
+      "authors": [
+        {
+          "name": "FM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-summer-fall-2027-4462729286",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-em-design-co-op-summer-fall-2027-4462729286",
+      "title": "RF EM Design Co-Op (Summer/Fall 2027) — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: Fall 2027\n• Design RF filters and passive components for 5G/6G systems\n• Use HFSS and ADS for electromagnetic modeling and simulation\n• Work on real-world RF front-end products with a technical mentor",
+      "date_published": "2026-09-03T00:33:36.417Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/boston-scientific-ais-r-and-d-leads-sustaining-engineer-intern-4462723063",
       "url": "https://interndoor.com/us/jobs/boston-scientific-ais-r-and-d-leads-sustaining-engineer-intern-4462723063",
       "title": "AIS R&D Leads Sustaining Engineer Intern — Boston Scientific",
@@ -575,30 +599,6 @@
       "title": "Digital IC Design Engineering Intern - MS/PhD — Texas Instruments",
       "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Design and document analog digital and rf integrated circuits\n• Collaborate on layouts and prototype characterization\n• Work with business teams on design specifications\n• Contribute to product releases and test specifications",
       "date_published": "2026-09-02T20:20:10.756Z",
-      "authors": [
-        {
-          "name": "Texas Instruments"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/texas-instruments-digital-ic-design-engineering-intern-bachelors-4461336505",
-      "url": "https://interndoor.com/us/jobs/texas-instruments-digital-ic-design-engineering-intern-bachelors-4461336505",
-      "title": "Digital IC Design Engineering Intern - Bachelors — Texas Instruments",
-      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Design and model integrated circuits for audio, imaging, and power systems\n• Collaborate on chip layouts and test specifications with engineering teams\n• Work on high-performance ICs for automotive, storage, and medical applications",
-      "date_published": "2026-09-02T20:19:58.916Z",
-      "authors": [
-        {
-          "name": "Texas Instruments"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/texas-instruments-design-verification-engineering-intern-bachelors-4461345192",
-      "url": "https://interndoor.com/us/jobs/texas-instruments-design-verification-engineering-intern-bachelors-4461345192",
-      "title": "Design Verification Engineering Intern - Bachelors — Texas Instruments",
-      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Develop test benches and simulations for mixed-signal circuits\n• Use SystemVerilog for coverage models and regression analysis\n• Collaborate with design teams on chip-level timing verification",
-      "date_published": "2026-09-02T20:19:50.322Z",
       "authors": [
         {
           "name": "Texas Instruments"
