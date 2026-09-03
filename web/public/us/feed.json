@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-digital-solutions-supply-chain-4463109316",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-digital-solutions-supply-chain-4463109316",
+      "title": "Intern - Digital Solutions - Supply Chain — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Richmond, VA\n• Design and deploy digital tools to automate supply chain processes\n• Use Power Automate, Power Apps, and Power BI for workflow and data solutions\n• Collaborate with business teams to improve efficiency and data insights",
+      "date_published": "2026-09-03T20:04:20.656Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-electric-distribution-dispatch-4463113209",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-electric-distribution-dispatch-4463113209",
+      "title": "Intern - Electric Distribution Dispatch — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Cayce, SC\n• Monitor system data using outage management and scada tools\n• Support outage restoration and real-time coordination tasks\n• Work in a control center with field crews and customer data",
+      "date_published": "2026-09-03T20:04:06.260Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7",
       "url": "https://interndoor.com/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7",
       "title": "GNC & Flight Software Intern - Spring/Summer 2027 — Hermeus",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Optiver"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/netflix-video-algorithms-intern-video-coding-gaussian-splatting-fall-2026-4405171919",
-      "url": "https://interndoor.com/us/jobs/netflix-video-algorithms-intern-video-coding-gaussian-splatting-fall-2026-4405171919",
-      "title": "Video Algorithms Intern, Video Coding (Gaussian Splatting), Fall 2026 — Netflix",
-      "content_text": "Company: Netflix · Location: Los Gatos, CA · Duration: 12 weeks\n• Analyze GS model compression using open datasets\n• Implement PoC for GS-based rendering on content\n• Work on reducing training time and improving compression",
-      "date_published": "2026-09-03T09:58:45.870Z",
-      "authors": [
-        {
-          "name": "Netflix"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-steering-chassis-systems-winte-4462788347",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-steering-chassis-systems-winte-4462788347",
-      "title": "Internship, Software Validation Engineer, Steering, Chassis Systems (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop and execute validation test plans for steering and chassis software\n• Collaborate with teams to troubleshoot and reproduce software issues\n• Maintain test documentation and improve validation processes\n• Work on HIL and vehicle-level testing with embedded systems",
-      "date_published": "2026-09-03T09:39:36.970Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
