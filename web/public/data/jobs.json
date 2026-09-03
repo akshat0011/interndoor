@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788398119567,
+ "generatedAt": 1788399056127,
  "region": "IN",
  "regionName": "India",
- "count": 243,
- "techCount": 243,
+ "count": 242,
+ "techCount": 242,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -131,7 +131,6 @@
   "Tower Research Capital",
   "Trellix",
   "Valeo",
-  "Vecmocon Technologies",
   "Volody",
   "Wells Fargo",
   "West Pharmaceutical Services",
@@ -204,47 +203,6 @@
   "gurgaon"
  ],
  "jobs": [
-  {
-   "id": "4461355584",
-   "title": "Service Intern",
-   "company": "Vecmocon Technologies",
-   "matchedWatchlist": "Vecmocon",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/vecmocon-technologies.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves repairing and maintaining electric vehicle chargers and two-wheelers. Interns will troubleshoot faults, perform tests, and document repairs. The role suits students interested in hands-on technical work with real-world equipment.",
-   "bullets": [
-    "Repair and test ev chargers and vehicles",
-    "Use tools and software for tracking repairs",
-    "Work with spare parts and maintain quality"
-   ],
-   "roleLabel": "EV Repair",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unpaid",
-   "postedText": "14 minutes ago",
-   "postedAt": 1788396716362,
-   "firstSeenAt": 1788397556369,
-   "lastSeenAt": 1788397556369,
-   "url": "https://www.linkedin.com/jobs/view/4461355584/",
-   "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/157869?source=linkedin",
-   "description": null,
-   "roleFingerprint": "329e47fb04",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
   {
    "id": "4460990947",
    "title": "Engineering Intern 1",
