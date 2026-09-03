@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-02</lastmod><priority>1.0</priority></url>
-  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-02</lastmod><priority>0.4</priority></url>
-  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-03</lastmod><priority>1.0</priority></url>
+  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-03</lastmod><priority>0.4</priority></url>
+  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
@@ -28,8 +28,8 @@
   <url><loc>https://interndoor.com/skills/pytorch</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tensorflow</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/llm</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/llm</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/c-sharp</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -47,12 +47,13 @@
   <url><loc>https://interndoor.com/skills/system-design</loc><lastmod>2026-08-28</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/terraform</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/volody-legal-ai-intern-mumbai-based-only-4460492372</loc><lastmod>2026-09-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/lam-research-engineering-intern-1-4460990947</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/gruve-soc-analyst-trainee-4462188378</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/volody-legal-ai-intern-4459961015</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
@@ -288,9 +289,9 @@
   <url><loc>https://interndoor.com/jobs/microsoft-data-science-intern-ats-microsoft-india-1970393556917520</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-applied-sciences-intern-ats-microsoft-india-1970393556917519</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/volody</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/lam-research</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/gruve</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/volody</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/atkinsr-alis</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/gokwik</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/american-express</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
