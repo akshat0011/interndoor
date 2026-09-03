@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 01:29:37 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 01:36:52 GMT</lastBuildDate>
+  <item>
+    <title>Internship, Linux Embedded Engineer, Infotainment Platforms (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-linux-embedded-engineer-infotainment-platforms-winter-sprin-4462714724</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-linux-embedded-engineer-infotainment-platforms-winter-sprin-4462714724</guid>
+    <pubDate>Thu, 03 Sep 2026 01:36:52 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Debug hardware and software interactions during product development
+• Work with embedded linux and android, c/c++ and golang
+• On-site full-time in palo alto, 12+ weeks minimum</description>
+  </item>
   <item>
     <title>Module Engineering Undergraduate Intern — Intel</title>
     <link>https://interndoor.com/us/jobs/intel-module-engineering-undergraduate-intern-4461370707</link>
@@ -499,16 +509,6 @@
 • Support infrastructure operations and automate routine tasks with scripting
 • Work with cloud platforms and monitoring tools like Grafana and Prometheus
 • Collaborate on network upgrades and incident response with cross-functional teams</description>
-  </item>
-  <item>
-    <title>Back End Developer - Return Intern 2026-2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011</guid>
-    <pubDate>Wed, 02 Sep 2026 20:34:24 GMT</pubDate>
-    <description>Company: IBM · Location: Tucson, AZ
-• Develop databases and APIs using ruby, python, java, and sql
-• Work in agile teams on cloud and containerized applications
-• Learn back-end systems and security best practices</description>
   </item>
 </channel>
 </rss>

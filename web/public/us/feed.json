@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-linux-embedded-engineer-infotainment-platforms-winter-sprin-4462714724",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-linux-embedded-engineer-infotainment-platforms-winter-sprin-4462714724",
+      "title": "Internship, Linux Embedded Engineer, Infotainment Platforms (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Debug hardware and software interactions during product development\n• Work with embedded linux and android, c/c++ and golang\n• On-site full-time in palo alto, 12+ weeks minimum",
+      "date_published": "2026-09-03T01:36:52.249Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/intel-module-engineering-undergraduate-intern-4461370707",
       "url": "https://interndoor.com/us/jobs/intel-module-engineering-undergraduate-intern-4461370707",
       "title": "Module Engineering Undergraduate Intern — Intel",
@@ -587,18 +599,6 @@
       "title": "Site Reliability Engineer Network Intern - OneIT - Austin, TX - 2027 — IBM",
       "content_text": "Company: IBM · Location: Austin, TX\n• Support infrastructure operations and automate routine tasks with scripting\n• Work with cloud platforms and monitoring tools like Grafana and Prometheus\n• Collaborate on network upgrades and incident response with cross-functional teams",
       "date_published": "2026-09-02T20:34:43.921Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011",
-      "url": "https://interndoor.com/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011",
-      "title": "Back End Developer - Return Intern 2026-2027 — IBM",
-      "content_text": "Company: IBM · Location: Tucson, AZ\n• Develop databases and APIs using ruby, python, java, and sql\n• Work in agile teams on cloud and containerized applications\n• Learn back-end systems and security best practices",
-      "date_published": "2026-09-02T20:34:24.029Z",
       "authors": [
         {
           "name": "IBM"
