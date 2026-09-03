@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-masters--4453694150",
+      "url": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-masters--4453694150",
+      "title": "2027 Quantitative Analytics Summer Internship Capital Markets (Masters) - Early Careers — Wells Fargo",
+      "content_text": "Company: Wells Fargo · Location: Charlotte, NC · Duration: 10 weeks\n• Develop pricing and simulation models for trading portfolios\n• Use Python, C++, SQL, and Java for data analysis and modeling\n• Work on risk management and model performance evaluation",
+      "date_published": "2026-09-03T14:59:50.969Z",
+      "authors": [
+        {
+          "name": "Wells Fargo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450425236",
+      "url": "https://interndoor.com/us/jobs/ibm-software-developer-spring-co-op-2027-4450425236",
+      "title": "Software Developer Spring Co-op 2027 — IBM",
+      "content_text": "Company: IBM · Location: Durham, NC · Duration: 16 weeks\n• Design, build, and test software for cloud, AI, and hybrid platforms\n• Use Python, Java, JavaScript, and tools like Git, Docker, Kubernetes\n• Work in Agile teams on real projects with global impact",
+      "date_published": "2026-09-03T14:59:12.574Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/bmw-group-intern-intelligent-car-and-ai-coc-spring-2027-4462848552",
       "url": "https://interndoor.com/us/jobs/bmw-group-intern-intelligent-car-and-ai-coc-spring-2027-4462848552",
       "title": "Intern, Intelligent Car & AI CoC- Spring 2027 — BMW Group",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-automation-and-process-improvement-intern-4461393697",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-automation-and-process-improvement-intern-4461393697",
-      "title": "Strategic Student Program: AI, Automation & Process Improvement Internship (Spring/Summer 2027, GSCS) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Livonia, MI · Duration: Spring 2027\n• Design and implement productivity improvements using ai and automation tools\n• Work with python, power automate, mendix, and excel\n• Collaborate with sales, marketing, and operations teams\n• Create documentation and reusable prompt libraries",
-      "date_published": "2026-09-03T04:29:33.082Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/walmart-2026-intern-conversion-2027-ft-systems-and-infrastructure-engineer-ii--4460463040",
-      "url": "https://interndoor.com/us/jobs/walmart-2026-intern-conversion-2027-ft-systems-and-infrastructure-engineer-ii--4460463040",
-      "title": "2026 Intern Conversion: 2027 FT Systems and Infrastructure Engineer II, Information Security — Walmart",
-      "content_text": "Company: Walmart · Location: Bentonville, AR\n• Design secure systems for Walmart's infrastructure\n• Use Python, JavaScript, and CI/CD tools\n• Convert high-level designs to detailed specs",
-      "date_published": "2026-09-03T04:17:49.189Z",
-      "authors": [
-        {
-          "name": "Walmart"
         }
       ]
     }
