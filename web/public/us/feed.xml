@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 18:07:38 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 18:37:08 GMT</lastBuildDate>
+  <item>
+    <title>Co-op, Sustainability Analytics (Spring 2027) — Delta Air Lines</title>
+    <link>https://interndoor.com/us/jobs/delta-air-lines-co-op-sustainability-analytics-spring-2027-4461690744</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/delta-air-lines-co-op-sustainability-analytics-spring-2027-4461690744</guid>
+    <pubDate>Thu, 03 Sep 2026 18:37:08 GMT</pubDate>
+    <description>Company: Delta Air Lines · Location: Atlanta, GA · Duration: Summer 2026
+• Analyze sustainability data to support carbon reduction strategies
+• Build data pipelines and dashboards using python, sql, tableau
+• Work onsite in atlanta with the global sustainability team</description>
+  </item>
   <item>
     <title>R&amp;D Software Engineer Intern — Boston Scientific</title>
     <link>https://interndoor.com/us/jobs/boston-scientific-r-and-d-software-engineer-intern-4462899160</link>
@@ -501,16 +511,6 @@
 • Analyze market data and support trading decisions using quantitative models
 • Work alongside traders and receive structured training in options and decision science
 • Based in chicago, with housing and meals provided during the 10-week program</description>
-  </item>
-  <item>
-    <title>Quantitative Research Internship – Master&#39;s: Summer 2027 — Susquehanna International Group</title>
-    <link>https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-master-s-summer-2027-4431539654</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-master-s-summer-2027-4431539654</guid>
-    <pubDate>Thu, 03 Sep 2026 09:14:18 GMT</pubDate>
-    <description>Company: Susquehanna International Group · Location: New York, NY · Duration: Summer 2027
-• Build and test trading strategies using historical market data
-• Work with Python, large datasets, and GPU-accelerated computing
-• Collaborate with researchers and traders on real-world problems</description>
   </item>
 </channel>
 </rss>

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 03 Sep 2026 13:33:14 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 18:27:03 GMT</lastBuildDate>
+  <item>
+    <title>Intern — Micron Technology</title>
+    <link>https://interndoor.com/jobs/micron-technology-intern-4461695413</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/micron-technology-intern-4461695413</guid>
+    <pubDate>Thu, 03 Sep 2026 18:27:03 GMT</pubDate>
+    <description>Company: Micron Technology · Location: Hyderabad, Telangana, India
+• Work on semiconductor design and development projects
+• Engage with data science and ai-driven solutions
+• Contribute to engineering and manufacturing initiatives</description>
+  </item>
   <item>
     <title>Intern - AI Engineer — Continental Industry</title>
     <link>https://interndoor.com/jobs/continental-industry-intern-ai-engineer-4461652453</link>
@@ -501,16 +511,6 @@
 • Execute test cases and track software bugs
 • Work with developers to resolve issues
 • Learn software testing lifecycle processes</description>
-  </item>
-  <item>
-    <title>AI Agent Engineer Intern — Lexsi Labs</title>
-    <link>https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4458640948</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4458640948</guid>
-    <pubDate>Thu, 27 Aug 2026 17:08:13 GMT</pubDate>
-    <description>Company: Lexsi Labs · Location: Mumbai Metropolitan Region
-• Build agents that reason over workflows and interact with data systems
-• Work on evaluation frameworks and research prototypes
-• Contribute to enterprise use cases and product tooling</description>
   </item>
 </channel>
 </rss>
