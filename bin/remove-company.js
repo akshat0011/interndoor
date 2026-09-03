@@ -7,6 +7,32 @@
  *   node bin/remove-company.js "MedTourEasy" --dry-run    show, change nothing
  *   node bin/remove-company.js "Acme" --keep-watchlist    drop its jobs, keep watching
  *   node bin/remove-company.js --job 4446974886           one posting only
+ *   node bin/remove-company.js --job 4446974886 --reason "not software"
+ *
+ * ONE POSTING IS SUPPRESSED, NOT DELETED, AND THAT IS THE WHOLE POINT.
+ *
+ * Deleting a single row does not remove a LinkedIn posting; it removes it for
+ * about thirty minutes. The scan's already-known shortcut is
+ * `known && store.hasJob(known.job_id)` and the guard after the click is
+ * `store.hasJob(jobId)` — BOTH need the jobs row to exist. Delete it and the
+ * card is opened again on the next sweep, `mapCard` rewrites the card_keys
+ * binding, `hasJob` is false, and the posting is stored straight back.
+ *
+ * Clearing `card_keys` as well does not help and was the obvious wrong fix:
+ * step 4 of that flow re-creates the binding, and the decision still comes down
+ * to `hasJob`. An ATS row is no better — the poller re-reads it from the board.
+ *
+ * So `--job` sets `is_tech = 0` and writes `suppressed_reason` instead. The row
+ * stays, so the card keeps answering "already known" and is never opened again;
+ * publish drops it because it is not tech; and it cannot drift back, because
+ * `needingEnrichment` wants `bullets IS NULL` and `jobsNeedingRoleVerdict` wants
+ * `is_tech IS NULL`. `upsertJob` on an existing row touches only last_seen_at,
+ * salary, applicants, apply_url and logo_url, so a re-poll cannot undo it
+ * either. A non-NULL `suppressed_reason` is also what tells bin/recheck-tech.js
+ * that a HUMAN pulled this and it must not be re-promoted (see CLAUDE.md 9).
+ *
+ * Removing a whole COMPANY still deletes, and that is safe: the blocklist is
+ * checked before every other rule, so nothing from that name can return.
  *
  * Why this also writes to the blocklist by default:
  *
@@ -43,7 +69,14 @@ function valueOf(flag) {
 }
 
 const JOB_ID = valueOf('--job');
-const NAME = ARGS.find((a) => !a.startsWith('--') && a !== JOB_ID) ?? null;
+const REASON = valueOf('--reason')
+  || `Removed by hand on ${new Date().toISOString().slice(0, 10)}.`;
+/* Skip any value that belongs to a flag, or `--reason "not software"` would be
+   read as the company name and the script would try to remove a company called
+   "not software". */
+const FLAG_VALUES = new Set(['--job', '--reason']
+  .map((f) => valueOf(f)).filter((v) => v != null));
+const NAME = ARGS.find((a) => !a.startsWith('--') && !FLAG_VALUES.has(a)) ?? null;
 
 if (!NAME && !JOB_ID) {
   console.error(`
@@ -55,6 +88,7 @@ Remove a company or a posting from InternDoor.
 
 Flags:
   --yes, -y          skip the confirmation prompt
+  --reason "..."     why the posting was pulled (--job only; stored on the row)
   --dry-run          show what would change, write nothing
   --keep-watchlist   remove the postings but keep watching the company
                      (by default the company is blocklisted so it cannot return)
@@ -129,7 +163,10 @@ const alreadyBlocked = (configFile.matching?.blocklist ?? []).some((b) => norm(b
 console.log('');
 console.log(JOB_ID ? `Removing one posting (${JOB_ID}):` : `Removing "${NAME}":`);
 console.log('');
-console.log(`  ${jobs.length} posting${jobs.length === 1 ? '' : 's'} from the database and the site`);
+console.log(JOB_ID
+  ? `  ${jobs.length} posting${jobs.length === 1 ? '' : 's'} taken off the site (the row is KEPT and marked, so the collector does not re-add it)`
+  : `  ${jobs.length} posting${jobs.length === 1 ? '' : 's'} from the database and the site`);
+if (JOB_ID) console.log(`     reason recorded: ${REASON}`);
 for (const j of jobs.slice(0, 12)) console.log(`     · ${j.company ?? '?'} — ${j.title}`);
 if (jobs.length > 12) console.log(`     · …and ${jobs.length - 12} more`);
 
@@ -170,11 +207,18 @@ if (!YES) {
 const ids = jobs.map((j) => j.job_id);
 const marks = ids.map(() => '?').join(',');
 
-run(`DELETE FROM jobs WHERE job_id IN (${marks})`, ...ids);
-// seen_cards would otherwise make a future run skip re-evaluating these ids,
-// which is wrong if the company is ever un-blocked.
-run(`DELETE FROM seen_cards WHERE job_id IN (${marks})`, ...ids);
-console.log(`Deleted ${ids.length} posting${ids.length === 1 ? '' : 's'}.`);
+if (JOB_ID) {
+  /* SUPPRESSED, NOT DELETED — see the note at the top of this file. Deleting
+     one row hides a LinkedIn posting until the next sweep and no longer. */
+  run(`UPDATE jobs SET is_tech = 0, suppressed_reason = ? WHERE job_id IN (${marks})`, REASON, ...ids);
+  console.log(`Suppressed ${ids.length} posting${ids.length === 1 ? '' : 's'} — the row is kept so the collector still counts it as known.`);
+} else {
+  run(`DELETE FROM jobs WHERE job_id IN (${marks})`, ...ids);
+  // seen_cards would otherwise make a future run skip re-evaluating these ids,
+  // which is wrong if the company is ever un-blocked.
+  run(`DELETE FROM seen_cards WHERE job_id IN (${marks})`, ...ids);
+  console.log(`Deleted ${ids.length} posting${ids.length === 1 ? '' : 's'}.`);
+}
 
 if (removalName && !KEEP_WATCHLIST) {
   let changed = false;
