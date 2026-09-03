@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 20:33:43 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 20:44:52 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, MS, Software Engineering, Behavior Test — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-software-engineering-behavior-test-ats-greenhouse-waymo-8174504</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-software-engineering-behavior-test-ats-greenhouse-waymo-8174504</guid>
+    <pubDate>Thu, 03 Sep 2026 20:44:52 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, California, USA
+• Design and implement test scenarios for autonomous vehicles in fault conditions
+• Build dashboards to analyze fleet-wide vehicle fault data
+• Create automated pipelines with Python and SQL for test validation
+• Work on safety-critical systems for remote assistance behaviors</description>
+  </item>
   <item>
     <title>Intern, Interaction Design - Spring 2027 — BMW Group</title>
     <link>https://interndoor.com/us/jobs/bmw-group-intern-interaction-design-spring-2027-4463119380</link>
@@ -499,16 +510,6 @@
 • Support engineering teams developing battery tech for utilities, datacenters, and defense
 • Analyze data, prepare reports, and assess battery chemistries for technical fit
 • Interface with research center, attend conferences, and present to upper management</description>
-  </item>
-  <item>
-    <title>GE Vernova Gas Power Engineering Intern - Summer 2027 — GE Vernova</title>
-    <link>https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-intern-summer-2027-4453600244</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-intern-summer-2027-4453600244</guid>
-    <pubDate>Thu, 03 Sep 2026 11:56:07 GMT</pubDate>
-    <description>Company: GE Vernova · Location: Greenville, SC · Duration: Summer 2027
-• Design and analyze steam turbine and gas engine systems
-• Collaborate with manufacturing to solve production challenges
-• Work on complex technical projects with experienced mentors</description>
   </item>
 </channel>
 </rss>
