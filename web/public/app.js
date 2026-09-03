@@ -584,6 +584,47 @@ function roleLine(job) {
   return { node: p, usedFirstBullet: q.usedFirstBullet };
 }
 
+/* THE BLURB UNDER A CARD WITH NO BULLETS, when it is worth reading.
+   ------------------------------------------------------------------------
+   When enrichment produces no bullets the card falls back to `summary`, which
+   is the posting's own opening text. That was written on the reasoning that
+   the original blurb beats an empty card -- true when the blurb is about the
+   JOB, and false when it is not. Measured on the live board, six cards showed
+   one and three of them said nothing at all:
+
+     "About the job"                                    (Tonbo Imaging)
+     "Qualcomm India Private Limited Interns Group..."  (the posting's header)
+     "At Jacobs we value people. Having the right..."   (values boilerplate)
+
+   The other three earn their place -- "Replacement intern position for AI4EE
+   BE / BTech / MTech in AI/Data Science" is the most useful line on that card
+   -- so this refuses the useless shapes rather than dropping the blurb
+   whenever bullets are missing. A card that says less is better than a card
+   that says nothing at length; a card that drops a real sentence is worse
+   than both.
+
+   Every rejection below is a shape counted on the live board, not a guess. */
+const GIST_INVISIBLE = /[­͏​-‏‪-‮⁠-⁤﻿]/g;
+const GIST_MIN_CHARS = 40;
+
+function gistText(job) {
+  /* Some ATS exports carry zero-width joiners between every word; Wipro's
+     renders as "Job Description [4 invisible chars] Intern in AI/ML expertise".
+     Stripped before the length test, or junk counts towards earning a place. */
+  const s = String(job.summary ?? '').replace(GIST_INVISIBLE, ' ').replace(/\s+/g, ' ').trim();
+  if (s.length < GIST_MIN_CHARS) return '';
+  const flat = (t) => String(t ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const f = flat(s);
+  const co = flat(job.company);
+  // The posting's own header, or the company's values statement. Neither is
+  // about the role, and the company name is already the line above.
+  if (co && (f.startsWith(co) || f.startsWith(`at ${co}`))) return '';
+  // The title back at us, padded. The title is already the card's heading.
+  const ti = flat(job.title);
+  if (ti && f.includes(ti) && s.length < 140) return '';
+  return s;
+}
+
 function jobCard(job, index, group = [job]) {
   const li = document.createElement('li');
   /* A div, NOT an <article>. The card carries role="button" because the whole
@@ -673,9 +714,11 @@ function jobCard(job, index, group = [job]) {
     const ul = el('ul', 'gist-list');
     for (const b of bullets) ul.append(el('li', null, b));
     mid.append(ul);
-  } else if (job.summary) {
-    // Not yet enriched — the original blurb still beats an empty card.
-    mid.append(el('p', 'gist', job.summary));
+  } else {
+    /* No bullets: fall back to the posting's own opening, but only when it
+       actually says something. See gistText. */
+    const gist = gistText(job);
+    if (gist) mid.append(el('p', 'gist', gist));
   }
   row.append(mid);
 
