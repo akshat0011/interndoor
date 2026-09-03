@@ -1667,6 +1667,21 @@ function hubLive(jobs) {
   });
 }
 
+/**
+ * Is a company hub worth indexing?
+ *
+ * THE ONE PLACE THAT DECIDES. `renderCompanyPage` writes the `noindex` from it
+ * and `writeSitemap` lists the URL from it, so the two cannot disagree — they
+ * did, and the sitemap was asking Google to crawl four pages the markup told it
+ * to ignore. Counted off the SHAPED lists (`hubLive`/`hubHistory`), never the
+ * raw rows: what makes a hub thin is how many distinct roles it can show, not
+ * how many times the employer reposted one title.
+ */
+function hubIndexable(jobs, past) {
+  const live = hubLive(jobs);
+  return live.length > 0 || hubHistory(live, past).length >= 2;
+}
+
 /** The past roles a hub actually shows: newest first, one per title, capped. */
 function hubHistory(live, past) {
   const seen = new Set(live.map((j) => String(j.title ?? '').toLowerCase()));
@@ -1720,10 +1735,10 @@ export function employerIndex(byCompany, pastByCompany = new Map()) {
       .slice(0, RELATED_SKILLS).map(([v]) => v));
     index.set(company, {
       skills,
-      // MUST match renderCompanyPage's own rule, which is why both call the
-      // same two helpers. Linking to a noindex hub spends a link on a page
-      // that cannot rank and drops the reader on an empty one.
-      indexable: live.length > 0 || hubHistory(live, past).length >= 2,
+      // MUST match renderCompanyPage's own rule, which is why all three
+      // callers go through `hubIndexable`. Linking to a noindex hub spends a
+      // link on a page that cannot rank and drops the reader on an empty one.
+      indexable: hubIndexable(jobs, past),
       live: live.length,
     });
   }
@@ -2269,7 +2284,11 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
   // Indexable when there is something worth indexing. A hub with no live roles
   // and nothing to show behind them is exactly the thin page to keep out.
-  const indexable = live.length > 0 || history.length >= 2;
+  // Through `hubIndexable` so the sitemap and `employerIndex` cannot disagree
+  // with this page about its own robots tag; it reshapes `live`/`history`
+  // rather than reusing the two above, which is a few hundred rows per publish
+  // and the price of there being exactly one copy of the rule.
+  const indexable = hubIndexable(jobs, past);
 
   const where = region.inName.replace(/^in /, '');
   // The live-role COUNT left the title on purpose. It changed on almost every
@@ -3295,6 +3314,62 @@ function renderJobRedirect(target, region) {
 `;
 }
 
+/**
+ * One hub per SLUG, not per spelling.
+ *
+ * `NVIDIA` and `Nvidia` both slug to `nvidia`, so `writePages` rendered
+ * `companies/nvidia.html` twice and the second write won — the surviving hub
+ * showed 10 of the employer's 13 roles, or 3, depending on Set iteration
+ * order. It also produced the one contradiction the sitemap fix could not
+ * reach: `writeSitemap` asks `hubIndexable` once per NAME, so if either
+ * spelling qualified the URL was listed, while the FILE on disk was whichever
+ * spelling rendered last. NVIDIA's hub went out `noindex` and sat in the
+ * sitemap anyway.
+ *
+ * THE DISPLAY NAME IS DECIDED ACROSS LIVE AND PAST ROWS TOGETHER. Resolving
+ * the two maps independently is the obvious version and it is wrong: live rows
+ * would pick `Nvidia` (10 of them) while past rows picked `NVIDIA`, the union
+ * in `allCompanies` would carry both again, and the collision would survive
+ * the fix. Most-frequent spelling wins, ties broken by name so a rebuild is
+ * deterministic.
+ *
+ * Names whose slug is empty are left alone rather than merged into one bucket —
+ * this is a de-duplicator, not a place to invent a grouping.
+ */
+function canonicalCompanyNames(rowSets) {
+  const counts = new Map();                       // slug -> Map<name, n>
+  for (const rows of rowSets) {
+    for (const r of rows ?? []) {
+      const name = r?.company;
+      if (!name) continue;
+      const slug = companySlug(name);
+      if (!slug) continue;
+      if (!counts.has(slug)) counts.set(slug, new Map());
+      const seen = counts.get(slug);
+      seen.set(name, (seen.get(name) ?? 0) + 1);
+    }
+  }
+  const display = new Map();                      // slug -> chosen name
+  for (const [slug, seen] of counts) {
+    display.set(slug, [...seen.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]);
+  }
+  return display;
+}
+
+/** Group rows under the canonical name for their slug, keeping prior keys otherwise. */
+function groupByCanonicalCompany(rows, display) {
+  const out = new Map();
+  for (const r of rows ?? []) {
+    const name = r?.company;
+    const slug = name ? companySlug(name) : '';
+    const key = (slug && display.get(slug)) || name;
+    if (!out.has(key)) out.set(key, []);
+    out.get(key).push(r);
+  }
+  return out;
+}
+
 export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [] } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
@@ -3305,11 +3380,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   mkdirSync(jobsDir, { recursive: true });
   mkdirSync(compDir, { recursive: true });
 
-  const byCompany = new Map();
-  for (const job of jobs) {
-    if (!byCompany.has(job.company)) byCompany.set(job.company, []);
-    byCompany.get(job.company).push(job);
-  }
+  // Decided once, over live AND past rows, so the two maps below cannot key one
+  // employer under two spellings and write its hub twice. See
+  // `canonicalCompanyNames`.
+  const companyNames = canonicalCompanyNames([jobs, history]);
+  const byCompany = groupByCanonicalCompany(jobs, companyNames);
 
   // Grouped BEFORE the job pages are written, not after, because each job page
   // now carries its employer's other live roles — the only second click a
@@ -3363,12 +3438,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   // Every employer we have ever published, not just the ones hiring today. This
   // union is what makes a hub permanent: a company drops out of `byCompany` the
   // moment its last posting ages out, and before this the file was then deleted.
-  const pastByCompany = new Map();
-  for (const p of history) {
-    if (!p.company) continue;
-    if (!pastByCompany.has(p.company)) pastByCompany.set(p.company, []);
-    pastByCompany.get(p.company).push(p);
-  }
+  const pastByCompany = groupByCanonicalCompany(
+    (history ?? []).filter((p) => p.company), companyNames);
 
   // Built ONCE for the whole board, not per hub: it is the same comparison
   // ~340 times over, and it is what lets the hubs link sideways to each other
@@ -3634,11 +3705,21 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     // Hubs stay in the sitemap whether or not the employer is hiring today.
     // Dropping a URL from the sitemap the week it has no live roles, then
     // re-adding it, tells Google the page is unstable — which is most of the
-    // damage the old delete-and-recreate cycle did. Listed once per company,
-    // with the same "enough substance to index" bar the page itself applies.
+    // damage the old delete-and-recreate cycle did. Listed once per company.
+    //
+    // THE BAR IS `hubIndexable`, THE SAME FUNCTION THE PAGE ITSELF CALLS, and
+    // it is shared rather than restated because the restatement drifted. This
+    // filter used to read `(pastByCompany.get(company) ?? []).length >= 2`
+    // against a page that asks `hubHistory(live, past).length >= 2`, and
+    // `hubHistory` drops a past posting whose title is already live and then
+    // keeps ONE PER TITLE. So an employer who posted the same title twice
+    // counted 2 here and rendered 1 there: the page went out `noindex` and the
+    // sitemap asked Google to crawl it anyway. Four hubs were in that state on
+    // the India board — NVIDIA, Barclays, Salesforce, Accenture in India, each
+    // listing exactly one past role. The comment above this one claimed the
+    // bars already matched, which is why it went unnoticed for so long.
     ...[...new Set([...byCompany.keys(), ...pastByCompany.keys()])]
-      .filter((company) => (byCompany.get(company) ?? []).some(isIndexable)
-        || (pastByCompany.get(company) ?? []).length >= 2)
+      .filter((company) => hubIndexable(byCompany.get(company), pastByCompany.get(company)))
       .map((company) => ({
         loc: regionUrl(`/companies/${companySlug(company)}`, region),
         priority: '0.6',
