@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/xcel-energy-distribution-planning-intern-tx-4462872920",
+      "url": "https://interndoor.com/us/jobs/xcel-energy-distribution-planning-intern-tx-4462872920",
+      "title": "Distribution Planning Intern - TX — Xcel Energy",
+      "content_text": "Company: Xcel Energy · Location: Lubbock, TX\n• Support distribution planners with circuit modeling and load flow analysis\n• Work with databricks and develop long range planning documentation\n• Based in lubbock tx with potential for extended term",
+      "date_published": "2026-09-03T17:38:35.354Z",
+      "authors": [
+        {
+          "name": "Xcel Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/xcel-energy-distribution-planning-engineering-intern-mn-4462875932",
+      "url": "https://interndoor.com/us/jobs/xcel-energy-distribution-planning-engineering-intern-mn-4462875932",
+      "title": "Distribution Planning Engineering Intern - MN — Xcel Energy",
+      "content_text": "Company: Xcel Energy · Location: Greater Minneapolis-St. Paul Area\n• Run power flow studies and forecast load growth\n• Design capacity expansion projects and support regulatory filings\n• Work with planning engineers on distribution system studies",
+      "date_published": "2026-09-03T17:38:12.696Z",
+      "authors": [
+        {
+          "name": "Xcel Energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/susquehanna-international-group-fpga-engineering-internship-summer-2027-4460722882",
       "url": "https://interndoor.com/us/jobs/susquehanna-international-group-fpga-engineering-internship-summer-2027-4460722882",
       "title": "FPGA Engineering Internship: Summer 2027 — Susquehanna International Group",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-metals-4452397366",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-metals-4452397366",
-      "title": "Intern - Process Development Engineer, 3D DRAM Metals — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Optimize semiconductor processes for physical and electrical performance\n• Use AI tools to enhance data analysis and process optimization\n• Collaborate with engineers on process improvements and technical projects",
-      "date_published": "2026-09-03T09:09:54.265Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-analysis-engineer-vehicle-engineering-winter-spring-2027-4462772112",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-analysis-engineer-vehicle-engineering-winter-spring-2027-4462772112",
-      "title": "Internship, Analysis Engineer, Vehicle Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Run vibration tests on shaker tables and analyze real-world data\n• Use FEA tools to simulate crash and durability scenarios\n• Work on battery safety and thermal analysis for electric vehicles",
-      "date_published": "2026-09-03T05:39:32.718Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
