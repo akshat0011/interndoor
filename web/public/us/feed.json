@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099",
+      "title": "2027 Summer Intern, BS, SysEng Software Engineer — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California, USA\n• Write and test software in c++ and python for test automation\n• Build tools to scale testing on hardware and simulation platforms\n• Collaborate with engineers on test workflows and system integration",
+      "date_published": "2026-09-03T15:21:07.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-masters--4453694150",
       "url": "https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-masters--4453694150",
       "title": "2027 Quantitative Analytics Summer Internship Capital Markets (Masters) - Early Careers — Wells Fargo",
@@ -587,18 +599,6 @@
       "title": "Strategic Student Program: Digital Thread & Systems Engineering Internship (Spring 2027, GSCS) — Siemens Digital Industries Software",
       "content_text": "Company: Siemens Digital Industries Software · Location: Maryland Heights, MO · Duration: Spring 2027\n• Build engineering datasets for aerospace and automotive demos\n• Work on digital thread projects linking systems and software\n• Create technical docs and presentations for customer demos",
       "date_published": "2026-09-03T04:31:08.587Z",
-      "authors": [
-        {
-          "name": "Siemens Digital Industries Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103",
-      "title": "Strategic Student Program: Integration Quality Assurance Co-Op (EBS, Spring 2027) — Siemens Digital Industries Software",
-      "content_text": "Company: Siemens Digital Industries Software · Location: Huntsville, AL · Duration: Spring 2027\n• Run automated tests to ensure software reliability\n• Use jira and confluence for tracking and docs\n• Work in agile teams on real release processes",
-      "date_published": "2026-09-03T04:30:45.339Z",
       "authors": [
         {
           "name": "Siemens Digital Industries Software"

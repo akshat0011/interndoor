@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 14:59:50 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 15:21:07 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, BS, SysEng Software Engineer — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-syseng-software-engineer-ats-greenhouse-waymo-8174099</guid>
+    <pubDate>Thu, 03 Sep 2026 15:21:07 GMT</pubDate>
+    <description>Company: Waymo · Location: Mountain View, California, USA
+• Write and test software in c++ and python for test automation
+• Build tools to scale testing on hardware and simulation platforms
+• Collaborate with engineers on test workflows and system integration</description>
+  </item>
   <item>
     <title>2027 Quantitative Analytics Summer Internship Capital Markets (Masters) - Early Careers — Wells Fargo</title>
     <link>https://interndoor.com/us/jobs/wells-fargo-2027-quantitative-analytics-summer-internship-capital-markets-masters--4453694150</link>
@@ -504,16 +514,6 @@
 • Build engineering datasets for aerospace and automotive demos
 • Work on digital thread projects linking systems and software
 • Create technical docs and presentations for customer demos</description>
-  </item>
-  <item>
-    <title>Strategic Student Program: Integration Quality Assurance Co-Op (EBS, Spring 2027) — Siemens Digital Industries Software</title>
-    <link>https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103</guid>
-    <pubDate>Thu, 03 Sep 2026 04:30:45 GMT</pubDate>
-    <description>Company: Siemens Digital Industries Software · Location: Huntsville, AL · Duration: Spring 2027
-• Run automated tests to ensure software reliability
-• Use jira and confluence for tracking and docs
-• Work in agile teams on real release processes</description>
   </item>
 </channel>
 </rss>
