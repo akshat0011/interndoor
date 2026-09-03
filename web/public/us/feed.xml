@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 09:32:34 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 10:11:12 GMT</lastBuildDate>
+  <item>
+    <title>FPGA Engineer Intern (Summer 2027 - Austin) — Optiver</title>
+    <link>https://interndoor.com/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625</guid>
+    <pubDate>Thu, 03 Sep 2026 10:11:12 GMT</pubDate>
+    <description>Company: Optiver · Location: Austin, TX · Duration: 8 months
+• Design high-speed hardware for trading systems
+• Work with VHDL/Verilog on real-world FPGA projects
+• Collaborate with traders and engineers on low-latency solutions</description>
+  </item>
+  <item>
+    <title>Video Algorithms Intern, Video Coding (Gaussian Splatting), Fall 2026 — Netflix</title>
+    <link>https://interndoor.com/us/jobs/netflix-video-algorithms-intern-video-coding-gaussian-splatting-fall-2026-4405171919</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/netflix-video-algorithms-intern-video-coding-gaussian-splatting-fall-2026-4405171919</guid>
+    <pubDate>Thu, 03 Sep 2026 09:58:45 GMT</pubDate>
+    <description>Company: Netflix · Location: Los Gatos, CA · Duration: 12 weeks
+• Analyze GS model compression using open datasets
+• Implement PoC for GS-based rendering on content
+• Work on reducing training time and improving compression</description>
+  </item>
+  <item>
+    <title>Internship, Software Validation Engineer, Steering, Chassis Systems (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-steering-chassis-systems-winte-4462788347</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-steering-chassis-systems-winte-4462788347</guid>
+    <pubDate>Thu, 03 Sep 2026 09:39:36 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Develop and execute validation test plans for steering and chassis software
+• Collaborate with teams to troubleshoot and reproduce software issues
+• Maintain test documentation and improve validation processes
+• Work on HIL and vehicle-level testing with embedded systems</description>
+  </item>
   <item>
     <title>Internship, Software Validation Engineer, Vehicle Firmware (Winter/Spring 2027) — Tesla</title>
     <link>https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-vehicle-firmware-winter-spring-4462794320</link>
@@ -481,37 +512,6 @@
 • Analyze fab process data and troubleshoot manufacturing issues
 • Work with cross-functional teams on product failure analysis
 • Manage customer returns and provide status updates using TI tools</description>
-  </item>
-  <item>
-    <title>Field Applications Engineering Intern (Austin, TX) — Texas Instruments</title>
-    <link>https://interndoor.com/us/jobs/texas-instruments-field-applications-engineering-intern-austin-tx-4461380524</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/texas-instruments-field-applications-engineering-intern-austin-tx-4461380524</guid>
-    <pubDate>Thu, 03 Sep 2026 02:19:39 GMT</pubDate>
-    <description>Company: Texas Instruments · Location: Austin, TX
-• Support customers with technical solutions for electronics systems
-• Use tools and relationships to identify design projects
-• Work with teams to influence part selection and product use</description>
-  </item>
-  <item>
-    <title>Field Applications Engineering Intern (Novi, MI) — Texas Instruments</title>
-    <link>https://interndoor.com/us/jobs/texas-instruments-field-applications-engineering-intern-novi-mi-4461391325</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/texas-instruments-field-applications-engineering-intern-novi-mi-4461391325</guid>
-    <pubDate>Thu, 03 Sep 2026 02:19:32 GMT</pubDate>
-    <description>Company: Texas Instruments · Location: Novi, MI
-• Support customers with technical solutions for system-level designs
-• Use tools and relationships to identify potential projects
-• Work with design engineers and internal teams on product implementation</description>
-  </item>
-  <item>
-    <title>Product/Test Engineering Intern — Texas Instruments</title>
-    <link>https://interndoor.com/us/jobs/texas-instruments-product-test-engineering-intern-4461378542</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/texas-instruments-product-test-engineering-intern-4461378542</guid>
-    <pubDate>Thu, 03 Sep 2026 02:19:23 GMT</pubDate>
-    <description>Company: Texas Instruments · Location: Dallas, TX
-• Test and troubleshoot product issues
-• Design test hardware and software
-• Create product documentation
-• Work on cross-functional teams</description>
   </item>
 </channel>
 </rss>
