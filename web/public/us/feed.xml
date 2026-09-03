@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 03 Sep 2026 19:06:32 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 19:19:21 GMT</lastBuildDate>
+  <item>
+    <title>GNC &amp; Flight Software Intern - Spring/Summer 2027 — Hermeus</title>
+    <link>https://interndoor.com/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7</guid>
+    <pubDate>Thu, 03 Sep 2026 19:19:21 GMT</pubDate>
+    <description>Company: Hermeus · Location: Atlanta, GA · Duration: Summer 2027
+• Write code for flight control systems using c++ and typescript
+• Design user interfaces for remote and autonomous flight modes
+• Work on high-speed aircraft software for defense applications</description>
+  </item>
   <item>
     <title>Electrical Engineering Management Trainee (Various Locations) — Norfolk Southern</title>
     <link>https://interndoor.com/us/jobs/norfolk-southern-electrical-engineering-management-trainee-various-locations-4461690894</link>
@@ -501,17 +511,6 @@
 • Collaborate with teams to troubleshoot and reproduce software issues
 • Maintain test documentation and improve validation processes
 • Work on HIL and vehicle-level testing with embedded systems</description>
-  </item>
-  <item>
-    <title>Internship, Software Validation Engineer, Vehicle Firmware (Winter/Spring 2027) — Tesla</title>
-    <link>https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-vehicle-firmware-winter-spring-4462794320</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-software-validation-engineer-vehicle-firmware-winter-spring-4462794320</guid>
-    <pubDate>Thu, 03 Sep 2026 09:32:34 GMT</pubDate>
-    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
-• Develop and execute system-level validation plans for vehicle software
-• Use Python, C++, and Rust to build test automation frameworks
-• Collaborate with firmware and hardware teams to resolve development issues
-• Work on real-world field issues and improve product safety and performance</description>
   </item>
 </channel>
 </rss>
