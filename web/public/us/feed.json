@@ -6,11 +6,59 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/deutsche-bank-deutsche-bank-internship-program-quants-fic-new-york-2027-4460423228",
+      "url": "https://interndoor.com/us/jobs/deutsche-bank-deutsche-bank-internship-program-quants-fic-new-york-2027-4460423228",
+      "title": "Deutsche Bank Internship Program – Quants – FIC – New York – 2027 — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: New York, NY · Duration: 10 weeks\n• Work on quantitative models for trading systems and liquidity strategies\n• Use Python, SQL, and data analysis tools for real-world financial research\n• Collaborate with global teams on high-impact projects in a fast-paced environment",
+      "date_published": "2026-09-03T00:54:48.927Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/deutsche-bank-deutsche-bank-internship-program-quant-gsa-new-york-2027-4460424386",
+      "url": "https://interndoor.com/us/jobs/deutsche-bank-deutsche-bank-internship-program-quant-gsa-new-york-2027-4460424386",
+      "title": "Deutsche Bank Internship Program – Quant – GSA – New York – 2027 — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: New York, NY · Duration: 10 weeks\n• Work on quantitative models for trading and sales pricing\n• Use Python and statistical tools for analysis\n• Collaborate with tech and business teams on projects",
+      "date_published": "2026-09-03T00:54:19.701Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/fm-cyber-co-op-4462735203",
       "url": "https://interndoor.com/us/jobs/fm-cyber-co-op-4462735203",
       "title": "Cyber Co-Op — FM",
       "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Analyze and respond to cyber threats using enterprise security tools\n• Work with professionals in a multifaceted security environment\n• Based in Johnston, RI with possible travel required",
       "date_published": "2026-09-03T00:36:52.974Z",
+      "authors": [
+        {
+          "name": "FM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/fm-cyber-specialist-co-op-4462713267",
+      "url": "https://interndoor.com/us/jobs/fm-cyber-specialist-co-op-4462713267",
+      "title": "Cyber Specialist Co-Op — FM",
+      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Monitor and respond to security alerts and incidents\n• Manage ticket queues and process change requests\n• Work with firewalls, antivirus, and vulnerability tools",
+      "date_published": "2026-09-03T00:36:34.386Z",
+      "authors": [
+        {
+          "name": "FM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/fm-identity-services-specialist-co-op-4462717295",
+      "url": "https://interndoor.com/us/jobs/fm-identity-services-specialist-co-op-4462717295",
+      "title": "Identity Services Specialist - Co-Op — FM",
+      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Support identity and directory services with Microsoft AD, MFA, and PKI\n• Use PowerShell and Azure for system administration tasks\n• Work full-time at corporate HQ in Johnston, RI",
+      "date_published": "2026-09-03T00:36:11.267Z",
       "authors": [
         {
           "name": "FM"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "BMW Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-networking-academy-data-analyst-intern-arabic-speaker-4461329663",
-      "url": "https://interndoor.com/us/jobs/cisco-networking-academy-data-analyst-intern-arabic-speaker-4461329663",
-      "title": "Data Analyst Intern – Arabic Speaker — Cisco Networking Academy",
-      "content_text": "Company: Cisco Networking Academy · Location: Irvine, CA\n• Analyze data and create reports for business decisions\n• Use excel and data tools to organize and visualize information\n• Work with global team on data projects in arabic and english",
-      "date_published": "2026-09-02T20:25:24.264Z",
-      "authors": [
-        {
-          "name": "Cisco Networking Academy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/texas-instruments-analog-ic-design-engineering-intern-bachelors-4461333593",
-      "url": "https://interndoor.com/us/jobs/texas-instruments-analog-ic-design-engineering-intern-bachelors-4461333593",
-      "title": "Analog IC Design Engineering Intern - Bachelors — Texas Instruments",
-      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Design analog, digital, and RF integrated circuits for products\n• Work with business teams and system engineers on chip specs\n• Create documentation and supervise IC layouts for high performance",
-      "date_published": "2026-09-02T20:20:47.196Z",
-      "authors": [
-        {
-          "name": "Texas Instruments"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/texas-instruments-design-verification-engineering-intern-ms-phd-4461332596",
-      "url": "https://interndoor.com/us/jobs/texas-instruments-design-verification-engineering-intern-ms-phd-4461332596",
-      "title": "Design Verification Engineering Intern - MS/PhD — Texas Instruments",
-      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Run simulations and tests to verify chip behavior\n• Use SystemVerilog for coverage models and regression\n• Work with RTL and timing analysis tools",
-      "date_published": "2026-09-02T20:20:15.011Z",
-      "authors": [
-        {
-          "name": "Texas Instruments"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/texas-instruments-digital-ic-design-engineering-intern-ms-phd-4461340503",
-      "url": "https://interndoor.com/us/jobs/texas-instruments-digital-ic-design-engineering-intern-ms-phd-4461340503",
-      "title": "Digital IC Design Engineering Intern - MS/PhD — Texas Instruments",
-      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Design and document analog digital and rf integrated circuits\n• Collaborate on layouts and prototype characterization\n• Work with business teams on design specifications\n• Contribute to product releases and test specifications",
-      "date_published": "2026-09-02T20:20:10.756Z",
-      "authors": [
-        {
-          "name": "Texas Instruments"
         }
       ]
     }
