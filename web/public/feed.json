@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/harman-india-internship-ai-ml-computer-vision-camera-4461157484",
+      "url": "https://interndoor.com/jobs/harman-india-internship-ai-ml-computer-vision-camera-4461157484",
+      "title": "Internship - AI/ML, Computer Vision, Camera — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Develop AI/ML models for camera and radar systems in automotive products\n• Work with Python, PyTorch, and data science libraries for image/video processing\n• Collaborate on real-world projects with a focus on safety and user experience",
+      "date_published": "2026-09-04T10:56:46.554Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454019456",
+      "url": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454019456",
+      "title": "Young Graduate Trainee — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India · Duration: 0-4 years\n• Test wi-fi software for iot devices with cross-functional teams\n• Use tools like iperf, wireshark, and ellisys sniffers\n• Work on coexistence mechanisms and radio concurrency use cases",
+      "date_published": "2026-09-04T09:58:34.172Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280",
       "url": "https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280",
       "title": "Software Engineer Intern — Smowcode",
@@ -14,6 +38,30 @@
       "authors": [
         {
           "name": "Smowcode"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/s-and-p-global-apprentice-4463310691",
+      "url": "https://interndoor.com/jobs/s-and-p-global-apprentice-4463310691",
+      "title": "Apprentice — S&P Global",
+      "content_text": "Company: S&P Global · Location: Hyderabad, Telangana, India\n• Extract and annotate professional data using Foreseer and other platforms\n• Maintain web crawlers and develop new ones for firms\n• Verify fund manager info from factsheets and registries",
+      "date_published": "2026-09-04T09:00:22.776Z",
+      "authors": [
+        {
+          "name": "S&P Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4461126181",
+      "url": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4461126181",
+      "title": "Customer Solutions Engineer Intern — Sapaad",
+      "content_text": "Company: Sapaad · Location: India\n• Support customers with technical issues via phone, email, and chat\n• Collaborate with product and engineering teams to resolve customer concerns\n• Create guides and documentation for customer support\n• Work with global restaurant clients across multiple languages",
+      "date_published": "2026-09-04T07:00:52.235Z",
+      "authors": [
+        {
+          "name": "Sapaad"
         }
       ]
     },
@@ -38,6 +86,18 @@
       "authors": [
         {
           "name": "Sunstone"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/valeo-intern-mechatronics-ats-workday-valeo-wd3-valeo-jobs-req2026077987",
+      "url": "https://interndoor.com/jobs/valeo-intern-mechatronics-ats-workday-valeo-wd3-valeo-jobs-req2026077987",
+      "title": "Intern - Mechatronics — Valeo",
+      "content_text": "Company: Valeo · Location: Chennai\n• Update maintenance instructions using e-WorkStation & PM+\n• Implement preventive maintenance plans and train production teams\n• Lead continuous improvement projects to boost equipment reliability",
+      "date_published": "2026-09-04T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Valeo"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Nvidia"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-frontend-engineering-intern-4458874075",
-      "url": "https://interndoor.com/jobs/joveo-frontend-engineering-intern-4458874075",
-      "title": "Frontend Engineering Intern — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Collaborate with leadership from first week",
-      "date_published": "2026-08-30T17:20:53.614Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-software-engineering-intern-full-stack-4458869130",
-      "url": "https://interndoor.com/jobs/joveo-software-engineering-intern-full-stack-4458869130",
-      "title": "Software Engineering Intern (Full Stack) — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Wire llms and vector databases into real products\n• Collaborate directly with leadership from week one",
-      "date_published": "2026-08-30T17:20:48.870Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440764006",
-      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440764006",
-      "title": "Interim Engineering Intern_2027_HW — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Simulate and verify soc with embedded risc/dsp processors\n• Work with verilog/vhdl, c/c++, tcl/perl/shell scripting\n• Design rf/analog/mixed signal ic with cadence/spectrefrf",
-      "date_published": "2026-08-29T11:48:28.107Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440743863",
-      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-hw-4440743863",
-      "title": "Interim Engineering Intern_2027_HW — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Simulate and verify soc with embedded risc/dsp processors\n• Work with verilog/vhdl, c/c++, tcl/perl/shell scripting\n• Design rf/analog/mixed signal ic with cadence/spectrefrf\n• Collaborate on low power design and board fpga projects",
-      "date_published": "2026-08-28T12:11:36.857Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-sw-4440754354",
-      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-2027-sw-4440754354",
-      "title": "Interim Engineering Intern_2027_SW — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop software for mobile chipsets using cutting-edge tech\n• Work on multimedia, wireless modem, and platform-level software\n• Collaborate on Linux, Android, and embedded systems projects",
-      "date_published": "2026-08-28T12:11:14.741Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
