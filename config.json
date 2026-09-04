@@ -1093,9 +1093,9 @@
   },
   "digest": {
     "enabled": true,
-    "_note": "One email a day per board, composed by bin/digest.js and filed with Buttondown. DELIBERATELY OFF until switched on: a mail pipeline that starts working the moment it merges is how strangers get surprised. Turn it on only after a draft has been read end to end. Signup already works and has for weeks - web/api/subscribe.js adds to Buttondown - but NOTHING has ever sent, so /alerts and the homepage form have been promising a mail that does not exist. That is the hole this fills.",
-    "mode": "draft",
-    "_mode_note": "draft | send. In draft the mail is composed and filed in Buttondown for review and nothing reaches anybody; in send it goes to the list. Anything unrecognised is treated as draft - an unknown value must never fall through to mailing real people. Going live is this one word.",
+    "_note": "One email a day per board, composed by bin/digest.js and filed with Buttondown. LIVE since 4 Sep 2026: enabled true, mode send. It was drafted-only for its first day on purpose, and the draft Buttondown filed at 09:30 IST that day was read end to end before this was flipped - the markdown renders as separate roles rather than one run-on paragraph, which is the failure the editor cannot show you (only its preview pane can). Buttondown had the account under review while nothing could send; that cleared 4 Sep. Signup has worked for weeks - web/api/subscribe.js adds to Buttondown - and /alerts had been promising a mail that did not exist. That is the hole this fills.",
+    "mode": "send",
+    "_mode_note": "draft | send. In draft the mail is composed and filed in Buttondown for review and nothing reaches anybody; in send it goes to the list. Anything unrecognised is treated as draft - an unknown value must never fall through to mailing real people, so sendStatus is a named tested function and only the exact string send yields about_to_send. Going back to draft is this one word, and is the right move the moment a send looks wrong.",
     "region": "IN",
     "_region_note": "One board, because the list is ONE list: tags are a paid Buttondown add-on (+$9/mo), so a subscriber cannot be segmented by board and everybody would get every region. India because that is where the signups come from and where /alerts points. Adding US means paying for tags or running a second newsletter.",
     "hour": 9,
