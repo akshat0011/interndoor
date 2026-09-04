@@ -3313,6 +3313,7 @@ function renderJobRedirect(target, region) {
 <title>This role moved — InternDoor</title>
 <link rel="canonical" href="${esc(url)}">
 <meta http-equiv="refresh" content="0; url=${esc(url)}">
+<script>var c=document.querySelector('link[rel=canonical]');if(c)location.replace(c.href+location.search);</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
