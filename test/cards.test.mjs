@@ -8,7 +8,7 @@
  * from LinkedIn to the site, so it is checked against the real shapes rather
  * than against invented ones.
  */
-import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity } from '../src/linkedin.js';
+import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity, paneMismatch } from '../src/linkedin.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -225,6 +225,36 @@ check('a blank location still parses',
   { company: 'acme', title: 'intern', location: '' });
 check('a malformed key returns null', parseCardIdentity('card:justacompany'), null);
 check('an empty key returns null', parseCardIdentity(''), null);
+
+console.log('\n== the pane must be showing the card we clicked ==');
+// THE POINT OF THESE IS THE `jobId` ON THE CARD. The comparison was always
+// correct; it was gated on `!card.jobId`, which is only ever true on the
+// redesign — we are on classic, whose cards DO carry an id, so the check had
+// never run once in the whole of run.log. Every card below carries one.
+const mism = (cardCo, paneCo) =>
+  paneMismatch({ company: cardCo, title: 'Apprentice', jobId: '4461979043' }, { company: paneCo });
+
+// The three real swaps of 4 Sep 2026, verbatim.
+check('State Street card, R360 Group pane', !!mism('State Street', 'R360 Group'), true);
+check('Infineon card, Joveo pane', !!mism('Infineon Technologies', 'Joveo'), true);
+check('Infineon card, Internz Learn pane', !!mism('Infineon Technologies', 'Internz Learn'), true);
+
+// It must stay lenient where the two surfaces legitimately word it differently,
+// or every HARMAN open is thrown away to catch a swap that is not happening.
+check('HARMAN India card, HARMAN pane agrees', mism('HARMAN India', 'Harman'), null);
+check('same employer agrees', mism('Infineon Technologies', 'Infineon Technologies'), null);
+check('legal suffix agrees', mism('Joveo', 'Joveo Inc.'), null);
+
+// A pane that named nobody is not evidence of a swap — the header may not have
+// painted. Refusing here would discard correct opens.
+check('empty pane company proceeds', mism('State Street', ''), null);
+check('empty card company proceeds', mism('', 'R360 Group'), null);
+
+// The message has to name BOTH employers: "the pane is showing something else"
+// cannot be acted on, and this is the only record the swap leaves.
+const msg = mism('State Street', 'R360 Group');
+check('the warning names both employers',
+  [msg.includes('State Street'), msg.includes('R360 Group')], [true, true]);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exitCode = fail ? 1 : 0;

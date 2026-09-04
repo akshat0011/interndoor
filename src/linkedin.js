@@ -630,6 +630,48 @@ export function parseCardLines(lines) {
 }
 
 /**
+ * Refuse a pane that is showing a different employer than the card we clicked.
+ *
+ * Clicking is the only way to learn which posting a card is, so reading the
+ * wrong pane does not produce a missing field — it files one employer's
+ * internship under another's id. The normalised names must agree, allowing for
+ * the pane saying "HARMAN" where the card said "HARMAN India".
+ *
+ * **IT USED TO BE GATED ON `!card.jobId` AND HAD THEREFORE NEVER RUN.** That
+ * condition was written for the redesign, where a card carries no id until it
+ * is clicked — but we are on CLASSIC, whose cards DO carry `/jobs/view/`
+ * anchors and `data-occludable-job-id`, so `card.jobId` is always set and the
+ * check was skipped on every open the scraper has ever done. It had not fired
+ * once in the whole of run.log.
+ *
+ * Measured cost of that, 4 Sep 2026: three cards clicked during a catch-up
+ * sweep took 24-25s to open instead of the usual 5-6s and each stored a
+ * completely unrelated posting — State Street's "Apprentice" filed R360 Group's
+ * "Java Intern", and two Infineon "Young Graduate Trainee" cards filed Joveo's
+ * "Operations Intern" and Internz Learn's "Business Growth Intern". All three
+ * are off-watchlist or non-tech employers that reached the store through a
+ * watchlist card's identity, and all three real postings were lost.
+ *
+ * Pure and exported so the DECISION is testable without a browser — the bug was
+ * never in the comparison, it was in when the comparison ran, and a test that
+ * only feeds it two names passes against the broken code just as loudly. Pass a
+ * card that HAS a `jobId`: that is the case the old gate silently skipped.
+ *
+ * Returns the warning to log, or null to proceed.
+ */
+export function paneMismatch(card, detail) {
+  const cardCo = normaliseCompany(card?.company ?? '');
+  const paneCo = normaliseCompany(detail?.company ?? '');
+  /* Nothing to compare is not a mismatch — a pane whose header had not painted
+     yet must not cost us the open — and no separate blank check is needed to
+     get that: `x.includes('')` is true, so an empty side agrees with anything.
+     An explicit `if (!cardCo || !paneCo) return null` above this line is dead
+     code, and its test passes against its own removal. */
+  if (paneCo.includes(cardCo) || cardCo.includes(paneCo)) return null;
+  return `Opened "${card.title}" at ${card.company} but the pane is showing ${detail.company} — skipping rather than filing it under the wrong employer.`;
+}
+
+/**
  * A stand-in identity for a card that has no job id yet.
  *
  * The redesigned list carries no job id anywhere — every attribute on every
@@ -1231,22 +1273,10 @@ export async function openAndExtract(page, card, cfg) {
   delete detail.applyBlob;
 
   // Is the pane actually showing the card we clicked?
-  //
-  // This is the check that matters, and it replaces "did the id change in
-  // fifteen seconds" — which rejected slow-but-correct loads while proving
-  // nothing about correctness. Clicking is now the only way to learn which
-  // posting a card is, so reading the wrong pane does not produce a missing
-  // field, it files one employer's internship under another's id. Comparing the
-  // employer catches that directly: the normalised names must agree, allowing
-  // for the pane saying "HARMAN" where the card said "HARMAN India".
-  if (!card.jobId && detail.company && card.company) {
-    const paneCo = normaliseCompany(detail.company);
-    const cardCo = normaliseCompany(card.company);
-    const agrees = paneCo && cardCo && (paneCo.includes(cardCo) || cardCo.includes(paneCo));
-    if (!agrees) {
-      log.warn(`Opened "${card.title}" at ${card.company} but the pane is showing ${detail.company} — skipping rather than filing it under the wrong employer.`);
-      return { jobId: null, description: '', unopenable: true };
-    }
+  const mismatch = paneMismatch(card, detail);
+  if (mismatch) {
+    log.warn(mismatch);
+    return { jobId: null, description: '', unopenable: true };
   }
 
   const label = detail.jobId ?? card.jobId ?? card.key ?? 'unknown';
