@@ -7,8 +7,8 @@
   <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/java</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -18,7 +18,7 @@
   <url><loc>https://interndoor.com/skills/javascript</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/linux</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/data-structures</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/react</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/react</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ci-cd</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/excel</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/azure</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
@@ -33,8 +33,8 @@
   <url><loc>https://interndoor.com/skills/c-sharp</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kubernetes</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -53,8 +53,9 @@
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/joveo-software-engineer-intern-4461164316</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/harman-india-internship-ai-ml-computer-vision-camera-4461157484</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454019456</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454016475</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/s-and-p-global-apprentice-4463310691</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4461126181</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
@@ -89,7 +90,6 @@
   <url><loc>https://interndoor.com/jobs/houlihan-lokey-data-science-intern-4461799463</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/harman-india-digital-signal-processing-intern-4459540710</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4459289674</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/joveo-software-engineer-intern-4459275565</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hewlett-packard-enterprise-college-intern-4461573007</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/noise-intern-smartwatch-testing-4460092550</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/fujitsu-software-engineer-apprentice-4461514431</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
@@ -299,6 +299,7 @@
   <url><loc>https://interndoor.com/jobs/microsoft-data-science-intern-ats-microsoft-india-1970393556917520</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-applied-sciences-intern-ats-microsoft-india-1970393556917519</loc><lastmod>2026-06-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/joveo</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/harman-india</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/infineon-technologies</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/smowcode</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -331,7 +332,6 @@
   <url><loc>https://interndoor.com/companies/honeywell-technologies</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/houlihan-lokey</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/procter-and-gamble</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/joveo</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/hewlett-packard-enterprise</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/noise</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fujitsu</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>

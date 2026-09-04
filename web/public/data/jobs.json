@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788528218925,
+ "generatedAt": 1788530159057,
  "region": "IN",
  "regionName": "India",
  "count": 253,
@@ -208,6 +208,62 @@
  ],
  "jobs": [
   {
+   "id": "4461164316",
+   "title": "Software Engineer Intern",
+   "company": "Joveo",
+   "matchedWatchlist": "Joveo",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/joveo.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 applicants",
+   "easyApply": false,
+   "skills": [
+    "typescript",
+    "sql",
+    "react",
+    "next.js",
+    "node.js",
+    "express",
+    "git",
+    "machine learning"
+   ],
+   "summary": "This internship involves building ai products from scratch using modern web technologies. Interns will work on full stack development with react, next.js, node.js, and express, while integrating llms and vector databases. The role offers direct collaboration with leadership and real ownership of projects.",
+   "bullets": [
+    "Build greenfield ai products from whiteboard to prototype",
+    "Ship full stack with react, next.js, node.js, and express",
+    "Collaborate with leadership from first week"
+   ],
+   "roleLabel": "Ai product development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "typescript",
+    "react",
+    "next.js",
+    "node.js",
+    "express.js"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1788522533248,
+   "firstSeenAt": 1788529733254,
+   "lastSeenAt": 1788529733254,
+   "url": "https://www.linkedin.com/jobs/view/4461164316/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4461164316/",
+   "description": null,
+   "roleFingerprint": "f72a8410b1",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "region": "IN"
+  },
+  {
    "id": "4461157484",
    "title": "Internship - AI/ML, Computer Vision, Camera",
    "company": "HARMAN India",
@@ -261,7 +317,7 @@
    "region": "IN"
   },
   {
-   "id": "4454019456",
+   "id": "4454016475",
    "title": "Young Graduate Trainee",
    "company": "Infineon Technologies",
    "matchedWatchlist": "Infineon Technologies",
@@ -272,35 +328,37 @@
    "location": "Bengaluru East, Karnataka, India",
    "workplaceType": "On-site",
    "stipend": null,
-   "duration": "0-4 years",
+   "duration": "1-3 years",
    "applicants": "Over 100 people clicked apply",
    "easyApply": false,
    "skills": [
     "python"
    ],
-   "summary": "This internship involves testing wi-fi software for iot devices, working with cross-functional teams to ensure performance and reliability. Ideal for students with background in ece or cs looking to gain hands-on experience in wireless communication and testing.",
+   "summary": "This internship involves developing and validating device drivers for automotive microcontrollers, creating test scripts for communication peripherals, and working on ISO26262 compliant software processes. It suits students with experience in embedded systems and C programming.",
    "bullets": [
-    "Test wi-fi software for iot devices with cross-functional teams",
-    "Use tools like iperf, wireshark, and ellisys sniffers",
-    "Work on coexistence mechanisms and radio concurrency use cases"
+    "Develop and validate device drivers for automotive microcontrollers using C and assembly",
+    "Create test scripts and automation for communication peripherals like SPI and UART",
+    "Work on ISO26262 compliant software processes for TriCore architecture platforms"
    ],
-   "roleLabel": "Wi-Fi Testing",
+   "roleLabel": "Device Driver Development",
    "degreeLevel": "UG/PG",
-   "degreeText": "ECE/CS",
+   "degreeText": "B.Tech/BE/M.Tech/MS",
    "keySkills": [
-    "iperf",
-    "wireshark",
-    "ellisys sniffers"
+    "c",
+    "assembly",
+    "iso26262",
+    "spi",
+    "uart"
    ],
    "stipendStatus": "unknown",
    "postedText": "3 hours ago",
-   "postedAt": 1788515914172,
-   "firstSeenAt": 1788526714174,
-   "lastSeenAt": 1788526714174,
-   "url": "https://www.linkedin.com/jobs/view/4454019456/",
-   "applyUrl": "https://jobs.infineon.com/careers/job/563808971773351?utm_source=linkedin&domain=infineon.com#!source=400",
+   "postedAt": 1788518815173,
+   "firstSeenAt": 1788529615175,
+   "lastSeenAt": 1788529615175,
+   "url": "https://www.linkedin.com/jobs/view/4454016475/",
+   "applyUrl": "https://jobs.infineon.com/careers/job/563808971835216?utm_source=linkedin&domain=infineon.com#!source=400",
    "description": null,
-   "roleFingerprint": "c69a59834a",
+   "roleFingerprint": "d17ba9f349",
    "cardFacts": [
     "Bengaluru East",
     "On-site"
@@ -676,7 +734,7 @@
    "postedText": "3 minutes ago",
    "postedAt": 1788442394425,
    "firstSeenAt": 1788442574431,
-   "lastSeenAt": 1788453386911,
+   "lastSeenAt": 1788530000198,
    "url": "https://www.linkedin.com/jobs/view/4461652453/",
    "applyUrl": "https://jobs.smartrecruiters.com/ContinentalGroupSectorContiTech/744000147194577-intern-ai-engineer?trid=2d92f286-613b-4daf-9dfa-6340ffbecf73",
    "description": null,
@@ -2037,63 +2095,6 @@
    "cardFacts": [
     "Mumbai Metropolitan Region",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4459275565",
-   "title": "Software Engineer Intern",
-   "company": "Joveo",
-   "matchedWatchlist": "Joveo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/joveo.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": "₹0 ",
-   "duration": null,
-   "applicants": "20 applicants",
-   "easyApply": false,
-   "skills": [
-    "typescript",
-    "sql",
-    "react",
-    "next.js",
-    "node.js",
-    "express",
-    "git",
-    "machine learning"
-   ],
-   "summary": "This internship involves building ai products from scratch using modern web technologies. Interns will work on full stack development with react, next.js, node.js, and express, integrating llms and vector databases. The role offers direct collaboration with leadership and real ownership of projects.",
-   "bullets": [
-    "Build greenfield ai products from whiteboard to prototype",
-    "Ship full stack with react, next.js, node.js, and express",
-    "Work with llms, embeddings, and vector databases",
-    "Collaborate directly with leadership from first week"
-   ],
-   "roleLabel": "Ai product development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "typescript",
-    "react",
-    "next.js",
-    "node.js",
-    "express.js"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "20 minutes ago",
-   "postedAt": 1788238631147,
-   "firstSeenAt": 1788239831149,
-   "lastSeenAt": 1788239831149,
-   "url": "https://www.linkedin.com/jobs/view/4459275565/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4459275565/",
-   "description": null,
-   "roleFingerprint": "f72a8410b1",
-   "cardFacts": [
-    "Bengaluru",
-    "Hybrid"
    ],
    "region": "IN"
   },
@@ -4359,7 +4360,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1787655308528,
    "firstSeenAt": 1787656088536,
-   "lastSeenAt": 1788526894989,
+   "lastSeenAt": 1788529785491,
    "url": "https://www.linkedin.com/jobs/view/4458732377/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4458732377/",
    "description": null,
@@ -5782,7 +5783,7 @@
    "postedText": "31 minutes ago",
    "postedAt": 1787528585901,
    "firstSeenAt": 1787530445904,
-   "lastSeenAt": 1787530445904,
+   "lastSeenAt": 1788529906810,
    "url": "https://www.linkedin.com/jobs/view/4458137200/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4458137200/",
    "description": null,

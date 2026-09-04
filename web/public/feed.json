@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/joveo-software-engineer-intern-4461164316",
+      "url": "https://interndoor.com/jobs/joveo-software-engineer-intern-4461164316",
+      "title": "Software Engineer Intern — Joveo",
+      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Collaborate with leadership from first week",
+      "date_published": "2026-09-04T11:48:53.248Z",
+      "authors": [
+        {
+          "name": "Joveo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/harman-india-internship-ai-ml-computer-vision-camera-4461157484",
       "url": "https://interndoor.com/jobs/harman-india-internship-ai-ml-computer-vision-camera-4461157484",
       "title": "Internship - AI/ML, Computer Vision, Camera — HARMAN India",
@@ -18,11 +30,11 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454019456",
-      "url": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454019456",
+      "id": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454016475",
+      "url": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454016475",
       "title": "Young Graduate Trainee — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India · Duration: 0-4 years\n• Test wi-fi software for iot devices with cross-functional teams\n• Use tools like iperf, wireshark, and ellisys sniffers\n• Work on coexistence mechanisms and radio concurrency use cases",
-      "date_published": "2026-09-04T09:58:34.172Z",
+      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India · Duration: 1-3 years\n• Develop and validate device drivers for automotive microcontrollers using C and assembly\n• Create test scripts and automation for communication peripherals like SPI and UART\n• Work on ISO26262 compliant software processes for TriCore architecture platforms",
+      "date_published": "2026-09-04T10:46:55.173Z",
       "authors": [
         {
           "name": "Infineon Technologies"
@@ -446,18 +458,6 @@
       "authors": [
         {
           "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-software-engineer-intern-4459275565",
-      "url": "https://interndoor.com/jobs/joveo-software-engineer-intern-4459275565",
-      "title": "Software Engineer Intern — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Work with llms, embeddings, and vector databases\n• Collaborate directly with leadership from first week",
-      "date_published": "2026-09-01T04:57:11.147Z",
-      "authors": [
-        {
-          "name": "Joveo"
         }
       ]
     },
