@@ -111,6 +111,23 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # ---------------------------------------------------------------------------
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/weekly.js" >> "$LOG" 2>&1 || true
 
+# The daily digest, asked every scan and answered once a day.
+#
+# bin/digest.js exits immediately unless it is on or after the configured hour
+# in the board's own zone and today's mail has not gone out, so this costs a
+# process start 47 times a day and does real work once. Here rather than cron
+# for the reason the roundup is: this Mac sleeps, and a job that fires at
+# exactly 09:00 is simply missed.
+#
+# After publish, so every job page the mail links to is already on the site -
+# and it reads web/public/.../jobs.json rather than the store, so a role publish
+# held back is a role the mail never mentions.
+#
+# Status discarded like the roundup and the sweeps: a mail that could not be
+# composed must never change how the scheduler treats the scan. It is also OFF
+# in config.json until switched on deliberately.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/digest.js" >> "$LOG" 2>&1 || true
+
 # Web discovery, asked every scan and answered once a day.
 #
 # bin/discover-urls.js exits immediately unless today's sweep is outstanding.

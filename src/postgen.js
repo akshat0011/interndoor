@@ -153,7 +153,7 @@ export function sourceLabel(row) {
  * `<link rel="canonical">` pointing at the clean URL, so a tagged link cannot
  * become a second indexed copy of the page.
  */
-export function utmUrl(url, { campaign, content, source } = {}, cfg = {}) {
+export function utmUrl(url, { campaign, content, source, medium } = {}, cfg = {}) {
   const conf = cfg.postQueue?.utm ?? {};
   if (conf.enabled === false) return url;
   if (!url) return url;
@@ -179,7 +179,12 @@ export function utmUrl(url, { campaign, content, source } = {}, cfg = {}) {
        tagged utm_source=linkedin, which would have filed every click from
        Instagram under LinkedIn in Vercel Analytics. */
     u.searchParams.set('utm_source', source || conf.source || 'linkedin');
-    u.searchParams.set('utm_medium', conf.medium || 'social');
+    /* MEDIUM OVERRIDES FOR THE SAME REASON `source` DOES, one field over. The
+       config default is `social` because every caller was a social post; the
+       daily email digest is not, and leaving it would file every click from
+       every subscriber under social traffic — the exact mistake the note above
+       describes for a reel tagged utm_source=linkedin. */
+    u.searchParams.set('utm_medium', medium || conf.medium || 'social');
     if (campaign) u.searchParams.set('utm_campaign', campaign);
     if (content) u.searchParams.set('utm_content', content);
     return u.toString();

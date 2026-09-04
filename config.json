@@ -1091,6 +1091,18 @@
     "includeFullDescription": false,
     "_includeFullDescription_note": "Leave false. Full descriptions are the posting company's copyrighted text; the site shows your generated summary and links to the original instead."
   },
+  "digest": {
+    "enabled": false,
+    "_note": "One email a day per board, composed by bin/digest.js and filed with Buttondown. DELIBERATELY OFF until switched on: a mail pipeline that starts working the moment it merges is how strangers get surprised. Turn it on only after a draft has been read end to end. Signup already works and has for weeks - web/api/subscribe.js adds to Buttondown - but NOTHING has ever sent, so /alerts and the homepage form have been promising a mail that does not exist. That is the hole this fills.",
+    "mode": "draft",
+    "_mode_note": "draft | send. In draft the mail is composed and filed in Buttondown for review and nothing reaches anybody; in send it goes to the list. Anything unrecognised is treated as draft - an unknown value must never fall through to mailing real people. Going live is this one word.",
+    "region": "IN",
+    "_region_note": "One board, because the list is ONE list: tags are a paid Buttondown add-on (+$9/mo), so a subscriber cannot be segmented by board and everybody would get every region. India because that is where the signups come from and where /alerts points. Adding US means paying for tags or running a second newsletter.",
+    "hour": 9,
+    "_hour_note": "Local to the board's own zone, and read as ON OR AFTER, never AT. This Mac sleeps; a job that fires at exactly 09:00 is simply missed. Same rule as the weekly roundup.",
+    "windowHours": 24,
+    "_windowHours_note": "How far back a digest looks for new postings. The runner reads an hour wider than this so a scan that lands slightly late does not drop a role between two days."
+  },
   "indexing": {
     "enabled": true,
     "_note": "Google Indexing API. Announces each new JOB PAGE so it is crawled in hours instead of waiting weeks for a crawl it may never get - a job page lives 30 days here, so a page discovered slowly is a page whose whole life passed unseen. DOES NOTHING until a service-account key exists at ~/Library/Application Support/interndoor/google-indexing-key.json AND that account is an OWNER of the property in Search Console. src/indexing.js has the four setup steps.",
