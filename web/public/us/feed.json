@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-technology-co-op-with-northeastern-university-4461416099",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-technology-co-op-with-northeastern-university-4461416099",
+      "title": "Technology Co-op with Northeastern University — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA\n• Work on trading systems and data processing pipelines\n• Use c++ c# python and sql technologies\n• Co-op runs january to may in bala-cynwyd",
+      "date_published": "2026-09-04T23:13:04.526Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/walt-disney-world-commercial-data-science-intern-spring-2027-4463652755",
+      "url": "https://interndoor.com/us/jobs/walt-disney-world-commercial-data-science-intern-spring-2027-4463652755",
+      "title": "Commercial Data Science Intern, Spring 2027 — Walt Disney World",
+      "content_text": "Company: Walt Disney World · Location: Lake Buena Vista, FL · Duration: 12 months\n• Create models and analyses to support merchandise and food decisions\n• Use sql, python, and tableau to turn data into insights\n• Work with senior leaders to shape product strategies",
+      "date_published": "2026-09-04T23:09:17.852Z",
+      "authors": [
+        {
+          "name": "Walt Disney World"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zipline-aircraft-software-integration-intern-summer-2027-4463653708",
+      "url": "https://interndoor.com/us/jobs/zipline-aircraft-software-integration-intern-summer-2027-4463653708",
+      "title": "Aircraft Software Integration Intern (Summer 2027) — Zipline",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Test and integrate software for autonomous aircraft flight and route adaptation\n• Work with simulation tools, telemetry, and testing infrastructure\n• Analyze data and build dashboards for real-time system performance",
+      "date_published": "2026-09-04T23:05:46.344Z",
+      "authors": [
+        {
+          "name": "Zipline"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zipline-aircraft-software-integration-intern-spring-2027-4463659521",
+      "url": "https://interndoor.com/us/jobs/zipline-aircraft-software-integration-intern-spring-2027-4463659521",
+      "title": "Aircraft Software Integration Intern (Spring 2027) — Zipline",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Test and integrate software for autonomous aircraft flight and route adaptation\n• Work with simulation tools, telemetry, and testing infrastructure\n• Analyze data and build dashboards for real-time system performance",
+      "date_published": "2026-09-04T23:05:23.458Z",
+      "authors": [
+        {
+          "name": "Zipline"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mayo-clinic-data-science-intern-garg-lab-ai-program-4463651774",
+      "url": "https://interndoor.com/us/jobs/mayo-clinic-data-science-intern-garg-lab-ai-program-4463651774",
+      "title": "Data Science Intern - Garg Lab AI Program — Mayo Clinic",
+      "content_text": "Company: Mayo Clinic · Location: Jacksonville, FL · Duration: 11 months\n• Analyze clinical and non-clinical data to solve healthcare problems\n• Use python, sql, and machine learning tools for algorithm development\n• Work on image analysis, nlp, and patient outcome modeling projects",
+      "date_published": "2026-09-04T22:47:10.820Z",
+      "authors": [
+        {
+          "name": "Mayo Clinic"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hitachi-digital-services-i3x-intern-4462323238",
       "url": "https://interndoor.com/us/jobs/hitachi-digital-services-i3x-intern-4462323238",
       "title": "I3X Intern — Hitachi Digital Services",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-audio-and-sensor-software-engineer-vehicle-engineering-wint-4463610144",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-audio-and-sensor-software-engineer-vehicle-engineering-wint-4463610144",
-      "title": "Internship, Audio & Sensor Software Engineer, Vehicle Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Debug software for data capture and storage\n• Train ml models for object tracking and validation\n• Support audio dsp algorithm development",
-      "date_published": "2026-09-04T17:32:39.482Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-vehicle-dynamics-controls-engineer-vehicle-controls-winter--4463614053",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-vehicle-dynamics-controls-engineer-vehicle-controls-winter--4463614053",
-      "title": "Internship, Vehicle Dynamics Controls Engineer, Vehicle Controls (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop control algorithms for brake, suspension, steering, and powertrain systems\n• Use Matlab/Simulink/Python and C/C++ for modeling and simulation\n• Work on stability control and adaptive suspension systems\n• Collaborate with Firmware and Systems Integration teams",
-      "date_published": "2026-09-04T17:32:06.824Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-fleet-management-algorithms-engineer-vehicle-software-winte-4463607244",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-fleet-management-algorithms-engineer-vehicle-software-winte-4463607244",
-      "title": "Internship, Fleet Management Algorithms Engineer, Vehicle Software (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Analyze fleet data to improve robotaxi efficiency\n• Build optimization algorithms for real-time dispatch\n• Work with software engineers and validation teams",
-      "date_published": "2026-09-04T17:31:42.975Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-strategic-student-program-mendix-development-intern-cmmk-spring-2027-4461986860",
-      "url": "https://interndoor.com/us/jobs/siemens-strategic-student-program-mendix-development-intern-cmmk-spring-2027-4461986860",
-      "title": "Strategic Student Program: Mendix Development Intern (CMMK, Spring 2027) — Siemens",
-      "content_text": "Company: Siemens · Location: St Louis, MO · Duration: Spring 2027\n• Build and refine app features for social selling workflows\n• Use Mendix to develop and test internal tools for global sales\n• Collaborate with marketing and sales teams on real-world projects",
-      "date_published": "2026-09-04T17:22:37.969Z",
-      "authors": [
-        {
-          "name": "Siemens"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4461997162",
-      "url": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4461997162",
-      "title": "Building Automation Systems Specialist Internship — Siemens",
-      "content_text": "Company: Siemens · Location: Pittsburgh, PA\n• Install and service HVAC systems in commercial buildings\n• Use laptops, tablets, and hand tools for troubleshooting\n• Work onsite with technicians and customers in Pittsburgh",
-      "date_published": "2026-09-04T17:22:33.180Z",
-      "authors": [
-        {
-          "name": "Siemens"
         }
       ]
     }
