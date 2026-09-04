@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 04 Sep 2026 20:19:41 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 04 Sep 2026 20:42:50 GMT</lastBuildDate>
+  <item>
+    <title>AI-Agent Development Co-op — Nokia</title>
+    <link>https://interndoor.com/us/jobs/nokia-ai-agent-development-co-op-4461409300</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/nokia-ai-agent-development-co-op-4461409300</guid>
+    <pubDate>Fri, 04 Sep 2026 20:42:50 GMT</pubDate>
+    <description>Company: Nokia · Location: San Jose, CA · Duration: 6-12 months
+• Design and refine AI agents to help engineers write test plans and analyze results
+• Work with Python, Git, and tools like Jira to integrate agents into engineering workflows
+• Collaborate with optical test engineers to automate repetitive tasks and improve reliability</description>
+  </item>
   <item>
     <title>Systems Engineering Intern - Machine Learning Expert — Texas Instruments</title>
     <link>https://interndoor.com/us/jobs/texas-instruments-systems-engineering-intern-machine-learning-expert-4462304921</link>
@@ -501,16 +511,6 @@
 • Support client projects with primary research and stakeholder interviews
 • Work with dynamic teams on market trends and operational improvements
 • Gain hands-on experience in cloud migration and data analytics</description>
-  </item>
-  <item>
-    <title>Intern Application Developer – Oracle - 2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-intern-application-developer-oracle-2027-4451231636</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-intern-application-developer-oracle-2027-4451231636</guid>
-    <pubDate>Fri, 04 Sep 2026 15:37:36 GMT</pubDate>
-    <description>Company: IBM · Location: Baton Rouge, LA · Duration: 10 weeks
-• Build modern applications using cloud platforms and UI frameworks
-• Work with cross-functional teams on real client projects
-• Contribute to scalable code and participate in code reviews</description>
   </item>
 </channel>
 </rss>
