@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730845005",
+      "url": "https://interndoor.com/us/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730845005",
+      "title": "Software Engineering Intern (Summer 2027) — Scale AI",
+      "content_text": "Company: Scale AI · Location: San Francisco, CA · Duration: Fall 2027\n• Build data pipelines and AI tools used by Fortune 500 companies and government agencies\n• Work with Python, Typescript, React, and MongoDB on shipped products\n• Collaborate with Meta, Mayo Clinic, and U.S. Defense agencies on real-world AI systems",
+      "date_published": "2026-09-04T16:00:19.000Z",
+      "authors": [
+        {
+          "name": "Scale AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730836005",
+      "url": "https://interndoor.com/us/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730836005",
+      "title": "Software Engineer - New Grad — Scale AI",
+      "content_text": "Company: Scale AI · Location: San Francisco, CA · Duration: Fall 2026\n• Build AI systems for enterprise and public sector clients\n• Use Python, Typescript, React, and MongoDB daily\n• Work with Meta, Mayo Clinic, and U.S. Government agencies",
+      "date_published": "2026-09-04T15:59:59.000Z",
+      "authors": [
+        {
+          "name": "Scale AI"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-consultant-intern-sap-2027-4450859231",
       "url": "https://interndoor.com/us/jobs/ibm-consultant-intern-sap-2027-4450859231",
       "title": "Consultant Intern – SAP 2027 — IBM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "SpaceX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-software-engineering-behavior-test-ats-greenhouse-waymo-8174504",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-software-engineering-behavior-test-ats-greenhouse-waymo-8174504",
-      "title": "2027 Summer Intern, MS, Software Engineering, Behavior Test — Waymo",
-      "content_text": "Company: Waymo · Location: San Francisco, California, USA\n• Design and implement test scenarios for autonomous vehicles in fault conditions\n• Build dashboards to analyze fleet-wide vehicle fault data\n• Create automated pipelines with Python and SQL for test validation\n• Work on safety-critical systems for remote assistance behaviors",
-      "date_published": "2026-09-03T20:44:52.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bmw-group-intern-interaction-design-spring-2027-4463119380",
-      "url": "https://interndoor.com/us/jobs/bmw-group-intern-interaction-design-spring-2027-4463119380",
-      "title": "Intern, Interaction Design - Spring 2027 — BMW Group",
-      "content_text": "Company: BMW Group · Location: Santa Monica, CA · Duration: Spring 2027\n• Create interactive designs for automotive and consumer products\n• Use Figma, Sketch, and Adobe tools for prototyping\n• Work on AR/VR projects with cross-functional teams",
-      "date_published": "2026-09-03T20:33:43.871Z",
-      "authors": [
-        {
-          "name": "BMW Group"
         }
       ]
     }
