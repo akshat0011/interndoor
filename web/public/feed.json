@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280",
+      "url": "https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280",
+      "title": "Software Engineer Intern — Smowcode",
+      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Implement deep graph algorithms and core data structures for user data handling\n• Work on Node.js APIs, jQuery frontend, and modular codebases\n• Collaborate on firmware projects with ESP32 and IoT integration\n• Receive ₹15,000 stipend for 6 months in Mumbai",
+      "date_published": "2026-09-04T09:48:20.727Z",
+      "authors": [
+        {
+          "name": "Smowcode"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205",
       "url": "https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205",
       "title": "AI & Data Engineering Intern — Pixxel",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fancode-software-engineer-internship-backend-4460319731",
-      "url": "https://interndoor.com/jobs/fancode-software-engineer-internship-backend-4460319731",
-      "title": "Software Engineer Internship (Backend) — FanCode",
-      "content_text": "Company: FanCode · Location: Mumbai, Maharashtra, India\n• Develop and maintain software components for production systems\n• Work with Node.js, Java, REST APIs, and database design\n• Collaborate with engineers on backend services and system reliability",
-      "date_published": "2026-08-28T10:12:28.217Z",
-      "authors": [
-        {
-          "name": "FanCode"
         }
       ]
     }
