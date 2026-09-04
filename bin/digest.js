@@ -96,9 +96,25 @@ if (!apiKey) {
   process.exit(0);
 }
 
+/* X-Buttondown-Live-Dangerously is Buttondown's own confirmation that an API
+   key is allowed to SEND rather than only draft: without it, a status of
+   about_to_send is refused 400 with
+   {"code":"sending_requires_confirmation"}. It is asked for once per key, so a
+   pipeline that only ever drafts never sees it and the first real send looks
+   like broken code.
+
+   It is sent unconditionally rather than only when mode is send, because a
+   header that is present on a draft changes nothing — the status field is what
+   decides, and sendStatus is the one function that produces it. Making the
+   header conditional would put a second thing to get right on the one line that
+   can mail a stranger by accident. */
 const res = await fetch(API, {
   method: 'POST',
-  headers: { authorization: `Token ${apiKey}`, 'content-type': 'application/json' },
+  headers: {
+    authorization: `Token ${apiKey}`,
+    'content-type': 'application/json',
+    'X-Buttondown-Live-Dangerously': 'true',
+  },
   body: JSON.stringify({
     subject: mail.subject,
     body: mail.body,
