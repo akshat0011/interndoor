@@ -375,9 +375,13 @@ function isoDay(ms) {
  */
 function agePill(ms) {
   if (!ms) return '';
-  const age = Date.now() - ms;
-  const cls = age < DAY ? ' is-hot' : age < 3 * DAY ? ' is-fresh' : '';
-  return `<span class="pill${cls}" data-ago="${ms}"><i aria-hidden="true"></i>`
+  /* NO FRESHNESS CLASS HERE. The comment above says the class is applied by
+     script, and `dressAges` in page.js does apply it — it strips is-hot/is-fresh
+     from every [data-ago] element and re-adds the right one on load. Baking it
+     in as well changed nothing a reader could see and rewrote the page the
+     moment the posting crossed a threshold, which is the churn this whole
+     block exists to avoid. */
+  return `<span class="pill" data-ago="${ms}"><i aria-hidden="true"></i>`
     + `Posted <time datetime="${isoDay(ms)}">${esc(dayLabel(ms))}</time></span>`;
 }
 
@@ -702,13 +706,17 @@ function statusPills(job) {
  */
 function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1 } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
-  const age = posted ? Date.now() - posted : Infinity;
-  const cls = age < DAY ? ' is-hot' : '';
+  /* The tile carries no clock-derived class either — not on the <a> wrapper and
+     not on the age span. `dressAges` sets both from data-ago, so the only thing
+     baking them in bought was a rewrite of every tile on the day its posting
+     aged past DAY or 3*DAY. Measured on the 4 Sep 00:42 publish: 14 wrapper
+     flips, 14 tile-age is-hot flips and 14 is-fresh flips in one run, each one
+     a diff in a public repo and an IndexNow submission for a colour. */
   const meta = [
     // The inner <time> is not decoration: page.js finds the text to rewrite by
     // looking for it, and without one the tile kept its absolute date while the
     // pill above went relative.
-    posted ? `<span class="tile-age${age < DAY ? ' is-hot' : age < 3 * DAY ? ' is-fresh' : ''}" data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>` : '',
+    posted ? `<span class="tile-age" data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>` : '',
     // A collapsed role says how many cities it covers rather than naming the
     // one posting that happened to be newest — which would be a tile claiming
     // an opening is in Mason when it is open in twenty-two places.
@@ -716,7 +724,7 @@ function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1 
     modeText(job) ? esc(modeText(job)) : '',
   ].filter(Boolean).join('<span aria-hidden="true">·</span>');
 
-  return `<a class="tile${cls}" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
+  return `<a class="tile" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
         ${showCompany ? `<span class="tile-top">${crest(job.company, job.logo, { cls: 'tile-crest' })}<span class="tile-co">${esc(job.company)}</span></span>` : ''}
         <span class="tile-role">${esc(job.title)}</span>
         ${job.roleLabel && !showCompany ? `<span class="tile-co">${esc(job.roleLabel)}</span>` : ''}

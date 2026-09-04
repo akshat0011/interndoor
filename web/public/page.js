@@ -85,6 +85,21 @@ function dressAges(root) {
 
     el.classList.remove('is-hot', 'is-fresh');
     if (cls) el.classList.add(cls);
+
+    /* The tile's coloured edge, which is on the <a> and not on the element
+       carrying data-ago. It used to be baked into the markup, so a tile was
+       rewritten and re-announced the day its posting aged past DAY — for a
+       colour. Derived here instead, from the same timestamp as everything
+       else, so there is one source for freshness on the page.
+
+       A visitor holding a cached page.js sees the age text and the pill
+       correctly (the lines above already did that before this change) and only
+       misses this edge until the file refreshes. HTML is max-age=0 while this
+       file is max-age=600 + a day of stale-while-revalidate and carries no
+       ?v=, so that window is real; losing an accent for a day is the right
+       thing to lose. */
+    const tile = el.closest('.tile');
+    if (tile) tile.classList.toggle('is-hot', cls === 'is-hot');
   }
 }
 
