@@ -196,7 +196,13 @@ async function generate(jobIds) {
         company: facts.company ?? row.company,
         title: row.title,
         location: row.location,
-        logo: row.logo_url ? `/logos/${row.logo_url}` : null,
+        /* The PUBLISHED projection's logo, which is a site path like
+           /logos/nvidia.jpg. NOT row.logo_url — that column holds the REMOTE
+           LinkedIn CDN URL it was fetched from, and building /logos/<that>
+           resolves to nothing, which renders a blank white plate and looks
+           like a broken design rather than a wrong field. Same projection
+           src/telegram.js feeds the OG card. */
+        logo: publicJob(row.job_id)?.logo ?? null,
       })));
     } catch (err) {
       log.warn(`LinkedIn card images failed: ${err.message}`);

@@ -56,6 +56,28 @@ check('the city is first among the facts', m.facts[0], 'Bengaluru');
 check('a job with nothing still yields a shape',
   Object.keys(liCardModel({})).sort(), ['company', 'facts', 'title']);
 
+console.log('\n== the caller resolves the logo from the PUBLISHED projection ==');
+/* The first version built `/logos/${row.logo_url}`. That column holds the
+   REMOTE LinkedIn CDN URL the logo was fetched from, so the path resolved to
+   nothing and every card shipped a blank white plate — which reads as a broken
+   design rather than a wrong field. The published projection's `logo` is the
+   site path (/logos/nvidia.jpg), and it is what src/telegram.js already feeds
+   the OG card. */
+const qs = readFileSync(join(ROOT, 'bin', 'queue-server.js'), 'utf8');
+// Generous window: the call carries an explanatory comment, and a tight one
+// matched nothing — which fails LOUD here, but a laxer regex would have matched
+// an empty string and passed against anything.
+const at = qs.indexOf('renderLiCards(');
+const call = at < 0 ? '' : qs.slice(at, at + 1400);
+if (!call) { console.log('  FAIL  renderLiCards call not found in queue-server'); process.exit(1); }
+// The `logo:` PROPERTY only. Asserting over the whole call matched the word
+// logo_url inside the comment that explains why not to use it — the
+// regex-matches-its-own-comment trap, for the second time in this repo.
+const logoLine = (call.match(/^\s*logo:.*$/m) || [''])[0];
+check('a logo property is passed at all', logoLine.length > 0, true);
+check('it takes the logo from publicJob()', /publicJob\([^)]*\)\?\.logo/.test(logoLine), true);
+check('and never builds a path out of logo_url', /logo_url/.test(logoLine), false);
+
 const exe = chromiumPath();
 if (!exe) {
   console.log('\n  (no Playwright Chromium — render assertions skipped)');

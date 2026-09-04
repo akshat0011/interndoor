@@ -41,21 +41,32 @@
   .word{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:-.045em;line-height:1}
   .word em{font-style:normal;color:var(--live)}
 
-  .L{position:absolute;left:0;top:0;width:540px;height:531px;padding:82px 42px 26px;
+  /* The radar, bleeding off the right edge as it does on the board and the OG
+     card. Opacities are BELOW draft E's: there the rings crossed the title and
+     cost legibility at feed size, which is the size that matters. It sits at
+     z-index 0 under both columns and stops above the band. */
+  /* Centre pushed into the top-right CORNER on purpose. Centred nearer the
+     middle, the sweep's centre dot lands on the title and reads as a typo —
+     it did exactly that on NVIDIA's "L1/L2 - Fall 2026". */
+  .radar{position:absolute;right:-300px;top:-285px;width:780px;height:780px;pointer-events:none;z-index:0}
+  .ring{fill:none;stroke:var(--live);stroke-width:1.4;opacity:.13}
+  .cross{stroke:var(--live);stroke-width:1.4;opacity:.055}
+  .sweep{fill:var(--live);opacity:.075}
+  .L{position:absolute;left:0;top:0;width:540px;height:531px;padding:82px 42px 26px;z-index:2;
      display:flex;flex-direction:column;justify-content:center;gap:26px}
   .plate{width:300px;height:300px;background:#fff;border-radius:30px;padding:18px;flex:none;
          align-self:flex-start;display:flex;align-items:center;justify-content:center}
   .plate img{width:100%;height:100%;object-fit:contain;display:block}
   .co{font-family:var(--display);font-weight:900;font-size:58px;letter-spacing:-.035em;line-height:.95}
 
-  .R{position:absolute;left:540px;top:0;right:0;height:531px;padding:82px 44px 26px;
+  .R{position:absolute;left:540px;top:0;right:0;height:531px;padding:82px 44px 26px;z-index:2;
      display:flex;flex-direction:column;justify-content:center;gap:24px}
   .ttl{font-family:var(--display);font-weight:900;font-size:56px;letter-spacing:-.03em;line-height:.95}
   .facts{display:flex;gap:11px;flex-wrap:wrap}
   .chip{font-family:var(--mono);font-size:18px;letter-spacing:.10em;text-transform:uppercase;
         color:var(--ink-2);border:1px solid var(--rule-2);border-radius:999px;padding:8px 16px}
 
-  .band{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--live);
+  .band{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--live);z-index:3;
         display:flex;align-items:center;padding:0 44px;gap:22px}
   .band .hire{font-family:var(--display);font-weight:900;font-size:52px;color:var(--bg);
               letter-spacing:-.02em;line-height:1}
@@ -65,6 +76,13 @@
 
 <div id="card">
   <div class="grain"></div>
+  <svg class="radar" viewBox="0 0 780 780">
+    <circle class="ring" cx="390" cy="390" r="370"/><circle class="ring" cx="390" cy="390" r="277"/>
+    <circle class="ring" cx="390" cy="390" r="183"/><circle class="ring" cx="390" cy="390" r="90"/>
+    <line class="cross" x1="0" y1="390" x2="780" y2="390"/><line class="cross" x1="390" y1="0" x2="390" y2="780"/>
+    <g class="sweep"><path d="M390 390 L390 20 A370 370 0 0 1 711 205 Z"/></g>
+    <circle class="m-dot" cx="390" cy="390" r="5"/>
+  </svg>
   <div class="brand">
     <svg viewBox="0 0 44 44">
       <circle class="m-ring" cx="22" cy="22" r="20"/><circle class="m-ring" cx="22" cy="22" r="12"/>
