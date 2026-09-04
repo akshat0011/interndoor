@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/siemens-strategic-student-program-future-workforce-strategy-enablement-team-in-4461993863",
+      "url": "https://interndoor.com/us/jobs/siemens-strategic-student-program-future-workforce-strategy-enablement-team-in-4461993863",
+      "title": "Strategic Student Program: Future Workforce Strategy Enablement Team Intern (CMMK, Spring 2027) — Siemens",
+      "content_text": "Company: Siemens · Location: St Louis, MO · Duration: Spring 2027\n• Support ai agent development for learning experiences\n• Collaborate on content creation aligned with lxd best practices\n• Conduct learner research through surveys and interviews",
+      "date_published": "2026-09-04T16:31:15.660Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461998061",
+      "url": "https://interndoor.com/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461998061",
+      "title": "Strategic Student Program: Software Development Intern (SIM STS, Spring 2027) — Siemens",
+      "content_text": "Company: Siemens · Location: Huntsville, AL · Duration: Spring 2027\n• Develop software in C# using WPF and interface design for thermal simulation tools\n• Collaborate with cross-functional teams on UX/UI for next-gen product solutions\n• Write unit tests and conduct QA testing on new software features\n• Work in an Agile Scrum environment with Git, Jira, and Bitbucket",
+      "date_published": "2026-09-04T16:30:59.561Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-strategic-student-program-technology-and-innovation-intern-t-and-i-spr-4461990911",
+      "url": "https://interndoor.com/us/jobs/siemens-strategic-student-program-technology-and-innovation-intern-t-and-i-spr-4461990911",
+      "title": "Strategic Student Program: Technology & Innovation Intern (T&I, Spring 2027) — Siemens",
+      "content_text": "Company: Siemens · Location: Mason, OH · Duration: Spring 2027\n• Research and develop algorithms for business challenges\n• Work with senior engineers on software development\n• Explore cutting-edge tech like AI and quantum computing",
+      "date_published": "2026-09-04T16:30:38.719Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/berkshire-grey-spring-2027-robot-learning-r-and-d-co-op-4460662312",
+      "url": "https://interndoor.com/us/jobs/berkshire-grey-spring-2027-robot-learning-r-and-d-co-op-4460662312",
+      "title": "Spring 2027 Robot Learning R&D Co-op — Berkshire Grey",
+      "content_text": "Company: Berkshire Grey · Location: Bedford, MA · Duration: Spring 2027\n• Build tools to process and evaluate robot data\n• Work with python and ros on real robotics systems\n• Integrate new grippers into control and perception systems",
+      "date_published": "2026-09-04T16:02:50.403Z",
+      "authors": [
+        {
+          "name": "Berkshire Grey"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730845005",
       "url": "https://interndoor.com/us/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730845005",
       "title": "Software Engineering Intern (Summer 2027) — Scale AI",
@@ -26,6 +74,54 @@
       "authors": [
         {
           "name": "Scale AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450837255",
+      "url": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450837255",
+      "title": "Data Engineer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Write scripts to clean, integrate, and model data\n• Use python, sql, and cloud tools like spark\n• Work on real client projects with mentorship",
+      "date_published": "2026-09-04T15:58:44.399Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450852305",
+      "url": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450852305",
+      "title": "Data Engineer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Dallas, TX · Duration: 10 weeks\n• Write scripts to clean, integrate, and model data\n• Use python, sql, and cloud tools like aws or ibm cloud\n• Work on real client projects with mentorship support",
+      "date_published": "2026-09-04T15:49:48.173Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450851276",
+      "url": "https://interndoor.com/us/jobs/ibm-data-engineer-intern-2027-4450851276",
+      "title": "Data Engineer Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Durham, NC · Duration: 10 weeks\n• Write scripts to clean, integrate, and model data\n• Use python, sql, and cloud tools like spark\n• Work on client projects with mentorship and feedback",
+      "date_published": "2026-09-04T15:49:44.482Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-co-op-developer-adobe-2027-4451222613",
+      "url": "https://interndoor.com/us/jobs/ibm-co-op-developer-adobe-2027-4451222613",
+      "title": "Co-Op Developer – Adobe 2027 — IBM",
+      "content_text": "Company: IBM · Location: University Park, TX · Duration: 10 weeks\n• Develop AEM components using Java, HTL, and JCR APIs for scalable web experiences\n• Collaborate with front-end teams on responsive HTML/CSS/JS integration in AEM\n• Support AEM cloud migration and integrate with external platforms via REST/GraphQL",
+      "date_published": "2026-09-04T15:49:07.206Z",
+      "authors": [
+        {
+          "name": "IBM"
         }
       ]
     },
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Siemens"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/kiewit-substation-engineer-intern-kiewit-power-engineering-summer-2027-4463189755",
-      "url": "https://interndoor.com/us/jobs/kiewit-substation-engineer-intern-kiewit-power-engineering-summer-2027-4463189755",
-      "title": "Substation Engineer Intern - Kiewit Power Engineering (Summer 2027) — Kiewit",
-      "content_text": "Company: Kiewit · Location: Lenexa, KS · Duration: Summer 2027\n• Create design documents and drawings for substations with minimal supervision\n• Use engineering software for relay coordination and transformer sizing\n• Review project schedules and communicate with team and clients",
-      "date_published": "2026-09-04T06:16:47.175Z",
-      "authors": [
-        {
-          "name": "Kiewit"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-software-engineering-co-op-spring-summer-2027-4463133562",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-software-engineering-co-op-spring-summer-2027-4463133562",
-      "title": "GE Vernova Software Engineering - Co-op - Spring-Summer 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Rochester, NY · Duration: Summer 2027\n• Develop software using Java, C, or C++ for next-gen product lines\n• Integrate GE Cloud DevOps tools into existing CI/CD processes\n• Work on real projects with minimal supervision in Rochester, NY",
-      "date_published": "2026-09-03T23:49:35.279Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-grid-solutions-hardware-engineering-co-op-critical-infrastr-4463140438",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-grid-solutions-hardware-engineering-co-op-critical-infrastr-4463140438",
-      "title": "GE Vernova Grid Solutions - Hardware Engineering Co-op (Critical Infrastructure Communications) – Summar/Fall 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Rochester, NY · Duration: Fall 2027\n• Design hardware for energy, oil and gas, and transportation applications\n• Use Altium, Orcad, and PCB layout tools for circuit design\n• Work at Rochester manufacturing plant with mentorship and training",
-      "date_published": "2026-09-03T23:49:06.748Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-software-engineering-co-op-summer-fall-4463141493",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-software-engineering-co-op-summer-fall-4463141493",
-      "title": "GE Vernova Software Engineering - Co-op -Summer - Fall — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Rochester, NY\n• Develop software using Java, C, or C++ for next-gen product lines\n• Integrate GE Cloud DevOps tools into existing CI/CD processes\n• Work on real projects with minimal supervision in Rochester, NY",
-      "date_published": "2026-09-03T23:48:43.165Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-cic-systems-engineer-co-op-spring-summer-2027-4463142470",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-cic-systems-engineer-co-op-spring-summer-2027-4463142470",
-      "title": "GE Vernova CIC Systems Engineer Co-op - Spring - Summer 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Rochester, NY · Duration: Summer 2027\n• Develop software in Java, C, or C++ for next-gen product lines\n• Integrate GE Cloud DevOps tools into existing CI/CD processes\n• Work on real projects with minimal supervision in Rochester, NY",
-      "date_published": "2026-09-03T23:48:22.186Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-cic-systems-engineer-co-op-summer-fall-2027-4463151283",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-cic-systems-engineer-co-op-summer-fall-2027-4463151283",
-      "title": "GE Vernova CIC Systems Engineer Co-op - Summer-Fall 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Rochester, NY · Duration: Fall 2027\n• Develop software in Java, C, or C++ for next-gen product lines\n• Integrate GE Cloud DevOps tools into existing CI/CD processes\n• Work on real projects with minimal supervision in Rochester, NY",
-      "date_published": "2026-09-03T23:47:55.785Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skydio-autonomy-engineer-intern-computer-vision-deep-learning-summer-2027-ats-ashby-skydio-ae4a6f7d-a240-4fa2-8c8e-04cc906e4ef9",
-      "url": "https://interndoor.com/us/jobs/skydio-autonomy-engineer-intern-computer-vision-deep-learning-summer-2027-ats-ashby-skydio-ae4a6f7d-a240-4fa2-8c8e-04cc906e4ef9",
-      "title": "Autonomy Engineer Intern - Computer Vision/Deep Learning Summer 2027 — Skydio",
-      "content_text": "Company: Skydio · Location: San Mateo, California, United States · Duration: Summer 2027\n• Implement computer vision algorithms for drone autonomy\n• Work with C++/Python and PyTorch on real-world projects\n• Collaborate with researchers on cutting-edge deep learning",
-      "date_published": "2026-09-03T23:28:02.086Z",
-      "authors": [
-        {
-          "name": "Skydio"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-starship-components-ats-greenhouse-spacex-8783046002",
-      "url": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-starship-components-ats-greenhouse-spacex-8783046002",
-      "title": "New Graduate Engineer, Starship Components — SpaceX",
-      "content_text": "Company: SpaceX · Location: Hawthorne, CA · Duration: 3 weeks\n• Design and test high-stress hardware for spacecraft, from valves to actuators\n• Work on extreme environments with temperatures up to 800 K and pressures over 800 bar\n• Collaborate across manufacturing, design, and testing for Starship components",
-      "date_published": "2026-09-03T22:50:09.000Z",
-      "authors": [
-        {
-          "name": "SpaceX"
         }
       ]
     }
