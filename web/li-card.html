@@ -1,0 +1,85 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  THE LINKEDIN POST IMAGE. Rendered by src/licard.js with Playwright, one per
+  queued posting, into PATHS.liCards in the state directory — never the repo.
+
+  NOT the same thing as web/og-card.html. That one is the LINK PREVIEW a
+  crawler fetches; this one is an image he ATTACHES to a post, and attaching it
+  replaces the preview card. Two different jobs, so two templates.
+
+  1200x627 is LinkedIn's landscape ratio. The lime band is the whole point of
+  the design: at feed size this renders about half these dimensions, and the
+  band is the only element still unmissable there.
+
+  The logo is CONTAINED on a white plate and never cropped — a cropped
+  trademark is simply wrong, and 462 logo files come in every shape there is.
+  Type is fitted by the renderer, not here: an employer name runs from "Zoho"
+  to "Jupiter Business Systems FZC".
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
+    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036; --live:#c8ff00;
+    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
+    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#000}
+  #card{position:relative;width:1200px;height:627px;overflow:hidden;
+        background:var(--bg);color:var(--ink);font-family:var(--ui)}
+  .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .brand{position:absolute;top:26px;left:36px;display:flex;align-items:center;gap:10px;z-index:6}
+  .brand svg{width:23px;height:23px;overflow:visible}
+  .m-ring{fill:none;stroke:var(--live);stroke-width:1.6;opacity:.34}
+  .m-sweep{fill:var(--live);opacity:.32}
+  .m-dot{fill:var(--live)}
+  .word{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:-.045em;line-height:1}
+  .word em{font-style:normal;color:var(--live)}
+
+  .L{position:absolute;left:0;top:0;width:540px;height:531px;padding:82px 42px 26px;
+     display:flex;flex-direction:column;justify-content:center;gap:26px}
+  .plate{width:300px;height:300px;background:#fff;border-radius:30px;padding:18px;flex:none;
+         align-self:flex-start;display:flex;align-items:center;justify-content:center}
+  .plate img{width:100%;height:100%;object-fit:contain;display:block}
+  .co{font-family:var(--display);font-weight:900;font-size:58px;letter-spacing:-.035em;line-height:.95}
+
+  .R{position:absolute;left:540px;top:0;right:0;height:531px;padding:82px 44px 26px;
+     display:flex;flex-direction:column;justify-content:center;gap:24px}
+  .ttl{font-family:var(--display);font-weight:900;font-size:56px;letter-spacing:-.03em;line-height:.95}
+  .facts{display:flex;gap:11px;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:18px;letter-spacing:.10em;text-transform:uppercase;
+        color:var(--ink-2);border:1px solid var(--rule-2);border-radius:999px;padding:8px 16px}
+
+  .band{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--live);
+        display:flex;align-items:center;padding:0 44px;gap:22px}
+  .band .hire{font-family:var(--display);font-weight:900;font-size:52px;color:var(--bg);
+              letter-spacing:-.02em;line-height:1}
+  .band .who{font-family:var(--mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;
+             color:rgba(10,10,11,.72);margin-left:auto}
+</style>
+
+<div id="card">
+  <div class="grain"></div>
+  <div class="brand">
+    <svg viewBox="0 0 44 44">
+      <circle class="m-ring" cx="22" cy="22" r="20"/><circle class="m-ring" cx="22" cy="22" r="12"/>
+      <g class="m-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+      <circle class="m-dot" cx="22" cy="22" r="2.8"/>
+    </svg>
+    <div class="word">INTERN<em>DOOR</em></div>
+  </div>
+  <div class="L">
+    <div class="plate"><img id="logo" alt=""></div>
+    <div class="co fit" id="co"></div>
+  </div>
+  <div class="R">
+    <div class="ttl fit" id="ttl"></div>
+    <div class="facts" id="facts"></div>
+  </div>
+  <div class="band"><div class="hire">IS HIRING</div><div class="who">interndoor.com</div></div>
+</div>

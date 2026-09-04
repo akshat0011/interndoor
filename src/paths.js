@@ -66,6 +66,9 @@ export const PATHS = {
    * on request by web/api/og.js and never touch the repo at all.
    */
   ogCards: join(STATE, 'og'),
+  /* LinkedIn post images. In the STATE directory beside the OG cards and for
+     the same reason: one per queued posting, and app/ is a public repo. */
+  liCards: join(STATE, 'li'),
 
   /** Generated LinkedIn posts, one page per batch, plus a stable latest.html. */
   posts: join(STATE, 'posts'),
@@ -104,7 +107,7 @@ export const PATHS = {
 
 /** Directories that must exist before use. launchd never creates them for us. */
 const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs',
-  'reels', 'reelsBgm', 'reelsOut', 'reelsWork', 'ogCards'];
+  'reels', 'reelsBgm', 'reelsOut', 'reelsWork', 'ogCards', 'liCards'];
 
 export function ensureDirs() {
   for (const key of MANAGED) {

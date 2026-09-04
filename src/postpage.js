@@ -47,6 +47,10 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .wrap{max-width:820px;margin:0 auto;padding:28px 20px 96px}
 h1{font-size:23px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px}
 .sub{color:var(--ink-2);font-size:13.5px;margin-bottom:22px}
+/* The post image. Hidden until it loads: an older batch has no file, and a
+   broken-image glyph beside a finished post reads as a fault. */
+.shot{display:none;width:100%;border-radius:10px;border:1px solid var(--line);margin:12px 0 2px}
+.shot.ok{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
   margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
 .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 18px 14px}
@@ -88,6 +92,18 @@ footer code{background:var(--chip);padding:1px 5px;border-radius:4px}
 `;
 
 const JS = `
+/* Reveal a post image only once it has loaded. An older batch has no file, and
+   a broken-image glyph beside a finished post reads as a fault. */
+for (const img of document.querySelectorAll('.shot')) {
+  const show = () => {
+    img.classList.add('ok');
+    const dl = img.closest('.card')?.querySelector('.shot-dl');
+    if (dl) dl.hidden = false;
+  };
+  if (img.complete && img.naturalWidth) show();
+  else img.addEventListener('load', show, { once: true });
+}
+
 async function copy(text, btn, label){
   try {
     // 127.0.0.1 is a secure context, so the async API is available here; the
@@ -198,11 +214,13 @@ function card(draft) {
   <pre class="plain" hidden>${esc(plain)}</pre>
   <pre class="comment" hidden>${esc(comment)}</pre>
   <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after.</div>
+  <img class="shot" src="/li/${esc(row.job_id)}.png" alt="" loading="lazy">
   <div class="actions">
     <button class="primary" data-copy="post">Copy post</button>
     <button class="second" data-copy="comment" title="Post this as the first comment, straight after the post itself">Copy 1st comment</button>
     <button data-copy="plain" title="Same post with the bold letters as ordinary text — screen readers read the bold codepoints one character at a time">Copy without bold</button>
     <button data-regen="${esc(row.job_id)}">Rewrite</button>
+    <a class="link shot-dl" href="/li/${esc(row.job_id)}.png" download="${esc(row.job_id)}.png" hidden>Save image ↓</a>
     <a class="link" href="https://www.linkedin.com/feed/?shareActive=true" target="_blank" rel="noreferrer">Open LinkedIn ↗</a>
     ${facts.siteUrl ? `<a class="link" href="${esc(facts.siteUrl)}" target="_blank" rel="noreferrer">Job page ↗</a>` : ''}
     ${facts.applyUrl ? `<a class="link" href="${esc(facts.applyUrl)}" target="_blank" rel="noreferrer">Original ↗</a>` : ''}

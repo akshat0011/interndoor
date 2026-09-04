@@ -34,6 +34,7 @@ import { postableRegion } from '../src/postregions.js';
 import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
+import { renderLiCards } from '../src/licard.js';
 import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
@@ -103,6 +104,24 @@ function sameOrigin(req) {
 /** A path segment we are willing to turn into a filename. */
 const SAFE_ID = /^[A-Za-z0-9._-]{1,120}$/;
 
+/* Binary, and NOT sendFile. That one does readFile(path, 'utf8') and hands the
+   result to html() — which silently mangles a PNG: the first attempt returned
+   190,008 bytes for a 108,223-byte file, a 200 the browser could not decode.
+   Anything that is not text needs its own sender. */
+async function sendImage(res, path, notFound) {
+  try {
+    const buf = await readFile(path);
+    res.writeHead(200, {
+      'content-type': 'image/png',
+      'content-length': buf.length,
+      'cache-control': 'no-store',
+    });
+    return res.end(buf);
+  } catch {
+    return html(res, 404, `<h1>404</h1><p>${notFound}</p>`);
+  }
+}
+
 async function sendFile(res, path, notFound) {
   try {
     return html(res, 200, await readFile(path, 'utf8'));
@@ -166,6 +185,22 @@ async function generate(jobIds) {
       text: row.post_text,
       meta: safeMeta(row.post_meta),
     }));
+
+    /* The post IMAGE, one per queued posting. Rendered AFTER the drafts and
+       never before: a browser launch must not delay the text he is waiting to
+       paste, and a card that fails to render must not lose the post — hence the
+       try/catch rather than letting it reject the batch. */
+    try {
+      await renderLiCards(all.map(({ row, facts }) => ({
+        id: row.job_id,
+        company: facts.company ?? row.company,
+        title: row.title,
+        location: row.location,
+        logo: row.logo_url ? `/logos/${row.logo_url}` : null,
+      })));
+    } catch (err) {
+      log.warn(`LinkedIn card images failed: ${err.message}`);
+    }
 
     const file = writePostsPage(
       buildPostsPage(all, { batchId, model, generatedAt: Date.now() }),
@@ -832,6 +867,14 @@ const server = createServer(async (req, res) => {
 
   if (path === '/posts' || path === '/posts/' || path === '/posts/latest') {
     return sendFile(res, PATHS.latestPosts, 'No posts written yet — queue a few listings and press Generate.');
+  }
+
+  /* The post images. Loopback-only like everything else here, and read out of
+     the state directory rather than the repo. */
+  if (path.startsWith('/li/')) {
+    const id = decodeURIComponent(path.slice('/li/'.length)).replace(/\.png$/, '');
+    if (!SAFE_ID.test(id)) return html(res, 400, '<h1>400</h1>');
+    return sendImage(res, join(PATHS.liCards, `${id}.png`), 'No image for that posting.');
   }
 
   if (path.startsWith('/posts/')) {
