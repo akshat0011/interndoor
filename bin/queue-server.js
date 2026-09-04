@@ -35,6 +35,7 @@ import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
+import { logoOnDisk } from '../src/logos.js';
 import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queuePort } from '../src/postqueue.js';
@@ -201,8 +202,15 @@ async function generate(jobIds) {
            LinkedIn CDN URL it was fetched from, and building /logos/<that>
            resolves to nothing, which renders a blank white plate and looks
            like a broken design rather than a wrong field. Same projection
-           src/telegram.js feeds the OG card. */
-        logo: publicJob(row.job_id)?.logo ?? null,
+           src/telegram.js feeds the OG card.
+
+           FALLING BACK TO DISK IS NOT BELT-AND-BRACES, IT IS THE COMMON CASE.
+           publicJob is a per-JOB lookup for a per-COMPANY file, and a posting
+           scraped minutes ago is in the store but not in jobs.json until the
+           next publish — so a card generated inside that window rendered an
+           empty plate for an employer whose logo had been on disk since July.
+           logoOnDisk keys on the company and needs no network. */
+        logo: publicJob(row.job_id)?.logo ?? logoOnDisk(facts.company ?? row.company),
       })));
     } catch (err) {
       log.warn(`LinkedIn card images failed: ${err.message}`);

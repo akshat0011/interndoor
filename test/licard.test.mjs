@@ -20,6 +20,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { liCardModel } from '../src/licard.js';
+import { logoOnDisk } from '../src/logos.js';
 import { chromiumPath } from '../src/ogcard.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -77,6 +78,23 @@ const logoLine = (call.match(/^\s*logo:.*$/m) || [''])[0];
 check('a logo property is passed at all', logoLine.length > 0, true);
 check('it takes the logo from publicJob()', /publicJob\([^)]*\)\?\.logo/.test(logoLine), true);
 check('and never builds a path out of logo_url', /logo_url/.test(logoLine), false);
+/* THE PROJECTION IS NOT ENOUGH ON ITS OWN, and this is the common case rather
+   than an edge. publicJob is a per-JOB lookup for a per-COMPANY file: a posting
+   scraped at 18:26 is in the store immediately and does not reach jobs.json
+   until the next publish, so for up to half an hour the lookup is null and the
+   card ships the blank plate the comment above says it exists to prevent —
+   observed live on HARMAN India, whose logo had been on disk since July. */
+check('it falls back to the logo on disk', /logoOnDisk\(/.test(logoLine), true);
+check('the fallback is keyed on the company, not the job id',
+  /logoOnDisk\(\s*[^)]*compan/i.test(logoLine), true);
+
+console.log('\n== logoOnDisk reads the logo directory, with no network ==');
+// Real files in web/public/logos, so a rename of the slug rule fails here.
+check('resolves a company that has one', logoOnDisk('HARMAN India'), '/logos/harman-india.jpg');
+check('the slug is case and space insensitive', logoOnDisk('harman   india'), '/logos/harman-india.jpg');
+check('an unknown company is null, never a guessed path', logoOnDisk('No Such Company Zzz'), null);
+check('a blank company is null', logoOnDisk(''), null);
+check('undefined is null', logoOnDisk(undefined), null);
 
 const exe = chromiumPath();
 if (!exe) {

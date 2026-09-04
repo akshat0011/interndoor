@@ -163,6 +163,27 @@ export async function syncLogos(candidates) {
   return out;
 }
 
+/**
+ * The company's stored logo path, read straight off disk. No network, no index.
+ *
+ * `logoPathFor` needs the map `syncLogos` returns, and syncLogos DOWNLOADS — so
+ * every caller outside publish has been reaching for the published projection
+ * instead, and that is a per-JOB lookup for a per-COMPANY file. A posting
+ * scraped at 18:26 is in the store immediately and does not reach jobs.json
+ * until the next publish, so `publicJob(id)?.logo` is null for up to half an
+ * hour and the LinkedIn card renders a blank white plate for an employer whose
+ * logo has been on disk since July.
+ *
+ * Keyed on the company, which is what the file is named after, so it answers
+ * for a job the site has never heard of.
+ */
+export function logoOnDisk(company) {
+  const slug = logoSlug(company ?? '');
+  if (!slug) return null;
+  const file = existingLogos().get(slug);
+  return file ? `/logos/${file}` : null;
+}
+
 /** Public path for a company's stored logo, or null. */
 export function logoPathFor(company, index) {
   return index.get(logoSlug(company)) ?? null;
