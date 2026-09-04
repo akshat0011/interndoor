@@ -264,5 +264,43 @@ at('and its neighbour', 'Mahad,MH', 'IN');
 // The word-boundary check that keeps `mahad` from eating a Bengaluru suburb.
 at('mahad does not match mahadevapura', 'Mahadevapura, Bengaluru', 'IN');
 
+console.log('\n== a foreign COUNTRY NAME inside a US place name (the New Mexico trap, again) ==');
+/* `holland` was in the Netherlands' `countries` list. The country pass runs
+   BEFORE the city pass and has no weak-evidence step, so \bholland\b matched
+   the second word of "New Holland" — a real Pennsylvania town — and nothing
+   gave `pa` a chance to say otherwise. Exactly what Mexico's deliberately
+   missing `countries` entry has guarded against since August. */
+at('new holland is in pennsylvania', 'New Holland, PA', 'US');
+at('holland michigan too', 'Holland, MI', 'US');
+at('the country still reads by name', 'Netherlands', 'NL');
+at('and in dutch', 'Nederland', 'NL');
+at('and by its cities', 'Rotterdam', 'NL');
+
+console.log('\n== foreign CITY names that are also US places defer to the code ==');
+/* The weak-evidence mechanism GB has carried since Reading, PA resolved to
+   Britain: the city is remembered but not returned until the code pass has had
+   its turn, so a US state code outranks it while a bare city name does not
+   change meaning. */
+at('amsterdam new hampshire', 'Amsterdam, NH', 'US');
+at('dublin ohio', 'Dublin, OH', 'US');
+at('melbourne florida', 'Melbourne, FL', 'US');
+at('bare amsterdam is dutch', 'Amsterdam', 'NL');
+at('bare dublin is irish', 'Dublin', 'IE');
+at('bare melbourne is australian', 'Melbourne', 'AU');
+at('bare warsaw is polish', 'Warsaw', 'PL');
+at('the country name always wins', 'Melbourne, Australia', 'AU');
+at('as does a state code that is not ours', 'Melbourne, VIC', 'AU');
+
+console.log('\n== KNOWN AND NOT FIXED: the six excluded US state codes ==');
+/* `in de or ia me hi` are absent from the US gazetteer on purpose — they
+   collide with India, Germany and ordinary words ("in" matched "In-Office").
+   The cost is that a US location using one has nothing to outrank a foreign
+   city or country match, so the weak step falls through to the foreign answer.
+   These three are pinned AS WRONG, so the day somebody makes those codes work
+   this file says so rather than passing in silence. */
+at('warsaw indiana is still misfiled', 'Warsaw, IN', 'PL');
+at('waterloo iowa is still misfiled', 'Waterloo, IA', 'CA');
+at('dover delaware is still misfiled', 'Dover, DE', 'DE');
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

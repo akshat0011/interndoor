@@ -260,6 +260,8 @@ const REGION_LIST = [
     countries: ['ireland'],
     codes: ['ie'],
     cities: ['dublin', 'cork', 'galway', 'limerick', 'tuam'],
+    // Dublin OH, CA and GA are all real; Dublin OH is a sizeable tech base.
+    ambiguousCities: ['dublin'],
   },
   {
     code: 'NL',
@@ -271,10 +273,19 @@ const REGION_LIST = [
     currency: 'EUR',
     geoId: 102890719,
     telegram: 'https://t.me/interndoor',
-    countries: ['netherlands', 'nederland', 'holland'],
+    /* `holland` IS DELIBERATELY ABSENT, the same decision Mexico carries and for
+       the same reason: the country pass runs BEFORE the city pass, so
+       \bholland\b matched the second word of "New Holland" — a real town in
+       Pennsylvania — and filed a US role in the Netherlands with no chance for
+       the code pass to say otherwise. Holland MI and Holland OH are the same
+       shape. `netherlands` and `nederland` still catch any feed that names the
+       country, and the cities below catch the rest. */
+    countries: ['netherlands', 'nederland'],
     codes: ['nl'],
     cities: ['amsterdam', 'rotterdam', 'eindhoven', 'utrecht', 'the hague',
       'den haag', 'delft', 'groningen', 'north holland'],
+    // Amsterdam NY and Amsterdam NH are real, and a US feed writes them.
+    ambiguousCities: ['amsterdam'],
   },
   {
     code: 'FR',
@@ -305,6 +316,8 @@ const REGION_LIST = [
     codes: ['pl'],
     cities: ['warsaw', 'warszawa', 'krakow', 'kraków', 'cracow', 'wroclaw',
       'wrocław', 'gdansk', 'gdańsk', 'poznan', 'poznań', 'lodz', 'katowice'],
+    // Warsaw, IN and Warsaw, NY are real US towns.
+    ambiguousCities: ['warsaw'],
   },
   {
     code: 'SG',
@@ -334,6 +347,8 @@ const REGION_LIST = [
     codes: ['au'],
     cities: ['sydney', 'melbourne', 'brisbane', 'perth', 'adelaide', 'canberra',
       'new south wales', 'victoria, au'],
+    // Melbourne, FL is a real US city and a large aerospace employer base.
+    ambiguousCities: ['melbourne'],
   },
   {
     code: 'MX',
