@@ -344,18 +344,41 @@ function scanCardsInPage() {
     const logoUrl = logoEl?.getAttribute('src') || logoEl?.getAttribute('data-delayed-url') || '';
     // Still read, so a rolled-back or A/B-served layout that does carry an id
     // is used directly rather than being given a synthetic key it does not need.
-    const href = card.querySelector('a[href*="/jobs/view/"], a[href*="currentJobId="]')?.getAttribute('href') ?? '';
+    // EVERY id in this element, not the first one.
+    //
+    // The element is chosen by walking up from a recency marker to the first
+    // ancestor carrying a logo, 3+ lines and under 420 characters. When a
+    // card's own logo has not lazy-loaded yet that walk steps straight past it
+    // and stops on a wrapper holding TWO short cards — 116 + 107 characters is
+    // comfortably under the cap — and the wrapper then reports the first card's
+    // TEXT with whichever job link comes first. That files one employer's
+    // posting under another's identity, and it is silent: the id is real, the
+    // pane really shows it, and only the company disagrees.
+    //
+    // So an element carrying more than one distinct id is not a card, and the
+    // honest answer is no id rather than a coin flip. idCount is returned so
+    // the caller can COUNT the loss instead of swallowing it.
+    const hrefs = [...card.querySelectorAll('a[href*="/jobs/view/"], a[href*="currentJobId="]')]
+      .map((a) => a.getAttribute('href') ?? '');
+    const idOf = (h) => (h.match(/\/jobs\/view\/(?:[^/?#]*-)?(\d+)/) || [])[1]
+      || (h.match(/currentJobId=(\d+)/) || [])[1] || null;
+    const linkIds = [...new Set(hrefs.map(idOf).filter(Boolean))];
+    const href = hrefs[0] ?? '';
     const idHolder = card.matches?.('[data-occludable-job-id], [data-job-id]')
       ? card
       : card.querySelector('[data-occludable-job-id], [data-job-id]');
-    const jobId =
+    const attrIds = [...new Set([...card.querySelectorAll('[data-occludable-job-id], [data-job-id]')]
+      .map((e) => e.getAttribute('data-occludable-job-id') || e.getAttribute('data-job-id'))
+      .filter(Boolean))];
+    const idCount = Math.max(linkIds.length, attrIds.length);
+    const jobId = idCount > 1 ? null : (
       idHolder?.getAttribute('data-occludable-job-id') ||
       idHolder?.getAttribute('data-job-id') ||
-      (href.match(/\/jobs\/view\/(?:[^/?#]*-)?(\d+)/) || [])[1] ||
-      (href.match(/currentJobId=(\d+)/) || [])[1] ||
-      null;
+      linkIds[0] ||
+      null);
 
     return {
+      idCount,
       lines: linesOf(card),
       logoUrl: /^https?:\/\//.test(logoUrl) ? logoUrl : '',
       jobId,
@@ -806,6 +829,13 @@ export async function enumerateCards(page, cfg) {
   const seen = new Set();
   const identityCounts = new Map();
   const unidentified = [];
+  /* Elements that turned out to hold more than one posting — see the idCount
+     comment in scanCardsInPage. The row is KEPT, because its text belongs to
+     the first card and the identity path can re-find that card on a fresh scan
+     where the logo has loaded and the boundary is right; what it must not keep
+     is the id, which may be the neighbour's. Counted so a silent
+     mis-attribution becomes a number somebody can watch. */
+  let spanned = 0;
   const cards = [];
 
   scanned.rows.forEach((row, index) => {
@@ -819,6 +849,8 @@ export async function enumerateCards(page, cfg) {
       unidentified.push(String(parsed.title || parsed.company || row.lines[0] || '').slice(0, 60));
       return;
     }
+
+    if ((row.idCount ?? 0) > 1) spanned++;
 
     // A real id if the page happened to carry one, a synthetic key otherwise.
     const key = row.jobId ?? cardKey(parsed);
@@ -846,7 +878,7 @@ export async function enumerateCards(page, cfg) {
     });
   });
 
-  return { cards, unidentified };
+  return { cards, unidentified, spanned };
 }
 
 /**

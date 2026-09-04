@@ -673,7 +673,15 @@ async function main() {
           }
         }
 
-        const { cards, unidentified } = await li.enumerateCards(page, cfg);
+        const { cards, unidentified, spanned } = await li.enumerateCards(page, cfg);
+        if (spanned) {
+          // One element holding two postings. Its id is refused rather than
+          // guessed (scanCardsInPage), so the card falls to the identity path
+          // and is re-found on a scan where the boundary is right. Warned
+          // because the failure it replaces was invisible: a real id, a pane
+          // that really shows it, and only the employer disagreeing.
+          log.warn(`${spanned} card element(s) on this page spanned more than one posting — id refused rather than guessed.`);
+        }
         if (unidentified?.length) {
           counters.cardsWithoutId += unidentified.length;
           log.warn(`${unidentified.length} card(s) on this page had no readable company or title and could not be processed: ${unidentified.filter(Boolean).slice(0, 3).join(' | ')}`);
