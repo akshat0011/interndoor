@@ -97,11 +97,29 @@ export async function focusApp(appName = 'Brave Browser') {
 }
 
 /** Open a file or URL with the default handler. */
+/**
+ * Hand a file or URL to the default application.
+ *
+ * IT SAYS SO WHEN IT FAILS, and that is the whole point of the catch having a
+ * body. All four callers discard the boolean — index.js's auto-open, both of
+ * queue-server's and weekly.js's — so a failure here used to leave NOTHING
+ * anywhere: no log line, no banner difference, no run-status change. "Why did
+ * the report not open" was then unanswerable from the logs, which is the same
+ * shape as the apply-link tripwire in §7: a signal you only hear from on
+ * failure is one nobody notices the silence of.
+ *
+ * A scheduled run is spawned by launchd rather than from a terminal, so this is
+ * exactly where `open` can refuse (LSOpenURLsWithRole errors carry a number
+ * worth reading) while working perfectly by hand. Still non-fatal: opening a
+ * convenience window must never fail a scan that has already collected and
+ * published.
+ */
 export async function open(target) {
   try {
     await exec('/usr/bin/open', [target]);
     return true;
-  } catch {
+  } catch (err) {
+    log.warn(`Could not open ${target} — ${String(err?.message ?? err).trim().split('\n')[0]}`);
     return false;
   }
 }
