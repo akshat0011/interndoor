@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788541031299,
+ "generatedAt": 1788542682616,
  "region": "IN",
  "regionName": "India",
  "count": 249,
@@ -607,6 +607,56 @@
    "cardFacts": [
     "Gurgaon",
     "On-site"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "ats:workday:copeland:wd5:Copeland_External_Careers_Page:JR117534",
+   "title": "Electronics Intern",
+   "company": "Copeland",
+   "matchedWatchlist": "Copeland",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/copeland.jpg",
+   "location": "Pune, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "6 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "matlab"
+   ],
+   "summary": "We create sustainable and efficient residential, commercial and industrial spaces through HVACR technologies. We protect temperature-sensitive goods throughout the cold chain. And we bring comfort to people globally. Whether you are a professional looking for a career change, an undergraduate student exploring your first opportunity, or recent graduate with an advanced degree, we have opportunities that will allow you to innovate, be challenged and make an impact.",
+   "bullets": [
+    "Build and automate simulation workflows for EMI/EMC, thermal, and signal integrity analysis",
+    "Use ANSYS tools and Python to develop physics-based models for PCB assemblies",
+    "Collaborate with R&D teams to validate simulation results and support design decisions"
+   ],
+   "roleLabel": "Electronics Simulation",
+   "degreeLevel": "PG",
+   "degreeText": "M.Tech / MS / MSc",
+   "keySkills": [
+    "ansys",
+    "python",
+    "emc",
+    "thermal analysis",
+    "signal integrity"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788480000000,
+   "firstSeenAt": 1788541912084,
+   "lastSeenAt": 1788541912084,
+   "url": "https://copeland.wd5.myworkdayjobs.com/en-US/Copeland_External_Careers_Page/job/Pune-India/Electronics-Intern_JR117534",
+   "applyUrl": "https://copeland.wd5.myworkdayjobs.com/en-US/Copeland_External_Careers_Page/job/Pune-India/Electronics-Intern_JR117534",
+   "description": null,
+   "roleFingerprint": "bfd9e71e5c",
+   "cardFacts": [
+    "Pune",
+    "6 months"
    ],
    "region": "IN"
   },
@@ -1669,7 +1719,7 @@
    "postedText": null,
    "postedAt": 1788338321000,
    "firstSeenAt": 1788339822162,
-   "lastSeenAt": 1788540055288,
+   "lastSeenAt": 1788541854864,
    "url": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "applyUrl": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "description": null,
@@ -4116,56 +4166,6 @@
    "region": "IN"
   },
   {
-   "id": "4456938790",
-   "title": "Electronics Intern",
-   "company": "Copeland",
-   "matchedWatchlist": "Copeland",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/copeland.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "6 months",
-   "applicants": "6 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab"
-   ],
-   "summary": "This internship involves creating and refining simulation models for electronic components and PCBs. The intern will work on EMI/EMC, thermal, and signal integrity analysis using industry tools. It is suited for postgraduate students with a background in electronics or computational engineering.",
-   "bullets": [
-    "Develop simulation workflows for EMI/EMC, thermal, and signal integrity analysis",
-    "Use Python and ANSYS tools to automate and standardize simulation processes",
-    "Collaborate with R&D teams to validate models and support design decisions"
-   ],
-   "roleLabel": "Electronics Simulation",
-   "degreeLevel": "PG",
-   "degreeText": "M.Tech/M.Sc",
-   "keySkills": [
-    "python",
-    "ansys",
-    "hfss",
-    "matlab"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "30 minutes ago",
-   "postedAt": 1787675635148,
-   "firstSeenAt": 1787677435151,
-   "lastSeenAt": 1787677435151,
-   "url": "https://www.linkedin.com/jobs/view/4456938790/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4456938790/",
-   "description": null,
-   "roleFingerprint": "7c0a511d3f",
-   "cardFacts": [
-    "Pune Division",
-    "On-site",
-    "6 months"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4458765455",
    "title": "Trainee, Market Intelligence",
    "company": "Monotype",
@@ -5603,7 +5603,7 @@
    "postedText": null,
    "postedAt": 1787564969000,
    "firstSeenAt": 1787566342251,
-   "lastSeenAt": 1788540069114,
+   "lastSeenAt": 1788541860559,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6149788004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6149788004",
    "description": null,
@@ -6762,7 +6762,7 @@
    "postedText": null,
    "postedAt": 1787230662000,
    "firstSeenAt": 1787231465482,
-   "lastSeenAt": 1788540111055,
+   "lastSeenAt": 1788541889694,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "description": null,
@@ -7750,7 +7750,7 @@
    "postedText": null,
    "postedAt": 1787131693000,
    "firstSeenAt": 1787135871164,
-   "lastSeenAt": 1788540099509,
+   "lastSeenAt": 1788541879160,
    "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
    "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
    "description": null,
@@ -12647,7 +12647,7 @@
    "postedText": null,
    "postedAt": 1784036805000,
    "firstSeenAt": 1787508855196,
-   "lastSeenAt": 1788540069117,
+   "lastSeenAt": 1788541860563,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "description": null,
@@ -12694,7 +12694,7 @@
    "postedText": null,
    "postedAt": 1782882475000,
    "firstSeenAt": 1785938940218,
-   "lastSeenAt": 1788540099979,
+   "lastSeenAt": 1788541879750,
    "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556911730",
    "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556911730",
    "description": null,
@@ -12739,7 +12739,7 @@
    "postedText": null,
    "postedAt": 1782218042000,
    "firstSeenAt": 1785940207500,
-   "lastSeenAt": 1788540092709,
+   "lastSeenAt": 1788541868889,
    "url": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "applyUrl": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "description": null,
