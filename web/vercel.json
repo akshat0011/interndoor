@@ -143,8 +143,8 @@
       "permanent": true
     },
     {
-      "source": "/Jobs/:path*",
-      "destination": "/jobs/:path*",
+      "source": "/Jobs/:path+",
+      "destination": "/jobs/:path+",
       "permanent": true
     },
     {

@@ -51,16 +51,43 @@ const bySource = new Map(redirects.map((r) => [r.source, r.destination]));
 for (const [from, to] of [
   ['/Companies', '/companies'],
   ['/Companies/:path*', '/companies/:path*'],
-  ['/Jobs/:path*', '/jobs/:path*'],
+  ['/Jobs/:path+', '/jobs/:path+'],
   ['/Skills/:path*', '/skills/:path*'],
   ['/Locations/:path*', '/locations/:path*'],
 ]) check(`${from} -> ${to}`, bySource.get(from), to);
 
-/* The one that must NOT exist. `/jobs` has no index page; mapping the bare
-   capital form to it trades a 404 for a redirect to a 404. */
-console.log('\n== and the one that must not be added ==');
-check('bare /Jobs is not redirected', bySource.has('/Jobs'), false);
+/* The one that must NOT be reachable — and asserting the CONFIG SHAPE was not
+   enough. `/jobs` has no index page, so nothing may send `/Jobs` there. The
+   first version of this check asked `bySource.has('/Jobs')` and passed, while
+   the live site answered `/Jobs -> 308 -> /jobs -> 404`: in path-to-regexp
+   `:path*` matches ZERO or more segments, so `/Jobs/:path*` swallowed the bare
+   form. Match every source against the path instead, the way Vercel does. */
+console.log('\n== nothing routes bare /Jobs into the jobs 404 ==');
+const matches = (source, path) => {
+  /* Tokenise BEFORE escaping. Escaping first turns the `+` of `:path+` into a
+     literal `\+`, so the one-or-more branch never fires and the matcher claims
+     a deep path does not match — which the three pins below caught. */
+  const param = /\/:([A-Za-z0-9_]+)([*+])?/g;
+  const esc = (lit) => lit.replace(/[.*+^${}()|[\]\\]/g, '\\$&');
+  let out = '^', last = 0, m;
+  while ((m = param.exec(source)) !== null) {
+    out += esc(source.slice(last, m.index));
+    out += m[2] === '*' ? '(?:/(.*))?' : m[2] === '+' ? '/(.+)' : '/([^/]+)';
+    last = m.index + m[0].length;
+  }
+  return new RegExp(out + esc(source.slice(last)) + '$').test(path);
+};
+/* The matcher itself needs pinning, or a broken regex quietly passes it all. */
+check('matcher: /Jobs/:path* DOES swallow /Jobs', matches('/Jobs/:path*', '/Jobs'), true);
+check('matcher: /Jobs/:path+ does NOT', matches('/Jobs/:path+', '/Jobs'), false);
+check('matcher: /Jobs/:path+ still takes a deep path', matches('/Jobs/:path+', '/Jobs/adobe-x-123'), true);
+
+const hits = redirects.filter((r) => matches(r.source, '/Jobs'));
+check('no redirect source matches bare /Jobs', hits.map((r) => r.source), []);
 check('and /jobs genuinely has no index page', resolves('/jobs'), false);
+/* while the deep form must still be mapped */
+const deep = redirects.filter((r) => matches(r.source, '/Jobs/adobe-apprentice-tech-4457612403'));
+check('the deep /Jobs form is still redirected', deep.length >= 1, true);
 
 /* Case corrections are canonical, not temporary. */
 console.log('\n== they are permanent ==');
