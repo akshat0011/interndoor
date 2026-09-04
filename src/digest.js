@@ -105,13 +105,21 @@ function roleBlock(row, cfg, code) {
   let list = row.bullets;
   if (typeof list === 'string') { try { list = JSON.parse(list); } catch { list = []; } }
   const bullets = (Array.isArray(list) ? list : [])
-    .slice(0, MAX_BULLETS).map((b) => `  - ${b}`).join('\n');
+    .slice(0, MAX_BULLETS).map((b) => `- ${b}`).join('\n');
 
+  /* BLANK LINES BETWEEN THE PARTS, NOT SINGLE NEWLINES. A single \n in
+     markdown is a soft wrap, so the first draft rendered every role as one run-
+     on paragraph — "Pixxel — AI & Data Engineering Intern Bengaluru, Karnataka,
+     India - Build data pipelines…" — with the bullets flattened into literal
+     " - " text. A list also needs a blank line before it or it is absorbed into
+     the preceding paragraph. Caught in Buttondown's own preview pane; the
+     source editor beside it shows the raw markdown either way, so it looks
+     identical whether this is right or wrong. */
   return [
     `**${row.company}** — [${row.title}](${url})`,
-    facts ? `${facts}` : '',
+    facts || '',
     bullets,
-  ].filter(Boolean).join('\n');
+  ].filter(Boolean).join('\n\n');
 }
 
 /**

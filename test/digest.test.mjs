@@ -87,6 +87,26 @@ check('tagged as email, not social', /utm_source=email&utm_medium=email/.test(ma
 check('no social medium anywhere', /utm_medium=social/.test(mail.body), false);
 check('bullets are carried', mail.body.includes('Ship a service behind a flag.'), true);
 
+console.log('\n== the markdown separates blocks, or it renders as one run-on line ==');
+/* A SINGLE \n IN MARKDOWN IS A SOFT WRAP, NOT A BREAK. The first draft filed
+   with Buttondown rendered every role as one paragraph — "Pixxel — AI & Data
+   Engineering Intern Bengaluru, Karnataka, India - Build data pipelines…" —
+   with the bullets flattened into literal " - " text, because the parts were
+   joined with \n. A list is also absorbed into the paragraph above it unless a
+   blank line precedes it. None of this is visible in Buttondown's source
+   editor, which shows raw markdown whether it is right or wrong; it only shows
+   in the preview pane. So it is asserted here. */
+const md = buildDigest([row()], cfg, { region: 'IN', now }).body;
+check('a blank line after the title line', /\]\([^)]+\)\n\n/.test(md), true);
+check('a blank line before the bullet list', /\n\n- Ship a service/.test(md), true);
+check('bullets start at column 0', /^- Ship a service/m.test(md), true);
+check('no two-space-indented bullets', /^ {1,3}- /m.test(md), false);
+/* The control: a role with no location and no bullets must not leave a run of
+   blank lines behind it. */
+const bare = buildDigest([row({ location: null, bullets: null, workplace_type: null })],
+  cfg, { region: 'IN', now }).body;
+check('no triple blank line when parts are missing', /\n{3,}/.test(bare.trim()), false);
+
 console.log('\n== the two fields that must never be printed ==');
 /* §11: stipendStatus is INVENTED — of 47 India rows marked unpaid, zero say so
    — and postedText is frozen at scrape time, so it read "4 minutes ago" on a
