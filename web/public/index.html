@@ -15,9 +15,15 @@
      says nothing a search engine can match, and on the brand query alone it
      loses to any unrelated company of the same name, because nothing on the
      page tells Google this one is about internships. Brand first, then what it
-     is. og:title and twitter:title are NOT in here — "InternDoor — be early" is
-     brand copy, the same in every region, and deliberately different from
-     <title>. -->
+     is.
+
+     og:title and twitter:title USED to sit outside these markers as brand copy
+     — "InternDoor — be early", the same in every region. Moved inside on
+     4 Sep 2026 and made region-aware. The reason: Google's AI Overview for the
+     brand query described the site as running "heavily through its newsletter",
+     because it was reading Buttondown's public archive page rather than this
+     one, and nothing a crawler met first said what the site is. The share card
+     and the heading now lead with the category, the same as <title>. -->
 <!--REGION:HEAD-->
 <title>InternDoor — Engineering Internships in India</title>
 <meta name="description" content="Engineering internships in India, listed minutes after they go live. Fresh openings refreshed every 30 minutes — apply while the queue is still short.">
@@ -64,7 +70,6 @@
      ?v= when og.jpg is regenerated, otherwise the old card sticks around for weeks. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="InternDoor">
-<meta property="og:title" content="InternDoor — be early">
 <meta property="og:image" content="https://interndoor.com/og.jpg?v=5">
 <meta property="og:image:secure_url" content="https://interndoor.com/og.jpg?v=5">
 <meta property="og:image:type" content="image/jpeg">
@@ -72,7 +77,6 @@
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="InternDoor — be early">
 <meta name="twitter:image" content="https://interndoor.com/og.jpg?v=5">
 
 
@@ -197,7 +201,11 @@
            "Be early." rendered as BE EARLY followed by two marks — a typographic
            period and then the accent — which read as a stray double dot. The
            square IS the full stop. -->
-      <h1>Be early</h1>
+      <!-- REGION-FILLED. "Be early" said nothing about the subject, and an <h1>
+           is the strongest single on-page signal there is — a crawler met the
+           brand voice and no category. The fill carries the words; the lime
+           square after it is still the full stop. -->
+      <h1><!--REGION:H1-->Engineering internships in India<!--/REGION:H1--></h1>
       <!-- This paragraph is the only real prose a crawler gets before the board,
            which is built by JavaScript from jobs.json. When it did not name the
            subject, Google discarded the meta description and wrote the search

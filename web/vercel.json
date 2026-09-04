@@ -131,6 +131,41 @@
       "source": "/in/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/Companies",
+      "destination": "/companies",
+      "permanent": true
+    },
+    {
+      "source": "/Companies/:path*",
+      "destination": "/companies/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/Jobs/:path*",
+      "destination": "/jobs/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/Skills",
+      "destination": "/skills",
+      "permanent": true
+    },
+    {
+      "source": "/Skills/:path*",
+      "destination": "/skills/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/Locations",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/Locations/:path*",
+      "destination": "/locations/:path*",
+      "permanent": true
     }
   ]
 }

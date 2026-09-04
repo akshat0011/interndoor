@@ -2946,6 +2946,12 @@ function homeHead(region, alternates, channels = []) {
   const description = `Engineering internships ${region.inName}, listed minutes after they go live. `
     + 'Fresh openings refreshed every 30 minutes — apply while the queue is still short.';
   const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
+  /* THE SHARE CARD LEADS WITH THE CATEGORY, NOT THE BRAND VOICE. It read
+     "InternDoor — be early" in every region, which is what a LinkedIn or
+     WhatsApp card showed and what a crawler met before any prose. Google's AI
+     Overview for the brand query duly described the site through Buttondown's
+     newsletter archive instead. Same shape as <title>, category first. */
+  const socialTitle = `Engineering Internships in ${where} — InternDoor`;
   const imageAlt = `InternDoor — be early. Software internships ${region.inName}, listed minutes after they go live.`;
 
   const ld = {
@@ -3004,9 +3010,11 @@ ${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads
 <link rel="alternate" type="application/rss+xml" title="InternDoor — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
 <link rel="alternate" type="application/feed+json" title="InternDoor — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
 <meta property="og:url" content="${esc(url)}">
+<meta property="og:title" content="${esc(socialTitle)}">
 <meta property="og:description" content="${esc(social)}">
 <meta property="og:image:alt" content="${esc(imageAlt)}">
 <meta property="og:locale" content="${region.hreflang.replace('-', '_')}">
+<meta name="twitter:title" content="${esc(socialTitle)}">
 <meta name="twitter:description" content="${esc(social)}">
 <meta name="twitter:image:alt" content="${esc(imageAlt)}">
 <script type="application/ld+json">${jsonLd(ld)}</script>`;
@@ -3100,6 +3108,11 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   // the phrase it punctuates anyway.
   html = fillMarker(html, 'REGION:LEDE',
     '<strong>Engineering internships</strong>,') ?? html;
+  /* The heading. `fillMarker` writes a newline before the closing marker and it
+     renders as a space, so nothing here may end in punctuation — the full stop
+     is `.lede h1::after`, a lime square, and a trailing character would sit
+     between the words and the square. */
+  html = fillMarker(html, 'REGION:H1', `Engineering internships ${region.inName}`) ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
   // A regex, not a literal swap: the template's own lang is en-IN (it IS the
   // India board), so matching `lang="en"` silently did nothing and every region
