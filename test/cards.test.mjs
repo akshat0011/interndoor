@@ -106,6 +106,52 @@ card('recency badge, decorated label', [
 ], { title: 'Frontend Developer Intern', company: 'Udhi Technologies', location: 'India',
      workplaceType: 'Remote', postedText: '6 minutes ago', easyApply: true, viewed: false });
 
+console.log('\n== the verification badge (4 Sep 2026) ==');
+// LinkedIn re-worded "(Verified job)" to "<title> with verification" AND gave
+// it a line of its own AFTER the title instead of decorating the label. These
+// are the verbatim shapes that were live at 06:13 IST on 4 Sep 2026, read back
+// off the seen_cards rows they produced. Unfixed, the badge line lands in the
+// COMPANY slot, the real company lands in the LOCATION slot and the location is
+// lost — so the watchlist gate refuses every verified employer.
+card('verification line does not become the company', [
+  'Software Engineer Intern', 'Software Engineer Intern with verification',
+  'Joveo', 'Bengaluru, Karnataka, India (Hybrid)',
+  'Company review time is typically 1 week', '1 hour ago', 'Easy Apply',
+], { title: 'Software Engineer Intern', company: 'Joveo',
+     location: 'Bengaluru, Karnataka, India', workplaceType: 'Hybrid',
+     postedText: '1 hour ago', easyApply: true, viewed: false });
+
+card('a title containing the word verification survives it', [
+  'Analog Mixed Signal Verification Intern',
+  'Analog Mixed Signal Verification Intern with verification',
+  'Infineon Technologies', 'Bengaluru East, Karnataka, India (On-site)',
+  'Be an early applicant', '2 hours ago',
+], { title: 'Analog Mixed Signal Verification Intern', company: 'Infineon Technologies',
+     location: 'Bengaluru East, Karnataka, India', workplaceType: 'On-site',
+     postedText: '2 hours ago', easyApply: false, viewed: false });
+
+// Order-agnostic on purpose: the same rule has to hold if LinkedIn puts the new
+// wording back on the label, where "(Verified job)" used to sit. A fix that only
+// filtered the second line would pass the case above and fail this one.
+card('verification wording on the label instead', [
+  'Selected, Young Graduate Trainee with verification', 'Young Graduate Trainee',
+  'Infineon Technologies', 'Bengaluru East, Karnataka, India (On-site)',
+  'Viewed', '·', '2 hours ago',
+], { title: 'Young Graduate Trainee', company: 'Infineon Technologies',
+     location: 'Bengaluru East, Karnataka, India', workplaceType: 'On-site',
+     postedText: '2 hours ago', easyApply: false, viewed: true });
+
+// The identity is what the watchlist skip records key on, and it is the field
+// that actually went wrong in production: the real key was never written, so
+// every verified card looked new and was refused on a company name that was
+// really its own title.
+check('the identity keys on the real employer',
+  cardIdentity(parseCardLines([
+    'Software Engineer Intern', 'Software Engineer Intern with verification',
+    'Joveo', 'Bengaluru, Karnataka, India (Hybrid)', '1 hour ago',
+  ])),
+  'card:joveo|software engineer intern|bengaluru, karnataka, india');
+
 console.log('\n== reading by line NUMBER is what breaks ==');
 // Fixed indices work on a decorated card and quietly file metadata as the
 // location on an undecorated one. These two differ by one line and must parse

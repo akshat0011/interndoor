@@ -366,11 +366,29 @@ function scanCardsInPage() {
   return { rows, hasContainer: !!container };
 }
 
-/** Strip the decorations LinkedIn adds to a card's accessible label. */
+/**
+ * Strip the decorations LinkedIn adds to a card's accessible label.
+ *
+ * "(Verified job)" was re-worded to "<title> with verification" on 4 Sep 2026
+ * AND moved: it no longer decorates the label at clean[0], it is a line of its
+ * own immediately AFTER the title. That put it in the COMPANY slot, pushed the
+ * real company into the location slot and dropped the location entirely — so
+ * every verified employer's card read as an unknown company and was refused by
+ * the watchlist gate. Measured: 1,004 cards in the first twelve hours, and
+ * because LinkedIn verifies exactly the large employers this board is built
+ * from, US intake fell 313 -> 44 in a day while every health signal (runs ok,
+ * 22 cards a page, baselines moving) stayed green.
+ *
+ * Stripping it HERE rather than in the fact filter is what makes the fix
+ * order-agnostic: the same rule removes the suffix whether LinkedIn puts the
+ * decoration on the label (the old shape) or on a line of its own (the new
+ * one), so a revert costs nothing.
+ */
 function undecorate(line) {
   return String(line ?? '')
     .replace(/^Selected,\s*/i, '')
     .replace(/\s*\((?:Verified job|Promoted)\)\s*$/i, '')
+    .replace(/\s+with verification\s*$/i, '')
     .trim();
 }
 
@@ -389,10 +407,13 @@ function isMetaLine(line) {
  * Turn one card's visible text into fields.
  *
  * A card reads: accessible label / title / company / location, then metadata.
- * The label repeats the title with "Selected, " and "(Verified job)" bolted on,
- * and it is absent on some cards — so the title is taken from the first line
- * with those decorations removed, the repeat is dropped wherever it lands, and
- * company and location are the first two lines left that are not furniture.
+ * The label repeats the title with "Selected, " and "(Verified job)" bolted on
+ * — since 4 Sep 2026 the verified mark is instead a line of its OWN reading
+ * "<title> with verification", which is why `undecorate` runs over every line
+ * and not just the first — and it is absent on some cards, so the title is
+ * taken from the first line with those decorations removed, the repeat is
+ * dropped wherever it lands, and company and location are the first two lines
+ * left that are not furniture.
  * Reading by fixed line NUMBER looks like it works on the first few cards and
  * then silently files "Be an early applicant" as the location.
  *
