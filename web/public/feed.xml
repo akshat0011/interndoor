@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 04 Sep 2026 00:06:33 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 04 Sep 2026 00:47:26 GMT</lastBuildDate>
+  <item>
+    <title>AI &amp; Data Engineering Intern — Pixxel</title>
+    <link>https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205</guid>
+    <pubDate>Fri, 04 Sep 2026 00:47:26 GMT</pubDate>
+    <description>Company: Pixxel · Location: Bengaluru, Karnataka, India
+• Build data pipelines for geospatial data fusion and real-time processing
+• Develop AI models for object detection and multi-sensor analysis
+• Work on transformer and vision-language models for geospatial intelligence</description>
+  </item>
   <item>
     <title>AI Generalist Internship in Gurgaon — Sunstone</title>
     <link>https://interndoor.com/jobs/sunstone-ai-generalist-internship-in-gurgaon-4463141894</link>
@@ -502,16 +512,6 @@
 • Develop and maintain software components for production systems
 • Work with Node.js, Java, REST APIs, and database design
 • Collaborate with engineers on backend services and system reliability</description>
-  </item>
-  <item>
-    <title>Software Engineer Internship (Frontend) — FanCode</title>
-    <link>https://interndoor.com/jobs/fancode-software-engineer-internship-frontend-4460312823</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/fancode-software-engineer-internship-frontend-4460312823</guid>
-    <pubDate>Fri, 28 Aug 2026 10:12:04 GMT</pubDate>
-    <description>Company: FanCode · Location: Mumbai Metropolitan Region
-• Build responsive interfaces using react and modern js
-• Work on web and mobile apps for millions of users
-• Collaborate with engineering and design teams</description>
   </item>
 </channel>
 </rss>
