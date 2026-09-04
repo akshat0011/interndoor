@@ -42,16 +42,19 @@
   .word em{font-style:normal;color:var(--live)}
 
   /* The radar, bleeding off the right edge as it does on the board and the OG
-     card. Opacities are BELOW draft E's: there the rings crossed the title and
-     cost legibility at feed size, which is the size that matters. It sits at
-     z-index 0 under both columns and stops above the band. */
+     card. Chosen by rendering .13 / .26 / .38 side by side rather than picking
+     a number: at .38 the rings read clearly and the title still holds, because
+     white Archivo 900 sits well above them and the sweep's centre is out in the
+     corner. Do not lower these to "protect" the title — that was tried at .13
+     and the radar simply vanished at feed size. z-index 0, under both columns,
+     stopping above the band. */
   /* Centre pushed into the top-right CORNER on purpose. Centred nearer the
      middle, the sweep's centre dot lands on the title and reads as a typo —
      it did exactly that on NVIDIA's "L1/L2 - Fall 2026". */
   .radar{position:absolute;right:-300px;top:-285px;width:780px;height:780px;pointer-events:none;z-index:0}
-  .ring{fill:none;stroke:var(--live);stroke-width:1.4;opacity:.13}
-  .cross{stroke:var(--live);stroke-width:1.4;opacity:.055}
-  .sweep{fill:var(--live);opacity:.075}
+  .ring{fill:none;stroke:var(--live);stroke-width:1.4;opacity:.38}
+  .cross{stroke:var(--live);stroke-width:1.4;opacity:.17}
+  .sweep{fill:var(--live);opacity:.22}
   .L{position:absolute;left:0;top:0;width:540px;height:531px;padding:82px 42px 26px;z-index:2;
      display:flex;flex-direction:column;justify-content:center;gap:26px}
   .plate{width:300px;height:300px;background:#fff;border-radius:30px;padding:18px;flex:none;
