@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788530274775,
+ "generatedAt": 1788530997525,
  "region": "IN",
  "regionName": "India",
- "count": 253,
- "techCount": 253,
+ "count": 251,
+ "techCount": 251,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -12808,102 +12808,6 @@
    "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556911730",
    "description": null,
    "roleFingerprint": "51c16f955c",
-   "cardFacts": [
-    "India",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:microsoft:India:1970393556917520",
-   "title": "Data Science INTERN",
-   "company": "Microsoft",
-   "matchedWatchlist": "Microsoft",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/microsoft.jpg",
-   "location": "India, Multiple Locations, Multiple Locations",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "algorithms"
-   ],
-   "summary": "Come build community, explore your passions and do your best work at Microsoft with thousands of University interns from every corner of the world. As a Data Scientist Intern at Microsoft, you will use machine learning, statistics, experiments, and more to build and improve great products while making business impact. As a Data Scientist intern you will collaborate with stakeholders, formulate approaches to solve problems and use algorithms and data sources in the context of business and engineering needs. You will also be able to combine your engineering abilities with analytical skills to make customer…",
-   "bullets": [
-    "Build product features using machine learning, statistics, and experimental data",
-    "Formulate algorithmic approaches to solve complex business problems",
-    "Share data insights with product stakeholders to improve customer experiences"
-   ],
-   "roleLabel": "Data science",
-   "degreeLevel": "PG",
-   "degreeText": "PhD",
-   "keySkills": [
-    "machine learning",
-    "statistics",
-    "algorithms"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1782798656000,
-   "firstSeenAt": 1785938942198,
-   "lastSeenAt": 1786426189904,
-   "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556917520",
-   "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556917520",
-   "description": null,
-   "roleFingerprint": "7224c9a9a9",
-   "cardFacts": [
-    "India",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:microsoft:India:1970393556917519",
-   "title": "Applied Sciences INTERN",
-   "company": "Microsoft",
-   "matchedWatchlist": "Microsoft",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/microsoft.jpg",
-   "location": "India, Multiple Locations, Multiple Locations",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "algorithms"
-   ],
-   "summary": "Come build community, explore your passions and do your best work at Microsoft with thousands of University interns from every corner of the world. As an Applied Science Intern at Microsoft, you will be at the forefront of technological innovation, working collaboratively to bring research to life in our products and services. You'll gain expertise in cutting-edge research areas, apply advanced concepts to real-world needs, and use state-of-the-art tools to make a tangible impact on product quality and business outcomes. You'll contribute to the creation of intelligent solutions through data analysis, modeling,…",
-   "bullets": [
-    "Improve algorithm performance on large-scale datasets and ML applications",
-    "Design ML experiments and build prototype scalable AI systems",
-    "Prepare, clean, and structure data to build production machine learning models"
-   ],
-   "roleLabel": "Applied science research",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "machine learning",
-    "algorithms",
-    "data analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1782798576000,
-   "firstSeenAt": 1785938941184,
-   "lastSeenAt": 1786426190406,
-   "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556917519",
-   "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556917519",
-   "description": null,
-   "roleFingerprint": "9ba2a58512",
    "cardFacts": [
     "India",
     "On-site"
