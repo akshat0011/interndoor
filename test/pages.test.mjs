@@ -1030,8 +1030,16 @@ const navBoard = readFileSync(join(ROOT, 'web', 'public', 'index.html'), 'utf8')
 const navBoardOK = () => ['"/companies"', '"/skills"'].every((h) => navBoard.includes(h));
 check('all three items are on a company hub',
   ['>Internships<', '>Companies<', '>Skills<'].every((x) => panel.includes(x)), true);
-check('and the one you are on is marked',
-  /<a href="[^"]*\/companies" aria-current="page">Companies</.test(panel), true);
+/* `true`, NOT `page`: a hub lives INSIDE the Companies section but is not
+   /companies, so "current page" would be a lie — and the region switcher on a
+   multi-region hub already emits an aria-current="page" of its own, so saying
+   it here had two links both claiming to be this page. */
+check('a hub marks the section as current, not as the page',
+  /<a href="[^"]*\/companies" aria-current="true">Companies</.test(panel), true);
+check('and never claims to BE the page', panel.includes('aria-current="page">Companies'), false);
+check('while the directory itself does claim it',
+  /<a href="[^"]*\/companies" aria-current="page">Companies</
+    .test(renderCompanyIndex(new Map(), new Map(), new Map(), {})), true);
 /* regionHref TRIMS the trailing slash (vercel.json sets trailingSlash:false),
    so the emitted href is /companies and not /companies/. That matters beyond
    cosmetics: localiseLinks matches REGION_LINKS as a quoted literal, so a
@@ -1040,7 +1048,7 @@ check('and the one you are on is marked',
 check('the nav href carries no trailing slash', panel.includes('href="/companies/"'), false);
 check('so the board template can be localised at all',
   navBoardOK(), true);
-check('exactly one item is current', (panel.match(/aria-current="page"/g) ?? []).length, 1);
+check('exactly one nav item is current', (panel.match(/aria-current="(page|true)"/g) ?? []).length, 1);
 check('the board template carries the same three',
   ['>Internships<', '>Companies<', '>Skills<'].every((x) => navBoard.includes(x)), true);
 /* The board IS the internships list, so it marks that item rather than

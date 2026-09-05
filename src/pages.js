@@ -881,7 +881,16 @@ function regionSwitch(current, regions) {
  * works perfectly on every local server. That is exactly how the no-flash theme
  * script shipped broken on 21 Aug.
  */
-function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '' }) {
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '', sectionExact = false }) {
+  /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
+     the Companies section but is not /companies, so announcing its nav item as
+     "current page" is simply untrue — and the region switcher already carries
+     an aria-current="page" of its own, so a hub was telling a screen reader
+     that two different links were both this page and neither was. `true` is
+     the value for "the current item in this set". */
+  const here = (name) => (section === name
+    ? (sectionExact ? ' aria-current="page"' : ' aria-current="true"')
+    : '');
   return `<!doctype html>
 <html lang="${region.hreflang}">
 <head>
@@ -940,9 +949,9 @@ ${scripts}<script defer src="/subscribe.js"></script>
          the reader loses the position they had learned. aria-current is the
          answer to "where am I"; absence is not. -->
     <nav class="bar-nav" aria-label="Sections">
-      <a href="${regionHref('/', region)}"${section === 'internships' ? ' aria-current="page"' : ''}>Internships</a>
-      <a href="${regionHref('/companies/', region)}"${section === 'companies' ? ' aria-current="page"' : ''}>Companies</a>
-      <a href="${regionHref('/skills/', region)}"${section === 'skills' ? ' aria-current="page"' : ''}>Skills</a>
+      <a href="${regionHref('/', region)}"${here('internships')}>Internships</a>
+      <a href="${regionHref('/companies/', region)}"${here('companies')}>Companies</a>
+      <a href="${regionHref('/skills/', region)}"${here('skills')}>Skills</a>
     </nav>
 
     <div class="bar-right">
@@ -2645,6 +2654,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
     alternates,
     alternatePath: '/companies/',
       section: 'companies',
+    sectionExact: true,
   })}
 <main class="page">
   <div class="wrap">
