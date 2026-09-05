@@ -62,23 +62,23 @@
   <url><loc>https://interndoor.com/us/skills/kotlin</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/place-and-route</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/signal-integrity</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/i2c</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rag</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/redis</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/golang</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/i2c</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/uvm</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/spi</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/cuda</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/postgresql</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/spi</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/scikit-learn</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/dft</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/oop</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/simulink</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/terraform</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mysql</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/swift</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -93,7 +93,7 @@
   <url><loc>https://interndoor.com/us/locations/new-york</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/san-francisco</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/atlanta</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/san-jose</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/san-jose</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/palo-alto</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/boise</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/dallas</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
@@ -133,6 +133,7 @@
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/tucson</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/infineon-technologies-internship-embedded-systems-engineer-4455113198</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-co-op-developer-digital-product-2027-4451264812</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-intern-data-engineer-2027-ai-and-data-analytics-4451288630</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/navi-operations-intern-to-founding-engineer-4462616658</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
@@ -1788,6 +1789,7 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/infineon-technologies</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ibm</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/navi-operations</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/caci-international-inc</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
@@ -1976,7 +1978,6 @@
   <url><loc>https://interndoor.com/us/companies/new-york-life</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/nvidia</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/abbvie</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/infineon-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/palantir-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/bitdeer-nasdaq-btdr</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/graphcore</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
