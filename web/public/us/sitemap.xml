@@ -13,13 +13,13 @@
   <url><loc>https://interndoor.com/us/skills/java</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/sql</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/excel</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/algorithms</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/linux</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/algorithms</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/agile</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/javascript</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/c-sharp</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/data-structures</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/git</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/data-structures</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/aws</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/matlab</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/azure</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -46,8 +46,8 @@
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/ruby</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/node-js</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/kotlin</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pandas</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/kotlin</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/golang</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/redis</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -86,11 +86,11 @@
   <url><loc>https://interndoor.com/us/locations/cambridge</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/minneapolis</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/poughkeepsie</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/santa-clara</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/durham</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/plano</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/san-diego</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/san-mateo</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/santa-clara</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/washington</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/bastrop</loc><lastmod>2026-08-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/boston</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
@@ -100,6 +100,7 @@
   <url><loc>https://interndoor.com/us/locations/houston</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/omaha</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/shakopee</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/united-states-of-america</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/bellevue</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/chandler</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/fond-du-lac</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
@@ -107,6 +108,13 @@
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/tucson</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-applications-infotainment-and-mobile-janua-4462367332</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461455011</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-bs-summer-2027-4461454018</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461455012</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marvell-technology-firmware-engineer-intern-bs-summer-2027-4461455006</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461452056</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/hca-healthcare-intern-prn-4463705316</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461436787</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461450062</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461448124</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
@@ -234,6 +242,7 @@
   <url><loc>https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463192365</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463194355</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/kiewit-substation-engineer-intern-kiewit-power-engineering-summer-2027-4463189755</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/conocophillips-graduate-information-technology-2027-ats-workday-conocophillips-wd1-external-req-006230</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-ats-workday-stryker-wd1-strykercareers-r572877</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-photomask-yield-enhancement-ats-workday-micron-wd1-external-jr110636</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/amgen-undergrad-co-op-automation-engineer-drug-product-assembly-and-packagin-ats-workday-amgen-wd1-careers-r-254530</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
@@ -548,6 +557,7 @@
   <url><loc>https://interndoor.com/us/jobs/clearwater-analytics-software-development-intern-4459592105</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/skyworks-solutions-inc-acoustic-filter-design-co-op-winter-spring-2027-4462097551</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/centene-corporation-curriculum-designer-intern-learning-design-with-ai-and-emerging-techno-ats-workday-centene-wd5-centene-external-1654063</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/mckesson-corporation-system-design-qa-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152746</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/mckesson-corporation-software-engineer-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152742</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/mckesson-corporation-software-development-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152635</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
@@ -846,8 +856,11 @@
   <url><loc>https://interndoor.com/us/jobs/honeywell-aerospace-r-and-d-intern-summer-2027-4461516359</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-u-s-person-requ-4461519242</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/honeywell-aerospace-information-systems-it-data-science-intern-summer-2027-4461506471</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/elevance-health-information-security-co-op-internship-2027-ats-workday-elevancehealth-wd1-ant-jr205939</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/rockwell-automation-intern-remote-support-lcs-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5025</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/rockwell-automation-intern-cyber-professional-services-lcs-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5042</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/rockwell-automation-co-op-delivery-projects-lcs-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5039</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/rockwell-automation-co-op-process-standardization-and-delivery-automation-lcs-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5072</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/rockwell-automation-intern-content-ide-software-development-lcs-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5010</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/rockwell-automation-edge-associate-information-technology-rotational-program-ats-workday-rockwellautomation-wd1-external-rockwell-automation-r26-5375</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/bytedance-cloud-acceleration-research-intern-dpu-and-ai-infra-2027-start-phd-4461529075</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
@@ -1276,14 +1289,8 @@
   <url><loc>https://interndoor.com/us/jobs/infineon-technologies-intern-system-architect-4422923903</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-4439921336</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/two-sigma-ai-research-scientist-intern-2027-summer-4438439116</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-verification-engineer-intern-4459846372</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/eaton-engineer-co-op-4457799394</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/roblox-summer-2027-software-engineer-intern-4449149254</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-software-engineer-intern-4459837480</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-mixed-signal-engineer-intern-4459854355</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-dft-engineer-intern-4459853380</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-software-development-engineer-intern-4459834459</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-algorithm-engineer-intern-4459840393</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/bitdeer-nasdaq-btdr-research-scientist-model-efficiency-intern-4448421222</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-system-support-tech-apprentice-4432788653</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-el-segundo-ca-4459812577</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
@@ -1322,7 +1329,6 @@
   <url><loc>https://interndoor.com/us/jobs/northrop-grumman-2027-software-test-engineering-intern-huntsville-al-4457722700</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459656733</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/centene-corporation-people-analytics-intern-undergraduate-summer-2027-4459636815</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/vislab-an-ambarella-inc-company-asic-design-engineer-intern-4459654575</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nokia-customer-engineering-co-op-4457727079</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/comcast-video-production-intern-4458328239</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nationwide-summer-2027-commercial-lines-portfolio-management-intern-4457715194</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
@@ -1331,6 +1337,14 @@
   <url><loc>https://interndoor.com/us/jobs/skyworks-solutions-inc-embedded-firmware-engineer-co-op-winter-spring-2027-4459628691</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-process-quality-engineering-ats-workday-micron-wd1-external-jr109159</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-technical-customer-management-ai-ats-workday-micron-wd1-external-jr109454</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/iqvia-medtech-field-service-software-tech-entry-level-eastern-time-zone-ats-workday-iqvia-wd1-iqvia-r1564635</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/iqvia-medtech-field-service-software-tech-entry-level-central-time-zone-ats-workday-iqvia-wd1-iqvia-r1564641</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-verification-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100364</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-software-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100363</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-mixed-signal-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100361</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-dft-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100360</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-software-development-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100366</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-algorithm-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100359</loc><lastmod>2026-08-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/netflix-machine-learning-ai-infrastructure-engineering-intern-ai-platform-phd--4457711570</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/netflix-machine-learning-ai-scientist-phd-intern-winter-2027-4457712553</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/magna-international-it-intern-4459612258</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
@@ -1406,6 +1420,7 @@
   <url><loc>https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-module-design-co-op-summer-fall-2027-4459074663</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-4459079267</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/boeing-india-spacecraft-propulsion-engineer-entry-level-millennium-space-systems-ats-workday-boeing-wd1-external-careers-jr2026523225</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/ambarella-asic-design-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100357</loc><lastmod>2026-08-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/amazon-automation-engineer-apprentice-4458739737</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/philips-co-op-robotics-mechatronics-surgical-robotics-cambridge-ma-january-202-4457648564</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/honeywell-technologies-information-systems-it-cyber-engineer-and-data-science-summer-2027-int-4459072266</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
@@ -1665,7 +1680,9 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/rivian-and-volkswagen-group-technologies</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/marvell-technology</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/hca-healthcare</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/collins-aerospace</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/vanguard</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/tesla</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
@@ -1709,6 +1726,7 @@
   <url><loc>https://interndoor.com/us/companies/optiver</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/imc-trading</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/siemens-digital-industries-software</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/conocophillips</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/amgen</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/skydio</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/spacex</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
@@ -1843,7 +1861,6 @@
   <url><loc>https://interndoor.com/us/companies/infineon-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/palantir-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/two-sigma</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/vislab-an-ambarella-inc-company</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/bitdeer-nasdaq-btdr</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/graphcore</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/astranis-space-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
@@ -1854,6 +1871,8 @@
   <url><loc>https://interndoor.com/us/companies/conduent</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/honeywell-technologies</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/comcast</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/iqvia</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/ambarella</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/festo</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/premier-inc</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/citadel</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
@@ -1867,7 +1886,6 @@
   <url><loc>https://interndoor.com/us/companies/fujitsu</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/abbott</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/panasonic-north-america</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/hca-healthcare</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/the-voleon-group</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/samsung-semiconductor</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/celonis</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
@@ -1886,7 +1904,6 @@
   <url><loc>https://interndoor.com/us/companies/western-digital</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/uniswap-labs</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/lucid-motors</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/conocophillips</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/squarepoint-capital</loc><lastmod>2026-08-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/belvedere-trading</loc><lastmod>2026-08-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/figure-ai</loc><lastmod>2026-08-03</lastmod><priority>0.6</priority></url>
@@ -1905,4 +1922,5 @@
   <url><loc>https://interndoor.com/us/companies/chainguard</loc><lastmod>2026-05-28</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/walt-disney-world</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/walt-disney-imagineering</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/vislab-an-ambarella-inc-company</loc><lastmod>2026-08-27</lastmod><priority>0.6</priority></url>
 </urlset>
