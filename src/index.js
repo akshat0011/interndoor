@@ -29,6 +29,7 @@ import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
 import { alertOnSessionLoss } from './sessionalert.js';
+import { noteIntake } from './intake.js';
 import { reportTarget } from './postqueue.js';
 
 const ARGS = new Set(process.argv.slice(2));
@@ -1447,6 +1448,13 @@ async function main() {
     skippedNote: summaryLine,
     error: fatalError,
   });
+
+  /* THE FAILURE EVERY OTHER HEALTH CHECK HERE MISSES: a collector reading
+     cards normally and keeping none of them. Recorded after finishRun so it
+     sees the same status the run was filed under, and only on `ok` — the same
+     rule the sweep baselines follow. See src/intake.js for the sweep that
+     chose both constants and for why yield ALONE is not usable. */
+  await noteIntake(store, { cards: counters.cardsSeen, newJobs: counters.newJobs, status });
 
   /* An expired session is the one failure that stops every board at once, and
      guard.js only banners the Mac for it. See src/sessionalert.js. */
