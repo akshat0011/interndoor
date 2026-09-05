@@ -1,4 +1,15 @@
-import { composeWhatsApp, findTarget, MAX_MESSAGE } from '../src/whatsapp.js';
+import { composeWhatsApp, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING } from '../src/whatsapp.js';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+/** The two Store methods this uses, and nothing else. */
+const fakeStore = (seed = {}) => ({
+  data: { ...seed },
+  getSetting(k) { return this.data[k]; },
+  setSetting(k, v) { this.data[k] = v; },
+});
 import { composeJob, jobParts } from '../src/telegram.js';
 import { regionOf } from '../src/regions.js';
 
@@ -208,8 +219,63 @@ console.log('\n== the waits are measured, not guessed ==');
     /channelsBtn\.waitFor\(\{ state: 'visible', timeout: CHANNELS_NAV_MS \}\)/.test(src), true);
   check('the row is waited for too', /row\.waitFor\(\{ state: 'visible', timeout: CHANNEL_ROW_MS \}\)/.test(src), true);
   check('the nav budget covers a loaded machine', /CHANNELS_NAV_MS = 20_000/.test(src), true);
-  check('and the row budget is well past the measured 433ms', /CHANNEL_ROW_MS = 8_000/.test(src), true);
+  /* RAISED 8s -> 20s ON 5 Sep 2026. The 433ms measurement above was taken on a
+     warm app; this send runs at the END of a scan, when the machine is loaded,
+     and 4 of 11 recent failures were "no channel called Interndoor appeared
+     within 8s". A generous wait costs nothing when the row is already there —
+     it resolves the moment it appears — while a tight one loses the whole
+     run's listings. Matched to the nav budget, which was already 20s for the
+     same reason. */
+  check('and the row budget survives a loaded machine', /CHANNEL_ROW_MS = 20_000/.test(src), true);
+  check('the row is not given LESS than the nav it follows',
+    /CHANNELS_NAV_MS = 20_000/.test(src) && /CHANNEL_ROW_MS = 20_000/.test(src), true);
 }
+
+console.log('\n== the backlog, so a failed send is not a lost listing ==');
+/* 11 of 28 recent attempts failed — a locked profile, a channel row that never
+   rendered, a composer that never appeared — and every one of them dropped that
+   run's India listings for ever, because this function is handed one scan's new
+   rows and nothing else. Telegram was given a retry after losing 100 listings
+   in three days; this is the same fix one layer up. */
+const st = fakeStore();
+check('an empty backlog reads as empty', readPending(st, 'IN'), []);
+writePending(st, 'IN', ['a', 'b', 'c']);
+check('what is written comes back in order', readPending(st, 'IN'), ['a', 'b', 'c']);
+check('and it is stored per region', Object.keys(st.data), [pendingKey('IN')]);
+check('regions do not share a queue', readPending(st, 'US'), []);
+check('duplicates collapse', (writePending(st, 'IN', ['a', 'a', 'b']), readPending(st, 'IN')), ['a', 'b']);
+check('ids are strings, whatever went in',
+  (writePending(st, 'IN', [1, 2]), readPending(st, 'IN')), ['1', '2']);
+/* Bounded, or a channel that has been broken for a week tries to post a week's
+   backlog the moment it recovers. */
+writePending(st, 'IN', Array.from({ length: MAX_PENDING + 25 }, (_, i) => `j${i}`));
+check(`the queue is capped at ${MAX_PENDING}`, readPending(st, 'IN').length, MAX_PENDING);
+check('and it keeps the OLDEST, which are the ones at risk', readPending(st, 'IN')[0], 'j0');
+
+console.log('\n== and none of it may throw into a scan ==');
+/* A backlog that cannot be read or saved must never fail a run that has already
+   collected and published — the same rule the whole WhatsApp path follows. */
+check('a store that throws reads as empty',
+  readPending({ getSetting() { throw new Error('locked'); } }, 'IN'), []);
+check('a store that throws on write is survived',
+  (() => { try { writePending({ setSetting() { throw new Error('locked'); } }, 'IN', ['a']); return 'ok'; } catch { return 'threw'; } })(), 'ok');
+check('no store at all is fine', [readPending(null, 'IN'), (writePending(null, 'IN', ['a']), 'ok')], [[], 'ok']);
+check('corrupt JSON reads as empty', readPending(fakeStore({ [pendingKey('IN')]: '{not json' }), 'IN'), []);
+
+console.log('\n== the queue is actually consulted, and drains on a quiet run ==');
+const wa = readFileSync(join(ROOT, 'src', 'whatsapp.js'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('the backlog is read before this run\'s rows', /readPending\(store, code\)/.test(wa), true);
+check('and what did not send is written back', /writePending\(store, code,/.test(wa), true);
+check('saved in finally, so an early return still saves', /finally \{[\s\S]*writePending/.test(wa), true);
+/* THE PAIRING THAT MATTERS: only a send PROVEN to have left the box may keep a
+   listing off the queue. Counting an attempt would silently drop it again. */
+check('only a proven send clears an id', /if \(r\.sent\) \{ sent \+= 1; posted\.add\(id\);/.test(wa), true);
+const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('and it is called even when the run found nothing',
+  /if \(!DRY_RUN\) await postNewJobsWhatsApp\(whatsappLive, cfg, \{ store \}\);/.test(idx), true);
+check('no longer gated on live.length', /if \(live\.length\) await postNewJobsWhatsApp/.test(idx), false);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -270,7 +270,15 @@ async function composerNames(page, name) {
    twelve minutes driving a second browser — which is exactly when the app takes
    longest to become interactive, and exactly when this failed. */
 const CHANNELS_NAV_MS = 20_000;
-const CHANNEL_ROW_MS = 8_000;
+/* THE CHANNEL ROW WAITED 8s AND THE NAV WAITED 20s, WHICH IS BACKWARDS.
+   `sessionState` reports ready as soon as `#pane-side` exists, well before the
+   app is interactive, and this send runs at the END of a scan when the machine
+   is loaded — so both waits are taken under the worst conditions of the run.
+   The row measures 203-433ms after the click on a warm app, but 4 of 11 recent
+   failures were "no channel called Interndoor appeared within 8s". A wait that
+   is generous costs nothing when the row is already there; a wait that is tight
+   loses the whole run's listings. Matched to the nav. */
+const CHANNEL_ROW_MS = 20_000;
 
 export async function findTarget(page, name) {
   const wanted = String(name ?? '').trim();
@@ -529,7 +537,49 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  * this morning — none of them may fail a scan. The scrape is the product; this
  * is a broadcast, and the same rule Telegram has followed since it was added.
  */
-export async function postNewJobsWhatsApp(jobs, cfg) {
+/** Where a region's unposted backlog lives between runs. */
+export const pendingKey = (code) => `whatsappPending:${code}`;
+
+/** How many ids a region's backlog may carry before the oldest are dropped. */
+export const MAX_PENDING = 60;
+
+/**
+ * Which ids still need posting, oldest first.
+ *
+ * NOTHING HERE IS RETRIED TODAY AND THAT IS THE BUG. This function is handed
+ * one scan's new rows; a run whose WhatsApp attempt fails — a locked profile, a
+ * channel row that did not render, a composer that never appeared — drops those
+ * listings for ever. 11 of 28 recent attempts failed that way, so roughly a
+ * third of the India board never reached the channel, while Telegram carried
+ * every one of them because it is an HTTP call with no browser to go wrong.
+ * Telegram was given a retry after losing 100 listings in three days (§12);
+ * this is the same fix, one layer up.
+ *
+ * It also makes the "N held for the next run" line true. Anything over
+ * `maxPerRun` was reported as held and then silently discarded, because the
+ * next run only ever received its OWN new rows.
+ *
+ * Self-cleaning: a pending id is resolved through `publishedIndex`, so a
+ * posting that has since left the board simply fails to resolve and falls out.
+ * No expiry logic, and no chance of announcing a page that 404s.
+ */
+export function readPending(store, code) {
+  try {
+    const raw = store?.getSetting?.(pendingKey(code));
+    const ids = raw ? JSON.parse(raw) : [];
+    return Array.isArray(ids) ? ids.map(String) : [];
+  } catch { return []; }
+}
+
+/** Replace a region's backlog, newest dropped first when it overflows. */
+export function writePending(store, code, ids) {
+  try {
+    const uniq = [...new Set((ids ?? []).map(String))];
+    store?.setSetting?.(pendingKey(code), JSON.stringify(uniq.slice(0, MAX_PENDING)));
+  } catch { /* a backlog that cannot be saved must not fail the run */ }
+}
+
+export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   const conf = cfg.whatsapp ?? {};
   if (!conf.enabled) return { sent: 0, reason: 'disabled' };
 
@@ -547,13 +597,28 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
      same cleaned fields the job page shows, so a message cannot state something
      the site does not. */
   const indexes = new Map();
+  const indexFor = (code) => {
+    if (!indexes.has(code)) indexes.set(code, publishedIndex(code));
+    return indexes.get(code);
+  };
+
+  /* THE BACKLOG GOES FIRST. A listing that failed to send yesterday is older
+     than one found this minute, and the whole point of keeping it is that it
+     stops being lost — so it is not made to queue behind fresh arrivals. */
   const mine = [];
+  const seen = new Set();
+  for (const code of regions) {
+    for (const id of readPending(store, code)) {
+      const pub = indexFor(code).get(String(id));
+      if (pub && !seen.has(String(id))) { seen.add(String(id)); mine.push({ job: pub, code, id: String(id) }); }
+    }
+  }
   for (const row of jobs ?? []) {
     const code = resolveRowRegion(row);
     if (!regions.has(code)) continue;
-    if (!indexes.has(code)) indexes.set(code, publishedIndex(code));
-    const pub = indexes.get(code).get(String(row.job_id ?? row.id));
-    if (pub) mine.push({ job: pub, code });
+    const id = String(row.job_id ?? row.id);
+    const pub = indexFor(code).get(id);
+    if (pub && !seen.has(id)) { seen.add(id); mine.push({ job: pub, code, id }); }
   }
   if (!mine.length) return { sent: 0, reason: 'nothing on these boards' };
 
@@ -567,6 +632,11 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
 
   let ctx = null;
   let sent = 0;
+  /* EVERY EXIT PATH SAVES WHAT DID NOT GO OUT, which is why this is computed in
+     `finally` rather than at the end of the happy path. The failures that lose
+     listings are exactly the early returns — an unlinked session, a channel row
+     that never rendered — plus the catch, where the browser died mid-batch. */
+  const posted = new Set();
   try {
     const opened = await openWhatsApp({ headless: conf.headless !== false });
     ctx = opened.ctx;
@@ -588,14 +658,14 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
 
     let carded = 0;
     let tried = 0;
-    for (const { job, code } of batch) {
+    for (const { job, code, id } of batch) {
       const r = await sendOne(page, composeWhatsApp(job, regionOf(code)));
       tried += 1;
       /* Only a send that was PROVEN to leave the box counts. It used to be
          counted unconditionally, so a listing that never went out was reported
          as posted — and the run that stranded it went on to corrupt the next
          message with the draft it left behind. */
-      if (r.sent) { sent += 1; if (r.carded) carded += 1; }
+      if (r.sent) { sent += 1; posted.add(id); if (r.carded) carded += 1; }
       else log.warn(`WhatsApp: ${job.company ?? 'a listing'} was not posted — ${r.error}`);
       if (tried < batch.length) await sleep(gap);
     }
@@ -610,6 +680,13 @@ export async function postNewJobsWhatsApp(jobs, cfg) {
     log.warn(`WhatsApp: ${err.message.split('\n')[0]} — ${sent} posted before it stopped.`);
   } finally {
     await ctx?.close().catch(() => {});
+    /* Anything not proven to have left the composer goes back on the queue —
+       over the cap, refused, or never attempted because the run fell over
+       before it got there. Written per region, oldest first, so the next run
+       picks them up ahead of its own new rows. */
+    const left = mine.filter((m) => !posted.has(m.id));
+    for (const code of regions) writePending(store, code, left.filter((m) => m.code === code).map((m) => m.id));
+    if (left.length) log.info(`WhatsApp: ${left.length} listing(s) queued for the next run.`);
   }
   return { sent };
 }

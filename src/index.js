@@ -1610,6 +1610,7 @@ async function main() {
      cannot drift. null means publish failed or was skipped — we do not know
      what is on the site, and a link is only worth sending once we know a page
      is behind it. */
+  let whatsappLive = [];
   if (!DRY_RUN && newJobs.length && publishedIds) {
     const live = newJobs.filter((j) => publishedIds.has(String(j.job_id)));
     const held = newJobs.length - live.length;
@@ -1621,8 +1622,19 @@ async function main() {
     /* The same array, for the same reason: it is the set publish actually
        published, so every link has a page behind it. WhatsApp fails soft on
        its own — a scrape must never depend on a browser being driveable. */
-    if (live.length) await postNewJobsWhatsApp(live, cfg);
+    whatsappLive = live;
   }
+
+  /* OUTSIDE THE `newJobs.length` GATE, because the backlog is the whole point:
+     a quiet run is exactly when a listing stranded by a failed send yesterday
+     should finally go out, and India averages 2-13 new tech rows a day against
+     48 runs. Gating this on "this run found something" would leave a stranded
+     listing waiting for the next arrival rather than the next run.
+
+     It stays cheap on a genuinely idle run — postNewJobsWhatsApp resolves the
+     queue first and returns before launching a browser when there is nothing to
+     post at all. */
+  if (!DRY_RUN) await postNewJobsWhatsApp(whatsappLive, cfg, { store });
 
   store.setSetting(LOCK_KEY, 0);
   store.close();
