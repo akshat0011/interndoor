@@ -21,7 +21,7 @@
  * page advertises the AI one: the retirement banner and a "Try AI job search"
  * button put that phrase on the page several times over. Counting mentions of
  * AI search therefore reports "AI variant" on a page that is emphatically the
- * classic variant — and CLAUDE.md's note that the 28 Aug capture showed
+ * classic variant — and the earlier note that the 28 Aug capture showed
  * "60 AI-search markers" is very probably exactly that mistake. Only elements
  * decide here.
  */
@@ -90,7 +90,7 @@ export function classifyVariant(fp = {}) {
      count alone while every other signal said classic — including the decisive
      one, that the CLASSIC description selector is the one that answered.
      `code[id^="bpr-guid-"]` is Ember's batched page response, and Ember is
-     LinkedIn's framework for BOTH surfaces. CLAUDE.md describes it as where the
+     LinkedIn's framework for BOTH surfaces. The notes describe it as where the
      redesign's payload lives, which is true and is not the same as it being
      absent from the classic page. It is kept in the fingerprint because
      applyUrlFrom reads those blobs, so its count is worth logging. */

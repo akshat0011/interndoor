@@ -20,7 +20,7 @@
  * same isIndexable + jobSlug rules the pages were written with — so seeding
  * from them cannot queue a URL with no page behind it, and cannot drift the way
  * a fourth copy of the slug rule would. (jobPageSlug already exists three
- * times; see CLAUDE.md.) Same principle as the Telegram post: a link is worth
+ * times; see the project notes.) Same principle as the Telegram post: a link is worth
  * sending once a page is known to be there.
  */
 import { join } from 'node:path';

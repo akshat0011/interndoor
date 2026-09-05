@@ -44,7 +44,6 @@ const DEFAULTS = {
     disableBraveShields: true,
   },
   safety: { cooldownHoursAfterRateLimit: 24, pauseOnChallenge: true },
-  summarizer: { mode: 'offline', model: 'claude-haiku-4-5-20251001' },
 };
 
 function deepMerge(base, override) {
@@ -212,10 +211,6 @@ function validate(cfg) {
   if (cfg.pacing.betweenCards[0] < 1500) {
     problems.push('pacing.betweenCards minimum is below 1.5s — that is fast enough to look automated. Raise it.');
   }
-  if (cfg.summarizer.mode === 'claude' && !process.env.ANTHROPIC_API_KEY) {
-    problems.push('summarizer.mode is "claude" but ANTHROPIC_API_KEY is not set in the environment.');
-  }
-
   if (problems.length) {
     throw new Error(`config.json problems:\n  - ${problems.join('\n  - ')}`);
   }

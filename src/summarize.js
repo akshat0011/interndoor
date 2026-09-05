@@ -1,4 +1,3 @@
-import { log } from './logger.js';
 
 /** Boilerplate that carries no signal for a candidate deciding whether to apply. */
 const NOISE = [
@@ -88,63 +87,7 @@ export function offlineSummary(description, { maxSentences = 4, maxChars = 620 }
   return out;
 }
 
-/**
- * Optional higher-quality summary via the Claude API. Falls back to the offline
- * summary on any failure — a summarisation hiccup must never lose a job posting.
- */
-async function claudeSummary(job, description, { model }) {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) return null;
-
-  const body = {
-    model,
-    max_tokens: 400,
-    messages: [{
-      role: 'user',
-      content: `Summarise this internship posting for a candidate deciding whether to apply. Three to four short lines, plain text, no preamble and no markdown headers. Cover: what the role actually does, the hard eligibility requirements, stipend/duration if stated, and anything unusual worth knowing. If a detail is not in the posting, leave it out rather than guessing.
-
-Title: ${job.title}
-Company: ${job.company}
-Location: ${job.location ?? 'not stated'}
-
-Description:
-${String(description).slice(0, 12_000)}`,
-    }],
-  };
-
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 30_000);
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify(body),
-      signal: controller.signal,
-    });
-    if (!res.ok) {
-      log.warn(`Claude summary failed (HTTP ${res.status}) — using offline summary.`);
-      return null;
-    }
-    const json = await res.json();
-    const text = json.content?.filter((b) => b.type === 'text').map((b) => b.text).join('\n').trim();
-    return text || null;
-  } catch (err) {
-    log.warn(`Claude summary error (${err.name === 'AbortError' ? 'timeout' : err.message}) — using offline summary.`);
-    return null;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-/** Summarise using the configured mode, always returning something usable. */
-export async function summarize(job, description, summarizerConfig) {
-  if (summarizerConfig?.mode === 'claude') {
-    const viaClaude = await claudeSummary(job, description, summarizerConfig);
-    if (viaClaude) return viaClaude;
-  }
+/** Summarise a posting. Always returns something usable, never throws. */
+export async function summarize(job, description) {
   return offlineSummary(description);
 }

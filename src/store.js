@@ -155,7 +155,7 @@ CREATE INDEX IF NOT EXISTS idx_post_queue_batch ON post_queue(batch_id);
  * One row per job that has been through the Instagram reel flow.
  *
  * In jobs.db beside post_queue rather than in a reels.db of its own. The
- * reels.db note in CLAUDE.md is about the AUTOMATED 10-20/day agent, which gets
+ * earlier reels.db note is about the AUTOMATED 10-20/day agent, which gets
  * its own process and must never be able to fail a scan; this is the manual
  * queue, driven by a click in the run report, in the same process and with the
  * same reasoning post_queue already carries — WAL plus the 5s busy timeout

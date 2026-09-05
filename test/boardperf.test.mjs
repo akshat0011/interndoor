@@ -32,7 +32,7 @@
    that ignored element opacity and gradient background layers,
    so it invented failures and missed the real ones. axe-core
    is the authority here - it is what Lighthouse and PSI run.
-   The real failures are listed in CLAUDE.md and are a
+   The real failures are listed in the project notes and are a
    different set. These assertions are still worth keeping:
    the ratios they pin are genuinely correct and genuinely
    used. They are simply not the audit fix.

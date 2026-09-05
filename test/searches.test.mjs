@@ -31,7 +31,7 @@ for (const s of searches) {
 check('no search is left without a region', searches.filter((s) => !s.region).length, 0);
 
 console.log('\n== India collects on account geo bias, never on a geoId ==');
-// CLAUDE.md is emphatic about this one. LinkedIn has always returned Indian
+// The project notes are emphatic about this one. LinkedIn has always returned Indian
 // results for this account with no location filter at all, and India's search
 // feeds ~91% of the India board. Sending a geoId would change what the single
 // most load-bearing collector returns, to fix nothing.

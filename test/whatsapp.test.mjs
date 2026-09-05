@@ -181,7 +181,7 @@ const COMPOSER = 'sel:footer div[contenteditable="true"]';
   /* HONEST LIMIT: composerNames uses `includes`, so a composer reading
      "Type a message to Interndoor feedback" would pass this check. The guard
      that actually excludes it is the ROW title, matched as an anchored
-     /^Interndoor$/i — the exact reason CLAUDE.md gives for matching whole
+     /^Interndoor$/i — the exact reason the project notes give for matching whole
      names. The composer is the second of two layers, not the only one. */
   const near = fakePage({
     'role:/^channels$/i': { present: true },

@@ -1129,11 +1129,6 @@
     "cooldownHoursAfterRateLimit": 24,
     "_cooldownHoursAfterRateLimit_note": "If LinkedIn rate-limits or restricts the session, the tool refuses to run again for this many hours instead of walking back into it. This is the one setting here with real account risk - repeatedly walking back into a rate limit is how a session gets restricted. It was temporarily 0 while the run failures were being diagnosed; restored to 24 on 11 Aug 2026 after LinkedIn invalidated the session outright."
   },
-  "summarizer": {
-    "mode": "offline",
-    "_mode_note": "'offline' = regex/extractive summary, no API key, free. 'claude' = better summaries via the Claude API; set ANTHROPIC_API_KEY in your environment and change this to 'claude'.",
-    "model": "claude-haiku-4-5-20251001"
-  },
   "ats": {
     "_regions_collect_note": "Which regions are collected is set in the top-level 'regions' block. It replaced ats.indiaOnly. An ATS board is global by nature - one Greenhouse board carries every office a company has - so collecting every region costs exactly the same number of requests as collecting one, while refusing them threw away 176 of the 189 live engineering internships these boards already carry.",
     "maxPostingAgeDays": 120,

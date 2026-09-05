@@ -45,7 +45,7 @@ console.log('\n== THE CLASSIC PAGE ADVERTISES THE AI ONE, AND MUST NOT BE MISREA
   /* This is the whole reason the classifier is structural. The retirement
      banner and a "Try AI job search" button put that phrase on the page several
      times over — so counting mentions of AI search reports "ai" for a page that
-     is emphatically classic. CLAUDE.md's note that the 28 Aug capture showed
+     is emphatically classic. The earlier note that the 28 Aug capture showed
      "60 AI-search markers" is very probably exactly this mistake. */
   check('a classic page offering AI search is still classic', classifyVariant(CLASSIC), 'classic');
   check('and it does say so', [CLASSIC.retirementNotice, CLASSIC.aiSearchOffered], [true, true]);

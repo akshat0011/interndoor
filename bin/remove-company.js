@@ -29,7 +29,7 @@
  * `is_tech IS NULL`. `upsertJob` on an existing row touches only last_seen_at,
  * salary, applicants, apply_url and logo_url, so a re-poll cannot undo it
  * either. A non-NULL `suppressed_reason` is also what tells bin/recheck-tech.js
- * that a HUMAN pulled this and it must not be re-promoted (see CLAUDE.md 9).
+ * that a HUMAN pulled this and it must not be re-promoted (see the project notes, §9).
  *
  * Removing a whole COMPANY still deletes, and that is safe: the blocklist is
  * checked before every other rule, so nothing from that name can return.
