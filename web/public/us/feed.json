@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-cell-engineering-winter-spring-2027-4463677846",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-cell-engineering-winter-spring-2027-4463677846",
+      "title": "Internship, Data Engineer, Cell Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: Spring 2027\n• Analyze battery test data and build software to improve analysis workflows\n• Use SQL/Python for data processing and create dashboards with Tableau or R Shiny\n• Work on-site full-time for 12+ weeks with a team developing battery tech",
+      "date_published": "2026-09-05T01:36:48.738Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nationwide-summer-2027-analytic-consulting-advisor-internship-4461420173",
       "url": "https://interndoor.com/us/jobs/nationwide-summer-2027-analytic-consulting-advisor-internship-4461420173",
       "title": "Summer 2027 Analytic Consulting Advisor Internship — Nationwide",
@@ -191,18 +203,6 @@
       "title": "R&D Intern — Stryker",
       "content_text": "Company: Stryker · Location: Fremont, CA\n• Analyze customer needs and product data to improve medical devices\n• Use cad fea and test labs to design and refine new product concepts\n• Collaborate with cross-functional teams on innovation and development",
       "date_published": "2026-09-04T22:04:53.657Z",
-      "authors": [
-        {
-          "name": "Stryker"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-4463659199",
-      "url": "https://interndoor.com/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-4463659199",
-      "title": "Summer 2027 Internship - Quality Assurance Engineer - Washington - — Stryker",
-      "content_text": "Company: Stryker · Location: Redmond, WA · Duration: Summer 2027\n• Test medical devices for compliance and safety standards\n• Use CAD, LabView, and root cause analysis tools\n• Work with cross-functional teams on product sustainment",
-      "date_published": "2026-09-04T22:04:13.354Z",
       "authors": [
         {
           "name": "Stryker"
