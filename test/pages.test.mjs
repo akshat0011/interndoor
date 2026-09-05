@@ -987,5 +987,71 @@ check('each cell is exactly dt + dd',
   answerBarHtml.split('<div class="ans').slice(1)
     .every((c) => /^[^>]*>\s*<dt>[\s\S]*?<\/dt><dd>[\s\S]*?<\/dd><\/div>$/.test(c.replace(/<\/dl>$/, ''))), true);
 
+
+console.log('\n== the hub role panel ==');
+/* A role with pay and eligibility, and one with neither, because the panel is
+   built by WITHHOLDING rows and a fixture that fills every row cannot show a
+   row being withheld. */
+const rich = {
+  id: '991', company: 'Foo', title: 'Data Intern', roleLabel: 'Data Engineering',
+  location: 'Bengaluru, Karnataka, India', workplaceType: 'On-site',
+  stipend: '₹50,000/month', degreeText: 'Bachelor’s',
+  bullets: ['Build pipelines', 'Write SQL', 'Ship dashboards', 'A fourth one'],
+  keySkills: ['python', 'rest api'], postedAt: Date.UTC(2026, 7, 27),
+};
+const bare = { ...rich, id: '992', stipend: null, degreeText: null, keySkills: [] };
+
+const panel = renderCompanyPage('Foo', [rich], [], '', { skillPages: new Set(['python']) });
+const barePanel = renderCompanyPage('Foo', [bare], [], '', { skillPages: new Set() });
+
+check('the panel is not one big anchor', /<a class="role-card"/.test(panel), false);
+/* THE PAIRING. A chip is a link only where the facet page exists; everything
+   else goes to the board search. Pointing every skill at /skills/<slug> ships
+   a 404 for each of the ~1,900 skills with no page, which is the whole reason
+   this check exists. */
+check('a skill WITH a facet page links to it', panel.includes('/skills/python"'), true);
+check('a skill WITHOUT one falls back to the board', /\/\?q=rest(%20|\+)api/.test(panel), true);
+check('and never invents a facet URL for it', panel.includes('/skills/rest-api'), false);
+check('chips are cased like every other surface', panel.includes('>Python</a>'), true);
+check('duties are capped at three', (panel.match(/<li>[^<]*<\/li>/g) ?? [])
+  .filter((l) => l.includes('Build pipelines') || l.includes('Write SQL')
+    || l.includes('Ship dashboards') || l.includes('A fourth one')).length, 3);
+
+console.log('\n== a fact is withheld, never guessed ==');
+check('a stated stipend shows a row', panel.includes('<dt>Stipend</dt>'), true);
+check('an absent one shows NO row', barePanel.includes('<dt>Stipend</dt>'), false);
+check('an absent eligibility shows no row', barePanel.includes('<dt>Eligibility</dt>'), false);
+check('but status and location always do',
+  barePanel.includes('<dt>Status</dt>') && barePanel.includes('<dt>Location</dt>'), true);
+check('no chip list at all when the role names no skills', barePanel.includes('rc-chips'), false);
+
+console.log('\n== the masthead nav marks, and never drops, the current section ==');
+const navBoard = readFileSync(join(ROOT, 'web', 'public', 'index.html'), 'utf8');
+const navBoardOK = () => ['"/companies"', '"/skills"'].every((h) => navBoard.includes(h));
+check('all three items are on a company hub',
+  ['>Internships<', '>Companies<', '>Skills<'].every((x) => panel.includes(x)), true);
+check('and the one you are on is marked',
+  /<a href="[^"]*\/companies" aria-current="page">Companies</.test(panel), true);
+/* regionHref TRIMS the trailing slash (vercel.json sets trailingSlash:false),
+   so the emitted href is /companies and not /companies/. That matters beyond
+   cosmetics: localiseLinks matches REGION_LINKS as a quoted literal, so a
+   trailing slash in the board template silently fails to localise and every
+   /us and /uk masthead links at India's page. */
+check('the nav href carries no trailing slash', panel.includes('href="/companies/"'), false);
+check('so the board template can be localised at all',
+  navBoardOK(), true);
+check('exactly one item is current', (panel.match(/aria-current="page"/g) ?? []).length, 1);
+check('the board template carries the same three',
+  ['>Internships<', '>Companies<', '>Skills<'].every((x) => navBoard.includes(x)), true);
+/* The board IS the internships list, so it marks that item rather than
+   dropping it: a nav that loses an item on one page moves every other link. */
+check('and the board marks Internships',
+  /<a href="\/" aria-current="page">Internships</.test(navBoard), true);
+
+console.log('\n== the answer sentence ==');
+check('it answers the query before the list', /Yes, Foo is hiring interns/.test(panel), true);
+check('and a hub with nothing open says so, without claiming otherwise',
+  /no engineering internship open|is not advertising/.test(emptyHub), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -987,16 +987,84 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    has already chosen the employer and is choosing between roles, so the facts
    that decide that get a full line each instead of being clipped into a tile. */
 .roles { display: grid; gap: 9px; }
+/* THE CARD IS A PANEL, NOT A LINK. It used to be one big <a>, which made every
+   chip and every duty line unreachable: an anchor inside an anchor is invalid
+   and a screen reader exposes none of it. The CTA carries the link now.
+   minmax(0, ...) on both tracks because a bare 1fr cannot shrink below its
+   content's min-content, and one long unbroken skill name would floor the
+   column and push the panel wider than its wrap. */
 .role-card {
-  display: flex; flex-direction: column; gap: 5px;
-  padding: 17px 19px; text-decoration: none;
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 300px);
   background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
+  overflow: hidden;
+  transition: border-color .16s;
+}
+.role-card:hover { border-color: var(--rule-2); }
+.rc-main { padding: 20px 22px; min-width: 0; }
+.rc-side {
+  padding: 20px 22px; min-width: 0;
+  background: var(--bg-2); border-left: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* Duties, so the reader decides without opening the posting. Capped at three:
+   the posting is the source of truth and this is the summary of it. */
+.rc-do { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.rc-do li { font-size: 14px; line-height: 1.5; color: var(--ink-15); padding-left: 18px; position: relative; }
+.rc-do li::before {
+  content: ""; position: absolute; left: 2px; top: .62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--live);
+}
+
+/* A chip that goes somewhere. Each is a real /skills/ page, or a search of the
+   board for a skill too thin to have one. */
+.rc-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 0; padding: 0; }
+.rc-chips a {
+  display: inline-block; font-size: 13px; color: var(--ink);
+  background: var(--bg-2); border: 1px solid var(--rule-2);
+  border-radius: var(--r-pill); padding: 5px 12px; text-decoration: none;
   transition: border-color .16s, background .16s;
+}
+.rc-chips a:hover { border-color: var(--live); }
+
+/* Withheld, never guessed: a row is emitted only when the fact exists, so an
+   employer that states no pay shows four rows rather than eight placeholders. */
+.rc-rows { display: grid; gap: 11px; margin: 0; }
+.rc-rows dt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .11em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.rc-rows dd { margin: 3px 0 0; font-size: 14px; font-weight: 500; color: var(--ink); }
+.rc-rows dd .is-cash { color: var(--cash); font-weight: 700; }
+
+.rc-cta {
+  display: block; margin-top: auto; text-align: center;
+  padding: 11px 16px; border-radius: var(--r-pill);
+  background: var(--live); color: var(--live-ink);
+  font-weight: 600; font-size: 14px; text-decoration: none;
+  transition: transform .14s var(--snap);
+}
+/* Instant feedback on press: the interface confirms it heard you. */
+.rc-cta:active { transform: scale(.97); }
+.rc-cta em { font-style: normal; }
+
+.rc-t a { color: inherit; text-decoration: none; }
+.rc-t a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* The query, answered before anything else on the page. */
+.hub-answer-line {
+  font-size: 16px; line-height: 1.55; color: var(--ink-15);
+  max-width: 62ch; margin: 10px 0 16px;
+}
+.hub-answer-line b { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .role-card { grid-template-columns: minmax(0, 1fr); }
+  .rc-side { border-left: 0; border-top: 1px solid var(--rule); }
 }
 @media (hover: hover) and (pointer: fine) {
   .role-card:hover { border-color: var(--rule-2); background: var(--card-2); }
 }
-.role-card:active { border-color: var(--rule-2); }
 .rc-t {
   font-size: var(--t-title); font-weight: 700;
   letter-spacing: var(--t-title-tr); line-height: var(--t-title-lh); color: var(--ink);
@@ -1005,33 +1073,13 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink-3);
 }
-.rc-facts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
-.f-item {
-  font-size: 13px; color: var(--ink-2); background: var(--bg-2);
-  border: 1px solid var(--rule); border-radius: var(--r-pill); padding: 3px 10px;
-}
 /* Pay is the fact the reader is looking for and the only one that gets colour. */
-.f-item.is-cash {
-  color: var(--cash); font-weight: 700;
-  border-color: color-mix(in oklab, var(--cash) 30%, transparent);
-  background: color-mix(in oklab, var(--cash) 7%, var(--bg-2));
-}
 /* Measured, not eyeballed: --cash on the tinted chip lands at 3.91 in the light
    theme, under the 4.5 AA needs for text this size — and this is the single
    figure the page is built to deliver. The dark theme is already past it, so
    only the light one is darkened. */
 :root[data-theme="light"] .f-item.is-cash {
   color: color-mix(in oklab, var(--cash) 74%, #000);
-}
-.rc-foot {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 14px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px;
-  border-top: 1px solid var(--rule);
-}
-.rc-when {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-3);
 }
 /* The confirmation badge. Present ONLY on ATS rows inside the freshness
    window — see verifiedAt() in src/pages.js — because a LinkedIn card is seen
@@ -1051,13 +1099,6 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    shape says the same thing the word does, for anyone scanning rather than
    reading. */
 .vfy.is-likely i { background: none; box-shadow: inset 0 0 0 1.5px currentColor; }
-.rc-go {
-  display: inline-flex; align-items: center; gap: 8px; flex: none;
-  height: 34px; padding: 0 15px; border-radius: var(--r);
-  background: var(--live); color: var(--live-ink);
-  font-size: 13.5px; font-weight: 700; letter-spacing: -.01em;
-}
-.rc-go em { font-style: normal; transition: transform .16s var(--snap); }
 @media (hover: hover) and (pointer: fine) {
   .role-card:hover .rc-go em { transform: translateX(3px); }
 }

@@ -828,7 +828,7 @@ function regionSwitch(current, regions) {
  * works perfectly on every local server. That is exactly how the no-flash theme
  * script shipped broken on 21 Aug.
  */
-function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '' }) {
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '' }) {
   return `<!doctype html>
 <html lang="${region.hreflang}">
 <head>
@@ -880,6 +880,17 @@ ${scripts}<script defer src="/subscribe.js"></script>
       </span>
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
+
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="${regionHref('/', region)}"${section === 'internships' ? ' aria-current="page"' : ''}>Internships</a>
+      <a href="${regionHref('/companies/', region)}"${section === 'companies' ? ' aria-current="page"' : ''}>Companies</a>
+      <a href="${regionHref('/skills/', region)}"${section === 'skills' ? ' aria-current="page"' : ''}>Skills</a>
+    </nav>
 
     <div class="bar-right">
 ${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alerts" href="${regionHref('/alerts', region)}">
@@ -2072,51 +2083,108 @@ export function eligibilityCounts(live) {
  * facts that decide that (pay, place, start, degree) and an explicit CTA,
  * where a tile carries only enough to be worth a click.
  */
-function roleCard(job, { region = DEFAULT_REGION, locations = 1 } = {}) {
+function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = new Set() } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
   const verified = verifiedAt(job);
   const money = stipendText(job);
   const places = placesOf(job.location, region);
   const start = startDate(job);
   const degree = degreeLabel(job);
+  const href = regionHref(`/jobs/${jobSlug(job)}`, region);
 
-  const facts = [
-    money ? `<span class="f-item is-cash">${esc(money)}</span>` : '',
-    locations > 1
-      ? `<span class="f-item">${locations} locations</span>`
-      : places.length ? `<span class="f-item">${esc(places.join(' · '))}</span>` : '',
-    start ? `<span class="f-item">Starts ${esc(start)}</span>` : '',
-    degree ? `<span class="f-item">${esc(degree)}</span>` : '',
-    modeText(job) ? `<span class="f-item">${esc(modeText(job))}</span>` : '',
-  ].filter(Boolean).join('');
-
-  // Absolute date in the file, rewritten to "27d ago" by page.js — a relative
-  // label baked in here would rewrite every hub on nearly every 30-minute run.
-  const age = posted
-    ? `<span class="rc-age" data-ago="${posted}">Posted <time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>`
-    : '';
   /* EVERY CARD SAYS WHETHER THE ROLE IS OPEN, not just the 27% we can confirm.
-     This used to render only for ATS rows, so on the India hubs — which are
-     almost entirely LinkedIn — a list of roles carried no open/closed signal at
-     all and read as an archive of past postings. The unverified tier is the
-     board's own rule rather than a check we did, and it says so. */
+     The unverified tier is the board's own rule rather than a check we did, and
+     it says so. */
   const st = openState(job);
   const vfy = st.tier === 'verified'
     /* No data-ago: `verified` is lastSeenAt, which moves every poll, so shipping
        it exact rewrote every hub on every publish. The <time> beside it was
-       already day-granular and stable — this attribute was the whole churn. */
-    ? `<span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
+       already day-granular and stable. */
+    ? `<span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
     : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
 
-  return `<a class="role-card" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
-        <span class="rc-t">${esc(job.title)}</span>
-        ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
-        ${facts ? `<span class="rc-facts">${facts}</span>` : ''}
-        <span class="rc-foot">
-          <span class="rc-when">${age}${vfy}</span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a>`;
+  /* A cell is WITHHELD, never guessed. This employer states no pay, no length
+     and no degree, so its card carries four rows and not eight placeholders. */
+  const row = (k, v) => v ? `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>` : '';
+  const side = [
+    row('Status', vfy),
+    row('Location', locations > 1
+      ? `${locations} locations`
+      : (places.length ? esc(places.join(' · ')) : '')),
+    row('Work mode', modeText(job) ? esc(modeText(job)) : ''),
+    row('Stipend', money ? `<span class="is-cash">${esc(money)}</span>` : ''),
+    row('Starts', start ? esc(start) : ''),
+    row('Eligibility', degree ? esc(degree) : ''),
+    // Absolute date in the file, rewritten to "9d ago" by page.js. A relative
+    // label baked in here would rewrite every hub on nearly every 30-min run.
+    row('Posted', posted
+      ? `<span data-ago="${posted}"><time datetime="${isoDay(posted)}">${esc(dayLabel(posted, region))}</time></span>`
+      : ''),
+  ].join('');
+
+  /* THE CARD IS NO LONGER ONE BIG LINK, and that is what lets the rest of this
+     exist. A chip inside an <a> is invalid HTML and a screen reader exposes
+     none of it, so the skills could not be links and the duties could not be
+     read as a list while the whole row was the anchor. The CTA is the link now,
+     which is also the fix this file lists as known-and-not-done for the board's
+     own rows. */
+  const chips = (job.keySkills ?? []).length
+    ? `<ul class="rc-chips">${(job.keySkills ?? []).map((sk) => {
+        const slug = facetSlug(sk);
+        // A facet page exists only at 8+ roles, so a chip pointing at every
+        // skill would 404 on the thin ones. The board search is the fallback.
+        const to = skillPages.has(slug)
+          ? regionHref(`/skills/${slug}`, region)
+          : regionHref(`/?q=${encodeURIComponent(sk)}`, region);
+        // Cased the way every other surface cases a skill: the stored value is
+        // lowercase, and "rest api" beside "REST API" on the same page reads as
+        // two different things.
+        return `<li><a href="${to}">${esc(titleCaseSkill(sk))}</a></li>`;
+      }).join('')}</ul>`
+    : '';
+
+  return `<div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
+          ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
+          ${(job.bullets ?? []).length ? `<ul class="rc-do">${(job.bullets ?? []).slice(0, 3).map((b) =>
+            `<li>${esc(b)}</li>`).join('')}</ul>` : ''}
+          ${chips}
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows">${side}</dl>
+          <a class="rc-cta" href="${href}">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div>`;
+}
+
+/**
+ * The query, answered in one sentence, before anything else on the page.
+ *
+ * The reader arrived from "<company> internships" and the page owes them a yes
+ * or a no in the first line rather than a heading and a card they have to read
+ * to find out. Every clause is withheld when the fact behind it is absent, so
+ * an employer that states no city produces a shorter sentence and never an
+ * invented one.
+ */
+function answerLine(company, live, prof, region) {
+  const co = esc(company);
+  const where = region.inName;
+  if (!live.length) {
+    return prof?.n
+      ? `<b>${co} is not advertising an engineering internship ${esc(where)} today.</b> We have tracked ${prof.n} so far and check again every 30 minutes.`
+      : `<b>${co} has no engineering internship open ${esc(where)} today.</b> This page is checked every 30 minutes.`;
+  }
+  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
+  const modes = [...new Set(live.map((j) => modeText(j)).filter(Boolean))];
+  const n = live.length;
+  const tail = [
+    places.length === 1 ? `based in ${esc(places[0])}` : places.length ? `across ${esc(andList(places.slice(0, 3).map(esc)))}` : '',
+    modes.length === 1 ? esc(modes[0].toLowerCase()) : '',
+  ].filter(Boolean).join(', ');
+  return `<b>Yes, ${co} is hiring interns ${esc(where)} right now.</b> `
+    + `${n === 1 ? 'One engineering internship is' : `${n} engineering internships are`} open`
+    + `${tail ? `, ${tail}` : ''}. We re-check this page every 30 minutes.`;
 }
 
 /**
@@ -2162,6 +2230,15 @@ function answerBar(live, prof, region) {
     verified ? cell('Last verified',
       `<span><time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`,
       'on the employer’s own careers page', ' is-live') : '',
+    /* THE ONLY CELL THAT SURVIVES A THIN HUB, which is why it is here. Pay,
+       degree level and a verified date are all absent on a LinkedIn-sourced
+       employer with one posting, so the strip scored one cell and was dropped
+       whole on exactly the hubs with the least else on them. Skills are read
+       out of the posting text rather than stated as a field, so they are there
+       when nothing else is. */
+    (prof?.skills ?? []).length ? cell('Skills asked for',
+      String(prof.skills.length),
+      esc(prof.skills.slice(0, 3).map((x) => x.value).join(', '))) : '',
   ].filter(Boolean);
 
   // Two cells is a fact list; one is an orphan sitting where a grid should be.
@@ -2233,7 +2310,7 @@ function eligibilityBlock(company, live) {
     </section>`;
 }
 
-export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], related = [] } = {}) {
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], skillPages = new Set() } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
 
   /**
@@ -2389,6 +2466,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     extraLd: `<script type="application/ld+json">${jsonLd(crumbLd)}</script>\n`
       + `<script type="application/ld+json">${jsonLd(aboutLd)}</script>\n`
       + (live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : ''),
+      section: 'companies',
   })}
 <main class="page">
   <div class="wrap">
@@ -2401,8 +2479,12 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     <header class="hub-hero">
       ${crest(company, logo)}
       <h1>${esc(company)} internships ${esc(region.inName)}</h1>
-      <span class="pill ${live.length ? 'is-fresh' : ''} hub-live"><i aria-hidden="true"></i>${live.length} open now</span>
+      ${live.length
+        ? `<a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>${live.length} internship${live.length === 1 ? '' : 's'} open now</a>`
+        : `<span class="pill hub-live"><i aria-hidden="true"></i>Nothing open today</span>`}
     </header>
+
+    <p class="hub-answer-line">${answerLine(company, live, profile, region)}</p>
 
     ${answerBar(live, profile, region)}
 
@@ -2411,9 +2493,9 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships${live.length ? ` <b>${live.length}</b>` : ''}</h2></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now${live.length ? ` <b>${live.length} role${live.length === 1 ? '' : 's'}</b>` : ''}</h2></div>
       ${live.length
-        ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1 })).join('')}</div>`
+        ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1, skillPages })).join('')}</div>`
         : `<div class="empty">
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
@@ -2437,28 +2519,6 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
         </li>`).join('')}</ul>
     </section>` : ''}
 
-    ${related.length ? `<section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="${regionHref('/companies/', region)}">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as ${esc(company)}&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir">${related.map((r) => `<a class="dir-card" href="${regionHref(`/companies/${companySlug(r.company)}`, region)}">
-          ${crest(r.company, r.logo, { cls: 'tile-crest' })}
-          <span class="dir-t"><span class="dir-name">${esc(r.company)}</span></span>
-        </a>`).join('')}</div>
-    </section>` : ''}
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
@@ -2531,6 +2591,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
     // same purpose, different employers — so this one carries hreflang.
     alternates,
     alternatePath: '/companies/',
+      section: 'companies',
   })}
 <main class="page">
   <div class="wrap">
@@ -3038,7 +3099,7 @@ function fillMarker(html, name, contents) {
  * `/_vercel/…`, none of which are per-region and all of which would 404 under a
  * prefix. Job links are generated below and already carry theirs.
  */
-const REGION_LINKS = ['/companies', '/alerts', '/applications', '/feed.xml', '/feed.json', '/data/jobs.json'];
+const REGION_LINKS = ['/companies', '/skills', '/alerts', '/applications', '/feed.xml', '/feed.json', '/data/jobs.json'];
 
 function localiseLinks(html, region) {
   const prefix = regionPath(region.code);
@@ -3463,11 +3524,6 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   const pastByCompany = groupByCanonicalCompany(
     (history ?? []).filter((p) => p.company), companyNames);
 
-  // Built ONCE for the whole board, not per hub: it is the same comparison
-  // ~340 times over, and it is what lets the hubs link sideways to each other
-  // instead of every one of them being a crawl dead end.
-  const employers = employerIndex(byCompany, pastByCompany);
-
   const allCompanies = new Set([...byCompany.keys(), ...pastByCompany.keys()]);
   for (const company of allCompanies) {
     const name = `${companySlug(company)}.html`;
@@ -3479,8 +3535,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
           /* The regions where this employer is ALSO live. Deduplicated because
              `foreign` carries one entry per posting, not per region. */
           alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
-          related: relatedEmployers(company, employers)
-            .map((r) => ({ ...r, logo: logos.get(r.company) ?? '' })),
+          skillPages,
         })),
       `/companies/${companySlug(company)}`);
   }

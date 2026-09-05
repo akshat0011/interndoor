@@ -1804,3 +1804,25 @@ html[data-boot] .boot-part {
     .nf-go:hover { filter: brightness(1.06); }
     .nf-alt:hover { border-color: var(--live); color: var(--live); }
   }
+
+/* ---- Section nav in the masthead --------------------------------------
+   THE CURRENT SECTION IS MARKED, NOT REMOVED. Dropping the item for the page
+   you are on gives the homepage a two-item nav and every other page a
+   three-item one, so the remaining links shift position as the reader moves
+   between pages and the target they had learned is gone. aria-current answers
+   "where am I"; an absence does not.
+   It lives in styles.css rather than page.css because the board loads only
+   this file, and the generated pages load both. */
+.bar-nav { display: flex; gap: 20px; margin-right: auto; margin-left: 26px; }
+.bar-nav a {
+  font-size: 14px; color: var(--ink-2); text-decoration: none;
+  padding: 5px 0; border-bottom: 1.5px solid transparent;
+  transition: color .16s, border-color .16s;
+}
+.bar-nav a:hover { color: var(--ink); }
+.bar-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--live); }
+
+/* Under 640 the wordmark, three links and two buttons cannot share one line,
+   and a two-line masthead is broken. The nav is the part that can be reached
+   from the footer, so it is the part that goes. */
+@media (max-width: 640px) { .bar-nav { display: none; } }
