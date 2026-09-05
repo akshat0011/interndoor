@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pw-physicswallah-workflow-automation-intern-4463722400",
+      "url": "https://interndoor.com/jobs/pw-physicswallah-workflow-automation-intern-4463722400",
+      "title": "Workflow Automation Intern — PW (PhysicsWallah)",
+      "content_text": "Company: PW (PhysicsWallah) · Location: Noida, Uttar Pradesh, India · Duration: 6 months\n• Build and improve automation workflows using n8n\n• Connect APIs, spreadsheets, and databases\n• Debug workflows and experiment with AI tools",
+      "date_published": "2026-09-05T08:13:19.745Z",
+      "authors": [
+        {
+          "name": "PW (PhysicsWallah)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/pearson-associate-ai-and-machine-learning-intern-4462346970",
       "url": "https://interndoor.com/jobs/pearson-associate-ai-and-machine-learning-intern-4462346970",
       "title": "Associate, AI & Machine Learning Intern — Pearson",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Bugsmirror"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
-      "url": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
-      "title": "Flight Software Engineering Intern — AST SpaceMobile",
-      "content_text": "Company: AST SpaceMobile · Location: Hyderabad, Telangana, India\n• Write and test small software modules for satellite systems\n• Work with C++ and RTOS in embedded development\n• Collaborate on software specs with sub-system engineers",
-      "date_published": "2026-08-31T07:14:08.182Z",
-      "authors": [
-        {
-          "name": "AST SpaceMobile"
         }
       ]
     }
