@@ -1053,5 +1053,47 @@ check('it answers the query before the list', /Yes, Foo is hiring interns/.test(
 check('and a hub with nothing open says so, without claiming otherwise',
   /no engineering internship open|is not advertising/.test(emptyHub), true);
 
+
+console.log('\n== the answer sentence quotes a place NAME, not an ATS code ==');
+/* A labelled grid cell survives printing US-WA-Bellevue; a sentence does not.
+   "based in GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE" was
+   live on the Baker Hughes hub. Each fixture below is a REAL string taken off
+   the live boards, which is the only reason the thresholds mean anything. */
+/* TWO BULLETS OR THE ROW IS NOT INDEXABLE AND hubLive DROPS IT, which sends
+   answerLine down its no-roles branch. The first draft of this fixture had
+   none: every "refused" check below passed, and passed for the wrong reason,
+   because no sentence ever mentioned a place at all. */
+const atPlace = (loc) => renderCompanyPage('Co', [{
+  id: 'p1', company: 'Co', title: 'Intern', location: loc, workplaceType: null,
+  bullets: ['Do the work', 'Do more of it'], postedAt: Date.UTC(2026, 7, 27),
+}], [], '', {}).match(/<p class="hub-answer-line">([\s\S]*?)<\/p>/)[1].replace(/<[^>]*>/g, '');
+// Proves the fixture reaches the branch under test at all.
+check('the fixture is live enough to name a place',
+  atPlace('Bengaluru, Karnataka, India').includes('is open'), true);
+
+for (const junk of [
+  'GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE',
+  'US-WA-Bellevue', 'IN-INDIANAPOLIS', 'STORE SUPPORT CENTER',
+  'Corporate 412 West - Springdale', 'Remote Opportunity - United States',
+]) check(`refused: ${junk.slice(0, 34)}`, atPlace(junk).includes('based in'), false);
+
+/* AND THE OTHER HALF, which is the half that fails silently: a guard that
+   refuses everything passes the checks above just as loudly. canonicalCity has
+   to run FIRST or all three of these are refused too. */
+check('kept: Bengaluru', atPlace('Bengaluru, Karnataka, India').includes('based in Bengaluru'), true);
+check('kept, folded: London - UK2', atPlace('London - UK2, England, United Kingdom').includes('based in London'), true);
+check('kept, folded: San Francisco - SF9',
+  atPlace('San Francisco - SF9, California, United States').includes('based in San Francisco'), true);
+check('and a refused place still leaves a correct sentence',
+  /One engineering internship is open\./.test(atPlace('US-WA-Bellevue')), true);
+/* THE LENGTH CAP IS A BACKSTOP AND HAD TO BE PINNED SEPARATELY. Measured
+   against the live boards it refuses NOTHING on its own: every junk string
+   there is already caught by the code prefix, a digit, the all-caps rule or
+   the remote marker, so deleting the cap left the suite green. This fixture is
+   the shape it exists for and the shape ATS feeds keep inventing: a long
+   facility name with no prefix, no digits and ordinary capitalisation. */
+check('refused: a long facility name no other rule catches',
+  atPlace('Northern Regional Distribution Centre Annexe').includes('based in'), false);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -25,7 +25,7 @@ import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { schemaEmploymentType } from './employment.js';
-import { facetGroups, facetSlug } from './facets.js';
+import { facetGroups, facetSlug, canonicalCity } from './facets.js';
 
 export const SITE = 'https://interndoor.com';
 
@@ -2167,6 +2167,33 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
  * an employer that states no city produces a shorter sentence and never an
  * invented one.
  */
+/**
+ * Is this string a place NAME, or an ATS location code wearing one?
+ *
+ * The card and the facts grid can survive printing `US-WA-Bellevue`, because a
+ * labelled cell reads as data. A SENTENCE cannot: "based in
+ * GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE" was live on the
+ * Baker Hughes hub and reads as a bug. The clause is dropped rather than
+ * cleaned, because half-parsing a facility code invents a city.
+ *
+ * MEASURED over all 424 distinct place strings on the three live boards:
+ * 413 quotable, 11 refused, and every refusal is genuinely not a city
+ * (5 code-prefixed, 4 remote markers, STORE SUPPORT CENTER, Corporate 412).
+ * `canonicalCity` runs FIRST and is what keeps the real ones: it folds
+ * `London - UK2` to London, `San Francisco - SF9` to San Francisco and
+ * `Greater Minneapolis-St. Paul Area` under the length cap. Guarding without
+ * folding first refuses all three.
+ */
+function quotablePlace(raw) {
+  const p = canonicalCity(raw) || raw;
+  if (!p || p.length > 30) return '';
+  if (/^[A-Z]{2}[-\s]/.test(p)) return '';                    // US-WA-, GB-NU-, "US - Massachusetts"
+  if (/\d/.test(p)) return '';                                // Corporate 412, SF9, UK2
+  if (p.length > 10 && p === p.toUpperCase()) return '';       // STORE SUPPORT CENTER
+  if (/^remote\b|work from home/i.test(p)) return '';          // a mode, not a place
+  return p;
+}
+
 function answerLine(company, live, prof, region) {
   const co = esc(company);
   const where = region.inName;
@@ -2175,7 +2202,8 @@ function answerLine(company, live, prof, region) {
       ? `<b>${co} is not advertising an engineering internship ${esc(where)} today.</b> We have tracked ${prof.n} so far and check again every 30 minutes.`
       : `<b>${co} has no engineering internship open ${esc(where)} today.</b> This page is checked every 30 minutes.`;
   }
-  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
+  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region))
+    .map(quotablePlace).filter(Boolean))];
   const modes = [...new Set(live.map((j) => modeText(j)).filter(Boolean))];
   const n = live.length;
   const tail = [
