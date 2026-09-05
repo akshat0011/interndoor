@@ -479,6 +479,14 @@ PROVIDERS.workday = {
    * is the phrase "Posted 2 Days Ago". The per-job endpoint gives both, and its
    * `startDate` is an actual calendar date, which beats parsing English.
    *
+   * IT ALSO GIVES THE PLACE, WHICH THE LIST DOES NOT. `locationsText` is what
+   * the list offers and for a posting spanning several offices Workday puts the
+   * literal string "2 Locations" — or "50 Locations" — in it. That resolves to
+   * `unknown`, so the row is stored and never published. Every other provider
+   * with this problem was already given `locationAlt`; Workday was the one that
+   * was not, because its answer only exists here. Costs no extra request: this
+   * endpoint is already called for every posting that passed the filters.
+   *
    * Called only for postings that already passed every filter, so a board of
    * 2,000 roles costs one extra request per internship rather than 2,000.
    */
@@ -491,9 +499,71 @@ PROVIDERS.workday = {
     return {
       description: info.jobDescription ? stripHtml(info.jobDescription) : null,
       postedAt: info.startDate ? new Date(info.startDate).getTime() : null,
+      locationAlt: workdayPlaces(info),
     };
   },
 };
+
+/**
+ * Every place a Workday posting names, best first, as `locationAlt` candidates.
+ *
+ * THE ORDER IS DICTATED BY MEASURED PAYLOADS, NOT BY TASTE. Probed 5 Sep 2026
+ * against boards this poller already reads every 30 minutes:
+ *
+ *   ConocoPhillips  list "2 Locations"     -> location "Houston, TX"
+ *                                          +  additionalLocations [Dickinson ND, ...7]
+ *   Nvidia          list "2 Locations"     -> location "China, Beijing" + [China, Shanghai]
+ *   Ambarella       list "US Headquarters" -> location "US Headquarters"   (repeats it)
+ *                                          +  requisition country "United States of America"
+ *   FedEx           list "2 Locations"     -> location "FXE_APAC/MYS/MYKULIP/Kulip Gateway"
+ *                                          +  requisition country "Malaysia"
+ *
+ * A COUNTRY LOOKS LIKE BELT-AND-BRACES AND IS NOT. It is the only field that
+ * places Ambarella, whose office really is named "US Headquarters", and the
+ * only one that places FedEx, whose `location` is an internal facility code.
+ * Drop it and seven Ambarella rows stay invisible.
+ *
+ * WORKDAY HAS TWO COUNTRY FIELDS AND THEY DISAGREE. The obvious one,
+ * `jobPostingInfo.country`, is the CAREERS SITE's country, not the role's.
+ * Copeland's `Planner Mantenimiento Co-op` is in Ramos Arizpe:
+ *
+ *   location                            "Ramos Arizpe, Mexico"
+ *   country.descriptor                  "United States of America"   <- the site
+ *   jobRequisitionLocation.country       "Mexico" (alpha2Code MX)    <- the role
+ *
+ * Reading the top-level one puts a Mexican maintenance co-op on the American
+ * board — the same class of mistake as §6's "New Mexico" trap and just as
+ * silent. `jobRequisitionLocation.country` is the requisition's own country and
+ * is the one to trust. Checked across ten tenants: the two agree everywhere
+ * except Copeland, and where they disagree the requisition is right. There is
+ * deliberately NO fallback to the top-level field — an absent country is a
+ * better answer than a confident wrong one.
+ *
+ * The descriptor is used rather than `alpha2Code` because these are candidates
+ * for `resolveRegion`, which reads place names. "Mexico" is absent from the
+ * gazetteer on purpose, so Copeland stays unplaced — which is correct: MX is
+ * not a published board.
+ *
+ * NEVER ASSUME US. Nvidia's "2 Locations" is Beijing and Shanghai and FedEx's
+ * is Malaysia — a rule that filed unreadable Workday rows as US because most of
+ * them are would put a Chinese posting on the American board. These are
+ * candidates for `resolveRegion` to judge, never a region.
+ *
+ * Exported so the ordering can be pinned without a network call, the same
+ * reason `parseAtsLink` is.
+ */
+export function workdayPlaces(info) {
+  const country = info?.jobRequisitionLocation?.country?.descriptor;
+  const extra = Array.isArray(info?.additionalLocations) ? info.additionalLocations : [];
+  // Trane answers with `additionalLocations` repeating `location` verbatim. The
+  // fallback loop stops at the first candidate that places, so a duplicate costs
+  // nothing — but an honest list is easier to read in a log than a padded one.
+  return [...new Set(
+    [info?.location, ...extra, country]
+      .map((s) => (typeof s === 'string' ? s.trim() : ''))
+      .filter(Boolean),
+  )];
+}
 
 /**
  * Amazon — the first of the first-party boards.

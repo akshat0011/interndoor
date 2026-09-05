@@ -132,6 +132,27 @@ if (!boards.length && !workdayNow.length) {
 const collected = (region) => collectsRegion(cfg, region);
 
 /**
+ * The first candidate that names a real place, applied to the posting.
+ *
+ * Two callers now consult a second opinion — the board's own `locationAlt` at
+ * list time, and Workday's per-job endpoint after the filters — and both must
+ * behave identically: try the candidates in order, stop at the first that
+ * resolves, and REPLACE the location text with the one that won. The
+ * replacement is the part worth keeping in one place: a slot holding
+ * "In-Office" or "2 Locations" was never a location, and the candidate that
+ * placed the role is what the reader should see on the card.
+ *
+ * Returns UNKNOWN when nothing places, leaving the caller's region untouched.
+ */
+function placeFrom(job, candidates) {
+  for (const alt of candidates ?? []) {
+    const region = resolveRegion(alt, {});
+    if (region !== UNKNOWN) { job.location = alt; return region; }
+  }
+  return UNKNOWN;
+}
+
+/**
  * How old a posting may be and still count as news.
  *
  * The scraper never needed this: LinkedIn is searched with a time window, so
@@ -186,12 +207,7 @@ async function pollOne(board) {
     // its text also REPLACES the location, because a slot holding "In-Office"
     // was never a location and "Austin, TX, United States" is what the reader
     // should see on the card.
-    if (region === UNKNOWN) {
-      for (const alt of j.locationAlt ?? []) {
-        const better = resolveRegion(alt, {});
-        if (better !== UNKNOWN) { region = better; j.location = alt; break; }
-      }
-    }
+    if (region === UNKNOWN) region = placeFrom(j, j.locationAlt);
     if (!collected(region)) { skippedRegion++; continue; }
     // A posting with no date is kept — some providers omit it — but a known-old
     // one is not, however open it still is.
@@ -212,6 +228,28 @@ async function pollOne(board) {
     const extra = await fetchDetail(board.provider, board.token, j);
     if (extra?.description) j.description = extra.description;
     if (extra?.postedAt) j.postedAt = extra.postedAt;
+
+    // WORKDAY NAMES THE PLACE ONLY HERE. Its list slot is `locationsText`, which
+    // for a posting spanning offices is the literal string "2 Locations" — or
+    // "50 Locations" — so the fallback above had nothing to iterate. Measured
+    // 5 Sep 2026: 115 Workday rows in the live window read as nowhere, and
+    // replaying this endpoint over them placed 38 (US 28 · IN 3 · GB 3, plus
+    // four in regions that are collected and not published) at ConocoPhillips,
+    // Medtronic, Trane, Rockwell, Centene, McKesson, Elevance, AML RightSource,
+    // Xcel, Barclays, Lumentum and Ambarella. The remaining 49 are countries
+    // the gazetteer has no entry for — China, Taiwan, Spain, Italy, Denmark —
+    // and stay unplaced, correctly.
+    //
+    // Same rule as the list-time fallback: consulted only when the primary
+    // resolved to nowhere, and the winner replaces the text.
+    //
+    // Re-gated, because a row admitted as `unknown` may now turn out to be
+    // somewhere this board does not collect — FedEx's is Malaysia. Skipping it
+    // here is exactly what would have happened had the list said so.
+    if (region === UNKNOWN && extra?.locationAlt?.length) {
+      region = placeFrom(j, extra.locationAlt);
+      if (region !== UNKNOWN && !collected(region)) { skippedRegion++; continue; }
+    }
 
     // Re-apply staleness with the real date, which we may only now have. A
     // Workday listing shows "Posted 2 Days Ago" in the list and its true
