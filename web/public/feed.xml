@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 05 Sep 2026 08:13:19 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 05 Sep 2026 09:25:19 GMT</lastBuildDate>
+  <item>
+    <title>Apprentice IT Development Program — Eaton</title>
+    <link>https://interndoor.com/jobs/eaton-apprentice-it-development-program-4441816280</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/eaton-apprentice-it-development-program-4441816280</guid>
+    <pubDate>Sat, 05 Sep 2026 09:25:19 GMT</pubDate>
+    <description>Company: Eaton · Location: Pune Division, Maharashtra, India
+• Manage software licenses and hardware assets for compliance
+• Reconcile invoices and track contract lifecycles
+• Maintain documentation and support process improvements</description>
+  </item>
   <item>
     <title>Workflow Automation Intern — PW (PhysicsWallah)</title>
     <link>https://interndoor.com/jobs/pw-physicswallah-workflow-automation-intern-4463722400</link>
@@ -500,16 +510,6 @@
 • Design and develop engineering tools for project efficiency
 • Support tool deployment and train users across teams
 • Automate repetitive tasks to improve deliverable quality</description>
-  </item>
-  <item>
-    <title>Flutter Developer Intern — Bugsmirror</title>
-    <link>https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4458895309</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4458895309</guid>
-    <pubDate>Mon, 31 Aug 2026 08:07:31 GMT</pubDate>
-    <description>Company: Bugsmirror · Location: Indore, Madhya Pradesh, India · Duration: 6 months
-• Develop flutter web and dart apps for a saas security platform
-• Work with rest apis, json, and responsive ui design
-• Collaborate with product and backend teams using git</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4432393955",
+      "url": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4432393955",
+      "title": "Quantitative Intern (Summer 2027) — Optiver",
+      "content_text": "Company: Optiver · Location: Chicago, IL · Duration: 8 months\n• Analyze market data and test trading strategies using python\n• Work with traders and researchers on real-world financial problems\n• Gain hands-on experience with ai and quantitative tools",
+      "date_published": "2026-09-05T09:30:12.746Z",
+      "authors": [
+        {
+          "name": "Optiver"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/imc-trading-quantitative-research-intern-phd-summer-2027-4434668479",
+      "url": "https://interndoor.com/us/jobs/imc-trading-quantitative-research-intern-phd-summer-2027-4434668479",
+      "title": "Quantitative Research Intern (PhD) - Summer 2027 — IMC Trading",
+      "content_text": "Company: IMC Trading · Location: Chicago, IL · Duration: Summer 2027\n• Build custom analysis tools for production use\n• Work with mentors on real research projects\n• Gain experience in options theory and algorithm complexity",
+      "date_published": "2026-09-05T09:28:17.655Z",
+      "authors": [
+        {
+          "name": "IMC Trading"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-master-s-summer-2027-4406731090",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-master-s-summer-2027-4406731090",
+      "title": "Quantitative Research Internship – Master's: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build and test trading strategies using historical market data\n• Work with Python and GPU-accelerated computing tools\n• Collaborate with researchers and traders on real-world problems",
+      "date_published": "2026-09-05T09:12:23.914Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-strategy-developer-internship-summer-2027-4406730142",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-strategy-developer-internship-summer-2027-4406730142",
+      "title": "Quantitative Strategy Developer Internship: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Develop low latency c++ strategies for trading\n• Work with python and data libraries like pandas\n• Collaborate with senior developers on complex projects",
+      "date_published": "2026-09-05T09:11:53.357Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356",
+      "title": "Intern - Digital IP Design Engineer, DRAM — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and verify digital IP circuits for next-gen DRAM products\n• Use RTL-to-GDS methodologies and AI-assisted tools for verification\n• Collaborate with cross-functional teams on silicon validation projects",
+      "date_published": "2026-09-05T09:10:30.010Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
       "url": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
       "title": "2027 Technology Intern - Site Reliability Engineering — Charles Schwab",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Vanguard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-cell-engineering-winter-spring-2027-4463677846",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-cell-engineering-winter-spring-2027-4463677846",
-      "title": "Internship, Data Engineer, Cell Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: Spring 2027\n• Analyze battery test data and build software to improve analysis workflows\n• Use SQL/Python for data processing and create dashboards with Tableau or R Shiny\n• Work on-site full-time for 12+ weeks with a team developing battery tech",
-      "date_published": "2026-09-05T01:36:48.738Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nationwide-summer-2027-analytic-consulting-advisor-internship-4461420173",
-      "url": "https://interndoor.com/us/jobs/nationwide-summer-2027-analytic-consulting-advisor-internship-4461420173",
-      "title": "Summer 2027 Analytic Consulting Advisor Internship — Nationwide",
-      "content_text": "Company: Nationwide · Location: Columbus, OH · Duration: Summer 2027\n• Design analytics solutions using AI, ML, and statistical modeling\n• Work with business leaders on real-world projects using Python, R, SQL, and Tableau\n• Communicate findings to technical and non-technical teams\n• Embedded in a project team with mentorship and support",
-      "date_published": "2026-09-05T00:40:34.808Z",
-      "authors": [
-        {
-          "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nationwide-summer-2027-feature-engineer-internship-4461419174",
-      "url": "https://interndoor.com/us/jobs/nationwide-summer-2027-feature-engineer-internship-4461419174",
-      "title": "Summer 2027 Feature Engineer Internship — Nationwide",
-      "content_text": "Company: Nationwide · Location: Columbus, OH · Duration: Summer 2027\n• Design and maintain data pipelines for machine learning models\n• Work with data scientists to transform raw data into analytical datasets\n• Collaborate with cross-functional teams on complex data integration projects",
-      "date_published": "2026-09-05T00:40:23.792Z",
-      "authors": [
-        {
-          "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nationwide-summer-2027-generative-ai-internship-4461428029",
-      "url": "https://interndoor.com/us/jobs/nationwide-summer-2027-generative-ai-internship-4461428029",
-      "title": "Summer 2027 Generative AI Internship — Nationwide",
-      "content_text": "Company: Nationwide · Location: Columbus, OH · Duration: Summer 2027\n• Build and deploy ai agents for insurance workflows\n• Work with llms, vector databases, and mlops tools\n• Collaborate with data scientists on analytics projects",
-      "date_published": "2026-09-05T00:39:59.298Z",
-      "authors": [
-        {
-          "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/fm-infrastructure-engineering-co-op-4463680268",
-      "url": "https://interndoor.com/us/jobs/fm-infrastructure-engineering-co-op-4463680268",
-      "title": "Infrastructure Engineering - Co-Op — FM",
-      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Craft and manage complex systems\n• Work with infrastructure and devops tools\n• Travel to corporate headquarters in johnston",
-      "date_published": "2026-09-05T00:37:05.324Z",
-      "authors": [
-        {
-          "name": "FM"
         }
       ]
     }
