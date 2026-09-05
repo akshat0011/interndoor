@@ -425,6 +425,60 @@ const REGION_LIST = [
     // them, and an untested entry is surface, not coverage.
     cities: ['lisboa'],
   },
+  {
+    code: 'CN',
+    slug: 'cn',
+    name: 'China',
+    inName: 'in China',
+    hreflang: 'en-CN',
+    timeZone: 'Asia/Shanghai',
+    currency: 'CNY',
+    // No geoId and no `searches` entry: collection here is ATS-side only, the
+    // same standing Mexico and Portugal have.
+    telegram: 'https://t.me/interndoor',
+    // NO `countries: ['china']`, FOR EXACTLY THE REASON MEXICO HAS NONE, and
+    // the collision here is worse than Mexico's because `china` is the FIRST
+    // word rather than the second. Matching is `\b(...)\b` and the country
+    // pass runs BEFORE the city pass with no weak-evidence step, so `china`
+    // would beat US outright on every one of these real US places:
+    //
+    //   China Lake, CA   — Naval Air Weapons Station China Lake, and this board
+    //                      already carries L3Harris, Collins Aerospace and
+    //                      Northrop Grumman, so a defence posting there is not
+    //                      hypothetical
+    //   China, TX · China, ME · China Grove, NC · China Spring, TX
+    //
+    // It costs nothing to leave out. Every stored row naming China also names
+    // one of the cities below — "Beijing, China", "Shanghai, China", "Suzhou,
+    // China", "Shenzhen, China", "China, Shanghai" — so the country name is
+    // pure downside, exactly as Mexico's note says of `mexico`.
+    countries: [],
+    codes: ['cn'],
+    cities: ['beijing', 'shanghai', 'shenzhen', 'suzhou', 'dalian'],
+    // Shanghai, VA IS A REAL US PLACE AND IS IN THE STORE TODAY — this is a
+    // measured collision, not a precaution. Held weak so the code pass can
+    // outrank it, exactly as Warsaw, Dublin, Amsterdam and Melbourne are:
+    // "Shanghai, VA" resolves US, a bare "Shanghai" resolves CN.
+    ambiguousCities: ['shanghai'],
+  },
+  {
+    code: 'TW',
+    slug: 'tw',
+    name: 'Taiwan',
+    inName: 'in Taiwan',
+    hreflang: 'en-TW',
+    timeZone: 'Asia/Taipei',
+    currency: 'TWD',
+    telegram: 'https://t.me/interndoor',
+    // Safe as a country name, and the second-word question was asked: no US or
+    // other place carries `taiwan` as any of its words. Unlike `china` above,
+    // this one can be spelled out — which matters because two stored rows put
+    // the country FIRST ("Taiwan, Hsinchu", "Taiwan, Taipei") and one buries
+    // the city in a fab code ("Taichung - Fab 16, Taiwan").
+    countries: ['taiwan'],
+    codes: ['tw'],
+    cities: ['taipei', 'hsinchu', 'taichung'],
+  },
 ];
 
 /** code -> region. The order of REGION_LIST is the resolution order. */

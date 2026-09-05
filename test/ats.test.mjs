@@ -128,7 +128,19 @@ const nvidia = { location: 'China, Beijing', additionalLocations: ['China, Shang
   jobRequisitionLocation: { country: { descriptor: 'China' } } };
 const nvidiaPlaces = workdayPlaces(nvidia).map((s) => resolveRegion(s, {}));
 check('a Chinese posting is never filed as US', nvidiaPlaces.includes('US'), false);
-check('and stays unplaced rather than guessed', nvidiaPlaces.every((r) => r === UNKNOWN), true);
+/* ASSERT THE PROPERTY, NOT THE GAP. This line used to read "and stays unplaced
+   rather than guessed", which was true until China was added to the gazetteer
+   the same afternoon — the second assertion in this file to rot that way. A
+   check that pins "we cannot place this" is a time bomb: it documents a gap and
+   dies the day the gap is closed.
+
+   What must hold for ever is that a Chinese posting never reaches a PUBLISHED
+   board. That survives China being added, removed, or renamed. (Note the
+   candidates do not all agree: "China, Beijing" and "China, Shanghai" resolve
+   CN while a bare "China" is unknown, because `china` is deliberately not a
+   country name — see §6.) */
+check('and no candidate ever reaches a published board',
+  nvidiaPlaces.some((r) => ['IN', 'US', 'GB'].includes(r)), false);
 /* The counterpart: a country the gazetteer DOES know is placed by country alone,
    which is the Ambarella path above and the whole reason `country` is harvested. */
 check('a known country still places from the country field',
@@ -205,8 +217,12 @@ check('nothing is not one', [isWorkplaceType(null), isWorkplaceType(undefined), 
    added. */
 check('Lisbon resolves now that Portugal is in the gazetteer',
   resolveRegion('Lisboa, Lisboa, Portugal', {}), 'PT');
-check('a still-unknown country is the case the rescue is for',
-  resolveRegion('Taipei, Taiwan', {}), UNKNOWN);
+/* Structurally unplaceable, not merely a country we have not got to yet — this
+   is FedEx's real Workday location text, and no gazetteer will ever read it. A
+   country name here would rot the moment that country is added, which is
+   exactly what happened to the two lines above. */
+check('a structurally unreadable place is the case the rescue is for',
+  resolveRegion('FXE_APAC/MYS/MYKULIP/Kulip Gateway', {}), UNKNOWN);
 check('and the slot it replaces is a workplace type', isWorkplaceType('In-Office'), true);
 
 console.log('\n== the poller consults it ONLY when the primary said nowhere ==');

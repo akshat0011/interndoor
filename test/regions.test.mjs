@@ -350,5 +350,65 @@ check('PT is not published', isPublishedRegion({ regions: { publish: ['IN', 'US'
 check('PT is collected under "all"', collectsRegion({ regions: { collect: 'all' } }, 'PT'), true);
 check('its slug does not collide', ALL_REGIONS.filter((r) => r.slug === 'pt').length, 1);
 
+console.log('\n== China and Taiwan, added 5 Sep 2026 ==');
+at('city then country', 'Shanghai, Shanghai, China', 'CN');
+at('country then city', 'China, Shanghai', 'CN');
+at('a bare Chinese city', 'Beijing', 'CN');
+at('two cities offered', 'Beijing OR Shanghai', 'CN');
+at('a city buried in a site code', '1102-G-Dalian: SW Park, Dalian', 'CN');
+at('the leading code prefix', 'CN-Beijing-Tower', 'CN');
+at('taiwan spelled out first', 'Taiwan, Hsinchu', 'TW');
+at('taiwan spelled out last', 'Taipei, Taiwan', 'TW');
+at('a city buried in a fab code', 'Taichung - Fab 16, Taiwan', 'TW');
+/* THESE TWO EARN THE COUNTRY NAME AND THE CODE THEIR PLACE, and they were
+   added because mutation testing showed neither entry was pinned: every other
+   case above is settled by a CITY, so deleting `countries: ['taiwan']` or
+   `codes: ['cn']` left the suite green. A bare country and a city we do not
+   list are the shapes only those two can read. */
+at('a bare Taiwan', 'Taiwan', 'TW');
+at('an unlisted Chinese city with a trailing code', 'Zhangjiang, cn', 'CN');
+at('the trailing code', 'Taipei, tw', 'TW');
+
+console.log('\n== `china` IS NOT A COUNTRY NAME HERE, AND MUST NOT BECOME ONE ==');
+/* Same trap as `mexico` and `holland`, and worse: `china` is the FIRST word of
+   several real US places rather than the second, and the country pass runs
+   before the city pass with no weak-evidence step. China Lake is the Naval Air
+   Weapons Station, and this board already carries L3Harris, Collins Aerospace
+   and Northrop Grumman, so a defence posting there is not hypothetical.
+
+   It costs nothing to leave out: every stored row naming China also names one
+   of the cities, so the country name is pure downside. */
+at('China Lake is Californian', 'China Lake, CA', 'US');
+at('China is Texan', 'China, TX', 'US');
+at('China Grove is North Carolinian', 'China Grove, NC', 'US');
+at('China Spring is Texan', 'China Spring, TX', 'US');
+/* Maine's code is one of the six excluded above, so this one cannot reach US —
+   but the point is that it must not reach CHINA either, and it does not. */
+at('China Maine is at worst unplaced, never Chinese', 'China, ME', UNKNOWN);
+
+console.log('\n== Shanghai, VA is a real US place and is in the store today ==');
+/* A MEASURED collision, not a precaution. `shanghai` is held weak so the code
+   pass can outrank it, exactly as Warsaw, Dublin, Amsterdam and Melbourne are.
+   Drop the ambiguous marking and this row lands on the Chinese side. */
+at('with a state code it is American', 'Shanghai, VA', 'US');
+at('bare, it is Chinese', 'Shanghai', 'CN');
+
+console.log('\n== what was deliberately NOT changed ==');
+/* Hong Kong has its own ISO code and is not being folded into either entry.
+   A row naming only Hong Kong stays unknown; one naming Hong Kong AND a
+   Chinese city resolves on the city, which is the first-city-wins rule already
+   documented above rather than anything new. */
+at('bare Hong Kong is still unplaced', 'Hong Kong', UNKNOWN);
+at('a Singapore row is untouched', 'Shanghai; Singapore; Hong Kong', 'SG');
+
+console.log('\n== and neither is published ==');
+check('CN is a known region', regionOf('CN')?.name, 'China');
+check('TW is a known region', regionOf('TW')?.name, 'Taiwan');
+check('neither is published', [
+  isPublishedRegion({ regions: { publish: ['IN', 'US', 'GB'] } }, 'CN'),
+  isPublishedRegion({ regions: { publish: ['IN', 'US', 'GB'] } }, 'TW'),
+], [false, false]);
+check('slugs do not collide', ALL_REGIONS.filter((r) => r.slug === 'cn' || r.slug === 'tw').length, 2);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
