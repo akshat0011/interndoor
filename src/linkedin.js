@@ -1229,6 +1229,13 @@ export async function openAndExtract(page, card, cfg) {
       (headerText.match(/([₹$€£¥]\s?[\d,][\d,.\s]*(?:k|K)?(?:\s*(?:-|–|to)\s*[₹$€£¥]?\s?[\d,][\d,.\s]*(?:k|K)?)?(?:\s*(?:\/|per\s)\s*\w+)?)/) || [])[1] || null;
 
     const workplaceType = (headerText.match(/\b(Remote|Hybrid|On-site|Onsite)\b/i) || [])[1] || null;
+    /* LinkedIn's OWN employment type, out of the same header string. It sits
+       beside the workplace type as a chip — "Hybrid · Internship" — and it is
+       the only place the pane states it. Read here so a card admitted on a
+       tech title that never said "intern" can be judged on LinkedIn's tag
+       rather than guessed at. Recorded even when the title already says
+       intern, so the two can be compared later. */
+    const employmentTag = (headerText.match(/\b(Internship|Full-time|Part-time|Contract|Temporary|Volunteer)\b/i) || [])[1] || null;
     // NOT named `location`. A `const location` here is scoped to the whole
     // page.evaluate callback, which puts the page's own `location` in the
     // temporal dead zone for every line above — including the `location.href`
@@ -1293,7 +1300,7 @@ export async function openAndExtract(page, card, cfg) {
 
     const detailLogo = pane.querySelector('img[src*="licdn.com"]')?.getAttribute('src') ?? '';
 
-    return { jobId, title, company, location: locationText, workplaceType, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
+    return { jobId, title, company, location: locationText, workplaceType, employmentTag, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
              logoUrl: /^https?:\/\//.test(detailLogo) ? detailLogo : '' };
   }, DESCRIPTION_SELECTORS);
 

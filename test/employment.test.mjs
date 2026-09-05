@@ -1,4 +1,9 @@
-import { employmentType, schemaEmploymentType, INTERN, FULL_TIME } from '../src/employment.js';
+import { employmentType, schemaEmploymentType, isInternshipTag, INTERN, FULL_TIME } from '../src/employment.js';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 import { loadConfig, matchTitle } from '../src/config.js';
 
 const cfg = loadConfig();
@@ -57,6 +62,40 @@ console.log('\n== schema.org mapping ==');
 check('intern maps', schemaEmploymentType(INTERN), 'INTERN');
 check('full time maps', schemaEmploymentType(FULL_TIME), 'FULL_TIME');
 check('unknown defaults to intern', schemaEmploymentType(null), 'INTERN');
+
+console.log('\n== LinkedIn\'s own employment chip ==');
+/* The deciding vote for a card whose TITLE never says "intern". Joveo
+   advertises "Back End Developer" and "Software Engineer" and LinkedIn tags
+   both Internship; both were refused on the title while a student browsing the
+   same search saw them. */
+check('the tag that admits a card', isInternshipTag('Internship'), true);
+check('case and padding ignored', isInternshipTag('  internship '), true);
+check('the short form too', isInternshipTag('Intern'), true);
+/* EXACT MATCH, NOT A SUBSTRING — these are the ones that must never admit. */
+check('full-time does not', isInternshipTag('Full-time'), false);
+check('part-time does not', isInternshipTag('Part-time'), false);
+check('contract does not', isInternshipTag('Contract'), false);
+check('a title-shaped string does not', isInternshipTag('Software Engineer Intern'), false);
+check('nothing does not', [isInternshipTag(null), isInternshipTag(undefined), isInternshipTag('')], [false, false, false]);
+
+console.log('\n== and the pane is what decides, one click after the title gate ==');
+/* Source assertions: src/index.js runs a scan on import and cannot be called.
+   Both halves are pinned — that a tech title lacking an intern word is OPENED
+   rather than refused, and that the pane's tag then refuses it. Comments are
+   stripped first, or a regex matches the prose describing the rule. */
+const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('a non-intern title is no longer an unconditional skip',
+  /if \(!titleSaysIntern\) \{/.test(idx), true);
+check('only a TECH title earns the extra open',
+  /nearVerdict\.verdict !== 'tech'/.test(idx), true);
+check('and the pane tag is what admits it',
+  /mustConfirmInternFromPane && !isInternshipTag\(detail\.employmentTag\)/.test(idx), true);
+/* The chip has to actually be read, or the check above always refuses. */
+const li = readFileSync(join(ROOT, 'src', 'linkedin.js'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('linkedin.js parses the chip', /const employmentTag = \(headerText\.match/.test(li), true);
+check('and returns it', /workplaceType, employmentTag,/.test(li), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

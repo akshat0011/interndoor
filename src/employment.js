@@ -67,6 +67,26 @@ const EARLY_RE = EARLY_CAREER.map(phrase);
  * @param {(t: string) => boolean} isIntern  the existing intern-title test
  * @returns {'intern'|'fulltime'|null}  null = neither, do not collect
  */
+/**
+ * Does LinkedIn's OWN employment-type chip say this posting is an internship?
+ *
+ * The chip lives only in the detail pane, beside the workplace type, and it is
+ * the deciding vote for a card whose TITLE never says "intern" — Joveo
+ * advertises "Back End Developer" and "Software Engineer" and tags both
+ * Internship. `filters.jobTypes` is deliberately empty (§7) because FILTERING
+ * the search on this tag hides real internships that recruiters mis-tag as
+ * full-time; reading it AFTER a click to admit a role the title alone would
+ * have refused is the opposite operation and carries none of that risk — the
+ * worst case is that a mis-tagged internship stays refused, which is exactly
+ * what happens today.
+ *
+ * Exact match, not a substring: "Full-time" must never pass because it contains
+ * no intern word, and a title-shaped string must never pass either.
+ */
+export function isInternshipTag(tag) {
+  return /^intern(ship)?$/i.test(String(tag ?? '').trim());
+}
+
 export function employmentType(title, isIntern) {
   const t = String(title ?? '');
   // Intern wins outright. "Summer 2027 Intern - New Grad Program" is an

@@ -4,6 +4,7 @@
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany } from './config.js';
+import { isInternshipTag } from './employment.js';
 import { join } from 'node:path';
 import { writeFile } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
@@ -814,19 +815,47 @@ async function main() {
             continue;
           }
 
-          // The title is the only internship signal left, since LinkedIn's
-          // employment-type tag proved unreliable. A watchlist company whose
-          // title lacks an internship word is a near miss worth reporting.
-          if (!matchTitle(card.title, cfg.titleTerms)) {
-            counters.skippedTitle++;
-            counters.nearMisses++;
-            store.noteSkippedCard(
-              card.identity,
-              'title lacks intern (watchlist tech role)',
-              card.company,
-              card.title,
-            );
-            continue;
+          /* THE TITLE IS THE ONLY INTERNSHIP SIGNAL AVAILABLE BEFORE A CLICK,
+             AND IT IS NOT ALWAYS RIGHT. LinkedIn's employment-type chip exists
+             only in the detail pane, so a card can only be judged on its title
+             here — and Joveo advertises "Back End Developer" and "Software
+             Engineer", both tagged Internship by LinkedIn, neither containing a
+             word this gate looks for. Both were refused, silently, while a
+             student browsing the same search saw them.
+
+             So a watchlist company whose title lacks an internship word is no
+             longer refused outright: if the TITLE CLASSIFIES TECH it is opened
+             and judged on LinkedIn's own tag below. Everything else is still
+             refused here, which is what keeps the cost down — the measured
+             traffic through this branch is 2-14 cards a day, and the bulk of it
+             is senior roles ("Principal Design Engineer", "ASIC DFT Engineer ||
+             8+ years") that classify tech and will be turned away by the tag
+             rather than by the title. That is a few extra opens a day against
+             the ~25 a day maxOpensPerCompany already skips.
+
+             NOT the same thing as `filters.jobTypes`, which stays empty (§7):
+             FILTERING the search on this tag hides internships recruiters
+             mis-tag as full-time. Reading it after a click to ADMIT a role the
+             title would have refused can only add listings, never remove one. */
+          const titleSaysIntern = matchTitle(card.title, cfg.titleTerms);
+          let mustConfirmInternFromPane = false;
+          if (!titleSaysIntern) {
+            const nearVerdict = classifyRole(card.title, {
+              extraPositive: cfg.matching.extraTechTerms ?? [],
+              extraNegative: cfg.matching.extraNonTechTerms ?? [],
+            });
+            if (nearVerdict.verdict !== 'tech') {
+              counters.skippedTitle++;
+              counters.nearMisses++;
+              store.noteSkippedCard(
+                card.identity,
+                'title lacks intern (watchlist tech role)',
+                card.company,
+                card.title,
+              );
+              continue;
+            }
+            mustConfirmInternFromPane = true;
           }
 
           if (cfg.matching.skipViewedCards && card.viewed) {
@@ -950,6 +979,25 @@ async function main() {
               log.warn(`Opened "${card.title}" at ${card.company} but no job id appeared — skipping it this run.`);
             }
             await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
+            continue;
+          }
+
+          /* THE DECIDING VOTE for a card admitted on a tech title that never
+             said "intern". LinkedIn's own chip is read from the pane header;
+             anything that is not an internship is refused here, one click
+             later than the title gate would have refused it. A pane that
+             states no employment type at all is refused too — the card got in
+             on the promise that the tag would settle it, and no tag settles
+             nothing. */
+          if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag)) {
+            counters.skippedTitle++;
+            counters.nearMisses++;
+            store.noteSkippedCard(
+              card.identity,
+              `title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`,
+              card.company,
+              card.title,
+            );
             continue;
           }
 
