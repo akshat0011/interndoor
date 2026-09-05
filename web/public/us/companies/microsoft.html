@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,157 +102,211 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">M<img src="/logos/microsoft.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Microsoft internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>17 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>17 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Microsoft is hiring interns in the US right now.</b> 17 engineering internships are open, across Mountain View, Redmond and Hillsboro, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$6k – $13k<p>on all 17 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Mountain View · Redmond · Hillsboro<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Mountain View · Redmond · Hillsboro<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>40<p>Python, Pytorch, SQL</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>17</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/microsoft-electrical-engineering-intern-4463742445">
-        <span class="rc-t">Electrical Engineering INTERN</span>
-        <span class="rc-sub">Hardware Quality Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Mountain View</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788612247658">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-firmware-engineering-intern-4463741486">
-        <span class="rc-t">Firmware Engineering INTERN</span>
-        <span class="rc-sub">Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788612243525">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-hardware-engineering-intern-4463742443">
-        <span class="rc-t">Hardware Engineering INTERN</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788612214004">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-data-science-ai-experiences-phd-internship-opportunities-redmond-4463355039">
-        <span class="rc-t">Data Science: AI Experiences PhD Internship Opportunities - Redmond</span>
-        <span class="rc-sub">Data Science Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$6,810 – $13,480 / month</span><span class="f-item">Redmond</span><span class="f-item">PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788525855045">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-penetration-tester-internship-opportunities-4463343882">
-        <span class="rc-t">Penetration Tester: Internship Opportunities</span>
-        <span class="rc-sub">Penetration Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788525819224">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4448170809">
-        <span class="rc-t">Software Engineer: Intern Opportunities for University Students - CoreAI - Redmond, WA</span>
-        <span class="rc-sub">AI Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788368558458">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-fullstack-product-web-services-intern-opportunities--4448872448">
-        <span class="rc-t">Software Engineer: Fullstack Product (Web + Services) Intern Opportunities for University Students,</span>
-        <span class="rc-sub">Fullstack Product Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788368025612">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-security-and-identity-intern-opportunities-for-unive-4448879067">
-        <span class="rc-t">Software Engineer: Security &amp; Identity Intern Opportunities for University Students, Redmond</span>
-        <span class="rc-sub">Security Systems Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788367591553">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-cloud-and-distributed-backend-intern-opportunities-f-4448879065">
-        <span class="rc-t">Software Engineer: Cloud &amp; Distributed Backend Intern Opportunities for University Students, Redmond</span>
-        <span class="rc-sub">Cloud Systems Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788367200929">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-data-platform-analytics-intern-opportunities-for-uni-4448864567">
-        <span class="rc-t">Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond</span>
-        <span class="rc-sub">Data Platform Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788366910631">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-ai-ml-and-llm-intern-opportunities-for-university-st-4448874359">
-        <span class="rc-t">Software Engineer: AI/ML &amp; LLM Intern Opportunities for University Students, Redmond</span>
-        <span class="rc-sub">AI Product Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788361078175">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-data-science-internship-opportunities-redmond-4462189308">
-        <span class="rc-t">Data Science: Internship Opportunities - Redmond</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788352574319">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-data-science-phd-internship-opportunities-redmond-4462182463">
-        <span class="rc-t">Data Science: PhD Internship Opportunities - Redmond</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$6,810 – $13,480 / month</span><span class="f-item">Redmond</span><span class="f-item">PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788352282725">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461733317">
-        <span class="rc-t">Software Engineer: Intern Opportunities for University Students - CoreAI - Mountain View, CA</span>
-        <span class="rc-sub">AI Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Mountain View</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788265938535">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461738176">
-        <span class="rc-t">Software Engineer: Intern Opportunities for University Students - CoreAI - Boston, Massachusetts</span>
-        <span class="rc-sub">AI Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Boston</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788265916178">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-applied-science-phd-microsoft-ai-internship-opportunities-4459809021">
-        <span class="rc-t">Applied Science: PhD Microsoft AI Internship Opportunities</span>
-        <span class="rc-sub">Applied Science Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$6,810 – $13,480 / month</span><span class="f-item">Redmond</span><span class="f-item">PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787834612899">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/microsoft-silicon-engineering-intern-4459189124">
-        <span class="rc-t">Silicon Engineering INTERN</span>
-        <span class="rc-sub">Digital Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$5,690 – $11,210 / month</span><span class="f-item">Santa Clara</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787748237810">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>17 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-electrical-engineering-intern-4463742445">Electrical Engineering INTERN</a></h3>
+          <span class="rc-sub">Hardware Quality Engineering</span>
+          <ul class="rc-do"><li>Analyze hardware data to find failure patterns and fix issues</li><li>Work with teams to improve data center hardware reliability</li><li>Test and validate hardware solutions before large-scale deployment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li><li><a href="/us/?q=data%20center%20operations">Data Center Operations</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mountain View</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788612247658"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-electrical-engineering-intern-4463742445">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-firmware-engineering-intern-4463741486">Firmware Engineering INTERN</a></h3>
+          <span class="rc-sub">Firmware Development</span>
+          <ul class="rc-do"><li>Writes low-level code for hardware and software integration</li><li>Uses c/c++ for networking firmware development</li><li>Works with cross-functional teams on real-world projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=networking">Networking</a></li><li><a href="/us/?q=firmware">Firmware</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788612243525"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-firmware-engineering-intern-4463741486">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-hardware-engineering-intern-4463742443">Hardware Engineering INTERN</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Designs and tests hardware components for electronic devices</li><li>Works with engineers to select materials and create test plans</li><li>Collaborates on real-world projects with global teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=embedded%20programming">Embedded Programming</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788612214004"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-hardware-engineering-intern-4463742443">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-data-science-ai-experiences-phd-internship-opportunities-redmond-4463355039">Data Science: AI Experiences PhD Internship Opportunities - Redmond</a></h3>
+          <span class="rc-sub">Data Science Research</span>
+          <ul class="rc-do"><li>Analyze large-scale data using sql, python, r, or comparable tools</li><li>Design experiments and apply machine learning, statistics, or causal inference</li><li>Collaborate with product managers, engineers, and stakeholders on business impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=statistical%20modeling">Statistical Modeling</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$6,810 – $13,480 / month</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788525855045"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-data-science-ai-experiences-phd-internship-opportunities-redmond-4463355039">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-penetration-tester-internship-opportunities-4463343882">Penetration Tester: Internship Opportunities</a></h3>
+          <span class="rc-sub">Penetration Testing</span>
+          <ul class="rc-do"><li>Identify vulnerabilities in OS features through code audits and fuzzing</li><li>Work with security researchers and product teams to improve defenses</li><li>Use tools like AFL, Ghidra, and WinDbg to analyze and exploit bugs</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/?q=fuzzing">Fuzzing</a></li><li><a href="/us/?q=reverse%20engineering">Reverse Engineering</a></li><li><a href="/us/?q=debuggers">Debuggers</a></li><li><a href="/us/?q=static%20analysis">Static Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788525819224"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-penetration-tester-internship-opportunities-4463343882">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4448170809">Software Engineer: Intern Opportunities for University Students - CoreAI - Redmond, WA</a></h3>
+          <span class="rc-sub">AI Software Development</span>
+          <ul class="rc-do"><li>Build AI-powered software tools for developers and organizations</li><li>Use TensorFlow, PyTorch, and GitHub Copilot in real projects</li><li>Work on global teams shaping next-gen AI applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/tensorflow">Tensorflow</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=github%20copilot">Github Copilot</a></li><li><a href="/us/?q=ai%20frameworks">AI Frameworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788368558458"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4448170809">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-fullstack-product-web-services-intern-opportunities--4448872448">Software Engineer: Fullstack Product (Web + Services) Intern Opportunities for University Students,</a></h3>
+          <span class="rc-sub">Fullstack Product Engineering</span>
+          <ul class="rc-do"><li>Build end-to-end product experiences across user interfaces, APIs, and backend services</li><li>Work with engineers, designers, and product managers on real-world projects</li><li>Contribute full development lifecycle from design to testing and iteration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/react">React</a></li><li><a href="/us/skills/angular">Angular</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/node-js">Node.js</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788368025612"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-fullstack-product-web-services-intern-opportunities--4448872448">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-security-and-identity-intern-opportunities-for-unive-4448879067">Software Engineer: Security &amp; Identity Intern Opportunities for University Students, Redmond</a></h3>
+          <span class="rc-sub">Security Systems Development</span>
+          <ul class="rc-do"><li>Build secure systems and services for user data and cloud infrastructure</li><li>Work with C#, Java, Go, Rust, Python, and security frameworks</li><li>Collaborate on identity, compliance, and governance solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788367591553"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-security-and-identity-intern-opportunities-for-unive-4448879067">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-cloud-and-distributed-backend-intern-opportunities-f-4448879065">Software Engineer: Cloud &amp; Distributed Backend Intern Opportunities for University Students, Redmond</a></h3>
+          <span class="rc-sub">Cloud Systems Engineering</span>
+          <ul class="rc-do"><li>Build and operate large-scale cloud services and distributed systems</li><li>Work with engineers on backend services, APIs, and infrastructure</li><li>Collaborate on high availability and operational excellence systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=Go">Go</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788367200929"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-cloud-and-distributed-backend-intern-opportunities-f-4448879065">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-data-platform-analytics-intern-opportunities-for-uni-4448864567">Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond</a></h3>
+          <span class="rc-sub">Data Platform Engineering</span>
+          <ul class="rc-do"><li>Build data pipelines and analytics platforms for products used by millions</li><li>Work with SQL, Python, and cloud-based data tools</li><li>Collaborate on telemetry systems and reporting solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li><li><a href="/us/?q=telemetry%20systems">Telemetry Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788366910631"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-data-platform-analytics-intern-opportunities-for-uni-4448864567">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-ai-ml-and-llm-intern-opportunities-for-university-st-4448874359">Software Engineer: AI/ML &amp; LLM Intern Opportunities for University Students, Redmond</a></h3>
+          <span class="rc-sub">AI Product Development</span>
+          <ul class="rc-do"><li>Develop AI-powered products using machine learning and large language models</li><li>Work with engineers and scientists on model integration and inference services</li><li>Collaborate on real-world projects with global teams in Redmond, WA</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/skills/tensorflow">Tensorflow</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/?q=cloud%20services">Cloud Services</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788361078175"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-ai-ml-and-llm-intern-opportunities-for-university-st-4448874359">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-data-science-internship-opportunities-redmond-4462189308">Data Science: Internship Opportunities - Redmond</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data to improve products used by millions</li><li>Use python, sql, and statistical tools</li><li>Work on real-world problems with global impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=statistics">Statistics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788352574319"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-data-science-internship-opportunities-redmond-4462189308">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-data-science-phd-internship-opportunities-redmond-4462182463">Data Science: PhD Internship Opportunities - Redmond</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data to identify opportunities and improve products</li><li>Use python, sql, and statistical tools for insights</li><li>Collaborate with global teams on impactful projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=sas">Sas</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$6,810 – $13,480 / month</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788352282725"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-data-science-phd-internship-opportunities-redmond-4462182463">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461733317">Software Engineer: Intern Opportunities for University Students - CoreAI - Mountain View, CA</a></h3>
+          <span class="rc-sub">AI Software Development</span>
+          <ul class="rc-do"><li>Build AI-powered software tools for developers and organizations</li><li>Use TensorFlow, PyTorch, and GitHub Copilot in real projects</li><li>Work on cloud-to-edge AI apps with security and trust at core</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/tensorflow">Tensorflow</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=github%20copilot">Github Copilot</a></li><li><a href="/us/?q=ai%20frameworks">AI Frameworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mountain View</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788265938535"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461733317">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461738176">Software Engineer: Intern Opportunities for University Students - CoreAI - Boston, Massachusetts</a></h3>
+          <span class="rc-sub">AI Software Development</span>
+          <ul class="rc-do"><li>Build AI-powered software tools with real-world impact</li><li>Use TensorFlow, PyTorch, and GitHub Copilot in daily work</li><li>Work on core AI projects with Microsoft’s global teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/tensorflow">Tensorflow</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=github%20copilot">Github Copilot</a></li><li><a href="/us/?q=ai%20frameworks">AI Frameworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788265916178"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-coreai--4461738176">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-applied-science-phd-microsoft-ai-internship-opportunities-4459809021">Applied Science: PhD Microsoft AI Internship Opportunities</a></h3>
+          <span class="rc-sub">Applied Science Research</span>
+          <ul class="rc-do"><li>Design and optimize machine learning models for search, recommendations, and language understanding</li><li>Work with Azure and cloud technologies to deploy data pipelines and analyze large datasets</li><li>Collaborate with cross-functional teams to turn product needs into research-driven solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/skills/deep-learning">Deep Learning</a></li><li><a href="/us/?q=natural%20language%20processing">Natural Language Processing</a></li><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li><li><a href="/us/skills/azure">Azure</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$6,810 – $13,480 / month</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787834612899"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-applied-science-phd-microsoft-ai-internship-opportunities-4459809021">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/microsoft-silicon-engineering-intern-4459189124">Silicon Engineering INTERN</a></h3>
+          <span class="rc-sub">Digital Circuit Design</span>
+          <ul class="rc-do"><li>Design and test digital circuits for microelectronics systems</li><li>Use simulation and emulation tools for verification testing</li><li>Collaborate with engineers on pre-silicon validation projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=scripting%20languages">Scripting Languages</a></li><li><a href="/us/skills/uvm">Uvm</a></li><li><a href="/us/?q=verification%20principles">Verification Principles</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Santa Clara</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$5,690 – $11,210 / month</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787748237810"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/microsoft-silicon-engineering-intern-4459189124">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -279,49 +344,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Microsoft&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/two-sigma">
-          <span class="tile-crest" aria-hidden="true">TS<img src="/logos/two-sigma.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Two Sigma</span></span>
-        </a><a class="dir-card" href="/us/companies/figma">
-          <span class="tile-crest" aria-hidden="true">F<img src="/logos/figma.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Figma</span></span>
-        </a><a class="dir-card" href="/us/companies/synopsys-inc">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/synopsys-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Synopsys Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/bnp-paribas">
-          <span class="tile-crest" aria-hidden="true">BP<img src="/logos/bnp-paribas.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">BNP Paribas</span></span>
-        </a><a class="dir-card" href="/us/companies/salesforce">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/salesforce.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Salesforce</span></span>
-        </a><a class="dir-card" href="/us/companies/adobe">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/adobe.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Adobe</span></span>
-        </a><a class="dir-card" href="/us/companies/cadence">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cadence.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cadence</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

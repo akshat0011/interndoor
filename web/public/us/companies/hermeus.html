@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,109 +88,145 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">H<img src="/logos/hermeus.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Hermeus internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>11 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>11 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Hermeus is hiring interns in the US right now.</b> 11 engineering internships are open, across Atlanta and Los Angeles, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
         <dt>Where</dt><dd>Atlanta · Los Angeles<p>on-site</p></dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>32<p>C++, Python, CAD</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>11</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/hermeus-flight-software-engineering-intern-fall-2026-4381142041">
-        <span class="rc-t">Flight Software Engineering Intern - Fall 2026</span>
-        <span class="rc-sub">Flight Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$25 / hour</span><span class="f-item">Atlanta</span><span class="f-item">Computer Engineering/Computer Science/Electrical Engineering</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788532515598">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7">
-        <span class="rc-t">GNC &amp; Flight Software Intern - Spring/Summer 2027</span>
-        <span class="rc-sub">Flight software development</span>
-        <span class="rc-facts"><span class="f-item">Atlanta</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788463161264">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-mission-systems-engineering-intern-4462872329">
-        <span class="rc-t">Mission Systems Engineering Intern</span>
-        <span class="rc-sub">Mission Systems Integration</span>
-        <span class="rc-facts"><span class="f-item is-cash">$25 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788453398337">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-software-engineering-intern-command-and-control-spring-summer-2027-ats-lever-hermeus-5b08e2df-c9db-4831-aece-67d89e744796">
-        <span class="rc-t">Software Engineering Intern (Command &amp; Control) - Spring/Summer 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item">Atlanta</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401279510">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-structures-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-6b65768c-a8b2-4c77-8d5f-f407e32bb878">
-        <span class="rc-t">Structures Engineering Intern - Spring/Summer/Fall 2027</span>
-        <span class="rc-sub">Flight Vehicle Design</span>
-        <span class="rc-facts"><span class="f-item">Los Angeles</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788310249999">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-software-engineering-intern-modeling-and-simulation-spring-summer-2027-ats-lever-hermeus-445db430-6f81-41cf-847a-56a947afb936">
-        <span class="rc-t">Software Engineering Intern (Modeling &amp; Simulation) - Spring/Summer 2027</span>
-        <span class="rc-sub">Modeling Simulation</span>
-        <span class="rc-facts"><span class="f-item">Los Angeles</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788287334868">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-4461772874">
-        <span class="rc-t">Subsystem Test Engineering Intern - Spring/Summer 2027</span>
-        <span class="rc-sub">Test Systems Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$25 / hour</span><span class="f-item">Los Angeles</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788277682299">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-ats-lever-hermeus-643fd7b7-9015-43a1-aa2b-a54f117b403c">
-        <span class="rc-t">Subsystem Test Engineering Intern - Spring/Summer 2027</span>
-        <span class="rc-sub">Subsystem Testing</span>
-        <span class="rc-facts"><span class="f-item">Atlanta</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788277568009">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-software-engineering-intern-hil-spring-summer-2027-ats-lever-hermeus-d87ed913-affc-475e-b721-c5b5f11c3c7b">
-        <span class="rc-t">Software Engineering Intern (HIL) - Spring/Summer 2027</span>
-        <span class="rc-sub">Simulation Testing</span>
-        <span class="rc-facts"><span class="f-item">Atlanta</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788276622789">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-propulsion-engineer-intern-fall-2026-4461755106">
-        <span class="rc-t">Propulsion Engineer Intern - Fall 2026</span>
-        <span class="rc-sub">Propulsion design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$25 / hour</span><span class="f-item">Los Angeles</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788268952282">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/hermeus-propulsion-component-engineering-intern-spring-2027-ats-lever-hermeus-2cbb75f7-a040-47b2-a442-d9cc1faedb11">
-        <span class="rc-t">Propulsion Component Engineering Intern - Spring 2027</span>
-        <span class="rc-sub">Mechanical design</span>
-        <span class="rc-facts"><span class="f-item">Los Angeles</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788209818717">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>11 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-flight-software-engineering-intern-fall-2026-4381142041">Flight Software Engineering Intern - Fall 2026</a></h3>
+          <span class="rc-sub">Flight Software Development</span>
+          <ul class="rc-do"><li>Design and implement systems for uncrewed high-speed aircraft</li><li>Work with A-GRA framework and messaging protocols</li><li>Collaborate on hardware and software integrations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=c">C</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Computer Engineering/Computer Science/Electrical Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1788532515598"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-flight-software-engineering-intern-fall-2026-4381142041">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7">GNC &amp; Flight Software Intern - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Flight software development</span>
+          <ul class="rc-do"><li>Write code for flight control systems using c++ and typescript</li><li>Design user interfaces for remote and autonomous flight modes</li><li>Work on high-speed aircraft software for defense applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/skills/javascript">Javascript</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788463161264"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-gnc-and-flight-software-intern-spring-summer-2027-ats-lever-hermeus-555263f6-c5ec-4489-ab07-1aea546b70e7">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-mission-systems-engineering-intern-4462872329">Mission Systems Engineering Intern</a></h3>
+          <span class="rc-sub">Mission Systems Integration</span>
+          <ul class="rc-do"><li>Build, test, and troubleshoot mission hardware and software systems</li><li>Work with avionics, sensors, radios, and communication protocols</li><li>Collaborate across software, flight-test, and autonomy teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=embedded%20systems">Embedded Systems</a></li><li><a href="/us/?q=hardware%20integration">Hardware Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788453398337"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-mission-systems-engineering-intern-4462872329">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-software-engineering-intern-command-and-control-spring-summer-2027-ats-lever-hermeus-5b08e2df-c9db-4831-aece-67d89e744796">Software Engineering Intern (Command &amp; Control) - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop control systems for remotely piloted and autonomous aircraft</li><li>Work with c++ and web technologies like typescript/javascript</li><li>Design user interfaces for flight control and autonomy management</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/skills/javascript">Javascript</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401279510"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-software-engineering-intern-command-and-control-spring-summer-2027-ats-lever-hermeus-5b08e2df-c9db-4831-aece-67d89e744796">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-structures-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-6b65768c-a8b2-4c77-8d5f-f407e32bb878">Structures Engineering Intern - Spring/Summer/Fall 2027</a></h3>
+          <span class="rc-sub">Flight Vehicle Design</span>
+          <ul class="rc-do"><li>Design and build flight vehicle components using CAD and simulation tools</li><li>Collaborate with design and production teams on hardware and testing</li><li>Contribute to process development and vehicle assembly across multiple seasons</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hardware%20design">Hardware Design</a></li><li><a href="/us/?q=testing">Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Los Angeles</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788310249999"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-structures-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-6b65768c-a8b2-4c77-8d5f-f407e32bb878">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-software-engineering-intern-modeling-and-simulation-spring-summer-2027-ats-lever-hermeus-445db430-6f81-41cf-847a-56a947afb936">Software Engineering Intern (Modeling &amp; Simulation) - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Modeling Simulation</span>
+          <ul class="rc-do"><li>Develop performant modeling and simulation code for 6DOF SITL using Julia</li><li>Interface with flight software, HMI, and flight sciences teams</li><li>Validate results with real data from hardware and physics</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=julia">Julia</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Los Angeles</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788287334868"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-software-engineering-intern-modeling-and-simulation-spring-summer-2027-ats-lever-hermeus-445db430-6f81-41cf-847a-56a947afb936">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-4461772874">Subsystem Test Engineering Intern - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Test Systems Engineering</span>
+          <ul class="rc-do"><li>Build and operate test systems for supersonic aircraft subsystems</li><li>Use CAD and engineering tools to design test fixtures and hardware</li><li>Collaborate with engineers and technicians on test planning and execution</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=test%20fixtures">Test Fixtures</a></li><li><a href="/us/?q=engineering%20analysis">Engineering Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Los Angeles</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788277682299"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-4461772874">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-ats-lever-hermeus-643fd7b7-9015-43a1-aa2b-a54f117b403c">Subsystem Test Engineering Intern - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Subsystem Testing</span>
+          <ul class="rc-do"><li>Build and operate test equipment for supersonic aircraft systems</li><li>Work on hydraulic, fuel, and high-voltage subsystems</li><li>Collaborate with defense teams on rapid hardware development</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788277568009"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-subsystem-test-engineering-intern-spring-summer-2027-ats-lever-hermeus-643fd7b7-9015-43a1-aa2b-a54f117b403c">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-software-engineering-intern-hil-spring-summer-2027-ats-lever-hermeus-d87ed913-affc-475e-b721-c5b5f11c3c7b">Software Engineering Intern (HIL) - Spring/Summer 2027</a></h3>
+          <span class="rc-sub">Simulation Testing</span>
+          <ul class="rc-do"><li>Write and maintain automated tests for real-time simulations</li><li>Work with hardware and software models in test environments</li><li>Support flight software development and validation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=test%20infrastructure">Test Infrastructure</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788276622789"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-software-engineering-intern-hil-spring-summer-2027-ats-lever-hermeus-d87ed913-affc-475e-b721-c5b5f11c3c7b">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-propulsion-engineer-intern-fall-2026-4461755106">Propulsion Engineer Intern - Fall 2026</a></h3>
+          <span class="rc-sub">Propulsion design</span>
+          <ul class="rc-do"><li>Support design and testing of propulsion systems from concept to hardware</li><li>Work with engineers and vendors on mechanical design and test setups</li><li>Based in los angeles, ca, for 16 weeks with paid hourly stipend</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Los Angeles</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788268952282"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-propulsion-engineer-intern-fall-2026-4461755106">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/hermeus-propulsion-component-engineering-intern-spring-2027-ats-lever-hermeus-2cbb75f7-a040-47b2-a442-d9cc1faedb11">Propulsion Component Engineering Intern - Spring 2027</a></h3>
+          <span class="rc-sub">Mechanical design</span>
+          <ul class="rc-do"><li>Design and build mechanical parts for aircraft engines</li><li>Work with propulsion and vehicle teams on hardware</li><li>Test and qualify components for extreme flight conditions</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Los Angeles</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788209818717"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/hermeus-propulsion-component-engineering-intern-spring-2027-ats-lever-hermeus-2cbb75f7-a040-47b2-a442-d9cc1faedb11">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -217,40 +264,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Hermeus&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/hitachi-digital-services">
-          <span class="tile-crest" aria-hidden="true">HD<img src="/logos/hitachi-digital-services.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Hitachi Digital Services</span></span>
-        </a><a class="dir-card" href="/us/companies/persistent-systems-llc">
-          <span class="tile-crest" aria-hidden="true">PS<img src="/logos/persistent-systems-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Persistent Systems, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/figure-ai">
-          <span class="tile-crest" aria-hidden="true">FA<img src="/logos/figure-ai.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Figure AI</span></span>
-        </a><a class="dir-card" href="/us/companies/palantir-technologies">
-          <span class="tile-crest" aria-hidden="true">PT<img src="/logos/palantir-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Palantir Technologies</span></span>
-        </a><a class="dir-card" href="/us/companies/cloudflare">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cloudflare.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cloudflare</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

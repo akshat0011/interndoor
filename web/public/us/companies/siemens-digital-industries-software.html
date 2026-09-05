@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,100 +88,133 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">SD<img src="/logos/siemens-digital-industries-software.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Siemens Digital Industries Software internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>10 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>10 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Siemens Digital Industries Software is hiring interns in the US right now.</b> 10 engineering internships are open, across Huntsville, Maryland Heights and Detroit. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Huntsville · Maryland Heights · Detroit</dd></div></dl>
+        <dt>Where</dt><dd>Huntsville · Maryland Heights · Detroit</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>29<p>Python, C++, Camtasia</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>10</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-software-engineering-intern-digi-4462365431">
-        <span class="rc-t">Strategic Student Program: Electronics Software Engineering Intern - Digital Component Specifications (EBS, Spring 2027)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Huntsville</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788582556532">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-reliability-product-engineering--4463178821">
-        <span class="rc-t">Strategic Student Program: Electronics Reliability Product Engineering Internship (Spring 2027, SIM STS)</span>
-        <span class="rc-sub">Electronics reliability engineering</span>
-        <span class="rc-facts"><span class="f-item">Maryland Heights</span><span class="f-item">Master’s / PhD</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788505566327">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-thermo-mechanical-product-engineering-intern-4463194340">
-        <span class="rc-t">Strategic Student Program: Thermo-Mechanical Product Engineering Internship (Spring 2027, SIM STS)</span>
-        <span class="rc-sub">Thermo-Mechanical Workflow Development</span>
-        <span class="rc-facts"><span class="f-item">Maryland Heights</span><span class="f-item">Master’s / PhD</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788505562105">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-cross-domain-electronics-systems-engineering-4461385949">
-        <span class="rc-t">Strategic Student Program: Cross-Domain Electronics Systems Engineering Intern (T&amp;I, Spring 2027)</span>
-        <span class="rc-sub">Engineering Workflow Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Detroit</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788410470753">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-mendix-and-ai-application-development-intern-4461396141">
-        <span class="rc-t">Strategic Student Program: Mendix &amp; AI Application Development Internship (Spring/Summer 2027, GSCS)</span>
-        <span class="rc-sub">Mendix &amp; AI Development</span>
-        <span class="rc-facts"><span class="f-item">Livonia</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788410449399">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-and-engineering-data-internship-spring-20-4461399111">
-        <span class="rc-t">Strategic Student Program: AI &amp; Engineering Data Internship (Spring 2027, GSCS)</span>
-        <span class="rc-sub">Ai data intern</span>
-        <span class="rc-facts"><span class="f-item">Maryland Heights</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788410426584">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-digital-thread-and-systems-engineering-inter-4461605014">
-        <span class="rc-t">Strategic Student Program: Digital Thread &amp; Systems Engineering Internship (Spring 2027, GSCS)</span>
-        <span class="rc-sub">Digital Thread Engineering</span>
-        <span class="rc-facts"><span class="f-item">Maryland Heights</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788409868587">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103">
-        <span class="rc-t">Strategic Student Program: Integration Quality Assurance Co-Op (EBS, Spring 2027)</span>
-        <span class="rc-sub">Software Quality Assurance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Huntsville</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788409845339">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-automation-and-process-improvement-intern-4461393697">
-        <span class="rc-t">Strategic Student Program: AI, Automation &amp; Process Improvement Internship (Spring/Summer 2027, GSCS)</span>
-        <span class="rc-sub">Ai process improvement</span>
-        <span class="rc-facts"><span class="f-item">Livonia</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788409773082">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006">
-        <span class="rc-t">SSP: Simulation Engineering Co-op (Fall 2026, SIM STS)</span>
-        <span class="rc-sub">Simulation Software Development</span>
-        <span class="rc-facts"><span class="f-item">Malvern</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787891361344">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>10 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-software-engineering-intern-digi-4462365431">Strategic Student Program: Electronics Software Engineering Intern - Digital Component Specifications (EBS, Spring 2027)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop and test Java software for microelectronics component specs</li><li>Work with XML data models to represent electronic datasheets</li><li>Hybrid on-site in Huntsville, AL, full-time during breaks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=xml">Xml</a></li><li><a href="/us/?q=datasheets">Datasheets</a></li><li><a href="/us/?q=microelectronics">Microelectronics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Huntsville</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788582556532"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-software-engineering-intern-digi-4462365431">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-reliability-product-engineering--4463178821">Strategic Student Program: Electronics Reliability Product Engineering Internship (Spring 2027, SIM STS)</a></h3>
+          <span class="rc-sub">Electronics reliability engineering</span>
+          <ul class="rc-do"><li>Evaluate and improve workflows for electronics reliability</li><li>Create tutorials, docs, and marketing content</li><li>Collaborate with engineers and product teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=simcenter%20simlab">Simcenter Simlab</a></li><li><a href="/us/?q=simcenter%20products">Simcenter Products</a></li><li><a href="/us/?q=python%20scripting">Python Scripting</a></li><li><a href="/us/?q=camtasia">Camtasia</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Maryland Heights</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788505566327"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-electronics-reliability-product-engineering--4463178821">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-thermo-mechanical-product-engineering-intern-4463194340">Strategic Student Program: Thermo-Mechanical Product Engineering Internship (Spring 2027, SIM STS)</a></h3>
+          <span class="rc-sub">Thermo-Mechanical Workflow Development</span>
+          <ul class="rc-do"><li>Develop workflows for thermal and structural analysis using Simcenter tools</li><li>Create tutorials, documentation, and technical content for simulation processes</li><li>Collaborate with engineers and product teams on customer simulation issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=simcenter%20products">Simcenter Products</a></li><li><a href="/us/?q=python%20scripting">Python Scripting</a></li><li><a href="/us/?q=camtasia">Camtasia</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Maryland Heights</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788505562105"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-thermo-mechanical-product-engineering-intern-4463194340">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-cross-domain-electronics-systems-engineering-4461385949">Strategic Student Program: Cross-Domain Electronics Systems Engineering Intern (T&amp;I, Spring 2027)</a></h3>
+          <span class="rc-sub">Engineering Workflow Development</span>
+          <ul class="rc-do"><li>Develop software prototypes and automation tools for engineering workflows</li><li>Work with EDA and PLM tools to integrate semiconductor and system design</li><li>Contribute to a silicon-to-rack product development lifecycle project</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=eda">Eda</a></li><li><a href="/us/?q=plm">Plm</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=eda">Eda</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Detroit</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788410470753"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-cross-domain-electronics-systems-engineering-4461385949">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-mendix-and-ai-application-development-intern-4461396141">Strategic Student Program: Mendix &amp; AI Application Development Internship (Spring/Summer 2027, GSCS)</a></h3>
+          <span class="rc-sub">Mendix &amp; AI Development</span>
+          <ul class="rc-do"><li>Build mendix apps and ai agents for process improvements</li><li>Use python and gpt tools to optimize internal workflows</li><li>Collaborate with stakeholders to implement real-world solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=mendix">Mendix</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=gpt">Gpt</a></li><li><a href="/us/?q=low-code">Low-code</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Livonia</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788410449399"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-mendix-and-ai-application-development-intern-4461396141">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-and-engineering-data-internship-spring-20-4461399111">Strategic Student Program: AI &amp; Engineering Data Internship (Spring 2027, GSCS)</a></h3>
+          <span class="rc-sub">Ai data intern</span>
+          <ul class="rc-do"><li>Curate engineering datasets for ai and analytics use cases</li><li>Build dashboards and visualizations for engineering insights</li><li>Support ai proof-of-concepts and digital thread projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=data%20analytics">Data Analytics</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=ai%20technologies">AI Technologies</a></li><li><a href="/us/?q=plm">Plm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Maryland Heights</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788410426584"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-and-engineering-data-internship-spring-20-4461399111">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-digital-thread-and-systems-engineering-inter-4461605014">Strategic Student Program: Digital Thread &amp; Systems Engineering Internship (Spring 2027, GSCS)</a></h3>
+          <span class="rc-sub">Digital Thread Engineering</span>
+          <ul class="rc-do"><li>Build engineering datasets for aerospace and automotive demos</li><li>Work on digital thread projects linking systems and software</li><li>Create technical docs and presentations for customer demos</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=scripting">Scripting</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Maryland Heights</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788409868587"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-digital-thread-and-systems-engineering-inter-4461605014">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103">Strategic Student Program: Integration Quality Assurance Co-Op (EBS, Spring 2027)</a></h3>
+          <span class="rc-sub">Software Quality Assurance</span>
+          <ul class="rc-do"><li>Run automated tests to ensure software reliability</li><li>Use jira and confluence for tracking and docs</li><li>Work in agile teams on real release processes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=jira">Jira</a></li><li><a href="/us/?q=confluence">Confluence</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=test%20automation">Test Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Huntsville</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788409845339"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-integration-quality-assurance-co-op-ebs-spri-4461398103">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-automation-and-process-improvement-intern-4461393697">Strategic Student Program: AI, Automation &amp; Process Improvement Internship (Spring/Summer 2027, GSCS)</a></h3>
+          <span class="rc-sub">Ai process improvement</span>
+          <ul class="rc-do"><li>Design and implement productivity improvements using ai and automation tools</li><li>Work with python, power automate, mendix, and excel</li><li>Collaborate with sales, marketing, and operations teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=power%20automate">Power Automate</a></li><li><a href="/us/?q=mendix">Mendix</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Livonia</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788409773082"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-strategic-student-program-ai-automation-and-process-improvement-intern-4461393697">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006">SSP: Simulation Engineering Co-op (Fall 2026, SIM STS)</a></h3>
+          <span class="rc-sub">Simulation Software Development</span>
+          <ul class="rc-do"><li>Develop simulation software using C++, C#, Python, and FORTRAN</li><li>Work with Git, SourceGear Vault, and automated testing tools</li><li>Collaborate with engineers on real-world engineering problems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=simcenter%20femap">Simcenter Femap</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Malvern</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787891361344"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-digital-industries-software-ssp-simulation-engineering-co-op-fall-2026-sim-sts-4458945006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -208,34 +252,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Siemens Digital Industries Software&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/deutsche-bank">
-          <span class="tile-crest" aria-hidden="true">DB<img src="/logos/deutsche-bank.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Deutsche Bank</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/notion">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/notion.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Notion</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

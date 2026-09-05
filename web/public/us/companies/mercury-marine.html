@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,100 +88,133 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Mercury Marine internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>10 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>10 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Mercury Marine is hiring interns in the US right now.</b> 10 engineering internships are open, across Fond du Lac and Oshkosh, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Fond du Lac · Oshkosh<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Fond du Lac · Oshkosh<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>26<p>Python, Matlab, Excel</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>10</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140">
-        <span class="rc-t">Mercury Marine: Mechatronics Intern</span>
-        <span class="rc-sub">Actuator Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">B.E/M.E</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788309764696">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-nvh-engineering-intern-4461526597">
-        <span class="rc-t">Mercury Marine: NVH Engineering Intern</span>
-        <span class="rc-sub">NVH Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788223031452">Posted <time datetime="2026-09-01">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-software-controls-engineering-intern-4461512709">
-        <span class="rc-t">Mercury Marine: Software Controls Engineering Intern</span>
-        <span class="rc-sub">Control Systems Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788222638137">Posted <time datetime="2026-09-01">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-racing-systems-engineering-co-op-4459361444">
-        <span class="rc-t">Mercury Racing Systems Engineering Co-Op</span>
-        <span class="rc-sub">Systems Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787768950443">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-credit-intern-4459086534">
-        <span class="rc-t">Mercury Marine: Credit Intern</span>
-        <span class="rc-sub">Credit Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787705784478">Posted <time datetime="2026-08-26">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-software-validation-intern-4459085512">
-        <span class="rc-t">Mercury Marine: Software Validation Intern</span>
-        <span class="rc-sub">Software Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Oshkosh</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787705760445">Posted <time datetime="2026-08-26">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-facilities-engineering-intern-4459002731">
-        <span class="rc-t">Mercury Marine: Facilities Engineering Intern</span>
-        <span class="rc-sub">Facility Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787682925518">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-systems-software-engineering-co-op-4459021228">
-        <span class="rc-t">Mercury Marine - Systems/Software Engineering Co-op</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787682565022">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-drives-and-propulsion-systems-engineering-intern-4458798783">
-        <span class="rc-t">Mercury Marine: Drives &amp; Propulsion Systems Engineering Intern</span>
-        <span class="rc-sub">Propulsion Systems Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28 / hour</span><span class="f-item">Oshkosh</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787682564725">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mercury-marine-mercury-marine-power-bi-ops-analytics-co-op-4459007658">
-        <span class="rc-t">Mercury Marine: Power BI/Ops Analytics Co-op</span>
-        <span class="rc-sub">Power BI Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $28 / hour</span><span class="f-item">Fond du Lac</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787682540499">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>10 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140">Mercury Marine: Mechatronics Intern</a></h3>
+          <span class="rc-sub">Actuator Development</span>
+          <ul class="rc-do"><li>Develop actuator solutions for marine drives using Matlab or Python</li><li>Collaborate with engineers on data-based design and troubleshooting</li><li>Contribute to DFMEA activities for product improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=dfmea">Dfmea</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>B.E/M.E</dd></div><div><dt>Posted</dt><dd><span data-ago="1788309764696"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-mechatronics-intern-4462114140">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-nvh-engineering-intern-4461526597">Mercury Marine: NVH Engineering Intern</a></h3>
+          <span class="rc-sub">NVH Testing</span>
+          <ul class="rc-do"><li>Support NVH testing and data analysis for marine propulsion products</li><li>Use MATLAB, Python, and LabVIEW for signal processing and instrumentation</li><li>Work on-water and in lab environments with experienced engineers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=signal%20processing">Signal Processing</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788223031452"><time datetime="2026-09-01">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-nvh-engineering-intern-4461526597">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-software-controls-engineering-intern-4461512709">Mercury Marine: Software Controls Engineering Intern</a></h3>
+          <span class="rc-sub">Control Systems Development</span>
+          <ul class="rc-do"><li>Develop control algorithms using Simulink and MATLAB</li><li>Test embedded software on engines and simulation boards</li><li>Collaborate with cross-functional teams on control systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/simulink">Simulink</a></li><li><a href="/us/?q=can%20networks">Can Networks</a></li><li><a href="/us/?q=pid%20control">Pid Control</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788222638137"><time datetime="2026-09-01">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-software-controls-engineering-intern-4461512709">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-racing-systems-engineering-co-op-4459361444">Mercury Racing Systems Engineering Co-Op</a></h3>
+          <span class="rc-sub">Systems Testing</span>
+          <ul class="rc-do"><li>Test and validate mechanical and electrical engine components</li><li>Build prototypes and analyze test data with lab instruments</li><li>Work full-time during Jan-Aug 2027 on racing product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=calipers">Calipers</a></li><li><a href="/us/?q=gauges">Gauges</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/simulink">Simulink</a></li><li><a href="/us/?q=cad">CAD</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787768950443"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-racing-systems-engineering-co-op-4459361444">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-credit-intern-4459086534">Mercury Marine: Credit Intern</a></h3>
+          <span class="rc-sub">Credit Support</span>
+          <ul class="rc-do"><li>Support credit and collections by managing customer accounts and analyzing financial data</li><li>Use AI tools and Power BI to improve credit risk assessment and workflow efficiency</li><li>Work full-time in Fond du Lac, WI, with relocation assistance available</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787705784478"><time datetime="2026-08-26">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-credit-intern-4459086534">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-software-validation-intern-4459085512">Mercury Marine: Software Validation Intern</a></h3>
+          <span class="rc-sub">Software Testing</span>
+          <ul class="rc-do"><li>Test mobile apps, embedded controllers, and dealer tools using simulators and on-vessel</li><li>Write automated tests, document issues, and report to software engineers</li><li>Work full-time during May to August 2027 in Oshkosh, WI</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=testing">Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Oshkosh</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787705760445"><time datetime="2026-08-26">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-software-validation-intern-4459085512">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-facilities-engineering-intern-4459002731">Mercury Marine: Facilities Engineering Intern</a></h3>
+          <span class="rc-sub">Facility Engineering</span>
+          <ul class="rc-do"><li>Support hvac projects with equipment assessments and energy efficiency initiatives</li><li>Work with electrical systems, lighting upgrades, and power distribution</li><li>Analyze utility data and assist with facility improvement planning</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=autocad">Autocad</a></li><li><a href="/us/?q=cmms">Cmms</a></li><li><a href="/us/?q=project%20management%20software">Project Management Software</a></li><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787682925518"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-facilities-engineering-intern-4459002731">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-systems-software-engineering-co-op-4459021228">Mercury Marine - Systems/Software Engineering Co-op</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software apps and dashboards for manufacturing data collection and analysis</li><li>Use SQL, Power BI, Ignition, and Python for data retrieval and visualization</li><li>Work on IIoT and Industry 4.0 projects with cross-functional teams across plants</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=ignition">Ignition</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787682565022"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-systems-software-engineering-co-op-4459021228">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-drives-and-propulsion-systems-engineering-intern-4458798783">Mercury Marine: Drives &amp; Propulsion Systems Engineering Intern</a></h3>
+          <span class="rc-sub">Propulsion Systems Engineering</span>
+          <ul class="rc-do"><li>Design and execute boat tests, analyze data, and write reports</li><li>Use Python/Matlab for simulations and test results analysis</li><li>Work on propulsion systems for recreational boating industry</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=report%20writing">Report Writing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Oshkosh</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787682564725"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-drives-and-propulsion-systems-engineering-intern-4458798783">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mercury-marine-mercury-marine-power-bi-ops-analytics-co-op-4459007658">Mercury Marine: Power BI/Ops Analytics Co-op</a></h3>
+          <span class="rc-sub">Power BI Analytics</span>
+          <ul class="rc-do"><li>Develop and maintain Power BI dashboards for operational metrics</li><li>Analyze data from multiple sources to support business decisions</li><li>Collaborate with stakeholders to translate needs into analytics solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fond du Lac</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787682540499"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mercury-marine-mercury-marine-power-bi-ops-analytics-co-op-4459007658">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -208,49 +252,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Mercury Marine&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a><a class="dir-card" href="/us/companies/honeywell-aerospace">
-          <span class="tile-crest" aria-hidden="true">HA<img src="/logos/honeywell-aerospace.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Honeywell Aerospace</span></span>
-        </a><a class="dir-card" href="/us/companies/mckesson-corporation">
-          <span class="tile-crest" aria-hidden="true">MC<img src="/logos/mckesson-corporation.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">McKesson Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/honeywell-technologies">
-          <span class="tile-crest" aria-hidden="true">HT<img src="/logos/honeywell-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Honeywell Technologies</span></span>
-        </a><a class="dir-card" href="/us/companies/jacobs">
-          <span class="tile-crest" aria-hidden="true">J<img src="/logos/jacobs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Jacobs</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

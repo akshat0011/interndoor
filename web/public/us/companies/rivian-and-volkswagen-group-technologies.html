@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,36 +88,45 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">RA<img src="/logos/rivian-and-volkswagen-group-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Rivian and Volkswagen Group Technologies internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Rivian and Volkswagen Group Technologies is hiring interns in the US right now.</b> 2 engineering internships are open, based in Palo Alto, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Palo Alto<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Palo Alto<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>9<p>Python, AWS, C++</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-connected-systems-january-august-2027-4462350505">
-        <span class="rc-t">Software Engineering Intern - Connected Systems (January - August 2027)</span>
-        <span class="rc-sub">Backend connectivity development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$40 – $51</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788580383056">Posted <time datetime="2026-09-05">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-applications-infotainment-and-mobile-janua-4462364348">
-        <span class="rc-t">Software Engineering Intern - Applications, Infotainment &amp; Mobile (January - August 2027)</span>
-        <span class="rc-sub">Android app development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$40 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788580316627">Posted <time datetime="2026-09-05">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-connected-systems-january-august-2027-4462350505">Software Engineering Intern - Connected Systems (January - August 2027)</a></h3>
+          <span class="rc-sub">Backend connectivity development</span>
+          <ul class="rc-do"><li>Develop backend services for vehicle telemetry and remote commands at scale</li><li>Work with Kafka, Kinesis, Redis, and AWS tools like EKS and DynamoDB</li><li>Contribute to cloud-native systems and integration validation across vehicle features</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/kafka">Kafka</a></li><li><a href="/us/skills/redis">Redis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$40 – $51</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788580383056"><time datetime="2026-09-05">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-connected-systems-january-august-2027-4462350505">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-applications-infotainment-and-mobile-janua-4462364348">Software Engineering Intern - Applications, Infotainment &amp; Mobile (January - August 2027)</a></h3>
+          <span class="rc-sub">Android app development</span>
+          <ul class="rc-do"><li>Develop Android apps for vehicle navigation and media systems</li><li>Work with Kotlin, Java, C++, or Python on infotainment features</li><li>Collaborate with designers and engineers on software integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/kotlin">Kotlin</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=android">Android</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$40 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788580316627"><time datetime="2026-09-05">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-applications-infotainment-and-mobile-janua-4462364348">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -144,49 +164,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Rivian and Volkswagen Group Technologies&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/toast">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/toast.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Toast</span></span>
-        </a><a class="dir-card" href="/us/companies/verkada">
-          <span class="tile-crest" aria-hidden="true">V<img src="/logos/verkada.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Verkada</span></span>
-        </a><a class="dir-card" href="/us/companies/raytheon">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/raytheon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Raytheon</span></span>
-        </a><a class="dir-card" href="/us/companies/leidos">
-          <span class="tile-crest" aria-hidden="true">L<img src="/logos/leidos.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Leidos</span></span>
-        </a><a class="dir-card" href="/us/companies/ramp">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/ramp.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Ramp</span></span>
-        </a><a class="dir-card" href="/us/companies/principal-financial-group">
-          <span class="tile-crest" aria-hidden="true">PF<img src="/logos/principal-financial-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Principal Financial Group</span></span>
-        </a><a class="dir-card" href="/us/companies/bmw-group">
-          <span class="tile-crest" aria-hidden="true">BG<img src="/logos/bmw-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">BMW Group</span></span>
-        </a><a class="dir-card" href="/us/companies/palantir-technologies">
-          <span class="tile-crest" aria-hidden="true">PT<img src="/logos/palantir-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Palantir Technologies</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

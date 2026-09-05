@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,164 +102,221 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">E<img src="/logos/emerson.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Emerson internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>18 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>18 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Emerson is hiring interns in the US right now.</b> 18 engineering internships are open, across Santa Rosa, Austin and Shakopee. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Santa Rosa · Austin · Shakopee</dd></div></dl>
+        <dt>Where</dt><dd>Santa Rosa · Austin · Shakopee</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>39<p>Unit Tests, Bench Testing, Emulators</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>18</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/emerson-rf-engineering-co-op-january-june-2027-4462877237">
-        <span class="rc-t">RF Engineering Co-op (January-June 2027)</span>
-        <span class="rc-sub">RF Testing Automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Santa Rosa</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788453452678">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-digital-hardware-engineer-intern-4461782677">
-        <span class="rc-t">Digital Hardware Engineer Intern</span>
-        <span class="rc-sub">Hardware Development</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788281487407">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-product-operations-engineering-intern-4461554422">
-        <span class="rc-t">Product Operations Engineering Intern</span>
-        <span class="rc-sub">Product Operations Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238281849">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-data-analytics-intern-4461558306">
-        <span class="rc-t">Data Analytics Intern</span>
-        <span class="rc-sub">Data Analysis Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $24 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238276626">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-test-engineering-co-op-jan27-may27-4461556325">
-        <span class="rc-t">Test Engineering Co-op (Jan27-May27)</span>
-        <span class="rc-sub">Test Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238271715">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-cybersecurity-engineering-intern-4461569065">
-        <span class="rc-t">Cybersecurity Engineering Intern</span>
-        <span class="rc-sub">Product Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238267965">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-software-engineering-intern-4461567086">
-        <span class="rc-t">Software Engineering Intern</span>
-        <span class="rc-sub">Embedded Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238255771">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-software-engineering-spring-co-op-jan27-may27-4461560312">
-        <span class="rc-t">Software Engineering Spring Co-op (Jan27- May27)</span>
-        <span class="rc-sub">Embedded Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237489215">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-cybersecurity-engineering-co-op-jan27-may27-4461568063">
-        <span class="rc-t">Cybersecurity Engineering Co-op (Jan27-May27)</span>
-        <span class="rc-sub">Cybersecurity Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237484513">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-data-science-engineering-intern-4461567083">
-        <span class="rc-t">Data Science Engineering Intern</span>
-        <span class="rc-sub">Data Forecasting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Boulder</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237469990">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-test-engineering-intern-4461560314">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237466789">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-test-engineering-intern-4461560313">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Hardware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Boulder</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237465290">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-software-engineering-intern-4461553964">
-        <span class="rc-t">Software Engineering Intern</span>
-        <span class="rc-sub">Embedded Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Houston</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237463860">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-environmental-health-and-safety-engineering-intern-4461566096">
-        <span class="rc-t">Environmental Health &amp; Safety Engineering Intern</span>
-        <span class="rc-sub">Environmental Safety Systems</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Shakopee</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237462654">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-facilites-engineering-intern-4461572012">
-        <span class="rc-t">Facilites Engineering Intern</span>
-        <span class="rc-sub">Facility Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Chanhassen</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237450830">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-interactive-plant-environment-engineering-intern-4461567085">
-        <span class="rc-t">Interactive Plant Environment Engineering Intern</span>
-        <span class="rc-sub">Control Systems Integration</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Boulder</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237442598">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-cybersecurity-engineering-intern-4461565157">
-        <span class="rc-t">Cybersecurity Engineering Intern</span>
-        <span class="rc-sub">Cybersecurity Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 – $28 / hour</span><span class="f-item">Boulder</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788237433371">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/emerson-application-engineering-intern-4460113870">
-        <span class="rc-t">Application Engineering Intern</span>
-        <span class="rc-sub">Technical Demonstration</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787870239404">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>18 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-rf-engineering-co-op-january-june-2027-4462877237">RF Engineering Co-op (January-June 2027)</a></h3>
+          <span class="rc-sub">RF Testing Automation</span>
+          <ul class="rc-do"><li>Write scripts to automate RF testing with LabVIEW</li><li>Use signal analysis tools to test new communication tech</li><li>Work on 5G/6G component calibration in a global team</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=signal%20processing">Signal Processing</a></li><li><a href="/us/?q=rf%20test%20equipment">Rf Test Equipment</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Santa Rosa</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788453452678"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-rf-engineering-co-op-january-june-2027-4462877237">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-digital-hardware-engineer-intern-4461782677">Digital Hardware Engineer Intern</a></h3>
+          <span class="rc-sub">Hardware Development</span>
+          <ul class="rc-do"><li>Design and validate hardware using schematic, board layout, or FPGA programming</li><li>Work with T&amp;M staff on product development from design to manufacturing</li><li>Debug and research technical challenges in digital and analog systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=analog%20circuit%20design">Analog Circuit Design</a></li><li><a href="/us/?q=fpga%20programming">FPGA Programming</a></li><li><a href="/us/?q=board%20layout">Board Layout</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788281487407"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-digital-hardware-engineer-intern-4461782677">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-product-operations-engineering-intern-4461554422">Product Operations Engineering Intern</a></h3>
+          <span class="rc-sub">Product Operations Support</span>
+          <ul class="rc-do"><li>Track metrics and adjust schedules for product transitions</li><li>Analyze regulations and create compliance action plans</li><li>Collaborate with cross-functional teams on operational issues</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238281849"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-product-operations-engineering-intern-4461554422">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-data-analytics-intern-4461558306">Data Analytics Intern</a></h3>
+          <span class="rc-sub">Data Analysis Support</span>
+          <ul class="rc-do"><li>Support EHS data initiatives and system integration projects</li><li>Develop Power BI dashboards and analyze business data</li><li>Collaborate with EHS, IT, and Operations teams on automation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=cority">Cority</a></li><li><a href="/us/?q=wrike">Wrike</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238276626"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-data-analytics-intern-4461558306">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-test-engineering-co-op-jan27-may27-4461556325">Test Engineering Co-op (Jan27-May27)</a></h3>
+          <span class="rc-sub">Test Engineering</span>
+          <ul class="rc-do"><li>Design and implement automated tests and test infrastructure</li><li>Collaborate with software, hardware, and manufacturing teams</li><li>Support global manufacturing test systems and documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=test%20infrastructure">Test Infrastructure</a></li><li><a href="/us/?q=hardware%20interfaces">Hardware Interfaces</a></li><li><a href="/us/?q=documentation">Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238271715"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-test-engineering-co-op-jan27-may27-4461556325">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-cybersecurity-engineering-intern-4461569065">Cybersecurity Engineering Intern</a></h3>
+          <span class="rc-sub">Product Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security risks in product code and recommend fixes</li><li>Work with agile teams to build secure software and firmware</li><li>Learn cybersecurity best practices in a real-world engineering environment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=secure%20coding">Secure Coding</a></li><li><a href="/us/?q=regulatory%20compliance">Regulatory Compliance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238267965"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-cybersecurity-engineering-intern-4461569065">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-software-engineering-intern-4461567086">Software Engineering Intern</a></h3>
+          <span class="rc-sub">Embedded Firmware Development</span>
+          <ul class="rc-do"><li>Debug software using unit tests, emulators, and bench testing</li><li>Collaborate with cross-functional teams on firmware requirements</li><li>Design and develop embedded firmware with technical expertise</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=unit%20tests">Unit Tests</a></li><li><a href="/us/?q=emulators">Emulators</a></li><li><a href="/us/?q=bench%20testing">Bench Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238255771"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-software-engineering-intern-4461567086">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-software-engineering-spring-co-op-jan27-may27-4461560312">Software Engineering Spring Co-op (Jan27- May27)</a></h3>
+          <span class="rc-sub">Embedded Firmware Development</span>
+          <ul class="rc-do"><li>Design and develop embedded firmware for real-world applications</li><li>Use unit tests, simulators, and IDEs to debug and test software</li><li>Collaborate with cross-functional teams on firmware requirements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=embedded%20firmware">Embedded Firmware</a></li><li><a href="/us/?q=unit%20tests">Unit Tests</a></li><li><a href="/us/?q=simulators">Simulators</a></li><li><a href="/us/?q=ide">Ide</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237489215"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-software-engineering-spring-co-op-jan27-may27-4461560312">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-cybersecurity-engineering-co-op-jan27-may27-4461568063">Cybersecurity Engineering Co-op (Jan27-May27)</a></h3>
+          <span class="rc-sub">Cybersecurity Engineering</span>
+          <ul class="rc-do"><li>Collaborate on secure software and firmware development</li><li>Apply cybersecurity principles to real-world products</li><li>Work in agile teams with product security experts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=secure%20coding">Secure Coding</a></li><li><a href="/us/?q=agile%20development">Agile Development</a></li><li><a href="/us/?q=regulatory%20compliance">Regulatory Compliance</a></li><li><a href="/us/?q=encryption">Encryption</a></li><li><a href="/us/?q=scripting">Scripting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237484513"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-cybersecurity-engineering-co-op-jan27-may27-4461568063">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-data-science-engineering-intern-4461567083">Data Science Engineering Intern</a></h3>
+          <span class="rc-sub">Data Forecasting</span>
+          <ul class="rc-do"><li>Build predictive models for backlog forecasting and capacity planning</li><li>Use Power BI and Python for data visualization and analysis</li><li>Collaborate with supply chain and operations teams on real-world projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=statistical%20modeling">Statistical Modeling</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boulder</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237469990"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-data-science-engineering-intern-4461567083">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-test-engineering-intern-4461560314">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Engineering</span>
+          <ul class="rc-do"><li>Write tests for software and hardware systems</li><li>Use Python, Selenium, and Jenkins</li><li>Work with global teams on manufacturing tests</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237466789"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-test-engineering-intern-4461560314">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-test-engineering-intern-4461560313">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Hardware Development</span>
+          <ul class="rc-do"><li>Design and implement automated tests and test infrastructure</li><li>Support manufacturing test systems and deploy test stations</li><li>Create hardware with simple user interfaces and maintain documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=documentation">Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boulder</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237465290"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-test-engineering-intern-4461560313">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-software-engineering-intern-4461553964">Software Engineering Intern</a></h3>
+          <span class="rc-sub">Embedded Firmware Development</span>
+          <ul class="rc-do"><li>Debug software using unit tests, emulators, and bench testing</li><li>Collaborate with cross-functional teams on firmware requirements</li><li>Design and develop embedded firmware with technical expertise</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=unit%20tests">Unit Tests</a></li><li><a href="/us/?q=emulators">Emulators</a></li><li><a href="/us/?q=bench%20testing">Bench Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Houston</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237463860"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-software-engineering-intern-4461553964">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-environmental-health-and-safety-engineering-intern-4461566096">Environmental Health &amp; Safety Engineering Intern</a></h3>
+          <span class="rc-sub">Environmental Safety Systems</span>
+          <ul class="rc-do"><li>Develop training modules and audit templates using Cority</li><li>Create digital compliance calendars and scorecards with PowerBI</li><li>Collaborate on sustainability projects with cross-functional teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cority">Cority</a></li><li><a href="/us/?q=powerbi">Powerbi</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Shakopee</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237462654"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-environmental-health-and-safety-engineering-intern-4461566096">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-facilites-engineering-intern-4461572012">Facilites Engineering Intern</a></h3>
+          <span class="rc-sub">Facility Systems Support</span>
+          <ul class="rc-do"><li>Support facility systems like HVAC, electrical, and automation with CAD and data analysis</li><li>Work on projects from planning to execution with experienced engineers and managers</li><li>Ensure compliance with safety and regulatory standards for facility operations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=technical%20reporting">Technical Reporting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chanhassen</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237450830"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-facilites-engineering-intern-4461572012">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-interactive-plant-environment-engineering-intern-4461567085">Interactive Plant Environment Engineering Intern</a></h3>
+          <span class="rc-sub">Control Systems Integration</span>
+          <ul class="rc-do"><li>Support integration of interactive plant environments using DeltaV systems</li><li>Configure remote connectivity for control systems across multiple sites</li><li>Collaborate with marketing and engineering teams on customer engagement</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=deltaV">DeltaV</a></li><li><a href="/us/?q=opc%20connectivity">Opc Connectivity</a></li><li><a href="/us/?q=remote%20access%20technologies">Remote Access Technologies</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boulder</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237442598"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-interactive-plant-environment-engineering-intern-4461567085">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-cybersecurity-engineering-intern-4461565157">Cybersecurity Engineering Intern</a></h3>
+          <span class="rc-sub">Cybersecurity Analysis</span>
+          <ul class="rc-do"><li>Review code for security flaws and help implement safe coding practices</li><li>Work with teams to ensure products meet compliance standards</li><li>Collaborate on secure software development in agile environments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=secure%20coding">Secure Coding</a></li><li><a href="/us/?q=agile%20development">Agile Development</a></li><li><a href="/us/?q=encryption">Encryption</a></li><li><a href="/us/?q=scripting">Scripting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boulder</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788237433371"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-cybersecurity-engineering-intern-4461565157">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/emerson-application-engineering-intern-4460113870">Application Engineering Intern</a></h3>
+          <span class="rc-sub">Technical Demonstration</span>
+          <ul class="rc-do"><li>Design and optimize customer-facing demos and proofs of concept using NI platforms</li><li>Collaborate with engineers, sales, and marketing on technical solutions and customer needs</li><li>Troubleshoot and document technical systems for internal and external use</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/fpga">FPGA</a></li><li><a href="/us/?q=data%20acquisition">Data Acquisition</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787870239404"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/emerson-application-engineering-intern-4460113870">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -286,31 +354,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Emerson&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/barclays">
-          <span class="tile-crest" aria-hidden="true">B<img src="/logos/barclays.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Barclays</span></span>
-        </a><a class="dir-card" href="/us/companies/clearwater-analytics">
-          <span class="tile-crest" aria-hidden="true">CA<img src="/logos/clearwater-analytics.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Clearwater Analytics</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -54,6 +54,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">

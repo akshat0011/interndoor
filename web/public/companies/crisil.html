@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,26 +88,33 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">C<img src="/logos/crisil.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Crisil internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
 
-    
+    <p class="hub-answer-line"><b>Yes, Crisil is hiring interns in India right now.</b> One engineering internship is open, based in Pune Division, on-site. We re-check this page every 30 minutes.</p>
+
+    <dl class="hub-answer"><div class="ans">
+        <dt>Where</dt><dd>Pune Division<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>1<p>Mathematics</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/crisil-internship-trainee-ai-engg-4456879321">
-        <span class="rc-t">Internship Trainee - AI Engg.</span>
-        <span class="rc-sub">Ai project support</span>
-        <span class="rc-facts"><span class="f-item">2 locations</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787568235204">Posted <time datetime="2026-08-24">24 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/crisil-internship-trainee-ai-engg-4456879321">Internship Trainee - AI Engg.</a></h3>
+          <span class="rc-sub">Ai project support</span>
+          <ul class="rc-do"><li>Assist ai engineers on live projects</li><li>Work with mathematics and engineering backgrounds</li><li>Based in pune division</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1787568235204"><time datetime="2026-08-24">24 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/crisil-internship-trainee-ai-engg-4456879321">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     
@@ -116,7 +134,6 @@
 
     
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

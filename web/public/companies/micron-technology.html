@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">
@@ -91,34 +102,44 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">MT<img src="/logos/micron-technology.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Micron Technology internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
 
-    
+    <p class="hub-answer-line"><b>Yes, Micron Technology is hiring interns in India right now.</b> 2 engineering internships are open, across Hyderabad and Hyderabad - Phoenix Aquila, on-site. We re-check this page every 30 minutes.</p>
+
+    <dl class="hub-answer"><div class="ans">
+        <dt>Where</dt><dd>Hyderabad · Hyderabad - Phoenix Aquila<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>9<p>Data Science, Semiconductor Design, AI Tools</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/micron-technology-intern-4461695413">
-        <span class="rc-t">Intern</span>
-        <span class="rc-sub">Semiconductor Design</span>
-        <span class="rc-facts"><span class="f-item">2 locations</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788460023413">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/micron-technology-intern-fdv-pcv-nand-product-engineering-ats-workday-micron-wd1-external-jr109268">
-        <span class="rc-t">Intern - FDV/PCV, NAND Product Engineering</span>
-        <span class="rc-sub">NAND Validation</span>
-        <span class="rc-facts"><span class="f-item">Hyderabad - Phoenix Aquila</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/micron-technology-intern-4461695413">Intern</a></h3>
+          <span class="rc-sub">Semiconductor Design</span>
+          <ul class="rc-do"><li>Work on semiconductor design and development projects</li><li>Engage with data science and ai-driven solutions</li><li>Contribute to engineering and manufacturing initiatives</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=semiconductor%20design">Semiconductor Design</a></li><li><a href="/?q=data%20science">Data Science</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788460023413"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/micron-technology-intern-4461695413">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/micron-technology-intern-fdv-pcv-nand-product-engineering-ats-workday-micron-wd1-external-jr109268">Intern - FDV/PCV, NAND Product Engineering</a></h3>
+          <span class="rc-sub">NAND Validation</span>
+          <ul class="rc-do"><li>Develop test programs for NAND validation and characterization</li><li>Use AI tools to automate workflows and improve build efficiency</li><li>Collaborate with cross-functional teams on product engineering</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/python">Python</a></li><li><a href="/skills/perl">Perl</a></li><li><a href="/?q=verilog">Verilog</a></li><li><a href="/?q=vcs">Vcs</a></li><li><a href="/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hyderabad - Phoenix Aquila</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/micron-technology-intern-fdv-pcv-nand-product-engineering-ats-workday-micron-wd1-external-jr109268">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     
@@ -143,28 +164,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Micron Technology&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/infosys">
-          <span class="tile-crest" aria-hidden="true">I<img src="/logos/infosys.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Infosys</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

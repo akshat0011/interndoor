@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,84 +88,111 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">Z<img src="/logos/zipline.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Zipline internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>8 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>8 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Zipline is hiring interns in the US right now.</b> 8 engineering internships are open, based in South San Francisco, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>South San Francisco<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>South San Francisco<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>13<p>Python, SQL, C</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>8</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/zipline-aircraft-software-integration-intern-summer-2027-4463653708">
-        <span class="rc-t">Aircraft Software Integration Intern (Summer 2027)</span>
-        <span class="rc-sub">Software Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$54 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788563146344">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-aircraft-software-integration-intern-spring-2027-4463659521">
-        <span class="rc-t">Aircraft Software Integration Intern (Spring 2027)</span>
-        <span class="rc-sub">Software Integration</span>
-        <span class="rc-facts"><span class="f-item is-cash">$54 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788563123458">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-launch-and-scale-intern-spring-2027-4462748945">
-        <span class="rc-t">Launch &amp; Scale Intern (Spring 2027)</span>
-        <span class="rc-sub">Launch Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$34 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788411945260">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-launch-and-scale-intern-summer-2027-4462770014">
-        <span class="rc-t">Launch &amp; Scale Intern (Summer 2027)</span>
-        <span class="rc-sub">Launch Planning</span>
-        <span class="rc-facts"><span class="f-item is-cash">$34 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788411924481">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-maps-intern-spring-2027-4460543217">
-        <span class="rc-t">Maps Intern (Spring 2027)</span>
-        <span class="rc-sub">Path Planning</span>
-        <span class="rc-facts"><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787958338739">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-maps-intern-summer-2027-4460523665">
-        <span class="rc-t">Maps Intern (Summer 2027)</span>
-        <span class="rc-sub">Maps Algorithm Development</span>
-        <span class="rc-facts"><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787958305879">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-embedded-engineering-intern-summer-2027-4457723859">
-        <span class="rc-t">Embedded Engineering Intern (Summer 2027)</span>
-        <span class="rc-sub">Embedded Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$54 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787807486457">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459610865">
-        <span class="rc-t">Embedded Software Engineer Intern (Spring 2027)</span>
-        <span class="rc-sub">Embedded Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$54 / hour</span><span class="f-item">South San Francisco</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787784823391">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>8 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-aircraft-software-integration-intern-summer-2027-4463653708">Aircraft Software Integration Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Software Testing</span>
+          <ul class="rc-do"><li>Test and integrate software for autonomous aircraft flight and route adaptation</li><li>Work with simulation tools, telemetry, and testing infrastructure</li><li>Analyze data and build dashboards for real-time system performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=matplotlib">Matplotlib</a></li><li><a href="/us/?q=seaborn">Seaborn</a></li><li><a href="/us/?q=plotly">Plotly</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$54 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788563146344"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-aircraft-software-integration-intern-summer-2027-4463653708">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-aircraft-software-integration-intern-spring-2027-4463659521">Aircraft Software Integration Intern (Spring 2027)</a></h3>
+          <span class="rc-sub">Software Integration</span>
+          <ul class="rc-do"><li>Test and integrate software for autonomous aircraft flight and route adaptation</li><li>Work with simulation tools, telemetry, and testing infrastructure</li><li>Analyze data and build dashboards for real-time system performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=matplotlib">Matplotlib</a></li><li><a href="/us/?q=seaborn">Seaborn</a></li><li><a href="/us/?q=plotly">Plotly</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$54 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788563123458"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-aircraft-software-integration-intern-spring-2027-4463659521">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-launch-and-scale-intern-spring-2027-4462748945">Launch &amp; Scale Intern (Spring 2027)</a></h3>
+          <span class="rc-sub">Launch Support</span>
+          <ul class="rc-do"><li>Support launch plans by organizing milestones, dependencies, and risks</li><li>Analyze data to find bottlenecks and improve launch processes</li><li>Build tools like dashboards or playbooks for operational clarity</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=spreadsheets">Spreadsheets</a></li><li><a href="/us/?q=automation">Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788411945260"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-launch-and-scale-intern-spring-2027-4462748945">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-launch-and-scale-intern-summer-2027-4462770014">Launch &amp; Scale Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Launch Planning</span>
+          <ul class="rc-do"><li>Support launch plans by organizing milestones and dependencies</li><li>Analyze data to find bottlenecks and improve processes</li><li>Build tools like dashboards or playbooks for launch teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=spreadsheets">Spreadsheets</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788411924481"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-launch-and-scale-intern-summer-2027-4462770014">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-maps-intern-spring-2027-4460543217">Maps Intern (Spring 2027)</a></h3>
+          <span class="rc-sub">Path Planning</span>
+          <ul class="rc-do"><li>Develop and improve path planning algorithms for drone routes</li><li>Work with spatial data tools and geospatial visualization platforms</li><li>Collaborate with teams to make global data accessible in real time</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=path%20planning%20algorithms">Path Planning Algorithms</a></li><li><a href="/us/?q=algorithmic%20optimization">Algorithmic Optimization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787958338739"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-maps-intern-spring-2027-4460543217">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-maps-intern-summer-2027-4460523665">Maps Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Maps Algorithm Development</span>
+          <ul class="rc-do"><li>Build tools for generating flight routes and spatial data</li><li>Use geospatial tools to evaluate terrain and serviceability</li><li>Collaborate with teams to make data accessible globally</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=path%20planning%20algorithms">Path Planning Algorithms</a></li><li><a href="/us/?q=data%20transformation%20pipelines">Data Transformation Pipelines</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787958305879"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-maps-intern-summer-2027-4460523665">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-embedded-engineering-intern-summer-2027-4457723859">Embedded Engineering Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Embedded Software Development</span>
+          <ul class="rc-do"><li>Develop embedded software for drones and ground systems</li><li>Work with C/C++/Rust and real-time operating systems</li><li>Collaborate with cross-functional teams on global deployment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/?q=embedded%20linux">Embedded Linux</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$54 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787807486457"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-embedded-engineering-intern-summer-2027-4457723859">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459610865">Embedded Software Engineer Intern (Spring 2027)</a></h3>
+          <span class="rc-sub">Embedded Software Development</span>
+          <ul class="rc-do"><li>Develop embedded software for drones and ground systems</li><li>Work with C/C++/Rust and real-time operating systems</li><li>Collaborate with cross-functional teams on global projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/?q=embedded%20linux">Embedded Linux</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>South San Francisco</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$54 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787784823391"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zipline-embedded-software-engineer-intern-spring-2027-4459610865">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -192,31 +230,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Zipline&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/postman-labs">
-          <span class="tile-crest" aria-hidden="true">PL<img src="/logos/postman-labs.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Postman Labs</span></span>
-        </a><a class="dir-card" href="/us/companies/cloudflare">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cloudflare.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cloudflare</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

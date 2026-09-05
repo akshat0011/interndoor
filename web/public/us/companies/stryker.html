@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,156 +88,210 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">S<img src="/logos/stryker.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Stryker internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>17 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>17 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Stryker is hiring interns in the US right now.</b> 17 engineering internships are open, across Fremont, Redmond and Tempe, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Fremont · Redmond · Tempe<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Fremont · Redmond · Tempe<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>17<p>CAD, Labview, Root Cause Analysis</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>17</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/stryker-r-and-d-intern-4463657228">
-        <span class="rc-t">R&amp;D Intern</span>
-        <span class="rc-sub">Medical Device Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Fremont</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788559493657">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-ats-workday-stryker-wd1-strykercareers-r572877">
-        <span class="rc-t">Summer 2027 Internship - Quality Assurance Engineer - Washington -</span>
-        <span class="rc-sub">Quality Assurance Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788480000000">Posted <time datetime="2026-09-04">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-human-factors-engineering-intern-4461391737">
-        <span class="rc-t">Human Factors Engineering Intern</span>
-        <span class="rc-sub">Medical Device Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Redmond</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788408292084">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-engineering-intern-product-quality-ats-workday-stryker-wd1-strykercareers-r572940">
-        <span class="rc-t">Engineering Intern, Product Quality</span>
-        <span class="rc-sub">Quality Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Tempe</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788393600000">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-commercial-operations-software-engineering-intern-flower-mound-tx-4460999319">
-        <span class="rc-t">Commercial Operations Software Engineering Intern - Flower Mound, TX</span>
-        <span class="rc-sub">Process improvement engineer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Flower Mound</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788365126536">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-electrical-engineering-intern-weston-fl-4461311207">
-        <span class="rc-t">Electrical Engineering Intern - Weston, FL</span>
-        <span class="rc-sub">Electrical Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Weston</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788365040451">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-quality-engineering-intern-4460936567">
-        <span class="rc-t">Quality Engineering Intern</span>
-        <span class="rc-sub">Quality Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Flower Mound</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788321885330">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-statistical-programming-california-4460927625">
-        <span class="rc-t">Summer 2027 Internship - Statistical Programming - California</span>
-        <span class="rc-sub">Statistical Programming</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Irvine</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788321878603">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-2027-summer-intern-r-and-d-process-and-technology-development-4460936562">
-        <span class="rc-t">2027 Summer Intern - R&amp;D Process &amp; Technology Development</span>
-        <span class="rc-sub">Medical Device Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Salt Lake City</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788321842693">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-quality-engineering-california-4460078600">
-        <span class="rc-t">Summer 2027 Internship - Quality Engineering - California</span>
-        <span class="rc-sub">Quality Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788213931637">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-quality-engineering-michigan-4460065727">
-        <span class="rc-t">Summer 2027 Internship - Quality Engineering - Michigan</span>
-        <span class="rc-sub">Quality Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Portage</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788213881522">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-software-engineering-florida-4459798078">
-        <span class="rc-t">Summer 2027 Internship - Software Engineering - Florida</span>
-        <span class="rc-sub">Medical Software Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Fort Lauderdale</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788170731982">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-software-engineering-california-4459782329">
-        <span class="rc-t">Summer 2027 Internship - Software Engineering - California</span>
-        <span class="rc-sub">Software Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788170719767">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-software-engineering-indiana-4460002030">
-        <span class="rc-t">Summer 2027 Internship - Software Engineering - Indiana</span>
-        <span class="rc-sub">Product Quality Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Fort Wayne</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788170709565">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-software-engineering-michigan-4459798074">
-        <span class="rc-t">Summer 2027 Internship - Software Engineering - Michigan</span>
-        <span class="rc-sub">Software Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Portage</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788170664371">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-illinois-ats-workday-stryker-wd1-strykercareers-r572593">
-        <span class="rc-t">Summer 2027 Internship - Biomedical Engineering - Illinois</span>
-        <span class="rc-sub">Medical Device Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Cary</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-new-jersey-ats-workday-stryker-wd1-strykercareers-r572594">
-        <span class="rc-t">Summer 2027 Internship - Biomedical Engineering - New Jersey</span>
-        <span class="rc-sub">Medical device development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 / hour</span><span class="f-item">Mahwah</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>17 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-r-and-d-intern-4463657228">R&amp;D Intern</a></h3>
+          <span class="rc-sub">Medical Device Development</span>
+          <ul class="rc-do"><li>Analyze customer needs and product data to improve medical devices</li><li>Use cad fea and test labs to design and refine new product concepts</li><li>Collaborate with cross-functional teams on innovation and development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=fea">Fea</a></li><li><a href="/us/?q=test%20labs">Test Labs</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fremont</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788559493657"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-r-and-d-intern-4463657228">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-ats-workday-stryker-wd1-strykercareers-r572877">Summer 2027 Internship - Quality Assurance Engineer - Washington -</a></h3>
+          <span class="rc-sub">Quality Assurance Testing</span>
+          <ul class="rc-do"><li>Test medical devices for compliance and safety</li><li>Use CAD, LabView, and statistical tools</li><li>Work with cross-functional teams on product quality</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=statistics">Statistics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788480000000"><time datetime="2026-09-04">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-quality-assurance-engineer-washington-ats-workday-stryker-wd1-strykercareers-r572877">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-human-factors-engineering-intern-4461391737">Human Factors Engineering Intern</a></h3>
+          <span class="rc-sub">Medical Device Design</span>
+          <ul class="rc-do"><li>Analyze customer feedback and product data to improve medical device safety</li><li>Use CAD and FEA tools to design and test new healthcare technologies</li><li>Work with cross-functional teams in Redmond, WA for 12 months</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=fea">Fea</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Redmond</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788408292084"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-human-factors-engineering-intern-4461391737">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-engineering-intern-product-quality-ats-workday-stryker-wd1-strykercareers-r572940">Engineering Intern, Product Quality</a></h3>
+          <span class="rc-sub">Quality Engineering</span>
+          <ul class="rc-do"><li>Analyze production issues and implement solutions</li><li>Use cad, labview, and root cause analysis tools</li><li>Work with cross-functional teams on quality systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tempe</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788393600000"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-engineering-intern-product-quality-ats-workday-stryker-wd1-strykercareers-r572940">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-commercial-operations-software-engineering-intern-flower-mound-tx-4460999319">Commercial Operations Software Engineering Intern - Flower Mound, TX</a></h3>
+          <span class="rc-sub">Process improvement engineer</span>
+          <ul class="rc-do"><li>Analyze workflows and develop scalable solutions for business processes</li><li>Use software tools and automation to improve data visibility and efficiency</li><li>Collaborate with cross-functional teams on complex integration projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=word">Word</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li><li><a href="/us/?q=software%20tools">Software Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Flower Mound</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788365126536"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-commercial-operations-software-engineering-intern-flower-mound-tx-4460999319">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-electrical-engineering-intern-weston-fl-4461311207">Electrical Engineering Intern - Weston, FL</a></h3>
+          <span class="rc-sub">Electrical Design</span>
+          <ul class="rc-do"><li>Design pcba and wire harness for surgical robotics</li><li>Use microsoft office tools and learn systems engineering</li><li>Work with mentor through build, test, and peer review</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=microsoft%20office">Microsoft Office</a></li><li><a href="/us/?q=systems%20engineering">Systems Engineering</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Weston</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788365040451"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-electrical-engineering-intern-weston-fl-4461311207">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-quality-engineering-intern-4460936567">Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Quality Analysis</span>
+          <ul class="rc-do"><li>Analyze production issues and implement corrective actions</li><li>Use tools like CAD, LabView, and root cause analysis</li><li>Work with cross-functional teams on quality and compliance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Flower Mound</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788321885330"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-quality-engineering-intern-4460936567">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-statistical-programming-california-4460927625">Summer 2027 Internship - Statistical Programming - California</a></h3>
+          <span class="rc-sub">Statistical Programming</span>
+          <ul class="rc-do"><li>Create and deliver statistical programming deliverables for study projects</li><li>Work with statisticians and clinicians on data processing and algorithm implementation</li><li>Standardize and curate clinical data for analysis and reporting</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=sas">Sas</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/?q=clinical%20trials">Clinical Trials</a></li><li><a href="/us/?q=cdisc%20standardization">Cdisc Standardization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Irvine</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788321878603"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-statistical-programming-california-4460927625">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-2027-summer-intern-r-and-d-process-and-technology-development-4460936562">2027 Summer Intern - R&amp;D Process &amp; Technology Development</a></h3>
+          <span class="rc-sub">Medical Device Development</span>
+          <ul class="rc-do"><li>Design and test medical devices using CAD, FEA, and test labs</li><li>Collaborate with cross-functional teams on product development</li><li>Work on real-world projects with experienced engineers and mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=fea">Fea</a></li><li><a href="/us/?q=test%20labs">Test Labs</a></li><li><a href="/us/?q=product%20development">Product Development</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Salt Lake City</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788321842693"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-2027-summer-intern-r-and-d-process-and-technology-development-4460936562">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-quality-engineering-california-4460078600">Summer 2027 Internship - Quality Engineering - California</a></h3>
+          <span class="rc-sub">Quality Engineering</span>
+          <ul class="rc-do"><li>Analyze production issues and implement fixes</li><li>Use cad, labview, and root cause analysis tools</li><li>Work with cross-functional teams on quality systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788213931637"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-quality-engineering-california-4460078600">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-quality-engineering-michigan-4460065727">Summer 2027 Internship - Quality Engineering - Michigan</a></h3>
+          <span class="rc-sub">Quality Engineering</span>
+          <ul class="rc-do"><li>Analyze production issues and implement fixes</li><li>Use tools like LabView and CAD for process improvement</li><li>Work with cross-functional teams on quality assurance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Portage</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788213881522"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-quality-engineering-michigan-4460065727">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-software-engineering-florida-4459798078">Summer 2027 Internship - Software Engineering - Florida</a></h3>
+          <span class="rc-sub">Medical Software Engineering</span>
+          <ul class="rc-do"><li>Debug and optimize medical device software systems</li><li>Use cad and labview for product validation</li><li>Work with cross-functional teams on quality assurance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fort Lauderdale</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788170731982"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-software-engineering-florida-4459798078">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-software-engineering-california-4459782329">Summer 2027 Internship - Software Engineering - California</a></h3>
+          <span class="rc-sub">Software Engineering</span>
+          <ul class="rc-do"><li>Write code for medical devices and software systems</li><li>Use CAD, LabView, and root cause analysis tools</li><li>Work with cross-functional teams on product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788170719767"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-software-engineering-california-4459782329">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-software-engineering-indiana-4460002030">Summer 2027 Internship - Software Engineering - Indiana</a></h3>
+          <span class="rc-sub">Product Quality Engineering</span>
+          <ul class="rc-do"><li>Work on product development, quality assurance, and testing projects</li><li>Use CAD, LabView, and root cause analysis tools</li><li>Collaborate with cross-functional teams and external stakeholders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fort Wayne</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788170709565"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-software-engineering-indiana-4460002030">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-software-engineering-michigan-4459798074">Summer 2027 Internship - Software Engineering - Michigan</a></h3>
+          <span class="rc-sub">Software Engineering</span>
+          <ul class="rc-do"><li>Work on product development, quality assurance, and testing projects</li><li>Use CAD, LabView, and root cause analysis tools</li><li>Collaborate with cross-functional teams and external stakeholders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Portage</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788170664371"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-software-engineering-michigan-4459798074">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-illinois-ats-workday-stryker-wd1-strykercareers-r572593">Summer 2027 Internship - Biomedical Engineering - Illinois</a></h3>
+          <span class="rc-sub">Medical Device Design</span>
+          <ul class="rc-do"><li>Design new medical devices with CAD and FEA tools</li><li>Collaborate with cross-functional teams on product improvements</li><li>Work in R&amp;D or Product Engineering teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=fea">Fea</a></li><li><a href="/us/?q=test%20labs">Test Labs</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Cary</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-illinois-ats-workday-stryker-wd1-strykercareers-r572593">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-new-jersey-ats-workday-stryker-wd1-strykercareers-r572594">Summer 2027 Internship - Biomedical Engineering - New Jersey</a></h3>
+          <span class="rc-sub">Medical device development</span>
+          <ul class="rc-do"><li>Design and develop medical devices using CAD and FEA tools</li><li>Collaborate with cross-functional teams on product improvements</li><li>Work in R&amp;D or Product Engineering with real-world impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=fea">Fea</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mahwah</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/stryker-summer-2027-internship-biomedical-engineering-new-jersey-ats-workday-stryker-wd1-strykercareers-r572594">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -264,43 +329,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Stryker&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/amgen">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/amgen.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Amgen</span></span>
-        </a><a class="dir-card" href="/us/companies/saic">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/saic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SAIC</span></span>
-        </a><a class="dir-card" href="/us/companies/premier-inc">
-          <span class="tile-crest" aria-hidden="true">PI<img src="/logos/premier-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Premier Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/spacex">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/spacex.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SpaceX</span></span>
-        </a><a class="dir-card" href="/us/companies/tower-research-capital">
-          <span class="tile-crest" aria-hidden="true">TR</span>
-          <span class="dir-t"><span class="dir-name">Tower Research Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/csx">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/csx.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CSX</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,85 +88,112 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">XE<img src="/logos/xcel-energy.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Xcel Energy internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>8 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>8 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Xcel Energy is hiring interns in the US right now.</b> 8 engineering internships are open, across Lubbock, Greater Minneapolis-St. Paul Area and Minneapolis. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
         <dt>Where</dt><dd>Lubbock · Greater Minneapolis-St. Paul Area · Minneapolis</dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>20<p>Root Cause Analysis, Arcgis Pro, Excel</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>8</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/xcel-energy-distribution-planning-intern-tx-4462872920">
-        <span class="rc-t">Distribution Planning Intern - TX</span>
-        <span class="rc-sub">Distribution Planning</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $25 / hour</span><span class="f-item">Lubbock</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788457115354">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-distribution-planning-engineering-intern-mn-4462875932">
-        <span class="rc-t">Distribution Planning Engineering Intern - MN</span>
-        <span class="rc-sub">Distribution Planning</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $25 / hour</span><span class="f-item">Greater Minneapolis-St. Paul Area</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788457092696">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-corporate-impact-intern-mn-ats-workday-xcelenergy-wd1-external-jr115698">
-        <span class="rc-t">Corporate Impact Intern - MN</span>
-        <span class="rc-sub">Data Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $20 / hour</span><span class="f-item">Minneapolis</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788393600000">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-electric-distribution-area-engineering-intern-mn-nd-4462709192">
-        <span class="rc-t">Electric Distribution Area Engineering Intern - MN, ND</span>
-        <span class="rc-sub">Outage Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$23 – $25 / hour</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788393033824">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-geospatial-tech-and-data-vendor-mgmt-intern-mn-co-4462429789">
-        <span class="rc-t">Geospatial Tech &amp; Data - Vendor Mgmt Intern - MN, CO</span>
-        <span class="rc-sub">GIS Data Validator</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $22 / hour</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788370737099">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-gas-and-electric-design-analytics-and-process-improvement-intern-mn-ats-workday-xcelenergy-wd1-external-jr115641">
-        <span class="rc-t">Gas &amp; Electric Design Analytics and Process Improvement Intern - MN</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $22 / hour</span><span class="f-item">Minneapolis</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-it-infrastructure-intern-co-4461507265">
-        <span class="rc-t">IT Infrastructure Intern - CO</span>
-        <span class="rc-sub">IT Infrastructure Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $22 / hour</span><span class="f-item">Denver Metropolitan Area</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788219491579">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/xcel-energy-it-infrastructure-intern-co-ats-workday-xcelenergy-wd1-external-jr115917">
-        <span class="rc-t">IT Infrastructure Intern - CO</span>
-        <span class="rc-sub">IT Infrastructure Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $22 / hour</span><span class="f-item">Denver</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>8 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-distribution-planning-intern-tx-4462872920">Distribution Planning Intern - TX</a></h3>
+          <span class="rc-sub">Distribution Planning</span>
+          <ul class="rc-do"><li>Support distribution planners with circuit modeling and load flow analysis</li><li>Work with databricks and develop long range planning documentation</li><li>Based in lubbock tx with potential for extended term</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=modeling%20distribution%20circuits">Modeling Distribution Circuits</a></li><li><a href="/us/?q=load%20flow%20analysis">Load Flow Analysis</a></li><li><a href="/us/?q=databricks%20integration">Databricks Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lubbock</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788457115354"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-distribution-planning-intern-tx-4462872920">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-distribution-planning-engineering-intern-mn-4462875932">Distribution Planning Engineering Intern - MN</a></h3>
+          <span class="rc-sub">Distribution Planning</span>
+          <ul class="rc-do"><li>Run power flow studies and forecast load growth</li><li>Design capacity expansion projects and support regulatory filings</li><li>Work with planning engineers on distribution system studies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=power%20flow%20studies">Power Flow Studies</a></li><li><a href="/us/?q=regulatory%20filings">Regulatory Filings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greater Minneapolis-St. Paul Area</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788457092696"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-distribution-planning-engineering-intern-mn-4462875932">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-corporate-impact-intern-mn-ats-workday-xcelenergy-wd1-external-jr115698">Corporate Impact Intern - MN</a></h3>
+          <span class="rc-sub">Data Support</span>
+          <ul class="rc-do"><li>Support data collection and analysis for employee giving and nonprofit partnerships</li><li>Use CyberGrants and Power BI for reporting and tracking grantmaking impact</li><li>Assist with annual workplace giving campaigns and volunteer coordination</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cybergrants">Cybergrants</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Minneapolis</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $20 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788393600000"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-corporate-impact-intern-mn-ats-workday-xcelenergy-wd1-external-jr115698">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-electric-distribution-area-engineering-intern-mn-nd-4462709192">Electric Distribution Area Engineering Intern - MN, ND</a></h3>
+          <span class="rc-sub">Outage Analysis</span>
+          <ul class="rc-do"><li>Assist in outage investigations and root cause analysis</li><li>Support technical reports and protection studies</li><li>Learn how electricity is delivered and system reliability</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$23 – $25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788393033824"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-electric-distribution-area-engineering-intern-mn-nd-4462709192">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-geospatial-tech-and-data-vendor-mgmt-intern-mn-co-4462429789">Geospatial Tech &amp; Data - Vendor Mgmt Intern - MN, CO</a></h3>
+          <span class="rc-sub">GIS Data Validator</span>
+          <ul class="rc-do"><li>Validate and clean GIS data for utility mapping and asset records</li><li>Use ArcGIS Pro and geodatabases for spatial analysis and data management</li><li>Support field data collection with GPS and mobile GIS tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=arcgis%20pro">Arcgis Pro</a></li><li><a href="/us/?q=geodatabases">Geodatabases</a></li><li><a href="/us/?q=gps">Gps</a></li><li><a href="/us/?q=spatial%20analysis">Spatial Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788370737099"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-geospatial-tech-and-data-vendor-mgmt-intern-mn-co-4462429789">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-gas-and-electric-design-analytics-and-process-improvement-intern-mn-ats-workday-xcelenergy-wd1-external-jr115641">Gas &amp; Electric Design Analytics and Process Improvement Intern - MN</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze operational data to find trends and improvement areas</li><li>Use excel, power bi, and other tools to build dashboards and reports</li><li>Collaborate with design, project management, and engineering teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/tableau">Tableau</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Minneapolis</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-gas-and-electric-design-analytics-and-process-improvement-intern-mn-ats-workday-xcelenergy-wd1-external-jr115641">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-it-infrastructure-intern-co-4461507265">IT Infrastructure Intern - CO</a></h3>
+          <span class="rc-sub">IT Infrastructure Support</span>
+          <ul class="rc-do"><li>Monitor and maintain converged infrastructure systems</li><li>Script automation for infrastructure operations</li><li>Support hardware lifecycle and compliance standards</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=powershell">Powershell</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=vmware">Vmware</a></li><li><a href="/us/?q=nerc%20cip">Nerc Cip</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Denver Metropolitan Area</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788219491579"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-it-infrastructure-intern-co-4461507265">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/xcel-energy-it-infrastructure-intern-co-ats-workday-xcelenergy-wd1-external-jr115917">IT Infrastructure Intern - CO</a></h3>
+          <span class="rc-sub">IT Infrastructure Support</span>
+          <ul class="rc-do"><li>Monitor and maintain converged infrastructure systems</li><li>Script automation for infrastructure operations</li><li>Support hardware lifecycle and compliance standards</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=PowerShell">PowerShell</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=VMware">VMware</a></li><li><a href="/us/?q=NERC%20CIP">NERC CIP</a></li><li><a href="/us/?q=ServiceNow">ServiceNow</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Denver</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/xcel-energy-it-infrastructure-intern-co-ats-workday-xcelenergy-wd1-external-jr115917">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -193,28 +231,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Xcel Energy&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

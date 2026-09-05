@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,68 +88,89 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">TW<img src="/logos/the-walt-disney-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>The Walt Disney Company internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>6 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>6 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, The Walt Disney Company is hiring interns in the US right now.</b> 6 engineering internships are open, across Lake Buena Vista, Glendale and Orlando, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Lake Buena Vista · Glendale · Orlando<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Lake Buena Vista · Glendale · Orlando<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>27<p>Git, Java, Javascript</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>6</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/the-walt-disney-company-disney-live-entertainment-tech-intern-spring-2027-4462392344">
-        <span class="rc-t">Disney Live Entertainment Tech Intern, Spring 2027</span>
-        <span class="rc-sub">Live Performance Tech Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 / hour</span><span class="f-item">Lake Buena Vista</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788608672876">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/the-walt-disney-company-commercial-data-science-intern-spring-2027-4462328427">
-        <span class="rc-t">Commercial Data Science Intern, Spring 2027</span>
-        <span class="rc-sub">Data Modeling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$43 / hour</span><span class="f-item">Lake Buena Vista</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788565474839">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/the-walt-disney-company-wdi-figure-programming-intern-spring-2027-4460094313">
-        <span class="rc-t">WDI Figure Programming Intern, Spring 2027</span>
-        <span class="rc-sub">Animation Programming</span>
-        <span class="rc-facts"><span class="f-item is-cash">$27 / hour</span><span class="f-item">Glendale</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788219836523">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079">
-        <span class="rc-t">WDI Project Controls Planning Intern, Spring 2027</span>
-        <span class="rc-sub">Project scheduling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Lake Buena Vista</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788176628639">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/the-walt-disney-company-software-engineering-intern-spring-2027-4459470762">
-        <span class="rc-t">Software Engineering Intern, Spring 2027</span>
-        <span class="rc-sub">Web application development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$43 / hour</span><span class="f-item">Orlando</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787982259728">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/the-walt-disney-company-system-app-dev-and-sustainment-intern-spring-2027-4459472764">
-        <span class="rc-t">System App Dev &amp; Sustainment Intern, Spring 2027</span>
-        <span class="rc-sub">App Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$43 / hour</span><span class="f-item">Orlando</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787982226454">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>6 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-disney-live-entertainment-tech-intern-spring-2027-4462392344">Disney Live Entertainment Tech Intern, Spring 2027</a></h3>
+          <span class="rc-sub">Live Performance Tech Support</span>
+          <ul class="rc-do"><li>Operate audio/video/lighting equipment for theme parks and events</li><li>Support technical operations and safety checks for live performances</li><li>Work in Orlando, FL, with limited housing options available</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=theatrical%20terminology">Theatrical Terminology</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lake Buena Vista</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788608672876"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-disney-live-entertainment-tech-intern-spring-2027-4462392344">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-commercial-data-science-intern-spring-2027-4462328427">Commercial Data Science Intern, Spring 2027</a></h3>
+          <span class="rc-sub">Data Modeling</span>
+          <ul class="rc-do"><li>Build models and analyses to support merchandise, food, and booking decisions</li><li>Use SQL, Python, and Tableau to query data and visualize insights</li><li>Collaborate with business teams to automate workflows and improve decision-making</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=gitlab">Gitlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lake Buena Vista</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$43 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788565474839"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-commercial-data-science-intern-spring-2027-4462328427">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-wdi-figure-programming-intern-spring-2027-4460094313">WDI Figure Programming Intern, Spring 2027</a></h3>
+          <span class="rc-sub">Animation Programming</span>
+          <ul class="rc-do"><li>Operate specialized hardware and software to animate figures in attractions</li><li>Create and debug digital assets for Audio-Animatronics figures</li><li>Collaborate with creative teams on show programming and special effects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=maya">Maya</a></li><li><a href="/us/?q=motionbuilder">Motionbuilder</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=mel">Mel</a></li><li><a href="/us/?q=unity">Unity</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Glendale</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$27 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788219836523"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-wdi-figure-programming-intern-spring-2027-4460094313">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079">WDI Project Controls Planning Intern, Spring 2027</a></h3>
+          <span class="rc-sub">Project scheduling</span>
+          <ul class="rc-do"><li>Develop project schedules using primavera and other software</li><li>Integrate schedules from design, vendors, and construction teams</li><li>Monitor risks and present mitigation plans for project timelines</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=primavera%20project%20planner">Primavera Project Planner</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=airtable">Airtable</a></li><li><a href="/us/?q=smartsheet">Smartsheet</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lake Buena Vista</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788176628639"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-wdi-project-controls-planning-intern-spring-2027-4460021079">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-software-engineering-intern-spring-2027-4459470762">Software Engineering Intern, Spring 2027</a></h3>
+          <span class="rc-sub">Web application development</span>
+          <ul class="rc-do"><li>Write web apps using C#, Java, and JavaScript for contact center efficiency</li><li>Administer databases and integrate with SaaS tools like SSO and incident management</li><li>Use Git, Jenkins, and Jira for deployment and task tracking</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/?q=postgres">Postgres</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/jenkins">Jenkins</a></li><li><a href="/us/?q=jira">Jira</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Orlando</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$43 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787982259728"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-software-engineering-intern-spring-2027-4459470762">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/the-walt-disney-company-system-app-dev-and-sustainment-intern-spring-2027-4459472764">System App Dev &amp; Sustainment Intern, Spring 2027</a></h3>
+          <span class="rc-sub">App Development</span>
+          <ul class="rc-do"><li>Develop apps to support business processes</li><li>Use HTML, CSS, JavaScript, Java, SQL, and Git</li><li>Work with multi-functional teams across Disney</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=html">HTML</a></li><li><a href="/us/?q=css">CSS</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=rest">REST</a></li><li><a href="/us/skills/react">React</a></li><li><a href="/us/?q=spring%20boot">Spring Boot</a></li><li><a href="/us/?q=maven">Maven</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Orlando</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$43 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787982226454"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/the-walt-disney-company-system-app-dev-and-sustainment-intern-spring-2027-4459472764">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -176,49 +208,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as The Walt Disney Company&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/walt-disney-world">
-          <span class="tile-crest" aria-hidden="true">WD<img src="/logos/walt-disney-world.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Walt Disney World</span></span>
-        </a><a class="dir-card" href="/us/companies/meta-xi-3">
-          <span class="tile-crest" aria-hidden="true">MX<img src="/logos/meta-xi-3.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">META-Xi^3</span></span>
-        </a><a class="dir-card" href="/us/companies/the-home-depot">
-          <span class="tile-crest" aria-hidden="true">TH<img src="/logos/the-home-depot.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">The Home Depot</span></span>
-        </a><a class="dir-card" href="/us/companies/parsons-corporation">
-          <span class="tile-crest" aria-hidden="true">PC<img src="/logos/parsons-corporation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Parsons Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/salesforce">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/salesforce.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Salesforce</span></span>
-        </a><a class="dir-card" href="/us/companies/caci-international-inc">
-          <span class="tile-crest" aria-hidden="true">CI<img src="/logos/caci-international-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CACI International Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/home-depot">
-          <span class="tile-crest" aria-hidden="true">HD<img src="/logos/home-depot.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Home Depot</span></span>
-        </a><a class="dir-card" href="/us/companies/figma">
-          <span class="tile-crest" aria-hidden="true">F<img src="/logos/figma.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Figma</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

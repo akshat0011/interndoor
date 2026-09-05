@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,117 +88,156 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">A<img src="/logos/astranis.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Astranis internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>12 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>12 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Astranis is hiring interns in the US right now.</b> 12 engineering internships are open, based in San Francisco. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
         <dt>Where</dt><dd>San Francisco</dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>26<p>Python, Engineering Drawings, Gd+T</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>12</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/astranis-cad-engineer-librarian-intern-summer-2027-ats-greenhouse-astranis-4704742006">
-        <span class="rc-t">CAD Engineer/Librarian Intern (Summer 2027)</span>
-        <span class="rc-sub">Spacecraft design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">B.S./M.S.</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786752914000">Posted <time datetime="2026-08-15">14 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-cad-engineer-librarian-intern-spring-2027-ats-greenhouse-astranis-4704740006">
-        <span class="rc-t">CAD Engineer/Librarian Intern (Spring 2027)</span>
-        <span class="rc-sub">CAD Modeling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786752914000">Posted <time datetime="2026-08-15">14 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-cad-engineer-librarian-intern-winter-2027-ats-greenhouse-astranis-4704748006">
-        <span class="rc-t">CAD Engineer/Librarian Intern (Winter 2027)</span>
-        <span class="rc-sub">Spacecraft Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786752913000">Posted <time datetime="2026-08-15">14 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-software-engineer-intern-enterprise-systems-fall-2026-ats-greenhouse-astranis-4699071006">
-        <span class="rc-t">Software Engineer Intern - Enterprise Systems (Fall 2026)</span>
-        <span class="rc-sub">Satellite Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-reliability-test-intern-fall-2026-ats-greenhouse-astranis-4677973006">
-        <span class="rc-t">Reliability Test Intern (Fall 2026)</span>
-        <span class="rc-sub">Hardware reliability testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-radiation-effects-engineer-intern-fall-2026-ats-greenhouse-astranis-4694853006">
-        <span class="rc-t">Radiation Effects Engineer Intern (Fall 2026)</span>
-        <span class="rc-sub">Radiation Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-power-electronics-intern-fall-2026-ats-greenhouse-astranis-4625923006">
-        <span class="rc-t">Power Electronics Intern (Fall 2026)</span>
-        <span class="rc-sub">Power Electronics Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-pcb-layout-engineer-intern-fall-2026-ats-greenhouse-astranis-4597409006">
-        <span class="rc-t">PCB Layout Engineer Intern (Fall 2026)</span>
-        <span class="rc-sub">Pcb layout</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-flight-software-intern-fall-2026-ats-greenhouse-astranis-4619283006">
-        <span class="rc-t">Flight Software Intern (Fall 2026)</span>
-        <span class="rc-sub">Embedded software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-environmental-test-engineer-intern-fall-2026-ats-greenhouse-astranis-4676888006">
-        <span class="rc-t">Environmental Test Engineer Intern (Fall 2026)</span>
-        <span class="rc-sub">Satellite Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-avionics-engineer-intern-fall-2026-ats-greenhouse-astranis-4597413006">
-        <span class="rc-t">Avionics Engineer Intern (Fall 2026)</span>
-        <span class="rc-sub">Satellite Avionics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/astranis-assembly-integration-and-test-intern-fall-2026-ats-greenhouse-astranis-4679080006">
-        <span class="rc-t">Assembly, Integration, and Test Intern Fall 2026</span>
-        <span class="rc-sub">Satellite Hardware Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">San Francisco</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786646479000">Posted <time datetime="2026-08-13">13 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>12 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-cad-engineer-librarian-intern-summer-2027-ats-greenhouse-astranis-4704742006">CAD Engineer/Librarian Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Spacecraft design</span>
+          <ul class="rc-do"><li>Model and draw spacecraft components and structures</li><li>Maintain design library and data infrastructure</li><li>Work on complex assemblies and vacuum compatible systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=gd%2BT">Gd+T</a></li><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>B.S./M.S.</dd></div><div><dt>Posted</dt><dd><span data-ago="1786752914000"><time datetime="2026-08-15">14 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-cad-engineer-librarian-intern-summer-2027-ats-greenhouse-astranis-4704742006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-cad-engineer-librarian-intern-spring-2027-ats-greenhouse-astranis-4704740006">CAD Engineer/Librarian Intern (Spring 2027)</a></h3>
+          <span class="rc-sub">CAD Modeling</span>
+          <ul class="rc-do"><li>Model and draw spacecraft components and structures</li><li>Maintain and improve design library and data systems</li><li>Work on complex hardware projects with real-world impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=gd%2BT">Gd+T</a></li><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786752914000"><time datetime="2026-08-15">14 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-cad-engineer-librarian-intern-spring-2027-ats-greenhouse-astranis-4704740006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-cad-engineer-librarian-intern-winter-2027-ats-greenhouse-astranis-4704748006">CAD Engineer/Librarian Intern (Winter 2027)</a></h3>
+          <span class="rc-sub">Spacecraft Design</span>
+          <ul class="rc-do"><li>Model and draw spacecraft components and structures</li><li>Maintain and improve design library and data systems</li><li>Work on complex hardware projects with real-world impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=gd%2BT">Gd+T</a></li><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786752913000"><time datetime="2026-08-15">14 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-cad-engineer-librarian-intern-winter-2027-ats-greenhouse-astranis-4704748006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-software-engineer-intern-enterprise-systems-fall-2026-ats-greenhouse-astranis-4699071006">Software Engineer Intern - Enterprise Systems (Fall 2026)</a></h3>
+          <span class="rc-sub">Satellite Software Development</span>
+          <ul class="rc-do"><li>Build software for satellite design, testing, and manufacturing</li><li>Use Python, orchestration tools, and data pipelines</li><li>Work on test operations and production tracking systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=orchestration%20tools">Orchestration Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-software-engineer-intern-enterprise-systems-fall-2026-ats-greenhouse-astranis-4699071006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-reliability-test-intern-fall-2026-ats-greenhouse-astranis-4677973006">Reliability Test Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Hardware reliability testing</span>
+          <ul class="rc-do"><li>Run reliability tests on satellite hardware using thermal chambers and vibration systems</li><li>Analyze test data to find failure points and ensure hardware meets performance standards</li><li>Work with engineers to design test setups and data acquisition systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20acquisition%20systems">Data Acquisition Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-reliability-test-intern-fall-2026-ats-greenhouse-astranis-4677973006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-radiation-effects-engineer-intern-fall-2026-ats-greenhouse-astranis-4694853006">Radiation Effects Engineer Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Radiation Testing</span>
+          <ul class="rc-do"><li>Test electrical systems in radiation environments to assess component degradation</li><li>Use oscilloscopes, multimeters, and PCB design tools for hardware testing</li><li>Collaborate with cross-functional teams on radiation testing and component up-screening</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li><li><a href="/us/?q=multimeters">Multimeters</a></li><li><a href="/us/?q=altium%20designer">Altium Designer</a></li><li><a href="/us/?q=pcb%20design">Pcb Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-radiation-effects-engineer-intern-fall-2026-ats-greenhouse-astranis-4694853006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-power-electronics-intern-fall-2026-ats-greenhouse-astranis-4625923006">Power Electronics Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Power Electronics Hardware Design</span>
+          <ul class="rc-do"><li>Design and test flight hardware for satellites</li><li>Write code to automate testing and evaluate performance</li><li>Work with power electronics systems in a fast-paced environment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=altium%20designer">Altium Designer</a></li><li><a href="/us/?q=ltspice">Ltspice</a></li><li><a href="/us/?q=pcb%20design">Pcb Design</a></li><li><a href="/us/?q=switched%20mode%20converter">Switched Mode Converter</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-power-electronics-intern-fall-2026-ats-greenhouse-astranis-4625923006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-pcb-layout-engineer-intern-fall-2026-ats-greenhouse-astranis-4597409006">PCB Layout Engineer Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Pcb layout</span>
+          <ul class="rc-do"><li>Place and route pcb designs with schematic input</li><li>Use altium for routing power, rf, and analog circuits</li><li>Create symbols and footprints from specs and models</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/altium">Altium</a></li><li><a href="/us/?q=schematic%20symbols">Schematic Symbols</a></li><li><a href="/us/?q=dfm">Dfm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-pcb-layout-engineer-intern-fall-2026-ats-greenhouse-astranis-4597409006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-flight-software-intern-fall-2026-ats-greenhouse-astranis-4619283006">Flight Software Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Embedded software development</span>
+          <ul class="rc-do"><li>Design and test embedded software for satellites and ground systems</li><li>Work with C/C++ and scripting languages on real-time systems</li><li>Paid internship with hourly rate of $29 in san francisco</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=scripting">Scripting</a></li><li><a href="/us/?q=embedded%20systems">Embedded Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-flight-software-intern-fall-2026-ats-greenhouse-astranis-4619283006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-environmental-test-engineer-intern-fall-2026-ats-greenhouse-astranis-4676888006">Environmental Test Engineer Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Satellite Testing</span>
+          <ul class="rc-do"><li>Test satellite hardware and software in thermal and vibration chambers</li><li>Use DAQs, oscilloscopes, and EMI/EMC tools for environmental testing</li><li>Work with engineers on satellite systems and test plans</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=daq">Daq</a></li><li><a href="/us/?q=oscilloscope">Oscilloscope</a></li><li><a href="/us/?q=thermal%20chamber">Thermal Chamber</a></li><li><a href="/us/?q=vibration%20table">Vibration Table</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-environmental-test-engineer-intern-fall-2026-ats-greenhouse-astranis-4676888006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-avionics-engineer-intern-fall-2026-ats-greenhouse-astranis-4597413006">Avionics Engineer Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Satellite Avionics</span>
+          <ul class="rc-do"><li>Build and test flight hardware for satellites</li><li>Write code to automate testing and evaluate performance</li><li>Work with spacecraft subsystems and low-level software</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=pcb%20design">Pcb Design</a></li><li><a href="/us/?q=soldering">Soldering</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-avionics-engineer-intern-fall-2026-ats-greenhouse-astranis-4597413006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/astranis-assembly-integration-and-test-intern-fall-2026-ats-greenhouse-astranis-4679080006">Assembly, Integration, and Test Intern Fall 2026</a></h3>
+          <span class="rc-sub">Satellite Hardware Testing</span>
+          <ul class="rc-do"><li>Design, build, and test satellite hardware and software</li><li>Use thermal chambers, vibration tables, and DAQs for testing</li><li>Work with Electrical, Mechanical, and RF teams on integration plans</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=daq">Daq</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li><li><a href="/us/?q=thermal%20chambers">Thermal Chambers</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Francisco</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786646479000"><time datetime="2026-08-13">13 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/astranis-assembly-integration-and-test-intern-fall-2026-ats-greenhouse-astranis-4679080006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -225,49 +275,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Astranis&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/astranis-space-technologies">
-          <span class="tile-crest" aria-hidden="true">AS<img src="/logos/astranis-space-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Astranis Space Technologies</span></span>
-        </a><a class="dir-card" href="/us/companies/teradyne">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/teradyne.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Teradyne</span></span>
-        </a><a class="dir-card" href="/us/companies/otis-elevator-co">
-          <span class="tile-crest" aria-hidden="true">OE<img src="/logos/otis-elevator-co.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Otis Elevator Co.</span></span>
-        </a><a class="dir-card" href="/us/companies/caci-international-inc">
-          <span class="tile-crest" aria-hidden="true">CI<img src="/logos/caci-international-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CACI International Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/figure-ai">
-          <span class="tile-crest" aria-hidden="true">FA<img src="/logos/figure-ai.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Figure AI</span></span>
-        </a><a class="dir-card" href="/us/companies/shield-ai">
-          <span class="tile-crest" aria-hidden="true">SA<img src="/logos/shield-ai.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Shield AI</span></span>
-        </a><a class="dir-card" href="/us/companies/boeing-india">
-          <span class="tile-crest" aria-hidden="true">BI<img src="/logos/boeing-india.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Boeing India</span></span>
-        </a><a class="dir-card" href="/us/companies/graphcore">
-          <span class="tile-crest" aria-hidden="true">G<img src="/logos/graphcore.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Graphcore</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

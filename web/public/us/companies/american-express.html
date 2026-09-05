@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,164 +102,221 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">AE<img src="/logos/american-express.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>American Express internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>18 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>18 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, American Express is hiring interns in the US right now.</b> 18 engineering internships are open, across Phoenix, Palo Alto and New York, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Phoenix · Palo Alto · New York<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Phoenix · Palo Alto · New York<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>14<p>Python, SQL, Excel</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>18</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460234151">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Phoenix, AZ</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Phoenix</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239883845">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460213791">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Palo Alto, CA</span>
-        <span class="rc-sub">Data Analysis Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Palo Alto</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239883231">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-ii-summer-internship-program-2027-data-science-finance-4460209950">
-        <span class="rc-t">Campus Graduate II Summer Internship Program - 2027 Data Science, Finance - New York, NY</span>
-        <span class="rc-sub">Predictive Modeling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$38 / hour</span><span class="f-item">New York</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239882864">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460231476">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Sunrise, FL</span>
-        <span class="rc-sub">Data Pipeline Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Sunrise</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239875386">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224635">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- New York, NY</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">New York</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239875002">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-management-4460213805">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Management, Global Merchant &amp; Network Services - Phoenix, AZ</span>
-        <span class="rc-sub">Data Governance Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$38 / hour</span><span class="f-item">Phoenix</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239872800">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460223672">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Charlotte, NC</span>
-        <span class="rc-sub">Data Analysis Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Charlotte</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239870445">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460217703">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, US Consumer Services - New York, NY</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$38 / hour</span><span class="f-item">New York</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239868540">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460217704">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Charlotte, NC</span>
-        <span class="rc-sub">Data Pipeline Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Charlotte</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239863389">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460222675">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- New York, NY</span>
-        <span class="rc-sub">Data Analysis Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">New York</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239860845">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224616">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Palo Alto, CA</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Palo Alto</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239859895">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217705">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Sunrise, FL</span>
-        <span class="rc-sub">Data Pipeline Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Sunrise</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239859676">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217706">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Phoenix, AZ</span>
-        <span class="rc-sub">Data Engineer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Phoenix</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239855463">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460225589">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Charlotte, NC</span>
-        <span class="rc-sub">Data Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Charlotte</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239852133">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460220721">
-        <span class="rc-t">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Phoenix, AZ</span>
-        <span class="rc-sub">Data Analysis Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Phoenix</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239850824">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460224611">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Phoenix, AZ</span>
-        <span class="rc-sub">Data Pipeline Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Phoenix</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239846083">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-i-summer-internship-program-2027-data-science-finance--4460222695">
-        <span class="rc-t">Campus Graduate I Summer Internship Program - 2027 Data Science, Finance - New York, NY</span>
-        <span class="rc-sub">Predictive Modeling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">New York</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239836585">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460225614">
-        <span class="rc-t">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Charlotte, NC</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$24 / hour</span><span class="f-item">Charlotte</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788239829733">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>18 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460234151">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Phoenix, AZ</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze financial and delivery metrics to support tech decisions</li><li>Build dashboards and reports using tools like Power BI and Tableau</li><li>Collaborate with finance and tech teams on portfolio performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239883845"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460234151">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460213791">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Palo Alto, CA</a></h3>
+          <span class="rc-sub">Data Analysis Intern</span>
+          <ul class="rc-do"><li>Support data analysis for technology teams using Python, SQL, and AI tools</li><li>Work on governance, modeling, or quantum computing projects with cross-functional teams</li><li>Create dashboards, reports, and insights for executive and technical stakeholders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Palo Alto</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239883231"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460213791">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-ii-summer-internship-program-2027-data-science-finance-4460209950">Campus Graduate II Summer Internship Program - 2027 Data Science, Finance - New York, NY</a></h3>
+          <span class="rc-sub">Predictive Modeling</span>
+          <ul class="rc-do"><li>Build predictive models for business metrics and financial forecasting</li><li>Use Python, SQL, and machine learning to analyze large datasets</li><li>Collaborate with finance and risk teams on strategic decision-making</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$38 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239882864"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-ii-summer-internship-program-2027-data-science-finance-4460209950">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460231476">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Sunrise, FL</a></h3>
+          <span class="rc-sub">Data Pipeline Support</span>
+          <ul class="rc-do"><li>Build and maintain data pipelines for reliable data flow</li><li>Work with SQL, Python, and cloud data tools like BigQuery</li><li>Collaborate in Agile teams on enterprise data platforms</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bigquery">Bigquery</a></li><li><a href="/us/skills/agile">Agile</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sunrise</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239875386"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460231476">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224635">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- New York, NY</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze financial and delivery metrics to support tech decisions</li><li>Build dashboards and reports using tools like Power BI and Tableau</li><li>Collaborate with finance and tech teams on data-driven insights</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239875002"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224635">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-management-4460213805">Campus Graduate Masters Summer Internship Program - 2027 Data Management, Global Merchant &amp; Network Services - Phoenix, AZ</a></h3>
+          <span class="rc-sub">Data Governance Support</span>
+          <ul class="rc-do"><li>Support data quality initiatives and governance across global financial services</li><li>Use SQL, Excel, Python, and BI tools to analyze and improve data processes</li><li>Collaborate with cross-functional teams to enhance data accuracy and compliance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$38 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239872800"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-management-4460213805">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460223672">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Charlotte, NC</a></h3>
+          <span class="rc-sub">Data Analysis Support</span>
+          <ul class="rc-do"><li>Support data analysis for technology decisions using Python, SQL, and AI tools</li><li>Work with finance, risk, and product teams on governance and model reviews</li><li>Create dashboards and reports for executive summaries and stakeholder insights</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charlotte</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239870445"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460223672">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460217703">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, US Consumer Services - New York, NY</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze data to guide business decisions</li><li>Use sql, python, and r for insights</li><li>Create dashboards for senior leaders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$38 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239868540"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460217703">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460217704">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Charlotte, NC</a></h3>
+          <span class="rc-sub">Data Pipeline Support</span>
+          <ul class="rc-do"><li>Build and maintain data pipelines for reliable data flow</li><li>Work with SQL, Python, and cloud data platforms</li><li>Collaborate in Agile teams on enterprise data projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charlotte</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239863389"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460217704">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460222675">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- New York, NY</a></h3>
+          <span class="rc-sub">Data Analysis Intern</span>
+          <ul class="rc-do"><li>Support data analysis for technology teams using Python, SQL, and AI tools</li><li>Work on governance, modeling, or quantum computing projects with cross-functional teams</li><li>Create dashboards, reports, and insights for executive and technical stakeholders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239860845"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460222675">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224616">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Palo Alto, CA</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze financial and delivery metrics to support tech decisions</li><li>Build dashboards and reports using tools like Power BI and Tableau</li><li>Collaborate with finance and tech teams on portfolio performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Palo Alto</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239859895"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460224616">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217705">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Sunrise, FL</a></h3>
+          <span class="rc-sub">Data Pipeline Support</span>
+          <ul class="rc-do"><li>Build data pipelines and support database systems with guidance</li><li>Work with SQL, Python, and cloud-native data platforms</li><li>Collaborate in Agile teams on data governance and AI tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bigquery">Bigquery</a></li><li><a href="/us/skills/postgresql">Postgresql</a></li><li><a href="/us/skills/agile">Agile</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sunrise</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239859676"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217705">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217706">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Phoenix, AZ</a></h3>
+          <span class="rc-sub">Data Engineer</span>
+          <ul class="rc-do"><li>Support data pipelines, databases, and integration patterns with guidance</li><li>Work with SQL, Python, and cloud-native data platforms like BigQuery</li><li>Collaborate in Agile teams on data architecture and governance practices</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bigquery">Bigquery</a></li><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li><li><a href="/us/skills/agile">Agile</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239855463"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460217706">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460225589">Campus Undergraduate Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Charlotte, NC</a></h3>
+          <span class="rc-sub">Data Engineering</span>
+          <ul class="rc-do"><li>Support data pipelines, databases, and integration patterns with guidance</li><li>Work with SQL, Python, and cloud-native data platforms like BigQuery</li><li>Collaborate in Agile teams on data architecture and governance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bigquery">Bigquery</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charlotte</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239852133"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-engineer-ente-4460225589">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460220721">Campus Undergraduate Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Phoenix, AZ</a></h3>
+          <span class="rc-sub">Data Analysis Intern</span>
+          <ul class="rc-do"><li>Support data analysis for technology teams using Python, SQL, and visualization tools</li><li>Work on governance, modeling, AI, or quantum computing projects with cross-functional teams</li><li>Receive hands-on training in data pipelines, risk analysis, and enterprise data architecture</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239850824"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-data-analytics-ent-4460220721">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460224611">Campus Graduate Masters Summer Internship Program - 2027 Data Engineer, Enterprise Technology Services- Phoenix, AZ</a></h3>
+          <span class="rc-sub">Data Pipeline Support</span>
+          <ul class="rc-do"><li>Build and maintain data pipelines for reliable data flow</li><li>Work with SQL, Python, and cloud data platforms</li><li>Collaborate in Agile teams on enterprise data projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239846083"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-engineer-e-4460224611">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-i-summer-internship-program-2027-data-science-finance--4460222695">Campus Graduate I Summer Internship Program - 2027 Data Science, Finance - New York, NY</a></h3>
+          <span class="rc-sub">Predictive Modeling</span>
+          <ul class="rc-do"><li>Build predictive models to forecast financial metrics and business outcomes</li><li>Use Python and SQL to analyze large datasets and develop machine learning solutions</li><li>Collaborate with cross-functional teams to embed data-driven insights into strategic decisions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239836585"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-i-summer-internship-program-2027-data-science-finance--4460222695">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460225614">Campus Graduate Masters Summer Internship Program - 2027 Data Analytics, Enterprise Technology Services- Charlotte, NC</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze financial and delivery metrics to support tech decisions</li><li>Build dashboards and reports using tools like Power BI and Tableau</li><li>Collaborate with cross-functional teams on data-driven insights</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charlotte</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$24 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788239829733"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-data-analytics--4460225614">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -286,49 +354,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as American Express&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/delta-air-lines">
-          <span class="tile-crest" aria-hidden="true">DA<img src="/logos/delta-air-lines.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Delta Air Lines</span></span>
-        </a><a class="dir-card" href="/us/companies/mckesson-corporation">
-          <span class="tile-crest" aria-hidden="true">MC<img src="/logos/mckesson-corporation.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">McKesson Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a><a class="dir-card" href="/us/companies/premier-inc">
-          <span class="tile-crest" aria-hidden="true">PI<img src="/logos/premier-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Premier Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/susquehanna-international-group">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/susquehanna-international-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Susquehanna International Group</span></span>
-        </a><a class="dir-card" href="/us/companies/cardinal-health">
-          <span class="tile-crest" aria-hidden="true">CH<img src="/logos/cardinal-health.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cardinal Health</span></span>
-        </a><a class="dir-card" href="/us/companies/modal-labs">
-          <span class="tile-crest" aria-hidden="true">ML<img src="/logos/modal-labs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Modal Labs</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

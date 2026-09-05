@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,52 +88,67 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">P<img src="/logos/pepsico.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>PepsiCo internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>4 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>4 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, PepsiCo is hiring interns in the US right now.</b> 4 engineering internships are open, based in Plano, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Plano<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Plano<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>13<p>Python, SQL, Agile/scrum</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>4</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/pepsico-2027-summer-intern-technology-product-delivery-4460433074">
-        <span class="rc-t">2027 Summer Intern: Technology Product Delivery</span>
-        <span class="rc-sub">Product Delivery</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $44 / hour</span><span class="f-item">Plano</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788391667916">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pepsico-2027-summer-intern-technology-data-and-analytics-data-engineer-and-dat-4460423076">
-        <span class="rc-t">2027 Summer Intern: Technology Data &amp; Analytics, Data Engineer &amp; Data Science</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $44 / hour</span><span class="f-item">Plano</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788391645343">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pepsico-2027-summer-intern-frito-lay-hq-engineering-undergrad-4459976556">
-        <span class="rc-t">2027 Summer Intern - Frito-Lay HQ Engineering - Undergrad</span>
-        <span class="rc-sub">Engineering Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $34 / hour</span><span class="f-item">Plano</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788377258720">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pepsico-2027-summer-intern-technology-software-development-and-engineering-4459971997">
-        <span class="rc-t">2027 Summer Intern: Technology Software Development &amp; Engineering</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$21 – $44 / hour</span><span class="f-item">Plano</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788369146871">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>4 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pepsico-2027-summer-intern-technology-product-delivery-4460433074">2027 Summer Intern: Technology Product Delivery</a></h3>
+          <span class="rc-sub">Product Delivery</span>
+          <ul class="rc-do"><li>Support digital transformation programs by managing cross-functional projects</li><li>Use Agile/Scrum, SQL, and data tools to drive product delivery</li><li>Work with global teams on technical program management and delivery</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=agile%2Fscrum">Agile/scrum</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=data">Data</a></li><li><a href="/us/?q=product%20design">Product Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plano</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $44 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788391667916"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pepsico-2027-summer-intern-technology-product-delivery-4460433074">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pepsico-2027-summer-intern-technology-data-and-analytics-data-engineer-and-dat-4460423076">2027 Summer Intern: Technology Data &amp; Analytics, Data Engineer &amp; Data Science</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Build predictive models and analyze data to solve business problems</li><li>Use Python, SQL, Spark, and PowerBI to process and visualize data</li><li>Work on large-scale data systems and database technologies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=spark">Spark</a></li><li><a href="/us/?q=powerbi">Powerbi</a></li><li><a href="/us/skills/tableau">Tableau</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plano</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $44 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788391645343"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pepsico-2027-summer-intern-technology-data-and-analytics-data-engineer-and-dat-4460423076">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pepsico-2027-summer-intern-frito-lay-hq-engineering-undergrad-4459976556">2027 Summer Intern - Frito-Lay HQ Engineering - Undergrad</a></h3>
+          <span class="rc-sub">Engineering Intern</span>
+          <ul class="rc-do"><li>Support engineering projects across manufacturing, automation, and supply chain</li><li>Use project management tools and collaborate with cross-functional teams</li><li>Work on real-world challenges with potential for full-time conversion</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=project%20management">Project Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plano</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788377258720"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pepsico-2027-summer-intern-frito-lay-hq-engineering-undergrad-4459976556">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pepsico-2027-summer-intern-technology-software-development-and-engineering-4459971997">2027 Summer Intern: Technology Software Development &amp; Engineering</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Design, develop, and test software solutions for business needs</li><li>Use technologies like PowerApps, NodeJS, Python, and Java</li><li>Work on product development and system integration projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=powerapps">Powerapps</a></li><li><a href="/us/?q=nodejs">Nodejs</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=angularjs">Angularjs</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plano</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$21 – $44 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788369146871"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pepsico-2027-summer-intern-technology-software-development-and-engineering-4459971997">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -160,40 +186,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as PepsiCo&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/cardinal-health">
-          <span class="tile-crest" aria-hidden="true">CH<img src="/logos/cardinal-health.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cardinal Health</span></span>
-        </a><a class="dir-card" href="/us/companies/panasonic-north-america">
-          <span class="tile-crest" aria-hidden="true">PN<img src="/logos/panasonic-north-america.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Panasonic North America</span></span>
-        </a><a class="dir-card" href="/us/companies/parsons-corporation">
-          <span class="tile-crest" aria-hidden="true">PC<img src="/logos/parsons-corporation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Parsons Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/csx">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/csx.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CSX</span></span>
-        </a><a class="dir-card" href="/us/companies/home-depot">
-          <span class="tile-crest" aria-hidden="true">HD<img src="/logos/home-depot.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Home Depot</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

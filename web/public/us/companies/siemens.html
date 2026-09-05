@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,156 +88,210 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">S<img src="/logos/siemens.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Siemens internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>17 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>17 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Siemens is hiring interns in the US right now.</b> 17 engineering internships are open, across Anchorage, Wendell and Mason. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Anchorage · Wendell · Mason</dd></div></dl>
+        <dt>Where</dt><dd>Anchorage · Wendell · Mason</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>34<p>Microsoft Office, Windows-based Laptops, Building Automation</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>17</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4462368401">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Systems Installer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Anchorage</span><span class="f-item">HVAC Controls / Building Automation</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788582679986">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-electrical-engineering-co-op-north-carolina-state-university-4462355513">
-        <span class="rc-t">Electrical Engineering Co-op (North Carolina State University)</span>
-        <span class="rc-sub">Electrical Engineering Support</span>
-        <span class="rc-facts"><span class="f-item">Wendell</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788582652487">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461975921">
-        <span class="rc-t">Strategic Student Program: Software Development Intern (SIM STS, Spring 2027)</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Mason</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788547277076">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461981955">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Systems Installer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Garfield Heights</span><span class="f-item">HVAC Controls / Building Automation</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788547270584">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-strategic-student-program-mendix-development-intern-cmmk-spring-2027-4461986860">
-        <span class="rc-t">Strategic Student Program: Mendix Development Intern (CMMK, Spring 2027)</span>
-        <span class="rc-sub">Mendix app development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">St Louis</span><span class="f-item">Bachelor’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788542557969">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461997162">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Systems Technician</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Pittsburgh</span><span class="f-item">HVAC Controls / Building Automation / Mechanical / Electrical Engineering</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788542553180">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-strategic-student-program-future-workforce-strategy-enablement-team-in-4461993863">
-        <span class="rc-t">Strategic Student Program: Future Workforce Strategy Enablement Team Intern (CMMK, Spring 2027)</span>
-        <span class="rc-sub">Learning Experience Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">St Louis</span><span class="f-item">Bachelor’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788539475660">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461998061">
-        <span class="rc-t">Strategic Student Program: Software Development Intern (SIM STS, Spring 2027)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Huntsville</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788539459561">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-strategic-student-program-technology-and-innovation-intern-t-and-i-spr-4461990911">
-        <span class="rc-t">Strategic Student Program: Technology &amp; Innovation Intern (T&amp;I, Spring 2027)</span>
-        <span class="rc-sub">Algorithm Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$18 – $50 / hour</span><span class="f-item">Mason</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788539438719">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463192365">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Automation Technician</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Morristown</span><span class="f-item">HVAC Controls / Building Automation / Mechanical / Electrical Engineering</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788505557570">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463194355">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Automation Technician</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Cromwell</span><span class="f-item">HVAC Controls / Building Automation / Mechanical / Electrical Engineering</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788505533923">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461686129">
-        <span class="rc-t">Building Automation Systems Specialist Internship</span>
-        <span class="rc-sub">Building Systems Installer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Canton</span><span class="f-item">HVAC Controls / Building Automation</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788452930037">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-amtrak-intercity-project-internship-rolling-stock-summer-2027-4460937695">
-        <span class="rc-t">Amtrak Intercity Project Internship- Rolling Stock (Summer 2027)</span>
-        <span class="rc-sub">Project Management Support</span>
-        <span class="rc-facts"><span class="f-item">Sacramento</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788323494605">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-test-engineer-internship-rail-traction-components-summer-2027-4460918908">
-        <span class="rc-t">Test Engineer Internship - Rail Traction Components (Summer 2027)</span>
-        <span class="rc-sub">Test Engineer</span>
-        <span class="rc-facts"><span class="f-item">Alpharetta</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788323384630">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-project-controls-scheduling-internship-rolling-stock-summer2027-4460921728">
-        <span class="rc-t">Project Controls - Scheduling Internship- Rolling Stock (Summer2027)</span>
-        <span class="rc-sub">Project Scheduling</span>
-        <span class="rc-facts"><span class="f-item">Sacramento</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788323366148">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-skillbridge-internship-field-service-engineer-4433440532">
-        <span class="rc-t">SkillBridge Internship – Field Service Engineer</span>
-        <span class="rc-sub">Field Service Support</span>
-        <span class="rc-facts"><span class="f-item">Phoenix</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788099713459">Posted <time datetime="2026-08-30">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/siemens-energy-business-advisory-technical-consultant-internship-4459468580">
-        <span class="rc-t">Energy Business Advisory Technical Consultant Internship</span>
-        <span class="rc-sub">Energy Data Analyst</span>
-        <span class="rc-facts"><span class="f-item">Houston</span><span class="f-item">Bachelor’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787977764023">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>17 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4462368401">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Systems Installer</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for system troubleshooting</li><li>Work onsite with technicians and customers in Anchorage</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=Microsoft%20Office">Microsoft Office</a></li><li><a href="/us/?q=Windows-based%20laptops">Windows-based Laptops</a></li><li><a href="/us/?q=Building%20automation">Building Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Anchorage</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation</dd></div><div><dt>Posted</dt><dd><span data-ago="1788582679986"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4462368401">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-electrical-engineering-co-op-north-carolina-state-university-4462355513">Electrical Engineering Co-op (North Carolina State University)</a></h3>
+          <span class="rc-sub">Electrical Engineering Support</span>
+          <ul class="rc-do"><li>Support power distribution systems and future grid technologies</li><li>Work with engineering drawings and technical documentation</li><li>Assist with project execution and process improvement initiatives</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=engineering%20drawings">Engineering Drawings</a></li><li><a href="/us/?q=technical%20documentation">Technical Documentation</a></li><li><a href="/us/?q=power%20systems">Power Systems</a></li><li><a href="/us/?q=project%20execution">Project Execution</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Wendell</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788582652487"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-electrical-engineering-co-op-north-carolina-state-university-4462355513">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461975921">Strategic Student Program: Software Development Intern (SIM STS, Spring 2027)</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Write and test code for simulation software</li><li>Work with c++ and c# in agile teams</li><li>Collaborate on product development in mason</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=testing">Testing</a></li><li><a href="/us/?q=documentation">Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mason</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788547277076"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461975921">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461981955">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Systems Installer</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for system troubleshooting</li><li>Work on rooftops and mechanical rooms with no relocation support</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=Microsoft%20Office">Microsoft Office</a></li><li><a href="/us/?q=Windows-based%20laptops">Windows-based Laptops</a></li><li><a href="/us/?q=Building%20automation">Building Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Garfield Heights</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation</dd></div><div><dt>Posted</dt><dd><span data-ago="1788547270584"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461981955">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-strategic-student-program-mendix-development-intern-cmmk-spring-2027-4461986860">Strategic Student Program: Mendix Development Intern (CMMK, Spring 2027)</a></h3>
+          <span class="rc-sub">Mendix app development</span>
+          <ul class="rc-do"><li>Build and refine app features for social selling workflows</li><li>Use Mendix to develop and test internal tools for global sales</li><li>Collaborate with marketing and sales teams on real-world projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=mendix">Mendix</a></li><li><a href="/us/?q=ux%2Fui">Ux/ui</a></li><li><a href="/us/?q=testing">Testing</a></li><li><a href="/us/?q=documentation">Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>St Louis</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788542557969"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-strategic-student-program-mendix-development-intern-cmmk-spring-2027-4461986860">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461997162">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Systems Technician</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for troubleshooting</li><li>Work onsite with technicians and customers in Pittsburgh</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=Microsoft%20Office">Microsoft Office</a></li><li><a href="/us/?q=Windows-based%20laptops">Windows-based Laptops</a></li><li><a href="/us/?q=Building%20automation">Building Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Pittsburgh</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation / Mechanical / Electrical Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1788542553180"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461997162">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-strategic-student-program-future-workforce-strategy-enablement-team-in-4461993863">Strategic Student Program: Future Workforce Strategy Enablement Team Intern (CMMK, Spring 2027)</a></h3>
+          <span class="rc-sub">Learning Experience Support</span>
+          <ul class="rc-do"><li>Support ai agent development for learning experiences</li><li>Collaborate on content creation aligned with lxd best practices</li><li>Conduct learner research through surveys and interviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai%20agent%20development">AI Agent Development</a></li><li><a href="/us/?q=design%20thinking">Design Thinking</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>St Louis</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788539475660"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-strategic-student-program-future-workforce-strategy-enablement-team-in-4461993863">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461998061">Strategic Student Program: Software Development Intern (SIM STS, Spring 2027)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software in C# using WPF and interface design for thermal simulation tools</li><li>Collaborate with cross-functional teams on UX/UI for next-gen product solutions</li><li>Write unit tests and conduct QA testing on new software features</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=wpf">Wpf</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=jira">Jira</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Huntsville</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788539459561"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-strategic-student-program-software-development-intern-sim-sts-spring-2-4461998061">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-strategic-student-program-technology-and-innovation-intern-t-and-i-spr-4461990911">Strategic Student Program: Technology &amp; Innovation Intern (T&amp;I, Spring 2027)</a></h3>
+          <span class="rc-sub">Algorithm Research</span>
+          <ul class="rc-do"><li>Research and develop algorithms for business challenges</li><li>Work with senior engineers on software development</li><li>Explore cutting-edge tech like AI and quantum computing</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=object-oriented%20programming">Object-oriented Programming</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mason</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$18 – $50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788539438719"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-strategic-student-program-technology-and-innovation-intern-t-and-i-spr-4461990911">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463192365">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Automation Technician</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for system troubleshooting</li><li>Work onsite with technicians and customers in various environments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=Microsoft%20Office">Microsoft Office</a></li><li><a href="/us/?q=Windows-based%20laptops">Windows-based Laptops</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Morristown</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation / Mechanical / Electrical Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1788505557570"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463192365">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463194355">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Automation Technician</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for troubleshooting</li><li>Work with technicians and customers on job sites</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=Microsoft%20Office">Microsoft Office</a></li><li><a href="/us/?q=Windows-based%20laptops">Windows-based Laptops</a></li><li><a href="/us/?q=Building%20automation">Building Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Cromwell</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation / Mechanical / Electrical Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1788505533923"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4463194355">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461686129">Building Automation Systems Specialist Internship</a></h3>
+          <span class="rc-sub">Building Systems Installer</span>
+          <ul class="rc-do"><li>Install and service HVAC systems in commercial buildings</li><li>Use laptops, tablets, and hand tools for troubleshooting</li><li>Work onsite with technicians and customers in Canton</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=laptops">Laptops</a></li><li><a href="/us/?q=hand%20tools">Hand Tools</a></li><li><a href="/us/?q=microsoft%20office">Microsoft Office</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Canton</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>HVAC Controls / Building Automation</dd></div><div><dt>Posted</dt><dd><span data-ago="1788452930037"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-building-automation-systems-specialist-internship-4461686129">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-amtrak-intercity-project-internship-rolling-stock-summer-2027-4460937695">Amtrak Intercity Project Internship- Rolling Stock (Summer 2027)</a></h3>
+          <span class="rc-sub">Project Management Support</span>
+          <ul class="rc-do"><li>Support project teams with design changes and material tracking</li><li>Use tableau and reports to document production progress</li><li>Collaborate with engineers on technical documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=technical%20documentation">Technical Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sacramento</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788323494605"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-amtrak-intercity-project-internship-rolling-stock-summer-2027-4460937695">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-test-engineer-internship-rail-traction-components-summer-2027-4460918908">Test Engineer Internship - Rail Traction Components (Summer 2027)</a></h3>
+          <span class="rc-sub">Test Engineer</span>
+          <ul class="rc-do"><li>Troubleshoot and maintain test equipment for rail components</li><li>Work with engineers and project managers on equipment lifecycle</li><li>Learn electrical systems and test procedures in a real-world setting</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=test%20equipment">Test Equipment</a></li><li><a href="/us/?q=project%20management">Project Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Alpharetta</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788323384630"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-test-engineer-internship-rail-traction-components-summer-2027-4460918908">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-project-controls-scheduling-internship-rolling-stock-summer2027-4460921728">Project Controls - Scheduling Internship- Rolling Stock (Summer2027)</a></h3>
+          <span class="rc-sub">Project Scheduling</span>
+          <ul class="rc-do"><li>Manage project schedules for rail vehicles using Primavera and SAP</li><li>Collaborate across engineering, procurement, and manufacturing teams</li><li>Work on real-world projects with Tableau dashboards and MBOMs</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=primavera">Primavera</a></li><li><a href="/us/?q=sap">Sap</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=mbom">Mbom</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sacramento</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788323366148"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-project-controls-scheduling-internship-rolling-stock-summer2027-4460921728">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-skillbridge-internship-field-service-engineer-4433440532">SkillBridge Internship – Field Service Engineer</a></h3>
+          <span class="rc-sub">Field Service Support</span>
+          <ul class="rc-do"><li>Assist with testing, troubleshooting, and startup of power distribution equipment</li><li>Work with Siemens engineers on customer projects across the U.S. With up to 80% travel</li><li>Learn commissioning and maintenance of low-voltage and medium-voltage systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=mechanical%20inspections">Mechanical Inspections</a></li><li><a href="/us/?q=troubleshooting">Troubleshooting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Phoenix</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788099713459"><time datetime="2026-08-30">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-skillbridge-internship-field-service-engineer-4433440532">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/siemens-energy-business-advisory-technical-consultant-internship-4459468580">Energy Business Advisory Technical Consultant Internship</a></h3>
+          <span class="rc-sub">Energy Data Analyst</span>
+          <ul class="rc-do"><li>Analyze power and gas data to inform strategic decisions</li><li>Use matlab sql and python for data modeling and visualization</li><li>Support consulting projects with technical and analytical skills</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Houston</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787977764023"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/siemens-energy-business-advisory-technical-consultant-internship-4459468580">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -264,49 +329,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Siemens&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/clearwater-analytics">
-          <span class="tile-crest" aria-hidden="true">CA<img src="/logos/clearwater-analytics.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Clearwater Analytics</span></span>
-        </a><a class="dir-card" href="/us/companies/saic">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/saic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SAIC</span></span>
-        </a><a class="dir-card" href="/us/companies/northrop-grumman">
-          <span class="tile-crest" aria-hidden="true">NG<img src="/logos/northrop-grumman.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Northrop Grumman</span></span>
-        </a><a class="dir-card" href="/us/companies/parker-hannifin">
-          <span class="tile-crest" aria-hidden="true">PH<img src="/logos/parker-hannifin.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Parker Hannifin</span></span>
-        </a><a class="dir-card" href="/us/companies/jacobs">
-          <span class="tile-crest" aria-hidden="true">J<img src="/logos/jacobs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Jacobs</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/tractor-supply-company">
-          <span class="tile-crest" aria-hidden="true">TS<img src="/logos/tractor-supply-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tractor Supply Company</span></span>
-        </a><a class="dir-card" href="/us/companies/premier-inc">
-          <span class="tile-crest" aria-hidden="true">PI<img src="/logos/premier-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Premier Inc.</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

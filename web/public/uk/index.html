@@ -95,7 +95,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=10">
+<link rel="stylesheet" href="/styles.css?v=11">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -163,6 +163,17 @@
       </span>
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
+
+    <!-- The board IS the internships list, so this page marks that item rather
+         than dropping it. Removing the current item would leave the homepage a
+         two-link nav and every other page a three-link one, moving the targets
+         as the reader navigates. The hrefs are plain: localiseLinks rewrites
+         /companies and /skills per region from REGION_LINKS. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/uk" aria-current="page">Internships</a>
+      <a href="/uk/companies">Companies</a>
+      <a href="/uk/skills">Skills</a>
+    </nav>
 
     <div class="bar-right">
       <span class="ticker" id="freshness">

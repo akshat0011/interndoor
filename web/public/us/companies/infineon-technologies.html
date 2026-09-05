@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,28 +102,34 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">IT<img src="/logos/infineon-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Infineon Technologies internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Infineon Technologies is hiring interns in the US right now.</b> One engineering internship is open, based in Livonia, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Livonia<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Livonia<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>1<p>System Design</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/infineon-technologies-intern-system-architect-4422923903">
-        <span class="rc-t">Intern- System Architect</span>
-        <span class="rc-sub">System Design</span>
-        <span class="rc-facts"><span class="f-item">Livonia</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787850937181">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/infineon-technologies-intern-system-architect-4422923903">Intern- System Architect</a></h3>
+          <span class="rc-sub">System Design</span>
+          <ul class="rc-do"><li>Assist in designing system architecture and technical specs</li><li>Collaborate with engineers and product teams on integration</li><li>Support testing and validation of system performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/system-design">System Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Livonia</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787850937181"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/infineon-technologies-intern-system-architect-4422923903">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -144,7 +161,6 @@
 
     
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

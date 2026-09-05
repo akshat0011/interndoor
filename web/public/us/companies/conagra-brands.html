@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">CB<img src="/logos/conagra-brands.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Conagra Brands internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Conagra Brands is hiring interns in the US right now.</b> 5 engineering internships are open, based in Omaha. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Omaha</dd></div></dl>
+        <dt>Where</dt><dd>Omaha</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>17<p>Power Bi, AI Tools, Email Protection</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/conagra-brands-software-development-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039787">
-        <span class="rc-t">Software Development Internship - Summer 2027</span>
-        <span class="rc-sub">AI and IoT Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $28 / hour</span><span class="f-item">Omaha</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/conagra-brands-analytics-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039790">
-        <span class="rc-t">Analytics Internship - Summer 2027</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $28 / hour</span><span class="f-item">Omaha</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788134400000">Posted <time datetime="2026-08-31">30 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/conagra-brands-automation-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039966">
-        <span class="rc-t">Automation Internship - Summer 2027</span>
-        <span class="rc-sub">Operational Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $28 / hour</span><span class="f-item">Omaha</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787875200000">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/conagra-brands-cybersecurity-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039965">
-        <span class="rc-t">Cybersecurity Internship - Summer 2027</span>
-        <span class="rc-sub">Cybersecurity Operations</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $28 / hour</span><span class="f-item">Omaha</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787875200000">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/conagra-brands-data-management-dmo-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039968">
-        <span class="rc-t">Data Management (DMO) Internship - Summer 2027</span>
-        <span class="rc-sub">Data Automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $28 / hour</span><span class="f-item">Omaha</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787875200000">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/conagra-brands-software-development-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039787">Software Development Internship - Summer 2027</a></h3>
+          <span class="rc-sub">AI and IoT Development</span>
+          <ul class="rc-do"><li>Work on AI and IoT projects impacting millions of consumers</li><li>Use Azure AI and GitHub Copilot in enterprise engineering</li><li>Relocate to Omaha, NE for 11 weeks with housing support</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=azure%20ai">Azure AI</a></li><li><a href="/us/?q=github%20copilot">Github Copilot</a></li><li><a href="/us/?q=iot">IOT</a></li><li><a href="/us/?q=ai%20agents">AI Agents</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Omaha</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/conagra-brands-software-development-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039787">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/conagra-brands-analytics-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039790">Analytics Internship - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data using palantir, databricks, and power bi</li><li>Work with mentors in data and analytics community</li><li>Relocate to omaha, ne for 11 weeks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=palantir">Palantir</a></li><li><a href="/us/?q=databricks">Databricks</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Omaha</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788134400000"><time datetime="2026-08-31">30 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/conagra-brands-analytics-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039790">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/conagra-brands-automation-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039966">Automation Internship - Summer 2027</a></h3>
+          <span class="rc-sub">Operational Support</span>
+          <ul class="rc-do"><li>Support growth and find operational efficiencies using latest technologies</li><li>Work 40 hours/week in Omaha, NE with relocation and housing support</li><li>Paid at $20-28/hr with professional development and networking opportunities</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=operational%20efficiencies">Operational Efficiencies</a></li><li><a href="/us/?q=business%20processes">Business Processes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Omaha</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787875200000"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/conagra-brands-automation-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039966">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/conagra-brands-cybersecurity-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039965">Cybersecurity Internship - Summer 2027</a></h3>
+          <span class="rc-sub">Cybersecurity Operations</span>
+          <ul class="rc-do"><li>Support cybersecurity operations with SIEM, email protection, and network monitoring</li><li>Work with security tools and improve endpoint protection and awareness programs</li><li>Relocate to Omaha, NE for 11 weeks with housing and relocation support</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=siem">Siem</a></li><li><a href="/us/?q=email%20protection">Email Protection</a></li><li><a href="/us/?q=network%20monitoring">Network Monitoring</a></li><li><a href="/us/?q=security%20awareness">Security Awareness</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Omaha</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787875200000"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/conagra-brands-cybersecurity-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039965">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/conagra-brands-data-management-dmo-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039968">Data Management (DMO) Internship - Summer 2027</a></h3>
+          <span class="rc-sub">Data Automation</span>
+          <ul class="rc-do"><li>Analyze business processes and design automation solutions</li><li>Use Power BI, Databricks, and AI tools to build dashboards</li><li>Collaborate with leaders to translate challenges into tech solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=power%20platform">Power Platform</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Omaha</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $28 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787875200000"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/conagra-brands-data-management-dmo-internship-summer-2027-ats-workday-conagrabrands-wd1-careers-us-req-039968">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,34 +197,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Conagra Brands&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/bosch-usa">
-          <span class="tile-crest" aria-hidden="true">BU<img src="/logos/bosch-usa.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Bosch USA</span></span>
-        </a><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,44 +88,56 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">C<img src="/logos/csx.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>CSX internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>3 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>3 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, CSX is hiring interns in the US right now.</b> 3 engineering internships are open, based in Jacksonville, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Jacksonville<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Jacksonville<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>11<p>Java, Python, Agile</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>3</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/csx-engineering-standards-internship-paid-4462463438">
-        <span class="rc-t">Engineering Standards Internship (Paid)</span>
-        <span class="rc-sub">Engineering Analysis</span>
-        <span class="rc-facts"><span class="f-item">Jacksonville</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788377647127">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/csx-technology-internship-summer-2027-paid-4460397593">
-        <span class="rc-t">Technology Internship - Summer 2027 (Paid)</span>
-        <span class="rc-sub">Technology Intern</span>
-        <span class="rc-facts"><span class="f-item">Jacksonville</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787946380373">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/csx-engineering-ptc-positive-train-control-internship-paid-4460508280">
-        <span class="rc-t">Engineering PTC (Positive Train Control) Internship (Paid)</span>
-        <span class="rc-sub">PTC Data Analyst</span>
-        <span class="rc-facts"><span class="f-item">Jacksonville</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787946347322">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>3 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/csx-engineering-standards-internship-paid-4462463438">Engineering Standards Internship (Paid)</a></h3>
+          <span class="rc-sub">Engineering Analysis</span>
+          <ul class="rc-do"><li>Update engineering drawings using Microstation</li><li>Analyze data for track renewal and capital planning</li><li>Assist with technology refresh for Track Capital software</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=microstation">Microstation</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerbi">Powerbi</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Jacksonville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788377647127"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/csx-engineering-standards-internship-paid-4462463438">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/csx-technology-internship-summer-2027-paid-4460397593">Technology Internship - Summer 2027 (Paid)</a></h3>
+          <span class="rc-sub">Technology Intern</span>
+          <ul class="rc-do"><li>Work on real projects with teams in Angular, Java, AI, and cloud infrastructure</li><li>Collaborate with agile teams and contribute to secure system development</li><li>Receive mentorship, professional development, and potential full-time offers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/angular">Angular</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=cloud">Cloud</a></li><li><a href="/us/skills/agile">Agile</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Jacksonville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787946380373"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/csx-technology-internship-summer-2027-paid-4460397593">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/csx-engineering-ptc-positive-train-control-internship-paid-4460508280">Engineering PTC (Positive Train Control) Internship (Paid)</a></h3>
+          <span class="rc-sub">PTC Data Analyst</span>
+          <ul class="rc-do"><li>Analyze PTC performance data for management review</li><li>Research FRA regulations and industry standards</li><li>Prepare submissions to the Federal Railroad Administration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=microsoft%20office">Microsoft Office</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Jacksonville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787946347322"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/csx-engineering-ptc-positive-train-control-internship-paid-4460508280">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -152,49 +175,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as CSX&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/cardinal-health">
-          <span class="tile-crest" aria-hidden="true">CH<img src="/logos/cardinal-health.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cardinal Health</span></span>
-        </a><a class="dir-card" href="/us/companies/nationwide">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/nationwide.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Nationwide</span></span>
-        </a><a class="dir-card" href="/us/companies/atkinsr-alis">
-          <span class="tile-crest" aria-hidden="true">AA<img src="/logos/atkinsr-alis.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">AtkinsRéalis</span></span>
-        </a><a class="dir-card" href="/us/companies/saic">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/saic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SAIC</span></span>
-        </a><a class="dir-card" href="/us/companies/ups">
-          <span class="tile-crest" aria-hidden="true">U<img src="/logos/ups.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">UPS</span></span>
-        </a><a class="dir-card" href="/us/companies/panasonic-north-america">
-          <span class="tile-crest" aria-hidden="true">PN<img src="/logos/panasonic-north-america.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Panasonic North America</span></span>
-        </a><a class="dir-card" href="/us/companies/rockwell-automation">
-          <span class="tile-crest" aria-hidden="true">RA<img src="/logos/rockwell-automation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Rockwell Automation</span></span>
-        </a><a class="dir-card" href="/us/companies/aecom">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/aecom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">AECOM</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

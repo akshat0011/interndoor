@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,573 +102,783 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">I<img src="/logos/ibm.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>IBM internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>69 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>69 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, IBM is hiring interns in the US right now.</b> 69 engineering internships are open, across Dallas, Lansing and University Park. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$40k – $175k<p>on all 69 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Dallas · Lansing · University Park</dd></div></dl>
+        <dt>Where</dt><dd>Dallas · Lansing · University Park</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>123<p>Python, Linux, Git</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>69</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/ibm-cloud-infrastructure-network-monitoring-and-automation-software-engine-4461191498">
-        <span class="rc-t">Cloud Infrastructure Network Monitoring and Automation Software Engineer Intern - Dallas, TX - 2027</span>
-        <span class="rc-sub">Network Automation Engineer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788553040666">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-data-specialist-2027-ai-and-analytics-4451231634">
-        <span class="rc-t">Intern Data Specialist 2027 - AI &amp; Analytics</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,800 / year</span><span class="f-item">Lansing</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788538789474">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-co-op-security-consultant-strategy-risk-and-compliance-2027-4451224632">
-        <span class="rc-t">Co-Op Security Consultant - Strategy, Risk &amp; Compliance 2027</span>
-        <span class="rc-sub">Security Consultant</span>
-        <span class="rc-facts"><span class="f-item is-cash">$51,800 / year</span><span class="f-item">University Park</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788538779440">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-co-op-security-consultant-cyberdefend-2027-4451241553">
-        <span class="rc-t">Co-Op Security Consultant - CyberDefend 2027</span>
-        <span class="rc-sub">Security Consultant</span>
-        <span class="rc-facts"><span class="f-item is-cash">$51,800 / year</span><span class="f-item">University Park</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788538753147">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-co-op-package-consultant-sap-2027-4450865119">
-        <span class="rc-t">Co-Op Package Consultant - SAP 2027</span>
-        <span class="rc-sub">Client Support Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">University Park</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788538747381">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-data-engineer-intern-2027-4450837255">
-        <span class="rc-t">Data Engineer Intern 2027</span>
-        <span class="rc-sub">Data Pipeline Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">Chicago</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788537524399">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-data-engineer-intern-2027-4450852305">
-        <span class="rc-t">Data Engineer Intern 2027</span>
-        <span class="rc-sub">Data Integration</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536988173">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-co-op-developer-adobe-2027-4451222613">
-        <span class="rc-t">Co-Op Developer – Adobe 2027</span>
-        <span class="rc-sub">Aem Developer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39,700 / year</span><span class="f-item">University Park</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536947206">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-consultant-intern-sap-2027-4450859231">
-        <span class="rc-t">Consultant Intern – SAP 2027</span>
-        <span class="rc-sub">Sap consulting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">Chicago</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536655745">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-application-consultant-2027-ibm-tech-4450869000">
-        <span class="rc-t">Intern Application Consultant 2027 – IBM Tech</span>
-        <span class="rc-sub">Client Consulting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">Durham</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536337603">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-application-developer-oracle-2027-4451231636">
-        <span class="rc-t">Intern Application Developer – Oracle - 2027</span>
-        <span class="rc-sub">Application Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,800 / year</span><span class="f-item">Baton Rouge</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536256129">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-co-op-security-consultant-cyber-strategy-and-risk-2027-4451234612">
-        <span class="rc-t">Co-Op Security Consultant - Cyber Strategy &amp; Risk 2027</span>
-        <span class="rc-sub">Security Consultant</span>
-        <span class="rc-facts"><span class="f-item is-cash">$51,800 / year</span><span class="f-item">University Park</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788536226795">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-application-developer-aws-2027-4450866099">
-        <span class="rc-t">Intern Application Developer AWS - 2027</span>
-        <span class="rc-sub">Cloud Application Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,800 / year</span><span class="f-item">Baton Rouge</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788529958206">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450844971">
-        <span class="rc-t">Intern Cybersecurity Specialist – 2027</span>
-        <span class="rc-sub">Cybersecurity Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,800 / year</span><span class="f-item">Lansing</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788529936435">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-consultant-intern-aws-cloud-2027-4450853269">
-        <span class="rc-t">Consultant Intern - AWS Cloud 2027</span>
-        <span class="rc-sub">Client Consulting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,500 / year</span><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788529915334">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450865117">
-        <span class="rc-t">Intern Cybersecurity Specialist – 2027</span>
-        <span class="rc-sub">Cybersecurity Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,800 / year</span><span class="f-item">Baton Rouge</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788529841529">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-developer-spring-co-op-2027-4450426041">
-        <span class="rc-t">Software Developer Spring Co-op 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788451303319">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450428191">
-        <span class="rc-t">Site Reliability Engineer Spring Co-op 2027</span>
-        <span class="rc-sub">System monitoring</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788450428112">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-entry-level-hardware-developer-intern-conversion-2026-2027-4459985884">
-        <span class="rc-t">Entry Level Hardware Developer - Intern Conversion 2026-2027</span>
-        <span class="rc-sub">Hardware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$72,000 / year</span><span class="f-item">Rochester</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381836493">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-ai-foundations-software-engineer-research-internship-2027-4459986805">
-        <span class="rc-t">AI Foundations - Software Engineer - Research Internship 2027</span>
-        <span class="rc-sub">Ai research engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$83,200 / year</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381690179">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459988765">
-        <span class="rc-t">Hardware Developer - Return Intern 2026-2027</span>
-        <span class="rc-sub">Hardware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$69,800 / year</span><span class="f-item">San Jose</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381685169">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-cloud-developer-intern-storage-austin-tx-2027-4459992638">
-        <span class="rc-t">Cloud Developer Intern - Storage - Austin, TX - 2027</span>
-        <span class="rc-sub">Cloud Infrastructure Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381680583">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459998341">
-        <span class="rc-t">Hardware Developer - Return Intern 2026/2027</span>
-        <span class="rc-sub">Hardware development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 / year</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381676875">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-product-designer-intern-2027-4460402033">
-        <span class="rc-t">Product Designer Intern - 2027</span>
-        <span class="rc-sub">Visual Storytelling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$90,700 / year</span><span class="f-item">Yorktown Heights</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381303560">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-network-intern-oneit-austin-tx-2027-4459988775">
-        <span class="rc-t">Site Reliability Engineer Network Intern - OneIT - Austin, TX - 2027</span>
-        <span class="rc-sub">IT Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381283921">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011">
-        <span class="rc-t">Back End Developer - Return Intern 2026-2027</span>
-        <span class="rc-sub">Back End Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 / year</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788381264029">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-developer-intern-2027-4453030552">
-        <span class="rc-t">Software Developer Intern 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788365424343">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-intern-2027-4453046494">
-        <span class="rc-t">Site Reliability Engineer Intern 2027</span>
-        <span class="rc-sub">System Monitoring</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788363790975">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866">
-        <span class="rc-t">Hardware Developer Intern - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788293755948">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-federal-developer-intern-2027-4449808801">
-        <span class="rc-t">Federal Developer Intern 2027</span>
-        <span class="rc-sub">Federal Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$42,500 / year</span><span class="f-item">Herndon</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788278028639">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-power-firmware-developer-intern-rochester-mn-and-austin-tx-2027-4459531205">
-        <span class="rc-t">Power Firmware Developer Intern - Rochester, MN &amp; Austin, TX - 2027</span>
-        <span class="rc-sub">Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788273282068">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-power-backend-developer-intern-rochester-mn-and-austin-tx-2027-4459531204">
-        <span class="rc-t">Power Backend Developer Intern - Rochester, MN &amp; Austin, TX - 2027</span>
-        <span class="rc-sub">Systems Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788273232865">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-engineer-apprentice-conversion-4459247394">
-        <span class="rc-t">Hardware Engineer (Apprentice Conversion)</span>
-        <span class="rc-sub">Hardware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$85,000 / year</span><span class="f-item">Rochester</span><span class="f-item">Mechanical/Electrical Engineering</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788208375057">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-federal-data-scientist-intern-2027-4451022579">
-        <span class="rc-t">Federal Data Scientist Intern 2027</span>
-        <span class="rc-sub">Data Science Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$46,600 / year</span><span class="f-item">Herndon</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788011356135">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-storage-client-solutions-engineering-intern-2027-north-carolina-4458421779">
-        <span class="rc-t">Storage Client Solutions Engineering Intern 2027- North Carolina</span>
-        <span class="rc-sub">Storage Solution Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787949191716">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-user-experience-design-intern-austin-tx-2027-4458420734">
-        <span class="rc-t">User Experience Design Intern - Austin, TX - 2027</span>
-        <span class="rc-sub">User Experience Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948291614">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-intern-tucson-az-4458426769">
-        <span class="rc-t">Site Reliability Engineer Intern -Tucson, AZ</span>
-        <span class="rc-sub">System Automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$68,700 / year</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948290317">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-poughkeepsie-ny-2027-4458422789">
-        <span class="rc-t">Site Reliability Engineer Intern - OneIT - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">IT Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948289867">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-intern-2027-tucson-az-4458412885">
-        <span class="rc-t">Hardware Developer Intern 2027 -Tucson, AZ</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$66,800 / year</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948288189">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-developer-intern-oneit-rochester-mn-2027-4458410834">
-        <span class="rc-t">Software Developer Intern - OneIT - Rochester, MN - 2027</span>
-        <span class="rc-sub">Backend development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Rochester</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948261926">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-rochester-mn-2027-4458427745">
-        <span class="rc-t">Site Reliability Engineer Intern - OneIT - Rochester, MN - 2027</span>
-        <span class="rc-sub">IT Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Rochester</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948258876">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-developer-intern-tucson-az-4458410832">
-        <span class="rc-t">Software Developer Intern -Tucson, AZ</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$68,700 / year</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787948258427">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-technical-enablement-specialist-intern-poughkeepsie-ny-2027-4458036645">
-        <span class="rc-t">Technical Enablement Specialist Intern - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">Technical Enablement Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884324377">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-technical-enablement-specialist-intern-new-york-ny-2027-4458037588">
-        <span class="rc-t">Technical Enablement Specialist Intern - New York, NY - 2027</span>
-        <span class="rc-sub">Technical analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,400 / year</span><span class="f-item">New York</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884320443">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-technical-enablement-specialist-intern-dallas-tx-2027-4458055465">
-        <span class="rc-t">Technical Enablement Specialist Intern - Dallas, TX - 2027</span>
-        <span class="rc-sub">Technical Enablement Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884301896">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-austin-tx-2027-4458038609">
-        <span class="rc-t">Cost &amp; Asset Optimization - Data Science Analyst Intern - Austin, TX - 2027</span>
-        <span class="rc-sub">Data Science Optimization</span>
-        <span class="rc-facts"><span class="f-item is-cash">$66,600 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884300604">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-technical-enablement-specialist-intern-austin-tx-2027-4458051488">
-        <span class="rc-t">Technical Enablement Specialist Intern - Austin, TX - 2027</span>
-        <span class="rc-sub">System analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884290047">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-poughkeepsie-n-4458051489">
-        <span class="rc-t">Cost &amp; Asset Optimization - Data Science Analyst Intern - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">Data Science Optimization</span>
-        <span class="rc-facts"><span class="f-item is-cash">$66,600 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787884274363">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-sw-developer-intern-systems-assurance-austin-tx-and-rochester-mn-2027-4458026525">
-        <span class="rc-t">SW Developer Intern: Systems Assurance - Austin, TX &amp; Rochester, MN - 2027</span>
-        <span class="rc-sub">Hardware Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787862782497">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-compliance-sw-developer-intern-systems-assurance-poughkeepsie-ny-2027-4458029552">
-        <span class="rc-t">Compliance SW Developer Intern: Systems Assurance - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">AI Agent Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787862777366">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-back-end-developer-intern-poughkeepsie-ny-2027-4458021553">
-        <span class="rc-t">Back End Developer Intern - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">Backend Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,200 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787862774696">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hw-developer-intern-systems-assurance-rochester-mn-2027-4458019583">
-        <span class="rc-t">HW Developer Intern: Systems Assurance - Rochester, MN - 2027</span>
-        <span class="rc-sub">Hardware Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Rochester</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787862753812">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-data-scientist-intern-poughkeepsie-ny-2027-4458029545">
-        <span class="rc-t">Data Scientist Intern - Poughkeepsie, NY - 2027</span>
-        <span class="rc-sub">Server data analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$84,000 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787862749886">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-system-support-tech-apprentice-4432788653">
-        <span class="rc-t">System Support Tech Apprentice</span>
-        <span class="rc-sub">Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$60,800 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787844099730">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-research-return-intern-4457231077">
-        <span class="rc-t">Research Return Intern</span>
-        <span class="rc-sub">AI Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$175,000 / year</span><span class="f-item">Yorktown Heights</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787723518716">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011">
-        <span class="rc-t">Hardware Developer Intern 2027 -Austin</span>
-        <span class="rc-sub">Hardware Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787723513925">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-developer-intern-4457237008">
-        <span class="rc-t">Software Developer Intern</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$55,600 / year</span><span class="f-item">5 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787723508960">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086">
-        <span class="rc-t">Global Facility Management Process Intern 2027</span>
-        <span class="rc-sub">Facility Process Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$65,500 / year</span><span class="f-item">Armonk</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787723485612">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101">
-        <span class="rc-t">Software QA Development (Apprentice Conversion)</span>
-        <span class="rc-sub">Software Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$88,000 / year</span><span class="f-item">Lowell</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787723481350">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065">
-        <span class="rc-t">User Experience Design, Research and Content Intern 2027</span>
-        <span class="rc-sub">User Research &amp; Content Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722586853">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015">
-        <span class="rc-t">Hardware and Systems Developer Intern 2027 -Austin, TX</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722581050">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006">
-        <span class="rc-t">Hardware and Systems Developer Intern 2027 -New York</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722572387">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009">
-        <span class="rc-t">Software Strategy and M&amp;A Summer Intern</span>
-        <span class="rc-sub">Software Strategy Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$74,600 / year</span><span class="f-item">Cambridge</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722559032">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025">
-        <span class="rc-t">2027 Software Engineering Intern – Agentic AI &amp; Workflow Automation</span>
-        <span class="rc-sub">Ai workflow development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$90,700 / year</span><span class="f-item">Armonk</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722555122">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013">
-        <span class="rc-t">Hardware and Systems Developer Intern 2027 -Rochester, MN</span>
-        <span class="rc-sub">Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Rochester</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722549959">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001">
-        <span class="rc-t">Hardware Developer Intern 2027 -Poughkeepsie</span>
-        <span class="rc-sub">Hardware Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$73,500 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722545753">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008">
-        <span class="rc-t">Firmware and Systems Developer Intern 2027 -Poughkeepsie, NY</span>
-        <span class="rc-sub">Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$75,600 / year</span><span class="f-item">Poughkeepsie</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787722540949">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-cybersecurity-analyst-apprentice-4446245726">
-        <span class="rc-t">Cybersecurity Analyst Apprentice</span>
-        <span class="rc-sub">Cybersecurity monitoring</span>
-        <span class="rc-facts"><span class="f-item is-cash">$76,000 / year</span><span class="f-item">3 locations</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787671919717">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ibm-2026-intern-conversion-associate-consultant-cybersecurity-x-force-4446242646">
-        <span class="rc-t">2026 - Intern Conversion - Associate Consultant, Cybersecurity X-Force</span>
-        <span class="rc-sub">Cybersecurity analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$90,400 / year</span><span class="f-item">Austin</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787669990609">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>69 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-cloud-infrastructure-network-monitoring-and-automation-software-engine-4461191498">Cloud Infrastructure Network Monitoring and Automation Software Engineer Intern - Dallas, TX - 2027</a></h3>
+          <span class="rc-sub">Network Automation Engineer</span>
+          <ul class="rc-do"><li>Develop Python microservices for network automation workflows</li><li>Write tests for REST APIs and YAML-driven configuration pipelines</li><li>Improve integration between NCS/Axon and SSOT/Hivemind systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/rest-api">REST API</a></li><li><a href="/us/?q=jinja2">Jinja2</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788553040666"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-cloud-infrastructure-network-monitoring-and-automation-software-engine-4461191498">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-data-specialist-2027-ai-and-analytics-4451231634">Intern Data Specialist 2027 - AI &amp; Analytics</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data to find trends and support business decisions</li><li>Work with cloud tools and data platforms to build pipelines</li><li>Collaborate with teams on AI and analytics projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lansing</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788538789474"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-data-specialist-2027-ai-and-analytics-4451231634">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-co-op-security-consultant-strategy-risk-and-compliance-2027-4451224632">Co-Op Security Consultant - Strategy, Risk &amp; Compliance 2027</a></h3>
+          <span class="rc-sub">Security Consultant</span>
+          <ul class="rc-do"><li>Analyze business and technical requirements to solve client security challenges</li><li>Work with senior consultants on designing and implementing advanced security solutions</li><li>Gain experience across multiple platforms, processes, and architectures</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/ruby">Ruby</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=sharepoint">Sharepoint</a></li><li><a href="/us/?q=network%20security">Network Security</a></li><li><a href="/us/?q=firewalls">Firewalls</a></li><li><a href="/us/?q=intrusion%20detection">Intrusion Detection</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>University Park</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$51,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788538779440"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-co-op-security-consultant-strategy-risk-and-compliance-2027-4451224632">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-co-op-security-consultant-cyberdefend-2027-4451241553">Co-Op Security Consultant - CyberDefend 2027</a></h3>
+          <span class="rc-sub">Security Consultant</span>
+          <ul class="rc-do"><li>Support client projects with primary research and stakeholder workshops</li><li>Work with network security tools and cloud migration across major platforms</li><li>Gain hands-on experience in data analytics and system implementations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=network%20security">Network Security</a></li><li><a href="/us/?q=cloud%20migration">Cloud Migration</a></li><li><a href="/us/?q=data%20analytics">Data Analytics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>University Park</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$51,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788538753147"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-co-op-security-consultant-cyberdefend-2027-4451241553">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-co-op-package-consultant-sap-2027-4450865119">Co-Op Package Consultant - SAP 2027</a></h3>
+          <span class="rc-sub">Client Support Analyst</span>
+          <ul class="rc-do"><li>Support client projects with market research and operational models</li><li>Work with SAP software and cloud migration across major platforms</li><li>Shadow product teams and contribute to data analytics assessments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=sap">Sap</a></li><li><a href="/us/?q=data%20analytics">Data Analytics</a></li><li><a href="/us/?q=cloud%20migration">Cloud Migration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>University Park</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788538747381"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-co-op-package-consultant-sap-2027-4450865119">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-data-engineer-intern-2027-4450837255">Data Engineer Intern 2027</a></h3>
+          <span class="rc-sub">Data Pipeline Development</span>
+          <ul class="rc-do"><li>Write scripts to clean, integrate, and model data</li><li>Use python, sql, and cloud tools like spark</li><li>Work on real client projects with mentorship</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=spark">Spark</a></li><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788537524399"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-data-engineer-intern-2027-4450837255">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-data-engineer-intern-2027-4450852305">Data Engineer Intern 2027</a></h3>
+          <span class="rc-sub">Data Integration</span>
+          <ul class="rc-do"><li>Write scripts to clean, integrate, and model data</li><li>Use python, sql, and cloud tools like aws or ibm cloud</li><li>Work on real client projects with mentorship support</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/?q=ibm%20cloud">Ibm Cloud</a></li><li><a href="/us/?q=spark">Spark</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536988173"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-data-engineer-intern-2027-4450852305">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-co-op-developer-adobe-2027-4451222613">Co-Op Developer – Adobe 2027</a></h3>
+          <span class="rc-sub">Aem Developer</span>
+          <ul class="rc-do"><li>Develop AEM components using Java, HTL, and JCR APIs for scalable web experiences</li><li>Collaborate with front-end teams on responsive HTML/CSS/JS integration in AEM</li><li>Support AEM cloud migration and integrate with external platforms via REST/GraphQL</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=htl">Htl</a></li><li><a href="/us/?q=jcr">Jcr</a></li><li><a href="/us/?q=rest">REST</a></li><li><a href="/us/skills/graphql">Graphql</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>University Park</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39,700 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536947206"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-co-op-developer-adobe-2027-4451222613">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-consultant-intern-sap-2027-4450859231">Consultant Intern – SAP 2027</a></h3>
+          <span class="rc-sub">Sap consulting</span>
+          <ul class="rc-do"><li>Support client projects with sap solutions for finance, supply chain, and hr</li><li>Work with consultants on sap s/4hana, successfactors, and analytics tools</li><li>Collaborate in workshops with functional and technical teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=sap%20s%2F4hana">Sap S/4hana</a></li><li><a href="/us/?q=sap%20successfactors">Sap Successfactors</a></li><li><a href="/us/?q=sap%20analytics">Sap Analytics</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=xml">Xml</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536655745"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-consultant-intern-sap-2027-4450859231">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-application-consultant-2027-ibm-tech-4450869000">Intern Application Consultant 2027 – IBM Tech</a></h3>
+          <span class="rc-sub">Client Consulting</span>
+          <ul class="rc-do"><li>Support client projects with primary research and stakeholder interviews</li><li>Work with dynamic teams on market trends and operational improvements</li><li>Gain hands-on experience in cloud migration and data analytics</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analytics">Data Analytics</a></li><li><a href="/us/?q=cloud%20technologies">Cloud Technologies</a></li><li><a href="/us/?q=programming">Programming</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Durham</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536337603"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-application-consultant-2027-ibm-tech-4450869000">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-application-developer-oracle-2027-4451231636">Intern Application Developer – Oracle - 2027</a></h3>
+          <span class="rc-sub">Application Development</span>
+          <ul class="rc-do"><li>Build modern applications using cloud platforms and UI frameworks</li><li>Work with cross-functional teams on real client projects</li><li>Contribute to scalable code and participate in code reviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=devops">Devops</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Baton Rouge</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536256129"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-application-developer-oracle-2027-4451231636">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-co-op-security-consultant-cyber-strategy-and-risk-2027-4451234612">Co-Op Security Consultant - Cyber Strategy &amp; Risk 2027</a></h3>
+          <span class="rc-sub">Security Consultant</span>
+          <ul class="rc-do"><li>Analyze business and technical requirements to design security solutions</li><li>Work with senior consultants on client projects using IBM platforms</li><li>Gain experience in network security and threat management</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=network%20security">Network Security</a></li><li><a href="/us/?q=threat%20management">Threat Management</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=network%20monitoring">Network Monitoring</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>University Park</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$51,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788536226795"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-co-op-security-consultant-cyber-strategy-and-risk-2027-4451234612">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-application-developer-aws-2027-4450866099">Intern Application Developer AWS - 2027</a></h3>
+          <span class="rc-sub">Cloud Application Development</span>
+          <ul class="rc-do"><li>Develop AWS cloud applications using databases, operating systems, and modern UI frameworks</li><li>Contribute to code reviews, documentation, and design discussions with experienced developers</li><li>Work on real client projects across industries with cross-functional teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/?q=devops">Devops</a></li><li><a href="/us/?q=cloud%20computing">Cloud Computing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Baton Rouge</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788529958206"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-application-developer-aws-2027-4450866099">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450844971">Intern Cybersecurity Specialist – 2027</a></h3>
+          <span class="rc-sub">Cybersecurity Analyst</span>
+          <ul class="rc-do"><li>Analyze security events and data to identify trends and improve client security</li><li>Work with AI and cloud tools to support enterprise security solutions</li><li>Collaborate with cross-functional teams on cybersecurity projects across industries</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=cloud%20security">Cloud Security</a></li><li><a href="/us/?q=threat%20intelligence">Threat Intelligence</a></li><li><a href="/us/?q=vulnerability%20management">Vulnerability Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lansing</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788529936435"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450844971">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-consultant-intern-aws-cloud-2027-4450853269">Consultant Intern - AWS Cloud 2027</a></h3>
+          <span class="rc-sub">Client Consulting</span>
+          <ul class="rc-do"><li>Support client projects with market research and operational improvements</li><li>Work with AWS cloud technologies and data analytics tools</li><li>Shadow product teams and contribute to cloud migrations and system integrations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/?q=data%20analytics">Data Analytics</a></li><li><a href="/us/?q=cloud%20migration">Cloud Migration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788529915334"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-consultant-intern-aws-cloud-2027-4450853269">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450865117">Intern Cybersecurity Specialist – 2027</a></h3>
+          <span class="rc-sub">Cybersecurity Analyst</span>
+          <ul class="rc-do"><li>Analyze security events and cyber risks to support decision-making</li><li>Work with AI and enterprise security platforms to protect digital operations</li><li>Gain hands-on experience in threat detection and incident response</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=threat%20detection">Threat Detection</a></li><li><a href="/us/?q=incident%20response">Incident Response</a></li><li><a href="/us/?q=security%20monitoring">Security Monitoring</a></li><li><a href="/us/?q=vulnerability%20management">Vulnerability Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Baton Rouge</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788529841529"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-intern-cybersecurity-specialist-2027-4450865117">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-developer-spring-co-op-2027-4450426041">Software Developer Spring Co-op 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Design, build, and test software in front-end, back-end, or full-stack environments</li><li>Use Git, cloud tools like Docker and Kubernetes, and REST APIs</li><li>Work on real IBM projects with experienced developers in Agile teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788451303319"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-developer-spring-co-op-2027-4450426041">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450428191">Site Reliability Engineer Spring Co-op 2027</a></h3>
+          <span class="rc-sub">System monitoring</span>
+          <ul class="rc-do"><li>Monitor systems 24/7, troubleshoot issues, deploy updates</li><li>Use ci/cd tools, linux, python, kubernetes, cloud platforms</li><li>Work with global team, full-time 16 weeks in lowell, ma</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/skills/ci-cd">CI/CD</a></li><li><a href="/us/?q=cloud">Cloud</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788450428112"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-spring-co-op-2027-4450428191">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-entry-level-hardware-developer-intern-conversion-2026-2027-4459985884">Entry Level Hardware Developer - Intern Conversion 2026-2027</a></h3>
+          <span class="rc-sub">Hardware Development</span>
+          <ul class="rc-do"><li>Design and test hardware components for IBM&#39;s quantum and mainframe systems</li><li>Work with VHDL/Verilog, SPICE, and C/C++/Python for circuit and firmware development</li><li>Support customer and field engineering with hardware and firmware troubleshooting</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=spice">Spice</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$72,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381836493"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-entry-level-hardware-developer-intern-conversion-2026-2027-4459985884">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-ai-foundations-software-engineer-research-internship-2027-4459986805">AI Foundations - Software Engineer - Research Internship 2027</a></h3>
+          <span class="rc-sub">Ai research engineering</span>
+          <ul class="rc-do"><li>Develop scalable infrastructure for ai research</li><li>Work with pytorch and large language models</li><li>Collaborate on open-source projects and prototypes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=large%20language%20models">Large Language Models</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=transformer%20architectures">Transformer Architectures</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$83,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381690179"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-ai-foundations-software-engineer-research-internship-2027-4459986805">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459988765">Hardware Developer - Return Intern 2026-2027</a></h3>
+          <span class="rc-sub">Hardware Development</span>
+          <ul class="rc-do"><li>Develop hardware products using design docs for servers, storage, and networking</li><li>Test and validate components for integration and functional reliability</li><li>Collaborate with ibm teams and vendors to deliver quality systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=functional%20specifications">Functional Specifications</a></li><li><a href="/us/?q=unit%20testing">Unit Testing</a></li><li><a href="/us/?q=firmware%20engineering">Firmware Engineering</a></li><li><a href="/us/?q=collaboration%20tools">Collaboration Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Jose</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$69,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381685169"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459988765">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-cloud-developer-intern-storage-austin-tx-2027-4459992638">Cloud Developer Intern - Storage - Austin, TX - 2027</a></h3>
+          <span class="rc-sub">Cloud Infrastructure Development</span>
+          <ul class="rc-do"><li>Implement cloud infrastructure solutions for IBM Cloud products</li><li>Use Kubernetes, Docker, and OpenShift for automation</li><li>Collaborate with teams on security and compliance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/?q=openshift">Openshift</a></li><li><a href="/us/?q=ansible">Ansible</a></li><li><a href="/us/?q=github">Github</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381680583"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-cloud-developer-intern-storage-austin-tx-2027-4459992638">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459998341">Hardware Developer - Return Intern 2026/2027</a></h3>
+          <span class="rc-sub">Hardware development</span>
+          <ul class="rc-do"><li>Develop hardware products using design docs for servers, storage, and networking</li><li>Test and validate components for integration and functional reliability</li><li>Collaborate with ibm teams and vendors to deliver quality systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=functional%20specifications">Functional Specifications</a></li><li><a href="/us/?q=unit%20testing">Unit Testing</a></li><li><a href="/us/?q=firmware%20engineering">Firmware Engineering</a></li><li><a href="/us/?q=collaboration%20tools">Collaboration Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381676875"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-return-intern-2026-2027-4459998341">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-product-designer-intern-2027-4460402033">Product Designer Intern - 2027</a></h3>
+          <span class="rc-sub">Visual Storytelling</span>
+          <ul class="rc-do"><li>Create digital and print assets for research communication</li><li>Collaborate with researchers and designers on visual storytelling</li><li>Develop interactive prototypes for emerging technologies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=interaction%20design">Interaction Design</a></li><li><a href="/us/?q=prototyping">Prototyping</a></li><li><a href="/us/?q=typography">Typography</a></li><li><a href="/us/?q=layout">Layout</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Yorktown Heights</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$90,700 / year</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381303560"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-product-designer-intern-2027-4460402033">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-network-intern-oneit-austin-tx-2027-4459988775">Site Reliability Engineer Network Intern - OneIT - Austin, TX - 2027</a></h3>
+          <span class="rc-sub">IT Systems Support</span>
+          <ul class="rc-do"><li>Support infrastructure operations and automate routine tasks with scripting</li><li>Work with cloud platforms and monitoring tools like Grafana and Prometheus</li><li>Collaborate on network upgrades and incident response with cross-functional teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=grafana">Grafana</a></li><li><a href="/us/?q=prometheus">Prometheus</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381283921"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-network-intern-oneit-austin-tx-2027-4459988775">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011">Back End Developer - Return Intern 2026-2027</a></h3>
+          <span class="rc-sub">Back End Development</span>
+          <ul class="rc-do"><li>Develop databases and APIs using ruby, python, java, and sql</li><li>Work in agile teams on cloud and containerized applications</li><li>Learn back-end systems and security best practices</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/ruby">Ruby</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/aws">AWS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788381264029"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-back-end-developer-return-intern-2026-2027-4460402011">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-developer-intern-2027-4453030552">Software Developer Intern 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Design, build, and test software for cloud, AI, and hybrid-platform solutions</li><li>Work with Python, Java, JavaScript, and other languages in Agile teams</li><li>Use Git, Docker, Kubernetes, and REST APIs in real-world projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788365424343"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-developer-intern-2027-4453030552">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-intern-2027-4453046494">Site Reliability Engineer Intern 2027</a></h3>
+          <span class="rc-sub">System Monitoring</span>
+          <ul class="rc-do"><li>Monitor and maintain production systems 24/7 to ensure reliability</li><li>Use CI/CD tools to deploy and configure services at scale</li><li>Collaborate with teams to troubleshoot and resolve client issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/skills/terraform">Terraform</a></li><li><a href="/us/skills/jenkins">Jenkins</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788363790975"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-intern-2027-4453046494">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866">Hardware Developer Intern - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Design and test hardware components for IBM&#39;s quantum and AI systems</li><li>Use VHDL/Verilog, SPICE, and CAD tools for circuit and logic design</li><li>Work on IBM ZSystems, Power Systems, and Quantum hardware teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=spice">Spice</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788293755948"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-federal-developer-intern-2027-4449808801">Federal Developer Intern 2027</a></h3>
+          <span class="rc-sub">Federal Software Development</span>
+          <ul class="rc-do"><li>Write secure code for government systems</li><li>Use java/python/scalable cloud tools</li><li>Work with federal clients on mission-critical projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Herndon</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$42,500 / year</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788278028639"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-federal-developer-intern-2027-4449808801">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-power-firmware-developer-intern-rochester-mn-and-austin-tx-2027-4459531205">Power Firmware Developer Intern - Rochester, MN &amp; Austin, TX - 2027</a></h3>
+          <span class="rc-sub">Firmware Development</span>
+          <ul class="rc-do"><li>Develop firmware and low-level system software for IBM Power Systems</li><li>Work with C/C++, Linux, Git, and open-source tools</li><li>Collaborate on hardware-software integration for enterprise servers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=qemu">Qemu</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788273282068"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-power-firmware-developer-intern-rochester-mn-and-austin-tx-2027-4459531205">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-power-backend-developer-intern-rochester-mn-and-austin-tx-2027-4459531204">Power Backend Developer Intern - Rochester, MN &amp; Austin, TX - 2027</a></h3>
+          <span class="rc-sub">Systems Software Development</span>
+          <ul class="rc-do"><li>Develop systems software for power systems and ibm i operating system</li><li>Work with c/c++, git, linux, and cloud technologies</li><li>Contribute to mission-critical enterprise platforms globally</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=cloud">Cloud</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788273232865"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-power-backend-developer-intern-rochester-mn-and-austin-tx-2027-4459531204">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-engineer-apprentice-conversion-4459247394">Hardware Engineer (Apprentice Conversion)</a></h3>
+          <span class="rc-sub">Hardware Development</span>
+          <ul class="rc-do"><li>Develop server storage and networking systems from design docs</li><li>Test and fix hardware defects with customer support</li><li>Collaborate with suppliers and internal teams globally</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=functional%20specifications">Functional Specifications</a></li><li><a href="/us/?q=unit%20testing">Unit Testing</a></li><li><a href="/us/?q=supplier%20collaboration">Supplier Collaboration</a></li><li><a href="/us/?q=customer%20support">Customer Support</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$85,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Mechanical/Electrical Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1788208375057"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-engineer-apprentice-conversion-4459247394">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-federal-data-scientist-intern-2027-4451022579">Federal Data Scientist Intern 2027</a></h3>
+          <span class="rc-sub">Data Science Intern</span>
+          <ul class="rc-do"><li>Build data pipelines with python to extract and transform data from repositories</li><li>Work on client projects using cloud platforms and etl tools for data integration</li><li>Gain experience in government compliance and security standards for federal clients</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=spark">Spark</a></li><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Herndon</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$46,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788011356135"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-federal-data-scientist-intern-2027-4451022579">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-storage-client-solutions-engineering-intern-2027-north-carolina-4458421779">Storage Client Solutions Engineering Intern 2027- North Carolina</a></h3>
+          <span class="rc-sub">Storage Solution Engineering</span>
+          <ul class="rc-do"><li>Support solution development, testing, and customer innovation</li><li>Work with IBM engineers, product leaders, and tech partners</li><li>Gain experience in hybrid cloud, AI, and enterprise storage</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/aws">AWS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787949191716"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-storage-client-solutions-engineering-intern-2027-north-carolina-4458421779">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-user-experience-design-intern-austin-tx-2027-4458420734">User Experience Design Intern - Austin, TX - 2027</a></h3>
+          <span class="rc-sub">User Experience Design</span>
+          <ul class="rc-do"><li>Create wireframes and prototypes for digital products</li><li>Use figma and ai tools like ibm bob or copilot</li><li>Work with product managers and developers onsite in austin</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=figma">Figma</a></li><li><a href="/us/?q=copilot">Copilot</a></li><li><a href="/us/?q=user%20research">User Research</a></li><li><a href="/us/?q=ux%20design">UX Design</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948291614"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-user-experience-design-intern-austin-tx-2027-4458420734">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-intern-tucson-az-4458426769">Site Reliability Engineer Intern -Tucson, AZ</a></h3>
+          <span class="rc-sub">System Automation</span>
+          <ul class="rc-do"><li>Design and implement automation for deployment, monitoring, and incident response</li><li>Work with dev and ops teams on scalable, reliable infrastructure</li><li>Participate in on-call rotations and incident management</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$68,700 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948290317"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-intern-tucson-az-4458426769">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-poughkeepsie-ny-2027-4458422789">Site Reliability Engineer Intern - OneIT - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">IT Systems Support</span>
+          <ul class="rc-do"><li>Support infrastructure operations and automate routine tasks with scripting</li><li>Work with Linux, Unix, and cloud platforms like IBM Cloud and AWS</li><li>Collaborate on cross-functional teams for system and network reliability</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=grafana">Grafana</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948289867"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-poughkeepsie-ny-2027-4458422789">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-intern-2027-tucson-az-4458412885">Hardware Developer Intern 2027 -Tucson, AZ</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Design and test hardware, firmware, and semiconductors for IBM products</li><li>Use VHDL, Verilog, SPICE, and CAD tools for circuit and system development</li><li>Work on quantum systems, power delivery, and thermal design projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=spice">Spice</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$66,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948288189"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-intern-2027-tucson-az-4458412885">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-developer-intern-oneit-rochester-mn-2027-4458410834">Software Developer Intern - OneIT - Rochester, MN - 2027</a></h3>
+          <span class="rc-sub">Backend development</span>
+          <ul class="rc-do"><li>Write clean code for backend services and APIs</li><li>Work with python/java/javascript/golang and git</li><li>Deploy apps in cloud and hybrid environments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/golang">Golang</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948261926"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-developer-intern-oneit-rochester-mn-2027-4458410834">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-rochester-mn-2027-4458427745">Site Reliability Engineer Intern - OneIT - Rochester, MN - 2027</a></h3>
+          <span class="rc-sub">IT Systems Support</span>
+          <ul class="rc-do"><li>Support infrastructure operations and automate tasks with scripting</li><li>Work with Linux, Unix, and cloud platforms like AWS and Azure</li><li>Collaborate on incident response and reliability improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/azure">Azure</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948258876"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-site-reliability-engineer-intern-oneit-rochester-mn-2027-4458427745">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-developer-intern-tucson-az-4458410832">Software Developer Intern -Tucson, AZ</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Design develop test maintain software solutions for hybrid cloud and enterprise systems</li><li>Work with git linux and cloud technologies like docker and kubernetes</li><li>Participate in agile teams and contribute to architecture and code reviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$68,700 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787948258427"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-developer-intern-tucson-az-4458410832">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-technical-enablement-specialist-intern-poughkeepsie-ny-2027-4458036645">Technical Enablement Specialist Intern - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">Technical Enablement Support</span>
+          <ul class="rc-do"><li>Support enterprise systems with IBM Z and LinuxONE tech</li><li>Create demos, workshops, and client materials</li><li>Collaborate with ISVs and manage program events</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ibm%20z">Ibm Z</a></li><li><a href="/us/?q=linuxone">Linuxone</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=cloud">Cloud</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884324377"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-technical-enablement-specialist-intern-poughkeepsie-ny-2027-4458036645">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-technical-enablement-specialist-intern-new-york-ny-2027-4458037588">Technical Enablement Specialist Intern - New York, NY - 2027</a></h3>
+          <span class="rc-sub">Technical analysis</span>
+          <ul class="rc-do"><li>Analyze client systems and recommend technical solutions for performance and security</li><li>Work with development teams and support resources to address client needs</li><li>Design workshops and educational materials for IBM Z clients and partners</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=cobol">Cobol</a></li><li><a href="/us/?q=jcl">Jcl</a></li><li><a href="/us/?q=microsoft%20suite">Microsoft Suite</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,400 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884320443"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-technical-enablement-specialist-intern-new-york-ny-2027-4458037588">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-technical-enablement-specialist-intern-dallas-tx-2027-4458055465">Technical Enablement Specialist Intern - Dallas, TX - 2027</a></h3>
+          <span class="rc-sub">Technical Enablement Support</span>
+          <ul class="rc-do"><li>Support enterprise systems with automation and hybrid cloud environments</li><li>Design client-facing assets like demos and workshops for IBM Z tech</li><li>Collaborate with global teams on infrastructure projects and deployments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=automation">Automation</a></li><li><a href="/us/?q=containerization">Containerization</a></li><li><a href="/us/?q=operating%20systems">Operating Systems</a></li><li><a href="/us/?q=networking">Networking</a></li><li><a href="/us/?q=databases">Databases</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884301896"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-technical-enablement-specialist-intern-dallas-tx-2027-4458055465">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-austin-tx-2027-4458038609">Cost &amp; Asset Optimization - Data Science Analyst Intern - Austin, TX - 2027</a></h3>
+          <span class="rc-sub">Data Science Optimization</span>
+          <ul class="rc-do"><li>Analyze competitors and market trends to inform optimization strategies</li><li>Use ai tools to automate and improve business processes</li><li>Collaborate with cross-functional teams across finance and engineering</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=agile%20practices">Agile Practices</a></li><li><a href="/us/?q=design%20thinking">Design Thinking</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=business%20analysis">Business Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$66,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884300604"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-austin-tx-2027-4458038609">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-technical-enablement-specialist-intern-austin-tx-2027-4458051488">Technical Enablement Specialist Intern - Austin, TX - 2027</a></h3>
+          <span class="rc-sub">System analysis</span>
+          <ul class="rc-do"><li>Analyze client systems and deliver technical recommendations</li><li>Work with development teams and support resources</li><li>Design resiliency workshops and client-facing materials</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=cobol">Cobol</a></li><li><a href="/us/?q=jcl">Jcl</a></li><li><a href="/us/?q=microsoft%20suite">Microsoft Suite</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884290047"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-technical-enablement-specialist-intern-austin-tx-2027-4458051488">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-poughkeepsie-n-4458051489">Cost &amp; Asset Optimization - Data Science Analyst Intern - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">Data Science Optimization</span>
+          <ul class="rc-do"><li>Analyze competitors and market trends to inform optimization strategies</li><li>Use ai tools to automate and improve business processes</li><li>Collaborate with cross-functional teams on asset recovery projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=agile%20practices">Agile Practices</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=business%20analysis">Business Analysis</a></li><li><a href="/us/?q=process%20optimization">Process Optimization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$66,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787884274363"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-cost-and-asset-optimization-data-science-analyst-intern-poughkeepsie-n-4458051489">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-sw-developer-intern-systems-assurance-austin-tx-and-rochester-mn-2027-4458026525">SW Developer Intern: Systems Assurance - Austin, TX &amp; Rochester, MN - 2027</a></h3>
+          <span class="rc-sub">Hardware Testing</span>
+          <ul class="rc-do"><li>Install, test, and validate hardware systems and AI LLMs</li><li>Collaborate with global teams on firmware and test automation</li><li>Support customers with technical solutions and system reliability</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=client-server%20architectures">Client-server Architectures</a></li><li><a href="/us/?q=devops%20tools">Devops Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787862782497"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-sw-developer-intern-systems-assurance-austin-tx-and-rochester-mn-2027-4458026525">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-compliance-sw-developer-intern-systems-assurance-poughkeepsie-ny-2027-4458029552">Compliance SW Developer Intern: Systems Assurance - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">AI Agent Development</span>
+          <ul class="rc-do"><li>Build AI agents that automate tasks and improve efficiency</li><li>Use Python, TypeScript, and cloud platforms daily</li><li>Work on real projects with global enterprise impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/?q=cloud%20platforms">Cloud Platforms</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/skills/ci-cd">CI/CD</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787862777366"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-compliance-sw-developer-intern-systems-assurance-poughkeepsie-ny-2027-4458029552">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-back-end-developer-intern-poughkeepsie-ny-2027-4458021553">Back End Developer Intern - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">Backend Development</span>
+          <ul class="rc-do"><li>Build scalable server apps and databases using REST APIs and cloud technologies</li><li>Work with C++, Java, Python, and DevOps tools like Git and Jenkins</li><li>Collaborate on large-scale systems for on-premises and cloud delivery</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/jenkins">Jenkins</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,200 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787862774696"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-back-end-developer-intern-poughkeepsie-ny-2027-4458021553">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hw-developer-intern-systems-assurance-rochester-mn-2027-4458019583">HW Developer Intern: Systems Assurance - Rochester, MN - 2027</a></h3>
+          <span class="rc-sub">Hardware Testing</span>
+          <ul class="rc-do"><li>Install, test, and validate hardware systems and AI models</li><li>Work with firmware, APIs, and Agile teams globally</li><li>Contribute to code repos and customer support tasks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/?q=firmware">Firmware</a></li><li><a href="/us/?q=networking">Networking</a></li><li><a href="/us/?q=testing">Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787862753812"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hw-developer-intern-systems-assurance-rochester-mn-2027-4458019583">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-data-scientist-intern-poughkeepsie-ny-2027-4458029545">Data Scientist Intern - Poughkeepsie, NY - 2027</a></h3>
+          <span class="rc-sub">Server data analysis</span>
+          <ul class="rc-do"><li>Analyze server telemetry and field events to improve system reliability</li><li>Use python and visualization tools to create dashboards for stakeholders</li><li>Track and report on quality metrics like mtbf and part ppm rates</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/react">React</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$84,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787862749886"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-data-scientist-intern-poughkeepsie-ny-2027-4458029545">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-system-support-tech-apprentice-4432788653">System Support Tech Apprentice</a></h3>
+          <span class="rc-sub">Systems Support</span>
+          <ul class="rc-do"><li>Support client systems with engineers and mentors</li><li>Learn through on-the-job training and learning hours</li><li>Eligible for full-time roles after completing program</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=networking">Networking</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$60,800 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787844099730"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-system-support-tech-apprentice-4432788653">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-research-return-intern-4457231077">Research Return Intern</a></h3>
+          <span class="rc-sub">AI Research</span>
+          <ul class="rc-do"><li>Design and test ai algorithms with mathematical rigor</li><li>Work with tensorflow and pytorch for research projects</li><li>Contribute to scalable systems for real-world applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/tensorflow">Tensorflow</a></li><li><a href="/us/skills/deep-learning">Deep Learning</a></li><li><a href="/us/?q=reinforcement%20learning">Reinforcement Learning</a></li><li><a href="/us/skills/computer-vision">Computer Vision</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Yorktown Heights</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$175,000 / year</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787723518716"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-research-return-intern-4457231077">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011">Hardware Developer Intern 2027 -Austin</a></h3>
+          <span class="rc-sub">Hardware Testing</span>
+          <ul class="rc-do"><li>Develop and execute hardware and system-level test solutions for product quality</li><li>Build automation and software tools for validation and manufacturing workflows</li><li>Collaborate with cross-functional teams on semiconductor and system engineering challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=automation">Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787723513925"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-intern-2027-austin-4457232011">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-developer-intern-4457237008">Software Developer Intern</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Design develop test maintain software solutions for hybrid cloud and enterprise systems</li><li>Work with git linux docker and cloud technologies like openshift and ibm cloud</li><li>Participate in agile sprints and contribute to architecture and code reviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/?q=openshift">Openshift</a></li><li><a href="/us/?q=ibm%20cloud">Ibm Cloud</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>5 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$55,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787723508960"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-developer-intern-4457237008">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086">Global Facility Management Process Intern 2027</a></h3>
+          <span class="rc-sub">Facility Process Support</span>
+          <ul class="rc-do"><li>Support process development, documentation, and optimization for global facility management</li><li>Work with TRIRIGA, Maximo, and Power BI to enhance digital transformation initiatives</li><li>Analyze performance data and create reports to improve operational efficiency and compliance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=tririga">Tririga</a></li><li><a href="/us/?q=maximo">Maximo</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=teams">Teams</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Armonk</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$65,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787723485612"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-global-facility-management-process-intern-2027-4457218086">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101">Software QA Development (Apprentice Conversion)</a></h3>
+          <span class="rc-sub">Software Testing</span>
+          <ul class="rc-do"><li>Write tests to find bugs and improve software quality</li><li>Use agile methods and work with cross-functional teams</li><li>Build automation for unit, integration, and functional tests</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=agile%20methodologies">Agile Methodologies</a></li><li><a href="/us/?q=test%20automation%20frameworks">Test Automation Frameworks</a></li><li><a href="/us/?q=exploratory%20testing">Exploratory Testing</a></li><li><a href="/us/?q=unit%20tests">Unit Tests</a></li><li><a href="/us/?q=integration%20tests">Integration Tests</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lowell</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$88,000 / year</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787723481350"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-qa-development-apprentice-conversion-4457218101">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065">User Experience Design, Research and Content Intern 2027</a></h3>
+          <span class="rc-sub">User Research &amp; Content Development</span>
+          <ul class="rc-do"><li>Conduct user research for software products or web interfaces</li><li>Create technical documentation using xml and github</li><li>Work on ibm z product stack with design and content teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ux%20research">UX Research</a></li><li><a href="/us/?q=xml">Xml</a></li><li><a href="/us/?q=github">Github</a></li><li><a href="/us/skills/react">React</a></li><li><a href="/us/?q=html">HTML</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722586853"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-user-experience-design-research-and-content-intern-2027-4457220065">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015">Hardware and Systems Developer Intern 2027 -Austin, TX</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Design and test next-gen hardware using CAD, EDA, and simulation tools</li><li>Work on mechanical, thermal, optical, and firmware projects</li><li>Develop scripts in Python, C/C++, or Bash for testing and validation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722581050"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-austin-tx-4457219015">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006">Hardware and Systems Developer Intern 2027 -New York</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Design and test next-gen hardware using CAD, EDA, and simulation tools</li><li>Work on mechanical, thermal, electrical, and optical systems with SolidWorks, Cadence, and MATLAB</li><li>Develop automation scripts in Python, C/C++, or Bash for testing and validation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722572387"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-new-york-4457230006">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009">Software Strategy and M&amp;A Summer Intern</a></h3>
+          <span class="rc-sub">Software Strategy Support</span>
+          <ul class="rc-do"><li>Support strategy development for software growth and m&amp;a initiatives</li><li>Work with cross-functional teams including product, sales, and finance</li><li>Engage in market research and interact with potential m&amp;a candidates</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=market%20research">Market Research</a></li><li><a href="/us/?q=consulting">Consulting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Cambridge</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$74,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722559032"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-software-strategy-and-m-and-a-summer-intern-4457233009">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025">2027 Software Engineering Intern – Agentic AI &amp; Workflow Automation</a></h3>
+          <span class="rc-sub">Ai workflow development</span>
+          <ul class="rc-do"><li>Build python services and ai workflows with kubernetes and vector databases</li><li>Work on agentic ai patterns and backend systems with senior engineers</li><li>Participate in agile teams and contribute to enterprise-scale projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li><li><a href="/us/?q=vector%20databases">Vector Databases</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Armonk</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$90,700 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722555122"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-2027-software-engineering-intern-agentic-ai-and-workflow-automation-4457222025">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013">Hardware and Systems Developer Intern 2027 -Rochester, MN</a></h3>
+          <span class="rc-sub">Hardware Design</span>
+          <ul class="rc-do"><li>Design and test next-gen hardware using CAD, EDA, and simulation tools</li><li>Work on mechanical, thermal, electrical, and optical systems</li><li>Develop firmware and automation scripts in Python, C/C++, or Bash</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rochester</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722549959"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-and-systems-developer-intern-2027-rochester-mn-4457225013">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001">Hardware Developer Intern 2027 -Poughkeepsie</a></h3>
+          <span class="rc-sub">Hardware Testing</span>
+          <ul class="rc-do"><li>Develop and execute hardware and system-level test solutions</li><li>Build automation tools for validation and manufacturing</li><li>Collaborate with cross-functional teams on product reliability</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=automation">Automation</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$73,500 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722545753"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-hardware-developer-intern-2027-poughkeepsie-4457241001">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008">Firmware and Systems Developer Intern 2027 -Poughkeepsie, NY</a></h3>
+          <span class="rc-sub">Firmware Development</span>
+          <ul class="rc-do"><li>Write scripts and automation tools for testing and validation</li><li>Work with cadence tools and simulation software for design</li><li>Collaborate on firmware and hardware development projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=solidworks">Solidworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Poughkeepsie</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$75,600 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787722540949"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-firmware-and-systems-developer-intern-2027-poughkeepsie-ny-4457234008">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-cybersecurity-analyst-apprentice-4446245726">Cybersecurity Analyst Apprentice</a></h3>
+          <span class="rc-sub">Cybersecurity monitoring</span>
+          <ul class="rc-do"><li>Monitor networks/systems for security threats and respond to incidents</li><li>Use tools to assess vulnerabilities and maintain security infrastructure</li><li>Work with teams to investigate and report on security violations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=vulnerability%20assessment">Vulnerability Assessment</a></li><li><a href="/us/?q=scripting%20languages">Scripting Languages</a></li><li><a href="/us/?q=security%20tools">Security Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$76,000 / year</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787671919717"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-cybersecurity-analyst-apprentice-4446245726">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ibm-2026-intern-conversion-associate-consultant-cybersecurity-x-force-4446242646">2026 - Intern Conversion - Associate Consultant, Cybersecurity X-Force</a></h3>
+          <span class="rc-sub">Cybersecurity analysis</span>
+          <ul class="rc-do"><li>Analyze security threats and vulnerabilities in client systems</li><li>Use ibm&#39;s cybersecurity tools and frameworks</li><li>Convert from intern to full-time in january 2026</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$90,400 / year</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787669990609"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ibm-2026-intern-conversion-associate-consultant-cybersecurity-x-force-4446242646">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -695,49 +916,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as IBM&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/squarepoint-capital">
-          <span class="tile-crest" aria-hidden="true">SC<img src="/logos/squarepoint-capital.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Squarepoint Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/netapp">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/netapp.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">NetApp</span></span>
-        </a><a class="dir-card" href="/us/companies/tesla">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/tesla.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tesla</span></span>
-        </a><a class="dir-card" href="/us/companies/nationwide">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/nationwide.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Nationwide</span></span>
-        </a><a class="dir-card" href="/us/companies/apptronik">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/apptronik.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Apptronik</span></span>
-        </a><a class="dir-card" href="/us/companies/abbvie">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/abbvie.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">AbbVie</span></span>
-        </a><a class="dir-card" href="/us/companies/voleon-group">
-          <span class="tile-crest" aria-hidden="true">VG<img src="/logos/voleon-group.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Voleon Group</span></span>
-        </a><a class="dir-card" href="/us/companies/parsons-corporation">
-          <span class="tile-crest" aria-hidden="true">PC<img src="/logos/parsons-corporation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Parsons Corporation</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

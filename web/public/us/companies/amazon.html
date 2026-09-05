@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,93 +102,123 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">A<img src="/logos/amazon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Amazon internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>9 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>9 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Amazon is hiring interns in the US right now.</b> 9 engineering internships are open, across North Reading, Perrysburg and Irving, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$111k – $185k<p>stated on 8 of 9 roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>North Reading · Perrysburg · Irving<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>North Reading · Perrysburg · Irving<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>31<p>Microservices, Cloud-native Architectures, Code Reviews</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>9</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/amazon-software-development-engineer-intern-robotics-2027-4463333753">
-        <span class="rc-t">Software Development Engineer Intern, ROBOTICS - 2027</span>
-        <span class="rc-sub">Robotics Systems Development</span>
-        <span class="rc-facts"><span class="f-item">8 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788526947971">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-automation-engineer-apprentice-tol3-rme-4462822133">
-        <span class="rc-t">Automation Engineer Apprentice, TOL3 RME</span>
-        <span class="rc-sub">Equipment Maintenance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$33 / hour</span><span class="f-item">Perrysburg</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788437705172">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-mechatronics-apprentice-i-amazon-rme-4462089776">
-        <span class="rc-t">Mechatronics Apprentice I - AMAZON RME</span>
-        <span class="rc-sub">Equipment Maintenance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$26 / hour</span><span class="f-item">Irving</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788313255569">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-software-development-engineer-intern-annapurna-labs-2027-4460330444">
-        <span class="rc-t">Software Development Engineer Intern, Annapurna Labs - 2027</span>
-        <span class="rc-sub">Custom silicon software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$127,100 – $185,000 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787923254509">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-asic-engineer-intern-annapurna-labs-2027-4460339361">
-        <span class="rc-t">ASIC Engineer Intern, Annapurna Labs - 2027</span>
-        <span class="rc-sub">ASIC Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$126,100 – $185,000 / year</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787921780528">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-cloud-hardware-development-engineer-intern-annapurna-labs-2027-4460340344">
-        <span class="rc-t">Cloud Hardware Development Engineer Intern, Annapurna Labs - 2027</span>
-        <span class="rc-sub">Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$126,100 – $185,000 / year</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787921761317">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-robotics-software-development-engineer-fall-intern-co-op-2026-4460143397">
-        <span class="rc-t">Robotics - Software Development Engineer Fall Intern/Co-op - 2026</span>
-        <span class="rc-sub">Robotics Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$110,500 – $160,000 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787875328690">Posted <time datetime="2026-08-28">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-mechatronic-apprentice-i-4459079267">
-        <span class="rc-t">Mechatronic Apprentice I</span>
-        <span class="rc-sub">Equipment Maintenance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 / hour</span><span class="f-item">Tracy</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787705748213">Posted <time datetime="2026-08-26">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/amazon-automation-engineer-apprentice-4458739737">
-        <span class="rc-t">Automation Engineer Apprentice</span>
-        <span class="rc-sub">Robotics Maintenance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$38 – $39 / hour</span><span class="f-item">Fredericksburg</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787702288169">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>9 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-software-development-engineer-intern-robotics-2027-4463333753">Software Development Engineer Intern, ROBOTICS - 2027</a></h3>
+          <span class="rc-sub">Robotics Systems Development</span>
+          <ul class="rc-do"><li>Develop scalable systems for robotics and fulfillment centers using cloud-native tech</li><li>Work with AI tools and microservices in a distributed computing environment</li><li>Collaborate on real projects with experienced engineers and contribute to code reviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cloud-native%20architectures">Cloud-native Architectures</a></li><li><a href="/us/skills/microservices">Microservices</a></li><li><a href="/us/?q=AI%20tools">AI Tools</a></li><li><a href="/us/?q=code%20reviews">Code Reviews</a></li><li><a href="/us/?q=distributed%20systems">Distributed Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>8 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788526947971"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-software-development-engineer-intern-robotics-2027-4463333753">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-automation-engineer-apprentice-tol3-rme-4462822133">Automation Engineer Apprentice, TOL3 RME</a></h3>
+          <span class="rc-sub">Equipment Maintenance</span>
+          <ul class="rc-do"><li>Maintain and repair robotics, conveyors, and sorting systems</li><li>Work with PLCs, sensors, and control systems</li><li>Learn safety protocols and perform preventative maintenance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=plcs">Plcs</a></li><li><a href="/us/?q=sensors">Sensors</a></li><li><a href="/us/?q=control%20systems">Control Systems</a></li><li><a href="/us/?q=preventative%20maintenance">Preventative Maintenance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Perrysburg</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$33 / hour</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788437705172"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-automation-engineer-apprentice-tol3-rme-4462822133">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-mechatronics-apprentice-i-amazon-rme-4462089776">Mechatronics Apprentice I - AMAZON RME</a></h3>
+          <span class="rc-sub">Equipment Maintenance</span>
+          <ul class="rc-do"><li>Maintain and repair automated packaging equipment</li><li>Use technical manuals for troubleshooting systems</li><li>Work with robotics and material handling systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=preventative%20maintenance">Preventative Maintenance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Irving</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$26 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788313255569"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-mechatronics-apprentice-i-amazon-rme-4462089776">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-software-development-engineer-intern-annapurna-labs-2027-4460330444">Software Development Engineer Intern, Annapurna Labs - 2027</a></h3>
+          <span class="rc-sub">Custom silicon software development</span>
+          <ul class="rc-do"><li>Write efficient code in C/C++/Python for custom silicon products used by millions</li><li>Collaborate with hardware and systems teams on performance optimization and tooling</li><li>Work on real production software with mentorship and measurable impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=mlir">Mlir</a></li><li><a href="/us/?q=llvm">Llvm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$127,100 – $185,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787923254509"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-software-development-engineer-intern-annapurna-labs-2027-4460330444">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-asic-engineer-intern-annapurna-labs-2027-4460339361">ASIC Engineer Intern, Annapurna Labs - 2027</a></h3>
+          <span class="rc-sub">ASIC Design</span>
+          <ul class="rc-do"><li>Design RTL for digital logic blocks using Verilog/SystemVerilog</li><li>Support synthesis, timing analysis, and physical design flows</li><li>Collaborate with teams to turn design specs into silicon</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/skills/systemverilog">Systemverilog</a></li><li><a href="/us/?q=eda%20tools">Eda Tools</a></li><li><a href="/us/?q=scripting">Scripting</a></li><li><a href="/us/?q=rtl%20design">RTL Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$126,100 – $185,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787921780528"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-asic-engineer-intern-annapurna-labs-2027-4460339361">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-cloud-hardware-development-engineer-intern-annapurna-labs-2027-4460340344">Cloud Hardware Development Engineer Intern, Annapurna Labs - 2027</a></h3>
+          <span class="rc-sub">Firmware Development</span>
+          <ul class="rc-do"><li>Write firmware and low-level software for custom silicon used in cloud services</li><li>Debug hardware-software integration issues using lab equipment like oscilloscopes</li><li>Collaborate with teams to bring hardware from design to deployment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/skills/systemverilog">Systemverilog</a></li><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=shell">Shell</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$126,100 – $185,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787921761317"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-cloud-hardware-development-engineer-intern-annapurna-labs-2027-4460340344">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-robotics-software-development-engineer-fall-intern-co-op-2026-4460143397">Robotics - Software Development Engineer Fall Intern/Co-op - 2026</a></h3>
+          <span class="rc-sub">Robotics Software Development</span>
+          <ul class="rc-do"><li>Develop scalable systems for robotics and fulfillment tech using cloud-native and microservices</li><li>Work with AI tools and contribute to GenAI projects in a distributed team</li><li>Write clean code and participate in code reviews and on-call operations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cloud-native">Cloud-native</a></li><li><a href="/us/skills/microservices">Microservices</a></li><li><a href="/us/?q=genai">Genai</a></li><li><a href="/us/?q=code%20reviews">Code Reviews</a></li><li><a href="/us/?q=on-call">On-call</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$110,500 – $160,000 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787875328690"><time datetime="2026-08-28">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-robotics-software-development-engineer-fall-intern-co-op-2026-4460143397">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-mechatronic-apprentice-i-4459079267">Mechatronic Apprentice I</a></h3>
+          <span class="rc-sub">Equipment Maintenance</span>
+          <ul class="rc-do"><li>Maintain and repair automated packaging equipment</li><li>Work with robotics and material handling systems</li><li>Complete preventative maintenance on conveyance systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=preventative%20maintenance">Preventative Maintenance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tracy</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 / hour</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787705748213"><time datetime="2026-08-26">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-mechatronic-apprentice-i-4459079267">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/amazon-automation-engineer-apprentice-4458739737">Automation Engineer Apprentice</a></h3>
+          <span class="rc-sub">Robotics Maintenance</span>
+          <ul class="rc-do"><li>Maintain and repair robotics and material handling equipment</li><li>Work with PLCs and electrical systems in high automation settings</li><li>Perform preventative maintenance and troubleshooting on conveyors and sortation systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=plcs">Plcs</a></li><li><a href="/us/?q=robotics">Robotics</a></li><li><a href="/us/?q=preventative%20maintenance">Preventative Maintenance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fredericksburg</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$38 – $39 / hour</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787702288169"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/amazon-automation-engineer-apprentice-4458739737">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -215,49 +256,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Amazon&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/hudson-river-trading">
-          <span class="tile-crest" aria-hidden="true">HR<img src="/logos/hudson-river-trading.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Hudson River Trading</span></span>
-        </a><a class="dir-card" href="/us/companies/spacex">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/spacex.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SpaceX</span></span>
-        </a><a class="dir-card" href="/us/companies/boeing-india">
-          <span class="tile-crest" aria-hidden="true">BI<img src="/logos/boeing-india.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Boeing India</span></span>
-        </a><a class="dir-card" href="/us/companies/clearwater-analytics">
-          <span class="tile-crest" aria-hidden="true">CA<img src="/logos/clearwater-analytics.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Clearwater Analytics</span></span>
-        </a><a class="dir-card" href="/us/companies/toast">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/toast.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Toast</span></span>
-        </a><a class="dir-card" href="/us/companies/tesla">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/tesla.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tesla</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/barclays">
-          <span class="tile-crest" aria-hidden="true">B<img src="/logos/barclays.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Barclays</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

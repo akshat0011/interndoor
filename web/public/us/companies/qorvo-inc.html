@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,524 +88,716 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">QI<img src="/logos/qorvo-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Qorvo, Inc. internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>63 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>63 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Qorvo, Inc. is hiring interns in the US right now.</b> 63 engineering internships are open, across Apopka, Aurora and Greensboro, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Apopka · Aurora · Greensboro<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Apopka · Aurora · Greensboro<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>106<p>Python, Hfss, Ads</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>63</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/qorvo-inc-database-intern-4462454092">
-        <span class="rc-t">Database Intern</span>
-        <span class="rc-sub">Database Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788373250156">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-mmic-design-intern-4462448336">
-        <span class="rc-t">MMIC Design Intern</span>
-        <span class="rc-sub">MMIC Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Aurora</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788373120652">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-product-engineering-intern-4462441607">
-        <span class="rc-t">Product Engineering Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788373098112">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-product-engineer-intern-4462431989">
-        <span class="rc-t">Product Engineer Intern</span>
-        <span class="rc-sub">Semiconductor Yield Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788373085842">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-ic-layout-engineering-intern-4461242920">
-        <span class="rc-t">IC Layout Engineering Intern</span>
-        <span class="rc-sub">IC Layout Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788200461558">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineer-d-and-a-crad-intern-4461257746">
-        <span class="rc-t">Test Engineer D&amp;A-CRAD Intern</span>
-        <span class="rc-sub">Semiconductor Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788200456489">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-product-engineer-d-and-a-intern-4461246818">
-        <span class="rc-t">Product Engineer D&amp;A Intern</span>
-        <span class="rc-sub">Semiconductor Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788200286731">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineering-intern-4461242890">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788200266990">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-customer-quality-engineering-intern-4461038929">
-        <span class="rc-t">Customer Quality Engineering Intern</span>
-        <span class="rc-sub">Quality analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157269849">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-manufacturing-equipment-engineering-intern-4461043726">
-        <span class="rc-t">Manufacturing Equipment Engineering Intern</span>
-        <span class="rc-sub">Equipment analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157266029">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rfic-design-engineering-intern-4461043727">
-        <span class="rc-t">RFIC Design Engineering Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157261719">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-research-engineering-intern-4461041796">
-        <span class="rc-t">Research Engineering Intern</span>
-        <span class="rc-sub">Semiconductor Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157256181">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rfic-design-intern-4461054646">
-        <span class="rc-t">RFIC Design Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157236637">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-packaging-engineering-intern-4461039771">
-        <span class="rc-t">Packaging Engineering Intern</span>
-        <span class="rc-sub">Packaging Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157231174">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-facilities-intern-4461045707">
-        <span class="rc-t">Facilities Intern</span>
-        <span class="rc-sub">Facilities Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157227241">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-full-stack-web-developer-intern-4461044720">
-        <span class="rc-t">Full-Stack Web Developer Intern</span>
-        <span class="rc-sub">Web platform development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157222200">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rfic-design-engineer-intern-4461040793">
-        <span class="rc-t">RFIC Design Engineer Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157219836">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-product-quality-engineering-intern-4461054648">
-        <span class="rc-t">Product Quality Engineering Intern</span>
-        <span class="rc-sub">Product testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157219476">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineering-intern-4461051617">
-        <span class="rc-t">Software Engineering Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157217600">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-design-engineering-intern-4461054647">
-        <span class="rc-t">Design Engineering Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157214940">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineer-intern-4461055553">
-        <span class="rc-t">Software Engineer Intern</span>
-        <span class="rc-sub">Data Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157213623">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rfic-design-intern-4461044721">
-        <span class="rc-t">RFIC Design Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">San Diego</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157210859">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-facilities-engineering-intern-4461059574">
-        <span class="rc-t">Facilities Engineering Intern</span>
-        <span class="rc-sub">Facility Systems Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157203226">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineering-intern-4461053622">
-        <span class="rc-t">Software Engineering Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157133423">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineering-intern-4461051613">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157129413">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-module-integration-design-engineering-intern-4461058570">
-        <span class="rc-t">Module Integration Design Engineering Intern</span>
-        <span class="rc-sub">RF Module Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$36 / hour</span><span class="f-item">San Jose</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157129407">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-device-engineering-intern-4461045698">
-        <span class="rc-t">Device Engineering Intern</span>
-        <span class="rc-sub">Semiconductor Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157127462">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-design-engineer-intern-4461055544">
-        <span class="rc-t">RF Design Engineer Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157123329">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-technology-development-intern-4461059559">
-        <span class="rc-t">Technology Development Intern</span>
-        <span class="rc-sub">Transistor Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157123157">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-soi-design-intern-4461047684">
-        <span class="rc-t">SOI Design Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157122719">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-analog-ic-design-intern-4461061490">
-        <span class="rc-t">RF/Analog IC Design Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Fort Lauderdale</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157120600">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461041787">
-        <span class="rc-t">Analog Design Engineering Intern</span>
-        <span class="rc-sub">Analog IC Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157120404">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461060571">
-        <span class="rc-t">Software Engineering Intern, SWR</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157119509">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-device-and-process-development-intern-4461048645">
-        <span class="rc-t">Device and Process Development Intern</span>
-        <span class="rc-sub">Semiconductor Fabrication</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157117150">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-sales-data-analyst-intern-4461061493">
-        <span class="rc-t">Sales Data Analyst Intern</span>
-        <span class="rc-sub">Sales Data Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157114748">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461039759">
-        <span class="rc-t">Software Engineering Intern, SWR</span>
-        <span class="rc-sub">Software testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157114642">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineering-intern-4461046657">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157114622">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-pa-design-engineering-intern-4461040782">
-        <span class="rc-t">PA Design Engineering Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157114532">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-research-scientist-intern-4461053621">
-        <span class="rc-t">Research Scientist Intern</span>
-        <span class="rc-sub">Semiconductor Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157112895">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-firmware-engineering-intern-4461049622">
-        <span class="rc-t">Software-Firmware Engineering Intern</span>
-        <span class="rc-sub">Firmware Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157110491">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-baw-research-and-development-intern-4461043716">
-        <span class="rc-t">BAW Research &amp; Development Intern</span>
-        <span class="rc-sub">Filter design research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">MS/PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157109613">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-filter-design-engineering-intern-4461044716">
-        <span class="rc-t">Filter Design Engineering Intern</span>
-        <span class="rc-sub">Filter Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157109557">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461058566">
-        <span class="rc-t">Analog Design Engineering Intern</span>
-        <span class="rc-sub">Analog Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$36 / hour</span><span class="f-item">San Jose</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157109244">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-design-engineering-intern-4461058568">
-        <span class="rc-t">Design Engineering Intern</span>
-        <span class="rc-sub">Resonator analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157108862">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461054638">
-        <span class="rc-t">Applications Engineering Intern</span>
-        <span class="rc-sub">RF testing engineer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157104681">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461057569">
-        <span class="rc-t">Applications Engineering Intern</span>
-        <span class="rc-sub">Rf testing automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157104077">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-analog-design-intern-4461043714">
-        <span class="rc-t">Analog Design Intern</span>
-        <span class="rc-sub">Analog Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chandler</span><span class="f-item">MS/PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157103675">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-module-design-engineering-intern-4461060570">
-        <span class="rc-t">RF Module Design Engineering Intern</span>
-        <span class="rc-sub">RF Module Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157103192">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-mm-wave-rf-system-and-design-intern-4461057570">
-        <span class="rc-t">mm-Wave/RF System &amp; Design Intern</span>
-        <span class="rc-sub">RF System Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157099776">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineering-intern-4461050606">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chandler</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157099640">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-test-engineering-intern-4461060572">
-        <span class="rc-t">Test Engineering Intern</span>
-        <span class="rc-sub">Test Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157098215">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461054634">
-        <span class="rc-t">RF Design Engineering Intern</span>
-        <span class="rc-sub">RF Module Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157094719">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-characterization-eng-intern-4461061491">
-        <span class="rc-t">Software Characterization Eng Intern</span>
-        <span class="rc-sub">Software testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157093302">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-supplier-quality-engineering-intern-4461054635">
-        <span class="rc-t">Supplier Quality Engineering Intern</span>
-        <span class="rc-sub">Supplier Quality Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157088409">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-data-analytics-intern-4461040786">
-        <span class="rc-t">Data Analytics Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$25 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157087769">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-engineering-intern-4461058567">
-        <span class="rc-t">Engineering Intern</span>
-        <span class="rc-sub">Product Support Engineer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157085712">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-product-engineering-intern-4461058569">
-        <span class="rc-t">Product Engineering Intern</span>
-        <span class="rc-sub">RF Module Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Hillsboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157083775">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-software-engineer-intern-4461054637">
-        <span class="rc-t">Software Engineer Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157083050">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043712">
-        <span class="rc-t">RF Design Engineering Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157081948">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-characterization-engineering-intern-4461059558">
-        <span class="rc-t">Characterization Engineering Intern</span>
-        <span class="rc-sub">Rf test automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Greensboro</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157079678">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-application-engineering-intern-4461052655">
-        <span class="rc-t">Application Engineering Intern</span>
-        <span class="rc-sub">Rf engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Apopka</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157078699">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043713">
-        <span class="rc-t">RF Design Engineering Intern</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Aurora</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157076896">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461047683">
-        <span class="rc-t">Applications Engineering Intern</span>
-        <span class="rc-sub">Rf testing and documentation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Chelmsford</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788157071521">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>63 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-database-intern-4462454092">Database Intern</a></h3>
+          <span class="rc-sub">Database Development</span>
+          <ul class="rc-do"><li>Develop and maintain software for internal applications and systems</li><li>Design and implement database structures and data integration solutions</li><li>Collaborate with teams to improve software efficiency and resolve technical issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=xml">Xml</a></li><li><a href="/us/?q=html">HTML</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788373250156"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-database-intern-4462454092">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-mmic-design-intern-4462448336">MMIC Design Intern</a></h3>
+          <span class="rc-sub">MMIC Design</span>
+          <ul class="rc-do"><li>Design and test microwave circuits for amplifiers, switches, and other components</li><li>Use ADS, HFSS, and scripting tools for simulation and automation</li><li>Work with test equipment and collaborate with technicians on measurements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=microwave%20test%20equipment">Microwave Test Equipment</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Aurora</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788373120652"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-mmic-design-intern-4462448336">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-product-engineering-intern-4462441607">Product Engineering Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze manufacturing data to find ways to improve product yields</li><li>Use python and machine learning to process complex datasets</li><li>Work with cross-functional teams to validate technical findings</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=statistical%20methods">Statistical Methods</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788373098112"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-product-engineering-intern-4462441607">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-product-engineer-intern-4462431989">Product Engineer Intern</a></h3>
+          <span class="rc-sub">Semiconductor Yield Analysis</span>
+          <ul class="rc-do"><li>Analyze semiconductor data and support yield improvement efforts</li><li>Use python and statistical tools for performance evaluation</li><li>Collaborate with cross-functional teams on product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=rf%20measurement%20equipment">Rf Measurement Equipment</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=cadence">Cadence</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788373085842"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-product-engineer-intern-4462431989">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-ic-layout-engineering-intern-4461242920">IC Layout Engineering Intern</a></h3>
+          <span class="rc-sub">IC Layout Design</span>
+          <ul class="rc-do"><li>Implement RF and analog circuits using Cadence tools</li><li>Work on layout verification and GDS file generation</li><li>Collaborate on team projects with global engineering teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence%20virtuoso">Cadence Virtuoso</a></li><li><a href="/us/?q=drc">Drc</a></li><li><a href="/us/?q=lvs">Lvs</a></li><li><a href="/us/?q=gds">Gds</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788200461558"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-ic-layout-engineering-intern-4461242920">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineer-d-and-a-crad-intern-4461257746">Test Engineer D&amp;A-CRAD Intern</a></h3>
+          <span class="rc-sub">Semiconductor Testing</span>
+          <ul class="rc-do"><li>Run tests on semiconductor products using specialized equipment</li><li>Write software to control test systems and analyze data</li><li>Work on RF and DC parameter testing for multichip packages</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=vb.net">Vb.net</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788200456489"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineer-d-and-a-crad-intern-4461257746">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-product-engineer-d-and-a-intern-4461246818">Product Engineer D&amp;A Intern</a></h3>
+          <span class="rc-sub">Semiconductor Data Analysis</span>
+          <ul class="rc-do"><li>Analyze semiconductor data and support yield improvement efforts</li><li>Use python and statistical tools for performance reporting</li><li>Collaborate with cross-functional teams on product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=rf%20measurement%20equipment">Rf Measurement Equipment</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=spotfire">Spotfire</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788200286731"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-product-engineer-d-and-a-intern-4461246818">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineering-intern-4461242890">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Software Development</span>
+          <ul class="rc-do"><li>Write automated test software for RF systems using LabVIEW, Python, or C++</li><li>Work with RF hardware and test instruments like VNA and spectrum analyzers</li><li>Analyze semiconductor performance data and troubleshoot test issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788200266990"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineering-intern-4461242890">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-customer-quality-engineering-intern-4461038929">Customer Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Quality analysis</span>
+          <ul class="rc-do"><li>Analyze data and databases to resolve quality issues</li><li>Standardize and improve business processes</li><li>Collaborate on customer quality problem solving</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=database%20search">Database Search</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157269849"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-customer-quality-engineering-intern-4461038929">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-manufacturing-equipment-engineering-intern-4461043726">Manufacturing Equipment Engineering Intern</a></h3>
+          <span class="rc-sub">Equipment analysis</span>
+          <ul class="rc-do"><li>Analyze equipment data to improve factory performance and reduce costs</li><li>Work with engineers on maintenance and process improvements</li><li>Based in Richardson, TX, with potential for full-time role</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=statistical%20process%20control">Statistical Process Control</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157266029"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-manufacturing-equipment-engineering-intern-4461043726">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rfic-design-engineering-intern-4461043727">RFIC Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design RF circuits for cellular and Wi-Fi applications up to 7 GHz</li><li>Use ADS, Cadence, and HFSS for simulation and layout</li><li>Work with engineers on testing and optimizing RF circuits</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=rf%20simulation">Rf Simulation</a></li><li><a href="/us/?q=analog%20circuits">Analog Circuits</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157261719"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rfic-design-engineering-intern-4461043727">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-research-engineering-intern-4461041796">Research Engineering Intern</a></h3>
+          <span class="rc-sub">Semiconductor Research</span>
+          <ul class="rc-do"><li>Support semiconductor material and device development</li><li>Use tools like SEM/FIB for analysis and testing</li><li>Work on failure analysis and data interpretation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=materials%20characterization">Materials Characterization</a></li><li><a href="/us/?q=data%20analysis%20tools">Data Analysis Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157256181"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-research-engineering-intern-4461041796">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rfic-design-intern-4461054646">RFIC Design Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design RF circuits for mmWave devices like LNAs and PAs</li><li>Use ADS, Cadence, and HFSS for simulations and modeling</li><li>Work with lab equipment to validate designs in real-world conditions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=rf%20measurement%20equipment">Rf Measurement Equipment</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157236637"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rfic-design-intern-4461054646">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-packaging-engineering-intern-4461039771">Packaging Engineering Intern</a></h3>
+          <span class="rc-sub">Packaging Support</span>
+          <ul class="rc-do"><li>Support semiconductor assembly processes with hands-on learning</li><li>Use pcg design software like altium and kicad</li><li>Work on design of experiments for project deployment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/altium">Altium</a></li><li><a href="/us/?q=kicad">Kicad</a></li><li><a href="/us/?q=design%20of%20experiments">Design Of Experiments</a></li><li><a href="/us/?q=semiconductor%20assembly">Semiconductor Assembly</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157231174"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-packaging-engineering-intern-4461039771">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-facilities-intern-4461045707">Facilities Intern</a></h3>
+          <span class="rc-sub">Facilities Systems Support</span>
+          <ul class="rc-do"><li>Monitor chemical and mechanical systems using scada for troubleshooting</li><li>Support capital projects and research new equipment for reliability improvements</li><li>Work on 2-month projects under facilities engineers and present to leadership</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li><li><a href="/us/?q=outlook">Outlook</a></li><li><a href="/us/?q=scada">Scada</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157227241"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-facilities-intern-4461045707">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-full-stack-web-developer-intern-4461044720">Full-Stack Web Developer Intern</a></h3>
+          <span class="rc-sub">Web platform development</span>
+          <ul class="rc-do"><li>Build web-based platform for engineering docs using python and mariadb</li><li>Design intuitive front-end for data visualization</li><li>Collaborate with engineers to meet technical needs</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=mariadb">Mariadb</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157222200"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-full-stack-web-developer-intern-4461044720">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rfic-design-engineer-intern-4461040793">RFIC Design Engineer Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Simulate and design rf circuits for amplifiers and switches</li><li>Use cadence tools for layout and electromagnetic analysis</li><li>Work on silicon-based analog and mixed-signal projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence%20virtuoso">Cadence Virtuoso</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157219836"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rfic-design-engineer-intern-4461040793">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-product-quality-engineering-intern-4461054648">Product Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Product testing</span>
+          <ul class="rc-do"><li>Write and qualify test plans for product validation</li><li>Analyze data with sql, jmp, and spotfire</li><li>Perform rf testing and measurement tasks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/?q=spotfire">Spotfire</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157219476"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-product-quality-engineering-intern-4461054648">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineering-intern-4461051617">Software Engineering Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop and maintain software for various projects</li><li>Work with c++, c#, java, python, and labview</li><li>Design and implement apis for data integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/?q=database%20design">Database Design</a></li><li><a href="/us/?q=debugging">Debugging</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157217600"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineering-intern-4461051617">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-design-engineering-intern-4461054647">Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design and test RF circuits like PA, LNA, and matching networks</li><li>Use tools like ADS, HFSS, and Cadence for circuit simulation</li><li>Work with lab equipment to compare simulations to real data</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/tcl">Tcl</a></li><li><a href="/us/?q=bash">Bash</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157214940"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-design-engineering-intern-4461054647">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineer-intern-4461055553">Software Engineer Intern</a></h3>
+          <span class="rc-sub">Data Engineering</span>
+          <ul class="rc-do"><li>Design and optimize ETL dataflows for manufacturing processes</li><li>Collaborate with cross-functional teams on data solutions</li><li>Maintain and enhance applications using manufacturing data</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=gitlab">Gitlab</a></li><li><a href="/us/?q=json">Json</a></li><li><a href="/us/?q=xml">Xml</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157213623"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineer-intern-4461055553">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rfic-design-intern-4461044721">RFIC Design Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design RF circuits for mmWave devices using CMOS and RFSOI tech</li><li>Use Cadence tools for simulation and layout with DRC/LVS checks</li><li>Test designs with spectrum analyzers and network analyzers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence%20virtuoso">Cadence Virtuoso</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=spectrum%20analyzer">Spectrum Analyzer</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Diego</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157210859"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rfic-design-intern-4461044721">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-facilities-engineering-intern-4461059574">Facilities Engineering Intern</a></h3>
+          <span class="rc-sub">Facility Systems Analysis</span>
+          <ul class="rc-do"><li>Analyze and improve building systems for safety and efficiency</li><li>Use solidworks and autocad for facility design and documentation</li><li>Work with cross-functional teams on equipment installation and maintenance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=autocad">Autocad</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=word">Word</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157203226"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-facilities-engineering-intern-4461059574">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineering-intern-4461053622">Software Engineering Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop and maintain software for various projects</li><li>Work with c#, java, python, and database tools</li><li>Collaborate on api development and data integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=database">Database</a></li><li><a href="/us/?q=api%20development">API Development</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157133423"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineering-intern-4461053622">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineering-intern-4461051613">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Software Development</span>
+          <ul class="rc-do"><li>Write test software in c++ or c# to control equipment and run tests</li><li>Design rf fixtures and pcb layouts using altium and keysight ads</li><li>Analyze test data and create reports for product teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=altium%20designer">Altium Designer</a></li><li><a href="/us/?q=keysight%20ads">Keysight Ads</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157129413"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineering-intern-4461051613">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-module-integration-design-engineering-intern-4461058570">Module Integration Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Module Design</span>
+          <ul class="rc-do"><li>Design RF front-end modules for 5G and 6G smartphones</li><li>Use HFSS and ADS to simulate and optimize hardware components</li><li>Collaborate with teams to integrate and test multi-chip modules</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=eda%20tools">Eda Tools</a></li><li><a href="/us/?q=simulation">Simulation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Jose</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$36 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157129407"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-module-integration-design-engineering-intern-4461058570">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-device-engineering-intern-4461045698">Device Engineering Intern</a></h3>
+          <span class="rc-sub">Semiconductor Analysis</span>
+          <ul class="rc-do"><li>Analyze semiconductor data to find root causes and solutions</li><li>Develop and improve data analysis tools for manufacturing</li><li>Collaborate on process improvements in production wafer fabs</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=semiconductor%20metrology">Semiconductor Metrology</a></li><li><a href="/us/?q=failure%20analysis">Failure Analysis</a></li><li><a href="/us/?q=process%20integration">Process Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157127462"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-device-engineering-intern-4461045698">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-design-engineer-intern-4461055544">RF Design Engineer Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Simulate rf circuits using ads or mwo tools</li><li>Design mm-wave amplifiers and switches in gaas/gan</li><li>Analyze and test rf performance in engineering lab</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=mwo">Mwo</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=sonnet">Sonnet</a></li><li><a href="/us/?q=hfss">Hfss</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157123329"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-design-engineer-intern-4461055544">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-technology-development-intern-4461059559">Technology Development Intern</a></h3>
+          <span class="rc-sub">Transistor Design</span>
+          <ul class="rc-do"><li>Run transistor design and fabrication experiments</li><li>Analyze data with tools like JMP and Excel</li><li>Work on device characterization and lab tests</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=device%20characterization">Device Characterization</a></li><li><a href="/us/?q=transistor%20design">Transistor Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157123157"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-technology-development-intern-4461059559">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-soi-design-intern-4461047684">SOI Design Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design analog and rf circuits using soi and cmos</li><li>Simulate em models in hfss for silicon integration</li><li>Work with lab equipment to validate design performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=rf%20measurement%20equipment">Rf Measurement Equipment</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157122719"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-soi-design-intern-4461047684">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-analog-ic-design-intern-4461061490">RF/Analog IC Design Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design RF circuits for PA, LNA, VCO/PLL, and analog/digital systems</li><li>Use ADS, HFSS, and Python for simulation and layout</li><li>Work with real lab equipment to validate simulations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=rf%20measurement">Rf Measurement</a></li><li><a href="/us/?q=analog%20design">Analog Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Fort Lauderdale</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157120600"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-analog-ic-design-intern-4461061490">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461041787">Analog Design Engineering Intern</a></h3>
+          <span class="rc-sub">Analog IC Design</span>
+          <ul class="rc-do"><li>Design analog IC modules like amplifiers and power stages</li><li>Use Virtuoso and Maestro for simulations and schematics</li><li>Work on high voltage gate drivers and power management</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=virtuoso">Virtuoso</a></li><li><a href="/us/?q=maestro">Maestro</a></li><li><a href="/us/?q=analog%20measurement%20equipment">Analog Measurement Equipment</a></li><li><a href="/us/?q=power%20management%20design">Power Management Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157120404"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461041787">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461060571">Software Engineering Intern, SWR</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Write and maintain unit tests for software applications</li><li>Use python, rest apis, and sql for development tasks</li><li>Collaborate with mentors on design automation projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=unit%20tests">Unit Tests</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157119509"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461060571">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-device-and-process-development-intern-4461048645">Device and Process Development Intern</a></h3>
+          <span class="rc-sub">Semiconductor Fabrication</span>
+          <ul class="rc-do"><li>Operate semiconductor fabrication equipment to develop wafer-level processes</li><li>Analyze data using jmp, spotfire, or excel</li><li>Work in clean room facility with exposure to evaporation, cvd, pvd, and etch processes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/?q=spotfire">Spotfire</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=pvd">Pvd</a></li><li><a href="/us/?q=cvd">Cvd</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157117150"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-device-and-process-development-intern-4461048645">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-sales-data-analyst-intern-4461061493">Sales Data Analyst Intern</a></h3>
+          <span class="rc-sub">Sales Data Analyst</span>
+          <ul class="rc-do"><li>Analyze sales data to improve accuracy and efficiency</li><li>Work with Databricks and SQL to build analytics solutions</li><li>Collaborate with teams to enhance data processes and reporting</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=databricks">Databricks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157114748"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-sales-data-analyst-intern-4461061493">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461039759">Software Engineering Intern, SWR</a></h3>
+          <span class="rc-sub">Software testing</span>
+          <ul class="rc-do"><li>Write and maintain unit tests for software applications</li><li>Use python, rest apis, and sql for development tasks</li><li>Collaborate with mentors on design automation projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=rest%20apis">REST APIS</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=ide">Ide</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157114642"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineering-intern-swr-4461039759">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineering-intern-4461046657">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Software Development</span>
+          <ul class="rc-do"><li>Write automated test software to control equipment and analyze results</li><li>Use python and visual basic to develop measurement tools</li><li>Work with rf modules and test instruments like oscilloscopes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=visual%20basic">Visual Basic</a></li><li><a href="/us/skills/c-sharp">C#</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157114622"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineering-intern-4461046657">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-pa-design-engineering-intern-4461040782">PA Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design power amplifiers for wireless communication modules</li><li>Use Cadence, ADS, and HFSS for circuit simulations and layouts</li><li>Test designs with lab equipment and provide feedback for improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=rf%20measurement%20equipment">Rf Measurement Equipment</a></li><li><a href="/us/?q=electro-thermal%20simulation">Electro-thermal Simulation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157114532"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-pa-design-engineering-intern-4461040782">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-research-scientist-intern-4461053621">Research Scientist Intern</a></h3>
+          <span class="rc-sub">Semiconductor Research</span>
+          <ul class="rc-do"><li>Work on epitaxy growth and semiconductor material characterization</li><li>Use MOCVD, MBE, X-ray diffraction, and atomic force microscopy</li><li>Present findings to team in cleanroom environment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=mocvd">Mocvd</a></li><li><a href="/us/?q=x-ray%20diffraction">X-ray Diffraction</a></li><li><a href="/us/?q=atomic%20force%20microscopy">Atomic Force Microscopy</a></li><li><a href="/us/?q=cleanroom">Cleanroom</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157112895"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-research-scientist-intern-4461053621">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-firmware-engineering-intern-4461049622">Software-Firmware Engineering Intern</a></h3>
+          <span class="rc-sub">Firmware Development</span>
+          <ul class="rc-do"><li>Develop firmware for MSP430 and ARM microcontrollers in C</li><li>Create GUIs in C# and perform data analysis with Python</li><li>Collaborate on system evaluations and design reviews</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=microcontroller">Microcontroller</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157110491"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-firmware-engineering-intern-4461049622">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-baw-research-and-development-intern-4461043716">BAW Research &amp; Development Intern</a></h3>
+          <span class="rc-sub">Filter design research</span>
+          <ul class="rc-do"><li>Analyze filter topologies to improve designs</li><li>Simulate laminate and full module layouts</li><li>Extract parameters from competitor parts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=rf%20simulation">Rf Simulation</a></li><li><a href="/us/?q=filter%20design">Filter Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>MS/PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157109613"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-baw-research-and-development-intern-4461043716">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-filter-design-engineering-intern-4461044716">Filter Design Engineering Intern</a></h3>
+          <span class="rc-sub">Filter Design</span>
+          <ul class="rc-do"><li>Design and simulate acoustic filters for wireless RF applications</li><li>Use ADS, AWR, HFSS, and other tools for circuit and EM analysis</li><li>Collaborate with teams to test and improve RF components</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=cadence">Cadence</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157109557"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-filter-design-engineering-intern-4461044716">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461058566">Analog Design Engineering Intern</a></h3>
+          <span class="rc-sub">Analog Circuit Design</span>
+          <ul class="rc-do"><li>Design analog blocks like LNA and RF modules with simulation and lab testing</li><li>Use Cadence Virtuoso, ADS, and HFSS for circuit design and analysis</li><li>Collaborate on real projects with teams shaping semiconductor solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence%20virtuoso">Cadence Virtuoso</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Jose</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$36 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157109244"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-analog-design-engineering-intern-4461058566">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-design-engineering-intern-4461058568">Design Engineering Intern</a></h3>
+          <span class="rc-sub">Resonator analysis</span>
+          <ul class="rc-do"><li>Analyze resonator data across filter technologies</li><li>Simulate BAW thermal behavior with ANSYS</li><li>Design ruggedness tests for resonators</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ansys">Ansys</a></li><li><a href="/us/?q=rf%20measurement">Rf Measurement</a></li><li><a href="/us/?q=filter%20design">Filter Design</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157108862"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-design-engineering-intern-4461058568">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-applications-engineering-intern-4461054638">Applications Engineering Intern</a></h3>
+          <span class="rc-sub">RF testing engineer</span>
+          <ul class="rc-do"><li>Develop automated testing solutions with RF instruments</li><li>Simulate and design RF matching networks</li><li>Create customer-centric presentations from measurement data</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=rf%20measurements">Rf Measurements</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157104681"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461054638">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-applications-engineering-intern-4461057569">Applications Engineering Intern</a></h3>
+          <span class="rc-sub">Rf testing automation</span>
+          <ul class="rc-do"><li>Automate testing and data extraction with rf instruments</li><li>Create marketing materials and design review documents</li><li>Analyze data and present findings to business leaders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157104077"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461057569">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-analog-design-intern-4461043714">Analog Design Intern</a></h3>
+          <span class="rc-sub">Analog Circuit Design</span>
+          <ul class="rc-do"><li>Design analog and mixed-signal circuits with simulation and layout</li><li>Use Cadence Virtuoso for circuit development and verification</li><li>Collaborate with mentors on product design and documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cadence%20virtuoso">Cadence Virtuoso</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chandler</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>MS/PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157103675"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-analog-design-intern-4461043714">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-module-design-engineering-intern-4461060570">RF Module Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Module Design</span>
+          <ul class="rc-do"><li>Design and analyze RF modules for cellular base stations, radar, and satellite systems</li><li>Use ADS, AWR, HFSS, and Python for simulations and testing</li><li>Collaborate with teams to produce detailed design documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=rf%20design">Rf Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157103192"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-module-design-engineering-intern-4461060570">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-mm-wave-rf-system-and-design-intern-4461057570">mm-Wave/RF System &amp; Design Intern</a></h3>
+          <span class="rc-sub">RF System Design</span>
+          <ul class="rc-do"><li>Design and test RF/mm-wave systems using 3D modeling and simulation tools</li><li>Work with lab equipment to compare simulated data with real-world results</li><li>Collaborate on design schematics and thermal analysis with a team of engineers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=keysight%20ads">Keysight Ads</a></li><li><a href="/us/?q=ansys%20hfss">Ansys Hfss</a></li><li><a href="/us/?q=cadence">Cadence</a></li><li><a href="/us/?q=spectrum%20analyzers">Spectrum Analyzers</a></li><li><a href="/us/?q=network%20analyzers">Network Analyzers</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157099776"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-mm-wave-rf-system-and-design-intern-4461057570">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineering-intern-4461050606">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Automation</span>
+          <ul class="rc-do"><li>Write automated test software with AI to control equipment and run tests</li><li>Use Python, C++, and Qorvo tools to develop measurement automation</li><li>Analyze data with Excel/Spotfire and present findings to business leaders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=spotfire">Spotfire</a></li><li><a href="/us/?q=ai">AI</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chandler</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157099640"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineering-intern-4461050606">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-test-engineering-intern-4461060572">Test Engineering Intern</a></h3>
+          <span class="rc-sub">Test Software Development</span>
+          <ul class="rc-do"><li>Write automated test software in C to control equipment and run tests</li><li>Design RF fixtures and test systems using Altium and Keysight tools</li><li>Analyze test data and create reports for product teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/?q=altium%20designer">Altium Designer</a></li><li><a href="/us/?q=keysight%20ads">Keysight Ads</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157098215"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-test-engineering-intern-4461060572">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461054634">RF Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Module Design</span>
+          <ul class="rc-do"><li>Design RF modules and functional blocks like power amplifiers and filters</li><li>Use ADS, AWR, HFSS, and Python for simulations and analysis</li><li>Work with lab equipment to validate designs in real-world conditions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157094719"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461054634">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-characterization-eng-intern-4461061491">Software Characterization Eng Intern</a></h3>
+          <span class="rc-sub">Software testing</span>
+          <ul class="rc-do"><li>Write code to test rf components and automate compliance checks</li><li>Use c c++ or python to build tools for product development</li><li>Work on api development and data integration projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=api%20development">API Development</a></li><li><a href="/us/?q=data%20integration">Data Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157093302"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-characterization-eng-intern-4461061491">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-supplier-quality-engineering-intern-4461054635">Supplier Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Supplier Quality Support</span>
+          <ul class="rc-do"><li>Support SQE team with daily quality management tasks for purchased materials and suppliers</li><li>Use microscopes and measurement tools to verify material defects against specs</li><li>Maintain system tools and analyze defect data to define inspection criteria</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li><li><a href="/us/?q=microscope">Microscope</a></li><li><a href="/us/?q=statistical%20process%20control">Statistical Process Control</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157088409"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-supplier-quality-engineering-intern-4461054635">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-data-analytics-intern-4461040786">Data Analytics Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data to find trends and insights from large datasets</li><li>Use python, sql, and tools like powerbi for data visualization</li><li>Work with cross-functional teams on real business problems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=powerbi">Powerbi</a></li><li><a href="/us/skills/pandas">Pandas</a></li><li><a href="/us/skills/numpy">Numpy</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$25 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157087769"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-data-analytics-intern-4461040786">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-engineering-intern-4461058567">Engineering Intern</a></h3>
+          <span class="rc-sub">Product Support Engineer</span>
+          <ul class="rc-do"><li>Support customers with market research and product cost analysis</li><li>Work on product life-cycle plans and business process standards</li><li>Collaborate with teams on defense and aerospace projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=market%20research">Market Research</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157085712"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-engineering-intern-4461058567">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-product-engineering-intern-4461058569">Product Engineering Intern</a></h3>
+          <span class="rc-sub">RF Module Support</span>
+          <ul class="rc-do"><li>Support development of RF modules through new product introduction cycles</li><li>Analyze data using statistical tools and ensure test platform accuracy</li><li>Collaborate with cross-functional teams to resolve manufacturing issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Hillsboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157083775"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-product-engineering-intern-4461058569">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-software-engineer-intern-4461054637">Software Engineer Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Support desktop and web apps using Microsoft tech</li><li>Develop and deploy AI agents for manufacturing systems</li><li>Collaborate with cross-site teams on client requirements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/sql">SQL</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157083050"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-software-engineer-intern-4461054637">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043712">RF Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Simulate rf circuits using ads or mwo tools</li><li>Design mm-wave amplifiers and switches in gaa or gan</li><li>Analyze and test rf performance in engineering lab</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=mwo">Mwo</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=sonnet">Sonnet</a></li><li><a href="/us/?q=hfss">Hfss</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157081948"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043712">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-characterization-engineering-intern-4461059558">Characterization Engineering Intern</a></h3>
+          <span class="rc-sub">Rf test automation</span>
+          <ul class="rc-do"><li>Write code to automate test equipment and run test sequences</li><li>Analyze rf data and create reports for product compliance</li><li>Work with spectrum analyzers and network analyzers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=spotfire">Spotfire</a></li><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/?q=r">R</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greensboro</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157079678"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-characterization-engineering-intern-4461059558">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-application-engineering-intern-4461052655">Application Engineering Intern</a></h3>
+          <span class="rc-sub">Rf engineering</span>
+          <ul class="rc-do"><li>Analyze rf networks and support related analysis</li><li>Use python to automate engineering workflows</li><li>Develop methodologies for analog and digital design</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li><li><a href="/us/?q=rf%20simulations">Rf Simulations</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Apopka</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157078699"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-application-engineering-intern-4461052655">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043713">RF Design Engineering Intern</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design passive circuits using AWR, CST, or HFSS</li><li>Test and validate RF/mmWave antenna prototypes</li><li>Collaborate on phased array designs for defense applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=awr">Awr</a></li><li><a href="/us/?q=cst">Cst</a></li><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=antenna%20design">Antenna Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Aurora</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157076896"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-rf-design-engineering-intern-4461043713">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/qorvo-inc-applications-engineering-intern-4461047683">Applications Engineering Intern</a></h3>
+          <span class="rc-sub">Rf testing and documentation</span>
+          <ul class="rc-do"><li>Automate testing and data extraction with rf instruments</li><li>Create marketing materials and design review documents</li><li>Analyze performance data and present findings to leaders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=rf%20instruments">Rf Instruments</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chelmsford</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788157071521"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/qorvo-inc-applications-engineering-intern-4461047683">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -632,40 +835,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Qorvo, Inc.&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/raytheon">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/raytheon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Raytheon</span></span>
-        </a><a class="dir-card" href="/us/companies/honeywell-aerospace">
-          <span class="tile-crest" aria-hidden="true">HA<img src="/logos/honeywell-aerospace.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Honeywell Aerospace</span></span>
-        </a><a class="dir-card" href="/us/companies/analog-devices">
-          <span class="tile-crest" aria-hidden="true">AD<img src="/logos/analog-devices.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Analog Devices</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/skyworks-solutions-inc">
-          <span class="tile-crest" aria-hidden="true">SS<img src="/logos/skyworks-solutions-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Skyworks Solutions, Inc.</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,36 +88,45 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">S<img src="/logos/sap.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>SAP internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, SAP is hiring interns in the US right now.</b> 2 engineering internships are open, across Palo Alto and Tempe, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Palo Alto · Tempe<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Palo Alto · Tempe<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>9<p>Python, Excel, Java</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/sap-sap-ixp-intern-full-stack-ai-developer-4451941652">
-        <span class="rc-t">SAP iXp Intern - Full-Stack AI Developer</span>
-        <span class="rc-sub">AI application development</span>
-        <span class="rc-facts"><span class="f-item">Palo Alto</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788370846758">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/sap-sap-ixp-intern-adoption-insights-and-services-tempe-az-4451473070">
-        <span class="rc-t">SAP iXp Intern - Adoption, Insights &amp; Services [Tempe, AZ]</span>
-        <span class="rc-sub">Customer Data Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$19 – $33</span><span class="f-item">Tempe</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788273503080">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/sap-sap-ixp-intern-full-stack-ai-developer-4451941652">SAP iXp Intern - Full-Stack AI Developer</a></h3>
+          <span class="rc-sub">AI application development</span>
+          <ul class="rc-do"><li>Develop AI applications with front-end, back-end, and data integration</li><li>Use Python, Node.js, Java, and SAP tools for generative AI projects</li><li>Collaborate with cross-functional teams on AI use cases and workflows</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/node-js">Node.js</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=sapui5">Sapui5</a></li><li><a href="/us/?q=sap%20fiori">Sap Fiori</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Palo Alto</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788370846758"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/sap-sap-ixp-intern-full-stack-ai-developer-4451941652">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/sap-sap-ixp-intern-adoption-insights-and-services-tempe-az-4451473070">SAP iXp Intern - Adoption, Insights &amp; Services [Tempe, AZ]</a></h3>
+          <span class="rc-sub">Customer Data Analyst</span>
+          <ul class="rc-do"><li>Analyze customer contracts and usage data to create measurement docs</li><li>Build dashboards in Excel, Power BI, and SAP Joule for adoption tracking</li><li>Test metering tools and automate repetitive tasks with scripts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=sap%20joule">Sap Joule</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tempe</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$19 – $33</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788273503080"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/sap-sap-ixp-intern-adoption-insights-and-services-tempe-az-4451473070">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -144,43 +164,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as SAP&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/paypal">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/paypal.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">PayPal</span></span>
-        </a><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/mckesson-corporation">
-          <span class="tile-crest" aria-hidden="true">MC<img src="/logos/mckesson-corporation.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">McKesson Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/notion">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/notion.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Notion</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/roblox">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/roblox.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Roblox</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

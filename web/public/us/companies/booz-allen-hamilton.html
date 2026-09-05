@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,221 +88,299 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">BA<img src="/logos/booz-allen-hamilton.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Booz Allen Hamilton internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>25 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>25 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Booz Allen Hamilton is hiring interns in the US right now.</b> 25 engineering internships are open, across McLean, Charleston and Rome. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$53k – $141k<p>on all 25 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>McLean · Charleston · Rome</dd></div></dl>
+        <dt>Where</dt><dd>McLean · Charleston · Rome</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>26<p>Python, Linux, Osi Model</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>25</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/booz-allen-hamilton-ai-ran-telecommunications-engineer-intern-4452632544">
-        <span class="rc-t">AI RAN Telecommunications Engineer Intern</span>
-        <span class="rc-sub">Network Design Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">McLean</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788340512885">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016">
-        <span class="rc-t">University – Summer 27, Cybersecurity Analyst Intern</span>
-        <span class="rc-sub">Cybersecurity Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">McLean</span><span class="f-item">Bachelor’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787969462832">Posted <time datetime="2026-08-29">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460518284">
-        <span class="rc-t">University - 2027 Summer Games Software Developer Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Charleston</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947907457">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460509495">
-        <span class="rc-t">University, 2027 Summer Games Software Developer Intern</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Rome</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947906592">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-atlanta-ga-4460514392">
-        <span class="rc-t">University - 2027 Summer Games Cyber Security Intern - Atlanta, GA</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Atlanta</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947905007">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460512391">
-        <span class="rc-t">University, 2027 Summer Games Cyber Security Intern</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Colorado Springs</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947903602">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460503549">
-        <span class="rc-t">University, 2027 Summer Games Data Scientist Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">Rome</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947902742">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-charleston-sc-4460502518">
-        <span class="rc-t">University - 2027 Summer Games Cyber Security Intern - Charleston, SC</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Charleston</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947888050">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-atlanta-ga-4460516339">
-        <span class="rc-t">University - 2027 Summer Games Software Developer Intern - Atlanta, GA</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Atlanta</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947875423">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460504527">
-        <span class="rc-t">University, 2027 Summer Games Software Developer Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Colorado Springs</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947875350">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460511422">
-        <span class="rc-t">University - 2027 Summer Games Data Scientist Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">Charleston</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947874557">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460512396">
-        <span class="rc-t">University, 2027 Summer Games Data Scientist Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">Atlanta</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947873782">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460500524">
-        <span class="rc-t">University, 2027 Summer Games Data Scientist Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">Colorado Springs</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947871140">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460502522">
-        <span class="rc-t">University, 2027 Summer Games Cyber Security Intern</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">Rome</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947868190">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-ai-software-developer-intern-4460501583">
-        <span class="rc-t">AI Software Developer Intern</span>
-        <span class="rc-sub">AI Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">San Diego</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787947849877">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460320167">
-        <span class="rc-t">University - 2027 Summer Games Cyber Security Intern</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">El Segundo</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787904679885">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4459894808">
-        <span class="rc-t">University, 2027 Summer Games Cyber Security Intern</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">San Diego</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787861466776">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4459884945">
-        <span class="rc-t">University, 2027 Summer Games Software Developer Intern</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">McLean</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787861466764">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-mclean-va-4459889831">
-        <span class="rc-t">University - 2027 Summer Games Cyber Security Intern - McLean, VA</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">McLean</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787861434927">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460100795">
-        <span class="rc-t">University, 2027 Summer Games Data Scientist Intern</span>
-        <span class="rc-sub">Data Science Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$62,000 – $141,000</span><span class="f-item">El Segundo</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787861431333">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-el-segundo-ca-4459812577">
-        <span class="rc-t">University - 2027 Summer Games Cyber Security Intern - El Segundo, CA</span>
-        <span class="rc-sub">Cyber Security Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">El Segundo</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840834689">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-mclean-va-4459818528">
-        <span class="rc-t">University - 2027 Summer Games Data Scientist Intern - McLean, VA</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$62,000 – $141,000</span><span class="f-item">McLean</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840811222">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-san-diego-ca-4459821527">
-        <span class="rc-t">University - 2027 Summer Games Data Scientist Intern - San Diego, CA</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$61,900 – $141,000</span><span class="f-item">San Diego</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840761818">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-san-diego-ca-4459829472">
-        <span class="rc-t">University - 2027 Summer Games Software Developer Intern - San Diego, CA</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$52,900 – $108,000</span><span class="f-item">San Diego</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840737587">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-el-segundo-ca-4459835001">
-        <span class="rc-t">University - 2027 Summer Games Software Developer Intern - El Segundo, CA</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,000 – $108,000</span><span class="f-item">El Segundo</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840713655">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>25 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-ai-ran-telecommunications-engineer-intern-4452632544">AI RAN Telecommunications Engineer Intern</a></h3>
+          <span class="rc-sub">Network Design Support</span>
+          <ul class="rc-do"><li>Supports network architecture design and enhancements using Python, C/C++, and AI/ML</li><li>Works on wireless algorithms and digital signal processing under direct supervision</li><li>Requires U.S. Citizenship and bachelor’s in electrical engineering by 2027</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=ai%2Fml%20algorithms">Ai/ml Algorithms</a></li><li><a href="/us/?q=wireless%20algorithms">Wireless Algorithms</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>McLean</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788340512885"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-ai-ran-telecommunications-engineer-intern-4452632544">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016">University – Summer 27, Cybersecurity Analyst Intern</a></h3>
+          <span class="rc-sub">Cybersecurity Analysis</span>
+          <ul class="rc-do"><li>Analyze technical data to identify security risks and vulnerabilities</li><li>Use python or similar scripting languages for threat analysis</li><li>Collaborate with teams to develop solutions for real-world security challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=teams">Teams</a></li><li><a href="/us/?q=word">Word</a></li><li><a href="/us/?q=powerpoint">Powerpoint</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>McLean</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787969462832"><time datetime="2026-08-29">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-summer-27-cybersecurity-analyst-intern-4460579016">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460518284">University - 2027 Summer Games Software Developer Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for real-world challenges using Java, Python, and machine learning</li><li>Work in teams on startup-style projects with mentorship from senior leaders</li><li>Compete in a final presentation to senior leadership at the end of the summer</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charleston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947907457"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460518284">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460509495">University, 2027 Summer Games Software Developer Intern</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Develop software solutions for real-world challenges using Java, Python, and other languages</li><li>Work in teams on projects with senior mentors and present to leadership at the end of the summer</li><li>Compete in a Challenge Cup with opportunities to impact national security and public health</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rome</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947906592"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460509495">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-atlanta-ga-4460514392">University - 2027 Summer Games Cyber Security Intern - Atlanta, GA</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats and design solutions for real-world challenges</li><li>Use Linux, Windows, and virtualization tools in team projects</li><li>Work on high-impact projects with senior leaders and customer teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947905007"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-atlanta-ga-4460514392">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460512391">University, 2027 Summer Games Cyber Security Intern</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats for customer systems</li><li>Use linux and windows for network analysis</li><li>Work on real-world cybersecurity projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li><li><a href="/us/?q=networking">Networking</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Colorado Springs</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947903602"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460512391">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460503549">University, 2027 Summer Games Data Scientist Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python, sql, and statistical tools for data analysis</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20cleaning">Data Cleaning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rome</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947902742"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460503549">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-charleston-sc-4460502518">University - 2027 Summer Games Cyber Security Intern - Charleston, SC</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats and design solutions for real-world challenges</li><li>Work with Linux, Windows, and virtualization tools</li><li>Team-based project with mentorship and final presentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charleston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947888050"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-charleston-sc-4460502518">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-atlanta-ga-4460516339">University - 2027 Summer Games Software Developer Intern - Atlanta, GA</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for complex customer challenges using Java, Python, and machine learning</li><li>Work in teams on real-world projects with mentorship from senior leaders</li><li>Compete in a final presentation to senior leadership at the end of the summer</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947875423"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-atlanta-ga-4460516339">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460504527">University, 2027 Summer Games Software Developer Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for complex customer challenges using Java, Python, and machine learning</li><li>Work in teams on real-world projects with mentorship from senior leaders</li><li>Compete in a final presentation to senior leadership at the end of the summer</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Colorado Springs</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947875350"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4460504527">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460511422">University - 2027 Summer Games Data Scientist Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python and statistical tools for data mining and modeling</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20cleaning">Data Cleaning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Charleston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947874557"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460511422">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460512396">University, 2027 Summer Games Data Scientist Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python and statistical tools for data mining and modeling</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=data%20mining">Data Mining</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Atlanta</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947873782"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460512396">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460500524">University, 2027 Summer Games Data Scientist Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data from structured and unstructured sources</li><li>Work in teams on real-world projects with senior mentorship</li><li>Compete in a final presentation to senior leadership</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20cleaning">Data Cleaning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Colorado Springs</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947871140"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460500524">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460502522">University, 2027 Summer Games Cyber Security Intern</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats and design solutions for real-world challenges</li><li>Work with Linux, Windows, and virtualization tools</li><li>Collaborate in teams on projects with senior leaders and customers</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rome</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947868190"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460502522">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-ai-software-developer-intern-4460501583">AI Software Developer Intern</a></h3>
+          <span class="rc-sub">AI Software Development</span>
+          <ul class="rc-do"><li>Develop AI models and software for cybersecurity applications</li><li>Use Python, Git, and cloud platforms like AWS or Azure</li><li>Work on real projects with government clients in San Diego</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/azure">Azure</a></li><li><a href="/us/?q=ai">AI</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Diego</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787947849877"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-ai-software-developer-intern-4460501583">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460320167">University - 2027 Summer Games Cyber Security Intern</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze network traffic for security threats</li><li>Use virtualization tools to test system vulnerabilities</li><li>Work on real-world cybersecurity challenges with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows%20systems">Windows Systems</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>El Segundo</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787904679885"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4460320167">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4459894808">University, 2027 Summer Games Cyber Security Intern</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats for real-world projects</li><li>Use linux and windows systems in team challenges</li><li>Work on classified projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows%20systems">Windows Systems</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Diego</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787861466776"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-4459894808">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4459884945">University, 2027 Summer Games Software Developer Intern</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for complex customer challenges using Java, Python, and machine learning</li><li>Work in teams on real-world projects with mentorship from senior leaders</li><li>Compete in a final presentation to senior leadership at the end of the summer</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>McLean</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787861466764"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-4459884945">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-mclean-va-4459889831">University - 2027 Summer Games Cyber Security Intern - McLean, VA</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze network vulnerabilities and design secure systems</li><li>Use Linux and Windows for threat detection and response</li><li>Work on real-world projects with senior mentors and teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>McLean</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787861434927"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-mclean-va-4459889831">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460100795">University, 2027 Summer Games Data Scientist Intern</a></h3>
+          <span class="rc-sub">Data Science Intern</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python and statistical tools for data mining and modeling</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>El Segundo</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$62,000 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787861431333"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-4460100795">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-el-segundo-ca-4459812577">University - 2027 Summer Games Cyber Security Intern - El Segundo, CA</a></h3>
+          <span class="rc-sub">Cyber Security Analysis</span>
+          <ul class="rc-do"><li>Analyze security threats and design solutions for real-world challenges</li><li>Use Linux, Windows, and virtualization tools in team projects</li><li>Work on classified projects with senior mentors and present to leadership</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=windows">Windows</a></li><li><a href="/us/?q=virtualization">Virtualization</a></li><li><a href="/us/?q=osi%20model">Osi Model</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>El Segundo</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840834689"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-cyber-security-intern-el-segundo-ca-4459812577">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-mclean-va-4459818528">University - 2027 Summer Games Data Scientist Intern - McLean, VA</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python and statistical tools for data mining and modeling</li><li>Work in teams on real-world projects with senior mentorship</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>McLean</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$62,000 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840811222"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-mclean-va-4459818528">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-san-diego-ca-4459821527">University - 2027 Summer Games Data Scientist Intern - San Diego, CA</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze and visualize data to solve complex customer problems</li><li>Use python and statistical tools for data mining and modeling</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Diego</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$61,900 – $141,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840761818"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-data-scientist-intern-san-diego-ca-4459821527">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-san-diego-ca-4459829472">University - 2027 Summer Games Software Developer Intern - San Diego, CA</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for real-world challenges using Java, Python, and machine learning</li><li>Work in teams on startup-style projects with mentorship from senior leaders</li><li>Compete in a final presentation to senior leadership at the end of the summer</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=technical%20documentation">Technical Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Diego</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$52,900 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840737587"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-san-diego-ca-4459829472">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-el-segundo-ca-4459835001">University - 2027 Summer Games Software Developer Intern - El Segundo, CA</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software solutions for complex customer challenges</li><li>Use Java, Python, and other programming languages</li><li>Work in teams on real-world projects with senior mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/?q=bash">Bash</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>El Segundo</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,000 – $108,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840713655"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/booz-allen-hamilton-university-2027-summer-games-software-developer-intern-el-segundo-ca-4459835001">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -329,49 +418,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Booz Allen Hamilton&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/squarepoint-capital">
-          <span class="tile-crest" aria-hidden="true">SC<img src="/logos/squarepoint-capital.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Squarepoint Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/extreme-networks">
-          <span class="tile-crest" aria-hidden="true">EN<img src="/logos/extreme-networks.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Extreme Networks</span></span>
-        </a><a class="dir-card" href="/us/companies/general-mills">
-          <span class="tile-crest" aria-hidden="true">GM<img src="/logos/general-mills.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">General Mills</span></span>
-        </a><a class="dir-card" href="/us/companies/ibm">
-          <span class="tile-crest" aria-hidden="true">I<img src="/logos/ibm.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">IBM</span></span>
-        </a><a class="dir-card" href="/us/companies/tower-research-capital">
-          <span class="tile-crest" aria-hidden="true">TR</span>
-          <span class="dir-t"><span class="dir-name">Tower Research Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/mayo-clinic">
-          <span class="tile-crest" aria-hidden="true">MC<img src="/logos/mayo-clinic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mayo Clinic</span></span>
-        </a><a class="dir-card" href="/us/companies/ge-vernova">
-          <span class="tile-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Vernova</span></span>
-        </a><a class="dir-card" href="/us/companies/susquehanna-international-group">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/susquehanna-international-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Susquehanna International Group</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

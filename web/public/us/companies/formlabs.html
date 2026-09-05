@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,61 +88,79 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">F<img src="/logos/formlabs.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Formlabs internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Formlabs is hiring interns in the US right now.</b> 5 engineering internships are open, based in Somerville. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$1k – $2k<p>on all 5 open roles</p></dd></div><div class="ans">
         <dt>Where</dt><dd>Somerville</dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>12<p>Data Analysis, Python, Matlab</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226">
-        <span class="rc-t">Hardware R&amp;D Engineering Intern (Winter/Spring 2027)</span>
-        <span class="rc-sub">3d printing research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$1,575 – $1,950</span><span class="f-item">Somerville</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307136000">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/formlabs-hardware-systems-integration-intern-winter-spring-2027-ats-greenhouse-formlabs-8172004">
-        <span class="rc-t">Hardware Systems Integration Intern (Winter/Spring 2027)</span>
-        <span class="rc-sub">3D Printer Testing</span>
-        <span class="rc-facts"><span class="f-item is-cash">$1,575 – $1,950</span><span class="f-item">Somerville</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307122000">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/formlabs-print-optimization-intern-winter-spring-2027-ats-greenhouse-formlabs-8172256">
-        <span class="rc-t">Print Optimization Intern (Winter/Spring 2027)</span>
-        <span class="rc-sub">Print Settings Optimization</span>
-        <span class="rc-facts"><span class="f-item is-cash">$1,425 – $1,750</span><span class="f-item">Somerville</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307105000">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/formlabs-print-production-intern-fall-2026-ats-greenhouse-formlabs-8138459">
-        <span class="rc-t">Print Production Intern (Fall 2026)</span>
-        <span class="rc-sub">3d Print Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$1,000 – $1,300</span><span class="f-item">Somerville</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787028948000">Posted <time datetime="2026-08-18">18 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-fall-2026-ats-greenhouse-formlabs-8097694">
-        <span class="rc-t">Hardware R&amp;D Engineering Intern (Fall 2026)</span>
-        <span class="rc-sub">3d printing research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$1,575 – $1,950</span><span class="f-item">Somerville</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1785445426000">Posted <time datetime="2026-07-30">30 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226">Hardware R&amp;D Engineering Intern (Winter/Spring 2027)</a></h3>
+          <span class="rc-sub">3d printing research</span>
+          <ul class="rc-do"><li>Design and test new 3d printing methods using experiments and data</li><li>Work with engineers to improve printer performance and software</li><li>Build and refine algorithms for support structures and material behavior</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=experiment%20design">Experiment Design</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Somerville</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$1,575 – $1,950</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788307136000"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8172226">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/formlabs-hardware-systems-integration-intern-winter-spring-2027-ats-greenhouse-formlabs-8172004">Hardware Systems Integration Intern (Winter/Spring 2027)</a></h3>
+          <span class="rc-sub">3D Printer Testing</span>
+          <ul class="rc-do"><li>Design and run tests to evaluate 3D printer performance</li><li>Write Python scripts to support reliability and analysis</li><li>Collaborate with mechanical and electrical teams on fixes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=test%20design">Test Design</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=electro-mechanical%20systems">Electro-mechanical Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Somerville</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$1,575 – $1,950</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788307122000"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/formlabs-hardware-systems-integration-intern-winter-spring-2027-ats-greenhouse-formlabs-8172004">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/formlabs-print-optimization-intern-winter-spring-2027-ats-greenhouse-formlabs-8172256">Print Optimization Intern (Winter/Spring 2027)</a></h3>
+          <span class="rc-sub">Print Settings Optimization</span>
+          <ul class="rc-do"><li>Test and refine 3d print settings for speed and quality</li><li>Use measurement tools to validate material performance</li><li>Collaborate with engineers to improve hardware/software</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=experimental%20design">Experimental Design</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=cad%20modeling">CAD Modeling</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Somerville</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$1,425 – $1,750</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788307105000"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/formlabs-print-optimization-intern-winter-spring-2027-ats-greenhouse-formlabs-8172256">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/formlabs-print-production-intern-fall-2026-ats-greenhouse-formlabs-8138459">Print Production Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">3d Print Support</span>
+          <ul class="rc-do"><li>Support 3d print production including printing, troubleshooting, and maintenance</li><li>Assist with post-processing, sanding, and finishing 3d printed parts</li><li>Help maintain showroom and production spaces for safety and efficiency</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=google%20sheets">Google Sheets</a></li><li><a href="/us/?q=project%20management">Project Management</a></li><li><a href="/us/?q=3d%20printing">3d Printing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Somerville</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$1,000 – $1,300</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787028948000"><time datetime="2026-08-18">18 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/formlabs-print-production-intern-fall-2026-ats-greenhouse-formlabs-8138459">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-fall-2026-ats-greenhouse-formlabs-8097694">Hardware R&amp;D Engineering Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">3d printing research</span>
+          <ul class="rc-do"><li>Design and test new 3d printing methods using experiments and data</li><li>Work with engineers to improve printer performance and software</li><li>Build and refine support structures based on real-world testing</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=experiment%20design">Experiment Design</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Somerville</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$1,575 – $1,950</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1785445426000"><time datetime="2026-07-30">30 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/formlabs-hardware-r-and-d-engineering-intern-fall-2026-ats-greenhouse-formlabs-8097694">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -159,49 +188,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Formlabs&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/cloudflare">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cloudflare.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cloudflare</span></span>
-        </a><a class="dir-card" href="/us/companies/globalfoundries">
-          <span class="tile-crest" aria-hidden="true">G<img src="/logos/globalfoundries.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GlobalFoundries</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a><a class="dir-card" href="/us/companies/delta-air-lines">
-          <span class="tile-crest" aria-hidden="true">DA<img src="/logos/delta-air-lines.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Delta Air Lines</span></span>
-        </a><a class="dir-card" href="/us/companies/medtronic">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/medtronic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Medtronic</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/new-balance">
-          <span class="tile-crest" aria-hidden="true">NB<img src="/logos/new-balance.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">New Balance</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

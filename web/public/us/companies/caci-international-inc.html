@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,101 +88,134 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">CI<img src="/logos/caci-international-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>CACI International Inc internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>10 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>10 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, CACI International Inc is hiring interns in the US right now.</b> 10 engineering internships are open, across King of Prussia, Denver and Sterling, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$39k – $106k<p>on all 10 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>King of Prussia · Denver · Sterling<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>King of Prussia · Denver · Sterling<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>24<p>Python, C#, C++</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>10</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/caci-international-inc-software-engineering-co-op-fall-2026-4460735380">
-        <span class="rc-t">Software Engineering Co-op - Fall 2026</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$53,100 – $106,300</span><span class="f-item">King of Prussia</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788449507499">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460720502">
-        <span class="rc-t">Engineering Intern - Summer 2027</span>
-        <span class="rc-sub">Antenna System Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$43,900 – $87,900</span><span class="f-item">Denver</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788449504325">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460728442">
-        <span class="rc-t">Engineering Intern - Summer 2027</span>
-        <span class="rc-sub">Antenna System Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,900 – $91,900</span><span class="f-item">Sterling</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788449475816">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-aws-cloud-engineering-intern-summer-2027-4459959905">
-        <span class="rc-t">AWS Cloud Engineering Intern - Summer 2027</span>
-        <span class="rc-sub">Cloud Systems Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39,400 – $75,900</span><span class="f-item">Sarasota</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788363126290">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-fall-2027-4459969613">
-        <span class="rc-t">Embedded Software Engineering Co-Op - Fall 2027</span>
-        <span class="rc-sub">Embedded coding</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,900 – $91,900</span><span class="f-item">Danbury</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788363126185">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-spring-2027-4459963783">
-        <span class="rc-t">Embedded Software Engineering Co-op - Spring 2027</span>
-        <span class="rc-sub">Embedded Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,900 – $91,900</span><span class="f-item">Danbury</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788363092964">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-software-engineering-intern-summer-2027-4459535449">
-        <span class="rc-t">Software Engineering Intern – Summer 2027</span>
-        <span class="rc-sub">Engineering Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39,400 – $75,900</span><span class="f-item">Sarasota</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788276751791">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-software-engineering-co-op-summer-and-fall-2027-4459547027">
-        <span class="rc-t">Software Engineering Co-op - Summer &amp; Fall 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,900 – $91,900</span><span class="f-item">Danbury</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788276727885">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-software-engineering-co-op-spring-and-summer-2027-4459527711">
-        <span class="rc-t">Software Engineering Co-op - Spring &amp; Summer 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$45,900 – $91,900</span><span class="f-item">Danbury</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788276716540">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/caci-international-inc-software-developer-data-scientist-intern-summer-2027-4457701282">
-        <span class="rc-t">Software Developer/Data Scientist Intern - Summer 2027</span>
-        <span class="rc-sub">Web Application Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39,900 – $79,900</span><span class="f-item">Denver</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787779922450">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>10 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-software-engineering-co-op-fall-2026-4460735380">Software Engineering Co-op - Fall 2026</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Write code for features and test software for reliability</li><li>Work with Java, Python, or C++ in agile teams</li><li>Learn from mentors and contribute to documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/react">React</a></li><li><a href="/us/skills/docker">Docker</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>King of Prussia</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$53,100 – $106,300</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788449507499"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-software-engineering-co-op-fall-2026-4460735380">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460720502">Engineering Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Antenna System Design</span>
+          <ul class="rc-do"><li>Design and maintain antenna systems and related documentation</li><li>Use Python/MATLAB and CAD tools for simulations and analysis</li><li>Work on-site in Westminster, CO for 12 weeks starting May 2027</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=visio">Visio</a></li><li><a href="/us/?q=solidworks">Solidworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Denver</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$43,900 – $87,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788449504325"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460720502">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460728442">Engineering Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Antenna System Design</span>
+          <ul class="rc-do"><li>Design and maintain antenna systems with RF link budgets and BOMs</li><li>Use Python/MATLAB and CAD tools for simulations and system analysis</li><li>Work on-site in Sterling, VA for 12 weeks starting May</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=cad">CAD</a></li><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/?q=visio">Visio</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sterling</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,900 – $91,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788449475816"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-engineering-intern-summer-2027-4460728442">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-aws-cloud-engineering-intern-summer-2027-4459959905">AWS Cloud Engineering Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Cloud Systems Support</span>
+          <ul class="rc-do"><li>Support cloud solutions design and deployment on AWS</li><li>Work with Go, Python, Linux, and cloud automation tools</li><li>Collaborate in agile teams and contribute to product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/?q=automation">Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sarasota</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39,400 – $75,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788363126290"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-aws-cloud-engineering-intern-summer-2027-4459959905">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-fall-2027-4459969613">Embedded Software Engineering Co-Op - Fall 2027</a></h3>
+          <span class="rc-sub">Embedded coding</span>
+          <ul class="rc-do"><li>Write code in C++, C#, C, and Python for embedded systems</li><li>Use Git, Bitbucket, or GitLab for version control</li><li>Work with experienced engineers on real projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=bitbucket">Bitbucket</a></li><li><a href="/us/?q=jira">Jira</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Danbury</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,900 – $91,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788363126185"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-fall-2027-4459969613">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-spring-2027-4459963783">Embedded Software Engineering Co-op - Spring 2027</a></h3>
+          <span class="rc-sub">Embedded Software Development</span>
+          <ul class="rc-do"><li>Develop code in C++, C#, C, and Python for embedded systems</li><li>Use Git, Bitbucket, GitLab, and Jira for version control and task tracking</li><li>Collaborate with experienced professionals on real-time operating systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=jira">Jira</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Danbury</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,900 – $91,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788363092964"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-embedded-software-engineering-co-op-spring-2027-4459963783">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-software-engineering-intern-summer-2027-4459535449">Software Engineering Intern – Summer 2027</a></h3>
+          <span class="rc-sub">Engineering Intern</span>
+          <ul class="rc-do"><li>Work on real-world engineering problems with team collaboration</li><li>Use hardware and software tools at academic level</li><li>On-site 100% for 10-12 weeks in Sarasota, FL</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=software%20tools">Software Tools</a></li><li><a href="/us/?q=agile%20environment">Agile Environment</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sarasota</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39,400 – $75,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788276751791"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-software-engineering-intern-summer-2027-4459535449">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-software-engineering-co-op-summer-and-fall-2027-4459547027">Software Engineering Co-op - Summer &amp; Fall 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop code in C# and Python for software testing and data processing</li><li>Create algorithm prototypes in MatLab or Mathematica for problem-solving</li><li>Write documentation for requirements and release updates</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=mathematica">Mathematica</a></li><li><a href="/us/?q=documentation">Documentation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Danbury</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,900 – $91,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788276727885"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-software-engineering-co-op-summer-and-fall-2027-4459547027">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-software-engineering-co-op-spring-and-summer-2027-4459527711">Software Engineering Co-op - Spring &amp; Summer 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop code in C# and Python for software testing and data processing</li><li>Create algorithm prototypes in MatLab or Mathematica for problem-solving</li><li>Work on desktop applications using C-based languages in Windows environment</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=mathematica">Mathematica</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Danbury</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$45,900 – $91,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788276716540"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-software-engineering-co-op-spring-and-summer-2027-4459527711">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/caci-international-inc-software-developer-data-scientist-intern-summer-2027-4457701282">Software Developer/Data Scientist Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Web Application Development</span>
+          <ul class="rc-do"><li>Develop and maintain web-based applications and back-end services</li><li>Work with Java, Python, Docker, and CI/CD tools</li><li>Collaborate on national security projects with cross-functional teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/jenkins">Jenkins</a></li><li><a href="/us/?q=gitlab">Gitlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Denver</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39,900 – $79,900</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787779922450"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/caci-international-inc-software-developer-data-scientist-intern-summer-2027-4457701282">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -209,49 +253,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as CACI International Inc&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/point72">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/point72.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Point72</span></span>
-        </a><a class="dir-card" href="/us/companies/boeing-india">
-          <span class="tile-crest" aria-hidden="true">BI<img src="/logos/boeing-india.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Boeing India</span></span>
-        </a><a class="dir-card" href="/us/companies/raytheon">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/raytheon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Raytheon</span></span>
-        </a><a class="dir-card" href="/us/companies/tesla">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/tesla.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tesla</span></span>
-        </a><a class="dir-card" href="/us/companies/ge-vernova">
-          <span class="tile-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Vernova</span></span>
-        </a><a class="dir-card" href="/us/companies/the-walt-disney-company">
-          <span class="tile-crest" aria-hidden="true">TW<img src="/logos/the-walt-disney-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">The Walt Disney Company</span></span>
-        </a><a class="dir-card" href="/us/companies/walt-disney-world">
-          <span class="tile-crest" aria-hidden="true">WD<img src="/logos/walt-disney-world.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Walt Disney World</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

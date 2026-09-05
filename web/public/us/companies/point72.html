@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,78 +102,102 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">P<img src="/logos/point72.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Point72 internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>7 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>7 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Point72 is hiring interns in the US right now.</b> 7 engineering internships are open, across Seattle and New York, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$120k – $300k<p>stated on 3 of 7 roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
         <dt>Where</dt><dd>Seattle · New York<p>on-site</p></dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>17<p>Python, C++, Matlab</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>7</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/point72-quantitative-researcher-intern-4459904204">
-        <span class="rc-t">Quantitative Researcher - Intern</span>
-        <span class="rc-sub">Market Modeling</span>
-        <span class="rc-facts"><span class="f-item is-cash">$120,000 – $180,000</span><span class="f-item">2 locations</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788320090451">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-quantitative-software-developer-intern-4459593849">
-        <span class="rc-t">Quantitative Software Developer Intern</span>
-        <span class="rc-sub">Systems programming</span>
-        <span class="rc-facts"><span class="f-item is-cash">$120,000 – $150,000</span><span class="f-item">New York</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788320028547">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-quantitative-developer-intern-ats-greenhouse-point72-8721562002">
-        <span class="rc-t">Quantitative Developer Intern</span>
-        <span class="rc-sub">Quantitative development</span>
-        <span class="rc-facts"><span class="f-item">New York</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787336612000">Posted <time datetime="2026-08-21">21 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-summer-2027-quantitative-research-internship-ats-greenhouse-point72-7297642002">
-        <span class="rc-t">Summer 2027 Quantitative Research Internship</span>
-        <span class="rc-sub">Quantitative research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$240,000 – $300,000</span><span class="f-item">New York</span><span class="f-item">PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1783984964000">Posted <time datetime="2026-07-13">13 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-quantitative-research-intern-nlp-ats-greenhouse-point72-8018862002">
-        <span class="rc-t">Quantitative Research Intern (NLP)</span>
-        <span class="rc-sub">Natural language processing</span>
-        <span class="rc-facts"><span class="f-item">New York</span><span class="f-item">Bachelor&#39;s/Master&#39;s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1783984964000">Posted <time datetime="2026-07-13">13 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-quantitative-research-intern-ats-greenhouse-point72-7297667002">
-        <span class="rc-t">Quantitative Research Intern</span>
-        <span class="rc-sub">Quantitative research</span>
-        <span class="rc-facts"><span class="f-item">New York</span><span class="f-item">PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1783984964000">Posted <time datetime="2026-07-13">13 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/point72-machine-learning-researcher-intern-ats-greenhouse-point72-7302611002">
-        <span class="rc-t">Machine Learning Researcher - Intern</span>
-        <span class="rc-sub">Machine learning research</span>
-        <span class="rc-facts"><span class="f-item">New York</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1783984964000">Posted <time datetime="2026-07-13">13 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>7 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-quantitative-researcher-intern-4459904204">Quantitative Researcher - Intern</a></h3>
+          <span class="rc-sub">Market Modeling</span>
+          <ul class="rc-do"><li>Clean and process large financial datasets for model building</li><li>Use statistical methods to analyze market trends and trading signals</li><li>Work on a small team focused on algorithmic trading strategies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$120,000 – $180,000</span></dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788320090451"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-quantitative-researcher-intern-4459904204">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-quantitative-software-developer-intern-4459593849">Quantitative Software Developer Intern</a></h3>
+          <span class="rc-sub">Systems programming</span>
+          <ul class="rc-do"><li>Debug and optimize trading platform code</li><li>Work with Python, C++, and Linux systems</li><li>Collaborate on research infrastructure projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/mysql">Mysql</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$120,000 – $150,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788320028547"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-quantitative-software-developer-intern-4459593849">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-quantitative-developer-intern-ats-greenhouse-point72-8721562002">Quantitative Developer Intern</a></h3>
+          <span class="rc-sub">Quantitative development</span>
+          <ul class="rc-do"><li>Build low-latency java components for trading platform</li><li>Optimize data pipelines and sql databases for real-time processing</li><li>Work onsite in new york fulltime from january to april 2027</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=shell%20scripting">Shell Scripting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787336612000"><time datetime="2026-08-21">21 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-quantitative-developer-intern-ats-greenhouse-point72-8721562002">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-summer-2027-quantitative-research-internship-ats-greenhouse-point72-7297642002">Summer 2027 Quantitative Research Internship</a></h3>
+          <span class="rc-sub">Quantitative research</span>
+          <ul class="rc-do"><li>Research and implement medium-frequency statistical arbitrage strategies</li><li>Program in Python or C/C++ within a startup-like systematic trading team</li><li>Join the Summer 2027 internship program targeting PhD students</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$240,000 – $300,000</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1783984964000"><time datetime="2026-07-13">13 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-summer-2027-quantitative-research-internship-ats-greenhouse-point72-7297642002">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-quantitative-research-intern-nlp-ats-greenhouse-point72-8018862002">Quantitative Research Intern (NLP)</a></h3>
+          <span class="rc-sub">Natural language processing</span>
+          <ul class="rc-do"><li>Construct alpha signals from varied datasets using natural language processing</li><li>Build and test performance of trading signals using PyTorch, HuggingFace, and LLMs</li><li>Launch validated NLP features into production trading systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=huggingface">Huggingface</a></li><li><a href="/us/?q=llms">LLMS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Eligibility</dt><dd>Bachelor&#39;s/Master&#39;s</dd></div><div><dt>Posted</dt><dd><span data-ago="1783984964000"><time datetime="2026-07-13">13 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-quantitative-research-intern-nlp-ats-greenhouse-point72-8018862002">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-quantitative-research-intern-ats-greenhouse-point72-7297667002">Quantitative Research Intern</a></h3>
+          <span class="rc-sub">Quantitative research</span>
+          <ul class="rc-do"><li>Pre-process very large datasets by validating, cleaning, and normalizing for model estimation</li><li>Identify predictive features and relationships for market dynamics</li><li>Apply statistical learning methods using C++, Java, Python, R, or MATLAB</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1783984964000"><time datetime="2026-07-13">13 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-quantitative-research-intern-ats-greenhouse-point72-7297667002">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/point72-machine-learning-researcher-intern-ats-greenhouse-point72-7302611002">Machine Learning Researcher - Intern</a></h3>
+          <span class="rc-sub">Machine learning research</span>
+          <ul class="rc-do"><li>Apply, adapt, and extend machine learning models across NLP, time series, and vision</li><li>Manage all aspects of research including data collection, prototyping, and testing</li><li>Write scientific code in Python, R, or MATLAB</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Posted</dt><dd><span data-ago="1783984964000"><time datetime="2026-07-13">13 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/point72-machine-learning-researcher-intern-ats-greenhouse-point72-7302611002">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -209,49 +244,6 @@
         </li></ul>
     </section>
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Point72&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/tower-research-capital">
-          <span class="tile-crest" aria-hidden="true">TR</span>
-          <span class="dir-t"><span class="dir-name">Tower Research Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/apptronik">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/apptronik.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Apptronik</span></span>
-        </a><a class="dir-card" href="/us/companies/caci-international-inc">
-          <span class="tile-crest" aria-hidden="true">CI<img src="/logos/caci-international-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CACI International Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/ibm">
-          <span class="tile-crest" aria-hidden="true">I<img src="/logos/ibm.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">IBM</span></span>
-        </a><a class="dir-card" href="/us/companies/raytheon">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/raytheon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Raytheon</span></span>
-        </a><a class="dir-card" href="/us/companies/voleon-group">
-          <span class="tile-crest" aria-hidden="true">VG<img src="/logos/voleon-group.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Voleon Group</span></span>
-        </a><a class="dir-card" href="/us/companies/ups">
-          <span class="tile-crest" aria-hidden="true">U<img src="/logos/ups.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">UPS</span></span>
-        </a><a class="dir-card" href="/us/companies/tesla">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/tesla.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tesla</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

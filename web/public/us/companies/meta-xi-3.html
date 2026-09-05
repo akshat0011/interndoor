@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,28 +88,34 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">MX<img src="/logos/meta-xi-3.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>META-Xi^3 internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, META-Xi^3 is hiring interns in the US right now.</b> One engineering internship is open, based in Greater Seattle Area, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Greater Seattle Area<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Greater Seattle Area<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>5<p>APIS, CSS, Git</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/meta-xi-3-full-stack-engineer-software-developer-co-op-4463738782">
-        <span class="rc-t">Full Stack Engineer / Software Developer Co-op</span>
-        <span class="rc-sub">Web application development</span>
-        <span class="rc-facts"><span class="f-item">Greater Seattle Area</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788613528683">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/meta-xi-3-full-stack-engineer-software-developer-co-op-4463738782">Full Stack Engineer / Software Developer Co-op</a></h3>
+          <span class="rc-sub">Web application development</span>
+          <ul class="rc-do"><li>Build and maintain web apps for mental health tools</li><li>Work with html css js and backend services</li><li>Collaborate with product and design teams remotely</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=html">HTML</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/?q=css">CSS</a></li><li><a href="/us/?q=apis">APIS</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Greater Seattle Area</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788613528683"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/meta-xi-3-full-stack-engineer-software-developer-co-op-4463738782">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -135,49 +152,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as META-Xi^3&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/walt-disney-world">
-          <span class="tile-crest" aria-hidden="true">WD<img src="/logos/walt-disney-world.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Walt Disney World</span></span>
-        </a><a class="dir-card" href="/us/companies/the-walt-disney-company">
-          <span class="tile-crest" aria-hidden="true">TW<img src="/logos/the-walt-disney-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">The Walt Disney Company</span></span>
-        </a><a class="dir-card" href="/us/companies/the-home-depot">
-          <span class="tile-crest" aria-hidden="true">TH<img src="/logos/the-home-depot.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">The Home Depot</span></span>
-        </a><a class="dir-card" href="/us/companies/parsons-corporation">
-          <span class="tile-crest" aria-hidden="true">PC<img src="/logos/parsons-corporation.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Parsons Corporation</span></span>
-        </a><a class="dir-card" href="/us/companies/home-depot">
-          <span class="tile-crest" aria-hidden="true">HD<img src="/logos/home-depot.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Home Depot</span></span>
-        </a><a class="dir-card" href="/us/companies/salesforce">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/salesforce.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Salesforce</span></span>
-        </a><a class="dir-card" href="/us/companies/synopsys-inc">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/synopsys-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Synopsys Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/vanguard">
-          <span class="tile-crest" aria-hidden="true">V<img src="/logos/vanguard.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Vanguard</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,108 +88,144 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">P<img src="/logos/pwc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>PwC internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>11 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>11 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, PwC is hiring interns in the US right now.</b> 11 engineering internships are open, across New York, Rosemont and Houston, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>New York · Rosemont · Houston<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>New York · Rosemont · Houston<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>27<p>Esri Mapping Software, Geographic Data Analysis, Enterprise Integration</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>11</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/pwc-tax-innovation-delivery-experience-tide-software-engineering-intern-su-4462810467">
-        <span class="rc-t">Tax Innovation Delivery Experience (TIDE) - Software Engineering - Intern - Summer 2027</span>
-        <span class="rc-sub">Software Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">5 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788437684975">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-market-information-and-data-analytics-mida-data-quality-intern-summer--4461569368">
-        <span class="rc-t">Market Information and Data Analytics (MIDA) - Data Quality - Intern - Summer 2027</span>
-        <span class="rc-sub">Data Quality Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">Rosemont</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788246743239">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-technology-consulting-geographic-information-systems-intern-summer-202-4461573283">
-        <span class="rc-t">Technology Consulting - Geographic Information Systems Intern - Summer 2027</span>
-        <span class="rc-sub">GIS Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">14 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788246678182">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-deals-dtds-analytics-intern-summer-2027-4461554733">
-        <span class="rc-t">Deals - DTDS - Analytics Intern - Summer 2027</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788244772524">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-deals-diligence-analytics-intern-summer-2027-4461558609">
-        <span class="rc-t">Deals - Diligence Analytics Intern - Summer 2027</span>
-        <span class="rc-sub">Data Analysis Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788244745709">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4461558596">
-        <span class="rc-t">Tax Technology - Partnership Allocation and Reporting Solutions - Intern - Summer 2027</span>
-        <span class="rc-sub">Tax Technology Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">Rosemont</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788244588176">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-technology-consulting-intern-summer-2027-4461564392">
-        <span class="rc-t">Technology Consulting - Intern - Summer 2027</span>
-        <span class="rc-sub">Technology Consulting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">14 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788244027684">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-deals-dtds-contracts-intern-summer-2027-4461555598">
-        <span class="rc-t">Deals - DTDS - Contracts Intern - Summer 2027</span>
-        <span class="rc-sub">Data Analysis Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">Seattle</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788243246064">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-digital-assurance-and-transparency-dat-data-intern-summer-2027-4461555599">
-        <span class="rc-t">Digital Assurance &amp; Transparency (DAT) - Data - Intern - Summer 2027</span>
-        <span class="rc-sub">Data Intern</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">Florham Park</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788243240526">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-silicon-valley-digital-assurance-and-transparency-dat-intern-summer-20-4461566312">
-        <span class="rc-t">Silicon Valley - Digital Assurance &amp; Transparency (DAT) - Intern - Summer 2028</span>
-        <span class="rc-sub">Audit Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">Silicon Valley</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788243239603">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/pwc-digital-assurance-and-transparency-dat-tech-intern-summer-2027-4461558570">
-        <span class="rc-t">Digital Assurance &amp; Transparency (DAT) - Tech - Intern - Summer 2027</span>
-        <span class="rc-sub">Data Analysis Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$29 – $48</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788243231904">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>11 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-tax-innovation-delivery-experience-tide-software-engineering-intern-su-4462810467">Tax Innovation Delivery Experience (TIDE) - Software Engineering - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Software Engineering</span>
+          <ul class="rc-do"><li>Support software projects using C#.NET and JavaScript</li><li>Collaborate on code reviews and debugging</li><li>Work with React Native and REST Client tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/skills/react-native">React Native</a></li><li><a href="/us/?q=rest%20client">REST Client</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>5 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788437684975"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-tax-innovation-delivery-experience-tide-software-engineering-intern-su-4462810467">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-market-information-and-data-analytics-mida-data-quality-intern-summer--4461569368">Market Information and Data Analytics (MIDA) - Data Quality - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Quality Analyst</span>
+          <ul class="rc-do"><li>Review data for accuracy and fix errors in spreadsheets and databases</li><li>Use tools like Excel and SQL to clean and analyze datasets</li><li>Work with teams to ensure data meets audit standards and compliance</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rosemont</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788246743239"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-market-information-and-data-analytics-mida-data-quality-intern-summer--4461569368">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-technology-consulting-geographic-information-systems-intern-summer-202-4461573283">Technology Consulting - Geographic Information Systems Intern - Summer 2027</a></h3>
+          <span class="rc-sub">GIS Data Analysis</span>
+          <ul class="rc-do"><li>Assist in converting and analyzing geographic data for platforms</li><li>Use Esri Mapping Software for data analysis tasks</li><li>Work with teams on GIS solutions for client operations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=esri%20mapping%20software">Esri Mapping Software</a></li><li><a href="/us/?q=geographic%20data%20analysis">Geographic Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>14 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788246678182"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-technology-consulting-geographic-information-systems-intern-summer-202-4461573283">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-deals-dtds-analytics-intern-summer-2027-4461554733">Deals - DTDS - Analytics Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data to uncover patterns and trends for client strategies</li><li>Use Alteryx and Power BI to automate analytics and create visuals</li><li>Collaborate on cloud projects and data architecture</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=alteryx">Alteryx</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788244772524"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-deals-dtds-analytics-intern-summer-2027-4461554733">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-deals-diligence-analytics-intern-summer-2027-4461558609">Deals - Diligence Analytics Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis Support</span>
+          <ul class="rc-do"><li>Support teams with data analysis and insights for client projects</li><li>Use tools like Alteryx and Power BI for data processing</li><li>Work on algorithm development and data visualization dashboards</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=alteryx">Alteryx</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=algorithm%20development">Algorithm Development</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788244745709"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-deals-diligence-analytics-intern-summer-2027-4461558609">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4461558596">Tax Technology - Partnership Allocation and Reporting Solutions - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Tax Technology Intern</span>
+          <ul class="rc-do"><li>Support teams in developing tax tech solutions</li><li>Use AI to improve tax strategies and compliance</li><li>Work on client projects with real-world impact</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Rosemont</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788244588176"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4461558596">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-technology-consulting-intern-summer-2027-4461564392">Technology Consulting - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Technology Consulting</span>
+          <ul class="rc-do"><li>Support teams with client projects and tech implementations</li><li>Use tools like Jira and Confluence for project management</li><li>Work on enterprise integration and software development tasks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=enterprise%20integration">Enterprise Integration</a></li><li><a href="/us/?q=project%20management">Project Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>14 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788244027684"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-technology-consulting-intern-summer-2027-4461564392">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-deals-dtds-contracts-intern-summer-2027-4461555598">Deals - DTDS - Contracts Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis Support</span>
+          <ul class="rc-do"><li>Support data analysis projects by gathering and researching information</li><li>Use Alteryx and Power BI to automate workflows and create reports</li><li>Collaborate on data integration and visualization dashboard development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=alteryx">Alteryx</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Seattle</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788243246064"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-deals-dtds-contracts-intern-summer-2027-4461555598">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-digital-assurance-and-transparency-dat-data-intern-summer-2027-4461555599">Digital Assurance &amp; Transparency (DAT) - Data - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Intern</span>
+          <ul class="rc-do"><li>Support teams with technology-enabled solutions for trust and transparency</li><li>Work on ERP security, IT controls, and ESG reporting projects</li><li>Learn from auditors and contribute to compliance and risk assessments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=erp%20security">ERP Security</a></li><li><a href="/us/?q=it%20general%20controls">It General Controls</a></li><li><a href="/us/?q=esg%20reporting">Esg Reporting</a></li><li><a href="/us/?q=financial%20reporting">Financial Reporting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Florham Park</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788243240526"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-digital-assurance-and-transparency-dat-data-intern-summer-2027-4461555599">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-silicon-valley-digital-assurance-and-transparency-dat-intern-summer-20-4461566312">Silicon Valley - Digital Assurance &amp; Transparency (DAT) - Intern - Summer 2028</a></h3>
+          <span class="rc-sub">Audit Support</span>
+          <ul class="rc-do"><li>Assist audit teams with digital assurance tasks and data validation</li><li>Work on cloud engineering and AI platforms to improve audit processes</li><li>Learn from experienced auditors and apply compliance auditing techniques</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20validation">Data Validation</a></li><li><a href="/us/?q=cloud%20computing">Cloud Computing</a></li><li><a href="/us/?q=compliance%20auditing">Compliance Auditing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Silicon Valley</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788243239603"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-silicon-valley-digital-assurance-and-transparency-dat-intern-summer-20-4461566312">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/pwc-digital-assurance-and-transparency-dat-tech-intern-summer-2027-4461558570">Digital Assurance &amp; Transparency (DAT) - Tech - Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis Support</span>
+          <ul class="rc-do"><li>Support teams with data analysis, research, and basic tasks</li><li>Use Alteryx for automation and data wrangling</li><li>Collaborate on projects improving financial transparency</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=alteryx">Alteryx</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=data%20wrangling">Data Wrangling</a></li><li><a href="/us/?q=research">Research</a></li><li><a href="/us/?q=financial%20reporting">Financial Reporting</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$29 – $48</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788243231904"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/pwc-digital-assurance-and-transparency-dat-tech-intern-summer-2027-4461558570">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -216,46 +263,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as PwC&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/samsara">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/samsara.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Samsara</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/general-mills">
-          <span class="tile-crest" aria-hidden="true">GM<img src="/logos/general-mills.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">General Mills</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/walt-disney-world">
-          <span class="tile-crest" aria-hidden="true">WD<img src="/logos/walt-disney-world.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Walt Disney World</span></span>
-        </a><a class="dir-card" href="/us/companies/mckesson-corporation">
-          <span class="tile-crest" aria-hidden="true">MC<img src="/logos/mckesson-corporation.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">McKesson Corporation</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,45 +88,57 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">C<img src="/logos/convin.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Convin internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>3 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>3 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Convin is hiring interns in India right now.</b> 3 engineering internships are open, based in Bengaluru, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>₹1,000<p>on all 3 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Bengaluru<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Bengaluru<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>13<p>Excel, Asana, Git</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>3</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/convin-data-labs-intern-4456818373">
-        <span class="rc-t">Data Labs Intern</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">₹1,000 / month</span><span class="f-item">Bengaluru</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787493151361">Posted <time datetime="2026-08-23">23 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/convin-backend-intern-4451175463">
-        <span class="rc-t">Backend Intern</span>
-        <span class="rc-sub">Backend development</span>
-        <span class="rc-facts"><span class="f-item is-cash">₹1,000</span><span class="f-item">Bengaluru</span><span class="f-item">B.Tech/B.E</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786366426193">Posted <time datetime="2026-08-10">10 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/convin-project-management-intern-4451130333">
-        <span class="rc-t">Project Management Intern</span>
-        <span class="rc-sub">Project Coordination</span>
-        <span class="rc-facts"><span class="f-item is-cash">₹1,000</span><span class="f-item">Bengaluru</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786359786878">Posted <time datetime="2026-08-10">10 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>3 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/convin-data-labs-intern-4456818373">Data Labs Intern</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze conversational data to find patterns and trends</li><li>Use tools like excel and tableau to create visual reports</li><li>Work with founders on product shaping and strategy</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/excel">Excel</a></li><li><a href="/?q=tableau">Tableau</a></li><li><a href="/skills/power-bi">Power Bi</a></li><li><a href="/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Bengaluru</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">₹1,000 / month</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1787493151361"><time datetime="2026-08-23">23 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/convin-data-labs-intern-4456818373">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/convin-backend-intern-4451175463">Backend Intern</a></h3>
+          <span class="rc-sub">Backend development</span>
+          <ul class="rc-do"><li>Develop backend services and APIs for AI-powered products</li><li>Work with databases and build integrations for voicebots and chatbots</li><li>Collaborate with cross-functional teams in Bengaluru office</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=golang">Golang</a></li><li><a href="/skills/python">Python</a></li><li><a href="/skills/sql">SQL</a></li><li><a href="/skills/git">Git</a></li><li><a href="/?q=rest%20apis">REST APIS</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Bengaluru</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">₹1,000</span></dd></div><div><dt>Eligibility</dt><dd>B.Tech/B.E</dd></div><div><dt>Posted</dt><dd><span data-ago="1786366426193"><time datetime="2026-08-10">10 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/convin-backend-intern-4451175463">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/convin-project-management-intern-4451130333">Project Management Intern</a></h3>
+          <span class="rc-sub">Project Coordination</span>
+          <ul class="rc-do"><li>Support project planning, coordination, and execution for AI voice and chat bot products</li><li>Use tools like Jira, Asana, Notion, Excel, and Google Sheets for task tracking</li><li>Collaborate with cross-functional teams and prepare status reports for leadership</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=google%20sheets">Google Sheets</a></li><li><a href="/skills/excel">Excel</a></li><li><a href="/?q=notion">Notion</a></li><li><a href="/?q=jira">Jira</a></li><li><a href="/?q=asana">Asana</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Bengaluru</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">₹1,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786359786878"><time datetime="2026-08-10">10 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/convin-project-management-intern-4451130333">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -153,49 +176,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Convin&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/highlevel">
-          <span class="tile-crest" aria-hidden="true">H<img src="/logos/highlevel.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">HighLevel</span></span>
-        </a><a class="dir-card" href="/companies/fluence">
-          <span class="tile-crest" aria-hidden="true">F<img src="/logos/fluence.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Fluence</span></span>
-        </a><a class="dir-card" href="/companies/roche">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/roche.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Roche</span></span>
-        </a><a class="dir-card" href="/companies/nuvama-group">
-          <span class="tile-crest" aria-hidden="true">NG<img src="/logos/nuvama-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Nuvama Group</span></span>
-        </a><a class="dir-card" href="/companies/houlihan-lokey">
-          <span class="tile-crest" aria-hidden="true">HL<img src="/logos/houlihan-lokey.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Houlihan Lokey</span></span>
-        </a><a class="dir-card" href="/companies/pearson">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/pearson.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Pearson</span></span>
-        </a><a class="dir-card" href="/companies/arctic-wolf">
-          <span class="tile-crest" aria-hidden="true">AW<img src="/logos/arctic-wolf.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Arctic Wolf</span></span>
-        </a><a class="dir-card" href="/companies/compass-group-india">
-          <span class="tile-crest" aria-hidden="true">CG<img src="/logos/compass-group-india.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Compass Group India</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

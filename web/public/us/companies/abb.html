@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">A<img src="/logos/abb.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>ABB internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, ABB is hiring interns in the US right now.</b> 5 engineering internships are open, across Cleveland, Mebane and Milpitas. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Cleveland · Mebane · Milpitas</dd></div></dl>
+        <dt>Where</dt><dd>Cleveland · Mebane · Milpitas</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>16<p>3d CAD Software, AI Tools, Angular</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/abb-proposals-engineer-intern-summer-2027-4462749912">
-        <span class="rc-t">Proposals Engineer Intern - Summer 2027</span>
-        <span class="rc-sub">Proposal Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $34 / hour</span><span class="f-item">Cleveland</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788410843760">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/abb-systems-engineering-co-op-spring-2027-4462495299">
-        <span class="rc-t">Systems Engineering Co-op -Spring 2027</span>
-        <span class="rc-sub">Systems Support Engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $34 / hour</span><span class="f-item">Cleveland</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788389251826">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/abb-operational-excellence-intern-summer-2027-4461571072">
-        <span class="rc-t">Operational Excellence Intern - Summer 2027</span>
-        <span class="rc-sub">Process Improvement</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $34 / hour</span><span class="f-item">Mebane</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788238303332">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/abb-ai-robotics-ui-ux-intern-fall-2026-4460125809">
-        <span class="rc-t">AI Robotics UI/UX Intern- Fall 2026</span>
-        <span class="rc-sub">UI Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $34 / hour</span><span class="f-item">Milpitas</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787870529122">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/abb-physical-ai-robotics-simulation-intern-fall-2026-4460130077">
-        <span class="rc-t">Physical AI Robotics Simulation Intern- Fall 2026</span>
-        <span class="rc-sub">Robot Simulation Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$20 – $34 / hour</span><span class="f-item">Milpitas</span><span class="f-item">PhD/Master&#39;s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787870499001">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/abb-proposals-engineer-intern-summer-2027-4462749912">Proposals Engineer Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Proposal Development</span>
+          <ul class="rc-do"><li>Support marketing and sales by developing proposals with system drawings and equipment lists</li><li>Collaborate with teams to ensure project timelines and customer needs are met</li><li>Reside within 50 miles of Cleveland, OH, manage own commute</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=equipment%20lists">Equipment Lists</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Cleveland</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788410843760"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/abb-proposals-engineer-intern-summer-2027-4462749912">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/abb-systems-engineering-co-op-spring-2027-4462495299">Systems Engineering Co-op -Spring 2027</a></h3>
+          <span class="rc-sub">Systems Support Engineering</span>
+          <ul class="rc-do"><li>Support operations by coordinating projects and ensuring timely completion</li><li>Use engineering software and AI tools to analyze and optimize systems</li><li>Collaborate with teams to solve technical challenges and improve automation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=engineering%20software">Engineering Software</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Cleveland</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788389251826"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/abb-systems-engineering-co-op-spring-2027-4462495299">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/abb-operational-excellence-intern-summer-2027-4461571072">Operational Excellence Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Process Improvement</span>
+          <ul class="rc-do"><li>Develop and maintain web-based apps to improve process efficiency</li><li>Collaborate with cross-functional teams on projects with tight deadlines</li><li>Propose and execute improvement ideas to eliminate waste</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=web-based%20applications">Web-based Applications</a></li><li><a href="/us/?q=process%20improvement">Process Improvement</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mebane</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788238303332"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/abb-operational-excellence-intern-summer-2027-4461571072">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/abb-ai-robotics-ui-ux-intern-fall-2026-4460125809">AI Robotics UI/UX Intern- Fall 2026</a></h3>
+          <span class="rc-sub">UI Development</span>
+          <ul class="rc-do"><li>Build responsive UIs with HTML5, CSS3, and JavaScript</li><li>Work with React.js, Angular, and .NET technologies</li><li>Collaborate with designers to turn mockups into code</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=html5">Html5</a></li><li><a href="/us/?q=css3">Css3</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/?q=react.js">React.js</a></li><li><a href="/us/skills/angular">Angular</a></li><li><a href="/us/?q=asp.net%20core">Asp.net Core</a></li><li><a href="/us/?q=blazor">Blazor</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Milpitas</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787870529122"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/abb-ai-robotics-ui-ux-intern-fall-2026-4460125809">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/abb-physical-ai-robotics-simulation-intern-fall-2026-4460130077">Physical AI Robotics Simulation Intern- Fall 2026</a></h3>
+          <span class="rc-sub">Robot Simulation Development</span>
+          <ul class="rc-do"><li>Simulate robots using RobotStudio HyperRealism</li><li>Develop AI and simulation for industrial use</li><li>Create synthetic datasets for robotics applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=robot%20simulation">Robot Simulation</a></li><li><a href="/us/?q=3d%20cad%20software">3d CAD Software</a></li><li><a href="/us/?q=nvidia%20omniverse">Nvidia Omniverse</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Milpitas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$20 – $34 / hour</span></dd></div><div><dt>Eligibility</dt><dd>PhD/Master&#39;s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787870499001"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/abb-physical-ai-robotics-simulation-intern-fall-2026-4460130077">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,7 +197,6 @@
 
     
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

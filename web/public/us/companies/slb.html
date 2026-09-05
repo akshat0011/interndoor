@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,8 +102,10 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">S<img src="/logos/slb.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>SLB internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, SLB is hiring interns in the US right now.</b> One engineering internship is open, based in Houma, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
@@ -103,16 +116,19 @@
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/slb-maintenance-engineer-trainee-4461448263">
-        <span class="rc-t">Maintenance Engineer Trainee</span>
-        <span class="rc-sub">Equipment analysis</span>
-        <span class="rc-facts"><span class="f-item">Houma</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788582157522">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/slb-maintenance-engineer-trainee-4461448263">Maintenance Engineer Trainee</a></h3>
+          <span class="rc-sub">Equipment analysis</span>
+          <ul class="rc-do"><li>Analyze equipment performance to improve reliability and reduce service costs</li><li>Track maintenance data to support continuous improvement initiatives</li><li>Collaborate on technical audits and compliance checks for maintenance processes</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Houma</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788582157522"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/slb-maintenance-engineer-trainee-4461448263">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -144,7 +160,6 @@
 
     
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">
@@ -91,34 +102,44 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">P<img src="/logos/philips.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Philips internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
 
-    
+    <p class="hub-answer-line"><b>Yes, Philips is hiring interns in India right now.</b> 2 engineering internships are open, across Pune Division and Bengaluru, on-site. We re-check this page every 30 minutes.</p>
+
+    <dl class="hub-answer"><div class="ans">
+        <dt>Where</dt><dd>Pune Division · Bengaluru<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>1<p>C</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/philips-intern-embedded-system-4457939009">
-        <span class="rc-t">Intern - Embedded System</span>
-        <span class="rc-sub">Embedded Systems Design</span>
-        <span class="rc-facts"><span class="f-item">Pune Division</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787745173929">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/philips-apprentice-trainee-software-developer-4451156775">
-        <span class="rc-t">Apprentice Trainee (Software Developer)</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item">Bengaluru</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786362904740">Posted <time datetime="2026-08-10">10 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/philips-intern-embedded-system-4457939009">Intern - Embedded System</a></h3>
+          <span class="rc-sub">Embedded Systems Design</span>
+          <ul class="rc-do"><li>Design and test embedded systems for medical devices</li><li>Work with c and c++ in a team of engineers</li><li>Based in pune with potential for full-time role</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=c">C</a></li><li><a href="/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Pune Division</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1787745173929"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/philips-intern-embedded-system-4457939009">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/philips-apprentice-trainee-software-developer-4451156775">Apprentice Trainee (Software Developer)</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Develop software solutions for healthcare devices</li><li>Work with c# and .net framework</li><li>Collaborate with cross-functional teams in bengaluru</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/c-sharp">C#</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Bengaluru</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1786362904740"><time datetime="2026-08-10">10 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/philips-apprentice-trainee-software-developer-4451156775">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     
@@ -138,49 +159,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Philips&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/silicon-labs">
-          <span class="tile-crest" aria-hidden="true">SL<img src="/logos/silicon-labs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon Labs</span></span>
-        </a><a class="dir-card" href="/companies/intuit">
-          <span class="tile-crest" aria-hidden="true">I<img src="/logos/intuit.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Intuit</span></span>
-        </a><a class="dir-card" href="/companies/volvo-group">
-          <span class="tile-crest" aria-hidden="true">VG<img src="/logos/volvo-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Volvo Group</span></span>
-        </a><a class="dir-card" href="/companies/harman-india">
-          <span class="tile-crest" aria-hidden="true">HI<img src="/logos/harman-india.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">HARMAN India</span></span>
-        </a><a class="dir-card" href="/companies/qualcomm">
-          <span class="tile-crest" aria-hidden="true">Q<img src="/logos/qualcomm.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Qualcomm</span></span>
-        </a><a class="dir-card" href="/companies/wells-fargo">
-          <span class="tile-crest" aria-hidden="true">WF<img src="/logos/wells-fargo.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Wells Fargo</span></span>
-        </a><a class="dir-card" href="/companies/siemens-healthineers">
-          <span class="tile-crest" aria-hidden="true">SH<img src="/logos/siemens-healthineers.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Siemens Healthineers</span></span>
-        </a><a class="dir-card" href="/companies/hewlett-packard-enterprise">
-          <span class="tile-crest" aria-hidden="true">HP<img src="/logos/hewlett-packard-enterprise.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Hewlett Packard Enterprise</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

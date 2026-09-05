@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">
@@ -91,34 +102,44 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">ST<img src="/logos/seagate-technology.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Seagate Technology internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
 
-    
+    <p class="hub-answer-line"><b>Yes, Seagate Technology is hiring interns in India right now.</b> 2 engineering internships are open, based in Pune Division, on-site. We re-check this page every 30 minutes.</p>
+
+    <dl class="hub-answer"><div class="ans">
+        <dt>Where</dt><dd>Pune Division<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>6<p>Sap S/4hana, Bom, Mrp</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/seagate-technology-intern-sap-mm-4450084755">
-        <span class="rc-t">Intern - SAP MM</span>
-        <span class="rc-sub">SAP MM consulting</span>
-        <span class="rc-facts"><span class="f-item">Pune Division</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786095093637">Posted <time datetime="2026-08-07">7 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/seagate-technology-intern-sap-pp-4450040519">
-        <span class="rc-t">Intern - SAP PP</span>
-        <span class="rc-sub">SAP PP functional support</span>
-        <span class="rc-facts"><span class="f-item">Pune Division</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786073500071">Posted <time datetime="2026-08-07">7 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/seagate-technology-intern-sap-mm-4450084755">Intern - SAP MM</a></h3>
+          <span class="rc-sub">SAP MM consulting</span>
+          <ul class="rc-do"><li>Support SAP MM consultants with testing, documentation, and issue tracking</li><li>Validate material master and vendor master data across procurement workflows</li><li>Prepare test scenarios and support user acceptance testing for SAP S/4HANA</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=sap%20s%2F4hana">Sap S/4hana</a></li><li><a href="/?q=sap%20mm">Sap Mm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Pune Division</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1786095093637"><time datetime="2026-08-07">7 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/seagate-technology-intern-sap-mm-4450084755">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/seagate-technology-intern-sap-pp-4450040519">Intern - SAP PP</a></h3>
+          <span class="rc-sub">SAP PP functional support</span>
+          <ul class="rc-do"><li>Support SAP PP functional modules, master data validation, and testing</li><li>Validate BOMs, routings, work centers, and material requirements planning</li><li>Document test results, analyze support issues, and assist business users</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=sap%20pp">Sap Pp</a></li><li><a href="/?q=bom">Bom</a></li><li><a href="/?q=mrp">Mrp</a></li><li><a href="/?q=sap%20s%2F4hana">Sap S/4hana</a></li><li><a href="/?q=uat">Uat</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Pune Division</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1786073500071"><time datetime="2026-08-07">7 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/seagate-technology-intern-sap-pp-4450040519">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     
@@ -143,7 +164,6 @@
 
     
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

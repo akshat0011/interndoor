@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">N<img src="/logos/nokia.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Nokia internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Nokia is hiring interns in the US right now.</b> 5 engineering internships are open, across San Jose, Sunnyvale and Raleigh. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>San Jose · Sunnyvale · Raleigh</dd></div></dl>
+        <dt>Where</dt><dd>San Jose · Sunnyvale · Raleigh</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>19<p>Python, Cleanroom Protocols, Coding</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/nokia-ai-agent-development-co-op-4461409300">
-        <span class="rc-t">AI-Agent Development Co-op</span>
-        <span class="rc-sub">AI Agent Engineer</span>
-        <span class="rc-facts"><span class="f-item">San Jose</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788554570055">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/nokia-apprentice-fabrication-process-operator-4449894350">
-        <span class="rc-t">Apprentice Fabrication Process Operator</span>
-        <span class="rc-sub">Semiconductor Operator</span>
-        <span class="rc-facts"><span class="f-item">Sunnyvale</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788348949476">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/nokia-customer-engineering-co-op-4457727079">
-        <span class="rc-t">Customer Engineering Co-op</span>
-        <span class="rc-sub">Network Testing</span>
-        <span class="rc-facts"><span class="f-item">Raleigh</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787798612506">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/nokia-data-analytics-and-ai-co-op-4456961719">
-        <span class="rc-t">Data Analytics &amp; AI Co-op</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item">Coppell</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787690571249">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/nokia-deepfield-software-engineer-co-op-4456949805">
-        <span class="rc-t">Deepfield Software Engineer Co-op</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787690568690">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/nokia-ai-agent-development-co-op-4461409300">AI-Agent Development Co-op</a></h3>
+          <span class="rc-sub">AI Agent Engineer</span>
+          <ul class="rc-do"><li>Design and refine AI agents to help engineers write test plans and analyze results</li><li>Work with Python, Git, and tools like Jira to integrate agents into engineering workflows</li><li>Collaborate with optical test engineers to automate repetitive tasks and improve reliability</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/?q=jira">Jira</a></li><li><a href="/us/?q=llms">LLMS</a></li><li><a href="/us/?q=prompt%20engineering">Prompt Engineering</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Jose</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788554570055"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/nokia-ai-agent-development-co-op-4461409300">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/nokia-apprentice-fabrication-process-operator-4449894350">Apprentice Fabrication Process Operator</a></h3>
+          <span class="rc-sub">Semiconductor Operator</span>
+          <ul class="rc-do"><li>Operate semiconductor processing and testing equipment</li><li>Work 12-hour shifts with overtime and shift differential pay</li><li>Receive hands-on training and certification in fab operations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=cleanroom%20protocols">Cleanroom Protocols</a></li><li><a href="/us/?q=math%20skills">Math Skills</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Sunnyvale</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788348949476"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/nokia-apprentice-fabrication-process-operator-4449894350">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/nokia-customer-engineering-co-op-4457727079">Customer Engineering Co-op</a></h3>
+          <span class="rc-sub">Network Testing</span>
+          <ul class="rc-do"><li>Configure and maintain lab network systems and test environments</li><li>Support testing and troubleshooting of deployment configurations</li><li>Manage virtual machines and demo environments</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=layer%202%20%2F%20layer%203%20networking">Layer 2 / Layer 3 Networking</a></li><li><a href="/us/?q=problem%20solving">Problem Solving</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Raleigh</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787798612506"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/nokia-customer-engineering-co-op-4457727079">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/nokia-data-analytics-and-ai-co-op-4456961719">Data Analytics &amp; AI Co-op</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Build and improve analytical solutions with data visualization tools</li><li>Work with sql python or r for data processing and modeling</li><li>Support forecasting accuracy and data reliability initiatives</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=r">R</a></li><li><a href="/us/?q=time-series%20analysis">Time-series Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Coppell</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787690571249"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/nokia-data-analytics-and-ai-co-op-4456961719">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/nokia-deepfield-software-engineer-co-op-4456949805">Deepfield Software Engineer Co-op</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Write clean code using LLM tools like codex and cursor</li><li>Debug and fix defects in software systems</li><li>Work in hybrid setup with flexible hours</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/skills/javascript">Javascript</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787690568690"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/nokia-deepfield-software-engineer-co-op-4456949805">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,49 +197,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Nokia&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/apptronik">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/apptronik.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Apptronik</span></span>
-        </a><a class="dir-card" href="/us/companies/walt-disney-world">
-          <span class="tile-crest" aria-hidden="true">WD<img src="/logos/walt-disney-world.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Walt Disney World</span></span>
-        </a><a class="dir-card" href="/us/companies/palantir">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/palantir.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Palantir</span></span>
-        </a><a class="dir-card" href="/us/companies/the-walt-disney-company">
-          <span class="tile-crest" aria-hidden="true">TW<img src="/logos/the-walt-disney-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">The Walt Disney Company</span></span>
-        </a><a class="dir-card" href="/us/companies/ge-vernova">
-          <span class="tile-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Vernova</span></span>
-        </a><a class="dir-card" href="/us/companies/point72">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/point72.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Point72</span></span>
-        </a><a class="dir-card" href="/us/companies/synopsys-inc">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/synopsys-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Synopsys Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/barclays">
-          <span class="tile-crest" aria-hidden="true">B<img src="/logos/barclays.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Barclays</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">
@@ -91,36 +102,45 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>GE Vernova internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, GE Vernova is hiring interns in India right now.</b> 2 engineering internships are open, across Noida and Bengaluru, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Noida · Bengaluru<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Noida · Bengaluru<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>11<p>Autocad, C/c++, Matlab/simulink</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/ge-vernova-graduate-engineering-trainee-4445934063">
-        <span class="rc-t">Graduate Engineering Trainee</span>
-        <span class="rc-sub">Engineering Rotation</span>
-        <span class="rc-facts"><span class="f-item">Noida</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787312308549">Posted <time datetime="2026-08-21">21 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/ge-vernova-intern-4456494909">
-        <span class="rc-t">Intern</span>
-        <span class="rc-sub">AI Research</span>
-        <span class="rc-facts"><span class="f-item">Bengaluru</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787225774503">Posted <time datetime="2026-08-20">20 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/ge-vernova-graduate-engineering-trainee-4445934063">Graduate Engineering Trainee</a></h3>
+          <span class="rc-sub">Engineering Rotation</span>
+          <ul class="rc-do"><li>Work on engineering studies, designs, simulations, and tests across multiple departments</li><li>Rotate through engineering functions with hands-on lab and commissioning experiences</li><li>Collaborate on group projects and present to executive managers in real-world settings</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=matlab%2Fsimulink">Matlab/simulink</a></li><li><a href="/?q=autocad">Autocad</a></li><li><a href="/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/?q=power%20systems">Power Systems</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Noida</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787312308549"><time datetime="2026-08-21">21 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/ge-vernova-graduate-engineering-trainee-4445934063">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/ge-vernova-intern-4456494909">Intern</a></h3>
+          <span class="rc-sub">AI Research</span>
+          <ul class="rc-do"><li>Design and develop research experiments in time series analysis and deep learning</li><li>Implement ai/ml algorithms in python with torch or tensorflow</li><li>Analyze results and derive insights for model refinement</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/python">Python</a></li><li><a href="/skills/pytorch">Pytorch</a></li><li><a href="/skills/tensorflow">Tensorflow</a></li><li><a href="/skills/numpy">Numpy</a></li><li><a href="/skills/pandas">Pandas</a></li><li><a href="/?q=matplotlib">Matplotlib</a></li><li><a href="/?q=opencv">Opencv</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Bengaluru</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787225774503"><time datetime="2026-08-20">20 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/ge-vernova-intern-4456494909">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -158,49 +178,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as GE Vernova&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/d-square-consulting-services-pvt-ltd">
-          <span class="tile-crest" aria-hidden="true">DS<img src="/logos/d-square-consulting-services-pvt-ltd.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">D Square Consulting Services Pvt Ltd</span></span>
-        </a><a class="dir-card" href="/companies/larsen-and-toubro">
-          <span class="tile-crest" aria-hidden="true">LT<img src="/logos/larsen-and-toubro.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Larsen &amp; Toubro</span></span>
-        </a><a class="dir-card" href="/companies/pixxel">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/pixxel.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Pixxel</span></span>
-        </a><a class="dir-card" href="/companies/eclerx">
-          <span class="tile-crest" aria-hidden="true">E<img src="/logos/eclerx.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">eClerx</span></span>
-        </a><a class="dir-card" href="/companies/tower-research-capital">
-          <span class="tile-crest" aria-hidden="true">TR</span>
-          <span class="dir-t"><span class="dir-name">Tower Research Capital</span></span>
-        </a><a class="dir-card" href="/companies/west-pharmaceutical-services">
-          <span class="tile-crest" aria-hidden="true">WP<img src="/logos/west-pharmaceutical-services.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">West Pharmaceutical Services</span></span>
-        </a><a class="dir-card" href="/companies/bnp-paribas">
-          <span class="tile-crest" aria-hidden="true">BP<img src="/logos/bnp-paribas.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">BNP Paribas</span></span>
-        </a><a class="dir-card" href="/companies/nkt">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/nkt.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">NKT</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

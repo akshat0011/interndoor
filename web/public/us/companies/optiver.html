@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,85 +88,112 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">O<img src="/logos/optiver.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Optiver internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>8 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>8 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Optiver is hiring interns in the US right now.</b> 8 engineering internships are open, across Chicago and Austin, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$70k – $100k<p>stated on 4 of 8 roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Chicago · Austin<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Chicago · Austin<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>11<p>Python, C++, Java</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>8</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/optiver-quantitative-intern-summer-2027-4432393955">
-        <span class="rc-t">Quantitative Intern (Summer 2027)</span>
-        <span class="rc-sub">Quantitative analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$70,000 – $88,000</span><span class="f-item">Chicago</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788600612746">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432707636">
-        <span class="rc-t">Quantitative Research Intern, PhD (Summer 2027)</span>
-        <span class="rc-sub">Quantitative Research</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788516705271">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-software-engineer-intern-summer-2027-austin-4432396869">
-        <span class="rc-t">Software Engineer Intern (Summer 2027 - Austin)</span>
-        <span class="rc-sub">Trading Systems Development</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788516677812">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-software-engineer-intern-summer-2027-chicago-4432712463">
-        <span class="rc-t">Software Engineer Intern (Summer 2027 - Chicago)</span>
-        <span class="rc-sub">Trading Systems Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$80,000</span><span class="f-item">Chicago</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788516178428">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432703755">
-        <span class="rc-t">Quantitative Research Intern, PhD (Summer 2027)</span>
-        <span class="rc-sub">Quantitative Research</span>
-        <span class="rc-facts"><span class="f-item is-cash">$80,000 – $100,000</span><span class="f-item">Chicago</span><span class="f-item">PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788516154651">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625">
-        <span class="rc-t">FPGA Engineer Intern (Summer 2027 - Austin)</span>
-        <span class="rc-sub">FPGA Hardware Design</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788430272747">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-chicago-4440469024">
-        <span class="rc-t">FPGA Engineer Intern (Summer 2027 - Chicago)</span>
-        <span class="rc-sub">FPGA Hardware Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$80,000</span><span class="f-item">Chicago</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788341581302">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/optiver-quantitative-intern-summer-2027-4448042945">
-        <span class="rc-t">Quantitative Intern (Summer 2027)</span>
-        <span class="rc-sub">Quantitative Research</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823943379">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>8 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-quantitative-intern-summer-2027-4432393955">Quantitative Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Quantitative analysis</span>
+          <ul class="rc-do"><li>Analyze market data and test trading strategies using python</li><li>Work with traders and researchers on real-world financial problems</li><li>Gain hands-on experience with ai and quantitative tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=mathematics">Mathematics</a></li><li><a href="/us/?q=probability">Probability</a></li><li><a href="/us/?q=statistics">Statistics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$70,000 – $88,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788600612746"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-quantitative-intern-summer-2027-4432393955">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432707636">Quantitative Research Intern, PhD (Summer 2027)</a></h3>
+          <span class="rc-sub">Quantitative Research</span>
+          <ul class="rc-do"><li>Build predictive models and analyze market data to identify trading opportunities</li><li>Use machine learning and statistical tools to improve trading performance</li><li>Work with researchers and traders on real-world financial problems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=programming">Programming</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788516705271"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432707636">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-software-engineer-intern-summer-2027-austin-4432396869">Software Engineer Intern (Summer 2027 - Austin)</a></h3>
+          <span class="rc-sub">Trading Systems Development</span>
+          <ul class="rc-do"><li>Write clean code for real trading systems</li><li>Use c++ python or java in production</li><li>Work with traders and engineers on impactful projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788516677812"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-software-engineer-intern-summer-2027-austin-4432396869">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-software-engineer-intern-summer-2027-chicago-4432712463">Software Engineer Intern (Summer 2027 - Chicago)</a></h3>
+          <span class="rc-sub">Trading Systems Development</span>
+          <ul class="rc-do"><li>Write clean code for real trading systems that go live</li><li>Work with C++, Python, and Java in high-performance environments</li><li>Mentorship from senior engineers on global financial platforms</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/java">Java</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$80,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788516178428"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-software-engineer-intern-summer-2027-chicago-4432712463">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432703755">Quantitative Research Intern, PhD (Summer 2027)</a></h3>
+          <span class="rc-sub">Quantitative Research</span>
+          <ul class="rc-do"><li>Build predictive models and machine learning systems for market behavior</li><li>Analyze large-scale market data to identify trading opportunities</li><li>Work with researchers and traders on AI-driven financial strategies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=programming">Programming</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$80,000 – $100,000</span></dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788516154651"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-quantitative-research-intern-phd-summer-2027-4432703755">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625">FPGA Engineer Intern (Summer 2027 - Austin)</a></h3>
+          <span class="rc-sub">FPGA Hardware Design</span>
+          <ul class="rc-do"><li>Design high-speed hardware for trading systems</li><li>Work with VHDL/Verilog on real-world FPGA projects</li><li>Collaborate with traders and engineers on low-latency solutions</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=system%20verilog">System Verilog</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788430272747"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-austin-4440494625">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-chicago-4440469024">FPGA Engineer Intern (Summer 2027 - Chicago)</a></h3>
+          <span class="rc-sub">FPGA Hardware Design</span>
+          <ul class="rc-do"><li>Design and implement FPGA solutions for trading systems with nanosecond response times</li><li>Work with mentors on real projects using VHDL, Verilog, and System Verilog</li><li>Collaborate with traders, developers, and engineers on low-latency hardware</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/vhdl">Vhdl</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=system%20verilog">System Verilog</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$80,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788341581302"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-fpga-engineer-intern-summer-2027-chicago-4440469024">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/optiver-quantitative-intern-summer-2027-4448042945">Quantitative Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Quantitative Research</span>
+          <ul class="rc-do"><li>Analyze market data and test trading strategies</li><li>Use python for quantitative research and tool development</li><li>Work with traders and engineers on real-world financial problems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=mathematics">Mathematics</a></li><li><a href="/us/?q=statistics">Statistics</a></li><li><a href="/us/?q=probability">Probability</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823943379"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/optiver-quantitative-intern-summer-2027-4448042945">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -193,49 +231,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Optiver&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/capital-one">
-          <span class="tile-crest" aria-hidden="true">CO<img src="/logos/capital-one.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Capital One</span></span>
-        </a><a class="dir-card" href="/us/companies/microchip-technology-inc">
-          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/microchip-technology-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Microchip Technology Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/spacex">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/spacex.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SpaceX</span></span>
-        </a><a class="dir-card" href="/us/companies/ambarella">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/ambarella.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Ambarella</span></span>
-        </a><a class="dir-card" href="/us/companies/vislab-an-ambarella-inc-company">
-          <span class="tile-crest" aria-hidden="true">VA<img src="/logos/vislab-an-ambarella-inc-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">VisLab (an Ambarella Inc. company)</span></span>
-        </a><a class="dir-card" href="/us/companies/marvell-technology">
-          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/marvell-technology.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Marvell Technology</span></span>
-        </a><a class="dir-card" href="/us/companies/modal-labs">
-          <span class="tile-crest" aria-hidden="true">ML<img src="/logos/modal-labs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Modal Labs</span></span>
-        </a><a class="dir-card" href="/us/companies/jump-trading">
-          <span class="tile-crest" aria-hidden="true">JT<img src="/logos/jump-trading.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Jump Trading</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

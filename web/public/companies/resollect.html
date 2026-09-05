@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,28 +88,34 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">R<img src="/logos/resollect.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Resollect internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Resollect is hiring interns in India right now.</b> One engineering internship is open, based in Mumbai, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Mumbai<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Mumbai<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>7<p>Django, Fastapi, Javascript</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/resollect-tech-intern-4451182566">
-        <span class="rc-t">Tech Intern</span>
-        <span class="rc-sub">Feature Development</span>
-        <span class="rc-facts"><span class="f-item">Mumbai</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786370789911">Posted <time datetime="2026-08-10">10 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/resollect-tech-intern-4451182566">Tech Intern</a></h3>
+          <span class="rc-sub">Feature Development</span>
+          <ul class="rc-do"><li>Build and ship features across stack, backend, frontend, or AI integration</li><li>Work with AI/LLM APIs, debug live product issues, and write technical docs</li><li>6-month paid internship with potential full-time conversion for 2026/27 grads</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/python">Python</a></li><li><a href="/skills/javascript">Javascript</a></li><li><a href="/skills/react">React</a></li><li><a href="/?q=next.js">Next.js</a></li><li><a href="/?q=fastapi">Fastapi</a></li><li><a href="/?q=django">Django</a></li><li><a href="/?q=node">Node</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mumbai</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786370789911"><time datetime="2026-08-10">10 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/resollect-tech-intern-4451182566">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -135,40 +152,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Resollect&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/interloop-zoho-partner-manage-engine-managed-hr-services">
-          <span class="tile-crest" aria-hidden="true">IZ<img src="/logos/interloop-zoho-partner-manage-engine-managed-hr-services.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Interloop - Zoho Partner| Manage Engine | Managed HR Services</span></span>
-        </a><a class="dir-card" href="/companies/joveo">
-          <span class="tile-crest" aria-hidden="true">J<img src="/logos/joveo.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Joveo</span></span>
-        </a><a class="dir-card" href="/companies/janitri">
-          <span class="tile-crest" aria-hidden="true">J<img src="/logos/janitri.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Janitri</span></span>
-        </a><a class="dir-card" href="/companies/colgate-palmolive">
-          <span class="tile-crest" aria-hidden="true">CP<img src="/logos/colgate-palmolive.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Colgate-Palmolive</span></span>
-        </a><a class="dir-card" href="/companies/state-street">
-          <span class="tile-crest" aria-hidden="true">SS<img src="/logos/state-street.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">State Street</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

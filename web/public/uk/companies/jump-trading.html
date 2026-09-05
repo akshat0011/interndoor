@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/uk">Internships</a>
+      <a href="/uk/companies" aria-current="page">Companies</a>
+      <a href="/uk/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="GB">
         <summary aria-label="Change region — currently United Kingdom">
@@ -91,149 +102,200 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">JT<img src="/logos/jump-trading.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Jump Trading internships in the UK</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>16 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>16 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Jump Trading is hiring interns in the UK right now.</b> 16 engineering internships are open, across London, Amsterdam and Paris. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
         <dt>Where</dt><dd>London · Amsterdam · Paris</dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>30<p>Python, C++, Machine Learning</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>16</b></h2></div>
-      <div class="roles"><a class="role-card" href="/uk/jobs/jump-trading-campus-systems-engineer-full-time-ats-greenhouse-jumptrading-7215943">
-        <span class="rc-t">Campus Systems Engineer (Full-Time)</span>
-        <span class="rc-sub">Systems Engineer</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Computer Science/Engineering</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787150917000">Posted <time datetime="2026-08-19">19 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-ml-research-engineer-full-time-ats-greenhouse-jumptrading-7977132">
-        <span class="rc-t">Campus ML Research Engineer (Full-Time)</span>
-        <span class="rc-sub">Ml systems engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787091653000">Posted <time datetime="2026-08-18">18 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-full-time-ats-greenhouse-jumptrading-7976923">
-        <span class="rc-t">Campus AI Researcher, PhD/Postdoc (Full-Time)</span>
-        <span class="rc-sub">AI Research</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787091578000">Posted <time datetime="2026-08-18">18 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-quantitative-trader-full-time-ats-greenhouse-jumptrading-8050801">
-        <span class="rc-t">Campus Quantitative Trader (Full-Time)</span>
-        <span class="rc-sub">Quantitative Trader</span>
-        <span class="rc-facts"><span class="f-item">London · Amsterdam</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786165309000">Posted <time datetime="2026-08-08">8 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-quantitative-researcher-full-time-ats-greenhouse-jumptrading-8050796">
-        <span class="rc-t">Campus Quantitative Researcher (Full-Time)</span>
-        <span class="rc-sub">Quantitative research</span>
-        <span class="rc-facts"><span class="f-item">London · Amsterdam</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786165309000">Posted <time datetime="2026-08-08">8 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-crypto-researcher-full-time-ats-greenhouse-jumptrading-7217856">
-        <span class="rc-t">Campus Crypto Researcher (Full-Time)</span>
-        <span class="rc-sub">Crypto Research</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Computer Science/Mathematics/Physics</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786165285000">Posted <time datetime="2026-08-08">8 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-ui-software-engineer-intern-ats-greenhouse-jumptrading-7974943">
-        <span class="rc-t">Campus UI Software Engineer (Intern)</span>
-        <span class="rc-sub">UI software engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-systems-engineer-intern-ats-greenhouse-jumptrading-8000323">
-        <span class="rc-t">Campus Systems Engineer (Intern)</span>
-        <span class="rc-sub">Systems engineering</span>
-        <span class="rc-facts"><span class="f-item">London · Amsterdam</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-software-engineer-intern-ats-greenhouse-jumptrading-7975026">
-        <span class="rc-t">Campus Software Engineer (Intern)</span>
-        <span class="rc-sub">Backend software engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-quantitative-researcher-m1-m2-intern-ats-greenhouse-jumptrading-8059384">
-        <span class="rc-t">Campus Quantitative Researcher (M1/M2 Intern)</span>
-        <span class="rc-sub">Quantitative research</span>
-        <span class="rc-facts"><span class="f-item">London · Paris</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-quantitative-researcher-intern-ats-greenhouse-jumptrading-8010307">
-        <span class="rc-t">Campus Quantitative Researcher (Intern)</span>
-        <span class="rc-sub">Quantitative research</span>
-        <span class="rc-facts"><span class="f-item">London · Amsterdam</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-ml-research-engineer-intern-ats-greenhouse-jumptrading-7977145">
-        <span class="rc-t">Campus ML Research Engineer (Intern)</span>
-        <span class="rc-sub">Machine learning engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-fpga-engineer-intern-ats-greenhouse-jumptrading-7974391">
-        <span class="rc-t">Campus FPGA Engineer (Intern)</span>
-        <span class="rc-sub">FPGA hardware engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-data-engineer-intern-ats-greenhouse-jumptrading-7975008">
-        <span class="rc-t">Campus Data Engineer (Intern)</span>
-        <span class="rc-sub">Data engineering</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-asic-engineer-intern-ats-greenhouse-jumptrading-7974837">
-        <span class="rc-t">Campus ASIC Engineer (Intern)</span>
-        <span class="rc-sub">ASIC hardware engineering</span>
-        <span class="rc-facts"><span class="f-item">Bristol</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-intern-ats-greenhouse-jumptrading-7976964">
-        <span class="rc-t">Campus AI Researcher, PhD/Postdoc (Intern)</span>
-        <span class="rc-sub">AI research</span>
-        <span class="rc-facts"><span class="f-item">London</span><span class="f-item">PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1784937603000">Posted <time datetime="2026-07-25">25 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>16 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-systems-engineer-full-time-ats-greenhouse-jumptrading-7215943">Campus Systems Engineer (Full-Time)</a></h3>
+          <span class="rc-sub">Systems Engineer</span>
+          <ul class="rc-do"><li>Optimize trading environment and solve system issues</li><li>Work with linux, python, and network infrastructure</li><li>Collaborate with traders and risk teams on production changes</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/?q=linux">Linux</a></li><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/?q=networking">Networking</a></li><li><a href="/uk/?q=shell%20scripts">Shell Scripts</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Computer Science/Engineering</dd></div><div><dt>Posted</dt><dd><span data-ago="1787150917000"><time datetime="2026-08-19">19 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-systems-engineer-full-time-ats-greenhouse-jumptrading-7215943">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-ml-research-engineer-full-time-ats-greenhouse-jumptrading-7977132">Campus ML Research Engineer (Full-Time)</a></h3>
+          <span class="rc-sub">Ml systems engineering</span>
+          <ul class="rc-do"><li>Build ml systems for financial markets using gpu and hpc</li><li>Work with researchers and quants on production models</li><li>Optimize training pipelines and reduce iteration time</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/?q=pytorch">Pytorch</a></li><li><a href="/uk/?q=cuda">Cuda</a></li><li><a href="/uk/?q=tensorflow">Tensorflow</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787091653000"><time datetime="2026-08-18">18 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-ml-research-engineer-full-time-ats-greenhouse-jumptrading-7977132">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-full-time-ats-greenhouse-jumptrading-7976923">Campus AI Researcher, PhD/Postdoc (Full-Time)</a></h3>
+          <span class="rc-sub">AI Research</span>
+          <ul class="rc-do"><li>Implement research projects from concept to production</li><li>Work with ML frameworks like PyTorch and TensorFlow</li><li>Collaborate with traders and researchers on predictive models</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/?q=pytorch">Pytorch</a></li><li><a href="/uk/?q=tensorflow">Tensorflow</a></li><li><a href="/uk/?q=cuda">Cuda</a></li><li><a href="/uk/?q=jax">Jax</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787091578000"><time datetime="2026-08-18">18 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-full-time-ats-greenhouse-jumptrading-7976923">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-quantitative-trader-full-time-ats-greenhouse-jumptrading-8050801">Campus Quantitative Trader (Full-Time)</a></h3>
+          <span class="rc-sub">Quantitative Trader</span>
+          <ul class="rc-do"><li>Analyze market data to build trading strategies</li><li>Work with traders on global financial markets</li><li>Participate in mock trading and risk training</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/?q=probabilistic%20thinking">Probabilistic Thinking</a></li><li><a href="/uk/?q=mathematical%20reasoning">Mathematical Reasoning</a></li><li><a href="/uk/?q=programming">Programming</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London · Amsterdam</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786165309000"><time datetime="2026-08-08">8 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-quantitative-trader-full-time-ats-greenhouse-jumptrading-8050801">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-quantitative-researcher-full-time-ats-greenhouse-jumptrading-8050796">Campus Quantitative Researcher (Full-Time)</a></h3>
+          <span class="rc-sub">Quantitative research</span>
+          <ul class="rc-do"><li>Build predictive models from big data and develop algorithms for automated trading</li><li>Use python, r, c++, and machine learning on a global supercomputer</li><li>Train in trading, programming, and quant research with expert mentors</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/?q=r">R</a></li><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/skills/machine-learning">Machine Learning</a></li><li><a href="/uk/?q=statistics">Statistics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London · Amsterdam</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786165309000"><time datetime="2026-08-08">8 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-quantitative-researcher-full-time-ats-greenhouse-jumptrading-8050796">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-crypto-researcher-full-time-ats-greenhouse-jumptrading-7217856">Campus Crypto Researcher (Full-Time)</a></h3>
+          <span class="rc-sub">Crypto Research</span>
+          <ul class="rc-do"><li>Analyze crypto trends and translate into product or investment strategies</li><li>Collaborate with senior researchers and engineers on technical projects</li><li>Produce reports and insights to guide strategic decisions and partnerships</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/?q=blockchain%20development">Blockchain Development</a></li><li><a href="/uk/?q=distributed%20systems">Distributed Systems</a></li><li><a href="/uk/?q=consensus%20algorithms">Consensus Algorithms</a></li><li><a href="/uk/?q=smart%20contracts">Smart Contracts</a></li><li><a href="/uk/?q=cryptography">Cryptography</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Computer Science/Mathematics/Physics</dd></div><div><dt>Posted</dt><dd><span data-ago="1786165285000"><time datetime="2026-08-08">8 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-crypto-researcher-full-time-ats-greenhouse-jumptrading-7217856">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-ui-software-engineer-intern-ats-greenhouse-jumptrading-7974943">Campus UI Software Engineer (Intern)</a></h3>
+          <span class="rc-sub">UI software engineering</span>
+          <ul class="rc-do"><li>Build web-based applications interacting with trading platforms</li><li>Write production code using TypeScript, Python, and web frameworks</li><li>Complete an intensive 10-week summer or off-cycle internship</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/?q=typescript">Typescript</a></li><li><a href="/uk/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-ui-software-engineer-intern-ats-greenhouse-jumptrading-7974943">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-systems-engineer-intern-ats-greenhouse-jumptrading-8000323">Campus Systems Engineer (Intern)</a></h3>
+          <span class="rc-sub">Systems engineering</span>
+          <ul class="rc-do"><li>Monitor health and performance of the live trading platform</li><li>Troubleshoot complex system and networking infrastructure issues</li><li>Build automation scripts for the production environment using Linux</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/?q=linux">Linux</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London · Amsterdam</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-systems-engineer-intern-ats-greenhouse-jumptrading-8000323">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-software-engineer-intern-ats-greenhouse-jumptrading-7975026">Campus Software Engineer (Intern)</a></h3>
+          <span class="rc-sub">Backend software engineering</span>
+          <ul class="rc-do"><li>Design, code, test, and maintain distributed trading systems</li><li>Learn high-performance infrastructure using C++ and Python</li><li>Complete a 10-week core development internship in London</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-software-engineer-intern-ats-greenhouse-jumptrading-7975026">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-quantitative-researcher-m1-m2-intern-ats-greenhouse-jumptrading-8059384">Campus Quantitative Researcher (M1/M2 Intern)</a></h3>
+          <span class="rc-sub">Quantitative research</span>
+          <ul class="rc-do"><li>Undertake an intensive research project and hands-on training with trading mentors</li><li>C++ and Python</li><li>Designed for students from French schools requiring M1/M2 research internships</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London · Paris</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-quantitative-researcher-m1-m2-intern-ats-greenhouse-jumptrading-8059384">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-quantitative-researcher-intern-ats-greenhouse-jumptrading-8010307">Campus Quantitative Researcher (Intern)</a></h3>
+          <span class="rc-sub">Quantitative research</span>
+          <ul class="rc-do"><li>Develop predictive models and automated trading strategies for live trading</li><li>C++ and Python</li><li>10-week program involving rotations with multiple trading teams</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London · Amsterdam</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-quantitative-researcher-intern-ats-greenhouse-jumptrading-8010307">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-ml-research-engineer-intern-ats-greenhouse-jumptrading-7977145">Campus ML Research Engineer (Intern)</a></h3>
+          <span class="rc-sub">Machine learning engineering</span>
+          <ul class="rc-do"><li>Build flexible and reusable frameworks for financial machine learning</li><li>PyTorch, JAX, TensorFlow, C++, Python, and CUDA</li><li>Collaborate with research and trading teams to build state-of-the-art ML systems</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/?q=pytorch">Pytorch</a></li><li><a href="/uk/?q=jax">Jax</a></li><li><a href="/uk/?q=tensorflow">Tensorflow</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-ml-research-engineer-intern-ats-greenhouse-jumptrading-7977145">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-fpga-engineer-intern-ats-greenhouse-jumptrading-7974391">Campus FPGA Engineer (Intern)</a></h3>
+          <span class="rc-sub">FPGA hardware engineering</span>
+          <ul class="rc-do"><li>Build next-generation ultra-low-latency systems to power trading algorithms</li><li>SystemVerilog, Verilog, VHDL, C, C++, and Python</li><li>Electrical Engineering or Computer Science concentration with hardware design experience</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/?q=systemverilog">Systemverilog</a></li><li><a href="/uk/?q=verilog">Verilog</a></li><li><a href="/uk/?q=vhdl">Vhdl</a></li><li><a href="/uk/?q=c">C</a></li><li><a href="/uk/skills/c-plus-plus">C++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-fpga-engineer-intern-ats-greenhouse-jumptrading-7974391">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-data-engineer-intern-ats-greenhouse-jumptrading-7975008">Campus Data Engineer (Intern)</a></h3>
+          <span class="rc-sub">Data engineering</span>
+          <ul class="rc-do"><li>Develop and maintain infrastructure and pipelines to support firm-wide data</li><li>Python on Linux</li><li>10-week summer program in London accepting placements or extended internships</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-data-engineer-intern-ats-greenhouse-jumptrading-7975008">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-asic-engineer-intern-ats-greenhouse-jumptrading-7974837">Campus ASIC Engineer (Intern)</a></h3>
+          <span class="rc-sub">ASIC hardware engineering</span>
+          <ul class="rc-do"><li>Design, test, and bring up custom hardware products on production boards</li><li>ASIC hardware and software tools</li><li>Work on ultra-low-latency systems for trading in Bristol</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Bristol</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-asic-engineer-intern-ats-greenhouse-jumptrading-7974837">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-intern-ats-greenhouse-jumptrading-7976964">Campus AI Researcher, PhD/Postdoc (Intern)</a></h3>
+          <span class="rc-sub">AI research</span>
+          <ul class="rc-do"><li>Implement open-ended machine learning research projects from concept to production</li><li>Python, C++, PyTorch, TensorFlow, and JAX</li><li>Targeted at PhD students and postdocs with publication records</li></ul>
+          <ul class="rc-chips"><li><a href="/uk/skills/python">Python</a></li><li><a href="/uk/skills/c-plus-plus">C++</a></li><li><a href="/uk/?q=pytorch">Pytorch</a></li><li><a href="/uk/?q=tensorflow">Tensorflow</a></li><li><a href="/uk/?q=jax">Jax</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>London</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1784937603000"><time datetime="2026-07-25">25 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/uk/jobs/jump-trading-campus-ai-researcher-phd-postdoc-intern-ats-greenhouse-jumptrading-7976964">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -271,28 +333,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/uk/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Jump Trading&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/uk/companies/lendable">
-          <span class="tile-crest" aria-hidden="true">L<img src="/logos/lendable.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lendable</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/uk/data/jobs.json">
       <div class="strip-head">

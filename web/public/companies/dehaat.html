@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,36 +88,45 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">D<img src="/logos/dehaat.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>DeHaat internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>2 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>2 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, DeHaat is hiring interns in India right now.</b> 2 engineering internships are open, based in Gurugram, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Gurugram<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Gurugram<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>13<p>Python, SQL, API</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>2</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/dehaat-data-analyst-data-engineer-intern-4455603847">
-        <span class="rc-t">Data Analyst/Data Engineer Intern</span>
-        <span class="rc-sub">Data Pipeline Development</span>
-        <span class="rc-facts"><span class="f-item">Gurugram</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787210254904">Posted <time datetime="2026-08-20">20 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/jobs/dehaat-it-intern-gurugram-4452381714">
-        <span class="rc-t">IT Intern - Gurugram</span>
-        <span class="rc-sub">IT Support</span>
-        <span class="rc-facts"><span class="f-item">Gurugram</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786539863276">Posted <time datetime="2026-08-12">12 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>2 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/dehaat-data-analyst-data-engineer-intern-4455603847">Data Analyst/Data Engineer Intern</a></h3>
+          <span class="rc-sub">Data Pipeline Development</span>
+          <ul class="rc-do"><li>Build and maintain data pipelines across AWS, Redshift, and internal systems</li><li>Develop dashboards and tools using Frappe and Python</li><li>Work on real data workflows with SQL, APIs, and automation</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/sql">SQL</a></li><li><a href="/skills/python">Python</a></li><li><a href="/?q=frappe">Frappe</a></li><li><a href="/skills/aws">AWS</a></li><li><a href="/?q=api">API</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Gurugram</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1787210254904"><time datetime="2026-08-20">20 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/dehaat-data-analyst-data-engineer-intern-4455603847">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/dehaat-it-intern-gurugram-4452381714">IT Intern - Gurugram</a></h3>
+          <span class="rc-sub">IT Support</span>
+          <ul class="rc-do"><li>Support hardware software and network issues</li><li>Manage it inventory and troubleshoot connectivity</li><li>Assist with software updates and security policies</li></ul>
+          <ul class="rc-chips"><li><a href="/?q=windows">Windows</a></li><li><a href="/skills/linux">Linux</a></li><li><a href="/?q=ms%20office">Ms Office</a></li><li><a href="/?q=google%20workspace">Google Workspace</a></li><li><a href="/?q=office%20365">Office 365</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Gurugram</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1786539863276"><time datetime="2026-08-12">12 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/dehaat-it-intern-gurugram-4452381714">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -153,37 +173,6 @@
         </li></ul>
     </section>
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as DeHaat&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/trellix">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/trellix.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Trellix</span></span>
-        </a><a class="dir-card" href="/companies/signzy">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/signzy.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Signzy</span></span>
-        </a><a class="dir-card" href="/companies/fam">
-          <span class="tile-crest" aria-hidden="true">F<img src="/logos/fam.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Fam</span></span>
-        </a><a class="dir-card" href="/companies/highlevel">
-          <span class="tile-crest" aria-hidden="true">H<img src="/logos/highlevel.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">HighLevel</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

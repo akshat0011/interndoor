@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,92 +88,122 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">BU<img src="/logos/bosch-usa.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Bosch USA internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>9 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>9 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Bosch USA is hiring interns in the US right now.</b> 9 engineering internships are open, across Plymouth, Farmington Hills and Summerville, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Plymouth · Farmington Hills · Summerville<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Plymouth · Farmington Hills · Summerville<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>28<p>Python, Machine Learning, C++</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>9</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/bosch-usa-chassis-control-intern-kettering-university-co-op-section-b-jan-mar-27-4459590048">
-        <span class="rc-t">Chassis Control Intern - Kettering University Co-Op Section B (Jan-Mar &#39;27)</span>
-        <span class="rc-sub">Brake System Calibration</span>
-        <span class="rc-facts"><span class="f-item">Plymouth</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788306473986">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-software-engineering-intern-8-months-40hrs-per-week-4459267162">
-        <span class="rc-t">Software Engineering Intern (8 months/40hrs per week)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item">Farmington Hills</span><span class="f-item">B.E/M.E</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788217942239">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-calibration-intern-8-months-40-hours-per-week-4459270156">
-        <span class="rc-t">Calibration Intern (8 months/40 hours per week)</span>
-        <span class="rc-sub">Calibration Support</span>
-        <span class="rc-facts"><span class="f-item">Farmington Hills</span><span class="f-item">B.E/M.E</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788217937814">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-calibration-process-optimization-intern-8-months-40-hours-per-week-4459251722">
-        <span class="rc-t">Calibration Process Optimization Intern (8 months/40 hours per week)</span>
-        <span class="rc-sub">Calibration Tool Development</span>
-        <span class="rc-facts"><span class="f-item">Farmington Hills</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788217933472">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-ai-application-intern-8-months-40-hours-per-week-4459262267">
-        <span class="rc-t">AI Application Intern (8 months/40 hours per week)</span>
-        <span class="rc-sub">AI Automation Development</span>
-        <span class="rc-facts"><span class="f-item">Farmington Hills</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788217932952">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-calibration-process-data-science-intern-8-months-40-hours-per-week-4459262268">
-        <span class="rc-t">Calibration Process Data Science Intern (8 months/40 hours per week)</span>
-        <span class="rc-sub">Data Science Intern</span>
-        <span class="rc-facts"><span class="f-item">Farmington Hills</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788217905334">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-phone-as-a-key-software-engineering-intern-4457282449">
-        <span class="rc-t">Phone as a Key Software Engineering - Intern</span>
-        <span class="rc-sub">Software Testing</span>
-        <span class="rc-facts"><span class="f-item">Plymouth</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787764297700">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-spring-2027-key-user-supply-chain-computer-science-co-op-4456947183">
-        <span class="rc-t">Spring 2027 Key User - Supply Chain / Computer Science - Co-op</span>
-        <span class="rc-sub">System support</span>
-        <span class="rc-facts"><span class="f-item">Summerville</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787677916930">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/bosch-usa-ai-security-research-intern-4456956100">
-        <span class="rc-t">AI Security Research Intern</span>
-        <span class="rc-sub">AI Security Research</span>
-        <span class="rc-facts"><span class="f-item">Pittsburgh</span><span class="f-item">PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787677911171">Posted <time datetime="2026-08-25">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>9 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-chassis-control-intern-kettering-university-co-op-section-b-jan-mar-27-4459590048">Chassis Control Intern - Kettering University Co-Op Section B (Jan-Mar &#39;27)</a></h3>
+          <span class="rc-sub">Brake System Calibration</span>
+          <ul class="rc-do"><li>Calibrate and validate brake systems with electronic actuation and ESP</li><li>Test vehicles and software across different stages and environments</li><li>Work with test equipment and coordinate with cross-functional teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=calibration">Calibration</a></li><li><a href="/us/?q=test%20equipment">Test Equipment</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plymouth</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788306473986"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-chassis-control-intern-kettering-university-co-op-section-b-jan-mar-27-4459590048">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-software-engineering-intern-8-months-40hrs-per-week-4459267162">Software Engineering Intern (8 months/40hrs per week)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop features from design to deployment across embedded systems and cloud</li><li>Work with Go, Rust, Typescript, and Python in a small engineering team</li><li>Contribute to automated provisioning, simulation, and test bench projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/rust">Rust</a></li><li><a href="/us/skills/typescript">Typescript</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Farmington Hills</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>B.E/M.E</dd></div><div><dt>Posted</dt><dd><span data-ago="1788217942239"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-software-engineering-intern-8-months-40hrs-per-week-4459267162">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-calibration-intern-8-months-40-hours-per-week-4459270156">Calibration Intern (8 months/40 hours per week)</a></h3>
+          <span class="rc-sub">Calibration Support</span>
+          <ul class="rc-do"><li>Support calibration projects with data analysis and test script automation</li><li>Work with python and c++ on engine and vehicle performance tuning</li><li>Test vehicles in extreme environments and validate onboard diagnostics</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/simulink">Simulink</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=inca">Inca</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Farmington Hills</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>B.E/M.E</dd></div><div><dt>Posted</dt><dd><span data-ago="1788217937814"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-calibration-intern-8-months-40-hours-per-week-4459270156">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-calibration-process-optimization-intern-8-months-40-hours-per-week-4459251722">Calibration Process Optimization Intern (8 months/40 hours per week)</a></h3>
+          <span class="rc-sub">Calibration Tool Development</span>
+          <ul class="rc-do"><li>Write and run automated test scripts for calibration tools</li><li>Analyze data with python and apply machine learning techniques</li><li>Work on software in-the-loop simulations and validation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Farmington Hills</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788217933472"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-calibration-process-optimization-intern-8-months-40-hours-per-week-4459251722">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-ai-application-intern-8-months-40-hours-per-week-4459262267">AI Application Intern (8 months/40 hours per week)</a></h3>
+          <span class="rc-sub">AI Automation Development</span>
+          <ul class="rc-do"><li>Analyze code, write scripts, debug software in python</li><li>Build automation with microsoft 365 tools and ai agents</li><li>Create power bi reports and train users on tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=microsoft%20365">Microsoft 365</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/?q=ai%20agents">AI Agents</a></li><li><a href="/us/?q=automation">Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Farmington Hills</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788217932952"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-ai-application-intern-8-months-40-hours-per-week-4459262267">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-calibration-process-data-science-intern-8-months-40-hours-per-week-4459262268">Calibration Process Data Science Intern (8 months/40 hours per week)</a></h3>
+          <span class="rc-sub">Data Science Intern</span>
+          <ul class="rc-do"><li>Analyze automotive datasets to find patterns and insights</li><li>Build machine learning models for predictive analytics</li><li>Collaborate with engineers on real-world powertrain problems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=statistical%20methods">Statistical Methods</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Farmington Hills</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788217905334"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-calibration-process-data-science-intern-8-months-40-hours-per-week-4459262268">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-phone-as-a-key-software-engineering-intern-4457282449">Phone as a Key Software Engineering - Intern</a></h3>
+          <span class="rc-sub">Software Testing</span>
+          <ul class="rc-do"><li>Run unit and integration tests for vehicle systems</li><li>Work with ROS/ROS2, C/C++, Python, and CAPL</li><li>Support HIL bench setup and ASPICE Level 2 certification</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ros">Ros</a></li><li><a href="/us/?q=ros2">Ros2</a></li><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=capl">Capl</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Plymouth</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1787764297700"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-phone-as-a-key-software-engineering-intern-4457282449">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-spring-2027-key-user-supply-chain-computer-science-co-op-4456947183">Spring 2027 Key User - Supply Chain / Computer Science - Co-op</a></h3>
+          <span class="rc-sub">System support</span>
+          <ul class="rc-do"><li>Support sap systems and end-user processes with clear documentation</li><li>Analyze data to improve workflows and decision-making</li><li>Work in a dynamic team on real-world projects with multiple priorities</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=sap">Sap</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=microsoft%20office">Microsoft Office</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Summerville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787677916930"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-spring-2027-key-user-supply-chain-computer-science-co-op-4456947183">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/bosch-usa-ai-security-research-intern-4456956100">AI Security Research Intern</a></h3>
+          <span class="rc-sub">AI Security Research</span>
+          <ul class="rc-do"><li>Design and implement deep learning algorithms for AI security and verification</li><li>Work with research team on formal modeling and multi-modal data from robotics and driving</li><li>Contribute to AI framework and publish at top conferences</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/skills/deep-learning">Deep Learning</a></li><li><a href="/us/?q=formal%20verification">Formal Verification</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Pittsburgh</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787677911171"><time datetime="2026-08-25">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/bosch-usa-ai-security-research-intern-4456956100">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -200,49 +241,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Bosch USA&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/rivian">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/rivian.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Rivian</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/modal-labs">
-          <span class="tile-crest" aria-hidden="true">ML<img src="/logos/modal-labs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Modal Labs</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/conagra-brands">
-          <span class="tile-crest" aria-hidden="true">CB<img src="/logos/conagra-brands.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Conagra Brands</span></span>
-        </a><a class="dir-card" href="/us/companies/phillips-66">
-          <span class="tile-crest" aria-hidden="true">P6<img src="/logos/phillips-66.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Phillips 66</span></span>
-        </a><a class="dir-card" href="/us/companies/xtx-markets">
-          <span class="tile-crest" aria-hidden="true">XM<img src="/logos/xtx-markets.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">XTX Markets</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

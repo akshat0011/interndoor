@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,148 +88,199 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">TI<img src="/logos/texas-instruments.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Texas Instruments internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>16 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>16 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Texas Instruments is hiring interns in the US right now.</b> 16 engineering internships are open, across Dallas, Irvine and Waltham, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Dallas · Irvine · Waltham<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Dallas · Irvine · Waltham<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>25<p>Analog Circuitry, Digital Components, Schematics</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>16</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/texas-instruments-systems-engineering-intern-machine-learning-expert-4462304921">
-        <span class="rc-t">Systems Engineering Intern - Machine Learning Expert</span>
-        <span class="rc-sub">LLM Research Engineer</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788553181743">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-dallas-4461383505">
-        <span class="rc-t">Process Development Engineer Intern - MS/PhD – Dallas</span>
-        <span class="rc-sub">Semiconductor Process Development</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788402002116">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-field-applications-engineering-intern-irvine-ca-4461392288">
-        <span class="rc-t">Field Applications Engineering Intern (Irvine, CA)</span>
-        <span class="rc-sub">Technical Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 – $45 / hour</span><span class="f-item">Irvine</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788402001245">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-field-applications-engineering-intern-waltham-ma-4461371691">
-        <span class="rc-t">Field Applications Engineering Intern (Waltham, MA)</span>
-        <span class="rc-sub">Technical Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$35 – $40 / hour</span><span class="f-item">Waltham</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401999678">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-quality-engineering-intern-4461383506">
-        <span class="rc-t">Quality Engineering Intern</span>
-        <span class="rc-sub">Quality Assurance</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401996369">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-field-applications-engineering-intern-austin-tx-4461380524">
-        <span class="rc-t">Field Applications Engineering Intern (Austin, TX)</span>
-        <span class="rc-sub">Field Applications Support</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401979358">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-field-applications-engineering-intern-novi-mi-4461391325">
-        <span class="rc-t">Field Applications Engineering Intern (Novi, MI)</span>
-        <span class="rc-sub">Field Applications Support</span>
-        <span class="rc-facts"><span class="f-item">Novi</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401972711">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-product-test-engineering-intern-4461378542">
-        <span class="rc-t">Product/Test Engineering Intern</span>
-        <span class="rc-sub">Product Testing</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401963603">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-lehi-4461385525">
-        <span class="rc-t">Process Development Engineer Intern - MS/PhD – Lehi</span>
-        <span class="rc-sub">Process Development</span>
-        <span class="rc-facts"><span class="f-item">Lehi</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788401961889">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-bachelors-4461333593">
-        <span class="rc-t">Analog IC Design Engineering Intern - Bachelors</span>
-        <span class="rc-sub">IC Design</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380447196">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-design-verification-engineering-intern-ms-phd-4461332596">
-        <span class="rc-t">Design Verification Engineering Intern - MS/PhD</span>
-        <span class="rc-sub">Chip Verification</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380415011">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-ms-phd-4461340503">
-        <span class="rc-t">Digital IC Design Engineering Intern - MS/PhD</span>
-        <span class="rc-sub">IC Design</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380410756">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-bachelors-4461336505">
-        <span class="rc-t">Digital IC Design Engineering Intern - Bachelors</span>
-        <span class="rc-sub">IC Design</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380398916">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-design-verification-engineering-intern-bachelors-4461345192">
-        <span class="rc-t">Design Verification Engineering Intern - Bachelors</span>
-        <span class="rc-sub">Verification Engineering</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380390322">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-applications-engineering-intern-4461331599">
-        <span class="rc-t">Applications Engineering Intern</span>
-        <span class="rc-sub">Applications Engineering</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380376901">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-ms-phd-4461323675">
-        <span class="rc-t">Analog IC Design Engineering Intern - MS/PhD</span>
-        <span class="rc-sub">IC Design</span>
-        <span class="rc-facts"><span class="f-item">Dallas</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788380370487">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>16 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-systems-engineering-intern-machine-learning-expert-4462304921">Systems Engineering Intern - Machine Learning Expert</a></h3>
+          <span class="rc-sub">LLM Research Engineer</span>
+          <ul class="rc-do"><li>Develop novel LLM architectures and training methods for Edge AI</li><li>Collaborate with teams to implement AI strategies for products</li><li>Build large-scale deep learning systems with LLM integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=jax">Jax</a></li><li><a href="/us/?q=transformers">Transformers</a></li><li><a href="/us/?q=vllm">Vllm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788553181743"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-systems-engineering-intern-machine-learning-expert-4462304921">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-dallas-4461383505">Process Development Engineer Intern - MS/PhD – Dallas</a></h3>
+          <span class="rc-sub">Semiconductor Process Development</span>
+          <ul class="rc-do"><li>Run experiments to improve semiconductor manufacturing processes</li><li>Work with design and manufacturing teams to meet performance goals</li><li>Analyze data to ensure cost and reliability targets are met</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=process%20integration">Process Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788402002116"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-dallas-4461383505">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-field-applications-engineering-intern-irvine-ca-4461392288">Field Applications Engineering Intern (Irvine, CA)</a></h3>
+          <span class="rc-sub">Technical Support</span>
+          <ul class="rc-do"><li>Support customers with technical solutions for electronics systems</li><li>Use tools and relationships to identify design projects</li><li>Work with teams to align product features with system needs</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=schematics">Schematics</a></li><li><a href="/us/?q=digital%20components">Digital Components</a></li><li><a href="/us/?q=analog%20circuitry">Analog Circuitry</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/labview">Labview</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Irvine</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 – $45 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788402001245"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-field-applications-engineering-intern-irvine-ca-4461392288">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-field-applications-engineering-intern-waltham-ma-4461371691">Field Applications Engineering Intern (Waltham, MA)</a></h3>
+          <span class="rc-sub">Technical Support</span>
+          <ul class="rc-do"><li>Support customers with technical solutions and product implementation</li><li>Use tools and relationships to identify projects and propose system-level designs</li><li>Collaborate with design engineers and internal teams on product integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=analog%20circuitry">Analog Circuitry</a></li><li><a href="/us/?q=schematics">Schematics</a></li><li><a href="/us/?q=digital%20components">Digital Components</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/labview">Labview</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Waltham</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$35 – $40 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401999678"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-field-applications-engineering-intern-waltham-ma-4461371691">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-quality-engineering-intern-4461383506">Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Quality Assurance</span>
+          <ul class="rc-do"><li>Analyze fab process data and troubleshoot manufacturing issues</li><li>Work with cross-functional teams on product failure analysis</li><li>Manage customer returns and provide status updates using TI tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=process%20control">Process Control</a></li><li><a href="/us/?q=failure%20analysis">Failure Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401996369"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-quality-engineering-intern-4461383506">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-field-applications-engineering-intern-austin-tx-4461380524">Field Applications Engineering Intern (Austin, TX)</a></h3>
+          <span class="rc-sub">Field Applications Support</span>
+          <ul class="rc-do"><li>Support customers with technical solutions for electronics systems</li><li>Use tools and relationships to identify design projects</li><li>Work with teams to influence part selection and product use</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=schematics">Schematics</a></li><li><a href="/us/?q=digital%20components">Digital Components</a></li><li><a href="/us/?q=analog%20circuitry">Analog Circuitry</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401979358"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-field-applications-engineering-intern-austin-tx-4461380524">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-field-applications-engineering-intern-novi-mi-4461391325">Field Applications Engineering Intern (Novi, MI)</a></h3>
+          <span class="rc-sub">Field Applications Support</span>
+          <ul class="rc-do"><li>Support customers with technical solutions for system-level designs</li><li>Use tools and relationships to identify potential projects</li><li>Work with design engineers and internal teams on product implementation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=schematics">Schematics</a></li><li><a href="/us/?q=digital%20components">Digital Components</a></li><li><a href="/us/?q=analog%20circuitry">Analog Circuitry</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Novi</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401972711"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-field-applications-engineering-intern-novi-mi-4461391325">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-product-test-engineering-intern-4461378542">Product/Test Engineering Intern</a></h3>
+          <span class="rc-sub">Product Testing</span>
+          <ul class="rc-do"><li>Test and troubleshoot product issues</li><li>Design test hardware and software</li><li>Create product documentation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/labview">Labview</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401963603"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-product-test-engineering-intern-4461378542">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-lehi-4461385525">Process Development Engineer Intern - MS/PhD – Lehi</a></h3>
+          <span class="rc-sub">Process Development</span>
+          <ul class="rc-do"><li>Run experiments to improve semiconductor manufacturing processes</li><li>Work with teams to ensure technologies meet cost and performance goals</li><li>Analyze data to support process development and yield optimization</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=process%20integration">Process Integration</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Lehi</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788401961889"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-process-development-engineer-intern-ms-phd-lehi-4461385525">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-bachelors-4461333593">Analog IC Design Engineering Intern - Bachelors</a></h3>
+          <span class="rc-sub">IC Design</span>
+          <ul class="rc-do"><li>Design analog, digital, and RF integrated circuits for products</li><li>Work with business teams and system engineers on chip specs</li><li>Create documentation and supervise IC layouts for high performance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=rf%20integrated%20circuits">Rf Integrated Circuits</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380447196"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-bachelors-4461333593">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-design-verification-engineering-intern-ms-phd-4461332596">Design Verification Engineering Intern - MS/PhD</a></h3>
+          <span class="rc-sub">Chip Verification</span>
+          <ul class="rc-do"><li>Run simulations and tests to verify chip behavior</li><li>Use SystemVerilog for coverage models and regression</li><li>Work with RTL and timing analysis tools</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/systemverilog">Systemverilog</a></li><li><a href="/us/skills/rtl">RTL</a></li><li><a href="/us/?q=regression%20tools">Regression Tools</a></li><li><a href="/us/?q=coverage%20models">Coverage Models</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380415011"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-design-verification-engineering-intern-ms-phd-4461332596">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-ms-phd-4461340503">Digital IC Design Engineering Intern - MS/PhD</a></h3>
+          <span class="rc-sub">IC Design</span>
+          <ul class="rc-do"><li>Design and document analog digital and rf integrated circuits</li><li>Collaborate on layouts and prototype characterization</li><li>Work with business teams on design specifications</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380410756"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-ms-phd-4461340503">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-bachelors-4461336505">Digital IC Design Engineering Intern - Bachelors</a></h3>
+          <span class="rc-sub">IC Design</span>
+          <ul class="rc-do"><li>Design and model integrated circuits for audio, imaging, and power systems</li><li>Collaborate on chip layouts and test specifications with engineering teams</li><li>Work on high-performance ICs for automotive, storage, and medical applications</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=chip%20architecture">Chip Architecture</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380398916"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-digital-ic-design-engineering-intern-bachelors-4461336505">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-design-verification-engineering-intern-bachelors-4461345192">Design Verification Engineering Intern - Bachelors</a></h3>
+          <span class="rc-sub">Verification Engineering</span>
+          <ul class="rc-do"><li>Develop test benches and simulations for mixed-signal circuits</li><li>Use SystemVerilog for coverage models and regression analysis</li><li>Collaborate with design teams on chip-level timing verification</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/systemverilog">Systemverilog</a></li><li><a href="/us/skills/rtl">RTL</a></li><li><a href="/us/?q=gates%20sdf">Gates Sdf</a></li><li><a href="/us/?q=regression%20tools">Regression Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380390322"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-design-verification-engineering-intern-bachelors-4461345192">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-applications-engineering-intern-4461331599">Applications Engineering Intern</a></h3>
+          <span class="rc-sub">Applications Engineering</span>
+          <ul class="rc-do"><li>Work with customers to solve design challenges and develop solutions</li><li>Use lab equipment and debug problems in TI&#39;s engineering labs</li><li>Collaborate with cross-functional teams to launch new products</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=schematics">Schematics</a></li><li><a href="/us/?q=layouts">Layouts</a></li><li><a href="/us/?q=digital%20components">Digital Components</a></li><li><a href="/us/?q=analog%20circuitry">Analog Circuitry</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380376901"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-applications-engineering-intern-4461331599">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-ms-phd-4461323675">Analog IC Design Engineering Intern - MS/PhD</a></h3>
+          <span class="rc-sub">IC Design</span>
+          <ul class="rc-do"><li>Design analog, digital, and RF integrated circuits</li><li>Work with business teams and system engineers</li><li>Create documentation and supervise IC layouts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=chip%20architecture">Chip Architecture</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Dallas</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788380370487"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/texas-instruments-analog-ic-design-engineering-intern-ms-phd-4461323675">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -256,34 +318,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Texas Instruments&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/hudson-river-trading">
-          <span class="tile-crest" aria-hidden="true">HR<img src="/logos/hudson-river-trading.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Hudson River Trading</span></span>
-        </a><a class="dir-card" href="/us/companies/cadence">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cadence.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cadence</span></span>
-        </a><a class="dir-card" href="/us/companies/otis-elevator-co">
-          <span class="tile-crest" aria-hidden="true">OE<img src="/logos/otis-elevator-co.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Otis Elevator Co.</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

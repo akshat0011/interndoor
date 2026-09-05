@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">PH<img src="/logos/parker-hannifin.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Parker Hannifin internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Parker Hannifin is hiring interns in the US right now.</b> 5 engineering internships are open, across Mason, Erie and Manitowoc, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Mason · Erie · Manitowoc<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Mason · Erie · Manitowoc<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>11<p>Additive Manufacturing, Autodesk Inventor, Data Analysis</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/parker-hannifin-engineering-intern-fall-2026-4444713800">
-        <span class="rc-t">Engineering Intern (Fall 2026)</span>
-        <span class="rc-sub">Manufacturing Engineering</span>
-        <span class="rc-facts"><span class="f-item">Mason</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788611951985">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/parker-hannifin-engineering-internship-erie-pa-summer-2027-4461088784">
-        <span class="rc-t">Engineering Internship - Erie, PA - Summer 2027</span>
-        <span class="rc-sub">Product Development</span>
-        <span class="rc-facts"><span class="f-item">Erie</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788185055715">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/parker-hannifin-2027-automation-engineering-co-op-4414925148">
-        <span class="rc-t">2027 Automation Engineering Co-Op</span>
-        <span class="rc-sub">Machine design</span>
-        <span class="rc-facts"><span class="f-item">Manitowoc</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788178985400">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/parker-hannifin-quality-engineering-intern-4414913419">
-        <span class="rc-t">Quality Engineering Intern</span>
-        <span class="rc-sub">Engineering Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$22 / hour</span><span class="f-item">Simi Valley</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788011472139">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/parker-hannifin-information-technology-intern-fall-winter-part-time-4449442210">
-        <span class="rc-t">Information Technology Intern - Fall-Winter - Part-Time</span>
-        <span class="rc-sub">IT Support</span>
-        <span class="rc-facts"><span class="f-item">Kalamazoo</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787751488325">Posted <time datetime="2026-08-26">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/parker-hannifin-engineering-intern-fall-2026-4444713800">Engineering Intern (Fall 2026)</a></h3>
+          <span class="rc-sub">Manufacturing Engineering</span>
+          <ul class="rc-do"><li>Analyze and improve manufacturing processes for production efficiency</li><li>Use engineering software to update plant layout and maintenance plans</li><li>Collaborate with cross-functional teams on equipment upgrades and quality control</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mason</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788611951985"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/parker-hannifin-engineering-intern-fall-2026-4444713800">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/parker-hannifin-engineering-internship-erie-pa-summer-2027-4461088784">Engineering Internship - Erie, PA - Summer 2027</a></h3>
+          <span class="rc-sub">Product Development</span>
+          <ul class="rc-do"><li>Analyze performance data and build prototypes using additive manufacturing</li><li>Collaborate with engineers on product testing and customer needs analysis</li><li>Prepare technical reports and support project coordination efforts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=additive%20manufacturing">Additive Manufacturing</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Erie</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788185055715"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/parker-hannifin-engineering-internship-erie-pa-summer-2027-4461088784">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/parker-hannifin-2027-automation-engineering-co-op-4414925148">2027 Automation Engineering Co-Op</a></h3>
+          <span class="rc-sub">Machine design</span>
+          <ul class="rc-do"><li>Assist in design and testing of small machines</li><li>Work with 3D modeling and robotic systems</li><li>Collaborate on technical documentation and reports</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=autodesk%20inventor">Autodesk Inventor</a></li><li><a href="/us/?q=solidworks">Solidworks</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=sap">Sap</a></li><li><a href="/us/?q=spc">Spc</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Manitowoc</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788178985400"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/parker-hannifin-2027-automation-engineering-co-op-4414925148">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/parker-hannifin-quality-engineering-intern-4414913419">Quality Engineering Intern</a></h3>
+          <span class="rc-sub">Engineering Support</span>
+          <ul class="rc-do"><li>Support engineers with testing, troubleshooting, and design tasks</li><li>Use Microsoft Office and follow regulated industry processes</li><li>Work with aerospace companies like Boeing and Airbus</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=microsoft%20office">Microsoft Office</a></li><li><a href="/us/?q=testing">Testing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Simi Valley</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$22 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788011472139"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/parker-hannifin-quality-engineering-intern-4414913419">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/parker-hannifin-information-technology-intern-fall-winter-part-time-4449442210">Information Technology Intern - Fall-Winter - Part-Time</a></h3>
+          <span class="rc-sub">IT Support</span>
+          <ul class="rc-do"><li>Support end users with hardware and software issues</li><li>Maintain and troubleshoot IT systems and applications</li><li>Develop and review Power BI reports and SQL queries</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Kalamazoo</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787751488325"><time datetime="2026-08-26">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/parker-hannifin-information-technology-intern-fall-winter-part-time-4449442210">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,49 +197,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Parker Hannifin&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/clearwater-analytics">
-          <span class="tile-crest" aria-hidden="true">CA<img src="/logos/clearwater-analytics.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Clearwater Analytics</span></span>
-        </a><a class="dir-card" href="/us/companies/saic">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/saic.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">SAIC</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a><a class="dir-card" href="/us/companies/tractor-supply-company">
-          <span class="tile-crest" aria-hidden="true">TS<img src="/logos/tractor-supply-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tractor Supply Company</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/philips">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/philips.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Philips</span></span>
-        </a><a class="dir-card" href="/us/companies/siemens">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/siemens.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Siemens</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

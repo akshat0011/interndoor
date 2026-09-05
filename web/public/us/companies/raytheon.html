@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,93 +88,123 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">R<img src="/logos/raytheon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Raytheon internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>9 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>9 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Raytheon is hiring interns in the US right now.</b> 9 engineering internships are open, across Tucson, El Segundo and Huntsville, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$37k – $42k<p>on all 9 open roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Tucson · El Segundo · Huntsville<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Tucson · El Segundo · Huntsville<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>27<p>Java, Python, Matlab</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>9</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/raytheon-antenna-design-engineer-intern-summer-2027-onsite-4462759507">
-        <span class="rc-t">Antenna Design Engineer Intern (Summer 2027)(Onsite)</span>
-        <span class="rc-sub">Antenna Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788406361278">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-rf-design-engineer-intern-summer-2027-onsite-4462739654">
-        <span class="rc-t">RF Design Engineer Intern (Summer 2027)(Onsite)</span>
-        <span class="rc-sub">RF Circuit Design</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Tucson</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788406329119">Posted <time datetime="2026-09-03">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-electrical-engineering-intern-summer-2027-4462476712">
-        <span class="rc-t">Electrical Engineering Intern (Summer 2027)</span>
-        <span class="rc-sub">Hardware Troubleshooting</span>
-        <span class="rc-facts"><span class="f-item is-cash">$42,000</span><span class="f-item">El Segundo</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788384715878">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-systems-engineering-intern-onsite-4462490032">
-        <span class="rc-t">Systems Engineering Intern (Onsite)</span>
-        <span class="rc-sub">Systems Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Huntsville</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788384693409">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460305751">
-        <span class="rc-t">Software Engineering Intern (Summer 2027)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Huntsville</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787912512783">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-software-engineer-intern-summer-2027-4460310659">
-        <span class="rc-t">Software Engineer Intern (Summer 2027)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Woburn</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787912491631">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460314619">
-        <span class="rc-t">Software Engineering Intern (Summer 2027)</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">State College</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787912468447">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460319577">
-        <span class="rc-t">Software Platform Intern (Summer 2027)</span>
-        <span class="rc-sub">DevOps Support</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Richardson</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787912443429">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460322526">
-        <span class="rc-t">Software Platform Intern (Summer 2027)</span>
-        <span class="rc-sub">DevOps Automation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$37,000</span><span class="f-item">Aurora</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787912412133">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>9 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-antenna-design-engineer-intern-summer-2027-onsite-4462759507">Antenna Design Engineer Intern (Summer 2027)(Onsite)</a></h3>
+          <span class="rc-sub">Antenna Design</span>
+          <ul class="rc-do"><li>Develop antenna hardware and simulate performance using HFSS, CST, and HPC</li><li>Collaborate with mechanical, thermal, and systems engineers on RF products</li><li>Analyze test data to ensure antenna meets design requirements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=cst">Cst</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788406361278"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-antenna-design-engineer-intern-summer-2027-onsite-4462759507">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-rf-design-engineer-intern-summer-2027-onsite-4462739654">RF Design Engineer Intern (Summer 2027)(Onsite)</a></h3>
+          <span class="rc-sub">RF Circuit Design</span>
+          <ul class="rc-do"><li>Design and test RF circuits for transmitters, receivers, and exciters</li><li>Use MATLAB, SIMULINK, and CST for simulation and analysis</li><li>Work with interdisciplinary teams on radar and datalink systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/simulink">Simulink</a></li><li><a href="/us/?q=cst">Cst</a></li><li><a href="/us/?q=rf%20circuits">Rf Circuits</a></li><li><a href="/us/?q=transmitters">Transmitters</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Tucson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788406329119"><time datetime="2026-09-03">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-rf-design-engineer-intern-summer-2027-onsite-4462739654">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-electrical-engineering-intern-summer-2027-4462476712">Electrical Engineering Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Hardware Troubleshooting</span>
+          <ul class="rc-do"><li>Troubleshoot RF/Microwave and Antenna hardware issues in production</li><li>Use tools like HFSS, ADS, and oscilloscopes for testing and analysis</li><li>Work with radar engineers on airborne platform hardware integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hfss">Hfss</a></li><li><a href="/us/?q=ads">Ads</a></li><li><a href="/us/?q=oscilloscopes">Oscilloscopes</a></li><li><a href="/us/?q=network%20analyzers">Network Analyzers</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>El Segundo</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$42,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788384715878"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-electrical-engineering-intern-summer-2027-4462476712">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-systems-engineering-intern-onsite-4462490032">Systems Engineering Intern (Onsite)</a></h3>
+          <span class="rc-sub">Systems Analysis</span>
+          <ul class="rc-do"><li>Analyze computational problems in space-based systems and satellites</li><li>Use STK, MATLAB, or Python for modeling and simulation</li><li>Work in a team on complex projects with experts</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=stk">Stk</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Huntsville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788384693409"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-systems-engineering-intern-onsite-4462490032">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460305751">Software Engineering Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Support software development life cycle for military and commercial programs</li><li>Work with C++, C#, Java, Linux, and Agile teams</li><li>Require active Secret clearance and U.S. Citizenship</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/skills/agile">Agile</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Huntsville</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787912512783"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460305751">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-software-engineer-intern-summer-2027-4460310659">Software Engineer Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Design, develop, and test real-time software for radar or C2 systems</li><li>Use C, C++, Java, or Ada with CI/CD tools like Jenkins and Git</li><li>Work on secure, safety-critical projects with U.S. Security clearance</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/?q=ada">Ada</a></li><li><a href="/us/skills/jenkins">Jenkins</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Woburn</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787912491631"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-software-engineer-intern-summer-2027-4460310659">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460314619">Software Engineering Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Develop software to integrate systems and enable new capabilities</li><li>Use Java, Git, and agile practices in Unix/Linux environments</li><li>Work with experts on secure, high-stability code and testing</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=unix">Unix</a></li><li><a href="/us/skills/linux">Linux</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>State College</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787912468447"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-software-engineering-intern-summer-2027-4460314619">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460319577">Software Platform Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">DevOps Support</span>
+          <ul class="rc-do"><li>Support infrastructure and DevOps automation using Ruby, Python, Go, and Java</li><li>Leverage AWS, Azure, Docker, and Kubernetes for cloud platform optimization</li><li>Collaborate in a multidisciplinary team on complex systems integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/ruby">Ruby</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/azure">Azure</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Richardson</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787912443429"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460319577">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460322526">Software Platform Intern (Summer 2027)</a></h3>
+          <span class="rc-sub">DevOps Automation</span>
+          <ul class="rc-do"><li>Support infrastructure and DevOps automation using Ruby, Python, Go, PowerShell, and Java</li><li>Leverage AWS, Azure, Docker, and Kubernetes for cloud platform optimization</li><li>Collaborate in multidisciplinary teams on complex systems integration and CI/CD pipelines</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/ruby">Ruby</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=go">Go</a></li><li><a href="/us/?q=powershell">Powershell</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/aws">AWS</a></li><li><a href="/us/skills/azure">Azure</a></li><li><a href="/us/skills/docker">Docker</a></li><li><a href="/us/skills/kubernetes">Kubernetes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Aurora</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$37,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787912412133"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/raytheon-software-platform-intern-summer-2027-4460322526">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -201,49 +242,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Raytheon&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/liberty-mutual-insurance">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/liberty-mutual-insurance.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Liberty Mutual Insurance</span></span>
-        </a><a class="dir-card" href="/us/companies/tesla">
-          <span class="tile-crest" aria-hidden="true">T<img src="/logos/tesla.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Tesla</span></span>
-        </a><a class="dir-card" href="/us/companies/abbvie">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/abbvie.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">AbbVie</span></span>
-        </a><a class="dir-card" href="/us/companies/ibm">
-          <span class="tile-crest" aria-hidden="true">I<img src="/logos/ibm.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">IBM</span></span>
-        </a><a class="dir-card" href="/us/companies/caci-international-inc">
-          <span class="tile-crest" aria-hidden="true">CI<img src="/logos/caci-international-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">CACI International Inc</span></span>
-        </a><a class="dir-card" href="/us/companies/point72">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/point72.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Point72</span></span>
-        </a><a class="dir-card" href="/us/companies/ge-aerospace">
-          <span class="tile-crest" aria-hidden="true">GA<img src="/logos/ge-aerospace.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Aerospace</span></span>
-        </a><a class="dir-card" href="/us/companies/principal-financial-group">
-          <span class="tile-crest" aria-hidden="true">PF<img src="/logos/principal-financial-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Principal Financial Group</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

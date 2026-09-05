@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">Z<img src="/logos/zs.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>ZS internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, ZS is hiring interns in the US right now.</b> 5 engineering internships are open, across Princeton and Evanston, hybrid. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Princeton · Evanston<p>hybrid</p></dd></div></dl>
+        <dt>Where</dt><dd>Princeton · Evanston<p>hybrid</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>12<p>Excel, Machine Learning, R</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/zs-strategy-insights-and-planning-consultant-ai-transformation-intern-nor-4459990709">
-        <span class="rc-t">Strategy Insights &amp; Planning Consultant -AI Transformation Intern (North America - University Students)</span>
-        <span class="rc-sub">AI Strategy Consultant</span>
-        <span class="rc-facts"><span class="f-item">Princeton</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788379721121">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zs-decision-analytics-associate-consultant-intern-north-america-universit-4459536113">
-        <span class="rc-t">Decision Analytics Associate Consultant - Intern (North America - University Students)</span>
-        <span class="rc-sub">Data Analysis Intern</span>
-        <span class="rc-facts"><span class="f-item">Evanston</span><span class="f-item">PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788272407074">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zs-advanced-data-science-associate-intern-north-america-university-studen-4459521752">
-        <span class="rc-t">Advanced Data Science Associate - Intern (North America - University Students)</span>
-        <span class="rc-sub">Data Science Analytics</span>
-        <span class="rc-facts"><span class="f-item">Princeton</span><span class="f-item">Master’s / PhD</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788272367419">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zs-decision-analytics-associate-intern-north-america-university-students-4459531149">
-        <span class="rc-t">Decision Analytics Associate - Intern (North America - University Students)</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item">Princeton</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788272366787">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/zs-strategy-insights-and-planning-associate-intern-north-america-universi-4459525372">
-        <span class="rc-t">Strategy Insights &amp; Planning Associate - Intern (North America - University Students)</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item">Evanston</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788271686231">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zs-strategy-insights-and-planning-consultant-ai-transformation-intern-nor-4459990709">Strategy Insights &amp; Planning Consultant -AI Transformation Intern (North America - University Students)</a></h3>
+          <span class="rc-sub">AI Strategy Consultant</span>
+          <ul class="rc-do"><li>Develop ai and digital transformation strategies for clients</li><li>Collaborate with data scientists and engineers on ai solutions</li><li>Travel as needed to build client relationships and gain experience</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Princeton</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788379721121"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zs-strategy-insights-and-planning-consultant-ai-transformation-intern-nor-4459990709">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zs-decision-analytics-associate-consultant-intern-north-america-universit-4459536113">Decision Analytics Associate Consultant - Intern (North America - University Students)</a></h3>
+          <span class="rc-sub">Data Analysis Intern</span>
+          <ul class="rc-do"><li>Build statistical models to help clients solve business problems</li><li>Use R, Tableau, SAS, and Excel for data analysis and reporting</li><li>Travel to client sites and present findings to stakeholders</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=sas">Sas</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Evanston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788272407074"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zs-decision-analytics-associate-consultant-intern-north-america-universit-4459536113">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zs-advanced-data-science-associate-intern-north-america-university-studen-4459521752">Advanced Data Science Associate - Intern (North America - University Students)</a></h3>
+          <span class="rc-sub">Data Science Analytics</span>
+          <ul class="rc-do"><li>Build algorithms for complex data problems</li><li>Use Python, SQL, PySpark for analysis</li><li>Travel for client projects as needed</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=pyspark">Pyspark</a></li><li><a href="/us/skills/machine-learning">Machine Learning</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Princeton</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788272367419"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zs-advanced-data-science-associate-intern-north-america-university-studen-4459521752">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zs-decision-analytics-associate-intern-north-america-university-students-4459531149">Decision Analytics Associate - Intern (North America - University Students)</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze business problems with statistical models and data</li><li>Use r, tableau, sas, and excel for insights and reporting</li><li>Travel required for client projects across the us</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=r">R</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/?q=sas">Sas</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Princeton</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788272366787"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zs-decision-analytics-associate-intern-north-america-university-students-4459531149">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/zs-strategy-insights-and-planning-associate-intern-north-america-universi-4459525372">Strategy Insights &amp; Planning Associate - Intern (North America - University Students)</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data and design reports to inform client decisions</li><li>Use excel, access, and proprietary tools for custom analysis</li><li>Collaborate with teams to implement solutions and own deliverables</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/?q=access">Access</a></li><li><a href="/us/?q=confirmit">Confirmit</a></li><li><a href="/us/?q=proprietary%20software">Proprietary Software</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Evanston</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788271686231"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/zs-strategy-insights-and-planning-associate-intern-north-america-universi-4459525372">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,49 +197,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as ZS&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/premier-inc">
-          <span class="tile-crest" aria-hidden="true">PI<img src="/logos/premier-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Premier Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/rippling">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/rippling.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Rippling</span></span>
-        </a><a class="dir-card" href="/us/companies/tower-research-capital">
-          <span class="tile-crest" aria-hidden="true">TR</span>
-          <span class="dir-t"><span class="dir-name">Tower Research Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/capital-one">
-          <span class="tile-crest" aria-hidden="true">CO<img src="/logos/capital-one.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Capital One</span></span>
-        </a><a class="dir-card" href="/us/companies/conocophillips">
-          <span class="tile-crest" aria-hidden="true">C</span>
-          <span class="dir-t"><span class="dir-name">ConocoPhillips</span></span>
-        </a><a class="dir-card" href="/us/companies/hewlett-packard-enterprise">
-          <span class="tile-crest" aria-hidden="true">HP<img src="/logos/hewlett-packard-enterprise.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Hewlett Packard Enterprise</span></span>
-        </a><a class="dir-card" href="/us/companies/cardinal-health">
-          <span class="tile-crest" aria-hidden="true">CH<img src="/logos/cardinal-health.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cardinal Health</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

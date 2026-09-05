@@ -55,6 +55,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="IN">
         <summary aria-label="Change region — currently India">
@@ -90,8 +101,10 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">I<img src="/logos/intel.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Intel internships in India</h1>
-      <span class="pill  hub-live"><i aria-hidden="true"></i>0 open now</span>
+      <span class="pill hub-live"><i aria-hidden="true"></i>Nothing open today</span>
     </header>
+
+    <p class="hub-answer-line"><b>Intel is not advertising an engineering internship in India today.</b> We have tracked 2 so far and check again every 30 minutes.</p>
 
     
 
@@ -100,7 +113,7 @@
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships</h2></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now</h2></div>
       <div class="empty">
              <b>Nothing open today</b>
              <p>Intel is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
@@ -142,7 +155,6 @@
         </li></ul>
     </section>
 
-    
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

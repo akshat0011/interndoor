@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,276 +102,375 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">MT<img src="/logos/micron-technology.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Micron Technology internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>32 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>32 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Micron Technology is hiring interns in the US right now.</b> 32 engineering internships are open, across Boise, San Jose and Longmont, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s · PhD<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Boise · San Jose · Longmont<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Boise · San Jose · Longmont<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>59<p>Python, Data Analysis, Statistical Analysis</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>32</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/micron-technology-intern-dram-process-integration-4453559393">
-        <span class="rc-t">Intern - DRAM Process Integration</span>
-        <span class="rc-sub">DRAM Integration Engineer</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788602035966">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-planar-dram-cmp-4453569373">
-        <span class="rc-t">Intern - Process Development Engineer, Planar DRAM CMP</span>
-        <span class="rc-sub">CMP Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788601996913">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356">
-        <span class="rc-t">Intern - Digital IP Design Engineer, DRAM</span>
-        <span class="rc-sub">Digital IP Design</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788599430010">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-ai-agentic-systems-engineer-4461953689">
-        <span class="rc-t">Intern - AI Agentic Systems Engineer</span>
-        <span class="rc-sub">AI Agent Developer</span>
-        <span class="rc-facts"><span class="f-item is-cash">$50 – $56 / hour</span><span class="f-item">San Jose</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788524821531">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dram-design-rules-4461968466">
-        <span class="rc-t">Intern - DRAM Design Rules</span>
-        <span class="rc-sub">DRAM Design Rules</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788524804487">Posted <time datetime="2026-09-04">4 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-photomask-yield-enhancement-ats-workday-micron-wd1-external-jr110636">
-        <span class="rc-t">Intern - Photomask Yield Enhancement</span>
-        <span class="rc-sub">Data Analytics</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788480000000">Posted <time datetime="2026-09-04">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-advanced-dram-cell-and-device-technology-4461650194">
-        <span class="rc-t">Intern - Advanced DRAM Cell &amp; Device Technology</span>
-        <span class="rc-sub">DRAM Technology Research</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788438397389">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-metals-4452397366">
-        <span class="rc-t">Intern - Process Development Engineer, 3D DRAM Metals</span>
-        <span class="rc-sub">Semiconductor Process Optimization</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Ph.D./M.Tech</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788426594265">Posted <time datetime="2026-09-03">3 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-systems-performance-engineer-4460976344">
-        <span class="rc-t">Intern - Systems Performance Engineer</span>
-        <span class="rc-sub">Systems Performance Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$50 / hour</span><span class="f-item">Longmont</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788352069724">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dram-technology-dtco-and-ppa-assessment-engineer-4460978308">
-        <span class="rc-t">Intern - DRAM Technology DTCO &amp; PPA Assessment Engineer</span>
-        <span class="rc-sub">DRAM Technology Assessment</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788352042710">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dram-design-engineer-4451658949">
-        <span class="rc-t">Intern - DRAM Design Engineer</span>
-        <span class="rc-sub">DRAM Verification</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788340342772">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dram-ip-circuits-design-engineer-4451658951">
-        <span class="rc-t">Intern - DRAM IP Circuits Design Engineer</span>
-        <span class="rc-sub">DRAM Circuit Design</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788340226254">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-cmp-4451661937">
-        <span class="rc-t">Intern - Process Development Engineer, 3D DRAM CMP</span>
-        <span class="rc-sub">CMP Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Ph.D./M.Tech</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788340051863">Posted <time datetime="2026-09-02">2 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-rda-metrology-process-shift-engineer-td-4460273909">
-        <span class="rc-t">Intern - RDA/Metrology-Process Shift Engineer, TD</span>
-        <span class="rc-sub">Semiconductor Process Support</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788266123848">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-mask-technology-4460275802">
-        <span class="rc-t">Intern - Mask Technology</span>
-        <span class="rc-sub">AI/OPC Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788266103405">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-ai-systems-and-infrastructure-engineering-4460283724">
-        <span class="rc-t">Intern - AI Systems and Infrastructure Engineering</span>
-        <span class="rc-sub">AI Systems Software Engineering</span>
-        <span class="rc-facts"><span class="f-item">Austin</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788265669866">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dry-etch-equipment-development-engineering-4460285483">
-        <span class="rc-t">Intern - Dry Etch Equipment Development Engineering</span>
-        <span class="rc-sub">Equipment Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788265644019">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-dram-product-test-engineer-ats-workday-micron-wd1-external-jr109996">
-        <span class="rc-t">Intern - DRAM Product Test Engineer</span>
-        <span class="rc-sub">DRAM Testing</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788048000000">Posted <time datetime="2026-08-30">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-technical-customer-management-ai-4458963490">
-        <span class="rc-t">Intern - Technical Customer Management, AI</span>
-        <span class="rc-sub">Customer Process Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39 – $65 / hour</span><span class="f-item">Longmont</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787920028391">Posted <time datetime="2026-08-28">28 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934">
-        <span class="rc-t">Intern - ADV DRAM Process Integration Engineer</span>
-        <span class="rc-sub">DRAM Process Engineer</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787832788717">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-photo-4449107102">
-        <span class="rc-t">Intern - Process Development Engineer, 3D DRAM Photo</span>
-        <span class="rc-sub">Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823277347">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-pathfinding-dram-dry-etch-4449107101">
-        <span class="rc-t">Intern - Process Pathfinding, DRAM Dry Etch</span>
-        <span class="rc-sub">Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Master’s / PhD</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823273057">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-dry-etch-4448990900">
-        <span class="rc-t">Intern - Process Development Engineer, 3D DRAM Dry Etch</span>
-        <span class="rc-sub">Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823251701">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-photolithography-process-4449103772">
-        <span class="rc-t">Intern - Photolithography Process</span>
-        <span class="rc-sub">Photolithography Research</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823226419">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-engineer-dry-etch-4448985954">
-        <span class="rc-t">Intern - Process Development Engineer, Dry Etch</span>
-        <span class="rc-sub">Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823202337">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-development-4449104758">
-        <span class="rc-t">Intern - Process Development</span>
-        <span class="rc-sub">Semiconductor Process Development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Ph.D./M.S.</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787823174983">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-process-quality-engineering-ats-workday-micron-wd1-external-jr109159">
-        <span class="rc-t">Intern - Process Quality Engineering</span>
-        <span class="rc-sub">Process Quality Analysis</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-technical-customer-management-ai-ats-workday-micron-wd1-external-jr109454">
-        <span class="rc-t">Intern - Technical Customer Management, AI</span>
-        <span class="rc-sub">Customer Qualification Analyst</span>
-        <span class="rc-facts"><span class="f-item is-cash">$39 – $65 / hour</span><span class="f-item">Longmont-MAX- Office</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-2027-summer-intern-advanced-spectroscopy-and-nanoscale-materials-chara-ats-workday-micron-wd1-external-jr109071">
-        <span class="rc-t">2027 Summer Intern: Advanced Spectroscopy and Nanoscale Materials Characterization</span>
-        <span class="rc-sub">Materials Characterization</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s / Master’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787529600000">Posted <time datetime="2026-08-24">23 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-product-yield-enhancement-eng-ats-workday-micron-wd1-external-jr108605">
-        <span class="rc-t">Intern - Product Yield Enhancement Eng</span>
-        <span class="rc-sub">DRAM Failure Analysis</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787443200000">Posted <time datetime="2026-08-23">22 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-metrology-process-development-engineer-ats-workday-micron-wd1-external-jr108851">
-        <span class="rc-t">Intern - Metrology Process Development Engineer</span>
-        <span class="rc-sub">Metrology development</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">M.S./Ph.D.</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787270400000">Posted <time datetime="2026-08-21">20 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-ats-workday-micron-wd1-external-jr109076">
-        <span class="rc-t">Intern - Yield Enhancement, Data Analysis</span>
-        <span class="rc-sub">Data Analysis Engineering</span>
-        <span class="rc-facts"><span class="f-item">Boise</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787270400000">Posted <time datetime="2026-08-21">20 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>32 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-process-integration-4453559393">Intern - DRAM Process Integration</a></h3>
+          <span class="rc-sub">DRAM Integration Engineer</span>
+          <ul class="rc-do"><li>Design DRAM technologies with cross-functional teams</li><li>Use AI tools for data analysis and process optimization</li><li>Work on cutting-edge memory solutions for AI and data apps</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=device%20physics">Device Physics</a></li><li><a href="/us/?q=process%20integration">Process Integration</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788602035966"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-process-integration-4453559393">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-planar-dram-cmp-4453569373">Intern - Process Development Engineer, Planar DRAM CMP</a></h3>
+          <span class="rc-sub">CMP Process Development</span>
+          <ul class="rc-do"><li>Develop and optimize CMP processes for next-gen semiconductor tech</li><li>Use AI tools for data analysis and process improvement</li><li>Collaborate with engineers on research and development projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1788601996913"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-planar-dram-cmp-4453569373">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356">Intern - Digital IP Design Engineer, DRAM</a></h3>
+          <span class="rc-sub">Digital IP Design</span>
+          <ul class="rc-do"><li>Design and verify digital IP circuits for next-gen DRAM products</li><li>Use RTL-to-GDS methodologies and AI-assisted tools for verification</li><li>Collaborate with cross-functional teams on silicon validation projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/systemverilog">Systemverilog</a></li><li><a href="/us/skills/uvm">Uvm</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=eda%20tools">Eda Tools</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788599430010"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-ai-agentic-systems-engineer-4461953689">Intern - AI Agentic Systems Engineer</a></h3>
+          <span class="rc-sub">AI Agent Developer</span>
+          <ul class="rc-do"><li>Build AI agents for research and analysis workflows</li><li>Work with LLMs, cloud services, and agentic frameworks</li><li>Deploy AI on managed cloud infrastructure with IT</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=llms">LLMS</a></li><li><a href="/us/?q=cloud%20services">Cloud Services</a></li><li><a href="/us/?q=agentic%20frameworks">Agentic Frameworks</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>San Jose</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$50 – $56 / hour</span></dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1788524821531"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-ai-agentic-systems-engineer-4461953689">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-design-rules-4461968466">Intern - DRAM Design Rules</a></h3>
+          <span class="rc-sub">DRAM Design Rules</span>
+          <ul class="rc-do"><li>Develop and validate semiconductor design rules for advanced memory technologies</li><li>Use EDA tools, AI analytics, and scripting to automate design workflows</li><li>Collaborate with cross-functional teams on manufacturability and process integration</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=eda%20tools">Eda Tools</a></li><li><a href="/us/?q=scripting">Scripting</a></li><li><a href="/us/?q=drc">Drc</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788524804487"><time datetime="2026-09-04">4 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-design-rules-4461968466">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-photomask-yield-enhancement-ats-workday-micron-wd1-external-jr110636">Intern - Photomask Yield Enhancement</a></h3>
+          <span class="rc-sub">Data Analytics</span>
+          <ul class="rc-do"><li>Analyze manufacturing data to find trends and improve yield</li><li>Use python, sql, and jmp for statistical analysis and automation</li><li>Collaborate with engineering teams on process optimization</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li><li><a href="/us/?q=data%20modeling">Data Modeling</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788480000000"><time datetime="2026-09-04">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-photomask-yield-enhancement-ats-workday-micron-wd1-external-jr110636">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-advanced-dram-cell-and-device-technology-4461650194">Intern - Advanced DRAM Cell &amp; Device Technology</a></h3>
+          <span class="rc-sub">DRAM Technology Research</span>
+          <ul class="rc-do"><li>Evaluate DRAM access devices, capacitors, and cell stack elements through experiments and data analysis</li><li>Use Python, MATLAB, and AI tools to analyze device behavior and improve performance</li><li>Collaborate with teams to optimize memory technologies and support manufacturing readiness</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=device%20physics">Device Physics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1788438397389"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-advanced-dram-cell-and-device-technology-4461650194">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-metals-4452397366">Intern - Process Development Engineer, 3D DRAM Metals</a></h3>
+          <span class="rc-sub">Semiconductor Process Optimization</span>
+          <ul class="rc-do"><li>Optimize semiconductor processes for physical and electrical performance</li><li>Use AI tools to enhance data analysis and process optimization</li><li>Collaborate with engineers on process improvements and technical projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=root-cause%20analysis">Root-cause Analysis</a></li><li><a href="/us/?q=statistical%20process%20control">Statistical Process Control</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Ph.D./M.Tech</dd></div><div><dt>Posted</dt><dd><span data-ago="1788426594265"><time datetime="2026-09-03">3 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-metals-4452397366">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-systems-performance-engineer-4460976344">Intern - Systems Performance Engineer</a></h3>
+          <span class="rc-sub">Systems Performance Analysis</span>
+          <ul class="rc-do"><li>Analyze system performance data from enterprise hardware and software stacks</li><li>Develop automation tools in Python for testing and reporting</li><li>Work on real-world data center workloads with GPU and storage systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=perf">Perf</a></li><li><a href="/us/?q=fio">Fio</a></li><li><a href="/us/skills/git">Git</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Longmont</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$50 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788352069724"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-systems-performance-engineer-4460976344">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-technology-dtco-and-ppa-assessment-engineer-4460978308">Intern - DRAM Technology DTCO &amp; PPA Assessment Engineer</a></h3>
+          <span class="rc-sub">DRAM Technology Assessment</span>
+          <ul class="rc-do"><li>Evaluate DRAM technologies and assess impact on product design</li><li>Use HSPICE and FineSim for circuit simulations and benchmarking</li><li>Collaborate with device and process teams on semiconductor projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=hspice">Hspice</a></li><li><a href="/us/?q=finesim">Finesim</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=vlsi%20design">VLSI Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1788352042710"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-technology-dtco-and-ppa-assessment-engineer-4460978308">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-design-engineer-4451658949">Intern - DRAM Design Engineer</a></h3>
+          <span class="rc-sub">DRAM Verification</span>
+          <ul class="rc-do"><li>Verify dram products using simulation tools and debugging techniques</li><li>Work with global teams on verification planning and coverage analysis</li><li>Apply ai and automation to improve verification workflows</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=verilog%20hdl">Verilog Hdl</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=simulation%20environments">Simulation Environments</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788340342772"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-design-engineer-4451658949">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-ip-circuits-design-engineer-4451658951">Intern - DRAM IP Circuits Design Engineer</a></h3>
+          <span class="rc-sub">DRAM Circuit Design</span>
+          <ul class="rc-do"><li>Support design and simulation of analog and mixed-signal circuits for DRAM IP</li><li>Use SPICE, Verilog, and AI tools for circuit verification and automation</li><li>Collaborate with cross-functional teams on memory product development</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=spice">Spice</a></li><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=eda%20tools">Eda Tools</a></li><li><a href="/us/?q=ai%20workflows">AI Workflows</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788340226254"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-ip-circuits-design-engineer-4451658951">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-cmp-4451661937">Intern - Process Development Engineer, 3D DRAM CMP</a></h3>
+          <span class="rc-sub">CMP Process Development</span>
+          <ul class="rc-do"><li>Develop and evaluate CMP processes for advanced DRAM technologies</li><li>Use AI tools and statistical analysis to improve process efficiency</li><li>Present technical findings to engineering teams at internship end</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=experimental%20design">Experimental Design</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Ph.D./M.Tech</dd></div><div><dt>Posted</dt><dd><span data-ago="1788340051863"><time datetime="2026-09-02">2 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-cmp-4451661937">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-rda-metrology-process-shift-engineer-td-4460273909">Intern - RDA/Metrology-Process Shift Engineer, TD</a></h3>
+          <span class="rc-sub">Semiconductor Process Support</span>
+          <ul class="rc-do"><li>Support process engineering, RDA, and metrology in semiconductor manufacturing</li><li>Use AI to improve defect analysis, data workflows, and recipe support</li><li>Work with engineers on data analysis, tool support, and operational metrics</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=semiconductor%20metrology">Semiconductor Metrology</a></li><li><a href="/us/?q=defect%20analysis">Defect Analysis</a></li><li><a href="/us/?q=process%20control">Process Control</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788266123848"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-rda-metrology-process-shift-engineer-td-4460273909">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-mask-technology-4460275802">Intern - Mask Technology</a></h3>
+          <span class="rc-sub">AI/OPC Development</span>
+          <ul class="rc-do"><li>Build AI workflows and programs for RET/OPC tasks</li><li>Use Python, Perl, MATLAB, and Linux/Unix tools</li><li>Collaborate on a project with the Photolithography group</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/perl">Perl</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/linux">Linux</a></li><li><a href="/us/?q=unix">Unix</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1788266103405"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-mask-technology-4460275802">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-ai-systems-and-infrastructure-engineering-4460283724">Intern - AI Systems and Infrastructure Engineering</a></h3>
+          <span class="rc-sub">AI Systems Software Engineering</span>
+          <ul class="rc-do"><li>Profile and optimize AI workloads across GPUs, CPUs, and storage systems</li><li>Implement memory and state management for LLM inference and Agentic AI</li><li>Collaborate with researchers on AI infrastructure and memory technologies</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=c%2Fc%2B%2B">C/c++</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li><li><a href="/us/?q=tensorrt-llm">Tensorrt-llm</a></li><li><a href="/us/skills/cuda">Cuda</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1788265669866"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-ai-systems-and-infrastructure-engineering-4460283724">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dry-etch-equipment-development-engineering-4460285483">Intern - Dry Etch Equipment Development Engineering</a></h3>
+          <span class="rc-sub">Equipment Development</span>
+          <ul class="rc-do"><li>Develop and optimize plasma etch equipment for memory parts</li><li>Work with cross-functional teams on hardware and process challenges</li><li>Conduct experiments and analyze data for technical improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=plasma%20etch%20equipment">Plasma Etch Equipment</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788265644019"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dry-etch-equipment-development-engineering-4460285483">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-dram-product-test-engineer-ats-workday-micron-wd1-external-jr109996">Intern - DRAM Product Test Engineer</a></h3>
+          <span class="rc-sub">DRAM Testing</span>
+          <ul class="rc-do"><li>Write and debug test programs for DRAM products using C++ and Python</li><li>Collaborate with cross-functional teams on test solutions and quality</li><li>Analyze data to optimize test coverage and manufacturing yield</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=unix%2Flinux">Unix/linux</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788048000000"><time datetime="2026-08-30">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-dram-product-test-engineer-ats-workday-micron-wd1-external-jr109996">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-technical-customer-management-ai-4458963490">Intern - Technical Customer Management, AI</a></h3>
+          <span class="rc-sub">Customer Process Analyst</span>
+          <ul class="rc-do"><li>Analyze workflows to improve efficiency using ai and automation</li><li>Build dashboards and reports for customer qualification tracking</li><li>Collaborate with managers to streamline processes and data flow</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai-assisted%20methodologies">Ai-assisted Methodologies</a></li><li><a href="/us/?q=dashboard%20development">Dashboard Development</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=process%20improvement">Process Improvement</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Longmont</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39 – $65 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787920028391"><time datetime="2026-08-28">28 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-technical-customer-management-ai-4458963490">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934">Intern - ADV DRAM Process Integration Engineer</a></h3>
+          <span class="rc-sub">DRAM Process Engineer</span>
+          <ul class="rc-do"><li>Design and run experiments in R&amp;D fab</li><li>Analyze data to optimize device performance</li><li>Collaborate with cross-functional teams on yield issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=materials%20science">Materials Science</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787832788717"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-adv-dram-process-integration-engineer-4458608934">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-photo-4449107102">Intern - Process Development Engineer, 3D DRAM Photo</a></h3>
+          <span class="rc-sub">Process Development</span>
+          <ul class="rc-do"><li>Develop and optimize photolithography processes for 3D DRAM</li><li>Use Python, MATLAB, and data analysis tools for process improvement</li><li>Collaborate with engineers to solve manufacturing challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=root-cause%20analysis">Root-cause Analysis</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823277347"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-photo-4449107102">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-pathfinding-dram-dry-etch-4449107101">Intern - Process Pathfinding, DRAM Dry Etch</a></h3>
+          <span class="rc-sub">Process Development</span>
+          <ul class="rc-do"><li>Support development of plasma etch processes for memory technologies</li><li>Use AI and digital tools for data analysis and process optimization</li><li>Collaborate with engineers on semiconductor manufacturing challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=plasma%20etch%20processes">Plasma Etch Processes</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=AI%20tools">AI Tools</a></li><li><a href="/us/?q=semiconductor%20manufacturing">Semiconductor Manufacturing</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823273057"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-pathfinding-dram-dry-etch-4449107101">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-dry-etch-4448990900">Intern - Process Development Engineer, 3D DRAM Dry Etch</a></h3>
+          <span class="rc-sub">Process Development</span>
+          <ul class="rc-do"><li>Develop and optimize advanced semiconductor etch processes for future DRAM technologies</li><li>Use AI and data analysis tools to improve engineering efficiency and decision-making</li><li>Collaborate with cross-functional teams to solve technical challenges and drive improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823251701"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-3d-dram-dry-etch-4448990900">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-photolithography-process-4449103772">Intern - Photolithography Process</a></h3>
+          <span class="rc-sub">Photolithography Research</span>
+          <ul class="rc-do"><li>Design and run experiments to optimize photolithography processes in a cleanroom</li><li>Use AI and data tools to analyze manufacturing data and process images</li><li>Collaborate with engineers on process development and technology innovation</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=process%20optimization">Process Optimization</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823226419"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-photolithography-process-4449103772">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-engineer-dry-etch-4448985954">Intern - Process Development Engineer, Dry Etch</a></h3>
+          <span class="rc-sub">Process Development</span>
+          <ul class="rc-do"><li>Develop and optimize dry etch processes for semiconductor manufacturing</li><li>Use AI, Python, and statistical tools for data analysis and process improvement</li><li>Collaborate with cross-functional teams on complex technical challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=plasma%20physics">Plasma Physics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823202337"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-engineer-dry-etch-4448985954">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-development-4449104758">Intern - Process Development</a></h3>
+          <span class="rc-sub">Semiconductor Process Development</span>
+          <ul class="rc-do"><li>Develop and optimize semiconductor processes for memory products</li><li>Use AI and statistical tools to analyze manufacturing data</li><li>Collaborate with engineering teams on process improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=artificial%20intelligence">Artificial Intelligence</a></li><li><a href="/us/?q=data%20science">Data Science</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Ph.D./M.S.</dd></div><div><dt>Posted</dt><dd><span data-ago="1787823174983"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-development-4449104758">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-process-quality-engineering-ats-workday-micron-wd1-external-jr109159">Intern - Process Quality Engineering</a></h3>
+          <span class="rc-sub">Process Quality Analysis</span>
+          <ul class="rc-do"><li>Analyze process data to find trends and improve manufacturing reliability</li><li>Use ai and statistical tools to create dashboards and monitoring systems</li><li>Work with engineering teams on contamination control and process improvements</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li><li><a href="/us/?q=data%20visualization">Data Visualization</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/?q=process%20control">Process Control</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-process-quality-engineering-ats-workday-micron-wd1-external-jr109159">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-technical-customer-management-ai-ats-workday-micron-wd1-external-jr109454">Intern - Technical Customer Management, AI</a></h3>
+          <span class="rc-sub">Customer Qualification Analyst</span>
+          <ul class="rc-do"><li>Analyze workflows to improve efficiency using ai and automation</li><li>Build dashboards and reports for customer qualification tracking</li><li>Collaborate with managers to streamline processes and data flow</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=microsoft%20copilot">Microsoft Copilot</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Longmont-MAX- Office</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$39 – $65 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-technical-customer-management-ai-ats-workday-micron-wd1-external-jr109454">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-2027-summer-intern-advanced-spectroscopy-and-nanoscale-materials-chara-ats-workday-micron-wd1-external-jr109071">2027 Summer Intern: Advanced Spectroscopy and Nanoscale Materials Characterization</a></h3>
+          <span class="rc-sub">Materials Characterization</span>
+          <ul class="rc-do"><li>Analyze spectroscopy data from thin films and surfaces using Python and MATLAB</li><li>Collaborate with scientists on material characterization and defect analysis</li><li>Develop visualization tools for complex datasets in semiconductor research</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/?q=raman%20spectroscopy">Raman Spectroscopy</a></li><li><a href="/us/?q=photoluminescence">Photoluminescence</a></li><li><a href="/us/?q=afm-ir">Afm-ir</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787529600000"><time datetime="2026-08-24">23 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-2027-summer-intern-advanced-spectroscopy-and-nanoscale-materials-chara-ats-workday-micron-wd1-external-jr109071">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-product-yield-enhancement-eng-ats-workday-micron-wd1-external-jr108605">Intern - Product Yield Enhancement Eng</a></h3>
+          <span class="rc-sub">DRAM Failure Analysis</span>
+          <ul class="rc-do"><li>Analyze DRAM failures using statistical tools and AI</li><li>Work with cross-functional teams on yield improvement</li><li>3-month internship in Boise, ID</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=statistical%20analysis">Statistical Analysis</a></li><li><a href="/us/?q=ai%20tools">AI Tools</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787443200000"><time datetime="2026-08-23">22 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-product-yield-enhancement-eng-ats-workday-micron-wd1-external-jr108605">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-metrology-process-development-engineer-ats-workday-micron-wd1-external-jr108851">Intern - Metrology Process Development Engineer</a></h3>
+          <span class="rc-sub">Metrology development</span>
+          <ul class="rc-do"><li>Run experiments in cleanroom to evaluate new metrology tools for semiconductor manufacturing</li><li>Use AI and data analysis tools to improve measurement accuracy and process characterization</li><li>Collaborate with global engineers to develop next-gen processes for NAND and DRAM fabrication</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=jmp">Jmp</a></li><li><a href="/us/skills/matlab">Matlab</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=x-ray">X-ray</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>M.S./Ph.D.</dd></div><div><dt>Posted</dt><dd><span data-ago="1787270400000"><time datetime="2026-08-21">20 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-metrology-process-development-engineer-ats-workday-micron-wd1-external-jr108851">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-ats-workday-micron-wd1-external-jr109076">Intern - Yield Enhancement, Data Analysis</a></h3>
+          <span class="rc-sub">Data Analysis Engineering</span>
+          <ul class="rc-do"><li>Analyze data to find device performance shifts</li><li>Use machine learning to predict cell performance</li><li>Collaborate with data science and process teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/machine-learning">Machine Learning</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=process%20improvement">Process Improvement</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Boise</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787270400000"><time datetime="2026-08-21">20 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-ats-workday-micron-wd1-external-jr109076">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -398,49 +508,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Micron Technology&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/susquehanna-international-group">
-          <span class="tile-crest" aria-hidden="true">SI<img src="/logos/susquehanna-international-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Susquehanna International Group</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/general-mills">
-          <span class="tile-crest" aria-hidden="true">GM<img src="/logos/general-mills.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">General Mills</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/macom">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/macom.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">MACOM</span></span>
-        </a><a class="dir-card" href="/us/companies/exxonmobil">
-          <span class="tile-crest" aria-hidden="true">E<img src="/logos/exxonmobil.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">ExxonMobil</span></span>
-        </a><a class="dir-card" href="/us/companies/ge-vernova">
-          <span class="tile-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Vernova</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

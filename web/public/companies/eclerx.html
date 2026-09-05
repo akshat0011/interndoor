@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/">Internships</a>
+      <a href="/companies" aria-current="page">Companies</a>
+      <a href="/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,26 +88,33 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">E<img src="/logos/eclerx.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>eClerx internships in India</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>1 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>1 internship open now</a>
     </header>
 
-    
+    <p class="hub-answer-line"><b>Yes, eClerx is hiring interns in India right now.</b> One engineering internship is open, based in Mumbai, on-site. We re-check this page every 30 minutes.</p>
+
+    <dl class="hub-answer"><div class="ans">
+        <dt>Where</dt><dd>Mumbai<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>5<p>Numpy, Pandas, Python</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>1</b></h2></div>
-      <div class="roles"><a class="role-card" href="/jobs/eclerx-intern-4436939571">
-        <span class="rc-t">intern</span>
-        <span class="rc-sub">Data Science Intern</span>
-        <span class="rc-facts"><span class="f-item">Mumbai</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1786883783023">Posted <time datetime="2026-08-16">16 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>1 role</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/jobs/eclerx-intern-4436939571">intern</a></h3>
+          <span class="rc-sub">Data Science Intern</span>
+          <ul class="rc-do"><li>Analyze data and build machine learning models</li><li>Use python, sql, and tools like tableau</li><li>Work with cross-functional teams on data projects</li></ul>
+          <ul class="rc-chips"><li><a href="/skills/python">Python</a></li><li><a href="/skills/sql">SQL</a></li><li><a href="/?q=tableau">Tableau</a></li><li><a href="/skills/pandas">Pandas</a></li><li><a href="/skills/numpy">Numpy</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Mumbai</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1786883783023"><time datetime="2026-08-16">16 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/jobs/eclerx-intern-4436939571">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     
@@ -121,49 +139,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as eClerx&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/companies/d-square-consulting-services-pvt-ltd">
-          <span class="tile-crest" aria-hidden="true">DS<img src="/logos/d-square-consulting-services-pvt-ltd.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">D Square Consulting Services Pvt Ltd</span></span>
-        </a><a class="dir-card" href="/companies/pixxel">
-          <span class="tile-crest" aria-hidden="true">P<img src="/logos/pixxel.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Pixxel</span></span>
-        </a><a class="dir-card" href="/companies/upgrad-international">
-          <span class="tile-crest" aria-hidden="true">UI<img src="/logos/upgrad-international.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">upGrad International</span></span>
-        </a><a class="dir-card" href="/companies/marmon-technologies-india-pvt-ltd">
-          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/marmon-technologies-india-pvt-ltd.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Marmon Technologies India Pvt Ltd</span></span>
-        </a><a class="dir-card" href="/companies/ge-vernova">
-          <span class="tile-crest" aria-hidden="true">GV<img src="/logos/ge-vernova.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">GE Vernova</span></span>
-        </a><a class="dir-card" href="/companies/quest-global">
-          <span class="tile-crest" aria-hidden="true">QG<img src="/logos/quest-global.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Quest Global</span></span>
-        </a><a class="dir-card" href="/companies/s-and-p-global">
-          <span class="tile-crest" aria-hidden="true">SP<img src="/logos/s-and-p-global.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">S&amp;P Global</span></span>
-        </a><a class="dir-card" href="/companies/procter-and-gamble">
-          <span class="tile-crest" aria-hidden="true">PG<img src="/logos/procter-and-gamble.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Procter &amp; Gamble</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/data/jobs.json">
       <div class="strip-head">

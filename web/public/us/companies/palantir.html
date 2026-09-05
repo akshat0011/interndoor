@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,85 +102,112 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">P<img src="/logos/palantir.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Palantir internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>8 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>8 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Palantir is hiring interns in the US right now.</b> 8 engineering internships are open, across Honolulu, Washington and Chicago. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
         <dt>Where</dt><dd>Honolulu · Washington · Chicago</dd></div><div class="ans is-live">
-        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div></dl>
+        <dt>Last verified</dt><dd><span><time datetime="2026-09-05">5 Sept 2026</time></span><p>on the employer’s own careers page</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>4<p>AI, LLM Workflows, Problem Solving</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>8</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/palantir-forward-deployed-infrastructure-engineer-new-grad-us-government-ats-lever-palantir-701a9307-0619-45d3-b077-cabe9897cd12">
-        <span class="rc-t">Forward Deployed Infrastructure Engineer, New Grad - US Government</span>
-        <span class="rc-sub">Infrastructure engineering</span>
-        <span class="rc-facts"><span class="f-item">Honolulu</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788193656814">Posted <time datetime="2026-08-31">31 Aug 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-forward-deployed-software-engineer-internship-intel-ats-lever-palantir-9e40d77f-b07c-437b-98e7-def9b0184d89">
-        <span class="rc-t">Forward Deployed Software Engineer, Internship - Intel</span>
-        <span class="rc-sub">Data solutions engineer</span>
-        <span class="rc-facts"><span class="f-item">Washington</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1782933745074">Posted <time datetime="2026-07-01">1 Jul 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-forward-deployed-software-engineer-internship-commercial-ats-lever-palantir-d5486403-c050-4920-b2e0-91b69b61ebb2">
-        <span class="rc-t">Forward Deployed Software Engineer, Internship - Commercial</span>
-        <span class="rc-sub">Software engineering</span>
-        <span class="rc-facts"><span class="f-item">Chicago</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1782849666026">Posted <time datetime="2026-06-30">30 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-commercial-ats-lever-palantir-e500bcf3-19d8-4d3c-b340-4d76e4a55b40">
-        <span class="rc-t">Forward Deployed Software Engineer, New Grad - Commercial</span>
-        <span class="rc-sub">Software problem solver</span>
-        <span class="rc-facts"><span class="f-item">Chicago</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1782744260702">Posted <time datetime="2026-06-29">29 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-privacy-and-civil-liberties-engineer-new-grad-ats-lever-palantir-95e0d2b0-437a-4096-a5c6-0f247f426c90">
-        <span class="rc-t">Privacy &amp; Civil Liberties Engineer - New Grad</span>
-        <span class="rc-sub">Privacy Tools Development</span>
-        <span class="rc-facts"><span class="f-item">New York</span><span class="f-item">Hybrid</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1782414058129">Posted <time datetime="2026-06-25">25 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3">
-        <span class="rc-t">Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial</span>
-        <span class="rc-sub">Software engineering</span>
-        <span class="rc-facts"><span class="f-item">Chicago</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1782328394474">Posted <time datetime="2026-06-24">24 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299">
-        <span class="rc-t">Deployment Strategist, New Grad - Intel, US Government</span>
-        <span class="rc-sub">Deployment Analysis</span>
-        <span class="rc-facts"><span class="f-item">Washington</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1781541777674">Posted <time datetime="2026-06-15">15 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382">
-        <span class="rc-t">Forward Deployed Software Engineer, New Grad - Intel, US Government</span>
-        <span class="rc-sub">Data solutions engineer</span>
-        <span class="rc-facts"><span class="f-item">Washington</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1781539682343">Posted <time datetime="2026-06-15">15 Jun 2026</time></span><span class="vfy is-verified"><i aria-hidden="true"></i>Open &middot; confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>8 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-forward-deployed-infrastructure-engineer-new-grad-us-government-ats-lever-palantir-701a9307-0619-45d3-b077-cabe9897cd12">Forward Deployed Infrastructure Engineer, New Grad - US Government</a></h3>
+          <span class="rc-sub">Infrastructure engineering</span>
+          <ul class="rc-do"><li>Build and maintain scalable software systems for government operations</li><li>Use llm and ai tools to automate processes and solve complex problems</li><li>Work with product and operations teams to design and resolve production issues</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/llm">LLM</a></li><li><a href="/us/?q=ai">AI</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Honolulu</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Posted</dt><dd><span data-ago="1788193656814"><time datetime="2026-08-31">31 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-forward-deployed-infrastructure-engineer-new-grad-us-government-ats-lever-palantir-701a9307-0619-45d3-b077-cabe9897cd12">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-forward-deployed-software-engineer-internship-intel-ats-lever-palantir-9e40d77f-b07c-437b-98e7-def9b0184d89">Forward Deployed Software Engineer, Internship - Intel</a></h3>
+          <span class="rc-sub">Data solutions engineer</span>
+          <ul class="rc-do"><li>Design and implement data-driven solutions for real-world problems</li><li>Work with customers to solve complex operational challenges</li><li>Based in washington, d.c.</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=problem%20solving">Problem Solving</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Washington</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1782933745074"><time datetime="2026-07-01">1 Jul 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-forward-deployed-software-engineer-internship-intel-ats-lever-palantir-9e40d77f-b07c-437b-98e7-def9b0184d89">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-forward-deployed-software-engineer-internship-commercial-ats-lever-palantir-d5486403-c050-4920-b2e0-91b69b61ebb2">Forward Deployed Software Engineer, Internship - Commercial</a></h3>
+          <span class="rc-sub">Software engineering</span>
+          <ul class="rc-do"><li>Solve mission-critical problems with software and ai in high-stakes operations</li><li>Work in small teams with real ownership from day one</li><li>Embed with customers to build custom solutions for their reality</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=llm%20workflows">LLM Workflows</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1782849666026"><time datetime="2026-06-30">30 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-forward-deployed-software-engineer-internship-commercial-ats-lever-palantir-d5486403-c050-4920-b2e0-91b69b61ebb2">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-commercial-ats-lever-palantir-e500bcf3-19d8-4d3c-b340-4d76e4a55b40">Forward Deployed Software Engineer, New Grad - Commercial</a></h3>
+          <span class="rc-sub">Software problem solver</span>
+          <ul class="rc-do"><li>Solve mission-critical problems with software and AI in high-stakes operations</li><li>Work in small teams with real ownership from day one</li><li>Embed with customers to build custom solutions for real-world challenges</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=llm%20workflows">LLM Workflows</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Posted</dt><dd><span data-ago="1782744260702"><time datetime="2026-06-29">29 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-commercial-ats-lever-palantir-e500bcf3-19d8-4d3c-b340-4d76e4a55b40">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-privacy-and-civil-liberties-engineer-new-grad-ats-lever-palantir-95e0d2b0-437a-4096-a5c6-0f247f426c90">Privacy &amp; Civil Liberties Engineer - New Grad</a></h3>
+          <span class="rc-sub">Privacy Tools Development</span>
+          <ul class="rc-do"><li>Analyze data to protect civil liberties</li><li>Use python and sql for privacy tools</li><li>Work on real-world impact projects</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>New York</dd></div><div><dt>Work mode</dt><dd>Hybrid</dd></div><div><dt>Posted</dt><dd><span data-ago="1782414058129"><time datetime="2026-06-25">25 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-privacy-and-civil-liberties-engineer-new-grad-ats-lever-palantir-95e0d2b0-437a-4096-a5c6-0f247f426c90">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3">Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial</a></h3>
+          <span class="rc-sub">Software engineering</span>
+          <ul class="rc-do"><li>Build software for customer projects using ai and data tools</li><li>Work with engineers and customers on real-world problems</li><li>Join a team shaping future of data-driven operations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=ai">AI</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Chicago</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1782328394474"><time datetime="2026-06-24">24 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-year-at-palantir-forward-deployed-software-engineer-internship-commerc-ats-lever-palantir-75cc1c09-8ebd-44c8-b3bc-d122cd1fecb3">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299">Deployment Strategist, New Grad - Intel, US Government</a></h3>
+          <span class="rc-sub">Deployment Analysis</span>
+          <ul class="rc-do"><li>Analyze customer workflows and data to shape product solutions</li><li>Collaborate with engineers and designers on complex deployments</li><li>Work on real-world problems with high-impact outcomes</li></ul>
+          
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Washington</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1781541777674"><time datetime="2026-06-15">15 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382">Forward Deployed Software Engineer, New Grad - Intel, US Government</a></h3>
+          <span class="rc-sub">Data solutions engineer</span>
+          <ul class="rc-do"><li>Design and implement data-driven solutions for critical operations</li><li>Work with minimal supervision on high-stakes projects</li><li>Collaborate with customer executives and technical teams</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=problem%20solving">Problem Solving</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="2026-09-05">5 Sept 2026</time></span></dd></div><div><dt>Location</dt><dd>Washington</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Posted</dt><dd><span data-ago="1781539682343"><time datetime="2026-06-15">15 Jun 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -207,37 +245,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Palantir&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/general-dynamics-electric-boat">
-          <span class="tile-crest" aria-hidden="true">GD<img src="/logos/general-dynamics-electric-boat.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">General Dynamics Electric Boat</span></span>
-        </a><a class="dir-card" href="/us/companies/nokia">
-          <span class="tile-crest" aria-hidden="true">N<img src="/logos/nokia.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Nokia</span></span>
-        </a><a class="dir-card" href="/us/companies/cisco">
-          <span class="tile-crest" aria-hidden="true">C<img src="/logos/cisco.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cisco</span></span>
-        </a><a class="dir-card" href="/us/companies/dominion-energy">
-          <span class="tile-crest" aria-hidden="true">DE<img src="/logos/dominion-energy.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Dominion Energy</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,60 +88,78 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">MC<img src="/logos/mckesson-corporation.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>McKesson Corporation internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>5 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>5 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, McKesson Corporation is hiring interns in the US right now.</b> 5 engineering internships are open, based in USA, remote. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>USA<p>remote</p></dd></div></dl>
+        <dt>Where</dt><dd>USA<p>remote</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>13<p>Python, C#, Excel</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>5</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/mckesson-corporation-system-design-qa-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152746">
-        <span class="rc-t">System Design / QA Intern - Summer 2027</span>
-        <span class="rc-sub">System Simulation</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $29</span><span class="f-item">USA</span><span class="f-item">Bachelor’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mckesson-corporation-software-engineer-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152742">
-        <span class="rc-t">Software Engineer Intern - Summer 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $29</span><span class="f-item">USA</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mckesson-corporation-software-development-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152635">
-        <span class="rc-t">Software Development Intern - Summer 2027</span>
-        <span class="rc-sub">Software Development</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $29</span><span class="f-item">USA</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mckesson-corporation-software-installation-and-it-support-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152304">
-        <span class="rc-t">Software Installation &amp; IT Support Intern - Summer 2027</span>
-        <span class="rc-sub">Software Deployment</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $29</span><span class="f-item">USA</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/mckesson-corporation-data-analyst-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0150844">
-        <span class="rc-t">Data Analyst Intern - Summer 2027</span>
-        <span class="rc-sub">Data Analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$17 – $28</span><span class="f-item">USA</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788307200000">Posted <time datetime="2026-09-02">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>5 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mckesson-corporation-system-design-qa-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152746">System Design / QA Intern - Summer 2027</a></h3>
+          <span class="rc-sub">System Simulation</span>
+          <ul class="rc-do"><li>Run simulations and analyze system performance</li><li>Use simio and data tools for design validation</li><li>Work on ai projects with real-world impact</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=simio">Simio</a></li><li><a href="/us/?q=data%20analysis">Data Analysis</a></li><li><a href="/us/?q=ai">AI</a></li><li><a href="/us/?q=automation">Automation</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>USA</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $29</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mckesson-corporation-system-design-qa-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152746">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mckesson-corporation-software-engineer-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152742">Software Engineer Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Write clean code and test software for healthcare systems</li><li>Use Python and C# with Git and SQL databases</li><li>Work with senior engineers on real-world projects</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/git">Git</a></li><li><a href="/us/skills/sql">SQL</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>USA</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $29</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mckesson-corporation-software-engineer-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152742">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mckesson-corporation-software-development-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152635">Software Development Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Software Development</span>
+          <ul class="rc-do"><li>Write, test, and debug code in C#, Java, Python</li><li>Collaborate with developers and product managers</li><li>Work on real-world software projects in Irving, TX</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/c-sharp">C#</a></li><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>USA</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $29</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mckesson-corporation-software-development-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152635">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mckesson-corporation-software-installation-and-it-support-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152304">Software Installation &amp; IT Support Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Software Deployment</span>
+          <ul class="rc-do"><li>Install and deploy software across systems</li><li>Use Excel, Power BI, and AI tools for analysis</li><li>Work on automation and process improvement</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/excel">Excel</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>USA</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $29</span></dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mckesson-corporation-software-installation-and-it-support-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0152304">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/mckesson-corporation-data-analyst-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0150844">Data Analyst Intern - Summer 2027</a></h3>
+          <span class="rc-sub">Data Analysis</span>
+          <ul class="rc-do"><li>Analyze data from multiple sources to support business decisions</li><li>Use sql, tableau, and power bi for reporting and visualization</li><li>Work with cross-functional teams and business leaders in columbia</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/tableau">Tableau</a></li><li><a href="/us/skills/power-bi">Power Bi</a></li><li><a href="/us/skills/excel">Excel</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>USA</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$17 – $28</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788307200000"><time datetime="2026-09-02">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/mckesson-corporation-data-analyst-intern-summer-2027-ats-workday-mckesson-wd3-external-careers-jr0150844">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -168,49 +197,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as McKesson Corporation&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/lucid-motors">
-          <span class="tile-crest" aria-hidden="true">LM<img src="/logos/lucid-motors.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Lucid Motors</span></span>
-        </a><a class="dir-card" href="/us/companies/phillips-66">
-          <span class="tile-crest" aria-hidden="true">P6<img src="/logos/phillips-66.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Phillips 66</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/mercury-marine">
-          <span class="tile-crest" aria-hidden="true">MM<img src="/logos/mercury-marine.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Mercury Marine</span></span>
-        </a><a class="dir-card" href="/us/companies/silicon">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/silicon.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Silicon</span></span>
-        </a><a class="dir-card" href="/us/companies/premier-inc">
-          <span class="tile-crest" aria-hidden="true">PI<img src="/logos/premier-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Premier Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/cardinal-health">
-          <span class="tile-crest" aria-hidden="true">CH<img src="/logos/cardinal-health.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Cardinal Health</span></span>
-        </a><a class="dir-card" href="/us/companies/american-express">
-          <span class="tile-crest" aria-hidden="true">AE<img src="/logos/american-express.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">American Express</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

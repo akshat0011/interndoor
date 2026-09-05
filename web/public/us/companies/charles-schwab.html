@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,52 +88,67 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">CS<img src="/logos/charles-schwab.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Charles Schwab internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>4 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>4 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Charles Schwab is hiring interns in the US right now.</b> 4 engineering internships are open, across Austin, Southlake and Westlake, on-site. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s</dd></div><div class="ans">
-        <dt>Where</dt><dd>Austin · Southlake · Westlake<p>on-site</p></dd></div></dl>
+        <dt>Where</dt><dd>Austin · Southlake · Westlake<p>on-site</p></dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>18<p>Java, Javascript, Python</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>4</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644">
-        <span class="rc-t">2027 Technology Intern - Site Reliability Engineering</span>
-        <span class="rc-sub">System operations</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / hour</span><span class="f-item">Austin</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788597449403">Posted <time datetime="2026-09-05">5 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/charles-schwab-technology-2027-intern-data-engineering-4458804123">
-        <span class="rc-t">Technology 2027 Intern - Data Engineering</span>
-        <span class="rc-sub">Data engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / year</span><span class="f-item">3 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788038730607">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4458805178">
-        <span class="rc-t">Technology 2027 Intern - AI &amp; CyberSecurity</span>
-        <span class="rc-sub">Cybersecurity analysis</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / year</span><span class="f-item">4 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788035873539">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/charles-schwab-technology-2027-intern-software-engineering-4458817115">
-        <span class="rc-t">Technology 2027 Intern - Software Engineering</span>
-        <span class="rc-sub">Software engineering</span>
-        <span class="rc-facts"><span class="f-item is-cash">$31 / year</span><span class="f-item">6 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788035868292">Posted <time datetime="2026-08-29">29 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>4 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644">2027 Technology Intern - Site Reliability Engineering</a></h3>
+          <span class="rc-sub">System operations</span>
+          <ul class="rc-do"><li>Monitor and maintain system reliability across platforms</li><li>Use tools like Terraform and Prometheus for automation</li><li>Work on-site in Austin with a focused engineering team</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=root%20cause%20analysis">Root Cause Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Austin</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / hour</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788597449403"><time datetime="2026-09-05">5 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/charles-schwab-technology-2027-intern-data-engineering-4458804123">Technology 2027 Intern - Data Engineering</a></h3>
+          <span class="rc-sub">Data engineering</span>
+          <ul class="rc-do"><li>Support enterprise data platforms and pipelines</li><li>Work with data professionals on scalable solutions</li><li>Paid internship in southlake, tx for 9 weeks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20pipelines">Data Pipelines</a></li><li><a href="/us/?q=data%20integration">Data Integration</a></li><li><a href="/us/?q=etl%20processes">ETL Processes</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>3 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788038730607"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/charles-schwab-technology-2027-intern-data-engineering-4458804123">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4458805178">Technology 2027 Intern - AI &amp; CyberSecurity</a></h3>
+          <span class="rc-sub">Cybersecurity analysis</span>
+          <ul class="rc-do"><li>Analyze threats and secure systems using cybersecurity tools</li><li>Work with security teams on risk management and automation</li><li>Gain hands-on experience in AI security and defense</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=threat%20analysis">Threat Analysis</a></li><li><a href="/us/?q=risk%20management">Risk Management</a></li><li><a href="/us/?q=security%20automation">Security Automation</a></li><li><a href="/us/?q=ai%20security">AI Security</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>4 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788035873539"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4458805178">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/charles-schwab-technology-2027-intern-software-engineering-4458817115">Technology 2027 Intern - Software Engineering</a></h3>
+          <span class="rc-sub">Software engineering</span>
+          <ul class="rc-do"><li>Design and develop software solutions for millions of clients</li><li>Work with engineers and architects on modern tech stacks</li><li>Summer internship in omaha, ne with full-time potential</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/sql">SQL</a></li><li><a href="/us/skills/javascript">Javascript</a></li><li><a href="/us/?q=html%2Fcss">Html/css</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>6 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$31 / year</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788035868292"><time datetime="2026-08-29">29 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/charles-schwab-technology-2027-intern-software-engineering-4458817115">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -160,37 +186,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Charles Schwab&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/old-mission-capital">
-          <span class="tile-crest" aria-hidden="true">OM<img src="/logos/old-mission-capital.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Old Mission Capital</span></span>
-        </a><a class="dir-card" href="/us/companies/microsoft">
-          <span class="tile-crest" aria-hidden="true">M<img src="/logos/microsoft.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Microsoft</span></span>
-        </a><a class="dir-card" href="/us/companies/belvedere-trading-llc">
-          <span class="tile-crest" aria-hidden="true">BT<img src="/logos/belvedere-trading-llc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Belvedere Trading, LLC</span></span>
-        </a><a class="dir-card" href="/us/companies/l3harris-technologies">
-          <span class="tile-crest" aria-hidden="true">LT<img src="/logos/l3harris-technologies.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">L3Harris Technologies</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

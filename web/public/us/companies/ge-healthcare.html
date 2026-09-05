@@ -56,6 +56,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <details class="rg" id="region-switch" data-current="US">
         <summary aria-label="Change region — currently United States">
@@ -91,53 +102,68 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">GH<img src="/logos/ge-healthcare.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>GE HealthCare internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>4 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>4 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, GE HealthCare is hiring interns in the US right now.</b> 4 engineering internships are open, across Waukesha, Wisconsin and Detroit. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans is-cash">
         <dt>They pay</dt><dd>$48k – $72k<p>stated on 1 of 4 roles</p></dd></div><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>Waukesha · Wisconsin · Detroit</dd></div></dl>
+        <dt>Where</dt><dd>Waukesha · Wisconsin · Detroit</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>12<p>Cfd, Creo, Fea</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>4</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294">
-        <span class="rc-t">Edison Engineering Development Program Internship - Hardware</span>
-        <span class="rc-sub">Hardware Engineering</span>
-        <span class="rc-facts"><span class="f-item">2 locations</span><span class="f-item">Bachelor’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788290651323">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ge-healthcare-information-technology-development-program-internship-4462029414">
-        <span class="rc-t">Information Technology Development Program - Internship</span>
-        <span class="rc-sub">Digital Solutions Development</span>
-        <span class="rc-facts"><span class="f-item">Wisconsin</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">Remote</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788290649063">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ge-healthcare-edison-engineering-development-program-intern-software-4462026460">
-        <span class="rc-t">Edison Engineering Development Program Intern – Software</span>
-        <span class="rc-sub">Software development</span>
-        <span class="rc-facts"><span class="f-item">Waukesha</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1788289852184">Posted <time datetime="2026-09-01">1 Sept 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ge-healthcare-field-engineer-apprentice-4440887133">
-        <span class="rc-t">Field Engineer Apprentice</span>
-        <span class="rc-sub">Medical Equipment Maintenance</span>
-        <span class="rc-facts"><span class="f-item is-cash">$48,000 – $72,000</span><span class="f-item">Detroit</span><span class="f-item">Bachelor’s / Master’s</span><span class="f-item">On-site</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787840782182">Posted <time datetime="2026-08-27">27 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>4 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294">Edison Engineering Development Program Internship - Hardware</a></h3>
+          <span class="rc-sub">Hardware Engineering</span>
+          <ul class="rc-do"><li>Work on power electronics, embedded systems, and thermal management for medical devices</li><li>Use tools like Creo, FEA, and CFD for design and analysis</li><li>Relocate to Waukesha, WI or other US locations with housing stipend</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=creo">Creo</a></li><li><a href="/us/?q=fea">Fea</a></li><li><a href="/us/?q=cfd">Cfd</a></li><li><a href="/us/?q=power%20electronics">Power Electronics</a></li><li><a href="/us/?q=thermal%20management">Thermal Management</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>2 locations</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788290651323"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ge-healthcare-edison-engineering-development-program-internship-hardware-4462034294">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ge-healthcare-information-technology-development-program-internship-4462029414">Information Technology Development Program - Internship</a></h3>
+          <span class="rc-sub">Digital Solutions Development</span>
+          <ul class="rc-do"><li>Develop digital solutions for healthcare technology projects</li><li>Work with tools like Python, SQL, and cloud platforms</li><li>Based in Waukesha, WI or remote U.S. Locations</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=data%20analytics">Data Analytics</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Wisconsin</dd></div><div><dt>Work mode</dt><dd>Remote</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788290649063"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ge-healthcare-information-technology-development-program-internship-4462029414">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ge-healthcare-edison-engineering-development-program-intern-software-4462026460">Edison Engineering Development Program Intern – Software</a></h3>
+          <span class="rc-sub">Software development</span>
+          <ul class="rc-do"><li>Design test debug software for healthcare products</li><li>Work on devops automation and ai research</li><li>Relocate to waukesha wi for 10+ weeks</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/java">Java</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/agile">Agile</a></li><li><a href="/us/?q=devops">Devops</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Waukesha</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1788289852184"><time datetime="2026-09-01">1 Sept 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ge-healthcare-edison-engineering-development-program-intern-software-4462026460">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ge-healthcare-field-engineer-apprentice-4440887133">Field Engineer Apprentice</a></h3>
+          <span class="rc-sub">Medical Equipment Maintenance</span>
+          <ul class="rc-do"><li>Evaluate and troubleshoot imaging equipment issues in hospital radiology settings</li><li>Perform preventative maintenance and safety inspections on diagnostic imaging equipment</li><li>Maintain communication with customers for service follow-up and satisfaction</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=preventative%20maintenance">Preventative Maintenance</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>Detroit</dd></div><div><dt>Work mode</dt><dd>On-site</dd></div><div><dt>Stipend</dt><dd><span class="is-cash">$48,000 – $72,000</span></dd></div><div><dt>Eligibility</dt><dd>Bachelor’s / Master’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787840782182"><time datetime="2026-08-27">27 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ge-healthcare-field-engineer-apprentice-4440887133">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -175,34 +201,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as GE HealthCare&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/abbott">
-          <span class="tile-crest" aria-hidden="true">A<img src="/logos/abbott.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Abbott</span></span>
-        </a><a class="dir-card" href="/us/companies/principal-financial-group">
-          <span class="tile-crest" aria-hidden="true">PF<img src="/logos/principal-financial-group.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Principal Financial Group</span></span>
-        </a><a class="dir-card" href="/us/companies/phillips-66">
-          <span class="tile-crest" aria-hidden="true">P6<img src="/logos/phillips-66.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Phillips 66</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">

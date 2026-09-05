@@ -53,6 +53,17 @@
       <span class="word">INTERN<em>DOOR</em></span>
     </a>
 
+    <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
+         page you are on would give the homepage a two-item nav and every other
+         page a three-item one, so the remaining links move as you navigate and
+         the reader loses the position they had learned. aria-current is the
+         answer to "where am I"; absence is not. -->
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="/us">Internships</a>
+      <a href="/us/companies" aria-current="page">Companies</a>
+      <a href="/us/skills">Skills</a>
+    </nav>
+
     <div class="bar-right">
       <a class="alerts" aria-label="Get alerts" href="/us/alerts">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -77,76 +88,100 @@
     <header class="hub-hero">
       <span class="jp-crest" aria-hidden="true">A<img src="/logos/ambarella.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
       <h1>Ambarella internships in the US</h1>
-      <span class="pill is-fresh hub-live"><i aria-hidden="true"></i>7 open now</span>
+      <a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>7 internships open now</a>
     </header>
+
+    <p class="hub-answer-line"><b>Yes, Ambarella is hiring interns in the US right now.</b> 7 engineering internships are open, based in United States of America. We re-check this page every 30 minutes.</p>
 
     <dl class="hub-answer"><div class="ans">
         <dt>Who they take</dt><dd>Bachelor’s · Master’s<p>varies by role</p></dd></div><div class="ans">
-        <dt>Where</dt><dd>United States of America</dd></div></dl>
+        <dt>Where</dt><dd>United States of America</dd></div><div class="ans">
+        <dt>Skills asked for</dt><dd>20<p>Verilog, Python, C</p></dd></div></dl>
 
     <section class="strip">
       <!-- The one heading on this page that is not a label but the main event:
            it is the count of roles a reader can apply to right now. The number
            is a lime chip rather than a middot and a digit, so it reads as the
            answer to "is there anything here" from across the page. -->
-      <div class="strip-head"><h2 class="h2-lead">Open internships <b>7</b></h2></div>
-      <div class="roles"><a class="role-card" href="/us/jobs/ambarella-verification-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100364">
-        <span class="rc-t">Verification Engineer Intern</span>
-        <span class="rc-sub">Verification Engineering</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-software-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100363">
-        <span class="rc-t">Software Engineer Intern</span>
-        <span class="rc-sub">Microcode development</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">Bachelor’s</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-mixed-signal-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100361">
-        <span class="rc-t">Mixed Signal Engineer Intern</span>
-        <span class="rc-sub">Analog circuit design</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-dft-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100360">
-        <span class="rc-t">DFT Engineer Intern</span>
-        <span class="rc-sub">DFT Logic Design</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">MSEE</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-software-development-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100366">
-        <span class="rc-t">Software Development Engineer Intern</span>
-        <span class="rc-sub">Software tool development</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-algorithm-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100359">
-        <span class="rc-t">Algorithm Engineer Intern</span>
-        <span class="rc-sub">Algorithm Development</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787788800000">Posted <time datetime="2026-08-27">26 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a><a class="role-card" href="/us/jobs/ambarella-asic-design-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100357">
-        <span class="rc-t">ASIC Design Engineer Intern</span>
-        <span class="rc-sub">Logic Design</span>
-        <span class="rc-facts"><span class="f-item">United States of America</span><span class="f-item">Master’s / PhD</span></span>
-        <span class="rc-foot">
-          <span class="rc-when"><span class="rc-age" data-ago="1787702400000">Posted <time datetime="2026-08-26">25 Aug 2026</time></span><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></span>
-          <span class="rc-go">View role <em aria-hidden="true">→</em></span>
-        </span>
-      </a></div>
+      <div class="strip-head"><h2 class="h2-lead" id="open">Open right now <b>7 roles</b></h2></div>
+      <div class="roles"><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-verification-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100364">Verification Engineer Intern</a></h3>
+          <span class="rc-sub">Verification Engineering</span>
+          <ul class="rc-do"><li>Write and debug rtl logic for test benches</li><li>Create tools and scripts for simulation analysis</li><li>Develop random test generators for coverage</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=system%20verilog">System Verilog</a></li><li><a href="/us/skills/perl">Perl</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/skills/uvm">Uvm</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-verification-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100364">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-software-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100363">Software Engineer Intern</a></h3>
+          <span class="rc-sub">Microcode development</span>
+          <ul class="rc-do"><li>Develop microcode for video algorithms on dsp hardware</li><li>Work with c/c++ and scripting languages like python</li><li>Collaborate with scientists on camera markets like security</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=dsp">Dsp</a></li><li><a href="/us/?q=mpeg">Mpeg</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>Bachelor’s</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-software-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100363">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-mixed-signal-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100361">Mixed Signal Engineer Intern</a></h3>
+          <span class="rc-sub">Analog circuit design</span>
+          <ul class="rc-do"><li>Design and validate analog and mixed signal IP blocks for SOC</li><li>Work with senior designers on PLL, DLL, SERDES, and data converters</li><li>Requires MS or PhD in electrical engineering</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=pll">Pll</a></li><li><a href="/us/?q=dll">Dll</a></li><li><a href="/us/?q=serdes">Serdes</a></li><li><a href="/us/?q=data%20converters">Data Converters</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-mixed-signal-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100361">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-dft-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100360">DFT Engineer Intern</a></h3>
+          <span class="rc-sub">DFT Logic Design</span>
+          <ul class="rc-do"><li>Design logic for DFT features in complex SoC</li><li>Use Verilog and scripting for automation tasks</li><li>Perform timing analysis for DFT modes</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=scripting">Scripting</a></li><li><a href="/us/?q=static%20timing%20analysis">Static Timing Analysis</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>MSEE</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-dft-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100360">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-software-development-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100366">Software Development Engineer Intern</a></h3>
+          <span class="rc-sub">Software tool development</span>
+          <ul class="rc-do"><li>Design and implement new language features and performance tools</li><li>Work with scientists on computer vision and automotive control systems</li><li>Require c/c++ and python skills with background in compiler or embedded systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/?q=c">C</a></li><li><a href="/us/skills/c-plus-plus">C++</a></li><li><a href="/us/skills/python">Python</a></li><li><a href="/us/?q=compiler%20design">Compiler Design</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-software-development-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100366">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-algorithm-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100359">Algorithm Engineer Intern</a></h3>
+          <span class="rc-sub">Algorithm Development</span>
+          <ul class="rc-do"><li>Develop deep learning and computer vision algorithms for self-driving cars and robots</li><li>Work with Transformer models, ROS 2, and AI compute stack tools like PyTorch and vLLM</li><li>Collaborate on cutting-edge projects in embodied AI and multi-modal systems</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/deep-learning">Deep Learning</a></li><li><a href="/us/skills/computer-vision">Computer Vision</a></li><li><a href="/us/?q=transformer%20models">Transformer Models</a></li><li><a href="/us/?q=ros%202">Ros 2</a></li><li><a href="/us/skills/pytorch">Pytorch</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787788800000"><time datetime="2026-08-27">26 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-algorithm-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100359">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div><div class="role-card">
+        <div class="rc-main">
+          <h3 class="rc-t"><a href="/us/jobs/ambarella-asic-design-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100357">ASIC Design Engineer Intern</a></h3>
+          <span class="rc-sub">Logic Design</span>
+          <ul class="rc-do"><li>Design video compression and AI accelerator logic in Verilog/System Verilog</li><li>Develop testbenches and verification flows using UVM and Perl</li><li>Optimize RTL for timing, area, and power</li></ul>
+          <ul class="rc-chips"><li><a href="/us/skills/verilog">Verilog</a></li><li><a href="/us/?q=system%20verilog">System Verilog</a></li><li><a href="/us/skills/perl">Perl</a></li><li><a href="/us/skills/uvm">Uvm</a></li><li><a href="/us/skills/rtl">RTL</a></li></ul>
+        </div>
+        <div class="rc-side">
+          <dl class="rc-rows"><div><dt>Status</dt><dd><span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span></dd></div><div><dt>Location</dt><dd>United States of America</dd></div><div><dt>Eligibility</dt><dd>Master’s / PhD</dd></div><div><dt>Posted</dt><dd><span data-ago="1787702400000"><time datetime="2026-08-26">25 Aug 2026</time></span></dd></div></dl>
+          <a class="rc-cta" href="/us/jobs/ambarella-asic-design-engineer-intern-ats-workday-ambarella-wd108-ambarella-jr100357">View &amp; apply <em aria-hidden="true">&rarr;</em></a>
+        </div>
+      </div></div>
     </section>
 
     <section class="strip">
@@ -184,49 +219,6 @@
 
     
 
-    <section class="strip">
-      <div class="strip-head">
-        <h2>Similar employers</h2>
-        <a class="strip-more" href="/us/companies">All companies &rarr;</a>
-      </div>
-      <p class="past-note">Companies whose internships ask for the same skills as Ambarella&rsquo;s.</p>
-      <!-- NO ROLE COUNT ON THESE CARDS, and that is what makes the block cheap.
-           A count would move whenever THAT employer's board moved, rewriting
-           every hub that lists them - one employer's ordinary day churning a
-           dozen other pages. Without it the block changes only when the related
-           SET changes, which tracks slowly-growing history.
-           The .dir and .dir-card classes are the directory's own styles and
-           are already in page.css, so this adds no stylesheet change and
-           nothing new to the PUBLISHED allowlist.
-           NO BACKTICKS IN THIS COMMENT: it sits inside a template literal, so
-           one would end the literal and the failure is a runtime TypeError
-           that node --check cannot see. -->
-      <div class="dir"><a class="dir-card" href="/us/companies/vislab-an-ambarella-inc-company">
-          <span class="tile-crest" aria-hidden="true">VA<img src="/logos/vislab-an-ambarella-inc-company.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">VisLab (an Ambarella Inc. company)</span></span>
-        </a><a class="dir-card" href="/us/companies/microchip-technology-inc">
-          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/microchip-technology-inc.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Microchip Technology Inc.</span></span>
-        </a><a class="dir-card" href="/us/companies/rivian">
-          <span class="tile-crest" aria-hidden="true">R<img src="/logos/rivian.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Rivian</span></span>
-        </a><a class="dir-card" href="/us/companies/skydio">
-          <span class="tile-crest" aria-hidden="true">S<img src="/logos/skydio.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Skydio</span></span>
-        </a><a class="dir-card" href="/us/companies/marvell-technology">
-          <span class="tile-crest" aria-hidden="true">MT<img src="/logos/marvell-technology.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Marvell Technology</span></span>
-        </a><a class="dir-card" href="/us/companies/boeing-india">
-          <span class="tile-crest" aria-hidden="true">BI<img src="/logos/boeing-india.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Boeing India</span></span>
-        </a><a class="dir-card" href="/us/companies/optiver">
-          <span class="tile-crest" aria-hidden="true">O<img src="/logos/optiver.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Optiver</span></span>
-        </a><a class="dir-card" href="/us/companies/databricks">
-          <span class="tile-crest" aria-hidden="true">D<img src="/logos/databricks.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-          <span class="dir-t"><span class="dir-name">Databricks</span></span>
-        </a></div>
-    </section>
 
     <section class="strip" id="fresh" hidden data-feed="/us/data/jobs.json">
       <div class="strip-head">
