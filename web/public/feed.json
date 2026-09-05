@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4462614387",
+      "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4462614387",
+      "title": "Fullstack Developer- Internship — GreedyGame",
+      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years\n• Build backend services for ad networks and Google Ad Manager\n• Develop frontend dashboards in React for ad management and reporting\n• Work with MySQL, PostgreSQL, and MongoDB for data handling\n• Collaborate with engineers and product teams on feature development",
+      "date_published": "2026-09-05T12:32:31.611Z",
+      "authors": [
+        {
+          "name": "GreedyGame"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4441816280",
       "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4441816280",
       "title": "Apprentice IT Development Program — Eaton",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4461064759",
-      "url": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4461064759",
-      "title": "Intern-Power Greenfield — Emerson",
-      "content_text": "Company: Emerson · Location: Noida, Uttar Pradesh, India\n• Design and develop engineering tools for project efficiency\n• Support tool deployment and train users across teams\n• Automate repetitive tasks to improve deliverable quality",
-      "date_published": "2026-08-31T10:37:30.928Z",
-      "authors": [
-        {
-          "name": "Emerson"
         }
       ]
     }
