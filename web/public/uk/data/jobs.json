@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788600074454,
+ "generatedAt": 1788600812829,
  "region": "GB",
  "regionName": "United Kingdom",
  "count": 44,
@@ -361,6 +361,7 @@
     "python",
     "c++",
     "machine learning",
+    "fpga",
     "algorithms"
    ],
    "summary": "This internship involves analyzing market data to identify trading patterns and developing algorithms for high or mid-frequency trading. Ideal for students with a master's or PhD in quantitative fields and experience in Python and C++. The role offers mentorship and contributes to real trading strategies.",
@@ -412,6 +413,7 @@
     "python",
     "c++",
     "machine learning",
+    "fpga",
     "algorithms"
    ],
    "summary": "This internship involves developing and refining trading algorithms, analyzing market data, and building analytical tools. It suits students with a background in quantitative fields and programming skills. The role offers hands-on experience in a fast-paced trading environment with mentorship and collaborative opportunities.",
@@ -1104,7 +1106,8 @@
     "python",
     "c++",
     "pytorch",
-    "tensorflow"
+    "tensorflow",
+    "cuda"
    ],
    "summary": "This internship involves developing machine learning systems for financial markets, working with researchers to build scalable models. Ideal for students with strong programming skills and interest in quantitative finance.",
    "bullets": [
@@ -1157,7 +1160,8 @@
     "machine learning",
     "deep learning",
     "pytorch",
-    "tensorflow"
+    "tensorflow",
+    "cuda"
    ],
    "summary": "This PhD or postdoc role involves applying machine learning to financial markets. You'll design and deploy research projects, work with cutting-edge tools, and collaborate with traders and researchers. Ideal for those with a strong ML background and publication experience.",
    "bullets": [
@@ -1267,7 +1271,8 @@
     "python",
     "c++",
     "rust",
-    "machine learning"
+    "machine learning",
+    "fpga"
    ],
    "summary": "This internship involves analyzing market data to uncover patterns in trading costs and liquidity. You'll build tools and simulations to support execution strategies and work with large datasets to develop robust analysis pipelines. Ideal for students with strong math and programming skills interested in quantitative trading and market microstructure.",
    "bullets": [
@@ -1636,7 +1641,6 @@
     "python",
     "typescript",
     "react",
-    "spring",
     "linux",
     "data structures",
     "algorithms",
@@ -1736,7 +1740,6 @@
     "rust",
     "sql",
     "fastapi",
-    "spring",
     "kubernetes",
     "linux",
     "git",
@@ -1744,7 +1747,8 @@
     "mysql",
     "kafka",
     "data structures",
-    "algorithms"
+    "algorithms",
+    "agile"
    ],
    "summary": "Jump Trading Group is committed to world class research. You will learn the fundamentals of a large-scale, high-performance infrastructure; sharpen your C++/Python programming skills; and see what it’s like to work as a full-time software engineer at Jump. You will be working side by side with our experienced software engineers where you will receive continuous feedback and coaching from a dedicated mentor throughout the summer. Skills you will need:",
    "bullets": [
@@ -1887,7 +1891,8 @@
     "python",
     "c++",
     "pytorch",
-    "tensorflow"
+    "tensorflow",
+    "cuda"
    ],
    "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. Whether optimizing training pipelines on high-performance computing clusters, developing low-latency inference systems, or pushing the boundaries of AI research from concept to production, you'll have the opportunity to work on impactful projects in a fast-paced, collaborative environment. Skills you'll need:",
    "bullets": [
@@ -1937,9 +1942,14 @@
    "skills": [
     "python",
     "c++",
-    "spring",
     "linux",
     "machine learning",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "design verification",
     "algorithms"
    ],
    "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. We’re looking for brilliant engineering talent to join our FPGA team that is building next-generation, ultra-low-latency systems to power trading with machine learning and other algorithms on a global scale. Skills you will need:",
@@ -1989,7 +1999,6 @@
    "easyApply": false,
    "skills": [
     "python",
-    "spring",
     "linux",
     "pandas",
     "data structures",
@@ -2040,9 +2049,16 @@
    "skills": [
     "python",
     "c++",
-    "spring",
     "linux",
     "machine learning",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "asic",
+    "design verification",
+    "place and route",
     "algorithms"
    ],
    "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. Constant innovation requires fearlessness, creativity, intellectual honesty, and a relentless competitive streak. Skills you will need:",
@@ -2090,7 +2106,8 @@
     "machine learning",
     "deep learning",
     "pytorch",
-    "tensorflow"
+    "tensorflow",
+    "cuda"
    ],
    "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. Constant innovation requires fearlessness, creativity, intellectual honesty, and a relentless competitive streak. We believe that successful research efforts require a fluid mix of skills including ML expertise, engineering pragmatism, statistics and market intuition.",
    "bullets": [
@@ -2190,7 +2207,8 @@
     "java",
     "c++",
     "c#",
-    "matlab"
+    "matlab",
+    "perl"
    ],
    "summary": "This is an opportunity for students and researchers of advanced data modeling and statistical learning methods to apply these techniques to market prediction and systematic trading. Strong analytical and quantitative skills The annual base salary is $120,000-$180,000 (USD) which will be prorated based on internship start and end date. Actual compensation offered to the successful candidate may vary from posted hiring range based upon geographic location, work experience, education, and/or skill level, among other things.",
    "bullets": [

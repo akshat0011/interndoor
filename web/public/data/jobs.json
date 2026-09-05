@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788600074433,
+ "generatedAt": 1788600812809,
  "region": "IN",
  "regionName": "India",
  "count": 245,
@@ -439,7 +439,11 @@
    "applicants": "Over 100 people clicked apply",
    "easyApply": false,
    "skills": [
-    "python"
+    "python",
+    "perl",
+    "spi",
+    "uart",
+    "autosar"
    ],
    "summary": "This internship involves developing and validating device drivers for automotive microcontrollers, creating test scripts for communication peripherals, and working on ISO26262 compliant software processes. It suits students with experience in embedded systems and C programming.",
    "bullets": [
@@ -735,7 +739,9 @@
    "easyApply": false,
    "skills": [
     "python",
-    "matlab"
+    "matlab",
+    "signal integrity",
+    "pcb"
    ],
    "summary": "We create sustainable and efficient residential, commercial and industrial spaces through HVACR technologies. We protect temperature-sensitive goods throughout the cold chain. And we bring comfort to people globally. Whether you are a professional looking for a career change, an undergraduate student exploring your first opportunity, or recent graduate with an advanced degree, we have opportunities that will allow you to innovate, be challenged and make an impact.",
    "bullets": [
@@ -2159,6 +2165,7 @@
     "python",
     "c++",
     ".net",
+    "perl",
     "agile"
    ],
    "summary": "This internship involves developing embedded software for automotive amplifiers using C/C++ and real-time systems. The intern will work with hardware tools and MISRA guidelines to ensure code quality. Ideal for students with strong programming skills and experience in embedded systems.",
@@ -2215,14 +2222,14 @@
     "sql",
     "react",
     "angular",
-    "spring",
     "azure",
     "gcp",
     "docker",
     "kubernetes",
     "terraform",
     "jenkins",
-    "ci/cd"
+    "ci/cd",
+    "git"
    ],
    "summary": "This internship offers hands-on experience building data and analytics applications using cloud technologies. You'll work on real projects with experienced engineers and contribute to global initiatives. Ideal for students with a background in computer science or related fields looking to gain practical experience in software development and cloud infrastructure.",
    "bullets": [
@@ -2605,7 +2612,8 @@
     "java",
     "c++",
     ".net",
-    "linux"
+    "linux",
+    "rtos"
    ],
    "summary": "This internship involves developing software for embedded systems and automotive technologies. Ideal for students with a technical background in computer science or electronics, the role offers hands-on experience with C/C++, Linux, and Android. The intern will work on complex software systems and contribute to cutting-edge automotive projects.",
    "bullets": [
@@ -2751,7 +2759,15 @@
     "c++",
     "ruby",
     "matlab",
-    "git"
+    "git",
+    "verilog",
+    "vhdl",
+    "fpga",
+    "rtos",
+    "simulink",
+    "i2c",
+    "spi",
+    "uart"
    ],
    "summary": "This internship involves writing and testing small software modules for satellite systems, working with C++ and RTOS in embedded development, and collaborating on software specs with sub-system engineers. It suits students with a background in embedded systems or programming.",
    "bullets": [
@@ -2801,6 +2817,8 @@
    "easyApply": false,
    "skills": [
     "python",
+    "verilog",
+    "perl",
     "algorithms"
    ],
    "summary": "This internship involves validating NAND memory devices through test development, algorithm design, and data analysis. Interns will work closely with engineering teams to ensure products meet specifications and customer needs. Ideal for students with a strong foundation in semiconductor physics and programming.",
@@ -2853,6 +2871,7 @@
     "python",
     "matlab",
     "deep learning",
+    "cuda",
     "algorithms"
    ],
    "summary": "This PhD internship involves developing AI/ML solutions for wireless signal processing in NVIDIA's Aerial RAN framework. The intern will work on optimizing models for real-time performance and collaborate with cross-functional teams to enhance compute efficiency. Ideal for PhD students with expertise in AI, ML, and wireless communication technologies.",
@@ -3015,7 +3034,17 @@
    "applicants": "Over 100 people clicked apply",
    "easyApply": false,
    "skills": [
-    "c++"
+    "c++",
+    "verilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "asic",
+    "dft",
+    "physical design",
+    "mixed signal",
+    "tcl",
+    "perl"
    ],
    "summary": "This internship involves simulating and verifying soc designs with embedded processors and working on rf/analog/ic design using industry tools. It suits students with strong programming and circuit design skills looking to contribute to cutting-edge semiconductor projects.",
    "bullets": [
@@ -3064,7 +3093,17 @@
    "applicants": "Over 100 people clicked apply",
    "easyApply": false,
    "skills": [
-    "c++"
+    "c++",
+    "verilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "asic",
+    "dft",
+    "physical design",
+    "mixed signal",
+    "tcl",
+    "perl"
    ],
    "summary": "This internship involves simulating and verifying soc designs with embedded processors, working with hardware description languages and scripting tools, and contributing to rf/analog ic design projects. Ideal for students with strong programming and circuit design skills looking to gain hands-on experience in semiconductor development.",
    "bullets": [
@@ -3850,7 +3889,9 @@
    "duration": null,
    "applicants": "3 people clicked apply",
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "pcb"
+   ],
    "summary": "This internship involves designing and testing microcontroller evaluation kits, working with Cadence tools, and collaborating with cross-functional teams. It suits students with electronics engineering backgrounds and experience in hardware design.",
    "bullets": [
     "Design and test microcontroller boards, debug hardware and software issues",
@@ -4045,7 +4086,8 @@
     "sql",
     "aws",
     "azure",
-    "linux"
+    "linux",
+    "perl"
    ],
    "summary": "This internship involves supporting Skyhigh Security's cloud customers by resolving technical issues and providing remote assistance. You'll work with cross-functional teams to debug complex systems and contribute to knowledge bases. Ideal for students with a background in computer science or engineering looking to gain hands-on experience in cybersecurity and cloud technologies.",
    "bullets": [
@@ -5009,7 +5051,9 @@
    "duration": null,
    "applicants": "13 people clicked apply",
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "physical design"
+   ],
    "summary": "This internship involves working on soc design and verification for automotive and iot applications. Ideal for electronics engineering students seeking hands-on experience in mixed-signal ip development.",
    "bullets": [
     "Design and verify digital and mixed-signal IPs",
@@ -5054,7 +5098,9 @@
    "duration": null,
    "applicants": "28 people clicked apply",
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "physical design"
+   ],
    "summary": "We are looking for a Bachelor/Master degree student with Electronics and Communication Engineering, or related field. Job Responsibility Working with our experienced design team to design state of the art SoC hardware specific segment applications like Automotive, IoT, voice/object recognition, security, smart connectivity and touch sensing. Assisting experienced engineers with End-to-end ownership of SoC Design, Verification and implementation (Physical Design).",
    "bullets": [
     "Design and verify digital and mixed-signal IPs",
@@ -5315,6 +5361,7 @@
     "java",
     "c++",
     "aws",
+    "perl",
     "data structures",
     "algorithms",
     "agile"
@@ -6252,9 +6299,9 @@
     "llm",
     "generative ai",
     "rag",
+    "rtos",
     "data structures",
-    "algorithms",
-    "system design"
+    "algorithms"
    ],
    "summary": "This internship involves developing software for global networking systems, working with C/C++ and AI tools, and contributing to protocols, embedded systems, or cloud applications. Ideal for students with a strong CS background and interest in networking or systems development.",
    "bullets": [
@@ -6502,7 +6549,8 @@
    "easyApply": false,
    "skills": [
     "c++",
-    "matlab"
+    "matlab",
+    "simulink"
    ],
    "summary": "This internship offers engineering graduates the chance to work on real projects in power systems and HVDC technology. You'll rotate through different departments, gain hands-on experience, and contribute to global projects. Ideal for those passionate about renewable energy and eager to grow in a technical environment.",
    "bullets": [
@@ -6847,6 +6895,7 @@
     "machine learning",
     "pytorch",
     "tensorflow",
+    "fpga",
     "algorithms"
    ],
    "summary": "Tower is home to some of the world’s best systematic trading and engineering talent. We empower portfolio managers to build their teams and strategies independently while providing the economies of scale that come from a large, global organization. Engineers thrive at Tower while developing electronic trading infrastructure at a world class level. A bachelor’s, master’s, or PhD degree (ongoing or completed), or equivalent qualification, from a top university, with availability to join an in-office internship for six months starting January 2027.",
@@ -7018,6 +7067,7 @@
     "tensorflow",
     "pandas",
     "numpy",
+    "opencv",
     "algorithms"
    ],
    "summary": "This internship involves working on ai research projects focused on time series analysis and deep learning. Interns will develop and evaluate machine learning models, conduct experiments, and contribute to research in ai and ml. Ideal for students with a master's or phd in computer science or related fields.",
@@ -8158,7 +8208,8 @@
    "easyApply": false,
    "skills": [
     "python",
-    "matlab"
+    "matlab",
+    "design verification"
    ],
    "summary": "This internship involves analyzing wind turbine loads through simulations and data analysis to support engineering decisions. It suits students with a background in mechanical or aerospace engineering interested in renewable energy systems and hands-on project work.",
    "bullets": [
@@ -8208,7 +8259,8 @@
    "skills": [
     "c++",
     ".net",
-    "linux"
+    "linux",
+    "rtos"
    ],
    "summary": "This internship involves developing software for automotive systems using embedded technologies and Linux. Ideal for engineering students with a focus on C/C++ and Android, it offers hands-on experience in a dynamic team environment.",
    "bullets": [
@@ -8259,6 +8311,8 @@
     "c++",
     ".net",
     "linux",
+    "rtos",
+    "embedded c",
     "agile"
    ],
    "summary": "This internship involves working on embedded systems and software development for automotive technology. Ideal for students with a background in computer science or electronics, the role offers hands-on experience with C++, Linux, and testing frameworks. It provides opportunities to engage in real-world projects and contribute to innovative technology platforms.",
@@ -8309,7 +8363,8 @@
    "skills": [
     "c++",
     ".net",
-    "linux"
+    "linux",
+    "rtos"
    ],
    "summary": "This internship involves developing software systems for automotive technology, working with C/C++, Linux, and Android. Ideal for students with a technical background looking to gain hands-on experience in embedded systems and software development.",
    "bullets": [
@@ -8408,6 +8463,10 @@
    "skills": [
     "python",
     "matlab",
+    "simulink",
+    "i2c",
+    "spi",
+    "uart",
     "algorithms"
    ],
    "summary": "This internship involves developing control algorithms for electric vehicles, working with matlab and embedded systems. Ideal for students with experience in automotive or embedded projects and familiarity with communication protocols.",
@@ -9464,6 +9523,8 @@
     "c++",
     ".net",
     "linux",
+    "rtos",
+    "autosar",
     "agile"
    ],
    "summary": "This internship involves developing IPC middleware for Linux-based systems using C++. Ideal for students with experience in C++ and Linux development, the role focuses on creating reliable and efficient communication solutions for real-time environments. The intern will collaborate with cross-functional teams and contribute to automotive technology projects.",
@@ -9667,6 +9728,7 @@
     "azure",
     "gcp",
     "linux",
+    "perl",
     "data structures"
    ],
    "summary": "This internship involves debugging and testing software solutions, working with programming languages like java and python, and collaborating with cross-functional teams. It suits students with a background in computer science or related fields looking to gain hands-on experience in software development and problem-solving.",
@@ -9723,6 +9785,7 @@
     "generative ai",
     "rag",
     "microservices",
+    "opencv",
     "agile"
    ],
    "summary": "This internship involves working on machine learning models, generative ai applications, and computer vision projects. Interns will assist in developing ai-powered chatbots, integrating models into enterprise systems, and working with frameworks like tensorflow and pytorch. The role suits students interested in ai development and real-world applications.",
@@ -10634,6 +10697,7 @@
     "computer vision",
     "pytorch",
     "tensorflow",
+    "opencv",
     "algorithms"
    ],
    "summary": "This internship involves working on computer vision projects for industrial automation, including algorithm development, system integration, and IoT implementation. It suits students with a background in electronics or computer science looking to gain hands-on experience in robotics and automation.",
@@ -11862,7 +11926,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "rtos"
+   ],
    "summary": "GoKwik is a growth operating system empowering D2C and eCommerce brands across the funnel—from optimizing checkout and reducing RTOs to driving better retention and post-purchase engagement. Today, we serve over 15,000+ merchants, enable $2B+ in GMV annually, and are scaling rapidly across India, the UK, Europe, and the US. As a Customer Engineering Intern, you'll work at the intersection of technology, customer success, and program management. You'll help merchants successfully onboard onto GoKwik's platform by configuring integrations, troubleshooting technical issues, and coordinating cross-functional…",
    "bullets": [
     "Configure merchant accounts and integrations for Shopify, WooCommerce, and custom sites",

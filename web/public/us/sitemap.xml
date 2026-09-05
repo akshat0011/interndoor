@@ -8,7 +8,6 @@
   <url><loc>https://interndoor.com/us/locations</loc><lastmod>2026-09-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/us/skills/python</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/c-plus-plus</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/spring</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/java</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/machine-learning</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/sql</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
@@ -25,41 +24,64 @@
   <url><loc>https://interndoor.com/us/skills/azure</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/ci-cd</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/generative-ai</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/perl</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/react</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kubernetes</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/typescript</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/power-bi</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/labview</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/llm</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pytorch</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/tableau</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/docker</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/asic</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/deep-learning</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/verilog</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rust</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/express</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/computer-vision</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/gcp</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/computer-vision</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/net</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/system-design</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/design-verification</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/jenkins</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/rtl</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/tensorflow</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/physical-design</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/angular</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/tcl</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/vhdl</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/fpga</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/pcb</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/ruby</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/node-js</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/rtos</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/systemverilog</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kotlin</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pandas</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/place-and-route</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/signal-integrity</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/redis</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/golang</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/i2c</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rag</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/uvm</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/postgresql</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/cuda</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/scikit-learn</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/spi</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/dft</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/oop</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/simulink</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/terraform</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mysql</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/swift</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mongodb</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/react-native</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/graphql</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
