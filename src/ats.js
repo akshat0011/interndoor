@@ -93,6 +93,32 @@ async function getJson(url, { method = 'GET', body = null, headers = {}, retries
  * when the primary resolves to `unknown`, which cannot regress a board that
  * was already placing correctly.
  */
+/**
+ * Is this location slot a WAY OF WORKING rather than a place?
+ *
+ * Greenhouse's `location.name` is free text the employer types, and Cloudflare
+ * types the workplace type into it — every one of its postings answers
+ * "In-Office" while the real city sits in `offices[]`. The fallback in
+ * bin/poll-ats.js replaces such a slot with an office that places the role, but
+ * that only fires when the office resolves to a region we know. Lisbon does not
+ * (Portugal is absent from the gazetteer), so one Cloudflare posting kept
+ * "In-Office" as its stored location — and §6's promise that a better gazetteer
+ * picks a row up later is worthless when the text left behind names no place at
+ * all. This predicate is what lets the caller keep the real city anyway.
+ *
+ * "REMOTE" IS DELIBERATELY NOT IN THIS LIST, and it is the one that matters.
+ * In-office, hybrid and on-site all describe how you work AT an office, so
+ * substituting that office is a clarification. Remote describes the ABSENCE of
+ * one — swapping in an office address there tells a student to be in Austin for
+ * a job that is not in Austin, which is worse than saying nothing.
+ *
+ * Exported so it can be pinned without a network call.
+ */
+const WORKPLACE_TYPES = new Set(['in-office', 'in office', 'hybrid', 'on-site', 'onsite', 'on site']);
+export function isWorkplaceType(text) {
+  return WORKPLACE_TYPES.has(String(text ?? '').trim().toLowerCase());
+}
+
 function job({ id, title, location, locationAlt, url, postedAt, department, remote, description, externalPath }) {
   return {
     id: String(id),

@@ -1,4 +1,4 @@
-import { stripHtml, parseAtsLink, workdayPlaces } from '../src/ats.js';
+import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -176,6 +176,31 @@ check('non-string entries dropped', workdayPlaces({ location: null, additionalLo
 check('an empty posting yields nothing', workdayPlaces({}), []);
 check('a missing posting yields nothing', workdayPlaces(undefined), []);
 
+console.log('\n== a workplace type is not a place ==');
+/* Greenhouse's `location.name` is free text and Cloudflare types the WAY OF
+   WORKING into it: all 332 of its postings answer "In-Office" while the real
+   city sits in offices[]. Where that office resolves the fallback already
+   replaced the text; where it does not — Lisbon, because Portugal is absent
+   from the gazetteer — the row kept "In-Office" for ever, which is what makes
+   §6's "a better gazetteer picks those rows up later" worthless for it. */
+check('in-office', isWorkplaceType('In-Office'), true);
+check('hybrid', isWorkplaceType('Hybrid'), true);
+check('on-site', isWorkplaceType('On-Site'), true);
+check('spelling and spacing variants', [isWorkplaceType('onsite'), isWorkplaceType('In Office'), isWorkplaceType('on site')], [true, true, true]);
+check('case and padding ignored', isWorkplaceType('  in-OFFICE  '), true);
+/* REMOTE IS THE ONE THAT MUST NOT BE IN THE LIST. In-office, hybrid and on-site
+   all describe how you work AT an office, so substituting that office
+   clarifies. Remote describes the absence of one — swapping an address in
+   there tells a student to be in Austin for a job that is not in Austin. */
+check('remote is NOT a workplace type', isWorkplaceType('Remote'), false);
+check('nor work from home', isWorkplaceType('Work from home'), false);
+check('a real place is not one', [isWorkplaceType('Austin, TX'), isWorkplaceType('Lisbon, Portugal')], [false, false]);
+check('nothing is not one', [isWorkplaceType(null), isWorkplaceType(undefined), isWorkplaceType('')], [false, false, false]);
+/* The Lisbon row end to end: the office names a real city, the gazetteer cannot
+   place it, and the point is that the CITY is what should survive. */
+check('Lisbon does not resolve', resolveRegion('Lisbon, Portugal', {}), UNKNOWN);
+check('so the slot it would replace is a workplace type', isWorkplaceType('In-Office'), true);
+
 console.log('\n== the poller consults it ONLY when the primary said nowhere ==');
 /* A SOURCE ASSERTION, because bin/poll-ats.js executes on import and cannot be
    called. Both halves are pinned: that the detail candidates are read at all,
@@ -195,6 +220,13 @@ check('and the region is re-gated afterwards', /region !== UNKNOWN && !collected
 // The replacement rule lives in one helper, so both callers cannot drift apart.
 check('both fallbacks go through placeFrom', (code.match(/placeFrom\(/g) ?? []).length, 3);
 check('the old inline loop is gone', /for \(const alt of j\.locationAlt/.test(code), false);
+/* And the text rescue: a workplace-type slot keeps a real candidate even when
+   nothing resolved. Both halves again — the guard AND the assignment — because
+   the guard alone is satisfied by code that then does nothing. */
+check('a workplace-type slot is detected', /isWorkplaceType\(job\.location\)/.test(code), true);
+check('and the candidate is actually kept', /job\.location = first/.test(code), true);
+check('the rescue runs only after the resolving loop',
+  code.indexOf('isWorkplaceType(job.location)') > code.indexOf('if (region !== UNKNOWN) { job.location = alt; return region; }'), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

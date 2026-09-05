@@ -18,7 +18,7 @@
  */
 import { loadConfig, matchCompany, matchTitle } from '../src/config.js';
 import { Store } from '../src/store.js';
-import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS } from '../src/ats.js';
+import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS, isWorkplaceType } from '../src/ats.js';
 import { classifyRole } from '../src/roles.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType } from '../src/extract.js';
 import { resolveRegion, collectsRegion, UNKNOWN } from '../src/regions.js';
@@ -143,11 +143,23 @@ const collected = (region) => collectsRegion(cfg, region);
  * placed the role is what the reader should see on the card.
  *
  * Returns UNKNOWN when nothing places, leaving the caller's region untouched.
+ *
+ * WHEN NOTHING PLACES, THE TEXT IS STILL WORTH KEEPING. A slot holding a
+ * workplace type names no place at all, so leaving it there does not just make a
+ * poor card — it forecloses recovery, because §6's "a better gazetteer picks
+ * those rows up later" can only work if the row stored a PLACE. Cloudflare's
+ * Lisbon posting is the case: the office is known, Portugal is absent from the
+ * gazetteer, and the row kept "In-Office" for ever. The region is unchanged, so
+ * this can never move a row onto a board — it only stops one being unrecoverable.
  */
 function placeFrom(job, candidates) {
   for (const alt of candidates ?? []) {
     const region = resolveRegion(alt, {});
     if (region !== UNKNOWN) { job.location = alt; return region; }
+  }
+  if (isWorkplaceType(job.location)) {
+    const first = (candidates ?? []).find(Boolean);
+    if (first) job.location = first;
   }
   return UNKNOWN;
 }
