@@ -40,8 +40,14 @@
  * QUOTA is 200 URLs per rolling 24h by default, counted per URL even inside a
  * batch. This board runs ~110 new job pages a day plus about as many expiries,
  * so it sits just under the ceiling and `indexing.dailyCap` keeps it there.
- * A quota increase is requestable from the API's own console page and is worth
- * doing before the US board grows.
+ * A QUOTA INCREASE IS NOT AVAILABLE FROM THE CONSOLE, WHICH IS WHERE THIS NOTE
+ * USED TO SEND YOU. The quotas page reports the limit as `Adjustable: Yes` and
+ * its own inline editor then answers "For a value above 200, apply for higher
+ * quota" — 200 is the ceiling and Google's application form is the only way
+ * past it. Filed 5 Sep 2026 for 500/day, from `internzoin@gmail.com` (the
+ * CLOUD PROJECT's owner, not the Search Console account), project number
+ * 254473346824. Two to three weeks, and the decision is never communicated:
+ * no visible increase by then means refused.
  */
 import { createSign } from 'node:crypto';
 import { readFileSync, existsSync } from 'node:fs';
@@ -55,7 +61,14 @@ const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const PUBLISH_URL = 'https://indexing.googleapis.com/v3/urlNotifications:publish';
 const SCOPE = 'https://www.googleapis.com/auth/indexing';
 
-/** Google's default allowance, per rolling 24h, per project. */
+/**
+ * Google's default allowance, per rolling 24h, per project.
+ *
+ * IT IS THE CEILING `dailyCap` IS CLAMPED TO, so the day a quota increase is
+ * granted BOTH numbers have to move — raising `indexing.dailyCap` alone is
+ * silently a no-op, and the symptom is a queue that still drains at 190 with
+ * nothing in any log to say why.
+ */
 export const DAILY_QUOTA = 200;
 
 export const UPDATED = 'URL_UPDATED';
