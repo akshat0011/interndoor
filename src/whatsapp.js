@@ -228,6 +228,29 @@ function composer(page) {
  * destination, and it is the very element the text goes into, so there is no
  * gap between what was verified and what is used.
  */
+/**
+ * Wait until the composer is on screen AND says it belongs to `name`.
+ *
+ * Returns the LAST failure seen rather than a generic timeout message, so the
+ * error still says which of the two conditions never came true — the whole
+ * reason `findTarget` records every stage.
+ */
+export async function awaitComposer(page, name, { timeoutMs = COMPOSER_MS, check = composerNames, now = Date.now } = {}) {
+  const deadline = now() + timeoutMs;
+  let last = { ok: false, error: 'no composer on this screen' };
+  for (;;) {
+    last = await check(page, name);
+    if (last.ok) return last;
+    /* CHECKED AFTER THE READ, NOT BEFORE IT. A deadline tested first would
+       spend the whole budget sleeping and never take the reading the budget was
+       for — the shape that made the old 2500ms sleep fail, one level up. */
+    if (now() >= deadline) {
+      return { ok: false, error: `${last.error} (waited ${Math.round(timeoutMs / 1000)}s)` };
+    }
+    await page.waitForTimeout(COMPOSER_POLL_MS);
+  }
+}
+
 async function composerNames(page, name) {
   const box = composer(page);
   if (!await box.count()) return { ok: false, error: 'no composer on this screen' };
@@ -280,6 +303,29 @@ const CHANNELS_NAV_MS = 20_000;
    loses the whole run's listings. Matched to the nav. */
 const CHANNEL_ROW_MS = 20_000;
 
+/**
+ * How long the composer is given to appear AND to name the right channel.
+ *
+ * THE LAST FIXED SLEEP IN THIS FUNCTION, AND THE ONE THAT WAS STILL LOSING
+ * RUNS. The nav and the row were both converted from "sleep, then sample once"
+ * to a real wait; the composer was not, and kept `waitForTimeout(2500)`
+ * followed by a single `composerNames` read. Measured over every WhatsApp
+ * attempt in the log: **6 of 11 failures were `no composer on this screen`**,
+ * which is that one sample landing before the pane had rendered. Zero failures
+ * were in the SEND — every one of them was here.
+ *
+ * Polled rather than a single `waitFor`, because there are two ways to be not
+ * ready and only one of them is "the element is missing": the composer can be
+ * present while still carrying the PREVIOUS conversation's `aria-label`, and a
+ * visibility wait would return happily on that and then fail the name check.
+ * Both conditions are re-read until they agree or the budget runs out.
+ *
+ * It is also FASTER than what it replaces in the ordinary case — a warm app
+ * answers on the first poll, where the old code slept 2.5s every single time.
+ */
+export const COMPOSER_MS = 20_000;
+export const COMPOSER_POLL_MS = 250;
+
 export async function findTarget(page, name) {
   const wanted = String(name ?? '').trim();
   if (!wanted) return { ok: false, error: 'no target name configured' };
@@ -322,8 +368,7 @@ export async function findTarget(page, name) {
       }
       if (await row.count()) {
         await row.click();
-        await page.waitForTimeout(2500);
-        const v = await composerNames(page, wanted);
+        const v = await awaitComposer(page, wanted);
         if (v.ok) return { ok: true, how: `channel "${wanted}"` };
         tried.push(`the channel opened but ${v.error}`);
       }

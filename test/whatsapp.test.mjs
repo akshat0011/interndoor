@@ -1,4 +1,4 @@
-import { composeWhatsApp, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING } from '../src/whatsapp.js';
+import { composeWhatsApp, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING, awaitComposer, COMPOSER_MS, COMPOSER_POLL_MS } from '../src/whatsapp.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -276,6 +276,67 @@ const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
 check('and it is called even when the run found nothing',
   /if \(!DRY_RUN\) await postNewJobsWhatsApp\(whatsappLive, cfg, \{ store \}\);/.test(idx), true);
 check('no longer gated on live.length', /if \(live\.length\) await postNewJobsWhatsApp/.test(idx), false);
+
+console.log('\n== the composer is WAITED for, not slept at ==');
+/* THE LAST FIXED SLEEP IN findTarget, AND THE ONE STILL LOSING RUNS. The nav
+   and the row were both converted from "sleep then sample once" to a real
+   wait; the composer kept waitForTimeout(2500) followed by ONE composerNames
+   read. Measured over every WhatsApp attempt in the log: 6 of 11 failures were
+   "no composer on this screen" — that single sample landing before the pane had
+   rendered — and ZERO failures were in the send. */
+const composerPage = () => ({ waits: 0, async waitForTimeout() { this.waits += 1; } });
+
+let calls = 0;
+const readyOnThird = async () => (++calls >= 3 ? { ok: true } : { ok: false, error: 'no composer on this screen' });
+const p1 = composerPage();
+check('it keeps looking until the composer arrives',
+  await awaitComposer(p1, 'Interndoor', { check: readyOnThird }), { ok: true });
+check('and it slept between the reads', p1.waits, 2);
+
+/* A warm app answers on the FIRST read — this is faster than the 2.5s sleep it
+   replaces, not just more tolerant. */
+const p2 = composerPage();
+check('a ready composer costs no wait at all',
+  [await awaitComposer(p2, 'Interndoor', { check: async () => ({ ok: true }) }), p2.waits],
+  [{ ok: true }, 0]);
+
+/* Two ways to be not-ready, and only one is "the element is missing": the
+   composer can be present while still carrying the PREVIOUS conversation's
+   aria-label. A plain visibility wait returns happily on that and then fails
+   the name check, which is why both conditions are re-read. */
+let names = 0;
+const wrongThenRight = async () => (++names >= 2
+  ? { ok: true }
+  : { ok: false, error: 'the message box says "Vishal\'s Community" — not "Interndoor"' });
+check('a stale conversation name is waited out too',
+  await awaitComposer(composerPage(), 'Interndoor', { check: wrongThenRight }), { ok: true });
+
+console.log('\n== and it gives up saying WHICH condition never came true ==');
+/* findTarget records every stage precisely so a failure can be fixed
+   afterwards; a generic "timed out" here would throw that away. */
+let clock = 0;
+const tick = () => { clock += 400; return clock; };
+const never = async () => ({ ok: false, error: 'no composer on this screen' });
+const out = await awaitComposer(composerPage(), 'Interndoor', { check: never, timeoutMs: 1000, now: tick });
+check('it reports the last real failure, not a generic timeout',
+  out.ok === false && out.error.startsWith('no composer on this screen'), true);
+check('and says how long it waited', /waited 1s/.test(out.error), true);
+
+/* THE DEADLINE IS TESTED AFTER THE READ, NOT BEFORE IT. Checked first, a
+   budget of zero would sleep the whole budget and never take the reading the
+   budget was for — the same shape as the sleep this replaces. */
+let zeroCalls = 0;
+await awaitComposer(composerPage(), 'Interndoor',
+  { check: async () => { zeroCalls += 1; return { ok: false, error: 'x' }; }, timeoutMs: 0, now: () => 0 });
+check('even a zero budget takes one reading', zeroCalls, 1);
+
+console.log('\n== the fixed sleep is gone from findTarget ==');
+const wsrc = readFileSync(join(ROOT, 'src', 'whatsapp.js'), 'utf8');
+const wcode = wsrc.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('no 2500ms sleep survives', /waitForTimeout\(2500\)/.test(wcode), false);
+check('the channel branch awaits the composer', /const v = await awaitComposer\(page, wanted\)/.test(wcode), true);
+check('all three stages now have a real budget',
+  [/CHANNELS_NAV_MS = 20_000/, /CHANNEL_ROW_MS = 20_000/, /COMPOSER_MS = 20_000/].every((re) => re.test(wcode)), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
