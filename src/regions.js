@@ -100,6 +100,24 @@ const REGION_LIST = [
       'andhra pradesh', 'madhya pradesh', 'odisha', 'orissa', 'bihar', 'jharkhand',
       'assam', 'uttarakhand', 'himachal', 'chhattisgarh',
     ],
+    /* SALEM IS TAMIL NADU **AND** VIRGINIA, MASSACHUSETTS AND NEW HAMPSHIRE.
+       Held weak so the code pass can outrank it, exactly as London, Warsaw,
+       Dublin, Amsterdam, Melbourne and Shanghai are. Found the hard way on
+       5 Sep 2026: Johnson Controls' "Software/Controls Engineering Grad Intern"
+       in **Salem, VA** — a $21-32/hour US role — resolved to INDIA, published
+       to the India board and was announced to Telegram and WhatsApp before
+       anyone noticed. The city pass returns before the code pass is ever
+       reached, so `va` never got a look.
+
+       A bare "Salem" still resolves IN, because nothing outranks a weak match
+       and Salem, Tamil Nadu is the larger city by far. "Salem, OR" will still
+       resolve IN, because `or` is one of the six US state codes deliberately
+       excluded above — that is the documented cost of those exclusions, not a
+       new defect.
+
+       Swept over every distinct stored location: this was the ONLY string
+       ending in a US state code that failed to resolve US. */
+    ambiguousCities: ['salem'],
   },
   {
     code: 'US',

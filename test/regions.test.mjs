@@ -350,6 +350,29 @@ check('PT is not published', isPublishedRegion({ regions: { publish: ['IN', 'US'
 check('PT is collected under "all"', collectsRegion({ regions: { collect: 'all' } }, 'PT'), true);
 check('its slug does not collide', ALL_REGIONS.filter((r) => r.slug === 'pt').length, 1);
 
+console.log('\n== Salem is Tamil Nadu AND Virginia ==');
+/* FOUND IN PRODUCTION, 5 Sep 2026, and it reached readers. Johnson Controls'
+   "Software/Controls Engineering Grad Intern" in Salem, VA — a $21-32/hour US
+   role — resolved to INDIA, was published to the India board and was announced
+   to Telegram and WhatsApp before anyone noticed. `salem` sat in India's city
+   list as a STRONG match, so the city pass returned before the code pass could
+   ever look at `va`.
+
+   Held weak now, the sixth member of the London/Warsaw/Dublin/Amsterdam/
+   Melbourne/Shanghai family. Swept over every distinct stored location, this
+   was the ONLY string ending in a US state code that failed to resolve US. */
+at('Salem Virginia is American', 'Salem, VA', 'US');
+at('Salem Massachusetts is American', 'Salem, MA', 'US');
+at('Salem New Hampshire is American', 'Salem, NH', 'US');
+/* A bare Salem stays Indian: nothing outranks a weak match, and Salem, Tamil
+   Nadu is much the larger city. */
+at('a bare Salem is still Indian', 'Salem', 'IN');
+at('and spelled out it is unambiguous', 'Salem, Tamil Nadu, India', 'IN');
+/* KNOWN AND NOT FIXED: `or` is one of the six excluded US state codes, so this
+   one cannot be outranked. Pinned AS WRONG, like Warsaw IN and Dover DE above,
+   so the day those codes work it breaks loudly. */
+at('Salem Oregon is still misfiled', 'Salem, OR', 'IN');
+
 console.log('\n== China and Taiwan, added 5 Sep 2026 ==');
 at('city then country', 'Shanghai, Shanghai, China', 'CN');
 at('country then city', 'China, Shanghai', 'CN');
