@@ -178,5 +178,84 @@ check('the word "be" is not a B.E', normaliseDegree('code that will be used in p
 check('the word "me" is not an M.E', normaliseDegree('send it to me when you can'), '');
 check('the word "ca" is not a CA', normaliseDegree('you can apply any time'), '');
 
+console.log('\n== "Spring" is a SEASON on a job board, not a framework ==');
+/* `spring` was the THIRD-LARGEST skill on the US board — 512 stored postings —
+   and 503 of those taggings were wrong. Measured against every stored
+   description: only 9 carried any framework evidence at all, while 354 used the
+   word purely as a season and the rest were things like ExxonMobil's
+   headquarters in Spring, Texas and General Mills' "spring plan".
+   `groundEnrichment` cannot catch this, because the word IS in the posting. */
+const noSpring = (t) => !extractSkills(t).includes('spring');
+check('a season is not a skill', extractSkills('Data Science Intern, Spring 2027. Requires python and sql.'), ['python', 'sql']);
+check('nor is a term', noSpring('Internship, Test Engineer (Winter/Spring 2027). Uses python.'), true);
+check('nor a graduation date', noSpring('For students graduating in the spring of 2026. Python required.'), true);
+check('nor a place', noSpring('Our headquarters in Spring, Texas. Python required.'), true);
+check('nor a business plan', noSpring('Owns the spring plan and peak support. Excel required.'), true);
+/* The framework still extracts, under its real names, and the three spellings
+   collapse to ONE chip rather than showing a reader three technologies. */
+check('Spring Boot survives', extractSkills('Build APIs with Java and Spring Boot.'), ['java', 'spring boot']);
+check('SpringBoot collapses into it', extractSkills('Stack: Java, SpringBoot.'), ['java', 'spring boot']);
+check('Spring Framework collapses too', extractSkills('Built on the Spring Framework with Java.'), ['java', 'spring boot']);
+check('and the bare word is not in the vocabulary at all',
+  extractSkills('We use Spring for our services.').includes('spring'), false);
+
+console.log('\n== hardware and EDA, because the watchlist is full of them ==');
+/* The vocabulary was 69 web/data/cloud terms and nothing else, so a Marvell
+   "Design Verification Intern" extracted as [python, java, c++] and a "Physical
+   Design Engineer Intern" as [python]. Those roles were being filed onto
+   /skills/python — 782 roles, a head term this site cannot rank for — instead
+   of the niches that actually convert. */
+check('a real RTL requirement line',
+  extractSkills('Experience with RTL (SystemVerilog/Verilog/VHDL) and UVM.'),
+  ['verilog', 'systemverilog', 'vhdl', 'uvm', 'rtl']);
+check('back-end silicon flow',
+  extractSkills('Physical design, place and route, signal integrity and DFT for our ASIC.'),
+  ['asic', 'dft', 'physical design', 'place and route', 'signal integrity']);
+/* Compared as a SET — the return order follows vocabulary order and is not
+   part of the contract, so asserting it would pin the list's layout instead of
+   its behaviour. */
+check('embedded and lab tools',
+  extractSkills('Firmware on an RTOS, I2C and SPI buses, boards drawn in Altium, bench work in LabVIEW.').sort(),
+  ['altium', 'i2c', 'labview', 'rtos', 'spi']);
+check('EDA scripting counts', extractSkills('Tcl and Perl scripting for the CAD flow.'), ['tcl', 'perl']);
+
+console.log('\n== and four candidates were REFUSED on the evidence ==');
+/* Each was counted against the store and its context read. Pinned so that
+   adding one later has to break a test that says why it was rejected. */
+check('"eda" is Exploratory Data Analysis here, 61 hits, every sample',
+  extractSkills('Conduct Exploratory Data Analysis (EDA) using Python.'), ['python']);
+check('"soc" also means a military Security Operations Center',
+  extractSkills('Support a Military SOC environment.'), []);
+check('"assembly" is physical on this board — weldment and device assembly',
+  extractSkills('Produce manufacturing, weldment and assembly drawings.'), []);
+check('"semiconductor" is an industry, not a skill',
+  extractSkills('We are a semiconductor company.'), []);
+
+console.log('\n== the 14-skill cap must drop the GENERIC term, not the specialist one ==');
+/* `found` is a Set, so it keeps vocabulary order and slice(0,14) drops whatever
+   is listed LAST. Measured: 34 stored postings match more than 14 terms, and
+   with the hardware block placed after the generic tail, four of them lost the
+   term that made them distinguishable — IBM's "Hardware Developer Intern" kept
+   python and java and lost `signal integrity, tcl, perl`. */
+/* THE FIXTURE IS THE REAL POSTING, not a synthetic pile of languages. IBM's
+   "Hardware Developer Intern 2027 - Tucson, AZ" is the row that regressed: it
+   matches more than 14 terms, and with the hardware block below the generic
+   tail it kept python and java and lost signal integrity, tcl and perl. A made
+   up fixture listing fourteen languages fails whatever the ordering, so it
+   would have pinned nothing. */
+const ibm = extractSkills([
+  'Skills: Python, Java, C++, C#. Linux and Git.',
+  'Agile team. Reporting in Excel, dashboards in Tableau and Power BI.',
+  'Figma for specs. System design and OOP fundamentals.',
+  'RTL design in Verilog and VHDL, UVM verification, FPGA and ASIC bring-up,',
+  'physical design and signal integrity. Tcl and Perl scripting.',
+].join(' '));
+check('the cap still holds', ibm.length, 14);
+check('the specialist terms survive it',
+  ['verilog', 'vhdl', 'uvm', 'rtl', 'fpga', 'asic', 'physical design', 'signal integrity']
+    .every((s) => ibm.includes(s)), true);
+check('and the generic tail is what was dropped',
+  ['agile', 'figma', 'tableau', 'power bi', 'system design', 'oop'].every((s) => !ibm.includes(s)), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

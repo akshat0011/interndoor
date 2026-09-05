@@ -240,10 +240,40 @@ export function extractDuration(...texts) {
 // ordinary prose ("ready to go", "R&D") far more often than on the languages.
 const SKILL_VOCAB = [
   'python', 'java', 'javascript', 'typescript', 'c++', 'c#', 'golang', 'rust', 'ruby', 'php', 'swift', 'kotlin', 'scala', 'matlab', 'sql',
-  'react', 'react native', 'next.js', 'vue', 'angular', 'svelte', 'node.js', 'express', 'django', 'flask', 'fastapi', 'spring', 'spring boot', '.net', 'rails',
+  'react', 'react native', 'next.js', 'vue', 'angular', 'svelte', 'node.js', 'express', 'django', 'flask', 'fastapi', 'spring boot', 'springboot', 'spring framework', '.net', 'rails',
   'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'terraform', 'jenkins', 'ci/cd', 'linux', 'git',
   'machine learning', 'deep learning', 'nlp', 'computer vision', 'pytorch', 'tensorflow', 'scikit-learn', 'pandas', 'numpy', 'llm', 'generative ai', 'rag',
   'mongodb', 'postgresql', 'mysql', 'redis', 'kafka', 'elasticsearch', 'graphql', 'rest api', 'microservices',
+  /* ORDER IS LOAD-BEARING BECAUSE OF THE 14-SKILL CAP BELOW. `found` is a Set,
+     so it preserves this order, and `slice(0, 14)` therefore drops whatever is
+     listed LAST. Measured: 34 stored postings match more than 14 terms, and
+     with this block after the generic tail four of them lost the specialist
+     term that made them distinguishable — IBM's "Hardware Developer Intern"
+     kept python and java and lost `signal integrity, tcl, perl`. The generic
+     tail is what a reader can afford to lose; a specialist term is not. */
+  /* HARDWARE AND EDA. This list was 69 web/data/cloud terms and nothing else,
+     while the watchlist is heavy on Qualcomm, Micron, Cadence, Synopsys,
+     MediaTek, Broadcom, onsemi and Infineon — so a Marvell "Design
+     Verification Intern" extracted as [python, java, c++] and a "Physical
+     Design Engineer Intern" as [python] alone. Those roles were being filed
+     onto /skills/python (782 roles, a head term this site cannot rank for)
+     instead of the low-competition niches that are the only facets measured to
+     convert: /us/skills/rust took 1 click from 2 impressions while
+     /us/skills/machine-learning took 0 from 39.
+
+     EVERY TERM HERE WAS COUNTED AGAINST THE STORE AND ITS CONTEXT READ BEFORE
+     BEING ADDED, and four candidates were REFUSED on that evidence:
+       eda       61 hits, every sample "Exploratory Data Analysis"
+       soc       51 hits, includes a military Security Operations Center
+       assembly  66 hits, all physical — device assembly, weldment drawings
+       semiconductor  an industry, not a skill; it would make a facet of 229
+                      roles that says nothing about the work
+     `vivado` and `quartus` are absent because they matched ZERO rows — an
+     untested entry is surface, not coverage. */
+  'verilog', 'systemverilog', 'vhdl', 'uvm', 'rtl', 'fpga', 'asic', 'dft',
+  'physical design', 'design verification', 'place and route', 'signal integrity', 'mixed signal',
+  'cuda', 'rtos', 'embedded c', 'pcb', 'tcl', 'perl', 'labview', 'simulink', 'altium', 'opencv',
+  'i2c', 'spi', 'uart', 'can bus', 'autosar',
   'data structures', 'algorithms', 'system design', 'oop', 'agile', 'figma', 'tableau', 'power bi', 'excel',
 ];
 
@@ -262,7 +292,14 @@ export function extractSkills(...texts) {
   }
   // Prefer the more specific of overlapping pairs.
   if (found.has('react native')) found.delete('react');
-  if (found.has('spring boot')) found.delete('spring');
+  /* `springboot` and `spring framework` are spellings of `spring boot`, not
+     separate technologies, so they collapse into it rather than showing a
+     reader three chips for one framework. */
+  if (found.has('springboot')) { found.delete('springboot'); found.add('spring boot'); }
+  if (found.has('spring framework')) { found.delete('spring framework'); found.add('spring boot'); }
+  /* RTL is the level Verilog and VHDL describe, and postings name it alongside
+     them ("RTL (SystemVerilog/Verilog/VHDL)"). Keeping both is not a duplicate:
+     a posting can ask for RTL design without naming a language. */
   return [...found].slice(0, 14);
 }
 
