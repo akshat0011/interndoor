@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-cad-engineer-intern-spring-2027-4453795224",
+      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-cad-engineer-intern-spring-2027-4453795224",
+      "title": "CAD Engineer Intern (Spring 2027) — Astranis Space Technologies",
+      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Spring 2027\n• Model and draw spacecraft components and structures\n• Use SolidWorks and GD+T for engineering drawings\n• Work on satellite design with real-world impact",
+      "date_published": "2026-09-05T13:36:19.804Z",
+      "authors": [
+        {
+          "name": "Astranis Space Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454593886",
+      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454593886",
+      "title": "Software Engineer Intern (Winter 2027) — Notion",
+      "content_text": "Company: Notion · Location: New York, NY · Duration: Winter 2027\n• Write clean, secure, and documented code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate with cross-functional teams in NY or SF office",
+      "date_published": "2026-09-05T13:29:46.111Z",
+      "authors": [
+        {
+          "name": "Notion"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/anduril-industries-2027-software-engineer-intern-4427140818",
+      "url": "https://interndoor.com/us/jobs/anduril-industries-2027-software-engineer-intern-4427140818",
+      "title": "2027 Software Engineer Intern — Anduril Industries",
+      "content_text": "Company: Anduril Industries · Location: Seattle, WA · Duration: Summer 2027\n• Write code to improve products and scale mission capability\n• Collaborate across teams to build and test complex functionality\n• Work on real projects with experienced professionals",
+      "date_published": "2026-09-05T13:17:51.256Z",
+      "authors": [
+        {
+          "name": "Anduril Industries"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454592847",
+      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454592847",
+      "title": "Software Engineer Intern (Summer 2027) — Notion",
+      "content_text": "Company: Notion · Location: San Francisco, CA · Duration: Summer 2028\n• Write clean, secure, and documented code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate with cross-functional teams in SF or NY office",
+      "date_published": "2026-09-05T13:14:14.597Z",
+      "authors": [
+        {
+          "name": "Notion"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-digital-information-technology-summer-2027-4454805412",
+      "url": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-digital-information-technology-summer-2027-4454805412",
+      "title": "Intern/Co-op - Digital/Information Technology (Summer 2027) — Marathon Petroleum Corporation",
+      "content_text": "Company: Marathon Petroleum Corporation · Location: Findlay, OH · Duration: Summer 2027\n• Support development and execution of cloud strategy within existing IT infrastructure\n• Assist with system configuration, backup, recovery, and performance data analysis\n• Collaborate with teams to design data pipelines and ensure secure data processing",
+      "date_published": "2026-09-05T13:12:20.397Z",
+      "authors": [
+        {
+          "name": "Marathon Petroleum Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454590868",
+      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454590868",
+      "title": "Software Engineer Intern (Winter 2027) — Notion",
+      "content_text": "Company: Notion · Location: San Francisco, CA · Duration: Winter 2027\n• Write clean, secure, and tested code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate with cross-functional teams in SF office",
+      "date_published": "2026-09-05T13:07:50.663Z",
+      "authors": [
+        {
+          "name": "Notion"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/meta-xi-3-full-stack-engineer-software-developer-co-op-4463738782",
+      "url": "https://interndoor.com/us/jobs/meta-xi-3-full-stack-engineer-software-developer-co-op-4463738782",
+      "title": "Full Stack Engineer / Software Developer Co-op — META-Xi^3",
+      "content_text": "Company: META-Xi^3 · Location: Greater Seattle Area\n• Build and maintain web apps for mental health tools\n• Work with html css js and backend services\n• Collaborate with product and design teams remotely",
+      "date_published": "2026-09-05T13:05:28.683Z",
+      "authors": [
+        {
+          "name": "META-Xi^3"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/onto-innovation-mechanical-systems-engineer-intern-4399480319",
       "url": "https://interndoor.com/us/jobs/onto-innovation-mechanical-systems-engineer-intern-4399480319",
       "title": "Mechanical Systems Engineer Intern — Onto Innovation",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256",
-      "url": "https://interndoor.com/us/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256",
-      "title": "Software/Controls Engineering Grad Intern — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: Salem, VA\n• Design and develop embedded control system software for active magnetic bearings\n• Work with c/c++ and assembly, microcontrollers, and rtos environments\n• Integrate software with hardware, debug, and test system functionality\n• Based in salem, va, hybrid, 20-40 hours per week",
-      "date_published": "2026-09-05T04:04:53.585Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-bs-summer-2027-4461439276",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-bs-summer-2027-4461439276",
-      "title": "Design Verification Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Austin, TX · Duration: Fall 2027\n• Simulate chip behavior using industry tools to find design flaws\n• Work with UVM methodology and testbench development\n• Collaborate with cross-functional teams on cloud and AI hardware",
-      "date_published": "2026-09-05T03:54:54.495Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461439279",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461439279",
-      "title": "Physical Design Engineer Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Westborough, MA · Duration: Fall 2027\n• Run synthesis, floor planning, and timing analysis on complex logic blocks\n• Use Python, TCL, Perl, and Shell to automate design tasks\n• Work on high-performance data center chips in leading-edge CMOS tech",
-      "date_published": "2026-09-05T03:54:49.728Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461451060",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461451060",
-      "title": "Design Verification Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Simulate and test chip designs using UVM methodology\n• Work with Synopsys, Cadence, and Mentor tools\n• Collaborate with chip architects on real product development",
-      "date_published": "2026-09-05T03:54:45.404Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-firmware-engineer-intern-bs-summer-2027-4461452052",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-firmware-engineer-intern-bs-summer-2027-4461452052",
-      "title": "Firmware Engineer Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Develop embedded firmware for data center, AI, and networking hardware\n• Work with Python, C, and RTOS systems for device drivers and protocols\n• Collaborate on security features and automation scripts for firmware stacks",
-      "date_published": "2026-09-05T03:54:23.797Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461431971",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461431971",
-      "title": "Design Verification Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Austin, TX · Duration: Fall 2027\n• Simulate chip behavior using industry tools to find design flaws\n• Work with UVM methodology and testbench for SOC designs\n• Collaborate with cross-functional teams on cloud and AI hardware",
-      "date_published": "2026-09-05T03:54:20.680Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461431972",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461431972",
-      "title": "Physical Design Engineer Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Austin, TX · Duration: Fall 2027\n• Run synthesis, floor planning, and timing analysis on complex logic blocks\n• Use Python, TCL, Perl, and Shell to automate design tasks\n• Work on high-performance data center chips in leading-edge CMOS tech",
-      "date_published": "2026-09-05T03:54:14.950Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
         }
       ]
     }
