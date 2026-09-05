@@ -212,6 +212,39 @@ a.jp-crest:active { transform: scale(.97); }
   display: flex; align-items: center; gap: 11px;
 }
 
+/* ---- The hub's section headings are HEADINGS, not labels ----------------
+   Contrast was never the problem here: measured on the live tokens, --ink-2
+   is 7.24:1 and --ink-3 is 5.11:1 on --bg, so every one of these already
+   passed AA. What made the lower half of the hub unreadable is the TREATMENT.
+   12px monospace, uppercase, .12em of tracking, in the dimmest ink, repeated
+   over four consecutive sections with an identical grey paragraph under each.
+   Uppercase is slower to read at any ratio, and four identical label-shaped
+   things in a column give the eye nothing to land on.
+
+   An earlier pass raised these from 10.5px/--ink-3 to 12px/--ink-2 and did not
+   fix it, because the size was the symptom and the treatment was the cause.
+
+   SCOPED TO THE HUB ON PURPOSE. The job page uses the same `.page h2` and is
+   deliberately left as it is. It earns the label treatment: its sections are
+   short, they are read in order, and the reader is already committed. The hub
+   is a landing page for a search result, and is skimmed.
+
+   Placed immediately after `.page h2` so `.page h2.h2-lead`, which follows and
+   carries the same specificity, still wins for "Open right now". */
+.page.hub h2 {
+  font-family: var(--ui); font-weight: 600;
+  font-size: 17px; letter-spacing: -.01em; text-transform: none;
+  color: var(--ink); margin: 0 0 12px;
+}
+
+/* The prose under them moves up a step too: 13px in --ink-2 is a caption size
+   being asked to carry a sentence. */
+.page.hub .cp-note,
+.page.hub .past-note,
+.page.hub .hub-lede {
+  font-size: 14.5px; line-height: 1.62; color: var(--ink-15); max-width: 66ch;
+}
+
 /* THE HUB'S ROLE COUNT IS NOT A LABEL. It is the answer to the question the
    visitor arrived with — is there anything open here — so it is the one h2 on
    the site that gets size, full ink and the accent. */

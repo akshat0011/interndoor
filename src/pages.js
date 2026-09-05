@@ -2001,7 +2001,7 @@ function profileSections(company, prof, region, { skipDegrees = false, lede = ''
   if (prof.skills.length >= 3) {
     out.push(`<section class="strip">
       <div class="strip-head"><h2>Skills ${co} asks for</h2></div>
-      <p class="cp-note">Taken from ${many ? `the ${prof.n} ${co} internships we have tracked` : `the ${co} ${prof.n === 1 ? 'internship' : 'internships'} we have tracked`} ${esc(region.inName)} &mdash; these are the skills named in the postings themselves, not a generic list.</p>
+      <p class="cp-note">Taken from ${many ? `the ${prof.n} ${co} internships we have tracked` : `the ${co} ${prof.n === 1 ? 'internship' : 'internships'} we have tracked`} ${esc(region.inName)}. These are the skills named in the postings themselves, not a generic list.</p>
       <ul class="cp-chips">${prof.skills.slice(0, 14).map((s) =>
         `<li>${esc(s.value)}${many && s.count > 1 ? `<b>${s.count}</b>` : ''}</li>`).join('')}</ul>
     </section>`);
@@ -2513,7 +2513,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // thing: what we have watched this employer do over time.
   const lede = profile.n >= 3
     ? `We have tracked <b>${profile.n} engineering internships</b> at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
-    : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live &mdash; this page is checked every 30 minutes.`;
+    : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live. This page is checked every 30 minutes.`;
 
   return `${head({
     title: pageTitle,
@@ -2530,7 +2530,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
       + (live.length ? `<script type="application/ld+json">${jsonLd(listLd)}</script>\n` : ''),
       section: 'companies',
   })}
-<main class="page">
+<main class="page hub">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
