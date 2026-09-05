@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
+      "url": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
+      "title": "Software Engineering Co-op — FM",
+      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Develop and modify business applications with real-world impact\n• Work with C#, Java, Python, and relational databases\n• Travel to corporate HQ in Johnston, RI for periodic visits",
+      "date_published": "2026-09-05T06:36:23.887Z",
+      "authors": [
+        {
+          "name": "FM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-code-hardening-and-framework-resilience-r-4463710588",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-code-hardening-and-framework-resilience-r-4463710588",
+      "title": "Internship, Software Engineer, Code Hardening & Framework Resilience, Robotaxi (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Build tools to catch bugs in autonomous systems before they reach the fleet\n• Work with experienced developers on code reliability and system safety\n• Focus on fault tolerance and redundancy in mature software frameworks",
+      "date_published": "2026-09-05T05:52:23.531Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/tesla-internship-test-engineer-self-driving-winter-spring-2027-4463721027",
       "url": "https://interndoor.com/us/jobs/tesla-internship-test-engineer-self-driving-winter-spring-2027-4463721027",
       "title": "Internship, Test Engineer, Self-Driving (Winter/Spring 2027) — Tesla",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-equipment-engineering-controls-engineer-intern-4463660885",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-equipment-engineering-controls-engineer-intern-4463660885",
-      "title": "Equipment Engineering Controls Engineer Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: 12 weeks\n• Design and test automation systems for manufacturing equipment\n• Program PLCs and support robotics with Python or C-based languages\n• Work on legacy and new tech in high-volume and manual assembly lines",
-      "date_published": "2026-09-05T00:04:48.669Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/the-walt-disney-company-commercial-data-science-intern-spring-2027-4462328427",
-      "url": "https://interndoor.com/us/jobs/the-walt-disney-company-commercial-data-science-intern-spring-2027-4462328427",
-      "title": "Commercial Data Science Intern, Spring 2027 — The Walt Disney Company",
-      "content_text": "Company: The Walt Disney Company · Location: Lake Buena Vista, FL · Duration: 12 months\n• Build models and analyses to support merchandise, food, and booking decisions\n• Use SQL, Python, and Tableau to query data and visualize insights\n• Collaborate with business teams to automate workflows and improve decision-making",
-      "date_published": "2026-09-04T23:44:34.839Z",
-      "authors": [
-        {
-          "name": "The Walt Disney Company"
         }
       ]
     }
