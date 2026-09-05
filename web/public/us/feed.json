@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451258828",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451258828",
+      "title": "Intern Data Engineer - Data Services - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Buffalo, NY · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI technologies\n• Work with SQL, Python, and modern data platforms to transform raw data into insights\n• Collaborate with cross-functional teams on real client projects across industries",
+      "date_published": "2026-09-05T15:53:36.235Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-developer-adobe-2027-4451254860",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-developer-adobe-2027-4451254860",
+      "title": "Intern Developer – Adobe 2027 — IBM",
+      "content_text": "Company: IBM · Location: New York, United States · Duration: 10 weeks\n• Develop AEM components, templates, and workflows using Java, HTL, and JCR APIs\n• Collaborate with front-end teams and architects on scalable, maintainable solutions\n• Support AEM cloud migration and integration with external platforms via REST/GraphQL",
+      "date_published": "2026-09-05T15:48:01.918Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-dpe-4451245964",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-dpe-4451245964",
+      "title": "Intern Application Developer 2027 – DPE — IBM",
+      "content_text": "Company: IBM · Location: New York, United States · Duration: 10 weeks\n• Write and maintain scalable code for client projects\n• Work with Java, Python, and cloud platforms\n• Collaborate on cross-functional teams in New York",
+      "date_published": "2026-09-05T15:39:30.289Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-developer-salesforce-2027-4451282710",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-developer-salesforce-2027-4451282710",
+      "title": "Intern Developer - Salesforce 2027 — IBM",
+      "content_text": "Company: IBM · Location: New York, United States · Duration: 10 weeks\n• Work on client projects involving cloud solutions and enterprise applications\n• Use technologies like Salesforce, TypeScript, SQL, and cloud platforms\n• Collaborate in cross-functional teams and contribute to full product lifecycle",
+      "date_published": "2026-09-05T15:34:11.657Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-software-engineer-intern-summer-2027-4461496178",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-software-engineer-intern-summer-2027-4461496178",
+      "title": "Software Engineer Intern - Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Ypsilanti, MI · Duration: Summer 2027\n• Convert algorithm prototypes into software applications\n• Work with C++/Python and modernize legacy code\n• Collaborate on radar and sensor tech development\n• Part of a team building government-facing software",
+      "date_published": "2026-09-05T15:31:40.447Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/two-sigma-quantitative-researcher-intern-2027-summer-4432737369",
+      "url": "https://interndoor.com/us/jobs/two-sigma-quantitative-researcher-intern-2027-summer-4432737369",
+      "title": "Quantitative Researcher - Intern [2027 Summer] — Two Sigma",
+      "content_text": "Company: Two Sigma · Location: New York, United States · Duration: 10 weeks\n• Build investment models using machine learning and data analysis\n• Work on real-world financial datasets with engineers and researchers\n• Present final project to team after 10 weeks in NYC",
+      "date_published": "2026-09-05T15:05:06.419Z",
+      "authors": [
+        {
+          "name": "Two Sigma"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-security-consultant-intern-2027-4451246974",
+      "url": "https://interndoor.com/us/jobs/ibm-security-consultant-intern-2027-4451246974",
+      "title": "Security Consultant Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Support real client security projects protecting data and infrastructure\n• Work with senior consultants on threat detection and cloud security tools\n• Travel up to 100% for on-site client work",
+      "date_published": "2026-09-05T15:04:16.092Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4451278746",
       "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4451278746",
       "title": "Intern Application Developer 2027 - ServiceNow — IBM",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-digital-ip-design-engineer-dram-4453575356",
-      "title": "Intern - Digital IP Design Engineer, DRAM — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and verify digital IP circuits for next-gen DRAM products\n• Use RTL-to-GDS methodologies and AI-assisted tools for verification\n• Collaborate with cross-functional teams on silicon validation projects",
-      "date_published": "2026-09-05T09:10:30.010Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
-      "url": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
-      "title": "2027 Technology Intern - Site Reliability Engineering — Charles Schwab",
-      "content_text": "Company: Charles Schwab · Location: Austin, TX · Duration: Summer 2027\n• Monitor and maintain system reliability across platforms\n• Use tools like Terraform and Prometheus for automation\n• Work on-site in Austin with a focused engineering team",
-      "date_published": "2026-09-05T08:37:29.403Z",
-      "authors": [
-        {
-          "name": "Charles Schwab"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
-      "url": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
-      "title": "Software Engineering Co-op — FM",
-      "content_text": "Company: FM · Location: Johnston, RI · Duration: 6 months\n• Develop and modify business applications with real-world impact\n• Work with C#, Java, Python, and relational databases\n• Travel to corporate HQ in Johnston, RI for periodic visits",
-      "date_published": "2026-09-05T06:36:23.887Z",
-      "authors": [
-        {
-          "name": "FM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-code-hardening-and-framework-resilience-r-4463710588",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-code-hardening-and-framework-resilience-r-4463710588",
-      "title": "Internship, Software Engineer, Code Hardening & Framework Resilience, Robotaxi (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Build tools to catch bugs in autonomous systems before they reach the fleet\n• Work with experienced developers on code reliability and system safety\n• Focus on fault tolerance and redundancy in mature software frameworks",
-      "date_published": "2026-09-05T05:52:23.531Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-test-engineer-self-driving-winter-spring-2027-4463721027",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-test-engineer-self-driving-winter-spring-2027-4463721027",
-      "title": "Internship, Test Engineer, Self-Driving (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Write test strategies for Full Self Driving systems\n• Use simulation and hardware to analyze and improve software\n• Maintain test vehicles and support field testing",
-      "date_published": "2026-09-05T05:32:32.988Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-systems-engineer-ca-and-nd-4463696881",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-systems-engineer-ca-and-nd-4463696881",
-      "title": "2027 Intern Systems Engineer - CA & ND — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Emerado, ND · Duration: 10 weeks\n• Support systems through testing, calibration, and maintenance\n• Use engineering drawings and operate specialized equipment\n• Work in a team with developers and customers in ND",
-      "date_published": "2026-09-05T04:54:44.578Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-systems-engineer-ca-and-nd-4463703538",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-systems-engineer-ca-and-nd-4463703538",
-      "title": "2027 Intern Systems Engineer - CA & ND — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: El Segundo, CA · Duration: 10 weeks\n• Support systems integration and testing of aerospace equipment\n• Use engineering drawings and tools for calibration and troubleshooting\n• Work with cross-functional teams on complex technical projects\n• Based in El Segundo, CA for 10 weeks summer 2027",
-      "date_published": "2026-09-05T04:53:51.867Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
         }
       ]
     }
