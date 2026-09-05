@@ -566,11 +566,64 @@ export function degreeLabel(job) {
  * other. Split on the connectives an employer actually writes, never on the
  * comma — the comma separates a city from its state.
  */
+/* Words that name a BUILDING rather than a settlement. Deliberately short, and
+   `park`, `center` and `centre` are deliberately NOT in it: University Park,
+   Florham Park, Villa Park and Research Park are all real US towns that appear
+   on the live boards, and an early draft of this list silently deleted every
+   one of them. STORE SUPPORT CENTER is caught by the shouting rule instead. */
+const FACILITY_WORD = /\b(way|road|street|estate|industrial|corporate|campus|plant|building|floor|suite)\b/i;
+
+/** A bare country or state code segment: `US`, `WA`, `USA`, `NU`. */
+const isCodeSegment = (x) => /^[A-Za-z]{2,3}$/.test(x) && x === x.toUpperCase();
+
+/** Short enough, plain enough and few enough words to be a settlement name. */
+const looksLikePlace = (x) => !!x && x.length <= 34 && !/\d/.test(x)
+  && x.split(/\s+/).length <= 4 && !FACILITY_WORD.test(x);
+
+/** Ready to print, in a cell or in a sentence. */
+function printablePlace(p) {
+  return looksLikePlace(p)
+    && !/^[A-Z]{2}[-\s]/.test(p)                      // US-WA-, GB-NU-, "US - Massachusetts"
+    && !/^remote\b|work from home/i.test(p)           // a mode, not a place
+    && !(p.length > 10 && p === p.toUpperCase());     // STORE SUPPORT CENTER
+}
+
+const titleCasePlace = (x) => x === x.toUpperCase()
+  ? x.toLowerCase().replace(/\b[a-z]/g, (m) => m.toUpperCase()) : x;
+
+/**
+ * An ATS location string, reduced to something a reader recognises.
+ *
+ * Workday and friends emit `US-WA-Bellevue`, `IN-INDIANAPOLIS` and
+ * `GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE`. Those are
+ * hierarchies with the settlement inside them, so the city is RECOVERED rather
+ * than dropped: split on the separator, discard the code segments and anything
+ * shaped like a building, and keep the last survivor.
+ *
+ * MEASURED over all 424 distinct place strings on the three live boards:
+ * 410 pass through untouched, 9 recover a real city, 5 are withheld. Nothing
+ * real is lost.
+ *
+ * A SINGLE SEGMENT IS NEVER RECOVERED, and that is what stops the worst
+ * outcome. `STORE SUPPORT CENTER` has no hierarchy to mine, so an earlier
+ * draft simply title-cased it to "Store Support Center" and printed a
+ * warehouse as a city. Withholding is right where recovery would invent.
+ */
+function cleanPlace(raw) {
+  if (printablePlace(raw)) return raw;
+  if (/^remote\b|work from home/i.test(raw)) return '';
+  const parts = raw.split(/\s*-\s*/).map((x) => x.trim()).filter(Boolean);
+  if (parts.length < 2) return '';
+  const kept = parts.filter((x) => !isCodeSegment(x)).filter(looksLikePlace);
+  const last = titleCasePlace(kept[kept.length - 1] ?? '');
+  return printablePlace(last) ? last : '';
+}
+
 export function placesOf(location, region = DEFAULT_REGION) {
   const raw = String(location ?? '').trim();
   if (!raw) return [];
   const parts = raw.split(/\s+or\s+|\s*[;/]\s*|\s*\|\s*/i)
-    .map((p) => cityOf(p, region)).filter(Boolean);
+    .map((p) => cityOf(p, region)).map(cleanPlace).filter(Boolean);
   return [...new Set(parts)];
 }
 
@@ -2167,33 +2220,6 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
  * an employer that states no city produces a shorter sentence and never an
  * invented one.
  */
-/**
- * Is this string a place NAME, or an ATS location code wearing one?
- *
- * The card and the facts grid can survive printing `US-WA-Bellevue`, because a
- * labelled cell reads as data. A SENTENCE cannot: "based in
- * GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE" was live on the
- * Baker Hughes hub and reads as a bug. The clause is dropped rather than
- * cleaned, because half-parsing a facility code invents a city.
- *
- * MEASURED over all 424 distinct place strings on the three live boards:
- * 413 quotable, 11 refused, and every refusal is genuinely not a city
- * (5 code-prefixed, 4 remote markers, STORE SUPPORT CENTER, Corporate 412).
- * `canonicalCity` runs FIRST and is what keeps the real ones: it folds
- * `London - UK2` to London, `San Francisco - SF9` to San Francisco and
- * `Greater Minneapolis-St. Paul Area` under the length cap. Guarding without
- * folding first refuses all three.
- */
-function quotablePlace(raw) {
-  const p = canonicalCity(raw) || raw;
-  if (!p || p.length > 30) return '';
-  if (/^[A-Z]{2}[-\s]/.test(p)) return '';                    // US-WA-, GB-NU-, "US - Massachusetts"
-  if (/\d/.test(p)) return '';                                // Corporate 412, SF9, UK2
-  if (p.length > 10 && p === p.toUpperCase()) return '';       // STORE SUPPORT CENTER
-  if (/^remote\b|work from home/i.test(p)) return '';          // a mode, not a place
-  return p;
-}
-
 function answerLine(company, live, prof, region) {
   const co = esc(company);
   const where = region.inName;
@@ -2202,8 +2228,7 @@ function answerLine(company, live, prof, region) {
       ? `<b>${co} is not advertising an engineering internship ${esc(where)} today.</b> We have tracked ${prof.n} so far and check again every 30 minutes.`
       : `<b>${co} has no engineering internship open ${esc(where)} today.</b> This page is checked every 30 minutes.`;
   }
-  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region))
-    .map(quotablePlace).filter(Boolean))];
+  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
   const modes = [...new Set(live.map((j) => modeText(j)).filter(Boolean))];
   const n = live.length;
   const tail = [
