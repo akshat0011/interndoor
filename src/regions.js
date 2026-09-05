@@ -381,6 +381,50 @@ const REGION_LIST = [
       'ciudad de méxico', 'guadalajara', 'monterrey', 'jalisco', 'tijuana',
       'puebla', 'toluca'],
   },
+  {
+    code: 'PT',
+    slug: 'pt',
+    name: 'Portugal',
+    inName: 'in Portugal',
+    hreflang: 'en-PT',
+    timeZone: 'Europe/Lisbon',
+    currency: 'EUR',
+    // No geoId and no `searches` entry, exactly as Mexico has none: collection
+    // here is ATS-side only. `config.js` reads `base.geoId ?? null`, so leaving
+    // it out is supported rather than missing. Fill it in only alongside a
+    // search, or the number is untested.
+    telegram: 'https://t.me/interndoor',
+    // SAFE, and the second-word question was asked. `\bportugal\b` matches the
+    // Canadian "Portugal Cove-St. Philip's" — but Canada is EARLIER in this
+    // list, the country pass returns the first region that matches, and every
+    // real row for that place names Newfoundland or Canada. No US place has
+    // `portugal` as any of its words, which is what makes this a country entry
+    // where `mexico` and `holland` above could not be one.
+    countries: ['portugal'],
+    codes: ['pt'],
+    // Only the Portuguese spelling, which collides with nothing anywhere.
+    //
+    // `lisbon` IS DELIBERATELY ABSENT, AND IT WAS IN THE FIRST DRAFT. Lisbon
+    // ME / ND / OH / IA / WI and New Lisbon WI are all real US towns. Marking
+    // it ambiguous — the London and Amsterdam treatment — looks like the answer
+    // and is not, because a weak match is only ever beaten by the CODE pass and
+    // `me` and `ia` are two of the six US state codes deliberately excluded
+    // above. Measured: "Lisbon, OH" and "New Lisbon, WI" resolve US correctly,
+    // but "Lisbon, ME" resolved to PORTUGAL. It buys nothing to pay for that:
+    // neither stored Portuguese row needs it — "Lisbon, pt" is settled by the
+    // code and "Lisboa, Lisboa, Portugal" by the country — so a bare "Lisbon"
+    // stays `unknown`, which §6 already says is the right answer for a
+    // genuinely ambiguous bare city.
+    //
+    // `porto` IS ABSENT FOR A DIFFERENT REASON AND MUST STAY ABSENT. It
+    // whole-word matches "Porto Alegre" and "Porto Velho", which are Brazilian
+    // — and Brazil is not in this list at all, so there is no code and no
+    // country name to outrank it. Weak would not help here either: nothing
+    // beats a weak match except a code, and "Porto Alegre, Brazil" carries
+    // none. Same reasoning for braga, coimbra and aveiro: no stored row needs
+    // them, and an untested entry is surface, not coverage.
+    cities: ['lisboa'],
+  },
 ];
 
 /** code -> region. The order of REGION_LIST is the resolution order. */

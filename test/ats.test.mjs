@@ -196,10 +196,18 @@ check('remote is NOT a workplace type', isWorkplaceType('Remote'), false);
 check('nor work from home', isWorkplaceType('Work from home'), false);
 check('a real place is not one', [isWorkplaceType('Austin, TX'), isWorkplaceType('Lisbon, Portugal')], [false, false]);
 check('nothing is not one', [isWorkplaceType(null), isWorkplaceType(undefined), isWorkplaceType('')], [false, false, false]);
-/* The Lisbon row end to end: the office names a real city, the gazetteer cannot
-   place it, and the point is that the CITY is what should survive. */
-check('Lisbon does not resolve', resolveRegion('Lisbon, Portugal', {}), UNKNOWN);
-check('so the slot it would replace is a workplace type', isWorkplaceType('In-Office'), true);
+/* The Lisbon row end to end. THIS ASSERTION USED TO READ "Lisbon does not
+   resolve" AND THE SUITE CAUGHT IT the same afternoon, because Portugal was
+   added to the gazetteer hours later — which is the rule working exactly as
+   intended: the office text was kept, so the row was waiting to be picked up,
+   and it was. Keep the rule pinned against a country the gazetteer still does
+   not know, or this check quietly stops testing anything the next time one is
+   added. */
+check('Lisbon resolves now that Portugal is in the gazetteer',
+  resolveRegion('Lisboa, Lisboa, Portugal', {}), 'PT');
+check('a still-unknown country is the case the rescue is for',
+  resolveRegion('Taipei, Taiwan', {}), UNKNOWN);
+check('and the slot it replaces is a workplace type', isWorkplaceType('In-Office'), true);
 
 console.log('\n== the poller consults it ONLY when the primary said nowhere ==');
 /* A SOURCE ASSERTION, because bin/poll-ats.js executes on import and cannot be

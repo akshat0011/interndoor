@@ -302,5 +302,53 @@ at('warsaw indiana is still misfiled', 'Warsaw, IN', 'PL');
 at('waterloo iowa is still misfiled', 'Waterloo, IA', 'CA');
 at('dover delaware is still misfiled', 'Dover, DE', 'DE');
 
+console.log('\n== Portugal, added 5 Sep 2026 ==');
+/* Added because Cloudflare's Lisbon internship was the one row the In-Office
+   fix could recover the TEXT of but not the region. Both stored Portuguese
+   rows are settled without any city entry at all — one by the country name and
+   one by the code — which is what kept this edit as small as it is. */
+at('the country spelled out', 'Lisboa, Lisboa, Portugal', 'PT');
+at('the bare country', 'Portugal', 'PT');
+at('the trailing code', 'Lisbon, pt', 'PT');
+at('the leading code prefix', 'PT-Lisboa-Office', 'PT');
+at('the Portuguese spelling of the city', 'Lisboa', 'PT');
+
+console.log('\n== and the three collisions it was checked against ==');
+/* `porto` IS NOT AND MUST NOT BECOME A CITY HERE. It whole-word matches Porto
+   Alegre and Porto Velho, which are Brazilian, and Brazil is not in this
+   gazetteer — so there is no code and no country name that could outrank it,
+   and marking it ambiguous would not help because only the CODE pass beats a
+   weak match. Adding it files Brazilian roles in Portugal with nothing able to
+   correct them. */
+at('Porto Alegre is not Portuguese', 'Porto Alegre, Brazil', UNKNOWN);
+at('nor is bare Porto', 'Porto', UNKNOWN);
+
+/* `lisbon` IS NOT A CITY HERE EITHER, AND IT WAS IN THE FIRST DRAFT. Lisbon
+   ME / ND / OH / IA / WI and New Lisbon WI are real US towns. The London and
+   Amsterdam treatment — list it and mark it ambiguous — looks right and is not,
+   because a weak match is only beaten by the CODE pass and `me` and `ia` are
+   two of the six US state codes excluded above. With `lisbon` listed weak,
+   "Lisbon, ME" resolved to PORTUGAL. It is left out, so a bare Lisbon is
+   honestly unknown. */
+at('Lisbon Maine is not Portuguese', 'Lisbon, ME', UNKNOWN);
+at('Lisbon Ohio is American', 'Lisbon, OH', 'US');
+at('New Lisbon Wisconsin is American', 'New Lisbon, WI', 'US');
+at('a bare Lisbon declines to guess', 'Lisbon', UNKNOWN);
+
+/* The second-word question §6 insists on for any country name. `portugal`
+   appears in the Canadian "Portugal Cove-St. Philip's" — Canada is earlier in
+   the list and the country pass returns the first region that matches, so the
+   real rows for that place are unaffected. No US place carries the word. */
+at('Portugal Cove is Canadian', "Portugal Cove-St. Philip's, NL, Canada", 'CA');
+
+console.log('\n== adding it publishes nothing ==');
+/* Collected, never published: `regions.publish` is IN/US/GB, so a PT row is
+   stored and stays off every board. That is the whole reason a region can be
+   added on the strength of two rows. */
+check('PT is a known region', regionOf('PT')?.name, 'Portugal');
+check('PT is not published', isPublishedRegion({ regions: { publish: ['IN', 'US', 'GB'] } }, 'PT'), false);
+check('PT is collected under "all"', collectsRegion({ regions: { collect: 'all' } }, 'PT'), true);
+check('its slug does not collide', ALL_REGIONS.filter((r) => r.slug === 'pt').length, 1);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
