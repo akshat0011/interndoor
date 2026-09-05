@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788584504272,
+ "generatedAt": 1788585105092,
  "region": "US",
  "regionName": "United States",
- "count": 1601,
- "techCount": 1601,
+ "count": 1602,
+ "techCount": 1602,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -119,6 +119,7 @@
   "Jacobs",
   "John Deere",
   "Johnson & Johnson MedTech",
+  "Johnson Controls",
   "Jump Trading",
   "Kiewit",
   "L3Harris Technologies",
@@ -575,6 +576,7 @@
   "Roseville, CA",
   "STORE SUPPORT CENTER, ATLANTA - 9090",
   "Sacramento, CA",
+  "Salem, VA",
   "Salt Lake City, UT",
   "San Antonio, TX",
   "San Diego, CA",
@@ -1136,6 +1138,57 @@
    "cardFacts": [
     "$1",
     "Camarillo",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461440256",
+   "title": "Software/Controls Engineering Grad Intern",
+   "company": "Johnson Controls",
+   "matchedWatchlist": "Johnson Controls",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/johnson-controls.jpg",
+   "location": "Salem, VA",
+   "workplaceType": "On-site",
+   "stipend": "$21 – $32 / hour",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "c++"
+   ],
+   "summary": "This internship involves developing and validating control system software for active magnetic bearings. You'll work with embedded systems, microcontrollers, and real-time environments. Ideal for graduate students in computer science, engineering, or related fields with experience in embedded systems and programming.",
+   "bullets": [
+    "Design and develop embedded control system software for active magnetic bearings",
+    "Work with c/c++ and assembly, microcontrollers, and rtos environments",
+    "Integrate software with hardware, debug, and test system functionality",
+    "Based in salem, va, hybrid, 20-40 hours per week"
+   ],
+   "roleLabel": "Embedded software development",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "c",
+    "c++",
+    "assembly",
+    "microcontrollers",
+    "rtos"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "46 minutes ago",
+   "postedAt": 1788581093585,
+   "firstSeenAt": 1788583853586,
+   "lastSeenAt": 1788583853586,
+   "url": "https://www.linkedin.com/jobs/view/4461440256/",
+   "applyUrl": "https://click.appcast.io/t/ytZoSLjDRyq0e64lYO7xVLDzRWO0NR3nLk79ZL1CtJugS5IOrv9xNKJxd2BNJEUA?source=appcast_LinkedIn",
+   "description": null,
+   "roleFingerprint": "09aec56505",
+   "cardFacts": [
+    "$21 – $32 / hour",
+    "Salem",
     "On-site"
    ],
    "region": "US"

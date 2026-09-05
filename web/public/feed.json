@@ -6,18 +6,6 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256",
-      "url": "https://interndoor.com/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256",
-      "title": "Software/Controls Engineering Grad Intern — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: Salem, VA\n• Design and develop embedded control system software for active magnetic bearings\n• Work with c/c++ and assembly, microcontrollers, and rtos environments\n• Integrate software with hardware, debug, and test system functionality\n• Based in salem, va, hybrid, 20-40 hours per week",
-      "date_published": "2026-09-05T04:04:53.585Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/pearson-associate-ai-and-machine-learning-intern-4462346970",
       "url": "https://interndoor.com/jobs/pearson-associate-ai-and-machine-learning-intern-4462346970",
       "title": "Associate, AI & Machine Learning Intern — Pearson",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Bugsmirror"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
+      "url": "https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734",
+      "title": "Flight Software Engineering Intern — AST SpaceMobile",
+      "content_text": "Company: AST SpaceMobile · Location: Hyderabad, Telangana, India\n• Write and test small software modules for satellite systems\n• Work with C++ and RTOS in embedded development\n• Collaborate on software specs with sub-system engineers",
+      "date_published": "2026-08-31T07:14:08.182Z",
+      "authors": [
+        {
+          "name": "AST SpaceMobile"
         }
       ]
     }
