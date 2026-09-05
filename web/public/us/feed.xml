@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 05 Sep 2026 06:36:23 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 05 Sep 2026 08:37:29 GMT</lastBuildDate>
+  <item>
+    <title>2027 Technology Intern - Site Reliability Engineering — Charles Schwab</title>
+    <link>https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644</guid>
+    <pubDate>Sat, 05 Sep 2026 08:37:29 GMT</pubDate>
+    <description>Company: Charles Schwab · Location: Austin, TX · Duration: Summer 2027
+• Monitor and maintain system reliability across platforms
+• Use tools like Terraform and Prometheus for automation
+• Work on-site in Austin with a focused engineering team</description>
+  </item>
   <item>
     <title>Software Engineering Co-op — FM</title>
     <link>https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065</link>
@@ -503,16 +513,6 @@
 • Craft and manage complex systems
 • Work with infrastructure and devops tools
 • Travel to corporate headquarters in johnston</description>
-  </item>
-  <item>
-    <title>AI / ML Winter/Spring Co-Op (Jan-June &#39;27) — Skyworks Solutions, Inc.</title>
-    <link>https://interndoor.com/us/jobs/skyworks-solutions-inc-ai-ml-winter-spring-co-op-jan-june-27-4463690212</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/skyworks-solutions-inc-ai-ml-winter-spring-co-op-jan-june-27-4463690212</guid>
-    <pubDate>Sat, 05 Sep 2026 00:34:10 GMT</pubDate>
-    <description>Company: Skyworks Solutions, Inc. · Location: Irvine, CA
-• Design and deploy machine learning solutions for engineering and business teams
-• Work with PyTorch, Databricks, PowerBI, and other AI/ML tools
-• Collaborate across departments on data analysis and workflow improvements</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
+      "url": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4461454644",
+      "title": "2027 Technology Intern - Site Reliability Engineering — Charles Schwab",
+      "content_text": "Company: Charles Schwab · Location: Austin, TX · Duration: Summer 2027\n• Monitor and maintain system reliability across platforms\n• Use tools like Terraform and Prometheus for automation\n• Work on-site in Austin with a focused engineering team",
+      "date_published": "2026-09-05T08:37:29.403Z",
+      "authors": [
+        {
+          "name": "Charles Schwab"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
       "url": "https://interndoor.com/us/jobs/fm-software-engineering-co-op-4463722065",
       "title": "Software Engineering Co-op — FM",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "FM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-ai-ml-winter-spring-co-op-jan-june-27-4463690212",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-ai-ml-winter-spring-co-op-jan-june-27-4463690212",
-      "title": "AI / ML Winter/Spring Co-Op (Jan-June '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA\n• Design and deploy machine learning solutions for engineering and business teams\n• Work with PyTorch, Databricks, PowerBI, and other AI/ML tools\n• Collaborate across departments on data analysis and workflow improvements",
-      "date_published": "2026-09-05T00:34:10.573Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
         }
       ]
     }
