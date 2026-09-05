@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 05 Sep 2026 02:19:30 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 05 Sep 2026 04:04:53 GMT</lastBuildDate>
+  <item>
+    <title>Software/Controls Engineering Grad Intern — Johnson Controls</title>
+    <link>https://interndoor.com/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/johnson-controls-software-controls-engineering-grad-intern-4461440256</guid>
+    <pubDate>Sat, 05 Sep 2026 04:04:53 GMT</pubDate>
+    <description>Company: Johnson Controls · Location: Salem, VA
+• Design and develop embedded control system software for active magnetic bearings
+• Work with c/c++ and assembly, microcontrollers, and rtos environments
+• Integrate software with hardware, debug, and test system functionality
+• Based in salem, va, hybrid, 20-40 hours per week</description>
+  </item>
   <item>
     <title>Associate, AI &amp; Machine Learning Intern — Pearson</title>
     <link>https://interndoor.com/jobs/pearson-associate-ai-and-machine-learning-intern-4462346970</link>
@@ -500,16 +511,6 @@
 • Develop flutter web and dart apps for a saas security platform
 • Work with rest apis, json, and responsive ui design
 • Collaborate with product and backend teams using git</description>
-  </item>
-  <item>
-    <title>Flight Software Engineering Intern — AST SpaceMobile</title>
-    <link>https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ast-spacemobile-flight-software-engineering-intern-4461060734</guid>
-    <pubDate>Mon, 31 Aug 2026 07:14:08 GMT</pubDate>
-    <description>Company: AST SpaceMobile · Location: Hyderabad, Telangana, India
-• Write and test small software modules for satellite systems
-• Work with C++ and RTOS in embedded development
-• Collaborate on software specs with sub-system engineers</description>
   </item>
 </channel>
 </rss>
