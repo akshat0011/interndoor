@@ -35,24 +35,49 @@
  * what it does to the people who applied.
  */
 
+/**
+ * THE ADDRESS RULE IS BORROWED, NOT REWRITTEN, and the first version of this
+ * file proves why. It cleaned control characters into spaces and THEN tested
+ * for a newline — so `a@b.com\nBcc: x@y.com` arrived as
+ * `a@b.com Bcc: x@y.com`, the newline check could never once fire, and the
+ * comment above it claimed that check was the one that mattered. A guard that
+ * runs after the thing it guards against has been rewritten is not a guard.
+ *
+ * `normaliseEmail` tests the RAW string, refuses all whitespace rather than
+ * only newlines, and insists on exactly one `@` and a sane domain. It is
+ * already covered by 26 assertions in test/subscribe.test.mjs, and one rule
+ * for one thing is the point — two copies of address validation is two
+ * copies that drift.
+ */
+import { normaliseEmail } from './subscribe.js';
+
 /** Anything that accepts a POST: a Formspree form, a Zapier or Make hook, an
  *  Apps Script web app, or our own later handler. Server-side, so no CSP. */
 const FORWARD = process.env.APPLY_FORWARD_URL || '';
 
-const MAX = { name: 120, email: 160, resume: 500, links: 500, note: 1200 };
+/** Said by BOTH paths that mean "there is nowhere to send": nothing configured,
+ *  and a target that turns the request away at the door. */
+const NOT_LIVE = 'Applications are not switched on yet — please check back shortly.';
+
+/**
+ * A target answering one of these is not FAILING, it is not an application
+ * endpoint at all — a static host, a deleted form, a placeholder someone set
+ * meaning to come back to it. `interndoor.com` itself answers 405, because
+ * Vercel refuses POST to a static file.
+ *
+ * Retrying cannot fix any of them, so "please try again in a moment" is a lie
+ * in the same family as returning success: it sends someone who has written a
+ * covering note back to a door that is nailed shut, and it will do that for as
+ * long as the setting stays wrong. Say the true thing instead — the same thing
+ * we say when nothing is configured at all, because it is the same situation.
+ */
+const REFUSES_POST = new Set([404, 405, 410, 501]);
+
+const MAX = { name: 120, resume: 500, links: 500, note: 1200 };
 
 /** Control characters out, then trim, then cap. */
 function clean(value, cap) {
   return String(value ?? '').replace(/[\x00-\x1f\x7f]/g, ' ').trim().slice(0, cap);
-}
-
-/**
- * Deliberately permissive, like the signup endpoint's: clever address regexes
- * refuse real addresses. The check that matters is the newline, which is how a
- * field becomes extra headers wherever this is forwarded.
- */
-function validEmail(value) {
-  return value.length > 2 && value.indexOf('@') > 0 && !/[\r\n]/.test(value);
 }
 
 /** Only http(s). A `javascript:` or `data:` CV link is not a CV link. */
@@ -71,9 +96,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST.' });
 
   const body = typeof req.body === 'object' && req.body ? req.body : {};
+  const email = normaliseEmail(body.email);
   const application = {
     name: clean(body.name, MAX.name),
-    email: clean(body.email, MAX.email),
+    email: email ?? '',
     resume: clean(body.resume, MAX.resume),
     links: clean(body.links, MAX.links),
     note: clean(body.note, MAX.note),
@@ -81,7 +107,7 @@ export default async function handler(req, res) {
   };
 
   if (!application.name) return res.status(400).json({ error: 'Your name is needed.' });
-  if (!validEmail(application.email)) return res.status(400).json({ error: 'That email address does not look right.' });
+  if (!email) return res.status(400).json({ error: 'That email address does not look right.' });
   if (!validUrl(application.resume)) return res.status(400).json({ error: 'The CV link needs to be a full https:// address.' });
   if (application.links && !validUrl(application.links)) {
     return res.status(400).json({ error: 'The portfolio link needs to be a full https:// address.' });
@@ -91,9 +117,7 @@ export default async function handler(req, res) {
     /* Visible, never silent. Nothing personal is logged — the point of storing
        nothing is that this request leaves no trace of the applicant. */
     console.error('apply: APPLY_FORWARD_URL is not set — the application form is live with nowhere to send');
-    return res.status(503).json({
-      error: 'Applications are not switched on yet — please check back shortly.',
-    });
+    return res.status(503).json({ error: NOT_LIVE });
   }
 
   try {
@@ -103,6 +127,12 @@ export default async function handler(req, res) {
       body: JSON.stringify(application),
     });
     if (!upstream.ok) {
+      if (REFUSES_POST.has(upstream.status)) {
+        /* The URL is a webhook and a webhook is a credential, so the status is
+           named and the target never is. */
+        console.error(`apply: the APPLY_FORWARD_URL target answered ${upstream.status} — it does not accept applications, so nothing is being delivered; check the setting`);
+        return res.status(503).json({ error: NOT_LIVE });
+      }
       console.error(`apply: forwarding failed with ${upstream.status}`);
       return res.status(502).json({ error: 'That did not send. Please try again in a moment.' });
     }

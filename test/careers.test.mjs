@@ -164,5 +164,94 @@ console.log('\n== THE ENDPOINT NEVER FAKES SUCCESS ==');
   check('the dev server knows the route', /'\/api\/apply': '\.\/api\/apply\.js'/.test(serve), true);
 }
 
+console.log('\n== THE ENDPOINT, ACTUALLY RUN ==');
+{
+  /* Every other check in this file reads the SOURCE, and a source grep has
+     already been wrong once here — it read the word "application" inside an
+     honest log line as a leak. So this section imports the handler and calls
+     it. web/api/apply.js reads APPLY_FORWARD_URL once at module load, which is
+     why each case re-imports under a fresh query string. */
+  const MOD = new URL('../web/api/apply.js', import.meta.url).href;
+  const NOT_LIVE = 'Applications are not switched on yet — please check back shortly.';
+  const GOOD = { name: 'A Student', email: 'a@example.com', resume: 'https://example.com/cv.pdf' };
+  let n = 0;
+
+  async function call(forward, upstream, body, method = 'POST') {
+    process.env.APPLY_FORWARD_URL = forward ?? '';
+    const mod = await import(`${MOD}?case=${++n}`);
+    const sent = [], errs = [];
+    const realFetch = globalThis.fetch, realErr = console.error;
+    globalThis.fetch = async (url, init) => {
+      sent.push({ url, body: init?.body });
+      if (upstream instanceof Error) throw upstream;
+      return { ok: upstream >= 200 && upstream < 300, status: upstream };
+    };
+    console.error = (...a) => errs.push(a.join(' '));
+    const res = {
+      code: 0, payload: null,
+      status(c) { this.code = c; return this },
+      json(o) { this.payload = o; return this },
+      setHeader() {}, end() { return this },
+    };
+    try { await mod.default({ method, body }, res); }
+    finally { globalThis.fetch = realFetch; console.error = realErr; }
+    return { code: res.code, payload: res.payload, sent, errs: errs.join(' ') };
+  }
+
+  let r = await call('', null, GOOD);
+  check('unset: 503', r.code, 503);
+  check('unset: says it is not switched on', r.payload.error, NOT_LIVE);
+  check('unset: nothing left the building', r.sent.length, 0);
+
+  /* interndoor.com answers 405 — measured against the live site, because
+     Vercel refuses POST to a static file. This is the placeholder case. */
+  r = await call('https://interndoor.com', 405, GOOD);
+  check('405 target: 503, not 502', r.code, 503);
+  check('405 target: the SAME message as unset', r.payload.error, NOT_LIVE);
+  check('405 target: never invites a retry', /try again/i.test(JSON.stringify(r.payload)), false);
+  check('405 target: the log names the fault', /does not accept applications/.test(r.errs), true);
+  check('405 target: the webhook URL is NOT logged', /interndoor\.com/.test(r.errs), false);
+
+  for (const st of [404, 410, 501]) {
+    r = await call('https://x.example/f', st, GOOD);
+    check(`${st} target is the same situation`, [r.code, r.payload.error], [503, NOT_LIVE]);
+  }
+
+  /* A transient failure is a different thing and must still say so. */
+  r = await call('https://x.example/f', 500, GOOD);
+  check('500 target: 502', r.code, 502);
+  check('500 target: DOES invite a retry', /try again/i.test(r.payload.error), true);
+  r = await call('https://x.example/f', new Error('socket hang up'), GOOD);
+  check('a thrown fetch: 502', r.code, 502);
+  check('and the applicant sees no stack', /socket hang up/.test(JSON.stringify(r.payload)), false);
+
+  r = await call('https://x.example/f', 200, GOOD);
+  check('a working target: 200', r.code, 200);
+  const fwd = JSON.parse(r.sent[0].body);
+  check('the role travels with it', fwd.role, 'Software Engineering Intern');
+  check('and so does the CV link', fwd.resume, GOOD.resume);
+
+  for (const [label, patch] of [['no name', { name: '' }], ['bad email', { email: 'nope' }],
+    ['a javascript: CV', { resume: 'javascript:alert(1)' }],
+    /* The one this file's own first draft let through: clean() turned the
+       newline into a space, so the newline check could never fire. */
+    ['a header injection', { email: 'a@b.com\nBcc: x@y.com' }],
+    ['a space in the address', { email: 'a@b.com x@y.com' }],
+    ['two @ signs', { email: 'a@b@c.com' }],
+    ['a domain with no dot', { email: 'a@localhost' }]]) {
+    const bad = await call('https://x.example/f', 200, { ...GOOD, ...patch });
+    check(`${label}: 400`, bad.code, 400);
+    check(`${label}: nothing was forwarded`, bad.sent.length, 0);
+  }
+
+  /* Borrowed from the signup endpoint, so it lowercases like that one does. */
+  r = await call('https://x.example/f', 200, { ...GOOD, email: 'A.Student@Example.COM' });
+  check('the address is lowercased, and only that', JSON.parse(r.sent[0].body).email, 'a.student@example.com');
+
+  r = await call('https://x.example/f', 200, GOOD, 'GET');
+  check('GET: 405', r.code, 405);
+  delete process.env.APPLY_FORWARD_URL;
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
