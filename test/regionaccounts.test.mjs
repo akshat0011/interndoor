@@ -189,6 +189,32 @@ console.log('\n== A REGION NEVER SIGNED IN IS LOGGED OUT, NOT A BROKEN RUN ==');
   check('and it names the exact command', /npm run login -- --region=ZZ/.test(err?.message ?? ''), true);
 }
 
+console.log('\n== A DEAD REGION MUST NOT COST A LIVE ONE ITS SESSION ==');
+{
+  /* THE BUG THIS PINS WAS INTRODUCED BY THIS CHANGE ITSELF. openRegionSession
+     closed the current region's browser and only then asked launchBrave for the
+     next one — so an unconfigured US account shut India's session, left
+     openRegion null, and skipped the description backfill (which needs a live
+     page) on EVERY hourly run. That is precisely the "one dead account cannot
+     hurt another region" property the split exists for, broken by the split. */
+  const { hasSessionProfile } = await import('../src/browser.js');
+  const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+
+  check('a never-signed-in region has no profile', hasSessionProfile('ZZ'), false);
+  check('a bad code is not a profile either', hasSessionProfile('../..'), typeof hasSessionProfile('IN') === 'boolean' ? hasSessionProfile('IN') : false);
+
+  const helper = /const openRegionSession = async \(code\) => \{([\s\S]*?)\n    \};/.exec(src)?.[1] ?? '';
+  check('the helper was found', helper.length > 0, true);
+
+  const preflight = helper.indexOf('hasSessionProfile(code)');
+  const close = helper.indexOf('closeBrave(session)');
+  check('it pre-flights the profile', preflight > -1, true);
+  check('it still closes the old session', close > -1, true);
+  /* ORDER IS THE WHOLE ASSERTION. Both lines present in the wrong order is the
+     bug, and a test that only checked presence would pass on it. */
+  check('AND THE PRE-FLIGHT COMES FIRST', preflight < close, true);
+}
+
 console.log('\n== THE FIX NAMES THE ACCOUNT ==');
 {
   /* A bare "run npm run login" on a US outage re-signs INDIA — the account that

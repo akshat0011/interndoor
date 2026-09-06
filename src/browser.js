@@ -197,6 +197,25 @@ export function releaseProfileLock(profileDir = PATHS.profile) {
 }
 
 /**
+ * Has this region ever been signed in?
+ *
+ * A cheap filesystem check, so a caller can find out that a region has no
+ * account WITHOUT first tearing down the session it already has open — see the
+ * pre-flight in src/index.js. Chromium writes `Default/` on its first real
+ * launch, which is the same marker launchBrave itself uses.
+ *
+ * It answers "there is a profile", NOT "the cookie in it still works". Only a
+ * launch can settle that, and a region whose cookie has expired therefore still
+ * costs the previous region its open session. That is accepted rather than
+ * fixed: avoiding it means holding two Braves open at once to verify the second
+ * before releasing the first, and the expired case self-corrects on the next
+ * sign-in, where the never-signed-in case does not.
+ */
+export function hasSessionProfile(region) {
+  return existsSync(join(profileFor(region), 'Default'));
+}
+
+/**
  * Release EVERY region's scraper profile.
  *
  * For the stale-run-lock path only, where a previous run crashed and we do not

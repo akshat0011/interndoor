@@ -10,7 +10,7 @@ import { writeFile } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
 import { Store } from './store.js';
-import { launchBrave, closeBrave, releaseAllProfileLocks } from './browser.js';
+import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
@@ -499,6 +499,23 @@ async function main() {
 
     const openRegionSession = async (code) => {
       if (openRegion === code) return;
+
+      /**
+       * REFUSE A REGION WITH NO ACCOUNT *BEFORE* CLOSING THE ONE WE HAVE.
+       *
+       * launchBrave refuses it too, but by then the previous region's browser
+       * is already shut: `openRegion` would be null for the rest of the run and
+       * the description backfill below — which needs a live page — would be
+       * skipped. So an unconfigured US account would have cost INDIA its
+       * backfill on every hourly run, which is exactly the "one dead account
+       * cannot hurt another region" property this whole change exists for,
+       * broken by the change itself.
+       */
+      if (!hasSessionProfile(code)) {
+        throw new RunAborted(State.LOGGED_OUT,
+          `No LinkedIn session for ${code} yet. Run \`npm run login -- --region=${code}\` once to sign in.`);
+      }
+
       // One at a time. Two live Braves would double the concurrent footprint
       // this whole change exists to reduce, and each profile is an exclusive
       // lock anyway.
