@@ -117,7 +117,13 @@ const flat = plainText(real.post);
 ok('under the LinkedIn limit', real.post.length <= MAX_POST_CHARS, `${real.post.length}`);
 // The ROLE count leads, not the employer count: it is the bigger number and the
 // first line is the only one LinkedIn shows before "see more".
-ok('leads with the role count', flat.startsWith('🗓️ 120 engineering internships'));
+// Headline reworded 6 Sep 2026 on his spec: 🚨, the count and the sentence both
+// in bold, 💻🔥📌 closing. The LEDE that used to sit under it is gone from the
+// post, so the apply line now follows the headline directly.
+ok('leads with the role count', flat.startsWith('🚨  120 engineering internships opened this week'));
+ok('and closes the headline with his marks', real.post.split('\n')[0].endsWith('💻🔥📌'));
+ok('the apply line comes straight after', plainText(real.post.split('\n\n')[1]).startsWith('⚡ Apply now'));
+ok('and the lede is no longer in the post', !flat.includes('every one live on the board when I wrote this'));
 // A roundup that silently drops ninety roles reads as though the week were a
 // tenth as good — the count that did not fit has to be in the post itself.
 ok('says how many did not fit', /…and \d+ more roles from \d+ more companies on the board/.test(flat));

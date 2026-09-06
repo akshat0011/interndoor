@@ -35,7 +35,8 @@
     "whatsapp-login": "node bin/whatsapp-login.js",
     "whatsapp-probe": "node bin/whatsapp-probe.js",
     "gh-readme": "node bin/gh-readme.js",
-    "recheck-tech": "node bin/recheck-tech.js"
+    "recheck-tech": "node bin/recheck-tech.js",
+    "profile": "node --no-warnings=ExperimentalWarning bin/open-profile.js"
   },
   "dependencies": {
     "playwright-core": "^1.56.0"

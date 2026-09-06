@@ -266,11 +266,20 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
      LinkedIn shows about two lines before "see more", so the first line is the
      only one guaranteed to be read. */
   const head = roles.length === 1
-    ? `🗓️ ${B('1 engineering internship')} ${B('opened this week')} 📌`
-    : `🗓️ ${B(String(roles.length))} ${B('engineering internships opened this week')} 📌`;
+    ? `🚨  ${B('1')} ${B('engineering internship opened this week')} 💻🔥📌`
+    : `🚨  ${B(String(roles.length))} ${B('engineering internships opened this week')} 💻🔥📌`;
 
+  /* THE LEDE IS NO LONGER IN THE POST — his call, 6 Sep 2026. It read
+     `<span> · N companies · every one live on the board when I wrote this.`
+     and sat between the headline and the apply line. The intro is now the
+     headline followed straight by "Apply now", which is what he specified.
+
+     It is still COMPUTED, because `span` and the company count both go into
+     `stats` and the page header reads them. Putting it back in the post is one
+     line in `compose` below. */
   const lede = `${span} · ${groups.length} compan${groups.length === 1 ? 'y' : 'ies'}`
     + ` · every one live on the board when I wrote this.`;
+  void lede;
 
   const boardUrl = utmUrl(`${SITE}/`, { campaign: 'weekly', content: 'roundup' }, cfg);
   // WhatsApp where the region has one — same preference the posts and the
@@ -309,7 +318,6 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     ].filter(Boolean);
     return [
       head,
-      lede,
       picked.length ? `⚡ ${B('Apply now')} — this week's biggest openings:` : '',
       ...picked.map((g) => featuredBlock(g, region, cfg)),
       ...tail,
