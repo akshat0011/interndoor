@@ -136,7 +136,7 @@ const NEGATIVE = [
   'operations executive', 'supply chain', 'logistics', 'procurement', 'warehouse',
   'event management', 'hospitality', 'travel',
   // non-software engineering & sciences
-  'civil engineer', 'mechanical engineer', 'electrical engineer',
+  'civil engineer', 'mechanical engineer',
   'chemical engineer', 'production engineer', 'industrial engineer',
   'automobile', 'hvac', 'construction', 'architecture', 'interior design',
   'clinical', 'pharmacovigilance', 'pharmacist', 'nursing', 'medical',

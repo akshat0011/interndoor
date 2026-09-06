@@ -897,13 +897,11 @@
       "civil engineering",
       "mechanical engineering",
       "chemical engineering",
-      "electrical engineering",
       "industrial engineering",
       "manufacturing engineering",
       "process engineering",
       "structural engineering",
       "structural",
-      "electrical",
       "highway",
       "foundry",
       "aerospace engineering",
@@ -912,8 +910,7 @@
       "environmental engineering"
     ],
     "titleOnlyNonTechTerms": [
-      "technical support",
-      "electrical"
+      "technical support"
     ],
     "_titleOnlyNonTechTerms_note": "Terms that veto on the employer's TITLE but never on the model's roleLabel. A label is the model summarising a description in its own words, so a blunt term misfires there. 'technical support' dropped HPE College Intern roles that require a CS degree and Python/Java/C++, because the duties say troubleshoot and support. IBM's Technical Support Representative Intern still says it in the title and is still refused. Measured over 30 days: 10 vetoed rows, 7 by title (right), 2 by label (wrong), 1 ambiguous.",
     "_slashTerms_note": "The three that whole-word matching could not see, added 1 Sep 2026. 'Civil/Highway Engineer' and 'Diploma Trainee - Electrical / Civil' put a slash where the phrase needed a space, so 'civil engineer' and 'electrical engineering' both missed them. Fixed with the words the titles DO contain rather than by teaching the matcher about slashes: 'highway' (2 stored titles, both roads/civil, no software use), 'foundry' (1 title, metal casting - and note the word boundary means it can never match 'GlobalFoundries', which is why the semiconductor worry was overstated) and 'electrical'. ELECTRICAL IS TITLE-ONLY. As a full negative it refused 18 rows with no software signal, but two of them were label-driven and both ambiguous: Rocket Lab's 'Avionics Intern - Neutron Avionics Systems' (label 'Electrical System Design') and Valeo's 'R&D Trainee' (label 'Electrical Systems Development'), which are as likely to be embedded firmware as hardware. Same shape as 'technical support' dropping HPE's CS-degree internships. Scoped to the title it takes the 16 real ones - SpaceX Electrical x3, Astranis, Zipline, Emerson, Raytheon, Norfolk Southern, Parsons, Axcelis, Qorvo, GlobalFoundries facilities - and spares both. 'computer engineering' was added to POSITIVE in roles.js in the same change, so a future 'Electrical and Computer Engineering Intern' is rescued by its own discipline rather than refused by the other one.",

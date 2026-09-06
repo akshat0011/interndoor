@@ -83,12 +83,25 @@ console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
   // It simply stops rescuing a discipline that is not software.
   for (const t of ['Mechanical Engineering Intern', 'Chemical Engineering Intern',
     'Civil Engineering Intern', 'Structural Engineering Intern',
-    'Electrical Engineering Co-Op, Spring 2027', 'Manufacturing Engineering Intern',
+    'Manufacturing Engineering Intern',
     'Industrial Engineering Co-OP', 'Process Engineering Intern',
     'Materials Engineering Intern', 'Ground Systems Mechanical Engineering Intern - Neutron',
     'Presales & Solution Engineering Intern', 'Graduate Engineering Trainee - Sales Engineer']) {
     is(`refused — ${t}`, refused(t), true);
   }
+
+  /* ELECTRICAL IS TECH — REVERSED 6 SEP 2026, ON HIS CALL.
+     Microsoft files "Electrical Engineering INTERN" beside Firmware and
+     Hardware Engineering INTERN, and only the electrical one was refused while
+     the other two were live. Measured over all 28,022 distinct stored titles:
+     194 gain tech, 0 LOSE tech — the safe direction, so no live page 404s.
+     The cost is real and is pinned below: 29 of the 194 are power, facilities
+     or substation work. `mechanical`, `civil`, `chemical`, `structural` and
+     `industrial` are untouched — this is one discipline, not the block. */
+  is('Electrical Engineering Co-Op is admitted', refused('Electrical Engineering Co-Op, Spring 2027'), false);
+  is('and so is the singular form', refused('Electrical Engineer Intern'), false);
+  is('mechanical is still refused', refused('Mechanical Engineering Intern'), true);
+  is('and civil', refused('Civil Engineering Intern'), true);
 
   /* A SPECIFIC multi-word positive still outranks a negative, which is the
      whole point of the override and must not be collateral. Every one of these
@@ -144,8 +157,14 @@ console.log('\n== A GENERIC POSITIVE MUST NOT CANCEL A NEGATIVE ==');
      the titles DO contain rather than by teaching the matcher about slashes. */
   is('Civil/Highway is caught by `highway`',
     refused('Civil/Highway Engineer Intern - Hiring Event with AECOM'), true);
-  is('Electrical / Civil is caught by `electrical`',
-    refused('Diploma Trainee \u2013 Electrical / Civil \u2013 Fixed Term contract'), true);
+  /* WAS caught by the bare `electrical`, and is now ADMITTED. A measured cost
+     of making electrical tech: this is an ITI trade apprenticeship, not
+     software, and `civil` alone is not a negative so nothing else catches it.
+     Pinned as-is rather than quietly dropped — if it becomes a problem the fix
+     is a `diploma trainee` negative, which needs its own store-wide
+     measurement first (§9). */
+  is('Electrical / Civil is now admitted — a known cost',
+    refused('Diploma Trainee \u2013 Electrical / Civil \u2013 Fixed Term contract'), false);
   is('and Foundry Engineering by `foundry`',
     refused('Mercury Marine - Foundry Engineering Co-op'), true);
 
@@ -186,10 +205,17 @@ console.log('\n== A TEAM NAME MUST NOT VETO THE ROLE ==');
 
   /* THE GENERIC GUARD. A head that says only "this is a job" must not rescue
      anything — these four SpaceX rows are the measured case. */
-  for (const t of ['New Graduate Engineer, Electrical (Starship)',
-    'New Graduate Engineer, Civil/Structural (Starship)',
-    'Facilities Engineering Intern, Electrical Distribution Systems']) {
+  for (const t of ['New Graduate Engineer, Civil/Structural (Starship)']) {
     is(`generic head does not rescue — ${t.slice(0, 44)}`, refused(t), true);
+  }
+  /* THE TWO ELECTRICAL ROWS MOVED OUT OF THAT LIST ON 6 SEP 2026 and are now
+     admitted. They are the other measured cost of making electrical tech —
+     SpaceX avionics work is arguably in scope, a facilities distribution
+     internship is not. The Civil/Structural row stays, which is what proves
+     the generic-head guard itself still works. */
+  for (const t of ['New Graduate Engineer, Electrical (Starship)',
+    'Facilities Engineering Intern, Electrical Distribution Systems']) {
+    is(`electrical is now admitted — ${t.slice(0, 44)}`, refused(t), false);
   }
 
   /* THE HEAD-NEGATIVE GUARD. If the head itself is non-tech there is nothing
