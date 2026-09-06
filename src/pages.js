@@ -3145,12 +3145,49 @@ function writeIfChanged(path, contents) {
  * hand-maintained per region because there is no version of "keep eleven copies
  * of a <head> in sync" that survives contact with a copy-edit.
  */
-function homeHead(region, alternates, channels = []) {
+function homeHead(region, alternates, channels = [], liveCount = 0) {
   const url = regionUrl('/', region);
   const where = region.inName.replace(/^in /, '');
-  const title = `InternDoor — Engineering Internships in ${where}`;
-  const description = `Engineering internships ${region.inName}, listed minutes after they go live. `
-    + 'Fresh openings refreshed every 30 minutes — apply while the queue is still short.';
+
+  /**
+   * CATEGORY FIRST, BRAND LAST — and this was already the documented intent.
+   *
+   * The comment under `socialTitle` below says "Same shape as <title>, category
+   * first", and it was not true: og:title was fixed on 4 Sep 2026 and the real
+   * <title> was left reading "InternDoor — Engineering Internships in the US".
+   * So the share card led with the category while the SERP result — the one
+   * that has to win the click — still led with a brand nobody is searching for.
+   *
+   * It is also the rule this file already applies everywhere else: `buildTitle`
+   * drops parts from the END precisely so the part matching what people search
+   * survives, on the grounds that Google appends the brand anyway. The board
+   * titles were the one place that rule was inverted.
+   *
+   * Measured cause: /us drew 1,738 impressions at position 8.1 over three
+   * months and ZERO clicks.
+   */
+  const title = `Engineering Internships in ${where} — InternDoor`;
+
+  /**
+   * THE COUNT GOES IN THE DESCRIPTION, NEVER THE TITLE.
+   *
+   * §11's rule exactly: a live count in a <title> rewrote 150 hub titles on
+   * almost every publish, and "freshness belongs in the description, where a
+   * rewrite is free". It is free here in the literal sense too — the homepage
+   * carries <!--LISTINGS--> with one link per live role, so index.html is
+   * already rewritten whenever the job set moves. The count adds no churn that
+   * was not there.
+   *
+   * A number is the one concrete thing this page can say that its competitors
+   * in the result list cannot. The previous copy was true but said nothing a
+   * reader could weigh.
+   */
+  const n = Number(liveCount) || 0;
+  const roles = n > 0
+    ? `${n.toLocaleString('en-US')} engineering internship${n === 1 ? '' : 's'}`
+    : 'Engineering internships';
+  const description = `${roles} ${region.inName}, listed within minutes of going live and `
+    + 'refreshed every 30 minutes. Apply while the queue is still short.';
   const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
   /* THE SHARE CARD LEADS WITH THE CATEGORY, NOT THE BRAND VOICE. It read
      "InternDoor — be early" in every region, which is what a LinkedIn or
@@ -3299,7 +3336,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   }
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
-  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels)) ?? html;
+  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs.length)) ?? html;
   // No region in the lede, on purpose (24 Aug). The header's own region switch
   // already names the board, so repeating it here said the same thing twice.
   // The paragraph still NAMES THE SUBJECT, which is the whole reason it exists:

@@ -150,5 +150,56 @@ console.log('\n== THE MARKUP ACTUALLY CARRIES THEM ==');
   check('and omits the key entirely when null', /\.\.\.\(pay \? \{ pay \} : \{\}\)/.test(pub), true);
 }
 
+console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
+{
+  const { readFileSync, writeFileSync, mkdirSync, rmSync } = await import('node:fs');
+  const { writePages } = await import('../src/pages.js');
+  const { regionOf } = await import('../src/regions.js');
+
+  const dir = '/tmp/interndoor-head-test';
+  rmSync(dir, { recursive: true, force: true });
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(`${dir}/index.html`, readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8'));
+
+  const job = (id) => ({
+    id: String(id), title: 'Software Engineer Intern', company: 'Acme', isTech: true,
+    bullets: ['a', 'b'], employmentType: 'intern', location: 'San Diego, CA',
+    postedAt: Date.parse('2026-09-01'), firstSeenAt: Date.parse('2026-09-01'), skills: [],
+  });
+  writePages([job(1), job(2), job(3)], dir, [], { region: regionOf('US') });
+
+  /* STRIP COMMENTS FIRST. index.html carries a <title> inside an HTML comment,
+     and §11 records a naive regex matching 78 characters of prose off exactly
+     that. This assertion read the comment before the strip was added. */
+  const raw = readFileSync(`${dir}/us/index.html`, 'utf8');
+  const html = raw.replace(/<!--[\s\S]*?-->/g, '');
+  const title = /<title>([\s\S]*?)<\/title>/.exec(html)?.[1]?.trim() ?? '';
+  const desc = /<meta name="description" content="([\s\S]*?)"/.exec(html)?.[1]?.trim() ?? '';
+
+  check('the category leads', title.startsWith('Engineering Internships in the US'), true);
+  check('and the brand trails', title.endsWith('— InternDoor'), true);
+  /* buildTitle drops from the END so the searched part survives; the board
+     titles were the one place that rule was inverted. */
+  check('the brand no longer leads', title.startsWith('InternDoor'), false);
+  check('under the 60-char clamp', title.length <= 60, true);
+
+  /* §11: counts must not appear in a <title> — a live count rewrote 150 hub
+     titles on almost every publish. */
+  check('no count in the title', /\d/.test(title), false);
+  /* ...but freshness belongs in the description, where a rewrite is free, and
+     index.html already rewrites on every publish because of <!--LISTINGS-->. */
+  check('the count IS in the description', desc.startsWith('3 engineering internships'), true);
+  check('and the description fits a snippet', desc.length <= 160, true);
+
+  // A board with no live rows must not say "0 engineering internships".
+  writePages([], dir, [], { region: regionOf('US') });
+  const empty = readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+  const emptyDesc = /<meta name="description" content="([\s\S]*?)"/.exec(empty)?.[1] ?? '';
+  check('an empty board falls back to prose', emptyDesc.startsWith('Engineering internships'), true);
+  check('and never says zero', /^0 /.test(emptyDesc), false);
+
+  rmSync(dir, { recursive: true, force: true });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
