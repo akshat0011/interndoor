@@ -796,6 +796,14 @@ export function publishedPaths() {
        those trees are allowlisted by directory. */
     'web/public/skills',
     'web/public/locations',
+    /* InternDoor's own opening at /careers/. Hand-written rather than
+       generated, and it has to be listed here for the same reason /alerts and
+       /report are: a file missing from this list is written once and pushed
+       never, which looks exactly like a page that renders wrong.
+       It is SAFE from the removal sweep, which only walks jobsDir, compDir and
+       the facet dirs — and from removeUnpublishedRegions, which only deletes
+       directories named after a region slug. */
+    'web/public/careers',
     /* The IndexNow key file. It MUST be live at the domain root or every
        submission is refused 403 — and nothing on the site would look wrong.
        The filename is the key itself and must match indexing.indexNow.key. */

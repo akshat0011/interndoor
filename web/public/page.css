@@ -1591,3 +1591,39 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   .trk tr.is-due > .trk-role { box-shadow: none; padding-left: 0; }
   .trk tr.is-due { box-shadow: inset 3px 0 0 var(--hot); }
 }
+
+
+/* ---- the application form on /careers/ ------------------------------------
+   Only these classes are new; the page reuses .jp-hero, .do-list, .chips and
+   .apply-band, which are already styled for the generated job pages. Namespaced
+   `ap-` because §15's standing rule is to grep both stylesheets before naming a
+   class — .gist, .age, .facts, .dim, .stat and .intro have all collided here. */
+.ap-form { display: grid; gap: 16px; max-width: 560px; }
+.ap-row { display: grid; gap: 5px; min-width: 0; }
+.ap-row label { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.ap-hint { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+.ap-row input,
+.ap-row textarea {
+  font: inherit; font-size: 15px; color: var(--ink);
+  background: var(--panel-2, rgba(255,255,255,.03));
+  border: 1px solid var(--rule, #2a2a30); border-radius: 9px;
+  padding: 10px 12px; width: 100%; min-width: 0;
+}
+.ap-row textarea { resize: vertical; }
+.ap-row input:focus-visible,
+.ap-row textarea:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: transparent; }
+.ap-send {
+  font: inherit; font-weight: 700; font-size: 15px;
+  background: var(--live); color: #0a0a0b; border: 0; border-radius: 999px;
+  padding: 11px 22px; cursor: pointer; justify-self: start;
+  transition: transform 120ms ease-out;
+}
+.ap-send:active { transform: scale(.97); }
+.ap-send[disabled] { cursor: default; }
+/* RECEDES THROUGH THE BACKGROUND, NEVER opacity — §15 records eight AA
+   failures caused by dimming text with opacity, and one .dim at .75 alone was
+   58 axe violations. */
+.ap-send[disabled] { background: var(--rule-2, #3a3a42); color: var(--ink-2); }
+.ap-msg { font-size: 14px; margin: 0; min-height: 1.3em; color: var(--ink-2); }
+.ap-msg.is-good { color: var(--live); }
+.ap-msg.is-bad { color: var(--warn, #e8c169); }

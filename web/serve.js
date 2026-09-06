@@ -63,7 +63,15 @@ const server = createServer(async (req, res) => {
 
   /* Every file in web/api is a Vercel function in production and is loaded here
      by the same path, so a route cannot work locally and 404 live. */
-  const API = { '/api/tailor': './api/tailor.js', '/api/subscribe': './api/subscribe.js', '/api/og': './api/og.js' };
+  /* Vercel routes web/api/*.js by filename; this map is the local stand-in and
+     has to be kept in step by hand. A function missing from it 404s in preview
+     and works in production, which is the confusing direction of that bug. */
+  const API = {
+    '/api/tailor': './api/tailor.js',
+    '/api/subscribe': './api/subscribe.js',
+    '/api/og': './api/og.js',
+    '/api/apply': './api/apply.js',
+  };
   if (API[url.pathname]) {
     try {
       const { default: handler } = await import(API[url.pathname]);
