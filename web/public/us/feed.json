@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/anduril-industries-2027-electrical-engineer-intern-4427648537",
+      "url": "https://interndoor.com/us/jobs/anduril-industries-2027-electrical-engineer-intern-4427648537",
+      "title": "2027 Electrical Engineer Intern — Anduril Industries",
+      "content_text": "Company: Anduril Industries · Location: Seattle, WA · Duration: Summer 2027\n• Design electronics from concept to prototype with hardware and software integration\n• Use lab tools and debuggers to troubleshoot electrical and software issues\n• Develop firmware for microcontrollers and embedded Linux systems\n• Collaborate with cross-functional teams on product development",
+      "date_published": "2026-09-06T13:50:39.055Z",
+      "authors": [
+        {
+          "name": "Anduril Industries"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hermeus-propulsion-test-engineering-intern-fall-2026-4386369201",
       "url": "https://interndoor.com/us/jobs/hermeus-propulsion-test-engineering-intern-fall-2026-4386369201",
       "title": "Propulsion Test Engineering Intern - Fall 2026 — Hermeus",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Anduril Industries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454592847",
-      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454592847",
-      "title": "Software Engineer Intern (Summer 2027) — Notion",
-      "content_text": "Company: Notion · Location: San Francisco, CA · Duration: Summer 2028\n• Write clean, secure, and documented code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate with cross-functional teams in SF or NY office",
-      "date_published": "2026-09-05T13:14:14.597Z",
-      "authors": [
-        {
-          "name": "Notion"
         }
       ]
     }
