@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-05</lastmod><priority>1.0</priority></url>
-  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-05</lastmod><priority>0.4</priority></url>
-  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-06</lastmod><priority>1.0</priority></url>
+  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-06</lastmod><priority>0.4</priority></url>
+  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
@@ -23,8 +23,8 @@
   <url><loc>https://interndoor.com/skills/react</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/azure</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/gcp</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/docker</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/power-bi</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/docker</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pytorch</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -36,9 +36,9 @@
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kubernetes</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/jenkins</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -52,6 +52,7 @@
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/revvity-revvity-internship-4463773955</loc><lastmod>2026-09-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4462614387</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eaton-apprentice-it-development-program-4441816280</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/pw-physicswallah-workflow-automation-intern-4463722400</loc><lastmod>2026-09-05</lastmod><priority>0.8</priority></url>
@@ -288,6 +289,7 @@
   <url><loc>https://interndoor.com/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-software-engineering-intern-ats-microsoft-india-1970393556911730</loc><lastmod>2026-07-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/revvity</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/greedygame</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/eaton</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/pw-physicswallah</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
