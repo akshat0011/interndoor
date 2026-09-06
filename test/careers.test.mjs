@@ -68,8 +68,28 @@ console.log('\n== THE PRODUCTION CSP WOULD NOT BLOCK IT ==');
   check('the CSP really is form-action self', /form-action 'self'/.test(csp), true);
   check('the form posts same-origin', /action="\/api\/apply"/.test(job), true);
   const applyJs = readFileSync(new URL('../web/public/careers/apply.js', import.meta.url), 'utf8');
-  check('and the fetch is same-origin too', /fetch\('\/api\/apply'/.test(applyJs), true);
   check('the form script is external, not inline', /<script defer src="\/careers\/apply\.js">/.test(job), true);
+
+  /* THE DUMMY AND THE noindex ARE ONE DECISION, AND THIS IS THE PAIRING.
+     The form currently sends nothing and navigates to the homepage. A
+     JobPosting page Google has INDEXED whose apply flow goes nowhere is the
+     shape §10 says earns a manual action across the whole domain — and this
+     domain still carries a previous owner's history. So while the form is a
+     dummy the page must be noindex, and whoever restores the POST has to
+     remove the meta in the same change. Undoing one alone is the failure. */
+  const isDummy = !/fetch\(/.test(applyJs);
+  const isNoindex = /<meta name="robots" content="noindex">/.test(job);
+  check('the form is currently a dummy', isDummy, true);
+  check('a dummy form REQUIRES the page to be noindex', !isDummy || isNoindex, true);
+  check('a live form REQUIRES the page to be indexable', isDummy || !isNoindex, true);
+  check('the dummy goes to the homepage', /window\.location\.href = '\/'/.test(applyJs), true);
+
+  /* Personal data must never reach a URL. A GET form would put the name, the
+     address and the CV link straight into the query string. */
+  check('nothing builds a query string', /URLSearchParams|encodeURIComponent|\?.*=.*\+/.test(applyJs), false);
+  check('the form is not a GET form', /<form[^>]*method="get"/i.test(job), false);
+  check('the no-JS fallback still posts to our own endpoint',
+    /method="post" action="\/api\/apply"/.test(job), true);
 }
 
 console.log('\n== THE JOBPOSTING MARKUP IS COMPLETE AND HONEST ==');
@@ -113,7 +133,18 @@ console.log('\n== THE JOBPOSTING MARKUP IS COMPLETE AND HONEST ==');
 console.log('\n== IT IS ON THE HUB AND NOWHERE ELSE ==');
 {
   check('the hub links the role', hub.includes('/careers/software-engineering-intern'), true);
-  check('and the role links back to the hub', job.includes('href="/careers/"'), true);
+  check('and the role links back to the hub', job.includes('href="/careers"'), true);
+
+  /* vercel.json sets `trailingSlash: false`, so /careers/ 308-redirects to
+     /careers. Every link carrying the slash is a needless redirect, and the
+     hub's canonical carrying it pointed at a URL that redirects AWAY from the
+     page declaring it — the self-contradiction §11 already names. Measured
+     live: /careers/ -> 308 -> /careers. */
+  for (const [label, f] of [['the role page', job], ['the hub', hub]]) {
+    check(`no trailing-slash careers link on ${label}`, /careers\/"/.test(f), false);
+  }
+  check('the hub canonical has no trailing slash',
+    /rel="canonical" href="https:\/\/interndoor\.com\/careers"/.test(hub), true);
 
   /* HIS ASK: on the hub and its own page, not on the board. These are static
      files outside the generated tree, so nothing can add them — asserted
