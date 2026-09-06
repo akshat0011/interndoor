@@ -150,6 +150,57 @@ console.log('\n== THE MARKUP ACTUALLY CARRIES THEM ==');
   check('and omits the key entirely when null', /\.\.\.\(pay \? \{ pay \} : \{\}\)/.test(pub), true);
 }
 
+console.log('\n== A JOB TITLE MUST KEEP THE WORD PEOPLE SEARCH ==');
+{
+  const { clampKeepingIntern, clampWords, bracketsBalanced } = await import('../src/pages.js');
+
+  /* Every query in Search Console is `<company> internship`, and 323 of 1,970
+     rendered titles had dropped the word the role actually carries — because
+     making room for the disambiguating city clamps the base and the word sits
+     at the end of it. */
+  check('the plain clamp loses it',
+    clampWords('Hewlett Packard Enterprise Hardware Engineering Intern', 40),
+    'Hewlett Packard Enterprise Hardware');
+  check('this one keeps it',
+    clampKeepingIntern('Hewlett Packard Enterprise Hardware Engineering Intern', 40),
+    'Hewlett Packard… Engineering Intern');
+
+  /* CUT AT THE WORD BEFORE ELIDING. elideMiddle takes the segment after the
+     LAST separator, which here is "Summer 2027" — true, and not what anyone
+     searched. */
+  check('the word wins over a trailing season',
+    clampKeepingIntern('Marvell Technology Physical Design Engineer Intern, BS - Summer 2027', 44),
+    'Marvell Technology… Design Engineer Intern');
+  check('and over a trailing state list',
+    clampKeepingIntern('Xcel Energy Electric Distribution Area Engineering Intern - MN, ND', 42),
+    'Xcel Energy… Area Engineering Intern');
+
+  // Untouched when the plain clamp already keeps it — no gratuitous elision.
+  check('no elision when the clamp already keeps it',
+    clampKeepingIntern('Acme Software Engineer Intern', 40), 'Acme Software Engineer Intern');
+  /* Falls back rather than mangling: a title naming the employer and the start
+     of the role beats an elision naming neither. */
+  check('a role with no such word is left alone',
+    clampKeepingIntern('Acme Programme With No Role Word At All Whatsoever', 30),
+    clampWords('Acme Programme With No Role Word At All Whatsoever', 30));
+  check('empty', clampKeepingIntern('', 30), '');
+
+  /* A MALFORMED ELISION IS REFUSED, NOT PATCHED. Eliding Jump Trading's
+     "Campus Quantitative Trader (Full-Time) Internship" cuts inside the
+     bracket and gives "Jump Trading Campus… Time) Internship" — it keeps the
+     searched word, loses the ROLE, and ships an orphan bracket. §11's rule
+     holds: a shorter title beats a broken one. */
+  check('a cut-through-bracket elision falls back to the plain clamp',
+    clampKeepingIntern('Jump Trading Campus Quantitative Trader (Full-Time) Internship', 49),
+    'Jump Trading Campus Quantitative Trader');
+  check('balanced', bracketsBalanced('ok (a)'), true);
+  check('unclosed', bracketsBalanced('open (a'), false);
+  check('orphan close', bracketsBalanced('close a)'), false);
+  check('the exact fragment that broke it', bracketsBalanced('Time) Internship'), false);
+  check('no brackets at all', bracketsBalanced('plain'), true);
+  check('empty', bracketsBalanced(''), true);
+}
+
 console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
 {
   const { readFileSync, writeFileSync, mkdirSync, rmSync } = await import('node:fs');

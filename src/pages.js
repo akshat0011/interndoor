@@ -1345,6 +1345,61 @@ export function clampWords(text, max) {
   return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.\-–—]+$/, '').trim();
 }
 
+/**
+ * Clamp to `max` WITHOUT losing the internship word.
+ *
+ * Every query in Search Console is `<company> internship`, and 272 of 1,686 US
+ * titles had dropped the word the role actually carries — because making room
+ * for the disambiguating city clamps the base, and the word sits at the end of
+ * it:
+ *
+ *   role  "Hardware Engineering Intern"
+ *   title "Hewlett Packard Enterprise Hardware in Chippewa Falls"
+ *
+ * CUT AT THE WORD BEFORE ELIDING, or elideMiddle keeps the wrong tail: it takes
+ * the segment after the LAST separator, and on "Physical Design Engineer
+ * Intern, BS - Summer 2027" that is "Summer 2027" — true, and not what anyone
+ * searched. Trimming everything after the word first makes it the tail.
+ *
+ * Falls back to the plain clamp when nothing keeps it, because a title naming
+ * the employer and the start of the role beats an elision naming neither.
+ */
+export function clampKeepingIntern(text, max) {
+  const plain = clampWords(text, max);
+  if (saysIntern(plain)) return plain;
+
+  const m = /^[\s\S]*?(?<![A-Za-z0-9])(intern|interns|internship|internships|trainee|apprentice|apprenticeship|co-?op)(?![A-Za-z0-9])/i.exec(String(text ?? ''));
+  if (!m) return plain;
+  const upTo = m[0].trim();
+  if (upTo.length <= max) return upTo;
+
+  /* A MALFORMED ELISION IS REFUSED OUTRIGHT, not patched. Eliding
+     "Jump Trading Campus Quantitative Trader (Full-Time) Internship" cuts
+     inside the bracket and yields "Jump Trading Campus… Time) Internship" —
+     which keeps the searched word and loses the ROLE, and ships an orphan
+     bracket with it. §11's rule stands: a duplicate or shorter title beats a
+     broken one, so this falls back to the plain clamp. */
+  const elided = elideMiddle(upTo, max);
+  return saysIntern(elided) && bracketsBalanced(elided) ? elided : plain;
+}
+
+/**
+ * Does every bracket in this string have its partner, in order?
+ *
+ * Used to throw away an elision that cut through one. Only ever REJECTS —
+ * nothing is repaired, because inserting a bracket would fabricate the words
+ * it was meant to contain and dropping one leaves a fragment like "Time)"
+ * that reads as damage either way.
+ */
+export function bracketsBalanced(text) {
+  let depth = 0;
+  for (const ch of String(text ?? '')) {
+    if (ch === '(') depth++;
+    else if (ch === ')') { depth--; if (depth < 0) return false; }
+  }
+  return depth === 0;
+}
+
 /** True when the role title already contains an internship word. */
 export function saysIntern(title) {
   return /\b(intern|interns|internship|internships|trainee|apprentice|apprenticeship|co-?op)\b/i.test(title || '');
@@ -1458,10 +1513,17 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     // base and suf are returned too: the tail variants below cannot be built
     // here, because choosing a tail needs the RIVALS' titles and this function
     // only ever sees one posting.
+    /* THE SAME TITLE WITH THE INTERNSHIP WORD KEPT, offered as an EXTRA
+       candidate rather than replacing `withCity`, so the collision check below
+       can decline it. */
+    const kept = suf && base.length + suf.length > TITLE_MAX
+      ? clampKeepingIntern(base, TITLE_MAX - suf.length)
+      : base;
     return {
       base,
       suf,
       withCity: buildTitle([`${clamped}${suf}`, y]),
+      withCityIntern: buildTitle([`${kept}${suf}`, y]),
       plain: buildTitle([base, y]),
     };
   };
@@ -1497,9 +1559,12 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
      WITHOUT checking that the city helped — and for Booz Allen it does not,
      because the colliding roles are all in one city, so it was choosing a
      variant already known to collide. 95 pages shared 43 titles that way. */
+  /* `withCityIntern` sits immediately before `withCity`: the same title with
+     the searched word kept, so it is preferable WHEN UNIQUE, and the loop drops
+     it the moment it is not. */
   const order = twin
-    ? ['withCity', 'tailCity', 'tail', 'plain']
-    : ['plain', 'tail', 'withCity', 'tailCity'];
+    ? ['withCityIntern', 'withCity', 'tailCity', 'tail', 'plain']
+    : ['plain', 'tail', 'withCityIntern', 'withCity', 'tailCity'];
   let pageTitle = null;
   for (const k of order) {
     if (!collides(mine[k], (r) => r[k])) { pageTitle = mine[k]; break; }
@@ -3560,6 +3625,81 @@ ${foot({ headline: 'Get new roles as they open', sub: 'One email when something 
    These are self-cleaning. They are regenerated from each run's dedupe result,
    so a stub exists only while its winner is published, and both disappear when
    the role ages out. Nothing accumulates. */
+/**
+ * How long a closed role keeps its URL alive before the file is dropped.
+ *
+ * Bounded on purpose. Unbounded, this grows by the 7-24 postings that expire
+ * each day for ever — thousands of near-identical pages in a PUBLIC repo, and
+ * §11 already refuses to write thin facet pages on the grounds that forty of
+ * them is a doorway farm. Ninety days is past the point where Google still
+ * holds a URL it stopped being able to crawl, so the window covers the whole
+ * period the redirect is worth anything.
+ */
+export const CLOSED_ROLE_DAYS = 90;
+
+/** Machine-readable stamp, so the sweep can age a stub without a manifest. */
+const CLOSED_MARK = 'data-closed-on="';
+
+/**
+ * A posting that has closed, pointing at the employer's hub.
+ *
+ * WHY THIS EXISTS: two of the five best-performing pages in Search Console
+ * were 404 by 6 Sep 2026 — Continental (10 clicks, 427 impressions, the single
+ * best page on the site) and Barclays (5 clicks, 123). Both simply aged out of
+ * the 30-day window. The expiry is right and must stay: serving a JobPosting
+ * past its `validThrough` is the most direct route to a manual action across
+ * the whole domain (§10). But 404 is not the only way to expire a page, and it
+ * throws away a ranking that took months to earn.
+ *
+ * NO rel=canonical, and that is the difference from renderJobRedirect above.
+ * A reposted role genuinely IS the same posting, so pointing its canonical at
+ * the winner is honest. A closed role and its company hub are DIFFERENT
+ * content, and claiming otherwise is a false equivalence Google is entitled to
+ * ignore or distrust. A zero-second refresh says "go here" without claiming
+ * "this is that".
+ *
+ * NO noindex either: the point is for the signal to reach the hub, and noindex
+ * stops Google following the hint at all.
+ *
+ * NO JobPosting markup, which is the whole safety argument — the role is gone,
+ * so the page must stop describing one. That is Google's own documented
+ * remedy for an expired posting.
+ */
+function renderClosedRole(company, hubSlug, region, closedOn) {
+  const url = regionUrl(`/companies/${hubSlug}`, region);
+  return `<!doctype html>
+<html lang="${esc(region.lang ?? 'en')}" ${CLOSED_MARK}${esc(closedOn)}">
+<head>
+<meta charset="utf-8">
+<title>This role has closed — ${esc(company)} — InternDoor</title>
+<meta http-equiv="refresh" content="0; url=${esc(url)}">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>location.replace(${JSON.stringify(url)} + location.search);</script>
+</head>
+<body>
+<p>This ${esc(company)} posting has closed.
+<a href="${esc(url)}">See ${esc(company)} internships that are open now</a>.</p>
+</body>
+</html>
+`;
+}
+
+/**
+ * The date a closed stub was written, or null when the file is not one.
+ *
+ * Read from the file rather than a manifest so the state lives in one place
+ * and a stub copied, restored or hand-edited still ages correctly.
+ */
+function closedRoleStamp(html) {
+  const at = html.indexOf(CLOSED_MARK);
+  if (at === -1) return null;
+  const rest = html.slice(at + CLOSED_MARK.length);
+  const end = rest.indexOf('"');
+  if (end === -1) return null;
+  const stamp = rest.slice(0, end);
+  return /^\d{4}-\d{2}-\d{2}$/.test(stamp) ? stamp : null;
+}
+
 function renderJobRedirect(target, region) {
   const url = regionUrl(`/jobs/${target}`, region);
   return `<!doctype html>
@@ -3787,15 +3927,78 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      Indexing API accepts JobPosting pages and nothing else, and a hub carries
      no JobPosting markup on purpose. See src/indexing.js. */
   const removedUrls = [];
+
+  /**
+   * AN EXPIRING JOB PAGE HANDS ITS URL TO THE EMPLOYER'S HUB.
+   *
+   * Built from history because history is the only thing that still knows the
+   * company behind a slug once the posting has left the live set — which is
+   * exactly the moment the page is about to be deleted. `jobSlug` is the same
+   * function that wrote the filename, so this reproduces it rather than parsing
+   * it back out.
+   */
+  const hubForSlug = new Map();
+  for (const past of history ?? []) {
+    if (!past?.company || !(past.id ?? past.job_id)) continue;
+    let slug;
+    try { slug = jobSlug({ company: past.company, title: past.title, id: past.id ?? past.job_id }); } catch { continue; }
+    hubForSlug.set(slug, companySlug(past.company));
+  }
+  const closedOn = new Date().toISOString().slice(0, 10);
+
   for (const dir of [jobsDir, compDir, ...facetDirs.map(([d]) => d)]) {
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir)) {
       const full = join(dir, f);
-      if (f.endsWith('.html') && !wanted.has(full)) {
-        rmSync(full);
-        removed++;
-        if (dir === jobsDir) removedUrls.push(regionUrl(`/jobs/${f.slice(0, -'.html'.length)}`, region));
+      if (!f.endsWith('.html') || wanted.has(full)) continue;
+
+      if (dir === jobsDir) {
+        const slug = f.slice(0, -'.html'.length);
+        const existing = readFileSync(full, 'utf8');
+        const stamp = closedRoleStamp(existing);
+
+        /* ALREADY A CLOSED STUB. This branch is the only thing keeping it: a
+           stub is never a live posting, so every later publish reaches it as an
+           unwanted file and would delete the previous publish's output.
+           NOT rewritten, so the stamp stays put and the file does not
+           churn (§10). */
+        if (stamp) {
+          const ageDays = (Date.parse(`${closedOn}T00:00:00Z`) - Date.parse(`${stamp}T00:00:00Z`)) / 86_400_000;
+          if (Number.isFinite(ageDays) && ageDays <= CLOSED_ROLE_DAYS) {
+            /* THE `continue` IS THE PRESERVATION — it skips the rmSync at the
+               foot of the loop. `wanted` plays no part: it is read once at the
+               top of each iteration and never again, so adding to it here does
+               nothing. Two rounds of mutation testing were needed to establish
+               that, because the first two comments written here both claimed
+               `wanted.add` was what kept the file and both were wrong. */
+            redirectUrls.push(regionUrl(`/jobs/${slug}`, region));
+            continue;
+          }
+          rmSync(full);
+          removed++;
+          removedUrls.push(regionUrl(`/jobs/${slug}`, region));
+          continue;
+        }
+
+        /* A LIVE PAGE THAT HAS JUST EXPIRED. Only when the hub actually exists
+           — `wanted` already holds every hub written above, so this cannot
+           point at a page that is itself about to be deleted. */
+        const hub = hubForSlug.get(slug);
+        if (hub && wanted.has(join(compDir, `${hub}.html`))) {
+          const company = (history ?? []).find((h) => companySlug(h.company ?? '') === hub)?.company ?? hub;
+          writeFileSync(full, renderClosedRole(company, hub, region, closedOn));
+          /* Treated like a dedupe stub by the indexing queue, NOT as a
+             deletion: the URL still answers 200, it just no longer carries
+             JobPosting markup, so anything owed on it must be forgotten rather
+             than announced as URL_DELETED. */
+          redirectUrls.push(regionUrl(`/jobs/${slug}`, region));
+          continue;
+        }
       }
+
+      rmSync(full);
+      removed++;
+      if (dir === jobsDir) removedUrls.push(regionUrl(`/jobs/${f.slice(0, -'.html'.length)}`, region));
     }
   }
 
