@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788683539386,
+ "generatedAt": 1788684573433,
  "region": "US",
  "regionName": "United States",
- "count": 1686,
- "techCount": 1686,
+ "count": 1687,
+ "techCount": 1687,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -228,6 +228,7 @@
   "Texas Instruments",
   "The Clorox Company",
   "The Home Depot",
+  "The TJX Companies, Inc.",
   "The Voleon Group",
   "The Walt Disney Company",
   "Toast",
@@ -485,6 +486,7 @@
   "Manitowoc, WI",
   "Maple Grove, MN",
   "Marcus Hook, PA",
+  "Marlborough, MA",
   "Maryland Heights, MO",
   "Mason, MI",
   "Mason, OH",
@@ -703,6 +705,52 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4462684188",
+   "title": "IT Engineer Internship - Summer 2027",
+   "company": "The TJX Companies, Inc.",
+   "matchedWatchlist": "TJX Companies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/the-tjx-companies-inc.jpg",
+   "location": "Marlborough, MA",
+   "workplaceType": "Hybrid",
+   "stipend": "$25 – $26 / hour",
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "agile"
+   ],
+   "summary": "As an IT Engineer Intern, you'll contribute to global IT projects by designing and testing solutions that enhance TJX's platforms. You'll work with experienced engineers in an agile environment, solving real-world tech challenges while learning about the company's business and technologies. This role suits students passionate about engineering and eager to make a tangible impact in a dynamic, global team.",
+   "bullets": [
+    "Design, code, and test solutions to improve platforms",
+    "Collaborate with global engineers in agile teams",
+    "Work on real-world tech challenges with business impact"
+   ],
+   "roleLabel": "IT Platform Engineering",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science/Cyber Security/Engineering/Data Analytics",
+   "keySkills": [
+    "software development"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1788680910866,
+   "firstSeenAt": 1788684510878,
+   "lastSeenAt": 1788684510878,
+   "url": "https://www.linkedin.com/jobs/view/4462684188/",
+   "applyUrl": "https://jobs.tjx.com/global/en/job/TJCOGLOBALREQ153160EXTERNALENGLOBAL/IT-Engineer-Internship-Summer-2027?utm_source=LINKEDIN&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "17b122e258",
+   "cardFacts": [
+    "$25 – $26 / hour",
+    "Marlborough",
+    "Hybrid"
+   ],
+   "region": "US"
+  },
   {
    "id": "4463793595",
    "title": "2027 Intern - Electronics (Avionics) Engineering",

@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/the-tjx-companies-inc-it-engineer-internship-summer-2027-4462684188",
+      "url": "https://interndoor.com/us/jobs/the-tjx-companies-inc-it-engineer-internship-summer-2027-4462684188",
+      "title": "IT Engineer Internship - Summer 2027 — The TJX Companies, Inc.",
+      "content_text": "Company: The TJX Companies, Inc. · Location: Marlborough, MA · Duration: Summer 2027\n• Design, code, and test solutions to improve platforms\n• Collaborate with global engineers in agile teams\n• Work on real-world tech challenges with business impact",
+      "date_published": "2026-09-06T07:48:30.866Z",
+      "authors": [
+        {
+          "name": "The TJX Companies, Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-electronics-avionics-engineering-4463793595",
       "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-electronics-avionics-engineering-4463793595",
       "title": "2027 Intern - Electronics (Avionics) Engineering — Northrop Grumman",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Onto Innovation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-electrical-engineering-intern-4463742445",
-      "url": "https://interndoor.com/us/jobs/microsoft-electrical-engineering-intern-4463742445",
-      "title": "Electrical Engineering INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Mountain View, CA\n• Analyze hardware data to find failure patterns and fix issues\n• Work with teams to improve data center hardware reliability\n• Test and validate hardware solutions before large-scale deployment",
-      "date_published": "2026-09-05T12:44:07.658Z",
-      "authors": [
-        {
-          "name": "Microsoft"
         }
       ]
     }
