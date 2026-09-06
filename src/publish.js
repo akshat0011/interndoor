@@ -591,6 +591,13 @@ export async function writeJobsFile(store, cfg) {
     // already in memory here; carrying six more fields costs nothing.
     .map(({ row, matchedNow, region }) => ({
       company: row.company || matchedNow || 'Unknown',
+      /* THE ID, so a past role's own page URL can be rebuilt. `jobSlug` needs
+         it and refuses without one, and writePages uses that to work out which
+         employer an EXPIRING job page belonged to — the page is about to be
+         deleted, and its slug is the only thing left pointing at the company
+         whose hub should inherit it. §10's rule: anything the hub has to know
+         must be on this projection. */
+      id: row.job_id,
       title: row.title,
       roleLabel: row.role_label ?? '',
       postedAt: row.posted_at || row.first_seen_at || 0,
