@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { ROOT } from './paths.js';
 import { log } from './logger.js';
-import { formatStipend } from './extract.js';
+import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite, cardFacts, jobSlug } from './pages.js';
@@ -53,6 +53,17 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     currency: row.stipend_currency, period: row.stipend_period,
   }) || row.salary_text || null;
 
+  /* STRUCTURED PAY, FOR THE MARKUP ONLY, and only where it is safe to state.
+     `stipend` above is a DISPLAY string; schema.org baseSalary needs the
+     numbers, so they have to reach the projection or jobPostingLd cannot emit
+     the field at all. Gated by safeBaseSalary, so this is null on the ~73% of
+     rows whose figures are dirty and jobs.json grows only where it is real. */
+  const pay = safeBaseSalary({
+    min: row.stipend_min, max: row.stipend_max,
+    currency: row.stipend_currency, period: row.stipend_period,
+    text: row.salary_text,
+  });
+
   const job = {
     id: row.job_id,
     // The company shown publicly is the one on the posting, not our watchlist
@@ -72,6 +83,10 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     location: row.location || null,
     workplaceType: row.workplace_type || null,
     stipend,
+    // Absent rather than null on most rows: jobs.json is read by eight
+    // consumers and served to every visitor, so it should not carry a field
+    // that is empty three times out of four.
+    ...(pay ? { pay } : {}),
     duration: row.duration || null,
     applicants: row.applicants || null,
     easyApply: !!row.easy_apply,

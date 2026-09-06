@@ -206,6 +206,72 @@ export function formatStipend(stipend) {
   return stipend.period ? `${amount} / ${stipend.period}` : amount;
 }
 
+/**
+ * A stipend safe to publish as schema.org `baseSalary`, or null.
+ *
+ * GOOGLE READS THIS FIELD AND WRONG STRUCTURED DATA RISKS A MANUAL ACTION ON
+ * THE WHOLE DOMAIN, which is the risk `jobPostingLd` is written around. Search
+ * Console reported `baseSalary` missing on 218 of 218 valid job postings, and
+ * it is one of the fields Google's job experience ranks and enriches on — but
+ * the stipend columns are dirty enough that emitting them unfiltered would be
+ * worse than emitting nothing. Measured over 2,334 live rows on 6 Sep 2026:
+ *
+ *   1,423  carry a figure at all
+ *   1,416  of those are positive
+ *   1,399  also name a currency
+ *     935  also name a usable period
+ *     654  also have salary_text, i.e. the POSTING stated it
+ *     635  also survive the magnitude bounds        <- what this returns
+ *
+ * THE TWO GATES THAT MATTER, both measured rather than assumed:
+ *
+ * - `salary_text` MUST be present. It is what the posting itself displayed, so
+ *   it is the evidence the figure was stated rather than derived. This is the
+ *   same rule `groundEnrichment` applies to every other field: an invented
+ *   stipend sends a student to an application they are not eligible for, and
+ *   `stipendStatus` is already a standing example of a field too invented to
+ *   render.
+ * - THE MAGNITUDE MUST FIT THE PERIOD, because the period is frequently wrong.
+ *   Intel rows carry 76,398-95,702 tagged `hour` with a salary_text of "₹0",
+ *   and Charles Schwab carries 30.5 tagged `year` from a salary_text of
+ *   "$30.50/yr" — LinkedIn's own mislabel of an hourly rate. Without this bound
+ *   the site would publish "$95,702 per hour" and "$30.50 per year" as
+ *   structured data about named employers.
+ *
+ * Bounds are deliberately currency-agnostic and wide: they exist to catch an
+ * order-of-magnitude period error, not to judge whether a wage is fair.
+ */
+const SALARY_BOUNDS = {
+  hour: [1, 500],
+  day: [10, 5_000],
+  week: [50, 20_000],
+  month: [100, 500_000],
+  year: [1_000, 10_000_000],
+};
+
+export function safeBaseSalary(stipend) {
+  if (!stipend) return null;
+  const { min, max, currency, period, text } = stipend;
+
+  // The posting has to have said it. See above.
+  if (!String(text ?? '').trim()) return null;
+
+  const lo = Number(min);
+  const hi = Number(max ?? min);
+  if (!Number.isFinite(lo) || !Number.isFinite(hi)) return null;
+  if (lo <= 0 || hi < lo) return null;
+
+  const ccy = String(currency ?? '').trim().toUpperCase();
+  if (!/^[A-Z]{3}$/.test(ccy)) return null;
+
+  const unit = String(period ?? '').trim().toLowerCase();
+  const bounds = SALARY_BOUNDS[unit];
+  if (!bounds) return null;
+  if (hi < bounds[0] || hi > bounds[1]) return null;
+
+  return { currency: ccy, min: lo, max: hi, unitText: unit.toUpperCase() };
+}
+
 /** "6 months", "Summer 2026", "3-6 month internship". */
 export function extractDuration(...texts) {
   const haystack = texts.filter(Boolean).join('\n');

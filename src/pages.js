@@ -262,6 +262,58 @@ export function isIndexable(job) {
  * structured-data manual action affects the whole domain — so every field here is
  * one we actually hold, and nothing is invented to fill a slot.
  */
+/**
+ * US states, for LABELLING an address whose country is already known.
+ *
+ * DELIBERATELY NOT `regions.js`'s code list, and the difference is the whole
+ * point. That list omits `in de or ia me hi` because those two-letter codes
+ * collide with India, Germany and ordinary English words when INFERRING a
+ * region from free text — "In-Office" once matched `in`. Here the region has
+ * already been resolved, so nothing is being inferred and the collisions
+ * cannot happen; omitting them would simply drop `addressRegion` from every
+ * posting in Indiana, Delaware, Oregon, Iowa, Maine and Hawaii.
+ */
+const US_STATE_CODES = new Set(('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN '
+  + 'MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' '));
+
+/**
+ * Split a location string into a schema.org PostalAddress.
+ *
+ * Search Console reported `addressRegion`, `postalCode` and `streetAddress`
+ * missing on 208 of 218 valid job postings. We have no street or postcode and
+ * must not invent them — but the REGION is in the string we already store, and
+ * `addressLocality` was being given the whole string, so "Bengaluru, Karnataka,
+ * India" was published as the locality.
+ *
+ * Measured over 2,332 live rows on 6 Sep 2026: 1,851 (79.4%) gain a region,
+ * 481 keep locality alone, 0 end up with nothing.
+ *
+ * A TWO-LETTER TAIL IS NOT AUTOMATICALLY A STATE, which is the trap here.
+ * "Auckland, NZ" is a country and 20 live rows look exactly like "San Jose,
+ * CA". The tail is only taken as a region when the resolved country is the US
+ * AND the code is a real US state, so NZ is refused even on a row miscoded US,
+ * and Canadian provinces ("Toronto, ON") are refused too — conservative on
+ * purpose, because a wrong addressRegion is worse than an absent one.
+ */
+export function postalAddressFor(location, countryCode) {
+  const parts = String(location ?? '').split(',').map((x) => x.trim()).filter(Boolean);
+  if (!parts.length) return null;
+
+  // "Bengaluru, Karnataka, India" — the middle segment is the region wherever
+  // the country is spelled out, which is every three-part string we store.
+  if (parts.length >= 3) return { locality: parts[0], region: parts[1] };
+
+  if (parts.length === 2) {
+    const tail = parts[1];
+    if (countryCode === 'US' && /^[A-Z]{2}$/.test(tail) && US_STATE_CODES.has(tail)) {
+      return { locality: parts[0], region: tail };
+    }
+    return { locality: parts[0], region: null };
+  }
+
+  return { locality: parts[0], region: null };
+}
+
 function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
   const description = `<p>${esc(job.roleLabel || job.title)}</p><ul>${
     (job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')
@@ -286,14 +338,44 @@ function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VAL
     url,
   };
 
+  /* PAY, WHERE THE POSTING STATED IT. Gated in safeBaseSalary (src/extract.js)
+     and carried on the projection as `job.pay`, so this renders only the ~27%
+     of rows whose figures survived the currency, period and magnitude checks.
+     Absent on the rest, which is the correct answer — Search Console wants this
+     field, but a wrong salary on a named employer's page is exactly the kind of
+     structured-data error that earns a domain-wide manual action. */
+  if (job.pay) {
+    ld.baseSalary = {
+      '@type': 'MonetaryAmount',
+      currency: job.pay.currency,
+      value: {
+        '@type': 'QuantitativeValue',
+        ...(job.pay.min === job.pay.max
+          ? { value: job.pay.min }
+          : { minValue: job.pay.min, maxValue: job.pay.max }),
+        unitText: job.pay.unitText,
+      },
+    };
+  }
+
   if (job.location) {
+    const addr = postalAddressFor(job.location, region.code);
     ld.jobLocation = {
       '@type': 'Place',
-      // The region's ISO code, never a constant. Emitting addressCountry: 'IN'
-      // for a role in Chicago is not a cosmetic error — Google Jobs reads this
-      // field, and wrong structured data risks a manual action across the whole
-      // domain, which is the single risk this function is written around.
-      address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: region.code },
+      address: {
+        '@type': 'PostalAddress',
+        // The CITY, not the whole string. This was `job.location`, so a row
+        // stored as "Bengaluru, Karnataka, India" published all three as the
+        // locality.
+        addressLocality: addr?.locality ?? job.location,
+        // Withheld rather than guessed — see postalAddressFor.
+        ...(addr?.region ? { addressRegion: addr.region } : {}),
+        // The region's ISO code, never a constant. Emitting addressCountry: 'IN'
+        // for a role in Chicago is not a cosmetic error — Google Jobs reads this
+        // field, and wrong structured data risks a manual action across the whole
+        // domain, which is the single risk this function is written around.
+        addressCountry: region.code,
+      },
     };
   }
   if (job.workplaceType === 'Remote') {
