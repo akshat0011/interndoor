@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/constellation-drexel-site-engineering-co-op-fall-winter-2026-limerick-4406217014",
+      "url": "https://interndoor.com/us/jobs/constellation-drexel-site-engineering-co-op-fall-winter-2026-limerick-4406217014",
+      "title": "Drexel Site Engineering Co-op (Fall/Winter 2026) - Limerick — Constellation",
+      "content_text": "Company: Constellation · Location: Pottstown, PA · Duration: Winter 2026\n• Support station operations with data analysis and report preparation\n• Use spreadsheets and computerized data for performance tracking\n• Assist in design changes and system troubleshooting at a nuclear plant",
+      "date_published": "2026-09-06T16:05:00.407Z",
+      "authors": [
+        {
+          "name": "Constellation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407953929",
+      "url": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407953929",
+      "title": "Research Internship (Winter 2027) — Cohere",
+      "content_text": "Company: Cohere · Location: San Francisco, CA · Duration: 4-6 months\n• Build and train large language models for real-world applications\n• Use Python, JAX, PyTorch, and TensorFlow for research projects\n• Collaborate with researchers on deploying models to production",
+      "date_published": "2026-09-06T16:04:06.186Z",
+      "authors": [
+        {
+          "name": "Cohere"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/cohere-software-engineer-intern-winter-2027-4407974013",
       "url": "https://interndoor.com/us/jobs/cohere-software-engineer-intern-winter-2027-4407974013",
       "title": "Software Engineer Intern (Winter 2027) — Cohere",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Parker Hannifin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-scientist-2027-ai-and-data-analytics-4451280753",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-scientist-2027-ai-and-data-analytics-4451280753",
-      "title": "Intern Data Scientist 2027 – AI & Data Analytics — IBM",
-      "content_text": "Company: IBM · Location: Dallas, TX · Duration: 10 weeks\n• Analyze data and build models for client projects using Python and SQL\n• Work with AI tools like LangChain and LlamaIndex to develop solutions\n• Collaborate with IBM teams on real-world analytics and AI initiatives",
-      "date_published": "2026-09-05T14:13:48.842Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-cad-engineer-intern-spring-2027-4453795224",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-cad-engineer-intern-spring-2027-4453795224",
-      "title": "CAD Engineer Intern (Spring 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Spring 2027\n• Model and draw spacecraft components and structures\n• Use SolidWorks and GD+T for engineering drawings\n• Work on satellite design with real-world impact",
-      "date_published": "2026-09-05T13:36:19.804Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
         }
       ]
     }
