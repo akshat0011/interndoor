@@ -1093,7 +1093,8 @@
     "Suzlon",
     "Waaree Energies",
     "Wonder Cement",
-    "ACG World"
+    "ACG World",
+    "Cargill"
   ],
   "_intl_note": "Employers outside India. These reach the site through ATS boards ONLY - there is no LinkedIn search for these regions - so the gate that keeps intern mills off the India board is not the one doing the work here: a company only enters the pipeline if discover-ats.js probes it and the board's own name verifies against ours. That is why this list could be added in bulk where the India one could not. Every name was checked against all 9,215 employers the gate has previously refused and admits none of them. Names that normalise to an ordinary English word are deliberately absent - Linear, Ramp, Render, Wise, Cedar, Loom, Front, Column, Unit, Medium, Railway, Planet Labs, Ripple Labs and Ledger among them - because matchCompany matches BOTH directions, so a bare word admits anything using it. Same reasoning that keeps Iris Software off the India list.",
   "us-devtools-infra": [
