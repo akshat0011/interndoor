@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/zscaler-insider-risk-analyst-skillbridge-intern-4398579989",
+      "url": "https://interndoor.com/us/jobs/zscaler-insider-risk-analyst-skillbridge-intern-4398579989",
+      "title": "Insider Risk Analyst - SkillBridge Intern — Zscaler",
+      "content_text": "Company: Zscaler · Location: United States\n• Analyze user behavior and access logs to detect insider risks\n• Support dlp controls and incident response across global environments\n• Maintain dashboards and sop for commercial and federal compliance",
+      "date_published": "2026-09-06T10:41:35.435Z",
+      "authors": [
+        {
+          "name": "Zscaler"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413663222",
       "url": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413663222",
       "title": "OCI Software Engineer Intern - OVIP — Oracle",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Marathon Petroleum Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454590868",
-      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-winter-2027-4454590868",
-      "title": "Software Engineer Intern (Winter 2027) — Notion",
-      "content_text": "Company: Notion · Location: San Francisco, CA · Duration: Winter 2027\n• Write clean, secure, and tested code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate with cross-functional teams in SF office",
-      "date_published": "2026-09-05T13:07:50.663Z",
-      "authors": [
-        {
-          "name": "Notion"
         }
       ]
     }
