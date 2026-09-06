@@ -248,7 +248,7 @@ function featuredBlock(group, region, cfg) {
  * @param {object} cfg
  * @param {{now?: number, days?: number}} [opts]
  */
-export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishedIds = null, region: only = null } = {}) {
+export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishedIds = null, region: only = null, pick = null } = {}) {
   const conf = cfg.postQueue?.weekly ?? {};
   // Passed in when the caller is walking several boards; falls back to the
   // configured one so a single-region call is unchanged.
@@ -294,7 +294,31 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     isRecognised: recognisedMatcher(conf.featureFirst),
     score: footprintScorer(store, now),
   });
-  let featured = ranked.slice(0, wanted);
+
+  /**
+   * HIS PICK BEATS THE RANKING, when he makes one.
+   *
+   * `rankForFeature` stays exactly as it was and remains the default: the
+   * automatic six are what the scheduled roundup posts, and §12's warning still
+   * holds that ranking by role count surfaces intern mills rather than brands.
+   * This is the manual override for the week he wants to choose himself.
+   *
+   * A NAME THAT IS NOT IN THE WEEK IS DROPPED, NOT INVENTED. The picker is
+   * driven from this same group list so it cannot normally happen, but a stale
+   * page reposting last week's names would otherwise render an employer with no
+   * roles — and `featuredBlock` reads `group.roles[0]` to build the apply link,
+   * so it would not fail, it would throw halfway through composing the post.
+   *
+   * The ORDER he picked is kept. He is choosing what leads, and re-sorting his
+   * choice by our own score would silently overrule the half of the decision
+   * that is purely his.
+   */
+  const byName = new Map(groups.map((g) => [g.company, g]));
+  const chosen = Array.isArray(pick) && pick.length
+    ? pick.map((n) => byName.get(n)).filter(Boolean)
+    : null;
+
+  let featured = chosen?.length ? chosen.slice(0, wanted) : ranked.slice(0, wanted);
 
   const compose = (picked) => {
     const moreRoles = roles.length - picked.length;
@@ -344,6 +368,12 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     stats: {
       span,
       region,
+      /* Which employers are in the post, so the page can show the picker with
+         his choice already ticked, and so a caller can tell a manual roundup
+         from an automatic one without re-deriving the ranking. */
+      featuredCompanies: featured.map((g) => g.company),
+      pickedByHand: !!chosen?.length,
+      pickedMissing: Array.isArray(pick) ? pick.filter((n) => !byName.has(n)) : [],
       roles: roles.length,
       companies: groups.length,
       companiesListed: featured.length,

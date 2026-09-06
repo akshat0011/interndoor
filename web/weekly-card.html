@@ -1,0 +1,125 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  THE WEEKLY ROUNDUP IMAGE — the six employers he picked, as logos.
+
+  A THIRD CARD, and not a copy of either other one. web/og-card.html is the
+  LINK PREVIEW a crawler fetches; web/li-card.html is the image he attaches to
+  a post about ONE job. This one is about a WEEK, so its subject is the set of
+  employers rather than any single role, and it carries no title, no facts and
+  no apply link — six logos and a count.
+
+  Rendered by src/weeklycard.js with Playwright into PATHS.liCards in the state
+  directory, never the repo: `app/` is public and these are generated artefacts.
+
+  1200x627 is LinkedIn's landscape ratio, and the lime band is the same design
+  decision as li-card's — at feed size this renders about half these dimensions
+  and the band is the only element still unmissable there.
+
+  LOGOS ARE CONTAINED ON WHITE PLATES AND NEVER CROPPED. 462 logo files come in
+  every shape there is, and `cover` sheared the wordmark off both edges of
+  Compass Group's on the OG card. Cropping a trademark is simply wrong.
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
+    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036; --live:#c8ff00;
+    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
+    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#000}
+  #card{position:relative;width:1200px;height:627px;overflow:hidden;
+        background:var(--bg);color:var(--ink);font-family:var(--ui)}
+  .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .brand{position:absolute;top:26px;left:40px;display:flex;align-items:center;gap:10px;z-index:6}
+  .brand svg{width:23px;height:23px;overflow:visible}
+  .m-ring{fill:none;stroke:var(--live);stroke-width:1.6;opacity:.34}
+  .m-sweep{fill:var(--live);opacity:.32}
+  .m-dot{fill:var(--live)}
+  .word{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:-.045em;line-height:1}
+  .word em{font-style:normal;color:var(--live)}
+
+  /* Same corner radar as the job card, same reason: it is the brand mark at a
+     glance, and its centre is pushed into the corner so the sweep's dot never
+     lands on type and reads as a typo. */
+  .radar{position:absolute;right:-330px;top:-320px;width:780px;height:780px;pointer-events:none;z-index:0}
+  .ring{fill:none;stroke:var(--live);stroke-width:1.4;opacity:.34}
+  .cross{stroke:var(--live);stroke-width:1.4;opacity:.15}
+  .sweep{fill:var(--live);opacity:.20}
+
+  .head{position:absolute;top:62px;left:40px;right:40px;z-index:4}
+  .count{font-family:var(--display);font-weight:900;font-size:52px;letter-spacing:-.035em;line-height:1}
+  .count em{font-style:normal;color:var(--live)}
+  .sub{font-family:var(--mono);font-size:16px;letter-spacing:.16em;text-transform:uppercase;
+       color:var(--ink-2);margin-top:10px}
+
+  /* THE GRID IS SIZED BY THE RENDERER, not here. One employer and six are both
+     real, and a fixed 3x2 leaves a single logo marooned in the corner. */
+  /* THE PLATE IS SIZED BY THE RENDERER IN PIXELS, and that is not a shortcut.
+     `width:100%; aspect-ratio:1/1` looks like the obvious way to keep it square
+     and is wrong here: the width comes from the COLUMN (~360px at three
+     columns) while the row is only ~150px tall, so every plate overflowed its
+     row and the whole second rank was cropped off by the lime band. The square
+     has to be driven by whichever of the two is SMALLER, which is a measurement
+     and therefore the renderer's job — the same reason the other two cards fit
+     their type in JS rather than CSS. */
+  .grid{position:absolute;left:40px;right:40px;top:172px;bottom:118px;z-index:4;
+        display:grid;gap:14px;align-content:center;justify-items:center}
+  .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;
+        gap:8px;min-width:0;min-height:0;width:100%;height:100%}
+  .plate{background:#fff;border-radius:20px;padding:12px;flex:none;
+         display:flex;align-items:center;justify-content:center}
+  .plate img{width:100%;height:100%;object-fit:contain;display:block}
+  /* An employer with no logo file still gets a plate with its initials rather
+     than a hole in the grid. */
+  .mark{font-family:var(--display);font-weight:900;color:#0a0a0b;letter-spacing:-.03em}
+  /* HEIGHT IS FIXED AT TWO LINES, AND THAT IS A FIX FOR A REAL COLLISION.
+     The plate is sized from whatever room the name leaves, so a name measured
+     at one line and then re-wrapped to two — which is exactly what happens when
+     the renderer narrows the grid AFTER sizing the plates — overflows the cell
+     and lands on top of the logo in the row below. Reserving both lines up
+     front makes the cell height constant and breaks that circularity. */
+  .name{font-family:var(--ui);font-weight:600;font-size:16px;color:var(--ink);
+        text-align:center;line-height:1.15;width:100%;flex:none;height:37px;
+        overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+  .band{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--live);z-index:5;
+        display:flex;align-items:center;padding:0 44px;gap:22px}
+  .band .hire{font-family:var(--display);font-weight:900;font-size:52px;color:var(--bg);
+              letter-spacing:-.02em;line-height:1}
+  .band .who{font-family:var(--mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;
+             color:rgba(10,10,11,.72);margin-left:auto}
+</style>
+
+<div id="card">
+  <div class="grain"></div>
+  <svg class="radar" viewBox="0 0 780 780">
+    <circle class="ring" cx="390" cy="390" r="370"/><circle class="ring" cx="390" cy="390" r="277"/>
+    <circle class="ring" cx="390" cy="390" r="183"/><circle class="ring" cx="390" cy="390" r="90"/>
+    <line class="cross" x1="0" y1="390" x2="780" y2="390"/><line class="cross" x1="390" y1="0" x2="390" y2="780"/>
+    <g class="sweep"><path d="M390 390 L390 20 A370 370 0 0 1 711 205 Z"/></g>
+  </svg>
+  <div class="brand">
+    <svg viewBox="0 0 44 44">
+      <circle class="m-ring" cx="22" cy="22" r="20"/><circle class="m-ring" cx="22" cy="22" r="12"/>
+      <g class="m-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+      <circle class="m-dot" cx="22" cy="22" r="2.8"/>
+    </svg>
+    <div class="word">INTERN<em>DOOR</em></div>
+  </div>
+
+  <div class="head">
+    <div class="count" id="count"></div>
+    <div class="sub" id="sub"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="band"><div class="hire">IS HIRING</div><div class="who">interndoor.com</div></div>
+</div>
