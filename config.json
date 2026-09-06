@@ -1057,11 +1057,18 @@
   },
   "discovery": {
     "_note": "Find postings an employer does not index on its own board, by asking Google Programmable Search. Amazon's India board lists 2,538 roles and four internships, none engineering, while its SDE internship sits at a live URL Amazon's own search will not return - and Google has that page, because it is public, server-rendered and allowed by robots.txt. Runs ONCE A DAY from bin/run.sh: the free tier is 100 queries a day and the scheduler fires 48 times, so a per-scan sweep would spend the quota by lunch for no extra freshness. Needs GOOGLE_CSE_KEY and GOOGLE_CSE_CX in .env; without them it is a silent no-op.",
-    "enabled": true,
+    "enabled": false,
     "sites": [
-      "amazon.jobs"
+      "boards.greenhouse.io",
+      "job-boards.greenhouse.io",
+      "jobs.lever.co",
+      "jobs.ashbyhq.com",
+      "jobs.smartrecruiters.com",
+      "apply.workable.com",
+      "myworkdayjobs.com",
+      "www.amazon.jobs"
     ],
-    "_sites_note": "One search per site per query, so sites x queries IS the daily budget. Keep it to boards whose own search is known to be poor - anything with a working board is already read by bin/poll-ats.js far more cheaply.",
+    "_sites_note": "Every host here is one src/ingest.js can parse; sites x queries = API calls per sweep. Kept for the day a working search backend exists.",
     "queries": [
       "intern India",
       "internship 2027 India"
@@ -1070,7 +1077,8 @@
     "dateRestrict": "d7",
     "_dateRestrict_note": "Google's freshness window: d7 = the last week. An internship is worth finding in its first week; without a limit every sweep returns the same aged pages and spends its budget re-checking them.",
     "maxPerRun": 20,
-    "_maxPerRun_note": "How many NEW links are resolved per sweep. Already-seen URLs are remembered in the discovered_urls table and never re-fetched, so this only bites on a first run or a sudden burst."
+    "_maxPerRun_note": "How many NEW links are resolved per sweep. Already-seen URLs are remembered in the discovered_urls table and never re-fetched, so this only bites on a first run or a sudden burst.",
+    "_disabled_note": "DISABLED 6 Sep 2026 AND THE REASON IS NOT A MISSING KEY. Google closed the Custom Search JSON API to NEW customers. The console still lets you enable customsearch.googleapis.com and it reports Status: Enabled - then every call returns 403 'This project does not have the access to Custom Search JSON API'. Verified with 5 calls over 100s on project interndoor-506913 with a key restricted to that API. Existing customers must migrate before 1 Jan 2027; we were never one. Separately, 'search the entire web' was discontinued for new engines on 20 Jan 2026 (50-domain cap), so src/websearch.js's setup note was already stale. DO NOT re-enable expecting keys to fix it - the block is on the project, not the credentials."
   },
   "publish": {
     "enabled": true,

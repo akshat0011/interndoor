@@ -18,7 +18,24 @@
  * Everything here fails soft and returns an empty list. A discovery pass is the
  * least important thing the scheduler does; it must never be why a scan fails.
  *
- * Setup, once:
+ * THIS BACKEND IS CLOSED TO US AND THE SETUP BELOW CANNOT BE COMPLETED.
+ * Verified end to end on 6 Sep 2026: engine created, Custom Search API enabled
+ * on project interndoor-506913, key restricted to that API — and every call
+ * answers 403 "This project does not have the access to Custom Search JSON
+ * API". Google closed the JSON API to NEW customers; existing ones must
+ * migrate before 1 Jan 2027. The console still shows Status: Enabled, which is
+ * what makes this look like a propagation delay. It is not. Five calls over
+ * 100 seconds, all 403.
+ *
+ * Google also discontinued "search the entire web" for new engines on
+ * 20 Jan 2026 — a new engine is capped at 50 named domains — so step 1 below
+ * was already impossible as written.
+ *
+ * `discovery.enabled` is false in config.json for this reason, NOT for want of
+ * a key. The code here is left intact because it is backend-shaped: swapping
+ * in another search provider is `buildQuery` plus the fetch in `search`.
+ *
+ * Setup, once — KEPT FOR REFERENCE ONLY, see above:
  *   1. Make a Programmable Search Engine at programmablesearchengine.google.com
  *      set to search the ENTIRE WEB — the sites are chosen per query below, not
  *      in the engine, so adding one is a config edit rather than a visit to
