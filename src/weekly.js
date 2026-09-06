@@ -31,7 +31,11 @@
  * board. WHAT DID NOT FIT IS STILL SAID OUT LOUD — a roundup that quietly drops
  * ninety roles reads as though the week were a tenth as good as it was.
  */
-import { resolveRowRegion, regionOf } from './regions.js';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { resolveRowRegion, regionOf, regionPath } from './regions.js';
+import { PATHS } from './paths.js';
+import { log } from './logger.js';
 import { normaliseCompany } from './config.js';
 import {
   boldSans, utmUrl, followChannel, cityOf, tidyTech,
@@ -64,6 +68,38 @@ function dayLabel(ms, zone) {
  * carries the old answer, and a corrected location is the documented remedy for
  * a bad geocode.
  */
+/**
+ * The ids the SITE actually publishes for a region.
+ *
+ * The roundup links to /jobs/<slug> for every role it features, so a role the
+ * board does not carry is a 404 sent to everyone who reads the post. The store
+ * holds plenty publish holds back — an employer since dropped from the
+ * watchlist, the losing half of a cross-collector duplicate, anything past the
+ * retention window. Same rule the reel pipeline follows.
+ *
+ * SHARED because the roundup is now composed from two places: the scheduled
+ * writer and the queue server, when he re-picks the featured employers by hand.
+ * A copy in each is a copy that drifts, and the failure mode of the drift is a
+ * post full of 404s.
+ *
+ * A missing file means the region has never published; nothing is filtered
+ * rather than everything, so a first run cannot silently produce an empty week.
+ */
+export function publishedIdsFor(code) {
+  const prefix = regionPath(code);
+  const file = join(PATHS.root, 'web', 'public', ...(prefix ? [prefix.slice(1)] : []), 'data', 'jobs.json');
+  if (!existsSync(file)) {
+    log.warn(`Weekly roundup: ${file} is missing — not filtering to published roles.`);
+    return null;
+  }
+  try {
+    return new Set((JSON.parse(readFileSync(file, 'utf8')).jobs ?? []).map((j) => String(j.id)));
+  } catch (e) {
+    log.warn(`Weekly roundup: could not read the published jobs file (${e.message}) — not filtering.`);
+    return null;
+  }
+}
+
 export function weekRoles(store, { region = 'IN', sinceMs, untilMs = Date.now(), publishedIds = null } = {}) {
   return store.recentJobs(sinceMs)
     .filter((row) => row.is_tech === 1)
@@ -372,6 +408,14 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
          his choice already ticked, and so a caller can tell a manual roundup
          from an automatic one without re-deriving the ranking. */
       featuredCompanies: featured.map((g) => g.company),
+      /* Every employer of the week, so the page can offer the picker without
+         re-deriving the group list — and so the names it posts back are
+         guaranteed to be ones `pick` can resolve. */
+      allCompanies: groups.map((g) => ({ company: g.company, roles: g.roles.length })),
+      /* The CONFIGURED cap, not how many were actually featured. A quiet week
+         may feature three, and deriving the picker's limit from that would let
+         a short week silently forbid picking six. */
+      featuredCap: wanted,
       pickedByHand: !!chosen?.length,
       pickedMissing: Array.isArray(pick) ? pick.filter((n) => !byName.has(n)) : [],
       roles: roles.length,

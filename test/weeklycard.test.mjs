@@ -152,5 +152,40 @@ console.log('\n== THE TEMPLATE KEEPS THE RULES THE OTHER CARDS LEARNED ==');
   check('output goes to the state directory', /PATHS\.liCards/.test(js), true);
 }
 
+console.log('\n== THE PICKER IS WIRED INTO THE PAGE ==');
+{
+  const { buildWeeklyPage } = await import('../src/postpage.js');
+  const store2 = new Store(); const cfg2 = loadConfig();
+  const { publishedIdsFor } = await import('../src/weekly.js');
+  const r = weeklyRoundup(store2, cfg2, { region: 'IN', publishedIds: publishedIdsFor('IN') });
+  const page = buildWeeklyPage([r], { generatedAt: 1788600000000 });
+
+  check('the picker is on the page', /class="pick"/.test(page), true);
+  check('with a box per employer', (page.match(/type="checkbox"/g) ?? []).length, r.stats.allCompanies.length);
+  check('the automatic pick is pre-ticked', (page.match(/ checked>/g) ?? []).length, r.stats.featuredCompanies.length);
+  /* The cap is the CONFIGURED one. Deriving it from how many were featured
+     would let a quiet week silently forbid picking six. */
+  check('the cap is the configured one', new RegExp(`data-max="${r.stats.featuredCap}"`).test(page), true);
+  check('and the post block is addressable', /id="post-IN"/.test(page), true);
+
+  /* THE PAGE SCRIPT MUST PARSE. There is ONE inline script, so a syntax error
+     anywhere in it kills every button on the page and the markup still looks
+     perfect — §16's silent click. This caught a real one: the handlers quoted
+     `npm run queue` in backticks, INSIDE the template literal that defines the
+     script, which ended the literal. */
+  const src = readFileSync(new URL('../src/postpage.js', import.meta.url), 'utf8');
+  const js = /^const JS = `([\s\S]*?)\n`;/m.exec(src);
+  check('the script literal is intact', !!js, true);
+  check('and holds no backticks of its own', (js[1].match(/`/g) ?? []).length, 0);
+  let parsed = true;
+  try { new Function(js[1]); } catch { parsed = false; }
+  check('the page script parses', parsed, true);
+
+  // Both buttons have to exist, or one half of the feature is unreachable.
+  check('there is a rewrite button', /data-act="compose"/.test(page), true);
+  check('and a generate-image button', /data-act="card"/.test(page), true);
+  check('and a reset', /data-act="reset"/.test(page), true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

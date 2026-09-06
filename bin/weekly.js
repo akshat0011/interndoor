@@ -20,7 +20,7 @@
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { log } from '../src/logger.js';
-import { weeklyRoundup, roundupDue, weekKey } from '../src/weekly.js';
+import { weeklyRoundup, roundupDue, weekKey, publishedIdsFor } from '../src/weekly.js';
 import { buildWeeklyPage, writeWeeklyPage } from '../src/postpage.js';
 import { notify, open as openFile } from '../src/notify.js';
 import { queueBase, queueServerUp } from '../src/postqueue.js';
@@ -67,35 +67,6 @@ const due = REGIONS.filter((code) => FORCE || DRY_RUN
 if (!due.length) {
   store.close();
   process.exit(0);
-}
-
-/**
- * The ids the SITE actually publishes for this region.
- *
- * The roundup links to /jobs/<slug> for every role it features, so a role the
- * board does not carry is a 404 sent to everyone who reads the post. The store
- * holds plenty that publish holds back — an employer since dropped from the
- * watchlist, the losing half of a cross-collector duplicate, anything past the
- * retention window. Reading the published projection is the same rule the reel
- * pipeline follows, and for the same reason: a post must not state something
- * the site does not have.
- *
- * A missing file means the region has never published; nothing is filtered
- * rather than everything, so a first run cannot silently produce an empty week.
- */
-function publishedIdsFor(code) {
-  const prefix = regionPath(code);
-  const file = join(PATHS.root, 'web', 'public', ...(prefix ? [prefix.slice(1)] : []), 'data', 'jobs.json');
-  if (!existsSync(file)) {
-    log.warn(`Weekly roundup: ${file} is missing — not filtering to published roles.`);
-    return null;
-  }
-  try {
-    return new Set((JSON.parse(readFileSync(file, 'utf8')).jobs ?? []).map((j) => String(j.id)));
-  } catch (e) {
-    log.warn(`Weekly roundup: could not read the published jobs file (${e.message}) — not filtering.`);
-    return null;
-  }
 }
 
 const built = [];

@@ -51,6 +51,27 @@ h1{font-size:23px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px}
    broken-image glyph beside a finished post reads as a fault. */
 .shot{display:none;width:100%;border-radius:10px;border:1px solid var(--line);margin:12px 0 2px}
 .shot.ok{display:block}
+/* THE PICKER. He chooses which employers the post features and the card shows;
+   the automatic six are pre-ticked so doing nothing keeps the old behaviour. */
+.pick{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+      box-shadow:var(--shadow);padding:16px 18px;margin:0 0 18px}
+.pick h2{font-size:15px;font-weight:650;margin:0 0 2px;letter-spacing:-.01em}
+.pick .hint{color:var(--ink-2);font-size:13px;margin-bottom:12px}
+.pick .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px 14px;
+            max-height:264px;overflow:auto;padding:2px 2px 10px;border-bottom:1px solid var(--line)}
+.pick label{display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer;
+            padding:3px 4px;border-radius:6px;min-width:0}
+.pick label:hover{background:var(--chip)}
+.pick label span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pick label em{font-style:normal;color:var(--ink-2);font-size:12px;flex:none}
+/* A disabled box still has to read as "full", not as "broken". */
+.pick label.full{opacity:.42;cursor:not-allowed}
+.pick .bar{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pick .tally{color:var(--ink-2);font-size:13px;margin-right:auto}
+.pick .tally.max{color:var(--warn)}
+.pick .msg{font-size:13px;color:var(--ink-2);margin-top:10px;min-height:1.2em}
+.pick .msg.bad{color:var(--warn)}
+.card-out{margin-top:12px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
   margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
 .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 18px 14px}
@@ -102,6 +123,109 @@ for (const img of document.querySelectorAll('.shot')) {
   };
   if (img.complete && img.naturalWidth) show();
   else img.addEventListener('load', show, { once: true });
+}
+
+/**
+ * THE PICKER'S BEHAVIOUR.
+ *
+ * Two buttons, one rule: whatever is ticked is what both the post and the image
+ * use. Neither publishes anything — "Rewrite the post" replaces the text in the
+ * block below so he can copy it, and "Generate image" renders a PNG he can save.
+ *
+ * The page is written to disk and reopened later, so every call has to survive
+ * the queue server being down. A failed fetch says so in the panel rather than
+ * leaving a button that looks like it did nothing.
+ */
+for (const panel of document.querySelectorAll('.pick')) {
+  const region = panel.dataset.region;
+  const max    = Number(panel.dataset.max) || 6;
+  const boxes  = [...panel.querySelectorAll('input[type=checkbox]')];
+  const tally  = panel.querySelector('.tally');
+  const msg    = panel.querySelector('.msg');
+  const out    = panel.querySelector('.card-out');
+  const initial = boxes.filter((b) => b.checked).map((b) => b.value);
+
+  const picked = () => boxes.filter((b) => b.checked).map((b) => b.value);
+  const say = (text, bad) => { msg.textContent = text || ''; msg.classList.toggle('bad', !!bad); };
+
+  /* AT THE CAP, THE UNTICKED BOXES ARE DISABLED rather than left tickable and
+     then trimmed server-side. A box that ticks and quietly does nothing is
+     worse than one that will not tick. */
+  function sync() {
+    const n = picked().length;
+    tally.textContent = n + ' / ' + max + ' picked';
+    tally.classList.toggle('max', n >= max);
+    for (const b of boxes) {
+      const full = n >= max && !b.checked;
+      b.disabled = full;
+      b.closest('label').classList.toggle('full', full);
+    }
+  }
+  boxes.forEach((b) => b.addEventListener('change', () => { sync(); say(''); }));
+  sync();
+
+  async function call(url, body) {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || ('HTTP ' + r.status));
+    return d;
+  }
+
+  panel.querySelector('[data-act=reset]').addEventListener('click', () => {
+    for (const b of boxes) b.checked = initial.includes(b.value);
+    sync();
+    say('Back to the automatic pick. Rewrite the post to apply it.');
+    out.innerHTML = '';
+  });
+
+  panel.querySelector('[data-act=compose]').addEventListener('click', async (e) => {
+    const picks = picked();
+    if (!picks.length) return say('Tick at least one employer.', true);
+    const btn = e.currentTarget, was = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Rewriting…';
+    try {
+      const d = await call('/api/weekly/compose', { region, picks });
+      const card = document.getElementById('post-' + region);
+      if (card) {
+        card.querySelector('.post').textContent = d.post;
+        const count = card.querySelector('.count');
+        if (count) count.textContent = d.post.length + ' / 3000';
+      }
+      /* A name with no live role this week is dropped rather than invented, so
+         SAY which ones went — silently featuring five when he ticked six is the
+         kind of thing he would only notice after posting. */
+      const missing = (d.stats && d.stats.pickedMissing) || [];
+      say(missing.length
+        ? 'Rewritten around ' + d.stats.featuredCompanies.length + '. No live role this week for: ' + missing.join(', ')
+        : 'Rewritten around ' + d.stats.featuredCompanies.length + ' employers. Copy it below.');
+    } catch (err) {
+      say('Could not rewrite: ' + err.message + '. Is npm run queue running?', true);
+    } finally {
+      btn.disabled = false; btn.textContent = was;
+    }
+  });
+
+  panel.querySelector('[data-act=card]').addEventListener('click', async (e) => {
+    const picks = picked();
+    if (!picks.length) return say('Tick at least one employer.', true);
+    const btn = e.currentTarget, was = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Rendering…';
+    try {
+      const d = await call('/api/weekly/card', { region, picks });
+      out.innerHTML =
+        '<img class="shot ok" src="' + d.url + '" alt="">' +
+        '<a class="link shot-dl" href="' + d.url + '" download="interndoor-week-' + region + '.png">Save the image ↓</a>';
+      say('Rendered ' + d.companies.length + ' logos. Attaching an image REPLACES the link preview.');
+    } catch (err) {
+      say('Could not render: ' + err.message + '. Is npm run queue running?', true);
+    } finally {
+      btn.disabled = false; btn.textContent = was;
+    }
+  });
 }
 
 async function copy(text, btn, label){
@@ -294,10 +418,10 @@ export function writePostsPage(html, batchId) {
  * hands him one blob to split by hand is a page that gets split wrong at 10am
  * on a Sunday.
  */
-function pasteBlock(label, text, note, limit, primary = false) {
+function pasteBlock(label, text, note, limit, primary = false, id = '') {
   const over = text.length > limit;
   return `
-<article class="card">
+<article class="card"${id ? ` id="${id}"` : ''}>
   <div class="head">
     <div>
       <div class="cname">${esc(label)}</div>
@@ -317,6 +441,48 @@ function pasteBlock(label, text, note, limit, primary = false) {
  * @param {{post: string, comments: string[], stats: object}} roundup
  * @param {{generatedAt: number}} meta
  */
+/**
+ * THE PICKER — which employers the post features and the card shows.
+ *
+ * The automatic six arrive pre-ticked, so doing nothing leaves the roundup
+ * exactly as `rankForFeature` chose it. This only ever changes what he COPIES;
+ * the file on disk and the scheduled post are untouched.
+ *
+ * Ticking is capped at the configured `featured` count rather than silently
+ * trimming a longer list on the server, because a box that ticks and then
+ * quietly does nothing is worse than one that will not tick.
+ */
+function pickerFor(stats, max) {
+  const chosen = new Set(stats.featuredCompanies ?? []);
+  const all = stats.allCompanies ?? [];
+  if (!all.length) return '';
+  const boxes = all.map((c) => {
+    const on = chosen.has(c.company);
+    return `<label${on ? ' class="on"' : ''}>
+      <input type="checkbox" value="${esc(c.company)}"${on ? ' checked' : ''}>
+      <span>${esc(c.company)}</span><em>${c.roles}</em>
+    </label>`;
+  }).join('');
+
+  return `
+<section class="pick" data-region="${esc(stats.region)}" data-max="${max}">
+  <h2>Feature by hand — ${esc(stats.region)}</h2>
+  <div class="hint">
+    ${all.length} employers opened a role this week. Tick up to ${max}; the six already ticked are the
+    automatic pick. Rewriting only changes what you copy from this page — nothing is published.
+  </div>
+  <div class="grid">${boxes}</div>
+  <div class="bar">
+    <div class="tally"></div>
+    <button class="second" data-act="reset">Reset to automatic</button>
+    <button class="second" data-act="card">Generate image</button>
+    <button class="primary" data-act="compose">Rewrite the post</button>
+  </div>
+  <div class="msg"></div>
+  <div class="card-out"></div>
+</section>`;
+}
+
 export function buildWeeklyPage(roundups, { generatedAt }) {
   /* AN ARRAY NOW, because the roundup runs per board and both belong on ONE
      page. /weekly/latest serves the most recently written file, so writing a
@@ -347,7 +513,9 @@ export function buildWeeklyPage(roundups, { generatedAt }) {
     const suffix = many ? ` — ${r.stats.region}` : '';
     return [
       coverageFor(r.stats),
-      pasteBlock(`The post${suffix}`, r.post, 'Paste this first.', MAX_POST_CHARS, true),
+      pickerFor(r.stats, r.stats.featuredCap || 6),
+      pasteBlock(`The post${suffix}`, r.post, 'Paste this first.', MAX_POST_CHARS, true,
+        `post-${r.stats.region}`),
       ...r.comments.map((c, i) => pasteBlock(
         (i === 0 ? 'First comment' : `Comment ${i + 1}`) + suffix,
         c,

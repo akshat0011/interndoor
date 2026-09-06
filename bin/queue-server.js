@@ -35,6 +35,8 @@ import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
+import { weeklyRoundup, publishedIdsFor } from '../src/weekly.js';
+import { renderWeeklyCard, MAX_LOGOS } from '../src/weeklycard.js';
 import { logoOnDisk } from '../src/logos.js';
 import { writePostDrafts } from '../src/ollama.js';
 import { notify, open as openFile } from '../src/notify.js';
@@ -740,6 +742,68 @@ const server = createServer(async (req, res) => {
     if (!body) return undefined;
     store.queueClear(body.status ?? null);
     return json(res, 200, { ids: store.queuedIds(), ...store.queueCounts() });
+  }
+
+  /**
+   * RECOMPOSE THE WEEKLY POST AROUND THE EMPLOYERS HE PICKED.
+   *
+   * The scheduled roundup still chooses its own six (rankForFeature), and this
+   * does not change what was written to disk — it answers with a post for him
+   * to copy. Nothing here publishes anything.
+   *
+   * FILTERED TO WHAT THE SITE ACTUALLY PUBLISHES, through the same helper the
+   * scheduled writer uses. The post links to /jobs/<slug> for every featured
+   * role, so composing off the store alone would send readers to 404s for any
+   * role publish holds back.
+   */
+  if (path === '/api/weekly/compose' && req.method === 'POST') {
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+    const region = String(body.region ?? 'IN').trim().toUpperCase();
+    if (!/^[A-Z]{2}$/.test(region)) return json(res, 400, { error: 'region must be an ISO code' });
+    const picks = Array.isArray(body.picks) ? body.picks.map(String).slice(0, MAX_LOGOS) : [];
+    try {
+      const r = weeklyRoundup(store, cfg, { region, pick: picks, publishedIds: publishedIdsFor(region) });
+      return json(res, 200, { post: r.post, comments: r.comments, stats: r.stats });
+    } catch (e) {
+      log.warn(`Weekly compose failed: ${e.message}`);
+      return json(res, 500, { error: e.message });
+    }
+  }
+
+  /**
+   * Render the picked employers as the weekly card image.
+   *
+   * Written into PATHS.liCards as `weekly-<REGION>.png`, so the existing /li/
+   * route serves it — the state directory, never the repo, the same rule the
+   * per-job cards follow because `app/` is public.
+   */
+  if (path === '/api/weekly/card' && req.method === 'POST') {
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+    const region = String(body.region ?? 'IN').trim().toUpperCase();
+    if (!/^[A-Z]{2}$/.test(region)) return json(res, 400, { error: 'region must be an ISO code' });
+    const picks = Array.isArray(body.picks) ? body.picks.map(String).slice(0, MAX_LOGOS) : [];
+    if (!picks.length) return json(res, 400, { error: 'pick at least one employer' });
+    try {
+      const r = weeklyRoundup(store, cfg, { region, pick: picks, publishedIds: publishedIdsFor(region) });
+      /* The CARD shows what the POST features. Rendering the raw picks instead
+         would put an employer on the image whose roles the post could not link
+         to — the two would disagree about the same week. */
+      const shown = r.stats.featuredCompanies;
+      if (!shown.length) return json(res, 400, { error: 'none of those employers has a live role this week' });
+      const id = `weekly-${region}`;
+      await renderWeeklyCard(
+        { companies: shown, roles: r.stats.roles, span: `${r.stats.span} · ${regionOf(region)?.name ?? region}` },
+        join(PATHS.liCards, `${id}.png`),
+      );
+      // Cache-busted: the file name is stable so the browser would show the
+      // previous render after every regenerate.
+      return json(res, 200, { url: `/li/${id}.png?t=${Date.now()}`, companies: shown });
+    } catch (e) {
+      log.warn(`Weekly card failed: ${e.message}`);
+      return json(res, 500, { error: e.message });
+    }
   }
 
   if (path === '/api/generate' && req.method === 'POST') {
