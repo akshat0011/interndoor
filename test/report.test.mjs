@@ -85,5 +85,41 @@ check('confirm is present', script.includes('confirm('), true);
 check('and carries no literal newline inside its string',
   /confirm\('[^']*\n/.test(script), false);
 
+console.log('\n== AN EMPTY RUN IS NOT ARCHIVED ==');
+{
+  const { writeReport } = await import('../src/report.js');
+  const { PATHS } = await import('../src/paths.js');
+  const { existsSync, rmSync, readFileSync } = await import('node:fs');
+  const { join } = await import('node:path');
+
+  /* His call, 6 Sep 2026, reversing what reportindex.js used to say. Measured
+     that day: 1,240 of 1,867 archived reports — 66% — carried no listing, and
+     they are what made /reports unreadable. */
+  const EMPTY_ID = '9999-01-01T00-00-00';
+  const FULL_ID = '9999-01-02T00-00-00';
+  const emptyFile = join(PATHS.reports, `report-${EMPTY_ID}.html`);
+  const fullFile = join(PATHS.reports, `report-${FULL_ID}.html`);
+  rmSync(emptyFile, { force: true }); rmSync(fullFile, { force: true });
+
+  const before = existsSync(PATHS.latestReport) ? readFileSync(PATHS.latestReport, 'utf8') : null;
+
+  check('an empty run returns no path', writeReport('<html><p>nothing new</p></html>', EMPTY_ID), null);
+  check('and writes no archive file', existsSync(emptyFile), false);
+  /* latest.html IS still written, which keeps what the old behaviour was
+     protecting: the most recent run can always be inspected, empty or not. */
+  check('but latest.html is still updated', readFileSync(PATHS.latestReport, 'utf8').includes('nothing new'), true);
+
+  const got = writeReport('<html><article class="job">x</article></html>', FULL_ID);
+  check('a run with listings IS archived', got === fullFile, true);
+  check('and the file exists', existsSync(fullFile), true);
+
+  /* Counted from the markup when the caller does not say, so it cannot drift
+     from what the page actually shows. */
+  check('an explicit count of 0 also skips', writeReport('<html><article class="job">x</article></html>', EMPTY_ID, 0), null);
+
+  rmSync(fullFile, { force: true }); rmSync(emptyFile, { force: true });
+  if (before !== null) (await import('node:fs')).writeFileSync(PATHS.latestReport, before, 'utf8');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

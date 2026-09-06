@@ -1682,8 +1682,13 @@ async function main() {
     stats: store.stats(),
     cfg,
   });
+  /* An empty run writes `latest.html` and no archive copy, so there is no path
+     to print. Saying so is better than logging "Report: null" — and better
+     than silence, because the report not being on /reports is now a deliberate
+     outcome rather than a missing file. */
   const file = writeReport(html, runId);
-  log.ok(`Report: ${file}`);
+  if (file) log.ok(`Report: ${file}`);
+  else log.info('Report: nothing new this run — latest.html updated, no archive copy kept.');
 
   // Everything that interrupts HIM — the banner, the phone push, opening the
   // report — is scoped to the same home region the report itself is, above.

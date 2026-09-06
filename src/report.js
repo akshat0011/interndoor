@@ -581,11 +581,31 @@ pollReels();
 </body></html>`;
 }
 
-/** Write the report to a timestamped file plus `latest.html`. Returns its path. */
-export function writeReport(html, runId) {
+/**
+ * Write the report to a timestamped file plus `latest.html`. Returns its path,
+ * or null when the run found nothing and no archive copy was kept.
+ *
+ * AN EMPTY RUN IS NOT ARCHIVED — his call, 6 Sep 2026, reversing what
+ * src/reportindex.js used to say ("a report with no listings is still listed —
+ * that run found nothing is a real thing to want to confirm"). Measured at the
+ * time: 1,240 of 1,867 files on disk, 66%, carried no listing at all, and they
+ * are what makes /reports unreadable — the ten most recent entries were nine
+ * "nothing new" rows and one real one.
+ *
+ * `latest.html` IS STILL WRITTEN EVERY RUN, which keeps the thing the old
+ * comment was protecting: the most recent run can always be inspected, empty
+ * or not. Only the permanent archive copy is skipped, and only when there is
+ * genuinely nothing in it.
+ */
+export function writeReport(html, runId, jobCount = null) {
   ensureDirs();
+  /* Counted from the markup when the caller does not say, so this cannot drift
+     from what the page actually shows — the same rule jobCountIn follows for
+     the index. */
+  const count = jobCount ?? [...String(html).matchAll(/<article class="job"/g)].length;
+  writeFileSync(PATHS.latestReport, html, 'utf8');
+  if (!count) return null;
   const file = join(PATHS.reports, `report-${runId}.html`);
   writeFileSync(file, html, 'utf8');
-  writeFileSync(PATHS.latestReport, html, 'utf8');
   return file;
 }

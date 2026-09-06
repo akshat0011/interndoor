@@ -85,5 +85,26 @@ console.log('\n== the route, and the link that makes it discoverable ==');
   check('every report links back to the index', /href="\/reports"/.test(report), true);
 }
 
+console.log('\n== THE FILTER MUST ACTUALLY HIDE ROWS ==');
+{
+  /* IT DID NOT, AND NOTHING LOOKED BROKEN. The script sets `r.hidden = true`
+     correctly, but `.r{display:block}` is a class selector and the UA's
+     `[hidden]{display:none}` is not — so display:block won and every row stayed
+     visible. Typing a company simply did nothing. Same family as §16's "a media
+     query adds no specificity": the override has to be written, not assumed. */
+  const html = renderReportIndex([{ id: '2026-09-06T07-04-48', jobs: 3, companies: ['Microsoft', 'PwC'] }]);
+  check('the hidden override is present', /\.r\[hidden\]\{display:none\}/.test(html), true);
+  /* ORDER MATTERS AT EQUAL SPECIFICITY, and these are not equal — .r[hidden]
+     is a class plus an attribute, so it outranks .r whatever the order. Pinned
+     anyway, because someone merging the two rules would silently lose it. */
+  check('and .r still sets display:block', /\.r\{display:block/.test(html), true);
+
+  // The searchable string has to carry every company, not just the shown ones.
+  check('data-find carries the companies', /data-find="[^"]*microsoft[^"]*"/.test(html), true);
+  check('and the date', /data-find="[^"]*sun 6 sep[^"]*"/.test(html), true);
+  check('the filter targets .r', /querySelectorAll\('\.r'\)/.test(html), true);
+  check('and sets hidden from data-find', /r\.hidden = t && r\.dataset\.find\.indexOf\(t\) === -1/.test(html), true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

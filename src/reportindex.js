@@ -93,6 +93,15 @@ h1{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
 .sub{color:var(--dim);margin:0 0 20px;font-size:13px}
 #q{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;margin-bottom:18px}
 #q:focus{outline:2px solid var(--live);outline-offset:1px}
+/* THE FILTER SETS [hidden] AND THIS RULE HAS TO YIELD TO IT.
+   .r{display:block} is a class selector; the UA's [hidden]{display:none} is
+   not, so display:block wins and every row stayed visible while the filter was
+   working perfectly. Typing a company simply did nothing. Same family as §16's
+   "a media query adds no specificity" - the override has to be written, not
+   assumed. And NO BACKTICKS in here: this comment is inside a template
+   literal, which is §16's oldest trap and cost this file a syntax error on the
+   way in. */
+.r[hidden]{display:none}
 .r{display:block;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin-bottom:8px;text-decoration:none;color:inherit}
 .r:hover{border-color:var(--live)}
 .when{font-weight:600;font-size:14px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
