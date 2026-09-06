@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788663635866,
+ "generatedAt": 1788665136723,
  "region": "IN",
  "regionName": "India",
- "count": 243,
- "techCount": 243,
+ "count": 242,
+ "techCount": 242,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -118,7 +118,6 @@
   "Silicon Labs",
   "Simple Energy",
   "Smowcode",
-  "Sony Research India",
   "State Street",
   "Stripe",
   "Sunstone",
@@ -12256,62 +12255,6 @@
    "cardFacts": [
     "Pune Division",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4448494663",
-   "title": "AI Research Intern",
-   "company": "Sony Research India",
-   "matchedWatchlist": "Sony",
-   "isTech": true,
-   "roleSource": "gemini-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/sony-research-india.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Remote",
-   "stipend": "2,026",
-   "duration": null,
-   "applicants": "58 applicants",
-   "easyApply": true,
-   "skills": [
-    "python",
-    "sql",
-    "aws",
-    "machine learning",
-    "deep learning",
-    "pytorch",
-    "algorithms"
-   ],
-   "summary": "For our research center to blaze a trail in the latest technologies, we seek to foster the growth of a diverse pool of research and engineering talent and create a technology talent bank to drive research excellence worldwide. We are looking for a highly motivated AI Research Intern to work on user behavior modeling for OTT platforms. Duration of the paid internship: The paid internship will be for six months starting third week of August 2026.",
-   "bullets": [
-    "Develop ML, deep learning, and LLM models for OTT user behavior",
-    "Apply causal inference techniques to analyze user retention and engagement",
-    "Experiment with algorithms and large interaction datasets using Python and PyTorch",
-    "6-month paid remote internship starting August 2026"
-   ],
-   "roleLabel": "AI research",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "pytorch",
-    "sql",
-    "machine learning",
-    "causal inference"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "25 minutes ago",
-   "postedAt": 1786070244007,
-   "firstSeenAt": 1786071744016,
-   "lastSeenAt": 1786081076052,
-   "url": "https://www.linkedin.com/jobs/view/4448494663/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4448494663/",
-   "description": null,
-   "roleFingerprint": "2e93a2d62e",
-   "cardFacts": [
-    "Bengaluru",
-    "Remote"
    ],
    "region": "IN"
   },
