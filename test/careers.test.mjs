@@ -86,7 +86,12 @@ console.log('\n== THE JOBPOSTING MARKUP IS COMPLETE AND HONEST ==');
      exactly this. */
   check('remote is declared', ld.jobLocationType, 'TELECOMMUTE');
   check('with who may apply', ld.applicantLocationRequirements?.name, 'India');
-  check('employmentType is INTERN', ld.employmentType, 'INTERN');
+  /* Both, because the copy says part time and LinkedIn's title-description
+     alignment rule wants the page and the post to agree. */
+  const empType = [].concat(ld.employmentType);
+  check('employmentType names INTERN', empType.includes('INTERN'), true);
+  check('and PART_TIME, matching the copy', empType.includes('PART_TIME'), true);
+  check('the page states the job type', /<span class="pill">Part time<\/span>/.test(job), true);
   check('validThrough is set', !!ld.validThrough, true);
 
   /* directApply FALSE while the endpoint has nowhere to send. It means the
