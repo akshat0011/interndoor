@@ -810,6 +810,267 @@ PROVIDERS.uber = {
   },
 };
 
+
+/**
+ * Eightfold — Netflix, Lockheed Martin, Chevron and a long tail of large
+ * employers. Found by the 6 Sep sweep of the no-board pool (§8).
+ *
+ * THE TOKEN IS THE HOST, NOT A BOARD NAME, so it cannot be guessed from a
+ * company name: Eightfold serves each customer from its own hostname —
+ * `explore.jobs.netflix.net` as readily as `<tenant>.eightfold.ai`. Hence
+ * `tokenFromLink`, and hence it is absent from PROVIDER_NAMES.
+ *
+ * `domain=` IS OPTIONAL AND A WRONG ONE 404s, so it is omitted entirely.
+ * Measured: passing `domain=netflix.com` and passing nothing return byte-identical
+ * bodies, and `domain=WRONG.example` answers 404. Sending nothing cannot be
+ * wrong, and it is the only version that survives the tenant renaming its domain.
+ *
+ * ACCESS IS PER TENANT AND A WORKING ONE PROVES NOTHING ABOUT THE NEXT.
+ * Measured 7 Sep 2026: Netflix answers 200 with four positions; Lockheed Martin
+ * answers 403 on the identical call. So `verify` makes a real request rather
+ * than checking the token's shape.
+ */
+PROVIDERS.eightfold = {
+  label: 'Eightfold',
+  tokenFromLink: true,
+  async list(token) {
+    const host = eightfoldHost(token);
+    if (!host) return null;
+    const found = new Map();
+
+    for (const term of ['intern', 'internship', 'trainee', 'graduate']) {
+      const j = await getJson(
+        `https://${host}/api/apply/v2/jobs?query=${encodeURIComponent(term)}&start=0&num=50`,
+      );
+      if (!Array.isArray(j?.positions)) continue;
+
+      for (const p of j.positions) {
+        const id = p?.id;
+        if (!id || found.has(String(id))) continue;
+        found.set(String(id), job({
+          id,
+          // "Los Gatos,California,United States of America" — comma-joined with
+          // no spaces, which resolveRegion reads without help.
+          title: p.name,
+          location: p.location,
+          locationAlt: Array.isArray(p.locations) ? p.locations : [],
+          url: p.canonicalPositionUrl || `https://${host}/careers/job/${id}`,
+          // SECONDS, exactly like Microsoft's postedTs above. Handing this
+          // straight to new Date() dates every posting to 1970 and the staleness
+          // filter then drops the entire board without one error line.
+          postedAt: p.t_create ? Number(p.t_create) * 1000 : null,
+          department: p.department,
+          remote: p.work_location_option,
+          // Empty on the list endpoint for every tenant checked; detail() fills it.
+          description: p.job_description || null,
+          externalPath: String(id),
+        }));
+      }
+    }
+
+    return found.size ? [...found.values()] : null;
+  },
+
+  async verify(token) {
+    const host = eightfoldHost(token);
+    if (!host) return false;
+    const j = await getJson(`https://${host}/api/apply/v2/jobs?query=intern&start=0&num=1`);
+    return Array.isArray(j?.positions);
+  },
+
+  /** One request per internship kept, not one per posting seen. */
+  async detail(token, id) {
+    const host = eightfoldHost(token);
+    if (!host || !id) return null;
+    const j = await getJson(`https://${host}/api/apply/v2/jobs/${encodeURIComponent(id)}`);
+    if (!j?.job_description) return null;
+    return { description: stripHtml(j.job_description) };
+  },
+};
+
+/**
+ * Keka — an Indian HR suite, and the India board is the one starved for supply
+ * (§16), so this is the most valuable of the four by board rather than by count.
+ *
+ * THE ENDPOINT THE BROWSER USES IS NOT THE ONE TO USE. Watching the real page
+ * showed `/careers/api/embedjobs/default/active/<GUID>`, and that GUID is only
+ * recoverable by scraping it out of `careersBackgroundPath` — which is an EMPTY
+ * STRING on some tenants, so it is not recoverable at all. The undecorated
+ * sibling `/careers/api/jobs/default/active` needs no GUID and answers on every
+ * tenant measured (gokwik 27 jobs, solarsquare 174, bijak 0-and-valid).
+ * **Sniffing a page finds A call, not the BEST one — try the simpler sibling.**
+ *
+ * An empty board answers `[]` with HTTP 200, which is a real answer and not a
+ * failure; only a non-array is treated as the board not reading.
+ */
+PROVIDERS.keka = {
+  label: 'Keka',
+  async list(token) {
+    const j = await getJson(`https://${token}.keka.com/careers/api/jobs/default/active`);
+    if (!Array.isArray(j)) return null;
+    return j.map((p) => job({
+      id: p.id,
+      title: p.title,
+      location: kekaPlace(p.jobLocations?.[0]),
+      locationAlt: (p.jobLocations ?? []).slice(1).map(kekaPlace).filter(Boolean),
+      // There is no URL on the payload; this shape was checked live (200).
+      url: `https://${token}.keka.com/careers/jobdetails/${p.id}`,
+      postedAt: p.publishedOn,
+      department: p.departmentName,
+      // `excerpt` is the same prose with the markup already stripped, so it is
+      // the fallback rather than a second source.
+      description: p.description || p.excerpt,
+    }));
+  },
+
+  /**
+   * careerportalinfo names the real organisation, which is exactly what the
+   * guessed-token problem needs — `<slug>.keka.com` resolving is not evidence
+   * the slug is the company we meant.
+   */
+  async verify(token, companyName) {
+    const j = await getJson(`https://${token}.keka.com/careers/api/organization/default/careerportalinfo`);
+    return j?.name ? looksLikeSameCompany(j.name, companyName) : false;
+  },
+};
+
+/** "Gurugram, HR, India" out of Keka's location object; null when it holds nothing. */
+function kekaPlace(loc) {
+  if (!loc) return null;
+  const parts = [loc.city || loc.name, loc.state, loc.countryName].filter(Boolean);
+  return parts.length ? parts.join(', ') : null;
+}
+
+/** The host out of an Eightfold token, with a scheme or path tolerated. */
+function eightfoldHost(token) {
+  const host = String(token ?? '').replace(/^https?:\/\//i, '').replace(/[/?#].*$/, '').trim();
+  return /^[a-z0-9.-]+$/i.test(host) && host.includes('.') ? host : null;
+}
+
+/**
+ * Teamtailor — the cleanest of the four. `<tenant>.teamtailor.com/jobs.json` is
+ * a JSON Feed whose every item carries `_jobposting`, a full schema.org
+ * JobPosting object. Note OBJECT: it is already parsed, not the JSON string it
+ * looks like in a raw body dump.
+ *
+ * The feed is the whole board, so there is no keyword loop and no paging.
+ */
+PROVIDERS.teamtailor = {
+  label: 'Teamtailor',
+  async list(token) {
+    const j = await getJson(`https://${token}.teamtailor.com/jobs.json`);
+    if (!Array.isArray(j?.items)) return null;
+    return j.items.map((p) => {
+      const ld = p._jobposting && typeof p._jobposting === 'object' ? p._jobposting : null;
+      const places = teamtailorPlaces(ld);
+      return job({
+        id: p.id,
+        title: p.title ?? ld?.title,
+        location: places[0] ?? null,
+        locationAlt: places.slice(1),
+        url: p.url,
+        postedAt: p.date_published ?? ld?.datePosted,
+        description: ld?.description ?? p.content_html,
+      });
+    });
+  },
+
+  async verify(token, companyName) {
+    const j = await getJson(`https://${token}.teamtailor.com/jobs.json`);
+    if (!Array.isArray(j?.items)) return false;
+    const named = j.items[0]?._jobposting?.hiringOrganization?.name ?? j.title;
+    return named ? looksLikeSameCompany(named, companyName) : false;
+  },
+};
+
+/** "Barcelona, ES" for each Place on a schema.org JobPosting. */
+function teamtailorPlaces(ld) {
+  const raw = ld?.jobLocation;
+  const list = Array.isArray(raw) ? raw : raw ? [raw] : [];
+  return list.map((pl) => {
+    const a = pl?.address ?? {};
+    return [a.addressLocality, a.addressRegion, a.addressCountry]
+      .filter((x) => typeof x === 'string' && x.trim()).join(', ');
+  }).filter(Boolean);
+}
+
+/**
+ * Oracle Cloud Recruiting (Oracle itself, Nokia, and every Fusion HCM tenant).
+ *
+ * Like Eightfold the token is the HOST, which is a per-tenant Fusion pod name
+ * (`eeho.fa.us2.oraclecloud.com`, `fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com`)
+ * and guessable from nothing at all — so `tokenFromLink` again.
+ *
+ * `siteNumber` IS OPTIONAL AND IS DELIBERATELY OMITTED. The console and every
+ * guide pass one (`CX_1`, `CX_45001`); measured, the finder answers the same
+ * 1,971-requisition board with it, with a different one, and with none. A
+ * tenant-specific parameter that changes nothing is a tenant-specific parameter
+ * that can only go stale.
+ *
+ * The list carries no description at all — `detail()` fetches it per posting kept.
+ */
+PROVIDERS.oraclecloud = {
+  label: 'Oracle Cloud',
+  tokenFromLink: true,
+  async list(token) {
+    const host = eightfoldHost(token);
+    if (!host) return null;
+    const found = new Map();
+
+    for (const term of ['intern', 'internship', 'graduate']) {
+      const j = await getJson(
+        `https://${host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions`
+        + '?onlyData=true&expand=requisitionList.secondaryLocations'
+        + `&finder=findReqs;keyword=${encodeURIComponent(term)},limit=50`,
+      );
+      const reqs = j?.items?.[0]?.requisitionList;
+      if (!Array.isArray(reqs)) continue;
+
+      for (const r of reqs) {
+        const id = r?.Id;
+        if (!id || found.has(String(id))) continue;
+        found.set(String(id), job({
+          id,
+          title: r.Title,
+          location: r.PrimaryLocation,
+          locationAlt: (r.secondaryLocations ?? [])
+            .map((l) => l?.Name ?? l?.LocationName).filter(Boolean),
+          url: `https://${host}/hcmUI/CandidateExperience/en/sites/CX/job/${id}`,
+          postedAt: r.PostedDate,
+          department: r.JobFamily,
+          remote: r.WorkplaceTypeCode,
+          description: null,
+          externalPath: String(id),
+        }));
+      }
+    }
+
+    return found.size ? [...found.values()] : null;
+  },
+
+  async verify(token) {
+    const host = eightfoldHost(token);
+    if (!host) return false;
+    const j = await getJson(
+      `https://${host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions`
+      + '?onlyData=true&finder=findReqs;limit=1',
+    );
+    return Array.isArray(j?.items);
+  },
+
+  async detail(token, id) {
+    const host = eightfoldHost(token);
+    if (!host || !id) return null;
+    const j = await getJson(
+      `https://${host}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails`
+      + `?onlyData=true&expand=all&finder=ById;Id=%22${encodeURIComponent(id)}%22,siteNumber=CX_1`,
+    );
+    const d = j?.items?.[0];
+    if (!d?.ExternalDescriptionStr) return null;
+    return { description: stripHtml(d.ExternalDescriptionStr) };
+  },
+};
+
 /** Fetch the extra per-job data a provider only exposes on a detail endpoint. */
 export async function fetchDetail(providerName, token, atsJob) {
   const provider = PROVIDERS[providerName];
@@ -825,13 +1086,24 @@ export async function fetchDetail(providerName, token, atsJob) {
  * to guess at all — they are seeded, not found.
  */
 export const PROVIDER_NAMES = Object.keys(PROVIDERS)
-  .filter((n) => n !== 'workday' && !PROVIDERS[n].firstParty);
+  .filter((n) => n !== 'workday' && !PROVIDERS[n].firstParty && !PROVIDERS[n].tokenFromLink);
 
-/** Company → [provider, token] for boards that must be seeded rather than discovered. */
+/**
+ * Company → [provider, token] for boards that must be SEEDED RATHER THAN
+ * DISCOVERED — which is a wider category than "first party", and Netflix is why.
+ *
+ * Amazon, Microsoft and Uber are here because there is no token to guess: the
+ * host IS the company. Netflix is here for the opposite reason — it is a
+ * perfectly ordinary Eightfold tenant, but Eightfold serves it from the vanity
+ * host `explore.jobs.netflix.net`, which no `*.eightfold.ai` pattern can match
+ * and no company name can produce. A tenant on a vanity host is only ever
+ * reachable by being written down.
+ */
 export const FIRST_PARTY_BOARDS = {
   Amazon: ['amazon', 'IND'],
   Microsoft: ['microsoft', 'India'],
   Uber: ['uber', 'IND'],
+  Netflix: ['eightfold', 'explore.jobs.netflix.net'],
 };
 
 /**
@@ -844,7 +1116,8 @@ export const FIRST_PARTY_BOARDS = {
 export function parseAtsLink(text) {
   const m = String(text ?? '').match(ATS_LINK);
   if (!m) return null;
-  const [, wdTenant, wdNum, wdSite, ghEmbed, gh, lever, ashby, recruitee, workable, smart] = m;
+  const [, wdTenant, wdNum, wdSite, ghEmbed, gh, lever, ashby, recruitee, workable, smart,
+    keka, teamtailor, eightfold, oracle] = m;
   if (wdTenant && wdNum && wdSite) return { provider: 'workday', token: `${wdTenant}:${wdNum}:${wdSite}` };
   if (ghEmbed) return { provider: 'greenhouse', token: ghEmbed };
   if (gh) return { provider: 'greenhouse', token: gh };
@@ -853,6 +1126,10 @@ export function parseAtsLink(text) {
   if (recruitee) return { provider: 'recruitee', token: recruitee };
   if (workable) return { provider: 'workable', token: workable };
   if (smart) return { provider: 'smartrecruiters', token: smart };
+  if (keka) return { provider: 'keka', token: keka };
+  if (teamtailor) return { provider: 'teamtailor', token: teamtailor };
+  if (eightfold) return { provider: 'eightfold', token: eightfold };
+  if (oracle) return { provider: 'oraclecloud', token: oracle };
   return null;
 }
 
@@ -875,6 +1152,16 @@ const ATS_LINK = new RegExp([
   String.raw`([a-z0-9-]+)\.recruitee\.com`,
   String.raw`apply\.workable\.com\/([a-z0-9-]+)`,
   String.raw`jobs\.smartrecruiters\.com\/([A-Za-z0-9-]+)`,
+  // Added 7 Sep 2026. APPENDED, NEVER INSERTED: parseAtsLink destructures these
+  // groups POSITIONALLY, so a new pattern anywhere but the end silently
+  // renumbers every provider after it.
+  String.raw`([a-z0-9-]+)\.keka\.com`,
+  String.raw`([a-z0-9-]+)\.teamtailor\.com`,
+  // Eightfold and Oracle are keyed by HOST, so the whole host is the capture. A
+  // tenant on its own vanity host (explore.jobs.netflix.net) matches no generic
+  // pattern at all and has to be seeded instead — see FIRST_PARTY_BOARDS.
+  String.raw`([a-z0-9-]+\.eightfold\.ai)`,
+  String.raw`([a-z0-9][a-z0-9.-]*\.oraclecloud\.com)`,
 ].join('|'), 'i');
 
 /** Plausible homepages for a company name, best guess first. */
@@ -956,19 +1243,15 @@ async function verified(hit, companyName) {
   }
 }
 
+/**
+ * THREE CALLERS USED TO DESTRUCTURE ATS_LINK'S GROUPS BY POSITION, and adding
+ * four providers would have meant getting the same index list right in three
+ * places — the copy here was byte-identical to parseAtsLink's. They all go
+ * through parseAtsLink now, so a new pattern cannot land in two of them and
+ * drift in the third.
+ */
 function matchAts(page) {
-  const m = page.url.match(ATS_LINK) || page.html.match(ATS_LINK);
-  if (!m) return null;
-  const [, wdTenant, wdNum, wdSite, ghEmbed, gh, lever, ashby, recruitee, workable, smart] = m;
-  if (wdTenant && wdNum && wdSite) return { provider: 'workday', token: `${wdTenant}:${wdNum}:${wdSite}` };
-  if (ghEmbed) return { provider: 'greenhouse', token: ghEmbed };
-  if (gh) return { provider: 'greenhouse', token: gh };
-  if (lever) return { provider: 'lever', token: lever };
-  if (ashby) return { provider: 'ashby', token: ashby };
-  if (recruitee) return { provider: 'recruitee', token: recruitee };
-  if (workable) return { provider: 'workable', token: workable };
-  if (smart) return { provider: 'smartrecruiters', token: smart };
-  return null;
+  return parseAtsLink(page.url) ?? parseAtsLink(page.html);
 }
 
 /** Links on a homepage that look like they lead to jobs. */
@@ -1029,19 +1312,12 @@ export async function discoverViaCareersPage(companyName) {
       let html = '';
       try { html = await res.text(); } catch { continue; }
 
-      const m = res.url.match(ATS_LINK) || html.match(ATS_LINK);
-      if (!m) continue;
+      const hit = parseAtsLink(res.url) ?? parseAtsLink(html);
+      if (!hit) continue;
 
-      // Groups line up with the alternation order above.
-      const [, wdTenant, wdNum, wdSite, ghEmbed, gh, lever, ashby, recruitee, workable, smart] = m;
-      if (wdTenant && wdNum && wdSite) return (await verified({ provider: 'workday', token: `${wdTenant}:${wdNum}:${wdSite}` }, companyName)) && { provider: 'workday', token: `${wdTenant}:${wdNum}:${wdSite}`, via: url };
-      if (ghEmbed) return (await verified({ provider: 'greenhouse', token: ghEmbed }, companyName)) && { provider: 'greenhouse', token: ghEmbed, via: url };
-      if (gh) return (await verified({ provider: 'greenhouse', token: gh }, companyName)) && { provider: 'greenhouse', token: gh, via: url };
-      if (lever) return (await verified({ provider: 'lever', token: lever }, companyName)) && { provider: 'lever', token: lever, via: url };
-      if (ashby) return (await verified({ provider: 'ashby', token: ashby }, companyName)) && { provider: 'ashby', token: ashby, via: url };
-      if (recruitee) return (await verified({ provider: 'recruitee', token: recruitee }, companyName)) && { provider: 'recruitee', token: recruitee, via: url };
-      if (workable) return (await verified({ provider: 'workable', token: workable }, companyName)) && { provider: 'workable', token: workable, via: url };
-      if (smart) return (await verified({ provider: 'smartrecruiters', token: smart }, companyName)) && { provider: 'smartrecruiters', token: smart, via: url };
+      // Same shape the eight branches here always had: a hit that does not
+      // verify ends the search rather than falling through to the next path.
+      return (await verified(hit, companyName)) && { ...hit, via: url };
     }
   }
   return null;

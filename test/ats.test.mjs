@@ -1,4 +1,5 @@
-import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType } from '../src/ats.js';
+import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
+  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -251,6 +252,197 @@ check('a workplace-type slot is detected', /isWorkplaceType\(job\.location\)/.te
 check('and the candidate is actually kept', /job\.location = first/.test(code), true);
 check('the rescue runs only after the resolving loop',
   code.indexOf('isWorkplaceType(job.location)') > code.indexOf('if (region !== UNKNOWN) { job.location = alt; return region; }'), true);
+
+/* ------------------------------------------------------------------------- *
+ * The four providers added 7 Sep 2026 — Eightfold, Keka, Teamtailor and
+ * Oracle Cloud — found by the sweep of the no-board pool in section 8.
+ *
+ * These call list() with a STUBBED fetch rather than grepping the source. The
+ * bug worth catching here cannot be seen in a grep: Eightfold's t_create is in
+ * SECONDS, and handing it to new Date() unmultiplied dates every posting to
+ * 1970, at which point the staleness filter drops the whole board with no error
+ * line at all. That is Microsoft's postedTs trap, one provider later.
+ * ------------------------------------------------------------------------- */
+console.log('\n== the new providers: link shapes ==');
+check('keka is read off its host', parseAtsLink('https://gokwik.keka.com/careers/'),
+  { provider: 'keka', token: 'gokwik' });
+check('teamtailor is read off its host', parseAtsLink('https://payfit.teamtailor.com/jobs'),
+  { provider: 'teamtailor', token: 'payfit' });
+check('eightfold keeps the WHOLE host as the token',
+  parseAtsLink('https://lockheedmartin.eightfold.ai/careers'),
+  { provider: 'eightfold', token: 'lockheedmartin.eightfold.ai' });
+check('oracle keeps the whole multi-label pod host',
+  parseAtsLink('https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/x'),
+  { provider: 'oraclecloud', token: 'fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com' });
+
+/* The four patterns were APPENDED to ATS_LINK because parseAtsLink destructures
+   its groups by POSITION. Inserting one anywhere but the end renumbers every
+   provider after it, and the failure is silent — a Workday link starts
+   resolving as Greenhouse. These pin that the old shapes did not shift. */
+console.log('\n== and the old shapes did not shift ==');
+check('greenhouse', parseAtsLink('https://boards.greenhouse.io/stripe'),
+  { provider: 'greenhouse', token: 'stripe' });
+check('greenhouse embed', parseAtsLink('https://boards.greenhouse.io/embed/job_board?for=cloudsek'),
+  { provider: 'greenhouse', token: 'cloudsek' });
+check('lever', parseAtsLink('https://jobs.lever.co/meesho'), { provider: 'lever', token: 'meesho' });
+check('ashby', parseAtsLink('https://jobs.ashbyhq.com/openai'), { provider: 'ashby', token: 'openai' });
+check('workday keeps tenant:wdN:site', parseAtsLink('https://acme.wd1.myworkdayjobs.com/en-US/External'),
+  { provider: 'workday', token: 'acme:wd1:External' });
+check('smartrecruiters', parseAtsLink('https://jobs.smartrecruiters.com/Freshworks'),
+  { provider: 'smartrecruiters', token: 'Freshworks' });
+check('a non-board URL is still nothing', parseAtsLink('https://example.com/careers'), null);
+
+console.log('\n== which providers discovery may GUESS a token for ==');
+/* Eightfold and Oracle are keyed by HOST, which no company name produces, so
+   letting discovery guess at them means one wasted request per company per
+   provider forever. */
+check('keka is guessable', PROVIDER_NAMES.includes('keka'), true);
+check('teamtailor is guessable', PROVIDER_NAMES.includes('teamtailor'), true);
+check('eightfold is NOT guessable', PROVIDER_NAMES.includes('eightfold'), false);
+check('oraclecloud is NOT guessable', PROVIDER_NAMES.includes('oraclecloud'), false);
+check('and neither are the first-party boards', PROVIDER_NAMES.includes('amazon'), false);
+
+console.log('\n== a vanity host can only be reached by being written down ==');
+check('Netflix is seeded onto eightfold', FIRST_PARTY_BOARDS.Netflix,
+  ['eightfold', 'explore.jobs.netflix.net']);
+check('its token is the vanity host, not a *.eightfold.ai guess',
+  parseAtsLink('https://explore.jobs.netflix.net/careers'), null);
+
+/* One stub for every provider below. Each returns the first body whose key the
+   requested URL contains, so a provider asking for an endpoint the test did not
+   plan for gets null rather than another provider's payload. */
+function stubFetch(routes) {
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    const hit = Object.entries(routes).find(([frag]) => String(url).includes(frag));
+    return {
+      ok: !!hit, status: hit ? 200 : 404,
+      headers: { get: () => null },
+      async text() { return JSON.stringify(hit ? hit[1] : {}); },
+    };
+  };
+  return () => { globalThis.fetch = realFetch; };
+}
+
+console.log('\n== Eightfold: the seconds-vs-milliseconds trap ==');
+{
+  const restore = stubFetch({
+    '/api/apply/v2/jobs': {
+      count: 1,
+      positions: [{
+        id: '790317917022',
+        name: 'Machine Learning Intern',
+        location: 'Los Gatos,California,United States of America',
+        locations: ['Los Gatos,California,United States of America'],
+        department: 'Engineering',
+        // SECONDS. 1787097600 is 2026-08-19; as milliseconds it is 1970-01-21.
+        t_create: '1787097600',
+        canonicalPositionUrl: 'https://explore.jobs.netflix.net/careers/job/790317917022',
+        work_location_option: 'onsite',
+        job_description: '',
+      }],
+    },
+  });
+  const jobs = await fetchBoard('eightfold', 'explore.jobs.netflix.net');
+  restore();
+  check('one posting, deduped across the four search terms', jobs.length, 1);
+  check('t_create is multiplied to milliseconds',
+    new Date(jobs[0].postedAt).toISOString().slice(0, 7), '2026-08');
+  check('and is NOT read as milliseconds', new Date(jobs[0].postedAt).getUTCFullYear() === 1970, false);
+  check('the canonical URL is preferred over a built one', jobs[0].url,
+    'https://explore.jobs.netflix.net/careers/job/790317917022');
+  check('the id is carried for the detail fetch', jobs[0].externalPath, '790317917022');
+  check('an empty description stays null rather than becoming ""', jobs[0].description, null);
+}
+
+console.log('\n== Keka: locations, URL, and an empty board ==');
+{
+  const restore = stubFetch({
+    '/careers/api/jobs/default/active': [{
+      id: 159768,
+      title: 'Software Engineering Intern',
+      description: '<p>Build things.</p>',
+      excerpt: 'Build things.',
+      departmentName: 'Engineering',
+      jobLocations: [
+        { city: 'Gurugram', state: 'HR', countryName: 'India' },
+        { city: 'Bengaluru', state: 'KA', countryName: 'India' },
+      ],
+      publishedOn: '2026-09-04T12:04:06.933Z',
+    }],
+  });
+  const jobs = await fetchBoard('keka', 'gokwik');
+  restore();
+  check('the location object becomes a readable place', jobs[0].location, 'Gurugram, HR, India');
+  check('and the rest become alternates', jobs[0].locationAlt, ['Bengaluru, KA, India']);
+  check('that place resolves to a region', resolveRegion(jobs[0].location, {}) !== UNKNOWN, true);
+  check('the payload carries no URL so one is built', jobs[0].url,
+    'https://gokwik.keka.com/careers/jobdetails/159768');
+  check('HTML description is stripped', jobs[0].description, 'Build things.');
+}
+{
+  /* bijak.keka.com really answers this: HTTP 200 with an empty array. That is a
+     board with nothing open, NOT a board that failed to read, and collapsing
+     the two would retire a live tenant on its quiet week. */
+  const restore = stubFetch({ '/careers/api/jobs/default/active': [] });
+  const jobs = await fetchBoard('keka', 'bijak');
+  restore();
+  check('an empty board is [] and not null', Array.isArray(jobs) && jobs.length === 0, true);
+}
+
+console.log('\n== Teamtailor: _jobposting is an OBJECT, not a JSON string ==');
+{
+  const restore = stubFetch({
+    '.teamtailor.com/jobs.json': {
+      title: 'PayFit',
+      items: [{
+        id: '308d03b9',
+        title: 'Backend Intern',
+        url: 'https://payfit.teamtailor.com/jobs/7977149-backend-intern',
+        date_published: '2026-06-26T11:30:42+02:00',
+        content_html: '<p>fallback</p>',
+        _jobposting: {
+          '@type': 'JobPosting',
+          title: 'Backend Intern',
+          description: '<p>Real description.</p>',
+          jobLocation: [{ address: { addressLocality: 'Barcelona', addressCountry: 'ES' } }],
+        },
+      }],
+    },
+  });
+  const jobs = await fetchBoard('teamtailor', 'payfit');
+  restore();
+  check('the embedded JobPosting supplies the place', jobs[0].location, 'Barcelona, ES');
+  check('its description wins over content_html', jobs[0].description, 'Real description.');
+  check('the feed URL is used as-is', jobs[0].url,
+    'https://payfit.teamtailor.com/jobs/7977149-backend-intern');
+  check('date_published is parsed', new Date(jobs[0].postedAt).toISOString().slice(0, 10), '2026-06-26');
+}
+
+console.log('\n== Oracle Cloud: requisitions are nested two deep ==');
+{
+  const restore = stubFetch({
+    'recruitingCEJobRequisitions': {
+      items: [{
+        TotalJobsCount: 1971,
+        requisitionList: [{
+          Id: '344176',
+          Title: 'Financial Analyst Intern',
+          PrimaryLocation: 'Nashville, TN, United States',
+          PostedDate: '2026-08-31',
+          secondaryLocations: [{ Name: 'Austin, TX, United States' }],
+        }],
+      }],
+    },
+  });
+  const jobs = await fetchBoard('oraclecloud', 'eeho.fa.us2.oraclecloud.com');
+  restore();
+  check('the requisition is found under items[0].requisitionList', jobs.length, 1);
+  check('PrimaryLocation is the location', jobs[0].location, 'Nashville, TN, United States');
+  check('secondary locations become alternates', jobs[0].locationAlt, ['Austin, TX, United States']);
+  check('PostedDate is parsed', new Date(jobs[0].postedAt).toISOString().slice(0, 10), '2026-08-31');
+  check('the list carries no description, so detail() must run', jobs[0].description, null);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
