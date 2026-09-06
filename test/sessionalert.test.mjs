@@ -189,9 +189,18 @@ console.log('\n== src/index.js actually calls it, on the right signal ==');
   check('imported', /import \{ alertOnSessionLoss \} from '\.\/sessionalert\.js'/.test(src), true);
   check('called', /await alertOnSessionLoss\(store, \{/.test(src), true);
   check('healthy covers ok and partial',
-    /healthy: status === 'ok' \|\| status === 'partial'/.test(src), true);
+    /healthy: \(status === 'ok' \|\| status === 'partial'\)/.test(src), true);
+  /* ONE ACCOUNT PER REGION: a run can be `ok` and still have left a board
+     signed out, and clearing the marker on that re-arms the alert every tick
+     so the same dead account is pushed about forever. */
+  check('but a region left signed out is NOT healthy',
+    /healthy: .*&& deadRegions\.size === 0/.test(src), true);
   check('and it keys on the LOGGED_OUT state',
     /sessionExpired: abortState === State\.LOGGED_OUT/.test(src), true);
+  check('or on any region whose account was signed out',
+    /sessionExpired: .*\|\| deadRegions\.size > 0/.test(src), true);
+  check('and the dead regions are named to the alert',
+    /regions: \[\.\.\.deadRegions\.keys\(\)\]/.test(src), true);
   // abortState has to actually be captured, or sessionExpired is always false.
   check('the abort state is captured in the catch', /abortState = err\.state;/.test(src), true);
 }

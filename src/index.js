@@ -10,7 +10,7 @@ import { writeFile } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
 import { Store } from './store.js';
-import { launchBrave, closeBrave, releaseProfileLock } from './browser.js';
+import { launchBrave, closeBrave, releaseAllProfileLocks } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
@@ -322,9 +322,10 @@ async function main() {
   }
   if (heldSince && lockAgeMin >= lockExpiryMin) {
     log.warn(`Clearing a stale run lock (${lockAgeMin.toFixed(0)} min old — the previous run probably crashed).`);
-    // A run that overran its lock may still have a Brave alive on the profile.
-    // Ending it here is what stops this run inheriting the same launch timeout.
-    releaseProfileLock();
+    // A run that overran its lock may still have a Brave alive on a profile —
+    // and with one profile per region we do not know which, or how many, so
+    // every scraper profile is released rather than only India's.
+    releaseAllProfileLocks();
   }
 
   // Refuse to run while a cooldown from a previous rate limit is in force.
@@ -470,15 +471,52 @@ async function main() {
   let braveLaunchFailed = false;
   let searchesDone = 0;
   let searchStart = 0;
+  /* Regions whose own LinkedIn account was signed out when this run reached
+     it. Declared out here because the session alert below has to name them:
+     with one account per region, "collection has stopped" is no longer true
+     just because one of them died. */
+  const deadRegions = new Map();
 
   try {
-    session = await launchBrave(cfg);
-    const { page, context } = session;
+    /**
+     * ONE BRAVE PROFILE PER REGION, so the browser is opened PER REGION rather
+     * than once for the whole run — LinkedIn throttles the account, and the
+     * point of the split is that no one account carries every board's volume.
+     *
+     * Opened lazily, at the first search that actually needs it. The old code
+     * launched Brave and signed in BEFORE the loop, which meant a run where
+     * every search was skipped for not being due still paid for a launch and a
+     * sign-in against the account — the exact cost the searchesPerRun comment
+     * below already warned about.
+     */
+    let page;
+    let context;
+    let openRegion = null;
+    /* Distinct from openRegion, which only describes the session open RIGHT
+       NOW. A run that swept India and then found the US account signed out has
+       openRegion === null and must not be reported as a total outage. */
+    let anyRegionWorked = false;
 
-    await li.warmUp(page, cfg);
-    await ensureHealthy(page, cfg, { context: 'warm-up', remainingMs: clock.remainingMs() });
-    await assertSignedIn(page, context, cfg);
-    log.ok('Signed in.');
+    const openRegionSession = async (code) => {
+      if (openRegion === code) return;
+      // One at a time. Two live Braves would double the concurrent footprint
+      // this whole change exists to reduce, and each profile is an exclusive
+      // lock anyway.
+      if (session) {
+        await closeBrave(session);
+        session = null;
+        openRegion = null;
+      }
+      session = await launchBrave(cfg, { region: code });
+      ({ page, context } = session);
+
+      await li.warmUp(page, cfg);
+      await ensureHealthy(page, cfg, { context: `warm-up (${code})`, remainingMs: clock.remainingMs() });
+      await assertSignedIn(page, context, cfg);
+      openRegion = code;
+      anyRegionWorked = true;
+      log.ok(`Signed in (${code} account).`);
+    };
 
     // Rotate the starting point. With a long keyword list one run cannot
     // always reach the end, and starting from index 0 every time would mean
@@ -515,8 +553,25 @@ async function main() {
     // India would then be swept every other run. Counting walks instead lets the
     // skip fall through to the next search in the rotation, which is the whole
     // point of a rotation.
+    /**
+     * GROUP THE ROTATION BY REGION, preserving the order each region first
+     * appears in.
+     *
+     * A region change now costs a Brave close plus a fresh launch, warm-up and
+     * sign-in, so an IN → US → IN ordering would pay that twice and open
+     * India's account twice in one run — extra page loads against the very
+     * accounts this split exists to protect. Stable, so the rotation cursor
+     * still decides which region leads and no search loses its turn.
+     */
+    const byRegion = new Map();
+    for (const search of rotation) {
+      const code = search.region ?? 'IN';
+      if (!byRegion.has(code)) byRegion.set(code, []);
+      byRegion.get(code).push(search);
+    }
+
     const perRun = Number(cfg.limits.searchesPerRun ?? 0);
-    const ordered = rotation;
+    const ordered = [...byRegion.values()].flat();
     let walked = 0;
     if (perRun > 0 && allSearches.length > perRun) {
       log.info(`Walking at most ${perRun} of ${allSearches.length} searches this run — the rest take their turn next.`);
@@ -558,6 +613,43 @@ async function main() {
         log.info(`${region}: last swept ${elapsedMin.toFixed(0)}m ago, runs every ${intervalMin}m — skipping this run.`);
         searchesDone++;
         continue;
+      }
+
+      /**
+       * A SIGNED-OUT ACCOUNT NOW COSTS ONE REGION, NOT THE WHOLE RUN.
+       *
+       * This is the entire operational point of separate accounts. Before the
+       * split there was one session, so one expired cookie aborted everything:
+       * 34 runs and ~17 hours of zero collection on EVERY board over ten days
+       * in September, each ended only by a hand-run `npm run login`. All 34
+       * died inside 0.2 minutes — at sign-in, before a single search — which is
+       * why catching it here, at session-open, covers every failure actually
+       * observed rather than a hypothetical one.
+       *
+       * A region is tried ONCE per run. Re-launching Brave for each of its
+       * searches to be refused again is page loads spent on an account that has
+       * already said no, which is the opposite of the goal.
+       */
+      if (deadRegions.has(region)) {
+        searchesDone++;
+        continue;
+      }
+      try {
+        await openRegionSession(region);
+      } catch (err) {
+        /* Only a LinkedIn-level refusal is survivable this way. A browser that
+           will not launch, or a machine with no network, is not a fact about
+           this region's account and must still end the run — otherwise every
+           region is tried in turn and the run reports a tidy `ok` having
+           collected nothing. */
+        if (err instanceof RunAborted && err.state === State.LOGGED_OUT) {
+          deadRegions.set(region, err.message);
+          log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
+          notes.push(`The ${region} LinkedIn account is signed out, so ${region} collected nothing this run. Run \`npm run login -- --region=${region}\`.`);
+          searchesDone++;
+          continue;
+        }
+        throw err;
       }
 
       windowsUsed.add(filters.postedWithinHours);
@@ -1198,10 +1290,29 @@ async function main() {
       }
     }
 
+    /* EVERY ACCOUNT SIGNED OUT is the old whole-run outage, and it still has to
+       read as one — same status, same abortState, so the phone push and the
+       report say what they always said. Anything less than every account is a
+       partial loss and is reported through `notes` and the alert's region list
+       instead. */
+    if (deadRegions.size && !anyRegionWorked) {
+      throw new RunAborted(State.LOGGED_OUT,
+        `Every LinkedIn account is signed out (${[...deadRegions.keys()].join(', ')}).`);
+    }
+
     // ---- backfill descriptions we never fetched ----------------------------
     // Must happen here, inside the browser session: the `finally` below closes
     // Brave, and enrichment further down has no page to work with.
-    await backfillDescriptions(page, store, cfg, clock, counters);
+    //
+    // Gated on openRegion, NOT on `page`. When the last region tried was the
+    // one that turned out to be signed out, `page` is still bound to that
+    // browser — backfilling through it would send every request through a
+    // signed-out session and store whatever the guest surface returns.
+    if (openRegion) {
+      await backfillDescriptions(page, store, cfg, clock, counters);
+    } else if (anyRegionWorked) {
+      log.info('Skipping description backfill: the last account opened this run was signed out.');
+    }
   } catch (err) {
     if (err instanceof RunAborted) {
       status = counters.newJobs > 0 ? 'partial' : 'aborted';
@@ -1458,9 +1569,15 @@ async function main() {
 
   /* An expired session is the one failure that stops every board at once, and
      guard.js only banners the Mac for it. See src/sessionalert.js. */
+  /* ONE ACCOUNT PER REGION MEANS "HEALTHY" IS NO LONGER A RUN-LEVEL FACT.
+     A run that swept India cleanly while the US account sat signed out files
+     as `ok`, and clearing the marker on that would re-arm the alert every
+     half hour and push about the same dead account forever. It is healthy only
+     when nothing was left behind. */
   await alertOnSessionLoss(store, {
-    healthy: status === 'ok' || status === 'partial',
-    sessionExpired: abortState === State.LOGGED_OUT,
+    healthy: (status === 'ok' || status === 'partial') && deadRegions.size === 0,
+    sessionExpired: abortState === State.LOGGED_OUT || deadRegions.size > 0,
+    regions: [...deadRegions.keys()],
     enabled: cfg.notifications?.onError !== false,
   });
 

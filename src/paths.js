@@ -40,6 +40,15 @@ export const PATHS = {
    * survives restarts, and touches nothing else.
    */
   whatsappProfile: join(STATE, 'whatsapp-profile'),
+
+  /**
+   * The region whose LinkedIn account keeps the ORIGINAL profile directory.
+   *
+   * See profileFor() below. India is the default because it is the oldest and
+   * busiest board, so the account already signed in there is not thrown away
+   * by this change.
+   */
+  defaultProfileRegion: 'IN',
   reports: join(STATE, 'reports'),
   screenshots: join(STATE, 'screenshots'),
   latestReport: join(STATE, 'reports', 'latest.html'),
@@ -104,6 +113,41 @@ export const PATHS = {
   /** Where install-schedule.sh puts the script launchd actually executes. */
   launchScriptDir: join(homedir(), 'Library', 'Application Scripts', `com.akshat0011.${APP_ID}`),
 };
+
+/**
+ * THE BRAVE PROFILE HOLDING ONE REGION'S LINKEDIN ACCOUNT.
+ *
+ * ONE ACCOUNT PER REGION, 6 SEP 2026. LinkedIn throttles the ACCOUNT, and it
+ * says so during the interactive sign-in — "your profile is requesting too much
+ * data" — which is a surface no log here has ever recorded, because it appears
+ * in `npm run login` rather than in a scan. So the volume that India's
+ * uncapped walk and the US sweep make TOGETHER is what one account was paying
+ * for, and splitting them halves what either account is judged on.
+ *
+ * A separate profile per region is what makes that real: a Chromium profile is
+ * one cookie jar, so two accounts in one directory cannot both be signed in —
+ * LinkedIn shows its "Choose an account" picker instead, which `guard.js`
+ * correctly reads as logged out.
+ *
+ * INDIA KEEPS THE ORIGINAL DIRECTORY ON PURPOSE. Renaming it would discard a
+ * working session and force a fresh sign-in on the busiest board, for nothing.
+ * Every other region gets `brave-profile-<CODE>` beside it.
+ *
+ * THE NAMES ARE DELIBERATELY PREFIXES OF EACH OTHER, WHICH IS A TRAP THIS
+ * REPO HAS ALREADY PAID FOR ONCE (`utmUrl` accepting a lookalike host on a
+ * string prefix). `brave-profile` is a prefix of `brave-profile-US`, so any
+ * code matching the profile path with `includes` will treat one region's Brave
+ * as the other's and kill a live scrape. `releaseProfileLock` matches to an
+ * argument boundary for exactly this reason — see src/browser.js.
+ */
+export function profileFor(region) {
+  const code = String(region ?? '').trim().toUpperCase();
+  // Anything that is not an ISO-shaped code falls back to the default profile
+  // rather than building a path out of it. This is a filesystem path, so a
+  // stray '../' must never reach it.
+  if (!/^[A-Z]{2}$/.test(code) || code === PATHS.defaultProfileRegion) return PATHS.profile;
+  return `${PATHS.profile}-${code}`;
+}
 
 /** Directories that must exist before use. launchd never creates them for us. */
 const MANAGED = ['state', 'profile', 'reports', 'screenshots', 'posts', 'logs',

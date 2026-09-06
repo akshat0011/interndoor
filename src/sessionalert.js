@@ -44,7 +44,7 @@ export const SESSION_ALERT_GAP_MS = 6 * 60 * 60 * 1000;
  * @returns {Promise<'sent'|'throttled'|'rearmed'|'skipped'>}
  */
 export async function alertOnSessionLoss(store, {
-  healthy = false, sessionExpired = false, enabled = true,
+  healthy = false, sessionExpired = false, enabled = true, regions = [],
   push = pushToPhone, now = Date.now,
 } = {}) {
   try {
@@ -70,16 +70,37 @@ export async function alertOnSessionLoss(store, {
     }
     store.setSetting(SESSION_ALERT_KEY, now());
 
+    /**
+     * NAME THE ACCOUNT, BECAUSE THE FIX IS NOW A DIFFERENT COMMAND PER REGION.
+     *
+     * Each region signs in to its own LinkedIn account and its own Brave
+     * profile, so a bare "run npm run login" sends him to re-sign INDIA — which
+     * on a US outage is the one account that was already working, and signing a
+     * second account into a profile that has one is exactly how the "Choose an
+     * account" picker appears and reads as a dead session.
+     *
+     * The wording has to stop claiming a total outage too: with the accounts
+     * split, one dying leaves every other board collecting normally, and an
+     * alert that overstates is one he learns to discount.
+     */
+    const named = [...new Set(regions.map((r) => String(r).toUpperCase()))].filter(Boolean);
+    const scope = named.length
+      ? `${named.join(' and ')} ${named.length === 1 ? 'has' : 'have'} stopped collecting`
+      : 'Collection has stopped on every board';
+    const fix = named.length === 1
+      ? `npm run login -- --region=${named[0]}`
+      : 'npm run login';
+
     /* priority 5 and rotating_light: ntfy breaks a 5 through a silent phone,
-       and this is the one alert that warrants it — every board has stopped. */
+       and this is the one alert that warrants it — a board has stopped. */
     const sent = await push(
-      'InternDoor: LinkedIn session expired',
-      'Collection has stopped on every board. Run `npm run login` on the Mac to sign in again.',
+      `InternDoor: LinkedIn session expired${named.length ? ` (${named.join(', ')})` : ''}`,
+      `${scope}. Run \`${fix}\` on the Mac to sign in again.`,
       { tags: ['rotating_light'], priority: 5 },
     );
     log.error(sent
-      ? 'LinkedIn session expired — pushed to phone. Run `npm run login`.'
-      : 'LinkedIn session expired and the phone push did not send. Run `npm run login`.');
+      ? `LinkedIn session expired${named.length ? ` (${named.join(', ')})` : ''} — pushed to phone. Run \`${fix}\`.`
+      : `LinkedIn session expired${named.length ? ` (${named.join(', ')})` : ''} and the phone push did not send. Run \`${fix}\`.`);
     return 'sent';
   } catch (err) {
     // An alert that throws must never change how a run is recorded.

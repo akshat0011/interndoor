@@ -8,24 +8,47 @@
  * every scheduled run.
  */
 import { loadConfig } from '../src/config.js';
-import { ensureDirs } from '../src/paths.js';
+import { ensureDirs, PATHS, profileFor } from '../src/paths.js';
 import { launchBrave, closeBrave, hasLinkedInSession } from '../src/browser.js';
 import { log } from '../src/logger.js';
 import { sleep } from '../src/human.js';
 
 const WAIT_MINUTES = 10;
 
+/**
+ * WHICH REGION'S ACCOUNT AM I SIGNING IN?
+ *
+ * One account per region (see profileFor() in src/paths.js), so this has to be
+ * told which one, and getting it wrong signs the WRONG account into a working
+ * profile — which is precisely the two-accounts-one-profile state that produced
+ * LinkedIn's "Choose an account" picker and read as a dead session.
+ *
+ * Defaulting to India rather than demanding the flag keeps the muscle-memory
+ * `npm run login` doing what it has always done, on the profile it has always
+ * used.
+ */
+const regionArg = process.argv.slice(2)
+  .map((a) => /^--region=(.+)$/.exec(a)?.[1])
+  .find(Boolean);
+const REGION = String(regionArg ?? PATHS.defaultProfileRegion).trim().toUpperCase();
+
+if (!/^[A-Z]{2}$/.test(REGION)) {
+  log.error(`"${REGION}" is not an ISO region code. Use e.g. \`npm run login -- --region=US\`.`);
+  process.exit(1);
+}
+
 ensureDirs();
 const cfg = loadConfig();
 
-log.section('LinkedIn sign-in');
+log.section(`LinkedIn sign-in — ${REGION} account`);
+log.info(`Profile: ${profileFor(REGION)}`);
 
-const session = await launchBrave(cfg, { forLogin: true });
+const session = await launchBrave(cfg, { forLogin: true, region: REGION });
 const { context, page } = session;
 
 try {
   if (await hasLinkedInSession(context)) {
-    log.info('There is already a session cookie in this profile — checking it still works…');
+    log.info(`There is already a ${REGION} session cookie in this profile — checking it still works…`);
     await page.goto('https://www.linkedin.com/feed/', { waitUntil: 'domcontentloaded' });
     await sleep(4000);
     const url = page.url();
@@ -89,10 +112,10 @@ try {
   process.stdout.write('\n');
 
   if (ok) {
-    log.ok('Signed in. The session is saved in data/brave-profile and will be reused by every run.');
+    log.ok(`Signed in. The ${REGION} session is saved in ${profileFor(REGION)} and will be reused by every run.`);
     log.info('Next: `npm run dry-run` to test a small scan, then `npm run install-schedule` for 12:00 / 18:00.');
   } else {
-    log.error('Sign-in did not complete in time. Run `npm run login` again when you are ready.');
+    log.error(`Sign-in did not complete in time. Run \`npm run login -- --region=${REGION}\` again when you are ready.`);
     process.exitCode = 1;
   }
 } finally {

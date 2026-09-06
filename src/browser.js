@@ -1,8 +1,9 @@
 import { existsSync, mkdirSync, rmSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { chromium } from 'playwright-core';
-import { PATHS } from './paths.js';
+import { PATHS, profileFor } from './paths.js';
+import { RunAborted, State } from './guard.js';
 import { log } from './logger.js';
 
 export const BRAVE_PATH = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser';
@@ -111,7 +112,43 @@ function restoreFocus(appName) {
  *      unclean, which is what produces the "Brave didn't shut down correctly"
  *      restore-tabs bar on the next launch — another source of stray tabs.
  */
-export function releaseProfileLock() {
+/**
+ * Is this `ps` line a browser holding EXACTLY this profile directory?
+ *
+ * MATCH TO AN ARGUMENT BOUNDARY, NEVER WITH A BARE `includes`.
+ *
+ * Since regions got their own profiles the directory names are prefixes of one
+ * another — `brave-profile` is a prefix of `brave-profile-US` — so a substring
+ * test for India's profile also matches the US Brave's command line, and
+ * releasing one region's lock would SIGKILL the other region's live scrape.
+ * Chromium's argv reaches `ps` space-separated, so the flag is ours only when
+ * the character after it ends the argument.
+ *
+ * Exported for the tests: this is a one-line predicate whose failure mode is a
+ * killed scrape in another region, and a source-level assertion would keep
+ * passing if the boundary check were quietly relaxed back to `includes`.
+ */
+export function commandHoldsProfile(line, profileDir) {
+  const flag = `--user-data-dir=${profileDir}`;
+  const at = String(line ?? '').indexOf(flag);
+  if (at === -1) return false;
+  const next = String(line)[at + flag.length];
+  return next === undefined || next === ' ';
+}
+
+/**
+ * Which entries of a state directory are scraper profiles?
+ *
+ * `whatsapp-profile` must never be among them: it is a different account on a
+ * different service, and releasing it mid-send kills a channel post.
+ */
+export function scraperProfileNames(names, base) {
+  return (names ?? []).filter((n) => n === base || n.startsWith(`${base}-`));
+}
+
+export function releaseProfileLock(profileDir = PATHS.profile) {
+  const holdsProfile = (line) => commandHoldsProfile(line, profileDir);
+
   let ours = [];
   try {
     // -ww asks ps not to truncate. Measured on this machine it changes nothing
@@ -124,7 +161,7 @@ export function releaseProfileLock() {
       // Both conditions are required. The profile path alone also matches this
       // very process, any shell that mentions it, and a grep looking for it —
       // killing those would be worse than the problem being solved.
-      .filter((line) => line.includes(`--user-data-dir=${PATHS.profile}`) && line.includes('Brave Browser'))
+      .filter((line) => holdsProfile(line) && line.includes('Brave Browser'))
       .map((line) => Number(line.trim().split(/\s+/)[0]))
       .filter((pid) => Number.isFinite(pid) && pid !== process.pid && pid !== process.ppid);
   } catch {
@@ -151,20 +188,49 @@ export function releaseProfileLock() {
   // Stale singleton links survive a hard kill and block the next launch on
   // their own, so clear them whether or not we just killed anything.
   try {
-    for (const name of readdirSync(PATHS.profile)) {
+    for (const name of readdirSync(profileDir)) {
       if (name.startsWith('Singleton')) {
-        rmSync(join(PATHS.profile, name), { force: true, recursive: true });
+        rmSync(join(profileDir, name), { force: true, recursive: true });
       }
     }
   } catch { /* profile not created yet */ }
 }
 
 /**
- * Launch Brave with the tool's persistent profile.
- * Returns { context, page }. Pass `{ forLogin: true }` for the sign-in flow,
- * which must not assume a session already exists.
+ * Release EVERY region's scraper profile.
+ *
+ * For the stale-run-lock path only, where a previous run crashed and we do not
+ * know which region's Brave it had open — possibly several, since a run now
+ * opens one per region in turn. Discovered from the filesystem rather than
+ * from config, so a profile left behind by a region that has since been turned
+ * off is still cleaned up.
+ *
+ * `brave-profile` is matched as a NAME PREFIX, which deliberately excludes
+ * `whatsapp-profile`: that is a different account on a different service and
+ * killing it would break a channel post mid-send.
  */
-export async function launchBrave(cfg, { forLogin = false } = {}) {
+export function releaseAllProfileLocks() {
+  const dir = dirname(PATHS.profile);
+  const base = basename(PATHS.profile);
+  let names = [];
+  try {
+    names = scraperProfileNames(readdirSync(dir), base);
+  } catch {
+    names = [base];
+  }
+  for (const name of names) releaseProfileLock(join(dir, name));
+}
+
+/**
+ * Launch Brave with the persistent profile for ONE region's LinkedIn account.
+ *
+ * Returns { context, page, profileDir, region }. Pass `{ forLogin: true }` for
+ * the sign-in flow, which must not assume a session already exists, and
+ * `{ region }` to pick the account — see profileFor() in src/paths.js for why
+ * each region has its own directory.
+ */
+export async function launchBrave(cfg, { forLogin = false, region } = {}) {
+  const profileDir = profileFor(region);
   if (!existsSync(BRAVE_PATH)) {
     throw new Error(`Brave is not at ${BRAVE_PATH}. Install Brave, or edit BRAVE_PATH in src/browser.js.`);
   }
@@ -174,20 +240,41 @@ export async function launchBrave(cfg, { forLogin = false } = {}) {
     throw new Error('browser.headed must stay true. Headless mode is detectable and will get the account flagged.');
   }
 
-  mkdirSync(PATHS.profile, { recursive: true });
-  const firstEver = !existsSync(join(PATHS.profile, 'Default'));
+  mkdirSync(profileDir, { recursive: true });
+  const firstEver = !existsSync(join(profileDir, 'Default'));
 
   if (!forLogin && firstEver) {
-    throw new Error('No LinkedIn session yet. Run `npm run login` once to sign in.');
+    /* Name the region, because with one profile per region the fix is a
+       DIFFERENT command per account and "run npm run login" on its own sends
+       him to re-sign the region that was already working. */
+    const how = profileDir === PATHS.profile
+      ? '`npm run login`'
+      : `\`npm run login -- --region=${String(region).toUpperCase()}\``;
+    /**
+     * A REGION THAT HAS NEVER BEEN SIGNED IN IS LOGGED OUT, NOT A BROKEN RUN.
+     *
+     * This threw a plain Error, and a plain Error is the one thing index.js
+     * will not survive per region — so the first run after a new region was
+     * configured, but before its account existed, would have ended the WHOLE
+     * scan and stopped India collecting too. Exactly the outage this split was
+     * meant to end, reintroduced from the other side.
+     *
+     * `RunAborted(LOGGED_OUT)` is also simply the truthful state: there is no
+     * session for this account. It makes the run skip this region, say so in
+     * the notes, and push a message naming the command that fixes it.
+     */
+    throw new RunAborted(State.LOGGED_OUT,
+      `No LinkedIn session for ${region ?? PATHS.defaultProfileRegion} yet. Run ${how} once to sign in.`);
   }
 
   const previousApp = frontmostApp();
 
   // Must happen before the launch, not after: the whole point is that the
-  // profile is free by the time Playwright asks for it.
-  releaseProfileLock();
+  // profile is free by the time Playwright asks for it. Scoped to THIS
+  // region's profile, so it cannot end another region's browser.
+  releaseProfileLock(profileDir);
 
-  log.info('Launching Brave…');
+  log.info(`Launching Brave (${region ?? PATHS.defaultProfileRegion} account)…`);
 
   /**
    * Launching is retried rather than fatal.
@@ -206,7 +293,7 @@ export async function launchBrave(cfg, { forLogin = false } = {}) {
   // userAgent can only create a mismatch between JS values, HTTP headers and
   // the real IP geolocation — on the user's own machine the natural values are
   // correct by definition.
-  const attemptLaunch = () => chromium.launchPersistentContext(PATHS.profile, {
+  const attemptLaunch = () => chromium.launchPersistentContext(profileDir, {
     executablePath: BRAVE_PATH,
     headless: false,
     viewport: null,
@@ -238,13 +325,13 @@ export async function launchBrave(cfg, { forLogin = false } = {}) {
         // NEXT run fail for a reason that has nothing to do with that run. The
         // logs show exactly this: "Found 4 leftover Brave processes" on every
         // retry, each set left by the attempt before it.
-        releaseProfileLock();
+        releaseProfileLock(profileDir);
         throw new Error(`Brave would not launch after ${LAUNCH_ATTEMPTS} attempts — ${why}`);
       }
       log.warn(`Brave did not launch (attempt ${attempt}/${LAUNCH_ATTEMPTS}): ${why}`);
       // Almost always something still holding the profile, so clear it again
       // before trying rather than repeating the identical attempt.
-      releaseProfileLock();
+      releaseProfileLock(profileDir);
       await new Promise((r) => setTimeout(r, 3000 * attempt));
     }
   }
@@ -279,7 +366,11 @@ export async function launchBrave(cfg, { forLogin = false } = {}) {
   for (const p of context.pages()) closeStray(p);
   context.on('page', closeStray);
 
-  return { context, page, previousApp };
+  /* profileDir and region travel WITH the session. closeBrave falls back to
+     releasing the lock by hand, and with one profile per region it has to
+     release the right one — defaulting to India's would leave a wedged US
+     Brave holding its own profile and kill the next US sweep. */
+  return { context, page, previousApp, profileDir, region: region ?? PATHS.defaultProfileRegion };
 }
 
 export async function closeBrave(session) {
@@ -297,7 +388,7 @@ export async function closeBrave(session) {
     log.info('Closed Brave.');
   } catch (err) {
     log.warn(`Brave did not close cleanly (${err.message}) — releasing the profile by hand.`);
-    releaseProfileLock();
+    releaseProfileLock(session.profileDir);
   }
 }
 
