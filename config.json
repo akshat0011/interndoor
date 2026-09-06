@@ -1145,9 +1145,10 @@
     "port": 4322,
     "_port_note": "bin/queue-server.js binds this on 127.0.0.1 only. It serves the run report as well, so the buttons in it are same-origin; there are no CORS headers anywhere, which is what stops another site talking to it. 4321 is taken by web/serve.js.",
     "model": "qwen3:14b",
-    "_regions_note": "WHICH BOARDS MAY BE POSTED TO LINKEDIN. He posts from his own personal account, which is Indian, and there is no US LinkedIn account - so a US roundup, a US post draft and a US 'Add to post queue' button were all writing copy nobody could publish. This gates the report's buttons, the queue endpoint, the combined post and the weekly roundup from one place. DELIBERATELY SEPARATE from reels: Instagram has a live US account (@interndoorusa), so US reels must keep working.",
+    "_regions_note": "WHICH BOARDS MAY BE POSTED TO LINKEDIN. Gates the report's 'Add to post queue' buttons, the queue endpoint and the combined post from one place - four independent checks is how one of them silently keeps queueing rows after the others stop. US ENABLED 6 Sep 2026 at his request, reversing the India-only default. What that default was protecting is still true and still measured: he posts from his own personal account, which is Indian, its audience is 84% India across the top four locations with NO US location appearing at all, and the one US role posted to the @interndoorhq page took 7 impressions against 22 for a generic roundup. So a US draft reaches people who cannot apply. It is enabled because he asked, not because the reach argument changed - if US reach is the goal, Google organic is the lever, not this. weekly.regions stays ['IN'] and is separate, so the weekly roundup is unaffected. DELIBERATELY SEPARATE from reels: Instagram has a live US account and that is reels.auto.regions, which says something different.",
     "regions": [
-      "IN"
+      "IN",
+      "US"
     ],
     "_model_note": "Ollama tag. 14b rather than the 8b the enricher uses, deliberately: the enricher runs inside a scan on a wall-clock budget and 14b measured slower AND less accurate at EXTRACTING fields, while this call is asked to WRITE and nobody is waiting on a listing. Drop to qwen3:8b if a batch feels slow.",
     "timeoutSeconds": 180,

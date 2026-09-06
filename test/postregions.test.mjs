@@ -19,15 +19,25 @@ function check(label, actual, expected) {
 }
 const cfg = loadConfig();
 
-console.log('\n== the live config posts to India only ==');
+console.log('\n== the live config: India AND the US, the UK still not ==');
 {
-  /* Read off config.json, not a fixture — a fixture would go on passing after
-     someone put US back, which is the regression this file exists to prevent. */
-  check('postQueue.regions', postRegions(cfg), ['IN']);
+  /* Read off config.json, not a fixture — a fixture goes on passing whatever
+     the real config says, which is the regression this file exists to prevent.
+     US ENABLED 6 Sep 2026 at his request. What the India-only default was
+     protecting is unchanged and still measured: he posts from his own personal
+     account, whose audience is 84% India across the top four locations with NO
+     US location appearing, so a US draft reaches people who cannot apply. It is
+     on because he asked, not because the reach argument moved. */
+  check('postQueue.regions', postRegions(cfg), ['IN', 'US']);
   check('India is postable', postableRegion(cfg, 'IN'), true);
-  check('the US is NOT', postableRegion(cfg, 'US'), false);
-  check('nor the UK', postableRegion(cfg, 'GB'), false);
-  check('and the weekly roundup runs for India alone', cfg.postQueue.weekly.regions, ['IN']);
+  check('and now the US', postableRegion(cfg, 'US'), true);
+  /* GB has no Telegram, no WhatsApp and no Instagram either — enabling one
+     board is not enabling the concept. */
+  check('the UK is still NOT', postableRegion(cfg, 'GB'), false);
+  /* SEPARATE KEY, deliberately untouched: the weekly roundup features six
+     employers with apply links and is a different piece of work from a
+     per-posting draft. */
+  check('the weekly roundup still runs for India alone', cfg.postQueue.weekly.regions, ['IN']);
 }
 
 console.log('\n== absent means India, not everything ==');
@@ -45,28 +55,35 @@ console.log('\n== filtering rows ==');
   const rows = [{ region: 'IN' }, { region: 'US' }, { __reportRegion: 'US' }, { region: 'GB' }, {}];
   /* A row with no region is KEPT: everything predating regions is Indian, and
      dropping it would silently empty the queue for older postings. */
-  check('keeps India and the region-less', postableJobs(cfg, rows), [{ region: 'IN' }, {}]);
+  check('keeps India, the US and the region-less',
+    postableJobs(cfg, rows), [{ region: 'IN' }, { region: 'US' }, { __reportRegion: 'US' }, {}]);
+  // GB is still dropped, which is what proves the filter is doing anything.
+  check('and still drops the UK', postableJobs(cfg, rows).some((j) => j.region === 'GB'), false);
   check('an empty list is fine', postableJobs(cfg, []), []);
   check('and a missing one', postableJobs(cfg), []);
 }
 
-console.log('\n== THE REPORT HIDES THE BUTTON, BUT KEEPS THE REEL ==');
+console.log('\n== THE REPORT SHOWS THE BUTTON WHERE THE BOARD IS POSTABLE ==');
 {
   /* Instagram HAS a live US account (@interndoorusa), so this must never be
      reused to gate reels — that is reels.auto.regions and it says something
      different. */
   const mk = (r) => ({ job_id: 'j' + r, company: 'X', title: 'Intern', job_url: 'https://x', __reportRegion: r, skills: [] });
-  const html = buildReport({ jobs: [mk('IN'), mk('US')], run: { runId: 'r' }, stats: {}, cfg });
-  check('exactly one post-queue button for two cards', (html.match(/class="qbtn"/g) || []).length, 1);
-  check('and it belongs to the India card', /data-id="jIN"[^>]*aria-pressed/.test(html), true);
-  check('BOTH cards keep the reel button', (html.match(/class="rbtn"/g) || []).length, 2);
+  const html = buildReport({ jobs: [mk('IN'), mk('US'), mk('GB')], run: { runId: 'r' }, stats: {}, cfg });
+  check('India and the US get one each, the UK none', (html.match(/class="qbtn"/g) || []).length, 2);
+  check('the India card has one', /data-id="jIN"[^>]*aria-pressed/.test(html), true);
+  check('and so does the US card', /data-id="jUS"[^>]*aria-pressed/.test(html), true);
+  check('the UK card does not', /data-id="jGB"[^>]*aria-pressed/.test(html), false);
+  check('ALL THREE keep the reel button', (html.match(/class="rbtn"/g) || []).length, 3);
 
-  // With every board postable, both cards get one — proves the gate is the cause.
-  const open = buildReport({
-    jobs: [mk('IN'), mk('US')], run: { runId: 'r' }, stats: {},
-    cfg: { ...cfg, postQueue: { ...cfg.postQueue, regions: ['IN', 'US'] } },
+  /* THE CONTROL, and it has to move the other way now: restricting to India
+     must take the US button away. Without it the assertions above would keep
+     passing if the gate were removed entirely. */
+  const shut = buildReport({
+    jobs: [mk('IN'), mk('US'), mk('GB')], run: { runId: 'r' }, stats: {},
+    cfg: { ...cfg, postQueue: { ...cfg.postQueue, regions: ['IN'] } },
   });
-  check('control: allowing US gives two buttons', (open.match(/class="qbtn"/g) || []).length, 2);
+  check('control: India-only gives exactly one', (shut.match(/class="qbtn"/g) || []).length, 1);
 }
 
 console.log('\n== the endpoint refuses it too ==');
