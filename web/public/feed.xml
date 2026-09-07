@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 07 Sep 2026 12:21:15 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 07 Sep 2026 15:47:07 GMT</lastBuildDate>
+  <item>
+    <title>Intern Engineer – Software Quality &amp; Automation — Fluence</title>
+    <link>https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859</guid>
+    <pubDate>Mon, 07 Sep 2026 15:47:07 GMT</pubDate>
+    <description>Company: Fluence · Location: Bengaluru, Karnataka, India · Duration: 3-6 months
+• Write and maintain automated test scripts for software validation
+• Work with Python, Git, Jira, and CI/CD tools in real projects
+• Collaborate with engineers on BESS and renewable energy systems</description>
+  </item>
+  <item>
+    <title>Geospatial Summer Intern — Moody&#39;s Corporation</title>
+    <link>https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930</guid>
+    <pubDate>Mon, 07 Sep 2026 15:37:29 GMT</pubDate>
+    <description>Company: Moody&#39;s Corporation · Location: Sadar, Uttar Pradesh, India
+• Develop vision models for geospatial analysis using Python and ML frameworks
+• Work on image enhancement, building detection, and change detection tasks
+• Contribute to global projects mapping renewable energy assets and property data</description>
+  </item>
   <item>
     <title>Software Tester Intern — Volody</title>
     <link>https://interndoor.com/jobs/volody-software-tester-intern-4462216241</link>
@@ -493,27 +513,6 @@
 • Use AI and analytics to improve operational efficiency
 • Collaborate with cross-functional teams on real-world projects
 • Work on strategic initiatives with senior leadership</description>
-  </item>
-  <item>
-    <title>Intern — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-intern-4460973105</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4460973105</guid>
-    <pubDate>Wed, 02 Sep 2026 10:49:46 GMT</pubDate>
-    <description>Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months
-• Research and experiment with generative ai models like llms and diffusion models
-• Build and deploy ai solutions using azure and cloud platforms
-• Collaborate with teams to design and refine ai-driven tools</description>
-  </item>
-  <item>
-    <title>Intern Hiring 2027 — AlphaGrep Securities</title>
-    <link>https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002</guid>
-    <pubDate>Wed, 02 Sep 2026 08:38:41 GMT</pubDate>
-    <description>Company: AlphaGrep Securities · Location: Bengaluru
-• Design and deploy high-frequency trading algorithms
-• Analyze market data for patterns using python or c++
-• Build tools and libraries for market analysis
-• Work on exchange simulators and data modeling</description>
   </item>
 </channel>
 </rss>

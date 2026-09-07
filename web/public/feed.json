@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
+      "url": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
+      "title": "Intern Engineer – Software Quality & Automation — Fluence",
+      "content_text": "Company: Fluence · Location: Bengaluru, Karnataka, India · Duration: 3-6 months\n• Write and maintain automated test scripts for software validation\n• Work with Python, Git, Jira, and CI/CD tools in real projects\n• Collaborate with engineers on BESS and renewable energy systems",
+      "date_published": "2026-09-07T15:47:07.468Z",
+      "authors": [
+        {
+          "name": "Fluence"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930",
+      "url": "https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930",
+      "title": "Geospatial Summer Intern — Moody's Corporation",
+      "content_text": "Company: Moody's Corporation · Location: Sadar, Uttar Pradesh, India\n• Develop vision models for geospatial analysis using Python and ML frameworks\n• Work on image enhancement, building detection, and change detection tasks\n• Contribute to global projects mapping renewable energy assets and property data",
+      "date_published": "2026-09-07T15:37:29.845Z",
+      "authors": [
+        {
+          "name": "Moody's Corporation"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/volody-software-tester-intern-4462216241",
       "url": "https://interndoor.com/jobs/volody-software-tester-intern-4462216241",
       "title": "Software Tester Intern — Volody",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Compass Group India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4460973105",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4460973105",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months\n• Research and experiment with generative ai models like llms and diffusion models\n• Build and deploy ai solutions using azure and cloud platforms\n• Collaborate with teams to design and refine ai-driven tools",
-      "date_published": "2026-09-02T10:49:46.835Z",
-      "authors": [
-        {
-          "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002",
-      "url": "https://interndoor.com/jobs/alphagrep-securities-intern-hiring-2027-ats-greenhouse-alphagrepsecurities-8769725002",
-      "title": "Intern Hiring 2027 — AlphaGrep Securities",
-      "content_text": "Company: AlphaGrep Securities · Location: Bengaluru\n• Design and deploy high-frequency trading algorithms\n• Analyze market data for patterns using python or c++\n• Build tools and libraries for market analysis\n• Work on exchange simulators and data modeling",
-      "date_published": "2026-09-02T08:38:41.000Z",
-      "authors": [
-        {
-          "name": "AlphaGrep Securities"
         }
       ]
     }
