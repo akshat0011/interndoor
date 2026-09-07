@@ -6,6 +6,42 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912",
+      "url": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912",
+      "title": "Embedded Systems Intern — Smowcode",
+      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Write and test C code for microcontrollers like ARM and AVR\n• Use ESP-IDF and AVR-GCC for toolchain setup\n• Debug PCBs and work with IoT protocols like MQTT",
+      "date_published": "2026-09-07T16:03:47.691Z",
+      "authors": [
+        {
+          "name": "Smowcode"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4462222887",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4462222887",
+      "title": "Network Engineer Trainee — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India · Duration: 0-1 years\n• Monitor network devices and troubleshoot Cisco equipment issues\n• Configure and maintain network security policies and devices\n• Support network security projects and incident response efforts",
+      "date_published": "2026-09-07T16:01:54.024Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/moody-s-corporation-exposure-modelling-summer-intern-4464352847",
+      "url": "https://interndoor.com/jobs/moody-s-corporation-exposure-modelling-summer-intern-4464352847",
+      "title": "Exposure modelling Summer Intern — Moody's Corporation",
+      "content_text": "Company: Moody's Corporation · Location: Sadar, Uttar Pradesh, India\n• Support development of exposure models for global property insurance markets\n• Work with public and open-source data to build valuation models for buildings and infrastructure\n• Research construction practices and insurance market characteristics across countries",
+      "date_published": "2026-09-07T15:50:03.529Z",
+      "authors": [
+        {
+          "name": "Moody's Corporation"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
       "url": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
       "title": "Intern Engineer – Software Quality & Automation — Fluence",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "AtkinsRéalis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/gokwik-intern-ai-4460987252",
-      "url": "https://interndoor.com/jobs/gokwik-intern-ai-4460987252",
-      "title": "Intern - AI — GoKwik",
-      "content_text": "Company: GoKwik · Location: Bengaluru, Karnataka, India\n• Analyse brand p&l and identify growth opportunities\n• Build 90-day plans and monitor key d2c metrics\n• Use ai to automate workflows and improve playbooks",
-      "date_published": "2026-09-02T12:19:45.772Z",
-      "authors": [
-        {
-          "name": "GoKwik"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-4460978118",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-4460978118",
-      "title": "Apprentice — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Design and build products that solve business problems using data and analytics\n• Work with cross-functional teams to develop and test innovative solutions\n• Collaborate on data-driven strategies to improve customer engagement and growth",
-      "date_published": "2026-09-02T11:18:25.524Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/compass-group-india-process-excellence-and-automation-intern-consultant-4462157955",
-      "url": "https://interndoor.com/jobs/compass-group-india-process-excellence-and-automation-intern-consultant-4462157955",
-      "title": "Process Excellence & Automation Intern/Consultant — Compass Group India",
-      "content_text": "Company: Compass Group India · Location: Gurugram, Haryana, India · Duration: 12 months\n• Design and implement automation solutions for business processes\n• Use AI and analytics to improve operational efficiency\n• Collaborate with cross-functional teams on real-world projects\n• Work on strategic initiatives with senior leadership",
-      "date_published": "2026-09-02T11:11:32.783Z",
-      "authors": [
-        {
-          "name": "Compass Group India"
         }
       ]
     }
