@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410",
+      "url": "https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410",
+      "title": "Robotics Inspection Technologies Intern. — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India · Duration: 3-11 months\n• Implement real-time control algorithms on embedded systems\n• Integrate hardware and software for robotic inspection systems\n• Work with computer vision for pose estimation and 3D reconstruction",
+      "date_published": "2026-09-07T11:22:49.156Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-software-engineering-phd-intern-summer-2027-4462932588",
       "url": "https://interndoor.com/jobs/google-software-engineering-phd-intern-summer-2027-4462932588",
       "title": "Software Engineering PhD Intern, Summer 2027 — Google",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Volody"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pearson-associate-software-engineer-intern-4460902094",
-      "url": "https://interndoor.com/jobs/pearson-associate-software-engineer-intern-4460902094",
-      "title": "Associate, Software Engineer - Intern — Pearson",
-      "content_text": "Company: Pearson · Location: Bengaluru East, Karnataka, India · Duration: 3-6 months\n• Build user interfaces with React and TypeScript\n• Work on global payroll platform with REST APIs\n• Collaborate with developers and business teams",
-      "date_published": "2026-09-02T02:31:06.261Z",
-      "authors": [
-        {
-          "name": "Pearson"
         }
       ]
     }
