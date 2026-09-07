@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 07 Sep 2026 11:56:31 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 07 Sep 2026 12:21:15 GMT</lastBuildDate>
+  <item>
+    <title>Software Tester Intern — Volody</title>
+    <link>https://interndoor.com/jobs/volody-software-tester-intern-4462216241</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volody-software-tester-intern-4462216241</guid>
+    <pubDate>Mon, 07 Sep 2026 12:21:15 GMT</pubDate>
+    <description>Company: Volody · Location: Mumbai, Maharashtra, India
+• Test web apps and software features manually
+• Create test cases and track bugs with steps
+• Collaborate with dev and product teams
+• Work on functional and regression testing</description>
+  </item>
   <item>
     <title>Product Designer Intern — GreedyGame</title>
     <link>https://interndoor.com/jobs/greedygame-product-designer-intern-4462939948</link>
@@ -503,17 +514,6 @@
 • Analyze market data for patterns using python or c++
 • Build tools and libraries for market analysis
 • Work on exchange simulators and data modeling</description>
-  </item>
-  <item>
-    <title>Intern - Salesforce Developer — SurveySparrow</title>
-    <link>https://interndoor.com/jobs/surveysparrow-intern-salesforce-developer-4462145430</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/surveysparrow-intern-salesforce-developer-4462145430</guid>
-    <pubDate>Wed, 02 Sep 2026 08:29:27 GMT</pubDate>
-    <description>Company: SurveySparrow · Location: Chennai, Tamil Nadu, India · Duration: 0–1 years
-• Build and improve Salesforce AppExchange apps using Apex, LWC, and SOQL
-• Develop integrations with Node.js and REST APIs for enterprise solutions
-• Collaborate on managed package development and code reviews
-• Work on real-world Salesforce features with mentorship and full-stack exposure</description>
   </item>
 </channel>
 </rss>
