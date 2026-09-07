@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-software-engine-4454216934",
+      "url": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-software-engine-4454216934",
+      "title": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY — American Express",
+      "content_text": "Company: American Express · Location: New York, NY\n• Build software, collaborate with agile teams, and learn enterprise development practices\n• Work with java, python, golang, react, cloud platforms, and ai tools\n• 10-week paid internship in new york with mentorship and career growth opportunities",
+      "date_published": "2026-09-07T17:25:32.580Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-software-engine-4454221884",
+      "url": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-software-engine-4454221884",
+      "title": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC — American Express",
+      "content_text": "Company: American Express · Location: Charlotte, NC\n• Build software, collaborate with agile teams, and learn enterprise development practices\n• Work with java, python, golang, react, cloud platforms, and ai tools\n• 10-week paid internship in charlotte, nc with mentorship and career growth",
+      "date_published": "2026-09-07T17:15:54.818Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tower-research-capital-quantitative-developer-intern-summer-2027-4437127776",
+      "url": "https://interndoor.com/us/jobs/tower-research-capital-quantitative-developer-intern-summer-2027-4437127776",
+      "title": "Quantitative Developer Intern - Summer 2027 — Tower Research Capital",
+      "content_text": "Company: Tower Research Capital · Location: New York, NY · Duration: Summer 2027\n• Build and optimize low-latency trading systems\n• Work with traders and researchers on data analysis\n• Develop exchange simulators and market strategies",
+      "date_published": "2026-09-07T17:01:59.456Z",
+      "authors": [
+        {
+          "name": "Tower Research Capital"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/astera-labs-system-validation-engineer-intern-ats-greenhouse-asteralabs-4724488005",
       "url": "https://interndoor.com/us/jobs/astera-labs-system-validation-engineer-intern-ats-greenhouse-asteralabs-4724488005",
       "title": "System Validation Engineer Intern — Astera Labs",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Kiewit"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qbe-north-america-data-science-intern-4460055388",
-      "url": "https://interndoor.com/us/jobs/qbe-north-america-data-science-intern-4460055388",
-      "title": "Data Science Intern — QBE North America",
-      "content_text": "Company: QBE North America · Location: Madison, WI · Duration: Summer 2027\n• Build and evaluate ML models for underwriting and operations\n• Write Python code with pandas, numpy, and FastAPI\n• Work in Madison, WI, 4 days a week in office",
-      "date_published": "2026-09-07T05:56:04.480Z",
-      "authors": [
-        {
-          "name": "QBE North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-hpc-ai-systems-administrator-intern-4464080927",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-hpc-ai-systems-administrator-intern-4464080927",
-      "title": "HPC AI Systems Administrator Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bloomington, MN\n• Analyze security coverage of lab systems and build monitoring tools\n• Work with admins on hardening and remediation tracking\n• Based in Bloomington, MN with 2 days onsite in Chippewa Falls",
-      "date_published": "2026-09-07T05:04:08.270Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-project-engineer-internship-4462908615",
-      "url": "https://interndoor.com/us/jobs/siemens-project-engineer-internship-4462908615",
-      "title": "Project Engineer Internship — Siemens",
-      "content_text": "Company: Siemens · Location: Wendell, NC\n• Support engineering standardization for utility and medium-voltage projects\n• Use engineering design software for schematic development\n• Work on-site full-time in Wendell, NC for 12 weeks",
-      "date_published": "2026-09-07T04:29:59.881Z",
-      "authors": [
-        {
-          "name": "Siemens"
         }
       ]
     }
