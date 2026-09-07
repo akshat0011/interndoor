@@ -705,6 +705,20 @@ PROVIDERS.amazon = {
  * to 1970-01-21, and the staleness filter then drops the entire board without a
  * single error — zero jobs, no failure, nothing to notice. Hence the × 1000.
  */
+/**
+ * "United States, Washington, Redmond" -> "Redmond, Washington, United States".
+ *
+ * Straight segment reversal, because the shape is fixed: this endpoint always
+ * answers country, region, city. A one- or two-segment value is returned
+ * untouched — reversing "London, London" changes nothing and reversing a bare
+ * city would be inventing an order that is not there.
+ */
+export function microsoftPlace(loc) {
+  const parts = String(loc ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (parts.length < 3) return parts.length ? parts.join(', ') : null;
+  return parts.reverse().join(', ');
+}
+
 PROVIDERS.microsoft = {
   label: 'Microsoft',
   firstParty: true,
@@ -730,8 +744,20 @@ PROVIDERS.microsoft = {
           found.set(String(id), job({
             id,
             title: p.name,
-            // "India, Karnataka, Bangalore" — city last, which the India filter reads fine.
-            location: p.locations?.[0] ?? p.location ?? null,
+            // REVERSED TO CITY-FIRST, AND THE REGION IS NOT WHY.
+            // This endpoint answers "United States, Washington, Redmond" —
+            // country first, always three segments. `resolveRegion` reads that
+            // fine, which is what the old comment here said and why it stood.
+            // `dedupeKey` does NOT: it is company|title|cityOf(location), and
+            // cityOf takes the FIRST comma segment, so the ATS row keyed on
+            // "United States" while the LinkedIn row for the same posting keyed
+            // on "Redmond" and BOTH published. Twelve Microsoft postings were
+            // live twice. Every other provider here is city-first; this is the
+            // one that was not. Measured over all 24 stored rows: 0
+            // reclassified, 0 lost.
+            location: microsoftPlace(p.locations?.[0] ?? p.location),
+            // The board's own wording, kept in case a reversal ever mis-reads.
+            locationAlt: [p.locations?.[0] ?? p.location].filter(Boolean),
             url: p.positionUrl?.startsWith('http')
               ? p.positionUrl
               : `https://jobs.careers.microsoft.com/global/en/job/${id}`,

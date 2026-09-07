@@ -1,5 +1,5 @@
 import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
-  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens } from '../src/ats.js';
+  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -555,6 +555,53 @@ check('Microsoft covers the same three',
    zero jobs, so a two-letter code is an empty board and never an error. */
 check('no two-letter country code slipped into Amazon\'s token',
   boardTokens(FIRST_PARTY_BOARDS.Amazon[1]).every((c) => c.length === 3), true);
+
+/* ------------------------------------------------------------------------- *
+ * MICROSOFT WAS THE ONE PROVIDER WRITING ITS LOCATION COUNTRY-FIRST, and it
+ * put twelve postings on the US board TWICE. `resolveRegion` reads
+ * "United States, Washington, Redmond" perfectly well, which is why the old
+ * comment on that line said it was fine and why it stood for so long. But
+ * `dedupeKey` is company|title|cityOf(location) and cityOf takes the FIRST
+ * comma segment, so the ATS row keyed on "United States" while the LinkedIn row
+ * for the same posting keyed on "Redmond", and nothing collapsed them.
+ * ------------------------------------------------------------------------- */
+console.log('\n== Microsoft locations are reversed to city-first ==');
+check('country-first becomes city-first',
+  microsoftPlace('United States, Washington, Redmond'), 'Redmond, Washington, United States');
+check('the India board too', microsoftPlace('India, Karnataka, Bangalore'), 'Bangalore, Karnataka, India');
+check('the CITY leads, which is what cityOf reads',
+  microsoftPlace('United States, Washington, Redmond').split(',')[0].trim(), 'Redmond');
+/* Two segments are not a country/region/city triple, and reversing one would
+   invent an order that is not there — "Cambridge, United Kingdom" is already
+   city-first and flipping it puts the country in the city slot.
+   THE FIXTURE MUST NOT BE A PALINDROME: the first version of this check used
+   "London, London", which reverses to itself and therefore passed with the
+   length guard deleted. The mutation caught it; the fixture was the bug. */
+check('a two-segment value is NOT reversed',
+  microsoftPlace('Cambridge, United Kingdom'), 'Cambridge, United Kingdom');
+check('a repeated two-segment name is unchanged either way',
+  microsoftPlace('London, London'), 'London, London');
+check('a bare city is left alone', microsoftPlace('Redmond'), 'Redmond');
+check('empty is null', microsoftPlace(''), null);
+check('null is null', microsoftPlace(null), null);
+/* The region must NOT move — that is the number §6 says is the only one that
+   matters, and it was measured at 0 reclassified over all 24 stored rows. */
+check('the region is unchanged by the reversal',
+  resolveRegion(microsoftPlace('United States, Washington, Redmond'), {}),
+  resolveRegion('United States, Washington, Redmond', {}));
+check('and for India', resolveRegion(microsoftPlace('India, Karnataka, Bangalore'), {}),
+  resolveRegion('India, Karnataka, Bangalore', {}));
+
+{
+  const { restore } = recordingStub(() => ({ data: { positions: [
+    { id: 'm1', name: 'Software Engineer Intern', locations: ['United States, Washington, Redmond'] },
+  ] } }));
+  const jobs = await fetchBoard('microsoft', 'United States');
+  restore();
+  check('list() emits the reversed place', jobs[0].location, 'Redmond, Washington, United States');
+  check("and keeps the board's own wording as an alternate",
+    jobs[0].locationAlt, ['United States, Washington, Redmond']);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
