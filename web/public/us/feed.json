@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/siemens-project-engineer-internship-4462908615",
+      "url": "https://interndoor.com/us/jobs/siemens-project-engineer-internship-4462908615",
+      "title": "Project Engineer Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Wendell, NC\n• Support engineering standardization for utility and medium-voltage projects\n• Use engineering design software for schematic development\n• Work on-site full-time in Wendell, NC for 12 weeks",
+      "date_published": "2026-09-07T04:29:59.881Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-design-engineering-co-op-north-carolina-state-university-4462920670",
+      "url": "https://interndoor.com/us/jobs/siemens-design-engineering-co-op-north-carolina-state-university-4462920670",
+      "title": "Design Engineering Co-op (North Carolina State University) — Siemens",
+      "content_text": "Company: Siemens · Location: Wendell, NC · Duration: Fall 2027\n• Support power distribution systems and future grid technologies\n• Use microsoft excel and technical drawings for design work\n• Work on-site in wendell, nc, no relocation support",
+      "date_published": "2026-09-07T04:29:20.210Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-research-and-development-simulation-engineering-internship-4462908607",
+      "url": "https://interndoor.com/us/jobs/siemens-research-and-development-simulation-engineering-internship-4462908607",
+      "title": "Research & Development Simulation Engineering Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Wendell, NC\n• Support geometry simplification for simulation performance\n• Prepare 3d designs in nx for simulation workflows\n• Collaborate with sensor engineers on design updates\n• Organize simulation-ready models and design files",
+      "date_published": "2026-09-07T04:28:28.837Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-application-engineering-co-op-north-carolina-state-university-4462904627",
+      "url": "https://interndoor.com/us/jobs/siemens-application-engineering-co-op-north-carolina-state-university-4462904627",
+      "title": "Application Engineering Co-op (North Carolina State University) — Siemens",
+      "content_text": "Company: Siemens · Location: Wendell, NC · Duration: Fall 2027\n• Configure solutions using nx-tools and compas for customer projects\n• Support proposal development and coordinate with manufacturing partners\n• Test new tools and implement ai in engineering workflows",
+      "date_published": "2026-09-07T04:28:24.522Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-software-engineering-4461857587",
       "url": "https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-software-engineering-4461857587",
       "title": "2027 Technology Intern - Software Engineering — Charles Schwab",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Charles Schwab"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-oracle-cloud-2027-4451251858",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-oracle-cloud-2027-4451251858",
-      "title": "Intern Oracle Cloud - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Support client projects with data analytics and cloud migration\n• Work with Oracle Cloud and other enterprise applications\n• Shadow product teams and contribute to system implementations",
-      "date_published": "2026-09-05T14:32:40.695Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hacker-intern-2027-4451260824",
-      "url": "https://interndoor.com/us/jobs/ibm-hacker-intern-2027-4451260824",
-      "title": "Hacker Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Austin, TX · Duration: 10 weeks\n• Support penetration testing on apps, networks, cloud, and systems\n• Use tools for vulnerability research and analysis\n• Work with security experts on real client projects\n• Based in Austin, TX for 10 weeks",
-      "date_published": "2026-09-05T14:32:24.658Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-solution-architect-intern-entry-level-sales-program-2027-4451287702",
-      "url": "https://interndoor.com/us/jobs/ibm-solution-architect-intern-entry-level-sales-program-2027-4451287702",
-      "title": "Solution Architect Intern - Entry Level Sales Program 2027 — IBM",
-      "content_text": "Company: IBM · Location: New York, United States\n• Help customers design agentic ai applications\n• Use watsonx.ai and ai governance tools\n• Participate in ai solution workshops",
-      "date_published": "2026-09-05T14:32:02.709Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454590867",
-      "url": "https://interndoor.com/us/jobs/notion-software-engineer-intern-summer-2027-4454590867",
-      "title": "Software Engineer Intern (Summer 2027) — Notion",
-      "content_text": "Company: Notion · Location: New York, NY · Duration: Summer 2028\n• Write clean, secure, and tested code for Notion's full stack\n• Work with Typescript, React, Python, and modern frameworks\n• Collaborate in NY or SF office with cross-functional teams",
-      "date_published": "2026-09-05T14:27:56.431Z",
-      "authors": [
-        {
-          "name": "Notion"
         }
       ]
     }
