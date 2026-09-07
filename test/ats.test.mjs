@@ -1,5 +1,5 @@
 import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
-  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS } from '../src/ats.js';
+  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -443,6 +443,118 @@ console.log('\n== Oracle Cloud: requisitions are nested two deep ==');
   check('PostedDate is parsed', new Date(jobs[0].postedAt).toISOString().slice(0, 10), '2026-08-31');
   check('the list carries no description, so detail() must run', jobs[0].description, null);
 }
+
+/* ------------------------------------------------------------------------- *
+ * ONE COMPANY, SEVERAL COUNTRY BOARDS (7 Sep 2026).
+ *
+ * `company_ats.company` is the PRIMARY KEY, so a company gets one row and
+ * therefore one token — which is why Amazon and Microsoft were India-only for
+ * as long as they existed, while amazon.jobs was carrying 49 US and 14 GB
+ * internships nobody collected. The extra boards live INSIDE the token.
+ * ------------------------------------------------------------------------- */
+console.log('\n== boardTokens ==');
+check('a list splits', boardTokens('IND,USA,GBR'), ['IND', 'USA', 'GBR']);
+check('spaces around the commas survive nothing', boardTokens(' IND , USA '), ['IND', 'USA']);
+check('a single value still parses to one board', boardTokens('IND'), ['IND']);
+check('a name containing spaces is kept whole',
+  boardTokens('India,United States,United Kingdom'), ['India', 'United States', 'United Kingdom']);
+check('an empty token yields no boards at all', boardTokens(''), []);
+check('null is empty', boardTokens(null), []);
+check('trailing comma does not invent a board', boardTokens('IND,'), ['IND']);
+
+/* Records every URL asked for, so the test can assert the fan-out actually
+   happened rather than trusting that a loop was written correctly. */
+function recordingStub(payloadFor) {
+  const urls = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    urls.push(String(url));
+    const body = payloadFor(String(url));
+    return {
+      ok: !!body, status: body ? 200 : 404,
+      headers: { get: () => null },
+      async text() { return JSON.stringify(body ?? {}); },
+    };
+  };
+  return { urls, restore: () => { globalThis.fetch = realFetch; } };
+}
+
+console.log('\n== Amazon asks each country for each term ==');
+{
+  const { urls, restore } = recordingStub((u) => {
+    const country = new URL(u).searchParams.get('country');
+    return { jobs: [{ id: `${country}-1`, title: 'SDE Intern', normalized_location: 'X', job_path: '/en/jobs/1' }] };
+  });
+  const jobs = await fetchBoard('amazon', 'IND,USA,GBR');
+  restore();
+  const countries = [...new Set(urls.map((u) => new URL(u).searchParams.get('country')))];
+  check('all three countries were asked', countries.sort(), ['GBR', 'IND', 'USA']);
+  check('three countries x three terms', urls.length, 9);
+  check('and each country contributed a distinct posting', jobs.length, 3);
+}
+{
+  /* THE FAILURE THIS PREVENTS: a token that is not split is sent whole as the
+     country. amazon.jobs answers 200 with zero jobs for an unknown country, so
+     the board reads as empty rather than erroring — which is exactly how US
+     stayed uncollected behind the two-letter code `US`. */
+  const { urls, restore } = recordingStub(() => ({ jobs: [] }));
+  await fetchBoard('amazon', 'IND,USA,GBR');
+  restore();
+  check('the whole token is never sent as one country',
+    urls.some((u) => (new URL(u).searchParams.get('country') ?? '').includes(',')), false);
+}
+{
+  const { urls, restore } = recordingStub(() => ({ jobs: [] }));
+  await fetchBoard('amazon', 'ind');
+  restore();
+  check('a country is upper-cased', new URL(urls[0]).searchParams.get('country'), 'IND');
+}
+{
+  const { urls, restore } = recordingStub(() => ({ jobs: [] }));
+  await fetchBoard('amazon', '');
+  restore();
+  check('an empty token still asks India rather than nothing',
+    new URL(urls[0]).searchParams.get('country'), 'IND');
+}
+
+console.log('\n== Microsoft asks each location for each term ==');
+{
+  const { urls, restore } = recordingStub((u) => {
+    const loc = new URL(u).searchParams.get('location');
+    return { data: { positions: [{ id: `${loc}-1`, name: 'Software Engineering Intern', locations: [loc] }] } };
+  });
+  const jobs = await fetchBoard('microsoft', 'India,United States,United Kingdom');
+  restore();
+  const locs = [...new Set(urls.map((u) => new URL(u).searchParams.get('location')))];
+  check('all three locations were asked', locs.sort(), ['India', 'United Kingdom', 'United States']);
+  check('three locations x three terms', urls.length, 9);
+  check('a location keeps its space rather than being split on it', jobs.length, 3);
+}
+
+console.log('\n== Uber filters to the SET of wanted countries ==');
+{
+  const { restore } = recordingStub(() => ({ data: { results: [
+    { id: 'a', title: 'Intern', location: { country: 'IND', city: 'Bengaluru', countryName: 'India' } },
+    { id: 'b', title: 'Intern', location: { country: 'USA', city: 'Seattle', countryName: 'United States' } },
+    { id: 'c', title: 'Intern', location: { country: 'FRA', city: 'Paris', countryName: 'France' } },
+  ] } }));
+  const jobs = await fetchBoard('uber', 'IND,USA');
+  restore();
+  /* Comparing a country to the literal string "IND,USA" matches nothing, and a
+     board that matches nothing is indistinguishable from a board with nothing
+     open. Both wanted countries must survive and the third must not. */
+  check('both wanted countries survive', jobs.map((j) => j.id).sort(), ['a', 'b']);
+  check('an unwanted country is dropped', jobs.some((j) => j.id === 'c'), false);
+}
+
+console.log('\n== the tokens actually configured ==');
+check('Amazon covers the three published boards', FIRST_PARTY_BOARDS.Amazon, ['amazon', 'IND,USA,GBR']);
+check('Microsoft covers the same three',
+  FIRST_PARTY_BOARDS.Microsoft, ['microsoft', 'India,United States,United Kingdom']);
+/* ISO-3166 ALPHA-3, and this is not pedantry: `US` and `GB` answer 200 with
+   zero jobs, so a two-letter code is an empty board and never an error. */
+check('no two-letter country code slipped into Amazon\'s token',
+  boardTokens(FIRST_PARTY_BOARDS.Amazon[1]).every((c) => c.length === 3), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

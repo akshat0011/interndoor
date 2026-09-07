@@ -616,37 +616,59 @@ export function workdayPlaces(info) {
  * the staleness filter drops the rest. Results are merged by id because a role
  * matching two terms is one job.
  */
+/**
+ * A first-party token may name SEVERAL boards, comma-separated.
+ *
+ * `company_ats.company` IS THE PRIMARY KEY, so one company gets exactly one
+ * row and therefore one token — which is why these boards were India-only for
+ * as long as they existed. Amazon's US board is not a second row, it is a
+ * second COUNTRY inside the one token: `IND,USA,GBR`. That keeps the schema
+ * untouched, and the alternative (a composite primary key) is a migration
+ * against every caller of getAts/saveAts.
+ *
+ * A single value still parses to a single board, so every existing token keeps
+ * working unchanged.
+ */
+export function boardTokens(token) {
+  return String(token ?? '').split(',').map((t) => t.trim()).filter(Boolean);
+}
+
 PROVIDERS.amazon = {
   label: 'Amazon',
   firstParty: true,
   async list(token) {
-    const country = String(token || 'IND').toUpperCase();
+    // ISO-3166 ALPHA-3. `US` and `GB` are not merely wrong, they answer 200
+    // with zero jobs — so a two-letter code reads as an empty board rather than
+    // an error, which is exactly how the US board stayed uncollected.
+    const countries = boardTokens(token).map((c) => c.toUpperCase());
     const found = new Map();
 
-    for (const term of ['intern', 'internship', 'trainee']) {
-      const j = await getJson(
-        `https://www.amazon.jobs/en/search.json?base_query=${encodeURIComponent(term)}`
-        + `&country=${encodeURIComponent(country)}&result_limit=50&sort=recent`,
-      );
-      if (!Array.isArray(j?.jobs)) continue;
+    for (const country of countries.length ? countries : ['IND']) {
+      for (const term of ['intern', 'internship', 'trainee']) {
+        const j = await getJson(
+          `https://www.amazon.jobs/en/search.json?base_query=${encodeURIComponent(term)}`
+          + `&country=${encodeURIComponent(country)}&result_limit=50&sort=recent`,
+        );
+        if (!Array.isArray(j?.jobs)) continue;
 
-      for (const p of j.jobs) {
-        const id = p.id_icims ?? p.id;
-        if (!id || found.has(String(id))) continue;
-        found.set(String(id), job({
-          id,
-          title: p.title,
-          // normalized_location is "Bengaluru, KA, IND"; city/state is the fallback.
-          location: p.normalized_location || [p.city, p.state].filter(Boolean).join(', '),
-          url: p.job_path ? `https://www.amazon.jobs${p.job_path}` : null,
-          // "July 31, 2026" — a real calendar date, unlike Workday's "Posted 3 Days Ago".
-          postedAt: p.posted_date,
-          department: p.job_category,
-          // The qualifications carry the degree and the skills; the description
-          // alone often does not, and both parsers downstream read this field.
-          description: [p.description, p.basic_qualifications, p.preferred_qualifications]
-            .filter(Boolean).join('<br/><br/>'),
-        }));
+        for (const p of j.jobs) {
+          const id = p.id_icims ?? p.id;
+          if (!id || found.has(String(id))) continue;
+          found.set(String(id), job({
+            id,
+            title: p.title,
+            // normalized_location is "Bengaluru, KA, IND"; city/state is the fallback.
+            location: p.normalized_location || [p.city, p.state].filter(Boolean).join(', '),
+            url: p.job_path ? `https://www.amazon.jobs${p.job_path}` : null,
+            // "July 31, 2026" — a real calendar date, unlike Workday's "Posted 3 Days Ago".
+            postedAt: p.posted_date,
+            department: p.job_category,
+            // The qualifications carry the degree and the skills; the description
+            // alone often does not, and both parsers downstream read this field.
+            description: [p.description, p.basic_qualifications, p.preferred_qualifications]
+              .filter(Boolean).join('<br/><br/>'),
+          }));
+        }
       }
     }
 
@@ -660,8 +682,9 @@ PROVIDERS.amazon = {
    * question is whether the board reads at all.
    */
   async verify(token) {
+    const [first = 'IND'] = boardTokens(token);
     const j = await getJson(
-      `https://www.amazon.jobs/en/search.json?base_query=intern&country=${encodeURIComponent(String(token || 'IND').toUpperCase())}&result_limit=1`,
+      `https://www.amazon.jobs/en/search.json?base_query=intern&country=${encodeURIComponent(first.toUpperCase())}&result_limit=1`,
     );
     return Array.isArray(j?.jobs);
   },
@@ -686,36 +709,41 @@ PROVIDERS.microsoft = {
   label: 'Microsoft',
   firstParty: true,
   async list(token) {
-    const location = String(token || 'India');
+    // Spelled-out names, not codes: this endpoint takes "United States", and a
+    // location it does not recognise answers 200 with an empty list rather than
+    // an error — the same silent shape as Amazon's two-letter country codes.
+    const locations = boardTokens(token);
     const found = new Map();
 
-    for (const term of ['intern', 'internship', 'trainee']) {
-      const j = await getJson(
-        'https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com'
-        + `&query=${encodeURIComponent(term)}&location=${encodeURIComponent(location)}&start=0`,
-      );
-      const positions = j?.data?.positions;
-      if (!Array.isArray(positions)) continue;
+    for (const location of locations.length ? locations : ['India']) {
+      for (const term of ['intern', 'internship', 'trainee']) {
+        const j = await getJson(
+          'https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com'
+          + `&query=${encodeURIComponent(term)}&location=${encodeURIComponent(location)}&start=0`,
+        );
+        const positions = j?.data?.positions;
+        if (!Array.isArray(positions)) continue;
 
-      for (const p of positions) {
-        const id = p.id ?? p.displayJobId;
-        if (!id || found.has(String(id))) continue;
-        found.set(String(id), job({
-          id,
-          title: p.name,
-          // "India, Karnataka, Bangalore" — city last, which the India filter reads fine.
-          location: p.locations?.[0] ?? p.location ?? null,
-          url: p.positionUrl?.startsWith('http')
-            ? p.positionUrl
-            : `https://jobs.careers.microsoft.com/global/en/job/${id}`,
-          postedAt: p.postedTs ? p.postedTs * 1000 : null,
-          department: p.department,
-          remote: p.workLocationOption ?? p.locationFlexibility,
-          // The search response carries no description at all; detail() fetches it
-          // for the few postings that survive the filters.
-          description: null,
-          externalPath: String(id),
-        }));
+        for (const p of positions) {
+          const id = p.id ?? p.displayJobId;
+          if (!id || found.has(String(id))) continue;
+          found.set(String(id), job({
+            id,
+            title: p.name,
+            // "India, Karnataka, Bangalore" — city last, which the India filter reads fine.
+            location: p.locations?.[0] ?? p.location ?? null,
+            url: p.positionUrl?.startsWith('http')
+              ? p.positionUrl
+              : `https://jobs.careers.microsoft.com/global/en/job/${id}`,
+            postedAt: p.postedTs ? p.postedTs * 1000 : null,
+            department: p.department,
+            remote: p.workLocationOption ?? p.locationFlexibility,
+            // The search response carries no description at all; detail() fetches it
+            // for the few postings that survive the filters.
+            description: null,
+            externalPath: String(id),
+          }));
+        }
       }
     }
 
@@ -723,8 +751,9 @@ PROVIDERS.microsoft = {
   },
 
   async verify(token) {
+    const [first = 'India'] = boardTokens(token);
     const j = await getJson(
-      `https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&query=intern&location=${encodeURIComponent(String(token || 'India'))}&start=0`,
+      `https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&query=intern&location=${encodeURIComponent(first)}&start=0`,
     );
     return Array.isArray(j?.data?.positions);
   },
@@ -769,7 +798,10 @@ PROVIDERS.uber = {
   label: 'Uber',
   firstParty: true,
   async list(token) {
-    const country = String(token || 'IND').toUpperCase();
+    // A SET, because the token may name several boards. Comparing a country to
+    // the literal string "IND,USA" matches nothing and reads as an empty board.
+    const wanted = new Set(boardTokens(token).map((c) => c.toUpperCase()));
+    if (!wanted.size) wanted.add('IND');
     const found = new Map();
 
     for (const term of ['intern', 'internship', 'trainee', 'apprentice']) {
@@ -782,7 +814,7 @@ PROVIDERS.uber = {
       if (!Array.isArray(results)) continue;
 
       for (const p of results) {
-        if (p.location?.country !== country) continue;
+        if (!wanted.has(p.location?.country)) continue;
         const id = p.id;
         if (!id || found.has(String(id))) continue;
         found.set(String(id), job({
@@ -1100,8 +1132,18 @@ export const PROVIDER_NAMES = Object.keys(PROVIDERS)
  * reachable by being written down.
  */
 export const FIRST_PARTY_BOARDS = {
-  Amazon: ['amazon', 'IND'],
-  Microsoft: ['microsoft', 'India'],
+  // The three PUBLISHED boards, not every country these employers hire in.
+  // Collecting is cheap (§6) but not free — each country is three more requests
+  // a poll — and a row in a region `regions.publish` does not list is stored and
+  // never shown. Add a country here when its board goes live, not before.
+  Amazon: ['amazon', 'IND,USA,GBR'],
+  Microsoft: ['microsoft', 'India,United States,United Kingdom'],
+  // UBER'S ENDPOINT IS GONE, AND THE TOKEN IS NOT WHY. `loadSearchJobsResults`
+  // answered 404 on every shape tried on 7 Sep 2026 (and 403 on jobs.uber.com,
+  // 406 on the careers page), so this board has been returning null rather than
+  // an empty list. It is left at one country deliberately: widening a token on a
+  // dead endpoint would dress a broken adapter up as a working one. Reviving it
+  // needs the browser trick again, and the token can widen then.
   Uber: ['uber', 'IND'],
   Netflix: ['eightfold', 'explore.jobs.netflix.net'],
 };
