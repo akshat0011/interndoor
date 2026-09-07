@@ -1,5 +1,5 @@
 {
- "generatedAt": 1788743466563,
+ "generatedAt": 1788744461729,
  "region": "IN",
  "regionName": "India",
  "count": 241,
@@ -3675,7 +3675,7 @@
    "company": "Microsoft",
    "matchedWatchlist": "Microsoft",
    "isTech": true,
-   "roleSource": "ats-microsoft",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/microsoft.jpg",
    "location": "Multiple Locations, Multiple Locations, India",
@@ -3688,12 +3688,19 @@
     "data structures",
     "algorithms"
    ],
-   "summary": "Come build community, explore your passions and do your best work at Microsoft with thousands of University interns from every corner of the world. As a Software Engineering Intern, you will work with teammates to solve problems and build innovative software solutions. You will apply your passion for customers and product quality as you provide technical guidance to Technical Program Managers and Product Managers. You will learn and adopt relevant new technologies, tools, methods, and processes to leverage in your solutions.",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
+   "summary": "As a software engineering intern, you'll contribute to real-world projects by solving technical challenges and improving software solutions. This role suits students passionate about coding and eager to grow in a collaborative environment. You'll work on innovative projects with global teams and gain hands-on experience in developing next-generation software.",
+   "bullets": [
+    "Solve complex problems using engineering principles",
+    "Work with stakeholders to define user requirements",
+    "Learn new methods and apply them to improve software"
+   ],
+   "roleLabel": "Software Engineering",
+   "degreeLevel": "UG/PG",
    "degreeText": null,
-   "keySkills": [],
+   "keySkills": [
+    "data structures",
+    "algorithms"
+   ],
    "stipendStatus": "unknown",
    "postedText": null,
    "postedAt": 1787910803000,
@@ -7563,6 +7570,51 @@
    "region": "IN"
   },
   {
+   "id": "ats:microsoft:India,United States,United Kingdom:1970393556971804",
+   "title": "Research Sciences INTERN",
+   "company": "Microsoft",
+   "matchedWatchlist": "Microsoft",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/microsoft.jpg",
+   "location": "Bangalore, Karnataka, India",
+   "workplaceType": "onsite",
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This research internship involves developing tools for large codebases using ai and formal methods. Ideal for students interested in programming languages and software engineering research. Based in bangalore with access to microsoft research india.",
+   "bullets": [
+    "Build tools for large codebases using AI and formal methods",
+    "Collaborate with researchers and engineers on real-world problems",
+    "Based in bangalore with access to microsoft research india"
+   ],
+   "roleLabel": "Software research",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "ai",
+    "formal methods",
+    "static analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1787218531000,
+   "firstSeenAt": 1788742998163,
+   "lastSeenAt": 1788743408333,
+   "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
+   "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
+   "description": null,
+   "roleFingerprint": "3057acfd56",
+   "cardFacts": [
+    "Bangalore",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
    "id": "4455603847",
    "title": "Data Analyst/Data Engineer Intern",
    "company": "DeHaat",
@@ -8280,50 +8332,6 @@
    "roleFingerprint": "258ce41e0f",
    "cardFacts": [
     "Chennai",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:microsoft:India:1970393556971804",
-   "title": "Research Sciences INTERN",
-   "company": "Microsoft",
-   "matchedWatchlist": "Microsoft",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/microsoft.jpg",
-   "location": "Bangalore, Karnataka, India",
-   "workplaceType": "onsite",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This research internship involves working on software engineering challenges using ai and formal methods. Ideal for students interested in programming languages and code analysis. Based in bangalore with opportunities to collaborate with microsoft researchers.",
-   "bullets": [
-    "Analyze codebases using AI and formal methods",
-    "Collaborate with researchers on real-world software problems",
-    "Based in bangalore with access to microsoft research"
-   ],
-   "roleLabel": "Software research",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "ai",
-    "formal methods"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787131693000,
-   "firstSeenAt": 1787135871164,
-   "lastSeenAt": 1788742722883,
-   "url": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
-   "applyUrl": "https://jobs.careers.microsoft.com/global/en/job/1970393556971804",
-   "description": null,
-   "roleFingerprint": "7fcc987f94",
-   "cardFacts": [
-    "Bangalore",
     "On-site"
    ],
    "region": "IN"
