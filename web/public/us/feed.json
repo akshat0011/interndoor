@@ -6,6 +6,150 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413673139",
+      "url": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413673139",
+      "title": "OCI Software Engineer Intern - OVIP — Oracle",
+      "content_text": "Company: Oracle · Location: Austin, TX\n• Implement and operate cloud services in a distributed, multi-tenant environment\n• Work with Java, Python, GoLang, and networking protocols like TCP/IP\n• Collaborate on high-scale, highly available virtual networking solutions",
+      "date_published": "2026-09-07T09:59:31.303Z",
+      "authors": [
+        {
+          "name": "Oracle"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-machine-learning-internship-phd-2027-4406715845",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-machine-learning-internship-phd-2027-4406715845",
+      "title": "Machine Learning Internship - PhD: 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA\n• Build and refine ml models from financial data to predict market trends\n• Work with pytorch and tensorflow on real trading systems\n• Mentorship from senior researchers in quantitative finance",
+      "date_published": "2026-09-07T09:16:46.684Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-trading-system-engineering-internship-summer-2027-4406712920",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-trading-system-engineering-internship-summer-2027-4406712920",
+      "title": "Trading System Engineering Internship: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build low latency trading systems in c++ for high frequency strategies\n• Work with senior developers on complex financial data processing\n• Stay in company housing with access to fitness, dining, and wellness",
+      "date_published": "2026-09-07T09:15:08.942Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4406733037",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4406733037",
+      "title": "Quantitative Research Internship - PhD: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build and test quantitative models using historical market data\n• Work with Python, large datasets, and GPU-accelerated computing\n• Collaborate with researchers and traders on real-world trading strategies",
+      "date_published": "2026-09-07T09:13:33.831Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4406711944",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4406711944",
+      "title": "Quantitative Trader Internship: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Analyze market data and support trading decisions\n• Work with traders and learn options theory\n• Based in bala-cynwyd, pa\n• Full-time mentorship and classroom training",
+      "date_published": "2026-09-07T09:09:42.539Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-phd-summer-2027-4406715843",
+      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-phd-summer-2027-4406715843",
+      "title": "Quantitative Systematic Trading Internship - PhD: Summer 2027 — Susquehanna International Group",
+      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build and test trading strategies using historical market data\n• Work with Python, large datasets, and GPU-accelerated computing\n• Collaborate with researchers and traders on real-world quantitative problems",
+      "date_published": "2026-09-07T09:09:37.646Z",
+      "authors": [
+        {
+          "name": "Susquehanna International Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-dram-pi-4453974886",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-dram-pi-4453974886",
+      "title": "Intern - DRAM PI — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Define specs and integration requirements for next-gen DRAM products\n• Collaborate with cross-functional teams on technical challenges and timelines\n• Use AI tools to improve engineering analysis and decision-making",
+      "date_published": "2026-09-07T09:08:12.790Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-intern-summer-2027-4464095627",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-intern-summer-2027-4464095627",
+      "title": "Digital Physical Design Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Implement layouts, run checks, prepare design data with senior engineers\n• Use timing, power, quality tools to resolve design issues\n• Collaborate with teams to improve quality and document processes\n• Based in Austin, TX for 12-week summer internship",
+      "date_published": "2026-09-07T09:06:13.881Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-analog-validation-intern-summer-2027-4464095631",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-analog-validation-intern-summer-2027-4464095631",
+      "title": "Analog Validation Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Run tests, collect data, and report results on analog circuits\n• Work with engineers to debug and improve test processes\n• Maintain records and support product quality in Austin",
+      "date_published": "2026-09-07T09:06:08.822Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-electronic-repair-intern-summer-2027-4464096621",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-electronic-repair-intern-summer-2027-4464096621",
+      "title": "Electronic Repair Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Repair and modify electronic components in manufacturing equipment\n• Use diagnostic tools and circuit design for complex systems\n• Work independently on projects with minimal supervision",
+      "date_published": "2026-09-07T09:06:04.067Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-device-engineering-intern-summer-2027-4464099594",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-device-engineering-intern-summer-2027-4464099594",
+      "title": "Device Engineering Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Chandler, AZ · Duration: Summer 2027\n• Analyze device performance and troubleshoot quality issues\n• Use statistical tools like Minitab and JMP for data analysis\n• Work with cross-functional teams on semiconductor projects",
+      "date_published": "2026-09-07T09:05:59.307Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-data-analytics-engineer-intern-summer-2027-4464089665",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-data-analytics-engineer-intern-summer-2027-4464089665",
+      "title": "Data Analytics Engineer Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Analyze engineering data to support resource planning and performance tracking\n• Build dashboards and automation tools using python and power bi\n• Collaborate with cross-functional teams on data-driven projects",
+      "date_published": "2026-09-07T09:05:38.454Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nxp-semiconductors-systems-engineer-intern-summer-2027-4464311157",
       "url": "https://interndoor.com/us/jobs/nxp-semiconductors-systems-engineer-intern-summer-2027-4464311157",
       "title": "Systems Engineer Intern - Summer 2027 — NXP Semiconductors",
@@ -342,6 +486,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413665203",
+      "url": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413665203",
+      "title": "OCI Software Engineer Intern - OVIP — Oracle",
+      "content_text": "Company: Oracle · Location: Nashville, TN\n• Build and operate massive scale cloud services in distributed environments\n• Work with Java, Python, GoLang, and distributed systems\n• Collaborate on networking protocols and virtualized cloud infrastructure",
+      "date_published": "2026-09-06T09:25:52.390Z",
+      "authors": [
+        {
+          "name": "Oracle"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-master-s-summer-2027-4406715840",
       "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-master-s-summer-2027-4406715840",
       "title": "Quantitative Systematic Trading Internship – Master's: Summer 2027 — Susquehanna International Group",
@@ -446,162 +602,6 @@
       "authors": [
         {
           "name": "GE Appliances, a Haier company"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-appliances-a-haier-company-engineering-co-op-fall-2027-4459037351",
-      "url": "https://interndoor.com/us/jobs/ge-appliances-a-haier-company-engineering-co-op-fall-2027-4459037351",
-      "title": "Engineering Co-op_Fall 2027 — GE Appliances, a Haier company",
-      "content_text": "Company: GE Appliances, a Haier company · Location: LaFayette, GA · Duration: Fall 2027\n• Work on new product development and software projects with mentor guidance\n• Use tools like CAD, simulation software, and programming languages\n• Live in Lafayette, GA with housing support and team events",
-      "date_published": "2026-09-06T02:21:14.222Z",
-      "authors": [
-        {
-          "name": "GE Appliances, a Haier company"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-embedded-systems-engineer-4455113198",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-embedded-systems-engineer-4455113198",
-      "title": "Internship - Embedded Systems Engineer — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: San Jose, CA\n• Debug power circuits and interfaces using lab equipment\n• Write guides for Type-C and USB-PD applications\n• Test and validate firmware for USB-PD controllers",
-      "date_published": "2026-09-05T17:58:12.438Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-co-op-security-consultant-strategy-risk-and-compliance-2027-4451266806",
-      "url": "https://interndoor.com/us/jobs/ibm-co-op-security-consultant-strategy-risk-and-compliance-2027-4451266806",
-      "title": "Co-Op Security Consultant - Strategy, Risk & Compliance 2027 — IBM",
-      "content_text": "Company: IBM · Location: University Park, TX · Duration: 10 weeks\n• Analyze business and technical requirements to design security solutions\n• Work with senior consultants on client projects using IBM platforms\n• Gain experience in network security and threat management",
-      "date_published": "2026-09-05T16:18:59.070Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-oracle-cloud-2027-4451255898",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-oracle-cloud-2027-4451255898",
-      "title": "Intern Oracle Cloud 2027 — IBM",
-      "content_text": "Company: IBM · Location: Dallas, TX · Duration: 10 weeks\n• Support client projects with data analytics and cloud migration\n• Work with Oracle Cloud and enterprise software tools\n• Shadow product teams and contribute to system implementations",
-      "date_published": "2026-09-05T16:18:20.859Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-developer-adobe-2027-4451227559",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-developer-adobe-2027-4451227559",
-      "title": "Intern Developer – Adobe 2027 — IBM",
-      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Write and maintain scalable code for cloud-native applications\n• Work with SQL/PLSQL, REST/SOAP APIs, and cloud platforms\n• Collaborate on cross-functional teams with real client projects",
-      "date_published": "2026-09-05T16:16:57.087Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-scientist-2027-ai-and-data-analytics-4451281734",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-scientist-2027-ai-and-data-analytics-4451281734",
-      "title": "Intern Data Scientist 2027 – AI & Data Analytics — IBM",
-      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Analyze data and build models for client projects using python and sql\n• Work with ai tools like langchain and llamaindex to develop solutions\n• Collaborate with mentors on real-world analytics and generative ai projects",
-      "date_published": "2026-09-05T16:16:51.983Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-co-op-developer-digital-product-2027-4451264812",
-      "url": "https://interndoor.com/us/jobs/ibm-co-op-developer-digital-product-2027-4451264812",
-      "title": "Co-Op Developer - Digital Product 2027 — IBM",
-      "content_text": "Company: IBM · Location: University Park, TX · Duration: 10 weeks\n• Implement software applications and digital solutions under senior developer guidance\n• Use Java, JavaScript, HTML, CSS, Python, or similar technologies\n• Work in agile teams with cross-functional collaboration and code reviews",
-      "date_published": "2026-09-05T16:14:46.878Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-2027-ai-and-data-analytics-4451288630",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-2027-ai-and-data-analytics-4451288630",
-      "title": "Intern Data Engineer 2027 – AI & Data Analytics — IBM",
-      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Build data pipelines and APIs for client projects using cloud platforms and AI tools\n• Use Python, SQL, and ETL tools to process structured and unstructured data\n• Work on real-world data governance and responsible AI practices",
-      "date_published": "2026-09-05T16:14:24.021Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/navi-operations-intern-to-founding-engineer-4462616658",
-      "url": "https://interndoor.com/us/jobs/navi-operations-intern-to-founding-engineer-4462616658",
-      "title": "Intern to Founding Engineer — Navi Operations",
-      "content_text": "Company: Navi Operations · Location: New York, NY\n• Build software that real factories depend on\n• Work across data pipelines, erp integrations, and agent workflows\n• Convert to full-time software engineer in may",
-      "date_published": "2026-09-05T16:08:52.216Z",
-      "authors": [
-        {
-          "name": "Navi Operations"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-software-engineer-intern-entry-level-sales-program-2027-4451286701",
-      "url": "https://interndoor.com/us/jobs/ibm-software-engineer-intern-entry-level-sales-program-2027-4451286701",
-      "title": "Software Engineer Intern - Entry Level Sales Program 2027 — IBM",
-      "content_text": "Company: IBM · Location: Austin, TX\n• Build ai solutions using python and ibm tools\n• Work with partners on deployment and adoption\n• Design architectures for partner tech stacks",
-      "date_published": "2026-09-05T16:03:43.304Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451251862",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451251862",
-      "title": "Intern Data Engineer - Data Services - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Monroe, MI · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI tools\n• Work with SQL, Python, and modern data platforms in a team of engineers and consultants\n• Contribute to real client projects across industries like healthcare and finance",
-      "date_published": "2026-09-05T16:03:17.832Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451257884",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451257884",
-      "title": "Intern Data Engineer - Data Services - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Baton Rouge, LA · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI technologies\n• Work with SQL, Python, and modern data platforms to transform raw data into insights\n• Collaborate with cross-functional teams on real-world projects across industries",
-      "date_published": "2026-09-05T16:02:56.592Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451258828",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-data-services-2027-4451258828",
-      "title": "Intern Data Engineer - Data Services - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Buffalo, NY · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI technologies\n• Work with SQL, Python, and modern data platforms to transform raw data into insights\n• Collaborate with cross-functional teams on real client projects across industries",
-      "date_published": "2026-09-05T15:53:36.235Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
