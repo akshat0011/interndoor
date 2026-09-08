@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-power-conversion-and-storage-engineering-intern-co-op-summe-4455328442",
+      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-power-conversion-and-storage-engineering-intern-co-op-summe-4455328442",
+      "title": "GE Vernova Power Conversion & Storage Engineering Intern/Co-Op - Summer 2027 — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Findlay, PA · Duration: Summer 2027\n• Design and test power conversion systems for naval and industrial applications\n• Use MATLAB, Python, and C++ for control and simulation tasks\n• Work on real-time models and software for power electronics projects",
+      "date_published": "2026-09-08T13:37:04.631Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450862159",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450862159",
+      "title": "Intern Application Developer 2027-ServiceNow — IBM",
+      "content_text": "Company: IBM · Location: Chicago, IL · Duration: 10 weeks\n• Write and maintain scalable code for cloud-native applications\n• Work with Java, JavaScript, and modern frameworks\n• Collaborate on cross-functional teams on client projects",
+      "date_published": "2026-09-08T13:35:18.471Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/stmicroelectronics-software-algorithm-embedded-intern-4445990981",
+      "url": "https://interndoor.com/us/jobs/stmicroelectronics-software-algorithm-embedded-intern-4445990981",
+      "title": "Software Algorithm Embedded Intern — STMicroelectronics",
+      "content_text": "Company: STMicroelectronics · Location: Santa Clara, CA · Duration: Fall 2026\n• Design and test algorithms for sensor data on embedded systems\n• Work with c/c++ and python for firmware and machine learning\n• Contribute to motion tracking and industrial automation projects",
+      "date_published": "2026-09-08T13:21:33.994Z",
+      "authors": [
+        {
+          "name": "STMicroelectronics"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ge-vernova-pcs-supplier-quality-engineering-intern-summer-2027-3-4455524208",
       "url": "https://interndoor.com/us/jobs/ge-vernova-pcs-supplier-quality-engineering-intern-summer-2027-3-4455524208",
       "title": "PCS Supplier Quality Engineering Intern - Summer 2027-3 — GE Vernova",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463230827",
-      "url": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463230827",
-      "title": "Cyber Compliance Intern - Summer 2027 — RSM US LLP",
-      "content_text": "Company: RSM US LLP · Location: McLean, VA · Duration: Summer 2027\n• Assess cyber security risks and provide remediation guidance to clients\n• Work with ISO, NIST, CIS frameworks and compliance standards like GDPR\n• Support development of security governance programs and reporting tools",
-      "date_published": "2026-09-08T07:11:38.091Z",
-      "authors": [
-        {
-          "name": "RSM US LLP"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ally-summer-2027-internship-insurance-data-and-analytics-4463246531",
-      "url": "https://interndoor.com/us/jobs/ally-summer-2027-internship-insurance-data-and-analytics-4463246531",
-      "title": "Summer 2027 Internship – Insurance Data & Analytics — Ally",
-      "content_text": "Company: Ally · Location: Detroit, MI · Duration: Summer 2027\n• Analyze insurance data to support business decisions\n• Use sql and data tools to create reports and dashboards\n• Work on projects that impact insurance strategies and risk management",
-      "date_published": "2026-09-08T07:09:02.221Z",
-      "authors": [
-        {
-          "name": "Ally"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-software-engineering-4463247514",
-      "url": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-software-engineering-4463247514",
-      "title": "Summer 2027 Internship – Technology – Software Engineering — Ally",
-      "content_text": "Company: Ally · Location: Charlotte, NC · Duration: Summer 2027\n• Work on real projects with teams building cloud and AI solutions\n• Use aws and develop automation tools for internal systems\n• Get mentorship from senior engineers and interact with leadership",
-      "date_published": "2026-09-08T07:08:01.643Z",
-      "authors": [
-        {
-          "name": "Ally"
         }
       ]
     }
