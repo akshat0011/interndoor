@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 08 Sep 2026 14:26:05 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 08 Sep 2026 15:02:35 GMT</lastBuildDate>
+  <item>
+    <title>Intern Data Engineer - AI &amp; Analytics - 2027 — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699</guid>
+    <pubDate>Tue, 08 Sep 2026 15:02:35 GMT</pubDate>
+    <description>Company: IBM · Location: Monroe, MI · Duration: 10 weeks
+• Build data pipelines and automate business processes using cloud and AI technologies
+• Work with Python, SQL, and modern data platforms to transform data into insights
+• Collaborate with cross-functional teams on real-world projects across industries</description>
+  </item>
+  <item>
+    <title>Intern Application Developer - ServiceNow 2027 — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-intern-application-developer-servicenow-2027-4450867079</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-intern-application-developer-servicenow-2027-4450867079</guid>
+    <pubDate>Tue, 08 Sep 2026 14:55:02 GMT</pubDate>
+    <description>Company: IBM · Location: Dallas, TX · Duration: 10 weeks
+• Write and maintain scalable code for service now platforms
+• Work with java and other backend technologies
+• Collaborate on cross-functional teams on client projects</description>
+  </item>
+  <item>
+    <title>Intern Application Developer 2027-ServiceNow — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450856236</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450856236</guid>
+    <pubDate>Tue, 08 Sep 2026 14:54:27 GMT</pubDate>
+    <description>Company: IBM · Location: Research Park, California, United States · Duration: 10 weeks
+• Write and maintain scalable code for cloud-native applications
+• Work with Java, JavaScript, and modern frameworks
+• Collaborate on cross-functional teams on client projects</description>
+  </item>
   <item>
     <title>Intern Application Developer 2027-ServiceNow — IBM</title>
     <link>https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450863148</link>
@@ -478,36 +508,6 @@
 • Develop kernel modules for AI-native database systems
 • Work with PMs and engineers on backend AI database support
 • Collaborate on large-scale cloud infrastructure challenges</description>
-  </item>
-  <item>
-    <title>AI Infrastructure Engineer Intern (Compute Efficiency &amp; Scheduling) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448867308</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448867308</guid>
-    <pubDate>Tue, 08 Sep 2026 09:53:14 GMT</pubDate>
-    <description>Company: ByteDance · Location: Seattle, WA · Duration: Summer 2027
-• Build tools for global platform reliability and self-management
-• Work on AI-driven scheduler to optimize workload placement
-• Use Go, C++, Python, or Java in a 12-week summer role</description>
-  </item>
-  <item>
-    <title>Agent Evaluation &amp; Evolution Machine Learning Engineer Intern (AML-Ark-US) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-agent-evaluation-and-evolution-machine-learning-engineer-intern-aml-ar-4451804334</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-agent-evaluation-and-evolution-machine-learning-engineer-intern-aml-ar-4451804334</guid>
-    <pubDate>Tue, 08 Sep 2026 09:53:09 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Design evaluation systems for LLM-based agents, measuring task success and reasoning quality
-• Build benchmarks and automated judging pipelines using rule-based checks and model-based judging
-• Analyze agent execution traces and user feedback to improve system reliability and performance</description>
-  </item>
-  <item>
-    <title>Security Engineering Project Intern (Watermark) - 2026 Start (BS/MS) — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-security-engineering-project-intern-watermark-2026-start-bs-ms-4435852397</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-security-engineering-project-intern-watermark-2026-start-bs-ms-4435852397</guid>
-    <pubDate>Tue, 08 Sep 2026 09:49:17 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA · Duration: 3 months
-• Design invisible watermark algorithms for AI content and LLMs
-• Work with Python/Go/C++ and deep learning tools
-• Collaborate with cross-functional teams on security products</description>
   </item>
 </channel>
 </rss>
