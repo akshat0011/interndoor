@@ -28,17 +28,17 @@
   <url><loc>https://interndoor.com/us/skills/react</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/typescript</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/power-bi</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/kubernetes</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/llm</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/kubernetes</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pytorch</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/tableau</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/express</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/labview</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rust</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/deep-learning</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/express</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/docker</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/asic</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/computer-vision</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/computer-vision</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/verilog</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/gcp</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/system-design</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
@@ -68,11 +68,11 @@
   <url><loc>https://interndoor.com/us/skills/place-and-route</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/redis</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/scikit-learn</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/uvm</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/cuda</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/postgresql</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/swift</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/dft</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
@@ -101,8 +101,8 @@
   <url><loc>https://interndoor.com/us/locations/irvine</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/richardson</loc><lastmod>2026-08-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/redmond</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/rochester</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/seattle</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/rochester</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/sunnyvale</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/greensboro</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/mountain-view</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -130,15 +130,20 @@
   <url><loc>https://interndoor.com/us/locations/houston</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/huntsville</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/omaha</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/san-francisco-bay</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/shakopee</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/bellevue</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/el-segundo</loc><lastmod>2026-09-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/fond-du-lac</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/mclean</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/san-francisco-bay</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/tucson</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-corporate-operation-technical-engineering-4463271155</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-visual-generation-and-multimodal-evaluation-machine-learning-engineer--4451821080</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multi-modal-agentic-databases-2027-start-phd-4448131821</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-software-engineer-intern-traffic-infrastructure-2027-summer-4454860724</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-research-scientist-intern-seed-responsible-ai-2026-start-phd-4436778477</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-4463249570</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-employee-experience-4463249572</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/datadog-software-engineering-intern-winter-4455312818</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
@@ -1927,8 +1932,8 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/companies/gilead-sciences</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/datadog</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/bytedance</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/datadog</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hilton</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/micron-technology</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/rsm-us-llp</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>

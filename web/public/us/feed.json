@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-corporate-operation-technical-engineering-4463271155",
+      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-corporate-operation-technical-engineering-4463271155",
+      "title": "Intern - CFO - Corporate Operation (Technical Engineering) — Gilead Sciences",
+      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Review engineering documents and conduct field checks to update building systems\n• Use Microsoft Office tools to prepare reports and presentations for stakeholders\n• Collaborate on utility mapping and GEP improvements with cross-functional teams",
+      "date_published": "2026-09-08T10:40:48.607Z",
+      "authors": [
+        {
+          "name": "Gilead Sciences"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-visual-generation-and-multimodal-evaluation-machine-learning-engineer--4451821080",
+      "url": "https://interndoor.com/us/jobs/bytedance-visual-generation-and-multimodal-evaluation-machine-learning-engineer--4451821080",
+      "title": "Visual Generation & Multimodal Evaluation Machine Learning Engineer Intern (AML-Ark-US) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build evaluation systems for image and video models/agents\n• Develop automated metrics and human evaluation protocols\n• Design video generation/debugging agents for creative workflows",
+      "date_published": "2026-09-08T10:40:23.057Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multi-modal-agentic-databases-2027-start-phd-4448131821",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multi-modal-agentic-databases-2027-start-phd-4448131821",
+      "title": "Research Scientist Intern (Multi-modal Agentic Databases) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Design and implement new algorithms for multi-modal agentic databases\n• Work with C/C++, Go, Java, or Python on distributed systems projects\n• Publish research at top-tier conferences like SIGMOD or VLDB",
+      "date_published": "2026-09-08T10:40:12.746Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-traffic-infrastructure-2027-summer-4454860724",
+      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-traffic-infrastructure-2027-summer-4454860724",
+      "title": "Software Engineer Intern (Traffic Infrastructure) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and operate edge infrastructure components for global traffic systems\n• Work with Kubernetes, containers, and distributed systems in production\n• Build observability tools and automate incident response processes",
+      "date_published": "2026-09-08T10:40:06.731Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-seed-responsible-ai-2026-start-phd-4436778477",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-seed-responsible-ai-2026-start-phd-4436778477",
+      "title": "Research Scientist Intern (Seed Responsible AI) - 2026 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop advanced AI technologies, focusing on foundation models and AI agents\n• Conduct research to improve AI reliability, safety, and trustworthiness\n• Collaborate on AI safety and ethics product development",
+      "date_published": "2026-09-08T10:40:02.482Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-4463249570",
       "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-4463249570",
       "title": "Intern - CFO - IT — Gilead Sciences",
@@ -539,66 +599,6 @@
       "title": "Engines Engineering Intern – Computer or Software Engineering – US – Summer 2027 — GE Aerospace",
       "content_text": "Company: GE Aerospace · Location: Cincinnati, OH · Duration: Summer 2027\n• Develop software for engine controls and data systems\n• Use C++, Python, and MATLAB for simulations and analysis\n• Work on real-world projects with mentorship and training",
       "date_published": "2026-09-07T13:50:31.459Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455239629",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455239629",
-      "title": "Systems Engineering Co-op - Electrical Engineering & Computer Engineering/Science (Electric Power) - US - Spring 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Dayton, OH · Duration: Spring 2027\n• Design and test aerospace systems for commercial and military applications\n• Work with engine controls, electrical power, and navigation systems\n• Based in Dayton, OH, with potential for relocation support",
-      "date_published": "2026-09-07T12:50:50.070Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-engineering-intern-summer-2027-4455254337",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-engineering-intern-summer-2027-4455254337",
-      "title": "GE Vernova Engineering Intern (Summer 2027) — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Clearwater, FL · Duration: Summer 2027\n• Work on technical projects in power generation and grid solutions\n• Use Lean and Six Sigma to improve production processes\n• Collaborate with cross-functional teams on quality and efficiency",
-      "date_published": "2026-09-07T12:50:40.902Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455246597",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455246597",
-      "title": "Systems Engineering Co-op - Electrical Engineering & Computer Engineering/Science (Electric Power) - US - Fall 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Dayton, OH · Duration: Fall 2027\n• Design and test aerospace systems for commercial and military applications\n• Work with engine controls, electrical power, and navigation systems\n• Based in Dayton, OH, with potential for relocation support",
-      "date_published": "2026-09-07T12:39:45.444Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455241571",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-electrical-engineering-and-computer-engineer-4455241571",
-      "title": "Systems Engineering Co-op - Electrical Engineering & Computer Engineering/Science (Avionics) - US - Spring 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Grand Rapids, MI · Duration: Spring 2027\n• Design and test aerospace systems for commercial and military applications\n• Work with engine controls, navigation, and power systems\n• Based in Grand Rapids, MI, with potential for relocation support",
-      "date_published": "2026-09-07T12:36:31.484Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-digital-technology-intern-us-cincinnati-oh-summer-2027-4455247556",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-digital-technology-intern-us-cincinnati-oh-summer-2027-4455247556",
-      "title": "Digital Technology Intern – US – Cincinnati, OH – Summer 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Cincinnati, OH · Duration: Summer 2027\n• Support digital tools by developing and maintaining applications and systems\n• Work with teams on projects involving software, data, and IT solutions\n• Gain exposure to IT leaders and global internship support network",
-      "date_published": "2026-09-07T12:20:10.489Z",
       "authors": [
         {
           "name": "GE Aerospace"
