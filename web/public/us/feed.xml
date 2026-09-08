@@ -6,7 +6,59 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 08 Sep 2026 15:31:09 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 08 Sep 2026 16:00:14 GMT</lastBuildDate>
+  <item>
+    <title>Systems Engineer Intern — L3Harris Technologies</title>
+    <link>https://interndoor.com/us/jobs/l3harris-technologies-systems-engineer-intern-4455734063</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/l3harris-technologies-systems-engineer-intern-4455734063</guid>
+    <pubDate>Tue, 08 Sep 2026 16:00:14 GMT</pubDate>
+    <description>Company: L3Harris Technologies · Location: Alpharetta, GA
+• Analyze system requirements and design complex architectures
+• Develop test plans and document operational analysis results
+• Support system integration and perform software/hardware troubleshooting</description>
+  </item>
+  <item>
+    <title>Quantitative Trader/Researcher Intern - Summer 2027 — Tower Research Capital</title>
+    <link>https://interndoor.com/us/jobs/tower-research-capital-quantitative-trader-researcher-intern-summer-2027-4437126891</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tower-research-capital-quantitative-trader-researcher-intern-summer-2027-4437126891</guid>
+    <pubDate>Tue, 08 Sep 2026 16:00:10 GMT</pubDate>
+    <description>Company: Tower Research Capital · Location: New York, NY · Duration: Summer 2027
+• Build and deploy high-frequency trading algorithms
+• Analyze market data for patterns using python and c++
+• Develop tools for data analysis and trading strategies
+• Work on exchange simulators and quantitative research</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern - Winter &#39;27 — Vercel</title>
+    <link>https://interndoor.com/us/jobs/vercel-software-engineering-intern-winter-27-4464621862</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/vercel-software-engineering-intern-winter-27-4464621862</guid>
+    <pubDate>Tue, 08 Sep 2026 15:55:37 GMT</pubDate>
+    <description>Company: Vercel · Location: San Francisco, CA
+• Own end-to-end projects from design to deployment
+• Write and review production code with experienced engineers
+• Debug real systems and fix root causes
+• Based in san francisco, commute mon/tues/fri</description>
+  </item>
+  <item>
+    <title>Federal Data Engineering Co-Op: 2027 — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-federal-data-engineering-co-op-2027-4452505080</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-federal-data-engineering-co-op-2027-4452505080</guid>
+    <pubDate>Tue, 08 Sep 2026 15:50:00 GMT</pubDate>
+    <description>Company: IBM · Location: University Park, TX
+• Write scripts to clean integrate and model data
+• Use python to build data pipelines and transform data
+• Work on federal client projects with security compliance focus</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern (Summer 2027) — Raytheon</title>
+    <link>https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4464620597</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4464620597</guid>
+    <pubDate>Tue, 08 Sep 2026 15:38:23 GMT</pubDate>
+    <description>Company: Raytheon · Location: Richardson, TX · Duration: Summer 2027
+• Develop software to integrate components and enable new capabilities
+• Use Java, C++, Python, and Git for development and version control
+• Work on secure systems requiring TS/SCI clearance</description>
+  </item>
   <item>
     <title>Software Engineering Intern - Winter &#39;27 — Vercel</title>
     <link>https://interndoor.com/us/jobs/vercel-software-engineering-intern-winter-27-ats-greenhouse-vercel-6181755004</link>
@@ -458,56 +510,6 @@
 • Develop tools to monitor and optimize data center networks
 • Use machine learning for real-time network fault detection
 • Collaborate on automated systems for enterprise network troubleshooting</description>
-  </item>
-  <item>
-    <title>Research Scientist Intern (Applied Machine Learning-Enterprise) - 2026 Start (PhD) — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-research-scientist-intern-applied-machine-learning-enterprise-2026-sta-4435857039</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-research-scientist-intern-applied-machine-learning-enterprise-2026-sta-4435857039</guid>
-    <pubDate>Tue, 08 Sep 2026 10:15:41 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Build and maintain big model as a service platform for LLM applications
-• Work with PyTorch/TensorFlow and C++/Python/Go for model training and inference
-• Manage GPU resources and optimize computing power for large-scale models</description>
-  </item>
-  <item>
-    <title>Software Development Engineer Intern (Network Automation) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-software-development-engineer-intern-network-automation-2027-summer-4451035909</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-software-development-engineer-intern-network-automation-2027-summer-4451035909</guid>
-    <pubDate>Tue, 08 Sep 2026 10:15:37 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Design and test network operating system features for data centers
-• Work with Python, Go, Redis, Kafka, and network protocols
-• Based in San Jose, CA, with health insurance and paid holidays</description>
-  </item>
-  <item>
-    <title>Self-Built Engineer Intern (CDN Platform) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4454521361</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4454521361</guid>
-    <pubDate>Tue, 08 Sep 2026 10:12:43 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Build data pipelines and dashboards for CDN traffic and cost analysis
-• Work with Spark, Flink, and ClickHouse on large-scale data systems
-• Support platform governance and cost optimization for global CDN operations</description>
-  </item>
-  <item>
-    <title>ASIC Design Engineer Intern (Video Silicon IP) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-asic-design-engineer-intern-video-silicon-ip-2027-summer-4454510355</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-asic-design-engineer-intern-video-silicon-ip-2027-summer-4454510355</guid>
-    <pubDate>Tue, 08 Sep 2026 10:12:18 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Design hardware accelerators for video encoding and processing
-• Use SystemVerilog, HLS, UVM, and Python
-• Work with algorithm and verification teams on scalable video IPs</description>
-  </item>
-  <item>
-    <title>Software Engineer Intern (AML-Engine-Orchestration) - 2027 Start — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-software-engineer-intern-aml-engine-orchestration-2027-start-4452446548</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-software-engineer-intern-aml-engine-orchestration-2027-start-4452446548</guid>
-    <pubDate>Tue, 08 Sep 2026 10:11:56 GMT</pubDate>
-    <description>Company: ByteDance · Location: Seattle, WA
-• Design orchestration systems for ML platforms using Kubernetes, container runtimes, and job lifecycle management
-• Build resource management tools for GPU utilization, cost efficiency, and multi-tenant scheduling
-• Work on model serving systems with traffic management, autoscaling, and disaster recovery features</description>
   </item>
 </channel>
 </rss>
