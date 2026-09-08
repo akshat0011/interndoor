@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450863148",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450863148",
+      "title": "Intern Application Developer 2027-ServiceNow — IBM",
+      "content_text": "Company: IBM · Location: Durham, NC · Duration: 10 weeks\n• Write and maintain scalable code for cloud-native applications\n• Work with Java, JavaScript, and modern frameworks\n• Collaborate on cross-functional teams on client projects",
+      "date_published": "2026-09-08T14:26:05.667Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/texas-instruments-product-engineering-intern-4463505394",
+      "url": "https://interndoor.com/us/jobs/texas-instruments-product-engineering-intern-4463505394",
+      "title": "Product Engineering Intern — Texas Instruments",
+      "content_text": "Company: Texas Instruments · Location: Dallas, TX\n• Support product development through testing, troubleshooting, and documentation\n• Work with cross-functional teams on test hardware, software, and interface design\n• Contribute to product lifecycle from definition to manufacturing and quality",
+      "date_published": "2026-09-08T14:20:36.468Z",
+      "authors": [
+        {
+          "name": "Texas Instruments"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450850316",
       "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4450850316",
       "title": "Intern Application Developer 2027-ServiceNow — IBM",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-ats-greenhouse-datadog-8052118",
+      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-ats-greenhouse-datadog-8052118",
+      "title": "Software Engineering Intern — Datadog",
+      "content_text": "Company: Datadog · Location: Boston, Massachusetts, USA; New York, New York, USA\n• Build and improve distributed systems for observability and security platforms\n• Work with Kubernetes, cloud-native infrastructure, and AI-powered tools\n• Collaborate with engineers and mentors on global-scale technical projects",
+      "date_published": "2026-09-08T14:07:37.000Z",
+      "authors": [
+        {
+          "name": "Datadog"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-technology-software-engineering-and-c-4455278438",
-      "url": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-technology-software-engineering-and-c-4455278438",
-      "title": "2027 Corporate Summer Internship - Technology (Software Engineering and Cyber) — Hilton",
-      "content_text": "Company: Hilton · Location: Memphis, TN\n• Work on cutting-edge tech projects for hospitality industry innovation\n• Use Python, Java, and cloud platforms in real-world development\n• Based in Memphis, TN for 10 weeks with full-time hours",
-      "date_published": "2026-09-08T09:41:42.893Z",
-      "authors": [
-        {
-          "name": "Hilton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-global-distribution-4455273535",
-      "url": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-global-distribution-4455273535",
-      "title": "2027 Corporate Summer Internship - Global Distribution — Hilton",
-      "content_text": "Company: Hilton · Location: Dallas, TX\n• Support global distribution team with booking channel management and optimization\n• Use Microsoft SQL Server, C#, React JS, and APIs for system integration\n• Work full-time in Dallas, TX from June to August 2027",
-      "date_published": "2026-09-08T09:38:33.726Z",
-      "authors": [
-        {
-          "name": "Hilton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-dram-design-engineer-4454266036",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-dram-design-engineer-4454266036",
-      "title": "Intern - DRAM Design Engineer — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and analyze digital and analog circuits for memory products\n• Apply artificial intelligence in design processes\n• Based in boise, id",
-      "date_published": "2026-09-08T09:12:12.227Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }
