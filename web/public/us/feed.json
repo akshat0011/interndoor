@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ally-summer-2027-internship-auto-data-and-analytics-4463232564",
+      "url": "https://interndoor.com/us/jobs/ally-summer-2027-internship-auto-data-and-analytics-4463232564",
+      "title": "Summer 2027 Internship – Auto Data & Analytics — Ally",
+      "content_text": "Company: Ally · Location: Detroit, MI · Duration: Summer 2027\n• Analyze data to support business decisions in auto finance\n• Use sql, power bi, and python for data modeling\n• Work on real projects with cross-functional teams in detroit",
+      "date_published": "2026-09-08T07:04:19.381Z",
+      "authors": [
+        {
+          "name": "Ally"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-data-and-ai-4463243494",
+      "url": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-data-and-ai-4463243494",
+      "title": "Summer 2027 Internship – Technology – Data & AI — Ally",
+      "content_text": "Company: Ally · Location: Charlotte, NC · Duration: Summer 2027\n• Analyze data and build models for business insights\n• Work with Python, SQL, Snowflake, and AWS\n• Join AI & Analytics or Enterprise Tech teams",
+      "date_published": "2026-09-08T07:04:14.713Z",
+      "authors": [
+        {
+          "name": "Ally"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-cyber-4463229500",
+      "url": "https://interndoor.com/us/jobs/ally-summer-2027-internship-technology-cyber-4463229500",
+      "title": "Summer 2027 Internship – Technology – Cyber — Ally",
+      "content_text": "Company: Ally · Location: Charlotte, NC · Duration: Summer 2027\n• Analyze security logs and identify potential threats\n• Work with cybersecurity tools and data analytics platforms\n• Support IPRM team in protecting company data and systems",
+      "date_published": "2026-09-08T07:03:23.637Z",
+      "authors": [
+        {
+          "name": "Ally"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-asic-firmware-and-diagnostic-intern-4463189407",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-asic-firmware-and-diagnostic-intern-4463189407",
       "title": "ASIC Firmware and Diagnostic Intern — Hewlett Packard Enterprise",
@@ -563,42 +599,6 @@
       "title": "Data Analytics Engineer Intern - Summer 2027 — NXP Semiconductors",
       "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Analyze engineering data to support resource planning and performance tracking\n• Build dashboards and automation tools using python and power bi\n• Collaborate with cross-functional teams on data-driven projects",
       "date_published": "2026-09-07T09:05:38.454Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-systems-engineer-intern-summer-2027-4464311157",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-systems-engineer-intern-summer-2027-4464311157",
-      "title": "Systems Engineer Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Irvine, CA · Duration: Summer 2027\n• Develop python scripts to automate measurements and control test equipment\n• Collaborate with cross-functional teams on wireless system validation\n• Support testing and characterization of uwb devices and antennas",
-      "date_published": "2026-09-07T08:19:45.143Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-fab-device-engineer-intern-summer-2027-4464306539",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-fab-device-engineer-intern-summer-2027-4464306539",
-      "title": "FAB Device Engineer Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Analyze electrical testing data to improve device performance\n• Use jmp and sql for statistical process control\n• Work on integration projects to reduce costs",
-      "date_published": "2026-09-07T08:19:44.873Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-data-science-structured-problem-solving-intern-summer-2027-4464306564",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-data-science-structured-problem-solving-intern-summer-2027-4464306564",
-      "title": "Data Science / Structured Problem Solving Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Analyze data to improve semiconductor manufacturing quality using 6 sigma methods\n• Work with teams on machine learning and ai projects for quality improvements\n• Present findings to leadership on high-impact projects during internship",
-      "date_published": "2026-09-07T08:19:40.058Z",
       "authors": [
         {
           "name": "NXP Semiconductors"
