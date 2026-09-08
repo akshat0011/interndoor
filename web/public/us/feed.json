@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-ai-ml-engineering-co-op-4464672503",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-ai-ml-engineering-co-op-4464672503",
+      "title": "AI/ML Engineering Co-op — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Elyria, OH\n• Prototype AI/ML solutions for manufacturing automation and product development\n• Develop generative-AI workflows to produce and validate CNC code from CAD inputs\n• Integrate physics-informed techniques into models for improved reliability\n• Build OCR pipelines and connect to downstream ML systems",
+      "date_published": "2026-09-08T20:04:56.474Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-engineering-intern-4464673541",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-engineering-intern-4464673541",
+      "title": "Engineering Intern — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Elyria, OH\n• Assist in product design and process improvement with engineering team\n• Use 3D CAD and engineering drawings for prototype builds\n• Collaborate with production and quality teams on technical solutions",
+      "date_published": "2026-09-08T20:04:50.473Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-r-and-d-lab-engineering-intern-4464683337",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-r-and-d-lab-engineering-intern-4464683337",
+      "title": "R&D Lab Engineering Intern — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Elyria, OH\n• Setup and run lab tests for valves and cartridges\n• Maintain equipment and analyze test data\n• Collaborate on troubleshooting and process improvements",
+      "date_published": "2026-09-08T20:04:36.121Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-engineering-intern-drafting-4464674504",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-engineering-intern-drafting-4464674504",
+      "title": "Engineering Intern (Drafting) — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Elyria, OH\n• Create detailed CAD drawings from specs and sketches\n• Use 2D/3D software and MS Office tools\n• Archive and revise drawings per project needs",
+      "date_published": "2026-09-08T20:04:08.384Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-substation-equipment-monitoring-engineer-4464668679",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-substation-equipment-monitoring-engineer-4464668679",
+      "title": "Intern - Substation Equipment Monitoring Engineer — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Glen Allen, VA · Duration: Spring 2028\n• Assist with monitor installations and wiring verification\n• Update software databases and create installation webpages\n• Resolve communication alarms and terminate fiber optic cables",
+      "date_published": "2026-09-08T20:03:45.021Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-graduate-intern-electric-transmission-planning-4464671550",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-graduate-intern-electric-transmission-planning-4464671550",
+      "title": "Graduate Intern - Electric Transmission Planning — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Glen Allen, VA · Duration: Fall 2027\n• Evaluate transmission needs and develop expansion plans for new substations and interconnections\n• Use PSS/E, Python, PowerGem’s TARA, and Aspen One-Liner for system analysis\n• Collaborate with PJM and internal teams on FERC Order 1000 processes\n• Work on projects with real-world impact for net zero goals by 2050",
+      "date_published": "2026-09-08T20:03:40.089Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/two-sigma-software-engineering-internship-nyc-2027-4462537751",
+      "url": "https://interndoor.com/us/jobs/two-sigma-software-engineering-internship-nyc-2027-4462537751",
+      "title": "Software Engineering Internship - NYC 2027 — Two Sigma",
+      "content_text": "Company: Two Sigma · Location: New York, United States · Duration: 2-3 months\n• Build scalable tools for data analysis and trading systems\n• Work with Java, Python, and cloud infrastructure\n• Collaborate on high-performance, low-latency systems",
+      "date_published": "2026-09-08T20:01:00.401Z",
+      "authors": [
+        {
+          "name": "Two Sigma"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-spring-2027-4455737028",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-spring-2027-4455737028",
       "title": "Intern, Software Engineer Spring 2027 — L3Harris Technologies",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Vercel"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-ats-greenhouse-vercel-6181759004",
-      "url": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-ats-greenhouse-vercel-6181759004",
-      "title": "Software Engineering Intern - Summer '27 — Vercel",
-      "content_text": "Company: Vercel · Location: Hybrid - San Francisco\n• Own end-to-end projects from design to deployment\n• Work with JavaScript/TypeScript and Go/Rust\n• Based in San Francisco with hybrid flexibility",
-      "date_published": "2026-09-08T15:31:06.000Z",
-      "authors": [
-        {
-          "name": "Vercel"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-electrical-engineering-intern-b-p-hiring-event-with-aecom-arlington-4462506927",
-      "url": "https://interndoor.com/us/jobs/aecom-electrical-engineering-intern-b-p-hiring-event-with-aecom-arlington-4462506927",
-      "title": "Electrical Engineering Intern (B+P) - Hiring Event with AECOM - Arlington — AECOM",
-      "content_text": "Company: AECOM · Location: Arlington, VA · Duration: Summer 2027\n• Design electrical systems for buildings and facilities\n• Use AutoCAD, Revit, SKM, ETAP, and AGi32\n• Work on new and renovated projects in Arlington",
-      "date_published": "2026-09-08T15:26:00.538Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-software-engineer--4454453119",
-      "url": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-software-engineer--4454453119",
-      "title": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Technology - New York, NY — American Express",
-      "content_text": "Company: American Express · Location: New York, NY\n• Write clean code, test software, and work with Agile teams on real projects\n• Use Java, Python, React, or cloud tools in backend, frontend, or AI roles\n• Work 10 weeks in New York with mentorship and career growth opportunities",
-      "date_published": "2026-09-08T15:24:10.915Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineers-ai-and-analytics-2027-4452539666",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineers-ai-and-analytics-2027-4452539666",
-      "title": "Intern Data Engineers - AI & Analytics - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Buffalo, NY · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI tools\n• Work with Python, SQL, and modern data platforms like IBM Cloud\n• Collaborate on real client projects across healthcare, finance, and manufacturing",
-      "date_published": "2026-09-08T15:21:58.947Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407958934",
-      "url": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407958934",
-      "title": "Research Internship (Winter 2027) — Cohere",
-      "content_text": "Company: Cohere · Location: San Francisco, CA · Duration: 4-6 months\n• Design and implement novel research ideas in large language models\n• Use Python, JAX, PyTorch, and TensorFlow for model development\n• Collaborate with researchers on production-ready AI systems",
-      "date_published": "2026-09-08T15:12:08.098Z",
-      "authors": [
-        {
-          "name": "Cohere"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699",
-      "title": "Intern Data Engineer - AI & Analytics - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Monroe, MI · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI technologies\n• Work with Python, SQL, and modern data platforms to transform data into insights\n• Collaborate with cross-functional teams on real-world projects across industries",
-      "date_published": "2026-09-08T15:02:35.429Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-servicenow-2027-4450867079",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-servicenow-2027-4450867079",
-      "title": "Intern Application Developer - ServiceNow 2027 — IBM",
-      "content_text": "Company: IBM · Location: Dallas, TX · Duration: 10 weeks\n• Write and maintain scalable code for service now platforms\n• Work with java and other backend technologies\n• Collaborate on cross-functional teams on client projects",
-      "date_published": "2026-09-08T14:55:02.080Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
