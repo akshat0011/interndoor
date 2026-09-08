@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 08 Sep 2026 10:19:03 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 08 Sep 2026 11:50:01 GMT</lastBuildDate>
+  <item>
+    <title>Intern Bachelors AI — Honeywell Technologies</title>
+    <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4464467891</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4464467891</guid>
+    <pubDate>Tue, 08 Sep 2026 11:50:01 GMT</pubDate>
+    <description>Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India
+• Develop ai algorithms and models under experienced engineers
+• Work with python and frameworks like tensorflow or pytorch
+• Contribute to real-world ai projects in industrial applications</description>
+  </item>
   <item>
     <title>Application Engineering Intern, Summer 2027 (English) — Google</title>
     <link>https://interndoor.com/jobs/google-application-engineering-intern-summer-2027-english-4463256241</link>
@@ -504,16 +514,6 @@
 • Work with coding assistants and LLM workflows
 • Prototype and refine features for real-world use
 • Collaborate on agentic workflows and test thoroughly</description>
-  </item>
-  <item>
-    <title>Electronics Intern — Copeland</title>
-    <link>https://interndoor.com/jobs/copeland-electronics-intern-ats-workday-copeland-wd5-copeland-external-careers-page-jr117534</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/copeland-electronics-intern-ats-workday-copeland-wd5-copeland-external-careers-page-jr117534</guid>
-    <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: Copeland · Location: Pune, India · Duration: 6 months
-• Build and automate simulation workflows for EMI/EMC, thermal, and signal integrity analysis
-• Use ANSYS tools and Python to develop physics-based models for PCB assemblies
-• Collaborate with R&amp;D teams to validate simulation results and support design decisions</description>
   </item>
 </channel>
 </rss>

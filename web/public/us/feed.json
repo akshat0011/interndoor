@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-development-clinical-data-management-technology-4463264204",
+      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-development-clinical-data-management-technology-4463264204",
+      "title": "Intern - Development - Clinical Data Management, Technology — Gilead Sciences",
+      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Design and develop AI agents for clinical data management tasks\n• Work with LLMs, RAG, and Databricks to build data pipelines\n• Create technical documentation and present final work in a PPT",
+      "date_published": "2026-09-08T11:09:06.389Z",
+      "authors": [
+        {
+          "name": "Gilead Sciences"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-pdm-global-external-quality-global-supplier-quality-4463265223",
+      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-pdm-global-external-quality-global-supplier-quality-4463265223",
+      "title": "Intern - PDM - Global External Quality (Global Supplier Quality) — Gilead Sciences",
+      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Develop process maps for supplier data management and governance\n• Use AI tools to improve data analysis and workflow efficiency\n• Collaborate with stakeholders to assess data governance practices",
+      "date_published": "2026-09-08T11:09:02.100Z",
+      "authors": [
+        {
+          "name": "Gilead Sciences"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-corporate-operation-technical-engineering-4463271155",
       "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-corporate-operation-technical-engineering-4463271155",
       "title": "Intern - CFO - Corporate Operation (Technical Engineering) — Gilead Sciences",
@@ -143,6 +167,66 @@
       "title": "Software Development Engineer Intern (Network Automation) - 2027 Summer — ByteDance",
       "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and test network operating system features for data centers\n• Work with Python, Go, Redis, Kafka, and network protocols\n• Based in San Jose, CA, with health insurance and paid holidays",
       "date_published": "2026-09-08T10:15:37.115Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4454521361",
+      "url": "https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4454521361",
+      "title": "Self-Built Engineer Intern (CDN Platform) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build data pipelines and dashboards for CDN traffic and cost analysis\n• Work with Spark, Flink, and ClickHouse on large-scale data systems\n• Support platform governance and cost optimization for global CDN operations",
+      "date_published": "2026-09-08T10:12:43.023Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-asic-design-engineer-intern-video-silicon-ip-2027-summer-4454510355",
+      "url": "https://interndoor.com/us/jobs/bytedance-asic-design-engineer-intern-video-silicon-ip-2027-summer-4454510355",
+      "title": "ASIC Design Engineer Intern (Video Silicon IP) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design hardware accelerators for video encoding and processing\n• Use SystemVerilog, HLS, UVM, and Python\n• Work with algorithm and verification teams on scalable video IPs",
+      "date_published": "2026-09-08T10:12:18.793Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-aml-engine-orchestration-2027-start-4452446548",
+      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-aml-engine-orchestration-2027-start-4452446548",
+      "title": "Software Engineer Intern (AML-Engine-Orchestration) - 2027 Start — ByteDance",
+      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Design orchestration systems for ML platforms using Kubernetes, container runtimes, and job lifecycle management\n• Build resource management tools for GPU utilization, cost efficiency, and multi-tenant scheduling\n• Work on model serving systems with traffic management, autoscaling, and disaster recovery features",
+      "date_published": "2026-09-08T10:11:56.357Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448853967",
+      "url": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448853967",
+      "title": "AI Infrastructure Engineer Intern (Compute Efficiency & Scheduling) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: Summer 2027\n• Optimize compute resources for AI/LLM workloads using Godel scheduler\n• Work on Linux, containers, and distributed systems projects\n• Internship runs 12 weeks in summer 2027 in San Jose",
+      "date_published": "2026-09-08T10:11:31.880Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4435851443",
+      "url": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4435851443",
+      "title": "Security Software Engineer Project Intern (Network Security) - 2026 Start (BS/MS) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 3 months\n• Develop automated mechanisms for dynamic threshold setting in WAF to counter HTTP flood attacks\n• Implement behavioral analysis to detect malicious bots through request pattern anomalies\n• Optimize WAF's adaptive learning to reduce false positives and identify gray market activities",
+      "date_published": "2026-09-08T10:11:07.730Z",
       "authors": [
         {
           "name": "ByteDance"
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Astera Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-software-developer-security-intern-2027-4462207769",
-      "url": "https://interndoor.com/us/jobs/ibm-software-developer-security-intern-2027-4462207769",
-      "title": "Software Developer - Security - Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Develop security solutions using IBM and open-source software\n• Work with Java, Python, REST APIs, and AI tools\n• Collaborate on integrating systems for enterprise security",
-      "date_published": "2026-09-07T14:51:28.299Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-mechanical-aerospace-engineering-electric-po-4455245568",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-co-op-mechanical-aerospace-engineering-electric-po-4455245568",
-      "title": "Systems Engineering Co-op - Mechanical/Aerospace Engineering (Electric Power) - US - Fall 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Dayton, OH · Duration: Fall 2027\n• Design and test electrical power systems for aircraft engines\n• Work with simulation tools and software requirements\n• Based in Dayton, OH, with potential for full-time role",
-      "date_published": "2026-09-07T13:53:51.948Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-digital-technology-intern-us-livonia-mi-summer-2027-4455245573",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-digital-technology-intern-us-livonia-mi-summer-2027-4455245573",
-      "title": "Digital Technology Intern – US – Livonia, MI – Summer 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Livonia, MI · Duration: Summer 2027\n• Support digital tools by developing, enhancing, or maintaining applications and systems\n• Work with teams on projects involving IT, software, and business needs\n• Potential full-time role in Digital Technology Leadership Program",
-      "date_published": "2026-09-07T13:53:45.809Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-intern-electrical-engineering-and-computer-enginee-4455243579",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-intern-electrical-engineering-and-computer-enginee-4455243579",
-      "title": "Systems Engineering Intern - Electrical Engineering & Computer Engineering/Science (Avionics) - US - Summer 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Grand Rapids, MI · Duration: Summer 2027\n• Design and test aerospace systems for commercial and military applications\n• Work with engine controls, navigation, and power systems\n• Based in Grand Rapids, MI, with potential for relocation support",
-      "date_published": "2026-09-07T13:53:41.164Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-co-op-computer-or-software-engineering-us-spring-2-4455245569",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-co-op-computer-or-software-engineering-us-spring-2-4455245569",
-      "title": "Engines Engineering Co-op – Computer or Software Engineering – US – Spring 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Cincinnati, OH · Duration: Spring 2027\n• Develop software for engine controls and data systems\n• Use C++, Python, and MATLAB for simulation and analysis\n• Work on real-world projects with mentorship and training",
-      "date_published": "2026-09-07T13:53:16.076Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-co-op-computer-or-software-engineering-us-fall-202-4455249547",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-co-op-computer-or-software-engineering-us-fall-202-4455249547",
-      "title": "Engines Engineering Co-op – Computer or Software Engineering – US – Fall 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Cincinnati, OH · Duration: Fall 2027\n• Develop software for engine controls and data systems\n• Use C++, Python, and MATLAB for simulations and analysis\n• Work on real-world projects with mentorship and training",
-      "date_published": "2026-09-07T13:52:01.909Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-intern-computer-or-software-engineering-us-summer--4455239628",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-engines-engineering-intern-computer-or-software-engineering-us-summer--4455239628",
-      "title": "Engines Engineering Intern – Computer or Software Engineering – US – Summer 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Cincinnati, OH · Duration: Summer 2027\n• Develop software for engine controls and data systems\n• Use C++, Python, and MATLAB for simulations and analysis\n• Work on real-world projects with mentorship and training",
-      "date_published": "2026-09-07T13:50:31.459Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
         }
       ]
     }
