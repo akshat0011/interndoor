@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/sigmoid-information-security-intern-ats-greenhouse-sigmoid-8785623002",
+      "url": "https://interndoor.com/jobs/sigmoid-information-security-intern-ats-greenhouse-sigmoid-8785623002",
+      "title": "Information Security Intern — Sigmoid",
+      "content_text": "Company: Sigmoid · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Support security compliance, monitoring, and vulnerability management tasks\n• Work with cloud and endpoint security tools like Azure, AWS, EDR, DLP\n• Maintain documentation and metrics for security programs and assessments",
+      "date_published": "2026-09-08T07:42:47.000Z",
+      "authors": [
+        {
+          "name": "Sigmoid"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ge-healthcare-intern-4464460585",
       "url": "https://interndoor.com/jobs/ge-healthcare-intern-4464460585",
       "title": "Intern — GE HealthCare",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Jupiter Business Systems FZC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-systems-2027-4452381999",
-      "url": "https://interndoor.com/jobs/qualcomm-interim-engineering-intern-systems-2027-4452381999",
-      "title": "Interim Engineering Intern_Systems- 2027 — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Design and validate baseband algorithms for WWAN modems\n• Work with C/C++/MATLAB and 3GPP standards\n• Contribute to Qualcomm's IP and system specifications",
-      "date_published": "2026-09-03T12:02:37.232Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
