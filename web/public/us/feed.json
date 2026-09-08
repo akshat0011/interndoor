@@ -6,11 +6,83 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mks-inc-2027-spring-software-firmware-engineering-undergraduate-co-op-r19803-4463564226",
+      "url": "https://interndoor.com/us/jobs/mks-inc-2027-spring-software-firmware-engineering-undergraduate-co-op-r19803-4463564226",
+      "title": "2027 Spring Software / Firmware Engineering Undergraduate Co-op (R19803) — MKS Inc.",
+      "content_text": "Company: MKS Inc. · Location: Rochester, NY · Duration: 3 months\n• Code in c/c#/python for embedded systems and gui front ends\n• Work with arm microcontrollers and serial busses like i2c/spi/can\n• Build ci pipelines and debug firmware for laser products",
+      "date_published": "2026-09-08T21:03:17.570Z",
+      "authors": [
+        {
+          "name": "MKS Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mks-inc-2027-spring-software-engineering-intern-r19945-4463560283",
+      "url": "https://interndoor.com/us/jobs/mks-inc-2027-spring-software-engineering-intern-r19945-4463560283",
+      "title": "2027 Spring Software Engineering Intern (R19945) — MKS Inc.",
+      "content_text": "Company: MKS Inc. · Location: Rochester, NY\n• Maintain and improve automation platforms for semiconductor and thin film products\n• .net and python skills required for framework development and root cause analysis\n• 6-month co-op in rochester, ny with team of software engineers and npi teams",
+      "date_published": "2026-09-08T21:02:46.297Z",
+      "authors": [
+        {
+          "name": "MKS Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-healthineers-systems-engineering-co-op-knoxville-tn-4462547790",
+      "url": "https://interndoor.com/us/jobs/siemens-healthineers-systems-engineering-co-op-knoxville-tn-4462547790",
+      "title": "Systems Engineering Co-op - Knoxville, TN — Siemens Healthineers",
+      "content_text": "Company: Siemens Healthineers · Location: Knoxville, TN\n• Contribute to design, integration, testing, and debugging of PET/CT systems\n• Assist with image quality and system performance testing\n• Perform data mining, analysis, and processing tasks",
+      "date_published": "2026-09-08T20:52:23.220Z",
+      "authors": [
+        {
+          "name": "Siemens Healthineers"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/red-hat-technical-product-intern-4463543952",
+      "url": "https://interndoor.com/us/jobs/red-hat-technical-product-intern-4463543952",
+      "title": "Technical Product Intern — Red Hat",
+      "content_text": "Company: Red Hat · Location: Boston, MA\n• Create demos, tutorials, and content to explain complex tech to users\n• Work with engineers and product teams to align content with user needs\n• Use ai tools to improve how technical content is created and delivered",
+      "date_published": "2026-09-08T20:25:20.183Z",
+      "authors": [
+        {
+          "name": "Red Hat"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/red-hat-software-engineer-co-op-4463565009",
       "url": "https://interndoor.com/us/jobs/red-hat-software-engineer-co-op-4463565009",
       "title": "Software Engineer Co-op — Red Hat",
       "content_text": "Company: Red Hat · Location: Boston, MA\n• Write code in Python, Golang, or similar for Red Hat products\n• Collaborate with teams on features, debugging, and product cycles\n• Learn technologies like Ansible, OpenShift, and Agile practices",
       "date_published": "2026-09-08T20:25:17.748Z",
+      "authors": [
+        {
+          "name": "Red Hat"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/red-hat-ai-ecosystem-intern-4463545986",
+      "url": "https://interndoor.com/us/jobs/red-hat-ai-ecosystem-intern-4463545986",
+      "title": "AI Ecosystem Intern — Red Hat",
+      "content_text": "Company: Red Hat · Location: Boston, MA\n• Interview customers to find AI use cases and map needs to Red Hat tools\n• Analyze data to spot trends and suggest partner strategies\n• Present findings to leadership with real-world business impact",
+      "date_published": "2026-09-08T20:25:15.731Z",
+      "authors": [
+        {
+          "name": "Red Hat"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/red-hat-technical-product-intern-4463545987",
+      "url": "https://interndoor.com/us/jobs/red-hat-technical-product-intern-4463545987",
+      "title": "Technical Product Intern — Red Hat",
+      "content_text": "Company: Red Hat · Location: Raleigh, NC\n• Create demos, tutorials, and content to explain Red Hat products\n• Use AI tools to improve content creation and delivery\n• Work with engineers and product teams on technical projects",
+      "date_published": "2026-09-08T20:25:12.155Z",
       "authors": [
         {
           "name": "Red Hat"
@@ -35,6 +107,18 @@
       "title": "Software Engineer Intern — Red Hat",
       "content_text": "Company: Red Hat · Location: Durham, NC\n• Write code in Python, Golang, or similar for Red Hat products\n• Collaborate with teams like Quality Engineering and Product Management\n• Work on projects involving Ansible, RHEL, OpenShift, and AI",
       "date_published": "2026-09-08T20:24:55.874Z",
+      "authors": [
+        {
+          "name": "Red Hat"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/red-hat-software-engineer-co-op-4463553165",
+      "url": "https://interndoor.com/us/jobs/red-hat-software-engineer-co-op-4463553165",
+      "title": "Software Engineer Co-op — Red Hat",
+      "content_text": "Company: Red Hat · Location: Lowell, MA\n• Write code in Python, Golang, or similar for Red Hat products\n• Collaborate with teams on features, debugging, and product cycles\n• Learn technologies like Ansible, OpenShift, and Agile practices",
+      "date_published": "2026-09-08T20:24:51.085Z",
       "authors": [
         {
           "name": "Red Hat"
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-package-specialist-2027-workday-4452509034",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-package-specialist-2027-workday-4452509034",
-      "title": "Intern Package Specialist 2027 - Workday — IBM",
-      "content_text": "Company: IBM · Location: Baton Rouge, LA · Duration: 10 weeks\n• Support enterprise apps like workday for hr and finance processes\n• Work with teams on configuration, testing, and process improvement\n• Gain experience in cloud tech and hr systems across multiple industries",
-      "date_published": "2026-09-08T16:31:58.338Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464643040",
-      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464643040",
-      "title": "Software Engineering Intern (Summer) — Datadog",
-      "content_text": "Company: Datadog · Location: New York, NY\n• Build distributed systems for real-time data processing\n• Work with Kubernetes and cloud-native infrastructure\n• Collaborate with mentors on global-scale projects",
-      "date_published": "2026-09-08T16:26:32.574Z",
-      "authors": [
-        {
-          "name": "Datadog"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-4455719956",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-4455719956",
-      "title": "Electrical Engineer Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Waco, TX\n• Analyze system requirements and design electrical components\n• Use modeling tools and simulation software for testing\n• Write scripts to automate synthesis and build processes\n• Work with VHDL, MATLAB, and RF technologies",
-      "date_published": "2026-09-08T16:26:06.893Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464630918",
-      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464630918",
-      "title": "Software Engineering Intern (Summer) — Datadog",
-      "content_text": "Company: Datadog · Location: Boston, MA\n• Build and improve distributed systems for observability and security platforms\n• Work with Kubernetes, cloud-native infrastructure, and AI-powered tools\n• Collaborate with engineers on global-scale projects with real-world impact",
-      "date_published": "2026-09-08T16:26:02.075Z",
-      "authors": [
-        {
-          "name": "Datadog"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/gallagher-u-s-internship-data-analytics-4455542320",
-      "url": "https://interndoor.com/us/jobs/gallagher-u-s-internship-data-analytics-4455542320",
-      "title": "U.S. Internship - Data Analytics — Gallagher",
-      "content_text": "Company: Gallagher · Location: Rolling Meadows, IL\n• Analyze data to solve business challenges and create visual reports\n• Use sql, powerbi, tableau, and excel for insights and presentations\n• Work in risk management services with global impact and local projects",
-      "date_published": "2026-09-08T16:20:38.056Z",
-      "authors": [
-        {
-          "name": "Gallagher"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-electrical-engineer-spring-2027-4455727126",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-electrical-engineer-spring-2027-4455727126",
-      "title": "Intern, Electrical Engineer - Spring 2027 — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Greenville, TX · Duration: Spring 2027\n• Design electrical systems for military and commercial aircraft using CAD tools\n• Collaborate with engineering teams on avionics, power distribution, and control systems\n• Travel to flight lines and work in hangar environments with aircraft access",
-      "date_published": "2026-09-08T16:10:21.237Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-4464618861",
-      "url": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-4464618861",
-      "title": "Software Engineering Intern - Summer '27 — Vercel",
-      "content_text": "Company: Vercel · Location: San Francisco, CA\n• Own end-to-end projects from design to deployment\n• Write and review production code with experienced engineers\n• Debug real systems and fix root causes\n• Based in san francisco, commute mon/tues/fri",
-      "date_published": "2026-09-08T16:08:11.221Z",
-      "authors": [
-        {
-          "name": "Vercel"
         }
       ]
     }
