@@ -6,6 +6,138 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-global-payment-2027-summer-4455280088",
+      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-global-payment-2027-summer-4455280088",
+      "title": "Software Engineer Intern (Global Payment) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design, develop, and operate backend services for global payment systems\n• Use Go, Java, C++, Python, or similar languages in distributed systems\n• Collaborate with product managers, data scientists, and external partners",
+      "date_published": "2026-09-08T10:03:42.585Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-distributed-nosql-database-systems-2027-star-4448131837",
+      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-distributed-nosql-database-systems-2027-star-4448131837",
+      "title": "Research Scientist Intern (Distributed NoSQL Database Systems) - 2027 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop kernel modules for AI-native database systems\n• Work with PMs and engineers on backend AI database support\n• Collaborate on large-scale cloud infrastructure challenges",
+      "date_published": "2026-09-08T09:53:19.693Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448867308",
+      "url": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448867308",
+      "title": "AI Infrastructure Engineer Intern (Compute Efficiency & Scheduling) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: Seattle, WA · Duration: Summer 2027\n• Build tools for global platform reliability and self-management\n• Work on AI-driven scheduler to optimize workload placement\n• Use Go, C++, Python, or Java in a 12-week summer role",
+      "date_published": "2026-09-08T09:53:14.289Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-agent-evaluation-and-evolution-machine-learning-engineer-intern-aml-ar-4451804334",
+      "url": "https://interndoor.com/us/jobs/bytedance-agent-evaluation-and-evolution-machine-learning-engineer-intern-aml-ar-4451804334",
+      "title": "Agent Evaluation & Evolution Machine Learning Engineer Intern (AML-Ark-US) - 2027 Summer — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design evaluation systems for LLM-based agents, measuring task success and reasoning quality\n• Build benchmarks and automated judging pipelines using rule-based checks and model-based judging\n• Analyze agent execution traces and user feedback to improve system reliability and performance",
+      "date_published": "2026-09-08T09:53:09.987Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-security-engineering-project-intern-watermark-2026-start-bs-ms-4435852397",
+      "url": "https://interndoor.com/us/jobs/bytedance-security-engineering-project-intern-watermark-2026-start-bs-ms-4435852397",
+      "title": "Security Engineering Project Intern (Watermark) - 2026 Start (BS/MS) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 3 months\n• Design invisible watermark algorithms for AI content and LLMs\n• Work with Python/Go/C++ and deep learning tools\n• Collaborate with cross-functional teams on security products",
+      "date_published": "2026-09-08T09:49:17.182Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-technology-software-engineering-and-c-4455278438",
+      "url": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-technology-software-engineering-and-c-4455278438",
+      "title": "2027 Corporate Summer Internship - Technology (Software Engineering and Cyber) — Hilton",
+      "content_text": "Company: Hilton · Location: Memphis, TN\n• Work on cutting-edge tech projects for hospitality industry innovation\n• Use Python, Java, and cloud platforms in real-world development\n• Based in Memphis, TN for 10 weeks with full-time hours",
+      "date_published": "2026-09-08T09:41:42.893Z",
+      "authors": [
+        {
+          "name": "Hilton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-global-distribution-4455273535",
+      "url": "https://interndoor.com/us/jobs/hilton-2027-corporate-summer-internship-global-distribution-4455273535",
+      "title": "2027 Corporate Summer Internship - Global Distribution — Hilton",
+      "content_text": "Company: Hilton · Location: Dallas, TX\n• Support global distribution team with booking channel management and optimization\n• Use Microsoft SQL Server, C#, React JS, and APIs for system integration\n• Work full-time in Dallas, TX from June to August 2027",
+      "date_published": "2026-09-08T09:38:33.726Z",
+      "authors": [
+        {
+          "name": "Hilton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-dram-design-engineer-4454266036",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-dram-design-engineer-4454266036",
+      "title": "Intern - DRAM Design Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and analyze digital and analog circuits for memory products\n• Apply artificial intelligence in design processes\n• Based in boise, id",
+      "date_published": "2026-09-08T09:12:12.227Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-euv-and-materials-lithography-4454246995",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-euv-and-materials-lithography-4454246995",
+      "title": "Intern - EUV & Materials Lithography — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID · Duration: Fall 2027\n• Design experiments to optimize photolithography processes and materials\n• Use AI and data tools to analyze semiconductor manufacturing data\n• Collaborate with engineers across multiple technical disciplines\n• Work in cleanroom environments and remote fabrication facilities",
+      "date_published": "2026-09-08T09:12:06.898Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-wet-etch-process-development-engineer-4454270005",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-wet-etch-process-development-engineer-4454270005",
+      "title": "Intern - Wet Etch Process Development Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Run experiments to improve semiconductor manufacturing processes\n• Use ai and data analysis tools to optimize wet etch chemistries\n• Work with engineers on contamination control and surface analysis",
+      "date_published": "2026-09-08T09:12:02.045Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-thin-films-4454253964",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-process-development-engineer-thin-films-4454253964",
+      "title": "Intern - Process Development Engineer, Thin Films — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Develop and optimize thin film and metallization processes for DRAM manufacturing\n• Use DOE and statistical analysis to evaluate and improve process performance\n• Collaborate with cross-functional teams on process development and technology innovation",
+      "date_published": "2026-09-08T09:11:57.648Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463230827",
       "url": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463230827",
       "title": "Cyber Compliance Intern - Summer 2027 — RSM US LLP",
@@ -470,138 +602,6 @@
       "authors": [
         {
           "name": "GE Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boom-supersonic-summer-2027-engineering-and-tech-internship-4452239813",
-      "url": "https://interndoor.com/us/jobs/boom-supersonic-summer-2027-engineering-and-tech-internship-4452239813",
-      "title": "Summer 2027 Engineering and Tech Internship — Boom Supersonic",
-      "content_text": "Company: Boom Supersonic · Location: Englewood, CO · Duration: 12 weeks\n• Design, build, and test high-performance hardware and systems\n• Work with CAD, thermodynamics, and advanced manufacturing tools\n• Embedded in core engineering teams with real ownership of projects",
-      "date_published": "2026-09-07T10:59:57.782Z",
-      "authors": [
-        {
-          "name": "Boom Supersonic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zscaler-phishing-analyst-skillbridge-intern-4409136259",
-      "url": "https://interndoor.com/us/jobs/zscaler-phishing-analyst-skillbridge-intern-4409136259",
-      "title": "Phishing Analyst-SkillBridge Intern — Zscaler",
-      "content_text": "Company: Zscaler · Location: United States\n• Review suspicious emails and determine if they're malicious\n• Support career development and job search efforts\n• Collaborate with team on threat analysis and triage",
-      "date_published": "2026-09-07T10:36:21.861Z",
-      "authors": [
-        {
-          "name": "Zscaler"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413673139",
-      "url": "https://interndoor.com/us/jobs/oracle-oci-software-engineer-intern-ovip-4413673139",
-      "title": "OCI Software Engineer Intern - OVIP — Oracle",
-      "content_text": "Company: Oracle · Location: Austin, TX\n• Implement and operate cloud services in a distributed, multi-tenant environment\n• Work with Java, Python, GoLang, and networking protocols like TCP/IP\n• Collaborate on high-scale, highly available virtual networking solutions",
-      "date_published": "2026-09-07T09:59:31.303Z",
-      "authors": [
-        {
-          "name": "Oracle"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-machine-learning-internship-phd-2027-4406715845",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-machine-learning-internship-phd-2027-4406715845",
-      "title": "Machine Learning Internship - PhD: 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA\n• Build and refine ml models from financial data to predict market trends\n• Work with pytorch and tensorflow on real trading systems\n• Mentorship from senior researchers in quantitative finance",
-      "date_published": "2026-09-07T09:16:46.684Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-trading-system-engineering-internship-summer-2027-4406712920",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-trading-system-engineering-internship-summer-2027-4406712920",
-      "title": "Trading System Engineering Internship: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build low latency trading systems in c++ for high frequency strategies\n• Work with senior developers on complex financial data processing\n• Stay in company housing with access to fitness, dining, and wellness",
-      "date_published": "2026-09-07T09:15:08.942Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4406733037",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-research-internship-phd-summer-2027-4406733037",
-      "title": "Quantitative Research Internship - PhD: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build and test quantitative models using historical market data\n• Work with Python, large datasets, and GPU-accelerated computing\n• Collaborate with researchers and traders on real-world trading strategies",
-      "date_published": "2026-09-07T09:13:33.831Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4406711944",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-trader-internship-summer-2027-4406711944",
-      "title": "Quantitative Trader Internship: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Analyze market data and support trading decisions\n• Work with traders and learn options theory\n• Based in bala-cynwyd, pa\n• Full-time mentorship and classroom training",
-      "date_published": "2026-09-07T09:09:42.539Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-phd-summer-2027-4406715843",
-      "url": "https://interndoor.com/us/jobs/susquehanna-international-group-quantitative-systematic-trading-internship-phd-summer-2027-4406715843",
-      "title": "Quantitative Systematic Trading Internship - PhD: Summer 2027 — Susquehanna International Group",
-      "content_text": "Company: Susquehanna International Group · Location: Bala-Cynwyd, PA · Duration: Summer 2027\n• Build and test trading strategies using historical market data\n• Work with Python, large datasets, and GPU-accelerated computing\n• Collaborate with researchers and traders on real-world quantitative problems",
-      "date_published": "2026-09-07T09:09:37.646Z",
-      "authors": [
-        {
-          "name": "Susquehanna International Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-dram-pi-4453974886",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-dram-pi-4453974886",
-      "title": "Intern - DRAM PI — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Define specs and integration requirements for next-gen DRAM products\n• Collaborate with cross-functional teams on technical challenges and timelines\n• Use AI tools to improve engineering analysis and decision-making",
-      "date_published": "2026-09-07T09:08:12.790Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-intern-summer-2027-4464095627",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-physical-design-intern-summer-2027-4464095627",
-      "title": "Digital Physical Design Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Implement layouts, run checks, prepare design data with senior engineers\n• Use timing, power, quality tools to resolve design issues\n• Collaborate with teams to improve quality and document processes\n• Based in Austin, TX for 12-week summer internship",
-      "date_published": "2026-09-07T09:06:13.881Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-analog-validation-intern-summer-2027-4464095631",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-analog-validation-intern-summer-2027-4464095631",
-      "title": "Analog Validation Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Run tests, collect data, and report results on analog circuits\n• Work with engineers to debug and improve test processes\n• Maintain records and support product quality in Austin",
-      "date_published": "2026-09-07T09:06:08.822Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
         }
       ]
     }
