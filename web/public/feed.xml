@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 08 Sep 2026 16:49:31 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 08 Sep 2026 18:14:51 GMT</lastBuildDate>
+  <item>
+    <title>Developer Relationship - Intern — Lexsi Labs</title>
+    <link>https://interndoor.com/jobs/lexsi-labs-developer-relationship-intern-4464658541</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-developer-relationship-intern-4464658541</guid>
+    <pubDate>Tue, 08 Sep 2026 18:14:51 GMT</pubDate>
+    <description>Company: Lexsi Labs · Location: India
+• Create tutorials, demos, and marketing content for open-source tools
+• Manage and moderate Discord community, answer technical questions
+• Run outreach, track engagement, and support product launches</description>
+  </item>
   <item>
     <title>Intern — IQVIA</title>
     <link>https://interndoor.com/jobs/iqvia-intern-4463524381</link>
@@ -499,17 +509,6 @@
 • Develop and validate device drivers for automotive microcontrollers using C and assembly
 • Create test scripts and automation for communication peripherals like SPI and UART
 • Work on ISO26262 compliant software processes for TriCore architecture platforms</description>
-  </item>
-  <item>
-    <title>Software Engineer Intern — Smowcode</title>
-    <link>https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/smowcode-software-engineer-intern-4461152280</guid>
-    <pubDate>Fri, 04 Sep 2026 09:48:20 GMT</pubDate>
-    <description>Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months
-• Implement deep graph algorithms and core data structures for user data handling
-• Work on Node.js APIs, jQuery frontend, and modular codebases
-• Collaborate on firmware projects with ESP32 and IoT integration
-• Receive ₹15,000 stipend for 6 months in Mumbai</description>
   </item>
 </channel>
 </rss>
