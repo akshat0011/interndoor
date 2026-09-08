@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4463524381",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4463524381",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Design, develop, and test software components using Python and modern frameworks\n• Build and validate REST APIs, integrations, and AI-powered solutions with LLMs\n• Create automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-08T16:49:31.801Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/adobe-apprentice-tech-4463510911",
+      "url": "https://interndoor.com/jobs/adobe-apprentice-tech-4463510911",
+      "title": "Apprentice Tech — Adobe",
+      "content_text": "Company: Adobe · Location: Bengaluru East, Karnataka, India\n• Support development of creative tools using ai and cloud technologies\n• Work with python and cloud platforms in a fast-paced product team\n• Based in bengaluru with a 6-month internship duration",
+      "date_published": "2026-09-08T16:47:58.374Z",
+      "authors": [
+        {
+          "name": "Adobe"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/arista-networks-hardware-engineer-intern-campus-hiring-nirma-2026-27-ats-smartrecruiters-aristanetworks-744000148246580",
       "url": "https://interndoor.com/jobs/arista-networks-hardware-engineer-intern-campus-hiring-nirma-2026-27-ats-smartrecruiters-aristanetworks-744000148246580",
       "title": "Hardware Engineer Intern (Campus Hiring - Nirma - 2026 / 27) — Arista Networks",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4461126181",
-      "url": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4461126181",
-      "title": "Customer Solutions Engineer Intern — Sapaad",
-      "content_text": "Company: Sapaad · Location: India\n• Support customers with technical issues via phone, email, and chat\n• Collaborate with product and engineering teams to resolve customer concerns\n• Create guides and documentation for customer support\n• Work with global restaurant clients across multiple languages",
-      "date_published": "2026-09-04T07:00:52.235Z",
-      "authors": [
-        {
-          "name": "Sapaad"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205",
-      "url": "https://interndoor.com/jobs/pixxel-ai-and-data-engineering-intern-4463159205",
-      "title": "AI & Data Engineering Intern — Pixxel",
-      "content_text": "Company: Pixxel · Location: Bengaluru, Karnataka, India\n• Build data pipelines for geospatial data fusion and real-time processing\n• Develop AI models for object detection and multi-sensor analysis\n• Work on transformer and vision-language models for geospatial intelligence",
-      "date_published": "2026-09-04T00:47:26.264Z",
-      "authors": [
-        {
-          "name": "Pixxel"
         }
       ]
     }
