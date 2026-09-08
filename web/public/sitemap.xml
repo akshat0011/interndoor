@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-07</lastmod><priority>1.0</priority></url>
-  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-07</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-07</lastmod><priority>0.4</priority></url>
-  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-07</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-07</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-07</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-08</lastmod><priority>1.0</priority></url>
+  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-08</lastmod><priority>0.4</priority></url>
+  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/skills</loc><lastmod>2026-09-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/locations</loc><lastmod>2026-09-08</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/c-plus-plus</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/java</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/machine-learning</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/linux</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
@@ -43,16 +43,21 @@
   <url><loc>https://interndoor.com/skills/computer-vision</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/jenkins</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/microservices</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/mongodb</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rag</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rtos</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464388899</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464395759</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/uffizio-java-trainee-4462979325</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/copeland-graduate-trainee-engineer-4462223897</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4462222887</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
@@ -296,9 +301,10 @@
   <url><loc>https://interndoor.com/jobs/decentro-software-developer-intern-ats-keka-decentro-26116</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/janitri-ui-ux-designer-intern-4451103635</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/intuit-intern-software-engineering-4450965062</loc><lastmod>2026-08-09</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nobroker-com-engineering-intern-live-project-part-time-pune-tier-1-colleges-4449259269</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/teamlease-regtech-pvt-ltd</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/uffizio</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/copeland</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/smowcode</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/esec-forte-technologies</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
@@ -423,7 +429,6 @@
   <url><loc>https://interndoor.com/companies/calix-india</loc><lastmod>2026-08-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/larsen-and-toubro</loc><lastmod>2026-08-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/yubi</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/teamlease-regtech-pvt-ltd</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/teli-labs</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/west-pharmaceutical-services</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/nkt</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
