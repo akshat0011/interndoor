@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-package-specialist-2027-workday-4452509034",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-package-specialist-2027-workday-4452509034",
+      "title": "Intern Package Specialist 2027 - Workday — IBM",
+      "content_text": "Company: IBM · Location: Baton Rouge, LA · Duration: 10 weeks\n• Support enterprise apps like workday for hr and finance processes\n• Work with teams on configuration, testing, and process improvement\n• Gain experience in cloud tech and hr systems across multiple industries",
+      "date_published": "2026-09-08T16:31:58.338Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464643040",
+      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464643040",
+      "title": "Software Engineering Intern (Summer) — Datadog",
+      "content_text": "Company: Datadog · Location: New York, NY\n• Build distributed systems for real-time data processing\n• Work with Kubernetes and cloud-native infrastructure\n• Collaborate with mentors on global-scale projects",
+      "date_published": "2026-09-08T16:26:32.574Z",
+      "authors": [
+        {
+          "name": "Datadog"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-4455719956",
+      "url": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-4455719956",
+      "title": "Electrical Engineer Intern — L3Harris Technologies",
+      "content_text": "Company: L3Harris Technologies · Location: Waco, TX\n• Analyze system requirements and design electrical components\n• Use modeling tools and simulation software for testing\n• Write scripts to automate synthesis and build processes\n• Work with VHDL, MATLAB, and RF technologies",
+      "date_published": "2026-09-08T16:26:06.893Z",
+      "authors": [
+        {
+          "name": "L3Harris Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464630918",
+      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-summer-4464630918",
+      "title": "Software Engineering Intern (Summer) — Datadog",
+      "content_text": "Company: Datadog · Location: Boston, MA\n• Build and improve distributed systems for observability and security platforms\n• Work with Kubernetes, cloud-native infrastructure, and AI-powered tools\n• Collaborate with engineers on global-scale projects with real-world impact",
+      "date_published": "2026-09-08T16:26:02.075Z",
+      "authors": [
+        {
+          "name": "Datadog"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/gallagher-u-s-internship-data-analytics-4455542320",
+      "url": "https://interndoor.com/us/jobs/gallagher-u-s-internship-data-analytics-4455542320",
+      "title": "U.S. Internship - Data Analytics — Gallagher",
+      "content_text": "Company: Gallagher · Location: Rolling Meadows, IL\n• Analyze data to solve business challenges and create visual reports\n• Use sql, powerbi, tableau, and excel for insights and presentations\n• Work in risk management services with global impact and local projects",
+      "date_published": "2026-09-08T16:20:38.056Z",
+      "authors": [
+        {
+          "name": "Gallagher"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-electrical-engineer-spring-2027-4455727126",
+      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-electrical-engineer-spring-2027-4455727126",
+      "title": "Intern, Electrical Engineer - Spring 2027 — L3Harris Technologies",
+      "content_text": "Company: L3Harris Technologies · Location: Greenville, TX · Duration: Spring 2027\n• Design electrical systems for military and commercial aircraft using CAD tools\n• Collaborate with engineering teams on avionics, power distribution, and control systems\n• Travel to flight lines and work in hangar environments with aircraft access",
+      "date_published": "2026-09-08T16:10:21.237Z",
+      "authors": [
+        {
+          "name": "L3Harris Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-4464618861",
+      "url": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-4464618861",
+      "title": "Software Engineering Intern - Summer '27 — Vercel",
+      "content_text": "Company: Vercel · Location: San Francisco, CA\n• Own end-to-end projects from design to deployment\n• Write and review production code with experienced engineers\n• Debug real systems and fix root causes\n• Based in san francisco, commute mon/tues/fri",
+      "date_published": "2026-09-08T16:08:11.221Z",
+      "authors": [
+        {
+          "name": "Vercel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-spring-2027-4455734059",
+      "url": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineer-intern-spring-2027-4455734059",
+      "title": "Electrical Engineer Intern - Spring 2027 — L3Harris Technologies",
+      "content_text": "Company: L3Harris Technologies · Location: Greenville, TX · Duration: Spring 2027\n• Design electrical systems for military and commercial aircraft using CAD tools\n• Work with engineering teams on avionics, power distribution, and control panels\n• Based in Greenville, TX for 9/80 schedule from Jan to July 2027",
+      "date_published": "2026-09-08T16:07:47.208Z",
+      "authors": [
+        {
+          "name": "L3Harris Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-systems-engineer-intern-4455734063",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-systems-engineer-intern-4455734063",
       "title": "Systems Engineer Intern — L3Harris Technologies",
@@ -503,102 +599,6 @@
       "title": "Visual Generation & Multimodal Evaluation Machine Learning Engineer Intern (AML-Ark-US) - 2027 Summer — ByteDance",
       "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build evaluation systems for image and video models/agents\n• Develop automated metrics and human evaluation protocols\n• Design video generation/debugging agents for creative workflows",
       "date_published": "2026-09-08T10:40:23.057Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multi-modal-agentic-databases-2027-start-phd-4448131821",
-      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multi-modal-agentic-databases-2027-start-phd-4448131821",
-      "title": "Research Scientist Intern (Multi-modal Agentic Databases) - 2027 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Design and implement new algorithms for multi-modal agentic databases\n• Work with C/C++, Go, Java, or Python on distributed systems projects\n• Publish research at top-tier conferences like SIGMOD or VLDB",
-      "date_published": "2026-09-08T10:40:12.746Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-traffic-infrastructure-2027-summer-4454860724",
-      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-traffic-infrastructure-2027-summer-4454860724",
-      "title": "Software Engineer Intern (Traffic Infrastructure) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and operate edge infrastructure components for global traffic systems\n• Work with Kubernetes, containers, and distributed systems in production\n• Build observability tools and automate incident response processes",
-      "date_published": "2026-09-08T10:40:06.731Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-seed-responsible-ai-2026-start-phd-4436778477",
-      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-seed-responsible-ai-2026-start-phd-4436778477",
-      "title": "Research Scientist Intern (Seed Responsible AI) - 2026 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop advanced AI technologies, focusing on foundation models and AI agents\n• Conduct research to improve AI reliability, safety, and trustworthiness\n• Collaborate on AI safety and ethics product development",
-      "date_published": "2026-09-08T10:40:02.482Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-4463249570",
-      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-4463249570",
-      "title": "Intern - CFO - IT — Gilead Sciences",
-      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Support AI/ML projects in R&D and Tech Ops with data science and analytics\n• Work with Agile teams and cloud/HPC environments for scientific applications\n• Build data pipelines and dashboards for large-scale datasets",
-      "date_published": "2026-09-08T10:29:25.339Z",
-      "authors": [
-        {
-          "name": "Gilead Sciences"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-employee-experience-4463249572",
-      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-cfo-it-employee-experience-4463249572",
-      "title": "Intern - CFO - IT (Employee Experience) — Gilead Sciences",
-      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Design and implement solutions for Employee Experience using Microsoft tools and Azure AI\n• Collaborate with cross-functional teams to improve productivity and employee tools\n• Analyze chatbot data and present findings in a final presentation",
-      "date_published": "2026-09-08T10:29:20.020Z",
-      "authors": [
-        {
-          "name": "Gilead Sciences"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-winter-4455312818",
-      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-winter-4455312818",
-      "title": "Software Engineering Intern (Winter) — Datadog",
-      "content_text": "Company: Datadog · Location: Boston, MA\n• Build and improve distributed systems for observability and security platforms\n• Work with Kubernetes, cloud-native infrastructure, and AI-powered tools\n• Collaborate with engineers on global-scale projects with real-world impact",
-      "date_published": "2026-09-08T10:24:51.013Z",
-      "authors": [
-        {
-          "name": "Datadog"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-winter-4455319685",
-      "url": "https://interndoor.com/us/jobs/datadog-software-engineering-intern-winter-4455319685",
-      "title": "Software Engineering Intern (Winter) — Datadog",
-      "content_text": "Company: Datadog · Location: New York, NY\n• Build and improve distributed systems for observability and security platforms\n• Work with Kubernetes, cloud-native infrastructure, and AI-powered tools\n• Collaborate with engineers on global-scale projects with real-world impact",
-      "date_published": "2026-09-08T10:20:55.244Z",
-      "authors": [
-        {
-          "name": "Datadog"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-network-software-development-engineer-intern-network-observation-2027--4450675294",
-      "url": "https://interndoor.com/us/jobs/bytedance-network-software-development-engineer-intern-network-observation-2027--4450675294",
-      "title": "Network Software Development Engineer Intern(Network Observation) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop tools to monitor and optimize data center networks\n• Use machine learning for real-time network fault detection\n• Collaborate on automated systems for enterprise network troubleshooting",
-      "date_published": "2026-09-08T10:16:06.201Z",
       "authors": [
         {
           "name": "ByteDance"
