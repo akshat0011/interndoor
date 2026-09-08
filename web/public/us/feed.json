@@ -6,6 +6,78 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-winter-27-ats-greenhouse-vercel-6181755004",
+      "url": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-winter-27-ats-greenhouse-vercel-6181755004",
+      "title": "Software Engineering Intern - Winter '27 — Vercel",
+      "content_text": "Company: Vercel · Location: Hybrid - San Francisco\n• Build and ship end-to-end projects with mentorship\n• Write and review production code in js/ts/go/rust\n• Debug real systems and communicate progress clearly",
+      "date_published": "2026-09-08T15:31:09.000Z",
+      "authors": [
+        {
+          "name": "Vercel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-ats-greenhouse-vercel-6181759004",
+      "url": "https://interndoor.com/us/jobs/vercel-software-engineering-intern-summer-27-ats-greenhouse-vercel-6181759004",
+      "title": "Software Engineering Intern - Summer '27 — Vercel",
+      "content_text": "Company: Vercel · Location: Hybrid - San Francisco\n• Own end-to-end projects from design to deployment\n• Work with JavaScript/TypeScript and Go/Rust\n• Based in San Francisco with hybrid flexibility",
+      "date_published": "2026-09-08T15:31:06.000Z",
+      "authors": [
+        {
+          "name": "Vercel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/aecom-electrical-engineering-intern-b-p-hiring-event-with-aecom-arlington-4462506927",
+      "url": "https://interndoor.com/us/jobs/aecom-electrical-engineering-intern-b-p-hiring-event-with-aecom-arlington-4462506927",
+      "title": "Electrical Engineering Intern (B+P) - Hiring Event with AECOM - Arlington — AECOM",
+      "content_text": "Company: AECOM · Location: Arlington, VA · Duration: Summer 2027\n• Design electrical systems for buildings and facilities\n• Use AutoCAD, Revit, SKM, ETAP, and AGi32\n• Work on new and renovated projects in Arlington",
+      "date_published": "2026-09-08T15:26:00.538Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-software-engineer--4454453119",
+      "url": "https://interndoor.com/us/jobs/american-express-campus-undergraduate-summer-internship-program-2027-software-engineer--4454453119",
+      "title": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Technology - New York, NY — American Express",
+      "content_text": "Company: American Express · Location: New York, NY\n• Write clean code, test software, and work with Agile teams on real projects\n• Use Java, Python, React, or cloud tools in backend, frontend, or AI roles\n• Work 10 weeks in New York with mentorship and career growth opportunities",
+      "date_published": "2026-09-08T15:24:10.915Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineers-ai-and-analytics-2027-4452539666",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineers-ai-and-analytics-2027-4452539666",
+      "title": "Intern Data Engineers - AI & Analytics - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Buffalo, NY · Duration: 10 weeks\n• Build data pipelines and automate business processes using cloud and AI tools\n• Work with Python, SQL, and modern data platforms like IBM Cloud\n• Collaborate on real client projects across healthcare, finance, and manufacturing",
+      "date_published": "2026-09-08T15:21:58.947Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407958934",
+      "url": "https://interndoor.com/us/jobs/cohere-research-internship-winter-2027-4407958934",
+      "title": "Research Internship (Winter 2027) — Cohere",
+      "content_text": "Company: Cohere · Location: San Francisco, CA · Duration: 4-6 months\n• Design and implement novel research ideas in large language models\n• Use Python, JAX, PyTorch, and TensorFlow for model development\n• Collaborate with researchers on production-ready AI systems",
+      "date_published": "2026-09-08T15:12:08.098Z",
+      "authors": [
+        {
+          "name": "Cohere"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699",
       "url": "https://interndoor.com/us/jobs/ibm-intern-data-engineer-ai-and-analytics-2027-4452525699",
       "title": "Intern Data Engineer - AI & Analytics - 2027 — IBM",
@@ -527,78 +599,6 @@
       "title": "Software Engineer Intern (AML-Engine-Orchestration) - 2027 Start — ByteDance",
       "content_text": "Company: ByteDance · Location: Seattle, WA\n• Design orchestration systems for ML platforms using Kubernetes, container runtimes, and job lifecycle management\n• Build resource management tools for GPU utilization, cost efficiency, and multi-tenant scheduling\n• Work on model serving systems with traffic management, autoscaling, and disaster recovery features",
       "date_published": "2026-09-08T10:11:56.357Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448853967",
-      "url": "https://interndoor.com/us/jobs/bytedance-ai-infrastructure-engineer-intern-compute-efficiency-and-scheduling-20-4448853967",
-      "title": "AI Infrastructure Engineer Intern (Compute Efficiency & Scheduling) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: Summer 2027\n• Optimize compute resources for AI/LLM workloads using Godel scheduler\n• Work on Linux, containers, and distributed systems projects\n• Internship runs 12 weeks in summer 2027 in San Jose",
-      "date_published": "2026-09-08T10:11:31.880Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4435851443",
-      "url": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4435851443",
-      "title": "Security Software Engineer Project Intern (Network Security) - 2026 Start (BS/MS) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 3 months\n• Develop automated mechanisms for dynamic threshold setting in WAF to counter HTTP flood attacks\n• Implement behavioral analysis to detect malicious bots through request pattern anomalies\n• Optimize WAF's adaptive learning to reduce false positives and identify gray market activities",
-      "date_published": "2026-09-08T10:11:07.730Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multimedia-streaming-2027-start-phd-4449999329",
-      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multimedia-streaming-2027-start-phd-4449999329",
-      "title": "Research Scientist Intern (Multimedia Streaming) - 2027 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Diego, CA\n• Analyze and optimize streaming systems for on-demand, live, and real-time media\n• Prototype new algorithms for 360-degree, volumetric, and light field video\n• Collaborate with researchers to turn ideas into product innovations",
-      "date_published": "2026-09-08T10:10:15.428Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-machine-learning-research-scientist-intern-seed-ai-for-science-atomist-4450667505",
-      "url": "https://interndoor.com/us/jobs/bytedance-machine-learning-research-scientist-intern-seed-ai-for-science-atomist-4450667505",
-      "title": "Machine Learning Research Scientist Intern (Seed AI for Science - Atomistic AI) - 2027 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Develop machine learning models for materials science and biology using quantum chemistry and molecular dynamics\n• Work with Python, C/C++, CUDA, and tools like LAMMPS or OpenMM\n• Contribute to research translating into real-world applications in science and tech",
-      "date_published": "2026-09-08T10:10:10.979Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-global-payment-2027-summer-4455280088",
-      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-global-payment-2027-summer-4455280088",
-      "title": "Software Engineer Intern (Global Payment) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design, develop, and operate backend services for global payment systems\n• Use Go, Java, C++, Python, or similar languages in distributed systems\n• Collaborate with product managers, data scientists, and external partners",
-      "date_published": "2026-09-08T10:03:42.585Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-distributed-nosql-database-systems-2027-star-4448131837",
-      "url": "https://interndoor.com/us/jobs/bytedance-research-scientist-intern-distributed-nosql-database-systems-2027-star-4448131837",
-      "title": "Research Scientist Intern (Distributed NoSQL Database Systems) - 2027 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop kernel modules for AI-native database systems\n• Work with PMs and engineers on backend AI database support\n• Collaborate on large-scale cloud infrastructure challenges",
-      "date_published": "2026-09-08T09:53:19.693Z",
       "authors": [
         {
           "name": "ByteDance"
