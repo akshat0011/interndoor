@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/lexsi-labs-devre-intern-4463532555",
+      "url": "https://interndoor.com/jobs/lexsi-labs-devre-intern-4463532555",
+      "title": "DevRe - Intern — Lexsi Labs",
+      "content_text": "Company: Lexsi Labs · Location: Mumbai Metropolitan Region\n• Create tutorials, demos, and marketing content for open-source tools\n• Manage and moderate lexsi discord community\n• Answer technical questions and route deeper issues\n• Track metrics and surface feedback to improve tools",
+      "date_published": "2026-09-08T18:39:01.226Z",
+      "authors": [
+        {
+          "name": "Lexsi Labs"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lexsi-labs-developer-relationship-intern-4464658541",
       "url": "https://interndoor.com/jobs/lexsi-labs-developer-relationship-intern-4464658541",
       "title": "Developer Relationship - Intern — Lexsi Labs",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454016475",
-      "url": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4454016475",
-      "title": "Young Graduate Trainee — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India · Duration: 1-3 years\n• Develop and validate device drivers for automotive microcontrollers using C and assembly\n• Create test scripts and automation for communication peripherals like SPI and UART\n• Work on ISO26262 compliant software processes for TriCore architecture platforms",
-      "date_published": "2026-09-04T10:46:55.173Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
         }
       ]
     }
