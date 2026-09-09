@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174",
+      "url": "https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174",
+      "title": "Apprentice - QA Automation — StoneX Group Inc.",
+      "content_text": "Company: StoneX Group Inc. · Location: Bengaluru, Karnataka, India\n• Write automated tests for financial systems using Playwright and TypeScript\n• Work with GitHub Actions and CI/CD pipelines for test automation\n• Collaborate with developers and analysts on test frameworks and data validation",
+      "date_published": "2026-09-09T22:06:38.777Z",
+      "authors": [
+        {
+          "name": "StoneX Group Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4465310038",
       "url": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4465310038",
       "title": "Trainee Technology — Bajaj Finserv",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410",
-      "url": "https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410",
-      "title": "Robotics Inspection Technologies Intern. — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India · Duration: 3-11 months\n• Implement real-time control algorithms on embedded systems\n• Integrate hardware and software for robotic inspection systems\n• Work with computer vision for pose estimation and 3D reconstruction",
-      "date_published": "2026-09-07T11:22:49.156Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     }

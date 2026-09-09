@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 09 Sep 2026 18:35:12 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 09 Sep 2026 22:06:38 GMT</lastBuildDate>
+  <item>
+    <title>Apprentice - QA Automation — StoneX Group Inc.</title>
+    <link>https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174</guid>
+    <pubDate>Wed, 09 Sep 2026 22:06:38 GMT</pubDate>
+    <description>Company: StoneX Group Inc. · Location: Bengaluru, Karnataka, India
+• Write automated tests for financial systems using Playwright and TypeScript
+• Work with GitHub Actions and CI/CD pipelines for test automation
+• Collaborate with developers and analysts on test frameworks and data validation</description>
+  </item>
   <item>
     <title>Trainee Technology — Bajaj Finserv</title>
     <link>https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4465310038</link>
@@ -493,16 +503,6 @@
 • Design user interfaces for mobile apps and dashboards
 • Collaborate with developers to implement designs
 • Conduct user research and testing for product improvements</description>
-  </item>
-  <item>
-    <title>Robotics Inspection Technologies Intern. — GE Vernova</title>
-    <link>https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ge-vernova-robotics-inspection-technologies-intern-4464330410</guid>
-    <pubDate>Mon, 07 Sep 2026 11:22:49 GMT</pubDate>
-    <description>Company: GE Vernova · Location: Bengaluru, Karnataka, India · Duration: 3-11 months
-• Implement real-time control algorithms on embedded systems
-• Integrate hardware and software for robotic inspection systems
-• Work with computer vision for pose estimation and 3D reconstruction</description>
   </item>
 </channel>
 </rss>
