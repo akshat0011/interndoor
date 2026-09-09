@@ -136,6 +136,50 @@ const REGION_LIST = [
     // collide with India, Germany and an English conjunction, and the rest are
     // ordinary words. Indiana, Delaware, Oregon, Iowa, Maine and Hawaii lose
     // their abbreviation and keep their spelled-out names below.
+    /* THE SIX EXCLUDED CODES, READMITTED AS WEAK AND TRAILING-ONLY.
+       `in de or ia me hi` cannot be ordinary codes: `in` matches "In-Office"
+       and is the commonest preposition in English, `de` and `in` are the ISO
+       codes for Germany and India, and `or`, `me` and `hi` are ordinary words.
+       Excluding them was right and stays right — but it left 22 live US rows at
+       named employers resolving to `unknown` purely because the row abbreviated
+       the state, Emerson's ten Marshalltown postings among them.
+
+       WEAK is what makes them safe. A weak code is consulted only AFTER the
+       country pass, the strong-city pass and the strong-code pass have all
+       declined, so it can never outrank real evidence: "Hannover, de" and
+       "Ludwigshafen, de" still resolve to Germany on Germany's own code, and
+       "Vadodara, in" still resolves to India on its city. All three are in the
+       store and all three are unchanged.
+
+       TRAILING-ONLY is the other half, and it is not a detail. The ordinary
+       code regex also accepts a LEADING form ("PL-Warsaw-Lixa C"), and
+       "IN-Bengaluru-..." and "DE-Berlin-..." are exactly how Indian and German
+       ATS payloads are written. Admitting the leading form for these six would
+       file every one of those in the United States.
+
+       `in` AND `de` ARE DELIBERATELY NOT HERE, and both exclusions were
+       measured rather than assumed.
+
+       `in` was tried and it FILES INDIAN TOWNS IN AMERICA. Re-deriving over all
+       1,239 stored locations turned up **"Ambernath, IN"** — Ambernath is in
+       Maharashtra, the `IN` is India's own ISO code, and the town is not in
+       India's city list, so the weak pass claimed it for the United States. Ten
+       Indiana locations would have been gained and that one Indian role lost to
+       the wrong board; §6's rule about the Copeland country field applies
+       exactly — one counter-example is enough, because the row publishes and
+       nothing looks wrong. The remedy for Indiana is the one this file already
+       prescribes for `fort wayne` and `cedar rapids`: NAME THE CITY.
+
+       `de` is excluded for the opposite reason — it is unreachable. Germany's
+       own `codes: ['de']` matches the identical trailing shape in the strong
+       pass, which runs first, so a weak `de` could never fire. §1: untested
+       surface, not coverage.
+
+       It does NOT rescue "Dover, DE", and is not meant to: Germany's strong
+       code settles that one before this pass is reached, and it stays pinned as
+       wrong. It DOES settle "Waterloo, IA" and "Salem, OR", both of which were
+       pinned as wrong and are now right. */
+    weakCodes: ['or', 'ia', 'me', 'hi'],
     codes: ['us', 'al', 'ak', 'az', 'ar', 'ca', 'co', 'ct', 'fl', 'ga', 'id',
       'il', 'ks', 'ky', 'la', 'ma', 'md', 'mi', 'mn', 'mo', 'ms', 'mt',
       'nc', 'nd', 'ne', 'nh', 'nj', 'nm', 'nv', 'ny', 'oh', 'ok', 'pa', 'ri',
@@ -534,6 +578,14 @@ const MATCHERS = REGION_LIST.map((region) => ({
     ? new RegExp(`(?:,\\s*(?:${region.codes.join('|')})\\s*$)|(?:^\\s*(?:${region.codes.join('|')})-)`, 'i')
     : null,
   /**
+   * Codes too collision-prone to be trusted outright, in the TRAILING position
+   * only. Consulted after every strong pass has declined — see resolveRegion
+   * and the note on the US entry's `weakCodes`.
+   */
+  code2weak: (region.weakCodes ?? []).length
+    ? new RegExp(`,\\s*(?:${(region.weakCodes ?? []).join('|')})\\s*$`, 'i')
+    : null,
+  /**
    * City names this region shares with a real place in another one. A match on
    * one of these is held back rather than returned, so an explicit code
    * elsewhere in the string can outrank it. See resolveRegion.
@@ -587,6 +639,13 @@ export function resolveRegion(location, { fallback = null } = {}) {
   }
 
   for (const m of MATCHERS) if (m.code2?.test(text)) return m.code;
+
+  /* A WEAK CODE OUTRANKS A WEAK CITY, and that ordering is the whole point of
+     having two weak tiers. "Salem, OR" holds a weak India on the city and a
+     weak US on the trailing code: the state abbreviation is the more specific
+     claim, and Salem, Oregon is the right answer. A strong city has already
+     returned above, so nothing real is being overruled here. */
+  for (const m of MATCHERS) if (m.code2weak?.test(text)) return m.code;
 
   return weak ?? UNKNOWN;
 }

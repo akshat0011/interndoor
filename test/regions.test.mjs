@@ -194,20 +194,58 @@ at('washington state', 'Seattle, Washington', 'US');
 at('hawaii', 'Honolulu, Hawaii', 'US');
 at('new hampshire', 'Nashua, New Hampshire', 'US');
 
-console.log('\n== the six excluded codes are still a known gap ==');
-// `in`, `de`, `or`, `ia`, `me`, `hi` are deliberately absent from US codes —
-// they collide with India, Germany and ordinary English words. The cost is that
-// a US posting written "City, ST" in one of those six states cannot be placed
-// unless its city or state is spelled out. These are STORED as unknown, never
-// published, so a later gazetteer improvement picks them up with no
-// re-collection. Pinned so the behaviour is deliberate rather than a surprise.
-// `auburn` is NOT in the gazetteer: Auburn is a town in Maine, Alabama,
-// Washington and New South Wales, so naming it would hand an Australian
-// role to the US board. This is the gap staying open on purpose.
-at('maine by code alone', 'Auburn, ME', UNKNOWN);
-// Franklin is the same shape: Franklin, IN is a real US city and so is
-// Franklin in a dozen other states, but nothing here names it yet.
-at('indiana by code alone', 'Franklin, IN', UNKNOWN);
+console.log('\n== four of the six excluded codes now read, as WEAK and TRAILING-ONLY ==');
+/* `or`, `ia`, `me` and `hi` are `weakCodes` on the US entry (9 Sep 2026). They
+   are consulted only after the country, strong-city and strong-code passes have
+   all declined, so they cannot outrank real evidence, and only in the trailing
+   "City, ST" position. Measured over all 1,239 stored locations: 13 gained,
+   1 reclassified (Waterloo, and that one was pinned as WRONG below), 0 lost —
+   18 live engineering rows, ten of them Emerson's Marshalltown co-ops.
+
+   `auburn` is still NOT a named city — Auburn exists in Maine, Alabama,
+   Washington and New South Wales — but the trailing `ME` now settles it without
+   anyone having to name the town, which is the whole point of the weak tier. */
+at('maine by code alone', 'Auburn, ME', 'US');
+at('iowa by code alone', 'Marshalltown, IA', 'US');
+at('oregon by code alone', 'Bend, OR', 'US');
+/* `in` AND `de` ARE STILL EXCLUDED, each for its own measured reason, and these
+   are the assertions that keep them out. */
+/* `in` was tried and files Indian towns in America: Ambernath is in
+   Maharashtra and is not in India's city list, so a weak `in` claimed it for
+   the US. Excluding `in` does NOT make it resolve to India — nothing here names
+   the town — it leaves it UNPLACED, which §6 calls the right answer for an
+   ambiguous bare city: stored, never published, and picked up free by any later
+   gazetteer improvement. Unplaced is the win here, not Indian. */
+at('indiana by code alone is STILL a gap', 'Franklin, IN', UNKNOWN);
+at('and Ambernath is unplaced rather than American', 'Ambernath, IN', UNKNOWN);
+// `de` is unreachable rather than dangerous: Germany's own code matches the
+// identical trailing shape one pass earlier.
+at('a German code still wins its own shape', 'Hannover, de', 'DE');
+at('lowercase or upper, it is still Germany', 'Ludwigshafen, DE', 'DE');
+/* TRAILING-ONLY. The strong code regex also takes a LEADING form, and
+   "IN-Bengaluru" / "DE-Berlin" are exactly how Indian and German ATS payloads
+   are written. Admitting that shape for the weak six files them in the US. */
+at('a leading Indian prefix is untouched', 'IN-Bengaluru-Tower', 'IN');
+at('a leading German prefix is untouched', 'DE-Berlin-Haus', 'DE');
+/* And the shape that would break if the weak tier ever took the leading form:
+   `ME` is Montenegro's ISO code and Montenegro is not in this registry, so a
+   leading "ME-" would be claimed by the United States with nothing able to
+   object. Unplaced is the correct answer. */
+at('a leading ME- prefix is not a US state', 'ME-Podgorica-Office', UNKNOWN);
+at('nor a leading OR- or IA-', 'OR-Someplace-Site', UNKNOWN);
+// The original reason `in` was dropped at all, still true.
+at('In-Office is not a place', 'In-Office', UNKNOWN);
+/* THE TIER ORDERING, which is the only thing making a weak code safe. It sits
+   BELOW every strong pass and ABOVE the weak-city fallback. The first three are
+   constructed rather than observed — no stored row pairs a strong foreign place
+   with a US state code — but the ordering is the invariant, and without these
+   the pass could be hoisted above the country or city pass with nothing to
+   object. The last two are real shapes and are the reason the tier exists. */
+at('a strong city outranks a weak code', 'Bengaluru, ME', 'IN');
+at('a country name outranks a weak code', 'Auburn, ME, Australia', 'AU');
+at('a country anywhere in the string still wins', 'Munich, Germany, OR', 'DE');
+at('but a weak CITY does not — the code is more specific', 'London, ME', 'US');
+at('same for Shanghai, which is held weak for the VA collision', 'Shanghai, IA', 'US');
 // ...and the other half of the note: naming the city IS the remedy, so a
 // city that has been added now reads despite its code being excluded.
 // Fort Wayne, Hillsboro, Cedar Rapids, Boise, Honolulu and Pearl City were
@@ -296,11 +334,15 @@ console.log('\n== KNOWN AND NOT FIXED: the six excluded US state codes ==');
    collide with India, Germany and ordinary words ("in" matched "In-Office").
    The cost is that a US location using one has nothing to outrank a foreign
    city or country match, so the weak step falls through to the foreign answer.
-   These three are pinned AS WRONG, so the day somebody makes those codes work
-   this file says so rather than passing in silence. */
+   Two of the three are still wrong and stay pinned; Waterloo was fixed by the
+   weak-code tier on 9 Sep 2026 and its assertion inverted, which is exactly the
+   loud break this block was written to produce. */
+// Still wrong: a STRONG foreign city returns before the weak-code pass.
 at('warsaw indiana is still misfiled', 'Warsaw, IN', 'PL');
-at('waterloo iowa is still misfiled', 'Waterloo, IA', 'CA');
+// Still wrong: Germany's own strong code matches the identical shape first.
 at('dover delaware is still misfiled', 'Dover, DE', 'DE');
+// FIXED 9 Sep 2026 — `waterloo` is held weak, so the weak `ia` outranks it.
+at('waterloo iowa now reads correctly', 'Waterloo, IA', 'US');
 
 console.log('\n== Portugal, added 5 Sep 2026 ==');
 /* Added because Cloudflare's Lisbon internship was the one row the In-Office
@@ -329,8 +371,12 @@ at('nor is bare Porto', 'Porto', UNKNOWN);
    because a weak match is only beaten by the CODE pass and `me` and `ia` are
    two of the six US state codes excluded above. With `lisbon` listed weak,
    "Lisbon, ME" resolved to PORTUGAL. It is left out, so a bare Lisbon is
-   honestly unknown. */
-at('Lisbon Maine is not Portuguese', 'Lisbon, ME', UNKNOWN);
+   honestly unknown.
+   Since 9 Sep 2026 `me` is a WEAK US code, so this one is now positively US
+   rather than merely not-Portuguese — but the reasoning above is unchanged and
+   listing `lisbon` would still break it, because a weak city cannot be
+   outranked by a weak code from a region the strong passes never reached. */
+at('Lisbon Maine is American, and still not Portuguese', 'Lisbon, ME', 'US');
 at('Lisbon Ohio is American', 'Lisbon, OH', 'US');
 at('New Lisbon Wisconsin is American', 'New Lisbon, WI', 'US');
 at('a bare Lisbon declines to guess', 'Lisbon', UNKNOWN);
@@ -368,10 +414,12 @@ at('Salem New Hampshire is American', 'Salem, NH', 'US');
    Nadu is much the larger city. */
 at('a bare Salem is still Indian', 'Salem', 'IN');
 at('and spelled out it is unambiguous', 'Salem, Tamil Nadu, India', 'IN');
-/* KNOWN AND NOT FIXED: `or` is one of the six excluded US state codes, so this
-   one cannot be outranked. Pinned AS WRONG, like Warsaw IN and Dover DE above,
-   so the day those codes work it breaks loudly. */
-at('Salem Oregon is still misfiled', 'Salem, OR', 'IN');
+/* FIXED 9 Sep 2026, and it broke loudly exactly as the old comment promised.
+   `salem` is held weak for India and `or` is now a weak US code; the weak-code
+   pass runs BEFORE the weak-city fallback, because a state abbreviation is the
+   more specific claim. A bare "Salem" is still India, which is the case the
+   weak marking exists to protect. */
+at('Salem Oregon now reads correctly', 'Salem, OR', 'US');
 
 console.log('\n== China and Taiwan, added 5 Sep 2026 ==');
 at('city then country', 'Shanghai, Shanghai, China', 'CN');
@@ -405,9 +453,10 @@ at('China Lake is Californian', 'China Lake, CA', 'US');
 at('China is Texan', 'China, TX', 'US');
 at('China Grove is North Carolinian', 'China Grove, NC', 'US');
 at('China Spring is Texan', 'China Spring, TX', 'US');
-/* Maine's code is one of the six excluded above, so this one cannot reach US —
-   but the point is that it must not reach CHINA either, and it does not. */
-at('China Maine is at worst unplaced, never Chinese', 'China, ME', UNKNOWN);
+/* Maine's code became a weak US code on 9 Sep 2026, so this one now reaches US
+   outright. The point it was written for is unchanged and still holds: it must
+   never reach CHINA, and `china` is deliberately not a country name here. */
+at('China Maine is American, never Chinese', 'China, ME', 'US');
 
 console.log('\n== Shanghai, VA is a real US place and is in the store today ==');
 /* A MEASURED collision, not a precaution. `shanghai` is held weak so the code
