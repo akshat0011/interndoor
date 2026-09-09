@@ -1,9 +1,9 @@
 {
- "generatedAt": 1788936272484,
+ "generatedAt": 1788936549906,
  "region": "US",
  "regionName": "United States",
- "count": 2010,
- "techCount": 2010,
+ "count": 2028,
+ "techCount": 2028,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -312,6 +312,7 @@
   "Atlanta, Georgia, United States; Boston, Massachusetts, United States; Broomfield, Colorado, United States; Colorado Springs, Colorado, United States; Costa Mesa, California, United States; Fort Collins, Colorado, United States; Irvine, California, United States; Reston, Virginia, United States; Seattle, Washington, United States",
   "Atlanta, Georgia, United States; Boston, Massachusetts, United States; Broomfield, Colorado, United States; Colorado Springs, Colorado, United States; Costa Mesa, California, United States; Fort Collins, Colorado, United States; Irvine, California, United States; Seattle, Washington, United States",
   "Atlanta, Georgia, United States; Colorado Springs, Colorado, United States; Costa Mesa, California, United States; Fort Collins, Colorado, United States; Seattle, Washington, United States",
+  "Auburn, ME",
   "Aurora, CO",
   "Aurora, OH",
   "Austin, TX",
@@ -327,6 +328,7 @@
   "Bedford, MA",
   "Bellevue, WA",
   "Bellevue, Washington; Mountain View, California; San Francisco, California",
+  "Bend, OR",
   "Bentonville, AR",
   "Berkeley, CA",
   "Berkeley, California, United States",
@@ -394,6 +396,7 @@
   "Coppell, TX",
   "Corporate 412 West - Springdale, Arkansas",
   "Corpus Christi, TX",
+  "Corvallis, OR",
   "Costa Mesa, California, United States",
   "Costa Mesa, California, United States; Fort Collins, Colorado, United States",
   "Costa Mesa, California, United States; Irvine, California, United States; Santa Ana, California, United States",
@@ -410,6 +413,7 @@
   "Denver, CO",
   "Denver, CO, 80205",
   "Denver, CO, 80223",
+  "Des Moines, IA",
   "Detroit, MI",
   "Dublin, OH",
   "Dulles, VA",
@@ -544,6 +548,7 @@
   "Maple Grove, MN",
   "Marcus Hook, PA",
   "Marlborough, MA",
+  "Marshalltown, IA",
   "Maryland Heights, MO",
   "Mason, MI",
   "Mason, OH",
@@ -714,6 +719,7 @@
   "Southlake, TX",
   "Spartanburg, SC",
   "Spring, TX",
+  "Springfield, OR",
   "St Bernard, OH",
   "St Louis, MO",
   "St Paul, MN",
@@ -781,6 +787,7 @@
   "Willowbrook, IL",
   "Wilmington, MA",
   "Wilmington, NC",
+  "Wilsonville, OR",
   "Windsor Mill, MD",
   "Wisconsin, United States",
   "Woburn, MA",
@@ -2869,6 +2876,62 @@
    "cardFacts": [
     "$29 – $34 / hour",
     "Cedar Rapids",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4463582318",
+   "title": "Cyber Testing Intern - Summer 2027",
+   "company": "RSM US LLP",
+   "matchedWatchlist": "RSM US LLP",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/rsm-us-llp.jpg",
+   "location": "Des Moines, IA",
+   "workplaceType": "On-site",
+   "stipend": "$29 – $35 / hour",
+   "duration": "Summer 2027",
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "php",
+    "sql",
+    "linux",
+    "mysql",
+    "perl"
+   ],
+   "summary": "This internship involves testing client systems for security vulnerabilities, analyzing threats and data leaks, and working with certified professionals on real projects. Ideal for students with a background in cybersecurity or related fields seeking hands-on experience in threat analysis and network security.",
+   "bullets": [
+    "Test networks, apps, and systems for security flaws using manual and automated tools",
+    "Analyze threats, ransomware, and data leaks across open and dark web sources",
+    "Work with CEH, CISSP, and CISA certified professionals on real client projects"
+   ],
+   "roleLabel": "Cyber Security Testing",
+   "degreeLevel": "UG",
+   "degreeText": "B.A./B.S.",
+   "keySkills": [
+    "python",
+    "perl",
+    "metasploit",
+    "nessus",
+    "kali linux"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "19 minutes ago",
+   "postedAt": 1788916822548,
+   "firstSeenAt": 1788917962557,
+   "lastSeenAt": 1788917962557,
+   "url": "https://www.linkedin.com/jobs/view/4463582318/",
+   "applyUrl": "https://jobs.rsmus.com/posting/cyber-testing-intern---summer-2027/JR117183?source=LinkedIn+-+Job+Feed",
+   "description": null,
+   "roleFingerprint": "32eadf8ef9",
+   "cardFacts": [
+    "$29 – $35 / hour",
+    "Des Moines",
     "On-site"
    ],
    "region": "US"
@@ -27349,6 +27412,55 @@
    "region": "US"
   },
   {
+   "id": "4461989926",
+   "title": "Building Automation Systems Specialist Internship",
+   "company": "Siemens",
+   "matchedWatchlist": "Siemens",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/siemens.jpg",
+   "location": "Springfield, OR",
+   "workplaceType": "On-site",
+   "stipend": "$22 / hour",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "Here at Siemens, we take pride in enabling sustainable progress through technology. Are you looking for an internship where you can showcase your technical aptitude and passion for problem solving to ensure customers can work in a comfortable, safe, and energy-efficient environment? We are looking for Smart Building Systems Specialist Interns. The actual wage offered may be lower or higher depending on budget and candidate experience, knowledge, skills, qualifications, and premium geographic location.",
+   "bullets": [
+    "Install, program, and service HVAC automation systems in commercial buildings",
+    "Use laptops, tablets, and hand tools to troubleshoot and maintain building systems",
+    "Work onsite with technicians and customers in various environments including rooftops"
+   ],
+   "roleLabel": "Building Systems Installer",
+   "degreeLevel": "Pursuing",
+   "degreeText": "HVAC Controls / Building Automation / Mechanical Engineering / Electrical Engineering",
+   "keySkills": [
+    "Microsoft Office",
+    "Windows-based laptops",
+    "Building automation",
+    "Troubleshooting"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "16 minutes ago",
+   "postedAt": 1788539480507,
+   "firstSeenAt": 1788540440512,
+   "lastSeenAt": 1788540440512,
+   "url": "https://www.linkedin.com/jobs/view/4461989926/",
+   "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/521381?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
+   "description": null,
+   "roleFingerprint": "5d64dd7f90",
+   "cardFacts": [
+    "$22 / hour",
+    "Springfield",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4461993863",
    "title": "Strategic Student Program: Future Workforce Strategy Enablement Team Intern (CMMK, Spring 2027)",
    "company": "Siemens",
@@ -35229,6 +35341,68 @@
    "cardFacts": [
     "$20 – $34 / hour",
     "Cleveland",
+    "Hybrid"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461396138",
+   "title": "Strategic Student Program: Cross-Domain Electronics Systems Engineering Intern (T&I, Spring 2027)",
+   "company": "Siemens Digital Industries Software",
+   "matchedWatchlist": "Siemens",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/siemens-digital-industries-software.jpg",
+   "location": "Wilsonville, OR",
+   "workplaceType": "Hybrid",
+   "stipend": "$18 – $50 / hour",
+   "pay": {
+    "currency": "USD",
+    "min": 18,
+    "max": 50,
+    "unitText": "HOUR"
+   },
+   "duration": "Spring 2027",
+   "applicants": "2 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "linux",
+    "fpga",
+    "signal integrity",
+    "pcb",
+    "system design"
+   ],
+   "summary": "This internship involves researching and developing software tools that integrate semiconductor design, AI, and product lifecycle management. Ideal for students with a background in electrical or computer engineering seeking hands-on experience in cross-domain engineering systems.",
+   "bullets": [
+    "Develop software prototypes and automation tools for engineering workflows",
+    "Work with EDA and PLM tools to integrate semiconductor and system design",
+    "Contribute to AI-assisted documentation and digital thread development"
+   ],
+   "roleLabel": "Engineering Systems Development",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Electrical Engineering/Computer Engineering",
+   "keySkills": [
+    "eda",
+    "plm",
+    "python",
+    "c++",
+    "ai"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1788410510810,
+   "firstSeenAt": 1788414110814,
+   "lastSeenAt": 1788424814598,
+   "url": "https://www.linkedin.com/jobs/view/4461396138/",
+   "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/519896?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
+   "description": null,
+   "roleFingerprint": "7b8f1d1877",
+   "cardFacts": [
+    "$18 – $50 / hour",
+    "Wilsonville",
     "Hybrid"
    ],
    "region": "US"
@@ -51683,6 +51857,59 @@
    "region": "US"
   },
   {
+   "id": "4459530238",
+   "title": "Internship Program: Field Service Engineer",
+   "company": "Eaton",
+   "matchedWatchlist": "Eaton Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/eaton.jpg",
+   "location": "Wilsonville, OR",
+   "workplaceType": "On-site",
+   "stipend": "$21 – $26 / hour",
+   "pay": {
+    "currency": "USD",
+    "min": 20.77,
+    "max": 25.96,
+    "unitText": "HOUR"
+   },
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "We Make What Matters Work. You want to make an impact in the world. You'll team up with seasoned leaders, gaining diverse experiences that'll drive you forward to define and reach your career goals. During the summer paid internship, participants will work on projects that have a measurable impact on our business and will be coached and mentored by leaders within the division.",
+   "bullets": [
+    "Troubleshoot electrical systems and deliver technical solutions to customers",
+    "Use test equipment and analyze power quality measurements in field assignments",
+    "Travel up to 25% for regional assignments and work in varied environmental conditions"
+   ],
+   "roleLabel": "Field Service Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "test equipment operation",
+    "protective relays",
+    "power quality measurements",
+    "troubleshooting techniques"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1788273181340,
+   "firstSeenAt": 1788273481342,
+   "lastSeenAt": 1788273481342,
+   "url": "https://www.linkedin.com/jobs/view/4459530238/",
+   "applyUrl": "https://eaton.eightfold.ai/careers/job/687238083412?utm_source=linkedin&domain=eaton.com",
+   "description": null,
+   "roleFingerprint": "b90b7ee670",
+   "cardFacts": [
+    "$21 – $26 / hour",
+    "Wilsonville",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4459526451",
    "title": "Internship Program: Field Service Engineer",
    "company": "Eaton",
@@ -53341,6 +53568,60 @@
    "cardFacts": [
     "$21 – $26 / hour",
     "El Paso",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4459521803",
+   "title": "Internship Program: Field Service Engineer",
+   "company": "Eaton",
+   "matchedWatchlist": "Eaton Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/eaton.jpg",
+   "location": "Bend, OR",
+   "workplaceType": "On-site",
+   "stipend": "$21 – $26 / hour",
+   "pay": {
+    "currency": "USD",
+    "min": 20.77,
+    "max": 25.96,
+    "unitText": "HOUR"
+   },
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves hands-on work solving real-world power system challenges, including testing, troubleshooting, and customer service. Ideal for engineering students seeking technical and leadership development in power distribution.",
+   "bullets": [
+    "Troubleshoot electrical systems and deliver technical solutions to customers",
+    "Use test equipment and analyze power quality measurements in field assignments",
+    "Travel up to 25% for regional assignments and work in varied environmental conditions"
+   ],
+   "roleLabel": "Field Service Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "test equipment operation",
+    "protective relays",
+    "power quality measurements",
+    "disaster recovery",
+    "rotating machinery"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "15 minutes ago",
+   "postedAt": 1788273153252,
+   "firstSeenAt": 1788274053254,
+   "lastSeenAt": 1788274053254,
+   "url": "https://www.linkedin.com/jobs/view/4459521803/",
+   "applyUrl": "https://eaton.eightfold.ai/careers/job/687238083412?utm_source=linkedin&domain=eaton.com",
+   "description": null,
+   "roleFingerprint": "b90b7ee670",
+   "cardFacts": [
+    "$21 – $26 / hour",
+    "Bend",
     "On-site"
    ],
    "region": "US"
@@ -61337,6 +61618,58 @@
    "region": "US"
   },
   {
+   "id": "4461554421",
+   "title": "Intelligent Automation Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "agile",
+    "power bi"
+   ],
+   "summary": "This internship involves creating and deploying automation solutions to improve business processes. You'll work with tools like Power Automate and Python, and collaborate with teams to implement and document projects. It's ideal for students passionate about process improvement and technology.",
+   "bullets": [
+    "Design and implement automation solutions for business processes",
+    "Use tools like Power Automate, Python, and SQL for project work",
+    "Collaborate with teams to deploy and document automation projects"
+   ],
+   "roleLabel": "Process Automation",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Engineering/Business/IT",
+   "keySkills": [
+    "power automate",
+    "python",
+    "sql",
+    "power bi",
+    "power query"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "6 minutes ago",
+   "postedAt": 1788238286854,
+   "firstSeenAt": 1788238646857,
+   "lastSeenAt": 1788238646857,
+   "url": "https://www.linkedin.com/jobs/view/4461554421/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26010174/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "4ab6efd7f3",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4461554422",
    "title": "Product Operations Engineering Intern",
    "company": "Emerson",
@@ -61709,6 +62042,109 @@
    "region": "US"
   },
   {
+   "id": "4461551907",
+   "title": "Software Engineering Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "javascript",
+    "sql",
+    ".net"
+   ],
+   "summary": "This co-op role involves writing and testing code for software projects, collaborating with teams to build features, and learning from experienced engineers. It's ideal for students pursuing a bachelor's in software engineering or related fields.",
+   "bullets": [
+    "Write and test code in Java, .NET, or other languages",
+    "Work with teams to understand customer needs and build features",
+    "Learn from experienced engineers in a structured co-op program"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "net",
+    "sql",
+    "html/css",
+    "javascript"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "11 minutes ago",
+   "postedAt": 1788237497710,
+   "firstSeenAt": 1788238157714,
+   "lastSeenAt": 1788238157714,
+   "url": "https://www.linkedin.com/jobs/view/4461551907/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26008442/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "d7c1cdc3b3",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461571036",
+   "title": "Embedded Software Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "c++",
+    "c#",
+    "jenkins"
+   ],
+   "summary": "This co-op involves working on embedded systems, collaborating with firmware teams, and maintaining test equipment. Ideal for students with programming experience in C++ or C# and an interest in hardware-software integration.",
+   "bullets": [
+    "Design, assemble, and maintain test fixtures for embedded systems",
+    "Collaborate on firmware development and product documentation",
+    "Work with C++ and C# in a team environment in Marshalltown, IA"
+   ],
+   "roleLabel": "Embedded Testing",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c++",
+    "c#",
+    "teamcity",
+    "jenkins",
+    "arm"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "13 minutes ago",
+   "postedAt": 1788237489620,
+   "firstSeenAt": 1788238269621,
+   "lastSeenAt": 1788238269621,
+   "url": "https://www.linkedin.com/jobs/view/4461571036/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26008443/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "3ff2d7ce8f",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4461560312",
    "title": "Software Engineering Spring Co-op (Jan27- May27)",
    "company": "Emerson",
@@ -61820,6 +62256,115 @@
    "region": "US"
   },
   {
+   "id": "4461561267",
+   "title": "AI Engineering Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "git",
+    "rag"
+   ],
+   "summary": "This internship involves developing AI tools to streamline engineering processes. You'll work with experienced engineers to automate tasks like design reviews and test analysis. Ideal for students with a technical background and experience with AI frameworks.",
+   "bullets": [
+    "Design and deploy AI agents for engineering tasks like design review and test analysis",
+    "Collaborate with engineers to automate workflows using LLMs and AI frameworks",
+    "Build feedback loops to measure impact and improve AI solutions in real-world use"
+   ],
+   "roleLabel": "AI Workflow Automation",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "llms",
+    "ai agents",
+    "workflow automation",
+    "python",
+    "git"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "13 minutes ago",
+   "postedAt": 1788237484257,
+   "firstSeenAt": 1788238264258,
+   "lastSeenAt": 1788238264258,
+   "url": "https://www.linkedin.com/jobs/view/4461561267/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26007510/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "d16d1caf81",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461566093",
+   "title": "Machine Learning R&D Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "matlab",
+    "machine learning",
+    "pytorch",
+    "tensorflow",
+    "scikit-learn",
+    "pandas",
+    "numpy",
+    "labview",
+    "agile"
+   ],
+   "summary": "This internship involves working on AI/ML models for predictive maintenance in manufacturing. You'll design experiments, analyze sensor data, and collaborate with data science teams. Ideal for students with Python experience and an interest in diagnostics and system behavior.",
+   "bullets": [
+    "Design and run experiments to improve AI/ML models for diagnostics and prognostics",
+    "Work with data science teams to analyze trends and features in sensor data",
+    "Collaborate in agile teams to develop and refine predictive maintenance systems"
+   ],
+   "roleLabel": "AI/ML Research",
+   "degreeLevel": "UG",
+   "degreeText": "Mechanical Engineering/Computer Science/Data Science",
+   "keySkills": [
+    "python",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "tensorflow"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "13 minutes ago",
+   "postedAt": 1788237479466,
+   "firstSeenAt": 1788238259467,
+   "lastSeenAt": 1788238259467,
+   "url": "https://www.linkedin.com/jobs/view/4461566093/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26008762/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "300457f529",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4461567083",
    "title": "Data Science Engineering Intern",
    "company": "Emerson",
@@ -61873,6 +62418,58 @@
    "cardFacts": [
     "$24 – $28 / hour",
     "Boulder",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461550995",
+   "title": "Data Analytics Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "c#",
+    "sql",
+    "agile"
+   ],
+   "summary": "This co-op involves designing data systems and supporting AI projects with agile teams. Ideal for students with SQL and Python skills looking for hands-on experience in data analytics.",
+   "bullets": [
+    "Design test systems and data architecture for control processes",
+    "Use SQL and Python for data collection and analysis",
+    "Work on AI models with agile teams in a structured co-op program"
+   ],
+   "roleLabel": "Data Systems Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "sql",
+    "python",
+    "data collection"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "13 minutes ago",
+   "postedAt": 1788237468796,
+   "firstSeenAt": 1788238248798,
+   "lastSeenAt": 1788238248798,
+   "url": "https://www.linkedin.com/jobs/view/4461550995/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26008130/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "ae64ad6d67",
+   "cardFacts": [
+    "Marshalltown",
     "On-site"
    ],
    "region": "US"
@@ -62079,6 +62676,96 @@
    "region": "US"
   },
   {
+   "id": "4461563208",
+   "title": "Engineering Management Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This co-op involves managing engineering projects, coordinating with mechanical and electrical teams, and presenting updates to leadership. It suits students with technical backgrounds seeking hands-on experience in structured project environments.",
+   "bullets": [
+    "Lead small engineering projects and coordinate cross-disciplinary teams",
+    "Track schedules, risks, and action items with structured processes",
+    "Present project updates to leadership and contribute to deliverables"
+   ],
+   "roleLabel": "Engineering Project Management",
+   "degreeLevel": "UG",
+   "degreeText": "Engineering/Computer Science",
+   "keySkills": [],
+   "stipendStatus": "unpaid",
+   "postedText": "11 minutes ago",
+   "postedAt": 1788237461844,
+   "firstSeenAt": 1788238121846,
+   "lastSeenAt": 1788238121846,
+   "url": "https://www.linkedin.com/jobs/view/4461563208/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26007511/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "59bcf691fb",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461570045",
+   "title": "Lifecycle Service Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "machine learning"
+   ],
+   "summary": "This internship involves using AI and data analysis to automate service processes and improve data quality. Ideal for students with a background in engineering or computer science looking to develop practical tools for real-world business challenges.",
+   "bullets": [
+    "Build tools to automate service and parts processes using AI/ML and data analysis",
+    "Collaborate with cross-functional teams to improve workflows and data quality",
+    "Develop and test digital solutions for leadtime support and maintenance events"
+   ],
+   "roleLabel": "AI Process Automation",
+   "degreeLevel": "UG",
+   "degreeText": "Engineering/Computer Science",
+   "keySkills": [
+    "machine learning",
+    "data analysis",
+    "java",
+    "microsoft windows"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "12 minutes ago",
+   "postedAt": 1788237457995,
+   "firstSeenAt": 1788238177998,
+   "lastSeenAt": 1788238177998,
+   "url": "https://www.linkedin.com/jobs/view/4461570045/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26007189/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "ef6496af8c",
+   "cardFacts": [
+    "Marshalltown",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4461566095",
    "title": "Test Engineering Intern",
    "company": "Emerson",
@@ -62124,6 +62811,57 @@
    "cardFacts": [
     "$24 – $28 / hour",
     "Shakopee",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461554420",
+   "title": "Data Analyst Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "c#",
+    "sql",
+    "agile"
+   ],
+   "summary": "This internship involves designing data systems, analyzing manufacturing data, and contributing to AI projects. It suits students with a background in computer science or math who enjoy working with data and automation technologies.",
+   "bullets": [
+    "Design data architecture and organize data from manufacturing systems",
+    "Use SQL and Python for data collection and analysis",
+    "Work on AI model development with agile teams"
+   ],
+   "roleLabel": "Data Systems Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "sql",
+    "python"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "12 minutes ago",
+   "postedAt": 1788237452617,
+   "firstSeenAt": 1788238172619,
+   "lastSeenAt": 1788238172619,
+   "url": "https://www.linkedin.com/jobs/view/4461554420/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26009200/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "c47f232da6",
+   "cardFacts": [
+    "Marshalltown",
     "On-site"
    ],
    "region": "US"
@@ -62176,6 +62914,50 @@
    "cardFacts": [
     "$24 – $28 / hour",
     "Chanhassen",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461551906",
+   "title": "Product Engineering Co-Op",
+   "company": "Emerson",
+   "matchedWatchlist": "Emerson",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/emerson.jpg",
+   "location": "Marshalltown, IA",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves supporting product engineering by analyzing valve designs, troubleshooting performance issues, and developing digital tools for product validation. Ideal for engineering students seeking hands-on experience in product development and technical support.",
+   "bullets": [
+    "Support product engineering with technical analysis and troubleshooting",
+    "Collaborate on valve design, modifications, and performance evaluations",
+    "Develop digital tools for product design and validation",
+    "Provide engineering support to global sales teams"
+   ],
+   "roleLabel": "Product Engineering Support",
+   "degreeLevel": "UG",
+   "degreeText": "Engineering",
+   "keySkills": [
+    "product design"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "11 minutes ago",
+   "postedAt": 1788237445950,
+   "firstSeenAt": 1788238105952,
+   "lastSeenAt": 1788238105952,
+   "url": "https://www.linkedin.com/jobs/view/4461551906/",
+   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26008445/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "5af36e3e07",
+   "cardFacts": [
+    "Marshalltown",
     "On-site"
    ],
    "region": "US"
@@ -69698,6 +70480,75 @@
    "cardFacts": [
     "$31 / hour",
     "Richardson",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4461046661",
+   "title": "Software Engineer Intern",
+   "company": "Qorvo, Inc.",
+   "matchedWatchlist": "Qorvo",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/qorvo-inc.jpg",
+   "location": "Bend, OR",
+   "workplaceType": "On-site",
+   "stipend": "$31 / hour",
+   "pay": {
+    "currency": "USD",
+    "min": 31,
+    "max": 31,
+    "unitText": "HOUR"
+   },
+   "duration": null,
+   "applicants": "4 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "javascript",
+    "c#",
+    "ruby",
+    "sql",
+    "react",
+    "vue",
+    "django",
+    "flask",
+    "fastapi",
+    ".net",
+    "docker",
+    "kubernetes"
+   ],
+   "summary": "This internship involves building and maintaining software for semiconductor manufacturing and DevOps systems. You'll work with Python, SQL, and Git, collaborating with engineers globally. Ideal for computer science students seeking real-world experience in production software.",
+   "bullets": [
+    "Build and deploy services for semiconductor manufacturing and DevOps",
+    "Work with Python, SQL, Git, and cloud tools",
+    "Collaborate with engineers across global sites"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Computer Science/Engineering",
+   "keySkills": [
+    "python",
+    "sql",
+    "git",
+    "docker",
+    "kubernetes"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "36 minutes ago",
+   "postedAt": 1788157241705,
+   "firstSeenAt": 1788159401707,
+   "lastSeenAt": 1788159401707,
+   "url": "https://www.linkedin.com/jobs/view/4461046661/",
+   "applyUrl": "https://careers.qorvo.com/job/Bend-Software-Engineer-Intern-OR-97703/1421474800/?eresc=LinkedIn",
+   "description": null,
+   "roleFingerprint": "c55f0aede0",
+   "cardFacts": [
+    "$31 / hour",
+    "Bend",
     "On-site"
    ],
    "region": "US"
@@ -85955,6 +86806,52 @@
    "region": "US"
   },
   {
+   "id": "4449930557",
+   "title": "Instruments & Controls CAD Intern",
+   "company": "Jacobs",
+   "matchedWatchlist": "Jacobs Engineering",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/jacobs.jpg",
+   "location": "Corvallis, OR",
+   "workplaceType": "Hybrid",
+   "stipend": "$47,300 – $58,000 / hour",
+   "duration": null,
+   "applicants": "17 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship offers hands-on drafting experience for cad students working on real projects. Interns will create 2d drawings and learn industry tools in a professional environment. The role requires weekly office hours in corvallis and is paid.",
+   "bullets": [
+    "Produce 2d drawings and documentation for real projects",
+    "Use ms and acad cad tools with on-the-job training",
+    "Work 16-20 hours weekly in corvallis office"
+   ],
+   "roleLabel": "CAD Drafting",
+   "degreeLevel": "UG",
+   "degreeText": "CAD",
+   "keySkills": [
+    "ms",
+    "acad",
+    "2d drawing"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "1 hour ago",
+   "postedAt": 1787851024065,
+   "firstSeenAt": 1787854624066,
+   "lastSeenAt": 1787854624066,
+   "url": "https://www.linkedin.com/jobs/view/4449930557/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4449930557/",
+   "description": null,
+   "roleFingerprint": "68b5b163b2",
+   "cardFacts": [
+    "$47,300 – $58,000 / hour",
+    "Corvallis",
+    "Hybrid"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4422923903",
    "title": "Intern- System Architect",
    "company": "Infineon Technologies",
@@ -98303,6 +99200,57 @@
    "cardFacts": [
     "$85,000 – $122,200",
     "Inwood",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4456934379",
+   "title": "Engineering Internship, Summer 2027",
+   "company": "Procter & Gamble",
+   "matchedWatchlist": "Procter & Gamble",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/procter-and-gamble.jpg",
+   "location": "Auburn, ME",
+   "workplaceType": "On-site",
+   "stipend": "$85,000 – $1,22,200",
+   "duration": "12 weeks",
+   "applicants": "5 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "labview"
+   ],
+   "summary": "This internship involves working on engineering projects related to automation, robotics, and manufacturing systems. You will support design and implementation of control systems, collaborate with R&D teams, and work with advanced technologies. Ideal for engineering students interested in hands-on experience in manufacturing and automation.",
+   "bullets": [
+    "Support design and implementation of control systems, robotics, and AI/ML for process control",
+    "Work with Rockwell PLCs, 3D CAD, and industrial networks on manufacturing projects",
+    "Relocate for 12-week internship in Auburn, ME, with potential for future moves"
+   ],
+   "roleLabel": "Engineering Projects",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "rockwell plcs",
+    "3d cad",
+    "industrial networks",
+    "ai/ml",
+    "control systems"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1787669754862,
+   "firstSeenAt": 1787673354863,
+   "lastSeenAt": 1787673354863,
+   "url": "https://www.linkedin.com/jobs/view/4456934379/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4456934379/",
+   "description": null,
+   "roleFingerprint": "f023786c79",
+   "cardFacts": [
+    "$85,000 – $122,200",
+    "Auburn",
     "On-site"
    ],
    "region": "US"
