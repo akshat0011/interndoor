@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/globalfoundries-advanced-manufacturing-process-engineering-intern-junior-summer-2027-4458047648",
+      "url": "https://interndoor.com/us/jobs/globalfoundries-advanced-manufacturing-process-engineering-intern-junior-summer-2027-4458047648",
+      "title": "Advanced Manufacturing Process Engineering Intern, Junior (Summer 2027) — GlobalFoundries",
+      "content_text": "Company: GlobalFoundries · Location: Essex Junction, VT · Duration: Summer 2027\n• Analyze experiments to optimize manufacturing processes\n• Manage equipment quality control plans\n• Work on projects with real-world impact",
+      "date_published": "2026-09-09T02:59:02.093Z",
+      "authors": [
+        {
+          "name": "GlobalFoundries"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/globalfoundries-advanced-manufacturing-process-engineering-intern-sophomore-summer-202-4458042750",
+      "url": "https://interndoor.com/us/jobs/globalfoundries-advanced-manufacturing-process-engineering-intern-sophomore-summer-202-4458042750",
+      "title": "Advanced Manufacturing Process Engineering Intern, Sophomore (Summer 2027) — GlobalFoundries",
+      "content_text": "Company: GlobalFoundries · Location: Essex Junction, VT · Duration: Summer 2027\n• Analyze experiments to optimize manufacturing processes\n• Manage equipment quality control plans\n• Work on projects with real-world impact",
+      "date_published": "2026-09-09T02:58:41.763Z",
+      "authors": [
+        {
+          "name": "GlobalFoundries"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cboe-global-markets-software-engineer-intern-4462573802",
+      "url": "https://interndoor.com/us/jobs/cboe-global-markets-software-engineer-intern-4462573802",
+      "title": "Software Engineer Intern — Cboe Global Markets",
+      "content_text": "Company: Cboe Global Markets · Location: New York, NY\n• Build web apps used in real-time trading and market analysis\n• Work with Python, Django, ReactJS, and PostgreSQL\n• Collaborate in Scrum teams with mentors and peers",
+      "date_published": "2026-09-09T02:39:46.278Z",
+      "authors": [
+        {
+          "name": "Cboe Global Markets"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4462569852",
       "url": "https://interndoor.com/us/jobs/ibm-intern-application-developer-2027-servicenow-4462569852",
       "title": "Intern Application Developer 2027 - ServiceNow — IBM",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Thales Defense & Security, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/thales-defense-and-security-inc-fpga-engineering-intern-comms-tvi-4463560565",
-      "url": "https://interndoor.com/us/jobs/thales-defense-and-security-inc-fpga-engineering-intern-comms-tvi-4463560565",
-      "title": "FPGA Engineering Intern (Comms/TVI) — Thales Defense & Security, Inc.",
-      "content_text": "Company: Thales Defense & Security, Inc. · Location: Clarksburg, MD · Duration: 8 weeks\n• Design and test DSP solutions for SDR hardware\n• Work with Verilog/VHDL and Matlab/Python\n• Located in Clarksburg, MD, summer 2027",
-      "date_published": "2026-09-08T22:01:17.312Z",
-      "authors": [
-        {
-          "name": "Thales Defense & Security, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-vehicle-controls-january-august-2027-4463566357",
-      "url": "https://interndoor.com/us/jobs/rivian-and-volkswagen-group-technologies-software-engineering-intern-vehicle-controls-january-august-2027-4463566357",
-      "title": "Software Engineering Intern - Vehicle Controls (January - August 2027) — Rivian and Volkswagen Group Technologies",
-      "content_text": "Company: Rivian and Volkswagen Group Technologies · Location: Palo Alto, CA\n• Develop embedded software for vehicle systems like battery management or thermal controls\n• Work with C/C++ and Python in real-time environments\n• Collaborate on safety-critical systems and automated testing",
-      "date_published": "2026-09-08T21:48:09.218Z",
-      "authors": [
-        {
-          "name": "Rivian and Volkswagen Group Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rivian-and-volkswagen-group-technologies-data-engineering-intern-ai-and-analytics-january-august-2027-4463552654",
-      "url": "https://interndoor.com/us/jobs/rivian-and-volkswagen-group-technologies-data-engineering-intern-ai-and-analytics-january-august-2027-4463552654",
-      "title": "Data Engineering Intern - AI & Analytics (January - August 2027) — Rivian and Volkswagen Group Technologies",
-      "content_text": "Company: Rivian and Volkswagen Group Technologies · Location: Irvine, CA\n• Build data pipelines and analytics workflows using Python and SQL\n• Work with Databricks or similar platforms for ELT pipelines\n• Support ML model development and deployment infrastructure",
-      "date_published": "2026-09-08T21:47:57.873Z",
-      "authors": [
-        {
-          "name": "Rivian and Volkswagen Group Technologies"
         }
       ]
     }
