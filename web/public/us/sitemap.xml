@@ -121,7 +121,8 @@
   <url><loc>https://interndoor.com/us/locations/raleigh</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/united-states-of-america</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/phoenix</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/san-mateo</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/san-mateo</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/cincinnati</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/houston</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/omaha</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
@@ -148,8 +149,12 @@
   <url><loc>https://interndoor.com/us/locations/lowell</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/palm-bay</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/university-park</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/skydio-electrical-engineer-intern-fall-2026-4446350728</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/zipline-system-test-automation-intern-spring-2027-4455981388</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/zipline-supplier-industrialization-engineering-intern-summer-2027-4455779401</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/zipline-enterprise-systems-software-engineer-intern-summer-2027-4455982387</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/zipline-long-range-platform-hardware-engineering-intern-summer-2027-4455791255</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-automation-operations-improvement-4463858327</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-digital-information-technology-fall-2027-4455965680</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/phillips-66-2027-technical-intern-midstream-instrumentation-and-electrical-technic-4453407234</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
@@ -1084,7 +1089,6 @@
   <url><loc>https://interndoor.com/us/jobs/bosch-usa-chassis-control-intern-kettering-university-co-op-section-b-jan-mar-27-4459590048</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ge-vernova-ge-vernova-global-projects-transformation-intern-2027-4462086373</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/microsoft-data-science-internship-opportunities-redmond-ats-microsoft-india-united-states-united-kingdom-1970393556982897</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/skydio-electrical-engineer-intern-fall-2026-ats-ashby-skydio-9ac944bc-89da-44bb-bf9c-3b9922e7cbee</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/microsoft-data-science-phd-internship-opportunities-redmond-ats-microsoft-india-united-states-united-kingdom-1970393556982928</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/toast-summer-2027-engineering-intern-ats-greenhouse-toast-8171800</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/ibm-hardware-developer-intern-poughkeepsie-ny-2027-4459551866</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
@@ -2202,6 +2206,8 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/skydio</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/zipline</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/micron-technology</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/marathon-petroleum-corporation</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/phillips-66</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -2312,7 +2318,6 @@
   <url><loc>https://interndoor.com/us/companies/vanguard</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/nationwide</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/boston-scientific</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/zipline</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hitachi-digital-services</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/ericsson</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/moderna</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -2333,7 +2338,6 @@
   <url><loc>https://interndoor.com/us/companies/shield-ai</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/barclays</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/conocophillips</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/skydio</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/waymo</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/bmw-group</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/caterpillar-inc</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
