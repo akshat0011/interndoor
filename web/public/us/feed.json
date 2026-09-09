@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/onsemi-fall-2026-ai-and-data-analytics-intern-4463590647",
+      "url": "https://interndoor.com/us/jobs/onsemi-fall-2026-ai-and-data-analytics-intern-4463590647",
+      "title": "Fall 2026 - AI & Data Analytics Intern — onsemi",
+      "content_text": "Company: onsemi · Location: Scottsdale, AZ · Duration: Fall 2026\n• Design AI tool to resolve product ownership issues using data and logic\n• Work with Python, SQL, and data cleaning tools for prototype development\n• Collaborate with cross-functional teams to improve data governance and workflows",
+      "date_published": "2026-09-09T03:55:36.140Z",
+      "authors": [
+        {
+          "name": "onsemi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/applied-intuition-electrical-system-integration-engineer-new-grad-ats-ashby-applied-6b9a508b-359f-43c1-aa83-cabf55c3e03e",
+      "url": "https://interndoor.com/us/jobs/applied-intuition-electrical-system-integration-engineer-new-grad-ats-ashby-applied-6b9a508b-359f-43c1-aa83-cabf55c3e03e",
+      "title": "Electrical System Integration Engineer - New Grad — Applied Intuition",
+      "content_text": "Company: Applied Intuition · Location: Sunnyvale · Duration: Summer 2026\n• Design and build wire harnesses and HiL test benches for vehicle systems\n• Work with firmware and protocols like CAN, LIN, and Automotive Ethernet\n• Collaborate with OEMs and suppliers to validate electrical integration",
+      "date_published": "2026-09-09T03:48:42.896Z",
+      "authors": [
+        {
+          "name": "Applied Intuition"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-rf-electrical-engineer-intern-summer-2027-onsite-4463597406",
+      "url": "https://interndoor.com/us/jobs/raytheon-rf-electrical-engineer-intern-summer-2027-onsite-4463597406",
+      "title": "RF Electrical Engineer Intern (Summer 2027)(Onsite) — Raytheon",
+      "content_text": "Company: Raytheon · Location: El Segundo, CA · Duration: Summer 2027\n• Support firmware development and hardware integration for airborne radar systems\n• Use lab equipment and tools like MATLAB, HFSS, and oscilloscopes\n• Work with experienced engineers on real radar platforms",
+      "date_published": "2026-09-09T03:32:04.573Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-electrical-firmware-winter-spring-co-op-onsite-4463585559",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-electrical-firmware-winter-spring-co-op-onsite-4463585559",
+      "title": "Electrical Firmware (Winter/Spring Co-op)(Onsite) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA\n• Develop firmware for video, networking, and image processing devices\n• Use VHDL, Verilog, or SystemVerilog for RTL coding and simulation\n• Work on DO-254 DAL A certification and verification processes",
+      "date_published": "2026-09-09T03:31:45.531Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-fall-spring-2027-4463599302",
       "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-fall-spring-2027-4463599302",
       "title": "Software Engineering Co-op (Fall/Spring 2027) — Collins Aerospace",
@@ -14,6 +62,18 @@
       "authors": [
         {
           "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-digital-design-electrical-engineer-intern-summer-2027-onsite-4463598325",
+      "url": "https://interndoor.com/us/jobs/raytheon-digital-design-electrical-engineer-intern-summer-2027-onsite-4463598325",
+      "title": "Digital Design Electrical Engineer Intern (Summer 2027)(Onsite) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Tucson, AZ · Duration: Summer 2027\n• Design digital circuits for missile systems using FPGAs and ASICs\n• Work with software and sensors to integrate hardware systems\n• Test and debug digital designs in extreme environments",
+      "date_published": "2026-09-09T03:31:38.861Z",
+      "authors": [
+        {
+          "name": "Raytheon"
         }
       ]
     },
@@ -30,6 +90,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-2027-summer-fall-co-op-systems-engineer-avi-mil-fms-das-onsite-4463582623",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-2027-summer-fall-co-op-systems-engineer-avi-mil-fms-das-onsite-4463582623",
+      "title": "2027 Summer/Fall Co-Op - Systems Engineer - AVI MIL FMS/DAS (Onsite) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA\n• Design and test software for military flight systems\n• Use C, C++, ADA, and Python\n• Work with engineers on integrated systems",
+      "date_published": "2026-09-09T03:31:08.008Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/collins-aerospace-2027-spring-summer-co-op-systems-engineer-avi-mil-fms-onsite-4463586562",
       "url": "https://interndoor.com/us/jobs/collins-aerospace-2027-spring-summer-co-op-systems-engineer-avi-mil-fms-onsite-4463586562",
       "title": "2027 Spring/Summer Co-Op - Systems Engineer - AVI MIL FMS (Onsite) — Collins Aerospace",
@@ -38,6 +110,18 @@
       "authors": [
         {
           "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cboe-global-markets-linux-engineer-intern-4462561960",
+      "url": "https://interndoor.com/us/jobs/cboe-global-markets-linux-engineer-intern-4462561960",
+      "title": "Linux Engineer Intern — Cboe Global Markets",
+      "content_text": "Company: Cboe Global Markets · Location: Kansas City, MO\n• Support financial exchanges with Linux and Python\n• Optimize latency and troubleshoot technical issues\n• Collaborate on infrastructure upgrades and automation",
+      "date_published": "2026-09-09T03:10:35.798Z",
+      "authors": [
+        {
+          "name": "Cboe Global Markets"
         }
       ]
     },
@@ -515,90 +599,6 @@
       "title": "Data Science Intern — Coinbase",
       "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Build models and analyses that drive business decisions\n• Use sql and python for data pipelines and experiments\n• Work with senior data scientists on product impact projects",
       "date_published": "2026-09-08T22:24:10.964Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-analytics-engineer-intern-4464687799",
-      "url": "https://interndoor.com/us/jobs/coinbase-analytics-engineer-intern-4464687799",
-      "title": "Analytics Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Model data, build pipelines, deliver insights to product and analytics teams\n• Sql, python, generative ai tools, cross-functional collaboration\n• 12-week summer internship in san francisco with senior mentorship",
-      "date_published": "2026-09-08T22:24:10.189Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-machine-learning-engineer-intern-4464904405",
-      "url": "https://interndoor.com/us/jobs/coinbase-machine-learning-engineer-intern-4464904405",
-      "title": "Machine Learning Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Build and deploy ml models at production scale\n• Work with senior engineers on blockchain applications\n• Own end-to-end research projects with real-world impact",
-      "date_published": "2026-09-08T22:23:59.445Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-data-engineer-intern-4464909103",
-      "url": "https://interndoor.com/us/jobs/coinbase-data-engineer-intern-4464909103",
-      "title": "Data Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Build and maintain data pipelines for analytics and machine learning\n• Use python and cloud platforms like aws or gcp\n• Work with senior engineers on scalable data infrastructure",
-      "date_published": "2026-09-08T22:23:47.292Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-machine-learning-engineer-intern-ats-greenhouse-coinbase-8175441",
-      "url": "https://interndoor.com/us/jobs/coinbase-machine-learning-engineer-intern-ats-greenhouse-coinbase-8175441",
-      "title": "Machine Learning Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: Hybrid - San Francisco, CA · Duration: Summer 2027\n• Build and deploy ml models at production scale\n• Work with senior engineers on blockchain applications\n• Own end-to-end research projects with real-world impact",
-      "date_published": "2026-09-08T22:22:07.000Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-analytics-engineer-intern-ats-greenhouse-coinbase-8175471",
-      "url": "https://interndoor.com/us/jobs/coinbase-analytics-engineer-intern-ats-greenhouse-coinbase-8175471",
-      "title": "Analytics Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: Hybrid - San Francisco, CA · Duration: Summer 2027\n• Model data, build pipelines, and deliver insights to product and analytics teams\n• Use sql and generative ai to automate data workflows and ensure quality\n• Work in a fast-paced environment with mentorship from senior engineers",
-      "date_published": "2026-09-08T22:20:56.000Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-data-science-intern-ats-greenhouse-coinbase-8175462",
-      "url": "https://interndoor.com/us/jobs/coinbase-data-science-intern-ats-greenhouse-coinbase-8175462",
-      "title": "Data Science Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: Hybrid - San Francisco, CA · Duration: Summer 2027\n• Build models and analyses that drive business decisions\n• Use sql and python to create datasets and pipelines\n• Work with senior data scientists on complex business problems",
-      "date_published": "2026-09-08T22:20:03.000Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-data-engineer-intern-ats-greenhouse-coinbase-8175459",
-      "url": "https://interndoor.com/us/jobs/coinbase-data-engineer-intern-ats-greenhouse-coinbase-8175459",
-      "title": "Data Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: Hybrid - San Francisco, CA · Duration: Summer 2027\n• Build and maintain data pipelines for analytics and machine learning\n• Use python and cloud platforms like aws or gcp\n• Work with senior engineers on scalable data infrastructure",
-      "date_published": "2026-09-08T22:19:13.000Z",
       "authors": [
         {
           "name": "Coinbase"
