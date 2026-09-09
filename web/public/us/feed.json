@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-applied-machine-learning-enterprise-2026-star-4439549607",
+      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-applied-machine-learning-enterprise-2026-star-4439549607",
+      "title": "Software Engineer Intern (Applied Machine Learning-Enterprise) - 2026 Start (PhD) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build and maintain big model as a service platform for LLM applications\n• Work with PyTorch/TensorFlow, C++/Python/Go, and GPU resource management\n• Contribute to MaaS platform with offline training, online inference, and model orchestration",
+      "date_published": "2026-09-09T09:34:12.720Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/capital-one-current-phd-ai-engineering-internship-program-summer-2027-4464984847",
+      "url": "https://interndoor.com/us/jobs/capital-one-current-phd-ai-engineering-internship-program-summer-2027-4464984847",
+      "title": "Current PhD, AI Engineering Internship Program - Summer 2027 — Capital One",
+      "content_text": "Company: Capital One · Location: San Jose, CA · Duration: Summer 2027\n• Build agentic AI systems for customer experiences using AWS, PyTorch, and cutting-edge frameworks\n• Collaborate with scientists, PMs, and engineers on AI-native products impacting millions of users\n• Design and optimize AI infrastructure including guardrails, inference, and reinforcement learning",
+      "date_published": "2026-09-09T08:34:33.758Z",
+      "authors": [
+        {
+          "name": "Capital One"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nxp-semiconductors-edge-ai-field-application-engineer-intern-4465020071",
       "url": "https://interndoor.com/us/jobs/nxp-semiconductors-edge-ai-field-application-engineer-intern-4465020071",
       "title": "Edge AI Field Application Engineer Intern — NXP Semiconductors",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Dominion Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463576599",
-      "url": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-compliance-intern-summer-2027-4463576599",
-      "title": "Cyber Compliance Intern - Summer 2027 — RSM US LLP",
-      "content_text": "Company: RSM US LLP · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Assess cyber security risks and provide remediation guidance to clients\n• Work with ISO, NIST, CIS frameworks and compliance standards like GDPR\n• Support development of security governance programs and reporting tools",
-      "date_published": "2026-09-09T01:40:36.624Z",
-      "authors": [
-        {
-          "name": "RSM US LLP"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-testing-intern-summer-2027-4463582318",
-      "url": "https://interndoor.com/us/jobs/rsm-us-llp-cyber-testing-intern-summer-2027-4463582318",
-      "title": "Cyber Testing Intern - Summer 2027 — RSM US LLP",
-      "content_text": "Company: RSM US LLP · Location: Des Moines, IA · Duration: Summer 2027\n• Test networks, apps, and systems for security flaws using manual and automated tools\n• Analyze threats, ransomware, and data leaks across open and dark web sources\n• Work with CEH, CISSP, and CISA certified professionals on real client projects",
-      "date_published": "2026-09-09T01:20:22.548Z",
-      "authors": [
-        {
-          "name": "RSM US LLP"
         }
       ]
     }
