@@ -12,7 +12,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { writePages, CLOSED_ROLE_DAYS } from '../src/pages.js';
+import { writePages, writeSite, CLOSED_ROLE_DAYS } from '../src/pages.js';
 import { regionOf } from '../src/regions.js';
 
 let pass = 0, fail = 0;
@@ -196,6 +196,113 @@ console.log('\n== THE CLOSED STUB IS ALLOWED BY THE PRODUCTION CSP ==');
     /data-hub="https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
   check('and the meta refresh still names it too',
     /http-equiv="refresh" content="0; url=https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
+}
+
+/* ============================================================================
+   A DEMOTED POSTING'S URL ALSO GOES TO THE HUB — via `closable`, NOT `history`.
+
+   146 of the dead URLs Google holds belong to postings that were published,
+   indexed, and later demoted to is_tech = 0 by the classifier. They must not
+   enter `history`, because that is what a hub is BUILT from and it would put
+   non-engineering roles on an engineering board's hubs and move the indexable
+   bar. They travel in a second list used for exactly one decision: which hub a
+   dead job URL points at.
+   ============================================================================ */
+console.log('\n== A DEMOTED POSTING HANDS ITS URL OVER TOO ==');
+const DEMOTED = `${DIR}/us/jobs/acme-corp-product-manager-intern-9.html`;
+const demotedRow = { company: 'Acme Corp', id: '9', title: 'Product Manager Intern', roleLabel: 'x', postedAt: 0, skills: [] };
+{
+  reset();
+  // It is live and publishable first — that is how its page came to exist.
+  writePages([job(2, 'Surviving Intern'), job(9, 'Product Manager Intern')], DIR, HISTORY, { region: R });
+  check('the demoted role had a page to begin with', existsSync(DEMOTED), true);
+
+  // Now it is is_tech = 0: gone from the live set AND from history, present in closable.
+  const r = writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: R, closable: [demotedRow] });
+  check('its URL still resolves', existsSync(DEMOTED), true);
+  /* Read defensively. When this stub is missing the mutation under test has
+     already failed the line above, and a bare readFileSync would THROW — which
+     stops the whole `npm test` chain rather than failing one file (§1). */
+  const html = existsSync(DEMOTED) ? readFileSync(DEMOTED, 'utf8') : '';
+  check('it points at the employer hub', /data-hub="https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(html), true);
+  check('it names the employer, not the slug', html.includes('Acme Corp'), true);
+  check('NO JobPosting markup', /JobPosting/.test(html), false);
+  check('it is not counted as removed', r.removed, 0);
+  check('and is handed to the indexing queue as a redirect, not a deletion',
+    r.redirectUrls.some((u) => u.endsWith('/jobs/acme-corp-product-manager-intern-9')), true);
+  check('never offered to Google as an indexable job page',
+    r.indexUrls.some((u) => u.includes('product-manager')), false);
+
+  /* THE SEPARATION, AND IT IS THE WHOLE REASON closable IS NOT history. */
+  const hub = readFileSync(`${DIR}/us/companies/acme-corp.html`, 'utf8');
+  check('the demoted role does NOT appear on the hub', hub.includes('Product Manager Intern'), false);
+  const sitemap = readFileSync(`${DIR}/us/sitemap.xml`, 'utf8');
+  check('nor in the sitemap', sitemap.includes('product-manager-intern-9'), false);
+}
+
+/* WITHOUT closable IT IS A 404, WHICH IS THE MUTATION THAT MATTERS. Passing the
+   row in `history` instead would also make the stub appear — and would quietly
+   put it on the hub — so the check above is what tells the two apart. */
+{
+  reset();
+  writePages([job(2, 'Surviving Intern'), job(9, 'Product Manager Intern')], DIR, HISTORY, { region: R });
+  const r = writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: R });
+  check('a demoted role absent from closable is deleted outright', existsSync(DEMOTED), false);
+  check('and counted as removed', r.removed, 1);
+  check('and announced as a deletion',
+    r.removedUrls.some((u) => u.endsWith('/jobs/acme-corp-product-manager-intern-9')), true);
+}
+
+/* AN EMPLOYER WITH NO HUB GETS NO STUB, whichever list the row travels in.
+   The hub is the destination; without it the stub would point at a 404. */
+{
+  reset();
+  const ghost = { ...job(9, 'Product Manager Intern'), company: 'Ghost Employer' };
+  writePages([job(2, 'Surviving Intern'), ghost], DIR, HISTORY, { region: R });
+  const path = `${DIR}/us/jobs/ghost-employer-product-manager-intern-9.html`;
+  check('the ghost employer had a page', existsSync(path), true);
+  writePages([job(2, 'Surviving Intern')], DIR, HISTORY,
+    { region: R, closable: [{ ...demotedRow, company: 'Ghost Employer' }] });
+  check('no hub, so no stub — it 404s', existsSync(path), false);
+}
+
+/* ============================================================================
+   AND IT HAS TO SURVIVE writeSite, WHICH IS WHAT PRODUCTION ACTUALLY CALLS.
+
+   Every check above calls writePages directly. Dropping `closable` from
+   writeSite's per-region pass-through leaves all of them green while the
+   feature does nothing at all on the live site — measured by mutation, not
+   assumed. This is the §1 lesson about a guard that is only safe because of its
+   callers, met from the other side: the guard works, the caller stops feeding it.
+   ============================================================================ */
+console.log('\n== closable reaches writePages THROUGH writeSite ==');
+{
+  reset();
+  const jobsByRegion = new Map([['US', [job(2, 'Surviving Intern'), job(9, 'Product Manager Intern')]]]);
+  const historyByRegion = new Map([['US', HISTORY]]);
+  writeSite(jobsByRegion, DIR, historyByRegion, [R], {});
+  check('the demoted role had a page after a real writeSite', existsSync(DEMOTED), true);
+
+  const out = writeSite(new Map([['US', [job(2, 'Surviving Intern')]]]), DIR, historyByRegion, [R],
+    { closableByRegion: new Map([['US', [demotedRow]]]) });
+  check('writeSite hands closable down — the URL still resolves', existsSync(DEMOTED), true);
+  check('and reports it as a redirect, not a removal',
+    out.redirectUrls.some((u) => u.endsWith('/jobs/acme-corp-product-manager-intern-9')), true);
+  check('nothing was removed', out.removedUrls.some((u) => u.includes('product-manager')), false);
+}
+
+/* THE CALL SITE, PINNED AT SOURCE. closableFrom is a pure function with its own
+   tests, and writeSite is exercised above — but neither can see publish.js
+   folding the two lists together before it passes them, which would put demoted
+   roles on every hub. One line, and nothing else would fail. */
+{
+  const src = readFileSync(new URL('../src/publish.js', import.meta.url), 'utf8');
+  check('history is grouped from history alone',
+    /const historyByRegion = groupBy\(history\);/.test(src), true);
+  check('closable is grouped separately',
+    /const closableByRegion = groupBy\(closable\);/.test(src), true);
+  check('and writeSite is given both',
+    /closableByRegion \}\);/.test(src), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

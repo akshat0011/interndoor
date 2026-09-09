@@ -177,6 +177,45 @@ function fingerprint(text) {
    costs more than the absence, because URL instability burns crawl budget and
    suppresses the page." Hubs were made permanent on 18 Aug. Reposted roles were
    not, and they churn faster. */
+/**
+ * Where a DEMOTED posting's URL goes when its page stops being written.
+ *
+ * 146 of the dead job URLs Google still held on 9 Sep 2026 belonged to postings
+ * that were published, indexed, and later judged not-engineering by the
+ * classifier. 404ing them throws away a ranking for no gain, so they hand their
+ * URL to the employer's hub exactly as an expired role does — a stub naming no
+ * role and carrying no JobPosting markup.
+ *
+ * SEPARATE FROM `history` ON PURPOSE, and the separation is the whole design.
+ * History is what a company hub is BUILT from: its past roles, its skills, the
+ * bar that decides whether the hub is indexable at all. Putting these rows
+ * there would list non-engineering roles on an engineering board's hubs and
+ * move that bar. This list feeds exactly one decision in writePages — which hub
+ * a dead job URL points at — and nothing else reads it.
+ *
+ * EVERY OTHER GATE STILL APPLIES. A blocked employer, one that no longer
+ * matches the watchlist, or a region that is not published gets nothing: the
+ * blocklist stays the instrument for a URL that must never come back (§8).
+ * `suppressed_reason` deliberately does NOT exclude a row — it records why one
+ * posting was pulled, not that its address must stay dead, and all six reasons
+ * on record were an apply page that had 404'd or a role that was not software.
+ * If a posting is ever pulled for a reason that must kill the URL, block the
+ * employer; that is what the blocklist is for.
+ */
+export function closableFrom(tracked, cfg, wanted) {
+  return (tracked ?? [])
+    .filter(({ row, matchedNow, region }) => row.is_tech !== 1
+      && !isBlockedCompany(row.company)
+      && (!cfg?.matching?.requireCompanyMatch || matchedNow)
+      && wanted.has(region))
+    .map(({ row, matchedNow, region }) => ({
+      company: row.company || matchedNow || 'Unknown',
+      id: row.job_id,
+      title: row.title,
+      region,
+    }));
+}
+
 export function dedupePostings(jobs, superseded = null) {
   // ---- one posting, two collectors -----------------------------------------
   // The scraper and the ATS poller find the same role independently: a company
@@ -577,8 +616,9 @@ export async function writeJobsFile(store, cfg) {
   // Grouped on row.company, exactly as the live pages are — the display name on
   // the posting, NOT company_matched. Using the watchlist label here would slug
   // to a different URL and quietly fork every hub in two.
-  const history = store.recentJobs(0)
-    .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist), region: resolveRowRegion(row) }))
+  const tracked = store.recentJobs(0)
+    .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist), region: resolveRowRegion(row) }));
+  const history = tracked
     .filter(({ row, matchedNow, region }) => row.is_tech === 1
       && !isBlockedCompany(row.company)
       && (!cfg.matching?.requireCompanyMatch || matchedNow)
@@ -627,6 +667,9 @@ export async function writeJobsFile(store, cfg) {
   const jobsByRegion = groupBy(publicJobs);
   const historyByRegion = groupBy(history);
 
+  const closable = closableFrom(tracked, cfg, wanted);
+  const closableByRegion = groupBy(closable);
+
   const written = [];
   for (const region of regions) {
     const regionJobs = jobsByRegion.get(region.code) ?? [];
@@ -657,7 +700,7 @@ export async function writeJobsFile(store, cfg) {
      region's. */
   const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
   const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
-    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions), redirectsByRegion });
+    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions), redirectsByRegion, closableByRegion });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;

@@ -3792,7 +3792,7 @@ function groupByCanonicalCompany(rows, display) {
   return out;
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [] } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [] } = {}) {
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.
@@ -3954,8 +3954,17 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
    * function that wrote the filename, so this reproduces it rather than parsing
    * it back out.
    */
+  /* `closable` IS SEPARATE FROM `history` AND MUST STAY SEPARATE. History is
+     what a company hub is BUILT from — its past roles, its skills, whether it
+     is indexable at all — so it carries only rows that pass the site's gates.
+     `closable` carries the ones that do NOT: postings that were published,
+     indexed by Google, and later demoted to `is_tech = 0`. Their URLs are
+     still held by Google and still worth handing to the hub, but putting them
+     in `history` would list non-engineering roles on an engineering board's
+     hubs and change which hubs are indexable. Two inputs, one map, and only
+     this map — the one that decides where a dead URL points. */
   const hubForSlug = new Map();
-  for (const past of history ?? []) {
+  for (const past of [...(history ?? []), ...(closable ?? [])]) {
     if (!past?.company || !(past.id ?? past.job_id)) continue;
     let slug;
     try { slug = jobSlug({ company: past.company, title: past.title, id: past.id ?? past.job_id }); } catch { continue; }
@@ -4002,6 +4011,12 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
            point at a page that is itself about to be deleted. */
         const hub = hubForSlug.get(slug);
         if (hub && wanted.has(join(compDir, `${hub}.html`))) {
+          /* The DISPLAY name, read from `history` ALONE and deliberately not
+             widened to `closable`. A hub only exists when its employer is in
+             history — the line above requires the hub — so searching closable
+             as well is unreachable by construction. Tried, and mutation testing
+             confirmed no test could tell the difference; §1 says that is
+             surface, not coverage. */
           const company = (history ?? []).find((h) => companySlug(h.company ?? '') === hub)?.company ?? hub;
           writeFileSync(full, renderClosedRole(company, hub, region, closedOn));
           /* Treated like a dedupe stub by the indexing queue, NOT as a
@@ -4048,7 +4063,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map() } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map(), closableByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -4085,7 +4100,8 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       historyByRegion.get(region.code) ?? [],
       { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [],
         stats: statsByRegion.get(region.code) ?? {},
-        redirects: redirectsByRegion.get(region.code) ?? [] },
+        redirects: redirectsByRegion.get(region.code) ?? [],
+        closable: closableByRegion.get(region.code) ?? [] },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);

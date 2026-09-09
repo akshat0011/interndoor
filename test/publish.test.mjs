@@ -1,4 +1,8 @@
-import { dedupePostings } from '../src/publish.js';
+import { dedupePostings, closableFrom } from '../src/publish.js';
+/* isBlockedCompany reads a module-level list that ONLY loadConfig() fills, so
+   without this the blocklist assertion below tests an empty list and passes
+   against a removed gate. It did exactly that on the first run. */
+import { loadConfig } from '../src/config.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -175,6 +179,57 @@ sup = [];
 dedupePostings([], sup);
 check('an empty list supersedes nothing', sup.length, 0);
 check('and the out-param is optional', dedupePostings([repostOld, repostNew]).length, 1);
+
+/* ============================================================================
+   WHICH DEMOTED POSTINGS HAND THEIR URL TO A HUB.
+
+   `closableFrom` decides. It is separate from the history projection because
+   history is what a hub is BUILT from — putting non-engineering rows there
+   would list them on an engineering board's hubs and move the indexable bar.
+   This feeds exactly one decision: which hub a dead job URL points at.
+   ============================================================================ */
+console.log('\n== closableFrom keeps every gate except the tech one ==');
+{
+  const wanted = new Set(['IN', 'US']);
+  const cfg = { matching: { requireCompanyMatch: true } };
+  const r = (over = {}) => ({
+    row: { job_id: '1', company: 'Acme Corp', title: 'Product Intern', is_tech: 0, ...over.row },
+    matchedNow: 'Acme Corp', region: 'IN', ...over,
+  });
+  const names = (out) => out.map((x) => x.company);
+
+  check('a classifier-demoted row is closable', names(closableFrom([r()], cfg, wanted)), ['Acme Corp']);
+  check('a publishable row is NOT — it still has a real page',
+    closableFrom([r({ row: { job_id: '1', company: 'Acme Corp', title: 't', is_tech: 1 } })], cfg, wanted).length, 0);
+  check('an unclassified row IS closable — is_tech null is not 1',
+    closableFrom([r({ row: { job_id: '1', company: 'Acme Corp', title: 't', is_tech: null } })], cfg, wanted).length, 1);
+
+  /* THE GATES THAT MUST SURVIVE. A blocked employer is the one the blocklist
+     exists to keep off the site entirely (§8), so it may not even keep a
+     pointer. Read off the LIVE blocklist rather than a hardcoded name, so the
+     assertion cannot go stale the day that entry is edited. */
+  const live = loadConfig();
+  const blockedName = live.matching?.blocklist?.[0];
+  check('the live config still has a blocklist to test against', typeof blockedName, 'string');
+  check('a BLOCKED employer gets nothing',
+    closableFrom([r({ row: { job_id: '1', company: blockedName, title: 't', is_tech: 0 } })], cfg, wanted).length, 0);
+  check('an employer that no longer matches the watchlist gets nothing',
+    closableFrom([r({ matchedNow: null })], cfg, wanted).length, 0);
+  check('a region that is not published gets nothing',
+    closableFrom([r({ region: 'GB' })], cfg, wanted).length, 0);
+  check('unless the match is not required',
+    closableFrom([r({ matchedNow: null })], { matching: {} }, wanted).length, 1);
+
+  /* suppressed_reason deliberately does NOT gate this — see the doc comment.
+     Pinned so removing it is a decision somebody has to make on purpose. */
+  check('a hand-suppressed row is still closable',
+    closableFrom([r({ row: { job_id: '1', company: 'Acme Corp', title: 't', is_tech: 0, suppressed_reason: 'apply page 404s' } })], cfg, wanted).length, 1);
+
+  check('the projection carries id, title and region for the slug',
+    closableFrom([r()], cfg, wanted)[0], { company: 'Acme Corp', id: '1', title: 'Product Intern', region: 'IN' });
+  check('nothing in, nothing out', closableFrom([], cfg, wanted).length, 0);
+  check('undefined in, nothing out', closableFrom(undefined, cfg, wanted).length, 0);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
