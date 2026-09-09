@@ -46,12 +46,25 @@ console.log('\n== the US carries all three, at the asked-for values ==');
 {
   check('US is declared', !!us, true);
   check('hourly', us.intervalMinutes, 60);
-  check('20 pages', us.maxPages, 20);
+  /* Raised 20 -> 40 on 9 Sep 2026. 15% of healthy 2h-window walks were filling
+     the 20-page budget before exhausting the window, so anything past page 20 on
+     those runs went unread. The cap is a ceiling, not a target — the median walk
+     finishes in 8 pages and is untouched by this. */
+  check('40 pages', us.maxPages, 40);
+  /* It now EQUALS the global safety cap, so the US has no headroom beneath it.
+     Pinned so that going deeper is a deliberate two-part change rather than one
+     that silently does nothing. */
+  check('which is also the global ceiling', cfg.limits.maxPagesPerSearch, 40);
+  check('so the US effective cap is its own', pageCapFor(us, cfg.limits.maxPagesPerSearch), 40);
   check('5 openings per employer', us.maxOpensPerCompany, 5);
   check('stops on a page that is entirely 2h old', us.stopAfterPageOlderThanHours, 2);
   check('and it is running', us.enabled, true);
 
-  check('the page cap overrides the global one', pageCapFor(us, 40), 20);
+  /* The override still has to be observable now that the US's own cap and the
+     global one are both 40. Probe with a DIFFERENT global, or this asserts
+     nothing: the first version passed 40 and expected 20, and the day those two
+     numbers met it failed for the right reason. */
+  check('the page cap overrides the global one', pageCapFor(us, 99), 40);
   check('the open cap resolves', openCapFor(us), 5);
   const T = 1_780_000_000_000;
   check('the cutoff is two hours back', staleCutoffFor(us, T), T - 2 * 3_600_000);
