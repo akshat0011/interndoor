@@ -41,8 +41,8 @@
   <url><loc>https://interndoor.com/us/skills/asic</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/verilog</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/gcp</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/net</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/tensorflow</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/net</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/system-design</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/jenkins</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
@@ -70,19 +70,19 @@
   <url><loc>https://interndoor.com/us/skills/uvm</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/place-and-route</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/redis</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/scikit-learn</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/scala</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/scikit-learn</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/postgresql</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/cuda</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/dft</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/simulink</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/terraform</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mysql</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/numpy</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/numpy</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/oop</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mongodb</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/react-native</loc><lastmod>2026-09-03</lastmod><priority>0.6</priority></url>
@@ -150,6 +150,16 @@
   <url><loc>https://interndoor.com/us/locations/philadelphia</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/south-san-francisco</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/university-park</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-multi-cloud-cdn-data-platform-engineer-intern-global-engineering-cdn-2-4452600425</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-production-system-engineer-project-intern-server-devops-2027-start-4448138716</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-research-scientist-intern-multimodal-sensing-and-on-device-perception--4435840838</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/boeing-engineering-and-technology-innovation-graduate-researcher-program-adva-4463020658</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/boeing-boeing-engineering-and-technology-innovation-graduate-researcher-progr-4463013813</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/boeing-boeing-engineering-and-technology-innovation-graduate-researcher-progr-4463005717</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/boeing-boeing-engineering-and-technology-innovation-graduate-researcher-progr-4463011670</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/boeing-boeing-engineering-and-technology-innovation-graduate-researcher-progr-4463013815</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-machine-learning-engineer-project-intern-security-data-2026-start-bs-m-4435854231</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/bytedance-software-engineer-intern-ai-platform-2027-summer-4448867312</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/bytedance-software-engineer-intern-applied-machine-learning-enterprise-2026-star-4439549607</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/capital-one-current-phd-ai-engineering-internship-program-summer-2027-4464984847</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nxp-semiconductors-edge-ai-field-application-engineer-intern-4465020071</loc><lastmod>2026-09-09</lastmod><priority>0.8</priority></url>
@@ -2177,6 +2187,7 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/companies/bytedance</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/boeing</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/capital-one</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/nxp-semiconductors</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/microsoft</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -2428,7 +2439,6 @@
   <url><loc>https://interndoor.com/us/companies/procter-and-gamble</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/exxonmobil</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/voleon-group</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/boeing</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/jump-trading</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/navi</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/langchain</loc><lastmod>2026-08-17</lastmod><priority>0.6</priority></url>
