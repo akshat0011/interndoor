@@ -100,3 +100,84 @@ export function pageAgeSummary(cards, parse, now = Date.now()) {
     oldest: Math.max(...ages),
   };
 }
+
+/**
+ * What a finished walk may record as the region's new baseline.
+ *
+ * Returns epoch ms to store, or `null` to leave the baseline exactly where it
+ * is. `sweep_ok_at` is a HIGH-WATER MARK OF COMPLETE COVERAGE — "everything
+ * posted before this has been seen" — which is why `resolveWindowHours` can
+ * size the next window off it. Anything recorded here has to keep that true.
+ *
+ * THE PAGE CAP WAS THE ONE WALK ENDING THAT RECORDED NOTHING, AND THAT IS WHAT
+ * FROZE THE US BASELINE FOR 19 HOURS ON 8 SEP 2026. `src/index.js` has four
+ * ways out of the page loop — no Next button, a short page with no pager, the
+ * covered-ground stop and the all-cards-older stop — and all four set
+ * `walkComplete`. Reaching `maxPages` set nothing, so `markRegionSweep` was
+ * never called, so the window stretched on the next run, so 20 pages were even
+ * less likely to reach the end. Positive feedback, and neither early stop can
+ * break it: the covered-ground stop compares against a baseline that is by then
+ * hours stale so every page reads as fresh, and the all-older stop needs EVERY
+ * card on a page to be old while LinkedIn's `sortBy=DD` is loose enough to put
+ * a 0.1h card on page 20 beside a 3.0h one.
+ *
+ * RECORDING THE SEARCH'S START ON A CAPPED WALK IS THE OBVIOUS WRONG FIX. It
+ * claims the whole window including the pages the cap stopped us reading, and
+ * puts everything past page 20 behind the next run's horizon where nothing
+ * would look at it again — the precise silent hole `markRegionSweep` already
+ * refuses to create when it stores the search's start rather than `Date.now()`.
+ *
+ * SO A CAPPED WALK HAS TO PROVE CONTIGUITY, NOT DEPTH. It saw everything from
+ * the oldest card it read up to now. The previous baseline says everything
+ * before then was already seen. Those two only join into "everything before now
+ * has been seen" if the walk reached BACK PAST the previous baseline:
+ *
+ *   oldestSeenAt <= previousBaseline   ->  contiguous, record searchStartedAt
+ *   oldestSeenAt >  previousBaseline   ->  a hole between them, record nothing
+ *
+ * In steady state that is self-sustaining and cheap: an hourly search reading
+ * ~3h deep overlaps the previous walk's start by two hours every time, so the
+ * baseline advances every run and the window stays at `minWindowHours`.
+ *
+ * THE SECOND BRANCH IS THE OLD FROZEN BEHAVIOUR, KEPT DELIBERATELY, FOR THE ONE
+ * CASE THAT WARRANTS IT. If a region's supply ever densifies until 20 pages no
+ * longer span the interval, the walk stops overlapping and there is a real gap.
+ * Leaving the baseline put keeps the window wide and — because `isSearchDue`
+ * reads the same baseline — keeps the search running every tick until it
+ * catches up. That is the correct escalation; it was only ever wrong as the
+ * response to a walk that WAS keeping up.
+ *
+ * @param {object}      o
+ * @param {boolean}     o.endedOnOwnCap    stopped on the search's OWN maxPages, not the global cap
+ * @param {number}      o.searchStartedAt  epoch ms this search began
+ * @param {number|null} o.oldestSeenAt     epoch ms of the oldest dateable card read
+ * @param {number|null} o.previousBaseline epoch ms this region was last swept to
+ */
+export function sweepBaselineFor({
+  endedOnOwnCap = false,
+  searchStartedAt = 0,
+  oldestSeenAt = null,
+  previousBaseline = null,
+} = {}) {
+  if (!Number.isFinite(searchStartedAt) || searchStartedAt <= 0) return null;
+
+  // A walk that reached a real end read its whole window, so the window's own
+  // start is the honest mark — unchanged from before this function existed.
+  if (!endedOnOwnCap) return searchStartedAt;
+
+  // A region never swept has no previous coverage to join onto, so a capped
+  // walk cannot establish the high-water mark at all. Leaving it null keeps the
+  // full window and no early stop, which is what a first sweep wants anyway.
+  if (!Number.isFinite(previousBaseline) || previousBaseline <= 0) return null;
+
+  // Nothing dateable on the whole walk means no claim can be made. An
+  // undateable card counts as FRESH everywhere else in this module, but "fresh"
+  // is the safe reading for whether to keep PAGING and the unsafe one for how
+  // far back we got, so here it earns no coverage.
+  if (!Number.isFinite(oldestSeenAt) || oldestSeenAt <= 0) return null;
+
+  // Did not reach back past the last sweep: there is a hole between the two.
+  if (oldestSeenAt > previousBaseline) return null;
+
+  return searchStartedAt;
+}

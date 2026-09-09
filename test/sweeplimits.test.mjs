@@ -8,8 +8,9 @@
  * constraint the US half is allowed to exist under, and every assertion here
  * that names India is pinning a promise rather than an implementation detail.
  */
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan } from '../src/sweeplimits.js';
+import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, sweepBaselineFor } from '../src/sweeplimits.js';
 import { parseRelativeTime } from '../src/extract.js';
+import { readFileSync } from 'node:fs';
 import { loadConfig } from '../src/config.js';
 
 let pass = 0, fail = 0;
@@ -163,6 +164,132 @@ console.log('\n== src/index.js actually applies all three ==');
      you only hear about when it misbehaves is one nobody notices. */
   check('the employer cap reports itself either way',
     /no employer reached \$\{openCap\} openings/.test(src), true);
+}
+
+/* ============================================================================
+   WHAT A WALK MAY RECORD AS THE BASELINE — the 8 Sep 2026 US freeze.
+
+   sweep_ok_at is a HIGH-WATER MARK OF COMPLETE COVERAGE. The bug was that
+   hitting the page cap recorded nothing at all, so the baseline froze, the
+   window grew every run, and neither early stop could ever fire again. The fix
+   is not "record the start on a cap" — that claims pages the cap stopped us
+   reading. It is: a capped walk records the start ONLY if it reached back past
+   the previous baseline, so the two stretches join with no hole between them.
+   ============================================================================ */
+{
+  const HOUR = 3_600_000;
+  const S = 1_800_000_000_000;                 // this search's start
+  const back = (h) => S - h * HOUR;
+
+  // A walk that reached a real end read its whole window.
+  check('a completed walk records the search start',
+    sweepBaselineFor({ endedOnOwnCap: false, searchStartedAt: S, oldestSeenAt: back(3), previousBaseline: back(1) }), S);
+  check('a completed walk records it even with nothing dateable',
+    sweepBaselineFor({ endedOnOwnCap: false, searchStartedAt: S, oldestSeenAt: null, previousBaseline: back(1) }), S);
+  check('a completed walk records it even on a never-swept region',
+    sweepBaselineFor({ endedOnOwnCap: false, searchStartedAt: S, oldestSeenAt: back(3), previousBaseline: null }), S);
+
+  /* THE STEADY STATE THIS FIX EXISTS TO PRODUCE. Hourly search, 20 pages reach
+     ~3h deep, previous sweep an hour ago: the walk overlaps it by two hours, so
+     coverage is contiguous and the baseline advances. */
+  check('a capped walk that reached back past the last sweep records the start',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: back(3), previousBaseline: back(1) }), S);
+
+  /* THE REGRESSION ITSELF. 9 Sep 2026 measured: baseline 19h stale, page 20's
+     oldest card 3.0h old. The walk does NOT meet the last sweep, so there is a
+     16h hole and the baseline must not move over it. This is the case the old
+     code got right by accident and the naive fix would get wrong. */
+  check('a capped walk that did NOT reach the last sweep records nothing',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: back(3), previousBaseline: back(19) }), null);
+
+  // Exactly meeting the last sweep is contiguous — there is no gap at a point.
+  check('reaching back exactly to the last sweep is contiguous',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: back(1), previousBaseline: back(1) }), S);
+  check('one millisecond short of it is not',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: back(1) + 1, previousBaseline: back(1) }), null);
+
+  /* An undateable card counts as FRESH everywhere else in this module, because
+     that is the safe reading for whether to keep paging. It is the UNSAFE
+     reading for how far back we got, so a capped walk with nothing dateable
+     claims nothing. */
+  check('a capped walk with nothing dateable records nothing',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: null, previousBaseline: back(1) }), null);
+  /* A NEVER-SWEPT REGION, IN ALL THREE SHAPES IT CAN ARRIVE IN. `null` alone
+     does not test the guard — it coerces to 0, so the contiguity comparison
+     below happens to return null anyway. `undefined` is the one that bites,
+     because `x > undefined` is false and the walk would sail through. */
+  for (const [what, prev] of [['null', null], ['undefined', undefined], ['NaN', NaN], ['zero', 0]]) {
+    check(`a capped walk on a never-swept region (${what}) records nothing`,
+      sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: back(3), previousBaseline: prev }), null);
+  }
+  // A future-dated card earns no coverage, and the success path returns the
+  // search's own start, so nothing can ever be claimed past it.
+  check('a future-dated card records nothing',
+    sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: S, oldestSeenAt: S + HOUR, previousBaseline: back(1) }), null);
+
+  // Junk in must not wedge a region's baseline to a nonsense value.
+  check('no search start, no claim', sweepBaselineFor({ endedOnOwnCap: false, searchStartedAt: 0 }), null);
+  check('called with nothing at all', sweepBaselineFor(), null);
+
+  /* THE RUNAWAY, SIMULATED. Before the fix a capped walk recorded nothing, so
+     the gap grew by the interval every run and resolveWindowHours stretched
+     with it. After it, an hourly search reading 3h deep pins the gap at the
+     interval forever. Asserting the SHAPE, not one number. */
+  let baseline = back(1), stuck = 0;
+  for (let run = 1; run <= 12; run++) {
+    const start = S + run * HOUR;
+    const mark = sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: start, oldestSeenAt: start - 3 * HOUR, previousBaseline: baseline });
+    if (mark === null) stuck++; else baseline = mark;
+  }
+  check('twelve hourly capped walks never once fail to advance', stuck, 0);
+  check('and the gap stays one interval, not twelve', (S + 12 * HOUR - baseline) / HOUR, 0);
+
+  /* AND THE ESCALATION IS KEPT. If supply ever densifies until 20 pages no
+     longer span the interval, the walk stops overlapping, the baseline freezes
+     on purpose, and the window keeps covering the gap. */
+  let dense = back(1), advanced = 0;
+  for (let run = 1; run <= 6; run++) {
+    const start = S + run * HOUR;
+    const mark = sweepBaselineFor({ endedOnOwnCap: true, searchStartedAt: start, oldestSeenAt: start - 0.5 * HOUR, previousBaseline: dense });
+    if (mark !== null) { advanced++; dense = mark; }
+  }
+  check('a search that stops keeping up refuses the baseline every time', advanced, 0);
+}
+
+/* THE WIRING. The function above is only worth anything if index.js actually
+   uses it, and this project has shipped a guard that ran on zero of every open
+   ever performed. Assert the PAIRING each time, never the presence. */
+{
+  const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  check('index.js imports it', /import \{[^}]*sweepBaselineFor[^}]*\} from '\.\/sweeplimits\.js';/.test(src), true);
+  /* INDIA CANNOT REACH THIS PATH AT ALL, which is the promise the whole file
+     exists to pin. It sets no maxPages, so `Number(search.maxPages) > 0` is
+     false, cappedOnOwnLimit is never set, and its walk still has to end on
+     LinkedIn's own Next control. Read off the live config, not a fixture. */
+  check('India sets no maxPages, so it can never end on its OWN cap', Number(india.maxPages) > 0, false);
+  check('and the US does', Number(us.maxPages) > 0, true);
+  check('the own-cap branch marks itself',
+    /Reached this search's own \$\{pageCap\}-page limit[\s\S]{0,120}?cappedOnOwnLimit = true;/.test(src), true);
+  check('and the GLOBAL cap branch does NOT',
+    /Hit the \$\{pageCap\}-page cap[\s\S]{0,200}?cappedOnOwnLimit = true;/.test(src), false);
+  /* PIN THE COMPARISON, NOT THE ASSIGNMENT. The first version of this matched
+     `if (false) oldestSeenAt = at;` perfectly happily — the mutation that
+     removes tracking entirely left every word the regex was looking for in
+     place. §1's regex-matches-the-thing-it-is-searching-for, again. */
+  check('the oldest card is tracked off every page',
+    /for \(const c of cards\) \{[\s\S]{0,200}?parseRelativeTime\(c\.postedText\)[\s\S]{0,120}?at < oldestSeenAt\)\) oldestSeenAt = at;/.test(src), true);
+  /* The mutation that matters: markRegionSweep taking searchStartedAt again
+     would restore the silent hole, and every other assertion here would pass. */
+  check('markRegionSweep is given the computed mark, not the search start',
+    /store\.markRegionSweep\(region, sweepMark\);/.test(src), true);
+  check('and never the raw start',
+    /store\.markRegionSweep\(region, searchStartedAt\);/.test(src), false);
+  check('a capped walk is treated as an end',
+    /const reachedEnd = walkComplete \|\| cappedOnOwnLimit;/.test(src), true);
+  check('the sweep is still gated on the render floor',
+    /reachedEnd && rendered && sweepMark/.test(src), true);
+  check('falling behind warns rather than passing silently',
+    /baseline unchanged, it is falling behind/.test(src), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

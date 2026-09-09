@@ -23,7 +23,7 @@ import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary } from './sweeplimits.js';
+import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -708,13 +708,23 @@ async function main() {
       let coveredPages = 0;
       // Whether pagination reached a real end — LinkedIn said there was no
       // next page, the results ran out, or the walk caught up with ground an
-      // earlier sweep already covered. Only then may this region's baseline
-      // move forward. A walk cut short by a failed navigation or by the page
-      // cap has NOT covered its window, and recording it as swept would put
+      // earlier sweep already covered. A walk cut short by a failed navigation
+      // has NOT covered its window, and recording it as swept would put
       // everything it never paginated to behind the next run's horizon, where
       // nothing would ever look at it again. Same reasoning as lastFullSweep
       // restricting itself to 'ok'.
+      //
+      // A SEARCH'S OWN PAGE CAP IS TRACKED SEPARATELY AND IS NOT THE SAME CASE.
+      // It used to fall in here, which is what froze the US baseline for 19
+      // hours on 8 Sep 2026 — see sweepBaselineFor, which decides whether a
+      // capped walk covered enough ground to join onto the last sweep.
       let walkComplete = false;
+      // Did the loop end because this search reached the cap IT set, rather
+      // than the global safety cap? Only the former can record a sweep.
+      let cappedOnOwnLimit = false;
+      // The oldest card this walk actually read, across every page. It is what
+      // proves a capped walk reached back far enough to overlap the last one.
+      let oldestSeenAt = null;
       // Whether any page of THIS search has rendered cards. Once one has, an
       // empty page is the end of the results rather than a selector break —
       // see assertListRendered.
@@ -1191,6 +1201,17 @@ async function main() {
 
         log.info(`Page ${pageIndex + 1} done — opened ${openedOnThisPage} of ${cards.length} cards.`);
 
+        /* HOW FAR BACK THIS WALK HAS GOT, tracked on every page whether or not
+           any stop rule is on. Only dateable cards count: parseRelativeTime
+           returns null for a promoted card or a stamp LinkedIn reworded, and
+           those earn no coverage claim (sweepBaselineFor says why). Taken as a
+           MINIMUM over the whole walk rather than off the last page, because
+           `sortBy=DD` is loose enough to put a 0.1h card on page 20. */
+        for (const c of cards) {
+          const at = parseRelativeTime(c.postedText);
+          if (at && (oldestSeenAt === null || at < oldestSeenAt)) oldestSeenAt = at;
+        }
+
         // Results are date-descending, so once a whole page carries nothing
         // newer than the last sweep covered, everything past it is older still.
         // A card whose posted text will not parse counts as fresh — the same
@@ -1254,6 +1275,7 @@ async function main() {
              safety limit nothing is supposed to reach. */
           if (Number(search.maxPages) > 0) {
             log.info(`Reached this search's own ${pageCap}-page limit for "${label}".`);
+            cappedOnOwnLimit = true;
           } else {
             notes.push(`Stopped at the ${pageCap}-page cap for "${label}", and LinkedIn still had a Next page. Raise this search's maxPages, or limits.maxPagesPerSearch, to go deeper.`);
             log.warn(`Hit the ${pageCap}-page cap for "${label}" with more pages still available.`);
@@ -1286,9 +1308,39 @@ async function main() {
       const cardsHere = counters.cardsSeen - before.cards;
       const rendered = pagesHere > 0 && cardsHere / pagesHere >= CARDS_PER_PAGE_FLOOR;
 
-      if (!DRY_RUN && walkComplete && rendered) {
-        store.markRegionSweep(region, searchStartedAt);
+      /* WHAT THIS WALK MAY CLAIM. Two questions, deliberately separate: did the
+         list render at all (the floor above, which a degraded session fails),
+         and did the ground covered join onto the last sweep (sweepBaselineFor).
+         A capped walk can pass the first and fail the second, and that pairing
+         is the whole fix — see sweeplimits.js. */
+      const reachedEnd = walkComplete || cappedOnOwnLimit;
+      const sweepMark = reachedEnd
+        ? sweepBaselineFor({
+            endedOnOwnCap: cappedOnOwnLimit,
+            searchStartedAt,
+            oldestSeenAt,
+            previousBaseline: baseline,
+          })
+        : null;
+
+      if (!DRY_RUN && reachedEnd && rendered && sweepMark) {
+        store.markRegionSweep(region, sweepMark);
         log.ok(`${region} swept — ${cardsHere} cards across ${pagesHere} page(s).`);
+      } else if (!DRY_RUN && reachedEnd && rendered && cappedOnOwnLimit) {
+        /* THE SEARCH IS NO LONGER KEEPING UP WITH ITS REGION. It filled its page
+           budget without reaching back to where the last sweep ended, so there
+           is a gap between the two and the baseline must not move over it. That
+           keeps the window wide and, because isSearchDue reads the same
+           baseline, keeps this search running every tick until it catches up.
+           Warned rather than silent: before 9 Sep 2026 this was the ONLY
+           behaviour and it was invisible — every run still logged 'ok'. */
+        const reach = oldestSeenAt ? `${((searchStartedAt - oldestSeenAt) / 3_600_000).toFixed(1)}h` : 'nothing dateable';
+        notes.push(
+          `The ${region} search filled its ${pageCap}-page budget and only reached back ${reach}, ` +
+          'which does not meet the last sweep — its baseline was left where it was so the next run re-covers the gap. ' +
+          'Raise this search\'s maxPages, or shorten its intervalMinutes, if it keeps happening.',
+        );
+        log.warn(`${region} capped at ${pageCap} pages having reached back only ${reach} — baseline unchanged, it is falling behind.`);
       } else if (!DRY_RUN && pagesHere > 0 && !rendered) {
         status = 'partial';
         notes.push(
@@ -1297,7 +1349,7 @@ async function main() {
           'The LinkedIn session is the usual cause; check it with `npm run login`.',
         );
         log.warn(`${region} did not render (${cardsHere} cards / ${pagesHere} pages) — baseline unchanged.`);
-      } else if (!DRY_RUN && !walkComplete) {
+      } else if (!DRY_RUN && !reachedEnd) {
         log.info(`${region} did not finish its walk — baseline unchanged, next run re-covers the window.`);
       }
 
