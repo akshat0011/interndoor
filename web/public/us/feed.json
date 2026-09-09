@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/constellation-summer-2027-operations-engineering-internship-delta-pa-4464967770",
+      "url": "https://interndoor.com/us/jobs/constellation-summer-2027-operations-engineering-internship-delta-pa-4464967770",
+      "title": "Summer 2027 Operations Engineering Internship - Delta, PA — Constellation",
+      "content_text": "Company: Constellation · Location: Delta, PA · Duration: 10 weeks\n• Support nuclear plant systems with hands-on engineering projects\n• Use tools like AutoCAD, MATLAB, and Python for analysis\n• Work on real-world projects with technical mentors in Delta, PA",
+      "date_published": "2026-09-09T04:40:29.435Z",
+      "authors": [
+        {
+          "name": "Constellation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463595888",
+      "url": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463595888",
+      "title": "Building Automation Systems Specialist Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Houston, TX\n• Install and service HVAC systems in commercial buildings\n• Use laptops, tablets, and hand tools for troubleshooting\n• Work onsite with technicians and customers in Houston",
+      "date_published": "2026-09-09T04:31:19.648Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463806075",
+      "url": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4463806075",
+      "title": "Building Automation Systems Specialist Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Harleysville, PA\n• Assist in installing, programming, and servicing HVAC automation systems\n• Use laptops, tablets, and hand tools to troubleshoot building controls\n• Work onsite with technicians and customers in commercial buildings",
+      "date_published": "2026-09-09T04:31:10.639Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/onsemi-fall-2026-ai-and-data-analytics-intern-4463590647",
       "url": "https://interndoor.com/us/jobs/onsemi-fall-2026-ai-and-data-analytics-intern-4463590647",
       "title": "Fall 2026 - AI & Data Analytics Intern — onsemi",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Constellation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abb-application-engineering-intern-summer-2027-4464687929",
-      "url": "https://interndoor.com/us/jobs/abb-application-engineering-intern-summer-2027-4464687929",
-      "title": "Application Engineering Intern - Summer 2027 — ABB",
-      "content_text": "Company: ABB · Location: Alpharetta, GA · Duration: Summer 2027\n• Support automation systems development and testing\n• Collaborate with teams on project coordination and execution\n• Assist in technical sales demos and documentation creation",
-      "date_published": "2026-09-08T22:39:47.865Z",
-      "authors": [
-        {
-          "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-software-engineer-intern-4464902436",
-      "url": "https://interndoor.com/us/jobs/coinbase-software-engineer-intern-4464902436",
-      "title": "Software Engineer Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Write production-ready code that impacts millions of users\n• Work on blockchain and web-scale applications with real-world impact\n• Collaborate with engineers, designers, and product managers\n• Choose between San Francisco or New York teams",
-      "date_published": "2026-09-08T22:24:25.124Z",
-      "authors": [
-        {
-          "name": "Coinbase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/coinbase-data-science-intern-4464900528",
-      "url": "https://interndoor.com/us/jobs/coinbase-data-science-intern-4464900528",
-      "title": "Data Science Intern — Coinbase",
-      "content_text": "Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027\n• Build models and analyses that drive business decisions\n• Use sql and python for data pipelines and experiments\n• Work with senior data scientists on product impact projects",
-      "date_published": "2026-09-08T22:24:10.964Z",
-      "authors": [
-        {
-          "name": "Coinbase"
         }
       ]
     }
