@@ -3664,17 +3664,34 @@ const CLOSED_MARK = 'data-closed-on="';
  * NO JobPosting markup, which is the whole safety argument — the role is gone,
  * so the page must stop describing one. That is Google's own documented
  * remedy for an expired posting.
+ *
+ * THE SCRIPT READS ITS TARGET OUT OF THE DOM, AND THAT IS NOT A STYLE CHOICE.
+ * Production CSP is `script-src 'self'` plus sha256 hashes with no
+ * 'unsafe-inline' (§5), so an inline script only runs if its EXACT BYTES are
+ * allowlisted in web/vercel.json. The first version interpolated the hub URL
+ * straight into the script, which gives every stub a different hash: measured
+ * 9 Sep 2026 over the 16 stubs then on disk, 14 distinct hashes and not one of
+ * them allowlisted, so the script was blocked on every single one. Confirmed
+ * live rather than reasoned about — `script-src-elem`, blockedURI `inline`.
+ *
+ * `renderJobRedirect` below had this right all along: it reads the canonical
+ * out of the head so its bytes never vary, which is why its ONE hash covers
+ * all 244 of its stubs. This does the same through a data attribute, because a
+ * closed stub deliberately has no canonical to read. The redirect still worked
+ * throughout — the meta refresh does the actual work and the script is only
+ * there to carry `location.search` across, so an old Telegram or reel link's
+ * UTM tags reach the hub instead of being dropped (§12).
  */
 function renderClosedRole(company, hubSlug, region, closedOn) {
   const url = regionUrl(`/companies/${hubSlug}`, region);
   return `<!doctype html>
-<html lang="${esc(region.lang ?? 'en')}" ${CLOSED_MARK}${esc(closedOn)}">
+<html lang="${esc(region.lang ?? 'en')}" ${CLOSED_MARK}${esc(closedOn)}" data-hub="${esc(url)}">
 <head>
 <meta charset="utf-8">
 <title>This role has closed — ${esc(company)} — InternDoor</title>
 <meta http-equiv="refresh" content="0; url=${esc(url)}">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>location.replace(${JSON.stringify(url)} + location.search);</script>
+<script>var h=document.documentElement.dataset.hub;if(h)location.replace(h+location.search);</script>
 </head>
 <body>
 <p>This ${esc(company)} posting has closed.

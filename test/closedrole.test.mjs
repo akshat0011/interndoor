@@ -11,6 +11,7 @@
  * domain (§10). What changed is only what the URL does afterwards.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { writePages, CLOSED_ROLE_DAYS } from '../src/pages.js';
 import { regionOf } from '../src/regions.js';
 
@@ -136,6 +137,65 @@ console.log('\n== A STUB IS NOT A LISTING ==');
   check('the crawlable block does not link it', home.includes('acme-corp-expiring-intern-1'), false);
 
   rmSync(DIR, { recursive: true, force: true });
+}
+
+/* ============================================================================
+   THE STUB'S INLINE SCRIPT MUST BE ALLOWED BY THE PRODUCTION CSP.
+
+   This is the assertion whose absence let a broken stub ship. Every other check
+   in this file passed while the script was blocked on all 16 live stubs, because
+   nothing here ever hashed it. `script-src 'self'` plus sha256 hashes and no
+   'unsafe-inline' means an inline script runs only if its EXACT BYTES are in
+   web/vercel.json — and NO LOCAL SERVER SENDS THE HEADER, so a violation is
+   invisible in every preview (§5).
+
+   The first version interpolated the hub URL into the script, so every stub had
+   a different hash and none could ever be allowlisted. That is why the second
+   check below — two DIFFERENT employers producing the SAME hash — is the one
+   that matters: it pins constant bytes, which is the only property that makes a
+   single allowlist entry possible at all.
+   ============================================================================ */
+console.log('\n== THE CLOSED STUB IS ALLOWED BY THE PRODUCTION CSP ==');
+{
+  const csp = readFileSync(new URL('../web/vercel.json', import.meta.url), 'utf8');
+  const scriptsIn = (html) => [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+  const hash = (body) => `sha256-${createHash('sha256').update(body, 'utf8').digest('base64')}`;
+
+  const stubFor = (company, id) => {
+    reset();
+    const j = { ...job(id, 'Expiring Intern'), company };
+    writePages([j, job(2, 'Surviving Intern')], DIR, [
+      { company, id: String(id), title: 'Expiring Intern', roleLabel: 'x', postedAt: 0, skills: [] },
+      ...HISTORY.slice(1),
+    ], { region: R });
+    const path = `${DIR}/us/jobs/${company.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-expiring-intern-${id}.html`;
+    writePages([job(2, 'Surviving Intern')], DIR, [
+      { company, id: String(id), title: 'Expiring Intern', roleLabel: 'x', postedAt: 0, skills: [] },
+      ...HISTORY.slice(1),
+    ], { region: R });
+    return readFileSync(path, 'utf8');
+  };
+
+  const a = stubFor('Acme Corp', 1);
+  const bodies = scriptsIn(a);
+  check('the stub carries exactly one inline script', bodies.length, 1);
+  check('and the CSP allows it', csp.includes(hash(bodies[0])), true);
+
+  /* THE MUTATION THAT MATTERS. Put the URL back in the script body and these
+     two hashes diverge, so one allowlist entry can never cover both. */
+  const b = stubFor('Globex Industries', 3);
+  const bodiesB = scriptsIn(b);
+  check('a different employer yields a different page', a !== b, true);
+  check('but the SAME script hash — the bytes do not vary', hash(bodiesB[0]), hash(bodies[0]));
+  check('and that one hash is the allowlisted one', csp.includes(hash(bodiesB[0])), true);
+
+  /* The target has to survive somewhere the script can reach without being
+     interpolated into it, or the constant-bytes trick silently redirects
+     nowhere. Both stubs must name their own hub. */
+  check('the hub is carried in the markup for the script to read',
+    /data-hub="https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
+  check('and the meta refresh still names it too',
+    /http-equiv="refresh" content="0; url=https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
