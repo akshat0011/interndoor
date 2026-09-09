@@ -23,6 +23,11 @@ candidates.json
 
 # Local editor/tooling config. Never published.
 .claude/
+# Serena's project config and claude-token-guard's ignore file. These were the
+# only untracked paths NOTHING ignored, so the never-`git add .` rule was the
+# single thing keeping them out of a public repo. Closed 9 Sep 2026.
+.serena/
+.claudeignore
 
 # Study notes. Kept locally, never published.
 book/
