@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/stonex-group-inc-apprentice-data-engineer-4463910024",
+      "url": "https://interndoor.com/jobs/stonex-group-inc-apprentice-data-engineer-4463910024",
+      "title": "Apprentice - Data Engineer — StoneX Group Inc.",
+      "content_text": "Company: StoneX Group Inc. · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build compliance dashboards with Power BI and DAX\n• Automate reporting with Power Automate and SharePoint\n• Support AI tools for compliance and regulatory tasks",
+      "date_published": "2026-09-10T16:06:09.970Z",
+      "authors": [
+        {
+          "name": "StoneX Group Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/msd-information-technology-intern-4465699293",
       "url": "https://interndoor.com/jobs/msd-information-technology-intern-4465699293",
       "title": "Information Technology Intern — MSD",
@@ -146,6 +158,18 @@
       "authors": [
         {
           "name": "F5"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-ats-workday-iqvia-wd1-iqvia-r1565428",
+      "url": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-ats-workday-iqvia-wd1-iqvia-r1565428",
+      "title": "Product Sppt Trainee — IQVIA",
+      "content_text": "Company: IQVIA · Location: Kochi, India · Duration: 0-1 years\n• Fix production issues and resolve system errors in mainframe environments\n• Use jcl, cobol, esp, rexx for process automation and reporting\n• Support 24x7 production with root cause analysis and abend resolution",
+      "date_published": "2026-09-10T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "IQVIA"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464388899",
-      "url": "https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464388899",
-      "title": "Information Security Associate Internship in Pune, Bangalore (Hybrid) — TeamLease Regtech Pvt. Ltd.",
-      "content_text": "Company: TeamLease Regtech Pvt. Ltd. · Location: Pune Division, Maharashtra, India\n• Support compliance audits and documentation for ISO 27001, SOC 2, and NIST\n• Work with GRC tools and security dashboards for risk assessments\n• Help with security awareness programs and code reviews",
-      "date_published": "2026-09-08T00:06:50.130Z",
-      "authors": [
-        {
-          "name": "TeamLease Regtech Pvt. Ltd."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464395759",
-      "url": "https://interndoor.com/jobs/teamlease-regtech-pvt-ltd-information-security-associate-internship-in-pune-bangalore-hybrid-4464395759",
-      "title": "Information Security Associate Internship in Pune, Bangalore (Hybrid) — TeamLease Regtech Pvt. Ltd.",
-      "content_text": "Company: TeamLease Regtech Pvt. Ltd. · Location: Bengaluru, Karnataka, India\n• Support compliance audits and documentation for ISO 27001, SOC 2, and NIST\n• Work with GRC tools and security dashboards for risk assessments\n• Help with security awareness programs and code reviews",
-      "date_published": "2026-09-08T00:06:23.116Z",
-      "authors": [
-        {
-          "name": "TeamLease Regtech Pvt. Ltd."
         }
       ]
     }
