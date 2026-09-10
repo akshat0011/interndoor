@@ -198,7 +198,12 @@
     "TimescaleDB",
     "ClickHouse",
     "Yugabyte",
-    "ByteDance",
+    {
+      "name": "ByteDance",
+      "aliases": [
+        "TikTok"
+      ]
+    },
     "LinkedIn",
     "Unisys"
   ],
