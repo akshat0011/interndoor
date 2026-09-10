@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789063467581,
+ "generatedAt": 1789064060125,
  "region": "US",
  "regionName": "United States",
- "count": 2312,
- "techCount": 2312,
+ "count": 2315,
+ "techCount": 2315,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -22069,6 +22069,50 @@
     "$25 – $31 / hour",
     "New York",
     "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "ats:amazon:IND,USA,GBR:10535282",
+   "title": "Hardware Development Engineer Intern/Co-Op, ROBOTICS - 2027",
+   "company": "Amazon",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/amazon.jpg",
+   "location": "North Reading, Massachusetts, USA",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves designing and testing robotic hardware systems. Ideal for engineering students with CAD experience. You'll work on real projects with Amazon engineers and contribute to robotics development.",
+   "bullets": [
+    "Design, build, and test robotic hardware systems",
+    "Use CAD tools like SolidWorks and Revit",
+    "Work on real projects with Amazon engineers"
+   ],
+   "roleLabel": "Robotics Hardware Design",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "solidworks",
+    "revit",
+    "cad"
+   ],
+   "stipendStatus": "paid",
+   "postedText": null,
+   "postedAt": 1788892200000,
+   "firstSeenAt": 1788987378197,
+   "lastSeenAt": 1789063037759,
+   "url": "https://www.amazon.jobs/en/jobs/10535282/hardware-development-engineer-intern-co-op-robotics-2027",
+   "applyUrl": "https://www.amazon.jobs/en/jobs/10535282/hardware-development-engineer-intern-co-op-robotics-2027",
+   "description": null,
+   "roleFingerprint": "4c74138c2e",
+   "cardFacts": [
+    "North Reading"
    ],
    "region": "US"
   },
@@ -45129,6 +45173,93 @@
    "roleFingerprint": "d2bdee7994",
    "cardFacts": [
     "United States of America"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000123234",
+   "title": "2027 Technology Developer Summer Internship Program Whippany",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "United States of America",
+   "workplaceType": null,
+   "stipend": "$1,10,000",
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "machine learning"
+   ],
+   "summary": "This internship involves building and maintaining software systems that support millions of customers. You'll work on real projects with cross-functional teams, using modern programming languages and cloud technologies. Ideal for students passionate about solving complex problems through technology.",
+   "bullets": [
+    "Write code for scalable, secure software solutions used by millions of customers",
+    "Work with Python, Java, and cloud platforms like AWS or Azure",
+    "Collaborate with product teams to turn business needs into technical designs"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science",
+   "keySkills": [],
+   "stipendStatus": "paid",
+   "postedText": null,
+   "postedAt": 1788480000000,
+   "firstSeenAt": 1788608882717,
+   "lastSeenAt": 1788753583175,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Building-400-Whippany-Campus-Jefferson-Park/XMLNAME-2027-Technology-Developer-Summer-Internship-Program-Whippany_JR-0000123234",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Building-400-Whippany-Campus-Jefferson-Park/XMLNAME-2027-Technology-Developer-Summer-Internship-Program-Whippany_JR-0000123234",
+   "description": null,
+   "roleFingerprint": "81d7bad94e",
+   "cardFacts": [
+    "$110,000",
+    "United States of America",
+    "10 weeks"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000123236",
+   "title": "2027 Technology Developer Summer Internship Program Wilmington",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "United States of America",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "machine learning"
+   ],
+   "summary": "This internship involves building and maintaining software solutions that support millions of customers. You'll collaborate with engineers and product teams to design scalable systems and contribute to real-world projects. Ideal for students passionate about solving complex technical challenges and making a tangible impact in finance and technology.",
+   "bullets": [
+    "Write clean, scalable code for customer-facing platforms",
+    "Use Python, Java, and cloud tools like AWS",
+    "Work on projects impacting 48 million users"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science",
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788480000000,
+   "firstSeenAt": 1788608882295,
+   "lastSeenAt": 1788753582376,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Wilmington-125-South-West-Street/XMLNAME-2027-Technology-Developer-Summer-Internship-Program-Wilmington_JR-0000123236",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Wilmington-125-South-West-Street/XMLNAME-2027-Technology-Developer-Summer-Internship-Program-Wilmington_JR-0000123236",
+   "description": null,
+   "roleFingerprint": "60c56948fa",
+   "cardFacts": [
+    "United States of America",
+    "10 weeks"
    ],
    "region": "US"
   },
