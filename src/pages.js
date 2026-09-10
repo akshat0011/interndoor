@@ -2352,17 +2352,19 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
       }).join('')}</ul>`
     : '';
 
+  /* THE HUB'S OWN LOGO IS THE FALLBACK, and it is the same employer by
+     construction — every card on this page belongs to the company named in the
+     header. A job row can lack `logo` while the company file exists on disk (a
+     posting stored between publishes has not been through the projection yet,
+     the same per-job-lookup-for-a-per-company-file case logoOnDisk exists for),
+     and without this that card renders bare initials directly beneath a header
+     showing the real mark. The job's own logo still wins where it has one. */
+  const crestLogo = job.logo || logo;
+
   return `<div class="role-card">
         <div class="rc-main">
           <div class="rc-head">
-            ${/* THE HUB'S OWN LOGO IS THE FALLBACK, and it is the same employer by
-                   construction — every card on this page belongs to the company in the
-                   header. A job row can lack `logo` while the company file exists on
-                   disk (a posting stored between publishes has not been through the
-                   projection yet, the §18 logoOnDisk case), and without this that card
-                   renders bare initials directly beneath a header showing the real
-                   mark. */''}
-            ${crest(job.company, job.logo || logo, { cls: 'rc-crest' })}
+            ${crest(job.company, crestLogo, { cls: 'rc-crest' })}
             <div class="rc-headt">
               <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
               ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
