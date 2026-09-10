@@ -28,19 +28,35 @@ const meta = (name) => document.querySelector(`meta[name="${name}"]`)?.content;
 const REGION = meta('interndoor-region') || meta('gradkite-region') || meta('internzo-region') || 'IN';
 
 /**
- * Remember which board this reader is on, for the edge redirect.
+ * Remember which board this reader CHOSE, for the edge redirect.
  *
  * `web/vercel.json` sends a US or GB visitor from the apex to their own board
- * ONCE, and only while this cookie is absent. Setting it here means the nudge
- * happens on a first visit and never again — so a US reader who deliberately
- * opens the India board keeps it, and nobody can be trapped on a board they
- * did not choose. The redirect is a 302 and applies to `/` alone, so a deep
- * link into any region is never bounced.
+ * while this cookie is absent. It records a CHOICE, so it is written only when
+ * the reader picks a region from the switcher — never on an ordinary page view.
+ *
+ * WRITING IT ON EVERY VIEW IS WHAT BROKE THIS, and it broke it completely. The
+ * first version read the page's own region meta and set the cookie on load, so
+ * the first India page anyone opened — a job page off Google, a link from
+ * Telegram, the apex itself — pinned them to India for a year and the nudge
+ * never fired again. A US reader typing interndoor.com landed on the India
+ * board with no way out short of clearing cookies. The redirect was correct the
+ * whole time; this line was disarming it.
+ *
+ * THE NAME CHANGED WITH THE FIX (`board` -> `boardpick`) ON PURPOSE. Dropping
+ * the write does not clear a cookie already set, and the old one carries a
+ * one-year max-age — every reader who had ever loaded the site would have gone
+ * on being suppressed for another year. A new name makes all of them inert at
+ * once. `web/vercel.json`'s `missing` rule reads the new name; the two must be
+ * changed together or the redirect fires for a reader who did choose.
  */
-try {
-  var __board = (document.querySelector('meta[name="interndoor-region"]') || {}).content;
-  if (__board) document.cookie = 'board=' + __board + ';path=/;max-age=31536000;samesite=lax';
-} catch (e) { /* a blocked cookie just means the reader is nudged again */ }
+document.addEventListener('click', function (e) {
+  var opt = e.target && e.target.closest && e.target.closest('.rg-opt[data-region]');
+  if (!opt) return;
+  try {
+    document.cookie = 'boardpick=' + opt.getAttribute('data-region')
+      + ';path=/;max-age=31536000;samesite=lax';
+  } catch (err) { /* a blocked cookie just means the reader is nudged again */ }
+});
 const DATA_URL = meta('interndoor-data') || meta('gradkite-data') || meta('internzo-data') || '/data/jobs.json';
 /** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
 const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
