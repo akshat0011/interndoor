@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789062456716,
+ "generatedAt": 1789062809473,
  "region": "IN",
  "regionName": "India",
- "count": 277,
- "techCount": 277,
+ "count": 278,
+ "techCount": 278,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -1935,6 +1935,56 @@
    "applyUrl": "https://newspace.keka.com/careers/jobdetails/118178?source=linkedin",
    "description": null,
    "roleFingerprint": "ba3de29a41",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4465035190",
+   "title": "Intern - Avionics (P06206)",
+   "company": "NewSpace Research and Technologies",
+   "matchedWatchlist": "NewSpace Research",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/newspace-research-and-technologies.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "c++",
+    "git"
+   ],
+   "summary": "This internship involves developing firmware for drones and robotics using c/c++ and microcontrollers. You'll work with mavlink, stm32, and embedded systems tools, debugging hardware and software with oscilloscopes and git. It's ideal for students passionate about drones, robotics, and open-source firmware.",
+   "bullets": [
+    "Write firmware for drones and robotics using c/c++ and microcontrollers",
+    "Work with mavlink, stm32, and embedded systems tools",
+    "Debug hardware and software with oscilloscopes and git"
+   ],
+   "roleLabel": "Firmware development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "c",
+    "c++",
+    "mavlink",
+    "stm32",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1788957011137,
+   "firstSeenAt": 1788964211139,
+   "lastSeenAt": 1788964211139,
+   "url": "https://www.linkedin.com/jobs/view/4465035190/",
+   "applyUrl": "https://newspace.keka.com/careers/jobdetails/126048?source=linkedin",
+   "description": null,
+   "roleFingerprint": "093e82c5ce",
    "cardFacts": [
     "Bengaluru",
     "On-site"
