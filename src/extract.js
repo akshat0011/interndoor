@@ -18,7 +18,15 @@ const PERIOD_PATTERNS = [
   [/\b(per\s+week|\/\s*week|\/\s*wk\b|weekly|a\s+week)/i, 'week'],
   [/\b(per\s+year|\/\s*year|\/\s*yr\b|annually|per\s+annum|p\.?a\.?\b|lpa|yearly)/i, 'year'],
   [/\b(per\s+day|\/\s*day|daily|a\s+day)/i, 'day'],
-  [/\b(stipend|total|lump\s*sum)\b/i, 'total'],
+  // THE WORD "stipend" IS NOT A PERIOD, AND IT USED TO BE LISTED HERE AS ONE.
+  // It is the commonest MONEY_KEYWORD there is, so "Internship stipend -
+  // ₹15,000." — a line that states no period at all — was read as a claim that
+  // ₹15,000 is the WHOLE payment, and the card rendered "₹15,000 / total" for a
+  // role paying that every month. The month/hour/week/year rules run first, so
+  // this only ever fired on postings that named a figure and no period: exactly
+  // the case where we know nothing and must say nothing. `total` and
+  // `lump sum` are real claims an employer makes and are kept.
+  [/\b(total|lump\s*sum)\b/i, 'total'],
 ];
 
 /** A bare number with optional scale suffix: "1,20,000", "25k", "1.5 lakh", "12 LPA". */
