@@ -23,16 +23,16 @@
   <url><loc>https://interndoor.com/skills/excel</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/react</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/docker</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/gcp</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/llm</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/gcp</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pytorch</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tensorflow</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/power-bi</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/c-sharp</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -52,11 +52,13 @@
   <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/novartis-india-intern-data-science-4463483748</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eaton-apprentice-it-erp-sap-ai-and-devsecops-4463467720</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/eaton-apprentice-it-sap-ecc-4463483697</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/micron-technology-intern-4464530076</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/siemens-gamesa-automation-ai-intern-for-blade-structural-design-process-4464503985</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/smowcode-embedded-systems-intern-4463465035</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
@@ -321,6 +323,7 @@
   <url><loc>https://interndoor.com/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/novartis-india</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/eaton</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/micron-technology</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/siemens-gamesa</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
