@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-computer-vision-ats-greenhouse-waymo-8193295",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-computer-vision-ats-greenhouse-waymo-8193295",
+      "title": "2027 Summer Intern, PhD, Machine Learning, Computer Vision — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California\n• Analyze deep learning models for autonomous driving perception\n• Work with vision-language models and simulation environments\n• Collaborate with researchers on active learning and data curation",
+      "date_published": "2026-09-10T22:57:41.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/volvo-group-intern-microsoft-power-platform-spring-2027-4465876430",
       "url": "https://interndoor.com/us/jobs/volvo-group-intern-microsoft-power-platform-spring-2027-4465876430",
       "title": "Intern: Microsoft Power Platform (Spring 2027) — Volvo Group",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "PACCAR"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/entegris-science-and-engineering-co-op-4465863155",
-      "url": "https://interndoor.com/us/jobs/entegris-science-and-engineering-co-op-4465863155",
-      "title": "Science & Engineering Co-op — Entegris",
-      "content_text": "Company: Entegris · Location: Bedford, MA · Duration: 6 months\n• Develop and implement CAD projects to improve efficiency and reduce costs\n• Use statistical methods to analyze processes and increase yields\n• Work on lean manufacturing and continuous improvement initiatives",
-      "date_published": "2026-09-10T19:24:13.111Z",
-      "authors": [
-        {
-          "name": "Entegris"
         }
       ]
     }
