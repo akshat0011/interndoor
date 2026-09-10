@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/atkinsr-alis-intern-4465827818",
+      "url": "https://interndoor.com/jobs/atkinsr-alis-intern-4465827818",
+      "title": "Intern — AtkinsRéalis",
+      "content_text": "Company: AtkinsRéalis · Location: Bengaluru East, Karnataka, India\n• Develop robotic control algorithms and AI models for object detection and image analysis\n• Work with Python, ROS, OpenCV, and TensorFlow for simulation and automation\n• Collaborate on digital twin projects and test AI solutions in real-world scenarios",
+      "date_published": "2026-09-10T18:30:53.793Z",
+      "authors": [
+        {
+          "name": "AtkinsRéalis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/micron-technology-intern-4464555921",
+      "url": "https://interndoor.com/jobs/micron-technology-intern-4464555921",
+      "title": "Intern — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Work on semiconductor design, data science, and AI solutions\n• Tools include Python, machine learning frameworks, and engineering software\n• Based in Hyderabad with opportunities for AI and digital skills development",
+      "date_published": "2026-09-10T18:27:04.222Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-intern-masters-data-science-4465841273",
       "url": "https://interndoor.com/jobs/honeywell-technologies-intern-masters-data-science-4465841273",
       "title": "Intern Masters Data Science — Honeywell Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Simple Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valency-networks-private-limited-python-developer-intern-4462258987",
-      "url": "https://interndoor.com/jobs/valency-networks-private-limited-python-developer-intern-4462258987",
-      "title": "Python Developer Intern — Valency Networks Private Limited",
-      "content_text": "Company: Valency Networks Private Limited · Location: Pune City, Maharashtra, India · Duration: 6 months\n• Write clean code for Python apps and APIs\n• Use Django, MySQL, and Git daily\n• Work on automation and security tools",
-      "date_published": "2026-09-08T07:08:33.861Z",
-      "authors": [
-        {
-          "name": "Valency Networks Private Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linkedin-artificial-intelligence-machine-learning-engineering-intern-4464451618",
-      "url": "https://interndoor.com/jobs/linkedin-artificial-intelligence-machine-learning-engineering-intern-4464451618",
-      "title": "Artificial Intelligence / Machine Learning Engineering Intern — LinkedIn",
-      "content_text": "Company: LinkedIn · Location: Bengaluru, Karnataka, India\n• Analyze big data to improve content safety and recommendation systems\n• Code in python, scala, and frameworks like tensorflow and spark\n• Work on-site in bengaluru with a team focused on ai and ml",
-      "date_published": "2026-09-08T07:01:23.794Z",
-      "authors": [
-        {
-          "name": "LinkedIn"
         }
       ]
     }
