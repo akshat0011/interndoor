@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wells-fargo-2027-technology-program-intern-4465628693",
+      "url": "https://interndoor.com/jobs/wells-fargo-2027-technology-program-intern-4465628693",
+      "title": "2027 Technology Program Intern — Wells Fargo",
+      "content_text": "Company: Wells Fargo · Location: Bengaluru, Karnataka, India\n• Review basic issues and policies with quick answers for low-risk tasks\n• Attend training, workshops, and self-study assignments\n• Communicate with managers and stakeholders on technical topics",
+      "date_published": "2026-09-10T09:34:28.972Z",
+      "authors": [
+        {
+          "name": "Wells Fargo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928",
+      "url": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928",
+      "title": "Software Engineering Intern — Freight Tiger",
+      "content_text": "Company: Freight Tiger · Location: Gurugram, Haryana, India · Duration: 6 months\n• Build agentic ai systems with llm-powered agents and rag workflows\n• Write clean python code for scalable backend and data processing\n• Design data pipelines for real-time high-volume data processing\n• Work with senior engineers on full lifecycle product development",
+      "date_published": "2026-09-10T08:01:33.707Z",
+      "authors": [
+        {
+          "name": "Freight Tiger"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
       "url": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
       "title": "Software Engineering Intern — Freight Tiger",
@@ -575,30 +599,6 @@
       "title": "Exposure modelling Summer Intern — Moody's Corporation",
       "content_text": "Company: Moody's Corporation · Location: Sadar, Uttar Pradesh, India\n• Support development of exposure models for global property insurance markets\n• Work with public and open-source data to build valuation models for buildings and infrastructure\n• Research construction practices and insurance market characteristics across countries",
       "date_published": "2026-09-07T15:50:03.529Z",
-      "authors": [
-        {
-          "name": "Moody's Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
-      "url": "https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859",
-      "title": "Intern Engineer – Software Quality & Automation — Fluence",
-      "content_text": "Company: Fluence · Location: Bengaluru, Karnataka, India · Duration: 3-6 months\n• Write and maintain automated test scripts for software validation\n• Work with Python, Git, Jira, and CI/CD tools in real projects\n• Collaborate with engineers on BESS and renewable energy systems",
-      "date_published": "2026-09-07T15:47:07.468Z",
-      "authors": [
-        {
-          "name": "Fluence"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930",
-      "url": "https://interndoor.com/jobs/moody-s-corporation-geospatial-summer-intern-4464341930",
-      "title": "Geospatial Summer Intern — Moody's Corporation",
-      "content_text": "Company: Moody's Corporation · Location: Sadar, Uttar Pradesh, India\n• Develop vision models for geospatial analysis using Python and ML frameworks\n• Work on image enhancement, building detection, and change detection tasks\n• Contribute to global projects mapping renewable energy assets and property data",
-      "date_published": "2026-09-07T15:37:29.845Z",
       "authors": [
         {
           "name": "Moody's Corporation"
