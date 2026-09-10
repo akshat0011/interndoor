@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-et-engineering-standards-4465386243",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-et-engineering-standards-4465386243",
+      "title": "Intern ET Engineering Standards — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Glen Allen, VA\n• Develop and maintain engineering standards for transmission systems and equipment\n• Work with industry groups like IEEE and CIGRE on standards and vendor selection\n• Contribute to major projects including offshore wind and solar grid integration",
+      "date_published": "2026-09-10T02:05:29.795Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-associate-business-intelligence-analyst-grid-resiliency-richmon-4465384249",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-associate-business-intelligence-analyst-grid-resiliency-richmon-4465384249",
+      "title": "Intern - Associate Business Intelligence Analyst (Grid Resiliency - Richmond, VA) — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Richmond, VA · Duration: Spring 2028\n• Support grid resiliency projects with data analysis and modeling\n• Use tools like sql, tableau, and data governance frameworks\n• Work on cross-functional teams with real-world energy infrastructure data",
+      "date_published": "2026-09-10T02:04:52.897Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-intern-it-4465378310",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-intern-it-4465378310",
+      "title": "Intern IT — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: San Diego, CA\n• Support end users with hardware and software issues\n• Use ITIL principles to manage incidents and requests\n• Collaborate with global IT service desk team",
+      "date_published": "2026-09-10T02:03:33.491Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-it-apps-winter-spring-2027-4465383148",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-it-apps-winter-spring-2027-4465383148",
+      "title": "Internship, Software Engineer, IT Apps (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Build automation systems for manufacturing processes\n• Work with go, kafka, react, and kubernetes\n• On-site in fremont, ca for 12+ weeks",
+      "date_published": "2026-09-10T01:37:16.749Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/entegris-automation-and-controls-engineering-co-op-4465382077",
       "url": "https://interndoor.com/us/jobs/entegris-automation-and-controls-engineering-co-op-4465382077",
       "title": "Automation & Controls Engineering Co-Op — Entegris",
@@ -551,54 +599,6 @@
       "title": "Software Engineering Intern (Summer 2027) — Collins Aerospace",
       "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Reverse engineer software and system architectures\n• Work with IDA/Ghidra/BinaryNinja for analysis\n• Collaborate with senior engineers and fellow interns",
       "date_published": "2026-09-09T21:36:23.741Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-summer-fall-2027-4465352164",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-summer-fall-2027-4465352164",
-      "title": "Software Engineering Co-op (Summer/Fall 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Fall 2027\n• Design and test software for flight management systems in military aircraft\n• Work with C, C++, ADA, and Python in a team environment\n• Full-time co-op with potential for semester off from studies",
-      "date_published": "2026-09-09T21:35:59.129Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-machine-learning-engineer-factory-software-winter-spring-20-4465335440",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-machine-learning-engineer-factory-software-winter-spring-20-4465335440",
-      "title": "Internship, Machine Learning Engineer, Factory Software (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Process and analyze large image datasets for machine vision projects\n• Develop and refine models for object recognition and image segmentation\n• Collaborate on algorithm development for factory automation systems\n• Work on projects impacting production efficiency and quality control",
-      "date_published": "2026-09-09T21:35:31.133Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-equipment-engineer-terafab-winter-spring-2027-4465339426",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-equipment-engineer-terafab-winter-spring-2027-4465339426",
-      "title": "Internship, Equipment Engineer, Terafab (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Austin, TX · Duration: 12 weeks\n• Install and support advanced semiconductor tools across logic, memory, and mask production\n• Collaborate with vendors to improve tool reliability and uptime\n• Work on-site in Austin, TX, for 12+ weeks full-time",
-      "date_published": "2026-09-09T21:35:00.875Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-co-op-systems-integration-summer-fall-2027-onsite-4465330385",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-co-op-systems-integration-summer-fall-2027-onsite-4465330385",
-      "title": "Systems Engineering Co-op - Systems Integration (Summer/Fall 2027) - Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Fall 2027\n• Build system configuration tables for end-to-end communication and runtime environments\n• Configure software for civil-certified military aircraft and existing tools\n• Assist in engineering documents for FAA audits",
-      "date_published": "2026-09-09T21:34:20.044Z",
       "authors": [
         {
           "name": "Collins Aerospace"
