@@ -149,16 +149,20 @@
   <url><loc>https://interndoor.com/us/locations/tucson</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/baton-rouge</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/chandler</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/fond-du-lac</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/richmond</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/shakopee</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/denver-metropolitan</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/fond-du-lac</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/fort-wayne</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/lowell</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/melbourne</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/middletown</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/palm-bay</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/university-park</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-module-design-summer-fall-co-op-june-dec-27-4465841708</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/mercury-marine-mercury-marine-intern-engine-and-vessel-calibration-group-4465842660</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/l3harris-technologies-integration-and-test-engineering-automation-intern-4445946209</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/hitachi-rail-intern-signalling-engineer-4463496416</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/infineon-technologies-internship-embedded-systems-engineerinternship-embedded-systems-engine-4456727484</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/zipline-data-analytics-intern-spring-2027-4465698962</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/microchip-technology-inc-intern-engineering-applications-4465800920</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
@@ -2462,6 +2466,10 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/skyworks-solutions-inc</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/mercury-marine</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/l3harris-technologies</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/hitachi-rail</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/infineon-technologies</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/zipline</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/microchip-technology-inc</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
@@ -2520,8 +2528,6 @@
   <url><loc>https://interndoor.com/us/companies/intel</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/instabase</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/verizon</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/l3harris-technologies</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/skyworks-solutions-inc</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/replit</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/applied-intuition</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/american-express</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -2666,7 +2672,6 @@
   <url><loc>https://interndoor.com/us/companies/northern-trust</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/honeywell-aerospace</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/clearwater-analytics</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/mercury-marine</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/mckesson-corporation</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/piramal</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/verkada</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>
