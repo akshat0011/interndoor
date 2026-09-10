@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 10 Sep 2026 04:48:59 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 10 Sep 2026 07:24:27 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineering Intern — Freight Tiger</title>
+    <link>https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884</guid>
+    <pubDate>Thu, 10 Sep 2026 07:24:27 GMT</pubDate>
+    <description>Company: Freight Tiger · Location: Bengaluru, Karnataka, India · Duration: 6 months
+• Build agentic ai systems with llm-powered agents and rag workflows
+• Write production-grade python code for scalable backend solutions
+• Design data pipelines for real-time processing with kafka or airflow
+• Work on full lifecycle projects with senior engineers and product teams</description>
+  </item>
   <item>
     <title>Software Engineer Apprentice — F5</title>
     <link>https://interndoor.com/jobs/f5-software-engineer-apprentice-4465602430</link>
@@ -492,17 +503,6 @@
 • Develop vision models for geospatial analysis using Python and ML frameworks
 • Work on image enhancement, building detection, and change detection tasks
 • Contribute to global projects mapping renewable energy assets and property data</description>
-  </item>
-  <item>
-    <title>Software Tester Intern — Volody</title>
-    <link>https://interndoor.com/jobs/volody-software-tester-intern-4462216241</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/volody-software-tester-intern-4462216241</guid>
-    <pubDate>Mon, 07 Sep 2026 12:21:15 GMT</pubDate>
-    <description>Company: Volody · Location: Mumbai, Maharashtra, India
-• Test web apps and software features manually
-• Create test cases and track bugs with steps
-• Collaborate with dev and product teams
-• Work on functional and regression testing</description>
   </item>
 </channel>
 </rss>

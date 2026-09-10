@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
+      "url": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
+      "title": "Software Engineering Intern — Freight Tiger",
+      "content_text": "Company: Freight Tiger · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build agentic ai systems with llm-powered agents and rag workflows\n• Write production-grade python code for scalable backend solutions\n• Design data pipelines for real-time processing with kafka or airflow\n• Work on full lifecycle projects with senior engineers and product teams",
+      "date_published": "2026-09-10T07:24:27.363Z",
+      "authors": [
+        {
+          "name": "Freight Tiger"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/f5-software-engineer-apprentice-4465602430",
       "url": "https://interndoor.com/jobs/f5-software-engineer-apprentice-4465602430",
       "title": "Software Engineer Apprentice — F5",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Moody's Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/volody-software-tester-intern-4462216241",
-      "url": "https://interndoor.com/jobs/volody-software-tester-intern-4462216241",
-      "title": "Software Tester Intern — Volody",
-      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Test web apps and software features manually\n• Create test cases and track bugs with steps\n• Collaborate with dev and product teams\n• Work on functional and regression testing",
-      "date_published": "2026-09-07T12:21:15.561Z",
-      "authors": [
-        {
-          "name": "Volody"
         }
       ]
     }
