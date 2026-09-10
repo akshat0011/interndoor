@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004",
+      "url": "https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004",
+      "title": "Backend Services Programmer Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary,North Carolina,United States\n• Build systems that power Fortnite experiences\n• Work with AWS and *nix systems\n• Flexible start date in 2027",
+      "date_published": "2026-09-10T00:30:00.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/epic-games-ui-programmer-intern-ats-greenhouse-epicgames-6183401004",
       "url": "https://interndoor.com/us/jobs/epic-games-ui-programmer-intern-ats-greenhouse-epicgames-6183401004",
       "title": "UI Programmer Intern — Epic Games",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-controls-compliance-tester-intern-2027-4463081040",
-      "url": "https://interndoor.com/us/jobs/ibm-controls-compliance-tester-intern-2027-4463081040",
-      "title": "Controls / Compliance Tester Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Test operational and security controls for effectiveness\n• Use grc tools and frameworks like nist and iso\n• Work with compliance and risk teams on audit readiness",
-      "date_published": "2026-09-09T20:22:10.939Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }

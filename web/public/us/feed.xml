@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 10 Sep 2026 00:22:33 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 10 Sep 2026 00:30:00 GMT</lastBuildDate>
+  <item>
+    <title>Backend Services Programmer Intern — Epic Games</title>
+    <link>https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004</guid>
+    <pubDate>Thu, 10 Sep 2026 00:30:00 GMT</pubDate>
+    <description>Company: Epic Games · Location: Cary,North Carolina,United States
+• Build systems that power Fortnite experiences
+• Work with AWS and *nix systems
+• Flexible start date in 2027</description>
+  </item>
   <item>
     <title>UI Programmer Intern — Epic Games</title>
     <link>https://interndoor.com/us/jobs/epic-games-ui-programmer-intern-ats-greenhouse-epicgames-6183401004</link>
@@ -500,16 +510,6 @@
 • Write, debug, and maintain C/C++ code for Autopilot and Humanoid robot systems
 • Optimize hardware usage and build tools for performance/memory tracking
 • Work on vision stack, GPU kernels, or data compression libraries</description>
-  </item>
-  <item>
-    <title>Controls / Compliance Tester Intern 2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-controls-compliance-tester-intern-2027-4463081040</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-controls-compliance-tester-intern-2027-4463081040</guid>
-    <pubDate>Wed, 09 Sep 2026 20:22:10 GMT</pubDate>
-    <description>Company: IBM · Location: Yorktown Heights, NY
-• Test operational and security controls for effectiveness
-• Use grc tools and frameworks like nist and iso
-• Work with compliance and risk teams on audit readiness</description>
   </item>
 </channel>
 </rss>
