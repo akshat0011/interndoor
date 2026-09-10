@@ -1005,6 +1005,36 @@ const panel = renderCompanyPage('Foo', [rich], [], '', { skillPages: new Set(['p
 const barePanel = renderCompanyPage('Foo', [bare], [], '', { skillPages: new Set() });
 
 check('the panel is not one big anchor', /<a class="role-card"/.test(panel), false);
+
+/* EVERY ROLE CARD CARRIES THE EMPLOYER'S CREST. The hub header has one too, so
+   on a page of four roles it repeats — deliberately: a card scrolled past the
+   header otherwise shows no employer at all, and it matches the board's rows.
+   Asserted on the CARD, not the page, or the header crest alone would pass. */
+{
+  const withLogo = renderCompanyPage('Foo', [rich], [], '/logos/foo.jpg', { skillPages: new Set() });
+  const cards = withLogo.match(/class="role-card"/g) ?? [];
+  check('the card carries a crest', (withLogo.match(/class="rc-crest"/g) ?? []).length, cards.length);
+  /* This exercises the FALLBACK, not job.logo: `rich` carries no logo of its own,
+     so the image can only have come from the hub's company logo passed down. A
+     card rendering bare initials directly under a header showing the real mark is
+     the thing that looks broken. */
+  check('and the crest holds the logo image', /class="rc-crest"[^>]*>[^<]*<img src="\/logos\/foo\.jpg"/.test(withLogo), true);
+  /* The job's OWN logo still wins where it has one — same rule as everywhere
+     else on the site, a live posting carries the truth. */
+  const ownLogo = renderCompanyPage('Foo', [{ ...rich, logo: '/logos/own.jpg' }], [], '/logos/hub.jpg', { skillPages: new Set() });
+  check("the job's own logo takes precedence", /class="rc-crest"[^>]*>[^<]*<img src="\/logos\/own\.jpg"/.test(ownLogo), true);
+  check('and the hub logo is not used on that card', ownLogo.includes('rc-crest" aria-hidden="true">F<img src="/logos/hub.jpg"'), false);
+  /* The initials are painted UNDER the image, so a logo that 404s leaves two
+     letters rather than an empty box — the reason crest() exists at all. */
+  check('with the initials underneath as the fallback', /class="rc-crest"[^>]*>F</.test(withLogo), true);
+  /* Decorative. The company name is already the h1, so reading it again on
+     every card is noise. */
+  check('the crest is aria-hidden', /class="rc-crest" aria-hidden="true"/.test(withLogo), true);
+  /* An employer with NO logo file still gets a crest, or the card is a hole. */
+  const noLogo = renderCompanyPage('Foo', [{ ...rich, logo: null }], [], '', { skillPages: new Set() });
+  check('no logo file still renders a crest', /class="rc-crest"/.test(noLogo), true);
+  check('and it carries no empty img', /class="rc-crest"[^>]*>[^<]*<img/.test(noLogo), false);
+}
 /* THE PAIRING. A chip is a link only where the facet page exists; everything
    else goes to the board search. Pointing every skill at /skills/<slug> ships
    a 404 for each of the ~1,900 skills with no page, which is the whole reason

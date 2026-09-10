@@ -1034,6 +1034,32 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .role-card:hover { border-color: var(--rule-2); }
 .rc-main { padding: 20px 22px; min-width: 0; }
+
+/* THE EMPLOYER'S CREST ON EVERY ROLE CARD.
+
+   The hub already carries one in its header, so on a page of four Google roles
+   this repeats — deliberately. A card that has scrolled past the header is a
+   card with no employer on it at all, and the logo is the one element a reader
+   recognises without reading anything. It also makes these cards match the
+   board's own rows, which have carried a logo since the first version.
+
+   Decorative, not informative: crest() emits aria-hidden with the initials
+   underneath the image, so a 404ing logo leaves the two letters rather than an
+   empty box, and a screen reader is not read the company name a second time —
+   it is already the page's h1.
+
+   min-width: 0 on the text column is the flex equivalent of the minmax(0, 1fr)
+   rule: without it a long unbroken role title refuses to shrink and pushes the
+   card wider than its grid track. */
+.rc-head { display: flex; align-items: flex-start; gap: 12px; }
+.rc-headt { min-width: 0; }
+.rc-crest {
+  width: 34px; height: 34px; flex: none; position: relative; overflow: hidden;
+  border-radius: 6px; background: var(--card-2); border: 1px solid var(--rule);
+  display: grid; place-items: center;
+  font-family: var(--display); font-weight: 800; font-size: 12px; color: var(--ink-3);
+}
+.rc-crest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 4px; background: #fff; }
 .rc-side {
   padding: 20px 22px; min-width: 0;
   background: var(--bg-2); border-left: 1px solid var(--rule);
@@ -1184,6 +1210,9 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   .ans { padding: 11px 13px; }
   .ans dd { font-size: 16px; }
   .role-card { padding: 15px 16px; }
+  /* Below the base rule, because a media query adds no specificity. */
+  .rc-crest { width: 30px; height: 30px; font-size: 11px; }
+  .rc-head { gap: 10px; }
   /* The CTA spans the card on a phone: the widest target on the screen,
      sitting where the thumb already rests. Same rule the board's Apply
      follows below 1024px. */

@@ -2292,7 +2292,7 @@ export function eligibilityCounts(live) {
  * facts that decide that (pay, place, start, degree) and an explicit CTA,
  * where a tile carries only enough to be worth a click.
  */
-function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = new Set() } = {}) {
+function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = new Set(), logo = '' } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
   const verified = verifiedAt(job);
   const money = stipendText(job);
@@ -2354,8 +2354,20 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
 
   return `<div class="role-card">
         <div class="rc-main">
-          <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
-          ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
+          <div class="rc-head">
+            ${/* THE HUB'S OWN LOGO IS THE FALLBACK, and it is the same employer by
+                   construction — every card on this page belongs to the company in the
+                   header. A job row can lack `logo` while the company file exists on
+                   disk (a posting stored between publishes has not been through the
+                   projection yet, the §18 logoOnDisk case), and without this that card
+                   renders bare initials directly beneath a header showing the real
+                   mark. */''}
+            ${crest(job.company, job.logo || logo, { cls: 'rc-crest' })}
+            <div class="rc-headt">
+              <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
+              ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
+            </div>
+          </div>
           ${(job.bullets ?? []).length ? `<ul class="rc-do">${(job.bullets ?? []).slice(0, 3).map((b) =>
             `<li>${esc(b)}</li>`).join('')}</ul>` : ''}
           ${chips}
@@ -2704,7 +2716,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
            answer to "is there anything here" from across the page. -->
       <div class="strip-head"><h2 class="h2-lead" id="open">Open right now${live.length ? ` <b>${live.length} role${live.length === 1 ? '' : 's'}</b>` : ''}</h2></div>
       ${live.length
-        ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1, skillPages })).join('')}</div>`
+        ? `<div class="roles">${live.map((j) => roleCard(j, { region, locations: roleCount.get(roleKey(j)) ?? 1, skillPages, logo })).join('')}</div>`
         : `<div class="empty">
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
