@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4463465035",
+      "url": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4463465035",
+      "title": "Embedded Systems Intern — Smowcode",
+      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Write and test C code for microcontrollers like ARM and AVR\n• Use ESP-IDF and AVR-GCC for toolchain setup\n• Debug hardware and network protocols on IoT projects",
+      "date_published": "2026-09-10T10:16:54.465Z",
+      "authors": [
+        {
+          "name": "Smowcode"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wells-fargo-2027-technology-program-intern-4465628693",
       "url": "https://interndoor.com/jobs/wells-fargo-2027-technology-program-intern-4465628693",
       "title": "2027 Technology Program Intern — Wells Fargo",
@@ -566,18 +578,6 @@
       "authors": [
         {
           "name": "Copeland"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912",
-      "url": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912",
-      "title": "Embedded Systems Intern — Smowcode",
-      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Write and test C code for microcontrollers like ARM and AVR\n• Use ESP-IDF and AVR-GCC for toolchain setup\n• Debug PCBs and work with IoT protocols like MQTT",
-      "date_published": "2026-09-07T16:03:47.691Z",
-      "authors": [
-        {
-          "name": "Smowcode"
         }
       ]
     },

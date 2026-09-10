@@ -16,7 +16,7 @@
   <url><loc>https://interndoor.com/skills/algorithms</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/linux</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/javascript</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/data-structures</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/azure</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ci-cd</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -45,17 +45,18 @@
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rtos</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/pcb</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/pcb</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rest-api</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/scikit-learn</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/smowcode-embedded-systems-intern-4463465035</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/wells-fargo-2027-technology-program-intern-4465628693</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
@@ -101,7 +102,6 @@
   <url><loc>https://interndoor.com/jobs/baker-hughes-intern-engineering-and-technology-india-2027-opportunities-ats-workday-bakerhughes-wd5-bakerhughes-r164188</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/uffizio-java-trainee-4462979325</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/copeland-graduate-trainee-engineer-4462223897</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/smowcode-embedded-systems-intern-4462219912</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4462222887</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/moody-s-corporation-exposure-modelling-summer-intern-4464352847</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/fluence-intern-engineer-software-quality-and-automation-4464355859</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
@@ -319,6 +319,7 @@
   <url><loc>https://interndoor.com/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/smowcode</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/wells-fargo</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/freight-tiger</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/f5</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
@@ -345,7 +346,6 @@
   <url><loc>https://interndoor.com/companies/baker-hughes</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/uffizio</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/copeland</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/smowcode</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/esec-forte-technologies</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/moody-s-corporation</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fluence</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
