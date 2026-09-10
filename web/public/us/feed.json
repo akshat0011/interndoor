@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/shield-ai-summer-2027-software-engineer-intern-4465604643",
+      "url": "https://interndoor.com/us/jobs/shield-ai-summer-2027-software-engineer-intern-4465604643",
+      "title": "Summer 2027 - Software Engineer Intern — Shield AI",
+      "content_text": "Company: Shield AI · Location: Washington, DC · Duration: 10–12 weeks\n• Write and debug code for autonomous systems and flight software\n• Work with full-time engineers on agile development projects\n• Ship real features using production-quality code and tools",
+      "date_published": "2026-09-10T05:58:06.226Z",
+      "authors": [
+        {
+          "name": "Shield AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bechtel-plant-machinery-inc-bpmi-data-science-intern-summer-2027-4465619448",
+      "url": "https://interndoor.com/us/jobs/bechtel-plant-machinery-inc-bpmi-data-science-intern-summer-2027-4465619448",
+      "title": "Data Science Intern (Summer 2027) — Bechtel Plant Machinery, Inc. (BPMI)",
+      "content_text": "Company: Bechtel Plant Machinery, Inc. (BPMI) · Location: Monroeville, PA · Duration: Summer 2027\n• Analyze technical and business data sets for system development and logistics\n• Collaborate with data engineers to improve data infrastructure\n• Work with subject matter experts to solve real-world problems using program data",
+      "date_published": "2026-09-10T05:49:12.143Z",
+      "authors": [
+        {
+          "name": "Bechtel Plant Machinery, Inc. (BPMI)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/bosch-usa-data-analytics-intern-engineering-and-sap-operations-4463423165",
       "url": "https://interndoor.com/us/jobs/bosch-usa-data-analytics-intern-engineering-and-sap-operations-4463423165",
       "title": "Data Analytics Intern - Engineering & SAP Operations — Bosch USA",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Epic Games"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-systems-design-engineering-intern-4465374263",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-systems-design-engineering-intern-4465374263",
-      "title": "Systems Design Engineering Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: 12 weeks\n• Design and develop electromechanical systems with embedded sensors and algorithms\n• Collaborate with engineers and scientists on medical device innovation\n• Integrate AI models into device workflows and analyze data",
-      "date_published": "2026-09-10T00:16:55.739Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rocket-lab-turbomachinery-intern-summer-2027-ats-greenhouse-rocketlab-7987208003",
-      "url": "https://interndoor.com/us/jobs/rocket-lab-turbomachinery-intern-summer-2027-ats-greenhouse-rocketlab-7987208003",
-      "title": "Turbomachinery Intern Summer 2027 — Rocket Lab",
-      "content_text": "Company: Rocket Lab · Location: Long Beach, CA · Duration: Summer 2027\n• Update cad drawings and analyze data for turbopump assembly\n• Work with solidworks, ansys, and matlab for design tasks\n• Collaborate on propulsion systems for rocket engines",
-      "date_published": "2026-09-09T23:45:13.000Z",
-      "authors": [
-        {
-          "name": "Rocket Lab"
         }
       ]
     }
