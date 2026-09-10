@@ -66,7 +66,7 @@ for (const r of geo) {
   for (const bot of ['googlebot', 'bingbot', 'crawler', 'spider']) {
     ok(`  …including ${bot}`, new RegExp(uaRule.value).test(`Mozilla/5.0 (compatible; ${bot}/2.1)`));
   }
-  ok(`${r.destination} respects a chosen board`, (r.missing ?? []).some((m) => m.type === 'cookie' && m.key === 'board'));
+  ok(`${r.destination} respects a chosen board`, (r.missing ?? []).some((m) => m.type === 'cookie'));
 }
 
 /* A real browser must still be nudged, or the exemption is too broad. */
@@ -77,10 +77,36 @@ ok('an ordinary browser is NOT exempt',
 console.log('\n== the legacy /in redirects are untouched ==');
 ok('/in still folds into the root', vercel.redirects.some((r) => r.source === '/in' && r.destination === '/' && r.permanent === true));
 
-console.log('\n== the scripts set the cookie the redirect reads ==');
+console.log('\n== the cookie records a CHOICE, not a page view ==');
+/* THE BUG THIS BLOCK EXISTS FOR. The first version set the cookie on load from
+   the page's own region meta, so the first India page anyone opened pinned them
+   to India for a year and the edge redirect never fired again. A US reader
+   typing the apex landed on the India board and stayed there. The redirect was
+   correct throughout; the script was disarming it. */
+/* Read defensively: with the cookie rule deleted this is undefined, and a bare
+   `.key` would THROW — which stops the whole `npm test` chain instead of failing
+   one file. The assertion below is the one that should report it. */
+const cookieRule = (geo[0].missing ?? []).find((m) => m.type === 'cookie');
+ok('vercel.json names a cookie the script can set', !!cookieRule);
+const COOKIE = cookieRule ? cookieRule.key : '\u0000none';
 for (const f of ['web/public/app.js', 'web/public/page.js']) {
-  ok(`${f} sets board=`, readFileSync(f, 'utf8').includes("'board=' + __board"));
+  const src = readFileSync(f, 'utf8');
+  /* THE PAIRING, and it is the whole point of reading the name out of
+     vercel.json rather than hardcoding it here: the script that WRITES the
+     cookie and the rule that READS it are in different languages, in different
+     files, and a rename of either alone silently re-breaks this. */
+  ok(`${f} writes the cookie vercel.json reads (${COOKIE})`, src.includes(`'${COOKIE}=' +`));
+  /* Written on a REGION SWITCH click and nowhere else. */
+  ok(`${f} writes it from a click handler`, /addEventListener\('click'/.test(src));
+  ok(`${f} keys it to the region switcher`, src.includes(".rg-opt[data-region]"));
+  /* And NEVER on load. The old shape read the meta tag and wrote unconditionally
+     at the top level; if that ever comes back the redirect dies again. */
+  ok(`${f} does NOT write it from the region meta`, !/document\.cookie\s*=\s*'[a-z]+=' \+ __board/.test(src));
+  ok(`${f} has dropped the old cookie name`, !src.includes("'board=' +"));
 }
+/* The switcher must actually emit what the handler hooks, or the cookie is
+   never written and a deliberate choice does not stick. */
+ok('the switcher emits .rg-opt with data-region', /class="rg-opt[^"]*"[^>]*data-region="/.test(multi));
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
