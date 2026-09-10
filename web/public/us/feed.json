@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/epic-games-tech-art-intern-4455477765",
+      "url": "https://interndoor.com/us/jobs/epic-games-tech-art-intern-4455477765",
+      "title": "Tech Art Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary, NC\n• Build tools and scripts to speed up content creation for game artists\n• Profile and optimize assets for performance across devices\n• Collaborate with artists and engineers to solve technical challenges",
+      "date_published": "2026-09-10T09:29:29.880Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4465641465",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4465641465",
+      "title": "Software Engineering Intern (Summer 2027) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Huntsville, AL · Duration: Summer 2027\n• Design and implement software in Ada, C++, and Python\n• Work in Agile teams on avionics software for military aircraft\n• Collaborate with engineers on complex systems integration",
+      "date_published": "2026-09-10T09:19:37.676Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/pratt-and-whitney-advanced-measurement-str-data-recording-summer-intern-onsite-4465632522",
+      "url": "https://interndoor.com/us/jobs/pratt-and-whitney-advanced-measurement-str-data-recording-summer-intern-onsite-4465632522",
+      "title": "Advanced Measurement Str Data Recording Summer Intern (Onsite) — Pratt & Whitney",
+      "content_text": "Company: Pratt & Whitney · Location: Middletown, CT\n• Configure high-speed data systems for engine testing\n• Install and troubleshoot sensors and wiring in test cells\n• Collaborate with engineers on sensor calibration and data acquisition",
+      "date_published": "2026-09-10T09:19:33.910Z",
+      "authors": [
+        {
+          "name": "Pratt & Whitney"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/epic-games-tools-programmer-intern-4455493611",
+      "url": "https://interndoor.com/us/jobs/epic-games-tools-programmer-intern-4455493611",
+      "title": "Tools Programmer Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary, NC\n• Build and refine tools for Fortnite and Unreal Engine development\n• Write tests and analyze data to improve tool reliability\n• Collaborate with QA and developers to streamline workflows",
+      "date_published": "2026-09-10T09:15:14.712Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-advanced-dram-process-integration-4454998143",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-advanced-dram-process-integration-4454998143",
+      "title": "Intern - Advanced DRAM Process Integration — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Support development of next-gen dram technologies with focus on performance and reliability\n• Work with ai tools to analyze data and improve process integration\n• Collaborate across engineering teams to solve integration and circuit challenges",
+      "date_published": "2026-09-10T09:06:47.770Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-hoffman-estates-il-4463442137",
+      "url": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-hoffman-estates-il-4463442137",
+      "title": "Electrical Engineering Co-op - Hoffman Estates, IL — Siemens Healthineers",
+      "content_text": "Company: Siemens Healthineers · Location: Hoffman Estates, IL\n• Develop PCBs, FPGA designs, and test fixtures for hardware projects\n• Write firmware/scripts for automated testing and documentation\n• Collaborate on engineering tools and infrastructure for testing environments",
+      "date_published": "2026-09-10T08:52:52.735Z",
+      "authors": [
+        {
+          "name": "Siemens Healthineers"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/joseph-gallagher-limited-web-development-apprentice-4464195624",
+      "url": "https://interndoor.com/us/jobs/joseph-gallagher-limited-web-development-apprentice-4464195624",
+      "title": "Web Development Apprentice — Joseph Gallagher Limited",
+      "content_text": "Company: Joseph Gallagher Limited · Location: Essex, MD\n• Write clean code for internal apps and automation tools\n• Work with c# asp.net and git in a team environment\n• Learn api design and web services in real projects",
+      "date_published": "2026-09-10T08:39:19.409Z",
+      "authors": [
+        {
+          "name": "Joseph Gallagher Limited"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/shield-ai-summer-2027-software-engineer-intern-4465604643",
       "url": "https://interndoor.com/us/jobs/shield-ai-summer-2027-software-engineer-intern-4465604643",
       "title": "Summer 2027 - Software Engineer Intern — Shield AI",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/entegris-automation-and-controls-engineering-co-op-4465382077",
-      "url": "https://interndoor.com/us/jobs/entegris-automation-and-controls-engineering-co-op-4465382077",
-      "title": "Automation & Controls Engineering Co-Op — Entegris",
-      "content_text": "Company: Entegris · Location: Billerica, MA · Duration: 6 months\n• Support PLC programming, HMI/SCADA systems, and automation projects\n• Work with Allen-Bradley/Rockwell, commission equipment, and improve OEE\n• Collaborate with manufacturing and maintenance teams on real projects",
-      "date_published": "2026-09-10T01:23:51.450Z",
-      "authors": [
-        {
-          "name": "Entegris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/entegris-application-engineering-co-op-4465387043",
-      "url": "https://interndoor.com/us/jobs/entegris-application-engineering-co-op-4465387043",
-      "title": "Application Engineering Co-Op — Entegris",
-      "content_text": "Company: Entegris · Location: Billerica, MA · Duration: 6 months\n• Test membranes and filtration products used in photolithography processes\n• Analyze data and share findings with global teams\n• Work 40 hours a week in Billerica, MA for 6 months",
-      "date_published": "2026-09-10T01:23:50.708Z",
-      "authors": [
-        {
-          "name": "Entegris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/entegris-capital-equipment-engineering-co-op-4465392007",
-      "url": "https://interndoor.com/us/jobs/entegris-capital-equipment-engineering-co-op-4465392007",
-      "title": "Capital Equipment Engineering Co-Op — Entegris",
-      "content_text": "Company: Entegris · Location: Billerica, MA · Duration: 6 months\n• Support equipment design and delivery projects\n• Collaborate with global engineering teams\n• Prepare documentation for new equipment launches",
-      "date_published": "2026-09-10T01:23:32.852Z",
-      "authors": [
-        {
-          "name": "Entegris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4465339281",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4465339281",
-      "title": "Software Engineering Co-op (Spring/Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Design and develop software for flight management systems used in military aircraft\n• Work with C, C++, ADA, and Python in a team of engineers\n• Full-time co-op with potential for semester off from studies",
-      "date_published": "2026-09-10T00:38:11.412Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004",
-      "url": "https://interndoor.com/us/jobs/epic-games-backend-services-programmer-intern-ats-greenhouse-epicgames-6183293004",
-      "title": "Backend Services Programmer Intern — Epic Games",
-      "content_text": "Company: Epic Games · Location: Cary,North Carolina,United States\n• Build systems that power Fortnite experiences\n• Work with AWS and *nix systems\n• Flexible start date in 2027",
-      "date_published": "2026-09-10T00:30:00.000Z",
-      "authors": [
-        {
-          "name": "Epic Games"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/epic-games-ui-programmer-intern-ats-greenhouse-epicgames-6183401004",
-      "url": "https://interndoor.com/us/jobs/epic-games-ui-programmer-intern-ats-greenhouse-epicgames-6183401004",
-      "title": "UI Programmer Intern — Epic Games",
-      "content_text": "Company: Epic Games · Location: Cary,North Carolina,United States\n• Work on in-game UI systems for seasonal content\n• Use C++ and Unreal Engine with UMG and MVVM\n• Collaborate with art, design, and gameplay teams",
-      "date_published": "2026-09-10T00:22:33.000Z",
-      "authors": [
-        {
-          "name": "Epic Games"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-systems-design-engineering-intern-4465374263",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-systems-design-engineering-intern-4465374263",
-      "title": "Systems Design Engineering Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: 12 weeks\n• Design and develop electromechanical systems with embedded sensors and algorithms\n• Collaborate with engineers and scientists on medical device innovation\n• Integrate AI models into device workflows and analyze data",
-      "date_published": "2026-09-10T00:16:55.739Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
         }
       ]
     }
