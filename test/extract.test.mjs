@@ -47,6 +47,25 @@ money('bare figure, no period', 'The office is a $30 million campus.', null);
 // ...but a period alone is enough, even without the word "stipend".
 money('period without keyword', 'The selected intern receives Rs 20,000 per month.', 20000, 20000, 'INR', 'month');
 
+console.log('\n== an unstated period is not "total" ==');
+// THE WORD "stipend" WAS A PERIOD PATTERN MEANING `total`. Smowcode's
+// "Internship stipend - \u20b915,000." is a monthly figure and the site rendered
+// "\u20b915,000 / total" on the card, the job page and the sidebar. Every one of
+// these lines states an amount and NO period, so the only honest answer is a
+// null period, which formatStipend renders as the bare amount.
+money('bare "stipend -" line', 'Internship stipend - \u20b915,000.', 15000, 15000, 'INR', null);
+money('bare "Stipend:" line', 'Stipend: \u20b910,000', 10000, 10000, 'INR', null);
+money('bare "Stipend -" with Rs.', 'Stipend - Rs. 25,000', 25000, 25000, 'INR', null);
+check('renders with no period suffix', formatStipend(extractStipend('Internship stipend - \u20b915,000.')), '\u20b915,000');
+// A period stated ANYWHERE on the line still wins — these are what the
+// mis-firing rule was hiding behind, and they must be untouched.
+money('stipend + monthly', 'Internship stipend - \u20b915,000 per month.', 15000, 15000, 'INR', 'month');
+money('stipend + weekly', 'Weekly stipend of $750 for the summer.', 750, 750, 'USD', 'week');
+// `total` and `lump sum` are claims the employer actually makes. Principal
+// Financial Group's live posting says exactly this and must keep its period.
+money('real lump sum', 'You will receive a lump sum stipend of $4,000 to support incidental expenses.', 4000, 4000, 'USD', 'total');
+money('word "total"', 'Total stipend for the internship: \u20b950,000', 50000, 50000, 'INR', 'total');
+
 console.log('\n== duration ==');
 check('6 months', extractDuration('This is a 6 months internship'), '6 months');
 check('range', extractDuration('Duration: 3-6 months'), '3-6 months');
