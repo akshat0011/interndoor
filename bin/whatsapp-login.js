@@ -49,7 +49,10 @@ while (Date.now() < deadline) {
   await page.waitForTimeout(3000);
   const left = Math.round((deadline - Date.now()) / 60_000);
   if (left !== announced) { announced = left; process.stdout.write(`  …still waiting, ${left} min left\n`); }
-  const now = await sessionState(page, { timeoutMs: 4000 });
+  /* BOTH budgets. sessionState waits up to SESSION_LOADING_MS by default while
+     WhatsApp shows its splash, and this is a 3-second poll whose countdown and
+     deadline only stay honest if every check is short. */
+  const now = await sessionState(page, { timeoutMs: 4000, loadingTimeoutMs: 4000 });
   if (now.state === 'ready') {
     console.log('\nLinked. The session is saved in this profile and survives restarts.');
     // A moment for WhatsApp to finish writing its IndexedDB before the context

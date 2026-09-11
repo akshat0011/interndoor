@@ -177,27 +177,69 @@ export async function claimSession(page) {
  * will eventually stop being true, so this asks several questions and reports
  * what it saw rather than returning a bare boolean. A send that cannot tell
  * which state it is in must do nothing, not press on.
+ *
+ * WHATSAPP SAYS WHEN IT IS STILL STARTING, AND THIS USED TO IGNORE IT. A
+ * profile that has sat closed for half an hour opens on its own splash — a
+ * progress bar over "Don't close this window. Your messages are downloading."
+ * — and the chat list does not exist until that finishes. Measured with no scan
+ * running (11 Sep 2026): the browser took 25s to open and the splash cleared
+ * 3.8s after that. At the END of a scan the same open is far slower — the
+ * browser alone took ~54s on the 22:44 IST run — and a flat 45s was sitting on
+ * the edge of the real startup time: **26 of 84 attempts between 5 and 11 Sep
+ * gave up here as `unknown`**, the largest failure this channel has, while a
+ * one-listing SUCCESS took a median 97s from the Telegram post.
+ *
+ * So a page showing nothing recognisable still gives up at SESSION_MS, and the
+ * wait stretches to SESSION_LOADING_MS for as long as the page is visibly
+ * starting. `loading` is only consulted while the chat list is ABSENT, so a
+ * spinner somewhere inside a working client can never hold this open.
+ *
+ * GIVING UP RETURNS WHAT IT LAST SAW. A bare `unknown` was all the log ever
+ * said, which is why this took a day to diagnose. The text is read only while
+ * the chat list is absent, so it is the splash, never a conversation.
  */
-export async function sessionState(page, { timeoutMs = 45_000 } = {}) {
-  const deadline = Date.now() + timeoutMs;
-  while (Date.now() < deadline) {
-    const seen = await page.evaluate(() => ({
-      chatList: !!document.querySelector('#pane-side'),
-      qr: !!document.querySelector('[data-ref], canvas[aria-label*="scan" i], canvas[aria-label*="QR" i]'),
-      loading: /loading|starting/i.test(document.body.innerText.slice(0, 400)),
-      elsewhere: /open in another window|use here/i.test(document.body.innerText.slice(0, 400)),
-      unsupported: /works with google chrome|update chrome/i.test(document.body.innerText.slice(0, 400)),
-      text: document.body.innerText.slice(0, 120).replace(/\s+/g, ' '),
-    }));
-    if (seen.chatList) return { state: 'ready', ...seen };
-    if (seen.qr) return { state: 'needs-qr', ...seen };
+export const SESSION_MS = 45_000;
+export const SESSION_LOADING_MS = 150_000;
+export const SESSION_POLL_MS = 1_000;
+
+export async function sessionState(page, { timeoutMs = SESSION_MS, loadingTimeoutMs = SESSION_LOADING_MS, now = Date.now } = {}) {
+  const started = now();
+  for (;;) {
+    const seen = await page.evaluate(() => {
+      const body = document.body?.innerText ?? '';
+      const head = body.slice(0, 400);
+      const chatList = !!document.querySelector('#pane-side');
+      return {
+        chatList,
+        qr: !!document.querySelector('[data-ref], canvas[aria-label*="scan" i], canvas[aria-label*="QR" i]'),
+        loading: /loading|starting/i.test(head) || !!document.querySelector('progress, [role="progressbar"]'),
+        elsewhere: /open in another window|use here/i.test(head),
+        unsupported: /works with google chrome|update chrome/i.test(head),
+        text: chatList ? '' : body.slice(0, 120).replace(/\s+/g, ' ').trim(),
+      };
+    });
+    const waitedMs = now() - started;
+    if (seen.chatList) return { state: 'ready', ...seen, waitedMs };
+    if (seen.qr) return { state: 'needs-qr', ...seen, waitedMs };
+    /* CHECKED AFTER THE READ — awaitComposer's rule: a deadline tested first
+       spends its budget sleeping and never takes the reading it was for. */
+    const budget = seen.loading ? Math.max(timeoutMs, loadingTimeoutMs) : timeoutMs;
+    if (waitedMs >= budget) return { state: seen.loading ? 'still-loading' : 'unknown', ...seen, waitedMs };
     /* Linked, but claimed elsewhere. Take the claim and carry on rather than
        reporting a broken session — the account is fine. */
     if (seen.elsewhere && await claimSession(page)) continue;
-    if (seen.unsupported) return { state: 'browser-refused', ...seen };
-    await page.waitForTimeout(1000);
+    if (seen.unsupported) return { state: 'browser-refused', ...seen, waitedMs };
+    await page.waitForTimeout(SESSION_POLL_MS);
   }
-  return { state: 'unknown' };
+}
+
+/** What a failed session read says in the log: the state, how long each half of
+ *  the open took, and the page's own words — the three things a bare `unknown`
+ *  never told anyone. */
+export function describeSession(s, openS) {
+  const waited = Math.round((s?.waitedMs ?? 0) / 1000);
+  const shown = s?.text ? `; the page read "${s.text}"` : '';
+  return `${s?.state ?? 'unknown'} after ${waited}s; the browser took ${openS}s to open${shown}`;
 }
 
 /* ---------------------------------------------------------------- the target */
@@ -683,17 +725,23 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
      that never rendered — plus the catch, where the browser died mid-batch. */
   const posted = new Set();
   try {
+    const openedAt = Date.now();
     const opened = await openWhatsApp({ headless: conf.headless !== false });
     ctx = opened.ctx;
     const { page } = opened;
+    const openS = Math.round((Date.now() - openedAt) / 1000);
 
     const s = await sessionState(page);
     if (s.state !== 'ready') {
       log.warn(s.state === 'needs-qr'
         ? 'WhatsApp: the number is not linked — run npm run whatsapp-login. Nothing posted.'
-        : `WhatsApp: could not read the session (${s.state}). Nothing posted.`);
+        : `WhatsApp: could not read the session (${describeSession(s, openS)}). Nothing posted.`);
       return { sent: 0, reason: s.state };
     }
+    /* Logged on every attempt, not only a failed one. The startup cost at the
+       end of a scan is the number SESSION_MS and SESSION_LOADING_MS are tuned
+       against, and nothing else records it. */
+    log.info(`WhatsApp: browser open in ${openS}s, session ready ${Math.round(s.waitedMs / 1000)}s later.`);
 
     const target = await findTarget(page, conf.target);
     if (!target.ok) {
