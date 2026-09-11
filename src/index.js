@@ -805,7 +805,7 @@ async function main() {
         }
         if (unidentified?.length) {
           counters.cardsWithoutId += unidentified.length;
-          log.warn(`${unidentified.length} card(s) on this page had no readable company or title and could not be processed: ${unidentified.filter(Boolean).slice(0, 3).join(' | ')}`);
+          log.warn(`${unidentified.length} card(s) on this page had no readable title and could not be processed: ${unidentified.filter(Boolean).slice(0, 3).join(' | ')}`);
         }
         await assertListRendered(page, cards.length, { pageIndex: pageIndex + 1, searchLabel: label, renderedEarlierPage });
         if (cards.length) renderedEarlierPage = true;
@@ -905,12 +905,7 @@ async function main() {
           // watchlist stopped being a hard gate, unknown became publishable.
           // MedTourEasy, on the blocklist for being a reported scam, turned up
           // 304 times in one week as a card the old gate happened to drop.
-          if (isBlockedCompany(card.company)) {
-            counters.skippedCompany++;
-            store.noteSkippedCard(card.identity, 'blocked employer', card.company, card.title);
-            continue;
-          }
-
+          //
           // COMPANY IS THE FIRST GATE. If the employer is not one we care
           // about, nothing else about the posting matters — no title parsing,
           // no role classification, and above all no Gemini call. This is what
@@ -919,11 +914,26 @@ async function main() {
           // and the unpaid "training & internship" listings that fill a broad
           // search. New employers are added to companies.json by hand, on
           // purpose: a name on the list is a name somebody vouched for.
-          const matched = matchCompany(card.company, cfg.watchlist);
-          if (cfg.matching.requireCompanyMatch && !matched) {
-            counters.skippedCompany++;
-            store.noteSkippedCard(card.identity, 'company not on watchlist', card.company, card.title);
-            continue;
+          //
+          // Both checks are companyGate — the same function the pane goes
+          // through after the click for a card that carries NO company line.
+          // Such a card has nothing to be judged on here, so it is let past,
+          // opened, and admitted or refused on the company the pane names.
+          const gateRules = {
+            watchlist: cfg.watchlist,
+            requireCompanyMatch: cfg.matching.requireCompanyMatch,
+            matchCompany,
+            isBlockedCompany,
+          };
+          let matched = null;
+          if (card.company) {
+            const gate = li.companyGate(card.company, gateRules);
+            if (!gate.admit) {
+              counters.skippedCompany++;
+              store.noteSkippedCard(card.identity, gate.reason, card.company, card.title);
+              continue;
+            }
+            matched = gate.matched;
           }
 
           const postedAt = parseRelativeTime(card.postedText);
@@ -1065,7 +1075,8 @@ async function main() {
             opensByCompany.set(card.company, seenForCompany + 1);
           }
 
-          log.ok(`Opening: ${card.title} — ${card.company}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
+          log.ok(`Opening: ${card.title} — ${card.company || 'no company on the card'}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
+          if (!card.company) log.debug(`  no company line on this card, so the pane decides: ${(card.lines ?? []).join(' | ').slice(0, 240)}`);
 
           await pause(cfg.pacing.betweenCards);
           await idleFidget(page);
@@ -1100,6 +1111,22 @@ async function main() {
             }
             await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
             continue;
+          }
+
+          /* A CARD WITH NO COMPANY LINE IS JUDGED ON THE PANE'S. It was let past
+             the employer gate only because it had nothing to be judged on; the
+             pane names the employer, so the same companyGate runs here, one click
+             later. These opens share one "" bucket in opensByCompany, so they are
+             capped per search exactly like a single employer. */
+          if (!card.company) {
+            const gate = li.companyGate(detail.company, gateRules);
+            if (!gate.admit) {
+              counters.skippedCompany++;
+              store.noteSkippedCard(card.identity, gate.reason, detail.company || '', card.title);
+              continue;
+            }
+            matched = gate.matched;
+            log.info(`  No company line on the card — the pane names ${detail.company} [${matched ?? 'not on the watchlist'}].`);
           }
 
           /* THE DECIDING VOTE for a card admitted on a tech title that never
