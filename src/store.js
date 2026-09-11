@@ -131,9 +131,11 @@ CREATE INDEX IF NOT EXISTS idx_company_ids_status ON company_ids(status);
 CREATE TABLE IF NOT EXISTS post_queue (
   job_id     TEXT PRIMARY KEY,
   added_at   INTEGER NOT NULL,
-  -- 'queued' until a draft exists, then 'drafted'. A drafted row STAYS here so
-  -- the post can be re-read and re-copied after the tab is closed; clearing is
-  -- an explicit action.
+  -- 'queued' until a draft exists, then 'drafted'. A row is dropped 24h after
+  -- COALESCE(drafted_at, added_at) by prunePostQueue -- the queue is a day's
+  -- work, not an archive. It used to be kept for ever so a post could be
+  -- re-copied after the tab was closed, and because /posts/latest renders the
+  -- whole queue that turned the page into an append-only log of 40 drafts.
   status     TEXT NOT NULL DEFAULT 'queued',
   batch_id   TEXT,
   post_text  TEXT,
@@ -1361,6 +1363,29 @@ export class Store {
       ORDER BY q.added_at
     `).all(...(status ? [status] : []));
     return rows.map(hydrate);
+  }
+
+  /**
+   * Drop post-queue rows past their day.
+   *
+   * The table's own comment used to say a drafted row STAYS so the post can be
+   * re-read after the tab is closed, and that is what let the page grow to 40
+   * drafts and 265 KB, the oldest 13 days old. A LinkedIn post about a posting
+   * that went live last week is not worth pasting — "be early" is the reason
+   * anyone follows the channel, and the page itself already prints that warning
+   * on anything over a day old. So the queue is now a DAY's work, not an
+   * archive.
+   *
+   * Ages on `COALESCE(drafted_at, added_at)`, which is one rule rather than
+   * two: a drafted row is judged from when its post was written, and a row
+   * queued and never drafted from when he queued it. The second half matters
+   * because generating a week-old queued row produces exactly the stale post
+   * this is here to prevent, just by a different door.
+   */
+  prunePostQueue(cutoffMs) {
+    return this.db.prepare(
+      'DELETE FROM post_queue WHERE COALESCE(drafted_at, added_at) < ?',
+    ).run(cutoffMs).changes;
   }
 
   /** Every posting in one generated batch, in the order it was queued. */

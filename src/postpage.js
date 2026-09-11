@@ -9,7 +9,7 @@
  * Styled to match src/report.js rather than the public site: this is a tool he
  * looks at, not a page anyone else ever sees.
  */
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readdirSync, statSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
 import { plainText, composeComment, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
@@ -402,10 +402,47 @@ export function buildPostsPage(drafts, batch) {
 /** Write the page to a batch file plus the stable latest.html. Returns its path. */
 export function writePostsPage(html, batchId) {
   ensureDirs();
+  writeFileSync(PATHS.latestPosts, html, 'utf8');
+  // A null batch id means "this is not a new batch" — a re-render after rows
+  // aged out. It must NOT stamp a batch file: the page holds the whole queue,
+  // so writing it under the newest survivor's id would file other batches'
+  // drafts under that batch and leave /posts/<id> answering with a page that
+  // is not that batch.
+  if (batchId == null) return PATHS.latestPosts;
   const file = join(PATHS.posts, `posts-${batchId}.html`);
   writeFileSync(file, html, 'utf8');
-  writeFileSync(PATHS.latestPosts, html, 'utf8');
   return file;
+}
+
+/**
+ * Delete stored post PAGES last written before the cutoff.
+ *
+ * The batch pages are the other half of the queue's retention: 43 of them had
+ * accumulated since 24 Aug, each one reachable at /posts/<id> and each holding
+ * posts the queue itself no longer has.
+ *
+ * TWO NAMES MUST SURVIVE WHATEVER THE CUTOFF, and both are in this directory:
+ * `latest.html` is the page he actually opens, and `weekly-*.html` is the
+ * Sunday roundup, which is a different feature with a different lifetime.
+ * Excluded BY NAME rather than by age — relying on mtime to spare the file
+ * that must never be deleted is one stale timestamp away from deleting it.
+ */
+export function prunePostPages(cutoffMs, dir = PATHS.posts) {
+  let names;
+  // A directory that does not exist yet holds nothing to prune, and creating
+  // it here would make a read-only helper write to disk.
+  try { names = readdirSync(dir); } catch { return 0; }
+  let dropped = 0;
+  for (const name of names) {
+    if (!name.startsWith('posts-') || !name.endsWith('.html')) continue;
+    const file = join(dir, name);
+    try {
+      if (statSync(file).mtimeMs >= cutoffMs) continue;
+      unlinkSync(file);
+      dropped++;
+    } catch { /* a file that vanished under us needs no deleting */ }
+  }
+  return dropped;
 }
 
 /* ------------------------------------------------------- the Sunday roundup */

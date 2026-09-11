@@ -28,12 +28,12 @@ import { join } from 'node:path';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { PATHS, storygastedRoot } from '../src/paths.js';
-import { readdirSync } from 'node:fs';
+import { readdirSync, unlinkSync } from 'node:fs';
 import { renderReportIndex, runIdFromFile, companiesIn, jobCountIn, INDEX_LIMIT } from '../src/reportindex.js';
 import { postableRegion } from '../src/postregions.js';
 import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
-import { buildPostsPage, writePostsPage } from '../src/postpage.js';
+import { buildPostsPage, writePostsPage, prunePostPages } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
 import { weeklyRoundup, publishedIdsFor } from '../src/weekly.js';
 import { renderWeeklyCard, MAX_LOGOS } from '../src/weeklycard.js';
@@ -145,6 +145,77 @@ async function sendFile(res, path, notFound) {
 let running = null;
 
 /**
+ * THE QUEUE IS A DAY'S WORK, NOT AN ARCHIVE — 11 Sep 2026.
+ *
+ * `post_queue` kept a drafted row for ever so a post could be re-copied after
+ * the tab was closed, and `/posts/latest` renders the WHOLE queue rather than
+ * one batch. Together those made the page an append-only log: 40 drafts,
+ * 265 KB, the oldest 13 days old, with Tesla and F5 from two days ago sitting
+ * above the roles he actually wanted to post. His instruction was to keep the
+ * current day's and drop the rest after 24 hours.
+ *
+ * The page itself already knew: it prints "be early is the reason anyone
+ * follows this, so consider rewriting or skipping it" on anything over a day
+ * old. This deletes what that warning describes instead of rendering it.
+ */
+const POST_TTL_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Drop expired drafts, their stored pages, and — only when something actually
+ * went — re-render `latest.html` from what is left.
+ *
+ * THE RE-RENDER IS GATED ON `dropped` FOR A REASON. `latest.html` is a static
+ * file and the combined post ("All selected postings, as one post") lives ONLY
+ * in it — `/api/generate/combined` composes that block on demand and nothing
+ * persists it. Re-rendering on every 60-second tick would therefore delete a
+ * combined post he had just generated, within a minute, for no gain. Gated, it
+ * can only be lost when a row genuinely ages out.
+ *
+ * With nothing left, the file is REMOVED rather than rewritten empty, so the
+ * route falls through to its own 404 copy.
+ */
+function prunePosts(now = Date.now()) {
+  const cutoff = now - POST_TTL_MS;
+  const dropped = store.prunePostQueue(cutoff);
+  const pages = prunePostPages(cutoff, PATHS.posts);
+  // Reported whenever EITHER half did something. Gating the line on `dropped`
+  // alone hides a file sweep that ran on its own, which is the state after the
+  // rows have already gone and only the stored pages are ageing out.
+  if (!dropped && !pages) return { dropped, pages, left: null };
+
+  let left = null;
+  if (dropped) {
+    left = store.queuedJobs('drafted').map((row) => ({
+      row,
+      facts: jobFacts(row, cfg),
+      text: row.post_text,
+      meta: safeMeta(row.post_meta),
+    }));
+
+    if (!left.length) {
+      if (existsSync(PATHS.latestPosts)) unlinkSync(PATHS.latestPosts);
+    } else {
+      writePostsPage(
+        buildPostsPage(left, {
+          batchId: null,
+          model: cfg.postQueue?.model || cfg.ollama?.model || 'qwen3:8b',
+          generatedAt: now,
+        }),
+        null,
+      );
+    }
+  }
+
+  log.info([
+    `Post queue: over ${POST_TTL_MS / 3600000}h —`,
+    dropped ? `dropped ${dropped} draft${dropped === 1 ? '' : 's'},` : null,
+    pages ? `${pages} stored page${pages === 1 ? '' : 's'},` : null,
+    left ? `${left.length} left.` : 'queue unchanged.',
+  ].filter(Boolean).join(' '));
+  return { dropped, pages, left: left?.length ?? null };
+}
+
+/**
  * Draft posts for the queue.
  *
  * With no ids, only rows that have NOT been drafted yet — a drafted row stays in
@@ -154,6 +225,7 @@ let running = null;
  * the only way an existing draft is replaced.
  */
 async function generate(jobIds) {
+  prunePosts();
   const rows = jobIds?.length
     ? store.queuedJobs().filter((r) => jobIds.includes(r.job_id))
     : store.queuedJobs('queued');
@@ -697,6 +769,7 @@ function autoSweep() {
 }
 
 setInterval(() => {
+  try { prunePosts(); } catch (e) { log.warn(`Post queue prune: ${e.message}`); }
   try { autoSweep(); } catch (e) { log.warn(`Reel auto-sweep: ${e.message}`); }
   drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));
 }, 60_000);
@@ -831,6 +904,7 @@ const server = createServer(async (req, res) => {
     const body = await readJson(req, res);
     if (!body) return undefined;
 
+    prunePosts();
     const ids = Array.isArray(body.jobIds) ? body.jobIds.map(String) : null;
     const rows = ids?.length
       ? store.queuedJobs().filter((r) => ids.includes(String(r.job_id)))
