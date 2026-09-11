@@ -338,5 +338,73 @@ check('the channel branch awaits the composer', /const v = await awaitComposer\(
 check('all three stages now have a real budget',
   [/CHANNELS_NAV_MS = 20_000/, /CHANNEL_ROW_MS = 20_000/, /COMPOSER_MS = 20_000/].every((re) => re.test(wcode)), true);
 
+console.log('\n== the session wait follows WhatsApp\'s own startup screen ==');
+/* A profile closed for half an hour opens on a splash — a progress bar over
+   "Your messages are downloading." — before the chat list exists. With no scan
+   running it clears in about 4s; at the end of a scan it outlasted the flat 45s
+   this used to wait on 26 of 84 attempts between 5 and 11 Sep. */
+const { sessionState, describeSession, SESSION_MS, SESSION_LOADING_MS } = await import('../src/whatsapp.js');
+const SPLASH = { chatList: false, qr: false, loading: true, elsewhere: false, unsupported: false,
+  text: "WhatsApp End-to-end encrypted Don't close this window. Your messages are downloading." };
+const BLANK = { chatList: false, qr: false, loading: false, elsewhere: false, unsupported: false, text: '' };
+const READY = { chatList: true, qr: false, loading: false, elsewhere: false, unsupported: false, text: '' };
+/** A page that shows `script` in order and then its last entry for ever, on a
+ *  clock that moves one second per call — so nothing here waits in real time. */
+const scripted = (script) => {
+  let i = 0, t = 0;
+  return {
+    page: { async evaluate() { return script[Math.min(i++, script.length - 1)]; }, async waitForTimeout() {} },
+    now: () => (t += 1000),
+  };
+};
+const budget = { timeoutMs: 5_000, loadingTimeoutMs: 20_000 };
+{
+  const { page, now } = scripted([...Array(10).fill(SPLASH), READY]);
+  check('a splash that outlasts the base wait is waited out',
+    (await sessionState(page, { ...budget, now })).state, 'ready');
+}
+{
+  /* THE OTHER HALF, and the one that stops this becoming a flat 150s: a page
+     that is not visibly starting gives up exactly where it always did. */
+  const { page, now } = scripted([BLANK]);
+  const s = await sessionState(page, { ...budget, now });
+  check('a page showing nothing recognisable still gives up at the base wait',
+    [s.state, s.waitedMs >= 5_000 && s.waitedMs < 20_000], ['unknown', true]);
+}
+{
+  const { page, now } = scripted([SPLASH]);
+  const s = await sessionState(page, { ...budget, now });
+  check('a splash that never clears gives up at the longer ceiling, and says so',
+    [s.state, s.waitedMs >= 20_000], ['still-loading', true]);
+  check('and reports what the page showed', s.text, SPLASH.text);
+}
+{
+  let waits = 0;
+  const page = { async evaluate() { return READY; }, async waitForTimeout() { waits += 1; } };
+  check('a ready session costs no wait at all',
+    [(await sessionState(page, { ...budget, now: () => 0 })).state, waits], ['ready', 0]);
+}
+check('the base wait is unchanged and the splash ceiling is longer',
+  [SESSION_MS, SESSION_LOADING_MS > SESSION_MS], [45_000, true]);
+
+console.log('\n== and a failed read says why, in the log ==');
+check('it names the state, both timings and the page text',
+  describeSession({ state: 'still-loading', waitedMs: 150_400, text: 'Your messages are downloading.' }, 54),
+  'still-loading after 150s; the browser took 54s to open; the page read "Your messages are downloading."');
+check('and stays readable with no page text',
+  describeSession({ state: 'unknown', waitedMs: 45_000, text: '' }, 25),
+  'unknown after 45s; the browser took 25s to open');
+check('the send path logs through it',
+  /could not read the session \(\$\{describeSession\(s, openS\)\}\)/.test(wcode), true);
+
+console.log('\n== the login poll keeps its short check ==');
+/* sessionState now waits up to SESSION_LOADING_MS while the splash shows. The
+   login script polls every 3s behind a countdown, so its check has to cap the
+   splash budget too, or one poll can swallow two and a half minutes. */
+const loginCode = readFileSync(join(ROOT, 'bin', 'whatsapp-login.js'), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('the login poll caps both budgets',
+  /sessionState\(page, \{ timeoutMs: 4000, loadingTimeoutMs: 4000 \}\)/.test(loginCode), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
