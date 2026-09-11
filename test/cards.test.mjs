@@ -8,7 +8,7 @@
  * from LinkedIn to the site, so it is checked against the real shapes rather
  * than against invented ones.
  */
-import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity, paneMismatch } from '../src/linkedin.js';
+import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity, paneMismatch, companyGate, enumerateCards } from '../src/linkedin.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -255,6 +255,112 @@ check('empty card company proceeds', mism('', 'R360 Group'), null);
 const msg = mism('State Street', 'R360 Group');
 check('the warning names both employers',
   [msg.includes('State Street'), msg.includes('R360 Group')], [true, true]);
+
+console.log('\n== a card with no company line (11 Sep 2026) ==');
+// Merck's US "Future Talent Program" cards carry no company line, so the
+// location moved up into the company slot and LinkedIn's "Within the past 24
+// hours" badge moved into the location slot. These are RECONSTRUCTED from the
+// 285 seen_cards identities they produced — "card:rahway, nj (hybrid)|<title>|
+// within the past 24 hours" — so the order is the order the parser saw, with
+// the posted stamp (which it drops either way) put back. Every one was refused
+// as "company not on watchlist" with Merck and MSD both on the list.
+card('no company line: the location is not the company', [
+  '2027 Future Talent Program – Modeling & Informatics - Intern',
+  'Rahway, NJ (On-site)', '2 hours ago', 'Within the past 24 hours',
+], { title: '2027 Future Talent Program – Modeling & Informatics - Intern', company: '',
+     location: 'Rahway, NJ', workplaceType: 'On-site', postedText: '2 hours ago',
+     easyApply: false, viewed: false });
+
+card('no company line, with the verification line', [
+  '2027 Future Talent Program - Statistical Programmer - Intern',
+  '2027 Future Talent Program - Statistical Programmer - Intern with verification',
+  'West Point, PA (Hybrid)', 'Within the past 24 hours', '1 hour ago',
+], { title: '2027 Future Talent Program - Statistical Programmer - Intern', company: '',
+     location: 'West Point, PA', workplaceType: 'Hybrid', postedText: '1 hour ago',
+     easyApply: false, viewed: false });
+
+check('its identity keys on the place, not on a fake employer',
+  cardIdentity(parseCardLines([
+    '2027 Future Talent Program – Biocatalysis Intern', 'Rahway, NJ (On-site)', '1 hour ago', 'Within the past 24 hours',
+  ])),
+  'card:|2027 future talent program – biocatalysis intern|rahway, nj');
+
+// The badge is furniture wherever it lands: a card with a company and no
+// location line used to file the badge AS the location.
+card('the recency badge never becomes the location', [
+  'Intern', 'Acme Robotics', '3 hours ago', 'Within the past 24 hours',
+], { title: 'Intern', company: 'Acme Robotics', location: '', workplaceType: null,
+     postedText: '3 hours ago', easyApply: false, viewed: false });
+
+// The rule is the BRACKETED suffix LinkedIn appends to a place, not the word —
+// an employer called Remote is still an employer.
+card('a company called Remote is not a location', [
+  'Software Engineering Intern', 'Remote', 'India (Remote)', '5 hours ago',
+], { title: 'Software Engineering Intern', company: 'Remote', location: 'India',
+     workplaceType: 'Remote', postedText: '5 hours ago', easyApply: false, viewed: false });
+
+console.log('\n== enumerateCards keeps a card with no company line ==');
+{
+  const rows = [
+    { idCount: 1, jobId: '4460000001', logoUrl: '', href: '',
+      lines: ['2027 Future Talent Program – Modeling & Informatics - Intern', 'Rahway, NJ (On-site)', '2 hours ago', 'Within the past 24 hours'] },
+    { idCount: 1, jobId: '4460000002', logoUrl: '', href: '',
+      lines: ['Software Engineer Intern', 'Joveo', 'Bengaluru, Karnataka, India (Hybrid)', '1 hour ago'] },
+    { idCount: 1, jobId: '4460000003', logoUrl: '', href: '', lines: [] },
+  ];
+  // Answers the three evaluate calls enumerateCards makes, in order: no named
+  // container, the locating pass, then the read. No container means no scroll.
+  const answers = [null, { rows, hasContainer: false }, { rows, hasContainer: false }];
+  const { cards, unidentified } = await enumerateCards({ evaluate: async () => answers.shift() }, { pacing: {} });
+  // Found by id, never by position: a mutation that drops a card must FAIL
+  // these, not throw on cards[1] and stop the whole npm test chain (§1).
+  const bare = cards.find((c) => c.jobId === '4460000001');
+  const named = cards.find((c) => c.jobId === '4460000002');
+  check('a card named by its title alone is kept', cards.map((c) => c.jobId), ['4460000001', '4460000002']);
+  check('a card with no title is still counted, not kept', unidentified.length, 1);
+  check('the company-less card carries its raw lines for the log', bare?.lines?.length, 4);
+  check('a card with a company does not', named ? 'lines' in named : 'card missing', false);
+}
+
+console.log('\n== companyGate: one employer decision for the card and the pane ==');
+{
+  const rules = (over = {}) => ({
+    watchlist: [{ display: 'Merck', term: 'merck' }],
+    requireCompanyMatch: true,
+    matchCompany: (name, list) => list.find((w) => name.toLowerCase().includes(w.term))?.display ?? null,
+    isBlockedCompany: (name) => /medtoureasy/i.test(name),
+    ...over,
+  });
+  check('a watchlist employer is admitted under its display name',
+    companyGate('Merck', rules()), { admit: true, matched: 'Merck', reason: null });
+  check('an unknown employer is refused in the seen_cards wording',
+    companyGate('Signet Jewelers', rules()), { admit: false, matched: null, reason: 'company not on watchlist' });
+  check('a blocked employer is refused as blocked, even when it would match',
+    companyGate('MedTourEasy Merck', rules()), { admit: false, matched: null, reason: 'blocked employer' });
+  check('nothing to judge is refused, never admitted',
+    companyGate('  ', rules()), { admit: false, matched: null, reason: 'no company on the card or the pane' });
+  check('with the watchlist gate off, an unknown employer passes unmatched',
+    companyGate('Signet Jewelers', rules({ requireCompanyMatch: false })), { admit: true, matched: null, reason: null });
+}
+
+/* THE WIRING. companyGate is worth nothing unless index.js runs it in BOTH
+   places, and in the right order — this project has shipped a guard that ran on
+   zero of every open ever performed (paneMismatch, above). Pin the pairing. */
+console.log('\n== the wiring in index.js ==');
+{
+  const { readFileSync } = await import('node:fs');
+  const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  check('the card is gated only when it names an employer',
+    /if \(card\.company\) \{\s*const gate = li\.companyGate\(card\.company, gateRules\);\s*if \(!gate\.admit\) \{[\s\S]{0,220}?continue;/.test(src), true);
+  check('no unconditional watchlist check on the card is left behind', /matchCompany\(card\.company/.test(src), false);
+  const opened = src.indexOf('li.openAndExtract(page, card, cfg)');
+  const judged = src.search(/if \(!card\.company\) \{\s*const gate = li\.companyGate\(detail\.company, gateRules\);\s*if \(!gate\.admit\) \{[\s\S]{0,240}?continue;\s*\}\s*matched = gate\.matched;/);
+  const stored = src.indexOf('store.mapCard(card.identity');
+  check('a company-less card is judged on the pane after the click and before it is stored',
+    [opened > 0, judged > opened, stored > judged], [true, true, true]);
+  check('both refusals record the gate\'s own reason',
+    (src.match(/store\.noteSkippedCard\(card\.identity, gate\.reason,/g) || []).length, 2);
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exitCode = fail ? 1 : 0;

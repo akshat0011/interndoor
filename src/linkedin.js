@@ -423,6 +423,11 @@ function isMetaLine(line) {
   // "Posted 19 hours ago", "19 hours ago", "0 applicants", "Over 100 people clicked apply".
   if (/\b(ago|applicants?)\b/i.test(l) || /people clicked apply/i.test(l)) return true;
   if (/^company review time/i.test(l)) return true;
+  // LinkedIn's time-filter badge, rendered under the posted stamp since 12 Aug
+  // 2026. Harmless while a card carries both a company and a location line; on
+  // a card with no company line it was read as the LOCATION — 285 skip records
+  // hold "within the past 24 hours" there (CLAUDE.md §17, 11 Sep 2026).
+  if (/^within the past\b/i.test(l)) return true;
   return false;
 }
 
@@ -623,6 +628,8 @@ async function applyUrlSeen(page, jobId, { graceMs = 2500, stepMs = 150 } = {}) 
   return null;
 }
 
+const WORKPLACE_SUFFIX = /\((Remote|Hybrid|On-?site)\)\s*$/i;
+
 export function parseCardLines(lines) {
   const clean = (lines ?? []).map((l) => String(l ?? '').trim()).filter(Boolean);
   const empty = { title: '', company: '', location: '', workplaceType: null, postedText: '', salaryText: null, easyApply: false, promoted: false, viewed: false };
@@ -634,13 +641,24 @@ export function parseCardLines(lines) {
     .filter((l) => undecorate(l).toLowerCase() !== key)
     .filter((l) => !isMetaLine(l));
 
-  const rawLocation = facts[1] ?? '';
-  const workplaceType = (rawLocation.match(/\((Remote|Hybrid|On-?site)\)\s*$/i) || [])[1] ?? null;
+  /* A WORKPLACE SUFFIX MARKS THE LOCATION LINE, AND ONLY THE LOCATION LINE.
+     LinkedIn appends "(Remote)", "(Hybrid)" or "(On-site)" to where the job is,
+     never to who is hiring — it is the same suffix workplaceType is read from
+     below. So a FIRST fact carrying one means the card has no company line and
+     the location has moved up into the company slot. Merck's US cards are this
+     shape, and every one was refused as "company not on watchlist" before a
+     click — 293 in 30 days, with Merck and MSD both on the list. Measured 11 Sep
+     2026: the suffix ends 0 stored jobs.company values and 299 seen_cards
+     companies, every one of them a place. The company is left EMPTY, never
+     guessed: the gate reads it off the pane instead (companyGate). */
+  const companyless = WORKPLACE_SUFFIX.test(facts[0] ?? '');
+  const rawLocation = (companyless ? facts[0] : facts[1]) ?? '';
+  const workplaceType = (rawLocation.match(WORKPLACE_SUFFIX) || [])[1] ?? null;
 
   const blob = clean.join(' | ');
   return {
     title,
-    company: facts[0] ?? '',
+    company: companyless ? '' : (facts[0] ?? ''),
     location: rawLocation.replace(/\s*\((?:Remote|Hybrid|On-?site)\)\s*$/i, '').trim(),
     workplaceType,
     postedText: (blob.match(/(just now|\d+\s*(?:minute|min|hour|hr|day|week|month)s?\s*ago)/i) || [])[1] || '',
@@ -692,6 +710,30 @@ export function paneMismatch(card, detail) {
      code, and its test passes against its own removal. */
   if (paneCo.includes(cardCo) || cardCo.includes(paneCo)) return null;
   return `Opened "${card.title}" at ${card.company} but the pane is showing ${detail.company} — skipping rather than filing it under the wrong employer.`;
+}
+
+/**
+ * The employer gate, as ONE decision that the card and the pane both go through.
+ *
+ * A card normally names its employer, so the blocklist and the watchlist are
+ * checked on the card's own text before any click — that is what keeps opens on
+ * watchlist employers. A card with no company line (see parseCardLines) cannot
+ * be judged there, so it is opened and judged on the PANE's company, by this
+ * same function, so the two checks cannot drift apart.
+ *
+ * The collaborators are passed in rather than imported: config.js fills the
+ * blocklist only inside loadConfig(), and a test that calls the real one against
+ * an unloaded module passes against a deleted gate (CLAUDE.md §11, `closable`).
+ *
+ * Returns `{ admit, matched, reason }`; `reason` is the seen_cards wording.
+ */
+export function companyGate(company, { watchlist, requireCompanyMatch, matchCompany, isBlockedCompany }) {
+  const name = String(company ?? '').trim();
+  if (!name) return { admit: false, matched: null, reason: 'no company on the card or the pane' };
+  if (isBlockedCompany(name)) return { admit: false, matched: null, reason: 'blocked employer' };
+  const matched = matchCompany(name, watchlist);
+  if (requireCompanyMatch && !matched) return { admit: false, matched: null, reason: 'company not on watchlist' };
+  return { admit: true, matched, reason: null };
 }
 
 /**
@@ -845,8 +887,13 @@ export async function enumerateCards(page, cfg) {
     // report it rather than dropping it in silence — an invisible loss here is
     // indistinguishable from a posting that was never advertised, which is
     // exactly how an upGrad listing went missing without leaving a trace.
-    if (!parsed.title || !parsed.company) {
-      unidentified.push(String(parsed.title || parsed.company || row.lines[0] || '').slice(0, 60));
+    //
+    // Only the TITLE is required. A card with no company line (parseCardLines)
+    // is kept with an empty company and its raw lines, and the gate judges it on
+    // the detail pane's company instead — refusing it anywhere before the click
+    // is what lost Merck's US internships (CLAUDE.md §17, 11 Sep 2026).
+    if (!parsed.title) {
+      unidentified.push(String(parsed.company || row.lines[0] || '').slice(0, 60));
       return;
     }
 
@@ -875,6 +922,9 @@ export async function enumerateCards(page, cfg) {
       nth,
       logoUrl: row.logoUrl,
       href: row.href,
+      // Kept only where the company is missing: the run logs them, so the next
+      // shape LinkedIn serves without a company line is on record verbatim.
+      ...(parsed.company ? {} : { lines: row.lines }),
     });
   });
 
