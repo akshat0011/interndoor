@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4430393055",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4430393055",
+      "title": "Cloud Security Intern — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India\n• Configure iam and secure cloud environments on aws azure or gcp\n• Work with devops to improve security posture and implement best practices\n• Learn cloud-native security tools and stay updated on threats",
+      "date_published": "2026-09-11T14:47:30.889Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4463983806",
       "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4463983806",
       "title": "Graduate Trainee Engineer — Siemens",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Electronic Arts (EA)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/krutrim-insights-artificial-intelligence-ai-trainee-in-delhi-4464927419",
-      "url": "https://interndoor.com/jobs/krutrim-insights-artificial-intelligence-ai-trainee-in-delhi-4464927419",
-      "title": "Artificial Intelligence (AI) Trainee in Delhi — Krutrim Insights",
-      "content_text": "Company: Krutrim Insights · Location: Delhi, India\n• Build full stack web apps with front end and back end tech\n• Develop backend APIs using python, fast api, and node.js\n• Work with sql and vector databases using lang chain",
-      "date_published": "2026-09-09T00:07:17.967Z",
-      "authors": [
-        {
-          "name": "Krutrim Insights"
         }
       ]
     }
