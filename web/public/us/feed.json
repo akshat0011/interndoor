@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/philips-intern-design-assurance-engineer-colorado-springs-co-summer-2027-4465160744",
+      "url": "https://interndoor.com/us/jobs/philips-intern-design-assurance-engineer-colorado-springs-co-summer-2027-4465160744",
+      "title": "Intern– Design Assurance Engineer – Colorado Springs, CO – Summer 2027 — Philips",
+      "content_text": "Company: Philips · Location: Colorado Springs, CO · Duration: Summer 2027\n• Execute lab studies to validate test methods and verify product designs\n• Analyze data to identify trends and provide actionable recommendations\n• Prepare reports for internal and external stakeholders with accuracy\n• Maintain compliance with FDA and ISO regulations",
+      "date_published": "2026-09-11T23:40:55.031Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/philips-co-op-software-design-assurance-igtd-plymouth-mn-january-2027-4465152797",
+      "url": "https://interndoor.com/us/jobs/philips-co-op-software-design-assurance-igtd-plymouth-mn-january-2027-4465152797",
+      "title": "Co-op – Software Design Assurance (IGTD) – Plymouth, MN – January 2027 — Philips",
+      "content_text": "Company: Philips · Location: Plymouth, MN\n• Review software compliance, documentation, and risk management for medical devices\n• Use tools like Power BI, SharePoint, Git, and Azure DevOps for process improvement\n• Work in hybrid office environment with cross-functional teams on regulated projects",
+      "date_published": "2026-09-11T23:40:26.422Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-internship-spring-2027-4466409887",
+      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-internship-spring-2027-4466409887",
+      "title": "GE Vernova Gas Power Engineering Internship - Spring 2027 — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Greenville, SC · Duration: Spring 2027\n• Design and analyze steam turbine, gas turbine, and generator systems\n• Collaborate with drafting and manufacturing teams on complex projects\n• Work in Greenville, SC, for 6 months starting January 2027",
+      "date_published": "2026-09-11T23:23:27.660Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/schneider-electric-electrical-and-embedded-systems-co-op-4465165702",
+      "url": "https://interndoor.com/us/jobs/schneider-electric-electrical-and-embedded-systems-co-op-4465165702",
+      "title": "Electrical & Embedded Systems Co-op — Schneider Electric",
+      "content_text": "Company: Schneider Electric · Location: Andover, MA\n• Develop embedded software and hardware for AI data center infrastructure\n• Work with C, Python, and communication protocols like CAN and Ethernet\n• Contribute to power conversion systems and real-time monitoring tools",
+      "date_published": "2026-09-11T23:12:48.469Z",
+      "authors": [
+        {
+          "name": "Schneider Electric"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/schneider-electric-power-electronics-co-op-4465147728",
+      "url": "https://interndoor.com/us/jobs/schneider-electric-power-electronics-co-op-4465147728",
+      "title": "Power Electronics Co-Op — Schneider Electric",
+      "content_text": "Company: Schneider Electric · Location: Andover, MA · Duration: 6 months\n• Design and test high-density power converters for AI data centers\n• Use PLECS, MATLAB, and LTspice for simulation and analysis\n• Work with engineers on 800V power systems and semiconductor tech",
+      "date_published": "2026-09-11T23:10:39.387Z",
+      "authors": [
+        {
+          "name": "Schneider Electric"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ccc-intelligent-solutions-r-and-d-and-data-science-internship-fall-2026-4466391840",
+      "url": "https://interndoor.com/us/jobs/ccc-intelligent-solutions-r-and-d-and-data-science-internship-fall-2026-4466391840",
+      "title": "R&D & Data Science Internship Fall 2026 — CCC Intelligent Solutions",
+      "content_text": "Company: CCC Intelligent Solutions · Location: Chicago, IL · Duration: Fall 2026\n• Build agentic AI systems and conversational avatars\n• Work with Python, Swift, and Vue.js frameworks\n• Collaborate with cross-functional teams on AI projects",
+      "date_published": "2026-09-11T23:02:16.377Z",
+      "authors": [
+        {
+          "name": "CCC Intelligent Solutions"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/emerson-hardware-design-engineer-intern-4466399567",
+      "url": "https://interndoor.com/us/jobs/emerson-hardware-design-engineer-intern-4466399567",
+      "title": "Hardware Design Engineer Intern — Emerson",
+      "content_text": "Company: Emerson · Location: Round Rock, TX · Duration: Summer 2027\n• Design PCBs, schematics, and layouts for industrial control hardware\n• Use CAD tools for mechanical design and thermal analysis\n• Work on real projects with mentorship and team collaboration",
+      "date_published": "2026-09-11T22:41:43.739Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/emerson-systems-integration-intern-4466406585",
+      "url": "https://interndoor.com/us/jobs/emerson-systems-integration-intern-4466406585",
+      "title": "Systems Integration Intern — Emerson",
+      "content_text": "Company: Emerson · Location: Round Rock, TX · Duration: Summer 2027\n• Develop software tools for testing automation systems\n• Work with DeltaV™ systems for control and graphics development\n• Collaborate on product quality and system improvement projects",
+      "date_published": "2026-09-11T22:41:13.262Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-dex-product-intern-remote-4465170571",
       "url": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-dex-product-intern-remote-4465170571",
       "title": "2027 Summer Information Technology DEX Product Intern (Remote) — Constellation",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Sanofi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-data-platforms-winter-spring-2027-4466359171",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-data-platforms-winter-spring-2027-4466359171",
-      "title": "Internship, Software Engineer, Data Platforms (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Build back-end systems handling trillion+ events daily\n• Work with data engineers and scientists on scalable solutions\n• Collaborate on AI-aware data platforms for Tesla products",
-      "date_published": "2026-09-11T17:32:56.328Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-hitachi-licensing-intern-summer-2027-4466350147",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-hitachi-licensing-intern-summer-2027-4466350147",
-      "title": "GE Vernova Hitachi - Licensing Intern - Summer 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Wilmington, NC · Duration: Summer 2027\n• Support licensing team with technical analysis and regulatory compliance tasks\n• Use Microsoft tools and SharePoint for report creation and data management\n• Work in a global team focused on nuclear energy and carbon-free power solutions",
-      "date_published": "2026-09-11T17:23:53.343Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/saic-site-support-intern-4457343872",
-      "url": "https://interndoor.com/us/jobs/saic-site-support-intern-4457343872",
-      "title": "Site Support Intern — SAIC",
-      "content_text": "Company: SAIC · Location: El Segundo, CA · Duration: Spring 2028\n• Support onsite customers at walk-up center\n• Work with technical mentors on IT tasks\n• Gain hands-on experience in IT support",
-      "date_published": "2026-09-11T17:19:42.760Z",
-      "authors": [
-        {
-          "name": "SAIC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyft-software-engineer-intern-fullstack-summer-2027-ats-greenhouse-lyft-8797837002",
-      "url": "https://interndoor.com/us/jobs/lyft-software-engineer-intern-fullstack-summer-2027-ats-greenhouse-lyft-8797837002",
-      "title": "Software Engineer Intern, Fullstack (Summer 2027) — Lyft",
-      "content_text": "Company: Lyft · Location: New York, NY · Duration: Summer 2028\n• Write and maintain code for user-facing products\n• Use python, javascript, react, and typescript\n• Work in new york city with a hybrid schedule",
-      "date_published": "2026-09-11T16:47:31.000Z",
-      "authors": [
-        {
-          "name": "Lyft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mayo-clinic-it-intern-4466324766",
-      "url": "https://interndoor.com/us/jobs/mayo-clinic-it-intern-4466324766",
-      "title": "IT Intern — Mayo Clinic",
-      "content_text": "Company: Mayo Clinic · Location: Rochester, MN\n• Operate and improve AI collaboration tools in enterprise environment\n• Test and validate AI integrations with enterprise systems\n• Develop documentation and automation for operational workflows",
-      "date_published": "2026-09-11T16:47:18.488Z",
-      "authors": [
-        {
-          "name": "Mayo Clinic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyft-data-science-intern-algorithms-summer-2027-ats-greenhouse-lyft-8796124002",
-      "url": "https://interndoor.com/us/jobs/lyft-data-science-intern-algorithms-summer-2027-ats-greenhouse-lyft-8796124002",
-      "title": "Data Science Intern, Algorithms (Summer 2027) — Lyft",
-      "content_text": "Company: Lyft · Location: New York, NY · Duration: Summer 2027\n• Build models for automated decision making in the app\n• Work with engineers and product managers on cross-functional projects\n• Run experiments and analyze data to inform business decisions",
-      "date_published": "2026-09-11T16:47:07.000Z",
-      "authors": [
-        {
-          "name": "Lyft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyft-data-science-intern-algorithms-summer-2027-ats-greenhouse-lyft-8767723002",
-      "url": "https://interndoor.com/us/jobs/lyft-data-science-intern-algorithms-summer-2027-ats-greenhouse-lyft-8767723002",
-      "title": "Data Science Intern, Algorithms (Summer 2027) — Lyft",
-      "content_text": "Company: Lyft · Location: San Francisco, CA · Duration: Summer 2027\n• Build models for automated decision making in the app\n• Work with engineers and product teams on real problems\n• Run experiments and analyze data for business impact",
-      "date_published": "2026-09-11T16:47:05.000Z",
-      "authors": [
-        {
-          "name": "Lyft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyft-software-engineer-intern-backend-summer-2027-ats-greenhouse-lyft-8767726002",
-      "url": "https://interndoor.com/us/jobs/lyft-software-engineer-intern-backend-summer-2027-ats-greenhouse-lyft-8767726002",
-      "title": "Software Engineer Intern, Backend (Summer 2027) — Lyft",
-      "content_text": "Company: Lyft · Location: San Francisco, CA · Duration: Summer 2028\n• Write and maintain backend systems for ride-sharing services\n• Use go and cloud platforms for scalable infrastructure\n• Work in a hybrid office setup with 3 days in-person weekly",
-      "date_published": "2026-09-11T16:46:45.000Z",
-      "authors": [
-        {
-          "name": "Lyft"
         }
       ]
     }
