@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-lab-data-mgmt-trainee-4464856876",
+      "url": "https://interndoor.com/jobs/iqvia-lab-data-mgmt-trainee-4464856876",
+      "title": "Lab Data Mgmt Trainee — IQVIA",
+      "content_text": "Company: IQVIA · Location: Mumbai, Maharashtra, India · Duration: 0-1 years\n• Transcribe lab results into lims system with quality\n• Execute sas programs and resolve errors\n• Coordinate with teams for data reconciliation",
+      "date_published": "2026-09-11T10:49:20.941Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/harman-india-intern-4463976358",
+      "url": "https://interndoor.com/jobs/harman-india-intern-4463976358",
+      "title": "Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Work on Android apps using Java, Kotlin, and Jetpack Compose\n• Participate in code reviews, unit testing, and software releases\n• Collaborate in a fast-paced team on automotive tech projects",
+      "date_published": "2026-09-11T10:40:26.122Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/s-and-p-global-apprentice-4464862134",
       "url": "https://interndoor.com/jobs/s-and-p-global-apprentice-4464862134",
       "title": "Apprentice — S&P Global",
@@ -110,18 +134,6 @@
       "authors": [
         {
           "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-intern-4463902206",
-      "url": "https://interndoor.com/jobs/harman-india-intern-4463902206",
-      "title": "Intern — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Work on Java, Kotlin, and Android app development\n• Participate in code analysis and unit testing with Google Test\n• Collaborate in a fast-paced team on software systems\n• Eligible for students in BE/B.Tech with technical background",
-      "date_published": "2026-09-10T16:40:28.726Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
         }
       ]
     },
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Krutrim Insights"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lexsi-labs-devre-intern-4463532555",
-      "url": "https://interndoor.com/jobs/lexsi-labs-devre-intern-4463532555",
-      "title": "DevRe - Intern — Lexsi Labs",
-      "content_text": "Company: Lexsi Labs · Location: Mumbai Metropolitan Region\n• Create tutorials, demos, and marketing content for open-source tools\n• Manage and moderate lexsi discord community\n• Answer technical questions and route deeper issues\n• Track metrics and surface feedback to improve tools",
-      "date_published": "2026-09-08T18:39:01.226Z",
-      "authors": [
-        {
-          "name": "Lexsi Labs"
         }
       ]
     }
