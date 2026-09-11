@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-cis-knowledge-bank-2027-fall-4457079369",
+      "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-cis-knowledge-bank-2027-fall-4457079369",
+      "title": "Software Engineer Intern (CIS Knowledge Bank) - 2027 Fall — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build backend services for knowledge ingestion, extraction, and retrieval\n• Work with Lark documents, meetings, and business context to create structured knowledge\n• Improve retrieval quality and develop tools for knowledge management",
+      "date_published": "2026-09-11T09:33:47.508Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-mechanical-design-engineering-intern-summer-2027-4466052818",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-mechanical-design-engineering-intern-summer-2027-4466052818",
+      "title": "Mechanical Design Engineering Intern (Summer 2027) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Winston-Salem, NC · Duration: Summer 2027\n• Design mechanical components and assemblies with focus on manufacturability and reliability\n• Use CAD software like NX to create and release precise mechanical designs\n• Work in cross-functional teams and participate in design reviews",
+      "date_published": "2026-09-11T09:19:16.002Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/dell-technologies-it-undergraduate-intern-4464865042",
       "url": "https://interndoor.com/us/jobs/dell-technologies-it-undergraduate-intern-4464865042",
       "title": "IT Undergraduate Intern — Dell Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-life-cycle-assessment-lca-data-science-4463932657",
-      "url": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-life-cycle-assessment-lca-data-science-4463932657",
-      "title": "R&D PhD Summer Intern: Life Cycle Assessment (LCA) Data Science — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Mason, OH\n• Organize unstructured cosmetic data into standardized formats for scalable LCA workflows\n• Clean, harmonize, and version data for product formulation, packaging, and distribution\n• Test structured data in Beauty Care products for scalability and automation potential",
-      "date_published": "2026-09-11T02:19:48.836Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-silicon-technology-research-and-development-software-engineering-inter-4463926707",
-      "url": "https://interndoor.com/us/jobs/ibm-silicon-technology-research-and-development-software-engineering-inter-4463926707",
-      "title": "Silicon Technology Research and Development Software Engineering Intern - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Analyze complex problems and apply creative solutions to chip design\n• Work with global researchers on semiconductor and packaging innovations\n• Based in yorktown heights, ny for 12 months",
-      "date_published": "2026-09-11T02:19:25.145Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
