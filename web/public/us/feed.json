@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-configuration-control-data-management-co-op-spring-and-summer-2027-4464206325",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-configuration-control-data-management-co-op-spring-and-summer-2027-4464206325",
+      "title": "Configuration Control/Data Management Co-op - Spring & Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Danbury, CT · Duration: Summer 2027\n• Fix jira issues and test software applications\n• Work with windchill, sap, and epsilon3 tools\n• Support engineering workflows and data management",
+      "date_published": "2026-09-11T15:19:57.281Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/caci-international-inc-software-engineering-intern-summer-2027-4464206326",
+      "url": "https://interndoor.com/us/jobs/caci-international-inc-software-engineering-intern-summer-2027-4464206326",
+      "title": "Software Engineering Intern - Summer 2027 — CACI International Inc",
+      "content_text": "Company: CACI International Inc · Location: Denver, CO · Duration: Summer 2027\n• Write, test, and deploy code using Java, Spring, Angular, and AWS\n• Use GitLab, Cypress, and JUnit for CI/CD and test automation\n• Work on geospatial tools with Cesium, OpenLayers, and WebGL",
+      "date_published": "2026-09-11T15:19:29.778Z",
+      "authors": [
+        {
+          "name": "CACI International Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/analog-devices-mixed-signal-engineer-intern-4454163998",
+      "url": "https://interndoor.com/us/jobs/analog-devices-mixed-signal-engineer-intern-4454163998",
+      "title": "Mixed Signal Engineer Intern — Analog Devices",
+      "content_text": "Company: Analog Devices · Location: Durham, NC\n• Develop machine learning models for analog design automation\n• Work with Python, MATLAB, and EDA tools like Cadence\n• Conduct lab tests on ADCs and debug high-speed circuits",
+      "date_published": "2026-09-11T15:13:05.861Z",
+      "authors": [
+        {
+          "name": "Analog Devices"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zipline-maintenance-tool-engineering-intern-spring-2027-4457019745",
+      "url": "https://interndoor.com/us/jobs/zipline-maintenance-tool-engineering-intern-spring-2027-4457019745",
+      "title": "Maintenance Tool Engineering Intern (Spring 2027) — Zipline",
+      "content_text": "Company: Zipline · Location: Esparto, CA · Duration: Spring 2027\n• Design and prototype tools for drone and ground system maintenance\n• Use hand and machine tools to produce first units\n• Collaborate with operations to refine tool designs for real-world use",
+      "date_published": "2026-09-11T15:03:32.419Z",
+      "authors": [
+        {
+          "name": "Zipline"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zipline-software-engineer-intern-spring-2027-4457019748",
+      "url": "https://interndoor.com/us/jobs/zipline-software-engineer-intern-spring-2027-4457019748",
+      "title": "Software Engineer Intern (Spring 2027) — Zipline",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Build features in react native or python/go backend services\n• Take ownership of mobile/web app features from design to deployment\n• Work in south san francisco office full-time through spring 2027",
+      "date_published": "2026-09-11T14:58:59.334Z",
+      "authors": [
+        {
+          "name": "Zipline"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mks-inc-2027-spring-plasma-science-intern-r20421-4465103241",
+      "url": "https://interndoor.com/us/jobs/mks-inc-2027-spring-plasma-science-intern-r20421-4465103241",
+      "title": "2027 Spring Plasma Science Intern (R20421) — MKS Inc.",
+      "content_text": "Company: MKS Inc. · Location: Wilmington, MA\n• Assemble and test plasma source prototypes in lab\n• Use matlab and solidworks for analysis\n• Work on mechanical design and data reporting",
+      "date_published": "2026-09-11T14:51:30.419Z",
+      "authors": [
+        {
+          "name": "MKS Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zipline-perception-intern-summer-2027-4456735968",
+      "url": "https://interndoor.com/us/jobs/zipline-perception-intern-summer-2027-4456735968",
+      "title": "Perception Intern (Summer 2027) — Zipline",
+      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Train and optimize ML models for drone perception systems\n• Work with PyTorch, JAX, or TensorFlow on camera-only systems\n• Collaborate with cross-functional teams on real-world drone challenges",
+      "date_published": "2026-09-11T14:44:59.118Z",
+      "authors": [
+        {
+          "name": "Zipline"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4463989767",
       "url": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4463989767",
       "title": "Future Leaders Program - Data Intern — USAA",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Humana"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/humana-graduate-analytics-internship-summer-2027-4463954225",
-      "url": "https://interndoor.com/us/jobs/humana-graduate-analytics-internship-summer-2027-4463954225",
-      "title": "Graduate Analytics Internship – Summer 2027 — Humana",
-      "content_text": "Company: Humana · Location: Fort Lauderdale, FL · Duration: Summer 2028\n• Build predictive models for health outcomes and member engagement\n• Use Python, SQL, and NLP to analyze healthcare data and reduce bias\n• Work on-site 3-4 days/week in Louisville, KY or Fort Lauderdale, FL",
-      "date_published": "2026-09-11T04:20:03.559Z",
-      "authors": [
-        {
-          "name": "Humana"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/humana-graduate-analytics-internship-summer-2027-4463946257",
-      "url": "https://interndoor.com/us/jobs/humana-graduate-analytics-internship-summer-2027-4463946257",
-      "title": "Graduate Analytics Internship – Summer 2027 — Humana",
-      "content_text": "Company: Humana · Location: Arlington, VA · Duration: Summer 2028\n• Build predictive models for health outcomes and member engagement\n• Use Python, SQL, and NLP to analyze healthcare data and reduce bias\n• Work on-site 3-4 days/week in Arlington, VA or Louisville, KY",
-      "date_published": "2026-09-11T04:19:55.464Z",
-      "authors": [
-        {
-          "name": "Humana"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466022723",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466022723",
-      "title": "2027 Intern Software Engineer — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Redondo Beach, CA · Duration: 10 weeks\n• Write code for defense systems and test software for military applications\n• Use C++, Python, and MATLAB with Git and JIRA\n• Work on secret projects with U.S. Government clearance",
-      "date_published": "2026-09-11T04:12:13.459Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-data-analytics-intern-clearfield-ut-4466038485",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-data-analytics-intern-clearfield-ut-4466038485",
-      "title": "2027 Data Analytics Intern - Clearfield UT — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Roy, UT · Duration: 10 weeks\n• Analyze weapon system data and build automation scripts\n• Use python and sql for data cleaning and visualization\n• Work with secret clearance team on strategic projects",
-      "date_published": "2026-09-11T04:12:07.900Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-engineer-product-support-4466032642",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-engineer-product-support-4466032642",
-      "title": "2027 Intern Engineer - Product Support — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Whiteman AFB, MO · Duration: 10 weeks\n• Install and maintain aircraft systems on B-2 Stealth Bomber\n• Work with engineers and technicians on real-world modifications\n• Based in Missouri, 10% travel required",
-      "date_published": "2026-09-11T04:12:00.201Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466022719",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466022719",
-      "title": "2027 Intern Software Engineer — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Palmdale, CA · Duration: 10 weeks\n• Write code for real-world systems used in defense and aerospace\n• Use C++, Python, and MATLAB with version control tools\n• Work on projects with national security implications in Palmdale",
-      "date_published": "2026-09-11T04:11:41.812Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466017833",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4466017833",
-      "title": "2027 Intern Software Engineer — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Oklahoma City, OK · Duration: 10 weeks\n• Develop and test software systems for aerospace applications\n• Use C++, Python, and MATLAB for engineering simulations\n• Work with cross-functional teams on classified defense projects",
-      "date_published": "2026-09-11T04:11:40.074Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
         }
       ]
     }
