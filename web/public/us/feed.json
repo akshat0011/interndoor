@@ -6,6 +6,66 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/compeer-financial-intern-infrastructure-engineering-4466398281",
+      "url": "https://interndoor.com/us/jobs/compeer-financial-intern-infrastructure-engineering-4466398281",
+      "title": "Intern Infrastructure Engineering — Compeer Financial",
+      "content_text": "Company: Compeer Financial · Location: Lakeville, MN\n• Support infrastructure projects with focus on reliability and security\n• Use automation, cloud tools, and monitoring systems daily\n• Work full-time in Lakeville, MN through summer 2027",
+      "date_published": "2026-09-11T21:43:31.775Z",
+      "authors": [
+        {
+          "name": "Compeer Financial"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-fleet-analytics-winter-spring-2027-4466395246",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-fleet-analytics-winter-spring-2027-4466395246",
+      "title": "Internship, Data Engineer, Fleet Analytics (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Build tools and dashboards from petabyte-scale vehicle data\n• Use Python, SQL, Spark, and React in a production environment\n• Collaborate with engineers on firmware, robotics, and grid systems",
+      "date_published": "2026-09-11T21:32:28.559Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-mission-analyst-intern-summer-2027-4466402119",
+      "url": "https://interndoor.com/us/jobs/raytheon-mission-analyst-intern-summer-2027-4466402119",
+      "title": "Mission Analyst Intern (Summer 2027) — Raytheon",
+      "content_text": "Company: Raytheon · Location: McKinney, TX · Duration: Summer 2027\n• Develop and analyze mission simulations using government and commercial tools\n• Work with Python, MATLAB, and Linux to model system effects in complex environments\n• Collaborate on mission kill chains and contribute to programmatic decision data",
+      "date_published": "2026-09-11T21:19:38.273Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4466406104",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4466406104",
+      "title": "Software Engineering Co-op (Spring/Summer 2027) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Design and develop software for helicopter and plane systems\n• Work with C, C++, ADA, and Python in a team environment\n• Travel up to 10% domestically and internationally",
+      "date_published": "2026-09-11T21:19:33.686Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-knoxville-tn-4464252082",
+      "url": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-knoxville-tn-4464252082",
+      "title": "Electrical Engineering Co-op - Knoxville, TN — Siemens Healthineers",
+      "content_text": "Company: Siemens Healthineers · Location: Knoxville, TN\n• Develop test firmware and automated testing scripts for hardware\n• Build engineering tools, databases, and hardware infrastructure\n• Conduct integration testing and document results with written reports",
+      "date_published": "2026-09-11T20:52:20.741Z",
+      "authors": [
+        {
+          "name": "Siemens Healthineers"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/bmw-group-digital-retail-and-reporting-intern-4466381852",
       "url": "https://interndoor.com/us/jobs/bmw-group-digital-retail-and-reporting-intern-4466381852",
       "title": "Digital Retail & Reporting Intern — BMW Group",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mks-inc-2027-spring-plasma-science-intern-r20421-4465103241",
-      "url": "https://interndoor.com/us/jobs/mks-inc-2027-spring-plasma-science-intern-r20421-4465103241",
-      "title": "2027 Spring Plasma Science Intern (R20421) — MKS Inc.",
-      "content_text": "Company: MKS Inc. · Location: Wilmington, MA\n• Assemble and test plasma source prototypes in lab\n• Use matlab and solidworks for analysis\n• Work on mechanical design and data reporting",
-      "date_published": "2026-09-11T14:51:30.419Z",
-      "authors": [
-        {
-          "name": "MKS Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-perception-intern-summer-2027-4456735968",
-      "url": "https://interndoor.com/us/jobs/zipline-perception-intern-summer-2027-4456735968",
-      "title": "Perception Intern (Summer 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Train and optimize ML models for drone perception systems\n• Work with PyTorch, JAX, or TensorFlow on camera-only systems\n• Collaborate with cross-functional teams on real-world drone challenges",
-      "date_published": "2026-09-11T14:44:59.118Z",
-      "authors": [
-        {
-          "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4463989767",
-      "url": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4463989767",
-      "title": "Future Leaders Program - Data Intern — USAA",
-      "content_text": "Company: USAA · Location: Charlotte, NC · Duration: 0 to 2 years\n• Support data governance by identifying and fixing gaps in finance data\n• Use Python and SQL to build models and analyze business problems\n• Collaborate with tech teams on data infrastructure and governance",
-      "date_published": "2026-09-11T14:37:37.342Z",
-      "authors": [
-        {
-          "name": "USAA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4464209086",
-      "url": "https://interndoor.com/us/jobs/usaa-future-leaders-program-data-intern-4464209086",
-      "title": "Future Leaders Program - Data Intern — USAA",
-      "content_text": "Company: USAA · Location: San Antonio, TX · Duration: 0 to 2 years\n• Support data governance by identifying and fixing gaps in finance information assets\n• Build data monitoring rules and manage data quality across compliance and policies\n• Collaborate on analytics infrastructures and model life cycle tasks with senior teams",
-      "date_published": "2026-09-11T14:37:36.956Z",
-      "authors": [
-        {
-          "name": "USAA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-infrastructure-4434140506",
-      "url": "https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-infrastructure-4434140506",
-      "title": "Software Engineer, Internship - Infrastructure — Palantir Technologies",
-      "content_text": "Company: Palantir Technologies · Location: Palo Alto, CA\n• Build scalable backend services with Java and Go\n• Work on developer tools and infrastructure for hundreds of repos\n• Collaborate with mentors on real-world engineering challenges",
-      "date_published": "2026-09-11T14:36:42.449Z",
-      "authors": [
-        {
-          "name": "Palantir Technologies"
         }
       ]
     }
