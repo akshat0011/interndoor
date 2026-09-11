@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/philips-graduate-level-co-op-data-scientist-plymouth-mn-january-2027-4456020908",
+      "url": "https://interndoor.com/us/jobs/philips-graduate-level-co-op-data-scientist-plymouth-mn-january-2027-4456020908",
+      "title": "Graduate Level Co-op – Data Scientist – Plymouth, MN – January 2027 — Philips",
+      "content_text": "Company: Philips · Location: Plymouth, MN · Duration: 6-9 months\n• Analyze clinical imaging data to improve AI/ML models in medical software\n• Work with PyTorch/TensorFlow and DICOM/NIfTI formats in regulated environments\n• Present project findings to team and stakeholders in summer",
+      "date_published": "2026-09-11T10:02:12.776Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tiktok-data-engineer-intern-e-commerce-2027-summer-4456219203",
+      "url": "https://interndoor.com/us/jobs/tiktok-data-engineer-intern-e-commerce-2027-summer-4456219203",
+      "title": "Data Engineer Intern (E-commerce) - 2027 Summer — TikTok",
+      "content_text": "Company: TikTok · Location: San Jose, CA · Duration: 12 weeks\n• Build and optimize data systems for core products and user experiences\n• Work with Hadoop, Spark, Kafka, and other big data tools\n• Collaborate with engineers and non-technical teams on scalable solutions",
+      "date_published": "2026-09-11T09:52:02.630Z",
+      "authors": [
+        {
+          "name": "TikTok"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-cis-knowledge-bank-2027-fall-4457079369",
       "url": "https://interndoor.com/us/jobs/bytedance-software-engineer-intern-cis-knowledge-bank-2027-fall-4457079369",
       "title": "Software Engineer Intern (CIS Knowledge Bank) - 2027 Fall — ByteDance",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/procter-and-gamble-phd-intern-data-scientist-and-generative-ai-in-femcare-4463928731",
-      "url": "https://interndoor.com/us/jobs/procter-and-gamble-phd-intern-data-scientist-and-generative-ai-in-femcare-4463928731",
-      "title": "PhD Intern - Data Scientist & Generative AI in Femcare — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Cincinnati, OH\n• Build generative AI tools to guide technical projects and solve problems\n• Use Python and probabilistic models to analyze consumer data and simulations\n• Work on active learning and experimental design for R&D efficiency",
-      "date_published": "2026-09-11T02:20:19.842Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-data-science-and-machine-learning-4463934680",
-      "url": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-data-science-and-machine-learning-4463934680",
-      "title": "R&D PhD Summer Intern: Data Science and Machine Learning — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Mason, OH\n• Build deep learning models from IMU and EMG data to reconstruct full-body motion\n• Work with sensor data and human pose estimation techniques in real-world applications\n• Collaborate across R&D, Brand, and Product Development teams for production deployment",
-      "date_published": "2026-09-11T02:19:54.981Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
         }
       ]
     }
