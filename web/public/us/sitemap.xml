@@ -50,8 +50,8 @@
   <url><loc>https://interndoor.com/us/skills/jenkins</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rag</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/fpga</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/fpga</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rtl</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/design-verification</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/vhdl</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
@@ -164,7 +164,10 @@
   <url><loc>https://interndoor.com/us/locations/lowell</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/melbourne</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/palm-bay</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/pittsburgh</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/university-park</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/fujitsu-research-intern-ai-security-fra-4457049227</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-federal-skillbridge-intern-4389250553</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/philips-graduate-level-co-op-data-scientist-plymouth-mn-january-2027-4456020908</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/tiktok-data-engineer-intern-e-commerce-2027-summer-4456219203</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/bytedance-software-engineer-intern-cis-knowledge-bank-2027-fall-4457079369</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
@@ -2604,6 +2607,8 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/fujitsu</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/zscaler</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/philips</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/tiktok</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/bytedance</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
@@ -2747,7 +2752,6 @@
   <url><loc>https://interndoor.com/us/companies/astera-labs</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/qbe-north-america</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/boom-supersonic</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/zscaler</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/oracle</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/susquehanna-international-group</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/charles-schwab</loc><lastmod>2026-09-07</lastmod><priority>0.6</priority></url>
@@ -2884,7 +2888,6 @@
   <url><loc>https://interndoor.com/us/companies/persistent-systems-llc</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/general-mills</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/databricks</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/fujitsu</loc><lastmod>2026-08-26</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/abbott</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/panasonic-north-america</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/the-voleon-group</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
