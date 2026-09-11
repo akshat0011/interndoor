@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4463959555",
+      "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4463959555",
+      "title": "Graduate Trainee Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Bangalore Urban, Karnataka, India · Duration: 6 months\n• Assist in engineering tasks and project activities under supervision\n• Prepare engineering deliverables following siemens standards\n• Maintain timesheets and communicate task progress regularly",
+      "date_published": "2026-09-11T07:23:11.895Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-healthcare-intern-firmware-4466064069",
+      "url": "https://interndoor.com/jobs/ge-healthcare-intern-firmware-4466064069",
+      "title": "Intern Firmware — GE HealthCare",
+      "content_text": "Company: GE HealthCare · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Repair and maintain medical imaging equipment in hospital radiology settings\n• Document repairs, follow safety guidelines, and manage parts inventory\n• Work with vendors, maintain customer relations, and complete required reports",
+      "date_published": "2026-09-11T07:10:35.868Z",
+      "authors": [
+        {
+          "name": "GE HealthCare"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/plix-artificial-intelligence-ai-internship-in-mumbai-4466006127",
       "url": "https://interndoor.com/jobs/plix-artificial-intelligence-ai-internship-in-mumbai-4466006127",
       "title": "Artificial Intelligence (AI) Internship in Mumbai — Plix",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Arista Networks"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4464467891",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4464467891",
-      "title": "Intern Bachelors AI — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop ai algorithms and models under experienced engineers\n• Work with python and frameworks like tensorflow or pytorch\n• Contribute to real-world ai projects in industrial applications",
-      "date_published": "2026-09-08T11:50:01.448Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/google-application-engineering-intern-summer-2027-english-4463256241",
-      "url": "https://interndoor.com/jobs/google-application-engineering-intern-summer-2027-english-4463256241",
-      "title": "Application Engineering Intern, Summer 2027 (English) — Google",
-      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India · Duration: 10-12 weeks\n• Build internal tools with web and mobile front-ends and backend services\n• Use Java, Python, C++, SQL, Spring, RESTful APIs, and JavaScript\n• Work on scaling solutions for internal business processes",
-      "date_published": "2026-09-08T10:19:03.566Z",
-      "authors": [
-        {
-          "name": "Google"
         }
       ]
     }
