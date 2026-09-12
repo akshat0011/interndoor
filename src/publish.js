@@ -830,6 +830,14 @@ export function publishedPaths() {
        pages at once and no sitemap report would flag it, exactly as
        /applications would. */
     'web/public/contact.html',
+    /* The daily digest's masthead radar. Email cannot render the site's inline
+       SVG (src/digestmail.js), so the mark is a PNG served from here — and
+       every subscriber's client fetches it from the live domain. Missing from
+       this list it is written once and pushed never, which is a broken image
+       at the top of the only email this site sends and nothing on the SITE
+       looking wrong at all. The sixth page lost to this trap would have been
+       the hardest to notice. */
+    'web/public/email',
     /* India's /applications — the reader's own tracker. Same reason as the two
        above: every other region's lives inside its own tree and is covered by
        regionPaths(), India's sits at the root. It is noindex and absent from
