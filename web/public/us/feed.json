@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566",
+      "url": "https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566",
+      "title": "Mechatronics Apprentice I — Amazon",
+      "content_text": "Company: Amazon · Location: Dallas, TX\n• Maintain and repair automated packaging equipment\n• Use technical manuals for troubleshooting robotics systems\n• Perform preventative maintenance on conveyance systems\n• Work 12-hour shifts with physical demands up to 49lbs",
+      "date_published": "2026-09-12T19:20:40.510Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455008748",
+      "url": "https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455008748",
+      "title": "System Integration Engineer Intern — Analog Devices",
+      "content_text": "Company: Analog Devices · Location: Wilmington, MA\n• Test wearable hardware and debug embedded systems\n• Design PCBs and work with analog circuits\n• Collaborate on product features with engineering teams\n• Based in Wilmington, MA",
+      "date_published": "2026-09-12T18:40:51.733Z",
+      "authors": [
+        {
+          "name": "Analog Devices"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455005694",
+      "url": "https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455005694",
+      "title": "System Integration Engineer Intern — Analog Devices",
+      "content_text": "Company: Analog Devices · Location: Durham, NC\n• Test wearable hardware and debug embedded systems\n• Work with engineers on PCB design and system integration\n• Contribute to healthcare tech projects with real-world impact\n• Based in Durham, NC, with 10% travel required",
+      "date_published": "2026-09-12T18:40:18.079Z",
+      "authors": [
+        {
+          "name": "Analog Devices"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hca-healthcare-technical-analyst-intern-prn-4457507630",
       "url": "https://interndoor.com/us/jobs/hca-healthcare-technical-analyst-intern-prn-4457507630",
       "title": "Technical Analyst Intern PRN — HCA Healthcare",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Delta Air Lines"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-systems-engineering-intern-4466492204",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-systems-engineering-intern-4466492204",
-      "title": "Systems Engineering Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Rochester, NY\n• Analyze systems requirements and design complex architectures\n• Develop test plans and document results using software tools\n• Support design evaluation and deliver presentations to customers",
-      "date_published": "2026-09-12T12:19:00.227Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-integration-test-engineering-intern-4466492207",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-integration-test-engineering-intern-4466492207",
-      "title": "Integration/Test Engineering Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Carlsbad, CA\n• Set up and document hardware/software systems for testing\n• Write test plans, reports, and analyze test results\n• Collaborate on system acceptance testing and failure reviews",
-      "date_published": "2026-09-12T12:18:55.098Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-rf-wireless-engineer-intern-4466499127",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-rf-wireless-engineer-intern-4466499127",
-      "title": "RF/Wireless Engineer Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Salt Lake City, UT · Duration: 12 months\n• Prepare component drawings and specifications for complex products\n• Interface with labs and suppliers to ensure compliance with requirements\n• Present analysis results to engineers and customers regularly",
-      "date_published": "2026-09-12T12:18:50.548Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
         }
       ]
     }
