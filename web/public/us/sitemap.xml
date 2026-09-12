@@ -52,7 +52,7 @@
   <url><loc>https://interndoor.com/us/skills/microservices</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/nlp</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/design-verification</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/fpga</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/fpga</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rtl</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/vhdl</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/pandas</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
@@ -115,10 +115,10 @@
   <url><loc>https://interndoor.com/us/locations/hillsboro</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/greensboro</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/sunnyvale</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/mountain-view</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/cambridge</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/mountain-view</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/san-diego</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/boston</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/cambridge</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/denver</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/huntsville</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/andover</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
@@ -172,6 +172,8 @@
   <url><loc>https://interndoor.com/us/locations/somerville</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/spring</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/university-park</loc><lastmod>2026-09-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/sanofi-2027-summer-internship-opportunities-cambridge-ma-4466476967</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/nuro-software-engineer-ai-platform-intern-4317730018</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/tiktok-software-engineer-intern-tiktok-ai-search-and-visual-search-infra-team-4456610808</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
@@ -2714,7 +2716,6 @@
   <url><loc>https://interndoor.com/us/jobs/spacex-new-graduate-engineer-software-ats-greenhouse-spacex-8493079002</loc><lastmod>2026-07-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/hermeus-propulsion-engineering-intern-spring-summer-fall-2027-ats-lever-hermeus-943f51e4-5b26-432c-ae85-de5f43cadb86</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/nuro-software-engineer-ai-platform-new-grad-ats-greenhouse-nuro-7351066</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/nuro-software-engineer-ai-platform-intern-ats-greenhouse-nuro-7351061</loc><lastmod>2026-07-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/old-mission-capital-software-engineer-2027-internship-program-june-start-ats-greenhouse-oldmissioncapital-7796180003</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/akuna-capital-software-engineer-entry-level-python-ats-greenhouse-akunacapital-8013230</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/akuna-capital-software-engineer-intern-python-summer-2027-ats-greenhouse-akunacapital-8018853</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
@@ -2748,6 +2749,8 @@
   <url><loc>https://interndoor.com/us/jobs/palantir-deployment-strategist-new-grad-intel-us-government-ats-lever-palantir-5d8286d6-992a-404b-94af-99c173d40299</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/palantir-forward-deployed-software-engineer-new-grad-intel-us-government-ats-lever-palantir-fbca0358-083a-4222-bdbb-3bd729b48382</loc><lastmod>2026-06-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/chainguard-submitting-for-a-general-internship-application-ats-greenhouse-chainguard-4410540006</loc><lastmod>2026-05-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/companies/sanofi</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/nuro</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/zscaler</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/tiktok</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/micron-technology</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
@@ -2799,7 +2802,6 @@
   <url><loc>https://interndoor.com/us/companies/microsoft</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/atkinsr-alis</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/usa-rare-earth-inc-nasdaq-usar</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/sanofi</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/saic</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/mayo-clinic</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/roku</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
@@ -3065,7 +3067,6 @@
   <url><loc>https://interndoor.com/us/companies/old-mission-capital</loc><lastmod>2026-07-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/flow-traders</loc><lastmod>2026-07-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/modal-labs</loc><lastmod>2026-07-28</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/nuro</loc><lastmod>2026-07-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/akuna-capital</loc><lastmod>2026-07-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/recursion-pharmaceuticals</loc><lastmod>2026-07-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/apptronik</loc><lastmod>2026-07-02</lastmod><priority>0.6</priority></url>
