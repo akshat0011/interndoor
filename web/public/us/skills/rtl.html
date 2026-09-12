@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>RTL Internships in the US | InternDoor</title>
-<meta name="description" content="39 live internships in the US that ask for RTL, from 14 companies. Updated every 30 minutes, from a vetted list of employers.">
+<meta name="description" content="40 live internships in the US that ask for RTL, from 14 companies. Updated every 30 minutes, from a vetted list of employers.">
 <link rel="canonical" href="https://interndoor.com/us/skills/rtl">
 <meta name="interndoor-region" content="US">
 <meta name="color-scheme" content="dark light">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="InternDoor">
 <meta property="og:url" content="https://interndoor.com/us/skills/rtl">
 <meta property="og:title" content="RTL Internships in the US | InternDoor">
-<meta property="og:description" content="39 live internships in the US that ask for RTL, from 14 companies. Updated every 30 minutes, from a vetted list of employers.">
+<meta property="og:description" content="40 live internships in the US that ask for RTL, from 14 companies. Updated every 30 minutes, from a vetted list of employers.">
 <meta property="og:image" content="https://interndoor.com/og.jpg?v=5">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://interndoor.com/og.jpg?v=5">
@@ -82,9 +82,15 @@
       <span>RTL</span>
     </nav>
     <h1>RTL internships in the US</h1>
-    <p class="summary">39 live internships in the US that ask for RTL, from 14 companies. Every listing links to the employer's own posting.</p>
+    <p class="summary">40 live internships in the US that ask for RTL, from 14 companies. Every listing links to the employer's own posting.</p>
 
     <ul class="feed">
+      <li><a class="tile" href="/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749">
+        <span class="tile-top"><span class="tile-crest" aria-hidden="true">MT<img src="/logos/micron-technology.png" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="tile-co">Micron Technology</span></span>
+        <span class="tile-role">Intern - HBM SoC RTL Design Engineer</span>
+        
+        <span class="tile-meta"><span class="tile-age" data-ago="1789204138753"><time datetime="2026-09-12">12 Sept 2026</time></span><span aria-hidden="true">·</span>Folsom<span aria-hidden="true">·</span>On-site</span>
+      </a></li>
       <li><a class="tile" href="/us/jobs/collins-aerospace-electrical-firmware-winter-spring-co-op-onsite-4463585559">
         <span class="tile-top"><span class="tile-crest" aria-hidden="true">CA<img src="/logos/collins-aerospace.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="tile-co">Collins Aerospace</span></span>
         <span class="tile-role">Electrical Firmware (Winter/Spring Co-op)(Onsite)</span>
@@ -371,7 +377,12 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
+    <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
+         There is a single contact page for all three boards — see
+         renderContactPage — so a root-relative href is what resolves from
+         /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
+         /us/contact, which is not written and never will be. -->
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/contact">Contact</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

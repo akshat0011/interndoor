@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749",
+      "title": "Intern - HBM SoC RTL Design Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Folsom, CA\n• Design and implement RTL for HBM SoC logic die blocks\n• Use SystemVerilog/Verilog with Cadence, Synopsys, Siemens tools\n• Work with architects, verification, and firmware teams",
+      "date_published": "2026-09-12T09:08:58.753Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510",
+      "title": "Intern - Wet Process Fab 4 EDE — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Design and optimize wet process equipment for memory parts\n• Use AI and data analysis to solve engineering challenges\n• Work on semiconductor hardware development with a focus on innovation",
+      "date_published": "2026-09-12T09:08:23.030Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831",
+      "title": "Intern - Yield Technology Equipment — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Analyze process flows to find defect anomalies and improve tool performance\n• Work with AI agents and new inspection tools to enhance defect detection\n• Collaborate with engineers across multiple teams to optimize metrology operations",
+      "date_published": "2026-09-12T09:05:50.853Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282",
       "url": "https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282",
       "title": "Research & Development Engineering Co-Op, WATCHMAN — Boston Scientific",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "SpaceX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-security-software-starshield-ats-greenhouse-spacex-8802897002",
-      "url": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-security-software-starshield-ats-greenhouse-spacex-8802897002",
-      "title": "New Graduate Engineer, Security Software (Starshield) — SpaceX",
-      "content_text": "Company: SpaceX · Location: Washington, DC · Duration: 3 weeks\n• Design secure systems for in-space mesh networks and satellite communications\n• Work with cryptographic tools and secure boot processes for government systems\n• Collaborate with engineering teams to improve security across Starshield products",
-      "date_published": "2026-09-11T23:37:09.000Z",
-      "authors": [
-        {
-          "name": "SpaceX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-internship-spring-2027-4466409887",
-      "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-gas-power-engineering-internship-spring-2027-4466409887",
-      "title": "GE Vernova Gas Power Engineering Internship - Spring 2027 — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Greenville, SC · Duration: Spring 2027\n• Design and analyze steam turbine, gas turbine, and generator systems\n• Collaborate with drafting and manufacturing teams on complex projects\n• Work in Greenville, SC, for 6 months starting January 2027",
-      "date_published": "2026-09-11T23:23:27.660Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/schneider-electric-electrical-and-embedded-systems-co-op-4465165702",
-      "url": "https://interndoor.com/us/jobs/schneider-electric-electrical-and-embedded-systems-co-op-4465165702",
-      "title": "Electrical & Embedded Systems Co-op — Schneider Electric",
-      "content_text": "Company: Schneider Electric · Location: Andover, MA\n• Develop embedded software and hardware for AI data center infrastructure\n• Work with C, Python, and communication protocols like CAN and Ethernet\n• Contribute to power conversion systems and real-time monitoring tools",
-      "date_published": "2026-09-11T23:12:48.469Z",
-      "authors": [
-        {
-          "name": "Schneider Electric"
         }
       ]
     }

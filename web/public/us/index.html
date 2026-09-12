@@ -26,7 +26,7 @@
      and the heading now lead with the category, the same as <title>. -->
 <!--REGION:HEAD-->
 <title>Engineering Internships in the US — InternDoor</title>
-<meta name="description" content="2,584 engineering internships in the US, updated every 30 minutes. No signup, and every listing links straight to the original posting.">
+<meta name="description" content="2,587 engineering internships in the US, updated every 30 minutes. No signup, and every listing links straight to the original posting.">
 <link rel="canonical" href="https://interndoor.com/us">
 <link rel="alternate" hreflang="en-IN" href="https://interndoor.com/">
 <link rel="alternate" hreflang="en-US" href="https://interndoor.com/us">
@@ -359,6 +359,12 @@ Engineering internships in the US
     <div class="wrap">
       <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
       <p class="dim">Your resume is processed in memory and never stored here.</p>
+      <!-- /contact is ROOT-RELATIVE and stays that way on every board. There is
+           one contact page for all three, so it is deliberately NOT in
+           REGION_LINKS — localiseLinks would give this link a region prefix,
+           and no prefixed copy is written or ever will be. See
+           renderContactPage in src/pages.js. -->
+      <p class="dim"><a href="/contact">Contact InternDoor</a></p>
       <!-- Static, in the HTML, deliberately. The listings above are built by
            JavaScript from jobs.json, so a crawler that does not run scripts finds
            no links to follow and the whole site is a dead end. This anchor is the
@@ -390,6 +396,9 @@ Engineering internships in the US
       <details class="all-roles">
         <summary>All current listings</summary>
         <ul><!--LISTINGS-->
+<li><a href="/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749">Micron Technology — Intern - HBM SoC RTL Design Engineer</a><span class="tiny"> Folsom, CA · On-site</span></li>
+<li><a href="/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510">Micron Technology — Intern - Wet Process Fab 4 EDE</a><span class="tiny"> Boise, ID · On-site</span></li>
+<li><a href="/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831">Micron Technology — Intern - Yield Technology Equipment</a><span class="tiny"> Boise, ID · On-site</span></li>
 <li><a href="/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282">Boston Scientific — Research &amp; Development Engineering Co-Op, WATCHMAN</a><span class="tiny"> Maple Grove, MN · On-site</span></li>
 <li><a href="/us/jobs/the-walt-disney-company-disneyland-cybersecurity-intern-spring-2027-4465421019">The Walt Disney Company — Disneyland Cybersecurity Intern, Spring 2027</a><span class="tiny"> Anaheim, CA · On-site</span></li>
 <li><a href="/us/jobs/constellation-2027-summer-corporate-systems-hrit-intern-remote-4465179943">Constellation — 2027 Summer Corporate Systems HRIT Intern (Remote)</a><span class="tiny"> Baltimore, MD · Remote</span></li>
