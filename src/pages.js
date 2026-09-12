@@ -1171,7 +1171,12 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
+         There is a single contact page for all three boards — see
+         renderContactPage — so a root-relative href is what resolves from
+         /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
+         /us/contact, which is not written and never will be. -->
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -3264,6 +3269,133 @@ ${foot({
 }
 
 /**
+ * The address, in one place.
+ *
+ * Written here rather than inline because three things have to agree about it:
+ * this page, the `Organization` markup below it, and the DMARC `rua` on the
+ * domain. A second spelling of it anywhere is a mailbox nobody reads.
+ */
+export const CONTACT_EMAIL = 'akshat@interndoor.com';
+
+/**
+ * /contact — the one page that says a person is behind this.
+ *
+ * ONE URL FOR ALL THREE BOARDS, and that is the whole decision. Every other
+ * page here is written per region so its masthead, footer and region switch
+ * resolve to the board the reader came from — but those pages differ per
+ * region because their CONTENT does. This one does not: it is the same person,
+ * the same inbox, in the same time zone. Three copies would be three near
+ * identical indexable URLs competing for the same query on a domain whose
+ * measured problem is that 87% of its pages are US pages indexed at 14%. So
+ * `/contact` is written once at the root, and foot() links it WITHOUT
+ * `regionHref` — a root-relative href resolves from /uk/jobs/… exactly as it
+ * does from /. It is deliberately absent from REGION_LINKS for the same
+ * reason; adding it there would rewrite the link to /us/contact and 404 it.
+ *
+ * THE ADDRESS IS PLAIN TEXT IN A REAL `mailto:`, not assembled by script.
+ * Scrapers will harvest it — that is the cost, it is real, and it is paid
+ * knowingly. The alternatives are worse: an obfuscated address needs an inline
+ * script, which the production CSP blocks by hash (see test/careers.test.mjs
+ * for the two static pages that already learned this), and a contact page whose
+ * address only appears for readers running JavaScript is a contact page Google
+ * cannot see — which defeats the reason a site this age wants one at all.
+ *
+ * INDEXABLE, and in the root sitemap at the lowest priority the file uses. It
+ * is thin, it will never rank, and neither is the point: it is the page a
+ * placement cell checks before replying to a cold email, and the page that
+ * makes the domain look maintained rather than generated.
+ */
+export function renderContactPage({ region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = `${SITE}/contact`;
+
+  /* Organization, not ContactPage. The email is the only fact here worth
+     handing a machine, and `Organization.email` is where an entity's address
+     belongs — a ContactPage wrapper would add a node and say nothing more. No
+     `telephone`, no `address`: there is no phone and no office, and inventing
+     either is the same class of error as an invented stipend. */
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'InternDoor',
+    url: `${SITE}/`,
+    email: CONTACT_EMAIL,
+    logo: `${SITE}/logo-512.png`,
+    description: 'A job board for engineering internships in India, the United States and the United Kingdom.',
+  };
+
+  const mail = (subject) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
+  return `${head({
+    title: buildTitle(['Contact']),
+    description: `Reach InternDoor at ${CONTACT_EMAIL} — to report a listing that is wrong or expired, to ask for a posting to be taken down, or to talk about anything else on the board.`,
+    canonical: url,
+    indexable: true,
+    region,
+    /* THE SWITCHER YES, THE hreflang NO, and `alternatePath: null` is how this
+       file already says that — job pages and company hubs pass exactly the same
+       thing. There is no /us/contact for an hreflang to point at, so
+       advertising one would be a 404 offered to Google as this page in another
+       language. The switcher still renders, which is the point: a reader who
+       arrived here from a US job page needs one click back to their board, and
+       only two of the three masthead links self-heal (vercel.json geo-redirects
+       `/` for US and GB, but not /companies or /skills). */
+    alternates,
+    alternatePath: null,
+    extraLd: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <i aria-hidden="true">&rsaquo;</i>
+      <span>Contact</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>Contact InternDoor</h1>
+      <p class="hub-lede">One inbox, read by one person. There is no support desk and no ticket number &mdash; write in plain English and say what you need.</p>
+    </header>
+
+    <section class="strip">
+      <div class="strip-head"><h2>By email</h2></div>
+      <div class="chans">
+        <a class="chan" href="${mail('InternDoor')}">
+          <span class="chan-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></span>
+          <span class="chan-t">
+            <span class="chan-n">${esc(CONTACT_EMAIL)}</span>
+            <span class="chan-b">The only way to reach InternDoor. Everything below arrives here.</span>
+          </span>
+          <span class="chan-go" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="strip-head"><h2>What people write about</h2></div>
+      <ul class="do-list">
+        <li><b>A listing that is wrong, expired or duplicated.</b> Send the page&rsquo;s address and what is wrong with it &mdash; that is enough to find the row behind it. <a href="${mail('Wrong listing')}">Report a listing</a>.</li>
+        <li><b>Employers, to take a posting down.</b> It comes down, and the page is replaced by a link to your other open roles rather than left to 404. <a href="${mail('Please remove a posting')}">Ask for a removal</a>.</li>
+        <li><b>Employers, to be picked up automatically.</b> Point us at the careers page you post on and new internships are found from it within about half an hour of going live. There is no charge for this and no listing fee.</li>
+        <li><b>Colleges and placement cells.</b> The board is free for your students and needs no signup, so there is nothing to sign. If you want the live openings in a form you can circulate, say which branches and years. <a href="${mail('Placement cell')}">Write about a placement cell</a>.</li>
+        <li><b>Anything else</b> &mdash; a bug, a wrong summary, a question about where a number on <a href="/report">the numbers page</a> came from.</li>
+      </ul>
+    </section>
+
+    <section class="trk-priv">
+      <h2>What this is, and is not</h2>
+      <p><strong>InternDoor is not a recruiter and not a placement agency.</strong> We do not take applications, forward resumes, or charge students or employers anything. Every listing links back to the employer&rsquo;s own posting, and that posting is where you apply and the source of truth.</p>
+      <p><strong>We are not affiliated with the companies listed here.</strong> Writing to this address does not reach them, and we cannot tell you where your application stands &mdash; only the employer can.</p>
+      <p>There is no account to close and no profile to delete: nothing on this site is tied to a person. Your saved applications live in your own browser, which <a href="/applications">the tracker page</a> explains in full.</p>
+    </section>
+  </div>
+</main>
+${foot({
+    headline: 'While you are here',
+    sub: 'Every engineering internship on the board, newest first.',
+    region,
+  })}`;
+}
+
+/**
  * Write only when the bytes actually differ, and SAY whether they did.
  *
  * The name was aspirational: it wrote unconditionally. That was survivable —
@@ -4040,6 +4172,18 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      harder one — that queue takes JobPosting pages only. */
   writeIfChanged(join(root, 'applications.html'), renderApplicationsPage({ region }));
 
+  /* /contact — written ONCE, at the root, for every board. `region.slug` is ''
+     for India and nothing else, which is exactly the condition for "this render
+     owns the root". foot() links it root-relative from all three trees, so the
+     US and UK renders must NOT write their own copy: three identical indexable
+     pages is the duplicate every other page here goes out of its way to avoid.
+     Tracked, because it is indexable and IndexNow should hear about it — and
+     writeIfChanged means that happens on the run that changes it, not 48 times
+     a day. */
+  if (!region.slug) {
+    track(writeIfChanged(join(root, 'contact.html'), renderContactPage({ region, alternates })), '/contact');
+  }
+
   let removed = 0;
   /* Job pages that just stopped existing, as URLs. Only job pages: the Google
      Indexing API accepts JobPosting pages and nothing else, and a hub carries
@@ -4277,6 +4421,14 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        destination people search for ("interndoor telegram"), and it is the only
        page that names every channel. Low priority, not omitted. */
     { loc: regionUrl('/alerts', region), priority: '0.4', lastmod: boardDay },
+    /* /contact, in the ROOT sitemap only — there is one contact page for all
+       three boards and it is written by the root render, so listing it in
+       /us/sitemap.xml would submit a URL that tree does not contain. Lowest
+       priority on the file: it is thin and will never rank, and that is not
+       what it is for. `lastmod` is the board's day like everything else here
+       rather than the file's mtime, which would otherwise move this URL on
+       every deploy that touched nothing. */
+    ...(region.slug ? [] : [{ loc: `${SITE}/contact`, priority: '0.3', lastmod: boardDay }]),
     /* /report is the only page here that does not expire, so it is the only one
        that can accumulate links over years. Listed above the hubs for that
        reason — and omitted entirely when it is noindex, because submitting a
