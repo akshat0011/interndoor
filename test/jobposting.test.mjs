@@ -242,6 +242,16 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
   check('the count IS in the description', desc.startsWith('3 engineering internships'), true);
   check('and the description fits a snippet', desc.length <= 160, true);
 
+  /* WHAT THE DESCRIPTION HAS TO SAY, AND THE ONE THING IT MUST NOT SAY.
+     Freshness alone is what every board in that result list claims. No signup
+     and a link to the posting itself are the two things this one can — and the
+     link is to the ORIGINAL posting, because most India rows point at
+     LinkedIn, so "the employer's own posting" would be false on the majority
+     of the board. §11: claim the mechanism, never more than the site does. */
+  check('it says what a competing board cannot',
+    /no signup/i.test(desc) && /original posting/i.test(desc), true);
+  check('and never claims the employer\'s own posting', /employer'?s own/i.test(desc), false);
+
   // A board with no live rows must not say "0 engineering internships".
   writePages([], dir, [], { region: regionOf('US') });
   const empty = readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
