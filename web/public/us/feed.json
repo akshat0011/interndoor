@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219",
+      "url": "https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219",
+      "title": "Site Reliability Engineer-SkillBridge Intern — Zscaler",
+      "content_text": "Company: Zscaler · Location: United States\n• Monitor and maintain cloud infrastructure for global security platform\n• Use Linux, Ansible, Terraform for automation and compliance\n• Work with military personnel on FedRAMP and vulnerability management",
+      "date_published": "2026-09-12T10:32:53.816Z",
+      "authors": [
+        {
+          "name": "Zscaler"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-tiktok-ai-search-and-visual-search-infra-team-4456610808",
+      "url": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-tiktok-ai-search-and-visual-search-infra-team-4456610808",
+      "title": "Software Engineer Intern (TikTok AI Search & Visual Search Infra Team) - 2027 Summer — TikTok",
+      "content_text": "Company: TikTok · Location: San Jose, CA\n• Build and optimize large-scale search infrastructure for billions of requests\n• Work on AI agents, RAG systems, and LLM/VLM training/serving platforms\n• Collaborate with engineers and researchers on cutting-edge search technologies",
+      "date_published": "2026-09-12T09:51:52.965Z",
+      "authors": [
+        {
+          "name": "TikTok"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749",
       "url": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749",
       "title": "Intern - HBM SoC RTL Design Engineer — Micron Technology",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Philips"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/philips-co-op-software-design-assurance-igtd-plymouth-mn-january-2027-4465152797",
-      "url": "https://interndoor.com/us/jobs/philips-co-op-software-design-assurance-igtd-plymouth-mn-january-2027-4465152797",
-      "title": "Co-op – Software Design Assurance (IGTD) – Plymouth, MN – January 2027 — Philips",
-      "content_text": "Company: Philips · Location: Plymouth, MN\n• Review software compliance, documentation, and risk management for medical devices\n• Use tools like Power BI, SharePoint, Git, and Azure DevOps for process improvement\n• Work in hybrid office environment with cross-functional teams on regulated projects",
-      "date_published": "2026-09-11T23:40:26.422Z",
-      "authors": [
-        {
-          "name": "Philips"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-security-software-starshield-ats-greenhouse-spacex-8802882002",
-      "url": "https://interndoor.com/us/jobs/spacex-new-graduate-engineer-security-software-starshield-ats-greenhouse-spacex-8802882002",
-      "title": "New Graduate Engineer, Security Software (Starshield) — SpaceX",
-      "content_text": "Company: SpaceX · Location: Hawthorne, CA · Duration: 3 weeks\n• Design and build security infrastructure for Starshield systems\n• Work with cryptographic services and secure communication protocols\n• Maintain production systems and improve security posture",
-      "date_published": "2026-09-11T23:37:09.000Z",
-      "authors": [
-        {
-          "name": "SpaceX"
         }
       ]
     }
