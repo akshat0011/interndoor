@@ -17,6 +17,7 @@
 import { SITE, stipendText, durationText, modeText, jobSlug } from './pages.js';
 import { utmUrl } from './postgen.js';
 import { regionOf, regionPath } from './regions.js';
+import { renderDigestEmail } from './digestmail.js';
 
 /* `regionUrl` is module-private in pages.js, so the path is composed here the
    way weekly.js does it. `regionPath` returns '' for India — the board is at
@@ -157,5 +158,16 @@ export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = nul
     rest > 0 ? `— and ${rest} more on [the board](${boardUrl}).\n` : `[See the whole board](${boardUrl}).\n`,
   ].join('\n');
 
-  return { subject, body, count: roles.length, shown: shown.length, roles: shown };
+  /* THE MARKDOWN IS KEPT AND IS NOT DEAD. `bin/digest.js` sends `html`, but
+     `--dry-run` prints `body` because a terminal cannot render the mail, and
+     `test/digest.test.mjs`'s existing assertions are all about which ROLES the
+     digest talks about — a question the markdown answers more legibly than
+     600px of table markup. The two are composed from the same `shown`. */
+  /* `total` is the ELIGIBLE count, not `shown.length`. The HTML applies its own
+     byte budget on top of MAX_ROLES, so it may show fewer cards than the
+     markdown does — and the "and N more" line has to count everything left
+     over, whichever of the two caps bit. */
+  const html = renderDigestEmail(shown, cfg, { region, code, total: roles.length, now });
+
+  return { subject, body, html, count: roles.length, shown: shown.length, roles: shown };
 }

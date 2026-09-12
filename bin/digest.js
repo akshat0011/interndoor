@@ -117,7 +117,11 @@ const res = await fetch(API, {
   },
   body: JSON.stringify({
     subject: mail.subject,
-    body: mail.body,
+    /* THE HTML, NOT THE MARKDOWN. Buttondown renders the body through its own
+       "modern" template; a raw HTML block passes through it, which is what lets
+       the mail carry the site's own design (src/digestmail.js). `mail.body` is
+       still composed and is what --dry-run prints. */
+    body: mail.html,
     status: sendStatus(mode),
   }),
 });
