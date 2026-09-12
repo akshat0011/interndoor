@@ -1013,6 +1013,38 @@ function regionSwitch(current, regions) {
  * works perfectly on every local server. That is exactly how the no-flash theme
  * script shipped broken on 21 Aug.
  */
+/**
+ * The three tags that decide whether a share renders a CARD or a bare link.
+ *
+ * `og:image` alone makes a scraper FETCH the image before it can know how big
+ * it is, and Facebook and LinkedIn both fall back to a small card — or to no
+ * image at all — on the first share of a URL while that fetch is still in
+ * flight. Declaring the size lets them lay out the large card immediately.
+ * `web/public/index.html` has carried these since the boards were written; the
+ * ~4,000 GENERATED pages did not, which is every page a reader actually shares
+ * out of a Google result.
+ *
+ * 1200x630 is not an assumption. Both images this site ever passes are drawn
+ * at exactly that: `web/api/og.js` renders `{ width: 1200, height: 630 }` and
+ * `og.jpg` measures the same. `test/socialcard.test.mjs` pins both against the
+ * number written here, because a card resized without this being changed would
+ * ship a lie to every scraper rather than fail anything.
+ */
+const OG_W = 1200;
+const OG_H = 630;
+
+function imageMeta(image) {
+  /* Derived, not assumed: a job page's card comes out of /api/og as PNG and
+     every other page uses og.jpg. Wrong here is worse than absent — a scraper
+     told image/jpeg about a PNG may discard it. */
+  const type = /\/api\/og\b/.test(String(image)) ? 'image/png' : 'image/jpeg';
+  return `<meta property="og:image:secure_url" content="${esc(image)}">
+<meta property="og:image:type" content="${type}">
+<meta property="og:image:width" content="${OG_W}">
+<meta property="og:image:height" content="${OG_H}">
+`;
+}
+
 function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '', sectionExact = false }) {
   /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
      the Companies section but is not /companies, so announcing its nav item as
@@ -1041,7 +1073,7 @@ ${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robo
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:image" content="${esc(image)}">
-<meta name="twitter:card" content="summary_large_image">
+${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${esc(image)}">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
