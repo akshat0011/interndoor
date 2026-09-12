@@ -135,7 +135,15 @@ const NEARBY_SPAN = 220;
 const NEARBY_PERIOD_PATTERNS = [
   [/\b(?:per\s+hour|an\s+hour|hourly\s+(?:rate|pay|wage|salary|range)|(?:rate|pay|wage|salary|range)\s+per\s+hour)\b/i, 'hour'],
   [/\b(?:per\s+month|a\s+month|monthly\s+(?:stipend|salary|pay|rate|wage))\b/i, 'month'],
-  [/\b(?:per\s+week|a\s+week|weekly\s+(?:stipend|salary|pay|rate|wage))\b/i, 'week'],
+  /* WEEK CARRIES TWO TRAPS, BOTH FROM ONE EMPLOYER'S REAL POSTINGS.
+     Formlabs writes "you will always be paid based on the assumed 40 HOURS PER
+     WEEK as a full-time intern" a line above the figure — a working-hours
+     statement, not a pay period — and posts both "The weekly pay range for this
+     role is" and "The BI-WEEKLY pay range…". Reading either as `week` publishes
+     a fortnightly range as a weekly one and doubles the implied rate; schema.org
+     has no bi-weekly unit, so the honest answer there is no period at all.
+     Fifteen live rows sat in one shape or the other. */
+  [/(?<!\bhours?\s)(?<!\bhrs?\s)\b(?:per\s+week|a\s+week|(?<!bi[-\s]?)weekly\s+(?:stipend|salary|pay|rate|wage))\b/i, 'week'],
   [/\b(?:per\s+year|per\s+annum|annualized|annualised|annually|yearly\s+(?:salary|pay|rate|compensation)|annual\s+(?:salary|pay|rate|base|compensation))\b/i, 'year'],
   [/\b(?:per\s+day|daily\s+(?:rate|stipend|allowance))\b/i, 'day'],
 ];
@@ -168,7 +176,7 @@ const CURRENCY_HINT = /[₹$€£¥]|\b(inr|usd|eur|gbp|rs|lpa|lakhs?|lac|crore)
  * million in funding" got published as a $410,000,000 intern stipend before this
  * existed. A line matching any of these is not a compensation line.
  */
-const NOT_COMPENSATION = /\b(funding|funded|valuation|valued|raised|raising|investors?|investment|revenue|turnover|arr|gmv|market\s+cap|series\s+[a-f]\b|acquisition|acquired|profit|assets under management|aum|portfolio|transactions?|processed|donat|grant)\b/i;
+const NOT_COMPENSATION = /\b(funding|funded|valuation|valued|raised|raising|investors?|investment|revenue|turnover|arr|gmv|market\s+cap|series\s+[a-f]\b|acquisition|acquired|profit|assets under management|aum|portfolio|transactions?|processed|donat|grant|referral|referred|refer\s+a\s+friend)\b/i;
 
 /** A stipend must be quoted against a period, or be a plausible one-off. */
 const PERIOD_HINT = /\b(per|\/|monthly|weekly|yearly|annually|annum|month|week|year|hour|day|pm\b|pa\b|lpa)\b/i;

@@ -115,6 +115,25 @@ money('the closest period wins, not the first in the list',
   'Base salary: $60,000\nThat is the annual salary here. Contractors are paid an hourly rate instead.',
   60000, 60000, 'USD', 'year');
 
+/* WEEK, FROM ONE EMPLOYER'S TWO REAL SHAPES. Formlabs writes the working week
+   a line above the figure in every posting, and quotes either a weekly or a
+   BI-weekly range. Reading "40 hours per week" as pay, or bi-weekly as weekly,
+   doubles what we claim the employer pays. Fifteen live rows were affected. */
+money('a real weekly range is read',
+  'you will always be paid based on the assumed 40 hours per week as a full-time intern.\nThe weekly pay range for this role is:\n$1,575—$1,950 USD',
+  1575, 1950, 'USD', 'week');
+money('bi-weekly is refused, not halved or doubled',
+  'you will always be paid based on the assumed 40 hours per week as a full-time intern.\nThe bi-weekly pay range for this role is:\n$1,350—$1,550 USD',
+  1350, 1550, 'USD', null);
+money('working hours alone are never a pay period',
+  'Compensation\nInterns work 40 hours per week.\nThe range for this role is:\n$1,200—$1,400 USD',
+  1200, 1400, 'USD', null);
+/* A referral bounty is not the candidate's pay: Voleon's "$7,500 if your
+   referred candidate is hired" was stored as a stipend before this. */
+money('a referral bounty is not pay',
+  'REFERRAL PROGRAM If you have a great candidate in mind you have the potential to earn $7,500 if your referred candidate is successfully hired.',
+  null);
+
 console.log('\n== duration ==');
 check('6 months', extractDuration('This is a 6 months internship'), '6 months');
 check('range', extractDuration('Duration: 3-6 months'), '3-6 months');
