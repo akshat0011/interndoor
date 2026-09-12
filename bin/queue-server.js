@@ -496,12 +496,27 @@ async function doPublish(row) {
     store.reelPublished(jobId, { mediaId: res.id, permalink: res.url });
     reelRunning = { ...reelRunning, stage: 'published', url: res.url, finishedAt: Date.now() };
     log.ok(`Published reel for ${job.company} — ${res.url}`);
-    notify(`Reel published — ${job.company}`, job.title, res.url);
+    /* THE PERMALINK GOES IN `subtitle`, NOT A THIRD POSITIONAL ARGUMENT. This
+       call passed `res.url` where notify() takes its options object, and
+       destructuring a STRING for `{ sound, subtitle }` yields undefined for
+       both — so every reel notification since has quietly shipped without the
+       link it was written to carry. It threw nothing and logged nothing. */
+    await notify(`Reel published — ${job.company}`, job.title,
+      { sound: 'Glass', subtitle: res.url });
     return { ok: true, url: res.url };
   } catch (err) {
     store.reelFailed(jobId, err.message);
     reelRunning = { ...reelRunning, stage: 'failed', error: err.message, finishedAt: Date.now() };
     log.warn(`Reel for ${job.company} failed — ${err.message}`);
+    /* A FAILURE HAS TO INTERRUPT, and until now only the success did.
+       Publishing runs unattended eight times a day from a slot timer, so the
+       whole signal that the pipeline is alive was a notification ARRIVING.
+       An expired IG token, a storygasted break, or Instagram refusing the
+       upload stopped the reels and said nothing — the absence of eight
+       notifications a day is not something anyone notices quickly. Basso, the
+       same sound `src/index.js` uses when the watcher itself falls over. */
+    await notify(`Reel FAILED — ${job.company}`, err.message.slice(0, 180),
+      { sound: 'Basso', subtitle: job.title });
     return { error: err.message };
   }
 }
