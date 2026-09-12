@@ -6,7 +6,67 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 12 Sep 2026 15:24:29 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 12 Sep 2026 16:28:47 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer, Intern — Abridge</title>
+    <link>https://interndoor.com/us/jobs/abridge-software-engineer-intern-4454831386</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/abridge-software-engineer-intern-4454831386</guid>
+    <pubDate>Sat, 12 Sep 2026 16:28:47 GMT</pubDate>
+    <description>Company: Abridge · Location: San Francisco, CA · Duration: Fall 2026
+• Build end-to-end features for AI-powered clinical systems
+• Work with LangChain, LlamaIndex, and retrieval pipelines
+• Collaborate with cross-functional teams on real-world features</description>
+  </item>
+  <item>
+    <title>Software Engineer, Internship - Defense Tech — Palantir Technologies</title>
+    <link>https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-defense-tech-4434140507</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/palantir-technologies-software-engineer-internship-defense-tech-4434140507</guid>
+    <pubDate>Sat, 12 Sep 2026 16:07:10 GMT</pubDate>
+    <description>Company: Palantir Technologies · Location: Palo Alto, CA
+• Write clean code for defense systems used in military operations
+• Work with Java, Go, and Typescript on mission-critical software
+• Collaborate with engineers and product teams on real-world tools</description>
+  </item>
+  <item>
+    <title>Chemical / Process Engineering Intern (AM) - Summer 2027 — Jacobs</title>
+    <link>https://interndoor.com/us/jobs/jacobs-chemical-process-engineering-intern-am-summer-2027-4457529093</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/jacobs-chemical-process-engineering-intern-am-summer-2027-4457529093</guid>
+    <pubDate>Sat, 12 Sep 2026 15:43:52 GMT</pubDate>
+    <description>Company: Jacobs · Location: Greenville, SC · Duration: Summer 2027
+• Develop process designs, PFDs, and P&amp;IDs for client projects
+• Use PipeFlo, AFT Fathom, and SmartPlant for engineering tasks
+• Work in Greenville, SC with mentorship from senior engineers</description>
+  </item>
+  <item>
+    <title>Grad Intern – Machine Learning Engineer – Amgen’s Technology &amp; Medical Organizations (Summer 2027) — Amgen</title>
+    <link>https://interndoor.com/us/jobs/amgen-grad-intern-machine-learning-engineer-amgen-s-technology-and-medical-o-4466489803</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amgen-grad-intern-machine-learning-engineer-amgen-s-technology-and-medical-o-4466489803</guid>
+    <pubDate>Sat, 12 Sep 2026 15:41:34 GMT</pubDate>
+    <description>Company: Amgen · Location: United States · Duration: Summer 2027
+• Build data pipelines for pharmaceutical datasets and enterprise data lakes
+• Develop and deploy ML models with Python, SQL, and cloud platforms
+• Collaborate in agile teams on data analysis and visualization projects</description>
+  </item>
+  <item>
+    <title>Undergrad Intern – Data Scientist – Amgen’s Technology &amp; Medical Organizations (Summer 2027) — Amgen</title>
+    <link>https://interndoor.com/us/jobs/amgen-undergrad-intern-data-scientist-amgen-s-technology-and-medical-organiz-4466485814</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amgen-undergrad-intern-data-scientist-amgen-s-technology-and-medical-organiz-4466485814</guid>
+    <pubDate>Sat, 12 Sep 2026 15:40:54 GMT</pubDate>
+    <description>Company: Amgen · Location: United States · Duration: Summer 2027
+• Analyze data to build predictive models for business decisions
+• Use python and sql to process structured and unstructured data
+• Work on cross-functional projects with scientists and engineers</description>
+  </item>
+  <item>
+    <title>Undergrad Intern – Data Engineer – Amgen’s Technology &amp; Medical Organizations (Summer 2027) — Amgen</title>
+    <link>https://interndoor.com/us/jobs/amgen-undergrad-intern-data-engineer-amgen-s-technology-and-medical-organiza-4466485816</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amgen-undergrad-intern-data-engineer-amgen-s-technology-and-medical-organiza-4466485816</guid>
+    <pubDate>Sat, 12 Sep 2026 15:40:50 GMT</pubDate>
+    <description>Company: Amgen · Location: United States · Duration: Summer 2027
+• Design and develop data pipelines to extract, transform, and load data into enterprise data lake
+• Build analytics tools using Python, SQL, and AWS for data engineering solutions
+• Collaborate with architects and data scientists to automate tasks and create reusable frameworks</description>
+  </item>
   <item>
     <title>Quality Engineering Intern — Joby Aviation</title>
     <link>https://interndoor.com/us/jobs/joby-aviation-quality-engineering-intern-4438854392</link>
@@ -447,66 +507,6 @@
 • Monitor and maintain cloud infrastructure for global security platform
 • Use Linux, Ansible, Terraform for automation and compliance
 • Work with military personnel on FedRAMP and vulnerability management</description>
-  </item>
-  <item>
-    <title>Software Engineer Intern (TikTok AI Search &amp; Visual Search Infra Team) - 2027 Summer — TikTok</title>
-    <link>https://interndoor.com/us/jobs/tiktok-software-engineer-intern-tiktok-ai-search-and-visual-search-infra-team-4456610808</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tiktok-software-engineer-intern-tiktok-ai-search-and-visual-search-infra-team-4456610808</guid>
-    <pubDate>Sat, 12 Sep 2026 09:51:52 GMT</pubDate>
-    <description>Company: TikTok · Location: San Jose, CA
-• Build and optimize large-scale search infrastructure for billions of requests
-• Work on AI agents, RAG systems, and LLM/VLM training/serving platforms
-• Collaborate with engineers and researchers on cutting-edge search technologies</description>
-  </item>
-  <item>
-    <title>Intern - HBM SoC RTL Design Engineer — Micron Technology</title>
-    <link>https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749</guid>
-    <pubDate>Sat, 12 Sep 2026 09:08:58 GMT</pubDate>
-    <description>Company: Micron Technology · Location: Folsom, CA
-• Design and implement RTL for HBM SoC logic die blocks
-• Use SystemVerilog/Verilog with Cadence, Synopsys, Siemens tools
-• Work with architects, verification, and firmware teams</description>
-  </item>
-  <item>
-    <title>Intern - Wet Process Fab 4 EDE — Micron Technology</title>
-    <link>https://interndoor.com/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510</guid>
-    <pubDate>Sat, 12 Sep 2026 09:08:23 GMT</pubDate>
-    <description>Company: Micron Technology · Location: Boise, ID
-• Design and optimize wet process equipment for memory parts
-• Use AI and data analysis to solve engineering challenges
-• Work on semiconductor hardware development with a focus on innovation</description>
-  </item>
-  <item>
-    <title>Intern - Yield Technology Equipment — Micron Technology</title>
-    <link>https://interndoor.com/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831</guid>
-    <pubDate>Sat, 12 Sep 2026 09:05:50 GMT</pubDate>
-    <description>Company: Micron Technology · Location: Boise, ID
-• Analyze process flows to find defect anomalies and improve tool performance
-• Work with AI agents and new inspection tools to enhance defect detection
-• Collaborate with engineers across multiple teams to optimize metrology operations</description>
-  </item>
-  <item>
-    <title>Research &amp; Development Engineering Co-Op, WATCHMAN — Boston Scientific</title>
-    <link>https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282</guid>
-    <pubDate>Sat, 12 Sep 2026 06:17:03 GMT</pubDate>
-    <description>Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027
-• Design and prototype medical devices based on clinical feedback
-• Use Microsoft Excel for data analysis and reporting
-• Work in a hybrid model with regular office attendance</description>
-  </item>
-  <item>
-    <title>Disneyland Cybersecurity Intern, Spring 2027 — The Walt Disney Company</title>
-    <link>https://interndoor.com/us/jobs/the-walt-disney-company-disneyland-cybersecurity-intern-spring-2027-4465421019</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/the-walt-disney-company-disneyland-cybersecurity-intern-spring-2027-4465421019</guid>
-    <pubDate>Sat, 12 Sep 2026 05:44:26 GMT</pubDate>
-    <description>Company: The Walt Disney Company · Location: Anaheim, CA · Duration: 12 months
-• Support PC-based control systems for rides and shows
-• Use Windows/Linux tools for patching and security
-• Create documentation and troubleshoot hardware/software</description>
   </item>
 </channel>
 </rss>
