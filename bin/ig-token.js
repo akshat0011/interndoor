@@ -132,10 +132,27 @@ try {
 }
 writeFileSync(envPath, after);
 
-const userLine = new RegExp(`^${userVar}=(.*)$`, 'm').exec(after)?.[1];
 console.log(`  Stored ${tokenVar} for @${me.username} (${me.account_type}).`);
-if (userLine && userLine.trim() !== me.id) {
-  console.log(`  NOTE: ${userVar} is ${userLine.trim()} but this token's account is ${me.id}.`);
-  console.log('  Publishing addresses the account by that id — fix it before the next slot.');
+
+/* THE CONFIGURED ID IS CHECKED BY USE, NOT BY COMPARISON, and the first
+   version of this got it wrong. `me.id` returns the app-scoped id an
+   Instagram Login token carries (`2800…`), while `.env` holds the Instagram
+   Business Account id (`17841…`) — the two ALWAYS differ, they address the
+   same account, and both answer. Comparing them printed an alarming NOTE
+   about every healthy account on the site, including @interndoorusa, which
+   had been publishing on that exact pair for weeks.
+   What actually matters is whether the id the PUBLISHER uses resolves with
+   this token, so that is what is asked. */
+const configuredId = new RegExp(`^${userVar}=(.*)$`, 'm').exec(after)?.[1]?.trim();
+if (!configuredId) {
+  console.log(`  NOTE: ${userVar} is not set. The publisher addresses the account by it.`);
+} else {
+  try {
+    await graph(`/${configuredId}/content_publishing_limit`);
+    console.log(`  ${userVar} resolves with it, so the pair the publisher uses is good.`);
+  } catch (err) {
+    console.log(`  NOTE: ${userVar}=${configuredId} does NOT resolve with this token — ${err.message}`);
+    console.log('  The token is stored, but publishing addresses the account by that id.');
+  }
 }
 console.log('  Publishing answered, so the scope is there too.\n');
