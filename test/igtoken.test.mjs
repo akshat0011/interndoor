@@ -23,6 +23,15 @@ function check(label, actual, expected) {
   else { fail++; console.log(`  FAIL  ${label}\n          got:  ${a}\n          want: ${e}`); }
 }
 const ok = (label, cond) => check(label, !!cond, true);
+/* A call that is EXPECTED to return. An uncaught throw here would abort the
+   whole file, so every assertion after it would silently not run — which is
+   how a mutation came back as "died, but not on an assertion". A throw is a
+   failure of this check and nothing more. */
+function returns(label, fn, expected) {
+  let actual;
+  try { actual = fn(); } catch (err) { actual = `threw: ${err.message}`; }
+  check(label, actual, expected);
+}
 function throws(label, fn, match) {
   try { fn(); check(label, 'no throw', `throws ${match}`); }
   catch (err) { check(label, err.message.includes(match) ? `throws ${match}` : err.message, `throws ${match}`); }
@@ -64,10 +73,10 @@ console.log('\n== THE VARIABLE IS REPLACED AND NOTHING ELSE MOVES ==');
      that needs them: without `^`, `TOKEN=` matches INSIDE
      `IG_ACCESS_TOKEN=` and rewrites the wrong credential. */
   const collide = 'TOKEN=short\nIG_ACCESS_TOKEN=long\n';
-  const fixed = setEnvVar(collide, 'TOKEN', 'NEW');
-  check('only the standalone name is replaced', fixed, 'TOKEN=NEW\nIG_ACCESS_TOKEN=long\n');
-  const other = setEnvVar(collide, 'IG_ACCESS_TOKEN', 'NEW');
-  check('and from the other direction', other, 'TOKEN=short\nIG_ACCESS_TOKEN=NEW\n');
+  returns('only the standalone name is replaced',
+    () => setEnvVar(collide, 'TOKEN', 'NEW'), 'TOKEN=NEW\nIG_ACCESS_TOKEN=long\n');
+  returns('and from the other direction',
+    () => setEnvVar(collide, 'IG_ACCESS_TOKEN', 'NEW'), 'TOKEN=short\nIG_ACCESS_TOKEN=NEW\n');
 }
 
 console.log('\n== A VARIABLE THAT IS NOT THERE IS APPENDED ==');
@@ -125,6 +134,17 @@ console.log('\n== IT TARGETS THE VARIABLES THE PUBLISHER ACTUALLY READS ==');
   ok('it CALLS the publishing-limit endpoint',
     /await graph\(`\/\$\{me\.id\}\/content_publishing_limit`\)/.test(tool));
 
+  /* THE CONFIGURED ID IS CHECKED BY USE, NEVER BY COMPARISON. `me.id` returns
+     the app-scoped id an Instagram Login token carries (2800…) and .env holds
+     the Business Account id (17841…): the two ALWAYS differ, both resolve to
+     the same account, and the first version of this tool printed an alarming
+     NOTE about every healthy account on the site — @interndoorusa included,
+     which had been publishing on that exact pair for weeks. A false alarm in a
+     tool run during an outage is worse than no check. */
+  check('never compares the two id forms', /!==\s*me\.id|me\.id\s*!==/.test(tool), false);
+  ok('it resolves the configured id instead',
+    /await graph\(`\/\$\{configuredId\}\/content_publishing_limit`\)/.test(tool));
+
   /* The token must never reach argv, shell history or a transcript. Asserting
      the absence of the string `--token` was too narrow: `arg('token')` reads
      the same flag and does not contain it. Assert what the token IS assigned
@@ -133,7 +153,14 @@ console.log('\n== IT TARGETS THE VARIABLES THE PUBLISHER ACTUALLY READS ==');
     /const token = await askSecret\(/.test(tool));
   check('never from an argument', /\barg\(\s*['"]token['"]\s*\)/.test(tool), false);
   ok('and the prompt suppresses echo', /askSecret/.test(tool) && /\\x1b\[2K/.test(raw));
-  check('and it is never printed back', /console\.log\([^)]*\btoken\b/.test(tool), false);
+  /* The VALUE, not the word. `console.log([^)]*\btoken\b` matched the phrase
+     "The token is stored" in a message — prose, not a leak. What must never
+     happen is the identifier being interpolated or logged. */
+  check('the token value is never interpolated anywhere', /\$\{token[^A-Za-z0-9_]/.test(tool), false);
+  check('nor logged directly', /console\.(log|error)\(\s*token\b/.test(tool), false);
+  /* …and the guard is proved to be capable of firing, so it cannot pass by
+     matching nothing at all. */
+  ok('that check can fail', /\$\{token[^A-Za-z0-9_]/.test('console.log(`${token}`)'));
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
