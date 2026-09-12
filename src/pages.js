@@ -276,6 +276,29 @@ export function isIndexable(job) {
 const US_STATE_CODES = new Set(('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN '
   + 'MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' '));
 
+/** Full US state names, for the half of our location strings that spell them
+ *  out. Two-letter codes are checked against US_STATE_CODES as before. */
+const US_STATE_BY_NAME = new Map(Object.entries({
+  alabama: 'AL', alaska: 'AK', arizona: 'AZ', arkansas: 'AR', california: 'CA', colorado: 'CO',
+  connecticut: 'CT', delaware: 'DE', 'district of columbia': 'DC', florida: 'FL', georgia: 'GA',
+  hawaii: 'HI', idaho: 'ID', illinois: 'IL', indiana: 'IN', iowa: 'IA', kansas: 'KS', kentucky: 'KY',
+  louisiana: 'LA', maine: 'ME', maryland: 'MD', massachusetts: 'MA', michigan: 'MI', minnesota: 'MN',
+  mississippi: 'MS', missouri: 'MO', montana: 'MT', nebraska: 'NE', nevada: 'NV', 'new hampshire': 'NH',
+  'new jersey': 'NJ', 'new mexico': 'NM', 'new york': 'NY', 'north carolina': 'NC', 'north dakota': 'ND',
+  ohio: 'OH', oklahoma: 'OK', oregon: 'OR', pennsylvania: 'PA', 'puerto rico': 'PR', 'rhode island': 'RI',
+  'south carolina': 'SC', 'south dakota': 'SD', tennessee: 'TN', texas: 'TX', utah: 'UT', vermont: 'VT',
+  virginia: 'VA', washington: 'WA', 'west virginia': 'WV', wisconsin: 'WI', wyoming: 'WY',
+}));
+
+const US_COUNTRY_WORDS = new Set(['united states', 'united states of america', 'usa', 'us']);
+
+/** A US state code from either form, or null. Never a guess. */
+function usStateCode(part) {
+  const raw = String(part ?? '').trim();
+  if (/^[A-Z]{2}$/.test(raw) && US_STATE_CODES.has(raw)) return raw;
+  return US_STATE_BY_NAME.get(raw.toLowerCase()) ?? null;
+}
+
 /**
  * Split a location string into a schema.org PostalAddress.
  *
@@ -305,8 +328,24 @@ export function postalAddressFor(location, countryCode) {
 
   if (parts.length === 2) {
     const tail = parts[1];
-    if (countryCode === 'US' && /^[A-Z]{2}$/.test(tail) && US_STATE_CODES.has(tail)) {
-      return { locality: parts[0], region: tail };
+    if (countryCode === 'US') {
+      /* SPELLED-OUT STATES, ADDED 12 SEP 2026. The code-only test dropped
+         `addressRegion` on 99 live US rows — "Redmond, Washington",
+         "Mountain View, California", "San Jose, California" — and the URL
+         Inspection API duly reported *Missing field "addressRegion"* on the
+         Microsoft, Tesla, Moderna and Google pages, four of the eight US pages
+         drawing the most impressions. The state is in the string we already
+         store; nothing is invented. */
+      const code = usStateCode(tail);
+      if (code) return { locality: parts[0], region: code };
+      /* "Georgia, United States" IS A STATE AND A COUNTRY, NOT A CITY AND A
+         COUNTRY. Filing parts[0] as the locality published Georgia, California
+         and Virginia as CITIES. Where the tail is the country and the head is a
+         state, the head is the region and there is no city to give. */
+      if (US_COUNTRY_WORDS.has(tail.toLowerCase())) {
+        const head = usStateCode(parts[0]);
+        if (head) return { locality: null, region: head };
+      }
     }
     return { locality: parts[0], region: null };
   }
@@ -344,6 +383,12 @@ function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VAL
      Absent on the rest, which is the correct answer — Search Console wants this
      field, but a wrong salary on a named employer's page is exactly the kind of
      structured-data error that earns a domain-wide manual action. */
+  /* SKILLS — recommended by Google, read by the jobs experience, and already
+     extracted for 74% of live US rows by SKILL_VOCAB. It is our own reading of
+     the posting rather than the employer's prose, which is the same line the
+     rest of this file draws. Emitted only where the extractor found any. */
+  if (Array.isArray(job.skills) && job.skills.length) ld.skills = job.skills.join(', ');
+
   if (job.pay) {
     ld.baseSalary = {
       '@type': 'MonetaryAmount',
@@ -367,7 +412,12 @@ function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VAL
         // The CITY, not the whole string. This was `job.location`, so a row
         // stored as "Bengaluru, Karnataka, India" published all three as the
         // locality.
-        addressLocality: addr?.locality ?? job.location,
+        /* OMITTED where the string gave a state and no city — publishing
+           "Georgia, United States" as the locality is the bug this replaced,
+           and an absent field beats a wrong one. */
+        ...((addr?.locality ?? (addr?.region ? null : job.location))
+          ? { addressLocality: addr?.locality ?? job.location }
+          : {}),
         // Withheld rather than guessed — see postalAddressFor.
         ...(addr?.region ? { addressRegion: addr.region } : {}),
         // The region's ISO code, never a constant. Emitting addressCountry: 'IN'
@@ -1675,7 +1725,24 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     // The switch is still rendered from `alternates` in the chrome.
     alternates,
     alternatePath: null,
-    extraLd: postingLd ? `<script type="application/ld+json">${jsonLd(postingLd)}</script>\n` : '',
+    /* THE TRAIL IS ALREADY ON THE PAGE — `Home > <employer> > <role>`, in the
+       nav below — and carried no markup, so Google drew a bare URL in the SERP
+       instead of a breadcrumb. Same three links, same destinations; it
+       describes navigation, not a vacancy, so it carries none of the
+       JobPosting risk that governs everything else here. */
+    /* THE POSTING BLOCK GOES FIRST. It is the page's primary entity, and a
+       reader that takes "the first ld+json block" — test/pages.test.mjs did —
+       must find the JobPosting there. */
+    extraLd: (postingLd ? `<script type="application/ld+json">${jsonLd(postingLd)}</script>\n` : '')
+      + `<script type="application/ld+json">${jsonLd({
+      '@context': 'https://schema.org/',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: regionUrl('/', region) },
+        { '@type': 'ListItem', position: 2, name: job.company, item: regionUrl(`/companies/${companySlug(job.company)}`, region) },
+        { '@type': 'ListItem', position: 3, name: job.title },
+      ],
+    })}</script>\n`,
   })}
 <main class="page">
   <div class="wrap">

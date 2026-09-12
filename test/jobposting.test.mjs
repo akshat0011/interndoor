@@ -262,5 +262,67 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
   rmSync(dir, { recursive: true, force: true });
 }
 
+console.log('\n== the address we publish, and the state we used to drop ==');
+{
+  const { postalAddressFor } = await import('../src/pages.js');
+  check('a two-letter state still works', postalAddressFor('San Jose, CA', 'US'), { locality: 'San Jose', region: 'CA' });
+  /* 99 live US rows spelled the state out, and the URL Inspection API reported
+     Missing field "addressRegion" on four of the eight US pages with the most
+     impressions because of it. */
+  check('a spelled-out state is read too', postalAddressFor('Redmond, Washington', 'US'), { locality: 'Redmond', region: 'WA' });
+  /* "Georgia, United States" published GEORGIA AS A CITY. */
+  check('a state plus the country gives a region and no city',
+    postalAddressFor('Georgia, United States', 'US'), { locality: null, region: 'GA' });
+  /* Indiana, Pennsylvania is a real town: the TAIL decides, never the head. */
+  check('a city named after a state is still the city',
+    postalAddressFor('Indiana, Pennsylvania', 'US'), { locality: 'Indiana', region: 'PA' });
+  check('nothing is invented from a bare city', postalAddressFor('Boston', 'US'), { locality: 'Boston', region: null });
+  check('the mapping is US-only', postalAddressFor('Redmond, Washington', 'IN'), { locality: 'Redmond', region: null });
+  check('three parts are unchanged', postalAddressFor('Bengaluru, Karnataka, India', 'IN'), { locality: 'Bengaluru', region: 'Karnataka' });
+}
+
+console.log('\n== what the job page now tells Google ==');
+{
+  const { readFileSync, readdirSync, writeFileSync, mkdirSync, rmSync } = await import('node:fs');
+  const { writePages } = await import('../src/pages.js');
+  const { regionOf } = await import('../src/regions.js');
+  const dir = '/tmp/interndoor-ld-test';
+  rmSync(dir, { recursive: true, force: true });
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(`${dir}/index.html`, readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8'));
+  const row = {
+    id: 'x1', company: 'Acme', title: 'Software Engineer Intern', isTech: true, bullets: ['a', 'b'],
+    employmentType: 'intern', location: 'Redmond, Washington', skills: ['python', 'c++'],
+    postedAt: Date.parse('2026-09-01'), firstSeenAt: Date.parse('2026-09-01'),
+  };
+  const ldOf = (file) => [...readFileSync(file, 'utf8').matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map((m) => JSON.parse(m[1]));
+  writePages([row], dir, [], { region: regionOf('US') });
+  const first = `${dir}/us/jobs/${readdirSync(`${dir}/us/jobs`).find((f) => f.includes('x1'))}`;
+  const html = readFileSync(first, 'utf8');
+  const blocks = ldOf(first);
+  const jp = blocks.find((b) => b['@type'] === 'JobPosting');
+  const crumb = blocks.find((b) => b['@type'] === 'BreadcrumbList');
+  /* ORDER MATTERS TO READERS THAT TAKE "THE FIRST BLOCK" — test/pages.test.mjs
+     did exactly that, and putting the breadcrumb first made it parse both
+     blocks and the tag between them. */
+  check('the posting block comes first', blocks[0]['@type'], 'JobPosting');
+  check('the spelled-out state reaches addressRegion', jp.jobLocation.address.addressRegion, 'WA');
+  check('skills are published', jp.skills, 'python, c++');
+  /* The trail was on the page with no markup behind it, so the SERP drew a bare
+     URL. Markup and page must say the same three things. */
+  check('the breadcrumb mirrors the visible trail',
+    crumb.itemListElement.map((i) => i.name), ['Home', 'Acme', 'Software Engineer Intern']);
+  check('and the visible trail is still there', /class="crumbs"/.test(html), true);
+  check('the breadcrumb points at the hub the page links to',
+    crumb.itemListElement[1].item.endsWith('/companies/acme'), true);
+
+  writePages([{ ...row, id: 'x2', skills: [] }], dir, [], { region: regionOf('US') });
+  const second = `${dir}/us/jobs/${readdirSync(`${dir}/us/jobs`).find((f) => f.includes('x2'))}`;
+  const jp2 = ldOf(second).find((b) => b['@type'] === 'JobPosting');
+  check('no skills field when the extractor found none', jp2.skills, undefined);
+  rmSync(dir, { recursive: true, force: true });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

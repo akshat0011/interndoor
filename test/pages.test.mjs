@@ -722,8 +722,14 @@ console.log('\n== validThrough expires the day the page stops being served ==');
 const cfgJson = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf8'));
 const shipDays = cfgJson.publish?.maxAgeDays ?? 14;
 const DAY = 86_400_000;
-const vtOf = (html) => JSON.parse(
-  html.match(/<script type="application\/ld\+json">(\{[\s\S]*?"@type": ?"JobPosting"[\s\S]*?)<\/script>/)[1]).validThrough;
+/* ONE BLOCK AT A TIME. A job page carries TWO ld+json blocks since 12 Sep —
+   the posting and the breadcrumb it already showed — and the previous pattern
+   opened on the first block and ran its lazy [\s\S]*? straight past that
+   block's </script> to find "JobPosting" in the second. It then JSON.parsed
+   both blocks and the tag between them. §1's lazy-quantifier trap, in a test. */
+const ldBlocks = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .map((m) => JSON.parse(m[1]));
+const vtOf = (html) => ldBlocks(html).find((b) => b['@type'] === 'JobPosting').validThrough;
 
 const postedMs = Date.UTC(2026, 7, 1);
 const vtJob = { ...linkedin, postedAt: postedMs, firstSeenAt: postedMs, lastSeenAt: postedMs,
