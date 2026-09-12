@@ -130,8 +130,12 @@ money('working hours alone are never a pay period',
   1200, 1400, 'USD', null);
 /* A referral bounty is not the candidate's pay: Voleon's "$7,500 if your
    referred candidate is hired" was stored as a stipend before this. */
+/* VOLEON'S REAL LINE, not a paraphrase. The first version of this case was
+   invented, produced no figure with OR without the rule, and passed for the
+   wrong reason — the mutation that deleted the rule survived it. §1's
+   assertion-that-tests-nothing, caught by mutation testing. */
 money('a referral bounty is not pay',
-  'REFERRAL PROGRAM If you have a great candidate in mind you have the potential to earn $7,500 if your referred candidate is successfully hired.',
+  'If you have a great candidate in mind for this role and would like to have the potential to earn $7,500 if your referred candidate is successfully hired and employed by The Voleon Group, please use this form https://voleon.com/referrals/ to submit your referral.',
   null);
 
 console.log('\n== duration ==');
