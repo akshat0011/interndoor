@@ -3265,8 +3265,28 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
   const roles = n > 0
     ? `${n.toLocaleString('en-US')} engineering internship${n === 1 ? '' : 's'}`
     : 'Engineering internships';
-  const description = `${roles} ${region.inName}, listed within minutes of going live and `
-    + 'refreshed every 30 minutes. Apply while the queue is still short.';
+  /* WHAT CHANGED 12 SEP 2026, AND HOW TO JUDGE IT.
+     `/us` drew 3,895 impressions at position ~7.2 over 28 days and ZERO
+     clicks — fourteen straight days of it — while only 14 of those impressions
+     carry a named query, so there is no evidence about what it ranks for and
+     none is coming. The title is category-first and correct (above), the
+     `?q=` duplicates §11 recorded are gone, and the page is not the problem
+     the numbers can see. The description is the one lever left, and §11 says a
+     rewrite there is free.
+
+     Freshness alone was the whole pitch, and every board in that result list
+     claims freshness. The two things Indeed and LinkedIn cannot say are NO
+     SIGNUP and a link to the posting itself.
+
+     "THE ORIGINAL POSTING", NEVER "THE EMPLOYER'S OWN". Most India rows link
+     to LinkedIn, so the stronger phrasing would be false on the majority of
+     the board — the §11 rule about claiming only what the site does.
+
+     JUDGE IT ON `/us` CTR OVER THE THREE WEEKS FROM 12 SEP, not on taste. The
+     honest prior is that a snippet cannot fix a position-7 blue link sitting
+     under Google's jobs widget, which is what §11 already concluded. */
+  const description = `${roles} ${region.inName}, updated every 30 minutes. `
+    + 'No signup, and every listing links straight to the original posting.';
   const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
   /* THE SHARE CARD LEADS WITH THE CATEGORY, NOT THE BRAND VOICE. It read
      "InternDoor — be early" in every region, which is what a LinkedIn or
