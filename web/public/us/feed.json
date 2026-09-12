@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-research-and-development-engineering-co-op-watchman-4466474282",
+      "title": "Research & Development Engineering Co-Op, WATCHMAN — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Design and prototype medical devices based on clinical feedback\n• Use Microsoft Excel for data analysis and reporting\n• Work in a hybrid model with regular office attendance",
+      "date_published": "2026-09-12T06:17:03.694Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/the-walt-disney-company-disneyland-cybersecurity-intern-spring-2027-4465421019",
+      "url": "https://interndoor.com/us/jobs/the-walt-disney-company-disneyland-cybersecurity-intern-spring-2027-4465421019",
+      "title": "Disneyland Cybersecurity Intern, Spring 2027 — The Walt Disney Company",
+      "content_text": "Company: The Walt Disney Company · Location: Anaheim, CA · Duration: 12 months\n• Support PC-based control systems for rides and shows\n• Use Windows/Linux tools for patching and security\n• Create documentation and troubleshoot hardware/software",
+      "date_published": "2026-09-12T05:44:26.819Z",
+      "authors": [
+        {
+          "name": "The Walt Disney Company"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/constellation-2027-summer-corporate-systems-hrit-intern-remote-4465179943",
       "url": "https://interndoor.com/us/jobs/constellation-2027-summer-corporate-systems-hrit-intern-remote-4465179943",
       "title": "2027 Summer Corporate Systems HRIT Intern (Remote) — Constellation",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Schneider Electric"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/schneider-electric-power-electronics-co-op-4465147728",
-      "url": "https://interndoor.com/us/jobs/schneider-electric-power-electronics-co-op-4465147728",
-      "title": "Power Electronics Co-Op — Schneider Electric",
-      "content_text": "Company: Schneider Electric · Location: Andover, MA · Duration: 6 months\n• Design and test high-density power converters for AI data centers\n• Use PLECS, MATLAB, and LTspice for simulation and analysis\n• Work with engineers on 800V power systems and semiconductor tech",
-      "date_published": "2026-09-11T23:10:39.387Z",
-      "authors": [
-        {
-          "name": "Schneider Electric"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ccc-intelligent-solutions-r-and-d-and-data-science-internship-fall-2026-4466391840",
-      "url": "https://interndoor.com/us/jobs/ccc-intelligent-solutions-r-and-d-and-data-science-internship-fall-2026-4466391840",
-      "title": "R&D & Data Science Internship Fall 2026 — CCC Intelligent Solutions",
-      "content_text": "Company: CCC Intelligent Solutions · Location: Chicago, IL · Duration: Fall 2026\n• Build agentic AI systems and conversational avatars\n• Work with Python, Swift, and Vue.js frameworks\n• Collaborate with cross-functional teams on AI projects",
-      "date_published": "2026-09-11T23:02:16.377Z",
-      "authors": [
-        {
-          "name": "CCC Intelligent Solutions"
         }
       ]
     }
