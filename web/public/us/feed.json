@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/analog-devices-algorithm-development-engineer-intern-4455010701",
+      "url": "https://interndoor.com/us/jobs/analog-devices-algorithm-development-engineer-intern-4455010701",
+      "title": "Algorithm Development Engineer Intern — Analog Devices",
+      "content_text": "Company: Analog Devices · Location: Wilmington, MA\n• Develop and test algorithms for data processing and machine learning\n• Collaborate with engineers on software projects and code optimization\n• Work on real-world problems with cross-functional teams\n• Based in Wilmington, MA, 10% travel required",
+      "date_published": "2026-09-12T17:30:19.150Z",
+      "authors": [
+        {
+          "name": "Analog Devices"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/abridge-software-engineer-intern-4454831386",
       "url": "https://interndoor.com/us/jobs/abridge-software-engineer-intern-4454831386",
       "title": "Software Engineer, Intern — Abridge",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Nuro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219",
-      "url": "https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219",
-      "title": "Site Reliability Engineer-SkillBridge Intern — Zscaler",
-      "content_text": "Company: Zscaler · Location: United States\n• Monitor and maintain cloud infrastructure for global security platform\n• Use Linux, Ansible, Terraform for automation and compliance\n• Work with military personnel on FedRAMP and vulnerability management",
-      "date_published": "2026-09-12T10:32:53.816Z",
-      "authors": [
-        {
-          "name": "Zscaler"
         }
       ]
     }
