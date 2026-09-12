@@ -824,6 +824,12 @@ export function publishedPaths() {
        one, and that page is where a site reads as maintained or generated. */
     'web/public/404.html',
     'web/public/report.html',
+    /* /contact. Written by the ROOT render only — there is one contact page for
+       all three boards and foot() links it root-relative from every generated
+       page on every board, so a missing file here would 404 a link on ~4,000
+       pages at once and no sitemap report would flag it, exactly as
+       /applications would. */
+    'web/public/contact.html',
     /* India's /applications — the reader's own tracker. Same reason as the two
        above: every other region's lives inside its own tree and is covered by
        regionPaths(), India's sits at the root. It is noindex and absent from
