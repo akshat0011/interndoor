@@ -66,6 +66,55 @@ money('stipend + weekly', 'Weekly stipend of $750 for the summer.', 750, 750, 'U
 money('real lump sum', 'You will receive a lump sum stipend of $4,000 to support incidental expenses.', 4000, 4000, 'USD', 'total');
 money('word "total"', 'Total stipend for the internship: \u20b950,000', 50000, 50000, 'INR', 'total');
 
+console.log('\n== a period stated one line away from the figure ==');
+/* 1,313 live US rows carried a figure and no period, so none could become
+   baseSalary and Google warned `Missing field "baseSalary"` on every US page it
+   checked. The postings DO state it — ATS descriptions break the line between
+   the two. Measured over all 6,799 stored descriptions: 204 rows gain a period
+   (192 of them US), 0 change, 0 lose. */
+money('the period is on the next line',
+  'Salary ranges for U.S locations (USD):$26.50-$45.25\n\nThe Internship Program offers an hourly rate of pay.',
+  26.5, 45.25, 'USD', 'hour');
+money('a label above the figure',
+  'SF Bay Area Hourly Rate\n$54—$60 USD',
+  54, 60, 'USD', 'hour');
+/* Akuna's real line. "annualized" was in no pattern at all, so a stated annual
+   salary read as periodless even sitting beside the figure. A figure ALONE on
+   its own line is still nothing — the line needs a pay word or a period for the
+   figure to be a candidate in the first place, and that gate is unchanged. */
+money('annualized counts',
+  'In accordance with the Equal Pay Act, the minimum annualized base salary starts at $145,000.',
+  145000, 145000, 'USD', 'year');
+
+/* THE TRAPS THE FIRST DRAFT FELL INTO, both found by re-deriving over the real
+   corpus and READING the results rather than trusting the count. */
+// `p.m.` in PERIOD_PATTERNS matched SIX THIRTY PM and called a stipend monthly.
+money('a clock time is not a period',
+  'Stipend: \u20b910,000 (Fixed)\nTimings: 9:30 AM to 6:30 PM Monday to Friday\nDuration: 6 months',
+  10000, 10000, 'INR', null);
+// A one-off equipment budget became $500/day off a stray "day" nearby.
+money('a one-off budget stays periodless',
+  'Everyone receives a $500 home office stipend to set up your workspace.\nWe meet every day.',
+  500, 500, 'USD', null);
+// The magnitude has to fit: this is the Intel 76,398-per-hour row from a new
+// direction, and the display string would ship before safeBaseSalary saw it.
+money('a period the magnitude contradicts is refused',
+  'Salary range (USD): $48,100 - $86,950\nThe program offers an hourly rate of pay.',
+  48100, 86950, 'USD', null);
+// `total` is a claim about the WHOLE payment. "total compensation" in the next
+// paragraph is not that claim; the same-line rule still reads a real one.
+money('total is never inferred from a neighbouring line',
+  'Compensation: $4,000\nSee the total compensation page for details.',
+  4000, 4000, 'USD', null);
+// Closest wins, or a benefits paragraph outranks the rate beside the figure.
+/* CLOSEST WINS, and this case is built so first-in-the-list CANNOT pass it:
+   `hour` is the first nearby pattern, so an order-driven search picks it, then
+   the magnitude bound rejects $60,000 an hour and the row loses its period
+   entirely. Only distance gives the right answer. */
+money('the closest period wins, not the first in the list',
+  'Base salary: $60,000\nThat is the annual salary here. Contractors are paid an hourly rate instead.',
+  60000, 60000, 'USD', 'year');
+
 console.log('\n== duration ==');
 check('6 months', extractDuration('This is a 6 months internship'), '6 months');
 check('range', extractDuration('Duration: 3-6 months'), '3-6 months');

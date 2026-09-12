@@ -86,6 +86,78 @@ function detectCurrency(context) {
   return null;
 }
 
+/**
+ * A period stated NEAR the figure but not on its own LINE — 12 Sep 2026.
+ *
+ * MEASURED FIRST: 1,313 live US rows carry a figure and no period, so none of
+ * them can become `baseSalary`, and the URL Inspection API warns
+ * `Missing field "baseSalary"` on every US page it checked. The postings do
+ * state it — ATS descriptions simply break the line between the two:
+ *
+ *     Salary ranges for U.S (excl. PR) locations (USD):$26.50-$45.25
+ *
+ *     ... The Medtronic Internship Program offers an hourly rate of pay ...
+ *
+ * `windowAround` cannot see that, because it is scoped to the line. This looks
+ * at the surrounding TEXT, and only when the figure's own line said nothing.
+ *
+ * THREE THINGS KEEP IT HONEST, each answering a bug this file has already had:
+ *
+ *  - **THE MAGNITUDE MUST FIT THE PERIOD.** "$48,100 – $86,950" next to the
+ *    word "hourly" is refused. That is the Intel 76,398-per-hour row §11
+ *    documents, arriving from a new direction, and `safeBaseSalary` would catch
+ *    it later anyway — but the DISPLAY string would already have shipped.
+ *  - **`total` AND `lump sum` ARE NEVER SEARCHED FOR HERE.** They are claims
+ *    about the whole payment, and "total compensation" in a neighbouring
+ *    paragraph is not one. The same-line rule still reads them.
+ *  - **CLOSEST WINS, NOT FIRST IN THE LIST.** A benefits paragraph mentioning
+ *    an annual bonus must never outrank "per hour" sitting beside the figure.
+ */
+const NEARBY_SPAN = 220;
+
+/**
+ * THE NEARBY SEARCH GETS ITS OWN, STRICTER PATTERNS, AND THE FIRST DRAFT PROVED
+ * WHY. `PERIOD_PATTERNS` survives on a LINE because the figure is right there;
+ * across 220 characters of neighbouring prose it reads anything shaped like a
+ * period. Re-derived over all 6,799 stored descriptions, the loose list gained
+ * 183 rows and two of the first dozen read by hand were wrong:
+ *
+ *   D Square  "Stipend: ₹10,000 (Fixed) … Timings: 9:30 AM to 6:30 PM"
+ *             -> `p.m.` matched SIX THIRTY PM and called the stipend monthly.
+ *   Cohere    "$500 home office stipend to set up your workspace"
+ *             -> a stray "day" nearby made a one-off equipment budget $500/day.
+ *
+ * Both happened to be findable only because the change was measured against the
+ * real corpus and the results were READ. So a period out here has to be part of
+ * a pay phrase — "per hour", "hourly rate", "annualized" — never a bare unit, a
+ * clock time, or a duration. `p.m.`, `p.a.`, `/mo` and bare `daily` are gone.
+ */
+const NEARBY_PERIOD_PATTERNS = [
+  [/\b(?:per\s+hour|an\s+hour|hourly\s+(?:rate|pay|wage|salary|range)|(?:rate|pay|wage|salary|range)\s+per\s+hour)\b/i, 'hour'],
+  [/\b(?:per\s+month|a\s+month|monthly\s+(?:stipend|salary|pay|rate|wage))\b/i, 'month'],
+  [/\b(?:per\s+week|a\s+week|weekly\s+(?:stipend|salary|pay|rate|wage))\b/i, 'week'],
+  [/\b(?:per\s+year|per\s+annum|annualized|annualised|annually|yearly\s+(?:salary|pay|rate|compensation)|annual\s+(?:salary|pay|rate|base|compensation))\b/i, 'year'],
+  [/\b(?:per\s+day|daily\s+(?:rate|stipend|allowance))\b/i, 'day'],
+];
+
+function periodNearby(haystack, index, length, max) {
+  const from = Math.max(0, index - NEARBY_SPAN);
+  const text = haystack.slice(from, Math.min(haystack.length, index + length + NEARBY_SPAN));
+  const at = index - from;
+  let best = null;
+  for (const [re, period] of NEARBY_PERIOD_PATTERNS) {
+    const rx = new RegExp(re.source, 'gi');
+    for (let m = rx.exec(text); m; m = rx.exec(text)) {
+      const distance = Math.max(0, m.index < at ? at - (m.index + m[0].length) : m.index - (at + length));
+      if (!best || distance < best.distance) best = { period, distance };
+    }
+  }
+  if (!best) return null;
+  const bounds = SALARY_BOUNDS[best.period];
+  if (!bounds || !(max >= bounds[0] && max <= bounds[1])) return null;
+  return best.period;
+}
+
 const MONEY_KEYWORD = /\b(stipend|salary|compensation|remuneration|pay|payment|paid|ctc|package|honorarium)\b/i;
 const CURRENCY_HINT = /[₹$€£¥]|\b(inr|usd|eur|gbp|rs|lpa|lakhs?|lac|crore)\b/i;
 
@@ -122,7 +194,14 @@ export function extractStipend(...texts) {
 
   const candidates = [];
 
-  for (const line of haystack.split('\n')) {
+  /* The offset of each line in the haystack. `periodNearby` reads ACROSS line
+     breaks, so it needs where this line sits, not just the line. */
+  const lines = haystack.split('\n');
+  const lineAt = [];
+  for (let i = 0, o = 0; i < lines.length; i += 1) { lineAt.push(o); o += lines[i].length + 1; }
+
+  for (const [lineNo, line] of lines.entries()) {
+    const from = lineAt[lineNo];
     if (line.length > 2000) continue; // Runaway line; not worth scanning.
 
     // Funding, valuation and revenue figures are the single biggest source of
@@ -148,7 +227,8 @@ export function extractStipend(...texts) {
       if (credible) {
         candidates.push({
           min: min.value, max: max.value,
-          currency: detectCurrency(ctx), period: detectPeriod(ctx),
+          currency: detectCurrency(ctx),
+          period: detectPeriod(ctx) ?? periodNearby(haystack, from + range.index, range[0].length, max.value),
           raw: range[0].trim(), score: hasKeyword ? 4 : 3,
         });
         continue;
@@ -167,7 +247,8 @@ export function extractStipend(...texts) {
         const ctx = windowAround(line, withCurrency.index, withCurrency[0].length);
         candidates.push({
           min: amount.value, max: amount.value,
-          currency: detectCurrency(ctx), period: detectPeriod(ctx),
+          currency: detectCurrency(ctx),
+          period: detectPeriod(ctx) ?? periodNearby(haystack, from + withCurrency.index, withCurrency[0].length, amount.value),
           raw: withCurrency[0].trim(), score: hasKeyword ? 3 : 2,
         });
         continue;
@@ -186,7 +267,8 @@ export function extractStipend(...texts) {
         const ctx = windowAround(line, bare.index, bare[0].length);
         candidates.push({
           min: amount.value, max: amount.value,
-          currency: detectCurrency(ctx), period: detectPeriod(ctx),
+          currency: detectCurrency(ctx),
+          period: detectPeriod(ctx) ?? periodNearby(haystack, from + bare.index, bare[0].length, amount.value),
           raw: bare[0].trim(), score: 1,
         });
       }
