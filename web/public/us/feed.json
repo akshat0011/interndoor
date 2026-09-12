@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/constellation-2027-summer-corporate-systems-hrit-intern-remote-4465179943",
+      "url": "https://interndoor.com/us/jobs/constellation-2027-summer-corporate-systems-hrit-intern-remote-4465179943",
+      "title": "2027 Summer Corporate Systems HRIT Intern (Remote) — Constellation",
+      "content_text": "Company: Constellation · Location: Baltimore, MD · Duration: 10 weeks\n• Support corporate systems projects with real-world impact\n• Use sql and python for data analysis and reporting\n• Work remotely with a cross-functional team on scalable solutions",
+      "date_published": "2026-09-12T04:53:06.124Z",
+      "authors": [
+        {
+          "name": "Constellation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/constellation-2027-summer-it-data-engineering-intern-remote-4465191875",
+      "url": "https://interndoor.com/us/jobs/constellation-2027-summer-it-data-engineering-intern-remote-4465191875",
+      "title": "2027 Summer IT Data Engineering Intern (Remote) — Constellation",
+      "content_text": "Company: Constellation · Location: Baltimore, MD · Duration: 10 weeks\n• Analyze and process large datasets to support energy operations\n• Use python and sql tools to build scalable data pipelines\n• Work remotely with a team focused on energy infrastructure systems",
+      "date_published": "2026-09-12T04:53:00.975Z",
+      "authors": [
+        {
+          "name": "Constellation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4465176908",
+      "url": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4465176908",
+      "title": "Building Automation Systems Specialist Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Miami, FL\n• Install and service HVAC systems in commercial buildings\n• Use laptops, tablets, and hand tools for system troubleshooting\n• Work onsite with technicians and customers in various environments",
+      "date_published": "2026-09-12T04:41:27.538Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-analyst-intern-baltimore-md-4465175934",
       "url": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-analyst-intern-baltimore-md-4465175934",
       "title": "2027 Summer Information Technology Analyst Intern (Baltimore, MD) — Constellation",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "CCC Intelligent Solutions"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/emerson-hardware-design-engineer-intern-4466399567",
-      "url": "https://interndoor.com/us/jobs/emerson-hardware-design-engineer-intern-4466399567",
-      "title": "Hardware Design Engineer Intern — Emerson",
-      "content_text": "Company: Emerson · Location: Round Rock, TX · Duration: Summer 2027\n• Design PCBs, schematics, and layouts for industrial control hardware\n• Use CAD tools for mechanical design and thermal analysis\n• Work on real projects with mentorship and team collaboration",
-      "date_published": "2026-09-11T22:41:43.739Z",
-      "authors": [
-        {
-          "name": "Emerson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/emerson-systems-integration-intern-4466406585",
-      "url": "https://interndoor.com/us/jobs/emerson-systems-integration-intern-4466406585",
-      "title": "Systems Integration Intern — Emerson",
-      "content_text": "Company: Emerson · Location: Round Rock, TX · Duration: Summer 2027\n• Develop software tools for testing automation systems\n• Work with DeltaV™ systems for control and graphics development\n• Collaborate on product quality and system improvement projects",
-      "date_published": "2026-09-11T22:41:13.262Z",
-      "authors": [
-        {
-          "name": "Emerson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-dex-product-intern-remote-4465170571",
-      "url": "https://interndoor.com/us/jobs/constellation-2027-summer-information-technology-dex-product-intern-remote-4465170571",
-      "title": "2027 Summer Information Technology DEX Product Intern (Remote) — Constellation",
-      "content_text": "Company: Constellation · Location: Baltimore, MD · Duration: 10 weeks\n• Analyze data to improve energy systems performance\n• Use python and sql for data processing\n• Work remotely with a cross-functional team",
-      "date_published": "2026-09-11T22:41:01.523Z",
-      "authors": [
-        {
-          "name": "Constellation"
         }
       ]
     }
