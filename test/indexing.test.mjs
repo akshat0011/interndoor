@@ -14,6 +14,7 @@
  * every run spends the entire allowance on the first four pages.
  */
 import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
+import { deferredPrefixes } from '../src/indexing.js';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { generateKeyPairSync, createVerify } from 'node:crypto';
@@ -201,6 +202,7 @@ st.indexQueue([B], UPDATED, T + 5000);
 check('newest first within a kind — a seed backlog never buries a new posting',
   st.indexDue({ limit: 9 }).map((r) => r.url.slice(-3)), ['b-2', 'a-1']);
 
+
 check('minAgeMs holds back a URL queued moments ago',
   st.indexDue({ limit: 9, minAgeMs: 60_000, now: T + 6000 }).length, 0);
 check('…and releases it once it has aged',
@@ -210,6 +212,7 @@ st = freshStore();
 st.indexQueue([A], UPDATED, T);
 for (let i = 0; i < 3; i++) st.indexMarkFailed(A, 'boom');
 check('a URL is retired after maxAttempts', st.indexDue({ limit: 9, maxAttempts: 3 }).length, 0);
+
 check('…but keeps its error for --status', st.indexStats().lastError.error, 'boom');
 check('…and is counted as retired, not forgotten', st.indexStats().retired, 1);
 
@@ -344,6 +347,44 @@ ok('config.json carries an indexing block', !!conf);
 ok('dailyCap sits under Google\'s ceiling', conf.dailyCap <= DAILY_QUOTA);
 ok('minAgeMinutes is long enough for a Vercel deploy', conf.minAgeMinutes >= 1);
 ok('perRun does not exceed the daily cap', conf.perRun <= conf.dailyCap);
+
+// ---------------------------------------------------------------------------
+console.log('\n== and then the board, because the quota is not earned equally ==');
+/* 12 of 14 sampled US job pages had never been crawled against 5 of 10 on
+   India, India converts 2.05% to the US 0.29%, and the US board makes 87% of
+   the pages — so US takes the leftover of the day's 190, not the front. */
+const IN_JOB = 'https://interndoor.com/jobs/in-1';
+const US_JOB = 'https://interndoor.com/us/jobs/us-1';
+const US_JOB2 = 'https://interndoor.com/us/jobs/us-2';
+const DEFER = deferredPrefixes();
+
+st = freshStore();
+st.indexQueue([US_JOB], UPDATED, T + 9000);
+st.indexQueue([IN_JOB], UPDATED, T);
+check('a newer US page waits behind an older India one',
+  st.indexDue({ limit: 9, defer: DEFER }).map((r) => r.url.slice(-4)), ['in-1', 'us-1']);
+/* THE REGRESSION HALF: with no defer this is byte-for-byte the old ordering. */
+check('and with no defer the plain newest-first order is untouched',
+  st.indexDue({ limit: 9 }).map((r) => r.url.slice(-4)), ['us-1', 'in-1']);
+st.indexQueue([US_JOB2], UPDATED, T + 20_000);
+check('newest-first still holds inside the deferred tier',
+  st.indexDue({ limit: 9, defer: DEFER }).map((r) => r.url.slice(-4)), ['in-1', 'us-2', 'us-1']);
+
+st = freshStore();
+st.indexQueue([IN_JOB], UPDATED, T);
+st.indexMarkDone(IN_JOB, UPDATED, T);
+st.indexQueue([IN_JOB], DELETED, T + 9000);
+st.indexQueue([US_JOB], UPDATED, T);
+check('an update still outranks a deletion, deferred board or not',
+  st.indexDue({ limit: 9, defer: DEFER }).map((r) => r.type), ['URL_UPDATED', 'URL_DELETED']);
+
+check('the deferred prefix is built from regions.js, not typed here',
+  DEFER, ['https://interndoor.com/us/']);
+check('a board at the root is never deferred — that would defer the whole site',
+  deferredPrefixes('https://interndoor.com', ['IN']), []);
+const idxSrc = readFileSync(new URL('../src/indexing.js', import.meta.url), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+check('the sweep asks the queue for them last', /defer: deferredPrefixes\(\)/.test(idxSrc), true);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

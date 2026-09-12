@@ -50,6 +50,7 @@
  * no visible increase by then means refused.
  */
 import { createSign } from 'node:crypto';
+import { regionPath } from './regions.js';
 import { readFileSync, existsSync } from 'node:fs';
 import { PATHS } from './paths.js';
 import { log } from './logger.js';
@@ -92,6 +93,35 @@ export function indexingConfigured() {
 export function isJobPageUrl(url, site = 'https://interndoor.com') {
   if (typeof url !== 'string' || !url.startsWith(`${site}/`)) return false;
   return /^(?:\/[a-z]{2})?\/jobs\/[^/?#]+$/.test(url.slice(site.length));
+}
+
+/**
+ * Which boards take the day's LEFTOVER quota rather than the front of it.
+ *
+ * MEASURED 12 SEP 2026. A stratified 46-URL sample through the URL Inspection
+ * API found 12 of 14 US job pages `Discovered - currently not indexed` with no
+ * crawl at all, against 5 of 10 on India; India converts 2.05% against the US
+ * 0.29%; and the US board creates 87% of the pages (174-249 a day against
+ * India's 9-24). Newest-first alone therefore spent a 190/day quota mostly on
+ * pages Google does not crawl, while India pages waited 10.5h on average and
+ * 139h at worst. This does NOT buy more crawl — only Google's quota and the
+ * domain's authority do that — it spends what there is in the better order.
+ *
+ * Re-measure before trusting it: if US pages start getting crawled, or India
+ * volume ever rivals the US, this ordering stops being the right one.
+ */
+export const DEFERRED_BOARDS = ['US'];
+
+export function deferredPrefixes(site = 'https://interndoor.com', boards = DEFERRED_BOARDS) {
+  return boards
+    /* `regionPath` ALREADY CARRIES THE LEADING SLASH — it answers '/us', not
+       'us'. Adding one produced `https://interndoor.com//us/`, which matches no
+       row at all, so the tier silently did nothing and the tests caught it. */
+    .map((code) => `${site}${regionPath(code)}/`)
+    /* A BOARD AT THE ROOT CAN NEVER BE DEFERRED. `regionPath('IN')` is '', so
+       the prefix would be the whole site and every URL — including that board's
+       own — would fall into the deferred tier. */
+    .filter((prefix) => prefix !== `${site}/`);
 }
 
 export function loadServiceAccount(file = keyPath()) {
@@ -230,6 +260,7 @@ export async function runIndexingSweep(store, cfg, {
     minAgeMs,
     maxAttempts,
     now,
+    defer: deferredPrefixes(),
   });
   if (!batch.length) {
     /* An empty batch has two very different causes and reporting both as

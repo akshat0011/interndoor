@@ -817,8 +817,27 @@ export class Store {
    * normal queue. Seeding an existing board puts hundreds of URLs in here at
    * once; draining oldest-first would park every genuinely new posting behind
    * that backlog for days, which defeats the reason for using the API at all.
+   *
+   * AND THEN THE BOARD, BELOW THE KIND AND ABOVE THE AGE — 12 SEP 2026. The
+   * quota is 190 a day and the boards do not earn it equally. Measured over a
+   * 46-URL stratified sample: **12 of 14 US job pages had NEVER been crawled,
+   * against 5 of 10 on India**, and India converts **2.05%** against the US
+   * **0.29%**. The US board also creates **87% of the pages** — 174-249 a day
+   * against India's 9-24 — so plain newest-first handed most of the day's cap
+   * to the pages least likely to ever be crawled, and left an India page
+   * waiting a measured **10.5h on average and 139h at worst** to be announced.
+   * `defer` names URL prefixes that take the LEFTOVER of the day rather than
+   * the front of it. Kind still outranks board, newest-first still holds inside
+   * each tier, and an empty `defer` is byte-for-byte the old behaviour.
    */
-  indexDue({ limit = 25, minAgeMs = 0, maxAttempts = 3, now = Date.now() } = {}) {
+  indexDue({ limit = 25, minAgeMs = 0, maxAttempts = 3, now = Date.now(), defer = [] } = {}) {
+    /* A BARE `0` HERE IS A COLUMN POSITION, NOT A CONSTANT. SQLite reads a
+       literal integer in ORDER BY as an ordinal and answers "2nd ORDER BY term
+       out of range", so with nothing deferred the term is omitted entirely
+       rather than rendered as a harmless-looking zero. */
+    const tier = defer.length
+      ? `CASE WHEN ${defer.map(() => 'url LIKE ?').join(' OR ')} THEN 1 ELSE 0 END ASC,`
+      : '';
     return this.db.prepare(`
       SELECT url, pending AS type, queued_at, attempts
       FROM indexed_urls
@@ -830,9 +849,9 @@ export class Store {
         -- this was found, so the read side refuses it too and they drain
         -- without a migration.
         AND NOT (pending = 'URL_DELETED' AND submitted IS NULL)
-      ORDER BY (pending = 'URL_UPDATED') DESC, queued_at DESC
+      ORDER BY (pending = 'URL_UPDATED') DESC, ${tier} queued_at DESC
       LIMIT ?
-    `).all(maxAttempts, now - minAgeMs, limit);
+    `).all(maxAttempts, now - minAgeMs, ...defer.map((prefix) => `${prefix}%`), limit);
   }
 
   /**
