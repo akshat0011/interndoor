@@ -29,6 +29,33 @@ export function credEnvNames(region) {
 }
 
 /**
+ * One variable replaced in a .env, with every other byte left alone.
+ *
+ * A hand-edit is how this was done until 12 Sep 2026, and it has three silent
+ * failures: the wrong region's variable, a stray newline splitting the value,
+ * and a duplicate line further down the file quietly winning. So: replace the
+ * FIRST assignment if there is one, append if there is not, and never touch
+ * anything else — comments and blank lines in this file are load-bearing
+ * documentation of which key belongs to what.
+ *
+ * A LATER DUPLICATE IS AN ERROR, NOT SOMETHING TO PAPER OVER. `set -a; . .env`
+ * gives the last assignment, while a reader that stops at the first gives the
+ * first, so a file with two is a file where two tools disagree about the
+ * credential. Refusing is the only answer that cannot post as the wrong
+ * account.
+ */
+export function setEnvVar(text, name, value) {
+  if (!/^[A-Z][A-Z0-9_]*$/.test(name)) throw new Error(`bad env var name: ${name}`);
+  if (/[\r\n]/.test(String(value))) throw new Error(`${name} value contains a newline`);
+  const pattern = new RegExp(`^${name}=.*$`, 'gm');
+  const hits = String(text).match(pattern) ?? [];
+  if (hits.length > 1) throw new Error(`${name} is assigned ${hits.length} times in .env — fix that by hand first`);
+  const line = `${name}=${value}`;
+  if (hits.length === 1) return String(text).replace(pattern, () => line);
+  return `${text}${text.endsWith('\n') || text === '' ? '' : '\n'}${line}\n`;
+}
+
+/**
  * The username that MUST own the token for this region.
  *
  * Returns null when the region has no account configured, which is a REFUSAL,
