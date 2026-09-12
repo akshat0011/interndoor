@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/intel-module-engineering-phd-intern-new-2027-4465180387",
+      "url": "https://interndoor.com/us/jobs/intel-module-engineering-phd-intern-new-2027-4465180387",
+      "title": "Module Engineering PhD Intern New 2027 — Intel",
+      "content_text": "Company: Intel · Location: Hillsboro, OR\n• Support equipment troubleshooting and maintenance in semiconductor manufacturing\n• Work on process optimization and control methodologies\n• Collaborate with engineering teams on real-world manufacturing challenges",
+      "date_published": "2026-09-12T03:30:18.986Z",
+      "authors": [
+        {
+          "name": "Intel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/leidos-ai-ml-intern-4464263307",
+      "url": "https://interndoor.com/us/jobs/leidos-ai-ml-intern-4464263307",
+      "title": "AI/ML Intern — Leidos",
+      "content_text": "Company: Leidos · Location: Huntsville, AL · Duration: Summer 2027\n• Develop AI/ML solutions for aerospace and defense challenges\n• Use Python and MATLAB for dynamical modeling and simulation\n• Collaborate with experts and present work at company events",
+      "date_published": "2026-09-12T03:16:24.990Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/amd-2027-phd-ml-system-engineering-intern-co-op-4464240966",
+      "url": "https://interndoor.com/us/jobs/amd-2027-phd-ml-system-engineering-intern-co-op-4464240966",
+      "title": "2027 PhD ML System Engineering Intern/Co-op — AMD",
+      "content_text": "Company: AMD · Location: San Jose, CA\n• Optimize LLM/VLM performance on Ryzen AI NPU\n• Work with IRON to tune AIE kernels\n• Present findings to AMD engineering team",
+      "date_published": "2026-09-12T02:42:25.876Z",
+      "authors": [
+        {
+          "name": "AMD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/amd-2027-phd-ml-system-engineering-intern-co-op-4464241930",
+      "url": "https://interndoor.com/us/jobs/amd-2027-phd-ml-system-engineering-intern-co-op-4464241930",
+      "title": "2027 PhD ML System Engineering Intern/Co-op — AMD",
+      "content_text": "Company: AMD · Location: Santa Clara, CA\n• Optimize LLM/VLM performance on Ryzen AI NPU by profiling and tuning AIE kernels\n• Work with IRON to improve GEMM, attention, and memory efficiency in AI compilers\n• Present findings to AMD engineers and document insights for future projects",
+      "date_published": "2026-09-12T02:41:26.353Z",
+      "authors": [
+        {
+          "name": "AMD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/veeam-software-ai-and-automation-engineering-intern-summer-2027-4465197519",
+      "url": "https://interndoor.com/us/jobs/veeam-software-ai-and-automation-engineering-intern-summer-2027-4465197519",
+      "title": "AI & Automation Engineering Intern - Summer 2027 — Veeam Software",
+      "content_text": "Company: Veeam Software · Location: Georgia, United States · Duration: Summer 2027\n• Build AI tools and automations to reduce manual work for a fast-moving team\n• Use Python and AI frameworks to design and test workflow solutions\n• Collaborate with team leads to identify and solve repetitive tasks\n• Present final work to leadership and ensure it’s maintainable after you leave",
+      "date_published": "2026-09-12T02:41:04.948Z",
+      "authors": [
+        {
+          "name": "Veeam Software"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/veeam-software-software-engineering-intern-summer-2027-4465176611",
+      "url": "https://interndoor.com/us/jobs/veeam-software-software-engineering-intern-summer-2027-4465176611",
+      "title": "Software Engineering Intern - Summer 2027 — Veeam Software",
+      "content_text": "Company: Veeam Software · Location: San Jose, CA · Duration: 10-12 weeks\n• Write clean code in Python, Java, C++, or JavaScript for software components\n• Automate tasks with scripts for data processing or deployment pipelines\n• Collaborate in Scrum teams with daily stand-ups and code reviews",
+      "date_published": "2026-09-12T02:41:00.518Z",
+      "authors": [
+        {
+          "name": "Veeam Software"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/veeam-software-ai-ml-intern-summer-2027-4465189581",
+      "url": "https://interndoor.com/us/jobs/veeam-software-ai-ml-intern-summer-2027-4465189581",
+      "title": "AI/ML Intern Summer 2027 — Veeam Software",
+      "content_text": "Company: Veeam Software · Location: San Jose, CA · Duration: Summer 2027\n• Train and improve ML models across datasets and tasks\n• Use PyTorch or TensorFlow for model training and debugging\n• Work on transformer models and generative AI applications\n• Collaborate with team on research and experimentation",
+      "date_published": "2026-09-12T02:40:55.272Z",
+      "authors": [
+        {
+          "name": "Veeam Software"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/amd-2027-phd-optical-and-photonics-engineering-intern-co-op-4464252889",
+      "url": "https://interndoor.com/us/jobs/amd-2027-phd-optical-and-photonics-engineering-intern-co-op-4464252889",
+      "title": "2027 PhD Optical & Photonics Engineering Intern/Co-Op — AMD",
+      "content_text": "Company: AMD · Location: San Jose, CA\n• Design and test photonic integrated circuits and optical transceivers\n• Use Python and MATLAB for simulation and data analysis\n• Work with engineers on high-speed interconnect technologies",
+      "date_published": "2026-09-12T02:40:50.496Z",
+      "authors": [
+        {
+          "name": "AMD"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/amd-2027-phd-ai-systems-and-gpu-performance-engineering-intern-4464245962",
       "url": "https://interndoor.com/us/jobs/amd-2027-phd-ai-systems-and-gpu-performance-engineering-intern-4464245962",
       "title": "2027 PhD AI Systems & GPU Performance Engineering Intern — AMD",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Compeer Financial"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-fleet-analytics-winter-spring-2027-4466395246",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-data-engineer-fleet-analytics-winter-spring-2027-4466395246",
-      "title": "Internship, Data Engineer, Fleet Analytics (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Build tools and dashboards from petabyte-scale vehicle data\n• Use Python, SQL, Spark, and React in a production environment\n• Collaborate with engineers on firmware, robotics, and grid systems",
-      "date_published": "2026-09-11T21:32:28.559Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-mission-analyst-intern-summer-2027-4466402119",
-      "url": "https://interndoor.com/us/jobs/raytheon-mission-analyst-intern-summer-2027-4466402119",
-      "title": "Mission Analyst Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: McKinney, TX · Duration: Summer 2027\n• Develop and analyze mission simulations using government and commercial tools\n• Work with Python, MATLAB, and Linux to model system effects in complex environments\n• Collaborate on mission kill chains and contribute to programmatic decision data",
-      "date_published": "2026-09-11T21:19:38.273Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4466406104",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-spring-summer-2027-4466406104",
-      "title": "Software Engineering Co-op (Spring/Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Design and develop software for helicopter and plane systems\n• Work with C, C++, ADA, and Python in a team environment\n• Travel up to 10% domestically and internationally",
-      "date_published": "2026-09-11T21:19:33.686Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-knoxville-tn-4464252082",
-      "url": "https://interndoor.com/us/jobs/siemens-healthineers-electrical-engineering-co-op-knoxville-tn-4464252082",
-      "title": "Electrical Engineering Co-op - Knoxville, TN — Siemens Healthineers",
-      "content_text": "Company: Siemens Healthineers · Location: Knoxville, TN\n• Develop test firmware and automated testing scripts for hardware\n• Build engineering tools, databases, and hardware infrastructure\n• Conduct integration testing and document results with written reports",
-      "date_published": "2026-09-11T20:52:20.741Z",
-      "authors": [
-        {
-          "name": "Siemens Healthineers"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bmw-group-digital-retail-and-reporting-intern-4466381852",
-      "url": "https://interndoor.com/us/jobs/bmw-group-digital-retail-and-reporting-intern-4466381852",
-      "title": "Digital Retail & Reporting Intern — BMW Group",
-      "content_text": "Company: BMW Group · Location: Woodcliff Lake, NJ\n• Analyze customer behavior and dealership performance metrics\n• Create dashboards and reports using Power BI and Tableau\n• Work on digital retail platform improvements with field teams",
-      "date_published": "2026-09-11T20:33:29.799Z",
-      "authors": [
-        {
-          "name": "BMW Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/caterpillar-inc-2027-summer-corporate-intern-autonomy-and-intelligent-systems-engineer-4463178232",
-      "url": "https://interndoor.com/us/jobs/caterpillar-inc-2027-summer-corporate-intern-autonomy-and-intelligent-systems-engineer-4463178232",
-      "title": "2027 Summer Corporate Intern - Autonomy & Intelligent Systems Engineering — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Mossville, IL · Duration: 12 weeks\n• Develop AI-powered systems for autonomous construction equipment\n• Work with robotics, machine learning, and sensor fusion technologies\n• Collaborate on real-world projects impacting jobsite safety and efficiency",
-      "date_published": "2026-09-11T20:33:09.276Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-storage-systems-research-scientist-intern-2027-4464233988",
-      "url": "https://interndoor.com/us/jobs/ibm-storage-systems-research-scientist-intern-2027-4464233988",
-      "title": "Storage Systems Research Scientist Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: San Jose, CA\n• Design and implement distributed storage systems for AI workloads\n• Use Python, Go, and C++ to build and evaluate high-performance systems\n• Work with Kubernetes, Docker, and Linux to deploy and manage prototypes",
-      "date_published": "2026-09-11T20:26:33.873Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-research-ai-engineer-intern-2027-4464223986",
-      "url": "https://interndoor.com/us/jobs/ibm-research-ai-engineer-intern-2027-4464223986",
-      "title": "Research AI Engineer Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Design and build ai agent frameworks for scalable task automation\n• Work with llms and multimodal models on real-world applications\n• Collaborate with researchers to prototype and deploy ai solutions\n• Develop demos and integrations showcasing ai's practical value",
-      "date_published": "2026-09-11T20:25:55.703Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
