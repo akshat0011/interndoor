@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 12 Sep 2026 16:28:47 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 12 Sep 2026 17:30:19 GMT</lastBuildDate>
+  <item>
+    <title>Algorithm Development Engineer Intern — Analog Devices</title>
+    <link>https://interndoor.com/us/jobs/analog-devices-algorithm-development-engineer-intern-4455010701</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/analog-devices-algorithm-development-engineer-intern-4455010701</guid>
+    <pubDate>Sat, 12 Sep 2026 17:30:19 GMT</pubDate>
+    <description>Company: Analog Devices · Location: Wilmington, MA
+• Develop and test algorithms for data processing and machine learning
+• Collaborate with engineers on software projects and code optimization
+• Work on real-world problems with cross-functional teams
+• Based in Wilmington, MA, 10% travel required</description>
+  </item>
   <item>
     <title>Software Engineer, Intern — Abridge</title>
     <link>https://interndoor.com/us/jobs/abridge-software-engineer-intern-4454831386</link>
@@ -497,16 +508,6 @@
 • Develop and maintain data platforms for autonomous driving systems
 • Work with C++ and Python on distributed systems and ML infrastructure
 • Collaborate with hardware and safety teams on onboard systems integration</description>
-  </item>
-  <item>
-    <title>Site Reliability Engineer-SkillBridge Intern — Zscaler</title>
-    <link>https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/zscaler-site-reliability-engineer-skillbridge-intern-4389259219</guid>
-    <pubDate>Sat, 12 Sep 2026 10:32:53 GMT</pubDate>
-    <description>Company: Zscaler · Location: United States
-• Monitor and maintain cloud infrastructure for global security platform
-• Use Linux, Ansible, Terraform for automation and compliance
-• Work with military personnel on FedRAMP and vulnerability management</description>
   </item>
 </channel>
 </rss>
