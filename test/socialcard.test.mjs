@@ -95,6 +95,26 @@ console.log('\n== THE TYPE IS DERIVED, NOT ASSUMED ==');
     jobHtml.includes(`<meta property="og:image:height" content="${declared.h}">`));
 }
 
+console.log('\n== THE HAND-WRITTEN PAGES, WHICH NOTHING GENERATES ==');
+{
+  /* /careers is the one place on this site a link is shared BY HAND, and it
+     carried no Open Graph at all until 12 Sep 2026 — a bare grey link on
+     LinkedIn and Facebook. Nothing generates these two files, so nothing but
+     this notices when they drift. */
+  for (const rel of ['careers/index.html', 'careers/software-engineering-intern.html']) {
+    const h = readFileSync(new URL(`../web/public/${rel}`, import.meta.url), 'utf8');
+    ok(`${rel} has a card image`, /property="og:image" content="https:\/\//.test(h));
+    ok(`${rel} declares width`, h.includes(`<meta property="og:image:width" content="${declared.w}">`));
+    ok(`${rel} declares height`, h.includes(`<meta property="og:image:height" content="${declared.h}">`));
+    ok(`${rel} names a title and description`,
+      /property="og:title"/.test(h) && /property="og:description"/.test(h));
+    check(`${rel} offers exactly one image`, (h.match(/property="og:image"/g) ?? []).length, 1);
+  }
+  /* The board template too, for the same reason — hand-authored, and the only
+     other file carrying its own copy of these numbers. */
+  ok('the board template has a card image', /property="og:image" content="https:\/\//.test(board));
+}
+
 console.log('\n== THE CARD URL IS ABSOLUTE AND https ==');
 {
   /* A scraper is not on this origin, so a root-relative image is no image. */
