@@ -250,7 +250,12 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/feed.xml">RSS</a></p>
+    <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
+         There is a single contact page for all three boards — see
+         renderContactPage — so a root-relative href is what resolves from
+         /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
+         /us/contact, which is not written and never will be. -->
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/contact">Contact</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

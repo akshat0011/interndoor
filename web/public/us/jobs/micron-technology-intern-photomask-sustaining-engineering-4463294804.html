@@ -225,7 +225,22 @@
         <h2>More at Micron Technology</h2>
         <a class="strip-more" href="/us/companies/micron-technology">All Micron Technology roles →</a>
       </div>
-      <div class="tiles"><a class="tile" href="/us/jobs/micron-technology-intern-advanced-dram-process-integration-4454998143">
+      <div class="tiles"><a class="tile" href="/us/jobs/micron-technology-intern-hbm-soc-rtl-design-engineer-4456215749">
+        
+        <span class="tile-role">Intern - HBM SoC RTL Design Engineer</span>
+        <span class="tile-co">SoC RTL Design</span>
+        <span class="tile-meta"><span class="tile-age" data-ago="1789204138753"><time datetime="2026-09-12">12 Sept 2026</time></span><span aria-hidden="true">·</span>Folsom<span aria-hidden="true">·</span>On-site</span>
+      </a><a class="tile" href="/us/jobs/micron-technology-intern-wet-process-fab-4-ede-4456223510">
+        
+        <span class="tile-role">Intern - Wet Process Fab 4 EDE</span>
+        <span class="tile-co">Wet Process Equipment Development</span>
+        <span class="tile-meta"><span class="tile-age" data-ago="1789204103030"><time datetime="2026-09-12">12 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
+      </a><a class="tile" href="/us/jobs/micron-technology-intern-yield-technology-equipment-4456207831">
+        
+        <span class="tile-role">Intern - Yield Technology Equipment</span>
+        <span class="tile-co">Yield Analysis Engineer</span>
+        <span class="tile-meta"><span class="tile-age" data-ago="1789203950853"><time datetime="2026-09-12">12 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
+      </a><a class="tile" href="/us/jobs/micron-technology-intern-advanced-dram-process-integration-4454998143">
         
         <span class="tile-role">Intern - Advanced DRAM Process Integration</span>
         <span class="tile-co">DRAM Process Integration</span>
@@ -240,21 +255,6 @@
         <span class="tile-role">Intern - Software Engineer</span>
         <span class="tile-co">AI Software Development</span>
         <span class="tile-meta"><span class="tile-age" data-ago="1788870400920"><time datetime="2026-09-08">8 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
-      </a><a class="tile" href="/us/jobs/micron-technology-intern-dram-customer-enablement-engineering-4463299295">
-        
-        <span class="tile-role">Intern - DRAM Customer Enablement Engineering</span>
-        <span class="tile-co">DRAM Platform Validation</span>
-        <span class="tile-meta"><span class="tile-age" data-ago="1788870375305"><time datetime="2026-09-08">8 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
-      </a><a class="tile" href="/us/jobs/micron-technology-intern-dram-design-engineer-4454266036">
-        
-        <span class="tile-role">Intern - DRAM Design Engineer</span>
-        <span class="tile-co">DRAM Circuit Design</span>
-        <span class="tile-meta"><span class="tile-age" data-ago="1788858732227"><time datetime="2026-09-08">8 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
-      </a><a class="tile" href="/us/jobs/micron-technology-intern-euv-and-materials-lithography-4454246995">
-        
-        <span class="tile-role">Intern - EUV &amp; Materials Lithography</span>
-        <span class="tile-co">Process Optimization</span>
-        <span class="tile-meta"><span class="tile-age" data-ago="1788858726898"><time datetime="2026-09-08">8 Sept 2026</time></span><span aria-hidden="true">·</span>Boise<span aria-hidden="true">·</span>On-site</span>
       </a></div>
     </section>
 
@@ -300,7 +300,12 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/us/feed.xml">RSS</a></p>
+    <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
+         There is a single contact page for all three boards — see
+         renderContactPage — so a root-relative href is what resolves from
+         /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
+         /us/contact, which is not written and never will be. -->
+    <p class="dim"><a href="/us">Home</a> · <a href="/us/companies">All companies</a> · <a href="/us/skills">By skill</a> · <a href="/us/locations">By city</a> · <a href="/us/report">The numbers</a> · <a href="/us/applications">My applications</a> · <a href="/contact">Contact</a> · <a href="/us/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

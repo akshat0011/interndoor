@@ -26,7 +26,7 @@
      and the heading now lead with the category, the same as <title>. -->
 <!--REGION:HEAD-->
 <title>Engineering Internships in India — InternDoor</title>
-<meta name="description" content="280 engineering internships in India, updated every 30 minutes. No signup, and every listing links straight to the original posting.">
+<meta name="description" content="278 engineering internships in India, updated every 30 minutes. No signup, and every listing links straight to the original posting.">
 <link rel="canonical" href="https://interndoor.com/">
 <link rel="alternate" hreflang="en-IN" href="https://interndoor.com/">
 <link rel="alternate" hreflang="en-US" href="https://interndoor.com/us">
@@ -359,6 +359,12 @@ Engineering internships in India
     <div class="wrap">
       <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
       <p class="dim">Your resume is processed in memory and never stored here.</p>
+      <!-- /contact is ROOT-RELATIVE and stays that way on every board. There is
+           one contact page for all three, so it is deliberately NOT in
+           REGION_LINKS — localiseLinks would give this link a region prefix,
+           and no prefixed copy is written or ever will be. See
+           renderContactPage in src/pages.js. -->
+      <p class="dim"><a href="/contact">Contact InternDoor</a></p>
       <!-- Static, in the HTML, deliberately. The listings above are built by
            JavaScript from jobs.json, so a crawler that does not run scripts finds
            no links to follow and the whole site is a dead end. This anchor is the
@@ -664,8 +670,6 @@ Engineering internships in India
 <li><a href="/jobs/airmeet-outreach-campaign-intern-4453209152">Airmeet — Outreach Campaign Intern</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
 <li><a href="/jobs/pharma-and-powerapps-developer-intern-4450483451">pharma&amp; — PowerApps Developer Intern</a><span class="tiny"> Hyderabad, Telangana, India · On-site</span></li>
 <li><a href="/jobs/harman-india-certification-intern-4450479358">HARMAN India — Certification Intern</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
-<li><a href="/jobs/calix-india-graduate-trainee-4453687525">Calix India — Graduate Trainee</a><span class="tiny"> Bengaluru, Karnataka, India · Hybrid</span></li>
-<li><a href="/jobs/larsen-and-toubro-genai-trainee-4453683160">Larsen &amp; Toubro — GenAI Trainee</a><span class="tiny"> Kurla, Maharashtra, India · On-site</span></li>
 <li><a href="/jobs/decentro-software-developer-intern-ats-keka-decentro-26116">Decentro — Software Developer Intern</a><span class="tiny"> BANGALORE, KA, India</span></li>
 <li><a href="/jobs/cloudsek-security-consultant-intern-ats-greenhouse-cloudsek-6115382004">CloudSEK — Security Consultant Intern</a><span class="tiny"> Bengaluru, Karnataka, India</span></li>
 <li><a href="/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee">Hevo Data — UX Design Intern</a><span class="tiny"> Bangalore, India · onsite</span></li>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Internships in India by company | InternDoor</title>
-<meta name="description" content="Browse 271 live internships across 144 companies in India, plus every employer we track. Updated every 30 minutes.">
+<meta name="description" content="Browse 269 live internships across 142 companies in India, plus every employer we track. Updated every 30 minutes.">
 <link rel="canonical" href="https://interndoor.com/companies">
 <meta name="interndoor-region" content="IN">
 <link rel="alternate" hreflang="en-IN" href="https://interndoor.com/companies">
@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="InternDoor">
 <meta property="og:url" content="https://interndoor.com/companies">
 <meta property="og:title" content="Internships in India by company | InternDoor">
-<meta property="og:description" content="Browse 271 live internships across 144 companies in India, plus every employer we track. Updated every 30 minutes.">
+<meta property="og:description" content="Browse 269 live internships across 142 companies in India, plus every employer we track. Updated every 30 minutes.">
 <meta property="og:image" content="https://interndoor.com/og.jpg?v=5">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://interndoor.com/og.jpg?v=5">
@@ -100,14 +100,14 @@
     <header class="dir-hero">
       <h1>Internships by company in India</h1>
       <div class="stats">
-        <div class="stat"><b>271</b><span>Live openings</span></div>
-        <div class="stat"><b>144</b><span>Hiring right now</span></div>
-        <div class="stat"><b>166</b><span>Employers tracked</span></div>
+        <div class="stat"><b>269</b><span>Live openings</span></div>
+        <div class="stat"><b>142</b><span>Hiring right now</span></div>
+        <div class="stat"><b>164</b><span>Employers tracked</span></div>
       </div>
       <div class="filter" id="filter">
         <label>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <input type="search" id="filter-input" placeholder="Filter 166 employers — try “Qualcomm”" aria-label="Filter companies">
+          <input type="search" id="filter-input" placeholder="Filter 164 employers — try “Qualcomm”" aria-label="Filter companies">
         </label>
       </div>
     </header>
@@ -554,12 +554,6 @@
           <span class="dir-name">ByteDance</span>
           <span class="dir-n">1 open role</span>
         </span>
-      </a><a class="dir-card" href="/companies/calix-india" data-name="calix india">
-        <span class="tile-crest" aria-hidden="true">CI<img src="/logos/calix-india.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-        <span class="dir-t">
-          <span class="dir-name">Calix India</span>
-          <span class="dir-n">1 open role</span>
-        </span>
       </a><a class="dir-card" href="/companies/chegg-india" data-name="chegg india">
         <span class="tile-crest" aria-hidden="true">CI<img src="/logos/chegg-india.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
         <span class="dir-t">
@@ -750,12 +744,6 @@
         <span class="tile-crest" aria-hidden="true">LR<img src="/logos/lam-research.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
         <span class="dir-t">
           <span class="dir-name">Lam Research</span>
-          <span class="dir-n">1 open role</span>
-        </span>
-      </a><a class="dir-card" href="/companies/larsen-and-toubro" data-name="larsen &amp; toubro">
-        <span class="tile-crest" aria-hidden="true">LT<img src="/logos/larsen-and-toubro.jpg" alt="" loading="lazy" decoding="async" width="80" height="80"></span>
-        <span class="dir-t">
-          <span class="dir-name">Larsen &amp; Toubro</span>
           <span class="dir-n">1 open role</span>
         </span>
       </a><a class="dir-card" href="/companies/linkedin" data-name="linkedin">
@@ -1149,7 +1137,12 @@
 <footer class="foot">
   <div class="wrap">
     <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
-    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/feed.xml">RSS</a></p>
+    <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
+         There is a single contact page for all three boards — see
+         renderContactPage — so a root-relative href is what resolves from
+         /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
+         /us/contact, which is not written and never will be. -->
+    <p class="dim"><a href="/">Home</a> · <a href="/companies">All companies</a> · <a href="/skills">By skill</a> · <a href="/locations">By city</a> · <a href="/report">The numbers</a> · <a href="/applications">My applications</a> · <a href="/contact">Contact</a> · <a href="/feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>
