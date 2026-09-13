@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-refining-electrical-engineering-spring-2027-4364956174",
+      "url": "https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-refining-electrical-engineering-spring-2027-4364956174",
+      "title": "Intern/Co-op - Refining Electrical Engineering (Spring 2027) — Marathon Petroleum Corporation",
+      "content_text": "Company: Marathon Petroleum Corporation · Location: St Paul Park, MN · Duration: Spring 2027\n• Work on electrical and instrumentation projects in refinery settings\n• Use software for arc flash studies and equipment maintenance\n• Collaborate with teams on process control systems and troubleshooting",
+      "date_published": "2026-09-13T13:02:23.057Z",
+      "authors": [
+        {
+          "name": "Marathon Petroleum Corporation"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/zscaler-federal-security-operations-skillbridge-intern-4389259217",
       "url": "https://interndoor.com/us/jobs/zscaler-federal-security-operations-skillbridge-intern-4389259217",
       "title": "Federal Security Operations - SkillBridge Intern — Zscaler",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Linde"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-computational-physics-intern-spring-2027-4457527110",
-      "url": "https://interndoor.com/us/jobs/zipline-computational-physics-intern-spring-2027-4457527110",
-      "title": "Computational Physics Intern (Spring 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Spring 2027\n• Build physics-based models for aircraft performance simulations\n• Use Python, Julia, or similar for modeling and data analysis\n• Work on optimizing drone design tradeoffs and system performance",
-      "date_published": "2026-09-12T13:09:29.474Z",
-      "authors": [
-        {
-          "name": "Zipline"
         }
       ]
     }
