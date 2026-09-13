@@ -1382,6 +1382,26 @@ export class Store {
     ).all(runId).map(hydrate);
   }
 
+  /**
+   * Careers-board (ATS) rows first stored in a window. bin/poll-ats.js tags its
+   * rows `ats-<day>`, never a scan's run id, so jobsForRun cannot see them and
+   * they were never announced on any channel.
+   */
+  atsJobsFirstSeenBetween(fromMs, untilMs) {
+    return this.db.prepare(`
+      SELECT * FROM jobs WHERE job_id LIKE 'ats:%' AND first_seen_at > ? AND first_seen_at <= ?
+      ORDER BY posted_at DESC NULLS LAST, first_seen_at DESC
+    `).all(fromMs, untilMs).map(hydrate);
+  }
+
+  /** LinkedIn-collected titles since a time — enough to spot an ATS twin. */
+  scrapedTitlesSince(sinceMs) {
+    return this.db.prepare(`
+      SELECT company, company_matched, title, first_seen_at FROM jobs
+      WHERE job_id NOT LIKE 'ats:%' AND first_seen_at > ?
+    `).all(sinceMs);
+  }
+
   unreportedJobs() {
     return this.db.prepare(
       'SELECT * FROM jobs WHERE reported = 0 ORDER BY posted_at DESC NULLS LAST, first_seen_at DESC',
