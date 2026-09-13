@@ -17,6 +17,7 @@ import { resolveSearches } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs } from './ollama.js';
 import { postNewJobs } from './telegram.js';
 import { postNewJobsWhatsApp } from './whatsapp.js';
+import { atsToAnnounce, TWIN_WINDOW_MS } from './announce.js';
 import { publishedRegions, resolveRowRegion } from './regions.js';
 import { classifyRole, needsDescription, builtInPolarity } from './roles.js';
 import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js';
@@ -1836,12 +1837,30 @@ async function main() {
      cannot drift. null means publish failed or was skipped — we do not know
      what is on the site, and a link is only worth sending once we know a page
      is behind it. */
+  /* CAREERS-BOARD POSTINGS ARE ANNOUNCED TOO. bin/poll-ats.js runs before this
+     scan as its own process and tags its rows `ats-<day>`, so jobsForRun never
+     held one and no ATS posting had ever reached Telegram or WhatsApp. Those
+     first stored since the last announcement are added here; src/announce.js
+     keeps a new board's backlog and the LinkedIn copies already announced out.
+     The watermark moves only once publish has succeeded, so a failed publish
+     leaves them for the next run. Unset, it starts a day back. */
+  const ANNOUNCE_KEY = 'channelsAtsAnnouncedAt';
+  const announceUntil = Date.now();
+  const announceFrom = Number(store.getSetting(ANNOUNCE_KEY) ?? 0) || announceUntil - 86_400_000;
+  const atsNew = DRY_RUN ? [] : atsToAnnounce(
+    store.atsJobsFirstSeenBetween(announceFrom, announceUntil),
+    store.scrapedTitlesSince(announceFrom - TWIN_WINDOW_MS),
+    { now: announceUntil },
+  );
+  const toAnnounce = [...newJobs, ...atsNew];
+
   let whatsappLive = [];
-  if (!DRY_RUN && newJobs.length && publishedIds) {
-    const live = newJobs.filter((j) => publishedIds.has(String(j.job_id)));
-    const held = newJobs.length - live.length;
+  if (!DRY_RUN && toAnnounce.length && publishedIds) {
+    const live = toAnnounce.filter((j) => publishedIds.has(String(j.job_id)));
+    const held = toAnnounce.length - live.length;
+    if (atsNew.length) log.info(`Channels: ${atsNew.length} new careers-board listing${atsNew.length === 1 ? '' : 's'} to announce.`);
     if (held) {
-      log.info(`Telegram: ${held} of ${newJobs.length} new listing${newJobs.length === 1 ? '' : 's'} `
+      log.info(`Telegram: ${held} of ${toAnnounce.length} new listing${toAnnounce.length === 1 ? '' : 's'} `
         + 'had no page and were not posted (non-tech, off-watchlist, or a duplicate).');
     }
     if (live.length) await postNewJobs(live, cfg);
@@ -1861,6 +1880,7 @@ async function main() {
      queue first and returns before launching a browser when there is nothing to
      post at all. */
   if (!DRY_RUN) await postNewJobsWhatsApp(whatsappLive, cfg, { store });
+  if (!DRY_RUN && publishedIds) store.setSetting(ANNOUNCE_KEY, String(announceUntil));
 
   store.setSetting(LOCK_KEY, 0);
   store.close();
