@@ -177,6 +177,21 @@ function citiesOf(group) {
   return [...seen.values()];
 }
 
+/* ---------------- owner controls ----------------
+
+   /owner.js is added ONLY in a browser that has been paired from the helper on
+   his Mac (http://127.0.0.1:4322/owner). A visitor has no token, so they never
+   download it and never make a request to 127.0.0.1. See src/owner.js. */
+(function loadOwnerControls() {
+  try {
+    if (!localStorage.getItem('interndoor-owner') && !/^#owner-pair=/.test(location.hash)) return;
+  } catch (e) { return; }
+  var s = document.createElement('script');
+  s.src = '/owner.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+
 /* ---------------- theme ---------------- */
 
 function initTheme() {
@@ -1050,6 +1065,8 @@ function renderDetail(job) {
   $('detail-placeholder').hidden = true;
   d.hidden = false;
   d.replaceChildren();
+  // Which posting the pane shows, for the owner controls (/owner.js).
+  d.dataset.jobId = job.id;
   d.scrollTop = 0;
   // Replay the entrance animation on every selection. Dropping the class and
   // re-adding it on the next frame restarts it; reassigning style.animation

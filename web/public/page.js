@@ -29,6 +29,21 @@ document.addEventListener('click', function (e) {
   } catch (err) { /* a blocked cookie just means the reader is nudged again */ }
 });
 
+/* ---------------- owner controls ----------------
+
+   /owner.js is added ONLY in a browser that has been paired from the helper on
+   his Mac (http://127.0.0.1:4322/owner). A visitor has no token, so they never
+   download it and never make a request to 127.0.0.1. See src/owner.js. */
+(function loadOwnerControls() {
+  try {
+    if (!localStorage.getItem('interndoor-owner') && !/^#owner-pair=/.test(location.hash)) return;
+  } catch (e) { return; }
+  var s = document.createElement('script');
+  s.src = '/owner.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+
 /* ============================================================
    Generated pages: the small amount of behaviour they need.
 

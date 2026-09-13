@@ -483,6 +483,57 @@ export class Store {
     `);
   }
 
+  /**
+   * His corrections to a posting's title, location or pay, made from the owner
+   * controls on the site. Kept BESIDE the row rather than written into it — see
+   * applyJobEdit in src/owner.js for why — and created on demand, the same
+   * additive rule as company_ats.
+   */
+  ensureJobEditsTable() {
+    this.db.exec(`
+      CREATE TABLE IF NOT EXISTS job_edits (
+        job_id     TEXT PRIMARY KEY,
+        title      TEXT,
+        location   TEXT,
+        stipend    TEXT,
+        updated_at INTEGER NOT NULL
+      );
+    `);
+  }
+
+  /** Every correction, as a Map of job id to { title, location, stipend }. */
+  jobEdits() {
+    this.ensureJobEditsTable();
+    const rows = this.db.prepare('SELECT job_id, title, location, stipend FROM job_edits').all();
+    return new Map(rows.map((r) => [String(r.job_id), { title: r.title, location: r.location, stipend: r.stipend }]));
+  }
+
+  /**
+   * Merge a correction into what is stored. A field present as null clears that
+   * override; one left out is kept. A row with nothing left overridden is
+   * deleted, so "revert everything" leaves no empty record behind.
+   */
+  saveJobEdit(jobId, edit) {
+    this.ensureJobEditsTable();
+    const id = String(jobId);
+    const prev = this.db.prepare('SELECT title, location, stipend FROM job_edits WHERE job_id = ?').get(id) ?? {};
+    const next = {
+      title: 'title' in edit ? edit.title : prev.title ?? null,
+      location: 'location' in edit ? edit.location : prev.location ?? null,
+      stipend: 'stipend' in edit ? edit.stipend : prev.stipend ?? null,
+    };
+    if (!next.title && !next.location && !next.stipend) {
+      this.db.prepare('DELETE FROM job_edits WHERE job_id = ?').run(id);
+      return null;
+    }
+    this.db.prepare(`
+      INSERT INTO job_edits (job_id, title, location, stipend, updated_at) VALUES (?, ?, ?, ?, ?)
+      ON CONFLICT(job_id) DO UPDATE SET title = excluded.title, location = excluded.location,
+        stipend = excluded.stipend, updated_at = excluded.updated_at
+    `).run(id, next.title, next.location, next.stipend, Date.now());
+    return next;
+  }
+
   getAts(company) {
     return this.db.prepare('SELECT * FROM company_ats WHERE lower(company) = lower(?)').get(company) ?? null;
   }
