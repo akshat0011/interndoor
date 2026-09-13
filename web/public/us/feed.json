@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-intern-systems-engineer-onsite-4466785618",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-intern-systems-engineer-onsite-4466785618",
+      "title": "Intern Systems Engineer- (Onsite) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Buckley AFB, Colorado, United States\n• Create and trace requirements for military communication systems\n• Use model-based tools to design logical and physical systems\n• Integrate and test communication solutions for air and ground platforms",
+      "date_published": "2026-09-13T21:32:54.033Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
       "url": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
       "title": "Co-Op - Software Engineering — AutoStore™",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-software-engineer-intern-summer-2027-4457524965",
-      "url": "https://interndoor.com/us/jobs/zipline-software-engineer-intern-summer-2027-4457524965",
-      "title": "Software Engineer Intern (Summer 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Build features in react native or python/go backend services\n• Take ownership of mobile/web app features from design to deployment\n• Collaborate with cross-functional teams on customer-focused solutions",
-      "date_published": "2026-09-12T14:49:19.161Z",
-      "authors": [
-        {
-          "name": "Zipline"
         }
       ]
     }
