@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 13 Sep 2026 09:10:37 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 13 Sep 2026 10:04:12 GMT</lastBuildDate>
+  <item>
+    <title>PhD GenAI Research Scientist Intern — Databricks</title>
+    <link>https://interndoor.com/us/jobs/databricks-phd-genai-research-scientist-intern-4297755027</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/databricks-phd-genai-research-scientist-intern-4297755027</guid>
+    <pubDate>Sun, 13 Sep 2026 10:04:12 GMT</pubDate>
+    <description>Company: Databricks · Location: San Francisco, CA
+• Work on adapting and improving LLMs for enterprise domains
+• Use PyTorch and deep learning fundamentals daily
+• Collaborate with researchers on domain adaptation projects</description>
+  </item>
+  <item>
+    <title>Intern - Metrology Process Development Engineer — Micron Technology</title>
+    <link>https://interndoor.com/us/jobs/micron-technology-intern-metrology-process-development-engineer-4456643938</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/micron-technology-intern-metrology-process-development-engineer-4456643938</guid>
+    <pubDate>Sun, 13 Sep 2026 09:13:32 GMT</pubDate>
+    <description>Company: Micron Technology · Location: Boise, ID · Duration: 3 months
+• Design and run experiments in cleanroom using advanced metrology tech
+• Analyze semiconductor data with Excel and JMP, apply AI tools for analysis
+• Collaborate with global engineers on next-gen process development</description>
+  </item>
   <item>
     <title>Intern - Yield Enhancement, Data Analysis — Micron Technology</title>
     <link>https://interndoor.com/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-4456631983</link>
@@ -494,26 +514,6 @@
 • Develop embedded software for multi-core systems and sensor emulation
 • Work with C++ and Linux OS in a secure, mission-critical environment
 • Contribute to software design and integration for tactical hardware</description>
-  </item>
-  <item>
-    <title>Embedded Software Engineer Intern — Lockheed Martin</title>
-    <link>https://interndoor.com/us/jobs/lockheed-martin-embedded-software-engineer-intern-4464700252</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/lockheed-martin-embedded-software-engineer-intern-4464700252</guid>
-    <pubDate>Sat, 12 Sep 2026 12:53:53 GMT</pubDate>
-    <description>Company: Lockheed Martin · Location: Grand Prairie, TX
-• Develop software for defense systems using C/C++
-• Work with Linux, VxWorks, and embedded hardware
-• Collaborate on complex projects with national security impact</description>
-  </item>
-  <item>
-    <title>Electrical Engineering Intern — L3Harris Technologies</title>
-    <link>https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineering-intern-4466491216</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineering-intern-4466491216</guid>
-    <pubDate>Sat, 12 Sep 2026 12:42:14 GMT</pubDate>
-    <description>Company: L3Harris Technologies · Location: Bristol, PA
-• Design electrical systems for military and commercial aircraft
-• Use CAD tools to create wiring diagrams and control panels
-• Work with systems engineering and production teams</description>
   </item>
 </channel>
 </rss>

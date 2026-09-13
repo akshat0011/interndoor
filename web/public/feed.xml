@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 11 Sep 2026 18:29:38 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 12 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <item>
+    <title>Associate Software Engineer - Intern — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100644</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100644</guid>
+    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai
+• Build software for marine logistics using java and sql
+• Work on full stack from frontend to backend
+• Collaborate with product and qa teams in chennai</description>
+  </item>
+  <item>
+    <title>Associate Quality Assurance Engineer - Intern — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100637</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100637</guid>
+    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai
+• Write and maintain test automation frameworks using selenium, uft, and testng
+• Collaborate with product and dev teams to improve product quality and testing processes
+• Work in agile scrum teams with mentorship and contribute to test automation development</description>
+  </item>
+  <item>
+    <title>Associate Cloud Ops Engineer - Intern — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-cloud-ops-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100647</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-cloud-ops-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100647</guid>
+    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai · Duration: 3-5 years
+• Monitor and maintain cloud systems for global trade platforms
+• Use azure, docker, kubernetes, and terraform
+• Work 24/7 with on-call support and incident management</description>
+  </item>
   <item>
     <title>Apprentice — AtkinsRéalis</title>
     <link>https://interndoor.com/jobs/atkinsr-alis-apprentice-4466345628</link>
@@ -466,36 +496,6 @@
 • Develop C/C++ applications for embedded systems using ARM or MicroBlaze
 • Work with Vitis tools for hardware-software integration
 • Script in Python and TCL for automation tasks</description>
-  </item>
-  <item>
-    <title>Intern - Software Development — NewSpace Research and Technologies</title>
-    <link>https://interndoor.com/jobs/newspace-research-and-technologies-intern-software-development-4465046133</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/newspace-research-and-technologies-intern-software-development-4465046133</guid>
-    <pubDate>Wed, 09 Sep 2026 12:31:13 GMT</pubDate>
-    <description>Company: NewSpace Research and Technologies · Location: Bengaluru, Karnataka, India
-• Prototype ai assistants for ground control systems and swarming drones
-• Work with python and ml frameworks to build lightweight solutions
-• Collaborate on real-world robotics projects with engineering teams</description>
-  </item>
-  <item>
-    <title>Intern — NewSpace Research and Technologies</title>
-    <link>https://interndoor.com/jobs/newspace-research-and-technologies-intern-4465050132</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/newspace-research-and-technologies-intern-4465050132</guid>
-    <pubDate>Wed, 09 Sep 2026 12:31:07 GMT</pubDate>
-    <description>Company: NewSpace Research and Technologies · Location: Bengaluru, Karnataka, India
-• Assist in testing and designing electronic systems for high-altitude platforms
-• Work with engineering teams on power systems and component selection
-• Document test results and follow safety and quality standards</description>
-  </item>
-  <item>
-    <title>Intern (P03366) — NewSpace Research and Technologies</title>
-    <link>https://interndoor.com/jobs/newspace-research-and-technologies-intern-p03366-4465034197</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/newspace-research-and-technologies-intern-p03366-4465034197</guid>
-    <pubDate>Wed, 09 Sep 2026 12:30:56 GMT</pubDate>
-    <description>Company: NewSpace Research and Technologies · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Develop machine learning models for edge hardware
-• Work with ROS, Python, and C++14/17
-• Collaborate on autonomous systems and robotics</description>
   </item>
 </channel>
 </rss>
