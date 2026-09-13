@@ -81,6 +81,12 @@ fi
 # If the scan then fails before publishing, the next slot picks these up: they
 # are already in the database.
 # ---------------------------------------------------------------------------
+# Boards named in the apply links of postings already opened, once a day. It is
+# the only discovery method that guesses nothing, and it runs just before the
+# poll so a board found here is read in the same slot. `--daily` makes every
+# other call a process start and nothing more; failure must never stop the poll.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/discover-ats.js" --apply-links --daily >> "$LOG" 2>&1 || true
+
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/poll-ats.js" --no-publish >> "$LOG" 2>&1
 # Capture before anything else runs. A command substitution in the echo below
 # would overwrite $? with the exit status of `date`, which is always 0 — so

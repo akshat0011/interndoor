@@ -6,6 +6,8 @@
  *   node bin/discover-ats.js --all           re-probe everything, including known
  *   node bin/discover-ats.js --limit 50      stop after 50 companies
  *   node bin/discover-ats.js --company "Meesho"
+ *   node bin/discover-ats.js --apply-links   read boards off the apply links we already hold
+ *   node bin/discover-ats.js --apply-links --daily   the same, at most once a day (bin/run.sh)
  *
  * This is the expensive half of the ATS integration and the reason it is a
  * separate script rather than part of a scan: a company's ATS changes maybe once
@@ -19,7 +21,9 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT } from '../src/paths.js';
 import { Store } from '../src/store.js';
-import { discover, discoverViaCareersPage, discoverViaHomepage, PROVIDER_NAMES } from '../src/ats.js';
+import { discover, discoverViaCareersPage, discoverViaHomepage, PROVIDER_NAMES, PROVIDERS } from '../src/ats.js';
+import { boardsFromApplyLinks } from '../src/applyboards.js';
+import { loadConfig } from '../src/config.js';
 import { log } from '../src/logger.js';
 
 const ARGS = process.argv.slice(2);
@@ -60,6 +64,64 @@ function watchlistNames() {
 
 const store = new Store();
 store.ensureAtsTable();
+
+/**
+ * Fourth method, and the only one that guesses nothing: the board named in the
+ * apply links of postings we have already opened. Measured 13 Sep 2026 — of 163
+ * watchlist companies whose board was already known, 157 have apply links
+ * naming exactly that board, and 70 more had a board named in their links and
+ * none in company_ats. src/applyboards.js decides whose posting a link is; the
+ * provider's own verify then runs here, exactly as it does for every other
+ * method. A company that already has a board is never overwritten from a link —
+ * that is a disagreement to look at, not to settle automatically.
+ *
+ * --daily is what bin/run.sh passes: new apply links arrive with each scan, but
+ * a board is a once-found thing, so reading them every 30 minutes would repeat
+ * the same failing verifications 48 times a day.
+ */
+const APPLY_LINKS_DAY_MS = 20 * 3_600_000;
+if (has('--apply-links')) {
+  if (has('--daily') && Date.now() - Number(store.getSetting('atsApplyLinksAt') ?? 0) < APPLY_LINKS_DAY_MS) {
+    store.close();
+    process.exit(0);
+  }
+  const cfg = loadConfig();
+  const rows = store.db.prepare("SELECT company, apply_url, first_seen_at FROM jobs WHERE apply_url LIKE 'http%'").all();
+  const candidates = boardsFromApplyLinks(rows, cfg.watchlist).filter((b) => !store.getAts(b.company)?.provider);
+  console.log(`Apply links name ${candidates.length} board(s) for companies with none on record.\n`);
+
+  let seeded = 0;
+  const refused = [];
+  const queue = [...candidates];
+  await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
+    while (queue.length) {
+      const b = queue.shift();
+      let ok = false;
+      try {
+        ok = await PROVIDERS[b.provider]?.verify(b.token, b.company);
+      } catch (err) {
+        log.debug(`${b.company}: ${b.provider}/${b.token} verify error ${err.message}`);
+      }
+      if (ok) {
+        seeded++;
+        store.saveAts(b.company, b.provider, b.token, 0);
+        console.log(`  ✓ ${b.company.padEnd(30)} ${b.provider.padEnd(15)} ${String(b.token).slice(0, 40)}  (${b.postings} posting${b.postings === 1 ? '' : 's'})`);
+      } else {
+        // NOT saved as a miss: a miss row would stop slug discovery trying this
+        // company for 30 days, and a link that failed to verify says nothing
+        // about whether a guessed slug would.
+        refused.push(b);
+      }
+    }
+  }));
+
+  console.log(`\n=== ${seeded}/${candidates.length} seeded from apply links ===`);
+  for (const b of refused) console.log(`  did not verify: ${b.company} -> ${b.provider}/${b.token}`);
+  store.setSetting('atsApplyLinksAt', String(Date.now()));
+  console.log('\nStored in the company_ats table. Run bin/poll-ats.js to collect postings.');
+  store.close();
+  process.exit(0);
+}
 
 let names = ONLY ? [ONLY] : watchlistNames();
 
