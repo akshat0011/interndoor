@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 13 Sep 2026 18:26:20 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 13 Sep 2026 20:52:29 GMT</lastBuildDate>
+  <item>
+    <title>Co-Op - Software Engineering — AutoStore™</title>
+    <link>https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182</guid>
+    <pubDate>Sun, 13 Sep 2026 20:52:29 GMT</pubDate>
+    <description>Company: AutoStore™ · Location: Atlanta, GA
+• Write clean code for warehouse automation systems
+• Work with TypeScript, C#, and cloud technologies
+• Collaborate with cross-functional teams in agile sprints</description>
+  </item>
+  <item>
+    <title>Co-Op - Electronics Engineering — AutoStore™</title>
+    <link>https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193</guid>
+    <pubDate>Sun, 13 Sep 2026 20:52:25 GMT</pubDate>
+    <description>Company: AutoStore™ · Location: Atlanta, GA
+• Design and test electrical systems for warehouse automation
+• Work with engineers on controls, power systems, and safety
+• Support integration of electrical, software, and mechanical parts</description>
+  </item>
   <item>
     <title>Intern- Product Engineer — Infineon Technologies</title>
     <link>https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064</link>
@@ -493,26 +513,6 @@
 • Build features in react native or python/go backend services
 • Take ownership of mobile/web app features from design to deployment
 • Collaborate with cross-functional teams on customer-focused solutions</description>
-  </item>
-  <item>
-    <title>Undergrad Intern – Machine Learning Engineer – Amgen’s Technology &amp; Medical Organizations (Summer 2027) — Amgen</title>
-    <link>https://interndoor.com/us/jobs/amgen-undergrad-intern-machine-learning-engineer-amgen-s-technology-and-medi-4466707507</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/amgen-undergrad-intern-machine-learning-engineer-amgen-s-technology-and-medi-4466707507</guid>
-    <pubDate>Sat, 12 Sep 2026 14:47:01 GMT</pubDate>
-    <description>Company: Amgen · Location: United States · Duration: Summer 2027
-• Build data pipelines for pharmaceutical datasets and enterprise data lakes
-• Work with ML models in production using Python, SQL, and cloud platforms
-• Collaborate in agile teams on data analysis and visualization projects</description>
-  </item>
-  <item>
-    <title>Engineering Co-Op — Eaton</title>
-    <link>https://interndoor.com/us/jobs/eaton-engineering-co-op-4464299366</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/eaton-engineering-co-op-4464299366</guid>
-    <pubDate>Sat, 12 Sep 2026 14:34:23 GMT</pubDate>
-    <description>Company: Eaton · Location: Jackson, MI
-• Support aerospace manufacturing processes with lean tools and data analysis
-• Work on new product development using catia and prolaunch software
-• Collaborate on cross-functional teams and drive process improvements</description>
   </item>
 </channel>
 </rss>
