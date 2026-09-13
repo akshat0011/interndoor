@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 12 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 13 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <item>
+    <title>Intern — Baxter</title>
+    <link>https://interndoor.com/jobs/baxter-intern-ats-workday-baxter-wd1-baxter-jr-208532</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/baxter-intern-ats-workday-baxter-wd1-baxter-jr-208532</guid>
+    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Baxter · Location: Bangalore, Karnataka
+• Design build test assemble support configure applications
+• Integrate new technologies into existing solutions
+• Work independently on small tasks with team collaboration</description>
+  </item>
   <item>
     <title>Associate Software Engineer - Intern — Kaleris</title>
     <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100644</link>
@@ -486,16 +496,6 @@
 • Analyze propeller performance across rpm ranges
 • Use cad and cfd tools for design
 • Maintain logs for propulsion tests</description>
-  </item>
-  <item>
-    <title>Intern - FPGA — NewSpace Research and Technologies</title>
-    <link>https://interndoor.com/jobs/newspace-research-and-technologies-intern-fpga-4465056031</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/newspace-research-and-technologies-intern-fpga-4465056031</guid>
-    <pubDate>Wed, 09 Sep 2026 12:31:23 GMT</pubDate>
-    <description>Company: NewSpace Research and Technologies · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Develop C/C++ applications for embedded systems using ARM or MicroBlaze
-• Work with Vitis tools for hardware-software integration
-• Script in Python and TCL for automation tasks</description>
   </item>
 </channel>
 </rss>
