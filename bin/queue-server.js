@@ -47,6 +47,9 @@ import { formatFor } from '../src/reelformat.js';
 import { publishedRegions, regionPath, regionOf } from '../src/regions.js';
 import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig, autoSpacingMinutes } from '../src/reelaccounts.js';
 import { jobSlug } from '../src/pages.js';
+import { ownerToken, ownerAuth, corsHeaders, localHost, parseEdit, applyJobEdits, slugFromPath } from '../src/owner.js';
+import { formatStipend } from '../src/extract.js';
+import { resolveRowRegion } from '../src/regions.js';
 import { utmUrl } from '../src/postgen.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
@@ -55,6 +58,13 @@ import { tmpdir } from 'node:os';
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
 const store = new Store();
+
+/* A LinkedIn post is written from the stored row, not from jobs.json, so his
+   corrections from the owner controls have to be laid over it here as well —
+   or a title he just fixed on the site comes back wrong in the post. */
+function queuedWithEdits(status) {
+  return applyJobEdits(store.queuedJobs(status), store.jobEdits());
+}
 
 /* ------------------------------------------------------------------ replies */
 
@@ -185,7 +195,7 @@ function prunePosts(now = Date.now()) {
 
   let left = null;
   if (dropped) {
-    left = store.queuedJobs('drafted').map((row) => ({
+    left = queuedWithEdits('drafted').map((row) => ({
       row,
       facts: jobFacts(row, cfg),
       text: row.post_text,
@@ -227,8 +237,8 @@ function prunePosts(now = Date.now()) {
 async function generate(jobIds) {
   prunePosts();
   const rows = jobIds?.length
-    ? store.queuedJobs().filter((r) => jobIds.includes(r.job_id))
-    : store.queuedJobs('queued');
+    ? queuedWithEdits().filter((r) => jobIds.includes(r.job_id))
+    : queuedWithEdits('queued');
 
   if (!rows.length) return { error: 'nothing new in the queue' };
 
@@ -254,7 +264,7 @@ async function generate(jobIds) {
     // The page holds the whole queue, not just this batch: he asked for one
     // page of posts to work through, and rendering only the batch would drop
     // the other nine every time a single post was rewritten.
-    const all = store.queuedJobs('drafted').map((row) => ({
+    const all = queuedWithEdits('drafted').map((row) => ({
       row,
       facts: jobFacts(row, cfg),
       text: row.post_text,
@@ -797,9 +807,222 @@ setInterval(() => {
 
 /* ------------------------------------------------------------------- routes */
 
+/* ------------------------------------------------------------ owner controls
+ *
+ * The buttons on interndoor.com that act on a posting — write its LinkedIn
+ * post, correct it, hide it, block its employer. They run in HIS browser and
+ * call this server; who may do that is decided in src/owner.js.
+ */
+const OWNER_TOKEN = ownerToken(join(PATHS.state, 'owner-token'));
+const SITE_ORIGIN = 'https://interndoor.com';
+
+/** Run one of our own scripts as a child, collecting its output. */
+function runScript(args, timeoutMs = 180_000) {
+  return new Promise((resolve) => {
+    const p = spawn(process.execPath, ['--no-warnings=ExperimentalWarning', ...args], {
+      cwd: PATHS.root, stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let out = '';
+    p.stdout.on('data', (d) => { out += d; });
+    p.stderr.on('data', (d) => { out += d; });
+    const timer = setTimeout(() => p.kill('SIGTERM'), timeoutMs);
+    p.on('close', (code) => { clearTimeout(timer); resolve({ code, out: out.slice(-4000) }); });
+  });
+}
+
+/**
+ * Publishing after an owner change, batched and never on top of a scan.
+ *
+ * A short wait first, so a title fix followed by a pay fix is one publish, not
+ * two commits and two deploys. bin/publish-now.js takes the run lock; when a
+ * scan holds it (exit 3) that scan will publish the change itself, but it may
+ * already be past its publish step, so this tries again every two minutes until
+ * it gets the lock — an hour at most, which outlasts any real scan.
+ */
+let publishState = { state: 'idle', at: Date.now() };
+let publishTimer = null;
+let publishing = false;
+let publishAgain = false;
+let behindScanTries = 0;
+
+function schedulePublish(delayMs = 15_000) {
+  if (publishing) { publishAgain = true; return; }
+  clearTimeout(publishTimer);
+  publishState = { state: 'waiting', at: Date.now() };
+  publishTimer = setTimeout(runPublishNow, delayMs);
+}
+
+async function runPublishNow() {
+  publishing = true;
+  publishState = { state: 'publishing', at: Date.now() };
+  const { code, out } = await runScript(['bin/publish-now.js'], 15 * 60_000);
+  publishing = false;
+  if (code === 0) {
+    behindScanTries = 0;
+    publishState = { state: 'live', at: Date.now() };
+    log.ok('Owner change published.');
+  } else if (code === 3 && behindScanTries < 30) {
+    behindScanTries++;
+    publishState = { state: 'behind-scan', at: Date.now() };
+    publishTimer = setTimeout(runPublishNow, 120_000);
+    return;
+  } else {
+    behindScanTries = 0;
+    publishState = { state: 'failed', at: Date.now(), detail: out.split('\n').filter(Boolean).slice(-3).join(' ') };
+    log.warn(`Owner publish failed (exit ${code}).`);
+  }
+  if (publishAgain) { publishAgain = false; schedulePublish(1_000); }
+}
+
+/** The stored row an owner request names, by job id or by the page's own slug. */
+function ownerRow(body) {
+  let id = body?.jobId ? String(body.jobId) : null;
+  if (!id && body?.path) {
+    const slug = slugFromPath(body.path);
+    if (slug) id = publishedJobs().find((j) => { try { return jobSlug(j) === slug; } catch { return false; } })?.id ?? null;
+  }
+  if (!id) return null;
+  return store.db.prepare('SELECT * FROM jobs WHERE job_id = ?').get(id) ?? null;
+}
+
+function ownerView(row) {
+  const edit = store.jobEdits().get(String(row.job_id)) ?? null;
+  const live = publicJob(row.job_id);
+  const region = live?.__region ?? resolveRowRegion(row);
+  let page = null;
+  if (live) { try { page = `${SITE_ORIGIN}${regionPath(live.__region)}/jobs/${jobSlug(live)}`; } catch { /* no page */ } }
+  return {
+    id: row.job_id,
+    company: row.company,
+    region,
+    live: !!live,
+    page,
+    hidden: row.is_tech === 0 && !!row.suppressed_reason,
+    suppressedReason: row.suppressed_reason ?? null,
+    postable: postableRegion(cfg, row.region),
+    original: {
+      title: row.title,
+      location: row.location,
+      stipend: formatStipend({ min: row.stipend_min, max: row.stipend_max, currency: row.stipend_currency, period: row.stipend_period })
+        || row.salary_text || null,
+    },
+    edit,
+  };
+}
+
+function ownerPairPage() {
+  const link = `${SITE_ORIGIN}/#owner-pair=${OWNER_TOKEN}`;
+  const preview = `http://localhost:4321/#owner-pair=${OWNER_TOKEN}`;
+  return `<!doctype html><meta charset="utf-8"><title>Owner controls</title>
+<style>body{font:15px/1.5 -apple-system,system-ui,sans-serif;max-width:620px;margin:60px auto;padding:0 20px;background:#0b0b0c;color:#eee}
+a.btn{display:inline-block;background:#c6f432;color:#0b0b0c;padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+code{background:#1c1c1f;padding:2px 6px;border-radius:4px}</style>
+<h1>Owner controls</h1>
+<p>Turns on the owner bar on interndoor.com <strong>in this browser only</strong>. It talks to this helper,
+so it works on this Mac while <code>npm run queue</code> is running.</p>
+<p><a class="btn" href="${link}">Turn on owner controls on interndoor.com</a></p>
+<p>Local preview (<code>npm run web</code>): <a href="${preview}">turn on for localhost:4321</a></p>
+<p>Chrome may ask whether interndoor.com can reach apps on this device. Allow it.</p>
+<p>To turn it off in a browser, use “Owner off” in the bar. To revoke every browser, delete
+<code>owner-token</code> in the state folder and restart the helper.</p>`;
+}
+
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
   const path = url.pathname;
+
+  /* The pairing page. Served only to a request addressed to this machine by
+     name, so a rebound hostname cannot read the token off it. */
+  if (path === '/owner' || path === '/owner/') {
+    if (!localHost(req, PORT)) return json(res, 403, { error: 'wrong host' });
+    return html(res, 200, ownerPairPage());
+  }
+
+  if (path.startsWith('/api/owner/')) {
+    const cors = corsHeaders(req);
+    if (cors) for (const [k, v] of Object.entries(cors)) res.setHeader(k, v);
+    if (req.method === 'OPTIONS') {
+      res.statusCode = cors && localHost(req, PORT) ? 204 : 403;
+      return res.end();
+    }
+    const auth = ownerAuth(req, { port: PORT, token: OWNER_TOKEN });
+    if (!auth.ok) return json(res, auth.status, { error: auth.error });
+
+    if (path === '/api/owner/status' && req.method === 'GET') {
+      const lock = Number(store.getSetting('run_started_at') ?? 0);
+      return json(res, 200, {
+        ok: true,
+        generating: !!running && !running.finishedAt,
+        generation: running ? { done: running.done, total: running.total, url: running.url, error: running.error } : null,
+        publish: publishState,
+        scanRunning: !!lock && Date.now() - lock < ((cfg.limits?.maxRuntimeMinutes ?? 90) + 8) * 60_000,
+        postsUrl: `http://127.0.0.1:${PORT}/posts/latest`,
+      });
+    }
+
+    if (req.method !== 'POST') return json(res, 405, { error: 'POST only' });
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+    const row = ownerRow(body);
+    if (!row) return json(res, 404, { error: 'that posting is not in the database' });
+
+    if (path === '/api/owner/job') return json(res, 200, ownerView(row));
+
+    if (path === '/api/owner/post') {
+      if (!postableRegion(cfg, row.region)) {
+        return json(res, 400, { error: `${row.region} listings are not posted to LinkedIn — there is no account for that board.` });
+      }
+      if (running && !running.finishedAt) return json(res, 409, { error: 'a batch of posts is already being written — try again when it finishes' });
+      store.queueAdd(row.job_id);
+      generate([row.job_id]);
+      log.info(`Owner: writing a LinkedIn post for ${row.company} — ${row.title}`);
+      return json(res, 202, { started: true, postsUrl: `http://127.0.0.1:${PORT}/posts/latest` });
+    }
+
+    if (path === '/api/owner/edit') {
+      const parsed = parseEdit(body);
+      if (parsed.error) return json(res, 400, { error: parsed.error });
+      store.saveJobEdit(row.job_id, parsed.edit);
+      log.info(`Owner: corrected ${row.job_id} (${Object.keys(parsed.edit).join(', ')})`);
+      schedulePublish();
+      return json(res, 200, { ...ownerView(row), publish: publishState });
+    }
+
+    if (path === '/api/owner/hide') {
+      const reason = String(body.reason ?? '').trim().slice(0, 200)
+        || `Hidden from the site by the owner on ${new Date().toISOString().slice(0, 10)}.`;
+      const r = await runScript(['bin/remove-company.js', '--job', String(row.job_id), '--reason', reason, '--yes', '--no-publish']);
+      if (r.code !== 0) return json(res, 500, { error: 'hiding failed', detail: r.out.slice(-600) });
+      log.info(`Owner: hid ${row.company} — ${row.title}`);
+      schedulePublish();
+      return json(res, 200, { hidden: true, publish: publishState });
+    }
+
+    if (path === '/api/owner/block') {
+      if (!row.company) return json(res, 400, { error: 'this posting has no employer name to block' });
+      const r = await runScript(['bin/remove-company.js', row.company, '--yes', '--no-publish']);
+      if (r.code !== 0) return json(res, 500, { error: 'blocking failed', detail: r.out.slice(-600) });
+      /* remove-company edits the watchlist and blocklist, which are
+         hand-committed files outside the publish allowlist — commit them by
+         pathspec, or the block sits uncommitted and the next clone forgets it.
+         The publish that follows pushes the branch. */
+      const changed = await new Promise((resolve) => {
+        const p = spawn('git', ['diff', '--quiet', '--', 'config.json', 'companies.json'], { cwd: PATHS.root });
+        p.on('close', (c) => resolve(c === 1));
+      });
+      if (changed) {
+        await new Promise((resolve) => {
+          const p = spawn('git', ['commit', '-q', '-m', `Block ${row.company} from the site`, '--', 'config.json', 'companies.json'], { cwd: PATHS.root });
+          p.on('close', resolve);
+        });
+      }
+      log.info(`Owner: blocked ${row.company}`);
+      schedulePublish();
+      return json(res, 200, { blocked: row.company, publish: publishState });
+    }
+
+    return json(res, 404, { error: 'no such owner action' });
+  }
 
   if (req.method === 'POST' && !sameOrigin(req)) return json(res, 403, { error: 'cross-origin requests are refused' });
 
@@ -906,7 +1129,7 @@ const server = createServer(async (req, res) => {
     if (running && !running.finishedAt) return json(res, 409, { error: 'a batch is already being written' });
 
     const ids = Array.isArray(body.jobIds) ? body.jobIds.map(String) : null;
-    if (!store.queuedJobs(ids ? null : 'queued').length) return json(res, 400, { error: 'nothing new in the queue' });
+    if (!queuedWithEdits(ids ? null : 'queued').length) return json(res, 400, { error: 'nothing new in the queue' });
 
     // Answered immediately: a dozen postings through a local 14b model is
     // minutes of work, and a request held open that long is one the browser
@@ -928,8 +1151,8 @@ const server = createServer(async (req, res) => {
     prunePosts();
     const ids = Array.isArray(body.jobIds) ? body.jobIds.map(String) : null;
     const rows = ids?.length
-      ? store.queuedJobs().filter((r) => ids.includes(String(r.job_id)))
-      : store.queuedJobs();
+      ? queuedWithEdits().filter((r) => ids.includes(String(r.job_id)))
+      : queuedWithEdits();
     if (!rows.length) return json(res, 400, { error: 'nothing in the queue' });
 
     const facts = rows.map((row) => jobFacts(row, cfg, 'combined'));
@@ -939,7 +1162,7 @@ const server = createServer(async (req, res) => {
     const fitted = (text.match(/\n→ /g) ?? []).length;
 
     const batchId = new Date().toISOString().replace(/[:.]/g, '-');
-    const drafted = store.queuedJobs('drafted').map((row) => ({
+    const drafted = queuedWithEdits('drafted').map((row) => ({
       row,
       facts: jobFacts(row, cfg),
       text: row.post_text,

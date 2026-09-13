@@ -13,6 +13,7 @@ import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
+import { applyJobEdits } from './owner.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -450,6 +451,27 @@ function dailyStats(store, regions, now = Date.now()) {
   return out;
 }
 
+/**
+ * A corrected TITLE is a new slug, because the title is part of it.
+ *
+ * The old URL is a page Google and the channels already hold, so it becomes the
+ * same redirect stub a reposted role gets — pointing at the corrected page,
+ * never a 404 and never the employer's hub. Both slugs go through toPublicJob
+ * and jobSlug, the functions the real pages are written with.
+ */
+export function titleEditRedirects(jobs, logoIndex = new Map()) {
+  const out = [];
+  for (const { row, matchedNow, region } of jobs) {
+    if (!row.original_title) continue;
+    const from = toPublicJob({ ...row, title: row.original_title }, { matchedNow, logoIndex });
+    const to = toPublicJob(row, { matchedNow, logoIndex });
+    let slug; let target;
+    try { slug = jobSlug(from); target = jobSlug(to); } catch { continue; }
+    if (slug !== target) out.push({ region, slug, target });
+  }
+  return out;
+}
+
 export async function writeJobsFile(store, cfg) {
   /* ONE window, two consumers. The JSON-LD's `validThrough` has to expire on
      the same day publish stops writing the page: a page that outlives its own
@@ -482,8 +504,12 @@ export async function writeJobsFile(store, cfg) {
   let droppedForeign = 0;
   let droppedNonTech = 0;
   const droppedByRegion = {};
-  const jobs = store
-    .recentJobs(Date.now() - maxAgeMs, atsWindow)
+  /* His corrections from the owner controls (src/owner.js), laid over the rows
+     before ANY gate runs — so a corrected location moves the posting to the
+     right board and dedupe sees the corrected title, exactly as if the posting
+     had said so itself. */
+  const edits = store.jobEdits();
+  const jobs = applyJobEdits(store.recentJobs(Date.now() - maxAgeMs, atsWindow), edits)
     // Re-run the company match at publish time instead of trusting what was
     // stored. Rows captured before a matcher fix can carry a stale, wrong
     // label — an early bug filed "SolarSquare" under "Ola" — and publishing
@@ -576,6 +602,10 @@ export async function writeJobsFile(store, cfg) {
     if (!redirectsByRegion.has(loser.region)) redirectsByRegion.set(loser.region, []);
     redirectsByRegion.get(loser.region).push({ slug: fromSlug, target: toSlug });
   }
+  for (const { region, slug, target } of titleEditRedirects(jobs, logoIndex)) {
+    if (!redirectsByRegion.has(region)) redirectsByRegion.set(region, []);
+    redirectsByRegion.get(region).push({ slug, target });
+  }
   if (redirectsByRegion.size) {
     const n = [...redirectsByRegion.values()].reduce((a, v) => a + v.length, 0);
     log.info(`Redirecting ${n} superseded posting URL${n === 1 ? '' : 's'} to the reposted role.`);
@@ -616,7 +646,7 @@ export async function writeJobsFile(store, cfg) {
   // Grouped on row.company, exactly as the live pages are — the display name on
   // the posting, NOT company_matched. Using the watchlist label here would slug
   // to a different URL and quietly fork every hub in two.
-  const tracked = store.recentJobs(0)
+  const tracked = applyJobEdits(store.recentJobs(0), edits)
     .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist), region: resolveRowRegion(row) }));
   const history = tracked
     .filter(({ row, matchedNow, region }) => row.is_tech === 1
