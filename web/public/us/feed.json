@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
+      "url": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
+      "title": "Co-Op - Software Engineering — AutoStore™",
+      "content_text": "Company: AutoStore™ · Location: Atlanta, GA\n• Write clean code for warehouse automation systems\n• Work with TypeScript, C#, and cloud technologies\n• Collaborate with cross-functional teams in agile sprints",
+      "date_published": "2026-09-13T20:52:29.977Z",
+      "authors": [
+        {
+          "name": "AutoStore™"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193",
+      "url": "https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193",
+      "title": "Co-Op - Electronics Engineering — AutoStore™",
+      "content_text": "Company: AutoStore™ · Location: Atlanta, GA\n• Design and test electrical systems for warehouse automation\n• Work with engineers on controls, power systems, and safety\n• Support integration of electrical, software, and mechanical parts",
+      "date_published": "2026-09-13T20:52:25.937Z",
+      "authors": [
+        {
+          "name": "AutoStore™"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064",
       "title": "Intern- Product Engineer — Infineon Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-undergrad-intern-machine-learning-engineer-amgen-s-technology-and-medi-4466707507",
-      "url": "https://interndoor.com/us/jobs/amgen-undergrad-intern-machine-learning-engineer-amgen-s-technology-and-medi-4466707507",
-      "title": "Undergrad Intern – Machine Learning Engineer – Amgen’s Technology & Medical Organizations (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Build data pipelines for pharmaceutical datasets and enterprise data lakes\n• Work with ML models in production using Python, SQL, and cloud platforms\n• Collaborate in agile teams on data analysis and visualization projects",
-      "date_published": "2026-09-12T14:47:01.267Z",
-      "authors": [
-        {
-          "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/eaton-engineering-co-op-4464299366",
-      "url": "https://interndoor.com/us/jobs/eaton-engineering-co-op-4464299366",
-      "title": "Engineering Co-Op — Eaton",
-      "content_text": "Company: Eaton · Location: Jackson, MI\n• Support aerospace manufacturing processes with lean tools and data analysis\n• Work on new product development using catia and prolaunch software\n• Collaborate on cross-functional teams and drive process improvements",
-      "date_published": "2026-09-12T14:34:23.649Z",
-      "authors": [
-        {
-          "name": "Eaton"
         }
       ]
     }
