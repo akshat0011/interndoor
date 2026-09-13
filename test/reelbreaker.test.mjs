@@ -9,7 +9,7 @@
  * been stopped by hand twice; reelFailuresSinceSuccess is what stops it on its
  * own.
  */
-import { Store } from '../src/store.js';
+import { Store, isNetworkFailure, NETWORK_FAILURE_WINDOW_MS } from '../src/store.js';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -109,6 +109,108 @@ check('and a finished SUCCESS is not a failure', fails('CA'), 0);
 // counting successes as failures if that ever stops being true.
 row({ region: 'AU', status: 'rendering', started: now - 300, finished: now - 200 });
 check('a stamped non-failure, in a region with no publishes', fails('AU'), 0);
+
+console.log('\n== A FAILURE THAT NEVER REACHED INSTAGRAM ==');
+// Found 13 Sep 2026: a dropped wifi tripped the breaker exactly as a revoked
+// app would, and — because a tripped breaker queues nothing, so no success can
+// arrive — held US shut for its full 24-hour window. Every failed row in the
+// table was surveyed: 13 network failures, all in bursts of three, so it had
+// happened FIVE times. The strings below are VERBATIM from reel_posts.
+{
+  const dnsToday = 'ig_publish exited 1:   File "/Users/akshatsaroha/.local/share/uv/python/cpython-3.13.15-macos-aarch64-none/lib/python3.13/urllib/request.py", line 1321, in do_open     raise URLError(err) urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>';
+  /* A different Python on 7 Sep. Matching the path instead of the errno text
+     would catch one outage and miss the other. */
+  const dns7Sep = 'ig_publish exited 1:   File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1347, in do_open     raise URLError(err) urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>';
+  const tunnel = 'ig_publish exited 1: tunnel attempt 3/4 did not come up, retrying in 15s could not open a public tunnel after several attempts   fix: check your network, or host the file on R2/S3 instead';
+  /* INSTAGRAM ANSWERED both of these — and the second even shows our tunnel
+     serving the video with a 200 first. Misfiling either as network is the
+     direction that loses an account. */
+  const blocked = 'API access blocked.';
+  const igError = 'ig_publish exited 1: 127.0.0.1 - - [04/Sep/2026 03:50:51] "GET /4462811461.mp4 HTTP/1.1" 200 - instagram error detail: Something went wrong. Please retry creating a new container later. {"ok": false, "error": "instagram could not process the video (status ERROR)"}';
+  const pathMoved = 'ig_publish exited 2: error: Project directory `/Users/akshatsaroha/Desktop/projects/storygasted` does not exist';
+
+  check('DNS failure, today (uv 3.13)', isNetworkFailure(dnsToday), true);
+  check('DNS failure, 7 Sep (Homebrew 3.12)', isNetworkFailure(dns7Sep), true);
+  check('the tunnel that serves the video would not open', isNetworkFailure(tunnel), true);
+  check('the same DNS failure as Linux words it', isNetworkFailure('getaddrinfo: Name or service not known'), true);
+  check('and as glibc words it', isNetworkFailure('Temporary failure in name resolution'), true);
+  check('network unreachable', isNetworkFailure('[Errno 51] Network is unreachable'), true);
+
+  check('API access blocked is INSTAGRAM, not network', isNetworkFailure(blocked), false);
+  check('Instagram replying "status ERROR" is INSTAGRAM', isNetworkFailure(igError), false);
+  check('a local config fault is not network', isNetworkFailure(pathMoved), false);
+  /* Deliberately absent: a read timeout after connecting can be Instagram
+     throttling us, which is exactly the case the breaker must still catch. */
+  check('a bare timeout is NOT treated as network', isNetworkFailure('The read operation timed out'), false);
+  check('null is not network', isNetworkFailure(null), false);
+  check('undefined is not network', isNetworkFailure(undefined), false);
+
+  const MIN = 60_000;
+  const at = (region, ago, error) =>
+    row({ region, status: 'failed', started: now - ago - 1000, finished: now - ago, error });
+  const failsAt = (region) => store.reelFailuresSinceSuccess(region, now - DAY, { now });
+
+  console.log('\n   -- a network failure still trips the breaker while it is recent --');
+  // THE HALF THAT PREVENTS A RENDER STORM. Every refill is rendered before its
+  // publish fails; uncounted, a three-hour outage renders a reel a minute.
+  at('NZ', 3 * MIN, dnsToday); at('NZ', 2 * MIN, dnsToday); at('NZ', 1 * MIN, dnsToday);
+  check('three in three minutes trips it', failsAt('NZ'), 3);
+
+  console.log('\n   -- and ages out after the short window, instead of a day --');
+  at('SG', 45 * MIN, dnsToday); at('SG', 44 * MIN, dnsToday); at('SG', 43 * MIN, dnsToday);
+  check('three DNS failures 43-45 minutes ago no longer count', failsAt('SG'), 0);
+
+  console.log('\n   -- AN INSTAGRAM REFUSAL KEEPS ITS FULL 24 HOURS --');
+  // The guarantee that makes this change safe. Same ages as the SG rows above,
+  // the only difference is who refused.
+  at('JP', 45 * MIN, blocked); at('JP', 44 * MIN, blocked); at('JP', 43 * MIN, blocked);
+  check('three API blocks 43-45 minutes ago still trip it', failsAt('JP'), 3);
+  at('KR', 20 * 60 * MIN, igError); at('KR', 19 * 60 * MIN, igError); at('KR', 18 * 60 * MIN, igError);
+  check('three Instagram errors 18-20 HOURS ago still trip it', failsAt('KR'), 3);
+
+  console.log('\n   -- mixed: only the stale network ones drop --');
+  at('DE', 50 * MIN, dnsToday); at('DE', 49 * MIN, tunnel);
+  at('DE', 48 * MIN, blocked); at('DE', 47 * MIN, igError);
+  check('two stale network + two Instagram = 2', failsAt('DE'), 2);
+
+  console.log('\n   -- the edge of the window --');
+  at('FR', NETWORK_FAILURE_WINDOW_MS, dnsToday);
+  check('exactly on the edge still counts', failsAt('FR'), 1);
+  at('IT', NETWORK_FAILURE_WINDOW_MS + 1, dnsToday);
+  check('one millisecond past it does not', failsAt('IT'), 0);
+  check('the window is thirty minutes', NETWORK_FAILURE_WINDOW_MS, 30 * MIN);
+
+  console.log('\n   -- 13 SEP, REPLAYED --');
+  // The three US rows, 07:52-07:54 IST, against the moment the breaker tripped
+  // and the moment the network had been back for a while.
+  const t0752 = Date.UTC(2026, 8, 13, 2, 22), t0753 = t0752 + MIN, t0754 = t0752 + 2 * MIN;
+  for (const t of [t0752, t0753, t0754]) {
+    store.db.prepare(`INSERT INTO reel_posts (job_id, status, started_at, finished_at, error, region)
+      VALUES (?, 'failed', ?, ?, ?, 'MX')`).run(`job-${++seq}`, t - 1000, t, dnsToday);
+  }
+  const replay = (hh, mm) => {
+    const when = Date.UTC(2026, 8, 13, hh - 5, mm - 30);
+    return store.reelFailuresSinceSuccess('MX', when - DAY, { now: when });
+  };
+  check('07:55 IST — tripped, and rightly: the network is down', replay(7, 55), 3);
+  check('08:55 IST — reopened, an hour after the network came back', replay(8, 55), 0);
+  check('under the old rule it would still be shut the next morning', (() => {
+    const when = Date.UTC(2026, 8, 13, 8 - 5, 55 - 30);
+    return store.db.prepare(`SELECT COUNT(*) n FROM reel_posts WHERE region='MX' AND status='failed' AND finished_at >= ?`).get(when - DAY).n;
+  })(), 3);
+}
+
+console.log('\n== the sweep passes its clock through ==');
+{
+  const qs = (await import('node:fs')).readFileSync(new URL('../bin/queue-server.js', import.meta.url), 'utf8');
+  /* Without `now` the short window is measured from a different clock than the
+     sweep's own, and a replay test passes while production drifts. */
+  check('reelFailuresSinceSuccess is called with { now }',
+    /reelFailuresSinceSuccess\(region, now - 86_400_000, \{ now \}\)/.test(qs), true);
+  /* The warning must stop promising a success will clear it. */
+  check('the warning no longer claims a success clears it',
+    /it clears itself on the next success/.test(qs), false);
+}
 
 console.log('\n== the config carries the limit ==');
 const cfg = JSON.parse(

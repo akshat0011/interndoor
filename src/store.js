@@ -218,6 +218,71 @@ CREATE TABLE IF NOT EXISTS discovered_urls (
 );
 `;
 
+/**
+ * A reel failure that never reached Instagram.
+ *
+ * THE BREAKER EXISTS TO STOP US HAMMERING AN INSTAGRAM THAT IS REFUSING US, and
+ * a failure that never reached Instagram says nothing about Instagram at all.
+ * Before this, a dropped wifi tripped it exactly as a revoked app would, and
+ * the breaker then held the region shut for its full 24-hour window — because
+ * a tripped breaker queues nothing, so the "next successful publish" its own
+ * comment promised could never happen. Measured over every failed row in
+ * `reel_posts` on 13 Sep 2026: **13 network failures, every one in a burst of
+ * three, so every one tripped the breaker** — 27 Aug, twice on 7 Sep, 10 Sep
+ * and 13 Sep. Five separate days of reels lost to a router.
+ *
+ * THE PATTERNS ARE THE MEASURED ONES PLUS THEIR DIRECT SIBLINGS, AND NOTHING
+ * AMBIGUOUS. The two failure directions are not symmetric, and that decides
+ * every entry:
+ *
+ *  - Miss a network error and the region pauses for a day. Annoying.
+ *  - Misfile an Instagram refusal as network and the sweep hammers a blocking
+ *    endpoint every 60 seconds — the 28-29 Aug incident, 36 failures, with an
+ *    app restriction live. That is how an account is lost.
+ *
+ * So a pattern goes in only when it means "no request left this machine":
+ *
+ *  - `nodename nor servname provided` — macOS DNS. **10 measured rows.** The
+ *    Python path in front of it differs between outages (a Homebrew 3.12 on
+ *    7 Sep, uv's 3.13 on 13 Sep), so the ERRNO TEXT is matched, never the path.
+ *  - `could not open a public tunnel` — **3 measured rows**, 10 Sep. The tunnel
+ *    is what serves the video TO Instagram; when it cannot come up, Instagram
+ *    was never asked anything.
+ *  - `Name or service not known`, `Temporary failure in name resolution` — the
+ *    same DNS failure as Linux and glibc word it.
+ *  - `Network is unreachable`, `No route to host` — the connect never started.
+ *
+ * DELIBERATELY ABSENT: a bare `timed out` (a read timeout after connecting can
+ * be Instagram being slow or throttling), `Connection refused` and `reset`
+ * (unmeasured here, and a proxy can produce either mid-conversation), and
+ * everything where Instagram ANSWERED — `API access blocked`, and `instagram
+ * error detail: Something went wrong`, whose own log line shows our tunnel
+ * serving the file with a 200 before Instagram replied `status ERROR`.
+ */
+const NETWORK_FAILURE = /nodename nor servname provided|Name or service not known|Temporary failure in name resolution|Network is unreachable|No route to host|could not open a public tunnel/i;
+
+export function isNetworkFailure(error) {
+  return NETWORK_FAILURE.test(String(error ?? ''));
+}
+
+/**
+ * How long a network failure holds the breaker shut.
+ *
+ * NOT ZERO, because a network failure still has to be able to trip it. The
+ * breaker's other job is invisible and it matters: a failure frees a daily-cap
+ * slot, the 60-second sweep queues a replacement, and every replacement is
+ * RENDERED — Playwright, TTS and ffmpeg — before its publish fails. With
+ * network failures simply uncounted, a three-hour outage renders a reel a
+ * minute, ~180 of them, for nothing.
+ *
+ * THIRTY MINUTES is the trade. Failures arrive a minute apart, so three land
+ * well inside it and trip the breaker; once they age out it reopens, so a long
+ * outage costs about three renders per half hour instead of a minute's worth.
+ * And after the network returns the region resumes within half an hour — well
+ * inside one 180-minute slot — instead of a day.
+ */
+export const NETWORK_FAILURE_WINDOW_MS = 30 * 60_000;
+
 export class Store {
   /**
    * @param {string} [dbPath] Override the database file. Defaults to the real
@@ -1508,11 +1573,15 @@ export class Store {
    * endpoint that is blocking you is the worst thing to be doing while an app
    * restriction is live. Twice now that has been stopped by hand.
    *
-   * SINCE THE LAST SUCCESS, not a plain window count, so it clears itself: one
-   * reel going out proves the endpoint is answering and the count returns to
-   * zero with nothing to reset by hand. A window is still applied on top, so a
-   * region that failed a fortnight ago and has simply been quiet since is not
-   * held shut for ever.
+   * SINCE THE LAST SUCCESS, with a window on top — but read the next paragraph
+   * before believing the first half. A success resets the count, and that is
+   * true of a MANUAL reel; but once this trips, the auto-sweep queues nothing
+   * for the region, so no automatic success can ever arrive to reset it. **What
+   * actually reopens a tripped breaker is the failures ageing out of the
+   * window**: the caller's 24 hours for an Instagram refusal, and
+   * NETWORK_FAILURE_WINDOW_MS (30 minutes) for a failure that never reached
+   * Instagram. This comment claimed "it clears itself" for weeks while the
+   * breaker was in fact a 24-hour timer.
    *
    * A CANCELLATION IS NOT A FAILURE. Rows retired by hand — an employer
    * dropped from the watchlist, a region switched off — are written as 'failed'
@@ -1529,17 +1598,24 @@ export class Store {
    * NULL is false, and an explicit guard that no mutation can reach is a line
    * that only looks like it is doing something.
    */
-  reelFailuresSinceSuccess(region, sinceMs) {
-    const row = this.db.prepare(`
-      SELECT COUNT(*) AS n FROM reel_posts
+  reelFailuresSinceSuccess(region, sinceMs, { now = Date.now() } = {}) {
+    /* The rows, not a COUNT, because the error text now decides how long each
+       one counts for — see isNetworkFailure. The SQL still does the two filters
+       it always did: failed, attempted inside the caller's window, and after the
+       region's last success. */
+    const rows = this.db.prepare(`
+      SELECT finished_at, error FROM reel_posts
       WHERE region = ?
         AND status = 'failed'
         AND finished_at >= ?
         AND finished_at > COALESCE(
           (SELECT MAX(finished_at) FROM reel_posts
             WHERE region = ? AND status = 'published'), 0)
-    `).get(region, sinceMs, region);
-    return row?.n ?? 0;
+    `).all(region, sinceMs, region);
+    /* A network failure counts only while it is recent. An Instagram failure
+       counts for the caller's full window, exactly as before. */
+    const networkFloor = now - NETWORK_FAILURE_WINDOW_MS;
+    return rows.filter((r) => !isNetworkFailure(r.error) || r.finished_at >= networkFloor).length;
   }
 
   /**

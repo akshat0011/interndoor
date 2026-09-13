@@ -697,18 +697,24 @@ function autoSweep() {
        and hammering an endpoint that is blocking you is the worst thing to be
        doing while an app restriction is live. It has been stopped by hand
        twice; this stops it on its own.
-       It clears itself on the next successful publish, so there is nothing to
-       reset — see reelFailuresSinceSuccess, which also explains why a row
-       cancelled by hand is not a failure. */
+       IT DOES NOT CLEAR ON A SUCCESS, whatever this comment used to say. A
+       tripped breaker queues nothing for its region, so no publish can happen
+       to prove the endpoint answers; it clears when its failures age out of the
+       window. That is 24 hours for an Instagram refusal — correct, that is the
+       case it exists for — and 30 minutes for a failure that never reached
+       Instagram at all (a dropped wifi, a tunnel that would not open), which
+       used to cost a full day of reels five separate times. See
+       isNetworkFailure in src/store.js. A row cancelled by hand is still not a
+       failure. */
     const spacingMs = autoSpacingMinutes(region, cfg) * 60_000;
-    const failures = store.reelFailuresSinceSuccess(region, now - 86_400_000);
+    const failures = store.reelFailuresSinceSuccess(region, now - 86_400_000, { now });
     if (failures >= failureLimit) {
       /* Once per region per process. A warning repeated every 60 seconds is
          one nobody reads, and this one has to be legible in the log the
          morning after it trips. */
       if (!breakerWarned.has(region)) {
         breakerWarned.add(region);
-        log.warn(`Reels: ${region} has failed ${failures} times since its last successful post — automatic posting is paused for this region. Probe the account before re-enabling; it clears itself on the next success.`);
+        log.warn(`Reels: ${region} has failed ${failures} times since its last successful post — automatic posting is paused for this region. An Instagram refusal holds it for 24h; a network failure for 30 min. Probe the account before clearing it by hand.`);
       }
       continue;
     }
