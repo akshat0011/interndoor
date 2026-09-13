@@ -292,6 +292,25 @@ check('smartrecruiters', parseAtsLink('https://jobs.smartrecruiters.com/Freshwor
   { provider: 'smartrecruiters', token: 'Freshworks' });
 check('a non-board URL is still nothing', parseAtsLink('https://example.com/careers'), null);
 
+/* Workable's `/j/<SHORTCODE>` is a link to ONE JOB and names no account. It was
+   read as board `j` — verbatim from LUXASIA's and Exponent Energy's stored
+   apply links, 13 Sep 2026 — so it must yield nothing, while the account form
+   keeps working and an account link later on the same page is still found. */
+console.log('\n== workable: the account link, never the job shortlink ==');
+check('workable account link', parseAtsLink('https://apply.workable.com/luxasia/'),
+  { provider: 'workable', token: 'luxasia' });
+check('workable account with a job path', parseAtsLink('https://apply.workable.com/exponent-energy/j/ECDE7D52B3/'),
+  { provider: 'workable', token: 'exponent-energy' });
+check('a /j/ shortlink is not a board', parseAtsLink('https://apply.workable.com/j/ECDE7D52B3'), null);
+check('nor is an upper-case one', parseAtsLink('https://APPLY.WORKABLE.COM/J/2FBB0E42E3'), null);
+check('an account whose name merely starts with j still reads',
+  parseAtsLink('https://apply.workable.com/jumio/'), { provider: 'workable', token: 'jumio' });
+check('a page with a shortlink first still yields the account link after it',
+  parseAtsLink('<a href="https://apply.workable.com/j/7205BC65B2">x</a> <a href="https://apply.workable.com/luxasia/">all jobs</a>'),
+  { provider: 'workable', token: 'luxasia' });
+check('and the provider after workable did not shift',
+  parseAtsLink('https://gokwik.keka.com/careers/'), { provider: 'keka', token: 'gokwik' });
+
 console.log('\n== which providers discovery may GUESS a token for ==');
 /* Eightfold and Oracle are keyed by HOST, which no company name produces, so
    letting discovery guess at them means one wasted request per company per

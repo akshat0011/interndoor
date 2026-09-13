@@ -1218,7 +1218,11 @@ const ATS_LINK = new RegExp([
   String.raw`jobs\.lever\.co\/([a-z0-9-]+)`,
   String.raw`jobs\.ashbyhq\.com\/([a-z0-9-]+)`,
   String.raw`([a-z0-9-]+)\.recruitee\.com`,
-  String.raw`apply\.workable\.com\/([a-z0-9-]+)`,
+  // `/j/<SHORTCODE>` is Workable's per-JOB shortlink and names no account, so
+  // capturing it read every one as board `j`. Refused by lookahead rather than
+  // by a pattern of its own, which keeps the group count and every position
+  // after this one unchanged.
+  String.raw`apply\.workable\.com\/(?!j\/)([a-z0-9-]+)`,
   String.raw`jobs\.smartrecruiters\.com\/([A-Za-z0-9-]+)`,
   // Added 7 Sep 2026. APPENDED, NEVER INSERTED: parseAtsLink destructures these
   // groups POSITIONALLY, so a new pattern anywhere but the end silently
