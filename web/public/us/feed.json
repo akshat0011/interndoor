@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/databricks-phd-genai-research-scientist-intern-4297755027",
+      "url": "https://interndoor.com/us/jobs/databricks-phd-genai-research-scientist-intern-4297755027",
+      "title": "PhD GenAI Research Scientist Intern — Databricks",
+      "content_text": "Company: Databricks · Location: San Francisco, CA\n• Work on adapting and improving LLMs for enterprise domains\n• Use PyTorch and deep learning fundamentals daily\n• Collaborate with researchers on domain adaptation projects",
+      "date_published": "2026-09-13T10:04:12.076Z",
+      "authors": [
+        {
+          "name": "Databricks"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-metrology-process-development-engineer-4456643938",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-metrology-process-development-engineer-4456643938",
+      "title": "Intern - Metrology Process Development Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID · Duration: 3 months\n• Design and run experiments in cleanroom using advanced metrology tech\n• Analyze semiconductor data with Excel and JMP, apply AI tools for analysis\n• Collaborate with global engineers on next-gen process development",
+      "date_published": "2026-09-13T09:13:32.725Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-4456631983",
       "url": "https://interndoor.com/us/jobs/micron-technology-intern-yield-enhancement-data-analysis-4456631983",
       "title": "Intern - Yield Enhancement, Data Analysis — Micron Technology",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Lockheed Martin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lockheed-martin-embedded-software-engineer-intern-4464700252",
-      "url": "https://interndoor.com/us/jobs/lockheed-martin-embedded-software-engineer-intern-4464700252",
-      "title": "Embedded Software Engineer Intern — Lockheed Martin",
-      "content_text": "Company: Lockheed Martin · Location: Grand Prairie, TX\n• Develop software for defense systems using C/C++\n• Work with Linux, VxWorks, and embedded hardware\n• Collaborate on complex projects with national security impact",
-      "date_published": "2026-09-12T12:53:53.749Z",
-      "authors": [
-        {
-          "name": "Lockheed Martin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineering-intern-4466491216",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-electrical-engineering-intern-4466491216",
-      "title": "Electrical Engineering Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Bristol, PA\n• Design electrical systems for military and commercial aircraft\n• Use CAD tools to create wiring diagrams and control panels\n• Work with systems engineering and production teams",
-      "date_published": "2026-09-12T12:42:14.821Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
         }
       ]
     }
