@@ -17,13 +17,14 @@
  * because the session has to persist somewhere the user can scan a QR into.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { PATHS } from './paths.js';
 import { jobParts, publishedIndex } from './telegram.js';
 import { regionOf, resolveRowRegion } from './regions.js';
 import { log } from './logger.js';
+import { releaseProfileLock } from './browser.js';
 
 /** WhatsApp's own cap is far higher, but a wall of text is not read. */
 export const MAX_MESSAGE = 1400;
@@ -119,17 +120,73 @@ function noSessionRestore(dir) {
   }
 }
 
+/**
+ * THE SESSION HISTORY WAS WHAT MADE LAUNCH TIME OUT — 13 SEP 2026.
+ *
+ * `Default/Sessions` had grown to 20 MB — two 8.8 MB `Tabs_*` files and two
+ * `Session_*` files — and Brave replays them on EVERY start, before the
+ * DevTools pipe answers, whether or not it restores a tab. Measured on a copy
+ * of this profile, idle machine: 26-27 s to launch with them, 0.67 s without;
+ * Service Worker, Code Cache and IndexedDB removed one at a time changed
+ * nothing. Launched at the end of a scan, beside enrichment and a Brave that
+ * has only just closed, that replay is what ran past Playwright's 180 s.
+ *
+ * noSessionRestore above stops the tabs coming BACK; it does nothing about the
+ * files, which are rewritten on every exit. They hold only tab and navigation
+ * state — the WhatsApp login lives in IndexedDB and Local Storage, untouched
+ * here — so they are deleted before every launch.
+ */
+export function clearSessionHistory(dir) {
+  const def = join(dir, 'Default');
+  for (const name of ['Sessions', 'Current Session', 'Current Tabs', 'Last Session', 'Last Tabs']) {
+    try { rmSync(join(def, name), { recursive: true, force: true }); } catch { /* not there */ }
+  }
+}
+
+/**
+ * Launch, retrying the way the scraper's Brave does (src/browser.js).
+ *
+ * The other half of the timeouts: PLAYWRIGHT DOES NOT KILL THE BROWSER IT
+ * SPAWNED WHEN A LAUNCH TIMES OUT. The leftover keeps holding the profile, so
+ * the next run's launch fails too — "Failed to create a ProcessSingleton for
+ * your profile directory" on 7 and 8 Sep is exactly that. So the profile is
+ * released before the first attempt, between attempts and after the last one,
+ * and each attempt gets a bounded timeout instead of one 180 s hopeful wait.
+ */
+export async function launchWithRetry(launch, { attempts = 3, release = () => {}, pause = (ms) => new Promise((r) => setTimeout(r, ms)) } = {}) {
+  release();
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const ctx = await launch();
+      if (attempt > 1) log.ok(`WhatsApp: Brave launched on attempt ${attempt}.`);
+      return ctx;
+    } catch (err) {
+      const why = String(err?.message ?? err).split('\n')[0];
+      release();
+      if (attempt === attempts) throw new Error(`Brave would not launch after ${attempts} attempts — ${why}`);
+      log.warn(`WhatsApp: Brave did not launch (attempt ${attempt}/${attempts}): ${why}`);
+      await pause(3000 * attempt);
+    }
+  }
+  throw new Error('unreachable');
+}
+
+/** Per attempt. An idle launch is under a second once the session history is gone. */
+export const LAUNCH_TIMEOUT_MS = 60_000;
+
 export async function openWhatsApp({ headless = true } = {}) {
   const brave = bravePath();
   if (!brave) throw new Error('Brave is not installed at the expected path');
   mkdirSync(PATHS.whatsappProfile, { recursive: true });
   noSessionRestore(PATHS.whatsappProfile);
-  const ctx = await chromium.launchPersistentContext(PATHS.whatsappProfile, {
+  clearSessionHistory(PATHS.whatsappProfile);
+  const ctx = await launchWithRetry(() => chromium.launchPersistentContext(PATHS.whatsappProfile, {
     executablePath: brave,
     headless,
     viewport: { width: 1280, height: 900 },
     args: ['--disable-blink-features=AutomationControlled'],
-  });
+    timeout: LAUNCH_TIMEOUT_MS,
+  }), { release: () => releaseProfileLock(PATHS.whatsappProfile) });
   const page = ctx.pages()[0] ?? await ctx.newPage();
 
   /* WHATSAPP REFUSES HEADLESS CHROME BY USER AGENT, and says so in a way that
@@ -367,6 +424,26 @@ const CHANNEL_ROW_MS = 20_000;
  */
 export const COMPOSER_MS = 20_000;
 export const COMPOSER_POLL_MS = 250;
+
+/**
+ * findTarget, with ONE second look after a pause.
+ *
+ * Once the session history stopped costing 30-50 s at launch (13 Sep 2026),
+ * the page reached "ready" in about 5 s — and the first send on the fast launch
+ * found no "Interndoor" row within 20 s, while `npm run whatsapp-probe` a
+ * minute later found it at once. The slow launch had been hiding a WhatsApp
+ * still syncing its channel list. One more look after a short wait covers that;
+ * a channel that is genuinely gone still fails, only 15 s later.
+ */
+export const TARGET_RETRY_MS = 15_000;
+export async function findTargetPatiently(page, name, { find = findTarget, pause = (ms) => page.waitForTimeout(ms), retryAfterMs = TARGET_RETRY_MS } = {}) {
+  const first = await find(page, name);
+  if (first.ok) return first;
+  log.info(`WhatsApp: ${first.error} — looking once more in ${retryAfterMs / 1000}s.`);
+  await pause(retryAfterMs);
+  const second = await find(page, name);
+  return second.ok ? second : { ...second, error: `${second.error} (also on a second look)` };
+}
 
 export async function findTarget(page, name) {
   const wanted = String(name ?? '').trim();
@@ -743,7 +820,7 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
        against, and nothing else records it. */
     log.info(`WhatsApp: browser open in ${openS}s, session ready ${Math.round(s.waitedMs / 1000)}s later.`);
 
-    const target = await findTarget(page, conf.target);
+    const target = await findTargetPatiently(page, conf.target);
     if (!target.ok) {
       log.warn(`WhatsApp: ${target.error}. Nothing posted.`);
       return { sent: 0, reason: 'target not found' };
