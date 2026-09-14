@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/figma-data-science-intern-2027-ats-greenhouse-figma-6178857004",
+      "url": "https://interndoor.com/us/jobs/figma-data-science-intern-2027-ats-greenhouse-figma-6178857004",
+      "title": "Data Science Intern (2027) — Figma",
+      "content_text": "Company: Figma · Location: San Francisco, CA • New York, NY\n• Analyze user behavior and build models to predict growth\n• Work on data pipelines and tools for scalable product data\n• Based in San Francisco or New York",
+      "date_published": "2026-09-14T17:36:27.000Z",
+      "authors": [
+        {
+          "name": "Figma"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/figma-software-engineer-intern-summer-2027-ats-greenhouse-figma-6143238004",
+      "url": "https://interndoor.com/us/jobs/figma-software-engineer-intern-summer-2027-ats-greenhouse-figma-6143238004",
+      "title": "Software Engineer Intern (Summer 2027) — Figma",
+      "content_text": "Company: Figma · Location: San Francisco, CA • New York, NY · Duration: Summer 2027\n• Work on full stack features or infrastructure projects with real impact\n• Use JavaScript, TypeScript, React, and backend systems\n• Based in San Francisco or New York with flexible start dates",
+      "date_published": "2026-09-14T17:36:20.000Z",
+      "authors": [
+        {
+          "name": "Figma"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/aecom-quality-intern-hiring-event-with-aecom-boston-ma-ats-smartrecruiters-aecom2-744000149397987",
+      "url": "https://interndoor.com/us/jobs/aecom-quality-intern-hiring-event-with-aecom-boston-ma-ats-smartrecruiters-aecom2-744000149397987",
+      "title": "Quality Intern - Hiring Event with AECOM - Boston, MA — AECOM",
+      "content_text": "Company: AECOM · Location: Rocky Hill, us",
+      "date_published": "2026-09-14T17:31:57.302Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/kiewit-bim-design-intern-kiewit-industrial-and-water-engineering-summer-2027-4456814974",
       "url": "https://interndoor.com/us/jobs/kiewit-bim-design-intern-kiewit-industrial-and-water-engineering-summer-2027-4456814974",
       "title": "BIM Design Intern - Kiewit Industrial & Water Engineering (Summer 2027) — Kiewit",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Marathon Petroleum Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineer-hiring-event-with-aecom-raleigh-ats-smartrecruiters-aecom2-744000149338704",
-      "url": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineer-hiring-event-with-aecom-raleigh-ats-smartrecruiters-aecom2-744000149338704",
-      "title": "Entry-Level Environmental Engineer - Hiring Event with AECOM - Raleigh — AECOM",
-      "content_text": "Company: AECOM · Location: Raleigh, us",
-      "date_published": "2026-09-14T13:46:22.923Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/da-vinci-derivatives-graduate-quant-ats-greenhouse-davinciderivatives-4241558101",
-      "url": "https://interndoor.com/us/jobs/da-vinci-derivatives-graduate-quant-ats-greenhouse-davinciderivatives-4241558101",
-      "title": "Graduate Quant — Da Vinci Derivatives",
-      "content_text": "Company: Da Vinci Derivatives · Location: Miami, Florida, United States\n• Analyse market data to build trading strategies\n• Develop tools to translate analysis into trading inputs\n• Improve existing strategies and evaluate new markets",
-      "date_published": "2026-09-14T13:44:03.000Z",
-      "authors": [
-        {
-          "name": "Da Vinci Derivatives"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/robinhood-software-engineering-intern-android-summer-2027-4465209080",
-      "url": "https://interndoor.com/us/jobs/robinhood-software-engineering-intern-android-summer-2027-4465209080",
-      "title": "Software Engineering Intern, Android (Summer 2027) — Robinhood",
-      "content_text": "Company: Robinhood · Location: New York, NY · Duration: Winter 2027\n• Build Android apps used by millions, shaping finance for everyday users\n• Work with Kotlin, Retrofit, Dagger, and Room in a real product team\n• Based in New York or Menlo Park with in-person days required",
-      "date_published": "2026-09-14T13:41:44.096Z",
-      "authors": [
-        {
-          "name": "Robinhood"
         }
       ]
     }
