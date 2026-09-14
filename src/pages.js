@@ -3755,6 +3755,16 @@ function companyLogos(jobs, publicDir) {
    honest count of the rest. */
 const FACET_TILES = 50;
 
+/* FACET PAGES ARE WRITTEN BUT NOT INDEXED — 14 SEP 2026, HIS DECISION.
+   Google stopped ranking the site on 11 Sep (CLAUDE.md, the search drop) in the
+   shape of its scaled-content treatment, and a /skills/ or /locations/ page is
+   the purest form of that: a template filled from the same rows the board
+   already shows. Over 1-10 Sep they drew about 1,300 impressions and 2 clicks.
+   So they stay reachable — job pages and hubs link to them, and a link that
+   404s is worse — but carry `noindex,follow`, are left out of the sitemap and
+   are not announced to IndexNow. Flipping this back is the whole reversal. */
+export const FACETS_INDEXABLE = false;
+
 const FACET_KINDS = {
   skill: {
     dir: 'skills',
@@ -3796,7 +3806,8 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     title: buildTitle(k.title(facet.label, region)),
     description: clampWords(`${lede} Updated every 30 minutes, from a vetted list of employers.`, 155),
     canonical: regionUrl(path, region),
-    indexable: true,
+    /* NOINDEX SINCE 14 SEP 2026 — see FACETS_INDEXABLE. */
+    indexable: FACETS_INDEXABLE,
     region,
   })}
 <main class="page">
@@ -3842,8 +3853,9 @@ export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } 
     description: clampWords(`${lede} ${facets.length} ${noun.toLowerCase()} across ${total} listings, updated every 30 minutes.`, 155),
     canonical: regionUrl(`/${k.dir}/`, region),
     /* Thin until there is something to browse. One or two facets is a page
-       that adds nothing the board does not already show. */
-    indexable: facets.length >= 3,
+       that adds nothing the board does not already show. And noindex
+       regardless since 14 Sep 2026 — see FACETS_INDEXABLE. */
+    indexable: FACETS_INDEXABLE && facets.length >= 3,
     region,
   })}
 <main class="page">
@@ -4166,17 +4178,21 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     const seg = kind === 'skill' ? 'skills' : 'locations';
     mkdirSync(dir, { recursive: true });
     facetDirs.push([dir, seg]);
+    /* Tracked for IndexNow only while facets are indexable: announcing a page
+       that says noindex asks Bing to fetch what we told it to ignore — the same
+       reason /applications is never tracked. */
+    const trackFacet = (changed, path) => { if (FACETS_INDEXABLE) track(changed, path); };
     for (const f of list) {
       const name = `${f.slug}.html`;
       wanted.add(join(dir, name));
-      track(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region })),
+      trackFacet(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region })),
         `/${seg}/${f.slug}`);
     }
     // The index is the crawl path to every facet page, exactly as /companies/
     // is to the hubs. Written even when the list is short so the breadcrumb on
     // each facet page resolves; renderFacetIndex noindexes a thin one itself.
     wanted.add(join(dir, 'index.html'));
-    track(writeIfChanged(join(dir, 'index.html'), renderFacetIndex(kind, list, { region })), `/${seg}`);
+    trackFacet(writeIfChanged(join(dir, 'index.html'), renderFacetIndex(kind, list, { region })), `/${seg}`);
   }
 
   /* /alerts — every way to follow this board. A flat file rather than a
@@ -4469,12 +4485,14 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     /* Facet indexes and pages. Listed above the job pages because they do not
        expire: a job page is deleted at 30 days, while /skills/python is a URL
        that can accumulate authority for as long as the board keeps running. */
-    ...(facets.skills.length >= 3 ? [{ loc: regionUrl('/skills/', region), priority: '0.7', lastmod: boardDay }] : []),
-    ...(facets.cities.length >= 3 ? [{ loc: regionUrl('/locations/', region), priority: '0.7', lastmod: boardDay }] : []),
-    ...facets.skills.map((f) => ({
+    /* Out entirely while FACETS_INDEXABLE is false: a sitemap may never list a
+       noindex URL (test/sitemapindexable.test.mjs). */
+    ...(FACETS_INDEXABLE && facets.skills.length >= 3 ? [{ loc: regionUrl('/skills/', region), priority: '0.7', lastmod: boardDay }] : []),
+    ...(FACETS_INDEXABLE && facets.cities.length >= 3 ? [{ loc: regionUrl('/locations/', region), priority: '0.7', lastmod: boardDay }] : []),
+    ...(FACETS_INDEXABLE ? facets.skills : []).map((f) => ({
       loc: regionUrl(`/skills/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
     })),
-    ...facets.cities.map((f) => ({
+    ...(FACETS_INDEXABLE ? facets.cities : []).map((f) => ({
       loc: regionUrl(`/locations/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
     })),
     ...jobs.filter(isIndexable).map((j) => ({
