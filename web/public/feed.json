@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/axalta-technology-trainee-4336951115",
+      "url": "https://interndoor.com/jobs/axalta-technology-trainee-4336951115",
+      "title": "Technology Trainee — Axalta",
+      "content_text": "Company: Axalta · Location: Savli, Gujarat, India\n• Develop and optimize product recipes for customer specifications\n• Collaborate with operations and application teams for production alignment\n• Conduct testing, analyze results, and prepare technical reports",
+      "date_published": "2026-09-14T12:40:35.812Z",
+      "authors": [
+        {
+          "name": "Axalta"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
       "url": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
       "title": "Automation Intern — Micron Technology",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE HealthCare"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/newspace-research-and-technologies-intern-software-4465038152",
-      "url": "https://interndoor.com/jobs/newspace-research-and-technologies-intern-software-4465038152",
-      "title": "Intern - Software — NewSpace Research and Technologies",
-      "content_text": "Company: NewSpace Research and Technologies · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build full stack apps with react flask nodejs\n• Integrate networking protocols and dashboard tools\n• Deploy using docker aws gcp with linux skills",
-      "date_published": "2026-09-09T12:31:38.683Z",
-      "authors": [
-        {
-          "name": "NewSpace Research and Technologies"
         }
       ]
     }
