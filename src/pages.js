@@ -2749,9 +2749,16 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
   const startKey = firstKey && sinceKey ? (firstKey > sinceKey ? firstKey : sinceKey) : null;
 
   const counts = new Map();
+  /* Postings dated before the board began watching are left out of the months
+     (a month we did not watch cannot be drawn as complete) but NOT out of the
+     page: Jump Trading's UK record read 16 postings over months summing to 6,
+     because ten came off its careers board dated July against a first sighting
+     on 3 Aug. They are counted and said. */
+  let before = 0;
   for (const ms of dated) {
     const k = monthKey(ms, region);
     if (startKey && k >= startKey && k <= untilKey) counts.set(k, (counts.get(k) ?? 0) + 1);
+    else if (startKey && k < startKey) before++;
   }
   const months = [];
   if (startKey && untilKey && startKey <= untilKey) {
@@ -2800,6 +2807,7 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
       <div class="strip-head"><h2>${co} hiring record</h2></div>
       <p class="cp-note">Every engineering internship ${co} has posted ${esc(where)} that we have tracked, counted by the month it was posted, from ${esc(label(months[0]))}.</p>
       <dl class="cp-facts">${months.map((k) => `<div><dt>${esc(label(k))}${k === untilKey ? ' so far' : ''}</dt><dd>${counts.get(k) ?? 0}</dd></div>`).join('')}</dl>
+      ${before ? `<p class="cp-note">${before} more ${before === 1 ? 'was' : 'were'} posted before we began tracking ${esc(where)} in ${esc(label(startKey))}.</p>` : ''}
       <p class="cp-note">${paySentence}</p>
       ${rankSentence ? `<p class="cp-note">${rankSentence}</p>` : ''}
     </section>`;
