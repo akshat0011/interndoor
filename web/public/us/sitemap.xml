@@ -68,10 +68,10 @@
   <url><loc>https://interndoor.com/us/skills/scala</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/systemverilog</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rtos</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/altium</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/swift</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/cuda</loc><lastmod>2026-09-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/kafka</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/uvm</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/numpy</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/place-and-route</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
@@ -79,8 +79,8 @@
   <url><loc>https://interndoor.com/us/skills/simulink</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/terraform</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/mysql</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/postgresql</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/skills/uart</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/rest-api</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/dft</loc><lastmod>2026-09-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/skills/elasticsearch</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
@@ -97,8 +97,8 @@
   <url><loc>https://interndoor.com/us/locations/new-york</loc><lastmod>2026-09-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/austin</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/san-jose</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/locations/san-francisco</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/atlanta</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/locations/san-francisco</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/palo-alto</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/boise</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/locations/dallas</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
@@ -180,8 +180,6 @@
   <url><loc>https://interndoor.com/us/jobs/formlabs-print-process-intern-winter-spring-2027-ats-greenhouse-formlabs-8199269</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/formlabs-materials-intern-winter-spring-2027-ats-greenhouse-formlabs-8199092</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/collins-aerospace-intern-systems-engineer-onsite-4466785618</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/cresta-data-science-intern-customer-success-4411680967</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/marathon-petroleum-corporation-intern-co-op-refining-electrical-engineering-spring-2027-4364971024</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
@@ -206,6 +204,11 @@
   <url><loc>https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-data-engineering-4464711353</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/charles-schwab-2027-technology-intern-site-reliability-engineering-4464730346</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4464717407</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/nvidia-phd-research-intern-autonomous-systems-and-physical-ai-research-2027-ats-workday-nvidia-wd5-nvidiaexternalcareersite-jr2024171</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/autostore-systems-entry-level-software-engineer-ats-workday-autostore-wd3-autostore-jr102691</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/autostore-systems-co-op-software-engineering-ats-workday-autostore-wd3-autostore-jr102692</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/autostore-systems-entry-level-electrical-engineer-ats-workday-autostore-wd3-autostore-jr102690</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/us/jobs/autostore-systems-co-op-electronics-engineering-ats-workday-autostore-wd3-autostore-jr102695</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455008748</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455005694</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
@@ -2886,7 +2889,6 @@
   <url><loc>https://interndoor.com/us/companies/boston-scientific</loc><lastmod>2026-09-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/formlabs</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/collins-aerospace</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/us/companies/autostore</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/infineon-technologies</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/cresta</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/marathon-petroleum-corporation</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
@@ -2900,6 +2902,7 @@
   <url><loc>https://interndoor.com/us/companies/northrop-grumman</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/raytheon</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/charles-schwab</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/autostore-systems</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/amazon</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/analog-devices</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/hca-healthcare</loc><lastmod>2026-09-12</lastmod><priority>0.6</priority></url>
@@ -3211,6 +3214,7 @@
   <url><loc>https://interndoor.com/us/companies/xtx-markets</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/snowflake</loc><lastmod>2026-06-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/chainguard</loc><lastmod>2026-05-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/us/companies/autostore</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/saronic-technologies</loc><lastmod>2026-09-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/walt-disney-world</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/us/companies/honeywell-aerospace</loc><lastmod>2026-09-02</lastmod><priority>0.6</priority></url>

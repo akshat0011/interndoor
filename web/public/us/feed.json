@@ -102,30 +102,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
-      "url": "https://interndoor.com/us/jobs/autostore-co-op-software-engineering-4465496182",
-      "title": "Co-Op - Software Engineering — AutoStore™",
-      "content_text": "Company: AutoStore™ · Location: Atlanta, GA\n• Write clean code for warehouse automation systems\n• Work with TypeScript, C#, and cloud technologies\n• Collaborate with cross-functional teams in agile sprints",
-      "date_published": "2026-09-13T20:52:29.977Z",
-      "authors": [
-        {
-          "name": "AutoStore™"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193",
-      "url": "https://interndoor.com/us/jobs/autostore-co-op-electronics-engineering-4465497193",
-      "title": "Co-Op - Electronics Engineering — AutoStore™",
-      "content_text": "Company: AutoStore™ · Location: Atlanta, GA\n• Design and test electrical systems for warehouse automation\n• Work with engineers on controls, power systems, and safety\n• Support integration of electrical, software, and mechanical parts",
-      "date_published": "2026-09-13T20:52:25.937Z",
-      "authors": [
-        {
-          "name": "AutoStore™"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-intern-product-engineer-4439566064",
       "title": "Intern- Product Engineer — Infineon Technologies",
@@ -414,6 +390,66 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-autonomous-systems-and-physical-ai-research-2027-ats-workday-nvidia-wd5-nvidiaexternalcareersite-jr2024171",
+      "url": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-autonomous-systems-and-physical-ai-research-2027-ats-workday-nvidia-wd5-nvidiaexternalcareersite-jr2024171",
+      "title": "PhD Research Intern, Autonomous Systems and Physical AI Research - 2027 — Nvidia",
+      "content_text": "Company: Nvidia · Location: US, CA, Santa Clara\n• Design and implement techniques for autonomous vehicles and robotics\n• Work with researchers and product teams on foundational AI research\n• Publish findings and open-source code in safety-critical AI systems",
+      "date_published": "2026-09-13T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Nvidia"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/autostore-systems-entry-level-software-engineer-ats-workday-autostore-wd3-autostore-jr102691",
+      "url": "https://interndoor.com/us/jobs/autostore-systems-entry-level-software-engineer-ats-workday-autostore-wd3-autostore-jr102691",
+      "title": "Entry Level Software Engineer — AutoStore Systems",
+      "content_text": "Company: AutoStore Systems · Location: Atlanta, GA, USA · Duration: 0-2 years\n• Develop and maintain software for warehouse automation systems\n• Work with TypeScript, C#, Java, and cloud platforms\n• Collaborate with cross-functional teams on production systems",
+      "date_published": "2026-09-13T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "AutoStore Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/autostore-systems-co-op-software-engineering-ats-workday-autostore-wd3-autostore-jr102692",
+      "url": "https://interndoor.com/us/jobs/autostore-systems-co-op-software-engineering-ats-workday-autostore-wd3-autostore-jr102692",
+      "title": "Co-Op - Software Engineering — AutoStore Systems",
+      "content_text": "Company: AutoStore Systems · Location: Atlanta, GA, USA\n• Write clean code and maintain software systems for warehouse automation\n• Work with TypeScript, C#, and cloud technologies in a cross-functional team\n• Contribute to APIs, telemetry, and observability in a 4-6 month role",
+      "date_published": "2026-09-13T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "AutoStore Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/autostore-systems-entry-level-electrical-engineer-ats-workday-autostore-wd3-autostore-jr102690",
+      "url": "https://interndoor.com/us/jobs/autostore-systems-entry-level-electrical-engineer-ats-workday-autostore-wd3-autostore-jr102690",
+      "title": "Entry Level Electrical Engineer — AutoStore Systems",
+      "content_text": "Company: AutoStore Systems · Location: Atlanta, GA, USA · Duration: 0-2 years\n• Design and test electrical systems for warehouse automation\n• Work with CAD tools and industrial control systems\n• Collaborate with cross-functional teams on product development",
+      "date_published": "2026-09-13T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "AutoStore Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/autostore-systems-co-op-electronics-engineering-ats-workday-autostore-wd3-autostore-jr102695",
+      "url": "https://interndoor.com/us/jobs/autostore-systems-co-op-electronics-engineering-ats-workday-autostore-wd3-autostore-jr102695",
+      "title": "Co-Op - Electronics Engineering — AutoStore Systems",
+      "content_text": "Company: AutoStore Systems · Location: Atlanta, GA, USA\n• Design and test electrical systems for warehouse automation\n• Work with engineers on controls, power systems, and safety\n• Collaborate on cross-functional projects with software and mechanical teams",
+      "date_published": "2026-09-13T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "AutoStore Systems"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566",
       "url": "https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566",
       "title": "Mechatronics Apprentice I — Amazon",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-undergrad-intern-data-scientist-amgen-s-technology-and-medical-organiz-4466485814",
-      "url": "https://interndoor.com/us/jobs/amgen-undergrad-intern-data-scientist-amgen-s-technology-and-medical-organiz-4466485814",
-      "title": "Undergrad Intern – Data Scientist – Amgen’s Technology & Medical Organizations (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Analyze data to build predictive models for business decisions\n• Use python and sql to process structured and unstructured data\n• Work on cross-functional projects with scientists and engineers",
-      "date_published": "2026-09-12T15:40:54.588Z",
-      "authors": [
-        {
-          "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-undergrad-intern-data-engineer-amgen-s-technology-and-medical-organiza-4466485816",
-      "url": "https://interndoor.com/us/jobs/amgen-undergrad-intern-data-engineer-amgen-s-technology-and-medical-organiza-4466485816",
-      "title": "Undergrad Intern – Data Engineer – Amgen’s Technology & Medical Organizations (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Design and develop data pipelines to extract, transform, and load data into enterprise data lake\n• Build analytics tools using Python, SQL, and AWS for data engineering solutions\n• Collaborate with architects and data scientists to automate tasks and create reusable frameworks",
-      "date_published": "2026-09-12T15:40:50.584Z",
-      "authors": [
-        {
-          "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/joby-aviation-quality-engineering-intern-4438854392",
-      "url": "https://interndoor.com/us/jobs/joby-aviation-quality-engineering-intern-4438854392",
-      "title": "Quality Engineering Intern — Joby Aviation",
-      "content_text": "Company: Joby Aviation · Location: Marina, CA · Duration: 12 months\n• Analyze product failures and support root-cause investigations using 8D and 5-Why methods\n• Develop and execute process capability studies with statistical data analysis tools\n• Support lean manufacturing initiatives like 5S and mistake-proofing techniques",
-      "date_published": "2026-09-12T15:24:29.112Z",
-      "authors": [
-        {
-          "name": "Joby Aviation"
         }
       ]
     }
