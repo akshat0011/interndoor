@@ -112,7 +112,7 @@ console.log('\n== pay ==');
   /* The UK board's live "£31 / hour" read as no pay at all until 14 Sep 2026:
      stipendText's gate knew ₹ and $ only, and "hour" is not one of its words. */
   check('a pound figure per hour is stated pay', stipendText({ stipend: '£31 / hour' }), '£31 / hour');
-  check('and a euro one', stipendText({ stipend: '€2,000 / month' }), '€2,000 / month');
+  check('and a euro one per hour — a month figure would pass on "/ month" alone', stipendText({ stipend: '€20 / hour' }), '€20 / hour');
   check('a pound zero is still no pay', stipendText({ stipend: '£0 / hour' }), '');
   check('a bare number is still not pay', stipendText({ stipend: '4,01,000' }), '');
   check('two currencies: no range',statedPayRange(us(['$2,000 / month', '€2,000 / month'])), null);
