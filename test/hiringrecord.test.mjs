@@ -74,6 +74,12 @@ console.log('\n== the months ==');
   check('a quiet month is shown as a zero, not skipped', /Aug 2026 0\b/.test(out), true);
   check('July counts its two', /Jul 2026 2\b/.test(out), true);
   check('nothing before the board began watching', /Jun 2026/.test(out), false);
+  /* Jump Trading UK: 16 postings over months summing to 6. The rest must be said. */
+  check('but a posting from before is still accounted for', /1 more was posted before we began tracking in India in Jul 2026\./.test(out), true);
+  check('and the months plus that line add up to the total',
+    [...out.matchAll(/(?:Jul|Aug|Sept?) 2026(?: so far)? (\d+)/g)].reduce((a, m) => a + Number(m[1]), 0) + 1, rows.length);
+  check('no such line when nothing predates the board',
+    /posted before we began tracking/.test(text(hiringRecord('Acme', rows.slice(0, 4), IN, RECORD))), false);
   check('the newest month is marked as still running', /Sept? 2026 so far 2\b/.test(out), true);
   check('and it is the only one marked', (out.match(/so far/g) ?? []).length, 1);
 
