@@ -528,7 +528,10 @@ function agePill(ms) {
 export function stipendText(job) {
   const raw = String(job.stipend ?? '').trim();
   if (!raw) return '';
-  if (!/[₹$]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw)) return '';
+  // £ and € joined ₹ and $ on 14 Sep 2026. The gate predates the UK board, so
+  // "£31 / hour" — a pound sign and no month/year/week word — read as no pay at
+  // all. Measured before widening: exactly that one live row changed, on any board.
+  if (!/[₹$£€]|\brs\b|\blpa\b|\bper\b|\/\s*(month|year|week|total)|\b(month|year|week)ly\b/i.test(raw)) return '';
   // ZERO IS NOT AN AMOUNT. 68 live rows hold "₹0" — 30 of them on the US board,
   // where the currency is wrong as well as the figure. It is missing data, not
   // a wage: an employer that genuinely pays nothing is recorded in
@@ -2660,8 +2663,8 @@ export function employerRows(jobs, past) {
 
 /** Postings needed before a hiring record says anything; fewer is an anecdote. */
 export const RECORD_MIN_POSTINGS = 4;
-/** Boards the record is shown on. India first, then the US — both his calls on 14 Sep 2026. */
-const RECORD_REGIONS = new Set(['IN', 'US']);
+/** Boards the record is shown on: India, then the US, then the UK — all his calls on 14 Sep 2026. */
+const RECORD_REGIONS = new Set(['IN', 'US', 'GB']);
 
 /**
  * The pay range across an employer's postings — STRICTER than `payRange`.
