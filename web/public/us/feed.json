@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-circuits-2027-4465492382",
+      "url": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-circuits-2027-4465492382",
+      "title": "PhD Research Intern, Circuits - 2027 — NVIDIA",
+      "content_text": "Company: NVIDIA · Location: Durham, NC\n• Design and implement circuit approaches in prototype systems\n• Collaborate with researchers and product teams on cutting-edge projects\n• Transfer circuit technology to product groups for real-world impact",
+      "date_published": "2026-09-14T00:07:59.659Z",
+      "authors": [
+        {
+          "name": "NVIDIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-autonomous-systems-and-physical-ai-research-2027-4465702327",
+      "url": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-autonomous-systems-and-physical-ai-research-2027-4465702327",
+      "title": "PhD Research Intern, Autonomous Systems and Physical AI Research - 2027 — NVIDIA",
+      "content_text": "Company: NVIDIA · Location: Santa Clara, CA\n• Design and implement techniques for autonomous vehicles and robotics\n• Collaborate with researchers and product teams on foundational AI research\n• Publish findings and open-source code in safety-critical AI systems",
+      "date_published": "2026-09-14T00:07:32.744Z",
+      "authors": [
+        {
+          "name": "NVIDIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-software-engineering-internship-4466788795",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-software-engineering-internship-4466788795",
+      "title": "Software Engineering Internship — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Develop features for cryoablation devices using C++ and Qt\n• Collaborate with engineers and technicians on medical device software\n• Analyze clinical data and use Python Pandas and Matlab",
+      "date_published": "2026-09-14T00:02:38.135Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/formlabs-print-process-intern-winter-spring-2027-ats-greenhouse-formlabs-8199269",
       "url": "https://interndoor.com/us/jobs/formlabs-print-process-intern-winter-spring-2027-ats-greenhouse-formlabs-8199269",
       "title": "Print Process Intern (Winter/Spring 2027) — Formlabs",
@@ -74,18 +110,6 @@
       "authors": [
         {
           "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-circuits-2027-4464747500",
-      "url": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-circuits-2027-4464747500",
-      "title": "PhD Research Intern, Circuits - 2027 — NVIDIA AI",
-      "content_text": "Company: NVIDIA AI · Location: Durham, NC\n• Design and implement circuit approaches in prototype systems\n• Collaborate with researchers and product teams on circuit technologies\n• Transfer research to product groups for real-world impact",
-      "date_published": "2026-09-13T18:17:24.766Z",
-      "authors": [
-        {
-          "name": "NVIDIA AI"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-grad-intern-data-engineer-amgen-s-technology-and-medical-organizations-4466498672",
-      "url": "https://interndoor.com/us/jobs/amgen-grad-intern-data-engineer-amgen-s-technology-and-medical-organizations-4466498672",
-      "title": "Grad Intern – Data Engineer – Amgen’s Technology & Medical Organizations (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Design and build data pipelines to extract, transform, and load data into enterprise data lake\n• Use Python, SQL, and AWS to develop analytics tools and infrastructure\n• Collaborate with architects, data scientists, and business teams on data solutions",
-      "date_published": "2026-09-12T15:00:15.300Z",
-      "authors": [
-        {
-          "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-grad-intern-software-engineer-amgen-s-technology-and-medical-organizat-4466498675",
-      "url": "https://interndoor.com/us/jobs/amgen-grad-intern-software-engineer-amgen-s-technology-and-medical-organizat-4466498675",
-      "title": "Grad Intern – Software Engineer – Amgen’s Technology & Medical Organizations (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Develop and test application components using Python, Java, or SQL\n• Collaborate on project plans and translate business processes into code\n• Work with cross-functional teams on software design and implementation",
-      "date_published": "2026-09-12T15:00:11.373Z",
-      "authors": [
-        {
-          "name": "Amgen"
         }
       ]
     }
