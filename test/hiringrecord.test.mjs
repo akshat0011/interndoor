@@ -9,7 +9,7 @@
 import { mkdtempSync, rmSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { employerRows, hiringRecord, renderCompanyPage, writePages, companySlug, RECORD_MIN_POSTINGS } from '../src/pages.js';
+import { employerRows, hiringRecord, renderCompanyPage, writePages, companySlug, RECORD_MIN_POSTINGS, statedPayRange, PAY_SPREAD_MIN } from '../src/pages.js';
 import { regionOf } from '../src/regions.js';
 
 let pass = 0, fail = 0;
@@ -54,7 +54,10 @@ console.log('\n== when it appears ==');
   check('the bar is four postings', RECORD_MIN_POSTINGS, 4);
   check('four postings on the India board: shown', hiringRecord('Acme', four, IN, RECORD).includes('hiring record'), true);
   check('three: not shown', hiringRecord('Acme', four.slice(0, 3), IN, RECORD), '');
-  check('the US board: not shown yet', hiringRecord('Acme', four, US, RECORD), '');
+  check('the US board: shown', hiringRecord('Acme', four, US, RECORD).includes('hiring record'), true);
+  check('the UK board: not shown yet', hiringRecord('Acme', four, regionOf('GB'), RECORD), '');
+  check('the heading takes no possessive — "L3Harris Technologies’s" read badly',
+    /<h2>L3Harris Technologies hiring record<\/h2>/.test(hiringRecord('L3Harris Technologies', four, US, RECORD)), true);
   check('no board-wide record passed: not shown', hiringRecord('Acme', four, IN, null), '');
 }
 
@@ -90,7 +93,32 @@ console.log('\n== pay ==');
   check('some stated: how many of how many', /2 of the 4 Acme postings/.test(s), true);
   check('and the range across them', /from ₹10,000 to ₹20,000/.test(s), true);
   const all = base.map((r) => ({ ...r, stipend: '₹15,000 / month' }));
-  check('all stated, one figure', /All 4 Acme postings we have tracked stated a stipend, of ₹15,000\./.test(text(hiringRecord('Acme', all, IN, RECORD))), true);
+  check('all stated, one figure, with its period', /All 4 Acme postings we have tracked stated a stipend, of ₹15,000 a month\./.test(text(hiringRecord('Acme', all, IN, RECORD))), true);
+
+  /* The US board, measured 14 Sep 2026: 1,072 hourly figures, 336 yearly, 758
+     with no period at all. A range may only be drawn across one currency and one
+     period, or it sets an hourly rate against a salary. */
+  const us = (stipends) => base.map((r, i) => (stipends[i] ? { ...r, stipend: stipends[i] } : r));
+  check('the US says pay, not stipend',
+    /None of the 4 Acme postings we have tracked stated pay\./.test(text(hiringRecord('Acme', base, US, RECORD))), true);
+  const hourly = text(hiringRecord('Acme', us(['$25 / hour', '$30 / hour']), US, RECORD));
+  check('an hourly range reads per hour', /2 of the 4 Acme postings we have tracked stated pay, from \$25 to \$30 an hour\./.test(hourly), true);
+  check('hourly figures under 1,000 are not thrown away', statedPayRange(us(['$25 / hour']))?.lo, '$25');
+  check('hourly beside yearly: counted, no range', text(hiringRecord('Acme', us(['$25 / hour', '$80,000 / year']), US, RECORD)).includes('stated pay.'), true);
+  check('a figure with no period: counted, no range', statedPayRange(us(['$25 / hour', '$60'])), null);
+  check('two currencies: no range', statedPayRange(us(['$2,000 / month', '€2,000 / month'])), null);
+  check('Indian grouping on a dollar figure still reads as the number it is', statedPayRange(us(['$94,000 – $1,25,000 / year']))?.hi, '$125,000');
+
+  check('five postings with pay is where the middle half starts', PAY_SPREAD_MIN, 5);
+  const many = [1, 2, 3, 4, 5, 6].map((i) => row(String(i), `2026-08-0${i}T06:00:00Z`, { stipend: i === 1 ? '$16,600 / year' : i === 6 ? '$175,000 / year' : `$${60 + i},000 / year` }));
+  const m = text(hiringRecord('Acme', many, US, RECORD));
+  check('with five or more, one outlier does not set either end', /middle half of those figures runs from \$62,000 to \$65,000 a year\./.test(m), true);
+  check('and the extremes are not quoted', /16,600|175,000/.test(m), false);
+  const flat = [1, 2, 3, 4, 5].map((i) => row(String(i), `2026-08-0${i}T06:00:00Z`, { stipend: '$40 / hour' }));
+  check('a middle half that is one figure says so plainly',
+    /All 5 Acme postings we have tracked stated pay; at least half of those figures are \$40 an hour\./.test(text(hiringRecord('Acme', flat, US, RECORD))), true);
+  check('exactly five is already the middle half',/middle half/.test(text(hiringRecord('Acme', many.slice(0, 5), US, RECORD))), true);
+  check('with four, the ends are the range', /from \$62,000 to \$65,000 a year/.test(text(hiringRecord('Acme', many.slice(1, 5), US, RECORD))), true);
 }
 
 console.log('\n== where they sit ==');
