@@ -6,6 +6,30 @@
   "description": "New engineering internships in the UK, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/uk/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730846005",
+      "url": "https://interndoor.com/uk/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730846005",
+      "title": "Software Engineering Intern (Summer 2027) — Scale AI",
+      "content_text": "Company: Scale AI · Location: London, UK · Duration: Fall 2027\n• Build AI systems that impact millions of citizens\n• Work with Python, Typescript, React, and MongoDB\n• Ship tools for fraud detection and contributor safety",
+      "date_published": "2026-09-14T13:12:21.000Z",
+      "authors": [
+        {
+          "name": "Scale AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/uk/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730862005",
+      "url": "https://interndoor.com/uk/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730862005",
+      "title": "Software Engineer - New Grad — Scale AI",
+      "content_text": "Company: Scale AI · Location: London, UK · Duration: Fall 2026\n• Build ai applications that impact millions of citizens\n• Work with python, typescript, react, and mongodb\n• Ship tools for fraud detection and contributor safety",
+      "date_published": "2026-09-14T13:11:20.000Z",
+      "authors": [
+        {
+          "name": "Scale AI"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/uk/jobs/american-express-campus-internship-programme-undergraduate-ai-engineer-2027-uk-burgess--ats-oraclecloud-egug-fa-us2-oraclecloud-com-26013756",
       "url": "https://interndoor.com/uk/jobs/american-express-campus-internship-programme-undergraduate-ai-engineer-2027-uk-burgess--ats-oraclecloud-egug-fa-us2-oraclecloud-com-26013756",
       "title": "Campus - Internship Programme - Undergraduate AI Engineer - 2027 (UK - Burgess Hill) — American Express",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Epic Games"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/tower-research-capital-quantitative-research-internship-6-months-central-execution-research-ats-greenhouse-towerresearchcapital-8113986",
-      "url": "https://interndoor.com/uk/jobs/tower-research-capital-quantitative-research-internship-6-months-central-execution-research-ats-greenhouse-towerresearchcapital-8113986",
-      "title": "Quantitative Research Internship - 6 Months, Central Execution Research — Tower Research Capital",
-      "content_text": "Company: Tower Research Capital · Location: London · Duration: 6 months\n• Analyzing market microstructure for liquidity patterns and trading costs\n• Building tools and simulations for execution analysis and decision support\n• Working with large datasets to design data-processing pipelines\n• Contributing to research libraries and production workflows",
-      "date_published": "2026-08-12T12:52:34.000Z",
-      "authors": [
-        {
-          "name": "Tower Research Capital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/squarepoint-capital-intern-software-developer-london-2027-ats-greenhouse-squarepointcapital-7231006",
-      "url": "https://interndoor.com/uk/jobs/squarepoint-capital-intern-software-developer-london-2027-ats-greenhouse-squarepointcapital-7231006",
-      "title": "Intern Software Developer - London - 2027 — Squarepoint Capital",
-      "content_text": "Company: Squarepoint Capital · Location: London · Duration: 12 weeks\n• Write code for trading systems using python or c++\n• Work on real projects with visible business impact\n• Collaborate with engineers on low-latency platforms",
-      "date_published": "2026-08-10T12:53:20.000Z",
-      "authors": [
-        {
-          "name": "Squarepoint Capital"
         }
       ]
     }
