@@ -45,6 +45,11 @@ async function getJson(url, { method = 'GET', body = null, headers = {}, retries
       signal: controller.signal,
       headers: {
         accept: 'application/json',
+        // Node's fetch sends `accept-language: *` when none is given, and some
+        // Workday tenants answer that with a 500 — `"locale":"*"` in the error
+        // body. Nordstrom's board (1,341 postings) read as null on every poll
+        // from 9 Sep 2026 while curl, which sends no such header, got 200.
+        'accept-language': 'en-US',
         'user-agent': UA,
         ...(body ? { 'content-type': 'application/json' } : {}),
         ...headers,
