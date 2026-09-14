@@ -498,6 +498,33 @@ function recordingStub(payloadFor) {
   return { urls, restore: () => { globalThis.fetch = realFetch; } };
 }
 
+console.log('\n== A board request names its language ==');
+{
+  /* Nordstrom's Workday tenant, measured 14 Sep 2026: 500 with `"locale":"*"`
+     for Node's default `accept-language: *`, 200 for `en-US`. The stub answers
+     the same way, so a request without a real language reads the board as null. */
+  const seen = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init = {}) => {
+    const lang = init.headers?.['accept-language'];
+    seen.push(lang);
+    const ok = !!lang && lang !== '*';
+    return {
+      ok, status: ok ? 200 : 500,
+      headers: { get: () => null },
+      async text() {
+        return JSON.stringify(ok
+          ? { total: 1, jobPostings: [{ title: 'Software Engineer Intern', externalPath: '/job/Seattle-WA/x_R-1', locationsText: 'Seattle, WA' }] }
+          : { errorCode: 'HTTP_500', httpStatus: 500, locale: '*' });
+      },
+    };
+  };
+  const jobs = await fetchBoard('workday', 'nordstrom:wd501:nordstrom_careers');
+  globalThis.fetch = realFetch;
+  check('the request asks for en-US', seen[0], 'en-US');
+  check('so a tenant that refuses "*" still reads', jobs?.length, 1);
+}
+
 console.log('\n== Amazon asks each country for each term ==');
 {
   const { urls, restore } = recordingStub((u) => {
