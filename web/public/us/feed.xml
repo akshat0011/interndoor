@@ -6,7 +6,57 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 14 Sep 2026 09:35:41 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 14 Sep 2026 12:09:10 GMT</lastBuildDate>
+  <item>
+    <title>R&amp;D Engineering Internship — Xylem</title>
+    <link>https://interndoor.com/us/jobs/xylem-r-and-d-engineering-internship-4467087003</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/xylem-r-and-d-engineering-internship-4467087003</guid>
+    <pubDate>Mon, 14 Sep 2026 12:09:10 GMT</pubDate>
+    <description>Company: Xylem · Location: Tewksbury, MA · Duration: 0-4 years
+• Operate and troubleshoot test stands per protocols
+• Design parts with CAD, take samples, analyze data
+• Collaborate with engineers, scientists, and project teams</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern, iOS (Summer 2027) — Robinhood</title>
+    <link>https://interndoor.com/us/jobs/robinhood-software-engineering-intern-ios-summer-2027-ats-greenhouse-robinhood-8142959</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/robinhood-software-engineering-intern-ios-summer-2027-ats-greenhouse-robinhood-8142959</guid>
+    <pubDate>Mon, 14 Sep 2026 12:00:09 GMT</pubDate>
+    <description>Company: Robinhood · Location: Menlo Park, CA; New York, NY · Duration: Winter 2027
+• Build smooth, stable, and beautiful products using swift and latest ios apis
+• Work with technologies like uikit, rxswift, core data, and viper architecture
+• Collaborate with designers, product managers, and backend engineers</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern, Android (Summer 2027) — Robinhood</title>
+    <link>https://interndoor.com/us/jobs/robinhood-software-engineering-intern-android-summer-2027-ats-greenhouse-robinhood-8142961</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/robinhood-software-engineering-intern-android-summer-2027-ats-greenhouse-robinhood-8142961</guid>
+    <pubDate>Mon, 14 Sep 2026 12:00:09 GMT</pubDate>
+    <description>Company: Robinhood · Location: Menlo Park, CA; New York, NY · Duration: Winter 2027
+• Build android apps used by millions daily
+• Work with kotlin, retrofit, dagger, and room
+• Embedded on a real team with experienced engineers</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern, Web (Summer 2027) — Robinhood</title>
+    <link>https://interndoor.com/us/jobs/robinhood-software-engineering-intern-web-summer-2027-ats-greenhouse-robinhood-8142963</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/robinhood-software-engineering-intern-web-summer-2027-ats-greenhouse-robinhood-8142963</guid>
+    <pubDate>Mon, 14 Sep 2026 12:00:08 GMT</pubDate>
+    <description>Company: Robinhood · Location: Menlo Park, CA; New York, NY · Duration: Winter 2027
+• Build and test products for brokerage operations using React and TypeScript
+• Design frameworks and tools for web developers with Django and Go
+• Work in Menlo Park or New York with in-person attendance 3 days weekly</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern, Backend (Summer 2027) — Robinhood</title>
+    <link>https://interndoor.com/us/jobs/robinhood-software-engineering-intern-backend-summer-2027-ats-greenhouse-robinhood-8123225</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/robinhood-software-engineering-intern-backend-summer-2027-ats-greenhouse-robinhood-8123225</guid>
+    <pubDate>Mon, 14 Sep 2026 12:00:08 GMT</pubDate>
+    <description>Company: Robinhood · Location: Bellevue, WA; Menlo Park, CA; New York, NY · Duration: Winter 2027
+• Own backend projects from design to deployment
+• Work with Python/Django, Go, PostgreSQL, and AWS
+• Embedded on a team shaping financial platforms</description>
+  </item>
   <item>
     <title>Production Support Engineering Co-Op (Summer/Fall 2027) — Collins Aerospace</title>
     <link>https://interndoor.com/us/jobs/collins-aerospace-production-support-engineering-co-op-summer-fall-2027-4467068177</link>
@@ -150,16 +200,6 @@
 • Analyze clinical data and use Python Pandas and Matlab</description>
   </item>
   <item>
-    <title>Co-op – Software System Engineering – Plymouth, MN – January 2027 — Philips</title>
-    <link>https://interndoor.com/us/jobs/philips-co-op-software-system-engineering-plymouth-mn-january-2027-ats-workday-philips-wd3-jobs-and-careers-590406</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/philips-co-op-software-system-engineering-plymouth-mn-january-2027-ats-workday-philips-wd3-jobs-and-careers-590406</guid>
-    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: Philips · Location: Plymouth, Minnesota, United States · Duration: 6 months
-• Support system and software requirements for IVUS Clinical Imaging Software
-• Use systems engineering methods and tools for requirement management
-• Collaborate with cross-functional teams on design and user interaction models</description>
-  </item>
-  <item>
     <title>Intern – Software Engineering – Plymouth, MN – Summer 2027 — Philips</title>
     <link>https://interndoor.com/us/jobs/philips-intern-software-engineering-plymouth-mn-summer-2027-ats-workday-philips-wd3-jobs-and-careers-590403</link>
     <guid isPermaLink="true">https://interndoor.com/us/jobs/philips-intern-software-engineering-plymouth-mn-summer-2027-ats-workday-philips-wd3-jobs-and-careers-590403</guid>
@@ -168,6 +208,16 @@
 • Work on IVUS Clinical Imaging Application with experienced engineers
 • Use C++, Java, C#, Python in agile development environment
 • Present summer work to team at end of internship</description>
+  </item>
+  <item>
+    <title>Co-op – Software System Engineering – Plymouth, MN – January 2027 — Philips</title>
+    <link>https://interndoor.com/us/jobs/philips-co-op-software-system-engineering-plymouth-mn-january-2027-ats-workday-philips-wd3-jobs-and-careers-590406</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/philips-co-op-software-system-engineering-plymouth-mn-january-2027-ats-workday-philips-wd3-jobs-and-careers-590406</guid>
+    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Philips · Location: Plymouth, Minnesota, United States · Duration: 6 months
+• Support system and software requirements for IVUS Clinical Imaging Software
+• Use systems engineering methods and tools for requirement management
+• Collaborate with cross-functional teams on design and user interaction models</description>
   </item>
   <item>
     <title>Print Process Intern (Winter/Spring 2027) — Formlabs</title>
@@ -459,58 +509,6 @@
 • Develop and maintain software for warehouse automation systems
 • Work with TypeScript, C#, Java, and cloud platforms
 • Collaborate with cross-functional teams on production systems</description>
-  </item>
-  <item>
-    <title>Co-Op - Software Engineering — AutoStore Systems</title>
-    <link>https://interndoor.com/us/jobs/autostore-systems-co-op-software-engineering-ats-workday-autostore-wd3-autostore-jr102692</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/autostore-systems-co-op-software-engineering-ats-workday-autostore-wd3-autostore-jr102692</guid>
-    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: AutoStore Systems · Location: Atlanta, GA, USA
-• Write clean code and maintain software systems for warehouse automation
-• Work with TypeScript, C#, and cloud technologies in a cross-functional team
-• Contribute to APIs, telemetry, and observability in a 4-6 month role</description>
-  </item>
-  <item>
-    <title>Entry Level Electrical Engineer — AutoStore Systems</title>
-    <link>https://interndoor.com/us/jobs/autostore-systems-entry-level-electrical-engineer-ats-workday-autostore-wd3-autostore-jr102690</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/autostore-systems-entry-level-electrical-engineer-ats-workday-autostore-wd3-autostore-jr102690</guid>
-    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: AutoStore Systems · Location: Atlanta, GA, USA · Duration: 0-2 years
-• Design and test electrical systems for warehouse automation
-• Work with CAD tools and industrial control systems
-• Collaborate with cross-functional teams on product development</description>
-  </item>
-  <item>
-    <title>Co-Op - Electronics Engineering — AutoStore Systems</title>
-    <link>https://interndoor.com/us/jobs/autostore-systems-co-op-electronics-engineering-ats-workday-autostore-wd3-autostore-jr102695</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/autostore-systems-co-op-electronics-engineering-ats-workday-autostore-wd3-autostore-jr102695</guid>
-    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: AutoStore Systems · Location: Atlanta, GA, USA
-• Design and test electrical systems for warehouse automation
-• Work with engineers on controls, power systems, and safety
-• Collaborate on cross-functional projects with software and mechanical teams</description>
-  </item>
-  <item>
-    <title>Mechatronics Apprentice I — Amazon</title>
-    <link>https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/amazon-mechatronics-apprentice-i-4457533566</guid>
-    <pubDate>Sat, 12 Sep 2026 19:20:40 GMT</pubDate>
-    <description>Company: Amazon · Location: Dallas, TX
-• Maintain and repair automated packaging equipment
-• Use technical manuals for troubleshooting robotics systems
-• Perform preventative maintenance on conveyance systems
-• Work 12-hour shifts with physical demands up to 49lbs</description>
-  </item>
-  <item>
-    <title>System Integration Engineer Intern — Analog Devices</title>
-    <link>https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455008748</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/analog-devices-system-integration-engineer-intern-4455008748</guid>
-    <pubDate>Sat, 12 Sep 2026 18:40:51 GMT</pubDate>
-    <description>Company: Analog Devices · Location: Wilmington, MA
-• Test wearable hardware and debug embedded systems
-• Design PCBs and work with analog circuits
-• Collaborate on product features with engineering teams
-• Based in Wilmington, MA</description>
   </item>
 </channel>
 </rss>
