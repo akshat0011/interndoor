@@ -2637,7 +2637,115 @@ function eligibilityBlock(company, live) {
     </section>`;
 }
 
-export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], skillPages = new Set() } = {}) {
+/**
+ * Every posting an employer has run, each ONCE.
+ *
+ * `past` is publish's whole tracked history for the employer, and that history
+ * INCLUDES the rows that are live right now — so `[...jobs, ...past]` counted
+ * every open role twice. Siemens' India hub said "tracked 17" against 16 rows,
+ * one of them open. The live copy is kept because it carries the richer fields.
+ * Rows with no id (fixtures, old projections) are kept as they are.
+ */
+export function employerRows(jobs, past) {
+  const seen = new Set();
+  return [...(jobs ?? []), ...(past ?? [])].filter((j) => {
+    if (!j) return false;
+    if (j.id == null) return true;
+    const k = String(j.id);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+}
+
+/** Postings needed before a hiring record says anything; fewer is an anecdote. */
+export const RECORD_MIN_POSTINGS = 4;
+/** Boards the record is shown on. India first, his call on 14 Sep 2026. */
+const RECORD_REGIONS = new Set(['IN']);
+
+/** "2026-07" in the board's own time zone — the month a reader would name. */
+function monthKey(ms, region) {
+  return new Date(ms).toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', timeZone: region.timeZone }).slice(0, 7);
+}
+
+/**
+ * The hiring record — what this employer has actually done, counted.
+ *
+ * STEP 2 OF THE RESPONSE TO THE 11 SEP SEARCH DROP (CLAUDE.md): a hub earns its
+ * place in the index with facts no employer page and no copy of a listing
+ * carries. Three, each derived from the board's own history and each withheld
+ * rather than guessed:
+ *
+ *   - postings by month, zeros included, from the later of the employer's
+ *     first posting and the month the board began watching (`record.since`) to
+ *     the board's newest month (`record.until`) — a quiet August is an answer;
+ *   - how many postings stated pay, including "none of them", which is the
+ *     true and useful answer for most large employers here;
+ *   - where the employer sits among the board's employers, but only as a
+ *     coarse bucket, so one employer's new posting does not rewrite every hub.
+ *
+ * NO CLOCK. Every input is a stored date or a count, so two publishes of the
+ * same data are byte-identical; `until` moves once a month.
+ */
+export function hiringRecord(company, rows, region = DEFAULT_REGION, record = null) {
+  if (!record || !RECORD_REGIONS.has(region.code)) return '';
+  const n = rows.length;
+  if (n < RECORD_MIN_POSTINGS) return '';
+  const co = esc(company);
+
+  const dated = rows.map((j) => j.postedAt).filter(Boolean);
+  const firstKey = dated.length ? monthKey(Math.min(...dated), region) : null;
+  const sinceKey = record.since ? monthKey(record.since, region) : firstKey;
+  const untilKey = record.until ? monthKey(record.until, region) : (dated.length ? monthKey(Math.max(...dated), region) : null);
+  const startKey = firstKey && sinceKey ? (firstKey > sinceKey ? firstKey : sinceKey) : null;
+
+  const counts = new Map();
+  for (const ms of dated) {
+    const k = monthKey(ms, region);
+    if (startKey && k >= startKey && k <= untilKey) counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  const months = [];
+  if (startKey && untilKey && startKey <= untilKey) {
+    let [y, m] = startKey.split('-').map(Number);
+    for (let guard = 0; guard < 36; guard++) {
+      const k = `${y}-${String(m).padStart(2, '0')}`;
+      if (k > untilKey) break;
+      months.push(k);
+      m += 1; if (m > 12) { m = 1; y += 1; }
+    }
+  }
+  // Mid-month in UTC, so the label cannot slip a month in any time zone.
+  const label = (k) => monthLabel(Date.UTC(Number(k.slice(0, 4)), Number(k.slice(5, 7)) - 1, 15), region);
+
+  const stated = rows.filter((j) => stipendText(j)).length;
+  const pay = stated ? payRange(rows) : null;
+  const paySentence = stated === 0
+    ? `None of the ${n} ${co} postings we have tracked stated a stipend.`
+    : `${stated === n ? `All ${n}` : `${stated} of the ${n}`} ${co} postings we have tracked stated a stipend${pay ? `, ${pay.lo === pay.hi ? `of <b>${esc(pay.lo)}</b>` : `from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}` : ''}.`;
+
+  const where = region.inName;
+  /* `within` is how many employers have AT LEAST this many postings, itself
+     included — so twelve employers tied at the tenth-highest count cannot all
+     call themselves one of the ten most active. */
+  const rankSentence = record.within && record.of
+    ? (record.within <= 10
+      ? `${co} is one of the 10 most active employers of engineering interns we track ${esc(where)}, out of ${record.of}.`
+      : record.within <= Math.floor(record.of / 4)
+        ? `${co} is in the busiest quarter of the ${record.of} employers of engineering interns we track ${esc(where)}.`
+        : '')
+    : '';
+
+  if (!months.length) return '';
+  return `<section class="strip">
+      <div class="strip-head"><h2>${co}’s hiring record</h2></div>
+      <p class="cp-note">Every engineering internship ${co} has posted ${esc(where)} that we have tracked, counted by the month it was posted, from ${esc(label(months[0]))}.</p>
+      <dl class="cp-facts">${months.map((k) => `<div><dt>${esc(label(k))}${k === untilKey ? ' so far' : ''}</dt><dd>${counts.get(k) ?? 0}</dd></div>`).join('')}</dl>
+      <p class="cp-note">${paySentence}</p>
+      ${rankSentence ? `<p class="cp-note">${rankSentence}</p>` : ''}
+    </section>`;
+}
+
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], skillPages = new Set(), record = null } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
 
   /**
@@ -2692,7 +2800,8 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // The profile spans every posting we hold for this employer — the unfiltered
   // `jobs`, not `live`, because a role dropped by isIndexable for having one
   // bullet still told us a city, a skill list and an eligibility line.
-  const profile = companyProfile([...(jobs ?? []), ...(past ?? [])], region);
+  const allRows = employerRows(jobs, past);
+  const profile = companyProfile(allRows, region);
 
   // Indexable when there is something worth indexing. A hub with no live roles
   // and nothing to show behind them is exactly the thin page to keep out.
@@ -2834,6 +2943,8 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     ${eligibilityBlock(company, live)}
 
     ${profileSections(company, profile, region, { skipDegrees: true, lede })}
+
+    ${hiringRecord(company, allRows, region, record)}
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>
@@ -4141,6 +4252,22 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     (history ?? []).filter((p) => p.company), companyNames);
 
   const allCompanies = new Set([...byCompany.keys(), ...pastByCompany.keys()]);
+
+  /* The hiring record's board-wide inputs, computed once. `since` is the board's
+     first sighting of anything, `until` its newest posting; `within` counts
+     postings the same way the hub does (`employerRows`). */
+  const postingsOf = new Map([...allCompanies].map((c) => [c, employerRows(byCompany.get(c), pastByCompany.get(c)).length]));
+  const boardRows = [...jobs, ...(history ?? [])];
+  const since = boardRows.reduce((min, j) => (j.firstSeenAt && (!min || j.firstSeenAt < min) ? j.firstSeenAt : min), null);
+  const until = boardRows.reduce((max, j) => (j.postedAt && (!max || j.postedAt > max) ? j.postedAt : max), null);
+  const tallies = [...postingsOf.values()];
+  const recordFor = (company) => ({
+    since,
+    until,
+    within: tallies.filter((v) => v >= (postingsOf.get(company) ?? 0)).length,
+    of: allCompanies.size,
+  });
+
   for (const company of allCompanies) {
     const name = `${companySlug(company)}.html`;
     wanted.add(join(compDir, name));
@@ -4152,6 +4279,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
              `foreign` carries one entry per posting, not per region. */
           alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
           skillPages,
+          record: recordFor(company),
         })),
       `/companies/${companySlug(company)}`);
   }

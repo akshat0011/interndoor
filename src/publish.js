@@ -671,6 +671,11 @@ export async function writeJobsFile(store, cfg) {
       title: row.title,
       roleLabel: row.role_label ?? '',
       postedAt: row.posted_at || row.first_seen_at || 0,
+      /* When WE first saw it, as distinct from when it was posted. The hub's
+         hiring record starts its months at the board's first sighting, so an
+         old posting a new careers board handed us is not drawn as a July on
+         which we were not yet watching. */
+      firstSeenAt: row.first_seen_at || null,
       location: row.location || null,
       workplaceType: row.workplace_type || null,
       duration: row.duration || null,
