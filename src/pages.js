@@ -2660,8 +2660,54 @@ export function employerRows(jobs, past) {
 
 /** Postings needed before a hiring record says anything; fewer is an anecdote. */
 export const RECORD_MIN_POSTINGS = 4;
-/** Boards the record is shown on. India first, his call on 14 Sep 2026. */
-const RECORD_REGIONS = new Set(['IN']);
+/** Boards the record is shown on. India first, then the US — both his calls on 14 Sep 2026. */
+const RECORD_REGIONS = new Set(['IN', 'US']);
+
+/**
+ * The pay range across an employer's postings — STRICTER than `payRange`.
+ *
+ * `payRange` lets a figure with no period through and drops anything under
+ * 1,000, which is harmless across a handful of live India roles and wrong
+ * across a US employer's whole history: the live US board holds 1,072 hourly
+ * figures, 336 yearly and 758 with no period at all ("$60", "$37,000"), so a
+ * range over them would set an hourly rate against a salary. A range is quoted
+ * here only when EVERY stated figure names the same currency AND the same
+ * period; otherwise the record still counts who stated pay and quotes nothing.
+ */
+export function statedPayRange(rows) {
+  let cur = null;
+  let per = null;
+  const nums = [];
+  for (const j of rows ?? []) {
+    const s = stipendText(j);
+    if (!s) continue;
+    const sym = (s.match(/[₹$£€]/) ?? [])[0];
+    const p = (s.match(/\b(hour|hr|week|month|year|annum|annual)/i) ?? [])[1];
+    if (!sym || !p) return null;
+    const period = /^hr$|^hour$/i.test(p) ? 'hour' : /annum|annual/i.test(p) ? 'year' : p.toLowerCase();
+    if ((cur && sym !== cur) || (per && period !== per)) return null;
+    cur = sym;
+    per = period;
+    for (const m of s.matchAll(/\d[\d,]*(?:\.\d+)?/g)) {
+      const n = Number(m[0].replace(/,/g, ''));
+      if (Number.isFinite(n) && n > 0) nums.push(n);
+    }
+  }
+  if (!nums.length) return null;
+  const fmt = (n) => `${cur}${n.toLocaleString(cur === '₹' ? 'en-IN' : 'en-US', { maximumFractionDigits: 2 })}`;
+  nums.sort((a, b) => a - b);
+  /* THE MIDDLE HALF ONCE THERE ARE FIVE POSTINGS, not the extremes. IBM's 148
+     US postings with pay ran "$16,600 to $175,000 a year" end to end — one odd
+     figure setting each end of the only number a reader takes away. */
+  const spread = stated(rows) >= PAY_SPREAD_MIN;
+  const lo = spread ? nums[Math.floor((nums.length - 1) * 0.25)] : nums[0];
+  const hi = spread ? nums[Math.ceil((nums.length - 1) * 0.75)] : nums[nums.length - 1];
+  return { lo: fmt(lo), hi: fmt(hi), per: per === 'hour' ? 'an hour' : `a ${per}`, spread };
+}
+
+/** Postings with pay before the record quotes the middle half instead of the ends. */
+export const PAY_SPREAD_MIN = 5;
+const stated = (rows) => (rows ?? []).filter((j) => stipendText(j)).length;
 
 /** "2026-07" in the board's own time zone — the month a reader would name. */
 function monthKey(ms, region) {
@@ -2717,11 +2763,22 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
   // Mid-month in UTC, so the label cannot slip a month in any time zone.
   const label = (k) => monthLabel(Date.UTC(Number(k.slice(0, 4)), Number(k.slice(5, 7)) - 1, 15), region);
 
-  const stated = rows.filter((j) => stipendText(j)).length;
-  const pay = stated ? payRange(rows) : null;
-  const paySentence = stated === 0
-    ? `None of the ${n} ${co} postings we have tracked stated a stipend.`
-    : `${stated === n ? `All ${n}` : `${stated} of the ${n}`} ${co} postings we have tracked stated a stipend${pay ? `, ${pay.lo === pay.hi ? `of <b>${esc(pay.lo)}</b>` : `from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}` : ''}.`;
+  const paid = stated(rows);
+  const pay = paid ? statedPayRange(rows) : null;
+  // India says stipend; an American reader is paid, and "stipend" there means
+  // something smaller and different.
+  const payWord = region.code === 'IN' ? 'a stipend' : 'pay';
+  const payFigures = !pay ? ''
+    : pay.lo === pay.hi
+      ? (pay.spread
+        ? `; at least half of those figures are <b>${esc(pay.lo)}</b> ${pay.per}`
+        : `, of <b>${esc(pay.lo)}</b> ${pay.per}`)
+      : pay.spread
+        ? `; the middle half of those figures runs from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b> ${pay.per}`
+        : `, from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b> ${pay.per}`;
+  const paySentence = paid === 0
+    ? `None of the ${n} ${co} postings we have tracked stated ${payWord}.`
+    : `${paid === n ? `All ${n}` : `${paid} of the ${n}`} ${co} postings we have tracked stated ${payWord}${payFigures}.`;
 
   const where = region.inName;
   /* `within` is how many employers have AT LEAST this many postings, itself
@@ -2737,7 +2794,7 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
 
   if (!months.length) return '';
   return `<section class="strip">
-      <div class="strip-head"><h2>${co}’s hiring record</h2></div>
+      <div class="strip-head"><h2>${co} hiring record</h2></div>
       <p class="cp-note">Every engineering internship ${co} has posted ${esc(where)} that we have tracked, counted by the month it was posted, from ${esc(label(months[0]))}.</p>
       <dl class="cp-facts">${months.map((k) => `<div><dt>${esc(label(k))}${k === untilKey ? ' so far' : ''}</dt><dd>${counts.get(k) ?? 0}</dd></div>`).join('')}</dl>
       <p class="cp-note">${paySentence}</p>
