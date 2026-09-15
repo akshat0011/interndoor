@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/singlestore-software-engineer-new-grad-2027-ats-greenhouse-singlestore-8205389",
+      "url": "https://interndoor.com/us/jobs/singlestore-software-engineer-new-grad-2027-ats-greenhouse-singlestore-8205389",
+      "title": "Software Engineer-New Grad 2027 — SingleStore",
+      "content_text": "Company: SingleStore · Location: United States\n• Write, test, and deploy software for real-time database systems\n• Work on C++ and C projects with focus on performance and reliability\n• Collaborate across product, marketing, and sales teams in a fast-paced environment",
+      "date_published": "2026-09-15T21:37:06.000Z",
+      "authors": [
+        {
+          "name": "SingleStore"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/raytheon-production-test-engineering-intern-summer-2027-4467786985",
       "url": "https://interndoor.com/us/jobs/raytheon-production-test-engineering-intern-summer-2027-4467786985",
       "title": "Production Test Engineering Intern (Summer 2027) — Raytheon",
@@ -74,6 +86,30 @@
       "authors": [
         {
           "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/doordash-software-engineer-intern-summer-2027-us-ats-greenhouse-doordashusa-8171041",
+      "url": "https://interndoor.com/us/jobs/doordash-software-engineer-intern-summer-2027-us-ats-greenhouse-doordashusa-8171041",
+      "title": "Software Engineer, Intern (Summer 2027) - US — DoorDash",
+      "content_text": "Company: DoorDash · Location: New York, NY; San Francisco, CA; Sunnyvale, CA; Los Angeles, CA; Seattle, WA · Duration: 16 weeks\n• Develop, maintain, and ship technical features with mentorship\n• Work on scalable backend systems and real-time tech challenges\n• Collaborate on product improvements impacting millions of users",
+      "date_published": "2026-09-15T21:13:00.000Z",
+      "authors": [
+        {
+          "name": "DoorDash"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/doordash-software-engineer-i-entry-level-graduation-date-fall-2026-summer-2027--ats-greenhouse-doordashusa-8163709",
+      "url": "https://interndoor.com/us/jobs/doordash-software-engineer-i-entry-level-graduation-date-fall-2026-summer-2027--ats-greenhouse-doordashusa-8163709",
+      "title": "Software Engineer I, Entry-Level (Graduation Date: Fall 2026-Summer 2027) - US — DoorDash",
+      "content_text": "Company: DoorDash · Location: Los Angeles, CA; New York, NY; San Francisco, CA; Sunnyvale, CA; Seattle, WA · Duration: 16 weeks\n• Develop and maintain production-ready software with mentorship\n• Work on scalable systems impacting millions of users daily\n• Collaborate with global teams on cross-functional projects",
+      "date_published": "2026-09-15T21:13:00.000Z",
+      "authors": [
+        {
+          "name": "DoorDash"
         }
       ]
     },
@@ -563,42 +599,6 @@
       "title": "Winter 2027 PCB Layout Engineer Co-op — Anduril Industries",
       "content_text": "Company: Anduril Industries · Location: Costa Mesa, California, United States · Duration: 16-24 weeks\n• Design PCB layouts in Altium for test systems with mentor feedback\n• Create ECAD libraries and manage component footprints for active programs\n• Conduct stackup and impedance studies for high-speed interfaces",
       "date_published": "2026-09-15T17:38:03.000Z",
-      "authors": [
-        {
-          "name": "Anduril Industries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/datadog-research-science-intern-phd-ats-greenhouse-datadog-8203657",
-      "url": "https://interndoor.com/us/jobs/datadog-research-science-intern-phd-ats-greenhouse-datadog-8203657",
-      "title": "Research Science Intern (PhD) — Datadog",
-      "content_text": "Company: Datadog · Location: New York, New York, USA; Pittsburgh, Pennsylvania, USA\n• Own a research project from framing to publication with real-world impact\n• Collaborate with DAIR mentors and CMU advisors on cutting-edge AI systems\n• Access large-scale data and infrastructure for experimentation\n• Potential to see research deployed in production environments",
-      "date_published": "2026-09-15T17:36:39.000Z",
-      "authors": [
-        {
-          "name": "Datadog"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/anduril-industries-winter-2027-ewis-harness-engineer-co-op-ats-greenhouse-andurilindustries-5236577007",
-      "url": "https://interndoor.com/us/jobs/anduril-industries-winter-2027-ewis-harness-engineer-co-op-ats-greenhouse-andurilindustries-5236577007",
-      "title": "Winter 2027 EWIS Harness Engineer Co-op — Anduril Industries",
-      "content_text": "Company: Anduril Industries · Location: Costa Mesa, California, United States · Duration: 16-24 weeks\n• Design and fabricate harness systems, ensuring compliance with environmental and technical standards\n• Use Siemens NX and Capital Harness for 3D routing and 2D formboard drawings\n• Collaborate with cross-functional teams on electrical system requirements and risk mitigation",
-      "date_published": "2026-09-15T17:36:24.000Z",
-      "authors": [
-        {
-          "name": "Anduril Industries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/anduril-industries-winter-2027-electrical-engineer-co-op-ats-greenhouse-andurilindustries-5236565007",
-      "url": "https://interndoor.com/us/jobs/anduril-industries-winter-2027-electrical-engineer-co-op-ats-greenhouse-andurilindustries-5236565007",
-      "title": "Winter 2027 Electrical Engineer Co-op — Anduril Industries",
-      "content_text": "Company: Anduril Industries · Location: Costa Mesa, California, United States; Quincy, Massachusetts, United States · Duration: Winter 2027\n• Design electronics from concept to prototype, including PCB and system integration\n• Develop firmware for microcontrollers and embedded Linux systems\n• Collaborate with cross-functional teams on active projects and deployments",
-      "date_published": "2026-09-15T17:29:50.000Z",
       "authors": [
         {
           "name": "Anduril Industries"
