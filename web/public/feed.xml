@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 15 Sep 2026 06:07:46 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 07:30:52 GMT</lastBuildDate>
+  <item>
+    <title>Java Spring Boot Intern — Webknot Technologies</title>
+    <link>https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276</guid>
+    <pubDate>Tue, 15 Sep 2026 07:30:52 GMT</pubDate>
+    <description>Company: Webknot Technologies · Location: Bengaluru, Karnataka, India
+• Develop backend apps with Java and Spring Boot
+• Work with REST APIs, databases, and cloud tech
+• Contribute to microservices and event-driven systems</description>
+  </item>
+  <item>
+    <title>AI/ML Intern (Generative AI &amp; LLM) — Webknot Technologies</title>
+    <link>https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072</guid>
+    <pubDate>Tue, 15 Sep 2026 07:27:18 GMT</pubDate>
+    <description>Company: Webknot Technologies · Location: Bengaluru, Karnataka, India
+• Build AI/ML apps with Python, LLMs, and LangChain
+• Work with vector databases, embeddings, and RAG pipelines
+• Develop backend APIs and debug AI pipelines</description>
+  </item>
   <item>
     <title>Data Analyst Apprentice - 11 Months Contract — FE fundinfo</title>
     <link>https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4467483104</link>
@@ -478,26 +498,6 @@
 • Develop and test software components using Python and modern frameworks
 • Build and validate REST APIs and AI-powered solutions with LLMs and RAG
 • Design automated test frameworks and contribute to backend services with FastAPI</description>
-  </item>
-  <item>
-    <title>Apprentice Tech — Adobe</title>
-    <link>https://interndoor.com/jobs/adobe-apprentice-tech-4463891565</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/adobe-apprentice-tech-4463891565</guid>
-    <pubDate>Wed, 09 Sep 2026 16:47:38 GMT</pubDate>
-    <description>Company: Adobe · Location: Bengaluru East, Karnataka, India
-• Support product development with daily coding and testing
-• Work with React and TypeScript in a fast-moving team
-• Gain hands-on experience with AI-driven tools and platforms</description>
-  </item>
-  <item>
-    <title>Data and AI Engineering Intern — Electronic Arts (EA)</title>
-    <link>https://interndoor.com/jobs/electronic-arts-ea-data-and-ai-engineering-intern-4463038741</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/electronic-arts-ea-data-and-ai-engineering-intern-4463038741</guid>
-    <pubDate>Wed, 09 Sep 2026 15:29:41 GMT</pubDate>
-    <description>Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India
-• Build ai-assisted data solutions using python, sql, and llms
-• Develop etl pipelines, data models, and reusable data products
-• Collaborate with technical and business teams on ai projects</description>
   </item>
 </channel>
 </rss>
