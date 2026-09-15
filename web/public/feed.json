@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/osto-quality-assurance-intern-4466507987",
+      "url": "https://interndoor.com/jobs/osto-quality-assurance-intern-4466507987",
+      "title": "Quality Assurance Intern — osto",
+      "content_text": "Company: osto · Location: Gurugram, Haryana, India · Duration: 6 months\n• Write and execute test cases for web and desktop apps\n• Test across multiple browsers and OS versions\n• Document and track bugs with clear steps and severity\n• Collaborate with QA and engineering teams daily",
+      "date_published": "2026-09-15T13:37:13.553Z",
+      "authors": [
+        {
+          "name": "osto"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682",
+      "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682",
+      "title": "Graduate Trainee Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Bangalore Urban, Karnataka, India · Duration: 6 months\n• Assist in engineering tasks and project activities under supervision\n• Prepare engineering deliverables following siemens standards\n• Participate in team discussions and problem-solving efforts\n• Track work hours and meet task deadlines accurately",
+      "date_published": "2026-09-15T13:23:42.297Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356",
       "url": "https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356",
       "title": "Apprentice Integrity Engineer — Oceaneering",
@@ -254,18 +278,6 @@
       "authors": [
         {
           "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4464882802",
-      "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4464882802",
-      "title": "Graduate Trainee Engineer — Siemens",
-      "content_text": "Company: Siemens · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Assist in engineering tasks and project activities under supervision\n• Prepare engineering documents and perform quality checks\n• Participate in team discussions and problem-solving efforts\n• Track work hours and meet project deadlines",
-      "date_published": "2026-09-11T16:28:56.519Z",
-      "authors": [
-        {
-          "name": "Siemens"
         }
       ]
     },
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-ats-workday-iqvia-wd1-iqvia-r1565428",
-      "url": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-ats-workday-iqvia-wd1-iqvia-r1565428",
-      "title": "Product Sppt Trainee — IQVIA",
-      "content_text": "Company: IQVIA · Location: Kochi, India · Duration: 0-1 years\n• Fix production issues and resolve system errors in mainframe environments\n• Use jcl, cobol, esp, rexx for process automation and reporting\n• Support 24x7 production with root cause analysis and abend resolution",
-      "date_published": "2026-09-10T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     }
