@@ -886,6 +886,27 @@
       "aliases": [
         "OSTO Cybersecurity"
       ]
+    },
+    {
+      "name": "OLX India"
+    },
+    {
+      "name": "Muks Robotics"
+    },
+    {
+      "name": "Vidyalai"
+    },
+    {
+      "name": "Grexa AI"
+    },
+    {
+      "name": "Reveation Labs"
+    },
+    {
+      "name": "LaunchTrax"
+    },
+    {
+      "name": "Instawork"
     }
   ],
   "_acronym_alias_note": "A watchlist term under 4 characters can only ever match EXACTLY, because matchCompany refuses to substring-match short terms (that guard is what stops 'Navi' matching every company with Navi Mumbai in its name). So an acronym-only entry never fires against the full name LinkedIn actually shows. 'HPE' was on the list the whole time while 'Hewlett Packard Enterprise' was dropped 10 times as off-watchlist. Same for GE Vernova, PwC Acceleration Center India and JSW Steel. If you add an acronym, add the spelled-out name as an alias too.",
