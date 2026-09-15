@@ -166,6 +166,16 @@
       "source": "/Locations/:path*",
       "destination": "/locations/:path*",
       "permanent": true
+    },
+    {
+      "source": "/us/companies/boeing-india",
+      "destination": "/us/companies/boeing",
+      "permanent": true
+    },
+    {
+      "source": "/uk/companies/boeing-india",
+      "destination": "/uk/companies/boeing",
+      "permanent": true
     }
   ]
 }
