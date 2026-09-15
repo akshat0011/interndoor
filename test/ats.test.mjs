@@ -73,6 +73,10 @@ check('myworkdaysite.com', wd('https://acme.wd3.myworkdaysite.com/en-US/Careers'
 check('en-US locale skipped', wd('https://acme.wd1.myworkdayjobs.com/en-US/Global'), 'workday:acme:wd1:Global');
 check('en_US locale skipped', wd('https://acme.wd1.myworkdayjobs.com/en_US/Global'), 'workday:acme:wd1:Global');
 check('no locale', wd('https://travelers.wd5.myworkdayjobs.com/External'), 'workday:travelers:wd5:External');
+check('bare en locale — Axalta', wd('https://axalta.wd1.myworkdayjobs.com/en/Axalta/job/Savli/Technology-Trainee_2024-9485?source=LinkedIn'), 'workday:axalta:wd1:Axalta');
+check('two letters followed by job ARE the site', wd('https://veradigm.wd12.myworkdayjobs.com/vr/job/Remote/x_R1'), 'workday:veradigm:wd12:vr');
+check('a numeric site is untouched — Citi', wd('https://citi.wd5.myworkdayjobs.com/2/job/Tampa/x_1'), 'workday:citi:wd5:2');
+check('en-US still skipped with a site after it', wd('https://acme.wd1.myworkdayjobs.com/en-US/Global/job/x'), 'workday:acme:wd1:Global');
 
 console.log('\n== the other providers still parse ==');
 check('greenhouse', wd('https://boards.greenhouse.io/cloudflare'), 'greenhouse:cloudflare');
