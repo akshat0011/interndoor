@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4466163680",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4466163680",
+      "title": "Intern – Software Development and Testing — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India\n• Assist with programming, testing, and documentation for software tools using MATLAB, Python, and Git\n• Help improve CI/CD pipelines and automate build processes for reliable software delivery\n• Collaborate with engineers on controller validation and data analysis reports\n• Based in Bengaluru",
+      "date_published": "2026-09-15T04:59:46.114Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/axalta-technology-trainee-4336951115",
       "url": "https://interndoor.com/jobs/axalta-technology-trainee-4336951115",
       "title": "Technology Trainee — Axalta",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Electronic Arts (EA)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-healthcare-intern-4465035982",
-      "url": "https://interndoor.com/jobs/ge-healthcare-intern-4465035982",
-      "title": "Intern — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Bengaluru, Karnataka, India\n• Work on next gen compute platform projects\n• Use software development tools and technologies\n• Work in ge healthcare premises with global team",
-      "date_published": "2026-09-09T13:28:49.582Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
         }
       ]
     }
