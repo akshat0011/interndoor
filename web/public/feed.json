@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/coding-ninjas-digital-marketing-and-ai-intern-curriculum-and-content-4466509446",
+      "url": "https://interndoor.com/jobs/coding-ninjas-digital-marketing-and-ai-intern-curriculum-and-content-4466509446",
+      "title": "Digital Marketing & AI Intern – Curriculum & Content — Coding Ninjas",
+      "content_text": "Company: Coding Ninjas · Location: Gurugram, Haryana, India\n• Create curriculum and content blending digital marketing with AI tools\n• Research and simplify complex marketing and AI concepts\n• Build prompt libraries and automate marketing workflows",
+      "date_published": "2026-09-15T10:35:36.118Z",
+      "authors": [
+        {
+          "name": "Coding Ninjas"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276",
       "url": "https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276",
       "title": "Java Spring Boot Intern — Webknot Technologies",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Bajaj Finserv"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4463882673",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4463882673",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Gurugram, Haryana, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services\n• Collaborate with global teams on Agile projects and cloud-native development",
-      "date_published": "2026-09-09T16:49:44.299Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     }
