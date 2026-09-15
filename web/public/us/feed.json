@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/dell-technologies-product-and-application-security-intern-undergraduate-intern-4466196073",
+      "url": "https://interndoor.com/us/jobs/dell-technologies-product-and-application-security-intern-undergraduate-intern-4466196073",
+      "title": "Product & Application Security Intern Undergraduate Intern — Dell Technologies",
+      "content_text": "Company: Dell Technologies · Location: Round Rock, TX\n• Support product vulnerability response and secure software development\n• Work with global cybersecurity teams and real-world security reports\n• Receive mentorship, structured learning, and showcase project impact",
+      "date_published": "2026-09-15T08:22:18.998Z",
+      "authors": [
+        {
+          "name": "Dell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dell-technologies-cybersecurity-undergraduate-intern-4466193098",
+      "url": "https://interndoor.com/us/jobs/dell-technologies-cybersecurity-undergraduate-intern-4466193098",
+      "title": "Cybersecurity Undergraduate Intern — Dell Technologies",
+      "content_text": "Company: Dell Technologies · Location: Round Rock, TX\n• Analyze security risks and contribute to real-world projects\n• Work with global teams and receive mentorship\n• Participate in structured learning and showcase projects",
+      "date_published": "2026-09-15T08:21:56.261Z",
+      "authors": [
+        {
+          "name": "Dell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dell-technologies-global-marketing-graduate-ai-and-data-intern-4466196072",
+      "url": "https://interndoor.com/us/jobs/dell-technologies-global-marketing-graduate-ai-and-data-intern-4466196072",
+      "title": "Global Marketing Graduate AI & Data Intern — Dell Technologies",
+      "content_text": "Company: Dell Technologies · Location: Round Rock, TX\n• Build models to analyze customer behavior and market trends\n• Use python and sql to process large datasets\n• Work with cross-functional teams on marketing strategies",
+      "date_published": "2026-09-15T08:21:23.477Z",
+      "authors": [
+        {
+          "name": "Dell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dell-technologies-isg-hardware-engineering-undergrad-internship-4466179997",
+      "url": "https://interndoor.com/us/jobs/dell-technologies-isg-hardware-engineering-undergrad-internship-4466179997",
+      "title": "ISG Hardware Engineering Undergrad Internship — Dell Technologies",
+      "content_text": "Company: Dell Technologies · Location: Round Rock, TX\n• Design and develop hardware and software for enterprise infrastructure\n• Work with AI tools to accelerate product development and testing\n• Collaborate on cutting-edge solutions for data management and computational workloads",
+      "date_published": "2026-09-15T08:21:19.359Z",
+      "authors": [
+        {
+          "name": "Dell Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ulta-beauty-intern-cybersecurity-data-privacy-and-security-awareness-4467487060",
       "url": "https://interndoor.com/us/jobs/ulta-beauty-intern-cybersecurity-data-privacy-and-security-awareness-4467487060",
       "title": "Intern, Cybersecurity (Data Privacy & Security Awareness) — Ulta Beauty",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Superhuman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/superhuman-software-engineering-intern-summer-2027-4465280022",
-      "url": "https://interndoor.com/us/jobs/superhuman-software-engineering-intern-summer-2027-4465280022",
-      "title": "Software Engineering Intern - Summer 2027 — Superhuman",
-      "content_text": "Company: Superhuman · Location: New York, NY · Duration: Summer 2027\n• Ship code within first few weeks\n• Work with Java, TypeScript, JavaScript, C#, Python, Go\n• Collaborate with mentor on full project",
-      "date_published": "2026-09-15T01:40:04.247Z",
-      "authors": [
-        {
-          "name": "Superhuman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/superhuman-software-engineering-intern-summer-2027-4465271194",
-      "url": "https://interndoor.com/us/jobs/superhuman-software-engineering-intern-summer-2027-4465271194",
-      "title": "Software Engineering Intern - Summer 2027 — Superhuman",
-      "content_text": "Company: Superhuman · Location: San Francisco, CA · Duration: Summer 2027\n• Ship code within first few weeks\n• Work with Java, TypeScript, JavaScript, C#, Python, Go\n• Collaborate with mentor on full project",
-      "date_published": "2026-09-15T01:39:41.702Z",
-      "authors": [
-        {
-          "name": "Superhuman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-integration-engineer-factory-firmware-winter-sprin-4467442047",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-integration-engineer-factory-firmware-winter-sprin-4467442047",
-      "title": "Internship, Software Integration Engineer, Factory Firmware (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Debug hardware and software interactions during product launches\n• Build tools to diagnose vehicle and bot system issues\n• Develop testing infrastructure for factory automation\n• Work on software integration for manufacturing efficiency",
-      "date_published": "2026-09-15T01:32:20.849Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-field-quality-engineer-energy-engineering-winter-spring-202-4467433179",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-field-quality-engineer-energy-engineering-winter-spring-202-4467433179",
-      "title": "Internship, Field Quality Engineer, Energy Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Analyze field data to identify and resolve product issues\n• Work with engineering teams to improve quality and reliability\n• Collaborate on cross-functional projects with service and suppliers",
-      "date_published": "2026-09-15T01:31:48.862Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
