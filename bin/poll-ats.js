@@ -18,7 +18,7 @@
  */
 import { loadConfig, matchCompany, matchTitle } from '../src/config.js';
 import { Store } from '../src/store.js';
-import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS, isWorkplaceType } from '../src/ats.js';
+import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS, isWorkplaceType, postingCompany } from '../src/ats.js';
 import { classifyRole } from '../src/roles.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType } from '../src/extract.js';
 import { resolveRegion, collectsRegion, UNKNOWN } from '../src/regions.js';
@@ -281,7 +281,9 @@ async function pollOne(board) {
     const isNew = store.upsertJob({
       jobId,
       title: j.title,
-      company: board.company,
+      // Not board.company: a global board filed under an India watchlist name
+      // must not publish a Farnborough role as "Boeing India". See postingCompany.
+      company: postingCompany(board.company, region),
       companyMatched: matchCompany(board.company, cfg.watchlist) ?? board.company,
       location: j.location,
       workplaceType: j.remote || extractWorkplaceType(j.location),

@@ -57,7 +57,7 @@ console.log('\n== when it appears ==');
   check('the US board: shown', hiringRecord('Acme', four, US, RECORD).includes('hiring record'), true);
   check('the UK board: shown', hiringRecord('Acme', four, regionOf('GB'), RECORD).includes('hiring record'), true);
   check('the UK says pay, and "in the UK"',
-    /None of the 4 Acme postings we have tracked stated pay\. /.test(text(hiringRecord('Acme', four, regionOf('GB'), { ...RECORD, within: 3, of: 26 })) + ' ')
+    /None of the 4 Acme internships we have tracked stated pay\. /.test(text(hiringRecord('Acme', four, regionOf('GB'), { ...RECORD, within: 3, of: 26 })) + ' ')
     && /10 most active employers of engineering interns we track in the UK, out of 26/.test(text(hiringRecord('Acme', four, regionOf('GB'), { ...RECORD, within: 3, of: 26 }))), true);
   check('the heading takes no possessive — "L3Harris Technologies’s" read badly',
     /<h2>L3Harris Technologies hiring record<\/h2>/.test(hiringRecord('L3Harris Technologies', four, US, RECORD)), true);
@@ -96,22 +96,22 @@ console.log('\n== pay ==');
 {
   const base = [row('1', '2026-08-03T06:00:00Z'), row('2', '2026-08-04T06:00:00Z'), row('3', '2026-09-02T06:00:00Z'), row('4', '2026-09-03T06:00:00Z')];
   check('none stated says so, with the count',
-    /None of the 4 Acme postings we have tracked stated a stipend\./.test(text(hiringRecord('Acme', base, IN, RECORD))), true);
+    /None of the 4 Acme internships we have tracked stated a stipend\./.test(text(hiringRecord('Acme', base, IN, RECORD))), true);
   const some = base.map((r, i) => (i < 2 ? { ...r, stipend: i ? '₹20,000 / month' : '₹10,000 / month' } : r));
   const s = text(hiringRecord('Acme', some, IN, RECORD));
-  check('some stated: how many of how many', /2 of the 4 Acme postings/.test(s), true);
+  check('some stated: how many of how many', /2 of the 4 Acme internships/.test(s), true);
   check('and the range across them', /from ₹10,000 to ₹20,000/.test(s), true);
   const all = base.map((r) => ({ ...r, stipend: '₹15,000 / month' }));
-  check('all stated, one figure, with its period', /All 4 Acme postings we have tracked stated a stipend, of ₹15,000 a month\./.test(text(hiringRecord('Acme', all, IN, RECORD))), true);
+  check('all stated, one figure, with its period', /All 4 Acme internships we have tracked stated a stipend, of ₹15,000 a month\./.test(text(hiringRecord('Acme', all, IN, RECORD))), true);
 
   /* The US board, measured 14 Sep 2026: 1,072 hourly figures, 336 yearly, 758
      with no period at all. A range may only be drawn across one currency and one
      period, or it sets an hourly rate against a salary. */
   const us = (stipends) => base.map((r, i) => (stipends[i] ? { ...r, stipend: stipends[i] } : r));
   check('the US says pay, not stipend',
-    /None of the 4 Acme postings we have tracked stated pay\./.test(text(hiringRecord('Acme', base, US, RECORD))), true);
+    /None of the 4 Acme internships we have tracked stated pay\./.test(text(hiringRecord('Acme', base, US, RECORD))), true);
   const hourly = text(hiringRecord('Acme', us(['$25 / hour', '$30 / hour']), US, RECORD));
-  check('an hourly range reads per hour', /2 of the 4 Acme postings we have tracked stated pay, from \$25 to \$30 an hour\./.test(hourly), true);
+  check('an hourly range reads per hour', /2 of the 4 Acme internships we have tracked stated pay, from \$25 to \$30 an hour\./.test(hourly), true);
   check('hourly figures under 1,000 are not thrown away', statedPayRange(us(['$25 / hour']))?.lo, '$25');
   check('hourly beside yearly: counted, no range', text(hiringRecord('Acme', us(['$25 / hour', '$80,000 / year']), US, RECORD)).includes('stated pay.'), true);
   check('a figure with no period: counted, no range', statedPayRange(us(['$25 / hour', '$60'])), null);
@@ -131,7 +131,7 @@ console.log('\n== pay ==');
   check('and the extremes are not quoted', /16,600|175,000/.test(m), false);
   const flat = [1, 2, 3, 4, 5].map((i) => row(String(i), `2026-08-0${i}T06:00:00Z`, { stipend: '$40 / hour' }));
   check('a middle half that is one figure says so plainly',
-    /All 5 Acme postings we have tracked stated pay; at least half of those figures are \$40 an hour\./.test(text(hiringRecord('Acme', flat, US, RECORD))), true);
+    /All 5 Acme internships we have tracked stated pay; at least half of those figures are \$40 an hour\./.test(text(hiringRecord('Acme', flat, US, RECORD))), true);
   check('exactly five is already the middle half',/middle half/.test(text(hiringRecord('Acme', many.slice(0, 5), US, RECORD))), true);
   check('with four, the ends are the range', /from \$62,000 to \$65,000 a year/.test(text(hiringRecord('Acme', many.slice(1, 5), US, RECORD))), true);
 }
@@ -176,6 +176,51 @@ console.log('\n== wired into the board render ==');
     rmSync(dir, { recursive: true, force: true });
     rmSync(again, { recursive: true, force: true });
   }
+}
+
+console.log('\n== full-time graduate roles are never counted as internships ==');
+{
+  /* Jump Trading UK, 15 Sep 2026: "tracked 16 engineering internships", six of
+     them "Campus … (Full-Time)", which the board files under its Full-time tab. */
+  const GB = regionOf('GB');
+  const intern = (id, d, over = {}) => row(id, d, { company: 'Jump Trading', bullets: ['x', 'y'], employmentType: 'intern', ...over });
+  const ft = (id, d, over = {}) => row(id, d, { company: 'Jump Trading', title: `Campus Role ${id} (Full-Time)`, bullets: ['x', 'y'], employmentType: 'fulltime', ...over });
+  const past = [intern('1', '2026-08-03T06:00:00Z'), intern('2', '2026-08-04T06:00:00Z'), intern('3', '2026-08-05T06:00:00Z'),
+    intern('4', '2026-09-02T06:00:00Z'), ft('5', '2026-08-23T06:00:00Z'), ft('6', '2026-08-24T06:00:00Z')];
+
+  const rec = text(hiringRecord('Jump Trading', past.filter((j) => j.employmentType === 'intern'), GB, RECORD, { fullTime: 2 }));
+  check('the record names the full-time roles it left out', /Jump Trading also posted 2 full-time graduate roles in this time\. They are not internships/.test(rec), true);
+  check('and says nothing of them when there are none', /full-time/.test(text(hiringRecord('Jump Trading', past.slice(0, 4), GB, RECORD))), false);
+
+  const live = [intern('4', '2026-09-02T06:00:00Z'), ft('7', '2026-09-03T06:00:00Z')];
+  const hub = renderCompanyPage('Jump Trading', live, past, '', { region: GB, record: RECORD });
+  const t = text(hub);
+  check('the lede counts internships as internships and names the rest',
+    /tracked 4 engineering internships and 3 full-time graduate roles at Jump Trading/.test(t), true);
+  check('the record inside the hub is internships only, with the full-time line',
+    /Aug 2026 3 Sept? 2026 so far 1 None of the 4 Jump Trading internships/.test(t) && /also posted 3 full-time graduate roles/.test(t), true);
+  check('the answer line splits a mixed live set',
+    /One engineering internship is open, plus one full-time graduate role/.test(t), true);
+  check('the pill does not call the full-time role an internship', /2 roles open now/.test(t), true);
+  check('the meta description splits them too',
+    /content="1 live Jump Trading internship and 1 full-time graduate role in the UK/.test(hub), true);
+  check('the full-time card is labelled', /Full-time graduate role/.test(hub.slice(hub.indexOf('id="open"'))), true);
+
+  const onlyFt = text(renderCompanyPage('Jump Trading', [ft('7', '2026-09-03T06:00:00Z')], past, '', { region: GB, record: RECORD }));
+  check('an employer with only full-time roles open is not "hiring interns"', /is hiring graduates in the UK right now, but not interns/.test(onlyFt), true);
+  check('and never says it is', /is hiring interns/.test(onlyFt), false);
+
+  /* The board-wide standing counts internships too, or a graduate-heavy
+     employer outranks one that actually takes interns. */
+  const src = readFileSync(new URL('../src/pages.js', import.meta.url), 'utf8');
+  check('the standing counts internships only',
+    /employerRows\(byCompany\.get\(c\), pastByCompany\.get\(c\)\)\.filter\(\(j\) => !isFullTimeRole\(j\)\)\.length/.test(src), true);
+
+  const JP = await import('../src/pages.js');
+  const page = JP.renderJobPage({ id: 'ats:greenhouse:jump:1', company: 'Jump Trading', title: 'Campus Quantitative Trader (Full-Time)', employmentType: 'fulltime', bullets: ['x', 'y'], postedAt: at('2026-09-01T00:00:00Z'), url: 'https://example.com/j' }, [], { region: GB });
+  check('a full-time job page\'s advice speaks of early-career roles', /Early-career roles in the UK often collect/.test(page), true);
+  const ipage = JP.renderJobPage({ id: 'ats:greenhouse:jump:2', company: 'Jump Trading', title: 'Quant Intern', employmentType: 'intern', bullets: ['x', 'y'], postedAt: at('2026-09-01T00:00:00Z'), url: 'https://example.com/j' }, [], { region: GB });
+  check('an internship\'s still speaks of internships', /Internships in the UK often collect/.test(ipage), true);
 }
 
 console.log('\n== the history projection carries what the record needs ==');

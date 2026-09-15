@@ -14,6 +14,7 @@ import { submitUrls, indexNowConfigured } from './indexnow.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
 import { applyJobEdits } from './owner.js';
+import { fullTimeWording, FULL_TIME } from './employment.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -92,7 +93,9 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     applicants: row.applicants || null,
     easyApply: !!row.easy_apply,
     skills: row.skills || [],
-    summary: row.summary || null,
+    // A full-time role's stored summary was written by a prompt that called
+    // every posting an internship; see fullTimeWording.
+    summary: (row.employment_type === FULL_TIME ? fullTimeWording(row.summary) : row.summary) || null,
     // Gemini enrichment. bullets is the card's primary body; an empty array means
     // the posting has not been enriched yet and the card falls back to summary.
     bullets: parseJsonArray(row.bullets),
@@ -676,6 +679,10 @@ export async function writeJobsFile(store, cfg) {
          old posting a new careers board handed us is not drawn as a July on
          which we were not yet watching. */
       firstSeenAt: row.first_seen_at || null,
+      /* So a hub can tell an internship from a full-time graduate role in its
+         history. Without it Jump Trading's UK hub counted six "Campus …
+         (Full-Time)" roles among its "engineering internships". */
+      employmentType: row.employment_type || 'intern',
       location: row.location || null,
       workplaceType: row.workplace_type || null,
       duration: row.duration || null,

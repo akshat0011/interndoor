@@ -616,7 +616,9 @@ export class Store {
       -- names the city in it. Without it the model was told "not stated" and
       -- filled the gap from the company name: an American Express apprenticeship
       -- in Gurugram was published as "Based in the us".
-      SELECT job_id, title, company, location, description, salary_text AS stipend
+      -- employment_type for the same reason: told nothing, the enricher called
+      -- every early-career FULL-TIME role "this internship".
+      SELECT job_id, title, company, location, description, salary_text AS stipend, employment_type
       FROM jobs
       WHERE bullets IS NULL AND length(description) > 200
       ORDER BY ${priority} first_seen_at DESC
