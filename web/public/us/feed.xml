@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 15 Sep 2026 21:19:49 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 21:37:06 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer-New Grad 2027 — SingleStore</title>
+    <link>https://interndoor.com/us/jobs/singlestore-software-engineer-new-grad-2027-ats-greenhouse-singlestore-8205389</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/singlestore-software-engineer-new-grad-2027-ats-greenhouse-singlestore-8205389</guid>
+    <pubDate>Tue, 15 Sep 2026 21:37:06 GMT</pubDate>
+    <description>Company: SingleStore · Location: United States
+• Write, test, and deploy software for real-time database systems
+• Work on C++ and C projects with focus on performance and reliability
+• Collaborate across product, marketing, and sales teams in a fast-paced environment</description>
+  </item>
   <item>
     <title>Production Test Engineering Intern (Summer 2027) — Raytheon</title>
     <link>https://interndoor.com/us/jobs/raytheon-production-test-engineering-intern-summer-2027-4467786985</link>
@@ -66,6 +76,26 @@
 • Develop full-stack applications using Python and JavaScript/TypeScript
 • Design and integrate APIs, backend services, and observability metrics
 • Contribute to CI/CD pipelines and Agile development teams</description>
+  </item>
+  <item>
+    <title>Software Engineer, Intern (Summer 2027) - US — DoorDash</title>
+    <link>https://interndoor.com/us/jobs/doordash-software-engineer-intern-summer-2027-us-ats-greenhouse-doordashusa-8171041</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/doordash-software-engineer-intern-summer-2027-us-ats-greenhouse-doordashusa-8171041</guid>
+    <pubDate>Tue, 15 Sep 2026 21:13:00 GMT</pubDate>
+    <description>Company: DoorDash · Location: New York, NY; San Francisco, CA; Sunnyvale, CA; Los Angeles, CA; Seattle, WA · Duration: 16 weeks
+• Develop, maintain, and ship technical features with mentorship
+• Work on scalable backend systems and real-time tech challenges
+• Collaborate on product improvements impacting millions of users</description>
+  </item>
+  <item>
+    <title>Software Engineer I, Entry-Level (Graduation Date: Fall 2026-Summer 2027) - US — DoorDash</title>
+    <link>https://interndoor.com/us/jobs/doordash-software-engineer-i-entry-level-graduation-date-fall-2026-summer-2027--ats-greenhouse-doordashusa-8163709</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/doordash-software-engineer-i-entry-level-graduation-date-fall-2026-summer-2027--ats-greenhouse-doordashusa-8163709</guid>
+    <pubDate>Tue, 15 Sep 2026 21:13:00 GMT</pubDate>
+    <description>Company: DoorDash · Location: Los Angeles, CA; New York, NY; San Francisco, CA; Sunnyvale, CA; Seattle, WA · Duration: 16 weeks
+• Develop and maintain production-ready software with mentorship
+• Work on scalable systems impacting millions of users daily
+• Collaborate with global teams on cross-functional projects</description>
   </item>
   <item>
     <title>RS Operational AI Analyst Intern — SS&amp;C Technologies</title>
@@ -477,37 +507,6 @@
 • Design PCB layouts in Altium for test systems with mentor feedback
 • Create ECAD libraries and manage component footprints for active programs
 • Conduct stackup and impedance studies for high-speed interfaces</description>
-  </item>
-  <item>
-    <title>Research Science Intern (PhD) — Datadog</title>
-    <link>https://interndoor.com/us/jobs/datadog-research-science-intern-phd-ats-greenhouse-datadog-8203657</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/datadog-research-science-intern-phd-ats-greenhouse-datadog-8203657</guid>
-    <pubDate>Tue, 15 Sep 2026 17:36:39 GMT</pubDate>
-    <description>Company: Datadog · Location: New York, New York, USA; Pittsburgh, Pennsylvania, USA
-• Own a research project from framing to publication with real-world impact
-• Collaborate with DAIR mentors and CMU advisors on cutting-edge AI systems
-• Access large-scale data and infrastructure for experimentation
-• Potential to see research deployed in production environments</description>
-  </item>
-  <item>
-    <title>Winter 2027 EWIS Harness Engineer Co-op — Anduril Industries</title>
-    <link>https://interndoor.com/us/jobs/anduril-industries-winter-2027-ewis-harness-engineer-co-op-ats-greenhouse-andurilindustries-5236577007</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/anduril-industries-winter-2027-ewis-harness-engineer-co-op-ats-greenhouse-andurilindustries-5236577007</guid>
-    <pubDate>Tue, 15 Sep 2026 17:36:24 GMT</pubDate>
-    <description>Company: Anduril Industries · Location: Costa Mesa, California, United States · Duration: 16-24 weeks
-• Design and fabricate harness systems, ensuring compliance with environmental and technical standards
-• Use Siemens NX and Capital Harness for 3D routing and 2D formboard drawings
-• Collaborate with cross-functional teams on electrical system requirements and risk mitigation</description>
-  </item>
-  <item>
-    <title>Winter 2027 Electrical Engineer Co-op — Anduril Industries</title>
-    <link>https://interndoor.com/us/jobs/anduril-industries-winter-2027-electrical-engineer-co-op-ats-greenhouse-andurilindustries-5236565007</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/anduril-industries-winter-2027-electrical-engineer-co-op-ats-greenhouse-andurilindustries-5236565007</guid>
-    <pubDate>Tue, 15 Sep 2026 17:29:50 GMT</pubDate>
-    <description>Company: Anduril Industries · Location: Costa Mesa, California, United States; Quincy, Massachusetts, United States · Duration: Winter 2027
-• Design electronics from concept to prototype, including PCB and system integration
-• Develop firmware for microcontrollers and embedded Linux systems
-• Collaborate with cross-functional teams on active projects and deployments</description>
   </item>
 </channel>
 </rss>
