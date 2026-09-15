@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 15 Sep 2026 13:37:13 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 16:33:24 GMT</lastBuildDate>
+  <item>
+    <title>AI Software Intern / Trainee - Pune, India — Panasonic Avionics Corporation</title>
+    <link>https://interndoor.com/jobs/panasonic-avionics-corporation-ai-software-intern-trainee-pune-india-4466557018</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/panasonic-avionics-corporation-ai-software-intern-trainee-pune-india-4466557018</guid>
+    <pubDate>Tue, 15 Sep 2026 16:33:24 GMT</pubDate>
+    <description>Company: Panasonic Avionics Corporation · Location: Pune Division, Maharashtra, India
+• Develop AI applications using RAG, conversational AI, and backend APIs on AWS
+• Work on real production AI solutions with mentorship from senior engineers
+• Contribute to MLOps workflows and CI/CD processes on AWS services</description>
+  </item>
+  <item>
+    <title>Graduate Trainee Engineer — Siemens</title>
+    <link>https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4466554100</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4466554100</guid>
+    <pubDate>Tue, 15 Sep 2026 16:31:29 GMT</pubDate>
+    <description>Company: Siemens · Location: Bengaluru, Karnataka, India · Duration: 6 months
+• Assist in engineering tasks and project activities under supervision
+• Prepare engineering deliverables following Siemens standards
+• Participate in team discussions and problem-solving efforts
+• Track work hours and communicate task progress regularly</description>
+  </item>
+  <item>
+    <title>Graduate Apprentice Trainee — Volvo Group</title>
+    <link>https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-4466528988</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-4466528988</guid>
+    <pubDate>Tue, 15 Sep 2026 16:21:34 GMT</pubDate>
+    <description>Company: Volvo Group · Location: Bengaluru, Karnataka, India
+• Support design and development activities on engineering teams
+• Work with cad tools like creo and solidworks
+• Collaborate on product improvements and technical reviews</description>
+  </item>
   <item>
     <title>Quality Assurance Intern — osto</title>
     <link>https://interndoor.com/jobs/osto-quality-assurance-intern-4466507987</link>
@@ -17,17 +48,6 @@
 • Test across multiple browsers and OS versions
 • Document and track bugs with clear steps and severity
 • Collaborate with QA and engineering teams daily</description>
-  </item>
-  <item>
-    <title>Graduate Trainee Engineer — Siemens</title>
-    <link>https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682</guid>
-    <pubDate>Tue, 15 Sep 2026 13:23:42 GMT</pubDate>
-    <description>Company: Siemens · Location: Bangalore Urban, Karnataka, India · Duration: 6 months
-• Assist in engineering tasks and project activities under supervision
-• Prepare engineering deliverables following siemens standards
-• Participate in team discussions and problem-solving efforts
-• Track work hours and meet task deadlines accurately</description>
   </item>
   <item>
     <title>Apprentice Integrity Engineer — Oceaneering</title>
@@ -482,28 +502,6 @@
 • Review basic issues and policies with quick answers for low-risk tasks
 • Attend training, workshops, and self-study assignments
 • Communicate with managers and stakeholders on technical topics</description>
-  </item>
-  <item>
-    <title>Software Engineering Intern — Freight Tiger</title>
-    <link>https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928</guid>
-    <pubDate>Thu, 10 Sep 2026 08:01:33 GMT</pubDate>
-    <description>Company: Freight Tiger · Location: Gurugram, Haryana, India · Duration: 6 months
-• Build agentic ai systems with llm-powered agents and rag workflows
-• Write clean python code for scalable backend and data processing
-• Design data pipelines for real-time high-volume data processing
-• Work with senior engineers on full lifecycle product development</description>
-  </item>
-  <item>
-    <title>Software Engineering Intern — Freight Tiger</title>
-    <link>https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884</guid>
-    <pubDate>Thu, 10 Sep 2026 07:24:27 GMT</pubDate>
-    <description>Company: Freight Tiger · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Build agentic ai systems with llm-powered agents and rag workflows
-• Write production-grade python code for scalable backend solutions
-• Design data pipelines for real-time processing with kafka or airflow
-• Work on full lifecycle projects with senior engineers and product teams</description>
   </item>
 </channel>
 </rss>
