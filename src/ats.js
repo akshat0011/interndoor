@@ -1162,6 +1162,32 @@ export const PROVIDER_NAMES = Object.keys(PROVIDERS)
  * and no company name can produce. A tenant on a vanity host is only ever
  * reachable by being written down.
  */
+/**
+ * The employer name a board's posting is published under.
+ *
+ * A board is keyed by the WATCHLIST name it was discovered for, and the
+ * watchlist was built for India: Boeing's global Workday board is filed as
+ * "Boeing India", so a Farnborough internship went out as "Boeing India" on the
+ * UK board and forked a /uk/companies/boeing-india hub beside Boeing's own.
+ * Measured 15 Sep 2026: two boards do this, Boeing India (20 postings outside
+ * India) and Marmon Technologies India (1).
+ *
+ * The board row is NOT renamed, deliberately — discover-ats keys on the
+ * watchlist name, so a board filed under anything else is re-seeded under
+ * "Boeing India" by the next --apply-links pass and polled twice.
+ *
+ * Only a KNOWN non-India region drops the suffix; an India row and an unknown
+ * one keep the watchlist name. And never when too little is left: "Air India"
+ * outside India is still Air India, not "Air".
+ */
+export function postingCompany(boardCompany, region) {
+  const name = String(boardCompany ?? '');
+  if (!region || region === 'IN' || region === 'unknown') return name;
+  const m = /^(.*?\S)\s+(?:in\s+)?India$/i.exec(name);
+  if (!m || m[1].replace(/[^A-Za-z]/g, '').length < 4) return name;
+  return m[1];
+}
+
 export const FIRST_PARTY_BOARDS = {
   // The three PUBLISHED boards, not every country these employers hire in.
   // Collecting is cheap (§6) but not free — each country is three more requests

@@ -24,7 +24,7 @@
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
-import { schemaEmploymentType } from './employment.js';
+import { schemaEmploymentType, FULL_TIME } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity } from './facets.js';
 
 export const SITE = 'https://interndoor.com';
@@ -1861,7 +1861,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <section>
           <h2>How to apply</h2>
           <div class="apply-band">
-            <p>${apply ? '' : 'Apply through the original posting. '}Internships ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
+            <p>${apply ? '' : 'Apply through the original posting. '}${job.employmentType === FULL_TIME ? 'Early-career roles' : 'Internships'} ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
           <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
         </section>
@@ -2474,7 +2474,7 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
             ${crest(job.company, crestLogo, { cls: 'rc-crest' })}
             <div class="rc-headt">
               <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
-              ${job.roleLabel ? `<span class="rc-sub">${esc(job.roleLabel)}</span>` : ''}
+              ${isFullTimeRole(job) || job.roleLabel ? `<span class="rc-sub">${[isFullTimeRole(job) ? 'Full-time graduate role' : '', job.roleLabel ? esc(job.roleLabel) : ''].filter(Boolean).join(' · ')}</span>` : ''}
             </div>
           </div>
           ${(job.bullets ?? []).length ? `<ul class="rc-do">${(job.bullets ?? []).slice(0, 3).map((b) =>
@@ -2507,13 +2507,22 @@ function answerLine(company, live, prof, region) {
   }
   const places = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
   const modes = [...new Set(live.map((j) => modeText(j)).filter(Boolean))];
-  const n = live.length;
   const tail = [
     places.length === 1 ? `based in ${esc(places[0])}` : places.length ? `across ${esc(andList(places.slice(0, 3).map(esc)))}` : '',
     modes.length === 1 ? esc(modes[0].toLowerCase()) : '',
   ].filter(Boolean).join(', ');
+  // Full-time graduate roles are open roles, but "hiring interns" is not true of
+  // an employer whose only live postings are "Campus … (Full-Time)".
+  const n = live.filter((j) => !isFullTimeRole(j)).length;
+  const ft = live.length - n;
+  const ftPhrase = `${ft === 1 ? 'one full-time graduate role' : `${ft} full-time graduate roles`}`;
+  if (!n) {
+    return `<b>${co} is hiring graduates ${esc(where)} right now, but not interns.</b> `
+      + `${ft === 1 ? 'One full-time graduate role is' : `${ft} full-time graduate roles are`} open`
+      + `${tail ? `, ${tail}` : ''}. We re-check this page every 30 minutes.`;
+  }
   return `<b>Yes, ${co} is hiring interns ${esc(where)} right now.</b> `
-    + `${n === 1 ? 'One engineering internship is' : `${n} engineering internships are`} open`
+    + `${n === 1 ? 'One engineering internship is' : `${n} engineering internships are`} open${ft ? `, plus ${ftPhrase}` : ''}`
     + `${tail ? `, ${tail}` : ''}. We re-check this page every 30 minutes.`;
 }
 
@@ -2661,6 +2670,20 @@ export function employerRows(jobs, past) {
   });
 }
 
+/** An early-career full-time role rather than an internship (src/employment.js). */
+export function isFullTimeRole(job) {
+  return job?.employmentType === FULL_TIME;
+}
+
+/** "3 live Acme internships", "3 live Acme internships and 2 full-time graduate roles", "2 live Acme full-time graduate roles". */
+function liveCountPhrase(interns, fullTime, company) {
+  const ft = (n) => `full-time graduate role${n === 1 ? '' : 's'}`;
+  const internships = `${interns} live ${company} internship${interns === 1 ? '' : 's'}`;
+  if (!fullTime) return internships;
+  if (!interns) return `${fullTime} live ${company} ${ft(fullTime)}`;
+  return `${internships} and ${fullTime} ${ft(fullTime)}`;
+}
+
 /** Postings needed before a hiring record says anything; fewer is an anecdote. */
 export const RECORD_MIN_POSTINGS = 4;
 /** Boards the record is shown on: India, then the US, then the UK — all his calls on 14 Sep 2026. */
@@ -2736,7 +2759,7 @@ function monthKey(ms, region) {
  * NO CLOCK. Every input is a stored date or a count, so two publishes of the
  * same data are byte-identical; `until` moves once a month.
  */
-export function hiringRecord(company, rows, region = DEFAULT_REGION, record = null) {
+export function hiringRecord(company, rows, region = DEFAULT_REGION, record = null, { fullTime = 0 } = {}) {
   if (!record || !RECORD_REGIONS.has(region.code)) return '';
   const n = rows.length;
   if (n < RECORD_MIN_POSTINGS) return '';
@@ -2787,8 +2810,8 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
         ? `; the middle half of those figures runs from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b> ${pay.per}`
         : `, from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b> ${pay.per}`;
   const paySentence = paid === 0
-    ? `None of the ${n} ${co} postings we have tracked stated ${payWord}.`
-    : `${paid === n ? `All ${n}` : `${paid} of the ${n}`} ${co} postings we have tracked stated ${payWord}${payFigures}.`;
+    ? `None of the ${n} ${co} internships we have tracked stated ${payWord}.`
+    : `${paid === n ? `All ${n}` : `${paid} of the ${n}`} ${co} internships we have tracked stated ${payWord}${payFigures}.`;
 
   const where = region.inName;
   /* `within` is how many employers have AT LEAST this many postings, itself
@@ -2809,6 +2832,7 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
       <dl class="cp-facts">${months.map((k) => `<div><dt>${esc(label(k))}${k === untilKey ? ' so far' : ''}</dt><dd>${counts.get(k) ?? 0}</dd></div>`).join('')}</dl>
       ${before ? `<p class="cp-note">${before} more ${before === 1 ? 'was' : 'were'} posted before we began tracking ${esc(where)} in ${esc(label(startKey))}.</p>` : ''}
       <p class="cp-note">${paySentence}</p>
+      ${fullTime ? `<p class="cp-note">${co} also posted ${fullTime} full-time graduate role${fullTime === 1 ? '' : 's'} in this time. They are not internships, so none of the figures above count them.</p>` : ''}
       ${rankSentence ? `<p class="cp-note">${rankSentence}</p>` : ''}
     </section>`;
 }
@@ -2870,6 +2894,15 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // bullet still told us a city, a skill list and an eligibility line.
   const allRows = employerRows(jobs, past);
   const profile = companyProfile(allRows, region);
+  /* INTERNSHIPS ARE COUNTED AS INTERNSHIPS. The board collects early-career
+     full-time roles too and files them under their own tab (src/employment.js),
+     but the hub said "tracked 16 engineering internships" of Jump Trading's UK
+     set, six of them "Campus … (Full-Time)". Every sentence below that names
+     internships counts these; full-time roles are named as what they are. */
+  const internRows = allRows.filter((j) => !isFullTimeRole(j));
+  const fullTimeTracked = allRows.length - internRows.length;
+  const liveInterns = live.filter((j) => !isFullTimeRole(j)).length;
+  const liveFullTime = live.length - liveInterns;
 
   // Indexable when there is something worth indexing. A hub with no live roles
   // and nothing to show behind them is exactly the thin page to keep out.
@@ -2896,7 +2929,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     profile.cities.length ? `Locations: ${profile.cities.slice(0, 3).map((c) => c.value).join(', ')}.` : null,
   ].filter(Boolean).join(' ');
   const descHead = live.length
-    ? `${live.length} live ${company} internship${live.length === 1 ? '' : 's'} ${region.inName}, updated every 30 minutes.`
+    ? `${liveCountPhrase(liveInterns, liveFullTime, company)} ${region.inName}, updated every 30 minutes.`
     : profile.n
       ? `${company} internships ${region.inName}. No live openings today; ${profile.n} tracked so far, updated every 30 minutes.`
       : `${company} internships ${region.inName}, tracked by InternDoor and updated every 30 minutes.`;
@@ -2953,8 +2986,8 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // words are the authority this page accumulates, so it MOVES rather than
   // going. Its home is with the at-a-glance panel, which is about the same
   // thing: what we have watched this employer do over time.
-  const lede = profile.n >= 3
-    ? `We have tracked <b>${profile.n} engineering internships</b> at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
+  const lede = internRows.length >= 3
+    ? `We have tracked <b>${internRows.length} engineering internships</b>${fullTimeTracked ? ` and ${fullTimeTracked} full-time graduate role${fullTimeTracked === 1 ? '' : 's'}` : ''} at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
     : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live. This page is checked every 30 minutes.`;
 
   return `${head({
@@ -2984,7 +3017,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
       ${crest(company, logo)}
       <h1>${esc(company)} internships ${esc(region.inName)}</h1>
       ${live.length
-        ? `<a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>${live.length} internship${live.length === 1 ? '' : 's'} open now</a>`
+        ? `<a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>${liveFullTime ? `${live.length} role${live.length === 1 ? '' : 's'}` : `${live.length} internship${live.length === 1 ? '' : 's'}`} open now</a>`
         : `<span class="pill hub-live"><i aria-hidden="true"></i>Nothing open today</span>`}
     </header>
 
@@ -3012,7 +3045,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
     ${profileSections(company, profile, region, { skipDegrees: true, lede })}
 
-    ${hiringRecord(company, allRows, region, record)}
+    ${hiringRecord(company, internRows, region, record, { fullTime: fullTimeTracked })}
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>
@@ -4324,7 +4357,8 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   /* The hiring record's board-wide inputs, computed once. `since` is the board's
      first sighting of anything, `until` its newest posting; `within` counts
      postings the same way the hub does (`employerRows`). */
-  const postingsOf = new Map([...allCompanies].map((c) => [c, employerRows(byCompany.get(c), pastByCompany.get(c)).length]));
+  const postingsOf = new Map([...allCompanies].map((c) => [c,
+    employerRows(byCompany.get(c), pastByCompany.get(c)).filter((j) => !isFullTimeRole(j)).length]));
   const boardRows = [...jobs, ...(history ?? [])];
   const since = boardRows.reduce((min, j) => (j.firstSeenAt && (!min || j.firstSeenAt < min) ? j.firstSeenAt : min), null);
   const until = boardRows.reduce((max, j) => (j.postedAt && (!max || j.postedAt > max) ? j.postedAt : max), null);

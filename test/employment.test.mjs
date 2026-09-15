@@ -1,4 +1,4 @@
-import { employmentType, schemaEmploymentType, isInternshipTag, INTERN, FULL_TIME } from '../src/employment.js';
+import { employmentType, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME } from '../src/employment.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -96,6 +96,27 @@ const li = readFileSync(join(ROOT, 'src', 'linkedin.js'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('linkedin.js parses the chip', /const employmentTag = \(headerText\.match/.test(li), true);
 check('and returns it', /workplaceType, employmentTag,/.test(li), true);
+
+console.log('\n== a full-time role is not written up as an internship ==');
+{
+  /* 132 of 176 stored full-time summaries opened "This internship involves" (15 Sep 2026). */
+  check('the stored opening is corrected', fullTimeWording('This internship involves trading systems.'), 'This role involves trading systems.');
+  check('the person too', fullTimeWording('The intern will work with Python.'), 'The new hire will work with Python.');
+  check('and the article with the noun', fullTimeWording('An internship for an intern.'), 'A role for a new hire.');
+  check('plurals', fullTimeWording('Interns join other internships.'), 'New hires join other roles.');
+  check('whole words only — internal, internet, international survive',
+    fullTimeWording('internal tools on the internet for international teams'), 'internal tools on the internet for international teams');
+  check('empty stays empty', [fullTimeWording(null), fullTimeWording('')], [null, '']);
+
+  const pub = readFileSync(join(ROOT, 'src', 'publish.js'), 'utf8');
+  check('publish corrects a full-time summary, and only a full-time one',
+    /summary: \(row\.employment_type === FULL_TIME \? fullTimeWording\(row\.summary\) : row\.summary\) \|\| null,/.test(pub), true);
+  check('past roles carry their employment type to the hub', /employmentType: row\.employment_type \|\| 'intern',/.test(pub.slice(pub.indexOf('const history = tracked'))), true);
+  const ol = readFileSync(join(ROOT, 'src', 'ollama.js'), 'utf8');
+  check('the enricher is told which kind it is writing about', /`Employment: \$\{/.test(ol), true);
+  const st = readFileSync(join(ROOT, 'src', 'store.js'), 'utf8');
+  check('and the rows it enriches carry the field', /salary_text AS stipend, employment_type/.test(st), true);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

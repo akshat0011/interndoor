@@ -343,6 +343,8 @@ export async function classifyFromDescriptions(items, cfg) {
 
 const ENRICH_SYSTEM = `You turn an internship posting into a compact, scannable card for a student deciding whether to apply, plus a short original description of the role for its own page.
 
+The Employment line says what the posting is. When it says full-time, the job is an early-career FULL-TIME role, not an internship: never call it an internship or the person an intern anywhere in your answer — say "role" and "new hire".
+
 Return, for the posting:
 
 bullets — 2 to 4 fragments, each at most 90 characters, no trailing period. Lead with what the intern actually DOES day to day, then the stack or tools, then anything concrete that affects the decision (team, product, duration). Ordinary prose starting with a capital letter. Write plainly, as a person would to a friend. Never open with company boilerplate ("About X, founded in..."), never use marketing language ("exciting opportunity", "fast-paced environment", "dynamic team"), and never repeat the job title back.
@@ -427,6 +429,7 @@ export async function enrichJobs(items, cfg = {}) {
       `Title: ${job.title}`,
       `Company: ${job.company ?? 'unknown'}`,
       `Location: ${job.location ?? 'not stated'}`,
+      `Employment: ${(job.employmentType ?? job.employment_type) === 'fulltime' ? 'full-time early-career role (NOT an internship)' : 'internship'}`,
       `Stipend field: ${job.stipend ? String(job.stipend) : '(not captured)'}`,
       '',
       'Description:',

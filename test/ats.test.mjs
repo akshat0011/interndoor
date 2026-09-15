@@ -1,5 +1,5 @@
 import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
-  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace } from '../src/ats.js';
+  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace, postingCompany } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -647,6 +647,22 @@ check('and for India', resolveRegion(microsoftPlace('India, Karnataka, Bangalore
   check('list() emits the reversed place', jobs[0].location, 'Redmond, Washington, United States');
   check("and keeps the board's own wording as an alternate",
     jobs[0].locationAlt, ['United States, Washington, Redmond']);
+}
+
+console.log('\n== a global board filed under an India name ==');
+{
+  /* Boeing's global Workday board is filed as "Boeing India"; a Farnborough
+     internship went out as "Boeing India" and forked /uk/companies/boeing-india. */
+  check('a UK posting drops the suffix', postingCompany('Boeing India', 'GB'), 'Boeing');
+  check('a US one too', postingCompany('Marmon Technologies India', 'US'), 'Marmon Technologies');
+  check('"in India" as well', postingCompany('Accenture in India', 'US'), 'Accenture');
+  check('an India posting keeps the watchlist name', postingCompany('Boeing India', 'IN'), 'Boeing India');
+  check('so does one we cannot place', postingCompany('Boeing India', 'unknown'), 'Boeing India');
+  check('Air India stays Air India — too little is left', postingCompany('Air India', 'GB'), 'Air India');
+  check('India inside a name is not a suffix', postingCompany('Indiana Farm Bureau', 'US'), 'Indiana Farm Bureau');
+  check('a name with no suffix is untouched', postingCompany('Jump Trading', 'GB'), 'Jump Trading');
+  const poll = readFileSync(join(ROOT, 'bin', 'poll-ats.js'), 'utf8');
+  check('poll-ats stores the posting name, not the board key', /company: postingCompany\(board\.company, region\),/.test(poll), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

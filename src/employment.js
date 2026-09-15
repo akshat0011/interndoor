@@ -105,3 +105,29 @@ export function employmentType(title, isIntern) {
 export function schemaEmploymentType(kind) {
   return kind === FULL_TIME ? 'FULL_TIME' : 'INTERN';
 }
+
+/**
+ * A full-time role's prose, with the internship words it was wrongly written in
+ * replaced.
+ *
+ * The enricher's prompt described every posting as "this specific internship",
+ * so 132 of the 176 stored full-time summaries opened "This internship involves"
+ * — on a Jump Trading "Campus Quantitative Trader (Full-Time)" page, which the
+ * board itself files under Full-time. The prompt is fixed for new rows; this
+ * corrects the stored ones at publish, where every page reads them.
+ *
+ * WHOLE WORDS ONLY. "internal", "internet" and "international" are real words in
+ * these descriptions, and a substring rule would print "new hireal systems".
+ * The article is fixed with the noun — "an internship" is "a role", not "an role".
+ */
+export function fullTimeWording(text) {
+  if (!text) return text;
+  const cap = (orig, word) => (/^[A-Z]/.test(orig) ? word[0].toUpperCase() + word.slice(1) : word);
+  return String(text)
+    .replace(/\b(an?)\s+(internship|intern)\b/gi, (m, a, noun) =>
+      `${a[0] === 'A' ? 'A' : 'a'} ${noun.toLowerCase() === 'internship' ? 'role' : 'new hire'}`)
+    .replace(/\binternships\b/gi, (m) => cap(m, 'roles'))
+    .replace(/\binternship\b/gi, (m) => cap(m, 'role'))
+    .replace(/\binterns\b/gi, (m) => cap(m, 'new hires'))
+    .replace(/\bintern\b/gi, (m) => cap(m, 'new hire'));
+}
