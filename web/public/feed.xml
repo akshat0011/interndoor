@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 14 Sep 2026 12:40:35 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 04:59:46 GMT</lastBuildDate>
+  <item>
+    <title>Intern – Software Development and Testing — Siemens Gamesa</title>
+    <link>https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4466163680</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4466163680</guid>
+    <pubDate>Tue, 15 Sep 2026 04:59:46 GMT</pubDate>
+    <description>Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India
+• Assist with programming, testing, and documentation for software tools using MATLAB, Python, and Git
+• Help improve CI/CD pipelines and automate build processes for reliable software delivery
+• Collaborate with engineers on controller validation and data analysis reports
+• Based in Bengaluru</description>
+  </item>
   <item>
     <title>Technology Trainee — Axalta</title>
     <link>https://interndoor.com/jobs/axalta-technology-trainee-4336951115</link>
@@ -486,16 +497,6 @@
 • Design features for web apps and backend services
 • Build applications with Java, Spring Boot, and React
 • Work with SQL/NoSQL databases and Git</description>
-  </item>
-  <item>
-    <title>Intern — GE HealthCare</title>
-    <link>https://interndoor.com/jobs/ge-healthcare-intern-4465035982</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ge-healthcare-intern-4465035982</guid>
-    <pubDate>Wed, 09 Sep 2026 13:28:49 GMT</pubDate>
-    <description>Company: GE HealthCare · Location: Bengaluru, Karnataka, India
-• Work on next gen compute platform projects
-• Use software development tools and technologies
-• Work in ge healthcare premises with global team</description>
   </item>
 </channel>
 </rss>
