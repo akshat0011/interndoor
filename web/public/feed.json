@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276",
+      "url": "https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276",
+      "title": "Java Spring Boot Intern — Webknot Technologies",
+      "content_text": "Company: Webknot Technologies · Location: Bengaluru, Karnataka, India\n• Develop backend apps with Java and Spring Boot\n• Work with REST APIs, databases, and cloud tech\n• Contribute to microservices and event-driven systems",
+      "date_published": "2026-09-15T07:30:52.636Z",
+      "authors": [
+        {
+          "name": "Webknot Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072",
+      "url": "https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072",
+      "title": "AI/ML Intern (Generative AI & LLM) — Webknot Technologies",
+      "content_text": "Company: Webknot Technologies · Location: Bengaluru, Karnataka, India\n• Build AI/ML apps with Python, LLMs, and LangChain\n• Work with vector databases, embeddings, and RAG pipelines\n• Develop backend APIs and debug AI pipelines",
+      "date_published": "2026-09-15T07:27:18.385Z",
+      "authors": [
+        {
+          "name": "Webknot Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4467483104",
       "url": "https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4467483104",
       "title": "Data Analyst Apprentice - 11 Months Contract — FE fundinfo",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/adobe-apprentice-tech-4463891565",
-      "url": "https://interndoor.com/jobs/adobe-apprentice-tech-4463891565",
-      "title": "Apprentice Tech — Adobe",
-      "content_text": "Company: Adobe · Location: Bengaluru East, Karnataka, India\n• Support product development with daily coding and testing\n• Work with React and TypeScript in a fast-moving team\n• Gain hands-on experience with AI-driven tools and platforms",
-      "date_published": "2026-09-09T16:47:38.230Z",
-      "authors": [
-        {
-          "name": "Adobe"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/electronic-arts-ea-data-and-ai-engineering-intern-4463038741",
-      "url": "https://interndoor.com/jobs/electronic-arts-ea-data-and-ai-engineering-intern-4463038741",
-      "title": "Data and AI Engineering Intern — Electronic Arts (EA)",
-      "content_text": "Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India\n• Build ai-assisted data solutions using python, sql, and llms\n• Develop etl pipelines, data models, and reusable data products\n• Collaborate with technical and business teams on ai projects",
-      "date_published": "2026-09-09T15:29:41.965Z",
-      "authors": [
-        {
-          "name": "Electronic Arts (EA)"
         }
       ]
     }
