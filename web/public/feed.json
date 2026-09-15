@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356",
+      "url": "https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356",
+      "title": "Apprentice Integrity Engineer — Oceaneering",
+      "content_text": "Company: Oceaneering · Location: Chandigarh, Chandigarh, India\n• Support software testing, configuration, and deployment of integrity management tools\n• Work with python, power bi, and digital platforms for inspection data analysis\n• Collaborate with sme's and it teams on software development and workflow improvements",
+      "date_published": "2026-09-15T12:03:58.604Z",
+      "authors": [
+        {
+          "name": "Oceaneering"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lennox-post-graduate-engineering-trainee-4467729024",
       "url": "https://interndoor.com/jobs/lennox-post-graduate-engineering-trainee-4467729024",
       "title": "Post Graduate Engineering Trainee — Lennox",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174",
-      "url": "https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174",
-      "title": "Apprentice - QA Automation — StoneX Group Inc.",
-      "content_text": "Company: StoneX Group Inc. · Location: Bengaluru, Karnataka, India\n• Write automated tests for financial systems using Playwright and TypeScript\n• Work with GitHub Actions and CI/CD pipelines for test automation\n• Collaborate with developers and analysts on test frameworks and data validation",
-      "date_published": "2026-09-09T22:06:38.777Z",
-      "authors": [
-        {
-          "name": "StoneX Group Inc."
         }
       ]
     }
