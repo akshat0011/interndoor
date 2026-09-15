@@ -6,6 +6,42 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/panasonic-avionics-corporation-ai-software-intern-trainee-pune-india-4466557018",
+      "url": "https://interndoor.com/jobs/panasonic-avionics-corporation-ai-software-intern-trainee-pune-india-4466557018",
+      "title": "AI Software Intern / Trainee - Pune, India — Panasonic Avionics Corporation",
+      "content_text": "Company: Panasonic Avionics Corporation · Location: Pune Division, Maharashtra, India\n• Develop AI applications using RAG, conversational AI, and backend APIs on AWS\n• Work on real production AI solutions with mentorship from senior engineers\n• Contribute to MLOps workflows and CI/CD processes on AWS services",
+      "date_published": "2026-09-15T16:33:24.388Z",
+      "authors": [
+        {
+          "name": "Panasonic Avionics Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4466554100",
+      "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4466554100",
+      "title": "Graduate Trainee Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Assist in engineering tasks and project activities under supervision\n• Prepare engineering deliverables following Siemens standards\n• Participate in team discussions and problem-solving efforts\n• Track work hours and communicate task progress regularly",
+      "date_published": "2026-09-15T16:31:29.354Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-4466528988",
+      "url": "https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-4466528988",
+      "title": "Graduate Apprentice Trainee — Volvo Group",
+      "content_text": "Company: Volvo Group · Location: Bengaluru, Karnataka, India\n• Support design and development activities on engineering teams\n• Work with cad tools like creo and solidworks\n• Collaborate on product improvements and technical reviews",
+      "date_published": "2026-09-15T16:21:34.889Z",
+      "authors": [
+        {
+          "name": "Volvo Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/osto-quality-assurance-intern-4466507987",
       "url": "https://interndoor.com/jobs/osto-quality-assurance-intern-4466507987",
       "title": "Quality Assurance Intern — osto",
@@ -14,18 +50,6 @@
       "authors": [
         {
           "name": "osto"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682",
-      "url": "https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4465551682",
-      "title": "Graduate Trainee Engineer — Siemens",
-      "content_text": "Company: Siemens · Location: Bangalore Urban, Karnataka, India · Duration: 6 months\n• Assist in engineering tasks and project activities under supervision\n• Prepare engineering deliverables following siemens standards\n• Participate in team discussions and problem-solving efforts\n• Track work hours and meet task deadlines accurately",
-      "date_published": "2026-09-15T13:23:42.297Z",
-      "authors": [
-        {
-          "name": "Siemens"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Wells Fargo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928",
-      "url": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465609928",
-      "title": "Software Engineering Intern — Freight Tiger",
-      "content_text": "Company: Freight Tiger · Location: Gurugram, Haryana, India · Duration: 6 months\n• Build agentic ai systems with llm-powered agents and rag workflows\n• Write clean python code for scalable backend and data processing\n• Design data pipelines for real-time high-volume data processing\n• Work with senior engineers on full lifecycle product development",
-      "date_published": "2026-09-10T08:01:33.707Z",
-      "authors": [
-        {
-          "name": "Freight Tiger"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
-      "url": "https://interndoor.com/jobs/freight-tiger-software-engineering-intern-4465608884",
-      "title": "Software Engineering Intern — Freight Tiger",
-      "content_text": "Company: Freight Tiger · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build agentic ai systems with llm-powered agents and rag workflows\n• Write production-grade python code for scalable backend solutions\n• Design data pipelines for real-time processing with kafka or airflow\n• Work on full lifecycle projects with senior engineers and product teams",
-      "date_published": "2026-09-10T07:24:27.363Z",
-      "authors": [
-        {
-          "name": "Freight Tiger"
         }
       ]
     }
