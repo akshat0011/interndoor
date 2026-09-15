@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 15 Sep 2026 10:51:59 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 12:03:58 GMT</lastBuildDate>
+  <item>
+    <title>Apprentice Integrity Engineer — Oceaneering</title>
+    <link>https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356</guid>
+    <pubDate>Tue, 15 Sep 2026 12:03:58 GMT</pubDate>
+    <description>Company: Oceaneering · Location: Chandigarh, Chandigarh, India
+• Support software testing, configuration, and deployment of integrity management tools
+• Work with python, power bi, and digital platforms for inspection data analysis
+• Collaborate with sme&#39;s and it teams on software development and workflow improvements</description>
+  </item>
   <item>
     <title>Post Graduate Engineering Trainee — Lennox</title>
     <link>https://interndoor.com/jobs/lennox-post-graduate-engineering-trainee-4467729024</link>
@@ -490,16 +500,6 @@
 • Fix production issues and resolve system errors in mainframe environments
 • Use jcl, cobol, esp, rexx for process automation and reporting
 • Support 24x7 production with root cause analysis and abend resolution</description>
-  </item>
-  <item>
-    <title>Apprentice - QA Automation — StoneX Group Inc.</title>
-    <link>https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/stonex-group-inc-apprentice-qa-automation-4464145174</guid>
-    <pubDate>Wed, 09 Sep 2026 22:06:38 GMT</pubDate>
-    <description>Company: StoneX Group Inc. · Location: Bengaluru, Karnataka, India
-• Write automated tests for financial systems using Playwright and TypeScript
-• Work with GitHub Actions and CI/CD pipelines for test automation
-• Collaborate with developers and analysts on test frameworks and data validation</description>
   </item>
 </channel>
 </rss>
