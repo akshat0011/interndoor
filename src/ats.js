@@ -1240,7 +1240,11 @@ const ATS_LINK = new RegExp([
   // domain or an unusual locale loses the whole tenant, and a Workday tenant
   // cannot be recovered any other way: the token is `tenant:wdN:site` and no
   // part of `site` is guessable ("CareerDepot", "CSC_Careers", "External").
-  String.raw`([a-z0-9-]+)\.(wd\d+)\.myworkday(?:jobs|site)\.com\/(?:[a-z]{2}[-_][A-Za-z]{2}\/)?([A-Za-z0-9_-]+)`,
+  // A BARE `/en/` IS A LOCALE TOO (15 Sep 2026): Axalta's links read
+  // `axalta.wd1.myworkdayjobs.com/en/Axalta/job/…`, which stored the board as
+  // site `en` and failed every poll. Not when the next segment is `job` or
+  // `login` — then the two letters ARE the site.
+  String.raw`([a-z0-9-]+)\.(wd\d+)\.myworkday(?:jobs|site)\.com\/(?:[a-z]{2}(?:[-_][A-Za-z]{2})?\/(?!job\b|login\b))?([A-Za-z0-9_-]+)`,
   // The embed form puts the real token in a query parameter, not the path:
   // boards.greenhouse.io/embed/job_board?for=cloudsek. Matching the path first
   // would capture the literal word "embed" as the board name.
