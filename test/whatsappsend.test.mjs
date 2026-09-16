@@ -15,7 +15,7 @@
  * into the middle of. The page here models exactly that: a caret that lands
  * mid-text, typing that inserts at the caret, and an Enter that may not send.
  */
-import { sendOne } from '../src/whatsapp.js';
+import { sendOne, warmPreview, PREVIEW_MS } from '../src/whatsapp.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -132,6 +132,55 @@ console.log('\n== the preview is waited for, but never blocks a post ==');
   const p = fakePage({ preview: false });
   const r = await sendOne(p, 'no links here', { previewMs: 30 });
   check('a message with no URL is carded:true by definition', r.carded, true);
+}
+
+console.log('\n== the card is warmed before WhatsApp asks for it ==');
+/* 16 Sep 2026: 6 of 8 posts went out bare. /api/og renders on demand — 2.7s
+   with `x-vercel-cache: MISS`, 0.17s warm — so WhatsApp's own fetch was still
+   running when Enter arrived. The warm-up makes WhatsApp's fetch the second one. */
+{
+  const calls = [];
+  const html = '<meta property="og:image" content="https://interndoor.com/api/og?id=1&amp;r=IN">';
+  const fetchImpl = async (u) => { calls.push(u); return { ok: true, text: async () => html }; };
+  const got = await warmPreview('see https://interndoor.com/jobs/acme-intern-1 for more', { fetchImpl });
+  check('the page is fetched', calls[0], 'https://interndoor.com/jobs/acme-intern-1');
+  check('and so is the card image it names', calls[1], 'https://interndoor.com/api/og?id=1&r=IN');
+  check('the escaped separator is unescaped — &amp; would 404', /&amp;/.test(calls[1] ?? ''), false);
+  check('it reports that it warmed something', got, true);
+}
+{
+  const calls = [];
+  const fetchImpl = async (u) => { calls.push(u); throw new Error('offline'); };
+  check('a warm-up that throws is swallowed', await warmPreview('https://interndoor.com/jobs/x', { fetchImpl }), false);
+  check('a message with no URL fetches nothing',
+    [await warmPreview('no links here', { fetchImpl }), calls.length], [false, 1]);
+}
+{
+  const calls = [];
+  const fetchImpl = async (u) => { calls.push(u); return { ok: false, status: 404, text: async () => '' }; };
+  check('a 404 page is not followed for a card', [await warmPreview('https://interndoor.com/jobs/gone', { fetchImpl }), calls.length], [false, 1]);
+}
+{
+  /* Wired into the send, and started BEFORE typing so it costs no wall clock. */
+  const order = [];
+  const p = fakePage();
+  const typed = p.keyboard.type;
+  p.keyboard.type = async (t, o) => { order.push('type'); return typed(t, o); };
+  const r = await sendOne(p, MSG, { previewMs: 30, warm: async () => { order.push('warm'); } });
+  check('the warm-up runs, and first', order[0], 'warm');
+  check('the post still goes out', r.sent, true);
+}
+{
+  /* A warm-up that hangs or throws must not lose the listing. */
+  const p = fakePage();
+  const r = await sendOne(p, MSG, { previewMs: 30, warm: async () => { throw new Error('boom'); } });
+  check('a throwing warm-up still posts', r.sent, true);
+}
+{
+  check('the preview deadline is 25s', PREVIEW_MS, 25_000);
+  const p = fakePage({ preview: false });
+  const r = await sendOne(p, MSG, { previewMs: 30, warm: async () => {} });
+  check('an uncarded post reports how long it waited', r.cardMs >= 0 && r.cardMs < 5000, true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

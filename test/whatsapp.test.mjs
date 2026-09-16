@@ -270,7 +270,9 @@ check('and what did not send is written back', /writePending\(store, code,/.test
 check('saved in finally, so an early return still saves', /finally \{[\s\S]*writePending/.test(wa), true);
 /* THE PAIRING THAT MATTERS: only a send PROVEN to have left the box may keep a
    listing off the queue. Counting an attempt would silently drop it again. */
-check('only a proven send clears an id', /if \(r\.sent\) \{ sent \+= 1; posted\.add\(id\);/.test(wa), true);
+/* Whitespace-tolerant: the block grew a debug line for an uncarded post, and
+   the invariant is the GUARD, not the formatting. */
+check('only a proven send clears an id', /if \(r\.sent\) \{\s*sent \+= 1;\s*posted\.add\(id\);/.test(wa), true);
 const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('and it is called even when the run found nothing',
