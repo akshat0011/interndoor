@@ -569,6 +569,47 @@ export async function findTarget(page, name) {
  * The `img` is the last thing to arrive, so it is the honest signal that the
  * card is complete.
  */
+/**
+ * How long to wait for the card before sending anyway.
+ *
+ * Was 15s. Raised after 16 Sep 2026, when 6 of 8 posts went out bare: the
+ * warm-up below removes most of the wait, and the extra ceiling costs nothing
+ * on a post whose card resolves in three seconds — `waitForPreview` returns the
+ * moment the image appears, so this is a deadline, not a delay.
+ */
+export const PREVIEW_MS = 25_000;
+
+/**
+ * Ask Vercel for the page and its card image before WhatsApp does.
+ *
+ * WhatsApp fetches the URL itself to build the preview, and it is the FIRST
+ * fetch that is slow: `/api/og` renders the card on demand (2.7s, `x-vercel-cache:
+ * MISS`) and is then immutable and instant. Doing it here means WhatsApp's
+ * fetch is the second one.
+ *
+ * Everything is swallowed. A warm-up is an optimisation; a listing must post
+ * whether or not it worked.
+ */
+export async function warmPreview(text, { fetchImpl = fetch, timeoutMs = 8000 } = {}) {
+  const url = (String(text).match(/https?:\/\/\S+/) ?? [])[0];
+  if (!url) return false;
+  const get = async (u) => {
+    try {
+      const res = await fetchImpl(u, { signal: AbortSignal.timeout(timeoutMs) });
+      return res.ok ? res : null;
+    } catch { return null; }
+  };
+  const page = await get(url.replace(/[).,]+$/, ''));
+  if (!page) return false;
+  try {
+    const html = await page.text();
+    const card = (html.match(/<meta property="og:image" content="([^"]+)"/) ?? [])[1];
+    // The HTML escapes the query separator; WhatsApp unescapes it before fetching.
+    if (card) await get(card.replace(/&amp;/g, '&'));
+  } catch { /* the page was warmed, which is the half that matters */ }
+  return true;
+}
+
 async function waitForPreview(page, ms) {
   const deadline = Date.now() + ms;
   while (Date.now() < deadline) {
@@ -660,17 +701,32 @@ async function clearComposer(page) {
  * and the draft that corrupts the next one. Either way the text is removed, so
  * a bad send costs one message instead of two.
  */
-export async function sendOne(page, text, { previewMs = 15_000 } = {}) {
+export async function sendOne(page, text, { previewMs = PREVIEW_MS, warm = warmPreview } = {}) {
   const cleared = await clearComposer(page);
   if (!cleared.ok) return { sent: false, carded: false, error: cleared.error };
+
+  /* WARMED WHILE THE MESSAGE IS TYPED, not before it. WhatsApp builds the card
+     from its own fetch of the URL, and a cold /api/og answers in 2.7s against
+     0.17s warm (measured 16 Sep 2026) — enough, on a run posting a single
+     listing, for Enter to arrive first: 6 of 8 posts that day went out bare.
+     Typing takes a few seconds anyway, so this costs no wall clock, and it is
+     deliberately not awaited: a warm-up that fails must not stop a post. */
+  /* Started SYNCHRONOUSLY — deferring it by even a microtask puts the first
+     keystroke ahead of the fetch — and both a synchronous throw and a rejection
+     are swallowed here, because a warm-up must never cost a listing. */
+  let warming;
+  try { warming = Promise.resolve(warm(text)).catch(() => {}); } catch { warming = Promise.resolve(); }
 
   const lines = String(text).split('\n');
   for (const [i, line] of lines.entries()) {
     if (line) await page.keyboard.type(line, { delay: 8 });
     if (i < lines.length - 1) await page.keyboard.press('Shift+Enter');
   }
+  await warming;
 
+  const waitedFrom = Date.now();
   const carded = /https?:\/\//.test(text) ? await waitForPreview(page, previewMs) : true;
+  const cardMs = Date.now() - waitedFrom;
   await page.keyboard.press('Enter');
   await page.waitForTimeout(1500);
 
@@ -681,9 +737,9 @@ export async function sendOne(page, text, { previewMs = 15_000 } = {}) {
        listing is recoverable where a corrupted channel post is not. */
     await page.keyboard.press('ControlOrMeta+A');
     await page.keyboard.press('Backspace');
-    return { sent: false, carded, error: 'Enter did not send — the message was still in the box afterwards' };
+    return { sent: false, carded, cardMs, error: 'Enter did not send — the message was still in the box afterwards' };
   }
-  return { sent: true, carded };
+  return { sent: true, carded, cardMs };
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -835,7 +891,14 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
          counted unconditionally, so a listing that never went out was reported
          as posted — and the run that stranded it went on to corrupt the next
          message with the draft it left behind. */
-      if (r.sent) { sent += 1; posted.add(id); if (r.carded) carded += 1; }
+      if (r.sent) {
+        sent += 1;
+        posted.add(id);
+        if (r.carded) carded += 1;
+        /* How long the card was waited for, so a preview that is merely slow
+           can be told apart from one that never arrives. */
+        else log.debug(`WhatsApp: no preview card for ${job.company ?? 'a listing'} after ${Math.round((r.cardMs ?? 0) / 1000)}s.`);
+      }
       else log.warn(`WhatsApp: ${job.company ?? 'a listing'} was not posted — ${r.error}`);
       if (tried < batch.length) await sleep(gap);
     }
