@@ -15,7 +15,11 @@
  * into the middle of. The page here models exactly that: a caret that lands
  * mid-text, typing that inserts at the caret, and an Enter that may not send.
  */
-import { sendOne, warmPreview, PREVIEW_MS } from '../src/whatsapp.js';
+import { sendOne, warmPreview, PREVIEW_MS, LIVE_MS } from '../src/whatsapp.js';
+
+/* sendOne's default warm-up reaches the network and polls for a page that
+   does not exist in a test. Every case that is not about it passes this. */
+const noWarm = async () => false;
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -78,7 +82,7 @@ const STRANDED = 'https://interndoor.com/jobs/joveo-software-engineer-intern-445
 console.log('\n== the ordinary case ==');
 {
   const p = fakePage();
-  const r = await sendOne(p, MSG);
+  const r = await sendOne(p, MSG, { warm: noWarm });
   check('it reports sent', r.sent, true);
   check('it reports the card', r.carded, true);
   check('exactly the message went out', p._st.sent, MSG);
@@ -89,7 +93,7 @@ console.log('\n== A STRANDED DRAFT IS NOT TYPED INTO ==');
 // The regression. caret 39 is where the live corruption split the URL.
 {
   const p = fakePage({ initial: STRANDED, caret: 39 });
-  const r = await sendOne(p, MSG);
+  const r = await sendOne(p, MSG, { warm: noWarm });
   check('the message still goes out', r.sent, true);
   check('and it is the message, whole', p._st.sent, MSG);
   check('no fragment of the draft survives anywhere in it', /joveo|4458863278/.test(p._st.sent), false);
@@ -102,7 +106,7 @@ console.log('\n== a box that will not clear posts NOTHING ==');
 // unambiguously better than sending that.
 {
   const p = fakePage({ initial: STRANDED, caret: 39, clearable: false });
-  const r = await sendOne(p, MSG);
+  const r = await sendOne(p, MSG, { warm: noWarm });
   check('refused', r.sent, false);
   check('nothing was posted', p._st.sent, null);
   check('and it says why', /would not clear/.test(r.error), true);
@@ -114,7 +118,7 @@ console.log('\n== an Enter that does not send is NOTICED ==');
 // text sat in the box becoming the draft that corrupted the next message.
 {
   const p = fakePage({ sends: false });
-  const r = await sendOne(p, MSG);
+  const r = await sendOne(p, MSG, { warm: noWarm });
   check('not reported as sent', r.sent, false);
   check('and it says why', /did not send/.test(r.error), true);
   check('THE BOX IS EMPTIED ANYWAY', p._st.value, '');
@@ -123,14 +127,14 @@ console.log('\n== an Enter that does not send is NOTICED ==');
 console.log('\n== the preview is waited for, but never blocks a post ==');
 {
   const p = fakePage({ preview: false });
-  const r = await sendOne(p, MSG, { previewMs: 30 });
+  const r = await sendOne(p, MSG, { previewMs: 30, warm: noWarm });
   check('a card that never arrives still sends', r.sent, true);
   check('and is reported as uncarded', r.carded, false);
 }
 {
   // A message with no URL must not pay the preview wait at all.
   const p = fakePage({ preview: false });
-  const r = await sendOne(p, 'no links here', { previewMs: 30 });
+  const r = await sendOne(p, 'no links here', { previewMs: 30, warm: noWarm });
   check('a message with no URL is carded:true by definition', r.carded, true);
 }
 
@@ -151,14 +155,29 @@ console.log('\n== the card is warmed before WhatsApp asks for it ==');
 {
   const calls = [];
   const fetchImpl = async (u) => { calls.push(u); throw new Error('offline'); };
-  check('a warm-up that throws is swallowed', await warmPreview('https://interndoor.com/jobs/x', { fetchImpl }), false);
+  const quick = { fetchImpl, liveMs: 0, pause: async () => {} };
+  check('a warm-up that throws is swallowed', await warmPreview('https://interndoor.com/jobs/x', quick), false);
   check('a message with no URL fetches nothing',
-    [await warmPreview('no links here', { fetchImpl }), calls.length], [false, 1]);
+    [await warmPreview('no links here', quick), calls.length], [false, 1]);
 }
 {
   const calls = [];
   const fetchImpl = async (u) => { calls.push(u); return { ok: false, status: 404, text: async () => '' }; };
-  check('a 404 page is not followed for a card', [await warmPreview('https://interndoor.com/jobs/gone', { fetchImpl }), calls.length], [false, 1]);
+  check('a page that never appears gives up and posts anyway',
+    [await warmPreview('https://interndoor.com/jobs/gone', { fetchImpl, liveMs: 0, pause: async () => {} }), calls.length], [false, 1]);
+
+  /* THE CASE THIS EXISTS FOR — 16 Sep 2026. WhatsApp fetches the link the
+     instant it is typed and does not retry, and the scan posts ~40s after
+     publishing while Vercel is still deploying. The page 404s, then exists. */
+  let asks = 0;
+  const waits = [];
+  const html = '<meta property="og:image" content="https://interndoor.com/api/og?id=9&amp;r=IN">';
+  const deploying = async () => (++asks < 3 ? { ok: false, status: 404 } : { ok: true, text: async () => html });
+  const warmed = await warmPreview('https://interndoor.com/jobs/nvidia-system-software-intern-1',
+    { fetchImpl: deploying, liveMs: 90_000, pause: async (ms) => { waits.push(ms); } });
+  check('it waits for the deploy rather than posting a bare link', [warmed, asks >= 3], [true, true]);
+  check('polling every 3s', waits.every((w) => w === 3000) && waits.length === 2, true);
+  check('and the deadline is 90s', LIVE_MS, 90_000);
 }
 {
   /* Wired into the send, and started BEFORE typing so it costs no wall clock. */
@@ -167,7 +186,7 @@ console.log('\n== the card is warmed before WhatsApp asks for it ==');
   const typed = p.keyboard.type;
   p.keyboard.type = async (t, o) => { order.push('type'); return typed(t, o); };
   const r = await sendOne(p, MSG, { previewMs: 30, warm: async () => { order.push('warm'); } });
-  check('the warm-up runs, and first', order[0], 'warm');
+  check('the warm-up finishes BEFORE the first keystroke — WhatsApp fetches the URL as it lands', order[0], 'warm');
   check('the post still goes out', r.sent, true);
 }
 {
