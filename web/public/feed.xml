@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 16 Sep 2026 12:35:40 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 16 Sep 2026 13:01:39 GMT</lastBuildDate>
+  <item>
+    <title>Edge Network Engineering Internship — Speedcast</title>
+    <link>https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727</guid>
+    <pubDate>Wed, 16 Sep 2026 13:01:39 GMT</pubDate>
+    <description>Company: Speedcast · Location: India
+• Assist with customer deployments of edge computing and SD-WAN platforms
+• Learn network routing, switching, and security fundamentals
+• Write automation scripts and document procedures under supervision</description>
+  </item>
   <item>
     <title>Data Science Intern — GE Aerospace</title>
     <link>https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606</link>
@@ -495,16 +505,6 @@
 • Analyze datasets to find trends and patterns
 • Build predictive models with machine learning
 • Work with teams to deliver data insights</description>
-  </item>
-  <item>
-    <title>Intern — AtkinsRéalis</title>
-    <link>https://interndoor.com/jobs/atkinsr-alis-intern-4465827818</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/atkinsr-alis-intern-4465827818</guid>
-    <pubDate>Thu, 10 Sep 2026 18:30:53 GMT</pubDate>
-    <description>Company: AtkinsRéalis · Location: Bengaluru East, Karnataka, India
-• Develop robotic control algorithms and AI models for object detection and image analysis
-• Work with Python, ROS, OpenCV, and TensorFlow for simulation and automation
-• Collaborate on digital twin projects and test AI solutions in real-world scenarios</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727",
+      "url": "https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727",
+      "title": "Edge Network Engineering Internship — Speedcast",
+      "content_text": "Company: Speedcast · Location: India\n• Assist with customer deployments of edge computing and SD-WAN platforms\n• Learn network routing, switching, and security fundamentals\n• Write automation scripts and document procedures under supervision",
+      "date_published": "2026-09-16T13:01:39.920Z",
+      "authors": [
+        {
+          "name": "Speedcast"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606",
       "url": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606",
       "title": "Data Science Intern — GE Aerospace",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/atkinsr-alis-intern-4465827818",
-      "url": "https://interndoor.com/jobs/atkinsr-alis-intern-4465827818",
-      "title": "Intern — AtkinsRéalis",
-      "content_text": "Company: AtkinsRéalis · Location: Bengaluru East, Karnataka, India\n• Develop robotic control algorithms and AI models for object detection and image analysis\n• Work with Python, ROS, OpenCV, and TensorFlow for simulation and automation\n• Collaborate on digital twin projects and test AI solutions in real-world scenarios",
-      "date_published": "2026-09-10T18:30:53.793Z",
-      "authors": [
-        {
-          "name": "AtkinsRéalis"
         }
       ]
     }
