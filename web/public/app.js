@@ -345,6 +345,81 @@ async function loadJobs() {
   }
 }
 
+/**
+ * The same fetch, for a board that is ALREADY on screen.
+ *
+ * Separate from loadJobs because the failure has to be the opposite: the first
+ * load has nothing to show and an empty board is the honest answer, while a
+ * refresh that fails must leave what the reader is reading exactly where it is.
+ * Returns null on any failure, and never touches `state`.
+ */
+async function fetchBoard() {
+  try {
+    const res = await fetch(DATA_URL, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return Array.isArray(data?.jobs) ? data : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * How often an open tab asks whether the board has moved.
+ *
+ * "checked 44 minutes ago", 16 Sep 2026, on a tab left open: the page fetched
+ * once at load and only re-rendered the label, so the number counted up while
+ * the site itself had published twice. People watching for a new role leave
+ * this open all day — that is the case to serve, not an edge case.
+ *
+ * Five minutes against a publish cadence of 30-50 minutes, and the request is
+ * conditional (`max-age=0, must-revalidate` plus `cache: 'no-cache'`), so a
+ * board that has not moved costs one 304 with an empty body.
+ */
+const REFRESH_MS = 5 * 60 * 1000;
+
+/**
+ * Take the new payload only when it is both real and NEWER.
+ *
+ * Pure, and exported onto the module scope for the test, because the two ways
+ * this goes wrong are silent: a failed fetch wiping a board the reader was
+ * reading, and an unchanged payload repainting the list under their cursor
+ * every five minutes.
+ */
+function shouldAdopt(current, data) {
+  if (!data) return false;
+  const next = data.generatedAt ?? null;
+  if (next == null) return false;
+  return current == null || next > current;
+}
+
+/**
+ * Bring an open tab up to date, keeping the reader's place.
+ *
+ * Filters, the search box and the selected role are all read back out of the
+ * DOM by applyFilters, so they survive; the list's scroll position does not,
+ * and is restored by hand.
+ */
+async function refreshBoard() {
+  const data = await fetchBoard();
+  if (!shouldAdopt(state.generatedAt, data)) {
+    // Still worth repainting the label: "checked 5m ago" ages either way.
+    renderFreshness();
+    return false;
+  }
+  state.jobs = data.jobs;
+  state.generatedAt = data.generatedAt;
+  window.IDTrack?.refresh(state.jobs);
+  const list = $('joblist');
+  const scroll = list ? list.scrollTop : 0;
+  renderFreshness();
+  renderTotal();
+  populateFilters();
+  applyFilters();
+  if (list) list.scrollTop = scroll;
+  return true;
+}
+
 function renderFreshness() {
   $('freshness-text').textContent = state.generatedAt
     ? `checked ${relTime(state.generatedAt)}`
@@ -373,11 +448,29 @@ function renderTotal() {
   if (legacy) legacy.textContent = state.jobs.length;
 }
 
+/**
+ * REBUILDS, rather than appends, because refreshBoard calls it again.
+ *
+ * Appending was right while this ran once per load; on a refresh it would list
+ * every company twice. The first <option> is the "All …" placeholder from the
+ * HTML and is kept; the reader's current choice is restored, and kept even when
+ * the employer has just aged off the board — silently resetting their filter to
+ * "All" mid-read is worse than one option that now matches nothing.
+ */
 function populateFilters() {
+  const fill = (id, values) => {
+    const sel = $(id);
+    if (!sel) return;
+    const chosen = sel.value;
+    while (sel.options.length > 1) sel.remove(1);
+    for (const v of values) sel.append(new Option(v, v));
+    if (chosen && !values.includes(chosen)) sel.append(new Option(chosen, chosen));
+    sel.value = chosen;
+  };
   const companies = [...new Set(state.jobs.map((j) => j.company))].sort((a, b) => a.localeCompare(b));
   const locations = [...new Set(state.jobs.map((j) => j.location).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-  for (const c of companies) $('f-company').append(new Option(c, c));
-  for (const l of locations.slice(0, 200)) $('f-location').append(new Option(l, l));
+  fill('f-company', companies);
+  fill('f-location', locations.slice(0, 200));
 }
 
 /* ---------------- filtering ---------------- */
@@ -1810,6 +1903,13 @@ async function init() {
   if (target) selectJob(target.id);
 
   setInterval(renderFreshness, 60000);
+
+  /* A TAB LEFT OPEN NOW CATCHES UP. Only while it is visible: a background tab
+     polling every five minutes spends the reader's data and battery on a board
+     nobody is looking at, and the visibility handler brings it up to date the
+     moment they come back anyway. */
+  setInterval(() => { if (!document.hidden) refreshBoard(); }, REFRESH_MS);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshBoard(); });
 }
 
 init();
