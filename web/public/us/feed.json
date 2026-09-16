@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/comcast-spring-2027-crm-intern-4466876039",
+      "url": "https://interndoor.com/us/jobs/comcast-spring-2027-crm-intern-4466876039",
+      "title": "Spring 2027 CRM Intern — Comcast",
+      "content_text": "Company: Comcast · Location: Philadelphia, PA · Duration: 0-2 years\n• Configure, test, and document Salesforce workflows and automations\n• Support data hygiene with deduplication and segmentation\n• Generate reports in Salesforce and BI tools for marketing teams",
+      "date_published": "2026-09-16T13:17:16.450Z",
+      "authors": [
+        {
+          "name": "Comcast"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-rapid-prototyping-aero-mech-co-op-fall-2026-group-77-4459024010",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-rapid-prototyping-aero-mech-co-op-fall-2026-group-77-4459024010",
+      "title": "Rapid Prototyping Aero/Mech Co-Op (Fall 2026) - Group 77 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: Fall 2026\n• Design and fabricate sensor systems for aircraft platforms\n• Use solidworks cad for mechanical and aerospace components\n• Work in interdisciplinary teams on rapid prototyping projects",
+      "date_published": "2026-09-16T13:07:32.068Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-physical-design-engineer-4466848843",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-hbm-soc-physical-design-engineer-4466848843",
+      "title": "Intern - HBM SoC Physical Design Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Folsom, CA · Duration: 0-2 years\n• Support physical implementation of SoC design blocks with floorplanning, placement, and routing\n• Use Python, Tcl, and AI tools to develop automation scripts and workflows\n• Collaborate with cross-functional teams on timing analysis and design reviews",
+      "date_published": "2026-09-16T12:28:20.856Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-design-engineer-hbm-4466850798",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-design-engineer-hbm-4466850798",
+      "title": "Intern - Design Engineer, HBM — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Richardson, TX\n• Support HBM design verification through simulation and testing\n• Use Verilog/SystemVerilog for verification environments\n• Collaborate with global teams on AI and computing memory solutions",
+      "date_published": "2026-09-16T12:27:34.641Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/micron-technology-intern-ai-hardware-and-memory-systems-4466858728",
       "url": "https://interndoor.com/us/jobs/micron-technology-intern-ai-hardware-and-memory-systems-4466858728",
       "title": "Intern - AI Hardware and Memory Systems — Micron Technology",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Siemens Healthineers"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-healthineers-ccs-electrical-engineering-co-op-4465944904",
-      "url": "https://interndoor.com/us/jobs/siemens-healthineers-ccs-electrical-engineering-co-op-4465944904",
-      "title": "CCS Electrical Engineering Co-op — Siemens Healthineers",
-      "content_text": "Company: Siemens Healthineers · Location: Knoxville, TN\n• Complete manufacturing test sets for control chassis assemblies\n• Use digital multimeters, oscilloscopes, and power supplies\n• Work with electrical schematics and block diagrams",
-      "date_published": "2026-09-16T03:14:05.559Z",
-      "authors": [
-        {
-          "name": "Siemens Healthineers"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/globalfoundries-systems-engineering-intern-summer-2027-4466821177",
-      "url": "https://interndoor.com/us/jobs/globalfoundries-systems-engineering-intern-summer-2027-4466821177",
-      "title": "Systems Engineering Intern (Summer 2027) — GlobalFoundries",
-      "content_text": "Company: GlobalFoundries · Location: Richardson, TX · Duration: Summer 2027\n• Design and simulate AI models for robotic systems using industry-standard tools\n• Integrate sensors and motor control for improved system perception and awareness\n• Prototype and test hardware-in-the-loop systems for real-world performance",
-      "date_published": "2026-09-16T03:00:05.673Z",
-      "authors": [
-        {
-          "name": "GlobalFoundries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/dover-corporation-engineering-co-op-4465943624",
-      "url": "https://interndoor.com/us/jobs/dover-corporation-engineering-co-op-4465943624",
-      "title": "Engineering Co-Op — Dover Corporation",
-      "content_text": "Company: Dover Corporation · Location: Arden Hills, MN\n• Evaluate product designs and test materials for performance\n• Use CAD and additive manufacturing for prototyping\n• Work in a cross-functional team on lab and manufacturing projects",
-      "date_published": "2026-09-16T02:45:21.655Z",
-      "authors": [
-        {
-          "name": "Dover Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465939648",
-      "url": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465939648",
-      "title": "Intern Conversion: Software Developer — IBM",
-      "content_text": "Company: IBM · Location: Lowell, MA\n• Design, code, test, and support software in agile cycles\n• Work with apis, databases, and cloud services\n• Develop user interfaces from wireframes\n• Use react, angular, vue, and node.js",
-      "date_published": "2026-09-16T02:32:08.448Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
