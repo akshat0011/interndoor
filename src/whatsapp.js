@@ -580,6 +580,16 @@ export async function findTarget(page, name) {
 export const PREVIEW_MS = 25_000;
 
 /**
+ * How long to wait for a just-published page to exist before posting anyway.
+ *
+ * Measured 16 Sep 2026: the scan posts to WhatsApp ~40s after it publishes, and
+ * Vercel's deploy takes about a minute — so the page is typically live a few
+ * seconds later. 90s covers a slow deploy; past that the listing goes out with
+ * a bare link, which still beats not posting it.
+ */
+export const LIVE_MS = 90_000;
+
+/**
  * Ask Vercel for the page and its card image before WhatsApp does.
  *
  * WhatsApp fetches the URL itself to build the preview, and it is the FIRST
@@ -590,7 +600,9 @@ export const PREVIEW_MS = 25_000;
  * Everything is swallowed. A warm-up is an optimisation; a listing must post
  * whether or not it worked.
  */
-export async function warmPreview(text, { fetchImpl = fetch, timeoutMs = 8000 } = {}) {
+export async function warmPreview(text, {
+  fetchImpl = fetch, timeoutMs = 8000, liveMs = LIVE_MS, pause = (ms) => new Promise((r) => setTimeout(r, ms)),
+} = {}) {
   const url = (String(text).match(/https?:\/\/\S+/) ?? [])[0];
   if (!url) return false;
   const get = async (u) => {
@@ -599,7 +611,16 @@ export async function warmPreview(text, { fetchImpl = fetch, timeoutMs = 8000 } 
       return res.ok ? res : null;
     } catch { return null; }
   };
-  const page = await get(url.replace(/[).,]+$/, ''));
+  /* POLLED, because the page is usually not there yet. publish pushes and
+     Vercel deploys for about a minute while this runs ~40s behind it, so the
+     first ask is a 404 on a page that is seconds away from existing. */
+  const clean = url.replace(/[).,]+$/, '');
+  const deadline = Date.now() + liveMs;
+  let page = await get(clean);
+  while (!page && Date.now() < deadline) {
+    await pause(3000);
+    page = await get(clean);
+  }
   if (!page) return false;
   try {
     const html = await page.text();
@@ -705,24 +726,22 @@ export async function sendOne(page, text, { previewMs = PREVIEW_MS, warm = warmP
   const cleared = await clearComposer(page);
   if (!cleared.ok) return { sent: false, carded: false, error: cleared.error };
 
-  /* WARMED WHILE THE MESSAGE IS TYPED, not before it. WhatsApp builds the card
-     from its own fetch of the URL, and a cold /api/og answers in 2.7s against
-     0.17s warm (measured 16 Sep 2026) — enough, on a run posting a single
-     listing, for Enter to arrive first: 6 of 8 posts that day went out bare.
-     Typing takes a few seconds anyway, so this costs no wall clock, and it is
-     deliberately not awaited: a warm-up that fails must not stop a post. */
-  /* Started SYNCHRONOUSLY — deferring it by even a microtask puts the first
-     keystroke ahead of the fetch — and both a synchronous throw and a rejection
-     are swallowed here, because a warm-up must never cost a listing. */
-  let warming;
-  try { warming = Promise.resolve(warm(text)).catch(() => {}); } catch { warming = Promise.resolve(); }
+  /* BEFORE THE URL IS TYPED, NOT ALONGSIDE IT — and this is the whole fix.
+     WhatsApp fetches the link the moment it lands in the composer and does not
+     retry within that compose; a 404 then means no card however long Enter
+     waits. The scan posts ~40s after `Published to the site`, and Vercel's
+     deploy takes about a minute, so the page WhatsApp asked for did not exist
+     yet: on 16 Sep the first attempt waited the full 25s and still went out
+     bare. `warmPreview` polls until the page answers, then renders the card, so
+     by the time the URL is typed both are live and hot. Bounded, and every
+     failure is swallowed: a listing must post whether or not this worked. */
+  try { await warm(text); } catch { /* an optimisation must never cost a post */ }
 
   const lines = String(text).split('\n');
   for (const [i, line] of lines.entries()) {
     if (line) await page.keyboard.type(line, { delay: 8 });
     if (i < lines.length - 1) await page.keyboard.press('Shift+Enter');
   }
-  await warming;
 
   const waitedFrom = Date.now();
   const carded = /https?:\/\//.test(text) ? await waitForPreview(page, previewMs) : true;
