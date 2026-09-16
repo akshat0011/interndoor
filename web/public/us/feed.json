@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-software-engineering-intern-2027-4466207117",
+      "url": "https://interndoor.com/us/jobs/ibm-software-engineering-intern-2027-4466207117",
+      "title": "Software Engineering Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Research Park, California, United States\n• Write, test, and debug code with guidance from engineers\n• Contribute to features, automation, integrations, or app improvements\n• Participate in code reviews, Agile ceremonies, and team discussions",
+      "date_published": "2026-09-16T14:37:37.226Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/comcast-spring-2027-crm-intern-4466876039",
       "url": "https://interndoor.com/us/jobs/comcast-spring-2027-crm-intern-4466876039",
       "title": "Spring 2027 CRM Intern — Comcast",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "SAIC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-healthineers-ccs-systems-engineering-co-op-4465941924",
-      "url": "https://interndoor.com/us/jobs/siemens-healthineers-ccs-systems-engineering-co-op-4465941924",
-      "title": "CCS Systems Engineering Co-op — Siemens Healthineers",
-      "content_text": "Company: Siemens Healthineers · Location: Knoxville, TN\n• Transition product requirements and test cases to Azure DevOps\n• Edit design requirements and update trace matrices\n• Work independently with clear communication of progress",
-      "date_published": "2026-09-16T03:14:34.298Z",
-      "authors": [
-        {
-          "name": "Siemens Healthineers"
         }
       ]
     }
