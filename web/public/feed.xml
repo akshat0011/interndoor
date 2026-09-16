@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 16 Sep 2026 11:06:18 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 16 Sep 2026 12:35:40 GMT</lastBuildDate>
+  <item>
+    <title>Data Science Intern — GE Aerospace</title>
+    <link>https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606</guid>
+    <pubDate>Wed, 16 Sep 2026 12:35:40 GMT</pubDate>
+    <description>Company: GE Aerospace · Location: Bengaluru, Karnataka, India
+• Develop AI and generative AI solutions for customer experience and sales
+• Use Python, cloud platforms, and machine learning tools
+• Collaborate with mentors on real projects with business impact</description>
+  </item>
   <item>
     <title>Trainee — Birlasoft</title>
     <link>https://interndoor.com/jobs/birlasoft-trainee-4466847570</link>
@@ -495,16 +505,6 @@
 • Develop robotic control algorithms and AI models for object detection and image analysis
 • Work with Python, ROS, OpenCV, and TensorFlow for simulation and automation
 • Collaborate on digital twin projects and test AI solutions in real-world scenarios</description>
-  </item>
-  <item>
-    <title>Intern — Micron Technology</title>
-    <link>https://interndoor.com/jobs/micron-technology-intern-4464555921</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/micron-technology-intern-4464555921</guid>
-    <pubDate>Thu, 10 Sep 2026 18:27:04 GMT</pubDate>
-    <description>Company: Micron Technology · Location: Hyderabad, Telangana, India
-• Work on semiconductor design, data science, and AI solutions
-• Tools include Python, machine learning frameworks, and engineering software
-• Based in Hyderabad with opportunities for AI and digital skills development</description>
   </item>
 </channel>
 </rss>
