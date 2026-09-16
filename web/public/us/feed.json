@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/decagon-engineering-intern-summer-2027-4468282532",
+      "url": "https://interndoor.com/us/jobs/decagon-engineering-intern-summer-2027-4468282532",
+      "title": "Engineering Intern (Summer 2027) — Decagon",
+      "content_text": "Company: Decagon · Location: San Francisco, CA · Duration: Summer 2028\n• Build AI agents for real customers, shaping how millions interact with brands\n• Work with distributed systems, data pipelines, and production infrastructure\n• Collaborate with product teams to create scalable, self-serve AI tools",
+      "date_published": "2026-09-16T20:21:56.523Z",
+      "authors": [
+        {
+          "name": "Decagon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-quantitative-software-engineer-ats-greenhouse-waymo-8197554",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-quantitative-software-engineer-ats-greenhouse-waymo-8197554",
+      "title": "2027 Summer Intern, PhD, Quantitative Software Engineer — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California, United States | San Francisco, California, United States\n• Design and implement software for autonomous driving systems\n• Work with python and statistical analysis tools\n• Collaborate with researchers on real-world applications",
+      "date_published": "2026-09-16T20:08:32.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/heads-up-director-of-technology-school-year-internship-4467106638",
+      "url": "https://interndoor.com/us/jobs/heads-up-director-of-technology-school-year-internship-4467106638",
+      "title": "Director of Technology – School Year Internship — Heads Up",
+      "content_text": "Company: Heads Up · Location: United States\n• Manage website updates and user experience improvements\n• Support app development and digital tool projects\n• Research tech solutions for nonprofit operations\n• Collaborate with departments to automate internal processes",
+      "date_published": "2026-09-16T20:01:36.065Z",
+      "authors": [
+        {
+          "name": "Heads Up"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4468271460",
       "url": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4468271460",
       "title": "Summer Internship - Digital/AI Transformation — Airbus",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-ai-infra-engineer-intern-recommendation-and-llm-2027-summer-4457692099",
-      "url": "https://interndoor.com/us/jobs/tiktok-ai-infra-engineer-intern-recommendation-and-llm-2027-summer-4457692099",
-      "title": "AI Infra Engineer Intern (Recommendation & LLM) - 2027 Summer — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Build and optimize infrastructure for large-scale model training and online inference\n• Work with PyTorch/TensorFlow, GPU optimization, and distributed systems\n• Collaborate with researchers on LLM training and serving solutions",
-      "date_published": "2026-09-16T09:36:05.244Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-controls-security-apprentice-4446291304",
-      "url": "https://interndoor.com/us/jobs/johnson-controls-security-apprentice-4446291304",
-      "title": "Security Apprentice — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: Westbrook, ME\n• Install and test security systems like intrusion alarms, access control, and CCTV\n• Read blueprints and create as-built drawings for projects\n• Work on large installations with client consultations and on-call rotations",
-      "date_published": "2026-09-16T09:16:12.688Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/epic-games-game-design-intern-4457678008",
-      "url": "https://interndoor.com/us/jobs/epic-games-game-design-intern-4457678008",
-      "title": "Game Design Intern — Epic Games",
-      "content_text": "Company: Epic Games · Location: Cary, NC\n• Help shape competitive gameplay and balance Rocket Pass content\n• Work with technical designers and engineers in UEFN\n• Attend playtests and contribute to solving game design challenges",
-      "date_published": "2026-09-16T09:10:37.099Z",
-      "authors": [
-        {
-          "name": "Epic Games"
         }
       ]
     }
