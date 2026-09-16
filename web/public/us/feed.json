@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/globalfoundries-systems-engineering-intern-summer-2027-4466821177",
+      "url": "https://interndoor.com/us/jobs/globalfoundries-systems-engineering-intern-summer-2027-4466821177",
+      "title": "Systems Engineering Intern (Summer 2027) — GlobalFoundries",
+      "content_text": "Company: GlobalFoundries · Location: Richardson, TX · Duration: Summer 2027\n• Design and simulate AI models for robotic systems using industry-standard tools\n• Integrate sensors and motor control for improved system perception and awareness\n• Prototype and test hardware-in-the-loop systems for real-world performance",
+      "date_published": "2026-09-16T03:00:05.673Z",
+      "authors": [
+        {
+          "name": "GlobalFoundries"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dover-corporation-engineering-co-op-4465943624",
+      "url": "https://interndoor.com/us/jobs/dover-corporation-engineering-co-op-4465943624",
+      "title": "Engineering Co-Op — Dover Corporation",
+      "content_text": "Company: Dover Corporation · Location: Arden Hills, MN\n• Evaluate product designs and test materials for performance\n• Use CAD and additive manufacturing for prototyping\n• Work in a cross-functional team on lab and manufacturing projects",
+      "date_published": "2026-09-16T02:45:21.655Z",
+      "authors": [
+        {
+          "name": "Dover Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465939648",
+      "url": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465939648",
+      "title": "Intern Conversion: Software Developer — IBM",
+      "content_text": "Company: IBM · Location: Lowell, MA\n• Design, code, test, and support software in agile cycles\n• Work with apis, databases, and cloud services\n• Develop user interfaces from wireframes\n• Use react, angular, vue, and node.js",
+      "date_published": "2026-09-16T02:32:08.448Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465946614",
       "url": "https://interndoor.com/us/jobs/ibm-intern-conversion-software-developer-4465946614",
       "title": "Intern Conversion: Software Developer — IBM",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-internship-raytheon-systems-security-engineer-onsite-4467904027",
-      "url": "https://interndoor.com/us/jobs/raytheon-internship-raytheon-systems-security-engineer-onsite-4467904027",
-      "title": "Internship – Raytheon Systems Security Engineer -Onsite — Raytheon",
-      "content_text": "Company: Raytheon · Location: Tewksbury, MA\n• Support security solutions for sensors and radar systems\n• Work with cybersecurity tools and policies\n• Collaborate across engineering disciplines",
-      "date_published": "2026-09-15T21:32:13.590Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-intern-summer-2027-4467793113",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-intern-summer-2027-4467793113",
-      "title": "Electrical Engineering Intern (Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Rockford, IL · Duration: Summer 2027\n• Support electrical design for thrust vector actuation systems\n• Use schematic capture tools like Altium and OrCAD\n• Collaborate with cross-functional teams on integration and testing",
-      "date_published": "2026-09-15T21:32:05.241Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/pratt-and-whitney-test-equipment-design-intern-onsite-4467904029",
-      "url": "https://interndoor.com/us/jobs/pratt-and-whitney-test-equipment-design-intern-onsite-4467904029",
-      "title": "Test Equipment Design Intern (Onsite) — Pratt & Whitney",
-      "content_text": "Company: Pratt & Whitney · Location: East Hartford, CT\n• Design special test equipment for jet engine testing\n• Use AutoCAD, NX, ANSYS, and Microsoft Office\n• Work with mechanical and project engineers",
-      "date_published": "2026-09-15T21:31:37.710Z",
-      "authors": [
-        {
-          "name": "Pratt & Whitney"
         }
       ]
     }
