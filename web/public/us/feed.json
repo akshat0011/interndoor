@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-ats-greenhouse-waymo-8202801",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-ats-greenhouse-waymo-8202801",
+      "title": "2027 Summer Intern, MS/PhD, Software Engineer — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California, USA\n• Develop core simulator functionality for safety evaluation models\n• Design metrics and evaluation tools for simulated data\n• Work on autonomous driving systems with real-world impact",
+      "date_published": "2026-09-16T16:28:26.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-computer-vision-ats-greenhouse-waymo-8202025",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-computer-vision-ats-greenhouse-waymo-8202025",
+      "title": "2027 Summer Intern, PhD, Machine Learning, Computer Vision — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California, United States\n• Analyze deep multimodal perception models for autonomous vehicles\n• Train and evaluate neural networks using pytorch or tensorflow\n• Work on real-world sensor data and simulation environments",
+      "date_published": "2026-09-16T16:23:13.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-kite-development-tech-ops-quality-4466870830",
       "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-kite-development-tech-ops-quality-4466870830",
       "title": "Intern - Kite Development - Tech Ops (Quality) — Gilead Sciences",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-digital-industries-automation-internship-program-application-engineeri-4466831387",
-      "url": "https://interndoor.com/us/jobs/siemens-digital-industries-automation-internship-program-application-engineeri-4466831387",
-      "title": "Digital Industries Automation Internship Program - Application Engineering Track — Siemens",
-      "content_text": "Company: Siemens · Location: Alpharetta, GA\n• Design, test, and analyze automation solutions for industrial systems\n• Work with PLCs, VFDs, CNCs, and industrial networking technologies\n• Develop demos and training materials for customer-facing projects",
-      "date_published": "2026-09-16T04:41:16.958Z",
-      "authors": [
-        {
-          "name": "Siemens"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-engineer-product-support-4467943637",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-engineer-product-support-4467943637",
-      "title": "2027 Intern Engineer - Product Support — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Oklahoma City, OK · Duration: 10 weeks\n• Support engineering design and testing of electrical systems and components\n• Use 2D drawing tools and work with cable assemblies and wiring diagrams\n• Maintain and test equipment in Oklahoma City, OK",
-      "date_published": "2026-09-16T04:16:04.719Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
         }
       ]
     }
