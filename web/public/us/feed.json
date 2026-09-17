@@ -6,6 +6,294 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459876923",
+      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459876923",
+      "title": "Intern, Software Engineer — L3Harris Technologies",
+      "content_text": "Company: L3Harris Technologies · Location: Northampton, MA\n• Develop embedded software for real-time control of tactical radio equipment\n• Work with C++, C#, Java, Python, and real-time OS like VxWorks and QNX\n• Collaborate on system design, testing, and documentation across the software lifecycle",
+      "date_published": "2026-09-17T18:21:30.324Z",
+      "authors": [
+        {
+          "name": "L3Harris Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4466605395",
+      "url": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4466605395",
+      "title": "Summer Internship - Digital/AI Transformation — Airbus",
+      "content_text": "Company: Airbus · Location: Herndon, VA\n• Support change initiatives with cross-functional teams in digital and AI transformation\n• Leverage computer science and AI knowledge to align technical and business strategies\n• Plan workshops, manage communications, and present to leadership on change progress",
+      "date_published": "2026-09-17T18:19:50.360Z",
+      "authors": [
+        {
+          "name": "Airbus"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990350003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990350003",
+      "title": "Test Engineering Intern Summer 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Stennis Space Center, MS · Duration: Summer 2027\n• Support engine rebuilds, test readiness, and hardware swaps\n• Use SolidWorks, MATLAB, SiemensNX, Python, and Java\n• Work full-time on-site for 12+ weeks starting May/June 2027",
+      "date_published": "2026-09-17T18:18:54.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-architecture-2027-4466606438",
+      "url": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-architecture-2027-4466606438",
+      "title": "PhD Research Intern, Architecture – 2027 — NVIDIA AI",
+      "content_text": "Company: NVIDIA AI · Location: Seattle, WA\n• Explore new GPU and data-center architecture concepts, including memory systems and accelerators\n• Build simulators, prototypes, and tools to test architecture ideas and co-design hardware-software solutions\n• Collaborate with researchers and product teams to shape future NVIDIA systems and technologies",
+      "date_published": "2026-09-17T18:17:55.128Z",
+      "authors": [
+        {
+          "name": "NVIDIA AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-spring-2027-ats-greenhouse-rocketlab-7990352003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-spring-2027-ats-greenhouse-rocketlab-7990352003",
+      "title": "Test Engineering Intern Spring 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Stennis Space Center, MS · Duration: Spring 2027\n• Support engine rebuilds, test readiness, and hardware swaps\n• Use SolidWorks, MATLAB, SiemensNX, Python, and Java\n• Work full-time on-site for 12+ weeks starting Jan-Mar 2027",
+      "date_published": "2026-09-17T18:17:03.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-data-science-co-op-spring-or-summer-2027-4468688443",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-data-science-co-op-spring-or-summer-2027-4468688443",
+      "title": "Data Science Co-op - Spring or Summer 2027 — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: 3 months\n• Analyze production data to improve process efficiency and product quality\n• Build predictive models and dashboards using Python and machine learning\n• Collaborate with engineers and scientists on data-driven innovation projects",
+      "date_published": "2026-09-17T18:17:00.005Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-manufacturing-spring-2027-ats-greenhouse-rocketlab-7987042003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-manufacturing-spring-2027-ats-greenhouse-rocketlab-7987042003",
+      "title": "Test Engineering Intern - Manufacturing Spring 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Long Beach, CA · Duration: Spring 2027\n• Support test infrastructure for propulsion and fluids systems\n• Use Arduino, LabView, Solidworks, and MATLAB\n• Work full-time on-site for 12+ weeks in Long Beach",
+      "date_published": "2026-09-17T18:16:30.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-systems-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990138003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-systems-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990138003",
+      "title": "Systems Engineering Intern Summer 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Pasadena, CA · Duration: Summer 2027\n• Support integration and testing with hardware setup, robotic systems, data analysis, and troubleshooting\n• Work with MATLAB, ROS 2, LabView, and Python on real projects\n• Full-time on-site for 12+ weeks starting May/June 2027",
+      "date_published": "2026-09-17T18:15:29.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-quantitative--4468688541",
+      "url": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-quantitative--4468688541",
+      "title": "2027 Quantitative Masters Internship Program - Investments - Quantitative Investing - New York — BlackRock",
+      "content_text": "Company: BlackRock · Location: New York, NY\n• Develop quantitative models for investment strategies using Python and machine learning\n• Work on portfolio management and product innovation across global asset classes\n• Collaborate with cross-functional teams on research and technology projects",
+      "date_published": "2026-09-17T18:13:58.387Z",
+      "authors": [
+        {
+          "name": "BlackRock"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-quantitative--4468680685",
+      "url": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-quantitative--4468680685",
+      "title": "2027 Quantitative Masters Internship Program - Investments - Quantitative Investing - San Francisco — BlackRock",
+      "content_text": "Company: BlackRock · Location: San Francisco, CA\n• Analyze financial data and build models for investment strategies\n• Work with Python and machine learning tools in a global team\n• Gain exposure to systematic investing and AI-driven portfolio management",
+      "date_published": "2026-09-17T18:13:58.332Z",
+      "authors": [
+        {
+          "name": "BlackRock"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-global-capita-4468695467",
+      "url": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-global-capita-4468695467",
+      "title": "2027 Quantitative Masters Internship Program - Investments - Global Capital Markets - San Francisco — BlackRock",
+      "content_text": "Company: BlackRock · Location: San Francisco, CA\n• Support product strategy and design in global capital markets\n• Work with advanced analytics and quantitative models\n• Based in San Francisco, CA for 12-month internship",
+      "date_published": "2026-09-17T18:13:41.375Z",
+      "authors": [
+        {
+          "name": "BlackRock"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-global-capita-4468676782",
+      "url": "https://interndoor.com/us/jobs/blackrock-2027-quantitative-masters-internship-program-investments-global-capita-4468676782",
+      "title": "2027 Quantitative Masters Internship Program - Investments - Global Capital Markets - New York — BlackRock",
+      "content_text": "Company: BlackRock · Location: New York, NY\n• Develop quantitative models to support internal funds and client analytics\n• Work with Python and SQL to analyze market data and build tools\n• Collaborate on product strategy and market transformation initiatives",
+      "date_published": "2026-09-17T18:13:18.490Z",
+      "authors": [
+        {
+          "name": "BlackRock"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/x-energy-test-engineering-internship-summer-2027-4468679711",
+      "url": "https://interndoor.com/us/jobs/x-energy-test-engineering-internship-summer-2027-4468679711",
+      "title": "Test Engineering Internship - Summer 2027 — X-energy",
+      "content_text": "Company: X-energy · Location: Rockville, MD · Duration: 10- weeks\n• Support engineering projects and analyses in reactor design and licensing\n• Work with engineers and scientists on technical tasks and documentation\n• Maintain project files and contribute to team meetings and reviews",
+      "date_published": "2026-09-17T18:11:32.478Z",
+      "authors": [
+        {
+          "name": "X-energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/x-energy-nuclear-engineering-internship-summer-2027-4468680636",
+      "url": "https://interndoor.com/us/jobs/x-energy-nuclear-engineering-internship-summer-2027-4468680636",
+      "title": "Nuclear Engineering Internship - Summer 2027 — X-energy",
+      "content_text": "Company: X-energy · Location: Rockville, MD · Duration: 10- weeks\n• Support engineering projects and analyses in reactor design and licensing\n• Use Microsoft Office for reports, documentation, and presentations\n• Work on-site 5 days a week in Gaithersburg, MD\n• 10-week program with team meetings and design reviews",
+      "date_published": "2026-09-17T18:09:03.024Z",
+      "authors": [
+        {
+          "name": "X-energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/x-energy-mechanical-engineering-internship-summer-2027-4468684606",
+      "url": "https://interndoor.com/us/jobs/x-energy-mechanical-engineering-internship-summer-2027-4468684606",
+      "title": "Mechanical Engineering Internship - Summer 2027 — X-energy",
+      "content_text": "Company: X-energy · Location: Rockville, MD · Duration: 10- weeks\n• Support engineering projects and analyses in reactor design and licensing\n• Use CAD/PLM software and thermodynamics tools like RELAP or SINDA\n• Work on mechanical systems, piping, HVAC, and structural analysis\n• 10-week on-site program in Gaithersburg, MD, June–August 2027",
+      "date_published": "2026-09-17T18:08:30.939Z",
+      "authors": [
+        {
+          "name": "X-energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-technologies-software-engineer-co-op-spring-summer-2027-4468675612",
+      "url": "https://interndoor.com/us/jobs/honeywell-technologies-software-engineer-co-op-spring-summer-2027-4468675612",
+      "title": "Software Engineer Co-Op - Spring/Summer 2027 — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Pittsford, NY · Duration: Summer 2027\n• Write code for product features, test automation, and deployment\n• Use agile methodologies and collaborate with cross-functional teams\n• Debug software and participate in code reviews\n• Work on real-world projects impacting industry efficiency and safety",
+      "date_published": "2026-09-17T18:03:36.598Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/honeywell-technologies-data-science-co-op-spring-summer-2027-4468684466",
+      "url": "https://interndoor.com/us/jobs/honeywell-technologies-data-science-co-op-spring-summer-2027-4468684466",
+      "title": "Data Science Co-Op - Spring/Summer 2027 — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Pittsford, NY · Duration: Summer 2027\n• Analyze complex datasets to provide actionable business insights\n• Use python and cloud platforms like aws or azure\n• Work with cross-functional teams on real-world data science projects",
+      "date_published": "2026-09-17T18:03:07.214Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-it-internship-4468667747",
+      "url": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-it-internship-4468667747",
+      "title": "IT Internship — Safran Defense & Space, Inc.",
+      "content_text": "Company: Safran Defense & Space, Inc. · Location: Bedford, NH\n• Troubleshoot hardware, software, and connectivity issues for end users\n• Maintain IT documentation and support asset management activities\n• Collaborate on IT projects like software deployments and system upgrades",
+      "date_published": "2026-09-17T17:32:56.351Z",
+      "authors": [
+        {
+          "name": "Safran Defense & Space, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-electrical-engineering-internship-4468655985",
+      "url": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-electrical-engineering-internship-4468655985",
+      "title": "Electrical Engineering Internship — Safran Defense & Space, Inc.",
+      "content_text": "Company: Safran Defense & Space, Inc. · Location: Bedford, NH\n• Support design and development of camera systems and laser devices\n• Work with engineering staff on testing and data analysis\n• Create schematics and documentation under senior guidance",
+      "date_published": "2026-09-17T17:31:58.534Z",
+      "authors": [
+        {
+          "name": "Safran Defense & Space, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-austin-4468674301",
+      "url": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-austin-4468674301",
+      "title": "2027 Sophomore Internship Program - Software Engineer Intern, Austin — Visa",
+      "content_text": "Company: Visa · Location: Austin, TX\n• Build and deploy Kafka clusters using Docker and Kubernetes\n• Develop chatbots and automate payment processes with low latency algorithms\n• Design software solutions for digital currency routing and transaction monitoring",
+      "date_published": "2026-09-17T17:29:44.781Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-foster-city-4468677153",
+      "url": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-foster-city-4468677153",
+      "title": "2027 Sophomore Internship Program - Software Engineer Intern, Foster City — Visa",
+      "content_text": "Company: Visa · Location: Foster City, CA\n• Build and deploy Kafka clusters using Docker and Kubernetes\n• Develop chatbots and testing tools for payment systems\n• Work on real-world projects with global impact",
+      "date_published": "2026-09-17T17:29:04.161Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/visa-software-engineer-intern-2027-austin-tx-4468681101",
+      "url": "https://interndoor.com/us/jobs/visa-software-engineer-intern-2027-austin-tx-4468681101",
+      "title": "Software Engineer, Intern - 2027 Austin, TX — Visa",
+      "content_text": "Company: Visa · Location: Austin, TX\n• Build software solutions for routing digital currency transactions\n• Use Docker, Kubernetes, and Python for self-serve Kafka deployments\n• Create testing and monitoring tools for transactional systems\n• Work on automation projects for payments at gas stations",
+      "date_published": "2026-09-17T17:28:23.789Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/visa-software-engineer-intern-highlands-ranch-co-2027-4468684030",
+      "url": "https://interndoor.com/us/jobs/visa-software-engineer-intern-highlands-ranch-co-2027-4468684030",
+      "title": "Software Engineer, Intern, Highlands Ranch, CO - 2027 — Visa",
+      "content_text": "Company: Visa · Location: Highlands Ranch, CO\n• Build software solutions for digital currency transactions\n• Use Docker, Kubernetes, and Kafka for deployment\n• Work on chatbots, automation, and testing tools\n• Collaborate with global teams on impactful projects",
+      "date_published": "2026-09-17T17:27:42.676Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-quantum-4468685019",
+      "url": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-quantum-4468685019",
+      "title": "Staff Research Scientist, Intern - PhD Quantum — Visa",
+      "content_text": "Company: Visa · Location: Foster City, CA\n• Develop quantum algorithms for fraud detection and secure transactions\n• Work with Python, C++, and Generative AI tools\n• Conduct research in quantum machine learning and optimization",
+      "date_published": "2026-09-17T17:27:18.742Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-ashburn-4468666893",
       "url": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-ashburn-4468666893",
       "title": "2027 Sophomore Internship Program - Software Engineer Intern, Ashburn — Visa",
@@ -314,294 +602,6 @@
       "authors": [
         {
           "name": "LyondellBasell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-sustaining-product-engineering-4468647108",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-sustaining-product-engineering-4468647108",
-      "title": "Internship - Sustaining Product Engineering — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Leominster, MA\n• Review device performance data using Excel, MATLAB, or Python\n• Identify trends and anomalies in production and qualification data\n• Support product release decisions with technical reports for cross-functional teams",
-      "date_published": "2026-09-17T13:10:33.865Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-calibration-equipment-engineering-4468626465",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-calibration-equipment-engineering-4468626465",
-      "title": "Internship - Calibration Equipment Engineering — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Leominster, MA · Duration: 2–3 years\n• Perform calibration, debug, and troubleshoot semiconductor equipment\n• Use metrology tools and data logging software for accuracy\n• Maintain equipment and ensure safety protocols are followed",
-      "date_published": "2026-09-17T13:10:32.118Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-unit-test-engineer-4468645109",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-unit-test-engineer-4468645109",
-      "title": "Internship - Unit Test Engineer — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Leominster, MA\n• Write test programs for semiconductor devices using ATE and hardware\n• Work with Cadence Allegro for PCB layout and test hardware design\n• Perform lab measurements with oscilloscopes and signal generators",
-      "date_published": "2026-09-17T13:09:57.112Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-test-and-finish-equipment-engineering-4468640193",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-test-and-finish-equipment-engineering-4468640193",
-      "title": "Internship - Test and Finish Equipment Engineering — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Leominster, MA · Duration: 2-3 years\n• Maintain and support manufacturing equipment on the floor\n• Use AutoCAD/SolidWorks and Excel for process optimization\n• Implement Lean/Six Sigma projects for floor improvements",
-      "date_published": "2026-09-17T13:09:46.999Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458365955",
-      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458365955",
-      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
-      "content_text": "Company: LyondellBasell · Location: Pasadena, TX\n• Troubleshoot high-voltage systems and improve process instrumentation\n• Work on control schemes and predictive models for process optimization\n• Collaborate with technicians on equipment repair and system expansion",
-      "date_published": "2026-09-17T13:05:37.098Z",
-      "authors": [
-        {
-          "name": "LyondellBasell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lockheed-martin-cybersecurity-intern-4466274047",
-      "url": "https://interndoor.com/us/jobs/lockheed-martin-cybersecurity-intern-4466274047",
-      "title": "Cybersecurity Intern — Lockheed Martin",
-      "content_text": "Company: Lockheed Martin · Location: Orlando, FL\n• Design anti-tamper and cyber-security features for critical systems\n• Use model-based engineering tools to assess system behavior\n• Collaborate with teams on security requirements and risk mitigation",
-      "date_published": "2026-09-17T12:54:26.384Z",
-      "authors": [
-        {
-          "name": "Lockheed Martin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lockheed-martin-cybersecurity-intern-4466262856",
-      "url": "https://interndoor.com/us/jobs/lockheed-martin-cybersecurity-intern-4466262856",
-      "title": "Cybersecurity Intern — Lockheed Martin",
-      "content_text": "Company: Lockheed Martin · Location: Grand Prairie, TX\n• Design anti-tamper and cyber-security features for critical systems\n• Use model-based systems engineering to analyze and document security solutions\n• Collaborate with teams to mitigate technical and program risks",
-      "date_published": "2026-09-17T12:53:51.535Z",
-      "authors": [
-        {
-          "name": "Lockheed Martin"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/sanofi-2027-spring-co-op-engineering-and-maintenance-swiftwater-pa-4468607436",
-      "url": "https://interndoor.com/us/jobs/sanofi-2027-spring-co-op-engineering-and-maintenance-swiftwater-pa-4468607436",
-      "title": "2027 Spring Co-Op Engineering & Maintenance, Swiftwater, PA — Sanofi",
-      "content_text": "Company: Sanofi · Location: Swiftwater, PA · Duration: 6 months\n• Support engineering projects with technical documentation and system verification\n• Work with experts on HVAC, electrical, and piping systems\n• Gain hands-on experience in project management and GMP compliance",
-      "date_published": "2026-09-17T11:12:48.689Z",
-      "authors": [
-        {
-          "name": "Sanofi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/valeo-warranty-engineering-co-op-4468608198",
-      "url": "https://interndoor.com/us/jobs/valeo-warranty-engineering-co-op-4468608198",
-      "title": "Warranty Engineering Co-Op — Valeo",
-      "content_text": "Company: Valeo · Location: Troy, MI\n• Track warranty returns and manage parts inventory\n• Analyze warranty data for product improvements\n• Work with global teams on greener mobility solutions",
-      "date_published": "2026-09-17T11:03:13.835Z",
-      "authors": [
-        {
-          "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abb-electrical-design-engineer-intern-summer-2027-4462754945",
-      "url": "https://interndoor.com/us/jobs/abb-electrical-design-engineer-intern-summer-2027-4462754945",
-      "title": "Electrical Design Engineer Intern- Summer 2027 — ABB",
-      "content_text": "Company: ABB · Location: Fort Smith, AR · Duration: Summer 2027\n• Assist in developing or modifying engineering designs, drawings, and calculations\n• Use standard engineering tools and identify improvement opportunities\n• Collaborate with various teams to support ABB’s operations\n• Support and lead continuous improvement projects",
-      "date_published": "2026-09-17T10:56:56.955Z",
-      "authors": [
-        {
-          "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-fall-2026-4466260439",
-      "url": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-fall-2026-4466260439",
-      "title": "Power Electronics Intern (Fall 2026) — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: New Freedom, PA · Duration: Fall 2026\n• Design circuits, debug systems, and test power electronics components\n• Use math and engineering tools for analysis and modeling\n• Work on product quality and safety in a manufacturing environment",
-      "date_published": "2026-09-17T10:45:24.207Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-summer-2027-4466259217",
-      "url": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-summer-2027-4466259217",
-      "title": "Power Electronics Intern (Summer 2027) — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: New Freedom, PA · Duration: Summer 2027\n• Design and debug power electronics circuits\n• Select and evaluate components for modules\n• Perform testing and validation of performance\n• Maintain safe and organized work environment",
-      "date_published": "2026-09-17T09:52:37.348Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-controls-controls-applications-intern-4466268088",
-      "url": "https://interndoor.com/us/jobs/johnson-controls-controls-applications-intern-4466268088",
-      "title": "Controls Applications Intern — Johnson Controls",
-      "content_text": "Company: Johnson Controls · Location: Glendale, WI\n• Develop and test control-related products under engineer guidance\n• Use Matlab/Simulink and Excel for system modeling and analysis\n• Work on HVAC systems and automation tools in a global team",
-      "date_published": "2026-09-17T09:52:07.823Z",
-      "authors": [
-        {
-          "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-systems-engineering-intern-autonomous-maritime-platforms-4467503528",
-      "url": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-systems-engineering-intern-autonomous-maritime-platforms-4467503528",
-      "title": "Systems Engineering Intern - Autonomous Maritime Platforms — General Dynamics Mission Systems",
-      "content_text": "Company: General Dynamics Mission Systems · Location: Quincy, MA\n• Design and test autonomous systems for maritime operations\n• Work with defense contractors on classified projects\n• Based in Quincy, MA for full-time role",
-      "date_published": "2026-09-17T09:51:42.185Z",
-      "authors": [
-        {
-          "name": "General Dynamics Mission Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/panther-life-sciences-r-and-d-engineer-internship-4468392285",
-      "url": "https://interndoor.com/us/jobs/panther-life-sciences-r-and-d-engineer-internship-4468392285",
-      "title": "R&D Engineer Internship — Panther Life Sciences",
-      "content_text": "Company: Panther Life Sciences · Location: New York, NY\n• Test smartpatches in skin models, analyze performance, and troubleshoot failures\n• Design 3d cad fixtures for testing, run experiments, and analyze data\n• Work on microneedle arrays, material testing, and device characterization\n• Gain experience in device development, testing, and manufacturing",
-      "date_published": "2026-09-17T07:55:55.887Z",
-      "authors": [
-        {
-          "name": "Panther Life Sciences"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-cyber-systems-engineer-intern-roy-ut-4468363225",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-cyber-systems-engineer-intern-roy-ut-4468363225",
-      "title": "2027 Cyber Systems Engineer Intern - Roy UT — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Roy, UT · Duration: 10 weeks\n• Design and test secure network protocols for defense systems\n• Use Python, Java, and Linux to build cyber infrastructure\n• Work on classified projects with Secret clearance requirements",
-      "date_published": "2026-09-17T04:11:57.445Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-electrical-engineering-intern-chandler-az-4468356374",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-electrical-engineering-intern-chandler-az-4468356374",
-      "title": "2027 Electrical Engineering Intern - Chandler AZ — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Chandler, AZ · Duration: 10 weeks\n• Design and test electrical systems for space applications\n• Use MATLAB and CAD software for simulations and modeling\n• Work on cutting-edge projects with real-world impact",
-      "date_published": "2026-09-17T04:11:50.119Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-cyber-software-engineer-intern-cincinnati-oh-4468360267",
-      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-cyber-software-engineer-intern-cincinnati-oh-4468360267",
-      "title": "2027 Cyber Software Engineer Intern - Cincinnati OH — Northrop Grumman",
-      "content_text": "Company: Northrop Grumman · Location: Cincinnati, OH · Duration: 10 weeks\n• Develop software solutions for national security systems using scripting and kernel development\n• Work with Git, CI/CD tools, and reverse engineering techniques in a secure environment\n• Based in Cincinnati, OH for 10 weeks during summer 2027",
-      "date_published": "2026-09-17T04:11:25.254Z",
-      "authors": [
-        {
-          "name": "Northrop Grumman"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/onsemi-summer-2027-thin-films-implant-and-diffusion-process-engineering-inter-4467170136",
-      "url": "https://interndoor.com/us/jobs/onsemi-summer-2027-thin-films-implant-and-diffusion-process-engineering-inter-4467170136",
-      "title": "Summer 2027 - Thin Films, Implant & Diffusion Process Engineering Intern — onsemi",
-      "content_text": "Company: onsemi · Location: Hopewell Junction, NY · Duration: Summer 2027\n• Develop and implement manufacturing processes for integrated circuits\n• Collaborate on process improvements and resolve real-world challenges\n• Analyze data and present findings to engineering teams\n• Work in a team focused on semiconductor engineering innovation",
-      "date_published": "2026-09-17T03:54:54.735Z",
-      "authors": [
-        {
-          "name": "onsemi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-ms-software-engineering-maneuvering-tech-ats-greenhouse-waymo-8203200",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-ms-software-engineering-maneuvering-tech-ats-greenhouse-waymo-8203200",
-      "title": "2027 Summer Intern, BS/MS, Software Engineering, Maneuvering Tech — Waymo",
-      "content_text": "Company: Waymo · Location: San Francisco, California\n• Analyze driving behavior from logs to identify root causes\n• Develop perception and decision-making systems for autonomous vehicles\n• Work on real-world challenges in simulation and real-world data",
-      "date_published": "2026-09-17T03:33:58.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-co-op-summer-fall-2027-onsite-4467158872",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-co-op-summer-fall-2027-onsite-4467158872",
-      "title": "Systems Engineering Co-op (Summer/Fall 2027) - Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Fall 2027\n• Support system requirements development and integration activities\n• Use tools for requirements management and verification planning\n• Work on avionics systems for business and regional aircraft",
-      "date_published": "2026-09-17T03:31:28.727Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-technical-intern-4468346947",
-      "url": "https://interndoor.com/us/jobs/leidos-technical-intern-4468346947",
-      "title": "Technical Intern — Leidos",
-      "content_text": "Company: Leidos · Location: United States\n• Develop and maintain data pipelines for Splunk and analytics platforms\n• Write Python scripts to process log, metric, and event data\n• Collaborate with SREs and operations teams on data requirements",
-      "date_published": "2026-09-17T03:16:16.718Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-dissolution-based-recycling-4466255125",
-      "url": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-dissolution-based-recycling-4466255125",
-      "title": "R&D PhD Summer Intern: Dissolution-Based Recycling — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Mason, OH\n• Design and execute experiments to improve plastic recycling and material performance\n• Work with lab and pilot-scale setups to develop new polymer processing methods\n• Analyze data and create models to support sustainable product development",
-      "date_published": "2026-09-17T02:19:40.196Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-healthcare-infant-care-v-and-v-engineering-co-op-4468334316",
-      "url": "https://interndoor.com/us/jobs/ge-healthcare-infant-care-v-and-v-engineering-co-op-4468334316",
-      "title": "Infant Care V&V Engineering Co-op — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Waukesha, WI · Duration: 20 weeks\n• Develop and execute test procedures for Infant Care products like incubators and warmers\n• Collaborate with engineers to evaluate system performance and usability\n• Work onsite in Waukesha, WI for at least 20 weeks",
-      "date_published": "2026-09-17T01:26:49.612Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
         }
       ]
     }
