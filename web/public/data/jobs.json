@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789651939388,
+ "generatedAt": 1789652913082,
  "region": "IN",
  "regionName": "India",
- "count": 293,
- "techCount": 293,
+ "count": 292,
+ "techCount": 292,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
@@ -124,7 +124,6 @@
   "Roche",
   "Rubrik",
   "Russell Investments",
-  "S&P Global",
   "SLB",
   "Sapaad",
   "Seclore",
@@ -3139,55 +3138,6 @@
    "roleFingerprint": "a3568ba7eb",
    "cardFacts": [
     "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4464862134",
-   "title": "Apprentice",
-   "company": "S&P Global",
-   "matchedWatchlist": "S&P Global",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/s-and-p-global.jpg",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "24 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "excel"
-   ],
-   "summary": "This internship involves data collection and analysis from agent banks, with opportunities to contribute to process improvements and automation projects. Ideal for students with analytical skills and an interest in data workflows.",
-   "bullets": [
-    "Collate, analyze, and enter data from agent banks into work tools",
-    "Work on process improvement and automation projects",
-    "Support team in enhancing workflows and developing tech expertise"
-   ],
-   "roleLabel": "Data Processing",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "powerbi",
-    "excel",
-    "data visualization"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789117759166,
-   "firstSeenAt": 1789121359173,
-   "lastSeenAt": 1789121359173,
-   "url": "https://www.linkedin.com/jobs/view/4464862134/",
-   "applyUrl": "https://careers.spglobal.com/jobs/328642?lang=en-us&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "2d417476dc",
-   "cardFacts": [
-    "Hyderabad",
     "On-site"
    ],
    "region": "IN"
