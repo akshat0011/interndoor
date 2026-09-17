@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618",
+      "url": "https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618",
+      "title": "Data Engineering Intern — TMRW House of Brands",
+      "content_text": "Company: TMRW House of Brands · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for structured and semi-structured data\n• Use sql and python for data extraction, transformation and automation\n• Collaborate with data scientists and product teams on analytics projects",
+      "date_published": "2026-09-17T13:06:44.611Z",
+      "authors": [
+        {
+          "name": "TMRW House of Brands"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/coindcx-intern-analytics-4467547217",
       "url": "https://interndoor.com/jobs/coindcx-intern-analytics-4467547217",
       "title": "Intern - Analytics — CoinDCX",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "AtkinsRéalis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/deutsche-bank-apprentice-hiring-for-2026-2027-4466354434",
-      "url": "https://interndoor.com/jobs/deutsche-bank-apprentice-hiring-for-2026-2027-4466354434",
-      "title": "Apprentice Hiring for 2026- 2027 — Deutsche Bank",
-      "content_text": "Company: Deutsche Bank · Location: Pune Division, Maharashtra, India · Duration: 12 months\n• Support application management, troubleshooting, and user training\n• Use Java, Python, SQL, and relational databases\n• Work in Pune or Bangalore with company transport",
-      "date_published": "2026-09-11T17:59:40.593Z",
-      "authors": [
-        {
-          "name": "Deutsche Bank"
         }
       ]
     }
