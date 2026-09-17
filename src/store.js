@@ -399,6 +399,17 @@ export class Store {
     if (!reelCols.includes('fingerprint')) {
       this.db.exec('ALTER TABLE reel_posts ADD COLUMN fingerprint TEXT');
     }
+    /* The Facebook cross-post, on the SAME row rather than a second table: one
+       reel, two destinations. The row's `status` is the Instagram outcome and
+       stays so; these five are Facebook's alone. fb_video_id set = it is on
+       the Page; fb_error set with no id = the last attempt failed and says
+       why; both NULL = never attempted. See src/facebookreels.js. */
+    for (const [col, type] of [
+      ['fb_video_id', 'TEXT'], ['fb_permalink', 'TEXT'], ['fb_error', 'TEXT'],
+      ['fb_attempted_at', 'INTEGER'], ['fb_attempts', 'INTEGER NOT NULL DEFAULT 0'],
+    ]) {
+      if (!reelCols.includes(col)) this.db.exec(`ALTER TABLE reel_posts ADD COLUMN ${col} ${type}`);
+    }
 
     if (!jobCols.includes('region')) this.#backfillRegions();
   }
@@ -1797,6 +1808,53 @@ export class Store {
       UPDATE reel_posts SET status = 'published', media_id = ?, permalink = ?, finished_at = ?
       WHERE job_id = ?
     `).run(mediaId ?? null, permalink ?? null, Date.now(), jobId);
+  }
+
+  /* ---- the Facebook cross-post (src/facebookreels.js) ---- */
+
+  reelFacebookPublished(jobId, { videoId, permalink, at = Date.now() }) {
+    this.db.prepare(`
+      UPDATE reel_posts SET fb_video_id = ?, fb_permalink = ?, fb_error = NULL,
+        fb_attempted_at = ?, fb_attempts = fb_attempts + 1
+      WHERE job_id = ?
+    `).run(String(videoId), permalink ?? null, at, jobId);
+  }
+
+  reelFacebookFailed(jobId, error, at = Date.now()) {
+    this.db.prepare(`
+      UPDATE reel_posts SET fb_error = ?, fb_attempted_at = ?, fb_attempts = fb_attempts + 1
+      WHERE job_id = ?
+    `).run(String(error ?? 'failed').slice(0, 500), at, jobId);
+  }
+
+  /**
+   * One published reel still owed to its Page, oldest first, or null.
+   *
+   * Bounded four ways so the tick can call this every minute: only reels
+   * PUBLISHED on Instagram after `since` (the moment the feature went live —
+   * never the backlog), inside `maxAgeMs`, not attempted inside `gapMs`, and
+   * under `maxAttempts`. A row with fb_video_id is done and never returned.
+   */
+  reelFacebookDue({ regions = [], since = 0, now = Date.now(), gapMs, maxAttempts, maxAgeMs } = {}) {
+    if (!regions.length) return null;
+    const marks = regions.map(() => '?').join(',');
+    return this.db.prepare(`
+      SELECT * FROM reel_posts
+      WHERE status = 'published' AND fb_video_id IS NULL AND video_path IS NOT NULL
+        AND region IN (${marks})
+        AND finished_at > ? AND finished_at > ?
+        AND fb_attempts < ?
+        AND (fb_attempted_at IS NULL OR fb_attempted_at < ?)
+      ORDER BY finished_at ASC LIMIT 1
+    `).get(...regions, since, now - maxAgeMs, maxAttempts, now - gapMs) ?? null;
+  }
+
+  /** Reels that reached the Page since `sinceMs`, for the per-Page daily cap. */
+  reelFacebookCountSince(region, sinceMs) {
+    return this.db.prepare(`
+      SELECT count(*) AS n FROM reel_posts
+      WHERE region = ? AND fb_video_id IS NOT NULL AND fb_attempted_at > ?
+    `).get(region, sinceMs).n;
   }
 
   reelFailed(jobId, error) {

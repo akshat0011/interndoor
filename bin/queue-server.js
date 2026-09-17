@@ -46,6 +46,7 @@ import { nextSlot, slotLabel, intoWindow } from '../src/reelslots.js';
 import { formatFor } from '../src/reelformat.js';
 import { publishedRegions, regionPath, regionOf } from '../src/regions.js';
 import { accountFor, autoRegions, autoEnabled, dailyCap, autoSlotConfig, autoSpacingMinutes } from '../src/reelaccounts.js';
+import { facebookEnabled, facebookRegions, pageCreds, publishFacebookReel, DAILY_CAP as FB_DAILY_CAP, RETRY_GAP_MS as FB_RETRY_GAP_MS, RETRY_MAX_ATTEMPTS as FB_RETRY_MAX_ATTEMPTS, RETRY_MAX_AGE_MS as FB_RETRY_MAX_AGE_MS } from '../src/facebookreels.js';
 import { jobSlug } from '../src/pages.js';
 import { ownerToken, ownerAuth, corsHeaders, localHost, parseEdit, applyJobEdits, slugFromPath } from '../src/owner.js';
 import { formatStipend } from '../src/extract.js';
@@ -58,6 +59,21 @@ import { tmpdir } from 'node:os';
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
 const store = new Store();
+
+/* .env, for the Facebook Page tokens. The Instagram publisher is a Python child
+   that reads .env itself, so this process never needed it before; a missing
+   file is fine — the cross-post is then a no-op, which is what pageCreds
+   returning null means. Existing environment wins over the file. */
+try { process.loadEnvFile(join(PATHS.root, '.env')); } catch { /* no .env */ }
+
+/* THE MOMENT FACEBOOK WENT LIVE, recorded once and never moved: only reels
+   published on Instagram AFTER it are ever owed to a Page. Without this the
+   first tick would find every reel of the last 24 hours owed and put them on
+   the Page a minute apart — a burst on day one that "be early" is not for. */
+const FB_SINCE_KEY = 'facebookReelsSince';
+if (facebookEnabled(cfg) && !Number(store.getSetting(FB_SINCE_KEY) ?? 0)) {
+  store.setSetting(FB_SINCE_KEY, String(Date.now()));
+}
 
 /* A LinkedIn post is written from the stored row, not from jobs.json, so his
    corrections from the owner controls have to be laid over it here as well —
@@ -513,6 +529,12 @@ async function doPublish(row) {
        link it was written to carry. It threw nothing and logged nothing. */
     await notify(`Reel published — ${job.company}`, job.title,
       { sound: 'Glass', subtitle: res.url });
+    /* AFTER the Instagram outcome is recorded and announced, and in its own
+       try/catch inside crossPostFacebook: a Facebook refusal is written to the
+       row's fb_* columns and can never reach the catch below, which would
+       mark a reel that IS live on Instagram as failed and hand the breaker a
+       failure that was not Instagram's. */
+    await crossPostFacebook({ jobId, region, videoPath: video, caption: row.caption ?? '', company: job.company });
     return { ok: true, url: res.url };
   } catch (err) {
     store.reelFailed(jobId, err.message);
@@ -629,6 +651,79 @@ async function publishReel(jobId) {
     log.warn(`Reel for ${job.company} failed — ${err.message}`);
     return { error: err.message };
   }
+}
+
+/* ---------------------------------------------------- Facebook cross-post
+ *
+ * One reel, two destinations. The Instagram publish above decides the row's
+ * status; this only ever writes the fb_* columns. It runs once right after a
+ * successful Instagram publish, and again from the tick for anything still
+ * owed — bounded by src/facebookreels.js's gap, attempt and age limits and by
+ * FB_SINCE_KEY, so a reel published before the feature existed is never
+ * touched. One upload at a time, so a slow Facebook cannot pile uploads up.
+ */
+let fbBusy = false;
+const fbCredsWarned = new Set();
+
+async function crossPostFacebook({ jobId, region, videoPath, caption, company }) {
+  if (!facebookEnabled(cfg) || !facebookRegions(cfg).includes(region)) return { skipped: 'off' };
+  let creds = pageCreds(region);
+  if (!creds) {
+    /* `npm run fb-token` writes .env while this process is running; re-read it
+       before giving up, so the next reel after the token lands cross-posts
+       with no restart. loadEnvFile never overwrites a variable already set. */
+    try { process.loadEnvFile(join(PATHS.root, '.env')); } catch { /* no .env */ }
+    creds = pageCreds(region);
+  }
+  if (!creds) {
+    /* Not an error: the feature is on and the Page token has not been minted
+       for this region yet. Said once per process per region, not per reel. */
+    if (!fbCredsWarned.has(region)) {
+      fbCredsWarned.add(region);
+      log.info(`Facebook: no Page credentials for ${region} in .env — run \`npm run fb-token -- --region ${region}\`. Reels stay Instagram-only until then.`);
+    }
+    return { skipped: 'no-creds' };
+  }
+  if (fbBusy) return { skipped: 'busy' };
+  fbBusy = true;
+  const dayAgo = Date.now() - 24 * 3_600_000;
+  try {
+    if (store.reelFacebookCountSince(region, dayAgo) >= FB_DAILY_CAP) {
+      const why = `Facebook's ${FB_DAILY_CAP}-a-day Page limit reached for ${region}`;
+      store.reelFacebookFailed(jobId, why);
+      log.warn(`Facebook reel for ${company} not published — ${why}`);
+      return { error: why };
+    }
+    const res = await publishFacebookReel({ pageId: creds.pageId, token: creds.token, videoPath, description: caption });
+    store.reelFacebookPublished(jobId, { videoId: res.videoId, permalink: res.permalink });
+    log.ok(`Facebook reel for ${company} (${region}) — ${res.permalink}${res.pending ? ' (still processing)' : ''}`);
+    return { ok: true, url: res.permalink };
+  } catch (err) {
+    const why = String(err?.message ?? err).split('\n')[0];
+    store.reelFacebookFailed(jobId, why);
+    log.warn(`Facebook reel for ${company} (${region}) failed — ${why}`);
+    return { error: why };
+  } finally {
+    fbBusy = false;
+  }
+}
+
+/** From the tick: one reel still owed to its Page, if any. */
+async function retryFacebook() {
+  if (!facebookEnabled(cfg) || fbBusy) return;
+  const since = Number(store.getSetting(FB_SINCE_KEY) ?? 0);
+  if (!since) return;
+  const row = store.reelFacebookDue({
+    regions: facebookRegions(cfg), since,
+    gapMs: FB_RETRY_GAP_MS, maxAttempts: FB_RETRY_MAX_ATTEMPTS, maxAgeMs: FB_RETRY_MAX_AGE_MS,
+  });
+  if (!row) return;
+  if (!row.video_path || !existsSync(row.video_path)) {
+    store.reelFacebookFailed(row.job_id, 'the rendered file is gone');
+    return;
+  }
+  const job = publicJob(row.job_id) ?? { company: row.job_id };
+  await crossPostFacebook({ jobId: row.job_id, region: row.region, videoPath: row.video_path, caption: row.caption ?? '', company: job.company });
 }
 
 /**
@@ -803,6 +898,7 @@ setInterval(() => {
   try { prunePosts(); } catch (e) { log.warn(`Post queue prune: ${e.message}`); }
   try { autoSweep(); } catch (e) { log.warn(`Reel auto-sweep: ${e.message}`); }
   drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));
+  retryFacebook().catch((e) => log.warn(`Facebook retry: ${e.message}`));
 }, 60_000);
 
 /* ------------------------------------------------------------------- routes */
@@ -1203,6 +1299,7 @@ const server = createServer(async (req, res) => {
       queue: reelQueue.slice(),
       posts: store.reelPosts().map((r) => ({
         jobId: r.job_id, status: r.status, url: r.permalink, error: r.error,
+        facebook: r.fb_permalink ?? null, facebookError: r.fb_video_id ? null : (r.fb_error ?? null),
         slot: r.publish_at ?? null,
         slotLabel: r.publish_at ? slotLabel(r.publish_at, cfg.reels ?? {}) : null,
       })),
