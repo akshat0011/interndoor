@@ -96,6 +96,11 @@ const state = {
   resumeText: '',
   tailored: null,
   generatedAt: null,
+  // The high-water mark of the reader's PREVIOUS visit, or null on a first
+  // visit. A role first seen on the board after it is "new since you were
+  // here". Set once by init() and never advanced during the session, so a
+  // refresh keeps counting rows that arrive while the tab is open.
+  since: null,
 };
 
 /**
@@ -426,6 +431,107 @@ function renderFreshness() {
     : 'standing by';
 }
 
+/* ---------------- new since your last visit ---------------- */
+
+/* THE BOARD REMEMBERS WHERE THE READER LEFT OFF, in localStorage and nowhere
+   else. A daily visitor used to scroll from the top until the rows looked
+   familiar and then leave — the page held nothing about them, so they did the
+   remembering. Now the rows that arrived since their last visit are counted,
+   pinned above the rest and the rest are dimmed, which turns the daily check
+   into a glance. No account, no cookie, no request: the same footing as the
+   application tracker. */
+const VISIT_KEY = 'interndoor-visit';
+/* Two loads inside half an hour are one visit. Without this a reload — the
+   most natural thing to do when checking for new roles — would advance the
+   mark and make the "new since" header vanish mid-visit. */
+const VISIT_GAP_MS = 30 * 60 * 1000;
+
+/** When the board last listed something: the newest firstSeenAt on it. */
+function latestListed(jobs) {
+  let max = 0;
+  for (const j of jobs) {
+    const t = Number(j.firstSeenAt ?? j.postedAt ?? 0);
+    if (t > max) max = t;
+  }
+  return max || null;
+}
+
+/**
+ * Decide what "since your last visit" means for this load, and what to store
+ * for the next one. Pure — lifted into test/engage.test.mjs by name.
+ *
+ *   stored  what the previous load wrote: { mark, at, prev } or null
+ *   now     the clock
+ *   latest  latestListed(state.jobs)
+ *
+ * Returns { since, returning, next }. `since` is null on a first visit (there
+ * is nothing to be new relative to, and a page full of "new" badges for a
+ * stranger is noise), and otherwise the mark the reader's last VISIT ended on
+ * — which, inside the 30-minute gap, is the mark before that, so a reload
+ * shows the same header the first load did.
+ */
+function visitSince(stored, now, latest) {
+  let rec = null;
+  if (stored && typeof stored === 'object') rec = stored;
+  else if (typeof stored === 'string') { try { rec = JSON.parse(stored); } catch { rec = null; } }
+  // Number(null) is 0, and 0 is a mark that makes every row "new" — so an
+  // absent field must read as absent, not as the dawn of time.
+  const num = (v) => (v == null ? NaN : Number(v));
+  const mark = num(rec?.mark);
+  const at = num(rec?.at);
+  const prev = num(rec?.prev);
+  const top = Math.max(Number(latest) || 0, Number.isFinite(mark) ? mark : 0) || null;
+
+  if (!rec || !Number.isFinite(mark) || !Number.isFinite(at)) {
+    return { since: null, returning: false, next: { mark: top, at: now, prev: null } };
+  }
+  if (now - at > VISIT_GAP_MS) {
+    // A new visit: everything listed after the last one is new.
+    return { since: mark, returning: true, next: { mark: top, at: now, prev: mark } };
+  }
+  // The same visit continuing: keep showing what that visit was shown.
+  const since = Number.isFinite(prev) ? prev : null;
+  return { since, returning: since != null, next: { mark: top, at: now, prev: since } };
+}
+
+function readVisit() {
+  try { return localStorage.getItem(VISIT_KEY); } catch { return null; }
+}
+function writeVisit(rec) {
+  try { localStorage.setItem(VISIT_KEY, JSON.stringify(rec)); } catch { /* private mode */ }
+}
+
+/** Is this role new relative to the reader's last visit? Any city counts. */
+function isNewSince(group, since) {
+  if (since == null) return false;
+  return group.some((j) => Number(j.firstSeenAt ?? j.postedAt ?? 0) > since);
+}
+
+/**
+ * Put the new roles first, keeping each side's own order. Pure. Only the
+ * default newest-first sort is partitioned: a reader who chose "best match"
+ * or "company" asked for that order and gets it, with the seen rows merely
+ * dimmed.
+ */
+function splitNewSince(groups, since, sort = 'newest') {
+  // A first visit has nothing to be new relative to — and nothing has been
+  // seen either, so nothing is dimmed. The list is exactly what it was.
+  if (since == null) return { fresh: [], seen: [], n: 0, ordered: groups };
+  const fresh = [], seen = [];
+  for (const g of groups) (isNewSince(g, since) ? fresh : seen).push(g);
+  if (sort !== 'newest') return { fresh, seen, n: fresh.length, ordered: groups };
+  return { fresh, seen, n: fresh.length, ordered: [...fresh, ...seen] };
+}
+
+/* The board decides new-vs-return before engage.js loads (rendering must not
+   wait on a network fetch) and leaves the answer on <html> for it to count. */
+function loadEngage() {
+  const s = document.createElement('script');
+  s.src = '/engage.js';
+  s.defer = true;
+  document.head.append(s);
+}
+
 /** A row written before the intern/full-time split is an internship. */
 const kindOf = (j) => j.employmentType || 'intern';
 
@@ -749,7 +855,7 @@ function gistText(job) {
   return s;
 }
 
-function jobCard(job, index, group = [job]) {
+function jobCard(job, index, group = [job], seen = false) {
   const li = document.createElement('li');
   /* A div, NOT an <article>. The card carries role="button" because the whole
      card opens the detail dialog, and `button` is not an allowed role on
@@ -770,6 +876,10 @@ function jobCard(job, index, group = [job]) {
   const age = job.postedAt ? Date.now() - job.postedAt : null;
   const blazing = age != null && age < HOT_MS;
   if (blazing) row.classList.add('is-hot');
+  /* Already on the board at the reader's last visit. The class recedes the
+     card through its background and rule, never through opacity (§15 — dimmed
+     text fails contrast); the row stays fully readable and fully clickable. */
+  if (seen) row.classList.add('seen');
 
   // No rank number. It was decoration: the position of a row in a list the
   // reader is already looking at, restated. It cost a grid column on every card.
@@ -880,7 +990,7 @@ function jobCard(job, index, group = [job]) {
     go.setAttribute('aria-label', `Apply for ${job.title} at ${job.company}`);
     // The whole card is clickable. Without this, applying would also fire the
     // card's handler and slide the detail pane up behind the new tab.
-    go.addEventListener('click', (e) => e.stopPropagation());
+    go.addEventListener('click', (e) => { e.stopPropagation(); window.IDEngage?.onApply(); });
     foot.append(go);
   }
   row.append(foot);
@@ -1098,8 +1208,23 @@ function renderList() {
   }
   empty.hidden = true;
 
+  /* New since the last visit first, then everything the reader has already
+     had the chance to see, dimmed. The header says how many and how long ago
+     that was; a first-time visitor sees neither, because "all 297 of these
+     are new" is not information. Counted in roles, like the list. */
+  const split = splitNewSince(groups, state.since, $('f-sort').value || 'newest');
+  document.documentElement.dataset.newsince = String(split.n);
+  const seen = new Set(split.seen);
+
   const frag = document.createDocumentFragment();
-  groups.forEach((group, i) => frag.append(jobCard(group[0], i, group)));
+  if (split.n > 0) {
+    const bar = el('li', 'since-bar');
+    bar.setAttribute('role', 'presentation');
+    bar.append(el('b', null, `${split.n} new`));
+    bar.append(el('span', null, ` since your last visit · ${relTime(state.since)}`));
+    frag.append(bar);
+  }
+  split.ordered.forEach((group, i) => frag.append(jobCard(group[0], i, group, seen.has(group))));
   list.append(frag);
 }
 
@@ -1213,6 +1338,7 @@ function renderDetail(job) {
     apply.target = '_blank';
     apply.rel = 'noopener noreferrer';
     apply.textContent = 'Apply on ' + where;
+    apply.addEventListener('click', () => window.IDEngage?.onApply());
     actions.append(apply);
   }
 
@@ -1885,7 +2011,19 @@ async function init() {
   renderTotal();
   populateFilters();
   readUrl();          // after populateFilters(): the <option>s must exist first
+
+  /* Where the reader left off, decided BEFORE the first paint and written
+     back at once, so a crash or a closed tab after this point still counts
+     as a visit. Only when the board actually loaded: an empty board must not
+     advance the mark past roles the reader never had a chance to see. */
+  if (state.jobs.length) {
+    const visit = visitSince(readVisit(), Date.now(), latestListed(state.jobs));
+    state.since = visit.since;
+    writeVisit(visit.next);
+    document.documentElement.dataset.visit = visit.returning ? 'return' : 'new';
+  }
   applyFilters();
+  loadEngage();
 
   const hash = location.hash.match(/^#job-(.+)$/);
   const target = hash && state.jobs.find((j) => j.id === hash[1]);

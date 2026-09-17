@@ -44,6 +44,22 @@ document.addEventListener('click', function (e) {
   document.head.appendChild(s);
 })();
 
+/* The return-visit layer — the channel prompt after Apply and the event
+   counter — lives in engage.js and is loaded the same way, for every reader.
+   Both Apply controls on a job page (the side rail and the mobile dock) tell it
+   about the click; with the script not yet loaded the click is simply an
+   Apply, which is what it was before. */
+(function loadEngage() {
+  var s = document.createElement('script');
+  s.src = '/engage.js';
+  s.defer = true;
+  document.head.appendChild(s);
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a.btn-apply') : null;
+    if (a && window.IDEngage) window.IDEngage.onApply();
+  });
+})();
+
 /* ============================================================
    Generated pages: the small amount of behaviour they need.
 
