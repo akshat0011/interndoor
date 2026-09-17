@@ -1397,10 +1397,17 @@ export class Store {
   }
 
   /** LinkedIn-collected titles since a time — enough to spot an ATS twin. */
+  /* The LinkedIn rows a careers-board posting may have been announced AS.
+     Only a row that could have gone out counts: a copy the classifier refused
+     (is_tech 0), one a person pulled, or one never judged was never on the
+     site and never in a channel, so it must not stop the careers-board copy
+     being announced. Konecranes, 15 Sep 2026: the LinkedIn copy was is_tech 0,
+     the ATS copy was live, and the channels carried neither. */
   scrapedTitlesSince(sinceMs) {
     return this.db.prepare(`
       SELECT company, company_matched, title, first_seen_at FROM jobs
       WHERE job_id NOT LIKE 'ats:%' AND first_seen_at > ?
+        AND is_tech = 1 AND suppressed_reason IS NULL
     `).all(sinceMs);
   }
 

@@ -166,10 +166,12 @@ export function applicantCount(text) {
  * nothing is padded: a line with no value is simply absent, which is why a
  * sparse posting reads as short rather than as a column of blanks.
  *
- * TWO LINKS AND NO MORE. The title links to the job page — the details, and the
- * only thing that brings a reader onto the site — and "Apply" goes straight to
- * the employer wherever we recovered it. A third link would only compete with
- * those two.
+ * EVERY LINK IS THE JOB PAGE. The title links to it and so does "Apply now":
+ * the page carries the employer's own Apply button, the return-visit header,
+ * the channel prompt and the counter, and a reader sent straight to the
+ * employer sees none of that. His call, 17 Sep 2026 — the channels exist to
+ * bring readers to the site, not to route around it. The board link stays
+ * last as the third anchor.
  *
  * Exported so the WhatsApp channel reuses this wording instead of growing a
  * second copy that drifts out of step.
@@ -186,7 +188,6 @@ export function applicantCount(text) {
 export function jobParts(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
   const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
-  const apply = job.applyUrl || job.url || page;
   const title = clampWords(String(job.title ?? ''), 110);
 
   const facts = [];
@@ -209,13 +210,12 @@ export function jobParts(job, region = regionOf('IN')) {
     facts.push(`👥 Only ${n} applicant${n === 1 ? '' : 's'} so far`);
   }
 
-  return { company: String(job.company ?? ''), title, page, apply, facts, board: `${SITE}${prefix}/` };
+  return { company: String(job.company ?? ''), title, page, facts, board: `${SITE}${prefix}/` };
 }
 
 export function composeJob(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
   const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
-  const apply = job.applyUrl || job.url || page;
 
   /* THE TITLE IS CLAMPED FIRST, and dropping fact lines is only a backstop.
      Real titles run to 172 characters — one employer names fifteen cities in
@@ -257,7 +257,9 @@ export function composeJob(job, region = regionOf('IN')) {
     lines.push(`👥 Only ${n} applicant${n === 1 ? '' : 's'} so far`);
   }
 
-  lines.push('', `👉 <a href="${apply}"><b>Apply now</b></a>`);
+  /* The same page as the title — see jobParts. The employer's URL is one
+     click further on, behind the page's own Apply button. */
+  lines.push('', `👉 <a href="${page}"><b>Apply now</b></a>`);
   lines.push(`🌐 <a href="${SITE}${prefix}/">More internships</a>`);
 
   // Drop optional facts from the end rather than slicing, which would cut a
