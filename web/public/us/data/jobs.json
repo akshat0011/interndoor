@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789666636128,
+ "generatedAt": 1789666828499,
  "region": "US",
  "regionName": "United States",
- "count": 3368,
- "techCount": 3368,
+ "count": 3295,
+ "techCount": 3295,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -30,7 +30,6 @@
   "Applied Intuition",
   "Applied Materials",
   "Apptronik",
-  "Arm",
   "Astera Labs",
   "Astranis",
   "Astranis Space Technologies",
@@ -486,7 +485,6 @@
   "Burbank, CA",
   "Burlington, MA",
   "Burlington, VT",
-  "Burnsville, MN",
   "Burr Ridge, IL",
   "Byron, IL",
   "Cadiz, OH",
@@ -641,7 +639,6 @@
   "Glen Allen, VA",
   "Glendale Heights, IL",
   "Glendale, AZ",
-  "Glendale, CA",
   "Glendale, WI",
   "Gloucester, MA",
   "Golden, CO",
@@ -871,7 +868,6 @@
   "Newtown Square, PA",
   "Niskayuna, NY",
   "Norcross, GA",
-  "North Berwick, ME",
   "North Charleston, SC",
   "North Chicago, IL",
   "North Chicago, us",
@@ -1148,7 +1144,6 @@
   "Wilsonville, OR",
   "Windsor Locks, CT",
   "Windsor Mill, MD",
-  "Winston-Salem, NC",
   "Wisconsin, United States",
   "Woburn, MA",
   "Woodcliff Lake, NJ",
@@ -17413,52 +17408,6 @@
     "$75,600 / year",
     "Durham",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4458292788",
-   "title": "3D Production Artist I Apparel, Intern",
-   "company": "New Balance",
-   "matchedWatchlist": "New Balance Athletics",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/new-balance.jpg",
-   "location": "Massachusetts, United States",
-   "workplaceType": "Remote",
-   "stipend": "$33 / hour",
-   "duration": "4 weeks",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves creating 3D apparel assets for seasonal product lines, using tools like CLO3D and PLM systems. You'll work closely with product teams to maintain visual quality standards and learn new skills relevant to 3D product creation. Ideal for students with experience in 3D design and apparel tech packs.",
-   "bullets": [
-    "Create 3D apparel assets for seasonal product lines",
-    "Use CLO3D and PLM systems for 3D product creation",
-    "Collaborate with product teams on visual quality standards"
-   ],
-   "roleLabel": "3D Apparel Creation",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "clo3d",
-    "plm systems",
-    "apparel tech packs"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1789489322873,
-   "firstSeenAt": 1789489442877,
-   "lastSeenAt": 1789489442877,
-   "url": "https://www.linkedin.com/jobs/view/4458292788/",
-   "applyUrl": "https://jobs.newbalance.com/global/en/job/NEBAGLOBALR40742EXTERNALENGLOBAL/3D-Production-Artist-I-Apparel-Intern?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "cf600ef459",
-   "cardFacts": [
-    "$33 / hour",
-    "Massachusetts",
-    "Remote"
    ],
    "region": "US"
   },
@@ -33899,153 +33848,6 @@
    "region": "US"
   },
   {
-   "id": "4467068177",
-   "title": "Production Support Engineering Co-Op (Summer/Fall 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Middletown, CT",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves hands-on support for engine assembly and testing, analyzing defects, and coordinating repairs. Ideal for engineering students with CAD and SAP experience, working closely with cross-functional teams on real-world quality issues.",
-   "bullets": [
-    "Support engine assembly and test operations daily, analyzing defects and coordinating repairs",
-    "Use CAD and SAP tools to evaluate components and manage technical documentation",
-    "Collaborate with teams on failure investigations and customer status updates"
-   ],
-   "roleLabel": "Engine Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "sap",
-    "excel",
-    "powerpoint"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "38 minutes ago",
-   "postedAt": 1789378541495,
-   "firstSeenAt": 1789380821506,
-   "lastSeenAt": 1789380821506,
-   "url": "https://www.linkedin.com/jobs/view/4467068177/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872653EXTERNALENGLOBAL/Production-Support-Engineering-Co-Op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "a43c4ba5e7",
-   "cardFacts": [
-    "$37,000",
-    "Middletown",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467057188",
-   "title": "Engineering Services Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Windsor Locks, CT",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This internship involves reviewing engineering inputs for compliance and product impact, using CAD software for design, and collaborating with teams to resolve issues and manage changes. It suits students with a background in mechanical, electrical, or aerospace engineering.",
-   "bullets": [
-    "Review engineering inputs for compliance and product impact",
-    "Use CAD software like NX for design and analysis",
-    "Collaborate with teams to resolve issues and manage changes"
-   ],
-   "roleLabel": "Engineering Review",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering / Electrical Engineering / Aerospace Engineering",
-   "keySkills": [
-    "cad",
-    "engineering standards",
-    "product structure"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "39 minutes ago",
-   "postedAt": 1789378539633,
-   "firstSeenAt": 1789380879639,
-   "lastSeenAt": 1789380879639,
-   "url": "https://www.linkedin.com/jobs/view/4467057188/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872640EXTERNALENGLOBAL/Engineering-Services-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ec99a9cecd",
-   "cardFacts": [
-    "$37,000",
-    "Windsor Locks",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467068176",
-   "title": "Production Support Engineering Co-op (Winter/Spring 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Middletown, CT",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves daily support for engine assembly and testing, analyzing defects, and coordinating repairs. You'll work with CAD and SAP tools, collaborate on investigations, and communicate updates to customers and teams. Ideal for mechanical or aerospace engineering students seeking hands-on experience in a production environment.",
-   "bullets": [
-    "Support engine assembly and test operations daily, analyzing defects and coordinating repairs",
-    "Use CAD and SAP tools to evaluate components and manage technical documentation",
-    "Collaborate with teams on failure investigations and customer updates in Middletown, CT"
-   ],
-   "roleLabel": "Engine Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "sap",
-    "powerpoint",
-    "excel",
-    "solidworks"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "39 minutes ago",
-   "postedAt": 1789378514079,
-   "firstSeenAt": 1789380854083,
-   "lastSeenAt": 1789380854083,
-   "url": "https://www.linkedin.com/jobs/view/4467068176/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872654EXTERNALENGLOBAL/Production-Support-Engineering-Co-op-Winter-Spring-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "b89f695292",
-   "cardFacts": [
-    "$37,000",
-    "Middletown",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464770912",
    "title": "2027 Guardian Summer Intern, Digital & Technology, Cloud & DevOps",
    "company": "Guardian Life",
@@ -39103,54 +38905,6 @@
    "region": "US"
   },
   {
-   "id": "4466494184",
-   "title": "Intern, Photonics Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Palm Bay, FL",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab"
-   ],
-   "summary": "This internship involves hands-on work with photonic systems, including experiments and data analysis. Ideal for students with a background in optical engineering or physics looking to apply theoretical knowledge in real-world applications.",
-   "bullets": [
-    "Run experiments on photonic components and systems",
-    "Use Python or MATLAB for data analysis and automation",
-    "Work with engineers on optical and RF systems"
-   ],
-   "roleLabel": "Photonics experiments",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "matlab",
-    "data analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789216802636,
-   "firstSeenAt": 1789220402637,
-   "lastSeenAt": 1789220402637,
-   "url": "https://www.linkedin.com/jobs/view/4466494184/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/100415258992?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "5d2e33ed57",
-   "cardFacts": [
-    "Palm Bay",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4466494187",
    "title": "Systems Engineering Intern",
    "company": "L3Harris Technologies",
@@ -43229,108 +42983,6 @@
    "region": "US"
   },
   {
-   "id": "4466402119",
-   "title": "Mission Analyst Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "McKinney, TX",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab",
-    "linux"
-   ],
-   "summary": "This internship involves creating and analyzing mission simulations to assess system effectiveness in complex environments. You'll work with tools like AFSIM and Suppressor, and contribute to data-driven decisions. Ideal for STEM students with scripting experience and interest in defense modeling.",
-   "bullets": [
-    "Develop and analyze mission simulations using government and commercial tools",
-    "Work with Python, MATLAB, and Linux to model system effects in complex environments",
-    "Collaborate on mission kill chains and contribute to programmatic decision data"
-   ],
-   "roleLabel": "Mission Simulation Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "STEM",
-   "keySkills": [
-    "python",
-    "matlab",
-    "linux",
-    "afsim",
-    "suppressor"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "19 minutes ago",
-   "postedAt": 1789161578273,
-   "firstSeenAt": 1789162718276,
-   "lastSeenAt": 1789162718276,
-   "url": "https://www.linkedin.com/jobs/view/4466402119/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01874027EXTERNALENGLOBAL/Mission-Analyst-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "5f9333feb9",
-   "cardFacts": [
-    "$37,000",
-    "McKinney",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466406104",
-   "title": "Software Engineering Co-op (Spring/Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++"
-   ],
-   "summary": "This co-op involves developing software for aviation systems, working with C and Python in a team setting. Ideal for STEM students seeking hands-on experience in aerospace software development.",
-   "bullets": [
-    "Design and develop software for helicopter and plane systems",
-    "Work with C, C++, ADA, and Python in a team environment",
-    "Travel up to 10% domestically and internationally"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c",
-    "c++",
-    "ada",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "19 minutes ago",
-   "postedAt": 1789161573686,
-   "firstSeenAt": 1789162713690,
-   "lastSeenAt": 1789162713690,
-   "url": "https://www.linkedin.com/jobs/view/4466406104/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873682EXTERNALENGLOBAL/Software-Engineering-Co-op-Spring-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "f4da713dbb",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464252082",
    "title": "Electrical Engineering Co-op - Knoxville, TN",
    "company": "Siemens Healthineers",
@@ -44090,53 +43742,6 @@
    "region": "US"
   },
   {
-   "id": "4457315785",
-   "title": "Intern C, Electrical Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Fort Wayne, IN",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "41 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing electrical systems for aircraft and ground stations, using CAD and PLM tools. Ideal for students with a background in electrical engineering or related fields, working on real-world projects with a focus on avionics and power systems.",
-   "bullets": [
-    "Design electrical systems for military and commercial aircraft",
-    "Use CAD and PLM tools like NX and Teamcenter",
-    "Work on avionics, power distribution, and load shedding"
-   ],
-   "roleLabel": "Electrical System Design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "cad",
-    "plm",
-    "nx",
-    "teamcenter",
-    "siemens"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789152145084,
-   "firstSeenAt": 1789155745086,
-   "lastSeenAt": 1789155745086,
-   "url": "https://www.linkedin.com/jobs/view/4457315785/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/99494035024?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "6c04bbf414",
-   "cardFacts": [
-    "Fort Wayne",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:microsoft:India,United States,United Kingdom:1970393556988203",
    "title": "Security Assurance Intern - CTJ - TS",
    "company": "Microsoft",
@@ -44604,56 +44209,6 @@
    "region": "US"
   },
   {
-   "id": "4466346029",
-   "title": "2027 Spring Co-op Bioinformatic Digital Data Scientist - Global Immunology, Waltham, MA",
-   "company": "Sanofi",
-   "matchedWatchlist": "Sanofi",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/sanofi.jpg",
-   "location": "Waltham, MA",
-   "workplaceType": "On-site",
-   "stipend": "$27 – $35 / hour",
-   "duration": "6 months",
-   "applicants": "4 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This co-op supports vaccine research by analyzing biological data and developing computational models. Ideal for students with bioinformatics or data science backgrounds seeking hands-on experience in immunology research.",
-   "bullets": [
-    "Analyze biological data from genomic and immunological sources",
-    "Use python/r for statistical analysis and data visualization",
-    "Collaborate in vaccine research teams with mentorship support"
-   ],
-   "roleLabel": "Bioinformatics Research",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Bioinformatics/Computational Biology",
-   "keySkills": [
-    "python",
-    "r",
-    "statistical analysis",
-    "data visualization",
-    "bioinformatics software"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789148779276,
-   "firstSeenAt": 1789152379281,
-   "lastSeenAt": 1789152379281,
-   "url": "https://www.linkedin.com/jobs/view/4466346029/",
-   "applyUrl": "https://dsp.prng.co/kjKsmnb",
-   "description": null,
-   "roleFingerprint": "337ef485c0",
-   "cardFacts": [
-    "$27 – $35 / hour",
-    "Waltham",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4466359171",
    "title": "Internship, Software Engineer, Data Platforms (Winter/Spring 2027)",
    "company": "Tesla",
@@ -44852,58 +44407,6 @@
     "$52 – $58 / hour",
     "New York",
     "Summer 2028"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466324766",
-   "title": "IT Intern",
-   "company": "Mayo Clinic",
-   "matchedWatchlist": "Mayo Clinic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mayo-clinic.jpg",
-   "location": "Rochester, MN",
-   "workplaceType": "Hybrid",
-   "stipend": "$25 / hour",
-   "duration": null,
-   "applicants": "4 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "javascript",
-    "git"
-   ],
-   "summary": "This internship involves working with AI tools and enterprise systems to support collaboration and operational efficiency. You will test new technologies, document processes, and automate tasks in a healthcare IT environment. Ideal for students interested in infrastructure, automation, and AI integration.",
-   "bullets": [
-    "Operate and improve AI collaboration tools in enterprise environment",
-    "Test and validate AI integrations with enterprise systems",
-    "Develop documentation and automation for operational workflows"
-   ],
-   "roleLabel": "AI Operational Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "powershell",
-    "git",
-    "apis",
-    "automation"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "2 hours ago",
-   "postedAt": 1789145238488,
-   "firstSeenAt": 1789152438490,
-   "lastSeenAt": 1789152438490,
-   "url": "https://www.linkedin.com/jobs/view/4466324766/",
-   "applyUrl": "https://jobs.mayoclinic.org/job/rochester/it-intern/33647/99697696512",
-   "description": null,
-   "roleFingerprint": "d5da92032f",
-   "cardFacts": [
-    "$25 / hour",
-    "Rochester",
-    "Hybrid"
    ],
    "region": "US"
   },
@@ -46852,54 +46355,6 @@
    "region": "US"
   },
   {
-   "id": "4466052818",
-   "title": "Mechanical Design Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Winston-Salem, NC",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This internship involves creating and optimizing mechanical designs for aerospace applications. You will use CAD software to develop components and collaborate with teams to ensure designs meet safety and performance standards. Ideal for students with a background in mechanical or aerospace engineering.",
-   "bullets": [
-    "Design mechanical components and assemblies with focus on manufacturability and reliability",
-    "Use CAD software like NX to create and release precise mechanical designs",
-    "Work in cross-functional teams and participate in design reviews"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Aerospace Engineering",
-   "keySkills": [
-    "cad",
-    "nx",
-    "design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "21 minutes ago",
-   "postedAt": 1789118356002,
-   "firstSeenAt": 1789119616008,
-   "lastSeenAt": 1789119616008,
-   "url": "https://www.linkedin.com/jobs/view/4466052818/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873966EXTERNALENGLOBAL/Mechanical-Design-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "584274ff3f",
-   "cardFacts": [
-    "$37,000",
-    "Winston-Salem",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464865042",
    "title": "IT Undergraduate Intern",
    "company": "Dell Technologies",
@@ -48772,51 +48227,6 @@
    "cardFacts": [
     "$170,598 – $170,602 / year",
     "Phoenix",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466030408",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Burnsville, MN",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves developing embedded software for aerospace systems and automation tools. Ideal for students with a background in computer science or engineering looking to gain hands-on experience in software development for real-world applications.",
-   "bullets": [
-    "Develop embedded software for airborne systems and test automation tools",
-    "Work with engineers on real projects using C, Python, and hardware schematics",
-    "Collaborate in team meetings and contribute to software development lifecycle"
-   ],
-   "roleLabel": "Embedded Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c",
-    "hardware schematics"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "18 minutes ago",
-   "postedAt": 1789096795504,
-   "firstSeenAt": 1789097875507,
-   "lastSeenAt": 1789097875507,
-   "url": "https://www.linkedin.com/jobs/view/4466030408/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872977EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "0699b77fd9",
-   "cardFacts": [
-    "$37,000",
-    "Burnsville",
     "On-site"
    ],
    "region": "US"
@@ -52149,66 +51559,6 @@
    "region": "US"
   },
   {
-   "id": "4465884082",
-   "title": "Software Platform Intern (Onsite)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Aurora, CO",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "ruby",
-    "aws",
-    "azure",
-    "docker",
-    "kubernetes",
-    "ci/cd"
-   ],
-   "summary": "This internship involves supporting infrastructure and DevOps automation for state-of-the-art systems used in national defense. You will work with cloud technologies and scripting languages to streamline development processes and integrate software and hardware subsystems. Ideal for students with experience in cloud platforms and DevOps tools.",
-   "bullets": [
-    "Support infrastructure and DevOps automation using Ruby, Python, Go, and PowerShell",
-    "Leverage AWS, Azure, Docker, and Kubernetes for platform optimization",
-    "Collaborate in multidisciplinary teams on complex systems integration"
-   ],
-   "roleLabel": "DevOps automation",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ruby",
-    "python",
-    "go",
-    "powershell",
-    "aws",
-    "azure",
-    "docker",
-    "kubernetes"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1789075230606,
-   "firstSeenAt": 1789075890608,
-   "lastSeenAt": 1789075890608,
-   "url": "https://www.linkedin.com/jobs/view/4465884082/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01874067EXTERNALENGLOBAL/Software-Platform-Intern-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "8678faffdf",
-   "cardFacts": [
-    "$37,000",
-    "Aurora",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465882071",
    "title": "Avionics Systems Engineering Intern - Hybrid",
    "company": "Collins Aerospace",
@@ -52307,53 +51657,6 @@
     "$26 – $47",
     "Newtown Square",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465883048",
-   "title": "Commercial Structures Intern (Summer 2027)(Onsite)",
-   "company": "Pratt & Whitney",
-   "matchedWatchlist": "Pratt & Whitney",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pratt-and-whitney.jpg",
-   "location": "East Hartford, CT",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing engine structures for safety and reliability, working with senior engineers on complex projects. Ideal for students with a mechanical or aerospace engineering background seeking hands-on experience in aerospace engineering.",
-   "bullets": [
-    "Perform structural analysis on engine safety and reliability using finite-element and classical methods",
-    "Collaborate with senior engineers on dynamics, stress fatigue, and thermal analysis",
-    "Work on projects impacting engine affordability and robustness"
-   ],
-   "roleLabel": "Structural Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Aerospace Engineering",
-   "keySkills": [
-    "classical methods",
-    "ansys",
-    "teamcenter",
-    "unigraphics nx"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1789075194552,
-   "firstSeenAt": 1789075974554,
-   "lastSeenAt": 1789075974554,
-   "url": "https://www.linkedin.com/jobs/view/4465883048/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01871999EXTERNALENGLOBAL/Commercial-Structures-Intern-Summer-2027-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "93c6301150",
-   "cardFacts": [
-    "$37,000",
-    "East Hartford",
-    "On-site"
    ],
    "region": "US"
   },
@@ -52462,6 +51765,56 @@
    "region": "US"
   },
   {
+   "id": "4465871185",
+   "title": "Software Engineering Co-op (Spring/Summer 2027)",
+   "company": "Collins Aerospace",
+   "matchedWatchlist": "Collins Aerospace",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/collins-aerospace.jpg",
+   "location": "Cedar Rapids, IA",
+   "workplaceType": "On-site",
+   "stipend": "$37,000",
+   "duration": "Summer 2027",
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++"
+   ],
+   "summary": "This co-op involves configuring avionics systems for military aircraft, working with software migration and integration tools. Ideal for students with a background in software engineering or computer science looking for hands-on experience in aerospace systems.",
+   "bullets": [
+    "Build system configuration tables for avionics hardware",
+    "Configure helicopter software and automate integration tools",
+    "Work on migrating applications between operating systems"
+   ],
+   "roleLabel": "Avionics Systems Configuration",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c/c++",
+    "python",
+    "system integration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "14 minutes ago",
+   "postedAt": 1789075166535,
+   "firstSeenAt": 1789076006539,
+   "lastSeenAt": 1789076006539,
+   "url": "https://www.linkedin.com/jobs/view/4465871185/",
+   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01871551EXTERNALENGLOBAL/Software-Engineering-Co-op-Spring-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "b5f154cb56",
+   "cardFacts": [
+    "$37,000",
+    "Cedar Rapids",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4465885055",
    "title": "Engine Test Internship",
    "company": "Pratt & Whitney",
@@ -52510,115 +51863,6 @@
    "cardFacts": [
     "$37,000",
     "Jupiter",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465865998",
-   "title": "Software Platform Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Richardson, TX",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "ruby",
-    "aws",
-    "azure",
-    "docker",
-    "kubernetes",
-    "ci/cd"
-   ],
-   "summary": "This internship involves supporting infrastructure and DevOps automation for advanced systems. Ideal for students with cloud and scripting experience. Work on critical defense projects with a focus on integration and optimization.",
-   "bullets": [
-    "Support infrastructure and DevOps automation using Ruby, Python, Go, and PowerShell",
-    "Leverage AWS, Azure, Docker, and Kubernetes for platform optimization",
-    "Collaborate in multidisciplinary teams on complex systems integration"
-   ],
-   "roleLabel": "DevOps Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ruby",
-    "python",
-    "go",
-    "powershell",
-    "aws",
-    "azure",
-    "docker",
-    "kubernetes"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1789075154557,
-   "firstSeenAt": 1789075934559,
-   "lastSeenAt": 1789075934559,
-   "url": "https://www.linkedin.com/jobs/view/4465865998/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01874068EXTERNALENGLOBAL/Software-Platform-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "d51eab429f",
-   "cardFacts": [
-    "$37,000",
-    "Richardson",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465869265",
-   "title": "Software Engineering Co-op (Summer/ Fall 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "c++"
-   ],
-   "summary": "This co-op involves developing safety-critical software for avionics systems, working with C++ and DO-178 standards. Ideal for students with a STEM background and interest in aerospace engineering.",
-   "bullets": [
-    "Develop software for safety-critical avionics systems using C++ and DO-178 standards",
-    "Collaborate with cross-functional teams on certification and verification processes",
-    "Work on core software components for modern aircraft and flight management systems"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c++",
-    "do-178",
-    "vxworks",
-    "test cases"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "15 minutes ago",
-   "postedAt": 1789075148168,
-   "firstSeenAt": 1789076048171,
-   "lastSeenAt": 1789076048171,
-   "url": "https://www.linkedin.com/jobs/view/4465869265/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873293EXTERNALENGLOBAL/Software-Engineering-Co-op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "bf8ffe4505",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
     "On-site"
    ],
    "region": "US"
@@ -53742,51 +52986,6 @@
     "$28 / hour",
     "Long Beach",
     "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4456710183",
-   "title": "Intern D, RF/Wireless Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Herndon, VA",
-   "workplaceType": "On-site",
-   "stipend": "$29 / hour",
-   "duration": null,
-   "applicants": "90 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves preparing technical drawings for complex products, working with labs to interpret test results, and presenting analysis to engineers and customers. It suits students with a strong interest in engineering and technical problem-solving.",
-   "bullets": [
-    "Prepare component drawings and specifications for complex products",
-    "Interface with labs to interpret test results and define testing",
-    "Present analysis results to engineers and customers regularly"
-   ],
-   "roleLabel": "RF Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "component drawings",
-    "test results"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "48 minutes ago",
-   "postedAt": 1789065917085,
-   "firstSeenAt": 1789068797089,
-   "lastSeenAt": 1789068797089,
-   "url": "https://www.linkedin.com/jobs/view/4456710183/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/99454394784?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "a3edc6e3ae",
-   "cardFacts": [
-    "$29 / hour",
-    "Herndon",
-    "On-site"
    ],
    "region": "US"
   },
@@ -56603,58 +55802,6 @@
    "region": "US"
   },
   {
-   "id": "4465641465",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Huntsville, AL",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "agile"
-   ],
-   "summary": "This internship involves developing avionics software for military aircraft using Ada, C++, and Python. Ideal for students with a STEM background seeking hands-on experience in aerospace software development.",
-   "bullets": [
-    "Design and implement software in Ada, C++, and Python",
-    "Work in Agile teams on avionics software for military aircraft",
-    "Collaborate with engineers on complex systems integration"
-   ],
-   "roleLabel": "Avionics Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ada",
-    "c++",
-    "python",
-    "agile"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1789031977676,
-   "firstSeenAt": 1789032757679,
-   "lastSeenAt": 1789032757679,
-   "url": "https://www.linkedin.com/jobs/view/4465641465/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872655EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "a40aac4ecd",
-   "cardFacts": [
-    "$37,000",
-    "Huntsville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465632522",
    "title": "Advanced Measurement Str Data Recording Summer Intern (Onsite)",
    "company": "Pratt & Whitney",
@@ -58236,53 +57383,6 @@
    "region": "US"
   },
   {
-   "id": "4463415923",
-   "title": "Boeing - Wichita Summer 2027 Internship Program (Paid) - Tooling Engineering",
-   "company": "Boeing",
-   "matchedWatchlist": "Boeing India",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/boeing.jpg",
-   "location": "Wichita, KS",
-   "workplaceType": "On-site",
-   "stipend": "$21 / hour",
-   "duration": "Summer 2027",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing and refining tooling used in aerospace manufacturing. You'll collaborate with engineers and suppliers to ensure tools are safe, efficient, and meet production needs. Ideal for engineering students interested in manufacturing and aerospace.",
-   "bullets": [
-    "Design and improve tooling for aerospace structures",
-    "Work with engineers and suppliers on production tools",
-    "Focus on safety, ergonomics, and manufacturing efficiency"
-   ],
-   "roleLabel": "Tooling Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "CAD",
-    "Manufacturing",
-    "Engineering",
-    "Tooling"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "34 minutes ago",
-   "postedAt": 1789012853266,
-   "firstSeenAt": 1789014893268,
-   "lastSeenAt": 1789014893268,
-   "url": "https://www.linkedin.com/jobs/view/4463415923/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/517492914;325447798;a?https://jobs.boeing.com/job/-/-/185/100378295552?utm_source=linkedin&utm_medium=job_posting&utm_campaign=ra-us",
-   "description": null,
-   "roleFingerprint": "240662a295",
-   "cardFacts": [
-    "$21 / hour",
-    "Wichita",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464158799",
    "title": "Intern Engineer",
    "company": "General Dynamics Mission Systems",
@@ -58376,58 +57476,6 @@
    "region": "US"
   },
   {
-   "id": "4465603025",
-   "title": "Systems Engineering Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "San Diego, CA",
-   "workplaceType": "On-site",
-   "stipend": "$42,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "matlab"
-   ],
-   "summary": "This internship involves working on complex systems, integrating hardware and software, and supporting testing and analysis. Ideal for students with technical skills in data analysis and problem-solving.",
-   "bullets": [
-    "Integrate hardware and software, develop test plans, debug system functions",
-    "Use matlab, python, and test equipment for analysis and troubleshooting",
-    "Work on program development, testing, integration, and field support"
-   ],
-   "roleLabel": "Systems Integration",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "matlab",
-    "python",
-    "test equipment",
-    "data analysis",
-    "troubleshooting"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "14 minutes ago",
-   "postedAt": 1789010392654,
-   "firstSeenAt": 1789011232656,
-   "lastSeenAt": 1789011232656,
-   "url": "https://www.linkedin.com/jobs/view/4465603025/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873644EXTERNALENGLOBAL/Systems-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ccc02114d3",
-   "cardFacts": [
-    "$42,000",
-    "San Diego",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465383912",
    "title": "Test Engineer at Assembly - Systems Intern (Onsite)",
    "company": "Pratt & Whitney",
@@ -58468,57 +57516,6 @@
    "cardFacts": [
     "$37,000",
     "Middletown",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465396872",
-   "title": "Structures Intern (Summer 2027) (Onsite)",
-   "company": "Pratt & Whitney",
-   "matchedWatchlist": "Pratt & Whitney",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pratt-and-whitney.jpg",
-   "location": "North Berwick, ME",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab",
-    "perl"
-   ],
-   "summary": "This internship involves analyzing engine components for stress and vibration, supporting test data reduction, and collaborating on design solutions that balance performance and cost. It suits students with a background in mechanical or aerospace engineering seeking hands-on experience in aerospace structures.",
-   "bullets": [
-    "Analyze stress and vibration in engine components using ANSYS",
-    "Support test data reduction and field investigations",
-    "Collaborate on design solutions balancing performance and cost"
-   ],
-   "roleLabel": "Structural Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Aerospace Engineering",
-   "keySkills": [
-    "ansys",
-    "finite element analysis",
-    "solid modeling",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "14 minutes ago",
-   "postedAt": 1789010360990,
-   "firstSeenAt": 1789011200992,
-   "lastSeenAt": 1789011200992,
-   "url": "https://www.linkedin.com/jobs/view/4465396872/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872690EXTERNALENGLOBAL/Structures-Intern-Summer-2027-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c64ea28546",
-   "cardFacts": [
-    "$37,000",
-    "North Berwick",
     "On-site"
    ],
    "region": "US"
@@ -61347,61 +60344,6 @@
    "region": "US"
   },
   {
-   "id": "4465351187",
-   "title": "Software Engineering Intern (Summer 2027) (Open)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Aurora, CO",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "10 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "aws",
-    "data structures",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves developing software for satellite ground systems, working with Java, C++, and Python in an Agile team. Ideal for students with a background in software engineering and an interest in aerospace technology.",
-   "bullets": [
-    "Develop software for satellite ground systems",
-    "Work with Java, C++, Python, and Agile teams",
-    "Onsite in Aurora, CO, with security clearance"
-   ],
-   "roleLabel": "Satellite Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "c++",
-    "python",
-    "agile"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "54 minutes ago",
-   "postedAt": 1788989885628,
-   "firstSeenAt": 1788993125632,
-   "lastSeenAt": 1788993125632,
-   "url": "https://www.linkedin.com/jobs/view/4465351187/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873623EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027-Open?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "b29e75c3f3",
-   "cardFacts": [
-    "$37,000",
-    "Aurora",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465347230",
    "title": "Receiver, Exciter & Processing Architecture Electrical Engineer Intern (Summer 2027)",
    "company": "Raytheon",
@@ -61641,63 +60583,8 @@
    "region": "US"
   },
   {
-   "id": "4465333315",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Aurora, CO",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "3 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "aws",
-    "data structures",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves developing software for satellite ground systems, working with Java, C++, and Python in an Agile team. Ideal for students with a background in software engineering and an interest in aerospace technology.",
-   "bullets": [
-    "Develop software for satellite ground systems",
-    "Work with Java, C++, Python, and Agile teams",
-    "Onsite in Aurora, CO, with security clearance"
-   ],
-   "roleLabel": "Satellite Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "c++",
-    "python",
-    "agile"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "56 minutes ago",
-   "postedAt": 1788989850286,
-   "firstSeenAt": 1788993210290,
-   "lastSeenAt": 1788993210290,
-   "url": "https://www.linkedin.com/jobs/view/4465333315/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873646EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "9346a786eb",
-   "cardFacts": [
-    "$37,000",
-    "Aurora",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465350202",
-   "title": "Software Engineering Intern (Summer 2027)",
+   "id": "4465352164",
+   "title": "Software Engineering Co-op (Summer/Fall 2027)",
    "company": "Collins Aerospace",
    "matchedWatchlist": "Collins Aerospace",
    "isTech": true,
@@ -61707,38 +60594,37 @@
    "location": "Cedar Rapids, IA",
    "workplaceType": "On-site",
    "stipend": "$37,000",
-   "duration": "Summer 2027",
+   "duration": "Fall 2027",
    "applicants": null,
    "easyApply": false,
    "skills": [
     "python",
     "c++"
    ],
-   "summary": "This internship involves reverse engineering software and system architectures, working with tools like IDA and Ghidra. It suits students with experience in C/C++ or Python and an interest in security fundamentals. The role is based in Cedar Rapids, IA, and offers hands-on experience with real-world systems.",
+   "summary": "This co-op involves developing software for military aircraft systems. Ideal for students with programming experience in C, C++, or Python. The role offers hands-on engineering work with a focus on flight management systems.",
    "bullets": [
-    "Reverse engineer software and system architectures",
-    "Work with IDA/Ghidra/BinaryNinja for analysis",
-    "Collaborate with senior engineers and fellow interns"
+    "Design and test software for flight management systems in military aircraft",
+    "Work with C, C++, ADA, and Python in a team environment",
+    "Full-time co-op with potential for semester off from studies"
    ],
-   "roleLabel": "Reverse Engineering",
-   "degreeLevel": "UG/PG",
+   "roleLabel": "Software Engineering",
+   "degreeLevel": "UG",
    "degreeText": null,
    "keySkills": [
-    "c/c++",
-    "python",
-    "ida",
-    "ghidra",
-    "binaryninja"
+    "c",
+    "c++",
+    "ada",
+    "python"
    ],
    "stipendStatus": "unknown",
    "postedText": "1 hour ago",
-   "postedAt": 1788989783741,
-   "firstSeenAt": 1788993383742,
-   "lastSeenAt": 1788993383742,
-   "url": "https://www.linkedin.com/jobs/view/4465350202/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872878EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
+   "postedAt": 1788989759129,
+   "firstSeenAt": 1788993359130,
+   "lastSeenAt": 1788993359130,
+   "url": "https://www.linkedin.com/jobs/view/4465352164/",
+   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872236EXTERNALENGLOBAL/Software-Engineering-Co-op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
-   "roleFingerprint": "f239158cc4",
+   "roleFingerprint": "596613e05a",
    "cardFacts": [
     "$37,000",
     "Cedar Rapids",
@@ -66386,53 +65272,6 @@
    "region": "US"
   },
   {
-   "id": "4446582359",
-   "title": "SkillBridge Intern DoD – Information System Security Officer - Huntsville, AL",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Huntsville, AL",
-   "workplaceType": "On-site",
-   "stipend": "9,001",
-   "duration": null,
-   "applicants": "29 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "php"
-   ],
-   "summary": "This internship involves supporting cybersecurity operations in classified environments, working with security officers to ensure compliance with strict policies. Ideal for veterans with experience in cybersecurity, compliance auditing, or IT systems.",
-   "bullets": [
-    "Assist with system compliance, auditing, and security plan development",
-    "Collaborate with ISSO/ISSM on classified environments and policy adherence",
-    "Investigate security violations and prepare corrective action reports"
-   ],
-   "roleLabel": "Information System Security Support",
-   "degreeLevel": "UG",
-   "degreeText": "Bachelors",
-   "keySkills": [
-    "risk management framework",
-    "system compliance",
-    "incident response"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "38 minutes ago",
-   "postedAt": 1788962225956,
-   "firstSeenAt": 1788964505964,
-   "lastSeenAt": 1788964505964,
-   "url": "https://www.linkedin.com/jobs/view/4446582359/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01862186EXTERNALENGLOBAL/SkillBridge-Intern-DoD-Information-System-Security-Officer-Huntsville-AL?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ae392dd12a",
-   "cardFacts": [
-    "Huntsville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4453428673",
    "title": "Humana Technology Internship – Summer 2027",
    "company": "Humana",
@@ -69910,118 +68749,6 @@
    "region": "US"
   },
   {
-   "id": "4463585559",
-   "title": "Electrical Firmware (Winter/Spring Co-op)(Onsite)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "linux",
-    "verilog",
-    "systemverilog",
-    "vhdl",
-    "uvm",
-    "rtl",
-    "fpga",
-    "asic",
-    "perl"
-   ],
-   "summary": "This co-op involves firmware development for aerospace systems, focusing on video and image processing. Ideal for students with experience in hardware design and verification. You'll work on certification processes and contribute to product development.",
-   "bullets": [
-    "Develop firmware for video, networking, and image processing devices",
-    "Use VHDL, Verilog, or SystemVerilog for RTL coding and simulation",
-    "Work on DO-254 DAL A certification and verification processes"
-   ],
-   "roleLabel": "Firmware Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "vhdl",
-    "verilog",
-    "systemverilog",
-    "rtl coding",
-    "fpga simulation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "36 minutes ago",
-   "postedAt": 1788924705531,
-   "firstSeenAt": 1788926865538,
-   "lastSeenAt": 1788926865538,
-   "url": "https://www.linkedin.com/jobs/view/4463585559/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01871872EXTERNALENGLOBAL/Electrical-Firmware-Winter-Spring-Co-op-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "aef571400a",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463599302",
-   "title": "Software Engineering Co-op (Fall/Spring 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Spring 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "git"
-   ],
-   "summary": "This co-op involves developing embedded software for aircraft systems, working with C and Python on avionics projects, and collaborating with engineers on real-time flight technologies. Ideal for students with a STEM degree seeking hands-on experience in aerospace software development.",
-   "bullets": [
-    "Develop embedded flight software for safety-critical systems in commercial and military aircraft",
-    "Work with C, Python, C++, Git, and DevOps tools on high-performance avionics projects",
-    "Collaborate with systems engineers and AI specialists on real-time flight technologies"
-   ],
-   "roleLabel": "Embedded software development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c",
-    "python",
-    "c++",
-    "git",
-    "devops"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "4 minutes ago",
-   "postedAt": 1788924699540,
-   "firstSeenAt": 1788924939550,
-   "lastSeenAt": 1788924939550,
-   "url": "https://www.linkedin.com/jobs/view/4463599302/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872683EXTERNALENGLOBAL/Software-Engineering-Co-op-Fall-Spring-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "fec6a2b17f",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4463598325",
    "title": "Digital Design Electrical Engineer Intern (Summer 2027)(Onsite)",
    "company": "Raytheon",
@@ -70950,57 +69677,6 @@
    "region": "US"
   },
   {
-   "id": "4463576599",
-   "title": "Cyber Compliance Intern - Summer 2027",
-   "company": "RSM US LLP",
-   "matchedWatchlist": "RSM US LLP",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/rsm-us-llp.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $34 / hour",
-   "duration": "Summer 2027",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "linux",
-    "excel"
-   ],
-   "summary": "This internship involves evaluating cyber security risks for clients and helping them meet compliance standards. You'll work with frameworks like ISO and NIST, and support the creation of security programs. Ideal for students with a background in computer science or related fields.",
-   "bullets": [
-    "Assess cyber security risks and provide remediation guidance to clients",
-    "Work with ISO, NIST, CIS frameworks and compliance standards like GDPR",
-    "Support development of security governance programs and reporting tools"
-   ],
-   "roleLabel": "Cyber Risk Assessment",
-   "degreeLevel": "UG",
-   "degreeText": "B.A./B.S.",
-   "keySkills": [
-    "ISO",
-    "NIST",
-    "GDPR",
-    "eGRC",
-    "Excel"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 hours ago",
-   "postedAt": 1788918036624,
-   "firstSeenAt": 1788925236629,
-   "lastSeenAt": 1788925236629,
-   "url": "https://www.linkedin.com/jobs/view/4463576599/",
-   "applyUrl": "https://jobs.rsmus.com/posting/cyber-compliance-intern---summer-2027/JR117293?source=LinkedIn+-+Job+Feed",
-   "description": null,
-   "roleFingerprint": "66879d1e34",
-   "cardFacts": [
-    "$29 – $34 / hour",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4463582318",
    "title": "Cyber Testing Intern - Summer 2027",
    "company": "RSM US LLP",
@@ -71682,48 +70358,6 @@
    "cardFacts": [
     "2,027 / year",
     "Middletown",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463569559",
-   "title": "Summer 2027 Engineering Internship - Peach Bottom, Delta, PA",
-   "company": "Constellation",
-   "matchedWatchlist": "Constellation Brands",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": null,
-   "location": "Delta, PA",
-   "workplaceType": "On-site",
-   "stipend": "2,027 / year",
-   "duration": "10 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers engineering students the chance to contribute to nuclear power projects, working on tasks like thermal analysis and control system design. Ideal for those passionate about energy infrastructure and hands-on problem-solving.",
-   "bullets": [
-    "Support nuclear plant systems with hands-on engineering projects",
-    "Use tools like AutoCAD, MATLAB, and simulation software",
-    "Work on real-world challenges in power generation and safety"
-   ],
-   "roleLabel": "Nuclear Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788909059000,
-   "firstSeenAt": 1788912659001,
-   "lastSeenAt": 1788912659001,
-   "url": "https://www.linkedin.com/jobs/view/4463569559/",
-   "applyUrl": "https://jobs.constellationenergy.com/jobs/138668?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "0a15f8d7d2",
-   "cardFacts": [
-    "2,027 / year",
-    "Delta",
     "On-site"
    ],
    "region": "US"
@@ -73627,59 +72261,6 @@
    "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01870613EXTERNALENGLOBAL/Software-Engineer-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
    "roleFingerprint": "623371badf",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4464688311",
-   "title": "Software Engineering Intern (Summer/Fall 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "docker",
-    "git"
-   ],
-   "summary": "This internship involves creating simulation models and code for military systems, working with experienced engineers on real projects. Ideal for students with a background in software or computer science looking to apply their skills in a practical, impactful setting.",
-   "bullets": [
-    "Develop modeling and simulation code for military systems",
-    "Use C/C++, Python, and tools like JIRA and Git",
-    "Work on real-world projects with full-time engineers"
-   ],
-   "roleLabel": "Modeling and Simulation",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c",
-    "c++",
-    "python",
-    "jira",
-    "git"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1788903453333,
-   "firstSeenAt": 1788903573336,
-   "lastSeenAt": 1788903573336,
-   "url": "https://www.linkedin.com/jobs/view/4464688311/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873006EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "858c7674fb",
    "cardFacts": [
     "$37,000",
     "Cedar Rapids",
@@ -76666,59 +75247,6 @@
    "region": "US"
   },
   {
-   "id": "4464658011",
-   "title": "Intern - Information Technology - Hybrid",
-   "company": "Mayo Clinic",
-   "matchedWatchlist": "Mayo Clinic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mayo-clinic.jpg",
-   "location": "Rochester, MN",
-   "workplaceType": "Hybrid",
-   "stipend": "$25",
-   "duration": null,
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c#",
-    "sql"
-   ],
-   "summary": "This internship involves supporting automated testing for research applications, using tools like Selenium and Python. It is ideal for students with experience in API testing and automation frameworks. The role is hybrid with occasional on-site visits near Rochester, MN.",
-   "bullets": [
-    "Support and develop automated testing for research applications",
-    "Use Selenium, Appium, Playwright, Java, C#, Python",
-    "Work hybrid with occasional on-site visits near Rochester"
-   ],
-   "roleLabel": "Automated Testing",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "api testing",
-    "selenium",
-    "appium",
-    "python",
-    "sql"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "22 minutes ago",
-   "postedAt": 1788886019289,
-   "firstSeenAt": 1788887339291,
-   "lastSeenAt": 1788887339291,
-   "url": "https://www.linkedin.com/jobs/view/4464658011/",
-   "applyUrl": "https://jobs.mayoclinic.org/job/rochester/intern-information-technology-hybrid/33647/95129684624",
-   "description": null,
-   "roleFingerprint": "bba96bee12",
-   "cardFacts": [
-    "$25",
-    "Rochester",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4455734062",
    "title": "Intern, Systems Engineer",
    "company": "L3Harris Technologies",
@@ -77172,49 +75700,6 @@
    "region": "US"
   },
   {
-   "id": "4455734063",
-   "title": "Systems Engineer Intern",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Alpharetta, GA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing system requirements, designing complex architectures, and supporting system integration. The intern will develop test plans, conduct operational analysis, and troubleshoot software and hardware issues. It suits students with a strong interest in systems engineering and hands-on technical problem-solving.",
-   "bullets": [
-    "Analyze system requirements and design complex architectures",
-    "Develop test plans and document operational analysis results",
-    "Support system integration and perform software/hardware troubleshooting"
-   ],
-   "roleLabel": "Systems Analysis",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "systems analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788883214982,
-   "firstSeenAt": 1788883634984,
-   "lastSeenAt": 1788883634984,
-   "url": "https://www.linkedin.com/jobs/view/4455734063/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/99372976256?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "3c7a6125a2",
-   "cardFacts": [
-    "Alpharetta",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4437126891",
    "title": "Quantitative Trader/Researcher Intern - Summer 2027",
    "company": "Tower Research Capital",
@@ -77385,69 +75870,6 @@
     "$46,600 / year",
     "University Park",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4464620597",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Richardson, TX",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "6 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "javascript",
-    "c++",
-    "c#",
-    "ruby",
-    "react",
-    "next.js",
-    "vue",
-    "angular",
-    "jenkins",
-    "ci/cd",
-    "linux",
-    "agile"
-   ],
-   "summary": "This internship involves developing software for complex systems, working with Java and C++ in a secure environment. Ideal for students with a background in computer science or engineering seeking hands-on experience in aerospace and defense.",
-   "bullets": [
-    "Develop software to integrate components and enable new capabilities",
-    "Use Java, C++, Python, and Git for development and version control",
-    "Work on secure systems requiring TS/SCI clearance"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "c++",
-    "python",
-    "git",
-    "unix/linux"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "30 minutes ago",
-   "postedAt": 1788881903362,
-   "firstSeenAt": 1788883703369,
-   "lastSeenAt": 1788885661281,
-   "url": "https://www.linkedin.com/jobs/view/4464620597/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872100EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "db3c3b173a",
-   "cardFacts": [
-    "$37,000",
-    "Richardson",
-    "On-site"
    ],
    "region": "US"
   },
@@ -78161,108 +76583,6 @@
    "region": "US"
   },
   {
-   "id": "4455328440",
-   "title": "GE Vernova Power Conversion & Storage Engineering Intern/Co-Op - Spring 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Findlay, PA",
-   "workplaceType": "On-site",
-   "stipend": "$21 / hour",
-   "duration": "Spring 2027",
-   "applicants": "46 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab"
-   ],
-   "summary": "This internship involves designing and modeling power conversion systems for naval and industrial use. You'll work with MATLAB and CAD tools to develop software and test systems for real-world applications. Ideal for engineering students interested in power electronics and system design.",
-   "bullets": [
-    "Develop software and models for power converters used in naval and industrial applications",
-    "Work with MATLAB, Python, and CAD tools for system design and testing",
-    "Collaborate on safety, quality, and project documentation for real-world systems"
-   ],
-   "roleLabel": "Power Converter Software Development",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering/Mechanical Engineering/Computer Engineering",
-   "keySkills": [
-    "matlab",
-    "python",
-    "autocad",
-    "ansys",
-    "creo"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "18 minutes ago",
-   "postedAt": 1788875541669,
-   "firstSeenAt": 1788876621673,
-   "lastSeenAt": 1788876621673,
-   "url": "https://www.linkedin.com/jobs/view/4455328440/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-power-conversion-storage-engineering-intern-co-op-spring-2027/job/R5049860",
-   "description": null,
-   "roleFingerprint": "4a5253cd98",
-   "cardFacts": [
-    "$21 / hour",
-    "Findlay",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4455328442",
-   "title": "GE Vernova Power Conversion & Storage Engineering Intern/Co-Op - Summer 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Findlay, PA",
-   "workplaceType": "On-site",
-   "stipend": "$21 / hour",
-   "duration": "Summer 2027",
-   "applicants": "89 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab"
-   ],
-   "summary": "This internship involves designing and testing power conversion systems for naval and industrial applications. You will work on real-time models and software for power electronics projects using tools like MATLAB and Python. Ideal for engineering students with a focus on power systems and control.",
-   "bullets": [
-    "Design and test power conversion systems for naval and industrial applications",
-    "Use MATLAB, Python, and C++ for control and simulation tasks",
-    "Work on real-time models and software for power electronics projects"
-   ],
-   "roleLabel": "Power Systems Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering/Mechanical Engineering/Computer Engineering",
-   "keySkills": [
-    "matlab",
-    "python",
-    "c++",
-    "autocad",
-    "ansys"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 minute ago",
-   "postedAt": 1788874624631,
-   "firstSeenAt": 1788874684637,
-   "lastSeenAt": 1788874684637,
-   "url": "https://www.linkedin.com/jobs/view/4455328442/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-power-conversion-storage-engineering-intern-co-op-summer-2027/job/R5049865",
-   "description": null,
-   "roleFingerprint": "b916f22ce1",
-   "cardFacts": [
-    "$21 / hour",
-    "Findlay",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4450862159",
    "title": "Intern Application Developer 2027-ServiceNow",
    "company": "IBM",
@@ -78376,54 +76696,6 @@
     "$32 / hour",
     "Santa Clara",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4455524208",
-   "title": "PCS Supplier Quality Engineering Intern - Summer 2027-3",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Findlay, PA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "Summer 2027",
-   "applicants": "46 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This internship involves supporting production by resolving quality issues and integrating quality systems with supplier communication platforms. Ideal for engineering students interested in manufacturing and digital transformation.",
-   "bullets": [
-    "Support shop floor operations by resolving quality issues",
-    "Integrate quality systems with supplier communication platforms",
-    "Work on-site in a manufacturing environment with cross-functional teams"
-   ],
-   "roleLabel": "Supplier Quality Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "root cause analysis",
-    "data analysis",
-    "microsoft office suite"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "6 minutes ago",
-   "postedAt": 1788872500613,
-   "firstSeenAt": 1788872860620,
-   "lastSeenAt": 1788872860620,
-   "url": "https://www.linkedin.com/jobs/view/4455524208/",
-   "applyUrl": "https://careers.gevernova.com/pcs-supplier-quality-engineering-intern-summer-2027-3/job/R5050235",
-   "description": null,
-   "roleFingerprint": "9aae10ca5c",
-   "cardFacts": [
-    "Findlay",
-    "On-site",
-    "Summer 2027"
    ],
    "region": "US"
   },
@@ -79618,106 +77890,6 @@
    "cardFacts": [
     "$19 – $55 / hour",
     "San Francisco Bay Area",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4455312818",
-   "title": "Software Engineering Intern (Winter)",
-   "company": "Datadog",
-   "matchedWatchlist": "Datadog",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/datadog.png",
-   "location": "Boston, MA",
-   "workplaceType": "Hybrid",
-   "stipend": "$1,00,000 – $1,10,000 / year",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "kubernetes",
-    "data structures",
-    "algorithms"
-   ],
-   "summary": "This internship involves developing and refining systems that process and analyze vast amounts of data for observability and security. Ideal for students with a technical background and interest in distributed systems, cloud infrastructure, and AI tools. You'll work on impactful projects with experienced engineers and contribute to scalable solutions for global customers.",
-   "bullets": [
-    "Build and improve distributed systems for observability and security platforms",
-    "Work with Kubernetes, cloud-native infrastructure, and AI-powered tools",
-    "Collaborate with engineers on global-scale projects with real-world impact"
-   ],
-   "roleLabel": "System Development",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science",
-   "keySkills": [
-    "kubernetes",
-    "distributed systems",
-    "cloud-native infrastructure"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "44 minutes ago",
-   "postedAt": 1788863091013,
-   "firstSeenAt": 1788865731018,
-   "lastSeenAt": 1788865731018,
-   "url": "https://www.linkedin.com/jobs/view/4455312818/",
-   "applyUrl": "https://careers.datadoghq.com/detail/8052095/?gh_jid=8052095&gh_src=8363eca61",
-   "description": null,
-   "roleFingerprint": "c48b9e973e",
-   "cardFacts": [
-    "$100,000 – $110,000 / year",
-    "Boston",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4455319685",
-   "title": "Software Engineering Intern (Winter)",
-   "company": "Datadog",
-   "matchedWatchlist": "Datadog",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/datadog.png",
-   "location": "New York, NY",
-   "workplaceType": "Hybrid",
-   "stipend": "$1,00,000 – $1,10,000 / year",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "kubernetes",
-    "data structures",
-    "algorithms"
-   ],
-   "summary": "We’re looking for Software Engineering Interns to help build and scale the systems that power Datadog’s observability and security platform. Interns contribute directly to real-world engineering challenges across backend, frontend, infrastructure, data engineering, and developer tooling while working alongside experienced engineers and mentors. We operate as a hybrid workplace to ensure our Datadogs can create a work-life harmony that best fits them. Actual compensation is based on factors such as the candidate's skills, qualifications, and experience.",
-   "bullets": [
-    "Build and improve distributed systems for observability and security platforms",
-    "Work with Kubernetes, cloud-native infrastructure, and AI-powered tools",
-    "Collaborate with engineers on global-scale projects with real-world impact"
-   ],
-   "roleLabel": "Distributed systems engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science/Software Engineering",
-   "keySkills": [
-    "kubernetes",
-    "cloud-native infrastructure",
-    "distributed systems"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "48 minutes ago",
-   "postedAt": 1788862855244,
-   "firstSeenAt": 1788865735246,
-   "lastSeenAt": 1788865735246,
-   "url": "https://www.linkedin.com/jobs/view/4455319685/",
-   "applyUrl": "https://careers.datadoghq.com/detail/8052095/?gh_jid=8052095&gh_src=8363eca61",
-   "description": null,
-   "roleFingerprint": "c48b9e973e",
-   "cardFacts": [
-    "$100,000 – $110,000 / year",
-    "New York",
     "Hybrid"
    ],
    "region": "US"
@@ -83654,56 +81826,6 @@
    "region": "US"
   },
   {
-   "id": "4406711944",
-   "title": "Quantitative Trader Internship: Summer 2027",
-   "company": "Susquehanna International Group",
-   "matchedWatchlist": "Susquehanna International Group",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/susquehanna-international-group.jpg",
-   "location": "Bala-Cynwyd, PA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "Summer 2027",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "excel"
-   ],
-   "summary": "This internship offers hands-on experience in quantitative trading, where interns analyze market data and support trading decisions. Working closely with experienced traders, they gain insight into options theory and decision science. The program includes mentorship, classroom training, and a supportive environment focused on continuous learning and development.",
-   "bullets": [
-    "Analyze market data and support trading decisions",
-    "Work with traders and learn options theory",
-    "Based in bala-cynwyd, pa",
-    "Full-time mentorship and classroom training"
-   ],
-   "roleLabel": "Quantitative Trading",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "options theory",
-    "decision science",
-    "game theory"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "57 minutes ago",
-   "postedAt": 1788772182539,
-   "firstSeenAt": 1788775602540,
-   "lastSeenAt": 1788775602540,
-   "url": "https://www.linkedin.com/jobs/view/4406711944/",
-   "applyUrl": "https://careers.sig.com/jobs/10717?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "387847d2ca",
-   "cardFacts": [
-    "Bala-Cynwyd",
-    "On-site",
-    "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4406715843",
    "title": "Quantitative Systematic Trading Internship - PhD: Summer 2027",
    "company": "Susquehanna International Group",
@@ -85451,56 +83573,6 @@
     "$500",
     "San Francisco",
     "Remote"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4464027812",
-   "title": "Undergrad Co-op - Automation Engineer, Drug Product Assembly & Packaging",
-   "company": "Amgen",
-   "matchedWatchlist": "Amgen",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/amgen.jpg",
-   "location": "Cambridge, MA",
-   "workplaceType": "On-site",
-   "stipend": "$25 – $28 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "tableau"
-   ],
-   "summary": "This internship involves improving packaging line processes through automation. You'll analyze data, design solutions, and collaborate across teams to enhance efficiency in clinical manufacturing. Ideal for engineering students with an interest in biotech and process optimization.",
-   "bullets": [
-    "Design automation solutions for packaging lines",
-    "Use tools like Tableau and Smartsheet for data analysis",
-    "Work on improving clinical manufacturing workflows"
-   ],
-   "roleLabel": "Packaging Automation",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "tableau",
-    "smartsheet",
-    "microsoft office",
-    "root cause analysis",
-    "data visualization"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1788706799392,
-   "firstSeenAt": 1788706919400,
-   "lastSeenAt": 1788706919400,
-   "url": "https://www.linkedin.com/jobs/view/4464027812/",
-   "applyUrl": "https://careers.amgen.com/job/-/-/87/100168608768?src=Linkedin",
-   "description": null,
-   "roleFingerprint": "f18e56db71",
-   "cardFacts": [
-    "$25 – $28 / hour",
-    "Cambridge",
-    "On-site"
    ],
    "region": "US"
   },
@@ -91766,56 +89838,6 @@
    "region": "US"
   },
   {
-   "id": "4463701362",
-   "title": "Systems Engineering Co-op – Special Operations Aviation Mainline (Summer/Fall 2027) - Onsite",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "Onsite",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This co-op involves testing avionics systems in simulated cockpit environments and managing requirements using tools like DOORS and JIRA. Ideal for students with a background in mechanical or aerospace engineering and an interest in systems integration.",
-   "bullets": [
-    "Test avionics systems in simulated cockpit environments",
-    "Use DOORS, JAMA, JIRA, and ALM for requirement tracking",
-    "Work on MH-47 and MH-60 helicopter integration projects"
-   ],
-   "roleLabel": "Avionics Systems Testing",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Aerospace Engineering",
-   "keySkills": [
-    "DOORS",
-    "JAMA",
-    "JIRA",
-    "ALM",
-    "Systems Integration"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1788578352963,
-   "firstSeenAt": 1788578472972,
-   "lastSeenAt": 1788578472972,
-   "url": "https://www.linkedin.com/jobs/view/4463701362/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872909EXTERNALENGLOBAL/Systems-Engineering-Co-op-Special-Operations-Aviation-Mainline-Summer-Fall-2027-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "18e2e4f0c3",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4462067300",
    "title": "College to Corporate IT Internship - Technical Product Manager",
    "company": "Vanguard",
@@ -92259,58 +90281,6 @@
    "region": "US"
   },
   {
-   "id": "4462328427",
-   "title": "Commercial Data Science Intern, Spring 2027",
-   "company": "The Walt Disney Company",
-   "matchedWatchlist": "Walt Disney Company",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/the-walt-disney-company.jpg",
-   "location": "Lake Buena Vista, FL",
-   "workplaceType": "On-site",
-   "stipend": "$43 / hour",
-   "duration": "12 months",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "machine learning",
-    "tableau"
-   ],
-   "summary": "This internship involves creating data models and analyses to support Disney's commercial products. You'll work with SQL, Python, and Tableau to uncover insights and support business decisions. Ideal for students with data science or analytics backgrounds looking to apply skills in a real-world setting.",
-   "bullets": [
-    "Build models and analyses to support merchandise, food, and booking decisions",
-    "Use SQL, Python, and Tableau to query data and visualize insights",
-    "Collaborate with business teams to automate workflows and improve decision-making"
-   ],
-   "roleLabel": "Data Modeling",
-   "degreeLevel": "UG",
-   "degreeText": "Data Science/Analytics/Statistics",
-   "keySkills": [
-    "sql",
-    "python",
-    "tableau",
-    "gitlab"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "31 minutes ago",
-   "postedAt": 1788565474839,
-   "firstSeenAt": 1788567334842,
-   "lastSeenAt": 1788567334842,
-   "url": "https://www.linkedin.com/jobs/view/4462328427/",
-   "applyUrl": "https://www.disneycareers.com/job/-/-/391/100174207696",
-   "description": null,
-   "roleFingerprint": "4b2bb47bda",
-   "cardFacts": [
-    "$43 / hour",
-    "Lake Buena Vista",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461416099",
    "title": "Technology Co-op with Northeastern University",
    "company": "Susquehanna International Group",
@@ -92537,60 +90507,6 @@
    "cardFacts": [
     "$54 / hour",
     "South San Francisco",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463651774",
-   "title": "Data Science Intern - Garg Lab AI Program",
-   "company": "Mayo Clinic",
-   "matchedWatchlist": "Mayo Clinic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mayo-clinic.jpg",
-   "location": "Jacksonville, FL",
-   "workplaceType": "On-site",
-   "stipend": "$25 / hour",
-   "duration": "11 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "machine learning",
-    "nlp",
-    "algorithms"
-   ],
-   "summary": "This internship involves applying data science techniques to healthcare challenges, including analyzing clinical data and developing algorithms for patient outcomes. Ideal for students with a background in computer science or related fields and experience with data analysis tools.",
-   "bullets": [
-    "Analyze clinical and non-clinical data to solve healthcare problems",
-    "Use python, sql, and machine learning tools for algorithm development",
-    "Work on image analysis, nlp, and patient outcome modeling projects"
-   ],
-   "roleLabel": "Data Analysis",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "sql",
-    "machine learning",
-    "nlp",
-    "data visualization"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "28 minutes ago",
-   "postedAt": 1788562030820,
-   "firstSeenAt": 1788563710824,
-   "lastSeenAt": 1788563710824,
-   "url": "https://www.linkedin.com/jobs/view/4463651774/",
-   "applyUrl": "https://jobs.mayoclinic.org/job/jacksonville/data-science-intern-garg-lab-ai-program/33647/100179569296",
-   "description": null,
-   "roleFingerprint": "bde3f0a1bd",
-   "cardFacts": [
-    "$25 / hour",
-    "Jacksonville",
     "On-site"
    ],
    "region": "US"
@@ -95127,63 +93043,6 @@
    "region": "US"
   },
   {
-   "id": "4461187562",
-   "title": "Technology Co-op with McGill University",
-   "company": "Susquehanna International Group",
-   "matchedWatchlist": "Susquehanna International Group",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/susquehanna-international-group.jpg",
-   "location": "Bala-Cynwyd, PA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "c#",
-    "sql",
-    ".net",
-    "linux",
-    "machine learning",
-    "excel"
-   ],
-   "summary": "Co-op students contribute to trading systems and data processing at a quantitative finance firm. Ideal for technical students with coding experience and interest in financial markets. Work involves system optimization and data analysis.",
-   "bullets": [
-    "Work on trading systems and data processing pipelines",
-    "Use c++ c# python and sql technologies",
-    "Work in a fast-paced team with global market focus"
-   ],
-   "roleLabel": "Trading Systems Development",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "c++",
-    "python",
-    "sql",
-    "networking",
-    "trading systems"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "3 minutes ago",
-   "postedAt": 1788541933296,
-   "firstSeenAt": 1788542113302,
-   "lastSeenAt": 1788542113302,
-   "url": "https://www.linkedin.com/jobs/view/4461187562/",
-   "applyUrl": "https://careers.sig.com/jobs/11379?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "8976569b8f",
-   "cardFacts": [
-    "Bala-Cynwyd",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461170919",
    "title": "Technology Co-op with RIT",
    "company": "Susquehanna International Group",
@@ -95228,54 +93087,6 @@
    "roleFingerprint": "edf3982540",
    "cardFacts": [
     "Bala-Cynwyd",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463604114",
-   "title": "2027 Spring Co-op mRNA Analytics, Waltham, MA",
-   "company": "Sanofi",
-   "matchedWatchlist": "Sanofi",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/sanofi.jpg",
-   "location": "Waltham, MA",
-   "workplaceType": "On-site",
-   "stipend": "$35 – $58 / hour",
-   "duration": "6 months",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op role involves hands-on work characterizing RNA drug substances through analytical experiments. You'll support method development, collaborate with teams, and maintain lab records. Ideal for students with a background in analytical chemistry or molecular biology seeking lab experience in drug development.",
-   "bullets": [
-    "Run analytical experiments on RNA drug substances using NGS, gel electrophoresis, PCR, LC, and MS",
-    "Document procedures and results in electronic lab notebooks and present findings to team",
-    "Collaborate with cross-functional teams on project goals and lab operations"
-   ],
-   "roleLabel": "MRNA analytics",
-   "degreeLevel": "PG",
-   "degreeText": "PhD/MS",
-   "keySkills": [
-    "ngs",
-    "gel electrophoresis",
-    "pcr",
-    "lc/ms",
-    "electronic lab notebooks"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "4 minutes ago",
-   "postedAt": 1788541879811,
-   "firstSeenAt": 1788542119816,
-   "lastSeenAt": 1788542119816,
-   "url": "https://www.linkedin.com/jobs/view/4463604114/",
-   "applyUrl": "https://dsp.prng.co/Ols-Pyb",
-   "description": null,
-   "roleFingerprint": "a8d4eecf5f",
-   "cardFacts": [
-    "$35 – $58 / hour",
-    "Waltham",
     "On-site"
    ],
    "region": "US"
@@ -95515,62 +93326,6 @@
    "cardFacts": [
     "$18 – $50 / hour",
     "Huntsville",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461990911",
-   "title": "Strategic Student Program: Technology & Innovation Intern (T&I, Spring 2027)",
-   "company": "Siemens",
-   "matchedWatchlist": "Siemens",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/siemens.jpg",
-   "location": "Mason, OH",
-   "workplaceType": "Hybrid",
-   "stipend": "$18 – $50 / hour",
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "javascript",
-    "c++",
-    "machine learning",
-    "generative ai",
-    "algorithms"
-   ],
-   "summary": "This internship involves researching and developing innovative algorithms to solve business challenges, working with senior engineers on software development, and exploring emerging technologies like AI and quantum computing. It suits students passionate about technical problem-solving and eager to contribute to cutting-edge projects.",
-   "bullets": [
-    "Research and develop algorithms for business challenges",
-    "Work with senior engineers on software development",
-    "Explore cutting-edge tech like AI and quantum computing"
-   ],
-   "roleLabel": "Algorithm Research",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "c",
-    "c++",
-    "java",
-    "python",
-    "object-oriented programming"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "18 minutes ago",
-   "postedAt": 1788539438719,
-   "firstSeenAt": 1788540518723,
-   "lastSeenAt": 1788540518723,
-   "url": "https://www.linkedin.com/jobs/view/4461990911/",
-   "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/519898?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
-   "description": null,
-   "roleFingerprint": "1883947e59",
-   "cardFacts": [
-    "$18 – $50 / hour",
-    "Mason",
     "Hybrid"
    ],
    "region": "US"
@@ -101434,130 +99189,6 @@
    "region": "US"
   },
   {
-   "id": "4461658073",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "Boston, MA",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on cutting-edge cpu design projects, focusing on power, performance, and area trade-offs. You'll collaborate with senior engineers on implementation flows and tool improvements, ideal for those with a background in electronic engineering or computer science.",
-   "bullets": [
-    "Analyze tools for automation and trial new ones",
-    "Work on cpu design metrics for 3nm and below tech",
-    "Collaborate with micro-architecture teams on performance trade-offs"
-   ],
-   "roleLabel": "Cpu implementation engineer",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788439403173,
-   "firstSeenAt": 1788443003175,
-   "lastSeenAt": 1788443003175,
-   "url": "https://www.linkedin.com/jobs/view/4461658073/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "Boston",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461661046",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "Seattle, WA",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on CPU design projects, focusing on power, performance, and area trade-offs. You'll collaborate with engineers to improve metrics and automate processes. Ideal for students with a background in electronic engineering or computer science and experience with design tools.",
-   "bullets": [
-    "Analyze tools for automation and test new ones in CPU design",
-    "Work on power, performance, and area trade-offs in CMOS design",
-    "Collaborate with micro-architecture teams on timing and bottlenecks"
-   ],
-   "roleLabel": "CPU Design Intern",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788439380694,
-   "firstSeenAt": 1788442980698,
-   "lastSeenAt": 1788446553892,
-   "url": "https://www.linkedin.com/jobs/view/4461661046/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "Seattle",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461650194",
    "title": "Intern - Advanced DRAM Cell & Device Technology",
    "company": "Micron Technology",
@@ -101603,316 +99234,6 @@
    "cardFacts": [
     "Boise",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461653129",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "Raleigh, NC",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on cutting-edge CPU designs for next-gen processors. You'll analyze performance metrics, optimize timing, and collaborate with engineers on advanced technology nodes. Ideal for students with a background in electronic engineering or computer science.",
-   "bullets": [
-    "Analyze timing bottlenecks and optimize performance metrics",
-    "Work with synthesis and place-and-route tools",
-    "Collaborate on 3nm and below technology node designs"
-   ],
-   "roleLabel": "Cpu implementation",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "synthesis",
-    "floor-planning",
-    "power planning",
-    "clock tree",
-    "place and route"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "22 minutes ago",
-   "postedAt": 1788437914960,
-   "firstSeenAt": 1788439234961,
-   "lastSeenAt": 1788439234961,
-   "url": "https://www.linkedin.com/jobs/view/4461653129/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "Raleigh",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461649174",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "Austin, TX",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on cpu design projects with a focus on power and performance optimization. You'll analyze and improve tools for automation, collaborate with design teams, and contribute to next-generation processor development. Ideal for engineering students with a background in computer science or electronic engineering.",
-   "bullets": [
-    "Analyze tools for automation and trial new ones",
-    "Work on cpu design with focus on power and performance",
-    "Based in austin tx with hybrid work options"
-   ],
-   "roleLabel": "Cpu design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1788437913467,
-   "firstSeenAt": 1788439293468,
-   "lastSeenAt": 1788446617492,
-   "url": "https://www.linkedin.com/jobs/view/4461649174/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "Austin",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461659063",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "Chandler, AZ",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on cutting-edge CPU designs for next-gen processors, focusing on power, performance, and area trade-offs. Ideal for engineering students with experience in synthesis, floor-planning, and tool automation. The role offers hands-on involvement in implementation flows and collaboration with top engineers.",
-   "bullets": [
-    "Analyze tools for automation and trial new ones",
-    "Work on 3nm and below tech node designs",
-    "Collaborate with micro-architecture teams"
-   ],
-   "roleLabel": "CPU Implementation",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1788437882974,
-   "firstSeenAt": 1788439262977,
-   "lastSeenAt": 1788446594452,
-   "url": "https://www.linkedin.com/jobs/view/4461659063/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "Chandler",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461659064",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "San Diego, CA",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on cutting-edge cpu design projects, focusing on power, performance, and area trade-offs. You'll collaborate with experienced engineers and contribute to the development of next-generation processors. Ideal for students with a background in electronic engineering or computer science and experience with design tools.",
-   "bullets": [
-    "Analyze tools for automation and trial new ones",
-    "Work on cpu design metrics for 3nm and below tech",
-    "Collaborate with micro-architecture and floor-planning teams"
-   ],
-   "roleLabel": "Cpu design engineer",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "22 minutes ago",
-   "postedAt": 1788437879787,
-   "firstSeenAt": 1788439199792,
-   "lastSeenAt": 1788446547798,
-   "url": "https://www.linkedin.com/jobs/view/4461659064/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "San Diego",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461664017",
-   "title": "Intern Program - Engineering Pathways",
-   "company": "Arm",
-   "matchedWatchlist": "Arm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arm.jpg",
-   "location": "San Jose, CA",
-   "workplaceType": "Hybrid",
-   "stipend": "€40,300 – €54,500 / year",
-   "pay": {
-    "currency": "EUR",
-    "min": 40300,
-    "max": 54500,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "linux",
-    "git",
-    "dft",
-    "place and route",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves working on CPU design projects, focusing on power and performance optimization. You'll collaborate with engineers to improve metrics and automate processes. Ideal for students with a background in computer science or engineering and experience with design tools.",
-   "bullets": [
-    "Analyze tools for automation and test new ones",
-    "Work on power/performance/area tradeoffs in CPU design",
-    "Collaborate with micro-architecture and floor-planning teams"
-   ],
-   "roleLabel": "Cpu design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "perl",
-    "tcl",
-    "git",
-    "upf"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "24 minutes ago",
-   "postedAt": 1788437875687,
-   "firstSeenAt": 1788439315689,
-   "lastSeenAt": 1788439315689,
-   "url": "https://www.linkedin.com/jobs/view/4461664017/",
-   "applyUrl": "https://careers.arm.com/job/sophia-antipolis/graduate-cpu-physical-implementation-engineer/33099/94035947072",
-   "description": null,
-   "roleFingerprint": "f3c90641af",
-   "cardFacts": [
-    "€40,300 – €54,500 / year",
-    "San Jose",
-    "Hybrid"
    ],
    "region": "US"
   },
@@ -102285,59 +99606,6 @@
    "region": "US"
   },
   {
-   "id": "4453600244",
-   "title": "GE Vernova Gas Power Engineering Intern - Summer 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Greenville, SC",
-   "workplaceType": "On-site",
-   "stipend": "$1,000 / week",
-   "pay": {
-    "currency": "USD",
-    "min": 1000,
-    "max": 1000,
-    "unitText": "WEEK"
-   },
-   "duration": "Summer 2027",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This engineering internship focuses on designing and analyzing power generation systems like steam turbines and gas engines. You'll work on complex technical projects with experienced mentors and collaborate with manufacturing teams to solve production challenges. Ideal for engineering students passionate about clean energy and hands-on design work.",
-   "bullets": [
-    "Design and analyze steam turbine and gas engine systems",
-    "Collaborate with manufacturing to solve production challenges",
-    "Work on complex technical projects with experienced mentors"
-   ],
-   "roleLabel": "Power System Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical / Electrical / Chemical / Aeronautical / Aerospace",
-   "keySkills": [
-    "Systems analysis",
-    "Design improvements"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "45 minutes ago",
-   "postedAt": 1788436567046,
-   "firstSeenAt": 1788439267047,
-   "lastSeenAt": 1788442915405,
-   "url": "https://www.linkedin.com/jobs/view/4453600244/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-gas-power-engineering-intern-summer-2027/job/R5050076",
-   "description": null,
-   "roleFingerprint": "17e75335aa",
-   "cardFacts": [
-    "$1,000 / week",
-    "Greenville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4452764451",
    "title": "Graduate Intern, Data Scientist (Spring 2027)",
    "company": "Delta Air Lines",
@@ -102652,61 +99920,6 @@
    "roleFingerprint": "10476ecb72",
    "cardFacts": [
     "Cary",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4431972854",
-   "title": "Quantitative Trader Internship: Summer 2027",
-   "company": "Susquehanna International Group",
-   "matchedWatchlist": "Susquehanna International Group",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/susquehanna-international-group.jpg",
-   "location": "Chicago, IL",
-   "workplaceType": "On-site",
-   "stipend": "$7,600 / week",
-   "pay": {
-    "currency": "USD",
-    "min": 7600,
-    "max": 7600,
-    "unitText": "WEEK"
-   },
-   "duration": "Summer 2027",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "machine learning",
-    "excel"
-   ],
-   "summary": "This internship offers hands-on experience in quantitative trading, with daily work involving market analysis and model support. Interns learn options theory and decision science through dedicated training while embedded on a trading desk. The program includes housing, meals, and a competitive salary, making it ideal for students with strong quantitative skills and an interest in trading strategies.",
-   "bullets": [
-    "Analyze market data and support trading decisions using quantitative models",
-    "Work alongside traders and receive structured training in options and decision science",
-    "Based in chicago, with housing and meals provided during the 10-week program"
-   ],
-   "roleLabel": "Quantitative trading",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "options theory",
-    "decision science",
-    "game theory"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "24 minutes ago",
-   "postedAt": 1788426889367,
-   "firstSeenAt": 1788428329369,
-   "lastSeenAt": 1788428329369,
-   "url": "https://www.linkedin.com/jobs/view/4431972854/",
-   "applyUrl": "https://careers.sig.com/jobs/10849?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "eecb06342c",
-   "cardFacts": [
-    "$7,600 / week",
-    "Chicago",
     "On-site"
    ],
    "region": "US"
@@ -103773,64 +100986,6 @@
    "region": "US"
   },
   {
-   "id": "4461398103",
-   "title": "Strategic Student Program: Integration Quality Assurance Co-Op (EBS, Spring 2027)",
-   "company": "Siemens Digital Industries Software",
-   "matchedWatchlist": "Siemens",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/siemens-digital-industries-software.jpg",
-   "location": "Huntsville, AL",
-   "workplaceType": "Hybrid",
-   "stipend": "$18 – $50 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 18,
-    "max": 50,
-    "unitText": "HOUR"
-   },
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "javascript",
-    "agile"
-   ],
-   "summary": "This co-op involves testing software releases and building automated tests to ensure quality. You'll work with experienced engineers in an agile team, using tools like Jira and Confluence. Ideal for students interested in software quality assurance and test automation.",
-   "bullets": [
-    "Run automated tests to ensure software reliability",
-    "Use jira and confluence for tracking and docs",
-    "Work in agile teams on real release processes"
-   ],
-   "roleLabel": "Software Quality Assurance",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "jira",
-    "confluence",
-    "agile",
-    "test automation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788409845339,
-   "firstSeenAt": 1788410265342,
-   "lastSeenAt": 1788424814597,
-   "url": "https://www.linkedin.com/jobs/view/4461398103/",
-   "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/520097?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
-   "description": null,
-   "roleFingerprint": "5768c484c2",
-   "cardFacts": [
-    "$18 – $50 / hour",
-    "Huntsville",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461393697",
    "title": "Strategic Student Program: AI, Automation & Process Improvement Internship (Spring/Summer 2027, GSCS)",
    "company": "Siemens Digital Industries Software",
@@ -104182,165 +101337,6 @@
     "$18 – $39",
     "Oklahoma City",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462748742",
-   "title": "Machine Learning Engineer II (Intern) - United States",
-   "company": "Cisco",
-   "matchedWatchlist": "Cisco",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/cisco.jpg",
-   "location": "San Francisco, CA",
-   "workplaceType": "Remote",
-   "stipend": "$44,000 – $1,30,000",
-   "duration": null,
-   "applicants": "5 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "machine learning",
-    "llm",
-    "generative ai"
-   ],
-   "summary": "This internship involves building and refining AI models using large language models and neural networks. You'll work with Go or Python and tools like vLLM, and collaborate with cross-functional teams on deployment and data preparation. Ideal for students with a background in computer science or related fields.",
-   "bullets": [
-    "Develop and optimize generative AI models using large language models and neural networks",
-    "Work with Go or Python, and tools like vLLM, Triton, or TorchServe",
-    "Collaborate with cross-functional teams on model deployment and data preparation"
-   ],
-   "roleLabel": "AI model development",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science",
-   "keySkills": [
-    "go",
-    "python",
-    "vllm",
-    "triton",
-    "torchserve"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "32 minutes ago",
-   "postedAt": 1788408385518,
-   "firstSeenAt": 1788410305520,
-   "lastSeenAt": 1788417613248,
-   "url": "https://www.linkedin.com/jobs/view/4462748742/",
-   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2024683EXTERNALENGLOBAL/Machine-Learning-Engineer-II-Intern-United-States?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7c6b38f63b",
-   "cardFacts": [
-    "$44,000 – $130,000",
-    "San Francisco",
-    "Remote"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462758633",
-   "title": "Machine Learning Engineer II (Intern) - United States",
-   "company": "Cisco",
-   "matchedWatchlist": "Cisco",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/cisco.jpg",
-   "location": "San Jose, CA",
-   "workplaceType": "Remote",
-   "stipend": "$44,000 – $1,30,000",
-   "duration": null,
-   "applicants": "6 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "machine learning",
-    "llm",
-    "generative ai"
-   ],
-   "summary": "This internship involves building and refining AI models using cutting-edge frameworks and collaborating with teams to deploy them effectively. Ideal for students with a background in machine learning and programming.",
-   "bullets": [
-    "Develop and optimize generative AI models using large language models and neural networks",
-    "Work with Go or Python, transformer-based models, and GANs for real-world deployment",
-    "Collaborate with cross-functional teams on data prep, model layers, and deployment automation"
-   ],
-   "roleLabel": "AI model development",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science",
-   "keySkills": [
-    "go",
-    "python",
-    "transformer",
-    "gan",
-    "llm"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "31 minutes ago",
-   "postedAt": 1788408383137,
-   "firstSeenAt": 1788410243139,
-   "lastSeenAt": 1788417596491,
-   "url": "https://www.linkedin.com/jobs/view/4462758633/",
-   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2024683EXTERNALENGLOBAL/Machine-Learning-Engineer-II-Intern-United-States?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7c6b38f63b",
-   "cardFacts": [
-    "$44,000 – $130,000",
-    "San Jose",
-    "Remote"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462750752",
-   "title": "Machine Learning Engineer II (Intern) - United States",
-   "company": "Cisco",
-   "matchedWatchlist": "Cisco",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/cisco.jpg",
-   "location": "Milpitas, CA",
-   "workplaceType": "Remote",
-   "stipend": "$44,000 – $1,30,000",
-   "duration": null,
-   "applicants": "7 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "machine learning",
-    "llm",
-    "generative ai"
-   ],
-   "summary": "This internship involves building and refining AI models using large language models and neural networks. You'll work with Go or Python and tools like vLLM, while collaborating with cross-functional teams on data preparation and deployment. Ideal for students with a background in computer science or related fields and experience in AI development.",
-   "bullets": [
-    "Develop and optimize generative AI models using large language models and neural networks",
-    "Work with Go or Python, and tools like vLLM, Triton, or TorchServe",
-    "Collaborate with cross-functional teams on data prep and model deployment"
-   ],
-   "roleLabel": "AI model development",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science",
-   "keySkills": [
-    "go",
-    "python",
-    "vllm",
-    "triton",
-    "torchserve"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "32 minutes ago",
-   "postedAt": 1788408353295,
-   "firstSeenAt": 1788410273297,
-   "lastSeenAt": 1788417613247,
-   "url": "https://www.linkedin.com/jobs/view/4462750752/",
-   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2024683EXTERNALENGLOBAL/Machine-Learning-Engineer-II-Intern-United-States?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7c6b38f63b",
-   "cardFacts": [
-    "$44,000 – $130,000",
-    "Milpitas",
-    "Remote"
    ],
    "region": "US"
   },
@@ -107273,60 +104269,6 @@
    "region": "US"
   },
   {
-   "id": "4462487267",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Annapolis, MD",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "3 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "jenkins",
-    "git",
-    "agile"
-   ],
-   "summary": "This internship involves writing and testing software for aviation systems, working with tools like Git and JIRA, and collaborating with engineers on customer projects. Ideal for computer science students with coding experience.",
-   "bullets": [
-    "Write and test code for aviation software applications",
-    "Use Git, JIRA, and Jenkins for development workflows",
-    "Collaborate with engineers on customer-facing projects"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "python",
-    "git",
-    "jira",
-    "jenkins"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "6 minutes ago",
-   "postedAt": 1788384698878,
-   "firstSeenAt": 1788385058881,
-   "lastSeenAt": 1788385058881,
-   "url": "https://www.linkedin.com/jobs/view/4462487267/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01870699EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "a540956a1b",
-   "cardFacts": [
-    "$37,000",
-    "Annapolis",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4462490032",
    "title": "Systems Engineering Intern (Onsite)",
    "company": "Raytheon",
@@ -107368,53 +104310,6 @@
    "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01871921EXTERNALENGLOBAL/Systems-Engineering-Intern-Onsite?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
    "roleFingerprint": "c03709cc85",
-   "cardFacts": [
-    "$37,000",
-    "Huntsville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462469860",
-   "title": "Summer 2027 Systems Intern_(OnSite)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Huntsville, AL",
-   "workplaceType": "OnSite",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves designing avionics communication systems for military aircraft, working in an agile environment with cross-functional teams. Ideal for students interested in software development and aerospace engineering.",
-   "bullets": [
-    "Design and implement avionics communication systems in agile framework",
-    "Collaborate with engineers on military tech development and software prototyping",
-    "Work on software testing, integration, and verification processes"
-   ],
-   "roleLabel": "Avionics Systems Engineer",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "agile",
-    "military tech"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788384677292,
-   "firstSeenAt": 1788385097294,
-   "lastSeenAt": 1788385097294,
-   "url": "https://www.linkedin.com/jobs/view/4462469860/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01867391EXTERNALENGLOBAL/Summer-2027-Systems-Intern-OnSite?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "fa99afbf48",
    "cardFacts": [
     "$37,000",
     "Huntsville",
@@ -109379,108 +106274,6 @@
    "region": "US"
   },
   {
-   "id": "4462438778",
-   "title": "Intern, Integration and Test Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Wilmington, MA",
-   "workplaceType": "On-site",
-   "stipend": "$26 – $48 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 25.5,
-    "max": 48,
-    "unitText": "HOUR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves hands-on testing and setup in a defense tech environment. You'll assist with lab equipment, documentation, and process improvements. Ideal for engineering students interested in real-world testing and integration.",
-   "bullets": [
-    "Setup and monitor test environments for thermal vacuum and vibration",
-    "Author test instructions and manage lab equipment calibration",
-    "Support integration processes and 5S+1 lab projects"
-   ],
-   "roleLabel": "Test Engineering Support",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Electrical Engineering",
-   "keySkills": [
-    "lab equipment calibration"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "26 minutes ago",
-   "postedAt": 1788373074462,
-   "firstSeenAt": 1788374634466,
-   "lastSeenAt": 1788374634466,
-   "url": "https://www.linkedin.com/jobs/view/4462438778/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/100027827328?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "5a36eb47df",
-   "cardFacts": [
-    "$26 – $48 / hour",
-    "Wilmington",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462451192",
-   "title": "Intern, Integration and Test Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Herndon, VA",
-   "workplaceType": "On-site",
-   "stipend": "$25 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 25,
-    "max": 25,
-    "unitText": "HOUR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves setting up and testing hardware and software systems, creating detailed test plans, and analyzing results. It suits students with a background in engineering or computer science looking for hands-on experience in system testing and documentation.",
-   "bullets": [
-    "Set up and document hardware/software systems for testing",
-    "Write test plans, reports, and analyze test results",
-    "Collaborate on system acceptance testing and failure reviews"
-   ],
-   "roleLabel": "System Testing",
-   "degreeLevel": "Pursuing",
-   "degreeText": null,
-   "keySkills": [
-    "software scripting",
-    "network security",
-    "requirements analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "22 minutes ago",
-   "postedAt": 1788373065742,
-   "firstSeenAt": 1788374385745,
-   "lastSeenAt": 1788374385745,
-   "url": "https://www.linkedin.com/jobs/view/4462451192/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/100038774704?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "335e35845b",
-   "cardFacts": [
-    "$25 / hour",
-    "Herndon",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4443067849",
    "title": "Current PhD - Data Science Internship - Summer 2027",
    "company": "Capital One",
@@ -109582,71 +106375,6 @@
    "cardFacts": [
     "$192,000",
     "McLean",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462443234",
-   "title": "Software Engineer Intern",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Herndon, VA",
-   "workplaceType": "On-site",
-   "stipend": "$29 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 29,
-    "max": 29,
-    "unitText": "HOUR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "c#",
-    "ruby",
-    "sql",
-    ".net",
-    "linux",
-    "rtos",
-    "perl"
-   ],
-   "summary": "This internship involves developing software for real-time control systems used in defense technology. The intern will work on embedded systems and collaborate with cross-functional teams. It is ideal for students with a background in computer science or engineering.",
-   "bullets": [
-    "Develop software for real-time control of tactical radio equipment",
-    "Work with C++, Java, Python, and embedded systems",
-    "Participate in full software development lifecycle"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "c++",
-    "java",
-    "python",
-    "embedded systems",
-    "real-time controls"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "3 minutes ago",
-   "postedAt": 1788372562315,
-   "firstSeenAt": 1788372742318,
-   "lastSeenAt": 1788372742318,
-   "url": "https://www.linkedin.com/jobs/view/4462443234/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/98424215024?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "0f4645f95a",
-   "cardFacts": [
-    "$29 / hour",
-    "Herndon",
     "On-site"
    ],
    "region": "US"
@@ -109757,108 +106485,6 @@
    "roleFingerprint": "6dabf0d1fc",
    "cardFacts": [
     "Melbourne",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462443207",
-   "title": "Intern, Systems Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Colorado Springs, CO",
-   "workplaceType": "On-site",
-   "stipend": "$22 – $41",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing system requirements, designing complex architectures, and supporting stakeholders with design presentations. It suits students interested in systems engineering and national security technology.",
-   "bullets": [
-    "Analyze system requirements and design complex architectures",
-    "Develop test plans and document operational analysis results",
-    "Support internal and external stakeholders with design presentations"
-   ],
-   "roleLabel": "Systems Analysis",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Systems Engineering/Engineering",
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "4 minutes ago",
-   "postedAt": 1788372342066,
-   "firstSeenAt": 1788372582068,
-   "lastSeenAt": 1788372582068,
-   "url": "https://www.linkedin.com/jobs/view/4462443207/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/100038774752?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "320891e879",
-   "cardFacts": [
-    "$22 – $41",
-    "Colorado Springs",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4462440538",
-   "title": "Intern, Software Engineer",
-   "company": "L3Harris Technologies",
-   "matchedWatchlist": "L3Harris Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/l3harris-technologies.jpg",
-   "location": "Wilmington, MA",
-   "workplaceType": "On-site",
-   "stipend": "$29 – $53",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "c#",
-    "ruby",
-    "sql",
-    "linux",
-    "vhdl",
-    "perl",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves developing embedded software for real-time control systems used in defense applications. You'll work with C++, C, and VHDL on real-time operating systems like QNX and Linux. Ideal for students with a background in computer engineering or software development looking to contribute to mission-critical systems.",
-   "bullets": [
-    "Develop embedded software for real-time control of tactical radio equipment",
-    "Work with C++, C, VHDL, and real-time OS like QNX and Linux",
-    "Collaborate on agile teams to design and test defense systems"
-   ],
-   "roleLabel": "Embedded software development",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "c++",
-    "c",
-    "vhdl",
-    "qnx",
-    "linux"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "5 minutes ago",
-   "postedAt": 1788372332035,
-   "firstSeenAt": 1788372632037,
-   "lastSeenAt": 1788372632037,
-   "url": "https://www.linkedin.com/jobs/view/4462440538/",
-   "applyUrl": "https://careers.l3harris.com/job/-/-/4832/100038774576?src=SNS-10240",
-   "description": null,
-   "roleFingerprint": "267a6186ce",
-   "cardFacts": [
-    "$29 – $53",
-    "Wilmington",
     "On-site"
    ],
    "region": "US"
@@ -113814,59 +110440,6 @@
    "cardFacts": [
     "$120,000 – $150,000 / year",
     "New York",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460937285",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Melbourne, FL",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "6 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "ci/cd",
-    "git"
-   ],
-   "summary": "This internship involves supporting the development and maintenance of engineering tools used in software development and verification. The intern will assist with diagnosing and resolving issues in ci/cd pipelines and development environments, and contribute to automation initiatives. It is suitable for students with experience in c++, c, and python, and familiarity with software lifecycle processes.",
-   "bullets": [
-    "Support tools team with ci/cd pipelines and development environments",
-    "Work with git, jira, confluence, jama, and svn",
-    "Contribute to automation and reliability improvements"
-   ],
-   "roleLabel": "Software Tooling Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c++",
-    "c",
-    "python",
-    "git",
-    "jira"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "1 hour ago",
-   "postedAt": 1788320022717,
-   "firstSeenAt": 1788323622723,
-   "lastSeenAt": 1788323622723,
-   "url": "https://www.linkedin.com/jobs/view/4460937285/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01871423EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "53fb5f61a6",
-   "cardFacts": [
-    "$37,000",
-    "Melbourne",
     "On-site"
    ],
    "region": "US"
@@ -124933,61 +121506,6 @@
    "region": "US"
   },
   {
-   "id": "4461716437",
-   "title": "Intern – Digital Technology (Summer 2027)",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Chicago, IL",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "Summer 2027",
-   "applicants": "5 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "aws",
-    "azure",
-    "machine learning",
-    "deep learning",
-    "generative ai"
-   ],
-   "summary": "This internship involves supporting the creation of scalable technology solutions that enhance customer and employee experiences. You will work on data analysis, models, dashboards, or security initiatives, collaborating with teams on meaningful projects. The role is open to students pursuing relevant degrees and may lead to full-time opportunities.",
-   "bullets": [
-    "Support development of scalable tech solutions for customer and employee experiences",
-    "Work with teams on data analysis, models, dashboards, or security initiatives",
-    "Collaborate on projects that may lead to full-time roles after graduation"
-   ],
-   "roleLabel": "Tech Support",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "python",
-    "cloud platforms",
-    "cybersecurity"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "54 minutes ago",
-   "postedAt": 1788260153733,
-   "firstSeenAt": 1788263393735,
-   "lastSeenAt": 1788263393735,
-   "url": "https://www.linkedin.com/jobs/view/4461716437/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSWHQ00026602EXTERNALENUSTALEO/Intern-Digital-Technology-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "0b4e16021a",
-   "cardFacts": [
-    "Chicago",
-    "On-site",
-    "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461718461",
    "title": "Intern - Facilities & GSE Maintenance (Summer 2027)",
    "company": "United Airlines",
@@ -125037,54 +121555,6 @@
    "region": "US"
   },
   {
-   "id": "4461703739",
-   "title": "Intern - Tech Ops Maintenance Base (Summer 2027)",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Houston, TX",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "10-12 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "generative ai"
-   ],
-   "summary": "This internship offers hands-on experience in aircraft maintenance and operations, with opportunities in data analysis, predictive maintenance, and fleet management. Ideal for engineering or logistics students seeking real-world technical challenges and global travel.",
-   "bullets": [
-    "Support aircraft engineering and maintenance operations daily",
-    "Work with data analytics and predictive maintenance tools",
-    "Travel internationally and work on real-world technical projects"
-   ],
-   "roleLabel": "Aircraft Maintenance Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Industrial Engineering",
-   "keySkills": [
-    "predictive maintenance",
-    "aircraft engineering",
-    "supply chain"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "56 minutes ago",
-   "postedAt": 1788260141555,
-   "firstSeenAt": 1788263501558,
-   "lastSeenAt": 1788263501558,
-   "url": "https://www.linkedin.com/jobs/view/4461703739/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSIAH00005630EXTERNALENUSTALEO/Intern-Tech-Ops-Maintenance-Base-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "477996c0d3",
-   "cardFacts": [
-    "Houston",
-    "On-site",
-    "10-12 weeks"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461722370",
    "title": "Intern - Tech Ops Heavy Maintenance Contract Strategy - (Summer 2027)",
    "company": "United Airlines",
@@ -125127,58 +121597,6 @@
    "roleFingerprint": "77ffe06dc4",
    "cardFacts": [
     "Chicago",
-    "On-site",
-    "10-12 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461724327",
-   "title": "Intern - Meteorology Support (Summer 2027)",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Arlington Heights, IL",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "10-12 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "aws",
-    "generative ai"
-   ],
-   "summary": "This internship involves creating and refining weather forecast tools for United Airlines' operational teams. You'll work with data visualization and tech teams to build systems that help manage weather risks. Ideal for meteorology students with an interest in applying academic knowledge to real-world aviation challenges.",
-   "bullets": [
-    "Design and deploy weather decision support systems for operational teams",
-    "Use data visualization tools to analyze and present forecast accuracy",
-    "Collaborate with tech teams to integrate weather data into operational tools",
-    "Present final product to Network Operations leadership"
-   ],
-   "roleLabel": "Weather Systems Design",
-   "degreeLevel": "UG",
-   "degreeText": "Meteorology",
-   "keySkills": [
-    "data visualization",
-    "weather data analysis",
-    "operational meteorology",
-    "AWS services",
-    "frontend development"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "54 minutes ago",
-   "postedAt": 1788260136052,
-   "firstSeenAt": 1788263376054,
-   "lastSeenAt": 1788263376054,
-   "url": "https://www.linkedin.com/jobs/view/4461724327/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSWHQ00026594EXTERNALENUSTALEO/Intern-Meteorology-Support-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "abf12a7d11",
-   "cardFacts": [
-    "Arlington Heights",
     "On-site",
     "10-12 weeks"
    ],
@@ -125282,102 +121700,6 @@
    "region": "US"
   },
   {
-   "id": "4461711585",
-   "title": "Intern - Tech Ops Strategy & Performance (Summer 2027)",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Chicago, IL",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "10-12 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "generative ai"
-   ],
-   "summary": "This internship involves analyzing data to enhance aircraft maintenance strategies and collaborating on global infrastructure projects. You'll work with cross-functional teams on real-world initiatives, based in Chicago, IL, for 10-12 weeks during summer 2027.",
-   "bullets": [
-    "Analyze data to improve aircraft maintenance strategies",
-    "Collaborate with global teams on infrastructure projects",
-    "Work on real-world projects with cross-functional teams",
-    "Based in chicago, il for 10-12 weeks summer 2027"
-   ],
-   "roleLabel": "Aircraft Maintenance Strategy",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "paid",
-   "postedText": "55 minutes ago",
-   "postedAt": 1788260124717,
-   "firstSeenAt": 1788263424719,
-   "lastSeenAt": 1788263424719,
-   "url": "https://www.linkedin.com/jobs/view/4461711585/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSWHQ00026498EXTERNALENUSTALEO/Intern-Tech-Ops-Strategy-Performance-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c735c117e1",
-   "cardFacts": [
-    "Chicago",
-    "On-site",
-    "10-12 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461712566",
-   "title": "Intern - Ops Strategy & Analytics",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Chicago, IL",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "4 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "generative ai",
-    "excel"
-   ],
-   "summary": "This internship involves analyzing flight data to improve operational efficiency and customer satisfaction. You'll work with management to solve real-world problems using data and insights. Ideal for students with strong analytical skills and experience in SQL and Python.",
-   "bullets": [
-    "Analyze operational data to improve flight reliability and customer experience",
-    "Use sql and python for reporting and dashboard development",
-    "Collaborate with management on operational challenges and strategic plans"
-   ],
-   "roleLabel": "Ops analytics",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "python",
-    "excel",
-    "powerpoint"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "55 minutes ago",
-   "postedAt": 1788260118605,
-   "firstSeenAt": 1788263418607,
-   "lastSeenAt": 1788263418607,
-   "url": "https://www.linkedin.com/jobs/view/4461712566/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSWHQ00026618EXTERNALENUSTALEO/Intern-Ops-Strategy-Analytics?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "aa5283ad82",
-   "cardFacts": [
-    "Chicago",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4461717455",
    "title": "Intern - Air Traffic Strategy Data Analytics (Summer 2027)",
    "company": "United Airlines",
@@ -125427,56 +121749,6 @@
    "roleFingerprint": "c72733b0ee",
    "cardFacts": [
     "Arlington Heights",
-    "On-site",
-    "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461718460",
-   "title": "Intern - Tech Ops Analytics & Business Intelligence (Summer 2027)",
-   "company": "United Airlines",
-   "matchedWatchlist": "United Airlines",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/united-airlines.jpg",
-   "location": "Chicago, IL",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "generative ai"
-   ],
-   "summary": "This internship involves analyzing aircraft maintenance data to improve operational efficiency. You'll use SQL and PowerBI to create visual reports that help engineers and planners optimize maintenance schedules. Ideal for students with data analysis experience and an interest in aviation operations.",
-   "bullets": [
-    "Analyze maintenance data to improve fleet performance",
-    "Use sql and powerbi to visualize operational insights",
-    "Work with engineers and planners on maintenance schedules"
-   ],
-   "roleLabel": "Data Analyst",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "powerbi",
-    "data visualization"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "3 minutes ago",
-   "postedAt": 1788259407509,
-   "firstSeenAt": 1788259587514,
-   "lastSeenAt": 1788259587514,
-   "url": "https://www.linkedin.com/jobs/view/4461718460/",
-   "applyUrl": "https://careers.united.com/us/en/job/UAIUADUSWHQ00026447EXTERNALENUSTALEO/Intern-Tech-Ops-Analytics-Business-Intelligence-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "8696877abb",
-   "cardFacts": [
-    "Chicago",
     "On-site",
     "Summer 2027"
    ],
@@ -132788,120 +129060,6 @@
    "region": "US"
   },
   {
-   "id": "4460094313",
-   "title": "WDI Figure Programming Intern, Spring 2027",
-   "company": "The Walt Disney Company",
-   "matchedWatchlist": "Walt Disney Company",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/the-walt-disney-company.jpg",
-   "location": "Glendale, CA",
-   "workplaceType": "On-site",
-   "stipend": "$27 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 26.5,
-    "max": 26.5,
-    "unitText": "HOUR"
-   },
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "excel"
-   ],
-   "summary": "This internship involves working on the technical side of animating figures for Disney attractions. You'll create and maintain digital assets, collaborate with creative teams, and support animation tools. Ideal for students with experience in CG animation and a portfolio.",
-   "bullets": [
-    "Operate specialized hardware and software to animate figures in attractions",
-    "Create and debug digital assets for Audio-Animatronics figures",
-    "Collaborate with creative teams on show programming and special effects",
-    "Maintain show data and support animation tools like Maya and MotionBuilder"
-   ],
-   "roleLabel": "Animation Programming",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "maya",
-    "motionbuilder",
-    "python",
-    "mel",
-    "unity"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "5 minutes ago",
-   "postedAt": 1788219836523,
-   "firstSeenAt": 1788220136531,
-   "lastSeenAt": 1788220136531,
-   "url": "https://www.linkedin.com/jobs/view/4460094313/",
-   "applyUrl": "https://www.disneycareers.com/job/-/-/391/99971701024",
-   "description": null,
-   "roleFingerprint": "43995d7135",
-   "cardFacts": [
-    "$27 / hour",
-    "Glendale",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461507265",
-   "title": "IT Infrastructure Intern - CO",
-   "company": "Xcel Energy",
-   "matchedWatchlist": "Xcel Energy",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/xcel-energy.jpg",
-   "location": "Denver Metropolitan Area",
-   "workplaceType": "On-site",
-   "stipend": "$17 – $22 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 17.4,
-    "max": 22.1,
-    "unitText": "HOUR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This internship involves working on enterprise IT infrastructure, supporting automation and compliance in a regulated environment. Ideal for students with technical skills in systems programming and networking, seeking hands-on experience in infrastructure management.",
-   "bullets": [
-    "Monitor and maintain converged infrastructure systems",
-    "Script automation for infrastructure operations",
-    "Support hardware lifecycle and compliance standards"
-   ],
-   "roleLabel": "IT Infrastructure Support",
-   "degreeLevel": "UG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "powershell",
-    "python",
-    "vmware",
-    "nerc cip"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "11 minutes ago",
-   "postedAt": 1788219491579,
-   "firstSeenAt": 1788220151580,
-   "lastSeenAt": 1788220151580,
-   "url": "https://www.linkedin.com/jobs/view/4461507265/",
-   "applyUrl": "https://jobs.xcelenergy.com/it-infrastructure-intern-co/job/FA9C0F082601326B35B827E44BF5202C?source=LinkedIn_Job_Posting",
-   "description": null,
-   "roleFingerprint": "1d4b09bd10",
-   "cardFacts": [
-    "$17 – $22 / hour",
-    "Denver Metropolitan Area",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4459267162",
    "title": "Software Engineering Intern (8 months/40hrs per week)",
    "company": "Bosch USA",
@@ -137390,61 +133548,6 @@
    "roleFingerprint": "65141bf565",
    "cardFacts": [
     "Manitowoc",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4460021079",
-   "title": "WDI Project Controls Planning Intern, Spring 2027",
-   "company": "The Walt Disney Company",
-   "matchedWatchlist": "Walt Disney Company",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/the-walt-disney-company.jpg",
-   "location": "Lake Buena Vista, FL",
-   "workplaceType": "On-site",
-   "stipend": "$31 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 31,
-    "max": 31,
-    "unitText": "HOUR"
-   },
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "power bi"
-   ],
-   "summary": "This internship involves creating and managing project schedules for Disney theme park developments. You'll work with teams to plan and track construction and design projects, using tools like primavera and power bi. It's ideal for students with a background in construction management or engineering.",
-   "bullets": [
-    "Develop project schedules using primavera and other software",
-    "Integrate schedules from design, vendors, and construction teams",
-    "Monitor risks and present mitigation plans for project timelines"
-   ],
-   "roleLabel": "Project scheduling",
-   "degreeLevel": "UG",
-   "degreeText": "construction management/engineering",
-   "keySkills": [
-    "primavera project planner",
-    "power bi",
-    "airtable",
-    "smartsheet"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "5 minutes ago",
-   "postedAt": 1788176628639,
-   "firstSeenAt": 1788176928648,
-   "lastSeenAt": 1788176928648,
-   "url": "https://www.linkedin.com/jobs/view/4460021079/",
-   "applyUrl": "https://www.disneycareers.com/job/-/-/391/99961441456",
-   "description": null,
-   "roleFingerprint": "0ed6c2d8b6",
-   "cardFacts": [
-    "$31 / hour",
-    "Lake Buena Vista",
     "On-site"
    ],
    "region": "US"
@@ -150512,6 +146615,66 @@
    "cardFacts": [
     "$37,000",
     "Woburn",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
+   "id": "4460319577",
+   "title": "Software Platform Intern (Summer 2027)",
+   "company": "Raytheon",
+   "matchedWatchlist": "Raytheon Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/raytheon.jpg",
+   "location": "Richardson, TX",
+   "workplaceType": "On-site",
+   "stipend": "$37,000",
+   "duration": "Summer 2027",
+   "applicants": "3 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "ruby",
+    "aws",
+    "azure",
+    "docker",
+    "kubernetes",
+    "ci/cd"
+   ],
+   "summary": "This internship involves supporting the development and maintenance of advanced systems for national defense. The intern will work on DevOps automation, cloud platform optimization, and systems integration. It is ideal for students with experience in cloud technologies and scripting languages.",
+   "bullets": [
+    "Support infrastructure and DevOps automation using Ruby, Python, Go, and Java",
+    "Leverage AWS, Azure, Docker, and Kubernetes for cloud platform optimization",
+    "Collaborate in a multidisciplinary team on complex systems integration"
+   ],
+   "roleLabel": "DevOps Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "ruby",
+    "python",
+    "go",
+    "java",
+    "aws",
+    "azure",
+    "docker",
+    "kubernetes"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "3 hours ago",
+   "postedAt": 1787912443429,
+   "firstSeenAt": 1787923243433,
+   "lastSeenAt": 1787923243433,
+   "url": "https://www.linkedin.com/jobs/view/4460319577/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4460319577/",
+   "description": null,
+   "roleFingerprint": "04f67d675a",
+   "cardFacts": [
+    "$37,000",
+    "Richardson",
     "On-site"
    ],
    "region": "US"
@@ -165053,6 +161216,59 @@
    "region": "US"
   },
   {
+   "id": "4459016410",
+   "title": "Intern, Systems Engineer",
+   "company": "L3Harris Technologies",
+   "matchedWatchlist": "L3Harris Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/l3harris-technologies.jpg",
+   "location": "Colorado Springs, CO",
+   "workplaceType": "On-site",
+   "stipend": "$26 – $48 / hour",
+   "pay": {
+    "currency": "USD",
+    "min": 25.5,
+    "max": 48,
+    "unitText": "HOUR"
+   },
+   "duration": null,
+   "applicants": "4 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves analyzing system requirements, designing complex architectures, and supporting integration projects. Ideal for students with a background in systems engineering or related fields looking to gain hands-on experience in defense technology.",
+   "bullets": [
+    "Analyze systems requirements and design complex architectures",
+    "Develop test plans and document results using software tools",
+    "Support project teams with system integration and performance modeling"
+   ],
+   "roleLabel": "Systems Design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "systems analysis",
+    "model-based systems engineering",
+    "rhapsody",
+    "scripting"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "43 minutes ago",
+   "postedAt": 1787681937004,
+   "firstSeenAt": 1787684517005,
+   "lastSeenAt": 1787688061248,
+   "url": "https://www.linkedin.com/jobs/view/4459016410/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4459016410/",
+   "description": null,
+   "roleFingerprint": "97e9795645",
+   "cardFacts": [
+    "$26 – $48 / hour",
+    "Colorado Springs",
+    "On-site"
+   ],
+   "region": "US"
+  },
+  {
    "id": "ats:greenhouse:verkada:5219131007",
    "title": "Mobile Software Engineering Intern 2027",
    "company": "Verkada",
@@ -169615,55 +165831,6 @@
    "roleFingerprint": "2c7c5e5b17",
    "cardFacts": [
     "Sunnyvale"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:formlabs:8138459",
-   "title": "Print Production Intern (Fall 2026)",
-   "company": "Formlabs",
-   "matchedWatchlist": "Formlabs",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/formlabs.png",
-   "location": "Somerville, MA",
-   "workplaceType": null,
-   "stipend": "$1,000 – $1,300 / week",
-   "duration": "Fall 2026",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This internship involves supporting 3d print production and maintenance, post-processing parts, and helping keep the showroom and production spaces safe and efficient. Ideal for someone with 3d printing experience and a knack for organization.",
-   "bullets": [
-    "Support 3d print production including printing, troubleshooting, and maintenance",
-    "Assist with post-processing, sanding, and finishing 3d printed parts",
-    "Help maintain showroom and production spaces for safety and efficiency"
-   ],
-   "roleLabel": "3d Print Support",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "excel",
-    "google sheets",
-    "project management",
-    "3d printing"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1787028948000,
-   "firstSeenAt": 1787503459023,
-   "lastSeenAt": 1789037839704,
-   "url": "https://careers.formlabs.com/job/8138459/apply/?gh_jid=8138459",
-   "applyUrl": "https://careers.formlabs.com/job/8138459/apply/?gh_jid=8138459",
-   "description": null,
-   "roleFingerprint": "ace1cf4e42",
-   "cardFacts": [
-    "$1,000 – $1,300 / week",
-    "Somerville",
-    "Fall 2026"
    ],
    "region": "US"
   },
