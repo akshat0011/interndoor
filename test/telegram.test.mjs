@@ -37,18 +37,22 @@ ok('place and mode on one line', one.includes('📍 Bengaluru · On-site'));
 ok('and the age', /🕐 Posted 2h ago/.test(one));
 
 console.log('\n== two links, and only two ==');
-/* The title goes to the job page — the details, and the only thing that brings
-   a reader onto the site. "Apply" goes straight to the employer. A third would
-   only compete with those two. */
+/* The title and "Apply now" both go to the JOB PAGE (his call, 17 Sep 2026):
+   the page carries the employer's Apply button, the return-visit header, the
+   channel prompt and the counter, and a reader sent straight to the employer
+   sees none of that. The board is the third anchor. */
 const links = one.match(/href="[^"]+"/g) || [];
 ok('exactly three anchors: title, apply, board', links.length === 3, links.join(' '));
 ok('apply is its own call to action', one.includes('<b>Apply now</b>'));
 ok('and the board is offered last', one.includes('>More internships</a>'));
 
 const offsite = composeJob(job({ applyUrl: 'https://careers.ey.com/ey/job/123' }));
-ok('a recovered employer URL is used for apply', offsite.includes('href="https://careers.ey.com/ey/job/123"'));
+ok('the employer URL never appears — Apply is the job page', !offsite.includes('careers.ey.com'));
+const applyHref = (offsite.match(/<a href="([^"]+)"><b>Apply now<\/b>/) || [])[1];
+ok('Apply now links the job page', /^https:\/\/interndoor\.com\/jobs\//.test(applyHref || ''), applyHref);
+ok('the same page the title links', applyHref === (offsite.match(/<a href="([^"]+)">[^<]*<\/a><\/b>/) || [])[1]);
 const noApply = composeJob(job({ applyUrl: null, url: null }));
-ok('with no apply url it falls back to the job page', (noApply.match(/interndoor\.com/g) || []).length >= 2);
+ok('with no apply url nothing changes', (noApply.match(/interndoor\.com\/jobs\//g) || []).length === 2);
 
 console.log('\n== the applicant count is stated only while the queue is short ==');
 /* Same rule as the board and the LinkedIn post: the number exists to prove the

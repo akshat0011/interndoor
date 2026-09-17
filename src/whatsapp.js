@@ -47,13 +47,13 @@ export function bravePath() {
  * the rendering: WhatsApp has *bold* rather than <b>, and NO ANCHOR AT ALL, so
  * a URL is always visible text.
  *
- * OUR PAGE LEADS AND THE EMPLOYER'S LINK FOLLOWS, which is the opposite of the
- * Telegram message and is forced by how WhatsApp previews. It builds the card
- * from the FIRST url in the message, so leading with the employer's apply link
- * would render LinkedIn's preview on every post and throw away the per-posting
- * OG card the site now generates. Leading with the job page shows our card,
- * and that page carries its own Apply button, so nothing is a click further
- * away than it was.
+ * OUR PAGE IS THE ONLY POSTING LINK. It has to lead anyway — WhatsApp builds
+ * the card from the FIRST url in the message, so an employer link first would
+ * render LinkedIn's preview on every post — and since 17 Sep 2026 (his call,
+ * the same one Telegram took) the employer's URL is not printed at all: the
+ * page carries the Apply button, the return-visit header, the channel prompt
+ * and the counter, and a reader sent straight to the employer sees none of
+ * that. The board link stays.
  */
 export function composeWhatsApp(job, region = regionOf('IN')) {
   const p = jobParts(job, region);
@@ -63,16 +63,15 @@ export function composeWhatsApp(job, region = regionOf('IN')) {
     p.page,
   ];
   if (p.facts.length) lines.push('', ...p.facts);
-  // Only when it is somewhere else. With no employer URL `apply` falls back to
-  // the job page, and printing the same link twice reads as a mistake.
-  if (p.apply && p.apply !== p.page) lines.push('', `👉 Apply: ${p.apply}`);
   lines.push('', `🌐 Every open internship: ${p.board}`);
 
   // Trim from the FACTS, never the string: slicing would cut a URL in half and
-  // WhatsApp would render the fragment as plain text.
+  // WhatsApp would render the fragment as plain text. The last fact sits two
+  // above the board line (a blank between them); the offset is tied to the
+  // tail's shape, so a line added to the tail moves it.
   let out = lines.join('\n');
   while (out.length > MAX_MESSAGE && lines.length > 6) {
-    lines.splice(lines.length - 5, 1);
+    lines.splice(lines.length - 3, 1);
     out = lines.join('\n');
   }
   return out;

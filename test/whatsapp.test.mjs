@@ -46,10 +46,13 @@ console.log('\n== but they are rendered for their own client ==');
   ok('bold is asterisks', w.includes('*Joveo*'));
   /* WhatsApp builds its preview card from the FIRST url. Leading with the
      employer's apply link would render LinkedIn's card on every post and throw
-     away the per-posting OG image the site generates. */
+     away the per-posting OG image the site generates — and since 17 Sep 2026
+     the employer's URL is not printed at all: the page carries the Apply
+     button, and the channel exists to bring readers to the site. */
   const first = w.match(/https?:\/\/\S+/)[0];
   ok('our job page is the first link', first.startsWith('https://interndoor.com/jobs/'));
-  ok('the employer link still appears', w.includes('https://www.linkedin.com/jobs/view/4458863278'));
+  ok('the employer link is NOT printed', !w.includes('linkedin.com/jobs/view/'));
+  ok('two links: the page and the board', (w.match(/https?:\/\/\S+/g) || []).length === 2);
 }
 
 console.log('\n== a link is never cut in half ==');
@@ -75,12 +78,28 @@ console.log('\n== a link is never cut in half ==');
 
 console.log('\n== the same link is never printed twice ==');
 {
-  /* With no employer URL, `apply` falls back to the job page. Printing it
-     again under "Apply" reads as a mistake. */
   const w = composeWhatsApp(job({ applyUrl: '', url: '' }), IN);
   const page = jobParts(job({ applyUrl: '', url: '' }), IN).page;
   check('job page appears once', (w.match(new RegExp(page.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) ?? []).length, 1);
-  ok('and no empty Apply line', !w.includes('👉 Apply:'));
+  ok('and no Apply line at all', !w.includes('👉 Apply:'));
+}
+
+console.log('\n== trimming drops facts, never the page URL ==');
+{
+  /* The trim offset is tied to the tail's shape. When the employer line was
+     removed the old offset landed on the PAGE URL for a one-fact posting —
+     the exact cut the comment above the loop warns about. */
+  /* ONE fact, deliberately: with several facts the old offset happened to
+     land on a fact and the mutation survived. A one-fact tail is
+     [page, '', fact, '', board], and length-5 is the page. */
+  const oneFact = job({ location: 'x'.repeat(2000), workplaceType: '', postedAt: null, firstSeenAt: null, applicants: '', stipend: '', duration: '', degreeText: '' });
+  const parts = jobParts(oneFact, IN);
+  check('the fixture really has one fact', parts.facts.length, 1);
+  const long = composeWhatsApp(oneFact, IN);
+  const page = parts.page;
+  ok('an over-long one-fact message keeps the page URL', long.includes(page), long.slice(0, 120));
+  ok('and the board', long.includes('Every open internship'));
+  ok('and lost the fact', !long.includes('x'.repeat(2000)));
 }
 
 console.log('\n== a zero applicant count is the strongest line, not "only 0" ==');

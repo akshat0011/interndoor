@@ -60,16 +60,24 @@ console.log('\n== A ROLE ALREADY ANNOUNCED FROM LINKEDIN IS NOT ANNOUNCED AGAIN 
 console.log('\n== THE STORE READS ==');
 {
   const s = new Store(':memory:');
-  const put = (jobId, firstSeen) => s.db.prepare(
-    `INSERT INTO jobs (job_id, title, company, first_seen_at, last_seen_at, first_run_id, posted_at)
-     VALUES (?, 't', 'Kaleris', ?, ?, 'r', ?)`,
-  ).run(jobId, firstSeen, firstSeen, firstSeen);
+  const put = (jobId, firstSeen, isTech = 1, suppressed = null) => s.db.prepare(
+    `INSERT INTO jobs (job_id, title, company, first_seen_at, last_seen_at, first_run_id, posted_at, is_tech, suppressed_reason)
+     VALUES (?, 't', 'Kaleris', ?, ?, 'r', ?, ?, ?)`,
+  ).run(jobId, firstSeen, firstSeen, firstSeen, isTech, suppressed);
   put('ats:a:1', 1000); put('ats:a:2', 2000); put('ats:a:3', 3000); put('4455', 2500);
   check('ATS rows in (from, until] — the lower bound is exclusive so no row is announced twice',
     ids(s.atsJobsFirstSeenBetween(1000, 2500)), ['ats:a:2']);
   check('the upper bound is inclusive', ids(s.atsJobsFirstSeenBetween(2500, 3000)), ['ats:a:3']);
   check('a LinkedIn row is never an ATS row', ids(s.atsJobsFirstSeenBetween(0, 9999)).includes('4455'), false);
   check('scraped titles hold LinkedIn rows only', s.scrapedTitlesSince(0).length, 1);
+  /* A LinkedIn copy that never went out is not a twin. Konecranes, 15 Sep
+     2026: the scraped copy was is_tech 0, the careers-board copy was live,
+     and the channels carried neither because the refused copy still counted. */
+  put('4456', 2600, 0);
+  put('4457', 2700, null);
+  put('4458', 2800, 1, 'apply page 404s');
+  check('a copy the classifier refused is not a twin', s.scrapedTitlesSince(0).length, 1);
+  check('nor one never judged, nor one a person pulled', s.scrapedTitlesSince(0).every((r) => r.first_seen_at === 2500), true);
   s.close?.();
 }
 
