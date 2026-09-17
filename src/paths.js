@@ -94,6 +94,7 @@ export const PATHS = {
   ghList: join(STATE, 'gh-list'),
   latestPosts: join(STATE, 'posts', 'latest.html'),
   latestWeekly: join(STATE, 'posts', 'weekly-latest.html'),
+  latestData: join(STATE, 'posts', 'data-latest.html'),
 
   /**
    * Service-account key for the Google Indexing API.

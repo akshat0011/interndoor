@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  THE DATA POST IMAGE — one headline, up to ten bars, one line in the band.
+
+  A FOURTH CARD, and not a copy of the other three. og-card is the link preview,
+  li-card is one job, weekly-card is six logos. This one is a CHART: the subject
+  is a ranked list of numbers from the store — employers, cities, skills,
+  weekdays, applicant bands — and it carries no logo, no role and no apply
+  link, because the post it sits under is the argument and this is its
+  evidence at feed size.
+
+  Rendered by src/datacard.js with Playwright into PATHS.liCards in the state
+  directory, never the repo. 1200x627 is LinkedIn's landscape ratio; the lime
+  band is the same decision as the other cards — at feed size it is the one
+  element still unmissable.
+
+  NOTHING IS MEASURED IN CSS THAT THE RENDERER CAN MEASURE. Bars are widths in
+  percent (a share of the longest bar) and need no measurement; the headline
+  is the one thing that can overflow, and the renderer shrinks it until it
+  sits inside two lines, the way li-card fits its title.
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
+    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036; --live:#c8ff00;
+    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
+    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#000}
+  #card{position:relative;width:1200px;height:627px;overflow:hidden;
+        background:var(--bg);color:var(--ink);font-family:var(--ui)}
+  .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .brand{position:absolute;top:26px;left:40px;display:flex;align-items:center;gap:10px;z-index:6}
+  .brand svg{width:23px;height:23px;overflow:visible}
+  .m-ring{fill:none;stroke:var(--live);stroke-width:1.6;opacity:.34}
+  .m-sweep{fill:var(--live);opacity:.32}
+  .m-dot{fill:var(--live)}
+  .word{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:-.045em;line-height:1}
+  .word em{font-style:normal;color:var(--live)}
+  .radar{position:absolute;right:-330px;top:-320px;width:780px;height:780px;pointer-events:none;z-index:0}
+  .ring{fill:none;stroke:var(--live);stroke-width:1.4;opacity:.34}
+  .cross{stroke:var(--live);stroke-width:1.4;opacity:.15}
+  .sweep{fill:var(--live);opacity:.20}
+  .eyebrow{position:absolute;top:30px;right:44px;z-index:6;font-family:var(--mono);font-size:14px;
+           letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);text-align:right}
+  .head{position:absolute;top:66px;left:40px;right:120px;z-index:4}
+  /* Two lines at most; the renderer steps the size down until it fits. */
+  .headline{font-family:var(--display);font-weight:900;font-size:48px;letter-spacing:-.035em;line-height:1.02;
+            max-height:104px;overflow:hidden}
+  .headline em{font-style:normal;color:var(--live)}
+  .rows{position:absolute;left:40px;right:44px;top:178px;bottom:112px;z-index:4;
+        display:flex;flex-direction:column;justify-content:center;gap:0}
+  .row{display:grid;grid-template-columns:250px minmax(0,1fr) 92px;align-items:center;gap:16px;min-height:0}
+  .label{font-family:var(--ui);font-weight:600;font-size:19px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .track{height:14px;background:var(--rule);border-radius:7px;overflow:hidden}
+  .bar{height:100%;background:var(--live);border-radius:7px;min-width:6px}
+  .row.is-first .bar{box-shadow:0 0 0 1px rgba(200,255,0,.35)}
+  .value{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);text-align:right;white-space:nowrap}
+  .band{position:absolute;left:0;right:0;bottom:0;height:96px;background:var(--live);z-index:5;
+        display:flex;align-items:center;padding:0 44px;gap:22px}
+  .band .say{font-family:var(--display);font-weight:900;font-size:46px;color:var(--bg);letter-spacing:-.02em;line-height:1;
+             white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .band .site{font-family:var(--mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;
+              color:rgba(10,10,11,.72);margin-left:auto;white-space:nowrap}
+</style>
+<div id="card">
+  <div class="grain"></div>
+  <svg class="radar" viewBox="0 0 780 780">
+    <circle class="ring" cx="390" cy="390" r="370"/><circle class="ring" cx="390" cy="390" r="277"/>
+    <circle class="ring" cx="390" cy="390" r="183"/><circle class="ring" cx="390" cy="390" r="90"/>
+    <line class="cross" x1="0" y1="390" x2="780" y2="390"/><line class="cross" x1="390" y1="0" x2="390" y2="780"/>
+    <g class="sweep"><path d="M390 390 L390 20 A370 370 0 0 1 711 205 Z"/></g>
+  </svg>
+  <div class="brand">
+    <svg viewBox="0 0 44 44">
+      <circle class="m-ring" cx="22" cy="22" r="20"/><circle class="m-ring" cx="22" cy="22" r="12"/>
+      <g class="m-sweep"><path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/></g>
+      <circle class="m-dot" cx="22" cy="22" r="2.8"/>
+    </svg>
+    <div class="word">INTERN<em>DOOR</em></div>
+  </div>
+  <div class="eyebrow" id="eyebrow"></div>
+  <div class="head"><div class="headline" id="headline"></div></div>
+  <div class="rows" id="rows"></div>
+  <div class="band"><div class="say" id="say"></div><div class="site">interndoor.com</div></div>
+</div>

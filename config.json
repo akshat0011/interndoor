@@ -1325,6 +1325,13 @@
       "medium": "social",
       "_note": "Appended to interndoor.com links in a post so Vercel Analytics can separate LinkedIn traffic from organic. NEVER added to an ATS or LinkedIn apply URL - that URL belongs to somebody else and some ATS routers read the query string. Safe against the canonical: every generated page emits <link rel=\"canonical\"> pointing at the clean URL, so a tagged link cannot become a second indexed copy."
     },
+    "dataPost": {
+      "enabled": true,
+      "regions": ["IN"],
+      "weekday": 3,
+      "hour": 10,
+      "_note": "THE WEEKLY DATA POSTS (src/datapost.js): seven LinkedIn drafts made only of counts from the store over the last 30 days - who posted most, who posted for the first time, how fast the queue forms, who states a stipend, when postings go up, where they are, what skills they ask for - each with a card image, written to /data/latest on the queue server once a week (Wednesday 10:00 in the board's zone, midweek so it does not sit beside the Sunday roundup). One a week is plenty; the page marks a pick that rotates. A hand-drafted version of the first format took 8,395 impressions in a day on 17 Sep 2026. Every number carries its denominator; a format with too few rows is dropped for the week, never weakened. `npm run data-post -- --force` writes it now without consuming the week's slot; --dry-run prints and writes nothing."
+    },
     "weekly": {
       "enabled": true,
       "_regions_note": "One roundup per board, each due in its OWN time zone, all written onto a single /weekly/latest page. `region` below is the single-board fallback for an older config; `regions` is what actually runs. The week is recorded per board (weeklyRoundupWeek:<CODE>) so a quiet US week cannot mark India's as done.",

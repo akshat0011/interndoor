@@ -589,3 +589,62 @@ export function writeWeeklyPage(html, weekKey) {
   writeFileSync(PATHS.latestWeekly, html, 'utf8');
   return file;
 }
+
+/**
+ * The data-post page: every format the store could fill this week, each with
+ * its card image and a copy button, and one marked as the week's pick.
+ *
+ * Same idiom as the weekly page — a static file, /data/latest serves the most
+ * recently written one — and the same reason every number here carries its
+ * note: the post is pasted by hand, and the paster should be able to check any
+ * figure before it goes out. The image is served by the queue server's /li/
+ * route from PATHS.liCards, so the page only works while `npm run queue` is
+ * up, which is also the only place it is ever opened.
+ */
+export function buildDataPage(bundle, { generatedAt, pick = null, cards = {} }) {
+  const posts = (bundle?.posts ?? []).filter(Boolean);
+  const region = bundle?.region ?? 'IN';
+  const blocks = posts.map((p) => {
+    const img = cards[p.key] ? `<img class="cardimg" src="/li/${esc(cards[p.key])}.png" alt="" width="600" height="314">` : '';
+    const lead = p.key === pick ? '<div class="flag"><b>This week\'s pick.</b> Rotated by week so the same cut is not suggested twice running; any of the others is as true.</div>' : '';
+    return `
+<section class="fmt${p.key === pick ? ' is-pick' : ''}" id="fmt-${esc(p.key)}">
+  <h2>${esc(p.title)}</h2>
+  ${lead}
+  ${img}
+  ${pasteBlock('The post', p.post, 'Attach the image above, paste this, post.', MAX_POST_CHARS, p.key === pick, `post-${esc(p.key)}`)}
+  <div class="where">How it was counted: ${esc(p.notes)}</div>
+</section>`;
+  });
+  return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data posts — ${esc(absTime(generatedAt))}</title>
+<style>${CSS}
+.fmt{margin:0 0 40px;padding-top:8px;border-top:1px solid #222226}
+.fmt h2{font-size:20px;margin:16px 0 8px}
+.fmt.is-pick h2::after{content:" · this week's pick";color:#c8ff00;font-size:12px;font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+.cardimg{display:block;width:600px;max-width:100%;height:auto;border-radius:10px;border:1px solid #303036;margin:8px 0 14px}
+</style></head><body>
+<div class="wrap">
+  <h1>Data posts</h1>
+  <div class="sub">${esc(region)} · ${bundle.rows} internships from ${bundle.employers} employers in the last ${esc(String(posts[0]?.window?.days ?? 30))} days · written ${esc(absTime(generatedAt))} ·
+    no model involved, every line is a count</div>
+  ${blocks.join('\n')}
+  <footer>
+    One of these a week is plenty; the pick rotates. Right-click the image to save it, attach it to the post, paste the text. Nothing here publishes anything on your behalf.<br>
+    Written by <code>bin/datapost.js</code> on the day set in <code>postQueue.dataPost</code>; run it any time with <code>npm run data-post -- --force</code>.
+  </footer>
+</div>
+<script>${JS}</script>
+</body></html>`;
+}
+
+/** Write the data-post page. Returns its path. */
+export function writeDataPage(html, weekKey) {
+  ensureDirs();
+  const file = join(PATHS.posts, `data-${weekKey}.html`);
+  writeFileSync(file, html, 'utf8');
+  writeFileSync(PATHS.latestData, html, 'utf8');
+  return file;
+}
