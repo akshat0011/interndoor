@@ -208,7 +208,10 @@ function fingerprint(text) {
  */
 export function closableFrom(tracked, cfg, wanted) {
   return (tracked ?? [])
-    .filter(({ row, matchedNow, region }) => row.is_tech !== 1
+    /* Either the classifier/human dropped it (is_tech !== 1) OR it is a live
+       tech row whose application has closed (closed_at set). Both should
+       redirect a dead job URL to the employer's hub rather than 404. */
+    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null)
       && !isBlockedCompany(row.company)
       && (!cfg?.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))
@@ -506,6 +509,7 @@ export async function writeJobsFile(store, cfg) {
   let dropped = 0;
   let droppedForeign = 0;
   let droppedNonTech = 0;
+  let droppedClosed = 0;
   const droppedByRegion = {};
   /* His corrections from the owner controls (src/owner.js), laid over the rows
      before ANY gate runs — so a corrected location moves the posting to the
@@ -568,6 +572,15 @@ export async function writeJobsFile(store, cfg) {
       droppedNonTech++;
       return false;
     })
+    /* A CLOSED posting is off the board but not gone: its URL becomes a
+       closed-role stub (closableFrom picks it up) and it stays in the hub's
+       record (the history projection keeps is_tech=1 rows, and closing does
+       not touch is_tech). This is the one thing suppression could not do. */
+    .filter(({ row }) => {
+      if (row.closed_at == null) return true;
+      droppedClosed++;
+      return false;
+    })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
   const supersededPairs = [];
@@ -620,6 +633,9 @@ export async function writeJobsFile(store, cfg) {
     log.info(`Held back ${droppedForeign} posting${droppedForeign === 1 ? '' : 's'} outside the published regions (${detail}).`);
   }
 
+  if (droppedClosed) {
+    log.info(`Held back ${droppedClosed} closed posting${droppedClosed === 1 ? '' : 's'} — application withdrawn, page redirected to the hub, still in the record.`);
+  }
   if (droppedNonTech) {
     log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);
   }

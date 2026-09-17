@@ -353,6 +353,18 @@ export class Store {
        * NULL means the classifier decided. A string means a person did, and
        * says why. Only NULL rows may ever be re-judged automatically. */
       ['suppressed_reason', 'TEXT'],
+      /* CLOSED, AND ORTHOGONAL TO is_tech ON PURPOSE. A posting whose
+       * application has been withdrawn — the employer's page 404s, the
+       * LinkedIn copy says "no longer accepting" — is off the board and its
+       * URL becomes a closed-role stub, but it IS still a real engineering
+       * internship this employer posted, so it stays is_tech=1 and stays in
+       * the company hub's record. Suppression (is_tech=0) drops it from the
+       * record too, which is why "24 tracked" read "4" after 20 dead S&P
+       * rows were suppressed on 17 Sep 2026. `closed_at` is when we saw it
+       * gone; `closed_reason` says how we knew. Set by bin/link-sweep.js and
+       * by `npm run remove --job --closed`. */
+      ['closed_at', 'INTEGER'],
+      ['closed_reason', 'TEXT'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);
@@ -1459,6 +1471,46 @@ export class Store {
    * @param {number} ats.seenSinceMs   last-seen floor: still on the board
    * @param {number} ats.postedFloorMs oldest posted_at still worth showing
    */
+  /**
+   * Mark a posting closed: off the board, its page a stub, still in the
+   * record (is_tech is untouched). Idempotent. A row already suppressed by a
+   * human (is_tech=0) is left alone — that is a stronger statement than
+   * "no longer accepting", and closing would not change what the site shows.
+   * Returns 1 if it changed the row, 0 otherwise.
+   */
+  markClosed(jobId, reason, at = Date.now()) {
+    return this.db.prepare(
+      `UPDATE jobs SET closed_at = ?, closed_reason = ?
+       WHERE job_id = ? AND closed_at IS NULL AND is_tech = 1 AND suppressed_reason IS NULL`,
+    ).run(at, String(reason ?? 'no longer accepting').slice(0, 300), jobId).changes;
+  }
+
+  /** Undo a close — for a link that recovers. Returns 1 if it changed a row. */
+  reopenJob(jobId) {
+    return this.db.prepare(
+      'UPDATE jobs SET closed_at = NULL, closed_reason = NULL WHERE job_id = ? AND closed_at IS NOT NULL',
+    ).run(jobId).changes;
+  }
+
+  /**
+   * The live, published-region rows whose apply link should be checked: the
+   * ones a dead-link sweep can close. Employer links only — a LinkedIn apply
+   * URL is checked on the LinkedIn page, and we do not hammer LinkedIn — so
+   * this is `apply_url` off `linkedin.com`, on a tech row that is neither
+   * suppressed nor already closed, inside the retention window. Newest first,
+   * so a capped sweep checks the freshest.
+   */
+  applyLinksToCheck(sinceMs, { limit = 500 } = {}) {
+    return this.db.prepare(`
+      SELECT job_id, company, title, apply_url FROM jobs
+      WHERE is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL
+        AND first_seen_at >= ?
+        AND apply_url IS NOT NULL AND apply_url <> ''
+        AND apply_url NOT LIKE '%linkedin.com%'
+      ORDER BY first_seen_at DESC LIMIT ?
+    `).all(sinceMs, limit);
+  }
+
   recentJobs(sinceMs, ats = null) {
     if (!ats) {
       return this.db.prepare(

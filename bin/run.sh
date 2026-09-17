@@ -87,6 +87,13 @@ fi
 # other call a process start and nothing more; failure must never stop the poll.
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/discover-ats.js" --apply-links --daily >> "$LOG" 2>&1 || true
 
+# Close postings whose employer apply link has gone dead (bin/link-sweep.js),
+# at most once a day. It only marks rows closed; the NEXT scan's publish carries
+# them to the site, so this must never publish and race the scan. A dead apply
+# link is a posting nobody can apply to, and the hub said "N open" for six days
+# once before this existed.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/link-sweep.js" --daily >> "$LOG" 2>&1 || true
+
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/poll-ats.js" --no-publish >> "$LOG" 2>&1
 # Capture before anything else runs. A command substitution in the echo below
 # would overwrite $? with the exit status of `date`, which is always 0 — so

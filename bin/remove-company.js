@@ -61,6 +61,7 @@ const has = (f) => ARGS.includes(f);
 const DRY_RUN = has('--dry-run');
 const YES = has('--yes') || has('-y');
 const KEEP_WATCHLIST = has('--keep-watchlist');
+const CLOSED = has('--closed');
 const NO_PUBLISH = has('--no-publish');
 
 function valueOf(flag) {
@@ -88,7 +89,10 @@ Remove a company or a posting from InternDoor.
 
 Flags:
   --yes, -y          skip the confirmation prompt
-  --reason "..."     why the posting was pulled (--job only; stored on the row)
+  --reason "..."     why the posting was pulled/closed (--job only; stored on the row)
+  --closed           --job only: mark the posting CLOSED (application withdrawn)
+                     rather than suppressed — off the board, page redirected to
+                     the hub, still counted in the employer's record
   --dry-run          show what would change, write nothing
   --keep-watchlist   remove the postings but keep watching the company
                      (by default the company is blocklisted so it cannot return)
@@ -207,7 +211,15 @@ if (!YES) {
 const ids = jobs.map((j) => j.job_id);
 const marks = ids.map(() => '?').join(',');
 
-if (JOB_ID) {
+if (JOB_ID && CLOSED) {
+  /* CLOSED, NOT SUPPRESSED. The application is gone but the posting was a real
+     engineering internship: is_tech is untouched, so it stays in the hub's
+     record; publish drops it from the board and stubs its URL to the hub.
+     Only a live tech row that a human has not already pulled. */
+  run(`UPDATE jobs SET closed_at = ?, closed_reason = ? WHERE job_id IN (${marks}) AND is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL`,
+    Date.now(), REASON || 'no longer accepting', ...ids);
+  console.log(`Closed ${ids.length} posting${ids.length === 1 ? '' : 's'} — off the board, page redirected to the hub, still counted in the record.`);
+} else if (JOB_ID) {
   /* SUPPRESSED, NOT DELETED — see the note at the top of this file. Deleting
      one row hides a LinkedIn posting until the next sweep and no longer. */
   run(`UPDATE jobs SET is_tech = 0, suppressed_reason = ? WHERE job_id IN (${marks})`, REASON, ...ids);
