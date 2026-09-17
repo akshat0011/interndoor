@@ -34,7 +34,8 @@ const redirects = vercel.redirects ?? [];
 
 /** Does a path serve something? cleanUrls is on, so `/x` may be `x.html`. */
 const resolves = (p) => {
-  const rel = p.replace(/^\//, '');
+  // A query string is not part of the path: `/?utm_…` is the board.
+  const rel = p.replace(/[?#].*$/, '').replace(/^\//, '');
   if (!rel) return existsSync(join(pub, 'index.html'));
   return [join(pub, `${rel}.html`), join(pub, rel, 'index.html'), join(pub, rel)]
     .some((c) => existsSync(c) && statSync(c).isFile());
@@ -90,6 +91,25 @@ const deep = redirects.filter((r) => matches(r.source, '/Jobs/adobe-apprentice-t
 check('the deep /Jobs form is still redirected', deep.length >= 1, true);
 
 /* Case corrections are canonical, not temporary. */
+console.log('\n== a campaign link to a hub with nothing open goes to the board — and ONLY that link ==');
+/* 17 Sep 2026: a LinkedIn post's card linked the S&P Global hub with
+   utm_campaign=data-posts; both S&P postings then closed and 15,000
+   impressions were landing on "2 open". The hub itself is a permanent,
+   indexed page (§10) and must NOT redirect — only the post's own link does,
+   by its query, as a 302. A version of this entry without `has` would 302
+   the hub for Google too. */
+{
+  const spg = redirects.filter((r) => r.source === '/companies/s-and-p-global');
+  check('one entry for the S&P Global hub', spg.length, 1);
+  const r = spg[0] ?? {};
+  check('it is scoped to the post\'s campaign query', JSON.stringify(r.has), JSON.stringify([{ type: 'query', key: 'utm_campaign', value: 'data-posts' }]));
+  check('it goes to the board, keeping the attribution', r.destination, '/?utm_source=linkedin&utm_medium=social&utm_campaign=data-posts&utm_content=top10');
+  check('and it is temporary', r.permanent, false);
+  check('the hub page itself still exists to serve', resolves('/companies/s-and-p-global'), true);
+  check('no redirect touches a company hub without a query condition',
+    redirects.filter((r) => /^\/companies\/[a-z]/.test(r.source) && !(r.has ?? []).some((h) => h.type === 'query')).length, 0);
+}
+
 console.log('\n== they are permanent ==');
 const caseFixes = redirects.filter((r) => /^\/[A-Z]/.test(r.source));
 check('every capital-path redirect is a 301', caseFixes.every((r) => r.permanent === true), true);
