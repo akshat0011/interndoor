@@ -1,16 +1,15 @@
 {
- "generatedAt": 1789666636124,
+ "generatedAt": 1789666828495,
  "region": "IN",
  "regionName": "India",
- "count": 292,
- "techCount": 292,
+ "count": 280,
+ "techCount": 280,
  "otherCount": 0,
  "companies": [
   "ARGMAC",
   "AST SpaceMobile",
   "Adobe",
   "AlphaGrep Securities",
-  "Amazon",
   "American Express",
   "AppVersal",
   "Arctic Wolf",
@@ -92,7 +91,6 @@
   "Lennox",
   "Lexsi Labs",
   "LinkedIn",
-  "MSD",
   "Mastek",
   "Micron Technology",
   "Microsoft",
@@ -109,7 +107,6 @@
   "Nvidia",
   "Oceaneering",
   "PW (PhysicsWallah)",
-  "Panasonic Avionics Corporation",
   "Pearson",
   "Philips",
   "Piramal",
@@ -120,7 +117,6 @@
   "Qualcomm",
   "Quest Global",
   "R360 Group",
-  "Revvity",
   "Roche",
   "Rubrik",
   "Russell Investments",
@@ -137,7 +133,6 @@
   "Speedcast",
   "Sprinklr",
   "State Street",
-  "StoneX Group Inc.",
   "Stripe",
   "Sunstone",
   "SurveySparrow",
@@ -184,7 +179,6 @@
   "Bengaluru East, Karnataka, India",
   "Bengaluru, IND",
   "Bengaluru, India",
-  "Bengaluru, KA, India",
   "Bengaluru, Karnataka, India",
   "Bengaluru, Onsite",
   "Bengaluru, in",
@@ -1708,67 +1702,6 @@
    "cardFacts": [
     "Mumbai Metropolitan Region",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4466557018",
-   "title": "AI Software Intern / Trainee - Pune, India",
-   "company": "Panasonic Avionics Corporation",
-   "matchedWatchlist": "Panasonic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/panasonic-avionics-corporation.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "29 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "javascript",
-    "c++",
-    "sql",
-    "aws",
-    "ci/cd",
-    "git",
-    "machine learning",
-    "generative ai",
-    "rag",
-    "data structures",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves developing AI applications using RAG and conversational AI, working on real production solutions, and contributing to MLOps workflows. It suits students with Python and AWS experience seeking hands-on AI development.",
-   "bullets": [
-    "Develop AI applications using RAG, conversational AI, and backend APIs on AWS",
-    "Work on real production AI solutions with mentorship from senior engineers",
-    "Contribute to MLOps workflows and CI/CD processes on AWS services"
-   ],
-   "roleLabel": "AI Software Development",
-   "degreeLevel": null,
-   "degreeText": "M.Tech / MS",
-   "keySkills": [
-    "python",
-    "aws",
-    "git",
-    "ci/cd"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "8 minutes ago",
-   "postedAt": 1789490004388,
-   "firstSeenAt": 1789490484396,
-   "lastSeenAt": 1789490484396,
-   "url": "https://www.linkedin.com/jobs/view/4466557018/",
-   "applyUrl": "http://careers.na.panasonic.com/jobs/50208?lang=en-us&iis=Job+Board&iisn=Linkedin",
-   "description": null,
-   "roleFingerprint": "b8bbbaf9ff",
-   "cardFacts": [
-    "Pune Division",
-    "On-site"
    ],
    "region": "IN"
   },
@@ -3345,53 +3278,6 @@
    "region": "IN"
   },
   {
-   "id": "4466064069",
-   "title": "Intern Firmware",
-   "company": "GE HealthCare",
-   "matchedWatchlist": "GE HealthCare",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-healthcare.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "6 months",
-   "applicants": "5 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves repairing and maintaining medical imaging equipment in hospital settings. The intern will document repairs, follow safety protocols, and manage parts inventory. They will work with vendors and maintain customer relations while completing required reports. The role is ideal for students with technical skills and an interest in biomedical engineering.",
-   "bullets": [
-    "Repair and maintain medical imaging equipment in hospital radiology settings",
-    "Document repairs, follow safety guidelines, and manage parts inventory",
-    "Work with vendors, maintain customer relations, and complete required reports"
-   ],
-   "roleLabel": "Medical Equipment Repair",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "schematic diagrams",
-    "troubleshooting",
-    "preventative maintenance",
-    "customer relations"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "26 minutes ago",
-   "postedAt": 1789110635868,
-   "firstSeenAt": 1789112195873,
-   "lastSeenAt": 1789112195873,
-   "url": "https://www.linkedin.com/jobs/view/4466064069/",
-   "applyUrl": "https://careers.gehealthcare.com/global/en/job/GEVGHLGLOBALR4039981EXTERNALENGLOBAL/Intern-Firmware?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c7a8e9d723",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site",
-    "6 months"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4465893292",
    "title": "Manufacturing Engineering Internship in Tirupati",
    "company": "Fynd",
@@ -3588,104 +3474,6 @@
    "applyUrl": "https://careers.micron.com/careers/job/43751444?utm_source=linkedin&domain=micron.com&src=LinkedInJobs",
    "description": null,
    "roleFingerprint": "4147da5ad3",
-   "cardFacts": [
-    "Hyderabad",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4463910024",
-   "title": "Apprentice - Data Engineer",
-   "company": "StoneX Group Inc.",
-   "matchedWatchlist": "StoneX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/stonex-group-inc.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": "6 months",
-   "applicants": "21 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "power bi"
-   ],
-   "summary": "This apprenticeship involves creating compliance reports, automating data processes, and supporting AI tools in a regulated environment. It suits students with data skills and an interest in financial compliance.",
-   "bullets": [
-    "Build compliance dashboards with Power BI and DAX",
-    "Automate reporting with Power Automate and SharePoint",
-    "Support AI tools for compliance and regulatory tasks"
-   ],
-   "roleLabel": "Compliance Data Support",
-   "degreeLevel": "UG",
-   "degreeText": "Data Science/Data Analytics/Computer Science/Mathematics/Statistics/Information Systems",
-   "keySkills": [
-    "sql",
-    "python",
-    "power bi",
-    "power automate",
-    "sharepoint"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1789056369970,
-   "firstSeenAt": 1789057749979,
-   "lastSeenAt": 1789057749979,
-   "url": "https://www.linkedin.com/jobs/view/4463910024/",
-   "applyUrl": "https://english-stonex.icims.com/jobs/16535/apprentice---data-engineer/job?in_iframe=1&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "e589ab2d15",
-   "cardFacts": [
-    "Bengaluru",
-    "Hybrid",
-    "6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4465699293",
-   "title": "Information Technology Intern",
-   "company": "MSD",
-   "matchedWatchlist": "MSD",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/msd.jpg",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "28 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "machine learning"
-   ],
-   "summary": "This internship offers hands-on experience in developing software solutions for healthcare challenges. You'll work with AI and data analytics tools, contributing to global digital transformation projects. Ideal for students passionate about technology and its impact on healthcare.",
-   "bullets": [
-    "Support development of custom software for healthcare solutions",
-    "Work with AI, data analytics, and cloud technologies",
-    "Join global team focused on digital transformation"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "ai",
-    "data analytics"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1789053521291,
-   "firstSeenAt": 1789054181302,
-   "lastSeenAt": 1789054181302,
-   "url": "https://www.linkedin.com/jobs/view/4465699293/",
-   "applyUrl": "https://jobs.msd.com/gb/en/job/MSD1GBR414761ENGB/Information-Technology-Intern?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "4ba12c891e",
    "cardFacts": [
     "Hyderabad",
     "On-site"
@@ -4341,64 +4129,6 @@
    "region": "IN"
   },
   {
-   "id": "4464145174",
-   "title": "Apprentice - QA Automation",
-   "company": "StoneX Group Inc.",
-   "matchedWatchlist": "StoneX",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/stonex-group-inc.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "java",
-    "typescript",
-    "swift",
-    "sql",
-    "aws",
-    "azure",
-    "ci/cd",
-    "generative ai",
-    "mongodb",
-    "agile"
-   ],
-   "summary": "This QA automation apprenticeship involves building and maintaining test scripts for financial systems, working with CI/CD pipelines, and collaborating with cross-functional teams to ensure product quality. Ideal for students with technical skills in automation tools and a focus on testing financial services.",
-   "bullets": [
-    "Write automated tests for financial systems using Playwright and TypeScript",
-    "Work with GitHub Actions and CI/CD pipelines for test automation",
-    "Collaborate with developers and analysts on test frameworks and data validation"
-   ],
-   "roleLabel": "QA Automation",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "playwright",
-    "typescript",
-    "github actions",
-    "cucumber",
-    "postman"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "53 minutes ago",
-   "postedAt": 1788991598777,
-   "firstSeenAt": 1788994778785,
-   "lastSeenAt": 1788994778785,
-   "url": "https://www.linkedin.com/jobs/view/4464145174/",
-   "applyUrl": "https://english-stonex.icims.com/jobs/15287/apprentice----qa-automation/job?in_iframe=1&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "417cf819b7",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4465310038",
    "title": "Trainee Technology",
    "company": "Bajaj Finserv",
@@ -4431,49 +4161,6 @@
    "roleFingerprint": "f7c139cc37",
    "cardFacts": [
     "Pune Division",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4463891565",
-   "title": "Apprentice Tech",
-   "company": "Adobe",
-   "matchedWatchlist": "Adobe",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/adobe.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "31 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "express"
-   ],
-   "summary": "This internship involves supporting product development through daily coding and testing, working with React and TypeScript in a fast-moving team. Ideal for students interested in AI-driven tools and platforms, offering hands-on experience in a dynamic environment.",
-   "bullets": [
-    "Support product development with daily coding and testing",
-    "Work with React and TypeScript in a fast-moving team",
-    "Gain hands-on experience with AI-driven tools and platforms"
-   ],
-   "roleLabel": "Product Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1788972458230,
-   "firstSeenAt": 1788973118234,
-   "lastSeenAt": 1788973118234,
-   "url": "https://www.linkedin.com/jobs/view/4463891565/",
-   "applyUrl": "https://careers.adobe.com/us/en/job/ADOBUSR171241EXTERNALENUS/Apprentice-Tech?utm_source=linkedin&utm_medium=phenom-feeds&source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "1d4552c139",
-   "cardFacts": [
-    "Bengaluru East",
     "On-site"
    ],
    "region": "IN"
@@ -4705,49 +4392,6 @@
    "cardFacts": [
     "Hyderabad",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4465035982",
-   "title": "Intern",
-   "company": "GE HealthCare",
-   "matchedWatchlist": "GE HealthCare",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-healthcare.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "53 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves working on next generation compute platform projects with software development teams. Ideal for computer science or ai/ml students looking for hands-on experience in a global team environment.",
-   "bullets": [
-    "Work on next gen compute platform projects",
-    "Use software development tools and technologies",
-    "Work in ge healthcare premises with global team"
-   ],
-   "roleLabel": "Software development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.Tech/M.Tech",
-   "keySkills": [
-    "software development"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788960529582,
-   "firstSeenAt": 1788964129586,
-   "lastSeenAt": 1788964129586,
-   "url": "https://www.linkedin.com/jobs/view/4465035982/",
-   "applyUrl": "https://careers.gehealthcare.com/global/en/job/GEVGHLGLOBALR4043323EXTERNALENGLOBAL/Intern?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ad96ec31c2",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
    ],
    "region": "IN"
   },
@@ -6674,65 +6318,6 @@
    "region": "IN"
   },
   {
-   "id": "4464330410",
-   "title": "Robotics Inspection Technologies Intern.",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "3-11 months",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "computer vision",
-    "rtos",
-    "pcb",
-    "opencv",
-    "i2c",
-    "spi",
-    "uart",
-    "algorithms"
-   ],
-   "summary": "This internship involves developing robotic systems for non-destructive inspection using real-time control and computer vision. Ideal for students with experience in embedded systems, robotics, or computer vision. The role offers hands-on research in a lab environment with world-class researchers.",
-   "bullets": [
-    "Implement real-time control algorithms on embedded systems",
-    "Integrate hardware and software for robotic inspection systems",
-    "Work with computer vision for pose estimation and 3D reconstruction"
-   ],
-   "roleLabel": "Robotics Systems Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "c/c++",
-    "opencv",
-    "arduino",
-    "stm32",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1788780169156,
-   "firstSeenAt": 1788780709164,
-   "lastSeenAt": 1788792462966,
-   "url": "https://www.linkedin.com/jobs/view/4464330410/",
-   "applyUrl": "https://careers.gevernova.com/robotics-inspection-technologies-intern/job/R5038013",
-   "description": null,
-   "roleFingerprint": "26f662d73d",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site",
-    "3-11 months"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4462932588",
    "title": "Software Engineering PhD Intern, Summer 2027",
    "company": "Google",
@@ -7425,57 +7010,6 @@
    "region": "IN"
   },
   {
-   "id": "4463773955",
-   "title": "Revvity Internship",
-   "company": "Revvity",
-   "matchedWatchlist": "Revvity",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/revvity.jpg",
-   "location": "Thane, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "next.js",
-    "docker",
-    "generative ai"
-   ],
-   "summary": "This internship involves developing ai tools to enhance workplace efficiency. You'll work with python and next.js to create prototypes that support business processes. Ideal for students interested in applying ai to real-world problems and working in a fast-paced environment.",
-   "bullets": [
-    "Build ai prototypes to boost productivity and creativity",
-    "Work with python, next.js, docker and full stack tech",
-    "Collaborate across departments to solve real business challenges"
-   ],
-   "roleLabel": "Ai prototype development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "next.js",
-    "docker",
-    "prompt engineering"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "56 minutes ago",
-   "postedAt": 1788654356991,
-   "firstSeenAt": 1788657716999,
-   "lastSeenAt": 1788657716999,
-   "url": "https://www.linkedin.com/jobs/view/4463773955/",
-   "applyUrl": "https://jobs.revvity.com/en/job/-/-/20539/100159135568?source=Social_Media_Linkedin",
-   "description": null,
-   "roleFingerprint": "87ed5c48aa",
-   "cardFacts": [
-    "Thane",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4462614387",
    "title": "Fullstack Developer- Internship",
    "company": "GreedyGame",
@@ -7627,66 +7161,6 @@
     "Noida",
     "On-site",
     "6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4462346970",
-   "title": "Associate, AI & Machine Learning Intern",
-   "company": "Pearson",
-   "matchedWatchlist": "Pearson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pearson.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "3-6 months",
-   "applicants": "50 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "azure",
-    "git",
-    "machine learning",
-    "scikit-learn",
-    "pandas",
-    "numpy",
-    "generative ai",
-    "data structures",
-    "algorithms"
-   ],
-   "summary": "This internship involves developing AI models for payroll automation and analytics, working with Python, Azure, SQL, and Git. You'll collaborate on global payroll AI projects and contribute to real-world solutions used across international teams.",
-   "bullets": [
-    "Build AI models for payroll automation and analytics",
-    "Work with Python, Azure, SQL, and Git",
-    "Collaborate on global payroll AI projects"
-   ],
-   "roleLabel": "AI Model Development",
-   "degreeLevel": "UG",
-   "degreeText": "B.E / B.Tech",
-   "keySkills": [
-    "python",
-    "azure",
-    "sql",
-    "git",
-    "pandas"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788574770101,
-   "firstSeenAt": 1788578370108,
-   "lastSeenAt": 1788578370108,
-   "url": "https://www.linkedin.com/jobs/view/4462346970/",
-   "applyUrl": "https://rr.jobsyn.org/4442FB9E60EA4EDF844DC498889EB14B1606?utm_source=linkedin&utm_medium=jobboard",
-   "description": null,
-   "roleFingerprint": "36f488c7a6",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site",
-    "3-6 months"
    ],
    "region": "IN"
   },
@@ -9084,107 +8558,6 @@
    "cardFacts": [
     "Mumbai",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4460902094",
-   "title": "Associate, Software Engineer - Intern",
-   "company": "Pearson",
-   "matchedWatchlist": "Pearson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/pearson.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "3-6 months",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "javascript",
-    "typescript",
-    "react",
-    "azure",
-    "git"
-   ],
-   "summary": "This internship involves developing user interfaces for a global payroll platform using React and TypeScript. The intern will work on dashboards and reports, integrating frontend applications with backend services. Ideal for students interested in modern web development and enterprise systems.",
-   "bullets": [
-    "Build user interfaces with React and TypeScript",
-    "Work on global payroll platform with REST APIs",
-    "Collaborate with developers and business teams"
-   ],
-   "roleLabel": "Frontend Development",
-   "degreeLevel": "UG",
-   "degreeText": "B.E / B.Tech",
-   "keySkills": [
-    "react",
-    "typescript",
-    "html",
-    "css",
-    "git",
-    "rest apis"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "2 hours ago",
-   "postedAt": 1788316266261,
-   "firstSeenAt": 1788323466269,
-   "lastSeenAt": 1788323466269,
-   "url": "https://www.linkedin.com/jobs/view/4460902094/",
-   "applyUrl": "https://rr.jobsyn.org/60B518B3E9E74BF6BA34DD5D28B23DEE1606?utm_source=linkedin&utm_medium=jobboard",
-   "description": null,
-   "roleFingerprint": "337c48972f",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site",
-    "3-6 months"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4462074111",
-   "title": "Software Engineer Trainee_Technical Graduate Apprentice - India UHR",
-   "company": "Cisco",
-   "matchedWatchlist": "Cisco",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/cisco.jpg",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": "12 months",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "machine learning"
-   ],
-   "summary": "This internship involves developing automation tools for operations teams and working on AI-driven projects to optimize network traffic. It suits students passionate about technology and eager to contribute to impactful projects in a collaborative environment.",
-   "bullets": [
-    "Develop tools to automate complex operations tasks",
-    "Work with AI and machine learning to optimize network traffic",
-    "Deploy software upgrades in a large SaaS environment"
-   ],
-   "roleLabel": "Operations Tool Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "machine learning"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "6 hours ago",
-   "postedAt": 1788301925845,
-   "firstSeenAt": 1788323525849,
-   "lastSeenAt": 1788323525849,
-   "url": "https://www.linkedin.com/jobs/view/4462074111/",
-   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2024514EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "48e0f1d2dd",
-   "cardFacts": [
-    "Hyderabad",
-    "On-site",
-    "12 months"
    ],
    "region": "IN"
   },
@@ -11176,6 +10549,49 @@
    "region": "IN"
   },
   {
+   "id": "4457612403",
+   "title": "Apprentice Tech",
+   "company": "Adobe",
+   "matchedWatchlist": "Adobe",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/adobe.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "26 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "express"
+   ],
+   "summary": "This internship involves supporting product development through coding and testing, working with React and TypeScript. Ideal for students interested in AI-driven tools and platforms, with exposure to a dynamic team environment.",
+   "bullets": [
+    "Support product development with daily coding and testing",
+    "Work with React and TypeScript in a fast-paced team",
+    "Gain hands-on experience with AI-driven tools and platforms"
+   ],
+   "roleLabel": "Product Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unpaid",
+   "postedText": "17 minutes ago",
+   "postedAt": 1787676411171,
+   "firstSeenAt": 1787677431176,
+   "lastSeenAt": 1787687723321,
+   "url": "https://www.linkedin.com/jobs/view/4457612403/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4457612403/",
+   "description": null,
+   "roleFingerprint": "1d4552c139",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
    "id": "4458765455",
    "title": "Trainee, Market Intelligence",
    "company": "Monotype",
@@ -12148,62 +11564,6 @@
    "cardFacts": [
     "Gurugram",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "ats:amazon:IND:10506481",
-   "title": "SDE I Intern , Amazon University Talent Acquisition",
-   "company": "Amazon",
-   "matchedWatchlist": "Amazon",
-   "isTech": true,
-   "roleSource": "manual-url",
-   "employmentType": "intern",
-   "logo": "/logos/amazon.jpg",
-   "location": "Bengaluru, KA, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": "6 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "aws",
-    "perl",
-    "data structures",
-    "algorithms",
-    "agile"
-   ],
-   "summary": "This internship involves building scalable systems for distributed computing, working with AWS and large-scale data technologies, and collaborating with senior engineers on mission-critical projects. It suits students with strong technical backgrounds and experience in distributed systems and algorithms.",
-   "bullets": [
-    "Design scalable systems for distributed computing environments",
-    "Work with AWS and large-scale data technologies",
-    "Collaborate with senior engineers on mission-critical projects"
-   ],
-   "roleLabel": "System Design",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "distributed systems",
-    "aws",
-    "algorithms",
-    "data structures",
-    "object-oriented design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1787588166966,
-   "firstSeenAt": 1787588166966,
-   "lastSeenAt": 1787588166966,
-   "url": "https://www.amazon.jobs/en-gb/jobs/10506481/sde-i-intern-amazon-university-talent-acquisition",
-   "applyUrl": "https://www.amazon.jobs/en-gb/jobs/10506481/sde-i-intern-amazon-university-talent-acquisition",
-   "description": null,
-   "roleFingerprint": "32c9296546",
-   "cardFacts": [
-    "Bengaluru",
-    "6 months"
    ],
    "region": "IN"
   },
