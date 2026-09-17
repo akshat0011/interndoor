@@ -31,7 +31,7 @@
  */
 import { matchCompany, isBlockedCompany } from './config.js';
 import { resolveRowRegion, regionOf, regionPath } from './regions.js';
-import { isFullTimeRole, stipendText, SITE } from './pages.js';
+import { isFullTimeRole, stipendText, companySlug, RECORD_MIN_POSTINGS, SITE } from './pages.js';
 import { formatStipend } from './extract.js';
 import { boldSans, utmUrl } from './postgen.js';
 import { applicantCount } from './telegram.js';
@@ -43,7 +43,7 @@ export const WINDOW_DAYS = 30;
 /* Below these the sentence is not a finding. Dropped, not weakened. */
 export const MIN_ROWS = 40;
 export const MIN_COUNTED = 30;
-export const FORMATS = ['employers', 'newcomers', 'queue', 'stipends', 'timing', 'cities', 'skills'];
+export const FORMATS = ['employers', 'newcomers', 'queue', 'stipends', 'timing', 'cities', 'skills', 'spotlight'];
 export const CAMPAIGN = 'data-post';
 
 const pct = (n, of) => (of ? Math.round((100 * n) / of) : 0);
@@ -95,7 +95,7 @@ export function dataRows(store, cfg, { region = 'IN', now = Date.now(), days = W
    facet slug and deliberately leaves the spelling alone; a ranked list that
    shows Bengaluru and Bangalore as two entries is wrong in a way a reader
    spots at once. Only the spellings the store actually holds. */
-const CITY_FOLD = { bangalore: 'Bengaluru', gurgaon: 'Gurugram', 'new delhi': 'Delhi', bombay: 'Mumbai', 'navi mumbai': 'Mumbai', 'greater noida': 'Noida', 'thane': 'Mumbai', 'secunderabad': 'Hyderabad' };
+const CITY_FOLD = { bangalore: 'Bengaluru', 'bangalore urban': 'Bengaluru', 'bengaluru urban': 'Bengaluru', 'bangalore rural': 'Bengaluru', gurgaon: 'Gurugram', 'new delhi': 'Delhi', bombay: 'Mumbai', 'navi mumbai': 'Mumbai', 'greater noida': 'Noida', 'thane': 'Mumbai', 'secunderabad': 'Hyderabad' };
 export function foldCity(city) {
   const k = String(city ?? '').trim().toLowerCase();
   return CITY_FOLD[k] ?? String(city ?? '').trim();
@@ -453,14 +453,146 @@ export function skillsPost(data, cfg) {
   };
 }
 
+/** 8. One employer's hiring record — the hub's `hiringRecord`, as a post. */
+
+/**
+ * Which employer to spotlight: the busiest in the window with a record worth
+ * telling (RECORD_MIN_POSTINGS all-time), skipping any in `exclude` — the
+ * names already spotlighted, so the same employer is not the subject two
+ * weeks running. Null when nobody qualifies.
+ */
+export function chooseSpotlight(data, { exclude = [] } = {}) {
+  const skip = new Set(exclude.map((e) => String(e).toLowerCase()));
+  const inWindow = new Map();
+  for (const r of data.rows) inWindow.set(r.employer, (inWindow.get(r.employer) ?? 0) + 1);
+  const allTime = new Map();
+  for (const r of data.history) allTime.set(r.employer, (allTime.get(r.employer) ?? 0) + 1);
+  const ranked = sortDesc(inWindow).filter(([c]) => (allTime.get(c) ?? 0) >= RECORD_MIN_POSTINGS && !skip.has(c.toLowerCase()));
+  return ranked.length ? ranked[0][0] : null;
+}
+
+const monthKeyOf = (ms, zone) => {
+  const d = new Date(new Date(ms).toLocaleString('en-US', { timeZone: zone }));
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+};
+const monthLabelOf = (key, { long = false } = {}) => new Date(Date.UTC(Number(key.slice(0, 4)), Number(key.slice(5, 7)) - 1, 15))
+  .toLocaleString('en-US', { month: long ? 'long' : 'short', timeZone: 'UTC' });   // en-US: "Sep", where en-GB gives "Sept"
+
+export function spotlightPost(data, cfg, { employer, publishedIds = null } = {}) {
+  const { history, region, now, trackedSince } = data;
+  if (!employer) return null;
+  const rows = history.filter((r) => r.employer === employer && r.firstSeen <= now);
+  const n = rows.length;
+  if (n < RECORD_MIN_POSTINGS) return null;
+  const zone = regionOf(region)?.timeZone ?? 'Asia/Kolkata';
+  const where = placeName(region);
+
+  /* Months with zeros, from the later of the employer's first dated posting
+     and the board's first sighting, to now — the hub's rule. Postings dated
+     before the board watched are counted and said, not drawn. */
+  const dated = rows.map((r) => r.postedAt ?? r.firstSeen).filter(Boolean);
+  const firstKey = monthKeyOf(Math.min(...dated), zone);
+  const sinceKey = trackedSince ? monthKeyOf(trackedSince, zone) : firstKey;
+  const startKey = firstKey > sinceKey ? firstKey : sinceKey;
+  const untilKey = monthKeyOf(now, zone);
+  const counts = new Map();
+  let before = 0;
+  for (const ms of dated) {
+    const k = monthKeyOf(ms, zone);
+    if (k >= startKey && k <= untilKey) counts.set(k, (counts.get(k) ?? 0) + 1);
+    else if (k < startKey) before += 1;
+  }
+  const months = [];
+  {
+    let [y, m] = startKey.split('-').map(Number);
+    for (let guard = 0; guard < 36; guard++) {
+      const k = `${y}-${String(m).padStart(2, '0')}`;
+      if (k > untilKey) break;
+      months.push({ key: k, label: monthLabelOf(k) + (k === untilKey ? ' so far' : ''), count: counts.get(k) ?? 0 });
+      m += 1; if (m > 12) { m = 1; y += 1; }
+    }
+  }
+
+  const titles = new Map();
+  for (const r of rows) titles.set(r.title, (titles.get(r.title) ?? 0) + 1);
+  const topTitle = sortDesc(titles)[0];
+  const cities = sortDesc(rows.reduce((m, r) => (r.city ? m.set(r.city, (m.get(r.city) ?? 0) + 1) : m), new Map())).slice(0, 3);
+  const stated = rows.filter((r) => r.stated).length;
+  const monthly = rows.map((r) => r.monthlyInr).filter((v) => v != null).sort((a, b) => a - b);
+  const median = monthly.length >= 3 ? monthly[Math.floor(monthly.length / 2)] : null;
+  const payWord = region === 'IN' ? 'a stipend' : 'pay';
+
+  /* Standing, coarse and honest: `within` counts employers with AT LEAST this
+     many postings, itself included, so a tie at the tenth place cannot make
+     twelve employers "one of the ten". */
+  /* Over the SAME rows the count uses (first seen by `now`), or an employer
+     can out-rank itself: a mutation test found `within` counting a row that
+     `n` did not. */
+  const allTime = new Map();
+  for (const r of history) if (r.firstSeen <= now) allTime.set(r.employer, (allTime.get(r.employer) ?? 0) + 1);
+  const of = allTime.size;
+  const within = [...allTime.values()].filter((v) => v >= n).length;
+  const standing = within <= 10
+    ? `One of the 10 most active employers of engineering interns we track in ${where}, out of ${of}.`
+    : within <= Math.ceil(of / 4)
+      ? `In the busiest quarter of the ${of} employers we track in ${where}.`
+      : null;
+
+  const open = publishedIds ? rows.filter((r) => publishedIds.has(r.id)).length : null;
+  const firstLabel = monthLabelOf(startKey, { long: true });
+  const head = `${employer} has posted ${n} engineering internship${n === 1 ? '' : 's'} in ${where} since ${firstLabel}.`;
+  const monthLine = months.map((m) => `${m.label.replace(' so far', '')} ${m.count}${m.label.endsWith('so far') ? ' so far' : ''}`).join(' · ');
+  const post = [
+    boldSans(head), '',
+    `📅 By month: ${monthLine}${before ? ` (and ${before} posted before we began tracking)` : ''}.`,
+    topTitle ? `🧭 Most often: "${topTitle[0]}"${topTitle[1] > 1 ? ` — ${topTitle[1]} times` : ''}, ${titles.size} distinct title${titles.size === 1 ? '' : 's'} in all.` : null,
+    cities.length ? `📍 ${cities.map(([c, k]) => `${c} (${k})`).join(', ')}.` : null,
+    stated === 0
+      ? `💰 None of the ${n} stated ${payWord}.`
+      : `💰 ${stated === n ? `All ${n}` : `${stated} of the ${n}`} stated ${payWord}${median ? ` — where monthly, the middle figure was ₹${median.toLocaleString('en-IN')}` : ''}.`,
+    standing ? `🏁 ${standing}` : null,
+    '',
+    open != null
+      ? (open ? `${open} open right now, with the whole record, month by month:` : `Nothing open at the moment — the record, and the next one the day it lands:`)
+      : 'The whole record, month by month:',
+    link(cfg, region, `/companies/${companySlug(employer)}`, 'spotlight'),
+    '',
+    hashtags('internships', companySlug(employer).replace(/[^a-z0-9]/g, ''), 'engineering', 'placements'),
+  ].filter((l) => l !== null).join('\n');
+
+  const cardRows = months.slice(-MAX_CARD_MONTHS);
+  const top = Math.max(1, ...cardRows.map((m) => m.count));
+  return {
+    key: 'spotlight',
+    title: `Employer spotlight: ${employer}`,
+    post,
+    stats: {
+      employer, postings: n, months: Object.fromEntries(months.map((m) => [m.key, m.count])), before,
+      titles: titles.size, topTitle: topTitle ? { title: topTitle[0], times: topTitle[1] } : null,
+      cities: cities.map(([c, k]) => ({ city: c, postings: k })), stated, monthlyFigures: monthly.length, medianMonthlyInr: median,
+      standing: { within, of }, open,
+    },
+    notes: `${n} = every ${employer} engineering internship on the board since tracking began; months from the posting's own date (${zone}), zeros shown; standing counts employers with at least ${n} postings. "Open" is the published set at write time.`,
+    card: {
+      eyebrow: `${where} · ${employer} · since ${firstLabel}`,
+      headline: `${employer}: ${n} internships${stated === 0 ? ', none stated pay' : `, ${stated} stated pay`}`,
+      rows: cardRows.map((m) => ({ label: m.label, value: String(m.count), share: m.count / top })),
+      band: open ? `${open} OPEN NOW.` : 'ON THE BOARD.',
+    },
+  };
+}
+const MAX_CARD_MONTHS = 10;
+
 const COMPOSERS = { employers: employersPost, newcomers: newcomersPost, queue: queuePost, stipends: stipendsPost, timing: timingPost, cities: citiesPost, skills: skillsPost };
 
 /** Every format that has enough data this week, in FORMATS order. */
-export function dataPosts(store, cfg, opts = {}) {
+export function dataPosts(store, cfg, { spotlight = {}, ...opts } = {}) {
   const data = dataRows(store, cfg, opts);
   const posts = [];
   for (const key of FORMATS) {
-    const p = COMPOSERS[key](data, cfg);
+    const p = key === 'spotlight'
+      ? spotlightPost(data, cfg, { employer: spotlight.employer ?? chooseSpotlight(data, { exclude: spotlight.exclude ?? [] }), publishedIds: spotlight.publishedIds ?? null })
+      : COMPOSERS[key](data, cfg);
     if (p) posts.push({ ...p, region: data.region, window: { since: data.since, now: data.now, days: data.days } });
   }
   return { region: data.region, rows: data.rows.length, employers: new Set(data.rows.map((r) => r.employer)).size, posts };
