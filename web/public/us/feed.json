@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/atlassian-machine-learning-intern-2027-summer-u-s-4468824288",
+      "url": "https://interndoor.com/us/jobs/atlassian-machine-learning-intern-2027-summer-u-s-4468824288",
+      "title": "Machine Learning Intern, 2027 Summer U.S. — Atlassian",
+      "content_text": "Company: Atlassian · Location: San Francisco, CA · Duration: Summer 2027\n• Build and evaluate AI/ML solutions for business problems with mentorship\n• Work on projects involving models, agents, retrieval, and evaluation\n• Collaborate with teams across Engineering, Product, and Growth",
+      "date_published": "2026-09-17T21:54:36.827Z",
+      "authors": [
+        {
+          "name": "Atlassian"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/atlassian-machine-learning-intern-2027-summer-u-s-4468821535",
+      "url": "https://interndoor.com/us/jobs/atlassian-machine-learning-intern-2027-summer-u-s-4468821535",
+      "title": "Machine Learning Intern, 2027 Summer U.S. — Atlassian",
+      "content_text": "Company: Atlassian · Location: Seattle, WA · Duration: Summer 2027\n• Build and evaluate AI/ML solutions for real-world problems with mentorship\n• Work on projects involving models, agents, retrieval, and evaluation workflows\n• Collaborate with teams across Engineering, Product, and Growth",
+      "date_published": "2026-09-17T21:54:10.088Z",
+      "authors": [
+        {
+          "name": "Atlassian"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-systems-engineering-intern-summer-2027-4468835051",
+      "url": "https://interndoor.com/us/jobs/raytheon-systems-engineering-intern-summer-2027-4468835051",
+      "title": "Systems Engineering Intern (Summer 2027) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Aurora, CO · Duration: Summer 2027\n• Develop software to integrate components and enable new capabilities\n• Use Python, Perl, VBA, and MATLAB for testing and analysis\n• Work on system security and performance with a DoD Top Secret clearance",
+      "date_published": "2026-09-17T21:50:42.121Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-embedded-software-engineer-intern-4467800612",
+      "url": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-embedded-software-engineer-intern-4467800612",
+      "title": "Embedded Software Engineer Intern — General Dynamics Mission Systems",
+      "content_text": "Company: General Dynamics Mission Systems · Location: Boise, ID\n• Design and deploy secure embedded systems using C/C++, RTOS, and FPGA\n• Work on CPU design, crypto cores, and hardened operating systems\n• Collaborate with cross-functional teams on military security solutions",
+      "date_published": "2026-09-17T21:46:17.459Z",
+      "authors": [
+        {
+          "name": "General Dynamics Mission Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-electrical-engineer-intern-4467599663",
+      "url": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-electrical-engineer-intern-4467599663",
+      "title": "Electrical Engineer Intern — General Dynamics Mission Systems",
+      "content_text": "Company: General Dynamics Mission Systems · Location: Boise, ID\n• Design and test secure hardware systems for military applications\n• Work with FPGA, ASIC, and embedded C/C++ development\n• Collaborate on CPU and crypto core architectures in a cross-functional team",
+      "date_published": "2026-09-17T21:45:39.420Z",
+      "authors": [
+        {
+          "name": "General Dynamics Mission Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-sram-software-engineer-intern-bs-summer-2027-4466611925",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-sram-software-engineer-intern-bs-summer-2027-4466611925",
+      "title": "SRAM Software Engineer Intern, BS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Burlington, VT · Duration: Fall 2027\n• Implement PPA data for SRAM design kits in advanced technologies\n• Script in Perl, Python, Bash for memory optimization tools\n• Collaborate with circuit designers on high-performance memory solutions",
+      "date_published": "2026-09-17T21:35:50.908Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-sram-circuit-design-intern-ms-summer-2027-4466628041",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-sram-circuit-design-intern-ms-summer-2027-4466628041",
+      "title": "SRAM Circuit Design Intern, MS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Burlington, VT · Duration: Fall 2027\n• Design and implement digital circuits optimizing power, performance, and area\n• Use Cadence Virtuoso, Spectre, Verilog, and Python for simulation and analysis\n• Collaborate on real-world memory solutions for advanced semiconductor nodes",
+      "date_published": "2026-09-17T21:35:28.102Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-ms-summer-2027-4466608914",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-ms-summer-2027-4466608914",
+      "title": "Design For Test Intern, MS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Summer 2027\n• Run DFT checks and analyze results to resolve testability issues\n• Support DFT flow automation using Tcl, Python, or shell scripts\n• Work on complex SOC designs with industry-leading tools",
+      "date_published": "2026-09-17T21:35:19.149Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/seagate-technology-heat-assisted-magnetic-recording-hamr-media-research-intern-4466619197",
       "url": "https://interndoor.com/us/jobs/seagate-technology-heat-assisted-magnetic-recording-hamr-media-research-intern-4466619197",
       "title": "Heat-Assisted Magnetic Recording (HAMR) Media Research Intern — Seagate Technology",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-quantum-4468685019",
-      "url": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-quantum-4468685019",
-      "title": "Staff Research Scientist, Intern - PhD Quantum — Visa",
-      "content_text": "Company: Visa · Location: Foster City, CA\n• Develop quantum algorithms for fraud detection and secure transactions\n• Work with Python, C++, and Generative AI tools\n• Conduct research in quantum machine learning and optimization",
-      "date_published": "2026-09-17T17:27:18.742Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-ashburn-4468666893",
-      "url": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-ashburn-4468666893",
-      "title": "2027 Sophomore Internship Program - Software Engineer Intern, Ashburn — Visa",
-      "content_text": "Company: Visa · Location: Ashburn, VA\n• Build software solutions for routing digital currency transactions\n• Use Docker, Kubernetes, and Kafka for self-serve deployment\n• Develop chatbots and testing tools for payment systems\n• Work on automation projects with low latency algorithms",
-      "date_published": "2026-09-17T17:13:35.936Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-highlands-r-4468672880",
-      "url": "https://interndoor.com/us/jobs/visa-2027-sophomore-internship-program-software-engineer-intern-highlands-r-4468672880",
-      "title": "2027 Sophomore Internship Program - Software Engineer Intern, Highlands Ranch — Visa",
-      "content_text": "Company: Visa · Location: Highlands Ranch, CO\n• Build and test software solutions for digital currency transactions\n• Use Docker and Kubernetes for self-serve Kafka cluster deployment\n• Develop chatbots and automation tools for payment systems\n• Work on cross-platform Visa Checkout usability improvements",
-      "date_published": "2026-09-17T17:13:35.900Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-foundational-ai-4468666897",
-      "url": "https://interndoor.com/us/jobs/visa-staff-research-scientist-intern-phd-foundational-ai-4468666897",
-      "title": "Staff Research Scientist, Intern - PhD Foundational AI — Visa",
-      "content_text": "Company: Visa · Location: Foster City, CA\n• Design and evaluate AI algorithms for enterprise systems\n• Work with Python, C++, and big data tools like Spark\n• Collaborate with product and engineering teams on AI projects",
-      "date_published": "2026-09-17T17:13:15.689Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-software-engineer-intern-foster-city-2027-4468677154",
-      "url": "https://interndoor.com/us/jobs/visa-software-engineer-intern-foster-city-2027-4468677154",
-      "title": "Software Engineer, Intern - Foster City 2027 — Visa",
-      "content_text": "Company: Visa · Location: Foster City, CA\n• Build tools for transaction monitoring and payment automation\n• Work with Docker, Kubernetes, and Python for deployment\n• Collaborate on real projects with global impact",
-      "date_published": "2026-09-17T17:13:06.776Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/visa-software-engineer-intern-2027-ashburn-va-4468682089",
-      "url": "https://interndoor.com/us/jobs/visa-software-engineer-intern-2027-ashburn-va-4468682089",
-      "title": "Software Engineer, Intern - 2027 Ashburn, VA — Visa",
-      "content_text": "Company: Visa · Location: Ashburn, VA\n• Build and test software solutions for digital currency transactions\n• Use Docker, Kubernetes, and Kafka for self-serve deployment\n• Work on automation tools for payments and transaction monitoring",
-      "date_published": "2026-09-17T17:13:05.988Z",
-      "authors": [
-        {
-          "name": "Visa"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-quality-engineering-internship-4468662863",
-      "url": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-quality-engineering-internship-4468662863",
-      "title": "Quality Engineering Internship — Safran Defense & Space, Inc.",
-      "content_text": "Company: Safran Defense & Space, Inc. · Location: Bedford, NH\n• Inspect and test electro-mechanical assemblies in production\n• Use lean six sigma and damic for continuous improvement\n• Collaborate with cross-functional teams on quality assurance",
-      "date_published": "2026-09-17T16:59:02.582Z",
-      "authors": [
-        {
-          "name": "Safran Defense & Space, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-transition-engineering-internship-4468669738",
-      "url": "https://interndoor.com/us/jobs/safran-defense-and-space-inc-transition-engineering-internship-4468669738",
-      "title": "Transition Engineering Internship — Safran Defense & Space, Inc.",
-      "content_text": "Company: Safran Defense & Space, Inc. · Location: Bedford, NH\n• Assist in building and troubleshooting electro-optical assemblies\n• Learn Lean Six Sigma and improve manufacturing processes\n• Work on production floor with engineers and technicians",
-      "date_published": "2026-09-17T16:58:54.590Z",
-      "authors": [
-        {
-          "name": "Safran Defense & Space, Inc."
         }
       ]
     }
