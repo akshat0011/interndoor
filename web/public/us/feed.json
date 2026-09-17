@@ -6,6 +6,90 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/globalfoundries-yield-engineering-intern-summer-2027-4467561640",
+      "url": "https://interndoor.com/us/jobs/globalfoundries-yield-engineering-intern-summer-2027-4467561640",
+      "title": "Yield Engineering Intern (Summer 2027) — GlobalFoundries",
+      "content_text": "Company: GlobalFoundries · Location: Malta, NY · Duration: Summer 2027\n• Analyze yield data and investigate root causes of manufacturing issues\n• Collaborate with engineers on process improvements and efficiency gains\n• Work on a 3-month project with real-world impact on semiconductor production",
+      "date_published": "2026-09-17T14:37:20.042Z",
+      "authors": [
+        {
+          "name": "GlobalFoundries"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458386057",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458386057",
+      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: La Porte, TX\n• Troubleshoot high-voltage systems and improve process instrumentation\n• Work on control schemes and predictive models for process optimization\n• Collaborate with technicians on equipment repairs and system reliability",
+      "date_published": "2026-09-17T14:23:54.595Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/entrust-ai-developer-intern-hybrid-minnesota-4467542840",
+      "url": "https://interndoor.com/us/jobs/entrust-ai-developer-intern-hybrid-minnesota-4467542840",
+      "title": "AI Developer Intern - Hybrid, Minnesota — Entrust",
+      "content_text": "Company: Entrust · Location: Greater Minneapolis-St. Paul Area\n• Develop and optimize AI applications with scripts and code\n• Work with GraphQL and backend scripts for data-driven features\n• Design AI workflows and testing frameworks for production quality",
+      "date_published": "2026-09-17T14:18:31.028Z",
+      "authors": [
+        {
+          "name": "Entrust"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458365952",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458365952",
+      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: Houston, TX\n• Develop control schemes and troubleshoot high-voltage systems\n• Work on process instrumentation and control systems daily\n• Based in houston, tx for 12-month co-op",
+      "date_published": "2026-09-17T14:06:56.404Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458382102",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458382102",
+      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: Sulphur, LA\n• Develop control schemes and troubleshoot high-voltage systems\n• Work on process instrumentation and control systems daily\n• Based in sulphur, la",
+      "date_published": "2026-09-17T13:55:52.337Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-cyber-security-intern-4458365956",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-cyber-security-intern-4458365956",
+      "title": "2027 Cyber Security Intern — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: Houston, TX\n• Monitor industrial control systems for security threats\n• Work with firewalls, patches, and certificate management\n• Support vulnerability assessments and compliance checks",
+      "date_published": "2026-09-17T13:55:44.241Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-assembly-equipment-engineer-4468631312",
+      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-assembly-equipment-engineer-4468631312",
+      "title": "Internship - Assembly Equipment Engineer — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Leominster, MA · Duration: 2–3 years\n• Troubleshoot and repair semiconductor assembly equipment using electrical and mechanical techniques\n• Perform preventive maintenance and support continuous improvement initiatives\n• Collaborate with production teams to reduce downtime and improve process efficiency",
+      "date_published": "2026-09-17T13:41:55.973Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-sustaining-product-engineering-4468647108",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-sustaining-product-engineering-4468647108",
       "title": "Internship - Sustaining Product Engineering — Infineon Technologies",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "SAP"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-receiver-exciter-and-processing-architecture-software-engineer-intern--4468289701",
-      "url": "https://interndoor.com/us/jobs/raytheon-receiver-exciter-and-processing-architecture-software-engineer-intern--4468289701",
-      "title": "Receiver, Exciter, & Processing Architecture Software Engineer Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: Marlborough, MA · Duration: Summer 2027\n• Develop and integrate C++ signal processing algorithms on Linux systems\n• Collaborate with engineers on real-time control and hardware integration\n• Maintain code quality through reviews and continuous integration",
-      "date_published": "2026-09-16T21:19:51.911Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-software-engineer-intern-4468296586",
-      "url": "https://interndoor.com/us/jobs/raytheon-software-engineer-intern-4468296586",
-      "title": "Software Engineer Intern — Raytheon",
-      "content_text": "Company: Raytheon · Location: Tucson, AZ\n• Develop object-oriented software using C# and C++ in Visual Studio\n• Collaborate with engineering teams on software integration and testing\n• Work on full lifecycle projects from design to sustainment",
-      "date_published": "2026-09-16T21:19:44.864Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/pratt-and-whitney-aero-thermal-fluid-intern-summer-2027-onsite-4468285777",
-      "url": "https://interndoor.com/us/jobs/pratt-and-whitney-aero-thermal-fluid-intern-summer-2027-onsite-4468285777",
-      "title": "Aero Thermal Fluid Intern (Summer 2027)(Onsite) — Pratt & Whitney",
-      "content_text": "Company: Pratt & Whitney · Location: East Hartford, CT · Duration: Summer 2027\n• Analyze internal air system flows and bearing loads\n• Collaborate with module centers on thermal fluid models\n• Support engine testing and validation of air system designs",
-      "date_published": "2026-09-16T21:19:38.717Z",
-      "authors": [
-        {
-          "name": "Pratt & Whitney"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-software-engineer-intern-summer-2027-4468281938",
-      "url": "https://interndoor.com/us/jobs/raytheon-software-engineer-intern-summer-2027-4468281938",
-      "title": "Software Engineer Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: Marlborough, MA · Duration: Summer 2027\n• Develop and test software for missile systems and radar technology\n• Work with C/C++ and agile teams on real-time systems and cybersecurity\n• Require U.S. Citizenship and security clearance before start date",
-      "date_published": "2026-09-16T21:19:36.811Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-rf-microwave-engineering-intern-summer-2027-4468281943",
-      "url": "https://interndoor.com/us/jobs/raytheon-rf-microwave-engineering-intern-summer-2027-4468281943",
-      "title": "RF/Microwave Engineering Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: Andover, MA · Duration: Summer 2027\n• Measure RF/microwave/millimeter-wave devices and circuits\n• Use Labview, Python, and Keysight ADS for test automation\n• Work on GaAs and GaN semiconductor components",
-      "date_published": "2026-09-16T21:19:15.921Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-winter-spring-2027-4468281941",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-winter-spring-2027-4468281941",
-      "title": "Software Engineering Co-op (Winter/Spring 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Spring 2027\n• Develop and test AI/ML models for safety-critical avionics systems\n• Collaborate with engineers on Generative AI tools and workflows\n• Work on-site in Cedar Rapids, IA during winter/spring 2027",
-      "date_published": "2026-09-16T21:19:14.720Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amgen-grad-intern-digital-product-technology-ai-and-data-summer-2027-4466499723",
-      "url": "https://interndoor.com/us/jobs/amgen-grad-intern-digital-product-technology-ai-and-data-summer-2027-4466499723",
-      "title": "Grad Intern – Digital Product – Technology, AI & Data (Summer 2027) — Amgen",
-      "content_text": "Company: Amgen · Location: United States · Duration: Summer 2027\n• Collaborate with cross-functional teams to design and deliver digital products for healthcare solutions\n• Use data and user insights to shape product features and improve patient outcomes\n• Engage in agile workflows from discovery to launch with real-world impact",
-      "date_published": "2026-09-16T20:59:15.402Z",
-      "authors": [
-        {
-          "name": "Amgen"
         }
       ]
     }
