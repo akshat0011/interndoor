@@ -1358,6 +1358,16 @@ const server = createServer(async (req, res) => {
     return sendFile(res, join(PATHS.posts, `weekly-${id}.html`), `No roundup for ${id}.`);
   }
 
+  if (path === '/data' || path === '/data/' || path === '/data/latest') {
+    return sendFile(res, PATHS.latestData, 'No data posts yet — they are written on the day set in postQueue.dataPost, or run `npm run data-post -- --force`.');
+  }
+
+  if (path.startsWith('/data/')) {
+    const id = decodeURIComponent(path.slice('/data/'.length));
+    if (!SAFE_ID.test(id)) return html(res, 400, '<h1>400</h1>');
+    return sendFile(res, join(PATHS.posts, `data-${id}.html`), `No data posts for ${id}.`);
+  }
+
   if (path === '/posts' || path === '/posts/' || path === '/posts/latest') {
     return sendFile(res, PATHS.latestPosts, 'No posts written yet — queue a few listings and press Generate.');
   }

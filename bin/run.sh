@@ -117,6 +117,12 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # ---------------------------------------------------------------------------
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/weekly.js" >> "$LOG" 2>&1 || true
 
+# The weekly data posts, same contract as the roundup: bin/datapost.js exits
+# at once unless it is on or after the configured hour on the configured
+# weekday and that week has not been written. Its exit status is discarded for
+# the same reason the roundup's is.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/datapost.js" --no-open >> "$LOG" 2>&1 || true
+
 # The daily digest, asked every scan and answered once a day.
 #
 # bin/digest.js exits immediately unless it is on or after the configured hour
