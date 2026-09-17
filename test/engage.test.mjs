@@ -255,5 +255,46 @@ console.log('\n== /api/count keeps a number per day and nothing about anyone =='
   ok('the local server knows the route', /'\/api\/count': '\.\/api\/count\.js'/.test(read('web/serve.js')));
 }
 
+/* bin/counts.js against a stub store. An all-zero grid used to print NOTHING,
+   which reads exactly like a broken script — and on a fresh setup it is the
+   normal state, because Vercel env vars reach the next deployment only. */
+{
+  const { createServer } = await import('node:http');
+  /* Async, never spawnSync: the stub store lives in THIS process, and a
+     blocking wait would stop it answering the child — a deadlock, not a
+     failure, which is worse. */
+  const { execFile } = await import('node:child_process');
+  let mode = 'empty';
+  const server = createServer((req, res) => {
+    let body = '';
+    req.on('data', (c) => { body += c; });
+    req.on('end', () => {
+      const keys = JSON.parse(body).slice(1);
+      const result = keys.map((k, i) => (mode === 'empty' ? null : (i === 0 ? '7' : null)));
+      res.setHeader('content-type', 'application/json');
+      res.end(JSON.stringify({ result }));
+    });
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const port = server.address().port;
+  const run = () => new Promise((resolve) => execFile(process.execPath, ['bin/counts.js', '--days', '1'], {
+    encoding: 'utf8',
+    timeout: 20_000,
+    env: { ...process.env, KV_REST_API_URL: `http://127.0.0.1:${port}`, KV_REST_API_TOKEN: 'stub' },
+  }, (err, stdout, stderr) => resolve({ status: err ? (err.code ?? 1) : 0, stdout: String(stdout), stderr: String(stderr) })));
+  try {
+    let r = await run();
+    ok('counts: an empty grid says the store answered and nothing was counted',
+      r.status === 0 && /Store reachable; 0 events/.test(r.stdout), r.stdout.slice(0, 200) + r.stderr.slice(0, 200));
+    ok('counts: an empty grid explains the deployment lag', /next deployment|redeploys/i.test(r.stdout));
+    mode = 'some';
+    r = await run();
+    ok('counts: a non-empty grid prints the board table, not the empty-grid line',
+      r.status === 0 && /== IN ==/.test(r.stdout) && /\b7\b/.test(r.stdout) && !/Store reachable; 0 events/.test(r.stdout), r.stdout.slice(0, 200));
+  } finally {
+    server.close();
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
