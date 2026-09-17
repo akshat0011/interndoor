@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4467578294",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4467578294",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Gurugram, Haryana, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-17T16:49:52.446Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4467587001",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4467587001",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-17T16:49:29.666Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/synopsys-inc-computational-fluid-dynamics-cfd-internship-4468670496",
       "url": "https://interndoor.com/jobs/synopsys-inc-computational-fluid-dynamics-cfd-internship-4468670496",
       "title": "Computational Fluid Dynamics(CFD) Internship — Synopsys Inc",
@@ -574,30 +598,6 @@
       "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100644",
       "title": "Associate Software Engineer - Intern — Kaleris",
       "content_text": "Company: Kaleris · Location: Chennai\n• Build software for marine logistics using java and sql\n• Work on full stack from frontend to backend\n• Collaborate with product and qa teams in chennai",
-      "date_published": "2026-09-12T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Kaleris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100637",
-      "url": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100637",
-      "title": "Associate Quality Assurance Engineer - Intern — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai\n• Write and maintain test automation frameworks using selenium, uft, and testng\n• Collaborate with product and dev teams to improve product quality and testing processes\n• Work in agile scrum teams with mentorship and contribute to test automation development",
-      "date_published": "2026-09-12T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Kaleris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kaleris-associate-cloud-ops-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100647",
-      "url": "https://interndoor.com/jobs/kaleris-associate-cloud-ops-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100647",
-      "title": "Associate Cloud Ops Engineer - Intern — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai · Duration: 3-5 years\n• Monitor and maintain cloud systems for global trade platforms\n• Use azure, docker, kubernetes, and terraform\n• Work 24/7 with on-call support and incident management",
       "date_published": "2026-09-12T00:00:00.000Z",
       "authors": [
         {
