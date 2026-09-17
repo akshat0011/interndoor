@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 17 Sep 2026 13:06:44 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 17 Sep 2026 16:10:38 GMT</lastBuildDate>
+  <item>
+    <title>Computational Fluid Dynamics(CFD) Internship — Synopsys Inc</title>
+    <link>https://interndoor.com/jobs/synopsys-inc-computational-fluid-dynamics-cfd-internship-4468670496</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/synopsys-inc-computational-fluid-dynamics-cfd-internship-4468670496</guid>
+    <pubDate>Thu, 17 Sep 2026 16:10:38 GMT</pubDate>
+    <description>Company: Synopsys Inc · Location: Pune Division, Maharashtra, India · Duration: 6 months
+• Run simulations for flow and heat transfer, analyze turbulence and mesh setups
+• Use ansys fluent and workbench for modeling and post-processing
+• Collaborate with teams to design solutions and document findings</description>
+  </item>
   <item>
     <title>Data Engineering Intern — TMRW House of Brands</title>
     <link>https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618</link>
@@ -497,16 +507,6 @@
 • Monitor and maintain cloud systems for global trade platforms
 • Use azure, docker, kubernetes, and terraform
 • Work 24/7 with on-call support and incident management</description>
-  </item>
-  <item>
-    <title>Apprentice — AtkinsRéalis</title>
-    <link>https://interndoor.com/jobs/atkinsr-alis-apprentice-4466345628</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/atkinsr-alis-apprentice-4466345628</guid>
-    <pubDate>Fri, 11 Sep 2026 18:29:38 GMT</pubDate>
-    <description>Company: AtkinsRéalis · Location: Bengaluru East, Karnataka, India
-• Prepare electrical drawings, 3D models, and layouts for substations and infrastructure
-• Use Revit, AutoCAD, and Dynamo for BIM and Scan-to-BIM workflows
-• Collaborate with global teams on digital engineering projects</description>
   </item>
 </channel>
 </rss>
