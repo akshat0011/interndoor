@@ -785,8 +785,7 @@
         "V2 Retail Ltd",
         "Vishal Retail"
       ]
-    }
-,
+    },
     {
       "name": "Kaleris"
     },
@@ -1083,7 +1082,8 @@
       "MedTourEasy",
       "Silicon Global Consulting",
       "Dana Incorporated",
-      "AU Small Finance Bank"
+      "AU Small Finance Bank",
+      "KG CRM Solutions LLP - Zoho Authorized Partner"
     ],
     "_blocklist_note": "Employers never published, whatever the watchlist says. Checked before any watchlist term, so a fuzzy match cannot resurrect one. Matching is containment on the normalised name, so \"MedTourEasy\" also covers \"MedTourEasy Navi Mumbai\". MedTourEasy is here because it was reported as a scam; it only ever reached the site because \"MedTourEasy Navi Mumbai\" contains the city Navi Mumbai, which the matcher read as the fintech Navi."
   },
