@@ -43,6 +43,7 @@ for (let i = days - 1; i >= 0; i--) dayList.push(utcDay(Date.now() - i * 86_400_
 
 /* One MGET per board over the day × event grid — a few hundred keys, well
    inside a single request, and deterministic (no SCAN). */
+let printed = 0;
 for (const region of regions) {
   const keys = [];
   for (const d of dayList) for (const e of events) keys.push(keyFor(d, e, region));
@@ -55,6 +56,7 @@ for (const region of regions) {
   const { result } = await res.json();
   const values = (result ?? []).map((v) => Number(v) || 0);
   if (!values.some(Boolean)) continue;
+  printed += 1;
 
   console.log(`\n== ${region} ==`);
   const short = (e) => e.replace('visit-', 'v-').replace('nudge-', 'n-').replace('newsince-shown', 'newsince');
@@ -64,5 +66,13 @@ for (const region of regions) {
     if (!row.some(Boolean)) return;
     console.log([d.padEnd(11), ...row.map((n) => String(n).padStart(9))].join(' '));
   });
+}
+/* An empty grid is a different answer from "no store" and must not look like
+   it: the store answered, and nothing has been counted in the window. The
+   usual reason on a fresh setup is that the Vercel deployment serving
+   /api/count predates the env vars — they reach the NEXT deployment only. */
+if (!printed) {
+  console.log(`Store reachable; 0 events recorded in the last ${days} day(s) (${dayList[0]} to ${dayList.at(-1)} UTC).`);
+  console.log('If the integration was just enabled, the running deployment does not have the env yet — any push to main redeploys with it.');
 }
 console.log('');
