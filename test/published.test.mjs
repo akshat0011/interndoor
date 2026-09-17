@@ -35,7 +35,7 @@ writePages(jobs, dir, [], { region: regionOf('IN') });
    which is the whole reason India cannot be allowlisted as one directory. */
 const HAND_MAINTAINED = new Set([
   'styles.css', 'app.js', 'page.css', 'page.js', 'subscribe.js', 'gtag.js',
-  'vercel.json', 'og.jpg', 'favicon.ico', 'favicon.svg', 'og-card.html',
+  'engage.js', 'vercel.json', 'og.jpg', 'favicon.ico', 'favicon.svg', 'og-card.html',
 ]);
 
 const created = readdirSync(dir, { withFileTypes: true })
@@ -57,7 +57,7 @@ for (const p of ['alerts.html', 'report.html', 'skills', 'locations'])
 console.log('\n== and the things that must NEVER be auto-published are not ==');
 // styles.css, app.js and the rest are committed by hand on purpose — the
 // scheduler shipping them would push half-finished edits every 30 minutes.
-for (const p of ['styles.css', 'app.js', 'page.css', 'page.js', 'vercel.json'])
+for (const p of ['styles.css', 'app.js', 'page.css', 'page.js', 'engage.js', 'vercel.json'])
   check(`${p} is NOT allowlisted`, allow.has(p), false);
 
 rmSync(dir, { recursive: true, force: true });

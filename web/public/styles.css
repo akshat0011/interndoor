@@ -1168,6 +1168,67 @@ html[data-boot] .boot-part {
 }
 .snack:not(.is-up) { opacity: 0; transform: translate(-50%, 12px); }
 
+/* ---------- new since your last visit ----------
+   The header is a list item so it scrolls with the rows it counts. A card the
+   reader has already had the chance to see recedes through its BACKGROUND and
+   rule only — never opacity, which takes the text below AA (§15) — and stays
+   exactly as readable and clickable as before. */
+.since-bar {
+  list-style: none;
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+  padding: 6px 4px 8px;
+  font-family: var(--mono); font-size: var(--t-micro); line-height: var(--t-micro-lh);
+  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  color: var(--ink-2);
+}
+.since-bar b { color: var(--live); font-weight: 700; }
+.row.seen { background: var(--bg-2); border-color: var(--rule); }
+.row.seen .role { color: var(--ink-15); }
+.row.seen .co { color: var(--ink-2); }
+
+/* ---------- the channel prompt, once, after Apply ----------
+   A small sheet above the bottom edge, not a modal: the reader has a new tab
+   open and this is what waits for them when they come back to this one.
+   The same transition shape as the toast, and the same reason. */
+.nudge {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 94;
+  width: min(560px, calc(100vw - 32px));
+  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--s3) var(--s4); align-items: center;
+  padding: 14px 44px 14px 18px;
+  background: var(--card-2); border: 1px solid var(--rule-2); border-radius: var(--r-2);
+  box-shadow: 0 18px 48px rgba(0,0,0,.45);
+  color: var(--ink);
+  transition: opacity .26s var(--snap), transform .26s var(--snap);
+}
+.nudge:not(.is-up) { opacity: 0; transform: translate(-50%, 14px); }
+.nudge-t { display: grid; gap: 2px; min-width: 0; }
+.nudge-t b { font-family: var(--ui); font-weight: 700; font-size: var(--t-body); line-height: 1.3; letter-spacing: -.01em; }
+.nudge-t span { font-size: var(--t-small); color: var(--ink-2); }
+.nudge-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.nudge-a {
+  display: inline-flex; align-items: center; height: 34px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid var(--rule-2); background: none;
+  color: var(--ink); text-decoration: none;
+  font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap;
+  transition: transform .14s var(--snap), border-color .16s, color .16s, background .16s;
+}
+.nudge-a:active { transform: scale(.97); }
+.nudge-whatsapp { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+.nudge-x {
+  position: absolute; top: 8px; right: 8px; width: 30px; height: 30px;
+  border: 0; border-radius: 999px; background: none; color: var(--ink-2);
+  font-size: 20px; line-height: 1; cursor: pointer;
+}
+.nudge-x:hover, .nudge-x:focus-visible { color: var(--ink); background: var(--rule); outline: none; }
+@media (max-width: 560px) {
+  .nudge { grid-template-columns: minmax(0,1fr); padding-right: 40px; }
+  .nudge-acts { justify-content: flex-start; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .nudge-a:hover { border-color: var(--live); color: var(--live); }
+  .nudge-whatsapp:hover { color: var(--live-ink); filter: brightness(1.06); }
+}
+
 /* ---------- hover motion, gated ----------
    A tap on a touchscreen fires a :hover before the click, so every one of these
    lifts fired on a phone — the device most of this traffic arrives on — and then
