@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/leidos-technical-intern-4468346947",
+      "url": "https://interndoor.com/us/jobs/leidos-technical-intern-4468346947",
+      "title": "Technical Intern — Leidos",
+      "content_text": "Company: Leidos · Location: United States\n• Develop and maintain data pipelines for Splunk and analytics platforms\n• Write Python scripts to process log, metric, and event data\n• Collaborate with SREs and operations teams on data requirements",
+      "date_published": "2026-09-17T03:16:16.718Z",
+      "authors": [
+        {
+          "name": "Leidos"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-dissolution-based-recycling-4466255125",
       "url": "https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-dissolution-based-recycling-4466255125",
       "title": "R&D PhD Summer Intern: Dissolution-Based Recycling — Procter & Gamble",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Marathon Petroleum Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/siemens-energy-gis-t-and-c-trainee-4466886871",
-      "url": "https://interndoor.com/us/jobs/siemens-energy-gis-t-and-c-trainee-4466886871",
-      "title": "GIS T&C Trainee — Siemens Energy",
-      "content_text": "Company: Siemens Energy · Location: Raleigh, NC\n• Supervise and coordinate gis testing and commissioning projects on-site\n• Develop testing procedures and ensure compliance with industry standards\n• Collaborate with engineering teams to resolve technical issues during testing",
-      "date_published": "2026-09-16T17:11:27.938Z",
-      "authors": [
-        {
-          "name": "Siemens Energy"
         }
       ]
     }
