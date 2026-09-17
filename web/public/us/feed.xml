@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 17 Sep 2026 14:37:20 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 17 Sep 2026 15:23:49 GMT</lastBuildDate>
+  <item>
+    <title>Hardware Developer Intern 2027 - Houston, TX — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-houston-tx-4466272640</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-houston-tx-4466272640</guid>
+    <pubDate>Thu, 17 Sep 2026 15:23:49 GMT</pubDate>
+    <description>Company: IBM · Location: Houston, TX
+• Design and test hardware, firmware, and semiconductors for IBM products
+• Use VHDL/Verilog, SPICE, and CAD tools for circuit and system design
+• Work on quantum systems, power delivery, and thermal testing</description>
+  </item>
+  <item>
+    <title>Software Test Engineer Intern - Summer 2027 — CACI International Inc</title>
+    <link>https://interndoor.com/us/jobs/caci-international-inc-software-test-engineer-intern-summer-2027-4466285412</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/caci-international-inc-software-test-engineer-intern-summer-2027-4466285412</guid>
+    <pubDate>Thu, 17 Sep 2026 15:20:19 GMT</pubDate>
+    <description>Company: CACI International Inc · Location: Colorado Springs, CO · Duration: Summer 2027
+• Design tests for communication systems and automate procedures with Python
+• Work with lab equipment and Linux, using GitLab for version control
+• Collaborate on test planning and validate results with engineering teams</description>
+  </item>
   <item>
     <title>Yield Engineering Intern (Summer 2027) — GlobalFoundries</title>
     <link>https://interndoor.com/us/jobs/globalfoundries-yield-engineering-intern-summer-2027-4467561640</link>
@@ -76,6 +96,16 @@
 • Troubleshoot and repair semiconductor assembly equipment using electrical and mechanical techniques
 • Perform preventive maintenance and support continuous improvement initiatives
 • Collaborate with production teams to reduce downtime and improve process efficiency</description>
+  </item>
+  <item>
+    <title>2027 Digital Technology Intern — LyondellBasell</title>
+    <link>https://interndoor.com/us/jobs/lyondellbasell-2027-digital-technology-intern-4458387042</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/lyondellbasell-2027-digital-technology-intern-4458387042</guid>
+    <pubDate>Thu, 17 Sep 2026 13:30:11 GMT</pubDate>
+    <description>Company: LyondellBasell · Location: Houston, TX
+• Design, automate, and integrate business processes with IT and business teams
+• Work on real projects with senior mentors and present designs to management
+• Based in Houston, TX</description>
   </item>
   <item>
     <title>Internship - Sustaining Product Engineering — Infineon Technologies</title>
@@ -477,36 +507,6 @@
 • Troubleshoot chemical, electrical, and mechanical issues in production
 • Use CAD, Tableau, and Minitab for analysis and reporting
 • Work on continuous improvement projects with senior engineers</description>
-  </item>
-  <item>
-    <title>API Protein Downstream Co-op — Johnson &amp; Johnson Innovative Medicine</title>
-    <link>https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-api-protein-downstream-co-op-4468299703</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-api-protein-downstream-co-op-4468299703</guid>
-    <pubDate>Wed, 16 Sep 2026 22:31:01 GMT</pubDate>
-    <description>Company: Johnson &amp; Johnson Innovative Medicine · Location: Malvern, PA
-• Support lab studies, analyze data, and develop workflows for biologics process development
-• Collaborate with cross-functional teams on digital projects and platform strategies
-• Work on non-chromatography screening and filtration studies at bench and pilot scale</description>
-  </item>
-  <item>
-    <title>Security Engineer I (Intern) - United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-security-engineer-i-intern-united-states-4468304715</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-security-engineer-i-intern-united-states-4468304715</guid>
-    <pubDate>Wed, 16 Sep 2026 22:30:56 GMT</pubDate>
-    <description>Company: Cisco · Location: Durham, NC · Duration: 12 months
-• Develop secure software for operating systems and networks
-• Work with Python, C/C++, and Linux in a collaborative team
-• Influence product design and contribute to critical security solutions</description>
-  </item>
-  <item>
-    <title>SAP iXp Intern - Site Speed Performance [Newtown Square, PA] — SAP</title>
-    <link>https://interndoor.com/us/jobs/sap-sap-ixp-intern-site-speed-performance-newtown-square-pa-4467112559</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/sap-sap-ixp-intern-site-speed-performance-newtown-square-pa-4467112559</guid>
-    <pubDate>Wed, 16 Sep 2026 21:20:09 GMT</pubDate>
-    <description>Company: SAP · Location: Newtown Square, PA · Duration: 6 to 12 months
-• Analyze performance data and identify optimization opportunities for web and AI systems
-• Work with tools like Chrome DevTools and Grafana to troubleshoot front-end bottlenecks
-• Collaborate with global teams to improve bot rendering and crawler efficiency</description>
   </item>
 </channel>
 </rss>
