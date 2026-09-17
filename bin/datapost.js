@@ -18,6 +18,7 @@ import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { log } from '../src/logger.js';
 import { dataPosts, dataPostDue, dataPostRegions, pickOfWeek } from '../src/datapost.js';
+import { publishedIdsFor } from '../src/weekly.js';
 import { renderDataCard, cardId } from '../src/datacard.js';
 import { buildDataPage, writeDataPage } from '../src/postpage.js';
 import { weekKey } from '../src/weekly.js';
@@ -42,9 +43,15 @@ const due = dataPostRegions(cfg).filter((code) => FORCE || DRY_RUN
   || dataPostDue(cfg, store.getSetting(settingFor(code)), Date.now(), code));
 if (!due.length) { store.close(); process.exit(0); }
 
+/* The employers already spotlighted, newest last, so the subject rotates:
+   a settings row per board, capped, and read before choosing. */
+const SPOT_SETTING = 'dataPostSpotlighted';
+const SPOT_KEEP = 12;
+const spotlighted = (code) => { try { const v = JSON.parse(store.getSetting(`${SPOT_SETTING}:${code}`) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } };
+
 const built = [];
 for (const code of due) {
-  const bundle = dataPosts(store, cfg, { region: code });
+  const bundle = dataPosts(store, cfg, { region: code, spotlight: { exclude: spotlighted(code), publishedIds: publishedIdsFor(code) } });
   if (!bundle.posts.length) {
     log.info(`Data posts: too few ${code} rows in the window (${bundle.rows}) — not writing a page of thin numbers.`);
     if (!DRY_RUN && !FORCE) store.setSetting(settingFor(code), keyFor(code));
@@ -80,6 +87,8 @@ for (const { code, bundle, pick } of built) {
     }
   }
   file = writeDataPage(buildDataPage(bundle, { generatedAt: Date.now(), pick, cards }), `${keyFor(code)}-${code}`);
+  const spot = bundle.posts.find((p) => p.key === 'spotlight');
+  if (spot) store.setSetting(`${SPOT_SETTING}:${code}`, JSON.stringify([...spotlighted(code).filter((e) => e !== spot.stats.employer), spot.stats.employer].slice(-SPOT_KEEP)));
   /* A FORCED run does not consume the week's slot — the same rule as the
      roundup, for the same reason: a --force on Wednesday must not make the
      scheduled Wednesday skip itself. */

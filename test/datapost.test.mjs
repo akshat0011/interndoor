@@ -16,9 +16,10 @@ import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import {
   dataRows, dataPosts, pickOfWeek, dataPostDue, dataPostRegions, prettySkill,
-  employersPost, newcomersPost, queuePost, stipendsPost, timingPost, citiesPost, skillsPost,
+  employersPost, newcomersPost, queuePost, stipendsPost, timingPost, citiesPost, skillsPost, spotlightPost, chooseSpotlight,
   FORMATS, MIN_ROWS, MIN_COUNTED, WINDOW_DAYS,
 } from '../src/datapost.js';
+import { RECORD_MIN_POSTINGS } from '../src/pages.js';
 import { cardModel, cardId, MAX_ROWS } from '../src/datacard.js';
 import { buildDataPage } from '../src/postpage.js';
 import { plainText } from '../src/postgen.js';
@@ -58,7 +59,7 @@ for (let i = 0; i < 6; i++) put({ company: 'Valeo', location: 'Chennai, Tamil Na
 for (let i = 0; i < 5; i++) put({ company: 'Nvidia', location: 'Pune, Maharashtra, India', applicants: '5 applicants', firstSeen: NOW - (i + 1) * D, salaryText: '₹0', skills: [] });
 for (let i = 0; i < 4; i++) put({ company: 'Qualcomm', location: 'Gurgaon, Haryana, India', firstSeen: NOW - (i + 1) * D, ats: true, postedAt: NOW - 40 * D, applicants: '50 applicants', skills: ['python'] });   // a count on a careers-board row is never read
 for (const c of ['IBM', 'Oracle', 'Adobe', 'Intel']) put({ company: c, location: 'Noida, Uttar Pradesh, India', firstSeen: NOW - 2 * D, mode: '' });   // one each: newcomers with a single posting, no work mode stated
-put({ company: 'Nvidia', firstSeen: NOW - 45 * D });                                   // Nvidia is NOT a newcomer: a row before the window
+put({ company: 'Nvidia', firstSeen: NOW - 45 * D, postedAt: NOW - 60 * D });          // Nvidia is NOT a newcomer: a row before the window — and dated before tracking began
 put({ company: 'Amazon', firstSeen: NOW - 40 * D });                                   // outside the window, on the board before it
 const REFUSED = [
   put({ company: 'Siemens', isTech: 0 }),
@@ -182,15 +183,49 @@ console.log('\n== 7. what they ask for ==');
   ok('too few with skills → nothing', skillsPost({ ...data, rows: data.rows.filter((r) => r.employer === 'Nvidia' || r.employer === 'Siemens') }, cfg) === null);
 }
 
+console.log('\n== 8. one employer\'s hiring record ==');
+{
+  ok('the busiest employer in the window is chosen', chooseSpotlight(data) === 'Siemens');
+  ok('unless already spotlighted — then the next', chooseSpotlight(data, { exclude: ['siemens'] }) === 'Microsoft' && chooseSpotlight(data, { exclude: ['Siemens', 'Microsoft'] }) === 'Google');
+  ok(`an employer under ${RECORD_MIN_POSTINGS} all-time postings is never the subject`, chooseSpotlight(data, { exclude: ['Siemens', 'Microsoft', 'Google', 'Valeo', 'Nvidia', 'Qualcomm'] }) === null);
+  const pub = new Set(data.rows.filter((r) => r.employer === 'Siemens').slice(0, 3).map((r) => r.id));
+  const p = spotlightPost(data, cfg, { employer: 'Siemens', publishedIds: pub });
+  ok('composes', !!p && p.key === 'spotlight' && p.title === 'Employer spotlight: Siemens');
+  ok('the count is every Siemens internship on the board, refused rows excluded', p.stats.postings === 12);
+  ok('months sum to the postings, zeros drawn', Object.values(p.stats.months).reduce((a, b) => a + b, 0) === 12 && Object.keys(p.stats.months).length >= 1 && Object.keys(p.stats.months).at(-1) === '2026-09');
+  ok('the last month is "so far"', /Sep 12 so far/.test(p.post) && !/Sept/.test(p.post));
+  ok('the commonest title and the number of distinct ones', p.stats.topTitle.title === 'Software Engineer Intern' && p.stats.topTitle.times === 12 && p.stats.titles === 1 && /1 distinct title in all/.test(p.post));
+  ok('cities are folded and counted', p.stats.cities[0].city === 'Bengaluru' && p.stats.cities[0].postings === 12);
+  ok('pay disclosure: none of the 12', p.stats.stated === 0 && /None of the 12 stated a stipend/.test(p.post));
+  ok('standing counts employers with at least as many postings', p.stats.standing.within === 1 && p.stats.standing.of === 11 && /One of the 10 most active[^.]*out of 11\./.test(p.post));
+  ok('open now is the published set', p.stats.open === 3 && /^3 open right now/m.test(p.post) && p.card.band === '3 OPEN NOW.');
+  ok('the link is the employer\'s own hub', /https:\/\/interndoor\.com\/companies\/siemens\?utm_source=linkedin&utm_medium=social&utm_campaign=data-post&utm_content=spotlight/.test(p.post));
+  ok('headline numbers derivable', derivable(p));
+  ok('no source named', noSources(p.post));
+  const g = spotlightPost(data, cfg, { employer: 'Google', publishedIds: null });
+  ok('Google: all 7 stated, with the median monthly figure', g.stats.stated === 7 && g.stats.medianMonthlyInr === 40000 && /All 7 stated a stipend — where monthly, the middle figure was ₹40,000/.test(g.post));
+  ok('with no published set the "open now" line is absent, not zero', g.stats.open === null && !/open right now/.test(g.post) && g.card.band === 'ON THE BOARD.');
+  ok('the card is the months', g.card.rows.every((r) => /^(Jul|Aug|Sep)/.test(r.label)));
+  ok('no employer → nothing', spotlightPost(data, cfg, { employer: null }) === null && spotlightPost(data, cfg, { employer: 'IBM' }) === null);
+  /* Nvidia: five September rows and one dated 18 Jul, before the board's
+     first sighting on 3 Aug. August is drawn as a zero; the July posting is
+     counted and SAID, never drawn — the hub's Jump Trading rule. */
+  const nv = spotlightPost(data, cfg, { employer: 'Nvidia' });
+  ok('a month with nothing is drawn as 0', nv.stats.months['2026-08'] === 0 && nv.stats.months['2026-09'] === 5 && /Aug 0 · Sep 5 so far/.test(nv.post));
+  ok('a posting dated before tracking is counted and said, not drawn', nv.stats.before === 1 && nv.stats.postings === 6 && /and 1 posted before we began tracking/.test(nv.post));
+  ok('the card carries the zero month too', nv.card.rows.map((r) => `${r.label}=${r.value}`).join() === 'Aug=0,Sep so far=5');
+}
+
 console.log('\n== all together, and the pick ==');
 {
   const b = dataPosts(store, cfg, { region: 'IN', now: NOW });
   ok('every format composed, in FORMATS order', b.posts.map((p) => p.key).join() === FORMATS.join());
+  ok('the spotlight honours the exclude list and the published set', dataPosts(store, cfg, { region: 'IN', now: NOW, spotlight: { exclude: ['Siemens'], publishedIds: new Set() } }).posts.find((p) => p.key === 'spotlight').stats.employer === 'Microsoft');
   ok('every post ends with a UTM-tagged interndoor link or hashtags and names no source', b.posts.every((p) => noSources(p.post) && /utm_campaign=data-post/.test(p.post)));
   ok('no post is over LinkedIn\'s cut', b.posts.every((p) => p.post.length < 1300), b.posts.map((p) => p.post.length).join());
   ok('nothing renders undefined or NaN', b.posts.every((p) => !/undefined|NaN|\[object/.test(p.post + p.title + JSON.stringify(p.card))));
-  const picks = new Set([0, 1, 2, 3, 4, 5, 6].map((w) => pickOfWeek(b.posts, NOW + w * 7 * D)));
-  ok('the pick rotates through every format over seven weeks', picks.size === FORMATS.length);
+  const picks = new Set(FORMATS.map((_, w) => pickOfWeek(b.posts, NOW + w * 7 * D)));
+  ok(`the pick rotates through every format over ${FORMATS.length} weeks`, picks.size === FORMATS.length);
   ok('and is deterministic', pickOfWeek(b.posts, NOW) === pickOfWeek(b.posts, NOW + H));
   ok('no posts → no pick', pickOfWeek([], NOW) === null);
 }
@@ -241,6 +276,7 @@ console.log('\n== wired in ==');
   const conf = JSON.parse(read('config.json')).postQueue.dataPost;
   ok('config: on, India, Wednesday 10:00', conf.enabled === true && conf.regions.join() === 'IN' && conf.weekday === 3 && conf.hour === 10);
   const tool = read('bin/datapost.js');
+  ok('the spotlight subject is remembered per board and rotated', /dataPostSpotlighted/.test(tool) && /spotlight: \{ exclude: spotlighted\(code\), publishedIds: publishedIdsFor\(code\) \}/.test(tool) && /\.slice\(-SPOT_KEEP\)/.test(tool));
   ok('--force never consumes the week', /if \(!FORCE\) store\.setSetting\(settingFor\(code\), keyFor\(code\)\);/.test(tool));
   ok('cards are rendered before the page links them, and a failed card costs only its image', tool.indexOf('renderDataCard(') < tool.indexOf('writeDataPage(') && /catch \(err\) \{\s*log\.warn\(`Data post card/.test(tool));
   ok('a thin week marks itself done on a scheduled run only', /if \(!DRY_RUN && !FORCE\) store\.setSetting\(settingFor\(code\), keyFor\(code\)\);\s*continue;/.test(tool));
