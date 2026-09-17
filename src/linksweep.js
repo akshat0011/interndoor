@@ -27,12 +27,20 @@
  * GENTLE. Requests to one host are spaced (`HOST_GAP_MS`); the run is capped
  * (`PER_RUN`) so a big backlog drains over days rather than hammering everyone
  * at once, and it shrinks on its own as dead links close.
+ *
+ * THE CAP ONLY WORKS BECAUSE THE ORDER ROTATES. `store.applyLinksToCheck`
+ * hands back the LEAST RECENTLY CHECKED rows, and `onChecked` stamps every row
+ * the sweep looks at. Ordered by age instead — as it was until 17 Sep 2026 —
+ * the daily 400 re-reads the newest rows for ever and never reaches the rest:
+ * 3,440 of 3,840 rows were unreachable, and all 115 dead links a full pass
+ * found were outside the window. A cap without a rotation is not a backlog
+ * draining slowly, it is a backlog never touched.
  */
 
 export const CONFIRM = 2;              // consecutive 404/410 before closing
 export const CONFIRM_GAP_MS = 3_000;   // between the two checks of one link
 export const HOST_GAP_MS = 1_200;      // between requests to the same host
-export const PER_RUN = 400;            // links checked per run
+export const PER_RUN = 800;            // links checked per run — see the note below
 export const TIMEOUT_MS = 20_000;
 export const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36';
 
@@ -78,6 +86,7 @@ export async function checkLink(url, { fetchImpl = fetch, timeoutMs = TIMEOUT_MS
 export async function sweepApplyLinks(rows, {
   check = (url) => checkLink(url),
   onClose = () => {},
+  onChecked = () => {},
   sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
   confirm = CONFIRM,
   confirmGapMs = CONFIRM_GAP_MS,
@@ -105,6 +114,9 @@ export async function sweepApplyLinks(rows, {
       else break;   // one "not gone" is enough to spare it; no need to re-poll
     }
     checked += 1;
+    /* Recorded per row, not once at the end: a run killed half way through
+       must not re-check the same rows tomorrow and stall the rotation. */
+    onChecked(row);
 
     if (dead >= Math.max(1, confirm)) {
       closed += 1;

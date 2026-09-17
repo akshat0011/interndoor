@@ -43,12 +43,15 @@ if (!rows.length) {
 
 const result = await sweepApplyLinks(rows, {
   log,
+  /* Stamped whatever the verdict, so the next run moves on to the rows this
+     one did not reach. Skipped on a dry run, which writes nothing. */
+  onChecked: DRY_RUN ? undefined : (row) => store.markLinkChecked([row.job_id]),
   onClose: DRY_RUN
     ? (row, note) => log.info(`[dry-run] would close ${row.company} — "${row.title}" (${note}).`)
     : (row, note) => store.markClosed(row.job_id, `apply link dead: ${note} (${new Date().toISOString().slice(0, 10)})`),
 });
 
-log.ok(`Link sweep: checked ${result.checked} of ${rows.length}, ${result.alive} alive, ${result.unknown} unverified, `
+log.ok(`Link sweep: checked ${result.checked} of ${rows.length} (least recently checked first), ${result.alive} alive, ${result.unknown} unverified, `
   + `${result.closed} closed${DRY_RUN ? ' (dry run — nothing written)' : ' — the next publish stubs them'}.`);
 
 if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
