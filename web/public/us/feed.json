@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-summer-2027-4466259217",
+      "url": "https://interndoor.com/us/jobs/johnson-controls-power-electronics-intern-summer-2027-4466259217",
+      "title": "Power Electronics Intern (Summer 2027) — Johnson Controls",
+      "content_text": "Company: Johnson Controls · Location: New Freedom, PA · Duration: Summer 2027\n• Design and debug power electronics circuits\n• Select and evaluate components for modules\n• Perform testing and validation of performance\n• Maintain safe and organized work environment",
+      "date_published": "2026-09-17T09:52:37.348Z",
+      "authors": [
+        {
+          "name": "Johnson Controls"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-controls-controls-applications-intern-4466268088",
+      "url": "https://interndoor.com/us/jobs/johnson-controls-controls-applications-intern-4466268088",
+      "title": "Controls Applications Intern — Johnson Controls",
+      "content_text": "Company: Johnson Controls · Location: Glendale, WI\n• Develop and test control-related products under engineer guidance\n• Use Matlab/Simulink and Excel for system modeling and analysis\n• Work on HVAC systems and automation tools in a global team",
+      "date_published": "2026-09-17T09:52:07.823Z",
+      "authors": [
+        {
+          "name": "Johnson Controls"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-systems-engineering-intern-autonomous-maritime-platforms-4467503528",
+      "url": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-systems-engineering-intern-autonomous-maritime-platforms-4467503528",
+      "title": "Systems Engineering Intern - Autonomous Maritime Platforms — General Dynamics Mission Systems",
+      "content_text": "Company: General Dynamics Mission Systems · Location: Quincy, MA\n• Design and test autonomous systems for maritime operations\n• Work with defense contractors on classified projects\n• Based in Quincy, MA for full-time role",
+      "date_published": "2026-09-17T09:51:42.185Z",
+      "authors": [
+        {
+          "name": "General Dynamics Mission Systems"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/panther-life-sciences-r-and-d-engineer-internship-4468392285",
       "url": "https://interndoor.com/us/jobs/panther-life-sciences-r-and-d-engineer-internship-4468392285",
       "title": "R&D Engineer Internship — Panther Life Sciences",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Heads Up"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4468271460",
-      "url": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4468271460",
-      "title": "Summer Internship - Digital/AI Transformation — Airbus",
-      "content_text": "Company: Airbus · Location: Herndon, VA\n• Support change initiatives with cross-functional teams in digital and AI transformation\n• Leverage computer science and AI knowledge to align technical and business strategies\n• Plan and facilitate workshops, manage communications, and create presentation materials",
-      "date_published": "2026-09-16T18:47:16.038Z",
-      "authors": [
-        {
-          "name": "Airbus"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-baw-development-winter-spring-co-op-jan-june-27-4468266450",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-baw-development-winter-spring-co-op-jan-june-27-4468266450",
-      "title": "BAW Development Winter/Spring Co-Op (Jan-June '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA\n• Build finite element and circuit models with engineers\n• Analyze device performance data and propose design improvements\n• Work on BAW resonator development with cross-functional teams",
-      "date_published": "2026-09-16T18:37:37.638Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-baw-development-summer-fall-co-op-june-dec-27-4468259527",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-baw-development-summer-fall-co-op-june-dec-27-4468259527",
-      "title": "BAW Development Summer/Fall Co-Op (June-Dec '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA\n• Build finite element and circuit models with engineers\n• Analyze device performance data and statistics\n• Design advanced BAW resonators using physics and data models",
-      "date_published": "2026-09-16T18:32:04.871Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
         }
       ]
     }
