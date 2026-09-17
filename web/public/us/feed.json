@@ -6,6 +6,54 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/stripe-software-engineer-early-career-immediate-start-ats-greenhouse-stripe-8212508",
+      "url": "https://interndoor.com/us/jobs/stripe-software-engineer-early-career-immediate-start-ats-greenhouse-stripe-8212508",
+      "title": "Software Engineer, Early Career — Immediate Start — Stripe",
+      "content_text": "Company: Stripe · Location: San Francisco, Seattle, New York · Duration: 18 months\n• Build and maintain financial infrastructure for global businesses\n• Work with Java, Ruby, JavaScript, Scala, and Go\n• Collaborate on large-scale systems with mentorship support",
+      "date_published": "2026-09-17T23:28:54.000Z",
+      "authors": [
+        {
+          "name": "Stripe"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-r-and-d-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7996576003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-r-and-d-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7996576003",
+      "title": "R&D Engineering Intern Summer 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Albuquerque, NM · Duration: Summer 2027\n• Support development of phase-change material process for solar array temperature control\n• Work with R&D team on silicon array performance and manufacturability\n• Collaborate on real projects with mentorship and regular feedback",
+      "date_published": "2026-09-17T23:23:13.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-r-and-d-engineering-intern-spring-2027-ats-greenhouse-rocketlab-7996578003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-r-and-d-engineering-intern-spring-2027-ats-greenhouse-rocketlab-7996578003",
+      "title": "R&D Engineering Intern Spring 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Albuquerque, NM · Duration: Spring 2027\n• Support R&D team in developing process for phase-change material to regulate solar array temperature\n• Work with engineers on silicon array projects for constellations and other programs\n• Collaborate on real-world engineering challenges with fast-paced, high-performing team",
+      "date_published": "2026-09-17T23:22:06.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/rocket-lab-optical-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7992102003",
+      "url": "https://interndoor.com/us/jobs/rocket-lab-optical-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7992102003",
+      "title": "Optical Engineering Intern Summer 2027 — Rocket Lab",
+      "content_text": "Company: Rocket Lab · Location: Tucson, AZ · Duration: Summer 2027\n• Build test setups and analyze optical data for real-world applications\n• Use Python and CAD tools to support optical system development\n• Work full-time on-site for 12 weeks in Tucson, AZ",
+      "date_published": "2026-09-17T23:21:05.000Z",
+      "authors": [
+        {
+          "name": "Rocket Lab"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/walt-disney-imagineering-wdi-show-control-software-intern-spring-2027-4468826812",
       "url": "https://interndoor.com/us/jobs/walt-disney-imagineering-wdi-show-control-software-intern-spring-2027-4468826812",
       "title": "WDI Show Control Software Intern, Spring 2027 — Walt Disney Imagineering",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459876923",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-software-engineer-4459876923",
-      "title": "Intern, Software Engineer — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Northampton, MA\n• Develop embedded software for real-time control of tactical radio equipment\n• Work with C++, C#, Java, Python, and real-time OS like VxWorks and QNX\n• Collaborate on system design, testing, and documentation across the software lifecycle",
-      "date_published": "2026-09-17T18:21:30.324Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4466605395",
-      "url": "https://interndoor.com/us/jobs/airbus-summer-internship-digital-ai-transformation-4466605395",
-      "title": "Summer Internship - Digital/AI Transformation — Airbus",
-      "content_text": "Company: Airbus · Location: Herndon, VA\n• Support change initiatives with cross-functional teams in digital and AI transformation\n• Leverage computer science and AI knowledge to align technical and business strategies\n• Plan workshops, manage communications, and present to leadership on change progress",
-      "date_published": "2026-09-17T18:19:50.360Z",
-      "authors": [
-        {
-          "name": "Airbus"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990350003",
-      "url": "https://interndoor.com/us/jobs/rocket-lab-test-engineering-intern-summer-2027-ats-greenhouse-rocketlab-7990350003",
-      "title": "Test Engineering Intern Summer 2027 — Rocket Lab",
-      "content_text": "Company: Rocket Lab · Location: Stennis Space Center, MS · Duration: Summer 2027\n• Support engine rebuilds, test readiness, and hardware swaps\n• Use SolidWorks, MATLAB, SiemensNX, Python, and Java\n• Work full-time on-site for 12+ weeks starting May/June 2027",
-      "date_published": "2026-09-17T18:18:54.000Z",
-      "authors": [
-        {
-          "name": "Rocket Lab"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-architecture-2027-4466606438",
-      "url": "https://interndoor.com/us/jobs/nvidia-ai-phd-research-intern-architecture-2027-4466606438",
-      "title": "PhD Research Intern, Architecture – 2027 — NVIDIA AI",
-      "content_text": "Company: NVIDIA AI · Location: Seattle, WA\n• Explore new GPU and data-center architecture concepts, including memory systems and accelerators\n• Build simulators, prototypes, and tools to test architecture ideas and co-design hardware-software solutions\n• Collaborate with researchers and product teams to shape future NVIDIA systems and technologies",
-      "date_published": "2026-09-17T18:17:55.128Z",
-      "authors": [
-        {
-          "name": "NVIDIA AI"
         }
       ]
     }
