@@ -140,5 +140,63 @@ console.log('\n== wired in ==');
   ok('--closed exists as a hand path and does not touch is_tech', /if \(JOB_ID && CLOSED\)/.test(rm) && /SET closed_at = \?, closed_reason = \?/.test(rm) && /is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL/.test(rm));
 }
 
+console.log('\n== the ROTATION: least recently checked first, or the cap covers nothing ==');
+{
+  const s = new Store(':memory:');
+  const cols = s.db.prepare('PRAGMA table_info(jobs)').all().map((c) => c.name);
+  ok('link_checked_at exists', cols.includes('link_checked_at'));
+  const put = (id, seen, checkedAt) => s.db.prepare(
+    'INSERT INTO jobs (job_id, title, company, is_tech, first_seen_at, last_seen_at, apply_url, link_checked_at) VALUES (?,?,?,1,?,?,?,?)',
+  ).run(id, 'R', 'Acme', seen, seen, `https://acme.com/${id}`, checkedAt);
+  /* 'newest-never' is the NEWEST row and has never been checked; 'oldest-done'
+     is the OLDEST and was checked a moment ago. Ordered by age — the bug — the
+     newest row comes first and the stale one is never reached. */
+  /* Inserted OLDEST FIRST on purpose: rowid order then disagrees with the
+     first_seen_at tie-break, so dropping that tie-break is observable. With
+     them inserted newest-first, SQLite returns rowid order and the mutation
+     that deletes the tie-break passes. */
+  put('older-never', 2000, null);
+  put('newest-never', 9000, null);
+  put('done-long-ago', 8000, 1000);
+  put('done-recently', 7000, 5000);
+  const order = s.applyLinksToCheck(0).map((r) => r.job_id);
+  ok('never-checked rows come FIRST, then the least recently checked',
+    order.join() === 'newest-never,older-never,done-long-ago,done-recently', order.join());
+  /* THE REGRESSION ITSELF: with only one slot, the sweep must spend it on a row
+     it has never looked at — not re-read the newest row again. */
+  ok('a one-row budget goes to an unchecked row, not the newest',
+    s.applyLinksToCheck(0, { limit: 1 })[0].job_id === 'newest-never');
+  s.markLinkChecked(['newest-never', 'older-never'], 6000);
+  ok('markLinkChecked stamps them, and they fall to the back',
+    s.applyLinksToCheck(0).map((r) => r.job_id).join() === 'done-long-ago,done-recently,newest-never,older-never');
+  ok('marking an unknown id changes nothing', s.markLinkChecked(['nope']) === 0 && s.markLinkChecked([]) === 0);
+
+  const src = read('src/store.js');
+  ok('the query orders by checked-time, never by age alone',
+    /ORDER BY link_checked_at IS NOT NULL, link_checked_at ASC/.test(src));
+}
+
+console.log('\n== every row checked is stamped, not only the ones that close ==');
+{
+  const rows = [
+    { job_id: 'dead', company: 'A', title: 'R', apply_url: 'https://a.com/dead' },
+    { job_id: 'live', company: 'B', title: 'R', apply_url: 'https://b.com/ok' },
+    { job_id: 'block', company: 'C', title: 'R', apply_url: 'https://c.com/waf' },
+  ];
+  const net = fakeNet({ 'https://a.com/dead': [404, 404], 'https://b.com/ok': 200, 'https://c.com/waf': 403 });
+  const stamped = [];
+  const r = await sweepApplyLinks(rows, {
+    check: (u) => checkLink(u, { fetchImpl: net.fetchImpl }),
+    onChecked: (row) => stamped.push(row.job_id),
+    sleep: async () => {}, hostGapMs: 1, confirmGapMs: 1,
+  });
+  ok('onChecked fires for the alive and bot-blocked rows too, not just the closed one',
+    stamped.sort().join() === 'block,dead,live', stamped.join());
+  ok('once per row, never once per request', stamped.length === r.checked);
+  const runner = read('bin/link-sweep.js');
+  ok('the runner stamps every checked row', /onChecked:[\s\S]{0,80}store\.markLinkChecked/.test(runner));
+  ok('…and a dry run stamps nothing', /onChecked: DRY_RUN \? undefined/.test(runner));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

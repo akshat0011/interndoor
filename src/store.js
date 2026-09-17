@@ -365,6 +365,15 @@ export class Store {
        * by `npm run remove --job --closed`. */
       ['closed_at', 'INTEGER'],
       ['closed_reason', 'TEXT'],
+      /* When the dead-link sweep last LOOKED at this row's apply link, set for
+       * every row it checks and not only the ones it closes. It exists to order
+       * the sweep: without it `applyLinksToCheck` ordered by `first_seen_at
+       * DESC`, so the daily 400 re-checked the NEWEST rows every day — rows
+       * under two days old, which are the least likely to be dead — and 3,440
+       * of 3,840 eligible rows were never checked at all. Measured 17 Sep 2026:
+       * all 115 links a full manual pass found dead were outside that window,
+       * so the scheduled sweep would have found NONE of them. */
+      ['link_checked_at', 'INTEGER'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);
@@ -1501,14 +1510,34 @@ export class Store {
    * so a capped sweep checks the freshest.
    */
   applyLinksToCheck(sinceMs, { limit = 500 } = {}) {
+    /* LEAST RECENTLY CHECKED FIRST — the whole reason link_checked_at exists.
+     * Measured 17 Sep 2026: only the choice of link_checked_at over
+     * first_seen_at is load-bearing. SQLite already sorts NULLs first under
+     * ASC, so the IS NOT NULL term is explicitness rather than behaviour, and
+     * the first_seen_at tie-break is unobservable on real data — it is kept so
+     * that rows stamped in the SAME millisecond have a defined order, which the
+     * LIMIT boundary needs, rather than oscillating between runs. */
     return this.db.prepare(`
       SELECT job_id, company, title, apply_url FROM jobs
       WHERE is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL
         AND first_seen_at >= ?
         AND apply_url IS NOT NULL AND apply_url <> ''
         AND apply_url NOT LIKE '%linkedin.com%'
-      ORDER BY first_seen_at DESC LIMIT ?
+      ORDER BY link_checked_at IS NOT NULL, link_checked_at ASC, first_seen_at DESC
+      LIMIT ?
     `).all(sinceMs, limit);
+  }
+
+  /** Record that the sweep looked at these rows, whatever the verdict. Called
+   *  for every row checked — a row only marked when it CLOSES would be
+   *  re-checked for ever, which is the bug this column exists to fix. */
+  markLinkChecked(jobIds, at = Date.now()) {
+    const ids = (Array.isArray(jobIds) ? jobIds : [jobIds]).filter(Boolean);
+    if (!ids.length) return 0;
+    const stmt = this.db.prepare('UPDATE jobs SET link_checked_at = ? WHERE job_id = ?');
+    let n = 0;
+    for (const id of ids) n += stmt.run(at, id).changes;
+    return n;
   }
 
   recentJobs(sinceMs, ats = null) {
