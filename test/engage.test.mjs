@@ -134,6 +134,12 @@ console.log('\n== a seen card recedes, never through opacity (§15) ==');
   ok('it recedes through the background', seenRules.some((r) => /background/.test(r)));
   ok('the header is styled', /\.since-bar\s*\{/.test(css));
   ok('and the prompt', /\.nudge\s*\{/.test(css) && /\.nudge:not\(\.is-up\)/.test(css));
+  const nudgeRule = (css.match(/\.nudge\s*\{([^}]*)\}/) || [])[1] || '';
+  ok('the prompt is a centred dialog, not a bottom sheet', /position:\s*fixed/.test(nudgeRule) && /top:\s*50%/.test(nudgeRule) && !/bottom:/.test(nudgeRule));
+  ok('behind a backdrop', /\.nudge-veil\s*\{[^}]*inset:\s*0/.test(css));
+  ok('the page does not scroll under it', /html\.nudge-open\s*\{[^}]*overflow:\s*hidden/.test(css));
+  const actRules = [...css.matchAll(/\.nudge-a[^{]*\{([^}]*)\}/g)].map((m) => m[1]);
+  ok('the channel buttons never recede by opacity either', actRules.length >= 1 && actRules.every((r) => !/opacity/.test(r)));
 }
 
 console.log('\n== nudgeDue: once, then leave them alone ==');
@@ -172,14 +178,69 @@ console.log('\n== channelsFromPage: this board\'s channels, never another\'s =='
       'http://t.me/interndoor',
     ] })], null).length === 0);
   ok('duplicates collapse', channelsFromPage([board, board], null).length === 2);
+  /* A generated page's channels arrive as plain hrefs read off its alerts
+     page, and go through the SAME host test as a sameAs entry. */
+  const viaAlerts = channelsFromPage([], '/api/subscribe', ['https://t.me/interndoor', 'https://whatsapp.com/channel/abc', 'https://www.instagram.com/interndoorin/']);
+  ok('alerts-page links are accepted', viaAlerts.map((c) => c.kind).join() === 'whatsapp,telegram,email', viaAlerts.map((c) => c.kind).join());
+  const lookalikes = channelsFromPage([], null, ['https://evil.example/t.me/x', 'https://evil.example/whatsapp.com/channel/y', 'http://t.me/interndoor', 'https://t.me.evil.example/x',
+    /* the shape only an ANCHOR refuses: the real host embedded later in a foreign URL */
+    'https://evil.example/go?to=https://t.me/interndoor', 'https://evil.example/go?to=https://whatsapp.com/channel/y']);
+  ok('and lookalikes are refused by that route too', lookalikes.length === 0, JSON.stringify(lookalikes));
+  ok('sameAs and alerts links merge without duplicates', channelsFromPage([board], null, ['https://t.me/interndoor']).filter((c) => c.kind === 'telegram').length === 1);
 }
 
 console.log('\n== the prompt is one click per event, and the events are the counter\'s ==');
 {
-  const show = lift(engage, 'function show()', '\n  }', 'show');
+  const show = lift(engage, 'function show(list)', '\n  }', 'show');
   ok('a channel click is remembered as accepted', /remember\('accepted'\)/.test(show));
   ok('and counted by channel', /count\('nudge-' \+ c\.kind\)/.test(show));
-  ok('dismissal is remembered and counted', /remember\('dismissed'\)[\s\S]*count\('nudge-dismiss'\)/.test(show));
+  const dismissFn = lift(engage, 'function dismiss()', '\n  }', 'dismiss');
+  ok('dismissal is remembered and counted', /remember\('dismissed'\)[\s\S]*count\('nudge-dismiss'\)/.test(dismissFn));
+  ok('the cross dismisses', /x\.addEventListener\('click', dismiss\)/.test(show));
+  /* Must be answered: the backdrop is not a way out. A click handler on the
+     veil, or a click-to-close on the box, would make it the sheet again. */
+  ok('the backdrop has NO click handler', !/veil\.addEventListener/.test(show) && !/veil\.onclick/.test(engage));
+  const keydownFn = lift(engage, 'function keydown(e)', '\n  }', 'keydown');
+  ok('Escape is the cross', /e\.key === 'Escape'[\s\S]*dismiss\(\)/.test(keydownFn));
+  ok('Tab is trapped inside the dialog', /e\.key !== 'Tab'/.test(keydownFn) && /shiftKey/.test(keydownFn) && /first\.focus\(\)/.test(keydownFn) && /last\.focus\(\)/.test(keydownFn));
+  ok('the key handler is armed on open and disarmed on close',
+    /document\.addEventListener\('keydown', keydown, true\)/.test(show) && /document\.removeEventListener\('keydown', o\.keydown, true\)/.test(engage));
+  ok('it is a dialog to assistive tech', /setAttribute\('role', 'dialog'\)/.test(show) && /setAttribute\('aria-modal', 'true'\)/.test(show) && /aria-labelledby/.test(show));
+  ok('focus lands on the first channel', /querySelector\('\.nudge-a'\)[\s\S]*first\.focus\(\)/.test(show));
+  /* Comments are prose and prose is not markup (§1): strip them before
+     asking what the dialog RENDERS. */
+  const code = engage.replace(/\/\*[\s\S]*?\*\//g, '');
+  ok('no eyebrow and no footer line', !/nudge-eye/.test(code) && !/nudge-foot/.test(code) && !/'[^']*After you apply[^']*'/i.test(code) && !/'[^']*Asked once[^']*'/i.test(code));
+  ok('the headline is B', /'Next time, '/.test(show) && /'beat the queue\.'/.test(show));
+
+  /* The email row posts what the signup band posts, to the same endpoint,
+     and only a 200 {ok:true} counts as a subscription. */
+  const emailFn = lift(engage, 'function emailForm(c)', '\n  }', 'emailForm');
+  ok('email posts to the shared endpoint', /SUBSCRIBE_URL = '\/api\/subscribe'/.test(engage) && /channelsFromPage\(lds, SUBSCRIBE_URL\)/.test(engage));
+  ok('with the address, the board and the empty honeypot',
+    /JSON\.stringify\(\{ email: email, region: region\(\), company: '' \}\)/.test(emailFn));
+  ok('success alone is accepted and counted', /if \(r\.ok\) \{[\s\S]*remember\('accepted'\)[\s\S]*count\('nudge-' \+ c\.kind\)/.test(emailFn));
+  ok('and only then', emailFn.split("remember('accepted')").length === 2);
+  ok('failure reads the endpoint\'s own words back', /msg\.textContent = r\.error \|\|/.test(emailFn));
+  ok('the address is never sent anywhere else', (emailFn.match(/fetch\(/g) || []).length === 1 && /fetch\(c\.url,/.test(emailFn));
+
+  /* A generated page asks its alerts page for the channels, once, with a
+     ceiling, and never blocks the prompt on a bad connection. */
+  const resolveFn = lift(engage, 'function resolveChannels()', '\n  }', 'resolveChannels');
+  ok('the board answers from its own markup without a request', /if \(direct\.length > 1\) \{ pageChannels = Promise\.resolve\(direct\)/.test(resolveFn));
+  ok('a generated page reads the alerts page it already links', /querySelector\('a\[href\$="\/alerts"\]'\)/.test(resolveFn) && /fetch\(href, \{ credentials: 'same-origin' \}\)/.test(resolveFn));
+  ok('and only the channel cards on it', /querySelectorAll\('a\.chan\[href\]'\)/.test(resolveFn));
+  ok('behind a deadline, falling back to email alone', /Promise\.race\(\[fetched, deadline\]\)/.test(resolveFn) && /CHANNELS_FETCH_MS = 2500/.test(engage) && /\.catch\(function \(\) \{ return \[\]; \}\)/.test(resolveFn));
+  ok('resolved once per page', /if \(pageChannels\) return pageChannels;/.test(resolveFn));
+  const onApplyFn = lift(engage, 'function onApply()', '\n  }', 'onApply');
+  ok('the delay and the fetch overlap rather than add', /resolveChannels\(\)\.then/.test(onApplyFn) && /SHOW_DELAY_MS - \(Date\.now\(\) - started\)/.test(onApplyFn));
+
+  /* The subline names only the channels this page offers. */
+  const sublineFn = new Function(`${lift(engage, 'function subline(list)', '\n  }', 'subline')}; return subline;`)();
+  const w = { kind: 'whatsapp' }, t = { kind: 'telegram' }, m = { kind: 'email' };
+  ok('India: WhatsApp or Telegram', /no signup for WhatsApp or Telegram\.$/.test(sublineFn([w, t, m])));
+  ok('US: Telegram only', /no signup for Telegram\.$/.test(sublineFn([t, m])) && !/WhatsApp/.test(sublineFn([t, m])));
+  ok('UK: no free-channel clause at all', !/no signup/.test(sublineFn([m])) && /see them\.$/.test(sublineFn([m])));
   const onApply = lift(engage, 'function onApply()', '\n  }', 'onApply');
   ok('every Apply is counted', /count\('apply'\)/.test(onApply));
   ok('at most once a session', /sessionStorage\.getItem\(SESSION_KEY\)/.test(onApply) && /if \(shownThisSession\) return/.test(onApply));
