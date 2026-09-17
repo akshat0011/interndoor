@@ -176,6 +176,12 @@
       "source": "/uk/companies/boeing-india",
       "destination": "/uk/companies/boeing",
       "permanent": true
+    },
+    {
+      "source": "/companies/s-and-p-global",
+      "has": [{ "type": "query", "key": "utm_campaign", "value": "data-posts" }],
+      "destination": "/?utm_source=linkedin&utm_medium=social&utm_campaign=data-posts&utm_content=top10",
+      "permanent": false
     }
   ]
 }
