@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-16</lastmod><priority>1.0</priority></url>
-  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-16</lastmod><priority>0.4</priority></url>
-  <url><loc>https://interndoor.com/contact</loc><lastmod>2026-09-16</lastmod><priority>0.3</priority></url>
-  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/</loc><lastmod>2026-09-17</lastmod><priority>1.0</priority></url>
+  <url><loc>https://interndoor.com/companies</loc><lastmod>2026-09-17</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/alerts</loc><lastmod>2026-09-17</lastmod><priority>0.4</priority></url>
+  <url><loc>https://interndoor.com/contact</loc><lastmod>2026-09-17</lastmod><priority>0.3</priority></url>
+  <url><loc>https://interndoor.com/report</loc><lastmod>2026-09-17</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/jobs/mizuho-information-technology-help-desk-apprentice-4435088289</loc><lastmod>2026-09-17</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/signzy-quality-assurance-intern-4466225709</loc><lastmod>2026-09-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/siemens-graduate-trainee-engineer-4466226120</loc><lastmod>2026-09-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/twilio-software-engineer-intern-january-12th-start-23-weeks-ats-greenhouse-twilio-8190889</loc><lastmod>2026-09-16</lastmod><priority>0.8</priority></url>
@@ -280,7 +281,6 @@
   <url><loc>https://interndoor.com/jobs/harman-india-intern-student-4452577911</loc><lastmod>2026-08-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/cloudsek-cybersecurity-intern-offensive-security-4452572687</loc><lastmod>2026-08-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/simple-energy-intern-controls-4454704200</loc><lastmod>2026-08-18</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/youtube-for-brands-data-management-intern-4452577016</loc><lastmod>2026-08-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/valeo-intern-ats-workday-valeo-wd3-valeo-jobs-req2026078500</loc><lastmod>2026-08-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/signzy-sre-intern-ats-keka-signzy-133832</loc><lastmod>2026-08-17</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/decentro-software-developer-intern-ats-keka-decentro-26116</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
@@ -289,6 +289,7 @@
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/mizuho</loc><lastmod>2026-09-17</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/signzy</loc><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/siemens</loc><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/twilio</loc><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
@@ -413,7 +414,6 @@
   <url><loc>https://interndoor.com/companies/mondel-z-international</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ibm</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/nxp-semiconductors</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/mizuho</loc><lastmod>2026-08-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/amazon</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/times-internet</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/chegg-india</loc><lastmod>2026-08-24</lastmod><priority>0.6</priority></url>
@@ -439,7 +439,6 @@
   <url><loc>https://interndoor.com/companies/quest-global</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/roche</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/argmac</loc><lastmod>2026-08-19</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/youtube-for-brands</loc><lastmod>2026-08-18</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/decentro</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/stripe</loc><lastmod>2026-08-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/hevo-data</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
