@@ -1187,46 +1187,91 @@ html[data-boot] .boot-part {
 .row.seen .co { color: var(--ink-2); }
 
 /* ---------- the channel prompt, once, after Apply ----------
-   A small sheet above the bottom edge, not a modal: the reader has a new tab
-   open and this is what waits for them when they come back to this one.
-   The same transition shape as the toast, and the same reason. */
+   A centred dialog over a blurred backdrop, asked once: the reader has a new
+   tab open and this is what waits for them when they come back to this one.
+   It has to be ANSWERED — a channel, or the cross. The backdrop is not a way
+   out, so it takes no pointer styling and no hover. Same fade shape as the
+   toast, and the same reason. Everything recedes by background, never opacity. */
+.nudge-veil {
+  position: fixed; inset: 0; z-index: 93;
+  background: rgba(6, 6, 7, .66);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: opacity .26s var(--snap);
+}
+.nudge-veil:not(.is-up) { opacity: 0; }
+html.nudge-open { overflow: hidden; }
 .nudge {
-  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 94;
+  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 94;
   width: min(560px, calc(100vw - 32px));
-  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--s3) var(--s4); align-items: center;
-  padding: 14px 44px 14px 18px;
-  background: var(--card-2); border: 1px solid var(--rule-2); border-radius: var(--r-2);
-  box-shadow: 0 18px 48px rgba(0,0,0,.45);
+  max-height: calc(100vh - 32px); overflow: auto;
+  padding: 30px 30px 26px;
+  background: var(--card-2); border: 1px solid var(--rule-2); border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(200,255,0,.08);
   color: var(--ink);
   transition: opacity .26s var(--snap), transform .26s var(--snap);
 }
-.nudge:not(.is-up) { opacity: 0; transform: translate(-50%, 14px); }
-.nudge-t { display: grid; gap: 2px; min-width: 0; }
-.nudge-t b { font-family: var(--ui); font-weight: 700; font-size: var(--t-body); line-height: 1.3; letter-spacing: -.01em; }
-.nudge-t span { font-size: var(--t-small); color: var(--ink-2); }
-.nudge-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-.nudge-a {
-  display: inline-flex; align-items: center; height: 34px; padding: 0 14px;
-  border-radius: 999px; border: 1px solid var(--rule-2); background: none;
-  color: var(--ink); text-decoration: none;
-  font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap;
-  transition: transform .14s var(--snap), border-color .16s, color .16s, background .16s;
+.nudge:not(.is-up) { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
+.nudge-h {
+  margin: 0 40px 10px 0;
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; letter-spacing: -.02em;
 }
-.nudge-a:active { transform: scale(.97); }
+.nudge-h em { font-style: normal; color: var(--live); }
+.nudge-p { margin: 0 0 22px; max-width: 46ch; font-size: var(--t-body); line-height: 1.45; color: var(--ink-15); }
+.nudge-acts { display: grid; gap: 10px; }
+.nudge-a {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; padding: 14px 16px; border-radius: 12px;
+  border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
+  text-decoration: none; text-align: left; cursor: pointer;
+  font-family: var(--ui); font-size: var(--t-body); font-weight: 700; letter-spacing: -.01em;
+  transition: transform .14s var(--snap), border-color .16s, background .16s;
+}
+.nudge-a:active { transform: scale(.985); }
+.nudge-a:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+.nudge-a small {
+  font-family: var(--mono); font-size: var(--t-micro); font-weight: 400;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap;
+}
+.nudge-k { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.nudge-k i {
+  width: 26px; height: 26px; flex: 0 0 26px; border-radius: 8px; display: grid; place-items: center;
+  font-style: normal; font-family: var(--mono); font-size: 11px; font-weight: 400;
+  background: rgba(255,255,255,.08);
+}
 .nudge-whatsapp { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+.nudge-whatsapp small { color: rgba(20,23,10,.72); }
+.nudge-whatsapp .nudge-k i { background: rgba(20,23,10,.14); }
+.nudge-form { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; align-items: center; }
+.nudge-form input {
+  min-width: 0; height: 48px; padding: 0 14px; border-radius: 12px;
+  border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
+  font-family: var(--ui); font-size: var(--t-body);
+}
+.nudge-form input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; }
+.nudge-send {
+  height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--live);
+  background: var(--live); color: var(--live-ink); cursor: pointer; white-space: nowrap;
+  font-family: var(--ui); font-size: var(--t-small); font-weight: 700;
+}
+.nudge-send[disabled] { cursor: default; background: var(--rule-2); border-color: var(--rule-2); color: var(--ink-2); }
+.nudge-msg { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: var(--t-small); color: var(--ink-2); }
+.nudge-msg.is-good { color: var(--live); }
+.nudge-msg.is-bad { color: var(--ink); background: var(--bg-2); border-radius: 8px; padding: 6px 10px; }
 .nudge-x {
-  position: absolute; top: 8px; right: 8px; width: 30px; height: 30px;
-  border: 0; border-radius: 999px; background: none; color: var(--ink-2);
+  position: absolute; top: 12px; right: 12px; width: 36px; height: 36px;
+  border: 1px solid var(--rule-2); border-radius: 999px; background: none; color: var(--ink-2);
   font-size: 20px; line-height: 1; cursor: pointer;
 }
 .nudge-x:hover, .nudge-x:focus-visible { color: var(--ink); background: var(--rule); outline: none; }
 @media (max-width: 560px) {
-  .nudge { grid-template-columns: minmax(0,1fr); padding-right: 40px; }
-  .nudge-acts { justify-content: flex-start; }
+  .nudge { padding: 24px 20px 20px; border-radius: 16px; }
+  .nudge-form { grid-template-columns: minmax(0,1fr); }
+  .nudge-a small { white-space: normal; text-align: right; }
 }
 @media (hover: hover) and (pointer: fine) {
-  .nudge-a:hover { border-color: var(--live); color: var(--live); }
-  .nudge-whatsapp:hover { color: var(--live-ink); filter: brightness(1.06); }
+  .nudge-a:hover { border-color: var(--live); }
+  .nudge-whatsapp:hover { filter: brightness(1.06); }
 }
 
 /* ---------- hover motion, gated ----------
