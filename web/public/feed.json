@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469172900",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469172900",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Gurugram, Haryana, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and integrations across enterprise applications\n• Design automated test frameworks for functional and end-to-end testing\n• Collaborate with global teams on AI-powered solutions and cloud platforms",
+      "date_published": "2026-09-18T15:22:38.527Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469167956",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469167956",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-18T15:21:59.965Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/haystackanalytics-intern-zoho-crm-developer-4467857268",
       "url": "https://interndoor.com/jobs/haystackanalytics-intern-zoho-crm-developer-4467857268",
       "title": "Intern - Zoho CRM Developer — HaystackAnalytics",
@@ -134,30 +158,6 @@
       "authors": [
         {
           "name": "Lexsi Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4467578294",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4467578294",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Gurugram, Haryana, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
-      "date_published": "2026-09-17T16:49:52.446Z",
-      "authors": [
-        {
-          "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4467587001",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4467587001",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
-      "date_published": "2026-09-17T16:49:29.666Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     },
