@@ -6,6 +6,42 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-2-4469244033",
+      "url": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-2-4469244033",
+      "title": "Associate Engineer - FrontEnd 2 — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years\n• Build responsive web interfaces with React and Next.js\n• Write clean code and unit tests for frontend and backend\n• Collaborate on agile teams with backend Node.js integration",
+      "date_published": "2026-09-18T21:38:59.164Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-4-4469235708",
+      "url": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-4-4469235708",
+      "title": "Associate Engineer - Backend 4 — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years\n• Write clean java code for high-performance applications\n• Collaborate with cross-functional teams on technical implementation\n• Support e-commerce features and system integrations",
+      "date_published": "2026-09-18T21:38:53.575Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-4469243020",
+      "url": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-4469243020",
+      "title": "Associate Engineer - Backend — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years\n• Write clean, scalable Java code for backend systems\n• Collaborate with cross-functional teams on technical implementation\n• Support eCommerce features and integrate with external systems",
+      "date_published": "2026-09-18T21:38:48.094Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/russell-investments-messaging-engineer-4443113160",
       "url": "https://interndoor.com/jobs/russell-investments-messaging-engineer-4443113160",
       "title": "Messaging Engineer — Russell Investments",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Mizuho"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/twilio-software-engineer-intern-january-12th-start-23-weeks-ats-greenhouse-twilio-8190889",
-      "url": "https://interndoor.com/jobs/twilio-software-engineer-intern-january-12th-start-23-weeks-ats-greenhouse-twilio-8190889",
-      "title": "Software Engineer Intern (January 12th start, 23 weeks) — Twilio",
-      "content_text": "Company: Twilio · Location: Remote - India · Duration: 6 months\n• Build and deploy real-time communication systems with low latency\n• Work on distributed systems and cloud infrastructure\n• Collaborate with global teams on core features and services",
-      "date_published": "2026-09-16T18:54:18.000Z",
-      "authors": [
-        {
-          "name": "Twilio"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727",
-      "url": "https://interndoor.com/jobs/speedcast-edge-network-engineering-internship-4448882727",
-      "title": "Edge Network Engineering Internship — Speedcast",
-      "content_text": "Company: Speedcast · Location: India\n• Assist with customer deployments of edge computing and SD-WAN platforms\n• Learn network routing, switching, and security fundamentals\n• Write automation scripts and document procedures under supervision",
-      "date_published": "2026-09-16T13:01:39.920Z",
-      "authors": [
-        {
-          "name": "Speedcast"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606",
-      "url": "https://interndoor.com/jobs/ge-aerospace-data-science-intern-4467998606",
-      "title": "Data Science Intern — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Bengaluru, Karnataka, India\n• Develop AI and generative AI solutions for customer experience and sales\n• Use Python, cloud platforms, and machine learning tools\n• Collaborate with mentors on real projects with business impact",
-      "date_published": "2026-09-16T12:35:40.563Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
         }
       ]
     }
