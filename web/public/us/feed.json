@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-jan-june-2027-group-05-59-4469234061",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-jan-june-2027-group-05-59-4469234061",
+      "title": "Cyber System Exploitation Co-Op (Jan - June 2027) - Group 05-59 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Analyze IoT device vulnerabilities and develop detection methods\n• Work with Python, Django, React, Linux, and Docker\n• Hybrid work option available for Jan-June 2027 term",
+      "date_published": "2026-09-18T19:21:00.091Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-re-jan-june-2027-group-05-59-4469227157",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-re-jan-june-2027-group-05-59-4469227157",
+      "title": "Cyber System Exploitation Co-Op RE (Jan - June 2027) - Group 05-59 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Reverse engineer malware and develop tools for analysis\n• Work with AI/ML to automate malware research\n• Build systems for large-scale malware analysis\n• Hybrid work possible for 6-month co-op",
+      "date_published": "2026-09-18T19:20:54.619Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-printed-circuit-board-designer-co-op-6-month-term-group-07-76-4469213684",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-printed-circuit-board-designer-co-op-6-month-term-group-07-76-4469213684",
+      "title": "Printed Circuit Board Designer Co-Op (6-month term) - Group 07-76 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Design and layout mixed-signal, high-speed digital, RF, and power PCBs for ground and space systems\n• Use Siemens Xpedition, Altium Designer, and AutoCAD for schematic capture and fabrication\n• Collaborate with mechanical, thermal, and electronics teams on real-world security projects",
+      "date_published": "2026-09-18T19:20:52.313Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-ai-for-circuit-generation-co-op-6-month-term-group-07-76-4469228159",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-ai-for-circuit-generation-co-op-6-month-term-group-07-76-4469228159",
+      "title": "AI for Circuit Generation Co-Op (6-month term) - Group 07-76 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Design AI-generated circuits for electronics projects using PSpice and MATLAB\n• Work on AI/ML integration with circuit validation and simulation tools\n• Contribute to a 6-month project with real-world impact on national security",
+      "date_published": "2026-09-18T19:20:31.023Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-software-and-electronics-engineeri-4469227159",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-software-and-electronics-engineeri-4469227159",
+      "title": "Summer Research Program Intern 2027, Software and Electronics Engineering (Group 07-76) — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Design and develop software or electronics systems for real-world applications\n• Work with experienced engineers on embedded software, firmware, or PCB design\n• Receive mentorship and professional development opportunities",
+      "date_published": "2026-09-18T19:09:21.315Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/robinhood-offensive-security-intern-summer-2027-ats-greenhouse-robinhood-8214142",
+      "url": "https://interndoor.com/us/jobs/robinhood-offensive-security-intern-summer-2027-ats-greenhouse-robinhood-8214142",
+      "title": "Offensive Security Intern (Summer 2027) — Robinhood",
+      "content_text": "Company: Robinhood · Location: Bellevue, WA · Duration: Winter 2027\n• Hack ai services, models, and pipelines\n• Target cloud, kubernetes, and macos systems\n• Find and exploit bugs in smart contracts\n• Build infrastructure and tooling",
+      "date_published": "2026-09-18T19:03:03.000Z",
+      "authors": [
+        {
+          "name": "Robinhood"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/biogen-2027-intern-information-technology-4467896673",
+      "url": "https://interndoor.com/us/jobs/biogen-2027-intern-information-technology-4467896673",
+      "title": "2027 Intern, Information Technology — Biogen",
+      "content_text": "Company: Biogen · Location: Cambridge, MA · Duration: 12 weeks\n• Support IT analytics platforms for GXP manufacturing and supply chain\n• Work on intelligent automation with DevOps tools for workflow integration\n• Investigate security threats and update incident response documentation",
+      "date_published": "2026-09-18T18:55:25.306Z",
+      "authors": [
+        {
+          "name": "Biogen"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-learning-based-behavior-for-special-vehicles-ats-greenhouse-waymo-8203191",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-learning-based-behavior-for-special-vehicles-ats-greenhouse-waymo-8203191",
+      "title": "2027 Summer Intern, PhD, Learning-Based Behavior for Special Vehicles — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, California\n• Prototype learning-based behavior policies for special vehicles\n• Work with RL/imitation learning/trajectory forecasting frameworks\n• Build simulation benchmarks for autonomous driving scenarios",
+      "date_published": "2026-09-18T18:42:26.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/together-ai-research-intern-frontier-agents-summer-2027-ats-greenhouse-togetherai-5238468007",
       "url": "https://interndoor.com/us/jobs/together-ai-research-intern-frontier-agents-summer-2027-ats-greenhouse-togetherai-5238468007",
       "title": "Research Intern, Frontier Agents (Summer 2027) — Together AI",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "UBS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458955056",
-      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458955056",
-      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
-      "content_text": "Company: LyondellBasell · Location: Channelview, TX\n• Develop control schemes and troubleshoot high-voltage systems\n• Work on process instrumentation and control systems daily\n• Based in channelview, tx",
-      "date_published": "2026-09-18T14:46:03.862Z",
-      "authors": [
-        {
-          "name": "LyondellBasell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-quantum-data-analyst-intern-2027-4466913036",
-      "url": "https://interndoor.com/us/jobs/ibm-quantum-data-analyst-intern-2027-4466913036",
-      "title": "Quantum Data Analyst Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: San Jose, CA\n• Analyze quantum computing adoption data to inform strategic decisions\n• Use python and sql to process and visualize complex datasets\n• Collaborate with cross-functional teams on analytics projects",
-      "date_published": "2026-09-18T14:36:34.482Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4466693561",
-      "url": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4466693561",
-      "title": "2027 PhD HPC & Sovereign AI Center of Excellence Intern/Co-op — AMD",
-      "content_text": "Company: AMD · Location: San Jose, CA\n• Develop GPU-accelerated algorithms for HPC and AI workloads\n• Analyze performance of benchmarks on AMD platforms\n• Collaborate on optimizing code for future GPU architectures",
-      "date_published": "2026-09-18T14:34:09.409Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4466905437",
-      "url": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4466905437",
-      "title": "2027 PhD HPC & Sovereign AI Center of Excellence Intern/Co-op — AMD",
-      "content_text": "Company: AMD · Location: Santa Clara, CA\n• Develop GPU-accelerated algorithms for HPC and AI workloads\n• Analyze performance of benchmarks on AMD platforms\n• Collaborate on optimizing code for future GPU architectures",
-      "date_published": "2026-09-18T14:33:39.475Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/central-insurance-product-data-decision-science-intern-4458689184",
-      "url": "https://interndoor.com/us/jobs/central-insurance-product-data-decision-science-intern-4458689184",
-      "title": "Product Data Decision Science Intern — Central Insurance",
-      "content_text": "Company: Central Insurance · Location: Van Wert, OH\n• Analyze insurance data to uncover patterns and drive business decisions\n• Use sql, r, and python to build predictive models and generate insights\n• Work on real-world projects with impact across the organization",
-      "date_published": "2026-09-18T14:27:43.792Z",
-      "authors": [
-        {
-          "name": "Central Insurance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-quantum-innovation-centers-intern-2027-4466911249",
-      "url": "https://interndoor.com/us/jobs/ibm-quantum-innovation-centers-intern-2027-4466911249",
-      "title": "Quantum Innovation Centers Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Support partner success through research, analysis, and program development\n• Collaborate with cross-functional teams on quantum computing initiatives\n• Present findings and recommendations to stakeholders",
-      "date_published": "2026-09-18T14:22:27.963Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-quantum-data-analyst-intern-2027-4466910257",
-      "url": "https://interndoor.com/us/jobs/ibm-quantum-data-analyst-intern-2027-4466910257",
-      "title": "Quantum Data Analyst Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Analyze quantum computing adoption data to inform strategic decisions\n• Use python and sql to process and visualize large datasets\n• Collaborate with cross-functional teams on analytics projects",
-      "date_published": "2026-09-18T14:21:55.867Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/eaton-continuous-improvement-intern-co-op-4466693499",
-      "url": "https://interndoor.com/us/jobs/eaton-continuous-improvement-intern-co-op-4466693499",
-      "title": "Continuous Improvement - Intern / Co-op — Eaton",
-      "content_text": "Company: Eaton · Location: Pinckneyville, IL · Duration: 12- months\n• Support continuous improvement projects in manufacturing using Lean and digital tools\n• Collaborate with cross-functional teams on process optimization and safety initiatives\n• Analyze operational data and present findings to site leaders and stakeholders",
-      "date_published": "2026-09-18T14:19:37.174Z",
-      "authors": [
-        {
-          "name": "Eaton"
         }
       ]
     }
