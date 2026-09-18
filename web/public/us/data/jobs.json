@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789742061375,
+ "generatedAt": 1789742776676,
  "region": "US",
  "regionName": "United States",
- "count": 3442,
- "techCount": 3442,
+ "count": 3438,
+ "techCount": 3438,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -133,6 +133,7 @@
   "FIS",
   "FM",
   "Festo",
+  "Festo USA",
   "Figma",
   "Figure AI",
   "Finastra",
@@ -618,7 +619,6 @@
   "Fargo, ND",
   "Farmington Hills, MI",
   "Farmington, CT",
-  "Farmington, NM",
   "Fayetteville, NC",
   "Fenton, MO",
   "Findlay, OH",
@@ -1141,7 +1141,6 @@
   "Warrenville, IL",
   "Washington, D.C.",
   "Washington, DC",
-  "Washington, District of Columbia, United States",
   "Waukegan, IL",
   "Waukesha, WI",
   "Wendell, NC",
@@ -16669,6 +16668,50 @@
    "region": "US"
   },
   {
+   "id": "4465969655",
+   "title": "AI Adoption and Digital Mindset Intern",
+   "company": "Festo USA",
+   "matchedWatchlist": "Festo",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/festo-usa.jpg",
+   "location": "Islandia, NY",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves supporting AI adoption and digital transformation efforts across Festo. The intern will work on initiatives to improve digital readiness, create educational content, and collaborate with cross-functional teams. It suits students interested in technology and organizational change.",
+   "bullets": [
+    "Support AI adoption and digital literacy initiatives across the organization",
+    "Collaborate with teams on change management and digital transformation projects",
+    "Create and maintain digital content and employee enablement materials"
+   ],
+   "roleLabel": "AI Adoption Support",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "communication",
+    "digital tools"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "9 minutes ago",
+   "postedAt": 1789545969683,
+   "firstSeenAt": 1789546509692,
+   "lastSeenAt": 1789546509692,
+   "url": "https://www.linkedin.com/jobs/view/4465969655/",
+   "applyUrl": "https://festo-se-co-kg.contactrh.com/jobs/12312/44445381/en_GB",
+   "description": null,
+   "roleFingerprint": "fd9609b9a8",
+   "cardFacts": [
+    "Islandia",
+    "Hybrid"
+   ],
+   "region": "US"
+  },
+  {
    "id": "4466837424",
    "title": "Engineering Intern",
    "company": "UPS",
@@ -21506,52 +21549,6 @@
    "region": "US"
   },
   {
-   "id": "4467786985",
-   "title": "Production Test Engineering Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Tucson, AZ",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves supporting production test engineers in validating and maintaining test equipment, analyzing test data to improve efficiency, and troubleshooting test failures. Ideal for students with a background in electrical engineering or related fields seeking hands-on experience in manufacturing testing.",
-   "bullets": [
-    "Support validation of test equipment for production use",
-    "Analyze test metrics to improve efficiency and yields",
-    "Troubleshoot test failures and lead root cause investigations"
-   ],
-   "roleLabel": "Production Test Engineering",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "test equipment",
-    "Microsoft Office",
-    "technical data package"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1789507189524,
-   "firstSeenAt": 1789507309526,
-   "lastSeenAt": 1789514535816,
-   "url": "https://www.linkedin.com/jobs/view/4467786985/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872992EXTERNALENGLOBAL/Production-Test-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "217bf9e335",
-   "cardFacts": [
-    "$37,000",
-    "Tucson",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4467780988",
    "title": "Internship – Raytheon Systems Security Engineer-Onsite",
    "company": "Raytheon",
@@ -21642,51 +21639,6 @@
    "cardFacts": [
     "$37,000",
     "Marlborough",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467784982",
-   "title": "Production Test Engineer Intern (Summer 2027)",
-   "company": "Raytheon",
-   "matchedWatchlist": "Raytheon Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/raytheon.jpg",
-   "location": "Farmington, NM",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves validating and maintaining test equipment for aerospace manufacturing. Interns will analyze test data to improve efficiency and troubleshoot issues. Ideal for students with a background in electrical engineering or related fields.",
-   "bullets": [
-    "Support validation and operation of test equipment for production use",
-    "Analyze test metrics to improve efficiency and yield",
-    "Troubleshoot test failures and lead root cause investigations"
-   ],
-   "roleLabel": "Production Test Engineer",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "test equipment",
-    "technical data package"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1789507178297,
-   "firstSeenAt": 1789507298299,
-   "lastSeenAt": 1789507298299,
-   "url": "https://www.linkedin.com/jobs/view/4467784982/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01872985EXTERNALENGLOBAL/Production-Test-Engineer-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "0ba72f58b7",
-   "cardFacts": [
-    "$37,000",
-    "Farmington",
     "On-site"
    ],
    "region": "US"
@@ -23817,63 +23769,6 @@
    "region": "US"
   },
   {
-   "id": "ats:greenhouse:andurilindustries:5236573007",
-   "title": "Winter 2027 Test Automation Engineer Co-op",
-   "company": "Anduril Industries",
-   "matchedWatchlist": "Anduril Industries",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/anduril-industries.png",
-   "location": "Washington, District of Columbia, United States",
-   "workplaceType": null,
-   "stipend": "$34 – $50 / hour",
-   "duration": "16-24 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c#",
-    "sql",
-    "aws",
-    "azure",
-    "ci/cd",
-    "linux",
-    "git",
-    "computer vision",
-    "i2c",
-    "spi"
-   ],
-   "summary": "As a Test Automation Engineer, you'll design and implement automation solutions for manufacturing tests, integrating data pipelines and debugging tools. This role suits students with Python experience and an interest in test automation and real-world systems integration.",
-   "bullets": [
-    "Develop automation scripts for manufacturing tests using Python",
-    "Integrate test data with cloud pipelines and handle authentication",
-    "Build tools to debug test failures and improve triage efficiency"
-   ],
-   "roleLabel": "Test Automation Engineer",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "python",
-    "ci/cd"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1789494882000,
-   "firstSeenAt": 1789495701959,
-   "lastSeenAt": 1789665538102,
-   "url": "https://boards.greenhouse.io/andurilindustries/jobs/5236573007?gh_jid=5236573007",
-   "applyUrl": "https://boards.greenhouse.io/andurilindustries/jobs/5236573007?gh_jid=5236573007",
-   "description": null,
-   "roleFingerprint": "4b3131576a",
-   "cardFacts": [
-    "$34 – $50 / hour",
-    "Washington",
-    "16-24 weeks"
-   ],
-   "region": "US"
-  },
-  {
    "id": "ats:greenhouse:andurilindustries:5236599007",
    "title": "Winter 2027 Systems Engineer Co-op",
    "company": "Anduril Industries",
@@ -24026,57 +23921,6 @@
     "Lenexa",
     "On-site",
     "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "ats:greenhouse:andurilindustries:5236579007",
-   "title": "Winter 2027 PCB Layout Engineer Co-op",
-   "company": "Anduril Industries",
-   "matchedWatchlist": "Anduril Industries",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/anduril-industries.png",
-   "location": "Costa Mesa, California, United States",
-   "workplaceType": null,
-   "stipend": "$34 – $50 / hour",
-   "duration": "16-24 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "computer vision",
-    "pcb",
-    "altium"
-   ],
-   "summary": "This co-op role involves designing PCB layouts for test systems, creating ECAD libraries, and conducting stackup studies. Ideal for students with electrical engineering backgrounds and experience with Altium or similar tools. The work supports real-world hardware development in a fast-paced environment.",
-   "bullets": [
-    "Design PCB layouts in Altium for test systems with mentor feedback",
-    "Create ECAD libraries and manage component footprints for active programs",
-    "Conduct stackup and impedance studies for high-speed interfaces"
-   ],
-   "roleLabel": "PCB Layout Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering",
-   "keySkills": [
-    "altium",
-    "pcb layout",
-    "ecad library",
-    "impedance routing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1789493883000,
-   "firstSeenAt": 1789493911571,
-   "lastSeenAt": 1789665538096,
-   "url": "https://boards.greenhouse.io/andurilindustries/jobs/5236579007?gh_jid=5236579007",
-   "applyUrl": "https://boards.greenhouse.io/andurilindustries/jobs/5236579007?gh_jid=5236579007",
-   "description": null,
-   "roleFingerprint": "3f027cd05a",
-   "cardFacts": [
-    "$34 – $50 / hour",
-    "Costa Mesa",
-    "16-24 weeks"
    ],
    "region": "US"
   },
@@ -162011,50 +161855,6 @@
    "cardFacts": [
     "$54 / hour",
     "South San Francisco",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4457294729",
-   "title": "AI Adoption and Digital Mindset Intern",
-   "company": "Festo",
-   "matchedWatchlist": "Festo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/festo.jpg",
-   "location": "Islandia, NY",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "Festo inspires people and organizations around the world with innovative solutions for industrial automation. As a team, we grow by tackling challenges together and we welcome everyone who wants to move the world with us. AI Adoption and Digital Mindset Intern Attractive Compensation And Additional Benefits",
-   "bullets": [
-    "Support ai adoption and digital literacy initiatives across the organization",
-    "Collaborate with teams to share best practices and innovative approaches",
-    "Create and maintain digital content and employee enablement materials"
-   ],
-   "roleLabel": "Ai adoption support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "communication",
-    "digital tools"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "41 minutes ago",
-   "postedAt": 1787782488492,
-   "firstSeenAt": 1787784948494,
-   "lastSeenAt": 1787784948494,
-   "url": "https://www.linkedin.com/jobs/view/4457294729/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4457294729/",
-   "description": null,
-   "roleFingerprint": "5d8d586720",
-   "cardFacts": [
-    "Islandia",
     "On-site"
    ],
    "region": "US"

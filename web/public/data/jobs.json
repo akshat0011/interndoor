@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789742061371,
+ "generatedAt": 1789742776671,
  "region": "IN",
  "regionName": "India",
- "count": 279,
- "techCount": 279,
+ "count": 278,
+ "techCount": 278,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -14008,55 +14008,6 @@
    "roleFingerprint": "0507ea3440",
    "cardFacts": [
     "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4456322346",
-   "title": "Intern, SDET",
-   "company": "Icertis",
-   "matchedWatchlist": "Icertis",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/icertis.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "36 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "agile"
-   ],
-   "summary": "This internship involves writing automated tests, reviewing code, and optimizing system performance. It suits students with python skills and an interest in quality assurance. The role offers hands-on experience with ai tools and real-world software development practices.",
-   "bullets": [
-    "Write automated tests with python and ai tools",
-    "Review code and improve software quality",
-    "Work on performance and load testing",
-    "Collaborate with developers on project goals"
-   ],
-   "roleLabel": "Software testing",
-   "degreeLevel": "UG",
-   "degreeText": "B.Tech",
-   "keySkills": [
-    "python",
-    "ai tools",
-    "code reviews"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "6 minutes ago",
-   "postedAt": 1787150214996,
-   "firstSeenAt": 1787150575008,
-   "lastSeenAt": 1787150575008,
-   "url": "https://www.linkedin.com/jobs/view/4456322346/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4456322346/",
-   "description": null,
-   "roleFingerprint": "a6eb4df8e6",
-   "cardFacts": [
-    "Pune Division",
     "On-site"
    ],
    "region": "IN"
