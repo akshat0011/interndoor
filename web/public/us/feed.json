@@ -6,6 +6,18 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/aecom-design-intern-ats-smartrecruiters-aecom2-744000150255080",
+      "url": "https://interndoor.com/us/jobs/aecom-design-intern-ats-smartrecruiters-aecom2-744000150255080",
+      "title": "Design Intern — AECOM",
+      "content_text": "Company: AECOM · Location: Roanoke, us",
+      "date_published": "2026-09-18T01:37:06.993Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/abridge-software-engineering-intern-spring-4468851582",
       "url": "https://interndoor.com/us/jobs/abridge-software-engineering-intern-spring-4468851582",
       "title": "Software Engineering Intern, Spring — Abridge",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "General Dynamics Mission Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-sram-software-engineer-intern-bs-summer-2027-4466611925",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-sram-software-engineer-intern-bs-summer-2027-4466611925",
-      "title": "SRAM Software Engineer Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Burlington, VT · Duration: Fall 2027\n• Implement PPA data for SRAM design kits in advanced technologies\n• Script in Perl, Python, Bash for memory optimization tools\n• Collaborate with circuit designers on high-performance memory solutions",
-      "date_published": "2026-09-17T21:35:50.908Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
         }
       ]
     }
