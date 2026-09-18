@@ -76,8 +76,12 @@ export function postingToken(url) {
   } catch { return ''; }
 }
 
+function pathOf(url) {
+  try { return new URL(String(url)).pathname; } catch { return ''; }
+}
+
 function pathDepth(url) {
-  try { return new URL(String(url)).pathname.split('/').filter(Boolean).length; } catch { return 0; }
+  return pathOf(url).split('/').filter(Boolean).length;
 }
 
 /**
@@ -96,6 +100,13 @@ export function redirectedAway(requested, finalUrl) {
   if (!requested || !finalUrl || String(finalUrl) === String(requested)) return false;
   const tok = postingToken(requested);
   if (tok && String(finalUrl).includes(tok)) return false;
+  /* THE LANDING PAGE MUST CARRY NO POSTING ID OF ITS OWN. A tracker or short
+     link can redirect to the SAME posting under a different id — Festo's
+     contactrh.com/jobs/12312/44445381/en_GB lands on jobs.festo.com/job/
+     <slug>/1419984433/, a live job page, one segment shallower — and the
+     first version of this rule closed it. A listing or home page has no
+     id-bearing segment; a job page does. */
+  if (/\d{4,}/.test(pathOf(finalUrl))) return false;
   return pathDepth(finalUrl) < pathDepth(requested);
 }
 
