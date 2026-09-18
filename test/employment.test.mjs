@@ -118,5 +118,43 @@ console.log('\n== a full-time role is not written up as an internship ==');
   check('and the rows it enriches carry the field', /salary_text AS stipend, employment_type/.test(st), true);
 }
 
+console.log('\n== India writes its fresher roles differently, and every one is a full-time role ==');
+{
+  /* Measured 18 Sep 2026 over 42,128 live board titles: 0 reclassified, 45
+     newly full-time, India 10 — Amazon SDE-1, Signzy SDE-1, Icertis and
+     Celonis Associate Software Engineer, ZoomInfo and Handshake Software
+     Engineer I, Hevo SDE I, Graviton "(2027 Graduate)" ×2. India had 0. */
+  check('fresher', kind('Software Engineer - Fresher'), 'fulltime');
+  check('freshers hiring drive', kind('Freshers Hiring Drive - Backend'), 'fulltime');
+  check('associate software engineer', kind('Associate Software Engineer, Development'), 'fulltime');
+  check('associate engineer', kind('Associate Engineer'), 'fulltime');
+  check('junior developer', kind('Junior Developer'), 'fulltime');
+  check('SDE-1', kind('SDE-1, Expansions Tech and Product'), 'fulltime');
+  check('SDE 1 with a space', kind('SDE 1 Fullstack Engineer'), 'fulltime');
+  check('SDE I', kind('SDE I'), 'fulltime');
+  check('Software Engineer I', kind('Software Engineer I - Salesforce'), 'fulltime');
+  check('Software Engineer 1', kind('Software Engineer 1'), 'fulltime');
+  check('a graduating batch year', kind('Software Engineer - 2026 Batch'), 'fulltime');
+  check('"batch of" form', kind('Batch of 2025 - Software Engineers'), 'fulltime');
+  check('"(2027 Graduate)" — the Graviton shape', kind('Software Engineer (2027 Graduate)'), 'fulltime');
+  check('an experience range starting at zero', kind('Java Developer (0-2 years)'), 'fulltime');
+  check('…with an en dash and "yrs"', kind('Backend Engineer (0–1 yrs)'), 'fulltime');
+
+  /* The lines that must NOT move — the difference between a fresher tab and a
+     tab of roles a student cannot get. */
+  check('Software Engineer II is not level 1', kind('Software Engineer II'), null);
+  check('Software Engineer III is not level 1', kind('Software Engineer III'), null);
+  check('SDE II is not SDE I', kind('SDE II'), null);
+  check('"Engineer in Test" is not "Engineer I"', kind('Software Engineer in Test'), null);
+  check('a bare Software Engineer says nothing about experience', kind('Software Engineer'), null);
+  check('a range starting at 1 is not a fresher role', kind('Backend Engineer (1-3 years)'), null);
+  check('…even a short one: 1-2 years is not zero', kind('Backend Engineer (1-2 years)'), null);
+  check('a wide 0-5 band is not the fresher line either', kind('Engineer (0-5 years)'), null);
+  check('"Engineer 10" is not "Engineer 1"', kind('Engineer 10'), null);
+  check('senior still wins over any fresher phrase', kind('Senior Associate Software Engineer'), null);
+  check('a year alone is not a batch', kind('Software Engineer 2026'), null);
+  check('intern still wins outright: Graduate Engineer Trainee is an internship', kind('Graduate Engineer Trainee'), 'intern');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

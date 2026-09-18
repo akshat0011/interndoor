@@ -38,7 +38,26 @@ const EARLY_CAREER = [
   'graduate engineer', 'graduate developer', 'graduate analyst', 'graduate software',
   'university graduate', 'university hire', 'entry level', 'entry-level',
   'rotational program', 'rotational programme', 'analyst program', 'analyst programme',
+  // INDIA WRITES ITS FRESHER ROLES DIFFERENTLY, and none of the phrases above
+  // appear on them (18 Sep 2026: US 151 and UK 48 full-time rows live, India
+  // 0). What an Indian employer puts on the tin instead:
+  'fresher', 'freshers',
+  'associate software engineer', 'associate software developer', 'associate engineer', 'associate developer',
+  'junior software engineer', 'junior software developer', 'junior developer', 'junior engineer', 'junior data',
+  // Level-1 titles. `\bi\b` after the word cannot match "II" or "III" (no
+  // boundary between the letters), and `\b1\b` cannot match "10".
+  'software engineer i', 'software engineer 1', 'software developer i', 'software developer 1',
+  'sde 1', 'sde i', 'sde1',
 ];
+
+/**
+ * Two more Indian shapes that are not phrases: a graduating BATCH YEAR
+ * ("Software Engineer - 2026 Batch", "2025 passouts") and an EXPERIENCE RANGE
+ * that starts at zero ("Java Developer (0-2 years)"). A range starting at 1 or
+ * more is not a fresher role and does not match.
+ */
+const BATCH_RE = /\b(?:20[2-3]\d[-\s]*(?:batch|pass[-\s]?outs?|graduates?)|batch[-\s]*(?:of[-\s]*)?20[2-3]\d)\b/i;
+const ZERO_EXP_RE = /\b0\s*(?:-|–|to)\s*[12]\s*\+?\s*(?:years?|yrs?)\b/i;
 
 /**
  * Seniority words that disqualify a title however early-career it reads.
@@ -94,6 +113,7 @@ export function employmentType(title, isIntern) {
   if (isIntern(t)) return INTERN;
   if (SENIOR.test(t)) return null;
   if (EARLY_RE.some((re) => re.test(t))) return FULL_TIME;
+  if (BATCH_RE.test(t) || ZERO_EXP_RE.test(t)) return FULL_TIME;
   // A title that OPENS with "Graduate" is a graduate role — "Graduate
   // Quantitative Trader", "Graduate Software Engineer". Anchored to the start
   // deliberately: a bare `graduate` anywhere would also match

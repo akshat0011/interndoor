@@ -130,6 +130,25 @@ function roleBlock(row, cfg, code) {
  * roles, and "0 new internships today" is the message that teaches somebody to
  * unsubscribe. No roles, no mail, and the day is still marked done.
  */
+/**
+ * The count that leads the subject, naming the two kinds separately. A fresher
+ * role filed under "internships" is a false sentence in the one line every
+ * subscriber reads — and India's first full-time rows arrive with the 18 Sep
+ * 2026 vocabulary, so the digest could no longer assume every row is an
+ * internship. `where` is the bare place ("India"); `inName` is the board's
+ * "in India" form for the body line.
+ */
+export function digestHeadline(roles, where) {
+  // Store rows carry employment_type; the published projection employmentType.
+  const ft = roles.filter((r) => (r.employment_type ?? r.employmentType) === 'fulltime').length;
+  const n = roles.length - ft;
+  const interns = `${n} new engineering internship${n === 1 ? '' : 's'}`;
+  const fresh = `${ft} fresher engineering role${ft === 1 ? '' : 's'}`;
+  if (!ft) return `${interns} in ${where}`;
+  if (!n) return `${ft} new fresher engineering role${ft === 1 ? '' : 's'} in ${where}`;
+  return `${interns} and ${fresh} in ${where}`;
+}
+
 export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = null, now = Date.now() } = {}) {
   const region = regionOf(code);
   const conf = cfg.digest ?? {};
@@ -144,14 +163,14 @@ export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = nul
   /* A COUNT LEADS. The weekly roundup found the same thing: with no model in
      the loop the strongest opening line available is a number, and it is the
      one fact the reader can act on from the subject line alone. */
-  const subject = `${roles.length} new engineering internship${roles.length === 1 ? '' : 's'} in ${where}`;
+  const subject = digestHeadline(roles, where);
 
   const boardUrl = utmUrl(boardUrlFor(code), {
     campaign: 'digest', content: 'board', source: 'email', medium: 'email',
   }, cfg);
 
   const body = [
-    `${roles.length} new engineering internship${roles.length === 1 ? '' : 's'} ${region.inName} since yesterday.`,
+    `${digestHeadline(roles, where).replace(` in ${where}`, ` ${region.inName}`)} since yesterday.`,
     '',
     shown.map((r) => roleBlock(r, cfg, code)).join('\n\n'),
     '',
