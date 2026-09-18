@@ -4,7 +4,7 @@
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany } from './config.js';
-import { isInternshipTag } from './employment.js';
+import { isInternshipTag, isSeniorTitle, admitEntryLevel, INTERN } from './employment.js';
 import { join } from 'node:path';
 import { writeFile } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
@@ -410,7 +410,20 @@ async function main() {
    * early would defeat the one job it has.
    */
   const planSweep = (region, search = {}) => {
-    const baseline = store.lastRegionSweep(region) ?? lastRun?.started_at ?? null;
+    /* TWO SEARCHES IN ONE REGION MUST NOT SHARE A BASELINE. sweep_ok_at is a
+       high-water mark of complete coverage FOR ONE WALK; India's entry-level
+       search (hourly, capped) completing would otherwise move the intern
+       walk's mark and shrink its window, and vice versa. A search that
+       declares `sweepKey` keeps its own; the rest key on the region as before. */
+    /* Two different questions want two different answers. THE WINDOW wants a
+       baseline even on a first walk — the last run's start bounds it to
+       something sane. THE DUE CHECK must NOT get that fallback: a search that
+       has never completed a walk under its own key has no gap to measure and
+       is due now, but the fallback is always ~one tick old, so an hourly
+       search bootstrapped through it would be "not due yet" on every tick,
+       forever. India's entry-level search would never have run once. */
+    const ownBaseline = store.lastRegionSweep(search.sweepKey ?? region);
+    const baseline = ownBaseline ?? lastRun?.started_at ?? null;
     // A search may narrow its own window. The defaults were tuned for one India
     // search on a 30-minute loop, and they are far too wide for a dense region
     // swept hourly: the US sweep was walking its whole 3h result set to
@@ -432,6 +445,7 @@ async function main() {
       filters: { ...base, postedWithinHours: hours },
       coveredHorizon: (!OVERRIDES.windowHours && baseline) ? baseline - COVERED_MARGIN_MS : null,
       baseline,
+      ownBaseline,
     };
   };
 
@@ -610,7 +624,7 @@ async function main() {
       // the run: two searches can be walking different countries with different
       // last-swept times.
       const region = search.region ?? 'IN';
-      const { filters, coveredHorizon, baseline } = planSweep(region, search);
+      const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
 
       // A search may run less often than the loop ticks.
       //
@@ -626,8 +640,8 @@ async function main() {
       // the gap and nothing is missed — the adaptive window already does this
       // for an outage, and an intentional skip is the same shape.
       const intervalMin = Number(search.intervalMinutes ?? 0);
-      if (!OVERRIDES.windowHours && !isSearchDue(baseline, intervalMin)) {
-        const elapsedMin = (Date.now() - baseline) / 60_000;
+      if (!OVERRIDES.windowHours && !isSearchDue(ownBaseline, intervalMin)) {
+        const elapsedMin = (Date.now() - ownBaseline) / 60_000;
         log.info(`${region}: last swept ${elapsedMin.toFixed(0)}m ago, runs every ${intervalMin}m — skipping this run.`);
         searchesDone++;
         continue;
@@ -970,7 +984,24 @@ async function main() {
              title would have refused can only add listings, never remove one. */
           const titleSaysIntern = matchTitle(card.title, cfg.titleTerms);
           let mustConfirmInternFromPane = false;
-          if (!titleSaysIntern) {
+          /* THE ENTRY-LEVEL SEARCH HAS NO INTERN WORD TO ADMIT A CARD ON.
+             LinkedIn's facet (f_E=2) is the evidence instead, so a card is
+             let through to the tech-title gate below and judged AFTER the
+             click by admitEntryLevel — the pane's Full-time and Entry level
+             chips and the prose's years demanded. Only a senior title is
+             refused here, before it costs a page load; the rest of the gate
+             needs the pane. */
+          const entrySearch = search.employment === 'fulltime';
+          let mustConfirmEntryFromPane = false;
+          let employmentKind = INTERN;
+          if (entrySearch && !titleSaysIntern) {
+            if (isSeniorTitle(card.title)) {
+              counters.skippedTitle++;
+              store.noteSkippedCard(card.identity, 'entry-level: senior title', card.company, card.title);
+              continue;
+            }
+            mustConfirmEntryFromPane = true;
+          } else if (!titleSaysIntern) {
             const nearVerdict = classifyRole(card.title, {
               extraPositive: cfg.matching.extraTechTerms ?? [],
               extraNegative: cfg.matching.extraNonTechTerms ?? [],
@@ -1137,6 +1168,22 @@ async function main() {
              states no employment type at all is refused too — the card got in
              on the promise that the tag would settle it, and no tag settles
              nothing. */
+          if (mustConfirmEntryFromPane) {
+            const verdict = admitEntryLevel({
+              title: card.title,
+              employmentTag: detail.employmentTag,
+              seniorityTag: detail.seniorityTag,
+              description: detail.description,
+              isIntern: (t) => matchTitle(t, cfg.titleTerms),
+            });
+            if (!verdict.kind) {
+              counters.skippedTitle++;
+              store.noteSkippedCard(card.identity, verdict.reason, card.company, card.title);
+              continue;
+            }
+            employmentKind = verdict.kind;
+          }
+
           if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag)) {
             counters.skippedTitle++;
             counters.nearMisses++;
@@ -1210,6 +1257,9 @@ async function main() {
             regionFallback: search.region ?? null,
             // Detail-pane logo is higher resolution; fall back to the card's.
             logoUrl: detail.logoUrl || card.logoUrl || null,
+            // 'intern' for every card an intern word admitted; 'fulltime' only
+            // when the entry-level search's pane gate said so.
+            employmentType: employmentKind,
           };
           job.summary = await summarize(job, description, cfg.summarizer);
           // Verdict is filled in by one batched classifier pass after the walk.
@@ -1352,7 +1402,7 @@ async function main() {
         : null;
 
       if (!DRY_RUN && reachedEnd && rendered && sweepMark) {
-        store.markRegionSweep(region, sweepMark);
+        store.markRegionSweep(search.sweepKey ?? region, sweepMark);
         log.ok(`${region} swept — ${cardsHere} cards across ${pagesHere} page(s).`);
       } else if (!DRY_RUN && reachedEnd && rendered && cappedOnOwnLimit) {
         /* THE SEARCH IS NO LONGER KEEPING UP WITH ITS REGION. It filled its page

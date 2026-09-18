@@ -964,6 +964,24 @@
       "region": "IN"
     },
     {
+      "region": "IN",
+      "label": "IN entry-level",
+      "sweepKey": "IN:entry",
+      "employment": "fulltime",
+      "keywords": "(\"software engineer\" OR \"software developer\" OR SDE OR fresher OR \"associate engineer\" OR \"graduate engineer\" OR \"data engineer\" OR \"machine learning engineer\")",
+      "experienceLevels": [
+        "entry"
+      ],
+      "enabled": true,
+      "intervalMinutes": 60,
+      "minWindowHours": 2,
+      "windowMarginHours": 0.75,
+      "maxPages": 8,
+      "maxOpensPerCompany": 3,
+      "stopAfterPageOlderThanHours": 2,
+      "_note": "INDIA FRESHER ROLES OFF LINKEDIN — added 18 Sep 2026 (step 1 of the full-time supply plan; step 2 was the fresher vocabulary in src/employment.js, which found India 10 rows on the ATS boards against the US 151). India writes its entry-level roles without any intern word, so the intern search never sees them; this one asks LinkedIn Entry level facet (f_E=2) with engineering keywords instead. THE FACET IS THE EVIDENCE, and everything else DISAGREES with it or does not: a senior title is refused before the click; after it, admitEntryLevel wants the pane Full-time chip, the Entry level chip when present, and prose that demands under 2 years. Rows are stored employment_type fulltime and land on the Full-time tab, never among the internships. IT LANDS ON THE THROTTLED ACCOUNT, which is why it is bounded like the US search and unlike the intern walk: hourly, 8 pages, 3 opens per employer, stop on a 2h-old page. sweepKey keeps its baseline apart from sweep_ok_at:IN — two searches sharing one would shrink each other windows. WATCH THE FIRST WEEK: cards/page, the seen_cards reasons that start entry-level:, and how many rows publish; raise maxPages only from those numbers, and if the account is told it is requesting too much data, this is the search to pause first."
+    },
+    {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "US",
       "enabled": true,
@@ -1327,7 +1345,9 @@
     },
     "dataPost": {
       "enabled": true,
-      "regions": ["IN"],
+      "regions": [
+        "IN"
+      ],
       "weekday": 3,
       "hour": 10,
       "_note": "THE WEEKLY DATA POSTS (src/datapost.js): seven LinkedIn drafts made only of counts from the store over the last 30 days - who posted most, who posted for the first time, how fast the queue forms, who states a stipend, when postings go up, where they are, what skills they ask for - each with a card image, written to /data/latest on the queue server once a week (Wednesday 10:00 in the board's zone, midweek so it does not sit beside the Sunday roundup). One a week is plenty; the page marks a pick that rotates. A hand-drafted version of the first format took 8,395 impressions in a day on 17 Sep 2026. Every number carries its denominator; a format with too few rows is dropped for the week, never weakened. `npm run data-post -- --force` writes it now without consuming the week's slot; --dry-run prints and writes nothing."
@@ -1449,8 +1469,14 @@
     "_accounts_note": "ONE INSTAGRAM ACCOUNT PER REGION, and they must never be able to cross. @interndoorusa carries US roles, @interndoorin carries Indian ones. A reel posted to the wrong account cannot be taken back. Credentials live in .env under REGION-SUFFIXED names - IG_USER_ID_US/IG_ACCESS_TOKEN_US and IG_USER_ID_IN/IG_ACCESS_TOKEN_IN - because the bare IG_USER_ID/IG_ACCESS_TOKEN names are ALSO what storygasted's .env uses for a different account, which is the trap bin/ig_publish.py's guard was written for; with two accounts that collision stops being hypothetical. The guard still asks the live account who it is and refuses unless the username matches the region's entry here. A region absent from this map gets no reel at all, the same rule Telegram already follows for a region with no channel. Replaced the single 'account' key (was 'interndoorin') on 27 Aug.",
     "facebook": {
       "enabled": true,
-      "regions": ["IN", "US"],
-      "pages": { "IN": null, "US": null },
+      "regions": [
+        "IN",
+        "US"
+      ],
+      "pages": {
+        "IN": null,
+        "US": null
+      },
       "_note": "CROSS-POST EVERY PUBLISHED REEL TO THE REGION'S FACEBOOK PAGE through the Facebook Reels API (src/facebookreels.js). Instagram's own share-to-Facebook toggle does NOT cover API-published reels - measured 17 Sep 2026, five days with the toggle on and zero reels on either Page. It runs only AFTER the Instagram publish succeeded and writes the row's fb_* columns; a Facebook refusal never fails the reel or trips the breaker. Credentials are PAGE tokens (pages_show_list, pages_read_engagement, pages_manage_posts), one per region in .env as FB_PAGE_ID_<REGION>/FB_PAGE_TOKEN_<REGION>, put there by `npm run fb-token -- --region <R>`; a region with no pair is skipped with one log line per process. `pages` may name each Page so the token tool refuses a token for the wrong one; null means the tool asks you to confirm the Page it finds. Facebook allows 30 API reels per Page per rolling day (DAILY_CAP); the auto sweep does 8."
     },
     "auto": {

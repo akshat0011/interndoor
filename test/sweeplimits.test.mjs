@@ -21,7 +21,10 @@ function check(label, actual, expected) {
 }
 
 const cfg = loadConfig();
-const india = cfg.declaredSearches.find((s) => s.region === 'IN');
+// The INTERN walk, by kind and not by position: India also has a capped
+// entry-level search (employment: 'fulltime'), and `.find` by region alone
+// would test whichever entry comes first in config.json.
+const india = cfg.declaredSearches.find((s) => s.region === 'IN' && s.employment !== 'fulltime');
 const us = cfg.declaredSearches.find((s) => s.region === 'US');
 
 console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
@@ -293,10 +296,25 @@ console.log('\n== src/index.js actually applies all three ==');
     /for \(const c of cards\) \{[\s\S]{0,200}?parseRelativeTime\(c\.postedText\)[\s\S]{0,120}?at < oldestSeenAt\)\) oldestSeenAt = at;/.test(src), true);
   /* The mutation that matters: markRegionSweep taking searchStartedAt again
      would restore the silent hole, and every other assertion here would pass. */
-  check('markRegionSweep is given the computed mark, not the search start',
-    /store\.markRegionSweep\(region, sweepMark\);/.test(src), true);
+  /* THE BASELINE IS KEYED PER SEARCH, NOT PER REGION, since 18 Sep 2026 —
+     India's entry-level search must not move the intern walk's mark. The read
+     and the write use the same expression, pinned together so they cannot
+     drift: one keyed on the region and the other on the search would give the
+     entry search a window computed from a mark it never writes. */
+  check('markRegionSweep is given the computed mark, under the search\'s own key',
+    /store\.markRegionSweep\(search\.sweepKey \?\? region, sweepMark\);/.test(src), true);
+  check('the baseline is READ under the same key',
+    /store\.lastRegionSweep\(search\.sweepKey \?\? region\)/.test(src), true);
+  /* A NEVER-SWEPT KEYED SEARCH MUST BE DUE. The window's baseline falls back
+     to the last run's start, which is always ~one tick old; handed to the due
+     check, an hourly search that has never completed a walk under its own key
+     reads "not due yet" on every tick and never runs once. The due check gets
+     the search's OWN mark (null = due); only the window gets the fallback. */
+  check('the due check is handed the search\'s own baseline, never the run fallback',
+    /const ownBaseline = store\.lastRegionSweep\(search\.sweepKey \?\? region\);\s*const baseline = ownBaseline \?\? lastRun\?\.started_at/.test(src)
+    && /!isSearchDue\(ownBaseline, intervalMin\)/.test(src) && !/isSearchDue\(baseline, intervalMin\)/.test(src), true);
   check('and never the raw start',
-    /store\.markRegionSweep\(region, searchStartedAt\);/.test(src), false);
+    /store\.markRegionSweep\((?:search\.sweepKey \?\? )?region, searchStartedAt\);/.test(src), false);
   check('a capped walk is treated as an end',
     /const reachedEnd = walkComplete \|\| cappedOnOwnLimit;/.test(src), true);
   check('the sweep is still gated on the render floor',

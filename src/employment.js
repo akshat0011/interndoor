@@ -121,6 +121,73 @@ export function employmentType(title, isIntern) {
   return /^\s*graduate\b/i.test(t) ? FULL_TIME : null;
 }
 
+/** Seniority words that disqualify a title outright — exported for the
+ *  entry-level search, which has no intern word to lean on. */
+export function isSeniorTitle(title) {
+  return SENIOR.test(String(title ?? ''));
+}
+
+/**
+ * The minimum years of experience a posting DEMANDS, read off its prose, or
+ * null when it states none. "3+ years", "2-4 years of experience", "minimum
+ * of 2 years", "at least 3 yrs". A range reads as its floor. A bare "years"
+ * with no number, or a number that is not about experience ("2 years of
+ * runway"), is left alone — this is a refusal gate, and a wrong refusal costs a
+ * student a role.
+ */
+export function experienceFloor(text) {
+  const t = String(text ?? '');
+  if (!t) return null;
+  const floors = [];
+  const push = (n) => { const v = Number(n); if (Number.isFinite(v) && v >= 0 && v <= 30) floors.push(v); };
+  // "3+ years", "3 + yrs"
+  for (const m of t.matchAll(/\b(\d{1,2})\s*\+\s*(?:years?|yrs?)\b/gi)) push(m[1]);
+  // "2-4 years", "2 to 4 years", "2–4 yrs"
+  for (const m of t.matchAll(/\b(\d{1,2})\s*(?:-|–|to)\s*\d{1,2}\s*(?:years?|yrs?)\b/gi)) push(m[1]);
+  // "minimum (of) 2 years", "at least 3 years", "min. 2 yrs"
+  for (const m of t.matchAll(/\b(?:minimum(?:\s+of)?|min\.?|at\s+least)\s+(\d{1,2})\s*(?:years?|yrs?)\b/gi)) push(m[1]);
+  // "3 years of (relevant/professional/industry/hands-on/…) experience"
+  for (const m of t.matchAll(/\b(\d{1,2})\s*(?:years?|yrs?)\s+(?:of\s+)?(?:\w+[-\s]+){0,3}?experience\b/gi)) push(m[1]);
+  return floors.length ? Math.min(...floors) : null;
+}
+
+/** Below this many demanded years a role is still a fresher role. */
+export const ENTRY_MAX_YEARS = 2;
+
+/**
+ * THE GATE FOR A CARD FOUND BY THE ENTRY-LEVEL SEARCH, which has no intern
+ * word to admit it on. LinkedIn's facet already said "Entry level", so the
+ * question is only whether anything DISAGREES:
+ *
+ *   - an intern word in the title, or LinkedIn's Internship chip, makes it an
+ *     internship — the entry search finding one is fine, and it is filed as one;
+ *   - a senior title is refused whatever the facet says (recruiters mark
+ *     "Senior Engineer" entry-level often enough to matter);
+ *   - LinkedIn's employment chip must say Full-time — Contract, Part-time and
+ *     Temporary are not the role a fresher is looking for; a missing chip is
+ *     refused for the same reason the intern path refuses it: the card got in
+ *     on the promise the pane would settle it;
+ *   - LinkedIn's seniority chip, when it is there, must say Entry level;
+ *   - the prose must not demand ENTRY_MAX_YEARS or more.
+ *
+ * Returns { kind, reason }: kind 'intern' | 'fulltime' | null, reason set when
+ * refused, in the vocabulary seen_cards uses.
+ */
+export function admitEntryLevel({ title, employmentTag, seniorityTag, description, isIntern }) {
+  const t = String(title ?? '');
+  if ((typeof isIntern === 'function' && isIntern(t)) || isInternshipTag(employmentTag)) return { kind: INTERN, reason: null };
+  if (isSeniorTitle(t)) return { kind: null, reason: 'entry-level: senior title' };
+  if (!/^full[-\s]?time$/i.test(String(employmentTag ?? '').trim())) {
+    return { kind: null, reason: `entry-level: LinkedIn tags it ${employmentTag ?? 'nothing'}` };
+  }
+  if (seniorityTag && !/^entry[-\s]?level$/i.test(String(seniorityTag).trim())) {
+    return { kind: null, reason: `entry-level: LinkedIn says ${seniorityTag}` };
+  }
+  const floor = experienceFloor(description);
+  if (floor != null && floor >= ENTRY_MAX_YEARS) return { kind: null, reason: `entry-level: asks ${floor}+ years` };
+  return { kind: FULL_TIME, reason: null };
+}
+
 /** schema.org employmentType, which Google reads. Never guess this one. */
 export function schemaEmploymentType(kind) {
   return kind === FULL_TIME ? 'FULL_TIME' : 'INTERN';

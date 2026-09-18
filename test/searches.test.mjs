@@ -22,7 +22,12 @@ function ok(label, cond) { check(label, !!cond, true); }
 
 const cfg = loadConfig();
 const searches = resolveSearches(cfg);
-const byRegion = new Map(searches.map((s) => [s.region, s]));
+/* THE INTERN WALK IS THE SEARCH WITH NO `employment` KEY. Since 18 Sep 2026
+   India has two searches — the uncapped intern walk and a capped entry-level
+   search — so a map keyed on region would silently pick whichever came last
+   and every India pin below would be testing the wrong search. */
+const internWalk = (region) => searches.find((s) => s.region === region && s.employment !== 'fulltime');
+const byRegion = new Map(searches.filter((s) => s.employment !== 'fulltime').map((s) => [s.region, s]));
 
 console.log('\n== every search names a region the site knows ==');
 for (const s of searches) {
@@ -58,10 +63,24 @@ for (const s of foreign) {
   ok(`${s.region}'s URL carries geoId`, url.includes(`geoId=${s.geoId}`));
 }
 
-console.log('\n== a region is never searched twice in one run ==');
-// Two entries for one region would double that region's page loads while
-// looking like ordinary config, and both would write the same sweep baseline.
-check('regions are distinct', byRegion.size, searches.length);
+console.log('\n== one intern walk per region, and any second search is capped and keyed apart ==');
+// Two intern walks for one region would double its page loads while looking
+// like ordinary config, and both would write the same sweep baseline. A second
+// search of a DIFFERENT kind is allowed — India's entry-level search — but it
+// must carry its own sweepKey (or it moves the intern walk's baseline) and
+// must be bounded, because it lands on the throttled account.
+check('one intern walk per region', byRegion.size, searches.filter((s) => s.employment !== 'fulltime').length);
+for (const s of searches.filter((x) => x.employment === 'fulltime')) {
+  ok(`${s.region} ${s.label ?? 'entry'}: has its own sweepKey`, typeof s.sweepKey === 'string' && s.sweepKey !== s.region);
+  ok(`${s.region} ${s.label ?? 'entry'}: sweepKey is unique`, searches.filter((x) => (x.sweepKey ?? x.region) === s.sweepKey).length === 1);
+  ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
+  ok(`${s.region} ${s.label ?? 'entry'}: not every tick (intervalMinutes)`, Number(s.intervalMinutes) >= 60);
+  ok(`${s.region} ${s.label ?? 'entry'}: opens per employer capped`, Number(s.maxOpensPerCompany) > 0);
+  ok(`${s.region} ${s.label ?? 'entry'}: asks LinkedIn's entry-level facet`, (s.experienceLevels ?? []).some((l) => /^entry/i.test(l)));
+  ok(`${s.region} ${s.label ?? 'entry'}: URL carries f_E=2`, buildSearchUrl(s, { postedWithinHours: 2 }).includes('f_E=2'));
+}
+check('India has an entry-level search', searches.some((s) => s.region === 'IN' && s.employment === 'fulltime'), true);
+ok('the intern walk carries NO experience facet', !buildSearchUrl(internWalk('IN'), { postedWithinHours: 2 }).includes('f_E='));
 
 console.log('\n== only published regions are worth spending requests on ==');
 // Collecting a region we do not publish is not wrong, but a LinkedIn search is

@@ -1,4 +1,4 @@
-import { employmentType, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME } from '../src/employment.js';
+import { employmentType, isSeniorTitle, experienceFloor, admitEntryLevel, ENTRY_MAX_YEARS, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME } from '../src/employment.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -154,6 +154,70 @@ console.log('\n== India writes its fresher roles differently, and every one is a
   check('senior still wins over any fresher phrase', kind('Senior Associate Software Engineer'), null);
   check('a year alone is not a batch', kind('Software Engineer 2026'), null);
   check('intern still wins outright: Graduate Engineer Trainee is an internship', kind('Graduate Engineer Trainee'), 'intern');
+}
+
+console.log('\n== experienceFloor: the years a posting DEMANDS, or null ==');
+{
+  check('3+ years', experienceFloor('3+ years of experience in Java'), 3);
+  check('a range reads as its floor', experienceFloor('2-4 years experience'), 2);
+  check('minimum of', experienceFloor('Minimum of 2 years'), 2);
+  check('at least', experienceFloor('at least 3 yrs'), 3);
+  check('1-3 years is floor 1', experienceFloor('1-3 years of relevant experience'), 1);
+  check('0-1 years is floor 0', experienceFloor('0-1 years'), 0);
+  check('N years of <adjectives> experience', experienceFloor('Bachelor degree, 2 years of hands-on experience'), 2);
+  check('the LOWEST demand wins when several are stated', experienceFloor('5+ years preferred; minimum 1 year required'), 1);
+  check('no number, no floor', experienceFloor('Fresh graduates welcome'), null);
+  check('a number about something else is not experience', experienceFloor('We have 5 years of runway and 10 offices'), null);
+  check('empty is null', experienceFloor(''), null);
+  check('null is null', experienceFloor(null), null);
+}
+
+console.log('\n== admitEntryLevel: the facet said entry level; does anything disagree? ==');
+{
+  const isIntern = (t) => /\b(intern|internship|trainee)\b/i.test(t);
+  const base = { title: 'Software Engineer', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: 'Join our platform team. 0-1 years.', isIntern };
+  check('a clean entry-level role is full-time', admitEntryLevel(base).kind, 'fulltime');
+  check('an intern word in the title makes it an internship, not a refusal', admitEntryLevel({ ...base, title: 'Software Engineer Intern' }).kind, 'intern');
+  check('LinkedIn\'s Internship chip makes it an internship', admitEntryLevel({ ...base, employmentTag: 'Internship' }).kind, 'intern');
+  check('a senior title is refused whatever the facet says', admitEntryLevel({ ...base, title: 'Senior Software Engineer' }), { kind: null, reason: 'entry-level: senior title' });
+  check('Lead too', admitEntryLevel({ ...base, title: 'Lead Engineer' }).kind, null);
+  check('a Contract chip is refused', admitEntryLevel({ ...base, employmentTag: 'Contract' }), { kind: null, reason: 'entry-level: LinkedIn tags it Contract' });
+  check('a MISSING employment chip is refused — no tag settles nothing', admitEntryLevel({ ...base, employmentTag: null }).reason, 'entry-level: LinkedIn tags it nothing');
+  check('a seniority chip that is not Entry level is refused', admitEntryLevel({ ...base, seniorityTag: 'Mid-Senior level' }), { kind: null, reason: 'entry-level: LinkedIn says Mid-Senior level' });
+  check('Associate seniority is refused too', admitEntryLevel({ ...base, seniorityTag: 'Associate' }).kind, null);
+  check('a missing seniority chip is accepted — the facet already said it', admitEntryLevel({ ...base, seniorityTag: null }).kind, 'fulltime');
+  check(`prose demanding ${ENTRY_MAX_YEARS}+ years is refused`, admitEntryLevel({ ...base, description: '3+ years of Java' }), { kind: null, reason: 'entry-level: asks 3+ years' });
+  check('exactly the limit is refused', admitEntryLevel({ ...base, description: `minimum ${ENTRY_MAX_YEARS} years` }).kind, null);
+  check('under the limit is accepted', admitEntryLevel({ ...base, description: '1-3 years of experience' }).kind, 'fulltime');
+  check('the chip is matched whole: "Full-time" not "Full-time Contract"', admitEntryLevel({ ...base, employmentTag: 'Full-time Contract' }).kind, null);
+  check('isSeniorTitle is exported and agrees', [isSeniorTitle('Staff Engineer'), isSeniorTitle('Software Engineer')], [true, false]);
+}
+
+console.log('\n== the entry-level search is wired into the scan, in the right order ==');
+{
+  const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8');
+  const li = readFileSync(join(ROOT, 'src', 'linkedin.js'), 'utf8');
+  check('the switch is the search\'s employment key', /const entrySearch = search\.employment === 'fulltime';/.test(idx), true);
+  check('a senior title is refused BEFORE the click, only on the entry search',
+    /if \(entrySearch && !titleSaysIntern\) \{[\s\S]{0,200}?isSeniorTitle\(card\.title\)[\s\S]{0,300}?continue;/.test(idx), true);
+  check('the pane gate hands admitEntryLevel the seniority chip and the prose',
+    /admitEntryLevel\(\{[\s\S]{0,400}?seniorityTag: detail\.seniorityTag,[\s\S]{0,120}?description: detail\.description,/.test(idx), true);
+  /* ORDER: the refusal must come before the row is saved. Index of the gate
+     against index of the upsert that saves an opened card. */
+  const gateAt = idx.indexOf('if (mustConfirmEntryFromPane) {');
+  const saveAt = idx.indexOf('employmentType: employmentKind,');
+  check('the gate precedes the save', gateAt > 0 && saveAt > gateAt, true);
+  check('a refused card is skipped, not saved', /if \(!verdict\.kind\) \{[\s\S]{0,200}?continue;/.test(idx.slice(gateAt, saveAt)), true);
+  check('the row carries the kind the gate decided', /employmentType: employmentKind,/.test(idx), true);
+  check('the kind defaults to intern for every other search', /let employmentKind = INTERN;/.test(idx), true);
+  check('the baseline is read and written under the search\'s own key',
+    /lastRegionSweep\(search\.sweepKey \?\? region\)/.test(idx) && /markRegionSweep\(search\.sweepKey \?\? region, sweepMark\)/.test(idx), true);
+  /* The seniority chip is read as an exact dot-separated PART. A substring
+     test on the header would read "Associate Software Engineer" — the title —
+     as the Associate seniority and refuse every such fresher role. */
+  check('the seniority regex is anchored to a whole part', /const SENIORITY = \/\^\(Internship\|Entry level\|Associate\|Mid-Senior level\|Director\|Executive\)\$\/i;/.test(li), true);
+  check('…and is tested against split parts, never headerText', /parts\.find\(\(x\) => SENIORITY\.test\(x\)\)/.test(li) && !/SENIORITY\.test\(headerText\)/.test(li), true);
+  check('openAndExtract returns it', /employmentTag, seniorityTag, applicants,/.test(li), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
