@@ -1,5 +1,5 @@
 {
- "generatedAt": 1789713013915,
+ "generatedAt": 1789713114429,
  "region": "IN",
  "regionName": "India",
  "count": 281,
@@ -392,54 +392,6 @@
    "roleFingerprint": "7919ac1b34",
    "cardFacts": [
     "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4467836244",
-   "title": "Intern - Smartwatch Testing",
-   "company": "Noise",
-   "matchedWatchlist": "Noise",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/noise.jpg",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This role involves testing smartwatches during real workouts to assess performance. Ideal for fitness enthusiasts with consistent training experience. You'll work with QA and firmware teams to ensure accuracy and reliability in wearable tech.",
-   "bullets": [
-    "Test smartwatches during real workouts like running and strength training",
-    "Log test data in Excel and benchmark competitor devices",
-    "Work with QA and firmware teams to raise bug tickets"
-   ],
-   "roleLabel": "Smartwatch Testing",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "excel",
-    "sheets",
-    "bug tickets",
-    "firmware testing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "31 minutes ago",
-   "postedAt": 1789692610590,
-   "firstSeenAt": 1789694470593,
-   "lastSeenAt": 1789694470593,
-   "url": "https://www.linkedin.com/jobs/view/4467836244/",
-   "applyUrl": "https://gonoise.freshteam.com/jobs/BWLNtF206t5T/intern-smartwatch-testing?ft_source=2000003042&ft_medium=2000008269",
-   "description": null,
-   "roleFingerprint": "b3913c9c4a",
-   "cardFacts": [
-    "Gurugram",
     "On-site"
    ],
    "region": "IN"
@@ -9094,6 +9046,52 @@
    "cardFacts": [
     "Bengaluru",
     "Remote"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4460092550",
+   "title": "Intern - Smartwatch Testing",
+   "company": "Noise",
+   "matchedWatchlist": "Noise",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/noise.jpg",
+   "location": "Gurgaon, Haryana, India",
+   "workplaceType": "On-site",
+   "stipend": "₹0",
+   "duration": null,
+   "applicants": "2 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This internship involves testing smartwatches through physical activity and software checks. You'll work with engineers to find and fix issues, using tools like Excel. It's ideal for students passionate about wearable tech and detail-oriented problem solvers.",
+   "bullets": [
+    "Test smartwatches during workouts and stress tests",
+    "Use excel to track bugs and compare devices",
+    "Work with firmware and product teams on real projects"
+   ],
+   "roleLabel": "Smartwatch Testing",
+   "degreeLevel": "UG",
+   "degreeText": "Engineering/CS",
+   "keySkills": [
+    "excel",
+    "firmware testing"
+   ],
+   "stipendStatus": "unpaid",
+   "postedText": "1 hour ago",
+   "postedAt": 1788225558264,
+   "firstSeenAt": 1788229158273,
+   "lastSeenAt": 1788229158273,
+   "url": "https://www.linkedin.com/jobs/view/4460092550/",
+   "applyUrl": "https://gonoise.freshteam.com/jobs/6MgXkTZzGHO0/intern-smartwatch-testing?ft_source=2000003042&ft_medium=2000008269",
+   "description": null,
+   "roleFingerprint": "dd30f96a3a",
+   "cardFacts": [
+    "Gurgaon",
+    "On-site"
    ],
    "region": "IN"
   },
