@@ -221,6 +221,17 @@ console.log('\n== a redirect that lands on a listing page is a dead link, whatev
      the token would call that dead. */
   ok('an /apply sub-page bouncing to its job page (id kept, shallower) is not dead',
     !redirectedAway('https://acme.com/jobs/12345/apply', 'https://acme.com/jobs/12345'));
+  /* THE FALSE CLOSE THE FIRST RUN MADE: a tracker link landing on the same
+     posting under a DIFFERENT id, one segment shallower. A landing page that
+     carries an id of its own is a job page, not a listing. Real Festo shape. */
+  ok('a tracker link landing on a job page under another id is NOT dead (Festo)',
+    !redirectedAway('https://festo-se-co-kg.contactrh.com/jobs/12312/44445381/en_GB',
+      'https://jobs.festo.com/job/Islandia-AI-Adoption-and-Digital-Mindset-Intern-FL-11749/1419984433/?utm_campaign=x'));
+  ok('a listing page with a tracking number in its QUERY is still a listing — the path decides',
+    redirectedAway('https://job-boards.greenhouse.io/cloudsek/jobs/6200261004', 'https://job-boards.greenhouse.io/cloudsek?error=true&t=1726650000'));
+  ok('…while the real listing bounces still close: Synopsys home, Anduril open-roles',
+    redirectedAway('https://careers.synopsys.com/job/-/-/44408/100721402256', 'https://careers.synopsys.com/')
+    && redirectedAway('https://boards.greenhouse.io/andurilindustries/jobs/5236579007?gh_jid=5236579007', 'https://www.anduril.com/open-roles'));
   /* NOT PINNED, BY CONSTRUCTION: checkLink also requires res.redirected. Without
      an HTTP redirect the fetch API's res.url equals the requested URL, so the
      guard can only differ on a response fetch cannot produce; a fixture that
