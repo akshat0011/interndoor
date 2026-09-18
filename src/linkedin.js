@@ -54,6 +54,8 @@ const DESCRIPTION_SELECTORS = [
  * f_TPR + sortBy=DD is the cheapest way to keep the page count — and therefore
  * the request count — low.
  */
+export const EXPERIENCE_CODES = { internship: '1', entry: '2', entrylevel: '2', associate: '3', midsenior: '4', midseniorlevel: '4', director: '5', executive: '6' };
+
 export function buildSearchUrl(search, filters, { start = 0 } = {}) {
   const params = new URLSearchParams();
 
@@ -81,6 +83,16 @@ export function buildSearchUrl(search, filters, { start = 0 } = {}) {
     params.set('f_JT', [...new Set(codes)].join(','));
   }
   if (search.workplaceTypes?.length) params.set('f_WT', search.workplaceTypes.join(','));
+  // LinkedIn's experience-level facet. Verified codes: 1 internship, 2 entry
+  // level, 3 associate, 4 mid-senior, 5 director, 6 executive. Used by the
+  // entry-level search, whose results carry no intern word to admit them on —
+  // the facet is the evidence the title cannot give.
+  if (search.experienceLevels?.length) {
+    const codes = search.experienceLevels
+      .map((l) => EXPERIENCE_CODES[String(l).toLowerCase().replace(/[\s_-]+/g, '')])
+      .filter(Boolean);
+    if (codes.length) params.set('f_E', [...new Set(codes)].join(','));
+  }
   if (search.distance) params.set('distance', String(search.distance));
   if (start > 0) params.set('start', String(start));
 
@@ -1286,6 +1298,18 @@ export async function openAndExtract(page, card, cfg) {
        rather than guessed at. Recorded even when the title already says
        intern, so the two can be compared later. */
     const employmentTag = (headerText.match(/\b(Internship|Full-time|Part-time|Contract|Temporary|Volunteer)\b/i) || [])[1] || null;
+    /* LinkedIn's SENIORITY chip — "On-site · Full-time · Entry level". Read as
+       an exact part of a dot-separated line, never as a substring of the
+       header: the header holds the TITLE, and "Associate Software Engineer"
+       would otherwise read as the Associate seniority. A line that is nothing
+       but the chip counts too (the redesign renders chips one per line). */
+    const SENIORITY = /^(Internship|Entry level|Associate|Mid-Senior level|Director|Executive)$/i;
+    let seniorityTag = null;
+    for (const l of headerLines) {
+      const parts = l.includes('·') ? l.split('·').map((x) => x.trim()) : [l.trim()];
+      const hit = parts.find((x) => SENIORITY.test(x));
+      if (hit) { seniorityTag = hit; break; }
+    }
     // NOT named `location`. A `const location` here is scoped to the whole
     // page.evaluate callback, which puts the page's own `location` in the
     // temporal dead zone for every line above — including the `location.href`
@@ -1350,7 +1374,7 @@ export async function openAndExtract(page, card, cfg) {
 
     const detailLogo = pane.querySelector('img[src*="licdn.com"]')?.getAttribute('src') ?? '';
 
-    return { jobId, title, company, location: locationText, workplaceType, employmentTag, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
+    return { jobId, title, company, location: locationText, workplaceType, employmentTag, seniorityTag, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
              logoUrl: /^https?:\/\//.test(detailLogo) ? detailLogo : '' };
   }, DESCRIPTION_SELECTORS);
 
