@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 18 Sep 2026 20:17:11 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 20:50:49 GMT</lastBuildDate>
+  <item>
+    <title>Intern - ERP Transformation — Atom</title>
+    <link>https://interndoor.com/jobs/atom-intern-erp-transformation-4468033061</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/atom-intern-erp-transformation-4468033061</guid>
+    <pubDate>Fri, 18 Sep 2026 20:50:49 GMT</pubDate>
+    <description>Company: Atom · Location: India
+• Support oracle cloud erp projects from requirements to deployment
+• Work with finance modules like gl, ap, ar, and tax configuration
+• Gain hands-on experience in oracle functional consulting</description>
+  </item>
   <item>
     <title>Forward Deployed Engineer, Managed Services — Outreach</title>
     <link>https://interndoor.com/jobs/outreach-forward-deployed-engineer-managed-services-4468017235</link>
@@ -497,16 +507,6 @@
 • Develop flutter web and dart apps for a saas security platform
 • Work with rest apis, json, and responsive ui frameworks
 • Collaborate with product and backend teams using git</description>
-  </item>
-  <item>
-    <title>Junior PHP Developer Internship in Thane, Navi Mumbai, Mumbai — FynTune Solution Private Limited</title>
-    <link>https://interndoor.com/jobs/fyntune-solution-private-limited-junior-php-developer-internship-in-thane-navi-mumbai-mumbai-4467924162</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/fyntune-solution-private-limited-junior-php-developer-internship-in-thane-navi-mumbai-mumbai-4467924162</guid>
-    <pubDate>Wed, 16 Sep 2026 00:07:21 GMT</pubDate>
-    <description>Company: FynTune Solution Private Limited · Location: Thane, Maharashtra, India
-• Develop and maintain web apps using PHP and Laravel
-• Collaborate with UX team and work on data services APIs
-• Refactor code for scalability and use test-driven development</description>
   </item>
 </channel>
 </rss>
