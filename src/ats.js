@@ -718,6 +718,30 @@ PROVIDERS.amazon = {
  * untouched — reversing "London, London" changes nothing and reversing a bare
  * city would be inventing an order that is not there.
  */
+/**
+ * The job page for a Microsoft position. MICROSOFT MOVED ITS CAREERS SITE and
+ * the old URL is a trap, not a 404: `jobs.careers.microsoft.com/global/en/job/
+ * <id>` answers 301 to the careers HOME PAGE with the id dropped, so a reader
+ * lands on "Careers at Microsoft" with no job in sight — and nothing here
+ * notices, because a redirect to a 200 page is not a dead link. Found 18 Sep
+ * 2026 when every Microsoft ATS row on the board opened that way while the
+ * LinkedIn copy of the same posting opened fine; 41 live rows were affected.
+ *
+ * The search API returns `positionUrl` RELATIVE (`/careers/job/<id>`), which
+ * is why a `startsWith('http')` check never used it and every row fell to the
+ * old-host fallback. Now: an absolute positionUrl is kept, a relative one is
+ * resolved against the new host, and the fallback is the new host too. No
+ * `?domain=` parameter — measured optional, and §8's Eightfold rule is that a
+ * tenant parameter that changes nothing is one that can only go stale.
+ */
+export const MICROSOFT_SITE = 'https://apply.careers.microsoft.com';
+export function microsoftJobUrl(positionUrl, id) {
+  const u = String(positionUrl ?? '').trim();
+  if (/^https?:\/\//i.test(u)) return u;
+  if (u.startsWith('/')) return `${MICROSOFT_SITE}${u}`;
+  return `${MICROSOFT_SITE}/careers/job/${id}`;
+}
+
 export function microsoftPlace(loc) {
   const parts = String(loc ?? '').split(',').map((s) => s.trim()).filter(Boolean);
   if (parts.length < 3) return parts.length ? parts.join(', ') : null;
@@ -763,9 +787,7 @@ PROVIDERS.microsoft = {
             location: microsoftPlace(p.locations?.[0] ?? p.location),
             // The board's own wording, kept in case a reversal ever mis-reads.
             locationAlt: [p.locations?.[0] ?? p.location].filter(Boolean),
-            url: p.positionUrl?.startsWith('http')
-              ? p.positionUrl
-              : `https://jobs.careers.microsoft.com/global/en/job/${id}`,
+            url: microsoftJobUrl(p.positionUrl, id),
             postedAt: p.postedTs ? p.postedTs * 1000 : null,
             department: p.department,
             remote: p.workLocationOption ?? p.locationFlexibility,
