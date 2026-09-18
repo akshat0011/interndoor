@@ -129,6 +129,27 @@ check('a positive built of tech words is not caught', learn(store,
   { term: 'software development', isTech: true, ...posting }, tech, BLOCKED).why,
   'not present in the posting');
 
+console.log('\n== a positive built only from generic role and level words is refused ==');
+/* THE MIRROR OF THE NEGATIVES' GUARD. A multi-word positive outranks every
+   negative in roles.js, so "associate engineer" — learned from one Dominion
+   Energy intern card — admitted Eaton's "Associate Engineer - Mechanical" past
+   the `mechanical` negative on 18 Sep 2026. Every case is a refusal, so nothing
+   is written; the "not present in the posting" cases prove execution got past
+   this guard. */
+const GENERIC_POS = 'a positive built only from generic role and level words — it would outrank real negatives';
+const pos = (term, builtIns = tech) => learn(store, { term, isTech: true, ...posting }, builtIns, BLOCKED).why;
+check('"associate engineer" is refused as a positive', pos('associate engineer'), GENERIC_POS);
+check('"systems engineer" is refused — §9 decided systems engineering is not a positive', pos('systems engineer'), GENERIC_POS);
+check('"member of technical staff" is refused', pos('member of technical staff'), GENERIC_POS);
+check('"senior staff engineer" is refused', pos('senior staff engineer'), GENERIC_POS);
+check('a bare "engineer" is refused', pos('engineer'), GENERIC_POS);
+check('…but a level word beside a REAL tech word passes this guard', pos('software engineer i'), 'not present in the posting');
+check('"android developer" passes', pos('android developer'), 'not present in the posting');
+check('"embedded systems" passes — "embedded" is the signal', pos('embedded systems'), 'not present in the posting');
+check('"data engineer" passes', pos('data engineer'), 'not present in the posting');
+check('the guard is for POSITIVES only: "associate engineer" as a negative is not caught by it',
+  why('associate engineer', { builtIns: tech }), 'not present in the posting');
+
 console.log('\n== nothing was written ==');
 check('the vocabulary is untouched', Object.keys(store.terms), []);
 

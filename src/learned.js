@@ -22,6 +22,24 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
 import { log } from './logger.js';
+import { GENERIC_POSITIVE } from './roles.js';
+
+/**
+ * Words that place a role on a ladder without saying what the work is. A
+ * learned POSITIVE built only from these and the generic role words below
+ * carries no tech signal — and, because a multi-word positive outranks every
+ * negative in roles.js, it admits whatever sits beside it: "associate engineer",
+ * learned from one Dominion Energy intern card, admitted Eaton's "Associate
+ * Engineer - Mechanical" straight past the `mechanical` negative on 18 Sep
+ * 2026, the day the entry-level search first surfaced that title shape.
+ * "systems engineer" was learned the same way, against §9's deliberate
+ * decision that systems engineering is as often aerospace as software.
+ */
+const LEVEL_WORDS = new Set([
+  'associate', 'junior', 'jr', 'senior', 'sr', 'staff', 'principal', 'lead', 'graduate', 'entry', 'level',
+  'i', 'ii', 'iii', 'iv', '1', '2', '3', 'member', 'professional', 'specialist', 'executive', 'officer',
+  'system', 'systems', 'of', 'the', 'and', '&',
+]);
 
 const FILE = join(PATHS.state, 'learned-roles.json');
 const MIN_LEN = 3;
@@ -107,6 +125,15 @@ export function unusableShape(term, isTech, builtInPolarity, blockedTerms = []) 
     }
     if (signal.every((w) => techWords.has(w))) {
       return 'a negative built only from words the built-in vocabulary calls tech';
+    }
+  } else {
+    /* THE MIRROR CASE, which the 10 Sep guard left out as harmless: a positive
+       whose every word is a generic role word or a level word says the posting
+       is a job, not that it is software, and it will OUTRANK real negatives. */
+    const genericWords = new Set([...LEVEL_WORDS]);
+    for (const g of GENERIC_POSITIVE) for (const w of wordsOf(g)) genericWords.add(w);
+    if (signal.every((w) => genericWords.has(w))) {
+      return 'a positive built only from generic role and level words — it would outrank real negatives';
     }
   }
 
