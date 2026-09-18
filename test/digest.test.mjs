@@ -8,7 +8,7 @@
  * Run under several timezones, because "today" is the whole gate: TZ=UTC,
  * America/New_York, Asia/Kolkata and Pacific/Kiritimati all reach this file.
  */
-import { buildDigest, digestDue, dayKey, sendStatus, digestRoles } from '../src/digest.js';
+import { buildDigest, digestDue, dayKey, sendStatus, digestRoles, digestHeadline } from '../src/digest.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -77,6 +77,20 @@ check('a null set filters nothing (the caller decides)',
 console.log('\n== the mail itself ==');
 const mail = buildDigest([row(), row({ job_id: '900002', title: 'Data Intern' })], cfg, { region: 'IN', now });
 check('a count leads the subject', mail.subject, '2 new engineering internships in India');
+
+/* A fresher role is not an internship, and India's first full-time rows
+   arrive with the 18 Sep 2026 vocabulary. The store column is employment_type;
+   the digest must read that, not the projection's employmentType. */
+{
+  const ft = row({ job_id: '900007', title: 'Software Engineer I', employment_type: 'fulltime' });
+  const mixed = buildDigest([row(), row({ job_id: '900002' }), ft], cfg, { region: 'IN', now });
+  check('a mixed day names both kinds', mixed.subject, '2 new engineering internships and 1 fresher engineering role in India');
+  check('the body line says the same', mixed.body.split('\n')[0], '2 new engineering internships and 1 fresher engineering role in India since yesterday.');
+  const only = buildDigest([ft, row({ job_id: '900008', title: 'SDE-1', employment_type: 'fulltime' })], cfg, { region: 'IN', now });
+  check('a fresher-only day never says internship', only.subject, '2 new fresher engineering roles in India');
+  check('the pure headline, singular fresher', digestHeadline([{ employment_type: 'fulltime' }], 'India'), '1 new fresher engineering role in India');
+  check('the pure headline reads the projection shape too', digestHeadline([{ employmentType: 'fulltime' }, {}], 'the US'), '1 new engineering internship and 1 fresher engineering role in the US');
+}
 check('singular reads correctly',
   buildDigest([row()], cfg, { region: 'IN', now }).subject, '1 new engineering internship in India');
 check('the role is linked', /\]\(https:\/\/interndoor\.com\/jobs\/kepler-systems-backend-intern-900001\?/.test(mail.body), true);
