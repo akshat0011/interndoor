@@ -1402,7 +1402,10 @@ function renderDetail(job) {
   note.append(document.createTextNode('This is an automatic summary. '));
   const sourceHref = safeUrl(job.url);
   if (sourceHref) {
-    const link = el('a', null, 'Read the full posting on LinkedIn');
+    // A careers-board row's source is the employer's own site, not LinkedIn;
+    // naming LinkedIn on it was a false sentence on the pane.
+    const onLinkedIn = /^https:\/\/([a-z0-9-]+\.)*linkedin\.com\//i.test(sourceHref);
+    const link = el('a', null, onLinkedIn ? 'Read the full posting on LinkedIn' : 'Read the full posting on the employer\'s site');
     link.href = sourceHref;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
