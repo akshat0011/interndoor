@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 18 Sep 2026 15:22:38 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 15:54:49 GMT</lastBuildDate>
+  <item>
+    <title>Products &amp; Systems Engineer — Capgemini Engineering</title>
+    <link>https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4469186423</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4469186423</guid>
+    <pubDate>Fri, 18 Sep 2026 15:54:49 GMT</pubDate>
+    <description>Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India
+• Design and develop engineered systems and products
+• Apply engineering principles to ensure safety and reliability
+• Collaborate with teams to support lifecycle management</description>
+  </item>
   <item>
     <title>Intern — IQVIA</title>
     <link>https://interndoor.com/jobs/iqvia-intern-4469172900</link>
@@ -27,6 +37,77 @@
 • Develop and test software components using Python and modern frameworks
 • Build and validate REST APIs and AI-powered solutions with LLMs and RAG
 • Design automated test frameworks and contribute to backend services with FastAPI</description>
+  </item>
+  <item>
+    <title>Gen Ai Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-gen-ai-engineer-4440250967</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-gen-ai-engineer-4440250967</guid>
+    <pubDate>Fri, 18 Sep 2026 14:55:41 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Build and optimize RAG pipelines for knowledge-based apps
+• Deploy AI agents using LangChain, LangGraph, or CrewAI
+• Integrate GenAI with enterprise systems and cloud platforms</description>
+  </item>
+  <item>
+    <title>GCP Data Engineer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-gcp-data-engineer-4467877251</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-gcp-data-engineer-4467877251</guid>
+    <pubDate>Fri, 18 Sep 2026 14:55:37 GMT</pubDate>
+    <description>Company: Cognizant · Location: Bhubaneswar, Odisha, India
+• Build data pipelines and lake solutions on GCP
+• Use BigQuery, Dataflow, Python, and SQL
+• Work on data transformation and analytics projects</description>
+  </item>
+  <item>
+    <title>Associate Engineer - Mechanical — Eaton</title>
+    <link>https://interndoor.com/jobs/eaton-associate-engineer-mechanical-4466699421</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/eaton-associate-engineer-mechanical-4466699421</guid>
+    <pubDate>Fri, 18 Sep 2026 14:55:14 GMT</pubDate>
+    <description>Company: Eaton · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years
+• Create and revise engineering documentation for product design and manufacturing
+• Use cad tools like catia and plm software for component design and data control
+• Collaborate with teams to develop mechanical systems and ensure design standards</description>
+  </item>
+  <item>
+    <title>Associate Engineer — Eaton</title>
+    <link>https://interndoor.com/jobs/eaton-associate-engineer-4466901404</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/eaton-associate-engineer-4466901404</guid>
+    <pubDate>Fri, 18 Sep 2026 14:55:10 GMT</pubDate>
+    <description>Company: Eaton · Location: Pune Division, Maharashtra, India
+• Create and revise engineering documentation for product design and manufacturing
+• Use cad tools like catia and plm software for component design and data control
+• Collaborate with teams to develop mechanical systems and ensure design standards</description>
+  </item>
+  <item>
+    <title>Associate Software Engineer — IBM</title>
+    <link>https://interndoor.com/jobs/ibm-associate-software-engineer-4466693517</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-associate-software-engineer-4466693517</guid>
+    <pubDate>Fri, 18 Sep 2026 14:55:04 GMT</pubDate>
+    <description>Company: IBM · Location: Pune Division, Maharashtra, India
+• Develop and test software solutions for user problems
+• Work with AI tools to improve productivity and code quality
+• Follow SDLC and apply best practices for reliable features</description>
+  </item>
+  <item>
+    <title>Gen AI Engineer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-gen-ai-engineer-4467867454</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-gen-ai-engineer-4467867454</guid>
+    <pubDate>Fri, 18 Sep 2026 14:54:59 GMT</pubDate>
+    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
+• Build and deploy deep learning models for text, speech, image, and video analysis
+• Use Python/R/SQL and cloud tools for data preprocessing and feature engineering
+• Collaborate with domain teams to design AI solutions for business challenges
+• Deploy models on cloud or on-prem and integrate with applications via REST APIs</description>
+  </item>
+  <item>
+    <title>Azure Data Engineer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-azure-data-engineer-4467882207</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-azure-data-engineer-4467882207</guid>
+    <pubDate>Fri, 18 Sep 2026 14:54:53 GMT</pubDate>
+    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
+• Build scalable data pipelines on Azure
+• Use PySpark and SQL for data transformation
+• Work with Azure Data Factory and Databricks</description>
   </item>
   <item>
     <title>Intern - Zoho CRM Developer — HaystackAnalytics</title>
@@ -117,13 +198,6 @@
 • Collaborate with engineering, product, and operations teams</description>
   </item>
   <item>
-    <title>Associate Software Engineer, Development — Icertis</title>
-    <link>https://interndoor.com/jobs/icertis-associate-software-engineer-development-ats-oraclecloud-iaaviz-fa-ocs-oraclecloud-com-7680</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/icertis-associate-software-engineer-development-ats-oraclecloud-iaaviz-fa-ocs-oraclecloud-com-7680</guid>
-    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: Icertis · Location: Pune, Maharashtra, India</description>
-  </item>
-  <item>
     <title>Intern - System — Valeo</title>
     <link>https://interndoor.com/jobs/valeo-intern-system-ats-workday-valeo-wd3-valeo-jobs-req2026079468</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/valeo-intern-system-ats-workday-valeo-wd3-valeo-jobs-req2026079468</guid>
@@ -132,6 +206,13 @@
 • Develop and maintain software systems using python and java
 • Work with sql databases and version control tools like git
 • Join a global r&amp;d team focused on sustainable mobility solutions</description>
+  </item>
+  <item>
+    <title>Associate Software Engineer, Development — Icertis</title>
+    <link>https://interndoor.com/jobs/icertis-associate-software-engineer-development-ats-oraclecloud-iaaviz-fa-ocs-oraclecloud-com-7680</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/icertis-associate-software-engineer-development-ats-oraclecloud-iaaviz-fa-ocs-oraclecloud-com-7680</guid>
+    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Icertis · Location: Pune, Maharashtra, India</description>
   </item>
   <item>
     <title>SDE-1, Expansions Tech and Product — Amazon</title>
@@ -425,83 +506,6 @@
 • Test across multiple browsers and OS versions
 • Document and track bugs with clear steps and severity
 • Collaborate with QA and engineering teams daily</description>
-  </item>
-  <item>
-    <title>Apprentice Integrity Engineer — Oceaneering</title>
-    <link>https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/oceaneering-apprentice-integrity-engineer-4467738356</guid>
-    <pubDate>Tue, 15 Sep 2026 12:03:58 GMT</pubDate>
-    <description>Company: Oceaneering · Location: Chandigarh, Chandigarh, India
-• Support software testing, configuration, and deployment of integrity management tools
-• Work with python, power bi, and digital platforms for inspection data analysis
-• Collaborate with sme&#39;s and it teams on software development and workflow improvements</description>
-  </item>
-  <item>
-    <title>Post Graduate Engineering Trainee — Lennox</title>
-    <link>https://interndoor.com/jobs/lennox-post-graduate-engineering-trainee-4467729024</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/lennox-post-graduate-engineering-trainee-4467729024</guid>
-    <pubDate>Tue, 15 Sep 2026 10:51:59 GMT</pubDate>
-    <description>Company: Lennox · Location: Chennai, Tamil Nadu, India
-• Support product data management and engineering change processes
-• Work with teamcenter and rulestream for boms and workflow execution
-• Collaborate with cross-functional teams on engineering data</description>
-  </item>
-  <item>
-    <title>Java Spring Boot Intern — Webknot Technologies</title>
-    <link>https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/webknot-technologies-java-spring-boot-intern-4465525276</guid>
-    <pubDate>Tue, 15 Sep 2026 07:30:52 GMT</pubDate>
-    <description>Company: Webknot Technologies · Location: Bengaluru, Karnataka, India
-• Develop backend apps with Java and Spring Boot
-• Work with REST APIs, databases, and cloud tech
-• Contribute to microservices and event-driven systems</description>
-  </item>
-  <item>
-    <title>AI/ML Intern (Generative AI &amp; LLM) — Webknot Technologies</title>
-    <link>https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/webknot-technologies-ai-ml-intern-generative-ai-and-llm-4454616072</guid>
-    <pubDate>Tue, 15 Sep 2026 07:27:18 GMT</pubDate>
-    <description>Company: Webknot Technologies · Location: Bengaluru, Karnataka, India
-• Build AI/ML apps with Python, LLMs, and LangChain
-• Work with vector databases, embeddings, and RAG pipelines
-• Develop backend APIs and debug AI pipelines</description>
-  </item>
-  <item>
-    <title>Research and AI Intern — Mastek</title>
-    <link>https://interndoor.com/jobs/mastek-research-and-ai-intern-4465513166</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastek-research-and-ai-intern-4465513166</guid>
-    <pubDate>Tue, 15 Sep 2026 07:13:13 GMT</pubDate>
-    <description>Company: Mastek · Location: Navi Mumbai, Maharashtra, India
-• Research accounts for sales, build tools for content and project management
-• Use data from zoominfo, semrush, and google for insights
-• Create ai models for marketing metrics and sales pipelines</description>
-  </item>
-  <item>
-    <title>Data Analyst Apprentice - 11 Months Contract — FE fundinfo</title>
-    <link>https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4467483104</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4467483104</guid>
-    <pubDate>Tue, 15 Sep 2026 06:07:46 GMT</pubDate>
-    <description>Company: FE fundinfo · Location: Chennai, Tamil Nadu, India · Duration: 11 months
-• Update mutual fund data in internal databases
-• Validate ai-extracted data against sources
-• Generate reports and support data requests</description>
-  </item>
-  <item>
-    <title>Diploma Engineering Trainee — Konecranes</title>
-    <link>https://interndoor.com/jobs/konecranes-diploma-engineering-trainee-ats-smartrecruiters-konecranes-744000149507229</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/konecranes-diploma-engineering-trainee-ats-smartrecruiters-konecranes-744000149507229</guid>
-    <pubDate>Tue, 15 Sep 2026 05:57:34 GMT</pubDate>
-    <description>Company: Konecranes · Location: Vadodara, in</description>
-  </item>
-  <item>
-    <title>Trainer Intern — Instawork</title>
-    <link>https://interndoor.com/jobs/instawork-trainer-intern-ats-greenhouse-instawork-4651150006</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/instawork-trainer-intern-ats-greenhouse-instawork-4651150006</guid>
-    <pubDate>Tue, 15 Sep 2026 05:09:37 GMT</pubDate>
-    <description>Company: Instawork · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Train and certify field operators in practical tasks and SOPs
-• Travel across India for on-site training and assessments
-• Make objective certification decisions with strict process adherence</description>
   </item>
 </channel>
 </rss>
