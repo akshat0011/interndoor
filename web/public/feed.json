@@ -6,11 +6,59 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-4467886745",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-4467886745",
+      "id": "https://interndoor.com/jobs/siemens-healthineers-medical-software-engineer-4468001127",
+      "url": "https://interndoor.com/jobs/siemens-healthineers-medical-software-engineer-4468001127",
+      "title": "Medical Software Engineer — Siemens Healthineers",
+      "content_text": "Company: Siemens Healthineers · Location: Patti, Punjab, India\n• Design and implement medical interfaces using HL7, FHIR, Dicom, and API standards\n• Collaborate with sales and customers to develop interoperability solutions\n• Manage international projects with strict deadlines and customer support",
+      "date_published": "2026-09-18T18:09:40.748Z",
+      "authors": [
+        {
+          "name": "Siemens Healthineers"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jacobs-apprentice-engineer-telecom-4469190659",
+      "url": "https://interndoor.com/jobs/jacobs-apprentice-engineer-telecom-4469190659",
+      "title": "Apprentice Engineer - Telecom — Jacobs",
+      "content_text": "Company: Jacobs · Location: Mumbai Metropolitan Region\n• Support design and implementation of telecom and it infrastructure systems\n• Work with senior engineers on structured cabling and fiber optic networks\n• Prepare technical documents and engineering drawings for data center projects",
+      "date_published": "2026-09-18T17:42:26.148Z",
+      "authors": [
+        {
+          "name": "Jacobs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-software-specialist-scada-networking-4469196634",
+      "url": "https://interndoor.com/jobs/ge-vernova-software-specialist-scada-networking-4469196634",
+      "title": "Software Specialist - SCADA / Networking — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Noida, Uttar Pradesh, India · Duration: 0-3 years\n• Implement MES solutions and manage technical deliverables across project lifecycle\n• Work with clients to design systems and ensure go-live readiness\n• Collaborate with internal teams and customers to deliver tailored solutions",
+      "date_published": "2026-09-18T17:39:45.796Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-ai-forward-deployed-engineer-offshore-4467887654",
+      "url": "https://interndoor.com/jobs/zensar-technologies-ai-forward-deployed-engineer-offshore-4467887654",
+      "title": "AI Forward Deployed Engineer (Offshore) — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and deploy AI/ML applications and automation tools\n• Work with LLMs, APIs, cloud platforms, and enterprise systems\n• Collaborate with cross-functional teams on scalable solutions",
+      "date_published": "2026-09-18T17:32:51.665Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-apprentice-4467887736",
+      "url": "https://interndoor.com/jobs/american-express-apprentice-4467887736",
       "title": "Apprentice — American Express",
       "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Design and develop products that solve business challenges using data and analytics\n• Collaborate with cross-functional teams to build and test innovative solutions\n• Create and implement data-driven strategies to improve customer engagement and growth",
-      "date_published": "2026-09-18T17:18:38.927Z",
+      "date_published": "2026-09-18T17:31:04.789Z",
       "authors": [
         {
           "name": "American Express"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Nvidia"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sprinklr-intern-ats-workday-sprinklr-wd1-careers-113497-job",
-      "url": "https://interndoor.com/jobs/sprinklr-intern-ats-workday-sprinklr-wd1-careers-113497-job",
-      "title": "Intern — Sprinklr",
-      "content_text": "Company: Sprinklr · Location: India - Haryana - Gurgaon\n• Build full-stack features and create reusable code for engineering efficiency\n• Work on challenging technical problems with high-quality deliverables\n• Collaborate with teams shaping product and technology roadmaps",
-      "date_published": "2026-09-16T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Sprinklr"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pitney-bowes-intern-4466593442",
-      "url": "https://interndoor.com/jobs/pitney-bowes-intern-4466593442",
-      "title": "Intern — Pitney Bowes",
-      "content_text": "Company: Pitney Bowes · Location: Pune/Pimpri-Chinchwad Area · Duration: 0–2 years\n• Write scripts to automate network monitoring and reduce manual tasks\n• Use tools like Grafana and Terraform to improve infrastructure processes\n• Work in a 24x7 NOC environment with cross-team collaboration",
-      "date_published": "2026-09-15T23:35:56.066Z",
-      "authors": [
-        {
-          "name": "Pitney Bowes"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-ats-greenhouse-zoominfo-8759686002",
-      "url": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-ats-greenhouse-zoominfo-8759686002",
-      "title": "Software Engineer I - Salesforce — ZoomInfo",
-      "content_text": "Company: ZoomInfo · Location: Bengaluru, Karnataka, India · Duration: 0–2 years\n• Resolve daily Salesforce and L2O support tickets with timely, high-quality solutions\n• Perform data maintenance and light QA testing using Salesforce tools and data loaders\n• Collaborate with cross-functional teams to ensure operational workflows and system integrity",
-      "date_published": "2026-09-15T19:01:56.000Z",
-      "authors": [
-        {
-          "name": "ZoomInfo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4466567298",
-      "url": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4466567298",
-      "title": "Apprentice — AtkinsRéalis",
-      "content_text": "Company: AtkinsRéalis · Location: Mumbai Metropolitan Region\n• Support contaminated land management and groundwater modelling projects\n• Use FEFLOW, MODFLOW, and GIS tools for technical analysis\n• Collaborate with teams on infrastructure and environmental projects",
-      "date_published": "2026-09-15T18:29:18.638Z",
-      "authors": [
-        {
-          "name": "AtkinsRéalis"
         }
       ]
     }
