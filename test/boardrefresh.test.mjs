@@ -146,5 +146,24 @@ console.log('\n== wired into the page ==');
     (src.match(/fetch\(DATA_URL, \{ cache: 'no-cache' \}\)/g) ?? []).length === 2);
 }
 
+console.log('\n== the source link names LinkedIn only when the source IS LinkedIn ==');
+{
+  /* A careers-board row's job.url is the employer's own page; the pane used to
+     say "Read the full posting on LinkedIn" on every row, which was false on
+     every ATS posting (seen 18 Sep 2026 on a Microsoft row). The label is
+     chosen by an anchored linkedin.com host test on the very href it decorates. */
+  const fn = src.slice(src.indexOf('const sourceHref = safeUrl(job.url);'), src.indexOf('const sourceHref = safeUrl(job.url);') + 700);
+  ok('the LinkedIn wording is behind an anchored linkedin.com host test',
+    /onLinkedIn = \/\^https:\\\/\\\/\(\[a-z0-9-\]\+\\\.\)\*linkedin\\\.com\\\/\/i\.test\(sourceHref\)/.test(fn));
+  ok('both wordings exist and the LinkedIn one is the conditional branch',
+    /onLinkedIn \? 'Read the full posting on LinkedIn' : 'Read the full posting on the employer\\'s site'/.test(fn));
+  /* Run the real regex the source declares against the two shapes. */
+  const m = fn.match(/onLinkedIn = (\/.+?\/i)\.test/);
+  const re = m && new Function(`return ${m[1]}`)();
+  ok('the declared regex accepts a LinkedIn job URL', !!re && re.test('https://www.linkedin.com/jobs/view/123/'));
+  ok('and refuses the employer host', !!re && !re.test('https://apply.careers.microsoft.com/careers/job/1'));
+  ok('and refuses a lookalike with linkedin.com embedded later', !!re && !re.test('https://evil.example/?u=https://linkedin.com/jobs/view/1'));
+}
+
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
 process.exit(fail === 0 ? 0 : 1);
