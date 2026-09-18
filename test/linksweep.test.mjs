@@ -6,7 +6,7 @@
 import { readFileSync } from 'node:fs';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
-import { deadFromStatus, hostOf, checkLink, sweepApplyLinks, CONFIRM } from '../src/linksweep.js';
+import { deadFromStatus, hostOf, checkLink, sweepApplyLinks, CONFIRM, redirectedAway, postingToken, HOST_CLOSE_CAP } from '../src/linksweep.js';
 import { closableFrom } from '../src/publish.js';
 
 let pass = 0, fail = 0;
@@ -196,6 +196,75 @@ console.log('\n== every row checked is stamped, not only the ones that close =='
   const runner = read('bin/link-sweep.js');
   ok('the runner stamps every checked row', /onChecked:[\s\S]{0,80}store\.markLinkChecked/.test(runner));
   ok('…and a dry run stamps nothing', /onChecked: DRY_RUN \? undefined/.test(runner));
+}
+
+console.log('\n== a redirect that lands on a listing page is a dead link, whatever the status ==');
+{
+  /* The two real shapes that a status check calls alive: Greenhouse's closed
+     job (CloudSEK, 18 Sep 2026) and Microsoft's retired careers host. */
+  const GH = 'https://job-boards.greenhouse.io/cloudsek/jobs/6200261004';
+  ok('Greenhouse closed: 302 → /<board>?error=true is dead', redirectedAway(GH, 'https://job-boards.greenhouse.io/cloudsek?error=true'));
+  ok('Microsoft retired host → careers home with the id dropped is dead',
+    redirectedAway('https://jobs.careers.microsoft.com/global/en/job/1970393557000861', 'https://apply.careers.microsoft.com/careers'));
+  ok('a host move that KEEPS the id is not dead',
+    !redirectedAway('https://jobs.careers.microsoft.com/global/en/job/1970393557000861', 'https://apply.careers.microsoft.com/careers/job/1970393557000861'));
+  ok('a login bounce carrying the id in its query is not dead',
+    !redirectedAway('https://acme.wd1.myworkdayjobs.com/en-US/Acme/job/Austin/SWE-Intern_JR12345', 'https://acme.wd1.myworkdayjobs.com/login?redirect=%2Fjob%2FAustin%2FSWE-Intern_JR12345'));
+  ok('a same-depth slug page without the id is not dead (not shallower)',
+    !redirectedAway('https://acme.com/jobs/12345', 'https://acme.com/jobs/software-engineer-intern'));
+  ok('no redirect at all is not dead', !redirectedAway(GH, GH) && !redirectedAway(GH, '') && !redirectedAway('', GH));
+  ok('postingToken prefers the segment with the id, wherever it sits',
+    postingToken(GH) === '6200261004' && postingToken('https://acme.com/jobs/12345/apply') === '12345'
+    && postingToken('https://acme.com/careers/apply/') === 'apply' && postingToken('junk') === '');
+  /* The id is not always LAST: an /apply sub-page bouncing back to its job
+     page keeps the id and drops a segment — alive. Taking the last segment as
+     the token would call that dead. */
+  ok('an /apply sub-page bouncing to its job page (id kept, shallower) is not dead',
+    !redirectedAway('https://acme.com/jobs/12345/apply', 'https://acme.com/jobs/12345'));
+  /* NOT PINNED, BY CONSTRUCTION: checkLink also requires res.redirected. Without
+     an HTTP redirect the fetch API's res.url equals the requested URL, so the
+     guard can only differ on a response fetch cannot produce; a fixture that
+     says redirected:false with a different url would be pinning a fiction. */
+
+  /* checkLink reads the redirect off the response, so a fake fetch that says
+     "redirected, final url is the board home" must come back dead. */
+  const redirecting = async () => ({ status: 200, ok: true, redirected: true, url: 'https://job-boards.greenhouse.io/cloudsek?error=true' });
+  const r = await checkLink(GH, { fetchImpl: redirecting });
+  ok('checkLink calls it dead with a note that says where it went', r.dead === true && /redirected away to job-boards\.greenhouse\.io\/cloudsek\?error=true/.test(r.note), r.note);
+  const moved = async () => ({ status: 200, ok: true, redirected: true, url: 'https://apply.careers.microsoft.com/careers/job/1970393557000861' });
+  ok('…and NOT dead for a host move that keeps the id', (await checkLink('https://jobs.careers.microsoft.com/global/en/job/1970393557000861', { fetchImpl: moved })).dead === false);
+  const plain = async () => ({ status: 200, ok: true, redirected: false, url: GH });
+  ok('a plain 200 is still alive', (await checkLink(GH, { fetchImpl: plain })).dead === false);
+
+  /* And through the sweep: confirmed twice like a 404, then closed. */
+  let calls = 0;
+  const closed = [];
+  const res = await sweepApplyLinks([{ job_id: 'gh', company: 'CloudSEK', title: 'SDE Intern - Frontend', apply_url: GH }], {
+    check: async (u) => { calls += 1; return checkLink(u, { fetchImpl: redirecting }); },
+    onClose: (row, note) => closed.push(note), sleep: async () => {}, confirmGapMs: 1, hostGapMs: 1,
+  });
+  ok('the sweep closes it, after a second look', res.closed === 1 && calls === CONFIRM && /redirected away/.test(closed[0]));
+}
+
+console.log('\n== a whole host dying at once is held for a human, not closed ==');
+{
+  const rows = [];
+  for (let i = 0; i < 20; i++) rows.push({ job_id: `a${i}`, company: 'Acme', title: 'R', apply_url: `https://acme.com/jobs/${1000 + i}` });
+  rows.push({ job_id: 'b1', company: 'Beta', title: 'R', apply_url: 'https://beta.com/jobs/77' });
+  const warns = [];
+  const closed = [];
+  const res = await sweepApplyLinks(rows, {
+    check: async () => ({ status: 404, dead: true, note: 'HTTP 404' }),
+    onClose: (row) => closed.push(row.job_id), sleep: async () => {}, confirmGapMs: 1, hostGapMs: 1,
+    hostCloseCap: 3, log: { warn: (m) => warns.push(m), info: () => {} },
+  });
+  ok('only the cap closes on the dying host', closed.filter((id) => id.startsWith('a')).length === 3);
+  ok('the rest are HELD and counted', res.held === 17 && res.closed === 4);
+  ok('another host is unaffected by the first one\'s cap', closed.includes('b1'));
+  ok('one warning, naming the host', warns.length === 1 && /acme\.com/.test(warns[0]) && /restructure/.test(warns[0]), warns.join(' | '));
+  ok('the default cap is a real number the daily run uses', Number.isInteger(HOST_CLOSE_CAP) && HOST_CLOSE_CAP >= 5);
+  const runner = read('bin/link-sweep.js');
+  ok('the runner reports held rows', /held \(per-host cap\)/.test(runner));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

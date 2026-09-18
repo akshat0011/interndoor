@@ -52,7 +52,7 @@ const result = await sweepApplyLinks(rows, {
 });
 
 log.ok(`Link sweep: checked ${result.checked} of ${rows.length} (least recently checked first), ${result.alive} alive, ${result.unknown} unverified, `
-  + `${result.closed} closed${DRY_RUN ? ' (dry run — nothing written)' : ' — the next publish stubs them'}.`);
+  + `${result.closed} closed${result.held ? `, ${result.held} held (per-host cap)` : ''}${DRY_RUN ? ' (dry run — nothing written)' : ' — the next publish stubs them'}.`);
 
 if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
 store.close();
