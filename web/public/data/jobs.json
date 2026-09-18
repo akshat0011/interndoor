@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789750877699,
+ "generatedAt": 1789751186902,
  "region": "IN",
  "regionName": "India",
- "count": 295,
- "techCount": 295,
+ "count": 293,
+ "techCount": 293,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -63,7 +63,6 @@
   "Freight Tiger",
   "Fujitsu",
   "FynTune Solution Private Limited",
-  "Fynd",
   "GE Aerospace",
   "GE HealthCare",
   "GE Vernova",
@@ -243,7 +242,6 @@
   "Savli, Gujarat, India",
   "Surat, Gujarat, India",
   "Thane, Maharashtra, India",
-  "Tirupati Urban, Andhra Pradesh, India",
   "Vadodara, in",
   "gurgaon"
  ],
@@ -525,55 +523,6 @@
    "roleFingerprint": "cf104f0828",
    "cardFacts": [
     "Bhubaneswar",
-    "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4466699421",
-   "title": "Associate Engineer - Mechanical",
-   "company": "Eaton",
-   "matchedWatchlist": "Eaton Corporation",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/eaton.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": "1 to 3 years",
-   "applicants": "19 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "system design"
-   ],
-   "summary": "This full-time role involves designing mechanical systems and creating engineering documentation for product development. The candidate will work on component design, use cad tools, and collaborate with teams to ensure compliance with standards. It suits someone with mechanical engineering experience and proficiency in design software.",
-   "bullets": [
-    "Create and revise engineering documentation for product design and manufacturing",
-    "Use cad tools like catia and plm software for component design and data control",
-    "Collaborate with teams to develop mechanical systems and ensure design standards"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "catia",
-    "plm",
-    "cad",
-    "powerbi",
-    "power automate"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 hours ago",
-   "postedAt": 1789743314554,
-   "firstSeenAt": 1789750514555,
-   "lastSeenAt": 1789750514555,
-   "url": "https://www.linkedin.com/jobs/view/4466699421/",
-   "applyUrl": "https://eaton.eightfold.ai/careers/job/687238718769?utm_source=linkedin&domain=eaton.com",
-   "description": null,
-   "roleFingerprint": "9ce82a784f",
-   "cardFacts": [
-    "Pune Division",
     "Hybrid"
    ],
    "region": "IN"
@@ -4248,54 +4197,6 @@
    "roleFingerprint": null,
    "cardFacts": [
     "Gurugram"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4465893292",
-   "title": "Manufacturing Engineering Internship in Tirupati",
-   "company": "Fynd",
-   "matchedWatchlist": "Fynd",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/fynd.jpg",
-   "location": "Tirupati Urban, Andhra Pradesh, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "sql"
-   ],
-   "summary": "This internship involves supporting manufacturing operations by troubleshooting equipment and systems. Ideal for students with technical skills and interest in production support. Work includes resolving issues with mes and hardware, monitoring device health, and coordinating with teams during incidents. Requires communication in telugu and english.",
-   "bullets": [
-    "Support manufacturing systems and devices on the floor",
-    "Troubleshoot mes, hardware, and network issues",
-    "Monitor equipment health and reduce downtime",
-    "Work 12-hour shifts with production teams"
-   ],
-   "roleLabel": "Manufacturing support",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "sql",
-    "mes",
-    "networking"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1789085198122,
-   "firstSeenAt": 1789086578129,
-   "lastSeenAt": 1789086578129,
-   "url": "https://www.linkedin.com/jobs/view/4465893292/",
-   "applyUrl": "https://internshala.com/internship/detail/manufacturing-engineering-internship-in-tirupati-at-fynd1789027642/?utm_campaign=linkedin_d2002&utm_source=Linkedin_Partnership",
-   "description": null,
-   "roleFingerprint": "1c1eca9835",
-   "cardFacts": [
-    "Tirupati Urban",
-    "On-site"
    ],
    "region": "IN"
   },
