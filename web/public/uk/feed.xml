@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/uk/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the UK, listed within minutes of going live.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 18 Sep 2026 14:36:35 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 16:12:12 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, MS/PhD, Sim-Realism ML Infrastructure — Waymo</title>
+    <link>https://interndoor.com/uk/jobs/waymo-2027-summer-intern-ms-phd-sim-realism-ml-infrastructure-ats-greenhouse-waymo-8205680</link>
+    <guid isPermaLink="true">https://interndoor.com/uk/jobs/waymo-2027-summer-intern-ms-phd-sim-realism-ml-infrastructure-ats-greenhouse-waymo-8205680</guid>
+    <pubDate>Fri, 18 Sep 2026 16:12:12 GMT</pubDate>
+    <description>Company: Waymo · Location: London, England, United Kingdom
+• Maintain and improve systems for processing multi-modal data and feature sets
+• Work with ML frameworks like TensorFlow and Jax on simulation and inference
+• Collaborate on real-world autonomous driving use cases with industry leaders</description>
+  </item>
   <item>
     <title>Graduate Bridge Structures Engineer - Edinburgh (2027 Start) — AECOM</title>
     <link>https://interndoor.com/uk/jobs/aecom-graduate-bridge-structures-engineer-edinburgh-2027-start-ats-smartrecruiters-aecom2-744000150392685</link>
@@ -174,6 +184,16 @@
     <guid isPermaLink="true">https://interndoor.com/uk/jobs/aecom-graduate-bridge-structures-engineer-croydon-2026-ats-smartrecruiters-aecom2-744000149576079</guid>
     <pubDate>Tue, 15 Sep 2026 11:22:55 GMT</pubDate>
     <description>Company: AECOM · Location: Croydon, gb</description>
+  </item>
+  <item>
+    <title>Junior Data Engineer — Lendable</title>
+    <link>https://interndoor.com/uk/jobs/lendable-junior-data-engineer-ats-ashby-lendable-4479f8fd-0910-48f5-9525-62e55bef2edc</link>
+    <guid isPermaLink="true">https://interndoor.com/uk/jobs/lendable-junior-data-engineer-ats-ashby-lendable-4479f8fd-0910-48f5-9525-62e55bef2edc</guid>
+    <pubDate>Tue, 15 Sep 2026 08:27:41 GMT</pubDate>
+    <description>Company: Lendable · Location: London
+• Build scalable data pipelines using Snowflake, dbt, and AWS
+• Collaborate with product and engineering teams on data-driven solutions
+• Work in a fast-paced environment with high autonomy and ownership</description>
   </item>
   <item>
     <title>Software Development Intern — Clearwater Analytics</title>
@@ -396,20 +416,6 @@
 • Build software and collaborate with agile teams on real projects
 • Work on backend, frontend, cloud, or full-stack development
 • Contribute to secure and customer-first product development</description>
-  </item>
-  <item>
-    <title>Graduate Technology Services Consultant - Manchester (2027 start) — AECOM</title>
-    <link>https://interndoor.com/uk/jobs/aecom-graduate-technology-services-consultant-manchester-2027-start-ats-smartrecruiters-aecom2-744000148982659</link>
-    <guid isPermaLink="true">https://interndoor.com/uk/jobs/aecom-graduate-technology-services-consultant-manchester-2027-start-ats-smartrecruiters-aecom2-744000148982659</guid>
-    <pubDate>Fri, 11 Sep 2026 10:20:48 GMT</pubDate>
-    <description>Company: AECOM · Location: Manchester, gb</description>
-  </item>
-  <item>
-    <title>Traffic Engineering Apprentice - St. Albans (2027 start) — AECOM</title>
-    <link>https://interndoor.com/uk/jobs/aecom-traffic-engineering-apprentice-st-albans-2027-start-ats-smartrecruiters-aecom2-744000148960901</link>
-    <guid isPermaLink="true">https://interndoor.com/uk/jobs/aecom-traffic-engineering-apprentice-st-albans-2027-start-ats-smartrecruiters-aecom2-744000148960901</guid>
-    <pubDate>Fri, 11 Sep 2026 08:51:31 GMT</pubDate>
-    <description>Company: AECOM · Location: St Albans, gb</description>
   </item>
 </channel>
 </rss>
