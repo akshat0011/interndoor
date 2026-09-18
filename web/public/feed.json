@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/microsoft-silicon-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000875",
+      "url": "https://interndoor.com/jobs/microsoft-silicon-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000875",
+      "title": "Silicon Engineering INTERN — Microsoft",
+      "content_text": "Company: Microsoft · Location: Bangalore, Karnataka, India\n• Work on pre-silicon verification of hardware designs using simulation and emulation tools\n• Develop test cases and benches for digital circuits and subsystems\n• Collaborate with engineers on verification and design for test challenges",
+      "date_published": "2026-09-18T05:52:40.000Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/microsoft-hardware-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000861",
+      "url": "https://interndoor.com/jobs/microsoft-hardware-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000861",
+      "title": "Hardware Engineering INTERN — Microsoft",
+      "content_text": "Company: Microsoft · Location: Bangalore, Karnataka, India\n• Analyze system logs and telemetry to identify hardware failures and improve platform reliability\n• Work with suppliers to select optimal materials and components for devices\n• Support debug and validation across systems with silicon from multiple vendors",
+      "date_published": "2026-09-18T05:52:07.000Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/apple-phd-intern-machine-learning-msi-product-operations-team-4467834348",
       "url": "https://interndoor.com/jobs/apple-phd-intern-machine-learning-msi-product-operations-team-4467834348",
       "title": "PhD Intern, Machine Learning: MSI, Product Operations Team — Apple",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Axalta"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
-      "url": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
-      "title": "Automation Intern — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Gujarat, India · Duration: 0-1 years\n• Analyze operations and deploy automation tools to boost productivity and quality\n• Work with production teams to improve safety and delivery metrics\n• Design energy models using sensor data for sustainability goals",
-      "date_published": "2026-09-14T12:27:13.915Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-applied-sciences-intern-ats-microsoft-india-united-states-united-kingdom-1970393556997800",
-      "url": "https://interndoor.com/jobs/microsoft-applied-sciences-intern-ats-microsoft-india-united-states-united-kingdom-1970393556997800",
-      "title": "Applied Sciences INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Multiple Locations, Multiple Locations, India\n• Design and implement machine learning models for real-world products\n• Work with Python, PyTorch, and TensorFlow on large datasets\n• Collaborate with researchers and engineers on AI research projects",
-      "date_published": "2026-09-14T08:08:05.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
         }
       ]
     }
