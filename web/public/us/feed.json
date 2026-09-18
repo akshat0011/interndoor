@@ -6,6 +6,30 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/together-ai-research-intern-frontier-agents-summer-2027-ats-greenhouse-togetherai-5238468007",
+      "url": "https://interndoor.com/us/jobs/together-ai-research-intern-frontier-agents-summer-2027-ats-greenhouse-togetherai-5238468007",
+      "title": "Research Intern, Frontier Agents (Summer 2027) — Together AI",
+      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Design experiments to test new AI training methods for complex tasks\n• Work with PyTorch and JAX on cutting-edge agent models\n• Collaborate with researchers on scaling AI systems for real-world use",
+      "date_published": "2026-09-18T18:40:49.000Z",
+      "authors": [
+        {
+          "name": "Together AI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/toast-software-engineer-i-websites-ats-greenhouse-toast-8191751",
+      "url": "https://interndoor.com/us/jobs/toast-software-engineer-i-websites-ats-greenhouse-toast-8191751",
+      "title": "Software Engineer I, Websites — Toast",
+      "content_text": "Company: Toast · Location: Remote - USA\n• Build and maintain high-converting, customizable websites for restaurants and businesses\n• Work with Node.js, Java/Kotlin, React, and Tailwind to enhance platform performance\n• Collaborate with design and product teams to shape digital growth tools for customers",
+      "date_published": "2026-09-18T18:29:41.000Z",
+      "authors": [
+        {
+          "name": "Toast"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-software-engineer-4459870992",
       "url": "https://interndoor.com/us/jobs/l3harris-technologies-intern-c-software-engineer-4459870992",
       "title": "Intern C, Software Engineer — L3Harris Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/telus-digital-software-engineering-intern-us-summer-2027-4458671061",
-      "url": "https://interndoor.com/us/jobs/telus-digital-software-engineering-intern-us-summer-2027-4458671061",
-      "title": "Software Engineering Intern (US) - Summer 2027 — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Columbus, OH · Duration: 11 weeks\n• Work on real client projects with engineering teams\n• Use Swift, Java, Kotlin, TypeScript, JavaScript\n• Collaborate on complex software in a hybrid setup",
-      "date_published": "2026-09-18T14:12:49.834Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/telus-digital-software-engineering-intern-us-summer-2027-4458651675",
-      "url": "https://interndoor.com/us/jobs/telus-digital-software-engineering-intern-us-summer-2027-4458651675",
-      "title": "Software Engineering Intern (US) - Summer 2027 — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Charlottesville, VA · Duration: 11 weeks\n• Contribute to real client projects with engineering teams\n• Work with Swift, Java, Kotlin, TypeScript, and JavaScript\n• Build products used by real customers in a team environment",
-      "date_published": "2026-09-18T14:03:01.075Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
         }
       ]
     }
