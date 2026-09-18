@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 18 Sep 2026 20:50:49 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 20:58:52 GMT</lastBuildDate>
+  <item>
+    <title>Messaging Engineer — Russell Investments</title>
+    <link>https://interndoor.com/jobs/russell-investments-messaging-engineer-4443113160</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/russell-investments-messaging-engineer-4443113160</guid>
+    <pubDate>Fri, 18 Sep 2026 20:58:52 GMT</pubDate>
+    <description>Company: Russell Investments · Location: Mumbai Metropolitan Region · Duration: 1–2 years
+• Administer microsoft exchange and 365, troubleshoot mail flow and user issues
+• Monitor email security, spam, phishing, and defender for office 365
+• Work rotating shifts including weekends and on-call duties</description>
+  </item>
   <item>
     <title>Intern - ERP Transformation — Atom</title>
     <link>https://interndoor.com/jobs/atom-intern-erp-transformation-4468033061</link>
@@ -16,6 +26,37 @@
 • Support oracle cloud erp projects from requirements to deployment
 • Work with finance modules like gl, ap, ar, and tax configuration
 • Gain hands-on experience in oracle functional consulting</description>
+  </item>
+  <item>
+    <title>Associate Engineer - Backend 3 — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-3-4469240104</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-3-4469240104</guid>
+    <pubDate>Fri, 18 Sep 2026 20:26:14 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years
+• Write clean Java code for scalable backend systems
+• Collaborate with teams on technical implementation
+• Support eCommerce features and system integrations</description>
+  </item>
+  <item>
+    <title>Associate Engineer - FrontEnd — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-4469233747</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-4469233747</guid>
+    <pubDate>Fri, 18 Sep 2026 20:26:08 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years
+• Build responsive web interfaces with react and next.js
+• Write clean code and unit tests for frontend and backend
+• Integrate with backend services and apis
+• Work on agile teams with code reviews and ceremonies</description>
+  </item>
+  <item>
+    <title>Associate Engineer - Manual Testing — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-associate-engineer-manual-testing-4469232804</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-associate-engineer-manual-testing-4469232804</guid>
+    <pubDate>Fri, 18 Sep 2026 20:26:03 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years
+• Execute manual test cases for applications
+• Work with cross-functional teams on testing lifecycle
+• Participate in agile ceremonies and defect tracking</description>
   </item>
   <item>
     <title>Forward Deployed Engineer, Managed Services — Outreach</title>
@@ -467,46 +508,6 @@
 • Develop AI and generative AI solutions for customer experience and sales
 • Use Python, cloud platforms, and machine learning tools
 • Collaborate with mentors on real projects with business impact</description>
-  </item>
-  <item>
-    <title>Trainee — Birlasoft</title>
-    <link>https://interndoor.com/jobs/birlasoft-trainee-4466847570</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-trainee-4466847570</guid>
-    <pubDate>Wed, 16 Sep 2026 11:06:18 GMT</pubDate>
-    <description>Company: Birlasoft · Location: Greater Hyderabad Area
-• Build and test web apps using java and react
-• Code with java/j2ee and html5/css3
-• Follow lifecycle methods and create design docs</description>
-  </item>
-  <item>
-    <title>Graduate Trainee -IT Desktop — Lennox</title>
-    <link>https://interndoor.com/jobs/lennox-graduate-trainee-it-desktop-4468208007</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/lennox-graduate-trainee-it-desktop-4468208007</guid>
-    <pubDate>Wed, 16 Sep 2026 10:39:44 GMT</pubDate>
-    <description>Company: Lennox · Location: Chennai, Tamil Nadu, India
-• Support desktops, laptops, printers, and peripherals
-• Use Windows, Teams, and network tools
-• Maintain IT inventory and track support tickets</description>
-  </item>
-  <item>
-    <title>Apprentice Engineer - Water — Jacobs</title>
-    <link>https://interndoor.com/jobs/jacobs-apprentice-engineer-water-4467964877</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/jacobs-apprentice-engineer-water-4467964877</guid>
-    <pubDate>Wed, 16 Sep 2026 09:45:28 GMT</pubDate>
-    <description>Company: Jacobs · Location: Greater Hyderabad Area
-• Assist in wastewater design and modeling with focus on codal provisions and technical reports
-• Use AutoCAD, Revit, and BIM tools for engineering calculations and drawings
-• Work on live projects with senior professionals and project managers</description>
-  </item>
-  <item>
-    <title>Flutter Developer Intern — Bugsmirror</title>
-    <link>https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4465970369</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bugsmirror-flutter-developer-intern-4465970369</guid>
-    <pubDate>Wed, 16 Sep 2026 06:31:07 GMT</pubDate>
-    <description>Company: Bugsmirror · Location: Indore, Madhya Pradesh, India · Duration: 6 months
-• Develop flutter web and dart apps for a saas security platform
-• Work with rest apis, json, and responsive ui frameworks
-• Collaborate with product and backend teams using git</description>
   </item>
 </channel>
 </rss>
