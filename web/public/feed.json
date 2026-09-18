@@ -6,6 +6,30 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/outreach-forward-deployed-engineer-managed-services-4468017235",
+      "url": "https://interndoor.com/jobs/outreach-forward-deployed-engineer-managed-services-4468017235",
+      "title": "Forward Deployed Engineer, Managed Services — Outreach",
+      "content_text": "Company: Outreach · Location: India · Duration: 26 weeks\n• Configure and troubleshoot Outreach AI tools for customer success\n• Work with Customer Success and Account Executives on strategic accounts\n• Manage a book of business with focus on Amplify credit and product use",
+      "date_published": "2026-09-18T20:17:11.923Z",
+      "authors": [
+        {
+          "name": "Outreach"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/idfc-first-bank-developer-4467897863",
+      "url": "https://interndoor.com/jobs/idfc-first-bank-developer-4467897863",
+      "title": "Developer — IDFC FIRST Bank",
+      "content_text": "Company: IDFC FIRST Bank · Location: Chennai, Tamil Nadu, India\n• Design and develop software modules for banking systems\n• Work with programming languages and frameworks for native code\n• Collaborate on architecture and integration flows\n• Contribute to secure, scalable, and compliant solutions",
+      "date_published": "2026-09-18T19:40:27.252Z",
+      "authors": [
+        {
+          "name": "IDFC FIRST Bank"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zeta-global-qa-engineer-4468003619",
       "url": "https://interndoor.com/jobs/zeta-global-qa-engineer-4468003619",
       "title": "QA Engineer — Zeta Global",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "Zeta Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424221091",
+      "url": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424221091",
+      "title": "AI Customer Engineer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build and deploy AI agents and GenAI applications using modern frameworks\n• Develop scalable backend services and APIs for AI-driven systems\n• Collaborate with cross-functional teams on cloud-native deployments\n• Work onsite 5 days a week in Bangalore",
+      "date_published": "2026-09-18T18:27:32.255Z",
+      "authors": [
+        {
+          "name": "Cognizant"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "FynTune Solution Private Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fyntune-solution-private-limited-junior-php-developer-internship-in-thane-navi-mumbai-mumbai-4467913403",
-      "url": "https://interndoor.com/jobs/fyntune-solution-private-limited-junior-php-developer-internship-in-thane-navi-mumbai-mumbai-4467913403",
-      "title": "Junior PHP Developer Internship in Thane, Navi Mumbai, Mumbai — FynTune Solution Private Limited",
-      "content_text": "Company: FynTune Solution Private Limited · Location: Mumbai Metropolitan Region\n• Develop and maintain php/laravel web apps for insurance platforms\n• Collaborate with ux team and manage full development lifecycle\n• Optimize codebase and ensure consistent frontend technologies",
-      "date_published": "2026-09-16T00:07:16.899Z",
-      "authors": [
-        {
-          "name": "FynTune Solution Private Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/plix-artificial-intelligence-ai-internship-in-mumbai-4467923163",
-      "url": "https://interndoor.com/jobs/plix-artificial-intelligence-ai-internship-in-mumbai-4467923163",
-      "title": "Artificial Intelligence (AI) Internship in Mumbai — Plix",
-      "content_text": "Company: Plix · Location: Mumbai Metropolitan Region · Duration: 12 months\n• Test AI tools for video, audio, and image generation\n• Collaborate with teams to turn experiments into real content\n• Explore AI automation and content formats",
-      "date_published": "2026-09-16T00:06:34.950Z",
-      "authors": [
-        {
-          "name": "Plix"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/automation-anywhere-software-development-engineer-in-test-intern-sdet-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1474",
-      "url": "https://interndoor.com/jobs/automation-anywhere-software-development-engineer-in-test-intern-sdet-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1474",
-      "title": "Software Development Engineer in Test Intern (SDET Intern) — Automation Anywhere",
-      "content_text": "Company: Automation Anywhere · Location: IN Bengaluru · Duration: 6 months\n• Write automated tests for web, chatbot, and API applications using AI tools\n• Collaborate with developers to find and fix bugs in Agile teams\n• Work on CI/CD pipelines and testing frameworks in a 6-month role",
-      "date_published": "2026-09-16T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Automation Anywhere"
         }
       ]
     }

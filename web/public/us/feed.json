@@ -6,6 +6,102 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-research-internship-quantum-computing-and-ai-for-partial-differential--4466927522",
+      "url": "https://interndoor.com/us/jobs/ibm-research-internship-quantum-computing-and-ai-for-partial-differential--4466927522",
+      "title": "Research internship: Quantum computing and AI for partial differential equations 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Implement quantum solvers, train AI models, or develop cross-platform workflows for PDEs\n• Use Python, numpy, and expertise in differential equations and numerical methods\n• Collaborate with researchers and interns across IBM Research and Yorktown lab",
+      "date_published": "2026-09-18T20:19:52.621Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/teli-labs-research-intern-model-shaping-summer-2027-4468014480",
+      "url": "https://interndoor.com/us/jobs/teli-labs-research-intern-model-shaping-summer-2027-4468014480",
+      "title": "Research Intern, Model Shaping (Summer 2027) — Teli Labs",
+      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 to 14 weeks\n• Implement novel techniques in post-training methods, preference optimization, and reinforcement learning\n• Use PyTorch, JAX, and Transformer-based models for research and experimentation\n• Collaborate with researchers on publishing findings in top ML conferences",
+      "date_published": "2026-09-18T20:18:18.206Z",
+      "authors": [
+        {
+          "name": "Teli Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/teli-labs-research-intern-frontier-agents-winter-2027-4468010874",
+      "url": "https://interndoor.com/us/jobs/teli-labs-research-intern-frontier-agents-winter-2027-4468010874",
+      "title": "Research Intern, Frontier Agents (Winter 2027) — Teli Labs",
+      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 to 14 weeks\n• Design experiments to test new AI agent behaviors and training methods\n• Work with cutting-edge frameworks like PyTorch and JAX for model development\n• Collaborate on large-scale datasets for scientific and agentic tasks",
+      "date_published": "2026-09-18T20:18:09.416Z",
+      "authors": [
+        {
+          "name": "Teli Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/teli-labs-software-development-in-test-intern-summer-2027-4468008989",
+      "url": "https://interndoor.com/us/jobs/teli-labs-software-development-in-test-intern-summer-2027-4468008989",
+      "title": "Software Development In Test Intern (Summer 2027) — Teli Labs",
+      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 to 14 weeks\n• Write automated tests for website and services functionality, performance, and reliability\n• Use Typescript, Go, or Python to build maintainable test frameworks\n• Collaborate with engineering teams on test plans and quality standards",
+      "date_published": "2026-09-18T20:17:57.135Z",
+      "authors": [
+        {
+          "name": "Teli Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/teli-labs-software-engineer-intern-summer-2027-4468030040",
+      "url": "https://interndoor.com/us/jobs/teli-labs-software-engineer-intern-summer-2027-4468030040",
+      "title": "Software Engineer Intern (Summer 2027) — Teli Labs",
+      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 weeks\n• Design and develop scalable systems and product features\n• Work with engineers and product teams on performance optimization\n• Contribute to open source projects and technical infrastructure",
+      "date_published": "2026-09-18T20:17:44.218Z",
+      "authors": [
+        {
+          "name": "Teli Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/teli-labs-research-intern-inference-summer-2027-4468021128",
+      "url": "https://interndoor.com/us/jobs/teli-labs-research-intern-inference-summer-2027-4468021128",
+      "title": "Research Intern, Inference (Summer 2027) — Teli Labs",
+      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 to 14 weeks\n• Design experiments to validate hypotheses on distributed inference and optimization\n• Implement cross-layer optimizations for large-scale model serving\n• Collaborate with researchers on novel inference-time computation strategies",
+      "date_published": "2026-09-18T20:17:41.207Z",
+      "authors": [
+        {
+          "name": "Teli Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/gemini-software-engineering-intern-winter-2027-4468005939",
+      "url": "https://interndoor.com/us/jobs/gemini-software-engineering-intern-winter-2027-4468005939",
+      "title": "Software Engineering Intern (Winter 2027) — Gemini",
+      "content_text": "Company: Gemini · Location: New York, NY · Duration: Winter 2027\n• Build and maintain secure crypto systems handling millions in assets\n• Work on blockchain products and optimize API performance\n• Collaborate with senior engineers on design and scalability\n• Review code and contribute to production system reliability",
+      "date_published": "2026-09-18T19:59:48.342Z",
+      "authors": [
+        {
+          "name": "Gemini"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-embedded-software-intern-4466930350",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-embedded-software-intern-4466930350",
+      "title": "R&D Embedded Software Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Colorado Springs, CO\n• Develop oscilloscope driver software in C++ for real customer use\n• Work on Agile teams with experienced developers on oscilloscope software\n• Learn software development tools, testing, and documentation practices",
+      "date_published": "2026-09-18T19:43:29.418Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-scientist-remediation-networking-event-with--ats-smartrecruiters-aecom2-744000150446429",
       "url": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-scientist-remediation-networking-event-with--ats-smartrecruiters-aecom2-744000150446429",
       "title": "Entry-Level Environmental Scientist – Remediation - Networking Event with AECOM – Boston, MA — AECOM",
@@ -14,6 +110,18 @@
       "authors": [
         {
           "name": "AECOM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-assessments-intern-summer-research-program-2027-group-05--4469221375",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-assessments-intern-summer-research-program-2027-group-05--4469221375",
+      "title": "Cyber System Assessments Intern, Summer Research Program 2027 - Group 05-59 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Reverse engineer and exploit software/hardware systems for U.S. Government operations\n• Work with Python, C/C++, Ghidra, IDAPro, GDB, and Wireshark\n• Present findings through writing, training, and public talks",
+      "date_published": "2026-09-18T19:35:26.701Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
         }
       ]
     },
@@ -494,114 +602,6 @@
       "authors": [
         {
           "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/together-ai-software-development-in-test-intern-summer-2027-ats-greenhouse-togetherai-5238472007",
-      "url": "https://interndoor.com/us/jobs/together-ai-software-development-in-test-intern-summer-2027-ats-greenhouse-togetherai-5238472007",
-      "title": "Software Development In Test Intern (Summer 2027) — Together AI",
-      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Write automated tests for website and services\n• Use typescript, go, or python for test scripts\n• Work on ai infrastructure and open source models",
-      "date_published": "2026-09-18T15:45:06.000Z",
-      "authors": [
-        {
-          "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/together-ai-research-intern-model-shaping-winter-2027-ats-greenhouse-togetherai-5238465007",
-      "url": "https://interndoor.com/us/jobs/together-ai-research-intern-model-shaping-winter-2027-ats-greenhouse-togetherai-5238465007",
-      "title": "Research Intern, Model Shaping (Winter 2027) — Together AI",
-      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Implement novel techniques in supervised learning, preference optimization, and reinforcement learning\n• Use PyTorch, JAX, and Transformer-based models for research and product integration\n• Work on 12–14 week project with industry-leading researchers and engineers",
-      "date_published": "2026-09-18T15:45:00.000Z",
-      "authors": [
-        {
-          "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/together-ai-research-intern-model-shaping-summer-2027-ats-greenhouse-togetherai-5238466007",
-      "url": "https://interndoor.com/us/jobs/together-ai-research-intern-model-shaping-summer-2027-ats-greenhouse-togetherai-5238466007",
-      "title": "Research Intern, Model Shaping (Summer 2027) — Together AI",
-      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Implement novel techniques in supervised learning, reinforcement learning, and model evaluation\n• Work with PyTorch, JAX, and Transformer-based models\n• Contribute to product development and publish research findings",
-      "date_published": "2026-09-18T15:44:54.000Z",
-      "authors": [
-        {
-          "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/together-ai-research-intern-inference-winter-2027-ats-greenhouse-togetherai-5238461007",
-      "url": "https://interndoor.com/us/jobs/together-ai-research-intern-inference-winter-2027-ats-greenhouse-togetherai-5238461007",
-      "title": "Research Intern, Inference (Winter 2027) — Together AI",
-      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Design experiments to validate hypotheses on inference optimization\n• Implement cross-layer optimizations for large-scale model serving\n• Collaborate with researchers on KV cache design and phase-aware execution",
-      "date_published": "2026-09-18T15:44:47.000Z",
-      "authors": [
-        {
-          "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/together-ai-research-intern-inference-summer-2027-ats-greenhouse-togetherai-5238462007",
-      "url": "https://interndoor.com/us/jobs/together-ai-research-intern-inference-summer-2027-ats-greenhouse-togetherai-5238462007",
-      "title": "Research Intern, Inference (Summer 2027) — Together AI",
-      "content_text": "Company: Together AI · Location: San Francisco · Duration: 12 to 14 weeks\n• Design experiments to validate hypotheses on inference optimization\n• Implement cross-layer optimizations for large-scale model serving\n• Collaborate with researchers on KV cache design and phase-aware execution",
-      "date_published": "2026-09-18T15:44:40.000Z",
-      "authors": [
-        {
-          "name": "Together AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-ibm-z-engineering-system-test-back-end-developer-systems-assurance-ker-4458034492",
-      "url": "https://interndoor.com/us/jobs/ibm-ibm-z-engineering-system-test-back-end-developer-systems-assurance-ker-4458034492",
-      "title": "IBM Z Engineering System Test Back-End Developer - Systems Assurance Kernel (SAK) Intern 2027 — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Write and debug verification software for IBM Z systems\n• Use GitHub and Visual Studio Code for development\n• Work on processor or IO testing in pre-silicon phases",
-      "date_published": "2026-09-18T15:32:46.757Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-ibm-z-engineering-system-test-qa-test-developer-intern-poughkeepsie-ny-4458020544",
-      "url": "https://interndoor.com/us/jobs/ibm-ibm-z-engineering-system-test-qa-test-developer-intern-poughkeepsie-ny-4458020544",
-      "title": "IBM Z Engineering System Test QA/Test Developer Intern - Poughkeepsie, NY - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Poughkeepsie, AR\n• Test mainframe hardware components like processors and memory modules\n• Work with firmware teams to ensure hardware-software integration\n• Design test automation for regression testing\n• Based in poughkeepsie, ny",
-      "date_published": "2026-09-18T15:32:05.869Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/formlabs-hardware-test-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8196515",
-      "url": "https://interndoor.com/us/jobs/formlabs-hardware-test-engineering-intern-winter-spring-2027-ats-greenhouse-formlabs-8196515",
-      "title": "Hardware Test Engineering Intern (Winter/Spring 2027) — Formlabs",
-      "content_text": "Company: Formlabs · Location: Somerville, MA · Duration: Spring 2027\n• Run tests on 3d printers and report findings that shape future features\n• Design and build automated testing equipment for reliability checks\n• Collaborate with design teams to assess risks and improve product robustness",
-      "date_published": "2026-09-18T15:11:06.000Z",
-      "authors": [
-        {
-          "name": "Formlabs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-scientist-networking-event-with-aecom-atlant-ats-smartrecruiters-aecom2-744000150396525",
-      "url": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-scientist-networking-event-with-aecom-atlant-ats-smartrecruiters-aecom2-744000150396525",
-      "title": "Entry-Level Environmental Scientist - Networking Event with AECOM - Atlanta, GA — AECOM",
-      "content_text": "Company: AECOM · Location: Atlanta, us",
-      "date_published": "2026-09-18T14:55:29.522Z",
-      "authors": [
-        {
-          "name": "AECOM"
         }
       ]
     }
