@@ -1,5 +1,5 @@
 import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
-  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace, postingCompany } from '../src/ats.js';
+  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace, microsoftJobUrl, MICROSOFT_SITE, postingCompany } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -579,6 +579,36 @@ console.log('\n== Microsoft asks each location for each term ==');
   check('all three locations were asked', locs.sort(), ['India', 'United Kingdom', 'United States']);
   check('three locations x three terms', urls.length, 9);
   check('a location keeps its space rather than being split on it', jobs.length, 3);
+}
+
+console.log('\n== Microsoft job URLs live on the NEW host, whatever the API hands back ==');
+{
+  /* The old host, jobs.careers.microsoft.com/global/en/job/<id>, 301s to the
+     careers HOME with the id dropped — a reader lands on no job at all, and no
+     dead-link check sees it because the redirect ends on a 200. The search API
+     returns positionUrl RELATIVE, so a startsWith('http') test never used it
+     and every row fell to that fallback. 41 live rows, 18 Sep 2026. */
+  const { restore } = recordingStub(() => ({ data: { positions: [
+    { id: '111', name: 'Silicon Engineering INTERN', locations: ['India'], positionUrl: '/careers/job/111/silicon-engineering-intern' },
+    { id: '222', name: 'Hardware Engineering INTERN', locations: ['India'], positionUrl: 'https://apply.careers.microsoft.com/careers/job/222?x=1' },
+    { id: '333', name: 'Software Engineering INTERN', locations: ['India'] },
+  ] } }));
+  const jobs = await fetchBoard('microsoft', 'India');
+  restore();
+  const by = Object.fromEntries(jobs.map((j) => [j.id, j.url]));
+  /* A slugged path the fallback cannot rebuild: with the API's real shape
+     (/careers/job/<id>) the relative branch and the fallback agree byte for
+     byte, and dropping the branch survived the first fixture. */
+  check('a RELATIVE positionUrl is resolved against the new host, path kept', by['111'], 'https://apply.careers.microsoft.com/careers/job/111/silicon-engineering-intern');
+  check('an absolute positionUrl is kept exactly', by['222'], 'https://apply.careers.microsoft.com/careers/job/222?x=1');
+  check('no positionUrl at all falls back to the NEW host', by['333'], 'https://apply.careers.microsoft.com/careers/job/333');
+  check('the old host appears on no row', jobs.filter((j) => /jobs\.careers\.microsoft\.com/.test(j.url)).length, 0);
+  check('the site constant is the new host', MICROSOFT_SITE, 'https://apply.careers.microsoft.com');
+  check('microsoftJobUrl: relative, path kept', microsoftJobUrl('/careers/job/9/slug', '9'), 'https://apply.careers.microsoft.com/careers/job/9/slug');
+  check('microsoftJobUrl: absolute http kept', microsoftJobUrl('http://example.test/j/9', '9'), 'http://example.test/j/9');
+  check('microsoftJobUrl: null -> fallback', microsoftJobUrl(null, '9'), 'https://apply.careers.microsoft.com/careers/job/9');
+  check('microsoftJobUrl: a string with no leading slash is not a path, fallback', microsoftJobUrl('junk', '9'), 'https://apply.careers.microsoft.com/careers/job/9');
+  check('no ?domain= parameter is added', microsoftJobUrl('/careers/job/9', '9').includes('domain='), false);
 }
 
 console.log('\n== Uber filters to the SET of wanted countries ==');
