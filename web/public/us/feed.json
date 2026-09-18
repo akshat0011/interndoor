@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-flight-controls-systems-intern-summer-2027-onsite-4469119686",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-flight-controls-systems-intern-summer-2027-onsite-4469119686",
+      "title": "Flight Controls Systems Intern (Summer 2027) - Onsite — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Develop control algorithms and signal processing for flight systems\n• Use Matlab/Simulink for modeling and simulation tasks\n• Work on certification processes for aerospace systems",
+      "date_published": "2026-09-18T09:20:03.430Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-flight-controls-systems-engineering-intern-summer-2027-onsite-4469125569",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-flight-controls-systems-engineering-intern-summer-2027-onsite-4469125569",
+      "title": "Flight Controls Systems Engineering Intern (Summer 2027) - Onsite — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Develop control algorithms and signal processing for flight systems\n• Use Matlab/Simulink for modeling and simulation\n• Work on certification processes for aerospace systems",
+      "date_published": "2026-09-18T09:19:35.032Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/saic-artificial-intelligence-intern-4469120413",
+      "url": "https://interndoor.com/us/jobs/saic-artificial-intelligence-intern-4469120413",
+      "title": "Artificial Intelligence Intern — SAIC",
+      "content_text": "Company: SAIC · Location: El Segundo, CA\n• Develop models for satellite design and space systems using Python, MATLAB, or C++\n• Support simulations and graphical interfaces for space mission analysis\n• Work on space systems engineering tasks with a focus on mission scenarios",
+      "date_published": "2026-09-18T08:57:35.032Z",
+      "authors": [
+        {
+          "name": "SAIC"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/baxter-international-inc-associate-data-scientist-co-op-4466654866",
       "url": "https://interndoor.com/us/jobs/baxter-international-inc-associate-data-scientist-co-op-4466654866",
       "title": "Associate Data Scientist Co-op — Baxter International Inc.",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-enterprise-collaboration-and-web-services-co-op-fall-2026-group-11-80-4461266216",
-      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-enterprise-collaboration-and-web-services-co-op-fall-2026-group-11-80-4461266216",
-      "title": "Enterprise Collaboration & Web Services Co-op (Fall 2026) - Group 11-80 — MIT Lincoln Laboratory",
-      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: Fall 2026\n• Support web interface and API development for enterprise applications\n• Work with Drupal, Atlassian tools, and cloud platforms like AWS/Azure\n• Contribute to knowledge base updates and system security audits",
-      "date_published": "2026-09-18T01:25:15.277Z",
-      "authors": [
-        {
-          "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-security-co-op-winter-spring-2027-group-11-10-4461277042",
-      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-security-co-op-winter-spring-2027-group-11-10-4461277042",
-      "title": "Cyber Security Co-op (Winter/Spring 2027) - Group 11-10 — MIT Lincoln Laboratory",
-      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: Spring 2027\n• Monitor network traffic to detect and respond to malware and phishing threats\n• Work with security tools to analyze alerts and identify system vulnerabilities\n• Collaborate with experts in a research-focused cybersecurity environment",
-      "date_published": "2026-09-18T01:24:47.094Z",
-      "authors": [
-        {
-          "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-software-engineering-internship-6-month-program-ats-microsoft-india-united-states-united-kingdom-1970393556982258",
-      "url": "https://interndoor.com/us/jobs/microsoft-software-engineering-internship-6-month-program-ats-microsoft-india-united-states-united-kingdom-1970393556982258",
-      "title": "Software Engineering Internship (6-month Program) — Microsoft",
-      "content_text": "Company: Microsoft · Location: Santa Clara, California, United States\n• Write code for cloud-based and internet-related applications\n• Use C, C++, C#, Java, JavaScript, or Python\n• Work on real-world projects with global teams",
-      "date_published": "2026-09-18T01:23:13.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
         }
       ]
     }
