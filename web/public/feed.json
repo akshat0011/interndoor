@@ -6,6 +6,18 @@
   "description": "New engineering internships in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/flam-software-engineering-intern-4466665437",
+      "url": "https://interndoor.com/jobs/flam-software-engineering-intern-4466665437",
+      "title": "Software Engineering Intern — Flam",
+      "content_text": "Company: Flam · Location: Bengaluru, Karnataka, India\n• Design and develop interactive 3d experiences using three.js, webgl, and canvas api\n• Collaborate with product managers and backend teams to translate requirements into code\n• Contribute to code reviews and maintain scalable frontend systems with react and next.js",
+      "date_published": "2026-09-18T06:35:25.430Z",
+      "authors": [
+        {
+          "name": "Flam"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/microsoft-silicon-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000875",
       "url": "https://interndoor.com/jobs/microsoft-silicon-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000875",
       "title": "Silicon Engineering INTERN — Microsoft",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Axalta"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
-      "url": "https://interndoor.com/jobs/micron-technology-automation-intern-4465773236",
-      "title": "Automation Intern — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Gujarat, India · Duration: 0-1 years\n• Analyze operations and deploy automation tools to boost productivity and quality\n• Work with production teams to improve safety and delivery metrics\n• Design energy models using sensor data for sustainability goals",
-      "date_published": "2026-09-14T12:27:13.915Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }
