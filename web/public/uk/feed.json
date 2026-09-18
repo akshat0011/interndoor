@@ -6,6 +6,18 @@
   "description": "New engineering internships in the UK, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/uk/jobs/aecom-trainee-engineering-geologist-ats-smartrecruiters-aecom2-744000150331849",
+      "url": "https://interndoor.com/uk/jobs/aecom-trainee-engineering-geologist-ats-smartrecruiters-aecom2-744000150331849",
+      "title": "Trainee Engineering Geologist — AECOM",
+      "content_text": "Company: AECOM · Location: Nottingham, gb",
+      "date_published": "2026-09-18T10:09:10.727Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/uk/jobs/aecom-hydrology-and-hydraulic-modelling-graduate-engineer-edinburgh-ats-smartrecruiters-aecom2-744000150316229",
       "url": "https://interndoor.com/uk/jobs/aecom-hydrology-and-hydraulic-modelling-graduate-engineer-edinburgh-ats-smartrecruiters-aecom2-744000150316229",
       "title": "Hydrology & Hydraulic Modelling Graduate Engineer / Edinburgh — AECOM",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880",
-      "url": "https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880",
-      "title": "Graduate AI and Software Engineer - Automotive MPUs — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Glasgow\n• Prototype AI use-cases on automotive hardware, deploying ML models for real-world applications\n• Work with Python, PyTorch, and AI toolchains to optimise and run models on S32N MPUs\n• Collaborate with global teams and customers to shape AI capabilities in automotive systems",
-      "date_published": "2026-09-11T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
         }
       ]
     }
