@@ -1,9 +1,9 @@
 {
- "generatedAt": 1789750877704,
+ "generatedAt": 1789751186906,
  "region": "US",
  "regionName": "United States",
- "count": 3476,
- "techCount": 3476,
+ "count": 3440,
+ "techCount": 3440,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -311,7 +311,6 @@
   "S&P Global",
   "SAIC",
   "SAP",
-  "SLB",
   "SS&C Technologies",
   "STMicroelectronics",
   "Safran",
@@ -567,7 +566,6 @@
   "Conshohocken, us",
   "Coopersville, MI",
   "Coppell, TX",
-  "Cornelia, GA",
   "Corporate 412 West - Springdale, Arkansas",
   "Corpus Christi, TX",
   "Corvallis, OR",
@@ -696,9 +694,7 @@
   "Honolulu, HI",
   "Hopewell Junction, NY",
   "Hopewell Junction, NY, United States",
-  "Horseheads, NY",
   "Horsham, PA",
-  "Houma, LA",
   "Houston, TX",
   "Houston, TX, United States",
   "Hudson, NH",
@@ -1148,7 +1144,6 @@
   "WI-Sun Prairie; IL-Bloomington",
   "Wa Keeney, KS",
   "Waco, TX",
-  "Wadsworth, OH",
   "Waltham, MA",
   "Waltham, MA, United States",
   "Waltham, us",
@@ -10216,57 +10211,6 @@
    "region": "US"
   },
   {
-   "id": "4468684606",
-   "title": "Mechanical Engineering Internship - Summer 2027",
-   "company": "X-energy",
-   "matchedWatchlist": "X-energy",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/x-energy.jpg",
-   "location": "Rockville, MD",
-   "workplaceType": "On-site",
-   "stipend": "$25 / hour",
-   "duration": "10- weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This mechanical engineering internship involves supporting reactor design and licensing projects, using CAD and thermodynamics tools. You'll work on mechanical systems and structural analysis, with hands-on experience in design and simulation. Ideal for students with mechanical or related degrees seeking real-world engineering challenges.",
-   "bullets": [
-    "Support engineering projects and analyses in reactor design and licensing",
-    "Use CAD/PLM software and thermodynamics tools like RELAP or SINDA",
-    "Work on mechanical systems, piping, HVAC, and structural analysis",
-    "10-week on-site program in Gaithersburg, MD, June–August 2027"
-   ],
-   "roleLabel": "Mechanical Engineering Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "relap",
-    "solidworks",
-    "ansys",
-    "thermodynamics"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "17 minutes ago",
-   "postedAt": 1789668510939,
-   "firstSeenAt": 1789669530944,
-   "lastSeenAt": 1789669530944,
-   "url": "https://www.linkedin.com/jobs/view/4468684606/",
-   "applyUrl": "https://xenergy.wd5.myworkdayjobs.com/X-energyUS/job/Rockville-MD/Mechanical-Engineering-Internship---Summer-2027_R101319-1?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "8175f3c106",
-   "cardFacts": [
-    "$25 / hour",
-    "Rockville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4468675612",
    "title": "Software Engineer Co-Op - Spring/Summer 2027",
    "company": "Honeywell Technologies",
@@ -11155,53 +11099,6 @@
    "region": "US"
   },
   {
-   "id": "4468677027",
-   "title": "Mechanical Engineering Internship",
-   "company": "Safran Defense & Space, Inc.",
-   "matchedWatchlist": "Safran",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/safran-defense-and-space-inc.jpg",
-   "location": "Bedford, NH",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This mechanical engineering internship involves designing and assembling optical systems, conducting testing and analysis, and creating engineering documentation for production equipment. Ideal for students with CAD experience and a passion for product development.",
-   "bullets": [
-    "Design and assemble optical systems using SOLIDWORKS and machine shop tools",
-    "Conduct testing and analysis on thermal and structural performance of products",
-    "Create engineering drawings and bills of materials for production equipment"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "solidworks",
-    "cad",
-    "ms office",
-    "finite element analysis",
-    "3d printing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "27 minutes ago",
-   "postedAt": 1789664324850,
-   "firstSeenAt": 1789665944853,
-   "lastSeenAt": 1789665944853,
-   "url": "https://www.linkedin.com/jobs/view/4468677027/",
-   "applyUrl": "https://careers.safran-dsi.com/job/Bedford-Mechanical-Engineering-Internship-NH-03110/1431029700/?utm_source=LINKEDIN&utm_medium=referrer",
-   "description": null,
-   "roleFingerprint": "b739e776e7",
-   "cardFacts": [
-    "Bedford",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4446680333",
    "title": "Engineer Co-op May 2027- Multiple U.S Locations",
    "company": "Cargill",
@@ -11294,55 +11191,6 @@
    "applyUrl": "https://careers.safran-dsi.com/job/Bedford-Optical-Engineering-Internship-NH-03110/1431030500/?utm_source=LINKEDIN&utm_medium=referrer",
    "description": null,
    "roleFingerprint": "9f6b215d38",
-   "cardFacts": [
-    "Bedford",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4468668820",
-   "title": "Manufacturing Engineering Internship",
-   "company": "Safran Defense & Space, Inc.",
-   "matchedWatchlist": "Safran",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/safran-defense-and-space-inc.jpg",
-   "location": "Bedford, NH",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "labview",
-    "excel"
-   ],
-   "summary": "This internship offers hands-on experience in manufacturing engineering, working on electro-optical systems. Ideal for engineering students interested in production processes, quality control, and team collaboration. You'll support assembly and testing while learning industry standards and improvement methodologies.",
-   "bullets": [
-    "Assist in building and troubleshooting products on the production floor",
-    "Learn Lean Six Sigma and improve manufacturing processes",
-    "Work with engineers and assemblers on complex electro-optical systems"
-   ],
-   "roleLabel": "Manufacturing Engineer",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "lean six sigma",
-    "excel",
-    "word",
-    "powerpoint"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "29 minutes ago",
-   "postedAt": 1789664302270,
-   "firstSeenAt": 1789666042273,
-   "lastSeenAt": 1789666042273,
-   "url": "https://www.linkedin.com/jobs/view/4468668820/",
-   "applyUrl": "https://careers.safran-dsi.com/job/Bedford-Manufacturing-Engineering-Internship-NH-03110/1431073900/?utm_source=LINKEDIN&utm_medium=referrer",
-   "description": null,
-   "roleFingerprint": "992e38d16c",
    "cardFacts": [
     "Bedford",
     "On-site"
@@ -14421,58 +14269,6 @@
     "$44,000 – $185,000",
     "Durham",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4468295762",
-   "title": "GTO Manufacturing Engineering Co-Op",
-   "company": "Johnson & Johnson MedTech",
-   "matchedWatchlist": "Johnson & Johnson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/johnson-and-johnson-medtech.jpg",
-   "location": "Cornelia, GA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "Spring 2027",
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "tableau",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This co-op involves hands-on work in manufacturing engineering, focusing on solving production challenges and improving processes. You'll collaborate with senior engineers, use technical tools for analysis, and present findings to management. Ideal for engineering students seeking real-world experience in a dynamic, impactful environment.",
-   "bullets": [
-    "Troubleshoot chemical, electrical, and mechanical issues in production",
-    "Use CAD, Tableau, and Minitab for analysis and reporting",
-    "Work on continuous improvement projects with senior engineers"
-   ],
-   "roleLabel": "Manufacturing Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Chemical/Electrical Engineering",
-   "keySkills": [
-    "cad",
-    "tableau",
-    "minitab",
-    "excel",
-    "pivot tables"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "3 hours ago",
-   "postedAt": 1789597865259,
-   "firstSeenAt": 1789608665261,
-   "lastSeenAt": 1789608665261,
-   "url": "https://www.linkedin.com/jobs/view/4468295762/",
-   "applyUrl": "https://www.careers.jnj.com/en/jobs/R-098898/?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "83ccc811f9",
-   "cardFacts": [
-    "Cornelia",
-    "On-site",
-    "Spring 2027"
    ],
    "region": "US"
   },
@@ -17840,54 +17636,6 @@
    "cardFacts": [
     "Tualatin",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467984644",
-   "title": "Mechanical Engineering Co-op (Winter/Spring 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves working on mechanical design and development for avionics display panels, supporting both design and field issues. Ideal for mechanical engineering students seeking hands-on experience with CAD and thermal analysis in a real-world aerospace setting.",
-   "bullets": [
-    "Support mechanical design and development of avionics display panels",
-    "Use CAD tools and analyze thermal performance of components",
-    "Collaborate with cross-functional teams on factory and customer issues"
-   ],
-   "roleLabel": "Mechanical Design Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "solidworks",
-    "ansys",
-    "cad"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "27 minutes ago",
-   "postedAt": 1789552090235,
-   "firstSeenAt": 1789553710238,
-   "lastSeenAt": 1789553710238,
-   "url": "https://www.linkedin.com/jobs/view/4467984644/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01869080EXTERNALENGLOBAL/Mechanical-Engineering-Co-op-Winter-Spring-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ff737903bc",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
    ],
    "region": "US"
   },
@@ -26621,53 +26369,6 @@
    "region": "US"
   },
   {
-   "id": "4465583111",
-   "title": "2027 Mechanical Engineering Co-Op",
-   "company": "Mercury Systems",
-   "matchedWatchlist": "Mercury Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mercury-systems.jpg",
-   "location": "Huntsville, AL",
-   "workplaceType": "On-site",
-   "stipend": "$17 – $38 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op involves supporting mechanical design for electronic modules and server hardware. You'll work with cross-functional teams and use SolidWorks for 3D modeling. Ideal for mechanical engineering students seeking hands-on experience in product development.",
-   "bullets": [
-    "Support mechanical design of electronic modules and server hardware",
-    "Use SolidWorks for 3D modeling and engineering drawings",
-    "Collaborate with cross-functional teams on product development"
-   ],
-   "roleLabel": "Mechanical Design Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "solidworks",
-    "3d cad",
-    "thermal management",
-    "additive manufacturing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "32 minutes ago",
-   "postedAt": 1789490691259,
-   "firstSeenAt": 1789492611263,
-   "lastSeenAt": 1789492611263,
-   "url": "https://www.linkedin.com/jobs/view/4465583111/",
-   "applyUrl": "https://recruiting.adp.com/srccar/public/RTI.home?r=5001221889906&c=1162151&d=jobs.mrcy.com&rb=LINKEDIN",
-   "description": null,
-   "roleFingerprint": "98abfe7dd6",
-   "cardFacts": [
-    "$17 – $38 / hour",
-    "Huntsville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4466555098",
    "title": "Solaria Labs Software Development Co-op (Jan - June 2027)",
    "company": "Liberty Mutual Insurance",
@@ -32969,56 +32670,6 @@
    "region": "US"
   },
   {
-   "id": "4467436824",
-   "title": "Mechanical Design Engineering Co-op (Summer/Fall 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Windsor Locks, CT",
-   "workplaceType": "Hybrid",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves designing mechanical systems for aerospace applications, working on fluid and structural analysis projects, and collaborating with cross-functional teams to develop hardware for airframe and engine systems. Ideal for students with a background in mechanical or aerospace engineering.",
-   "bullets": [
-    "Design mechanical systems for aerospace applications using CAD and simulation tools",
-    "Work with cross-functional teams on fluid and structural analysis projects",
-    "Collaborate on hardware development for airframe and engine systems"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Aerospace Engineering",
-   "keySkills": [
-    "cad",
-    "cfd",
-    "fea",
-    "ug nx",
-    "catia"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "38 minutes ago",
-   "postedAt": 1789443395562,
-   "firstSeenAt": 1789445675566,
-   "lastSeenAt": 1789445675566,
-   "url": "https://www.linkedin.com/jobs/view/4467436824/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873008EXTERNALENGLOBAL/Mechanical-Design-Engineering-Co-op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c94787ce33",
-   "cardFacts": [
-    "$37,000",
-    "Windsor Locks",
-    "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4467428932",
    "title": "RF Electrical Engineer Intern (Summer 2027)(Onsite)",
    "company": "Raytheon",
@@ -36666,50 +36317,6 @@
    "region": "US"
   },
   {
-   "id": "4466131582",
-   "title": "Manufacturing Intern Engineer",
-   "company": "General Dynamics Mission Systems",
-   "matchedWatchlist": "General Dynamics",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/general-dynamics-mission-systems.jpg",
-   "location": "Pittsfield, MA",
-   "workplaceType": "On-site",
-   "stipend": "$22 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves supporting defense-related engineering projects within a secure team. Ideal for students with a technical background seeking hands-on experience in a collaborative, mission-critical environment.",
-   "bullets": [
-    "Support defense projects with engineering teams",
-    "Work on classified technical projects",
-    "Flexible environment with competitive pay"
-   ],
-   "roleLabel": "Manufacturing Engineering",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "engineering technology"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "14 minutes ago",
-   "postedAt": 1789423174288,
-   "firstSeenAt": 1789424014289,
-   "lastSeenAt": 1789424014289,
-   "url": "https://www.linkedin.com/jobs/view/4466131582/",
-   "applyUrl": "https://gdmissionsystems.com/careers/manufacturing-intern-engineer-pittsfield-ma-us-2026-74612-opportunity?mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "2a8f45d156",
-   "cardFacts": [
-    "$22 / hour",
-    "Pittsfield",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4467295487",
    "title": "R&D Co-Op",
    "company": "Johnson & Johnson MedTech",
@@ -37243,56 +36850,6 @@
    "cardFacts": [
     "$37,000",
     "Middletown",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467291419",
-   "title": "Structural Engineering Co-op (Summer/Fall 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Jamestown, ND",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves structural analysis of cargo systems using CAD and finite element methods. Ideal for engineering students interested in aerospace product development and certification. Work with stress engineers on real-world projects.",
-   "bullets": [
-    "Perform structural analysis on cargo systems using classical and finite element methods",
-    "Use CAD software for design and load documentation in product certification",
-    "Work with stress engineers on new product development and testing"
-   ],
-   "roleLabel": "Structural Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Civil Engineering/Aerospace Engineering",
-   "keySkills": [
-    "solidworks",
-    "nx",
-    "ansys",
-    "autocad",
-    "excel"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "40 minutes ago",
-   "postedAt": 1789421991593,
-   "firstSeenAt": 1789424391595,
-   "lastSeenAt": 1789424391595,
-   "url": "https://www.linkedin.com/jobs/view/4467291419/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01873941EXTERNALENGLOBAL/Structural-Engineering-Co-op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7ea6753687",
-   "cardFacts": [
-    "$37,000",
-    "Jamestown",
     "On-site"
    ],
    "region": "US"
@@ -38350,54 +37907,6 @@
     "$22 – $28 / hour",
     "Glen Allen",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467253930",
-   "title": "Graduate Intern Engineer - ET Operations Enginering Support",
-   "company": "Dominion Energy",
-   "matchedWatchlist": "Dominion Energy",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/dominion-energy.jpg",
-   "location": "Glen Allen, VA",
-   "workplaceType": "On-site",
-   "stipend": "$37 – $42 / hour",
-   "duration": "Fall 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This graduate engineering internship supports asset maintenance programs and stakeholder collaboration in a technical team. Ideal for engineering students seeking hands-on experience with electrical systems and data analysis. The role offers mentorship and exposure to real-world engineering challenges.",
-   "bullets": [
-    "Support maintenance programs for electrical equipment using technical resources and Excel",
-    "Collaborate with stakeholders to improve asset management through data exchange",
-    "Learn safety, ethics, and inclusion practices in a graduate engineering team"
-   ],
-   "roleLabel": "Asset Maintenance Support",
-   "degreeLevel": "PG",
-   "degreeText": "Engineering",
-   "keySkills": [
-    "excel",
-    "technical writing",
-    "project management"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1789416222034,
-   "firstSeenAt": 1789416882042,
-   "lastSeenAt": 1789416882042,
-   "url": "https://www.linkedin.com/jobs/view/4467253930/",
-   "applyUrl": "https://careers.dominionenergy.com/job/GLEN-ALLEN-Graduate-Intern-Engineer-ET-Operations-Enginering-Support-VA-23060/1429755900/?utm_source=LINKEDIN&utm_medium=referrer",
-   "description": null,
-   "roleFingerprint": "a79da9fc10",
-   "cardFacts": [
-    "$37 – $42 / hour",
-    "Glen Allen",
-    "On-site"
    ],
    "region": "US"
   },
@@ -39593,50 +39102,6 @@
    "region": "US"
   },
   {
-   "id": "4467234325",
-   "title": "R&D Engineer Co-op, New Product Development",
-   "company": "Boston Scientific",
-   "matchedWatchlist": "Boston Scientific",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/boston-scientific.jpg",
-   "location": "Maple Grove, MN",
-   "workplaceType": "On-site",
-   "stipend": "$73,736",
-   "duration": "Spring 2029",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op role involves developing medical devices that enhance patient treatment. You'll work with cross-functional teams to design and test new technologies, contributing to life-saving innovations. Ideal for engineering students passionate about healthcare solutions.",
-   "bullets": [
-    "Design and test medical devices to improve patient care",
-    "Use CAD software and prototyping tools for product development",
-    "Work in a hybrid model with team in Maple Grove, MN"
-   ],
-   "roleLabel": "Medical Device Development",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Biomedical Engineering",
-   "keySkills": [
-    "prototyping"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "10 minutes ago",
-   "postedAt": 1789408979948,
-   "firstSeenAt": 1789409579957,
-   "lastSeenAt": 1789409579957,
-   "url": "https://www.linkedin.com/jobs/view/4467234325/",
-   "applyUrl": "https://bostonscientific.eightfold.ai/careers/job/563602813515929?domain=bostonscientific.com",
-   "description": null,
-   "roleFingerprint": "d7b5f03b44",
-   "cardFacts": [
-    "$73,736",
-    "Maple Grove",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4458206468",
    "title": "2027 BNY Summer Internship Program - Engineering (Developer) - Lake Mary, FL",
    "company": "BNY",
@@ -40326,55 +39791,6 @@
     "$118,000 – $157,000",
     "Bellevue",
     "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4467208715",
-   "title": "Mechanical Engineering Co-Op",
-   "company": "Emerson",
-   "matchedWatchlist": "Emerson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/emerson.jpg",
-   "location": "Eden Prairie, MN",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": null,
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "matlab"
-   ],
-   "summary": "This co-op offers hands-on experience in product design and development, with opportunities to work on real-world projects using CAD and prototyping tools. Ideal for mechanical engineering students seeking practical experience in product innovation.",
-   "bullets": [
-    "Support product development with CAD modeling and prototype testing",
-    "Use 3D printing and machining to build and evaluate prototypes",
-    "Collaborate with cross-functional teams on engineering projects"
-   ],
-   "roleLabel": "Product Development",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "3d printing",
-    "machining",
-    "prototyping",
-    "matlab"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1789404671708,
-   "firstSeenAt": 1789406051713,
-   "lastSeenAt": 1789406051713,
-   "url": "https://www.linkedin.com/jobs/view/4467208715/",
-   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26010051/?utm_medium=jobboard&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "cfd887f4c9",
-   "cardFacts": [
-    "Eden Prairie",
-    "Hybrid"
    ],
    "region": "US"
   },
@@ -45820,55 +45236,6 @@
    "region": "US"
   },
   {
-   "id": "4464717632",
-   "title": "Packaging Engineering Co-op",
-   "company": "Thermo Fisher Scientific",
-   "matchedWatchlist": "Thermo Fisher Scientific",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/thermo-fisher-scientific.jpg",
-   "location": "Rochester, NY",
-   "workplaceType": "On-site",
-   "stipend": "$19 – $29 / hour",
-   "duration": "3 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves designing and testing packaging for medical devices, working with cross-functional teams to develop new solutions. Ideal for engineering students with experience in CAD and packaging standards, this role offers hands-on technical work and potential full-time opportunities.",
-   "bullets": [
-    "Design and test new packaging solutions for medical devices",
-    "Use SolidWorks and CAPE PACK for component drawings and analysis",
-    "Travel domestically up to 10% for project collaboration"
-   ],
-   "roleLabel": "Packaging Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "cape pack",
-    "ista",
-    "astm",
-    "excel"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "44 minutes ago",
-   "postedAt": 1789273635834,
-   "firstSeenAt": 1789276275836,
-   "lastSeenAt": 1789276275836,
-   "url": "https://www.linkedin.com/jobs/view/4464717632/",
-   "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3436&rx_jobId=R-01366624&rx_url=https%3A%2F%2Fjobs.thermofisher.com%2Fglobal%2Fen%2Fjob%2FR-01366624%2FPackaging-Engineering-Co-op%3Frx_ch%3Djobpost%26rx_id%3Da89996d9-aec7-11f1-a41e-29a711b74a25%26rx_job%3DR-01366624%26rx_medium%3Dpost%26rx_paid%3D0%26rx_r%3Dnone%26rx_source%3Dlinkedin%26rx_ts%3D20260913T024003Z%26rx_vp%3Dlinkedindirectindex%26utm_medium%3Dpost%26utm_source%3Drecruitics_linkedindirectindex&refId=34jd24",
-   "description": null,
-   "roleFingerprint": "29d37dfaae",
-   "cardFacts": [
-    "$19 – $29 / hour",
-    "Rochester",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464729594",
    "title": "Development Engineering Co-Op",
    "company": "Thermo Fisher Scientific",
@@ -45911,52 +45278,6 @@
    "cardFacts": [
     "$19 – $29 / hour",
     "Rochester",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466740740",
-   "title": "2027 Fall Mechanical Engineering Co-op - Chandler AZ",
-   "company": "Northrop Grumman",
-   "matchedWatchlist": "Northrop Grumman",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/northrop-grumman.jpg",
-   "location": "Chandler, AZ",
-   "workplaceType": "On-site",
-   "stipend": "$1",
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This co-op involves hands-on mechanical work with engineering systems, testing and maintaining equipment. Ideal for students with a mechanical engineering background seeking real-world experience in a technical role. The position is based in Chandler, Arizona, and requires full-time commitment during the summer and fall of 2027.",
-   "bullets": [
-    "Assemble and test mechanical systems using engineering drawings",
-    "Operate and maintain equipment with technical precision",
-    "Work full time in Chandler, AZ during summer and fall 2027"
-   ],
-   "roleLabel": "Mechanical Systems Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "engineering drawings"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "59 minutes ago",
-   "postedAt": 1789272701159,
-   "firstSeenAt": 1789276241163,
-   "lastSeenAt": 1789276241163,
-   "url": "https://www.linkedin.com/jobs/view/4466740740/",
-   "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3658&rx_jobId=R10250495&rx_url=https%3A%2F%2Fjobs.northropgrumman.com%2Fcareers%2Fjob%2F1340074259252%3Fcode%3DJB-18202%26domain%3Dngc.com%26rx_campaign%3DLinkedin1%26rx_ch%3Dconnector%26rx_group%3D375073%26rx_id%3Dde73f3ff-aea6-11f1-98b0-41c912748846%26rx_job%3DR10250495%26rx_medium%3Dpost%26rx_r%3Dnone%26rx_source%3DLinkedin%26rx_vp%3Dslots%26source%3DJB-18202%26utm_audience%3Dprospectivetalentemployees%26utm_campaign%3Dta-general%26utm_content%3Djobfeed%26utm_format%3Dcpl%26utm_medium%3Djobboard%26utm_network%3Dpartnerdirect%26utm_source%3Dlinkedin-jobslots",
-   "description": null,
-   "roleFingerprint": "35d9b9217e",
-   "cardFacts": [
-    "$1",
-    "Chandler",
     "On-site"
    ],
    "region": "US"
@@ -47886,51 +47207,6 @@
     "$30 – $35 / hour",
     "New York",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4447716143",
-   "title": "GE Vernova Nuclear Engineering Co-Op/Intern - Spring 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Wilmington, NC",
-   "workplaceType": "On-site",
-   "stipend": "$1,000 – $2,000 / week",
-   "duration": "Spring 2027",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves working on cutting-edge nuclear engineering projects, focusing on system design, analysis, and digital tools. Ideal for engineering students passionate about clean energy and innovation.",
-   "bullets": [
-    "Design and analyze power generation systems, focusing on reliability and integration",
-    "Work with digital tools and simulation software in real-world engineering projects",
-    "Collaborate with global teams on advanced reactor technology and carbon-free energy solutions"
-   ],
-   "roleLabel": "Nuclear Engineering Intern",
-   "degreeLevel": "UG/PG",
-   "degreeText": "Nuclear Engineering/Mechanical Engineering/Chemical Engineering/Electrical Engineering/Material Science Engineering/Controls Engineering/Civil/Structural Engineering/Computer Engineering/Computer Science Engineering",
-   "keySkills": [
-    "systems analysis",
-    "reactor technology"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "50 minutes ago",
-   "postedAt": 1789220965961,
-   "firstSeenAt": 1789223965963,
-   "lastSeenAt": 1789223965963,
-   "url": "https://www.linkedin.com/jobs/view/4447716143/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-nuclear-engineering-co-op-intern-spring-2027/job/R5048552",
-   "description": null,
-   "roleFingerprint": "2a81526651",
-   "cardFacts": [
-    "$1,000 – $2,000 / week",
-    "Wilmington",
-    "On-site"
    ],
    "region": "US"
   },
@@ -51172,55 +50448,6 @@
    "region": "US"
   },
   {
-   "id": "4466431653",
-   "title": "LSS Mechanical Engineering Co-op",
-   "company": "GE HealthCare",
-   "matchedWatchlist": "GE HealthCare",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-healthcare.jpg",
-   "location": "Madison, WI",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "design verification"
-   ],
-   "summary": "This co-op involves working on mechanical design and testing for life-supporting medical devices. You'll assist in product development, use cad software, and contribute to testing and documentation. Ideal for mechanical engineering students seeking hands-on experience in regulated medical device environments.",
-   "bullets": [
-    "Support product design cycles for anesthesia and infant care devices",
-    "Use creo and other cad tools for mechanical modeling and analysis",
-    "Collaborate with cross-functional teams on testing and documentation"
-   ],
-   "roleLabel": "Mechanical Design Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Biomedical Engineering",
-   "keySkills": [
-    "creo",
-    "cad",
-    "fea",
-    "testing",
-    "documentation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "31 minutes ago",
-   "postedAt": 1789175415971,
-   "firstSeenAt": 1789177275975,
-   "lastSeenAt": 1789177275975,
-   "url": "https://www.linkedin.com/jobs/view/4466431653/",
-   "applyUrl": "https://careers.gehealthcare.com/global/en/job/GEVGHLGLOBALR4046267EXTERNALENGLOBAL/LSS-Mechanical-Engineering-Co-op?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "9f5a8f5974",
-   "cardFacts": [
-    "Madison",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4466419661",
    "title": "ARC V&V Automation and Test Tools Engineering Co-op",
    "company": "GE HealthCare",
@@ -51665,53 +50892,6 @@
     "$150,000 – $195,000",
     "Washington",
     "3 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466409887",
-   "title": "GE Vernova Gas Power Engineering Internship - Spring 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Greenville, SC",
-   "workplaceType": "On-site",
-   "stipend": "$1,000 – $2,000 / week",
-   "duration": "Spring 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves designing and analyzing power generation systems like steam turbines and gas engines. You'll work with engineering teams to improve product designs and solve manufacturing challenges. Ideal for engineering students passionate about clean energy solutions.",
-   "bullets": [
-    "Design and analyze steam turbine, gas turbine, and generator systems",
-    "Collaborate with drafting and manufacturing teams on complex projects",
-    "Work in Greenville, SC, for 6 months starting January 2027"
-   ],
-   "roleLabel": "Power System Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical / Electrical / Chemical / Aeronautical / Aerospace",
-   "keySkills": [
-    "Systems analysis",
-    "Design improvement"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "14 minutes ago",
-   "postedAt": 1789169007660,
-   "firstSeenAt": 1789169847668,
-   "lastSeenAt": 1789169847668,
-   "url": "https://www.linkedin.com/jobs/view/4466409887/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-gas-power-engineering-internship-spring-2027/job/R5052776",
-   "description": null,
-   "roleFingerprint": "1f4b151f01",
-   "cardFacts": [
-    "$1,000 – $2,000 / week",
-    "Greenville",
-    "On-site"
    ],
    "region": "US"
   },
@@ -54951,57 +54131,6 @@
    "region": "US"
   },
   {
-   "id": "4446972899",
-   "title": "NPI Process Engineering Co-op",
-   "company": "Flex",
-   "matchedWatchlist": "Flex",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/flex.jpg",
-   "location": "Hollis, NH",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "60 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves supporting the transition of new medical products from prototype to production. The intern will assess designs, develop assembly processes, and collaborate with engineers to ensure reliable manufacturing. Ideal for mechanical or biomedical engineering students with experience in SolidWorks and team-based problem solving.",
-   "bullets": [
-    "Assess medical product designs for manufacturability and ease of assembly",
-    "Create assembly process documents for pilot production and contract manufacturers",
-    "Work with engineers to develop and validate production-intent assembly tools"
-   ],
-   "roleLabel": "Product Assembly Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Mechanical Engineering",
-   "keySkills": [
-    "solidworks",
-    "excel",
-    "powerpoint",
-    "word",
-    "5why",
-    "ishikawa",
-    "redx"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "16 minutes ago",
-   "postedAt": 1789136729775,
-   "firstSeenAt": 1789137689778,
-   "lastSeenAt": 1789137689778,
-   "url": "https://www.linkedin.com/jobs/view/4446972899/",
-   "applyUrl": "https://flextronics.wd1.myworkdayjobs.com/Careers/job/USA-NH-Hollis/NPI-Process-Engineering-Co-op_WD226387/apply?source=LinkedIn_Slots",
-   "description": null,
-   "roleFingerprint": "1d31f7cd57",
-   "cardFacts": [
-    "Hollis",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4446986127",
    "title": "Electrical Engineering Co-op",
    "company": "Flex",
@@ -55097,56 +54226,6 @@
     "$30 – $35 / hour",
     "New York",
     "Hybrid"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4464895125",
-   "title": "Manufacturing Engineering Co-op - January 4, 2027-July 6, 2027",
-   "company": "Jabil",
-   "matchedWatchlist": "Jabil",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/jabil.jpg",
-   "location": "Horseheads, NY",
-   "workplaceType": "On-site",
-   "stipend": "$16 – $32 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves hands-on work in manufacturing, including process analysis, tool design, and compliance activities. Ideal for engineering students interested in medical device production and quality systems.",
-   "bullets": [
-    "Assist in failure mode analysis and process optimization",
-    "Use CAD for tooling and equipment layouts",
-    "Work on capital projects and process validation"
-   ],
-   "roleLabel": "Manufacturing Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.E/M.E",
-   "keySkills": [
-    "CAD modeling",
-    "MS Excel",
-    "Minitab",
-    "GD&T",
-    "Lean/6 Sigma"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "37 minutes ago",
-   "postedAt": 1789135559804,
-   "firstSeenAt": 1789137779808,
-   "lastSeenAt": 1789137779808,
-   "url": "https://www.linkedin.com/jobs/view/4464895125/",
-   "applyUrl": "https://jabil.wd5.myworkdayjobs.com/Jabil_Careers/job/Elmira-NY/Manufacturing-Engineering-Co-op---January-4--2027-July-6--2027_J2464367/apply?source=Social_Media_LinkedIn",
-   "description": null,
-   "roleFingerprint": "b0c6145a79",
-   "cardFacts": [
-    "$16 – $32 / hour",
-    "Horseheads",
-    "On-site"
    ],
    "region": "US"
   },
@@ -55284,53 +54363,6 @@
    "cardFacts": [
     "$37 / hour",
     "Esparto",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466306323",
-   "title": "Mechanical Engineering Co-Op",
-   "company": "Entegris",
-   "matchedWatchlist": "Entegris",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/entegris.png",
-   "location": "Bedford, MA",
-   "workplaceType": "On-site",
-   "stipend": "$20 – $30 / hour",
-   "duration": "6 months",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op involves designing and building test fixtures and prototypes under engineer guidance. Ideal for mechanical engineering students seeking hands-on experience with CAD and fabrication. The role offers a paid position with a clear project timeline and mentorship from experienced engineers.",
-   "bullets": [
-    "Design and model fixtures in CAD software",
-    "Fabricate and test prototypes under engineer supervision",
-    "Work on 6-month project with real engineering impact"
-   ],
-   "roleLabel": "Fixture Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "cad",
-    "solidworks",
-    "fabrication",
-    "data collection"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789134503236,
-   "firstSeenAt": 1789138103237,
-   "lastSeenAt": 1789138103237,
-   "url": "https://www.linkedin.com/jobs/view/4466306323/",
-   "applyUrl": "https://entegris.wd1.myworkdayjobs.com/EntegrisCareers/job/Bedford-MA/Mechanical-Engineering-Co-Op_REQ-14401?mode=job&iis=JobBoard&iisn=LinkedIn",
-   "description": null,
-   "roleFingerprint": "b8f5ae6d78",
-   "cardFacts": [
-    "$20 – $30 / hour",
-    "Bedford",
     "On-site"
    ],
    "region": "US"
@@ -56188,53 +55220,6 @@
    "cardFacts": [
     "$1",
     "Emerado",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4466036570",
-   "title": "2027 Spring Mechanical Engineering Co-op - Chandler AZ",
-   "company": "Northrop Grumman",
-   "matchedWatchlist": "Northrop Grumman",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/northrop-grumman.jpg",
-   "location": "Chandler, AZ",
-   "workplaceType": "On-site",
-   "stipend": "$1",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This co-op involves hands-on mechanical work with engineering systems, supporting space projects. Ideal for students with a mechanical engineering background seeking real-world experience in a technical environment.",
-   "bullets": [
-    "Build, test, and maintain mechanical systems using engineering drawings and instructions",
-    "Work with tools and equipment to calibrate, adjust, and troubleshoot components",
-    "Full-time co-op from January to August 2027 in Chandler, AZ"
-   ],
-   "roleLabel": "Mechanical Systems Support",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "engineering drawings",
-    "calibration"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789101645166,
-   "firstSeenAt": 1789105245171,
-   "lastSeenAt": 1789105245171,
-   "url": "https://www.linkedin.com/jobs/view/4466036570/",
-   "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3658&rx_jobId=R10249939&rx_url=https%3A%2F%2Fjobs.northropgrumman.com%2Fcareers%2Fjob%2F1340074215997%3Fcode%3DJB-18202%26domain%3Dngc.com%26rx_campaign%3DLinkedin1%26rx_ch%3Dconnector%26rx_group%3D375073%26rx_id%3D07bc9e9b-ad14-11f1-abcd-97026824e754%26rx_job%3DR10249939%26rx_medium%3Dpost%26rx_r%3Dnone%26rx_source%3DLinkedin%26rx_vp%3Dslots%26source%3DJB-18202%26utm_audience%3Dprospectivetalentemployees%26utm_campaign%3Dta-general%26utm_content%3Djobfeed%26utm_format%3Dcpl%26utm_medium%3Djobboard%26utm_network%3Dpartnerdirect%26utm_source%3Dlinkedin-jobslots",
-   "description": null,
-   "roleFingerprint": "5d2dc9a169",
-   "cardFacts": [
-    "$1",
-    "Chandler",
     "On-site"
    ],
    "region": "US"
@@ -58460,51 +57445,6 @@
    "region": "US"
   },
   {
-   "id": "4466002825",
-   "title": "Product Design Engineering Co-Op - Aerospace January-August 2027",
-   "company": "Parker Hannifin",
-   "matchedWatchlist": "Parker Hannifin",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/parker-hannifin.jpg",
-   "location": "Fort Worth, TX",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "2 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op involves working on aerospace product design and manufacturing projects with senior engineers and major aviation companies. You will use industry tools like ANSYS and CATIA V to support research and development efforts. The role offers hands-on experience in engineering processes and product development.",
-   "bullets": [
-    "Design and develop aerospace products with senior engineers and customers",
-    "Use ANSYS and CATIA V for tooling and manufacturing research",
-    "Work on lean manufacturing and process improvement projects"
-   ],
-   "roleLabel": "Aerospace Product Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Aerospace Engineering",
-   "keySkills": [
-    "ansys",
-    "catia v",
-    "lean manufacturing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "30 minutes ago",
-   "postedAt": 1789092214218,
-   "firstSeenAt": 1789094014219,
-   "lastSeenAt": 1789094014219,
-   "url": "https://www.linkedin.com/jobs/view/4466002825/",
-   "applyUrl": "https://parkercareers.ttcportals.com/jobs/18229623-product-design-engineering-co-op-aerospace-january-august-2027?tm_job=68605-1A&tm_event=view&tm_company=1147&bid=56&BID=370",
-   "description": null,
-   "roleFingerprint": "41d173681b",
-   "cardFacts": [
-    "Fort Worth",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465896716",
    "title": "Cybersecurity Engineer Co-Op",
    "company": "Entegris",
@@ -58556,55 +57496,6 @@
    "cardFacts": [
     "$20 – $30 / hour",
     "Chaska",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465899688",
-   "title": "Electrical Manufacturing Engineering Co-Op",
-   "company": "Entegris",
-   "matchedWatchlist": "Entegris",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/entegris.png",
-   "location": "Bloomington, MN",
-   "workplaceType": "On-site",
-   "stipend": "$20 – $30 / hour",
-   "duration": "6 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves supporting electrical assembly processes, improving manufacturing efficiency, and working with teams to refine production methods. Ideal for students with technical backgrounds looking for hands-on experience in a structured environment.",
-   "bullets": [
-    "Support build, testing, and troubleshooting of electrical assemblies",
-    "Use lean tools to improve workflow, safety, and product quality",
-    "Collaborate with cross-functional teams on new product introductions"
-   ],
-   "roleLabel": "Electrical Assembly Support",
-   "degreeLevel": "UG",
-   "degreeText": "Electrical Engineering/Mechanical Engineering",
-   "keySkills": [
-    "Microsoft Office",
-    "Lean manufacturing",
-    "Work instructions",
-    "Root-cause analysis"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 hours ago",
-   "postedAt": 1789090970262,
-   "firstSeenAt": 1789098170264,
-   "lastSeenAt": 1789098170264,
-   "url": "https://www.linkedin.com/jobs/view/4465899688/",
-   "applyUrl": "https://entegris.wd1.myworkdayjobs.com/EntegrisCareers/job/Bloomington-MN/Electrical-Manufacturing-Engineering-Co-Op_REQ-14486?mode=job&iis=JobBoard&iisn=LinkedIn",
-   "description": null,
-   "roleFingerprint": "3d4fa5fa6f",
-   "cardFacts": [
-    "$20 – $30 / hour",
-    "Bloomington",
     "On-site"
    ],
    "region": "US"
@@ -59815,53 +58706,6 @@
    "cardFacts": [
     "$21 – $55 / hour",
     "Plano",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465890721",
-   "title": "GE Vernova Gas Power Engineering Internship - Summer 2027-1",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Longmont, CO",
-   "workplaceType": "On-site",
-   "stipend": "$21 / hour",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship offers hands-on experience in power generation systems, working on design and analysis projects with engineering teams. Ideal for students pursuing mechanical, electrical, or computer science degrees, the role involves solving technical challenges in turbine and generator systems. The position is based in Longmont, CO, with a summer schedule from May to August 2027.",
-   "bullets": [
-    "Design and analyze steam turbine, gas turbine, and generator systems",
-    "Collaborate with drafting and manufacturing teams on complex projects",
-    "Work in a fast-paced environment with technical mentors and managers"
-   ],
-   "roleLabel": "Power Systems Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical / Electrical / Computer Science",
-   "keySkills": [
-    "Systems analysis",
-    "Design improvements"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1789082607468,
-   "firstSeenAt": 1789083027469,
-   "lastSeenAt": 1789083027469,
-   "url": "https://www.linkedin.com/jobs/view/4465890721/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-gas-power-engineering-internship-summer-2027-1/job/R5051923",
-   "description": null,
-   "roleFingerprint": "769641bbc5",
-   "cardFacts": [
-    "$21 / hour",
-    "Longmont",
     "On-site"
    ],
    "region": "US"
@@ -62251,51 +61095,6 @@
    "cardFacts": [
     "$30",
     "Renton",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465863155",
-   "title": "Science & Engineering Co-op",
-   "company": "Entegris",
-   "matchedWatchlist": "Entegris",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/entegris.png",
-   "location": "Bedford, MA",
-   "workplaceType": "On-site",
-   "stipend": "$20 – $30 / hour",
-   "duration": "6 months",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This co-op involves improving manufacturing processes through CAD design, statistical analysis, and lean methods. Ideal for engineering students interested in hands-on problem-solving and process optimization.",
-   "bullets": [
-    "Develop and implement CAD projects to improve efficiency and reduce costs",
-    "Use statistical methods to analyze processes and increase yields",
-    "Work on lean manufacturing and continuous improvement initiatives"
-   ],
-   "roleLabel": "CAD Process Improvement",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Chemical Engineering",
-   "keySkills": [
-    "cad",
-    "lean manufacturing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1789068253111,
-   "firstSeenAt": 1789069033116,
-   "lastSeenAt": 1789069033116,
-   "url": "https://www.linkedin.com/jobs/view/4465863155/",
-   "applyUrl": "https://entegris.wd1.myworkdayjobs.com/EntegrisCareers/job/Bedford-MA/Science---Engineering-Co-op_REQ-14396?mode=job&iis=JobBoard&iisn=LinkedIn",
-   "description": null,
-   "roleFingerprint": "a935888b1d",
-   "cardFacts": [
-    "$20 – $30 / hour",
-    "Bedford",
     "On-site"
    ],
    "region": "US"
@@ -65817,52 +64616,6 @@
    "region": "US"
   },
   {
-   "id": "4463412948",
-   "title": "Boeing - Wichita Summer 2027 Internship Program (Paid) - Structural Analysis, Design, & Systems Engineering",
-   "company": "Boeing",
-   "matchedWatchlist": "Boeing India",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/boeing.jpg",
-   "location": "Wichita, KS",
-   "workplaceType": "On-site",
-   "stipend": "$22 / hour",
-   "duration": "Summer 2027",
-   "applicants": "7 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing aircraft structures and supporting the design and certification of commercial aerostructures. Ideal for engineering students interested in aerospace and hands-on project work.",
-   "bullets": [
-    "Analyze aircraft structures using finite-element models and engineering tools",
-    "Support design and certification of commercial aerostructures like fuselages and wings",
-    "Work onsite in Wichita, KS with experienced engineers on real projects"
-   ],
-   "roleLabel": "Structural Analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "finite-element models",
-    "structural analysis",
-    "engineering tools"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1789014867924,
-   "firstSeenAt": 1789018467929,
-   "lastSeenAt": 1789018467929,
-   "url": "https://www.linkedin.com/jobs/view/4463412948/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/517492914;325447798;a?https://jobs.boeing.com/job/-/-/185/100378295760?utm_source=linkedin&utm_medium=job_posting&utm_campaign=ra-us",
-   "description": null,
-   "roleFingerprint": "6dadb1d4f5",
-   "cardFacts": [
-    "$22 / hour",
-    "Wichita",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465613153",
    "title": "2027 Electrical Engineering Intern - Roy UT",
    "company": "Northrop Grumman",
@@ -66577,51 +65330,6 @@
    "roleFingerprint": "9d29ba76ab",
    "cardFacts": [
     "$19 / hour",
-    "Wichita",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463406916",
-   "title": "Spirit Defense - Summer 2027 Internship Program (Paid) – Design, Structural Analysis, & Systems Engineering",
-   "company": "Spirit Defense, A Boeing Company",
-   "matchedWatchlist": "Boeing India",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/spirit-defense-a-boeing-company.jpg",
-   "location": "Wichita, KS",
-   "workplaceType": "On-site",
-   "stipend": "$22 / hour",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on experience in aerospace engineering, focusing on structural design and analysis for defense and space programs. Ideal for engineering students interested in contributing to real-world projects and working with experienced professionals in a dynamic environment.",
-   "bullets": [
-    "Work on aircraft structural design, stress analysis, and finite-element modeling",
-    "Use engineering tools to support defense and space programs",
-    "Collaborate with experienced engineers on real-world aerospace projects"
-   ],
-   "roleLabel": "Structural Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "stress analysis",
-    "structural design"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "34 minutes ago",
-   "postedAt": 1789012882801,
-   "firstSeenAt": 1789014922802,
-   "lastSeenAt": 1789014922802,
-   "url": "https://www.linkedin.com/jobs/view/4463406916/",
-   "applyUrl": "https://jobs.boeing.com/job/-/-/185/100378295600?utm_source=linkedin&utm_medium=job_posting&utm_campaign=ra-us",
-   "description": null,
-   "roleFingerprint": "81b81aad57",
-   "cardFacts": [
-    "$22 / hour",
     "Wichita",
     "On-site"
    ],
@@ -68530,54 +67238,6 @@
    "region": "US"
   },
   {
-   "id": "4465368058",
-   "title": "GE Vernova Gas Power Engineering Internship - Summer 2027",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Greenville, SC",
-   "workplaceType": "On-site",
-   "stipend": "$1,000 – $2,000 / week",
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves designing and analyzing power generation systems like steam turbines and gas engines. You'll work with manufacturing teams to solve production challenges. Based in Greenville, SC, the role is open to engineering students with one to two semesters left.",
-   "bullets": [
-    "Design and analyze steam turbine and gas engine systems",
-    "Collaborate with manufacturing to solve production challenges",
-    "Work in Greenville, SC, during summer 2027"
-   ],
-   "roleLabel": "Power System Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical / Electrical / Chemical / Aeronautical / Aerospace",
-   "keySkills": [
-    "steam turbine",
-    "gas engine",
-    "design improvements"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788996221686,
-   "firstSeenAt": 1788996641690,
-   "lastSeenAt": 1788996641690,
-   "url": "https://www.linkedin.com/jobs/view/4465368058/",
-   "applyUrl": "https://careers.gevernova.com/ge-vernova-gas-power-engineering-internship-summer-2027/job/R5051434",
-   "description": null,
-   "roleFingerprint": "04d157fac0",
-   "cardFacts": [
-    "$1,000 – $2,000 / week",
-    "Greenville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465364077",
    "title": "GE Vernova Engineering Intern (Summer 2027)",
    "company": "GE Vernova",
@@ -69906,54 +68566,6 @@
    "region": "US"
   },
   {
-   "id": "4463081140",
-   "title": "Nuclear Engineering Co-Op - Hoffman Estates, IL",
-   "company": "Siemens Healthineers",
-   "matchedWatchlist": "Siemens",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/siemens-healthineers.jpg",
-   "location": "Hoffman Estates, IL",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "algorithms"
-   ],
-   "summary": "This internship involves working with radiation sources and data analysis to test medical imaging technologies. Ideal for students interested in nuclear engineering and medical physics, with opportunities to develop technical skills and contribute to innovative healthcare solutions.",
-   "bullets": [
-    "Collect data using radiation sources to test detector systems",
-    "Develop code and algorithms for data analysis and technical investigations",
-    "Create mechanical or electrical test fixtures for detector technologies",
-    "Present findings to engineering staff and management"
-   ],
-   "roleLabel": "Nuclear Engineering",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "radiation detection",
-    "radiation transport",
-    "medical imaging"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1788989864614,
-   "firstSeenAt": 1788993464617,
-   "lastSeenAt": 1788993464617,
-   "url": "https://www.linkedin.com/jobs/view/4463081140/",
-   "applyUrl": "https://careers.siemens-healthineers.com/global/en/job/R-30716/Nuclear-Engineering-Co-Op---Hoffman-Estates-IL?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "a895fd7544",
-   "cardFacts": [
-    "Hoffman Estates",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4465345228",
    "title": "Intern: Quality Metrology Lab (Summer 2027)",
    "company": "Pratt & Whitney",
@@ -70703,52 +69315,6 @@
     "Richmond",
     "Hybrid",
     "Fall 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4465313607",
-   "title": "Pneumatic Actuator Engineering Co-op - Spring 2027",
-   "company": "Parker Hannifin",
-   "matchedWatchlist": "Parker Hannifin",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/parker-hannifin.jpg",
-   "location": "Wadsworth, OH",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "Spring 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This co-op involves designing and documenting pneumatic actuators used in material handling. You'll work on CAD models, test prototypes, and collaborate with teams. Ideal for mechanical engineering students seeking hands-on experience in product development.",
-   "bullets": [
-    "Create and modify technical drawings using autodesk inventor",
-    "Assist with product testing and failure analysis",
-    "Work on cross-functional teams in a manufacturing environment"
-   ],
-   "roleLabel": "Pneumatic Actuator Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "autodesk inventor"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "27 minutes ago",
-   "postedAt": 1788984282880,
-   "firstSeenAt": 1788985902881,
-   "lastSeenAt": 1788985902881,
-   "url": "https://www.linkedin.com/jobs/view/4465313607/",
-   "applyUrl": "https://parkercareers.ttcportals.com/jobs/18220704-pneumatic-actuator-engineering-co-op-spring-2027?tm_job=68513-1A&tm_event=view&tm_company=1147&bid=56&BID=370",
-   "description": null,
-   "roleFingerprint": "4e911f7e99",
-   "cardFacts": [
-    "Wadsworth",
-    "On-site",
-    "Spring 2027"
    ],
    "region": "US"
   },
@@ -77677,53 +76243,6 @@
    "region": "US"
   },
   {
-   "id": "4463593971",
-   "title": "Mechanical Engineering Internship - Summer 2027",
-   "company": "Emerson",
-   "matchedWatchlist": "Emerson",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/emerson.jpg",
-   "location": "Austin, TX",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": "Summer 2027",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on experience in mechanical design and product development. Interns will work on real projects involving analysis, prototyping, and testing. The role suits students with a passion for engineering and a strong foundation in mechanical principles.",
-   "bullets": [
-    "Analyze mechanical systems and design components for hardware products",
-    "Use 3d cad tools and understand manufacturing processes",
-    "Work on product testing and validation projects"
-   ],
-   "roleLabel": "Mechanical Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering",
-   "keySkills": [
-    "creo parametric",
-    "tolerance analysis",
-    "heat transfer",
-    "design of experiments"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "11 minutes ago",
-   "postedAt": 1788929729866,
-   "firstSeenAt": 1788930389874,
-   "lastSeenAt": 1788930389874,
-   "url": "https://www.linkedin.com/jobs/view/4463593971/",
-   "applyUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/26009934/?utm_medium=jobboard&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "ec17d90f8e",
-   "cardFacts": [
-    "Austin",
-    "Hybrid",
-    "Summer 2027"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4464980380",
    "title": "Summer 2027 Design Engineering Internship - Oswego, NY",
    "company": "Constellation",
@@ -77904,48 +76423,6 @@
     "Grand Prairie",
     "On-site",
     "Spring 2027"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4464967770",
-   "title": "Summer 2027 Operations Engineering Internship - Delta, PA",
-   "company": "Constellation",
-   "matchedWatchlist": "Constellation Brands",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": null,
-   "location": "Delta, PA",
-   "workplaceType": "On-site",
-   "stipend": "2,027 / year",
-   "duration": "10 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers engineering students the chance to contribute to nuclear power projects, working on tasks like thermal calculations and control circuit design. Ideal for those with a passion for energy systems and hands-on problem-solving.",
-   "bullets": [
-    "Support nuclear plant systems with hands-on engineering projects",
-    "Use tools like AutoCAD, MATLAB, and Python for analysis",
-    "Work on real-world projects with technical mentors in Delta, PA"
-   ],
-   "roleLabel": "Nuclear Engineering Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "1 minute ago",
-   "postedAt": 1788928829435,
-   "firstSeenAt": 1788928889439,
-   "lastSeenAt": 1788928889439,
-   "url": "https://www.linkedin.com/jobs/view/4464967770/",
-   "applyUrl": "https://jobs.constellationenergy.com/jobs/138674?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "1caa8552f4",
-   "cardFacts": [
-    "2,027 / year",
-    "Delta",
-    "On-site"
    ],
    "region": "US"
   },
@@ -80099,50 +78576,6 @@
    "roleFingerprint": "4330802a44",
    "cardFacts": [
     "Middletown",
-    "On-site",
-    "10 weeks"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4463570532",
-   "title": "Summer 2027 Operations Engineering Internship - Byron, IL",
-   "company": "Constellation",
-   "matchedWatchlist": "Constellation Brands",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": null,
-   "location": "Byron, IL",
-   "workplaceType": "On-site",
-   "stipend": "2,027",
-   "duration": "10 weeks",
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on engineering experience at a nuclear power plant. Interns contribute to projects like thermal analysis and control system design. Ideal for students with strong academic records in engineering disciplines. Work is based in byron, il, with a 10-week schedule.",
-   "bullets": [
-    "Support nuclear plant systems with analysis and design",
-    "Use cad and simulation tools for engineering projects",
-    "Work on real-world projects with technical mentors"
-   ],
-   "roleLabel": "Nuclear engineering",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "cad"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1788908009174,
-   "firstSeenAt": 1788908789175,
-   "lastSeenAt": 1788908789175,
-   "url": "https://www.linkedin.com/jobs/view/4463570532/",
-   "applyUrl": "https://jobs.constellationenergy.com/jobs/138622?lang=en-us&mode=apply&iis=LinkedIn",
-   "description": null,
-   "roleFingerprint": "9a74b9b0fd",
-   "cardFacts": [
-    "Byron",
     "On-site",
     "10 weeks"
    ],
@@ -89803,53 +88236,6 @@
    "region": "US"
   },
   {
-   "id": "4455245568",
-   "title": "Systems Engineering Co-op - Mechanical/Aerospace Engineering (Electric Power) - US - Fall 2027",
-   "company": "GE Aerospace",
-   "matchedWatchlist": "GE Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-aerospace.jpg",
-   "location": "Dayton, OH",
-   "workplaceType": "On-site",
-   "stipend": "$20 / hour",
-   "duration": "Fall 2027",
-   "applicants": "29 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This internship involves designing and testing electrical power systems for aircraft engines. You'll work with simulation tools and software requirements, gaining hands-on experience in aerospace systems. Ideal for engineering students interested in real-world design and analysis challenges.",
-   "bullets": [
-    "Design and test electrical power systems for aircraft engines",
-    "Work with simulation tools and software requirements",
-    "Based in Dayton, OH, with potential for full-time role"
-   ],
-   "roleLabel": "Electrical Power Systems Design",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical/Aerospace Engineering",
-   "keySkills": [
-    "software requirements",
-    "electrical power systems"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 hours ago",
-   "postedAt": 1788789231948,
-   "firstSeenAt": 1788796431950,
-   "lastSeenAt": 1788796431950,
-   "url": "https://www.linkedin.com/jobs/view/4455245568/",
-   "applyUrl": "https://careers.geaerospace.com/global/en/job/GAOGAYGLOBALR5030145EXTERNALENGLOBAL/Systems-Engineering-Co-op-Mechanical-Aerospace-Engineering-Electric-Power-US-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "ac7ce66f78",
-   "cardFacts": [
-    "$20 / hour",
-    "Dayton",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
    "id": "4455245573",
    "title": "Digital Technology Intern – US – Livonia, MI – Summer 2027",
    "company": "GE Aerospace",
@@ -97242,47 +95628,6 @@
    "cardFacts": [
     "$23 – $44 / hour",
     "Bentonville",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4461448263",
-   "title": "Maintenance Engineer Trainee",
-   "company": "SLB",
-   "matchedWatchlist": "SLB",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/slb.jpg",
-   "location": "Houma, LA",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves analyzing equipment performance to enhance reliability and reduce service costs. The intern will track maintenance data to support continuous improvement efforts and collaborate on technical audits and compliance checks. It is ideal for students with an engineering background interested in maintenance and operational efficiency.",
-   "bullets": [
-    "Analyze equipment performance to improve reliability and reduce service costs",
-    "Track maintenance data to support continuous improvement initiatives",
-    "Collaborate on technical audits and compliance checks for maintenance processes"
-   ],
-   "roleLabel": "Equipment analysis",
-   "degreeLevel": "UG",
-   "degreeText": "Engineering",
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "28 minutes ago",
-   "postedAt": 1788582157522,
-   "firstSeenAt": 1788583837525,
-   "lastSeenAt": 1788583837525,
-   "url": "https://www.linkedin.com/jobs/view/4461448263/",
-   "applyUrl": "https://careers.slb.com/jobdescription.aspx?id=EF20309-en_US+1&utm_source=linkedin&utm_medium=linkedin_posting&utm_campaign=linkedin_career_posting&src=LinkedIn",
-   "description": null,
-   "roleFingerprint": "0f4e7be04c",
-   "cardFacts": [
-    "Houma",
     "On-site"
    ],
    "region": "US"
@@ -169651,63 +167996,6 @@
    "cardFacts": [
     "$18 – $28",
     "Fond du Lac",
-    "On-site"
-   ],
-   "region": "US"
-  },
-  {
-   "id": "4458798783",
-   "title": "Mercury Marine: Drives & Propulsion Systems Engineering Intern",
-   "company": "Mercury Marine",
-   "matchedWatchlist": "Mercury Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mercury-marine.jpg",
-   "location": "Oshkosh, WI",
-   "workplaceType": "On-site",
-   "stipend": "$18 – $28 / hour",
-   "pay": {
-    "currency": "USD",
-    "min": 18,
-    "max": 27.5,
-    "unitText": "HOUR"
-   },
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "matlab",
-    "system design"
-   ],
-   "summary": "This internship involves testing and analyzing propulsion systems for recreational boats. You will design tests, analyze data, and contribute to product development. Ideal for students with mechanical or aerospace engineering backgrounds interested in marine technology.",
-   "bullets": [
-    "Design and execute boat tests, analyze data, and write reports",
-    "Use Python/Matlab for simulations and test results analysis",
-    "Work on propulsion systems for recreational boating industry"
-   ],
-   "roleLabel": "Propulsion Systems Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "Mechanical Engineering/Aerospace Engineering/Naval Architecture",
-   "keySkills": [
-    "python",
-    "matlab",
-    "data analysis",
-    "report writing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "29 minutes ago",
-   "postedAt": 1787682564725,
-   "firstSeenAt": 1787684304729,
-   "lastSeenAt": 1787684304729,
-   "url": "https://www.linkedin.com/jobs/view/4458798783/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4458798783/",
-   "description": null,
-   "roleFingerprint": "cc98a607d0",
-   "cardFacts": [
-    "$18 – $28 / hour",
-    "Oshkosh",
     "On-site"
    ],
    "region": "US"
