@@ -6,6 +6,18 @@
   "description": "New engineering internships in the UK, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/uk/jobs/waymo-2027-summer-intern-ms-phd-sim-realism-ml-infrastructure-ats-greenhouse-waymo-8205680",
+      "url": "https://interndoor.com/uk/jobs/waymo-2027-summer-intern-ms-phd-sim-realism-ml-infrastructure-ats-greenhouse-waymo-8205680",
+      "title": "2027 Summer Intern, MS/PhD, Sim-Realism ML Infrastructure — Waymo",
+      "content_text": "Company: Waymo · Location: London, England, United Kingdom\n• Maintain and improve systems for processing multi-modal data and feature sets\n• Work with ML frameworks like TensorFlow and Jax on simulation and inference\n• Collaborate on real-world autonomous driving use cases with industry leaders",
+      "date_published": "2026-09-18T16:12:12.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/uk/jobs/aecom-graduate-bridge-structures-engineer-edinburgh-2027-start-ats-smartrecruiters-aecom2-744000150392685",
       "url": "https://interndoor.com/uk/jobs/aecom-graduate-bridge-structures-engineer-edinburgh-2027-start-ats-smartrecruiters-aecom2-744000150392685",
       "title": "Graduate Bridge Structures Engineer - Edinburgh (2027 Start) — AECOM",
@@ -254,6 +266,18 @@
       "authors": [
         {
           "name": "AECOM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/uk/jobs/lendable-junior-data-engineer-ats-ashby-lendable-4479f8fd-0910-48f5-9525-62e55bef2edc",
+      "url": "https://interndoor.com/uk/jobs/lendable-junior-data-engineer-ats-ashby-lendable-4479f8fd-0910-48f5-9525-62e55bef2edc",
+      "title": "Junior Data Engineer — Lendable",
+      "content_text": "Company: Lendable · Location: London\n• Build scalable data pipelines using Snowflake, dbt, and AWS\n• Collaborate with product and engineering teams on data-driven solutions\n• Work in a fast-paced environment with high autonomy and ownership",
+      "date_published": "2026-09-15T08:27:41.586Z",
+      "authors": [
+        {
+          "name": "Lendable"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/aecom-graduate-technology-services-consultant-manchester-2027-start-ats-smartrecruiters-aecom2-744000148982659",
-      "url": "https://interndoor.com/uk/jobs/aecom-graduate-technology-services-consultant-manchester-2027-start-ats-smartrecruiters-aecom2-744000148982659",
-      "title": "Graduate Technology Services Consultant - Manchester (2027 start) — AECOM",
-      "content_text": "Company: AECOM · Location: Manchester, gb",
-      "date_published": "2026-09-11T10:20:48.783Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/aecom-traffic-engineering-apprentice-st-albans-2027-start-ats-smartrecruiters-aecom2-744000148960901",
-      "url": "https://interndoor.com/uk/jobs/aecom-traffic-engineering-apprentice-st-albans-2027-start-ats-smartrecruiters-aecom2-744000148960901",
-      "title": "Traffic Engineering Apprentice - St. Albans (2027 start) — AECOM",
-      "content_text": "Company: AECOM · Location: St Albans, gb",
-      "date_published": "2026-09-11T08:51:31.136Z",
-      "authors": [
-        {
-          "name": "AECOM"
         }
       ]
     }
