@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399",
+      "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399",
+      "title": "Software-Engineer--Analytical-Engineering — Bristol Myers Squibb",
+      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Build data models and pipelines for business intelligence\n• Use dbt and aws for data transformation and architecture\n• Collaborate with ai/ml teams on data infrastructure",
+      "date_published": "2026-09-19T07:51:58.671Z",
+      "authors": [
+        {
+          "name": "Bristol Myers Squibb"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
       "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
       "title": "Fullstack Developer- Internship — GreedyGame",
@@ -14,18 +26,6 @@
       "authors": [
         {
           "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469262450",
-      "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469262450",
-      "title": "Software-Engineer--Analytical-Engineering — Bristol Myers Squibb",
-      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Build data models and pipelines for business intelligence using DBT and AWS\n• Collaborate with teams to transform raw data into structured datasets\n• Support analytics workflows and ensure data quality for decision-making",
-      "date_published": "2026-09-18T23:31:42.008Z",
-      "authors": [
-        {
-          "name": "Bristol Myers Squibb"
         }
       ]
     },
