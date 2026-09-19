@@ -111,7 +111,9 @@ console.log('\n== the board wires it in the right order ==');
   ok('the answer is left on <html> for the counter', /dataset\.visit = visit\.returning \? 'return' : 'new'/.test(init));
 
   const renderList = lift(app, 'function renderList()', '\n}', 'renderList');
-  ok('the header is drawn only when something is new', /if \(split\.n > 0\) \{[\s\S]*'since-bar'/.test(renderList));
+  /* Something new on THIS tab, or on the other one — since 19 Sep 2026 the
+     bar also names the tab the reader is not looking at. */
+  ok('the header is drawn only when something is new', /if \(split\.n > 0 \|\| otherNew > 0\) \{[\s\S]*'since-bar'/.test(renderList));
   ok('the count reaches <html> too', /dataset\.newsince = String\(split\.n\)/.test(renderList));
   ok('cards are told whether they were seen', /jobCard\(group\[0\], i, group, seen\.has\(group\)\)/.test(renderList));
 
@@ -355,6 +357,48 @@ console.log('\n== /api/count keeps a number per day and nothing about anyone =='
   } finally {
     server.close();
   }
+}
+
+console.log('\n== the tab the reader is NOT on still says what arrived ==');
+{
+  /* The board opens on Internships, so a full-time role published overnight
+     was invisible unless the reader clicked across: the "new since your last
+     visit" bar counted only the tab on screen (19 Sep 2026). */
+  const newSinceByKind = new Function(`${lift(app, 'function newSinceByKind(', '\n}', 'newSinceByKind')}; return newSinceByKind;`)();
+  const key = (j) => `${j.company}|${j.title}`;
+  const check = (label, got, want) => ok(`${label} (${JSON.stringify(got)})`, JSON.stringify(got) === JSON.stringify(want));
+  const rows = [
+    { company: 'A', title: 'Intern', firstSeenAt: 900 },
+    { company: 'A', title: 'Intern', firstSeenAt: 950, location: 'other city' },   // same role, two cities
+    { company: 'B', title: 'SDE I', firstSeenAt: 920, employmentType: 'fulltime' },
+    { company: 'C', title: 'SDE I', firstSeenAt: 100, employmentType: 'fulltime' }, // old
+    { company: 'D', title: 'Old intern', firstSeenAt: 50 },
+  ];
+  check('counted per tab, in ROLES', newSinceByKind(rows, 500, key), { intern: 1, fulltime: 1 });
+  check('a first visit counts nothing', newSinceByKind(rows, null, key), { intern: 0, fulltime: 0 });
+  check('a row naming no kind is an internship', newSinceByKind([{ company: 'E', title: 'X', firstSeenAt: 999 }], 500, key), { intern: 1, fulltime: 0 });
+  check('nothing newer than the mark, nothing new', newSinceByKind(rows, 1000, key), { intern: 0, fulltime: 0 });
+  check('an unknown kind is not counted anywhere', newSinceByKind([{ company: 'F', title: 'Y', firstSeenAt: 999, employmentType: 'contract' }], 500, key), { intern: 0, fulltime: 0 });
+
+  /* WIRING, pinned in the source the way the rest of this file does. */
+  const list = lift(app, 'function renderList(', '\nfunction selectJob(', 'renderList');
+  ok('the bar counts the OTHER tab over every row', /const other = state\.kind === 'fulltime' \? 'intern' : 'fulltime';\s*const otherNew = newSinceByKind\(state\.jobs, state\.since\)\[other\];/.test(list));
+  ok('and renders for the other tab alone', /if \(split\.n > 0 \|\| otherNew > 0\) \{/.test(list));
+  ok('says so when this tab has nothing', /Nothing new here since your last visit/.test(list));
+  ok('the link is a button that switches tabs', /el\('button', 'since-other'[\s\S]{0,200}?go\.addEventListener\('click', \(\) => setKind\(other\)\);/.test(list));
+  ok('but only when the other tab has news', /if \(otherNew > 0\) \{[\s\S]{0,80}?since-other/.test(list));
+  ok('the on-screen count is what engage.js is told', /dataset\.newsince = String\(split\.n\);/.test(list));
+
+  const tabs = lift(app, 'function renderTabNews(', '\n}', 'renderTabNews');
+  ok('each tab gets its own marker', /newSinceByKind\(state\.jobs, state\.since\)/.test(tabs) && /mark\.hidden = n === 0;/.test(tabs) && /`\+\$\{n\} new`/.test(tabs));
+  /* renderTotal runs at boot BEFORE the visit is decided, so the markers must
+     be drawn again once `since` exists — or a returning reader sees none. */
+  const boot = lift(app, 'const visit = visitSince(readVisit()', 'loadEngage();', 'boot');
+  ok('the markers are drawn after `since` is decided', /state\.since = visit\.since;[\s\S]*?renderTabNews\(\);/.test(boot));
+  ok('and again on every refresh, through renderTotal', /renderTabNews\(\);\n\}/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
+  ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
+  ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
+  ok('and the bar\'s link is a real control', /\.since-other \{[^}]*cursor: pointer/.test(css));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
