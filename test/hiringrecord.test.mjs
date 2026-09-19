@@ -150,10 +150,14 @@ console.log('\n== where they sit ==');
 console.log('\n== wired into the board render ==');
 {
   const jobs = existsSync('web/public/data/jobs.json') ? (JSON.parse(readFileSync('web/public/data/jobs.json', 'utf8')).jobs ?? []) : [];
+  /* INTERNSHIPS ONLY. The record counts internships (15 Sep 2026), and since
+     19 Sep an India employer can have four live postings that are all fresher
+     roles — Accenture had seven, all full-time, and this test picked it and
+     failed against a hub that was correctly recordless. */
   const byCo = new Map();
-  for (const j of jobs) byCo.set(j.company, (byCo.get(j.company) ?? 0) + 1);
+  for (const j of jobs) if (j.employmentType !== 'fulltime') byCo.set(j.company, (byCo.get(j.company) ?? 0) + 1);
   const big = [...byCo.entries()].filter(([, n]) => n >= RECORD_MIN_POSTINGS).map(([c]) => c);
-  check('the India board has an employer with enough live postings to test', big.length > 0, true);
+  check('the India board has an employer with enough live INTERNSHIPS to test', big.length > 0, true);
   if (big.length) {
     const dir = mkdtempSync(join(tmpdir(), 'interndoor-record-'));
     writePages(jobs, dir, [], { region: IN });
