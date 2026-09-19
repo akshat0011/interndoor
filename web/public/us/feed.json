@@ -1,10 +1,58 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "InternDoor — engineering internships and new grad jobs in the US",
+  "title": "InternDoor — engineering internships and entry-level jobs in the US",
   "home_page_url": "https://interndoor.com/us",
   "feed_url": "https://interndoor.com/us/feed.json",
-  "description": "New engineering internships and new grad jobs in the US, listed within minutes of going live.",
+  "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
+    {
+      "id": "https://interndoor.com/us/jobs/flex-robotics-mechatronics-engineering-co-op-spring-2027-4468070164",
+      "url": "https://interndoor.com/us/jobs/flex-robotics-mechatronics-engineering-co-op-spring-2027-4468070164",
+      "title": "Robotics/Mechatronics Engineering Co-Op - Spring 2027 — Flex",
+      "content_text": "Company: Flex · Location: Libertyville, IL · Duration: Spring 2027\n• Support robot path optimization and cycle time studies\n• Work with AMR and ASRS systems validation and mechanical improvements\n• Assist with vision system tuning and safety interlock verification",
+      "date_published": "2026-09-19T06:16:21.401Z",
+      "authors": [
+        {
+          "name": "Flex"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/flex-automation-controls-engineering-co-op-spring-2027-4468064649",
+      "url": "https://interndoor.com/us/jobs/flex-automation-controls-engineering-co-op-spring-2027-4468064649",
+      "title": "Automation/Controls Engineering Co-Op - Spring 2027 — Flex",
+      "content_text": "Company: Flex · Location: Libertyville, IL · Duration: Spring 2027\n• Support plc testing and troubleshooting for molding and coiling systems\n• Collaborate with engineers on automation documentation and system validation\n• Work on buffer timing logic and participate in fat/sat testing\n• Based in libertyville, il for spring 2027 co-op",
+      "date_published": "2026-09-19T06:16:11.301Z",
+      "authors": [
+        {
+          "name": "Flex"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/flex-manufacturing-data-and-analytics-co-op-spring-2027-4468066305",
+      "url": "https://interndoor.com/us/jobs/flex-manufacturing-data-and-analytics-co-op-spring-2027-4468066305",
+      "title": "Manufacturing Data & Analytics Co-Op - Spring 2027 — Flex",
+      "content_text": "Company: Flex · Location: Libertyville, IL · Duration: Spring 2027\n• Develop power bi dashboards for oee, downtime, scrap, and cycle time\n• Write sql queries and use python for data analysis and automation\n• Create spc charts and support coiler data collection integration",
+      "date_published": "2026-09-19T06:15:49.990Z",
+      "authors": [
+        {
+          "name": "Flex"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/the-walt-disney-company-global-security-design-and-engineering-intern-spring-2027-4468061859",
+      "url": "https://interndoor.com/us/jobs/the-walt-disney-company-global-security-design-and-engineering-intern-spring-2027-4468061859",
+      "title": "Global Security Design & Engineering Intern, Spring 2027 — The Walt Disney Company",
+      "content_text": "Company: The Walt Disney Company · Location: Glendale, CA · Duration: Spring 2027\n• Support R&D testing, evaluation, and documentation for physical security tech\n• Collaborate on COE governance, program development, and communication\n• Assist with quality assurance and technical problem-solving in design and field work",
+      "date_published": "2026-09-19T05:44:27.216Z",
+      "authors": [
+        {
+          "name": "The Walt Disney Company"
+        }
+      ]
+    },
     {
       "id": "https://interndoor.com/us/jobs/constellation-summer-2027-radiation-protection-intern-braceville-il-4468047927",
       "url": "https://interndoor.com/us/jobs/constellation-summer-2027-radiation-protection-intern-braceville-il-4468047927",
@@ -426,18 +474,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/us/jobs/chubb-intern-technology-june-2027-4466926935",
-      "url": "https://interndoor.com/us/jobs/chubb-intern-technology-june-2027-4466926935",
-      "title": "Intern, Technology - June 2027 — Chubb",
-      "content_text": "Company: Chubb · Location: Philadelphia, PA\n• Work on real projects that support business needs\n• Tools include python, java, and cloud platforms\n• Based in philadelphia with global exposure",
-      "date_published": "2026-09-18T23:46:57.309Z",
-      "authors": [
-        {
-          "name": "Chubb"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-advanced-research-summer-2027-research-program-internship-m-4469265295",
       "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-advanced-research-summer-2027-research-program-internship-m-4469265295",
       "title": "GE Vernova Advanced Research - Summer 2027 Research Program Internship (Master's Level) — GE Vernova",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Johnson & Johnson Innovative Medicine"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-spring-r-and-d-engineer-co-op-into-4469245529",
-      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-spring-r-and-d-engineer-co-op-into-4469245529",
-      "title": "Spring R&D Engineer Co-op, INTO — Johnson & Johnson Innovative Medicine",
-      "content_text": "Company: Johnson & Johnson Innovative Medicine · Location: Cincinnati, OH\n• Support device design and testing for cancer therapies\n• Use CAD and simulation tools for prototyping\n• Collaborate with engineers and clinicians on clinical trials",
-      "date_published": "2026-09-18T21:58:58.789Z",
-      "authors": [
-        {
-          "name": "Johnson & Johnson Innovative Medicine"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/centene-corporation-cybersecurity-summer-2027-intern-undergraduate-4469252239",
-      "url": "https://interndoor.com/us/jobs/centene-corporation-cybersecurity-summer-2027-intern-undergraduate-4469252239",
-      "title": "Cybersecurity Summer 2027 Intern (Undergraduate) — Centene Corporation",
-      "content_text": "Company: Centene Corporation · Location: Missouri, United States · Duration: Summer 2027\n• Support cybersecurity projects including threat detection and risk management\n• Work with security professionals using tools like SIEM and ticketing systems\n• Based in Missouri, with hybrid work options available",
-      "date_published": "2026-09-18T21:47:57.488Z",
-      "authors": [
-        {
-          "name": "Centene Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/centene-corporation-technology-summer-2027-intern-undergraduate-4469238677",
-      "url": "https://interndoor.com/us/jobs/centene-corporation-technology-summer-2027-intern-undergraduate-4469238677",
-      "title": "Technology Summer 2027 Intern (Undergraduate) — Centene Corporation",
-      "content_text": "Company: Centene Corporation · Location: Florida, United States · Duration: Summer 2027\n• Support projects in software development, business analysis, product management, and data analytics\n• Work with tools like Jira, Confluence, and SQL\n• Gain exposure to healthcare operations and process automation",
-      "date_published": "2026-09-18T21:47:51.646Z",
-      "authors": [
-        {
-          "name": "Centene Corporation"
         }
       ]
     }

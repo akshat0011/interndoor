@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>InternDoor — engineering internships and fresher jobs in India</title>
+  <title>InternDoor — engineering internships and entry-level jobs in India</title>
   <link>https://interndoor.com/</link>
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
-  <description>New engineering internships and fresher jobs in India, listed within minutes of going live.</description>
+  <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 18 Sep 2026 23:31:42 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 05:58:50 GMT</lastBuildDate>
+  <item>
+    <title>Fullstack Developer- Internship — GreedyGame</title>
+    <link>https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094</guid>
+    <pubDate>Sat, 19 Sep 2026 05:58:50 GMT</pubDate>
+    <description>Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years
+• Build backend services for ad networks and Google Ad Manager
+• Develop frontend dashboards in React for ad unit management
+• Work with MySQL, PostgreSQL, and MongoDB for data handling
+• Collaborate on feature design and deployment with senior engineers</description>
+  </item>
   <item>
     <title>Software-Engineer--Analytical-Engineering — Bristol Myers Squibb</title>
     <link>https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469262450</link>
@@ -498,16 +509,6 @@
 • Create 3d models and engineering drawings for customer projects
 • Use solidworks, inventor, and fea tools for design work
 • Collaborate with global engineers and maintain project documentation</description>
-  </item>
-  <item>
-    <title>Intern — Hewlett Packard Enterprise</title>
-    <link>https://interndoor.com/jobs/hewlett-packard-enterprise-intern-4468614190</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/hewlett-packard-enterprise-intern-4468614190</guid>
-    <pubDate>Thu, 17 Sep 2026 10:36:51 GMT</pubDate>
-    <description>Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India
-• Support senior team members on technical projects
-• Troubleshoot issues and maintain technical systems
-• Attend meetings and collaborate with colleagues</description>
   </item>
 </channel>
 </rss>
