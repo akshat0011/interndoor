@@ -4,40 +4,45 @@
 
 ### 🔗 [interndoor.com](https://interndoor.com)
 
-A free job board for engineering internships in India, built for students who keep finding the
-good postings two days late.
+A free job board for engineering internships and entry-level jobs in India, the US and the UK,
+built for students and fresh graduates who keep finding the good postings two days late.
 
 ---
 
 ## The problem
 
-A popular internship collects hundreds of applicants within a day of going up. By the time a
-posting reaches you through a WhatsApp group or a weekly newsletter, you're applicant number four
-hundred — and at that point your resume matters less than your timing.
+A popular internship or fresher opening collects hundreds of applicants within a day of going
+up. By the time a posting reaches you through a WhatsApp group or a weekly newsletter, you're
+applicant number four hundred — and at that point your resume matters less than your timing.
 
 Checking LinkedIn ten times a day works. Nobody actually does it.
 
 ## What InternDoor does
 
-It checks for you, every 15 minutes, and puts what it finds on one page — newest first, with the
+It checks for you, every 30 minutes, and puts what it finds on one page — newest first, with the
 details you actually decide on already pulled out of the posting.
 
 No account. No signup. No email. Open it and read it.
 
 ## What's on the site
 
+**Internships and entry-level jobs, kept apart.** Every board has two tabs: internships, and
+full-time roles open to freshers and new graduates — *Associate Software Engineer*, *SDE-1*,
+*Software Engineer I*, *New Grad*, *Graduate Engineer*. A fresher role is never filed as an
+internship, and a role asking for two or more years of experience is never filed as either.
+
 **Fresh listings, clearly labelled.** Every card shows how old the posting is. Under an hour is
 marked *just posted*; under a day is *new*. That label is the whole point — it tells you whether
 applying is still worth it.
 
-**Engineering roles only.** Around 900 companies are watched, from global tech and semiconductors
+**Engineering roles only.** Around 1,900 companies are watched, from global tech and semiconductors
 through Indian fintech, SaaS, banking and deeptech — and everything non-technical is filtered out
 before it reaches the site. No sales, no telecalling, no content roles to scroll past.
 
-**The facts up front, not buried in a wall of text.** Each listing shows the stipend, how long the
-internship runs, the location and whether it's remote, hybrid or on-site, which degree it's open
-to, and the key skills asked for — read out of the description, so you don't have to open five
-tabs to compare two roles.
+**The facts up front, not buried in a wall of text.** Each listing shows the stipend or pay, how
+long an internship runs, the location and whether it's remote, hybrid or on-site, which degree
+it's open to, and the key skills asked for — read out of the description, so you don't have to
+open five tabs to compare two roles.
 
 **Filter it down.** Narrow by company, location or workplace type. Show only paid roles, or only
 Easy Apply ones. Sort by newest, by stipend, or by company.
@@ -45,8 +50,8 @@ Easy Apply ones. Sort by newest, by stipend, or by company.
 **Apply at the source.** Every listing links straight to the original posting. InternDoor finds
 and summarises — you apply on the real thing.
 
-**A page per listing.** Every internship has its own shareable page, so you can send someone one
-job instead of "go look at the site".
+**A page per listing.** Every internship and entry-level role has its own shareable page, so you
+can send someone one job instead of "go look at the site".
 
 **A feed, so you don't have to remember to check.** New roles are published to
 [RSS](https://interndoor.com/feed.xml) and
@@ -57,7 +62,7 @@ Works on a phone, has a dark mode, and remembers which one you picked.
 
 ## Tailor your resume to a listing
 
-Pick any internship, upload your resume as a PDF, and get a version rewritten to target that
+Pick any listing, upload your resume as a PDF, and get a version rewritten to target that
 specific role — then download it as a PDF or copy the text.
 
 Two rules it won't break:
@@ -76,15 +81,18 @@ should get to decide it with the facts in front of you.
 
 ## Right now
 
-| | |
-|---|---|
-| Live engineering internships | ~80 |
-| Companies represented | ~53 |
-| Refreshed | every 15 minutes |
-| Listings expire after | 14 days |
+| | India | United States | United Kingdom |
+|---|---|---|---|
+| Live engineering internships | ~275 | ~3,370 | ~60 |
+| Live entry-level jobs | ~30 | ~160 | ~50 |
+| Companies hiring right now | ~170 | ~400 | ~35 |
+| Refreshed | every 30 minutes | every 30 minutes | every 30 minutes |
+| Listings expire after | 30 days | 30 days | 30 days |
 
-Postings drop off after two weeks. An internship older than that is usually closed or already has
-hundreds of applicants, and showing it would work against the one thing this site is for.
+Counts are from 19 September 2026 and move every half hour. Postings drop off after 30 days, or
+sooner when the employer's own page says the role has closed. A posting older than that is usually
+closed or already has hundreds of applicants, and showing it would work against the one thing this
+site is for.
 
 ## Built with
 

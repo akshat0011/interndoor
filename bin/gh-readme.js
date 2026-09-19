@@ -31,6 +31,7 @@ import { Store } from '../src/store.js';
 import { renderReadme } from '../src/ghreadme.js';
 import { regionOf, regionPath } from '../src/regions.js';
 import { log } from '../src/logger.js';
+import { countedOffer } from '../src/employment.js';
 
 const ARGS = process.argv.slice(2);
 const has = (f) => ARGS.includes(f);
@@ -114,7 +115,7 @@ try {
   if (!git('status', '--porcelain', 'README.md').trim()) { log.info('GitHub list: nothing staged.'); done(); }
   const companies = new Set(jobs.map((j) => j.company).filter(Boolean)).size;
   /* No AI co-author trailer, the same rule this project's own commits follow. */
-  git('commit', '-m', `${jobs.length} live internships from ${companies} companies`);
+  git('commit', '-m', `${countedOffer(jobs, region, { live: true, adjective: '' })} from ${companies} companies`);
   git('push', 'origin', 'HEAD');
   log.ok(`GitHub list: pushed ${jobs.length} ${region.name} roles to ${conf.repo ?? 'origin'}.`);
 } catch (err) {

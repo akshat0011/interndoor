@@ -1064,8 +1064,12 @@ check('no chip list at all when the role names no skills', barePanel.includes('r
 console.log('\n== the masthead nav marks, and never drops, the current section ==');
 const navBoard = readFileSync(join(ROOT, 'web', 'public', 'index.html'), 'utf8');
 const navBoardOK = () => ['"/companies"', '"/skills"'].every((h) => navBoard.includes(h));
+/* "Jobs", not "Internships": the board has carried two kinds — internships and
+   entry-level full-time roles — under two tabs since 23 Aug 2026, and the
+   item that names the board has to cover both (19 Sep 2026). */
 check('all three items are on a company hub',
-  ['>Internships<', '>Companies<', '>Skills<'].every((x) => panel.includes(x)), true);
+  ['>Jobs<', '>Companies<', '>Skills<'].every((x) => panel.includes(x)), true);
+check('and the board item no longer says only Internships', panel.includes('>Internships<'), false);
 /* `true`, NOT `page`: a hub lives INSIDE the Companies section but is not
    /companies, so "current page" would be a lie — and the region switcher on a
    multi-region hub already emits an aria-current="page" of its own, so saying
@@ -1086,11 +1090,11 @@ check('so the board template can be localised at all',
   navBoardOK(), true);
 check('exactly one nav item is current', (panel.match(/aria-current="(page|true)"/g) ?? []).length, 1);
 check('the board template carries the same three',
-  ['>Internships<', '>Companies<', '>Skills<'].every((x) => navBoard.includes(x)), true);
-/* The board IS the internships list, so it marks that item rather than
-   dropping it: a nav that loses an item on one page moves every other link. */
-check('and the board marks Internships',
-  /<a href="\/" aria-current="page">Internships</.test(navBoard), true);
+  ['>Jobs<', '>Companies<', '>Skills<'].every((x) => navBoard.includes(x)), true);
+/* The board IS the jobs list, so it marks that item rather than dropping it:
+   a nav that loses an item on one page moves every other link. */
+check('and the board marks Jobs',
+  /<a href="\/" aria-current="page">Jobs</.test(navBoard), true);
 
 console.log('\n== the answer sentence ==');
 check('it answers the query before the list', /Yes, Foo is hiring interns/.test(panel), true);
@@ -1157,6 +1161,71 @@ for (const town of ['Bengaluru', 'University Park', 'Florham Park', 'Villa Park'
   'Research Park', 'San Francisco Bay Area', 'Denver Metropolitan Area',
   'Mumbai Metropolitan Region', 'Greater Minneapolis-St. Paul Area']) {
   check(`untouched: ${town}`, placesOf(town), [town]);
+}
+
+console.log('\n== every surface names both kinds — internships & entry-level jobs ==');
+{
+  const { renderFacetPage, renderFacetIndex, renderAlertsPage, renderApplicationsPage, renderContactPage, renderReportPage } = await import('../src/pages.js');
+  const IN = regionOf('IN'), US = regionOf('US');
+  const ft = { ...rich, id: '993', title: 'Associate Software Engineer', employmentType: 'fulltime' };
+  const un = (t) => t.replace(/&amp;/g, '&');
+  const titleOf = (h) => un(/<title>([\s\S]*?)<\/title>/.exec(h.replace(/<!--[\s\S]*?-->/g, ''))?.[1] ?? '');
+
+  /* THE HUB names both kinds only once the employer has posted both — and
+     "tracked" decides, not "live", so the <title> does not flip with the day. */
+  const hubBoth = renderCompanyPage('Foo', [rich], [ft], '', { region: IN });
+  check('a hub with a tracked full-time role titles both kinds', titleOf(hubBoth).startsWith('Foo Internships & Entry-Level Jobs in India'), true);
+  check('and heads both kinds', /<h1>Foo internships and entry-level jobs in India<\/h1>/.test(hubBoth), true);
+  check('a hub with internships only keeps the short form', titleOf(panel).startsWith('Foo Internships in India'), true);
+  check('and its heading', /<h1>Foo internships in India<\/h1>/.test(panel), true);
+  check('the hub foot invites for either kind', /a new engineering internship or entry-level role goes live in India/.test(hubBoth), true);
+
+  /* THE DIRECTORY counts what it lists. */
+  const dir = renderCompanyIndex(new Map([['Foo', [rich, ft]], ['Bar', [{ ...rich, id: '994', company: 'Bar' }]]]), new Map(), new Map(), { region: IN });
+  check('the directory title', titleOf(dir), 'Internships & Entry-Level Jobs in India by company | InternDoor');
+  check('the directory counts each kind', /content="Browse 2 live internships and 1 live entry-level job across 2 companies in India/.test(dir), true);
+  check('and heads both', /<h1>Internships and entry-level jobs by company in India<\/h1>/.test(dir), true);
+
+  /* A FACET names both kinds only where both are on it. */
+  const facetBoth = renderFacetPage('skill', { slug: 'python', label: 'python', jobs: [rich, ft] }, [], { region: IN });
+  const facetOne = renderFacetPage('skill', { slug: 'python', label: 'python', jobs: [rich] }, [], { region: IN });
+  check('a mixed facet heads both kinds', /<h1>Python internships and entry-level jobs in India<\/h1>/.test(facetBoth), true);
+  check('and counts them apart', /1 live internship and 1 live entry-level job in India that ask for Python, from 1 company\./.test(facetBoth), true);
+  check('an internships-only facet stays internships', /<h1>Python internships in India<\/h1>/.test(facetOne) && /1 live internship in India that ask for Python/.test(facetOne), true);
+  check('the city facet too', /<h1>Internships and entry-level jobs in Bengaluru<\/h1>/.test(renderFacetPage('city', { slug: 'bengaluru', label: 'Bengaluru', jobs: [rich, ft] }, [], { region: IN })), true);
+  check('the facet crumb says Jobs', /<a href="\/">Jobs<\/a> <span aria-hidden="true">\/<\/span>/.test(facetBoth), true);
+  const facetIndex = renderFacetIndex('skill', [{ slug: 'python', label: 'python', jobs: [rich] }], { region: US });
+  check('the facet index names both kinds', /<h1>Internships and entry-level jobs in the US by skill<\/h1>/.test(facetIndex), true);
+  check('in its title too', titleOf(facetIndex).startsWith('Internships & Entry-Level Jobs by Skill'), true);
+
+  /* ALERTS, TRACKER, CONTACT, REPORT. */
+  const alerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }], { region: IN });
+  check('the alerts page', titleOf(alerts).startsWith('Get internship and entry-level job alerts') && /<h1>Get internship and entry-level job alerts in India<\/h1>/.test(alerts), true);
+  check('and its lede', /New engineering internships and entry-level roles, within minutes of going live\./.test(alerts), true);
+  const trk = renderApplicationsPage({ region: IN });
+  check('the tracker', /Every internship and entry-level role you have applied to/.test(trk) && /Browse live roles<\/a>/.test(trk), true);
+  const contact = renderContactPage({ region: IN });
+  check('the contact page is region-neutral and names both', /engineering internships and entry-level full-time roles in India, the United States and the United Kingdom/.test(contact), true);
+  const report = renderReportPage([], { region: IN, asOf: Date.UTC(2026, 8, 19) });
+  check('the report says its figures are internships only', /These figures cover every <strong>internship<\/strong> we recorded in India/.test(report) && /entry-level roles on the board's Full-time tab are not counted here/.test(report), true);
+
+  /* THE NAV AND THE FEED LINK ON EVERY GENERATED PAGE. */
+  check('the masthead item is Jobs', />Jobs<\/a>/.test(hubBoth) && !/>Internships<\/a>/.test(hubBoth), true);
+  check('the feed link names both kinds', /rss\+xml" title="InternDoor — new internships and entry-level roles"/.test(hubBoth), true);
+  check('the foot browse link covers both', /Browse all live roles<\/a>/.test(hubBoth), true);
+
+  /* THE JOB PAGE'S ALERT BOX AND ADVICE FOLLOW THE ROW'S KIND. */
+  const ftPage = renderJobPage(ft, [], { region: IN });
+  const inPage = renderJobPage(rich, [], { region: IN });
+  check('an entry-level page: "Get entry-level roles like this first"', /<strong>Get entry-level roles like this first<\/strong>/.test(ftPage), true);
+  check('an internship page: "Get internships like this first"', /<strong>Get internships like this first<\/strong>/.test(inPage), true);
+  check('both promise both kinds', /New engineering internships and entry-level roles in India, the minute they are posted\./.test(ftPage) && /New engineering internships and entry-level roles in India, the minute they are posted\./.test(inPage), true);
+  check('the advice names the kind', /Entry-level roles in India often collect/.test(ftPage) && /Internships in India often collect/.test(inPage), true);
+
+  /* NOWHERE the old regional words. */
+  for (const [name, html] of [['hub', hubBoth], ['directory', dir], ['facet', facetBoth], ['alerts', alerts], ['job page', ftPage]]) {
+    check(`${name}: no fresher, new grad or graduate wording`, /\b(fresher|new grad|graduate) (job|role)/i.test(html.replace(/<!--[\s\S]*?-->/g, '')), false);
+  }
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

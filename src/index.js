@@ -1832,7 +1832,7 @@ async function main() {
     if (cfg.notifications.onNewJobs) {
       const top = homeJobs.slice(0, 3).map((j) => `${j.company}: ${j.title}`).join('\n');
       await notify(
-        `${homeJobs.length} new internship${homeJobs.length === 1 ? '' : 's'}`,
+        `${homeJobs.length} new role${homeJobs.length === 1 ? '' : 's'}`,
         top + (homeJobs.length > 3 ? `\n…and ${homeJobs.length - 3} more` : ''),
         { sound: 'Ping', subtitle: 'Click to open the report' },
       );
@@ -1850,7 +1850,7 @@ async function main() {
     const tech = homeJobs.filter((j) => j.is_tech);
     const lead = (tech.length ? tech : homeJobs).slice(0, 4);
     await pushToPhone(
-      `${homeJobs.length} new internship${homeJobs.length === 1 ? '' : 's'}`,
+      `${homeJobs.length} new role${homeJobs.length === 1 ? '' : 's'}`,
       lead.map((j) => `${j.company} — ${j.title}`).join('\n')
         + (homeJobs.length > lead.length ? `\n…and ${homeJobs.length - lead.length} more` : ''),
       { url: 'https://interndoor.com/', tags: ['satellite'], priority: 4 },

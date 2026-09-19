@@ -215,5 +215,28 @@ console.log('\n== A THIN ROW STILL RENDERS ==');
   check('and no empty facts separator is left behind', / · <\/td>/.test(html), false);
 }
 
+console.log('\n== THE MAIL CHROME SPLITS THE KINDS LIKE THE SUBJECT ==');
+{
+  /* 19 Sep 2026: the subject read "16 new engineering internships and 33
+     entry-level engineering roles in India" and the hero under it read "49 new
+     engineering internships". Counted over the ELIGIBLE set, like `total`. */
+  const html = render([rich(1)], { total: 49, kinds: { interns: 16, fullTime: 33 } });
+  ok('the hero names both kinds', html.includes('16 new internships<br>and 33 entry-level roles'));
+  check('and never the sum as internships', /49 new engineering/.test(html), false);
+  ok('the preheader is the subject line', html.includes('16 new engineering internships and 33 entry-level engineering roles in India, newest first.'));
+  ok('and so is the title', html.includes('<title>16 new engineering internships and 33 entry-level engineering roles in India</title>'));
+  ok('the board button covers both kinds', /Browse\s+all live roles/.test(html));
+  check('and no longer says internships alone', /all live internships/.test(html), false);
+  const only = render([rich(1)], { total: 3, kinds: { interns: 0, fullTime: 3 } });
+  ok('an entry-level-only day says so', only.includes('3 new entry-level<br>engineering roles'));
+  check('and never says internship in the hero', /new engineering<br>internship/.test(only), false);
+  /* A caller passing `total` and no split — the old contract — still counts
+     the unseen tail as internships, so the 275-of-25 case above holds. */
+  const old = render([rich(1)], { total: 4 });
+  ok('no split given: the old hero', old.includes('4 new engineering<br>internships'));
+  const oneFt = render([{ ...rich(1), employmentType: 'fulltime' }], { total: 4 });
+  ok('no split given, a full-time card in hand: it is counted as such', oneFt.includes('3 new internships<br>and 1 entry-level role'));
+}
+
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
 process.exit(fail === 0 ? 0 : 1);

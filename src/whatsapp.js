@@ -25,6 +25,7 @@ import { jobParts, publishedIndex } from './telegram.js';
 import { regionOf, resolveRowRegion } from './regions.js';
 import { log } from './logger.js';
 import { releaseProfileLock } from './browser.js';
+import { entryWord } from './employment.js';
 
 /** WhatsApp's own cap is far higher, but a wall of text is not read. */
 export const MAX_MESSAGE = 1400;
@@ -63,7 +64,7 @@ export function composeWhatsApp(job, region = regionOf('IN')) {
     p.page,
   ];
   if (p.facts.length) lines.push('', ...p.facts);
-  lines.push('', `🌐 Every open internship: ${p.board}`);
+  lines.push('', `🌐 Every open internship and ${entryWord(region)} role: ${p.board}`);
 
   // Trim from the FACTS, never the string: slicing would cut a URL in half and
   // WhatsApp would render the fragment as plain text. The last fact sits two

@@ -220,5 +220,47 @@ console.log('\n== the entry-level search is wired into the scan, in the right or
   check('openAndExtract returns it', /employmentTag, seniorityTag, applicants,/.test(li), true);
 }
 
+console.log('\n== the one phrase every surface uses for the two kinds ==');
+{
+  const { entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer, newCountHeadline } = await import('../src/employment.js');
+  const { regionOf } = await import('../src/regions.js');
+  const IN = regionOf('IN'), US = regionOf('US'), GB = regionOf('GB');
+  /* "InternDoor — Internships & Entry-Level Jobs": one wording on every
+     board, his call of 19 Sep 2026. Not "fresher", not "new grad", not
+     "graduate" — each reads as foreign on two of the three boards. */
+  check('entry-level on India', entryWord(IN), 'entry-level');
+  check('entry-level in the US', entryWord(US), 'entry-level');
+  check('entry-level in the UK', entryWord(GB), 'entry-level');
+  check('and with no region at all', entryWord(undefined), 'entry-level');
+  check('a region may still override it', entryWord({ entryWord: 'fresher' }), 'fresher');
+  check('sentence case', entryWordCap(IN), 'Entry-level');
+  check('title case', entryWordTitle(IN), 'Entry-Level');
+
+  /* Kinds are read off either shape a caller holds. */
+  check('the store column', splitKinds([{ employment_type: 'fulltime' }, { employment_type: 'intern' }]), { interns: 1, fullTime: 1 });
+  check('the projection', splitKinds([{ employmentType: 'fulltime' }, {}]), { interns: 1, fullTime: 1 });
+  check('a row naming neither is an internship', splitKinds([{}]), { interns: 1, fullTime: 0 });
+
+  check('the bare phrase', offerPhrase(IN), 'engineering internships and entry-level jobs');
+  check('as roles', offerPhrase(US, { noun: 'roles' }), 'engineering internships and entry-level roles');
+  check('singular, with or', offerPhrase(GB, { singular: true, noun: 'roles', joiner: 'or' }), 'engineering internship or entry-level role');
+  check('without the adjective', offerPhrase(IN, { adjective: '' }), 'internships and entry-level jobs');
+
+  const both = [{ employmentType: 'fulltime' }, {}, {}, { employment_type: 'fulltime' }];
+  /* EACH KIND IS NAMED ONLY WHEN IT IS THERE. "2 internships and 0 entry-level
+     jobs" is noise; "0 internships" is the sentence that teaches a reader the
+     board is empty. */
+  check('both kinds counted', countedOffer(both, IN), '2 engineering internships and 2 entry-level jobs');
+  check('internships alone', countedOffer([{}], IN), '1 engineering internship');
+  check('entry-level alone', countedOffer([{ employmentType: 'fulltime' }], US, { noun: 'roles' }), '1 entry-level engineering role');
+  check('nothing at all is prose, never zero', countedOffer([], GB), 'Engineering internships and entry-level jobs');
+  check('live, as roles', countedOffer(both, IN, { live: true, noun: 'roles' }), '2 live engineering internships and 2 live entry-level roles');
+  check('thousands are grouped', countedOffer(Array.from({ length: 1234 }, () => ({})), US), '1,234 engineering internships');
+
+  check('the digest headline, mixed', newCountHeadline({ interns: 16, fullTime: 33 }, 'India'), '16 new engineering internships and 33 entry-level engineering roles in India');
+  check('the digest headline, entry-level only', newCountHeadline({ interns: 0, fullTime: 1 }, 'the US'), '1 new entry-level engineering role in the US');
+  check('the digest headline, internships only', newCountHeadline({ interns: 2, fullTime: 0 }, 'the UK'), '2 new engineering internships in the UK');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

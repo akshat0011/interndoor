@@ -423,7 +423,7 @@ export function buildReport({ jobs, run, notes = [], stats = {}, regions = null,
 
   const body = jobs.length
     ? jobs.map((j) => jobCard(j, cfg)).join('\n')
-    : `<div class="empty"><b>No new matching internships this run.</b><br>
+    : `<div class="empty"><b>No new matching roles this run.</b><br>
        Scanned ${esc(run.cardsSeen ?? 0)} job cards across ${esc(run.pagesScanned ?? 0)} pages — none were new postings from your watchlist companies.</div>`;
 
   return `<!doctype html>
@@ -433,7 +433,7 @@ export function buildReport({ jobs, run, notes = [], stats = {}, regions = null,
 <style>${CSS}</style></head><body>
 <div class="wrap">
 <header>
-  <h1>New internships on your watchlist</h1>
+  <h1>New roles on your watchlist</h1>
   <div class="sub">Run finished ${esc(absTime(run.finishedAt || Date.now()))} · scanned ${esc(run.pagesScanned ?? 0)} pages, ${esc(run.cardsSeen ?? 0)} cards · next run within 3 hours</div>
 </header>
 

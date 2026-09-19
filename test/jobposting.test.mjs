@@ -224,10 +224,18 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
      that. This assertion read the comment before the strip was added. */
   const raw = readFileSync(`${dir}/us/index.html`, 'utf8');
   const html = raw.replace(/<!--[\s\S]*?-->/g, '');
-  const title = /<title>([\s\S]*?)<\/title>/.exec(html)?.[1]?.trim() ?? '';
-  const desc = /<meta name="description" content="([\s\S]*?)"/.exec(html)?.[1]?.trim() ?? '';
+  /* RENDERED length, so the "&" the title now carries counts as one character
+     and not the five of its entity — §11 measures what a reader sees. */
+  const un = (t) => t.replace(/&amp;/g, '&');
+  const title = un(/<title>([\s\S]*?)<\/title>/.exec(html)?.[1]?.trim() ?? '');
+  const desc = un(/<meta name="description" content="([\s\S]*?)"/.exec(html)?.[1]?.trim() ?? '');
 
-  check('the category leads', title.startsWith('Engineering Internships in the US'), true);
+  /* BOTH KINDS, in the one phrase every board uses — "Internships & Entry-Level
+     Jobs", his wording of 19 Sep 2026. "Engineering" is dropped from the
+     <title> alone: with it the line is 64 rendered characters against the
+     60 budget, and the brand is the part Google must not be left to cut. */
+  check('the category leads', title.startsWith('Internships & Entry-Level Jobs in the US'), true);
+  check('and the kind word is entry-level, never fresher or new grad', /fresher|new grad|graduate/i.test(title), false);
   check('and the brand trails', title.endsWith('— InternDoor'), true);
   /* buildTitle drops from the END so the searched part survives; the board
      titles were the one place that rule was inverted. */
@@ -240,6 +248,17 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
   /* ...but freshness belongs in the description, where a rewrite is free, and
      index.html already rewrites on every publish because of <!--LISTINGS-->. */
   check('the count IS in the description', desc.startsWith('3 engineering internships'), true);
+  /* Two kinds, two counts. A board of 3 internships and 1 full-time role must
+     not read "4 engineering internships". */
+  writePages([job(1), job(2), job(3), { ...job(4), employmentType: 'fulltime', title: 'Software Engineer I' }], dir, [], { region: regionOf('US') });
+  const mixed = un(readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, ''));
+  const mixedDesc = /<meta name="description" content="([\s\S]*?)"/.exec(mixed)?.[1] ?? '';
+  check('a mixed board counts each kind', mixedDesc.startsWith('3 engineering internships and 1 entry-level job in the US'), true);
+  check('the heading names both kinds', /<h1>[\s\S]*?Engineering internships & entry-level jobs in the US[\s\S]*?<\/h1>/.test(mixed), true);
+  check('and so does the lede', /<strong>Engineering internships and entry-level jobs<\/strong>,/.test(mixed), true);
+  check('the share card too', /og:description" content="Software internships and entry-level jobs in the US/.test(mixed), true);
+  check('and the feed link', /rss\+xml" title="InternDoor — new engineering internships and entry-level jobs"/.test(mixed), true);
+  writePages([job(1), job(2), job(3)], dir, [], { region: regionOf('US') });
   check('and the description fits a snippet', desc.length <= 160, true);
 
   /* WHAT THE DESCRIPTION HAS TO SAY, AND THE ONE THING IT MUST NOT SAY.

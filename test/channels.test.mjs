@@ -86,5 +86,11 @@ const tpl = readFileSync(new URL('../web/public/index.html', import.meta.url), '
 check('the template links to the bare path', tpl.includes('class="alerts" aria-label="Get alerts" href="/alerts"'), true);
 check('and hardcodes no region', tpl.includes('href="/in/alerts"'), false);
 
+console.log('\n== the email card names both kinds ==');
+for (const code of ['IN', 'US', 'GB']) {
+  check(`${code}: the blurb`, channelsFor(code, {}).find((c) => c.kind === 'email')?.blurb,
+    'New internships and entry-level roles in your inbox. One message, no spam.');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

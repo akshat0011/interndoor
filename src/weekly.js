@@ -35,6 +35,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { resolveRowRegion, regionOf, regionPath } from './regions.js';
 import { PATHS } from './paths.js';
+import { entryWord } from './employment.js';
 import { log } from './logger.js';
 import { normaliseCompany } from './config.js';
 import {
@@ -398,8 +399,8 @@ export function weeklyRoundup(store, cfg, { now = Date.now(), days = 7, publishe
     post: post.slice(0, MAX_POST_CHARS),
     comments: [
       telegram
-        ? `Every live engineering internship, updated as they open 👉 ${boardUrl}\n\nNew roles the minute they go up, on ${telegram.name} 👉 ${telegram.url}`
-        : `Every live engineering internship, updated as they open 👉 ${boardUrl}`,
+        ? `Every live engineering internship and ${entryWord(regionOf(region))} role, updated as they open 👉 ${boardUrl}\n\nNew roles the minute they go up, on ${telegram.name} 👉 ${telegram.url}`
+        : `Every live engineering internship and ${entryWord(regionOf(region))} role, updated as they open 👉 ${boardUrl}`,
     ],
     stats: {
       span,

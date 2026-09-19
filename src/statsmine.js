@@ -315,8 +315,15 @@ function runnersUp(by, exclude) {
  */
 export function mineStats(store, { region = 'IN', days = DEFAULT_DAYS, now = Date.now() } = {}) {
   const sinceMs = now - days * 86_400_000;
+  /* INTERNSHIPS ONLY. Every headline on /report says "engineering
+     internships", and the board has carried early-career full-time roles under
+     its own tab since 23 Aug 2026 (India's since 18 Sep) — a pay figure or an
+     applicant band with those inside it is a sentence about a set the page
+     does not name. The data posts made the same call (src/datapost.js). The
+     page's methodology says so in as many words. */
   const rows = store.db.prepare(`
     SELECT * FROM jobs WHERE is_tech = 1 AND first_seen_at > ?
+      AND (employment_type IS NULL OR employment_type <> 'fulltime')
   `).all(sinceMs).filter((r) => resolveRowRegion(r) === region);
 
   const out = [];
