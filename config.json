@@ -1188,9 +1188,9 @@
     },
     "telegram": {
       "enabled": true,
-      "chatId": "@interndoor",
+      "chatId": null,
+      "_chatId_note": "Was @interndoor until 19 Sep 2026. India's Telegram channel is RETIRED, his call: WhatsApp converts ~5% of prompts and Telegram ~0%, so India is WhatsApp-only. chatId was India's fallback in channelFor() and must stay null, or India starts posting to Telegram again with no entry in channels. The channel itself still exists with 17 members; its numeric id is in _channels_ids_note.",
       "channels": {
-        "IN": "@interndoor",
         "US": "@interndoorusa"
       },
       "_channels_ids_note": "Numeric ids, for recovery if a channel is ever renamed: IN @interndoor = -1004300938042, US @interndoorusa = -1004479304597. The usernames are used above because they are readable, but a rename breaks them and the numeric id cannot change - this project renamed its brand twice in one day, so keep these written down. Verified 25 Aug: @Internzobot is an administrator of both with can_post_messages true. GB has no channel and therefore gets no post.",

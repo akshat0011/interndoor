@@ -275,6 +275,21 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
     /no signup/i.test(desc) && /original posting/i.test(desc), true);
   check('and never claims the employer\'s own posting', /employer'?s own/i.test(desc), false);
 
+  /* THE BOARD'S PILL AND SIGNUP BAND LEAD WITH WHATSAPP where the region has
+     the channel (19 Sep 2026). Filled through REGION:PILL / REGION:FOLLOW in
+     the template; a region without the channel publishes the /alerts pill and
+     no lead, which is what every board did before. */
+  const WA = 'https://whatsapp.com/channel/0029VbEJ2qLBA1eq3S5hBE3P';
+  writePages([job(1)], dir, [], { region: regionOf('IN'), channels: [{ kind: 'email', name: 'Email', url: null }, { kind: 'whatsapp', name: 'WhatsApp', url: WA }] });
+  const inBoard = readFileSync(`${dir}/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+  check('India\'s pill is the WhatsApp channel', new RegExp(`class="alerts is-wa" aria-label="Join the WhatsApp channel" href="${WA}"`).test(inBoard), true);
+  check('and the band leads with it', new RegExp(`class="wa-go is-wa" href="${WA}"`).test(inBoard) && /Every new role in India, the minute it is posted\. No signup\./.test(inBoard), true);
+  check('exactly one pill', (inBoard.match(/class="alerts/g) ?? []).length, 1);
+  writePages([job(1)], dir, [], { region: regionOf('US'), channels: [{ kind: 'email', name: 'Email', url: null }, { kind: 'telegram', name: 'Telegram', url: 'https://t.me/interndoorusa' }] });
+  const usBoard = readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+  check('the US pill stays /us/alerts', /class="alerts" aria-label="Get alerts" href="\/us\/alerts"/.test(usBoard), true);
+  check('and the US band has no WhatsApp lead', /wa-go|whatsapp\.com/.test(usBoard), false);
+
   // A board with no live rows must not say "0 engineering internships".
   writePages([], dir, [], { region: regionOf('US') });
   const empty = readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');

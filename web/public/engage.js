@@ -143,10 +143,18 @@
      said nothing. Any failure degrades to email alone, which is what every
      generated page offered before. */
   var pageChannels = null;
+  /* A generated page links the WhatsApp channel itself since 19 Sep 2026 —
+     the header pill, the job page's alert box, the outro — so its channels
+     can be read off its own anchors before any fetch. Only channel hosts are
+     considered; channelsFromPage applies the same anchored test again. */
+  function pageChannelLinks() {
+    return [].slice.call(document.querySelectorAll('a[href^="https://whatsapp.com/channel/"], a[href^="https://www.whatsapp.com/channel/"], a[href^="https://t.me/"]'))
+      .map(function (a) { return a.getAttribute('href'); });
+  }
   function resolveChannels() {
     if (pageChannels) return pageChannels;
     var lds = ldTexts();
-    var direct = channelsFromPage(lds, SUBSCRIBE_URL);
+    var direct = channelsFromPage(lds, SUBSCRIBE_URL, pageChannelLinks());
     if (direct.length > 1) { pageChannels = Promise.resolve(direct); return pageChannels; }
     var alerts = document.querySelector('a[href$="/alerts"]');
     var href = alerts ? alerts.getAttribute('href') : null;
@@ -328,9 +336,17 @@
     box.append(h, el('p', 'nudge-p', subline(list)));
 
     var acts = el('div', 'nudge-acts');
+    /* One action. Where the page offers a channel the email card steps back to
+       a text line under it — three equal cards read as a choice to make, and
+       the counter says only the channel converts. */
+    var hasChannel = list.some(function (c) { return c.kind !== 'email'; });
     list.forEach(function (c) {
       var a = action(c);
       if (c.kind === 'email') {
+        if (hasChannel) {
+          a.classList.add('is-minor');
+          a.querySelector('.nudge-k').lastChild.textContent = 'Or one email a day';
+        }
         var form = emailForm(c);
         a.addEventListener('click', function () {
           a.hidden = true;

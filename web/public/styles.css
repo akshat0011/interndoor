@@ -287,6 +287,20 @@ a, button, summary, label, [role="button"], .row {
   transition: background .16s, border-color .16s, transform var(--d-press) var(--snap);
 }
 .alerts:active { transform: scale(.97); }
+/* The pill points straight at the WhatsApp channel on a board that has one
+   (India). Solid, so it reads as THE action rather than one of several. */
+.alerts.is-wa { background: var(--live); color: var(--live-ink); border-color: var(--live); font-weight: 700; }
+/* The signup band's lead — the WhatsApp channel above the email form. */
+.wa-lead { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 18px auto 22px; }
+.wa-go {
+  display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 22px;
+  border-radius: var(--r-pill); background: var(--live); color: var(--live-ink);
+  font-weight: 700; font-size: 15px; letter-spacing: -.01em; text-decoration: none;
+  transition: transform var(--d-press) var(--snap), filter .16s;
+}
+.wa-go:active { transform: scale(.97); }
+.wa-note { font-size: 13.5px; color: var(--ink-2); }
+.wa-lead + .sub .sub-l { color: var(--ink-3); }
 @media (hover: hover) and (pointer: fine) {
   .alerts:hover { background: color-mix(in oklab, var(--live) 16%, transparent); border-color: var(--live); }
 }
@@ -1264,6 +1278,14 @@ html.nudge-open { overflow: hidden; }
 .nudge-whatsapp { background: var(--live); border-color: var(--live); color: var(--live-ink); }
 .nudge-whatsapp small { color: rgba(20,23,10,.72); }
 .nudge-whatsapp .nudge-k i { background: rgba(20,23,10,.14); }
+/* Email steps back to a text line when the page offers a channel — one
+   action, not three equal cards (19 Sep 2026: WhatsApp converts, email does
+   not). It is still the same button and still opens the inline form. */
+.nudge-a.is-minor {
+  background: none; border-color: transparent; padding: 8px 6px; justify-content: center;
+  font-weight: 600; font-size: 14px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px;
+}
+.nudge-a.is-minor .nudge-k i, .nudge-a.is-minor small { display: none; }
 .nudge-form { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; align-items: center; }
 .nudge-form input {
   min-width: 0; height: 48px; padding: 0 14px; border-radius: 12px;
@@ -1712,6 +1734,9 @@ html.nudge-open { overflow: hidden; }
 }
 .signup-band p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
 .signup-band a { color: var(--live); text-underline-offset: 3px; }
+/* The WhatsApp lead is a solid lime button, so its text is ink, not lime —
+   the rule above painted it lime-on-lime, invisible, on the first render. */
+.signup-band a.wa-go { color: var(--live-ink); text-decoration: none; }
 /* The label repeats the heading above it here, so it is for screen readers
    only — the band already says what the box is for. */
 .signup-band .sub { margin-top: 20px; }
