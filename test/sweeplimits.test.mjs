@@ -42,6 +42,20 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('it walks to the global safety cap, not a smaller one',
     pageCapFor(india, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
   check('it opens every card its gates approve', openCapFor(india), 0);
+
+  /* AND THE ENTRY-LEVEL SEARCH, THE SAME. His instruction, 19 Sep 2026: "no
+     throttle at all in any of the india roles, not even full time, the
+     scraper mustnt miss any role at all." It shipped hourly and capped for
+     one night; the caps never bound (the 2h window ended every walk at 1-3
+     pages), and they are gone. Same pins, same source: config.json. */
+  const entry = cfg.declaredSearches.find((s) => s.region === 'IN' && s.employment === 'fulltime');
+  check('the entry search exists', !!entry, true);
+  check('entry: no page cap of its own', entry?.maxPages, undefined);
+  check('entry: no per-employer open cap', entry?.maxOpensPerCompany, undefined);
+  check('entry: no all-old page stop', entry?.stopAfterPageOlderThanHours, undefined);
+  check('entry: no interval, every 30-minute tick', entry?.intervalMinutes, undefined);
+  check('entry: walks to the global safety cap', pageCapFor(entry ?? {}, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
+  check('entry: opens every card its gates approve', openCapFor(entry ?? {}), 0);
   check('and no page age can stop it early', staleCutoffFor(india), null);
 }
 

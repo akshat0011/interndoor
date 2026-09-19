@@ -73,11 +73,21 @@ check('one intern walk per region', byRegion.size, searches.filter((s) => s.empl
 for (const s of searches.filter((x) => x.employment === 'fulltime')) {
   ok(`${s.region} ${s.label ?? 'entry'}: has its own sweepKey`, typeof s.sweepKey === 'string' && s.sweepKey !== s.region);
   ok(`${s.region} ${s.label ?? 'entry'}: sweepKey is unique`, searches.filter((x) => (x.sweepKey ?? x.region) === s.sweepKey).length === 1);
-  ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
-  ok(`${s.region} ${s.label ?? 'entry'}: not every tick (intervalMinutes)`, Number(s.intervalMinutes) >= 60);
-  ok(`${s.region} ${s.label ?? 'entry'}: opens per employer capped`, Number(s.maxOpensPerCompany) > 0);
   ok(`${s.region} ${s.label ?? 'entry'}: asks LinkedIn's entry-level facet`, (s.experienceLevels ?? []).some((l) => /^entry/i.test(l)));
   ok(`${s.region} ${s.label ?? 'entry'}: URL carries f_E=2`, buildSearchUrl(s, { postedWithinHours: 2 }).includes('f_E=2'));
+  if (s.region === 'IN') {
+    /* HIS INSTRUCTION, 19 Sep 2026: "no throttle at all in any of the india
+       roles, not even full time, the scraper mustnt miss any role at all" —
+       the same rule the intern walk has carried since August. Pinned off
+       config.json itself, so a cap quietly added later fails here. */
+    check(`${s.label ?? 'entry'}: no page cap`, s.maxPages ?? null, null);
+    check(`${s.label ?? 'entry'}: no per-employer open cap`, s.maxOpensPerCompany ?? null, null);
+    check(`${s.label ?? 'entry'}: no age stop`, s.stopAfterPageOlderThanHours ?? null, null);
+    check(`${s.label ?? 'entry'}: every tick, no interval`, s.intervalMinutes ?? null, null);
+  } else {
+    ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
+    ok(`${s.region} ${s.label ?? 'entry'}: not every tick (intervalMinutes)`, Number(s.intervalMinutes) >= 60);
+  }
 }
 check('India has an entry-level search', searches.some((s) => s.region === 'IN' && s.employment === 'fulltime'), true);
 ok('the intern walk carries NO experience facet', !buildSearchUrl(internWalk('IN'), { postedWithinHours: 2 }).includes('f_E='));
