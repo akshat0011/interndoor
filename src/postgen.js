@@ -22,6 +22,7 @@
 import { jobSlug, SITE } from './pages.js';
 import { resolveRowRegion, regionPath, publishedRegions, regionOf } from './regions.js';
 import { formatStipend } from './extract.js';
+import { entryWord, countedOffer } from './employment.js';
 
 /** LinkedIn refuses a post longer than this. */
 export const MAX_POST_CHARS = 3000;
@@ -410,6 +411,10 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
     follow: followChannel(cfg, region),
     company: row.company || row.company_matched || 'Unknown company',
     title: row.title,
+    // An entry-level role is not an internship, and the post's own lines say
+    // which it is ("entry-level openings like this close within days").
+    fullTime: row.employment_type === 'fulltime',
+    entryWord: entryWord(regionOf(region)),
     roleLabel: row.role_label || null,
     location: row.location || null,
     workplaceType: row.workplace_type || null,
@@ -544,7 +549,7 @@ export function fallbackHook(facts) {
   const who = facts.batch ? `If you graduate in ${facts.batch}` : 'If you are a student';
   const what = facts.roleLabel ? `${facts.roleLabel.toLowerCase()} work` : 'engineering work';
   const where = facts.location ? ` in ${cityOf(facts.location)}` : '';
-  return `${who} and you want ${what}${where}, this one is worth a look — ${facts.company} has just opened applications and internship listings like this close fast.`;
+  return `${who} and you want ${what}${where}, this one is worth a look — ${facts.company} has just opened applications and ${facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship'} listings like this close fast.`;
 }
 
 function fallbackHashtags(facts) {
@@ -686,8 +691,8 @@ export function composePost(facts, ai) {
      words instead — the link is in the first comment either way. */
   const follow = facts.follow
     ? (facts.follow.handle
-      ? `📢 Every new internship, the minute it opens: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
-      : `📢 Every new internship, the minute it opens — our ${facts.follow.name} channel, link in the comments.`)
+      ? `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
+      : `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens — our ${facts.follow.name} channel, link in the comments.`)
     : '';
 
   const section = {
@@ -705,7 +710,7 @@ export function composePost(facts, ai) {
     factLines.join('\n'),
     drop.has('bullets') ? '' : section.bullets,
     `🔎 ${B('Source')}: ${facts.source}`,
-    `⚡ ${B('Important')}: apply as soon as you can — internship openings like this close within days.`,
+    `⚡ ${B('Important')}: apply as soon as you can — ${facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship'} openings like this close within days.`,
     drop.has('tip') ? '' : section.tip,
     `👉 ${B('Apply here')}: ${facts.link}`,
     share,
@@ -782,7 +787,7 @@ export function composeCombined(list) {
     return lines.join('\n');
   };
 
-  const head = `${B(`${rows.length} engineering internship${rows.length === 1 ? '' : 's'} open right now`)} 🚨`;
+  const head = `${B(`${countedOffer(rows.map((f) => ({ employmentType: f.fullTime ? 'fulltime' : 'intern' })), regionOf(main ?? 'IN'), { noun: 'roles' })} open right now`)} 🚨`;
   const lede = 'Apply while the queue is still short — the good ones collect hundreds of applicants inside a day.';
 
   const build = (n) => {
@@ -790,7 +795,7 @@ export function composeCombined(list) {
     const dropped = rows.length - n;
     if (dropped > 0) parts.push(`…and ${dropped} more on the board.`);
     const foot = [];
-    if (board) foot.push(`🌐 Every live engineering internship: ${board}`);
+    if (board) foot.push(`🌐 Every live engineering internship and ${entryWord(regionOf(main ?? 'IN'))} role: ${board}`);
     // Named, not linked. A handle is not an outbound link so it costs the post
     // nothing, and a subscriber is worth more than a click.
     if (tg) {
@@ -820,7 +825,7 @@ export function composeCombined(list) {
  * every future visit and a click is worth one.
  */
 export function composeComment(facts) {
-  const lines = [`Every live engineering internship, updated as they open 👉 ${facts.boardUrl}`];
+  const lines = [`Every live engineering internship and ${facts.entryWord ?? 'entry-level'} role, updated as they open 👉 ${facts.boardUrl}`];
   if (facts.follow) {
     lines.push(`New roles the minute they go up, on ${facts.follow.name} 👉 ${facts.follow.url}`);
   }

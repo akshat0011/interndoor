@@ -14,6 +14,8 @@
  */
 
 import { stipendText, durationText, modeText } from './pages.js';
+import { entryWord } from './employment.js';
+import { regionOf } from './regions.js';
 
 const SITE = 'https://interndoor.com';
 
@@ -180,7 +182,7 @@ export function reelCaption(job, { url = null, max = CAPTION_MAX, format = 'A' }
   const title = String(job.title ?? '').trim();
   const link = url || SITE;
 
-  const head = company && title ? `${company} is hiring: ${title}` : (title || company || 'New internship');
+  const head = company && title ? `${company} is hiring: ${title}` : (title || company || 'New role');
   const u = urgency(job);
 
   /* FORMAT D LEADS ON THE EMPTY QUEUE, because that is what the reel above the
@@ -204,7 +206,7 @@ export function reelCaption(job, { url = null, max = CAPTION_MAX, format = 'A' }
   // so this is read and typed — which is the whole reason it has to be short
   // and has to be the real domain rather than a shortener.
   lines.push(`Apply → ${link}`);
-  lines.push('More engineering internships, listed within minutes → interndoor.com');
+  lines.push(`More engineering internships and ${entryWord(regionOf(job.region ?? job.__region ?? 'IN'))} roles, listed within minutes → interndoor.com`);
 
   const tags = hashtags(job).map((t) => `#${t}`).join(' ');
   const body = lines.join('\n\n');

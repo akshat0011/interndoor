@@ -1,5 +1,5 @@
 /**
- * The README for the public GitHub internship list.
+ * The README for the public GitHub list of internships and entry-level roles.
  *
  * WHY THIS EXISTS. Engineering students live on GitHub, and a repo of live
  * internships is how a large share of American CS students actually find one —
@@ -26,6 +26,7 @@
 import { SITE, jobSlug, companySlug, stipendText, modeText } from './pages.js';
 import { cityOf } from './postgen.js';
 import { regionOf, regionPath } from './regions.js';
+import { entryWord, entryWordTitle, countedOffer } from './employment.js';
 
 /** A markdown table cell cannot carry a raw pipe or a newline. */
 export const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ').trim();
@@ -51,6 +52,14 @@ export function renderReadme(jobs, code = 'IN') {
   const companies = new Set(rows.map((j) => j.company).filter(Boolean));
   const withPay = rows.filter((j) => stipendText(j)).length;
   const board = tag(`${SITE}${prefix}/`);
+  /* TWO TABLES, ONE PER KIND. The board files early-career full-time roles
+     under their own tab, and a list headed "298 live internships" with 24
+     entry-level roles inside the number was the false sentence this project's
+     vocabulary exists to stop (19 Sep 2026). */
+  const fw = entryWord(region);
+  const fwCap = entryWordTitle(region);
+  const interns = rows.filter((j) => j.employmentType !== 'fulltime');
+  const fresh = rows.filter((j) => j.employmentType === 'fulltime');
 
   const line = (j) => {
     const hub = tag(`${SITE}${prefix}/companies/${companySlug(j.company)}`);
@@ -70,16 +79,16 @@ export function renderReadme(jobs, code = 'IN') {
     return `| [${cell(j.company)}](${hub}) | ${role} | ${cell(where)} | ${day(j.postedAt ?? j.firstSeenAt)} | [Apply](${apply}) |`;
   };
 
-  return `# ${region.name} — Engineering Internships, Updated Daily
+  return `# ${region.name} — Engineering Internships & ${fwCap} Jobs, Updated Daily
 
-**${rows.length} live internships** from **${companies.size} companies**, collected automatically
+**${countedOffer(rows, region, { live: true, adjective: '' })}** from **${companies.size} companies**, collected automatically
 and checked every 30 minutes. Every listing links back to the original posting.
 
 > ⭐ **Star this repo** to keep it in your GitHub feed — new roles land at the top of the table.
 
 ### Why this list is different
 
-Most internship lists are either stale or unfiltered. This one is neither:
+Most internship and ${fw}-job lists are either stale or unfiltered. This one is neither:
 
 - **Fast.** The board behind this list is checked every 30 minutes, so roles are
   usually live on the site within the hour. This table is regenerated daily.
@@ -93,12 +102,20 @@ Most internship lists are either stale or unfiltered. This one is neither:
 **Only ${withPay} of these ${rows.length} postings say what they pay.** That is not an omission here —
 it is what the employers wrote. Where a stipend was stated, it is on the row.
 
-## Live roles
+## Live internships
 
 | Company | Role | Location | Posted | |
 | --- | --- | --- | --- | --- |
-${rows.map(line).join('\n')}
+${interns.map(line).join('\n')}
+${fresh.length ? `
+## Live ${fw} jobs (full-time)
 
+Full-time roles at the same employers, open to ${region.code === 'IN' ? 'freshers and final-year students' : 'new graduates'}. They are not internships and are kept apart so neither list overstates the other.
+
+| Company | Role | Location | Posted | |
+| --- | --- | --- | --- | --- |
+${fresh.map(line).join('\n')}
+` : ''}
 ## How this is built
 
 A scraper reads public job boards and companies' own careers pages every 30

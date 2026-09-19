@@ -184,4 +184,20 @@ for (const f of facts) {
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
+console.log('\n== the figures count internships only ==');
+{
+  /* Every headline on /report says "engineering internships"; the board has
+     carried entry-level full-time roles under their own tab since 23 Aug 2026
+     and India's since 18 Sep. A pay figure with those inside it is a sentence
+     about a set the page does not name — the data posts made the same call.
+     The stub returns whatever rows it is given, so the filter is pinned in
+     the SQL the query sends, exactly as the region filter is. */
+  const sqls = [];
+  const spy = { db: { prepare(sql) { sqls.push(sql); return { all: () => [], get: () => ({ refused: 0, seen: 0 }) }; } } };
+  mineStats(spy, { now: NOW });
+  const q = sqls.find((s) => s.includes('FROM jobs')) ?? '';
+  check('the jobs query excludes full-time rows', /employment_type IS NULL OR employment_type <> 'fulltime'/.test(q), true);
+  check('and still requires the tech verdict', /is_tech = 1/.test(q), true);
+}
+
 process.exit(fail ? 1 : 0);

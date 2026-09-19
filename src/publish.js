@@ -958,7 +958,7 @@ export function pushToSite(newJobCount) {
   try {
     git(['add', ...PUBLISHED]);
     const message = newJobCount > 0
-      ? `Add ${newJobCount} new internship${newJobCount === 1 ? '' : 's'}`
+      ? `Add ${newJobCount} new listing${newJobCount === 1 ? '' : 's'}`
       : 'Refresh job listings';
     // The pathspec is the point. `git add` is narrow, but a bare `git commit`
     // takes the whole index with it — so anything already staged when the timer

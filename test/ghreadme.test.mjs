@@ -85,5 +85,27 @@ console.log('\n== region ==');
 check('names the region', renderReadme([unpaid], 'US').startsWith('# United States'), true);
 check('US links carry the /us prefix', renderReadme([unpaid], 'US').includes('interndoor.com/us/jobs/'), true);
 
+console.log('\n== two kinds, two tables ==');
+{
+  /* A list headed "298 live internships" with 24 entry-level roles inside the
+     number was the false sentence this vocabulary stops (19 Sep 2026). */
+  const ft = { ...unpaid, id: '4470000001', title: 'Associate Software Engineer', employmentType: 'fulltime', cardFacts: ['Bengaluru', 'On-site'] };
+  const two = renderReadme([paid, unpaid, ft], 'IN');
+  check('the heading names both kinds', two.startsWith('# India — Engineering Internships & Entry-Level Jobs, Updated Daily'), true);
+  check('the count names both kinds', two.includes('**2 live internships and 1 live entry-level job** from **2 companies**'), true);
+  check('internships have their own table', two.includes('## Live internships'), true);
+  check('entry-level jobs have theirs', two.includes('## Live entry-level jobs (full-time)'), true);
+  const internTable = two.slice(two.indexOf('## Live internships'), two.indexOf('## Live entry-level jobs'));
+  const ftTable = two.slice(two.indexOf('## Live entry-level jobs'), two.indexOf('## How this is built'));
+  check('the full-time row is in the second table only', ftTable.includes('Associate Software Engineer') && !internTable.includes('Associate Software Engineer'), true);
+  check('and the internships in the first only', internTable.includes('Flutter Developer Intern') && !ftTable.includes('Flutter Developer Intern'), true);
+  check('the second table says who it is for', ftTable.includes('open to freshers and final-year students'), true);
+  /* With no full-time row there is no second table and no "0 entry-level". */
+  check('no full-time rows, no second table', md.includes('## Live entry-level'), false);
+  check('and the count says internships alone', md.includes('**2 live internships** from'), true);
+  check('the US list says new graduates', renderReadme([{ ...ft, location: 'Austin, TX' }], 'US').includes('open to new graduates'), true);
+  check('still deterministic', renderReadme([paid, unpaid, ft], 'IN') === two, true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

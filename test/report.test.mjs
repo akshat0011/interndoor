@@ -48,7 +48,7 @@ for (const [i, src] of scripts.entries()) {
 // checks nothing and reads like a passing test forever.
 const empty = buildReport({ jobs: [], run: { cardsSeen: 0, pagesScanned: 0 } });
 check('an empty run emits no script', scriptsOf(empty).length, 0);
-check('but still renders the empty state', empty.includes('No new matching internships'), true);
+check('but still renders the empty state', empty.includes('No new matching roles'), true);
 
 // A posting whose text carries the characters most likely to break the page.
 // Real titles contain apostrophes and ampersands; the description is the

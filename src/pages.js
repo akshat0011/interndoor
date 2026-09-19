@@ -24,7 +24,7 @@
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
-import { schemaEmploymentType, FULL_TIME } from './employment.js';
+import { schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity } from './facets.js';
 
 export const SITE = 'https://interndoor.com';
@@ -1081,7 +1081,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="alternate" type="application/rss+xml" title="InternDoor — new internships" href="${regionHref('/feed.xml', region)}">
+<link rel="alternate" type="application/rss+xml" title="InternDoor — new ${offerPhrase(region, { adjective: '', noun: 'roles' })}" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
@@ -1116,7 +1116,7 @@ ${scripts}<script defer src="/subscribe.js"></script>
          the reader loses the position they had learned. aria-current is the
          answer to "where am I"; absence is not. -->
     <nav class="bar-nav" aria-label="Sections">
-      <a href="${regionHref('/', region)}"${here('internships')}>Internships</a>
+      <a href="${regionHref('/', region)}"${here('internships')}>Jobs</a>
       <a href="${regionHref('/companies/', region)}"${here('companies')}>Companies</a>
       <a href="${regionHref('/skills/', region)}"${here('skills')}>Skills</a>
     </nav>
@@ -1198,7 +1198,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         Get every new role
       </a>
-      <a class="a-2" href="${regionHref('/', region)}">Browse all live internships</a>
+      <a class="a-2" href="${regionHref('/', region)}">Browse all live roles</a>
     </div>
     ${signup ? signupForm(region) : ''}
   </div>
@@ -1861,7 +1861,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <section>
           <h2>How to apply</h2>
           <div class="apply-band">
-            <p>${apply ? '' : 'Apply through the original posting. '}${job.employmentType === FULL_TIME ? 'Early-career roles' : 'Internships'} ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
+            <p>${apply ? '' : 'Apply through the original posting. '}${job.employmentType === FULL_TIME ? `${entryWordCap(region)} roles` : 'Internships'} ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
           <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
         </section>
@@ -1904,11 +1904,11 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <a class="jp-sub" href="${regionHref('/alerts', region)}">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
             <span class="jp-sub-t">
-              <strong>Get internships like this first</strong>
+              <strong>Get ${job.employmentType === FULL_TIME ? `${esc(entryWord(region))} roles` : 'internships'} like this first</strong>
               <!-- inName carries its own preposition ("in the US"), so it goes
                    AFTER the noun. Stripping the "in " to put it before gave
                    "New the US roles". -->
-              <em>New engineering internships ${esc(region.inName)}, the minute they are posted.</em>
+              <em>New ${esc(offerPhrase(region, { noun: 'roles' }))} ${esc(region.inName)}, the minute they are posted.</em>
             </span>
             <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
           </a>
@@ -1940,7 +1940,7 @@ ${apply ? `<div class="dock" id="dock" aria-hidden="true">
 </div>` : ''}
 ${foot({
     headline: 'Do not let the next one pass you by',
-    sub: `Every engineering internship ${region.inName}, on the board within minutes of going live.`,
+    sub: `Every ${offerPhrase(region, { singular: true, noun: 'roles' })} ${region.inName}, on the board within minutes of going live.`,
     region,
   })}`;
 }
@@ -2474,7 +2474,7 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
             ${crest(job.company, crestLogo, { cls: 'rc-crest' })}
             <div class="rc-headt">
               <h3 class="rc-t"><a href="${href}">${esc(job.title)}</a></h3>
-              ${isFullTimeRole(job) || job.roleLabel ? `<span class="rc-sub">${[isFullTimeRole(job) ? 'Full-time graduate role' : '', job.roleLabel ? esc(job.roleLabel) : ''].filter(Boolean).join(' · ')}</span>` : ''}
+              ${isFullTimeRole(job) || job.roleLabel ? `<span class="rc-sub">${[isFullTimeRole(job) ? `Full-time ${esc(entryWord(region))} role` : '', job.roleLabel ? esc(job.roleLabel) : ''].filter(Boolean).join(' · ')}</span>` : ''}
             </div>
           </div>
           ${(job.bullets ?? []).length ? `<ul class="rc-do">${(job.bullets ?? []).slice(0, 3).map((b) =>
@@ -2515,10 +2515,11 @@ function answerLine(company, live, prof, region) {
   // an employer whose only live postings are "Campus … (Full-Time)".
   const n = live.filter((j) => !isFullTimeRole(j)).length;
   const ft = live.length - n;
-  const ftPhrase = `${ft === 1 ? 'one full-time graduate role' : `${ft} full-time graduate roles`}`;
+  const fw = esc(entryWord(region));
+  const ftPhrase = `${ft === 1 ? `one full-time ${fw} role` : `${ft} full-time ${fw} roles`}`;
   if (!n) {
-    return `<b>${co} is hiring graduates ${esc(where)} right now, but not interns.</b> `
-      + `${ft === 1 ? 'One full-time graduate role is' : `${ft} full-time graduate roles are`} open`
+    return `<b>${co} is hiring at entry level ${esc(where)} right now, but not interns.</b> `
+      + `${ft === 1 ? `One full-time ${fw} role is` : `${ft} full-time ${fw} roles are`} open`
       + `${tail ? `, ${tail}` : ''}. We re-check this page every 30 minutes.`;
   }
   return `<b>Yes, ${co} is hiring interns ${esc(where)} right now.</b> `
@@ -2675,9 +2676,9 @@ export function isFullTimeRole(job) {
   return job?.employmentType === FULL_TIME;
 }
 
-/** "3 live Acme internships", "3 live Acme internships and 2 full-time graduate roles", "2 live Acme full-time graduate roles". */
-function liveCountPhrase(interns, fullTime, company) {
-  const ft = (n) => `full-time graduate role${n === 1 ? '' : 's'}`;
+/** "3 live Acme internships", "3 live Acme internships and 2 full-time entry-level roles", "2 live Acme full-time entry-level roles". */
+function liveCountPhrase(interns, fullTime, company, region = DEFAULT_REGION) {
+  const ft = (n) => `full-time ${entryWord(region)} role${n === 1 ? '' : 's'}`;
   const internships = `${interns} live ${company} internship${interns === 1 ? '' : 's'}`;
   if (!fullTime) return internships;
   if (!interns) return `${fullTime} live ${company} ${ft(fullTime)}`;
@@ -2832,7 +2833,7 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
       <dl class="cp-facts">${months.map((k) => `<div><dt>${esc(label(k))}${k === untilKey ? ' so far' : ''}</dt><dd>${counts.get(k) ?? 0}</dd></div>`).join('')}</dl>
       ${before ? `<p class="cp-note">${before} more ${before === 1 ? 'was' : 'were'} posted before we began tracking ${esc(where)} in ${esc(label(startKey))}.</p>` : ''}
       <p class="cp-note">${paySentence}</p>
-      ${fullTime ? `<p class="cp-note">${co} also posted ${fullTime} full-time graduate role${fullTime === 1 ? '' : 's'} in this time. They are not internships, so none of the figures above count them.</p>` : ''}
+      ${fullTime ? `<p class="cp-note">${co} also posted ${fullTime} full-time ${esc(entryWord(region))} role${fullTime === 1 ? '' : 's'} in this time. They are not internships, so none of the figures above count them.</p>` : ''}
       ${rankSentence ? `<p class="cp-note">${rankSentence}</p>` : ''}
     </section>`;
 }
@@ -2917,8 +2918,16 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // publish, which rewrote the <title> of 150 pages and churned both the commit
   // and the thing Google re-evaluates. It still appears in the description,
   // where freshness belongs and where a rewrite costs nothing.
+  /* An employer that has posted full-time roles here is named for both kinds
+     — "Accenture Internships & Entry-Level Jobs" — and one that never has keeps
+     the short form, so 300 hubs do not change title at once for a kind they
+     do not carry. Tracked, not live: a title that flipped with the live set
+     would churn the way the count did. */
+  const bothKinds = fullTimeTracked > 0;
+  const kindsTitle = bothKinds ? `Internships & ${entryWordTitle(region)} Jobs` : 'Internships';
+  const kindsWord = bothKinds ? `internships and ${entryWord(region)} jobs` : 'internships';
   const pageTitle = buildTitle([
-    `${company} Internships`,
+    `${company} ${kindsTitle}`,
     where ? `in ${where}` : null,
     new Date().getFullYear(),
   ]);
@@ -2929,10 +2938,10 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     profile.cities.length ? `Locations: ${profile.cities.slice(0, 3).map((c) => c.value).join(', ')}.` : null,
   ].filter(Boolean).join(' ');
   const descHead = live.length
-    ? `${liveCountPhrase(liveInterns, liveFullTime, company)} ${region.inName}, updated every 30 minutes.`
+    ? `${liveCountPhrase(liveInterns, liveFullTime, company, region)} ${region.inName}, updated every 30 minutes.`
     : profile.n
-      ? `${company} internships ${region.inName}. No live openings today; ${profile.n} tracked so far, updated every 30 minutes.`
-      : `${company} internships ${region.inName}, tracked by InternDoor and updated every 30 minutes.`;
+      ? `${company} ${kindsWord} ${region.inName}. No live openings today; ${profile.n} tracked so far, updated every 30 minutes.`
+      : `${company} ${kindsWord} ${region.inName}, tracked by InternDoor and updated every 30 minutes.`;
   const description = clampWords(`${descHead} ${descTail}`.replace(/\s+/g, ' ').trim(), 155);
 
   const listLd = {
@@ -2968,7 +2977,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     '@context': 'https://schema.org/',
     '@type': 'CollectionPage',
     url,
-    name: `${company} internships ${region.inName}`,
+    name: `${company} ${kindsWord} ${region.inName}`,
     about: {
       '@type': 'Organization',
       name: company,
@@ -2987,7 +2996,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
   // going. Its home is with the at-a-glance panel, which is about the same
   // thing: what we have watched this employer do over time.
   const lede = internRows.length >= 3
-    ? `We have tracked <b>${internRows.length} engineering internships</b>${fullTimeTracked ? ` and ${fullTimeTracked} full-time graduate role${fullTimeTracked === 1 ? '' : 's'}` : ''} at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
+    ? `We have tracked <b>${internRows.length} engineering internships</b>${fullTimeTracked ? ` and ${fullTimeTracked} full-time ${esc(entryWord(region))} role${fullTimeTracked === 1 ? '' : 's'}` : ''} at ${esc(company)}${placeSuffix(company, region)}${profile.firstPostedAt ? ` since ${esc(monthLabel(profile.firstPostedAt, region))}` : ''}. Every new one appears here within minutes of going live.`
     : `Every engineering internship ${esc(company)} posts${placeSuffix(company, region)} appears here within minutes of going live. This page is checked every 30 minutes.`;
 
   return `${head({
@@ -3015,7 +3024,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
     <header class="hub-hero">
       ${crest(company, logo)}
-      <h1>${esc(company)} internships ${esc(region.inName)}</h1>
+      <h1>${esc(company)} ${esc(kindsWord)} ${esc(region.inName)}</h1>
       ${live.length
         ? `<a class="pill is-fresh hub-live" href="#open"><i aria-hidden="true"></i>${liveFullTime ? `${live.length} role${live.length === 1 ? '' : 's'}` : `${live.length} internship${live.length === 1 ? '' : 's'}`} open now</a>`
         : `<span class="pill hub-live"><i aria-hidden="true"></i>Nothing open today</span>`}
@@ -3070,7 +3079,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 </main>
 ${foot({
     headline: `Know before anyone else applies to ${esc(company)}`,
-    sub: `One message the minute a new engineering internship goes live ${region.inName}. No email, no account.`,
+    sub: `One message the minute a new ${offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' })} goes live ${region.inName}. No email, no account.`,
     region,
   })}`;
 }
@@ -3101,6 +3110,10 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
 
   const hiring = rows.filter((r) => r.live > 0).length;
   const total = rows.reduce((n, r) => n + r.live, 0);
+  /* Both kinds, counted over the same indexable rows the cards count — a
+     directory of "308 live internships" with 33 entry-level roles inside the
+     number is the false sentence this vocabulary exists to stop. */
+  const liveRows = [...byCompany.values()].flat().filter(isIndexable);
 
   const card = (r) => `<a class="dir-card${r.live ? '' : ' is-quiet'}" href="${regionHref(`/companies/${companySlug(r.company)}`, region)}" data-name="${esc(r.company.toLowerCase())}">
         ${crest(r.company, logos.get(r.company), { cls: 'tile-crest' })}
@@ -3121,8 +3134,8 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
     // It also pushed the title to 67-68 rendered characters against a ~60
     // budget. Freshness belongs in the description, where a rewrite is free,
     // and both counts are already stated there.
-    title: `Internships in ${where} by company | InternDoor`,
-    description: `Browse ${total} live internships across ${hiring} companies ${region.inName}, plus every employer we track. Updated every 30 minutes.`,
+    title: `Internships & ${entryWordTitle(region)} Jobs in ${where} by company | InternDoor`,
+    description: `Browse ${countedOffer(liveRows, region, { live: true, adjective: '' })} across ${hiring} companies ${region.inName}, plus every employer we track. Updated every 30 minutes.`,
     canonical: url,
     indexable: rows.length > 0,
     region,
@@ -3141,7 +3154,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
     </nav>
 
     <header class="dir-hero">
-      <h1>Internships by company ${esc(region.inName)}</h1>
+      <h1>Internships and ${esc(entryWord(region))} jobs by company ${esc(region.inName)}</h1>
       <div class="stats">
         <div class="stat"><b>${total}</b><span>Live openings</span></div>
         <div class="stat"><b>${hiring}</b><span>Hiring right now</span></div>
@@ -3170,7 +3183,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
 </main>
 ${foot({
     headline: 'Never refresh this page again',
-    sub: `Every new engineering internship ${region.inName}, pushed to Telegram within minutes of going live.`,
+    sub: `Every new ${offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' })} ${region.inName}, pushed to Telegram within minutes of going live.`,
     region,
   })}`;
 }
@@ -3309,7 +3322,7 @@ export function renderReportPage(facts, { region = DEFAULT_REGION, alternates = 
 
     <section class="rp-note">
       <h2>How this was measured</h2>
-      <p>We track engineering and software internships as they are published on public job boards and on companies' own careers pages, and record each one the first time we see it. These figures cover every posting we recorded ${esc(region.inName)} in the ${days} days to ${esc(measured)}.</p>
+      <p>We track engineering internships and ${esc(entryWord(region))} full-time roles as they are published on public job boards and on companies' own careers pages, and record each one the first time we see it. These figures cover every <strong>internship</strong> we recorded ${esc(region.inName)} in the ${days} days to ${esc(measured)}; the ${esc(entryWord(region))} roles on the board's Full-time tab are not counted here.</p>
       <p>A posting only reaches the board if its employer is on a list we keep of companies we believe are real and actually pay interns.${gate ? ` Most are not: we turned away about <strong>${gate.ratio}</strong> listings for every one we published.` : ''} That gate is the point of the site, and it is also the biggest thing to hold in mind when reading these numbers.</p>
 
       <h2>What these numbers are not</h2>
@@ -3353,8 +3366,8 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
       </a>`;
 
   return `${head({
-    title: buildTitle([`Get internship alerts ${where}`]),
-    description: `Get new engineering internships ${region.inName} by email, or follow along on ${others.map((c) => c.name).join(' and ') || 'email'}. Free, and you can leave any time.`,
+    title: buildTitle([`Get internship and ${entryWord(region)} job alerts`, region.inName]),
+    description: `Get new ${offerPhrase(region, { noun: 'roles' })} ${region.inName} by email, or follow along on ${others.map((c) => c.name).join(' and ') || 'email'}. Free, and you can leave any time.`,
     canonical: url,
     indexable: true,
     region,
@@ -3370,8 +3383,8 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
     </nav>
 
     <header class="dir-hero">
-      <h1>Get internship alerts ${esc(region.inName)}</h1>
-      <p class="hub-lede">New engineering internships, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
+      <h1>Get internship and ${esc(entryWord(region))} job alerts ${esc(region.inName)}</h1>
+      <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
     </header>
 
     <section class="strip">
@@ -3387,7 +3400,7 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
 </main>
 ${foot({
     headline: 'Be early, every time',
-    sub: `Every new engineering internship ${region.inName}, the moment we find it.`,
+    sub: `Every new ${offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' })} ${region.inName}, the moment we find it.`,
     region,
     signup: false,
   })}`;
@@ -3437,7 +3450,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
 
   return `${head({
     title: buildTitle(['My applications']),
-    description: `Track every internship you have applied to ${region.inName} — status, dates and what is still outstanding, kept on your own device.`,
+    description: `Track every internship and ${entryWord(region)} role you have applied to ${region.inName} — status, dates and what is still outstanding, kept on your own device.`,
     canonical: url,
     indexable: false,
     region,
@@ -3452,7 +3465,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
 
     <header class="dir-hero">
       <h1>My applications</h1>
-      <p class="hub-lede">Every internship you have applied to, and where each one has got to. Mark a role <strong>Applied</strong> from any listing on the board and it appears here.</p>
+      <p class="hub-lede">Every internship and ${esc(entryWord(region))} role you have applied to, and where each one has got to. Mark a role <strong>Applied</strong> from any listing on the board and it appears here.</p>
     </header>
 
     <div class="trk-sum" id="trk-sum" hidden></div>
@@ -3478,7 +3491,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
     <section class="trk-void" id="trk-void">
       <h2>Nothing tracked yet</h2>
       <p>Open any role on the board and press <strong>Track</strong>, or use the button on a job page. Nothing is sent anywhere &mdash; see below.</p>
-      <p class="trk-void-go"><a class="a-1" href="${regionHref('/', region)}">Browse live internships</a></p>
+      <p class="trk-void-go"><a class="a-1" href="${regionHref('/', region)}">Browse live roles</a></p>
 
       <h3>The stages you can move a role through</h3>
       <ol class="trk-ladder">
@@ -3507,7 +3520,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
 </main>
 ${foot({
     headline: 'Be early on the next one',
-    sub: `Every new engineering internship ${region.inName}, within minutes of going live.`,
+    sub: `Every new ${offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' })} ${region.inName}, within minutes of going live.`,
     region,
   })}`;
 }
@@ -3564,7 +3577,7 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
     url: `${SITE}/`,
     email: CONTACT_EMAIL,
     logo: `${SITE}/logo-512.png`,
-    description: 'A job board for engineering internships in India, the United States and the United Kingdom.',
+    description: 'A job board for engineering internships and entry-level full-time roles in India, the United States and the United Kingdom.',
   };
 
   const mail = (subject) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -3618,7 +3631,7 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
       <ul class="do-list">
         <li><b>A listing that is wrong, expired or duplicated.</b> Send the page&rsquo;s address and what is wrong with it &mdash; that is enough to find the row behind it. <a href="${mail('Wrong listing')}">Report a listing</a>.</li>
         <li><b>Employers, to take a posting down.</b> It comes down, and the page is replaced by a link to your other open roles rather than left to 404. <a href="${mail('Please remove a posting')}">Ask for a removal</a>.</li>
-        <li><b>Employers, to be picked up automatically.</b> Point us at the careers page you post on and new internships are found from it within about half an hour of going live. There is no charge for this and no listing fee.</li>
+        <li><b>Employers, to be picked up automatically.</b> Point us at the careers page you post on and new internships and entry-level roles are found from it within about half an hour of going live. There is no charge for this and no listing fee.</li>
         <li><b>Colleges and placement cells.</b> The board is free for your students and needs no signup, so there is nothing to sign. If you want the live openings in a form you can circulate, say which branches and years. <a href="${mail('Placement cell')}">Write about a placement cell</a>.</li>
         <li><b>Anything else</b> &mdash; a bug, a wrong summary, a question about where a number on <a href="/report">the numbers page</a> came from.</li>
       </ul>
@@ -3634,7 +3647,7 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
 </main>
 ${foot({
     headline: 'While you are here',
-    sub: 'Every engineering internship on the board, newest first.',
+    sub: 'Every engineering internship and entry-level role on the board, newest first.',
     region,
   })}`;
 }
@@ -3667,9 +3680,15 @@ function writeIfChanged(path, contents) {
  * hand-maintained per region because there is no version of "keep eleven copies
  * of a <head> in sync" that survives contact with a copy-edit.
  */
-function homeHead(region, alternates, channels = [], liveCount = 0) {
+function homeHead(region, alternates, channels = [], live = []) {
   const url = regionUrl('/', region);
   const where = region.inName.replace(/^in /, '');
+  /* The board carries two kinds and every line below names both. The <title>
+     drops "Engineering" to fit: "Engineering Internships & Entry-Level Jobs in
+     India — InternDoor" is 64 rendered characters against §11's budget of 60,
+     and the brand is the part that must not be what Google truncates. The
+     <h1>, the lede and the description keep the category word. */
+  const fw = entryWord(region);
 
   /**
    * CATEGORY FIRST, BRAND LAST — and this was already the documented intent.
@@ -3688,7 +3707,7 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
    * Measured cause: /us drew 1,738 impressions at position 8.1 over three
    * months and ZERO clicks.
    */
-  const title = `Engineering Internships in ${where} — InternDoor`;
+  const title = `Internships & ${entryWordTitle(region)} Jobs in ${where} — InternDoor`;
 
   /**
    * THE COUNT GOES IN THE DESCRIPTION, NEVER THE TITLE.
@@ -3704,10 +3723,10 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
    * in the result list cannot. The previous copy was true but said nothing a
    * reader could weigh.
    */
-  const n = Number(liveCount) || 0;
-  const roles = n > 0
-    ? `${n.toLocaleString('en-US')} engineering internship${n === 1 ? '' : 's'}`
-    : 'Engineering internships';
+  const rows = Array.isArray(live) ? live : [];
+  const roles = rows.length > 0
+    ? countedOffer(rows, region)
+    : `Engineering internships and ${fw} jobs`;
   /* WHAT CHANGED 12 SEP 2026, AND HOW TO JUDGE IT.
      `/us` drew 3,895 impressions at position ~7.2 over 28 days and ZERO
      clicks — fourteen straight days of it — while only 14 of those impressions
@@ -3730,14 +3749,14 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
      under Google's jobs widget, which is what §11 already concluded. */
   const description = `${roles} ${region.inName}, updated every 30 minutes. `
     + 'No signup, and every listing links straight to the original posting.';
-  const social = `Software internships ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
+  const social = `Software internships and ${fw} jobs ${region.inName}, listed minutes after they go live. Apply while the queue is still short.`;
   /* THE SHARE CARD LEADS WITH THE CATEGORY, NOT THE BRAND VOICE. It read
      "InternDoor — be early" in every region, which is what a LinkedIn or
      WhatsApp card showed and what a crawler met before any prose. Google's AI
      Overview for the brand query duly described the site through Buttondown's
      newsletter archive instead. Same shape as <title>, category first. */
-  const socialTitle = `Engineering Internships in ${where} — InternDoor`;
-  const imageAlt = `InternDoor — be early. Software internships ${region.inName}, listed minutes after they go live.`;
+  const socialTitle = title;
+  const imageAlt = `InternDoor — be early. Software internships and ${fw} jobs ${region.inName}, listed minutes after they go live.`;
 
   const ld = {
     '@context': 'https://schema.org',
@@ -3748,7 +3767,7 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
         name: 'InternDoor',
         url: `${SITE}/`,
         logo: `${SITE}/favicon-96.png`,
-        description: `InternDoor lists engineering internships ${region.inName} within minutes of them going live.`,
+        description: `InternDoor lists engineering internships and ${fw} jobs ${region.inName} within minutes of them going live.`,
         areaServed: { '@type': 'Country', name: region.name },
         sameAs: channels.filter((c) => c.url).map((c) => c.url),
       },
@@ -3757,7 +3776,7 @@ function homeHead(region, alternates, channels = [], liveCount = 0) {
         '@id': `${url}#website`,
         url,
         name: 'InternDoor',
-        description: `Engineering internships ${region.inName}, listed within minutes of going live.`,
+        description: `Engineering internships and ${fw} jobs ${region.inName}, listed within minutes of going live.`,
         inLanguage: region.hreflang,
         publisher: { '@id': `${SITE}/#organization` },
         potentialAction: {
@@ -3792,8 +3811,8 @@ ${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads
      (No backticks in this comment: it sits inside a template literal.) -->
 <meta name="interndoor-region" content="${region.code}">
 <meta name="interndoor-data" content="${regionHref('/data/jobs.json', region)}">
-<link rel="alternate" type="application/rss+xml" title="InternDoor — new engineering internships" href="${esc(regionUrl('/feed.xml', region))}">
-<link rel="alternate" type="application/feed+json" title="InternDoor — new engineering internships" href="${esc(regionUrl('/feed.json', region))}">
+<link rel="alternate" type="application/rss+xml" title="InternDoor — new ${esc(offerPhrase(region))}" href="${esc(regionUrl('/feed.xml', region))}">
+<link rel="alternate" type="application/feed+json" title="InternDoor — new ${esc(offerPhrase(region))}" href="${esc(regionUrl('/feed.json', region))}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:title" content="${esc(socialTitle)}">
 <meta property="og:description" content="${esc(social)}">
@@ -3878,7 +3897,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   }
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
-  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs.length)) ?? html;
+  html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs)) ?? html;
   // No region in the lede, on purpose (24 Aug). The header's own region switch
   // already names the board, so repeating it here said the same thing twice.
   // The paragraph still NAMES THE SUBJECT, which is the whole reason it exists:
@@ -3892,12 +3911,12 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   // was live and visible on the homepage until 24 Aug. Punctuation belongs with
   // the phrase it punctuates anyway.
   html = fillMarker(html, 'REGION:LEDE',
-    '<strong>Engineering internships</strong>,') ?? html;
+    `<strong>Engineering internships and ${esc(entryWord(region))} jobs</strong>,`) ?? html;
   /* The heading. `fillMarker` writes a newline before the closing marker and it
      renders as a space, so nothing here may end in punctuation — the full stop
      is `.lede h1::after`, a lime square, and a trailing character would sit
      between the words and the square. */
-  html = fillMarker(html, 'REGION:H1', `Engineering internships ${region.inName}`) ?? html;
+  html = fillMarker(html, 'REGION:H1', `Engineering internships &amp; ${esc(entryWord(region))} jobs ${region.inName}`) ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
   // A regex, not a literal swap: the template's own lang is en-IN (it IS the
   // India board), so matching `lang="en"` silently did nothing and every region
@@ -3980,16 +3999,16 @@ export const FACETS_INDEXABLE = false;
 const FACET_KINDS = {
   skill: {
     dir: 'skills',
-    heading: (label, region) => `${titleCaseSkill(label)} internships ${region.inName}`,
-    title: (label, region) => [`${titleCaseSkill(label)} Internships`, region.inName],
-    lede: (label, n, c, region) => `${n} live internship${n === 1 ? '' : 's'} ${region.inName} that ask for ${titleCaseSkill(label)}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
+    heading: (label, region, both) => `${titleCaseSkill(label)} ${both ? `internships and ${entryWord(region)} jobs` : 'internships'} ${region.inName}`,
+    title: (label, region, both) => [`${titleCaseSkill(label)} ${both ? `Internships & ${entryWordTitle(region)} Jobs` : 'Internships'}`, region.inName],
+    lede: (label, rows, c, region) => `${countedOffer(rows, region, { live: true, adjective: '' })} ${region.inName} that ask for ${titleCaseSkill(label)}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
     siblings: 'Other skills',
   },
   city: {
     dir: 'locations',
-    heading: (label) => `Internships in ${label}`,
-    title: (label) => [`Internships in ${label}`],
-    lede: (label, n, c) => `${n} live engineering internship${n === 1 ? '' : 's'} in ${label}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
+    heading: (label, region, both) => `${both ? `Internships and ${entryWord(region)} jobs` : 'Internships'} in ${label}`,
+    title: (label, region, both) => [`${both ? `Internships & ${entryWordTitle(region)} Jobs` : 'Internships'} in ${label}`],
+    lede: (label, rows, c, region) => `${countedOffer(rows, region, { live: true })} in ${label}, from ${c} compan${c === 1 ? 'y' : 'ies'}.`,
     siblings: 'Other cities',
   },
 };
@@ -4010,12 +4029,17 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     .sort((a, b) => (b.postedAt ?? b.firstSeenAt ?? 0) - (a.postedAt ?? a.firstSeenAt ?? 0));
   const shown = rows.slice(0, FACET_TILES);
   const companies = new Set(rows.map((j) => j.company)).size;
-  const lede = k.lede(facet.label, rows.length, companies, region);
+  /* A facet holds whatever the board holds, so its rows can be either kind;
+     the lede counts them apart and the heading names both only where both
+     are present — a "Python internships and entry-level jobs" page with no
+     entry-level job on it would be the false sentence in the other direction. */
+  const both = splitKinds(rows).fullTime > 0;
+  const lede = k.lede(facet.label, rows, companies, region);
 
   const also = siblings.filter((s) => s.slug !== facet.slug).slice(0, 14);
 
   return `${head({
-    title: buildTitle(k.title(facet.label, region)),
+    title: buildTitle(k.title(facet.label, region, both)),
     description: clampWords(`${lede} Updated every 30 minutes, from a vetted list of employers.`, 155),
     canonical: regionUrl(path, region),
     /* NOINDEX SINCE 14 SEP 2026 — see FACETS_INDEXABLE. */
@@ -4025,11 +4049,11 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="${regionHref('/', region)}">Internships</a> <span aria-hidden="true">/</span>
+      <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span>
       <a href="${regionHref(`/${k.dir}/`, region)}">${kind === 'skill' ? 'Skills' : 'Locations'}</a> <span aria-hidden="true">/</span>
       <span>${esc(kind === 'skill' ? titleCaseSkill(facet.label) : facet.label)}</span>
     </nav>
-    <h1>${esc(k.heading(facet.label, region))}</h1>
+    <h1>${esc(k.heading(facet.label, region, both))}</h1>
     <p class="summary">${esc(lede)} Every listing links to the employer's own posting.</p>
 
     <ul class="feed">
@@ -4047,7 +4071,7 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     </section>` : ''}
   </div>
 </main>
-${foot({ headline: 'Get these as they open', sub: `New ${kind === 'skill' ? titleCaseSkill(facet.label) : facet.label} internships, the day they are listed.`, region })}`;
+${foot({ headline: 'Get these as they open', sub: `New ${kind === 'skill' ? titleCaseSkill(facet.label) : facet.label} ${both ? 'roles' : 'internships'}, the day they are listed.`, region })}`;
 }
 
 /** The index at /skills/ or /locations/ — the crawl path to every facet page. */
@@ -4057,11 +4081,11 @@ export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } 
   const noun = kind === 'skill' ? 'Skills' : 'Locations';
   const total = facets.reduce((n, f) => n + f.jobs.length, 0);
   const lede = kind === 'skill'
-    ? `Browse live internships ${region.inName} by the skill they ask for.`
-    : `Browse live engineering internships ${region.inName} by city.`;
+    ? `Browse live ${offerPhrase(region, { adjective: '' })} ${region.inName} by the skill they ask for.`
+    : `Browse live ${offerPhrase(region)} ${region.inName} by city.`;
 
   return `${head({
-    title: buildTitle([`Internships by ${kind === 'skill' ? 'Skill' : 'City'}`, region.inName]),
+    title: buildTitle([`Internships & ${entryWordTitle(region)} Jobs by ${kind === 'skill' ? 'Skill' : 'City'}`, region.inName]),
     description: clampWords(`${lede} ${facets.length} ${noun.toLowerCase()} across ${total} listings, updated every 30 minutes.`, 155),
     canonical: regionUrl(`/${k.dir}/`, region),
     /* Thin until there is something to browse. One or two facets is a page
@@ -4073,9 +4097,9 @@ export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } 
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="${regionHref('/', region)}">Internships</a> <span aria-hidden="true">/</span> <span>${esc(noun)}</span>
+      <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span> <span>${esc(noun)}</span>
     </nav>
-    <h1>Internships ${esc(region.inName)} by ${kind === 'skill' ? 'skill' : 'city'}</h1>
+    <h1>Internships and ${esc(entryWord(region))} jobs ${esc(region.inName)} by ${kind === 'skill' ? 'skill' : 'city'}</h1>
     <p class="summary">${esc(lede)}</p>
     <div class="dir">
       ${facets.map((f) => `<a class="dir-card" href="${regionHref(`/${k.dir}/${f.slug}`, region)}">
@@ -4184,7 +4208,7 @@ function renderClosedRole(company, hubSlug, region, closedOn) {
 </head>
 <body>
 <p>This ${esc(company)} posting has closed.
-<a href="${esc(url)}">See ${esc(company)} internships that are open now</a>.</p>
+<a href="${esc(url)}">See what ${esc(company)} has open now</a>.</p>
 </body>
 </html>
 `;
@@ -4850,10 +4874,10 @@ function writeFeeds(jobs, publicDir, region = DEFAULT_REGION) {
   writeFileSync(join(publicDir, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>InternDoor — engineering internships ${esc(region.inName)}</title>
+  <title>InternDoor — ${esc(offerPhrase(region))} ${esc(region.inName)}</title>
   <link>${regionUrl('/', region)}</link>
   <atom:link href="${regionUrl('/feed.xml', region)}" rel="self" type="application/rss+xml"/>
-  <description>New engineering internships ${esc(region.inName)}, listed within minutes of going live.</description>
+  <description>New ${esc(offerPhrase(region))} ${esc(region.inName)}, listed within minutes of going live.</description>
   <language>${region.hreflang.toLowerCase()}</language>
 ${built}${items}
 </channel>
@@ -4862,10 +4886,10 @@ ${built}${items}
 
   writeFileSync(join(publicDir, 'feed.json'), `${JSON.stringify({
     version: 'https://jsonfeed.org/version/1.1',
-    title: `InternDoor — engineering internships ${region.inName}`,
+    title: `InternDoor — ${offerPhrase(region)} ${region.inName}`,
     home_page_url: regionUrl('/', region),
     feed_url: regionUrl('/feed.json', region),
-    description: `New engineering internships ${region.inName}, listed within minutes of going live.`,
+    description: `New ${offerPhrase(region)} ${region.inName}, listed within minutes of going live.`,
     items: recent.map((j) => ({
       id: regionUrl(`/jobs/${jobSlug(j)}`, region),
       url: regionUrl(`/jobs/${jobSlug(j)}`, region),

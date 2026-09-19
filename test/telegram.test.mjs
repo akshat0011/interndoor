@@ -44,7 +44,7 @@ console.log('\n== two links, and only two ==');
 const links = one.match(/href="[^"]+"/g) || [];
 ok('exactly three anchors: title, apply, board', links.length === 3, links.join(' '));
 ok('apply is its own call to action', one.includes('<b>Apply now</b>'));
-ok('and the board is offered last', one.includes('>More internships</a>'));
+ok('and the board is offered last', one.includes('>More internships and entry-level roles</a>'));
 
 const offsite = composeJob(job({ applyUrl: 'https://careers.ey.com/ey/job/123' }));
 ok('the employer URL never appears — Apply is the job page', !offsite.includes('careers.ey.com'));
@@ -105,7 +105,7 @@ for (const reps of [6, 14, 40]) {
   ok(`  markup is still balanced at ${reps}x`,
     (huge.match(/<a /g) || []).length === (huge.match(/<\/a>/g) || []).length);
   ok(`  the apply link survives at ${reps}x`, huge.includes('<b>Apply now</b>'));
-  ok(`  and the board link at ${reps}x`, huge.includes('>More internships</a>'));
+  ok(`  and the board link at ${reps}x`, huge.includes('>More internships and entry-level roles</a>'));
 }
 
 // Clamped at a word boundary, not sliced through one.

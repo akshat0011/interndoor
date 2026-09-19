@@ -41,6 +41,7 @@ import { SITE, stipendText, durationText, modeText, jobSlug } from './pages.js';
 import { utmUrl } from './postgen.js';
 import { logoOnDisk } from './logos.js';
 import { regionPath } from './regions.js';
+import { splitKinds, entryWord, newCountHeadline } from './employment.js';
 
 /* ---- the site's own tokens, copied from web/public/styles.css -------------
    Copied rather than imported because a stylesheet cannot be read from Node
@@ -258,12 +259,25 @@ function card(row, cfg, code, { bullets: maxBullets = 2, skills: maxSkills = 4 }
  * `roles` is already filtered, sorted and capped by `buildDigest` — this
  * function decides nothing about WHICH postings appear, only how they look.
  */
-function page(cardsHtml, { cfg, region, code, n, rest, now }) {
+function page(cardsHtml, { cfg, region, code, n, kinds, rest, now }) {
   const boardUrl = safeUrl(tagged(boardUrlFor(code), cfg, 'board'));
   const alertsUrl = safeUrl(tagged(boardUrlFor(code, '/alerts'), cfg, 'alerts'));
   const contactUrl = safeUrl(tagged(`${SITE}/contact`, cfg, 'contact'));
-  const plural = n === 1 ? '' : 's';
   const where = region.inName;
+  const word = entryWord(region);
+  const split = kinds ?? { interns: n, fullTime: 0 };
+  /* The subject line's sentence, in the board's own "in India" form. */
+  const headline = newCountHeadline(split, where.replace(/^in /, ''), word);
+  /* The hero is two lines of 34px display type, so the sentence is split where
+     it breaks best for each shape: "16 new engineering / internships",
+     "33 new entry-level / engineering roles", "16 new internships / and 33
+     entry-level roles". */
+  const hero = (() => {
+    const { interns: i, fullTime: f } = split;
+    if (!f) return `${i} new engineering<br>internship${i === 1 ? '' : 's'}`;
+    if (!i) return `${f} new ${esc(word)}<br>engineering role${f === 1 ? '' : 's'}`;
+    return `${i} new internship${i === 1 ? '' : 's'}<br>and ${f} ${esc(word)} role${f === 1 ? '' : 's'}`;
+  })();
 
   const date = new Date(now).toLocaleDateString('en-GB', {
     weekday: 'long', day: 'numeric', month: 'long', timeZone: region.timeZone,
@@ -274,7 +288,7 @@ function page(cardsHtml, { cfg, region, code, n, rest, now }) {
      would be the date. Hidden by three properties because no single one works
      everywhere, then padded with zero-width spaces so the client cannot pull
      the following content up into the preview. */
-  const preheader = `${n} new engineering internship${plural} ${where}, newest first.`;
+  const preheader = `${headline}, newest first.`;
 
   return `<!doctype html>
 <html lang="${esc(region.hreflang)}">
@@ -284,7 +298,7 @@ function page(cardsHtml, { cfg, region, code, n, rest, now }) {
 <meta name="x-apple-disable-message-reformatting">
 <meta name="color-scheme" content="dark">
 <meta name="supported-color-schemes" content="dark">
-<title>${esc(`${n} new engineering internship${plural} ${where}`)}</title>
+<title>${esc(headline)}</title>
 <style>
   /* PROGRESSIVE ONLY. Everything the design needs is inline; this block adds
      the site's fonts where a client supports them and narrows the layout on a
@@ -355,7 +369,7 @@ function page(cardsHtml, { cfg, region, code, n, rest, now }) {
       <tr><td class="pad" style="padding:24px 24px 4px">
         <div class="hero" style="font-family:${F.display};font-size:34px;line-height:1.04;
              font-weight:900;letter-spacing:-.035em;color:${C.ink};margin:0">
-          ${n} new engineering<br>internship${plural}
+          ${hero}
         </div>
       </td></tr>
       <tr><td class="pad" style="padding:8px 24px 20px;font-family:${F.ui};font-size:15px;
@@ -378,7 +392,7 @@ function page(cardsHtml, { cfg, region, code, n, rest, now }) {
           <tr><td style="background:${C.live};border-radius:999px">
             <a href="${boardUrl}" style="display:inline-block;padding:12px 26px;font-family:${F.ui};
                font-size:15px;font-weight:700;color:${C.liveInk};text-decoration:none">Browse
-               all live internships</a>
+               all live roles</a>
           </td></tr>
         </table>
       </td></tr>
@@ -426,9 +440,16 @@ function page(cardsHtml, { cfg, region, code, n, rest, now }) {
  * silently push a full digest over the threshold — the budget absorbs it by
  * showing one card fewer.
  */
-export function renderDigestEmail(roles, cfg, { region, code, total = null, now = Date.now() } = {}) {
+export function renderDigestEmail(roles, cfg, { region, code, total = null, kinds = null, now = Date.now() } = {}) {
   const n = total ?? roles.length;
-  const opts = { cfg, region, code, n, rest: 0, now };
+  /* THE TWO KINDS ARE COUNTED OVER THE ELIGIBLE SET, like `total` — the
+     subject already names internships and entry-level roles separately (19 Sep
+     2026: "16 new engineering internships and 33 entry-level engineering roles"),
+     and the mail's own hero said "49 new engineering internships" under it. A
+     caller that passes `total` and no split has the tail beyond its cards
+     counted as internships, which is what every row was before the split. */
+  const split = kinds ?? { interns: n - splitKinds(roles).fullTime, fullTime: splitKinds(roles).fullTime };
+  const opts = { cfg, region, code, n, kinds: split, rest: 0, now };
   const chrome = Buffer.byteLength(page('', { ...opts, rest: n }), 'utf8');
 
   const kept = [];

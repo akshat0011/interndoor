@@ -28,6 +28,7 @@ import { log } from './logger.js';
 import { jobSlug, SITE, stipendText, durationText, modeText, clampWords } from './pages.js';
 import { resolveRowRegion, regionOf, regionPath, publishedRegions } from './regions.js';
 import { PATHS } from './paths.js';
+import { entryWord } from './employment.js';
 import { renderCards } from './ogcard.js';
 
 const API = 'https://api.telegram.org';
@@ -260,7 +261,7 @@ export function composeJob(job, region = regionOf('IN')) {
   /* The same page as the title — see jobParts. The employer's URL is one
      click further on, behind the page's own Apply button. */
   lines.push('', `👉 <a href="${page}"><b>Apply now</b></a>`);
-  lines.push(`🌐 <a href="${SITE}${prefix}/">More internships</a>`);
+  lines.push(`🌐 <a href="${SITE}${prefix}/">More internships and ${esc(entryWord(region))} roles</a>`);
 
   // Drop optional facts from the end rather than slicing, which would cut a
   // link in half and make Telegram reject the whole message with a 400.

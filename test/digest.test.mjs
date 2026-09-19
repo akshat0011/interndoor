@@ -78,18 +78,20 @@ console.log('\n== the mail itself ==');
 const mail = buildDigest([row(), row({ job_id: '900002', title: 'Data Intern' })], cfg, { region: 'IN', now });
 check('a count leads the subject', mail.subject, '2 new engineering internships in India');
 
-/* A fresher role is not an internship, and India's first full-time rows
+/* An entry-level role is not an internship, and India's first full-time rows
    arrive with the 18 Sep 2026 vocabulary. The store column is employment_type;
-   the digest must read that, not the projection's employmentType. */
+   the digest must read that, not the projection's employmentType. The word is
+   "entry-level" on every board — his call, 19 Sep 2026. */
 {
   const ft = row({ job_id: '900007', title: 'Software Engineer I', employment_type: 'fulltime' });
   const mixed = buildDigest([row(), row({ job_id: '900002' }), ft], cfg, { region: 'IN', now });
-  check('a mixed day names both kinds', mixed.subject, '2 new engineering internships and 1 fresher engineering role in India');
-  check('the body line says the same', mixed.body.split('\n')[0], '2 new engineering internships and 1 fresher engineering role in India since yesterday.');
+  check('a mixed day names both kinds', mixed.subject, '2 new engineering internships and 1 entry-level engineering role in India');
+  check('the body line says the same', mixed.body.split('\n')[0], '2 new engineering internships and 1 entry-level engineering role in India since yesterday.');
   const only = buildDigest([ft, row({ job_id: '900008', title: 'SDE-1', employment_type: 'fulltime' })], cfg, { region: 'IN', now });
-  check('a fresher-only day never says internship', only.subject, '2 new fresher engineering roles in India');
-  check('the pure headline, singular fresher', digestHeadline([{ employment_type: 'fulltime' }], 'India'), '1 new fresher engineering role in India');
-  check('the pure headline reads the projection shape too', digestHeadline([{ employmentType: 'fulltime' }, {}], 'the US'), '1 new engineering internship and 1 fresher engineering role in the US');
+  check('an entry-level-only day never says internship', only.subject, '2 new entry-level engineering roles in India');
+  check('the pure headline, singular', digestHeadline([{ employment_type: 'fulltime' }], 'India'), '1 new entry-level engineering role in India');
+  check('the pure headline reads the projection shape too', digestHeadline([{ employmentType: 'fulltime' }, {}], 'the US'), '1 new engineering internship and 1 entry-level engineering role in the US');
+  check('and never says fresher, new grad or graduate', /fresher|new grad|graduate/.test(buildDigest([ft], cfg, { region: 'US', now }).subject), false);
 }
 check('singular reads correctly',
   buildDigest([row()], cfg, { region: 'IN', now }).subject, '1 new engineering internship in India');

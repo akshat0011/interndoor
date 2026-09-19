@@ -182,7 +182,7 @@ console.log('\n== wired into the board render ==');
   }
 }
 
-console.log('\n== full-time graduate roles are never counted as internships ==');
+console.log('\n== full-time entry-level roles are never counted as internships ==');
 {
   /* Jump Trading UK, 15 Sep 2026: "tracked 16 engineering internships", six of
      them "Campus … (Full-Time)", which the board files under its Full-time tab. */
@@ -193,25 +193,25 @@ console.log('\n== full-time graduate roles are never counted as internships ==')
     intern('4', '2026-09-02T06:00:00Z'), ft('5', '2026-08-23T06:00:00Z'), ft('6', '2026-08-24T06:00:00Z')];
 
   const rec = text(hiringRecord('Jump Trading', past.filter((j) => j.employmentType === 'intern'), GB, RECORD, { fullTime: 2 }));
-  check('the record names the full-time roles it left out', /Jump Trading also posted 2 full-time graduate roles in this time\. They are not internships/.test(rec), true);
+  check('the record names the full-time roles it left out', /Jump Trading also posted 2 full-time entry-level roles in this time\. They are not internships/.test(rec), true);
   check('and says nothing of them when there are none', /full-time/.test(text(hiringRecord('Jump Trading', past.slice(0, 4), GB, RECORD))), false);
 
   const live = [intern('4', '2026-09-02T06:00:00Z'), ft('7', '2026-09-03T06:00:00Z')];
   const hub = renderCompanyPage('Jump Trading', live, past, '', { region: GB, record: RECORD });
   const t = text(hub);
   check('the lede counts internships as internships and names the rest',
-    /tracked 4 engineering internships and 3 full-time graduate roles at Jump Trading/.test(t), true);
+    /tracked 4 engineering internships and 3 full-time entry-level roles at Jump Trading/.test(t), true);
   check('the record inside the hub is internships only, with the full-time line',
-    /Aug 2026 3 Sept? 2026 so far 1 None of the 4 Jump Trading internships/.test(t) && /also posted 3 full-time graduate roles/.test(t), true);
+    /Aug 2026 3 Sept? 2026 so far 1 None of the 4 Jump Trading internships/.test(t) && /also posted 3 full-time entry-level roles/.test(t), true);
   check('the answer line splits a mixed live set',
-    /One engineering internship is open, plus one full-time graduate role/.test(t), true);
+    /One engineering internship is open, plus one full-time entry-level role/.test(t), true);
   check('the pill does not call the full-time role an internship', /2 roles open now/.test(t), true);
   check('the meta description splits them too',
-    /content="1 live Jump Trading internship and 1 full-time graduate role in the UK/.test(hub), true);
-  check('the full-time card is labelled', /Full-time graduate role/.test(hub.slice(hub.indexOf('id="open"'))), true);
+    /content="1 live Jump Trading internship and 1 full-time entry-level role in the UK/.test(hub), true);
+  check('the full-time card is labelled', /Full-time entry-level role/.test(hub.slice(hub.indexOf('id="open"'))), true);
 
   const onlyFt = text(renderCompanyPage('Jump Trading', [ft('7', '2026-09-03T06:00:00Z')], past, '', { region: GB, record: RECORD }));
-  check('an employer with only full-time roles open is not "hiring interns"', /is hiring graduates in the UK right now, but not interns/.test(onlyFt), true);
+  check('an employer with only full-time roles open is not "hiring interns"', /is hiring at entry level in the UK right now, but not interns/.test(onlyFt), true);
   check('and never says it is', /is hiring interns/.test(onlyFt), false);
 
   /* The board-wide standing counts internships too, or a graduate-heavy
@@ -222,7 +222,7 @@ console.log('\n== full-time graduate roles are never counted as internships ==')
 
   const JP = await import('../src/pages.js');
   const page = JP.renderJobPage({ id: 'ats:greenhouse:jump:1', company: 'Jump Trading', title: 'Campus Quantitative Trader (Full-Time)', employmentType: 'fulltime', bullets: ['x', 'y'], postedAt: at('2026-09-01T00:00:00Z'), url: 'https://example.com/j' }, [], { region: GB });
-  check('a full-time job page\'s advice speaks of early-career roles', /Early-career roles in the UK often collect/.test(page), true);
+  check('a full-time job page\'s advice speaks of entry-level roles', /Entry-level roles in the UK often collect/.test(page), true);
   const ipage = JP.renderJobPage({ id: 'ats:greenhouse:jump:2', company: 'Jump Trading', title: 'Quant Intern', employmentType: 'intern', bullets: ['x', 'y'], postedAt: at('2026-09-01T00:00:00Z'), url: 'https://example.com/j' }, [], { region: GB });
   check('an internship\'s still speaks of internships', /Internships in the UK often collect/.test(ipage), true);
 }

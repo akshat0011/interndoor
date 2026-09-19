@@ -21,12 +21,15 @@
  * Adding WhatsApp later is a config entry and nothing else.
  */
 
+import { regionOf } from './regions.js';
+import { entryWord } from './employment.js';
+
 /** Email is not optional: it is the only channel the site itself owns. */
-function emailChannel() {
+function emailChannel(region) {
   return {
     kind: 'email',
     name: 'Email',
-    blurb: 'New internships in your inbox. One message, no spam.',
+    blurb: `New internships and ${entryWord(regionOf(region))} roles in your inbox. One message, no spam.`,
     url: null,          // rendered as the signup form, not a link
   };
 }
@@ -58,7 +61,7 @@ export function whatsappFor(code, cfg = {}) {
  */
 export function channelsFor(code, cfg = {}) {
   const region = String(code || '').toUpperCase();
-  const out = [emailChannel()];
+  const out = [emailChannel(region)];
 
   /* WHATSAPP BEFORE TELEGRAM, where a region has both. Ordering here is a
      claim about which one a reader is most likely to already have open, not a

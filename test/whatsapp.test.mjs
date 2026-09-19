@@ -98,7 +98,7 @@ console.log('\n== trimming drops facts, never the page URL ==');
   const long = composeWhatsApp(oneFact, IN);
   const page = parts.page;
   ok('an over-long one-fact message keeps the page URL', long.includes(page), long.slice(0, 120));
-  ok('and the board', long.includes('Every open internship'));
+  ok('and the board', long.includes('Every open internship and entry-level role:'));
   ok('and lost the fact', !long.includes('x'.repeat(2000)));
 }
 

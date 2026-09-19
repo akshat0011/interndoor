@@ -18,6 +18,7 @@ import { SITE, stipendText, durationText, modeText, jobSlug } from './pages.js';
 import { utmUrl } from './postgen.js';
 import { regionOf, regionPath } from './regions.js';
 import { renderDigestEmail } from './digestmail.js';
+import { splitKinds, entryWord, newCountHeadline } from './employment.js';
 
 /* `regionUrl` is module-private in pages.js, so the path is composed here the
    way weekly.js does it. `regionPath` returns '' for India — the board is at
@@ -131,22 +132,17 @@ function roleBlock(row, cfg, code) {
  * unsubscribe. No roles, no mail, and the day is still marked done.
  */
 /**
- * The count that leads the subject, naming the two kinds separately. A fresher
- * role filed under "internships" is a false sentence in the one line every
+ * The count that leads the subject, naming the two kinds separately. An
+ * entry-level role filed under "internships" is a false sentence in the one line every
  * subscriber reads — and India's first full-time rows arrive with the 18 Sep
  * 2026 vocabulary, so the digest could no longer assume every row is an
  * internship. `where` is the bare place ("India"); `inName` is the board's
  * "in India" form for the body line.
  */
-export function digestHeadline(roles, where) {
-  // Store rows carry employment_type; the published projection employmentType.
-  const ft = roles.filter((r) => (r.employment_type ?? r.employmentType) === 'fulltime').length;
-  const n = roles.length - ft;
-  const interns = `${n} new engineering internship${n === 1 ? '' : 's'}`;
-  const fresh = `${ft} fresher engineering role${ft === 1 ? '' : 's'}`;
-  if (!ft) return `${interns} in ${where}`;
-  if (!n) return `${ft} new fresher engineering role${ft === 1 ? '' : 's'} in ${where}`;
-  return `${interns} and ${fresh} in ${where}`;
+export function digestHeadline(roles, where, word = 'entry-level') {
+  // `word` is the kind's name — entryWord(region): "entry-level" on every
+  // board unless a region overrides it.
+  return newCountHeadline(splitKinds(roles), where, word);
 }
 
 export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = null, now = Date.now() } = {}) {
@@ -163,14 +159,14 @@ export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = nul
   /* A COUNT LEADS. The weekly roundup found the same thing: with no model in
      the loop the strongest opening line available is a number, and it is the
      one fact the reader can act on from the subject line alone. */
-  const subject = digestHeadline(roles, where);
+  const subject = digestHeadline(roles, where, entryWord(region));
 
   const boardUrl = utmUrl(boardUrlFor(code), {
     campaign: 'digest', content: 'board', source: 'email', medium: 'email',
   }, cfg);
 
   const body = [
-    `${digestHeadline(roles, where).replace(` in ${where}`, ` ${region.inName}`)} since yesterday.`,
+    `${digestHeadline(roles, where, entryWord(region)).replace(` in ${where}`, ` ${region.inName}`)} since yesterday.`,
     '',
     shown.map((r) => roleBlock(r, cfg, code)).join('\n\n'),
     '',
@@ -186,7 +182,7 @@ export function buildDigest(rows, cfg, { region: code = 'IN', publishedIds = nul
      byte budget on top of MAX_ROLES, so it may show fewer cards than the
      markdown does — and the "and N more" line has to count everything left
      over, whichever of the two caps bit. */
-  const html = renderDigestEmail(shown, cfg, { region, code, total: roles.length, now });
+  const html = renderDigestEmail(shown, cfg, { region, code, total: roles.length, kinds: splitKinds(roles), now });
 
   return { subject, body, html, count: roles.length, shown: shown.length, roles: shown };
 }

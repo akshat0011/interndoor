@@ -272,6 +272,27 @@ ok('and the channel link', one.comment.includes('https://t.me/interndoor'));
 ok('and fits a comment', one.comment.length <= MAX_COMMENT_CHARS);
 ok('composeComment is deterministic from the facts', composeComment(one.facts) === one.comment);
 
+console.log('\n== an entry-level role is not an internship, and the post says which ==');
+{
+  const ft = buildPost(row({ employment_type: 'fulltime', title: 'Associate Software Engineer', job_id: '4470000009' }), CFG,
+    { hook: 'A backend role.', tip: 'Bring a resume.', hashtags: [] });
+  const ftText = plainText(ft.text);
+  ok('the facts carry the kind', ft.facts.fullTime === true && jobFacts(row(), CFG).fullTime === false);
+  ok('the urgency line names entry-level openings', ftText.includes('entry-level openings like this close within days'));
+  ok('and never internship openings', !ftText.includes('internship openings like this'));
+  ok('an internship still says internship', plainText(one.text).includes('internship openings like this close within days'));
+  ok('the follow line covers both kinds', plainText(one.text).includes('Every new internship and entry-level role, the minute it opens'));
+  ok('the comment covers both kinds', one.comment.includes('Every live engineering internship and entry-level role, updated as they open'));
+  const { composeCombined } = await import('../src/postgen.js');
+  const combined = plainText(composeCombined([one.facts, ft.facts]));
+  ok('the combined post counts each kind', combined.startsWith('1 engineering internship and 1 entry-level role open right now'));
+  ok('and its board line covers both', combined.includes('Every live engineering internship and entry-level role:'));
+  ok('internships alone count as internships', plainText(composeCombined([one.facts, one.facts])).startsWith('2 engineering internships open right now'));
+  /* The hook written from the facts alone, the model being down. */
+  const { fallbackHook } = await import('../src/postgen.js');
+  ok('the fallback hook names the kind', fallbackHook(ft.facts).includes('entry-level listings like this close fast') && fallbackHook(one.facts).includes('internship listings like this close fast'));
+}
+
 console.log('\n== the page hands back exactly the post, and nothing else ==');
 // The copy buttons read the block's textContent. Anything rendered inside that
 // block that is not the post ends up pasted into LinkedIn — which is what the

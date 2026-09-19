@@ -218,3 +218,91 @@ export function fullTimeWording(text) {
     .replace(/\binterns\b/gi, (m) => cap(m, 'new hires'))
     .replace(/\bintern\b/gi, (m) => cap(m, 'new hire'));
 }
+
+/* ---- the words the site uses for its two kinds ---------------------------
+   The board has listed early-career full-time roles under a Full-time tab since
+   23 Aug 2026 and India's fresher roles since 18 Sep, and until 19 Sep every
+   surface that named the offer still said "internships" alone — the board
+   title, the digest chrome, the GitHub list, the channel footers. A full-time
+   role filed under "internships" is a false sentence, and the fix is one
+   vocabulary every surface reads rather than a phrase retyped in forty places.
+
+   THE WORD IS "ENTRY-LEVEL", ON EVERY BOARD — his call, 19 Sep 2026
+   ("InternDoor — Internships & Entry-Level Jobs"). India's readers search for
+   "fresher jobs" and America's for "new grad", but one phrase that every
+   reader parses beats three that each read as foreign on the other boards,
+   and it is LinkedIn's own name for the facet the search runs on. A region may
+   still override it (`entryWord` on its entry in src/regions.js); none does. */
+
+/** "entry-level" — the word for the kind, unless a board overrides it. */
+export function entryWord(region) {
+  return region?.entryWord ?? 'entry-level';
+}
+
+/** "Entry-level" — the same word opening a sentence. */
+export function entryWordCap(region) {
+  const w = entryWord(region);
+  return w[0].toUpperCase() + w.slice(1);
+}
+
+/** "Entry-Level" — the same word inside a Title-Cased <title>. */
+export function entryWordTitle(region) {
+  return entryWord(region).replace(/(^|-)([a-z])/g, (m, sep, c) => `${sep}${c.toUpperCase()}`);
+}
+
+/**
+ * How many of these rows are internships and how many full-time roles. Reads
+ * both the store column (`employment_type`) and the published projection
+ * (`employmentType`), because callers hold either; a row that names neither is
+ * an internship, which is what every row was before the split.
+ */
+export function splitKinds(rows = []) {
+  let fullTime = 0;
+  for (const r of rows) if ((r?.employment_type ?? r?.employmentType) === FULL_TIME) fullTime += 1;
+  return { interns: rows.length - fullTime, fullTime };
+}
+
+/**
+ * The offer with no counts: "engineering internships and entry-level jobs" —
+ * `noun` is "jobs" where a search engine is the reader and "roles" in prose;
+ * `singular` gives "engineering internship and entry-level job" for "every … goes
+ * live" sentences. `adjective` is dropped by passing ''.
+ */
+export function offerPhrase(region, { noun = 'jobs', singular = false, adjective = 'engineering', joiner = 'and' } = {}) {
+  const adj = adjective ? `${adjective} ` : '';
+  const n = singular ? noun.replace(/s$/, '') : noun;
+  return `${adj}internship${singular ? '' : 's'} ${joiner} ${entryWord(region)} ${n}`;
+}
+
+/**
+ * The offer WITH counts, each kind named only when it is there: "12 engineering
+ * internships and 3 entry-level jobs", "12 engineering internships", "3
+ * entry-level engineering jobs". An empty set says the noun alone, never "0
+ * internships".
+ */
+export function countedOffer(rows, region, { noun = 'jobs', adjective = 'engineering', live = false } = {}) {
+  const { interns, fullTime } = splitKinds(rows);
+  const adj = adjective ? `${adjective} ` : '';
+  const lv = live ? 'live ' : '';
+  const fmt = (n) => n.toLocaleString('en-US');
+  const interns_ = `${fmt(interns)} ${lv}${adj}internship${interns === 1 ? '' : 's'}`;
+  const fresh = `${fmt(fullTime)} ${lv}${entryWord(region)} ${noun.replace(/s$/, '')}${fullTime === 1 ? '' : 's'}`;
+  if (!interns && !fullTime) return `${lv}${adj}internships and ${entryWord(region)} ${noun}`.replace(/^./, (c) => c.toUpperCase());
+  if (!fullTime) return interns_;
+  if (!interns) return `${fmt(fullTime)} ${lv}${entryWord(region)} ${adj}${noun.replace(/s$/, '')}${fullTime === 1 ? '' : 's'}`;
+  return `${interns_} and ${fresh}`;
+}
+
+/**
+ * "12 new engineering internships and 3 entry-level engineering roles in India" —
+ * the digest's subject, from counts rather than rows so the mail chrome can say
+ * it about the whole eligible set while rendering only the cards that fit.
+ */
+export function newCountHeadline({ interns = 0, fullTime = 0 } = {}, where, word = 'entry-level') {
+  const n = interns, ft = fullTime;
+  const internsText = `${n} new engineering internship${n === 1 ? '' : 's'}`;
+  const fresh = `${ft} ${word} engineering role${ft === 1 ? '' : 's'}`;
+  if (!ft) return `${internsText} in ${where}`;
+  if (!n) return `${ft} new ${word} engineering role${ft === 1 ? '' : 's'} in ${where}`;
+  return `${internsText} and ${fresh} in ${where}`;
+}
