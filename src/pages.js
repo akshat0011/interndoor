@@ -1122,10 +1122,7 @@ ${scripts}<script defer src="/subscribe.js"></script>
     </nav>
 
     <div class="bar-right">
-${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alerts" href="${regionHref('/alerts', region)}">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        <span>Get alerts</span>
-      </a>
+${regionSwitch(region, alternates)}      ${headerPill(region)}
       <button class="ghost-btn" id="theme-toggle" type="button" aria-label="Switch theme">
         <svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>
@@ -1167,6 +1164,41 @@ ${regionSwitch(region, alternates)}      <a class="alerts" aria-label="Get alert
  * `form-action 'self'` in vercel.json already permits it. page.js intercepts
  * for everyone else and keeps them on the page.
  */
+/* WHATSAPP FIRST, EVERYWHERE THE BOARD ASKS TO BE FOLLOWED — his call, 19 Sep
+   2026, after the counter showed the channel prompt converting ~5% of shows
+   to WhatsApp and ~0% to Telegram or email. India's Telegram channel is
+   retired (config.json), so India has one free channel and every "get alerts"
+   surface points straight at it: the board's header pill and signup band,
+   the job page's alert box, the outro on every generated page, and /alerts,
+   which leads with it. Email stays, one step behind. A region with no
+   WhatsApp channel (the US, the UK) keeps the /alerts route it had.
+
+   The renderers learn the channel from this registry, which `writePages`
+   fills from `channelsFor` before it renders anything — `foot()` is called
+   from a dozen renderers and threading `channels` through every one of them
+   is how a surface gets missed. A renderer called with no registration (the
+   tests, mostly) sees no channel and renders the /alerts form, as before. */
+const REGION_CHANNELS = new Map();
+export function registerChannels(code, channels = []) {
+  REGION_CHANNELS.set(String(code || '').toUpperCase(), Array.isArray(channels) ? channels : []);
+}
+/** The region's WhatsApp channel URL, or null. */
+export function whatsappUrl(region) {
+  const list = REGION_CHANNELS.get(String(region?.code || '').toUpperCase()) ?? [];
+  const wa = list.find((c) => c?.kind === 'whatsapp' && /^https:\/\/(www\.)?whatsapp\.com\/channel\//i.test(String(c.url ?? '')));
+  return wa ? wa.url : null;
+}
+/** The one control every "follow" surface shares: the channel, or /alerts. */
+function followLink(region, { cls = 'a-1', label = 'Get every new role', waLabel = 'Join the WhatsApp channel' } = {}) {
+  const wa = whatsappUrl(region);
+  const icon = wa
+    ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>'
+    : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
+  return wa
+    ? `<a class="${cls} is-wa" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">${icon} ${esc(waLabel)}</a>`
+    : `<a class="${cls}" href="${regionHref('/alerts', region)}">${icon} ${esc(label)}</a>`;
+}
+
 function signupForm(region, { heading = true } = {}) {
   /* On /alerts the form sits under an "By email" heading, so repeating "Or get
      them by email" above the box says the same thing twice. The label is still
@@ -1194,10 +1226,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
     <b>${headline}</b>
     <p>${sub}</p>
     <div class="outro-acts">
-      <a class="a-1" href="${regionHref('/alerts', region)}">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        Get every new role
-      </a>
+      ${followLink(region)}
       <a class="a-2" href="${regionHref('/', region)}">Browse all live roles</a>
     </div>
     ${signup ? signupForm(region) : ''}
@@ -1211,7 +1240,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -1901,17 +1930,30 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
                grey-green line that read as a footnote to the facts above it.
                It is the only thing here that survives the role closing, so it
                gets a heading, a sentence and a real target. -->
-          <a class="jp-sub" href="${regionHref('/alerts', region)}">
+          ${(() => {
+            const wa = whatsappUrl(region);
+            const kind = job.employmentType === FULL_TIME ? `${esc(entryWord(region))} roles` : 'internships';
+            /* inName carries its own preposition ("in the US"), so it goes
+               AFTER the noun. Stripping the "in " to put it before gave
+               "New the US roles". */
+            return wa
+              ? `<a class="jp-sub is-wa" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            <span class="jp-sub-t">
+              <strong>Get ${kind} like this on WhatsApp first</strong>
+              <em>Every new ${esc(offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' }))} ${esc(region.inName)}, the minute it is posted. No signup.</em>
+            </span>
+            <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
+          </a>`
+              : `<a class="jp-sub" href="${regionHref('/alerts', region)}">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
             <span class="jp-sub-t">
-              <strong>Get ${job.employmentType === FULL_TIME ? `${esc(entryWord(region))} roles` : 'internships'} like this first</strong>
-              <!-- inName carries its own preposition ("in the US"), so it goes
-                   AFTER the noun. Stripping the "in " to put it before gave
-                   "New the US roles". -->
+              <strong>Get ${kind} like this first</strong>
               <em>New ${esc(offerPhrase(region, { noun: 'roles' }))} ${esc(region.inName)}, the minute they are posted.</em>
             </span>
             <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
-          </a>
+          </a>`;
+          })()}
         </div>
       </aside>
     </div>
@@ -3349,6 +3391,10 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
   const url = regionUrl('/alerts', region);
   const where = region.inName.replace(/^in /, '');
   const others = channels.filter((c) => c.kind !== 'email');
+  /* WhatsApp leads the page where the board has it (see followLink); the
+     other free channels — Telegram on the US board, Instagram — follow email. */
+  const wa = others.find((c) => c.kind === 'whatsapp') ?? null;
+  const rest = others.filter((c) => c !== wa);
 
   const icon = {
     telegram: '<path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>',
@@ -3387,15 +3433,20 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
       <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
     </header>
 
+    ${wa ? `<section class="strip">
+      <div class="strip-head"><h2>On WhatsApp — fastest, no signup</h2></div>
+      <div class="chans">${card(wa)}</div>
+    </section>` : ''}
+
     <section class="strip">
-      <div class="strip-head"><h2>By email</h2></div>
+      <div class="strip-head"><h2>${wa ? 'Or by email' : 'By email'}</h2></div>
       ${signupForm(region, { heading: false })}
     </section>
 
-    ${others.length ? `<section class="strip">
+    ${rest.length ? `<section class="strip">
       <div class="strip-head"><h2>Or follow along</h2></div>
-      <div class="chans">${others.map(card).join('')}</div>
-    </section>` : `<p class="cp-note">Email is the only alert channel for this board today. More are coming.</p>`}
+      <div class="chans">${rest.map(card).join('')}</div>
+    </section>` : (wa ? '' : `<p class="cp-note">Email is the only alert channel for this board today. More are coming.</p>`)}
   </div>
 </main>
 ${foot({
@@ -3878,6 +3929,27 @@ function localiseLinks(html, region) {
  * If the markers are missing the file is left completely alone: silently
  * rewriting a hand-maintained page is a far worse failure than not adding links.
  */
+/** The header's alerts pill: WhatsApp where the board has it, else /alerts. */
+function headerPill(region) {
+  const wa = whatsappUrl(region);
+  return wa
+    ? `<a class="alerts is-wa" aria-label="Join the WhatsApp channel" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        <span>WhatsApp alerts</span>
+      </a>`
+    : `<a class="alerts" aria-label="Get alerts" href="${regionHref('/alerts', region)}">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        <span>Get alerts</span>
+      </a>`;
+}
+
+/** The signup band's lead: the WhatsApp channel above the email form, where there is one. */
+function followBand(region) {
+  const wa = whatsappUrl(region);
+  if (!wa) return '';
+  return `<p class="wa-lead">${followLink(region, { cls: 'wa-go', waLabel: 'Join the WhatsApp channel' })} <span class="wa-note">Every new role ${esc(region.inName)}, the minute it is posted. No signup.</span></p>`;
+}
+
 function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null, channels = []) {
   const templatePath = join(publicDir, 'index.html');
   if (!existsSync(templatePath)) return 0;
@@ -3925,6 +3997,11 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
      region switcher beside this heading. */
   html = fillMarker(html, 'REGION:H1', `Engineering internships &amp; ${esc(entryWord(region))} jobs`) ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
+  /* The header pill and the signup band lead with WhatsApp where the board
+     has it. Both markers are OPTIONAL: a template without them publishes the
+     /alerts route it always had. */
+  html = fillMarker(html, 'REGION:PILL', headerPill(region)) ?? html;
+  html = fillMarker(html, 'REGION:FOLLOW', followBand(region)) ?? html;
   // A regex, not a literal swap: the template's own lang is en-IN (it IS the
   // India board), so matching `lang="en"` silently did nothing and every region
   // shipped en-IN. Caught in the browser, not by a test — the tests render
@@ -4313,6 +4390,9 @@ function groupByCanonicalCompany(rows, display) {
 }
 
 export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [] } = {}) {
+  // Before any renderer runs: foot(), the job page and the board fills read
+  // the region's channels from here (followLink / whatsappUrl).
+  registerChannels(region.code, channels);
   // India is at the root and every other region under its slug. `regionPath`
   // returns '' for India, so this resolves to exactly the paths that already
   // exist and nothing indexed moves.

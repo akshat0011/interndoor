@@ -218,7 +218,7 @@ console.log('\n== the prompt is one click per event, and the events are the coun
   /* The email row posts what the signup band posts, to the same endpoint,
      and only a 200 {ok:true} counts as a subscription. */
   const emailFn = lift(engage, 'function emailForm(c)', '\n  }', 'emailForm');
-  ok('email posts to the shared endpoint', /SUBSCRIBE_URL = '\/api\/subscribe'/.test(engage) && /channelsFromPage\(lds, SUBSCRIBE_URL\)/.test(engage));
+  ok('email posts to the shared endpoint', /SUBSCRIBE_URL = '\/api\/subscribe'/.test(engage) && /channelsFromPage\(lds, SUBSCRIBE_URL, pageChannelLinks\(\)\)/.test(engage));
   ok('with the address, the board and the empty honeypot',
     /JSON\.stringify\(\{ email: email, region: region\(\), company: '' \}\)/.test(emailFn));
   ok('success alone is accepted and counted', /if \(r\.ok\) \{[\s\S]*remember\('accepted'\)[\s\S]*count\('nudge-' \+ c\.kind\)/.test(emailFn));
@@ -399,6 +399,63 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
   ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
   ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
   ok('and the bar\'s link is a real control', /\.since-other \{[^}]*cursor: pointer/.test(css));
+}
+
+console.log('\n== WhatsApp first — the prompt, the page\'s own links, the email demoted ==');
+{
+  /* 19 Sep 2026, his call: India is WhatsApp-only (Telegram retired), and
+     every "get alerts" surface points straight at the channel. The prompt
+     converts ~5% of shows to WhatsApp and ~0% to email, so email steps back
+     to a text line where a channel is offered. */
+  const show = lift(engage, 'function show(list)', '\n  }', 'show');
+  ok('the email card is minor when a channel is offered', /var hasChannel = list\.some\(function \(c\) \{ return c\.kind !== 'email'; \}\);/.test(show) && /if \(hasChannel\) \{\s*a\.classList\.add\('is-minor'\);/.test(show));
+  ok('and reworded to a secondary line', /'Or one email a day'/.test(show));
+  ok('minor means a text line, not a card', /\.nudge-a\.is-minor \{[^}]*background: none/.test(css));
+  ok('the prompt reads the channel off the page\'s own anchors first', /function pageChannelLinks\(\)/.test(engage) && /a\[href\^="https:\/\/whatsapp\.com\/channel\/"\]/.test(engage));
+  ok('still through the anchored host test', /channelsFromPage\(lds, SUBSCRIBE_URL, pageChannelLinks\(\)\)/.test(engage));
+
+  /* The generated pages: one registry, every surface reads it. */
+  const { registerChannels, whatsappUrl, renderJobPage, renderAlertsPage, renderContactPage } = await import('../src/pages.js');
+  const { regionOf } = await import('../src/regions.js');
+  const IN = regionOf('IN'), US = regionOf('US');
+  const WA = 'https://whatsapp.com/channel/0029VbEJ2qLBA1eq3S5hBE3P';
+  const job = { id: '77', company: 'Acme', title: 'Data Intern', bullets: ['a', 'b'], location: 'Pune, India', firstSeenAt: 1, employmentType: 'intern' };
+  registerChannels('IN', []);
+  const before = renderJobPage(job, [], { region: IN });
+  ok('with no channel registered, the box and the outro go to /alerts', /class="jp-sub" href="\/alerts"/.test(before) && /class="a-1" href="\/alerts"/.test(before));
+  registerChannels('IN', [{ kind: 'email', name: 'Email', url: null }, { kind: 'whatsapp', name: 'WhatsApp', url: WA }]);
+  ok('the registry answers the channel', whatsappUrl(IN) === WA && whatsappUrl(US) === null);
+  registerChannels('IN', [{ kind: 'whatsapp', name: 'WhatsApp', url: 'https://evil.example/go?to=https://whatsapp.com/channel/x' }]);
+  ok('a lookalike host is refused', whatsappUrl(IN) === null);
+  registerChannels('IN', [{ kind: 'email', name: 'Email', url: null }, { kind: 'whatsapp', name: 'WhatsApp', url: WA }]);
+  /* The band's button sits inside .signup-band, whose links are lime — on a
+     lime button that was invisible text on the first render. */
+  ok('the band\'s button text is ink, not lime', /\.signup-band a\.wa-go \{ color: var\(--live-ink\)/.test(css));
+  const after = renderJobPage(job, [], { region: IN });
+  ok('the job page\'s box is the channel', new RegExp(`class="jp-sub is-wa" href="${WA}" target="_blank" rel="noopener noreferrer"`).test(after));
+  ok('and says so', /Get internships like this on WhatsApp first/.test(after) && /No signup\./.test(after));
+  ok('the outro button is the channel', new RegExp(`class="a-1 is-wa" href="${WA}"`).test(after));
+  ok('the header pill is the channel', new RegExp(`class="alerts is-wa" aria-label="Join the WhatsApp channel" href="${WA}"`).test(after));
+  ok('and /alerts stays reachable from the footer', /<a href="\/alerts">Alerts<\/a>/.test(after));
+  const usPage = renderJobPage({ ...job, location: 'Austin, TX' }, [], { region: US });
+  ok('the US page keeps /alerts — no channel gets another region\'s', /class="jp-sub" href="\/us\/alerts"/.test(usPage) && !/whatsapp\.com/.test(usPage));
+  const alerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'whatsapp', name: 'WhatsApp', blurb: 'y', url: WA }, { kind: 'instagram', name: 'Instagram', blurb: 'z', url: 'https://www.instagram.com/interndoorin/' }], { region: IN });
+  const waAt = alerts.indexOf('On WhatsApp — fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
+  ok('/alerts leads with WhatsApp, then email, then the rest', waAt > 0 && emailAt > waAt && restAt > emailAt);
+  const usAlerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'telegram', name: 'Telegram', blurb: 'y', url: 'https://t.me/interndoorusa' }], { region: US });
+  ok('without WhatsApp the page keeps email first', /<h2>By email<\/h2>/.test(usAlerts) && !/On WhatsApp/.test(usAlerts));
+  const contact = renderContactPage({ region: IN });
+  ok('the WhatsApp outro reaches every generated page through foot()', new RegExp(`class="a-1 is-wa" href="${WA}"`).test(contact));
+  registerChannels('IN', []);
+
+  /* The live config: India is WhatsApp-only, the US keeps its Telegram. */
+  const { loadConfig } = await import('../src/config.js');
+  const { channelsFor } = await import('../src/channels.js');
+  const cfg = loadConfig();
+  const kinds = (code) => channelsFor(code, cfg).map((c) => c.kind);
+  ok('India offers WhatsApp and never Telegram', kinds('IN').includes('whatsapp') && !kinds('IN').includes('telegram'));
+  ok('the US still has its Telegram channel', kinds('US').includes('telegram'));
+  ok('the Telegram chatId fallback is off, or India posts to Telegram again', cfg.notifications.telegram.chatId == null && !cfg.notifications.telegram.channels?.IN);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

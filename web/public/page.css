@@ -495,13 +495,18 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .jp-sub-t { display: grid; gap: 2px; min-width: 0; flex: 1; }
 .jp-sub-t strong { font-size: 13.5px; font-weight: 700; color: var(--live); }
+/* The WhatsApp form of the box: solid, since it is now the page's one ask. */
+.jp-sub.is-wa { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+.jp-sub.is-wa .jp-sub-t strong, .jp-sub.is-wa .jp-sub-t em, .jp-sub.is-wa .jp-sub-go { color: var(--live-ink); }
 /* MEASURED. The CTA sits on a lime-tinted ground, and in the light theme
    --live on its own tint fell to 4.18 against a 4.5 floor — the tint costs
    exactly what the token had spare. Darkened for that theme and that element
    only; --live is correct everywhere it is not sitting on itself. Same trap as
    .sub-msg, .flag-rank and the board's freshness pill. */
 :root[data-theme="light"] .jp-sub-t strong { color: #46590a; }
+:root[data-theme="light"] .jp-sub.is-wa .jp-sub-t strong { color: var(--live-ink); }
 :root[data-theme="light"] .jp-sub { color: #46590a; }
+:root[data-theme="light"] .jp-sub.is-wa { color: var(--live-ink); }
 /* Pre-existing, and under the bar for the same reason: the role focus is
    --live on the card, which measures 4.45 in the light theme. */
 :root[data-theme="light"] .jp-focus { color: #4a6100; }
@@ -513,6 +518,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .jp-sub svg { flex: none; }
 @media (hover: hover) and (pointer: fine) {
   .jp-sub:hover { background: color-mix(in oklab, var(--live) 9%, var(--card-2)); }
+  .jp-sub.is-wa:hover { background: var(--live); filter: brightness(1.06); }
 }
 
 /* ---------- how to apply ---------- */
@@ -796,6 +802,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .outro-acts a:active { transform: scale(.97); }
 .outro-acts .a-1 { background: var(--live); color: var(--live-ink); border: 1px solid var(--live); font-weight: 700; }
+.outro-acts .a-1.is-wa svg { flex: none; }
 .outro-acts .a-2 { background: none; color: var(--ink); border: 1px solid var(--rule-2); }
 @media (hover: hover) and (pointer: fine) {
   .outro-acts .a-1:hover { filter: brightness(1.07); }
