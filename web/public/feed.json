@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-java-spring-microservices-blr-4458384434",
+      "url": "https://interndoor.com/jobs/zensar-technologies-java-spring-microservices-blr-4458384434",
+      "title": "Java Spring Microservices BLR — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Bengaluru, Karnataka, India\n• Build and deploy microservices using Java Springboot\n• Work with ReactJS for front-end development\n• Collaborate with cross-functional teams on enterprise projects",
+      "date_published": "2026-09-19T14:08:04.578Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-quantexa-engineers-4440609690",
+      "url": "https://interndoor.com/jobs/infosys-quantexa-engineers-4440609690",
+      "title": "Quantexa Engineers — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop and maintain Quantexa projects using Scala and Spark\n• Work with Azure, Jenkins, and Kubernetes in CI/CD pipelines\n• Collaborate on ETL and scoring design with certification required",
+      "date_published": "2026-09-19T13:54:29.188Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-playwright-test-engineer-4441148032",
+      "url": "https://interndoor.com/jobs/infosys-playwright-test-engineer-4441148032",
+      "title": "Playwright test engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Write test cases and scenarios based on specifications\n• Use Playwright JavaScript and Typescript for automation\n• Work on client projects in digital transformation",
+      "date_published": "2026-09-19T13:48:34.856Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-sitecore-xp-developer-4441395249",
+      "url": "https://interndoor.com/jobs/infosys-sitecore-xp-developer-4441395249",
+      "title": "Sitecore XP developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support digital solutions for clients\n• Translate functional/non-functional requirements into system specs\n• Collaborate on project estimations and quality processes",
+      "date_published": "2026-09-19T13:36:10.367Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-react-js-4459460141",
       "url": "https://interndoor.com/jobs/infosys-react-js-4459460141",
       "title": "React JS — Infosys",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-hardware-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000861",
-      "url": "https://interndoor.com/jobs/microsoft-hardware-engineering-intern-ats-microsoft-india-united-states-united-kingdom-1970393557000861",
-      "title": "Hardware Engineering INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Bangalore, Karnataka, India\n• Analyze system logs and telemetry to identify hardware failures and improve platform reliability\n• Work with suppliers to select optimal materials and components for devices\n• Support debug and validation across systems with silicon from multiple vendors",
-      "date_published": "2026-09-18T05:52:07.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/apple-phd-intern-machine-learning-msi-product-operations-team-4467834348",
-      "url": "https://interndoor.com/jobs/apple-phd-intern-machine-learning-msi-product-operations-team-4467834348",
-      "title": "PhD Intern, Machine Learning: MSI, Product Operations Team — Apple",
-      "content_text": "Company: Apple · Location: Bengaluru, Karnataka, India\n• Develop ML models for manufacturing using text, images, and video\n• Work with LLMs and VLMs to solve industrial problems\n• Present findings to executives and cross-functional teams",
-      "date_published": "2026-09-18T01:00:05.382Z",
-      "authors": [
-        {
-          "name": "Apple"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/simple-energy-artificial-intelligence-ai-internship-in-bangalore-4468839939",
-      "url": "https://interndoor.com/jobs/simple-energy-artificial-intelligence-ai-internship-in-bangalore-4468839939",
-      "title": "Artificial Intelligence (AI) Internship in Bangalore — Simple Energy",
-      "content_text": "Company: Simple Energy · Location: Bengaluru, Karnataka, India\n• Build AI workflows, automate tasks, and improve internal systems\n• Work on EV and automotive tech with founder-level impact\n• Collaborate with engineering, product, and operations teams",
-      "date_published": "2026-09-18T00:06:31.076Z",
-      "authors": [
-        {
-          "name": "Simple Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valeo-intern-system-ats-workday-valeo-wd3-valeo-jobs-req2026079468",
-      "url": "https://interndoor.com/jobs/valeo-intern-system-ats-workday-valeo-wd3-valeo-jobs-req2026079468",
-      "title": "Intern - System — Valeo",
-      "content_text": "Company: Valeo · Location: Chennai\n• Develop and maintain software systems using python and java\n• Work with sql databases and version control tools like git\n• Join a global r&d team focused on sustainable mobility solutions",
-      "date_published": "2026-09-18T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Valeo"
         }
       ]
     }
