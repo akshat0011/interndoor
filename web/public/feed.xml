@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 19 Sep 2026 12:00:45 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 12:16:26 GMT</lastBuildDate>
+  <item>
+    <title>java full stack — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-java-full-stack-4459469086</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-full-stack-4459469086</guid>
+    <pubDate>Sat, 19 Sep 2026 12:16:26 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Interface with clients for quality assurance and issue resolution
+• Create and review designs, validate architecture
+• Participate in project estimation and technical risk planning</description>
+  </item>
   <item>
     <title>Software Engineer, PhD, Early Career, 2026 — Google</title>
     <link>https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431876252</link>
@@ -498,16 +508,6 @@
 • Develop open-source tools for AI alignment, explainability, and model robustness
 • Work on cutting-edge research in tabular models, uncertainty estimation, and reinforcement learning
 • Collaborate with research and engineering teams on real-world industry challenges</description>
-  </item>
-  <item>
-    <title>Data Engineering Intern — TMRW House of Brands</title>
-    <link>https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618</guid>
-    <pubDate>Thu, 17 Sep 2026 13:06:44 GMT</pubDate>
-    <description>Company: TMRW House of Brands · Location: Bengaluru, Karnataka, India
-• Build and maintain data pipelines for structured and semi-structured data
-• Use sql and python for data extraction, transformation and automation
-• Collaborate with data scientists and product teams on analytics projects</description>
   </item>
 </channel>
 </rss>
