@@ -3915,8 +3915,15 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   /* The heading. `fillMarker` writes a newline before the closing marker and it
      renders as a space, so nothing here may end in punctuation — the full stop
      is `.lede h1::after`, a lime square, and a trailing character would sit
-     between the words and the square. */
-  html = fillMarker(html, 'REGION:H1', `Engineering internships &amp; ${esc(entryWord(region))} jobs ${region.inName}`) ?? html;
+     between the words and the square.
+     NO REGION IN THE H1 SINCE 19 SEP 2026. With both kinds named the line is
+     42 characters; "… in the US" made it 52, and MEASURED at 1025px — the
+     narrowest width where .lede is visible at all — the uppercase 35px h1 ran
+     1,056px inside a 981px wrap and gave the whole document a horizontal
+     scrollbar (flex: none, so the item cannot shrink). The region is still
+     carried by <title>, the meta description, hreflang, the JSON-LD and the
+     region switcher beside this heading. */
+  html = fillMarker(html, 'REGION:H1', `Engineering internships &amp; ${esc(entryWord(region))} jobs`) ?? html;
   html = fillMarker(html, 'REGION:SWITCH', regionSwitch(region, alternates)) ?? html;
   // A regex, not a literal swap: the template's own lang is en-IN (it IS the
   // India board), so matching `lang="en"` silently did nothing and every region
