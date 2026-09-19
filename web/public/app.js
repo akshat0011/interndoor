@@ -523,6 +523,35 @@ function splitNewSince(groups, since, sort = 'newest') {
   return { fresh, seen, n: fresh.length, ordered: [...fresh, ...seen] };
 }
 
+/**
+ * How many roles are new since the last visit, per tab — over EVERY row on
+ * the board, not the filtered set, the same way the tab badges count. Pure.
+ *
+ * THE OTHER TAB IS THE ONE THE READER CANNOT SEE. The board opens on
+ * Internships, so a full-time role published overnight was invisible unless
+ * the reader happened to click across: the "new since your last visit" bar
+ * counted only the tab on screen (19 Sep 2026). This is what lets each tab
+ * carry its own "+N new" and the bar name the other one.
+ */
+function newSinceByKind(jobs, since, keyOf = roleKey) {
+  const out = { intern: 0, fulltime: 0 };
+  if (since == null) return out;
+  const seen = { intern: new Set(), fulltime: new Set() };
+  for (const j of jobs) {
+    if (!(Number(j.firstSeenAt ?? j.postedAt ?? 0) > since)) continue;
+    const k = j.employmentType || 'intern';
+    seen[k]?.add(keyOf(j));
+  }
+  out.intern = seen.intern.size;
+  out.fulltime = seen.fulltime.size;
+  return out;
+}
+
+/** "full-time roles" / "internships", for the bar's link to the other tab. */
+const kindNoun = (kind, n) => (kind === 'fulltime'
+  ? `full-time role${n === 1 ? '' : 's'}`
+  : `internship${n === 1 ? '' : 's'}`);
+
 /* The board decides new-vs-return before engage.js loads (rendering must not
    wait on a network fetch) and leaves the answer on <html> for it to count. */
 function loadEngage() {
@@ -552,6 +581,43 @@ function renderTotal() {
   if (seg) seg.hidden = !counts.fulltime;
   const legacy = $('n-total');
   if (legacy) legacy.textContent = state.jobs.length;
+  renderTabNews();
+}
+
+/**
+ * "+N new" on each tab, so the tab the reader is NOT looking at can still say
+ * something arrived. Nothing on a first visit (state.since is null), nothing
+ * when the count is zero — a "+0" is noise. The marker is made here rather
+ * than in index.html: the template is the published board and app.js already
+ * owns everything inside these buttons.
+ */
+function renderTabNews() {
+  const fresh = newSinceByKind(state.jobs, state.since);
+  for (const btn of document.querySelectorAll('#seg-kind .seg-b')) {
+    const kind = btn.dataset.kind;
+    let mark = btn.querySelector('.seg-new');
+    if (!mark) {
+      mark = document.createElement('i');
+      mark.className = 'seg-new';
+      btn.append(mark);
+    }
+    const n = fresh[kind] ?? 0;
+    mark.hidden = n === 0;
+    mark.textContent = n ? `+${n} new` : '';
+    btn.dataset.new = String(n);
+  }
+}
+
+/** Switch tabs — from the tablist, or from the bar's link to the other one. */
+function setKind(kind) {
+  if (kind === state.kind) return;
+  state.kind = kind;
+  for (const b of document.querySelectorAll('#seg-kind .seg-b')) {
+    b.setAttribute('aria-selected', String(b.dataset.kind === kind));
+  }
+  state.selectedId = null;
+  syncUrl();
+  applyFilters();
 }
 
 /**
@@ -1216,12 +1282,31 @@ function renderList() {
   document.documentElement.dataset.newsince = String(split.n);
   const seen = new Set(split.seen);
 
+  /* THE OTHER TAB'S NEWS IS SAID HERE TOO. `split` is over the tab on screen;
+     a returning reader on Internships with four new full-time roles waiting
+     saw nothing at all. The bar now carries a link to the other tab whenever
+     that tab has new roles — even when this one has none, which is exactly
+     the case that was invisible. Counted over every row, like the tab badge,
+     and only for a returning reader (state.since), like the rest of this. */
+  const other = state.kind === 'fulltime' ? 'intern' : 'fulltime';
+  const otherNew = newSinceByKind(state.jobs, state.since)[other];
+
   const frag = document.createDocumentFragment();
-  if (split.n > 0) {
+  if (split.n > 0 || otherNew > 0) {
     const bar = el('li', 'since-bar');
     bar.setAttribute('role', 'presentation');
-    bar.append(el('b', null, `${split.n} new`));
-    bar.append(el('span', null, ` since your last visit · ${relTime(state.since)}`));
+    if (split.n > 0) {
+      bar.append(el('b', null, `${split.n} new`));
+      bar.append(el('span', null, ` since your last visit · ${relTime(state.since)}`));
+    } else {
+      bar.append(el('span', null, `Nothing new here since your last visit · ${relTime(state.since)}`));
+    }
+    if (otherNew > 0) {
+      const go = el('button', 'since-other', `+${otherNew} new ${kindNoun(other, otherNew)} →`);
+      go.type = 'button';
+      go.addEventListener('click', () => setKind(other));
+      bar.append(go);
+    }
     frag.append(bar);
   }
   split.ordered.forEach((group, i) => frag.append(jobCard(group[0], i, group, seen.has(group))));
@@ -1708,16 +1793,7 @@ function wireControls() {
   // narrowing it — and the selection has to survive the detail pane, so it
   // clears the selected job when it flips.
   for (const btn of document.querySelectorAll('#seg-kind .seg-b')) {
-    btn.addEventListener('click', () => {
-      const kind = btn.dataset.kind;
-      if (kind === state.kind) return;
-      state.kind = kind;
-      for (const b of document.querySelectorAll('#seg-kind .seg-b')) {
-        b.setAttribute('aria-selected', String(b.dataset.kind === kind));
-      }
-      state.selectedId = null;
-      rerun();
-    });
+    btn.addEventListener('click', () => setKind(btn.dataset.kind));
   }
 
   $('q').addEventListener('input', () => {
@@ -2024,6 +2100,7 @@ async function init() {
     state.since = visit.since;
     writeVisit(visit.next);
     document.documentElement.dataset.visit = visit.returning ? 'return' : 'new';
+    renderTabNews();   // renderTotal ran before `since` was known
   }
   applyFilters();
   loadEngage();
