@@ -631,7 +631,12 @@ html[data-boot] .boot-part {
 
 .lede h1 {
   font-size: clamp(26px, 3.4vw, 38px); line-height: 1;
-  letter-spacing: -.045em; text-transform: uppercase; flex: none;
+  letter-spacing: -.045em; text-transform: uppercase;
+  /* May shrink and wrap, never overflow. `flex: none` let a 52-character
+     heading run 1,056px inside a 981px wrap at 1025px and put a horizontal
+     scrollbar on the whole board (19 Sep 2026). The paragraph beside it
+     still drops to its own line first, because the container wraps. */
+  flex: 0 1 auto; min-width: 0;
 }
 .lede h1::after { content: ""; display: inline-block; width: .13em; height: .13em; margin-left: .05em; background: var(--live); vertical-align: baseline; }
 .lede p { max-width: 68ch; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }

@@ -254,7 +254,11 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
   const mixed = un(readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, ''));
   const mixedDesc = /<meta name="description" content="([\s\S]*?)"/.exec(mixed)?.[1] ?? '';
   check('a mixed board counts each kind', mixedDesc.startsWith('3 engineering internships and 1 entry-level job in the US'), true);
-  check('the heading names both kinds', /<h1>[\s\S]*?Engineering internships & entry-level jobs in the US[\s\S]*?<\/h1>/.test(mixed), true);
+  /* NO REGION IN THE H1: with both kinds named, "… in the US" overflowed a
+     1025px board (measured — a horizontal scrollbar on the whole page). The
+     region rides in <title>, the description and the switcher beside it. */
+  check('the heading names both kinds', /<h1>[\s\S]*?Engineering internships & entry-level jobs\s*<\/h1>/.test(mixed), true);
+  check('and carries no region', /<h1>[\s\S]*?jobs in the US[\s\S]*?<\/h1>/.test(mixed), false);
   check('and so does the lede', /<strong>Engineering internships and entry-level jobs<\/strong>,/.test(mixed), true);
   check('the share card too', /og:description" content="Software internships and entry-level jobs in the US/.test(mixed), true);
   check('and the feed link', /rss\+xml" title="InternDoor — new engineering internships and entry-level jobs"/.test(mixed), true);
