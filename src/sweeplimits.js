@@ -26,6 +26,24 @@ export function pageCapFor(search = {}, globalCap = 0) {
 }
 
 /**
+ * The cards-per-page floor under which a walk "did not render" and may not
+ * move its baseline. The default was calibrated on the intern walk — a
+ * rendered page is 20-25 cards, a session LinkedIn has stopped serving draws
+ * exactly 1.0, and 5 sits between them with room to spare. It is NOT a
+ * property of the session: India's entry-level search genuinely returned
+ * 5 cards then an empty end page at 06:01 IST on 19 Sep 2026 (2.5 a page),
+ * was called "did not render", stamped the run partial and re-ran on every
+ * tick through the quiet hours. A search may set its own floor; it can never
+ * go below 1.5, because 1.0 IS the degraded signature and a floor of 1 would
+ * let a dead session claim a baseline.
+ */
+export const RENDER_FLOOR_MIN = 1.5;
+export function renderFloorFor(search = {}, defaultFloor) {
+  const own = Number(search.renderFloorCardsPerPage);
+  return own > 0 ? Math.max(own, RENDER_FLOOR_MIN) : defaultFloor;
+}
+
+/**
  * How many cards one employer may cost this search, or 0 for no limit.
  *
  * Counted on the CARD's company, before the click — the point is to avoid the

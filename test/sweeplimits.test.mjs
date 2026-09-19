@@ -8,7 +8,7 @@
  * constraint the US half is allowed to exist under, and every assertion here
  * that names India is pinning a promise rather than an implementation detail.
  */
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, sweepBaselineFor } from '../src/sweeplimits.js';
+import { renderFloorFor, RENDER_FLOOR_MIN, pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, sweepBaselineFor } from '../src/sweeplimits.js';
 import { parseRelativeTime } from '../src/extract.js';
 import { readFileSync } from 'node:fs';
 import { loadConfig } from '../src/config.js';
@@ -321,6 +321,28 @@ console.log('\n== src/index.js actually applies all three ==');
     /reachedEnd && rendered && sweepMark/.test(src), true);
   check('falling behind warns rather than passing silently',
     /baseline unchanged, it is falling behind/.test(src), true);
+}
+
+console.log('\n== the render floor is per search, and can never reach the degraded signature ==');
+{
+  /* 5 was calibrated on the intern walk (a dead session draws exactly 1.0, a
+     real page 20-25). The entry-level search returned 5 cards then an empty
+     end page at dawn on 19 Sep 2026 — 2.5 a page — and was called "did not
+     render": run stamped partial, baseline unmoved, re-run every tick. */
+  const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  check('no setting keeps the default', renderFloorFor({}, 5), 5);
+  check('a search may lower it', renderFloorFor({ renderFloorCardsPerPage: 2 }, 5), 2);
+  check('but never to the degraded signature — 1 is clamped up', renderFloorFor({ renderFloorCardsPerPage: 1 }, 5), RENDER_FLOOR_MIN);
+  check('nor below it', renderFloorFor({ renderFloorCardsPerPage: 0.5 }, 5), RENDER_FLOOR_MIN);
+  check('the clamp itself is above 1.0', RENDER_FLOOR_MIN > 1, true);
+  check('junk keeps the default', renderFloorFor({ renderFloorCardsPerPage: 'x' }, 5), 5);
+  check('the walk verdict reads the per-search floor', /cardsHere \/ pagesHere >= renderFloorFor\(search, CARDS_PER_PAGE_FLOOR\)/.test(src), true);
+  check('…and the RUN-level status still uses the run-wide floor (a run of thin walks is still partial)',
+    /counters\.cardsSeen \/ counters\.pagesScanned < CARDS_PER_PAGE_FLOOR/.test(src), true);
+  const entry = cfg.declaredSearches.find((x) => x.region === 'IN' && x.employment === 'fulltime');
+  check('the entry search sets one, between the signature and the default', entry?.renderFloorCardsPerPage > 1 && entry?.renderFloorCardsPerPage < 5, true);
+  check('the intern walk sets NONE — its calibration is untouched', india?.renderFloorCardsPerPage ?? null, null);
+  check('the warning names the search, not just the region', /\$\{search\.label \?\? region\} did not render/.test(src), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

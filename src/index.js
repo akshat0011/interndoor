@@ -24,7 +24,7 @@ import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor } from './sweeplimits.js';
+import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -1384,7 +1384,7 @@ async function main() {
       // silent hole that keeping lastFullSweep to 'ok' exists to prevent.
       const pagesHere = counters.pagesScanned - before.pages;
       const cardsHere = counters.cardsSeen - before.cards;
-      const rendered = pagesHere > 0 && cardsHere / pagesHere >= CARDS_PER_PAGE_FLOOR;
+      const rendered = pagesHere > 0 && cardsHere / pagesHere >= renderFloorFor(search, CARDS_PER_PAGE_FLOOR);
 
       /* WHAT THIS WALK MAY CLAIM. Two questions, deliberately separate: did the
          list render at all (the floor above, which a degraded session fails),
@@ -1426,7 +1426,7 @@ async function main() {
           'the results list did not render, so that region\'s baseline was left where it was. ' +
           'The LinkedIn session is the usual cause; check it with `npm run login`.',
         );
-        log.warn(`${region} did not render (${cardsHere} cards / ${pagesHere} pages) — baseline unchanged.`);
+        log.warn(`${search.label ?? region} did not render (${cardsHere} cards / ${pagesHere} pages, floor ${renderFloorFor(search, CARDS_PER_PAGE_FLOOR)}) — baseline unchanged.`);
       } else if (!DRY_RUN && !reachedEnd) {
         log.info(`${region} did not finish its walk — baseline unchanged, next run re-covers the window.`);
       }
