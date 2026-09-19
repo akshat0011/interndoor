@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431876252",
+      "url": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431876252",
+      "title": "Software Engineer, PhD, Early Career, 2026 — Google",
+      "content_text": "Company: Google · Location: Hyderabad, Telangana, India\n• Design and build large-scale distributed systems for Google's AI infrastructure\n• Work on high-performance, scalable systems with focus on reliability and efficiency\n• Collaborate with a small team on critical projects with potential for growth",
+      "date_published": "2026-09-19T12:00:45.800Z",
+      "authors": [
+        {
+          "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-quality-assurance-engineering-specialist-4460524744",
+      "url": "https://interndoor.com/jobs/ge-vernova-quality-assurance-engineering-specialist-4460524744",
+      "title": "Quality Assurance Engineering Specialist — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India\n• Write unit and integration tests for small features\n• Use code coverage tools to find untested code\n• Write code in scripting languages for test automation",
+      "date_published": "2026-09-19T11:58:50.489Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-external-intern-4469532214",
       "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-external-intern-4469532214",
       "title": "External Intern — Hewlett Packard Enterprise",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "TMRW House of Brands"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/coindcx-intern-analytics-4467547217",
-      "url": "https://interndoor.com/jobs/coindcx-intern-analytics-4467547217",
-      "title": "Intern - Analytics — CoinDCX",
-      "content_text": "Company: CoinDCX · Location: Bengaluru, Karnataka, India\n• Analyze data and create reports for business decisions\n• Use sql and excel to support analytics projects\n• Collaborate with teams on data requirements and dashboards",
-      "date_published": "2026-09-17T12:02:25.636Z",
-      "authors": [
-        {
-          "name": "CoinDCX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/vahan-ai-software-engineer-intern-4468619421",
-      "url": "https://interndoor.com/jobs/vahan-ai-software-engineer-intern-4468619421",
-      "title": "Software Engineer Intern — Vahan.ai",
-      "content_text": "Company: Vahan.ai · Location: Bengaluru, Karnataka, India\n• Build and ship features in react and node.js\n• Work on production systems impacting millions\n• Mentorship from senior engineers\n• 6-month full-time role",
-      "date_published": "2026-09-17T11:38:42.567Z",
-      "authors": [
-        {
-          "name": "Vahan.ai"
         }
       ]
     }
