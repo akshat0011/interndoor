@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-tse-keg-engineer-4468082816",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-tse-keg-engineer-4468082816",
+      "title": "Intern - TSE KEG Engineer — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Work on wafer probe equipment and process improvements with experienced engineers\n• Use statistical methods and DOE to evaluate equipment performance\n• Analyze data to improve quality and efficiency in semiconductor manufacturing",
+      "date_published": "2026-09-19T12:13:04.737Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/micron-technology-intern-asic-digital-design-4468082815",
+      "url": "https://interndoor.com/us/jobs/micron-technology-intern-asic-digital-design-4468082815",
+      "title": "Intern - ASIC Digital Design — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Minneapolis, MN\n• Design high-speed digital logic for tester ASICs and memory controller IP\n• Use Python, Linux Shell, and semiconductor design tools\n• Work with cross-functional teams on analog and third-party IP integration",
+      "date_published": "2026-09-19T12:12:26.803Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/collins-aerospace-software-project-engineer-intern-summer-2027-onsite-4469525131",
       "url": "https://interndoor.com/us/jobs/collins-aerospace-software-project-engineer-intern-summer-2027-onsite-4469525131",
       "title": "Software Project Engineer Intern (Summer 2027) Onsite — Collins Aerospace",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "A.P. Moller - Maersk"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-multiverse-ats-greenhouse-waymo-8214519",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-multiverse-ats-greenhouse-waymo-8214519",
-      "title": "2027 Summer Intern, MS/PhD, Software Engineer, Multiverse — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, California, USA\n• Analyze driving patterns of autonomous vehicles using cluster analysis\n• Build tools to automate responses to vehicle incidents\n• Improve signal accuracy for detecting unsafe driving behaviors\n• Develop metrics to measure Waymo’s driving performance",
-      "date_published": "2026-09-18T22:09:27.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-electrical-engineer-internship-summer-2027-4468015726",
-      "url": "https://interndoor.com/us/jobs/general-dynamics-mission-systems-electrical-engineer-internship-summer-2027-4468015726",
-      "title": "Electrical Engineer Internship (Summer 2027) — General Dynamics Mission Systems",
-      "content_text": "Company: General Dynamics Mission Systems · Location: Bloomington, MN · Duration: Summer 2027\n• Design and test electrical systems for defense applications\n• Work with hardware and software teams on mission-critical projects\n• Based in Bloomington, MN, with on-site requirements",
-      "date_published": "2026-09-18T22:04:54.620Z",
-      "authors": [
-        {
-          "name": "General Dynamics Mission Systems"
         }
       ]
     }
