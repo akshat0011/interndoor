@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 19 Sep 2026 00:53:00 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 01:32:18 GMT</lastBuildDate>
+  <item>
+    <title>Internship, System Test Engineer, Off-Board Vehicle Charging, Energy Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-system-test-engineer-off-board-vehicle-charging-energy-engi-4469279694</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-system-test-engineer-off-board-vehicle-charging-energy-engi-4469279694</guid>
+    <pubDate>Sat, 19 Sep 2026 01:32:18 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Execute automated and manual tests for EV charging products
+• Work with engineering teams on test case design and issue resolution
+• Support lab setups and validate new test equipment
+• Analyze test results and escalate critical issues</description>
+  </item>
   <item>
     <title>Environmental Test Engineer Intern (Winter 2027) — Astranis</title>
     <link>https://interndoor.com/us/jobs/astranis-environmental-test-engineer-intern-winter-2027-ats-greenhouse-astranis-4705652006</link>
@@ -489,17 +500,6 @@
 • Analyze IoT device vulnerabilities and develop detection methods
 • Work with Python, Django, React, Linux, and Docker
 • Hybrid work option available for Jan-June 2027 term</description>
-  </item>
-  <item>
-    <title>Cyber System Exploitation Co-Op RE (Jan - June 2027) - Group 05-59 — MIT Lincoln Laboratory</title>
-    <link>https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-re-jan-june-2027-group-05-59-4469227157</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/mit-lincoln-laboratory-cyber-system-exploitation-co-op-re-jan-june-2027-group-05-59-4469227157</guid>
-    <pubDate>Fri, 18 Sep 2026 19:20:54 GMT</pubDate>
-    <description>Company: MIT Lincoln Laboratory · Location: Lexington, MA
-• Reverse engineer malware and develop tools for analysis
-• Work with AI/ML to automate malware research
-• Build systems for large-scale malware analysis
-• Hybrid work possible for 6-month co-op</description>
   </item>
 </channel>
 </rss>
