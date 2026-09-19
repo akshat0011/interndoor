@@ -51,6 +51,7 @@
  */
 import { createSign } from 'node:crypto';
 import { regionPath } from './regions.js';
+import { NOINDEX_JOB_BOARDS } from './pages.js';
 import { readFileSync, existsSync } from 'node:fs';
 import { PATHS } from './paths.js';
 import { log } from './logger.js';
@@ -317,8 +318,20 @@ export async function runIndexingSweep(store, cfg, {
  * same reason `publishedIds` exists: the set that got a page and the set we
  * announce must be the same set or they drift.
  */
+/** URL prefixes of the boards whose job pages are noindex (src/pages.js). */
+export function noindexPrefixes(site = 'https://interndoor.com', boards = NOINDEX_JOB_BOARDS) {
+  return [...boards].map((code) => `${site}${regionPath(code)}/`).filter((prefix) => prefix !== `${site}/`);
+}
+
 export function queueForIndexing(store, { indexUrls = [], removedUrls = [], redirectUrls = [] } = {}, now = Date.now()) {
-  const live = indexUrls.filter((u) => isJobPageUrl(u));
+  /* A noindex board's job page is never queued for an UPDATE, whatever the
+     caller hands over — writePages already leaves them out of `indexUrls`,
+     but the cost of a guard that is only safe because of its caller is the
+     project's API access. Deletions are unaffected: a page announced before
+     its board went noindex is still owed a URL_DELETED when it goes. */
+  const noindex = noindexPrefixes();
+  const onNoindexBoard = (u) => noindex.some((p) => String(u).startsWith(p));
+  const live = indexUrls.filter((u) => isJobPageUrl(u) && !onNoindexBoard(u));
   const gone = removedUrls.filter((u) => isJobPageUrl(u));
   /* A SLUG THAT HAS BECOME A REDIRECT STUB IS NEITHER, and `isJobPageUrl`
      cannot tell — a stub lives at `/jobs/<slug>` and is structurally a job URL,

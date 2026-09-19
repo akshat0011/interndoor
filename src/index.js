@@ -24,7 +24,7 @@ import { loadLearned, learnedVocabulary, learn, learnedPath } from './learned.js
 import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
-import { pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
+import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -719,6 +719,10 @@ async function main() {
          each rather than one shared one. */
       const opensByCompany = new Map();
       const openCap = openCapFor(search);
+      /* And a tighter cap on copies of ONE title — the city blast — so the
+         employer's allowance is spent on its different roles (sweeplimits). */
+      const opensByTitle = new Map();
+      const titleCap = titleCapFor(search);
       let cappedCompanies = 0;
       let coveredPages = 0;
       // Whether pagination reached a real end — LinkedIn said there was no
@@ -1095,16 +1099,26 @@ async function main() {
              CARD's company, before the click, because the whole point is to
              avoid the click — the company is one of the few things a card
              states without being opened. */
-          if (openCap) {
+          if (openCap || titleCap) {
             const seenForCompany = opensByCompany.get(card.company) ?? 0;
-            if (seenForCompany >= openCap) {
+            const tkey = titleKey(card.company, card.title);
+            const seenForTitle = opensByTitle.get(tkey) ?? 0;
+            if (openCap && seenForCompany >= openCap) {
               cappedCompanies++;
               store.noteSkippedCard(card.identity,
                 `more than ${openCap} openings from this employer this run`,
                 card.company, card.title);
               continue;
             }
+            if (titleCap && seenForTitle >= titleCap) {
+              cappedCompanies++;
+              store.noteSkippedCard(card.identity,
+                `more than ${titleCap} copies of this title from this employer this run`,
+                card.company, card.title);
+              continue;
+            }
             opensByCompany.set(card.company, seenForCompany + 1);
+            opensByTitle.set(tkey, seenForTitle + 1);
           }
 
           log.ok(`Opening: ${card.title} — ${card.company || 'no company on the card'}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);

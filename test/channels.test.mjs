@@ -82,9 +82,14 @@ check('and no longer jumps to a chat app', /class="alerts"[^>]*t\.me/.test(jobPa
 console.log('\n== the homepage template localises it ==');
 // index.html is ONE template for all three boards, so a hardcoded /alerts would
 // send the US and UK boards to India's page. REGION_LINKS rewrites it.
+/* Since 19 Sep 2026 the pill is REGION-FILLED (headerPill in src/pages.js):
+   the WhatsApp channel where the board has one, else that board's /alerts.
+   India renders the template back over itself in place, so the on-disk file
+   carries whatever India's last publish filled — the invariant is the marker
+   and the absence of any hardcoded board, not the fallback's exact text. */
 const tpl = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
-check('the template links to the bare path', tpl.includes('class="alerts" aria-label="Get alerts" href="/alerts"'), true);
-check('and hardcodes no region', tpl.includes('href="/in/alerts"'), false);
+check('the template carries the pill marker', tpl.includes('<!--REGION:PILL-->') && tpl.includes('<!--/REGION:PILL-->'), true);
+check('and hardcodes no region', tpl.includes('href="/in/alerts"') || tpl.includes('href="/us/alerts"'), false);
 
 console.log('\n== the email card names both kinds ==');
 for (const code of ['IN', 'US', 'GB']) {

@@ -1535,7 +1535,7 @@ export function saysIntern(title) {
 export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set() } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
-  const indexable = isIndexable(job);
+  const indexable = jobPageIndexable(job, region);
   const posted = job.postedAt ?? job.firstSeenAt ?? Date.now();
   const year = new Date(posted).getFullYear();
   const hub = regionHref(`/companies/${companySlug(job.company)}`, region);
@@ -4080,6 +4080,31 @@ const FACET_TILES = 50;
    are not announced to IndexNow. Flipping this back is the whole reversal. */
 export const FACETS_INDEXABLE = false;
 
+/* THE US BOARD'S JOB PAGES ARE noindex — his call, 19 Sep 2026.
+   Search Console, all data, the seven days to 19 Sep: USA 4 clicks on 2,126
+   impressions; India 49 on 288. The US board writes 87% of the site's pages
+   (~3,500 of ~4,000 job pages) and the 11 Sep collapse has the shape of a
+   scaled-content reclassification, so those pages are the bulk of what Google
+   is judging and almost none of what anyone clicks. India's job pages stay
+   indexable; so do every board's hubs (the permanent, converting asset) and
+   the UK's ~110 job pages, which are not the scale problem.
+
+   A page in a listed board keeps its JobPosting markup, is still written and
+   linked, and carries `noindex,follow` — Google ignores structured data on a
+   noindex page, so no manual-action exposure. It is OUT of the sitemap, OUT of
+   the Indexing API queue and NOT announced to IndexNow, the same three-way
+   treatment the facets got (a sitemap may never list a noindex URL).
+   `isIndexable(job)` — the two-bullet quality bar every hub and count reads —
+   is NOT what changed; this sits beside it, per board. Reversal is one code
+   out of the set; the US Google Jobs experience (79 pages / 218 impressions /
+   2 clicks in the week before) goes with it. */
+export const NOINDEX_JOB_BOARDS = new Set(['US']);
+
+/** Whether a job page may be indexed: the quality bar AND the board's switch. */
+export function jobPageIndexable(job, region = DEFAULT_REGION) {
+  return isIndexable(job) && !NOINDEX_JOB_BOARDS.has(String(region?.code ?? '').toUpperCase());
+}
+
 const FACET_KINDS = {
   skill: {
     dir: 'skills',
@@ -4446,10 +4471,13 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     track(writeIfChanged(join(jobsDir, name), renderJobRedirect(target, region)), `/jobs/${slug}`);
   }
 
+  /* A job page on a noindex board is written and linked but never announced —
+     the same rule the facets follow (trackFacet). */
+  const trackJob = (changed, path) => { if (!NOINDEX_JOB_BOARDS.has(region.code)) track(changed, path); };
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
-    track(writeIfChanged(join(jobsDir, name),
+    trackJob(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
         { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages })),
       `/jobs/${jobSlug(job)}`);
@@ -4668,11 +4696,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     }
   }
 
-  const indexable = jobs.filter(isIndexable).length;
-  /* The same two rules the sitemap applies — isIndexable, then jobSlug — so a
-     page cannot be announced to Google that the sitemap does not also list.
-     Kept beside the count above rather than recomputed by the caller. */
-  const indexUrls = jobs.filter(isIndexable).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
+  const indexable = jobs.filter((j) => jobPageIndexable(j, region)).length;
+  /* The same two rules the sitemap applies — jobPageIndexable, then jobSlug —
+     so a page cannot be announced to Google that the sitemap does not also
+     list. Kept beside the count above rather than recomputed by the caller. */
+  const indexUrls = jobs.filter((j) => jobPageIndexable(j, region)).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
   writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets });
   const feedItems = writeFeeds(jobs, root, region);
   const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
@@ -4836,7 +4864,9 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     ...(FACETS_INDEXABLE ? facets.cities : []).map((f) => ({
       loc: regionUrl(`/locations/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
     })),
-    ...jobs.filter(isIndexable).map((j) => ({
+    /* Only pages that may be indexed: a sitemap may never list a noindex URL,
+       and a whole board's job pages can be noindex (NOINDEX_JOB_BOARDS). */
+    ...jobs.filter((j) => jobPageIndexable(j, region)).map((j) => ({
       loc: regionUrl(`/jobs/${jobSlug(j)}`, region),
       priority: '0.8',
       lastmod: day(j.postedAt ?? j.firstSeenAt),

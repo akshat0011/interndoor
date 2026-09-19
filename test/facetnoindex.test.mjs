@@ -72,10 +72,25 @@ for (const [code, slug] of [['IN', ''], ['US', 'us']]) {
   const locs = [...readFileSync(join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   check(`${code}: no skill or location URL in the sitemap`, locs.filter((l) => FACET_URL.test(new URL(l).pathname)), []);
   check(`${code}: none announced to IndexNow`, (res.changedUrls ?? []).filter((u) => FACET_URL.test(new URL(u).pathname)), []);
-  check(`${code}: IndexNow still hears about the other pages`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), true);
-
+  /* THE US BOARD'S JOB PAGES ARE noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS
+     in src/pages.js): out of the sitemap, out of IndexNow, out of the API
+     queue — the facets' three-way treatment, applied to a board. India's
+     stay in all three. */
   const jobLocs = locs.filter((l) => new URL(l).pathname.includes('/jobs/')).length;
-  check(`${code}: every indexable job page is still in the sitemap`, jobLocs, jobs.filter(isIndexable).length);
+  if (code === 'US') {
+    check(`${code}: no job page is announced to IndexNow`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), false);
+    check(`${code}: but its hubs still are`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/companies/')), true);
+    check(`${code}: no job page in the sitemap`, jobLocs, 0);
+    check(`${code}: none offered to the Indexing API`, (res.indexUrls ?? []).length, 0);
+    check(`${code}: the pages are written and noindex`, (() => {
+      const f = readdirSync(join(root, 'jobs')).find((x) => x.endsWith('.html'));
+      return f ? /<meta name="robots" content="noindex,follow">/.test(readFileSync(join(root, 'jobs', f), 'utf8')) : null;
+    })(), true);
+  } else {
+    check(`${code}: IndexNow still hears about the other pages`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), true);
+    check(`${code}: every indexable job page is still in the sitemap`, jobLocs, jobs.filter(isIndexable).length);
+    check(`${code}: and offered to the Indexing API`, (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
+  }
 }
 for (const d of dirs) rmSync(d, { recursive: true, force: true });
 
