@@ -386,5 +386,25 @@ const idxSrc = readFileSync(new URL('../src/indexing.js', import.meta.url), 'utf
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('the sweep asks the queue for them last', /defer: deferredPrefixes\(\)/.test(idxSrc), true);
 
+console.log('\n== a noindex board\'s job pages are never queued for an update ==');
+{
+  /* The US board's job pages are noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS
+     in src/pages.js). writePages leaves them out of indexUrls; this guard is
+     the one that holds when a caller does not, because the cost of announcing
+     a noindex page through this API is the project's access. A DELETE is
+     still owed for a page announced before the board went noindex. */
+  const { noindexPrefixes } = await import('../src/indexing.js');
+  check('the US board is the noindex prefix', noindexPrefixes(), [`${SITE}/us/`]);
+  check('a board at the root can never be one', noindexPrefixes(SITE, new Set(['IN'])), []);
+  const st2 = freshStore();
+  const us = `${SITE}/us/jobs/acme-intern-9`, india = `${SITE}/jobs/acme-intern-8`;
+  const q2 = queueForIndexing(st2, { indexUrls: [us, india] }, T);
+  check('only the India page is queued', q2.queuedUpdate, 1);
+  check('and it is the India page', st2.indexDue({ limit: 9 }).map((r) => r.url), [india]);
+  st2.indexQueue([us], UPDATED, T - 10); st2.indexMarkDone(us, UPDATED, T - 5);
+  const q3 = queueForIndexing(st2, { removedUrls: [us] }, T);
+  check('a US page announced earlier still gets its deletion', q3.queuedDelete, 1);
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

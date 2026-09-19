@@ -131,7 +131,15 @@ console.log('\n== A STUB IS NOT A LISTING ==');
      the crawlable homepage block can reach it — asserted rather than assumed. */
   const sitemap = readFileSync(`${DIR}/us/sitemap.xml`, 'utf8');
   check('the sitemap does not list it', sitemap.includes('acme-corp-expiring-intern-1'), false);
-  check('but does list the live role', sitemap.includes('acme-corp-surviving-intern-2'), true);
+  /* The US board's job pages are noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS),
+     so its sitemap lists no job page at all; the live role IS listed on a
+     board whose pages are indexable. */
+  check('nor, on this board, the live role', sitemap.includes('acme-corp-surviving-intern-2'), false);
+  {
+    const IN = regionOf('IN');
+    writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: IN });
+    check('but an indexable board does list the live role', readFileSync(`${DIR}/sitemap.xml`, 'utf8').includes('acme-corp-surviving-intern-2'), true);
+  }
   check('the indexing queue is not offered it', r.indexUrls.some((u) => u.includes('expiring')), false);
   const home = readFileSync(`${DIR}/us/index.html`, 'utf8');
   check('the crawlable block does not link it', home.includes('acme-corp-expiring-intern-1'), false);

@@ -55,6 +55,26 @@ export function openCapFor(search = {}) {
   return own > 0 ? own : 0;
 }
 
+/**
+ * How many copies of ONE title an employer may have opened per search run, or
+ * 0 for unlimited. The city blast — P&G's 22 copies of one internship — is
+ * what the employer cap was written for, and it was catching the other shape
+ * too: Qualcomm posting twenty DIFFERENT Summer 2027 internships in one hour
+ * had fifteen refused as "more than 5 openings from this employer" (19 Sep
+ * 2026), and in the week before, 41 distinct titles were capped and never
+ * stored — Google 12 of them. So the copies of a title are capped tightly and
+ * the employer's total loosely; both count on the card, before the click.
+ */
+export function titleCapFor(search = {}) {
+  const own = Number(search.maxOpensPerTitle);
+  return own > 0 ? own : 0;
+}
+
+/** The key one title's copies share: the employer and the title, case-folded. */
+export function titleKey(company, title) {
+  return `${String(company ?? '').trim().toLowerCase()}|${String(title ?? '').trim().toLowerCase().replace(/\s+/g, ' ')}`;
+}
+
 /** The absolute age at which a full page means the walk has caught up, in ms. */
 export function staleCutoffFor(search = {}, now = Date.now()) {
   const hours = Number(search.stopAfterPageOlderThanHours);

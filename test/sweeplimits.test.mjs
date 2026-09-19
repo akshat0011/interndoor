@@ -8,7 +8,7 @@
  * constraint the US half is allowed to exist under, and every assertion here
  * that names India is pinning a promise rather than an implementation detail.
  */
-import { renderFloorFor, RENDER_FLOOR_MIN, pageCapFor, openCapFor, staleCutoffFor, pageIsAllOlderThan, sweepBaselineFor } from '../src/sweeplimits.js';
+import { renderFloorFor, RENDER_FLOOR_MIN, pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, sweepBaselineFor } from '../src/sweeplimits.js';
 import { parseRelativeTime } from '../src/extract.js';
 import { readFileSync } from 'node:fs';
 import { loadConfig } from '../src/config.js';
@@ -73,7 +73,12 @@ console.log('\n== the US carries all three, at the asked-for values ==');
      that silently does nothing. */
   check('which is also the global ceiling', cfg.limits.maxPagesPerSearch, 40);
   check('so the US effective cap is its own', pageCapFor(us, cfg.limits.maxPagesPerSearch), 40);
-  check('5 openings per employer', us.maxOpensPerCompany, 5);
+  /* Split 19 Sep 2026: the employer's TOTAL is loose (12) and copies of ONE
+     title are tight (5). Qualcomm's twenty different Summer 2027 internships
+     had fifteen refused under a flat 5; P&G's 22 copies of one role are still
+     stopped at 5. */
+  check('12 openings per employer', us.maxOpensPerCompany, 12);
+  check('5 copies of one title', us.maxOpensPerTitle, 5);
   check('stops on a page that is entirely 2h old', us.stopAfterPageOlderThanHours, 2);
   check('and it is running', us.enabled, true);
 
@@ -82,7 +87,13 @@ console.log('\n== the US carries all three, at the asked-for values ==');
      nothing: the first version passed 40 and expected 20, and the day those two
      numbers met it failed for the right reason. */
   check('the page cap overrides the global one', pageCapFor(us, 99), 40);
-  check('the open cap resolves', openCapFor(us), 5);
+  check('the open cap resolves', openCapFor(us), 12);
+  check('the title cap resolves', titleCapFor(us), 5);
+  check('the title key folds case and spacing', titleKey('Qualcomm', 'Software  Engineering Internship - Summer 2027'), titleKey('qualcomm', 'software engineering internship - summer 2027'));
+  check('but not two different titles', titleKey('Qualcomm', 'Software Engineering Internship') === titleKey('Qualcomm', 'Embedded Engineering Internship'), false);
+  /* The employer is part of the key: two employers posting the same title
+     ("Software Engineer Intern", everywhere) must not share one allowance. */
+  check('nor the same title at two employers', titleKey('Qualcomm', 'Software Engineer Intern') === titleKey('Qorvo', 'Software Engineer Intern'), false);
   const T = 1_780_000_000_000;
   check('the cutoff is two hours back', staleCutoffFor(us, T), T - 2 * 3_600_000);
 }
@@ -93,6 +104,8 @@ console.log('\n== a search that sets nothing is unchanged in every respect ==');
      the behaviour of a board nobody asked to change. */
   check('falls back to the global cap', pageCapFor({}, 40), 40);
   check('unlimited opens', openCapFor({}), 0);
+  check('unlimited copies of a title', titleCapFor({}), 0);
+  check('India sets no title cap either', india.maxOpensPerTitle, undefined);
   check('no cutoff', staleCutoffFor({}), null);
   check('zero is not a cap, it is absence', pageCapFor({ maxPages: 0 }, 40), 40);
   check('nor is a negative one', openCapFor({ maxOpensPerCompany: -1 }), 0);
@@ -181,9 +194,11 @@ console.log('\n== src/index.js actually applies all three ==');
      `if (openCap)` be mutated to `if (false)` — every piece still present, the
      cap never enforced, and the test green. */
   check('and the gate actually skips the card',
-    /if \(openCap\) \{[\s\S]{0,400}?opensByCompany\.get\(card\.company\)[\s\S]{0,300}?>= openCap[\s\S]{0,300}?continue;/.test(src), true);
-  check('the count only advances for a card we are about to open',
-    /opensByCompany\.set\(card\.company, seenForCompany \+ 1\);[\s\S]{0,80}?\}\s*\n\s*\n\s*log\.ok\(`Opening:/.test(src), true);
+    /if \(openCap \|\| titleCap\) \{[\s\S]{0,400}?opensByCompany\.get\(card\.company\)[\s\S]{0,300}?openCap && seenForCompany >= openCap[\s\S]{0,300}?continue;/.test(src), true);
+  check('and the copies of one title, separately',
+    /const tkey = titleKey\(card\.company, card\.title\);[\s\S]{0,600}?titleCap && seenForTitle >= titleCap[\s\S]{0,200}?copies of this title[\s\S]{0,120}?continue;/.test(src), true);
+  check('the counts only advance for a card we are about to open',
+    /opensByCompany\.set\(card\.company, seenForCompany \+ 1\);\s*opensByTitle\.set\(tkey, seenForTitle \+ 1\);[\s\S]{0,80}?\}\s*\n\s*\n\s*log\.ok\(`Opening:/.test(src), true);
   check('and every page reports its ages, stop or no stop',
     /const a = pageAgeSummary\(cards, parseRelativeTime\);[\s\S]{0,300}?undateable/.test(src), true);
   check('the all-old page test ends the walk',
