@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-dal3-rme-4469283126",
+      "url": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-dal3-rme-4469283126",
+      "title": "Mechatronic Apprentice, DAL3 RME — Amazon",
+      "content_text": "Company: Amazon · Location: Dallas, TX\n• Maintain and repair automated packaging equipment\n• Work with robotics and material handling systems\n• Complete preventative maintenance on conveyance systems",
+      "date_published": "2026-09-19T00:01:21.411Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hitachi-rail-intern-rams-reliability-availability-maintainability-and-safety-4466933875",
+      "url": "https://interndoor.com/us/jobs/hitachi-rail-intern-rams-reliability-availability-maintainability-and-safety-4466933875",
+      "title": "Intern - RAMS (Reliability, Availability, Maintainability, and Safety) — Hitachi Rail",
+      "content_text": "Company: Hitachi Rail · Location: Pittsburgh, PA\n• Support RAMS safety studies for transit systems\n• Use engineering tools for risk analysis and design reviews\n• Work with global teams on safety-critical projects",
+      "date_published": "2026-09-18T23:56:52.200Z",
+      "authors": [
+        {
+          "name": "Hitachi Rail"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/chubb-intern-technology-june-2027-4466926935",
+      "url": "https://interndoor.com/us/jobs/chubb-intern-technology-june-2027-4466926935",
+      "title": "Intern, Technology - June 2027 — Chubb",
+      "content_text": "Company: Chubb · Location: Philadelphia, PA\n• Work on real projects that support business needs\n• Tools include python, java, and cloud platforms\n• Based in philadelphia with global exposure",
+      "date_published": "2026-09-18T23:46:57.309Z",
+      "authors": [
+        {
+          "name": "Chubb"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-advanced-research-summer-2027-research-program-internship-m-4469265295",
       "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-advanced-research-summer-2027-research-program-internship-m-4469265295",
       "title": "GE Vernova Advanced Research - Summer 2027 Research Program Internship (Master's Level) — GE Vernova",
@@ -86,18 +122,6 @@
       "authors": [
         {
           "name": "A.P. Moller - Maersk"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/valeo-mechatronics-engineering-co-op-4469255603",
-      "url": "https://interndoor.com/us/jobs/valeo-mechatronics-engineering-co-op-4469255603",
-      "title": "Mechatronics Engineering Co-Op — Valeo",
-      "content_text": "Company: Valeo · Location: Troy, MI\n• Debug hardware for adas ecu prototypes using oscilloscopes and logic analyzers\n• Validate high-speed sensor data transmission with mi pi csi-2 and gmsl2\n• Simulate power stages with simetrix/simplis for automotive voltage scenarios",
-      "date_published": "2026-09-18T22:26:57.913Z",
-      "authors": [
-        {
-          "name": "Valeo"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/robinhood-offensive-security-intern-summer-2027-ats-greenhouse-robinhood-8214142",
-      "url": "https://interndoor.com/us/jobs/robinhood-offensive-security-intern-summer-2027-ats-greenhouse-robinhood-8214142",
-      "title": "Offensive Security Intern (Summer 2027) — Robinhood",
-      "content_text": "Company: Robinhood · Location: Bellevue, WA · Duration: Winter 2027\n• Hack ai services, models, and pipelines\n• Target cloud, kubernetes, and macos systems\n• Find and exploit bugs in smart contracts\n• Build infrastructure and tooling",
-      "date_published": "2026-09-18T19:03:03.000Z",
-      "authors": [
-        {
-          "name": "Robinhood"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/biogen-2027-intern-information-technology-4467896673",
-      "url": "https://interndoor.com/us/jobs/biogen-2027-intern-information-technology-4467896673",
-      "title": "2027 Intern, Information Technology — Biogen",
-      "content_text": "Company: Biogen · Location: Cambridge, MA · Duration: 12 weeks\n• Support IT analytics platforms for GXP manufacturing and supply chain\n• Work on intelligent automation with DevOps tools for workflow integration\n• Investigate security threats and update incident response documentation",
-      "date_published": "2026-09-18T18:55:25.306Z",
-      "authors": [
-        {
-          "name": "Biogen"
         }
       ]
     }
