@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 19 Sep 2026 12:16:26 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 13:09:41 GMT</lastBuildDate>
+  <item>
+    <title>Data Engineer - DaAI — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124</guid>
+    <pubDate>Sat, 19 Sep 2026 13:09:41 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Build data pipelines for ERP, CRM, and cloud platforms using PySpark and Airflow
+• Support data quality checks with Great Expectations and dbt tests
+• Prepare data for AI agents with embeddings and semantic tags</description>
+  </item>
+  <item>
+    <title>IICS Developer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-iics-developer-4440787571</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-iics-developer-4440787571</guid>
+    <pubDate>Sat, 19 Sep 2026 13:04:46 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Develop data pipelines using informatica iics
+• Work with oracle sql server and mysql databases
+• Design star and snowflake schemas for data warehouses</description>
+  </item>
   <item>
     <title>java full stack — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-java-full-stack-4459469086</link>
@@ -488,26 +508,6 @@
     <guid isPermaLink="true">https://interndoor.com/jobs/icertis-associate-software-engineer-development-ats-oraclecloud-iaaviz-fa-ocs-oraclecloud-com-7680</guid>
     <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
     <description>Company: Icertis · Location: Pune, Maharashtra, India</description>
-  </item>
-  <item>
-    <title>SDE-1, Expansions Tech and Product — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-sde-1-expansions-tech-and-product-ats-amazon-ind-usa-gbr-10553343</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-sde-1-expansions-tech-and-product-ats-amazon-ind-usa-gbr-10553343</guid>
-    <pubDate>Thu, 17 Sep 2026 18:30:00 GMT</pubDate>
-    <description>Company: Amazon · Location: Hyderabad, Telangana, IND
-• Design and develop software systems for global expansion features
-• Work on large-scale computing and distributed systems
-• Collaborate on mission-critical platform improvements</description>
-  </item>
-  <item>
-    <title>AI Research Internship — Lexsi Labs</title>
-    <link>https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4467568511</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4467568511</guid>
-    <pubDate>Thu, 17 Sep 2026 17:01:35 GMT</pubDate>
-    <description>Company: Lexsi Labs · Location: Mumbai Metropolitan Region · Duration: 6 months
-• Develop open-source tools for AI alignment, explainability, and model robustness
-• Work on cutting-edge research in tabular models, uncertainty estimation, and reinforcement learning
-• Collaborate with research and engineering teams on real-world industry challenges</description>
   </item>
 </channel>
 </rss>

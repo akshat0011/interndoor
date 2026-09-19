@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124",
+      "url": "https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124",
+      "title": "Data Engineer - DaAI — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build data pipelines for ERP, CRM, and cloud platforms using PySpark and Airflow\n• Support data quality checks with Great Expectations and dbt tests\n• Prepare data for AI agents with embeddings and semantic tags",
+      "date_published": "2026-09-19T13:09:41.480Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-iics-developer-4440787571",
+      "url": "https://interndoor.com/jobs/infosys-iics-developer-4440787571",
+      "title": "IICS Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop data pipelines using informatica iics\n• Work with oracle sql server and mysql databases\n• Design star and snowflake schemas for data warehouses",
+      "date_published": "2026-09-19T13:04:46.201Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-java-full-stack-4459469086",
       "url": "https://interndoor.com/jobs/infosys-java-full-stack-4459469086",
       "title": "java full stack — Infosys",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Icertis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-sde-1-expansions-tech-and-product-ats-amazon-ind-usa-gbr-10553343",
-      "url": "https://interndoor.com/jobs/amazon-sde-1-expansions-tech-and-product-ats-amazon-ind-usa-gbr-10553343",
-      "title": "SDE-1, Expansions Tech and Product — Amazon",
-      "content_text": "Company: Amazon · Location: Hyderabad, Telangana, IND\n• Design and develop software systems for global expansion features\n• Work on large-scale computing and distributed systems\n• Collaborate on mission-critical platform improvements",
-      "date_published": "2026-09-17T18:30:00.000Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4467568511",
-      "url": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4467568511",
-      "title": "AI Research Internship — Lexsi Labs",
-      "content_text": "Company: Lexsi Labs · Location: Mumbai Metropolitan Region · Duration: 6 months\n• Develop open-source tools for AI alignment, explainability, and model robustness\n• Work on cutting-edge research in tabular models, uncertainty estimation, and reinforcement learning\n• Collaborate with research and engineering teams on real-world industry challenges",
-      "date_published": "2026-09-17T17:01:35.342Z",
-      "authors": [
-        {
-          "name": "Lexsi Labs"
         }
       ]
     }
