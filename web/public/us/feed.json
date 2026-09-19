@@ -6,6 +6,42 @@
   "description": "New engineering internships in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-environmental-test-engineer-intern-winter-2027-ats-greenhouse-astranis-4705652006",
+      "url": "https://interndoor.com/us/jobs/astranis-environmental-test-engineer-intern-winter-2027-ats-greenhouse-astranis-4705652006",
+      "title": "Environmental Test Engineer Intern (Winter 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Test satellite hardware and software in thermal, vibration, and RF environments\n• Use thermal chambers, vibration tables, and EMI/EMC equipment\n• Work with engineers on satellite development and testing\n• 12-week paid internship in San Francisco",
+      "date_published": "2026-09-19T00:53:00.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-production-quality-intern-summer-2027-ats-greenhouse-astranis-4705675006",
+      "url": "https://interndoor.com/us/jobs/astranis-production-quality-intern-summer-2027-ats-greenhouse-astranis-4705675006",
+      "title": "Production Quality Intern (Summer 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Summer 2027\n• Develop inspection and verification procedures for production quality\n• Use Python, R, or SQL to create dashboards and track factory metrics\n• Collaborate with cross-functional teams to improve manufacturing processes",
+      "date_published": "2026-09-19T00:51:10.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-production-quality-intern-winter-2027-ats-greenhouse-astranis-4705677006",
+      "url": "https://interndoor.com/us/jobs/astranis-production-quality-intern-winter-2027-ats-greenhouse-astranis-4705677006",
+      "title": "Production Quality Intern (Winter 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Develop inspection and verification procedures for production quality\n• Use Python, R, or SQL to create dashboards and track factory metrics\n• Collaborate with cross-functional teams to improve manufacturing processes",
+      "date_published": "2026-09-19T00:51:08.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-dal3-rme-4469283126",
       "url": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-dal3-rme-4469283126",
       "title": "Mechatronic Apprentice, DAL3 RME — Amazon",
@@ -563,42 +599,6 @@
       "title": "Cyber System Exploitation Co-Op RE (Jan - June 2027) - Group 05-59 — MIT Lincoln Laboratory",
       "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Reverse engineer malware and develop tools for analysis\n• Work with AI/ML to automate malware research\n• Build systems for large-scale malware analysis\n• Hybrid work possible for 6-month co-op",
       "date_published": "2026-09-18T19:20:54.619Z",
-      "authors": [
-        {
-          "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-printed-circuit-board-designer-co-op-6-month-term-group-07-76-4469213684",
-      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-printed-circuit-board-designer-co-op-6-month-term-group-07-76-4469213684",
-      "title": "Printed Circuit Board Designer Co-Op (6-month term) - Group 07-76 — MIT Lincoln Laboratory",
-      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Design and layout mixed-signal, high-speed digital, RF, and power PCBs for ground and space systems\n• Use Siemens Xpedition, Altium Designer, and AutoCAD for schematic capture and fabrication\n• Collaborate with mechanical, thermal, and electronics teams on real-world security projects",
-      "date_published": "2026-09-18T19:20:52.313Z",
-      "authors": [
-        {
-          "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-ai-for-circuit-generation-co-op-6-month-term-group-07-76-4469228159",
-      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-ai-for-circuit-generation-co-op-6-month-term-group-07-76-4469228159",
-      "title": "AI for Circuit Generation Co-Op (6-month term) - Group 07-76 — MIT Lincoln Laboratory",
-      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA\n• Design AI-generated circuits for electronics projects using PSpice and MATLAB\n• Work on AI/ML integration with circuit validation and simulation tools\n• Contribute to a 6-month project with real-world impact on national security",
-      "date_published": "2026-09-18T19:20:31.023Z",
-      "authors": [
-        {
-          "name": "MIT Lincoln Laboratory"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-software-and-electronics-engineeri-4469227159",
-      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-software-and-electronics-engineeri-4469227159",
-      "title": "Summer Research Program Intern 2027, Software and Electronics Engineering (Group 07-76) — MIT Lincoln Laboratory",
-      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Design and develop software or electronics systems for real-world applications\n• Work with experienced engineers on embedded software, firmware, or PCB design\n• Receive mentorship and professional development opportunities",
-      "date_published": "2026-09-18T19:09:21.315Z",
       "authors": [
         {
           "name": "MIT Lincoln Laboratory"
