@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-java-full-stack-4459469086",
+      "url": "https://interndoor.com/jobs/infosys-java-full-stack-4459469086",
+      "title": "java full stack — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Interface with clients for quality assurance and issue resolution\n• Create and review designs, validate architecture\n• Participate in project estimation and technical risk planning",
+      "date_published": "2026-09-19T12:16:26.477Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431876252",
       "url": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431876252",
       "title": "Software Engineer, PhD, Early Career, 2026 — Google",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Lexsi Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618",
-      "url": "https://interndoor.com/jobs/tmrw-house-of-brands-data-engineering-intern-4462217618",
-      "title": "Data Engineering Intern — TMRW House of Brands",
-      "content_text": "Company: TMRW House of Brands · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for structured and semi-structured data\n• Use sql and python for data extraction, transformation and automation\n• Collaborate with data scientists and product teams on analytics projects",
-      "date_published": "2026-09-17T13:06:44.611Z",
-      "authors": [
-        {
-          "name": "TMRW House of Brands"
         }
       ]
     }
