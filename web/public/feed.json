@@ -1,10 +1,22 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "InternDoor — engineering internships and fresher jobs in India",
+  "title": "InternDoor — engineering internships and entry-level jobs in India",
   "home_page_url": "https://interndoor.com/",
   "feed_url": "https://interndoor.com/feed.json",
-  "description": "New engineering internships and fresher jobs in India, listed within minutes of going live.",
+  "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
+    {
+      "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
+      "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
+      "title": "Fullstack Developer- Internship — GreedyGame",
+      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years\n• Build backend services for ad networks and Google Ad Manager\n• Develop frontend dashboards in React for ad unit management\n• Work with MySQL, PostgreSQL, and MongoDB for data handling\n• Collaborate on feature design and deployment with senior engineers",
+      "date_published": "2026-09-19T05:58:50.649Z",
+      "authors": [
+        {
+          "name": "GreedyGame"
+        }
+      ]
+    },
     {
       "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469262450",
       "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469262450",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Trelleborg Sealing Solutions"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-intern-4468614190",
-      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-intern-4468614190",
-      "title": "Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Support senior team members on technical projects\n• Troubleshoot issues and maintain technical systems\n• Attend meetings and collaborate with colleagues",
-      "date_published": "2026-09-17T10:36:51.376Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
         }
       ]
     }
