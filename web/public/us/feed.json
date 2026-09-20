@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-guidance-navigation-and-control-intern-dulles-va-4469569732",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-guidance-navigation-and-control-intern-dulles-va-4469569732",
+      "title": "2027 Guidance Navigation and Control Intern Dulles VA — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Dulles, VA · Duration: 10 weeks\n• Design and tune control loops for spacecraft attitude and position using MATLAB/Simulink\n• Implement GNC algorithms in flight software and support qualification testing\n• Work on sensor and actuator models for space systems with real-world applications",
+      "date_published": "2026-09-20T04:12:11.186Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4469573750",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-intern-software-engineer-4469573750",
+      "title": "2027 Intern Software Engineer — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Melbourne, FL · Duration: 10 weeks\n• Work on equipment testing, calibration, and system maintenance\n• Use engineering drawings and operate specialized tools\n• Collaborate with developers, users, and customers",
+      "date_published": "2026-09-20T04:12:06.042Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-4460807735",
       "url": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-4460807735",
       "title": "Mechatronic Apprentice I — Amazon",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/mks-inc-2027-spring-engineering-development-intern-co-op-r20241-4468045778",
-      "url": "https://interndoor.com/us/jobs/mks-inc-2027-spring-engineering-development-intern-co-op-r20241-4468045778",
-      "title": "2027 Spring Engineering/Development Intern/Co-op (R20241) — MKS Inc.",
-      "content_text": "Company: MKS Inc. · Location: Richmond, CA\n• Design and run experiments to test precision temperature and position sensors\n• Build and validate test equipment using Python, LabView, or MATLAB\n• Maintain test documentation and analyze data with statistical tools",
-      "date_published": "2026-09-19T03:04:02.949Z",
-      "authors": [
-        {
-          "name": "MKS Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-e-commerce-2027-summer-4466956161",
-      "url": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-e-commerce-2027-summer-4466956161",
-      "title": "Machine Learning Engineer Intern (E-Commerce) - 2027 Summer — TikTok USDS Joint Venture",
-      "content_text": "Company: TikTok USDS Joint Venture · Location: Seattle, WA · Duration: Summer 2027\n• Analyze user search behavior using large-scale data and experiments\n• Write maintainable code and documentation for assigned projects\n• Collaborate with cross-functional teams on product and system improvements",
-      "date_published": "2026-09-19T02:40:32.568Z",
-      "authors": [
-        {
-          "name": "TikTok USDS Joint Venture"
         }
       ]
     }
