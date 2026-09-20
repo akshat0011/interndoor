@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 20 Sep 2026 09:52:31 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 12:26:06 GMT</lastBuildDate>
+  <item>
+    <title>Data engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-data-engineer-4440797335</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-data-engineer-4440797335</guid>
+    <pubDate>Sun, 20 Sep 2026 12:26:06 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Develop scalable data pipelines using Spark and Kafka
+• Work on cloud-native architectures and distributed systems
+• Collaborate with cross-functional teams on enterprise solutions</description>
+  </item>
+  <item>
+    <title>ETL/DWT Test Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-4440779886</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-4440779886</guid>
+    <pubDate>Sun, 20 Sep 2026 12:21:11 GMT</pubDate>
+    <description>Company: Infosys · Location: Hyderabad, Telangana, India
+• Design, develop, validate and support data systems for client projects
+• Use testing frameworks for ETL and data warehouse processes
+• Collaborate with leads to estimate project requirements and timelines</description>
+  </item>
   <item>
     <title>SailPoint IIQ Developer (SailPoint IIQ &amp; BeanShell) — UST</title>
     <link>https://interndoor.com/jobs/ust-sailpoint-iiq-developer-sailpoint-iiq-and-beanshell-4439246157</link>
@@ -493,24 +513,6 @@
 • Build scalable data pipelines on Azure
 • Use PySpark and SQL for data transformation
 • Work with Azure Data Factory and Databricks</description>
-  </item>
-  <item>
-    <title>Intern - Zoho CRM Developer — HaystackAnalytics</title>
-    <link>https://interndoor.com/jobs/haystackanalytics-intern-zoho-crm-developer-4467857268</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/haystackanalytics-intern-zoho-crm-developer-4467857268</guid>
-    <pubDate>Fri, 18 Sep 2026 10:15:30 GMT</pubDate>
-    <description>Company: HaystackAnalytics · Location: Navi Mumbai, Maharashtra, India · Duration: 6 months
-• Manage and optimize crm system for efficiency
-• Develop workflows and data strategies in zoho
-• Collaborate with sales and marketing teams
-• Generate reports for management decisions</description>
-  </item>
-  <item>
-    <title>Rust Developer - Intern — Signzy</title>
-    <link>https://interndoor.com/jobs/signzy-rust-developer-intern-ats-keka-signzy-138638</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/signzy-rust-developer-intern-ats-keka-signzy-138638</guid>
-    <pubDate>Fri, 18 Sep 2026 09:32:00 GMT</pubDate>
-    <description>Company: Signzy · Location: Bengaluru, Karnataka, India</description>
   </item>
 </channel>
 </rss>
