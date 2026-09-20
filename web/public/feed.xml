@@ -6,7 +6,47 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 20 Sep 2026 13:00:36 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 14:28:17 GMT</lastBuildDate>
+  <item>
+    <title>SAP Tosca Test Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-sap-tosca-test-engineer-4433468871</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-sap-tosca-test-engineer-4433468871</guid>
+    <pubDate>Sun, 20 Sep 2026 14:28:17 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Interface with clients for quality assurance and issue resolution
+• Create and review designs, validate architecture, and ensure service quality
+• Participate in project estimation and solution delivery planning</description>
+  </item>
+  <item>
+    <title>DFT Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-dft-engineer-4441386707</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-dft-engineer-4441386707</guid>
+    <pubDate>Sun, 20 Sep 2026 14:15:22 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Implement DFT features in complex SoCs including scan chains, MBIST, and LBIST
+• Generate ATPG patterns and debug DFT issues in simulation and silicon
+• Collaborate with RTL and physical design teams on project delivery</description>
+  </item>
+  <item>
+    <title>ETL/DWT Test Engineer with SQL — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-with-sql-4441335825</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-with-sql-4441335825</guid>
+    <pubDate>Sun, 20 Sep 2026 14:04:27 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Design, develop, validate and support systems for client projects
+• Use SQL Server and ETL tools to build efficient data solutions
+• Collaborate with teams to translate requirements into system specs</description>
+  </item>
+  <item>
+    <title>Nextjs Developer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-nextjs-developer-4441377916</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-nextjs-developer-4441377916</guid>
+    <pubDate>Sun, 20 Sep 2026 13:39:32 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Design, develop, validate and support systems for Finacle Treasury VaR
+• Use Nextjs and TypeScript to build efficient programs for client needs
+• Collaborate with leads to estimate project requirements and manage timelines</description>
+  </item>
   <item>
     <title>PhD Intern, Apple Ads (Machine Learning) — Apple</title>
     <link>https://interndoor.com/jobs/apple-phd-intern-apple-ads-machine-learning-4468464421</link>
@@ -472,47 +512,6 @@
 • Design and develop engineered systems and products
 • Apply engineering principles to ensure safety and reliability
 • Collaborate with teams to support lifecycle management</description>
-  </item>
-  <item>
-    <title>Intern — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-intern-4469172900</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4469172900</guid>
-    <pubDate>Fri, 18 Sep 2026 15:22:38 GMT</pubDate>
-    <description>Company: IQVIA · Location: Gurugram, Haryana, India
-• Develop and test software components using Python and modern frameworks
-• Build and validate REST APIs and integrations across enterprise applications
-• Design automated test frameworks for functional and end-to-end testing
-• Collaborate with global teams on AI-powered solutions and cloud platforms</description>
-  </item>
-  <item>
-    <title>Intern — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-intern-4469167956</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4469167956</guid>
-    <pubDate>Fri, 18 Sep 2026 15:21:59 GMT</pubDate>
-    <description>Company: IQVIA · Location: Bengaluru, Karnataka, India
-• Develop and test software components using Python and modern frameworks
-• Build and validate REST APIs and AI-powered solutions with LLMs and RAG
-• Design automated test frameworks and contribute to backend services with FastAPI</description>
-  </item>
-  <item>
-    <title>Gen Ai Engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-gen-ai-engineer-4440250967</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-gen-ai-engineer-4440250967</guid>
-    <pubDate>Fri, 18 Sep 2026 14:55:41 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Build and optimize RAG pipelines for knowledge-based apps
-• Deploy AI agents using LangChain, LangGraph, or CrewAI
-• Integrate GenAI with enterprise systems and cloud platforms</description>
-  </item>
-  <item>
-    <title>GCP Data Engineer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-gcp-data-engineer-4467877251</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-gcp-data-engineer-4467877251</guid>
-    <pubDate>Fri, 18 Sep 2026 14:55:37 GMT</pubDate>
-    <description>Company: Cognizant · Location: Bhubaneswar, Odisha, India
-• Build data pipelines and lake solutions on GCP
-• Use BigQuery, Dataflow, Python, and SQL
-• Work on data transformation and analytics projects</description>
   </item>
 </channel>
 </rss>
