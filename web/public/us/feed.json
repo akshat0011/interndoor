@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-design-infrastructure-4469595805",
+      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-design-infrastructure-4469595805",
+      "title": "Internship - Design Infrastructure — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Lexington, KY\n• Build and maintain CI/CD pipelines for design tools and services\n• Write automation scripts in Python or Ruby for tool flows and data processing\n• Contribute to frontend/backend work on internal web apps using Rails, React, and SQL",
+      "date_published": "2026-09-20T12:58:13.508Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-summer-intern-2027-onsite-4469589445",
       "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-summer-intern-2027-onsite-4469589445",
       "title": "Systems Engineering - Summer Intern 2027 - Onsite — Collins Aerospace",
@@ -587,18 +599,6 @@
       "title": "Software Engineer Intern (Emerging Product) - 2027 Summer — TikTok USDS Joint Venture",
       "content_text": "Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027\n• Build big data frameworks and storage systems for platform services\n• Design distributed systems for high-concurrency global traffic\n• Collaborate with stakeholders on large-scale engineering projects",
       "date_published": "2026-09-19T03:33:48.539Z",
-      "authors": [
-        {
-          "name": "TikTok USDS Joint Venture"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-agentic-platform-2027-summer-4466937957",
-      "url": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-agentic-platform-2027-summer-4466937957",
-      "title": "Machine Learning Engineer Intern (Agentic Platform) - 2027 summer — TikTok USDS Joint Venture",
-      "content_text": "Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: 6 months\n• Build AI agents that automate system diagnostics and self-healing for critical infrastructure\n• Integrate with internal monitoring and ticketing systems to scale automation across teams\n• Work on real-world infrastructure challenges with a focus on GPU, HDFS, and disaster recovery",
-      "date_published": "2026-09-19T03:33:40.322Z",
       "authors": [
         {
           "name": "TikTok USDS Joint Venture"

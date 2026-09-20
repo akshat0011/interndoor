@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 20 Sep 2026 12:26:06 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 12:50:31 GMT</lastBuildDate>
+  <item>
+    <title>MDM-INTUNE — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-mdm-intune-4459496611</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-mdm-intune-4459496611</guid>
+    <pubDate>Sun, 20 Sep 2026 12:50:31 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Manage Windows 11 deployments and patching via Intune
+• Troubleshoot Intune and Autopilot issues
+• Create compliance policies for devices
+• Based in Pune</description>
+  </item>
+  <item>
+    <title>Software Engineer, PhD, Early Career, Networking, 2026 Start — Google</title>
+    <link>https://interndoor.com/jobs/google-software-engineer-phd-early-career-networking-2026-start-4365584225</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/google-software-engineer-phd-early-career-networking-2026-start-4365584225</guid>
+    <pubDate>Sun, 20 Sep 2026 12:35:36 GMT</pubDate>
+    <description>Company: Google · Location: Bengaluru, Karnataka, India
+• Develop kernel drivers for networking hardware in Google Cloud ecosystem
+• Work on large-scale distributed systems and networking infrastructure
+• Collaborate with cross-functional teams on AI/ML and data storage projects</description>
+  </item>
+  <item>
+    <title>AI Application Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794</guid>
+    <pubDate>Sun, 20 Sep 2026 12:26:41 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Build AI agents and copilots on SAP and enterprise platforms
+• Use LangChain, LlamaIndex, and vector databases for RAG systems
+• Develop scalable backend services and integrate with SAP systems</description>
+  </item>
   <item>
     <title>Data engineer — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-data-engineer-4440797335</link>
@@ -482,37 +513,6 @@
 • Create and revise engineering documentation for product design and manufacturing
 • Use cad tools like catia and plm software for component design and data control
 • Collaborate with teams to develop mechanical systems and ensure design standards</description>
-  </item>
-  <item>
-    <title>Associate Software Engineer — IBM</title>
-    <link>https://interndoor.com/jobs/ibm-associate-software-engineer-4466693517</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-associate-software-engineer-4466693517</guid>
-    <pubDate>Fri, 18 Sep 2026 14:55:04 GMT</pubDate>
-    <description>Company: IBM · Location: Pune Division, Maharashtra, India
-• Develop and test software solutions for user problems
-• Work with AI tools to improve productivity and code quality
-• Follow SDLC and apply best practices for reliable features</description>
-  </item>
-  <item>
-    <title>Gen AI Engineer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-gen-ai-engineer-4467867454</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-gen-ai-engineer-4467867454</guid>
-    <pubDate>Fri, 18 Sep 2026 14:54:59 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Build and deploy deep learning models for text, speech, image, and video analysis
-• Use Python/R/SQL and cloud tools for data preprocessing and feature engineering
-• Collaborate with domain teams to design AI solutions for business challenges
-• Deploy models on cloud or on-prem and integrate with applications via REST APIs</description>
-  </item>
-  <item>
-    <title>Azure Data Engineer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-azure-data-engineer-4467882207</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-azure-data-engineer-4467882207</guid>
-    <pubDate>Fri, 18 Sep 2026 14:54:53 GMT</pubDate>
-    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
-• Build scalable data pipelines on Azure
-• Use PySpark and SQL for data transformation
-• Work with Azure Data Factory and Databricks</description>
   </item>
 </channel>
 </rss>
