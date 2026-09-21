@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931",
+      "title": "QA Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Execute test cases for data pipelines and validate source-to-target parity\n• Track defects and provide quality status reports for migration phases\n• Collaborate with data engineers to resolve issues during validation cycles",
+      "date_published": "2026-09-21T11:31:19.257Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
       "url": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
       "title": "Embedded Verification and Validation Engineers — Cyient",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-engineer-firmware-design-4410854176",
-      "url": "https://interndoor.com/jobs/micron-technology-engineer-firmware-design-4410854176",
-      "title": "Engineer, Firmware Design — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Design and validate on-chip controller and mixed signal circuitry in NAND FLASH chips\n• Implement firmware for NAND internal operations and full-chip Verilog validation\n• Use Verilog, TCL, PERL, and CAD tools like ncsim and PrimeTime",
-      "date_published": "2026-09-19T09:23:09.345Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
         }
       ]
     }

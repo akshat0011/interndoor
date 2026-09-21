@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 11:24:01 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 11:31:19 GMT</lastBuildDate>
+  <item>
+    <title>QA Engineer — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931</guid>
+    <pubDate>Mon, 21 Sep 2026 11:31:19 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
+• Execute test cases for data pipelines and validate source-to-target parity
+• Track defects and provide quality status reports for migration phases
+• Collaborate with data engineers to resolve issues during validation cycles</description>
+  </item>
   <item>
     <title>Embedded Verification and Validation Engineers — Cyient</title>
     <link>https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476</link>
@@ -500,16 +510,6 @@
 • Support senior team members on technical projects
 • Troubleshoot issues and maintain technical systems
 • Collaborate in team meetings and learn project methodologies</description>
-  </item>
-  <item>
-    <title>Engineer, Firmware Design — Micron Technology</title>
-    <link>https://interndoor.com/jobs/micron-technology-engineer-firmware-design-4410854176</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/micron-technology-engineer-firmware-design-4410854176</guid>
-    <pubDate>Sat, 19 Sep 2026 09:23:09 GMT</pubDate>
-    <description>Company: Micron Technology · Location: Hyderabad, Telangana, India
-• Design and validate on-chip controller and mixed signal circuitry in NAND FLASH chips
-• Implement firmware for NAND internal operations and full-chip Verilog validation
-• Use Verilog, TCL, PERL, and CAD tools like ncsim and PrimeTime</description>
   </item>
 </channel>
 </rss>
