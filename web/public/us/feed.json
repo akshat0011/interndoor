@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-knowledge-graph-2027-start-4459783130",
+      "url": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-knowledge-graph-2027-start-4459783130",
+      "title": "Machine Learning Engineer Intern (E-Commerce Knowledge Graph) - 2027 Start (PhD) — TikTok",
+      "content_text": "Company: TikTok · Location: Seattle, WA\n• Build knowledge graphs for product and brand relationships\n• Use Python, PyTorch, and Spark for data analysis\n• Work on e-commerce recommendation systems",
+      "date_published": "2026-09-21T10:08:26.041Z",
+      "authors": [
+        {
+          "name": "TikTok"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-advanced-process-analytics-co-op-4469870138",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-advanced-process-analytics-co-op-4469870138",
+      "title": "Advanced Process Analytics Co-op — Johnson & Johnson Innovative Medicine",
+      "content_text": "Company: Johnson & Johnson Innovative Medicine · Location: Titusville, NJ\n• Develop spectroscopy models for pharmaceutical manufacturing\n• Write Python code with Git and documentation tools\n• Collaborate with scientists on bioprocessing data",
+      "date_published": "2026-09-21T09:58:31.445Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson Innovative Medicine"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-knowledge-graph-2027-start-4459777883",
+      "url": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-knowledge-graph-2027-start-4459777883",
+      "title": "Machine Learning Engineer Intern (E-Commerce Knowledge Graph) - 2027 Start (PhD) — TikTok",
+      "content_text": "Company: TikTok · Location: San Jose, CA\n• Build knowledge graphs for e-commerce products and categories\n• Use Python, PyTorch, and Spark for data analysis and modeling\n• Collaborate with teams on product categorization and recommendation systems",
+      "date_published": "2026-09-21T09:47:59.903Z",
+      "authors": [
+        {
+          "name": "TikTok"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/mercury-software-engineering-intern-spring-2027-4467376109",
       "url": "https://interndoor.com/us/jobs/mercury-software-engineering-intern-spring-2027-4467376109",
       "title": "Software Engineering Intern - Spring 2027 — Mercury",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-asic-digital-design-4468082815",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-asic-digital-design-4468082815",
-      "title": "Intern - ASIC Digital Design — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Minneapolis, MN\n• Design high-speed digital logic for tester ASICs and memory controller IP\n• Use Python, Linux Shell, and semiconductor design tools\n• Work with cross-functional teams on analog and third-party IP integration",
-      "date_published": "2026-09-19T12:12:26.803Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-project-engineer-intern-summer-2027-onsite-4469525131",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-project-engineer-intern-summer-2027-onsite-4469525131",
-      "title": "Software Project Engineer Intern (Summer 2027) Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Windsor Locks, CT · Duration: Summer 2027\n• Support project execution by tracking tasks and coordinating with engineering teams\n• Work with embedded systems and software tools to improve product quality\n• Collaborate on hardware-software issues and certification processes",
-      "date_published": "2026-09-19T09:19:32.334Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4469517386",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4469517386",
-      "title": "Software Engineering Intern (Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Sterling, VA · Duration: Summer 2027\n• Design and debug real-time software applications and APIs for simulation and training\n• Work with Agile teams on C/C++ and C# projects using Git and Subversion\n• Maintain and enhance existing software products with focus on Windows and Linux",
-      "date_published": "2026-09-19T09:19:06.982Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
         }
       ]
     }
