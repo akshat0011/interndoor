@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/kaleris-cloudops-intern-4468144555",
+      "url": "https://interndoor.com/jobs/kaleris-cloudops-intern-4468144555",
+      "title": "CloudOps Intern — Kaleris",
+      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Monitor cloud environments and manage system patches for Windows and Linux\n• Write automation scripts in PowerShell, Bash, or Python for operational tasks\n• Maintain documentation and track incidents through ITSM tools\n• Work with QA team on software delivery and system requirements",
+      "date_published": "2026-09-21T20:07:06.007Z",
+      "authors": [
+        {
+          "name": "Kaleris"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-microservices-and-node-developer-4469970048",
+      "url": "https://interndoor.com/jobs/infosys-microservices-and-node-developer-4469970048",
+      "title": "Microservices and Node Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Coimbatore, Tamil Nadu, India\n• Debug issues, check logs, troubleshoot and restore service\n• Work with cloud, linux, servers, and automation tools\n• Collaborate with stakeholders to resolve incidents and track issues",
+      "date_published": "2026-09-21T19:43:54.619Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-visionplus-developer-4469966115",
       "url": "https://interndoor.com/jobs/infosys-visionplus-developer-4469966115",
       "title": "VisionPlus Developer — Infosys",
@@ -546,18 +570,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/twilio-software-engineer-intern-january-12th-start-23-weeks-ats-greenhouse-twilio-8190887",
-      "url": "https://interndoor.com/jobs/twilio-software-engineer-intern-january-12th-start-23-weeks-ats-greenhouse-twilio-8190887",
-      "title": "Software Engineer Intern (January 12th start, 23 weeks) — Twilio",
-      "content_text": "Company: Twilio · Location: Remote - India · Duration: 6 months\n• Develop and deploy real-time software solutions for low-latency communications\n• Work on distributed systems and cloud infrastructure with experienced engineers\n• Contribute to core features that impact Twilio's global user base",
-      "date_published": "2026-09-20T21:34:36.000Z",
-      "authors": [
-        {
-          "name": "Twilio"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424249762",
       "url": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424249762",
       "title": "AI Customer Engineer — Cognizant",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-springboot-production-support-4441700082",
-      "url": "https://interndoor.com/jobs/infosys-java-springboot-production-support-4441700082",
-      "title": "java springboot production support — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Support production systems, resolve client issues, ensure quality and satisfaction\n• Java, Spring Boot, testing tools, agile methodologies, project lifecycle\n• Work on client projects, contribute to design and architecture, code reviews",
-      "date_published": "2026-09-20T14:28:34.400Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }
