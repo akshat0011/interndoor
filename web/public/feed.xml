@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 11:01:15 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 11:24:01 GMT</lastBuildDate>
+  <item>
+    <title>Embedded Verification and Validation Engineers — Cyient</title>
+    <link>https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476</guid>
+    <pubDate>Mon, 21 Sep 2026 11:24:01 GMT</pubDate>
+    <description>Company: Cyient · Location: Bengaluru, Karnataka, India
+• Verify and validate embedded systems using do-178c standards
+• Write and execute unit tests for low-level software
+• Work with embedded c++ in aviation software development</description>
+  </item>
+  <item>
+    <title>Software Engineer - Java Microservices — Quest Global</title>
+    <link>https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363</guid>
+    <pubDate>Mon, 21 Sep 2026 11:06:06 GMT</pubDate>
+    <description>Company: Quest Global · Location: Thiruvananthapuram, Kerala, India · Duration: 1-3 years
+• Develop medical device software using Java, Swing, and Spring Boot
+• Work on enterprise applications with C++, Perl, and Python components
+• Collaborate with stakeholders on feature implementation and bug fixes</description>
+  </item>
   <item>
     <title>Andriod Developer — Zensar Technologies</title>
     <link>https://interndoor.com/jobs/zensar-technologies-andriod-developer-4468722433</link>
@@ -490,27 +510,6 @@
 • Design and validate on-chip controller and mixed signal circuitry in NAND FLASH chips
 • Implement firmware for NAND internal operations and full-chip Verilog validation
 • Use Verilog, TCL, PERL, and CAD tools like ncsim and PrimeTime</description>
-  </item>
-  <item>
-    <title>Software-Engineer--Analytical-Engineering — Bristol Myers Squibb</title>
-    <link>https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399</guid>
-    <pubDate>Sat, 19 Sep 2026 07:51:58 GMT</pubDate>
-    <description>Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years
-• Build data models and pipelines for business intelligence
-• Use dbt and aws for data transformation and architecture
-• Collaborate with ai/ml teams on data infrastructure</description>
-  </item>
-  <item>
-    <title>Fullstack Developer- Internship — GreedyGame</title>
-    <link>https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094</guid>
-    <pubDate>Sat, 19 Sep 2026 05:58:50 GMT</pubDate>
-    <description>Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years
-• Build backend services for ad networks and Google Ad Manager
-• Develop frontend dashboards in React for ad unit management
-• Work with MySQL, PostgreSQL, and MongoDB for data handling
-• Collaborate on feature design and deployment with senior engineers</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
+      "url": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
+      "title": "Embedded Verification and Validation Engineers — Cyient",
+      "content_text": "Company: Cyient · Location: Bengaluru, Karnataka, India\n• Verify and validate embedded systems using do-178c standards\n• Write and execute unit tests for low-level software\n• Work with embedded c++ in aviation software development",
+      "date_published": "2026-09-21T11:24:01.049Z",
+      "authors": [
+        {
+          "name": "Cyient"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363",
+      "url": "https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363",
+      "title": "Software Engineer - Java Microservices — Quest Global",
+      "content_text": "Company: Quest Global · Location: Thiruvananthapuram, Kerala, India · Duration: 1-3 years\n• Develop medical device software using Java, Swing, and Spring Boot\n• Work on enterprise applications with C++, Perl, and Python components\n• Collaborate with stakeholders on feature implementation and bug fixes",
+      "date_published": "2026-09-21T11:06:06.890Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zensar-technologies-andriod-developer-4468722433",
       "url": "https://interndoor.com/jobs/zensar-technologies-andriod-developer-4468722433",
       "title": "Andriod Developer — Zensar Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399",
-      "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4469510399",
-      "title": "Software-Engineer--Analytical-Engineering — Bristol Myers Squibb",
-      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Build data models and pipelines for business intelligence\n• Use dbt and aws for data transformation and architecture\n• Collaborate with ai/ml teams on data infrastructure",
-      "date_published": "2026-09-19T07:51:58.671Z",
-      "authors": [
-        {
-          "name": "Bristol Myers Squibb"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
-      "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4468076094",
-      "title": "Fullstack Developer- Internship — GreedyGame",
-      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years\n• Build backend services for ad networks and Google Ad Manager\n• Develop frontend dashboards in React for ad unit management\n• Work with MySQL, PostgreSQL, and MongoDB for data handling\n• Collaborate on feature design and deployment with senior engineers",
-      "date_published": "2026-09-19T05:58:50.649Z",
-      "authors": [
-        {
-          "name": "GreedyGame"
         }
       ]
     }
