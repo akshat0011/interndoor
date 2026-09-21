@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-fs-data-engineer-associate-4467378631",
+      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-fs-data-engineer-associate-4467378631",
+      "title": "FS - Data Engineer - Associate — PwC Acceleration Center India",
+      "content_text": "Company: PwC Acceleration Center India · Location: Bengaluru East, Karnataka, India · Duration: 1 to 3 years\n• Develop data pipelines and analytics solutions using Python, SQL, Spark, and Databricks\n• Work on cloud-based data platforms and Azure services with team and stakeholders\n• Contribute to GenAI and retrieval-augmented generation projects under guidance",
+      "date_published": "2026-09-21T10:17:45.274Z",
+      "authors": [
+        {
+          "name": "PwC Acceleration Center India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-technology-consulting-intern-2027-4467376797",
+      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-technology-consulting-intern-2027-4467376797",
+      "title": "Technology Consulting – Intern – 2027 — PwC Acceleration Center India",
+      "content_text": "Company: PwC Acceleration Center India · Location: Andhra Pradesh, India\n• Support data analysis projects and client support activities\n• Learn consulting methodologies and industry practices\n• Work on varied assignments with mentorship and feedback",
+      "date_published": "2026-09-21T10:17:04.793Z",
+      "authors": [
+        {
+          "name": "PwC Acceleration Center India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cisco-software-engineer-4469856619",
       "url": "https://interndoor.com/jobs/cisco-software-engineer-4469856619",
       "title": "Software Engineer — Cisco",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Atom"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-3-4469240104",
-      "url": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-backend-3-4469240104",
-      "title": "Associate Engineer - Backend 3 — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years\n• Write clean Java code for scalable backend systems\n• Collaborate with teams on technical implementation\n• Support eCommerce features and system integrations",
-      "date_published": "2026-09-18T20:26:14.083Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-4469233747",
-      "url": "https://interndoor.com/jobs/accenture-in-india-associate-engineer-frontend-4469233747",
-      "title": "Associate Engineer - FrontEnd — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Kochi, Kerala, India · Duration: 1-2 years\n• Build responsive web interfaces with react and next.js\n• Write clean code and unit tests for frontend and backend\n• Integrate with backend services and apis\n• Work on agile teams with code reviews and ceremonies",
-      "date_published": "2026-09-18T20:26:08.927Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
