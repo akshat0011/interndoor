@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-power-platform-developer-4469892428",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-power-platform-developer-4469892428",
+      "title": "Power platform Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Analyze applications, functions, workflows and data migration\n• Design and redevelop forms and workflows in power apps and automate\n• Demo redeveloped functions to clients\n• Document and handover to support teams",
+      "date_published": "2026-09-21T13:29:59.569Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-open-text-developer-4433465857",
+      "url": "https://interndoor.com/jobs/infosys-open-text-developer-4433465857",
+      "title": "Open Text Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Design, develop, validate and support content management systems for clients\n• Translate functional/non-functional requirements into system specifications\n• Collaborate with leads and managers for project estimation and delivery",
+      "date_published": "2026-09-21T13:26:37.741Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-manual-test-engineer-4467382934",
+      "url": "https://interndoor.com/jobs/siemens-manual-test-engineer-4467382934",
+      "title": "Manual Test Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Pune Division, Maharashtra, India\n• Execute functional and performance testing for desktop and web applications\n• Use jira and rtc jazz for defect tracking and test case management\n• Collaborate with developers and product teams in agile environments",
+      "date_published": "2026-09-21T13:23:05.124Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/morningstar-associate-software-engineer-4469893342",
+      "url": "https://interndoor.com/jobs/morningstar-associate-software-engineer-4469893342",
+      "title": "Associate Software Engineer — Morningstar",
+      "content_text": "Company: Morningstar · Location: Mumbai, Maharashtra, India · Duration: 1 to 2 years\n• Build scalable products using .NET, AWS, and SQL Server\n• Collaborate with product managers to solve investor challenges\n• Work in a hybrid model with 4 days in-office in Mumbai",
+      "date_published": "2026-09-21T13:12:16.378Z",
+      "authors": [
+        {
+          "name": "Morningstar"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kla-applications-engineer-4449535878",
       "url": "https://interndoor.com/jobs/kla-applications-engineer-4449535878",
       "title": "Applications Engineer — KLA",
@@ -551,54 +599,6 @@
       "title": "Playwright test engineer — Infosys",
       "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Write test cases and scenarios based on specifications\n• Use Playwright JavaScript and Typescript for automation\n• Work on client projects in digital transformation",
       "date_published": "2026-09-19T13:48:34.856Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-sitecore-xp-developer-4441395249",
-      "url": "https://interndoor.com/jobs/infosys-sitecore-xp-developer-4441395249",
-      "title": "Sitecore XP developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support digital solutions for clients\n• Translate functional/non-functional requirements into system specs\n• Collaborate on project estimations and quality processes",
-      "date_published": "2026-09-19T13:36:10.367Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-react-js-4459460141",
-      "url": "https://interndoor.com/jobs/infosys-react-js-4459460141",
-      "title": "React JS — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support client systems using React JS\n• Translate functional/non-functional requirements into system specifications\n• Collaborate with leads to estimate project work and ensure quality processes",
-      "date_published": "2026-09-19T13:15:16.219Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124",
-      "url": "https://interndoor.com/jobs/infosys-data-engineer-daai-4450530124",
-      "title": "Data Engineer - DaAI — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build data pipelines for ERP, CRM, and cloud platforms using PySpark and Airflow\n• Support data quality checks with Great Expectations and dbt tests\n• Prepare data for AI agents with embeddings and semantic tags",
-      "date_published": "2026-09-19T13:09:41.480Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-iics-developer-4440787571",
-      "url": "https://interndoor.com/jobs/infosys-iics-developer-4440787571",
-      "title": "IICS Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop data pipelines using informatica iics\n• Work with oracle sql server and mysql databases\n• Design star and snowflake schemas for data warehouses",
-      "date_published": "2026-09-19T13:04:46.201Z",
       "authors": [
         {
           "name": "Infosys"
