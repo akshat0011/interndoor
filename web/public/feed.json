@@ -6,18 +6,6 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/infosys-iac-and-automation-servicenow-4433499438",
-      "url": "https://interndoor.com/jobs/infosys-iac-and-automation-servicenow-4433499438",
-      "title": "IaC & automation, Servicenow — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Design, develop, validate and support systems for client satisfaction\n• Use ServiceNow and BMC automation tools for IT operations\n• Collaborate with leads to estimate project requirements and timelines",
-      "date_published": "2026-09-21T14:00:04.236Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/infosys-react-js-4459764093",
       "url": "https://interndoor.com/jobs/infosys-react-js-4459764093",
       "title": "React JS — Infosys",
@@ -35,30 +23,6 @@
       "title": "AI ML Engineer — Infosys",
       "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build and deploy ML models using Python and frameworks like TensorFlow, PyTorch, and Scikit-learn\n• Develop NLP and GenAI solutions including RAG systems and Agentic AI\n• Collaborate with data scientists and engineers on model training and deployment\n• Monitor model performance and implement retraining strategies in production",
       "date_published": "2026-09-21T13:33:19.089Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-power-platform-developer-4469892428",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-power-platform-developer-4469892428",
-      "title": "Power platform Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Analyze applications, functions, workflows and data migration\n• Design and redevelop forms and workflows in power apps and automate\n• Demo redeveloped functions to clients\n• Document and handover to support teams",
-      "date_published": "2026-09-21T13:29:59.569Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-design-verification-4441397260",
-      "url": "https://interndoor.com/jobs/infosys-design-verification-4441397260",
-      "title": "Design verification — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Debug and validate complex systems using uvm and system verilog\n• Work with perl/python for automation and simulation\n• Collaborate on protocols like axi/pcie/cxl/ethernet\n• Contribute to code reviews and technical risk planning",
-      "date_published": "2026-09-21T13:29:24.470Z",
       "authors": [
         {
           "name": "Infosys"
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "BlackRock"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4459428353",
+      "url": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4459428353",
+      "title": "Clinical Data Science Programmer — ICON plc",
+      "content_text": "Company: ICON plc · Location: Chennai, Tamil Nadu, India\n• Develop and validate statistical programming code for clinical trial data analysis\n• Collaborate with data scientists and statisticians on analytical needs\n• Ensure compliance with regulatory standards in programming practices",
+      "date_published": "2026-09-19T18:01:22.608Z",
+      "authors": [
+        {
+          "name": "ICON plc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-angular-react-ai-4440261514",
+      "url": "https://interndoor.com/jobs/infosys-angular-react-ai-4440261514",
+      "title": "Angular/React + AI — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Analyze business challenges and refine data for client deliverables\n• Build prototypes and define functional designs from requirements\n• Collaborate with clients to identify process improvements and tech solutions",
+      "date_published": "2026-09-19T14:31:40.324Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-aem-eds-4459464116",
+      "url": "https://interndoor.com/jobs/infosys-aem-eds-4459464116",
+      "title": "AEM, EDS — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Interface with clients for quality assurance and issue resolution\n• Create and review designs, validate architecture\n• Participate in project estimation and solution delivery",
+      "date_published": "2026-09-19T14:15:01.798Z",
+      "authors": [
+        {
+          "name": "Infosys"
         }
       ]
     }

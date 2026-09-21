@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790000032526,
+ "generatedAt": 1790000608742,
  "region": "IN",
  "regionName": "India",
- "count": 347,
- "techCount": 347,
+ "count": 344,
+ "techCount": 344,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -262,50 +262,6 @@
  ],
  "jobs": [
   {
-   "id": "4433499438",
-   "title": "IaC & automation, Servicenow",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves designing and developing systems to support client IT operations using ServiceNow and BMC automation. You'll work closely with leads to estimate project requirements and timelines, ensuring efficient delivery of solutions. Ideal for someone with a strong grasp of system design and a passion for automation.",
-   "bullets": [
-    "Design, develop, validate and support systems for client satisfaction",
-    "Use ServiceNow and BMC automation tools for IT operations",
-    "Collaborate with leads to estimate project requirements and timelines"
-   ],
-   "roleLabel": "IT Systems Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "bmc automation",
-    "project estimation"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1789999204236,
-   "firstSeenAt": 1789999744240,
-   "lastSeenAt": 1789999744240,
-   "url": "https://www.linkedin.com/jobs/view/4433499438/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-247628&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "75da9e93f4",
-   "cardFacts": [
-    "Hyderabad",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4459764093",
    "title": "React JS",
    "company": "Infosys",
@@ -407,105 +363,6 @@
    "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249867&sourceId=4003",
    "description": null,
    "roleFingerprint": "91576e54d3",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4469892428",
-   "title": "Power platform Developer",
-   "company": "NTT DATA North America",
-   "matchedWatchlist": "NTT DATA",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "location": "Noida, Uttar Pradesh, India",
-   "workplaceType": "On-site",
-   "stipend": "$30",
-   "duration": null,
-   "applicants": "6 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves analyzing existing applications and redesigning workflows using power apps and automate. You will present your work to clients and support teams. It suits someone with experience in application development and client-facing tasks.",
-   "bullets": [
-    "Analyze applications, functions, workflows and data migration",
-    "Design and redevelop forms and workflows in power apps and automate",
-    "Demo redeveloped functions to clients",
-    "Document and handover to support teams"
-   ],
-   "roleLabel": "Power platform development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "power apps",
-    "power automate"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "8 minutes ago",
-   "postedAt": 1789997399569,
-   "firstSeenAt": 1789997879579,
-   "lastSeenAt": 1789997879579,
-   "url": "https://www.linkedin.com/jobs/view/4469892428/",
-   "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBAL388525EXTERNALENGLOBAL/Power-platform-Developer?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "c66ed41520",
-   "cardFacts": [
-    "$30",
-    "Noida",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4441397260",
-   "title": "Design verification",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "verilog",
-    "uvm",
-    "perl"
-   ],
-   "summary": "This role involves verifying digital systems using uvm and system verilog. You'll debug complex designs, automate processes with perl/python, and collaborate on protocols like axi and pcie. Suitable for students with strong technical skills and an interest in digital system validation.",
-   "bullets": [
-    "Debug and validate complex systems using uvm and system verilog",
-    "Work with perl/python for automation and simulation",
-    "Collaborate on protocols like axi/pcie/cxl/ethernet",
-    "Contribute to code reviews and technical risk planning"
-   ],
-   "roleLabel": "System verification",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "system verilog",
-    "uvm",
-    "perl",
-    "python",
-    "debugging"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "40 minutes ago",
-   "postedAt": 1789997364470,
-   "firstSeenAt": 1789999764473,
-   "lastSeenAt": 1789999764473,
-   "url": "https://www.linkedin.com/jobs/view/4441397260/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249795&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "0f41a42286",
    "cardFacts": [
     "Bengaluru East",
     "On-site"
