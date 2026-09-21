@@ -6,6 +6,258 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-commercial-data-science-and-ai-co-op-4468174131",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-commercial-data-science-and-ai-co-op-4468174131",
+      "title": "Commercial Data Science & AI Co-op — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Raritan, NJ\n• Build AI tools for commercial teams using Python, SQL, and cloud platforms\n• Analyze sales, marketing, and operational data to drive business decisions\n• Collaborate with data scientists and stakeholders on real-world AI projects",
+      "date_published": "2026-09-21T21:41:14.967Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4469979328",
+      "url": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4469979328",
+      "title": "Software Engineering Intern (Summer 2027) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Fort Wayne, IN · Duration: Summer 2027\n• Develop and test embedded software for aircraft systems using C/C++/Ada\n• Collaborate on real-time software integration for mission-critical avionics\n• Work with RTOS and hardware protocols in a secure, onsite environment",
+      "date_published": "2026-09-21T21:32:34.789Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-electrical-engineering-intern-summer-2027-4469988056",
+      "url": "https://interndoor.com/us/jobs/raytheon-electrical-engineering-intern-summer-2027-4469988056",
+      "title": "Electrical Engineering Intern (Summer 2027) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Atlanta, GA · Duration: Summer 2027\n• Design and test RF hardware for communication systems used in airborne and space applications\n• Work with engineers on high-density electronic packaging and thermal control solutions\n• Collaborate on radar antenna arrays and software-defined radio development\n• Based in Atlanta, GA",
+      "date_published": "2026-09-21T21:32:33.528Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-head-up-guidance-systems-engineering-co-op-summer-fall-2027-onsite-4469979332",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-head-up-guidance-systems-engineering-co-op-summer-fall-2027-onsite-4469979332",
+      "title": "Head-up Guidance Systems Engineering Co-op (Summer/Fall 2027) - Onsite — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Wilsonville, OR · Duration: Fall 2027\n• Design and test head-up guidance systems for military and commercial aircraft\n• Work with FAA, EASA, and Transport Canada on system certification\n• Collaborate on interface definitions and functional analysis for aircraft systems",
+      "date_published": "2026-09-21T21:32:19.972Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-test-engineering-specialist-co-op-onsite-4469968894",
+      "url": "https://interndoor.com/us/jobs/raytheon-test-engineering-specialist-co-op-onsite-4469968894",
+      "title": "Test Engineering Specialist Co-Op (Onsite) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Andover, MA\n• Analyze test data using Excel to find process improvements\n• Work with test equipment and VBA in Microsoft Office\n• Collaborate on Six Sigma projects for certification",
+      "date_published": "2026-09-21T21:32:14.157Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-systems-engineering-intern-onsite-4469985159",
+      "url": "https://interndoor.com/us/jobs/raytheon-systems-engineering-intern-onsite-4469985159",
+      "title": "Systems Engineering Intern- Onsite — Raytheon",
+      "content_text": "Company: Raytheon · Location: Woburn, MA\n• Support testing and troubleshooting of hardware and software systems\n• Use MATLAB and Python for data analysis and automation\n• Collaborate on integration and test efforts with engineering teams",
+      "date_published": "2026-09-21T21:32:05.147Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineer-co-op-spring-summer-2027-onsite-4469971936",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineer-co-op-spring-summer-2027-onsite-4469971936",
+      "title": "Systems Engineer Co-Op (Spring/Summer 2027) - Onsite — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Design and test software for helicopter and plane systems\n• Use C, C++, ADA, or Python for development\n• Travel up to 10% domestically and internationally",
+      "date_published": "2026-09-21T21:31:43.359Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-intern-integrated-platforms-onsite-4469985164",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-intern-integrated-platforms-onsite-4469985164",
+      "title": "Systems Engineering Intern – Integrated Platforms (Onsite) — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Richardson, TX\n• Support development of communication systems for military platforms\n• Use model-based systems engineering tools like MagicDraw or Enterprise Architect\n• Collaborate with cross-functional agile teams on integration and testing",
+      "date_published": "2026-09-21T21:31:38.110Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-intern-onsite-4469984143",
+      "url": "https://interndoor.com/us/jobs/collins-aerospace-systems-engineering-intern-onsite-4469984143",
+      "title": "Systems Engineering Intern - Onsite — Collins Aerospace",
+      "content_text": "Company: Collins Aerospace · Location: Melbourne, FL\n• Support design and testing of avionics systems in product development\n• Use Python or similar scripting languages for requirements management\n• Work with global teams on regulatory compliance and documentation",
+      "date_published": "2026-09-21T21:31:34.737Z",
+      "authors": [
+        {
+          "name": "Collins Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4468159766",
+      "url": "https://interndoor.com/us/jobs/amd-2027-phd-hpc-and-sovereign-ai-center-of-excellence-intern-co-op-4468159766",
+      "title": "2027 PhD HPC & Sovereign AI Center of Excellence Intern/Co-op — AMD",
+      "content_text": "Company: AMD · Location: Austin, TX\n• Develop GPU-accelerated algorithms for HPC and AI workloads\n• Analyze performance of benchmarks on AMD platforms\n• Collaborate on optimizing code for future GPU architectures",
+      "date_published": "2026-09-21T21:26:52.421Z",
+      "authors": [
+        {
+          "name": "AMD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-research-intern-2027-superconducting-circuit-design-for-quantum-comput-4468163658",
+      "url": "https://interndoor.com/us/jobs/ibm-research-intern-2027-superconducting-circuit-design-for-quantum-comput-4468163658",
+      "title": "Research Intern 2027 - Superconducting Circuit Design for Quantum Computing — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Design and simulate superconducting circuits for quantum computing\n• Work with Josephson junctions and cryogenic RF components\n• Collaborate on hardware for qubit readout and measurement",
+      "date_published": "2026-09-21T21:25:00.621Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zimmer-biomet-2027-summer-intern-artificial-intelligence-product-management-4468150988",
+      "url": "https://interndoor.com/us/jobs/zimmer-biomet-2027-summer-intern-artificial-intelligence-product-management-4468150988",
+      "title": "2027 Summer Intern, Artificial Intelligence Product Management — Zimmer Biomet",
+      "content_text": "Company: Zimmer Biomet · Location: United States\n• Manage ai product lifecycle from design to deployment\n• Work with pulumi and cloud platforms for infrastructure setup\n• Create documentation and runbooks for internal ai tools\n• Collaborate with pm team on regulated product development",
+      "date_published": "2026-09-21T21:20:10.043Z",
+      "authors": [
+        {
+          "name": "Zimmer Biomet"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-cloud-services-software-development-intern-2027-4468169415",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-cloud-services-software-development-intern-2027-4468169415",
+      "title": "Quantum Cloud Services Software Development Intern - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Develop backend services, APIs, and cloud-native apps for quantum computing\n• Work with SQL databases, version control, and modern dev workflows\n• Collaborate with engineers and cross-functional teams on real-world projects",
+      "date_published": "2026-09-21T21:14:48.787Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-corporate-security-insider-threat-4468152828",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-corporate-security-insider-threat-4468152828",
+      "title": "Intern - Corporate Security (Insider Threat) — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Richmond, VA\n• Support insider threat investigations with confidentiality and consistency\n• Work with technical security teams on physical security solutions\n• Develop employee awareness programs and risk mitigation policies",
+      "date_published": "2026-09-21T21:10:43.782Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-data-scientist-intern-2027-4468163490",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-data-scientist-intern-2027-4468163490",
+      "title": "Quantum Data Scientist Intern - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Build data models, dashboards, and reports for decision making\n• Use python, sql, and analytics tools like dbt and airflow\n• Collaborate with product and engineering teams on analytics solutions",
+      "date_published": "2026-09-21T21:09:38.868Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/the-clorox-company-r-and-d-intern-summer-2027-4469971838",
+      "url": "https://interndoor.com/us/jobs/the-clorox-company-r-and-d-intern-summer-2027-4469971838",
+      "title": "R&D Intern (Summer 2027) — The Clorox Company",
+      "content_text": "Company: The Clorox Company · Location: Durham, NC · Duration: Summer 2027\n• Work on product development, testing, and optimization in labs and manufacturing\n• Use lab equipment, conduct experiments, and analyze data for consumer products\n• Collaborate with teams on packaging, formulation, and process improvements",
+      "date_published": "2026-09-21T21:07:49.290Z",
+      "authors": [
+        {
+          "name": "The Clorox Company"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-process-engineering-intern-4468165330",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-process-engineering-intern-4468165330",
+      "title": "Semiconductor Process Engineering Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Santa Rosa, CA\n• Develop semiconductor processes for IC fabrication including etch, deposition, and lithography\n• Work with advanced tools like PECVD and automated wet etch systems\n• Collaborate on heterogeneous integration and compound semiconductor projects",
+      "date_published": "2026-09-21T20:55:52.674Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-control-systems-fpga-developer-internship-2027-4468171100",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-control-systems-fpga-developer-internship-2027-4468171100",
+      "title": "Quantum Control Systems FPGA Developer Internship 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Develop and debug FPGA logic for quantum control systems\n• Use Verilog/SystemVerilog/VHDL for digital logic design\n• Collaborate with physics and hardware teams on quantum experiments",
+      "date_published": "2026-09-21T20:53:06.342Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/parker-hannifin-spring-2027-engineering-co-op-4468163324",
+      "url": "https://interndoor.com/us/jobs/parker-hannifin-spring-2027-engineering-co-op-4468163324",
+      "title": "Spring 2027 - Engineering Co-op — Parker Hannifin",
+      "content_text": "Company: Parker Hannifin · Location: Akron, OH · Duration: Spring 2027\n• Support design, testing, and validation of braking and tire pressure systems\n• Use MATLAB/Simulink for system modeling and control algorithm development\n• Collaborate with cross-functional teams on product improvements and test documentation",
+      "date_published": "2026-09-21T20:52:18.257Z",
+      "authors": [
+        {
+          "name": "Parker Hannifin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-lab-assistant-intern-2027-4468170069",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-lab-assistant-intern-2027-4468170069",
+      "title": "Quantum Lab Assistant - Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Work on quantum hardware and mechanical systems to improve reliability and scaling\n• Use cryogenics and superconducting materials in experimental quantum computing\n• Collaborate with senior researchers and interns weekly on progress updates",
+      "date_published": "2026-09-21T20:50:51.815Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/zimmer-biomet-2027-spring-co-op-sustaining-development-engineer-4468150437",
+      "url": "https://interndoor.com/us/jobs/zimmer-biomet-2027-spring-co-op-sustaining-development-engineer-4468150437",
+      "title": "2027 Spring Co-Op, Sustaining Development Engineer — Zimmer Biomet",
+      "content_text": "Company: Zimmer Biomet · Location: Dover, OH\n• Design and develop orthopedic implants and instruments\n• Use cad software and quality tools for risk analysis and design reviews\n• Work in FDA-regulated environment with cross-functional teams",
+      "date_published": "2026-09-21T20:42:43.308Z",
+      "authors": [
+        {
+          "name": "Zimmer Biomet"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/baker-hughes-intern-co-op-engineering-and-technology-spring-2027-opportunities-4469968487",
       "url": "https://interndoor.com/us/jobs/baker-hughes-intern-co-op-engineering-and-technology-spring-2027-opportunities-4469968487",
       "title": "Intern/Co-op - Engineering & Technology - Spring 2027 Opportunities — Baker Hughes",
@@ -350,258 +602,6 @@
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-electronic-design-automation-winter-spring-co-op-jan-june-27-4469946681",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-electronic-design-automation-winter-spring-co-op-jan-june-27-4469946681",
-      "title": "Electronic Design Automation Winter/Spring Co-Op (Jan-June '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: San Jose, CA\n• Develop AI flows to automate EM simulations for MCM design\n• Use Python, Perl, and Linux scripts to integrate EDA tools\n• Collaborate with design teams and tool vendors on cross-functional projects",
-      "date_published": "2026-09-21T18:31:32.149Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-timing-ic-validation-summer-intern-4469942757",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-timing-ic-validation-summer-intern-4469942757",
-      "title": "Timing IC-Validation Summer Intern — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Austin, TX\n• Test and debug timing ICs and high-speed PCBs\n• Develop automation scripts for silicon characterization\n• Work on post-silicon validation of new timing devices",
-      "date_published": "2026-09-21T18:31:27.067Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-yield-engineering-summer-intern-may-aug-27-4469941788",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-yield-engineering-summer-intern-may-aug-27-4469941788",
-      "title": "Yield Engineering Summer Intern (May-Aug '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Thousand Oaks, California, United States\n• Review and deposit production lots, monitor yield pareto charts, perform root cause analysis\n• Develop automation for yield reports, create scripts for camline, write maintainable code\n• Collaborate with departments to address top yield issues, manage continuous improvement projects",
-      "date_published": "2026-09-21T18:31:23.775Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-design-engineering-co-op-jan-june-27-4469945706",
-      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-rf-design-engineering-co-op-jan-june-27-4469945706",
-      "title": "RF Design Engineering Co-Op (Jan - June '27) — Skyworks Solutions, Inc.",
-      "content_text": "Company: Skyworks Solutions, Inc. · Location: Andover, MA\n• Design and debug RF FEMs with power amplifier, LNA, and switch content\n• Use ADS, Cadence, HFSS, and RF lab equipment for testing and simulation\n• Work onsite in Andover, MA, for 6 months starting Jan 2027",
-      "date_published": "2026-09-21T18:31:21.011Z",
-      "authors": [
-        {
-          "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-io-and-e-4469929906",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-io-and-e-4469929906",
-      "title": "R&D Engineering Internship (IO&E) — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Design and prototype new device designs based on clinical feedback\n• Collaborate with cross-functional teams on product development and testing\n• Research clinical and market data for new product opportunities",
-      "date_published": "2026-09-21T18:02:48.696Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-data-science-engineering-internship-4469941545",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-data-science-engineering-internship-4469941545",
-      "title": "Data Science Engineering Internship — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: Fall 2027\n• Analyze clinical data and build machine learning models for health monitoring\n• Work with Python, SQL, and cloud tools to process biological signals\n• Collaborate with engineers and data scientists on algorithm testing",
-      "date_published": "2026-09-21T18:02:17.085Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-ai-software-development-intern-4469940543",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-ai-software-development-intern-4469940543",
-      "title": "AI Software Development Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: Fall 2027\n• Use AI tools to develop and improve healthcare software\n• Collaborate with engineers and product teams on real-world projects\n• Review and validate AI-generated code for quality and security",
-      "date_published": "2026-09-21T18:02:08.080Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-entry-level-water-resources-engineer-remediation-networking-event-with-ats-smartrecruiters-aecom2-744000150759509",
-      "url": "https://interndoor.com/us/jobs/aecom-entry-level-water-resources-engineer-remediation-networking-event-with-ats-smartrecruiters-aecom2-744000150759509",
-      "title": "Entry-Level Water Resources Engineer – Remediation - Networking Event with AECOM – Boston, MA — AECOM",
-      "content_text": "Company: AECOM · Location: Boston, us",
-      "date_published": "2026-09-21T17:57:05.142Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/parsons-corporation-engineering-internship-summer-2027-4469935611",
-      "url": "https://interndoor.com/us/jobs/parsons-corporation-engineering-internship-summer-2027-4469935611",
-      "title": "Engineering Internship Summer 2027 — Parsons Corporation",
-      "content_text": "Company: Parsons Corporation · Location: Herndon, VA · Duration: Summer 2027\n• Develop software and algorithms for electronic warfare and signal processing\n• Work with Java, Python, C++, and cloud tools like Kubernetes and Docker\n• Join a team focused on defense and intelligence missions",
-      "date_published": "2026-09-21T17:37:23.317Z",
-      "authors": [
-        {
-          "name": "Parsons Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-integration-engineer-factory-firmware-winter-spring-2027-4469937497",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-integration-engineer-factory-firmware-winter-spring-2027-4469937497",
-      "title": "Internship, Integration Engineer, Factory Firmware (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Austin, TX · Duration: 12 weeks\n• Develop software tools for vehicle diagnostics and firmware validation\n• Work with cross-functional teams on manufacturing integration and testing\n• Troubleshoot production issues and improve firmware quality in high-volume environments",
-      "date_published": "2026-09-21T17:31:54.213Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/singlestore-mit-software-engineer-intern-helios-ats-greenhouse-singlestore-8220948",
-      "url": "https://interndoor.com/us/jobs/singlestore-mit-software-engineer-intern-helios-ats-greenhouse-singlestore-8220948",
-      "title": "MIT- Software Engineer Intern |Helios| — SingleStore",
-      "content_text": "Company: SingleStore · Location: United States · Duration: 12 weeks\n• Build automation for provisioning, scaling, and recovery\n• Work on control-plane or customer-facing cloud services\n• Contribute to production code and technical designs",
-      "date_published": "2026-09-21T17:13:41.000Z",
-      "authors": [
-        {
-          "name": "SingleStore"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/renesas-electronics-validation-intern-ats-smartrecruiters-renesaselectronics-744000150748389",
-      "url": "https://interndoor.com/us/jobs/renesas-electronics-validation-intern-ats-smartrecruiters-renesaselectronics-744000150748389",
-      "title": "Validation Intern — Renesas Electronics",
-      "content_text": "Company: Renesas Electronics · Location: Tempe, us",
-      "date_published": "2026-09-21T16:46:05.609Z",
-      "authors": [
-        {
-          "name": "Renesas Electronics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/igs-energy-software-engineer-intern-4460022947",
-      "url": "https://interndoor.com/us/jobs/igs-energy-software-engineer-intern-4460022947",
-      "title": "Software Engineer Intern — IGS Energy",
-      "content_text": "Company: IGS Energy · Location: Ohio, United States\n• Develop web apps and APIs for business efficiency\n• Use C#, .NET, T-SQL, and Visual Studio\n• Work in agile teams with cross-functional roles",
-      "date_published": "2026-09-21T16:33:51.287Z",
-      "authors": [
-        {
-          "name": "IGS Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-data-science-4469916328",
-      "url": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-data-science-4469916328",
-      "title": "AutoZone 2027 Summer Internship – Data Science — AutoZone",
-      "content_text": "Company: AutoZone · Location: Memphis, TN · Duration: Summer 2027\n• Analyze large datasets and build predictive models\n• Collaborate with cross-functional teams on business projects\n• Work in Memphis with mentorship and professional development",
-      "date_published": "2026-09-21T15:33:47.561Z",
-      "authors": [
-        {
-          "name": "AutoZone"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-information-technology-4469904762",
-      "url": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-information-technology-4469904762",
-      "title": "AutoZone 2027 Summer Internship – Information Technology — AutoZone",
-      "content_text": "Company: AutoZone · Location: Memphis, TN · Duration: Summer 2027\n• Support teams with system enhancements and scalable solutions\n• Work on software development and systems engineering projects\n• Collaborate in teams and manage sprints with cross-functional partners",
-      "date_published": "2026-09-21T15:33:25.753Z",
-      "authors": [
-        {
-          "name": "AutoZone"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-ecommerce-4469914404",
-      "url": "https://interndoor.com/us/jobs/autozone-autozone-2027-summer-internship-ecommerce-4469914404",
-      "title": "AutoZone 2027 Summer Internship – eCommerce — AutoZone",
-      "content_text": "Company: AutoZone · Location: Memphis, TN · Duration: Summer 2027\n• Support optimization of digital platforms and customer experience\n• Work with digital product teams and customer experience stakeholders\n• Reside in memphis area for 9-week program",
-      "date_published": "2026-09-21T15:33:06.745Z",
-      "authors": [
-        {
-          "name": "AutoZone"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458951138",
-      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458951138",
-      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
-      "content_text": "Company: LyondellBasell · Location: Edison, NJ\n• Develop control schemes and troubleshoot high-voltage systems\n• Work on process instrumentation and control systems daily\n• Based in edison, nj",
-      "date_published": "2026-09-21T14:53:15.058Z",
-      "authors": [
-        {
-          "name": "LyondellBasell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467384869",
-      "url": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467384869",
-      "title": "Quantitative Intern (Summer 2027) — Optiver",
-      "content_text": "Company: Optiver · Location: Austin, TX · Duration: 8 months\n• Analyze financial data and market behavior to inform trading decisions\n• Use python and ai tools to build quantitative models and research tools\n• Work with traders and engineers in a collaborative, fast-paced environment",
-      "date_published": "2026-09-21T14:14:37.480Z",
-      "authors": [
-        {
-          "name": "Optiver"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467387820",
-      "url": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467387820",
-      "title": "Quantitative Intern (Summer 2027) — Optiver",
-      "content_text": "Company: Optiver · Location: Chicago, IL · Duration: 8 months\n• Analyze market data and test trading strategies using AI tools\n• Work with traders and researchers on real-world financial problems\n• Develop quantitative models and tools for decision-making",
-      "date_published": "2026-09-21T14:13:57.449Z",
-      "authors": [
-        {
-          "name": "Optiver"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
-      "title": "Internship - PDK Engineer — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Lexington, KY\n• Develop and improve Pcells for FETs, BJTs, diodes, and passive components\n• Write automation scripts in Python, TCL, SKILL, Ruby, or Bash\n• Collaborate with Device Design and Fab teams on PDK issues\n• Configure techfiles and rule decks for Cadence and Mentor tools",
-      "date_published": "2026-09-21T12:59:52.675Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340",
-      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340",
-      "title": "Internship - MDL Engineer — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Lexington, KY\n• Design and implement software tools for SPICE model generation from measurement data\n• Build data pipelines and automation scripts for model quality checks and analysis\n• Collaborate with engineers to translate modeling needs into software solutions\n• Based in Lexington, KY",
-      "date_published": "2026-09-21T12:59:19.582Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
         }
       ]
     }

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 20:07:06 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 21:00:29 GMT</lastBuildDate>
+  <item>
+    <title>Data Engineer — KeyValue</title>
+    <link>https://interndoor.com/jobs/keyvalue-data-engineer-4469970853</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/keyvalue-data-engineer-4469970853</guid>
+    <pubDate>Mon, 21 Sep 2026 21:00:29 GMT</pubDate>
+    <description>Company: KeyValue · Location: Kochi, Kerala, India
+• Design and build scalable data pipelines for structured and unstructured data
+• Use SQL, Redshift, BigQuery, Spark, and Python for data processing
+• Collaborate with product and engineering teams on data-driven decisions</description>
+  </item>
   <item>
     <title>CloudOps Intern — Kaleris</title>
     <link>https://interndoor.com/jobs/kaleris-cloudops-intern-4468144555</link>
@@ -503,16 +513,6 @@
 • Work on front-end and back-end development layers
 • Collaborate on specs and quality standards
 • Support small projects with limited guidance</description>
-  </item>
-  <item>
-    <title>Discipline Team Leader — Valeo</title>
-    <link>https://interndoor.com/jobs/valeo-discipline-team-leader-4424743805</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/valeo-discipline-team-leader-4424743805</guid>
-    <pubDate>Sun, 20 Sep 2026 16:04:09 GMT</pubDate>
-    <description>Company: Valeo · Location: Chennai, Tamil Nadu, India
-• Develop and test algorithms for autonomous driving systems
-• Collaborate on patent applications and design reviews
-• Represent Valeo in industry groups and conferences</description>
   </item>
 </channel>
 </rss>

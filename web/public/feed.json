@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
+      "url": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
+      "title": "Data Engineer — KeyValue",
+      "content_text": "Company: KeyValue · Location: Kochi, Kerala, India\n• Design and build scalable data pipelines for structured and unstructured data\n• Use SQL, Redshift, BigQuery, Spark, and Python for data processing\n• Collaborate with product and engineering teams on data-driven decisions",
+      "date_published": "2026-09-21T21:00:29.987Z",
+      "authors": [
+        {
+          "name": "KeyValue"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kaleris-cloudops-intern-4468144555",
       "url": "https://interndoor.com/jobs/kaleris-cloudops-intern-4468144555",
       "title": "CloudOps Intern — Kaleris",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valeo-discipline-team-leader-4424743805",
-      "url": "https://interndoor.com/jobs/valeo-discipline-team-leader-4424743805",
-      "title": "Discipline Team Leader — Valeo",
-      "content_text": "Company: Valeo · Location: Chennai, Tamil Nadu, India\n• Develop and test algorithms for autonomous driving systems\n• Collaborate on patent applications and design reviews\n• Represent Valeo in industry groups and conferences",
-      "date_published": "2026-09-20T16:04:09.424Z",
-      "authors": [
-        {
-          "name": "Valeo"
         }
       ]
     }
