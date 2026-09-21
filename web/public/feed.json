@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/webengage-software-engineer-java-4469909817",
+      "url": "https://interndoor.com/jobs/webengage-software-engineer-java-4469909817",
+      "title": "Software Engineer- JAVA — WebEngage",
+      "content_text": "Company: WebEngage · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Design and optimize systems handling billions of events daily\n• Work with architects and product managers on scalable solutions\n• Take ownership of components with end-to-end responsibility",
+      "date_published": "2026-09-21T15:35:36.294Z",
+      "authors": [
+        {
+          "name": "WebEngage"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-ai-engineer-4467616590",
       "url": "https://interndoor.com/jobs/barclays-ai-engineer-4467616590",
       "title": "AI Engineer — Barclays",
@@ -74,6 +86,18 @@
       "authors": [
         {
           "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-ibm-filenet-4433466884",
+      "url": "https://interndoor.com/jobs/infosys-ibm-filenet-4433466884",
+      "title": "IBM Filenet — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Implement designs, develop systems, and resolve production issues\n• Work with IBM FileNet and other enterprise content management tools\n• Collaborate with clients on digital transformation projects",
+      "date_published": "2026-09-21T14:06:59.325Z",
+      "authors": [
+        {
+          "name": "Infosys"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794",
-      "url": "https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794",
-      "title": "AI Application Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build AI agents and copilots on SAP and enterprise platforms\n• Use LangChain, LlamaIndex, and vector databases for RAG systems\n• Develop scalable backend services and integrate with SAP systems",
-      "date_published": "2026-09-20T12:26:41.329Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-data-engineer-4440797335",
-      "url": "https://interndoor.com/jobs/infosys-data-engineer-4440797335",
-      "title": "Data engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop scalable data pipelines using Spark and Kafka\n• Work on cloud-native architectures and distributed systems\n• Collaborate with cross-functional teams on enterprise solutions",
-      "date_published": "2026-09-20T12:26:06.125Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }
