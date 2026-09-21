@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 20 Sep 2026 19:22:52 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 01:28:19 GMT</lastBuildDate>
+  <item>
+    <title>Process Integration and Yield Engineering PhD Intern — Intel</title>
+    <link>https://interndoor.com/us/jobs/intel-process-integration-and-yield-engineering-phd-intern-4468474906</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/intel-process-integration-and-yield-engineering-phd-intern-4468474906</guid>
+    <pubDate>Mon, 21 Sep 2026 01:28:19 GMT</pubDate>
+    <description>Company: Intel · Location: Hillsboro, OR · Duration: Summer 2027
+• Analyze defect data and run experiments to improve yield in semiconductor manufacturing
+• Collaborate with engineers to optimize processes and metrology strategies
+• Apply data analysis to enhance production efficiency and quality</description>
+  </item>
   <item>
     <title>Co-Op, (Manufacturing Software Development) — Axcelis Technologies</title>
     <link>https://interndoor.com/us/jobs/axcelis-technologies-co-op-manufacturing-software-development-4469817341</link>
@@ -498,16 +508,6 @@
 • Build and refine ML models to detect fraud and malicious behavior using graph and sequence data
 • Collaborate with cross-functional teams to design and deploy integrity systems at scale
 • Work with Python, PyTorch, and distributed computing tools like Spark or Flink</description>
-  </item>
-  <item>
-    <title>Software Engineer Intern (Tech and Product) - 2027 Summer — TikTok USDS Joint Venture</title>
-    <link>https://interndoor.com/us/jobs/tiktok-usds-joint-venture-software-engineer-intern-tech-and-product-2027-summer-4466946334</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tiktok-usds-joint-venture-software-engineer-intern-tech-and-product-2027-summer-4466946334</guid>
-    <pubDate>Sat, 19 Sep 2026 03:35:39 GMT</pubDate>
-    <description>Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027
-• Design, develop, and deploy backend microservices for product features like Ads and E-Commerce
-• Optimize system performance and build monitoring tools for high availability
-• Work on compliance pipelines with strict data security standards in San Jose</description>
   </item>
 </channel>
 </rss>
