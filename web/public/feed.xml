@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 13:58:10 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 14:29:22 GMT</lastBuildDate>
+  <item>
+    <title>Developer I - Software Engineering — UST</title>
+    <link>https://interndoor.com/jobs/ust-developer-i-software-engineering-4467603778</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ust-developer-i-software-engineering-4467603778</guid>
+    <pubDate>Mon, 21 Sep 2026 14:29:22 GMT</pubDate>
+    <description>Company: UST · Location: Bengaluru, Karnataka, India
+• Develop and maintain microservices using Spring Boot and REST APIs
+• Implement front-end features with Angular/React and JavaScript
+• Write SQL queries for database interactions
+• Collaborate with team on Git-based workflows</description>
+  </item>
   <item>
     <title>React JS — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-react-js-4459764093</link>
@@ -501,16 +512,6 @@
 • Analyze business challenges and refine data for client deliverables
 • Build prototypes and define functional designs from requirements
 • Collaborate with clients to identify process improvements and tech solutions</description>
-  </item>
-  <item>
-    <title>AEM, EDS — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-aem-eds-4459464116</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-aem-eds-4459464116</guid>
-    <pubDate>Sat, 19 Sep 2026 14:15:01 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Interface with clients for quality assurance and issue resolution
-• Create and review designs, validate architecture
-• Participate in project estimation and solution delivery</description>
   </item>
 </channel>
 </rss>
