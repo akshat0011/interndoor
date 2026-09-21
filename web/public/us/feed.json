@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/epic-games-data-science-intern-ats-greenhouse-epicgames-6202675004",
+      "url": "https://interndoor.com/us/jobs/epic-games-data-science-intern-ats-greenhouse-epicgames-6202675004",
+      "title": "Data Science Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary,North Carolina,United States\n• Analyze user data to detect and prevent abuse in gaming platforms\n• Build machine learning models to identify fraudulent activity\n• Collaborate with analysts to improve detection systems and metrics",
+      "date_published": "2026-09-21T22:52:02.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-ms-embedded-software-engineer-ats-greenhouse-waymo-8221198",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-ms-embedded-software-engineer-ats-greenhouse-waymo-8221198",
+      "title": "2027 Summer Intern, BS/MS, Embedded, Software Engineer — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Develop C++ software for vehicle control systems and simulation tools\n• Work with embedded hardware, real-time systems, and safety-critical code\n• Collaborate on firmware, testing, and debugging across multiple platforms",
+      "date_published": "2026-09-21T22:47:14.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/wayfair-machine-learning-science-intern-summer-2027-4468170828",
       "url": "https://interndoor.com/us/jobs/wayfair-machine-learning-science-intern-summer-2027-4468170828",
       "title": "Machine Learning Science Intern - Summer 2027 — Wayfair",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-quantum-control-distributed-runtime-internship-2027-4468140905",
-      "url": "https://interndoor.com/us/jobs/ibm-quantum-control-distributed-runtime-internship-2027-4468140905",
-      "title": "Quantum Control Distributed Runtime Internship 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Integrate hpc tools into distributed runtime environment\n• Develop automation tools for data collection and analysis\n• Debug programs in distributed control system test environment\n• Collaborate with compiler and system modeling teams",
-      "date_published": "2026-09-21T20:32:08.925Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/teli-labs-research-intern-frontier-agents-summer-2027-4468141839",
-      "url": "https://interndoor.com/us/jobs/teli-labs-research-intern-frontier-agents-summer-2027-4468141839",
-      "title": "Research Intern, Frontier Agents (Summer 2027) — Teli Labs",
-      "content_text": "Company: Teli Labs · Location: San Francisco, CA · Duration: 12 to 14 weeks\n• Design experiments to test new AI agent behaviors and training methods\n• Work with Python and frameworks like PyTorch or JAX\n• Contribute to research on scaling and aligning complex AI systems",
-      "date_published": "2026-09-21T20:17:38.075Z",
-      "authors": [
-        {
-          "name": "Teli Labs"
         }
       ]
     }
