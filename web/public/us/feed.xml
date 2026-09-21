@@ -6,7 +6,29 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 21 Sep 2026 10:34:06 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 12:59:52 GMT</lastBuildDate>
+  <item>
+    <title>Internship - PDK Engineer — Infineon Technologies</title>
+    <link>https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440</guid>
+    <pubDate>Mon, 21 Sep 2026 12:59:52 GMT</pubDate>
+    <description>Company: Infineon Technologies · Location: Lexington, KY
+• Develop and improve Pcells for FETs, BJTs, diodes, and passive components
+• Write automation scripts in Python, TCL, SKILL, Ruby, or Bash
+• Collaborate with Device Design and Fab teams on PDK issues
+• Configure techfiles and rule decks for Cadence and Mentor tools</description>
+  </item>
+  <item>
+    <title>Internship - MDL Engineer — Infineon Technologies</title>
+    <link>https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340</guid>
+    <pubDate>Mon, 21 Sep 2026 12:59:19 GMT</pubDate>
+    <description>Company: Infineon Technologies · Location: Lexington, KY
+• Design and implement software tools for SPICE model generation from measurement data
+• Build data pipelines and automation scripts for model quality checks and analysis
+• Collaborate with engineers to translate modeling needs into software solutions
+• Based in Lexington, KY</description>
+  </item>
   <item>
     <title>2027 Configuration and Data Management Intern — Mercury Systems</title>
     <link>https://interndoor.com/us/jobs/mercury-systems-2027-configuration-and-data-management-intern-4468722343</link>
@@ -488,26 +510,6 @@
 • Design RF circuits and analyze transceiver performance for 5G/6G mmWave systems
 • Use MATLAB, Cadence, and HFSS for simulation and layout of analog ICs and RF front-end
 • Work on power amplifiers, impedance matching, and signal integrity analysis</description>
-  </item>
-  <item>
-    <title>Hardware (CPU, GPU, SoC, Digital Design, DV) Engineering Internship – Summer 2027 — Qualcomm</title>
-    <link>https://interndoor.com/us/jobs/qualcomm-hardware-cpu-gpu-soc-digital-design-dv-engineering-internship-summer-2-4468405078</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/qualcomm-hardware-cpu-gpu-soc-digital-design-dv-engineering-internship-summer-2-4468405078</guid>
-    <pubDate>Sat, 19 Sep 2026 14:17:53 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Boxborough, MA · Duration: 11–14 weeks
-• Work on GPU, CPU, or SoC design with real-world impact
-• Use Verilog, SystemVerilog, and Python for hardware development
-• Collaborate with global teams on cutting-edge semiconductor projects</description>
-  </item>
-  <item>
-    <title>2027 Electrical Engineer Intern / Co-op — LyondellBasell</title>
-    <link>https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458930984</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458930984</guid>
-    <pubDate>Sat, 19 Sep 2026 13:04:54 GMT</pubDate>
-    <description>Company: LyondellBasell · Location: Victoria, TX
-• Troubleshoot high-voltage systems and improve process instrumentation
-• Work on control schemes and predictive models for process optimization
-• Collaborate with technicians on equipment repair and system expansion</description>
   </item>
 </channel>
 </rss>

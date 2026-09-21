@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
+      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
+      "title": "Internship - PDK Engineer — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Lexington, KY\n• Develop and improve Pcells for FETs, BJTs, diodes, and passive components\n• Write automation scripts in Python, TCL, SKILL, Ruby, or Bash\n• Collaborate with Device Design and Fab teams on PDK issues\n• Configure techfiles and rule decks for Cadence and Mentor tools",
+      "date_published": "2026-09-21T12:59:52.675Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340",
+      "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-mdl-engineer-4469891340",
+      "title": "Internship - MDL Engineer — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Lexington, KY\n• Design and implement software tools for SPICE model generation from measurement data\n• Build data pipelines and automation scripts for model quality checks and analysis\n• Collaborate with engineers to translate modeling needs into software solutions\n• Based in Lexington, KY",
+      "date_published": "2026-09-21T12:59:19.582Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/mercury-systems-2027-configuration-and-data-management-intern-4468722343",
       "url": "https://interndoor.com/us/jobs/mercury-systems-2027-configuration-and-data-management-intern-4468722343",
       "title": "2027 Configuration and Data Management Intern — Mercury Systems",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qualcomm-hardware-cpu-gpu-soc-digital-design-dv-engineering-internship-summer-2-4468405078",
-      "url": "https://interndoor.com/us/jobs/qualcomm-hardware-cpu-gpu-soc-digital-design-dv-engineering-internship-summer-2-4468405078",
-      "title": "Hardware (CPU, GPU, SoC, Digital Design, DV) Engineering Internship – Summer 2027 — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Boxborough, MA · Duration: 11–14 weeks\n• Work on GPU, CPU, or SoC design with real-world impact\n• Use Verilog, SystemVerilog, and Python for hardware development\n• Collaborate with global teams on cutting-edge semiconductor projects",
-      "date_published": "2026-09-19T14:17:53.386Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458930984",
-      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458930984",
-      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
-      "content_text": "Company: LyondellBasell · Location: Victoria, TX\n• Troubleshoot high-voltage systems and improve process instrumentation\n• Work on control schemes and predictive models for process optimization\n• Collaborate with technicians on equipment repair and system expansion",
-      "date_published": "2026-09-19T13:04:54.167Z",
-      "authors": [
-        {
-          "name": "LyondellBasell"
         }
       ]
     }
