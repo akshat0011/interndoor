@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mercury-technologies-software-engineering-intern-spring-2027-ats-greenhouse-mercury-6199367004",
+      "url": "https://interndoor.com/us/jobs/mercury-technologies-software-engineering-intern-spring-2027-ats-greenhouse-mercury-6199367004",
+      "title": "Software Engineering Intern - Spring 2027 — Mercury Technologies",
+      "content_text": "Company: Mercury Technologies · Location: San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States · Duration: 12-16 weeks\n• Write TypeScript and Haskell code for a product used by 300k businesses\n• Collaborate with data analysts and integrate third-party APIs\n• Build admin tools and frontend features for financial services\n• Remote internship in US or Canada, 12-16 weeks",
+      "date_published": "2026-09-21T07:00:00.000Z",
+      "authors": [
+        {
+          "name": "Mercury Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/aecom-engineering-intern-i-coastal-and-water-resources-ats-smartrecruiters-aecom2-744000150593869",
       "url": "https://interndoor.com/us/jobs/aecom-engineering-intern-i-coastal-and-water-resources-ats-smartrecruiters-aecom2-744000150593869",
       "title": "Engineering Intern I – Coastal & Water Resources — AECOM",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "The Walt Disney Company"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/constellation-summer-2027-radiation-protection-intern-braceville-il-4468047927",
-      "url": "https://interndoor.com/us/jobs/constellation-summer-2027-radiation-protection-intern-braceville-il-4468047927",
-      "title": "Summer 2027 Radiation Protection Intern - Braceville, IL — Constellation",
-      "content_text": "Company: Constellation · Location: Braceville, IL · Duration: 10 weeks\n• Conduct thermal overload calculations for motor operated valves\n• Work on nuclear core analysis and seismic monitoring upgrades\n• Design control circuits for feedwater pump systems",
-      "date_published": "2026-09-19T04:53:16.888Z",
-      "authors": [
-        {
-          "name": "Constellation"
         }
       ]
     }
