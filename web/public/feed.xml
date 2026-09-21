@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 14:48:42 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 15:25:48 GMT</lastBuildDate>
+  <item>
+    <title>AI Engineer — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-ai-engineer-4467616590</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-ai-engineer-4467616590</guid>
+    <pubDate>Mon, 21 Sep 2026 15:25:48 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Build and refine AI agents and LLM apps with Python and frameworks
+• Work with SQL databases and DevOps tools like Jenkins
+• Collaborate on enterprise AI solutions with cross-functional teams</description>
+  </item>
   <item>
     <title>Returnship TL-Autonomous Vehicles SWQ — Cognizant</title>
     <link>https://interndoor.com/jobs/cognizant-returnship-tl-autonomous-vehicles-swq-4469906355</link>
@@ -502,16 +512,6 @@
 • Develop scalable data pipelines using Spark and Kafka
 • Work on cloud-native architectures and distributed systems
 • Collaborate with cross-functional teams on enterprise solutions</description>
-  </item>
-  <item>
-    <title>ETL/DWT Test Engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-4440779886</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-etl-dwt-test-engineer-4440779886</guid>
-    <pubDate>Sun, 20 Sep 2026 12:21:11 GMT</pubDate>
-    <description>Company: Infosys · Location: Hyderabad, Telangana, India
-• Design, develop, validate and support data systems for client projects
-• Use testing frameworks for ETL and data warehouse processes
-• Collaborate with leads to estimate project requirements and timelines</description>
   </item>
 </channel>
 </rss>
