@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458951138",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4458951138",
+      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: Edison, NJ\n• Develop control schemes and troubleshoot high-voltage systems\n• Work on process instrumentation and control systems daily\n• Based in edison, nj",
+      "date_published": "2026-09-21T14:53:15.058Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467384869",
+      "url": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467384869",
+      "title": "Quantitative Intern (Summer 2027) — Optiver",
+      "content_text": "Company: Optiver · Location: Austin, TX · Duration: 8 months\n• Analyze financial data and market behavior to inform trading decisions\n• Use python and ai tools to build quantitative models and research tools\n• Work with traders and engineers in a collaborative, fast-paced environment",
+      "date_published": "2026-09-21T14:14:37.480Z",
+      "authors": [
+        {
+          "name": "Optiver"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467387820",
+      "url": "https://interndoor.com/us/jobs/optiver-quantitative-intern-summer-2027-4467387820",
+      "title": "Quantitative Intern (Summer 2027) — Optiver",
+      "content_text": "Company: Optiver · Location: Chicago, IL · Duration: 8 months\n• Analyze market data and test trading strategies using AI tools\n• Work with traders and researchers on real-world financial problems\n• Develop quantitative models and tools for decision-making",
+      "date_published": "2026-09-21T14:13:57.449Z",
+      "authors": [
+        {
+          "name": "Optiver"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-internship-pdk-engineer-4469888440",
       "title": "Internship - PDK Engineer — Infineon Technologies",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/eaton-r-and-d-division-engineering-co-op-4466967952",
-      "url": "https://interndoor.com/us/jobs/eaton-r-and-d-division-engineering-co-op-4466967952",
-      "title": "R&D Division Engineering Co-op — Eaton",
-      "content_text": "Company: Eaton · Location: Greenwood, SC\n• Support product development from design to validation\n• Work with AI and automation tools to improve engineering workflows\n• Rotate through R&D, automation, and innovation projects",
-      "date_published": "2026-09-19T14:19:23.718Z",
-      "authors": [
-        {
-          "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qualcomm-wireless-systems-engineering-internship-summer-2027-4468406075",
-      "url": "https://interndoor.com/us/jobs/qualcomm-wireless-systems-engineering-internship-summer-2027-4468406075",
-      "title": "Wireless Systems Engineering Internship - Summer 2027 — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Santa Clara, CA · Duration: 11–14 weeks\n• Design and simulate next-gen wireless networks using CDMA ASICs\n• Work with C/C++, Python, and MATLAB on wireless standards like 5G and WiFi\n• Collaborate with leading engineers on MIMO, OFDM, and spectrum sharing projects",
-      "date_published": "2026-09-19T14:18:31.748Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/qualcomm-embedded-engineering-internship-summer-2027-4468407022",
-      "url": "https://interndoor.com/us/jobs/qualcomm-embedded-engineering-internship-summer-2027-4468407022",
-      "title": "Embedded Engineering Internship - Summer 2027 — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: San Diego, CA · Duration: 11–14 weeks\n• Develop and maintain software for complex wireless devices\n• Work with C/C++/Assembly and embedded systems\n• Collaborate with world-class engineers on real-world projects",
-      "date_published": "2026-09-19T14:18:22.623Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
