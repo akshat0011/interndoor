@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 21 Sep 2026 15:25:48 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 15:35:36 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer- JAVA — WebEngage</title>
+    <link>https://interndoor.com/jobs/webengage-software-engineer-java-4469909817</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/webengage-software-engineer-java-4469909817</guid>
+    <pubDate>Mon, 21 Sep 2026 15:35:36 GMT</pubDate>
+    <description>Company: WebEngage · Location: Bengaluru, Karnataka, India · Duration: 1-3 years
+• Design and optimize systems handling billions of events daily
+• Work with architects and product managers on scalable solutions
+• Take ownership of components with end-to-end responsibility</description>
+  </item>
   <item>
     <title>AI Engineer — Barclays</title>
     <link>https://interndoor.com/jobs/barclays-ai-engineer-4467616590</link>
@@ -68,6 +78,16 @@
 • Implement front-end features with Angular/React and JavaScript
 • Write SQL queries for database interactions
 • Collaborate with team on Git-based workflows</description>
+  </item>
+  <item>
+    <title>IBM Filenet — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-ibm-filenet-4433466884</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-ibm-filenet-4433466884</guid>
+    <pubDate>Mon, 21 Sep 2026 14:06:59 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Implement designs, develop systems, and resolve production issues
+• Work with IBM FileNet and other enterprise content management tools
+• Collaborate with clients on digital transformation projects</description>
   </item>
   <item>
     <title>React JS — Infosys</title>
@@ -492,26 +512,6 @@
 • Develop kernel drivers for networking hardware in Google Cloud ecosystem
 • Work on large-scale distributed systems and networking infrastructure
 • Collaborate with cross-functional teams on AI/ML and data storage projects</description>
-  </item>
-  <item>
-    <title>AI Application Engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-ai-application-engineer-4450511794</guid>
-    <pubDate>Sun, 20 Sep 2026 12:26:41 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Build AI agents and copilots on SAP and enterprise platforms
-• Use LangChain, LlamaIndex, and vector databases for RAG systems
-• Develop scalable backend services and integrate with SAP systems</description>
-  </item>
-  <item>
-    <title>Data engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-data-engineer-4440797335</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-data-engineer-4440797335</guid>
-    <pubDate>Sun, 20 Sep 2026 12:26:06 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Develop scalable data pipelines using Spark and Kafka
-• Work on cloud-native architectures and distributed systems
-• Collaborate with cross-functional teams on enterprise solutions</description>
   </item>
 </channel>
 </rss>
