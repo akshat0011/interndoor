@@ -6,7 +6,47 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 22:37:25 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 23:12:54 GMT</lastBuildDate>
+  <item>
+    <title>Application Engineer Co-Op, Building Automation — Schneider Electric</title>
+    <link>https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019</guid>
+    <pubDate>Tue, 22 Sep 2026 23:12:54 GMT</pubDate>
+    <description>Company: Schneider Electric · Location: Andover, MA · Duration: 6 months
+• Design and test building automation solutions for real-world client needs
+• Work with BMS systems, open protocols, and energy management tools
+• Collaborate with teams to create demos and train others on solutions</description>
+  </item>
+  <item>
+    <title>Intern - Machine Learning for Neuroscience — Allen Institute</title>
+    <link>https://interndoor.com/us/jobs/allen-institute-intern-machine-learning-for-neuroscience-4468942336</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/allen-institute-intern-machine-learning-for-neuroscience-4468942336</guid>
+    <pubDate>Tue, 22 Sep 2026 23:02:15 GMT</pubDate>
+    <description>Company: Allen Institute · Location: Seattle, WA · Duration: 12 months
+• Analyze neural recordings to uncover how neurons coordinate movement
+• Use python and machine learning to model shared vs private neural activity
+• Work with EMG and video data to study learning effects over time</description>
+  </item>
+  <item>
+    <title>Process Automation Engineer Intern — Emerson</title>
+    <link>https://interndoor.com/us/jobs/emerson-process-automation-engineer-intern-4470620997</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/emerson-process-automation-engineer-intern-4470620997</guid>
+    <pubDate>Tue, 22 Sep 2026 22:51:10 GMT</pubDate>
+    <description>Company: Emerson · Location: St Louis, MO
+• Support control systems projects with DeltaV tools and HMI applications
+• Assist with network diagrams, instrumentation databases, and software configurations
+• Help execute hardware and software testing for automation systems</description>
+  </item>
+  <item>
+    <title>Process Automation Engineer Intern — Emerson</title>
+    <link>https://interndoor.com/us/jobs/emerson-process-automation-engineer-intern-4470629682</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/emerson-process-automation-engineer-intern-4470629682</guid>
+    <pubDate>Tue, 22 Sep 2026 22:51:02 GMT</pubDate>
+    <description>Company: Emerson · Location: Blue Bell, PA
+• Support control systems projects with DeltaV tools and HMI applications
+• Assist with network diagrams, instrumentation databases, and software configurations
+• Help execute hardware and software testing for automation systems</description>
+  </item>
   <item>
     <title>Flight Software Intern (Winter 2027) — Astranis</title>
     <link>https://interndoor.com/us/jobs/astranis-flight-software-intern-winter-2027-ats-greenhouse-astranis-4704595006</link>
@@ -36,6 +76,16 @@
 • Design and test satellite software and hardware for guidance systems
 • Use Python and C/C++ for control theory and estimation methods
 • Work with a team of 450 engineers on high-orbit satellite projects</description>
+  </item>
+  <item>
+    <title>Data Scientist Intern - 2027 — Hudson River Trading</title>
+    <link>https://interndoor.com/us/jobs/hudson-river-trading-data-scientist-intern-2027-4469055837</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/hudson-river-trading-data-scientist-intern-2027-4469055837</guid>
+    <pubDate>Tue, 22 Sep 2026 22:23:50 GMT</pubDate>
+    <description>Company: Hudson River Trading · Location: New York, NY
+• Analyze and clean large datasets for trading research
+• Use python and open-source tools for data projects
+• Work on real-world financial data with mentorship</description>
   </item>
   <item>
     <title>Software Engineer - Enterprise Systems Intern (Summer 2027) — Astranis</title>
@@ -460,56 +510,6 @@
 • Design experiments to test quantum processor performance and accuracy
 • Use python and qiskit to analyze data and develop error mitigation techniques
 • Collaborate with researchers on quantum simulations and hardware demonstrations</description>
-  </item>
-  <item>
-    <title>Quantum Performance and Demonstrations - Intern 2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-quantum-performance-and-demonstrations-intern-2027-4468936316</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-quantum-performance-and-demonstrations-intern-2027-4468936316</guid>
-    <pubDate>Tue, 22 Sep 2026 20:32:28 GMT</pubDate>
-    <description>Company: IBM · Location: Cambridge, MA
-• Design experiments to test quantum processor performance and accuracy
-• Use Python and Qiskit for quantum simulations and data analysis
-• Collaborate with researchers on error correction and dynamic circuits</description>
-  </item>
-  <item>
-    <title>Quantum Infrastructure Intern 2027 - SRE — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-quantum-infrastructure-intern-2027-sre-4468933390</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-quantum-infrastructure-intern-2027-sre-4468933390</guid>
-    <pubDate>Tue, 22 Sep 2026 20:32:25 GMT</pubDate>
-    <description>Company: IBM · Location: Yorktown Heights, NY
-• Monitor and troubleshoot quantum platform systems
-• Use Python, Git, and cloud tools for automation
-• Work with security and ops teams on scalable environments</description>
-  </item>
-  <item>
-    <title>Quantum Network Engineer Intern 2027 — IBM</title>
-    <link>https://interndoor.com/us/jobs/ibm-quantum-network-engineer-intern-2027-4468917944</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-quantum-network-engineer-intern-2027-4468917944</guid>
-    <pubDate>Tue, 22 Sep 2026 20:32:23 GMT</pubDate>
-    <description>Company: IBM · Location: Yorktown Heights, NY
-• Manage networked devices and components for quantum systems
-• Use ansible and python for automation
-• Work on secure global network infrastructure</description>
-  </item>
-  <item>
-    <title>Intern - GIS — Dominion Energy</title>
-    <link>https://interndoor.com/us/jobs/dominion-energy-intern-gis-4470614372</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/dominion-energy-intern-gis-4470614372</guid>
-    <pubDate>Tue, 22 Sep 2026 20:29:09 GMT</pubDate>
-    <description>Company: Dominion Energy · Location: Cayce, SC
-• Develop and analyze GIS software applications and geospatial data
-• Create maps and graphs from satellite images and field data
-• Collaborate with IT, architects, and business units on GIS projects</description>
-  </item>
-  <item>
-    <title>2027 Summer Intern, MS/PhD, Machine Learning Engineer — Waymo</title>
-    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735</guid>
-    <pubDate>Tue, 22 Sep 2026 20:22:25 GMT</pubDate>
-    <description>Company: Waymo · Location: San Francisco, CA, USA
-• Train large transformers on driving data using JAX/Flax and TPUs
-• Build evaluation pipelines for autonomous driving decisions
-• Write production code for high-traffic systems with team feedback</description>
   </item>
 </channel>
 </rss>
