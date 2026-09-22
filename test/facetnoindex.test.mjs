@@ -17,7 +17,7 @@
 import { mkdtempSync, rmSync, readFileSync, existsSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { writePages, renderFacetPage, renderFacetIndex, isIndexable, FACETS_INDEXABLE } from '../src/pages.js';
+import { writePages, renderFacetPage, renderFacetIndex, isIndexable, FACETS_INDEXABLE, NOINDEX_JOB_BOARDS, jobPageIndexable } from '../src/pages.js';
 import { facetGroups } from '../src/facets.js';
 import { regionOf } from '../src/regions.js';
 
@@ -72,24 +72,37 @@ for (const [code, slug] of [['IN', ''], ['US', 'us']]) {
   const locs = [...readFileSync(join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   check(`${code}: no skill or location URL in the sitemap`, locs.filter((l) => FACET_URL.test(new URL(l).pathname)), []);
   check(`${code}: none announced to IndexNow`, (res.changedUrls ?? []).filter((u) => FACET_URL.test(new URL(u).pathname)), []);
-  /* THE US BOARD'S JOB PAGES ARE noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS
-     in src/pages.js): out of the sitemap, out of IndexNow, out of the API
-     queue — the facets' three-way treatment, applied to a board. India's
-     stay in all three. */
+  /* NO BOARD'S JOB PAGES ARE noindex any more. The US board was, from 19 Sep
+     2026 until the reversal on 22 Sep; NOINDEX_JOB_BOARDS is now empty, so
+     every board is asserted the SAME way and there is no per-board branch left
+     to rot. The facets keep their three-way treatment — that is what this file
+     is really about, and it is unchanged. */
   const jobLocs = locs.filter((l) => new URL(l).pathname.includes('/jobs/')).length;
-  if (code === 'US') {
-    check(`${code}: no job page is announced to IndexNow`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), false);
-    check(`${code}: but its hubs still are`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/companies/')), true);
-    check(`${code}: no job page in the sitemap`, jobLocs, 0);
-    check(`${code}: none offered to the Indexing API`, (res.indexUrls ?? []).length, 0);
-    check(`${code}: the pages are written and noindex`, (() => {
-      const f = readdirSync(join(root, 'jobs')).find((x) => x.endsWith('.html'));
-      return f ? /<meta name="robots" content="noindex,follow">/.test(readFileSync(join(root, 'jobs', f), 'utf8')) : null;
-    })(), true);
-  } else {
-    check(`${code}: IndexNow still hears about the other pages`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), true);
-    check(`${code}: every indexable job page is still in the sitemap`, jobLocs, jobs.filter(isIndexable).length);
-    check(`${code}: and offered to the Indexing API`, (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
+  check(`${code}: IndexNow hears about its job pages`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), true);
+  check(`${code}: and about its hubs`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/companies/')), true);
+  check(`${code}: every indexable job page is in the sitemap`, jobLocs, jobs.filter(isIndexable).length);
+  check(`${code}: and offered to the Indexing API`, (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
+  check(`${code}: no job page is noindex`, (() => {
+    const f = readdirSync(join(root, 'jobs')).find((x) => x.endsWith('.html'));
+    return f ? /<meta name="robots" content="noindex/.test(readFileSync(join(root, 'jobs', f), 'utf8')) : null;
+  })(), false);
+}
+
+console.log('\n== the per-board switch still exists, and is deliberately empty ==');
+{
+  /* Pinned EMPTY rather than deleted. The mechanism is sound and re-adding a
+     board is one code — this is what makes putting one back a deliberate act
+     that has to change a test, instead of a change nothing notices. */
+  check('NOINDEX_JOB_BOARDS is empty', [...NOINDEX_JOB_BOARDS], []);
+  /* With the set empty, the board switch is a no-op and the quality bar is the
+     only thing deciding — so these two must now agree on every board. If a
+     board is ever re-listed this diverges and the check above fails first. */
+  const good = { bullets: ['one', 'two'], title: 'Software Engineer Intern', company: 'Acme' };
+  const thin = { bullets: ['only one'], title: 'Software Engineer Intern', company: 'Acme' };
+  for (const code of ['IN', 'US', 'GB']) {
+    check(`${code}: jobPageIndexable now equals the quality bar`,
+      jobPageIndexable(good, { code }), isIndexable(good));
+    check(`${code}: and a thin page is still refused`, jobPageIndexable(thin, { code }), false);
   }
 }
 for (const d of dirs) rmSync(d, { recursive: true, force: true });

@@ -131,14 +131,17 @@ console.log('\n== A STUB IS NOT A LISTING ==');
      the crawlable homepage block can reach it — asserted rather than assumed. */
   const sitemap = readFileSync(`${DIR}/us/sitemap.xml`, 'utf8');
   check('the sitemap does not list it', sitemap.includes('acme-corp-expiring-intern-1'), false);
-  /* The US board's job pages are noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS),
-     so its sitemap lists no job page at all; the live role IS listed on a
-     board whose pages are indexable. */
-  check('nor, on this board, the live role', sitemap.includes('acme-corp-surviving-intern-2'), false);
+  /* THE LIVE ROLE IS LISTED, AND THAT IS THE POINT OF THE PAIR: the stub is out
+     of the sitemap because it is a stub, not because of anything about this
+     board. Between 19 and 22 Sep 2026 the US board's job pages were noindex
+     (NOINDEX_JOB_BOARDS), so this check had to be inverted and the contrast
+     borrowed from India; the set is empty again, so it reads the honest way
+     round — same board, one listed and one not. */
+  check('but the live role on the same board is', sitemap.includes('acme-corp-surviving-intern-2'), true);
   {
     const IN = regionOf('IN');
     writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: IN });
-    check('but an indexable board does list the live role', readFileSync(`${DIR}/sitemap.xml`, 'utf8').includes('acme-corp-surviving-intern-2'), true);
+    check('and so it is on another board', readFileSync(`${DIR}/sitemap.xml`, 'utf8').includes('acme-corp-surviving-intern-2'), true);
   }
   check('the indexing queue is not offered it', r.indexUrls.some((u) => u.includes('expiring')), false);
   const home = readFileSync(`${DIR}/us/index.html`, 'utf8');
