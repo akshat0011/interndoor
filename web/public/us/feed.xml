@@ -6,7 +6,14 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 17:53:01 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 17:57:05 GMT</lastBuildDate>
+  <item>
+    <title>Entry-Level Environmental Engineers - Networking Event with AECOM – Arlington, VA — AECOM</title>
+    <link>https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineers-networking-event-with-aecom-arling-ats-smartrecruiters-aecom2-744000151105059</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineers-networking-event-with-aecom-arling-ats-smartrecruiters-aecom2-744000151105059</guid>
+    <pubDate>Tue, 22 Sep 2026 17:57:05 GMT</pubDate>
+    <description>Company: AECOM · Location: Arlington, us</description>
+  </item>
   <item>
     <title>Cyber - Data, Risk &amp; Privacy Consulting Intern - Summer 2027 — PwC</title>
     <link>https://interndoor.com/us/jobs/pwc-cyber-data-risk-and-privacy-consulting-intern-summer-2027-4461576209</link>
@@ -487,16 +494,6 @@
 • Develop firmware for actuator platforms and support hardware bring-up
 • Automate build processes and integrate testing tools with CI pipelines
 • Collaborate with cross-functional teams on product validation and release</description>
-  </item>
-  <item>
-    <title>Software Engineer Data &amp; AI I (Intern) – United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-i-intern-united-states-4470408174</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-i-intern-united-states-4470408174</guid>
-    <pubDate>Tue, 22 Sep 2026 10:06:00 GMT</pubDate>
-    <description>Company: Cisco · Location: San Francisco, CA
-• Build data pipelines and machine learning workflows using Python
-• Use PyTorch or scikit-learn to develop and deploy models
-• Orchestrate large-scale data solutions with Spark and Kubernetes</description>
   </item>
 </channel>
 </rss>

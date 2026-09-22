@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineers-networking-event-with-aecom-arling-ats-smartrecruiters-aecom2-744000151105059",
+      "url": "https://interndoor.com/us/jobs/aecom-entry-level-environmental-engineers-networking-event-with-aecom-arling-ats-smartrecruiters-aecom2-744000151105059",
+      "title": "Entry-Level Environmental Engineers - Networking Event with AECOM – Arlington, VA — AECOM",
+      "content_text": "Company: AECOM · Location: Arlington, us",
+      "date_published": "2026-09-22T17:57:05.310Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/pwc-cyber-data-risk-and-privacy-consulting-intern-summer-2027-4461576209",
       "url": "https://interndoor.com/us/jobs/pwc-cyber-data-risk-and-privacy-consulting-intern-summer-2027-4461576209",
       "title": "Cyber - Data, Risk & Privacy Consulting Intern - Summer 2027 — PwC",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Emerson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-i-intern-united-states-4470408174",
-      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-i-intern-united-states-4470408174",
-      "title": "Software Engineer Data & AI I (Intern) – United States — Cisco",
-      "content_text": "Company: Cisco · Location: San Francisco, CA\n• Build data pipelines and machine learning workflows using Python\n• Use PyTorch or scikit-learn to develop and deploy models\n• Orchestrate large-scale data solutions with Spark and Kubernetes",
-      "date_published": "2026-09-22T10:06:00.366Z",
-      "authors": [
-        {
-          "name": "Cisco"
         }
       ]
     }
