@@ -388,22 +388,32 @@ check('the sweep asks the queue for them last', /defer: deferredPrefixes\(\)/.te
 
 console.log('\n== a noindex board\'s job pages are never queued for an update ==');
 {
-  /* The US board's job pages are noindex since 19 Sep 2026 (NOINDEX_JOB_BOARDS
-     in src/pages.js). writePages leaves them out of indexUrls; this guard is
-     the one that holds when a caller does not, because the cost of announcing
-     a noindex page through this API is the project's access. A DELETE is
-     still owed for a page announced before the board went noindex. */
+  /* NO BOARD IS LISTED TODAY — the US board's job pages were noindex from
+     19 to 22 Sep 2026 and the set is empty again. The MECHANISM is kept, and is
+     tested with an EXPLICIT set rather than the live one: a mechanism test that
+     reads live config silently stops asserting the moment that config empties,
+     which is §7's rule about paused searches met from another direction.
+
+     It matters because the cost of announcing a noindex page through this API
+     is the project's access, and writePages leaving them out of indexUrls is a
+     guard that is only safe because of its caller. */
   const { noindexPrefixes } = await import('../src/indexing.js');
-  check('the US board is the noindex prefix', noindexPrefixes(), [`${SITE}/us/`]);
+  check('no board is noindex today', noindexPrefixes(), []);
+  check('a listed board becomes a prefix', noindexPrefixes(SITE, new Set(['US'])), [`${SITE}/us/`]);
   check('a board at the root can never be one', noindexPrefixes(SITE, new Set(['IN'])), []);
+  /* With nothing listed, both boards' pages are queued — the honest current
+     behaviour, and what makes re-listing a board observable here. */
   const st2 = freshStore();
   const us = `${SITE}/us/jobs/acme-intern-9`, india = `${SITE}/jobs/acme-intern-8`;
   const q2 = queueForIndexing(st2, { indexUrls: [us, india] }, T);
-  check('only the India page is queued', q2.queuedUpdate, 1);
-  check('and it is the India page', st2.indexDue({ limit: 9 }).map((r) => r.url), [india]);
-  st2.indexQueue([us], UPDATED, T - 10); st2.indexMarkDone(us, UPDATED, T - 5);
-  const q3 = queueForIndexing(st2, { removedUrls: [us] }, T);
-  check('a US page announced earlier still gets its deletion', q3.queuedDelete, 1);
+  check('both boards are queued now', q2.queuedUpdate, 2);
+  check('and both are due', st2.indexDue({ limit: 9 }).map((r) => r.url).sort(), [india, us].sort());
+  const st3 = freshStore();
+  const q3 = queueForIndexing(st3, { removedUrls: [us] }, T);
+  check('a page never announced still cannot be deleted', q3.queuedDelete, 0);
+  st3.indexQueue([us], UPDATED, T - 10); st3.indexMarkDone(us, UPDATED, T - 5);
+  const q4 = queueForIndexing(st3, { removedUrls: [us] }, T);
+  check('but one announced earlier does get its deletion', q4.queuedDelete, 1);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

@@ -4095,10 +4095,31 @@ export const FACETS_INDEXABLE = false;
    the Indexing API queue and NOT announced to IndexNow, the same three-way
    treatment the facets got (a sitemap may never list a noindex URL).
    `isIndexable(job)` — the two-bullet quality bar every hub and count reads —
-   is NOT what changed; this sits beside it, per board. Reversal is one code
-   out of the set; the US Google Jobs experience (79 pages / 218 impressions /
-   2 clicks in the week before) goes with it. */
-export const NOINDEX_JOB_BOARDS = new Set(['US']);
+   is NOT what changed; this sits beside it, per board.
+
+   REVERSED 22 SEP 2026, AT HIS INSTRUCTION, AND THE SET IS NOW EMPTY. Three
+   days of data did not support keeping it, and the cost was concrete: with the
+   US board out, only 452 job pages were eligible for the Indexing API, all 450
+   reachable ones had already been submitted, and the 200/day quota sat at 14.5%
+   with nothing left to send. A curated middle option was measured and does not
+   exist — gating the US board on the two-bullet bar AND a software title still
+   keeps 3,082 of 3,757, so there is no subset worth building.
+
+   WHAT THE REVERSAL BUYS AND WHAT IT COSTS, both measured rather than hoped:
+   it returns 3,722 US job pages to the sitemap, IndexNow and the API queue. It
+   does NOT undo the 11 Sep collapse, which predates every noindex here — over
+   the seven days before this change the US drew 881 impressions and 2 clicks
+   (0.23%) against India's 184 and 53 (28.8%), so the impressions coming back
+   are the ones that were never converting. It also restores the scaled-content
+   footprint that is still the leading hypothesis for that collapse, and it
+   re-saturates the queue: ~3,700 URLs against a 190/day cap is roughly three
+   weeks of backlog before daily US intake (126-311/day) starts competing for
+   the same cap again.
+
+   THE SET IS KEPT, NOT DELETED, and `noindexPrefixes` with it: the mechanism is
+   the right one and re-adding a board is one code. A test pins the set EMPTY so
+   putting a board back is a deliberate act rather than a drift. */
+export const NOINDEX_JOB_BOARDS = new Set();
 
 /** Whether a job page may be indexed: the quality bar AND the board's switch. */
 export function jobPageIndexable(job, region = DEFAULT_REGION) {
