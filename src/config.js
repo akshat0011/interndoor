@@ -317,6 +317,56 @@ export function matchTitle(title, titleTerms) {
 }
 
 /**
+ * Does this employer's posting name a role we actually want from THEM?
+ *
+ * A SECOND GATE BESIDE THE WATCHLIST, and deliberately per-employer. Some real
+ * employers are on the list for their engineering roles and then fill the board
+ * with bench and staffing postings named after a vendor product — Infosys ran
+ * 31 of the India board's 386 rows (8%) as "Quadient Inspire Scaler developer",
+ * "VisionPlus Developer", "IBM Filenet", "Sitecore XP developer", "IICS
+ * Developer", "AEM, EDS". Those are real jobs; they are not what a student
+ * browsing an engineering board came for, and de-listing the employer would
+ * throw away their genuine SDE, data and ML postings with them.
+ *
+ * WHY PER-EMPLOYER AND NOT A GLOBAL VETO. §9's rule is that a veto term has to
+ * be measured against the whole store before it is added, because a bare word
+ * costs real roles elsewhere — `product` cost 29. Scoping the rule to one
+ * employer bounds the blast radius to that employer by construction, so the
+ * measurement is 44 titles rather than 20,000 and the answer cannot drift when
+ * an unrelated company posts something similar.
+ *
+ * `deny` WINS OVER `allow`, because the interesting case is a title that names
+ * a mainstream stack AND a job we do not want: "java springboot production
+ * support" matches `java` and is still support work. With no `allow` list the
+ * employer is allowed everything `deny` does not catch; with no rule at all
+ * every posting passes, so this costs nothing for the other 1,880 employers.
+ *
+ * Pure, and tested by name.
+ */
+export function employerRoleAllowed(company, title, cfg) {
+  const rules = cfg?.matching?.employerRoles;
+  if (!rules || typeof rules !== 'object') return true;
+  const norm = normaliseCompany(company);
+  if (!norm) return true;
+  /* Keyed on the NORMALISED name, the same form matchCompany compares, so the
+     rule reaches "Infosys", "Infosys Limited" and "Infosys BPM" alike without
+     three entries. A key starting with _ is a note, like everywhere else in
+     config.json. */
+  let rule = null;
+  for (const [name, value] of Object.entries(rules)) {
+    if (name.startsWith('_')) continue;
+    const key = normaliseCompany(name);
+    if (key && (key === norm || containsWord(norm, key))) { rule = value; break; }
+  }
+  if (!rule) return true;
+
+  const t = String(title || '').toLowerCase();
+  if (rule.deny?.some((term) => containsWord(t, String(term).toLowerCase()))) return false;
+  if (!rule.allow?.length) return true;
+  return rule.allow.some((term) => containsWord(t, String(term).toLowerCase()));
+}
+
+/**
  * How many hours back a run should look.
  *
  * Derived from the gap since the last successful run rather than fixed. With

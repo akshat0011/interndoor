@@ -78,6 +78,93 @@ export function composeWhatsApp(job, region = regionOf('IN')) {
   return out;
 }
 
+/* How many roles one grouped message names before it stops listing them and
+   counts the rest. Five blocks plus the chrome sits comfortably inside
+   MAX_MESSAGE; the trim loop below is what actually enforces it, because a
+   title can run to 110 characters and five long ones would not fit. */
+export const MAX_GROUP_ROLES = 5;
+
+/**
+ * One employer's new roles, as ONE message.
+ *
+ * WHY: the channel posted one message per listing, so an employer filing eight
+ * roles in a run produced eight notifications in a row — which reads as spam
+ * and is the fastest way to get a channel muted. Grouping is the fix he asked
+ * for, and it is strictly better than a lower cap: nothing is dropped, the same
+ * listings go out, they simply arrive as one message.
+ *
+ * THE FIRST URL IS STILL A JOB PAGE, which is what WhatsApp builds the preview
+ * card from — so a grouped message gets the first role's card, exactly as a
+ * single one would. Putting the board link first would render the board's card
+ * for every grouped post and throw that away.
+ *
+ * Facts are deliberately thinner than a single-role message: when the employer
+ * is already in the heading, the thing that tells two of their roles apart is
+ * WHERE and WHAT IT PAYS, and a full fact block per role would push a group of
+ * three past the length limit on its own.
+ */
+export function composeWhatsAppGroup(jobs, region = regionOf('IN')) {
+  const list = (jobs ?? []).filter(Boolean);
+  if (list.length === 1) return composeWhatsApp(list[0], region);
+  const first = jobParts(list[0], region);
+
+  const blockFor = (job) => {
+    const p = jobParts(job, region);
+    const lines = [`🚀 *${p.title}*`];
+    /* Location and money only — the two facts that separate one employer's
+       roles from each other. jobParts already prefixes them with their emoji,
+       so they are picked by that rather than re-derived, and a fact this
+       composer does not know about cannot be silently mis-selected. */
+    for (const f of p.facts) if (f.startsWith('📍') || f.startsWith('💰')) lines.push(f);
+    lines.push(p.page);
+    return lines.join('\n');
+  };
+
+  const render = (n) => {
+    const shown = list.slice(0, n);
+    const rest = list.length - shown.length;
+    const out = [
+      `🏢 *${first.company}* — ${list.length} new roles`,
+      '',
+      shown.map(blockFor).join('\n\n'),
+    ];
+    /* The count is over the WHOLE group, not what fitted, so the heading stays
+       true whichever cap bit — the digest's own rule. */
+    if (rest > 0) out.push('', `➕ and ${rest} more on the board`);
+    out.push('', `🌐 Every open internship and ${entryWord(region)} role: ${first.board}`);
+    return out.join('\n');
+  };
+
+  /* Drop whole ROLES, never characters. Slicing the string would cut a URL in
+     half and WhatsApp renders the fragment as plain text — the same reason the
+     single-role composer trims by fact lines rather than by length. */
+  let n = Math.min(list.length, MAX_GROUP_ROLES);
+  let out = render(n);
+  while (out.length > MAX_MESSAGE && n > 1) out = render(--n);
+  return out;
+}
+
+/**
+ * Group what is about to be posted by employer, within a board.
+ *
+ * Order is FIRST-APPEARANCE, so the backlog still leads — a listing stranded
+ * yesterday is older than one found this minute, and grouping must not quietly
+ * reorder it behind fresh arrivals.
+ *
+ * Keyed on the board too: the same employer hiring on two boards is two
+ * messages, because each carries its own board link and its own region wording.
+ * Pure, and tested by name.
+ */
+export function groupForWhatsApp(entries) {
+  const groups = new Map();
+  for (const e of entries ?? []) {
+    const key = `${e.code}\u0000${String(e.job?.company ?? '').toLowerCase()}`;
+    if (!groups.has(key)) groups.set(key, { code: e.code, company: e.job?.company ?? '', items: [] });
+    groups.get(key).items.push(e);
+  }
+  return [...groups.values()];
+}
+
 /**
  * Open the WhatsApp profile. The caller always closes it.
  *
@@ -865,8 +952,14 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
      sweep makes. This is a UI being driven at roughly six seconds a message,
      so forty new listings would hold a browser open for four minutes and look
      exactly like the burst that gets a number flagged. */
+  /* THE CAP NOW COUNTS MESSAGES, NOT LISTINGS, and that is the point of the
+     change: an employer filing eight roles is one notification instead of
+     eight, and the eight listings all still go out. Before grouping, a cap of 8
+     meant at most 8 listings a run and the rest queued; now it means at most 8
+     messages, so a run carries more listings while interrupting less. */
   const cap = Math.max(1, Number(conf.maxPerRun ?? 8));
-  const batch = mine.slice(0, cap);
+  const groups = groupForWhatsApp(mine);
+  const batch = groups.slice(0, cap);
   const gap = Math.max(1500, Number(conf.sendGapMs ?? 6000));
 
   let ctx = null;
@@ -903,30 +996,39 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
 
     let carded = 0;
     let tried = 0;
-    for (const { job, code, id } of batch) {
-      const r = await sendOne(page, composeWhatsApp(job, regionOf(code)));
+    for (const group of batch) {
+      const region = regionOf(group.code);
+      const r = await sendOne(page, composeWhatsAppGroup(group.items.map((i) => i.job), region));
       tried += 1;
       /* Only a send that was PROVEN to leave the box counts. It used to be
          counted unconditionally, so a listing that never went out was reported
          as posted — and the run that stranded it went on to corrupt the next
-         message with the draft it left behind. */
+         message with the draft it left behind.
+
+         ONE MESSAGE CARRIES THE WHOLE GROUP, so every id in it is settled
+         together: the message either left the composer or it did not, and a
+         half-posted group is not a state that exists. Anything in a group that
+         failed goes back on the queue intact and is re-sent as a group next
+         run. */
       if (r.sent) {
-        sent += 1;
-        posted.add(id);
+        sent += group.items.length;
+        for (const i of group.items) posted.add(i.id);
         if (r.carded) carded += 1;
         /* How long the card was waited for, so a preview that is merely slow
            can be told apart from one that never arrives. */
-        else log.debug(`WhatsApp: no preview card for ${job.company ?? 'a listing'} after ${Math.round((r.cardMs ?? 0) / 1000)}s.`);
+        else log.debug(`WhatsApp: no preview card for ${group.company || 'a listing'} after ${Math.round((r.cardMs ?? 0) / 1000)}s.`);
       }
-      else log.warn(`WhatsApp: ${job.company ?? 'a listing'} was not posted — ${r.error}`);
+      else log.warn(`WhatsApp: ${group.company || 'a listing'} was not posted — ${r.error}`);
       if (tried < batch.length) await sleep(gap);
     }
-    const held = mine.length - batch.length;
+    /* Counted in LISTINGS, not groups — it is what the reader of the log wants
+       to know, and it is what goes back on the queue. */
+    const held = mine.length - batch.reduce((n, g) => n + g.items.length, 0);
     /* The card count is reported even when every one worked. A preview that
        silently stops appearing is invisible otherwise — which is exactly how
        the first posts went out bare — and the same reason the apply-link
        tripwire prints its ratio on every run. */
-    log.ok(`WhatsApp: posted ${sent} to "${conf.target}" (${carded}/${sent} with a preview card)`
+    log.ok(`WhatsApp: posted ${sent} listing(s) in ${tried} message(s) to "${conf.target}" (${carded}/${tried} with a preview card)`
       + `${held ? ` — ${held} held for the next run` : ''}.`);
   } catch (err) {
     log.warn(`WhatsApp: ${err.message.split('\n')[0]} — ${sent} posted before it stopped.`);

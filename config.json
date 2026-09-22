@@ -1101,7 +1101,65 @@
       "AU Small Finance Bank",
       "KG CRM Solutions LLP - Zoho Authorized Partner"
     ],
-    "_blocklist_note": "Employers never published, whatever the watchlist says. Checked before any watchlist term, so a fuzzy match cannot resurrect one. Matching is containment on the normalised name, so \"MedTourEasy\" also covers \"MedTourEasy Navi Mumbai\". MedTourEasy is here because it was reported as a scam; it only ever reached the site because \"MedTourEasy Navi Mumbai\" contains the city Navi Mumbai, which the matcher read as the fintech Navi."
+    "_blocklist_note": "Employers never published, whatever the watchlist says. Checked before any watchlist term, so a fuzzy match cannot resurrect one. Matching is containment on the normalised name, so \"MedTourEasy\" also covers \"MedTourEasy Navi Mumbai\". MedTourEasy is here because it was reported as a scam; it only ever reached the site because \"MedTourEasy Navi Mumbai\" contains the city Navi Mumbai, which the matcher read as the fintech Navi.",
+    "_employerRoles_note": "A SECOND GATE BESIDE THE WATCHLIST, per employer. Some real employers are on the list for their engineering roles and then fill the board with bench/staffing postings named after a vendor product. Infosys ran 31 of the India board's 386 rows as 'Quadient Inspire Scaler developer', 'VisionPlus Developer', 'IBM Filenet', 'Sitecore XP developer', 'IICS Developer', 'AEM, EDS'. De-listing the employer would take their genuine SDE, data and ML postings with it. Keyed on the NORMALISED company name, so one entry reaches 'Infosys', 'Infosys Limited' and 'Infosys BPM'. deny WINS over allow: 'java springboot production support' matches java and is still support work. No rule at all means every posting passes, so this costs nothing for the other ~1,880 employers. Scoped per employer ON PURPOSE - a global veto term has to be measured against the whole store (a bare 'product' once cost 29 real roles); this one is measurable against that employer's own titles alone. Applied at publish AND before the click, so existing rows drop off the board on the next publish with no DB surgery.",
+    "employerRoles": {
+      "Infosys": {
+        "allow": [
+          "software engineer",
+          "software development",
+          "sde",
+          "developer engineer",
+          "full stack",
+          "fullstack",
+          "frontend",
+          "front end",
+          "backend",
+          "back end",
+          "data engineer",
+          "data engineering",
+          "data scientist",
+          "machine learning",
+          "ml engineer",
+          "ai",
+          "genai",
+          "gen ai",
+          "react",
+          "angular",
+          "vue",
+          "node",
+          "nodejs",
+          "nextjs",
+          "next js",
+          "python",
+          "java",
+          "javascript",
+          "typescript",
+          "golang",
+          "dotnet",
+          ".net",
+          "devops",
+          "site reliability",
+          "sre",
+          "cloud engineer",
+          "platform engineer",
+          "android",
+          "ios",
+          "mobile",
+          "security engineer",
+          "intern",
+          "trainee"
+        ],
+        "deny": [
+          "production support",
+          "test engineer",
+          "tester",
+          "qa engineer",
+          "quality assurance",
+          "support engineer"
+        ]
+      }
+    }
   },
   "pacing": {
     "_note": "All values in milliseconds, randomised per action. These were roughly halved for speed, which roughly doubles the request rate - a real increase in ban risk. If LinkedIn ever rate-limits, raise these first; the 24h cooldown will have already stopped the run.",

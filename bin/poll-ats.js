@@ -16,7 +16,7 @@
  * know or care which collector found a role. `source` records which one did,
  * because when two collectors disagree you want to know who said what.
  */
-import { loadConfig, matchCompany, matchTitle } from '../src/config.js';
+import { loadConfig, matchCompany, matchTitle, employerRoleAllowed } from '../src/config.js';
 import { Store } from '../src/store.js';
 import { fetchBoard, fetchDetail, FIRST_PARTY_BOARDS, isWorkplaceType, postingCompany } from '../src/ats.js';
 import { classifyRole } from '../src/roles.js';
@@ -232,6 +232,11 @@ async function pollOne(board) {
     // Same rule as the scraper: engineering only, but an ambiguous title is not
     // thrown away on the title alone.
     if (verdict.verdict === 'non-tech') { skippedNonTech++; continue; }
+    /* The per-employer role gate, the collector half. publish.js re-runs it and
+       is the authority; this only saves the per-job detail fetch below. Kept in
+       step with src/index.js so a rule cannot apply to one collector and not
+       the other. */
+    if (!employerRoleAllowed(board.company, j.title, cfg)) { skippedNonTech++; continue; }
     const isTech = verdict.verdict === 'tech' ? true : null;
 
     // Some providers only expose the description and the real posting date on a
