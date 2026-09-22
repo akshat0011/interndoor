@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-4461505341",
+      "url": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-4461505341",
+      "title": "Software Engineer I - Salesforce — ZoomInfo",
+      "content_text": "Company: ZoomInfo · Location: Bengaluru, Karnataka, India · Duration: 0–2 years\n• Resolve daily Salesforce and L2O support tickets with timely, high-quality solutions\n• Perform data maintenance, load operations, and basic configuration updates\n• Collaborate with QA and cross-functional teams to ensure system stability and process clarity",
+      "date_published": "2026-09-22T17:08:09.361Z",
+      "authors": [
+        {
+          "name": "ZoomInfo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-ii-4461722718",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-ii-4461722718",
+      "title": "Software Engr II — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop backend applications using C#.Net and Python\n• Work with SQL, MySQL, Azure cloud, and microservices\n• Collaborate with senior developers and architects\n• Write unit tests and ship new features in Agile teams",
+      "date_published": "2026-09-22T17:03:13.842Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/sprinklr-ml-intern-4470478222",
       "url": "https://interndoor.com/jobs/sprinklr-ml-intern-4470478222",
       "title": "ML Intern — Sprinklr",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Lenovo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-monitoring-and-diagnostics-insight-engineer-tier-1-4469929648",
-      "url": "https://interndoor.com/jobs/ge-vernova-monitoring-and-diagnostics-insight-engineer-tier-1-4469929648",
-      "title": "Monitoring & Diagnostics Insight Engineer (Tier 1) — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India\n• Support installed base with customer problem resolution and fleet diagnostics\n• Work with cross-functional teams to resolve technical issues\n• Maintain fleet data and manage outages in defined operational framework",
-      "date_published": "2026-09-21T17:37:14.194Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469931681",
-      "url": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469931681",
-      "title": "Validation Engineer — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Greater Hyderabad Area\n• Design and test embedded software for industrial devices like motors and sensors\n• Work with real-time systems and hardware integration\n• Collaborate in a structured engineering framework",
-      "date_published": "2026-09-21T17:37:09.428Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     }
