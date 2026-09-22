@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6202659004",
+      "url": "https://interndoor.com/us/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6202659004",
+      "title": "Engine Programmer Intern — Epic Games",
+      "content_text": "Company: Epic Games · Location: Cary,North Carolina,United States\n• Support Fortnite Online team with online gameplay tech development\n• Work on shared systems for Unreal Engine and Fortnite features\n• Develop stable solutions from concept to shipped code",
+      "date_published": "2026-09-22T00:43:35.000Z",
+      "authors": [
+        {
+          "name": "Epic Games"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/qorvo-inc-digital-systems-engineering-intern-4470221273",
       "url": "https://interndoor.com/us/jobs/qorvo-inc-digital-systems-engineering-intern-4470221273",
       "title": "Digital Systems Engineering Intern — Qorvo, Inc.",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Johnson & Johnson MedTech"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/singlestore-mit-software-engineer-new-grad-engine-ats-greenhouse-singlestore-8220863",
-      "url": "https://interndoor.com/us/jobs/singlestore-mit-software-engineer-new-grad-engine-ats-greenhouse-singlestore-8220863",
-      "title": "MIT-Software Engineer-New Grad |Engine| — SingleStore",
-      "content_text": "Company: SingleStore · Location: United States\n• Develop features for database engine and improve query performance\n• Work on storage, indexing, transactions, and distributed systems\n• Contribute to production code, tests, and technical designs\n• Collaborate with engineers and product teams on release cycles",
-      "date_published": "2026-09-21T21:40:12.000Z",
-      "authors": [
-        {
-          "name": "SingleStore"
         }
       ]
     }

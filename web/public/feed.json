@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/noise-intern-qa-4468769854",
+      "url": "https://interndoor.com/jobs/noise-intern-qa-4468769854",
+      "title": "Intern - QA — Noise",
+      "content_text": "Company: Noise · Location: Gurugram, Haryana, India\n• Test mobile apps and smart devices, identify bugs\n• Use appium, jira, postman, sql for testing\n• Work in agile team, participate in daily stand-ups",
+      "date_published": "2026-09-22T00:50:17.927Z",
+      "authors": [
+        {
+          "name": "Noise"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
       "url": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
       "title": "Data Engineer — KeyValue",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-software-development-engineer-4468487020",
-      "url": "https://interndoor.com/jobs/iqvia-software-development-engineer-4468487020",
-      "title": "Software Development Engineer — IQVIA",
-      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India\n• Debug code and improve platforms to match user needs\n• Work on front-end and back-end development layers\n• Collaborate on specs and quality standards\n• Support small projects with limited guidance",
-      "date_published": "2026-09-20T16:50:00.898Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     }

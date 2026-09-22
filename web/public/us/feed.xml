@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 00:18:23 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 00:43:35 GMT</lastBuildDate>
+  <item>
+    <title>Engine Programmer Intern — Epic Games</title>
+    <link>https://interndoor.com/us/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6202659004</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/epic-games-engine-programmer-intern-ats-greenhouse-epicgames-6202659004</guid>
+    <pubDate>Tue, 22 Sep 2026 00:43:35 GMT</pubDate>
+    <description>Company: Epic Games · Location: Cary,North Carolina,United States
+• Support Fortnite Online team with online gameplay tech development
+• Work on shared systems for Unreal Engine and Fortnite features
+• Develop stable solutions from concept to shipped code</description>
+  </item>
   <item>
     <title>Digital Systems Engineering Intern — Qorvo, Inc.</title>
     <link>https://interndoor.com/us/jobs/qorvo-inc-digital-systems-engineering-intern-4470221273</link>
@@ -501,17 +511,6 @@
 • Build AI tools for commercial teams using Python, SQL, and cloud platforms
 • Analyze sales, marketing, and operational data to drive business decisions
 • Collaborate with data scientists and stakeholders on real-world AI projects</description>
-  </item>
-  <item>
-    <title>MIT-Software Engineer-New Grad |Engine| — SingleStore</title>
-    <link>https://interndoor.com/us/jobs/singlestore-mit-software-engineer-new-grad-engine-ats-greenhouse-singlestore-8220863</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/singlestore-mit-software-engineer-new-grad-engine-ats-greenhouse-singlestore-8220863</guid>
-    <pubDate>Mon, 21 Sep 2026 21:40:12 GMT</pubDate>
-    <description>Company: SingleStore · Location: United States
-• Develop features for database engine and improve query performance
-• Work on storage, indexing, transactions, and distributed systems
-• Contribute to production code, tests, and technical designs
-• Collaborate with engineers and product teams on release cycles</description>
   </item>
 </channel>
 </rss>
