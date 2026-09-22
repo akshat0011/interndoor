@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 22 Sep 2026 18:21:52 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 18:31:00 GMT</lastBuildDate>
+  <item>
+    <title>Design Engineering Architect — Cadence</title>
+    <link>https://interndoor.com/jobs/cadence-design-engineering-architect-4414495720</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cadence-design-engineering-architect-4414495720</guid>
+    <pubDate>Tue, 22 Sep 2026 18:31:00 GMT</pubDate>
+    <description>Company: Cadence · Location: Bengaluru, Karnataka, India
+• Design and architect frontend digital interfaces for products
+• Mentor team and define design principles for high quality output
+• Collaborate with cross-functional teams on product development</description>
+  </item>
   <item>
     <title>Team Member — Cognizant</title>
     <link>https://interndoor.com/jobs/cognizant-team-member-4460077298</link>
@@ -500,16 +510,6 @@
 • Support field and remote technical support for EV systems including batteries, powertrain, and charging
 • Work with diagnostic tools and CAN-based diagnostics to troubleshoot EV systems
 • Interact with customers to explain technical issues and ensure smooth service experience</description>
-  </item>
-  <item>
-    <title>Data Engineer — KeyValue</title>
-    <link>https://interndoor.com/jobs/keyvalue-data-engineer-4469970853</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/keyvalue-data-engineer-4469970853</guid>
-    <pubDate>Mon, 21 Sep 2026 21:00:29 GMT</pubDate>
-    <description>Company: KeyValue · Location: Kochi, Kerala, India
-• Design and build scalable data pipelines for structured and unstructured data
-• Use SQL, Redshift, BigQuery, Spark, and Python for data processing
-• Collaborate with product and engineering teams on data-driven decisions</description>
   </item>
 </channel>
 </rss>
