@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-trainee-4450998882",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-trainee-4450998882",
+      "title": "Cloud Security Trainee — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India · Duration: 0-1 years\n• Analyze cloud security risks and implement protective measures\n• Work with AWS services like IAM, VPC, and Security Hub\n• Write Python scripts for automation and data analysis",
+      "date_published": "2026-09-22T04:12:27.879Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161",
       "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161",
       "title": "Software-Engineer--Analytical-Engineering — Bristol Myers Squibb",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Monotype"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/piramal-apprentice-ats-workday-piramalpharma-wd102-piramal-external-careers-r00003705",
-      "url": "https://interndoor.com/jobs/piramal-apprentice-ats-workday-piramalpharma-wd102-piramal-external-careers-r00003705",
-      "title": "Apprentice — Piramal",
-      "content_text": "Company: Piramal · Location: Mahad,MH\n• Support equipment maintenance and inspections\n• Track operating parameters and documentation\n• Assist with engineering projects and improvements",
-      "date_published": "2026-09-21T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Piramal"
         }
       ]
     }
