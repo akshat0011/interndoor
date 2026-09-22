@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/infineon-technologies-intern-data-center-power-systems-4470426732",
+      "url": "https://interndoor.com/us/jobs/infineon-technologies-intern-data-center-power-systems-4470426732",
+      "title": "Intern - Data Center Power Systems — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: El Segundo, CA\n• Support reference design projects and board development with technical leaders\n• Utilize AI tools to streamline engineering processes and create documentation\n• Participate in product demos at industry events and technical conferences",
+      "date_published": "2026-09-22T13:10:19.447Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/lockheed-martin-radar-systems-engineer-intern-4468583862",
       "url": "https://interndoor.com/us/jobs/lockheed-martin-radar-systems-engineer-intern-4468583862",
       "title": "Radar Systems Engineer- Intern — Lockheed Martin",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-jr-software-engineer-intern-4468513117",
-      "url": "https://interndoor.com/us/jobs/leidos-jr-software-engineer-intern-4468513117",
-      "title": "Jr. Software Engineer Intern — Leidos",
-      "content_text": "Company: Leidos · Location: Tucson, AZ\n• Develop full-stack applications using Java, JavaScript, and AWS\n• Work in agile teams on mission-critical software for national programs\n• Mentored by senior engineers with focus on clean, reusable code",
-      "date_published": "2026-09-22T03:16:45.859Z",
-      "authors": [
-        {
-          "name": "Leidos"
         }
       ]
     }
