@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
+      "url": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
+      "title": "SailPoint Developer (IIQ & ISC) — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and develop IAM solutions using SailPoint IIQ and ISC platforms\n• Build connectors for SAP, AD, LDAP, and cloud apps with Java and APIs\n• Collaborate with security and business teams on identity lifecycle processes",
+      "date_published": "2026-09-22T10:15:40.018Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651",
+      "url": "https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651",
+      "title": "Endpoint & OT Client Platform Engineer — Festo",
+      "content_text": "Company: Festo · Location: Bengaluru, Karnataka, India\n• Support endpoint management systems for IT and OT devices\n• Script automation workflows with PowerShell, C#, Ansible, Terraform\n• Operate backup platforms, DHCP services, and network infrastructure\n• Collaborate in Agile teams with cross-functional IT/OT stakeholders",
+      "date_published": "2026-09-22T10:14:44.893Z",
+      "authors": [
+        {
+          "name": "Festo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935",
       "url": "https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935",
       "title": "Quality Automation Specialist — NatWest Group",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "dentsu"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-fs-data-engineer-associate-4467378631",
-      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-fs-data-engineer-associate-4467378631",
-      "title": "FS - Data Engineer - Associate — PwC Acceleration Center India",
-      "content_text": "Company: PwC Acceleration Center India · Location: Bengaluru East, Karnataka, India · Duration: 1 to 3 years\n• Develop data pipelines and analytics solutions using Python, SQL, Spark, and Databricks\n• Work on cloud-based data platforms and Azure services with team and stakeholders\n• Contribute to GenAI and retrieval-augmented generation projects under guidance",
-      "date_published": "2026-09-21T10:17:45.274Z",
-      "authors": [
-        {
-          "name": "PwC Acceleration Center India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-technology-consulting-intern-2027-4467376797",
-      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-technology-consulting-intern-2027-4467376797",
-      "title": "Technology Consulting – Intern – 2027 — PwC Acceleration Center India",
-      "content_text": "Company: PwC Acceleration Center India · Location: Andhra Pradesh, India\n• Support data analysis projects and client support activities\n• Learn consulting methodologies and industry practices\n• Work on varied assignments with mentorship and feedback",
-      "date_published": "2026-09-21T10:17:04.793Z",
-      "authors": [
-        {
-          "name": "PwC Acceleration Center India"
         }
       ]
     }
