@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 22 Sep 2026 18:31:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 18:52:26 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer II — Mastercard</title>
+    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-4440197076</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-4440197076</guid>
+    <pubDate>Tue, 22 Sep 2026 18:52:26 GMT</pubDate>
+    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years
+• Write and maintain secure software solutions for payment systems
+• Use java and spring frameworks with cloud technologies
+• Work on high-impact projects with global payment networks</description>
+  </item>
+  <item>
+    <title>Software Engineer II (Backend Developer) — Mastercard</title>
+    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615</guid>
+    <pubDate>Tue, 22 Sep 2026 18:45:09 GMT</pubDate>
+    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
+• Develop and maintain Java-based backend systems for fraud detection and transaction validation
+• Work with Spring Boot, Oracle, and Git in a high-performance, scalable environment
+• Collaborate on complex projects with technical leads and contribute to system design and testing</description>
+  </item>
+  <item>
+    <title>Software Engineer II-2 — Mastercard</title>
+    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-2-4440183505</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-2-4440183505</guid>
+    <pubDate>Tue, 22 Sep 2026 18:45:03 GMT</pubDate>
+    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
+• Build and maintain software solutions for data governance systems
+• Work with agile teams on cross-functional projects
+• Implement secure coding practices and follow compliance protocols</description>
+  </item>
   <item>
     <title>Design Engineering Architect — Cadence</title>
     <link>https://interndoor.com/jobs/cadence-design-engineering-architect-4414495720</link>
@@ -480,36 +510,6 @@
 • Analyze cloud security risks and implement protective measures
 • Work with AWS services like IAM, VPC, and Security Hub
 • Write Python scripts for automation and data analysis</description>
-  </item>
-  <item>
-    <title>Software-Engineer--Analytical-Engineering — Bristol Myers Squibb</title>
-    <link>https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161</guid>
-    <pubDate>Tue, 22 Sep 2026 01:52:04 GMT</pubDate>
-    <description>Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years
-• Build data models and pipelines for business intelligence
-• Use dbt and aws for data transformation and modeling
-• Collaborate with ai/ml teams on data infrastructure</description>
-  </item>
-  <item>
-    <title>Intern - QA — Noise</title>
-    <link>https://interndoor.com/jobs/noise-intern-qa-4468769854</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/noise-intern-qa-4468769854</guid>
-    <pubDate>Tue, 22 Sep 2026 00:50:17 GMT</pubDate>
-    <description>Company: Noise · Location: Gurugram, Haryana, India
-• Test mobile apps and smart devices, identify bugs
-• Use appium, jira, postman, sql for testing
-• Work in agile team, participate in daily stand-ups</description>
-  </item>
-  <item>
-    <title>Graduate Engineer Trainee — Exponent Energy</title>
-    <link>https://interndoor.com/jobs/exponent-energy-graduate-engineer-trainee-ats-workable-exponent-energy-e90732ee8a</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exponent-energy-graduate-engineer-trainee-ats-workable-exponent-energy-e90732ee8a</guid>
-    <pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: Exponent Energy · Location: Bengaluru, India · Duration: 0–1 years
-• Support field and remote technical support for EV systems including batteries, powertrain, and charging
-• Work with diagnostic tools and CAN-based diagnostics to troubleshoot EV systems
-• Interact with customers to explain technical issues and ensure smooth service experience</description>
   </item>
 </channel>
 </rss>
