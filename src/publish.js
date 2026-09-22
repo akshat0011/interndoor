@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { ROOT } from './paths.js';
 import { log } from './logger.js';
 import { formatStipend, safeBaseSalary } from './extract.js';
-import { matchCompany, isBlockedCompany } from './config.js';
+import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { writeSite, cardFacts, jobSlug } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
@@ -538,6 +538,17 @@ export async function writeJobsFile(store, cfg) {
       if (matchedNow) return true;
       dropped++;
       log.debug(`Not publishing "${row.title}" — "${row.company}" no longer matches the watchlist.`);
+      return false;
+    })
+    // The per-employer role gate. Re-derived here for the same reason the
+    // company match is: it means editing the rule in config.json takes effect
+    // on the next publish, over rows already stored, with no DB surgery — the
+    // property §8 relies on for the watchlist itself. An employer with no rule
+    // passes every posting, so this is inert for all but the few named.
+    .filter(({ row }) => {
+      if (employerRoleAllowed(row.company, row.title, cfg)) return true;
+      dropped++;
+      log.debug(`Not publishing "${row.title}" — not a role we take from "${row.company}".`);
       return false;
     })
     // Published regions only, enforced HERE and not just at collection. The

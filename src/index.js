@@ -3,7 +3,7 @@
  * One scan of LinkedIn for new internships at the watchlist companies.
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
-import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany } from './config.js';
+import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { isInternshipTag, isSeniorTitle, admitEntryLevel, INTERN } from './employment.js';
 import { join } from 'node:path';
 import { writeFile } from 'node:fs/promises';
@@ -953,6 +953,23 @@ async function main() {
               continue;
             }
             matched = gate.matched;
+
+            // THE PER-EMPLOYER ROLE GATE, before the click. publish.js re-runs
+            // this and is the authority — a stored row drops off the board the
+            // moment the rule changes, with no DB surgery. Running it here too
+            // is purely about cost: Infosys alone filed 27 refused titles, and
+            // a card refused on its own text costs no page load at all, where
+            // one opened and then dropped at publish costs a full open against
+            // the account that gets throttled.
+            //
+            // Only when the card NAMES a company. A card with no company line
+            // is judged on the pane after the click (see above), and guessing
+            // here would refuse it on an employer it may not belong to.
+            if (!employerRoleAllowed(card.company, card.title, cfg)) {
+              counters.skippedCompany++;
+              store.noteSkippedCard(card.identity, 'not a role we take from this employer', card.company, card.title);
+              continue;
+            }
           }
 
           const postedAt = parseRelativeTime(card.postedText);

@@ -1,4 +1,4 @@
-import { composeWhatsApp, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING, awaitComposer, COMPOSER_MS, COMPOSER_POLL_MS } from '../src/whatsapp.js';
+import { composeWhatsApp, composeWhatsAppGroup, groupForWhatsApp, MAX_GROUP_ROLES, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING, awaitComposer, COMPOSER_MS, COMPOSER_POLL_MS } from '../src/whatsapp.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -290,8 +290,13 @@ check('saved in finally, so an early return still saves', /finally \{[\s\S]*writ
 /* THE PAIRING THAT MATTERS: only a send PROVEN to have left the box may keep a
    listing off the queue. Counting an attempt would silently drop it again. */
 /* Whitespace-tolerant: the block grew a debug line for an uncarded post, and
-   the invariant is the GUARD, not the formatting. */
-check('only a proven send clears an id', /if \(r\.sent\) \{\s*sent \+= 1;\s*posted\.add\(id\);/.test(wa), true);
+   the invariant is the GUARD, not the formatting. It was rewritten again when
+   posting became per-EMPLOYER-GROUP rather than per-listing, so it no longer
+   names `id` at all — one message settles every id in its group, because the
+   message either left the composer or it did not and a half-posted group is
+   not a state that exists. */
+check('only a proven send clears ids', /if \(r\.sent\) \{\s*sent \+= group\.items\.length;\s*for \(const i of group\.items\) posted\.add\(i\.id\);/.test(wa), true);
+check('nothing outside that guard adds to posted', (wa.match(/posted\.add\(/g) ?? []).length, 1);
 const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('and it is called even when the run found nothing',
@@ -426,6 +431,132 @@ const loginCode = readFileSync(join(ROOT, 'bin', 'whatsapp-login.js'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('the login poll caps both budgets',
   /sessionState\(page, \{ timeoutMs: 4000, loadingTimeoutMs: 4000 \}\)/.test(loginCode), true);
+
+
+console.log('\n== one employer, one message ==');
+{
+  /* The channel posted one message per listing, so an employer filing eight
+     roles produced eight notifications in a row. Grouping is strictly better
+     than a lower cap: nothing is dropped, the same listings go out, they
+     arrive as one message. */
+  const role = (n, city) => ({
+    id: `900${n}`, company: 'Infosys', title: `Data Engineer ${n}`,
+    location: `${city}, India`, workplaceType: 'On-site', postedAt: Date.now() - 3600_000,
+  });
+  const three = [role(1, 'Bengaluru'), role(2, 'Pune'), role(3, 'Hyderabad')];
+  const msg = composeWhatsAppGroup(three, regionOf('IN'));
+
+  check('the employer is named once', (msg.match(/\*Infosys\*/g) ?? []).length, 1);
+  check('every role is listed', three.every((r) => msg.includes(r.title)), true);
+  check('every role links its own page', (msg.match(/https:\/\/interndoor\.com\/jobs\//g) ?? []).length, 3);
+  check('the count is stated', /3 new roles/.test(msg), true);
+  check('the board link is still there', msg.includes('https://interndoor.com/'), true);
+  /* WhatsApp builds the preview card from the FIRST url. A board link first
+     would render the board's card on every grouped post and throw away the
+     role card. */
+  const firstUrl = msg.split('\n').find((l) => l.startsWith('https://'));
+  check('the FIRST url is a job page, so the card is the role', /\/jobs\//.test(firstUrl), true);
+  check('it fits the message limit', msg.length <= MAX_MESSAGE, true);
+}
+
+console.log('\n== a single role is unchanged ==');
+{
+  /* One role must render exactly as it always did — the grouped layout would
+     be a heading and a count over a list of one. */
+  const one = { id: '77', company: 'Zoho', title: 'SDE Intern', location: 'Chennai, India' };
+  check('a group of one is the single-role message',
+    composeWhatsAppGroup([one], regionOf('IN')), composeWhatsApp(one, regionOf('IN')));
+}
+
+console.log('\n== the ROLE CAP and the LENGTH TRIM are separate, and both bite ==');
+{
+  /* THESE NEED TWO DIFFERENT FIXTURES OR NEITHER IS TESTED. With one set of
+     medium-length roles the cap and the trim produce the same output, so the
+     mutation removing either one survives — which is exactly what happened.
+     Short roles isolate the cap; long ones isolate the trim. */
+  const short = (i) => ({ id: `s${i}`, company: 'Infosys', title: `SDE ${i}`, location: 'Pune, India' });
+  const twelveShort = Array.from({ length: 12 }, (_, i) => short(i));
+  const capped = composeWhatsAppGroup(twelveShort, regionOf('IN'));
+  /* All twelve of these WOULD fit inside MAX_MESSAGE, so anything holding the
+     list to five is the cap and nothing else. */
+  check('twelve short roles would otherwise fit',
+    twelveShort.map(short).length > 0 && capped.length < MAX_MESSAGE, true);
+  check('the cap holds the list to MAX_GROUP_ROLES',
+    (capped.match(/https:\/\/interndoor\.com\/jobs\//g) ?? []).length, MAX_GROUP_ROLES);
+  check('and the rest are counted', capped.includes(`and ${12 - MAX_GROUP_ROLES} more`), true);
+
+  const long = (i) => ({
+    id: `l${i}`, company: 'Infosys',
+    title: `Senior Staff Software Development Engineer for Distributed Streaming Platforms and Realtime Data Infrastructure ${i}`,
+    /* A REAL long location — CLAUDE.md records this exact shape in the store.
+       With the shorter 'Bengaluru East, Karnataka, India' the five blocks came
+       to 1393 of 1400 and nothing trimmed, so the fixture pinned nothing: §1's
+       "too short to reach the limit it claimed to pin", caught by the mutation
+       that removes the trim surviving. */
+    location: 'Greater Bengaluru Metropolitan Area, Karnataka, India', workplaceType: 'On-site',
+  });
+  const fiveLong = Array.from({ length: 5 }, (_, i) => long(i));
+  /* NO SEPARATE "is the fixture long enough" CHECK — the `listed <
+     MAX_GROUP_ROLES` assertion below IS that check. The cap would allow all
+     five, so fewer than five can only mean the trim fired; if the fixture ever
+     stops reaching the limit, that line fails loudly rather than passing
+     vacuously. A first attempt added a second check that summed title and
+     location lengths, which is not what is rendered, and it was simply wrong. */
+  const trimmed = composeWhatsAppGroup(fiveLong, regionOf('IN'));
+  const listed = (trimmed.match(/https:\/\/interndoor\.com\/jobs\//g) ?? []).length;
+  check('it fits the limit', trimmed.length <= MAX_MESSAGE, true);
+  /* FEWER THAN THE CAP, which is the whole point: here the trim is the only
+     thing that can have acted, because the cap would have allowed all five. */
+  check('the trim drops below the cap when roles are long', listed < MAX_GROUP_ROLES, true);
+  check('at least one role survives', listed >= 1, true);
+  check('the heading still counts every role', /5 new roles/.test(trimmed), true);
+
+  /* No URL may be cut: a fragment renders as plain text and the card dies. */
+  for (const msg of [capped, trimmed]) {
+    for (const line of msg.split('\n').filter((l) => l.trim().startsWith('https://'))) {
+      check(`the url "${line.slice(0, 30)}..." is whole`, /^(https:\/\/interndoor\.com\/\S*)$/.test(line.trim()), true);
+    }
+  }
+}
+
+console.log('\n== inside a block: the role leads, the link follows ==');
+{
+  /* Order within a block is not cosmetic. The reader scans titles; a URL first
+     is a wall of links with the roles hidden between them. Pinned because the
+     mutation that hoists the page above the title leaves the FIRST url in the
+     message still a job page, so the preview-card check cannot catch it. */
+  const two = [
+    { id: 'a1', company: 'Infosys', title: 'Data Engineer', location: 'Pune, India' },
+    { id: 'a2', company: 'Infosys', title: 'React Developer', location: 'Pune, India' },
+  ];
+  const msg = composeWhatsAppGroup(two, regionOf('IN'));
+  const lines = msg.split('\n');
+  const titleAt = lines.findIndex((l) => l.includes('*Data Engineer*'));
+  const urlAt = lines.findIndex((l) => l.includes('/jobs/infosys-data-engineer'));
+  check('the title line comes before its url', titleAt >= 0 && urlAt > titleAt, true);
+  /* And the facts sit between them, not after the link. */
+  const factAt = lines.findIndex((l, i) => i > titleAt && l.startsWith('📍'));
+  check('the location sits between the title and the url', factAt > titleAt && factAt < urlAt, true);
+}
+
+console.log('\n== grouping preserves first-appearance order ==');
+{
+  const e = (code, company, id) => ({ code, id, job: { id, company, title: `Role ${id}` } });
+  /* The backlog leads: a listing stranded yesterday is older than one found
+     this minute, and grouping must not reorder it behind fresh arrivals. */
+  const groups = groupForWhatsApp([e('IN', 'Acme', '1'), e('IN', 'Beta', '2'), e('IN', 'Acme', '3')]);
+  check('two employers, two groups', groups.length, 2);
+  check('the first-seen employer leads', groups[0].company, 'Acme');
+  check('its roles are gathered', groups[0].items.map((i) => i.id), ['1', '3']);
+  check('the other employer keeps its own group', groups[1].items.map((i) => i.id), ['2']);
+  /* The same employer on two boards is two messages: each carries its own
+     board link and its own region wording. */
+  const boards = groupForWhatsApp([e('IN', 'Acme', '1'), e('US', 'Acme', '2')]);
+  check('one employer on two boards is two groups', boards.length, 2);
+  check('case does not split a group', groupForWhatsApp([e('IN', 'Acme', '1'), e('IN', 'ACME', '2')]).length, 1);
+  check('nothing in, nothing out', groupForWhatsApp([]), []);
+  check('a null list is handled', groupForWhatsApp(null), []);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
