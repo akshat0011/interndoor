@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-net-production-support-4433484247",
+      "url": "https://interndoor.com/jobs/infosys-net-production-support-4433484247",
+      "title": ".Net production support — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Support client systems, resolve issues, ensure quality and satisfaction\n• .net frameworks, testing tools, agile methodologies, project lifecycle\n• Work on production support, maintenance, and digital transformation projects",
+      "date_published": "2026-09-22T12:13:21.371Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-project-engineer-4461721661",
+      "url": "https://interndoor.com/jobs/ge-vernova-project-engineer-4461721661",
+      "title": "Project Engineer — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Noida, Uttar Pradesh, India\n• Design and implement control systems for industrial equipment\n• Use math modeling and control theory for system optimization\n• Work on automation and sensor integration projects",
+      "date_published": "2026-09-22T11:58:26.239Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4468790666",
+      "url": "https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4468790666",
+      "title": "Intern – Data Science and AI Engineering — Philips",
+      "content_text": "Company: Philips · Location: Bengaluru, Karnataka, India\n• Analyze data to improve healthcare solutions\n• Use python and machine learning frameworks\n• Collaborate with cross-functional teams on real projects",
+      "date_published": "2026-09-22T11:52:54.640Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-software-engineer-4470411697",
+      "url": "https://interndoor.com/jobs/ge-vernova-software-engineer-4470411697",
+      "title": "Software Engineer — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India\n• Build and scale enterprise apps with Java/Spring Boot and modern frontend frameworks\n• Integrate WebFOCUS reports and dashboards into web applications\n• Optimize data models and queries for BI reporting tools",
+      "date_published": "2026-09-22T11:36:54.630Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zensar-technologies-data-engineer-4470419115",
       "url": "https://interndoor.com/jobs/zensar-technologies-data-engineer-4470419115",
       "title": "Data Engineer — Zensar Technologies",
@@ -551,54 +599,6 @@
       "title": "IOS dev — Zensar Technologies",
       "content_text": "Company: Zensar Technologies · Location: Telangana, India\n• Build ios apps with swift, swiftui, and objective-c\n• Focus on performance, memory, and security\n• Work on native apps with unit tests and git",
       "date_published": "2026-09-21T11:38:13.035Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4461040931",
-      "title": "QA Engineer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Execute test cases for data pipelines and validate source-to-target parity\n• Track defects and provide quality status reports for migration phases\n• Collaborate with data engineers to resolve issues during validation cycles",
-      "date_published": "2026-09-21T11:31:19.257Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
-      "url": "https://interndoor.com/jobs/cyient-embedded-verification-and-validation-engineers-4449544476",
-      "title": "Embedded Verification and Validation Engineers — Cyient",
-      "content_text": "Company: Cyient · Location: Bengaluru, Karnataka, India\n• Verify and validate embedded systems using do-178c standards\n• Write and execute unit tests for low-level software\n• Work with embedded c++ in aviation software development",
-      "date_published": "2026-09-21T11:24:01.049Z",
-      "authors": [
-        {
-          "name": "Cyient"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363",
-      "url": "https://interndoor.com/jobs/quest-global-software-engineer-java-microservices-4468736363",
-      "title": "Software Engineer - Java Microservices — Quest Global",
-      "content_text": "Company: Quest Global · Location: Thiruvananthapuram, Kerala, India · Duration: 1-3 years\n• Develop medical device software using Java, Swing, and Spring Boot\n• Work on enterprise applications with C++, Perl, and Python components\n• Collaborate with stakeholders on feature implementation and bug fixes",
-      "date_published": "2026-09-21T11:06:06.890Z",
-      "authors": [
-        {
-          "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-andriod-developer-4468722433",
-      "url": "https://interndoor.com/jobs/zensar-technologies-andriod-developer-4468722433",
-      "title": "Andriod Developer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Hyderabad, Telangana, India\n• Build and maintain android apps with web service integration\n• Use soap and rest for backend communication\n• Work on enterprise mobile solutions for global clients",
-      "date_published": "2026-09-21T11:01:15.431Z",
       "authors": [
         {
           "name": "Zensar Technologies"
