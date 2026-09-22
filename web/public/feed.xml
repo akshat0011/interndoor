@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 22 Sep 2026 13:44:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 14:25:10 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineering Intern — Red Hat</title>
+    <link>https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501</guid>
+    <pubDate>Tue, 22 Sep 2026 14:25:10 GMT</pubDate>
+    <description>Company: Red Hat · Location: Pune Division, Maharashtra, India
+• Design, develop, and maintain code in Python, Golang or similar
+• Add features, debug, and track issues in Red Hat products
+• Collaborate with Quality Engineering, Product Management, and Designers</description>
+  </item>
+  <item>
+    <title>Quadient Inspire Scaler developer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-quadient-inspire-scaler-developer-4442001408</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-quadient-inspire-scaler-developer-4442001408</guid>
+    <pubDate>Tue, 22 Sep 2026 14:11:22 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Design, develop, validate and support systems for client projects
+• Translate functional/non-functional requirements into system specs
+• Contribute to project estimation and quality processes</description>
+  </item>
+  <item>
+    <title>IaC &amp; automation, Nutanix — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-iac-and-automation-nutanix-4442003291</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-iac-and-automation-nutanix-4442003291</guid>
+    <pubDate>Tue, 22 Sep 2026 14:10:08 GMT</pubDate>
+    <description>Company: Infosys · Location: Hyderabad, Telangana, India
+• Design, develop, and validate systems for client projects
+• Use Nutanix and hyperconverged infrastructure technologies
+• Collaborate with leads to estimate project requirements</description>
+  </item>
   <item>
     <title>React AI — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-react-ai-4441788954</link>
@@ -481,37 +511,6 @@
 • Implement designs, develop systems, and resolve production issues
 • Work with IBM FileNet and other enterprise content management tools
 • Collaborate with clients on digital transformation projects</description>
-  </item>
-  <item>
-    <title>React JS — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-react-js-4459764093</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-react-js-4459764093</guid>
-    <pubDate>Mon, 21 Sep 2026 13:58:10 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Interface with clients for quality assurance and issue resolution
-• Create and review designs, validate architecture
-• Participate in project estimation and technical risk planning</description>
-  </item>
-  <item>
-    <title>AI ML Engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-ai-ml-engineer-4441381826</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-ai-ml-engineer-4441381826</guid>
-    <pubDate>Mon, 21 Sep 2026 13:33:19 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Build and deploy ML models using Python and frameworks like TensorFlow, PyTorch, and Scikit-learn
-• Develop NLP and GenAI solutions including RAG systems and Agentic AI
-• Collaborate with data scientists and engineers on model training and deployment
-• Monitor model performance and implement retraining strategies in production</description>
-  </item>
-  <item>
-    <title>Software Engineer - IAM — Rubrik</title>
-    <link>https://interndoor.com/jobs/rubrik-software-engineer-iam-4461084710</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/rubrik-software-engineer-iam-4461084710</guid>
-    <pubDate>Mon, 21 Sep 2026 13:27:42 GMT</pubDate>
-    <description>Company: Rubrik · Location: Pune Division, Maharashtra, India
-• Design and build identity and access systems using Golang, OIDC, OAuth, and SAML
-• Secure auth flows with cryptography, TLS, and PKI best practices
-• Maintain Windows app in C#/.NET and cross-platform packaging tools</description>
   </item>
 </channel>
 </rss>
