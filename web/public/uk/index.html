@@ -365,6 +365,42 @@ Engineering internships &amp; entry-level jobs
     </div>
   </section>
 
+  <!-- The feedback box.
+
+       DELIBERATELY QUIETER than the signup band above it. An email address is
+       the only channel this site owns rather than rents, so the subscribe form
+       is the conversion worth protecting; a second loud band under it would
+       split the attention of the one reader who scrolled this far.
+
+       IT SHIPS `hidden` AND feedback.js REVEALS IT. Unlike the signup form —
+       which carries a real method and action, so a no-JavaScript submit still
+       subscribes the reader — this form has neither. A no-JS submit would
+       navigate to raw JSON and the reader would not know whether it arrived,
+       so a reader who would get a broken control is shown nothing instead.
+
+       NO data-region: this file is the TEMPLATE for all three boards, and
+       feedback.js reads <meta name="interndoor-region"> instead — the same
+       reason subscribe.js does. -->
+  <section class="feedback-band">
+    <div class="wrap">
+      <form class="fb" hidden>
+        <b class="fb-h">Something wrong, or missing?</b>
+        <p class="fb-sub">A dead apply link, a listing that has closed, an employer we should be tracking — tell us and we will fix it.</p>
+        <div class="fb-row">
+          <textarea class="fb-t" aria-label="Your feedback" rows="3" maxlength="2000" placeholder="What happened, or what is missing?"></textarea>
+          <div class="fb-send">
+            <input class="fb-e" type="email" aria-label="Your email, if you want a reply" autocomplete="email" inputmode="email" spellcheck="false" placeholder="Email, if you want a reply">
+            <button class="fb-b" type="button">Send</button>
+          </div>
+        </div>
+        <!-- The honeypot, reusing .sub-hp: off-screen rather than display:none,
+             because some bots skip anything explicitly hidden. -->
+        <div class="sub-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+        <p class="fb-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
   <footer class="foot">
     <div class="wrap">
       <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
@@ -606,6 +642,7 @@ Engineering internships &amp; entry-level jobs
      executed before app.js reads window.IDTrack. -->
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
+<script defer src="/feedback.js"></script>
 <script src="/app.js" type="module"></script>
 </body>
 </html>
