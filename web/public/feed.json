@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cargill-associate-software-engineer-4468911835",
+      "url": "https://interndoor.com/jobs/cargill-associate-software-engineer-4468911835",
+      "title": "Associate Software Engineer — Cargill",
+      "content_text": "Company: Cargill · Location: Bengaluru, Karnataka, India\n• Write clean code for scalable software solutions\n• Automate deployment with internal tools and platforms\n• Collaborate with product teams on cybersecurity goals",
+      "date_published": "2026-09-22T17:51:44.580Z",
+      "authors": [
+        {
+          "name": "Cargill"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sharechat-sde-intern-4470482466",
+      "url": "https://interndoor.com/jobs/sharechat-sde-intern-4470482466",
+      "title": "SDE-Intern — ShareChat",
+      "content_text": "Company: ShareChat · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Develop and maintain software applications\n• Work on backend systems and data integration\n• Hybrid setup with 3 days in office",
+      "date_published": "2026-09-22T17:34:51.447Z",
+      "authors": [
+        {
+          "name": "ShareChat"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-4461505341",
       "url": "https://interndoor.com/jobs/zoominfo-software-engineer-i-salesforce-4461505341",
       "title": "Software Engineer I - Salesforce — ZoomInfo",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-vision-plus-testing-4459764962",
-      "url": "https://interndoor.com/jobs/cognizant-vision-plus-testing-4459764962",
-      "title": "Vision Plus Testing — Cognizant",
-      "content_text": "Company: Cognizant · Location: Gurgaon, Haryana, India\n• Review and analyze project requirements\n• Design test strategy and define FSD/BRD scope\n• Lead testing kickoff meetings and knowledge transfer",
-      "date_published": "2026-09-21T18:17:47.885Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lenovo-associate-it-engineer-4469929907",
-      "url": "https://interndoor.com/jobs/lenovo-associate-it-engineer-4469929907",
-      "title": "Associate IT Engineer — Lenovo",
-      "content_text": "Company: Lenovo · Location: Bangalore Urban, Karnataka, India · Duration: 0-2 years\n• Build and maintain e-commerce web apps with modern frontend tech\n• Work with designers and backend teams on high-performance UX\n• Debug and optimize web apps for scalability and cross-browser use",
-      "date_published": "2026-09-21T18:16:29.156Z",
-      "authors": [
-        {
-          "name": "Lenovo"
         }
       ]
     }
