@@ -6,7 +6,57 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 01:43:28 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 02:34:26 GMT</lastBuildDate>
+  <item>
+    <title>Summer 2027 PhD AI Research Infrastructure, RL Post-Training Intern — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-phd-ai-research-infrastructure-rl-post-training-intern-4468197564</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-phd-ai-research-infrastructure-rl-post-training-intern-4468197564</guid>
+    <pubDate>Tue, 22 Sep 2026 02:34:26 GMT</pubDate>
+    <description>Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027
+• Develop and optimize infrastructure for reinforcement learning post-training of large models
+• Build scalable systems for inference, reward computation, and policy updates
+• Collaborate with researchers on production-quality infrastructure for experimental workflows</description>
+  </item>
+  <item>
+    <title>Summer 2027 PhD Gen AI and Reinforcement Learning Research Intern — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-phd-gen-ai-and-reinforcement-learning-research-intern-4468186935</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-phd-gen-ai-and-reinforcement-learning-research-intern-4468186935</guid>
+    <pubDate>Tue, 22 Sep 2026 02:33:55 GMT</pubDate>
+    <description>Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027
+• Prototype methods for post-training large generative models
+• Develop evaluations for model quality and real-world performance
+• Collaborate on training, logging, and reproducibility with research teams</description>
+  </item>
+  <item>
+    <title>R&amp;D PhD Summer Intern: AI Agents for Automated Machine Learning Research — Procter &amp; Gamble</title>
+    <link>https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-ai-agents-for-automated-machine-learning-res-4468184861</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/procter-and-gamble-r-and-d-phd-summer-intern-ai-agents-for-automated-machine-learning-res-4468184861</guid>
+    <pubDate>Tue, 22 Sep 2026 02:20:21 GMT</pubDate>
+    <description>Company: Procter &amp; Gamble · Location: Mason, OH
+• Design AI-agent frameworks for automating ML experiments on time-series data
+• Work with PyTorch/TensorFlow, Python, and experiment-tracking tools
+• Compare AI-driven vs traditional methods in model performance and efficiency</description>
+  </item>
+  <item>
+    <title>Engineering Intern II — AECOM</title>
+    <link>https://interndoor.com/us/jobs/aecom-engineering-intern-ii-4468053590</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/aecom-engineering-intern-ii-4468053590</guid>
+    <pubDate>Tue, 22 Sep 2026 02:16:17 GMT</pubDate>
+    <description>Company: AECOM · Location: Chicago, IL
+• Assist with street and transit infrastructure planning and design
+• Use CAD and civil design software for drawings and calculations
+• Gain hands-on experience in transportation projects and engineering workflows</description>
+  </item>
+  <item>
+    <title>Internal Audit Analytics Intern — Coinbase</title>
+    <link>https://interndoor.com/us/jobs/coinbase-internal-audit-analytics-intern-4470229482</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/coinbase-internal-audit-analytics-intern-4470229482</guid>
+    <pubDate>Tue, 22 Sep 2026 01:53:44 GMT</pubDate>
+    <description>Company: Coinbase · Location: San Francisco, CA · Duration: Summer 2027
+• Extract, analyze, and validate datasets from internal systems to assess control effectiveness
+• Write sql queries against snowflake and other platforms for audit testing
+• Build continuous auditing processes and ai tools for internal audit teams</description>
+  </item>
   <item>
     <title>Internal Audit Analytics Intern — Coinbase</title>
     <link>https://interndoor.com/us/jobs/coinbase-internal-audit-analytics-intern-4470230423</link>
@@ -16,6 +66,26 @@
 • Extract, analyze, and validate datasets to assess control effectiveness
 • Write sql queries against snowflake and internal data platforms
 • Build continuous auditing processes and ai tooling for internal audit</description>
+  </item>
+  <item>
+    <title>Internship, Power Electronics Firmware Engineer, Energy Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-power-electronics-firmware-engineer-energy-engineering-wint-4470226376</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-power-electronics-firmware-engineer-energy-engineering-wint-4470226376</guid>
+    <pubDate>Tue, 22 Sep 2026 01:41:39 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Write C code for embedded systems and debug firmware
+• Work with hardware and software teams on power converters
+• Test and improve firmware for vehicle charging products</description>
+  </item>
+  <item>
+    <title>Internship, Reliability Test Engineer, Energy Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-reliability-test-engineer-energy-engineering-winter-spring--4470224451</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-reliability-test-engineer-energy-engineering-winter-spring--4470224451</guid>
+    <pubDate>Tue, 22 Sep 2026 01:41:19 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Design and build testing platforms for energy products
+• Work with hardware and firmware teams on reliability testing
+• Based in Palo Alto, CA for 12+ weeks full-time</description>
   </item>
   <item>
     <title>Internship, Residential Energy Device Software Engineer, Energy Engineering (Winter/Spring 2027) — Tesla</title>
@@ -250,17 +320,6 @@
 • Work with Product and System RAMS Engineers</description>
   </item>
   <item>
-    <title>Intern – AI Engineer, Enterprise AI &amp; Workflow Automation – Plymouth, MN – Summer 2027 — Philips</title>
-    <link>https://interndoor.com/us/jobs/philips-intern-ai-engineer-enterprise-ai-and-workflow-automation-plymouth-mn-s-4468788209</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/philips-intern-ai-engineer-enterprise-ai-and-workflow-automation-plymouth-mn-s-4468788209</guid>
-    <pubDate>Mon, 21 Sep 2026 23:40:52 GMT</pubDate>
-    <description>Company: Philips · Location: Plymouth, MN · Duration: Summer 2027
-• Develop AI agents and conversational experiences using Microsoft Copilot Studio
-• Integrate AI with SharePoint, Teams, Power BI, and Azure data sources
-• Automate workflows with Power Automate to reduce manual tasks
-• Create dashboards to measure AI solution impact and user feedback</description>
-  </item>
-  <item>
     <title>Assembly, Integration, and Test Intern (Winter 2027) — Astranis</title>
     <link>https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-winter-2027-ats-greenhouse-astranis-4704759006</link>
     <guid isPermaLink="true">https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-winter-2027-ats-greenhouse-astranis-4704759006</guid>
@@ -449,66 +508,6 @@
     <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468182033</guid>
     <pubDate>Mon, 21 Sep 2026 22:02:32 GMT</pubDate>
     <description>Company: Marvell Technology · Location: Boise, ID · Duration: Fall 2027
-• Design and verify high-performance RTL blocks for next-gen chips
-• Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis
-• Collaborate with cross-functional teams on real chip design projects</description>
-  </item>
-  <item>
-    <title>Digital IC Design Intern, MS - Summer 2027 — Marvell Technology</title>
-    <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468171634</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468171634</guid>
-    <pubDate>Mon, 21 Sep 2026 22:02:29 GMT</pubDate>
-    <description>Company: Marvell Technology · Location: Austin, TX · Duration: Fall 2027
-• Simulate and verify high-performance digital circuits for next-gen chips
-• Use Synopsys, Cadence, and Mentor tools for RTL design and timing analysis
-• Collaborate with cross-functional teams on cloud and AI infrastructure projects</description>
-  </item>
-  <item>
-    <title>Digital IC Design Intern, MS - Summer 2027 — Marvell Technology</title>
-    <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468183029</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468183029</guid>
-    <pubDate>Mon, 21 Sep 2026 22:02:10 GMT</pubDate>
-    <description>Company: Marvell Technology · Location: Hudson, NY · Duration: Fall 2027
-• Design and verify high-performance RTL blocks for next-gen chips
-• Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis
-• Collaborate with cross-functional teams on real chip design projects</description>
-  </item>
-  <item>
-    <title>Digital IC Design Intern, MS - Summer 2027 — Marvell Technology</title>
-    <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468168747</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4468168747</guid>
-    <pubDate>Mon, 21 Sep 2026 22:01:59 GMT</pubDate>
-    <description>Company: Marvell Technology · Location: Irvine, CA · Duration: Fall 2027
-• Design and verify high-performance RTL blocks for next-gen chips
-• Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis
-• Collaborate with cross-functional teams on real chip design projects</description>
-  </item>
-  <item>
-    <title>SAP iXp Intern - AI Technical Program Manager, AI &amp; Machine Learning — SAP</title>
-    <link>https://interndoor.com/us/jobs/sap-sap-ixp-intern-ai-technical-program-manager-ai-and-machine-learning-4468180019</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/sap-sap-ixp-intern-ai-technical-program-manager-ai-and-machine-learning-4468180019</guid>
-    <pubDate>Mon, 21 Sep 2026 21:56:36 GMT</pubDate>
-    <description>Company: SAP · Location: Palo Alto, CA
-• Coordinate AI projects from data collection to deployment
-• Collaborate with engineers, product managers, and data teams
-• Build reports for SAP leadership on AI progress</description>
-  </item>
-  <item>
-    <title>Digital IC Design Intern, BS - Summer 2027 — Marvell Technology</title>
-    <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4468172595</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4468172595</guid>
-    <pubDate>Mon, 21 Sep 2026 21:56:28 GMT</pubDate>
-    <description>Company: Marvell Technology · Location: Boise, ID · Duration: Fall 2027
-• Design and verify high-performance RTL blocks for next-gen chips
-• Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis
-• Collaborate with cross-functional teams on real chip design projects</description>
-  </item>
-  <item>
-    <title>Digital IC Design Intern, BS - Summer 2027 — Marvell Technology</title>
-    <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4468177067</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4468177067</guid>
-    <pubDate>Mon, 21 Sep 2026 21:56:20 GMT</pubDate>
-    <description>Company: Marvell Technology · Location: Hudson, NY · Duration: Fall 2027
 • Design and verify high-performance RTL blocks for next-gen chips
 • Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis
 • Collaborate with cross-functional teams on real chip design projects</description>
