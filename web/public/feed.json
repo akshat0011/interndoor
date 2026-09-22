@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristlecone-associate-manager-data-engineering-data-engineering-4470247819",
+      "url": "https://interndoor.com/jobs/bristlecone-associate-manager-data-engineering-data-engineering-4470247819",
+      "title": "Associate Manager - Data Engineering-Data Engineering — Bristlecone",
+      "content_text": "Company: Bristlecone · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for supply chain analytics\n• Use python and cloud platforms for data processing\n• Work on high-impact projects for global logistics clients",
+      "date_published": "2026-09-22T05:16:45.068Z",
+      "authors": [
+        {
+          "name": "Bristlecone"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4468518361",
       "url": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4468518361",
       "title": "Software Engineer - Java Spring Boot — Mastercard",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Kaleris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/morningstar-associate-software-engineer-ats-workday-morningstar-wd5-morningstar-req-058319",
-      "url": "https://interndoor.com/jobs/morningstar-associate-software-engineer-ats-workday-morningstar-wd5-morningstar-req-058319",
-      "title": "Associate Software Engineer — Morningstar",
-      "content_text": "Company: Morningstar · Location: Mumbai · Duration: 1 to 2 years\n• Build scalable products for investors using .NET, AWS, and SQL Server\n• Collaborate with product managers to design technical solutions\n• Work in a hybrid model with 4 days in-office in Mumbai",
-      "date_published": "2026-09-21T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Morningstar"
         }
       ]
     }

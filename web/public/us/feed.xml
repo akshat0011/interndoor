@@ -6,7 +6,78 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 04:29:03 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 05:32:27 GMT</lastBuildDate>
+  <item>
+    <title>Internship, Power Electronics Controls Engineer, Energy Engineering (Winter/Spring 2027) — Tesla</title>
+    <link>https://interndoor.com/us/jobs/tesla-internship-power-electronics-controls-engineer-energy-engineering-wint-4470254465</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/tesla-internship-power-electronics-controls-engineer-energy-engineering-wint-4470254465</guid>
+    <pubDate>Tue, 22 Sep 2026 05:32:27 GMT</pubDate>
+    <description>Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks
+• Develop control strategies for power electronics converters
+• Simulate and test algorithms in MATLAB/Simulink and HIL
+• Collaborate with firmware team on real-time control systems
+• Work on hardware bring-up and safety testing for power products</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern - Product Lifecycle Management (Spring 2027 Co-Op) — Rivian</title>
+    <link>https://interndoor.com/us/jobs/rivian-software-engineering-intern-product-lifecycle-management-spring-2027-c-4470255209</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/rivian-software-engineering-intern-product-lifecycle-management-spring-2027-c-4470255209</guid>
+    <pubDate>Tue, 22 Sep 2026 05:09:33 GMT</pubDate>
+    <description>Company: Rivian · Location: Palo Alto, CA · Duration: Spring 2027
+• Develop AI agents to automate testing of EV designs in Catia V6
+• Build backend tools for mechanical and software teams using C++ and Python
+• Work on CI pipelines that run regression tests after design updates</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern - Product Development Portal (Spring Co-Op) — Rivian</title>
+    <link>https://interndoor.com/us/jobs/rivian-software-engineering-intern-product-development-portal-spring-co-op-4470244916</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/rivian-software-engineering-intern-product-development-portal-spring-co-op-4470244916</guid>
+    <pubDate>Tue, 22 Sep 2026 05:09:06 GMT</pubDate>
+    <description>Company: Rivian · Location: Palo Alto, CA
+• Build and deploy full-stack features for Product Development Portal
+• Work with REST/GraphQL, SQL/NoSQL, and AWS cloud infrastructure
+• Collaborate with engineering and product teams on internal tools</description>
+  </item>
+  <item>
+    <title>Software Engineer Full Stack / Backend I (Intern) – United States — Cisco</title>
+    <link>https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470234932</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470234932</guid>
+    <pubDate>Tue, 22 Sep 2026 04:44:20 GMT</pubDate>
+    <description>Company: Cisco · Location: San Jose, CA
+• Design and build APIs and applications for Cisco platforms
+• Work with Python, Java, Go, and cloud tools like AWS or Azure
+• Collaborate on back-end systems and contribute to front-end projects</description>
+  </item>
+  <item>
+    <title>Software Engineer Embedded Systems I (Intern) – United States — Cisco</title>
+    <link>https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470241661</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470241661</guid>
+    <pubDate>Tue, 22 Sep 2026 04:44:15 GMT</pubDate>
+    <description>Company: Cisco · Location: Milpitas, CA
+• Build low-level software in C and embedded Linux for global network infrastructure
+• Automate workflows with Python and Bash, strengthen system security through DevSecOps
+• Work on high-impact teams shaping Cisco&#39;s future and AI-era technologies</description>
+  </item>
+  <item>
+    <title>Software Engineer Full Stack / Backend I (Intern) – United States — Cisco</title>
+    <link>https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470241663</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470241663</guid>
+    <pubDate>Tue, 22 Sep 2026 04:44:09 GMT</pubDate>
+    <description>Company: Cisco · Location: Triangle, NC
+• Design and build APIs and applications for Cisco platforms
+• Work with Python, Java, Go, and cloud platforms like AWS
+• Collaborate on distributed systems and scalable software</description>
+  </item>
+  <item>
+    <title>Data Scientist Intern — Siemens</title>
+    <link>https://interndoor.com/us/jobs/siemens-data-scientist-intern-4470247629</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/siemens-data-scientist-intern-4470247629</guid>
+    <pubDate>Tue, 22 Sep 2026 04:41:49 GMT</pubDate>
+    <description>Company: Siemens · Location: Alpharetta, GA · Duration: Summer 2027
+• Analyze data to support AI and machine learning projects
+• Use python and sql to build analytics and automation solutions
+• Create dashboards with tableau and power bi for business insights</description>
+  </item>
   <item>
     <title>Building Automation Systems Specialist Internship — Siemens</title>
     <link>https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4470236931</link>
@@ -438,76 +509,6 @@
 • Support Fortnite Online team with online gameplay tech development
 • Work on shared systems for Unreal Engine and Fortnite features
 • Develop stable solutions from concept to shipped code</description>
-  </item>
-  <item>
-    <title>Digital Systems Engineering Intern — Qorvo, Inc.</title>
-    <link>https://interndoor.com/us/jobs/qorvo-inc-digital-systems-engineering-intern-4470221273</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/qorvo-inc-digital-systems-engineering-intern-4470221273</guid>
-    <pubDate>Tue, 22 Sep 2026 00:18:23 GMT</pubDate>
-    <description>Company: Qorvo, Inc. · Location: Greensboro, NC
-• Design and verify control logic for communication modules
-• Use Excel, Cadence, ADS, and MATLAB for simulations
-• Collaborate with RF, analog, and software teams on complex projects</description>
-  </item>
-  <item>
-    <title>Quality Engineering Communication and Media Intern - Spring 2027 — Lenovo</title>
-    <link>https://interndoor.com/us/jobs/lenovo-quality-engineering-communication-and-media-intern-spring-2027-4468781401</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/lenovo-quality-engineering-communication-and-media-intern-spring-2027-4468781401</guid>
-    <pubDate>Tue, 22 Sep 2026 00:16:34 GMT</pubDate>
-    <description>Company: Lenovo · Location: North Carolina, United States · Duration: Spring 2027
-• Create videos, presentations, and content for technical audiences
-• Work with engineers on hardware and quality issues
-• Use adobe tools and collaborate globally</description>
-  </item>
-  <item>
-    <title>Research Intern, Robotics - Summer 2027 — NVIDIA</title>
-    <link>https://interndoor.com/us/jobs/nvidia-research-intern-robotics-summer-2027-4468779408</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/nvidia-research-intern-robotics-summer-2027-4468779408</guid>
-    <pubDate>Tue, 22 Sep 2026 00:08:52 GMT</pubDate>
-    <description>Company: NVIDIA · Location: Seattle, WA · Duration: Summer 2027
-• Develop algorithms for robotic manipulation and integration into real-world systems
-• Work with ROS2, Isaac Sim, and PyTorch in high-impact research projects
-• Contribute to publications and code releases in top robotics conferences</description>
-  </item>
-  <item>
-    <title>Research Intern, Robotics - Summer 2027 — NVIDIA</title>
-    <link>https://interndoor.com/us/jobs/nvidia-research-intern-robotics-summer-2027-4468773470</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/nvidia-research-intern-robotics-summer-2027-4468773470</guid>
-    <pubDate>Tue, 22 Sep 2026 00:08:28 GMT</pubDate>
-    <description>Company: NVIDIA · Location: Santa Clara, CA · Duration: Summer 2027
-• Develop algorithms for robotic manipulation and integration into real-world systems
-• Work with ROS2, Isaac Sim, and deep learning frameworks like PyTorch
-• Contribute to high-impact research projects with global robotics teams</description>
-  </item>
-  <item>
-    <title>PhD Research Intern, Networking - 2027 — NVIDIA</title>
-    <link>https://interndoor.com/us/jobs/nvidia-phd-research-intern-networking-2027-4468787242</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/nvidia-phd-research-intern-networking-2027-4468787242</guid>
-    <pubDate>Tue, 22 Sep 2026 00:08:24 GMT</pubDate>
-    <description>Company: NVIDIA · Location: Santa Clara, CA · Duration: 5-10 years
-• Design algorithms and hardware/software for next-gen networking and computing systems
-• Work on long-term research projects including AI communication, network protocols, and optical switching
-• Contribute to patents, publications, and prototypes for future NVIDIA technologies</description>
-  </item>
-  <item>
-    <title>Software Engineer Intern — Boston Scientific</title>
-    <link>https://interndoor.com/us/jobs/boston-scientific-software-engineer-intern-4470221222</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/boston-scientific-software-engineer-intern-4470221222</guid>
-    <pubDate>Tue, 22 Sep 2026 00:05:29 GMT</pubDate>
-    <description>Company: Boston Scientific · Location: Arden Hills, MN · Duration: 12 weeks
-• Build automated test systems using AI and machine learning tools
-• Work with engineers to design test solutions for medical devices
-• Simulate testing environments to reduce reliance on real-time data</description>
-  </item>
-  <item>
-    <title>Quality Engineering Co-op — Boston Scientific</title>
-    <link>https://interndoor.com/us/jobs/boston-scientific-quality-engineering-co-op-4470219314</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/boston-scientific-quality-engineering-co-op-4470219314</guid>
-    <pubDate>Tue, 22 Sep 2026 00:04:57 GMT</pubDate>
-    <description>Company: Boston Scientific · Location: Marlborough, MA
-• Support quality assurance across product life cycle with cross-functional teams
-• Apply data analysis tools to ensure regulatory and customer compliance
-• Work in Marlborough, MA, hybrid model with 3-4 days in-office</description>
   </item>
 </channel>
 </rss>
