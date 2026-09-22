@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161",
+      "url": "https://interndoor.com/jobs/bristol-myers-squibb-software-engineer-analytical-engineering-4470240161",
+      "title": "Software-Engineer--Analytical-Engineering — Bristol Myers Squibb",
+      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Build data models and pipelines for business intelligence\n• Use dbt and aws for data transformation and modeling\n• Collaborate with ai/ml teams on data infrastructure",
+      "date_published": "2026-09-22T01:52:04.601Z",
+      "authors": [
+        {
+          "name": "Bristol Myers Squibb"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/noise-intern-qa-4468769854",
       "url": "https://interndoor.com/jobs/noise-intern-qa-4468769854",
       "title": "Intern - QA — Noise",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Piramal"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424249762",
-      "url": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4424249762",
-      "title": "AI Customer Engineer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build and deploy AI agents and GenAI apps using modern frameworks\n• Develop scalable backend services and APIs for AI systems\n• Collaborate with cross-functional teams on secure, high-performing solutions\n• Work onsite in Bangalore, 5 days a week",
-      "date_published": "2026-09-20T19:34:50.598Z",
-      "authors": [
-        {
-          "name": "Cognizant"
         }
       ]
     }
