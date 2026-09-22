@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4469070272",
+      "url": "https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4469070272",
+      "title": "Rave Custom Function Programmer — IQVIA",
+      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 1 to 10 years\n• Program edit checks and custom functions in C# for data validation\n• Work with Medidata Rave and build internal tools using Excel or Visual Studio\n• Collaborate with corporate and CDM teams on project timelines and deliverables",
+      "date_published": "2026-09-22T22:50:01.121Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595",
       "url": "https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595",
       "title": "Associate Engineer (C,C++&OpenGL,1-3 years,Hyderabad) — Collins Aerospace",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Coforge"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
-      "url": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
-      "title": "Data Engineer I (R-19886) — Dun & Bradstreet",
-      "content_text": "Company: Dun & Bradstreet · Location: Hyderabad, Telangana, India\n• Build data tools, automations, and pipelines using SQL and Python\n• Work on AI workflows with LangChain, embeddings, and vector databases\n• Maintain data integrity and resolve operational issues in production",
-      "date_published": "2026-09-22T07:07:51.376Z",
-      "authors": [
-        {
-          "name": "Dun & Bradstreet"
         }
       ]
     }
