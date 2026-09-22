@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cadence-design-engineering-architect-4414495720",
+      "url": "https://interndoor.com/jobs/cadence-design-engineering-architect-4414495720",
+      "title": "Design Engineering Architect — Cadence",
+      "content_text": "Company: Cadence · Location: Bengaluru, Karnataka, India\n• Design and architect frontend digital interfaces for products\n• Mentor team and define design principles for high quality output\n• Collaborate with cross-functional teams on product development",
+      "date_published": "2026-09-22T18:31:00.616Z",
+      "authors": [
+        {
+          "name": "Cadence"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cognizant-team-member-4460077298",
       "url": "https://interndoor.com/jobs/cognizant-team-member-4460077298",
       "title": "Team Member — Cognizant",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Exponent Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
-      "url": "https://interndoor.com/jobs/keyvalue-data-engineer-4469970853",
-      "title": "Data Engineer — KeyValue",
-      "content_text": "Company: KeyValue · Location: Kochi, Kerala, India\n• Design and build scalable data pipelines for structured and unstructured data\n• Use SQL, Redshift, BigQuery, Spark, and Python for data processing\n• Collaborate with product and engineering teams on data-driven decisions",
-      "date_published": "2026-09-21T21:00:29.987Z",
-      "authors": [
-        {
-          "name": "KeyValue"
         }
       ]
     }
