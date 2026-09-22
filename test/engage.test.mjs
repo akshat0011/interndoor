@@ -115,7 +115,15 @@ console.log('\n== the board wires it in the right order ==');
      bar also names the tab the reader is not looking at. */
   ok('the header is drawn only when something is new', /if \(split\.n > 0 \|\| otherNew > 0\) \{[\s\S]*'since-bar'/.test(renderList));
   ok('the count reaches <html> too', /dataset\.newsince = String\(split\.n\)/.test(renderList));
-  ok('cards are told whether they were seen', /jobCard\(group\[0\], i, group, seen\.has\(group\)\)/.test(renderList));
+  /* THE CALL MOVED OUT OF renderList ON 22 SEP 2026 and the invariant did not.
+     The list is windowed now — renderWindow draws the first chunk and appends
+     more as the reader scrolls — so the jobCard call lives there, and pinning
+     it inside renderList failed on a refactor that changed nothing about what
+     a card is told. Both halves are pinned instead: renderList must hand the
+     seen set to the window, and the window must pass it to every card. */
+  ok('renderList hands the seen set to the window', /renderWindow\(list, frag, split\.ordered, seen\)/.test(renderList));
+  const renderWindow = lift(app, 'function renderWindow(', '\n}', 'renderWindow');
+  ok('cards are told whether they were seen', /jobCard\(group\[0\], i, group, seen\.has\(group\)\)/.test(renderWindow));
 
   const jobCard = lift(app, 'function jobCard(', '\n}', 'jobCard');
   ok('a seen card carries the class', /if \(seen\) row\.classList\.add\('seen'\)/.test(jobCard));

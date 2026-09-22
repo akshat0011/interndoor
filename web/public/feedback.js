@@ -42,7 +42,75 @@ function regionOf(form) {
 
 (function feedback() {
   document.querySelectorAll('form.fb').forEach(wire);
+  wireDialog();
 })();
+
+/**
+ * The masthead button opens the dialog; everything here closes it.
+ *
+ * THE BACKDROP DOES CLOSE IT, unlike engage.js's prompt. That one interrupts a
+ * reader who did not ask for it, so it deliberately has to be answered; this
+ * one is a dialog the reader opened on purpose, and a backdrop that ignores a
+ * click on a thing the reader opened themselves reads as broken.
+ */
+function wireDialog() {
+  const open = document.querySelector('.fb-open');
+  const modal = document.querySelector('.fb-modal');
+  const veil = document.querySelector('.fb-veil');
+  if (!open || !modal || !veil) return;
+
+  /* Revealed only now, like the form itself: with no JavaScript the button
+     would open nothing, so it is not shown at all. */
+  open.hidden = false;
+
+  let lastFocus = null;
+  const focusable = () => [...modal.querySelectorAll('textarea, input, button')]
+    .filter((el) => !el.disabled && el.offsetParent !== null);
+
+  function show() {
+    lastFocus = document.activeElement;
+    veil.hidden = false;
+    modal.hidden = false;
+    open.setAttribute('aria-expanded', 'true');
+    /* The page must not scroll behind it — a dialog over a moving board is
+       the shape that makes a phone feel broken. */
+    document.documentElement.classList.add('fb-open-modal');
+    /* THE TEXTAREA, NOT THE FIRST FOCUSABLE. The close button precedes the form
+       in the DOM, so `focusable()[0]` put the cursor on Close — a reader who
+       opened a feedback box and pressed Space would have shut it again. Caught
+       by reading `document.activeElement` after a real click; nothing about the
+       markup looked wrong. */
+    (modal.querySelector('.fb-t') ?? focusable()[0])?.focus();
+  }
+
+  function hide() {
+    veil.hidden = true;
+    modal.hidden = true;
+    open.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('fb-open-modal');
+    /* Focus goes back where it came from, or it lands on <body> and the next
+       Tab starts from the top of the page. */
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+  }
+
+  open.addEventListener('click', show);
+  veil.addEventListener('click', hide);
+  modal.querySelector('.fb-x')?.addEventListener('click', hide);
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); hide(); return; }
+    /* Tab stays inside. Without this the reader tabs straight out of an open
+       dialog into the board behind it, which a screen reader reads as the
+       dialog having closed. */
+    if (e.key !== 'Tab') return;
+    const items = focusable();
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+}
 
 function wire(form) {
   const msg = form.querySelector('.fb-msg');
