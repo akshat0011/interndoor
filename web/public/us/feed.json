@@ -6,6 +6,126 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4470236931",
+      "url": "https://interndoor.com/us/jobs/siemens-building-automation-systems-specialist-internship-4470236931",
+      "title": "Building Automation Systems Specialist Internship — Siemens",
+      "content_text": "Company: Siemens · Location: Cypress, CA\n• Install, program, and service HVAC automation systems in commercial buildings\n• Use laptops, tablets, and smartphones to troubleshoot building systems\n• Work onsite at customer locations and surrounding areas for 10 weeks",
+      "date_published": "2026-09-22T04:29:03.687Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-digital-engineer-intern-baltimore-md-4468514406",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-digital-engineer-intern-baltimore-md-4468514406",
+      "title": "2027 Digital Engineer Intern - Baltimore MD — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Baltimore, MD · Duration: 10 weeks\n• Design and implement digital systems for secure mission-critical applications\n• Use Python, C++, and MATLAB for simulation and analysis\n• Work on projects impacting global security and defense operations",
+      "date_published": "2026-09-22T04:12:08.698Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-systems-engineer-intern-baltimore-md-4468517307",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-systems-engineer-intern-baltimore-md-4468517307",
+      "title": "2027 Systems Engineer Intern - Baltimore MD — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Baltimore, MD · Duration: 10 weeks\n• Support systems design and integration for secure defense technologies\n• Use MATLAB, Python, and simulation tools for modeling and analysis\n• Work on classified projects with a focus on mission-critical systems",
+      "date_published": "2026-09-22T04:11:40.594Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-embedded-software-engineer-intern-camarillo-ca-4468517308",
+      "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-embedded-software-engineer-intern-camarillo-ca-4468517308",
+      "title": "2027 Embedded Software Engineer Intern - Camarillo CA — Northrop Grumman",
+      "content_text": "Company: Northrop Grumman · Location: Camarillo, CA · Duration: 10 weeks\n• Develop embedded software for defense systems using C and C++\n• Work with real-time operating systems and hardware integration\n• Gain experience in secure, mission-critical software development",
+      "date_published": "2026-09-22T04:11:26.296Z",
+      "authors": [
+        {
+          "name": "Northrop Grumman"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470243683",
+      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470243683",
+      "title": "Software Engineer Embedded Systems I (Intern) – United States — Cisco",
+      "content_text": "Company: Cisco · Location: Triangle, NC\n• Build low-level software in C and embedded Linux for global network infrastructure\n• Use Python and Bash to automate workflows and strengthen system security\n• Work on high-impact teams shaping Cisco's future and AI-era technologies",
+      "date_published": "2026-09-22T04:05:30.332Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470254001",
+      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470254001",
+      "title": "Software Engineer Full Stack / Backend I (Intern) – United States — Cisco",
+      "content_text": "Company: Cisco · Location: Milpitas, CA\n• Design and build APIs and applications for Cisco platforms\n• Work with Python, Java, Go, and cloud tools like AWS or Azure\n• Collaborate on back-end systems and contribute to front-end as needed",
+      "date_published": "2026-09-22T04:05:02.529Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470250203",
+      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-full-stack-backend-i-intern-united-states-4470250203",
+      "title": "Software Engineer Full Stack / Backend I (Intern) – United States — Cisco",
+      "content_text": "Company: Cisco · Location: San Francisco, CA\n• Design, build, and ship APIs and applications for Cisco platforms\n• Work with Python, Java, Go, and cloud tools like AWS or Azure\n• Collaborate on back-end systems and contribute to front-end projects",
+      "date_published": "2026-09-22T04:04:44.942Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470246489",
+      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470246489",
+      "title": "Software Engineer Embedded Systems I (Intern) – United States — Cisco",
+      "content_text": "Company: Cisco · Location: San Francisco, CA\n• Build low-level software in C and embedded Linux for global network infrastructure\n• Automate workflows with Python and Bash, strengthen system security through DevSecOps\n• Work on real infrastructure with networking and OS fundamentals",
+      "date_published": "2026-09-22T04:04:41.336Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470253133",
+      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-embedded-systems-i-intern-united-states-4470253133",
+      "title": "Software Engineer Embedded Systems I (Intern) – United States — Cisco",
+      "content_text": "Company: Cisco · Location: San Jose, CA\n• Build low-level software in C and embedded Linux for global network infrastructure\n• Automate workflows with Python and Bash, apply DevSecOps for system security\n• Work on high-impact teams shaping Cisco's future connectivity solutions",
+      "date_published": "2026-09-22T04:04:32.270Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-wound-closure-and-healing-r-and-d-device-spring-co-op-4468506415",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-wound-closure-and-healing-r-and-d-device-spring-co-op-4468506415",
+      "title": "Wound Closure and Healing R&D Device Spring Co-Op — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Raritan, NJ · Duration: 0-2 years\n• Assist in testing and analyzing prototype wound closure devices\n• Use SolidWorks for CAD modeling and documentation\n• Work on R&D projects with engineers in a regulated environment",
+      "date_published": "2026-09-22T04:00:14.126Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-wound-closure-and-healing-r-and-d-device-summer-intern-4468511351",
       "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-wound-closure-and-healing-r-and-d-device-summer-intern-4468511351",
       "title": "Wound Closure and Healing R&D Device Summer Intern — Johnson & Johnson MedTech",
@@ -14,6 +134,18 @@
       "authors": [
         {
           "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-test-engineering-intern-bs-summer-2027-4468197894",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-test-engineering-intern-bs-summer-2027-4468197894",
+      "title": "Test Engineering Intern, BS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Westlake Village, CA · Duration: Summer 2027\n• Write and debug test code for semiconductor chips using Python, C, and Visual Basic\n• Work with design teams to ensure chip features meet customer specifications\n• Use oscilloscopes and spectrum analyzers to test and debug silicon hardware",
+      "date_published": "2026-09-22T03:39:46.196Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
         }
       ]
     },
@@ -470,138 +602,6 @@
       "authors": [
         {
           "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-sustaining-engineering-internship-4470212455",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-sustaining-engineering-internship-4470212455",
-      "title": "R&D Sustaining Engineering Internship — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Support design improvements and product testing for IVUS devices\n• Collaborate with cross-functional teams on regulatory and manufacturing needs\n• Analyze failure modes and develop solutions for technical challenges",
-      "date_published": "2026-09-22T00:04:33.235Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-4470221210",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-4470221210",
-      "title": "R&D Engineering Internship — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Design and test medical devices, develop prototypes, and perform validation\n• Collaborate with cross-functional teams on product development and regulatory compliance\n• Work on innovative technologies with real-world impact on patient care",
-      "date_published": "2026-09-22T00:03:53.534Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/boston-scientific-data-engineering-intern-4470209527",
-      "url": "https://interndoor.com/us/jobs/boston-scientific-data-engineering-intern-4470209527",
-      "title": "Data Engineering Intern — Boston Scientific",
-      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Spring 2029\n• Support clinical data management and medical device development\n• Work with AWS, cloud technologies, and machine learning frameworks\n• Collaborate with global teams on image processing and data analysis",
-      "date_published": "2026-09-22T00:03:34.967Z",
-      "authors": [
-        {
-          "name": "Boston Scientific"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4470205682",
-      "url": "https://interndoor.com/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4470205682",
-      "title": "Tax Technology - Partnership Allocation and Reporting Solutions - Intern - Summer 2027 — PwC",
-      "content_text": "Company: PwC · Location: Dallas, TX · Duration: Summer 2027\n• Support teams in developing tax tech solutions and optimizing compliance processes\n• Engage in research on tax regulations and assist with client project deliverables\n• Collaborate with professionals to enhance service delivery and client support",
-      "date_published": "2026-09-21T23:58:59.198Z",
-      "authors": [
-        {
-          "name": "PwC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4470219249",
-      "url": "https://interndoor.com/us/jobs/pwc-tax-technology-partnership-allocation-and-reporting-solutions-intern-s-4470219249",
-      "title": "Tax Technology - Partnership Allocation and Reporting Solutions - Intern - Summer 2027 — PwC",
-      "content_text": "Company: PwC · Location: Rosemont, IL · Duration: Summer 2027\n• Support teams in developing tax tech solutions and optimizing compliance processes\n• Engage in research on tax regulations and assist with client project deliverables\n• Collaborate with professionals to enhance service delivery and address client needs",
-      "date_published": "2026-09-21T23:58:40.072Z",
-      "authors": [
-        {
-          "name": "PwC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hitachi-rail-intern-rams-reliability-availability-maintainability-and-safety-4468186400",
-      "url": "https://interndoor.com/us/jobs/hitachi-rail-intern-rams-reliability-availability-maintainability-and-safety-4468186400",
-      "title": "Intern –RAMS (Reliability, Availability, Maintainability, and Safety) — Hitachi Rail",
-      "content_text": "Company: Hitachi Rail · Location: Pittsburgh, PA · Duration: Summer 2027\n• Support RAMS and V&V activities for projects\n• Assist with safety and reliability requirements\n• Create and maintain RAMS documentation\n• Work with Product and System RAMS Engineers",
-      "date_published": "2026-09-21T23:58:04.200Z",
-      "authors": [
-        {
-          "name": "Hitachi Rail"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-winter-2027-ats-greenhouse-astranis-4704759006",
-      "url": "https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-winter-2027-ats-greenhouse-astranis-4704759006",
-      "title": "Assembly, Integration, and Test Intern (Winter 2027) — Astranis",
-      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Design, build, and test satellite hardware and software with engineering teams\n• Use thermal chambers, vibration tables, DAQs, and oscilloscopes for testing\n• Work on assembly, integration, and environmental test plans\n• Based in San Francisco, 5 days a week onsite",
-      "date_published": "2026-09-21T23:30:47.000Z",
-      "authors": [
-        {
-          "name": "Astranis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-summer-2027-ats-greenhouse-astranis-4704761006",
-      "url": "https://interndoor.com/us/jobs/astranis-assembly-integration-and-test-intern-summer-2027-ats-greenhouse-astranis-4704761006",
-      "title": "Assembly, Integration, and Test Intern (Summer 2027) — Astranis",
-      "content_text": "Company: Astranis · Location: San Francisco · Duration: Summer 2027\n• Design, build, and test satellite hardware and software with engineering teams\n• Use thermal chambers, vibration tables, DAQs, and oscilloscopes for testing\n• Work on assembly and integration plans for satellites heading to space",
-      "date_published": "2026-09-21T23:30:45.000Z",
-      "authors": [
-        {
-          "name": "Astranis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-security-research-intern-ats-microsoft-india-united-states-united-kingdom-1970393556962157",
-      "url": "https://interndoor.com/us/jobs/microsoft-security-research-intern-ats-microsoft-india-united-states-united-kingdom-1970393556962157",
-      "title": "Security Research INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Redmond, Washington, United States\n• Analyze threat trends and anomalies to assess operational impact\n• Contribute code for signature detection and malware analysis\n• Collaborate with teams to integrate security solutions",
-      "date_published": "2026-09-21T23:29:25.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rivian-software-engineering-intern-enterprise-applications-spring-2027-co-op-4469996507",
-      "url": "https://interndoor.com/us/jobs/rivian-software-engineering-intern-enterprise-applications-spring-2027-co-op-4469996507",
-      "title": "Software Engineering Intern - Enterprise Applications (Spring 2027 Co-Op — Rivian",
-      "content_text": "Company: Rivian · Location: Normal, IL · Duration: Spring 2027\n• Build and improve enterprise apps for supply chain and manufacturing\n• Work with AI/ML to enhance operational efficiency and data visibility\n• Collaborate with team on code quality and observability practices",
-      "date_published": "2026-09-21T23:10:23.809Z",
-      "authors": [
-        {
-          "name": "Rivian"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/rivian-software-engineering-intern-enterprise-applications-spring-2027-co-op-4469981991",
-      "url": "https://interndoor.com/us/jobs/rivian-software-engineering-intern-enterprise-applications-spring-2027-co-op-4469981991",
-      "title": "Software Engineering Intern - Enterprise Applications (Spring 2027 Co-Op) — Rivian",
-      "content_text": "Company: Rivian · Location: Plymouth, MI · Duration: Spring 2027\n• Build and improve enterprise apps for supply chain and manufacturing\n• Work with AI/ML to enhance operational efficiency and data visibility\n• Collaborate on code quality and observability with a full-time team",
-      "date_published": "2026-09-21T23:10:19.291Z",
-      "authors": [
-        {
-          "name": "Rivian"
         }
       ]
     }
