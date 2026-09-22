@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468936306",
+      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468936306",
+      "title": "Software Engineer — IBM",
+      "content_text": "Company: IBM · Location: Hyderabad, Telangana, India\n• Develop and test software for IBM Systems products including OS, firmware, cloud, and storage solutions\n• Work with cross-functional teams on design, implementation, and support across global development\n• Contribute to open source and closed source projects in Agile environments",
+      "date_published": "2026-09-22T20:17:49.653Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468923602",
+      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468923602",
+      "title": "Software Engineer — IBM",
+      "content_text": "Company: IBM · Location: Pune Division, Maharashtra, India\n• Develop and test IBM Systems products across OS, firmware, storage, and cloud software\n• Work with global teams on open source and closed source projects in Agile environments\n• Contribute to performance analysis, bug fixing, and feature enhancements for enterprise systems",
+      "date_published": "2026-09-22T20:17:45.155Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468925527",
+      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468925527",
+      "title": "Software Engineer — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Develop and test software for IBM Systems products across OS, firmware, cloud, and storage\n• Work with global teams on open source and closed source projects in Agile environments\n• Contribute to performance analysis, bug fixing, and cloud software development",
+      "date_published": "2026-09-22T20:17:39.949Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295",
       "url": "https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295",
       "title": "4633-Software Development Engineer-I (Full Stack) — Innovaccer",
@@ -266,18 +302,6 @@
       "authors": [
         {
           "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501",
-      "url": "https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501",
-      "title": "Software Engineering Intern — Red Hat",
-      "content_text": "Company: Red Hat · Location: Pune Division, Maharashtra, India\n• Design, develop, and maintain code in Python, Golang or similar\n• Add features, debug, and track issues in Red Hat products\n• Collaborate with Quality Engineering, Product Management, and Designers",
-      "date_published": "2026-09-22T14:25:10.837Z",
-      "authors": [
-        {
-          "name": "Red Hat"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "eSec Forte® Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bristlecone-associate-manager-data-engineering-data-engineering-4470247819",
-      "url": "https://interndoor.com/jobs/bristlecone-associate-manager-data-engineering-data-engineering-4470247819",
-      "title": "Associate Manager - Data Engineering-Data Engineering — Bristlecone",
-      "content_text": "Company: Bristlecone · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for supply chain analytics\n• Use python and cloud platforms for data processing\n• Work on high-impact projects for global logistics clients",
-      "date_published": "2026-09-22T05:16:45.068Z",
-      "authors": [
-        {
-          "name": "Bristlecone"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4468518361",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4468518361",
-      "title": "Software Engineer - Java Spring Boot — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Design and build secure microservices with Java and Spring Boot\n• Work with Kafka, REST APIs, and cloud-native tools\n• Collaborate with cross-functional teams on payment network solutions",
-      "date_published": "2026-09-22T04:51:36.595Z",
-      "authors": [
-        {
-          "name": "Mastercard"
         }
       ]
     }
