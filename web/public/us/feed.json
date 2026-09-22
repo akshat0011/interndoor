@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735",
+      "title": "2027 Summer Intern, MS/PhD, Machine Learning Engineer — Waymo",
+      "content_text": "Company: Waymo · Location: San Francisco, CA, USA\n• Train large transformers on driving data using JAX/Flax and TPUs\n• Build evaluation pipelines for autonomous driving decisions\n• Write production code for high-traffic systems with team feedback",
+      "date_published": "2026-09-22T20:22:25.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/aecom-engineering-intern-ats-smartrecruiters-aecom2-744000151127909",
+      "url": "https://interndoor.com/us/jobs/aecom-engineering-intern-ats-smartrecruiters-aecom2-744000151127909",
+      "title": "Engineering Intern — AECOM",
+      "content_text": "Company: AECOM · Location: Philadelphia, us",
+      "date_published": "2026-09-22T20:17:04.006Z",
+      "authors": [
+        {
+          "name": "AECOM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/dominion-energy-intern-grid-resiliency-engineer-4470497972",
       "url": "https://interndoor.com/us/jobs/dominion-energy-intern-grid-resiliency-engineer-4470497972",
       "title": "Intern - Grid Resiliency Engineer — Dominion Energy",
@@ -575,30 +599,6 @@
       "title": "Intern, Trade and Customs | Multiple Locations Summer 2027 — KPMG Financial Reporting View (FRV)",
       "content_text": "Company: KPMG Financial Reporting View (FRV) · Location: California, United States · Duration: Summer 2027\n• Support clients with global trade solutions and tax process automation\n• Work with AI, Alteryx, Power BI, and MS Office tools\n• Reside within commutable distance and be prepared to travel",
       "date_published": "2026-09-22T15:58:58.023Z",
-      "authors": [
-        {
-          "name": "KPMG Financial Reporting View (FRV)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-federal-technology-enablement-data-science-data-engine-4468596793",
-      "url": "https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-federal-technology-enablement-data-science-data-engine-4468596793",
-      "title": "Advisory Intern, Federal Technology Enablement Data Science/Data Engineer | McLean Summer 2027 — KPMG Financial Reporting View (FRV)",
-      "content_text": "Company: KPMG Financial Reporting View (FRV) · Location: McLean, VA · Duration: Summer 2027\n• Develop and deploy machine learning models for federal clients using Python and SQL\n• Analyze financial data and create visualizations with Tableau and PowerBI\n• Collaborate with cross-functional teams on data-driven solutions for government agencies",
-      "date_published": "2026-09-22T15:58:10.938Z",
-      "authors": [
-        {
-          "name": "KPMG Financial Reporting View (FRV)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-technology-tampa-summer-2027-4468912409",
-      "url": "https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-technology-tampa-summer-2027-4468912409",
-      "title": "Advisory Intern, Technology | Tampa Summer 2027 — KPMG Financial Reporting View (FRV)",
-      "content_text": "Company: KPMG Financial Reporting View (FRV) · Location: Tampa, FL · Duration: Summer 2027\n• Support client projects with AI, cloud, and IoT analysis, identifying and solving tech challenges\n• Work with Oracle, SAP, ServiceNow, and RPA tools to design and implement digital solutions\n• Collaborate on process design, risk management, and client presentations in a fast-paced environment",
-      "date_published": "2026-09-22T15:57:21.515Z",
       "authors": [
         {
           "name": "KPMG Financial Reporting View (FRV)"

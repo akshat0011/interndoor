@@ -6,7 +6,24 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 22 Sep 2026 19:53:57 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 20:22:25 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, MS/PhD, Machine Learning Engineer — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-machine-learning-engineer-ats-greenhouse-waymo-8223735</guid>
+    <pubDate>Tue, 22 Sep 2026 20:22:25 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, CA, USA
+• Train large transformers on driving data using JAX/Flax and TPUs
+• Build evaluation pipelines for autonomous driving decisions
+• Write production code for high-traffic systems with team feedback</description>
+  </item>
+  <item>
+    <title>Engineering Intern — AECOM</title>
+    <link>https://interndoor.com/us/jobs/aecom-engineering-intern-ats-smartrecruiters-aecom2-744000151127909</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/aecom-engineering-intern-ats-smartrecruiters-aecom2-744000151127909</guid>
+    <pubDate>Tue, 22 Sep 2026 20:17:04 GMT</pubDate>
+    <description>Company: AECOM · Location: Philadelphia, us</description>
+  </item>
   <item>
     <title>Intern - Grid Resiliency Engineer — Dominion Energy</title>
     <link>https://interndoor.com/us/jobs/dominion-energy-intern-grid-resiliency-engineer-4470497972</link>
@@ -466,26 +483,6 @@
 • Support clients with global trade solutions and tax process automation
 • Work with AI, Alteryx, Power BI, and MS Office tools
 • Reside within commutable distance and be prepared to travel</description>
-  </item>
-  <item>
-    <title>Advisory Intern, Federal Technology Enablement Data Science/Data Engineer | McLean Summer 2027 — KPMG Financial Reporting View (FRV)</title>
-    <link>https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-federal-technology-enablement-data-science-data-engine-4468596793</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-federal-technology-enablement-data-science-data-engine-4468596793</guid>
-    <pubDate>Tue, 22 Sep 2026 15:58:10 GMT</pubDate>
-    <description>Company: KPMG Financial Reporting View (FRV) · Location: McLean, VA · Duration: Summer 2027
-• Develop and deploy machine learning models for federal clients using Python and SQL
-• Analyze financial data and create visualizations with Tableau and PowerBI
-• Collaborate with cross-functional teams on data-driven solutions for government agencies</description>
-  </item>
-  <item>
-    <title>Advisory Intern, Technology | Tampa Summer 2027 — KPMG Financial Reporting View (FRV)</title>
-    <link>https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-technology-tampa-summer-2027-4468912409</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/kpmg-financial-reporting-view-frv-advisory-intern-technology-tampa-summer-2027-4468912409</guid>
-    <pubDate>Tue, 22 Sep 2026 15:57:21 GMT</pubDate>
-    <description>Company: KPMG Financial Reporting View (FRV) · Location: Tampa, FL · Duration: Summer 2027
-• Support client projects with AI, cloud, and IoT analysis, identifying and solving tech challenges
-• Work with Oracle, SAP, ServiceNow, and RPA tools to design and implement digital solutions
-• Collaborate on process design, risk management, and client presentations in a fast-paced environment</description>
   </item>
 </channel>
 </rss>
