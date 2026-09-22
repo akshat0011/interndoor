@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
+      "url": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
+      "title": "Data Engineer I (R-19886) — Dun & Bradstreet",
+      "content_text": "Company: Dun & Bradstreet · Location: Hyderabad, Telangana, India\n• Build data tools, automations, and pipelines using SQL and Python\n• Work on AI workflows with LangChain, embeddings, and vector databases\n• Maintain data integrity and resolve operational issues in production",
+      "date_published": "2026-09-22T07:07:51.376Z",
+      "authors": [
+        {
+          "name": "Dun & Bradstreet"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/esec-forte-technologies-application-security-trainee-4428027336",
       "url": "https://interndoor.com/jobs/esec-forte-technologies-application-security-trainee-4428027336",
       "title": "Application Security Trainee — eSec Forte® Technologies",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "STMicroelectronics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-program-specialist-ii-4469832829",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-program-specialist-ii-4469832829",
-      "title": "Program Specialist II — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Hyderabad, Telangana, India\n• Support automation projects across industrial and building sectors\n• Use honeywell technologies forge and accelerator systems\n• Work with global teams on data-driven solutions",
-      "date_published": "2026-09-21T06:03:01.995Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
         }
       ]
     }
