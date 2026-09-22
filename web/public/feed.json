@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/lowe-s-india-data-engineer-4469021481",
+      "url": "https://interndoor.com/jobs/lowe-s-india-data-engineer-4469021481",
+      "title": "Data Engineer — Lowe's India",
+      "content_text": "Company: Lowe's India · Location: Bengaluru, Karnataka, India\n• Build and maintain data assets for trusted reporting and self-service analytics\n• Use tools like Looker, Power BI, and BigQuery to support inventory and business decisions\n• Collaborate with cross-functional teams to improve data quality and reporting efficiency",
+      "date_published": "2026-09-22T16:17:29.276Z",
+      "authors": [
+        {
+          "name": "Lowe's India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-packaged-app-development-analyst-4452475070",
+      "url": "https://interndoor.com/jobs/accenture-in-india-packaged-app-development-analyst-4452475070",
+      "title": "Packaged App Development Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India · Duration: 1 to 2 years\n• Develop and maintain .NET/C# applications with ASP.NET MVC and Web API\n• Collaborate on frontend tasks using React or Angular with senior guidance\n• Write SQL queries and support API testing in SQL Server environment",
+      "date_published": "2026-09-22T15:56:03.328Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448389216",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448389216",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop applications following technical standards\n• Collaborate on performance and user experience improvements\n• Analyze and build new components or module enhancements",
+      "date_published": "2026-09-22T15:50:13.166Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452454915",
+      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452454915",
+      "title": "AI/ML Computational Science Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Pune Division, Maharashtra, India · Duration: 1 to 2 years\n• Design, build, and deploy AI-native solutions using Python and agentic AI frameworks\n• Work with REST APIs, Git, and cloud platforms like AWS for enterprise integration\n• Collaborate on RAG pipelines and vector databases for AI accuracy and scalability",
+      "date_published": "2026-09-22T15:45:26.212Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452467634",
       "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452467634",
       "title": "AI/ML Computational Science Analyst — Accenture in India",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469931681",
-      "url": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469931681",
-      "title": "Validation Engineer — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Greater Hyderabad Area\n• Design and test embedded software for industrial devices like motors and sensors\n• Work with real-time systems and hardware integration\n• Collaborate in a structured engineering framework",
-      "date_published": "2026-09-21T17:37:09.428Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/goldman-sachs-tax-tax-engineering-analyst-bengaluru-4467635330",
-      "url": "https://interndoor.com/jobs/goldman-sachs-tax-tax-engineering-analyst-bengaluru-4467635330",
-      "title": "Tax - Tax Engineering - Analyst - Bengaluru — Goldman Sachs",
-      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Design scalable systems for tax calculations and reporting\n• Use Java, Spring, and BPMN for system development\n• Collaborate with global teams on tax compliance and reporting",
-      "date_published": "2026-09-21T17:00:41.445Z",
-      "authors": [
-        {
-          "name": "Goldman Sachs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-energy-intern-logistics-data-analyst-4469931471",
-      "url": "https://interndoor.com/jobs/siemens-energy-intern-logistics-data-analyst-4469931471",
-      "title": "Intern - Logistics Data Analyst — Siemens Energy",
-      "content_text": "Company: Siemens Energy · Location: Gurugram, Haryana, India\n• Analyze transport, warehouse, and supply chain data to find trends and improve processes\n• Create dashboards and reports using Power BI and Excel for operational reviews\n• Support global logistics projects like Warehouse Analytics and AI initiatives\n• Collaborate with IT and business teams on data models and reporting requirements",
-      "date_published": "2026-09-21T17:00:34.282Z",
-      "authors": [
-        {
-          "name": "Siemens Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/webengage-software-engineer-java-4469909817",
-      "url": "https://interndoor.com/jobs/webengage-software-engineer-java-4469909817",
-      "title": "Software Engineer- JAVA — WebEngage",
-      "content_text": "Company: WebEngage · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Design and optimize systems handling billions of events daily\n• Work with architects and product managers on scalable solutions\n• Take ownership of components with end-to-end responsibility",
-      "date_published": "2026-09-21T15:35:36.294Z",
-      "authors": [
-        {
-          "name": "WebEngage"
         }
       ]
     }
