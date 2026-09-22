@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/coforge-test-specialist-4470282748",
+      "url": "https://interndoor.com/jobs/coforge-test-specialist-4470282748",
+      "title": "TEST SPECIALIST — Coforge",
+      "content_text": "Company: Coforge · Location: Hyderabad, Telangana, India\n• Test card lifecycle processes from account setup to collections\n• Use sql and tools like jira to track defects and manage test cases\n• Work with offshore teams on visionplus modules and interfaces",
+      "date_published": "2026-09-22T08:23:28.249Z",
+      "authors": [
+        {
+          "name": "Coforge"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
       "url": "https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739",
       "title": "Data Engineer I (R-19886) — Dun & Bradstreet",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Unisys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/stmicroelectronics-validation-infrastructure-expert-4469854134",
-      "url": "https://interndoor.com/jobs/stmicroelectronics-validation-infrastructure-expert-4469854134",
-      "title": "Validation Infrastructure expert — STMicroelectronics",
-      "content_text": "Company: STMicroelectronics · Location: Noida, Uttar Pradesh, India\n• Create validation infrastructure and automation tools for image sensor testing\n• Use python, c, git, and ai to improve validation processes\n• Work on fpga and silicon validation with real-time embedded systems",
-      "date_published": "2026-09-21T06:33:49.337Z",
-      "authors": [
-        {
-          "name": "STMicroelectronics"
         }
       ]
     }
