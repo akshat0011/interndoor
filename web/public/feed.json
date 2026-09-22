@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501",
+      "url": "https://interndoor.com/jobs/red-hat-software-engineering-intern-4469010501",
+      "title": "Software Engineering Intern — Red Hat",
+      "content_text": "Company: Red Hat · Location: Pune Division, Maharashtra, India\n• Design, develop, and maintain code in Python, Golang or similar\n• Add features, debug, and track issues in Red Hat products\n• Collaborate with Quality Engineering, Product Management, and Designers",
+      "date_published": "2026-09-22T14:25:10.837Z",
+      "authors": [
+        {
+          "name": "Red Hat"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-quadient-inspire-scaler-developer-4442001408",
+      "url": "https://interndoor.com/jobs/infosys-quadient-inspire-scaler-developer-4442001408",
+      "title": "Quadient Inspire Scaler developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support systems for client projects\n• Translate functional/non-functional requirements into system specs\n• Contribute to project estimation and quality processes",
+      "date_published": "2026-09-22T14:11:22.823Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-iac-and-automation-nutanix-4442003291",
+      "url": "https://interndoor.com/jobs/infosys-iac-and-automation-nutanix-4442003291",
+      "title": "IaC & automation, Nutanix — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Design, develop, and validate systems for client projects\n• Use Nutanix and hyperconverged infrastructure technologies\n• Collaborate with leads to estimate project requirements",
+      "date_published": "2026-09-22T14:10:08.127Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-react-ai-4441788954",
       "url": "https://interndoor.com/jobs/infosys-react-ai-4441788954",
       "title": "React AI — Infosys",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-react-js-4459764093",
-      "url": "https://interndoor.com/jobs/infosys-react-js-4459764093",
-      "title": "React JS — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Interface with clients for quality assurance and issue resolution\n• Create and review designs, validate architecture\n• Participate in project estimation and technical risk planning",
-      "date_published": "2026-09-21T13:58:10.375Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-ai-ml-engineer-4441381826",
-      "url": "https://interndoor.com/jobs/infosys-ai-ml-engineer-4441381826",
-      "title": "AI ML Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build and deploy ML models using Python and frameworks like TensorFlow, PyTorch, and Scikit-learn\n• Develop NLP and GenAI solutions including RAG systems and Agentic AI\n• Collaborate with data scientists and engineers on model training and deployment\n• Monitor model performance and implement retraining strategies in production",
-      "date_published": "2026-09-21T13:33:19.089Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/rubrik-software-engineer-iam-4461084710",
-      "url": "https://interndoor.com/jobs/rubrik-software-engineer-iam-4461084710",
-      "title": "Software Engineer - IAM — Rubrik",
-      "content_text": "Company: Rubrik · Location: Pune Division, Maharashtra, India\n• Design and build identity and access systems using Golang, OIDC, OAuth, and SAML\n• Secure auth flows with cryptography, TLS, and PKI best practices\n• Maintain Windows app in C#/.NET and cross-platform packaging tools",
-      "date_published": "2026-09-21T13:27:42.624Z",
-      "authors": [
-        {
-          "name": "Rubrik"
         }
       ]
     }

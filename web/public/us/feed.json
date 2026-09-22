@@ -6,6 +6,102 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4459474991",
+      "url": "https://interndoor.com/us/jobs/lyondellbasell-2027-electrical-engineer-intern-co-op-4459474991",
+      "title": "2027 Electrical Engineer Intern / Co-op — LyondellBasell",
+      "content_text": "Company: LyondellBasell · Location: Westlake, LA\n• Troubleshoot high-voltage systems and improve process instrumentation\n• Work on control schemes and predictive models for process optimization\n• Collaborate with technicians on equipment repairs and system upgrades",
+      "date_published": "2026-09-22T14:53:18.895Z",
+      "authors": [
+        {
+          "name": "LyondellBasell"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-control-pulse-level-compiler-intern-2027-4468590986",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-control-pulse-level-compiler-intern-2027-4468590986",
+      "title": "Quantum Control Pulse-Level Compiler Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Develop compiler passes for quantum control systems\n• Work with Rust and Python on real-time hardware integration\n• Collaborate with FPGA and control systems teams",
+      "date_published": "2026-09-22T14:33:53.541Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/eaton-internship-software-engineering-4468901206",
+      "url": "https://interndoor.com/us/jobs/eaton-internship-software-engineering-4468901206",
+      "title": "Internship: Software Engineering — Eaton",
+      "content_text": "Company: Eaton · Location: Franksville, WI\n• Implement features for power system devices using .NET and C#\n• Work with engineers on software design and testing\n• Based in Franksville, WI for 12 weeks",
+      "date_published": "2026-09-22T14:33:25.481Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-control-pulse-level-compiler-intern-2027-4468912020",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-control-pulse-level-compiler-intern-2027-4468912020",
+      "title": "Quantum Control Pulse-Level Compiler Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: Cambridge, MA\n• Develop software tools to test and validate quantum compiler performance\n• Work on distributed control systems for superconducting qubits\n• Collaborate with hardware teams on real-time microwave control integration",
+      "date_published": "2026-09-22T14:33:21.057Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/eaton-internship-embedded-software-engineering-4468911048",
+      "url": "https://interndoor.com/us/jobs/eaton-internship-embedded-software-engineering-4468911048",
+      "title": "Internship: Embedded Software Engineering — Eaton",
+      "content_text": "Company: Eaton · Location: Franksville, WI\n• Write and test embedded software for utility devices using c c++ and python\n• Collaborate with global engineering teams on product development and testing\n• Work on new product development projects with experienced engineers",
+      "date_published": "2026-09-22T14:32:56.030Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/eaton-internship-product-engineering-4468595460",
+      "url": "https://interndoor.com/us/jobs/eaton-internship-product-engineering-4468595460",
+      "title": "Internship: Product Engineering — Eaton",
+      "content_text": "Company: Eaton · Location: South Milwaukee, WI\n• Support engineering teams with product design, testing, and cost improvement projects\n• Use CAD, FEA, and statistical tools for analysis and simulation\n• Work on overhead and underground medium voltage equipment",
+      "date_published": "2026-09-22T14:32:34.226Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/jump-trading-campus-quantitative-researcher-trading-team-phd-postdoc-full-time-ats-greenhouse-jumptrading-8209424",
+      "url": "https://interndoor.com/us/jobs/jump-trading-campus-quantitative-researcher-trading-team-phd-postdoc-full-time-ats-greenhouse-jumptrading-8209424",
+      "title": "Campus Quantitative Researcher | Trading Team PhD/Postdoc (Full-Time) — Jump Trading",
+      "content_text": "Company: Jump Trading · Location: New York\n• Analyze financial data to build predictive trading models\n• Work with Python and collaborate across research and trading teams\n• Own end-to-end research projects in macro trading strategies",
+      "date_published": "2026-09-22T14:27:41.000Z",
+      "authors": [
+        {
+          "name": "Jump Trading"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-security-solutions-4470443522",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-security-solutions-4470443522",
+      "title": "Intern - Security Solutions — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Richmond, VA · Duration: Summer 2027\n• Support enterprise security apps like Kaseware for case management and data analysis\n• Collaborate with security teams and IT on system improvements and user training\n• Contribute to workflow automation and reporting tools like PowerBI\n• Work on projects enhancing investigative and risk management capabilities",
+      "date_published": "2026-09-22T14:04:19.479Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/infineon-technologies-intern-data-center-power-systems-4470426732",
       "url": "https://interndoor.com/us/jobs/infineon-technologies-intern-data-center-power-systems-4470426732",
       "title": "Intern - Data Center Power Systems — Infineon Technologies",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-test-engineering-intern-bs-summer-2027-4468509297",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-test-engineering-intern-bs-summer-2027-4468509297",
-      "title": "Test Engineering Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Irvine, CA · Duration: Summer 2027\n• Write and debug test scripts for semiconductor chips using Python, C, and Visual Basic\n• Collaborate with design and verification teams to ensure test results meet customer specs\n• Use oscilloscopes and spectrum analyzers to diagnose and resolve test anomalies",
-      "date_published": "2026-09-22T03:36:40.924Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-platform-systems-engineering-co-op-spring-summer-2027-onsite-4470239595",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-platform-systems-engineering-co-op-spring-summer-2027-onsite-4470239595",
-      "title": "Platform Systems Engineering Co-Op (Spring/Summer 2027) - Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Support avionics design and testing for CH-47F helicopter cockpit systems\n• Use DOORS, JIRA, JAMA, and ALM tools for requirements and project management\n• Collaborate in Agile teams on integration and verification testing",
-      "date_published": "2026-09-22T03:32:27.584Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-power-and-analog-electronic-engineer-intern-onsite-4470244493",
-      "url": "https://interndoor.com/us/jobs/raytheon-power-and-analog-electronic-engineer-intern-onsite-4470244493",
-      "title": "Power and Analog Electronic Engineer Intern (Onsite) — Raytheon",
-      "content_text": "Company: Raytheon · Location: Tucson, AZ\n• Design and test power conversion circuits for aerospace applications\n• Use MATLAB and ECAD tools for circuit layout and simulation\n• Work on low-voltage systems with senior engineers in a secure environment",
-      "date_published": "2026-09-22T03:32:24.089Z",
-      "authors": [
-        {
-          "name": "Raytheon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-ch-53k-systems-engineering-co-op-summer-fall-2027-onsite-4470237695",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-ch-53k-systems-engineering-co-op-summer-fall-2027-onsite-4470237695",
-      "title": "CH-53K Systems Engineering Co-Op - Summer/Fall 2027 - Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Fall 2027\n• Support requirements capture and testing for CH-53K cockpit avionics\n• Use DOORS, JIRA, JAMA, and ALM tools in Agile teams\n• Work on-site in Cedar Rapids with engineers on real projects",
-      "date_published": "2026-09-22T03:32:08.088Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-head-up-guidance-systems-engineering-co-op-spring-summer-2027-onsite-4470239594",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-head-up-guidance-systems-engineering-co-op-spring-summer-2027-onsite-4470239594",
-      "title": "Head-up Guidance Systems Engineering Co-op (Spring/Summer 2027) - Onsite — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Wilsonville, OR · Duration: Summer 2027\n• Design and test head-up guidance systems for military and commercial aircraft\n• Work with FAA, EASA, and Transport Canada on system certification\n• Collaborate on interface definitions and functional analysis for aircraft systems",
-      "date_published": "2026-09-22T03:31:57.511Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/trane-technologies-controls-algorithm-engineering-intern-4470238651",
-      "url": "https://interndoor.com/us/jobs/trane-technologies-controls-algorithm-engineering-intern-4470238651",
-      "title": "Controls Algorithm Engineering Intern — Trane Technologies",
-      "content_text": "Company: Trane Technologies · Location: La Crosse, WI\n• Design and analyze control algorithms for HVAC systems using Python, C++, or MATLAB\n• Validate algorithms with real-world data using NumPy, SciPy, and Pandas\n• Collaborate with teams on system optimization and customer-focused solutions",
-      "date_published": "2026-09-22T03:30:37.232Z",
-      "authors": [
-        {
-          "name": "Trane Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-assembly-integration-and-test-intern-winter-2027-4468508158",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-assembly-integration-and-test-intern-winter-2027-4468508158",
-      "title": "Assembly, Integration, and Test Intern (Winter 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Winter 2027\n• Design, build, and test satellite hardware and software with engineering teams\n• Use thermal chambers, vibration tables, DAQs, and oscilloscopes for testing\n• Work on assembly and integration plans for satellites heading to space",
-      "date_published": "2026-09-22T03:20:51.933Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-assembly-integration-and-test-intern-summer-2027-4468511135",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-assembly-integration-and-test-intern-summer-2027-4468511135",
-      "title": "Assembly, Integration, and Test Intern (Summer 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Summer 2027\n• Design, build, and test satellite hardware and software with engineering teams\n• Use thermal chambers, vibration tables, DAQs, and oscilloscopes for testing\n• Work on assembly and integration plans for satellites heading to space",
-      "date_published": "2026-09-22T03:20:41.430Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
         }
       ]
     }
