@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the UK, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/uk/jobs/trustpilot-software-engineer-i-ats-greenhouse-trustpilot-8222956",
+      "url": "https://interndoor.com/uk/jobs/trustpilot-software-engineer-i-ats-greenhouse-trustpilot-8222956",
+      "title": "Software Engineer I — Trustpilot",
+      "content_text": "Company: Trustpilot · Location: Edinburgh\n• Build and maintain backend systems for fraud detection and misuse enforcement\n• Work with React and Node.js on scalable, high-volume data processing solutions\n• Collaborate with Data Scientists on automated detection models and enforcement tools",
+      "date_published": "2026-09-22T12:00:25.000Z",
+      "authors": [
+        {
+          "name": "Trustpilot"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/uk/jobs/trustpilot-software-engineer-i-ats-greenhouse-trustpilot-8081169",
+      "url": "https://interndoor.com/uk/jobs/trustpilot-software-engineer-i-ats-greenhouse-trustpilot-8081169",
+      "title": "Software Engineer I — Trustpilot",
+      "content_text": "Company: Trustpilot · Location: London\n• Build and maintain systems for detecting and enforcing misuse on Trustpilot’s platform\n• Work with React and Node.js to develop scalable backend solutions for fraud detection\n• Collaborate with Data Scientists on automated enforcement tools and detection models",
+      "date_published": "2026-09-22T12:00:22.000Z",
+      "authors": [
+        {
+          "name": "Trustpilot"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/uk/jobs/aecom-geospatial-apprentice-nottingham-summer-2027-ats-smartrecruiters-aecom2-744000150974479",
       "url": "https://interndoor.com/uk/jobs/aecom-geospatial-apprentice-nottingham-summer-2027-ats-smartrecruiters-aecom2-744000150974479",
       "title": "Geospatial Apprentice - Nottingham (Summer 2027) — AECOM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730846005",
-      "url": "https://interndoor.com/uk/jobs/scale-ai-software-engineering-intern-summer-2027-ats-greenhouse-scaleai-4730846005",
-      "title": "Software Engineering Intern (Summer 2027) — Scale AI",
-      "content_text": "Company: Scale AI · Location: London, UK · Duration: Fall 2027\n• Build AI systems that impact millions of citizens\n• Work with Python, Typescript, React, and MongoDB\n• Ship tools for fraud detection and contributor safety",
-      "date_published": "2026-09-14T13:12:21.000Z",
-      "authors": [
-        {
-          "name": "Scale AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730862005",
-      "url": "https://interndoor.com/uk/jobs/scale-ai-software-engineer-new-grad-ats-greenhouse-scaleai-4730862005",
-      "title": "Software Engineer - New Grad — Scale AI",
-      "content_text": "Company: Scale AI · Location: London, UK · Duration: Fall 2026\n• Build ai applications that impact millions of citizens\n• Work with python, typescript, react, and mongodb\n• Ship tools for fraud detection and contributor safety",
-      "date_published": "2026-09-14T13:11:20.000Z",
-      "authors": [
-        {
-          "name": "Scale AI"
         }
       ]
     }
