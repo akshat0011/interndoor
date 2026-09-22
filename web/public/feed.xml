@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 22 Sep 2026 07:07:51 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 08:23:28 GMT</lastBuildDate>
+  <item>
+    <title>TEST SPECIALIST — Coforge</title>
+    <link>https://interndoor.com/jobs/coforge-test-specialist-4470282748</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/coforge-test-specialist-4470282748</guid>
+    <pubDate>Tue, 22 Sep 2026 08:23:28 GMT</pubDate>
+    <description>Company: Coforge · Location: Hyderabad, Telangana, India
+• Test card lifecycle processes from account setup to collections
+• Use sql and tools like jira to track defects and manage test cases
+• Work with offshore teams on visionplus modules and interfaces</description>
+  </item>
   <item>
     <title>Data Engineer I (R-19886) — Dun &amp; Bradstreet</title>
     <link>https://interndoor.com/jobs/dun-and-bradstreet-data-engineer-i-r-19886-4461110739</link>
@@ -500,16 +510,6 @@
 • Develop, debug, and test AB Suite applications with guidance from senior developers
 • Work with MCP, EAE, and relational databases like SQL Server and Oracle
 • Collaborate with global teams on maintenance, deployment, and performance improvements</description>
-  </item>
-  <item>
-    <title>Validation Infrastructure expert — STMicroelectronics</title>
-    <link>https://interndoor.com/jobs/stmicroelectronics-validation-infrastructure-expert-4469854134</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/stmicroelectronics-validation-infrastructure-expert-4469854134</guid>
-    <pubDate>Mon, 21 Sep 2026 06:33:49 GMT</pubDate>
-    <description>Company: STMicroelectronics · Location: Noida, Uttar Pradesh, India
-• Create validation infrastructure and automation tools for image sensor testing
-• Use python, c, git, and ai to improve validation processes
-• Work on fpga and silicon validation with real-time embedded systems</description>
   </item>
 </channel>
 </rss>
