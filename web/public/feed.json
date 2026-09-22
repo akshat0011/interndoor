@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/coding-ninjas-genai-intern-4468561627",
+      "url": "https://interndoor.com/jobs/coding-ninjas-genai-intern-4468561627",
+      "title": "GenAI Intern — Coding Ninjas",
+      "content_text": "Company: Coding Ninjas · Location: Gurugram, Haryana, India\n• Build and experiment with AI-powered workflows and automation tools\n• Work with LLMs, agents, APIs, and frameworks like LangChain\n• Create and review technical content for AI courses and learning materials",
+      "date_published": "2026-09-22T11:07:16.476Z",
+      "authors": [
+        {
+          "name": "Coding Ninjas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-data-analysis-engineer-4470402992",
+      "url": "https://interndoor.com/jobs/quest-global-data-analysis-engineer-4470402992",
+      "title": "Data Analysis Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Analyze cost-saving opportunities for procured parts\n• Create reports and dashboards using excel and tableau\n• Develop templates and macros for repetitive tasks",
+      "date_published": "2026-09-22T11:06:20.171Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-4470415413",
+      "url": "https://interndoor.com/jobs/iqvia-product-sppt-trainee-4470415413",
+      "title": "Product Sppt Trainee — IQVIA",
+      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 0-1 years\n• Execute and monitor production processes for global deliverables\n• Support mainframe infrastructure with jcl, cobol, and rexx\n• Provide 24x7 production support and resolve abend issues",
+      "date_published": "2026-09-22T11:03:21.991Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-validation-and-verification-engineer-4470408668",
+      "url": "https://interndoor.com/jobs/quest-global-validation-and-verification-engineer-4470408668",
+      "title": "Validation and Verification Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Test locomotive subsystems using hardware in the loop and simulators\n• Analyze validation data and perform root cause analysis\n• Design test cases and methodologies for control systems\n• Experience with IBM Doors and ClearQuest tools",
+      "date_published": "2026-09-22T11:02:41.966Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
       "url": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
       "title": "SailPoint Developer (IIQ & ISC) — UST",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/openai-applied-ai-engineer-4468729332",
-      "url": "https://interndoor.com/jobs/openai-applied-ai-engineer-4468729332",
-      "title": "Applied AI Engineer — OpenAI",
-      "content_text": "Company: OpenAI · Location: Bengaluru East, Karnataka, India\n• Design and deploy AI systems for enterprise customers with measurable business impact\n• Work hands-on in code to build prototypes, integrations, and production accelerators\n• Collaborate with cross-functional teams to translate deployment experience into product feedback",
-      "date_published": "2026-09-21T11:00:39.436Z",
-      "authors": [
-        {
-          "name": "OpenAI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-spring-boot-microservices-4468727350",
-      "url": "https://interndoor.com/jobs/zensar-technologies-spring-boot-microservices-4468727350",
-      "title": "Spring Boot Microservices — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Bengaluru, Karnataka, India\n• Design and develop microservices using Java and Spring Boot\n• Work with cloud platforms and observability tools\n• Collaborate with cross-functional teams on SDLC",
-      "date_published": "2026-09-21T11:00:19.147Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-energy-copilot-specialist-4468726363",
-      "url": "https://interndoor.com/jobs/siemens-energy-copilot-specialist-4468726363",
-      "title": "Copilot Specialist — Siemens Energy",
-      "content_text": "Company: Siemens Energy · Location: Gurugram, Haryana, India · Duration: 1-3 years\n• Design and develop custom Copilot extensions using Microsoft Copilot Studio and Power Platform\n• Integrate Copilot with APIs and enterprise systems to enhance AI responses\n• Support deployment across business units and train users on AI tools",
-      "date_published": "2026-09-21T10:58:43.968Z",
-      "authors": [
-        {
-          "name": "Siemens Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dentsu-developer-4468725333",
-      "url": "https://interndoor.com/jobs/dentsu-developer-4468725333",
-      "title": "Developer — dentsu",
-      "content_text": "Company: dentsu · Location: Pune Division, Maharashtra, India · Duration: 0–1 years\n• Build responsive interfaces with React.js and backend services using Python\n• Collaborate with senior engineers to ship real features and improve performance\n• Work with MySQL/MongoDB and tools like Postman for API testing and debugging",
-      "date_published": "2026-09-21T10:30:48.206Z",
-      "authors": [
-        {
-          "name": "dentsu"
         }
       ]
     }
