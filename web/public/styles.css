@@ -226,6 +226,13 @@ a, button, summary, label, [role="button"], .row {
    Measure, do not eyeball: document.documentElement.scrollWidth must equal
    clientWidth at 375. Note the Browser pane reports innerWidth one pixel over
    clientWidth, so a 1px reading is the baseline, not a regression. */
+/* ABOVE the narrow-width blocks below, and that position is the whole point.
+   A media query adds NO specificity, so with this rule sitting after them its
+   `gap: 10px` beat the `gap: 6px` in the 400px block at equal specificity and
+   that override had never once applied — measured at 360px, 375px and 390px,
+   all three reading a computed gap of 10px. */
+.bar-right { display: flex; align-items: center; gap: 10px; }
+
 @media (max-width: 480px) {
   .scope { width: 26px; height: 26px; }
   .brand { gap: 8px; }
@@ -239,11 +246,26 @@ a, button, summary, label, [role="button"], .row {
    than dropping one of the four controls.
    Must stay BELOW the 480px block: a media query adds no specificity, so a
    .word rule placed above it silently loses to the plain one. */
-/* 320px (an older SE, and a long tail of cheap Androids) cannot fit four
-   controls and a wordmark however tightly they are set. The LABEL collapses,
-   not the control: the anchor carries aria-label, so the accessible name
-   survives and only the redundant visible copy goes. */
-@media (max-width: 340px) {
+/* THE LABEL COLLAPSES, NOT THE CONTROL: the anchor carries aria-label, so the
+   accessible name survives and only the redundant visible copy goes.
+
+   THIS WAS 340px AND THE FEEDBACK BUTTON BROKE THAT BUDGET. The masthead was
+   tuned for FOUR controls (the note above measures it at exactly 341 against a
+   345 budget at 375px); feedback made it five, and the extra 34px control plus
+   its gap put the whole page into horizontal scroll on every phone — measured
+   over the page's own scrollWidth: 320 +6, 360 +75, 375 +60, 390 +45, 430 +28,
+   480 fits. With the label collapsed and the gap override above finally
+   applying, all six fit. 480 rather than 430 because 480 is already a
+   breakpoint here and the 431-480 band has under 28px of slack, which is a
+   knife edge rather than a margin.
+
+   THE COST IS REAL AND IT IS STATED: WhatsApp is India's only channel and
+   every "get alerts" surface points at it, so losing the words on a phone is
+   not free. The pill keeps its lime fill and is still the one filled control
+   in the masthead, and the board's follow band and every job page's alert box
+   still name the channel in words. Putting them back is deleting the
+   `.alerts span` line here. */
+@media (max-width: 480px) {
   .alerts span { display: none; }
   .alerts { padding-inline: 9px; }
 }
@@ -258,7 +280,6 @@ a, button, summary, label, [role="button"], .row {
      an override here would silently lose to it. */
 }
 
-.bar-right { display: flex; align-items: center; gap: 10px; }
 
 .ticker {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1786,7 +1807,16 @@ html.nudge-open { overflow: hidden; }
 /* The masthead entry point. A ghost button, like the theme toggle it sits
    beside — the one loud control up there is the WhatsApp pill, and feedback
    must not compete with the channel the site is trying to grow. */
-.fb-open { gap: 7px; padding: 0 12px; width: auto; }
+/* GRID-AUTO-FLOW: COLUMN IS THE WHOLE RULE. `.ghost-btn` is a 33x33
+   `display: grid` box built for ONE child — the theme toggle's icon — and grid
+   defaults to `row`, so the icon and the label were laid out as TWO STACKED
+   ROWS inside a box still 33px tall: measured live at 1440, the icon sat at
+   y=16 and the word at y=39-56, eight pixels BELOW the button's own border,
+   which drew a box through the middle of the text. The button's own
+   `getBoundingClientRect` reads a perfectly sensible 87x33 throughout, which is
+   why measuring the parent alone passed this twice. MEASURE THE CHILDREN
+   AGAINST THE PARENT. */
+.fb-open { grid-auto-flow: column; gap: 7px; padding: 0 12px; width: auto; }
 .fb-open span { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); text-transform: uppercase; }
 /* Under 560px the word goes and the icon carries it — the header already drops
    its nav at 640 rather than wrapping, and a two-line masthead is broken. */

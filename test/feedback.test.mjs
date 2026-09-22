@@ -354,6 +354,23 @@ console.log('\n== THE HOMEPAGE MARKUP ==');
   check('the dialog is styled', /\.fb-modal \{/.test(css), true);
   check('the veil is styled', /\.fb-veil \{/.test(css), true);
   check('the masthead button is styled', /\.fb-open \{/.test(css), true);
+  /* THE TWO HALVES OF THE MASTHEAD FIT, BOTH MEASURED IN A REAL BROWSER.
+
+     (1) `.ghost-btn` is a 33x33 `display: grid` box written for the theme
+     toggle's SINGLE icon, and grid flows in ROWS by default — so this button's
+     icon and label were laid out stacked inside a box still 33px tall and the
+     word rendered eight pixels below the button's own border. Its own
+     getBoundingClientRect reads a sensible 87x33 throughout, which is why
+     measuring the parent alone passed it twice.
+
+     (2) The masthead was tuned for FOUR controls; feedback made it five and put
+     every phone into horizontal scroll (390px overflowed by 45). The WhatsApp
+     label collapses early enough to pay for it, and the breakpoint has to
+     cover the phone range — 340, what it used to be, does not. */
+  const fbOpenRule = css.slice(css.indexOf('.fb-open {'), css.indexOf('}', css.indexOf('.fb-open {')));
+  check('the label sits BESIDE the icon, not under it', /grid-auto-flow:\s*column/.test(fbOpenRule), true);
+  const alertsCollapse = css.match(/@media \(max-width: (\d+)px\) \{\s*\.alerts span \{ display: none; \}/);
+  check('the WhatsApp label collapses on a phone', Number(alertsCollapse?.[1]) >= 430, true);
   /* The page must not scroll behind an open dialog. */
   check('the page is locked while it is open', /html\.fb-open-modal/.test(css), true);
   check('.fb-msg shares .sub-msg\'s rules', /\.sub-msg, \.fb-msg \{/.test(css), true);
