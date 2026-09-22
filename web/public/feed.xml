@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 22 Sep 2026 21:02:08 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 21:32:08 GMT</lastBuildDate>
+  <item>
+    <title>Associate Engineer (C,C++&amp;OpenGL,1-3 years,Hyderabad) — Collins Aerospace</title>
+    <link>https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595</guid>
+    <pubDate>Tue, 22 Sep 2026 21:32:08 GMT</pubDate>
+    <description>Company: Collins Aerospace · Location: Greater Hyderabad Area · Duration: 1-3 years
+• Develop cockpit display software using C++, OpenGL, and ARINC 661
+• Collaborate with global teams on safety-critical aerospace systems
+• Work in hybrid model with onsite presence in Hyderabad</description>
+  </item>
   <item>
     <title>MDM — Capgemini Engineering</title>
     <link>https://interndoor.com/jobs/capgemini-engineering-mdm-4470619502</link>
@@ -500,16 +510,6 @@
 • Build data tools, automations, and pipelines using SQL and Python
 • Work on AI workflows with LangChain, embeddings, and vector databases
 • Maintain data integrity and resolve operational issues in production</description>
-  </item>
-  <item>
-    <title>Application Security Trainee — eSec Forte® Technologies</title>
-    <link>https://interndoor.com/jobs/esec-forte-technologies-application-security-trainee-4428027336</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/esec-forte-technologies-application-security-trainee-4428027336</guid>
-    <pubDate>Tue, 22 Sep 2026 06:12:23 GMT</pubDate>
-    <description>Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India
-• Analyze and fix complex vulnerabilities using checkmarx platform
-• Lead security reviews across software development stages
-• Create technical workshops and tailored proof-of-concept demos</description>
   </item>
 </channel>
 </rss>
