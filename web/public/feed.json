@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/google-software-engineer-ai-ml-phd-early-career-2026-4451182539",
+      "url": "https://interndoor.com/jobs/google-software-engineer-ai-ml-phd-early-career-2026-4451182539",
+      "title": "Software Engineer, AI/ML, PhD, Early Career, 2026 — Google",
+      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design, test, and maintain software solutions for large-scale systems\n• Work on AI/ML infrastructure for Google services like Search and YouTube\n• Collaborate with teams on code reviews and documentation updates",
+      "date_published": "2026-09-22T12:49:30.964Z",
+      "authors": [
+        {
+          "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4468572793",
+      "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-manual-and-automation-test-engineer-intern-4468572793",
+      "title": "Manual & Automation Test Engineer Intern — D Square Consulting Services Pvt Ltd",
+      "content_text": "Company: D Square Consulting Services Pvt Ltd · Location: Bengaluru, Karnataka, India · Duration: 0–6 months\n• Execute manual tests and log defects with clear steps\n• Setup and run automation scripts using Java/Selenium\n• Participate in agile ceremonies and track test metrics",
+      "date_published": "2026-09-22T12:45:55.624Z",
+      "authors": [
+        {
+          "name": "D Square Consulting Services Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-net-production-support-4433484247",
       "url": "https://interndoor.com/jobs/infosys-net-production-support-4433484247",
       "title": ".Net production support — Infosys",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/macquarie-group-executive-assistant-manager-data-engineer-4458895825",
-      "url": "https://interndoor.com/jobs/macquarie-group-executive-assistant-manager-data-engineer-4458895825",
-      "title": "Executive /Assistant Manager - Data Engineer — Macquarie Group",
-      "content_text": "Company: Macquarie Group · Location: Gurugram, Haryana, India · Duration: 26 weeks\n• Build and maintain data pipelines using spark, airflow, and big data tools\n• Work on cloud platforms like aws with glue and scalable data solutions\n• Automate testing and deployment with ci/cd tools like bamboo and ansible",
-      "date_published": "2026-09-21T11:59:50.034Z",
-      "authors": [
-        {
-          "name": "Macquarie Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-ios-dev-4468731293",
-      "url": "https://interndoor.com/jobs/zensar-technologies-ios-dev-4468731293",
-      "title": "IOS dev — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Telangana, India\n• Build ios apps with swift, swiftui, and objective-c\n• Focus on performance, memory, and security\n• Work on native apps with unit tests and git",
-      "date_published": "2026-09-21T11:38:13.035Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
         }
       ]
     }
