@@ -788,6 +788,12 @@ html[data-boot] .boot-part {
    never again, so filtering and searching swap the list silently. 280ms keeps
    it under the 300ms ceiling for UI motion. */
 .feed.intro .row { animation: rowIn .28s var(--snap) both; }
+/* The windowing sentinel (renderWindow in app.js). It is an empty <li> that
+   exists only to be observed, so it must take no space and draw nothing — a
+   bare <li> inside .feed would otherwise inherit the list's gap and leave a
+   hole under the last card. Height 1px rather than 0: an element with no box
+   is not reliably reported as intersecting. */
+.feed-more { height: 1px; margin: 0; padding: 0; border: 0; background: none; list-style: none; }
 /* The stagger itself is applied inline in renderList() — 32ms per row, capped
    at 14 — which is inside the 30–80ms band. It cannot live here: .row is the
    only child of its <li>, so a :nth-child() on .row always matches 1. */
@@ -1753,15 +1759,20 @@ html.nudge-open { overflow: hidden; }
 }
 
 /* ============================================================
-   THE FEEDBACK BOX.
+   THE FEEDBACK BOX — a masthead button and a dialog.
 
-   DELIBERATELY QUIETER THAN THE BAND ABOVE IT. An email address
-   is the only channel this site owns rather than rents, and the
-   signup is the conversion worth optimising for; a second loud
-   band directly beneath it would split the attention of the one
-   reader who scrolled that far. So: no radial wash, no display
-   face, a hairline rule and a muted ground. It is findable, not
-   competing.
+   IT WAS A BAND AT THE BOTTOM OF THE PAGE and he said so: the
+   control has to be at the top where a reader sees it, not
+   below the fold under the signup. So the entry point is a
+   ghost button in the header beside the theme toggle, and the
+   form itself is a dialog it opens. ONE implementation, not a
+   button and a band — the repo's own rule about second copies.
+
+   A DIALOG RATHER THAN A PANEL IN THE HEADER because the form
+   is three controls and a message line; a popover that size
+   under a 40px button is a panel pretending to be a menu, and
+   it would have to solve the same focus and Escape problems
+   anyway.
 
    The `fb-` prefix was checked against BOTH stylesheets and
    app.js, page.js and engage.js before being taken — `.gist`,
@@ -1771,27 +1782,53 @@ html.nudge-open { overflow: hidden; }
    .fb-msg is NOT styled here: it shares .sub-msg's rules above,
    whose two colours are measured against this same ground.
    ============================================================ */
-.feedback-band {
-  padding: 26px 22px 34px; text-align: center;
-  border-top: 1px solid var(--rule);
-  background: var(--bg-2);
+
+/* The masthead entry point. A ghost button, like the theme toggle it sits
+   beside — the one loud control up there is the WhatsApp pill, and feedback
+   must not compete with the channel the site is trying to grow. */
+.fb-open { gap: 7px; padding: 0 12px; width: auto; }
+.fb-open span { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); text-transform: uppercase; }
+/* Under 560px the word goes and the icon carries it — the header already drops
+   its nav at 640 rather than wrapping, and a two-line masthead is broken. */
+@media (max-width: 560px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 34px; } }
+
+/* The dialog. Fixed, centred, above everything. */
+.fb-veil {
+  position: fixed; inset: 0; z-index: 90;
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  backdrop-filter: blur(3px);
 }
-.feedback-band .wrap { max-width: 560px; }
+.fb-modal {
+  position: fixed; z-index: 91; inset: 0; margin: auto;
+  width: min(520px, calc(100vw - 32px)); height: max-content; max-height: calc(100vh - 48px);
+  overflow: auto; padding: 22px;
+  border: 1px solid var(--rule-2); border-radius: var(--r-lg, 14px);
+  background: var(--bg-2); box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+/* The page must not scroll behind an open dialog. */
+html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
+.fb-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .fb-h {
-  display: block; font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
+  display: block; font-family: var(--display); font-weight: 900;
+  font-size: 19px; letter-spacing: -.02em; color: var(--ink);
 }
 .fb-sub { margin-top: 6px; font-size: 13.5px; color: var(--ink-3, var(--ink-2)); }
-/* The whole form ships with the `hidden` attribute and feedback.js clears it.
-   Without JavaScript the box would submit nowhere, so a reader who cannot use
-   it is shown nothing rather than a control that silently fails.
+.fb-x {
+  flex: none; width: 30px; height: 30px; display: grid; place-items: center;
+  border: 1px solid var(--rule); border-radius: 999px;
+  background: none; color: var(--ink-2); cursor: pointer; font-size: 15px; line-height: 1;
+}
+.fb-x:hover { color: var(--ink); border-color: var(--rule-2); }
+/* The form ships with the `hidden` attribute and feedback.js clears it. Without
+   JavaScript the box would submit nowhere, so a reader who cannot use it is
+   shown nothing rather than a control that silently fails.
 
    NO `.fb[hidden] { display: none }` RULE HERE, deliberately. Line 118 already
    carries a global `[hidden] { display: none !important }`, which is what lets
    .sub-row — a display:flex element — be hidden by the attribute at all. A
    local copy would be strictly weaker than an !important it can never beat, so
    no mutation could tell it from its own absence: surface, not coverage. */
-.fb-row { margin-top: 12px; }
+.fb-row { margin-top: 14px; }
 .fb-t {
   display: block; width: 100%; min-width: 0; box-sizing: border-box;
   min-height: 84px; resize: vertical;
@@ -1805,8 +1842,8 @@ html.nudge-open { overflow: hidden; }
 .fb-t:focus-visible,
 .fb-e:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
 .fb-send {
-  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-  margin-top: 8px;
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;
+  margin-top: 10px;
 }
 .fb-e {
   flex: 1 1 200px; min-width: 0; max-width: 300px;
@@ -1815,18 +1852,19 @@ html.nudge-open { overflow: hidden; }
   font-family: var(--ui); font-size: 16px;
 }
 .fb-e::placeholder { color: var(--ink-3, var(--ink-2)); opacity: .7; }
-/* OUTLINED, not filled. The one solid lime control on this page is Subscribe,
-   directly above; a second filled button here would halve its weight. */
+/* FILLED HERE, unlike the first draft. As a band at the bottom of the page it
+   was outlined so it could not out-shout the Subscribe button directly above
+   it. Inside its own dialog there is nothing to compete with and Send is the
+   only action, so an outlined control would just be a weak primary. */
 .fb-b {
-  flex: 0 0 auto; padding: 10px 18px; border-radius: var(--r);
-  border: 1px solid var(--rule-2); background: none; color: var(--ink);
+  flex: 0 0 auto; padding: 10px 20px; border-radius: var(--r);
+  border: 1px solid var(--live); background: var(--live); color: var(--live-ink);
   font-family: var(--ui); font-weight: 700; font-size: 14.5px; cursor: pointer;
-  transition: border-color var(--d-press) var(--snap), color var(--d-press) var(--snap);
 }
-.fb-b:disabled { color: var(--ink-3, var(--ink-2)); cursor: default; }
+.fb-b:disabled { opacity: .6; cursor: default; }
 .fb-b:active { transform: scale(.97); }
 @media (hover: hover) and (pointer: fine) {
-  .fb-b:not(:disabled):hover { border-color: var(--live); color: var(--live); }
+  .fb-b:not(:disabled):hover { filter: brightness(1.07); }
 }
 @media (prefers-reduced-motion: reduce) {
   .fb-b:active { transform: none; }

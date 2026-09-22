@@ -1309,8 +1309,72 @@ function renderList() {
     }
     frag.append(bar);
   }
-  split.ordered.forEach((group, i) => frag.append(jobCard(group[0], i, group, seen.has(group))));
+  /* THE LIST IS WINDOWED. Every group used to get a card on first paint, which
+     was fine when a board held a few hundred roles and is not now: the US board
+     groups to 2,961 cards, each carrying a logo, chips, bullets and two
+     controls — tens of thousands of nodes. The cost is not the building, it is
+     that every later style recalculation has to walk all of them, so switching
+     the theme or typing in the search box janked the whole page. India, at 246
+     cards, never showed it.
+
+     ONLY THE RENDERING IS WINDOWED. state.groups, the result count, the
+     since-bar and every filter still run over the WHOLE set — a reader must
+     never be told there are 60 roles because 60 are drawn. */
+  renderWindow(list, frag, split.ordered, seen);
+}
+
+/** How many cards are drawn before the reader has to scroll for more. Well over
+ *  a tall viewport's worth, so the window is invisible until it is scrolled. */
+const RENDER_CHUNK = 60;
+
+function renderWindow(list, frag, ordered, seen) {
+  /* The previous page's observer would otherwise keep firing against a list it
+     no longer owns, appending cards from the old filter into the new one. */
+  renderWindow.observer?.disconnect();
+
+  let drawn = 0;
+  const draw = (into) => {
+    const upto = Math.min(drawn + RENDER_CHUNK, ordered.length);
+    for (let i = drawn; i < upto; i++) {
+      const group = ordered[i];
+      into.append(jobCard(group[0], i, group, seen.has(group)));
+    }
+    drawn = upto;
+  };
+
+  draw(frag);
   list.append(frag);
+  if (drawn >= ordered.length) return;
+
+  /* A sentinel rather than a scroll listener: the observer fires once when the
+     end of the list nears the viewport and costs nothing in between, where a
+     scroll handler runs on every frame of every scroll on a page that is
+     already the heavy one. */
+  const sentinel = el('li', 'feed-more');
+  sentinel.setAttribute('role', 'presentation');
+  list.append(sentinel);
+
+  /* No IntersectionObserver — an old browser, or a headless one that never
+     reports intersection — draws the whole list rather than stopping at 60. A
+     reader seeing every card is the behaviour this replaced; a reader stuck
+     at 60 with no way forward is a broken board. */
+  if (typeof IntersectionObserver !== 'function') {
+    sentinel.remove();
+    const rest = document.createDocumentFragment();
+    while (drawn < ordered.length) draw(rest);
+    list.append(rest);
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    const more = document.createDocumentFragment();
+    draw(more);
+    list.insertBefore(more, sentinel);
+    if (drawn >= ordered.length) { io.disconnect(); sentinel.remove(); }
+  }, { rootMargin: '600px' });   // start drawing before the reader arrives
+  io.observe(sentinel);
+  renderWindow.observer = io;
 }
 
 function selectJob(id, { silent = false } = {}) {

@@ -149,5 +149,51 @@ atLeast('--ink-3 on --bg-2',         ratio(ink3, bg2),  4.5);
 atLeast('--ink-3 on --bg',           ratio(ink3, bg),   4.5);
 atLeast('--ink-3 on --card',         ratio(ink3, card), 4.5);
 
+
+console.log('\n== the list is WINDOWED, because the US board is not a small board ==');
+{
+  /* Every group used to get a card on first paint. That was fine at India's
+     246 and is not at the US board's 2,961: measured in a real browser, the
+     full list is ~95,000 DOM nodes against ~13,800 windowed (85% fewer), and
+     the cost is not the building — it is that every later style recalculation
+     walks all of them. A theme flip measured 21ms at 120 cards and 97ms at
+     660, i.e. roughly 430ms at 2,961, which is the "hangs and lags whenever an
+     action is performed" this fixes. */
+  const code = app.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  check('there is a render chunk size', /const RENDER_CHUNK = (\d+);/.test(code), true);
+  const chunk = Number((code.match(/const RENDER_CHUNK = (\d+);/) ?? [])[1]);
+  /* Big enough to fill a tall viewport — a window the reader can see the end of
+     is a window they notice — and small enough to be worth having. */
+  check('the chunk fills a viewport without being the whole list', chunk >= 30 && chunk <= 200, true);
+  check('renderList hands the whole ordered set to the window', /renderWindow\(list, frag, split\.ordered, seen\)/.test(code), true);
+
+  /* ONLY THE RENDERING IS WINDOWED. A reader must never be told there are 60
+     roles because 60 are drawn, so the count is computed from `groups`, before
+     any windowing. */
+  check('the result count is taken from every group, not the window',
+    /const n = groups\.length;[\s\S]{0,400}\$\('result-count'\)\.textContent/.test(code), true);
+
+  /* The previous render's observer would otherwise keep firing against a list
+     it no longer owns, appending old-filter cards into the new filter. */
+  check('the previous observer is disconnected on re-render',
+    /renderWindow\.observer\?\.disconnect\(\)/.test(code), true);
+  check('and the new one is stored for that', /renderWindow\.observer = io/.test(code), true);
+
+  /* A browser with no IntersectionObserver — or a headless one that never
+     reports intersection — must draw EVERYTHING rather than stranding the
+     reader at the first chunk with no way forward. Showing every card is the
+     behaviour this replaced; a board that stops at 60 is broken. */
+  check('there is a fallback when IntersectionObserver is missing',
+    /typeof IntersectionObserver !== 'function'/.test(code), true);
+  check('and the fallback draws the whole list',
+    /while \(drawn < ordered\.length\) draw\(rest\)/.test(code), true);
+
+  /* The sentinel has to be inert: a bare <li> in .feed inherits the list gap
+     and leaves a hole under the last card, and a zero-height box is not
+     reliably reported as intersecting. */
+  check('the sentinel is styled to take no space', /\.feed-more \{[^}]*height: 1px/.test(css), true);
+  check('it carries no list marker', /\.feed-more \{[^}]*list-style: none/.test(css), true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
