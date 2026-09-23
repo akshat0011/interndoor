@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4461790871",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4461790871",
+      "title": "Software Engr I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop software for embedded systems and industrial automation\n• Work with C++17, STL, Boost, and real-time operating systems\n• Contribute to CI/CD pipelines using Git and Azure DevOps",
+      "date_published": "2026-09-23T16:58:55.822Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469485276",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469485276",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months\n• Research and experiment with generative AI models like LLMs and diffusion models\n• Build RAG pipelines and apply prompt engineering to improve AI outputs\n• Design scalable AI solutions and deploy models on Azure and cloud platforms",
+      "date_published": "2026-09-23T16:50:08.327Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469487229",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469487229",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Gurugram, Haryana, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-23T16:49:43.738Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469466761",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469466761",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-23T16:49:32.440Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-cyber-sec-archt-engr-i-4462112852",
       "url": "https://interndoor.com/jobs/honeywell-technologies-cyber-sec-archt-engr-i-4462112852",
       "title": "Cyber Sec Archt/Engr I — Honeywell Technologies",
@@ -18,11 +66,11 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4448350105",
-      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4448350105",
-      "title": "AI/ML Computational Science Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Noida, Uttar Pradesh, India · Duration: 0-2 years\n• Build AI solutions for diverse domains with minimal errors\n• Work with Python, ML, NLP, DevOps, and cloud technologies\n• Collaborate with cross-functional teams and manage stakeholders\n• Contribute to testing, documentation, and quality control",
-      "date_published": "2026-09-23T15:40:10.842Z",
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448383384",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448383384",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop Power Automate workflows for automation solutions\n• Collaborate with BAs and PMs to design and implement RPA projects\n• Maintain and clean databases for development and production environments",
+      "date_published": "2026-09-23T16:28:27.719Z",
       "authors": [
         {
           "name": "Accenture in India"
@@ -30,11 +78,11 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448366101",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448366101",
-      "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India · Duration: 2-4 years\n• Support clients with system testing and handover\n• Work with Kronos modules and Pro WFM tools\n• Mentor junior team members\n• Collaborate on business process automation",
-      "date_published": "2026-09-23T15:33:03.351Z",
+      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4448350105",
+      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4448350105",
+      "title": "AI/ML Computational Science Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Noida, Uttar Pradesh, India · Duration: 0-2 years\n• Build AI solutions for diverse domains with minimal errors\n• Work with Python, ML, NLP, DevOps, and cloud technologies\n• Collaborate with cross-functional teams and manage stakeholders\n• Contribute to testing, documentation, and quality control",
+      "date_published": "2026-09-23T15:40:10.842Z",
       "authors": [
         {
           "name": "Accenture in India"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Mphasis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/observe-ai-ai-agent-engineer-4470909777",
-      "url": "https://interndoor.com/jobs/observe-ai-ai-agent-engineer-4470909777",
-      "title": "AI Agent Engineer — Observe.AI",
-      "content_text": "Company: Observe.AI · Location: Hyderabad, Telangana, India · Duration: 1-5 years\n• Build and deploy AI agents with prompt design, workflow configuration, and integration setup\n• Work directly with customers to translate requirements into working AI solutions\n• Configure APIs for CRM, knowledge bases, and telephony systems with error handling",
-      "date_published": "2026-09-23T10:30:01.763Z",
-      "authors": [
-        {
-          "name": "Observe.AI"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-cms-developer-4470915472",
-      "url": "https://interndoor.com/jobs/netapp-cms-developer-4470915472",
-      "title": "CMS Developer — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India · Duration: 1–2 years\n• Build and maintain custom themes, templates, and page layouts\n• Use HTML, CSS, JavaScript for front-end customizations\n• Support integrations with Microsoft Teams, SSO, and analytics tools",
-      "date_published": "2026-09-23T10:29:56.517Z",
-      "authors": [
-        {
-          "name": "NetApp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-amazon-shipping-4469310228",
-      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-amazon-shipping-4469310228",
-      "title": "Applied Scientist I, Amazon Shipping — Amazon Science",
-      "content_text": "Company: Amazon Science · Location: Gurugram, Haryana, India\n• Design and deploy models for forecasting and optimization in Amazon's logistics network\n• Use Python, Java, C++, SQL, and RDBMS to build scalable systems\n• Collaborate with product and engineering teams to improve customer experience and cost",
-      "date_published": "2026-09-23T10:29:28.521Z",
-      "authors": [
-        {
-          "name": "Amazon Science"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/jungleworks-qa-trainee-4469445041",
-      "url": "https://interndoor.com/jobs/jungleworks-qa-trainee-4469445041",
-      "title": "QA Trainee — JungleWorks",
-      "content_text": "Company: JungleWorks · Location: Sahibzada Ajit Singh Nagar, Punjab, India · Duration: 6 months\n• Test web and mobile apps, create test cases, and track bugs\n• Use defect tools, perform regression and exploratory testing\n• Collaborate with product and dev teams, assist with docs",
-      "date_published": "2026-09-23T10:25:15.377Z",
-      "authors": [
-        {
-          "name": "JungleWorks"
         }
       ]
     }
