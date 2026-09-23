@@ -903,7 +903,13 @@
       ]
     },
     "Vodafone Idea",
-    "JioHotstar",
+    {
+      "_note": "JioStar is the LinkedIn page name for the merged Viacom18 + Star India entity that runs JioHotstar, and it normalises to the single token `jiostar`, which matches neither JioHotstar nor Disney Star nor Reliance Jio — all three of which are already on this list. An ALIAS, not a second entry: it is the same employer and already vetted, so uniqueCompanyCount must not move. Same shape as TikTok under ByteDance. Measured 23 Sep 2026 over all 24,419 employer names ever seen: newly matches exactly one, JioStar, 0 moved, 0 lost. It had been refused pre-click since at least 18 Sep, including a Software Development Engineer I in Bengaluru.",
+      "name": "JioHotstar",
+      "aliases": [
+        "JioStar"
+      ]
+    },
     "Disney Star",
     "Sony Pictures Networks",
     "ZEE Entertainment",
