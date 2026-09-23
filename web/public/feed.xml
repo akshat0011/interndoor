@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 18:58:37 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 19:48:19 GMT</lastBuildDate>
+  <item>
+    <title>Intern — IQVIA</title>
+    <link>https://interndoor.com/jobs/iqvia-intern-4471106389</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4471106389</guid>
+    <pubDate>Wed, 23 Sep 2026 19:48:19 GMT</pubDate>
+    <description>Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months
+• Build and deploy AI models using Azure and cloud platforms
+• Work with LLMs, diffusion models, and prompt engineering
+• Collaborate with teams to design scalable AI solutions</description>
+  </item>
+  <item>
+    <title>Data Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-data-engineer-4469499309</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-data-engineer-4469499309</guid>
+    <pubDate>Wed, 23 Sep 2026 19:42:12 GMT</pubDate>
+    <description>Company: Infosys · Location: Pune Division, Maharashtra, India
+• Design and optimize data pipelines for batch and real-time data
+• Work with delta lake, iceberg, and lakehouse architecture
+• Collaborate with teams to build data lakes and warehouses</description>
+  </item>
   <item>
     <title>Software Engineer — Aditya Birla Capital</title>
     <link>https://interndoor.com/jobs/aditya-birla-capital-software-engineer-4416067484</link>
@@ -56,16 +76,6 @@
 • Develop software for embedded systems and industrial automation
 • Work with C++17, STL, Boost, and real-time operating systems
 • Contribute to CI/CD pipelines using Git and Azure DevOps</description>
-  </item>
-  <item>
-    <title>Intern — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-intern-4469485276</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4469485276</guid>
-    <pubDate>Wed, 23 Sep 2026 16:50:08 GMT</pubDate>
-    <description>Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months
-• Research and experiment with generative AI models like LLMs and diffusion models
-• Build RAG pipelines and apply prompt engineering to improve AI outputs
-• Design scalable AI solutions and deploy models on Azure and cloud platforms</description>
   </item>
   <item>
     <title>Intern — IQVIA</title>
@@ -497,16 +507,6 @@
 • Develop full stack applications using Java 8+ and Spring Boot
 • Work on scalable microservices with event-driven architecture
 • Collaborate in agile teams on cloud-native projects</description>
-  </item>
-  <item>
-    <title>Software Engineer - Java Spring Boot — Mastercard</title>
-    <link>https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4469303377</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4469303377</guid>
-    <pubDate>Wed, 23 Sep 2026 10:52:23 GMT</pubDate>
-    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
-• Design and build secure microservices with Java and Spring Boot
-• Work with Kafka, REST APIs, and cloud-native tools
-• Collaborate with global teams on payment network solutions</description>
   </item>
 </channel>
 </rss>
