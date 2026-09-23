@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399",
+      "url": "https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399",
+      "title": "GPU Core Pipeline IP Verification Engineer — NVIDIA",
+      "content_text": "Company: NVIDIA · Location: Bengaluru, Karnataka, India\n• Verify gpu asic designs using verilog and systemverilog\n• Work with architects and designers on verification infrastructure\n• Ensure functional coverage of rtl with advanced tools",
+      "date_published": "2026-09-23T17:31:18.136Z",
+      "authors": [
+        {
+          "name": "NVIDIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-4462166386",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-4462166386",
+      "title": "Software Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 0-2 years\n• Develop and test wireless features across access points, controllers, and cloud systems\n• Write code in C/C++ and Python, design test automation, and debug system issues\n• Collaborate with cross-functional teams on wireless product development",
+      "date_published": "2026-09-23T17:19:23.078Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4461790871",
       "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4461790871",
       "title": "Software Engr I — Honeywell Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "GreyOrange"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dneg-pipeline-atd-vfx-4470932020",
-      "url": "https://interndoor.com/jobs/dneg-pipeline-atd-vfx-4470932020",
-      "title": "Pipeline ATD (VFX) — DNEG",
-      "content_text": "Company: DNEG · Location: Bengaluru, Karnataka, India\n• Support artists with technical tools and workflows\n• Write python scripts for vfx pipelines\n• Monitor render farms and file transfers\n• Work with pipeline td to improve software",
-      "date_published": "2026-09-23T10:36:42.791Z",
-      "authors": [
-        {
-          "name": "DNEG"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mphasis-sre-engineer-4470909583",
-      "url": "https://interndoor.com/jobs/mphasis-sre-engineer-4470909583",
-      "title": "SRE Engineer — Mphasis",
-      "content_text": "Company: Mphasis · Location: Hyderabad, Telangana, India\n• Troubleshoot software systems and resolve technical issues\n• Implement CI/CD pipelines with Bitbucket and GitHub Actions\n• Automate tasks using Shell scripts and Ansible",
-      "date_published": "2026-09-23T10:30:17.019Z",
-      "authors": [
-        {
-          "name": "Mphasis"
         }
       ]
     }

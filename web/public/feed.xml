@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 16:58:55 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 17:31:18 GMT</lastBuildDate>
+  <item>
+    <title>GPU Core Pipeline IP Verification Engineer — NVIDIA</title>
+    <link>https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399</guid>
+    <pubDate>Wed, 23 Sep 2026 17:31:18 GMT</pubDate>
+    <description>Company: NVIDIA · Location: Bengaluru, Karnataka, India
+• Verify gpu asic designs using verilog and systemverilog
+• Work with architects and designers on verification infrastructure
+• Ensure functional coverage of rtl with advanced tools</description>
+  </item>
+  <item>
+    <title>Software Engineer — Cisco</title>
+    <link>https://interndoor.com/jobs/cisco-software-engineer-4462166386</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-4462166386</guid>
+    <pubDate>Wed, 23 Sep 2026 17:19:23 GMT</pubDate>
+    <description>Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 0-2 years
+• Develop and test wireless features across access points, controllers, and cloud systems
+• Write code in C/C++ and Python, design test automation, and debug system issues
+• Collaborate with cross-functional teams on wireless product development</description>
+  </item>
   <item>
     <title>Software Engr I — Honeywell Technologies</title>
     <link>https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4461790871</link>
@@ -487,27 +507,6 @@
 • Run tests on hardware, firmware, and middleware modules
 • Use linux and python for analysis and documentation
 • Work with remote teams on hardware troubleshooting</description>
-  </item>
-  <item>
-    <title>Pipeline ATD (VFX) — DNEG</title>
-    <link>https://interndoor.com/jobs/dneg-pipeline-atd-vfx-4470932020</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/dneg-pipeline-atd-vfx-4470932020</guid>
-    <pubDate>Wed, 23 Sep 2026 10:36:42 GMT</pubDate>
-    <description>Company: DNEG · Location: Bengaluru, Karnataka, India
-• Support artists with technical tools and workflows
-• Write python scripts for vfx pipelines
-• Monitor render farms and file transfers
-• Work with pipeline td to improve software</description>
-  </item>
-  <item>
-    <title>SRE Engineer — Mphasis</title>
-    <link>https://interndoor.com/jobs/mphasis-sre-engineer-4470909583</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mphasis-sre-engineer-4470909583</guid>
-    <pubDate>Wed, 23 Sep 2026 10:30:17 GMT</pubDate>
-    <description>Company: Mphasis · Location: Hyderabad, Telangana, India
-• Troubleshoot software systems and resolve technical issues
-• Implement CI/CD pipelines with Bitbucket and GitHub Actions
-• Automate tasks using Shell scripts and Ansible</description>
   </item>
 </channel>
 </rss>
