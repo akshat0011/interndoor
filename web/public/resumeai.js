@@ -19,7 +19,33 @@
  * nowhere else.
  */
 
-export const MODEL = 'gemini-2.5-flash';
+/* TWO MODELS, AND THE REASON IS THE QUOTA, NOT THE TASTE.
+ *
+ * Google's free tier is **20 generateContent calls per day** and the quota id
+ * is `GenerateRequestsPerDayPerProjectPerModel-FreeTier` — PER MODEL. So
+ * putting ranking and tailoring on the same model makes them fight over one
+ * bucket of 20; splitting them gives each its own.
+ *
+ * Measured on a real key over the same 25-role shortlist:
+ *
+ *   gemini-2.5-flash        16-25s   ~6,600 tokens   (thinks: 2,000-6,000)
+ *   gemini-flash-lite-latest  12.0s    2,607 tokens   (no thinking)
+ *
+ * and the lite model discriminated at least as well — it scored a SAP supply
+ * chain role 0 against a software internship at 85, which is exactly the
+ * separation the AI rank exists to make. Ranking is a scoring task over short
+ * digests, so it goes to the cheap fast model.
+ *
+ * TAILORING STAYS ON THE STRONGER MODEL. It rewrites a real person's real
+ * resume, the output goes to real employers, and the invention rule is the
+ * thing that matters most — that is not where to save 4,000 tokens.
+ *
+ * `gemini-2.5-flash-lite` is NOT a candidate: Google answers
+ * "no longer available to new projects" with a 404. */
+export const RANK_MODEL = 'gemini-flash-lite-latest';
+export const TAILOR_MODEL = 'gemini-2.5-flash';
+/** Kept for callers and tests that just want "the model this talks to". */
+export const MODEL = TAILOR_MODEL;
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 /** The only host this file may ever send a key to. Anchored, so a lookalike
@@ -388,7 +414,11 @@ export function explainFailure(status) {
     return 'Google rejected that API key. Check you pasted it whole, and that the Generative Language API is enabled on its project.';
   }
   if (status === 429) {
-    return 'Your own Google quota is used up for now. Free keys reset after a while; try again later.';
+    /* MEASURED, not guessed: the free tier is 20 generateContent calls PER DAY
+       per model (quota id GenerateRequestsPerDayPerProjectPerModel-FreeTier).
+       "Resets after a while" sent people back to retry within the minute, which
+       can never work — say the number and say when. */
+    return 'Your Google key is out of free quota for today — the free tier allows about 20 AI requests a day per model, and it resets daily. Ranking by skills still works without any key.';
   }
   if (status >= 500) return 'Google’s API is having trouble. Try again shortly.';
   return `Google refused the request (HTTP ${status}).`;
@@ -421,7 +451,7 @@ const RETRY_STATUSES = new Set([500, 502, 503, 504]);
 const RETRIES = 2;
 const RETRY_PAUSE_MS = 1_500;
 
-async function callGemini({ key, system, prompt, schema, maxTokens, temperature, signal, onAttempt }) {
+async function callGemini({ key, model, system, prompt, schema, maxTokens, temperature, signal, onAttempt }) {
   const body = JSON.stringify({
     systemInstruction: { parts: [{ text: system }] },
     contents: [{ role: 'user', parts: [{ text: prompt }] }],
@@ -435,7 +465,7 @@ async function callGemini({ key, system, prompt, schema, maxTokens, temperature,
 
   let res;
   for (let attempt = 0; ; attempt += 1) {
-    res = await fetch(endpointFor(MODEL), {
+    res = await fetch(endpointFor(model), {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -488,6 +518,7 @@ export async function rankWithAI({ key, resumeText, jobs, signal, onAttempt }) {
   if (!jobs.length) return new Map();
   const data = await callGemini({
     key,
+    model: RANK_MODEL,
     onAttempt,
     system: RANK_SYSTEM,
     prompt: buildRankPrompt(String(resumeText).slice(0, MAX_RESUME_CHARS), jobs),
@@ -513,6 +544,7 @@ export async function tailorWithAI({ key, resumeText, job, signal, onAttempt }) 
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
   const tailored = await callGemini({
     key,
+    model: TAILOR_MODEL,
     onAttempt,
     system: TAILOR_SYSTEM,
     prompt: buildTailorPrompt(resume, job),
