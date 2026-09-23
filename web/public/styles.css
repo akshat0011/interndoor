@@ -1194,6 +1194,39 @@ html[data-boot] .boot-part {
 }
 .keyrow input:focus { border-color: var(--live); }
 
+/* WHEN THE KEY IS ACTUALLY BLOCKING SOMETHING, THE PANEL STOPS BEING QUIET.
+   As a plain collapsed <details> beside a bright, enabled "Tailor it", the only
+   way a reader discovered that tailoring needs a key was to press the button
+   and be shown an error — which reads as a broken site. It shouts only in that
+   state; in rank mode, where no key is needed, it stays out of the way. */
+.keybox.is-required {
+  border-color: var(--live);
+  background: color-mix(in oklab, var(--live) 7%, var(--card));
+}
+.keybox.is-required summary { color: var(--live); font-weight: 700; }
+/* The "why" line only exists in the blocking state — in rank mode it would be
+   a paragraph explaining a requirement that does not apply. */
+.keyneed { display: none; }
+.keybox.is-required .keyneed {
+  display: block; margin: 0 0 10px; padding: 9px 11px;
+  border-radius: var(--r); background: color-mix(in oklab, var(--live) 12%, var(--bg-2));
+  font-size: 12.5px; color: var(--ink);
+}
+.keybox.is-required .keyrow input { border-color: color-mix(in oklab, var(--live) 45%, transparent); }
+/* The disclosure triangle is a weak affordance for something required, so the
+   open panel carries a solid left edge as well. */
+.keybox.is-required { border-left-width: 3px; }
+
+/* A primary button that cannot be pressed has to LOOK unpressable, or the
+   reader clicks it and concludes nothing happened. */
+.go[disabled], .go-block[disabled] {
+  opacity: 1;                      /* never dim text — §15 */
+  background: var(--card);
+  color: var(--ink-3);
+  border: 1px solid var(--rule);
+  cursor: not-allowed;
+}
+
 .wait { display: grid; place-items: center; text-align: center; padding: 60px 20px; }
 .wait b { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.02em; }
 .wait > span { margin-top: 7px; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
