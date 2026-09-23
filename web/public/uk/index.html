@@ -609,10 +609,20 @@ Engineering internships &amp; entry-level jobs
         <textarea id="resume-paste" rows="9" aria-label="Resume text" placeholder="Paste the full text of your resume…"></textarea>
       </details>
       <div class="filestate" id="file-state" hidden></div>
+      <details class="keybox" id="keybox">
+        <summary id="key-state">AI features &mdash; no key yet (ranking by skills still works)</summary>
+        <p class="keynote">Ranking the board by skills runs <b>on this device</b> and needs no key. To have an AI <b>read</b> each posting and score it properly, or to tailor your resume for one role, paste your own Google AI Studio key.</p>
+        <div class="keyrow">
+          <input type="password" id="ai-key" autocomplete="off" spellcheck="false" placeholder="AIza&hellip;" aria-label="Google AI Studio API key">
+          <button class="alt" id="save-key" type="button">Save</button>
+          <button class="bare" id="forget-key" type="button" hidden>Forget</button>
+        </div>
+        <p class="keynote">Stored in <b>this browser only</b> and sent straight from your device to Google &mdash; it never reaches InternDoor. <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Get a free key from Google AI Studio &rarr;</a></p>
+      </details>
       <div class="warn">
         <p><b>Read before uploading.</b></p>
-        <p>This site never stores your resume — the text is held for one request, then discarded. But it is sent to <b>Google's Gemini API</b> to do the rewriting, on the <b>free tier</b>, which permits Google to use submitted data to improve their models.</p>
-        <p>Strip your home address and any ID numbers first. Name, email, education and experience are all it needs.</p>
+        <p>Your resume <b>never reaches InternDoor</b>. Skill ranking happens on this device. The AI features send it from your browser <b>straight to Google under your own key</b> &mdash; we are not in the middle, so there is nothing here to store.</p>
+        <p>A <b>free</b> Google key still lets Google use what you send to improve their models; a paid one does not. Either way, strip your home address and any ID numbers first &mdash; name, email, education and experience are all it needs.</p>
       </div>
       <button class="go go-block" id="do-tailor" type="button" disabled>Tailor it</button>
     </section>
