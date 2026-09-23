@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-application-engr-ii-4470934275",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-application-engr-ii-4470934275",
+      "title": "Application Engr II — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement control systems for industrial automation\n• Use c++ and python for real-time data processing\n• Work on projects with global impact in smart manufacturing",
+      "date_published": "2026-09-23T12:02:09.790Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-digital-technology-development-program-intern-india-2027-4470919573",
+      "url": "https://interndoor.com/jobs/ge-vernova-digital-technology-development-program-intern-india-2027-4470919573",
+      "title": "Digital Technology Development Program Intern - India 2027 — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India · Duration: 9 to 11 weeks\n• Work on real-world digital projects with business impact\n• Exposure to IT leaders and global support network\n• Potential for full-time role in DTDP program",
+      "date_published": "2026-09-23T11:36:15.299Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cyncly-trainee-3d-design-engineer-4468994784",
+      "url": "https://interndoor.com/jobs/cyncly-trainee-3d-design-engineer-4468994784",
+      "title": "Trainee 3D Design Engineer — Cyncly",
+      "content_text": "Company: Cyncly · Location: Pune City, Maharashtra, India · Duration: 0–3 years\n• Create 3d models and animations for product design\n• Use blender, 3ds max, autocad, and catia\n• Collaborate with clients and content developers",
+      "date_published": "2026-09-23T11:29:38.712Z",
+      "authors": [
+        {
+          "name": "Cyncly"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bnp-paribas-test-engineer-4076481892",
       "url": "https://interndoor.com/jobs/bnp-paribas-test-engineer-4076481892",
       "title": "Test Engineer — BNP Paribas",
@@ -14,6 +50,30 @@
       "authors": [
         {
           "name": "BNP Paribas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jacobs-apprentice-engineer-energy-and-power-4470917396",
+      "url": "https://interndoor.com/jobs/jacobs-apprentice-engineer-energy-and-power-4470917396",
+      "title": "Apprentice Engineer - Energy and Power — Jacobs",
+      "content_text": "Company: Jacobs · Location: Bengaluru East, Karnataka, India\n• Support substation design and technical analysis\n• Work with senior engineers on live projects\n• Participate in site visits and report preparation",
+      "date_published": "2026-09-23T11:19:08.218Z",
+      "authors": [
+        {
+          "name": "Jacobs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-aes-fs-java-reactive-4469445190",
+      "url": "https://interndoor.com/jobs/zensar-technologies-aes-fs-java-reactive-4469445190",
+      "title": "AES - FS - Java Reactive — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Bengaluru, Karnataka, India\n• Develop full-stack applications using Java and React\n• Build REST APIs and microservices for financial services\n• Collaborate with cross-functional teams on product features",
+      "date_published": "2026-09-23T11:13:40.234Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
         }
       ]
     },
@@ -30,6 +90,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-mean-stack-4469429961",
+      "url": "https://interndoor.com/jobs/zensar-technologies-mean-stack-4469429961",
+      "title": "MEAN stack — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Develop scalable backend services using Node.js, NestJS, and PostgreSQL\n• Build responsive UI components with Angular and Angular Material\n• Design secure REST APIs and integrate third-party tools like DocuSign and AWS S3",
+      "date_published": "2026-09-23T11:13:05.029Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bnp-paribas-software-engineer-4451538729",
       "url": "https://interndoor.com/jobs/bnp-paribas-software-engineer-4451538729",
       "title": "Software Engineer — BNP Paribas",
@@ -38,6 +110,18 @@
       "authors": [
         {
           "name": "BNP Paribas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-developer-iii-enterprise-solutions-4459523801",
+      "url": "https://interndoor.com/jobs/ust-developer-iii-enterprise-solutions-4459523801",
+      "title": "Developer III - Enterprise Solutions — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Support system issues in logistics and ERP operations\n• Collaborate with users to resolve process gaps and improve workflows\n• Analyze operational data and trends in supply chain environments",
+      "date_published": "2026-09-23T11:08:33.979Z",
+      "authors": [
+        {
+          "name": "UST"
         }
       ]
     },
@@ -210,38 +294,14 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-4469419919",
-      "url": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-4469419919",
-      "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice) — Arista Networks",
-      "content_text": "Company: Arista Networks · Location: Pune/Pimpri-Chinchwad Area\n• Write, debug, and refine scripts using Shell, PowerShell, and AI tools like GitHub Copilot\n• Maintain and test automation scripts for system maintenance and deployment tasks\n• Collaborate with senior engineers on version control and code reviews using Git",
-      "date_published": "2026-09-23T10:25:38.162Z",
-      "authors": [
-        {
-          "name": "Arista Networks"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/jungleworks-qa-trainee-4469445041",
       "url": "https://interndoor.com/jobs/jungleworks-qa-trainee-4469445041",
       "title": "QA Trainee — JungleWorks",
-      "content_text": "Company: JungleWorks · Location: Sahibzada Ajit Singh Nagar, Punjab, India · Duration: 6 months",
+      "content_text": "Company: JungleWorks · Location: Sahibzada Ajit Singh Nagar, Punjab, India · Duration: 6 months\n• Test web and mobile apps, create test cases, and track bugs\n• Use defect tools, perform regression and exploratory testing\n• Collaborate with product and dev teams, assist with docs",
       "date_published": "2026-09-23T10:25:15.377Z",
       "authors": [
         {
           "name": "JungleWorks"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4470918245",
-      "url": "https://interndoor.com/jobs/fe-fundinfo-data-analyst-apprentice-11-months-contract-4470918245",
-      "title": "Data Analyst Apprentice - 11 Months Contract — FE fundinfo",
-      "content_text": "Company: FE fundinfo · Location: Chennai, Tamil Nadu, India · Duration: 11 months",
-      "date_published": "2026-09-23T10:25:03.509Z",
-      "authors": [
-        {
-          "name": "FE fundinfo"
         }
       ]
     },
@@ -302,6 +362,18 @@
       "authors": [
         {
           "name": "Baker Hughes"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
+      "url": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
+      "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice) — Arista Networks",
+      "content_text": "Company: Arista Networks · Location: Pune, in\n• Write, debug, and refine bash/zsh and powershell scripts with ai tools\n• Maintain automation for system maintenance, deployment, and monitoring tasks\n• Collaborate with senior engineers on code reviews and troubleshooting",
+      "date_published": "2026-09-23T06:59:03.783Z",
+      "authors": [
+        {
+          "name": "Arista Networks"
         }
       ]
     },
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Sprinklr"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lowe-s-india-associate-data-engineer-daci-analytics-4469026283",
-      "url": "https://interndoor.com/jobs/lowe-s-india-associate-data-engineer-daci-analytics-4469026283",
-      "title": "Associate Data Engineer, DACI Analytics — Lowe's India",
-      "content_text": "Company: Lowe's India · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for analytics\n• Use python and bigquery for data processing\n• Work on team focused on customer insights",
-      "date_published": "2026-09-22T16:29:13.288Z",
-      "authors": [
-        {
-          "name": "Lowe's India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lowe-s-india-data-engineer-4469021481",
-      "url": "https://interndoor.com/jobs/lowe-s-india-data-engineer-4469021481",
-      "title": "Data Engineer — Lowe's India",
-      "content_text": "Company: Lowe's India · Location: Bengaluru, Karnataka, India\n• Build and maintain data assets for trusted reporting and self-service analytics\n• Use tools like Looker, Power BI, and BigQuery to support inventory and business decisions\n• Collaborate with cross-functional teams to improve data quality and reporting efficiency",
-      "date_published": "2026-09-22T16:17:29.276Z",
-      "authors": [
-        {
-          "name": "Lowe's India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448389216",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448389216",
-      "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop applications following technical standards\n• Collaborate on performance and user experience improvements\n• Analyze and build new components or module enhancements",
-      "date_published": "2026-09-22T15:50:13.166Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452454915",
-      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452454915",
-      "title": "AI/ML Computational Science Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Pune Division, Maharashtra, India · Duration: 1 to 2 years\n• Design, build, and deploy AI-native solutions using Python and agentic AI frameworks\n• Work with REST APIs, Git, and cloud platforms like AWS for enterprise integration\n• Collaborate on RAG pipelines and vector databases for AI accuracy and scalability",
-      "date_published": "2026-09-22T15:45:26.212Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452467634",
-      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4452467634",
-      "title": "AI/ML Computational Science Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India · Duration: 1 to 2 years\n• Design, build, and deploy AI-native solutions using Python and agentic AI frameworks\n• Work with LangChain, LangGraph, and RAG pipelines for enterprise-grade AI integration\n• Collaborate on cloud platforms and DevOps practices for scalable AI deployment",
-      "date_published": "2026-09-22T15:36:57.884Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448357847",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448357847",
-      "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Pune Division, Maharashtra, India\n• Configure oracle hcm cloud payroll workflows and security roles\n• Enable oracle ai for payroll processes and adoption\n• Work with agile teams on scalable software solutions",
-      "date_published": "2026-09-22T15:22:32.183Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }

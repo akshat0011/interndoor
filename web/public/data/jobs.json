@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790164937837,
+ "generatedAt": 1790165991492,
  "region": "IN",
  "regionName": "India",
- "count": 417,
- "techCount": 417,
+ "count": 423,
+ "techCount": 423,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -50,6 +50,7 @@
   "Continental Industry",
   "Copeland",
   "Cyient",
+  "Cyncly",
   "D Square Consulting Services Pvt Ltd",
   "DNEG",
   "Decentro",
@@ -63,7 +64,6 @@
   "Everllence",
   "Exponent Energy",
   "F5",
-  "FE fundinfo",
   "FanCode",
   "Festo",
   "Flam",
@@ -292,6 +292,140 @@
  ],
  "jobs": [
   {
+   "id": "4470934275",
+   "title": "Application Engr II",
+   "company": "Honeywell Technologies",
+   "matchedWatchlist": "Honeywell",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/honeywell-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves developing control systems for industrial automation, using c++ and python to process real-time data. Ideal for students with a technical background looking to contribute to smart manufacturing projects with global impact.",
+   "bullets": [
+    "Design and implement control systems for industrial automation",
+    "Use c++ and python for real-time data processing",
+    "Work on projects with global impact in smart manufacturing"
+   ],
+   "roleLabel": "Control systems engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "c++"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1790164929790,
+   "firstSeenAt": 1790165229794,
+   "lastSeenAt": 1790165229794,
+   "url": "https://www.linkedin.com/jobs/view/4470934275/",
+   "applyUrl": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/157466/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "99b06c0f45",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4470919573",
+   "title": "Digital Technology Development Program Intern - India 2027",
+   "company": "GE Vernova",
+   "matchedWatchlist": "GE Vernova",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/ge-vernova.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "9 to 11 weeks",
+   "applicants": "41 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "Digital Technology Interns at GE Vernova work on impactful projects with real-world implications, gaining hands-on experience in areas like cybersecurity, data science, and cloud technology. The role offers mentorship from industry leaders and a clear path to full-time employment through the DTDP program.",
+   "bullets": [
+    "Work on real-world digital projects with business impact",
+    "Exposure to IT leaders and global support network",
+    "Potential for full-time role in DTDP program"
+   ],
+   "roleLabel": "Digital Technology Intern",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "data science",
+    "cyber security"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "28 minutes ago",
+   "postedAt": 1790163375299,
+   "firstSeenAt": 1790165055307,
+   "lastSeenAt": 1790165055307,
+   "url": "https://www.linkedin.com/jobs/view/4470919573/",
+   "applyUrl": "https://careers.gevernova.com/digital-technology-development-program-intern-india-2027/job/R5052743",
+   "description": null,
+   "roleFingerprint": "9a5c86e891",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site",
+    "9 to 11 weeks"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4468994784",
+   "title": "Trainee 3D Design Engineer",
+   "company": "Cyncly",
+   "matchedWatchlist": "Cyncly",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/cyncly.jpg",
+   "location": "Pune City, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "0–3 years",
+   "applicants": "2 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This trainee role involves creating 3d models and animations for product design projects. You'll work with industry tools and collaborate with clients and content developers to bring ideas to life. It's ideal for students with a background in 3d design or related fields.",
+   "bullets": [
+    "Create 3d models and animations for product design",
+    "Use blender, 3ds max, autocad, and catia",
+    "Collaborate with clients and content developers"
+   ],
+   "roleLabel": "3d design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "blender",
+    "3ds max",
+    "autocad",
+    "catia"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "35 minutes ago",
+   "postedAt": 1790162978712,
+   "firstSeenAt": 1790165078734,
+   "lastSeenAt": 1790165078734,
+   "url": "https://www.linkedin.com/jobs/view/4468994784/",
+   "applyUrl": "https://fa-ewdg-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CynclyJobs/jobs/preview/2667/?mode=location",
+   "description": null,
+   "roleFingerprint": "72a5466023",
+   "cardFacts": [
+    "Pune City",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
    "id": "4076481892",
    "title": "Test Engineer",
    "company": "BNP Paribas",
@@ -338,6 +472,104 @@
    "region": "IN"
   },
   {
+   "id": "4470917396",
+   "title": "Apprentice Engineer - Energy and Power",
+   "company": "Jacobs",
+   "matchedWatchlist": "Jacobs Engineering",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/jacobs.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "13 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "Apprentice engineers assist in substation design and technical analysis, working on live projects with senior professionals. Ideal for students pursuing energy and power engineering, this role offers hands-on experience in real-world engineering challenges.",
+   "bullets": [
+    "Support substation design and technical analysis",
+    "Work with senior engineers on live projects",
+    "Participate in site visits and report preparation"
+   ],
+   "roleLabel": "Substation Design",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "technical analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1790162348218,
+   "firstSeenAt": 1790162648225,
+   "lastSeenAt": 1790162648225,
+   "url": "https://www.linkedin.com/jobs/view/4470917396/",
+   "applyUrl": "https://careers.jacobs.com/en_US/careers/JobDetail/Apprentice-Engineer-Energy-and-Power/40851?Src=JB-10147",
+   "description": null,
+   "roleFingerprint": "520d5f7fd7",
+   "cardFacts": [
+    "Bengaluru East",
+    "Hybrid"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4469445190",
+   "title": "AES - FS - Java Reactive",
+   "company": "Zensar Technologies",
+   "matchedWatchlist": "Zensar Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/zensar-technologies.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "15 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "react",
+    "aws",
+    "azure",
+    "gcp",
+    "ci/cd",
+    "microservices"
+   ],
+   "summary": "This role involves building and maintaining full-stack applications for financial services using Java and React. You'll work on REST APIs, microservices, and user interfaces, collaborating with product and tech teams. Ideal for someone with experience in payments or banking and exposure to cloud platforms.",
+   "bullets": [
+    "Develop full-stack applications using Java and React",
+    "Build REST APIs and microservices for financial services",
+    "Collaborate with cross-functional teams on product features"
+   ],
+   "roleLabel": "Full-stack development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "react",
+    "rest apis",
+    "microservices",
+    "cloud platforms"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "54 minutes ago",
+   "postedAt": 1790162020234,
+   "firstSeenAt": 1790165260237,
+   "lastSeenAt": 1790165260237,
+   "url": "https://www.linkedin.com/jobs/view/4469445190/",
+   "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/151092/?utm_medium=jobboard&utm_source=linkedIn",
+   "description": null,
+   "roleFingerprint": "8373361b43",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
    "id": "4468717559",
    "title": "Andriod Developer",
    "company": "Zensar Technologies",
@@ -370,6 +602,62 @@
    "roleFingerprint": "85f40a9ba3",
    "cardFacts": [
     "Hyderabad",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4469429961",
+   "title": "MEAN stack",
+   "company": "Zensar Technologies",
+   "matchedWatchlist": "Zensar Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/zensar-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "20 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "typescript",
+    "angular",
+    "node.js",
+    "aws",
+    "docker",
+    "ci/cd",
+    "git",
+    "postgresql"
+   ],
+   "summary": "This full-time role involves building scalable backend services and responsive UI components for enterprise clients. The candidate will work on REST APIs, Node.js, Angular, and tools like AWS and DocuSign. It suits those with strong experience in backend development and frontend frameworks.",
+   "bullets": [
+    "Develop scalable backend services using Node.js, NestJS, and PostgreSQL",
+    "Build responsive UI components with Angular and Angular Material",
+    "Design secure REST APIs and integrate third-party tools like DocuSign and AWS S3"
+   ],
+   "roleLabel": "Full Stack Developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "node.js",
+    "nestjs",
+    "angular",
+    "typescript",
+    "postgresql"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "55 minutes ago",
+   "postedAt": 1790161985029,
+   "firstSeenAt": 1790165285034,
+   "lastSeenAt": 1790165285034,
+   "url": "https://www.linkedin.com/jobs/view/4469429961/",
+   "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/151033_2/?utm_medium=jobboard&utm_source=linkedIn",
+   "description": null,
+   "roleFingerprint": "50bb7dd96b",
+   "cardFacts": [
+    "Pune Division",
     "On-site"
    ],
    "region": "IN"
@@ -419,6 +707,52 @@
    "roleFingerprint": "8b35de4a02",
    "cardFacts": [
     "Chennai",
+    "On-site"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "4459523801",
+   "title": "Developer III - Enterprise Solutions",
+   "company": "UST",
+   "matchedWatchlist": "UST",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ust.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "29 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves supporting logistics and ERP systems in a supply chain environment. You'll work with users to resolve process gaps, improve workflows, and analyze operational data. Ideal for someone with experience in SAP ECC and supply chain management.",
+   "bullets": [
+    "Support system issues in logistics and ERP operations",
+    "Collaborate with users to resolve process gaps and improve workflows",
+    "Analyze operational data and trends in supply chain environments"
+   ],
+   "roleLabel": "ERP Support",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "sap ecc",
+    "supply chain management",
+    "sap transportation management",
+    "warehouse operations"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790161713979,
+   "firstSeenAt": 1790165313981,
+   "lastSeenAt": 1790165313981,
+   "url": "https://www.linkedin.com/jobs/view/4459523801/",
+   "applyUrl": "https://usource.ripplehire.com/candidate/?token=8YxWjpwDhdL62DFYUIcQ&lang=en&source=USTLINKEDIN&ref=USTLINKEDIN#detail/job/64286",
+   "description": null,
+   "roleFingerprint": "bcd8eccb37",
+   "cardFacts": [
+    "Bengaluru",
     "On-site"
    ],
    "region": "IN"
@@ -1134,62 +1468,12 @@
    "region": "IN"
   },
   {
-   "id": "4469419919",
-   "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice)",
-   "company": "Arista Networks",
-   "matchedWatchlist": "Arista Networks",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/arista-networks.png",
-   "location": "Pune/Pimpri-Chinchwad Area",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "60 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "linux",
-    "git",
-    "generative ai"
-   ],
-   "summary": "This role involves writing and refining scripts for system maintenance and deployment using Shell, PowerShell, and AI tools. Ideal for students with scripting experience and an interest in automation. You'll work closely with senior engineers on version control and code reviews.",
-   "bullets": [
-    "Write, debug, and refine scripts using Shell, PowerShell, and AI tools like GitHub Copilot",
-    "Maintain and test automation scripts for system maintenance and deployment tasks",
-    "Collaborate with senior engineers on version control and code reviews using Git"
-   ],
-   "roleLabel": "Scripting Associate",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "shell",
-    "powershell",
-    "github copilot",
-    "git"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1790159138162,
-   "firstSeenAt": 1790162738164,
-   "lastSeenAt": 1790162738164,
-   "url": "https://www.linkedin.com/jobs/view/4469419919/",
-   "applyUrl": "https://jobs.smartrecruiters.com/AristaNetworks/744000151304169-junior-ai-assisted-automation-scripting-associate-apprentice-?trid=2d92f286-613b-4daf-9dfa-6340ffbecf73",
-   "description": null,
-   "roleFingerprint": "b88d457730",
-   "cardFacts": [
-    "Pune/Pimpri-Chinchwad Area",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4469445041",
    "title": "QA Trainee",
    "company": "JungleWorks",
    "matchedWatchlist": "JungleWorks",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/jungleworks.jpg",
    "location": "Sahibzada Ajit Singh Nagar, Punjab, India",
@@ -1202,12 +1486,22 @@
     "sql",
     "agile"
    ],
-   "summary": "Location: Mohali (Work from Office) Stipend: ₹15,000/month Duration: 6 Months PPO: Up to ₹3 LPA based on performance",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
+   "summary": "As a QA intern, you'll test web and mobile apps, create test cases, and track bugs. You'll work with product and dev teams, assist with documentation, and gain hands-on experience with real products. Ideal for students with a background in software testing or related fields.",
+   "bullets": [
+    "Test web and mobile apps, create test cases, and track bugs",
+    "Use defect tools, perform regression and exploratory testing",
+    "Collaborate with product and dev teams, assist with docs"
+   ],
+   "roleLabel": "Quality Assurance",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech/BE/MCA",
+   "keySkills": [
+    "manual testing",
+    "defect management",
+    "regression testing",
+    "postman",
+    "sql"
+   ],
    "stipendStatus": "paid",
    "postedText": "1 hour ago",
    "postedAt": 1790159115377,
@@ -1221,44 +1515,6 @@
     "₹15,000 / month",
     "Sahibzada Ajit Singh Nagar",
     "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4470918245",
-   "title": "Data Analyst Apprentice - 11 Months Contract",
-   "company": "FE fundinfo",
-   "matchedWatchlist": "FE fundinfo",
-   "isTech": true,
-   "roleSource": "offline",
-   "employmentType": "intern",
-   "logo": "/logos/fe-fundinfo.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "11 months",
-   "applicants": "82 applicants",
-   "easyApply": true,
-   "skills": [],
-   "summary": "As a Data Analyst, you will play a key role in ensuring the accuracy, quality, and reliability of mutual fund data used by clients across the investment industry. You will gain valuable exposure to the investment management industry while continuously enhancing your analytical, data validation, and problem-solving skills. You will have a bachelor's degree in a relevant discipline such as Commerce, Mathematics, or Statistics. You will possess strong written and verbal English communication skills to collaborate effectively with colleagues and stakeholders.",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1790159103509,
-   "firstSeenAt": 1790162703512,
-   "lastSeenAt": 1790162703512,
-   "url": "https://www.linkedin.com/jobs/view/4470918245/",
-   "applyUrl": "https://apply.workable.com/j/6DBF8231B2",
-   "description": null,
-   "roleFingerprint": "51a67790a8",
-   "cardFacts": [
-    "Chennai",
-    "On-site",
-    "11 months"
    ],
    "region": "IN"
   },
@@ -1505,6 +1761,55 @@
     "Bengaluru East",
     "Hybrid",
     "36 months"
+   ],
+   "region": "IN"
+  },
+  {
+   "id": "ats:smartrecruiters:aristanetworks:744000151304169",
+   "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice)",
+   "company": "Arista Networks",
+   "matchedWatchlist": "Arista Networks",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/arista-networks.png",
+   "location": "Pune, in",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "linux",
+    "git",
+    "generative ai"
+   ],
+   "summary": "This role involves writing and refining scripts for system maintenance and automation using ai tools. It suits students with scripting experience and interest in ai-assisted coding. You'll work with senior engineers on real projects and contribute to documentation and testing.",
+   "bullets": [
+    "Write, debug, and refine bash/zsh and powershell scripts with ai tools",
+    "Maintain automation for system maintenance, deployment, and monitoring tasks",
+    "Collaborate with senior engineers on code reviews and troubleshooting"
+   ],
+   "roleLabel": "Scripting automation",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "bash",
+    "powershell",
+    "git",
+    "github copilot"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790146743783,
+   "firstSeenAt": 1790147723737,
+   "lastSeenAt": 1790164843988,
+   "url": "https://jobs.smartrecruiters.com/aristanetworks/744000151304169",
+   "applyUrl": "https://jobs.smartrecruiters.com/aristanetworks/744000151304169",
+   "description": null,
+   "roleFingerprint": "1884a5ff60",
+   "cardFacts": [
+    "Pune"
    ],
    "region": "IN"
   },
@@ -21405,7 +21710,7 @@
    "postedText": null,
    "postedAt": 1783296000000,
    "firstSeenAt": 1789288764701,
-   "lastSeenAt": 1790162562810,
+   "lastSeenAt": 1790164934077,
    "url": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "applyUrl": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "description": null,
