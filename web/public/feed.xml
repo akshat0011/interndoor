@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 17:31:18 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 18:24:53 GMT</lastBuildDate>
+  <item>
+    <title>Developer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-developer-4460651405</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-developer-4460651405</guid>
+    <pubDate>Wed, 23 Sep 2026 18:24:53 GMT</pubDate>
+    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
+• Build secure scalable cloud apps for retail banking using AWS Lambda and DynamoDB
+• Design conversational interfaces with Lex and Connect for customer service
+• Monitor and optimize application performance with CloudWatch and S3</description>
+  </item>
   <item>
     <title>GPU Core Pipeline IP Verification Engineer — NVIDIA</title>
     <link>https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399</link>
@@ -497,16 +507,6 @@
 • Support business applications and troubleshoot user issues
 • Map textile processes to ERP systems and create system specs
 • Maintain documentation and manage issue logs</description>
-  </item>
-  <item>
-    <title>GCP Data Engineer — Dentsu Global Services</title>
-    <link>https://interndoor.com/jobs/dentsu-global-services-gcp-data-engineer-4469427870</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/dentsu-global-services-gcp-data-engineer-4469427870</guid>
-    <pubDate>Wed, 23 Sep 2026 10:50:27 GMT</pubDate>
-    <description>Company: Dentsu Global Services · Location: Pune/Pimpri-Chinchwad Area
-• Build scalable data pipelines using gcp services like bigquery and cloud composer
-• Develop python applications for data ingestion and transformation
-• Collaborate with cross-functional teams to implement data solutions</description>
   </item>
 </channel>
 </rss>
