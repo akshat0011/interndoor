@@ -4,9 +4,10 @@
  *
  * Serves web/public and answers the /api routes by loading the same handlers
  * Vercel runs in production, so the whole flow can be exercised before
- * deploying. Set GEMINI_API_KEY for resume tailoring and BUTTONDOWN_API_KEY for
- * email signup; without a key each route returns the same refusal it would
- * live, which is itself worth being able to see.
+ * deploying. Set BUTTONDOWN_API_KEY for email signup; without it the route
+ * returns the same refusal it would live, which is itself worth being able to
+ * see. Resume tailoring needs NO key here — it runs in the browser against the
+ * reader's own Google key and never touches this server.
  *
  *   node web/serve.js          →  http://localhost:4321
  */
