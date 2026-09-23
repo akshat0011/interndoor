@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087",
+      "url": "https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087",
+      "title": "Data Analyst and Business Intelligence Intern — Siemens",
+      "content_text": "Company: Siemens · Location: Alpharetta, GA · Duration: Summer 2027\n• Create interactive dashboards with Power BI and DAX for executive reporting\n• Optimize data queries and reports for faster performance and better UX\n• Collaborate with data architects on business requirements and technical solutions",
+      "date_published": "2026-09-23T04:41:14.158Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-electrical-engineer-intern-san-diego-ca-4470679508",
       "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-electrical-engineer-intern-san-diego-ca-4470679508",
       "title": "2027 Electrical Engineer Intern - San Diego CA — Northrop Grumman",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019",
-      "url": "https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019",
-      "title": "Application Engineer Co-Op, Building Automation — Schneider Electric",
-      "content_text": "Company: Schneider Electric · Location: Andover, MA · Duration: 6 months\n• Design and test building automation solutions for real-world client needs\n• Work with BMS systems, open protocols, and energy management tools\n• Collaborate with teams to create demos and train others on solutions",
-      "date_published": "2026-09-22T23:12:54.422Z",
-      "authors": [
-        {
-          "name": "Schneider Electric"
         }
       ]
     }
