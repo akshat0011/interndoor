@@ -6,10 +6,70 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-data-engineer-4442273024",
+      "url": "https://interndoor.com/jobs/infosys-data-engineer-4442273024",
+      "title": "Data Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Pune Division, Maharashtra, India\n• Design and optimize data pipelines using Databricks, PySpark, and Azure Data Factory\n• Build scalable data models and Snowflake schemas with DBT\n• Collaborate with data analysts and scientists on data quality and governance",
+      "date_published": "2026-09-23T13:28:54.383Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-software-developer-java-full-stack-python-genai-4460670960",
+      "url": "https://interndoor.com/jobs/infosys-software-developer-java-full-stack-python-genai-4460670960",
+      "title": "Software Developer (Java Full Stack / Python GenAI) — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Write clean code for scalable apps and backend services\n• Work with java full stack and python genai tools\n• Participate in agile ceremonies and code reviews",
+      "date_published": "2026-09-23T13:25:37.493Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-python-aws-developer-4451986267",
+      "url": "https://interndoor.com/jobs/infosys-python-aws-developer-4451986267",
+      "title": "Python AWS Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support systems for client projects\n• Use Python and AWS to build efficient programs and solutions\n• Collaborate with teams to translate requirements into system specs",
+      "date_published": "2026-09-23T13:23:06.149Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448339455",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448339455",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Mumbai Metropolitan Region\n• Create proof of concepts for S4 HANA Management Accounting functionalities\n• Work with team lead on SAP S/4HANA projects onshore and offshore\n• Engage with sales for client demos and estimate new deals",
+      "date_published": "2026-09-23T13:18:19.150Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ptc-software-specialist-4470941392",
+      "url": "https://interndoor.com/jobs/ptc-software-specialist-4470941392",
+      "title": "Software Specialist — PTC",
+      "content_text": "Company: PTC · Location: Pune Division, Maharashtra, India\n• Design and develop software components using Java, J2EE, and web technologies\n• Collaborate with cross-functional teams to enhance user experience and platform performance\n• Contribute to automation of development and deployment processes\n• Work on cloud infrastructure and optimize platform speed and efficiency",
+      "date_published": "2026-09-23T13:04:31.583Z",
+      "authors": [
+        {
+          "name": "PTC"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
       "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
       "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Chennai, Tamil Nadu, India\n• Develop end-to-end system features from user experience to backend code\n• Use SAP ABAP for HANA development in cloud-first projects\n• Collaborate with teams to design and optimize applications",
+      "content_text": "Company: Accenture in India · Location: Chennai, Tamil Nadu, India\n• Develop end-to-end system features from user experience to backend code\n• Work with SAP ABAP for HANA development\n• Collaborate with teams to design and optimize applications",
       "date_published": "2026-09-23T12:33:53.520Z",
       "authors": [
         {
@@ -69,7 +129,7 @@
       "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
       "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
       "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India\n• Develop end-to-end system features from user experience to backend code\n• Use Java Standard Edition for building innovative client solutions\n• Collaborate with teams to solve business problems using cloud-first approaches",
+      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India\n• Develop end-to-end features from user experience to backend code\n• Work with Java Standard Edition and cloud-first technologies\n• Collaborate with teams on key decisions and solution design",
       "date_published": "2026-09-23T12:23:08.044Z",
       "authors": [
         {
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595",
-      "url": "https://interndoor.com/jobs/collins-aerospace-associate-engineer-c-c-and-opengl-1-3-years-hyderabad-4470620595",
-      "title": "Associate Engineer (C,C++&OpenGL,1-3 years,Hyderabad) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Greater Hyderabad Area · Duration: 1-3 years\n• Develop cockpit display software using C++, OpenGL, and ARINC 661\n• Collaborate with global teams on safety-critical aerospace systems\n• Work in hybrid model with onsite presence in Hyderabad",
-      "date_published": "2026-09-22T21:32:08.108Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-engineering-mdm-4470619502",
-      "url": "https://interndoor.com/jobs/capgemini-engineering-mdm-4470619502",
-      "title": "MDM — Capgemini Engineering",
-      "content_text": "Company: Capgemini Engineering · Location: Pune Division, Maharashtra, India\n• Develop and maintain software solutions using engineering principles\n• Collaborate with stakeholders and software engineers on projects\n• Apply scientific methods to solve complex technical problems",
-      "date_published": "2026-09-22T21:02:08.547Z",
-      "authors": [
-        {
-          "name": "Capgemini Engineering"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468936306",
-      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468936306",
-      "title": "Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Hyderabad, Telangana, India\n• Develop and test software for IBM Systems products including OS, firmware, cloud, and storage solutions\n• Work with cross-functional teams on design, implementation, and support across global development\n• Contribute to open source and closed source projects in Agile environments",
-      "date_published": "2026-09-22T20:17:49.653Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468923602",
-      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468923602",
-      "title": "Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Pune Division, Maharashtra, India\n• Develop and test IBM Systems products across OS, firmware, storage, and cloud software\n• Work with global teams on open source and closed source projects in Agile environments\n• Contribute to performance analysis, bug fixing, and feature enhancements for enterprise systems",
-      "date_published": "2026-09-22T20:17:45.155Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-engineer-4468925527",
-      "url": "https://interndoor.com/jobs/ibm-software-engineer-4468925527",
-      "title": "Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Develop and test software for IBM Systems products across OS, firmware, cloud, and storage\n• Work with global teams on open source and closed source projects in Agile environments\n• Contribute to performance analysis, bug fixing, and cloud software development",
-      "date_published": "2026-09-22T20:17:39.949Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
