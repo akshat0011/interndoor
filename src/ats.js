@@ -359,6 +359,19 @@ export const PROVIDERS = {
     },
   },
 
+  /**
+   * SmartRecruiters — and the list endpoint carries NO description at all.
+   *
+   * That went unnoticed because nothing reports it: the row stores, publishes
+   * and renders, just as a bare card with no bullets, no skills and no summary.
+   * Measured 23 Sep 2026 over the live boards, **215 of 215 live SmartRecruiters
+   * rows had no description**, against 0 for every other provider — and they
+   * could never be rescued by enrichment either, because `needingEnrichment`
+   * requires `length(description) > 200`. They were permanently bare.
+   *
+   * `externalPath` is what `fetchDetail` hands to `detail()`, and this adapter
+   * never set it, so even adding a detail() without it would have been a no-op.
+   */
   smartrecruiters: {
     label: 'SmartRecruiters',
     async list(token) {
@@ -372,7 +385,30 @@ export const PROVIDERS = {
         postedAt: p.releasedDate,
         department: p.department?.label,
         remote: p.location?.remote ? 'Remote' : null,
+        externalPath: p.id,
       }));
+    },
+    /**
+     * One request per posting KEPT, not per posting seen — the gate runs first.
+     *
+     * ONLY THE TWO SECTIONS THAT DESCRIBE THE ROLE. Sampled over ten live
+     * postings across six tenants: jobDescription averages 2,000 characters and
+     * is always populated, qualifications 1,032 and is sometimes absent
+     * (Canva), while companyDescription (972) is marketing and
+     * additionalInformation (2,130, and 4,875 on AECOM) is EEO and benefits
+     * boilerplate. §10 is explicit that feeding boilerplate to the summariser
+     * and the stipend and duration parsers makes all of them worse — S&P Global
+     * shipping 4,521 characters with not one line of duties is the standing
+     * example.
+     */
+    async detail(token, id) {
+      if (!id) return null;
+      const j = await getJson(`https://api.smartrecruiters.com/v1/companies/${token}/postings/${encodeURIComponent(id)}`);
+      const sections = j?.jobAd?.sections;
+      if (!sections) return null;
+      const text = [sections.jobDescription?.text, sections.qualifications?.text]
+        .filter(Boolean).join('\n\n');
+      return text ? { description: stripHtml(text) } : null;
     },
     async verify(token, companyName) {
       const j = await getJson(`https://api.smartrecruiters.com/v1/companies/${token}/postings?limit=10`);
