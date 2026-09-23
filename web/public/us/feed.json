@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-io-and-e-4470685662",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-engineering-internship-io-and-e-4470685662",
+      "title": "R&D Engineering Internship (IO&E) — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Maple Grove, MN · Duration: Fall 2027\n• Design and prototype new device designs based on clinical feedback\n• Work on current and new product development with cross-functional teams\n• Analyze clinical and market data for new opportunities",
+      "date_published": "2026-09-23T06:17:08.984Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-hardware-engineering-intern-4470696050",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-hardware-engineering-intern-4470696050",
+      "title": "R&D Hardware Engineering Intern — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: Fall 2027\n• Support wearable medical device development and commercialization\n• Collaborate with vendors and generate technical documentation\n• Work on sustaining engineering for existing medical devices",
+      "date_published": "2026-09-23T06:16:41.774Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087",
       "url": "https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087",
       "title": "Data Analyst and Business Intelligence Intern — Siemens",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-fsd1-rme-var-4470641691",
-      "url": "https://interndoor.com/us/jobs/amazon-mechatronic-apprentice-i-fsd1-rme-var-4470641691",
-      "title": "Mechatronic Apprentice I, FSD1 - RME - Var — Amazon",
-      "content_text": "Company: Amazon · Location: Sioux Falls, SD\n• Maintain and repair robotics and material handling equipment\n• Use technical documents to troubleshoot electrical and mechanical issues\n• Perform preventative maintenance on conveyance systems\n• Work in high automation facilities with senior technicians",
-      "date_published": "2026-09-23T00:01:22.729Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amazon-2027-quantum-applied-science-internship-quantum-technologies-team-4470656087",
-      "url": "https://interndoor.com/us/jobs/amazon-2027-quantum-applied-science-internship-quantum-technologies-team-4470656087",
-      "title": "2027 Quantum Applied Science Internship, Quantum Technologies team — Amazon",
-      "content_text": "Company: Amazon · Location: Santa Clara, CA · Duration: 12 weeks\n• Design and test quantum devices using superconducting qubits and microwave engineering\n• Collaborate with global experts on quantum error correction and experimental validation\n• Work with AI tools to accelerate research and prototype quantum computing solutions",
-      "date_published": "2026-09-23T00:00:31.034Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }
