@@ -66,7 +66,13 @@ export function hasKey() { return getKey().length > 0; }
  */
 export function looksLikeKey(value) {
   const k = String(value ?? '').trim();
-  return /^AIza[A-Za-z0-9_-]{30,}$/.test(k);
+  /* GOOGLE ISSUES TWO KEY FORMATS AND ONLY ONE OF THEM IS `AIza`. AI Studio now
+     hands out keys beginning `AQ.` — his own key is one, 53 characters — and a
+     check written against the old shape alone refuses the key most new users
+     will actually have. Found by testing with a real key rather than a
+     synthetic one; every fixture in the suite was an AIza string, so nothing
+     could have caught it. */
+  return /^(AIza[A-Za-z0-9_-]{30,}|AQ\.[A-Za-z0-9_.-]{20,})$/.test(k);
 }
 
 /* ---------------- skill vocabulary ----------------
@@ -383,6 +389,23 @@ export function explainFailure(status) {
   return `Google refused the request (HTTP ${status}).`;
 }
 
+/* gemini-2.5-flash is a THINKING model and its reasoning tokens are charged
+   against maxOutputTokens, before a single character of answer is produced.
+   Measured against a real key on a real 40-role shortlist:
+
+     budget  thinking  output  result
+      4,000     3,839     146  MAX_TOKENS — 0 of 40 scores, unparseable
+      8,000     5,917   1,639  40 of 40
+     16,000     6,014   1,647  40 of 40
+
+   So the 4,000 this shipped with could not complete a single default rank. 8,000
+   leaves about 450 tokens of slack, which one long resume erases. 16,000 costs
+   NOTHING extra — the 8k and 16k runs consumed the same tokens, because billing
+   is on tokens used, not on the ceiling. Tailoring measured 2,838 thinking plus
+   786 output, i.e. 376 tokens under the old 4,000 limit, so it was one long
+   posting away from the same failure. */
+const MAX_OUTPUT_TOKENS = 16_000;
+
 async function callGemini({ key, system, prompt, schema, maxTokens, temperature, signal }) {
   const res = await fetch(endpointFor(MODEL), {
     method: 'POST',
@@ -415,7 +438,12 @@ async function callGemini({ key, system, prompt, schema, maxTokens, temperature,
     throw new Error('That was too long to handle in one pass. Try trimming the resume to its most relevant two pages.');
   }
   const raw = (candidate?.content?.parts ?? []).map((p) => p.text).filter(Boolean).join('').trim();
-  if (!raw) throw new Error('Google returned an empty response. Please try again.');
+  if (!raw) {
+    /* A candidate with no parts and a clean finishReason means the model spent
+       the whole budget thinking. Distinguishable from a genuine empty answer,
+       and the remedy is different, so say which. */
+    throw new Error('Google spent the whole budget reasoning and returned no answer. Try again, or shorten the resume.');
+  }
   try {
     return JSON.parse(raw);
   } catch {
@@ -437,7 +465,7 @@ export async function rankWithAI({ key, resumeText, jobs, signal }) {
     system: RANK_SYSTEM,
     prompt: buildRankPrompt(String(resumeText).slice(0, MAX_RESUME_CHARS), jobs),
     schema: RANK_SCHEMA,
-    maxTokens: 4_000,
+    maxTokens: MAX_OUTPUT_TOKENS,
     temperature: 0.2,
     signal,
   });
@@ -461,7 +489,7 @@ export async function tailorWithAI({ key, resumeText, job, signal }) {
     system: TAILOR_SYSTEM,
     prompt: buildTailorPrompt(resume, job),
     schema: TAILOR_SCHEMA,
-    maxTokens: 4_000,
+    maxTokens: MAX_OUTPUT_TOKENS,
     temperature: 0.4,
     signal,
   });
