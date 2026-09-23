@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4471106389",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4471106389",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months\n• Build and deploy AI models using Azure and cloud platforms\n• Work with LLMs, diffusion models, and prompt engineering\n• Collaborate with teams to design scalable AI solutions",
+      "date_published": "2026-09-23T19:48:19.989Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-data-engineer-4469499309",
+      "url": "https://interndoor.com/jobs/infosys-data-engineer-4469499309",
+      "title": "Data Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Pune Division, Maharashtra, India\n• Design and optimize data pipelines for batch and real-time data\n• Work with delta lake, iceberg, and lakehouse architecture\n• Collaborate with teams to build data lakes and warehouses",
+      "date_published": "2026-09-23T19:42:12.159Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/aditya-birla-capital-software-engineer-4416067484",
       "url": "https://interndoor.com/jobs/aditya-birla-capital-software-engineer-4416067484",
       "title": "Software Engineer — Aditya Birla Capital",
@@ -62,18 +86,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4469485276",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4469485276",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months\n• Research and experiment with generative AI models like LLMs and diffusion models\n• Build RAG pipelines and apply prompt engineering to improve AI outputs\n• Design scalable AI solutions and deploy models on Azure and cloud platforms",
-      "date_published": "2026-09-23T16:50:08.327Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     },
@@ -587,18 +599,6 @@
       "title": "Software Engineer II — Mastercard",
       "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Develop full stack applications using Java 8+ and Spring Boot\n• Work on scalable microservices with event-driven architecture\n• Collaborate in agile teams on cloud-native projects",
       "date_published": "2026-09-23T10:52:24.213Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4469303377",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-java-spring-boot-4469303377",
-      "title": "Software Engineer - Java Spring Boot — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Design and build secure microservices with Java and Spring Boot\n• Work with Kafka, REST APIs, and cloud-native tools\n• Collaborate with global teams on payment network solutions",
-      "date_published": "2026-09-23T10:52:23.747Z",
       "authors": [
         {
           "name": "Mastercard"

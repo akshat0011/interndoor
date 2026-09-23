@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/jabil-data-engineering-intern-4469614102",
+      "url": "https://interndoor.com/us/jobs/jabil-data-engineering-intern-4469614102",
+      "title": "Data Engineering Intern — Jabil",
+      "content_text": "Company: Jabil · Location: St. Petersburg, Florida, United States · Duration: Summer 2027\n• Support data quality, KPI source mapping, and metric catalog development\n• Work with SQL, Excel, and BI tools like PowerBI or Tableau\n• Collaborate with Operations, IT, and Engineering teams",
+      "date_published": "2026-09-23T20:18:56.252Z",
+      "authors": [
+        {
+          "name": "Jabil"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-4469491855",
+      "url": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-4469491855",
+      "title": "Data Engineer Intern (2027) — Figma",
+      "content_text": "Company: Figma · Location: New York, NY\n• Build and optimize data pipelines for Figma’s data warehouse\n• Collaborate with engineers and analysts on scalable data solutions\n• Work on projects like ETL jobs and reusable datasets\n• Based in New York or San Francisco",
+      "date_published": "2026-09-23T19:45:40.759Z",
+      "authors": [
+        {
+          "name": "Figma"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-grid-modernization-engineering-intern-4469338914",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-grid-modernization-engineering-intern-4469338914",
+      "title": "Grid Modernization Engineering Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Loveland, CO\n• Test distributed energy resources using keysight hardware and software\n• Execute ieee 1547.1 compliance tests and troubleshoot results\n• Work with oscilloscopes, power analyzers, and automation tools\n• Based in loveland, co, part-time or full-time during academic year",
+      "date_published": "2026-09-23T19:44:15.365Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4469355309",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4469355309",
+      "title": "R&D Engineer, Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Austin, TX\n• Develop automated tests for network visibility products\n• Use python, robot framework, or selenium for automation\n• Work on functional and performance testing scenarios",
+      "date_published": "2026-09-23T19:43:06.566Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-ats-greenhouse-figma-6178851004",
       "url": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-ats-greenhouse-figma-6178851004",
       "title": "Data Engineer Intern (2027) — Figma",
@@ -38,6 +86,30 @@
       "authors": [
         {
           "name": "Waymo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ati-summer-2027-research-and-development-intern-4471100668",
+      "url": "https://interndoor.com/us/jobs/ati-summer-2027-research-and-development-intern-4471100668",
+      "title": "Summer 2027 Research and Development Intern — ATI",
+      "content_text": "Company: ATI · Location: Monroe, NC · Duration: 10 weeks\n• Characterize microstructure of titanium alloys\n• Support heat treatment and forging trials\n• Work with Python/R/MATLAB and CAD/FEA tools",
+      "date_published": "2026-09-23T19:25:54.900Z",
+      "authors": [
+        {
+          "name": "ATI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ati-summer-2027-mechanical-design-engineer-intern-4471102608",
+      "url": "https://interndoor.com/us/jobs/ati-summer-2027-mechanical-design-engineer-intern-4471102608",
+      "title": "Summer 2027 Mechanical Design Engineer Intern — ATI",
+      "content_text": "Company: ATI · Location: Monroe, NC · Duration: 10 weeks\n• Support equipment design and automation projects in manufacturing\n• Use cad software for process improvement and reverse engineering\n• Work on safety enhancements and operational efficiency in plant settings",
+      "date_published": "2026-09-23T19:25:28.538Z",
+      "authors": [
+        {
+          "name": "ATI"
         }
       ]
     },
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Johnson & Johnson MedTech"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cencora-intern-visualization-4469317558",
-      "url": "https://interndoor.com/us/jobs/cencora-intern-visualization-4469317558",
-      "title": "Intern - Visualization — Cencora",
-      "content_text": "Company: Cencora · Location: United, PA\n• Develop and test SCADA solutions for business needs\n• Work with PLCs and programming tools for process control\n• Create documentation and training guides for SCADA systems",
-      "date_published": "2026-09-23T15:01:11.465Z",
-      "authors": [
-        {
-          "name": "Cencora"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cencora-intern-visualization-4469331278",
-      "url": "https://interndoor.com/us/jobs/cencora-intern-visualization-4469331278",
-      "title": "Intern - Visualization — Cencora",
-      "content_text": "Company: Cencora · Location: Carrollton, TX\n• Develop and test SCADA solutions for business needs\n• Work with PLCs and programming tools to modify control systems\n• Create documentation and training guides for SCADA systems",
-      "date_published": "2026-09-23T15:00:37.799Z",
-      "authors": [
-        {
-          "name": "Cencora"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-engineering-intern-4469335164",
-      "url": "https://interndoor.com/us/jobs/aecom-engineering-intern-4469335164",
-      "title": "Engineering Intern — AECOM",
-      "content_text": "Company: AECOM · Location: Coral Gables, FL\n• Support highway design teams with transportation projects and roadway plans\n• Use AutoCAD, ORD, Civil 3D, and Microsoft Office for engineering tasks\n• Collaborate on projects with real-world impact in South Florida",
-      "date_published": "2026-09-23T14:59:43.029Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-electrical-engineering-co-op-summer-2027-4462075026",
-      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-electrical-engineering-co-op-summer-2027-4462075026",
-      "title": "Electrical Engineering Co-Op, Summer 2027 — Johnson & Johnson MedTech",
-      "content_text": "Company: Johnson & Johnson MedTech · Location: Cincinnati, OH · Duration: 3-4 months\n• Design and test electrical systems for surgical instruments and robotics\n• Use MATLAB, Python, and embedded systems for prototyping and analysis\n• Work on real-world medical device projects with rotating team assignments",
-      "date_published": "2026-09-23T14:55:11.168Z",
-      "authors": [
-        {
-          "name": "Johnson & Johnson MedTech"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/eaton-internship-software-engineering-4469329148",
-      "url": "https://interndoor.com/us/jobs/eaton-internship-software-engineering-4469329148",
-      "title": "Internship: Software Engineering — Eaton",
-      "content_text": "Company: Eaton · Location: Plymouth, MN\n• Implement features for power system devices using .NET and C#\n• Collaborate with engineers on software design and testing\n• Work on real-time control systems for smart grid applications",
-      "date_published": "2026-09-23T14:54:44.294Z",
-      "authors": [
-        {
-          "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/unity-machine-learning-engineer-internship-4469464603",
-      "url": "https://interndoor.com/us/jobs/unity-machine-learning-engineer-internship-4469464603",
-      "title": "Machine Learning Engineer-Internship — Unity",
-      "content_text": "Company: Unity · Location: Mountain View, CA\n• Build data pipelines for training datasets and ML workflows\n• Work with PyTorch, Ray, and orchestration tools like Airflow\n• Contribute to scalable, reliable ML infrastructure",
-      "date_published": "2026-09-23T14:54:20.326Z",
-      "authors": [
-        {
-          "name": "Unity"
         }
       ]
     }
