@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/mu-sigma-inc-apprentice-leader-4468985931",
+      "url": "https://interndoor.com/jobs/mu-sigma-inc-apprentice-leader-4468985931",
+      "title": "Apprentice Leader — Mu Sigma Inc.",
+      "content_text": "Company: Mu Sigma Inc. · Location: Bengaluru, Karnataka, India · Duration: 5–7 years\n• Design and build scalable data solutions using cloud technologies\n• Collaborate with business and tech teams to translate requirements into insights\n• Lead small projects and ensure timely delivery of high-quality outputs",
+      "date_published": "2026-09-23T08:52:37.795Z",
+      "authors": [
+        {
+          "name": "Mu Sigma Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/texas-instruments-india-software-development-engineer-4469426536",
+      "url": "https://interndoor.com/jobs/texas-instruments-india-software-development-engineer-4469426536",
+      "title": "Software Development Engineer — Texas Instruments India",
+      "content_text": "Company: Texas Instruments India · Location: Bengaluru, Karnataka, India\n• Develop and maintain software for semiconductor applications\n• Use C, C++, and Python in a team environment\n• Work on projects impacting global electronics innovation",
+      "date_published": "2026-09-23T08:32:22.426Z",
+      "authors": [
+        {
+          "name": "Texas Instruments India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ibm-software-developer-4468999007",
       "url": "https://interndoor.com/jobs/ibm-software-developer-4468999007",
       "title": "Software Developer — IBM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/coding-ninjas-genai-intern-4468561627",
-      "url": "https://interndoor.com/jobs/coding-ninjas-genai-intern-4468561627",
-      "title": "GenAI Intern — Coding Ninjas",
-      "content_text": "Company: Coding Ninjas · Location: Gurugram, Haryana, India\n• Build and experiment with AI-powered workflows and automation tools\n• Work with LLMs, agents, APIs, and frameworks like LangChain\n• Create and review technical content for AI courses and learning materials",
-      "date_published": "2026-09-22T11:07:16.476Z",
-      "authors": [
-        {
-          "name": "Coding Ninjas"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-data-analysis-engineer-4470402992",
-      "url": "https://interndoor.com/jobs/quest-global-data-analysis-engineer-4470402992",
-      "title": "Data Analysis Engineer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Analyze cost-saving opportunities for procured parts\n• Create reports and dashboards using excel and tableau\n• Develop templates and macros for repetitive tasks",
-      "date_published": "2026-09-22T11:06:20.171Z",
-      "authors": [
-        {
-          "name": "Quest Global"
         }
       ]
     }
