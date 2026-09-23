@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-software-developer-4468999007",
+      "url": "https://interndoor.com/jobs/ibm-software-developer-4468999007",
+      "title": "Software Developer — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Write clean code using java, c++, or python\n• Collaborate with team on project requirements\n• Participate in code reviews and debugging",
+      "date_published": "2026-09-23T08:32:04.387Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/baker-hughes-aspire-digital-technology-2027-opportunities-4470914079",
+      "url": "https://interndoor.com/jobs/baker-hughes-aspire-digital-technology-2027-opportunities-4470914079",
+      "title": "ASPIRE - Digital Technology 2027 Opportunities — Baker Hughes",
+      "content_text": "Company: Baker Hughes · Location: Bengaluru East, Karnataka, India · Duration: 36 months\n• Work on challenging projects with global teams and senior leaders\n• Rotate through roles like product management and software development\n• Receive structured training and mentorship over two years",
+      "date_published": "2026-09-23T08:26:09.475Z",
+      "authors": [
+        {
+          "name": "Baker Hughes"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
       "url": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
       "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice) — Arista Networks",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-validation-and-verification-engineer-4470408668",
-      "url": "https://interndoor.com/jobs/quest-global-validation-and-verification-engineer-4470408668",
-      "title": "Validation and Verification Engineer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Test locomotive subsystems using hardware in the loop and simulators\n• Analyze validation data and perform root cause analysis\n• Design test cases and methodologies for control systems\n• Experience with IBM Doors and ClearQuest tools",
-      "date_published": "2026-09-22T11:02:41.966Z",
-      "authors": [
-        {
-          "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
-      "url": "https://interndoor.com/jobs/ust-sailpoint-developer-iiq-and-isc-4431078834",
-      "title": "SailPoint Developer (IIQ & ISC) — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and develop IAM solutions using SailPoint IIQ and ISC platforms\n• Build connectors for SAP, AD, LDAP, and cloud apps with Java and APIs\n• Collaborate with security and business teams on identity lifecycle processes",
-      "date_published": "2026-09-22T10:15:40.018Z",
-      "authors": [
-        {
-          "name": "UST"
         }
       ]
     }
