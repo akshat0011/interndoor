@@ -34,7 +34,12 @@ export function endpointFor(model, base = API_BASE) {
 
 export const KEY_STORE = 'interndoor-ai-key';
 export const MAX_RESUME_CHARS = 18_000;
-export const RANK_BATCH = 40;
+/* MEASURED against a real key on the live board: 25 roles takes 16-25s and 40
+   takes ~34s, for the same one request. The reader is staring at a button the
+   whole time, and the roles past the top 25 are ones the local skill pass has
+   already ranked below the ones being re-read — so the extra 9-18 seconds buys
+   the least valuable part of the list. */
+export const RANK_BATCH = 25;
 
 /* ---------------- key handling ----------------
  *
@@ -406,26 +411,47 @@ export function explainFailure(status) {
    posting away from the same failure. */
 const MAX_OUTPUT_TOKENS = 16_000;
 
-async function callGemini({ key, system, prompt, schema, maxTokens, temperature, signal }) {
-  const res = await fetch(endpointFor(MODEL), {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      // The header, never the query string — a URL is logged, a header is not.
-      'x-goog-api-key': key,
+/** Google's own overload, not the reader's problem. Measured 23 Sep 2026: four
+ *  of seven consecutive calls came back 503 while timings were being taken, and
+ *  every one of them succeeded on the next attempt. §5's rule — retry before
+ *  believing a network-level error; only a real refusal is a real refusal. A
+ *  4xx is never retried, because nothing about retrying fixes a bad key or a
+ *  spent quota. */
+const RETRY_STATUSES = new Set([500, 502, 503, 504]);
+const RETRIES = 2;
+const RETRY_PAUSE_MS = 1_500;
+
+async function callGemini({ key, system, prompt, schema, maxTokens, temperature, signal, onAttempt }) {
+  const body = JSON.stringify({
+    systemInstruction: { parts: [{ text: system }] },
+    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+    generationConfig: {
+      temperature,
+      maxOutputTokens: maxTokens,
+      responseMimeType: 'application/json',
+      responseSchema: schema,
     },
-    signal,
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: system }] },
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature,
-        maxOutputTokens: maxTokens,
-        responseMimeType: 'application/json',
-        responseSchema: schema,
-      },
-    }),
   });
+
+  let res;
+  for (let attempt = 0; ; attempt += 1) {
+    res = await fetch(endpointFor(MODEL), {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // The header, never the query string — a URL is logged, a header is not.
+        'x-goog-api-key': key,
+      },
+      signal,
+      body,
+    });
+    if (res.ok || !RETRY_STATUSES.has(res.status) || attempt >= RETRIES) break;
+    onAttempt?.(attempt + 2);
+    await new Promise((r, reject) => {
+      const t = setTimeout(r, RETRY_PAUSE_MS);
+      signal?.addEventListener('abort', () => { clearTimeout(t); reject(new Error('aborted')); }, { once: true });
+    });
+  }
 
   if (!res.ok) throw new Error(explainFailure(res.status));
 
@@ -458,10 +484,11 @@ async function callGemini({ key, system, prompt, schema, maxTokens, temperature,
  * clamped — a fabricated index is the one way a score could attach to the wrong
  * posting, and showing the wrong role a high fit is worse than showing none.
  */
-export async function rankWithAI({ key, resumeText, jobs, signal }) {
+export async function rankWithAI({ key, resumeText, jobs, signal, onAttempt }) {
   if (!jobs.length) return new Map();
   const data = await callGemini({
     key,
+    onAttempt,
     system: RANK_SYSTEM,
     prompt: buildRankPrompt(String(resumeText).slice(0, MAX_RESUME_CHARS), jobs),
     schema: RANK_SCHEMA,
@@ -482,10 +509,11 @@ export async function rankWithAI({ key, resumeText, jobs, signal }) {
 }
 
 /** Rewrite one resume against one job. */
-export async function tailorWithAI({ key, resumeText, job, signal }) {
+export async function tailorWithAI({ key, resumeText, job, signal, onAttempt }) {
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
   const tailored = await callGemini({
     key,
+    onAttempt,
     system: TAILOR_SYSTEM,
     prompt: buildTailorPrompt(resume, job),
     schema: TAILOR_SCHEMA,
