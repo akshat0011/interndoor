@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pearson-apprentice-software-engineer-4469097184",
+      "url": "https://interndoor.com/jobs/pearson-apprentice-software-engineer-4469097184",
+      "title": "Apprentice, Software Engineer — Pearson",
+      "content_text": "Company: Pearson · Location: Bengaluru East, Karnataka, India · Duration: 18-35 years\n• Develop web apps using React.js and Node.js or Java/.NET\n• Write clean TypeScript/JavaScript code and participate in agile workflows\n• Collaborate on feature development and API integration with senior engineers",
+      "date_published": "2026-09-23T02:07:36.630Z",
+      "authors": [
+        {
+          "name": "Pearson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/gap-inc-software-engineer-4470651741",
       "url": "https://interndoor.com/jobs/gap-inc-software-engineer-4470651741",
       "title": "Software Engineer — Gap Inc.",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4470405077",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4470405077",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months\n• Build and deploy AI models using Azure and cloud platforms\n• Work with LLMs, diffusion models, and prompt engineering\n• Collaborate with teams to design scalable AI solutions",
-      "date_published": "2026-09-22T09:29:36.982Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     }

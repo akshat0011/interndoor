@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 00:55:44 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 02:07:36 GMT</lastBuildDate>
+  <item>
+    <title>Apprentice, Software Engineer — Pearson</title>
+    <link>https://interndoor.com/jobs/pearson-apprentice-software-engineer-4469097184</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/pearson-apprentice-software-engineer-4469097184</guid>
+    <pubDate>Wed, 23 Sep 2026 02:07:36 GMT</pubDate>
+    <description>Company: Pearson · Location: Bengaluru East, Karnataka, India · Duration: 18-35 years
+• Develop web apps using React.js and Node.js or Java/.NET
+• Write clean TypeScript/JavaScript code and participate in agile workflows
+• Collaborate on feature development and API integration with senior engineers</description>
+  </item>
   <item>
     <title>Software Engineer — Gap Inc.</title>
     <link>https://interndoor.com/jobs/gap-inc-software-engineer-4470651741</link>
@@ -500,16 +510,6 @@
 • Design and implement automated tests for quality assurance
 • Work with agile teams and ci/cd pipelines
 • Collaborate across domains to build reusable test frameworks</description>
-  </item>
-  <item>
-    <title>Intern — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-intern-4470405077</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4470405077</guid>
-    <pubDate>Tue, 22 Sep 2026 09:29:36 GMT</pubDate>
-    <description>Company: IQVIA · Location: Kochi, Kerala, India · Duration: 12 months
-• Build and deploy AI models using Azure and cloud platforms
-• Work with LLMs, diffusion models, and prompt engineering
-• Collaborate with teams to design scalable AI solutions</description>
   </item>
 </channel>
 </rss>
