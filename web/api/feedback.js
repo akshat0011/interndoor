@@ -152,11 +152,22 @@ export function store() {
  * worse — a trim that fails on its own leaves it growing for ever with nothing
  * reporting it. One pipeline, one outcome.
  */
+/* THE STORE CALL IS BOUNDED. Without this it inherits the platform's own
+   limit, and while it waits the reader's browser sits on "Sending…" behind it
+   with nothing to show for the wait. A feedback box that hangs is worse than
+   one that fails: the reader has typed something and cannot tell whether it
+   landed. Measured warm, the whole round trip is ~0.35s, so six seconds is
+   generous for a slow day and still short enough to answer inside it. */
+export const STORE_TIMEOUT_MS = 6_000;
+
 export async function save(entry, { url, token }, at, fetchImpl = fetch) {
   try {
     const res = await fetchImpl(`${url}/pipeline`, {
       method: 'POST',
       headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+      // AbortSignal.timeout is absent on older runtimes; no signal is still
+      // better than throwing on the way in.
+      signal: AbortSignal.timeout?.(STORE_TIMEOUT_MS),
       body: JSON.stringify([
         ['LPUSH', LIST_KEY, JSON.stringify({ ...entry, at })],
         ['LTRIM', LIST_KEY, 0, KEEP - 1],
@@ -164,6 +175,8 @@ export async function save(entry, { url, token }, at, fetchImpl = fetch) {
     });
     return res.ok;
   } catch {
+    // A timeout lands here like any other transport failure, and the handler
+    // turns it into the same honest 502. Nothing personal is logged, ever.
     return false;
   }
 }
