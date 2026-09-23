@@ -1,5 +1,5 @@
 import { stripHtml, parseAtsLink, workdayPlaces, isWorkplaceType,
-  fetchBoard, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace, microsoftJobUrl, MICROSOFT_SITE, postingCompany } from '../src/ats.js';
+  fetchBoard, fetchDetail, PROVIDERS, PROVIDER_NAMES, FIRST_PARTY_BOARDS, boardTokens, microsoftPlace, microsoftJobUrl, MICROSOFT_SITE, postingCompany } from '../src/ats.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -704,6 +704,70 @@ console.log('\n== a global board filed under an India name ==');
   check('a name with no suffix is untouched', postingCompany('Jump Trading', 'GB'), 'Jump Trading');
   const poll = readFileSync(join(ROOT, 'bin', 'poll-ats.js'), 'utf8');
   check('poll-ats stores the posting name, not the board key', /company: postingCompany\(board\.company, region\),/.test(poll), true);
+}
+
+console.log('\n== SmartRecruiters: the list carries NO description ==');
+{
+  // Measured 23 Sep 2026: 215 of 215 live SmartRecruiters rows had no
+  // description, against 0 for every other provider — bare cards on the board
+  // that enrichment could never rescue, because it needs >200 characters.
+  const restore = stubFetch({
+    '/postings/744000151304169': {
+      id: '744000151304169',
+      jobAd: { sections: {
+        companyDescription: { title: 'Company Description', text: '<p>We are a big company with a mission.</p>' },
+        jobDescription: { title: 'Job Description', text: '<p>You will <strong>write scripts</strong> and automate deploys.</p>' },
+        qualifications: { title: 'Qualifications', text: '<li>Python</li><li>Linux</li>' },
+        additionalInformation: { title: 'Additional Information', text: '<p>We are an equal opportunity employer.</p>' },
+      } },
+    },
+    '/postings?limit=100': { content: [{
+      id: '744000151304169', name: 'Junior Automation Associate',
+      location: { city: 'Pune', country: 'in' }, releasedDate: '2026-09-23T07:15:23.000Z',
+      department: { label: 'Engineering' },
+    }] },
+  });
+
+  const rows = await PROVIDERS.smartrecruiters.list('aristanetworks');
+  // Without externalPath, fetchDetail hands detail() undefined and the fix is a
+  // silent no-op — which is how this adapter could have been "fixed" and stayed broken.
+  check('the list row carries externalPath', rows[0].externalPath, '744000151304169');
+
+  const extra = await fetchDetail('smartrecruiters', 'aristanetworks', rows[0]);
+  check('detail returns a description', typeof extra?.description, 'string');
+  check('the role text is there', extra.description.includes('write scripts'), true);
+  check('and the qualifications', extra.description.includes('Python'), true);
+  // The two boilerplate sections must stay OUT — §10: feeding marketing and EEO
+  // text to the summariser and the stipend parser makes all of them worse.
+  check('company marketing is excluded', extra.description.includes('big company'), false);
+  check('EEO boilerplate is excluded', extra.description.includes('equal opportunity'), false);
+  check('the HTML is stripped', /<[a-z]/i.test(extra.description), false);
+
+  restore();
+}
+
+{
+  // A tenant that answers nothing usable must yield null rather than an empty
+  // string — an empty description would store and look like a real read.
+  const restore = stubFetch({ '/postings/nope': { id: 'nope' } });
+  check('no jobAd yields null', await fetchDetail('smartrecruiters', 'x', { externalPath: 'nope' }), null);
+  restore();
+  check('no id yields null without a request',
+    await PROVIDERS.smartrecruiters.detail('x', null), null);
+}
+
+{
+  // The shape a mutation found: sections PRESENT but both role fields empty —
+  // a tenant that fills only its marketing blurb. Storing '' there reads like a
+  // successful fetch and leaves the card bare with nothing reporting it.
+  const restore = stubFetch({
+    '/postings/blurb-only': { id: 'blurb-only', jobAd: { sections: {
+      companyDescription: { title: 'Company Description', text: '<p>About us.</p>' },
+    } } },
+  });
+  check('sections with no role text yields null, not an empty description',
+    await fetchDetail('smartrecruiters', 'x', { externalPath: 'blurb-only' }), null);
+  restore();
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
