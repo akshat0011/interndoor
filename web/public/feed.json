@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
+      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
+      "title": "Full Stack Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Chennai, Tamil Nadu, India\n• Develop end-to-end system features from user experience to backend code\n• Use SAP ABAP for HANA development in cloud-first projects\n• Collaborate with teams to design and optimize applications",
+      "date_published": "2026-09-23T12:33:53.520Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mufg-frontend-engineering-and-enterprise-portal-development-4470938234",
       "url": "https://interndoor.com/jobs/mufg-frontend-engineering-and-enterprise-portal-development-4470938234",
       "title": "Frontend Engineering & Enterprise Portal Development — MUFG",
@@ -50,6 +62,18 @@
       "authors": [
         {
           "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
+      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
+      "title": "Full Stack Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India\n• Develop end-to-end system features from user experience to backend code\n• Use Java Standard Edition for building innovative client solutions\n• Collaborate with teams to solve business problems using cloud-first approaches",
+      "date_published": "2026-09-23T12:23:08.044Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295",
-      "url": "https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295",
-      "title": "4633-Software Development Engineer-I (Full Stack) — Innovaccer",
-      "content_text": "Company: Innovaccer · Location: Noida, Uttar Pradesh, India\n• Build and maintain web applications using modern frameworks\n• Work with React, Node.js, and cloud platforms\n• Collaborate with cross-functional teams on scalable solutions",
-      "date_published": "2026-09-22T19:02:23.957Z",
-      "authors": [
-        {
-          "name": "Innovaccer"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615",
-      "title": "Software Engineer II (Backend Developer) — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Develop and maintain Java-based backend systems for fraud detection and transaction validation\n• Work with Spring Boot, Oracle, and Git in a high-performance, scalable environment\n• Collaborate on complex projects with technical leads and contribute to system design and testing",
-      "date_published": "2026-09-22T18:45:09.190Z",
-      "authors": [
-        {
-          "name": "Mastercard"
         }
       ]
     }
