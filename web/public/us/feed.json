@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/two-sigma-tss-hardware-engineering-internship-summer-2027-4468944585",
+      "url": "https://interndoor.com/us/jobs/two-sigma-tss-hardware-engineering-internship-summer-2027-4468944585",
+      "title": "TSS Hardware Engineering Internship (Summer 2027) — Two Sigma",
+      "content_text": "Company: Two Sigma · Location: New York, United States · Duration: 10 weeks\n• Design and test digital logic for FPGA systems with mentor support\n• Use SystemVerilog, Python, and simulation tools for verification\n• Collaborate across hardware, software, and quantitative teams",
+      "date_published": "2026-09-23T02:12:22.130Z",
+      "authors": [
+        {
+          "name": "Two Sigma"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/dominion-energy-intern-system-protection-electrical-engineer-4470667532",
+      "url": "https://interndoor.com/us/jobs/dominion-energy-intern-system-protection-electrical-engineer-4470667532",
+      "title": "Intern - System Protection Electrical Engineer — Dominion Energy",
+      "content_text": "Company: Dominion Energy · Location: Glen Allen, VA\n• Support transmission and distribution grid projects\n• Work with experienced engineers on relay protection and coordination\n• Hybrid 3-2 schedule with telework options",
+      "date_published": "2026-09-23T02:05:44.240Z",
+      "authors": [
+        {
+          "name": "Dominion Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-systems-automation-intern-4468960121",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-systems-automation-intern-4468960121",
+      "title": "Semiconductor Systems Automation Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Santa Rosa, CA\n• Develop software automation for cad engineering workflows\n• Work with data etl and machine learning for manufacturing\n• Collaborate with engineering and manufacturing teams",
+      "date_published": "2026-09-23T01:43:12.045Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-software-engineer-ai-developer-tooling-intern-4468947368",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-software-engineer-ai-developer-tooling-intern-4468947368",
+      "title": "R&D Software Engineer (AI Developer Tooling), Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Colorado Springs, CO · Duration: 12 weeks\n• Build AI tools for R&D engineers to speed up software development\n• Work with Python, C++, and IDE integrations using LLM APIs\n• Collaborate with engineers on real projects with measurable impact",
+      "date_published": "2026-09-23T01:42:46.073Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-it-support-technician-infrastructure-engineering-winter-spr-4470656754",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-it-support-technician-infrastructure-engineering-winter-spr-4470656754",
+      "title": "Internship, IT Support Technician, Infrastructure Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Support infrastructure, endpoints, and user issues at Tesla Centers\n• Develop monitoring systems and automation to reduce downtime\n• Provide remote and onsite support across hundreds of locations\n• Work on infrastructure upgrades for Autopilot data uploads",
+      "date_published": "2026-09-23T01:32:28.311Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-mechanical-design-engineer-vehicle-power-electronics-energy-4470662538",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-mechanical-design-engineer-vehicle-power-electronics-energy-4470662538",
+      "title": "Internship, Mechanical Design Engineer, Vehicle Power Electronics, Energy Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Design and test power electronics components for Tesla vehicles and energy products\n• Use CATIA, ANSYS, and Python for mechanical analysis and modeling\n• Work on high-volume manufacturing processes and thermal management systems",
+      "date_published": "2026-09-23T01:32:20.615Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hermeus-propulsion-test-engineering-intern-spring-2027-ats-lever-hermeus-d2651ecb-9aab-4d84-8e69-cbcf7cece28d",
       "url": "https://interndoor.com/us/jobs/hermeus-propulsion-test-engineering-intern-spring-2027-ats-lever-hermeus-d2651ecb-9aab-4d84-8e69-cbcf7cece28d",
       "title": "Propulsion Test Engineering Intern - Spring 2027 — Hermeus",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/abnormal-security-software-engineer-1-data-platforms-ats-greenhouse-abnormalsecurity-8001641003",
-      "url": "https://interndoor.com/us/jobs/abnormal-security-software-engineer-1-data-platforms-ats-greenhouse-abnormalsecurity-8001641003",
-      "title": "Software Engineer 1 - Data Platforms — Abnormal Security",
-      "content_text": "Company: Abnormal Security · Location: Remote - USA\n• Build tools and services for data systems\n• Work with Python, Go, Kafka, and AWS\n• Collaborate on scalable infrastructure projects",
-      "date_published": "2026-09-22T21:23:33.000Z",
-      "authors": [
-        {
-          "name": "Abnormal Security"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-data-engineer-intern-data-platfrom-tiktok-bp-2027-summer-4469056609",
-      "url": "https://interndoor.com/us/jobs/tiktok-data-engineer-intern-data-platfrom-tiktok-bp-2027-summer-4469056609",
-      "title": "Data Engineer Intern (Data Platfrom TikTok BP) - 2027 Summer — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA · Duration: 12 weeks\n• Build data transformations for reporting and analysis\n• Design scalable big data systems for core products\n• Work with Hadoop, Spark, Kafka, and ClickHouse",
-      "date_published": "2026-09-22T21:23:26.861Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-electrical-validation-intern-bs-summer-2027-4468926735",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-electrical-validation-intern-bs-summer-2027-4468926735",
-      "title": "Electrical Validation Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Analyze test data and debug results with mentor\n• Build python automation and ai tools for validation\n• Work on high-speed hardware and test infrastructure",
-      "date_published": "2026-09-22T21:22:43.827Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-secure-system-engineering-intern-summer-2027-4470635120",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-secure-system-engineering-intern-summer-2027-4470635120",
-      "title": "Secure System Engineering Intern (Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027\n• Perform fuzzing and penetration tests to evaluate system security\n• Develop threat models and SELinux policies for secure data handling\n• Conduct vulnerability assessments and improve cybersecurity tools",
-      "date_published": "2026-09-22T21:20:52.824Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-hardware-test-intern-winter-2027-4469057620",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-hardware-test-intern-winter-2027-4469057620",
-      "title": "Hardware Test Intern (Winter 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Winter 2027\n• Design and test software for satellites and ground systems\n• Work with embedded systems and real-time operating systems\n• Collaborate with engineers on hardware and software integration",
-      "date_published": "2026-09-22T21:20:48.406Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4470633178",
-      "url": "https://interndoor.com/us/jobs/raytheon-software-engineering-intern-summer-2027-4470633178",
-      "title": "Software Engineering Intern (Summer 2027) — Raytheon",
-      "content_text": "Company: Raytheon · Location: Portsmouth, RI · Duration: Summer 2027\n• Develop and test software components for internal systems and products\n• Work with engineers on design, code reviews, and agile planning\n• Debug and resolve software issues in a secure, mission-critical environment",
-      "date_published": "2026-09-22T21:20:02.154Z",
-      "authors": [
-        {
-          "name": "Raytheon"
         }
       ]
     }
