@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/gap-inc-software-engineer-4470651741",
+      "url": "https://interndoor.com/jobs/gap-inc-software-engineer-4470651741",
+      "title": "Software Engineer — Gap Inc.",
+      "content_text": "Company: Gap Inc. · Location: Hyderabad, Telangana, India\n• Design scalable tech solutions using agile practices\n• Work with product managers and security teams on production issues\n• Lead development through design to deployment with core programming languages",
+      "date_published": "2026-09-23T00:55:44.190Z",
+      "authors": [
+        {
+          "name": "Gap Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4469070272",
       "url": "https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4469070272",
       "title": "Rave Custom Function Programmer — IQVIA",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/coforge-test-specialist-4470282748",
-      "url": "https://interndoor.com/jobs/coforge-test-specialist-4470282748",
-      "title": "TEST SPECIALIST — Coforge",
-      "content_text": "Company: Coforge · Location: Hyderabad, Telangana, India\n• Test card lifecycle processes from account setup to collections\n• Use sql and tools like jira to track defects and manage test cases\n• Work with offshore teams on visionplus modules and interfaces",
-      "date_published": "2026-09-22T08:23:28.249Z",
-      "authors": [
-        {
-          "name": "Coforge"
         }
       ]
     }
