@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/iqvia-intern-4469613902",
+      "url": "https://interndoor.com/jobs/iqvia-intern-4469613902",
+      "title": "Intern — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
+      "date_published": "2026-09-23T23:11:53.632Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471124600",
       "url": "https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471124600",
       "title": "Business Risk Data Engineer — NatWest Group",
@@ -122,18 +134,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-intern-4469466761",
-      "url": "https://interndoor.com/jobs/iqvia-intern-4469466761",
-      "title": "Intern — IQVIA",
-      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and test software components using Python and modern frameworks\n• Build and validate REST APIs and AI-powered solutions with LLMs and RAG\n• Design automated test frameworks and contribute to backend services with FastAPI",
-      "date_published": "2026-09-23T16:49:32.440Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     },
