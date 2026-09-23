@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 19:48:19 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 20:37:57 GMT</lastBuildDate>
+  <item>
+    <title>Business Risk Data Engineer — NatWest Group</title>
+    <link>https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471126334</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471126334</guid>
+    <pubDate>Wed, 23 Sep 2026 20:37:57 GMT</pubDate>
+    <description>Company: NatWest Group · Location: Gurugram, Haryana, India
+• Design and implement data-driven solutions for information security
+• Use aws and etl tools to automate data processes and ensure data quality
+• Collaborate with cross-functional teams on risk management strategies</description>
+  </item>
   <item>
     <title>Intern — IQVIA</title>
     <link>https://interndoor.com/jobs/iqvia-intern-4471106389</link>
@@ -497,16 +507,6 @@
 • Develop and maintain product configurators for industrial automation systems
 • Work with databases and web apps to support configuration and selection tools
 • Collaborate with product teams to implement and improve configurator solutions</description>
-  </item>
-  <item>
-    <title>Software Engineer II — Mastercard</title>
-    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665</guid>
-    <pubDate>Wed, 23 Sep 2026 10:52:24 GMT</pubDate>
-    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
-• Develop full stack applications using Java 8+ and Spring Boot
-• Work on scalable microservices with event-driven architecture
-• Collaborate in agile teams on cloud-native projects</description>
   </item>
 </channel>
 </rss>
