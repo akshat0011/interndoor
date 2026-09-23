@@ -25,7 +25,7 @@ import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
   shortlist, clampJob, buildRankPrompt, findInventedSkills,
   looksLikeKey, endpointFor, explainFailure,
-  rankWithAI, tailorWithAI, MODEL, RANK_BATCH, KEY_STORE,
+  rankWithAI, tailorWithAI, MODEL, RANK_MODEL, TAILOR_MODEL, RANK_BATCH, KEY_STORE,
 } from '../web/public/resumeai.js';
 
 let pass = 0, fail = 0;
@@ -116,6 +116,28 @@ await returns('an unrelated host is refused',
   () => endpointFor(MODEL, 'https://evil.example/v1beta/models'),
   'THREW: refusing to call an unexpected host');
 
+console.log('\n== the two models, and why they are two ==');
+/* Google's free tier is 20 calls A DAY and the quota is PER MODEL
+   (GenerateRequestsPerDayPerProjectPerModel-FreeTier), so sharing one model
+   between ranking and tailoring makes them fight over one bucket. */
+check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
+check('ranking uses the cheap fast one', RANK_MODEL, 'gemini-flash-lite-latest');
+check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
+{
+  const keep = globalThis.fetch;
+  const seenUrls = [];
+  globalThis.fetch = async (url) => {
+    seenUrls.push(String(url));
+    return { ok: true, status: 200, json: async () => ({ candidates: [{ content: { parts: [{
+      text: '{"scores":[],"name":"A","summary":"s","sections":[],"skills":[],"changeNotes":[],"gaps":[]}' }] } }] }) };
+  };
+  await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs: [{ id: 'a' }] });
+  check('the rank call really goes to the rank model', seenUrls[0].includes(RANK_MODEL), true);
+  await tailorWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), job: { title: 'T' } });
+  check('the tailor call really goes to the tailor model', seenUrls[1].includes(TAILOR_MODEL), true);
+  globalThis.fetch = keep;
+}
+
 console.log('\n== key shape ==');
 check('a classic AIza key passes', looksLikeKey('AIza' + 'b'.repeat(35)), true);
 /* GOOGLE HAS TWO KEY FORMATS. AI Studio now issues keys beginning `AQ.`, and
@@ -193,7 +215,7 @@ await returns('an empty shortlist makes no request at all',
   async () => (await rankWithAI({ key: KEY, resumeText: 'x', jobs: [] })).size, 0);
 
 console.log('\n== failures say something a student can act on ==');
-for (const [status, want] of [[400, /rejected that API key/], [403, /rejected that API key/], [429, /quota/i], [500, /trouble/i]]) {
+for (const [status, want] of [[400, /rejected that API key/], [403, /rejected that API key/], [429, /20 AI requests a day/], [500, /trouble/i]]) {
   globalThis.fetch = async () => ({ ok: false, status, json: async () => ({}) });
   let msg = '';
   try { await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three }); }
