@@ -539,8 +539,15 @@ console.log('\n== Amazon asks each country for each term ==');
   restore();
   const countries = [...new Set(urls.map((u) => new URL(u).searchParams.get('country')))];
   check('all three countries were asked', countries.sort(), ['GBR', 'IND', 'USA']);
-  check('three countries x three terms', urls.length, 9);
+  check('three countries x four terms', urls.length, 12);
   check('and each country contributed a distinct posting', jobs.length, 3);
+  /* A SEARCH-BASED BOARD CANNOT SEE A TERM IT DOES NOT SEND. Every hosted
+     provider hands over the whole board and lets `employmentType` decide; this
+     one answers a query, so with intern words alone no full-time entry-level
+     role could ever come off it — Amazon India's live SDE-1 postings were
+     invisible for that reason and nothing anywhere reported it. */
+  const terms = [...new Set(urls.map((u) => new URL(u).searchParams.get('base_query')))].sort();
+  check('and one of them is the entry-level term', terms, ['intern', 'internship', 'sde-1', 'trainee']);
 }
 {
   /* THE FAILURE THIS PREVENTS: a token that is not split is sent whole as the

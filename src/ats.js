@@ -649,7 +649,26 @@ PROVIDERS.amazon = {
     const found = new Map();
 
     for (const country of countries.length ? countries : ['IND']) {
-      for (const term of ['intern', 'internship', 'trainee']) {
+      /* `sde-1` IS THE ONE FULL-TIME TERM, AND IT IS HERE BECAUSE A SEARCH-BASED
+         BOARD CANNOT BE FILTERED THE WAY A HOSTED ONE IS. Greenhouse and the
+         rest hand over every posting and `employmentType` decides; this board
+         answers a QUERY, so a term we never send is a role we can never see —
+         and with intern words alone no full-time entry-level role could ever
+         come off it, however well the classifier reads titles.
+
+         Measured 23 Sep 2026 against the live board, which is what picked the
+         term: `sde-1` returns 8 India postings of which 7 classify full-time
+         (3 distinct titles — SDE-1 Expansions Tech and Product, SDE-1 (FTC),
+         SDE-1 (Fixed Term Contract)). `graduate` returns 66 and classifies
+         NONE, `new grad` and `university graduate` return nothing at all, and
+         `software development engineer i` returns 5 and classifies none. USA
+         and GBR return 0 for it — Amazon does not level its titles there — so
+         this is India supply, which §16 calls the constraint.
+
+         It is one more request per country per poll, and that is the whole
+         cost. Do not reach for a broad term to "cover more": `graduate` is 66
+         postings and zero listings. */
+      for (const term of ['intern', 'internship', 'trainee', 'sde-1']) {
         const j = await getJson(
           `https://www.amazon.jobs/en/search.json?base_query=${encodeURIComponent(term)}`
           + `&country=${encodeURIComponent(country)}&result_limit=50&sort=recent`,
