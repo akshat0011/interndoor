@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-fpga-intern-summer-2027-ats-greenhouse-astranis-4704805006",
+      "url": "https://interndoor.com/us/jobs/astranis-fpga-intern-summer-2027-ats-greenhouse-astranis-4704805006",
+      "title": "FPGA Intern (Summer 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Summer 2027\n• Design and test FPGA hardware for satellite systems\n• Work with Verilog/SystemVerilog and Xilinx tools\n• Collaborate with engineers on high-speed data interfaces",
+      "date_published": "2026-09-23T23:05:05.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-fpga-intern-winter-2027-ats-greenhouse-astranis-4704803006",
+      "url": "https://interndoor.com/us/jobs/astranis-fpga-intern-winter-2027-ats-greenhouse-astranis-4704803006",
+      "title": "FPGA Intern (Winter 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Design and test FPGA hardware for satellite systems\n• Work with Verilog/SystemVerilog and Xilinx tools\n• Collaborate with engineers on high-speed data interfaces",
+      "date_published": "2026-09-23T23:05:02.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/graphcore-firmware-engineering-intern-ats-greenhouse-graphcore-8841894002",
+      "url": "https://interndoor.com/us/jobs/graphcore-firmware-engineering-intern-ats-greenhouse-graphcore-8841894002",
+      "title": "Firmware Engineering Intern — Graphcore",
+      "content_text": "Company: Graphcore · Location: Austin, Texas, United States\n• Develop firmware for advanced compute systems in C/C++/Python\n• Work on embedded systems, Linux environments, and test automation\n• Collaborate with cross-functional teams on hardware-software integration",
+      "date_published": "2026-09-23T23:03:16.000Z",
+      "authors": [
+        {
+          "name": "Graphcore"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-vlsi-engineer-intern-4471141218",
+      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-vlsi-engineer-intern-4471141218",
+      "title": "VLSI Engineer Intern — Hewlett Packard Enterprise",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Spring, TX\n• Verify ASIC designs using test benches and regression flows\n• Work with RTL designers on digital logic and verification\n• Collaborate on automation scripts and bug tracking",
+      "date_published": "2026-09-23T22:59:38.368Z",
+      "authors": [
+        {
+          "name": "Hewlett Packard Enterprise"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/f5-technical-program-manager-1-former-intern-4471152054",
+      "url": "https://interndoor.com/us/jobs/f5-technical-program-manager-1-former-intern-4471152054",
+      "title": "Technical Program Manager 1 - Former Intern — F5",
+      "content_text": "Company: F5 · Location: San Jose, CA · Duration: Summer 2026\n• Manage project plans, scope, schedules, and budgets for new product development\n• Collaborate with developers, product teams, and stakeholders to prioritize features\n• Present data analytics and lead program meetings to align with product goals",
+      "date_published": "2026-09-23T22:59:32.652Z",
+      "authors": [
+        {
+          "name": "F5"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-summer-2027-ats-greenhouse-astranis-4716088006",
       "url": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-summer-2027-ats-greenhouse-astranis-4716088006",
       "title": "Software Defined Radio Hardware Intern (Summer 2027) — Astranis",
@@ -26,6 +86,30 @@
       "authors": [
         {
           "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/emerson-icenter-co-op-jan-aug-4471149043",
+      "url": "https://interndoor.com/us/jobs/emerson-icenter-co-op-jan-aug-4471149043",
+      "title": "iCenter Co-op (Jan-Aug) — Emerson",
+      "content_text": "Company: Emerson · Location: St Louis, MO\n• Support project execution with technical analysis, BOM creation, and customer inquiries\n• Collaborate on engineering drawings, manufacturability, and automation systems\n• Work in St. Louis, MO, during Jan-Aug 2027 with full-time hours",
+      "date_published": "2026-09-23T22:51:26.430Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-optical-engineering-intern-4471127975",
+      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-optical-engineering-intern-4471127975",
+      "title": "Optical Engineering Intern — Hewlett Packard Enterprise",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Sunnyvale, CA\n• Develop automated test solutions for optical modules using Python and LabVIEW\n• Contribute to firmware validation and AI-driven workflow development\n• Work on 400G, 800G, and 1.6T optical product testing and analysis",
+      "date_published": "2026-09-23T22:37:23.975Z",
+      "authors": [
+        {
+          "name": "Hewlett Packard Enterprise"
         }
       ]
     },
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Stripe"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/aecom-entry-level-civil-osp-design-specialist-hiring-event-with-aecom-philad-ats-smartrecruiters-aecom2-744000151438599",
-      "url": "https://interndoor.com/us/jobs/aecom-entry-level-civil-osp-design-specialist-hiring-event-with-aecom-philad-ats-smartrecruiters-aecom2-744000151438599",
-      "title": "Entry-Level Civil OSP Design Specialist - Hiring Event with AECOM - Philadelphia — AECOM",
-      "content_text": "Company: AECOM · Location: Conshohocken, us · Duration: Summer 2027\n• Review civil osp designs for compliance with standards and client specs\n• Use smartsheet and excel to track workflows and improve processes\n• Work hybrid with global teams and manage cross-timezone coordination",
-      "date_published": "2026-09-23T17:09:57.050Z",
-      "authors": [
-        {
-          "name": "AECOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/zipline-droid-autonomy-intern-summer-2027-4470981485",
-      "url": "https://interndoor.com/us/jobs/zipline-droid-autonomy-intern-summer-2027-4470981485",
-      "title": "Droid Autonomy Intern (Summer 2027) — Zipline",
-      "content_text": "Company: Zipline · Location: South San Francisco, CA · Duration: Summer 2027\n• Analyze flight data to improve motion planning in unpredictable environments\n• Work with machine learning and statistics to enhance delivery reliability\n• Collaborate with cross-functional teams on real-world robotics challenges",
-      "date_published": "2026-09-23T16:53:45.170Z",
-      "authors": [
-        {
-          "name": "Zipline"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/symbotic-co-op-robot-perception-4470969761",
-      "url": "https://interndoor.com/us/jobs/symbotic-co-op-robot-perception-4470969761",
-      "title": "Co-op - Robot Perception — Symbotic",
-      "content_text": "Company: Symbotic · Location: Wilmington, MA\n• Develop vision-based algorithms for collision avoidance and multi-robot systems\n• Work with Python, C++, PyTorch, OpenCV, and ROS in real-world robotics\n• Deploy computer vision models on robot hardware with production data",
-      "date_published": "2026-09-23T16:49:40.096Z",
-      "authors": [
-        {
-          "name": "Symbotic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/symbotic-intern-user-experience-4470981317",
-      "url": "https://interndoor.com/us/jobs/symbotic-intern-user-experience-4470981317",
-      "title": "Intern - User Experience — Symbotic",
-      "content_text": "Company: Symbotic · Location: Wilmington, MA\n• Design user experiences for Symbotic’s warehouse automation systems\n• Use Figma, Sketch, and Adobe XD to create wireframes and prototypes\n• Collaborate with engineers and researchers on real projects\n• Travel to Wilmington to observe hardware and software in action",
-      "date_published": "2026-09-23T16:49:36.188Z",
-      "authors": [
-        {
-          "name": "Symbotic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/trelleborg-sealing-solutions-engineering-internship-summer-2027-4469483313",
-      "url": "https://interndoor.com/us/jobs/trelleborg-sealing-solutions-engineering-internship-summer-2027-4469483313",
-      "title": "Engineering Internship-Summer 2027 — Trelleborg Sealing Solutions",
-      "content_text": "Company: Trelleborg Sealing Solutions · Location: Fort Wayne, IN · Duration: Summer 2027\n• Use seal design software and lab tools to develop performance data\n• Work with senior engineers on real projects and product development\n• Based in fort wayne, in",
-      "date_published": "2026-09-23T16:43:42.124Z",
-      "authors": [
-        {
-          "name": "Trelleborg Sealing Solutions"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-software-engineer-intern-opportunity-for-university-students-ats-microsoft-india-united-states-united-kingdom-1970393557004819",
-      "url": "https://interndoor.com/us/jobs/microsoft-software-engineer-intern-opportunity-for-university-students-ats-microsoft-india-united-states-united-kingdom-1970393557004819",
-      "title": "Software Engineer: Intern Opportunity for University Students — Microsoft",
-      "content_text": "Company: Microsoft · Location: Mountain View, California, United States\n• Build end-to-end products across UI, APIs, and backend services\n• Use TypeScript/JavaScript, React/Angular, C#/Java/Python\n• Collaborate with engineers, designers, and product managers",
-      "date_published": "2026-09-23T16:21:44.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/panther-life-sciences-device-engineer-internship-co-op-fall-2026-4470982171",
-      "url": "https://interndoor.com/us/jobs/panther-life-sciences-device-engineer-internship-co-op-fall-2026-4470982171",
-      "title": "Device Engineer Internship / Co-Op, Fall 2026 — Panther Life Sciences",
-      "content_text": "Company: Panther Life Sciences · Location: Pittsburgh, PA · Duration: Fall 2026\n• Test and improve microneedle patches using skin models and lab equipment\n• Design 3D CAD tools for device testing and analysis\n• Work on real product development with senior engineers",
-      "date_published": "2026-09-23T16:10:52.868Z",
-      "authors": [
-        {
-          "name": "Panther Life Sciences"
         }
       ]
     }
