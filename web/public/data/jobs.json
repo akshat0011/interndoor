@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790206927256,
+ "generatedAt": 1790207336539,
  "region": "IN",
  "regionName": "India",
- "count": 442,
- "techCount": 442,
+ "count": 440,
+ "techCount": 440,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -355,104 +355,6 @@
    "cardFacts": [
     "Bengaluru",
     "Hybrid"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4471124600",
-   "title": "Business Risk Data Engineer",
-   "company": "NatWest Group",
-   "matchedWatchlist": "NatWest",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/natwest-group.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "aws"
-   ],
-   "summary": "This role involves designing data solutions to protect customer and company data. You'll work with aws and etl tools to automate processes and ensure data quality. The position requires experience in data engineering and risk management, with a focus on creating scalable and secure systems.",
-   "bullets": [
-    "Design and implement data-driven solutions for information security and customer needs",
-    "Use aws and etl tools to automate processes and ensure data quality",
-    "Collaborate with cross-functional teams on risk management and data accessibility"
-   ],
-   "roleLabel": "Data engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "aws",
-    "etl",
-    "data modelling",
-    "version control",
-    "ai tools"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1790199390220,
-   "firstSeenAt": 1790202990226,
-   "lastSeenAt": 1790202990226,
-   "url": "https://www.linkedin.com/jobs/view/4471124600/",
-   "applyUrl": "https://jobs.natwestgroup.com/jobs/18231178-business-risk-data-engineer?tm_job=R-00285017-OTHLOC-IND-5FCHE051&tm_event=view&tm_company=861&bid=56",
-   "description": null,
-   "roleFingerprint": "9cb6a096c9",
-   "cardFacts": [
-    "Chennai",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4471126334",
-   "title": "Business Risk Data Engineer",
-   "company": "NatWest Group",
-   "matchedWatchlist": "NatWest",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/natwest-group.jpg",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "aws"
-   ],
-   "summary": "This role involves creating secure data solutions to protect customer information and support strategic decisions. You'll work with aws and etl tools to automate processes and ensure data integrity. Ideal for someone with experience in data engineering and risk management.",
-   "bullets": [
-    "Design and implement data-driven solutions for information security",
-    "Use aws and etl tools to automate data processes and ensure data quality",
-    "Collaborate with cross-functional teams on risk management strategies"
-   ],
-   "roleLabel": "Data engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "aws",
-    "etl",
-    "data modelling",
-    "version control",
-    "risk management"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "14 minutes ago",
-   "postedAt": 1790195877176,
-   "firstSeenAt": 1790196717182,
-   "lastSeenAt": 1790206248007,
-   "url": "https://www.linkedin.com/jobs/view/4471126334/",
-   "applyUrl": "https://jobs.natwestgroup.com/jobs/18231177-business-risk-data-engineer?tm_job=R-00285017-OTHLOC-IND-5FGUR021&tm_event=view&tm_company=861&bid=56",
-   "description": null,
-   "roleFingerprint": "178995bdd0",
-   "cardFacts": [
-    "Gurugram",
-    "On-site"
    ],
    "region": "IN"
   },
