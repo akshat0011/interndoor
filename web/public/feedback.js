@@ -29,6 +29,11 @@
    scheduler never commits it. Changes here are staged by hand.
    ============================================================ */
 
+/* How long the reader waits before being told it did not send. Long enough for
+   a cold function on a slow phone, short enough that they are told something
+   before they give up on the box. Measured warm, the round trip is ~0.35s. */
+const SEND_TIMEOUT_MS = 12_000;
+
 /* WHICH BOARD THIS READER IS ON — the same tolerant read subscribe.js does,
    and for the same reason: web/public/index.html is ONE template rendered for
    every board, so a hardcoded attribute there would tell the US and UK boards
@@ -143,9 +148,18 @@ function wire(form) {
     say('', '');
 
     try {
+      /* BOUNDED, BECAUSE "Sending…" HAS NO END OF ITS OWN.
+         `fetch` has no default timeout in any browser, so before this a slow
+         endpoint — a cold function, an Upstash blip, a phone handing off from
+         wifi to mobile — left the button reading "Sending…" until the network
+         stack gave up, which can be minutes. The reader has typed something and
+         cannot tell whether it arrived; that is the worst state this box can be
+         in. Warm, the whole round trip measures ~0.35s. */
       const res = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
+        // Absent on older browsers — no signal is better than throwing here.
+        signal: AbortSignal.timeout?.(SEND_TIMEOUT_MS),
         body: JSON.stringify({
           message,
           email: mail ? mail.value.trim() : '',
@@ -172,7 +186,14 @@ function wire(form) {
       }
       say(data.error || 'That did not send. Please try again.', 'bad');
     } catch (err) {
-      say('No connection. Please try again.', 'bad');
+      /* A timeout and a dead connection are different situations and the reader
+         can act on the difference: one is worth retrying now, the other means
+         check the connection first. Either way the text is still in the box —
+         `row.hidden` is only set on success — so nothing they wrote is lost. */
+      const timedOut = err?.name === 'TimeoutError' || err?.name === 'AbortError';
+      say(timedOut
+        ? 'That took too long and was not sent. Your message is still here — try again.'
+        : 'No connection. Please try again.', 'bad');
     } finally {
       busy = false;
       btn.disabled = false;

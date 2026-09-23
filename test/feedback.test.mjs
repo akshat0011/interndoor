@@ -16,7 +16,7 @@ import { readFileSync } from 'node:fs';
 import { publishedPaths } from '../src/publish.js';
 import {
   parseFeedback, cleanMessage, cleanPath, rateLimited, save, store,
-  LIST_KEY, KEEP, MIN_MESSAGE, MAX_MESSAGE, REGIONS,
+  LIST_KEY, KEEP, MIN_MESSAGE, MAX_MESSAGE, REGIONS, STORE_TIMEOUT_MS,
 } from '../web/api/feedback.js';
 
 let pass = 0, fail = 0;
@@ -413,6 +413,35 @@ console.log('\n== THE CLIENT OPENS AND CLOSES IT ==');
   check('focus lands in the textarea, not on Close', /querySelector\('\.fb-t'\) \?\? focusable\(\)\[0\]/.test(client), true);
   check('the page is locked while open', /classList\.add\('fb-open-modal'\)/.test(client), true);
   check('and unlocked on close', /classList\.remove\('fb-open-modal'\)/.test(client), true);
+}
+
+
+console.log('\n== "Sending…" has to end ==');
+/* Reported live: the box stuck on "Sending…" for minutes. `fetch` has NO default
+   timeout in any browser, and neither end bounded anything — so a slow store
+   left the reader staring at a button with their text un-sent and no way to
+   know. Warm, the round trip measures ~0.35s. */
+{
+  const client = readFileSync(new URL('../web/public/feedback.js', import.meta.url), 'utf8');
+  check('the client bounds the send', /signal:\s*AbortSignal\.timeout\?\.\(SEND_TIMEOUT_MS\)/.test(client), true);
+  const ms = Number(client.match(/const SEND_TIMEOUT_MS = ([\d_]+)/)?.[1].replace(/_/g, ''));
+  check('and the bound is a sane few seconds', ms >= 5000 && ms <= 30000, true);
+  // A timeout and a dead connection need different advice, so they must not
+  // collapse into one message.
+  check('a timeout is told apart from no connection', /TimeoutError/.test(client), true);
+  check('and says the text is still there', /still here/.test(client), true);
+  // The typed message must survive a failure — row.hidden is success-only.
+  const onFail = client.slice(client.indexOf('catch (err)'), client.indexOf('finally'));
+  check('a failure never hides the form', /row\.hidden\s*=\s*true/.test(onFail), false);
+
+  check('the store call is bounded too', STORE_TIMEOUT_MS >= 2000 && STORE_TIMEOUT_MS <= 15000, true);
+  const api = readFileSync(new URL('../web/api/feedback.js', import.meta.url), 'utf8');
+  check('and it is actually passed to the fetch',
+    /signal:\s*AbortSignal\.timeout\?\.\(STORE_TIMEOUT_MS\)/.test(api), true);
+  // A store that times out must read as a transport failure, not a success.
+  const slow = await save({ message: 'x' }, { url: 'https://u', token: 't' }, 1,
+    async () => { const e = new Error('timed out'); e.name = 'TimeoutError'; throw e; });
+  check('a timed-out store returns false, never true', slow, false);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
