@@ -320,6 +320,34 @@ console.log('\n== the output budget must survive the model thinking ==');
   globalThis.fetch = keep;
 }
 
+console.log('\n== BYOK has to be visible BEFORE the button is pressed ==');
+/* Reported live: the key panel was a collapsed grey <details> beside a bright,
+   enabled "Tailor it". The only way to discover that tailoring needs a key was
+   to press it and be shown an error screen — which reads as a broken site.
+   The gate now lives in ONE function that knows about the key; it used to be
+   set from three places and none of them did. */
+{
+  const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
+  check('one function owns the primary button', /function syncPrimary\(/.test(app), true);
+  const fn = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncKeyUi('));
+  check('it refuses to enable tailoring without a key', /needsKey/.test(fn) && /btn\.disabled/.test(fn), true);
+  check('and says so on the button itself', /Add your key below to tailor/.test(fn), true);
+  check('ranking is never gated on a key', /!activeJob[\s\S]*Rank the board/.test(fn), true);
+  check('the panel is opened, not left collapsed', /box\.open = true/.test(fn), true);
+  check('and marked as blocking', /is-required/.test(fn), true);
+  // The three old scattered assignments must be gone, or one of them re-enables
+  // the button behind syncPrimary's back.
+  const strays = (app.match(/\$\('do-tailor'\)\.disabled\s*=/g) || []).length;
+  check('no stray enable/disable of the primary button', strays, 0);
+
+  const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
+  check('the blocking state is visually distinct', /\.keybox\.is-required/.test(css), true);
+  check('a disabled primary looks unpressable', /\.go\[disabled\]/.test(css), true);
+  // §15: never dim text with opacity.
+  const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
+  check('and does not dim text with opacity', /opacity:\s*0?\.[0-9]/.test(dis), false);
+}
+
 console.log('\n== the wiring that is only visible in production ==');
 /* No local server sends the CSP header, so a browser call to Google is refused
    ONLY on the live site and nothing in any preview looks wrong. Pin the host in

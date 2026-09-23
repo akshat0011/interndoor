@@ -1750,7 +1750,7 @@ function openTailor(job) {
   $('tailor-job').textContent = job
     ? `${job.company} · ${job.title}`
     : 'Score every open role against your resume, and sort by fit.';
-  $('do-tailor').textContent = job ? 'Tailor it' : 'Rank the board';
+  syncKeyUi();          // label, panel prominence and the button, in one place
   showStep('upload');
   $('tailor-backdrop').hidden = false;
   $('tailor').hidden = false;
@@ -1779,7 +1779,7 @@ function setResumeText(text, label, ok = true) {
   box.replaceChildren(el('span', null, ok
     ? `${label} · ${text.length.toLocaleString()} characters read`
     : label));
-  $('do-tailor').disabled = !ok || text.trim().length < 200;
+  syncPrimary();
 }
 
 async function extractPdfText(file) {
@@ -1877,7 +1877,11 @@ async function runTailor() {
   }
 
   if (!hasKey()) {
-    $('error-text').textContent = 'Tailoring needs your own Google AI key. Add one in the "AI features" panel — it stays in this browser.';
+    /* Unreachable through the UI now — syncPrimary() disables the button before
+       it can be pressed — and kept because the guard is what makes that true
+       rather than merely likely. §1: a guard that is only safe because of its
+       callers is worth keeping when the cost is four lines. */
+    $('error-text').textContent = 'Tailoring needs your own Google AI key. Add one in the panel above — it stays in this browser.';
     showStep('error');
     openKeyBox();
     return;
@@ -2009,21 +2013,56 @@ function openKeyBox() {
   $('ai-key')?.focus();
 }
 
+/**
+ * THE ONE PLACE THAT DECIDES WHETHER THE PRIMARY BUTTON CAN BE PRESSED.
+ *
+ * It used to be set from three separate places and none of them knew about the
+ * key, so with no key the button sat there bright and enabled and the ONLY way
+ * to find out tailoring needs one was to press it and be shown an error screen.
+ * That reads as "the site is broken", which is the opposite of the truth.
+ *
+ * Ranking never needs a key, so rank mode is never gated — the whole point of
+ * the local skill pass is that it works for everyone, for free.
+ */
+function syncPrimary() {
+  const btn = $('do-tailor');
+  if (!btn) return;
+  const text = (state.resumeText || $('resume-paste')?.value || '').trim();
+  const enoughText = text.length >= 200;
+  const needsKey = Boolean(activeJob) && !hasKey();
+
+  btn.disabled = !enoughText || needsKey;
+  btn.textContent = !activeJob
+    ? 'Rank the board'
+    : needsKey ? 'Add your key below to tailor' : 'Tailor it';
+
+  // The panel shouts only when it is actually blocking something.
+  const box = $('keybox');
+  if (box) {
+    box.classList.toggle('is-required', needsKey);
+    if (needsKey) box.open = true;
+  }
+}
+
 function syncKeyUi() {
   const have = hasKey();
+  const needsKey = Boolean(activeJob) && !have;
   const label = $('key-state');
   if (label) {
     label.textContent = have
       ? 'AI features — key saved in this browser'
-      : 'AI features — no key yet (ranking by skills still works)';
+      : needsKey
+        ? 'Tailoring needs your own free Google AI key — add it here'
+        : 'AI features — add a key to have an AI read each posting (ranking by skills works without one)';
   }
   const forget = $('forget-key');
   if (forget) forget.hidden = !have;
   const input = $('ai-key');
   if (input) {
     input.value = '';
-    input.placeholder = have ? 'saved — paste a new key to replace it' : 'AIza…';
+    input.placeholder = have ? 'saved — paste a new key to replace it' : 'AIza… or AQ.…';
   }
+  syncPrimary();
 }
 
 function renderTailored(t) {
@@ -2195,7 +2234,7 @@ function wireTailor() {
     const v = e.target.value.trim();
     state.resumeText = v;
     syncRelevance();
-    $('do-tailor').disabled = v.length < 200;
+    syncPrimary();
     if (v.length >= 200) setResumeText(v, 'Pasted resume', true);
   });
 
@@ -2212,8 +2251,8 @@ function wireTailor() {
     // configured credential is checked by using it, not by inspecting it.
     if (!looksLikeKey(v)) { toast('That does not look like a Google AI Studio key — they begin with AIza.'); return; }
     if (!setKey(v)) { toast('This browser refused to store the key — a private window blocks it.'); return; }
-    syncKeyUi();
-    toast('Key saved in this browser only.');
+    syncKeyUi();          // unlocks the primary button in the same breath
+    toast('Key saved — tailoring is unlocked.');
   });
 
   $('forget-key')?.addEventListener('click', () => {
@@ -2233,7 +2272,11 @@ function wireTailor() {
     $('resume-file').value = '';
     $('resume-paste').value = '';
     $('file-state').hidden = true;
-    $('do-tailor').disabled = true;
+    /* Through syncPrimary, not by hand — "Start over" clears the resume, and
+       the button's state then follows from that plus whether a key exists.
+       Setting it directly here is how a stray assignment drifts out of step
+       with the gate. */
+    syncPrimary();
     showStep('upload');
   });
 
