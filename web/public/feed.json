@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cognizant-developer-4460651405",
+      "url": "https://interndoor.com/jobs/cognizant-developer-4460651405",
+      "title": "Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build secure scalable cloud apps for retail banking using AWS Lambda and DynamoDB\n• Design conversational interfaces with Lex and Connect for customer service\n• Monitor and optimize application performance with CloudWatch and S3",
+      "date_published": "2026-09-23T18:24:53.317Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399",
       "url": "https://interndoor.com/jobs/nvidia-gpu-core-pipeline-ip-verification-engineer-4460667399",
       "title": "GPU Core Pipeline IP Verification Engineer — NVIDIA",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Reliance Industries Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dentsu-global-services-gcp-data-engineer-4469427870",
-      "url": "https://interndoor.com/jobs/dentsu-global-services-gcp-data-engineer-4469427870",
-      "title": "GCP Data Engineer — Dentsu Global Services",
-      "content_text": "Company: Dentsu Global Services · Location: Pune/Pimpri-Chinchwad Area\n• Build scalable data pipelines using gcp services like bigquery and cloud composer\n• Develop python applications for data ingestion and transformation\n• Collaborate with cross-functional teams to implement data solutions",
-      "date_published": "2026-09-23T10:50:27.320Z",
-      "authors": [
-        {
-          "name": "Dentsu Global Services"
         }
       ]
     }
