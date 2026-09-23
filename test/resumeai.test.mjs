@@ -117,7 +117,14 @@ await returns('an unrelated host is refused',
   'THREW: refusing to call an unexpected host');
 
 console.log('\n== key shape ==');
-check('a real-shaped key passes', looksLikeKey('AIza' + 'b'.repeat(35)), true);
+check('a classic AIza key passes', looksLikeKey('AIza' + 'b'.repeat(35)), true);
+/* GOOGLE HAS TWO KEY FORMATS. AI Studio now issues keys beginning `AQ.`, and
+   the first version of this check only knew `AIza` — so it refused the real key
+   of the person it was built for. Every fixture here was an AIza string, which
+   is exactly why nothing caught it until a real key was tried. */
+check('a newer AQ. key passes', looksLikeKey('AQ.Ab8RN6' + 'c'.repeat(40)), true);
+check('an AQ. key with dots and dashes passes', looksLikeKey('AQ.Ab8RN6-x_y.' + 'd'.repeat(30)), true);
+check('a stub AQ. is refused', looksLikeKey('AQ.short'), false);
 check('an email is refused', looksLikeKey('someone@example.com'), false);
 check('a truncated paste is refused', looksLikeKey('AIzaSy'), false);
 check('empty is refused', looksLikeKey(''), false);
@@ -227,6 +234,22 @@ check('a missing job does not throw', clampJob(undefined).title, null);
 const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
 check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
 check('the resume is in the prompt', prompt.includes('RESUME'), true);
+
+console.log('\n== the output budget must survive the model thinking ==');
+/* Measured against a real key on a real 40-role shortlist: 4,000 tokens went
+   entirely on reasoning (3,839) and returned 146 tokens of truncated JSON —
+   MAX_TOKENS, zero usable scores. Pin the budget so it cannot drift back. */
+{
+  let sawBudget = null;
+  const keep = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    sawBudget = JSON.parse(init.body).generationConfig.maxOutputTokens;
+    return { ok: true, status: 200, json: async () => ({ candidates: [{ content: { parts: [{ text: '{"scores":[]}' }] } }] }) };
+  };
+  await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs: [{ id: 'a' }] });
+  check('the rank budget leaves room for thinking', sawBudget >= 8000, true);
+  globalThis.fetch = keep;
+}
 
 console.log('\n== the wiring that is only visible in production ==');
 /* No local server sends the CSP header, so a browser call to Google is refused
