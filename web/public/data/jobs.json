@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790180459720,
+ "generatedAt": 1790180574364,
  "region": "IN",
  "regionName": "India",
- "count": 445,
- "techCount": 445,
+ "count": 444,
+ "techCount": 444,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -92,7 +92,6 @@
   "Hevo Data",
   "Hewlett Packard Enterprise",
   "Hitachi Digital Services",
-  "Hitachi Energy",
   "Honeywell Technologies",
   "Houlihan Lokey",
   "IBM",
@@ -296,7 +295,6 @@
   "Telangana, India",
   "Thane, Maharashtra, India",
   "Thiruvananthapuram, Kerala, India",
-  "Vadodara, Gujarat, India",
   "gurgaon"
  ],
  "jobs": [
@@ -496,50 +494,6 @@
    "roleFingerprint": "37817ade12",
    "cardFacts": [
     "Tamil Nadu",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4453093690",
-   "title": "R&D Associate Engineer",
-   "company": "Hitachi Energy",
-   "matchedWatchlist": "Hitachi",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/hitachi-energy.jpg",
-   "location": "Vadodara, Gujarat, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves managing product data and design while ensuring compliance with regulations. You'll work with GPS tools, track key performance indicators, and collaborate across teams to improve processes and reduce complexity. Ideal for someone with engineering experience and a focus on product development.",
-   "bullets": [
-    "Maintain product master data and design, ensure compliance with regulations",
-    "Use GPS processes and tools, track KPIs, suggest improvements",
-    "Collaborate across functions, drive knowledge transfer and harmonization"
-   ],
-   "roleLabel": "Product Development",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "ProE",
-    "GPS processes"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "5 minutes ago",
-   "postedAt": 1790174256089,
-   "firstSeenAt": 1790174556092,
-   "lastSeenAt": 1790174556092,
-   "url": "https://www.linkedin.com/jobs/view/4453093690/",
-   "applyUrl": "https://www.hitachienergy.com/careers/open-jobs/details/JID3-181551?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "8daf6f5f14",
-   "cardFacts": [
-    "Vadodara",
     "On-site"
    ],
    "region": "IN"
