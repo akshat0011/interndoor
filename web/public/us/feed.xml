@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 23 Sep 2026 20:18:56 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 20:25:45 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer, Performance Tooling and Infrastructure New Grad — Nuro</title>
+    <link>https://interndoor.com/us/jobs/nuro-software-engineer-performance-tooling-and-infrastructure-new-grad-ats-greenhouse-nuro-8227399</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/nuro-software-engineer-performance-tooling-and-infrastructure-new-grad-ats-greenhouse-nuro-8227399</guid>
+    <pubDate>Wed, 23 Sep 2026 20:25:45 GMT</pubDate>
+    <description>Company: Nuro · Location: Mountain View, California (HQ)
+• Develop and maintain job orchestration layer for autonomy performance benchmarks
+• Build monitoring and self-healing automation for bench-top systems
+• Design data pipelines for performance metrics and visualization
+• Guide SRE team on Linux kernel and hardware configuration</description>
+  </item>
   <item>
     <title>Data Engineering Intern — Jabil</title>
     <link>https://interndoor.com/us/jobs/jabil-data-engineering-intern-4469614102</link>
@@ -504,16 +515,6 @@
 • Support product design through testing, simulation, and data analysis
 • Use CAD and simulation tools with mentorship from experienced engineers
 • Work full-time on-site in Cincinnati, OH, with housing assistance available</description>
-  </item>
-  <item>
-    <title>Data Science Co-Op, Summer 2027 — Johnson &amp; Johnson MedTech</title>
-    <link>https://interndoor.com/us/jobs/johnson-and-johnson-medtech-data-science-co-op-summer-2027-4462073075</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/johnson-and-johnson-medtech-data-science-co-op-summer-2027-4462073075</guid>
-    <pubDate>Wed, 23 Sep 2026 15:05:05 GMT</pubDate>
-    <description>Company: Johnson &amp; Johnson MedTech · Location: Cincinnati, OH · Duration: 3-4 months
-• Analyze surgical data to inform product development for minimally invasive tools
-• Use Python and data tools to build software for collaborative analysis
-• Work with engineers on experiments and data visualization projects</description>
   </item>
 </channel>
 </rss>

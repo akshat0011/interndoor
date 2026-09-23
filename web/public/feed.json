@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471126334",
+      "url": "https://interndoor.com/jobs/natwest-group-business-risk-data-engineer-4471126334",
+      "title": "Business Risk Data Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Gurugram, Haryana, India\n• Design and implement data-driven solutions for information security\n• Use aws and etl tools to automate data processes and ensure data quality\n• Collaborate with cross-functional teams on risk management strategies",
+      "date_published": "2026-09-23T20:37:57.176Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/iqvia-intern-4471106389",
       "url": "https://interndoor.com/jobs/iqvia-intern-4471106389",
       "title": "Intern — IQVIA",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Rockwell Automation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665",
-      "title": "Software Engineer II — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Develop full stack applications using Java 8+ and Spring Boot\n• Work on scalable microservices with event-driven architecture\n• Collaborate in agile teams on cloud-native projects",
-      "date_published": "2026-09-23T10:52:24.213Z",
-      "authors": [
-        {
-          "name": "Mastercard"
         }
       ]
     }
