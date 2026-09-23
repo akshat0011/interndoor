@@ -57,7 +57,7 @@ for (const p of ['alerts.html', 'report.html', 'skills', 'locations'])
 console.log('\n== and the things that must NEVER be auto-published are not ==');
 // styles.css, app.js and the rest are committed by hand on purpose — the
 // scheduler shipping them would push half-finished edits every 30 minutes.
-for (const p of ['styles.css', 'app.js', 'page.css', 'page.js', 'engage.js', 'vercel.json'])
+for (const p of ['styles.css', 'app.js', 'resumeai.js', 'page.css', 'page.js', 'engage.js', 'vercel.json'])
   check(`${p} is NOT allowlisted`, allow.has(p), false);
 
 rmSync(dir, { recursive: true, force: true });

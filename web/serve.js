@@ -118,7 +118,9 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`InternDoor preview → http://localhost:${PORT}`);
-  if (!process.env.GEMINI_API_KEY) {
-    console.log('GEMINI_API_KEY is not set — resume tailoring will return an error until it is.');
-  }
+  /* Resume tailoring needs no key HERE any more — it runs in the browser
+     against the reader's own Google key, so there is nothing for this server to
+     be missing. Note that no local server sends the production CSP, so the one
+     thing this preview cannot show you is whether connect-src still allows
+     generativelanguage.googleapis.com. That is only ever visible live. */
 });

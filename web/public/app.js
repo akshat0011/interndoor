@@ -61,6 +61,19 @@ const DATA_URL = meta('interndoor-data') || meta('gradkite-data') || meta('inter
 /** '' for India, '/us' and so on for the rest — the prefix every internal link needs. */
 const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 
+/* The resume AI, and the skill vocabulary the local ranker scores with.
+ *
+ * A STATIC IMPORT, so a cached app.js and a fresh resumeai.js can never be half
+ * applied: if the module is missing the board does not boot at all, which is
+ * loud, rather than silently ranking with no aliases, which is not. Both files
+ * are hand-committed and ship in one commit for the same reason §5 gives —
+ * the scheduler pushes index.html on its own timer and would otherwise carry
+ * half a change. */
+import {
+  resumeNames, shortlist, rankWithAI, tailorWithAI,
+  getKey, setKey, forgetKey, hasKey, looksLikeKey, RANK_BATCH,
+} from './resumeai.js';
+
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const HOT_MS = 60 * 60 * 1000;      // "just posted"
@@ -665,7 +678,11 @@ let resumeHay = '';
 const normSkill = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim();
 
 function setResumeHay(text) {
-  resumeHay = text ? ` ${normSkill(text)} ` : '';
+  const next = text ? ` ${normSkill(text)} ` : '';
+  // A different resume invalidates every AI score, and the card cannot say
+  // which resume produced its number — so drop them rather than show a stale one.
+  if (next !== resumeHay) { aiScores = new Map(); resetMatchCache(); }
+  resumeHay = next;
 }
 
 /** Every skill named on a posting, de-duplicated across the two fields. */
@@ -689,12 +706,103 @@ function skillsOf(job) {
  *
  * @returns {{pct: number, hit: string[], of: number}|null}
  */
+/* Scores from an AI rank on the reader's own key: job id -> {fit, why}.
+ *
+ * CLEARED WHENEVER THE RESUME CHANGES. A score computed against a different
+ * resume is worse than no score at all, because nothing on the card says which
+ * resume produced it. setResumeHay is the one place the resume changes, so it
+ * is the one place this is emptied. */
+let aiScores = new Map();
+
+/**
+ * How well this posting fits the loaded resume.
+ *
+ * An AI score wins where there is one — it read the posting rather than
+ * counting word overlap, and it carries a reason. Otherwise the local skill
+ * match decides, now comparing each skill under every spelling a resume might
+ * use (`resumeNames`): a student who writes "JS, Node, K8s" was scoring a miss
+ * on postings that say JavaScript, Node.js and Kubernetes, which measured out
+ * at HALF the matches of an identical resume that spelled them out.
+ *
+ * Returns null rather than a low score when there is nothing to judge on. A
+ * posting naming two skills would swing between 0% and 100% on a single word,
+ * and a confident "0% match" on a role the reader is well suited to is worse
+ * than saying nothing — the number would be measuring our own extraction, not
+ * their fit.
+ *
+ * @returns {{pct: number, hit: string[], of: number, ai: boolean, why?: string}|null}
+ */
+/* MEMOISED PER JOB, and this one fixes a cost that PREDATES the alias change.
+   Sorting by fit calls matchFor from the comparator, so it ran O(n log n) times
+   over the whole board and rebuilt a Set of the posting's skills on every one.
+   Measured on the live 3,884-role US board, a keystroke in the search box took
+   256-321 ms sorted by fit against 30 ms sorted by date — and the alias lookup
+   pushed that to 333-408 ms. Scoring each job once and keeping it puts both
+   back at the baseline. The answer depends only on the job, the resume and the
+   AI scores, so the cache is dropped whenever either of those changes. */
+let matchCache = new Map();
+
+function resetMatchCache() { matchCache = new Map(); covCache = null; }
+
 function matchFor(job) {
+  const cached = matchCache.get(job.id);
+  if (cached !== undefined) return cached;
+  const value = computeMatch(job);
+  matchCache.set(job.id, value);
+  return value;
+}
+
+function computeMatch(job) {
+  const ai = aiScores.get(job.id);
+  if (ai) return { pct: ai.fit, hit: [], of: 0, ai: true, why: ai.why };
   if (!resumeHay) return null;
   const skills = skillsOf(job);
   if (skills.length < 3) return null;
-  const hit = skills.filter((k) => resumeHay.includes(` ${k} `));
-  return { pct: Math.round((hit.length / skills.length) * 100), hit, of: skills.length };
+  const hit = skills.filter((k) => resumeNames(resumeHay, k));
+  return { pct: Math.round((hit.length / skills.length) * 100), hit, of: skills.length, ai: false };
+}
+
+/**
+ * What the last ranking actually managed, counted over the WHOLE board.
+ *
+ * This is the number the old build never showed, and not showing it is what
+ * made the feature look broken: a card scoring a genuine 0% draws no fit line,
+ * so "we scored it and you match none of it" and "we never scored it" were
+ * indistinguishable. Measured on the live boards for a resume outside
+ * engineering, 3 of 399 India roles drew anything at all — a reader saw the
+ * board reorder, a toast saying it had worked, and essentially no numbers.
+ */
+let covCache = null;
+
+function rankCoverage() {
+  if (!resumeHay && !aiScores.size) return null;
+
+  /* MEMOISED, AND THAT IS NOT AN OPTIMISATION — IT IS THE FIX FOR A REGRESSION
+     THIS FUNCTION CAUSED. It walks the WHOLE board, and renderList() runs on
+     every keystroke in the search box: measured on the 3,884-role US board with
+     a resume loaded, a render went to 360-440 ms, which is the same per-render
+     cost §15 windowed the list to remove in the first place.
+
+     Nothing here depends on the filter or the window — only on the resume, the
+     AI scores, the tab and the job set, all four of which are REPLACED rather
+     than mutated, so identity is a sound key. */
+  if (covCache
+    && covCache.hay === resumeHay
+    && covCache.ai === aiScores
+    && covCache.kind === state.kind
+    && covCache.jobs === state.jobs) return covCache.value;
+
+  let shown = 0, silent = 0, unscorable = 0;
+  for (const job of state.jobs) {
+    if (kindOf(job) !== state.kind) continue;
+    const fit = matchFor(job);
+    if (!fit) unscorable += 1;
+    else if (fit.ai || fit.hit.length) shown += 1;
+    else silent += 1;
+  }
+  const value = { shown, silent, unscorable, total: shown + silent + unscorable };
+  covCache = { hay: resumeHay, ai: aiScores, kind: state.kind, jobs: state.jobs, value };
+  return value;
 }
 
 /**
@@ -987,10 +1095,17 @@ function jobCard(job, index, group = [job], seen = false) {
      it is a strong signal but it is OURS, not the employer's, and it must not
      be mistaken for something the posting said. */
   const fit = matchFor(job);
-  if (fit && fit.hit.length) {
-    const m = el('div', `match${fit.pct >= 60 ? ' is-strong' : ''}`);
+  /* A genuine 0% still draws nothing HERE — 327 cards each reading "0% match"
+     is noise, not information. The honest count of what was and was not scored
+     is said once, in the summary bar at the top of the list. */
+  if (fit && (fit.ai || fit.hit.length)) {
+    const m = el('div', `match${fit.pct >= 60 ? ' is-strong' : ''}${fit.ai ? ' is-ai' : ''}`);
     m.append(el('b', null, `${fit.pct}% match`));
-    m.append(el('span', null, `${fit.hit.length} of ${fit.of} skills`));
+    // An AI score carries its own reason; a local one can only say how much of
+    // the posting's own skill list the resume named.
+    m.append(el('span', null, fit.ai
+      ? (fit.why || 'judged against the posting')
+      : `${fit.hit.length} of ${fit.of} skills`));
     mid.append(m);
   }
 
@@ -1001,7 +1116,7 @@ function jobCard(job, index, group = [job], seen = false) {
       const chip = el('span', 'skill', s);
       // A skill the loaded resume already names is lit, so the chips stop being
       // uniform decoration and become a reason to look at one card over another.
-      if (resumeHay && resumeHay.includes(` ${normSkill(s)} `)) chip.classList.add('has');
+      if (resumeHay && resumeNames(resumeHay, s)) chip.classList.add('has');
       box.append(chip);
     }
     mid.append(box);
@@ -1292,6 +1407,40 @@ function renderList() {
   const otherNew = newSinceByKind(state.jobs, state.since)[other];
 
   const frag = document.createDocumentFragment();
+
+  /* DID THE RANKING ACTUALLY DO ANYTHING? Said once, plainly, because the cards
+     cannot say it: a role scoring a genuine 0% draws no fit line, so without
+     this a reader whose resume matches little sees a reordered board, no
+     numbers at all and a toast claiming success. Measured on the live boards,
+     a resume from outside engineering drew a fit line on 3 of 399 India roles
+     and 0 of 124 UK ones — which is exactly how this feature came to be
+     reported as not working. */
+  const cov = rankCoverage();
+  if (cov && cov.total) {
+    const bar = el('li', 'rank-bar');
+    bar.setAttribute('role', 'status');
+    if (aiScores.size) {
+      bar.append(el('b', null, `${aiScores.size} roles read by AI`));
+      bar.append(el('span', null, ' · scored against your resume, with a reason on each card'));
+    } else if (cov.shown === 0) {
+      bar.append(el('b', null, 'Nothing here matched your resume'));
+      bar.append(el('span', null, ` — none of these ${cov.total} roles names a skill it mentions. This board is engineering-only, so a resume from another field will score low on word overlap.`));
+    } else {
+      bar.append(el('b', null, `${cov.shown} of ${cov.total} roles matched`));
+      const tail = [];
+      if (cov.silent) tail.push(`${cov.silent} matched none of your skills`);
+      if (cov.unscorable) tail.push(`${cov.unscorable} named too few skills to judge`);
+      bar.append(el('span', null, tail.length ? ` · ${tail.join(' · ')}` : ' · ranked against your resume'));
+    }
+    if (!aiScores.size) {
+      const go = el('button', 'rank-ai', `Read the top ${RANK_BATCH} with AI →`);
+      go.type = 'button';
+      go.addEventListener('click', startAiRank);
+      bar.append(go);
+    }
+    frag.append(bar);
+  }
+
   if (split.n > 0 || otherNew > 0) {
     const bar = el('li', 'since-bar');
     bar.setAttribute('role', 'presentation');
@@ -1700,17 +1849,37 @@ async function runTailor() {
     return;
   }
 
-  /* RANK MODE RETURNS BEFORE THE API CALL. There is no role to rewrite
-     against, and the board is already scored by this point — the upload and
-     paste handlers call syncRelevance() themselves — so all that is left is to
-     sort by fit and get out of the way. Sending this to /api/tailor would cost
-     twenty seconds and a Gemini round trip to produce nothing. */
+  /* RANK MODE NEEDS NO KEY AND NO NETWORK. There is no role to rewrite
+     against; all that is left is to score the board locally and sort by fit.
+     That stays free and instant for everyone, with or without an API key.
+     TWO ORDERING BUGS LIVED IN THESE FOUR LINES.
+     1. It called setResumeHay(resumeText) from the LOCAL variable and then
+        syncRelevance(), which re-reads state.resumeText — so whenever the two
+        disagreed the haystack was wiped a line after being set and the board
+        ranked against nothing while the toast said it had worked. state is the
+        single source of truth now.
+     2. It set f-sort to "match" BEFORE syncRelevance() created that option.
+        Assigning a <select>.value to a value with no matching <option> is a
+        silent no-op — the select keeps "new" and the board stays in date
+        order. It only appeared to work because the upload handler happened to
+        call syncRelevance() first. */
   if (!activeJob) {
-    setResumeHay(resumeText);
-    $('f-sort').value = 'match';
-    syncRelevance();
+    state.resumeText = resumeText;
+    syncRelevance();               // creates the "best for me" option
+    $('f-sort').value = 'match';   // only now can this take
+    applyFilters();
     closeTailor();
-    toast('Board ranked against your resume.');
+    const cov = rankCoverage();
+    toast(cov && cov.shown === 0
+      ? 'Ranked — but nothing here matched your resume.'
+      : `Ranked ${cov?.shown ?? 0} of ${cov?.total ?? 0} roles against your resume.`);
+    return;
+  }
+
+  if (!hasKey()) {
+    $('error-text').textContent = 'Tailoring needs your own Google AI key. Add one in the "AI features" panel — it stays in this browser.';
+    showStep('error');
+    openKeyBox();
     return;
   }
 
@@ -1723,16 +1892,14 @@ async function runTailor() {
   }, 4200);
 
   try {
-    const res = await fetch('/api/tailor', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ resumeText, job: activeJob }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || 'The service is unavailable right now.');
+    /* STRAIGHT TO GOOGLE FROM THIS BROWSER, on the reader's own key. Nothing is
+       posted to interndoor.com at all, so neither the key nor the resume ever
+       reaches a server of ours to be logged, rate-limited or leaked — which is
+       a stronger promise than the one the footer already makes. */
+    const tailored = await tailorWithAI({ key: getKey(), resumeText, job: activeJob });
 
-    state.tailored = data.tailored;
-    renderTailored(data.tailored);
+    state.tailored = tailored;
+    renderTailored(tailored);
     showStep('result');
     toast('resume tailored');
   } catch (err) {
@@ -1740,6 +1907,99 @@ async function runTailor() {
     showStep('error');
   } finally {
     clearInterval(tick);
+  }
+}
+
+/* ---------------- AI ranking, on the reader's own key ----------------
+ *
+ * The local ranker scores the WHOLE board on skill overlap, free, offline and
+ * instantly, and that stays the no-key path. This re-reads only the best
+ * RANK_BATCH of what the reader is actually looking at, in ONE request, and
+ * replaces those scores with a judgement that read the posting rather than
+ * counting word overlap.
+ *
+ * WHY A SHORTLIST. The US board is 3,884 roles. Sending them all would be slow
+ * and would spend the reader's own money to re-derive an order the local pass
+ * has already got roughly right; what the model is for is fixing the order at
+ * the top, and scoring roles whose skill list was too thin to judge. When every
+ * local score ties — which is what a resume from outside engineering produces —
+ * the shortlist falls back to the newest 40, which is the honest default.
+ */
+
+let rankInFlight = null;
+
+async function startAiRank() {
+  const resumeText = state.resumeText || $('resume-paste').value.trim();
+  if (resumeText.trim().length < 200) { openTailor(null); return; }
+  if (!hasKey()) {
+    openTailor(null);
+    openKeyBox();
+    toast('Add your own Google AI key to rank with AI.');
+    return;
+  }
+
+  rankInFlight?.abort();
+  const ctl = new AbortController();
+  rankInFlight = ctl;
+
+  const btn = document.querySelector('.rank-ai');
+  const reset = () => { if (btn) { btn.disabled = false; btn.textContent = `Read the top ${RANK_BATCH} with AI →`; } };
+  if (btn) { btn.disabled = true; btn.textContent = 'Reading the postings…'; }
+
+  try {
+    const pool = state.filtered.length
+      ? state.filtered
+      : state.jobs.filter((j) => kindOf(j) === state.kind);
+    const picked = shortlist(pool, (j) => matchFor(j)?.pct ?? null, RANK_BATCH);
+    const scores = await rankWithAI({ key: getKey(), resumeText, jobs: picked, signal: ctl.signal });
+    if (ctl.signal.aborted) return;
+    if (!scores.size) {
+      toast('The AI returned no usable scores — the skill ranking is unchanged.');
+      reset();
+      return;
+    }
+    aiScores = scores;
+    resetMatchCache();
+    $('f-sort').value = 'match';
+    applyFilters();               // redraws the bar, which now hides the button
+    toast(`${scores.size} roles read and scored by AI.`);
+  } catch (err) {
+    if (ctl.signal.aborted) return;
+    toast(err.message || 'That did not work.');
+    reset();
+  } finally {
+    if (rankInFlight === ctl) rankInFlight = null;
+  }
+}
+
+/* ---------------- the key panel ----------------
+ *
+ * THE STORED KEY IS NEVER RENDERED BACK INTO THE INPUT. Putting it on screen
+ * would leak it into any screenshot or screen share, and there is no reason a
+ * reader needs to re-read a key they already saved — the same care §12 records
+ * after the owner token was printed by a page and had to be rotated.
+ */
+
+function openKeyBox() {
+  const box = $('keybox');
+  if (box) { box.open = true; box.scrollIntoView({ block: 'nearest' }); }
+  $('ai-key')?.focus();
+}
+
+function syncKeyUi() {
+  const have = hasKey();
+  const label = $('key-state');
+  if (label) {
+    label.textContent = have
+      ? 'AI features — key saved in this browser'
+      : 'AI features — no key yet (ranking by skills still works)';
+  }
+  const forget = $('forget-key');
+  if (forget) forget.hidden = !have;
+  const input = $('ai-key');
+  if (input) {
+    input.value = '';
+    input.placeholder = have ? 'saved — paste a new key to replace it' : 'AIza…';
   }
 }
 
@@ -1920,6 +2180,26 @@ function wireTailor() {
      board" entry point, so openTailor is given null and the modal's per-role
      framing falls back to the generic one. */
   $('rank-resume')?.addEventListener('click', () => openTailor(null));
+
+  $('save-key')?.addEventListener('click', () => {
+    const input = $('ai-key');
+    const v = input.value.trim();
+    if (!v) { toast('Paste a key first.'); return; }
+    // Shape only. Whether it WORKS is settled by using it — §13's rule that a
+    // configured credential is checked by using it, not by inspecting it.
+    if (!looksLikeKey(v)) { toast('That does not look like a Google AI Studio key — they begin with AIza.'); return; }
+    if (!setKey(v)) { toast('This browser refused to store the key — a private window blocks it.'); return; }
+    syncKeyUi();
+    toast('Key saved in this browser only.');
+  });
+
+  $('forget-key')?.addEventListener('click', () => {
+    forgetKey();
+    syncKeyUi();
+    toast('Key forgotten.');
+  });
+
+  syncKeyUi();
 
   $('do-tailor').addEventListener('click', runTailor);
   $('error-retry').addEventListener('click', () => showStep('upload'));
