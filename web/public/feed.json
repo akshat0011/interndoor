@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
+      "url": "https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169",
+      "title": "Junior AI-Assisted Automation Scripting Associate (Apprentice) — Arista Networks",
+      "content_text": "Company: Arista Networks · Location: Pune, in",
+      "date_published": "2026-09-23T06:59:03.783Z",
+      "authors": [
+        {
+          "name": "Arista Networks"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/silicon-labs-intern-ic-design-4468985080",
       "url": "https://interndoor.com/jobs/silicon-labs-intern-ic-design-4468985080",
       "title": "Intern - IC Design — Silicon Labs",
@@ -38,6 +50,18 @@
       "authors": [
         {
           "name": "Gap Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/automation-anywhere-software-engineering-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1504",
+      "url": "https://interndoor.com/jobs/automation-anywhere-software-engineering-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1504",
+      "title": "Software Engineering Intern — Automation Anywhere",
+      "content_text": "Company: Automation Anywhere · Location: Bengaluru, India · Duration: 6 months\n• Write automated tests for web apps, chatbots, and APIs using AI tools\n• Work with developers to find and fix bugs in code\n• Learn CI/CD practices and contribute to testing frameworks",
+      "date_published": "2026-09-23T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Automation Anywhere"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651",
-      "url": "https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651",
-      "title": "Endpoint & OT Client Platform Engineer — Festo",
-      "content_text": "Company: Festo · Location: Bengaluru, Karnataka, India\n• Support endpoint management systems for IT and OT devices\n• Script automation workflows with PowerShell, C#, Ansible, Terraform\n• Operate backup platforms, DHCP services, and network infrastructure\n• Collaborate in Agile teams with cross-functional IT/OT stakeholders",
-      "date_published": "2026-09-22T10:14:44.893Z",
-      "authors": [
-        {
-          "name": "Festo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935",
-      "url": "https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935",
-      "title": "Quality Automation Specialist — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Design and implement automated tests for quality assurance\n• Work with agile teams and ci/cd pipelines\n• Collaborate across domains to build reusable test frameworks",
-      "date_published": "2026-09-22T09:33:39.406Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
         }
       ]
     }
