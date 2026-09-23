@@ -6,7 +6,14 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 03:48:20 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 06:59:03 GMT</lastBuildDate>
+  <item>
+    <title>Junior AI-Assisted Automation Scripting Associate (Apprentice) — Arista Networks</title>
+    <link>https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/arista-networks-junior-ai-assisted-automation-scripting-associate-apprentice-ats-smartrecruiters-aristanetworks-744000151304169</guid>
+    <pubDate>Wed, 23 Sep 2026 06:59:03 GMT</pubDate>
+    <description>Company: Arista Networks · Location: Pune, in</description>
+  </item>
   <item>
     <title>Intern - IC Design — Silicon Labs</title>
     <link>https://interndoor.com/jobs/silicon-labs-intern-ic-design-4468985080</link>
@@ -33,6 +40,16 @@
 • Design scalable tech solutions using agile practices
 • Work with product managers and security teams on production issues
 • Lead development through design to deployment with core programming languages</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern — Automation Anywhere</title>
+    <link>https://interndoor.com/jobs/automation-anywhere-software-engineering-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1504</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/automation-anywhere-software-engineering-intern-ats-workday-automationanywhere-wd5-automationanywherejobs-jr1504</guid>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Automation Anywhere · Location: Bengaluru, India · Duration: 6 months
+• Write automated tests for web apps, chatbots, and APIs using AI tools
+• Work with developers to find and fix bugs in code
+• Learn CI/CD practices and contribute to testing frameworks</description>
   </item>
   <item>
     <title>Rave Custom Function Programmer — IQVIA</title>
@@ -486,27 +503,6 @@
 • Design and develop IAM solutions using SailPoint IIQ and ISC platforms
 • Build connectors for SAP, AD, LDAP, and cloud apps with Java and APIs
 • Collaborate with security and business teams on identity lifecycle processes</description>
-  </item>
-  <item>
-    <title>Endpoint &amp; OT Client Platform Engineer — Festo</title>
-    <link>https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/festo-endpoint-and-ot-client-platform-engineer-4468569651</guid>
-    <pubDate>Tue, 22 Sep 2026 10:14:44 GMT</pubDate>
-    <description>Company: Festo · Location: Bengaluru, Karnataka, India
-• Support endpoint management systems for IT and OT devices
-• Script automation workflows with PowerShell, C#, Ansible, Terraform
-• Operate backup platforms, DHCP services, and network infrastructure
-• Collaborate in Agile teams with cross-functional IT/OT stakeholders</description>
-  </item>
-  <item>
-    <title>Quality Automation Specialist — NatWest Group</title>
-    <link>https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/natwest-group-quality-automation-specialist-4470285935</guid>
-    <pubDate>Tue, 22 Sep 2026 09:33:39 GMT</pubDate>
-    <description>Company: NatWest Group · Location: Chennai, Tamil Nadu, India
-• Design and implement automated tests for quality assurance
-• Work with agile teams and ci/cd pipelines
-• Collaborate across domains to build reusable test frameworks</description>
   </item>
 </channel>
 </rss>
