@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-summer-2027-ats-greenhouse-astranis-4716088006",
+      "url": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-summer-2027-ats-greenhouse-astranis-4716088006",
+      "title": "Software Defined Radio Hardware Intern (Summer 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Summer 2027\n• Design, simulate, and test software defined radio hardware for satellites\n• Work with advanced lab equipment and integrate systems into spacecraft\n• Write code to automate testing and evaluate hardware performance",
+      "date_published": "2026-09-23T22:52:17.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-winter-2027-ats-greenhouse-astranis-4716087006",
+      "url": "https://interndoor.com/us/jobs/astranis-software-defined-radio-hardware-intern-winter-2027-ats-greenhouse-astranis-4716087006",
+      "title": "Software Defined Radio Hardware Intern (Winter 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Design, simulate, and test software defined radio hardware for satellites\n• Work with advanced lab equipment and integrate systems into spacecraft\n• Write code to automate testing and evaluate hardware performance",
+      "date_published": "2026-09-23T22:52:15.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-electrical-engineering-intern-4471150054",
       "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-electrical-engineering-intern-4471150054",
       "title": "Electrical Engineering Intern — Hewlett Packard Enterprise",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Panther Life Sciences"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-back-end-developer-intern-2027-dallas-4459554690",
-      "url": "https://interndoor.com/us/jobs/ibm-back-end-developer-intern-2027-dallas-4459554690",
-      "title": "Back End Developer Intern 2027 - Dallas — IBM",
-      "content_text": "Company: IBM · Location: Dallas, TX\n• Build scalable server applications and databases using REST APIs\n• Work with cloud devOps and IaaS/PaaS/SaaS platforms\n• Collaborate on large-scale systems for continuous delivery",
-      "date_published": "2026-09-23T16:09:57.819Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-rochester-mn-4459565493",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-developer-intern-2027-rochester-mn-4459565493",
-      "title": "Hardware Developer Intern 2027 -Rochester, MN — IBM",
-      "content_text": "Company: IBM · Location: Rochester, MN\n• Design, test, and support hardware, firmware, and semiconductors for IBM products\n• Work with RTL, Verilog, SPICE, and CAD tools for microprocessor and system design\n• Collaborate on thermal, power, and signal integrity analysis for cutting-edge hardware",
-      "date_published": "2026-09-23T16:03:21.325Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
