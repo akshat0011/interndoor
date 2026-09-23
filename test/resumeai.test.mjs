@@ -235,6 +235,53 @@ const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title:
 check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
 check('the resume is in the prompt', prompt.includes('RESUME'), true);
 
+console.log('\n== a transient 5xx is retried; a 4xx never is ==');
+{
+  const keep = globalThis.fetch;
+  const okBody = { candidates: [{ content: { parts: [{ text: '{"scores":[{"i":0,"fit":70,"why":"x"}]}' }] } }] };
+  const jobs = [{ id: 'a' }];
+
+  // Google 503'd on four of seven consecutive calls while this was measured.
+  let calls = 0; const attempts = [];
+  globalThis.fetch = async () => {
+    calls += 1;
+    return calls < 3
+      ? { ok: false, status: 503, json: async () => ({}) }
+      : { ok: true, status: 200, json: async () => okBody };
+  };
+  let out = await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs,
+    onAttempt: (n) => attempts.push(n) });
+  check('a 503 is retried until it succeeds', out.get('a')?.fit, 70);
+  check('and it took three attempts', calls, 3);
+  check('the caller is told about each retry', attempts, [2, 3]);
+
+  // Retrying a bad key or a spent quota buys nothing and costs the reader time.
+  calls = 0;
+  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 400, json: async () => ({}) }; };
+  let msg = '';
+  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); }
+  catch (e) { msg = e.message; }
+  check('a 400 is NOT retried', calls, 1);
+  check('and still explains itself', /rejected that API key/.test(msg), true);
+
+  calls = 0;
+  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 429, json: async () => ({}) }; };
+  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); } catch { /* expected */ }
+  check('a 429 is NOT retried', calls, 1);
+
+  // A 5xx that never clears must give up rather than loop.
+  calls = 0;
+  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 500, json: async () => ({}) }; };
+  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); } catch { /* expected */ }
+  check('retries are bounded', calls, 3);
+
+  globalThis.fetch = keep;
+}
+
+console.log('\n== the shortlist is sized for the wait, not for coverage ==');
+// 25 roles measured 16-25s against ~34s for 40, for the same single request.
+check('RANK_BATCH is 25', RANK_BATCH, 25);
+
 console.log('\n== the output budget must survive the model thinking ==');
 /* Measured against a real key on a real 40-role shortlist: 4,000 tokens went
    entirely on reasoning (3,839) and returned 146 tokens of truncated JSON —

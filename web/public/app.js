@@ -1944,14 +1944,36 @@ async function startAiRank() {
 
   const btn = document.querySelector('.rank-ai');
   const reset = () => { if (btn) { btn.disabled = false; btn.textContent = `Read the top ${RANK_BATCH} with AI →`; } };
-  if (btn) { btn.disabled = true; btn.textContent = 'Reading the postings…'; }
+
+  /* ELAPSED SECONDS, NOT A FAKE PROGRESS BAR. This is ONE request and Google
+     streams nothing back, so there is no completion fraction to report and
+     inventing one would be a lie the reader can time. Measured at 16-25s for
+     25 roles, so a still button reads as broken well before it is; a counter
+     that is visibly moving reads as working. */
+  let elapsed = 0;
+  let attempt = 1;
+  const label = () => {
+    if (!btn) return;
+    const wait = attempt > 1 ? ` · retry ${attempt}` : '';
+    btn.textContent = `Reading ${RANK_BATCH} postings… ${elapsed}s${wait}`;
+  };
+  if (btn) { btn.disabled = true; }
+  label();
+  const tick = setInterval(() => { elapsed += 1; label(); }, 1000);
 
   try {
     const pool = state.filtered.length
       ? state.filtered
       : state.jobs.filter((j) => kindOf(j) === state.kind);
     const picked = shortlist(pool, (j) => matchFor(j)?.pct ?? null, RANK_BATCH);
-    const scores = await rankWithAI({ key: getKey(), resumeText, jobs: picked, signal: ctl.signal });
+    const scores = await rankWithAI({
+      key: getKey(),
+      resumeText,
+      jobs: picked,
+      signal: ctl.signal,
+      // Google 503s often enough that a silent retry looks like a hang.
+      onAttempt: (n) => { attempt = n; label(); },
+    });
     if (ctl.signal.aborted) return;
     if (!scores.size) {
       toast('The AI returned no usable scores — the skill ranking is unchanged.');
@@ -1968,6 +1990,7 @@ async function startAiRank() {
     toast(err.message || 'That did not work.');
     reset();
   } finally {
+    clearInterval(tick);
     if (rankInFlight === ctl) rankInFlight = null;
   }
 }
