@@ -1,15 +1,16 @@
 {
- "generatedAt": 1790157541429,
+ "generatedAt": 1790164665958,
  "region": "GB",
  "regionName": "United Kingdom",
- "count": 124,
- "techCount": 124,
+ "count": 125,
+ "techCount": 125,
  "otherCount": 0,
  "companies": [
   "AECOM",
   "Amazon",
   "American Express",
   "Anduril Industries",
+  "Anthropic",
   "Baker Hughes",
   "Barclays",
   "Boeing",
@@ -89,6 +90,48 @@
   "Yeovil, Somerset, United Kingdom"
  ],
  "jobs": [
+  {
+   "id": "ats:greenhouse:anthropic:5425724008",
+   "title": "Associate Applied AI, Rotational Program, London",
+   "company": "Anthropic",
+   "matchedWatchlist": "Anthropic",
+   "isTech": true,
+   "roleSource": "ats-greenhouse",
+   "employmentType": "fulltime",
+   "logo": "/logos/anthropic.png",
+   "location": "London, UK",
+   "workplaceType": null,
+   "stipend": "£1,15,000 / year",
+   "duration": "0-2 years",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "javascript",
+    "typescript",
+    "llm"
+   ],
+   "summary": "We're looking for an Associate to join our Applied AI team in a rotational program designed to develop the next generation of technical leaders in AI. Over 6 months, you'll work across a variety of Applied AI segments and functions, gaining exposure to enterprise sales cycles, product development, and technical architecture while building solutions that directly impact how our customers deploy Claude. As an Associate, you'll be a technical builder first: developing agents, creating Skills, designing internal assets, and working hands-on with Claude's SDK and API. You'll collaborate closely with Solutions…",
+   "bullets": [],
+   "roleLabel": null,
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "paid",
+   "postedText": null,
+   "postedAt": 1790158433000,
+   "firstSeenAt": 1790162486583,
+   "lastSeenAt": 1790162486583,
+   "url": "https://job-boards.greenhouse.io/anthropic/jobs/5425724008",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5425724008",
+   "description": null,
+   "roleFingerprint": "a8e2e91d2f",
+   "cardFacts": [
+    "£115,000 / year",
+    "London"
+   ],
+   "region": "GB"
+  },
   {
    "id": "ats:greenhouse:trustpilot:8223303",
    "title": "Software Engineer I",
@@ -180,7 +223,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151033650",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151033650",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Edinburgh"
    ],
@@ -216,7 +259,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151033789",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151033789",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Cardiff"
    ],
@@ -252,7 +295,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151033579",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151033579",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Basingstoke"
    ],
@@ -288,7 +331,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151033359",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151033359",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "London"
    ],
@@ -324,7 +367,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151030315",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151030315",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Croydon"
    ],
@@ -360,7 +403,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151027214",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151027214",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Bristol"
    ],
@@ -396,7 +439,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000151032349",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000151032349",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ec15f5e71a",
    "cardFacts": [
     "Exeter"
    ],
@@ -493,7 +536,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150974479",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150974479",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "47f88e1895",
    "cardFacts": [
     "Nottingham",
     "Summer 2027"
@@ -530,7 +573,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150964949",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150964949",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "e42cb45ac5",
    "cardFacts": [
     "Cambridge"
    ],
@@ -566,7 +609,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150964739",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150964739",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "e42cb45ac5",
    "cardFacts": [
     "St Albans"
    ],
@@ -587,7 +630,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -602,7 +647,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150692025",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150692025",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "21f85b076f",
    "cardFacts": [
     "Leeds"
    ],
@@ -623,7 +668,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -638,7 +685,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150696111",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150696111",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "21f85b076f",
    "cardFacts": [
     "Croydon"
    ],
@@ -659,7 +706,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -674,7 +723,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150696380",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150696380",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "21f85b076f",
    "cardFacts": [
     "Birmingham"
    ],
@@ -778,7 +827,7 @@
    "postedText": null,
    "postedAt": 1789929000000,
    "firstSeenAt": 1790002864451,
-   "lastSeenAt": 1790155735732,
+   "lastSeenAt": 1790162492576,
    "url": "https://www.amazon.jobs/en/jobs/10554586/2027-software-dev-engineer-intern-united-kingdom",
    "applyUrl": "https://www.amazon.jobs/en/jobs/10554586/2027-software-dev-engineer-intern-united-kingdom",
    "description": null,
@@ -876,7 +925,7 @@
    "postedText": null,
    "postedAt": 1789747932000,
    "firstSeenAt": 1789748392116,
-   "lastSeenAt": 1790155798226,
+   "lastSeenAt": 1790162557915,
    "url": "https://careers.withwaymo.com/jobs?gh_jid=8205680",
    "applyUrl": "https://careers.withwaymo.com/jobs?gh_jid=8205680",
    "description": null,
@@ -902,7 +951,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -917,7 +968,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150392685",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150392685",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "14e3ff5132",
    "cardFacts": [
     "Edinburgh"
    ],
@@ -953,7 +1004,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150331849",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150331849",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "ca84725406",
    "cardFacts": [
     "Nottingham"
    ],
@@ -974,7 +1025,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -989,7 +1042,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150316229",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150316229",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "547919d996",
    "cardFacts": [
     "Edinburgh"
    ],
@@ -1035,7 +1088,7 @@
    "postedText": null,
    "postedAt": 1789669300000,
    "firstSeenAt": 1789670995958,
-   "lastSeenAt": 1790155798223,
+   "lastSeenAt": 1790162557913,
    "url": "https://careers.withwaymo.com/jobs?gh_jid=8208465",
    "applyUrl": "https://careers.withwaymo.com/jobs?gh_jid=8208465",
    "description": null,
@@ -1088,7 +1141,7 @@
    "postedText": null,
    "postedAt": 1789659921000,
    "firstSeenAt": 1789660165711,
-   "lastSeenAt": 1790155763077,
+   "lastSeenAt": 1790162521725,
    "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4978934101",
    "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4978934101",
    "description": null,
@@ -1114,7 +1167,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1129,7 +1184,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000150119909",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150119909",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "b63dbf9725",
    "cardFacts": [
     "Swindon"
    ],
@@ -1150,7 +1205,20 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "python",
+    "linux",
+    "git",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "asic",
+    "dft",
+    "physical design",
+    "tcl",
+    "perl"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1165,7 +1233,7 @@
    "url": "https://jobs.smartrecruiters.com/renesaselectronics/744000150054935",
    "applyUrl": "https://jobs.smartrecruiters.com/renesaselectronics/744000150054935",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "01e6ba9f90",
    "cardFacts": [
     "Edinburgh"
    ],
@@ -1207,7 +1275,7 @@
    "postedText": null,
    "postedAt": 1789593186138,
    "firstSeenAt": 1789594968466,
-   "lastSeenAt": 1790155796028,
+   "lastSeenAt": 1790162557288,
    "url": "https://jobs.ashbyhq.com/voleon/ef2b0892-1772-4240-a535-4043d66d848e",
    "applyUrl": "https://jobs.ashbyhq.com/voleon/ef2b0892-1772-4240-a535-4043d66d848e",
    "description": null,
@@ -1233,7 +1301,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1248,7 +1318,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149850772",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149850772",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "3a2029843e",
    "cardFacts": [
     "St Albans"
    ],
@@ -1440,7 +1510,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149665099",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149665099",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Leeds"
    ],
@@ -1476,7 +1546,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149609189",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149609189",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "58a024ad5e",
    "cardFacts": [
     "Birmingham"
    ],
@@ -1512,7 +1582,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149605594",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149605594",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "731c4c9ca8",
    "cardFacts": [
     "Cardiff"
    ],
@@ -1533,7 +1603,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1548,7 +1620,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149608119",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149608119",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "5fb1d079a6",
    "cardFacts": [
     "Bristol"
    ],
@@ -1569,7 +1641,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1584,7 +1658,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149604854",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149604854",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "5fb1d079a6",
    "cardFacts": [
     "Cardiff"
    ],
@@ -1605,7 +1679,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1620,7 +1696,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149576989",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149576989",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "aece9d8e56",
    "cardFacts": [
     "Chesterfield"
    ],
@@ -1641,7 +1717,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1656,7 +1734,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149576079",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149576079",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "aece9d8e56",
    "cardFacts": [
     "Croydon"
    ],
@@ -1709,7 +1787,7 @@
    "postedText": null,
    "postedAt": 1789460861586,
    "firstSeenAt": 1789748359634,
-   "lastSeenAt": 1790155759053,
+   "lastSeenAt": 1790162518866,
    "url": "https://jobs.ashbyhq.com/lendable/4479f8fd-0910-48f5-9525-62e55bef2edc",
    "applyUrl": "https://jobs.ashbyhq.com/lendable/4479f8fd-0910-48f5-9525-62e55bef2edc",
    "description": null,
@@ -1781,7 +1859,9 @@
    "duration": "12-24 months",
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "system design"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1796,7 +1876,7 @@
    "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149406442",
    "applyUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000149406442",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "4e86fe6438",
    "cardFacts": [
     "Birmingham",
     "12-24 months"
@@ -1844,7 +1924,7 @@
    "postedText": null,
    "postedAt": 1789407384000,
    "firstSeenAt": 1789407515595,
-   "lastSeenAt": 1790155746309,
+   "lastSeenAt": 1790162503585,
    "url": "https://boards.greenhouse.io/figma/jobs/6152695004?gh_jid=6152695004",
    "applyUrl": "https://boards.greenhouse.io/figma/jobs/6152695004?gh_jid=6152695004",
    "description": null,
@@ -1885,7 +1965,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149391210",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149391210",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "880e92ace9",
    "cardFacts": [
     "London"
    ],
@@ -1921,7 +2001,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149393499",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149393499",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "880e92ace9",
    "cardFacts": [
     "Chesterfield"
    ],
@@ -1942,7 +2022,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1957,7 +2039,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149388040",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149388040",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "46966c1f98",
    "cardFacts": [
     "Swindon"
    ],
@@ -1978,7 +2060,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -1993,7 +2077,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149387924",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149387924",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "46966c1f98",
    "cardFacts": [
     "Croydon"
    ],
@@ -2014,7 +2098,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -2029,7 +2115,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149388379",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149388379",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "46966c1f98",
    "cardFacts": [
     "Glasgow"
    ],
@@ -2065,7 +2151,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149364355",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149364355",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Belfast"
    ],
@@ -2101,7 +2187,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149364741",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149364741",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Edinburgh"
    ],
@@ -2137,7 +2223,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149361184",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149361184",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Glasgow"
    ],
@@ -2173,7 +2259,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149366611",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149366611",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Chesterfield"
    ],
@@ -2209,7 +2295,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149367039",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149367039",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Newcastle upon Tyne"
    ],
@@ -2245,7 +2331,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149366419",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149366419",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Birmingham"
    ],
@@ -2281,7 +2367,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149364395",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149364395",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Bristol"
    ],
@@ -2317,7 +2403,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149365345",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149365345",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "Basingstoke"
    ],
@@ -2353,7 +2439,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149365918",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149365918",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "St Albans"
    ],
@@ -2389,7 +2475,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000149365319",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149365319",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "f799b5af6a",
    "cardFacts": [
     "London"
    ],
@@ -2436,7 +2522,7 @@
    "postedText": null,
    "postedAt": 1789391541000,
    "firstSeenAt": 1789393155957,
-   "lastSeenAt": 1790155786102,
+   "lastSeenAt": 1790162548537,
    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4730846005",
    "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4730846005",
    "description": null,
@@ -2489,7 +2575,7 @@
    "postedText": null,
    "postedAt": 1789391480000,
    "firstSeenAt": 1789393155963,
-   "lastSeenAt": 1790155786104,
+   "lastSeenAt": 1790162548539,
    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4730862005",
    "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4730862005",
    "description": null,
@@ -2539,7 +2625,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789378710255,
-   "lastSeenAt": 1790155760052,
+   "lastSeenAt": 1790162518619,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013756",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013756",
    "description": null,
@@ -2586,7 +2672,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789378709324,
-   "lastSeenAt": 1790155755494,
+   "lastSeenAt": 1790162512792,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013769",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013769",
    "description": null,
@@ -2636,7 +2722,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789378708745,
-   "lastSeenAt": 1790155745085,
+   "lastSeenAt": 1790162501874,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013758",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013758",
    "description": null,
@@ -2683,7 +2769,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789378707893,
-   "lastSeenAt": 1790155744027,
+   "lastSeenAt": 1790162500309,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013761",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013761",
    "description": null,
@@ -2731,7 +2817,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789376944027,
-   "lastSeenAt": 1790155768372,
+   "lastSeenAt": 1790162529434,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013783",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013783",
    "description": null,
@@ -2779,7 +2865,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789376943128,
-   "lastSeenAt": 1790155767606,
+   "lastSeenAt": 1790162528497,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013782",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013782",
    "description": null,
@@ -2826,7 +2912,7 @@
    "postedText": null,
    "postedAt": 1789344000000,
    "firstSeenAt": 1789376910612,
-   "lastSeenAt": 1790155756071,
+   "lastSeenAt": 1790162513597,
    "url": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013771",
    "applyUrl": "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/26013771",
    "description": null,
@@ -2852,7 +2938,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -2867,7 +2955,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000148982659",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148982659",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "74a4e8620b",
    "cardFacts": [
     "Manchester"
    ],
@@ -2888,7 +2976,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -2903,7 +2993,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000148960901",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148960901",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "47438ad04d",
    "cardFacts": [
     "St Albans"
    ],
@@ -2924,7 +3014,9 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "excel"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -2939,7 +3031,7 @@
    "url": "https://jobs.smartrecruiters.com/AECOM2/744000148962219",
    "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148962219",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "47438ad04d",
    "cardFacts": [
     "London"
    ],
@@ -3267,7 +3359,7 @@
    "postedText": null,
    "postedAt": 1789043887000,
    "firstSeenAt": 1789045066247,
-   "lastSeenAt": 1790155786044,
+   "lastSeenAt": 1790162540201,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556991724",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556991724",
    "description": null,
@@ -3625,7 +3717,7 @@
    "postedText": null,
    "postedAt": 1788539594000,
    "firstSeenAt": 1788540091345,
-   "lastSeenAt": 1790155763080,
+   "lastSeenAt": 1790162521727,
    "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969143101",
    "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969143101",
    "description": null,
@@ -3671,7 +3763,7 @@
    "postedText": null,
    "postedAt": 1788537979000,
    "firstSeenAt": 1788538271172,
-   "lastSeenAt": 1790155763084,
+   "lastSeenAt": 1790162521729,
    "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969142101",
    "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969142101",
    "description": null,
@@ -3724,7 +3816,7 @@
    "postedText": null,
    "postedAt": 1788535474000,
    "firstSeenAt": 1788536457646,
-   "lastSeenAt": 1790155730874,
+   "lastSeenAt": 1790162488195,
    "url": "https://boards.greenhouse.io/andurilindustries/jobs/5211095007?gh_jid=5211095007",
    "applyUrl": "https://boards.greenhouse.io/andurilindustries/jobs/5211095007?gh_jid=5211095007",
    "description": null,
@@ -3875,7 +3967,7 @@
    "postedText": null,
    "postedAt": 1788339498000,
    "firstSeenAt": 1788339824458,
-   "lastSeenAt": 1790155730875,
+   "lastSeenAt": 1790162488196,
    "url": "https://boards.greenhouse.io/andurilindustries/jobs/5211077007?gh_jid=5211077007",
    "applyUrl": "https://boards.greenhouse.io/andurilindustries/jobs/5211077007?gh_jid=5211077007",
    "description": null,
@@ -3928,7 +4020,7 @@
    "postedText": null,
    "postedAt": 1788277515000,
    "firstSeenAt": 1788278665214,
-   "lastSeenAt": 1790155793900,
+   "lastSeenAt": 1790162554699,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8037824",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8037824",
    "description": null,
@@ -3979,7 +4071,7 @@
    "postedText": null,
    "postedAt": 1788277417000,
    "firstSeenAt": 1788278665217,
-   "lastSeenAt": 1790155793902,
+   "lastSeenAt": 1790162554700,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8037860",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8037860",
    "description": null,
@@ -4005,7 +4097,10 @@
    "duration": null,
    "applicants": null,
    "easyApply": false,
-   "skills": [],
+   "skills": [
+    "rtl",
+    "mixed signal"
+   ],
    "summary": null,
    "bullets": [],
    "roleLabel": null,
@@ -4020,7 +4115,7 @@
    "url": "https://jobs.smartrecruiters.com/renesaselectronics/744000146666220",
    "applyUrl": "https://jobs.smartrecruiters.com/renesaselectronics/744000146666220",
    "description": null,
-   "roleFingerprint": null,
+   "roleFingerprint": "962d471b45",
    "cardFacts": [
     "Swindon"
    ],
@@ -4067,7 +4162,7 @@
    "postedText": null,
    "postedAt": 1788215573000,
    "firstSeenAt": 1788216325404,
-   "lastSeenAt": 1790155789598,
+   "lastSeenAt": 1790162551705,
    "url": "https://stripe.com/jobs/search?gh_jid=8130930",
    "applyUrl": "https://stripe.com/jobs/search?gh_jid=8130930",
    "description": null,
@@ -4119,7 +4214,7 @@
    "postedText": null,
    "postedAt": 1788215438000,
    "firstSeenAt": 1788216325399,
-   "lastSeenAt": 1790155789590,
+   "lastSeenAt": 1790162551696,
    "url": "https://stripe.com/jobs/search?gh_jid=8130867",
    "applyUrl": "https://stripe.com/jobs/search?gh_jid=8130867",
    "description": null,
@@ -4164,7 +4259,7 @@
    "postedText": null,
    "postedAt": 1788161381774,
    "firstSeenAt": 1788162312405,
-   "lastSeenAt": 1790155779614,
+   "lastSeenAt": 1790162543845,
    "url": "https://jobs.lever.co/palantir/cadc0eb2-2703-43e4-8e4f-41edf5b071c6",
    "applyUrl": "https://jobs.lever.co/palantir/cadc0eb2-2703-43e4-8e4f-41edf5b071c6",
    "description": null,
@@ -4220,7 +4315,7 @@
    "postedText": null,
    "postedAt": 1787959751000,
    "firstSeenAt": 1787961146761,
-   "lastSeenAt": 1790155744414,
+   "lastSeenAt": 1790162501470,
    "url": "https://epicgames.com/careers/jobs/6163851004?gh_jid=6163851004",
    "applyUrl": "https://epicgames.com/careers/jobs/6163851004?gh_jid=6163851004",
    "description": null,
@@ -4264,7 +4359,7 @@
    "postedText": null,
    "postedAt": 1787929526220,
    "firstSeenAt": 1787930557037,
-   "lastSeenAt": 1790155759051,
+   "lastSeenAt": 1790162518864,
    "url": "https://jobs.ashbyhq.com/lendable/a0ed2d2c-1c24-4d53-8ab4-af7e7ac06e20",
    "applyUrl": "https://jobs.ashbyhq.com/lendable/a0ed2d2c-1c24-4d53-8ab4-af7e7ac06e20",
    "description": null,
@@ -4312,7 +4407,7 @@
    "postedText": null,
    "postedAt": 1787929337668,
    "firstSeenAt": 1787930557033,
-   "lastSeenAt": 1790155759048,
+   "lastSeenAt": 1790162518861,
    "url": "https://jobs.ashbyhq.com/lendable/e001dc0b-6e0f-46a7-95ba-38a3733db2f4",
    "applyUrl": "https://jobs.ashbyhq.com/lendable/e001dc0b-6e0f-46a7-95ba-38a3733db2f4",
    "description": null,
@@ -4421,7 +4516,7 @@
    "postedText": null,
    "postedAt": 1787702400000,
    "firstSeenAt": 1789748392723,
-   "lastSeenAt": 1790155798023,
+   "lastSeenAt": 1790162558696,
    "url": "https://apply.workable.com/j/0DF07ED386",
    "applyUrl": "https://apply.workable.com/j/0DF07ED386",
    "description": null,
@@ -4573,7 +4668,7 @@
    "postedText": null,
    "postedAt": 1787262387000,
    "firstSeenAt": 1787497052196,
-   "lastSeenAt": 1790155744400,
+   "lastSeenAt": 1790162501453,
    "url": "https://epicgames.com/careers/jobs/6147283004?gh_jid=6147283004",
    "applyUrl": "https://epicgames.com/careers/jobs/6147283004?gh_jid=6147283004",
    "description": null,
@@ -4621,7 +4716,7 @@
    "postedText": null,
    "postedAt": 1787150917000,
    "firstSeenAt": 1787502639105,
-   "lastSeenAt": 1790155757192,
+   "lastSeenAt": 1790162515908,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7215943",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7215943",
    "description": null,
@@ -4673,7 +4768,7 @@
    "postedText": null,
    "postedAt": 1787091653000,
    "firstSeenAt": 1787502639088,
-   "lastSeenAt": 1790155757178,
+   "lastSeenAt": 1790162515895,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7977132",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7977132",
    "description": null,
@@ -4727,7 +4822,7 @@
    "postedText": null,
    "postedAt": 1787091578000,
    "firstSeenAt": 1787502639077,
-   "lastSeenAt": 1790155757169,
+   "lastSeenAt": 1790162515887,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7976923",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7976923",
    "description": null,
@@ -4784,7 +4879,7 @@
    "postedText": null,
    "postedAt": 1786641217000,
    "firstSeenAt": 1787497052203,
-   "lastSeenAt": 1790155744410,
+   "lastSeenAt": 1790162501464,
    "url": "https://epicgames.com/careers/jobs/6138134004?gh_jid=6138134004",
    "applyUrl": "https://epicgames.com/careers/jobs/6138134004?gh_jid=6138134004",
    "description": null,
@@ -4838,7 +4933,7 @@
    "postedText": null,
    "postedAt": 1786539154000,
    "firstSeenAt": 1787497060772,
-   "lastSeenAt": 1790155793900,
+   "lastSeenAt": 1790162554698,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8113986",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8113986",
    "description": null,
@@ -4888,7 +4983,7 @@
    "postedText": null,
    "postedAt": 1786366400000,
    "firstSeenAt": 1787497059435,
-   "lastSeenAt": 1790155787805,
+   "lastSeenAt": 1790162550388,
    "url": "https://www.squarepoint-capital.com/open-opportunities?id=7231006&gh_jid=7231006",
    "applyUrl": "https://www.squarepoint-capital.com/open-opportunities?id=7231006&gh_jid=7231006",
    "description": null,
@@ -4933,7 +5028,7 @@
    "postedText": null,
    "postedAt": 1786165309000,
    "firstSeenAt": 1787502639099,
-   "lastSeenAt": 1790155757188,
+   "lastSeenAt": 1790162515904,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=8050801",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8050801",
    "description": null,
@@ -4984,7 +5079,7 @@
    "postedText": null,
    "postedAt": 1786165309000,
    "firstSeenAt": 1787502639091,
-   "lastSeenAt": 1790155757181,
+   "lastSeenAt": 1790162515897,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=8050796",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8050796",
    "description": null,
@@ -5032,7 +5127,7 @@
    "postedText": null,
    "postedAt": 1786165285000,
    "firstSeenAt": 1787502639080,
-   "lastSeenAt": 1790155757172,
+   "lastSeenAt": 1790162515889,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7217856",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7217856",
    "description": null,
@@ -5083,7 +5178,7 @@
    "postedText": null,
    "postedAt": 1786014040000,
    "firstSeenAt": 1789748384245,
-   "lastSeenAt": 1790155787808,
+   "lastSeenAt": 1790162550391,
    "url": "https://www.squarepoint-capital.com/open-opportunities?id=6034447&gh_jid=6034447",
    "applyUrl": "https://www.squarepoint-capital.com/open-opportunities?id=6034447&gh_jid=6034447",
    "description": null,
@@ -5134,7 +5229,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505722,
-   "lastSeenAt": 1790155757196,
+   "lastSeenAt": 1790162515912,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7974943",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7974943",
    "description": null,
@@ -5180,7 +5275,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505719,
-   "lastSeenAt": 1790155757195,
+   "lastSeenAt": 1790162515911,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=8000323",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8000323",
    "description": null,
@@ -5238,7 +5333,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505716,
-   "lastSeenAt": 1790155757191,
+   "lastSeenAt": 1790162515908,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7975026",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7975026",
    "description": null,
@@ -5286,7 +5381,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505709,
-   "lastSeenAt": 1790155757184,
+   "lastSeenAt": 1790162515900,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=8059384",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8059384",
    "description": null,
@@ -5333,7 +5428,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505708,
-   "lastSeenAt": 1790155757183,
+   "lastSeenAt": 1790162515899,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=8010307",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8010307",
    "description": null,
@@ -5385,7 +5480,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505705,
-   "lastSeenAt": 1790155757178,
+   "lastSeenAt": 1790162515895,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7977145",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7977145",
    "description": null,
@@ -5443,7 +5538,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505702,
-   "lastSeenAt": 1790155757176,
+   "lastSeenAt": 1790162515894,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7974391",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7974391",
    "description": null,
@@ -5492,7 +5587,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505700,
-   "lastSeenAt": 1790155757175,
+   "lastSeenAt": 1790162515893,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7975008",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7975008",
    "description": null,
@@ -5546,7 +5641,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505696,
-   "lastSeenAt": 1790155757171,
+   "lastSeenAt": 1790162515889,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7974837",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7974837",
    "description": null,
@@ -5600,7 +5695,7 @@
    "postedText": null,
    "postedAt": 1784937603000,
    "firstSeenAt": 1785766505694,
-   "lastSeenAt": 1790155757170,
+   "lastSeenAt": 1790162515888,
    "url": "https://www.jumptrading.com/hr/job?gh_jid=7976964",
    "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7976964",
    "description": null,
@@ -5648,7 +5743,7 @@
    "postedText": null,
    "postedAt": 1784008953000,
    "firstSeenAt": 1787502644332,
-   "lastSeenAt": 1790155773734,
+   "lastSeenAt": 1790162534122,
    "url": "https://www.oldmissioncapital.com/careers/?gh_jid=7796058003",
    "applyUrl": "https://www.oldmissioncapital.com/careers/?gh_jid=7796058003",
    "description": null,
@@ -5701,7 +5796,7 @@
    "postedText": null,
    "postedAt": 1783984964000,
    "firstSeenAt": 1785766512304,
-   "lastSeenAt": 1790155780869,
+   "lastSeenAt": 1790162542971,
    "url": "https://boards.greenhouse.io/point72/jobs/7297657002?gh_jid=7297657002",
    "applyUrl": "https://boards.greenhouse.io/point72/jobs/7297657002?gh_jid=7297657002",
    "description": null,
