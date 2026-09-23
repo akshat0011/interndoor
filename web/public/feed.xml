@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 12:33:32 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 12:33:53 GMT</lastBuildDate>
+  <item>
+    <title>Full Stack Engineer — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753</guid>
+    <pubDate>Wed, 23 Sep 2026 12:33:53 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Chennai, Tamil Nadu, India
+• Develop end-to-end system features from user experience to backend code
+• Use SAP ABAP for HANA development in cloud-first projects
+• Collaborate with teams to design and optimize applications</description>
+  </item>
   <item>
     <title>Frontend Engineering &amp; Enterprise Portal Development — MUFG</title>
     <link>https://interndoor.com/jobs/mufg-frontend-engineering-and-enterprise-portal-development-4470938234</link>
@@ -47,6 +57,16 @@
 • Design and manage cloud applications on AWS platform
 • Use EC2, S3, Lambda, and RDS for scalable systems
 • Automate infrastructure with IaC tools and optimize costs</description>
+  </item>
+  <item>
+    <title>Full Stack Engineer — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080</guid>
+    <pubDate>Wed, 23 Sep 2026 12:23:08 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Hyderabad, Telangana, India
+• Develop end-to-end system features from user experience to backend code
+• Use Java Standard Edition for building innovative client solutions
+• Collaborate with teams to solve business problems using cloud-first approaches</description>
   </item>
   <item>
     <title>Specialist, Software Engineer - COBOL/Mainframe (Enterprise Applications &amp; Production Support) — Nationwide</title>
@@ -486,26 +506,6 @@
 • Develop and test software for IBM Systems products across OS, firmware, cloud, and storage
 • Work with global teams on open source and closed source projects in Agile environments
 • Contribute to performance analysis, bug fixing, and cloud software development</description>
-  </item>
-  <item>
-    <title>4633-Software Development Engineer-I (Full Stack) — Innovaccer</title>
-    <link>https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/innovaccer-4633-software-development-engineer-i-full-stack-4470499295</guid>
-    <pubDate>Tue, 22 Sep 2026 19:02:23 GMT</pubDate>
-    <description>Company: Innovaccer · Location: Noida, Uttar Pradesh, India
-• Build and maintain web applications using modern frameworks
-• Work with React, Node.js, and cloud platforms
-• Collaborate with cross-functional teams on scalable solutions</description>
-  </item>
-  <item>
-    <title>Software Engineer II (Backend Developer) — Mastercard</title>
-    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-backend-developer-4440181615</guid>
-    <pubDate>Tue, 22 Sep 2026 18:45:09 GMT</pubDate>
-    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
-• Develop and maintain Java-based backend systems for fraud detection and transaction validation
-• Work with Spring Boot, Oracle, and Git in a high-performance, scalable environment
-• Collaborate on complex projects with technical leads and contribute to system design and testing</description>
   </item>
 </channel>
 </rss>
