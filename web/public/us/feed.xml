@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 23 Sep 2026 04:12:18 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 04:41:14 GMT</lastBuildDate>
+  <item>
+    <title>Data Analyst and Business Intelligence Intern — Siemens</title>
+    <link>https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/siemens-data-analyst-and-business-intelligence-intern-4469417087</guid>
+    <pubDate>Wed, 23 Sep 2026 04:41:14 GMT</pubDate>
+    <description>Company: Siemens · Location: Alpharetta, GA · Duration: Summer 2027
+• Create interactive dashboards with Power BI and DAX for executive reporting
+• Optimize data queries and reports for faster performance and better UX
+• Collaborate with data architects on business requirements and technical solutions</description>
+  </item>
   <item>
     <title>2027 Electrical Engineer Intern - San Diego CA — Northrop Grumman</title>
     <link>https://interndoor.com/us/jobs/northrop-grumman-2027-electrical-engineer-intern-san-diego-ca-4470679508</link>
@@ -492,16 +502,6 @@
 • Design and test quantum devices using superconducting qubits and microwave engineering
 • Collaborate with global experts on quantum error correction and experimental validation
 • Work with AI tools to accelerate research and prototype quantum computing solutions</description>
-  </item>
-  <item>
-    <title>Application Engineer Co-Op, Building Automation — Schneider Electric</title>
-    <link>https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/schneider-electric-application-engineer-co-op-building-automation-4469088019</guid>
-    <pubDate>Tue, 22 Sep 2026 23:12:54 GMT</pubDate>
-    <description>Company: Schneider Electric · Location: Andover, MA · Duration: 6 months
-• Design and test building automation solutions for real-world client needs
-• Work with BMS systems, open protocols, and energy management tools
-• Collaborate with teams to create demos and train others on solutions</description>
   </item>
 </channel>
 </rss>
