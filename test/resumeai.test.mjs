@@ -320,64 +320,93 @@ console.log('\n== the output budget must survive the model thinking ==');
   globalThis.fetch = keep;
 }
 
-console.log('\n== BYOK has to be visible BEFORE the button is pressed ==');
-/* Reported live: the key panel was a collapsed grey <details> beside a bright,
-   enabled "Tailor it". The only way to discover that tailoring needs a key was
-   to press it and be shown an error screen — which reads as a broken site.
-   The gate now lives in ONE function that knows about the key; it used to be
-   set from three places and none of them did. */
+console.log('\n== one question per screen: the resume, then the key, then tailor ==');
+/* Reported live, twice. First the key was a collapsed <details> beside a
+   bright, enabled "Tailor it", so the only way to learn a key was needed was to
+   press the button and meet an error. Then the fix put the upload box, the key
+   panel, a warning and the button on ONE screen, and he called it cramped and
+   unreadable. It is a wizard now. These pin the order, the gate and the key
+   rules; the look was checked in a browser. */
 {
   const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
-  check('one function owns the primary button', /function syncPrimary\(/.test(app), true);
-  const fn = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncKeyUi('));
-  check('it refuses to enable tailoring without a key', /needsKey/.test(fn) && /btn\.disabled/.test(fn), true);
-  check('and says so on the button itself', /Add your key below to tailor/.test(fn), true);
-  check('ranking is never gated on a key', /!activeJob[\s\S]*Rank the board/.test(fn), true);
-  check('and marked as blocking', /is-required/.test(fn), true);
-  // The three old scattered assignments must be gone, or one of them re-enables
-  // the button behind syncPrimary's back.
-  const strays = (app.match(/\$\('do-tailor'\)\.disabled\s*=/g) || []).length;
-  check('no stray enable/disable of the primary button', strays, 0);
-
   const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
-  check('the blocking state is visually distinct', /\.keybox\.is-required/.test(css), true);
-  check('a disabled primary looks unpressable', /\.go\[disabled\]/.test(css), true);
-  // §15: never dim text with opacity.
-  const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
-  check('and does not dim text with opacity', /opacity:\s*0?\.[0-9]/.test(dis), false);
-  check('the why-line shows only when blocked', /\.keybox\.is-required \.keyneed\s*\{\s*display:\s*block/.test(css), true);
-
-  /* The panel was a <details>, and the fix for it sitting collapsed was to open
-     it from script — which the next redesign dropped, leaving it shut. It is a
-     plain block now: nothing to open, so nothing to forget to open. */
   const html = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
-  const modal = html.slice(html.indexOf('id="tailor"'), html.indexOf('id="step-working"'));
-  check('found the tailor modal', modal.length > 500, true);
-  check('the key panel is never a collapsible <details>', /<details[^>]*keybox/.test(modal), false);
-  check('the key panel is in the upload step', /id="keybox"/.test(modal), true);
-  // The form collapses once a key is saved. Forget living inside it would leave
-  // a saved key that nothing on screen can remove.
-  const formStart = modal.indexOf('id="key-form"');
-  const formEnd = modal.indexOf('class="keyfine"', formStart);
-  check('the key form and the privacy line are both there', formStart > 0 && formEnd > formStart, true);
-  check('Forget sits outside the form that collapses', modal.slice(formStart, formEnd).includes('id="forget-key"'), false);
-  check('and is still in the panel', modal.includes('id="forget-key"'), true);
+  const modal = html.slice(html.indexOf('id="tailor"'), html.indexOf('<div class="snack" id="toast"'));
+  check('found the tailor modal', modal.length > 1000, true);
+  const at = (id) => modal.indexOf(`id="${id}"`);
+  const section = (id, next) => modal.slice(at(id), at(next));
+
+  check('the three asking screens exist', at('step-upload') > 0 && at('step-key') > 0 && at('step-review') > 0, true);
+  check('in order: resume, key, review', at('step-upload') < at('step-key') && at('step-key') < at('step-review'), true);
+  check('the key is not on the resume screen', section('step-upload', 'step-key').includes('id="ai-key"'), false);
+  check('the key screen and the review start hidden',
+    /id="step-key"[^>]*\bhidden\b/.test(modal) && /id="step-review"[^>]*\bhidden\b/.test(modal), true);
+  check('the actions live in one footer after every screen', at('tw-foot') > at('step-error'), true);
+  for (const id of ['resume-next', 'key-next', 'do-tailor']) {
+    check(`${id} is in the footer`, at(id) > at('tw-foot'), true);
+  }
+  // The markup and the script must change together, and app.js has a day of
+  // stale-while-revalidate. The version on the tag is what keeps them paired.
+  check('app.js is versioned with the markup that needs it', /src="\/app\.js\?v=\d+"/.test(html), true);
+
+  const prim = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncSteps('));
+  check('one function owns every primary button', prim.length > 200, true);
+  check('Continue needs a resume', /next\.disabled = !haveResume;/.test(prim), true);
+  check('the key screen needs a key typed or already saved', /keyNext\.disabled = !typed && !haveKey;/.test(prim), true);
+  check('Tailor needs both', /go\.disabled = !haveResume \|\| needsKey;/.test(prim), true);
+  check('and says why when it cannot', /Add your key to tailor/.test(prim), true);
+  check('ranking is never gated on a key', /tailorMode === 'tailor' \? 'Continue' : 'Rank the board'/.test(prim), true);
+  check('the progress bar follows the gate', /\bsyncSteps\(\);/.test(prim), true);
+  for (const id of ['do-tailor', 'resume-next', 'key-next']) {
+    const strays = (app.match(new RegExp(`\\$\\('${id}'\\)\\.disabled\\s*=`, 'g')) || []).length;
+    check(`no stray enable/disable of ${id}`, strays, 0);
+  }
+
+  const wire = app.slice(app.indexOf('function wireTailor('), app.indexOf("$('download-pdf')"));
+  check('Continue goes to the key screen when there is no key',
+    /goTo\(hasKey\(\) \? 'review' : 'key'\)/.test(wire), true);
+  const run = app.slice(app.indexOf('async function runTailor('), app.indexOf('async function startAiRank('));
+  check('tailoring without a key goes back to the key screen',
+    /if \(!hasKey\(\)\) \{[\s\S]{0,500}?goTo\('key'\);/.test(run), true);
+
   const ui = app.slice(app.indexOf('function syncKeyUi('), app.indexOf('function renderTailored('));
-  check('the form collapses only on a saved key', /form\.hidden = have\b/.test(ui), true);
-  // Stated once, where the key is decided — it used to be said three times over
-  // and read as a policy rather than a tool.
+  check('the saved key is never written back into the input', /input\.value = '';/.test(ui) && !/value = getKey\(/.test(app), true);
+  check('the form gives way only to a saved key', /const showForm = !have \|\| replacingKey;/.test(ui), true);
+  check('a bad key is refused inline, not by toast', /!looksLikeKey\(v\)\)\s*\{\s*showKeyMsg\(/.test(ui), true);
+  const keyScreen = section('step-key', 'step-review');
+  const formPart = keyScreen.slice(keyScreen.indexOf('id="key-form"'), keyScreen.indexOf('id="key-set"'));
+  check('the key form was found', formPart.length > 200, true);
+  // The form hides once a key is saved. Forget living inside it would leave a
+  // saved key that nothing on screen can remove.
+  check('Forget is not inside the form that hides', formPart.includes('id="forget-key"'), false);
+  check('Forget is on the saved-key panel', keyScreen.slice(keyScreen.indexOf('id="key-set"')).includes('id="forget-key"'), true);
+  check('the key is never behind a collapsible <details>', /<details/.test(keyScreen), false);
   check('the privacy promise is stated once in the dialog', (modal.match(/never reach/g) || []).length, 1);
 
-  // Resume, key, act. Rank mode has no key step.
-  check('three steps in the markup', (modal.match(/class="wstep" data-wiz="[123]"/g) || []).length, 3);
-  // Sliced to syncPrimary ALONE: syncSteps is declared right after it, and its
-  // own declaration contains "syncSteps()" — a wider slice passes with the call gone.
-  const prim = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncSteps('));
-  check('the steps follow the gate', /\bsyncSteps\(\);/.test(prim), true);
   const steps = app.slice(app.indexOf('function syncSteps('), app.indexOf('function syncKeyUi('));
-  check('rank mode hides the key step', /two\.hidden = !tailoring/.test(steps), true);
-  check('and numbers its last step 2, not 3', /tailoring \? '3' : '2'/.test(steps), true);
-  check('the current step is announced', /setAttribute\('aria-current', 'step'\)/.test(steps), true);
+  check('three parts in the progress bar', (modal.match(/class="wstep" data-wiz="(upload|key|review)"/g) || []).length, 3);
+  check('the bar hides where there is one screen', /bar\.hidden = !tailoring/.test(steps), true);
+  check('the current part is announced', /setAttribute\('aria-current', 'step'\)/.test(steps), true);
+
+  const show = app.slice(app.indexOf('function showStep('), app.indexOf('function goTo('));
+  check('the screen change honours reduced motion', /prefers-reduced-motion: reduce/.test(show), true);
+
+  // A <div> in a <dl> may hold only <dt> and <dd> (§15), so Change sits in the dd.
+  const review = section('step-review', 'step-working');
+  const changes = (review.match(/data-go=/g) || []).length;
+  const inDd = (review.match(/<dd>(?:(?!<\/dd>)[\s\S])*?data-go=/g) || []).length;
+  check('the review offers Change on the resume and the key', changes, 2);
+  check('and every Change sits inside a <dd>', inDd, changes);
+
+  check('a disabled primary looks unpressable', /\.go\[disabled\]/.test(css), true);
+  const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
+  check('and does not dim text with opacity', /opacity:\s*0?\.[0-9]/.test(dis), false);
+  const print = css.slice(css.indexOf('@media print'));
+  check('print hides the wizard chrome', /\.wiz, \.tw-foot/.test(print), true);
+  // .modal.tw outranks print's .modal rule, so the resume would print as a
+  // fixed card unless print says it too.
+  check('print releases the pinned dialog', /\.modal\.tw[^{]*\{[^}]*position: static/.test(print), true);
+  check('the light theme error line is re-coloured', /\[data-theme="light"\] \.tw-msg \{ color: #9a3412; \}/.test(css), true);
 }
 
 console.log('\n== the wiring that is only visible in production ==');
