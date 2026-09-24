@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ingersoll-rand-graduate-engineer-trainee-4460474501",
+      "url": "https://interndoor.com/jobs/ingersoll-rand-graduate-engineer-trainee-4460474501",
+      "title": "Graduate Engineer Trainee — Ingersoll Rand",
+      "content_text": "Company: Ingersoll Rand · Location: Gurgaon, Haryana, India\n• Analyze business data and create dashboards for revenue, inventory, and customer performance\n• Use Power BI, SQL, and Python to automate reports and support decision-making\n• Track market trends and competitor activity to inform growth strategies",
+      "date_published": "2026-09-24T09:09:26.416Z",
+      "authors": [
+        {
+          "name": "Ingersoll Rand"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/palo-alto-networks-ai-engineer-agentic-systems-quality-engineering-4469711576",
+      "url": "https://interndoor.com/jobs/palo-alto-networks-ai-engineer-agentic-systems-quality-engineering-4469711576",
+      "title": "AI Engineer, Agentic Systems (Quality Engineering) — Palo Alto Networks",
+      "content_text": "Company: Palo Alto Networks · Location: Bengaluru East, Karnataka, India · Duration: 1–4 years\n• Build agentic AI systems for enterprise IT platforms using LLMs and generative AI\n• Work with Salesforce, SAP, and custom systems via APIs and webhooks\n• Develop RAG pipelines and tool schemas for enterprise context grounding",
+      "date_published": "2026-09-24T09:07:08.062Z",
+      "authors": [
+        {
+          "name": "Palo Alto Networks"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4471438140",
       "url": "https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4471438140",
       "title": "Products & Systems Engineer — Capgemini Engineering",
@@ -30,6 +54,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471429403",
+      "url": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471429403",
+      "title": "SDE + SME - Software Development & System Designs — Newton School",
+      "content_text": "Company: Newton School · Location: Pune Division, Maharashtra, India · Duration: 1-2 years\n• Design and teach courses on software development, system design, and distributed systems\n• Mentor students through project lifecycles and provide structured feedback\n• Collaborate with faculty and industry partners to shape curriculum and teaching methods",
+      "date_published": "2026-09-24T08:46:30.979Z",
+      "authors": [
+        {
+          "name": "Newton School"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
       "url": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
       "title": "Software Engineer — Electronic Arts (EA)",
@@ -38,18 +74,6 @@
       "authors": [
         {
           "name": "Electronic Arts (EA)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471436042",
-      "url": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471436042",
-      "title": "SDE + SME - Software Development & System Designs — Newton School",
-      "content_text": "Company: Newton School · Location: Pune/Pimpri-Chinchwad Area · Duration: 1-2 years\n• Design and teach courses on software development and system design\n• Mentor students through full project lifecycles\n• Collaborate with faculty and industry partners on curriculum",
-      "date_published": "2026-09-24T08:02:22.886Z",
-      "authors": [
-        {
-          "name": "Newton School"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hsbc-java-springboot-restapi-react-software-engineer-4470919860",
-      "url": "https://interndoor.com/jobs/hsbc-java-springboot-restapi-react-software-engineer-4470919860",
-      "title": "Java,Springboot, RestAPI, React/Software Engineer — HSBC",
-      "content_text": "Company: HSBC · Location: Hyderabad, Telangana, India\n• Build web apps and APIs with React and Java\n• Work on microservices and REST APIs for business systems\n• Participate in full dev lifecycle with CI/CD and testing",
-      "date_published": "2026-09-23T12:16:21.973Z",
-      "authors": [
-        {
-          "name": "HSBC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hsbc-java-springboot-restapi-react-software-engineer-4470922828",
-      "url": "https://interndoor.com/jobs/hsbc-java-springboot-restapi-react-software-engineer-4470922828",
-      "title": "Java,Springboot, RestAPI, React/Software Engineer — HSBC",
-      "content_text": "Company: HSBC · Location: Pune Division, Maharashtra, India\n• Build web apps and APIs with React and Java\n• Work on microservices and REST APIs for business systems\n• Participate in full dev lifecycle with CI/CD and testing",
-      "date_published": "2026-09-23T12:15:57.810Z",
-      "authors": [
-        {
-          "name": "HSBC"
         }
       ]
     }
