@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/man-group-technology-rotational-program-associate-engineer-ats-greenhouse-mangroup-4978937101",
+      "url": "https://interndoor.com/us/jobs/man-group-technology-rotational-program-associate-engineer-ats-greenhouse-mangroup-4978937101",
+      "title": "Technology Rotational Program - Associate Engineer — Man Group",
+      "content_text": "Company: Man Group · Location: Massachusetts · Duration: Summer 2027\n• Work on quantitative investment platforms and order management systems\n• Use Python/Java/C++ and git for development and deployment\n• Rotate through front-office engineering teams in Boston",
+      "date_published": "2026-09-24T21:23:15.000Z",
+      "authors": [
+        {
+          "name": "Man Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/astranis-space-technologies-supplier-quality-engineer-intern-winter-2027-4470042128",
       "url": "https://interndoor.com/us/jobs/astranis-space-technologies-supplier-quality-engineer-intern-winter-2027-4470042128",
       "title": "Supplier Quality Engineer Intern (Winter 2027) — Astranis Space Technologies",
@@ -62,6 +74,30 @@
       "authors": [
         {
           "name": "MKS Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-rf-validation-intern-winter-2027-ats-greenhouse-astranis-4716184006",
+      "url": "https://interndoor.com/us/jobs/astranis-rf-validation-intern-winter-2027-ats-greenhouse-astranis-4716184006",
+      "title": "RF Validation Intern (Winter 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Winter 2027\n• Measure RF hardware performance for satellites\n• Write Python code to automate testing processes\n• Document test methods and results for review",
+      "date_published": "2026-09-24T21:01:45.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/astranis-rf-validation-intern-summer-2027-ats-greenhouse-astranis-4716499006",
+      "url": "https://interndoor.com/us/jobs/astranis-rf-validation-intern-summer-2027-ats-greenhouse-astranis-4716499006",
+      "title": "RF Validation Intern (Summer 2027) — Astranis",
+      "content_text": "Company: Astranis · Location: San Francisco · Duration: Summer 2027\n• Measure RF hardware performance for satellites\n• Write Python code to automate measurement processes\n• Document test methods and data for review",
+      "date_published": "2026-09-24T21:01:42.000Z",
+      "authors": [
+        {
+          "name": "Astranis"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "AbbVie"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-ii-intern-united-states-4471606830",
-      "url": "https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-ii-intern-united-states-4471606830",
-      "title": "Software Engineer Data & AI II (Intern) – United States — Cisco",
-      "content_text": "Company: Cisco · Location: Triangle, NC\n• Build data pipelines and machine learning models using Python, PyTorch, or scikit-learn\n• Orchestrate large-scale data solutions with Spark and Kubernetes\n• Work on real-world products with high-impact teams in AI and data engineering",
-      "date_published": "2026-09-24T16:19:17.946Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-machine-learning-engineer-ii-intern-united-states-4471614603",
-      "url": "https://interndoor.com/us/jobs/cisco-machine-learning-engineer-ii-intern-united-states-4471614603",
-      "title": "Machine Learning Engineer II (Intern) – United States — Cisco",
-      "content_text": "Company: Cisco · Location: San Jose, CA\n• Build and fine-tune generative AI models for natural language processing and machine perception\n• Work with Python, SQL, Go, and AI libraries like Pandas, NumPy, and Scikit-learn\n• Collaborate on high-impact projects shaping Cisco's AI future in San Jose",
-      "date_published": "2026-09-24T16:18:47.241Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-machine-learning-engineer-ii-intern-united-states-4471619486",
-      "url": "https://interndoor.com/us/jobs/cisco-machine-learning-engineer-ii-intern-united-states-4471619486",
-      "title": "Machine Learning Engineer II (Intern) – United States — Cisco",
-      "content_text": "Company: Cisco · Location: Triangle, NC\n• Build and fine-tune generative AI models for natural language processing and machine perception\n• Work with Python, SQL, Go, and AI libraries like Pandas, NumPy, and Scikit-learn\n• Collaborate on high-impact projects shaping Cisco's AI future in a 12-week program",
-      "date_published": "2026-09-24T16:18:42.724Z",
-      "authors": [
-        {
-          "name": "Cisco"
         }
       ]
     }
