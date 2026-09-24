@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790261188986,
+ "generatedAt": 1790261373595,
  "region": "IN",
  "regionName": "India",
- "count": 478,
- "techCount": 478,
+ "count": 473,
+ "techCount": 473,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -311,60 +311,6 @@
  ],
  "jobs": [
   {
-   "id": "4452996243",
-   "title": "Angular Developer_Q227",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "java",
-    "angular",
-    "spring boot",
-    "kafka",
-    "microservices",
-    "agile"
-   ],
-   "summary": "This role involves developing scalable applications using java and angular, integrating ai capabilities, and working closely with architects and stakeholders. It suits students with strong coding skills and interest in building enterprise software.",
-   "bullets": [
-    "Build scalable apps with java, spring boot, and angular",
-    "Integrate ai/genai with modern frameworks and services",
-    "Collaborate with architects and stakeholders on technical design"
-   ],
-   "roleLabel": "Software developer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "spring boot",
-    "angular",
-    "restful apis",
-    "kafka"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "17 minutes ago",
-   "postedAt": 1790259450246,
-   "firstSeenAt": 1790260470249,
-   "lastSeenAt": 1790260470249,
-   "url": "https://www.linkedin.com/jobs/view/4452996243/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-251090&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "a3eb6d0517",
-   "cardFacts": [
-    "Pune Division",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4462467393",
    "title": "AI/ML Computational Science Associate",
    "company": "Accenture in India",
@@ -420,105 +366,6 @@
    "region": "IN"
   },
   {
-   "id": "4461392105",
-   "title": ".Net Full Stack Gen AI Developer",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "64 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "javascript",
-    "c#",
-    "sql",
-    "angular",
-    ".net"
-   ],
-   "summary": "This role involves designing and developing client systems using .Net, C# and Gen AI, with collaboration on project estimation and delivery. It suits students with strong technical skills in programming and a passion for solving complex problems.",
-   "bullets": [
-    "Design, develop, validate and support client systems using .Net, C#, ASP.Net and Gen AI",
-    "Work with Angular, ReactJS and Python to build scalable applications",
-    "Collaborate with teams to estimate project requirements and deliver high-quality solutions"
-   ],
-   "roleLabel": "Gen AI Developer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "c#",
-    "asp.net",
-    "angular",
-    "reactjs",
-    "python"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "23 minutes ago",
-   "postedAt": 1790259165943,
-   "firstSeenAt": 1790260545946,
-   "lastSeenAt": 1790260545946,
-   "url": "https://www.linkedin.com/jobs/view/4461392105/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-251993&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "6eb1f5a3ca",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4397308999",
-   "title": "Discipline Engineer",
-   "company": "Valeo",
-   "matchedWatchlist": "Valeo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/valeo.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "3 months",
-   "applicants": "72 people clicked apply",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves managing software projects through technical reviews, resource planning, and budget tracking. You will collaborate with managers to refine development processes and ensure compliance with standards. Ideal for someone with a strong grasp of project management and software development practices.",
-   "bullets": [
-    "Reviews technical designs, manages project resources and schedules",
-    "Defines budgets, tracks spending, and forecasts financials",
-    "Coordinates with managers for standards, tools, and process improvements"
-   ],
-   "roleLabel": "Software project manager",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "technical design reviews",
-    "change management"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "21 minutes ago",
-   "postedAt": 1790259144804,
-   "firstSeenAt": 1790260404806,
-   "lastSeenAt": 1790260404806,
-   "url": "https://www.linkedin.com/jobs/view/4397308999/",
-   "applyUrl": "https://valeo.wd3.myworkdayjobs.com/valeo_jobs/job/Chennai/Discipline-Design-Leader_REQ2026069459/apply",
-   "description": null,
-   "roleFingerprint": "23213bfc35",
-   "cardFacts": [
-    "Chennai",
-    "On-site",
-    "3 months"
-   ],
-   "region": "IN"
-  },
-  {
    "id": "4453143722",
    "title": "Salesforce Developer",
    "company": "Forrester",
@@ -566,103 +413,6 @@
    "cardFacts": [
     "Delhi",
     "Remote"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4471496366",
-   "title": "#ACN S&C GN - MC - Industry X - Intelligent Asset Management - Consultant",
-   "company": "Accenture in India",
-   "matchedWatchlist": "Accenture",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/accenture-in-india.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "excel"
-   ],
-   "summary": "This role involves analyzing client operations to design solutions for asset management, implementing service now platforms, and developing tools to improve efficiency. It suits students with technical skills in IT and a focus on operational processes.",
-   "bullets": [
-    "Analyze client business processes and design functional solutions",
-    "Implement and troubleshoot service now platforms for asset management",
-    "Develop scripts and workflows for operational efficiency",
-    "Collaborate with cross-functional teams on large-scale projects"
-   ],
-   "roleLabel": "Asset Management Analyst",
-   "degreeLevel": "UG/PG",
-   "degreeText": null,
-   "keySkills": [
-    "xml",
-    "html",
-    "python",
-    "rest"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "25 minutes ago",
-   "postedAt": 1790258997470,
-   "firstSeenAt": 1790260497473,
-   "lastSeenAt": 1790260497473,
-   "url": "https://www.linkedin.com/jobs/view/4471496366/",
-   "applyUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=R00289102_en",
-   "description": null,
-   "roleFingerprint": "7047932484",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "region": "IN"
-  },
-  {
-   "id": "4452396714",
-   "title": ".net + React",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "react",
-    ".net"
-   ],
-   "summary": "This role involves working with clients to understand their business challenges and design technical solutions using .NET and React. You'll analyze data, create specifications, and support solution deployment. Ideal for students with a strong grasp of technology and problem-solving skills.",
-   "bullets": [
-    "Analyze business needs, design functional solutions using .NET and React",
-    "Collaborate with clients to identify challenges and deliver structured data insights",
-    "Create requirement specs, configure solutions, and troubleshoot technical issues"
-   ],
-   "roleLabel": "Technical Solution Design",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    ".net frameworks",
-    "react js"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "30 minutes ago",
-   "postedAt": 1790258759843,
-   "firstSeenAt": 1790260559844,
-   "lastSeenAt": 1790260559844,
-   "url": "https://www.linkedin.com/jobs/view/4452396714/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-248553-2&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "5f99e932c6",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
    ],
    "region": "IN"
   },
