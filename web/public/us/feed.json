@@ -6,14 +6,74 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/micron-technology-intern-id1-equipment-engineer-4469662901",
-      "url": "https://interndoor.com/us/jobs/micron-technology-intern-id1-equipment-engineer-4469662901",
-      "title": "Intern - ID1 Equipment Engineer — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Boise, ID\n• Monitor and improve equipment performance in fabrication facility\n• Use mechanical, electrical, and software skills to solve equipment issues\n• Collaborate with engineers to prevent yield loss and tool downtime",
-      "date_published": "2026-09-24T12:27:33.957Z",
+      "id": "https://interndoor.com/us/jobs/capital-one-current-phd-applied-research-internship-program-summer-2027-4471485420",
+      "url": "https://interndoor.com/us/jobs/capital-one-current-phd-applied-research-internship-program-summer-2027-4471485420",
+      "title": "Current PhD, Applied Research Internship Program - Summer 2027 — Capital One",
+      "content_text": "Company: Capital One · Location: McLean, VA · Duration: 12 weeks\n• Work on real-world AI problems with production systems and cross-functional teams\n• Use PyTorch, AWS, Huggingface, and VectorDBs to analyze large datasets\n• Collaborate with researchers to publish at top conferences like NeurIPS or ICML",
+      "date_published": "2026-09-24T13:52:06.135Z",
       "authors": [
         {
-          "name": "Micron Technology"
+          "name": "Capital One"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/capital-one-current-phd-applied-research-internship-program-summer-2027-4471492178",
+      "url": "https://interndoor.com/us/jobs/capital-one-current-phd-applied-research-internship-program-summer-2027-4471492178",
+      "title": "Current PhD, Applied Research Internship Program - Summer 2027 — Capital One",
+      "content_text": "Company: Capital One · Location: San Jose, CA · Duration: 12 weeks\n• Work on real-world AI problems with production systems and cross-functional teams\n• Use PyTorch, AWS, Huggingface, and VectorDBs to analyze large datasets\n• Collaborate with researchers to publish at top conferences like NeurIPS or ICML",
+      "date_published": "2026-09-24T13:51:33.272Z",
+      "authors": [
+        {
+          "name": "Capital One"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/intel-software-engineering-intern-graduate-4461328247",
+      "url": "https://interndoor.com/us/jobs/intel-software-engineering-intern-graduate-4461328247",
+      "title": "Software Engineering - Intern, Graduate — Intel",
+      "content_text": "Company: Intel · Location: Folsom, CA · Duration: Summer 2027\n• Design, develop, and test software for Intel products and platforms\n• Collaborate with cross-functional teams on hardware and software integration\n• Work on AI, cloud, and system software projects with real-world impact",
+      "date_published": "2026-09-24T13:02:57.816Z",
+      "authors": [
+        {
+          "name": "Intel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lockheed-martin-reliability-engineer-intern-n5-4469750374",
+      "url": "https://interndoor.com/us/jobs/lockheed-martin-reliability-engineer-intern-n5-4469750374",
+      "title": "Reliability Engineer Intern - N5 — Lockheed Martin",
+      "content_text": "Company: Lockheed Martin · Location: Orlando, FL\n• Analyze reliability data and run statistical models to predict product performance\n• Collaborate with engineers on FMECA analyses and reliability testing programs\n• Support environmental testing and maintain traceability matrices in SharePoint",
+      "date_published": "2026-09-24T13:01:21.332Z",
+      "authors": [
+        {
+          "name": "Lockheed Martin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lockheed-martin-electronics-engineer-intern-4469746423",
+      "url": "https://interndoor.com/us/jobs/lockheed-martin-electronics-engineer-intern-4469746423",
+      "title": "Electronics Engineer - Intern — Lockheed Martin",
+      "content_text": "Company: Lockheed Martin · Location: Owego, NY\n• Test prototypes using oscilloscopes and debug hardware\n• Write software for microcontrollers and FPGAs in C/C++\n• Update design reports and test procedures\n• Work on factory automation and embedded systems",
+      "date_published": "2026-09-24T13:00:59.173Z",
+      "authors": [
+        {
+          "name": "Lockheed Martin"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lockheed-martin-electronics-engineering-intern-4469733940",
+      "url": "https://interndoor.com/us/jobs/lockheed-martin-electronics-engineering-intern-4469733940",
+      "title": "Electronics Engineering Intern — Lockheed Martin",
+      "content_text": "Company: Lockheed Martin · Location: Owego, NY · Duration: Summer 2027\n• Assemble, bench-test, and troubleshoot complex hardware\n• Integrate hardware-software interfaces using C/C++, Python, Verilog/VHDL\n• Work with senior engineers on real projects in the factory",
+      "date_published": "2026-09-24T13:00:31.999Z",
+      "authors": [
+        {
+          "name": "Lockheed Martin"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-summer-2027-masters-digital-signal-processing-engineer-intern-4471180495",
-      "url": "https://interndoor.com/us/jobs/amd-summer-2027-masters-digital-signal-processing-engineer-intern-4471180495",
-      "title": "Summer 2027 Masters Digital Signal Processing Engineer Intern — AMD",
-      "content_text": "Company: AMD · Location: San Jose, CA · Duration: Summer 2027\n• Model rf amplifier non-linear responses with adaptive algorithms in matlab\n• Explore adaptive approaches for closed loop linearity improvements\n• Work with experienced team on 5g/6g radio design projects",
-      "date_published": "2026-09-24T02:33:12.587Z",
-      "authors": [
-        {
-          "name": "AMD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4471163796",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4471163796",
-      "title": "R&D Engineer, Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Austin, TX\n• Develop automated tests for network visibility products\n• Use python, robot framework, or selenium for automation\n• Work on functional and performance testing scenarios",
-      "date_published": "2026-09-24T01:43:23.780Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-analog-and-mixed-signal-ic-design-engineer-intern-4471172460",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-analog-and-mixed-signal-ic-design-engineer-intern-4471172460",
-      "title": "Analog and Mixed Signal IC Design Engineer Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Santa Clara, CA\n• Design and simulate data converter circuits at block or circuit level\n• Use Cadence tools and scripting languages like Python or Bash\n• Work on future products with a team publishing high-speed chips",
-      "date_published": "2026-09-24T01:42:49.944Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-solar-hardware-engineer-pv-cell-energy-engineering-winter-s-4471166487",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-solar-hardware-engineer-pv-cell-energy-engineering-winter-s-4471166487",
-      "title": "Internship, Solar Hardware Engineer, PV Cell, Energy Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop accelerated cell-level screening methods to simulate long-term degradation\n• Use Dark IV, Suns-Voc, and imaging tools for electrical and optical analysis\n• Collaborate with teams to inform material choices for PV module manufacturing",
-      "date_published": "2026-09-24T01:33:02.048Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-industrial-firmware-energy-engineering-wi-4471177225",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-industrial-firmware-energy-engineering-wi-4471177225",
-      "title": "Internship, Software Engineer Industrial Firmware, Energy Engineering (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop and debug software in Python, C, C++, and Rust for industrial energy products\n• Collaborate with hardware and firmware teams on scalable deployment solutions\n• Design test procedures for high voltage systems and thermal management\n• Work on-site in Palo Alto, CA for 12+ weeks full-time",
-      "date_published": "2026-09-24T01:32:30.453Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
