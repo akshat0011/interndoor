@@ -6,6 +6,102 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4471163796",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4471163796",
+      "title": "R&D Engineer, Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Austin, TX\n• Develop automated tests for network visibility products\n• Use python, robot framework, or selenium for automation\n• Work on functional and performance testing scenarios",
+      "date_published": "2026-09-24T01:43:23.780Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/keysight-technologies-analog-and-mixed-signal-ic-design-engineer-intern-4471172460",
+      "url": "https://interndoor.com/us/jobs/keysight-technologies-analog-and-mixed-signal-ic-design-engineer-intern-4471172460",
+      "title": "Analog and Mixed Signal IC Design Engineer Intern — Keysight Technologies",
+      "content_text": "Company: Keysight Technologies · Location: Santa Clara, CA\n• Design and simulate data converter circuits at block or circuit level\n• Use Cadence tools and scripting languages like Python or Bash\n• Work on future products with a team publishing high-speed chips",
+      "date_published": "2026-09-24T01:42:49.944Z",
+      "authors": [
+        {
+          "name": "Keysight Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-solar-hardware-engineer-pv-cell-energy-engineering-winter-s-4471166487",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-solar-hardware-engineer-pv-cell-energy-engineering-winter-s-4471166487",
+      "title": "Internship, Solar Hardware Engineer, PV Cell, Energy Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop accelerated cell-level screening methods to simulate long-term degradation\n• Use Dark IV, Suns-Voc, and imaging tools for electrical and optical analysis\n• Collaborate with teams to inform material choices for PV module manufacturing",
+      "date_published": "2026-09-24T01:33:02.048Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-industrial-firmware-energy-engineering-wi-4471177225",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-software-engineer-industrial-firmware-energy-engineering-wi-4471177225",
+      "title": "Internship, Software Engineer Industrial Firmware, Energy Engineering (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Develop and debug software in Python, C, C++, and Rust for industrial energy products\n• Collaborate with hardware and firmware teams on scalable deployment solutions\n• Design test procedures for high voltage systems and thermal management\n• Work on-site in Palo Alto, CA for 12+ weeks full-time",
+      "date_published": "2026-09-24T01:32:30.453Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-thermal-engineering-aerodynamics-winter-spring-2027-4471161726",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-thermal-engineering-aerodynamics-winter-spring-2027-4471161726",
+      "title": "Internship, Thermal Engineering, Aerodynamics (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Fremont, CA · Duration: 12 weeks\n• Design aerodynamic surfaces using first principles and collaborate with mechanical teams\n• Run tests, collect data, and validate models for hardware and system performance\n• Use CFD and reduced order models to optimize vehicle systems and diagnostics\n• Work on heat exchangers, noise reduction, and fluid distribution for Tesla vehicles",
+      "date_published": "2026-09-24T01:32:02.429Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/tesla-internship-robotics-electrical-design-engineer-tactile-sensing-optimus-4471181018",
+      "url": "https://interndoor.com/us/jobs/tesla-internship-robotics-electrical-design-engineer-tactile-sensing-optimus-4471181018",
+      "title": "Internship, Robotics Electrical Design Engineer, Tactile Sensing, Optimus (Winter/Spring 2027) — Tesla",
+      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Design tactile sensing systems for robot dexterous manipulation\n• Work with PCBs, flexible circuits, and sensor integration\n• Collaborate with cross-functional teams on hardware development",
+      "date_published": "2026-09-24T01:31:55.966Z",
+      "authors": [
+        {
+          "name": "Tesla"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/intel-technology-research-2d-transistor-engineer-intern-4469635283",
+      "url": "https://interndoor.com/us/jobs/intel-technology-research-2d-transistor-engineer-intern-4469635283",
+      "title": "Technology Research 2D Transistor Engineer Intern — Intel",
+      "content_text": "Company: Intel · Location: Hillsboro, OR\n• Analyzes transistor data to improve manufacturing yields\n• Works with engineering teams on process optimization\n• Requires PhD in Electrical Engineering or related field",
+      "date_published": "2026-09-24T01:29:06.212Z",
+      "authors": [
+        {
+          "name": "Intel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/imc-trading-hardware-machine-learning-phd-research-internship-4469636248",
+      "url": "https://interndoor.com/us/jobs/imc-trading-hardware-machine-learning-phd-research-internship-4469636248",
+      "title": "Hardware Machine Learning PhD Research Internship — IMC Trading",
+      "content_text": "Company: IMC Trading · Location: Chicago, IL\n• Design and implement ML projects for real-world use cases\n• Collaborate with hardware engineers on FPGA/ASIC ML deployment\n• Evaluate research on quantization and neural architecture search\n• Present findings to team and leave a working prototype",
+      "date_published": "2026-09-24T01:16:35.761Z",
+      "authors": [
+        {
+          "name": "IMC Trading"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/graphcore-graduate-systems-engineer-ats-greenhouse-graphcore-8842006002",
       "url": "https://interndoor.com/us/jobs/graphcore-graduate-systems-engineer-ats-greenhouse-graphcore-8842006002",
       "title": "Graduate Systems Engineer — Graphcore",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Figma"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-grid-modernization-engineering-intern-4469338914",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-grid-modernization-engineering-intern-4469338914",
-      "title": "Grid Modernization Engineering Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Loveland, CO\n• Test distributed energy resources using keysight hardware and software\n• Execute ieee 1547.1 compliance tests and troubleshoot results\n• Work with oscilloscopes, power analyzers, and automation tools\n• Based in loveland, co, part-time or full-time during academic year",
-      "date_published": "2026-09-23T19:44:15.365Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4469355309",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4469355309",
-      "title": "R&D Engineer, Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Austin, TX\n• Develop automated tests for network visibility products\n• Use python, robot framework, or selenium for automation\n• Work on functional and performance testing scenarios",
-      "date_published": "2026-09-23T19:43:06.566Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-ats-greenhouse-figma-6178851004",
-      "url": "https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-ats-greenhouse-figma-6178851004",
-      "title": "Data Engineer Intern (2027) — Figma",
-      "content_text": "Company: Figma · Location: San Francisco, CA • New York, NY\n• Build and optimize data pipelines for Figma’s data warehouse\n• Work with engineers and analysts on scalable data systems\n• Based in San Francisco or New York, 12-month internship",
-      "date_published": "2026-09-23T19:30:27.000Z",
-      "authors": [
-        {
-          "name": "Figma"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-ats-greenhouse-waymo-8224729",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-ats-greenhouse-waymo-8224729",
-      "title": "2027 Summer Intern, MS/PhD, Software Engineer — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, California\n• Design and implement C++ logic for Waymo Driver interactions with traffic controls\n• Validate software changes with large-scale simulation suites for safety and compliance\n• Write clean, production-grade code with rigorous code review and testing standards",
-      "date_published": "2026-09-23T19:28:59.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-road-understanding-ml-engineer-ats-greenhouse-waymo-8224746",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-road-understanding-ml-engineer-ats-greenhouse-waymo-8224746",
-      "title": "2027 Summer Intern, MS/PhD, Road Understanding, ML Engineer — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, California\n• Design ML models for lane geometry and road topology using Python and deep learning frameworks\n• Run experiments with sensor data and simulation techniques for real-world road challenges\n• Collaborate with research and engineering teams on autonomous driving systems\n• Hybrid onsite internship in Mountain View, California",
-      "date_published": "2026-09-23T19:28:48.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-healthcare-infant-care-v-and-v-engineering-co-op-fall-2027-4470994793",
-      "url": "https://interndoor.com/us/jobs/ge-healthcare-infant-care-v-and-v-engineering-co-op-fall-2027-4470994793",
-      "title": "Infant Care V&V Engineering Co-op - Fall 2027 — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Waukesha, WI · Duration: 20 weeks\n• Develop and execute test procedures for Infant Care products like incubators and warmers\n• Collaborate with engineers to evaluate system performance and usability\n• Work onsite in Waukesha, WI for a minimum of 20 weeks",
-      "date_published": "2026-09-23T19:22:21.691Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-it-business-analysis-intern-4462446231",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-it-business-analysis-intern-4462446231",
-      "title": "IT Business Analysis Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Palm Bay, FL\n• Support SAP FI/CO modules with configuration and custom development\n• Work with business teams to align system solutions with changing needs\n• Develop RICEF specs for custom development in SAP environment",
-      "date_published": "2026-09-23T18:52:02.083Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/l3harris-technologies-it-business-analysis-intern-4462435823",
-      "url": "https://interndoor.com/us/jobs/l3harris-technologies-it-business-analysis-intern-4462435823",
-      "title": "IT Business Analysis Intern — L3Harris Technologies",
-      "content_text": "Company: L3Harris Technologies · Location: Melbourne, FL\n• Support SAP FI/CO modules with configuration and custom development\n• Work on RICEF specs for FI/CO and PS business design\n• Collaborate with business teams on system solutions and requirements",
-      "date_published": "2026-09-23T18:41:42.903Z",
-      "authors": [
-        {
-          "name": "L3Harris Technologies"
         }
       ]
     }
