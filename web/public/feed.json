@@ -6,14 +6,50 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/ingersoll-rand-graduate-engineer-trainee-4460474501",
-      "url": "https://interndoor.com/jobs/ingersoll-rand-graduate-engineer-trainee-4460474501",
-      "title": "Graduate Engineer Trainee — Ingersoll Rand",
-      "content_text": "Company: Ingersoll Rand · Location: Gurgaon, Haryana, India\n• Analyze business data and create dashboards for revenue, inventory, and customer performance\n• Use Power BI, SQL, and Python to automate reports and support decision-making\n• Track market trends and competitor activity to inform growth strategies",
-      "date_published": "2026-09-24T09:09:26.416Z",
+      "id": "https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486",
+      "url": "https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486",
+      "title": "UAV Systems Intern — UNMANND",
+      "content_text": "Company: UNMANND · Location: Bengaluru, Karnataka, India\n• Integrate and test uav platforms across mechanical, electronic, and software systems\n• Evaluate and validate components like autopilots, sensors, and power modules\n• Collaborate with cross-functional teams on integration challenges and field deployments",
+      "date_published": "2026-09-24T10:06:08.766Z",
       "authors": [
         {
-          "name": "Ingersoll Rand"
+          "name": "UNMANND"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-engineer-r01571801-4471451159",
+      "url": "https://interndoor.com/jobs/brillio-engineer-r01571801-4471451159",
+      "title": "Engineer - R01571801 — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Develop scalable web apps using Java, Spring Boot, and React JS in microservices\n• Collaborate on technical solutions and optimize full-stack performance\n• Write clean code with Git and follow SDLC processes\n• Work with AWS, MuleSoft, and Snowflake in a team environment",
+      "date_published": "2026-09-24T10:04:56.490Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-4471439260",
+      "url": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-4471439260",
+      "title": "WoW Software Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Engineer secure, high-performance software for customer-centric solutions\n• Work in permanent teams with full lifecycle responsibility\n• Use devops, agile, and multiple programming languages",
+      "date_published": "2026-09-24T09:34:28.763Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-4471439261",
+      "url": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-4471439261",
+      "title": "WoW Software Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Engineer secure, high-performance software for customer-centric solutions\n• Work in permanent teams across full software life cycle\n• Use devops, agile, and multiple programming languages",
+      "date_published": "2026-09-24T09:34:01.787Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
         }
       ]
     },
@@ -178,30 +214,6 @@
       "url": "https://interndoor.com/jobs/honeywell-intern-bachelors-software-eng-ats-oraclecloud-icfcjb-fa-ocs-oraclecloud-com-124444",
       "title": "Intern Bachelors Software Eng — Honeywell",
       "content_text": "Company: Honeywell · Location: Bengaluru, Karnataka, India\n• Develop software for avionics and navigation systems\n• Use C++ and Python in a safety-critical environment\n• Work on projects impacting global aviation safety",
-      "date_published": "2026-09-24T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Honeywell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-intern-masters-embedded-eng-ats-oraclecloud-icfcjb-fa-ocs-oraclecloud-com-124439",
-      "url": "https://interndoor.com/jobs/honeywell-intern-masters-embedded-eng-ats-oraclecloud-icfcjb-fa-ocs-oraclecloud-com-124439",
-      "title": "Intern Masters Embedded Eng — Honeywell",
-      "content_text": "Company: Honeywell · Location: Bengaluru, Karnataka, India\n• Design and test embedded systems for aerospace applications\n• Work with c and c++ in real-time environments\n• Contribute to safety-critical avionics projects",
-      "date_published": "2026-09-24T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Honeywell"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-intern-masters-ai-ats-oraclecloud-icfcjb-fa-ocs-oraclecloud-com-124443",
-      "url": "https://interndoor.com/jobs/honeywell-intern-masters-ai-ats-oraclecloud-icfcjb-fa-ocs-oraclecloud-com-124443",
-      "title": "Intern Masters AI — Honeywell",
-      "content_text": "Company: Honeywell · Location: Bengaluru, Karnataka, India",
       "date_published": "2026-09-24T00:00:00.000Z",
       "authors": [
         {
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-cobol-mainframe-enterprise-applications-a-4469461092",
-      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-cobol-mainframe-enterprise-applications-a-4469461092",
-      "title": "Specialist, Software Engineer - COBOL/Mainframe (Enterprise Applications & Production Support) — Nationwide",
-      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Support and enhance legacy mainframe applications using Cobol, CICS, JCL, VSAM\n• Collaborate with engineers and product teams to build scalable, secure solutions\n• Use Python, Java, Angular, and Spring Boot for modern application development\n• Work in agile environments with CI/CD, monitoring, and security tools",
-      "date_published": "2026-09-23T12:22:44.718Z",
-      "authors": [
-        {
-          "name": "Nationwide"
         }
       ]
     }
