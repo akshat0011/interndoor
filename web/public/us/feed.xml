@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 23 Sep 2026 23:05:05 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 23:53:52 GMT</lastBuildDate>
+  <item>
+    <title>Systems Engineering Intern — Graphcore</title>
+    <link>https://interndoor.com/us/jobs/graphcore-systems-engineering-intern-ats-greenhouse-graphcore-8841978002</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/graphcore-systems-engineering-intern-ats-greenhouse-graphcore-8841978002</guid>
+    <pubDate>Wed, 23 Sep 2026 23:53:52 GMT</pubDate>
+    <description>Company: Graphcore · Location: Austin, Texas, United States
+• Execute post-silicon validation of ai compute blades and racks
+• Use python/bash for automation and linux server os
+• Collaborate with firmware and silicon teams on system debug</description>
+  </item>
+  <item>
+    <title>Hardware Platform Development Intern — Graphcore</title>
+    <link>https://interndoor.com/us/jobs/graphcore-hardware-platform-development-intern-ats-greenhouse-graphcore-8841941002</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/graphcore-hardware-platform-development-intern-ats-greenhouse-graphcore-8841941002</guid>
+    <pubDate>Wed, 23 Sep 2026 23:46:25 GMT</pubDate>
+    <description>Company: Graphcore · Location: Austin, Texas, United States
+• Test cpu and io subsystems, run lab tests, analyze performance and reliability
+• Use power meters, oscilloscopes, and lab tools under supervision
+• Create scripts for testing and data analysis, work with cross-functional teams</description>
+  </item>
   <item>
     <title>FPGA Intern (Summer 2027) — Astranis</title>
     <link>https://interndoor.com/us/jobs/astranis-fpga-intern-summer-2027-ats-greenhouse-astranis-4704805006</link>
@@ -493,26 +513,6 @@
 • Analyze returned products to find root causes of quality issues
 • Use software tools for data collection and root cause analysis
 • Collaborate with cross-functional teams on quality improvements</description>
-  </item>
-  <item>
-    <title>Software Engineer, Intern (Summer or Winter) — Stripe</title>
-    <link>https://interndoor.com/us/jobs/stripe-software-engineer-intern-summer-or-winter-4462058113</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/stripe-software-engineer-intern-summer-or-winter-4462058113</guid>
-    <pubDate>Wed, 23 Sep 2026 17:35:19 GMT</pubDate>
-    <description>Company: Stripe · Location: San Francisco, CA
-• Write production code that impacts millions of businesses
-• Work with Ruby, Java, JavaScript, Go, and Scala
-• Collaborate with engineers and stakeholders on real projects</description>
-  </item>
-  <item>
-    <title>Software Engineer, Intern (Summer or Winter) — Stripe</title>
-    <link>https://interndoor.com/us/jobs/stripe-software-engineer-intern-summer-or-winter-4462047454</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/stripe-software-engineer-intern-summer-or-winter-4462047454</guid>
-    <pubDate>Wed, 23 Sep 2026 17:16:59 GMT</pubDate>
-    <description>Company: Stripe · Location: Seattle, WA
-• Write production code that impacts millions of businesses
-• Work with Ruby, Java, JavaScript, Go, and Scala
-• Collaborate with engineers and stakeholders on real projects</description>
   </item>
 </channel>
 </rss>
