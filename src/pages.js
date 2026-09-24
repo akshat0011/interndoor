@@ -4115,10 +4115,10 @@ function localiseLinks(html, region) {
  * The listings inside <!--LISTINGS--> are the fix for the thing Search Console
  * actually reported: every job page came back "URL is unknown to Google" with
  * both discovery routes empty, because the homepage shipped an empty <ol> that
- * JavaScript filled afterwards. Crawl depth to a job page was three on a domain
- * with no authority; now it is one. app.js calls replaceChildren() on this list,
- * so these rows are gone the moment the script runs — nothing is hidden from
- * users to feed a crawler something different.
+ * JavaScript filled afterwards. The list sits in a collapsed <details> in the
+ * footer that a reader can open, so nothing is shown to a crawler and hidden
+ * from people. Since 24 Sep 2026 it carries only the newest roles and the
+ * footer links the busiest employer hubs instead — see HOME_LISTINGS.
  *
  * If the markers are missing the file is left completely alone: silently
  * rewriting a hand-maintained page is a far worse failure than not adding links.
@@ -4144,12 +4144,69 @@ function followBand(region) {
   return `<p class="wa-lead">${followLink(region, { cls: 'wa-go', waLabel: 'Join the WhatsApp channel' })} <span class="wa-note">Every new role ${esc(region.inName)}, the minute it is posted. No signup.</span></p>`;
 }
 
+/**
+ * WHAT THE HOMEPAGE LINKS TO — the newest roles, and the employers with the most.
+ *
+ * It used to carry EVERY live job page as a link: 4,147 on the US board, 453
+ * on India's, beside zero links to a company hub. The list was the fix for
+ * "URL is unknown to Google" when nothing linked a job page at all; since
+ * then every board has a sitemap, every hub links its live roles, and new
+ * pages go to the Indexing API. What the full list still did was make the
+ * site's strongest page a flat index of thousands of short-lived pages — the
+ * shape Google's scaled-content systems look for — while the hubs, the pages
+ * that can rank for "<company> internships" for years, got nothing from it.
+ *
+ * Now: the newest HOME_LISTINGS roles, one link per role rather than one per
+ * city, and HOME_HUBS employer hubs ordered by how many distinct roles each
+ * has live. Every job page stays reachable in one more click, through its hub.
+ */
+export const HOME_LISTINGS = 50;
+export const HOME_HUBS = 40;
+
+/** The newest roles for the homepage's crawlable list: indexable, one per role. */
+export function homeListings(jobs, limit = HOME_LISTINGS) {
+  const seen = new Set();
+  return newestFirst((jobs ?? []).filter(isIndexable)).filter((j) => {
+    const k = roleKey(j);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  }).slice(0, limit);
+}
+
+/**
+ * The employers to link from the homepage: one per hub SLUG, since that is
+ * the file writePages writes, named by the spelling most of its rows use (the
+ * rule canonicalCompanyNames applies), and only where the hub has a live
+ * role to show — hubLive, the same list the hub renders.
+ */
+export function homeHubs(jobs, limit = HOME_HUBS) {
+  const bySlug = new Map();
+  for (const j of jobs ?? []) {
+    const slug = j?.company ? companySlug(j.company) : '';
+    if (!slug) continue;
+    if (!bySlug.has(slug)) bySlug.set(slug, []);
+    bySlug.get(slug).push(j);
+  }
+  const out = [];
+  for (const [slug, rows] of bySlug) {
+    const roles = hubLive(rows).length;
+    if (!roles) continue;
+    const spellings = new Map();
+    for (const r of rows) spellings.set(r.company, (spellings.get(r.company) ?? 0) + 1);
+    const name = [...spellings].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0];
+    out.push({ slug, name, roles });
+  }
+  return out.sort((a, b) => b.roles - a.roles || a.name.localeCompare(b.name)).slice(0, limit);
+}
+
 function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null, channels = []) {
   const templatePath = join(publicDir, 'index.html');
   if (!existsSync(templatePath)) return 0;
   const template = readFileSync(templatePath, 'utf8');
 
-  const rows = jobs.map((j) => {
+  const listed = homeListings(jobs);
+  const rows = listed.map((j) => {
     const facts = [j.location, j.workplaceType].filter(Boolean).map((s) => esc(s)).join(' · ');
     return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.company)} — ${esc(j.title)}</a>`
       + (facts ? `<span class="tiny"> ${facts}</span>` : '')
@@ -4161,6 +4218,18 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
     console.warn('  index.html has no <!--LISTINGS--> markers — homepage links not written.');
     return 0;
   }
+  /* The employers, as a visible line in the footer rather than inside the
+     collapsed list: a reader can use it, and it is not a block of links shown
+     to a crawler and folded away from people. OPTIONAL, like the region
+     markers, so a template without it still publishes. `/companies` is left
+     bare for localiseLinks to prefix; the hub hrefs already carry theirs. */
+  /* `dim` is styles.css's footer spacing, reused so this needs no CSS of its
+     own. The non-breaking spaces keep each dot with the name before it and the
+     arrow with its words, so a wrapped line never starts with "·" or "→". */
+  const hubs = homeHubs(jobs);
+  html = fillMarker(html, 'HUBS', `<p class="dim home-hubs">${hubs.length
+    ? `<b>Hiring now:</b> ${hubs.map((h) => `<a href="${regionHref(`/companies/${h.slug}`, region)}">${esc(h.name)}</a>&nbsp;·`).join(' ')} `
+    : ''}<a href="/companies">All&nbsp;companies&nbsp;→</a></p>`) ?? html;
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
   html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs)) ?? html;
@@ -4207,7 +4276,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   mkdirSync(outDir, { recursive: true });
   const outPath = join(outDir, 'index.html');
   if (html !== template || outPath !== templatePath) writeFileSync(outPath, html);
-  return jobs.length;
+  return listed.length;
 }
 
 /**
