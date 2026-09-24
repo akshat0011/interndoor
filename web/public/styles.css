@@ -1147,7 +1147,7 @@ html[data-boot] .boot-part {
 @keyframes fade { from { opacity: 0; } }
 .modal {
   position: fixed; z-index: 91; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  width: min(790px, calc(100vw - 32px)); max-height: min(89vh, 940px);
+  width: min(860px, calc(100vw - 32px)); max-height: min(89vh, 940px);
   background: var(--bg-2); border: 1px solid var(--rule-2); border-radius: var(--r-2);
   display: flex; flex-direction: column; overflow: hidden;
   animation: pop .3s var(--snap);
@@ -1173,18 +1173,57 @@ html[data-boot] .boot-part {
 .filestate { margin-top: 14px; padding: 11px 13px; border-radius: var(--r); border: 1px solid color-mix(in oklab, var(--cash) 40%, transparent); color: var(--cash); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
 .filestate.bad { border-color: color-mix(in oklab, var(--hot) 45%, transparent); color: var(--hot); text-transform: none; letter-spacing: 0; font-family: var(--ui); font-size: 13px; }
 
-.warn { margin: 16px 0 18px; padding: 14px 16px; border-left: 2px solid var(--hot); background: var(--card); font-size: 12.5px; color: var(--ink-2); display: flex; flex-direction: column; gap: 8px; }
+.warn { margin: 14px 0 16px; padding: 10px 13px; border-left: 2px solid var(--hot); background: var(--card); font-size: 12px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; }
 .warn b { color: var(--ink); }
 
-/* THE BRING-YOUR-OWN-KEY PANEL. Collapsed by default: ranking by skills needs
-   no key at all, so the panel must not read as a gate in front of the feature
-   that works without it. */
-.keybox { margin: 16px 0 4px; border: 1px solid var(--rule); border-radius: var(--r); padding: 11px 13px; background: var(--card); }
-.keybox summary { cursor: pointer; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
-.keybox summary:hover { color: var(--live); }
-.keybox[open] summary { margin-bottom: 10px; }
+/* ---------------- the three steps ----------------
+   Upload, key, act. The modal used to state the privacy position three separate
+   times — a lime box, a line under the key, and a four-sentence warning — and
+   read as a policy rather than a tool. It says it ONCE now, under the key,
+   where the decision is actually made. */
+.wiz {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin: 0 0 18px; font-family: var(--mono); font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3);
+}
+.wiz .wstep { display: inline-flex; align-items: center; gap: 6px; }
+/* The connector is drawn, not typed: an arrow character would be read aloud as
+   "right arrow" between every step. `+` matches through the hidden step 2 in
+   rank mode, so step 3 keeps its connector and step 2 takes its own with it. */
+.wiz .wstep + .wstep::before {
+  content: ''; width: 16px; height: 1px; margin-right: 2px; background: var(--rule-2);
+}
+.wiz .wstep b {
+  display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%;
+  border: 1px solid var(--rule-2); font-size: 9.5px; font-weight: 700; color: var(--ink-3);
+}
+/* Lime marks the step you are ON and the ones you have finished — status, which
+   is what the accent is for. Everything else stays quiet. */
+.wiz .wstep.is-now { color: var(--ink); }
+.wiz .wstep.is-now b { border-color: var(--live); color: var(--live); }
+.wiz .wstep.is-done { color: var(--ink-2); }
+.wiz .wstep.is-done b { border-color: var(--live); background: var(--live); color: var(--live-ink); }
+
+/* ---------------- the key ----------------
+   Deliberately NOT a large bordered panel. It is one step of three, and a whole
+   green block for it made the modal look like the key was the product. */
+.keybox { margin: 16px 0 6px; border: 1px solid var(--rule); border-radius: var(--r); padding: 12px 14px; background: var(--card); }
+/* Heading and Forget share a row, OUTSIDE the form: the form collapses away once
+   a key is saved, and a Forget button inside it would go with it — leaving a
+   saved key nobody could remove. */
+.keytop { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 24px; }
+.keytop .bare { height: 26px; padding: 0 8px; font-size: 12px; }
+.keyhead { margin: 0; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); font-weight: 700; }
+#key-form { margin-top: 8px; }
+/* Connected is a SUCCESS state, so it gets the accent — and nothing else does. */
+.keybox.is-set .keyhead { color: var(--live); }
+.keybox.is-set { border-color: color-mix(in oklab, var(--live) 30%, transparent); }
+/* Blocking is marked with one edge, not a filled box. */
+.keybox.is-required { border-left: 3px solid var(--live); }
 .keynote { margin: 0 0 10px; font-size: 12.5px; color: var(--ink-2); }
 .keynote a { color: var(--live); text-underline-offset: 3px; }
+.keyfine { margin: 8px 0 0; font-size: 11.5px; color: var(--ink-3); }
+.keyfine a { color: var(--live); text-underline-offset: 3px; }
 .keyrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .keyrow input {
   flex: 1 1 210px; min-width: 0; padding: 10px 12px;
@@ -1194,28 +1233,17 @@ html[data-boot] .boot-part {
 }
 .keyrow input:focus { border-color: var(--live); }
 
-/* WHEN THE KEY IS ACTUALLY BLOCKING SOMETHING, THE PANEL STOPS BEING QUIET.
-   As a plain collapsed <details> beside a bright, enabled "Tailor it", the only
-   way a reader discovered that tailoring needs a key was to press the button
-   and be shown an error — which reads as a broken site. It shouts only in that
-   state; in rank mode, where no key is needed, it stays out of the way. */
-.keybox.is-required {
-  border-color: var(--live);
-  background: color-mix(in oklab, var(--live) 7%, var(--card));
-}
-.keybox.is-required summary { color: var(--live); font-weight: 700; }
-/* The "why" line only exists in the blocking state — in rank mode it would be
-   a paragraph explaining a requirement that does not apply. */
-.keyneed { display: none; }
-.keybox.is-required .keyneed {
-  display: block; margin: 0 0 10px; padding: 9px 11px;
-  border-radius: var(--r); background: color-mix(in oklab, var(--live) 12%, var(--bg-2));
-  font-size: 12.5px; color: var(--ink);
-}
-.keybox.is-required .keyrow input { border-color: color-mix(in oklab, var(--live) 45%, transparent); }
-/* The disclosure triangle is a weak affordance for something required, so the
-   open panel carries a solid left edge as well. */
-.keybox.is-required { border-left-width: 3px; }
+/* WHEN THE KEY IS ACTUALLY BLOCKING SOMETHING, THE PANEL SAYS SO — through the
+   step bar marking step 2, the lime edge above, the disabled button naming the
+   key, and this line. It was a collapsed <details> beside a bright, enabled
+   "Tailor it", and the only way to discover the key was to press the button and
+   be shown an error, which reads as a broken site. The panel is always open
+   now, so nothing has to be expanded to find it.
+   The "why" line exists only in the blocking state; in rank mode the optional
+   note stands in its place, because there the key is not a requirement. */
+.keyneed { display: none; margin: 0 0 10px; font-size: 12.5px; color: var(--ink); }
+.keybox.is-required .keyneed { display: block; }
+.keybox.is-required .keynote { display: none; }
 
 /* A primary button that cannot be pressed has to LOOK unpressable, or the
    reader clicks it and concludes nothing happened. */
