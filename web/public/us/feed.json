@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/continental-2027-internship-compound-engineer-hoosier-racing-tire-ats-smartrecruiters-continental-744000151602049",
+      "url": "https://interndoor.com/us/jobs/continental-2027-internship-compound-engineer-hoosier-racing-tire-ats-smartrecruiters-continental-744000151602049",
+      "title": "2027 Internship – Compound Engineer (Hoosier Racing Tire) — Continental",
+      "content_text": "Company: Continental · Location: Plymouth, us · Duration: Fall 2027\n• Analyze rubber compound properties through lab experiments and data\n• Work with elastomer technology and mixing/testing equipment\n• Attend races and tests to evaluate tire performance\n• Design and lead own projects on compound processing and thermodynamics",
+      "date_published": "2026-09-24T12:04:18.356Z",
+      "authors": [
+        {
+          "name": "Continental"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/intel-silicon-hardware-engineering-intern-graduate-4461334185",
       "url": "https://interndoor.com/us/jobs/intel-silicon-hardware-engineering-intern-graduate-4461334185",
       "title": "Silicon Hardware Engineering - Intern, Graduate — Intel",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Principal Financial Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/graphcore-graduate-performance-engineer-ats-greenhouse-graphcore-8841990002",
-      "url": "https://interndoor.com/us/jobs/graphcore-graduate-performance-engineer-ats-greenhouse-graphcore-8841990002",
-      "title": "Graduate Performance Engineer — Graphcore",
-      "content_text": "Company: Graphcore · Location: Austin, Texas, United States\n• Support design and debug of complex server and rack systems\n• Work with hardware and software teams on performance optimization\n• Analyze and test performance bottlenecks in large-scale systems",
-      "date_published": "2026-09-24T00:21:07.000Z",
-      "authors": [
-        {
-          "name": "Graphcore"
         }
       ]
     }
