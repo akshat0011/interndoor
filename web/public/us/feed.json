@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-impella-pump-systems-test-engineering-co-op-4471185701",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-impella-pump-systems-test-engineering-co-op-4471185701",
+      "title": "Impella Pump Systems Test Engineering Co-Op — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Danvers, MA\n• Support development and testing of Impella Pump systems\n• Use SolidWorks and collaborate with quality and regulatory teams\n• Contribute to risk assessments and regulatory submissions",
+      "date_published": "2026-09-24T04:00:07.931Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-test-engineering-co-op-beatbox-4471197248",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-test-engineering-co-op-beatbox-4471197248",
+      "title": "Software Test Engineering Co-op (Beatbox) — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Danvers, MA\n• Write automated tests for medical device software using Pytest and in-house tools\n• Collaborate with engineers to design test plans and track software defects\n• Perform manual and automated testing to ensure security and performance",
+      "date_published": "2026-09-24T04:00:07.185Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-aic-systems-test-engineering-co-op-4471191418",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-aic-systems-test-engineering-co-op-4471191418",
+      "title": "AIC Systems Test Engineering Co-Op — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Danvers, MA\n• Test software, optical, and hardware interfaces for AIC systems\n• Collaborate with quality, regulatory, and software teams on global deployments\n• Investigate field issues and support root-cause analysis for CAPAs",
+      "date_published": "2026-09-24T03:59:48.380Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-test-engineering-co-op-rlm-4471185700",
+      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-software-test-engineering-co-op-rlm-4471185700",
+      "title": "Software Test Engineering Co-op (RLM) — Johnson & Johnson MedTech",
+      "content_text": "Company: Johnson & Johnson MedTech · Location: Danvers, MA\n• Write automated test scripts for medical device software using Pytest and in-house tools\n• Collaborate with developers and QA teams to design test plans and track defects\n• Perform manual and automated testing to ensure security and performance",
+      "date_published": "2026-09-24T03:59:28.264Z",
+      "authors": [
+        {
+          "name": "Johnson & Johnson MedTech"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-heart-recovery-software-r-and-d-co-op-4471195277",
       "url": "https://interndoor.com/us/jobs/johnson-and-johnson-medtech-heart-recovery-software-r-and-d-co-op-4471195277",
       "title": "Heart Recovery Software R&D Co-Op — Johnson & Johnson MedTech",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-electrical-engineering-intern-4471150054",
-      "url": "https://interndoor.com/us/jobs/hewlett-packard-enterprise-electrical-engineering-intern-4471150054",
-      "title": "Electrical Engineering Intern — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Spring, TX\n• Support senior engineers on technical projects involving hardware and software systems\n• Use Python, Java, or C++ to troubleshoot and solve technical problems\n• Work 2 days per week in an HPE office with hybrid flexibility",
-      "date_published": "2026-09-23T22:36:56.417Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/johnson-and-johnson-automation-and-robotics-engineering-spring-co-op-4471132416",
-      "url": "https://interndoor.com/us/jobs/johnson-and-johnson-automation-and-robotics-engineering-spring-co-op-4471132416",
-      "title": "Automation & Robotics Engineering Spring Co-op — Johnson & Johnson",
-      "content_text": "Company: Johnson & Johnson · Location: Santa Clara, CA\n• Develop automation solutions and mechanized systems for manufacturing\n• Work with robotics, machine vision, and edge computing technologies\n• Collaborate with cross-functional teams on product development and optimization",
-      "date_published": "2026-09-23T21:59:26.351Z",
-      "authors": [
-        {
-          "name": "Johnson & Johnson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-robotics-mechanical-design-engineer-optimus-winter-spring-2-4471130416",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-robotics-mechanical-design-engineer-optimus-winter-spring-2-4471130416",
-      "title": "Internship, Robotics Mechanical Design Engineer, Optimus (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Design mechanical systems for robotics products using CAD and simulation tools\n• Collaborate on test equipment and automation fixtures for advanced manufacturing\n• Work on high-volume production drawings and tolerance analysis for precision parts",
-      "date_published": "2026-09-23T21:39:30.453Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/endeavor-group-ai-engineer-internship-undergraduate-or-graduate-summer-2027-ats-teamtailor-endeavor-2ffb4579-6c9b-463e-87ec-d6d4b9fd7b01",
-      "url": "https://interndoor.com/us/jobs/endeavor-group-ai-engineer-internship-undergraduate-or-graduate-summer-2027-ats-teamtailor-endeavor-2ffb4579-6c9b-463e-87ec-d6d4b9fd7b01",
-      "title": "AI Engineer Internship | Undergraduate or Graduate - Summer 2027 — Endeavor Group",
-      "content_text": "Company: Endeavor Group · Location: New York, Global, US · Duration: 10 weeks\n• Build AI tools for 50+ markets using Claude, Snowflake, and Salesforce\n• Ship reusable capabilities used by global teams with real impact\n• Work on governance, documentation, and knowledge systems for AI",
-      "date_published": "2026-09-23T21:24:22.000Z",
-      "authors": [
-        {
-          "name": "Endeavor Group"
         }
       ]
     }
