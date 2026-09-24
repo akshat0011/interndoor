@@ -833,6 +833,186 @@ function stillListed(job, company, region = DEFAULT_REGION) {
 }
 
 /**
+ * WHAT INTERNDOOR ADDS THAT THE EMPLOYER'S POSTING DOES NOT.
+ *
+ * Google's spam policies single out pages generated at scale from someone
+ * else's content with little added, and a job page that is a summary plus an
+ * Apply button reads exactly like that. What this site genuinely holds, and
+ * the employer's own page cannot say, is its RECORD of the posting: where it
+ * was found, when we first saw it and how soon after it went up, when it was
+ * last seen listed, where Apply really lands, and what happens to this page
+ * when the role closes. Every value below is a stored observation. Nothing is
+ * inferred, and a row we cannot fill is left out rather than guessed.
+ */
+
+/* ATS platforms by the name a reader knows them by. Amazon, Microsoft and Uber
+   are absent on purpose: those collectors read the employer's own jobs site,
+   so there is no third-party platform to name. */
+const ATS_PLATFORMS = {
+  greenhouse: 'Greenhouse', lever: 'Lever', ashby: 'Ashby', smartrecruiters: 'SmartRecruiters',
+  workable: 'Workable', recruitee: 'Recruitee', personio: 'Personio', workday: 'Workday',
+  eightfold: 'Eightfold', keka: 'Keka', teamtailor: 'Teamtailor', oraclecloud: 'Oracle Cloud',
+};
+
+/** "job-boards.greenhouse.io" from a URL, or '' for anything not http(s). */
+function hostOf(url) {
+  try {
+    const u = new URL(String(url ?? ''));
+    return /^https?:$/.test(u.protocol) ? u.hostname.replace(/^www\./i, '').toLowerCase() : '';
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Where a posting was collected from — or null when we cannot say.
+ *
+ * The id is the authority: every ATS collector writes `ats:<provider>:…`, and
+ * every LinkedIn path (the scan and bin/add-job.js) stores LinkedIn's numeric
+ * id. Anything else is left unlabelled rather than assumed to be LinkedIn.
+ */
+export function listingSource(job) {
+  const id = String(job?.id ?? '');
+  const ats = id.match(/^ats:([a-z0-9]+):/i);
+  if (ats) return { kind: 'careers', platform: ATS_PLATFORMS[ats[1].toLowerCase()] ?? '' };
+  if (/^\d+$/.test(id) || /(^|\.)linkedin\.com$/.test(hostOf(job?.url))) return { kind: 'linkedin', platform: 'LinkedIn' };
+  return null;
+}
+
+/**
+ * The degree codes the enricher writes (src/gemini.js, src/ollama.js), in
+ * words. UG is bachelor's-level study, PG master's and above, UG/PG either one
+ * explicitly, and Pursuing a currently-enrolled student with no level named.
+ * The rail used to print the codes themselves — "UG/PG · Computer Science".
+ */
+const DEGREE_LEVELS = {
+  UG: 'Bachelor’s',
+  PG: 'Master’s or PhD',
+  'UG/PG': 'Bachelor’s or postgraduate',
+  'PG/UG': 'Bachelor’s or postgraduate',
+  PURSUING: 'Currently enrolled students',
+};
+
+/* `degreeText` is the posting's own phrasing, and it mixes two axes: "PhD" and
+   "B.S./M.S." are levels, "Computer Science/Engineering" is a field of study.
+   Anchored on word starts so "Mechanical" and "Materials" are not read as
+   M.E. and M.A. */
+const NAMES_LEVEL = /\b(bachelor|master|ph\.?\s?d|doctora|undergrad|postgrad|graduate|mba|bba|diploma|associate|b\.?\s?tech|m\.?\s?tech|[bm]\.?\s?eng\b|[bm]\.?c\.?a\b|b\.?\s?com\b|[bm]\.?s\.?(ee|ce|cs|me)\b|b\.?\s?e\b|m\.?\s?e\b|b\.?\s?sc?\b|m\.?\s?sc?\b|b\.?\s?a\b|m\.?\s?a\b)/i;
+
+/**
+ * Who can apply, as two separate answers: the degree LEVEL and the FIELD.
+ * The posting's own words win where they name a level; the stored code is the
+ * fallback. Either may be '' and is then not shown.
+ */
+export function eligibilityOf(job) {
+  const text = String(job?.degreeText ?? '').trim();
+  const level = DEGREE_LEVELS[String(job?.degreeLevel ?? '').trim().toUpperCase()] ?? '';
+  const textIsLevel = !!text && NAMES_LEVEL.test(text);
+  // Spaced slashes, so a long list of fields can wrap between fields in the
+  // narrow rail instead of being broken mid-word by overflow-wrap.
+  const spaced = text.replace(/\s*\/\s*/g, ' / ');
+  return { degree: textIsLevel ? spaced : level, field: text && !textIsLevel ? spaced : '' };
+}
+
+/** "within 17 minutes", "within 3 hours" — rounded UP, so the claim is never
+ *  faster than what we measured. */
+function withinPhrase(ms) {
+  const unit = ms < 3_600_000 ? [60_000, 'minute'] : ms < 2 * DAY ? [3_600_000, 'hour'] : [DAY, 'day'];
+  const n = Math.max(1, Math.ceil(ms / unit[0]));
+  return `within ${n} ${unit[1]}${n === 1 ? '' : 's'}`;
+}
+
+/**
+ * The "About this listing" block.
+ *
+ * DAY-GRANULAR DATES ONLY, for the churn reason stillListed gives: every value
+ * here is either fixed for the life of the posting (first seen, posted) or
+ * already rendered at day precision elsewhere on the page (last seen), so this
+ * adds no new reason for a page to be rewritten on an ordinary publish.
+ */
+function listingRecord(job, { region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS, hub = '', siblings = [], past = null } = {}) {
+  const company = esc(job.company);
+  const src = listingSource(job);
+  const where = src?.kind === 'careers'
+    ? `${company}&rsquo;s careers site${src.platform ? ` (${esc(src.platform)})` : ''}`
+    : src?.kind === 'linkedin' ? 'LinkedIn' : '';
+  const day = (ms) => `<time datetime="${isoDay(ms)}">${esc(dayLabel(ms, region))}</time>`;
+
+  const rows = [];
+  if (where) rows.push(['Found on', where]);
+
+  const first = Number(job.firstSeenAt);
+  const posted = Number(job.postedAt);
+  if (first > 0) {
+    /* How soon after it went up — the one thing this site exists to be good
+       at, measured per posting. Only when the source gave a posting time that
+       is genuinely earlier (postedAt falls back to firstSeenAt when it gave
+       none), and only inside a week: a longer gap usually means we began
+       watching that employer after the role went up, not that we were slow.
+       NOT for a DATE-ONLY source. Workday, Oracle Cloud and Workable give a
+       day, stored as midnight UTC — every one of their 539 live rows — so an
+       hour count measured from it would be precision we never had. LinkedIn's
+       "16 minutes ago" is floored by LinkedIn, which is why withinPhrase
+       rounds up: the result stays an upper bound. */
+    const lag = posted > 0 && posted < first && posted % DAY !== 0 ? first - posted : 0;
+    rows.push(['First seen by InternDoor',
+      `${day(first)}${lag && lag < 7 * DAY ? `, ${withinPhrase(lag)} of being posted` : ''}`]);
+  }
+
+  /* "Last seen LISTED", never "verified open": for a LinkedIn row this is the
+     last time the card was in a search result, which is an observation we did
+     make — not a check of the application, which we did not. */
+  const last = Number(job.lastSeenAt);
+  if (last > 0 && where) rows.push(['Last seen listed', day(last)]);
+
+  /* Where Apply actually lands, as a domain a reader can recognise before they
+     click — the same URL the button uses, through the same filter. */
+  const host = safeUrl(job.applyUrl) ? hostOf(job.applyUrl) : '';
+  if (host) {
+    const easy = job.easyApply && /(^|\.)linkedin\.com$/.test(host) ? ' (Easy Apply)' : '';
+    rows.push(['Application page', `${esc(host)}${easy}`]);
+  }
+
+  if (!rows.length) return '';
+
+  /* WHEN THIS PAGE COMES DOWN — the rule publish actually runs (store.
+     recentJobs): a LinkedIn row for `validDays` after it was first seen, an
+     ATS row for as long as the employer's board keeps listing it, and either
+     one sooner when the dead-link sweep or a manual close marks it closed. */
+  const ends = [];
+  if (src?.kind === 'linkedin' && first > 0) {
+    ends.push(`LinkedIn listings stay on InternDoor for at most ${validDays} days after we first see them, so this one comes down by ${day(first + validDays * DAY)}, or sooner if we find its application has closed.`);
+  } else if (src?.kind === 'careers') {
+    ends.push(`We keep re-checking ${company}&rsquo;s careers site, and take this listing down after the role disappears from it or its application link stops working.`);
+  }
+  if (hub) ends.push(`When it comes down, this address points to <a href="${hub}">${company}&rsquo;s page</a> instead of a dead end.`);
+
+  /* THIS EMPLOYER, AS WE HAVE WATCHED IT. Counted over live and past postings
+     with the hub's own dedupe, so the two pages cannot disagree. Only when the
+     caller passed a record — writePages does, keyed exactly as `siblings` is,
+     so a posting filed under a variant spelling gets no sentence rather than
+     a wrong count. */
+  let seenLine = '';
+  if (Array.isArray(past) && past.length) {
+    const all = employerRows(siblings, past);
+    const since = all.map((r) => Number(r.firstSeenAt)).filter((v) => v > 0).sort((a, b) => a - b)[0];
+    // placeSuffix, not region.inName: "HARMAN India in India" was the first render.
+    const inPlace = placeSuffix(job.company, region);
+    seenLine = all.length > 1
+      ? `InternDoor has recorded ${all.length} engineering postings from ${company}${inPlace}${since ? ` since ${esc(monthLabel(since, region))}` : ''}.`
+      : `This is the first ${company} posting InternDoor has recorded${inPlace}.`;
+  }
+
+  return `<section class="jp-rec">
+          <h2>About this listing</h2>
+          <dl class="rec">
+            ${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n            ')}
+          </dl>
+          ${ends.length || seenLine ? `<p class="rec-note">${[seenLine, ...ends].filter(Boolean).join(' ')}</p>` : ''}
+        </section>`;
+}
+
+/**
  * What is unusual about THIS posting, rather than what it says.
  *
  * Students do not only want facts, they want to know which of them matter —
@@ -1532,7 +1712,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set() } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set(), past = null } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = jobPageIndexable(job, region);
@@ -1710,12 +1890,21 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   const description = clampWords([descLead, descFacts, (job.bullets ?? [])[0]]
     .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(), 155);
 
+  const elig = eligibilityOf(job);
   const facts = [
     job.location ? ['Location', esc(job.location)] : null,
     modeText(job) ? ['Mode', esc(modeText(job))] : null,
+    // Stored on every row, and the JSON-LD already states it to Google; a
+    // reader arriving from search had to infer it from the title.
+    ['Type', job.employmentType === FULL_TIME ? `Full-time, ${esc(entryWord(region))}` : 'Internship'],
     job.roleLabel ? ['Focus', esc(job.roleLabel)] : null,
-    job.degreeLevel ? ['Eligibility', esc([job.degreeLevel, job.degreeText].filter(Boolean).join(' · '))] : null,
+    // Level and field as two rows, in words — see eligibilityOf. This row used
+    // to print the enricher's codes: "UG/PG · Computer Science".
+    elig.degree ? ['Degree', esc(elig.degree)] : null,
+    elig.field ? ['Field', esc(elig.field)] : null,
     durationText(job) ? ['Duration', esc(durationText(job))] : null,
+    // Read from the title only (startDate), never inferred from the season.
+    startDate(job) ? ['Starts', esc(startDate(job))] : null,
     // A stipend the posting never stated is NOT DISCLOSED, never "Unpaid".
     // Saying nothing at all left a reader unable to tell "this employer pays
     // nothing" from "we do not know" — and the field that used to answer that,
@@ -1762,14 +1951,17 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
      collapse on, so the page and the card agree. */
   const locations = siblings.filter((j) => roleKey(j) === here).length || 1;
   const seenRoles = new Set([here]);
-  const others = newestFirst(siblings.filter((j) => String(j.id) !== String(job.id)))
+  const otherRoles = newestFirst(siblings.filter((j) => String(j.id) !== String(job.id)))
     .filter((j) => {
       const k = roleKey(j);
       if (seenRoles.has(k)) return false;
       seenRoles.add(k);
       return true;
-    })
-    .slice(0, 6);
+    });
+  /* The strip shows six; the COUNT in the masthead is all of them. It was
+     read off the capped list, so an employer with twenty other open roles was
+     described as having six. */
+  const others = otherRoles.slice(0, 6);
 
   return `${head({
     title: pageTitle,
@@ -1838,8 +2030,8 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
                    region, which is the only company fact this page holds that a
                    reader can act on; with no others it says so plainly rather
                    than offering a hub that will look empty. -->
-              <span class="jp-co-more">${others.length
-                ? `${others.length} other open role${others.length === 1 ? '' : 's'} here`
+              <span class="jp-co-more">${otherRoles.length
+                ? `${otherRoles.length} other open role${otherRoles.length === 1 ? '' : 's'} here`
                 : 'See this employer&rsquo;s page'} <i aria-hidden="true">&rarr;</i></span>
             </span>
           </a>
@@ -1886,6 +2078,8 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
             return `<a class="chip" href="${href}">${esc(sk)}</a>`;
           }).join('')}</div>
         </section>` : ''}
+
+        ${listingRecord(job, { region, validDays, hub, siblings, past })}
 
         <section>
           <h2>How to apply</h2>
@@ -4492,6 +4686,14 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     track(writeIfChanged(join(jobsDir, name), renderJobRedirect(target, region)), `/jobs/${slug}`);
   }
 
+  // Every employer we have ever published, not just the ones hiring today. This
+  // union is what makes a hub permanent: a company drops out of `byCompany` the
+  // moment its last posting ages out, and before this the file was then deleted.
+  // Built BEFORE the job pages, which now state how many postings we have
+  // recorded from their employer (listingRecord).
+  const pastByCompany = groupByCanonicalCompany(
+    (history ?? []).filter((p) => p.company), companyNames);
+
   /* A job page on a noindex board is written and linked but never announced —
      the same rule the facets follow (trackFacet). */
   const trackJob = (changed, path) => { if (!NOINDEX_JOB_BOARDS.has(region.code)) track(changed, path); };
@@ -4500,17 +4702,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(jobsDir, name));
     trackJob(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages, past: pastByCompany.get(job.company) ?? null })),
       `/jobs/${jobSlug(job)}`);
   }
 
   const logos = companyLogos(jobs, publicDir);
-
-  // Every employer we have ever published, not just the ones hiring today. This
-  // union is what makes a hub permanent: a company drops out of `byCompany` the
-  // moment its last posting ages out, and before this the file was then deleted.
-  const pastByCompany = groupByCanonicalCompany(
-    (history ?? []).filter((p) => p.company), companyNames);
 
   const allCompanies = new Set([...byCompany.keys(), ...pastByCompany.keys()]);
 

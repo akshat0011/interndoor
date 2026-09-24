@@ -1228,5 +1228,124 @@ console.log('\n== every surface names both kinds — internships & entry-level j
   }
 }
 
+console.log('\n== about this listing: what InternDoor adds, and nothing it cannot back ==');
+{
+  /* Imported here rather than on the line at the top, so this block can be
+     read — and moved — as one unit. */
+  const { listingSource, eligibilityOf } = await import('../src/pages.js');
+  const IN = regionOf('IN');
+  const MIN = 60_000, HOUR = 3_600_000, DAY = 86_400_000;
+  const T0 = Date.UTC(2026, 8, 20, 9, 30);            // 20 Sep 2026, 09:30 UTC
+  const recOf = (html) => {
+    const at = html.indexOf('<section class="jp-rec">');
+    return at === -1 ? '' : html.slice(at, html.indexOf('</section>', at));
+  };
+  const text = (html) => html.replace(/<[^>]+>/g, ' ').replace(/&rsquo;/g, '’').replace(/\s+/g, ' ').trim();
+
+  /* WHERE WE FOUND IT — from the id, which every collector writes. */
+  check('an ATS id names its platform', listingSource({ id: 'ats:greenhouse:astranis:1' }), { kind: 'careers', platform: 'Greenhouse' });
+  check('a first-party board names none', listingSource({ id: 'ats:microsoft:x:1' }), { kind: 'careers', platform: '' });
+  check('a numeric id is LinkedIn', listingSource({ id: '4461303443' }), { kind: 'linkedin', platform: 'LinkedIn' });
+  check('a LinkedIn url is LinkedIn', listingSource({ id: 'x', url: 'https://in.linkedin.com/jobs/view/1' }).kind, 'linkedin');
+  check('anything else is not guessed', listingSource({ id: 'manual-7' }), null);
+
+  /* WHO CAN APPLY — codes in words, level and field apart. */
+  check('UG in words', eligibilityOf({ degreeLevel: 'UG' }), { degree: 'Bachelor’s', field: '' });
+  check('UG/PG in words', eligibilityOf({ degreeLevel: 'UG/PG' }).degree, 'Bachelor’s or postgraduate');
+  check('Pursuing in words', eligibilityOf({ degreeLevel: 'Pursuing' }).degree, 'Currently enrolled students');
+  check('the posting\'s own level wins', eligibilityOf({ degreeLevel: 'UG', degreeText: 'B.S./M.S.' }), { degree: 'B.S. / M.S.', field: '' });
+  check('a field is a field, not a level', eligibilityOf({ degreeLevel: 'UG', degreeText: 'Computer Science/Engineering' }),
+    { degree: 'Bachelor’s', field: 'Computer Science / Engineering' });
+  check('MSEE and BEng are levels', [eligibilityOf({ degreeText: 'MSEE/BSEE' }).field, eligibilityOf({ degreeText: 'BEng' }).field], ['', '']);
+  check('Mechanical and Materials are not M.E. and M.A.',
+    [eligibilityOf({ degreeText: 'Mechanical Engineering' }).field, eligibilityOf({ degreeText: 'Materials Science' }).field],
+    ['Mechanical Engineering', 'Materials Science']);
+  check('nothing stated, nothing shown', eligibilityOf({ degreeLevel: 'none' }), { degree: '', field: '' });
+
+  const atsJob = {
+    id: 'ats:greenhouse:astranis:4704805006', company: 'Astranis', title: 'FPGA Intern', location: 'San Francisco, CA',
+    bullets: ['a', 'b'], postedAt: T0, firstSeenAt: T0 + 22 * MIN, lastSeenAt: T0 + 3 * DAY,
+    url: 'https://job-boards.greenhouse.io/astranis/jobs/4704805006', applyUrl: 'https://job-boards.greenhouse.io/astranis/jobs/4704805006',
+    degreeLevel: 'UG/PG',
+  };
+  const atsRec = text(recOf(renderJobPage(atsJob, [atsJob], { region: US })));
+  check('the section renders', atsRec.startsWith('About this listing'), true);
+  check('it names the careers site and platform', atsRec.includes('Found on Astranis’s careers site (Greenhouse)'), true);
+  check('it dates the first sighting', atsRec.includes('First seen by InternDoor 20 Sept 2026'), true);
+  check('and how soon after posting', atsRec.includes('within 22 minutes of being posted'), true);
+  check('and the last sighting', atsRec.includes('Last seen listed 23 Sept 2026'), true);
+  check('it names where Apply lands', atsRec.includes('Application page job-boards.greenhouse.io'), true);
+  check('it says how an ATS listing comes down', atsRec.includes('after the role disappears from it or its application link stops working'), true);
+  check('and points at the hub', recOf(renderJobPage(atsJob, [atsJob], { region: US })).includes('href="/us/companies/astranis"'), true);
+  check('the rail says the degree in words', /<dt>Degree<\/dt><dd>Bachelor’s or postgraduate<\/dd>/.test(renderJobPage(atsJob, [], { region: US })), true);
+  check('never the raw code', renderJobPage(atsJob, [], { region: US }).includes('UG/PG'), false);
+
+  /* THE LAG IS ONLY STATED WHERE THE SOURCE GAVE A TIME. */
+  const lagOf = (patch) => /within \d+ \w+ of being posted/.test(recOf(renderJobPage({ ...atsJob, ...patch }, [], { region: US })));
+  check('rounded up: 16.0001 minutes is "within 17"', text(recOf(renderJobPage({ ...atsJob, firstSeenAt: T0 + 16 * MIN + 6 }, [], { region: US }))).includes('within 17 minutes'), true);
+  check('hours past the first', text(recOf(renderJobPage({ ...atsJob, firstSeenAt: T0 + 2 * HOUR + MIN }, [], { region: US }))).includes('within 3 hours'), true);
+  check('a date-only source (midnight UTC) gets no lag', lagOf({ id: 'ats:workday:x:1', postedAt: Date.UTC(2026, 8, 20), firstSeenAt: Date.UTC(2026, 8, 21, 6) }), false);
+  check('a week or more gets no lag', lagOf({ firstSeenAt: T0 + 7 * DAY }), false);
+  check('a postedAt that is only the fallback gets no lag', lagOf({ postedAt: T0 + 22 * MIN }), false);
+  check('a postedAt after the sighting gets no lag', lagOf({ postedAt: T0 + HOUR }), false);
+
+  /* LINKEDIN: the retirement date is the publish rule, first seen + validDays. */
+  const li = {
+    id: '4469735146', company: 'HARMAN India', title: 'Intern', location: 'Bengaluru, Karnataka, India', bullets: ['a', 'b'],
+    postedAt: T0 - 20 * MIN, firstSeenAt: T0, lastSeenAt: T0,
+    url: 'https://www.linkedin.com/jobs/view/4469735146/', applyUrl: 'https://jobsearch.harman.com/en_US/careers/JobDetail/1',
+  };
+  const liHtml = renderJobPage(li, [li], { region: IN, validDays: 30 });
+  check('LinkedIn is named as the source', text(recOf(liHtml)).includes('Found on LinkedIn'), true);
+  check('it says when the page comes down', /comes down by <time datetime="2026-10-20">/.test(recOf(liHtml)), true);
+  check('from the window publish actually uses', /comes down by <time datetime="2026-10-04">/.test(recOf(renderJobPage(li, [], { region: IN, validDays: 14 }))), true);
+  check('a LinkedIn apply link says Easy Apply', text(recOf(renderJobPage({ ...li, easyApply: true, applyUrl: 'https://www.linkedin.com/jobs/view/1' }, [], { region: IN }))).includes('linkedin.com (Easy Apply)'), true);
+  check('Easy Apply is never claimed for an employer site', text(recOf(renderJobPage({ ...li, easyApply: true }, [], { region: IN }))).includes('Easy Apply'), false);
+  check('an unsafe apply link names no destination', recOf(renderJobPage({ ...li, applyUrl: 'javascript:alert(1)' }, [], { region: IN })).includes('Application page'), false);
+
+  /* THE EMPLOYER'S RECORD — only when history was passed, deduplicated by id. */
+  check('no history, no count', text(recOf(liHtml)).includes('InternDoor has recorded'), false);
+  const older = { id: '4400000001', company: 'HARMAN India', title: 'Old', firstSeenAt: Date.UTC(2026, 6, 3) };
+  const withPast = text(recOf(renderJobPage(li, [li], { region: IN, past: [li, older] })));
+  check('live and past, each counted once', withPast.includes('recorded 2 engineering postings from HARMAN India since Jul 2026'), true);
+  check('never "India in India"', withPast.includes('India in India'), false);
+  check('a lone posting says so', text(recOf(renderJobPage(li, [li], { region: IN, past: [li] }))).includes('This is the first HARMAN India posting InternDoor has recorded.'), true);
+  check('another board keeps its place name', text(recOf(renderJobPage(atsJob, [atsJob], { region: US, past: [atsJob, { id: 'z', firstSeenAt: T0 }] }))).includes('from Astranis in the US since'), true);
+
+  /* NOTHING TO SAY, NO SECTION; AND WHAT IT DOES SAY IS ESCAPED. */
+  check('a row we know nothing about renders no section', recOf(renderJobPage({ id: 'x', company: 'X', title: 'Y', bullets: ['a', 'b'] }, [], { region: IN })), '');
+  check('the employer name is escaped', recOf(renderJobPage({ ...li, company: '<b>Evil</b>' }, [], { region: IN })).includes('<b>Evil</b>'), false);
+  check('two renders are byte-identical', renderJobPage(li, [li], { region: IN, past: [li, older] }) === renderJobPage(li, [li], { region: IN, past: [li, older] }), true);
+
+  /* THE RAIL: type, field and start date, each only when stored. */
+  const railOf = (html) => (html.match(/<dl class="facts">[\s\S]*?<\/dl>/) || [''])[0];
+  check('an internship says so', /<dt>Type<\/dt><dd>Internship<\/dd>/.test(railOf(liHtml)), true);
+  check('a full-time role says so', /<dt>Type<\/dt><dd>Full-time, entry-level<\/dd>/.test(railOf(renderJobPage({ ...li, employmentType: 'fulltime' }, [], { region: IN }))), true);
+  check('a field of study gets its own row', /<dt>Field<\/dt><dd>Electrical Engineering<\/dd>/.test(railOf(renderJobPage({ ...li, degreeText: 'Electrical Engineering' }, [], { region: IN }))), true);
+  check('a start month from the title', /<dt>Starts<\/dt><dd>Jun 2027<\/dd>/.test(railOf(renderJobPage({ ...li, title: 'SWE Intern 2027 (June Start)' }, [], { region: IN }))), true);
+  check('no start month, no row', railOf(liHtml).includes('<dt>Starts</dt>'), false);
+
+  /* THE MASTHEAD COUNTS EVERY OTHER ROLE, NOT THE SIX THE STRIP SHOWS. */
+  const many = Array.from({ length: 9 }, (_, i) => ({ ...li, id: `44000001${i}`, title: `Role ${i}`, postedAt: T0 - i * HOUR }));
+  const manyHtml = renderJobPage(li, [li, ...many], { region: IN });
+  check('nine other roles are called nine', manyHtml.includes('9 other open roles here'), true);
+  check('while the strip still shows six', (manyHtml.match(/<a class="tile"/g) || []).length, 6);
+
+  /* END TO END: writePages hands each job page its employer's history. */
+  const recDir = mkdtempSync(join(tmpdir(), 'interndoor-rec-'));
+  try {
+    const liveRow = { ...li, id: '4469735146' };
+    writePages([liveRow], recDir, [
+      { id: '4469735146', company: 'HARMAN India', title: 'Intern', firstSeenAt: T0 },
+      { id: '4400000001', company: 'HARMAN India', title: 'Old', firstSeenAt: Date.UTC(2026, 6, 3) },
+      { id: '4400000002', company: 'HARMAN India', title: 'Older', firstSeenAt: Date.UTC(2026, 5, 9) },
+    ], { region: IN });
+    const written = readFileSync(join(recDir, 'jobs', `${jobSlug(liveRow)}.html`), 'utf8');
+    check('writePages passes the record through', text(recOf(written)).includes('recorded 3 engineering postings from HARMAN India since Jun 2026'), true);
+  } finally {
+    rmSync(recDir, { recursive: true, force: true });
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
