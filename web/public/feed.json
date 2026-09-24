@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
+      "title": "Software Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India",
+      "date_published": "2026-09-24T15:52:10.771Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
       "url": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
       "title": "Clinical Data Science Programmer — ICON plc",
@@ -14,6 +26,18 @@
       "authors": [
         {
           "name": "ICON plc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
+      "url": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
+      "title": "Software Engineer — Qualys",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years",
+      "date_published": "2026-09-24T15:09:33.308Z",
+      "authors": [
+        {
+          "name": "Qualys"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Newton School"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
-      "url": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
-      "title": "Software Engineer — Electronic Arts (EA)",
-      "content_text": "Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India\n• Maintain c# automation frameworks and issue assessment systems\n• Collaborate with gameplay and qa engineers to improve build workflows\n• Profile mobile games and ensure pipeline stability across production cycles",
-      "date_published": "2026-09-24T08:36:31.774Z",
-      "authors": [
-        {
-          "name": "Electronic Arts (EA)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-ai-system-performance-engineer-nsp-npu-ai-ml-4471430345",
-      "url": "https://interndoor.com/jobs/qualcomm-ai-system-performance-engineer-nsp-npu-ai-ml-4471430345",
-      "title": "AI System Performance Engineer (NSP/NPU, AI/ML) — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Bengaluru Area · Duration: 1 to 5 years\n• Analyze and optimize performance of Snapdragon chipsets using NPU, CPU, and DDR benchmarks\n• Use performance tools to identify bottlenecks and improve system efficiency\n• Collaborate with global teams to plan performance testing and recommend improvements",
-      "date_published": "2026-09-24T07:48:29.874Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
