@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/vecmocon-project-intern-ats-keka-vecmocon-162869",
+      "url": "https://interndoor.com/jobs/vecmocon-project-intern-ats-keka-vecmocon-162869",
+      "title": "Project - Intern — Vecmocon",
+      "content_text": "Company: Vecmocon · Location: Noida, UP, India\n• Track project timelines, testing, and deployment with cross-functional teams\n• Use Jira, Excel, and Google Sheets for tracking and reporting\n• Support EV hardware-software integration and manufacturing processes",
+      "date_published": "2026-09-24T11:36:23.303Z",
+      "authors": [
+        {
+          "name": "Vecmocon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-automation-qa-consultant-4443912644",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-automation-qa-consultant-4443912644",
+      "title": "Automation QA Consultant — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Write test cases for APIs, microservices, and web apps using Playwright and Selenium\n• Collaborate with DevOps teams on CI/CD and test integration pipelines\n• Analyze data pipelines and enterprise platforms for testing requirements",
+      "date_published": "2026-09-24T11:33:31.292Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4461303443",
       "url": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4461303443",
       "title": "Data Engineer — Dentsu Global Services",
@@ -62,6 +86,18 @@
       "authors": [
         {
           "name": "Rockwell Automation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/capgemini-java-backend-developer-4471436911",
+      "url": "https://interndoor.com/jobs/capgemini-java-backend-developer-4471436911",
+      "title": "Java Backend Developer — Capgemini",
+      "content_text": "Company: Capgemini · Location: Bengaluru, Karnataka, India\n• Develop software for wireless and satellite networks\n• Work with telco cloud and edge compute platforms\n• Collaborate with customers on network solutions",
+      "date_published": "2026-09-24T10:44:55.423Z",
+      "authors": [
+        {
+          "name": "Capgemini"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-reactjs-developer-4433467892",
-      "url": "https://interndoor.com/jobs/infosys-java-reactjs-developer-4433467892",
-      "title": "Java Reactjs Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support systems for client projects\n• Use Java and React JS to build efficient programs and systems\n• Collaborate with teams to translate requirements into system specifications",
-      "date_published": "2026-09-23T13:41:24.747Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-software-developer-java-full-stack-python-genai-4460670960",
-      "url": "https://interndoor.com/jobs/infosys-software-developer-java-full-stack-python-genai-4460670960",
-      "title": "Software Developer (Java Full Stack / Python GenAI) — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Write clean code for scalable apps and backend services\n• Work with java full stack and python genai tools\n• Participate in agile ceremonies and code reviews",
-      "date_published": "2026-09-23T13:25:37.493Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448339455",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448339455",
-      "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Mumbai Metropolitan Region\n• Create proof of concepts for S4 HANA Management Accounting functionalities\n• Work with team lead on SAP S/4HANA projects onshore and offshore\n• Engage with sales for client demos and estimate new deals",
-      "date_published": "2026-09-23T13:18:19.150Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
