@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in Canada, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-master-s-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2603862",
+      "url": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-master-s-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2603862",
+      "title": "Analog Design Intern, Master’s - 2027 Co-Op — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Toronto, Canada\n• Design high-speed analog circuits for 100+ Gb/s interfaces\n• Use Cadence tools for simulation and layout\n• Work on silicon photonics for data center networking",
+      "date_published": "2026-09-24T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/ca/jobs/marvell-technology-ams-layout-engineer-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604790",
+      "url": "https://interndoor.com/ca/jobs/marvell-technology-ams-layout-engineer-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604790",
+      "title": "AMS Layout Engineer Intern - BS - 2027 Co-Op — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Toronto, Canada\n• Design high-speed analog layouts in advanced CMOS processes\n• Work with circuit designers to optimize layout performance\n• Develop scripts to improve design tools and workflows",
+      "date_published": "2026-09-24T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604788",
+      "url": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604788",
+      "title": "Analog Design Intern - BS - 2027 Co-Op — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Canada\n• Support ic design through layout and silicon evaluation\n• Use cadence tools for schematics and simulation\n• Work on analog and digital circuit modeling",
+      "date_published": "2026-09-24T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/ca/jobs/intel-system-simulation-engineering-co-op-ats-workday-intel-wd1-external-jr0287122",
       "url": "https://interndoor.com/ca/jobs/intel-system-simulation-engineering-co-op-ats-workday-intel-wd1-external-jr0287122",
       "title": "System Simulation Engineering CO-OP — Intel",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Nokia"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/ca/jobs/lumentum-reliability-engineering-co-op-ats-workday-lumentum-wd5-lite-20261212",
-      "url": "https://interndoor.com/ca/jobs/lumentum-reliability-engineering-co-op-ats-workday-lumentum-wd5-lite-20261212",
-      "title": "Reliability Engineering Co-Op — Lumentum",
-      "content_text": "Company: Lumentum · Location: Canada - Ottawa (Bill Leathem)\n• Test optical and electrical components for next-gen products\n• Analyze data and calculate reliability metrics like FIT and MTBF\n• Work with Python and databases in a technical team\n• 8-month paid internship in Ottawa",
-      "date_published": "2026-09-04T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Lumentum"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/ca/jobs/nokia-dsp-firmware-engineering-co-op-intern-ats-oraclecloud-fa-evmr-saasfaprod1-fa-ocs-oraclecloud-com-39237",
-      "url": "https://interndoor.com/ca/jobs/nokia-dsp-firmware-engineering-co-op-intern-ats-oraclecloud-fa-evmr-saasfaprod1-fa-ocs-oraclecloud-com-39237",
-      "title": "DSP Firmware Engineering Co-op/Intern — Nokia",
-      "content_text": "Company: Nokia · Location: Canada · Duration: 4 months\n• Develop firmware for signal processing applications\n• Use C/C++ and MATLAB for algorithm implementation\n• Work on next-gen communication technologies",
-      "date_published": "2026-09-02T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Nokia"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/ca/jobs/stripe-software-engineer-intern-summer-or-winter-ats-greenhouse-stripe-8130805",
-      "url": "https://interndoor.com/ca/jobs/stripe-software-engineer-intern-summer-or-winter-ats-greenhouse-stripe-8130805",
-      "title": "Software Engineer, Intern (Summer or Winter) — Stripe",
-      "content_text": "Company: Stripe · Location: Toronto\n• Write production code that impacts millions of businesses\n• Work with ruby, java, javascript, go, and scala\n• Collaborate with engineers and cross-functional teams",
-      "date_published": "2026-08-31T23:21:48.000Z",
-      "authors": [
-        {
-          "name": "Stripe"
         }
       ]
     }

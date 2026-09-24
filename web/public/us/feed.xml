@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 24 Sep 2026 18:50:18 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 19:26:29 GMT</lastBuildDate>
+  <item>
+    <title>Software Developer, Network Software Intern (Winter 2027) — Astranis</title>
+    <link>https://interndoor.com/us/jobs/astranis-software-developer-network-software-intern-winter-2027-ats-greenhouse-astranis-4705599006</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/astranis-software-developer-network-software-intern-winter-2027-ats-greenhouse-astranis-4705599006</guid>
+    <pubDate>Thu, 24 Sep 2026 19:26:29 GMT</pubDate>
+    <description>Company: Astranis · Location: San Francisco · Duration: Winter 2027
+• Design and implement UI components and backend workflows for satellite network management
+• Work with network operations to build and manage satellite and ground networks
+• Collaborate with multidisciplinary teams on software requirements and architecture</description>
+  </item>
+  <item>
+    <title>Firmware Engineer Co-Op — Samsara</title>
+    <link>https://interndoor.com/us/jobs/samsara-firmware-engineer-co-op-ats-greenhouse-samsara-8226602</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/samsara-firmware-engineer-co-op-ats-greenhouse-samsara-8226602</guid>
+    <pubDate>Thu, 24 Sep 2026 19:18:45 GMT</pubDate>
+    <description>Company: Samsara · Location: San Francisco - SF9
+• Develop firmware for IoT devices used in industrial and enterprise settings
+• Work with C, embedded systems, and protocols like BLE, GPS, and CAN
+• Collaborate on hardware platforms and sensor integration in a hybrid role</description>
+  </item>
   <item>
     <title>Application Developer Intern — L3Harris Technologies</title>
     <link>https://interndoor.com/us/jobs/l3harris-technologies-application-developer-intern-4462431863</link>
@@ -483,26 +503,6 @@
 • Build low-level software in C and embedded Linux for global network infrastructure
 • Automate workflows with Python and Bash, strengthen system security through DevSecOps
 • Work on real infrastructure with networking and OS fundamentals</description>
-  </item>
-  <item>
-    <title>Software Engineer Data &amp; AI II (Intern) – United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-ii-intern-united-states-4471628078</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-software-engineer-data-and-ai-ii-intern-united-states-4471628078</guid>
-    <pubDate>Thu, 24 Sep 2026 16:05:22 GMT</pubDate>
-    <description>Company: Cisco · Location: San Jose, CA
-• Build data pipelines and machine learning workflows using Python
-• Use PyTorch or scikit-learn to develop and deploy models
-• Work with Spark and Kubernetes for large-scale data solutions</description>
-  </item>
-  <item>
-    <title>Hardware Intern — Arista Networks</title>
-    <link>https://interndoor.com/us/jobs/arista-networks-hardware-intern-ats-smartrecruiters-aristanetworks-744000151659973</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/arista-networks-hardware-intern-ats-smartrecruiters-aristanetworks-744000151659973</guid>
-    <pubDate>Thu, 24 Sep 2026 16:02:48 GMT</pubDate>
-    <description>Company: Arista Networks · Location: Nashua, us
-• Design and test networking hardware including pcb layout and schematic capture
-• Work on high-power systems with modern cpu and asic architectures
-• Lead design projects with mentorship and participate in design reviews</description>
   </item>
 </channel>
 </rss>
