@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4461303443",
+      "url": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4461303443",
+      "title": "Data Engineer — Dentsu Global Services",
+      "content_text": "Company: Dentsu Global Services · Location: Pune/Pimpri-Chinchwad Area\n• Build scalable data pipelines using AWS services like S3, Glue, and Redshift\n• Write SQL and Python for data transformations and ETL processes\n• Collaborate with architects and stakeholders to design data solutions",
+      "date_published": "2026-09-24T10:59:10.209Z",
+      "authors": [
+        {
+          "name": "Dentsu Global Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/harman-india-intern-4469735146",
+      "url": "https://interndoor.com/jobs/harman-india-intern-4469735146",
+      "title": "Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Write test cases for AUTOSAR applications on microcontroller hardware\n• Use AI tools for coding, debugging, and documentation\n• Collaborate with engineers on test framework development",
+      "date_published": "2026-09-24T10:53:22.295Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mastercard-ai-engineer-4469721777",
+      "url": "https://interndoor.com/jobs/mastercard-ai-engineer-4469721777",
+      "title": "AI Engineer — Mastercard",
+      "content_text": "Company: Mastercard · Location: Gurugram, Haryana, India\n• Design and deploy AI/ML solutions to improve operational efficiency\n• Build LLM applications and RAG pipelines for production use\n• Collaborate with global teams to implement AI-driven strategies",
+      "date_published": "2026-09-24T10:52:14.048Z",
+      "authors": [
+        {
+          "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471440761",
+      "url": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471440761",
+      "title": "Product Specialist — Rockwell Automation",
+      "content_text": "Company: Rockwell Automation · Location: Pune/Pimpri-Chinchwad Area\n• Support development and maintenance of industrial automation tools\n• Collaborate with cross-functional teams on product requirements and validation\n• Analyze business rules and improve tool accuracy and user experience",
+      "date_published": "2026-09-24T10:47:23.329Z",
+      "authors": [
+        {
+          "name": "Rockwell Automation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471439792",
+      "url": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471439792",
+      "title": "Product Specialist — Rockwell Automation",
+      "content_text": "Company: Rockwell Automation · Location: Bengaluru, Karnataka, India\n• Support development and maintenance of industrial automation tools\n• Collaborate with engineering, product, and UX teams on requirements\n• Analyze business rules and validate tool functionality\n• Work hybrid with 12:00 PM to 9:00 PM shift in Bengaluru/Pune",
+      "date_published": "2026-09-24T10:46:55.748Z",
+      "authors": [
+        {
+          "name": "Rockwell Automation"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
       "url": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
       "title": "Software Engineer — Emerson",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ptc-software-specialist-4470941392",
-      "url": "https://interndoor.com/jobs/ptc-software-specialist-4470941392",
-      "title": "Software Specialist — PTC",
-      "content_text": "Company: PTC · Location: Pune Division, Maharashtra, India\n• Design and develop software components using Java, J2EE, and web technologies\n• Collaborate with cross-functional teams to enhance user experience and platform performance\n• Contribute to automation of development and deployment processes\n• Work on cloud infrastructure and optimize platform speed and efficiency",
-      "date_published": "2026-09-23T13:04:31.583Z",
-      "authors": [
-        {
-          "name": "PTC"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448320509",
-      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448320509",
-      "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop end-to-end system features from user experience to backend code\n• Work with SAP ABAP for HANA development\n• Collaborate with teams to design and optimize applications",
-      "date_published": "2026-09-23T12:44:18.614Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
-      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448318753",
-      "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Chennai, Tamil Nadu, India\n• Develop end-to-end system features from user experience to backend code\n• Work with SAP ABAP for HANA development\n• Collaborate with teams to design and optimize applications",
-      "date_published": "2026-09-23T12:33:53.520Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mufg-frontend-engineering-and-enterprise-portal-development-4470938234",
-      "url": "https://interndoor.com/jobs/mufg-frontend-engineering-and-enterprise-portal-development-4470938234",
-      "title": "Frontend Engineering & Enterprise Portal Development — MUFG",
-      "content_text": "Company: MUFG · Location: Greater Bengaluru Area\n• Develop and maintain web applications and enterprise portals using modern technologies\n• Work with Java, Spring, SQL, and cloud platforms like AWS or Azure\n• Collaborate with cross-functional teams on security, performance, and user experience",
-      "date_published": "2026-09-23T12:33:32.206Z",
-      "authors": [
-        {
-          "name": "MUFG"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fam-security-engineer-intern-4470925821",
-      "url": "https://interndoor.com/jobs/fam-security-engineer-intern-4470925821",
-      "title": "Security Engineer Intern — Fam",
-      "content_text": "Company: Fam · Location: Bengaluru, Karnataka, India\n• Break apps by testing vulnerabilities in web apps, mobile apps, and APIs\n• Automate security checks using tools like Burp Suite and integrate into CI/CD\n• Review code for SQLi, XSS, and IDOR flaws and help write secure code\n• Analyze bug reports from bounty programs and prioritize fixes",
-      "date_published": "2026-09-23T12:30:57.920Z",
-      "authors": [
-        {
-          "name": "Fam"
         }
       ]
     }
