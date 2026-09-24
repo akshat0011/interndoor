@@ -495,17 +495,109 @@ export const PROVIDERS = {
  * discovered from a real careers-page link, never constructed, and is stored as
  * "tenant:wd:site".
  */
+
+// Workday's own page size; the endpoint refuses a larger `limit`.
+const WORKDAY_PAGE = 20;
+// A ceiling, not a target: the largest early-career set measured is well
+// under this, and a tenant that somehow tags thousands as interns must not
+// turn one board read into a hundred requests.
+export const WORKDAY_MAX_PAGES = 15;
+// Between pages of ONE board. The poller already waits 2 s between boards.
+const WORKDAY_PAGE_GAP_MS = 700;
+
+/**
+ * The `workerSubType` facet values that mark a posting as meant for students
+ * or new graduates. Tenants name them freely ("Intern (Fixed Term)",
+ * "Co-op/Intern (Fixed Term) (Trainee)", "Intern - Paid (Seasonal)", "New
+ * College Graduate", "Apprentice (Fixed Term)"), so the DESCRIPTOR is matched,
+ * and the facet's opaque id is what goes back in the query.
+ *
+ * Deliberately NOT matched: "Fixed Term", "Temporary", "Contractor",
+ * "Regular". A fixed-term contract is not a student role, and admitting it
+ * would page through a tenant's temp staff for nothing.
+ *
+ * The facet can sit at the top level or inside a group, so the walk recurses.
+ *
+ * BOUNDED AT BOTH ENDS. A bare `\bintern` also matches "Internal" — an
+ * "Internal Transfer" subtype would page a tenant's staff moves as interns.
+ */
+export const EARLY_CAREER_SUBTYPE = /\b(intern(ship)?s?|co-?ops?|apprentice(ship)?s?|trainees?|students?|werkstudent(en)?|new college|new grads?|graduates?|university|campus|early careers?)\b/i;
+export function earlyCareerSubtypes(facets) {
+  const find = (list) => {
+    for (const f of list ?? []) {
+      if (f?.facetParameter === 'workerSubType') return f;
+      const inner = find((f?.values ?? []).filter((v) => v?.facetParameter));
+      if (inner) return inner;
+    }
+    return null;
+  };
+  return (find(facets)?.values ?? [])
+    .filter((v) => v?.id && EARLY_CAREER_SUBTYPE.test(String(v.descriptor ?? '')))
+    .map((v) => v.id);
+}
+
 PROVIDERS.workday = {
   label: 'Workday',
-  async list(token) {
+  /**
+   * THE BOARD IS READ IN TWO QUERIES, AND THE SECOND ONE IS THE POINT.
+   *
+   * This used to be one unfiltered request of 20, never paged — so every
+   * Workday board was read 20 postings deep. NVIDIA carries 2,000, Salesforce
+   * 1,508, Analog Devices 852, Boeing 772, all newest first, and an internship
+   * sat in view only until twenty newer postings pushed it down, often within
+   * the day. Two costs, both silent: most internships were never seen, and
+   * the ones that were fell off the site two days after they sank, because an
+   * ATS row stays live only while a poll keeps re-seeing it (publish.js
+   * `atsWindow`). Measured 24 Sep 2026: of 430 Workday engineering rows first
+   * stored in 45 days, 86 were live.
+   *
+   * Paging the whole board is the obvious fix and the wrong one — 100 requests
+   * a read for NVIDIA, on a provider that has blocked this poller for volume
+   * before (see WORKDAY_PER_RUN in bin/poll-ats.js). Workday already knows
+   * which postings are for students: every tenant measured exposes a
+   * `workerSubType` facet ("Intern (Fixed Term)", "Co-op/Intern", "New College
+   * Graduate", "Apprentice"). So: the unfiltered first page as before — it
+   * keeps any full-time entry-level role at the top, so nothing read today is
+   * lost — then the board filtered to those values, paged to the end.
+   */
+  async list(token, { pageGapMs = WORKDAY_PAGE_GAP_MS } = {}) {
     const [tenant, wd, site] = String(token).split(':');
     if (!tenant || !wd || !site) return null;
-    const j = await getJson(
+    const read = (offset, appliedFacets) => getJson(
       `https://${tenant}.${wd}.myworkdayjobs.com/wday/cxs/${tenant}/${site}/jobs`,
-      { method: 'POST', body: { appliedFacets: {}, limit: 20, offset: 0, searchText: '' } },
+      { method: 'POST', body: { appliedFacets, limit: WORKDAY_PAGE, offset, searchText: '' } },
     );
-    if (!Array.isArray(j?.jobPostings)) return null;
-    return j.jobPostings.map((p) => job({
+    const first = await read(0, {});
+    if (!Array.isArray(first?.jobPostings)) return null;
+
+    // Keyed on externalPath: the same posting comes back from both queries.
+    const postings = new Map();
+    const add = (list) => {
+      for (const p of list) if (p?.externalPath && !postings.has(p.externalPath)) postings.set(p.externalPath, p);
+    };
+    add(first.jobPostings);
+
+    const ids = earlyCareerSubtypes(first.facets);
+    if (ids.length) {
+      const appliedFacets = { workerSubType: ids };
+      // WORKDAY SENDS `total` ON THE FIRST PAGE ONLY — every later page says
+      // `total: 0`. Re-reading it per page ends the walk after one page.
+      let total = 0;
+      for (let page = 0; page < WORKDAY_MAX_PAGES; page++) {
+        await new Promise((r) => setTimeout(r, pageGapMs));
+        const pg = await read(page * WORKDAY_PAGE, appliedFacets);
+        // A later page failing keeps what was read. A row it would have
+        // re-seen has two days of slack in publish, and the next read is
+        // hours away; failing the whole board would throw away the first page
+        // too, which is exactly what reads fine today.
+        if (!Array.isArray(pg?.jobPostings)) break;
+        if (page === 0) total = Number(pg.total) || 0;
+        add(pg.jobPostings);
+        if (!pg.jobPostings.length || (page + 1) * WORKDAY_PAGE >= total) break;
+      }
+    }
+
+    return [...postings.values()].map((p) => job({
       id: p.bulletFields?.[0] ?? p.externalPath,
       title: p.title,
       location: p.locationsText,
@@ -555,7 +647,9 @@ PROVIDERS.workday = {
    * endpoint is already called for every posting that passed the filters.
    *
    * Called only for postings that already passed every filter, so a board of
-   * 2,000 roles costs one extra request per internship rather than 2,000.
+   * 2,000 roles costs one extra request per internship rather than 2,000 — and
+   * only for one the store does not already hold (bin/poll-ats.js asks
+   * `store.hasJob` first), so a live internship costs it once, not every poll.
    */
   async detail(token, externalPath) {
     const [tenant, wd, site] = String(token).split(':');
