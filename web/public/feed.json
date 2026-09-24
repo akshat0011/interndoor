@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/global-payments-inc-java-developer-spring-boot-rest-api-2-4-yrs-indore-4471463956",
+      "url": "https://interndoor.com/jobs/global-payments-inc-java-developer-spring-boot-rest-api-2-4-yrs-indore-4471463956",
+      "title": "Java Developer (Spring boot, Rest API)_2-4 Yrs_Indore — Global Payments Inc.",
+      "content_text": "Company: Global Payments Inc. · Location: Indore, Madhya Pradesh, India\n• Develop high quality code for new features with proper test coverage\n• Work with java8+, spring boot, rest api, junit, and cloud tools\n• Collaborate with global team in overlapping business hours",
+      "date_published": "2026-09-24T13:10:23.155Z",
+      "authors": [
+        {
+          "name": "Global Payments Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4462458926",
+      "url": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4462458926",
+      "title": "Software Engineer - AI Hub — Linde",
+      "content_text": "Company: Linde · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build scalable backend systems\n• Experiment with CI/CD tools for sustainable software delivery",
+      "date_published": "2026-09-24T13:07:29.535Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engineer-4443763243",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engineer-4443763243",
+      "title": "Databricks Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Convert and implement data pipelines from Snowflake to Databricks\n• Validate data parity and resolve execution failures in migrated workloads\n• Collaborate with architects and QA teams on structured cloud data delivery",
+      "date_published": "2026-09-24T12:14:46.109Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453113115",
+      "url": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453113115",
+      "title": "Turbine - System Integrator — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Greater Vadodara Area\n• Design and develop products, systems, and solutions with technical expertise\n• Work on mechanical and/or electrical engineering for all products\n• Collaborate across teams and propose innovative solutions for complex processes",
+      "date_published": "2026-09-24T12:13:41.555Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345",
       "url": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345",
       "title": "Intern Masters Embedded Eng — Honeywell Aerospace",
@@ -551,54 +599,6 @@
       "title": "AI/ML Computational Science Associate — Accenture in India",
       "content_text": "Company: Accenture in India · Location: Gandhinagar, Gujarat, India · Duration: 1 to 3 years\n• Design, build, and configure applications for business processes\n• Python, git, sql, and application frameworks\n• Work with cross-functional teams on technical solutions",
       "date_published": "2026-09-23T15:19:13.196Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-electronics-engineer-ii-engineering-4459940085",
-      "url": "https://interndoor.com/jobs/tata-electronics-engineer-ii-engineering-4459940085",
-      "title": "Engineer II_Engineering — Tata Electronics",
-      "content_text": "Company: Tata Electronics · Location: Tamil Nadu, India\n• Debug and fix issues in RF and test equipment\n• Analyze logs for yield and downtime reports\n• Prepare reports for retest and OSS metrics",
-      "date_published": "2026-09-23T14:45:27.633Z",
-      "authors": [
-        {
-          "name": "Tata Electronics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-developer-4469313696",
-      "url": "https://interndoor.com/jobs/ibm-software-developer-4469313696",
-      "title": "Software Developer — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Write clean code using java, c++, or python\n• Work with react, angular, or vue.js frameworks\n• Collaborate on cloud and ai projects with ibm teams",
-      "date_published": "2026-09-23T14:34:40.894Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eaton-associate-engineer-embedded-4469324219",
-      "url": "https://interndoor.com/jobs/eaton-associate-engineer-embedded-4469324219",
-      "title": "Associate Engineer- Embedded — Eaton",
-      "content_text": "Company: Eaton · Location: Pune Division, Maharashtra, India · Duration: 1–3 years\n• Develop firmware in C/C++ for microcontroller and processor platforms\n• Work with RTOS, communication protocols, and cybersecurity features\n• Contribute to data center and electrical product firmware development",
-      "date_published": "2026-09-23T14:32:46.500Z",
-      "authors": [
-        {
-          "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448332379",
-      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448332379",
-      "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Mumbai Metropolitan Region\n• Develop end-to-end features from user experience to backend code\n• Work with SAP ABAP for HANA development\n• Collaborate with teams on cloud-first solutions",
-      "date_published": "2026-09-23T14:32:02.139Z",
       "authors": [
         {
           "name": "Accenture in India"
