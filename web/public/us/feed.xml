@@ -6,7 +6,78 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 24 Sep 2026 01:43:23 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 02:39:45 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineering Intern, Backend — Ramp</title>
+    <link>https://interndoor.com/us/jobs/ramp-software-engineering-intern-backend-4469628984</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ramp-software-engineering-intern-backend-4469628984</guid>
+    <pubDate>Thu, 24 Sep 2026 02:39:45 GMT</pubDate>
+    <description>Company: Ramp · Location: New York, NY · Duration: 16 weeks
+• Build systems that power Ramp’s financial tools for businesses
+• Work with Python, Flask, PostgreSQL, and AWS
+• Collaborate with product teams to shape customer-facing features</description>
+  </item>
+  <item>
+    <title>Software Engineer Internship, Frontend — Ramp</title>
+    <link>https://interndoor.com/us/jobs/ramp-software-engineer-internship-frontend-4469637742</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ramp-software-engineer-internship-frontend-4469637742</guid>
+    <pubDate>Thu, 24 Sep 2026 02:39:07 GMT</pubDate>
+    <description>Company: Ramp · Location: New York, NY · Duration: 16 weeks
+• Build performant, beautiful interfaces for complex business needs
+• Use TypeScript, React, Vite, and Ryu in production code
+• Ship products with cross-functional teams in a fast-paced environment</description>
+  </item>
+  <item>
+    <title>Software Engineering Intern, iOS — Ramp</title>
+    <link>https://interndoor.com/us/jobs/ramp-software-engineering-intern-ios-4469645276</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ramp-software-engineering-intern-ios-4469645276</guid>
+    <pubDate>Thu, 24 Sep 2026 02:39:01 GMT</pubDate>
+    <description>Company: Ramp · Location: New York, NY · Duration: 16 weeks
+• Build and ship new features for Ramp’s iOS app
+• Work with Swift, SwiftUI, and our mobile stack
+• Collaborate with Product and Design on real user experiences</description>
+  </item>
+  <item>
+    <title>Summer 2027 PhD ML Systems Research Engineering Intern — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-phd-ml-systems-research-engineering-intern-4471183368</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-phd-ml-systems-research-engineering-intern-4471183368</guid>
+    <pubDate>Thu, 24 Sep 2026 02:34:31 GMT</pubDate>
+    <description>Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027
+• Build scalable systems for experiment management and model serving
+• Optimize training and inference through parallelism and performance tuning
+• Work on AI infrastructure with PyTorch and distributed systems</description>
+  </item>
+  <item>
+    <title>Summer 2027 PhD AI Engineering Intern — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-phd-ai-engineering-intern-4471182406</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-phd-ai-engineering-intern-4471182406</guid>
+    <pubDate>Thu, 24 Sep 2026 02:34:05 GMT</pubDate>
+    <description>Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027
+• Develop ai-assisted workflows for compute optimization tasks
+• Work with compilers, profilers, and benchmarking tools
+• Analyze experimental results and improve ai models</description>
+  </item>
+  <item>
+    <title>Summer 2027 PhD Applied AI Engineering Intern, Hardware AI — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-phd-applied-ai-engineering-intern-hardware-ai-4471175696</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-phd-applied-ai-engineering-intern-hardware-ai-4471175696</guid>
+    <pubDate>Thu, 24 Sep 2026 02:33:49 GMT</pubDate>
+    <description>Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027
+• Build ai-assisted workflows for hardware and software engineering
+• Integrate llms and ai agents with compilers and simulators
+• Collaborate on metrics for correctness and engineering productivity
+• Work on datasets and experiments for ai-assisted workflows</description>
+  </item>
+  <item>
+    <title>Summer 2027 Masters Digital Signal Processing Engineer Intern — AMD</title>
+    <link>https://interndoor.com/us/jobs/amd-summer-2027-masters-digital-signal-processing-engineer-intern-4471180495</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/amd-summer-2027-masters-digital-signal-processing-engineer-intern-4471180495</guid>
+    <pubDate>Thu, 24 Sep 2026 02:33:12 GMT</pubDate>
+    <description>Company: AMD · Location: San Jose, CA · Duration: Summer 2027
+• Model rf amplifier non-linear responses with adaptive algorithms in matlab
+• Explore adaptive approaches for closed loop linearity improvements
+• Work with experienced team on 5g/6g radio design projects</description>
+  </item>
   <item>
     <title>R&amp;D Engineer, Intern — Keysight Technologies</title>
     <link>https://interndoor.com/us/jobs/keysight-technologies-r-and-d-engineer-intern-4471163796</link>
@@ -441,79 +512,6 @@
 • Evaluate plastics materials for customer applications and optimize processes
 • Collaborate with engineers to test products and resolve customer issues
 • Design and explain mold and part solutions using SolidWorks and Moldflow</description>
-  </item>
-  <item>
-    <title>Visualization Engineer Intern — USAA</title>
-    <link>https://interndoor.com/us/jobs/usaa-visualization-engineer-intern-4469363010</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/usaa-visualization-engineer-intern-4469363010</guid>
-    <pubDate>Wed, 23 Sep 2026 20:49:42 GMT</pubDate>
-    <description>Company: USAA · Location: San Antonio, TX
-• Develop AI tools to automate and enhance visualization workflows
-• Work with BIA teams to identify and solve user pain points
-• Prototype and refine agentic workflows for reliability and scalability</description>
-  </item>
-  <item>
-    <title>AI/ML Engineer Intern — USAA</title>
-    <link>https://interndoor.com/us/jobs/usaa-ai-ml-engineer-intern-4469362062</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/usaa-ai-ml-engineer-intern-4469362062</guid>
-    <pubDate>Wed, 23 Sep 2026 20:49:40 GMT</pubDate>
-    <description>Company: USAA · Location: Plano, TX
-• Support team in designing, developing, and deploying AI/ML solutions for production
-• Work with data scientists, engineers, and product teams on AI integration projects
-• Build scalable AI pipelines, APIs, and automation workflows
-• Monitor and improve model performance in real-world applications</description>
-  </item>
-  <item>
-    <title>Infrastructure Engineer Intern — USAA</title>
-    <link>https://interndoor.com/us/jobs/usaa-infrastructure-engineer-intern-4469363007</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/usaa-infrastructure-engineer-intern-4469363007</guid>
-    <pubDate>Wed, 23 Sep 2026 20:49:16 GMT</pubDate>
-    <description>Company: USAA · Location: San Antonio, TX
-• Support infrastructure operations, automate maintenance tasks, and troubleshoot system issues
-• Work with tools like Ansible, PowerShell, and cloud platforms such as Azure
-• Based in San Antonio, TX, for 12 weeks starting June 2, 2027</description>
-  </item>
-  <item>
-    <title>Data Scientist Intern — USAA</title>
-    <link>https://interndoor.com/us/jobs/usaa-data-scientist-intern-4469340958</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/usaa-data-scientist-intern-4469340958</guid>
-    <pubDate>Wed, 23 Sep 2026 20:49:06 GMT</pubDate>
-    <description>Company: USAA · Location: Plano, TX
-• Build predictive models and AI solutions to improve business outcomes and member experiences
-• Use Python, R, SQL, and machine learning frameworks to analyze data and design experiments
-• Work with senior engineers and mentors on real projects aligned with USAA&#39;s tech strategy</description>
-  </item>
-  <item>
-    <title>Software Engineer, Performance Tooling and Infrastructure New Grad — Nuro</title>
-    <link>https://interndoor.com/us/jobs/nuro-software-engineer-performance-tooling-and-infrastructure-new-grad-ats-greenhouse-nuro-8227399</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/nuro-software-engineer-performance-tooling-and-infrastructure-new-grad-ats-greenhouse-nuro-8227399</guid>
-    <pubDate>Wed, 23 Sep 2026 20:25:45 GMT</pubDate>
-    <description>Company: Nuro · Location: Mountain View, California (HQ)
-• Develop and maintain job orchestration layer for autonomy performance benchmarks
-• Build monitoring and self-healing automation for bench-top systems
-• Design data pipelines for performance metrics and visualization
-• Guide SRE team on Linux kernel and hardware configuration</description>
-  </item>
-  <item>
-    <title>Data Engineering Intern — Jabil</title>
-    <link>https://interndoor.com/us/jobs/jabil-data-engineering-intern-4469614102</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/jabil-data-engineering-intern-4469614102</guid>
-    <pubDate>Wed, 23 Sep 2026 20:18:56 GMT</pubDate>
-    <description>Company: Jabil · Location: St. Petersburg, Florida, United States · Duration: Summer 2027
-• Support data quality, KPI source mapping, and metric catalog development
-• Work with SQL, Excel, and BI tools like PowerBI or Tableau
-• Collaborate with Operations, IT, and Engineering teams</description>
-  </item>
-  <item>
-    <title>Data Engineer Intern (2027) — Figma</title>
-    <link>https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-4469491855</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/figma-data-engineer-intern-2027-4469491855</guid>
-    <pubDate>Wed, 23 Sep 2026 19:45:40 GMT</pubDate>
-    <description>Company: Figma · Location: New York, NY
-• Build and optimize data pipelines for Figma’s data warehouse
-• Collaborate with engineers and analysts on scalable data solutions
-• Work on projects like ETL jobs and reusable datasets
-• Based in New York or San Francisco</description>
   </item>
 </channel>
 </rss>
