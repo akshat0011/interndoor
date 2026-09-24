@@ -97,7 +97,15 @@ if (ONLY) boards = boards.filter((b) => b.company.toLowerCase() === ONLY.toLower
 const WORKDAY_PER_RUN = Number(valueOf('--workday-limit') ?? 4);
 const workdayAll = boards.filter((b) => b.provider === 'workday');
 const others = boards.filter((b) => b.provider !== 'workday');
-const workdayNow = ONLY ? workdayAll : [...workdayAll]
+/* ONE READ PER BOARD, NOT PER WATCHLIST NAME. Barclays + Barclays UK, Citi +
+   Citigroup and Postman + Postman Labs each point two rows at one board, so the
+   rotation read those boards twice — one request each while the adapter read a
+   single page, ten each for Barclays now that its early-career set is paged.
+   The first row by name (atsBoards orders by company) is the one read, which is
+   also the one that stored the rows before, so no posting changes employer. */
+const sharing = new Map();
+for (const b of workdayAll) sharing.set(b.token, [...(sharing.get(b.token) ?? []), b]);
+const workdayNow = ONLY ? workdayAll : [...sharing.values()].map((rows) => rows[0])
   .sort((a, b) => (a.last_polled ?? 0) - (b.last_polled ?? 0))
   .slice(0, WORKDAY_PER_RUN);
 boards = others;
@@ -239,10 +247,27 @@ async function pollOne(board) {
     if (!employerRoleAllowed(board.company, j.title, cfg)) { skippedNonTech++; continue; }
     const isTech = verdict.verdict === 'tech' ? true : null;
 
+    // Prefixed so an ATS id can never collide with a LinkedIn numeric job id.
+    const jobId = `ats:${board.provider}:${board.token}:${j.id}`;
+
     // Some providers only expose the description and the real posting date on a
     // per-job endpoint. Fetch it now, after the filters, so the cost is one
     // request per internship kept rather than one per posting seen.
-    const extra = await fetchDetail(board.provider, board.token, j);
+    //
+    // AND ONLY FOR A POSTING NOT ALREADY STORED. upsertJob on an existing row
+    // touches last_seen_at and apply_url and nothing else, so a detail fetch for
+    // a known posting was thrown away — and it ran on EVERY poll for every live
+    // row on Oracle Cloud, SmartRecruiters, Microsoft, Eightfold and Workday:
+    // ~280 wasted requests every 30 minutes on 24 Sep 2026. The two things the
+    // detail decided for a known row are already settled: the region gate was
+    // passed when it was stored, and publish.js enforces the posting-age floor
+    // on the stored posted_at whatever this loop does.
+    const known = store.hasJob(jobId);
+    const extra = known ? null : await fetchDetail(board.provider, board.token, j);
+    // Paced on Workday only: the provider that has blocked this poller for
+    // volume, and a board's FIRST deep read fetches detail for every posting it
+    // has never stored, back to back — 120 for Micron, 103 for GE Vernova.
+    if (!known && board.provider === 'workday') await new Promise((r) => setTimeout(r, 400));
     if (extra?.description) j.description = extra.description;
     if (extra?.postedAt) j.postedAt = extra.postedAt;
 
@@ -273,10 +298,9 @@ async function pollOne(board) {
     // startDate only here, so this is the first honest chance to judge it.
     if (j.postedAt && j.postedAt < OLDEST_ACCEPTABLE) { skippedStale++; continue; }
 
-    // Prefixed so an ATS id can never collide with a LinkedIn numeric job id.
-    const jobId = `ats:${board.provider}:${board.token}:${j.id}`;
-
     if (DRY_RUN) {
+      // What WOULD be stored: a known posting is only touched, never stored.
+      if (known) continue;
       preview.push(`[${region}${kind === INTERN ? '' : '/FT'}] ${board.company} — ${j.title}${j.location ? ` (${j.location})` : ''}`);
       stored++;
       keptByRegion[region] = (keptByRegion[region] ?? 0) + 1;

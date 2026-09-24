@@ -770,5 +770,120 @@ console.log('\n== SmartRecruiters: the list carries NO description ==');
   restore();
 }
 
+console.log('\n== Workday: read past the first 20, through the early-career facet ==');
+/* The adapter read ONE unfiltered page of 20 and never paged — every Workday
+   board was 20 postings deep. The stub answers the way Workday really does,
+   which matters twice over: the filtered query pages by `offset`, and `total`
+   arrives on the FIRST page only (every later page says 0), so a loop that
+   re-reads it per page stops after one page and this file says so. */
+{
+  const { earlyCareerSubtypes, WORKDAY_MAX_PAGES } = await import('../src/ats.js');
+  const posting = (n) => ({ title: `Role ${n}`, externalPath: `/job/Austin-TX/Role_R-${n}`, bulletFields: [`R-${n}`], locationsText: 'Austin, TX', postedOn: 'Posted Today' });
+  const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => posting(a + i));
+  const SUBTYPES = { facetParameter: 'workerSubType', values: [
+    { descriptor: 'Regular', id: 'reg', count: 900 },
+    { descriptor: 'Intern (Fixed Term)', id: 'int', count: 40 },
+    { descriptor: 'New College Graduate', id: 'ncg', count: 5 },
+    { descriptor: 'Fixed Term (Fixed Term)', id: 'ft', count: 3 },
+    { descriptor: 'Contractor', id: 'con', count: 2 },
+  ] };
+  function stubWorkday({ first, filtered = [], failAt = null, firstFails = false }) {
+    const calls = [];
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = async (url, opts) => {
+      const body = JSON.parse(opts?.body ?? '{}');
+      const facets = body.appliedFacets ?? {};
+      calls.push({ offset: body.offset, facets });
+      const isFiltered = Object.keys(facets).length > 0;
+      let payload = null;
+      if (!isFiltered) payload = firstFails ? null : first;
+      else if (failAt !== body.offset) {
+        payload = { total: body.offset === 0 ? filtered.length : 0, jobPostings: filtered.slice(body.offset, body.offset + body.limit) };
+      }
+      return { ok: !!payload, status: payload ? 200 : 500, headers: { get: () => null },
+        async text() { return JSON.stringify(payload ?? {}); } };
+    };
+    return { calls, restore: () => { globalThis.fetch = realFetch; } };
+  }
+  const list = (tok) => PROVIDERS.workday.list(tok, { pageGapMs: 0 });
+
+  {
+    // 45 early-career postings; one of them (R-5) is ALSO on the unfiltered page.
+    const s = stubWorkday({ first: { total: 900, jobPostings: range(1, 20), facets: [SUBTYPES] }, filtered: [posting(5), ...range(101, 144)] });
+    const jobs = await list('acme:wd5:External');
+    s.restore();
+    check('the unfiltered first page is still read first', s.calls[0]?.offset === 0 && Object.keys(s.calls[0].facets).length === 0, true);
+    check('then only the early-career subtypes are asked for', s.calls[1]?.facets, { workerSubType: ['int', 'ncg'] });
+    check('paged by offset', s.calls.slice(1).map((c) => c.offset), [0, 20, 40]);
+    check('and stops at the first page\'s total, not a page later', s.calls.length, 4);
+    check('every posting from both queries', jobs.length, 64);
+    check('none of them twice', new Set(jobs.map((j) => j.externalPath)).size, jobs.length);
+    check('a posting from deep in the filtered set is there', jobs.some((j) => j.id === 'R-144'), true);
+    check('its URL is built from externalPath as before', jobs.find((j) => j.id === 'R-144')?.url,
+      'https://acme.wd5.myworkdayjobs.com/en-US/External/job/Austin-TX/Role_R-144');
+  }
+  {
+    const s = stubWorkday({ first: { total: 30, jobPostings: range(1, 20), facets: [{ facetParameter: 'jobFamilyGroup', values: [] }] } });
+    const jobs = await list('acme:wd5:External');
+    s.restore();
+    check('a board with no subtype facet costs one request, as before', [s.calls.length, jobs.length], [1, 20]);
+  }
+  {
+    const s = stubWorkday({ first: { total: 30, jobPostings: range(1, 20), facets: [{ facetParameter: 'workerSubType', values: [SUBTYPES.values[0], SUBTYPES.values[4]] }] } });
+    await list('acme:wd5:External');
+    s.restore();
+    check('a board with no student subtype costs one request too', s.calls.length, 1);
+  }
+  {
+    const s = stubWorkday({ first: { total: 900, jobPostings: range(1, 20), facets: [SUBTYPES] }, filtered: range(101, 160), failAt: 20 });
+    const jobs = await list('acme:wd5:External');
+    s.restore();
+    check('a later page failing keeps what was read — not null', jobs?.length, 40);
+    check('and asks for nothing after the failure', s.calls.length, 3);
+  }
+  {
+    const s = stubWorkday({ first: { total: 9000, jobPostings: range(1, 20), facets: [SUBTYPES] }, filtered: range(1000, 3999) });
+    await list('acme:wd5:External');
+    s.restore();
+    check('a huge student set is capped', s.calls.length, 1 + WORKDAY_MAX_PAGES);
+  }
+  {
+    const s = stubWorkday({ first: null, firstFails: true, filtered: range(1, 5) });
+    const jobs = await list('acme:wd5:External');
+    s.restore();
+    check('a first page that fails is still a failed board', [jobs, s.calls.length], [null, 1]);
+  }
+
+  // The descriptors are free text per tenant; these are real ones.
+  const pick = (descs) => earlyCareerSubtypes([{ facetParameter: 'workerSubType', values: descs.map((d, i) => ({ descriptor: d, id: `id${i}` })) }]).length;
+  for (const d of ['Intern (Fixed Term)', 'Co-op/Intern (Fixed Term) (Trainee)', 'Intern - Paid (Seasonal)',
+    'Intern Fixed Term (Non-US) (Fixed Term) (Seasonal)', 'New College Graduate', 'Apprentice (Fixed Term)']) {
+    check(`picks "${d}"`, pick([d]), 1);
+  }
+  for (const d of ['Regular', 'Regular Employee', 'Fixed Term (Fixed Term)', 'Temporary (Fixed Term)', 'Contractor', 'Management', 'Internal Transfer']) {
+    check(`refuses "${d}"`, pick([d]), 0);
+  }
+  check('finds the facet inside a group', earlyCareerSubtypes([{ facetParameter: 'grp', values: [SUBTYPES] }]), ['int', 'ncg']);
+  check('no facets at all is no ids', earlyCareerSubtypes(undefined), []);
+}
+
+console.log('\n== the poller fetches detail only for a posting it does not have ==');
+/* SOURCE ASSERTIONS, for the same reason as above: bin/poll-ats.js runs on
+   import. The detail call ran for every live row on every poll — ~280 thrown-
+   away requests every 30 minutes — because nothing asked whether the row was
+   already stored. Pin the guard AND that it is the id the row is stored under. */
+check('the stored id is built before the detail fetch',
+  code.indexOf('const jobId = `ats:${board.provider}:${board.token}:${j.id}`') > -1
+  && code.indexOf('const jobId = `ats:') < code.indexOf('fetchDetail('), true);
+check('a known posting is looked up by that id', /const known = store\.hasJob\(jobId\);/.test(code), true);
+check('and skips the detail fetch', /known \? null : await fetchDetail\(/.test(code), true);
+check('the id is built once, not twice', (code.match(/const jobId = /g) ?? []).length, 1);
+check('new Workday postings are paced between detail fetches',
+  /if \(!known && board\.provider === 'workday'\) await new Promise\(\(r\) => setTimeout\(r, \d+\)\);/.test(code), true);
+check('a dry run previews only what it would store', /if \(DRY_RUN\) \{\s*if \(known\) continue;/.test(code), true);
+// Two watchlist names on one board were read twice per rotation.
+check('Workday boards are grouped by token', /sharing\.set\(b\.token,/.test(code), true);
+check('and the rotation picks one row per board', /workdayNow = ONLY \? workdayAll : \[\.\.\.sharing\.values\(\)\]\.map\(\(rows\) => rows\[0\]\)/.test(code), true);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
