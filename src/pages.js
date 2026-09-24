@@ -1368,14 +1368,39 @@ export function whatsappUrl(region) {
   const wa = list.find((c) => c?.kind === 'whatsapp' && /^https:\/\/(www\.)?whatsapp\.com\/channel\//i.test(String(c.url ?? '')));
   return wa ? wa.url : null;
 }
-/** The one control every "follow" surface shares: the channel, or /alerts. */
-function followLink(region, { cls = 'a-1', label = 'Get every new role', waLabel = 'Join the WhatsApp channel' } = {}) {
+/**
+ * The region's LEAD channel — the one every "follow" surface points at.
+ *
+ * WhatsApp where the board has it (India), otherwise Telegram (the US: asked
+ * for 24 Sep 2026 as "both email and Telegram", and email per board needs a
+ * paid Buttondown add-on, so Telegram leads until that is decided), otherwise
+ * none and every surface keeps /alerts, as the UK and Canada do. Telegram
+ * passes an anchored host test like WhatsApp's, so a lookalike never leads.
+ *
+ * The `is-wa` / `wa-*` classes style the LEAD channel, whichever it is; they
+ * kept their names so this changed no CSS and no hash.
+ */
+export function leadChannel(region) {
   const wa = whatsappUrl(region);
-  const icon = wa
-    ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
-  return wa
-    ? `<a class="${cls} is-wa" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">${icon} ${esc(waLabel)}</a>`
+  if (wa) return { kind: 'whatsapp', name: 'WhatsApp', url: wa };
+  const list = REGION_CHANNELS.get(String(region?.code || '').toUpperCase()) ?? [];
+  const tg = list.find((c) => c?.kind === 'telegram' && /^https:\/\/t\.me\/[A-Za-z0-9_]{3,}$/.test(String(c.url ?? '')));
+  return tg ? { kind: 'telegram', name: 'Telegram', url: tg.url } : null;
+}
+/* The Telegram mark and the /alerts mark are the same paper plane, on purpose:
+   it was the alerts icon before Telegram led anywhere. */
+const CHANNEL_ICON = {
+  whatsapp: '<path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/>',
+  telegram: '<path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>',
+};
+const channelIcon = (kind, size) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CHANNEL_ICON[kind] ?? CHANNEL_ICON.telegram}</svg>`;
+
+/** The one control every "follow" surface shares: the lead channel, or /alerts. */
+function followLink(region, { cls = 'a-1', label = 'Get every new role' } = {}) {
+  const lead = leadChannel(region);
+  const icon = channelIcon(lead?.kind, 16);
+  return lead
+    ? `<a class="${cls} is-wa" href="${esc(lead.url)}" target="_blank" rel="noopener noreferrer">${icon} ${esc(`Join the ${lead.name} channel`)}</a>`
     : `<a class="${cls}" href="${regionHref('/alerts', region)}">${icon} ${esc(label)}</a>`;
 }
 
@@ -2125,16 +2150,16 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
                It is the only thing here that survives the role closing, so it
                gets a heading, a sentence and a real target. -->
           ${(() => {
-            const wa = whatsappUrl(region);
+            const lead = leadChannel(region);
             const kind = job.employmentType === FULL_TIME ? `${esc(entryWord(region))} roles` : 'internships';
             /* inName carries its own preposition ("in the US"), so it goes
                AFTER the noun. Stripping the "in " to put it before gave
                "New the US roles". */
-            return wa
-              ? `<a class="jp-sub is-wa" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+            return lead
+              ? `<a class="jp-sub is-wa" href="${esc(lead.url)}" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CHANNEL_ICON[lead.kind]}</svg>
             <span class="jp-sub-t">
-              <strong>Get ${kind} like this on WhatsApp first</strong>
+              <strong>Get ${kind} like this on ${lead.name} first</strong>
               <em>Every new ${esc(offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' }))} ${esc(region.inName)}, the minute it is posted. No signup.</em>
             </span>
             <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
@@ -3585,9 +3610,9 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
   const url = regionUrl('/alerts', region);
   const where = region.inName.replace(/^in /, '');
   const others = channels.filter((c) => c.kind !== 'email');
-  /* WhatsApp leads the page where the board has it (see followLink); the
-     other free channels — Telegram on the US board, Instagram — follow email. */
-  const wa = others.find((c) => c.kind === 'whatsapp') ?? null;
+  /* The lead channel heads the page where the board has one — WhatsApp, else
+     Telegram (see leadChannel); the rest, Instagram, follow email. */
+  const wa = others.find((c) => c.kind === 'whatsapp') ?? others.find((c) => c.kind === 'telegram') ?? null;
   const rest = others.filter((c) => c !== wa);
 
   const icon = {
@@ -3628,7 +3653,7 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
     </header>
 
     ${wa ? `<section class="strip">
-      <div class="strip-head"><h2>On WhatsApp — fastest, no signup</h2></div>
+      <div class="strip-head"><h2>On ${esc(wa.name)} — fastest, no signup</h2></div>
       <div class="chans">${card(wa)}</div>
     </section>` : ''}
 
@@ -4123,13 +4148,13 @@ function localiseLinks(html, region) {
  * If the markers are missing the file is left completely alone: silently
  * rewriting a hand-maintained page is a far worse failure than not adding links.
  */
-/** The header's alerts pill: WhatsApp where the board has it, else /alerts. */
+/** The header's alerts pill: the lead channel where the board has one, else /alerts. */
 function headerPill(region) {
-  const wa = whatsappUrl(region);
-  return wa
-    ? `<a class="alerts is-wa" aria-label="Join the WhatsApp channel" href="${esc(wa)}" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
-        <span>WhatsApp alerts</span>
+  const lead = leadChannel(region);
+  return lead
+    ? `<a class="alerts is-wa" aria-label="Join the ${lead.name} channel" href="${esc(lead.url)}" target="_blank" rel="noopener noreferrer">
+        ${channelIcon(lead.kind, 15)}
+        <span>${lead.name} alerts</span>
       </a>`
     : `<a class="alerts" aria-label="Get alerts" href="${regionHref('/alerts', region)}">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -4137,11 +4162,10 @@ function headerPill(region) {
       </a>`;
 }
 
-/** The signup band's lead: the WhatsApp channel above the email form, where there is one. */
+/** The signup band's lead: the lead channel above the email form, where there is one. */
 function followBand(region) {
-  const wa = whatsappUrl(region);
-  if (!wa) return '';
-  return `<p class="wa-lead">${followLink(region, { cls: 'wa-go', waLabel: 'Join the WhatsApp channel' })} <span class="wa-note">Every new role ${esc(region.inName)}, the minute it is posted. No signup.</span></p>`;
+  if (!leadChannel(region)) return '';
+  return `<p class="wa-lead">${followLink(region, { cls: 'wa-go' })} <span class="wa-note">Every new role ${esc(region.inName)}, the minute it is posted. No signup.</span></p>`;
 }
 
 /**

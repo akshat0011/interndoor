@@ -50,7 +50,7 @@ const PER_IP_PER_DAY = Number(process.env.SUBSCRIBE_PER_IP_DAILY || 20);
 const GLOBAL_PER_DAY = Number(process.env.SUBSCRIBE_GLOBAL_DAILY || 500);
 
 /** Boards a reader can actually subscribe to. Anything else is a bad request. */
-export const REGIONS = ['IN', 'US', 'GB'];
+export const REGIONS = ['IN', 'US', 'GB', 'CA'];
 
 /**
  * The address, cleaned up, or null if it is not one.
@@ -247,9 +247,9 @@ export async function addSubscriber(email, region, apiKey, fetchImpl = fetch, ip
   return { ok: false, status: res.status, detail, rejected };
 }
 
-/** '' for India, '/us', '/uk' — the board a subscriber signed up from. */
+/** '' for India, '/us', '/uk', '/ca' — the board a subscriber signed up from. */
 function regionPathFor(code) {
-  return ({ IN: '', US: '/us', GB: '/uk' })[code] ?? '';
+  return ({ IN: '', US: '/us', GB: '/uk', CA: '/ca' })[code] ?? '';
 }
 
 export default async function handler(req, res) {

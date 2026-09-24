@@ -262,10 +262,20 @@ at('a warehouse, not a city proper', 'San Bernardino Warehouse', 'US');
 console.log('\n== city still beats code, which is what the rule protects ==');
 // The documented collision the ordering exists for: CA is Canada's ISO code AND
 // California's postal abbreviation, so these two are the same shape and mean
-// different continents. Neither toronto nor ontario is marked ambiguous.
+// different continents. toronto is not marked ambiguous; ontario is (below).
 at('toronto is canadian', 'Toronto, CA', 'CA');
 at('san jose is californian', 'San Jose, CA', 'US');
-at('ontario the province', 'Ontario, CA', 'CA');
+// ONTARIO IS WEAK, measured on real rows before Canada went live (24 Sep 2026):
+// the only stored "Ontario, CA" is Amazon's Ontario, California warehouse, and
+// "Ontario, NY" is Constellation's upstate New York plant. The province, named
+// any way that does not put a US state code beside it, stays Canadian.
+at('ontario, california (Amazon)', 'Ontario, CA', 'US');
+at('ontario, new york (Constellation)', 'Ontario, NY', 'US');
+at('ontario alone is the province', 'Ontario', 'CA');
+at('ontario with the country', 'Ontario, Canada', 'CA');
+at('a city in ontario', 'Toronto, Ontario, Canada', 'CA');
+at('a weak city in ontario', 'Ottawa, Ontario', 'CA');
+at('london, ontario', 'London, Ontario, Canada', 'CA');
 // Tamil Nadu and Tennessee share TN. `chennai` is unambiguous, so it settles it
 // before the code pass is ever reached.
 at('chennai not tennessee', 'Chennai, TN', 'IN');

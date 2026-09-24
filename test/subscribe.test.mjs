@@ -59,7 +59,28 @@ check('missing means India', normaliseRegion(undefined), 'IN');
 // listings to somebody who asked for India is the same class of mistake as
 // posting them to India's Telegram channel.
 check('an unknown board is refused', normaliseRegion('FR'), null);
-check('the three published boards', REGIONS, ['IN', 'US', 'GB']);
+/* EVERY PUBLISHED BOARD, READ FROM THE LIVE CONFIG — not a literal. This line
+   was ['IN', 'US', 'GB'] and labelled "the three published boards", so when
+   Canada went live on 24 Sep 2026 the test still passed while /ca/alerts, whose
+   only channel is email, answered every signup "Unknown board.". The counter
+   and the feedback box keep the same copy (a Vercel function cannot import
+   src/regions.js), so all three are held to the published set here. */
+{
+  const { readFileSync } = await import('node:fs');
+  const { publishedRegions, regionPath } = await import('../src/regions.js');
+  const cfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  const published = publishedRegions(cfg).map((r) => r.code);
+  check('found the published boards', published.length >= 3, true);
+  check('the signup accepts every published board', published.filter((c) => !REGIONS.includes(c)), []);
+  const count = await import('../web/api/count.js');
+  check('the counter files every published board under itself', published.filter((c) => !count.REGIONS.has(c)), []);
+  const feedback = await import('../web/api/feedback.js');
+  check('the feedback box does too', published.filter((c) => !feedback.REGIONS.has(c)), []);
+  // The signup's own copy of the board prefix is what referrer_url records.
+  const src = readFileSync(new URL('../web/api/subscribe.js', import.meta.url), 'utf8');
+  const map = Function(`return ${/return \((\{[^}]*\})\)\[code\]/.exec(src)?.[1] ?? '{}'}`)();
+  check('its board prefix agrees with regionPath', published.filter((c) => map[c] !== regionPath(c)), []);
+}
 
 console.log('\n== the honeypot ==');
 check('a human leaves it empty', looksAutomated({ email: 'a@b.com' }), false);

@@ -968,7 +968,8 @@
       "label": "IN entry-level",
       "sweepKey": "IN:entry",
       "employment": "fulltime",
-      "keywords": "(\"software engineer\" OR \"software developer\" OR SDE OR fresher OR \"associate engineer\" OR \"graduate engineer\" OR \"data engineer\" OR \"machine learning engineer\")",
+      "keywords": "(\"software engineer\" OR \"software developer\" OR SDE OR fresher OR \"associate engineer\" OR \"graduate engineer\" OR \"data engineer\" OR \"machine learning engineer\" OR developer OR \"ai engineer\" OR \"ml engineer\" OR \"data scientist\" OR \"qa engineer\" OR \"test engineer\" OR \"full stack\" OR backend OR frontend OR android OR devops OR \"site reliability\" OR \"cloud engineer\" OR \"platform engineer\" OR firmware OR \"validation engineer\" OR \"applications engineer\")",
+      "_keywords_note": "WIDENED 24 Sep 2026 at his instruction, 8 -> 25 phrases. Measured over the 181 India full-time engineering titles stored: the 8 covered 32%, the 25 cover 55%. Four broader phrases (automation engineer, systems engineer, project engineer, research) were measured and LEFT OUT: +2 titles between them, and the most non-software results per page. LinkedIn matches keywords against the whole posting, not only the title, so real result counts grow more than title coverage suggests; the walk is uncapped (no throttle on India, his rule), so watch pages per walk on this search and the account. If LinkedIn says the account is requesting too much data, this is the first search to narrow or pause.",
       "experienceLevels": [
         "entry"
       ],
@@ -1282,7 +1283,8 @@
     "publish": [
       "IN",
       "US",
-      "GB"
+      "GB",
+      "CA"
     ],
     "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
     "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
