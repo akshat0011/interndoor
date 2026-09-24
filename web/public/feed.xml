@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 23 Sep 2026 23:11:53 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 01:42:25 GMT</lastBuildDate>
+  <item>
+    <title>Gen AI Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594</guid>
+    <pubDate>Thu, 24 Sep 2026 01:42:25 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Develop and deploy AI-powered automation solutions using Python and Gen AI
+• Integrate AI solutions with enterprise systems, workflows, and APIs
+• Collaborate with cross-functional teams on AI-driven use cases
+• Follow Responsible AI, security, and governance guidelines</description>
+  </item>
   <item>
     <title>Intern — IQVIA</title>
     <link>https://interndoor.com/jobs/iqvia-intern-4469613902</link>
@@ -498,16 +509,6 @@
 • Develop and maintain product configurators for industrial automation systems
 • Work with databases and web apps to support configuration and selection tools
 • Collaborate with product teams to implement and improve configurator solutions</description>
-  </item>
-  <item>
-    <title>Software Engineer II — Mastercard</title>
-    <link>https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665</guid>
-    <pubDate>Wed, 23 Sep 2026 10:52:24 GMT</pubDate>
-    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
-• Develop full stack applications using Java 8+ and Spring Boot
-• Work on scalable microservices with event-driven architecture
-• Collaborate in agile teams on cloud-native projects</description>
   </item>
 </channel>
 </rss>
