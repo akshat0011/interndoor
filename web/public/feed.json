@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-kubernetes-operation-4470054024",
+      "url": "https://interndoor.com/jobs/zensar-technologies-kubernetes-operation-4470054024",
+      "title": "Kubernetes Operation — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Gurgaon, Haryana, India\n• Support deployments on kubernetes and openshift platforms\n• Troubleshoot pod and cluster issues in production environments\n• Collaborate with dev and infra teams on operational challenges",
+      "date_published": "2026-09-24T23:13:15.914Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/arctic-wolf-developer-3-4470044097",
       "url": "https://interndoor.com/jobs/arctic-wolf-developer-3-4470044097",
       "title": "Developer 3 — Arctic Wolf",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134",
-      "url": "https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134",
-      "title": "Java Springboot Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support systems for client projects\n• Use Java and Springboot to build efficient programs and systems\n• Collaborate with teams to translate requirements into system specifications",
-      "date_published": "2026-09-24T12:09:30.225Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 24 Sep 2026 21:47:55 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 23:13:15 GMT</lastBuildDate>
+  <item>
+    <title>Kubernetes Operation — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-kubernetes-operation-4470054024</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-kubernetes-operation-4470054024</guid>
+    <pubDate>Thu, 24 Sep 2026 23:13:15 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Gurgaon, Haryana, India
+• Support deployments on kubernetes and openshift platforms
+• Troubleshoot pod and cluster issues in production environments
+• Collaborate with dev and infra teams on operational challenges</description>
+  </item>
   <item>
     <title>Developer 3 — Arctic Wolf</title>
     <link>https://interndoor.com/jobs/arctic-wolf-developer-3-4470044097</link>
@@ -496,16 +506,6 @@
 • Develop and implement AI algorithms and models
 • Work with Python, TensorFlow, and PyTorch
 • Collaborate on integrating AI into existing systems</description>
-  </item>
-  <item>
-    <title>Java Springboot Developer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134</guid>
-    <pubDate>Thu, 24 Sep 2026 12:09:30 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Design, develop, validate and support systems for client projects
-• Use Java and Springboot to build efficient programs and systems
-• Collaborate with teams to translate requirements into system specifications</description>
   </item>
 </channel>
 </rss>
