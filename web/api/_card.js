@@ -167,8 +167,9 @@ export function buildCard({ company, title, facts = [], logo = '' }) {
 /**
  * A region's board lives under its own slug and India's is at the root.
  *
- * The three-entry map is a copy of regionPath() from src/regions.js, which an
- * edge function cannot import. It changes only when a region is added, and
- * test/og.test.mjs asserts the two agree so that day is not silent.
+ * The map is a copy of regionPath() from src/regions.js, which an edge
+ * function cannot import. It changes only when a region is added — Canada,
+ * 24 Sep 2026 — and test/og.test.mjs asserts the two agree so that day is not
+ * silent.
  */
-export const REGION_PREFIX = { IN: '', US: '/us', GB: '/uk' };
+export const REGION_PREFIX = { IN: '', US: '/us', GB: '/uk', CA: '/ca' };

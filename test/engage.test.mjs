@@ -450,10 +450,42 @@ console.log('\n== WhatsApp first — the prompt, the page\'s own links, the emai
   const alerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'whatsapp', name: 'WhatsApp', blurb: 'y', url: WA }, { kind: 'instagram', name: 'Instagram', blurb: 'z', url: 'https://www.instagram.com/interndoorin/' }], { region: IN });
   const waAt = alerts.indexOf('On WhatsApp — fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
   ok('/alerts leads with WhatsApp, then email, then the rest', waAt > 0 && emailAt > waAt && restAt > emailAt);
-  const usAlerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'telegram', name: 'Telegram', blurb: 'y', url: 'https://t.me/interndoorusa' }], { region: US });
-  ok('without WhatsApp the page keeps email first', /<h2>By email<\/h2>/.test(usAlerts) && !/On WhatsApp/.test(usAlerts));
+  /* TELEGRAM LEADS WHERE THERE IS NO WHATSAPP (24 Sep 2026). The US board had
+     a channel and led with email anyway, and its email digest is India's — so
+     the one alert that delivers US roles was the one buried last. */
+  const TG = 'https://t.me/interndoorusa';
+  const usAlerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'telegram', name: 'Telegram', blurb: 'y', url: TG }], { region: US });
+  const tgAt = usAlerts.indexOf('On Telegram — fastest, no signup'), usEmailAt = usAlerts.indexOf('Or by email');
+  ok('without WhatsApp, /alerts leads with Telegram, then email', tgAt > 0 && usEmailAt > tgAt && !/On WhatsApp/.test(usAlerts));
   const contact = renderContactPage({ region: IN });
   ok('the WhatsApp outro reaches every generated page through foot()', new RegExp(`class="a-1 is-wa" href="${WA}"`).test(contact));
+
+  const { leadChannel } = await import('../src/pages.js');
+  registerChannels('US', [{ kind: 'email', name: 'Email', url: null }, { kind: 'telegram', name: 'Telegram', url: TG }]);
+  ok('the US lead channel is Telegram', leadChannel(US)?.kind === 'telegram' && leadChannel(US)?.url === TG);
+  ok('India still leads with WhatsApp', leadChannel(IN)?.kind === 'whatsapp');
+  const usJob = renderJobPage({ ...job, location: 'Austin, TX' }, [], { region: US });
+  ok('the US job page\'s box is Telegram', new RegExp(`class="jp-sub is-wa" href="${TG}"`).test(usJob) && /like this on Telegram first/.test(usJob));
+  ok('the US outro button is Telegram', new RegExp(`class="a-1 is-wa" href="${TG}"[^>]*>[\\s\\S]*?Join the Telegram channel`).test(usJob));
+  ok('the US header pill is Telegram', new RegExp(`class="alerts is-wa" aria-label="Join the Telegram channel" href="${TG}"`).test(usJob) && /<span>Telegram alerts<\/span>/.test(usJob));
+  ok('and never India\'s WhatsApp', !/whatsapp\.com/.test(usJob));
+  registerChannels('US', [{ kind: 'whatsapp', name: 'WhatsApp', url: WA }, { kind: 'telegram', name: 'Telegram', url: TG }]);
+  ok('where a board has both, WhatsApp still leads', leadChannel(US)?.kind === 'whatsapp');
+  /* Each fixture is refused by exactly one anchor — a lookalike that fails on
+     the handle length or the dot tests nothing (both first drafts did, and
+     their mutations survived). */
+  registerChannels('US', [{ kind: 'telegram', name: 'Telegram', url: 'https://evil.example/go?to=https://t.me/interndoorusa' }]);
+  ok('the real host embedded later never leads (the ^)', leadChannel(US) === null);
+  registerChannels('US', [{ kind: 'telegram', name: 'Telegram', url: 'https://t.me/interndoorusa.evil.example' }]);
+  ok('nor a real handle with a tail (the $)', leadChannel(US) === null);
+  registerChannels('US', [{ kind: 'telegram', name: 'Telegram', url: 'https://t.me.evil.example/interndoorusa' }]);
+  ok('nor a lookalike subdomain', leadChannel(US) === null);
+  const GB = regionOf('GB');
+  registerChannels('GB', [{ kind: 'email', name: 'Email', url: null }]);
+  const gbPage = renderJobPage({ ...job, location: 'London, UK' }, [], { region: GB });
+  ok('a board with email only keeps /alerts', /class="jp-sub" href="\/uk\/alerts"/.test(gbPage) && !/is-wa/.test(gbPage));
+  registerChannels('US', []);
+  registerChannels('GB', []);
   registerChannels('IN', []);
 
   /* The live config: India is WhatsApp-only, the US keeps its Telegram. */

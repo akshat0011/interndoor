@@ -17,7 +17,7 @@
 
 /** Region names must never become "cities" — LinkedIn puts them in that slot. */
 const NOT_A_CITY = new Set([
-  'india', 'united states', 'united kingdom', 'usa', 'us', 'uk', 'england',
+  'india', 'united states', 'united kingdom', 'usa', 'us', 'uk', 'england', 'canada',
   'remote', 'in-office', 'hybrid', 'on-site', 'onsite', 'anywhere',
   'multiple locations', '2 locations', 'apac', 'emea',
 ]);

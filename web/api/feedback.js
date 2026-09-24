@@ -27,7 +27,7 @@
  */
 import { normaliseEmail } from './subscribe.js';
 
-export const REGIONS = new Set(['IN', 'US', 'GB']);
+export const REGIONS = new Set(['IN', 'US', 'GB', 'CA']);
 
 /* The Redis list. One list, newest first, trimmed to KEEP — bounded storage
    with no expiry, because feedback is worth reading weeks later and a TTL that

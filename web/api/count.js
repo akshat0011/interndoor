@@ -22,7 +22,7 @@ export const EVENTS = new Set([
   'apply',
   'nudge-shown', 'nudge-whatsapp', 'nudge-telegram', 'nudge-email', 'nudge-dismiss',
 ]);
-export const REGIONS = new Set(['IN', 'US', 'GB']);
+export const REGIONS = new Set(['IN', 'US', 'GB', 'CA']);
 
 /* 100 days, so a fortnight's before-and-after is readable well after the
    change, and a key nobody reads still goes away on its own. */

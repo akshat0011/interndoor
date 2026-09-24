@@ -286,11 +286,16 @@ const REGION_LIST = [
     // Ottawa IL/KS, Waterloo NY. Prophylactic rather than observed — unlike
     // GB's list, none of these has turned up misfiled yet.
     //
-    // `ontario` is deliberately NOT here. Ontario, California is real, but
-    // "Ontario, CA" is the exact shape the city-before-code rule exists to get
-    // right, and flipping it would resolve the province to the United States.
-    // `toronto` is absent for the same documented reason.
-    ambiguousCities: ['vancouver', 'ottawa', 'waterloo'],
+    // `ontario` IS here now, and the note that kept it out was reasoning, not
+    // data. Measured 24 Sep 2026 before Canada went live: the store's only
+    // "Ontario, CA" is Amazon's warehouse in Ontario, CALIFORNIA, and its four
+    // "Ontario, NY" rows are Constellation's plant in upstate New York — two of
+    // them live engineering roles that would have opened the Canada board.
+    // Weak means a state code beside it wins; "Ontario", "Ontario, Canada",
+    // "Toronto, Ontario" and "Ottawa, Ontario" all stay Canadian. Over all 2,271
+    // stored locations: exactly those 2 changed, both to the US.
+    // `toronto` stays strong: no US Toronto has turned up.
+    ambiguousCities: ['vancouver', 'ottawa', 'waterloo', 'ontario'],
   },
   {
     code: 'DE',

@@ -287,8 +287,16 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
   check('exactly one pill', (inBoard.match(/class="alerts/g) ?? []).length, 1);
   writePages([job(1)], dir, [], { region: regionOf('US'), channels: [{ kind: 'email', name: 'Email', url: null }, { kind: 'telegram', name: 'Telegram', url: 'https://t.me/interndoorusa' }] });
   const usBoard = readFileSync(`${dir}/us/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
-  check('the US pill stays /us/alerts', /class="alerts" aria-label="Get alerts" href="\/us\/alerts"/.test(usBoard), true);
-  check('and the US band has no WhatsApp lead', /wa-go|whatsapp\.com/.test(usBoard), false);
+  // The US has no WhatsApp; since 24 Sep 2026 its Telegram channel leads instead.
+  check('the US pill is its Telegram channel', /class="alerts is-wa" aria-label="Join the Telegram channel" href="https:\/\/t\.me\/interndoorusa"/.test(usBoard), true);
+  check('and the US band leads with it', /class="wa-go is-wa" href="https:\/\/t\.me\/interndoorusa"/.test(usBoard) && /Every new role in the US, the minute it is posted\. No signup\./.test(usBoard), true);
+  check('and never India\'s WhatsApp', /whatsapp\.com/.test(usBoard), false);
+  check('still exactly one pill on the US board', (usBoard.match(/class="alerts/g) ?? []).length, 1);
+  // A board with email only (the UK, Canada) keeps /alerts.
+  writePages([job(1)], dir, [], { region: regionOf('GB'), channels: [{ kind: 'email', name: 'Email', url: null }] });
+  const ukBoard = readFileSync(`${dir}/uk/index.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+  check('the UK pill stays /uk/alerts', /class="alerts" aria-label="Get alerts" href="\/uk\/alerts"/.test(ukBoard), true);
+  check('and the UK band has no channel lead', /wa-go/.test(ukBoard), false);
 
   // A board with no live rows must not say "0 engineering internships".
   writePages([], dir, [], { region: regionOf('US') });
