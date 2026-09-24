@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/continental-engineering-summer-interns-2027-ats-smartrecruiters-continental-744000151650000",
+      "url": "https://interndoor.com/us/jobs/continental-engineering-summer-interns-2027-ats-smartrecruiters-continental-744000151650000",
+      "title": "Engineering Summer Interns 2027 — Continental",
+      "content_text": "Company: Continental · Location: Mount Vernon, us",
+      "date_published": "2026-09-24T15:21:07.692Z",
+      "authors": [
+        {
+          "name": "Continental"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/linkedin-associate-engineer-data-center-ats-smartrecruiters-linkedin3-744000151647527",
+      "url": "https://interndoor.com/us/jobs/linkedin-associate-engineer-data-center-ats-smartrecruiters-linkedin3-744000151647527",
+      "title": "Associate Engineer, Data Center — LinkedIn",
+      "content_text": "Company: LinkedIn · Location: Manassas, us",
+      "date_published": "2026-09-24T15:11:45.550Z",
+      "authors": [
+        {
+          "name": "LinkedIn"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ups-2027-buildings-and-systems-engineering-summer-intern-4461335202",
       "url": "https://interndoor.com/us/jobs/ups-2027-buildings-and-systems-engineering-summer-intern-4461335202",
       "title": "2027 Buildings and Systems Engineering Summer Intern — UPS",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Ramp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ramp-software-engineering-intern-ios-4469645276",
-      "url": "https://interndoor.com/us/jobs/ramp-software-engineering-intern-ios-4469645276",
-      "title": "Software Engineering Intern, iOS — Ramp",
-      "content_text": "Company: Ramp · Location: New York, NY · Duration: 16 weeks\n• Build and ship new features for Ramp’s iOS app\n• Work with Swift, SwiftUI, and our mobile stack\n• Collaborate with Product and Design on real user experiences",
-      "date_published": "2026-09-24T02:39:01.529Z",
-      "authors": [
-        {
-          "name": "Ramp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/amd-summer-2027-phd-ml-systems-research-engineering-intern-4471183368",
-      "url": "https://interndoor.com/us/jobs/amd-summer-2027-phd-ml-systems-research-engineering-intern-4471183368",
-      "title": "Summer 2027 PhD ML Systems Research Engineering Intern — AMD",
-      "content_text": "Company: AMD · Location: Santa Clara, CA · Duration: Summer 2027\n• Build scalable systems for experiment management and model serving\n• Optimize training and inference through parallelism and performance tuning\n• Work on AI infrastructure with PyTorch and distributed systems",
-      "date_published": "2026-09-24T02:34:31.778Z",
-      "authors": [
-        {
-          "name": "AMD"
         }
       ]
     }

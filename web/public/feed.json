@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
+      "url": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
+      "title": "Clinical Data Science Programmer — ICON plc",
+      "content_text": "Company: ICON plc · Location: Bengaluru, Karnataka, India\n• Develop and validate statistical programming code for clinical trial data analysis\n• Collaborate with data scientists and statisticians on analytical needs\n• Ensure compliance with regulatory standards in programming practices",
+      "date_published": "2026-09-24T15:22:10.239Z",
+      "authors": [
+        {
+          "name": "ICON plc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630",
+      "url": "https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630",
+      "title": "Java Backend Developer — Capgemini Engineering",
+      "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Develops network systems and connected applications for wireless, satellite, and fixed networks\n• Works with IoT, 5G, edge computing, and Telco Cloud platforms\n• Collaborates with customers and teams to interpret needs and deliver solutions",
+      "date_published": "2026-09-24T15:02:42.584Z",
+      "authors": [
+        {
+          "name": "Capgemini Engineering"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/capgemini-engineering-data-scientist-4471497631",
+      "url": "https://interndoor.com/jobs/capgemini-engineering-data-scientist-4471497631",
+      "title": "Data Scientist — Capgemini Engineering",
+      "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Analyze software systems to improve performance and reliability\n• Use python and machine learning frameworks for data modeling\n• Work on cross-functional teams to deliver scalable engineering solutions",
+      "date_published": "2026-09-24T15:02:19.955Z",
+      "authors": [
+        {
+          "name": "Capgemini Engineering"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453107149",
+      "url": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453107149",
+      "title": "Turbine - System Integrator — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Vadodara, Gujarat, India\n• Design and evaluate projects using engineering principles and industry standards\n• Collaborate across disciplines and understand integration of technical domains\n• Lead small projects with minimal resources and mentor less experienced colleagues",
+      "date_published": "2026-09-24T14:33:30.550Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-research-software-engineer-4469746779",
+      "url": "https://interndoor.com/jobs/ibm-research-software-engineer-4469746779",
+      "title": "Research Software Engineer — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Work on AI research projects with real-world data and enterprise applications\n• Use Python, TensorFlow, PyTorch, and tools like Git and Jupyter Notebooks\n• Collaborate with global teams to integrate research into IBM products",
+      "date_published": "2026-09-24T14:32:47.199Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ibm-research-software-engineer-4469748737",
       "url": "https://interndoor.com/jobs/ibm-research-software-engineer-4469748737",
       "title": "Research Software Engineer — IBM",
@@ -402,18 +462,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/capgemini-java-backend-developer-4471436911",
-      "url": "https://interndoor.com/jobs/capgemini-java-backend-developer-4471436911",
-      "title": "Java Backend Developer — Capgemini",
-      "content_text": "Company: Capgemini · Location: Bengaluru, Karnataka, India\n• Develop software for wireless and satellite networks\n• Work with telco cloud and edge compute platforms\n• Collaborate with customers on network solutions",
-      "date_published": "2026-09-24T10:44:55.423Z",
-      "authors": [
-        {
-          "name": "Capgemini"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
       "url": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
       "title": "Software Engineer — Emerson",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/niqo-robotics-application-reliability-engineer-4471421235",
-      "url": "https://interndoor.com/jobs/niqo-robotics-application-reliability-engineer-4471421235",
-      "title": "Application Reliability Engineer — Niqo Robotics",
-      "content_text": "Company: Niqo Robotics · Location: Bengaluru, Karnataka, India\n• Resolve user issues by diagnosing and fixing system problems\n• Maintain monitoring tools to prevent system failures\n• Automate tasks to improve efficiency and reduce errors\n• Collaborate with teams to ensure system reliability",
-      "date_published": "2026-09-24T06:57:56.655Z",
-      "authors": [
-        {
-          "name": "Niqo Robotics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dehaat-program-intern-mdc-programs-ai-and-automation-4469389634",
-      "url": "https://interndoor.com/jobs/dehaat-program-intern-mdc-programs-ai-and-automation-4469389634",
-      "title": "Program Intern – MDC Programs, AI & Automation — DeHaat",
-      "content_text": "Company: DeHaat · Location: Gurugram, Haryana, India\n• Support program execution by creating action plans, tracking timelines and resolving blockers\n• Build automations using spreadsheets, no-code tools or basic scripts to improve workflows\n• Use AI tools to analyze data, draft SOPs and prototype solutions for retail operations\n• Work with field and store teams to design simple, adoptable solutions for rural business",
-      "date_published": "2026-09-24T06:54:41.606Z",
-      "authors": [
-        {
-          "name": "DeHaat"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-data-science-intern-ats-microsoft-india-united-states-united-kingdom-1970393556917520",
-      "url": "https://interndoor.com/jobs/microsoft-data-science-intern-ats-microsoft-india-united-states-united-kingdom-1970393556917520",
-      "title": "Data Science INTERN — Microsoft",
-      "content_text": "Company: Microsoft · Location: Multiple Locations, Multiple Locations, India\n• Analyze data to improve products used by millions\n• Work with stakeholders to solve business problems\n• Use machine learning and statistics for real-world impact",
-      "date_published": "2026-09-24T05:37:00.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/festo-india-ux-ui-design-intern-4469371615",
-      "url": "https://interndoor.com/jobs/festo-india-ux-ui-design-intern-4469371615",
-      "title": "UX/UI Design Intern — Festo India",
-      "content_text": "Company: Festo India · Location: Greater Bengaluru Area\n• Create wireframes and prototypes for product features\n• Design user flows and interface concepts\n• Work with product requirements to shape visual ideas",
-      "date_published": "2026-09-24T04:16:17.265Z",
-      "authors": [
-        {
-          "name": "Festo India"
         }
       ]
     }
