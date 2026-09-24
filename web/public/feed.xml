@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 24 Sep 2026 12:09:30 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 12:11:52 GMT</lastBuildDate>
+  <item>
+    <title>Intern Masters Embedded Eng — Honeywell Aerospace</title>
+    <link>https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345</guid>
+    <pubDate>Thu, 24 Sep 2026 12:11:52 GMT</pubDate>
+    <description>Company: Honeywell Aerospace · Location: Bengaluru, Karnataka, India
+• Design and test embedded software and firmware for aerospace systems
+• Work with engineers on advanced embedded systems development
+• Learn C/C++ and software development practices in a real-world project</description>
+  </item>
+  <item>
+    <title>Intern Masters AI — Honeywell Aerospace</title>
+    <link>https://interndoor.com/jobs/honeywell-aerospace-intern-masters-ai-4469750098</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-aerospace-intern-masters-ai-4469750098</guid>
+    <pubDate>Thu, 24 Sep 2026 12:11:49 GMT</pubDate>
+    <description>Company: Honeywell Aerospace · Location: Bengaluru, Karnataka, India
+• Develop and implement AI algorithms and models
+• Work with Python, TensorFlow, and PyTorch
+• Collaborate on integrating AI into existing systems</description>
+  </item>
   <item>
     <title>Java Springboot Developer — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134</link>
@@ -495,26 +515,6 @@
 • Develop end-to-end features from user experience to backend code
 • Work with SAP ABAP for HANA development
 • Collaborate with teams on cloud-first solutions</description>
-  </item>
-  <item>
-    <title>Custom Software Engineer Copy 01 — Accenture in India</title>
-    <link>https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-copy-01-4448395323</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-copy-01-4448395323</guid>
-    <pubDate>Wed, 23 Sep 2026 14:31:08 GMT</pubDate>
-    <description>Company: Accenture in India · Location: Bengaluru, Karnataka, India
-• Develop custom software solutions using Python and Node JS on Lambda Platform
-• Work on API integration between cloud platforms and AWS environment
-• Provide SME support for new business proposals and backend development</description>
-  </item>
-  <item>
-    <title>Developer III - Software Engineering-C++, Code Review, MongoDB, Microsoft SQL Server — UST</title>
-    <link>https://interndoor.com/jobs/ust-developer-iii-software-engineering-c-code-review-mongodb-microsoft-sql-4469319345</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-developer-iii-software-engineering-c-code-review-mongodb-microsoft-sql-4469319345</guid>
-    <pubDate>Wed, 23 Sep 2026 14:29:57 GMT</pubDate>
-    <description>Company: UST · Location: Bengaluru, Karnataka, India
-• Write clean code in c++ and debug applications
-• Work with mongodb and microsoft sql server
-• Collaborate with cross-functional teams on scalable systems</description>
   </item>
 </channel>
 </rss>

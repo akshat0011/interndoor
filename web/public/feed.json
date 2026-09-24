@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345",
+      "url": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-embedded-eng-4469739345",
+      "title": "Intern Masters Embedded Eng — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: Bengaluru, Karnataka, India\n• Design and test embedded software and firmware for aerospace systems\n• Work with engineers on advanced embedded systems development\n• Learn C/C++ and software development practices in a real-world project",
+      "date_published": "2026-09-24T12:11:52.196Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-ai-4469750098",
+      "url": "https://interndoor.com/jobs/honeywell-aerospace-intern-masters-ai-4469750098",
+      "title": "Intern Masters AI — Honeywell Aerospace",
+      "content_text": "Company: Honeywell Aerospace · Location: Bengaluru, Karnataka, India\n• Develop and implement AI algorithms and models\n• Work with Python, TensorFlow, and PyTorch\n• Collaborate on integrating AI into existing systems",
+      "date_published": "2026-09-24T12:11:49.817Z",
+      "authors": [
+        {
+          "name": "Honeywell Aerospace"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134",
       "url": "https://interndoor.com/jobs/infosys-java-springboot-developer-4442932134",
       "title": "Java Springboot Developer — Infosys",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-copy-01-4448395323",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-copy-01-4448395323",
-      "title": "Custom Software Engineer Copy 01 — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop custom software solutions using Python and Node JS on Lambda Platform\n• Work on API integration between cloud platforms and AWS environment\n• Provide SME support for new business proposals and backend development",
-      "date_published": "2026-09-23T14:31:08.729Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-developer-iii-software-engineering-c-code-review-mongodb-microsoft-sql-4469319345",
-      "url": "https://interndoor.com/jobs/ust-developer-iii-software-engineering-c-code-review-mongodb-microsoft-sql-4469319345",
-      "title": "Developer III - Software Engineering-C++, Code Review, MongoDB, Microsoft SQL Server — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Write clean code in c++ and debug applications\n• Work with mongodb and microsoft sql server\n• Collaborate with cross-functional teams on scalable systems",
-      "date_published": "2026-09-23T14:29:57.899Z",
-      "authors": [
-        {
-          "name": "UST"
         }
       ]
     }
