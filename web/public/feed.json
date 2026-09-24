@@ -6,10 +6,22 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/linde-india-software-engineer-ai-hub-4462483324",
+      "url": "https://interndoor.com/jobs/linde-india-software-engineer-ai-hub-4462483324",
+      "title": "Software Engineer - AI Hub — Linde@India",
+      "content_text": "Company: Linde@India · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build scalable backend systems\n• Implement CI/CD pipelines and application monitoring tools",
+      "date_published": "2026-09-24T16:21:58.021Z",
+      "authors": [
+        {
+          "name": "Linde@India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
       "url": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
       "title": "Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop features for policy and vulnerability management tools\n• Work with React, Angular, or similar frameworks\n• Collaborate on agile projects with guidance from senior engineers",
       "date_published": "2026-09-24T15:52:10.771Z",
       "authors": [
         {
@@ -33,7 +45,7 @@
       "id": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
       "url": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
       "title": "Software Engineer — Qualys",
-      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years\n• Develop and debug security software for Windows platform\n• Use C++ and Windows internals knowledge in Visual Studio\n• Collaborate with engineers on scalable security platform",
       "date_published": "2026-09-24T15:09:33.308Z",
       "authors": [
         {
@@ -302,18 +314,6 @@
       "authors": [
         {
           "name": "Global Payments Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4462458926",
-      "url": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4462458926",
-      "title": "Software Engineer - AI Hub — Linde",
-      "content_text": "Company: Linde · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build scalable backend systems\n• Experiment with CI/CD tools for sustainable software delivery",
-      "date_published": "2026-09-24T13:07:29.535Z",
-      "authors": [
-        {
-          "name": "Linde"
         }
       ]
     },
