@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/mufg-full-stack-java-developer-4471638809",
+      "url": "https://interndoor.com/jobs/mufg-full-stack-java-developer-4471638809",
+      "title": "Full Stack Java Developer — MUFG",
+      "content_text": "Company: MUFG · Location: Greater Bengaluru Area\n• Develop and maintain web applications using Java, Spring, and microservices\n• Collaborate with cross-functional teams on secure, scalable systems\n• Design and implement features for financial products and dashboards",
+      "date_published": "2026-09-24T18:53:15.971Z",
+      "authors": [
+        {
+          "name": "MUFG"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mastercard-software-engineer-ii-software-engineer-in-test-4440180652",
+      "url": "https://interndoor.com/jobs/mastercard-software-engineer-ii-software-engineer-in-test-4440180652",
+      "title": "Software Engineer II (Software Engineer in Test ) — Mastercard",
+      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Write and maintain test automation for payment systems using Java and Selenium\n• Collaborate with developers to improve test and release processes\n• Work on cloud-based applications and microservices architectures",
+      "date_published": "2026-09-24T18:52:20.651Z",
+      "authors": [
+        {
+          "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/lenovo-data-center-system-administrator-4461316704",
+      "url": "https://interndoor.com/jobs/lenovo-data-center-system-administrator-4461316704",
+      "title": "Data Center System Administrator — Lenovo",
+      "content_text": "Company: Lenovo · Location: Mumbai, Maharashtra, India\n• Monitor and optimize cluster health, perform hardware installation and replacement\n• Use Red Hat Linux for system monitoring and troubleshooting\n• Collaborate with vendors, attend meetings, and manage customer issues",
+      "date_published": "2026-09-24T18:15:25.233Z",
+      "authors": [
+        {
+          "name": "Lenovo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-embedded-engr-i-4471634419",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-embedded-engr-i-4471634419",
+      "title": "Embedded Engr I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: India\n• Design and test embedded systems for industrial automation\n• Work with c and c++ in real-time environments\n• Collaborate with cross-functional teams on hardware-software integration",
+      "date_published": "2026-09-24T18:03:29.429Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mastercard-ai-engineer-4459531837",
       "url": "https://interndoor.com/jobs/mastercard-ai-engineer-4459531837",
       "title": "AI Engineer — Mastercard",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Dentsu Global Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-intern-4469735146",
-      "url": "https://interndoor.com/jobs/harman-india-intern-4469735146",
-      "title": "Intern — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Write test cases for AUTOSAR applications on microcontroller hardware\n• Use AI tools for coding, debugging, and documentation\n• Collaborate with engineers on test framework development",
-      "date_published": "2026-09-24T10:53:22.295Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-ai-engineer-4469721777",
-      "url": "https://interndoor.com/jobs/mastercard-ai-engineer-4469721777",
-      "title": "AI Engineer — Mastercard",
-      "content_text": "Company: Mastercard · Location: Gurugram, Haryana, India\n• Design and deploy AI/ML solutions to improve operational efficiency\n• Build LLM applications and RAG pipelines for production use\n• Collaborate with global teams to implement AI-driven strategies",
-      "date_published": "2026-09-24T10:52:14.048Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471440761",
-      "url": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471440761",
-      "title": "Product Specialist — Rockwell Automation",
-      "content_text": "Company: Rockwell Automation · Location: Pune/Pimpri-Chinchwad Area\n• Support development and maintenance of industrial automation tools\n• Collaborate with cross-functional teams on product requirements and validation\n• Analyze business rules and improve tool accuracy and user experience",
-      "date_published": "2026-09-24T10:47:23.329Z",
-      "authors": [
-        {
-          "name": "Rockwell Automation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471439792",
-      "url": "https://interndoor.com/jobs/rockwell-automation-product-specialist-4471439792",
-      "title": "Product Specialist — Rockwell Automation",
-      "content_text": "Company: Rockwell Automation · Location: Bengaluru, Karnataka, India\n• Support development and maintenance of industrial automation tools\n• Collaborate with engineering, product, and UX teams on requirements\n• Analyze business rules and validate tool functionality\n• Work hybrid with 12:00 PM to 9:00 PM shift in Bengaluru/Pune",
-      "date_published": "2026-09-24T10:46:55.748Z",
-      "authors": [
-        {
-          "name": "Rockwell Automation"
         }
       ]
     }
