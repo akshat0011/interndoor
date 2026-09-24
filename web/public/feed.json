@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594",
+      "url": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594",
+      "title": "Gen AI Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop and deploy AI-powered automation solutions using Python and Gen AI\n• Integrate AI solutions with enterprise systems, workflows, and APIs\n• Collaborate with cross-functional teams on AI-driven use cases\n• Follow Responsible AI, security, and governance guidelines",
+      "date_published": "2026-09-24T01:42:25.520Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/iqvia-intern-4469613902",
       "url": "https://interndoor.com/jobs/iqvia-intern-4469613902",
       "title": "Intern — IQVIA",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Rockwell Automation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-ii-4468993665",
-      "title": "Software Engineer II — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Develop full stack applications using Java 8+ and Spring Boot\n• Work on scalable microservices with event-driven architecture\n• Collaborate in agile teams on cloud-native projects",
-      "date_published": "2026-09-23T10:52:24.213Z",
-      "authors": [
-        {
-          "name": "Mastercard"
         }
       ]
     }
