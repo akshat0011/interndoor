@@ -95,7 +95,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=11">
+<link rel="stylesheet" href="/styles.css?v=12">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -574,6 +574,11 @@ Engineering internships &amp; entry-level jobs
 
   <div class="modal-body">
     <section class="step" id="step-upload">
+      <ol class="wiz" id="wiz" aria-label="Steps">
+        <li class="wstep" data-wiz="1"><b>1</b><span>Resume</span></li>
+        <li class="wstep" data-wiz="2"><b>2</b><span>Google AI key</span></li>
+        <li class="wstep" data-wiz="3"><b>3</b><span>Tailor</span></li>
+      </ol>
       <div class="drop" id="dropzone" tabindex="0" role="button" aria-label="Upload your resume PDF">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16.5V4M7 9l5-5 5 5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
         <b>Drop your resume</b>
@@ -585,21 +590,23 @@ Engineering internships &amp; entry-level jobs
         <textarea id="resume-paste" rows="9" aria-label="Resume text" placeholder="Paste the full text of your resume…"></textarea>
       </details>
       <div class="filestate" id="file-state" hidden></div>
-      <details class="keybox" id="keybox">
-        <summary id="key-state">AI features &mdash; no key yet (ranking by skills still works)</summary>
-        <p class="keyneed"><b>This one needs a key.</b> Tailoring rewrites your resume with Google's AI, and it runs on <b>your</b> key so the resume never reaches InternDoor. A key is free and takes about a minute to create.</p>
-        <p class="keynote">Ranking the board by skills runs <b>on this device</b> and needs no key. To have an AI <b>read</b> each posting and score it properly, or to tailor your resume for one role, paste your own Google AI Studio key.</p>
-        <div class="keyrow">
-          <input type="password" id="ai-key" autocomplete="off" spellcheck="false" placeholder="AIza&hellip;" aria-label="Google AI Studio API key">
-          <button class="alt" id="save-key" type="button">Save</button>
+      <div class="keybox" id="keybox">
+        <div class="keytop">
+          <h3 class="keyhead" id="key-state">Google AI key</h3>
           <button class="bare" id="forget-key" type="button" hidden>Forget</button>
         </div>
-        <p class="keynote">Stored in <b>this browser only</b> and sent straight from your device to Google &mdash; it never reaches InternDoor. <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Get a free key from Google AI Studio &rarr;</a></p>
-      </details>
+        <div id="key-form">
+          <p class="keyneed"><b>Tailoring needs your own key.</b> It rewrites your resume with Google's AI, on your key. A key is free and takes about a minute &mdash; <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">get one from Google AI Studio &rarr;</a></p>
+          <p class="keynote">Ranking by skills runs <b>on this device</b> and needs no key. Add one to have an AI <b>read</b> the top roles and score them properly &mdash; <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">get a free key from Google AI Studio &rarr;</a></p>
+          <div class="keyrow">
+            <input type="password" id="ai-key" autocomplete="off" spellcheck="false" placeholder="AIza&hellip; or AQ.&hellip;" aria-label="Google AI Studio API key">
+            <button class="alt" id="save-key" type="button">Save</button>
+          </div>
+        </div>
+        <p class="keyfine">Kept in <b>this browser only</b> and sent from your device straight to Google &mdash; your key and your resume never reach InternDoor. On a free key Google may use what you send to improve its models; a paid key does not.</p>
+      </div>
       <div class="warn">
-        <p><b>Read before uploading.</b></p>
-        <p>Your resume <b>never reaches InternDoor</b>. Skill ranking happens on this device. The AI features send it from your browser <b>straight to Google under your own key</b> &mdash; we are not in the middle, so there is nothing here to store.</p>
-        <p>A <b>free</b> Google key still lets Google use what you send to improve their models; a paid one does not. Either way, strip your home address and any ID numbers first &mdash; name, email, education and experience are all it needs.</p>
+        <p><b>Before uploading,</b> strip your home address and any ID numbers &mdash; name, email, education and experience are all it needs.</p>
       </div>
       <button class="go go-block" id="do-tailor" type="button" disabled>Tailor it</button>
     </section>
