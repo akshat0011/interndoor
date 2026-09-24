@@ -107,6 +107,8 @@ const state = {
   groups: new Map(),
   selectedId: null,
   resumeText: '',
+  // What the resume screen calls it: the file name, or "Pasted text".
+  resumeLabel: '',
   tailored: null,
   generatedAt: null,
   // The high-water mark of the reader's PREVIOUS visit, or null on a first
@@ -1739,23 +1741,69 @@ function trackBar(job) {
 
 let activeJob = null;
 
+/* ONE QUESTION PER SCREEN. The dialog used to put the upload box, the key panel,
+   a privacy warning and the button on one screen, and a reader could not tell
+   which came first. It is a wizard now: the resume, then the key, then a review
+   with one button. Rank mode is the first screen alone, because ranking needs no
+   key; 'ai-rank' is the key screen alone, opened when "Read the top N with AI"
+   is pressed without one.
+   @type {'tailor'|'rank'|'ai-rank'} */
+let tailorMode = 'tailor';
+// "Use a different key" reopens the form over a key that is already saved.
+let replacingKey = false;
+// A read in progress, or the reason a file was refused. null when there is
+// nothing to say. The resume screen is drawn from this plus state.resumeText.
+let resumeNote = null;
+
+const WIZARD = ['upload', 'key', 'review'];
+const SCREENS = [...WIZARD, 'working', 'result', 'error'];
+
+const resumeTextNow = () => (state.resumeText || $('resume-paste')?.value || '').trim();
+const resumeReady = () => resumeTextNow().length >= 200;
+
 /**
- * @param {object|null} job  null opens the modal in RANK mode — no role to
+ * @param {object|null} job  null opens the dialog in RANK mode: no role to
  *   rewrite against, so it scores the whole board and sorts by fit instead.
- *   Passing a job it does not have would throw on job.company.
+ * @param {{mode?: 'ai-rank'}} [opts]  'ai-rank' asks for the key and nothing else.
  */
-function openTailor(job) {
+function openTailor(job, { mode } = {}) {
   activeJob = job;
-  $('tailor-title').textContent = job ? 'Tailor your resume' : 'Rank the whole board';
-  $('tailor-job').textContent = job
-    ? `${job.company} · ${job.title}`
-    : 'Score every open role against your resume, and sort by fit.';
-  syncKeyUi();          // label, panel prominence and the button, in one place
-  showStep('upload');
+  tailorMode = mode || (job ? 'tailor' : 'rank');
+  replacingKey = false;
+
+  // [title, subtitle, resume screen lede, key screen lede]
+  const copy = {
+    tailor: ['Tailor your resume', job ? `${job.company} · ${job.title}` : '',
+      'A PDF works best. It is read right here in your browser.',
+      'Tailoring runs on Google’s AI with your own key. Getting one is free and takes about a minute.'],
+    rank: ['Rank the board', 'Every open role, sorted by fit with your resume',
+      'Each open role is scored against it on this device. No key needed.', ''],
+    'ai-rank': [`Read the top ${RANK_BATCH} with AI`, 'An AI reads each posting against your resume', '',
+      `Google’s AI reads the top ${RANK_BATCH} roles against your resume, on your own key. Getting one is free and takes about a minute.`],
+  }[tailorMode];
+  $('tailor-title').textContent = copy[0];
+  $('tailor-job').textContent = copy[1];
+  const lede = $('upload-p');
+  if (lede) lede.textContent = copy[2];
+  const keyLede = $('key-p');
+  if (keyLede && copy[3]) keyLede.textContent = copy[3];
+  // Ranking never leaves this device, so the advice about what to strip before
+  // sending a resume to Google would be noise there.
+  const hint = $('upload-hint');
+  if (hint) hint.hidden = tailorMode !== 'tailor';
+
+  syncKeyUi();
+  renderResume();
+  // Pick up where the reader left off: a resume and a key from an earlier role
+  // go straight to the review, rather than walking the same two screens again.
+  const first = tailorMode === 'ai-rank' ? 'key'
+    : tailorMode === 'rank' || !resumeReady() ? 'upload'
+    : !hasKey() ? 'key' : 'review';
+  showStep(first, { animate: false });
   $('tailor-backdrop').hidden = false;
   $('tailor').hidden = false;
   document.body.style.overflow = 'hidden';
-  $('tailor-close').focus();
+  focusStep(first);
 }
 
 function closeTailor() {
@@ -1764,22 +1812,142 @@ function closeTailor() {
   if (!$('detail-col').classList.contains('open')) document.body.style.overflow = '';
 }
 
-function showStep(name) {
-  for (const s of ['upload', 'working', 'result', 'error']) {
-    $(`step-${s}`).hidden = s !== name;
+/**
+ * Swap the visible screen. Moving forward slides the new screen in from the
+ * right, moving back from the left, so the direction of travel is legible.
+ * WAAPI rather than a CSS class: the global reduced-motion rule only reaches
+ * CSS animations, so this checks the preference itself and cross-fades instead.
+ */
+function showStep(name, { animate = true } = {}) {
+  const modal = $('tailor');
+  const from = modal?.dataset.step;
+  for (const s of SCREENS) {
+    const node = $(`step-${s}`);
+    if (node) node.hidden = s !== name;
+  }
+  if (modal) modal.dataset.step = name;
+  const body = modal?.querySelector('.modal-body');
+  if (body) body.scrollTop = 0;
+  if (name === 'review') syncReview();
+  syncFooter();
+  syncPrimary();
+
+  const node = $(`step-${name}`);
+  if (!animate || !from || from === name || !node?.animate) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const back = SCREENS.indexOf(name) < SCREENS.indexOf(from);
+  node.animate(reduce
+    ? [{ opacity: 0 }, { opacity: 1 }]
+    : [{ opacity: 0, transform: `translateX(${back ? -14 : 14}px)` }, { opacity: 1, transform: 'none' }],
+  { duration: reduce ? 160 : 240, easing: 'cubic-bezier(.2,.9,.25,1)' });
+}
+
+function goTo(name) {
+  showStep(name);
+  focusStep(name);
+}
+
+/* Focus lands on the screen's heading so a screen reader announces where the
+   reader now is. The key screen is the exception on a desktop, where the next
+   thing anyone does is paste; on a phone that would throw the keyboard up over
+   the instructions for getting a key. */
+function focusStep(name) {
+  const input = $('ai-key');
+  const target = name === 'key' && input && !$('key-form')?.hidden
+    && matchMedia('(pointer: fine)').matches
+    ? input
+    : $(`step-${name}`)?.querySelector('.tw-h');
+  target?.focus({ preventScroll: true });
+}
+
+/* The footer holds Back and the one primary action for the screen on show. It
+   is a single bar outside the scrolling body, so the action never scrolls away. */
+function syncFooter() {
+  const step = $('tailor')?.dataset.step;
+  const foot = $('tw-foot');
+  if (foot) foot.hidden = !WIZARD.includes(step);
+  const primary = { upload: 'resume-next', key: 'key-next', review: 'do-tailor' };
+  for (const [s, id] of Object.entries(primary)) {
+    const btn = $(id);
+    if (btn) btn.hidden = s !== step;
+  }
+  const back = $('tw-back');
+  if (back) back.hidden = tailorMode !== 'tailor' || step === 'upload';
+}
+
+function goBack() {
+  const step = $('tailor')?.dataset.step;
+  goTo(step === 'review' ? 'key' : 'upload');
+}
+
+function syncReview() {
+  const role = $('sum-role');
+  if (role && activeJob) role.textContent = `${activeJob.title} at ${activeJob.company}`;
+  const res = $('sum-resume');
+  if (res) res.textContent = state.resumeLabel || 'Pasted text';
+}
+
+/**
+ * @param {string} text
+ * @param {string} label  the file name when ok, otherwise what went wrong
+ * @param {boolean} [ok]
+ * @param {{busy?: boolean}} [opts]  a read in progress rather than a refusal
+ */
+function setResumeText(text, label, ok = true, { busy = false } = {}) {
+  state.resumeText = ok ? text : '';
+  state.resumeLabel = ok ? label : '';
+  resumeNote = ok ? null : { text: label, busy };
+  syncRelevance();
+  renderResume();
+  syncPrimary();
+}
+
+/* The resume screen is DRAWN from state, never patched: a read file, a paste long
+   enough to use, a read in progress and a refusal are four states of one box,
+   and patching them one at a time is how two of them end up on screen at once. */
+function renderResume() {
+  const box = $('file-state');
+  if (!box) return;
+  const ready = resumeReady();
+  const zone = $('dropzone');
+  if (zone) zone.hidden = ready;
+
+  if (ready) {
+    const tick = el('span', 'fs-tick', '✓');
+    tick.setAttribute('aria-hidden', 'true');
+    const info = el('span', 'fs-info');
+    info.append(
+      el('b', 'fs-name', state.resumeLabel || 'Pasted text'),
+      el('span', 'fs-meta', `${resumeTextNow().length.toLocaleString()} characters read`),
+    );
+    const remove = el('button', 'bare fs-remove', 'Remove');
+    remove.type = 'button';
+    remove.addEventListener('click', clearResume);
+    box.className = 'filestate is-ready';
+    box.replaceChildren(tick, info, remove);
+    box.hidden = false;
+  } else if (resumeNote) {
+    box.className = `filestate ${resumeNote.busy ? 'is-busy' : 'bad'}`;
+    box.replaceChildren(el('span', null, resumeNote.text));
+    box.hidden = false;
+  } else {
+    box.hidden = true;
+    box.replaceChildren();
   }
 }
 
-function setResumeText(text, label, ok = true) {
-  state.resumeText = ok ? text : '';
+function clearResume() {
+  state.resumeText = '';
+  state.resumeLabel = '';
+  resumeNote = null;
+  const file = $('resume-file');
+  if (file) file.value = '';
+  const paste = $('resume-paste');
+  if (paste) paste.value = '';
   syncRelevance();
-  const box = $('file-state');
-  box.hidden = false;
-  box.classList.toggle('bad', !ok);
-  box.replaceChildren(el('span', null, ok
-    ? `${label} · ${text.length.toLocaleString()} characters read`
-    : label));
+  renderResume();
   syncPrimary();
+  $('dropzone')?.focus();
 }
 
 async function extractPdfText(file) {
@@ -1827,8 +1995,7 @@ async function handleFile(file) {
     return;
   }
 
-  setResumeText('', `Reading ${file.name}…`, false);
-  $('file-state').classList.remove('bad');
+  setResumeText('', `Reading ${file.name}…`, false, { busy: true });
 
   try {
     const text = isTxt ? await file.text() : await extractPdfText(file);
@@ -1838,14 +2005,15 @@ async function handleFile(file) {
     }
     setResumeText(text, file.name, true);
   } catch {
-    setResumeText('', 'That PDF could not be read. Try the paste-as-text option below.', false);
+    setResumeText('', 'That PDF could not be read. Try pasting the text instead, just below.', false);
   }
 }
 
 async function runTailor() {
-  const resumeText = state.resumeText || $('resume-paste').value.trim();
-  if (resumeText.trim().length < 200) {
-    setResumeText('', 'Please provide a bit more of your resume — at least a couple of hundred characters.', false);
+  const resumeText = resumeTextNow();
+  if (resumeText.length < 200) {
+    setResumeText('', 'Please provide a bit more of your resume, at least a couple of hundred characters.', false);
+    showStep('upload');
     return;
   }
 
@@ -1863,7 +2031,7 @@ async function runTailor() {
         silent no-op — the select keeps "new" and the board stays in date
         order. It only appeared to work because the upload handler happened to
         call syncRelevance() first. */
-  if (!activeJob) {
+  if (tailorMode !== 'tailor' || !activeJob) {
     state.resumeText = resumeText;
     syncRelevance();               // creates the "best for me" option
     $('f-sort').value = 'match';   // only now can this take
@@ -1877,18 +2045,18 @@ async function runTailor() {
   }
 
   if (!hasKey()) {
-    /* Unreachable through the UI now — syncPrimary() disables the button before
-       it can be pressed — and kept because the guard is what makes that true
-       rather than merely likely. §1: a guard that is only safe because of its
-       callers is worth keeping when the cost is four lines. */
-    $('error-text').textContent = 'Tailoring needs your own Google AI key. Add one in the panel above — it stays in this browser.';
-    showStep('error');
-    openKeyBox();
+    /* Unreachable through the UI: the review screen is only reached with a key,
+       and syncPrimary() disables its button without one. Kept because the guard
+       is what makes that true rather than merely likely. §1: a guard that is
+       only safe because of its callers is worth keeping at four lines. */
+    goTo('key');
     return;
   }
 
-  showStep('working');
   const labels = ['Reading your resume…', 'Comparing it to the role…', 'Rewriting for this job…', 'Almost there…'];
+  // Reset, or a second run opens on the last run's "Almost there…".
+  $('working-label').textContent = labels[0];
+  showStep('working');
   let i = 0;
   const tick = setInterval(() => {
     i = Math.min(i + 1, labels.length - 1);
@@ -1933,14 +2101,10 @@ async function runTailor() {
 let rankInFlight = null;
 
 async function startAiRank() {
-  const resumeText = state.resumeText || $('resume-paste').value.trim();
-  if (resumeText.trim().length < 200) { openTailor(null); return; }
-  if (!hasKey()) {
-    openTailor(null);
-    openKeyBox();
-    toast('Add your own Google AI key to rank with AI.');
-    return;
-  }
+  const resumeText = resumeTextNow();
+  if (resumeText.length < 200) { openTailor(null); return; }
+  // The key screen alone, which says why it is asking and ranks once it is saved.
+  if (!hasKey()) { openTailor(null, { mode: 'ai-rank' }); return; }
 
   rankInFlight?.abort();
   const ctl = new AbortController();
@@ -1999,7 +2163,7 @@ async function startAiRank() {
   }
 }
 
-/* ---------------- the key panel ----------------
+/* ---------------- the key screen ----------------
  *
  * THE STORED KEY IS NEVER RENDERED BACK INTO THE INPUT. Putting it on screen
  * would leak it into any screenshot or screen share, and there is no reason a
@@ -2007,101 +2171,126 @@ async function startAiRank() {
  * after the owner token was printed by a page and had to be rotated.
  */
 
-function openKeyBox() {
-  $('keybox')?.scrollIntoView({ block: 'nearest' });
-  $('ai-key')?.focus();
-}
-
 /**
- * THE ONE PLACE THAT DECIDES WHETHER THE PRIMARY BUTTON CAN BE PRESSED.
+ * THE ONE PLACE THAT DECIDES WHETHER A PRIMARY BUTTON CAN BE PRESSED.
  *
  * It used to be set from three separate places and none of them knew about the
  * key, so with no key the button sat there bright and enabled and the ONLY way
  * to find out tailoring needs one was to press it and be shown an error screen.
- * That reads as "the site is broken", which is the opposite of the truth.
- *
- * Ranking never needs a key, so rank mode is never gated — the whole point of
- * the local skill pass is that it works for everyone, for free.
+ * Each screen now has its own primary, and all three are decided here:
+ *   Continue      needs a resume
+ *   the key step  needs a key typed, or one already saved
+ *   Tailor        needs both, and is never reached without them
+ * Ranking never needs a key, so in rank mode the first button does the ranking.
  */
 function syncPrimary() {
-  const btn = $('do-tailor');
-  if (!btn) return;
-  const text = (state.resumeText || $('resume-paste')?.value || '').trim();
-  const enoughText = text.length >= 200;
-  const needsKey = Boolean(activeJob) && !hasKey();
+  const haveResume = resumeReady();
+  const haveKey = hasKey();
+  const typed = ($('ai-key')?.value || '').trim().length > 0;
+  const aiRank = tailorMode === 'ai-rank';
 
-  btn.disabled = !enoughText || needsKey;
-  btn.textContent = !activeJob
-    ? 'Rank the board'
-    : needsKey ? 'Add your key below to tailor' : 'Tailor it';
+  const next = $('resume-next');
+  if (next) {
+    next.disabled = !haveResume;
+    next.textContent = tailorMode === 'tailor' ? 'Continue' : 'Rank the board';
+  }
 
-  // One edge, not a filled panel — it marks the blocking step without turning
-  // the key into the thing the modal appears to be about.
-  const box = $('keybox');
-  if (box) box.classList.toggle('is-required', needsKey);
+  const keyNext = $('key-next');
+  if (keyNext) {
+    keyNext.disabled = !typed && !haveKey;
+    keyNext.textContent = typed || !haveKey
+      ? (aiRank ? 'Save key and rank' : 'Save key and continue')
+      : (aiRank ? 'Rank with AI' : 'Continue');
+  }
+
+  const go = $('do-tailor');
+  if (go) {
+    const needsKey = !haveKey;
+    go.disabled = !haveResume || needsKey;
+    go.textContent = needsKey ? 'Add your key to tailor' : 'Tailor my resume';
+  }
   syncSteps();
 }
 
 /**
- * 1 Resume → 2 Google AI key → 3 Tailor.
- *
- * The modal gave no sense of sequence, so a reader met an upload box, a key
- * panel and a button all at once and could not tell which came first or why the
- * button would not work. Rank mode has only two steps and says so.
+ * Resume, Google AI key, Tailor — as a three-part bar under the title. Lime marks
+ * the screen you are on and the ones you have finished; that is status, which
+ * is what the accent is for. Rank mode and the AI-rank key screen are a single
+ * screen each, and a progress bar with one part says nothing, so it hides.
  */
 function syncSteps() {
-  const box = $('wiz');
-  if (!box) return;
-  const haveResume = (state.resumeText || $('resume-paste')?.value || '').trim().length >= 200;
-  const haveKey = hasKey();
-  const tailoring = Boolean(activeJob);
-
-  // Step 2 is the key, and it does not exist in rank mode — so the last step is
-  // numbered 2 there, or the bar reads "1 Resume · 3 Rank" and looks broken.
-  const two = box.querySelector('[data-wiz="2"]');
-  if (two) two.hidden = !tailoring;
-  const three = box.querySelector('[data-wiz="3"]');
-  const num = three?.querySelector('b');
-  const name = three?.querySelector('span');
-  if (num) num.textContent = tailoring ? '3' : '2';
-  if (name) name.textContent = tailoring ? 'Tailor' : 'Rank';
-
-  const done = { 1: haveResume, 2: !tailoring || haveKey, 3: false };
-  const now = !haveResume ? 1 : (tailoring && !haveKey) ? 2 : 3;
-  for (const step of box.querySelectorAll('.wstep')) {
-    const n = Number(step.dataset.wiz);
-    step.classList.toggle('is-done', Boolean(done[n]) && n !== now);
-    step.classList.toggle('is-now', n === now);
-    if (n === now) step.setAttribute('aria-current', 'step');
-    else step.removeAttribute('aria-current');
+  const bar = $('wiz');
+  if (!bar) return;
+  const at = $('tailor')?.dataset.step;
+  const tailoring = tailorMode === 'tailor';
+  bar.hidden = !tailoring || at === 'result';
+  const done = { upload: resumeReady(), key: hasKey(), review: false };
+  for (const li of bar.querySelectorAll('.wstep')) {
+    const s = li.dataset.wiz;
+    // Past the review the last part stays current: the tailoring IS that step.
+    const now = s === at || (s === 'review' && !WIZARD.includes(at));
+    li.classList.toggle('is-now', now);
+    li.classList.toggle('is-done', !now && Boolean(done[s]));
+    if (now) li.setAttribute('aria-current', 'step');
+    else li.removeAttribute('aria-current');
   }
 }
 
 function syncKeyUi() {
   const have = hasKey();
-  const label = $('key-state');
-  /* A saved key is a SUCCESS state and says so in one line, rather than asking
-     again every time the modal opens. The heading is the whole panel then. */
-  if (label) {
-    label.textContent = have
-      ? '✓ Google AI key connected'
-      : activeJob ? 'Google AI key' : 'Google AI key · optional';
-  }
-
-  const box = $('keybox');
-  if (box) box.classList.toggle('is-set', have);
-  // With a key saved there is nothing to fill in, so the form collapses away.
+  // With a key saved there is nothing to fill in: the form gives way to one
+  // line saying so, and to the two things a reader might still want.
+  const showForm = !have || replacingKey;
   const form = $('key-form');
-  if (form) form.hidden = have;
+  if (form) form.hidden = !showForm;
+  const set = $('key-set');
+  if (set) set.hidden = showForm;
 
-  const forget = $('forget-key');
-  if (forget) forget.hidden = !have;
+  const head = $('key-h');
+  if (head) head.textContent = showForm ? 'Connect Google AI' : 'Google AI is connected';
+
   const input = $('ai-key');
-  if (input) {
-    input.value = '';
-    input.placeholder = 'AIza… or AQ.…';
-  }
+  if (input) input.value = '';
+  showKeyMsg('');
   syncPrimary();
+}
+
+function showKeyMsg(text) {
+  const msg = $('key-msg');
+  if (msg) msg.textContent = text;
+  $('ai-key')?.setAttribute('aria-invalid', text ? 'true' : 'false');
+}
+
+/* Saves what was typed, if anything, then moves on. Shape only: whether a key
+   WORKS is settled by using it — §13's rule that a configured credential is
+   checked by using it, not by inspecting it. */
+function submitKey() {
+  const input = $('ai-key');
+  const v = (input?.value || '').trim();
+  if (v) {
+    if (!looksLikeKey(v)) {
+      showKeyMsg('That does not look like a Google AI key. They start with AIza or AQ.');
+      input?.focus();
+      return;
+    }
+    if (!setKey(v)) {
+      showKeyMsg('This browser would not save the key. A private window blocks it.');
+      return;
+    }
+    replacingKey = false;
+    syncKeyUi();
+    toast('Key saved.');
+  } else if (!hasKey()) {
+    input?.focus();
+    return;
+  }
+
+  if (tailorMode === 'ai-rank') {
+    closeTailor();
+    startAiRank();
+    return;
+  }
+  goTo('review');
 }
 
 function renderTailored(t) {
@@ -2271,10 +2460,13 @@ function wireTailor() {
 
   $('resume-paste').addEventListener('input', (e) => {
     const v = e.target.value.trim();
+    if (v.length >= 200) { setResumeText(v, 'Pasted text', true); return; }
     state.resumeText = v;
+    state.resumeLabel = '';
+    resumeNote = null;
     syncRelevance();
+    renderResume();
     syncPrimary();
-    if (v.length >= 200) setResumeText(v, 'Pasted resume', true);
   });
 
   /* The rail's call to action. No job is attached: this is the "rank the whole
@@ -2282,41 +2474,45 @@ function wireTailor() {
      framing falls back to the generic one. */
   $('rank-resume')?.addEventListener('click', () => openTailor(null));
 
-  $('save-key')?.addEventListener('click', () => {
-    const input = $('ai-key');
-    const v = input.value.trim();
-    if (!v) { toast('Paste a key first.'); return; }
-    // Shape only. Whether it WORKS is settled by using it — §13's rule that a
-    // configured credential is checked by using it, not by inspecting it.
-    if (!looksLikeKey(v)) { toast('That does not look like a Google AI Studio key — they begin with AIza or AQ.'); return; }
-    if (!setKey(v)) { toast('This browser refused to store the key — a private window blocks it.'); return; }
-    syncKeyUi();          // unlocks the primary button in the same breath
-    toast('Key saved — tailoring is unlocked.');
+  // The footer: Back, and whichever primary belongs to the screen on show.
+  $('tw-back')?.addEventListener('click', goBack);
+  $('resume-next')?.addEventListener('click', () => {
+    if (tailorMode !== 'tailor') { runTailor(); return; }
+    goTo(hasKey() ? 'review' : 'key');
   });
+  $('key-next')?.addEventListener('click', submitKey);
+  $('do-tailor').addEventListener('click', runTailor);
 
+  const keyInput = $('ai-key');
+  keyInput?.addEventListener('input', () => { showKeyMsg(''); syncPrimary(); });
+  keyInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !$('key-next')?.disabled) { e.preventDefault(); submitKey(); }
+  });
+  $('replace-key')?.addEventListener('click', () => {
+    replacingKey = true;
+    syncKeyUi();
+    focusStep('key');
+    $('ai-key')?.focus();
+  });
   $('forget-key')?.addEventListener('click', () => {
     forgetKey();
+    replacingKey = false;
     syncKeyUi();
     toast('Key forgotten.');
   });
 
+  // "Change" on the review screen goes back to the screen that owns the answer.
+  for (const btn of document.querySelectorAll('#step-review [data-go]')) {
+    btn.addEventListener('click', () => goTo(btn.dataset.go));
+  }
+
   syncKeyUi();
 
-  $('do-tailor').addEventListener('click', runTailor);
-  $('error-retry').addEventListener('click', () => showStep('upload'));
+  $('error-retry').addEventListener('click', () => goTo(tailorMode === 'tailor' && resumeReady() ? 'review' : 'upload'));
   $('start-over').addEventListener('click', () => {
-    state.resumeText = '';
-    syncRelevance();
     state.tailored = null;
-    $('resume-file').value = '';
-    $('resume-paste').value = '';
-    $('file-state').hidden = true;
-    /* Through syncPrimary, not by hand — "Start over" clears the resume, and
-       the button's state then follows from that plus whether a key exists.
-       Setting it directly here is how a stray assignment drifts out of step
-       with the gate. */
-    syncPrimary();
-    showStep('upload');
+    clearResume();
+    goTo('upload');
   });
 
   $('download-pdf').addEventListener('click', () => {

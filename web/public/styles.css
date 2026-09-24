@@ -1158,92 +1158,227 @@ html[data-boot] .boot-part {
 .modal-sub { margin-top: 5px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
 .modal-body { padding: 22px; overflow: auto; overscroll-behavior: contain; }
 
-.drop { display: grid; place-items: center; gap: 7px; text-align: center; border: 1px dashed var(--rule-2); border-radius: var(--r); padding: 40px 22px; cursor: pointer; color: var(--ink-3); transition: border-color .16s, color .16s, background .16s; }
-.drop:hover, .drop.over { border-color: var(--live); color: var(--live); background: color-mix(in oklab, var(--live) 5%, transparent); }
-.drop b { font-family: var(--display); font-weight: 800; font-size: 17px; color: var(--ink); text-transform: uppercase; letter-spacing: -.02em; }
-.drop:hover b, .drop.over b { color: var(--live); }
-.drop span { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; }
+/* ---------------- the tailor wizard ----------------
+   ONE QUESTION PER SCREEN: the resume, then the key, then a review with one
+   button. It used to be one screen carrying an upload box, a key panel, a
+   privacy warning and the button at once, and a reader could not tell which
+   came first.
+   The dialog is a narrow card while it asks and widens only for the tailored
+   resume. It is PINNED NEAR THE TOP rather than centred, so a screen taller
+   than the last grows downward instead of moving the title under the reader's
+   eye. Every rule is scoped to .modal.tw, which also outranks the phone and
+   tablet .modal rules without depending on source order. */
+.modal.tw {
+  top: clamp(20px, 9vh, 88px); right: 0; bottom: auto; left: 0; margin: 0 auto;
+  transform: none;
+  width: min(560px, calc(100vw - 32px)); height: auto;
+  max-height: calc(100vh - clamp(20px, 9vh, 88px) - 20px);
+  border: 1px solid var(--rule-2); border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  animation: tw-pop .26s var(--snap);
+}
+:root[data-theme="light"] .modal.tw { box-shadow: 0 24px 60px rgba(40, 38, 30, .2); }
+@keyframes tw-pop { from { opacity: 0; transform: translateY(10px) scale(.985); } }
+.modal.tw[data-step="result"] { width: min(860px, calc(100vw - 32px)); }
 
-.paste { margin-top: 14px; }
-.paste summary { cursor: pointer; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
-.paste summary:hover { color: var(--live); }
-.paste textarea { width: 100%; margin-top: 10px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--card); color: var(--ink); resize: vertical; font-size: 13px; outline: none; }
-.paste textarea:focus { border-color: var(--live); }
+.modal.tw .modal-top { border-bottom: 0; padding: 20px 24px 0; align-items: flex-start; }
+.modal.tw .modal-top h2 { font-size: 15px; letter-spacing: -.01em; }
+.modal.tw .modal-sub { margin-top: 4px; }
+.modal.tw[data-step="result"] .modal-top { border-bottom: 1px solid var(--rule); padding-bottom: 18px; }
+.modal.tw .modal-body { padding: 26px 24px 28px; flex: 1 1 auto; min-height: 0; }
+/* The three asking screens share a floor, so the footer does not jump up and
+   down as the reader moves between them. Capped by the viewport, or on a short
+   window the floor would push the footer out of the dialog. */
+.modal.tw:is([data-step="upload"], [data-step="key"], [data-step="review"]) .modal-body {
+  min-height: min(380px, 50vh);
+}
 
-.filestate { margin-top: 14px; padding: 11px 13px; border-radius: var(--r); border: 1px solid color-mix(in oklab, var(--cash) 40%, transparent); color: var(--cash); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
-.filestate.bad { border-color: color-mix(in oklab, var(--hot) 45%, transparent); color: var(--hot); text-transform: none; letter-spacing: 0; font-family: var(--ui); font-size: 13px; }
-
-.warn { margin: 14px 0 16px; padding: 10px 13px; border-left: 2px solid var(--hot); background: var(--card); font-size: 12px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; }
-.warn b { color: var(--ink); }
-
-/* ---------------- the three steps ----------------
-   Upload, key, act. The modal used to state the privacy position three separate
-   times — a lime box, a line under the key, and a four-sentence warning — and
-   read as a policy rather than a tool. It says it ONCE now, under the key,
-   where the decision is actually made. */
+/* Progress: three bars with their names under them. Lime marks the screen you
+   are on and the ones you have finished; that is status, which is what the
+   accent is for. The current one is told apart by its label, not its bar. */
 .wiz {
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  margin: 0 0 18px; font-family: var(--mono); font-size: 10.5px;
-  text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3);
+  list-style: none; margin: 0; padding: 18px 24px 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
 }
-.wiz .wstep { display: inline-flex; align-items: center; gap: 6px; }
-/* The connector is drawn, not typed: an arrow character would be read aloud as
-   "right arrow" between every step. `+` matches through the hidden step 2 in
-   rank mode, so step 3 keeps its connector and step 2 takes its own with it. */
-.wiz .wstep + .wstep::before {
-  content: ''; width: 16px; height: 1px; margin-right: 2px; background: var(--rule-2);
+.wiz .wstep {
+  display: grid; gap: 8px; min-width: 0;
+  font-family: var(--ui); font-size: .78rem; font-weight: 600; line-height: 1.2;
+  color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.wiz .wstep b {
-  display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%;
-  border: 1px solid var(--rule-2); font-size: 9.5px; font-weight: 700; color: var(--ink-3);
+.wiz .wstep::before {
+  content: ''; height: 3px; border-radius: 999px; background: var(--rule-2);
+  transition: background-color .24s ease;
 }
-/* Lime marks the step you are ON and the ones you have finished — status, which
-   is what the accent is for. Everything else stays quiet. */
-.wiz .wstep.is-now { color: var(--ink); }
-.wiz .wstep.is-now b { border-color: var(--live); color: var(--live); }
 .wiz .wstep.is-done { color: var(--ink-2); }
-.wiz .wstep.is-done b { border-color: var(--live); background: var(--live); color: var(--live-ink); }
+.wiz .wstep.is-now { color: var(--ink); }
+.wiz .wstep.is-done::before, .wiz .wstep.is-now::before { background: var(--live); }
 
-/* ---------------- the key ----------------
-   Deliberately NOT a large bordered panel. It is one step of three, and a whole
-   green block for it made the modal look like the key was the product. */
-.keybox { margin: 16px 0 6px; border: 1px solid var(--rule); border-radius: var(--r); padding: 12px 14px; background: var(--card); }
-/* Heading and Forget share a row, OUTSIDE the form: the form collapses away once
-   a key is saved, and a Forget button inside it would go with it — leaving a
-   saved key nobody could remove. */
-.keytop { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 24px; }
-.keytop .bare { height: 26px; padding: 0 8px; font-size: 12px; }
-.keyhead { margin: 0; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); font-weight: 700; }
-#key-form { margin-top: 8px; }
-/* Connected is a SUCCESS state, so it gets the accent — and nothing else does. */
-.keybox.is-set .keyhead { color: var(--live); }
-.keybox.is-set { border-color: color-mix(in oklab, var(--live) 30%, transparent); }
-/* Blocking is marked with one edge, not a filled box. */
-.keybox.is-required { border-left: 3px solid var(--live); }
-.keynote { margin: 0 0 10px; font-size: 12.5px; color: var(--ink-2); }
-.keynote a { color: var(--live); text-underline-offset: 3px; }
-.keyfine { margin: 8px 0 0; font-size: 11.5px; color: var(--ink-3); }
-.keyfine a { color: var(--live); text-underline-offset: 3px; }
-.keyrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.keyrow input {
-  flex: 1 1 210px; min-width: 0; padding: 10px 12px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: var(--bg-2); color: var(--ink);
-  font-family: var(--mono); font-size: 12.5px; outline: none;
+/* The one voice on each screen. Sentence case under the small uppercase dialog
+   title, so the two do not shout over each other. */
+.tw-h {
+  margin: 0; font-family: var(--display); font-weight: 900;
+  font-size: 1.5rem; line-height: 1.12; letter-spacing: -.025em; color: var(--ink);
 }
-.keyrow input:focus { border-color: var(--live); }
+/* Focused by script so a screen reader announces the new screen; it is not a
+   control, so it draws no ring. */
+.tw-h:focus { outline: none; }
+.tw-p { margin: 8px 0 0; max-width: 50ch; font-size: .9375rem; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 
-/* WHEN THE KEY IS ACTUALLY BLOCKING SOMETHING, THE PANEL SAYS SO — through the
-   step bar marking step 2, the lime edge above, the disabled button naming the
-   key, and this line. It was a collapsed <details> beside a bright, enabled
-   "Tailor it", and the only way to discover the key was to press the button and
-   be shown an error, which reads as a broken site. The panel is always open
-   now, so nothing has to be expanded to find it.
-   The "why" line exists only in the blocking state; in rank mode the optional
-   note stands in its place, because there the key is not a requirement. */
-.keyneed { display: none; margin: 0 0 10px; font-size: 12.5px; color: var(--ink); }
-.keybox.is-required .keyneed { display: block; }
-.keybox.is-required .keynote { display: none; }
+/* ---- screen 1: the resume ---- */
+.drop {
+  display: grid; place-items: center; gap: 6px; text-align: center;
+  margin-top: 22px; padding: 32px 20px 30px;
+  border: 1.5px dashed var(--rule-2); border-radius: var(--r-2);
+  background: var(--card); color: var(--ink-3); cursor: pointer;
+  transition: border-color .16s, background-color .16s;
+}
+.drop-ic {
+  display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 8px;
+  border-radius: 50%; border: 1px solid var(--rule-2); background: var(--bg-2); color: var(--ink-2);
+  transition: color .16s, border-color .16s;
+}
+.drop b { font-family: var(--ui); font-weight: 700; font-size: 1rem; letter-spacing: -.01em; color: var(--ink); }
+.drop-sub { font-size: .8125rem; color: var(--ink-3); }
+.drop.over { border-color: var(--live); background: color-mix(in oklab, var(--live) 5%, var(--card)); }
+.drop.over .drop-ic { color: var(--live); border-color: var(--live); }
+@media (hover: hover) and (pointer: fine) {
+  .drop:hover { border-color: var(--live); }
+  .drop:hover .drop-ic { color: var(--live); border-color: var(--live); }
+}
+.drop:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+
+/* A read file, a read in progress, or the reason it was refused: one box,
+   drawn from state by renderResume(). */
+.filestate {
+  display: flex; align-items: center; gap: 12px; margin-top: 22px;
+  padding: 14px 14px 14px 16px; border: 1px solid var(--rule); border-radius: var(--r-2);
+  background: var(--card); font-size: .875rem; line-height: 1.45; color: var(--ink-2);
+}
+.filestate.is-ready { border-color: color-mix(in oklab, var(--cash) 45%, var(--rule)); }
+.filestate.bad { border-color: color-mix(in oklab, var(--hot) 50%, var(--rule)); color: var(--hot); }
+.fs-tick {
+  flex: none; display: grid; place-items: center; width: 30px; height: 30px;
+  border-radius: 50%; border: 1.5px solid var(--cash); color: var(--cash);
+  font-size: 14px; font-weight: 700;
+}
+.fs-info { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.fs-name { font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fs-meta { font-size: .8125rem; color: var(--ink-3); }
+.filestate .fs-remove { flex: none; height: 34px; padding: 0 12px; font-size: .8125rem; }
+
+.paste { margin-top: 16px; }
+.paste summary {
+  display: inline-block; cursor: pointer; list-style: none;
+  font-size: .875rem; font-weight: 600; color: var(--ink-2);
+  text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px;
+}
+.paste summary::-webkit-details-marker { display: none; }
+.paste[open] summary { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .paste summary:hover { color: var(--ink); text-decoration-color: currentColor; }
+}
+/* NOT below 16px: iOS zooms the whole page on focus below that. */
+.paste textarea {
+  display: block; width: 100%; min-height: 150px; margin-top: 10px; padding: 12px 13px;
+  border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink);
+  resize: vertical; font-family: var(--ui); font-size: 16px; line-height: 1.45;
+}
+.paste textarea::placeholder { color: var(--ink-3); }
+.paste textarea:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
+
+.tw-hint {
+  margin: 20px 0 0; padding-left: 12px; border-left: 2px solid var(--rule-2);
+  max-width: 52ch; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); text-wrap: pretty;
+}
+
+/* ---- screen 2: the key ---- */
+.tw-how { list-style: none; counter-reset: how; margin: 20px 0 0; padding: 0; display: grid; gap: 12px; }
+.tw-how li {
+  counter-increment: how;
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: 12px; row-gap: 8px;
+  font-size: .9375rem; line-height: 1.4; color: var(--ink-15);
+}
+.tw-how li::before {
+  content: counter(how); display: grid; place-items: center; width: 24px; height: 24px;
+  border-radius: 50%; border: 1px solid var(--rule-2);
+  font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink-2);
+}
+/* Always on its own row under the step, at every width, rather than wrapping
+   under the number on a phone and beside the text on a desktop. */
+.tw-ext {
+  grid-column: 2; justify-self: start;
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
+  border: 1px solid var(--rule-2); border-radius: var(--r);
+  color: var(--ink); font-size: .8125rem; font-weight: 700; text-decoration: none;
+  transition: border-color .16s, color .16s, transform var(--d-press) var(--snap);
+}
+.tw-ext:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) {
+  .tw-ext:hover { border-color: var(--live); color: var(--live); }
+}
+.tw-label { display: block; margin: 24px 0 8px; font-size: .8125rem; font-weight: 700; color: var(--ink); }
+.tw-input {
+  display: block; width: 100%; min-width: 0; height: 46px; padding: 0 14px;
+  border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink);
+  font-family: var(--mono); font-size: 16px;
+}
+.tw-input::placeholder { color: var(--ink-3); }
+.tw-input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
+.tw-input[aria-invalid="true"] { border-color: var(--hot); }
+.tw-msg { margin: 8px 0 0; font-size: .8125rem; color: var(--hot); }
+/* --hot measures under 4.5 on the light --bg-2 this sits on; the value the
+   feedback box already uses for its own light-theme error line. */
+:root[data-theme="light"] .tw-msg { color: #9a3412; }
+.tw-msg:empty { display: none; }
+.keyset-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+/* The privacy position, said ONCE, where the key is decided. */
+.keyfine {
+  margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--rule);
+  font-size: .8125rem; line-height: 1.5; color: var(--ink-3);
+}
+.keyfine b { color: var(--ink-2); font-weight: 600; }
+
+/* ---- screen 3: the review ---- */
+.tw-sum { margin: 22px 0 0; border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
+/* A <div> in a <dl> may hold only <dt> and <dd> (§15), so Change lives in the dd. */
+.tw-sum > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 13px 16px; }
+.tw-sum > div + div { border-top: 1px solid var(--rule); }
+.tw-sum dt { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.tw-sum dd { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; font-size: .9375rem; font-weight: 600; color: var(--ink); }
+.tw-sum dd > span { min-width: 0; overflow-wrap: anywhere; }
+.tw-link {
+  flex: none; padding: 4px 2px; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: .8125rem; font-weight: 600; color: var(--ink-2);
+  text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tw-link:hover { color: var(--ink); text-decoration-color: currentColor; }
+}
+
+/* ---- the footer: Back, and the one primary for the screen on show ----
+   Outside the scrolling body, so the action never scrolls away. */
+.tw-foot {
+  flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+  padding: 14px 24px; border-top: 1px solid var(--rule); background: var(--bg-2);
+}
+.tw-foot #tw-back { margin-right: auto; }
+.tw-foot .go { min-width: 150px; height: 44px; font-size: .875rem; }
+/* The shared hover lift must not reach a button that cannot be pressed. */
+.tw-foot .go[disabled]:hover, .tw-foot .go[disabled]:active { transform: none; }
+
+@media (max-width: 640px) {
+  .modal.tw, .modal.tw[data-step="result"] {
+    top: 0; bottom: 0; width: 100%; height: 100vh; height: 100dvh; max-height: none;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+  .modal.tw .modal-top { padding: 16px 16px 0; }
+  .wiz { padding: 16px 16px 0; }
+  .modal.tw .modal-body { padding: 22px 16px 24px; }
+  .tw-h { font-size: 1.375rem; }
+  /* Clears the home indicator; index.html opts into viewport-fit=cover. */
+  .tw-foot { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
+  .tw-foot .go { flex: 1 1 auto; min-width: 0; }
+}
 
 /* A primary button that cannot be pressed has to LOOK unpressable, or the
    reader clicks it and concludes nothing happened. */
@@ -1706,9 +1841,11 @@ html.nudge-open { overflow: hidden; }
 
 @media print {
   .bar, .lede, .rail, .board, .foot, .grain, .veil, .snack,
-  .modal-top, .acts, .flagbox, .diffs { display: none !important; }
+  .modal-top, .wiz, .tw-foot, .acts, .flagbox, .diffs { display: none !important; }
   body { background: #fff; }
   .modal { position: static; transform: none; width: auto; max-height: none; border: 0; border-radius: 0; animation: none; background: #fff; }
+  /* .modal.tw outranks the line above on screen, so print has to say it too. */
+  .modal.tw, .modal.tw[data-step="result"] { position: static; margin: 0; width: auto; height: auto; max-height: none; border: 0; border-radius: 0; box-shadow: none; }
   .modal-body { padding: 0; overflow: visible; }
   .sheet { border-radius: 0; padding: 0; font-size: 10.5pt; line-height: 1.42; color: #000; }
   .sheet .r-name { font-size: 19pt; }
