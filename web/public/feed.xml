@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 24 Sep 2026 10:06:08 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 10:30:06 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer — Emerson</title>
+    <link>https://interndoor.com/jobs/emerson-software-engineer-4462435293</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/emerson-software-engineer-4462435293</guid>
+    <pubDate>Thu, 24 Sep 2026 10:30:06 GMT</pubDate>
+    <description>Company: Emerson · Location: Pune Division, Maharashtra, India
+• Test HART, FF, PROFIBUS field devices with DeltaV/AMS systems
+• Write test plans and log issues in a database
+• Communicate test progress to lead regularly</description>
+  </item>
   <item>
     <title>UAV Systems Intern — UNMANND</title>
     <link>https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486</link>
@@ -27,6 +37,17 @@
 • Collaborate on technical solutions and optimize full-stack performance
 • Write clean code with Git and follow SDLC processes
 • Work with AWS, MuleSoft, and Snowflake in a team environment</description>
+  </item>
+  <item>
+    <title>Engineer - R01571794 — Brillio</title>
+    <link>https://interndoor.com/jobs/brillio-engineer-r01571794-4471433782</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/brillio-engineer-r01571794-4471433782</guid>
+    <pubDate>Thu, 24 Sep 2026 10:04:36 GMT</pubDate>
+    <description>Company: Brillio · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years
+• Develop scalable web apps using Java, Spring Boot, and React JS in microservices
+• Collaborate on API integration and front-end components with team
+• Optimize performance and resolve issues across full stack
+• Write maintainable code with Git and SDLC best practices</description>
   </item>
   <item>
     <title>WoW Software Engineer — NatWest Group</title>
@@ -495,26 +516,6 @@
 • Automate security checks using tools like Burp Suite and integrate into CI/CD
 • Review code for SQLi, XSS, and IDOR flaws and help write secure code
 • Analyze bug reports from bounty programs and prioritize fixes</description>
-  </item>
-  <item>
-    <title>Silicon Engineer, Platform and Devices, University Graduate, 2026 — Google</title>
-    <link>https://interndoor.com/jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026-4415651855</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026-4415651855</guid>
-    <pubDate>Wed, 23 Sep 2026 12:26:41 GMT</pubDate>
-    <description>Company: Google · Location: Bengaluru, Karnataka, India
-• Design and develop power-efficient chips for consumer devices
-• Work with SoC teams on ASIC and SoC implementation
-• Collaborate on CPU, ML, and security hardware concepts</description>
-  </item>
-  <item>
-    <title>Full Stack Engineer — Accenture in India</title>
-    <link>https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080</guid>
-    <pubDate>Wed, 23 Sep 2026 12:23:08 GMT</pubDate>
-    <description>Company: Accenture in India · Location: Hyderabad, Telangana, India
-• Develop end-to-end features from user experience to backend code
-• Work with Java Standard Edition and cloud-first technologies
-• Collaborate with teams on key decisions and solution design</description>
   </item>
 </channel>
 </rss>
