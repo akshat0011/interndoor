@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 24 Sep 2026 17:03:39 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 17:35:41 GMT</lastBuildDate>
+  <item>
+    <title>AI Engineer — Mastercard</title>
+    <link>https://interndoor.com/jobs/mastercard-ai-engineer-4459531837</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-ai-engineer-4459531837</guid>
+    <pubDate>Thu, 24 Sep 2026 17:35:41 GMT</pubDate>
+    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
+• Build and deploy AI/ML models using LLMs, cloud platforms, and data pipelines
+• Work with Azure, Databricks, and AWS to create scalable AI solutions
+• Implement responsible AI practices and ensure model transparency</description>
+  </item>
+  <item>
+    <title>Service Desk Analyst — Schneider Electric</title>
+    <link>https://interndoor.com/jobs/schneider-electric-service-desk-analyst-4469696920</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/schneider-electric-service-desk-analyst-4469696920</guid>
+    <pubDate>Thu, 24 Sep 2026 17:10:46 GMT</pubDate>
+    <description>Company: Schneider Electric · Location: Bengaluru, Karnataka, India
+• Supports employees with software, hardware, and application issues
+• Uses CTI tools and collaborates with support teams for complex issues
+• Provides after-hours and on-call support as needed</description>
+  </item>
   <item>
     <title>Associate Manager - Data Engineering-Data Engineering — Bristlecone</title>
     <link>https://interndoor.com/jobs/bristlecone-associate-manager-data-engineering-data-engineering-4471639041</link>
@@ -16,6 +36,16 @@
 • Build and maintain data pipelines for supply chain analytics
 • Use python and cloud platforms for data processing
 • Work on high-impact projects for global logistics clients</description>
+  </item>
+  <item>
+    <title>Rave Custom Function Programmer — IQVIA</title>
+    <link>https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4470001562</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-rave-custom-function-programmer-4470001562</guid>
+    <pubDate>Thu, 24 Sep 2026 17:02:08 GMT</pubDate>
+    <description>Company: IQVIA · Location: Bengaluru, Karnataka, India · Duration: 1 to 10 years
+• Program edit checks and custom functions in C# for data validation
+• Work with Medidata Rave and build internal tools using Excel or Visual Studio
+• Collaborate with corporate and CDM teams on project timelines and deliverables</description>
   </item>
   <item>
     <title>Rave Custom Function Programmer — IQVIA</title>
@@ -477,37 +507,6 @@
 • Collaborate with engineering, product, and UX teams on requirements
 • Analyze business rules and validate tool functionality
 • Work hybrid with 12:00 PM to 9:00 PM shift in Bengaluru/Pune</description>
-  </item>
-  <item>
-    <title>Software Engineer — Emerson</title>
-    <link>https://interndoor.com/jobs/emerson-software-engineer-4462435293</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/emerson-software-engineer-4462435293</guid>
-    <pubDate>Thu, 24 Sep 2026 10:30:06 GMT</pubDate>
-    <description>Company: Emerson · Location: Pune Division, Maharashtra, India
-• Test HART, FF, PROFIBUS field devices with DeltaV/AMS systems
-• Write test plans and log issues in a database
-• Communicate test progress to lead regularly</description>
-  </item>
-  <item>
-    <title>UAV Systems Intern — UNMANND</title>
-    <link>https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486</guid>
-    <pubDate>Thu, 24 Sep 2026 10:06:08 GMT</pubDate>
-    <description>Company: UNMANND · Location: Bengaluru, Karnataka, India
-• Integrate and test uav platforms across mechanical, electronic, and software systems
-• Evaluate and validate components like autopilots, sensors, and power modules
-• Collaborate with cross-functional teams on integration challenges and field deployments</description>
-  </item>
-  <item>
-    <title>Engineer - R01571801 — Brillio</title>
-    <link>https://interndoor.com/jobs/brillio-engineer-r01571801-4471451159</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/brillio-engineer-r01571801-4471451159</guid>
-    <pubDate>Thu, 24 Sep 2026 10:04:56 GMT</pubDate>
-    <description>Company: Brillio · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years
-• Develop scalable web apps using Java, Spring Boot, and React JS in microservices
-• Collaborate on technical solutions and optimize full-stack performance
-• Write clean code with Git and follow SDLC processes
-• Work with AWS, MuleSoft, and Snowflake in a team environment</description>
   </item>
 </channel>
 </rss>

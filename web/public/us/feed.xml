@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 24 Sep 2026 17:09:57 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 17:31:20 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, PhD, Software Engineer, Simulation — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-software-engineer-simulation-ats-greenhouse-waymo-8227640</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-software-engineer-simulation-ats-greenhouse-waymo-8227640</guid>
+    <pubDate>Thu, 24 Sep 2026 17:31:20 GMT</pubDate>
+    <description>Company: Waymo · Location: Mountain View, CA, USA
+• Implement uncertainty-aware algorithms for transformer-based classifiers
+• Work with deep learning frameworks like TensorFlow and JAX
+• Collaborate on real-world projects with direct impact on autonomous driving</description>
+  </item>
+  <item>
+    <title>Electrical Integration Intern - RF (Summer 2027) — Astranis</title>
+    <link>https://interndoor.com/us/jobs/astranis-electrical-integration-intern-rf-summer-2027-ats-greenhouse-astranis-4715788006</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/astranis-electrical-integration-intern-rf-summer-2027-ats-greenhouse-astranis-4715788006</guid>
+    <pubDate>Thu, 24 Sep 2026 17:20:55 GMT</pubDate>
+    <description>Company: Astranis · Location: San Francisco · Duration: 6 months
+• Design, build, and test satellite hardware and software with engineering teams
+• Use test equipment like thermal chambers, DAQs, and oscilloscopes for integration
+• Work on electrical, software, and mechanical systems in a fast-paced environment</description>
+  </item>
+  <item>
+    <title>Supplier Quality Engineer Intern (Winter 2027) — Astranis</title>
+    <link>https://interndoor.com/us/jobs/astranis-supplier-quality-engineer-intern-winter-2027-ats-greenhouse-astranis-4715989006</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/astranis-supplier-quality-engineer-intern-winter-2027-ats-greenhouse-astranis-4715989006</guid>
+    <pubDate>Thu, 24 Sep 2026 17:18:45 GMT</pubDate>
+    <description>Company: Astranis · Location: San Francisco · Duration: Winter 2027
+• Support quality systems and manufacturing processes for satellite supply chain
+• Work with suppliers on inspection, testing, and quality improvement
+• Analyze failures, define corrective actions, and monitor supplier performance</description>
+  </item>
   <item>
     <title>Engineering Intern - Powertrain Testing — Rivian</title>
     <link>https://interndoor.com/us/jobs/rivian-engineering-intern-powertrain-testing-4470007551</link>
@@ -472,37 +502,6 @@
 • Work on real-world AI problems with production systems and cross-functional teams
 • Use PyTorch, AWS, Huggingface, and VectorDBs to analyze large datasets
 • Collaborate with researchers to publish at top conferences like NeurIPS or ICML</description>
-  </item>
-  <item>
-    <title>Software Engineering - Intern, Graduate — Intel</title>
-    <link>https://interndoor.com/us/jobs/intel-software-engineering-intern-graduate-4461328247</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/intel-software-engineering-intern-graduate-4461328247</guid>
-    <pubDate>Thu, 24 Sep 2026 13:02:57 GMT</pubDate>
-    <description>Company: Intel · Location: Folsom, CA · Duration: Summer 2027
-• Design, develop, and test software for Intel products and platforms
-• Collaborate with cross-functional teams on hardware and software integration
-• Work on AI, cloud, and system software projects with real-world impact</description>
-  </item>
-  <item>
-    <title>Reliability Engineer Intern - N5 — Lockheed Martin</title>
-    <link>https://interndoor.com/us/jobs/lockheed-martin-reliability-engineer-intern-n5-4469750374</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/lockheed-martin-reliability-engineer-intern-n5-4469750374</guid>
-    <pubDate>Thu, 24 Sep 2026 13:01:21 GMT</pubDate>
-    <description>Company: Lockheed Martin · Location: Orlando, FL
-• Analyze reliability data and run statistical models to predict product performance
-• Collaborate with engineers on FMECA analyses and reliability testing programs
-• Support environmental testing and maintain traceability matrices in SharePoint</description>
-  </item>
-  <item>
-    <title>Electronics Engineer - Intern — Lockheed Martin</title>
-    <link>https://interndoor.com/us/jobs/lockheed-martin-electronics-engineer-intern-4469746423</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/lockheed-martin-electronics-engineer-intern-4469746423</guid>
-    <pubDate>Thu, 24 Sep 2026 13:00:59 GMT</pubDate>
-    <description>Company: Lockheed Martin · Location: Owego, NY
-• Test prototypes using oscilloscopes and debug hardware
-• Write software for microcontrollers and FPGAs in C/C++
-• Update design reports and test procedures
-• Work on factory automation and embedded systems</description>
   </item>
 </channel>
 </rss>
