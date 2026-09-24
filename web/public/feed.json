@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
+      "url": "https://interndoor.com/jobs/emerson-software-engineer-4462435293",
+      "title": "Software Engineer — Emerson",
+      "content_text": "Company: Emerson · Location: Pune Division, Maharashtra, India\n• Test HART, FF, PROFIBUS field devices with DeltaV/AMS systems\n• Write test plans and log issues in a database\n• Communicate test progress to lead regularly",
+      "date_published": "2026-09-24T10:30:06.649Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486",
       "url": "https://interndoor.com/jobs/unmannd-uav-systems-intern-4471439486",
       "title": "UAV Systems Intern — UNMANND",
@@ -23,6 +35,18 @@
       "title": "Engineer - R01571801 — Brillio",
       "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Develop scalable web apps using Java, Spring Boot, and React JS in microservices\n• Collaborate on technical solutions and optimize full-stack performance\n• Write clean code with Git and follow SDLC processes\n• Work with AWS, MuleSoft, and Snowflake in a team environment",
       "date_published": "2026-09-24T10:04:56.490Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-engineer-r01571794-4471433782",
+      "url": "https://interndoor.com/jobs/brillio-engineer-r01571794-4471433782",
+      "title": "Engineer - R01571794 — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Develop scalable web apps using Java, Spring Boot, and React JS in microservices\n• Collaborate on API integration and front-end components with team\n• Optimize performance and resolve issues across full stack\n• Write maintainable code with Git and SDLC best practices",
+      "date_published": "2026-09-24T10:04:36.324Z",
       "authors": [
         {
           "name": "Brillio"
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Fam"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026-4415651855",
-      "url": "https://interndoor.com/jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026-4415651855",
-      "title": "Silicon Engineer, Platform and Devices, University Graduate, 2026 — Google",
-      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design and develop power-efficient chips for consumer devices\n• Work with SoC teams on ASIC and SoC implementation\n• Collaborate on CPU, ML, and security hardware concepts",
-      "date_published": "2026-09-23T12:26:41.078Z",
-      "authors": [
-        {
-          "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
-      "url": "https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4448340080",
-      "title": "Full Stack Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India\n• Develop end-to-end features from user experience to backend code\n• Work with Java Standard Edition and cloud-first technologies\n• Collaborate with teams on key decisions and solution design",
-      "date_published": "2026-09-23T12:23:08.044Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
