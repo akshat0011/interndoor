@@ -1347,5 +1347,79 @@ console.log('\n== about this listing: what InternDoor adds, and nothing it canno
   }
 }
 
+console.log('\n== the homepage: the newest roles and the busiest hubs, not every job page ==');
+{
+  const { homeListings, homeHubs, HOME_LISTINGS, HOME_HUBS } = await import('../src/pages.js');
+  const { writeFileSync, mkdirSync } = await import('node:fs');
+  const T = Date.UTC(2026, 8, 20);
+  const role = (company, title, i, extra = {}) => ({
+    id: `${company}-${title}-${i}`.replace(/\W+/g, '-'), company, title, location: `City ${i}`,
+    bullets: ['a', 'b'], postedAt: T - i * 3_600_000, firstSeenAt: T - i * 3_600_000, ...extra,
+  });
+
+  /* THE JOB LINKS: capped, newest first, one per role, indexable only. */
+  const many = Array.from({ length: HOME_LISTINGS + 30 }, (_, i) => role(`Co${i % 7}`, `Role ${i}`, i));
+  const listed = homeListings(many);
+  check('capped at HOME_LISTINGS', listed.length, HOME_LISTINGS);
+  check('newest first', listed[0].title, 'Role 0');
+  /* One role in three cities: same title AND same description fingerprint,
+     which is what roleKey requires before it merges anything. */
+  const cities = [1, 2, 3].map((i) => role('P&G', 'Engineering Internship', i, { roleFingerprint: 'pg1' }));
+  check('one link per role, not per city', homeListings(cities).length, 1);
+  check('a shared title alone is not one role', homeListings([role('P&G', 'Intern', 1), role('P&G', 'Intern', 2)]).length, 2);
+  check('a page below the quality bar is not linked', homeListings([role('X', 'Thin', 1, { bullets: ['one'] })]).length, 0);
+
+  /* THE HUBS: busiest first, merged by slug, only with a live role to show. */
+  const hubRows = [
+    ...['A', 'B', 'C'].map((t, i) => role('Big Co', t, i, t === 'A' ? { roleFingerprint: 'bigA' } : {})),
+    role('Big Co', 'A', 9, { roleFingerprint: 'bigA' }),      // same role, another city: not a second role
+    ...['A', 'B'].map((t, i) => role('Mid Co', t, i)),
+    role('Small Co', 'A', 1),
+    role('Thin Co', 'A', 1, { bullets: [] }),
+    role('NVIDIA', 'A', 1), role('NVIDIA', 'B', 2), role('Nvidia', 'C', 3),
+  ];
+  const hubs = homeHubs(hubRows);
+  check('ordered by distinct live roles, then name', hubs.map((h) => [h.name, h.roles]),
+    [['Big Co', 3], ['NVIDIA', 3], ['Mid Co', 2], ['Small Co', 1]]);
+  check('two spellings are one hub, named by the commoner', hubs.filter((h) => h.slug === 'nvidia').length, 1);
+  check('an employer with nothing indexable is not linked', hubs.some((h) => h.name === 'Thin Co'), false);
+  check('capped at HOME_HUBS', homeHubs(Array.from({ length: HOME_HUBS + 5 }, (_, i) => role(`Firm ${i}`, 'A', i))).length, HOME_HUBS);
+
+  /* END TO END, through the template markers, on a prefixed board. */
+  const homeDir = mkdtempSync(join(tmpdir(), 'interndoor-home-'));
+  try {
+    const TEMPLATE = '<html lang="en-IN"><body><footer><!--HUBS-->\n<p>default</p>\n<!--/HUBS-->'
+      + '<details class="all-roles"><ul><!--LISTINGS-->\n<!--/LISTINGS--></ul></details></footer></body></html>';
+    writeFileSync(join(homeDir, 'index.html'), TEMPLATE);
+    const rows = [...many, role('A & B <Labs>', 'Z', 0)];
+    const res = writePages(rows, homeDir, [], { region: US });
+    const home = readFileSync(join(homeDir, 'us', 'index.html'), 'utf8');
+    check('the homepage carries HOME_LISTINGS job links', (home.match(/href="\/us\/jobs\//g) || []).length, HOME_LISTINGS);
+    check('and reports that count to publish', res.homeLinks, HOME_LISTINGS);
+    check('it links employer hubs, prefixed for the board', /href="\/us\/companies\/co0"/.test(home), true);
+    check('the directory link is localised once', home.includes('href="/us/companies">All&nbsp;companies'), true);
+    check('never double-prefixed', /\/us\/us\//.test(home), false);
+    check('the default between the HUBS markers is replaced', home.includes('<p>default</p>'), false);
+    check('an employer name is escaped', home.includes('<Labs>'), false);
+    check('every linked hub was written', [...home.matchAll(/href="\/us\/companies\/([^"]+)"/g)]
+      .every((m) => existsSync(join(homeDir, 'us', 'companies', `${m[1]}.html`))), true);
+
+    /* The HUBS marker is optional: a template without it still publishes. */
+    mkdirSync(join(homeDir, 'old'), { recursive: true });
+    writeFileSync(join(homeDir, 'old', 'index.html'), TEMPLATE.replace(/<!--HUBS-->[\s\S]*?<!--\/HUBS-->/, ''));
+    writePages(rows, join(homeDir, 'old'), [], { region: US });
+    check('a template without HUBS still gets its listings',
+      (readFileSync(join(homeDir, 'old', 'us', 'index.html'), 'utf8').match(/href="\/us\/jobs\//g) || []).length, HOME_LISTINGS);
+  } finally {
+    rmSync(homeDir, { recursive: true, force: true });
+  }
+
+  /* THE REAL TEMPLATE carries both markers, or the change never reaches the site. */
+  const tpl = readFileSync(join(ROOT, 'web', 'public', 'index.html'), 'utf8');
+  check('index.html has the HUBS markers', tpl.includes('<!--HUBS-->') && tpl.includes('<!--/HUBS-->'), true);
+  check('and the LISTINGS markers', tpl.includes('<!--LISTINGS-->') && tpl.includes('<!--/LISTINGS-->'), true);
+  check('and says what the list now is', tpl.includes('<summary>Newest listings</summary>'), true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
