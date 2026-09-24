@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 24 Sep 2026 14:13:35 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 14:32:00 GMT</lastBuildDate>
+  <item>
+    <title>Research Software Engineer — IBM</title>
+    <link>https://interndoor.com/jobs/ibm-research-software-engineer-4469748737</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-research-software-engineer-4469748737</guid>
+    <pubDate>Thu, 24 Sep 2026 14:32:00 GMT</pubDate>
+    <description>Company: IBM · Location: Gurgaon, Haryana, India
+• Develop AI models for enterprise automation using Python and PyTorch
+• Collaborate with product teams to integrate research into IBM&#39;s software
+• Work with real-world data and large-scale datasets in a global lab</description>
+  </item>
   <item>
     <title>AI/ML Computational Science Associate — Accenture in India</title>
     <link>https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-associate-4462467393</link>
@@ -502,17 +512,6 @@
 • Create wireframes and prototypes for product features
 • Design user flows and interface concepts
 • Work with product requirements to shape visual ideas</description>
-  </item>
-  <item>
-    <title>Gen AI Engineer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-gen-ai-engineer-4469628594</guid>
-    <pubDate>Thu, 24 Sep 2026 01:42:25 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Develop and deploy AI-powered automation solutions using Python and Gen AI
-• Integrate AI solutions with enterprise systems, workflows, and APIs
-• Collaborate with cross-functional teams on AI-driven use cases
-• Follow Responsible AI, security, and governance guidelines</description>
   </item>
 </channel>
 </rss>
