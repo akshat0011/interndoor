@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
+      "url": "https://interndoor.com/jobs/electronic-arts-ea-software-engineer-4471423808",
+      "title": "Software Engineer — Electronic Arts (EA)",
+      "content_text": "Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India\n• Maintain c# automation frameworks and issue assessment systems\n• Collaborate with gameplay and qa engineers to improve build workflows\n• Profile mobile games and ensure pipeline stability across production cycles",
+      "date_published": "2026-09-24T08:36:31.774Z",
+      "authors": [
+        {
+          "name": "Electronic Arts (EA)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471436042",
       "url": "https://interndoor.com/jobs/newton-school-sde-sme-software-development-and-system-designs-4471436042",
       "title": "SDE + SME - Software Development & System Designs — Newton School",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Cyncly"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bnp-paribas-test-engineer-4076481892",
-      "url": "https://interndoor.com/jobs/bnp-paribas-test-engineer-4076481892",
-      "title": "Test Engineer — BNP Paribas",
-      "content_text": "Company: BNP Paribas · Location: Chennai, Tamil Nadu, India\n• Execute manual tests, report defects, and verify fixes in middle office systems\n• Use SQL and Unix scripting for data analysis and test automation\n• Collaborate with teams to improve processes in fund accounting and capital markets",
-      "date_published": "2026-09-23T11:19:55.519Z",
-      "authors": [
-        {
-          "name": "BNP Paribas"
         }
       ]
     }
