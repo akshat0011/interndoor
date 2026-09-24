@@ -333,7 +333,6 @@ console.log('\n== BYOK has to be visible BEFORE the button is pressed ==');
   check('it refuses to enable tailoring without a key', /needsKey/.test(fn) && /btn\.disabled/.test(fn), true);
   check('and says so on the button itself', /Add your key below to tailor/.test(fn), true);
   check('ranking is never gated on a key', /!activeJob[\s\S]*Rank the board/.test(fn), true);
-  check('the panel is opened, not left collapsed', /box\.open = true/.test(fn), true);
   check('and marked as blocking', /is-required/.test(fn), true);
   // The three old scattered assignments must be gone, or one of them re-enables
   // the button behind syncPrimary's back.
@@ -346,6 +345,39 @@ console.log('\n== BYOK has to be visible BEFORE the button is pressed ==');
   // §15: never dim text with opacity.
   const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
   check('and does not dim text with opacity', /opacity:\s*0?\.[0-9]/.test(dis), false);
+  check('the why-line shows only when blocked', /\.keybox\.is-required \.keyneed\s*\{\s*display:\s*block/.test(css), true);
+
+  /* The panel was a <details>, and the fix for it sitting collapsed was to open
+     it from script — which the next redesign dropped, leaving it shut. It is a
+     plain block now: nothing to open, so nothing to forget to open. */
+  const html = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const modal = html.slice(html.indexOf('id="tailor"'), html.indexOf('id="step-working"'));
+  check('found the tailor modal', modal.length > 500, true);
+  check('the key panel is never a collapsible <details>', /<details[^>]*keybox/.test(modal), false);
+  check('the key panel is in the upload step', /id="keybox"/.test(modal), true);
+  // The form collapses once a key is saved. Forget living inside it would leave
+  // a saved key that nothing on screen can remove.
+  const formStart = modal.indexOf('id="key-form"');
+  const formEnd = modal.indexOf('class="keyfine"', formStart);
+  check('the key form and the privacy line are both there', formStart > 0 && formEnd > formStart, true);
+  check('Forget sits outside the form that collapses', modal.slice(formStart, formEnd).includes('id="forget-key"'), false);
+  check('and is still in the panel', modal.includes('id="forget-key"'), true);
+  const ui = app.slice(app.indexOf('function syncKeyUi('), app.indexOf('function renderTailored('));
+  check('the form collapses only on a saved key', /form\.hidden = have\b/.test(ui), true);
+  // Stated once, where the key is decided — it used to be said three times over
+  // and read as a policy rather than a tool.
+  check('the privacy promise is stated once in the dialog', (modal.match(/never reach/g) || []).length, 1);
+
+  // Resume, key, act. Rank mode has no key step.
+  check('three steps in the markup', (modal.match(/class="wstep" data-wiz="[123]"/g) || []).length, 3);
+  // Sliced to syncPrimary ALONE: syncSteps is declared right after it, and its
+  // own declaration contains "syncSteps()" — a wider slice passes with the call gone.
+  const prim = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncSteps('));
+  check('the steps follow the gate', /\bsyncSteps\(\);/.test(prim), true);
+  const steps = app.slice(app.indexOf('function syncSteps('), app.indexOf('function syncKeyUi('));
+  check('rank mode hides the key step', /two\.hidden = !tailoring/.test(steps), true);
+  check('and numbers its last step 2, not 3', /tailoring \? '3' : '2'/.test(steps), true);
+  check('the current step is announced', /setAttribute\('aria-current', 'step'\)/.test(steps), true);
 }
 
 console.log('\n== the wiring that is only visible in production ==');

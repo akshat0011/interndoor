@@ -2008,8 +2008,7 @@ async function startAiRank() {
  */
 
 function openKeyBox() {
-  const box = $('keybox');
-  if (box) { box.open = true; box.scrollIntoView({ block: 'nearest' }); }
+  $('keybox')?.scrollIntoView({ block: 'nearest' });
   $('ai-key')?.focus();
 }
 
@@ -2036,31 +2035,71 @@ function syncPrimary() {
     ? 'Rank the board'
     : needsKey ? 'Add your key below to tailor' : 'Tailor it';
 
-  // The panel shouts only when it is actually blocking something.
+  // One edge, not a filled panel — it marks the blocking step without turning
+  // the key into the thing the modal appears to be about.
   const box = $('keybox');
-  if (box) {
-    box.classList.toggle('is-required', needsKey);
-    if (needsKey) box.open = true;
+  if (box) box.classList.toggle('is-required', needsKey);
+  syncSteps();
+}
+
+/**
+ * 1 Resume → 2 Google AI key → 3 Tailor.
+ *
+ * The modal gave no sense of sequence, so a reader met an upload box, a key
+ * panel and a button all at once and could not tell which came first or why the
+ * button would not work. Rank mode has only two steps and says so.
+ */
+function syncSteps() {
+  const box = $('wiz');
+  if (!box) return;
+  const haveResume = (state.resumeText || $('resume-paste')?.value || '').trim().length >= 200;
+  const haveKey = hasKey();
+  const tailoring = Boolean(activeJob);
+
+  // Step 2 is the key, and it does not exist in rank mode — so the last step is
+  // numbered 2 there, or the bar reads "1 Resume · 3 Rank" and looks broken.
+  const two = box.querySelector('[data-wiz="2"]');
+  if (two) two.hidden = !tailoring;
+  const three = box.querySelector('[data-wiz="3"]');
+  const num = three?.querySelector('b');
+  const name = three?.querySelector('span');
+  if (num) num.textContent = tailoring ? '3' : '2';
+  if (name) name.textContent = tailoring ? 'Tailor' : 'Rank';
+
+  const done = { 1: haveResume, 2: !tailoring || haveKey, 3: false };
+  const now = !haveResume ? 1 : (tailoring && !haveKey) ? 2 : 3;
+  for (const step of box.querySelectorAll('.wstep')) {
+    const n = Number(step.dataset.wiz);
+    step.classList.toggle('is-done', Boolean(done[n]) && n !== now);
+    step.classList.toggle('is-now', n === now);
+    if (n === now) step.setAttribute('aria-current', 'step');
+    else step.removeAttribute('aria-current');
   }
 }
 
 function syncKeyUi() {
   const have = hasKey();
-  const needsKey = Boolean(activeJob) && !have;
   const label = $('key-state');
+  /* A saved key is a SUCCESS state and says so in one line, rather than asking
+     again every time the modal opens. The heading is the whole panel then. */
   if (label) {
     label.textContent = have
-      ? 'AI features — key saved in this browser'
-      : needsKey
-        ? 'Tailoring needs your own free Google AI key — add it here'
-        : 'AI features — add a key to have an AI read each posting (ranking by skills works without one)';
+      ? '✓ Google AI key connected'
+      : activeJob ? 'Google AI key' : 'Google AI key · optional';
   }
+
+  const box = $('keybox');
+  if (box) box.classList.toggle('is-set', have);
+  // With a key saved there is nothing to fill in, so the form collapses away.
+  const form = $('key-form');
+  if (form) form.hidden = have;
+
   const forget = $('forget-key');
   if (forget) forget.hidden = !have;
   const input = $('ai-key');
   if (input) {
     input.value = '';
-    input.placeholder = have ? 'saved — paste a new key to replace it' : 'AIza… or AQ.…';
+    input.placeholder = 'AIza… or AQ.…';
   }
   syncPrimary();
 }
@@ -2249,7 +2288,7 @@ function wireTailor() {
     if (!v) { toast('Paste a key first.'); return; }
     // Shape only. Whether it WORKS is settled by using it — §13's rule that a
     // configured credential is checked by using it, not by inspecting it.
-    if (!looksLikeKey(v)) { toast('That does not look like a Google AI Studio key — they begin with AIza.'); return; }
+    if (!looksLikeKey(v)) { toast('That does not look like a Google AI Studio key — they begin with AIza or AQ.'); return; }
     if (!setKey(v)) { toast('This browser refused to store the key — a private window blocks it.'); return; }
     syncKeyUi();          // unlocks the primary button in the same breath
     toast('Key saved — tailoring is unlocked.');

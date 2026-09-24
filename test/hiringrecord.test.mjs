@@ -164,7 +164,10 @@ console.log('\n== wired into the board render ==');
     const hub = readFileSync(join(dir, 'companies', `${companySlug(big[0])}.html`), 'utf8');
     check('its hub carries the record', hub.includes('hiring record'), true);
     const of = (text(hub).match(/out of (\d+)|busiest quarter of the (\d+)/) ?? []);
-    const hubs = new Set(jobs.map((j) => j.company)).size;
+    /* By SLUG, not by name: hubs are grouped by slug (§11), and on 24 Sep 2026
+       the board carried both "NVIDIA" and "Nvidia" — one hub, two spellings, so
+       counting names read 208 against a page correctly saying 207. */
+    const hubs = new Set(jobs.map((j) => companySlug(j.company))).size;
     if (of[0]) check('the board size it quotes is the number of employers on the board', Number(of[1] ?? of[2]), hubs);
     /* The busiest employer on the board is top ten unless more than ten tie with it. */
     const counts = [...byCo.values()];
