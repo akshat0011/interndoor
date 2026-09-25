@@ -224,7 +224,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('the per-card staleness gate trusts the endpoint\'s own window',
     /if \(!viaGuest && postedAt && postedAt < cutoff\)/.test(src), true);
   check('a card with a real id is answered by the id, before the identity',
-    /if \(card\.jobId && store\.hasJob\(card\.jobId\)\) \{[\s\S]{0,300}?continue;\s*\}\s*let known = card\.jobId \? null : store\.jobIdForCard\(card\.identity\);/.test(src), true);
+    /if \(card\.jobId && store\.hasJob\(card\.jobId\)\) \{[\s\S]{0,300}?continue;\s*\}[\s\S]{0,900}?let known = card\.jobId \? null : store\.jobIdForCard\(card\.identity\);/.test(src), true);
   check('a repeated card costs no second open',
     /if \(walkSeen\.has\(card\.jobId\)\) continue;/.test(src), true);
   check('the public walk skips the Next-control logic and paces itself',

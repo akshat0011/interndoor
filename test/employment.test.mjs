@@ -207,7 +207,8 @@ console.log('\n== the entry-level search is wired into the scan, in the right or
   const gateAt = idx.indexOf('if (mustConfirmEntryFromPane) {');
   const saveAt = idx.indexOf('employmentType: employmentKind,');
   check('the gate precedes the save', gateAt > 0 && saveAt > gateAt, true);
-  check('a refused card is skipped, not saved', /if \(!verdict\.kind\) \{[\s\S]{0,200}?continue;/.test(idx.slice(gateAt, saveAt)), true);
+  // {0,360}: the refusal is also recorded under the job id (REFUSED_AFTER_OPEN).
+  check('a refused card is skipped, not saved', /if \(!verdict\.kind\) \{[\s\S]{0,360}?continue;/.test(idx.slice(gateAt, saveAt)), true);
   check('the row carries the kind the gate decided', /employmentType: employmentKind,/.test(idx), true);
   check('the kind defaults to intern for every other search', /let employmentKind = INTERN;/.test(idx), true);
   check('the baseline is read and written under the search\'s own key',

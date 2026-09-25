@@ -283,6 +283,15 @@ export function isNetworkFailure(error) {
  */
 export const NETWORK_FAILURE_WINDOW_MS = 30 * 60_000;
 
+/**
+ * Prefix of a refusal made AFTER a card was opened, recorded under the
+ * posting's real job id (seen_cards is otherwise keyed by card identity).
+ * The prefix is what makes it unambiguous: 13,484 rows from July and August
+ * are keyed by bare job ids too, with pre-click reasons, and must never be
+ * read as "we opened this and refused it".
+ */
+export const REFUSED_AFTER_OPEN = 'refused after opening: ';
+
 export class Store {
   /**
    * @param {string} [dbPath] Override the database file. Defaults to the real
@@ -1316,7 +1325,25 @@ export class Store {
     return {
       skipReason: skip && skip.last_seen_at >= sinceMs ? skip.reason : null,
       firstRunId: job?.first_run_id ?? null,
+      refusedBefore: this.refusedAfterOpen(jobId),
     };
+  }
+
+  /**
+   * Why a posting was refused after it was OPENED, if it ever was — or null.
+   *
+   * The public search hands every card its real id before any click, so a
+   * posting we opened and turned away (asks 3+ years, LinkedIn tags it
+   * Full-time, the pane names an employer off the watchlist) is known by id
+   * the next time it appears. Nothing was recorded that way before, so it was
+   * opened again on every walk while it stayed in the window — a page load on
+   * the account each time, for an answer already given.
+   */
+  refusedAfterOpen(jobId) {
+    if (!jobId) return null;
+    const row = this.db.prepare('SELECT reason FROM seen_cards WHERE job_id = ? AND reason LIKE ?')
+      .get(String(jobId), `${REFUSED_AFTER_OPEN}%`);
+    return row ? row.reason.slice(REFUSED_AFTER_OPEN.length) : null;
   }
 
   /**

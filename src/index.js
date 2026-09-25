@@ -9,7 +9,7 @@ import { join, dirname } from 'node:path';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
-import { Store } from './store.js';
+import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
@@ -1062,6 +1062,16 @@ async function main() {
             if (store.backfillLogo(card.jobId, card.logoUrl)) counters.logosBackfilled++;
             continue;
           }
+          /* ...and a posting already OPENED and refused is not opened again. Its
+             answer (asks 3+ years, tagged Full-time, an employer off the list)
+             was read off the posting itself and does not change between walks,
+             so a second open is a page load on the account for nothing. */
+          const refusedBefore = card.jobId ? store.refusedAfterOpen(card.jobId) : null;
+          if (refusedBefore) {
+            counters.skippedKnown++;
+            log.debug(`"${card.title}" at ${card.company} was opened and refused before (${refusedBefore}) — not opening it again.`);
+            continue;
+          }
           let known = card.jobId ? null : store.jobIdForCard(card.identity);
           if (!known && !card.jobId) {
             const legacy = store.jobIdForCard(li.legacyCardIdentity(card));
@@ -1392,6 +1402,7 @@ async function main() {
             if (!gate.admit) {
               counters.skippedCompany++;
               store.noteSkippedCard(card.identity, gate.reason, detail.company || '', card.title);
+              store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${gate.reason}`, detail.company || '', card.title);
               continue;
             }
             matched = gate.matched;
@@ -1416,6 +1427,7 @@ async function main() {
             if (!verdict.kind) {
               counters.skippedTitle++;
               store.noteSkippedCard(card.identity, verdict.reason, card.company, card.title);
+              store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${verdict.reason}`, card.company, card.title);
               continue;
             }
             employmentKind = verdict.kind;
@@ -1430,6 +1442,7 @@ async function main() {
               card.company,
               card.title,
             );
+            store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`, card.company, card.title);
             continue;
           }
 
