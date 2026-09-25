@@ -26,6 +26,7 @@ import { regionOf, resolveRowRegion } from './regions.js';
 import { log } from './logger.js';
 import { releaseProfileLock } from './browser.js';
 import { entryWord } from './employment.js';
+import { announceable } from './rolefocus.js';
 
 /** WhatsApp's own cap is far higher, but a wall of text is not read. */
 export const MAX_MESSAGE = 1400;
@@ -931,21 +932,31 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   /* THE BACKLOG GOES FIRST. A listing that failed to send yesterday is older
      than one found this minute, and the whole point of keeping it is that it
      stops being lost — so it is not made to queue behind fresh arrivals. */
+  /* A MISC POSTING IS NEVER ANNOUNCED HERE (his call, 25 Sep 2026): it stays
+     on the site under its Misc tab, and the channel carries software and
+     hardware. Read off the published projection's `category`, so the channel
+     and the board cannot disagree about which shelf a role is on — and a
+     backlogged id whose role has since been filed Misc drops out the same way
+     a role that left the board does. */
   const mine = [];
   const seen = new Set();
+  let misc = 0;
+  const take = (pub, code, id) => {
+    if (!pub || seen.has(id)) return;
+    seen.add(id);
+    if (!announceable(pub.category)) { misc++; return; }
+    mine.push({ job: pub, code, id });
+  };
   for (const code of regions) {
-    for (const id of readPending(store, code)) {
-      const pub = indexFor(code).get(String(id));
-      if (pub && !seen.has(String(id))) { seen.add(String(id)); mine.push({ job: pub, code, id: String(id) }); }
-    }
+    for (const id of readPending(store, code)) take(indexFor(code).get(String(id)), code, String(id));
   }
   for (const row of jobs ?? []) {
     const code = resolveRowRegion(row);
     if (!regions.has(code)) continue;
     const id = String(row.job_id ?? row.id);
-    const pub = indexFor(code).get(id);
-    if (pub && !seen.has(id)) { seen.add(id); mine.push({ job: pub, code, id }); }
+    take(indexFor(code).get(id), code, id);
   }
+  if (misc) log.info(`WhatsApp: ${misc} misc listing${misc === 1 ? '' : 's'} left to the site, not the channel.`);
   if (!mine.length) return { sent: 0, reason: 'nothing on these boards' };
 
   /* ONE SCAN'S WORTH, and the rest wait for the next — the same call the reel

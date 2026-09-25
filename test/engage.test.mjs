@@ -403,7 +403,7 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
      be drawn again once `since` exists — or a returning reader sees none. */
   const boot = lift(app, 'const visit = visitSince(readVisit()', 'loadEngage();', 'boot');
   ok('the markers are drawn after `since` is decided', /state\.since = visit\.since;[\s\S]*?renderTabNews\(\);/.test(boot));
-  ok('and again on every refresh, through renderTotal', /renderTabNews\(\);\n\}/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
+  ok('and again on every refresh, through renderTotal', /\n  renderTabNews\(\);\n/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
   ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
   ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
   ok('and the bar\'s link is a real control', /\.since-other \{[^}]*cursor: pointer/.test(css));

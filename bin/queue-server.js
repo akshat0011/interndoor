@@ -52,6 +52,7 @@ import { ownerToken, ownerAuth, corsHeaders, localHost, parseEdit, applyJobEdits
 import { formatStipend } from '../src/extract.js';
 import { resolveRowRegion } from '../src/regions.js';
 import { utmUrl } from '../src/postgen.js';
+import { announceable } from '../src/rolefocus.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -851,9 +852,14 @@ function autoSweep() {
       continue;
     }
 
+    /* NO REEL FOR A MISC ROLE (his call, 25 Sep 2026): it stays on the site
+       under its Misc tab and the reels carry software and hardware. The shelf
+       is the one publish wrote into jobs.json, never re-derived here. A manual
+       reel from the run report is his own choice and is not filtered. */
     const fresh = all
       .filter((j) => j.__region === region
         && j.isTech !== false
+        && announceable(j.category)
         && !known.has(String(j.id))
         && (now - (j.firstSeenAt ?? j.postedAt ?? 0)) <= maxAgeMs)
       .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));

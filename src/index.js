@@ -4,7 +4,7 @@
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany, employerRoleAllowed } from './config.js';
-import { isInternshipTag, isSeniorTitle, admitEntryLevel, INTERN } from './employment.js';
+import { isInternshipTag, entryLevelTitleRefusal, admitEntryLevel, INTERN } from './employment.js';
 import { join, dirname } from 'node:path';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
@@ -28,7 +28,6 @@ import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAl
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPage, guestRequestCap, GUEST_PAGE_SIZE } from './guestsearch.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
-import { refuseBeforeOpen, ROLE_LABELS } from './rolefocus.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -1180,18 +1179,6 @@ async function main() {
             }
           }
 
-          /* THE ROLE FOCUS, on the card's own title, before any open: a title
-             naming a family he did not keep is refused here and never costs
-             the account a page load. A title naming no discipline at all is
-             let through and judged at publish on the posting's label
-             (src/rolefocus.js). */
-          const offFocus = refuseBeforeOpen(card.title, cfg.roleFocus?.keep);
-          if (offFocus) {
-            counters.skippedTitle++;
-            store.noteSkippedCard(card.identity, `role not in focus: ${ROLE_LABELS[offFocus]}`, card.company, card.title);
-            continue;
-          }
-
           const postedAt = parseRelativeTime(card.postedText);
           // Only reject on a *confidently* old timestamp; unparseable text is
           // given the benefit of the doubt rather than silently dropped.
@@ -1235,15 +1222,16 @@ async function main() {
              let through to the tech-title gate below and judged AFTER the
              click by admitEntryLevel — the pane's Full-time and Entry level
              chips and the prose's years demanded. Only a senior title is
-             refused here, before it costs a page load; the rest of the gate
+             refused here (and a manager title), before it costs a page load; the rest of the gate
              needs the pane. */
           const entrySearch = search.employment === 'fulltime';
           let mustConfirmEntryFromPane = false;
           let employmentKind = INTERN;
           if (entrySearch && !titleSaysIntern) {
-            if (isSeniorTitle(card.title)) {
+            const titleRefusal = entryLevelTitleRefusal(card.title);
+            if (titleRefusal) {
               counters.skippedTitle++;
-              store.noteSkippedCard(card.identity, 'entry-level: senior title', card.company, card.title);
+              store.noteSkippedCard(card.identity, titleRefusal, card.company, card.title);
               continue;
             }
             mustConfirmEntryFromPane = true;
