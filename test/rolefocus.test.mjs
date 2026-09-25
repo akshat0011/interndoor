@@ -263,6 +263,12 @@ console.log('\n== the board ==');
   check('a #job- link opens on its own tab and shelf', /setKind\(kindOf\(target\)\);\s*setCat\(catOf\(target\)\);\s*selectJob\(target\.id\);/.test(app), true);
   check('the resume ranking counts only the shelf on screen', /kindOf\(job\) !== state\.kind \|\| catOf\(job\) !== state\.cat/.test(app) && /covCache\.cat === state\.cat/.test(app), true);
   check('the shelf control has its own style', /\.seg-cat \.seg-b \{/.test(css), true);
+  // 26 Sep 2026: over the list, in the slot the "new since your last visit"
+  // line had — not beside the Internships / Full-time tabs.
+  check('the shelves sit over the list', /const list = \$\('joblist'\);\s*if \(!list\) return;[\s\S]{0,900}?list\.before\(seg\);/.test(app), true);
+  check('not beside the kind tabs', /kindSeg\.after\(seg\)/.test(app), false);
+  check('no wider than its buttons, and never wider than the column',
+    /\.seg-cat \{[^}]*width: max-content;[^}]*max-width: 100%;[^}]*overflow-x: auto;/.test(css), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
