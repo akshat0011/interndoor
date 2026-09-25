@@ -1338,6 +1338,15 @@ const server = createServer(async (req, res) => {
     return html(res, 200, renderReportIndex(entries));
   }
 
+  /* THE SCAN VIEW, per run: every public-search page and what became of every
+     card on it (src/scanview.js). Written by the scan after each page, so
+     /scan/latest shows a run while it is still going. */
+  if (path === '/scan' || path === '/scan/' || path.startsWith('/scan/')) {
+    const id = decodeURIComponent(path.slice('/scan/'.length)) || 'latest';
+    if (!SAFE_ID.test(id)) return html(res, 400, '<h1>400</h1>');
+    return sendFile(res, join(PATHS.reports, 'scans', `${id}.html`), `No scan view stored for ${id} — it is written only when config scanView is true.`);
+  }
+
   if (path === '/report/latest') {
     return sendFile(res, PATHS.latestReport, 'No report yet — run a scan first.');
   }

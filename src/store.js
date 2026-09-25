@@ -1303,6 +1303,23 @@ export class Store {
   }
 
   /**
+   * What became of one card, read back for the scan view: the reason it was
+   * refused — only if refused at or after `sinceMs`, so an old record cannot
+   * pass for this walk's decision — and the run that first stored its job.
+   * Read-only; the view shows what the gates recorded rather than re-deciding.
+   */
+  cardOutcome(identity, jobId = null, sinceMs = 0) {
+    const skip = identity
+      ? this.db.prepare('SELECT reason, last_seen_at FROM seen_cards WHERE job_id = ?').get(identity)
+      : null;
+    const job = jobId ? this.db.prepare('SELECT first_run_id FROM jobs WHERE job_id = ?').get(jobId) : null;
+    return {
+      skipReason: skip && skip.last_seen_at >= sinceMs ? skip.reason : null,
+      firstRunId: job?.first_run_id ?? null,
+    };
+  }
+
+  /**
    * Remember which posting a search card turned out to be.
    *
    * Written straight after a click, which is the only moment LinkedIn reveals
