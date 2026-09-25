@@ -23,8 +23,9 @@
  *  - It returns 10 cards a request, not 25, and stops at offset 1000.
  *  - It is unauthenticated: requests cost the SCRAPER ACCOUNTS nothing, which
  *    is the budget LinkedIn has already warned about ("requesting too much
- *    data"), but it is rate-limited per IP instead. A 429 stops discovery for
- *    the rest of the run; nothing is fast-retried into it.
+ *    data"), but it is rate-limited per IP instead. A 429 is waited out a few
+ *    minutes at a time (fetchGuestPageRetrying); one that outlasts the waits
+ *    stops discovery for the rest of the run.
  *  - The employer's apply URL is behind a sign-in wall on the public job page,
  *    so OPENS stay on the signed-in account (openAndExtract, by job id).
  *
@@ -192,7 +193,8 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
  *   { markupChanged: true }    — cards were listed and none could be read
  *
  * No cookies are sent — this must never be tied to a scraper account — and
- * nothing here retries: a retry into a 429 is how a limit becomes a block.
+ * nothing here retries: an immediate retry into a 429 is how a limit becomes a
+ * block. fetchGuestPageRetrying waits minutes, not seconds, before asking again.
  */
 export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeoutMs = 25_000 } = {}) {
   let res;
@@ -208,7 +210,10 @@ export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeou
     return { networkError: true, error: String(err?.message ?? err).split('\n')[0] };
   }
   const status = res.status;
-  if (status === 429 || status === 999) return { blocked: true, status };
+  if (status === 429 || status === 999) {
+    const retryAfterMs = retryAfterMsOf(res.headers?.get?.('retry-after'));
+    return retryAfterMs == null ? { blocked: true, status } : { blocked: true, status, retryAfterMs };
+  }
   if (status !== 200) return { failed: true, status };
 
   const { rows, listed } = parseGuestCards(body);
@@ -220,4 +225,128 @@ export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeou
   const cards = guestCards(rows);
   if (!cards.length) return { markupChanged: true, status, body };
   return { cards, listed, status };
+}
+
+/** A Retry-After header in milliseconds — seconds or an HTTP date — or null. */
+export function retryAfterMsOf(value, now = Date.now()) {
+  const v = String(value ?? '').trim();
+  if (!v) return null;
+  if (/^\d+$/.test(v)) return Number(v) * 1000;
+  const at = Date.parse(v);
+  return Number.isFinite(at) ? Math.max(0, at - now) : null;
+}
+
+/**
+ * How long to wait out a 429 before asking again: 2, then 5, then 10 minutes.
+ *
+ * MEASURED 25 SEP 2026, the first day on this endpoint: three 429s, each after
+ * a modest 27-52 requests in 15 minutes (other quarters carried 90 in ten
+ * minutes and drew nothing), and every one had cleared by the next run 22-27
+ * minutes later. Abandoning the run cost more than waiting would have: the
+ * India full-time walk after each block found 7 and 12 roles posted before the
+ * blocked walk — an hour late — and the stretched window behind one of them
+ * reached the 1,000-result limit. So a block is waited out here, gently and
+ * never more than 17 minutes in all; one that outlasts that still stops
+ * discovery for the run.
+ */
+export const GUEST_BLOCK_WAITS_MS = [120_000, 300_000, 600_000];
+
+/** A Retry-After longer than this is not waited out inside a run. */
+const MAX_BLOCK_WAIT_MS = 15 * 60_000;
+
+/**
+ * fetchGuestPage, waiting out a 429 (GUEST_BLOCK_WAITS_MS) and asking for the
+ * SAME page again, so a walk resumes where it was refused instead of being
+ * abandoned.
+ *
+ *  - ONLY a 429. LinkedIn's 999 is its "you look like a bot" answer, and asking
+ *    again is how that becomes a longer ban; it is returned at once.
+ *  - A wait the run cannot afford (`budgetMs`) is not started: the block is
+ *    returned and the caller stops discovery, exactly as before.
+ *  - A Retry-After longer than the planned wait is honoured, up to 15 minutes.
+ *
+ * Returns fetchGuestPage's answer plus `retries` and `waitedMs`.
+ */
+export async function fetchGuestPageRetrying(url, {
+  fetchImpl = globalThis.fetch,
+  waits = GUEST_BLOCK_WAITS_MS,
+  sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
+  budgetMs = Infinity,
+  onWait = () => {},
+} = {}) {
+  let res = await fetchGuestPage(url, { fetchImpl });
+  let retries = 0;
+  let waitedMs = 0;
+  while (res.blocked && res.status === 429 && retries < waits.length) {
+    const ms = Math.min(MAX_BLOCK_WAIT_MS, Math.max(waits[retries], res.retryAfterMs ?? 0));
+    if (waitedMs + ms > budgetMs) break;
+    onWait({ attempt: retries + 1, of: waits.length, waitMs: ms });
+    await sleep(ms);
+    waitedMs += ms;
+    retries++;
+    res = await fetchGuestPage(url, { fetchImpl });
+  }
+  return { ...res, retries, waitedMs };
+}
+
+/**
+ * A search's keywords split into two smaller searches whose union asks the same
+ * question — or null when they cannot be.
+ *
+ * Only a flat OR-list splits: "(a OR b OR c)" becomes "(a OR b)" and "(c)", and
+ * a posting matching any term is still asked for by exactly the half holding
+ * that term. Anything with nested brackets or an AND/NOT is left alone: halving
+ * it would change what it means. A quoted phrase is one term, whatever is in it.
+ */
+export function splitKeywords(keywords) {
+  const s = String(keywords ?? '').trim();
+  const body = /^\(.*\)$/s.test(s) ? s.slice(1, -1) : s;
+  const terms = [];
+  let term = '';
+  let quoted = false;
+  for (let i = 0; i < body.length; i++) {
+    const ch = body[i];
+    if (ch === '"') quoted = !quoted;
+    if (!quoted && (ch === '(' || ch === ')')) return null;
+    if (!quoted && body.startsWith(' OR ', i)) { terms.push(term.trim()); term = ''; i += 3; continue; }
+    term += ch;
+  }
+  if (quoted) return null;
+  terms.push(term.trim());
+  if (terms.length < 2 || terms.some((t) => !t)) return null;
+  // An AND or NOT outside quotes binds tighter than OR; splitting would regroup it.
+  if (terms.some((t) => /(^|\s)(AND|NOT)(\s|$)/.test(t.replace(/"[^"]*"/g, '')))) return null;
+  const half = Math.ceil(terms.length / 2);
+  return [terms.slice(0, half), terms.slice(half)].map((g) => `(${g.join(' OR ')})`);
+}
+
+/** Pages read just before the limit that decide whether a re-read is worth it. */
+export const REREAD_TAIL_PAGES = 10;
+
+/** Most requests a walk may spend re-reading, in passes: the first read plus five. */
+export const MAX_WALK_PASSES = 6;
+
+/**
+ * Whether a walk that reached the 1,000-result limit is re-read as two smaller
+ * searches, and which.
+ *
+ * MEASURED 25 SEP 2026 over every public-search walk that day: the
+ * internship walks opened 3 cards on pages 81-90, 1 on 91-100 and saved none
+ * there — and none of 2,894 US internships stored in 14 days had a title
+ * without an intern word, the words that rank a card near the top. The India
+ * full-time walk saved as many on pages 71-80 (17) as on 1-10 (25), and 5 on
+ * 91-100. So the part past the limit is filler for one search and real roles
+ * for the other, and the pages just before the limit say which: a re-read
+ * happens only when the last REREAD_TAIL_PAGES pages still held a card worth
+ * opening (`tailHits`, cards per page that were held already, opened before or
+ * opened now). Re-reading filler would spend ~200 requests against the IP
+ * limit for nothing.
+ */
+export function rereadPlan({ tailHits = [], keywords, passes = 1, maxPasses = MAX_WALK_PASSES } = {}) {
+  const hits = tailHits.slice(-REREAD_TAIL_PAGES).reduce((a, b) => a + b, 0);
+  if (!hits) return { reason: `the last ${REREAD_TAIL_PAGES} pages held nothing worth opening, so the rest is filler` };
+  const parts = splitKeywords(keywords);
+  if (!parts) return { reason: 'its keywords are not a plain OR-list, so they cannot be split' };
+  if (passes + parts.length > maxPasses) return { reason: `the walk has already been split into ${passes} parts` };
+  return { parts, hits };
 }

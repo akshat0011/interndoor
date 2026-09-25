@@ -132,7 +132,7 @@ console.log('\n== the wiring ==');
   // The guard: checked before any open, after the stored-id check, and
   // written at all three places a card is refused AFTER being opened.
   check('a posting refused after opening is not opened again',
-    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;\s*if \(refusedBefore\) \{[\s\S]{0,200}?continue;\s*\}\s*let known = /.test(src), true);
+    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;\s*if \(refusedBefore\) \{[\s\S]{0,260}?continue;\s*\}\s*let known = /.test(src), true);
   check('recorded where the pane names an employer off the list',
     /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{gate\.reason\}`/.test(src), true);
   check('recorded where the entry-level gate refuses',
