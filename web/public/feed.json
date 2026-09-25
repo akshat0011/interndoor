@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-azure-4470147312",
+      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-azure-4470147312",
+      "title": "Data Engineer-Data Platforms-Azure — IBM",
+      "content_text": "Company: IBM · Location: Hyderabad, Telangana, India\n• Design and build data pipelines using azure synapse analytics, data factory, and data bricks\n• Develop data layer with sql dw, cosmos db, and adls2 for scalable solutions\n• Work on real-time pipelines with event hub and apache airflow for data quality",
+      "date_published": "2026-09-25T08:30:29.500Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-artificial-intelligence-intern-4470137384",
+      "url": "https://interndoor.com/jobs/linde-artificial-intelligence-intern-4470137384",
+      "title": "Artificial Intelligence Intern — Linde",
+      "content_text": "Company: Linde · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Build AI solutions using Python, SQL, ML libraries and LLM APIs\n• Work on predictive analytics, document processing and generative AI\n• Collaborate with business teams to deliver real-world projects",
+      "date_published": "2026-09-25T08:00:53.819Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-artificial-intelligence-intern-4470151030",
+      "url": "https://interndoor.com/jobs/linde-artificial-intelligence-intern-4470151030",
+      "title": "Artificial Intelligence Intern — Linde",
+      "content_text": "Company: Linde · Location: Kolkata, West Bengal, India · Duration: 6 months\n• Build AI solutions using Python, SQL, ML libraries and LLM APIs\n• Work on predictive analytics, document processing and Generative AI\n• Collaborate with business teams to solve real-world problems",
+      "date_published": "2026-09-25T07:57:39.405Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bnp-paribas-data-science-intern-4471873227",
       "url": "https://interndoor.com/jobs/bnp-paribas-data-science-intern-4471873227",
       "title": "Data Science Intern — BNP Paribas",
@@ -18,14 +54,98 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471863448",
-      "url": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471863448",
+      "id": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471868268",
+      "url": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471868268",
       "title": "Assoc Eng Software Eng — Unisys",
-      "content_text": "Company: Unisys · Location: Bengaluru East, Karnataka, India · Duration: 0-3 years\n• Manage windows servers and cloud infrastructure on azure and aws\n• Write automation scripts for provisioning and deployment\n• Ensure security and compliance in cloud environments",
-      "date_published": "2026-09-25T07:12:51.319Z",
+      "content_text": "Company: Unisys · Location: Bengaluru East, Karnataka, India · Duration: 0-3 years\n• Manage and automate windows server infrastructure on azure and aws\n• Develop automation scripts with terraform, arm templates, and powershell\n• Ensure security, compliance, and reliability of cloud environments",
+      "date_published": "2026-09-25T07:37:58.827Z",
       "authors": [
         {
           "name": "Unisys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-android-framework-developer-4470076746",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-android-framework-developer-4470076746",
+      "title": "Android Framework Developer — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Greater Hyderabad Area · Duration: 2 to 6 years\n• Develop firmware for ARM processors in wireless tech projects\n• Work with C++, Linux, and Android frameworks like AIDL and HAL\n• Collaborate with Fortune 500 clients on cutting-edge semiconductor solutions",
+      "date_published": "2026-09-25T07:37:45.740Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fidelity-investments-cybersecurity-identity-and-access-management-consultant-rpa-developer--4471859600",
+      "url": "https://interndoor.com/jobs/fidelity-investments-cybersecurity-identity-and-access-management-consultant-rpa-developer--4471859600",
+      "title": "Cybersecurity Identity & Access Management Consultant - RPA Developer (Blueprism) — Fidelity Investments",
+      "content_text": "Company: Fidelity Investments · Location: Bengaluru East, Karnataka, India\n• Design and maintain automation solutions using Blue Prism for MyAccess and CAST initiatives\n• Support production bots, troubleshoot issues, and optimize process efficiency\n• Collaborate with cross-functional teams to analyze requirements and implement scalable automation",
+      "date_published": "2026-09-25T07:36:50.490Z",
+      "authors": [
+        {
+          "name": "Fidelity Investments"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ptc-software-specialist-4471855632",
+      "url": "https://interndoor.com/jobs/ptc-software-specialist-4471855632",
+      "title": "Software specialist — PTC",
+      "content_text": "Company: PTC · Location: Pune Division, Maharashtra, India\n• Write well-documented code for product features and UI components\n• Collaborate on design reviews and test scenarios for new features\n• Work with Java, REST, and Oracle databases in a team environment",
+      "date_published": "2026-09-25T07:36:38.505Z",
+      "authors": [
+        {
+          "name": "PTC"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marriott-international-assistant-manager-information-technology-4471870348",
+      "url": "https://interndoor.com/jobs/marriott-international-assistant-manager-information-technology-4471870348",
+      "title": "Assistant Manager- Information Technology — Marriott International",
+      "content_text": "Company: Marriott International · Location: Bengaluru, Karnataka, India\n• Supports property technology systems, hardware, and software maintenance\n• Manages IT infrastructure, vendor relations, and system upgrades\n• Monitors network operations and ensures system reliability\n• Collaborates with teams to resolve technical issues and implement solutions",
+      "date_published": "2026-09-25T07:36:29.970Z",
+      "authors": [
+        {
+          "name": "Marriott International"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-specialist-4471872047",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-specialist-4471872047",
+      "title": "Systems Integration Specialist — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Chennai, Tamil Nadu, India\n• Design and customize SharePoint sites, lists, and workflows\n• Use Power Automate, Power Apps, and Power BI for business process automation\n• Integrate SharePoint with SAP, Oracle, and other enterprise systems",
+      "date_published": "2026-09-25T07:35:04.321Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-solution-architect-4470091189",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-solution-architect-4470091189",
+      "title": "Solution Architect — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Hyderabad, Telangana, India\n• Reverse engineer legacy code using genai tool claude\n• Map data flows and design forward engineering specs\n• Validate models with client experts and improve processes",
+      "date_published": "2026-09-25T07:34:56.546Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/matillion-cloud-operations-analyst-4471852669",
+      "url": "https://interndoor.com/jobs/matillion-cloud-operations-analyst-4471852669",
+      "title": "Cloud Operations Analyst — Matillion",
+      "content_text": "Company: Matillion · Location: Hyderabad, Telangana, India\n• Designing and improving cloud infrastructure across AWS, GCP, and Azure\n• Using Terraform and automation to manage cloud costs and scalability\n• Working in a small team with high-impact decisions on reliability and security",
+      "date_published": "2026-09-25T07:33:52.443Z",
+      "authors": [
+        {
+          "name": "Matillion"
         }
       ]
     },
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Capgemini Engineering"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453107149",
-      "url": "https://interndoor.com/jobs/ge-vernova-turbine-system-integrator-4453107149",
-      "title": "Turbine - System Integrator — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Vadodara, Gujarat, India\n• Design and evaluate projects using engineering principles and industry standards\n• Collaborate across disciplines and understand integration of technical domains\n• Lead small projects with minimal resources and mentor less experienced colleagues",
-      "date_published": "2026-09-24T14:33:30.550Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-research-software-engineer-4469746779",
-      "url": "https://interndoor.com/jobs/ibm-research-software-engineer-4469746779",
-      "title": "Research Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Work on AI research projects with real-world data and enterprise applications\n• Use Python, TensorFlow, PyTorch, and tools like Git and Jupyter Notebooks\n• Collaborate with global teams to integrate research into IBM products",
-      "date_published": "2026-09-24T14:32:47.199Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-research-software-engineer-4469748737",
-      "url": "https://interndoor.com/jobs/ibm-research-software-engineer-4469748737",
-      "title": "Research Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Gurgaon, Haryana, India\n• Develop AI models for enterprise automation using Python and PyTorch\n• Collaborate with product teams to integrate research into IBM's software\n• Work with real-world data and large-scale datasets in a global lab",
-      "date_published": "2026-09-24T14:32:00.875Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-associate-4462467393",
-      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-associate-4462467393",
-      "title": "AI/ML Computational Science Associate — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India · Duration: 6 months\n• Develop and maintain Python applications and scripts\n• Work on data processing and API development\n• Collaborate with cross-functional teams on projects",
-      "date_published": "2026-09-24T14:13:35.066Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/forrester-salesforce-developer-4453143722",
-      "url": "https://interndoor.com/jobs/forrester-salesforce-developer-4453143722",
-      "title": "Salesforce Developer — Forrester",
-      "content_text": "Company: Forrester · Location: Delhi, India\n• Design and build solutions for existing systems and new features\n• Work with Git, Gearset, and Copado for version control and deployment\n• Collaborate in an agile team with product managers and architects",
-      "date_published": "2026-09-24T14:10:32.999Z",
-      "authors": [
-        {
-          "name": "Forrester"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-react-js-node-js-4452306047",
-      "url": "https://interndoor.com/jobs/infosys-react-js-node-js-4452306047",
-      "title": "React JS+Node JS — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Implement designs and develop high-quality programs and systems\n• Respond to production issues and conduct technical analysis\n• Contribute to building efficient programs/systems for client projects",
-      "date_published": "2026-09-24T14:05:54.716Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-node-js-4452309037",
-      "url": "https://interndoor.com/jobs/infosys-node-js-4452309037",
-      "title": "Node JS — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop high-quality programs and systems for client projects\n• Use NodeJS and reactive programming for technical solutions\n• Collaborate with clients and resolve production issues",
-      "date_published": "2026-09-24T14:05:50.709Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434325149",
-      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434325149",
-      "title": "Intermediate Applications Developer- Java, Spring Boot, AMQ, WMQ, SQL Server — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develop and maintain Java Spring Boot web services for Track Visibility applications\n• Work with Azure DevOps and GCP for CI/CD and cloud-native solutions\n• Collaborate in SAFe Agile teams on high-availability systems and microservices",
-      "date_published": "2026-09-24T13:48:42.420Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-python-django-4452707072",
-      "url": "https://interndoor.com/jobs/infosys-python-django-4452707072",
-      "title": "Python Django — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Support consulting teams in project phases from problem definition to deployment\n• Build POCs and create requirement specs from business needs\n• Collaborate with clients to identify challenges and deliverables",
-      "date_published": "2026-09-24T13:46:08.872Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/macquarie-group-mobility-and-data-capture-engineer-4441517042",
-      "url": "https://interndoor.com/jobs/macquarie-group-mobility-and-data-capture-engineer-4441517042",
-      "title": "Mobility and Data Capture Engineer — Macquarie Group",
-      "content_text": "Company: Macquarie Group · Location: Hyderabad, Telangana, India · Duration: 26 weeks\n• Support global device strategy with MDM platforms and mobile data capture\n• Work on MFA, Apple ID migration, and Workspace ONE/Intune enhancements\n• Troubleshoot MDM and network issues as Level 2/3 escalation point",
-      "date_published": "2026-09-24T13:38:59.535Z",
-      "authors": [
-        {
-          "name": "Macquarie Group"
         }
       ]
     }
