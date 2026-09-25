@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 25 Sep 2026 02:49:20 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 02:59:54 GMT</lastBuildDate>
+  <item>
+    <title>Application Support Engineer — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4470445470</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4470445470</guid>
+    <pubDate>Fri, 25 Sep 2026 02:59:54 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Gurugram, Haryana, India
+• Design and optimize prompts for LLMs to support infra and application services
+• Build Python microservices for data processing and API integration
+• Collaborate with SMEs to create GenAI workflows with chunking and token optimization</description>
+  </item>
+  <item>
+    <title>Full Stack Engineer — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4465329296</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-full-stack-engineer-4465329296</guid>
+    <pubDate>Fri, 25 Sep 2026 02:59:48 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Gurugram, Haryana, India
+• Build end-to-end features from user experience to backend code
+• Work with Spring Boot and RESTful APIs in microservices architecture
+• Collaborate with cross-functional teams and contribute to code reviews</description>
+  </item>
   <item>
     <title>S&amp;C Global Network - AI - Resources -Analyst — Accenture in India</title>
     <link>https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-resources-analyst-4448397111</link>
@@ -487,26 +507,6 @@
 • Build and maintain power bi dashboards and semantic models
 • Collaborate with stakeholders for testing and iteration
 • Create documentation to enable user adoption</description>
-  </item>
-  <item>
-    <title>Java Microservices — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-java-microservices-4471490099</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-java-microservices-4471490099</guid>
-    <pubDate>Thu, 24 Sep 2026 13:22:15 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India
-• Develop and maintain microservices using Java
-• Work with Spring Boot and cloud platforms
-• Collaborate on enterprise-scale AI and cloud projects</description>
-  </item>
-  <item>
-    <title>Software Development Analyst — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4471476754</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4471476754</guid>
-    <pubDate>Thu, 24 Sep 2026 13:22:14 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
-• Develop AI applications, chatbots, and multi-agent systems
-• Use Java, Spring Boot, Vue.js, and Python for backend and frontend
-• Lead migration of legacy systems to microservices and AI solutions</description>
   </item>
 </channel>
 </rss>
