@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-developer-intern-4470074639",
+      "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-developer-intern-4470074639",
+      "title": "Full Stack Developer Intern — D Square Consulting Services Pvt Ltd",
+      "content_text": "Company: D Square Consulting Services Pvt Ltd · Location: Bengaluru, Karnataka, India · Duration: 0 to 1 years\n• Build and maintain web apps with JavaScript, HTML5, CSS3, and Angular\n• Work with Java/Node.js and Express.js for back-end features\n• Deploy applications on AWS or Google Cloud\n• Collaborate with team on scalable, maintainable code",
+      "date_published": "2026-09-25T15:55:09.047Z",
+      "authors": [
+        {
+          "name": "D Square Consulting Services Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-data-scientist-qa-automation-4470182063",
       "url": "https://interndoor.com/jobs/barclays-data-scientist-qa-automation-4470182063",
       "title": "Data Scientist - QA Automation — Barclays",
@@ -66,18 +78,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/pwc-india-in-manager-technical-ai-business-analyst-gcc-advisory-bangalore-4461507671",
-      "url": "https://interndoor.com/jobs/pwc-india-in-manager-technical-ai-business-analyst-gcc-advisory-bangalore-4461507671",
-      "title": "IN_Manager_Technical AI Business Analyst_GCC_Advisory_Bangalore — PwC India",
-      "content_text": "Company: PwC India · Location: Bengaluru, Karnataka, India\n• Design and implement AI solutions using LangChain, LangGraph, and RAG pipelines\n• Collaborate with cross-functional teams to translate business needs into technical AI systems\n• Evaluate and recommend LLMs based on performance and scalability requirements",
-      "date_published": "2026-09-25T14:55:06.132Z",
-      "authors": [
-        {
-          "name": "PwC India"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/ey-application-engineer-4470170504",
       "url": "https://interndoor.com/jobs/ey-application-engineer-4470170504",
       "title": "Application Engineer — EY",
@@ -98,18 +98,6 @@
       "authors": [
         {
           "name": "EY"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-india-in-senior-associate-rcm-enterprise-apps-sap-advisory-gurgaon-4463334938",
-      "url": "https://interndoor.com/jobs/pwc-india-in-senior-associate-rcm-enterprise-apps-sap-advisory-gurgaon-4463334938",
-      "title": "IN_Senior Associate_RCM _Enterprise Apps SAP_Advisory_ Gurgaon — PwC India",
-      "content_text": "Company: PwC India · Location: Gurugram, Haryana, India\n• Analyze client needs and implement SAP solutions for operational efficiency\n• Lead end-to-end implementations and configure solutions independently\n• Work with teams to integrate RCM and support client training",
-      "date_published": "2026-09-25T14:42:57.824Z",
-      "authors": [
-        {
-          "name": "PwC India"
         }
       ]
     },
@@ -599,6 +587,18 @@
       "title": "Technical Specialist-Testing Services — Birlasoft",
       "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Write and maintain API automation frameworks using Java or Python\n• Test event-driven systems with Apache Kafka and Oracle OATS\n• Collaborate in Agile teams on test planning and execution",
       "date_published": "2026-09-25T11:06:29.042Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-dotnet-with-qliksense-4470303355",
+      "url": "https://interndoor.com/jobs/birlasoft-dotnet-with-qliksense-4470303355",
+      "title": "Dotnet with Qliksense — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Develop and maintain .net applications using C# and ASP.net\n• Design and implement Qlik Sense reports for cloud-based analytics\n• Work with Oracle databases using PL SQL and DDL/DML",
+      "date_published": "2026-09-25T11:05:49.621Z",
       "authors": [
         {
           "name": "Birlasoft"

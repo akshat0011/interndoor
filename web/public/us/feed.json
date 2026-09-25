@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bosch-multi-modal-sensing-ai-research-intern-ats-smartrecruiters-boschgroup-744000151890105",
+      "url": "https://interndoor.com/us/jobs/bosch-multi-modal-sensing-ai-research-intern-ats-smartrecruiters-boschgroup-744000151890105",
+      "title": "Multi-modal Sensing AI Research Intern — Bosch",
+      "content_text": "Company: Bosch · Location: Pittsburgh, us\n• Build AI models for radar, ultrasound, and EEG data using deep learning\n• Work with PyTorch, HuggingFace, and hydra frameworks\n• Collaborate on research for sensor data fusion and adaptation\n• Publish findings in papers or patents",
+      "date_published": "2026-09-25T15:56:31.553Z",
+      "authors": [
+        {
+          "name": "Bosch"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-ats-smartrecruiters-abbvie-3743990015679386",
+      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-data-and-software-engineerin-ats-smartrecruiters-abbvie-3743990015679386",
+      "title": "2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) — AbbVie",
+      "content_text": "Company: AbbVie · Location: North Chicago, us\n• Build backend services, APIs, and microservices in Java (Spring Boot)\n• Integrate data sources and create foundations for analytics and data science\n• Work on enterprise applications across the stack with technical and business teams",
+      "date_published": "2026-09-25T15:39:06.837Z",
+      "authors": [
+        {
+          "name": "AbbVie"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-ats-smartrecruiters-abbvie-3743990015679346",
+      "url": "https://interndoor.com/us/jobs/abbvie-2027-business-technology-solutions-intern-cloud-engineering-undergradu-ats-smartrecruiters-abbvie-3743990015679346",
+      "title": "2027 Business Technology Solutions Intern - Cloud Engineering (Undergraduate) — AbbVie",
+      "content_text": "Company: AbbVie · Location: North Chicago, us\n• Troubleshoot and resolve platform issues, support enhancements, and ensure smooth operations\n• Work with cloud platforms and DevOps tools like AWS, Docker, and Jenkins\n• Collaborate across teams, track milestones, and ensure on-time delivery",
+      "date_published": "2026-09-25T15:37:36.408Z",
+      "authors": [
+        {
+          "name": "AbbVie"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007",
       "url": "https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007",
       "title": "Automation Scientist Intern, RAC Operations — Ginkgo Bioworks",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-harness-design-engineer-intern-winter-2027-4470066535",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-harness-design-engineer-intern-winter-2027-4470066535",
-      "title": "Harness Design Engineer Intern (Winter 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Winter 2027\n• Design flight and test harnessing for satellites\n• Use CAD to route harnessing in 3D\n• Collaborate with cross-functional teams on subsystem interfaces",
-      "date_published": "2026-09-25T03:20:33.973Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-harness-design-engineer-intern-summer-2027-4470057946",
-      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-harness-design-engineer-intern-summer-2027-4470057946",
-      "title": "Harness Design Engineer Intern (Summer 2027) — Astranis Space Technologies",
-      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Summer 2027\n• Design flight and test harnessing for satellites\n• Use CAD to route harnessing in 3D\n• Collaborate with cross-functional teams on subsystem interfaces",
-      "date_published": "2026-09-25T03:20:29.378Z",
-      "authors": [
-        {
-          "name": "Astranis Space Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-software-developer-intern-4470120467",
-      "url": "https://interndoor.com/us/jobs/leidos-software-developer-intern-4470120467",
-      "title": "Software Developer Intern — Leidos",
-      "content_text": "Company: Leidos · Location: St Louis, MO\n• Build and modify GOTS code with open-source integration for web apps\n• Use C#/Java/JavaScript/Python/Shell in GitLab with DevOps and Agile tools\n• Collaborate on tickets, testing, and user story delivery in Jira/Confluence",
-      "date_published": "2026-09-25T03:16:05.897Z",
-      "authors": [
-        {
-          "name": "Leidos"
         }
       ]
     }
