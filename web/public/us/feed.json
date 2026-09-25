@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007",
+      "url": "https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007",
+      "title": "Automation Scientist Intern, RAC Operations — Ginkgo Bioworks",
+      "content_text": "Company: Ginkgo Bioworks · Location: Boston, Massachusetts\n• Operate and maintain advanced lab automation hardware\n• Design and execute molecular biology experiments\n• Analyze and optimize scientific workflows for automation",
+      "date_published": "2026-09-25T15:07:41.000Z",
+      "authors": [
+        {
+          "name": "Ginkgo Bioworks"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-site-reliability-engineering-professional-intern-austin-tx-2027-4460750403",
+      "url": "https://interndoor.com/us/jobs/ibm-site-reliability-engineering-professional-intern-austin-tx-2027-4460750403",
+      "title": "Site Reliability Engineering Professional Intern - Austin, TX - 2027 — IBM",
+      "content_text": "Company: IBM · Location: Austin, TX\n• Support enterprise systems with servers, cloud, and virtual machines\n• Use scripting for automation and troubleshoot network issues\n• Work on incident response and reliability metrics documentation",
+      "date_published": "2026-09-25T14:50:31.187Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-quantum-algorithms-theory-intern-2027-4460767195",
       "url": "https://interndoor.com/us/jobs/ibm-quantum-algorithms-theory-intern-2027-4460767195",
       "title": "Quantum Algorithms Theory Intern 2027 — IBM",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-4470114096",
-      "url": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-4470114096",
-      "title": "Machine Learning Engineer Intern (Capcut) - 2027 Summer — TikTok USDS Joint Venture",
-      "content_text": "Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027\n• Design and build machine learning solutions for AI features\n• Improve modeling infrastructures and algorithms for robustness\n• Work on production environments with real-world data",
-      "date_published": "2026-09-25T02:41:04.904Z",
-      "authors": [
-        {
-          "name": "TikTok USDS Joint Venture"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-phd-4470118014",
-      "url": "https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-phd-4470118014",
-      "title": "Machine Learning Engineer Intern (Capcut) - 2027 Summer (PhD) — TikTok USDS Joint Venture",
-      "content_text": "Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027\n• Design and build machine learning solutions for AI features\n• Improve modeling infrastructures and algorithms for robustness\n• Run experiments to evaluate and debug models in production",
-      "date_published": "2026-09-25T02:40:38.770Z",
-      "authors": [
-        {
-          "name": "TikTok USDS Joint Venture"
         }
       ]
     }

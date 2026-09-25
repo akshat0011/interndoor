@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 25 Sep 2026 14:37:31 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 15:07:41 GMT</lastBuildDate>
+  <item>
+    <title>Automation Scientist Intern, RAC Operations — Ginkgo Bioworks</title>
+    <link>https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ginkgo-bioworks-automation-scientist-intern-rac-operations-ats-greenhouse-ginkgobioworks-5249264007</guid>
+    <pubDate>Fri, 25 Sep 2026 15:07:41 GMT</pubDate>
+    <description>Company: Ginkgo Bioworks · Location: Boston, Massachusetts
+• Operate and maintain advanced lab automation hardware
+• Design and execute molecular biology experiments
+• Analyze and optimize scientific workflows for automation</description>
+  </item>
+  <item>
+    <title>Site Reliability Engineering Professional Intern - Austin, TX - 2027 — IBM</title>
+    <link>https://interndoor.com/us/jobs/ibm-site-reliability-engineering-professional-intern-austin-tx-2027-4460750403</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/ibm-site-reliability-engineering-professional-intern-austin-tx-2027-4460750403</guid>
+    <pubDate>Fri, 25 Sep 2026 14:50:31 GMT</pubDate>
+    <description>Company: IBM · Location: Austin, TX
+• Support enterprise systems with servers, cloud, and virtual machines
+• Use scripting for automation and troubleshoot network issues
+• Work on incident response and reliability metrics documentation</description>
+  </item>
   <item>
     <title>Quantum Algorithms Theory Intern 2027 — IBM</title>
     <link>https://interndoor.com/us/jobs/ibm-quantum-algorithms-theory-intern-2027-4460767195</link>
@@ -485,26 +505,6 @@
 • Build and modify GOTS code with open-source integration for web apps
 • Use C#/Java/JavaScript/Python/Shell in GitLab with DevOps and Agile tools
 • Collaborate on tickets, testing, and user story delivery in Jira/Confluence</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer Intern (Capcut) - 2027 Summer — TikTok USDS Joint Venture</title>
-    <link>https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-4470114096</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-4470114096</guid>
-    <pubDate>Fri, 25 Sep 2026 02:41:04 GMT</pubDate>
-    <description>Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027
-• Design and build machine learning solutions for AI features
-• Improve modeling infrastructures and algorithms for robustness
-• Work on production environments with real-world data</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer Intern (Capcut) - 2027 Summer (PhD) — TikTok USDS Joint Venture</title>
-    <link>https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-phd-4470118014</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tiktok-usds-joint-venture-machine-learning-engineer-intern-capcut-2027-summer-phd-4470118014</guid>
-    <pubDate>Fri, 25 Sep 2026 02:40:38 GMT</pubDate>
-    <description>Company: TikTok USDS Joint Venture · Location: San Jose, CA · Duration: Summer 2027
-• Design and build machine learning solutions for AI features
-• Improve modeling infrastructures and algorithms for robustness
-• Run experiments to evaluate and debug models in production</description>
   </item>
 </channel>
 </rss>
