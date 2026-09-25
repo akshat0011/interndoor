@@ -249,8 +249,10 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   /* The browser is only needed to OPEN a card. Opened up front, it sat on the
      feed doing nothing while the walk ran elsewhere — "stuck on the Brave
      homepage", 25 Sep. */
+  // Unless the scan view is on (test/scanview.test.mjs), when the window is
+  // opened up front so there is something to watch.
   check('a public-search walk does not open its account up front',
-    /if \(viaGuest\) \{\s*if \(session && openRegion !== region\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
+    /if \(viaGuest && !showScan\) \{\s*if \(session && openRegion !== region\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
   check('it opens the account at the first card worth opening',
     /log\.ok\(`Opening:[\s\S]{0,400}?if \(viaGuest && !\(await sessionReady\(\)\)\) \{\s*signedOutMidWalk = true;\s*break;\s*\}\s*\n\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src), true);
   check('a signed-out account found there ends the walk',

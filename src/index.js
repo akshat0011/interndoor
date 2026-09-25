@@ -5,8 +5,8 @@
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { isInternshipTag, isSeniorTitle, admitEntryLevel, INTERN } from './employment.js';
-import { join } from 'node:path';
-import { writeFile } from 'node:fs/promises';
+import { join, dirname } from 'node:path';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log } from './logger.js';
 import { Store } from './store.js';
@@ -27,6 +27,7 @@ import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, p
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPage, guestRequestCap, GUEST_PAGE_SIZE } from './guestsearch.js';
+import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -515,6 +516,11 @@ async function main() {
      per account, so every later search in this run would be refused too:
      they are skipped rather than walked into the same limit. */
   let guestBlocked = false;
+  /* Every finished page of every public-search walk this run, newest first,
+     written to reports/scans/<runId>.html (and latest.html) after each page so
+     the run can be checked card by card while it is still going. */
+  const scanLog = [];
+  const scanLogFile = join(PATHS.reports, 'scans', `${runId}.html`);
   /* Any search whose surface moved this run. Collected rather than alerted on
      the spot: a flip is an account-level event, so two regions noticing it in
      the same run is one thing to be told about, not two. */
@@ -663,6 +669,9 @@ async function main() {
       const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
       // Which collector finds this search's cards — see guestsearch.js.
       const viaGuest = searchSourceFor(search, cfg) === 'guest';
+      // Draw each public-search page, and what became of every card on it, in
+      // the Brave window — so the walk can be watched (src/scanview.js).
+      const showScan = viaGuest && cfg.scanView === true;
 
       // A search may run less often than the loop ticks.
       //
@@ -739,7 +748,7 @@ async function main() {
          2.5 minutes, then closed having opened nothing), and each such walk
          spent a warm-up page load on the account for no reason. A window left
          open by a DIFFERENT region is closed for the same reason. */
-      if (viaGuest) {
+      if (viaGuest && !showScan) {
         if (session && openRegion !== region) {
           await closeBrave(session);
           session = null;
@@ -827,6 +836,9 @@ async function main() {
       // Set when the account behind a public-search walk is found signed out
       // at its first open: the walk stops there, baseline unchanged.
       let signedOutMidWalk = false;
+      // Cards this walk OPENED, so the scan view can tell "opened, then
+      // refused" from a card refused on its own text.
+      const openedThisWalk = new Set();
 
       for (let pageIndex = firstPage; pageIndex < lastPage; pageIndex++) {
         // Checked here, before navigating, not only inside the card loop below.
@@ -849,6 +861,7 @@ async function main() {
         let cards;
         let unidentified = [];
         let spanned = 0;
+        let pageUrl = '';
         if (viaGuest) {
           /* THE PUBLIC SEARCH — no page load on the account, and nothing on
              screen to fingerprint, scroll or guard: one request, parsed in
@@ -856,6 +869,7 @@ async function main() {
              baseline, so the next run re-covers the window. */
           const url = buildGuestSearchUrl(search, filters, { start: pageIndex * GUEST_PAGE_SIZE });
           log.info(`Page ${pageIndex + 1} — ${url}`);
+          pageUrl = url;
           const res = await fetchGuestPage(url);
           if (res.networkError) {
             sawNetworkFailure = true;
@@ -967,6 +981,40 @@ async function main() {
 
         const cutoff = Date.now() - filters.postedWithinHours * 3_600_000;
         let openedOnThisPage = 0;
+
+        /* THE SCAN VIEW: this page's cards, on screen before they are judged,
+           and again with every outcome once they have been (see below). */
+        const pageStartedAt = Date.now();
+        const seenBefore = new Set(walkSeen);
+        const drawPage = async (done) => {
+          if (!showScan || !page) return;
+          const outcomes = cards.map((c) => (done
+            ? outcomeFor({
+                repeat: seenBefore.has(c.jobId),
+                opened: openedThisWalk.has(c.key),
+                runId,
+                ...store.cardOutcome(c.identity, c.jobId, pageStartedAt),
+              })
+            : outcomeFor({ pending: true })));
+          const section = renderScanSection({
+            region, label, pageNo: pageIndex + 1, url: pageUrl, windowHours: filters.postedWithinHours,
+            cards, outcomes, done,
+            totals: { cards: counters.cardsSeen, opened: counters.detailsExtracted, saved: counters.newJobs },
+          });
+          await showScanView(page, renderScanDocument(`InternDoor scan — run ${runId}`, [section], { live: true }));
+          if (!done) return;
+          scanLog.unshift(section);
+          try {
+            const doc = renderScanDocument(`InternDoor scan — run ${runId} (newest page first)`, scanLog);
+            await mkdir(dirname(scanLogFile), { recursive: true });
+            await writeFile(scanLogFile, doc, 'utf8');
+            await writeFile(join(dirname(scanLogFile), 'latest.html'), doc, 'utf8');
+            if (scanLog.length === 1) log.info(`Scan view: every page and every card's outcome — ${scanLogFile}`);
+          } catch (err) {
+            log.warn(`Could not save the scan view: ${err.message}`);
+          }
+        };
+        await drawPage(false);
 
         for (const card of cards) {
           if (clock.exceeded() || counters.detailsExtracted >= cfg.limits.maxDetailsPerRun) break;
@@ -1292,6 +1340,7 @@ async function main() {
 
           log.ok(`Opening: ${card.title} — ${card.company || 'no company on the card'}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
           if (!card.company) log.debug(`  no company line on this card, so the pane decides: ${(card.lines ?? []).join(' | ').slice(0, 240)}`);
+          openedThisWalk.add(card.key);
 
           if (viaGuest && !(await sessionReady())) {
             signedOutMidWalk = true;
@@ -1466,6 +1515,7 @@ async function main() {
         }
 
         log.info(`Page ${pageIndex + 1} done — opened ${openedOnThisPage} of ${cards.length} cards.`);
+        await drawPage(true);
         if (signedOutMidWalk) break;
 
         /* HOW FAR BACK THIS WALK HAS GOT, tracked on every page whether or not
