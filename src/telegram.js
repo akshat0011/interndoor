@@ -30,6 +30,7 @@ import { resolveRowRegion, regionOf, regionPath, publishedRegions } from './regi
 import { PATHS } from './paths.js';
 import { entryWord } from './employment.js';
 import { renderCards } from './ogcard.js';
+import { announceable } from './rolefocus.js';
 
 const API = 'https://api.telegram.org';
 
@@ -342,7 +343,12 @@ export async function postNewJobs(jobs, cfg) {
     }
 
     const index = publishedIndex(code);
-    const public_ = group.map((r) => index.get(String(r.job_id))).filter(Boolean);
+    const onSite = group.map((r) => index.get(String(r.job_id))).filter(Boolean);
+    /* A MISC ROLE IS NOT ANNOUNCED (his call, 25 Sep 2026) — it stays on the
+       site under its Misc tab. The shelf is the one publish wrote, never
+       re-derived here (src/rolefocus.js). */
+    const public_ = onSite.filter((j) => announceable(j.category));
+    if (onSite.length > public_.length) log.info(`Telegram: ${onSite.length - public_.length} misc listing${onSite.length - public_.length === 1 ? '' : 's'} left to the site, not the channel.`);
     if (!public_.length) continue;
 
     /* Cards go to the STATE directory, not the repo: Telegram uploads the file

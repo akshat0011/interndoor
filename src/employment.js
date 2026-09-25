@@ -112,6 +112,10 @@ export function employmentType(title, isIntern) {
   // internship that mentions a graduate scheme, not the other way round.
   if (isIntern(t)) return INTERN;
   if (SENIOR.test(t)) return null;
+  // A level-II-or-above title is not an early-career role, whatever phrase it
+  // also carries ("BTS Associate Software Engineer II", "Engineer 2 - Nashville
+  // Campus") — bar a named graduate programme. LEVEL_TITLE, below.
+  if (LEVEL_TITLE.test(t) && !NEW_GRAD_PROGRAM.test(t)) return null;
   if (EARLY_RE.some((re) => re.test(t))) return FULL_TIME;
   if (BATCH_RE.test(t) || ZERO_EXP_RE.test(t)) return FULL_TIME;
   // A title that OPENS with "Graduate" is a graduate role — "Graduate
@@ -156,6 +160,35 @@ export const ENTRY_MAX_YEARS = 2;
 
 const MANAGER_TITLE = /\bmanager\b/i;
 
+/* A LEVEL-2-OR-ABOVE TITLE IS NOT AN ENTRY-LEVEL JOB — his call, 25 Sep 2026
+   ("remove the 2/3 titles"). The entry walk was opening "Platform Engineer
+   III" and "Engineer III, Artificial Intelligence" and storing "Software
+   Engineer II" rows whose prose named no years. Roman II–IV anywhere, or 2–4
+   straight after a role noun ("SDE-2", "Developer 3", "Engineer 2"); level I
+   and "SDE-1" pass. A year is never read as a level — "2027" has no word
+   boundary after its 2. Checked over every full-time title stored: 36 caught,
+   every one a level-2+ or 2+-years role. */
+const LEVEL_TITLE = /\b(?:ii|iii|iv)\b|\b(?:engineer|engr|developer|dev|sde|swe|analyst|programmer|scientist|specialist|consultant|executive|architect|administrator|designer|technician|level|grade)\s*[-–]?\s*[2-4]\b/i;
+/* American Express hires masters graduates into "Campus Graduate Masters
+   Full-Time Engineer - 2027 Software Engineer II": a named graduate programme,
+   which the level would otherwise refuse. */
+const NEW_GRAD_PROGRAM = /\bcampus\s+(?:graduate|undergraduate)\b|\bnew[\s-]?grad\b/i;
+
+/* "CONSULTANT" AND "ARCHITECT" ARE EXPERIENCED GRADES, AND EVERY ONE COST AN OPEN.
+   His question, 25 Sep 2026, watching the scan: "why tf are u opening
+   consultant and all". Measured over the entry-level search's history: 15
+   Consultant titles opened and then refused for demanding 2-8+ years, and of
+   the 12 that got in, 11 were Deloitte, YASH, Accenture, Infosys, Hitachi and
+   NTT consultant grades whose prose simply omitted the years. Deloitte posts
+   one role per city, so one "Ping Directory - Consultant" cost three opens in
+   one run. Architect: 1 refused after opening, 4 admitted, all senior. The
+   exception is a named graduate programme — PwC's "Oracle Technical
+   Consultant Graduate Program", AECOM's "Graduate Technology Services
+   Consultant". Entry-level search only: the careers-board path already needs
+   an early-career phrase to call anything full-time. */
+const EXPERIENCED_GRADE = /\b(?:consultant|architect)\b/i;
+const GRADUATE_WORD = /\b(?:graduate|fresher|campus|new[\s-]?grad|trainee)\b/i;
+
 /**
  * The part of the entry-level gate a TITLE alone can answer — asked before the
  * open (so it costs the account nothing) and again inside admitEntryLevel.
@@ -175,6 +208,8 @@ export function entryLevelTitleRefusal(title) {
   const t = String(title ?? '');
   if (isSeniorTitle(t)) return 'entry-level: senior title';
   if (MANAGER_TITLE.test(t) && !/\bassociate\s+product\s+manager\b/i.test(t)) return 'entry-level: manager title';
+  if (LEVEL_TITLE.test(t) && !NEW_GRAD_PROGRAM.test(t)) return 'entry-level: level II+ title';
+  if (EXPERIENCED_GRADE.test(t) && !GRADUATE_WORD.test(t)) return 'entry-level: consultant or architect title';
   return null;
 }
 
@@ -185,8 +220,8 @@ export function entryLevelTitleRefusal(title) {
  *
  *   - an intern word in the title, or LinkedIn's Internship chip, makes it an
  *     internship — the entry search finding one is fine, and it is filed as one;
- *   - a senior or manager title is refused whatever the facet says (recruiters
- *     mark "Senior Engineer" entry-level often enough to matter;
+ *   - a senior, manager or level-II+ title is refused whatever the facet says
+ *     (recruiters mark "Senior Engineer" entry-level often enough to matter;
  *     entryLevelTitleRefusal);
  *   - LinkedIn's employment chip must say Full-time — Contract, Part-time and
  *     Temporary are not the role a fresher is looking for; a missing chip is

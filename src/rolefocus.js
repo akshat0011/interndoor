@@ -172,5 +172,14 @@ export function settleShelves(jobs) {
   });
 }
 
-/** The shelf a channel may announce. Misc stays on the site and off the channels. */
+/**
+ * The shelf a channel may announce. Misc stays on the site and off the
+ * channels: WhatsApp, the reels, the US Telegram channel and the email digest
+ * (his call, 25 Sep 2026). It IS eligible for the weekly LinkedIn roundup,
+ * which reads the plain published set (publishedIdsFor) and so needs nothing
+ * here.
+ */
 export const announceable = (category) => category !== 'misc';
+
+/** The ids in a published jobs.json a channel may announce — for callers that start from store rows. */
+export const announceableIds = (jobs) => new Set((jobs ?? []).filter((j) => announceable(j.category)).map((j) => String(j.id)));
