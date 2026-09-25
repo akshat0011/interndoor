@@ -15,6 +15,7 @@ import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
+import { roleFocusVerdict } from './rolefocus.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -213,10 +214,12 @@ function fingerprint(text) {
  */
 export function closableFrom(tracked, cfg, wanted) {
   return (tracked ?? [])
-    /* Either the classifier/human dropped it (is_tech !== 1) OR it is a live
-       tech row whose application has closed (closed_at set). Both should
+    /* Either the classifier/human dropped it (is_tech !== 1), OR it is a live
+       tech row whose application has closed (closed_at set), OR its role is
+       outside the focus he chose (src/rolefocus.js). All three should
        redirect a dead job URL to the employer's hub rather than 404. */
-    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null)
+    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null
+        || !roleFocusVerdict({ title: row.title, roleLabel: row.role_label }, cfg?.roleFocus?.keep).keep)
       && !isBlockedCompany(row.company)
       && (!cfg?.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))
@@ -514,6 +517,8 @@ export async function writeJobsFile(store, cfg) {
   let dropped = 0;
   let droppedForeign = 0;
   let droppedNonTech = 0;
+  let droppedOffFocus = 0;
+  const offFocusByFamily = {};
   let droppedClosed = 0;
   let droppedDeadline = 0;
   const droppedByRegion = {};
@@ -587,6 +592,19 @@ export async function writeJobsFile(store, cfg) {
       if (!techOnly) return true;
       if (row.is_tech === 1) return true;
       droppedNonTech++;
+      return false;
+    })
+    /* THE ROLE FOCUS — his call, 25 Sep 2026 (src/rolefocus.js, config
+       roleFocus.keep). Engineering and in-focus are different questions:
+       is_tech answers the first. A posting outside the focus leaves the board,
+       every channel, reel and digest with it (they carry only what is
+       published), and its page becomes a closed-role stub (closableFrom). The
+       hub record is left alone, so no employer page is deleted. */
+    .filter(({ row }) => {
+      const v = roleFocusVerdict({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus?.keep);
+      if (v.keep) return true;
+      droppedOffFocus++;
+      offFocusByFamily[v.family] = (offFocusByFamily[v.family] ?? 0) + 1;
       return false;
     })
     /* A CLOSED posting is off the board but not gone: its URL becomes a
@@ -666,6 +684,10 @@ export async function writeJobsFile(store, cfg) {
   }
   if (droppedDeadline) {
     log.info(`Held back ${droppedDeadline} posting${droppedDeadline === 1 ? '' : 's'} whose stated application deadline has passed — page redirected to the hub, still in the record.`);
+  }
+  if (droppedOffFocus) {
+    const top = Object.entries(offFocusByFamily).sort((a, b) => b[1] - a[1]).map(([f, n]) => `${f} ${n}`).join(' · ');
+    log.info(`Held back ${droppedOffFocus} posting${droppedOffFocus === 1 ? '' : 's'} outside the role focus (${top}).`);
   }
   if (droppedNonTech) {
     log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);

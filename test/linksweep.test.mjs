@@ -106,7 +106,10 @@ console.log('\n== publish honours it: off the board, stubbed, still in the recor
 {
   const cfg = loadConfig();
   const wanted = new Set(['IN']);
-  const row = (id, extra = {}) => ({ job_id: id, company: 'S&P Global', title: 'Apprentice', is_tech: extra.isTech ?? 1, closed_at: extra.closed ?? null });
+  // A software title: this block is about the CLOSED state, and a bare
+  // "Apprentice" is now outside the role focus (test/rolefocus.test.mjs), which
+  // would make every row closable for a reason this test is not about.
+  const row = (id, extra = {}) => ({ job_id: id, company: 'S&P Global', title: 'Software Engineering Apprentice', is_tech: extra.isTech ?? 1, closed_at: extra.closed ?? null });
   const tracked = [
     { row: row('live'), matchedNow: 'S&P Global', region: 'IN' },
     { row: row('closed', { closed: 123 }), matchedNow: 'S&P Global', region: 'IN' },
