@@ -28,6 +28,7 @@ import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAl
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPage, guestRequestCap, GUEST_PAGE_SIZE } from './guestsearch.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
+import { refuseBeforeOpen, ROLE_LABELS } from './rolefocus.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -1177,6 +1178,18 @@ async function main() {
               store.noteSkippedCard(card.identity, 'not a role we take from this employer', card.company, card.title);
               continue;
             }
+          }
+
+          /* THE ROLE FOCUS, on the card's own title, before any open: a title
+             naming a family he did not keep is refused here and never costs
+             the account a page load. A title naming no discipline at all is
+             let through and judged at publish on the posting's label
+             (src/rolefocus.js). */
+          const offFocus = refuseBeforeOpen(card.title, cfg.roleFocus?.keep);
+          if (offFocus) {
+            counters.skippedTitle++;
+            store.noteSkippedCard(card.identity, `role not in focus: ${ROLE_LABELS[offFocus]}`, card.company, card.title);
+            continue;
           }
 
           const postedAt = parseRelativeTime(card.postedText);
