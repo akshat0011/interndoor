@@ -105,7 +105,7 @@ function wire(form) {
            creates the subscriber as `regular`, so Buttondown sends no
            opt-in mail and this message is the ONLY acknowledgement the
            reader gets. It has to be unambiguous on its own. */
-        say('Done — you are on the list. New roles will land in your inbox.', 'good');
+        say('Done, you are on the list. New roles will land in your inbox.', 'good');
         /* THE conversion worth optimising a paid campaign toward: an address is
            the only channel this site owns rather than rents. Optional-chained
            because gtag.js is a no-op with no ID set and is deferred, so this

@@ -106,6 +106,12 @@ const state = {
   // pane can list a collapsed card's other cities. Rebuilt by renderList.
   groups: new Map(),
   selectedId: null,
+  // True while the open role is one the board opened (openNewest), false once
+  // the reader has clicked one.
+  autoSelected: false,
+  // Set at the end of init(). Until then applyFilters must not open anything:
+  // a #job- link in the URL has not been read yet.
+  booted: false,
   resumeText: '',
   // What the resume screen calls it: the file name, or "Pasted text".
   resumeLabel: '',
@@ -230,9 +236,9 @@ function initTheme() {
 
 /* ---------------- helpers ---------------- */
 
-/** Compact, monospace-friendly age: 12m, 4h, 3d. */
+/** Compact age: 12m, 4h, 3d. Empty when the posting carries no time. */
 function shortAge(ms) {
-  if (!ms) return '—';
+  if (!ms) return '';
   const mins = Math.round((Date.now() - ms) / 60000);
   if (mins < 60) return `${Math.max(1, mins)}m`;
   const hrs = Math.round(mins / 60);
@@ -442,8 +448,8 @@ async function refreshBoard() {
 
 function renderFreshness() {
   $('freshness-text').textContent = state.generatedAt
-    ? `checked ${relTime(state.generatedAt)}`
-    : 'standing by';
+    ? `Checked ${relTime(state.generatedAt)}`
+    : 'Standing by';
 }
 
 /* ---------------- new since your last visit ---------------- */
@@ -821,7 +827,7 @@ function syncRelevance() {
   const sort = $('f-sort');
   const have = sort.querySelector('option[value="match"]');
   if (resumeHay && !have) {
-    const opt = el('option', null, 'best for me');
+    const opt = el('option', null, 'Best for me');
     opt.value = 'match';
     sort.append(opt);
   } else if (!resumeHay && have) {
@@ -864,6 +870,7 @@ function applyFilters() {
   state.filtered = list;
   renderList();
   syncStickyOffset();
+  if (state.booted) openNewest();
 }
 
 function anyFilterActive() {
@@ -902,6 +909,20 @@ function safeUrl(url) {
 }
 
 /** Has this posting been through the Gemini pass yet? */
+/* A skill as the page shows it. The store holds skills lowercase, and they were
+   only ever readable because the chips were set in capitals. This is the same
+   casing src/pages.js applies on job and company pages (titleCaseSkill), so the
+   board and those pages agree; keep the two lists in step. */
+const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'apis', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'oops', 'orm', 'jvm', 'cad', 'iot', 'rtl', 'fpga', 'vlsi', 'etl', 'llm', 'llms', 'ci/cd', 'saas', 'rest', 'crm', 'erp', 'qa', 'os', 'db', 'ds']);
+function skillLabel(raw) {
+  return String(raw ?? '').trim().split(/\s+/).map((w) => {
+    const low = w.toLowerCase();
+    if (SKILL_UPPER.has(low)) return low.toUpperCase();
+    const tail = /[A-Z0-9+#.]/.test(w.slice(1)) ? w.slice(1) : low.slice(1);
+    return w.charAt(0).toUpperCase() + tail;
+  }).join(' ');
+}
+
 function enriched(job) {
   return (job.bullets ?? []).length > 0;
 }
@@ -1051,7 +1072,6 @@ function jobCard(job, index, group = [job], seen = false) {
 
   const age = job.postedAt ? Date.now() - job.postedAt : null;
   const blazing = age != null && age < HOT_MS;
-  if (blazing) row.classList.add('is-hot');
   /* Already on the board at the reader's last visit. The class recedes the
      card through its background and rule, never through opacity (§15 — dimmed
      text fails contrast); the row stays fully readable and fully clickable. */
@@ -1115,7 +1135,7 @@ function jobCard(job, index, group = [job], seen = false) {
   if (skills.length) {
     const box = el('div', 'skills');
     for (const s of skills) {
-      const chip = el('span', 'skill', s);
+      const chip = el('span', 'skill', skillLabel(s));
       // A skill the loaded resume already names is lit, so the chips stop being
       // uniform decoration and become a reason to look at one card over another.
       if (resumeHay && resumeNames(resumeHay, s)) chip.classList.add('has');
@@ -1139,17 +1159,10 @@ function jobCard(job, index, group = [job], seen = false) {
   }
   row.append(mid);
 
-  // Age, plus a bar that drains over the first 24 hours. Turning "how long do I
-  // have" into something you can see at a glance is the whole point of the site.
+  // Age, as text. A fresh role is set in full ink; the draining meter that
+  // used to sit under it said the same thing a second time, in lime.
   const ageBox = el('div', `age${blazing ? ' blazing' : age != null && age < FRESH_MS ? ' fresh' : ''}`);
-  ageBox.append(el('b', null, blazing ? 'JUST NOW' : shortAge(job.postedAt)));
-  if (age != null && age < FRESH_MS) {
-    const bar = el('s');
-    const fill = el('i');
-    fill.style.width = `${Math.max(4, Math.round((1 - age / FRESH_MS) * 100))}%`;
-    bar.append(fill);
-    ageBox.append(bar);
-  }
+  ageBox.append(el('b', null, blazing ? 'Just now' : shortAge(job.postedAt)));
   // Age and Apply share a footer strip. Applying used to cost two taps and a
   // full-screen context switch — open the role, then find the button — and the
   // detail pane exists to answer questions, not to gate the one action every
@@ -1240,7 +1253,7 @@ function paintTrackControl(box) {
   if (row && row.status !== 'applied') {
     const a = el('a', 'trk-b is-set', meta.short);
     a.href = `${REGION_PATH}/applications`;
-    a.title = `Tracked — ${meta.label}. Open your applications to change it.`;
+    a.title = `Tracked: ${meta.label}. Open your applications to change it.`;
     a.setAttribute('aria-label',
       `${job.title} at ${job.company}: ${meta.label}. Open your applications.`);
     a.addEventListener('click', stop);
@@ -1263,7 +1276,7 @@ function paintTrackControl(box) {
       T.remove(job.id);
       toast('Removed from your applications');
     } else if (T.track(trackable(job), 'applied')) {
-      toast('Tracked as Applied — see My applications');
+      toast('Tracked as Applied. See My applications.');
     }
     const err = T.error();
     if (err) toast(err);
@@ -1370,7 +1383,7 @@ function renderList() {
   // twenty-one cities is one row here and says so on its own face.
   const n = groups.length;
   $('result-count').textContent = state.jobs.length === 0
-    ? 'nothing on the radar yet'
+    ? 'Nothing on the radar yet'
     : `${n} ${n === 1 ? 'role' : 'roles'}${anyFilterActive() ? ` / ${state.jobs.length}` : ''}`;
   $('reset').hidden = !anyFilterActive();
 
@@ -1426,7 +1439,7 @@ function renderList() {
       bar.append(el('span', null, ' · scored against your resume, with a reason on each card'));
     } else if (cov.shown === 0) {
       bar.append(el('b', null, 'Nothing here matched your resume'));
-      bar.append(el('span', null, ` — none of these ${cov.total} roles names a skill it mentions. This board is engineering-only, so a resume from another field will score low on word overlap.`));
+      bar.append(el('span', null, `. None of these ${cov.total} roles names a skill it mentions. This board is engineering-only, so a resume from another field will score low on word overlap.`));
     } else {
       bar.append(el('b', null, `${cov.shown} of ${cov.total} roles matched`));
       const tail = [];
@@ -1529,9 +1542,12 @@ function renderWindow(list, frag, ordered, seen) {
 }
 
 function selectJob(id, { silent = false } = {}) {
-  state.selectedId = id;
   const job = state.jobs.find((j) => j.id === id);
   if (!job) return;
+  state.selectedId = id;
+  // Silent means the board opened it, not the reader; openNewest() may then
+  // move it to whatever is newest after a filter or tab change.
+  state.autoSelected = silent;
 
   for (const card of document.querySelectorAll('.row')) {
     if (card.dataset.id === id) card.setAttribute('aria-current', 'true');
@@ -1557,6 +1573,29 @@ function selectJob(id, { silent = false } = {}) {
     $('detail-col').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+}
+
+/**
+ * On a desktop, open the first role in the list when the reader has not
+ * chosen one.
+ *
+ * THIS WAS TRIED BEFORE AND TAKEN OUT, and the reasons still hold as costs: the
+ * reader lands on a role they did not pick, and it looks selected rather than
+ * merely first. It is back (Sept 2026) because the alternative measured worse:
+ * a "Pick a role" panel filling half of the first screen with one ring and one
+ * line, which the owner and a design audit both flagged. The costs are held
+ * down rather than ignored. It is SILENT, so the URL and a copied link never
+ * claim a role nobody chose. It follows the list, so after a filter or a tab
+ * change the pane shows the new first role, until the reader clicks one, and
+ * from then on only a click moves it. And it never runs where the pane is an
+ * overlay (<= PANE_OVERLAY_MAX_PX), where opening one would cover the list.
+ */
+function openNewest() {
+  if (matchMedia(`(max-width: ${PANE_OVERLAY_MAX_PX}px)`).matches) return;
+  if (state.selectedId && !state.autoSelected) return;
+  const first = document.querySelector('#joblist .row');
+  if (!first) return;
+  if (first.dataset.id !== state.selectedId) selectJob(first.dataset.id, { silent: true });
 }
 
 function closeDetail() {
@@ -1594,12 +1633,18 @@ function renderDetail(job) {
 
   const back = el('button', 'back');
   back.type = 'button';
-  back.textContent = '\u2190 all roles';
+  back.textContent = '\u2190 All roles';
   back.addEventListener('click', closeDetail);
   d.append(back);
 
+  // ROLE FIRST, and the SAME role line the card shows. The pane used to set the
+  // company as a 34px capital headline over the bare title, so a card reading
+  // "Intern · AI Research" opened as "IQVIA / Intern". roleLine() adds the
+  // qualifier; the class swaps the card's look for the pane's heading.
   d.append(el('div', 'p-co', job.company));
-  d.append(el('p', 'p-role', job.title));
+  const role = roleLine(job).node;
+  role.className = 'p-role';
+  d.append(role);
 
   // The other cities this same role is open in.
   //
@@ -1626,18 +1671,19 @@ function renderDetail(job) {
   const actions = el('div', 'p-acts');
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
   if (applyHref) {
-    // Label the destination honestly: ATS listings and, since LinkedIn's
-    // redesign, plenty of LinkedIn ones too, apply on the employer's own site.
+    // ONE LABEL FOR ONE ACTION: "Apply", with the same drawn arrow as the card.
+    // The destination is still said honestly, to anyone who asks for it: ATS
+    // listings and plenty of LinkedIn ones apply on the employer's own site.
     const host = (applyHref.match(/^https?:\/\/([^/?#]+)/i) || [])[1] || '';
-    const where = /(^|\.)linkedin\.com$/i.test(host) ? 'LinkedIn' : 'company site';
-    // Plain label. The drawn arrow and the .apply-glow wrapper are gone with
-    // the ambient loop they existed for — the wrapper's only job was letting a
-    // halo escape the overflow:hidden the sheen needed, and there is no sheen.
+    const where = /(^|\.)linkedin\.com$/i.test(host) ? 'LinkedIn' : 'the company site';
     const apply = el('a', 'go');
+    apply.classList.add('is-apply');
     apply.href = applyHref;
     apply.target = '_blank';
     apply.rel = 'noopener noreferrer';
-    apply.textContent = 'Apply on ' + where;
+    apply.textContent = 'Apply';
+    apply.title = `Opens ${where} in a new tab`;
+    apply.setAttribute('aria-label', `Apply for ${job.title} at ${job.company} on ${where}`);
     apply.addEventListener('click', () => window.IDEngage?.onApply());
     actions.append(apply);
   }
@@ -1673,8 +1719,8 @@ function renderDetail(job) {
     f.append(el('dt', null, label), el('dd', cls, value));
     facts.append(f);
   };
-  addFact('mode', job.workplaceType || '\u2014');
-  addFact('duration', job.duration || '\u2014');
+  addFact('Mode', job.workplaceType || 'Not stated');
+  addFact('Duration', job.duration || 'Not stated');
   // Computed from the timestamp, NOT from postedText. postedText is the string
   // LinkedIn showed at the moment the scraper opened the posting — "4 minutes
   // ago" — and it never ages. Preferring it meant the detail pane still read
@@ -1682,19 +1728,19 @@ function renderDetail(job) {
   // from shortAge(postedAt). On a site whose whole promise is BE EARLY, that is
   // the worst possible field to get wrong: every stale posting looked brand new.
   // postedText is kept only as a fallback for a row with no parsed timestamp.
-  addFact('posted', relTime(job.postedAt) || job.postedText);
-  if (job.applicants) addFact('applicants', job.applicants);
+  addFact('Posted', relTime(job.postedAt) || job.postedText);
+  if (job.applicants) addFact('Applicants', job.applicants);
   d.append(facts);
 
   if (job.summary) {
-    d.append(el('h3', null, 'the role'));
+    d.append(el('h3', null, 'The role'));
     d.append(el('p', 'p-gist', job.summary));
   }
 
   if (job.skills?.length) {
-    d.append(el('h3', null, 'skills'));
+    d.append(el('h3', null, 'Skills'));
     const row = el('div', 'chips');
-    for (const s of job.skills) row.append(el('span', 'chip', s));
+    for (const s of job.skills) row.append(el('span', 'chip', skillLabel(s)));
     d.append(row);
   }
 
@@ -1709,9 +1755,9 @@ function renderDetail(job) {
     link.href = sourceHref;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    note.append(link, document.createTextNode(' before you apply — it is the source of truth.'));
+    note.append(link, document.createTextNode(' before you apply. It is the source of truth.'));
   } else {
-    note.append(document.createTextNode('Check the original posting before you apply — it is the source of truth.'));
+    note.append(document.createTextNode('Check the original posting before you apply. It is the source of truth.'));
   }
   d.append(note);
 }
@@ -2752,18 +2798,9 @@ async function init() {
 
   const hash = location.hash.match(/^#job-(.+)$/);
   const target = hash && state.jobs.find((j) => j.id === hash[1]);
-  /* A ROLE IS OPENED ONLY WHEN SOMEBODY ASKS FOR ONE — by clicking, or by
-     arriving on a #job- link they were given. Otherwise the pane rests on its
-     own placeholder.
-
-     Desktop used to auto-open the newest listing here, to stop the right-hand
-     column sitting empty. It solved an empty panel by creating three worse
-     problems: the reader lands inside a job they did not choose, the newest
-     role is made to look selected rather than merely first, and the pane's own
-     "read the full posting" framing is applied to something nobody asked to
-     read. The placeholder is the honest state — nothing is selected, so the
-     pane says so. */
   if (target) selectJob(target.id);
+  else openNewest();
+  state.booted = true;
 
   setInterval(renderFreshness, 60000);
 
