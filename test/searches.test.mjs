@@ -185,8 +185,13 @@ const NOW_W = 1_700_000_000_000;
 const IN_S = byRegion.get('IN'), US_S = byDeclared.get('US');
 check('both searches are resolvable for the window checks', [!!IN_S, !!US_S], [true, true]);
 
-check('India is unchanged at its 30-minute cadence', winOf(IN_S, 0.5), 3);
-check('India after a 6h sleep still stretches', winOf(IN_S, 6), 8);
+/* India reads the PUBLIC search (config searchSource 'guest'), which is not in
+   date order, so each walk reads its whole window and the window is sized to
+   the gap plus an hour — 1h floor, 1h slack (25 Sep 2026). The 3h floor would
+   be ~530 results, 54 requests, every 30 minutes. */
+check('India at its 30-minute cadence asks for 2h, not 3', winOf(IN_S, 0.5), 2);
+check('India never asks for less than half an hour past the gap', winOf(IN_S, 0.49), 1);
+check('India after a 6h sleep still stretches', winOf(IN_S, 6), 7);
 check('US at its hourly cadence takes 2h, not 3', winOf(US_S, 1.1), 2);
 check('US on the dot takes 2h', winOf(US_S, 1.0), 2);
 // The floor and the slack change; the adaptive rule does not.

@@ -56,7 +56,16 @@ const DESCRIPTION_SELECTORS = [
  */
 export const EXPERIENCE_CODES = { internship: '1', entry: '2', entrylevel: '2', associate: '3', midsenior: '4', midseniorlevel: '4', director: '5', executive: '6' };
 
-export function buildSearchUrl(search, filters, { start = 0 } = {}) {
+export function buildSearchUrl(search, filters, opts) {
+  return `https://www.linkedin.com/jobs/search/?${searchParams(search, filters, opts).toString()}`;
+}
+
+/**
+ * The search's query string, shared by the signed-in search page above and
+ * the public endpoint in guestsearch.js. One builder, so the two cannot drift
+ * into asking LinkedIn different questions.
+ */
+export function searchParams(search, filters, { start = 0 } = {}) {
   const params = new URLSearchParams();
 
   // A company-id search carries no keywords at all: f_C already restricts the
@@ -96,28 +105,24 @@ export function buildSearchUrl(search, filters, { start = 0 } = {}) {
   if (search.distance) params.set('distance', String(search.distance));
   if (start > 0) params.set('start', String(start));
 
-  return `https://www.linkedin.com/jobs/search/?${params.toString()}`;
-}
-
-export function jobUrl(jobId) {
-  return `https://www.linkedin.com/jobs/view/${jobId}/`;
+  return params;
 }
 
 /**
- * The same posting, but rendered inside the search results' detail pane.
+ * The posting's own page — what a human is sent to, AND, since 25 Sep 2026,
+ * what an open by id reads.
  *
- * `/jobs/view/<id>` is the right URL to *publish* — it is what a human should
- * be sent to. It is the wrong URL to *read*, because the standalone page uses a
- * different layout from the pane, and every selector in DESCRIPTION_SELECTORS
- * is tuned for the pane. Navigating to the standalone page returns a
- * description of zero characters: the extraction silently produces nothing, and
- * the posting ends up on the site as a bare title.
- *
- * `?currentJobId=` asks the search page to open with that job already selected,
- * which puts the description back in the markup the extractor knows how to read.
+ * It used to be the wrong page to read: the old standalone layout shared no
+ * selector with the search pane and returned a zero-character description, so
+ * opens by id went to `/jobs/search/?currentJobId=<id>` instead. The AI search
+ * rollout inverted that. On both accounts that URL now redirects to
+ * `/jobs/search-results/?currentJobId=<id>&keywords=jobs`, and the same open
+ * read 0 characters and no title there; this page carries the pane's own
+ * `JobDetails_AboutTheJob_<id>` block, the "place · age · applicants" line and
+ * the chips — 2,637 and 7,052 characters on the two postings probed.
  */
-export function jobPaneUrl(jobId) {
-  return `https://www.linkedin.com/jobs/search/?currentJobId=${jobId}`;
+export function jobUrl(jobId) {
+  return `https://www.linkedin.com/jobs/view/${jobId}/`;
 }
 
 /**
@@ -508,7 +513,23 @@ export function applyUrlFrom(blob, jobId) {
 
   const found = scope.match(/"companyApplyUrl":"([^"]+)"/);
   if (!found) return null;
-  let url = found[1];
+  return cleanApplyUrl(found[1]);
+}
+
+/**
+ * One raw apply destination, made publishable or refused.
+ *
+ * Shared by the bootstrap-JSON read above and the Apply ANCHOR. Since the AI
+ * search rollout (25 Sep 2026) the Apply control is an <a> again — aria-label
+ * "Apply on company website" — and its href is LinkedIn's /safety/go/
+ * interstitial, not the employer's page. The anchor path stored that href
+ * verbatim, so all 9 rows collected from the new surface that morning put a
+ * LinkedIn redirect behind "Apply on the company's site". Both sources now go
+ * through the same unwrap and the same refusals.
+ */
+export function cleanApplyUrl(raw) {
+  if (typeof raw !== 'string' || !raw) return null;
+  let url = raw;
 
   /* The blob may arrive decoded (textContent) or encoded (innerHTML, the
      fallback for a search variant we have not captured), and LinkedIn's own
@@ -1013,8 +1034,44 @@ export async function hasNextPage(page) {
   }).catch(() => null);
 }
 
+/**
+ * The expander's own label, off the end of a description.
+ *
+ * On the posting page the "… more" button sits inside the description block,
+ * so innerText ends with it — measured on Palantir's posting, 6,933 characters
+ * of real text and then "… more". Anchored at the END and requiring the
+ * ellipsis, so a posting whose last sentence ends in the word "more" keeps it.
+ */
+export function stripExpanderLabel(text) {
+  return String(text ?? '').replace(/\s*(?:…|\.\.\.)\s*(?:see\s+)?more\s*$/i, '').trim();
+}
+
 /** Expand a truncated description if a "see more" control is present. */
 async function expandDescription(page) {
+  /* THE AI-ERA LAYOUT FIRST. Its expander is `button[data-testid=
+     "expandable-text-button"]` reading "… more", and a job page carries a
+     dozen of them — measured 12, the rest on feed posts under "people who can
+     help". So it is found by walking out from the description block to the
+     nearest ancestor that holds one, never by taking the first on the page:
+     clicking a feed post's expander leaves the description collapsed at its
+     first ~100 characters. */
+  const tagged = await page.evaluate(() => {
+    const about = document.querySelector('[id^="JobDetails_AboutTheJob_"]');
+    for (let e = about, depth = 0; e && e !== document.body && depth < 5; e = e.parentElement, depth++) {
+      const btn = e.querySelector('button[data-testid="expandable-text-button"]');
+      if (btn) { btn.setAttribute('data-watcher-expand', '1'); return true; }
+    }
+    return false;
+  }).catch(() => false);
+  if (tagged) {
+    const btn = page.locator('[data-watcher-expand="1"]').first();
+    if (await btn.isVisible().catch(() => false)) {
+      await humanClick(page, btn, { timeout: 4000 });
+      await sleep(rand(500, 1200));
+      return true;
+    }
+  }
+
   const selectors = [
     'button[aria-label*="see more" i]',
     'button[aria-label*="Click to see more" i]',
@@ -1138,11 +1195,12 @@ export async function openAndExtract(page, card, cfg) {
       return { jobId: null, description: '', unopenable: true };
     }
     log.debug(`Card ${card.jobId} was not clickable; navigating directly.`);
-    // The pane URL, not the standalone view — see jobPaneUrl. This path is
-    // taken both when a card scrolls out from under us mid-scan and for every
-    // description backfill, so getting it wrong costs a silent empty read
-    // rather than a visible error.
-    await gotoResilient(page, jobPaneUrl(card.jobId), {}, { label: `job ${card.jobId}` });
+    // The posting's own page — see jobUrl for why this is no longer the pane
+    // URL. This path is taken for every card the public search found (there is
+    // no list on screen to click), for a card that scrolled out from under us,
+    // and for every description backfill, so getting it wrong costs a silent
+    // empty read rather than a visible error.
+    await gotoResilient(page, jobUrl(card.jobId), {}, { label: `job ${card.jobId}` });
   }
 
   // Wait for the pane to actually change, and take no answer for an answer.
@@ -1155,13 +1213,22 @@ export async function openAndExtract(page, card, cfg) {
   // read does not produce a missing field, it produces a confident wrong
   // answer. Better to skip the card and pick it up next run.
   const paneChanged = await page.waitForFunction(
-    ({ id, prevAbout }) => {
+    ({ id, prevAbout, navigated }) => {
       const about = document.querySelector('[id^="JobDetails_AboutTheJob_"]');
+      // With a known id, wait for THAT posting's block: "different from
+      // before" is true of any page at all once we have navigated away.
+      if (about && id) return about.id === `JobDetails_AboutTheJob_${id}`;
       if (about) return about.id !== prevAbout;
+      /* After a NAVIGATION the URL carries the id from the first byte, long
+         before anything has rendered, so it proves nothing: the first open of
+         a verification run on 25 Sep read an empty page this way (title,
+         place and description all blank). Only a click on the classic list,
+         whose pane has no such block, may fall back to the URL. */
+      if (id && navigated) return false;
       if (id) return location.href.includes(id);
       return !!document.querySelector('#job-details, .jobs-description__content');
     },
-    { id: card.jobId ?? null, prevAbout: previousAboutId },
+    { id: card.jobId ?? null, prevAbout: previousAboutId, navigated: !clicked },
     { timeout: 15_000 },
   ).then(() => true).catch(() => false);
 
@@ -1337,6 +1404,9 @@ export async function openAndExtract(page, card, cfg) {
     // an anchor href. When it does not, we leave this null and the report links
     // to the LinkedIn posting instead — clicking Apply there is what a person
     // would do anyway, and guessing a URL would be worse than not having one.
+    // Returned RAW and cleaned in Node by cleanApplyUrl: since the AI rollout
+    // this href is LinkedIn's /safety/go/ interstitial, and unwrapping it is
+    // the kind of logic that cannot be tested inside page.evaluate.
     let applyUrl = null;
     if (applyButton?.tagName === 'A') {
       const href = applyButton.getAttribute('href') ?? '';
@@ -1378,7 +1448,15 @@ export async function openAndExtract(page, card, cfg) {
              logoUrl: /^https?:\/\//.test(detailLogo) ? detailLogo : '' };
   }, DESCRIPTION_SELECTORS);
 
-  // The anchor is gone; recover the employer's URL from the bootstrap JSON the
+  // The posting page renders its expander INSIDE the description, so its
+  // "… more" label is read as the last line of the posting.
+  detail.description = stripExpanderLabel(detail.description);
+
+  // The anchor's href, when there is one, is LinkedIn's interstitial rather
+  // than the employer's page — unwrapped (or refused) here, in testable code.
+  if (detail.applyUrl) detail.applyUrl = cleanApplyUrl(detail.applyUrl);
+
+  // No usable anchor: recover the employer's URL from the bootstrap JSON the
   // page already loaded. Parsed here rather than in the page so it is testable.
   if (!detail.applyUrl && detail.applyBlob) {
     detail.applyUrl = applyUrlFrom(detail.applyBlob, detail.jobId);
@@ -1400,8 +1478,11 @@ export async function openAndExtract(page, card, cfg) {
     log.warn(`Opened "${card.title}" but LinkedIn never revealed a job id — it cannot be stored.`);
   }
 
-  // Restore the URL context if we navigated away from the search results.
-  if (!clicked && page.url() !== before) {
+  // Restore the URL context if we navigated away from the search results —
+  // and only then. A card from the public search was opened from no list at
+  // all, so going back would reload the PREVIOUS posting: a page load spent
+  // against the account for nothing, on every open.
+  if (!clicked && page.url() !== before && /\/jobs\/search/.test(before)) {
     await page.goBack({ waitUntil: 'domcontentloaded' }).catch(() => {});
     await pause(cfg.pacing.afterNavigation);
   }

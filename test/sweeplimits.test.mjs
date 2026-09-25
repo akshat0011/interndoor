@@ -186,7 +186,7 @@ console.log('\n== src/index.js actually applies all three ==');
   check('imports the module',
     /import \{[^}]*pageCapFor[^}]*openCapFor[^}]*staleCutoffFor[^}]*pageIsAllOlderThan[^}]*\} from '\.\/sweeplimits\.js'/.test(src), true);
   check('the page cap bounds the walk',
-    /const lastPage = firstPage \+ pageCap;/.test(src) &&
+    /const lastPage = firstPage \+ \(viaGuest \? guestRequestCap\(pageCap\) : pageCap\);/.test(src) &&
     /const pageCap = pageCapFor\(search, cfg\.limits\.maxPagesPerSearch\);/.test(src), true);
   check('the open cap is resolved per search',
     /const openCap = openCapFor\(search\);/.test(src), true);
@@ -202,7 +202,11 @@ console.log('\n== src/index.js actually applies all three ==');
   check('and every page reports its ages, stop or no stop',
     /const a = pageAgeSummary\(cards, parseRelativeTime\);[\s\S]{0,300}?undateable/.test(src), true);
   check('the all-old page test ends the walk',
-    /if \(pageIsAllOlderThan\(cards, staleCutoffFor\(search\), parseRelativeTime\)\)/.test(src), true);
+    /if \(pageIsAllOlderThan\(cards, pageStopCutoff, parseRelativeTime\)\)/.test(src), true);
+  /* ...and never for the public search, whose results are not in date order:
+     an all-old page there says nothing about the next one. */
+  check('the all-old stop is off for the public search',
+    /const pageStopCutoff = viaGuest \? null : staleCutoffFor\(search\);/.test(src), true);
   check('and it counts as a COMPLETED walk, so the baseline advances',
     /pageIsAllOlderThan[\s\S]{0,320}?walkComplete = true;/.test(src), true);
   /* The per-employer cap must be reported even when nothing hits it. A limit
