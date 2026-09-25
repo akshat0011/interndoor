@@ -568,11 +568,6 @@ function newSinceByKind(jobs, since, keyOf = roleKey) {
   return out;
 }
 
-/** "full-time roles" / "internships", for the bar's link to the other tab. */
-const kindNoun = (kind, n) => (kind === 'fulltime'
-  ? `full-time role${n === 1 ? '' : 's'}`
-  : `internship${n === 1 ? '' : 's'}`);
-
 /* The board decides new-vs-return before engage.js loads (rendering must not
    wait on a network fetch) and leaves the answer on <html> for it to count. */
 function loadEngage() {
@@ -618,12 +613,17 @@ function catCounts(kind) {
  * reason the "+N new" markers are: the template is the published board, and a
  * control that needs this script to mean anything should not exist without it.
  * Idempotent — renderTotal calls it on every data load.
+ *
+ * IT SITS OVER THE LIST, under the role count — the slot the "N new since
+ * your last visit" line had until he asked for that line gone and the shelves
+ * there instead (26 Sep 2026). Beside the Internships / Full-time tabs it read
+ * as a rival to them; over the cards it reads as a choice about the cards.
  */
 function renderCatSeg() {
   let seg = $('seg-cat');
   if (!seg) {
-    const kindSeg = $('seg-kind');
-    if (!kindSeg) return;
+    const list = $('joblist');
+    if (!list) return;
     seg = document.createElement('div');
     seg.className = 'seg seg-cat';
     seg.id = 'seg-cat';
@@ -642,7 +642,7 @@ function renderCatSeg() {
       b.addEventListener('click', () => setCat(cat));
       seg.append(b);
     }
-    kindSeg.after(seg);
+    list.before(seg);
   }
   const counts = catCounts(state.kind);
   const fresh = newSinceByCat(state.jobs, state.since, state.kind);
@@ -1495,21 +1495,14 @@ function renderList() {
   empty.hidden = true;
 
   /* New since the last visit first, then everything the reader has already
-     had the chance to see, dimmed. The header says how many and how long ago
-     that was; a first-time visitor sees neither, because "all 297 of these
-     are new" is not information. Counted in roles, like the list. */
+     had the chance to see, dimmed. A first-time visitor sees neither, because
+     "all 297 of these are new" is not information. Counted in roles, like the
+     list. The line that said "N new since your last visit" above them is gone
+     at his request (26 Sep 2026) — the shelf tabs took its place, and every
+     tab and shelf still carries its own "+N new". */
   const split = splitNewSince(groups, state.since, $('f-sort').value || 'newest');
   document.documentElement.dataset.newsince = String(split.n);
   const seen = new Set(split.seen);
-
-  /* THE OTHER TAB'S NEWS IS SAID HERE TOO. `split` is over the tab on screen;
-     a returning reader on Internships with four new full-time roles waiting
-     saw nothing at all. The bar now carries a link to the other tab whenever
-     that tab has new roles — even when this one has none, which is exactly
-     the case that was invisible. Counted over every row, like the tab badge,
-     and only for a returning reader (state.since), like the rest of this. */
-  const other = state.kind === 'fulltime' ? 'intern' : 'fulltime';
-  const otherNew = newSinceByKind(state.jobs, state.since)[other];
 
   const frag = document.createDocumentFragment();
 
@@ -1546,23 +1539,6 @@ function renderList() {
     frag.append(bar);
   }
 
-  if (split.n > 0 || otherNew > 0) {
-    const bar = el('li', 'since-bar');
-    bar.setAttribute('role', 'presentation');
-    if (split.n > 0) {
-      bar.append(el('b', null, `${split.n} new`));
-      bar.append(el('span', null, ` since your last visit · ${relTime(state.since)}`));
-    } else {
-      bar.append(el('span', null, `Nothing new here since your last visit · ${relTime(state.since)}`));
-    }
-    if (otherNew > 0) {
-      const go = el('button', 'since-other', `+${otherNew} new ${kindNoun(other, otherNew)} →`);
-      go.type = 'button';
-      go.addEventListener('click', () => setKind(other));
-      bar.append(go);
-    }
-    frag.append(bar);
-  }
   /* THE LIST IS WINDOWED. Every group used to get a card on first paint, which
      was fine when a board held a few hundred roles and is not now: the US board
      groups to 2,961 cards, each carrying a logo, chips, bullets and two
@@ -1572,7 +1548,7 @@ function renderList() {
      cards, never showed it.
 
      ONLY THE RENDERING IS WINDOWED. state.groups, the result count, the
-     since-bar and every filter still run over the WHOLE set — a reader must
+     new-first split and every filter still run over the WHOLE set — a reader must
      never be told there are 60 roles because 60 are drawn. */
   renderWindow(list, frag, split.ordered, seen);
 }

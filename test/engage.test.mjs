@@ -111,9 +111,12 @@ console.log('\n== the board wires it in the right order ==');
   ok('the answer is left on <html> for the counter', /dataset\.visit = visit\.returning \? 'return' : 'new'/.test(init));
 
   const renderList = lift(app, 'function renderList()', '\n}', 'renderList');
-  /* Something new on THIS tab, or on the other one — since 19 Sep 2026 the
-     bar also names the tab the reader is not looking at. */
-  ok('the header is drawn only when something is new', /if \(split\.n > 0 \|\| otherNew > 0\) \{[\s\S]*'since-bar'/.test(renderList));
+  /* The "N new since your last visit" line is GONE (his call, 26 Sep 2026):
+     the shelf tabs sit in its slot and every tab and shelf says "+N new". The
+     new-first order and the receding seen cards stay. */
+  // Code only: the comment above the split names the line it replaced.
+  const listCode = renderList.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  ok('no "new since your last visit" line is drawn', listCode.length > 500 && !/since-bar|since your last visit/.test(listCode));
   ok('the count reaches <html> too', /dataset\.newsince = String\(split\.n\)/.test(renderList));
   /* THE CALL MOVED OUT OF renderList ON 22 SEP 2026 and the invariant did not.
      The list is windowed now — renderWindow draws the first chunk and appends
@@ -142,7 +145,7 @@ console.log('\n== a seen card recedes, never through opacity (§15) ==');
   ok('.row.seen is styled', seenRules.length >= 1);
   ok('no opacity anywhere on it', seenRules.every((r) => !/opacity/.test(r)));
   ok('it recedes through the background', seenRules.some((r) => /background/.test(r)));
-  ok('the header is styled', /\.since-bar\s*\{/.test(css));
+  ok('and the line\'s styles went with it', !/\.since-(bar|other)\b/.test(css));
   ok('and the prompt', /\.nudge\s*\{/.test(css) && /\.nudge:not\(\.is-up\)/.test(css));
   const nudgeRule = (css.match(/\.nudge\s*\{([^}]*)\}/) || [])[1] || '';
   ok('the prompt is a centred dialog, not a bottom sheet', /position:\s*fixed/.test(nudgeRule) && /top:\s*50%/.test(nudgeRule) && !/bottom:/.test(nudgeRule));
@@ -390,11 +393,9 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
 
   /* WIRING, pinned in the source the way the rest of this file does. */
   const list = lift(app, 'function renderList(', '\nfunction selectJob(', 'renderList');
-  ok('the bar counts the OTHER tab over every row', /const other = state\.kind === 'fulltime' \? 'intern' : 'fulltime';\s*const otherNew = newSinceByKind\(state\.jobs, state\.since\)\[other\];/.test(list));
-  ok('and renders for the other tab alone', /if \(split\.n > 0 \|\| otherNew > 0\) \{/.test(list));
-  ok('says so when this tab has nothing', /Nothing new here since your last visit/.test(list));
-  ok('the link is a button that switches tabs', /el\('button', 'since-other'[\s\S]{0,200}?go\.addEventListener\('click', \(\) => setKind\(other\)\);/.test(list));
-  ok('but only when the other tab has news', /if \(otherNew > 0\) \{[\s\S]{0,80}?since-other/.test(list));
+  // The other tab's news is its own "+N new" marker now (renderTabNews).
+  ok('the list no longer links to the other tab', !/otherNew|since-other/.test(list.replace(/\/\*[\s\S]*?\*\//g, '')));
+  ok('new roles still come first', /const split = splitNewSince\(groups, state\.since, \$\('f-sort'\)\.value \|\| 'newest'\);/.test(list));
   ok('the on-screen count is what engage.js is told', /dataset\.newsince = String\(split\.n\);/.test(list));
 
   const tabs = lift(app, 'function renderTabNews(', '\n}', 'renderTabNews');
@@ -406,7 +407,6 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
   ok('and again on every refresh, through renderTotal', /\n  renderTabNews\(\);\n/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
   ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
   ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
-  ok('and the bar\'s link is a real control', /\.since-other \{[^}]*cursor: pointer/.test(css));
 }
 
 console.log('\n== WhatsApp first — the prompt, the page\'s own links, the email demoted ==');
