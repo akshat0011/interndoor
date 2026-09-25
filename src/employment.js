@@ -205,7 +205,10 @@ const GRADUATE_WORD = /\b(?:graduate|fresher|campus|new[\s-]?grad|trainee)\b/i;
  * name.
  */
 export function entryLevelTitleRefusal(title) {
-  const t = String(title ?? '');
+  // An underscore is a WORD character to \b, so "IN_Senior Associate_…" (how
+  // PwC India titles every role) and "Engineer II_Engineering" hid their grade
+  // from every rule below. Read it as the space it stands for.
+  const t = String(title ?? '').replace(/_/g, ' ');
   if (isSeniorTitle(t)) return 'entry-level: senior title';
   if (MANAGER_TITLE.test(t) && !/\bassociate\s+product\s+manager\b/i.test(t)) return 'entry-level: manager title';
   if (LEVEL_TITLE.test(t) && !NEW_GRAD_PROGRAM.test(t)) return 'entry-level: level II+ title';
