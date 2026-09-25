@@ -7,7 +7,7 @@
  * by a draft of the classifier or is one he named himself.
  */
 import { readFileSync } from 'node:fs';
-import { roleFamily, roleCategory, announceable, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
+import { roleFamily, roleCategory, announceable, settleShelves, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
 import { closableFrom } from '../src/publish.js';
 import { loadConfig } from '../src/config.js';
 import { entryLevelTitleRefusal, admitEntryLevel } from '../src/employment.js';
@@ -99,6 +99,38 @@ check('misc is not', announceable('misc'), false);
 // A jobs.json written before `category` existed must not go silent.
 check('a row with no shelf yet is announced', announceable(undefined), true);
 
+console.log('\n== one role, one shelf ==');
+{
+  // The live US board on 25 Sep: one role's city copies labelled differently.
+  const copy = (id, company, title, category, fp = 'fp1') => ({ id, company, title, category, roleFingerprint: fp });
+  const shelfOfId = (rows) => Object.fromEntries(settleShelves(rows).map((r) => [r.id, r.category]));
+  const northrop = [1, 2, 3, 4, 5].map((i) => copy(`n${i}`, 'Northrop Grumman', '2027 Intern Systems Engineer - CA & ND', 'software'))
+    .concat([6, 7].map((i) => copy(`n${i}`, 'Northrop Grumman', '2027 Intern Systems Engineer - CA & ND', 'misc')));
+  check('a role split software/misc goes to software, every copy', [...new Set(Object.values(shelfOfId(northrop)))], ['software']);
+  check('...even when misc has more copies — a label only ever keeps',
+    Object.values(shelfOfId([copy('a', 'Capital One', 'PhD Applied Research', 'misc'), copy('b', 'Capital One', 'PhD Applied Research', 'misc'), copy('c', 'Capital One', 'PhD Applied Research', 'software')])),
+    ['software', 'software', 'software']);
+  check('hardware beats misc',
+    Object.values(shelfOfId([copy('a', 'NVIDIA', 'PhD Research Intern, Architecture', 'misc'), copy('b', 'NVIDIA', 'PhD Research Intern, Architecture', 'hardware')])),
+    ['hardware', 'hardware']);
+  check('between software and hardware, more copies win',
+    Object.values(shelfOfId([copy('a', 'X', 'T', 'hardware'), copy('b', 'X', 'T', 'hardware'), copy('c', 'X', 'T', 'software')])),
+    ['hardware', 'hardware', 'hardware']);
+  check('a tie goes to software',
+    Object.values(shelfOfId([copy('a', 'X', 'T', 'hardware'), copy('b', 'X', 'T', 'software')])), ['software', 'software']);
+  check('an all-misc role stays misc', Object.values(shelfOfId([copy('a', 'X', 'T', 'misc'), copy('b', 'X', 'T', 'misc')])), ['misc', 'misc']);
+  // The key is the board's own roleKey: a different posting with the same
+  // title is a different role and keeps its own shelf.
+  check('a different posting under the same title is not merged',
+    shelfOfId([copy('a', 'X', 'T', 'misc', 'fp1'), copy('b', 'X', 'T', 'software', 'fp2')]), { a: 'misc', b: 'software' });
+  check('company and title are compared case-insensitively, like the board',
+    Object.values(shelfOfId([copy('a', 'NVIDIA', 'Intern', 'misc'), copy('b', 'Nvidia', 'intern', 'hardware')])), ['hardware', 'hardware']);
+  check('a row with no fingerprint stands alone',
+    shelfOfId([copy('a', 'X', 'T', 'misc', null), copy('b', 'X', 'T', 'software', null)]), { a: 'misc', b: 'software' });
+  const untouched = copy('z', 'X', 'T', 'software');
+  check('a settled row is returned as it was', settleShelves([untouched])[0] === untouched, true);
+}
+
 console.log('\n== nothing is taken off the site for its discipline ==');
 {
   const cfg = { roleFocus: FOCUS, matching: { requireCompanyMatch: false } };
@@ -127,6 +159,8 @@ console.log('\n== the wiring ==');
   const qs = read('bin/queue-server.js');
   check('publish writes the shelf onto every row',
     /category: roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\)\.category,/.test(pub), true);
+  check('publish settles one shelf per role before anything reads it',
+    /const publicJobs = settleShelves\(shelved\)/.test(pub), true);
   check('publish no longer holds anything back for its discipline', /roleFocusVerdict|droppedOffFocus/.test(pub), false);
   check('the scan refuses nothing for its discipline', /refuseBeforeOpen|role not in focus/.test(idx), false);
   check('the scan refuses a manager title before the open',

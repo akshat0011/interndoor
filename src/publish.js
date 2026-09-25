@@ -15,7 +15,7 @@ import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
-import { roleCategory } from './rolefocus.js';
+import { roleCategory, settleShelves } from './rolefocus.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -626,7 +626,7 @@ export async function writeJobsFile(store, cfg) {
     jobs.map(({ row, matchedNow }) => ({ company: row.company || matchedNow || '', logoUrl: row.logo_url })),
   );
 
-  const publicJobs = jobs
+  const shelved = jobs
     /* THE SHELF — Software, Hardware or Misc (src/rolefocus.js, config
        roleFocus). His call, 25 Sep 2026: nothing leaves the board for its
        discipline; it is filed, and the board's sub-tabs read this field. A
@@ -637,7 +637,10 @@ export async function writeJobsFile(store, cfg) {
       ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
       category: roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus).category,
       region,
-    }))
+    }));
+  /* One role, one shelf: city copies labelled differently must not put the
+     same card under two tabs (settleShelves). */
+  const publicJobs = settleShelves(shelved)
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   /* Superseded URLs -> the page that replaced them, per region.

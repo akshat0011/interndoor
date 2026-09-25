@@ -135,5 +135,42 @@ export function roleCategory({ title, roleLabel } = {}, focus) {
   return { category: 'misc', family, from: 'title' };
 }
 
+/**
+ * ONE SHELF PER ROLE. A role advertised in several cities is several rows, and
+ * the enricher labels each copy on its own — Northrop's "2027 Intern Systems
+ * Engineer" read "Systems Integration" in five cities and "Systems
+ * Maintenance" in two — so the label rescue filed one role on two shelves and
+ * the board showed it under Software AND Misc. Measured on the live US board,
+ * 25 Sep 2026: 4 roles split that way.
+ *
+ * Rows are grouped by the key the board collapses cards on (company, title,
+ * the posting's own fingerprint — app.js roleKey), and every copy gets one
+ * shelf: a kept shelf beats Misc, because a label can only ever KEEP a
+ * posting; between Software and Hardware the one more copies name wins, a tie
+ * going to Software. Returns the rows with `category` settled; nothing else is
+ * touched.
+ */
+export function settleShelves(jobs) {
+  const keyOf = (j) => [
+    String(j.company ?? '').toLowerCase().trim(),
+    String(j.title ?? '').toLowerCase().trim(),
+    j.roleFingerprint || `id:${j.id}`,
+  ].join('|');
+  const tally = new Map();
+  for (const j of jobs) {
+    const t = tally.get(keyOf(j)) ?? { software: 0, hardware: 0, misc: 0 };
+    t[j.category] = (t[j.category] ?? 0) + 1;
+    tally.set(keyOf(j), t);
+  }
+  const shelfOf = (t) => {
+    if (!t.software && !t.hardware) return 'misc';
+    return t.hardware > t.software ? 'hardware' : 'software';
+  };
+  return jobs.map((j) => {
+    const settled = shelfOf(tally.get(keyOf(j)));
+    return settled === j.category ? j : { ...j, category: settled };
+  });
+}
+
 /** The shelf a channel may announce. Misc stays on the site and off the channels. */
 export const announceable = (category) => category !== 'misc';
