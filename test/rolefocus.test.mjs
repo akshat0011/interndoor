@@ -1,15 +1,16 @@
 /**
- * The role focus: only the families he chose are published, posted or scraped.
+ * The shelves: every engineering posting is filed Software, Hardware or Misc.
  *
- * His call, 25 Sep 2026, from a menu built off the live board. The cases below
- * are REAL titles from that board — every one of them was either filed wrong by
- * a first draft of the classifier or is the kind of posting the focus exists
- * to remove.
+ * His call, 25 Sep 2026 — first a removal, then, the same afternoon, this:
+ * nothing dropped, nothing unscraped, Misc kept off WhatsApp and the reels.
+ * The titles below are REAL, off the live boards; each was either filed wrong
+ * by a draft of the classifier or is one he named himself.
  */
 import { readFileSync } from 'node:fs';
-import { roleFamily, roleFocusVerdict, refuseBeforeOpen, VAGUE_FAMILIES } from '../src/rolefocus.js';
+import { roleFamily, roleCategory, announceable, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
 import { closableFrom } from '../src/publish.js';
 import { loadConfig } from '../src/config.js';
+import { entryLevelTitleRefusal, admitEntryLevel } from '../src/employment.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -18,84 +19,156 @@ function check(label, actual, expected) {
   else { fail++; console.log(`  FAIL  ${label}\n          got:  ${a}\n          want: ${e}`); }
 }
 
-const KEEP = ['swe', 'ai_ml', 'data_eng', 'backend', 'frontend', 'fullstack', 'mobile', 'devops', 'qa', 'security', 'embedded', 'hardware', 'game_graphics'];
-const keeps = (title, roleLabel = null) => roleFocusVerdict({ title, roleLabel }, KEEP).keep;
+const FOCUS = {
+  software: ['swe', 'ai_ml', 'data_eng', 'backend', 'frontend', 'fullstack', 'mobile', 'devops', 'qa', 'security', 'game_graphics'],
+  hardware: ['hardware', 'embedded'],
+};
+const shelf = (title, roleLabel = null) => roleCategory({ title, roleLabel }, FOCUS).category;
 
 console.log('\n== the live config is his choice ==');
 {
   const cfg = loadConfig();
-  check('exactly the 13 families he kept', [...cfg.roleFocus.keep].sort(), [...KEEP].sort());
+  check('the software shelf', [...cfg.roleFocus.software].sort(), [...FOCUS.software].sort());
+  check('the hardware shelf', [...cfg.roleFocus.hardware].sort(), [...FOCUS.hardware].sort());
+  check('the old keep list is gone', cfg.roleFocus.keep, undefined);
 }
 
-console.log('\n== software stays, whatever else the title names ==');
+console.log('\n== his own examples are software, not misc ==');
+check('Deutsche Bank "Apprentice Hiring for 2026- 2027"', shelf('Apprentice Hiring for 2026- 2027', 'Engineering Support'), 'software');
+// Its labels on the live board are "Policy Review" and "Technical Support" —
+// the case that decided a label may never file an open title under Misc on its
+// own say-so except for core engineering.
+check('Wells Fargo "2027 Technology Program Intern" labelled Policy Review', shelf('2027 Technology Program Intern', 'Policy Review'), 'software');
+check('...and labelled Technical Support', shelf('2027 Technology Program Intern', 'Technical Support'), 'software');
+check('Qualcomm "Interim Engineering Intern_Systems- 2026"', shelf('Interim Engineering Intern_Systems- 2026', 'Systems Intern'), 'software');
+check('"Systems Intern"', shelf('Systems Intern'), 'software');
+check('a title naming nothing, with no label', shelf('Graduate Engineer Trainee'), 'software');
+check('the open families are exactly these', [...OPEN_FAMILIES].sort(), ['generic', 'other', 'systems']);
+
+console.log('\n== software ==');
 check('Google\'s networking PhD SWE role is software, not IT', roleFamily('Software Engineer, PhD, Early Career, Networking, 2026 Start'), 'swe');
 check('a COBOL/mainframe software engineer is software', roleFamily('Specialist, Software Engineer - COBOL/Mainframe (Enterprise)'), 'swe');
-check('SDE I', keeps('Software Development Engineer I'), true);
-check('a bare developer', keeps('Developer II - Software Engineering'), true);
+check('SDE I', shelf('Software Development Engineer I'), 'software');
 check('Test Engineer is QA', roleFamily('Test Engineer'), 'qa');
 check('SDET is QA, not generic software', roleFamily('Software Engineer II (Software Engineer in Test)'), 'qa');
 check('AI QA is QA, not an AI-training gig', roleFamily('AI Quality Assurance Intern'), 'qa');
 check('Google\'s UX engineer is front-end', roleFamily('User Experience Engineer Intern, BS/MS, Summer 2027'), 'frontend');
-check('a GPU verification engineer is hardware', roleFamily('GPU Core Pipeline IP Verification Engineer'), 'hardware');
-check('embedded', keeps('Embedded Software Intern'), true);
-check('data', keeps('Data Engineer-Data Platforms-Azure'), true);
-check('ML', keeps('Machine Learning Engineer, 2027 Graduate U.S.'), true);
-check('cloud', keeps('Cloud Operations Analyst'), true);
-check('security', keeps('Cybersecurity Developer'), true);
+check('a data engineer', shelf('Data Engineer-Data Platforms-Azure'), 'software');
+check('a data analyst stays with data engineering, the family he kept', shelf('Data Analyst Intern'), 'software');
+check('Qualcomm\'s _SW suffix', shelf('Interim Engineering Intern_2027_SW'), 'software');
+check('games are software', shelf('Gameplay Programmer Intern'), 'software');
 
-console.log('\n== what he dropped comes off ==');
-check('Turing\'s coding-expert gigs', keeps('Scientific Coding Expert - Physics and Python'), false);
-check('mechanical', keeps('Mechanical Engineering Intern'), false);
-check('Salesforce developer', keeps('Salesforce Developer'), false);
-check('UX design', keeps('UX Design Intern'), false);
-check('quant research', keeps('Quantitative Researcher (2027 Graduate)'), false);
-check('service desk', keeps('Service Desk Analyst'), false);
-check('robotics', keeps('Intern - Mechatronics'), false);
-check('aerospace systems', keeps('Systems Engineering Summer Intern- Onsite'), false);
+console.log('\n== hardware ==');
+check('a GPU verification engineer', roleFamily('GPU Core Pipeline IP Verification Engineer'), 'hardware');
+check('embedded is hardware', shelf('Embedded Software Intern'), 'hardware');
+check('Qualcomm\'s _HW suffix', shelf('Interim Engineering Intern_2027_HW'), 'hardware');
+check('electronics is hardware', shelf('Electronics Engineer - Intern'), 'hardware');
+check('an open title the posting calls chip work', shelf('Associate Engineer', 'Semiconductor Design'), 'hardware');
 
-console.log('\n== a vague title is judged on the posting\'s own label ==');
-check('"Intern" that the posting says is software stays', keeps('Intern', 'Software Engineering'), true);
-check('"Engineering Intern" that is mechanical goes', keeps('Engineering Intern', 'Mechanical Design'), false);
-check('an IT title the posting calls front-end stays', keeps('Associate IT Engineer', 'Frontend Development'), true);
-check('a vague title with no label goes', keeps('Graduate Engineer Trainee', null), false);
-// A label can only ever KEEP a posting. A title that decides is not overruled.
-check('a label cannot keep a title that decides', keeps('Salesforce Developer', 'Software Development'), false);
-check('a label cannot remove a software title', keeps('Software Engineer Intern', 'Mechanical Design'), true);
-check('the vague families are exactly the ones whose titles do not settle it',
-  [...VAGUE_FAMILIES].sort(), ['core_eng', 'generic', 'it_support', 'other', 'product', 'research', 'robotics', 'systems']);
+console.log('\n== misc ==');
+// Amgen's Tableau dashboards for sales reps, which he asked about on the live
+// board: "this is not tech or software is it?"
+check('Amgen\'s "Associate Field Reporting"', shelf('Associate Field Reporting', 'Dashboard Development'), 'misc');
+check('a Power BI developer is reporting', shelf('Power BI', 'Power BI Developer'), 'misc');
+check('Turing\'s coding-expert gigs', shelf('Scientific Coding Expert - Physics and Python'), 'misc');
+check('mechanical', shelf('Mechanical Engineering Intern'), 'misc');
+check('Salesforce developer', shelf('Salesforce Developer'), 'misc');
+check('UX design', shelf('UX Design Intern'), 'misc');
+check('quant research', shelf('Quantitative Researcher (2027 Graduate)'), 'misc');
+check('service desk', shelf('Service Desk Analyst'), 'misc');
+check('mechatronics', shelf('Intern - Mechatronics'), 'misc');
+check('an open title the posting calls mechanical', shelf('Engineering Intern', 'Mechanical Design'), 'misc');
 
-console.log('\n== before an open: refuse on the title, never guess ==');
-check('a dropped family is refused before any open', refuseBeforeOpen('Mechanical Engineering Intern', KEEP), 'core_eng');
-check('so is a vague NAMED dropped family — every open is a page load', refuseBeforeOpen('Systems Engineering Intern', KEEP), 'systems');
-check('a kept family goes through', refuseBeforeOpen('Software Engineer Intern', KEEP), null);
-check('a title naming nothing is opened and judged at publish', refuseBeforeOpen('Intern', KEEP), null);
-check('...and so is an unclassifiable one', refuseBeforeOpen('Executive 2 ( 83002037 )', KEEP), null);
+console.log('\n== a label rescues a loose title, but not on "testing" or "analysis" ==');
+check('an IT title the posting calls front-end', shelf('Associate IT Engineer', 'Frontend Development'), 'software');
+check('a reporting title the posting calls software', shelf('Data Management & Reporting Intern', 'Software Development'), 'software');
+check('"Propulsion Testing" is not QA', shelf('Intern - Propulsion (P07344)', 'Propulsion Testing'), 'misc');
+check('"Quality Data Analysis" is not data engineering', shelf('Intern - Kite Development - Tech Ops (Quality)', 'Quality Data Analysis'), 'misc');
+check('a label cannot move a title that names a kept family', shelf('Software Engineer Intern', 'Mechanical Design'), 'software');
+check('a label cannot rescue a title that names a non-loose misc family', shelf('Salesforce Developer', 'Software Development'), 'misc');
+check('the rescuable families', [...RESCUABLE_FAMILIES].sort(), ['analytics', 'core_eng', 'it_support', 'product', 'research', 'robotics']);
 
-console.log('\n== absent config changes nothing ==');
-check('no keep list keeps everything', roleFocusVerdict({ title: 'Mechanical Engineering Intern' }, undefined).keep, true);
-// An EMPTY list is not "keep nothing" — that would wipe every board.
-check('an empty keep list keeps everything too', roleFocusVerdict({ title: 'Mechanical Engineering Intern' }, []).keep, true);
-check('and refuses nothing before an open', refuseBeforeOpen('Mechanical Engineering Intern', []), null);
+console.log('\n== absent config files everything under software ==');
+check('no focus', roleCategory({ title: 'Mechanical Engineering Intern' }, undefined).category, 'software');
+check('an empty focus', roleCategory({ title: 'Mechanical Engineering Intern' }, { software: [], hardware: [] }).category, 'software');
 
-console.log('\n== a removed posting\'s page becomes a stub, not a 404 ==');
+console.log('\n== only misc is kept off the channels ==');
+check('software is announced', announceable('software'), true);
+check('hardware is announced', announceable('hardware'), true);
+check('misc is not', announceable('misc'), false);
+// A jobs.json written before `category` existed must not go silent.
+check('a row with no shelf yet is announced', announceable(undefined), true);
+
+console.log('\n== nothing is taken off the site for its discipline ==');
 {
-  const cfg = { roleFocus: { keep: KEEP }, matching: { requireCompanyMatch: false } };
+  const cfg = { roleFocus: FOCUS, matching: { requireCompanyMatch: false } };
   const row = (id, title, extra = {}) => ({ row: { job_id: id, title, company: 'Acme', is_tech: 1, closed_at: null, role_label: null, ...extra }, matchedNow: 'Acme', region: 'US' });
   const out = closableFrom([row('1', 'Mechanical Engineering Intern'), row('2', 'Software Engineer Intern')], cfg, new Set(['US']));
-  check('off-focus row is closable', out.map((r) => r.id), ['1']);
-  check('without a focus it is not', closableFrom([row('1', 'Mechanical Engineering Intern')], { matching: {} }, new Set(['US'])).length, 0);
+  check('a misc row is not turned into a closed-role stub', out.map((r) => r.id), []);
+  check('a closed one still is', closableFrom([row('3', 'Mechanical Engineering Intern', { closed_at: 1 })], cfg, new Set(['US'])).map((r) => r.id), ['3']);
 }
+
+console.log('\n== a manager title is not an entry-level job ==');
+check('Amgen\'s manager role', entryLevelTitleRefusal('Manager, Agentic AI Business Solutions, Neural Nexus'), 'entry-level: manager title');
+check('an Indian IT "Assistant Manager"', entryLevelTitleRefusal('Assistant Manager - Data Engineering'), 'entry-level: manager title');
+check('a senior title still says senior', entryLevelTitleRefusal('Senior Software Engineer'), 'entry-level: senior title');
+check('an associate product manager is a graduate role', entryLevelTitleRefusal('Associate Product Manager'), null);
+check('a software engineer passes', entryLevelTitleRefusal('Software Engineer'), null);
+check('admitEntryLevel refuses it after the open too',
+  admitEntryLevel({ title: 'Manager, Site Reliability Engineer - Data Platforms', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason,
+  'entry-level: manager title');
 
 console.log('\n== the wiring ==');
 {
-  const pub = readFileSync(new URL('../src/publish.js', import.meta.url), 'utf8');
-  const idx = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
-  check('the live board filters on the focus',
-    /\.filter\(\(\{ row \}\) => \{\s*const v = roleFocusVerdict\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\?\.keep\);\s*if \(v\.keep\) return true;\s*droppedOffFocus\+\+;/.test(pub), true);
-  check('and says how many it held back', /Held back \$\{droppedOffFocus\} posting/.test(pub), true);
-  check('the scan refuses before the open, on the card\'s title',
-    /const offFocus = refuseBeforeOpen\(card\.title, cfg\.roleFocus\?\.keep\);\s*if \(offFocus\) \{[\s\S]{0,200}?continue;/.test(idx), true);
-  check('...before the posting is ever opened', idx.indexOf('refuseBeforeOpen(card.title') < idx.indexOf('li.openAndExtract(page, card, cfg)'), true);
+  const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+  const pub = read('src/publish.js');
+  const idx = read('src/index.js');
+  const wa = read('src/whatsapp.js');
+  const qs = read('bin/queue-server.js');
+  check('publish writes the shelf onto every row',
+    /category: roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\)\.category,/.test(pub), true);
+  check('publish no longer holds anything back for its discipline', /roleFocusVerdict|droppedOffFocus/.test(pub), false);
+  check('the scan refuses nothing for its discipline', /refuseBeforeOpen|role not in focus/.test(idx), false);
+  check('the scan refuses a manager title before the open',
+    /const titleRefusal = entryLevelTitleRefusal\(card\.title\);\s*if \(titleRefusal\) \{/.test(idx), true);
+  check('WhatsApp checks the shelf before it queues a listing',
+    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*mine\.push\(/.test(wa), true);
+  check('...for the backlog and for new rows alike',
+    /for \(const id of readPending\(store, code\)\) take\(indexFor\(code\)\.get\(String\(id\)\), code, String\(id\)\);/.test(wa)
+      && /const id = String\(row\.job_id \?\? row\.id\);\s*take\(indexFor\(code\)\.get\(id\), code, id\);/.test(wa), true);
+  check('the reel sweep checks the shelf', /&& j\.isTech !== false\s*&& announceable\(j\.category\)/.test(qs), true);
+}
+
+console.log('\n== the board ==');
+{
+  const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
+  const lift = (from, until) => {
+    const start = app.indexOf(from); const end = app.indexOf(until, start);
+    check(`${from.trim()} was found`, start > 0 && end > start, true);
+    return app.slice(start, end + until.length);
+  };
+  const newSinceByCat = new Function(`const kindOf = (j) => j.employmentType || 'intern'; ${lift('const catOf =', ';')} ${lift('function newSinceByCat(', '\n}')}; return newSinceByCat;`)();
+  const key = (j) => j.title;
+  const rows = [
+    { title: 'A', firstSeenAt: 900, category: 'software' },
+    { title: 'A', firstSeenAt: 950, category: 'software' },   // the same role in a second city
+    { title: 'B', firstSeenAt: 900, category: 'misc' },
+    { title: 'C', firstSeenAt: 900, category: 'hardware', employmentType: 'fulltime' },
+    { title: 'D', firstSeenAt: 100, category: 'hardware' },
+    { title: 'E', firstSeenAt: 900 },                           // written before shelves existed
+  ];
+  check('new roles per shelf, inside the tab, in roles', newSinceByCat(rows, 500, 'intern', key), { software: 2, hardware: 0, misc: 1 });
+  check('the other tab is its own count', newSinceByCat(rows, 500, 'fulltime', key), { software: 0, hardware: 1, misc: 0 });
+  check('a first visit counts nothing', newSinceByCat(rows, null, 'intern', key), { software: 0, hardware: 0, misc: 0 });
+  check('the list is filtered to the shelf', /if \(kindOf\(j\) !== state\.kind\) return false;\s*if \(catOf\(j\) !== state\.cat\) return false;/.test(app), true);
+  check('software is where the board opens', /cat: 'software',/.test(app), true);
+  check('every data load redraws the shelves', /renderTabNews\(\);\s*renderCatSeg\(\);\s*\}/.test(app), true);
+  check('switching tab falls back off an empty shelf',
+    /if \(state\.cat !== 'software' && !catCounts\(kind\)\[state\.cat\]\) state\.cat = 'software';/.test(app), true);
+  check('a #job- link opens on its own tab and shelf', /setKind\(kindOf\(target\)\);\s*setCat\(catOf\(target\)\);\s*selectJob\(target\.id\);/.test(app), true);
+  check('the resume ranking counts only the shelf on screen', /kindOf\(job\) !== state\.kind \|\| catOf\(job\) !== state\.cat/.test(app) && /covCache\.cat === state\.cat/.test(app), true);
+  check('the shelf control has its own style', /\.seg-cat \.seg-b \{/.test(css), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

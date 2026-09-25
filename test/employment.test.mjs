@@ -198,8 +198,9 @@ console.log('\n== the entry-level search is wired into the scan, in the right or
   const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8');
   const li = readFileSync(join(ROOT, 'src', 'linkedin.js'), 'utf8');
   check('the switch is the search\'s employment key', /const entrySearch = search\.employment === 'fulltime';/.test(idx), true);
+  // entryLevelTitleRefusal covers a senior title and, since 25 Sep, a manager one.
   check('a senior title is refused BEFORE the click, only on the entry search',
-    /if \(entrySearch && !titleSaysIntern\) \{[\s\S]{0,200}?isSeniorTitle\(card\.title\)[\s\S]{0,300}?continue;/.test(idx), true);
+    /if \(entrySearch && !titleSaysIntern\) \{[\s\S]{0,200}?entryLevelTitleRefusal\(card\.title\)[\s\S]{0,300}?continue;/.test(idx), true);
   check('the pane gate hands admitEntryLevel the seniority chip and the prose',
     /admitEntryLevel\(\{[\s\S]{0,400}?seniorityTag: detail\.seniorityTag,[\s\S]{0,120}?description: detail\.description,/.test(idx), true);
   /* ORDER: the refusal must come before the row is saved. Index of the gate

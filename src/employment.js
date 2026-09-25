@@ -154,6 +154,30 @@ export function experienceFloor(text) {
 /** Below this many demanded years a role is still a fresher role. */
 export const ENTRY_MAX_YEARS = 2;
 
+const MANAGER_TITLE = /\bmanager\b/i;
+
+/**
+ * The part of the entry-level gate a TITLE alone can answer — asked before the
+ * open (so it costs the account nothing) and again inside admitEntryLevel.
+ * Returns the refusal, in seen_cards' vocabulary, or null.
+ *
+ * A MANAGER TITLE IS NOT A FRESHER'S JOB, whatever the facet says. Amgen's
+ * "Manager, Agentic AI Business Solutions" reached India's Full-time tab on
+ * 25 Sep 2026 tagged Entry level, and "Assistant Manager" / "Associate Manager"
+ * are three-to-six-year grades in Indian IT. SENIOR leaves `manager` out on
+ * purpose, because the careers-board path meets real graduate titles like
+ * "Associate Product Manager, New Grad" and American Express's "Campus Graduate
+ * Masters Full-Time Manager"; this search has no early-career phrase to lean
+ * on, so here the word refuses — bar the one title that is a graduate role by
+ * name.
+ */
+export function entryLevelTitleRefusal(title) {
+  const t = String(title ?? '');
+  if (isSeniorTitle(t)) return 'entry-level: senior title';
+  if (MANAGER_TITLE.test(t) && !/\bassociate\s+product\s+manager\b/i.test(t)) return 'entry-level: manager title';
+  return null;
+}
+
 /**
  * THE GATE FOR A CARD FOUND BY THE ENTRY-LEVEL SEARCH, which has no intern
  * word to admit it on. LinkedIn's facet already said "Entry level", so the
@@ -161,8 +185,9 @@ export const ENTRY_MAX_YEARS = 2;
  *
  *   - an intern word in the title, or LinkedIn's Internship chip, makes it an
  *     internship — the entry search finding one is fine, and it is filed as one;
- *   - a senior title is refused whatever the facet says (recruiters mark
- *     "Senior Engineer" entry-level often enough to matter);
+ *   - a senior or manager title is refused whatever the facet says (recruiters
+ *     mark "Senior Engineer" entry-level often enough to matter;
+ *     entryLevelTitleRefusal);
  *   - LinkedIn's employment chip must say Full-time — Contract, Part-time and
  *     Temporary are not the role a fresher is looking for; a missing chip is
  *     refused for the same reason the intern path refuses it: the card got in
@@ -176,7 +201,8 @@ export const ENTRY_MAX_YEARS = 2;
 export function admitEntryLevel({ title, employmentTag, seniorityTag, description, isIntern }) {
   const t = String(title ?? '');
   if ((typeof isIntern === 'function' && isIntern(t)) || isInternshipTag(employmentTag)) return { kind: INTERN, reason: null };
-  if (isSeniorTitle(t)) return { kind: null, reason: 'entry-level: senior title' };
+  const byTitle = entryLevelTitleRefusal(t);
+  if (byTitle) return { kind: null, reason: byTitle };
   if (!/^full[-\s]?time$/i.test(String(employmentTag ?? '').trim())) {
     return { kind: null, reason: `entry-level: LinkedIn tags it ${employmentTag ?? 'nothing'}` };
   }

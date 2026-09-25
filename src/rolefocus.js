@@ -1,31 +1,36 @@
 /**
- * THE ROLE FOCUS — which kinds of role the site carries at all.
+ * THE ROLE CATEGORY — software, hardware or misc.
  *
- * His call, 25 Sep 2026: "our main focus is on software based roles, ml, ai,
- * qa, devops etc … not these niche roles, they are just polluting the
- * website". He picked the categories to keep from a menu built off the live
- * board (config `roleFocus.keep`); everything else comes off the website, and
- * so out of every channel, digest and reel (they only carry what is
- * published), and is refused BEFORE it is opened, so it costs the LinkedIn
- * account nothing.
+ * His call, 25 Sep 2026, in two steps. First (morning): "our main focus is on
+ * software based roles, ml, ai, qa, devops etc … not these niche roles, they
+ * are just polluting the website" — he picked the families to keep from a menu
+ * built off the live board, and everything else came off the site. Then, the
+ * same afternoon, reversed into this: NOTHING is dropped and nothing stops
+ * being scraped. Every engineering posting stays on the site, filed under
+ * Software, Hardware or Misc on both the Internships and Full-time tabs — and
+ * a Misc posting is not announced on the WhatsApp channel or made into a reel.
+ * (config `roleFocus.software` / `roleFocus.hardware`; anything else is misc.)
  *
  * This sits ON TOP OF the engineering classifier (is_tech in roles.js), not
- * instead of it: that decides "is this engineering", this decides "is it an
- * engineering role this site is FOR". It is deliberately coarse — broad
- * families, read off the title first.
+ * instead of it: that decides "is this engineering at all", this decides which
+ * shelf it goes on. It is deliberately coarse — broad families, read off the
+ * title first.
  *
  * TWO READINGS, AND THE ORDER MATTERS:
  *  - the TITLE decides when it names a discipline. "Mechanical Engineering
  *    Intern" and "Salesforce Developer" are what they say.
- *  - a VAGUE title — "Engineering Intern", "Systems Engineer", "Research
- *    Engineer", a consultant title, or one naming nothing — can be RESCUED by
- *    the posting's own role label (roles written by the enricher after reading
- *    the description: "Software Development", "Data Analysis"). A label can
- *    only ever keep a posting, never remove one.
- *
- * Before an open there is no label yet, and every open is a page load on the
- * LinkedIn account, so the scan refuses any title naming a family outside the
- * focus; only a title naming no discipline at all is opened (refuseBeforeOpen).
+ *  - a title that names NO discipline — "Apprentice Hiring for 2026-2027",
+ *    "2027 Technology Program Intern", "Interim Engineering Intern_Systems",
+ *    "Systems Intern" — is SOFTWARE. His words, with those four as the
+ *    examples: "will be kept in software, not misc". The posting's own role
+ *    label (written by the enricher) may move it to Hardware, or to Misc when
+ *    it names a core-engineering discipline ("Mechanical Design"), and nothing
+ *    else: Wells Fargo's technology programme carries the labels "Policy
+ *    Review" and "Technical Support", and a label that noisy must not file a
+ *    bank's technology intake under Misc.
+ *  - a title naming a family outside both sets but loosely (research, IT,
+ *    consulting, robotics, core engineering) is Misc unless its label names a
+ *    kept family — "Associate IT Engineer" whose posting is front-end work.
  *
  * Pure: no config, store or I/O here. The families are matched first to last,
  * so a specific family must sit above a general one ("Software Engineer in
@@ -42,9 +47,16 @@ export const ROLE_FAMILIES = [
   // A title that SAYS software engineer/developer is software, whatever else it
   // names — Google's "Software Engineer, PhD … Networking" and Nationwide's
   // "Software Engineer - COBOL/Mainframe" were filed as IT and platform roles.
-  ['swe', 'Software engineering', /software (engineer|developer|development|engineering)|\bsde\b|\bswe\b/],
+  ['swe', 'Software engineering', /software (engineer|developer|development|engineering)|\bsde\b|\bswe\b|(?:\b|_)sw\b/],
   ['it_support', 'IT support / networking', /application support|production support|it support|help ?desk|service desk|technical support|desktop support|\bdesktop\b|network|system administrator|sysadmin|data cent(er|re)|information technology|\bit (intern|analyst|engineer|operations|trainee)|it operations/],
-  ['data_eng', 'Data engineering / analytics', /data engineer|data platform|\betl\b|big data|analytics engineer|\bbi\b|business intelligence|data analy|analytics|power bi|tableau|databricks|snowflake|data warehouse|visuali[sz]ation|dashboard|\bdata\b/],
+  /* REPORTING IS NOT SOFTWARE. Amgen's "Associate Field Reporting" builds
+     Tableau dashboards for sales reps, and he asked the obvious question of it
+     on the live board: "this is not tech or software is it?". So dashboards,
+     BI tools and reporting sit here, ABOVE data engineering, which keeps the
+     pipelines, platforms and warehouses. A bare "data analyst" stays in data
+     engineering / analytics, the family he kept. */
+  ['analytics', 'Reporting / BI / dashboards', /business intelligence|\bbi\b|power bi|tableau|dashboard|reporting|\bmis\b|visuali[sz]ation/],
+  ['data_eng', 'Data engineering / analytics', /data engineer|data platform|\betl\b|big data|analytics engineer|data analy|analytics|databricks|snowflake|data warehouse|\bdata\b/],
   ['fullstack', 'Full-stack', /full ?-?stack|\bmern\b|mean stack/],
   ['frontend', 'Frontend / web', /ux engineer|user experience engineer|front ?-?end|\breact\b|angular|\bvue\b|web develop|ui developer|javascript|typescript/],
   ['mobile', 'Mobile', /android|\bios\b|mobile|flutter|react native|\bswift\b|kotlin/],
@@ -53,23 +65,34 @@ export const ROLE_FAMILIES = [
   ['enterprise', 'SAP / Salesforce / ServiceNow', /\bsap\b|salesforce|servicenow|oracle|workday|dynamics 365|\bcrm\b|\berp\b|guidewire|\bpega\b|appian|mulesoft|sitecore|\baem\b|power platform|cobol|mainframe/],
   ['game_graphics', 'Games / graphics / 3D', /\bgame|graphics|\bunity\b|unreal|\bvr\b|\bar\/vr|\b3d\b|rendering|animation|level design/],
   ['swe', 'Software engineering', /software|\bsde\b|\bswe\b|developer|programmer|programming|coding|compiler|computer science|applications? engineer|applications? development|\bdevt\b/],
-  ['hardware', 'Hardware / VLSI / RF', /\basic\b|vlsi|\brtl\b|fpga|silicon|design verification|digital verification|physical design|analog|mixed.signal|hardware|semiconductor|circuit|\bpcb\b|\bdft\b|\bic\b|\bchip|\brf\b|antenna|dram|photolitho|\byield\b|characteri[sz]ation|process integration|wafer|validation|\bsoc\b|\bverification\b|\bgpu\b|baseband|\bdsp\b|signal processing|modem/],
+  ['hardware', 'Hardware / VLSI / RF', /\basic\b|vlsi|\brtl\b|fpga|silicon|design verification|digital verification|physical design|analog|mixed.signal|hardware|(?:\b|_)hw\b|electronic|semiconductor|circuit|\bpcb\b|\bdft\b|\bic\b|\bchip|\brf\b|antenna|dram|photolitho|\byield\b|characteri[sz]ation|process integration|wafer|validation|\bsoc\b|\bverification\b|\bgpu\b|baseband|\bdsp\b|signal processing|modem/],
   ['robotics', 'Robotics / controls', /robot|autonom|mechatronic|\bslam\b|controls engineer|control systems|\bcontrols\b/],
   ['ux', 'UX / product design', /\bux\b|user experience|ui\/ux|interaction design|product design/],
   ['research', 'Research / quant / PhD', /research|\bquant|scientist|\bphd\b|ph\.d|r&d/],
   ['product', 'Product / consulting', /product manager|program manager|product management|project manager|solution|consultant|consulting|business analyst|technical account|pre-?sales|sales engineer|implementation|project controls/],
   ['systems', 'Systems engineering', /systems? engineer|systems engineering|systems integration/],
-  ['core_eng', 'Core engineering (mech / elec / civil / mfg)', /mechanical|electrical|electronic|civil|structural|manufactur|process|chemical|aerospace|industrial|power|energy|nuclear|reliability|maintenance|\bfield\b|service engineer|production|supply chain|quality|hydraulic|building|hvac|thermal|material|\bgis\b|environmental|water|transport|construction|plant|mining|metallurg|biomedical|medical|\bgas\b|packaging|\bcad\b|design engineer|equipment|optical|photonic|avionic|propulsion|flight/],
+  ['core_eng', 'Core engineering (mech / elec / civil / mfg)', /mechanical|electrical|civil|structural|manufactur|process|chemical|aerospace|industrial|power|energy|nuclear|reliability|maintenance|\bfield\b|service engineer|production|supply chain|quality|hydraulic|building|hvac|thermal|material|\bgis\b|environmental|water|transport|construction|plant|mining|metallurg|biomedical|medical|\bgas\b|packaging|\bcad\b|design engineer|equipment|optical|photonic|avionic|propulsion|flight/],
 ];
 
 export const ROLE_LABELS = Object.fromEntries([
   ...ROLE_FAMILIES.map(([key, label]) => [key, label]),
-  ['generic', 'Generic engineering intern (no discipline named)'],
+  ['generic', 'Generic engineering role (no discipline named)'],
   ['other', 'Unclassified'],
 ]);
 
-/** Families whose title does not settle it: the posting's own label may rescue it. */
-export const VAGUE_FAMILIES = new Set(['research', 'product', 'systems', 'core_eng', 'it_support', 'robotics', 'generic', 'other']);
+export const CATEGORIES = ['software', 'hardware', 'misc'];
+
+/** Titles that name no discipline: Software unless the label says otherwise. */
+export const OPEN_FAMILIES = new Set(['generic', 'other', 'systems']);
+/** Titles that name a misc family loosely: Misc unless the label rescues them. */
+export const RESCUABLE_FAMILIES = new Set(['research', 'product', 'it_support', 'robotics', 'core_eng', 'analytics']);
+/* A LABEL CANNOT RESCUE ON "TESTING" OR "ANALYSIS". Those two words are in half
+   the labels the enricher writes for non-software work — "Propulsion Testing",
+   "Reliability Testing", "Quality Data Analysis", "Transportation Analytics" —
+   and they read as QA and data engineering. Measured on the live boards before
+   this was added: they were most of what a label rescued out of core
+   engineering. */
+const NO_RESCUE_INTO = new Set(['qa', 'data_eng']);
 
 const GENERIC = /engineer|intern|co-?op|trainee|apprentice|graduate|technolog|technical|associate|analyst/;
 
@@ -81,37 +104,36 @@ export function roleFamily(text) {
 }
 
 /**
- * Is this posting inside the focus?  `keep` is the list of family keys to keep;
- * an absent or empty list keeps everything (a config without `roleFocus` —
- * every test fixture — behaves exactly as before).
+ * Which shelf a posting goes on. `focus` is config `roleFocus`:
+ * { software: [family…], hardware: [family…] }. An absent focus files
+ * everything under software, so a config without it — every test fixture —
+ * shows one shelf and hides nothing.
  *
- * Returns { keep, family, from } — `from` says which reading decided: 'title',
- * or 'label' when a vague title was rescued by the posting's role label.
+ * Returns { category, family, from } — `from` says which reading decided:
+ * 'title', 'label', or 'open' (a title naming no discipline, left in software).
  */
-export function roleFocusVerdict({ title, roleLabel } = {}, keep) {
+export function roleCategory({ title, roleLabel } = {}, focus) {
   const family = roleFamily(title);
-  if (!Array.isArray(keep) || !keep.length) return { keep: true, family, from: 'off' };
-  if (keep.includes(family)) return { keep: true, family, from: 'title' };
-  if (VAGUE_FAMILIES.has(family) && roleLabel) {
-    const byLabel = roleFamily(roleLabel);
-    if (keep.includes(byLabel)) return { keep: true, family: byLabel, from: 'label' };
+  const software = focus?.software ?? [];
+  const hardware = focus?.hardware ?? [];
+  if (!software.length && !hardware.length) return { category: 'software', family, from: 'off' };
+  const shelf = (f) => (software.includes(f) ? 'software' : hardware.includes(f) ? 'hardware' : null);
+
+  const byTitle = shelf(family);
+  if (byTitle) return { category: byTitle, family, from: 'title' };
+
+  const byLabelFamily = roleLabel ? roleFamily(roleLabel) : null;
+  if (OPEN_FAMILIES.has(family)) {
+    if (byLabelFamily && hardware.includes(byLabelFamily)) return { category: 'hardware', family: byLabelFamily, from: 'label' };
+    if (byLabelFamily === 'core_eng') return { category: 'misc', family: byLabelFamily, from: 'label' };
+    return { category: 'software', family, from: 'open' };
   }
-  return { keep: false, family, from: 'title' };
+  if (RESCUABLE_FAMILIES.has(family) && byLabelFamily && !NO_RESCUE_INTO.has(byLabelFamily)) {
+    const rescued = shelf(byLabelFamily);
+    if (rescued) return { category: rescued, family: byLabelFamily, from: 'label' };
+  }
+  return { category: 'misc', family, from: 'title' };
 }
 
-/**
- * Before an open there is only the title, and every open is a page load on the
- * LinkedIn account — the budget he is most careful of. So a title naming ANY
- * family outside the focus is refused here, the vague named ones (research,
- * systems, consulting, core engineering) included; only a title naming no
- * discipline at all ("Intern", "Engineering Co-op") is opened and judged at
- * publish on its label. The label rescue still applies at publish to careers-
- * board rows, which cost the account nothing. Returns the family refused, or
- * null to carry on.
- */
-export function refuseBeforeOpen(title, keep) {
-  if (!Array.isArray(keep) || !keep.length) return null;
-  const family = roleFamily(title);
-  if (keep.includes(family) || family === 'generic' || family === 'other') return null;
-  return family;
-}
+/** The shelf a channel may announce. Misc stays on the site and off the channels. */
+export const announceable = (category) => category !== 'misc';

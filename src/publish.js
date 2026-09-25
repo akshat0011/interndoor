@@ -15,7 +15,7 @@ import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
-import { roleFocusVerdict } from './rolefocus.js';
+import { roleCategory } from './rolefocus.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -215,11 +215,9 @@ function fingerprint(text) {
 export function closableFrom(tracked, cfg, wanted) {
   return (tracked ?? [])
     /* Either the classifier/human dropped it (is_tech !== 1), OR it is a live
-       tech row whose application has closed (closed_at set), OR its role is
-       outside the focus he chose (src/rolefocus.js). All three should
+       tech row whose application has closed (closed_at set). Both should
        redirect a dead job URL to the employer's hub rather than 404. */
-    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null
-        || !roleFocusVerdict({ title: row.title, roleLabel: row.role_label }, cfg?.roleFocus?.keep).keep)
+    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null)
       && !isBlockedCompany(row.company)
       && (!cfg?.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))
@@ -517,8 +515,6 @@ export async function writeJobsFile(store, cfg) {
   let dropped = 0;
   let droppedForeign = 0;
   let droppedNonTech = 0;
-  let droppedOffFocus = 0;
-  const offFocusByFamily = {};
   let droppedClosed = 0;
   let droppedDeadline = 0;
   const droppedByRegion = {};
@@ -594,19 +590,6 @@ export async function writeJobsFile(store, cfg) {
       droppedNonTech++;
       return false;
     })
-    /* THE ROLE FOCUS — his call, 25 Sep 2026 (src/rolefocus.js, config
-       roleFocus.keep). Engineering and in-focus are different questions:
-       is_tech answers the first. A posting outside the focus leaves the board,
-       every channel, reel and digest with it (they carry only what is
-       published), and its page becomes a closed-role stub (closableFrom). The
-       hub record is left alone, so no employer page is deleted. */
-    .filter(({ row }) => {
-      const v = roleFocusVerdict({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus?.keep);
-      if (v.keep) return true;
-      droppedOffFocus++;
-      offFocusByFamily[v.family] = (offFocusByFamily[v.family] ?? 0) + 1;
-      return false;
-    })
     /* A CLOSED posting is off the board but not gone: its URL becomes a
        closed-role stub (closableFrom picks it up) and it stays in the hub's
        record (the history projection keeps is_tech=1 rows, and closing does
@@ -644,7 +627,17 @@ export async function writeJobsFile(store, cfg) {
   );
 
   const publicJobs = jobs
-    .map(({ row, matchedNow, region }) => ({ ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }), region }))
+    /* THE SHELF — Software, Hardware or Misc (src/rolefocus.js, config
+       roleFocus). His call, 25 Sep 2026: nothing leaves the board for its
+       discipline; it is filed, and the board's sub-tabs read this field. A
+       Misc posting is still a live page, still in every sitemap and feed — it
+       is only kept off the WhatsApp channel and the reels, which read it here
+       rather than re-deriving it. */
+    .map(({ row, matchedNow, region }) => ({
+      ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
+      category: roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus).category,
+      region,
+    }))
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   /* Superseded URLs -> the page that replaced them, per region.
@@ -684,10 +677,6 @@ export async function writeJobsFile(store, cfg) {
   }
   if (droppedDeadline) {
     log.info(`Held back ${droppedDeadline} posting${droppedDeadline === 1 ? '' : 's'} whose stated application deadline has passed — page redirected to the hub, still in the record.`);
-  }
-  if (droppedOffFocus) {
-    const top = Object.entries(offFocusByFamily).sort((a, b) => b[1] - a[1]).map(([f, n]) => `${f} ${n}`).join(' · ');
-    log.info(`Held back ${droppedOffFocus} posting${droppedOffFocus === 1 ? '' : 's'} outside the role focus (${top}).`);
   }
   if (droppedNonTech) {
     log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);
@@ -815,6 +804,9 @@ export async function writeJobsFile(store, cfg) {
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;
+  const shelves = {};
+  for (const j of publicJobs) shelves[j.category] = (shelves[j.category] ?? 0) + 1;
+  log.info(`Shelves: software ${shelves.software ?? 0} · hardware ${shelves.hardware ?? 0} · misc ${shelves.misc ?? 0} (misc stays on the site, off WhatsApp and the reels).`);
   return {
     count: publicJobs.length, techCount, withLogo, logoBytes: logoDirSize(), pages, written,
     path: written[0]?.path ?? jobsFileFor(regions[0]),

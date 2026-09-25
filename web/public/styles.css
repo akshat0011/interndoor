@@ -718,6 +718,10 @@ html[data-boot] .boot-part {
   letter-spacing: .02em; color: var(--live); font-variant-numeric: tabular-nums;
 }
 .seg-b[aria-selected="true"] .seg-new { color: var(--live-ink); }
+/* The shelf inside a tab — Software / Hardware / Misc (app.js renderCatSeg).
+   The same control one size down, so it reads as a choice inside Internships /
+   Full-time rather than a rival to it. */
+.seg-cat .seg-b { padding: 7px 12px; font-size: 12.5px; }
 
 /* The role split is gone — the site is engineering-only — so this is now a
    label showing the count, not a control. Keep the segment's shape so the rail

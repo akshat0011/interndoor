@@ -101,6 +101,12 @@ const state = {
   // "New Grad", "Early Career" — which is aimed at the same people but is not
   // an internship and must not be presented as one.
   kind: 'intern',
+  // Which shelf inside the tab: 'software' | 'hardware' | 'misc' (publish
+  // writes `category` on every row — src/rolefocus.js). Software is the
+  // default because it is what the board is for; Misc holds the core
+  // engineering, research, IT and design roles he chose to keep on the site
+  // but not lead with (25 Sep 2026).
+  cat: 'software',
   filtered: [],
   // roleKey -> every posting of that role currently on screen, so the detail
   // pane can list a collapsed card's other cities. Rebuilt by renderList.
@@ -579,6 +585,96 @@ function loadEngage() {
 /** A row written before the intern/full-time split is an internship. */
 const kindOf = (j) => j.employmentType || 'intern';
 
+/* THE SHELVES INSIDE EACH TAB. A jobs.json written before `category` existed
+   files every row under software, so a stale data file shows one shelf and
+   hides nothing — the control simply does not appear until there is a second
+   shelf to choose. */
+const CATS = [['software', 'Software'], ['hardware', 'Hardware'], ['misc', 'Misc']];
+const catOf = (j) => j.category || 'software';
+
+/** New roles per shelf, inside one tab — the same counting rule as the tabs. */
+function newSinceByCat(jobs, since, kind, keyOf = roleKey) {
+  const out = { software: 0, hardware: 0, misc: 0 };
+  if (since == null) return out;
+  const seen = { software: new Set(), hardware: new Set(), misc: new Set() };
+  for (const j of jobs) {
+    if (kindOf(j) !== kind) continue;
+    if (!(Number(j.firstSeenAt ?? j.postedAt ?? 0) > since)) continue;
+    seen[catOf(j)]?.add(keyOf(j));
+  }
+  for (const c of Object.keys(out)) out[c] = seen[c].size;
+  return out;
+}
+
+/** Roles per shelf inside one tab, counted in roles like every other badge. */
+function catCounts(kind) {
+  const seen = { software: new Set(), hardware: new Set(), misc: new Set() };
+  for (const j of state.jobs) if (kindOf(j) === kind) seen[catOf(j)]?.add(roleKey(j));
+  return { software: seen.software.size, hardware: seen.hardware.size, misc: seen.misc.size };
+}
+
+/**
+ * The shelf control. Made HERE rather than shipped in index.html, for the
+ * reason the "+N new" markers are: the template is the published board, and a
+ * control that needs this script to mean anything should not exist without it.
+ * Idempotent — renderTotal calls it on every data load.
+ */
+function renderCatSeg() {
+  let seg = $('seg-cat');
+  if (!seg) {
+    const kindSeg = $('seg-kind');
+    if (!kindSeg) return;
+    seg = document.createElement('div');
+    seg.className = 'seg seg-cat';
+    seg.id = 'seg-cat';
+    seg.setAttribute('role', 'tablist');
+    seg.setAttribute('aria-label', 'Discipline');
+    for (const [cat, label] of CATS) {
+      const b = document.createElement('button');
+      b.className = 'seg-b';
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.dataset.cat = cat;
+      if (cat === 'misc') b.title = 'Core engineering, research, IT, reporting, design and other roles';
+      b.append(label, ' ');
+      const n = document.createElement('b');
+      b.append(n);
+      b.addEventListener('click', () => setCat(cat));
+      seg.append(b);
+    }
+    kindSeg.after(seg);
+  }
+  const counts = catCounts(state.kind);
+  const fresh = newSinceByCat(state.jobs, state.since, state.kind);
+  for (const b of seg.querySelectorAll('.seg-b')) {
+    const cat = b.dataset.cat;
+    b.querySelector('b').textContent = counts[cat] ?? 0;
+    b.setAttribute('aria-selected', String(cat === state.cat));
+    // An empty shelf is not offered — unless the reader is standing on it.
+    b.hidden = !counts[cat] && cat !== state.cat;
+    let mark = b.querySelector('.seg-new');
+    if (!mark) {
+      mark = document.createElement('i');
+      mark.className = 'seg-new';
+      b.append(mark);
+    }
+    const n = fresh[cat] ?? 0;
+    mark.hidden = n === 0;
+    mark.textContent = n ? `+${n} new` : '';
+  }
+  // One shelf is no choice: the control appears once there is a second.
+  seg.hidden = !counts.hardware && !counts.misc;
+}
+
+/** Switch shelves. The kind tab is untouched; the selection is cleared. */
+function setCat(cat) {
+  if (cat === state.cat) return;
+  state.cat = cat;
+  state.selectedId = null;
+  renderCatSeg();
+  applyFilters();
+}
+
 function renderTotal() {
   // Distinct ROLES, not postings, so the tab badge matches the number of cards
   // the reader will actually count in the list below it. Without this, P&G's
@@ -597,6 +693,7 @@ function renderTotal() {
   const legacy = $('n-total');
   if (legacy) legacy.textContent = state.jobs.length;
   renderTabNews();
+  renderCatSeg();
 }
 
 /**
@@ -630,6 +727,10 @@ function setKind(kind) {
   for (const b of document.querySelectorAll('#seg-kind .seg-b')) {
     b.setAttribute('aria-selected', String(b.dataset.kind === kind));
   }
+  // A shelf the new tab does not have falls back to Software rather than
+  // landing the reader on an empty list they did not ask for.
+  if (state.cat !== 'software' && !catCounts(kind)[state.cat]) state.cat = 'software';
+  renderCatSeg();
   state.selectedId = null;
   syncUrl();
   applyFilters();
@@ -792,18 +893,19 @@ function rankCoverage() {
     && covCache.hay === resumeHay
     && covCache.ai === aiScores
     && covCache.kind === state.kind
+    && covCache.cat === state.cat
     && covCache.jobs === state.jobs) return covCache.value;
 
   let shown = 0, silent = 0, unscorable = 0;
   for (const job of state.jobs) {
-    if (kindOf(job) !== state.kind) continue;
+    if (kindOf(job) !== state.kind || catOf(job) !== state.cat) continue;
     const fit = matchFor(job);
     if (!fit) unscorable += 1;
     else if (fit.ai || fit.hit.length) shown += 1;
     else silent += 1;
   }
   const value = { shown, silent, unscorable, total: shown + silent + unscorable };
-  covCache = { hay: resumeHay, ai: aiScores, kind: state.kind, jobs: state.jobs, value };
+  covCache = { hay: resumeHay, ai: aiScores, kind: state.kind, cat: state.cat, jobs: state.jobs, value };
   return value;
 }
 
@@ -841,6 +943,7 @@ function applyFilters() {
 
   const list = state.jobs.filter((j) => {
     if (kindOf(j) !== state.kind) return false;
+    if (catOf(j) !== state.cat) return false;
     if (company && j.company !== company) return false;
     if (location && j.location !== location) return false;
     if (mode && (j.workplaceType ?? '').toLowerCase() !== mode.toLowerCase()) return false;
@@ -2132,7 +2235,7 @@ async function startAiRank() {
   try {
     const pool = state.filtered.length
       ? state.filtered
-      : state.jobs.filter((j) => kindOf(j) === state.kind);
+      : state.jobs.filter((j) => kindOf(j) === state.kind && catOf(j) === state.cat);
     const picked = shortlist(pool, (j) => matchFor(j)?.pct ?? null, RANK_BATCH);
     const scores = await rankWithAI({
       key: getKey(),
@@ -2746,6 +2849,7 @@ async function init() {
     writeVisit(visit.next);
     document.documentElement.dataset.visit = visit.returning ? 'return' : 'new';
     renderTabNews();   // renderTotal ran before `since` was known
+    renderCatSeg();
   }
   applyFilters();
   loadEngage();
@@ -2763,7 +2867,13 @@ async function init() {
      "read the full posting" framing is applied to something nobody asked to
      read. The placeholder is the honest state — nothing is selected, so the
      pane says so. */
-  if (target) selectJob(target.id);
+  /* A link to a role on another tab or shelf brings the reader to that tab and
+     shelf, so the card they were sent is in the list beside its pane. */
+  if (target) {
+    setKind(kindOf(target));
+    setCat(catOf(target));
+    selectJob(target.id);
+  }
 
   setInterval(renderFreshness, 60000);
 
