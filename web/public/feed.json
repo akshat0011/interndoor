@@ -6,6 +6,186 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461120882",
+      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461120882",
+      "title": "Data Engineer-Data Platforms-SnowFlake — IBM",
+      "content_text": "Company: IBM · Location: Pune Division, Maharashtra, India\n• Implement data and ai use cases on snowflake platforms\n• Build and enhance snowflake platforms for client needs\n• Leverage snowflake, data engineering, and cloud computing skills",
+      "date_published": "2026-09-25T14:33:51.086Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-databricks-4470156965",
+      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-databricks-4470156965",
+      "title": "Data Engineer-Data Platforms-Databricks — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Implement data and ai use cases on databricks platform\n• Design data engineering solutions with cloud technologies\n• Collaborate on cloud-based data solutions with stakeholders",
+      "date_published": "2026-09-25T14:32:34.115Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-associate-app-developer-bobj-4368003122",
+      "url": "https://interndoor.com/jobs/ups-associate-app-developer-bobj-4368003122",
+      "title": "Associate App Developer (BOBJ) — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develop and maintain applications for tracking millions of packages daily\n• Work with SAP BOBJ and BI tools like Crystal Reports or Tableau\n• Join a global team shaping customer experiences and business solutions",
+      "date_published": "2026-09-25T14:25:25.097Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/aptiv-expert-engineer-adas-algorithm-and-integration-4472030064",
+      "url": "https://interndoor.com/jobs/aptiv-expert-engineer-adas-algorithm-and-integration-4472030064",
+      "title": "Expert Engineer - ADAS Algorithm & Integration — Aptiv",
+      "content_text": "Company: Aptiv · Location: Bengaluru East, Karnataka, India\n• Develop embedded software for automotive systems using RTOS and communication protocols\n• Collaborate with cross-functional teams on software architecture and project delivery\n• Use tools like DOORS, Git, JIRA, and CANoe for development and compliance\n• Ensure adherence to automotive standards like ASPICE and AUTOSAR",
+      "date_published": "2026-09-25T14:23:49.032Z",
+      "authors": [
+        {
+          "name": "Aptiv"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/aptiv-software-download-ota-developer-4472023321",
+      "url": "https://interndoor.com/jobs/aptiv-software-download-ota-developer-4472023321",
+      "title": "Software Download OTA Developer — Aptiv",
+      "content_text": "Company: Aptiv · Location: Bengaluru East, Karnataka, India\n• Develop embedded software for ECU reprogramming and secure OTA updates\n• Work with UDS/DoIP, CAN/CAN FD, and bootloader configurations\n• Debug timing, memory, and communication issues in real-world scenarios",
+      "date_published": "2026-09-25T14:23:45.919Z",
+      "authors": [
+        {
+          "name": "Aptiv"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-aws-4470156967",
+      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-aws-4470156967",
+      "title": "Data Engineer-Data Platforms-AWS — IBM",
+      "content_text": "Company: IBM · Location: Pune Division, Maharashtra, India\n• Design and build data pipelines using aws emr, glue, kinesis, and redshift\n• Operate batch and real-time data workflows with airflow and dbt on aws\n• Migrate data between aws services using dms and manage data services",
+      "date_published": "2026-09-25T14:20:34.695Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703",
+      "url": "https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703",
+      "title": "SOC Design Verification Assoc Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Verify soc designs using system verilog and uvm\n• Work with verification tools like vcs and synopsys vip\n• Collaborate with architects and pre-silicon teams",
+      "date_published": "2026-09-25T14:18:11.499Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-engineer-4470098990",
+      "url": "https://interndoor.com/jobs/qualcomm-engineer-4470098990",
+      "title": "Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Develop and deploy ML models using PyTorch, TFLite, and ONNX Runtime\n• Write scalable Python code with PEP 8 compliance and version control\n• Collaborate with cross-functional teams on software design and testing",
+      "date_published": "2026-09-25T14:18:11.253Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-engineer-camera-test-4470303948",
+      "url": "https://interndoor.com/jobs/qualcomm-engineer-camera-test-4470303948",
+      "title": "Engineer- Camera Test — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Test camera features, sensors, and image quality\n• C/java/python for test automation\n• Work with internal and external test teams",
+      "date_published": "2026-09-25T14:17:39.990Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ey-application-engineer-4470157786",
+      "url": "https://interndoor.com/jobs/ey-application-engineer-4470157786",
+      "title": "Application Engineer — EY",
+      "content_text": "Company: EY · Location: Kochi, Kerala, India\n• Develop and maintain high-performance enterprise software solutions\n• Lead code reviews and ensure adherence to architectural standards\n• Manage technical deliverables and coordinate with project managers",
+      "date_published": "2026-09-25T14:08:52.253Z",
+      "authors": [
+        {
+          "name": "EY"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ey-application-engineer-4470166579",
+      "url": "https://interndoor.com/jobs/ey-application-engineer-4470166579",
+      "title": "Application Engineer — EY",
+      "content_text": "Company: EY · Location: Gurugram, Haryana, India\n• Develop robust enterprise software and conduct code reviews\n• Manage technical deliverables and ensure quality coding standards\n• Collaborate with leads to implement best practices across projects",
+      "date_published": "2026-09-25T14:08:47.978Z",
+      "authors": [
+        {
+          "name": "EY"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-angular-4435006824",
+      "url": "https://interndoor.com/jobs/infosys-java-angular-4435006824",
+      "title": "Java + Angular — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Analyze business needs, design functional solutions, and build prototypes\n• Work with clients to identify challenges and deliver structured data insights\n• Collaborate on solution alternatives and support product configuration",
+      "date_published": "2026-09-25T14:03:40.655Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/macquarie-group-identity-engineer-4423630845",
+      "url": "https://interndoor.com/jobs/macquarie-group-identity-engineer-4423630845",
+      "title": "Identity Engineer — Macquarie Group",
+      "content_text": "Company: Macquarie Group · Location: Hyderabad, Telangana, India · Duration: 26 weeks\n• Onboard apps to multi-factor authentication and manage conditional access policies\n• Develop automation scripts and generate security reports for authentication platforms\n• Provide tier 2/3 support and on-call rotations for identity infrastructure",
+      "date_published": "2026-09-25T13:59:02.117Z",
+      "authors": [
+        {
+          "name": "Macquarie Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sunstone-assistant-professor-of-computer-science-4470310667",
+      "url": "https://interndoor.com/jobs/sunstone-assistant-professor-of-computer-science-4470310667",
+      "title": "Assistant Professor of Computer Science — Sunstone",
+      "content_text": "Company: Sunstone · Location: Hyderabad, Telangana, India\n• Teach core computer science subjects and conduct coding labs\n• Mentor students on projects and coding practices\n• Develop lesson plans and assessments for btech cse students",
+      "date_published": "2026-09-25T13:54:59.751Z",
+      "authors": [
+        {
+          "name": "Sunstone"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-net-angular-developer-4443188654",
+      "url": "https://interndoor.com/jobs/infosys-net-angular-developer-4443188654",
+      "title": ".Net+Angular Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build responsive ui components using angular v8+\n• .net core and asp.net web api for backend services\n• Collaborate with architects and ui/ux teams on agile projects",
+      "date_published": "2026-09-25T13:52:08.572Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434324210",
       "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434324210",
       "title": "Intermediate Applications Developer- Java, Spring Boot, AMQ, WMQ, SQL Server — UPS",
@@ -62,18 +242,6 @@
       "authors": [
         {
           "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-india-in-senior-associate-governance-grc-managed-services-advisory-gurgaon-4472009081",
-      "url": "https://interndoor.com/jobs/pwc-india-in-senior-associate-governance-grc-managed-services-advisory-gurgaon-4472009081",
-      "title": "IN_Senior Associate_ Governance GRC_Managed Services_Advisory_Gurgaon — PwC India",
-      "content_text": "Company: PwC India · Location: Gurugram, Haryana, India\n• Analyze threats and manage vulnerabilities to protect digital systems\n• Develop policies and frameworks for security governance and compliance\n• Collaborate with teams to align governance with organizational strategy",
-      "date_published": "2026-09-25T13:15:05.934Z",
-      "authors": [
-        {
-          "name": "PwC India"
         }
       ]
     },
@@ -434,174 +602,6 @@
       "authors": [
         {
           "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-data-analyst-power-bi-job-4468126308",
-      "url": "https://interndoor.com/jobs/yash-technologies-data-analyst-power-bi-job-4468126308",
-      "title": "Data Analyst - Power BI Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Pune Division, Maharashtra, India · Duration: 1-2 years\n• Build scalable Power BI dashboards and reports using SQL, Snowflake, and DAX\n• Collaborate with teams to design data models and business logic\n• Work in a client-focused Agile environment with Pharma domain experience preferred",
-      "date_published": "2026-09-25T10:19:39.927Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-ai-engineer-4441090818",
-      "url": "https://interndoor.com/jobs/ust-ai-engineer-4441090818",
-      "title": "AI Engineer — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India · Duration: 3-5 years\n• Build AI agents and multi-agent systems with LangGraph and LangChain\n• Develop REST APIs and event-driven pipelines for real-time AI services\n• Automate testing and releases using Jenkins CI/CD and Git\n• Deploy AI applications in enterprise environments with security best practices",
-      "date_published": "2026-09-25T10:03:06.109Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785",
-      "url": "https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785",
-      "title": "GenAI Data scientist — Tata Consultancy Services",
-      "content_text": "Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India\n• Develop AI agents and chatbots using LangGraph, ADK, and React JS\n• Work with LLMs, RAG, and vector databases for GenAI applications\n• Deploy and optimize models with LangChain, Python, and TypeScript",
-      "date_published": "2026-09-25T09:52:09.082Z",
-      "authors": [
-        {
-          "name": "Tata Consultancy Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-3d-artist-intern-4470304162",
-      "url": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-3d-artist-intern-4470304162",
-      "title": "3D Artist Intern — National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
-      "content_text": "Company: National Technology Centre for Ports, Waterways and Coasts (NTCPWC) · Location: Kanchipuram, Tamil Nadu, India\n• Create and optimize 3D models, textures, and environments for simulations and visualizations\n• Work with Unity developers and designers on real-time 3D projects and digital twins\n• Use Blender, Maya, or similar tools to build assets for VR/AR and GIS applications",
-      "date_published": "2026-09-25T09:45:24.930Z",
-      "authors": [
-        {
-          "name": "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486",
-      "url": "https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486",
-      "title": "Software Engineer, Cloud Site Reliability (SRE) — Icertis",
-      "content_text": "Company: Icertis · Location: Pune Division, Maharashtra, India\n• Troubleshoot and maintain cloud applications using Azure and AKS\n• Collaborate with DevOps and security teams on system improvements\n• Manage cloud environments and ensure compliance with policies",
-      "date_published": "2026-09-25T09:43:26.918Z",
-      "authors": [
-        {
-          "name": "Icertis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/xylem-test-engineer-4462814209",
-      "url": "https://interndoor.com/jobs/xylem-test-engineer-4462814209",
-      "title": "Test Engineer — Xylem",
-      "content_text": "Company: Xylem · Location: Greater Vadodara Area · Duration: 1 to 3 years\n• Write automated tests for web applications using playwright\n• Work with developers to fix bugs and improve product quality\n• Collaborate on test strategies and maintain test documentation",
-      "date_published": "2026-09-25T09:22:59.651Z",
-      "authors": [
-        {
-          "name": "Xylem"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amgen-associate-field-reporting-4470905634",
-      "url": "https://interndoor.com/jobs/amgen-associate-field-reporting-4470905634",
-      "title": "Associate Field Reporting — Amgen",
-      "content_text": "Company: Amgen · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Build and enhance Tableau dashboards for field reps and leaders\n• Support Vision and Gateway reports with agile Jira delivery\n• Validate data quality and manage dashboard releases",
-      "date_published": "2026-09-25T08:59:12.323Z",
-      "authors": [
-        {
-          "name": "Amgen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-digital-twin-and-react-web-development-4471874343",
-      "url": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-digital-twin-and-react-web-development-4471874343",
-      "title": "Software Engineer - Digital Twin & React Web Development — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Bengaluru East, Karnataka, India\n• Develop web apps with Python and ReactJS for digital twin projects\n• Build ETL pipelines and automate data workflows for scalability\n• Collaborate with cross-functional teams on cloud and on-prem systems",
-      "date_published": "2026-09-25T08:34:05.515Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-azure-4470147312",
-      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-azure-4470147312",
-      "title": "Data Engineer-Data Platforms-Azure — IBM",
-      "content_text": "Company: IBM · Location: Hyderabad, Telangana, India\n• Design and build data pipelines using azure synapse analytics, data factory, and data bricks\n• Develop data layer with sql dw, cosmos db, and adls2 for scalable solutions\n• Work on real-time pipelines with event hub and apache airflow for data quality",
-      "date_published": "2026-09-25T08:30:29.500Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4470136460",
-      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4470136460",
-      "title": "Data Engineer-Data Platforms-SnowFlake — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Design and implement data and ai solutions on snowflake platforms\n• Build and enhance snowflake capabilities for client needs\n• Work with cloud technologies and data engineering principles",
-      "date_published": "2026-09-25T08:30:22.429Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/turing-scientific-coding-expert-mathematics-and-python-4470079998",
-      "url": "https://interndoor.com/jobs/turing-scientific-coding-expert-mathematics-and-python-4470079998",
-      "title": "Scientific Coding Expert - Mathematics and Python — Turing",
-      "content_text": "Company: Turing · Location: India\n• Write and implement scientific coding problems in Python with unit tests\n• Review and refine tasks based on AI model feedback and quality rubrics\n• Collaborate in sync calls with global team during overlap hour",
-      "date_published": "2026-09-25T08:23:51.455Z",
-      "authors": [
-        {
-          "name": "Turing"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/aptiv-cybersecurity-developer-4471862935",
-      "url": "https://interndoor.com/jobs/aptiv-cybersecurity-developer-4471862935",
-      "title": "Cybersecurity Developer — Aptiv",
-      "content_text": "Company: Aptiv · Location: Bengaluru East, Karnataka, India\n• Implement secure boot, flashing, diagnostics, and crypto services\n• Use C/C++, RTOS/Linux, and AUTOSAR for embedded systems\n• Work on automotive cybersecurity with quality and traceability",
-      "date_published": "2026-09-25T08:23:34.113Z",
-      "authors": [
-        {
-          "name": "Aptiv"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/turing-scientific-coding-expert-physics-and-python-4470080972",
-      "url": "https://interndoor.com/jobs/turing-scientific-coding-expert-physics-and-python-4470080972",
-      "title": "Scientific Coding Expert - Physics and Python — Turing",
-      "content_text": "Company: Turing · Location: India · Duration: 8 weeks\n• Write and implement scientific coding problems in Python with unit tests\n• Review and refine tasks based on AI model feedback and quality rubrics\n• Collaborate in sync calls with global team during overlap hours",
-      "date_published": "2026-09-25T08:23:30.473Z",
-      "authors": [
-        {
-          "name": "Turing"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/turing-scientific-coding-expert-material-science-and-python-4470085759",
-      "url": "https://interndoor.com/jobs/turing-scientific-coding-expert-material-science-and-python-4470085759",
-      "title": "Scientific Coding Expert - Material science and Python — Turing",
-      "content_text": "Company: Turing · Location: India\n• Write scientific problems with Python solutions and test cases\n• Collaborate on AI training data with QC feedback loops\n• Target high-quality submissions for L1 approval",
-      "date_published": "2026-09-25T08:20:38.304Z",
-      "authors": [
-        {
-          "name": "Turing"
         }
       ]
     }

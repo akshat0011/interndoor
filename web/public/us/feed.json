@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/ibm-quantum-algorithms-theory-intern-2027-4460767195",
+      "url": "https://interndoor.com/us/jobs/ibm-quantum-algorithms-theory-intern-2027-4460767195",
+      "title": "Quantum Algorithms Theory Intern 2027 — IBM",
+      "content_text": "Company: IBM · Location: San Jose, CA\n• Design quantum algorithms for fault-tolerant systems, focusing on speed-ups and theoretical contributions\n• Use Python and Qiskit to compare quantum and classical methods in computational complexity\n• Collaborate with researchers on quantum simulation and error correction for real-world applications",
+      "date_published": "2026-09-25T14:37:31.853Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/cisco-security-consulting-engineer-i-intern-united-states-4463112964",
+      "url": "https://interndoor.com/us/jobs/cisco-security-consulting-engineer-i-intern-united-states-4463112964",
+      "title": "Security Consulting Engineer I (Intern) - United States — Cisco",
+      "content_text": "Company: Cisco · Location: Durham, NC\n• Analyze customer configurations and suggest improvements to align with business goals\n• Develop automation tools using Java/Python/C++ and Ansible/Chef/Terraform\n• Collaborate with mentors on designing security policies and cloud solutions",
+      "date_published": "2026-09-25T14:24:55.690Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mckesson-software-development-intern-summer-2027-4463127922",
+      "url": "https://interndoor.com/us/jobs/mckesson-software-development-intern-summer-2027-4463127922",
+      "title": "Software Development Intern - Summer 2027 — McKesson",
+      "content_text": "Company: McKesson · Location: Irving, TX · Duration: 10 weeks\n• Write, test, and debug code in C#, Java, or Python\n• Collaborate with senior developers on technical design\n• Participate in code reviews and team meetings",
+      "date_published": "2026-09-25T14:18:06.691Z",
+      "authors": [
+        {
+          "name": "McKesson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/ibm-co-op-data-engineer-data-services-2027-4450853270",
+      "url": "https://interndoor.com/us/jobs/ibm-co-op-data-engineer-data-services-2027-4450853270",
+      "title": "Co-Op Data Engineer - Data Services 2027 — IBM",
+      "content_text": "Company: IBM · Location: University Park, TX\n• Support integration projects using APIs, cloud platforms, and enterprise systems\n• Work with consultants on business process analysis and digital transformation\n• Contribute to client deliverables and strategic recommendations\n• Schedule: 20 hrs/week during semesters, 40 hrs/week during breaks",
+      "date_published": "2026-09-25T14:15:02.588Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bosch-high-performance-vehicle-calibration-co-op-kettering-university-sectio-ats-smartrecruiters-boschgroup-744000151861019",
+      "url": "https://interndoor.com/us/jobs/bosch-high-performance-vehicle-calibration-co-op-kettering-university-sectio-ats-smartrecruiters-boschgroup-744000151861019",
+      "title": "High Performance Vehicle Calibration Co-op, Kettering University - Section B — Bosch",
+      "content_text": "Company: Bosch · Location: Farmington Hills, us\n• Calibrate and test vehicle controls on test tracks and dynos\n• Work with powertrain systems and chassis technologies\n• Travel for test sessions and perform vehicle maintenance",
+      "date_published": "2026-09-25T13:50:23.712Z",
+      "authors": [
+        {
+          "name": "Bosch"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/cisco-consulting-engineer-i-intern-united-states-4463126761",
       "url": "https://interndoor.com/us/jobs/cisco-consulting-engineer-i-intern-united-states-4463126761",
       "title": "Consulting Engineer I (Intern) - United States — Cisco",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "TikTok USDS Joint Venture"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-hardware-intern-2027-advanced-packaging-4469790966",
-      "url": "https://interndoor.com/us/jobs/ibm-hardware-intern-2027-advanced-packaging-4469790966",
-      "title": "Hardware intern 2027: advanced packaging — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Test solder constellations for warpage and bonding strength\n• Use laser assisted bonding and reflow techniques\n• Work with wide temperature range testing",
-      "date_published": "2026-09-25T02:15:34.785Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-advanced-packaging-process-engineering-intern-4469785997",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-semiconductor-advanced-packaging-process-engineering-intern-4469785997",
-      "title": "Semiconductor Advanced Packaging Process Engineering Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Santa Rosa, CA · Duration: 3 months\n• Support semiconductor assembly processes for advanced siP products\n• Work with thermocompression bonding and inspection equipment\n• Analyze process data to improve yield and throughput",
-      "date_published": "2026-09-25T01:44:08.624Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-software-engineer-intern-4469786843",
-      "url": "https://interndoor.com/us/jobs/keysight-technologies-r-and-d-software-engineer-intern-4469786843",
-      "title": "R&D Software Engineer, Intern — Keysight Technologies",
-      "content_text": "Company: Keysight Technologies · Location: Colorado Springs, CO\n• Develop oscilloscope software using c++ to detect system issues\n• Work with agile teams on real-time hardware-software integration\n• Learn about signal processing and measurement algorithms",
-      "date_published": "2026-09-25T01:43:40.908Z",
-      "authors": [
-        {
-          "name": "Keysight Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-optical-engineer-electronic-systems-winter-spring-2027-4471840283",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-optical-engineer-electronic-systems-winter-spring-2027-4471840283",
-      "title": "Internship, Optical Engineer, Electronic Systems (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Measure display luminance, color, and reflection in optical lab\n• Operate spectroradiometers and colorimeters for validation\n• Analyze data across display technologies and suppliers",
-      "date_published": "2026-09-25T01:37:13.633Z",
-      "authors": [
-        {
-          "name": "Tesla"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tesla-internship-software-firmware-technical-program-manager-winter-spring-2-4471839331",
-      "url": "https://interndoor.com/us/jobs/tesla-internship-software-firmware-technical-program-manager-winter-spring-2-4471839331",
-      "title": "Internship, Software Firmware Technical Program Manager (Winter/Spring 2027) — Tesla",
-      "content_text": "Company: Tesla · Location: Palo Alto, CA · Duration: 12 weeks\n• Manage firmware and software projects across energy systems, coordinating with development and integration teams\n• Create project plans, track progress, and deliver results with cross-functional teams\n• Collaborate with product and service teams to validate firmware trials and support field programs",
-      "date_published": "2026-09-25T01:32:45.649Z",
-      "authors": [
-        {
-          "name": "Tesla"
         }
       ]
     }
