@@ -254,6 +254,11 @@ async function enrichNewJobs(store, cfg) {
   log.ok(`Enriched ${results.size}/${pending.length}${flipped ? ` \u00b7 ${flipped} changed tech verdict` : ''}.`);
 }
 
+/* NEW POSTINGS ONLY: the deadline and experience are read for postings first
+   seen after the fields shipped (8f4082543b). Older ones are deliberately not
+   backfilled — his call, 25 Sep 2026 — so do not widen this to catch them up. */
+const FACTS_SINCE = Date.parse('2026-09-25T07:06:43Z');
+
 /**
  * The application deadline and the experience requirement of postings already
  * enriched — extractFacts, one model call each, under its own small budget.
@@ -266,7 +271,7 @@ async function readPostingFacts(store, cfg) {
   try {
     const maxAgeDays = cfg.publish?.maxAgeDays ?? 14;
     const pending = store.needingFacts(cfg.enrich?.factsPerRunLimit ?? 60,
-      publishedRegions(cfg).map((r) => r.code), Date.now() - maxAgeDays * 86_400_000);
+      publishedRegions(cfg).map((r) => r.code), Math.max(FACTS_SINCE, Date.now() - maxAgeDays * 86_400_000));
     if (!pending.length) return;
     const results = await extractFacts(pending, { ...cfg, enrich: { ...cfg.enrich, budgetMinutes: cfg.enrich?.factsBudgetMinutes ?? 3 } });
     for (const [i, f] of results) store.saveFacts(pending[i].job_id, f);

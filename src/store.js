@@ -791,11 +791,12 @@ export class Store {
   }
 
   /**
-   * Enriched rows whose deadline and experience have not been read yet
-   * (extractFacts). Live rows only — the window recentJobs publishes from —
-   * published regions first, newest first.
+   * Enriched rows first seen since `sinceMs` whose deadline and experience
+   * have not been read yet (extractFacts). Published regions first, newest
+   * first. FIRST seen, not last seen: an old ATS row still on its board is an
+   * old posting, and old postings are not read (FACTS_SINCE in src/index.js).
    */
-  needingFacts(limit = 500, published = [], sinceMs = Date.now() - 30 * 86_400_000, atsSeenSinceMs = Date.now() - 2 * 86_400_000) {
+  needingFacts(limit, published, sinceMs) {
     const codes = published.filter((c) => /^[A-Z]{2}$/.test(String(c))).map((c) => `'${c}'`);
     const priority = codes.length ? `CASE WHEN region IN (${codes.join(',')}) THEN 0 ELSE 1 END,` : '';
     return this.db.prepare(`
@@ -803,10 +804,10 @@ export class Store {
       FROM jobs
       WHERE facts_checked_at IS NULL AND bullets IS NOT NULL AND length(description) > 200
         AND is_tech = 1 AND closed_at IS NULL
-        AND (first_seen_at >= ? OR (job_id LIKE 'ats:%' AND last_seen_at >= ?))
+        AND first_seen_at >= ?
       ORDER BY ${priority} first_seen_at DESC
       LIMIT ?
-    `).all(sinceMs, atsSeenSinceMs, limit);
+    `).all(sinceMs, limit);
   }
 
   /** Store what extractFacts found — '' is saved as NULL — and that it looked. */

@@ -875,8 +875,8 @@ export function groundGraduation(phrase, text) {
  * Whether a posting could state a deadline or an experience requirement at
  * all. A SUPERSET of what the three guards above accept — each clause is a
  * condition its guard also requires — so a false here means any answer the
- * model gave would be refused, and asking it is time wasted. The backfill uses
- * it to skip the model on most postings.
+ * model gave would be refused, and asking it is time wasted. extractFacts
+ * uses it to skip the model on more than half of postings.
  */
 export function couldStateFacts(text, region = null) {
   const s = String(text ?? '').toLowerCase().replace(/&#43;/g, '+').replace(/years?\s*\(s\)/g, 'years');
