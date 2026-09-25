@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790333312741,
+ "generatedAt": 1790333731237,
  "region": "CA",
  "regionName": "Canada",
- "count": 51,
- "techCount": 51,
+ "count": 63,
+ "techCount": 63,
  "otherCount": 0,
  "companies": [
   "Affirm",
@@ -22,6 +22,7 @@
   "Nokia",
   "Nvidia",
   "Robinhood",
+  "Rocket Lab",
   "Rockwell Automation",
   "Squarepoint Capital",
   "Stripe",
@@ -45,6 +46,7 @@
   "Toronto, Canada",
   "Toronto, Canada (Hybrid)",
   "Toronto, Ontario",
+  "US and Canada Offices",
   "Virtual Canada",
   "Waterloo, Ontario, Canada"
  ],
@@ -93,6 +95,60 @@
     "$32 – $43 / hour",
     "Toronto"
    ],
+   "category": "hardware",
+   "region": "CA"
+  },
+  {
+   "id": "ats:workday:marvell:wd1:MarvellCareers:2604790",
+   "title": "AMS Layout Engineer Intern - BS - 2027 Co-Op",
+   "company": "Marvell Technology",
+   "matchedWatchlist": "Marvell Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/marvell-technology.jpg",
+   "location": "Toronto, Canada",
+   "workplaceType": null,
+   "stipend": "$34 – $45 / hour",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "physical design",
+    "mixed signal",
+    "perl"
+   ],
+   "summary": "This role involves creating high-speed analog layouts for photonic transceivers and EICs. You'll collaborate with circuit designers to refine layouts and automate design processes. Ideal for students with a strong foundation in CMOS and analog electronics.",
+   "bullets": [
+    "Design high-speed analog layouts in advanced CMOS processes",
+    "Work with circuit designers to optimize layout performance",
+    "Develop scripts to improve design tools and workflows"
+   ],
+   "roleLabel": "Layout Design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "cmos",
+    "python",
+    "perl",
+    "drc",
+    "lvs"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790208000000,
+   "firstSeenAt": 1790278152292,
+   "lastSeenAt": 1790278152292,
+   "url": "https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/Toronto-Canada/AMS-Layout-Engineer-Intern---BS---2027-Co-Op_2604790",
+   "applyUrl": "https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/Toronto-Canada/AMS-Layout-Engineer-Intern---BS---2027-Co-Op_2604790",
+   "description": null,
+   "roleFingerprint": "b69e35dcee",
+   "cardFacts": [
+    "$34 – $45 / hour",
+    "Toronto"
+   ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -137,6 +193,57 @@
     "$36 – $48 / hour",
     "Canada"
    ],
+   "category": "hardware",
+   "region": "CA"
+  },
+  {
+   "id": "ats:workday:intel:wd1:External:JR0287122",
+   "title": "System Simulation Engineering CO-OP",
+   "company": "Intel",
+   "matchedWatchlist": "Intel",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/intel.jpg",
+   "location": "Virtual Canada",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "asic",
+    "tcl"
+   ],
+   "summary": "This co-op role involves creating software models to simulate hardware and firmware for Intel's custom silicon projects. You'll work with engineers to design and test complex systems, using C/C++ and Python. Ideal for students with a background in computer science or engineering looking for hands-on experience in embedded systems and simulation.",
+   "bullets": [
+    "Simulate hardware and software systems for silicon design and testing",
+    "Use C/C++ and Python/TCL for model development and debugging",
+    "Work remotely from Ontario or BC with occasional in-person meetings"
+   ],
+   "roleLabel": "System Simulation Engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c",
+    "c++",
+    "python",
+    "tcl"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790121600000,
+   "firstSeenAt": 1790257417967,
+   "lastSeenAt": 1790320941713,
+   "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/Virtual-Canada/System-Simulation-Engineering-CO-OP_JR0287122",
+   "applyUrl": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/Virtual-Canada/System-Simulation-Engineering-CO-OP_JR0287122",
+   "description": null,
+   "roleFingerprint": "c56e9a321c",
+   "cardFacts": [
+    "Virtual Canada"
+   ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -188,6 +295,7 @@
    "cardFacts": [
     "Virtual Canada"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -239,6 +347,7 @@
    "cardFacts": [
     "Virtual Canada"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -285,6 +394,7 @@
    "cardFacts": [
     "Canada"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -338,6 +448,7 @@
     "Canada - Ottawa",
     "8 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -401,6 +512,7 @@
     "Canada - Ottawa",
     "8 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -454,6 +566,7 @@
     "$32 – $43 / hour",
     "CA-ON - Toronto - TOR"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -508,6 +621,7 @@
     "$32 – $43 / hour",
     "CA-ON - Toronto - TOR"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -557,6 +671,61 @@
    "cardFacts": [
     "Canada"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:workday:rockwellautomation:wd1:External_Rockwell_Automation:R26-6721",
+   "title": "Co-op, Robotics Integration and Development (OTTO by Rockwell Automation)",
+   "company": "Rockwell Automation",
+   "matchedWatchlist": "Rockwell Automation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/rockwell-automation.jpg",
+   "location": "Waterloo, Ontario, Canada",
+   "workplaceType": null,
+   "stipend": "$20 – $32 / hour",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "docker",
+    "kubernetes",
+    "linux",
+    "agile"
+   ],
+   "summary": "This co-op role involves developing and integrating software for robotics systems, working with advanced tools like ROS and Docker. Ideal for students with a background in robotics or software engineering looking to gain hands-on experience in real-world applications.",
+   "bullets": [
+    "Develop and integrate software across robotics subsystems",
+    "Work with ROS/ROS2, Docker, and Kubernetes",
+    "Contribute to deploying and debugging robotic applications"
+   ],
+   "roleLabel": "Robotics Development",
+   "degreeLevel": "UG",
+   "degreeText": "Electrical and Computer Engineering / Mechatronics / Computer Engineering / Software Engineering",
+   "keySkills": [
+    "python",
+    "c++",
+    "ros",
+    "docker",
+    "kubernetes"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789689600000,
+   "firstSeenAt": 1789807839340,
+   "lastSeenAt": 1789807839340,
+   "url": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Waterloo-Ontario-Canada/Co-op--Robotics-Integration-and-Development--OTTO-by-Rockwell-Automation-_R26-6721-1",
+   "applyUrl": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Waterloo-Ontario-Canada/Co-op--Robotics-Integration-and-Development--OTTO-by-Rockwell-Automation-_R26-6721-1",
+   "description": null,
+   "roleFingerprint": "48f912c80c",
+   "cardFacts": [
+    "$20 – $32 / hour",
+    "Waterloo"
+   ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -612,6 +781,7 @@
     "$20 – $32 / hour",
     "Waterloo"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -664,6 +834,7 @@
     "Toronto",
     "18 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -721,6 +892,59 @@
     "Montreal",
     "Summer 2027"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:workday:rockwellautomation:wd1:External_Rockwell_Automation:R26-6732",
+   "title": "Co-op, User Experience - Robotics (OTTO by Rockwell Automation)",
+   "company": "Rockwell Automation",
+   "matchedWatchlist": "Rockwell Automation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/rockwell-automation.jpg",
+   "location": "Waterloo, Ontario, Canada",
+   "workplaceType": null,
+   "stipend": "$20 – $32 / hour",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "react",
+    "agile",
+    "figma"
+   ],
+   "summary": "We welcome all makers, forward thinkers, and problem solvers who are looking for a place to do their best work. We are looking for a passionate UX Coop who is eager to shape how humans and robots interact at the frontier of autonomous operations. In this role, you will join the UX team embedded inside a highly technical robotics research group. Actual pay will be based on factors such as skills, knowledge, education, and experience.",
+   "bullets": [
+    "Design interfaces for human-robot collaboration in autonomous systems",
+    "Prototype novel interaction methods like voice, gesture, and spatial controls",
+    "Conduct UX research with operators and partners to inform design decisions"
+   ],
+   "roleLabel": "User Experience Design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "Figma",
+    "ROS/ROS2",
+    "React",
+    "UX research",
+    "vibe coding"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789603200000,
+   "firstSeenAt": 1789690811763,
+   "lastSeenAt": 1789690811763,
+   "url": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Waterloo-Ontario-Canada/Co-op--User-Experience---Robotics_R26-6732-1",
+   "applyUrl": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Waterloo-Ontario-Canada/Co-op--User-Experience---Robotics_R26-6732-1",
+   "description": null,
+   "roleFingerprint": "101f3b2dfb",
+   "cardFacts": [
+    "$20 – $32 / hour",
+    "Waterloo"
+   ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -773,6 +997,7 @@
     "$20 – $32 / hour",
     "Waterloo"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -827,6 +1052,7 @@
     "Canada - Ottawa (Bill Leathem)",
     "8 months"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -879,6 +1105,7 @@
    "cardFacts": [
     "Montreal"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -929,6 +1156,7 @@
     "Canada - Burnaby",
     "8 months"
    ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -974,6 +1202,52 @@
     "ORA_ON_SITE",
     "4 months"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:oraclecloud:fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com:39430",
+   "title": "Customer Applications Eng Co-op/Intern",
+   "company": "Nokia",
+   "matchedWatchlist": "Nokia",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/nokia.jpg",
+   "location": "Canada",
+   "workplaceType": "ORA_HYBRID",
+   "stipend": null,
+   "duration": "4 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves supporting the development and testing of customer applications. You'll work with C++, Python, and cloud platforms in a hybrid setup based in Ottawa. Ideal for students in computer or software engineering.",
+   "bullets": [
+    "Support customer applications development and testing",
+    "Use C++, Python, and cloud platforms",
+    "Work in Ottawa with a hybrid schedule"
+   ],
+   "roleLabel": "Customer Applications Support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c++"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789430400000,
+   "firstSeenAt": 1789481349764,
+   "lastSeenAt": 1790332805395,
+   "url": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39430",
+   "applyUrl": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39430",
+   "description": null,
+   "roleFingerprint": "b15d31ee56",
+   "cardFacts": [
+    "Canada",
+    "ORA_HYBRID",
+    "4 months"
+   ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1018,6 +1292,50 @@
     "ORA_HYBRID",
     "4 months"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:oraclecloud:fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com:39234",
+   "title": "Electromechanical Assembly Co-op/Intern",
+   "company": "Nokia",
+   "matchedWatchlist": "Nokia",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/nokia.jpg",
+   "location": "Canada",
+   "workplaceType": "ORA_ON_SITE",
+   "stipend": null,
+   "duration": "4 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This co-op role involves assembling and testing electromechanical parts for communication devices. Ideal for students with a background in mechanical or electrical engineering. Hands-on work with hardware tools and real-world applications.",
+   "bullets": [
+    "Assemble and test electromechanical components",
+    "Use tools like multimeters and soldering irons",
+    "Work on hardware for communication devices"
+   ],
+   "roleLabel": "Electromechanical Assembly",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789430400000,
+   "firstSeenAt": 1789479544581,
+   "lastSeenAt": 1790332805394,
+   "url": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39234",
+   "applyUrl": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39234",
+   "description": null,
+   "roleFingerprint": "1a345b89b9",
+   "cardFacts": [
+    "Canada",
+    "ORA_ON_SITE",
+    "4 months"
+   ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -1073,6 +1391,7 @@
     "Toronto",
     "Remote"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1127,6 +1446,7 @@
     "Toronto",
     "Winter 2027"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1176,6 +1496,7 @@
     "Toronto",
     "Winter 2027"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1232,6 +1553,7 @@
     "Toronto",
     "Winter 2027"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1288,6 +1610,7 @@
     "Toronto",
     "Winter 2027"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1340,6 +1663,7 @@
     "Remote Canada",
     "Remote"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1393,6 +1717,58 @@
     "Toronto",
     "Summer 2028"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:greenhouse:lyft:8797069002",
+   "title": "UX Research Intern (2027)",
+   "company": "Lyft",
+   "matchedWatchlist": "Lyft",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/lyft.png",
+   "location": "Toronto, Canada",
+   "workplaceType": null,
+   "stipend": "$40 / hour",
+   "duration": "Summer 2028",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "sql",
+    "excel"
+   ],
+   "summary": "This UX research internship involves conducting studies and analyzing data to improve user experiences for Lyft's drivers and riders. Ideal for graduate students with research experience in human-computer interaction or related fields. The role offers hands-on work with senior researchers and collaboration across product teams.",
+   "bullets": [
+    "Conduct user research studies and analyze data to inform product improvements",
+    "Work with designers and engineers on real user experiences across 300+ cities",
+    "Based in Toronto, in-office 3 days a week with hybrid schedule"
+   ],
+   "roleLabel": "User Experience Research",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "qualitative research",
+    "user testing",
+    "data analysis",
+    "qualtrics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789149057000,
+   "firstSeenAt": 1789149875890,
+   "lastSeenAt": 1790332794714,
+   "url": "https://app.careerpuck.com/job-board/lyft/job/8797069002?gh_jid=8797069002",
+   "applyUrl": "https://app.careerpuck.com/job-board/lyft/job/8797069002?gh_jid=8797069002",
+   "description": null,
+   "roleFingerprint": "3cdef9c986",
+   "cardFacts": [
+    "$40 / hour",
+    "Toronto",
+    "Summer 2028"
+   ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -1440,6 +1816,7 @@
     "Montreal",
     "Summer 2028"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1484,6 +1861,7 @@
     "Montreal",
     "Summer 2028"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1533,6 +1911,7 @@
     "Toronto",
     "Summer 2028"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1587,6 +1966,7 @@
     "Toronto",
     "Summer 2028"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1644,6 +2024,7 @@
     "Toronto",
     "Summer 2027"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1690,6 +2071,50 @@
     "Toronto",
     "Summer 2028"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:oraclecloud:fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com:39314",
+   "title": "Optical Network Mgmt Support Intern",
+   "company": "Nokia",
+   "matchedWatchlist": "Nokia",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/nokia.jpg",
+   "location": "Canada",
+   "workplaceType": "ORA_HYBRID",
+   "stipend": null,
+   "duration": "4 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves supporting optical network operations and troubleshooting using python and network management tools. It offers a hybrid work setup with one day in office per week, ideal for students pursuing computer science or related fields.",
+   "bullets": [
+    "Support optical network operations and troubleshooting",
+    "Use python and network management tools",
+    "Work in hybrid setup with 1 day in office per week"
+   ],
+   "roleLabel": "Network support",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789084800000,
+   "firstSeenAt": 1789288745095,
+   "lastSeenAt": 1790332805395,
+   "url": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39314",
+   "applyUrl": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39314",
+   "description": null,
+   "roleFingerprint": "b7759e8d4c",
+   "cardFacts": [
+    "Canada",
+    "ORA_HYBRID",
+    "4 months"
+   ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -1732,6 +2157,7 @@
     "ORA_HYBRID",
     "4 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1774,6 +2200,154 @@
     "ORA_ON_SITE",
     "4 months"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:greenhouse:rocketlab:7990043003",
+   "title": "Electrical Engineering Intern Summer 2027",
+   "company": "Rocket Lab",
+   "matchedWatchlist": "Rocket Lab",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/rocket-lab.jpg",
+   "location": "Toronto, CAN",
+   "workplaceType": null,
+   "stipend": "$60,008",
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This internship involves working on flight electronics for space systems, supporting design and testing of reaction wheels and star trackers. Ideal for engineering students with hardware experience and CAD skills. Based in Toronto, Canada.",
+   "bullets": [
+    "Support development and testing of flight electronics for reaction wheels and star trackers",
+    "Work with CAD and Python tools for electronics design and prototyping",
+    "Collaborate on hardware projects with Arduinos, Raspberry Pi, and soldering"
+   ],
+   "roleLabel": "Flight Electronics Support",
+   "degreeLevel": "UG/PG",
+   "degreeText": "B.E/M.E",
+   "keySkills": [
+    "cad",
+    "python",
+    "soldering",
+    "arduino",
+    "raspberry pi"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788994052000,
+   "firstSeenAt": 1788994657593,
+   "lastSeenAt": 1790332813770,
+   "url": "https://job-boards.greenhouse.io/rocketlab/jobs/7990043003",
+   "applyUrl": "https://job-boards.greenhouse.io/rocketlab/jobs/7990043003",
+   "description": null,
+   "roleFingerprint": "5afa6184af",
+   "cardFacts": [
+    "$60,008",
+    "Toronto",
+    "Summer 2027"
+   ],
+   "category": "hardware",
+   "region": "CA"
+  },
+  {
+   "id": "ats:greenhouse:rocketlab:7990045003",
+   "title": "Electrical Engineering Intern Spring 2027",
+   "company": "Rocket Lab",
+   "matchedWatchlist": "Rocket Lab",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/rocket-lab.jpg",
+   "location": "Toronto, CAN",
+   "workplaceType": null,
+   "stipend": "$60,008",
+   "duration": "Spring 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This internship offers hands-on experience in designing and testing flight electronics for space systems. Ideal for engineering students with hardware or circuit design skills, the role involves working on real projects with CAD and Python. The intern will contribute to product development and collaborate with teams on hardware prototyping.",
+   "bullets": [
+    "Support development and testing of flight electronics for reaction wheels and star trackers",
+    "Work with CAD and Python tools for electronics design and prototyping",
+    "Collaborate on hardware projects with Arduinos, Raspberry Pi, and soldering"
+   ],
+   "roleLabel": "Flight Electronics Design",
+   "degreeLevel": "UG/PG",
+   "degreeText": "B.E/M.E",
+   "keySkills": [
+    "cad",
+    "python",
+    "soldering",
+    "arduino",
+    "raspberry pi"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788993956000,
+   "firstSeenAt": 1788994657591,
+   "lastSeenAt": 1790332813768,
+   "url": "https://job-boards.greenhouse.io/rocketlab/jobs/7990045003",
+   "applyUrl": "https://job-boards.greenhouse.io/rocketlab/jobs/7990045003",
+   "description": null,
+   "roleFingerprint": "3cbaf37569",
+   "cardFacts": [
+    "$60,008",
+    "Toronto",
+    "Spring 2027"
+   ],
+   "category": "hardware",
+   "region": "CA"
+  },
+  {
+   "id": "ats:oraclecloud:fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com:39165",
+   "title": "IP Routing App Engineer Co-op/Intern",
+   "company": "Nokia",
+   "matchedWatchlist": "Nokia",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/nokia.jpg",
+   "location": "Canada",
+   "workplaceType": "ORA_ON_SITE",
+   "stipend": null,
+   "duration": "4 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves developing routing protocols for network systems. You will work with C++ and Python in a Linux environment, contributing to core routing engine development. Ideal for students with a background in network technology or computer engineering.",
+   "bullets": [
+    "Design and implement routing protocols for network systems",
+    "Work with C++ and Python in a Linux environment",
+    "Contribute to core routing engine development"
+   ],
+   "roleLabel": "Routing Protocol Development",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "c++"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1789288742955,
+   "lastSeenAt": 1790332805393,
+   "url": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39165",
+   "applyUrl": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/39165",
+   "description": null,
+   "roleFingerprint": "5c87275006",
+   "cardFacts": [
+    "Canada",
+    "ORA_ON_SITE",
+    "4 months"
+   ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1820,6 +2394,7 @@
     "$24 – $35 / hour",
     "Canada - Ottawa (Bill Leathem)"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -1871,6 +2446,7 @@
     "Canada",
     "12 weeks"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1931,6 +2507,7 @@
     "Canada - Ottawa",
     "8 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -1994,6 +2571,7 @@
     "$97,000 – $121,000 / year",
     "Toronto"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2036,6 +2614,7 @@
     "ORA_ON_SITE",
     "8-12 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2086,6 +2665,7 @@
     "$24 – $35 / hour",
     "Canada - Ottawa (Bill Leathem)"
    ],
+   "category": "misc",
    "region": "CA"
   },
   {
@@ -2131,6 +2711,7 @@
     "ORA_ON_SITE",
     "4 months"
    ],
+   "category": "hardware",
    "region": "CA"
   },
   {
@@ -2182,6 +2763,7 @@
    "cardFacts": [
     "Toronto"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2234,6 +2816,7 @@
     "Toronto",
     "18 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2286,6 +2869,7 @@
     "$24 – $35 / hour",
     "Canada - Ottawa (Bill Leathem)"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2336,6 +2920,7 @@
     "Montreal",
     "12 weeks"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2394,6 +2979,7 @@
     "Montreal",
     "6-12 months"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2450,6 +3036,7 @@
     "$30 – $50 / hour",
     "Toronto Canada"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2502,6 +3089,7 @@
     "Toronto",
     "Hybrid"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2553,6 +3141,7 @@
     "Toronto",
     "Hybrid"
    ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2599,6 +3188,65 @@
     "$30 – $50 / hour",
     "Toronto"
    ],
+   "category": "software",
+   "region": "CA"
+  },
+  {
+   "id": "ats:ashby:cerebras:9c7da4b8-446b-4bf2-8d07-23241590bf2e",
+   "title": "Kernel Engineer - New Grad",
+   "company": "Cerebras Systems",
+   "matchedWatchlist": "Cerebras Systems",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cerebras-systems.png",
+   "location": "US and Canada Offices",
+   "workplaceType": "Remote",
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    ".net",
+    "machine learning",
+    "pytorch",
+    "tensorflow",
+    "cuda",
+    "data structures",
+    "algorithms"
+   ],
+   "summary": "This role involves developing high-performance kernels for AI chip architecture, working closely with engineers to optimize software for specialized hardware. It suits students with strong programming skills and interest in low-level software and parallel computing.",
+   "bullets": [
+    "Implement machine learning and linear algebra kernels for AI chip",
+    "Use C++ and custom language to optimize performance on specialized hardware",
+    "Collaborate with engineers to improve system efficiency and correctness"
+   ],
+   "roleLabel": "Kernel Development",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Computer Science/Engineering",
+   "keySkills": [
+    "c++",
+    "python",
+    "parallel programming",
+    "performance optimization",
+    "low-level software"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1784835196660,
+   "firstSeenAt": 1787502632371,
+   "lastSeenAt": 1790332777039,
+   "url": "https://jobs.ashbyhq.com/cerebras/9c7da4b8-446b-4bf2-8d07-23241590bf2e",
+   "applyUrl": "https://jobs.ashbyhq.com/cerebras/9c7da4b8-446b-4bf2-8d07-23241590bf2e",
+   "description": null,
+   "roleFingerprint": "545ed6b741",
+   "cardFacts": [
+    "US and Canada Offices",
+    "Remote"
+   ],
+   "category": "software",
    "region": "CA"
   },
   {
@@ -2648,6 +3296,7 @@
     "Ottawa",
     "Fall 2026"
    ],
+   "category": "hardware",
    "region": "CA"
   }
  ]

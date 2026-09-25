@@ -1,11 +1,12 @@
 {
- "generatedAt": 1790333312739,
+ "generatedAt": 1790333731236,
  "region": "GB",
  "regionName": "United Kingdom",
- "count": 66,
- "techCount": 66,
+ "count": 114,
+ "techCount": 114,
  "otherCount": 0,
  "companies": [
+  "AECOM",
   "Amazon",
   "American Express",
   "Anduril Industries",
@@ -13,6 +14,7 @@
   "Baker Hughes",
   "Barclays",
   "Boeing",
+  "Bosch",
   "Clearwater Analytics",
   "Epic Games",
   "Figma",
@@ -20,13 +22,19 @@
   "Jump Trading",
   "Lendable",
   "Levi Strauss",
+  "Man Group",
+  "Microsoft",
   "NXP Semiconductors",
+  "Old Mission Capital",
   "Palantir",
+  "Point72",
   "Renesas Electronics",
   "Scale AI",
+  "Schroders",
   "Squarepoint Capital",
   "State Street",
   "Stripe",
+  "Tower Research Capital",
   "Trustpilot",
   "Voleon Group",
   "Waymo",
@@ -34,24 +42,43 @@
  ],
  "locations": [
   "BURGESS HILL, WEST SUSSEX, United Kingdom",
+  "Birmingham, gb",
   "Bristol",
+  "Bristol, IN",
+  "Cambridge, Cambridgeshire, United Kingdom",
+  "Cambridge, gb",
+  "Chesterfield, gb",
+  "Croydon, gb",
+  "Edinburgh, Midlothian, United Kingdom",
   "Edinburgh, Scotland, United Kingdom",
+  "Edinburgh, gb",
   "GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE",
   "GBR - Bristol, UK",
   "GBR - Crawley, UK",
+  "GBR - Farnborough, UK",
+  "GBR - Prestwick, UK",
   "GBR - Welwyn Garden City, UK",
   "Glasgow",
   "Glasgow Campus",
+  "Glasgow, gb",
   "LONDON, United Kingdom",
+  "Leeds, gb",
   "London",
   "London, England",
   "London, England, GBR",
   "London, England, United Kingdom",
   "London, Montreal",
+  "London, Paris, Hong Kong, Tokyo",
   "London, UK",
   "London, United Kingdom",
+  "London, gb",
   "London,England,United Kingdom",
+  "London; Amsterdam",
+  "London; Paris",
+  "Manchester, gb",
+  "Nottingham, gb",
   "Office - London",
+  "St Albans, gb",
   "Swindon, gb",
   "Sydney, New South Wales, Australia",
   "United Kingdom",
@@ -109,6 +136,49 @@
     "£115,000 / year",
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:oraclecloud:icfcjb.fa.ocs.oraclecloud.com:124161",
+   "title": "Intern - Electrical Engineer",
+   "company": "Honeywell",
+   "matchedWatchlist": "Honeywell",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/honeywell.png",
+   "location": "Edinburgh, Midlothian, United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "Location: West Edinburgh Role Type: 12-month internship As an Electrical Engineer Intern at Honeywell Aerospace, in West Edinburgh, you will work within our Space Mission team, working on cutting edge quantum and lunar space missions that will help shape the future of communications, contributing to the development of secure quantum and RF communication systems. This internship is set up for 12 months, starting from summer 2027, and is for an industrial placement for those currently studying a degree.",
+   "bullets": [
+    "Support development of secure quantum and rf communication systems",
+    "Work on space missions for future communications",
+    "12-month industrial placement starting summer 2027"
+   ],
+   "roleLabel": "Space Mission Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790121600000,
+   "firstSeenAt": 1790164886736,
+   "lastSeenAt": 1790332792388,
+   "url": "https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/124161",
+   "applyUrl": "https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/124161",
+   "description": null,
+   "roleFingerprint": "52362890e0",
+   "cardFacts": [
+    "Edinburgh",
+    "12 months"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -170,6 +240,7 @@
    "cardFacts": [
     "Edinburgh"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -231,6 +302,294 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150974479",
+   "title": "Geospatial Apprentice - Nottingham (Summer 2027)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/aecom.jpg",
+   "location": "Nottingham, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This apprenticeship offers hands-on experience in geospatial surveying and data capture, working on infrastructure projects. You'll use industry tools and collaborate with engineers and geoscientists. Ideal for those interested in surveying, mapping, and digital engineering.",
+   "bullets": [
+    "Support geospatial surveying, data capture, and reality capture technologies",
+    "Use industry-standard software, mapping tools, and digital engineering systems",
+    "Work on infrastructure projects with engineers, geoscientists, and design teams"
+   ],
+   "roleLabel": "Geospatial Surveying",
+   "degreeLevel": "PG",
+   "degreeText": "Geospatial",
+   "keySkills": [
+    "gnss surveys",
+    "laser scanning",
+    "uav surveys",
+    "photogrammetry",
+    "lidar"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790068427464,
+   "firstSeenAt": 1790069845762,
+   "lastSeenAt": 1790086045005,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150974479",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150974479",
+   "description": null,
+   "roleFingerprint": "47f88e1895",
+   "cardFacts": [
+    "Nottingham",
+    "Summer 2027"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150964949",
+   "title": "Graduate Process Engineer Water / Cambridge",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Cambridge, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves designing water and wastewater treatment processes, creating technical documents, and supporting engineering projects. It suits students with a background in chemical engineering or related fields seeking hands-on experience in sustainable solutions.",
+   "bullets": [
+    "Create process flow diagrams and perform mass balance calculations",
+    "Develop engineering calculations for unit operations and design constraints",
+    "Assist with technical documentation and compliance with design standards"
+   ],
+   "roleLabel": "Process Engineering",
+   "degreeLevel": "PG",
+   "degreeText": "MEng/MSc",
+   "keySkills": [
+    "autocad",
+    "microsoft office",
+    "microsoft teams",
+    "pid",
+    "process flow diagrams"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790065710952,
+   "firstSeenAt": 1790066245759,
+   "lastSeenAt": 1790086045006,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150964949",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150964949",
+   "description": null,
+   "roleFingerprint": "e42cb45ac5",
+   "cardFacts": [
+    "Cambridge"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150964739",
+   "title": "Graduate Process Engineer Water / St Albans",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "St Albans, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves designing water and wastewater treatment processes, creating technical documents, and supporting client projects. It suits students with a background in chemical engineering looking to gain hands-on experience in process engineering.",
+   "bullets": [
+    "Create process flow diagrams and perform mass balance calculations",
+    "Develop engineering calculations for unit operations and design constraints",
+    "Support technical meetings and documentation with clients and stakeholders"
+   ],
+   "roleLabel": "Process Engineering",
+   "degreeLevel": "PG",
+   "degreeText": "MEng/MSc",
+   "keySkills": [
+    "autocad",
+    "microsoft office",
+    "microsoft teams",
+    "pid",
+    "process flow diagrams"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1790065674205,
+   "firstSeenAt": 1790066245762,
+   "lastSeenAt": 1790086045006,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150964739",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150964739",
+   "description": null,
+   "roleFingerprint": "e42cb45ac5",
+   "cardFacts": [
+    "St Albans"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150692025",
+   "title": "Graduate Electrical Engineer - Water / Leeds",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Leeds, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This full-time role involves supporting electrical design for water and wastewater projects, working with industry-standard software and collaborating on UK-wide infrastructure initiatives. Ideal for graduates with a strong technical background and interest in water engineering.",
+   "bullets": [
+    "Support electrical design for water and wastewater projects including load calculations and cable schedules",
+    "Use Amtech and Electrical OM software for design and documentation",
+    "Collaborate with cross-functional teams on UK-wide water infrastructure projects"
+   ],
+   "roleLabel": "Electrical Design",
+   "degreeLevel": "UG",
+   "degreeText": "MEng",
+   "keySkills": [
+    "amtech",
+    "electrical om",
+    "load calculations",
+    "cable schedules",
+    "bim"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789997074335,
+   "firstSeenAt": 1789997454166,
+   "lastSeenAt": 1790071645611,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150692025",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150692025",
+   "description": null,
+   "roleFingerprint": "21f85b076f",
+   "cardFacts": [
+    "Leeds"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150696111",
+   "title": "Graduate Electrical Engineer - Water / Croydon",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Croydon, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This full-time role involves supporting electrical design for water infrastructure projects, working with senior engineers and cross-functional teams. Ideal for graduates with a strong interest in water systems and electrical engineering.",
+   "bullets": [
+    "Support electrical design for water and wastewater projects including load calculations and cable schedules",
+    "Use Amtech and Electrical OM for design and collaborate with cross-functional teams",
+    "Work on major UK water projects with leading clients and contractors"
+   ],
+   "roleLabel": "Electrical Design",
+   "degreeLevel": "UG",
+   "degreeText": "MEng",
+   "keySkills": [
+    "amtech",
+    "electrical om",
+    "load calculations",
+    "cable schedules"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789997039822,
+   "firstSeenAt": 1789997454167,
+   "lastSeenAt": 1790071645611,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150696111",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150696111",
+   "description": null,
+   "roleFingerprint": "21f85b076f",
+   "cardFacts": [
+    "Croydon"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150696380",
+   "title": "Graduate Electrical Engineer - Water / Birmingham",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Birmingham, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This full-time role involves supporting electrical design for water infrastructure projects, working with major UK clients. Ideal for graduates with a strong technical background and interest in water systems.",
+   "bullets": [
+    "Support electrical design for water and wastewater projects including load calculations and cable schedules",
+    "Use Amtech and Electrical OM for design and collaborate with cross-disciplinary teams",
+    "Work on major UK water projects with clients like Thames Water and Severn Trent"
+   ],
+   "roleLabel": "Electrical Design",
+   "degreeLevel": "UG",
+   "degreeText": "MEng",
+   "keySkills": [
+    "amtech",
+    "electrical om",
+    "load calculations",
+    "cable schedules"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789996998698,
+   "firstSeenAt": 1789997454167,
+   "lastSeenAt": 1790071645612,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150696380",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150696380",
+   "description": null,
+   "roleFingerprint": "21f85b076f",
+   "cardFacts": [
+    "Birmingham"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -280,6 +639,7 @@
    "cardFacts": [
     "United Kingdom"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -340,6 +700,56 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "4469191958",
+   "title": "Mechatronic Apprentice I",
+   "company": "Amazon",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/amazon.jpg",
+   "location": "Bristol, IN",
+   "workplaceType": "On-site",
+   "stipend": "$27 – $29 / hour",
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This apprenticeship involves maintaining and repairing automated packaging and distribution equipment. You'll troubleshoot robotics systems, perform preventative maintenance, and work in high automation facilities. Ideal for someone with technical training and a passion for hands-on engineering.",
+   "bullets": [
+    "Maintain and repair automated packaging equipment using technical manuals",
+    "Troubleshoot electrical and mechanical systems in robotics work cells",
+    "Perform preventative maintenance on conveyance systems and sensors",
+    "Work in high automation facilities with mentorship from senior technicians"
+   ],
+   "roleLabel": "Equipment Maintenance",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "experience": "1+ years",
+   "keySkills": [
+    "preventative maintenance"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1789756482233,
+   "firstSeenAt": 1789760082236,
+   "lastSeenAt": 1789760082236,
+   "url": "https://www.linkedin.com/jobs/view/4469191958/",
+   "applyUrl": "https://www.amazon.jobs/jobs/10553583/mechatronic-apprentice-i?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
+   "description": null,
+   "roleFingerprint": "721fdaf422",
+   "cardFacts": [
+    "$27 – $29 / hour",
+    "Bristol",
+    "On-site"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -392,6 +802,104 @@
     "£80,000 / year",
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150392685",
+   "title": "Graduate Bridge Structures Engineer - Edinburgh (2027 Start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Edinburgh, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves designing and assessing bridges using advanced software, working on both new projects and maintenance of existing structures. It suits graduates with a strong technical background in civil or structural engineering who are interested in a career in bridge design and structural engineering. The opportunity includes working on international projects and developing skills through collaboration with global teams.",
+   "bullets": [
+    "Design bridges from start to finish using industry software",
+    "Work on assessments, inspections, and renewals of existing structures",
+    "Collaborate with global teams on international and domestic projects"
+   ],
+   "roleLabel": "Bridge Design Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "structural design",
+    "finite elements analysis",
+    "bridge assessment",
+    "structural inspections"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789742195094,
+   "firstSeenAt": 1789742926426,
+   "lastSeenAt": 1789995654419,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150392685",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150392685",
+   "description": null,
+   "roleFingerprint": "14e3ff5132",
+   "cardFacts": [
+    "Edinburgh"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000150316229",
+   "title": "Hydrology & Hydraulic Modelling Graduate Engineer / Edinburgh",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Edinburgh, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves using advanced software to model flood risks and climate change impacts, working on global projects with engineers and environmental experts. You'll prepare technical reports and GIS deliverables for clients, contributing to innovative water management solutions.",
+   "bullets": [
+    "Model flood risk and climate change impacts using specialist software",
+    "Collaborate with engineers, planners, and environmental experts on global projects",
+    "Prepare technical reports and GIS deliverables for clients and stakeholders"
+   ],
+   "roleLabel": "Hydrology Modelling",
+   "degreeLevel": "UG",
+   "degreeText": "Civil Engineering / Environmental Modelling / Geography",
+   "keySkills": [
+    "arc-gis",
+    "qgis",
+    "r-software",
+    "excel",
+    "powerpoint"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789721947522,
+   "firstSeenAt": 1789723126550,
+   "lastSeenAt": 1789979454709,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000150316229",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000150316229",
+   "description": null,
+   "roleFingerprint": "547919d996",
+   "cardFacts": [
+    "Edinburgh"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -443,6 +951,122 @@
     "£80,000 / year",
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:mangroup:4978934101",
+   "title": "2027 Summer Technology Internship Programme",
+   "company": "Man Group",
+   "matchedWatchlist": "Man Group",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/man-group.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": "4,01,000",
+   "duration": "6 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "c#",
+    ".net"
+   ],
+   "summary": "This internship involves working on cutting-edge technology projects that support Man Group's investment strategies. You'll contribute to core systems, collaborate with cross-functional teams, and present your work to senior management. Ideal for students passionate about technology and finance.",
+   "bullets": [
+    "Develop and enhance quantitative investment platforms using Python, Java, or C++",
+    "Collaborate with Portfolio Management and Trading teams on execution systems",
+    "Work on DevOps and data engineering projects with real business impact"
+   ],
+   "roleLabel": "Technology Development",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Computer Science/Mathematics/Engineering/Physics",
+   "keySkills": [
+    "python",
+    "java",
+    "c++",
+    "devops",
+    "data engineering"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789659921000,
+   "firstSeenAt": 1789660165711,
+   "lastSeenAt": 1790332795406,
+   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4978934101",
+   "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4978934101",
+   "description": null,
+   "roleFingerprint": "b7494b5508",
+   "cardFacts": [
+    "London",
+    "6 months"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:renesaselectronics:744000150054935",
+   "title": "Graduate Digital Design Engineer",
+   "company": "Renesas Electronics",
+   "matchedWatchlist": "Renesas Electronics",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": null,
+   "location": "Edinburgh, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "linux",
+    "git",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "asic",
+    "dft",
+    "physical design",
+    "tcl",
+    "perl"
+   ],
+   "summary": "This role involves designing complex digital systems and working with experienced engineers on asic projects. Suitable for students with strong digital logic skills and experience in hdl languages. Ideal for those looking to gain hands-on experience in hardware development.",
+   "bullets": [
+    "Create detailed micro-architecture specs for digital systems",
+    "Develop rtl in systemverilog with timing and power constraints",
+    "Collaborate with analog and physical design teams",
+    "Use lint, cdc, and formal verification tools"
+   ],
+   "roleLabel": "Digital design",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "systemverilog",
+    "verilog",
+    "vhdl",
+    "python",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789638025469,
+   "firstSeenAt": 1789638575330,
+   "lastSeenAt": 1790155783232,
+   "url": "https://jobs.smartrecruiters.com/renesaselectronics/744000150054935",
+   "applyUrl": "https://jobs.smartrecruiters.com/renesaselectronics/744000150054935",
+   "description": null,
+   "roleFingerprint": "01e6ba9f90",
+   "cardFacts": [
+    "Edinburgh"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -490,6 +1114,55 @@
     "London",
     "Remote"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149850772",
+   "title": "Graduate Bridge Structures Engineer – St Albans (2027 Start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "St Albans, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves designing and assessing bridges using advanced software. You'll work on real projects, both locally and internationally, with a focus on structural engineering. Ideal for graduates with a strong technical background and interest in bridge design.",
+   "bullets": [
+    "Design bridges from start to finish using industry software",
+    "Work on assessments, inspections, and renewals of existing structures",
+    "Collaborate with global teams on international and domestic projects"
+   ],
+   "roleLabel": "Bridge Design Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "structural design",
+    "finite elements analysis",
+    "bridge assessment",
+    "structural inspections"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789561314781,
+   "firstSeenAt": 1789562300003,
+   "lastSeenAt": 1789634925292,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149850772",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149850772",
+   "description": null,
+   "roleFingerprint": "3a2029843e",
+   "cardFacts": [
+    "St Albans"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -544,6 +1217,7 @@
    "cardFacts": [
     "Glasgow Campus"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -598,6 +1272,7 @@
    "cardFacts": [
     "United Kingdom"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -646,6 +1321,104 @@
     "£28 / year",
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149576989",
+   "title": "Graduate Bridge Structures Engineer – Chesterfield (2026)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Chesterfield, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves designing and assessing bridges for clients across the UK and internationally. You'll work on projects ranging from new constructions to maintenance and renewal of existing structures. The position offers exposure to global teams and a chance to develop technical and professional skills in civil and structural engineering.",
+   "bullets": [
+    "Design and assess bridges from concept to completion using industry software",
+    "Work on UK and international projects with AECOM's global teams",
+    "Contribute to structural renewal and maintenance of existing bridges"
+   ],
+   "roleLabel": "Bridge Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "structural design",
+    "finite elements analysis",
+    "bridge assessment",
+    "structural inspections",
+    "microsoft office"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789471701537,
+   "firstSeenAt": 1789472298468,
+   "lastSeenAt": 1789520900801,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149576989",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149576989",
+   "description": null,
+   "roleFingerprint": "aece9d8e56",
+   "cardFacts": [
+    "Chesterfield"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149576079",
+   "title": "Graduate Bridge Structures Engineer – Croydon (2026)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Croydon, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves designing and assessing bridges using advanced software. You'll work on projects across the UK and internationally, contributing to structural analysis and inspections. Ideal for graduates with a strong technical background in civil or structural engineering.",
+   "bullets": [
+    "Design and assess bridges from concept to completion",
+    "Use software for structural analysis and inspections",
+    "Work on UK and international projects with AECOM teams"
+   ],
+   "roleLabel": "Bridge Design Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "structural design",
+    "finite elements analysis",
+    "bridge assessment",
+    "structural inspections"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789471375194,
+   "firstSeenAt": 1789472298474,
+   "lastSeenAt": 1789520900802,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149576079",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149576079",
+   "description": null,
+   "roleFingerprint": "aece9d8e56",
+   "cardFacts": [
+    "Croydon"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -704,6 +1477,7 @@
     "London",
     "Remote"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -750,6 +1524,54 @@
     "Office - London",
     "1 month"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:BoschGroup:744000149406442",
+   "title": "Graduate Placement (12-24 Months) - Advanced Engineering Graduate",
+   "company": "Bosch",
+   "matchedWatchlist": "Bosch",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/bosch.png",
+   "location": "Birmingham, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "12-24 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "system design"
+   ],
+   "summary": "This full-time role involves supporting the development of new engineering solutions and products. You'll work on complex systems, from design to testing, and collaborate with teams across disciplines. Ideal for someone with a strong technical background and an interest in innovation.",
+   "bullets": [
+    "Support product development from concept to production",
+    "Work with mechanical, electrical, and software systems",
+    "Collaborate with cross-functional teams on engineering projects"
+   ],
+   "roleLabel": "Engineering Development",
+   "degreeLevel": "UG",
+   "degreeText": "Mechanical Engineering/Mechatronics",
+   "keySkills": [
+    "system integration",
+    "data analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789411078409,
+   "firstSeenAt": 1789411104717,
+   "lastSeenAt": 1789477705656,
+   "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149406442",
+   "applyUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000149406442",
+   "description": null,
+   "roleFingerprint": "4e86fe6438",
+   "cardFacts": [
+    "Birmingham",
+    "12-24 months"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -802,6 +1624,155 @@
     "London",
     "Summer 2027"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149388040",
+   "title": "Graduate Rail Electrical Engineer - Swindon (2027 Start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Swindon, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This full-time role involves designing electrical systems for rail infrastructure, working on sustainable and safe designs for stations and depots, and collaborating with engineers and other disciplines on complex projects. It suits graduates with a strong technical background in electrical engineering and an interest in rail systems.",
+   "bullets": [
+    "Design electrical systems for rail infrastructure including lighting, power, and traction networks",
+    "Use bim software and industry tools to create drawings and models",
+    "Work on sustainable and safe designs for stations and depots",
+    "Collaborate with engineers and other disciplines on complex projects"
+   ],
+   "roleLabel": "Rail Electrical Engineer",
+   "degreeLevel": "UG",
+   "degreeText": "BEng Electrical Engineering",
+   "keySkills": [
+    "bim",
+    "excel",
+    "power",
+    "word",
+    "traction power"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789404534104,
+   "firstSeenAt": 1789405698392,
+   "lastSeenAt": 1789459698592,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149388040",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149388040",
+   "description": null,
+   "roleFingerprint": "46966c1f98",
+   "cardFacts": [
+    "Swindon"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149387924",
+   "title": "Graduate Rail Electrical Engineer - Croydon (2027 Start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Croydon, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This full-time role involves designing and supporting electrical systems for rail infrastructure projects. You'll work on complex systems like power distribution and traction networks, using BIM tools and collaborating with engineers. The role offers hands-on experience in sustainable design and project coordination, ideal for graduates passionate about rail engineering and seeking a career in transportation infrastructure.",
+   "bullets": [
+    "Design electrical systems for rail infrastructure including lighting, power, and traction networks",
+    "Use BIM and industry software to create drawings and models for railway projects",
+    "Collaborate with engineers and other disciplines on complex rail projects",
+    "Work on sustainable and efficient electrical designs for stations and depots"
+   ],
+   "roleLabel": "Rail Electrical Engineering",
+   "degreeLevel": "UG",
+   "degreeText": "BEng Electrical Engineering",
+   "keySkills": [
+    "bim",
+    "excel",
+    "powerpoint",
+    "word"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789404492930,
+   "firstSeenAt": 1789405698393,
+   "lastSeenAt": 1789459698593,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149387924",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149387924",
+   "description": null,
+   "roleFingerprint": "46966c1f98",
+   "cardFacts": [
+    "Croydon"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000149388379",
+   "title": "Graduate Rail Electrical Engineer - Glasgow (2027 Start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Glasgow, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves designing electrical systems for rail infrastructure, working with engineers on complex projects, and using industry tools to create detailed designs. It suits students with a strong technical background in electrical engineering and an interest in railway systems.",
+   "bullets": [
+    "Design electrical systems for rail infrastructure including lighting, power, and traction networks",
+    "Use bim software and industry tools to create drawings and models",
+    "Collaborate with engineers and other disciplines on complex railway projects",
+    "Support site inspections and ensure compliance with safety standards"
+   ],
+   "roleLabel": "Rail Electrical Engineer",
+   "degreeLevel": "UG",
+   "degreeText": "BEng Electrical Engineering",
+   "keySkills": [
+    "bim",
+    "excel",
+    "powerpoint",
+    "word"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789404386910,
+   "firstSeenAt": 1789405698393,
+   "lastSeenAt": 1789459698593,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000149388379",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000149388379",
+   "description": null,
+   "roleFingerprint": "46966c1f98",
+   "cardFacts": [
+    "Glasgow"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -854,6 +1825,7 @@
     "London",
     "Fall 2027"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -907,6 +1879,7 @@
     "London",
     "Fall 2026"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -953,6 +1926,7 @@
     "GBR - Crawley",
     "12 months"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -997,6 +1971,7 @@
     "GBR - Welwyn Garden City",
     "12 months"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1041,6 +2016,7 @@
     "GBR - Welwyn Garden City",
     "Summer 2027"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1091,6 +2067,7 @@
     "BURGESS HILL",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1138,6 +2115,7 @@
     "LONDON",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1188,6 +2166,7 @@
     "LONDON",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1235,6 +2214,7 @@
     "BURGESS HILL",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1283,6 +2263,7 @@
     "BURGESS HILL",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1331,6 +2312,7 @@
     "LONDON",
     "ORA_HYBRID"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1378,6 +2360,194 @@
     "BURGESS HILL",
     "ORA_HYBRID"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000148982659",
+   "title": "Graduate Technology Services Consultant - Manchester (2027 start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aecom.jpg",
+   "location": "Manchester, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves supporting technology projects in transportation, working on smart motorways and control systems. You'll collaborate with clients and stakeholders, developing designs and documentation. Ideal for graduates with engineering or related degrees seeking hands-on experience in innovative tech solutions.",
+   "bullets": [
+    "Support technical projects from feasibility to delivery using engineering standards",
+    "Work with clients and stakeholders on transportation tech solutions",
+    "Develop designs and documentation for smart motorways and control systems"
+   ],
+   "roleLabel": "Technology Support Engineer",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "microsoft office",
+    "technical documentation",
+    "project management",
+    "feasibility studies"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789122048783,
+   "firstSeenAt": 1789288695437,
+   "lastSeenAt": 1789353498251,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000148982659",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148982659",
+   "description": null,
+   "roleFingerprint": "74a4e8620b",
+   "cardFacts": [
+    "Manchester"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000148960901",
+   "title": "Traffic Engineering Apprentice - St. Albans (2027 start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/aecom.jpg",
+   "location": "St Albans, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "As a Traffic Engineering Apprentice, you'll support projects improving transport networks, working with software like AutoCAD and VISSIM. Ideal for those interested in traffic systems, sustainability, and engineering design.",
+   "bullets": [
+    "Assist with traffic data analysis and design of transport schemes",
+    "Use AutoCAD, Civil 3D, and traffic modelling software",
+    "Work on road safety, cycle lanes, and traffic signal projects"
+   ],
+   "roleLabel": "Traffic Engineering",
+   "degreeLevel": "Pursuing",
+   "degreeText": null,
+   "keySkills": [
+    "autocad",
+    "civil 3d",
+    "traffic modelling"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789116691136,
+   "firstSeenAt": 1789288695437,
+   "lastSeenAt": 1789353498251,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000148960901",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148960901",
+   "description": null,
+   "roleFingerprint": "47438ad04d",
+   "cardFacts": [
+    "St Albans"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:smartrecruiters:AECOM2:744000148962219",
+   "title": "Traffic Engineering Apprentice - London / St. Albans (2027 start)",
+   "company": "AECOM",
+   "matchedWatchlist": "AECOM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/aecom.jpg",
+   "location": "London, gb",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "As a Traffic Engineering Apprentice, you'll support projects improving transport networks, working with software like AutoCAD and VISSIM. Ideal for students with a passion for sustainable transport and engineering design.",
+   "bullets": [
+    "Assist with traffic data analysis and design of road, cycle, and public transport schemes",
+    "Use AutoCAD, Civil 3D, and traffic modelling tools for design and simulation",
+    "Participate in site visits and contribute to technical reports and project documentation"
+   ],
+   "roleLabel": "Traffic Engineering",
+   "degreeLevel": "Pursuing",
+   "degreeText": null,
+   "keySkills": [
+    "autocad",
+    "civil 3d",
+    "traffic modelling"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789116657630,
+   "firstSeenAt": 1789288695438,
+   "lastSeenAt": 1789353498251,
+   "url": "https://jobs.smartrecruiters.com/AECOM2/744000148962219",
+   "applyUrl": "https://jobs.smartrecruiters.com/AECOM2/744000148962219",
+   "description": null,
+   "roleFingerprint": "47438ad04d",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:boeing:wd1:EXTERNAL_CAREERS:JR2026520512",
+   "title": "Research and Technology Intern- Summer 2027",
+   "company": "Boeing",
+   "matchedWatchlist": "Boeing India",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/boeing.jpg",
+   "location": "GBR - Prestwick, UK",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves solving real industrial challenges in aerospace manufacturing. You'll design and test solutions, work with engineers in a state-of-the-art facility, and present your findings to senior leaders. Ideal for students passionate about engineering and innovation in aviation.",
+   "bullets": [
+    "Develop prototypes and test solutions for aerospace manufacturing",
+    "Work on real-world projects with engineering teams in a research facility",
+    "Collaborate with stakeholders and present progress to senior management"
+   ],
+   "roleLabel": "Aerospace Research",
+   "degreeLevel": null,
+   "degreeText": "BEng/MEng",
+   "keySkills": [
+    "ms office",
+    "problem solving"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789084800000,
+   "firstSeenAt": 1790255348380,
+   "lastSeenAt": 1790317337288,
+   "url": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Prestwick-UK/Research-and-Technology-Intern--Summer-2027_JR2026520512",
+   "applyUrl": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Prestwick-UK/Research-and-Technology-Intern--Summer-2027_JR2026520512",
+   "description": null,
+   "roleFingerprint": "b402a8b5c0",
+   "cardFacts": [
+    "GBR - Prestwick",
+    "Summer 2027"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -1431,6 +2601,7 @@
    "cardFacts": [
     "Glasgow"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1483,6 +2654,57 @@
     "London",
     "6 months"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:boeing:wd1:EXTERNAL_CAREERS:JR2026520518",
+   "title": "Engineering Intern - Summer 2027",
+   "company": "Boeing",
+   "matchedWatchlist": "Boeing India",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/boeing.jpg",
+   "location": "GBR - Prestwick, UK",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This internship involves supporting aerospace engineering research through structural design and analysis, working with global partners and academic institutions. Ideal for engineering students with experience in design tools and teamwork.",
+   "bullets": [
+    "Support structural design and analysis for aerospace research projects",
+    "Use plm, cad, and fem tools for engineering solutions",
+    "Collaborate with teams across the uk and global partners"
+   ],
+   "roleLabel": "Structural Design Support",
+   "degreeLevel": "UG",
+   "degreeText": "B.Sc",
+   "keySkills": [
+    "plm",
+    "cad",
+    "fem",
+    "excel",
+    "powerpoint"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789084800000,
+   "firstSeenAt": 1789106735806,
+   "lastSeenAt": 1790317337283,
+   "url": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Prestwick-UK/Engineering-Intern---Summer-2027_JR2026520518",
+   "applyUrl": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Prestwick-UK/Engineering-Intern---Summer-2027_JR2026520518",
+   "description": null,
+   "roleFingerprint": "e7a0436a45",
+   "cardFacts": [
+    "GBR - Prestwick",
+    "Summer 2027"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -1524,6 +2746,7 @@
     "GBR - Bristol",
     "6-8 weeks"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1565,6 +2788,107 @@
     "GBR - Bristol",
     "6-8 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:boeing:wd1:EXTERNAL_CAREERS:JR2026519329",
+   "title": "Aerodynamics Engineering Intern- Summer 2027",
+   "company": "Boeing",
+   "matchedWatchlist": "Boeing India",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/boeing.jpg",
+   "location": "GBR - Farnborough, UK",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This internship involves contributing to aerodynamic research at Boeing's UK facility, focusing on CFD analysis, wind tunnel testing, and tool development. Ideal for students with a passion for aerodynamics and a background in engineering or physics.",
+   "bullets": [
+    "Support aerodynamic research using CFD and wind tunnel data",
+    "Work on high-lift characteristics and flow physics analysis",
+    "Collaborate on tool development for model-based engineering"
+   ],
+   "roleLabel": "Aerodynamic Research",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "cfd"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789084800000,
+   "firstSeenAt": 1789106718071,
+   "lastSeenAt": 1790317337283,
+   "url": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Farnborough-UK/Aerodynamics-Engineering-Intern--Summer-2027_JR2026519329",
+   "applyUrl": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS/job/GBR---Farnborough-UK/Aerodynamics-Engineering-Intern--Summer-2027_JR2026519329",
+   "description": null,
+   "roleFingerprint": "3b1af13239",
+   "cardFacts": [
+    "GBR - Farnborough",
+    "Summer 2027"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:microsoft:India,United States,United Kingdom:1970393556991724",
+   "title": "Cambridge Internship Program - Robotics Systems and Control",
+   "company": "Microsoft",
+   "matchedWatchlist": "Microsoft",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/microsoft.jpg",
+   "location": "Cambridge, Cambridgeshire, United Kingdom",
+   "workplaceType": "onsite",
+   "stipend": null,
+   "duration": "12 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "algorithms"
+   ],
+   "summary": "This internship involves developing and testing robot control systems for real-world use. You'll work with simulation tools and hardware to advance robotics research. Ideal for PhD students with experience in robotics and control systems.",
+   "bullets": [
+    "Design and test robot control algorithms for real-world applications",
+    "Work with MuJoCo and IsaacSim for simulation and hardware integration",
+    "Collaborate in a multidisciplinary team on robotics research projects"
+   ],
+   "roleLabel": "Robotics Research",
+   "degreeLevel": null,
+   "degreeText": "PhD",
+   "keySkills": [
+    "mujoCo",
+    "isaacSim",
+    "python",
+    "c++",
+    "robotics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1789043887000,
+   "firstSeenAt": 1789045066247,
+   "lastSeenAt": 1790332803330,
+   "url": "https://apply.careers.microsoft.com/careers/job/1970393556991724",
+   "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556991724",
+   "description": null,
+   "roleFingerprint": "e34e0aebd5",
+   "cardFacts": [
+    "Cambridge",
+    "On-site",
+    "12 weeks"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -1611,6 +2935,55 @@
     "£25,200 / year",
     "Glasgow Campus"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129434",
+   "title": "2027 Technology Analyst Summer Internship Programme London",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst intern, you'll engage in product development, collaborate with business teams, and contribute to risk management. Ideal for students with a technical interest and problem-solving skills, this role offers hands-on experience in a global financial environment.",
+   "bullets": [
+    "Support product design and innovation using emerging technologies",
+    "Collaborate with business teams to align technical solutions with goals",
+    "Contribute to risk management and policy implementation across functions"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating 2028",
+   "keySkills": [
+    "technical knowledge",
+    "problem-solving",
+    "cross-functional collaboration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239266173,
+   "lastSeenAt": 1790300595426,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Canary-Wharf-1-Churchill-Place/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-London_JR-0000129434",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Canary-Wharf-1-Churchill-Place/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-London_JR-0000129434",
+   "description": null,
+   "roleFingerprint": "6515d02a6f",
+   "cardFacts": [
+    "United Kingdom",
+    "10 weeks"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1657,6 +3030,54 @@
     "United Kingdom",
     "10 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129510",
+   "title": "2027 Technology Analyst Summer Internship Programme Knutsford",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst intern, you'll contribute to digital platform development and infrastructure projects, working closely with teams to deliver tech solutions that support Barclays' global operations. Ideal for students with a strong interest in technology and problem-solving, this role offers hands-on experience in a collaborative environment.",
+   "bullets": [
+    "Support development of innovative tech solutions for customer needs",
+    "Collaborate with cross-functional teams on product design and integration",
+    "Based in Knutsford, UK, with potential for graduate role continuation"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating 2028",
+   "keySkills": [
+    "problem-solving",
+    "cross-functional collaboration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239248800,
+   "lastSeenAt": 1790300595423,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Knutsford-Radbroke-Hall/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Knutsford_JR-0000129510",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Knutsford-Radbroke-Hall/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Knutsford_JR-0000129510",
+   "description": null,
+   "roleFingerprint": "6f070d4950",
+   "cardFacts": [
+    "United Kingdom",
+    "10 weeks"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1714,6 +3135,146 @@
     "Glasgow Campus",
     "10 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129339",
+   "title": "2027 Technology Analyst Graduate Programme Glasgow",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/barclays.jpg",
+   "location": "Glasgow Campus",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst, you'll shape digital platforms and infrastructure, working closely with teams to deliver solutions that drive business outcomes. This role suits graduates with a strong interest in technology and problem-solving, offering hands-on experience in a dynamic environment.",
+   "bullets": [
+    "Support product design using new technologies",
+    "Collaborate with business teams on integration",
+    "Contribute to innovation and risk management"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating before Jun 2027",
+   "keySkills": [
+    "problem-solving",
+    "technical knowledge"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239236251,
+   "lastSeenAt": 1790300595422,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Glasgow-Campus/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Glasgow_JR-0000129339",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Glasgow-Campus/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Glasgow_JR-0000129339",
+   "description": null,
+   "roleFingerprint": "19fa2dde16",
+   "cardFacts": [
+    "Glasgow Campus"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129503",
+   "title": "2027 Technology Analyst Summer Internship Programme Glasgow",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "Glasgow Campus",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst intern, you'll contribute to digital platform development and infrastructure projects, working closely with teams to enhance Barclays' technology capabilities. Ideal for students with a strong interest in tech and problem-solving, this role offers hands-on experience in a collaborative environment.",
+   "bullets": [
+    "Support product development with cross-functional teams",
+    "Collaborate on innovative solutions using emerging technologies",
+    "Based in Glasgow Campus, 10-week program"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating 2028",
+   "keySkills": [
+    "problem-solving",
+    "technical knowledge",
+    "cross-functional collaboration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239235414,
+   "lastSeenAt": 1790300595422,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Glasgow-Campus/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Glasgow_JR-0000129503",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Glasgow-Campus/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Glasgow_JR-0000129503",
+   "description": null,
+   "roleFingerprint": "9fbe7810cb",
+   "cardFacts": [
+    "Glasgow Campus",
+    "10 weeks"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129190",
+   "title": "2027 Technology Analyst Graduate Programme Northampton",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/barclays.jpg",
+   "location": "United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst, you'll shape digital platforms and infrastructure, working closely with business teams to deliver innovative solutions. This role suits graduates with a strong interest in technology and problem-solving, offering hands-on experience in a dynamic environment.",
+   "bullets": [
+    "Support technology operations and product design using new technologies",
+    "Collaborate with business teams to align technical solutions with goals",
+    "Contribute to innovation and risk management across digital platforms"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating before Jun 2027",
+   "keySkills": [
+    "digital platforms"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239228797,
+   "lastSeenAt": 1790300595422,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Northampton_JR-0000129190",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Northampton_JR-0000129190",
+   "description": null,
+   "roleFingerprint": "86e29e391c",
+   "cardFacts": [
+    "United Kingdom"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1771,6 +3332,100 @@
     "United Kingdom",
     "10 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129498",
+   "title": "2027 Technology Analyst Summer Internship Programme Northampton",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/barclays.jpg",
+   "location": "United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst intern, you'll contribute to digital product development and support business teams in Northampton. Ideal for students with a passion for technology and problem-solving, this role offers hands-on experience and potential for a full-time position.",
+   "bullets": [
+    "Support technology teams in designing and innovating digital products",
+    "Collaborate with business units to align technical solutions with goals",
+    "Based in Northampton, UK, for 10 weeks with potential for full-time role"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating 2028",
+   "keySkills": [
+    "cross-functional collaboration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239218794,
+   "lastSeenAt": 1790300595421,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Northampton_JR-0000129498",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/XMLNAME-2027-Technology-Analyst-Summer-Internship-Programme-Northampton_JR-0000129498",
+   "description": null,
+   "roleFingerprint": "2251bc3adc",
+   "cardFacts": [
+    "United Kingdom",
+    "10 weeks"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:workday:barclays:wd3:External_Career_Site_Barclays:JR-0000129359",
+   "title": "2027 Technology Analyst Graduate Programme Knutsford",
+   "company": "Barclays",
+   "matchedWatchlist": "Barclays",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/barclays.jpg",
+   "location": "United Kingdom",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a Technology Analyst, you'll contribute to digital platforms and infrastructure, working across teams to deliver innovative solutions. You'll gain hands-on experience in a dynamic environment, with opportunities for growth and professional development. This role suits graduates with a strong interest in technology and problem-solving.",
+   "bullets": [
+    "Support technology operations and product design using new technologies",
+    "Collaborate with business teams to align development with strategic goals",
+    "Work in a 2-year explorer programme with three rotations"
+   ],
+   "roleLabel": "Technology Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "deadline": "2026-09-25",
+   "experience": "Graduating before Jun 2027",
+   "keySkills": [
+    "technical knowledge",
+    "problem-solving",
+    "cross-functional collaboration"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788912000000,
+   "firstSeenAt": 1790239208787,
+   "lastSeenAt": 1790239208787,
+   "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Knutsford-Radbroke-Hall/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Knutsford_JR-0000129359",
+   "applyUrl": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays/job/Knutsford-Radbroke-Hall/XMLNAME-2027-Technology-Analyst-Graduate-Programme-Knutsford_JR-0000129359",
+   "description": null,
+   "roleFingerprint": "94b8ab7af0",
+   "cardFacts": [
+    "United Kingdom"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1826,6 +3481,7 @@
     "United Kingdom",
     "10 weeks"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1872,6 +3528,7 @@
    "cardFacts": [
     "Glasgow Campus"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1927,6 +3584,7 @@
     "United Kingdom",
     "10 weeks"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -1973,6 +3631,7 @@
     "£25,200 / year",
     "United Kingdom"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2027,6 +3686,7 @@
    "cardFacts": [
     "United Kingdom"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2079,6 +3739,103 @@
     "Yeovil",
     "12 months"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:mangroup:4969143101",
+   "title": "IDI Summer 2027 Internship",
+   "company": "Man Group",
+   "matchedWatchlist": "Man Group",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/man-group.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": "4,01,000",
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql"
+   ],
+   "summary": "This internship offers hands-on experience in quantitative trading and data analysis within a global hedge fund. Interns will contribute to model development, system improvements, and strategy implementation, working closely with experienced professionals. Ideal for students with technical skills in SQL and Python, seeking real-world exposure to systematic investment processes.",
+   "bullets": [
+    "Analyze and improve trading systems using data analytics",
+    "Work with SQL and Python on quantitative models",
+    "Collaborate with portfolio managers and tech teams"
+   ],
+   "roleLabel": "Quantitative Analysis",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "sql",
+    "python",
+    "data analytics",
+    "technical skills"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788539594000,
+   "firstSeenAt": 1788540091345,
+   "lastSeenAt": 1790332795409,
+   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969143101",
+   "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969143101",
+   "description": null,
+   "roleFingerprint": "81130d6503",
+   "cardFacts": [
+    "London",
+    "Summer 2027"
+   ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:mangroup:4969142101",
+   "title": "Quant Researcher Internship",
+   "company": "Man Group",
+   "matchedWatchlist": "Man Group",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/man-group.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": "4,01,000",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This internship involves developing trading strategies using financial data and Python. Ideal for students with a background in quantitative subjects who want to contribute to research projects and gain experience in algorithmic trading.",
+   "bullets": [
+    "Analyze financial data to build trading strategies",
+    "Work with Python and statistical tools",
+    "Rotate through research and risk teams"
+   ],
+   "roleLabel": "Quantitative Research",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Mathematics/Computer Science",
+   "keySkills": [
+    "python",
+    "financial markets"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788537979000,
+   "firstSeenAt": 1788538271172,
+   "lastSeenAt": 1790332795412,
+   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969142101",
+   "applyUrl": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4969142101",
+   "description": null,
+   "roleFingerprint": "765168a4cf",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -2132,6 +3889,7 @@
    "cardFacts": [
     "Sydney"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2182,6 +3940,7 @@
     "GB-NU-CRAMLINGTON-ATLEY WAY NORTH NELSON INDUSTRIAL ESTATE",
     "12 months"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2229,6 +3988,7 @@
    "cardFacts": [
     "United Kingdom"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2284,6 +4044,113 @@
     "Sydney",
     "12 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:towerresearchcapital:8037824",
+   "title": "Quantitative Trader/Researcher Graduate Programme 2027",
+   "company": "Tower Research Capital",
+   "matchedWatchlist": "Tower Research Capital",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/tower-research-capital.jpg",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "machine learning",
+    "fpga",
+    "algorithms"
+   ],
+   "summary": "This role involves analyzing market data to identify trading patterns and developing algorithms for high or mid-frequency trading. Ideal for students with a master's or PhD in quantitative fields and experience in Python and C++. The role offers mentorship and contributes to real trading strategies.",
+   "bullets": [
+    "Analyze market data to find patterns for trading strategies",
+    "Develop and deploy high or mid-frequency trading algorithms",
+    "Work with a mentor to improve existing trading models",
+    "Contribute to libraries for data analysis and market research"
+   ],
+   "roleLabel": "Trading Research",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "c++",
+    "data analysis",
+    "trading algorithms"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788277515000,
+   "firstSeenAt": 1788278665214,
+   "lastSeenAt": 1790332821391,
+   "url": "https://www.tower-research.com/open-positions/?gh_jid=8037824",
+   "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8037824",
+   "description": null,
+   "roleFingerprint": "804a16f73d",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:towerresearchcapital:8037860",
+   "title": "Quantitative Trader/Researcher Summer Internship 2027 (2028 Graduates)",
+   "company": "Tower Research Capital",
+   "matchedWatchlist": "Tower Research Capital",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/tower-research-capital.jpg",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "machine learning",
+    "fpga",
+    "algorithms"
+   ],
+   "summary": "This internship involves developing and refining trading algorithms, analyzing market data, and building analytical tools. It suits students with a background in quantitative fields and programming skills. The role offers hands-on experience in a fast-paced trading environment with mentorship and collaborative opportunities.",
+   "bullets": [
+    "Design and deploy high or mid-frequency trading algorithms",
+    "Analyze market data to explore new trading ideas",
+    "Build tools for data pattern analysis",
+    "Work with a mentor to enhance existing strategies"
+   ],
+   "roleLabel": "Trading Research",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Mathematics/Statistics",
+   "keySkills": [
+    "python",
+    "c++",
+    "data analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1788277417000,
+   "firstSeenAt": 1788278665217,
+   "lastSeenAt": 1790332821392,
+   "url": "https://www.tower-research.com/open-positions/?gh_jid=8037860",
+   "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8037860",
+   "description": null,
+   "roleFingerprint": "2b9e9773ef",
+   "cardFacts": [
+    "London",
+    "Summer 2027"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -2332,6 +4199,7 @@
    "cardFacts": [
     "Swindon"
    ],
+   "category": "hardware",
    "region": "GB"
   },
   {
@@ -2384,6 +4252,7 @@
     "London",
     "18 months"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2435,6 +4304,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2481,6 +4351,7 @@
     "London",
     "Hybrid"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2536,6 +4407,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2581,6 +4453,7 @@
     "London",
     "Remote"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2630,6 +4503,56 @@
     "London",
     "Remote"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:oraclecloud:ekbq.fa.em2.oraclecloud.com:1941",
+   "title": "2027 Public Markets Quants Internship Programme",
+   "company": "Schroders",
+   "matchedWatchlist": "Schroders",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/schroders.jpg",
+   "location": "London, United Kingdom",
+   "workplaceType": null,
+   "stipend": "£37,000",
+   "duration": "10 weeks",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "excel"
+   ],
+   "summary": "This internship offers hands-on experience in quantitative investment analysis, working with financial data and models. Ideal for students with strong analytical skills and an interest in financial markets. You'll rotate between different quant teams and contribute to real projects.",
+   "bullets": [
+    "Analyze financial data and market trends to support investment strategies",
+    "Use python and excel to model and interpret complex datasets",
+    "Rotate between quant teams to gain exposure to different investment approaches"
+   ],
+   "roleLabel": "Quantitative Analysis",
+   "degreeLevel": "UG",
+   "degreeText": "Mathematics",
+   "keySkills": [
+    "python",
+    "excel"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1787875200000,
+   "firstSeenAt": 1789434569672,
+   "lastSeenAt": 1790093955004,
+   "url": "https://ekbq.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/1941",
+   "applyUrl": "https://ekbq.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/1941",
+   "description": null,
+   "roleFingerprint": "2529ac925f",
+   "cardFacts": [
+    "£37,000",
+    "London",
+    "10 weeks"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -2690,6 +4613,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2739,6 +4663,56 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:7215943",
+   "title": "Campus Systems Engineer (Full-Time)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/jump-trading.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "linux"
+   ],
+   "summary": "This role involves optimizing trading systems and solving technical issues. You'll work with linux, python, and network infrastructure to support low latency trading applications. Ideal for students with a technical background and interest in financial systems.",
+   "bullets": [
+    "Optimize trading environment and solve system issues",
+    "Work with linux, python, and network infrastructure",
+    "Collaborate with traders and risk teams on production changes"
+   ],
+   "roleLabel": "Systems Engineer",
+   "degreeLevel": null,
+   "degreeText": "Computer Science/Engineering",
+   "keySkills": [
+    "linux",
+    "python",
+    "networking",
+    "shell scripts"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1787150917000,
+   "firstSeenAt": 1787502639105,
+   "lastSeenAt": 1790332792205,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=7215943",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7215943",
+   "description": null,
+   "roleFingerprint": "44212ce129",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2791,6 +4765,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2845,6 +4820,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2894,6 +4870,7 @@
     "Glasgow",
     "3 months"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -2953,6 +4930,61 @@
     "London",
     "6-12 months"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:towerresearchcapital:8113986",
+   "title": "Quantitative Research Internship - 6 Months, Central Execution Research",
+   "company": "Tower Research Capital",
+   "matchedWatchlist": "Tower Research Capital",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/tower-research-capital.jpg",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "6 months",
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "rust",
+    "machine learning",
+    "fpga"
+   ],
+   "summary": "This internship involves analyzing market data to uncover patterns in trading costs and liquidity. You'll build tools and simulations to support execution strategies and work with large datasets to develop robust analysis pipelines. Ideal for students with strong math and programming skills interested in quantitative trading and market microstructure.",
+   "bullets": [
+    "Analyzing market microstructure for liquidity patterns and trading costs",
+    "Building tools and simulations for execution analysis and decision support",
+    "Working with large datasets to design data-processing pipelines",
+    "Contributing to research libraries and production workflows"
+   ],
+   "roleLabel": "Execution research",
+   "degreeLevel": "PG",
+   "degreeText": "PhD",
+   "keySkills": [
+    "python",
+    "c++",
+    "rust",
+    "machine learning"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1786539154000,
+   "firstSeenAt": 1787497060772,
+   "lastSeenAt": 1790332821390,
+   "url": "https://www.tower-research.com/open-positions/?gh_jid=8113986",
+   "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8113986",
+   "description": null,
+   "roleFingerprint": "24f923f381",
+   "cardFacts": [
+    "London",
+    "6 months"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -3003,6 +5035,153 @@
     "London",
     "12 weeks"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:8050801",
+   "title": "Campus Quantitative Trader (Full-Time)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/jump-trading.png",
+   "location": "London; Amsterdam",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves developing trading strategies using market data and collaborating with traders on global financial markets. Ideal for students with strong analytical skills and an interest in quantitative finance.",
+   "bullets": [
+    "Analyze market data to build trading strategies",
+    "Work with traders on global financial markets",
+    "Participate in mock trading and risk training"
+   ],
+   "roleLabel": "Quantitative Trader",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Mathematics/Physics/Computer Science",
+   "keySkills": [
+    "probabilistic thinking",
+    "mathematical reasoning",
+    "programming"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1786165309000,
+   "firstSeenAt": 1787502639099,
+   "lastSeenAt": 1790332792202,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=8050801",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8050801",
+   "description": null,
+   "roleFingerprint": "0361ac0a6a",
+   "cardFacts": [
+    "London; Amsterdam"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:8050796",
+   "title": "Campus Quantitative Researcher (Full-Time)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/jump-trading.png",
+   "location": "London; Amsterdam",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "machine learning",
+    "algorithms"
+   ],
+   "summary": "This role involves building predictive models and developing trading algorithms using big data and machine learning. It suits students with strong math and programming skills who are eager to learn and apply advanced techniques in a research-driven environment.",
+   "bullets": [
+    "Build predictive models from big data and develop algorithms for automated trading",
+    "Use python, r, c++, and machine learning on a global supercomputer",
+    "Train in trading, programming, and quant research with expert mentors"
+   ],
+   "roleLabel": "Quantitative research",
+   "degreeLevel": "UG/PG",
+   "degreeText": "mathematics/statistics",
+   "keySkills": [
+    "python",
+    "r",
+    "c++",
+    "machine learning",
+    "statistics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1786165309000,
+   "firstSeenAt": 1787502639091,
+   "lastSeenAt": 1790332792195,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=8050796",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8050796",
+   "description": null,
+   "roleFingerprint": "1dcc1ad7d1",
+   "cardFacts": [
+    "London; Amsterdam"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:7217856",
+   "title": "Campus Crypto Researcher (Full-Time)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/jump-trading.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "algorithms"
+   ],
+   "summary": "This role involves analyzing crypto trends, translating them into actionable strategies, and collaborating with senior researchers and engineers. Ideal for students passionate about blockchain and eager to contribute to cutting-edge projects.",
+   "bullets": [
+    "Analyze crypto trends and translate into product or investment strategies",
+    "Collaborate with senior researchers and engineers on technical projects",
+    "Produce reports and insights to guide strategic decisions and partnerships"
+   ],
+   "roleLabel": "Crypto Research",
+   "degreeLevel": null,
+   "degreeText": "Computer Science/Mathematics/Physics",
+   "keySkills": [
+    "blockchain development",
+    "distributed systems",
+    "consensus algorithms",
+    "smart contracts",
+    "cryptography"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1786165285000,
+   "firstSeenAt": 1787502639080,
+   "lastSeenAt": 1790332792187,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=7217856",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=7217856",
+   "description": null,
+   "roleFingerprint": "2f893ae219",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -3054,6 +5233,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -3105,6 +5285,54 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:8000323",
+   "title": "Campus Systems Engineer (Intern)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "gemini-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/jump-trading.png",
+   "location": "London; Amsterdam",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "linux"
+   ],
+   "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. You will be working directly with our experienced systems and network engineers, gaining broad technical and operational knowledge across all aspects of the trading platform and technology stack. We are looking for bright and highly motivated individuals that want to grow their knowledge of systems and networking, understanding of modern trading at scale, and practical…",
+   "bullets": [
+    "Monitor health and performance of the live trading platform",
+    "Troubleshoot complex system and networking infrastructure issues",
+    "Build automation scripts for the production environment using Linux"
+   ],
+   "roleLabel": "Systems engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "linux"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1784937603000,
+   "firstSeenAt": 1785766505719,
+   "lastSeenAt": 1790332792208,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=8000323",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8000323",
+   "description": null,
+   "roleFingerprint": "d5e962eef2",
+   "cardFacts": [
+    "London; Amsterdam"
+   ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -3163,6 +5391,104 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:8059384",
+   "title": "Campus Quantitative Researcher (M1/M2 Intern)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "gemini-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/jump-trading.png",
+   "location": "London; Paris",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "c++",
+    "machine learning",
+    "algorithms"
+   ],
+   "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. Constant innovation requires fearlessness, creativity, intellectual honesty, and a relentless competitive streak. At Jump you will have the opportunity to contribute in a blend of three roles – quant researcher / data scientist, trader, and software developer – based on your incoming skills and background, interest and curiosity, and the new skills and industry knowledge…",
+   "bullets": [
+    "Undertake an intensive research project and hands-on training with trading mentors",
+    "C++ and Python",
+    "Designed for students from French schools requiring M1/M2 research internships"
+   ],
+   "roleLabel": "Quantitative research",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "c++",
+    "python",
+    "machine learning"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1784937603000,
+   "firstSeenAt": 1785766505709,
+   "lastSeenAt": 1790332792198,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=8059384",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8059384",
+   "description": null,
+   "roleFingerprint": "7df9a9c9b1",
+   "cardFacts": [
+    "London; Paris"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:jumptrading:8010307",
+   "title": "Campus Quantitative Researcher (Intern)",
+   "company": "Jump Trading",
+   "matchedWatchlist": "Jump Trading",
+   "isTech": true,
+   "roleSource": "gemini-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/jump-trading.png",
+   "location": "London; Amsterdam",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "c++",
+    "machine learning"
+   ],
+   "summary": "Jump Trading Group is committed to world class research. We empower exceptional talents in Mathematics, Physics, and Computer Science to seek scientific boundaries, push through them, and apply cutting edge research to global financial markets. The quant research internship is an intensive 10-week program focused on enhancing your quantitative and programming skills, as well as letting you experience what it’s like to be a full-time quant researcher at Jump. Applying lessons from training, you will first work with fellow interns to develop your own predictive models and automated trading strategies for live…",
+   "bullets": [
+    "Develop predictive models and automated trading strategies for live trading",
+    "C++ and Python",
+    "10-week program involving rotations with multiple trading teams"
+   ],
+   "roleLabel": "Quantitative research",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "c++",
+    "python",
+    "machine learning"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1784937603000,
+   "firstSeenAt": 1785766505708,
+   "lastSeenAt": 1790332792197,
+   "url": "https://www.jumptrading.com/hr/job?gh_jid=8010307",
+   "applyUrl": "https://www.jumptrading.com/hr/job?gh_jid=8010307",
+   "description": null,
+   "roleFingerprint": "f07a000d13",
+   "cardFacts": [
+    "London; Amsterdam"
+   ],
+   "category": "misc",
    "region": "GB"
   },
   {
@@ -3215,6 +5541,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -3273,6 +5600,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "hardware",
    "region": "GB"
   },
   {
@@ -3322,6 +5650,7 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
    "region": "GB"
   },
   {
@@ -3376,6 +5705,7 @@
    "cardFacts": [
     "Bristol"
    ],
+   "category": "hardware",
    "region": "GB"
   },
   {
@@ -3430,6 +5760,111 @@
    "cardFacts": [
     "London"
    ],
+   "category": "software",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:oldmissioncapital:7796058003",
+   "title": "Quantitative Trader – 2027 Graduate Program (August Start)",
+   "company": "Old Mission Capital",
+   "matchedWatchlist": "Old Mission Capital",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/old-mission-capital.png",
+   "location": "London",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "matlab"
+   ],
+   "summary": "This role involves analyzing financial data to find trading opportunities using python and c++. It suits students with quantitative backgrounds looking to work in a team environment in london.",
+   "bullets": [
+    "Analyze financial data to identify trading opportunities",
+    "Use python and c++ for quantitative modeling",
+    "Work in london with a team of traders"
+   ],
+   "roleLabel": "Quantitative trading",
+   "degreeLevel": "UG/PG",
+   "degreeText": "computer science/engineering",
+   "keySkills": [
+    "python",
+    "c++"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": null,
+   "postedAt": 1784008953000,
+   "firstSeenAt": 1787502644332,
+   "lastSeenAt": 1790332805099,
+   "url": "https://www.oldmissioncapital.com/careers/?gh_jid=7796058003",
+   "applyUrl": "https://www.oldmissioncapital.com/careers/?gh_jid=7796058003",
+   "description": null,
+   "roleFingerprint": "4e10536327",
+   "cardFacts": [
+    "London"
+   ],
+   "category": "misc",
+   "region": "GB"
+  },
+  {
+   "id": "ats:greenhouse:point72:7297657002",
+   "title": "Quantitative Researcher - Intern",
+   "company": "Point72",
+   "matchedWatchlist": "Point72",
+   "isTech": true,
+   "roleSource": "gemini-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/point72.png",
+   "location": "London, Paris, Hong Kong, Tokyo",
+   "workplaceType": null,
+   "stipend": "$1,20,000 – $1,80,000 / year",
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "c#",
+    "matlab",
+    "perl"
+   ],
+   "summary": "This is an opportunity for students and researchers of advanced data modeling and statistical learning methods to apply these techniques to market prediction and systematic trading. Strong analytical and quantitative skills The annual base salary is $120,000-$180,000 (USD) which will be prorated based on internship start and end date. Actual compensation offered to the successful candidate may vary from posted hiring range based upon geographic location, work experience, education, and/or skill level, among other things.",
+   "bullets": [
+    "Pre-process large datasets to prepare them for market prediction models",
+    "Apply advanced statistical learning methods to systematic trading strategies",
+    "Write code using C++, Java, Python, R, or MATLAB"
+   ],
+   "roleLabel": "Quantitative research",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "c++",
+    "java",
+    "python",
+    "r",
+    "matlab"
+   ],
+   "stipendStatus": "paid",
+   "postedText": null,
+   "postedAt": 1783984964000,
+   "firstSeenAt": 1785766512304,
+   "lastSeenAt": 1790332809603,
+   "url": "https://boards.greenhouse.io/point72/jobs/7297657002?gh_jid=7297657002",
+   "applyUrl": "https://boards.greenhouse.io/point72/jobs/7297657002?gh_jid=7297657002",
+   "description": null,
+   "roleFingerprint": "be5e133b66",
+   "cardFacts": [
+    "$120,000 – $180,000 / year",
+    "London"
+   ],
+   "category": "misc",
    "region": "GB"
   }
  ]
