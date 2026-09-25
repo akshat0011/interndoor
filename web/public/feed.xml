@@ -6,7 +6,28 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 25 Sep 2026 09:45:24 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 10:03:06 GMT</lastBuildDate>
+  <item>
+    <title>AI Engineer — UST</title>
+    <link>https://interndoor.com/jobs/ust-ai-engineer-4441090818</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ust-ai-engineer-4441090818</guid>
+    <pubDate>Fri, 25 Sep 2026 10:03:06 GMT</pubDate>
+    <description>Company: UST · Location: Bengaluru, Karnataka, India · Duration: 3-5 years
+• Build AI agents and multi-agent systems with LangGraph and LangChain
+• Develop REST APIs and event-driven pipelines for real-time AI services
+• Automate testing and releases using Jenkins CI/CD and Git
+• Deploy AI applications in enterprise environments with security best practices</description>
+  </item>
+  <item>
+    <title>GenAI Data scientist — Tata Consultancy Services</title>
+    <link>https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785</guid>
+    <pubDate>Fri, 25 Sep 2026 09:52:09 GMT</pubDate>
+    <description>Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India
+• Develop AI agents and chatbots using LangGraph, ADK, and React JS
+• Work with LLMs, RAG, and vector databases for GenAI applications
+• Deploy and optimize models with LangChain, Python, and TypeScript</description>
+  </item>
   <item>
     <title>3D Artist Intern — National Technology Centre for Ports, Waterways and Coasts (NTCPWC)</title>
     <link>https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-3d-artist-intern-4470304162</link>
@@ -16,6 +37,16 @@
 • Create and optimize 3D models, textures, and environments for simulations and visualizations
 • Work with Unity developers and designers on real-time 3D projects and digital twins
 • Use Blender, Maya, or similar tools to build assets for VR/AR and GIS applications</description>
+  </item>
+  <item>
+    <title>Software Engineer, Cloud Site Reliability (SRE) — Icertis</title>
+    <link>https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486</guid>
+    <pubDate>Fri, 25 Sep 2026 09:43:26 GMT</pubDate>
+    <description>Company: Icertis · Location: Pune Division, Maharashtra, India
+• Troubleshoot and maintain cloud applications using Azure and AKS
+• Collaborate with DevOps and security teams on system improvements
+• Manage cloud environments and ensure compliance with policies</description>
   </item>
   <item>
     <title>Manager, Agentic AI Business Solutions, Neural Nexus — Amgen</title>
@@ -289,6 +320,16 @@
 • Implement AI-driven data quality and governance frameworks for enterprise data</description>
   </item>
   <item>
+    <title>Graduate Engineer, Software — Barry-Wehmiller</title>
+    <link>https://interndoor.com/jobs/barry-wehmiller-graduate-engineer-software-ats-workday-barrywehmiller-wd1-bwcareers-r022929</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barry-wehmiller-graduate-engineer-software-ats-workday-barrywehmiller-wd1-bwcareers-r022929</guid>
+    <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Company: Barry-Wehmiller · Location: Chennai, India
+• Troubleshoot AS400 applications and support system upgrades
+• Work with RPG/COBOL and DB2/400 databases
+• Collaborate with business teams on data migrations</description>
+  </item>
+  <item>
     <title>Associate Engineer — Micron Technology</title>
     <link>https://interndoor.com/jobs/micron-technology-associate-engineer-ats-workday-micron-wd1-external-jr107841</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/micron-technology-associate-engineer-ats-workday-micron-wd1-external-jr107841</guid>
@@ -467,46 +508,6 @@
 • Develop cloud-based applications for internal customers
 • Work with customer data and build scalable backend systems
 • Implement CI/CD pipelines and application monitoring tools</description>
-  </item>
-  <item>
-    <title>Software Engineer — Cisco</title>
-    <link>https://interndoor.com/jobs/cisco-software-engineer-4471616514</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-4471616514</guid>
-    <pubDate>Thu, 24 Sep 2026 15:52:10 GMT</pubDate>
-    <description>Company: Cisco · Location: Bengaluru, Karnataka, India
-• Develop features for policy and vulnerability management tools
-• Work with React, Angular, or similar frameworks
-• Collaborate on agile projects with guidance from senior engineers</description>
-  </item>
-  <item>
-    <title>Clinical Data Science Programmer — ICON plc</title>
-    <link>https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253</guid>
-    <pubDate>Thu, 24 Sep 2026 15:22:10 GMT</pubDate>
-    <description>Company: ICON plc · Location: Bengaluru, Karnataka, India
-• Develop and validate statistical programming code for clinical trial data analysis
-• Collaborate with data scientists and statisticians on analytical needs
-• Ensure compliance with regulatory standards in programming practices</description>
-  </item>
-  <item>
-    <title>Software Engineer — Qualys</title>
-    <link>https://interndoor.com/jobs/qualys-software-engineer-4469687634</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualys-software-engineer-4469687634</guid>
-    <pubDate>Thu, 24 Sep 2026 15:09:33 GMT</pubDate>
-    <description>Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years
-• Develop and debug security software for Windows platform
-• Use C++ and Windows internals knowledge in Visual Studio
-• Collaborate with engineers on scalable security platform</description>
-  </item>
-  <item>
-    <title>Java Backend Developer — Capgemini Engineering</title>
-    <link>https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630</guid>
-    <pubDate>Thu, 24 Sep 2026 15:02:42 GMT</pubDate>
-    <description>Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India
-• Develops network systems and connected applications for wireless, satellite, and fixed networks
-• Works with IoT, 5G, edge computing, and Telco Cloud platforms
-• Collaborates with customers and teams to interpret needs and deliver solutions</description>
   </item>
 </channel>
 </rss>
