@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471891723",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471891723",
+      "title": "Software Engr I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop and maintain software applications and systems\n• Work with Java, C#, or Python in cross-functional teams\n• Collaborate on projects that impact industry solutions",
+      "date_published": "2026-09-25T12:03:07.661Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-wireless-systems-test-engineer-wlan-and-edge-ai-4443875384",
+      "url": "https://interndoor.com/jobs/qualcomm-wireless-systems-test-engineer-wlan-and-edge-ai-4443875384",
+      "title": "Wireless Systems Test Engineer (WLAN & Edge AI) — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Chennai, Tamil Nadu, India\n• Design and execute test plans for WLAN features and networking products\n• Develop Python scripts for test automation and log analysis\n• Validate AI/ML features on edge devices and wireless systems",
+      "date_published": "2026-09-25T12:01:25.733Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cyient-c-qt-developer-4432776178",
+      "url": "https://interndoor.com/jobs/cyient-c-qt-developer-4432776178",
+      "title": "C++ QT Developer — Cyient",
+      "content_text": "Company: Cyient · Location: Pune/Pimpri-Chinchwad Area\n• Design real-time embedded software using C++ and QT for automotive systems\n• Implement multithreaded applications with synchronization mechanisms\n• Debug race conditions, deadlocks, and memory leaks in real-time environments",
+      "date_published": "2026-09-25T11:59:18.366Z",
+      "authors": [
+        {
+          "name": "Cyient"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/qualcomm-pe-cpu-software-and-hardware-co-design-engineer-ml-systems-4443886339",
       "url": "https://interndoor.com/jobs/qualcomm-pe-cpu-software-and-hardware-co-design-engineer-ml-systems-4443886339",
       "title": "PE- CPU Software & Hardware Co-Design Engineer (ML Systems) — Qualcomm",
@@ -26,18 +62,6 @@
       "authors": [
         {
           "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-fbs-agile-dev-team-member-iv-guidewire-policycenter-4460753001",
-      "url": "https://interndoor.com/jobs/capgemini-fbs-agile-dev-team-member-iv-guidewire-policycenter-4460753001",
-      "title": "FBS Agile Dev Team Member IV - Guidewire PolicyCenter — Capgemini",
-      "content_text": "Company: Capgemini · Location: Hyderabad, Telangana, India · Duration: 4-6 years\n• Write and refine user stories with clear acceptance criteria\n• Execute TDD and BDD to build in quality\n• Collaborate with Product Owner to confirm code and tests",
-      "date_published": "2026-09-25T11:10:14.841Z",
-      "authors": [
-        {
-          "name": "Capgemini"
         }
       ]
     },
@@ -126,30 +150,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/ust-associate-iii-vlsi-4412895205",
-      "url": "https://interndoor.com/jobs/ust-associate-iii-vlsi-4412895205",
-      "title": "Associate III - VLSI — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Develop verification plans for PMBUS and AVS interfaces\n• Build UVM environments for SOC integration testing\n• Perform root cause analysis at flop level for GLS verification",
-      "date_published": "2026-09-25T10:38:23.898Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-consultant-sap-dmc-consultant-job-4467539691",
-      "url": "https://interndoor.com/jobs/yash-technologies-consultant-sap-dmc-consultant-job-4467539691",
-      "title": "Consultant - SAP DMC Consultant Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Hyderabad, Telangana, India\n• Configure and maintain sap digital manufacturing components\n• Collaborate with it and operations teams on system integrations\n• Monitor and resolve sap digital manufacturing process issues",
-      "date_published": "2026-09-25T10:38:02.769Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/yash-technologies-contractor-sap-basis-hana-job-4467559340",
       "url": "https://interndoor.com/jobs/yash-technologies-contractor-sap-basis-hana-job-4467559340",
       "title": "Contractor - SAP Basis HANA Job — YASH Technologies",
@@ -174,71 +174,11 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/capgemini-fbs-agile-dev-team-member-iv-guidewire-policycenter-4460732978",
-      "url": "https://interndoor.com/jobs/capgemini-fbs-agile-dev-team-member-iv-guidewire-policycenter-4460732978",
-      "title": "FBS Agile Dev Team Member IV - Guidewire PolicyCenter — Capgemini",
-      "content_text": "Company: Capgemini · Location: Pune Division, Maharashtra, India · Duration: 4-6 years\n• Write and refine user stories with clear acceptance criteria\n• Execute TDD and BDD to build in quality\n• Collaborate with Product Owner to confirm code and tests",
-      "date_published": "2026-09-25T10:32:43.041Z",
-      "authors": [
-        {
-          "name": "Capgemini"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/yash-technologies-software-engineer-edi-implementation-job-4467561283",
       "url": "https://interndoor.com/jobs/yash-technologies-software-engineer-edi-implementation-job-4467561283",
       "title": "Software Engineer - EDI Implementation Job — YASH Technologies",
       "content_text": "Company: YASH Technologies · Location: Bengaluru, Karnataka, India · Duration: 1-4 years\n• Configure edis maps and protocols for new trading partners\n• Collaborate with sales and it teams on go-live readiness\n• Troubleshoot and resolve edi implementation issues",
       "date_published": "2026-09-25T10:31:02.952Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-associate-consultant-jaggaer-job-4467555378",
-      "url": "https://interndoor.com/jobs/yash-technologies-associate-consultant-jaggaer-job-4467555378",
-      "title": "Associate Consultant - JAGGAER Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Hyderabad, Telangana, India\n• Resolve incidents and service requests for DocuSign, SmartSolve, TrackWise, and JAGGAER\n• Use ServiceNow or similar tools for ticket triage and resolution within SLA\n• Collaborate with infra and vendor teams on complex troubleshooting",
-      "date_published": "2026-09-25T10:30:44.745Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-associate-consultant-qad-job-4467546554",
-      "url": "https://interndoor.com/jobs/yash-technologies-associate-consultant-qad-job-4467546554",
-      "title": "Associate Consultant - QAD Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Pune/Pimpri-Chinchwad Area\n• Support QAD systems with development, enhancements, and troubleshooting\n• Work with .NETUI, PROGRESS database, and QAD versions SE & EE\n• Collaborate on complex QRF, Browses, and data uploads via Excelerator",
-      "date_published": "2026-09-25T10:26:28.549Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-associate-consultant-sap-dmc-job-4467539679",
-      "url": "https://interndoor.com/jobs/yash-technologies-associate-consultant-sap-dmc-job-4467539679",
-      "title": "Associate Consultant - SAP DMC Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Hyderabad, Telangana, India\n• Configure sap digital manufacturing components like pods and work centers\n• Monitor processes and resolve integration issues with sap and non-sap systems\n• Develop documentation and support materials for manufacturing execution",
-      "date_published": "2026-09-25T10:25:59.597Z",
-      "authors": [
-        {
-          "name": "YASH Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/yash-technologies-consultant-vxrail-job-4468525575",
-      "url": "https://interndoor.com/jobs/yash-technologies-consultant-vxrail-job-4468525575",
-      "title": "Consultant - VxRail Job — YASH Technologies",
-      "content_text": "Company: YASH Technologies · Location: Bengaluru, Karnataka, India · Duration: 0-3 years\n• Support VxRail clusters with health checks, performance tuning, and emergency updates\n• Manage backup and restoration using Avamar and Data Domain systems\n• Handle high-severity incidents and data recovery with vendor support\n• Work in a global team with on-call shifts and US business hours",
-      "date_published": "2026-09-25T10:19:52.995Z",
       "authors": [
         {
           "name": "YASH Technologies"
@@ -558,18 +498,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471857391",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471857391",
-      "title": "Software Engr I — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop and maintain software systems for industrial automation\n• Use c++ and python in a team of 15 engineers\n• Work on projects with real-world impact in manufacturing",
-      "date_published": "2026-09-25T06:11:44.597Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/visa-software-engineer-1-year-exp-4471856258",
       "url": "https://interndoor.com/jobs/visa-software-engineer-1-year-exp-4471856258",
       "title": "Software Engineer (1 year Exp) — Visa",
@@ -599,6 +527,78 @@
       "title": "Full Stack Engineer — Accenture in India",
       "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Build end-to-end features from user experience to backend code\n• Work with Spring Boot and RESTful APIs in microservices architecture\n• Collaborate with cross-functional teams and contribute to code reviews",
       "date_published": "2026-09-25T02:59:48.905Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-resources-analyst-4448397111",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-resources-analyst-4448397111",
+      "title": "S&C Global Network - AI - Resources -Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Analyze datasets to find patterns and trends for efficiency gains\n• Build and deploy analytics models for client problems\n• Code to solve complex issues and extract business insights",
+      "date_published": "2026-09-25T02:49:20.524Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-4455954411",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-4455954411",
+      "title": "S&C Global Network - AI - Software & Platform - Gen AI - Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Analyze data to solve complex business problems using AI algorithms\n• Work with teams to build data pipelines and manage large databases\n• Based in gurugram, collaborate with global consultants on client projects",
+      "date_published": "2026-09-25T02:48:49.118Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-healthcare-ccai-analyst-4456330193",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-healthcare-ccai-analyst-4456330193",
+      "title": "S&C Global Network - AI - Healthcare CCAI -Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India · Duration: 1-4 years\n• Analyze customer conversations and predict user behavior\n• Build conversational ai and recommendation systems\n• Work on real-time analytics for contact centers\n• Based in gurugram, haryana, india",
+      "date_published": "2026-09-25T02:48:26.858Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-resources-data-science-analyst-4455951428",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-resources-data-science-analyst-4455951428",
+      "title": "S&C Global Network - AI - Resources - Data Science Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India · Duration: 1-5 years\n• Build predictive models and recommendation systems using Python and SQL\n• Deploy GenAI solutions with LangChain and LlamaIndex on Azure or AWS\n• Create dashboards in PowerBI for business impact analysis",
+      "date_published": "2026-09-25T02:48:01.692Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-copy-01-4470458072",
+      "url": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-copy-01-4470458072",
+      "title": "Application Support Engineer Copy 01 — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Design and optimize prompts for LLMs to support infrastructure and application services\n• Build Python microservices and scripts for data processing and model orchestration\n• Collaborate with SMEs to create GenAI workflows with chunking and token optimization",
+      "date_published": "2026-09-25T02:47:19.487Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448376575",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4448376575",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Develop and maintain data integration pipelines using SAP BusinessObjects Data Services\n• Design scalable ETL processes for structured and semi-structured data systems\n• Implement AI-driven data quality and governance frameworks for enterprise data",
+      "date_published": "2026-09-25T02:46:43.620Z",
       "authors": [
         {
           "name": "Accenture in India"
