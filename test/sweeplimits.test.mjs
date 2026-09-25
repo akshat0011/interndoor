@@ -53,7 +53,8 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('entry: no page cap of its own', entry?.maxPages, undefined);
   check('entry: no per-employer open cap', entry?.maxOpensPerCompany, undefined);
   check('entry: no all-old page stop', entry?.stopAfterPageOlderThanHours, undefined);
-  check('entry: no interval, every 30-minute tick', entry?.intervalMinutes, undefined);
+  // Every hour since 25 Sep 2026 — his instruction ("full time every 1 hour").
+  check('entry: every hour', entry?.intervalMinutes, 60);
   check('entry: walks to the global safety cap', pageCapFor(entry ?? {}, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
   check('entry: opens every card its gates approve', openCapFor(entry ?? {}), 0);
   check('and no page age can stop it early', staleCutoffFor(india), null);
@@ -62,9 +63,8 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
 console.log('\n== the US carries all three, at the asked-for values ==');
 {
   check('US is declared', !!us, true);
-  // Every 30 minutes since 25 Sep 2026 (config _cadence_note: the public
-  // search's 1,000-result ceiling).
-  check('every 30 minutes', us.intervalMinutes, 30);
+  // Hourly — his instruction of 25 Sep 2026 (config _cadence_note).
+  check('hourly', us.intervalMinutes, 60);
   /* Raised 20 -> 40 on 9 Sep 2026. 15% of healthy 2h-window walks were filling
      the 20-page budget before exhausting the window, so anything past page 20 on
      those runs went unread. The cap is a ceiling, not a target — the median walk
