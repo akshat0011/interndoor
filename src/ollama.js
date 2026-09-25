@@ -617,7 +617,7 @@ const FACTS_SCHEMA = {
  * The application deadline and the experience requirement, for postings that
  * have been enriched (store.needingFacts). Runs at the END of a scan, after the
  * channel posts, so nothing waits on it — what it finds is published by the
- * next run — and as the backfill (`npm run enrich -- --facts`).
+ * next run. New postings only; see FACTS_SINCE in src/index.js.
  *
  * A posting that could not state either one (couldStateFacts) is answered
  * without the model: the guards would refuse anything it said.
