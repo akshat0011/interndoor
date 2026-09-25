@@ -603,3 +603,284 @@ export function jobIdFromUrl(url) {
   return null;
 }
 
+
+/* ----------------------------------------- application deadline, experience */
+
+/*
+ * The model PROPOSES a deadline and an experience requirement; these decide
+ * whether the posting actually states them. Same contract as groundEnrichment's
+ * degree check: a value that cannot be found in the posting's own words is
+ * dropped, never repaired, because "Apply by" a date the employer never wrote
+ * sends a student away from a role that is still open.
+ */
+
+const MONTH_NUMBER = {
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8,
+  september: 9, october: 10, november: 11, december: 12,
+  jan: 1, feb: 2, mar: 3, apr: 4, jun: 6, jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12,
+};
+const MONTH = String.raw`(${Object.keys(MONTH_NUMBER).sort((a, b) => b.length - a.length).join('|')})`;
+
+/* A full date, year included. A date written without a year ("Apply by
+   November 15th") is deliberately not one: supplying the year would be us
+   stating something the posting did not. */
+const DATE_FORMS = [
+  // October 7, 2026 · Oct 31st, 2026 · Oct 30th 2026
+  [new RegExp(String.raw`\b${MONTH}\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b`), (m) => [[+m[3], MONTH_NUMBER[m[1]], +m[2]]]],
+  // 11 Sep 2026 · 25 September 2026 · 15th of October, 2026
+  [new RegExp(String.raw`\b(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+)?${MONTH},?\s+(\d{4})\b`), (m) => [[+m[3], MONTH_NUMBER[m[2]], +m[1]]]],
+  // 2026-10-16
+  [/\b(\d{4})-(\d{2})-(\d{2})\b/, (m) => [[+m[1], +m[2], +m[3]]]],
+  // 10/16/26 · 11.09.2026 — read by the region's convention, see numericDate
+  [/\b(\d{1,2})([/.-])(\d{1,2})\2(\d{4}|\d{2})\b/, (m, convention) => numericDate(+m[1], +m[3], m[4], convention)],
+];
+
+/* How each board writes a numeric date. A region missing from here gets only
+   the unambiguous ones: 11/2/2026 is 2 November in Chicago and 11 February in
+   Pune, and a guess is worse than no row. */
+const NUMERIC_CONVENTION = { US: 'MDY', IN: 'DMY', GB: 'DMY' };
+
+function numericDate(a, b, yearText, convention) {
+  const year = yearText.length === 2 ? 2000 + Number(yearText) : Number(yearText);
+  if (a > 12 && b <= 12) return [[year, b, a]];
+  if (b > 12 && a <= 12) return [[year, a, b]];
+  if (a > 12 || b > 12) return [];
+  if (a === b) return [[year, a, a]];
+  if (convention === 'MDY') return [[year, a, b]];
+  if (convention === 'DMY') return [[year, b, a]];
+  return [];
+}
+
+function isoFrom([year, month, day]) {
+  if (year < 2020 || year > 2035) return '';
+  const d = new Date(Date.UTC(year, month - 1, day));
+  if (d.getUTCFullYear() !== year || d.getUTCMonth() !== month - 1 || d.getUTCDate() !== day) return '';
+  return d.toISOString().slice(0, 10);
+}
+
+/* What introduces an application deadline. "Posting End Date" counts: it is
+   the date the employer says applications stop, whatever they call it. */
+const DEADLINE_CUE = /\b(?:deadline|apply (?:by|before|no later than)|applications? (?:will )?(?:close[sd]?|closing|are due|is due|due)|clos(?:e|ing) date|posting (?:will )?(?:end|close)s?(?: date)?|last date(?: to apply| for applications?| of application)?|(?:accepted|accepting applications|open) (?:until|through))\b/g;
+
+/**
+ * Every application deadline the posting states, as ISO dates.
+ *
+ * A date counts only when it is the FIRST date after a deadline cue and in the
+ * same sentence, so "the applicable deadline. Original Posting Date 9/23/2026"
+ * (Principal) and "Application deadline: rolling. Starts June 1, 2027" yield
+ * nothing, while "Applications are due at 11:59PM ET on Thursday, October 1,
+ * 2026" (BCG) does. A date the posting stays open "until at least" is a floor,
+ * not a deadline, and is refused.
+ */
+export function statedDeadlines(text, region = null) {
+  const s = String(text ?? '').toLowerCase()
+    // Full stops that do not end a sentence, so they cannot cut a cue off
+    // from its date: "11:59 p.m. ET on Oct. 1, 2026".
+    .replace(/\b([ap])\.m\./g, '$1m')
+    .replace(new RegExp(String.raw`\b${MONTH}\.(?=\s*\d)`, 'g'), '$1')
+    .replace(/\s+/g, ' ');
+  const convention = NUMERIC_CONVENTION[region] ?? null;
+  const out = new Set();
+  for (const cue of s.matchAll(DEADLINE_CUE)) {
+    let tail = s.slice(cue.index + cue[0].length, cue.index + cue[0].length + 70);
+    const stop = tail.search(/[.;!?](?:\s|$)/);
+    if (stop >= 0) tail = tail.slice(0, stop);
+    let first = null;
+    for (const [re, parts] of DATE_FORMS) {
+      const m = tail.match(re);
+      if (m && (!first || m.index < first.m.index)) first = { m, parts };
+    }
+    if (!first) continue;
+    // "Open until AT LEAST September 30, 2026" (GE Vernova, 12 live rows) is the
+    // earliest the posting may close — pay-transparency law — not a deadline.
+    if (/\bat least\b|\bno earlier than\b|\bminimum\b|\bearliest\b/.test(tail.slice(0, first.m.index))) continue;
+    for (const ymd of first.parts(first.m, convention)) {
+      const iso = isoFrom(ymd);
+      if (iso) out.add(iso);
+    }
+  }
+  return [...out];
+}
+
+/** The model's deadline if the posting states exactly that date as one, else ''. */
+export function groundDeadline(iso, text, region = null) {
+  const v = String(iso ?? '').trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return '';
+  return statedDeadlines(text, region).includes(v) ? v : '';
+}
+
+/* A heading that opens a list of requirements, or of nice-to-haves. */
+const HEADING = /\b(?:(?:preferred|desired|desirable|bonus|nice[- ]to[- ]have|good[- ]to[- ]have|required|minimum|basic|must[- ]have)\s+(?:qualifications?|requirements?|skills?|experience|points)|qualifications we (?:prefer|require)|(?:nice|good)[- ]to[- ]haves?\s*:)/g;
+
+/**
+ * Whether a requirement at `at` is really a PREFERENCE: the posting marks it
+ * so right after ("Class of 2028, preferred", "1–2 years … is preferred"), or
+ * it sits under a Preferred / Desired / Nice-to-have heading. Wells Fargo
+ * lists its graduation window under "Desired Qualifications"; published as
+ * the requirement it turns away graduates the employer would take.
+ *
+ * The statement's own words outrank the heading. Accenture writes "Good to
+ * have skills : NA Minimum 2 Year(s) Of Experience Is Required" — a real
+ * requirement straight after a nice-to-have heading.
+ */
+function statedAsPreference(s, at, end) {
+  // Not the NEXT heading: Lam Research's "Graduating in 2027 without any
+  // backlogs Preferred Qualifications" is a requirement.
+  if (/^[^.;]{0,40}?\b(?:is |are )?(?:preferred|a plus|desirable|nice to have)\b(?!\s*(?:qualifications?|requirements?|skills?|experience|certifications?))/.test(s.slice(end, end + 60))) return true;
+  if (/\b(?:must|requires?|required|minimum|at least|mandatory)\b/.test(s.slice(Math.max(0, at - 60), end + 25))) return false;
+  const last = [...s.slice(Math.max(0, at - 600), at).matchAll(HEADING)].at(-1);
+  return !!last && /prefer|desir|bonus|nice|good/.test(last[0]);
+}
+
+/* Past this, a "years of experience" figure is the COMPANY's history ("over
+   30 years of experience delivering…") or schooling ("15 years full time
+   education"), not something an early-career role asks of anyone. */
+const MAX_EXPERIENCE_YEARS = 10;
+
+/**
+ * "0–2 years", "1+ years", "1 year" — or '' when the posting does not state it.
+ *
+ * The figure is re-read from the posting rather than taken from the model, so
+ * the range and the "+" are the employer's, and it must sit within 80
+ * characters of the word "experience" and not be a preference.
+ */
+export function groundExperienceYears(phrase, text) {
+  const m = String(phrase ?? '').trim()
+    // "years" optional: the field is defined in years, and replies of "0–2" are common.
+    .match(/^(\d{1,2})(?:\s*(?:[–—-]|to)\s*(\d{1,2}))?\s*\+?\s*(?:(?:years?|yrs?)\b.*)?$/i);
+  if (!m) return '';
+  const lo = Number(m[1]);
+  const hi = m[2] == null ? null : Number(m[2]);
+  if ((hi ?? lo) > MAX_EXPERIENCE_YEARS || (hi != null && hi <= lo)) return '';
+
+  const s = String(text ?? '').toLowerCase()
+    .replace(/&#43;/g, '+').replace(/years?\s*\(s\)/g, 'years').replace(/\s+/g, ' ');
+  const figure = hi == null
+    // Not preceded by "0-" or "1 to": "2 years" must not be found inside "0-2 years".
+    ? new RegExp(String.raw`(?<!\d\s*(?:[–—-]|to)\s*)\b${lo}\s*(\+\s*)?(?:years?|yrs?)\b`, 'g')
+    : new RegExp(String.raw`\b${lo}\s*(?:[–—-]|to)\s*${hi}\s*\+?\s*(?:years?|yrs?)\b`, 'g');
+  for (const f of s.matchAll(figure)) {
+    const around = s.slice(Math.max(0, f.index - 80), f.index + f[0].length + 80);
+    if (!/experien/.test(around)) continue;
+    if (statedAsPreference(s, f.index, f.index + f[0].length)) continue;
+    if (hi != null) return `${lo}–${hi} years`;
+    const plus = !!f[1] || /(?:minimum(?: of)?|at least|min\.?)\s*$/.test(s.slice(Math.max(0, f.index - 20), f.index));
+    return plus ? `${lo}+ years` : `${lo} year${lo === 1 ? '' : 's'}`;
+  }
+  return '';
+}
+
+/* "degree achieved before June 2027" (Barclays) and "degree will be obtained
+   by August 2029" (Capital One) say graduation without the word. */
+const GRADUATION_CUE = /graduat|pass(?:ing|ed)?[\s-]*outs?\b|passing year|year of passing|\bbatch\b|\bclass of\b|\bdegree (?:will be |is )?(?:achieved|obtained|completed|awarded|conferred)\b/;
+/* The words a graduation phrase may use without the posting saying them.
+   Everything else — every month, season, year and "before"/"or later" — has to
+   be in the posting, next to the year it qualifies. */
+const GRADUATION_FILLER = new Set(['graduating', 'graduate', 'graduates', 'graduation', 'grads', 'class', 'of',
+  'or', 'and', 'in', 'between', 'from', 'to', 'batch', 'pass', 'passing', 'out', 'outs', 'passout', 'passouts',
+  'expected', 'anticipated', 'date', 'students', 'candidates']);
+const SHORT_MONTH = (w) => ({ sept: 'sep' })[w] ?? (MONTH_NUMBER[w] ? w.slice(0, 3) : w);
+const tokens = (s) => String(s ?? '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).map(SHORT_MONTH);
+
+/* Words that change what a graduation date means. The phrase must carry every
+   one the posting attaches to its year, or "graduation date of May 2027 or
+   later" could be published as "Graduating 2027". */
+const QUALIFIERS = new Set(['before', 'after', 'by', 'no', 'not', 'later', 'earlier', 'than', 'prior', 'until', 'through', 'onwards', 'beyond']);
+const SEASONS = new Set(['spring', 'summer', 'fall', 'autumn', 'winter']);
+const isDateWord = (w) => /^20\d{2}$/.test(w) || !!MONTH_NUMBER[w] || SEASONS.has(w);
+const CONNECTORS = new Set(['or', 'and', 'to', 'of', 'between', 'the']);
+
+/**
+ * "Graduating Dec 2027 or later", "2025 or 2026 graduates" — or ''.
+ *
+ * Three checks, all against one mention of the phrase's first year:
+ *
+ * - A graduation word GOVERNS that mention: within 60 characters, no other
+ *   year in between (the phrase's own excepted, for "2025 or 2026 …
+ *   graduates"), and — when it comes after the year — not introducing a year
+ *   of its own. Google writes "graduation date in 2028 … internship starting
+ *   in the summer of 2027", and "Summer 2027 internship for students
+ *   graduating in 2028" is the same trap the other way round: proximity alone
+ *   reads the internship's year as the graduating one.
+ * - Everything the phrase says is there: its years, months, seasons and
+ *   qualifiers. Amazon writes "May 2027 or earlier" on one posting and "May
+ *   2027 or later" on another; a model that swaps them fails here.
+ * - Nothing the posting attaches to that year is left out: the date words and
+ *   qualifiers between the graduation word and the year, and the run of them
+ *   either side of it. "Must graduate between Fall 2027 and Spring 2029" is
+ *   not "Graduating 2027", which would turn away a 2028 graduate, and "2025 or
+ *   2026 … graduates" is not "2026 graduates".
+ *
+ * A preference ("Class of 2028, preferred", or under "Desired
+ * Qualifications") is not a requirement, and is refused.
+ */
+export function groundGraduation(phrase, text) {
+  const p = String(phrase ?? '').trim().replace(/\s+/g, ' ').replace(/(\d{4})\s*[–—-]\s*/g, '$1–').replace(/[.]+$/, '');
+  if (!p || p.length > 48 || !GRADUATION_CUE.test(p.toLowerCase())) return '';
+  const years = p.match(/\b20\d{2}\b/g) ?? [];
+  if (!years.length || years.some((y) => y < '2020' || y > '2035')) return '';
+  const said = tokens(p);
+  const wanted = said.filter((w) => !GRADUATION_FILLER.has(w));
+  const foreignYear = (stretch) => (stretch.match(/\b20\d{2}\b/g) ?? []).some((y) => !years.includes(y));
+  const attached = (stretch) => tokens(stretch).filter((w) => isDateWord(w) || QUALIFIERS.has(w));
+
+  const s = String(text ?? '').toLowerCase().replace(/\s+/g, ' ');
+  for (const y of s.matchAll(new RegExp(String.raw`\b${years[0]}\b`, 'g'))) {
+    const at = y.index;
+    const before = s.slice(Math.max(0, at - 60), at);
+    const after = s.slice(at + 4, at + 64);
+    const cueBefore = [...before.matchAll(new RegExp(GRADUATION_CUE, 'g'))].at(-1);
+    const cueAfter = after.match(GRADUATION_CUE);
+
+    let between;
+    if (cueBefore && !foreignYear(before.slice(cueBefore.index))) {
+      // A few characters before the word too, for "not graduate before".
+      between = before.slice(Math.max(0, cueBefore.index - 12));
+    } else if (cueAfter && !foreignYear(after.slice(0, cueAfter.index))
+      && !foreignYear(after.slice(cueAfter.index, cueAfter.index + cueAfter[0].length + 25))) {
+      between = after.slice(0, cueAfter.index);
+    } else continue;
+    if (statedAsPreference(s, at, at + 4)) continue;
+
+    // The run of date words either side of the year: "2025 or 2026 … graduates"
+    // is not "2026 graduates", and "December 2027 or later" not "2027". Within
+    // the sentence: Micron's "after December 31, 2027. Prior academic
+    // experience…" is not qualified by the next sentence's "Prior".
+    const run = [];
+    const sentence = /[.;!?](?:\s|$)/;
+    for (const side of [tokens(after.split(sentence)[0]), tokens(before.split(sentence).at(-1)).reverse()]) {
+      for (const w of side) {
+        if (isDateWord(w) || QUALIFIERS.has(w)) run.push(w);
+        else if (!CONNECTORS.has(w)) break;
+      }
+    }
+    const have = new Set(tokens(s.slice(Math.max(0, at - 60), at + 90)));
+    const complete = [...attached(between), ...run].every((w) => said.includes(w));
+    if (!complete || !wanted.every((w) => have.has(w))) continue;
+    // "Dec 2027–June 2028" came back from one reply; months read one way.
+    const out = p.replace(new RegExp(String.raw`\b${MONTH}\b`, 'gi'), (m) => {
+      const n = MONTH_NUMBER[m.toLowerCase()];
+      return Object.keys(MONTH_NUMBER).find((k) => k.length === 3 && MONTH_NUMBER[k] === n).replace(/^./, (c) => c.toUpperCase());
+    });
+    // "Must not graduate before…", "Not graduate before…" and "Graduation
+    // after…" all came back from one prompt; the lead-in reads one way.
+    const lead = out.replace(/^(?:must\s+)?not\s+graduate\b/i, 'Not graduating')
+      .replace(/^graduat(?:e|ion(?:\s+date)?)\b/i, 'Graduating');
+    return lead[0].toUpperCase() + lead.slice(1);
+  }
+  return '';
+}
+
+/**
+ * Whether a posting could state a deadline or an experience requirement at
+ * all. A SUPERSET of what the three guards above accept — each clause is a
+ * condition its guard also requires — so a false here means any answer the
+ * model gave would be refused, and asking it is time wasted. The backfill uses
+ * it to skip the model on most postings.
+ */
+export function couldStateFacts(text, region = null) {
+  const s = String(text ?? '').toLowerCase().replace(/&#43;/g, '+').replace(/years?\s*\(s\)/g, 'years');
+  if (statedDeadlines(text, region).length) return true;
+  if (/experien/.test(s) && /\b\d{1,2}\s*\+?\s*(?:years?|yrs?)\b/.test(s)) return true;
+  return GRADUATION_CUE.test(s) && /\b20\d{2}\b/.test(s);
+}

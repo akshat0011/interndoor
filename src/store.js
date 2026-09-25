@@ -374,6 +374,15 @@ export class Store {
        * all 115 links a full manual pass found dead were outside that window,
        * so the scheduled sweep would have found NONE of them. */
       ['link_checked_at', 'INTEGER'],
+      /* THE APPLICATION DEADLINE AND THE EXPERIENCE ASKED FOR — only ever what
+       * the posting states (groundFacts in src/ollama.js), NULL otherwise.
+       * `deadline` is an ISO day, "2026-10-16"; `experience` a short phrase,
+       * "Graduating 2027 · 0–1 years". `facts_checked_at` records that the
+       * extraction RAN, so a posting that states neither is not asked again —
+       * set it back to NULL to re-read after a prompt change. */
+      ['deadline', 'TEXT'],
+      ['experience', 'TEXT'],
+      ['facts_checked_at', 'INTEGER'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);
@@ -779,6 +788,31 @@ export class Store {
       source,
       jobId,
     );
+  }
+
+  /**
+   * Enriched rows whose deadline and experience have not been read yet
+   * (extractFacts). Live rows only — the window recentJobs publishes from —
+   * published regions first, newest first.
+   */
+  needingFacts(limit = 500, published = [], sinceMs = Date.now() - 30 * 86_400_000, atsSeenSinceMs = Date.now() - 2 * 86_400_000) {
+    const codes = published.filter((c) => /^[A-Z]{2}$/.test(String(c))).map((c) => `'${c}'`);
+    const priority = codes.length ? `CASE WHEN region IN (${codes.join(',')}) THEN 0 ELSE 1 END,` : '';
+    return this.db.prepare(`
+      SELECT job_id, title, company, location, description, region
+      FROM jobs
+      WHERE facts_checked_at IS NULL AND bullets IS NOT NULL AND length(description) > 200
+        AND is_tech = 1 AND closed_at IS NULL
+        AND (first_seen_at >= ? OR (job_id LIKE 'ats:%' AND last_seen_at >= ?))
+      ORDER BY ${priority} first_seen_at DESC
+      LIMIT ?
+    `).all(sinceMs, atsSeenSinceMs, limit);
+  }
+
+  /** Store what extractFacts found — '' is saved as NULL — and that it looked. */
+  saveFacts(jobId, f) {
+    this.db.prepare('UPDATE jobs SET deadline = ?, experience = ?, facts_checked_at = ? WHERE job_id = ?')
+      .run(f.deadline || null, f.experience || null, Date.now(), jobId);
   }
 
   close() {

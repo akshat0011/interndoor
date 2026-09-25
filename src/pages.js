@@ -220,7 +220,16 @@ function endOfUtcDay(ms) {
 function validThrough(job, validDays = DEFAULT_VALID_DAYS) {
   const firstSeenBasis = (job.postedAt ?? job.firstSeenAt ?? Date.now()) + validDays * 86_400_000;
   const stillListed = job.lastSeenAt ? job.lastSeenAt + validDays * 86_400_000 : 0;
-  return endOfUtcDay(Math.max(firstSeenBasis, stillListed));
+  let until = Math.max(firstSeenBasis, stillListed);
+  /* A STATED DEADLINE CAN ONLY SHORTEN THIS, NEVER LENGTHEN IT. publish stops
+     serving the page once the deadline day has ended in the region
+     (deadlinePassed), and jobPostingLd emits nothing past that point either.
+     The claim is the DAY AFTER the deadline, ceiled to the end of that UTC
+     day: later than the end of the deadline day in every region's time zone
+     by 19 hours or more, so the markup still outlives the page. */
+  const d = String(job.deadline ?? '');
+  if (ISO_DAY.test(d)) until = Math.min(until, Date.parse(`${d}T00:00:00Z`) + 86_400_000);
+  return endOfUtcDay(until);
 }
 
 /**
@@ -354,6 +363,10 @@ export function postalAddressFor(location, countryCode) {
 }
 
 function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
+  /* Past its own stated deadline a posting has expired, and marking up an
+     expired posting is the manual-action case. publish already drops such a
+     row (deadlinePassed); this keeps the page safe without relying on that. */
+  if (deadlinePassed(job, region)) return null;
   const description = `<p>${esc(job.roleLabel || job.title)}</p><ul>${
     (job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')
   }</ul>`;
@@ -656,6 +669,33 @@ export function startDate(job) {
   const mon = word[0].toUpperCase() + word.slice(1, 3);
   return year ? `${mon} ${year}` : mon;
 }
+
+/**
+ * The posting's own application deadline, while it is still ahead — '' once
+ * the day has ended where the reader is, or when the posting stated none.
+ *
+ * Day-granular, so a page changes for it once, on the morning after. The value
+ * is only ever what the posting wrote (groundDeadline in src/extract.js); this
+ * decides nothing but whether it is still worth saying.
+ */
+export function openDeadline(job, region = DEFAULT_REGION, now = Date.now()) {
+  const d = String(job?.deadline ?? '');
+  return ISO_DAY.test(d) && !deadlinePassed(job, region, now) ? d : '';
+}
+
+/**
+ * Whether the posting's stated deadline day has ENDED where the reader is.
+ * publish drops such a row from the live set, so its URL becomes a closed-role
+ * stub like any other expired posting. False when no deadline is stated.
+ */
+export function deadlinePassed(job, region = DEFAULT_REGION, now = Date.now()) {
+  const d = String(job?.deadline ?? '');
+  if (!ISO_DAY.test(d)) return false;
+  // `?? DEFAULT_REGION`: a throw here would abort the whole publish, not one page.
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: (region ?? DEFAULT_REGION).timeZone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+  return d < today;
+}
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 
 /** "Jun 2027" -> a sortable number. Month order, then year. */
 function startKey(label) {
@@ -1916,6 +1956,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(), 155);
 
   const elig = eligibilityOf(job);
+  const deadline = openDeadline(job, region);
   const facts = [
     job.location ? ['Location', esc(job.location)] : null,
     modeText(job) ? ['Mode', esc(modeText(job))] : null,
@@ -1927,9 +1968,13 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     // to print the enricher's codes: "UG/PG · Computer Science".
     elig.degree ? ['Degree', esc(elig.degree)] : null,
     elig.field ? ['Field', esc(elig.field)] : null,
+    // Stated in the posting or absent, never inferred: groundFacts in src/ollama.js.
+    job.experience ? ['Experience', esc(job.experience)] : null,
     durationText(job) ? ['Duration', esc(durationText(job))] : null,
     // Read from the title only (startDate), never inferred from the season.
     startDate(job) ? ['Starts', esc(startDate(job))] : null,
+    // Noon UTC is the stated calendar day in every region's time zone.
+    deadline ? ['Apply by', `<time datetime="${deadline}">${esc(dayLabel(Date.parse(`${deadline}T12:00:00Z`), region))}</time>`] : null,
     // A stipend the posting never stated is NOT DISCLOSED, never "Unpaid".
     // Saying nothing at all left a reader unable to tell "this employer pays
     // nothing" from "we do not know" — and the field that used to answer that,

@@ -14,7 +14,7 @@ import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } fr
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches } from './searches.js';
-import { classifyRoles, classifyFromDescriptions, enrichJobs } from './ollama.js';
+import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts } from './ollama.js';
 import { postNewJobs } from './telegram.js';
 import { postNewJobsWhatsApp } from './whatsapp.js';
 import { atsToAnnounce, TWIN_WINDOW_MS } from './announce.js';
@@ -251,6 +251,27 @@ async function enrichNewJobs(store, cfg) {
     if (typeof e.isTech === 'boolean' && before != null && !!before !== e.isTech) flipped++;
   }
   log.ok(`Enriched ${results.size}/${pending.length}${flipped ? ` \u00b7 ${flipped} changed tech verdict` : ''}.`);
+}
+
+/**
+ * The application deadline and the experience requirement of postings already
+ * enriched — extractFacts, one model call each, under its own small budget.
+ *
+ * Called LAST, after publish and the channel posts, because nothing a reader is
+ * waiting for depends on it: what it finds reaches the site with the next
+ * run's publish. Never throws — the run lock is released after it.
+ */
+async function readPostingFacts(store, cfg) {
+  try {
+    const maxAgeDays = cfg.publish?.maxAgeDays ?? 14;
+    const pending = store.needingFacts(cfg.enrich?.factsPerRunLimit ?? 60,
+      publishedRegions(cfg).map((r) => r.code), Date.now() - maxAgeDays * 86_400_000);
+    if (!pending.length) return;
+    const results = await extractFacts(pending, { ...cfg, enrich: { ...cfg.enrich, budgetMinutes: cfg.enrich?.factsBudgetMinutes ?? 3 } });
+    for (const [i, f] of results) store.saveFacts(pending[i].job_id, f);
+  } catch (err) {
+    log.warn(`Deadline/experience pass failed (${err.message}) — picked up next run.`);
+  }
 }
 
 async function main() {
@@ -1962,6 +1983,8 @@ async function main() {
      post at all. */
   if (!DRY_RUN) await postNewJobsWhatsApp(whatsappLive, cfg, { store });
   if (!DRY_RUN && publishedIds) store.setSetting(ANNOUNCE_KEY, String(announceUntil));
+
+  if (!DRY_RUN) await readPostingFacts(store, cfg);
 
   store.setSetting(LOCK_KEY, 0);
   store.close();
