@@ -1,7 +1,15 @@
 /* ============================================================
    InternDoor
-   Live-ticker / terminal register. Acid lime on warm black,
-   heavy condensed display type, monospace figures, film grain.
+   Near-black and one acid-lime accent, set in one sans (Geist).
+
+   THE RULES THIS FILE KEEPS, since the design pass of Sept 2026:
+   - Lime marks the one action (Apply) and the selected state. Everything
+     else is neutral: ink, its greys, and the --fill tints.
+   - Sentence case everywhere. No uppercase labels, no letter-spaced mono.
+   - Nothing smaller than 12px (--t-micro). Sizes come from the --t-* scale.
+   - Controls are FILLED, not outlined. Cards keep one hairline.
+   - Radii come from --r (chips), --r-2 (controls and cards), --r-3 (dialogs).
+   - Nothing moves on its own except status: the live dot and the loaders.
    ============================================================ */
 
 :root {
@@ -23,13 +31,24 @@
   --hot:        #ff5c1a;
   --cash:       #00e57a;
 
-  --r:          4px;
-  --r-2:        10px;
-  --r-pill:     999px;
+  --r:          6px;     /* chips, badges, logo plates */
+  --r-2:        10px;    /* every control and every card */
+  --r-3:        16px;    /* dialogs */
+  --r-pill:     999px;   /* round things: close buttons, count dots */
 
-  --display: 'Archivo', 'Helvetica Neue', Impact, sans-serif;
-  --ui:      'Space Grotesk', ui-sans-serif, -apple-system, sans-serif;
-  --mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* ONE FAMILY. Space Grotesk stays in the stack only so a page published
+     before this change, which still links that font, keeps a real face until
+     the next publish rewrites it. */
+  --display: 'Geist', 'Space Grotesk', ui-sans-serif, -apple-system, 'Segoe UI', sans-serif;
+  --ui:      'Geist', 'Space Grotesk', ui-sans-serif, -apple-system, 'Segoe UI', sans-serif;
+  /* No web font. Used by the API-key field and nothing else. */
+  --mono:    ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Neutral fills for controls, derived from the ink so each theme gets one
+     that reads against its own card. Replaces the outline every control used
+     to carry. */
+  --fill:   color-mix(in oklab, var(--ink) 7%, transparent);
+  --fill-2: color-mix(in oklab, var(--ink) 12%, transparent);
 
   /* ---- Type scale -------------------------------------------------------
      Tracking is size-specific, never one value for everything. Letters read
@@ -41,7 +60,7 @@
      the layout with the text instead of bursting out of it. */
   --t-display:  clamp(1.75rem, 3.4vw, 2.5rem);
   --t-display-lh: 1.02;
-  --t-display-tr: -.045em;
+  --t-display-tr: -.025em;
 
   --t-title:    1.0625rem;   /* the role — the line people actually scan */
   --t-title-lh: 1.3;
@@ -54,9 +73,15 @@
   --t-small:    .8125rem;
   --t-small-lh: 1.45;
 
-  --t-micro:    .6875rem;    /* mono labels, eyebrows, chips */
-  --t-micro-lh: 1.2;
-  --t-micro-tr: .09em;
+  --t-micro:    .75rem;      /* labels, chips, captions: the floor */
+  --t-micro-lh: 1.3;
+  --t-micro-tr: 0;
+
+  --t-ui:       .875rem;
+  --t-lead:     1rem;
+  --t-h3:       1.25rem;
+  --t-h2:       1.5rem;
+  --t-h1:       1.875rem;
 
   /* ---- Spacing ----------------------------------------------------------
      One scale, in rem, so spacing scales with text size too. */
@@ -124,7 +149,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--ui);
-  font-size: 15px;
+  font-size: var(--t-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -143,7 +168,7 @@ body {
    low-opacity overlay is boring and always correct. */
 :root[data-theme="light"] .grain { opacity: .028; }
 
-h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 900; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; }
 p { margin: 0; }
 ol, ul, dl { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; }
@@ -170,26 +195,18 @@ a, button, summary, label, [role="button"], .row {
 
 .bar {
   position: sticky; top: 0; z-index: 60; height: var(--bar-h);
-  /* Its own surface, so the brand bar and the working area below it are not
-     one undifferentiated top of page. --bg-2 is the same darker ground the
-     cards already sit on, so it costs no height and needs no rule. */
-  background: color-mix(in oklab, var(--bg-2) 84%, transparent);
-  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  /* No hard rule. A 1px border draws a line whether or not anything is behind
-     it; a soft edge only appears where content actually passes under the
-     chrome, which is the thing the divider was standing in for. */
-  border-bottom: 0;
-}
-.bar::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 20px;
-  pointer-events: none;
-  background: linear-gradient(to bottom, color-mix(in oklab, var(--bg) 60%, transparent), transparent);
+  /* SOLID. It was 84% of --bg-2 over a 20px blur, and the listings showed
+     through it while scrolling: an "11h" and a Track button behind the logo. */
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
 }
 .bar-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 
-.brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
-/* The radar scope, restored from InternZo unchanged. Three concentric rings, a
-   61-degree wedge sweeping them on a 2.6s linear rotation, and a solid centre
+.brand { display: inline-flex; align-items: center; gap: 11px; min-height: 44px; text-decoration: none; }
+/* The radar scope, restored from InternZo. Three concentric rings, a
+   61-degree wedge and a solid centre dot. The wedge turns once during the
+   page-load intro and while the board is loading (.scan-eye), and is STILL the
+   rest of the time: a logo that spins forever is decoration, not status. The centre
    dot — the dot is what keeps the mark legible once the strokes disappear at
    favicon sizes, the same job the kite's solid panel used to do.
    Transform-only, so the sweep stays on the compositor and never repaints. It
@@ -200,15 +217,16 @@ a, button, summary, label, [role="button"], .row {
 .scope { width: 30px; height: 30px; flex: none; }
 .scope svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .s-ring { fill: none; stroke: var(--live); stroke-width: 1.1; opacity: .3; }
-.s-sweep { transform-origin: 22px 22px; animation: sweep 2.6s linear infinite; }
+.s-sweep { transform-origin: 22px 22px; }
+.scan-eye .s-sweep { animation: sweep 2.6s linear infinite; }
 .s-sweep path { fill: var(--live); opacity: .3; }
 .s-dot { fill: var(--live); }
 @keyframes sweep { to { transform: rotate(360deg); } }
 
 
 .word {
-  font-family: var(--display); font-weight: 900; font-size: 18px;
-  letter-spacing: -.045em; line-height: 1;
+  font-family: var(--display); font-weight: 700; font-size: 18px;
+  letter-spacing: -.02em; line-height: 1;
 }
 .word em { font-style: normal; color: var(--live); }
 
@@ -282,57 +300,58 @@ a, button, summary, label, [role="button"], .row {
 
 
 .ticker {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: .02em;
-  color: var(--ink-2); text-transform: uppercase;
-  border: 1px solid var(--rule); padding: 6px 11px; border-radius: var(--r);
+  display: inline-flex; align-items: center; gap: 8px; padding: 0 6px;
+  font-size: var(--t-small); color: var(--ink-2); font-variant-numeric: tabular-nums;
 }
+/* The one thing in the chrome that moves, because it is status: the board is
+   live. A soft pulse, not a hard blink. */
 .beat {
-  width: 6px; height: 6px; background: var(--live); flex: none;
-  animation: beat 1.6s steps(1) infinite;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none;
+  animation: beat 2.4s ease-in-out infinite;
 }
-@keyframes beat { 0%,60% { opacity: 1; } 61%,100% { opacity: .18; } }
+@keyframes beat { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 /* The one link on the page whose job is to bring somebody back.
    ------------------------------------------------------------------------
-   Outlined rather than filled: Apply is the loud lime button and this must not
-   compete with it on a card-by-card basis. It earns attention by being the only
-   accented thing in the chrome, not by shouting louder than the primary action. */
+   Outlined rather than filled, on every board and every width: Apply is the
+   one filled lime control on the page, and this must not compete with it. It
+   earns attention by being the only accented thing in the chrome. */
 .alerts {
-  display: inline-flex; align-items: center; gap: 7px;
-  height: 33px; padding: 0 12px; border-radius: var(--r-pill);
-  border: 1px solid color-mix(in oklab, var(--live) 45%, transparent);
-  color: var(--live); background: color-mix(in oklab, var(--live) 8%, transparent);
-  font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 40px; padding: 0 14px; border-radius: var(--r-2);
+  border: 1px solid color-mix(in oklab, var(--live) 55%, transparent);
+  color: var(--live); background: none;
+  font-size: var(--t-small); font-weight: 600; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap;
   transition: background .16s, border-color .16s, transform var(--d-press) var(--snap);
 }
 .alerts:active { transform: scale(.97); }
 /* The pill points straight at the WhatsApp channel on a board that has one
-   (India). Solid, so it reads as THE action rather than one of several. */
-.alerts.is-wa { background: var(--live); color: var(--live-ink); border-color: var(--live); font-weight: 700; }
+   (India). It was solid lime; outlined now, like the rest of the chrome, so
+   the header no longer holds a second filled lime control beside Apply. */
+.alerts.is-wa { font-weight: 650; }
 /* The signup band's lead — the WhatsApp channel above the email form. */
 .wa-lead { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 18px auto 22px; }
 .wa-go {
   display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 22px;
-  border-radius: var(--r-pill); background: var(--live); color: var(--live-ink);
-  font-weight: 700; font-size: 15px; letter-spacing: -.01em; text-decoration: none;
+  border-radius: var(--r-2); background: var(--live); color: var(--live-ink);
+  font-weight: 700; font-size: var(--t-body); letter-spacing: -.01em; text-decoration: none;
   transition: transform var(--d-press) var(--snap), filter .16s;
 }
 .wa-go:active { transform: scale(.97); }
-.wa-note { font-size: 13.5px; color: var(--ink-2); }
+.wa-note { font-size: var(--t-small); color: var(--ink-2); }
 .wa-lead + .sub .sub-l { color: var(--ink-3); }
 @media (hover: hover) and (pointer: fine) {
   .alerts:hover { background: color-mix(in oklab, var(--live) 16%, transparent); border-color: var(--live); }
 }
 
 .ghost-btn {
-  display: grid; place-items: center; width: 33px; height: 33px; padding: 0;
-  background: none; border: 1px solid var(--rule); border-radius: var(--r);
+  display: grid; place-items: center; width: 40px; height: 40px; padding: 0;
+  background: none; border: 0; border-radius: var(--r-2);
   color: var(--ink-2); cursor: pointer;
-  transition: color .16s, border-color .16s, background .16s;
+  transition: color .16s, background-color .16s;
 }
-.ghost-btn:hover { color: var(--live); border-color: var(--live); }
+.ghost-btn:hover { color: var(--ink); background: var(--fill); }
 .i-moon { display: none; }
 :root:not([data-theme="light"]) .i-sun { display: none; }
 :root:not([data-theme="light"]) .i-moon { display: block; }
@@ -353,19 +372,12 @@ a, button, summary, label, [role="button"], .row {
 .rg { position: relative; }
 
 .rg > summary {
-  display: inline-flex; align-items: center; gap: 7px;
-  height: 33px; padding: 0 10px 0 11px; border-radius: var(--r);
-  border: 1px solid var(--rule); color: var(--ink-2);
-  background: color-mix(in oklab, var(--ink) 4%, transparent);
-  font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 40px; padding: 0 10px 0 11px; border-radius: var(--r-2);
+  border: 0; color: var(--ink-2); background: none;
+  font-size: var(--t-small); font-weight: 600; letter-spacing: -.01em;
   white-space: nowrap; cursor: pointer; list-style: none;
-  transition: color .16s, border-color .16s, background .16s;
-}
-/* The live dot. Same language as the .beat in the freshness ticker, so the
-   header reads as one family rather than three unrelated controls. */
-.rg > summary::before {
-  content: ''; width: 5px; height: 5px; flex: none; border-radius: 50%;
-  background: var(--live); box-shadow: 0 0 0 3px color-mix(in oklab, var(--live) 18%, transparent);
+  transition: color .16s, background-color .16s;
 }
 /* Both are needed: WebKit uses the pseudo-element, everything else the property. */
 .rg > summary::-webkit-details-marker { display: none; }
@@ -373,17 +385,17 @@ a, button, summary, label, [role="button"], .row {
 .rg > summary:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 
 .rg-caret { transition: transform .18s var(--snap); }
-.rg[open] > summary { color: var(--ink); border-color: color-mix(in oklab, var(--ink) 35%, transparent); }
+.rg[open] > summary { color: var(--ink); background: var(--fill); }
 .rg[open] .rg-caret { transform: rotate(180deg); }
 
 @media (hover: hover) and (pointer: fine) {
-  .rg > summary:hover { color: var(--live); border-color: var(--live); }
+  .rg > summary:hover { color: var(--ink); background: var(--fill); }
 }
 
 .rg-menu {
   position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
   min-width: 190px; padding: 5px;
-  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
   box-shadow: 0 18px 40px -12px rgb(0 0 0 / .55);
   display: flex; flex-direction: column; gap: 1px;
   transform-origin: top right;
@@ -394,24 +406,24 @@ a, button, summary, label, [role="button"], .row {
 @keyframes rg-open { from { opacity: 0; transform: translateY(-4px); } }
 
 .rg-opt {
-  display: flex; align-items: center; gap: 9px;
-  padding: 9px 10px; border-radius: 3px;
+  display: flex; align-items: center; gap: 9px; min-height: 44px;
+  padding: 9px 10px; border-radius: var(--r);
   color: var(--ink-2); text-decoration: none;
-  font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
+  font-size: var(--t-ui); font-weight: 500; letter-spacing: -.01em;
   transition: background .14s, color .14s;
 }
 /* The two-letter code, set in the mono face like every other hard fact on the
    site — the ages, the counts, the chips. */
 .rg-opt::before {
   content: attr(data-region);
-  font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
-  padding: 3px 5px; border-radius: 3px; min-width: 26px; text-align: center;
+  font-family: var(--ui); font-size: var(--t-micro); font-weight: 700;
+  padding: 3px 5px; border-radius: var(--r); min-width: 26px; text-align: center;
   background: var(--card-2); color: var(--ink-3);
   transition: background .14s, color .14s;
 }
 .rg-opt.is-on::before { background: var(--live); color: var(--live-ink); }
 .rg-opt.is-on { color: var(--live); font-weight: 650; }
-.rg-opt.is-on::after { content: '✓'; margin-left: auto; font-size: .8125rem; }
+.rg-opt.is-on::after { content: '✓'; margin-left: auto; font-size: var(--t-small); }
 
 @media (hover: hover) and (pointer: fine) {
   .rg-opt:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); color: var(--ink); }
@@ -431,82 +443,12 @@ a, button, summary, label, [role="button"], .row {
   .rg-caret { transition: none; }
 }
 
-/* ================= the background field =================
-   The ground the OG cards and the reels already stand on, brought onto the
-   site: a radar bleeding off the right edge, beneath the film grain that was
-   here before it. VERY low contrast on purpose — the job is continuity, so the
-   intro and the site read as one environment rather than two backgrounds
-   swapped over, and a reader who never consciously notices it is the intended
-   outcome rather than a failure. */
-.field { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+/* THE BACKGROUND FIELD IS GONE (Sept 2026). Radar rings, crosshairs, tick
+   rulers and a dotted grid sat fixed behind every board, at the edge of
+   visibility on purpose. Read together with the grain, the mono labels and
+   the lime, they were the look that made the site read as generated. The
+   radar lives in the logo now, and only there. */
 
-/* THE MARKS ARE A MASK, NOT A PICTURE, and that is what puts them in the light
-   theme. As drawn images they were lime, and lime at 7-16% over cream is
-   invisible — the light board simply had no background. A mask carries only the
-   shape, so the colour is `background-color`, which is `--live`: lime on black
-   and olive on cream, one geometry, both themes, nothing duplicated.
-
-   Guarded by @supports because the fallback matters: without it, a browser that
-   cannot mask would paint the whole viewport lime. Unsupported means the empty
-   div it already is.
-
-   Still a background rather than markup, and still several LAYERS rather than
-   several elements — a reader holding a stale stylesheet against fresh HTML,
-   which the cache headers actively allow, gets an empty div rather than unsized
-   full-page SVGs pushing the site below the fold. */
-@supports ((mask-image: url(#m)) or (-webkit-mask-image: url(#m))) {
-  .field {
-    /* Held in one custom property so the prefixed and unprefixed shorthands
-       cannot drift apart.
-
-       PLACED WHERE THE LAYOUT LEAVES GROUND EXPOSED, which is not the same as
-       "in the corners". The feed and the detail panel are opaque and between
-       them they own most of the width, so the marks that read are the ones in
-       the right-hand margin, the band beside the lede, and the quadrant below
-       the panel — everything else peeks out from behind a card, which is what
-       a background should do anyway. */
-    --marks:
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 720'><circle cx='360' cy='360' r='352' fill='none' stroke='%23fff' stroke-width='1.4' opacity='.095'/><circle cx='360' cy='360' r='272' fill='none' stroke='%23fff' stroke-width='1.4' opacity='.175'/><circle cx='360' cy='360' r='192' fill='none' stroke='%23fff' stroke-width='1.4' opacity='.095'/><circle cx='360' cy='360' r='112' fill='none' stroke='%23fff' stroke-width='1.4' opacity='.175'/><circle cx='360' cy='360' r='330' fill='none' stroke='%23fff' stroke-width='7' stroke-dasharray='2 26' opacity='.135'/><circle cx='360' cy='360' r='232' fill='none' stroke='%23fff' stroke-width='5' stroke-dasharray='2 40' opacity='.11'/><line x1='8' y1='360' x2='712' y2='360' stroke='%23fff' stroke-width='1.4' opacity='.08'/><line x1='360' y1='8' x2='360' y2='712' stroke='%23fff' stroke-width='1.4' opacity='.08'/><line x1='115' y1='115' x2='605' y2='605' stroke='%23fff' stroke-width='1.1' opacity='.055'/><line x1='605' y1='115' x2='115' y2='605' stroke='%23fff' stroke-width='1.1' opacity='.055'/><defs><linearGradient id='s' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='%23fff' stop-opacity='0'/><stop offset='1' stop-color='%23fff' stop-opacity='.28'/></linearGradient></defs><path d='M360 360 L360 88 A272 272 0 0 1 552 168 Z' fill='url(%23s)' opacity='.45'/><circle cx='360' cy='360' r='6' fill='%23fff' opacity='.34'/><circle cx='470' cy='250' r='3.4' fill='%23fff' opacity='.27'/><circle cx='266' cy='470' r='2.6' fill='%23fff' opacity='.20'/><circle cx='523' cy='432' r='2.2' fill='%23fff' opacity='.16'/></svg>")
-        right -12vmin bottom -14vmin / min(52vmin, 620px) auto no-repeat,
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><line x1='0' y1='330' x2='300' y2='330' stroke='%23fff' stroke-width='1.2' opacity='.22'/><line x1='0' y1='322' x2='300' y2='322' stroke='%23fff' stroke-width='4' stroke-dasharray='1 11' opacity='.11'/><line x1='34' y1='330' x2='34' y2='316' stroke='%23fff' stroke-width='1.2' opacity='.175'/><line x1='94' y1='330' x2='94' y2='322' stroke='%23fff' stroke-width='1.2' opacity='.135'/><line x1='154' y1='330' x2='154' y2='316' stroke='%23fff' stroke-width='1.2' opacity='.175'/><line x1='214' y1='330' x2='214' y2='322' stroke='%23fff' stroke-width='1.2' opacity='.135'/><line x1='274' y1='330' x2='274' y2='316' stroke='%23fff' stroke-width='1.2' opacity='.175'/><line x1='300' y1='330' x2='300' y2='298' stroke='%23fff' stroke-width='1.2' opacity='.16'/><path d='M8 268 A150 150 0 0 1 158 118' fill='none' stroke='%23fff' stroke-width='1.2' opacity='.15'/><path d='M8 214 A96 96 0 0 1 104 118' fill='none' stroke='%23fff' stroke-width='1.2' opacity='.095'/><path d='M8 322 A204 204 0 0 1 212 118' fill='none' stroke='%23fff' stroke-width='3' stroke-dasharray='2 15' opacity='.11'/><line x1='206' y1='150' x2='218' y2='150' stroke='%23fff' stroke-width='1.1' opacity='.16'/><line x1='212' y1='144' x2='212' y2='156' stroke='%23fff' stroke-width='1.1' opacity='.16'/><circle cx='158' cy='118' r='2.6' fill='%23fff' opacity='.27'/><circle cx='60' cy='252' r='1.8' fill='%23fff' opacity='.175'/><circle cx='118' cy='192' r='1.4' fill='%23fff' opacity='.135'/></svg>")
-        left -3vmin bottom 4vmin / min(38vmin, 420px) auto no-repeat,
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><line x1='14' y1='14' x2='94' y2='14' stroke='%23fff' stroke-width='1.3' opacity='.19'/><line x1='14' y1='14' x2='14' y2='94' stroke='%23fff' stroke-width='1.3' opacity='.19'/><line x1='120' y1='14' x2='288' y2='14' stroke='%23fff' stroke-width='4' stroke-dasharray='2 12' opacity='.095'/><line x1='14' y1='120' x2='14' y2='288' stroke='%23fff' stroke-width='4' stroke-dasharray='2 12' opacity='.095'/><line x1='14' y1='152' x2='34' y2='152' stroke='%23fff' stroke-width='1.2' opacity='.15'/><line x1='14' y1='198' x2='26' y2='198' stroke='%23fff' stroke-width='1.2' opacity='.11'/><line x1='14' y1='244' x2='34' y2='244' stroke='%23fff' stroke-width='1.2' opacity='.15'/><path d='M14 176 A162 162 0 0 1 176 14' fill='none' stroke='%23fff' stroke-width='1.2' opacity='.08'/><line x1='170' y1='78' x2='182' y2='78' stroke='%23fff' stroke-width='1.1' opacity='.15'/><line x1='176' y1='72' x2='176' y2='84' stroke='%23fff' stroke-width='1.1' opacity='.15'/><circle cx='94' cy='94' r='2.4' fill='%23fff' opacity='.22'/><circle cx='232' cy='150' r='1.6' fill='%23fff' opacity='.135'/></svg>")
-        left -4vmin top 7vmin / min(26vmin, 300px) auto no-repeat,
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle cx='100' cy='100' r='62' fill='none' stroke='%23fff' stroke-width='1.3' opacity='.16'/><circle cx='100' cy='100' r='84' fill='none' stroke='%23fff' stroke-width='5' stroke-dasharray='2 18' opacity='.11'/><line x1='100' y1='18' x2='100' y2='182' stroke='%23fff' stroke-width='1.1' opacity='.095'/><line x1='18' y1='100' x2='182' y2='100' stroke='%23fff' stroke-width='1.1' opacity='.095'/><line x1='100' y1='30' x2='100' y2='45' stroke='%23fff' stroke-width='1.7' opacity='.19'/><line x1='100' y1='155' x2='100' y2='170' stroke='%23fff' stroke-width='1.7' opacity='.19'/><line x1='30' y1='100' x2='45' y2='100' stroke='%23fff' stroke-width='1.7' opacity='.19'/><line x1='155' y1='100' x2='170' y2='100' stroke='%23fff' stroke-width='1.7' opacity='.19'/><circle cx='100' cy='100' r='2.6' fill='%23fff' opacity='.27'/></svg>")
-        right 6vmin top 15vmin / min(16vmin, 190px) auto no-repeat,
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 90'><line x1='0' y1='60' x2='430' y2='60' stroke='%23fff' stroke-width='1.2' opacity='.16'/><line x1='0' y1='52' x2='430' y2='52' stroke='%23fff' stroke-width='4' stroke-dasharray='1 13' opacity='.095'/><line x1='60' y1='60' x2='60' y2='45' stroke='%23fff' stroke-width='1.2' opacity='.135'/><line x1='170' y1='60' x2='170' y2='38' stroke='%23fff' stroke-width='1.2' opacity='.175'/><line x1='280' y1='60' x2='280' y2='45' stroke='%23fff' stroke-width='1.2' opacity='.135'/><line x1='390' y1='60' x2='390' y2='38' stroke='%23fff' stroke-width='1.2' opacity='.175'/><circle cx='430' cy='60' r='2.2' fill='%23fff' opacity='.22'/></svg>")
-        right 4vmin top 8vmin / min(24vmin, 280px) auto no-repeat,
-      /* The one layer that is not a corner: a rule every 132px, the full width
-         of the page, so a line shows in EVERY gap the content leaves rather
-         than only where a cluster happens to sit. preserveAspectRatio='none'
-         is what lets it stretch horizontally without the rule thickening —
-         the stroke of a horizontal line is vertical, and the vertical scale
-         is 1:1. */
-      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 132' preserveAspectRatio='none'><line x1='0' y1='.5' x2='100' y2='.5' stroke='%23fff' stroke-width='1' opacity='.055'/><line x1='0' y1='66.5' x2='100' y2='66.5' stroke='%23fff' stroke-width='1' stroke-dasharray='3 9' opacity='.03'/></svg>")
-        left top / 100% 132px repeat-y;
-    -webkit-mask: var(--marks);
-            mask: var(--marks);
-    background-color: var(--live);
-    opacity: .62;
-  }
-}
-
-/* Olive on cream reads far quieter than lime on black, so the light theme is
-   given back FAR more than the number suggests — .85 against dark's .62. That
-   is not a typo and it is not symmetric on purpose: the marks are drawn at 6-22%
-   alpha inside the mask, and olive at 7% over cream is nothing at all, where
-   lime at 7% over near-black is already a visible line. At .46 the light board
-   still read as having no background. Measured on a fresh load in both themes, not by toggling — the pane
-   returns stale paint on a live toggle.
-
-   KEYED ON [data-theme], AND DELIBERATELY NOT ON prefers-color-scheme. There
-   was a `@media (prefers-color-scheme: light)` twin here and it was wrong: this
-   site defaults to DARK and switches only when the reader asks, so `--bg` and
-   `--live` are keyed on the attribute alone. Verified live — with no stored
-   preference and the OS set to light, `data-theme` is null and `--bg` is
-   #0a0a0b. The media query therefore put the light theme's opacity on a page
-   rendering dark, for every system-light visitor. A rule about the theme has to
-   key on whatever actually decides the theme. */
 /* --ink-3 on the .outro band measured 4.32 once --bg-2 was darkened, just under
    AA. Scoped to this element rather than moving the token, which behaves
    correctly everywhere else — the same call .sub-msg and .flag-rank already
@@ -514,15 +456,6 @@ a, button, summary, label, [role="button"], .row {
    ground colour moved; measure anything sitting on --bg-2. */
 :root[data-theme="light"] .dim { color: #5f5f57; }
 
-:root[data-theme="light"] .field { opacity: .85; }
-/* Below 720px the board is edge to edge and the marks sit under the cards
-   rather than beside them. The light theme needs its own line: its selector
-   carries higher specificity than a bare `.field`, so a single rule here would
-   lose to it and a light-theme phone would keep the desktop value. */
-@media (max-width: 720px) {
-  .field { opacity: .26; }
-  :root[data-theme="light"] .field { opacity: .5; }
-}
 
 /* ======================= page-load intro =======================
    ONE ELEMENT, from first frame to last. The header's own radar starts larger
@@ -530,8 +463,8 @@ a, button, summary, label, [role="button"], .row {
    where it simply stays, because it was never a copy. No overlay, no second
    logo, no handoff.
 
-   No veil either: the background field above is visible from the first frame
-   and never changes, so the intro and the site share one ground. What is
+   No veil either: the page ground is visible from the first frame and never
+   changes, so the intro and the site share one ground. What is
    hidden is the CONTENT, and it does not return as one block — every visible
    element comes back on its own, outward from the mark.
 
@@ -665,57 +598,49 @@ html[data-boot] .boot-part {
 .lede-in { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
 
 .lede h1 {
-  font-size: clamp(26px, 3.4vw, 38px); line-height: 1;
-  letter-spacing: -.045em; text-transform: uppercase;
+  font-size: clamp(26px, 2.6vw, 34px); line-height: 1.12;
+  letter-spacing: -.025em; font-weight: 700;
   /* May shrink and wrap, never overflow. `flex: none` let a 52-character
      heading run 1,056px inside a 981px wrap at 1025px and put a horizontal
      scrollbar on the whole board (19 Sep 2026). The paragraph beside it
      still drops to its own line first, because the container wraps. */
   flex: 0 1 auto; min-width: 0;
 }
-.lede h1::after { content: ""; display: inline-block; width: .13em; height: .13em; margin-left: .05em; background: var(--live); vertical-align: baseline; }
-.lede p { max-width: 68ch; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+.lede p { max-width: 68ch; color: var(--ink-2); font-size: var(--t-ui); line-height: 1.55; }
 .lede strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- control rail ---------- */
 
 .rail {
   position: sticky; top: var(--bar-h); z-index: 50;
-  /* 92%, not 78%. The .field decorative marks are lime and sit behind this
-     sticky bar, so at 78% they composited through and BECAME the background
-     the 9.5px filter labels are read against — axe measured #3b4a08 at
-     412px and #242b09 at 1280px, i.e. olive, giving 2.5:1. No text colour
-     fixes small text over an arbitrary decorative background; the fix is to
-     stop the decoration reaching it. The backdrop blur is untouched, so the
-     frosted-glass read survives — there is just far less of it. */
-  background: color-mix(in oklab, var(--bg) 92%, transparent);
-  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
+  /* SOLID, like the bar above it. It was a translucent blur, and at 78% the
+     old background marks composited through and became the ground the filter
+     labels were read against (axe: 2.5:1). Nothing shows through now. */
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
 }
-.rail-in { display: flex; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
+.rail-in { display: flex; align-items: center; gap: 10px; padding: 12px 0; flex-wrap: wrap; }
 
-.seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
+.seg { display: flex; gap: 6px; }
 .seg-b {
-  background: none; border: 0; cursor: pointer;
-  padding: 8px 15px; font-size: 13px; font-weight: 600; color: var(--ink-3);
+  background: var(--fill); border: 0; border-radius: var(--r-2); cursor: pointer;
+  height: 40px; padding: 0 14px; font-size: var(--t-ui); font-weight: 600; color: var(--ink-2);
   display: inline-flex; align-items: center; gap: 8px;
   transition: color .16s, background .16s;
 }
-.seg-b + .seg-b { border-left: 1px solid var(--rule); }
 .seg-b b {
-  font-family: var(--mono); font-size: 10.5px; font-weight: 700;
-  padding: 2px 6px; border-radius: 3px; background: var(--card-2); color: var(--ink-3);
+  font-size: var(--t-micro); font-weight: 600;
+  padding: 2px 7px; border-radius: var(--r); background: var(--fill); color: var(--ink-2);
   font-variant-numeric: tabular-nums;
 }
-.seg-b:hover { color: var(--ink); }
+.seg-b:hover { color: var(--ink); background: var(--fill-2); }
 .seg-b[aria-selected="true"] { background: var(--live); color: var(--live-ink); }
 .seg-b[aria-selected="true"] b { background: color-mix(in oklab, var(--live-ink) 16%, transparent); color: var(--live-ink); }
-/* "+N new" on a tab — the one the reader is NOT on is the point (app.js
-   renderTabNews). Lime on the idle tab so it reads as news, not as a count;
-   the selected tab is already lime, so there it is ink. */
+/* "+N new" on a tab. The one the reader is NOT on is the point (app.js
+   renderTabNews). Weight, not colour: lime is for the selected tab. */
 .seg-new {
-  font-family: var(--mono); font-style: normal; font-size: 10.5px; font-weight: 700;
-  letter-spacing: .02em; color: var(--live); font-variant-numeric: tabular-nums;
+  font-style: normal; font-size: var(--t-micro); font-weight: 700;
+  color: var(--ink); font-variant-numeric: tabular-nums;
 }
 .seg-b[aria-selected="true"] .seg-new { color: var(--live-ink); }
 
@@ -728,27 +653,26 @@ html[data-boot] .boot-part {
 
 .find {
   flex: 1 1 240px; min-width: 190px; display: flex; align-items: center; gap: 9px;
-  border: 1px solid var(--rule); border-radius: var(--r); padding: 0 12px; height: 34px;
-  color: var(--ink-3); transition: border-color .16s;
+  background: var(--fill); border: 0; border-radius: var(--r-2); padding: 0 12px; height: 40px;
+  color: var(--ink-3);
 }
-.find:focus-within { border-color: var(--live); }
-.find input { flex: 1; border: 0; background: none; outline: none; font-size: 13.5px; color: var(--ink); min-width: 0; }
+.find input { flex: 1; border: 0; background: none; outline: none; font-size: var(--t-ui); color: var(--ink); min-width: 0; }
+.find input::placeholder { color: var(--ink-3); }
 .find input::-webkit-search-cancel-button { display: none; }
-.x { border: 0; background: none; color: var(--ink-3); cursor: pointer; font-size: 19px; line-height: 1; padding: 0 2px; }
+.x { border: 0; background: none; color: var(--ink-3); cursor: pointer; font-size: var(--t-h3); line-height: 1; padding: 0 2px; }
 .x:hover { color: var(--ink); }
 
 .picks { display: flex; gap: 8px; flex-wrap: wrap; }
-.picks label { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); border-radius: var(--r); padding: 0 10px 0 11px; height: 34px; }
-.picks span { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
+.picks label { display: inline-flex; align-items: center; gap: 7px; background: var(--fill); border: 0; border-radius: var(--r-2); padding: 0 12px; height: 40px; }
+.picks span { font-size: var(--t-small); color: var(--ink-3); }
 .picks select {
   appearance: none; -webkit-appearance: none; background: none; border: 0; outline: none;
-  font-size: 13px; color: var(--ink); cursor: pointer; max-width: 140px;
+  font-size: var(--t-ui); font-weight: 500; color: var(--ink); cursor: pointer; max-width: 140px;
   padding-right: 14px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a6a62' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right center; background-size: 11px;
 }
-.picks label:hover { border-color: var(--rule-2); }
-.picks label:focus-within { border-color: var(--live); }
+.picks label:hover { background: var(--fill-2); }
 
 /* Both controls clear their own outline above, and that also clears the global
    :focus-visible ring: a bare :focus-visible is (0,1,0) and loses to
@@ -759,27 +683,22 @@ html[data-boot] .boot-part {
 .find:has(:focus-visible),
 .picks label:has(:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
 
-.flags { display: flex; gap: 8px; }
+.flags { display: flex; gap: 6px; }
 .flag {
-  background: none; border: 1px solid var(--rule); border-radius: var(--r);
-  color: var(--ink-3); height: 34px; padding: 0 13px; cursor: pointer;
-  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em;
+  background: var(--fill); border: 0; border-radius: var(--r-2);
+  color: var(--ink-2); height: 40px; padding: 0 14px; cursor: pointer;
+  font-size: var(--t-small); font-weight: 500;
   /* Named properties, not `all`: `all` animates whatever else happens to
      change — including layout properties, off the GPU. */
   transition: color .16s, background-color .16s, border-color .16s;
 }
-.flag:hover { color: var(--ink); border-color: var(--rule-2); }
-.flag[aria-pressed="true"] { background: var(--live); border-color: var(--live); color: var(--live-ink); font-weight: 700; }
-.flag-reset { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 40%, transparent); }
+.flag:hover { color: var(--ink); background: var(--fill-2); }
+.flag[aria-pressed="true"] { background: var(--live); color: var(--live-ink); font-weight: 650; }
 
 /* ---------- board ---------- */
 
 .board { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 26px; align-items: start; padding: 20px 0 80px; }
-.feed-head {
-  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
-  letter-spacing: .13em; color: var(--ink-3); padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-}
+.feed-head { font-size: var(--t-small); color: var(--ink-3); padding-bottom: 12px; font-variant-numeric: tabular-nums; }
 
 /* ---------- the register ---------- */
 
@@ -820,25 +739,20 @@ html[data-boot] .boot-part {
    only child of its <li>, so a :nth-child() on .row always matches 1. */
 @keyframes rowIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
 
-/* the lit edge — how selection and freshness are signalled */
+/* The lit edge, and the only lime on a card that is not Apply: it marks the
+   selected row. Freshness is said in the age text, not in colour. */
 .row::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  transform: scaleX(.5); transform-origin: left;
-  background: transparent; transition: background .16s, transform .2s var(--snap);
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: transparent; transition: background .16s;
 }
 .row:hover { border-color: var(--rule-2); }
-.row:hover::before { background: var(--rule-2); }
-.row[aria-current="true"] {
-  border-color: var(--live); background: var(--card-2);
-}
-.row[aria-current="true"]::before { background: var(--live); transform: scaleX(1); }
-.row.is-hot::before { background: var(--hot); }
-.row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
+.row[aria-current="true"] { border-color: var(--rule-2); background: var(--card-2); }
+.row[aria-current="true"]::before { background: var(--live); }
 
 .crest {
   width: 52px; height: 52px; border-radius: var(--r); overflow: hidden; position: relative;
   display: grid; place-items: center; background: var(--card-2);
-  font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 700; font-size: var(--t-title); color: var(--ink-2);
   border: 1px solid var(--rule);
 }
 /* The initials sit underneath; the logo fades over them once it decodes.
@@ -867,16 +781,12 @@ html[data-boot] .boot-part {
 
    The role is now the heading; the company is an eyebrow above it. Emphasis
    comes from weight and colour, not size, so the card stays compact. */
-/* Bigger and brighter than the 11px grey eyebrow it was. The role still leads
-   — it is the line people scan a job board for — but at --t-micro the employer
-   was set in the size this file reserves for labels nobody has to read, and on
-   a board whose whole claim is a vetted employer list that is the wrong thing
-   to economise on. */
+/* The employer as written, in sentence case. It was letter-spaced capitals,
+   which read as a label rather than a name. The role still leads. */
 .co {
   font-family: var(--ui);
-  font-size: .8125rem; line-height: 1.25;
-  letter-spacing: .06em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink-15);
+  font-size: var(--t-small); line-height: 1.3;
+  font-weight: 500; color: var(--ink-2);
   /* Two lines maximum. A pathological company name truncates instead of
      taking over the card. */
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
@@ -896,54 +806,47 @@ html[data-boot] .boot-part {
    separator is a pseudo-element so it never appears without a qualifier. */
 .role .qual { color: var(--ink); }
 .role .qual::before { content: "·"; margin: 0 7px; color: var(--ink-3); }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em; color: var(--ink-3); text-transform: uppercase; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 8px; font-size: var(--t-small); color: var(--ink-2); }
 .meta .cash { color: var(--cash); font-weight: 700; }
 /* The city list on a role advertised in more than one place. Slightly brighter
    than the rest of the meta line because it is replacing the single location,
    which is the fact a reader scans this line for. */
 .meta .cities { color: var(--ink-2); }
-.meta .ea { color: var(--hot); }
+.meta .ea { color: var(--ink); font-weight: 600; }
 .meta .unpaid { color: var(--ink-3); }
 .meta .dunno { color: var(--ink-3); opacity: .72; }
 
-/* Eligibility. The only boxed item in the row, because it is the one fact that
-   can rule you out entirely — everything else is detail you read afterwards. */
+/* Eligibility. The only chip in the fact line, because it is the one fact
+   that can rule you out entirely. Filled and in full ink, not lime. */
 .elig {
   display: inline-flex; align-items: center; gap: 6px;
-  border: 1px solid color-mix(in oklab, var(--live) 42%, transparent);
-  border-radius: var(--r); padding: 2px 7px; margin: -2px 0;
+  background: var(--fill); border-radius: var(--r); padding: 3px 8px;
 }
-.elig b { color: var(--live); font-weight: 700; letter-spacing: .08em; }
-.elig i { font-style: normal; color: var(--ink-2); text-transform: none; letter-spacing: .02em; }
+.elig b { color: var(--ink); font-weight: 650; }
+.elig i { font-style: normal; color: var(--ink-2); }
 
 .skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+/* THE CHIP. One look for every chip on the site: .skill here, .chip and
+   .place in the pane, and the chips page.css draws on job and company pages. */
 .skill {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 7px;
+  font-size: var(--t-micro); font-weight: 500; line-height: 1.3;
+  color: var(--ink-2); background: var(--fill);
+  border-radius: var(--r); padding: 3px 8px;
 }
 /* A skill the loaded resume already names. The chips stop being uniform
    decoration and become a reason to look at one card over another. */
-.skill.has { color: var(--live); border-color: color-mix(in oklab, var(--live) 45%, transparent); }
+.skill.has { color: var(--live); background: color-mix(in oklab, var(--live) 12%, transparent); }
 
 /* The fit score. Mono and tabular so a column of them compares down the page;
    the accent only once it is worth acting on, or every card shouts. */
-.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--mono); font-size: var(--t-micro); }
+.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--ui); font-size: var(--t-micro); }
 .match b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .match.is-strong b { color: var(--live); }
 .match span { color: var(--ink-3); overflow-wrap: anywhere; }
 
-/* Reads as an offer, not a warning — .flag-reset is the destructive one and
-   owns --hot. This carries the accent the sort control lights up in once a
-   resume is loaded, which is the thing it turns on. */
-.flag-rank { color: var(--live); border-color: color-mix(in oklab, var(--live) 38%, transparent); }
-.flag-rank:hover { color: var(--live-ink); background: var(--live); border-color: var(--live); }
-/* MEASURED: --live on the rail composites lighter in the light theme and the
-   chip fell under the 4.5 floor. Darkened here and nowhere else. */
-:root[data-theme="light"] .flag-rank { color: #4a6100; }
 
 .gist {
-  margin-top: 10px; font-size: 13.5px; color: var(--ink-2); max-width: 62ch;
+  margin-top: 10px; font-size: var(--t-ui); color: var(--ink-2); max-width: 62ch;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-clamp: 2; overflow: hidden;
 }
 
@@ -952,26 +855,24 @@ html[data-boot] .boot-part {
 .gist-list { margin-top: 10px; max-width: 66ch; display: grid; gap: 5px; }
 .gist-list li {
   position: relative; padding-left: 15px;
-  font-size: 13.5px; line-height: 1.45; color: var(--ink-2);
+  font-size: var(--t-ui); line-height: 1.5; color: var(--ink-2);
 }
+/* THE BULLET. One round dot in --ink-3 for every list on the site. */
 .gist-list li::before {
-  content: ""; position: absolute; left: 0; top: .55em;
-  width: 5px; height: 5px; background: var(--live); opacity: .55;
+  content: ""; position: absolute; left: 1px; top: .62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--ink-3);
 }
 
-.age { text-align: right; padding-top: 4px; }
+/* The age, as text. Fresher roles get full ink and weight rather than a
+   colour and a draining meter. */
+.age { text-align: right; padding-top: 2px; }
 .age b {
-  display: block; font-family: var(--mono); font-size: 13px; font-weight: 700;
-  color: var(--ink-2); font-variant-numeric: tabular-nums;
+  display: block; font-size: var(--t-small); font-weight: 500;
+  color: var(--ink-3); font-variant-numeric: tabular-nums;
 }
-.age.fresh b { color: var(--live); }
-.age.blazing b { color: var(--hot); }
-.age s {
-  display: block; margin-top: 6px; margin-left: auto; height: 2px; width: 44px;
-  background: var(--rule); text-decoration: none; overflow: hidden;
-}
-.age s i { display: block; height: 100%; background: var(--live); }
-.age.blazing s i { background: var(--hot); }
+.age.fresh b, .age.blazing b { color: var(--ink); font-weight: 650; }
+/* The meter app.js used to draw. Hidden for any cached script that still does. */
+.age s { display: none; }
 
 /* ---------- card footer: age + apply ---------- */
 
@@ -980,13 +881,15 @@ html[data-boot] .boot-part {
    and lays out as a row, age left and the button right where a thumb is. */
 .card-foot { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 
+/* THE APPLY BUTTON. One label, one shape, one arrow on every surface: the
+   card, the detail pane (.go.is-apply) and page.css's .btn-apply and .rc-cta. */
 .card-go {
   position: relative; overflow: hidden;
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 14px; height: 34px; flex: none;
-  border-radius: 999px; border: 1px solid var(--live);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0 16px; height: 40px; flex: none;
+  border-radius: var(--r-2); border: 0;
   background: var(--live); color: var(--live-ink);
-  font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em;
+  font-family: var(--ui); font-size: var(--t-ui); font-weight: 650; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap; cursor: pointer;
   /* 140ms: button press feedback belongs in 100-160ms. At 180ms the press
      read soft rather than tactile. */
@@ -999,9 +902,10 @@ html[data-boot] .boot-part {
 
 
 
-/* A hot role gets the hot colour, so the button matches the urgency the age
-   badge is already signalling rather than fighting it. */
-.row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
+.card-go::after, .go.is-apply::after {
+  content: ""; flex: none; width: 13px; height: 9px; background: currentColor;
+  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
+}
 
 
 /* ============================================================
@@ -1038,24 +942,26 @@ html[data-boot] .boot-part {
         gap: 20px; padding: 78px 20px 96px; text-align: center; }
 .scan-eye { display: block; width: 64px; height: 64px; }
 .scan-eye svg { width: 100%; height: 100%; display: block; }
-.scan p { margin: 0; font-family: var(--mono); font-size: var(--t-micro);
-          letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.scan p { margin: 0; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-3); }
 
 .void-mark {
   display: block; width: 46px; height: 46px; margin: 0 auto 20px;
   border: 1px solid var(--rule-2); border-radius: 50%; position: relative;
 }
 .void-mark::after { content: ""; position: absolute; inset: 12px; border: 1px solid var(--rule-2); border-radius: 50%; }
-.void h3 { font-size: 22px; text-transform: uppercase; letter-spacing: -.03em; }
-.void p { margin-top: 8px; color: var(--ink-3); font-size: 14px; }
+.void h3 { font-size: var(--t-h3); letter-spacing: -.015em; }
+.void p { margin-top: 8px; color: var(--ink-3); font-size: var(--t-ui); }
 
 /* ---------- detail pane ---------- */
 
 .pane-col { position: sticky; top: calc(var(--stack-h) + 16px); }
 .pane, .pane-idle { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
-.pane-idle { display: grid; place-items: center; text-align: center; padding: 84px 30px; min-height: 380px; }
-.pane-idle p { font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.03em; }
-.pane-idle p span { display: block; margin-top: 9px; font-family: var(--ui); font-weight: 400; font-size: 13.5px; text-transform: none; letter-spacing: 0; color: var(--ink-3); }
+/* Shown only when nothing is open: no JavaScript, or a filter that matched
+   nothing. On a normal load app.js opens the newest role instead. */
+.pane-idle { display: grid; place-items: center; text-align: center; padding: 40px 28px; }
+.pane-idle .idle-scope { display: none; }
+.pane-idle p { font-weight: 600; font-size: var(--t-title); }
+.pane-idle p span { display: block; margin-top: 6px; font-weight: 400; font-size: var(--t-ui); color: var(--ink-3); }
 
 .idle-scope, .wait-scope { position: relative; display: block; width: 72px; height: 72px; margin-bottom: 26px; }
 .idle-scope i, .wait-scope i {
@@ -1069,62 +975,71 @@ html[data-boot] .boot-part {
 .pane { padding: 26px; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
 .pane.is-in { animation: rowIn .3s var(--snap) both; }
 .back {
-  display: none; background: none; border: 0; color: var(--live); cursor: pointer;
-  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
-  padding: 0; margin-bottom: 18px;
+  display: none; background: none; border: 0; color: var(--ink-2); cursor: pointer;
+  font-size: var(--t-ui); font-weight: 500;
+  min-height: 44px; padding: 0; margin-bottom: 6px;
 }
-.p-co { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: .96; letter-spacing: -.045em; text-transform: uppercase; }
-.p-role { margin-top: 9px; font-size: 16px; color: var(--ink); }
-.p-loc { margin-top: 6px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+/* ROLE FIRST, as on the card. The company is the small line above; the role,
+   with the same qualifier the card shows, is the heading. It used to be the
+   other way round: the employer at 34px capitals over a 16px bare title. */
+.p-co { font-size: var(--t-small); font-weight: 500; line-height: 1.3; color: var(--ink-2); }
+.p-role {
+  margin-top: 6px; font-family: var(--display); font-weight: 700;
+  font-size: var(--t-h2); line-height: 1.18; letter-spacing: -.02em;
+  color: var(--ink); overflow-wrap: anywhere;
+}
+.p-role .qual { color: var(--ink); }
+.p-role .qual::before { content: "·"; margin: 0 8px; color: var(--ink-3); }
+.p-loc { margin-top: 8px; font-size: var(--t-small); color: var(--ink-2); }
 
 /* Every city a collapsed role is open in, each its own posting and its own page.
    Chips rather than a sentence: they are links, and they have to look like it. */
 .p-places { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 .place {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 7px; text-decoration: none;
-  transition: border-color .16s, color .16s;
+  font-size: var(--t-micro); font-weight: 500; line-height: 1.3;
+  color: var(--ink-2); background: var(--fill);
+  border-radius: var(--r); padding: 4px 9px; text-decoration: none;
+  transition: background-color .16s, color .16s;
 }
 /* The one already showing in this pane. Marked so the reader can tell which of
    twenty-one cities they are currently reading. */
-.place.is-here { color: var(--live); border-color: var(--live); }
+.place.is-here { color: var(--ink); background: var(--fill-2); font-weight: 650; }
 @media (hover: hover) and (pointer: fine) {
-  .place:hover { color: var(--ink); border-color: var(--ink-3); }
+  .place:hover { color: var(--ink); background: var(--fill-2); }
 }
 
 .p-acts { display: flex; gap: 9px; margin: 22px 0; flex-wrap: wrap; }
 
 .go, .alt, .bare {
-  border-radius: var(--r); height: 40px; padding: 0 18px; cursor: pointer;
-  font-size: 13.5px; font-weight: 700; text-decoration: none;
+  border-radius: var(--r-2); height: 44px; padding: 0 18px; cursor: pointer;
+  font-size: var(--t-ui); font-weight: 650; text-decoration: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   transition: transform .14s var(--snap), background .16s, border-color .16s, color .16s;
 }
-.go { background: var(--live); border: 1px solid var(--live); color: var(--live-ink); }
+.go { background: var(--live); border: 1px solid transparent; color: var(--live-ink); }
 /* Press feedback. This was `transform: none`, so the detail pane primary
    Apply — and Tailor it, and Download PDF — answered a press with nothing at
    all on touch, where there is no hover lift for it to be cancelling. */
 .go:active, .alt:active, .bare:active { transform: scale(.97); }
 .go:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 .go-block { width: 100%; }
-.alt { background: none; border: 1px solid var(--rule-2); color: var(--ink); }
-.alt:hover { border-color: var(--live); color: var(--live); }
+.alt { background: var(--fill); border: 1px solid transparent; color: var(--ink); }
+.alt:hover { background: var(--fill-2); }
 .alt svg { flex: none; }
 .bare { background: none; border: 1px solid transparent; color: var(--ink-3); }
 .bare:hover { color: var(--ink); }
 
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; margin-bottom: 22px; }
-.fact { padding: 12px 14px; box-shadow: 0 0 0 1px var(--rule); }
-.fact dt { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
-.fact dd { margin: 5px 0 0; font-size: 14.5px; font-weight: 600; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr)); gap: 14px 20px; margin-bottom: 22px; }
+.fact { padding: 0; }
+.fact dt { font-size: var(--t-micro); color: var(--ink-3); }
+.fact dd { margin: 3px 0 0; font-size: var(--t-body); font-weight: 600; }
 .fact dd.cash { color: var(--cash); }
 
-.pane h3 { font-family: var(--mono); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); margin: 22px 0 10px; }
-.p-gist { font-size: 14.5px; white-space: pre-line; }
+.pane h3 { font-family: var(--ui); font-weight: 650; font-size: var(--t-body); color: var(--ink); margin: 24px 0 8px; }
+.p-gist { font-size: var(--t-body); line-height: 1.6; color: var(--ink-15); white-space: pre-line; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { border: 1px solid var(--rule); border-radius: var(--r); padding: 4px 9px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; }
-.src { margin-top: 24px; padding-top: 15px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); }
+.chip { background: var(--fill); border-radius: var(--r); padding: 4px 9px; font-size: var(--t-micro); font-weight: 500; line-height: 1.3; color: var(--ink-2); }
+.src { margin-top: 24px; padding-top: 15px; border-top: 1px solid var(--rule); font-size: var(--t-micro); color: var(--ink-3); }
 .src a { color: var(--ink-2); }
 
 /* ---------- footer ---------- */
@@ -1132,7 +1047,7 @@ html[data-boot] .boot-part {
 /* The bottom pad clears the home indicator. index.html opts this page into
    viewport-fit=cover, which pushes the layout under it; without an inset here
    the last line of the footer sits beneath the bar. */
-.foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 calc(52px + env(safe-area-inset-bottom)); font-size: 12px; color: var(--ink-3); }
+.foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 calc(52px + env(safe-area-inset-bottom)); font-size: var(--t-micro); color: var(--ink-3); }
 .foot p { max-width: 80ch; }
 /* NO opacity here. It used to carry `opacity: .75`, which faded .foot's
    own --ink-3 from a passing 4.94 on --bg-2 to 3.27 — axe reads the faded
@@ -1154,8 +1069,8 @@ html[data-boot] .boot-part {
 }
 @keyframes pop { from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); } }
 .modal-top { display: flex; justify-content: space-between; gap: 16px; padding: 20px 22px; border-bottom: 1px solid var(--rule); flex: none; }
-.modal-top h2 { font-size: 21px; text-transform: uppercase; letter-spacing: -.035em; }
-.modal-sub { margin-top: 5px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.modal-top h2 { font-size: var(--t-h3); letter-spacing: -.025em; }
+.modal-sub { margin-top: 5px; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-3); }
 .modal-body { padding: 22px; overflow: auto; overscroll-behavior: contain; }
 
 /* ---------------- the tailor wizard ----------------
@@ -1173,7 +1088,7 @@ html[data-boot] .boot-part {
   transform: none;
   width: min(560px, calc(100vw - 32px)); height: auto;
   max-height: calc(100vh - clamp(20px, 9vh, 88px) - 20px);
-  border: 1px solid var(--rule-2); border-radius: 14px;
+  border: 1px solid var(--rule-2); border-radius: var(--r-2);
   box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
   animation: tw-pop .26s var(--snap);
 }
@@ -1182,7 +1097,7 @@ html[data-boot] .boot-part {
 .modal.tw[data-step="result"] { width: min(860px, calc(100vw - 32px)); }
 
 .modal.tw .modal-top { border-bottom: 0; padding: 20px 24px 0; align-items: flex-start; }
-.modal.tw .modal-top h2 { font-size: 15px; letter-spacing: -.01em; }
+.modal.tw .modal-top h2 { font-size: var(--t-body); letter-spacing: -.01em; }
 .modal.tw .modal-sub { margin-top: 4px; }
 .modal.tw[data-step="result"] .modal-top { border-bottom: 1px solid var(--rule); padding-bottom: 18px; }
 .modal.tw .modal-body { padding: 26px 24px 28px; flex: 1 1 auto; min-height: 0; }
@@ -1202,11 +1117,11 @@ html[data-boot] .boot-part {
 }
 .wiz .wstep {
   display: grid; gap: 8px; min-width: 0;
-  font-family: var(--ui); font-size: .78rem; font-weight: 600; line-height: 1.2;
+  font-family: var(--ui); font-size: var(--t-micro); font-weight: 600; line-height: 1.2;
   color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .wiz .wstep::before {
-  content: ''; height: 3px; border-radius: 999px; background: var(--rule-2);
+  content: ''; height: 3px; border-radius: var(--r-pill); background: var(--rule-2);
   transition: background-color .24s ease;
 }
 .wiz .wstep.is-done { color: var(--ink-2); }
@@ -1216,13 +1131,13 @@ html[data-boot] .boot-part {
 /* The one voice on each screen. Sentence case under the small uppercase dialog
    title, so the two do not shout over each other. */
 .tw-h {
-  margin: 0; font-family: var(--display); font-weight: 900;
-  font-size: 1.5rem; line-height: 1.12; letter-spacing: -.025em; color: var(--ink);
+  margin: 0; font-family: var(--display); font-weight: 700;
+  font-size: var(--t-h2); line-height: 1.12; letter-spacing: -.025em; color: var(--ink);
 }
 /* Focused by script so a screen reader announces the new screen; it is not a
    control, so it draws no ring. */
 .tw-h:focus { outline: none; }
-.tw-p { margin: 8px 0 0; max-width: 50ch; font-size: .9375rem; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.tw-p { margin: 8px 0 0; max-width: 50ch; font-size: var(--t-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 
 /* ---- screen 1: the resume ---- */
 .drop {
@@ -1238,7 +1153,7 @@ html[data-boot] .boot-part {
   transition: color .16s, border-color .16s;
 }
 .drop b { font-family: var(--ui); font-weight: 700; font-size: 1rem; letter-spacing: -.01em; color: var(--ink); }
-.drop-sub { font-size: .8125rem; color: var(--ink-3); }
+.drop-sub { font-size: var(--t-small); color: var(--ink-3); }
 .drop.over { border-color: var(--live); background: color-mix(in oklab, var(--live) 5%, var(--card)); }
 .drop.over .drop-ic { color: var(--live); border-color: var(--live); }
 @media (hover: hover) and (pointer: fine) {
@@ -1252,24 +1167,24 @@ html[data-boot] .boot-part {
 .filestate {
   display: flex; align-items: center; gap: 12px; margin-top: 22px;
   padding: 14px 14px 14px 16px; border: 1px solid var(--rule); border-radius: var(--r-2);
-  background: var(--card); font-size: .875rem; line-height: 1.45; color: var(--ink-2);
+  background: var(--card); font-size: var(--t-ui); line-height: 1.45; color: var(--ink-2);
 }
 .filestate.is-ready { border-color: color-mix(in oklab, var(--cash) 45%, var(--rule)); }
 .filestate.bad { border-color: color-mix(in oklab, var(--hot) 50%, var(--rule)); color: var(--hot); }
 .fs-tick {
   flex: none; display: grid; place-items: center; width: 30px; height: 30px;
   border-radius: 50%; border: 1.5px solid var(--cash); color: var(--cash);
-  font-size: 14px; font-weight: 700;
+  font-size: var(--t-ui); font-weight: 700;
 }
 .fs-info { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
 .fs-name { font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.fs-meta { font-size: .8125rem; color: var(--ink-3); }
-.filestate .fs-remove { flex: none; height: 34px; padding: 0 12px; font-size: .8125rem; }
+.fs-meta { font-size: var(--t-small); color: var(--ink-3); }
+.filestate .fs-remove { flex: none; height: 34px; padding: 0 12px; font-size: var(--t-small); }
 
 .paste { margin-top: 16px; }
 .paste summary {
   display: inline-block; cursor: pointer; list-style: none;
-  font-size: .875rem; font-weight: 600; color: var(--ink-2);
+  font-size: var(--t-ui); font-weight: 600; color: var(--ink-2);
   text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px;
 }
 .paste summary::-webkit-details-marker { display: none; }
@@ -1288,7 +1203,7 @@ html[data-boot] .boot-part {
 
 .tw-hint {
   margin: 20px 0 0; padding-left: 12px; border-left: 2px solid var(--rule-2);
-  max-width: 52ch; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); text-wrap: pretty;
+  max-width: 52ch; font-size: var(--t-small); line-height: 1.5; color: var(--ink-3); text-wrap: pretty;
 }
 
 /* ---- screen 2: the key ---- */
@@ -1296,12 +1211,12 @@ html[data-boot] .boot-part {
 .tw-how li {
   counter-increment: how;
   display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: 12px; row-gap: 8px;
-  font-size: .9375rem; line-height: 1.4; color: var(--ink-15);
+  font-size: var(--t-body); line-height: 1.4; color: var(--ink-15);
 }
 .tw-how li::before {
   content: counter(how); display: grid; place-items: center; width: 24px; height: 24px;
   border-radius: 50%; border: 1px solid var(--rule-2);
-  font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink-2);
+  font-family: var(--ui); font-size: var(--t-micro); font-weight: 700; color: var(--ink-2);
 }
 /* Always on its own row under the step, at every width, rather than wrapping
    under the number on a phone and beside the text on a desktop. */
@@ -1309,14 +1224,14 @@ html[data-boot] .boot-part {
   grid-column: 2; justify-self: start;
   display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
   border: 1px solid var(--rule-2); border-radius: var(--r);
-  color: var(--ink); font-size: .8125rem; font-weight: 700; text-decoration: none;
+  color: var(--ink); font-size: var(--t-small); font-weight: 700; text-decoration: none;
   transition: border-color .16s, color .16s, transform var(--d-press) var(--snap);
 }
 .tw-ext:active { transform: scale(.97); }
 @media (hover: hover) and (pointer: fine) {
   .tw-ext:hover { border-color: var(--live); color: var(--live); }
 }
-.tw-label { display: block; margin: 24px 0 8px; font-size: .8125rem; font-weight: 700; color: var(--ink); }
+.tw-label { display: block; margin: 24px 0 8px; font-size: var(--t-small); font-weight: 700; color: var(--ink); }
 .tw-input {
   display: block; width: 100%; min-width: 0; height: 46px; padding: 0 14px;
   border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink);
@@ -1325,7 +1240,7 @@ html[data-boot] .boot-part {
 .tw-input::placeholder { color: var(--ink-3); }
 .tw-input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
 .tw-input[aria-invalid="true"] { border-color: var(--hot); }
-.tw-msg { margin: 8px 0 0; font-size: .8125rem; color: var(--hot); }
+.tw-msg { margin: 8px 0 0; font-size: var(--t-small); color: var(--hot); }
 /* --hot measures under 4.5 on the light --bg-2 this sits on; the value the
    feedback box already uses for its own light-theme error line. */
 :root[data-theme="light"] .tw-msg { color: #9a3412; }
@@ -1334,7 +1249,7 @@ html[data-boot] .boot-part {
 /* The privacy position, said ONCE, where the key is decided. */
 .keyfine {
   margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--rule);
-  font-size: .8125rem; line-height: 1.5; color: var(--ink-3);
+  font-size: var(--t-small); line-height: 1.5; color: var(--ink-3);
 }
 .keyfine b { color: var(--ink-2); font-weight: 600; }
 
@@ -1343,12 +1258,12 @@ html[data-boot] .boot-part {
 /* A <div> in a <dl> may hold only <dt> and <dd> (§15), so Change lives in the dd. */
 .tw-sum > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 13px 16px; }
 .tw-sum > div + div { border-top: 1px solid var(--rule); }
-.tw-sum dt { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
-.tw-sum dd { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; font-size: .9375rem; font-weight: 600; color: var(--ink); }
+.tw-sum dt { font-family: var(--ui); font-size: var(--t-micro); font-weight: 700; color: var(--ink-3); }
+.tw-sum dd { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; font-size: var(--t-body); font-weight: 600; color: var(--ink); }
 .tw-sum dd > span { min-width: 0; overflow-wrap: anywhere; }
 .tw-link {
   flex: none; padding: 4px 2px; border: 0; background: none; cursor: pointer;
-  font: inherit; font-size: .8125rem; font-weight: 600; color: var(--ink-2);
+  font: inherit; font-size: var(--t-small); font-weight: 600; color: var(--ink-2);
   text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1362,7 +1277,7 @@ html[data-boot] .boot-part {
   padding: 14px 24px; border-top: 1px solid var(--rule); background: var(--bg-2);
 }
 .tw-foot #tw-back { margin-right: auto; }
-.tw-foot .go { min-width: 150px; height: 44px; font-size: .875rem; }
+.tw-foot .go { min-width: 150px; height: 44px; font-size: var(--t-ui); }
 /* The shared hover lift must not reach a button that cannot be pressed. */
 .tw-foot .go[disabled]:hover, .tw-foot .go[disabled]:active { transform: none; }
 
@@ -1374,7 +1289,7 @@ html[data-boot] .boot-part {
   .modal.tw .modal-top { padding: 16px 16px 0; }
   .wiz { padding: 16px 16px 0; }
   .modal.tw .modal-body { padding: 22px 16px 24px; }
-  .tw-h { font-size: 1.375rem; }
+  .tw-h { font-size: var(--t-h3); }
   /* Clears the home indicator; index.html opts into viewport-fit=cover. */
   .tw-foot { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
   .tw-foot .go { flex: 1 1 auto; min-width: 0; }
@@ -1391,20 +1306,20 @@ html[data-boot] .boot-part {
 }
 
 .wait { display: grid; place-items: center; text-align: center; padding: 60px 20px; }
-.wait b { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.02em; }
-.wait > span { margin-top: 7px; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+.wait b { font-family: var(--display); font-weight: 700; font-size: var(--t-h3); letter-spacing: -.02em; }
+.wait > span { margin-top: 7px; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-3); }
 
 .acts { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 18px; }
-.flagbox { border-left: 2px solid var(--hot); background: var(--card); padding: 13px 15px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
+.flagbox { border-left: 2px solid var(--hot); background: var(--card); padding: 13px 15px; margin-bottom: 12px; font-size: var(--t-small); color: var(--ink-2); }
 .flagbox b { display: block; color: var(--ink); margin-bottom: 5px; }
 .flagbox ul { list-style: disc; padding-left: 18px; margin-top: 5px; }
 .flagbox-gap { border-left-color: var(--live); }
 
 .diffs { margin-bottom: 18px; }
-.diffs h4 { margin: 0 0 9px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); font-weight: 700; }
+.diffs h4 { margin: 0 0 9px; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-3); font-weight: 700; }
 .diffs ul { display: flex; flex-direction: column; gap: 6px; }
-.diffs li { font-size: 13px; color: var(--ink-2); padding-left: 18px; position: relative; }
-.diffs li::before { content: "+"; position: absolute; left: 0; color: var(--live); font-family: var(--mono); font-weight: 700; }
+.diffs li { font-size: var(--t-small); color: var(--ink-2); padding-left: 18px; position: relative; }
+.diffs li::before { content: "+"; position: absolute; left: 0; color: var(--live); font-family: var(--ui); font-weight: 700; }
 
 .sheet { background: #fff; color: #16160f; border-radius: var(--r); padding: 38px 42px; font-family: ui-serif, Georgia, serif; font-size: 13px; line-height: 1.5; }
 .sheet .r-name { font-family: var(--display); font-weight: 900; font-size: 26px; letter-spacing: -.035em; text-transform: uppercase; }
@@ -1421,13 +1336,13 @@ html[data-boot] .boot-part {
 .sheet .r-skills { font-family: var(--mono); font-size: 11.5px; }
 
 .oops { text-align: center; padding: 48px 26px; color: var(--ink-2); }
-.oops b { display: block; font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--ink); text-transform: uppercase; margin-bottom: 8px; }
-.oops p { margin-bottom: 18px; font-size: 14px; }
+.oops b { display: block; font-family: var(--display); font-weight: 700; font-size: var(--t-h3); color: var(--ink); margin-bottom: 8px; }
+.oops p { margin-bottom: 18px; font-size: var(--t-ui); }
 
 .snack {
   position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 95;
-  background: var(--live); color: var(--live-ink); padding: 11px 20px; border-radius: var(--r);
-  font-family: var(--mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  background: var(--ink); color: var(--bg); padding: 12px 18px; border-radius: var(--r-2);
+  font-size: var(--t-ui); font-weight: 600;
   /* A transition, not a keyframe. Keyframes restart from zero, so a second
      toast arriving during the first snapped it back to the start; a transition
      retargets from wherever it currently is. */
@@ -1445,20 +1360,20 @@ html[data-boot] .boot-part {
   list-style: none;
   display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
   padding: 6px 4px 8px;
-  font-family: var(--mono); font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-family: var(--ui); font-size: var(--t-micro); line-height: var(--t-micro-lh);
+  letter-spacing: var(--t-micro-tr);
   color: var(--ink-2);
 }
-.since-bar b { color: var(--live); font-weight: 700; }
+.since-bar b { color: var(--ink); font-weight: 700; }
 /* The bar's link to the OTHER tab's new roles — a button, since it switches
    tabs rather than navigates. Same type as the bar, lime, underlined so it
    reads as the one thing on the line that can be pressed. */
 .since-other {
   background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer;
   font: inherit; letter-spacing: inherit; text-transform: inherit;
-  color: var(--live); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
+  color: var(--ink); font-weight: 650; text-decoration: underline; text-underline-offset: 3px;
 }
-.since-other:hover { color: var(--ink); }
+.since-other:hover { color: var(--ink-2); }
 
 /* THE RANK SUMMARY — the line that says whether ranking did anything.
    Same type as .since-bar because it sits in the same slot and does the same
@@ -1469,8 +1384,8 @@ html[data-boot] .boot-part {
   list-style: none;
   display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
   padding: 6px 4px 8px;
-  font-family: var(--mono); font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-family: var(--ui); font-size: var(--t-micro); line-height: var(--t-micro-lh);
+  letter-spacing: var(--t-micro-tr);
   color: var(--ink-2);
 }
 .rank-bar b { color: var(--ink); font-weight: 700; }
@@ -1478,14 +1393,14 @@ html[data-boot] .boot-part {
 .rank-ai {
   background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer;
   font: inherit; letter-spacing: inherit; text-transform: inherit;
-  color: var(--live); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
+  color: var(--ink); font-weight: 650; text-decoration: underline; text-underline-offset: 3px;
 }
-.rank-ai:hover { color: var(--ink); }
+.rank-ai:hover { color: var(--ink-2); }
 .rank-ai[disabled] { color: var(--ink-3); text-decoration: none; cursor: default; }
 
 /* An AI score reads its reason rather than a skill count, so it gets room to
    be a sentence instead of a tally. */
-.match.is-ai span { text-transform: none; letter-spacing: 0; font-family: var(--ui); font-size: 12px; }
+.match.is-ai span { text-transform: none; letter-spacing: 0; font-family: var(--ui); font-size: var(--t-micro); }
 .row.seen { background: var(--bg-2); border-color: var(--rule); }
 .row.seen .role { color: var(--ink-15); }
 .row.seen .co { color: var(--ink-2); }
@@ -1509,23 +1424,23 @@ html.nudge-open { overflow: hidden; }
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100vh - 32px); overflow: auto;
   padding: 30px 30px 26px;
-  background: var(--card-2); border: 1px solid var(--rule-2); border-radius: 18px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(200,255,0,.08);
+  background: var(--card-2); border: 1px solid var(--rule-2); border-radius: var(--r-3);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
   color: var(--ink);
   transition: opacity .26s var(--snap), transform .26s var(--snap);
 }
 .nudge:not(.is-up) { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
 .nudge-h {
   margin: 0 40px 10px 0;
-  font-family: var(--display); font-weight: 900; text-transform: uppercase;
-  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; letter-spacing: -.02em;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem); line-height: 1.15; letter-spacing: -.02em;
 }
 .nudge-h em { font-style: normal; color: var(--live); }
 .nudge-p { margin: 0 0 22px; max-width: 46ch; font-size: var(--t-body); line-height: 1.45; color: var(--ink-15); }
 .nudge-acts { display: grid; gap: 10px; }
 .nudge-a {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  width: 100%; padding: 14px 16px; border-radius: 12px;
+  width: 100%; padding: 14px 16px; border-radius: var(--r-2);
   border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
   text-decoration: none; text-align: left; cursor: pointer;
   font-family: var(--ui); font-size: var(--t-body); font-weight: 700; letter-spacing: -.01em;
@@ -1534,13 +1449,12 @@ html.nudge-open { overflow: hidden; }
 .nudge-a:active { transform: scale(.985); }
 .nudge-a:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .nudge-a small {
-  font-family: var(--mono); font-size: var(--t-micro); font-weight: 400;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap;
+  font-family: var(--ui); font-size: var(--t-micro); font-weight: 400; color: var(--ink-2); white-space: nowrap;
 }
 .nudge-k { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .nudge-k i {
-  width: 26px; height: 26px; flex: 0 0 26px; border-radius: 8px; display: grid; place-items: center;
-  font-style: normal; font-family: var(--mono); font-size: 11px; font-weight: 400;
+  width: 26px; height: 26px; flex: 0 0 26px; border-radius: var(--r); display: grid; place-items: center;
+  font-style: normal; font-family: var(--ui); font-size: var(--t-micro); font-weight: 400;
   background: rgba(255,255,255,.08);
 }
 .nudge-whatsapp { background: var(--live); border-color: var(--live); color: var(--live-ink); }
@@ -1551,33 +1465,33 @@ html.nudge-open { overflow: hidden; }
    not). It is still the same button and still opens the inline form. */
 .nudge-a.is-minor {
   background: none; border-color: transparent; padding: 8px 6px; justify-content: center;
-  font-weight: 600; font-size: 14px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px;
+  font-weight: 600; font-size: var(--t-ui); color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px;
 }
 .nudge-a.is-minor .nudge-k i, .nudge-a.is-minor small { display: none; }
 .nudge-form { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; align-items: center; }
 .nudge-form input {
-  min-width: 0; height: 48px; padding: 0 14px; border-radius: 12px;
+  min-width: 0; height: 48px; padding: 0 14px; border-radius: var(--r-2);
   border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
   font-family: var(--ui); font-size: var(--t-body);
 }
 .nudge-form input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; }
 .nudge-send {
-  height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--live);
+  height: 48px; padding: 0 16px; border-radius: var(--r-2); border: 1px solid var(--live);
   background: var(--live); color: var(--live-ink); cursor: pointer; white-space: nowrap;
   font-family: var(--ui); font-size: var(--t-small); font-weight: 700;
 }
 .nudge-send[disabled] { cursor: default; background: var(--rule-2); border-color: var(--rule-2); color: var(--ink-2); }
 .nudge-msg { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: var(--t-small); color: var(--ink-2); }
 .nudge-msg.is-good { color: var(--live); }
-.nudge-msg.is-bad { color: var(--ink); background: var(--bg-2); border-radius: 8px; padding: 6px 10px; }
+.nudge-msg.is-bad { color: var(--ink); background: var(--bg-2); border-radius: var(--r); padding: 6px 10px; }
 .nudge-x {
   position: absolute; top: 12px; right: 12px; width: 36px; height: 36px;
-  border: 1px solid var(--rule-2); border-radius: 999px; background: none; color: var(--ink-2);
-  font-size: 20px; line-height: 1; cursor: pointer;
+  border: 1px solid var(--rule-2); border-radius: var(--r-pill); background: none; color: var(--ink-2);
+  font-size: var(--t-h3); line-height: 1; cursor: pointer;
 }
 .nudge-x:hover, .nudge-x:focus-visible { color: var(--ink); background: var(--rule); outline: none; }
 @media (max-width: 560px) {
-  .nudge { padding: 24px 20px 20px; border-radius: 16px; }
+  .nudge { padding: 24px 20px 20px; border-radius: var(--r-3); }
   .nudge-form { grid-template-columns: minmax(0,1fr); }
   .nudge-a small { white-space: normal; text-align: right; }
 }
@@ -1683,6 +1597,9 @@ html.nudge-open { overflow: hidden; }
   }
   .picks::-webkit-scrollbar { display: none; }
   .picks label { flex: 0 0 auto; min-width: 0; }
+  /* The select IS the tap target: a tap on the label beside it does not open
+     it, so it fills the whole 44px of the chip. */
+  .picks select { align-self: stretch; }
   /* Narrow enough that the next chip is always part-visible at the right edge.
      A half-shown chip is the affordance that says "this strip scrolls"; at a
      wider cap the first chip alone filled the screen and the strip looked
@@ -1693,12 +1610,19 @@ html.nudge-open { overflow: hidden; }
      first card already gave. It is a real control again — internship vs
      full-time — so it stays, just tighter. */
   .seg { order: -1; }
-  .seg-b { padding: 8px 12px; font-size: 12.5px; }
+  .seg-b { padding: 0 14px; }
 
   .ticker { display: none; }
   /* Stays on mobile. The ticker goes so this can: a visitor who arrived from an
      ad and leaves without following the channel is a visitor paid for twice. */
-  .alerts { height: 34px; padding: 0 11px; }
+  /* Touch sizes. 44px is the smallest target a thumb hits reliably, and every
+     control on the first phone screen was 33 to 36px. */
+  .ghost-btn { width: 44px; height: 44px; }
+  .rg > summary, .alerts { height: 44px; min-width: 44px; }
+  .alerts { padding: 0 12px; }
+  .seg-b, .find, .picks label, .flag, .trk-b { height: 44px; }
+  /* 16px or iOS zooms the whole page when the box is tapped. */
+  .find input { font-size: 16px; }
 
   /* ---- The card, rebuilt as the feed card -----------------------------
      One column, not a grid: logo and company sit on a header line, the role
@@ -1707,7 +1631,7 @@ html.nudge-open { overflow: hidden; }
   .row {
     display: block;
     padding: var(--s4) var(--s4) var(--s3);
-    border-radius: 20px;
+    border-radius: var(--r-2);
     border-color: transparent;
     background: var(--card);
   }
@@ -1716,32 +1640,23 @@ html.nudge-open { overflow: hidden; }
 
   /* Logo + company + age on one line above the role. */
   .row > .crest { float: left; margin-right: var(--s3); }
-  .crest { width: 34px; height: 34px; font-size: 12px; border-radius: 9px; }
+  .crest { width: 34px; height: 34px; font-size: var(--t-micro); border-radius: var(--r); }
 
-  .co {
-    font-size: .8125rem; font-weight: 600; letter-spacing: .01em;
-    text-transform: none; color: var(--ink-2);
-    -webkit-line-clamp: 1; line-height: 34px;
-  }
+  .co { -webkit-line-clamp: 1; line-height: 34px; }
 
   /* The headline. Big enough to be read while a thumb is moving. */
   .role {
     clear: both; padding-top: var(--s2);
-    font-family: var(--display); font-weight: 800;
-    font-size: clamp(1.25rem, 5.4vw, 1.5rem); line-height: 1.14; letter-spacing: -.03em;
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.125rem, 4.8vw, 1.3125rem); line-height: 1.22; letter-spacing: -.015em;
   }
 
-  /* Facts become pills rather than a monospace run-on. */
-  .meta { gap: 6px; margin-top: var(--s3); text-transform: none; letter-spacing: .01em; }
-  .meta > span:not(.elig) {
-    font-family: var(--ui); font-size: .75rem; font-weight: 600;
-    background: var(--card-2); border-radius: 999px; padding: 5px 11px; color: var(--ink-2);
-  }
-  .meta .ea { color: var(--hot); background: color-mix(in oklab, var(--hot) 12%, transparent); }
-  .elig { border-radius: 999px; padding: 4px 11px; background: color-mix(in oklab, var(--live) 12%, transparent); }
+  /* The fact line is the same plain text as on a desktop. It turned into
+     pills here, which made "12 months" a pill on a phone and a label on a
+     laptop. */
+  .meta { margin-top: var(--s3); }
 
   .gist-list { margin-top: var(--s3); }
-  .gist-list li { font-size: .90625rem; }
 
   /* Apply spans the card. The single biggest target on the screen, sitting
      where the thumb already rests. */
@@ -1750,11 +1665,10 @@ html.nudge-open { overflow: hidden; }
     gap: var(--s2); padding-top: var(--s4); width: 100%;
   }
   .card-go {
-    height: 50px; border-radius: 14px; padding: 0;
-    justify-content: center; font-size: 1rem; font-weight: 700;
+    height: 48px; padding: 0;
+    font-size: var(--t-body);
   }
   .age { text-align: left; padding-top: 0; display: flex; align-items: center; gap: 8px; }
-  .age s { margin-left: 0; }
   /* The selects still need min-width:0 and the ellipsis. Their intrinsic width
      is the widest company or city name in the option list, which without this
      becomes an unshrinkable floor — that is what used to push the rail ~150px
@@ -1769,7 +1683,6 @@ html.nudge-open { overflow: hidden; }
   .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
   @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
   .sheet { padding: 24px 20px; }
-  .p-co { font-size: 27px; }
 }
 
 /* Phones only: cards run to the screen edges. On a tablet the inset reads as
@@ -1791,6 +1704,11 @@ html.nudge-open { overflow: hidden; }
    cancel .wrap's gutter exactly, so that the cards reach the screen edge; the
    two numbers are one decision written twice. Changing the gutter alone pushed
    the feed 5px past both edges and scrolled the page sideways. */
+@media (max-width: 340px) {
+  .ghost-btn { width: 40px; }
+  .rg > summary, .alerts { min-width: 40px; }
+}
+
 @media (max-width: 400px) {
   .wrap { width: calc(100% - 20px); }
   .feed { margin-inline: -10px; }
@@ -1808,7 +1726,6 @@ html.nudge-open { overflow: hidden; }
     backdrop-filter: none; -webkit-backdrop-filter: none;
     border-bottom: 1px solid var(--rule);
   }
-  .bar::after { display: none; }
   .grain { display: none; }
 }
 
@@ -1864,18 +1781,15 @@ html.nudge-open { overflow: hidden; }
    passes at 4.94 unfaded. Hover brightens the COLOUR now rather than
    raising an opacity, so the feedback survives without the base state
    being illegible. */
-.all-roles > summary {
-  cursor: pointer; font: 600 0.78rem/1.4 var(--mono, ui-monospace, monospace);
-  letter-spacing: 0.04em; text-transform: uppercase;
-}
+.all-roles > summary { cursor: pointer; font: 600 var(--t-small)/1.4 var(--ui); }
 .all-roles > summary:hover { color: var(--ink); }
 .all-roles > ul {
   margin: 0.8rem 0 0; padding: 0 0 0 1rem; max-height: 22rem; overflow-y: auto;
   columns: 2; column-gap: 2rem;
 }
-.all-roles > ul > li { margin: 0 0 0.45rem; font-size: 0.82rem; break-inside: avoid; }
+.all-roles > ul > li { margin: 0 0 0.45rem; font-size: var(--t-small); break-inside: avoid; }
 .all-roles > ul > li > a { color: inherit; }
-.all-roles .tiny { opacity: 0.5; }
+.all-roles .tiny { color: var(--ink-3); }
 @media (max-width: 720px) { .all-roles > ul { columns: 1; } }
 
 /* ---- email signup -------------------------------------------------
@@ -1891,8 +1805,7 @@ html.nudge-open { overflow: hidden; }
    never be the cause of another. */
 .sub { margin-top: 26px; }
 .sub-l {
-  display: block; font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
+  display: block; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-2);
 }
 .sub-row {
   display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
@@ -1900,16 +1813,18 @@ html.nudge-open { overflow: hidden; }
 }
 .sub-i {
   flex: 1 1 240px; min-width: 0; max-width: 320px;
-  padding: 11px 13px; border-radius: var(--r);
+  padding: 11px 13px; border-radius: var(--r-2);
   border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
   font-family: var(--ui); font-size: 16px;   /* NOT below 16px: iOS zooms the whole page on focus below that, and a page that jumps when you tap the box reads as broken */
 }
 .sub-i::placeholder { color: var(--ink-3, var(--ink-2)); opacity: .7; }
 .sub-i:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
+/* Ink, not lime. Where the band has a WhatsApp button that button leads; on a
+   board with no channel this is the only action, and ink still leads there. */
 .sub-b {
-  flex: 0 0 auto; padding: 11px 20px; border-radius: var(--r);
-  border: 1px solid var(--live); background: var(--live); color: var(--live-ink);
-  font-family: var(--ui); font-weight: 700; font-size: 14.5px; cursor: pointer;
+  flex: 0 0 auto; padding: 11px 20px; border-radius: var(--r-2);
+  border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+  font-family: var(--ui); font-weight: 700; font-size: var(--t-ui); cursor: pointer;
 }
 .sub-b:disabled { opacity: .6; cursor: default; }
 .sub-b:active { transform: scale(.97); }
@@ -1924,7 +1839,7 @@ html.nudge-open { overflow: hidden; }
    values would be the same measurement written twice and one of them going
    stale the next time a token moves. */
 .sub-msg, .fb-msg {
-  margin-top: 10px; font-size: 13.5px;
+  margin-top: 10px; font-size: var(--t-small);
   /* min-height so the section does not jump when a message appears. */
   min-height: 1.2em;
 }
@@ -1971,15 +1886,15 @@ html.nudge-open { overflow: hidden; }
 .chan-i {
   flex: 0 0 auto; display: grid; place-items: center;
   width: 38px; height: 38px; border-radius: var(--r);
-  background: var(--card-2); color: var(--live);
+  background: var(--fill); color: var(--ink-2);
 }
 /* minmax(0,…) so a long handle wraps instead of widening the row — .outro has
    already cost this repo one site-wide horizontal scroll. */
 .chan-t { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
-.chan-n { font-weight: 700; font-size: 15px; }
-.chan-n i { font-style: normal; font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
-.chan-b { font-size: 13.5px; color: var(--ink-2); }
-.chan-go { flex: 0 0 auto; color: var(--ink-2); font-size: 15px; }
+.chan-n { font-weight: 700; font-size: var(--t-body); }
+.chan-n i { font-style: normal; font-family: var(--ui); font-size: var(--t-micro); color: var(--ink-2); }
+.chan-b { font-size: var(--t-small); color: var(--ink-2); }
+.chan-go { flex: 0 0 auto; color: var(--ink-2); font-size: var(--t-body); }
 @media (hover: hover) and (pointer: fine) {
   .chan:hover { border-color: var(--live); }
   .chan:hover .chan-go { color: var(--live); }
@@ -2000,17 +1915,15 @@ html.nudge-open { overflow: hidden; }
 .signup-band {
   margin-top: 48px; padding: 40px 22px; text-align: center;
   border-top: 1px solid var(--rule);
-  background:
-    radial-gradient(60% 120% at 50% 0%, color-mix(in oklab, var(--live) 7%, transparent), transparent 70%),
-    var(--bg-2);
+  background: var(--bg-2);
 }
 .signup-band b {
-  display: block; font-family: var(--display); font-weight: 900;
-  font-size: clamp(20px, 3vw, 30px); line-height: 1.04; letter-spacing: -.035em;
-  text-transform: uppercase; color: var(--ink);
+  display: block; font-family: var(--display); font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 26px); line-height: 1.18; letter-spacing: -.02em;
+  color: var(--ink);
 }
-.signup-band p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
-.signup-band a { color: var(--live); text-underline-offset: 3px; }
+.signup-band p { margin-top: 10px; font-size: var(--t-ui); color: var(--ink-2); }
+.signup-band a { color: var(--ink); text-underline-offset: 3px; }
 /* The WhatsApp lead is a solid lime button, so its text is ink, not lime —
    the rule above painted it lime-on-lime, invisible, on the first render. */
 .signup-band a.wa-go { color: var(--live-ink); text-decoration: none; }
@@ -2060,10 +1973,10 @@ html.nudge-open { overflow: hidden; }
    why measuring the parent alone passed this twice. MEASURE THE CHILDREN
    AGAINST THE PARENT. */
 .fb-open { grid-auto-flow: column; gap: 7px; padding: 0 12px; width: auto; }
-.fb-open span { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); text-transform: uppercase; }
+.fb-open span { font-family: var(--ui); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); }
 /* Under 560px the word goes and the icon carries it — the header already drops
    its nav at 640 rather than wrapping, and a two-line masthead is broken. */
-@media (max-width: 560px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 34px; } }
+@media (max-width: 560px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 44px; } }
 
 /* The dialog. Fixed, centred, above everything. */
 .fb-veil {
@@ -2082,14 +1995,14 @@ html.nudge-open { overflow: hidden; }
 html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 .fb-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .fb-h {
-  display: block; font-family: var(--display); font-weight: 900;
-  font-size: 19px; letter-spacing: -.02em; color: var(--ink);
+  display: block; font-family: var(--display); font-weight: 700;
+  font-size: var(--t-h3); letter-spacing: -.02em; color: var(--ink);
 }
-.fb-sub { margin-top: 6px; font-size: 13.5px; color: var(--ink-3, var(--ink-2)); }
+.fb-sub { margin-top: 6px; font-size: var(--t-small); color: var(--ink-3, var(--ink-2)); }
 .fb-x {
   flex: none; width: 30px; height: 30px; display: grid; place-items: center;
-  border: 1px solid var(--rule); border-radius: 999px;
-  background: none; color: var(--ink-2); cursor: pointer; font-size: 15px; line-height: 1;
+  border: 1px solid var(--rule); border-radius: var(--r-pill);
+  background: none; color: var(--ink-2); cursor: pointer; font-size: var(--t-body); line-height: 1;
 }
 .fb-x:hover { color: var(--ink); border-color: var(--rule-2); }
 /* The form ships with the `hidden` attribute and feedback.js clears it. Without
@@ -2130,9 +2043,9 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    it. Inside its own dialog there is nothing to compete with and Send is the
    only action, so an outlined control would just be a weak primary. */
 .fb-b {
-  flex: 0 0 auto; padding: 10px 20px; border-radius: var(--r);
+  flex: 0 0 auto; padding: 10px 20px; border-radius: var(--r-2);
   border: 1px solid var(--live); background: var(--live); color: var(--live-ink);
-  font-family: var(--ui); font-weight: 700; font-size: 14.5px; cursor: pointer;
+  font-family: var(--ui); font-weight: 700; font-size: var(--t-ui); cursor: pointer;
 }
 .fb-b:disabled { opacity: .6; cursor: default; }
 .fb-b:active { transform: scale(.97); }
@@ -2166,11 +2079,10 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 .trk-w { display: contents; }
 .trk-b {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  height: 34px; padding: 0 13px; flex: none;
-  border: 1px solid var(--rule); border-radius: 999px;
-  background: none; color: var(--ink-3);
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  height: 40px; padding: 0 14px; flex: none;
+  border: 0; border-radius: var(--r-2);
+  background: var(--fill); color: var(--ink-2);
+  font-size: var(--t-small); font-weight: 600;
   text-decoration: none; cursor: pointer; white-space: nowrap;
   transition: color var(--d-press) var(--snap), border-color var(--d-press) var(--snap),
               background-color var(--d-press) var(--snap);
@@ -2178,10 +2090,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 /* A tracked role reads as settled — filled surface, full-strength ink and a
    dot — so it is distinguishable from the untracked ones at a glance down a
    column of 250 cards, without borrowing Apply's lime. */
-.trk-b.is-set {
-  background: var(--card-2); border-color: var(--rule-2); color: var(--ink);
-  font-weight: 700;
-}
+.trk-b.is-set { background: var(--fill-2); color: var(--ink); font-weight: 650; }
 .trk-b.is-set::before {
   content: ''; width: 6px; height: 6px; border-radius: 50%;
   background: var(--live); flex: none;
@@ -2189,7 +2098,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 .trk-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .trk-b:hover { color: var(--ink); border-color: var(--rule-2); }
+  .trk-b:hover { color: var(--ink); background: var(--fill-2); }
 }
 
 /* ---- the rail's entry point --------------------------------------------- */
@@ -2197,9 +2106,10 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    act on the whole board rather than filters that narrow it. */
 .flag-apps { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
 .flag-apps b {
-  font-family: var(--mono); font-size: 10px; font-weight: 700; line-height: 1;
-  color: var(--live-ink); background: var(--live);
-  border-radius: 999px; padding: 3px 6px; min-width: 17px; text-align: center;
+  font-size: var(--t-micro); font-weight: 650; line-height: 1;
+  color: var(--bg); background: var(--ink);
+  border-radius: var(--r-pill); padding: 3px 6px; min-width: 18px; text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 /* Empty until there is a count. :empty keeps the pill from rendering as a bare
    lime dot on a board where nothing is tracked. */
@@ -2209,37 +2119,39 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    The detail pane (.trk-bar) and a job page's side rail (.trk-mount) render
    the same control, so they share every rule below. */
 /* The strip itself. .trk-mount is only the empty container src/pages.js ships
-   in a job page's side rail; IDTrack.strip appends .trk-mount-in inside it. */
+   in a job page's side rail; IDTrack.strip appends .trk-mount-in inside it.
+   No box of its own: its button is already a filled control, and a filled
+   control inside a filled panel inside a card was three nested surfaces. */
 .trk-bar, .trk-mount-in {
-  display: grid; gap: var(--s3);
-  padding: var(--s4);
-  border: 1px solid var(--rule); border-radius: var(--r-2);
-  background: var(--card-2);
+  display: grid; gap: var(--s2);
+  padding: 0;
+  border: 0; background: none;
 }
+.trk-mount-in { padding: var(--s4) 18px 0; }
 .trk-bar { margin: var(--s5) 0; }
 .trk-mount { margin: 0 0 var(--s4); }
 
 .trk-add {
-  width: 100%; height: 42px; padding: 0 var(--s4);
-  border: 1px solid var(--rule-2); border-radius: 999px;
-  background: var(--card); color: var(--ink); cursor: pointer;
-  font-family: var(--ui); font-size: var(--t-small); font-weight: 650;
+  width: 100%; height: 44px; padding: 0 var(--s4);
+  border: 0; border-radius: var(--r-2);
+  background: var(--fill-2); color: var(--ink); cursor: pointer;
+  font-family: var(--ui); font-size: var(--t-ui); font-weight: 650;
 }
 .trk-add:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (hover: hover) and (pointer: fine) {
-  .trk-add:hover { border-color: var(--ink-3); }
+  .trk-add:hover { background: color-mix(in oklab, var(--ink) 17%, transparent); }
 }
 
 .trk-hint { font-size: var(--t-micro); line-height: 1.45; color: var(--ink-3); }
 
 .trk-lab { display: grid; gap: 6px; }
 .trk-lab > span {
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); color: var(--ink-3);
 }
 .trk-sel {
   width: 100%; height: 40px; padding: 0 var(--s3);
-  border: 1px solid var(--rule-2); border-radius: 10px;
+  border: 1px solid var(--rule-2); border-radius: var(--r-2);
   background: var(--card); color: var(--ink);
   font-family: var(--ui); font-size: var(--t-small); font-weight: 600;
   /* The intrinsic width of a select is its widest option — "Application under
@@ -2253,14 +2165,14 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 /* ---- notes and the follow-up date --------------------------------------- */
 .trk-note {
   width: 100%; min-width: 0; resize: vertical;
-  padding: 9px 11px; border: 1px solid var(--rule-2); border-radius: 10px;
+  padding: 9px 11px; border: 1px solid var(--rule-2); border-radius: var(--r-2);
   background: var(--card); color: var(--ink);
   font-family: var(--ui); font-size: var(--t-small); line-height: 1.5;
 }
 .trk-note::placeholder { color: var(--ink-3); }
 .trk-date-in {
   width: 100%; min-width: 0; height: 40px; padding: 0 var(--s3);
-  border: 1px solid var(--rule-2); border-radius: 10px;
+  border: 1px solid var(--rule-2); border-radius: var(--r-2);
   background: var(--card); color: var(--ink);
   /* 16px, not the .8125rem the other fields use. Below 16px iOS zooms the whole
      page on focus, and a page that jumps when you tap a date field reads as
@@ -2281,15 +2193,14 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 
 .trk-bar-acts { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
 .trk-link {
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
-  color: var(--live); text-decoration: none;
+  font-size: var(--t-small); font-weight: 600;
+  color: var(--ink); text-decoration: none;
 }
 .trk-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .trk-drop {
   background: none; border: 0; padding: 0; cursor: pointer;
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: var(--t-micro);
+  letter-spacing: var(--t-micro-tr); color: var(--ink-3);
 }
 .trk-drop:hover { color: var(--hot); }
 .trk-drop:focus-visible, .trk-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
@@ -2311,7 +2222,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
   }
   .card-go { grid-area: go; }
   .age { grid-area: age; }
-  .trk-b { grid-area: trk; justify-self: end; }
+  .trk-b { grid-area: trk; justify-self: end; height: 44px; }
 }
 
 
@@ -2336,24 +2247,23 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    style in a shipped page.
    ============================================================ */
   .nf { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; }
-  .nf-code { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .16em;
-             text-transform: uppercase; color: var(--live); margin-bottom: 18px; }
-  .nf h1 { font-family: var(--display); font-weight: 900; letter-spacing: -.035em;
-           line-height: 1.02; font-size: clamp(38px, 7vw, 68px); margin: 0 0 18px; }
-  .nf p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 56ch; margin: 0 0 30px; }
+  .nf-code { font-size: var(--t-small); color: var(--ink-3); margin-bottom: 18px; }
+  .nf h1 { font-family: var(--display); font-weight: 700; letter-spacing: -.025em;
+           line-height: 1.1; font-size: clamp(34px, 6vw, 56px); margin: 0 0 18px; }
+  .nf p { color: var(--ink-2); font-size: var(--t-title); line-height: 1.55; max-width: 56ch; margin: 0 0 30px; }
   .nf-acts { display: flex; flex-wrap: wrap; gap: 12px; }
   /* The primary is the board, because a wrong URL on a job board almost always
      means a posting that expired — job pages are deleted at 30 days by design,
      so this is the ORDINARY way a link here goes stale, not an error. */
   .nf-go { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
-           border-radius: 10px; background: var(--live); color: #0a0a0b;
-           font-weight: 700; font-size: 15px; text-decoration: none; }
+           border-radius: var(--r-2); background: var(--live); color: #0a0a0b;
+           font-weight: 700; font-size: var(--t-body); text-decoration: none; }
   .nf-alt { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
-            border-radius: 10px; border: 1px solid var(--rule-2); color: var(--ink);
-            font-weight: 600; font-size: 15px; text-decoration: none; }
+            border-radius: var(--r-2); border: 1px solid transparent; background: var(--fill); color: var(--ink);
+            font-weight: 600; font-size: var(--t-body); text-decoration: none; }
   @media (hover: hover) and (pointer: fine) {
     .nf-go:hover { filter: brightness(1.06); }
-    .nf-alt:hover { border-color: var(--live); color: var(--live); }
+    .nf-alt:hover { background: var(--fill-2); }
   }
 
 /* ---- Section nav in the masthead --------------------------------------
@@ -2366,14 +2276,16 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    this file, and the generated pages load both. */
 .bar-nav { display: flex; gap: 20px; margin-right: auto; margin-left: 26px; }
 .bar-nav a {
-  font-size: 14px; color: var(--ink-2); text-decoration: none;
+  font-size: var(--t-ui); color: var(--ink-2); text-decoration: none;
   padding: 5px 0; border-bottom: 1.5px solid transparent;
   transition: color .16s, border-color .16s;
 }
 .bar-nav a:hover { color: var(--ink); }
 .bar-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--live); }
 
-/* Under 640 the wordmark, three links and two buttons cannot share one line,
-   and a two-line masthead is broken. The nav is the part that can be reached
-   from the footer, so it is the part that goes. */
-@media (max-width: 640px) { .bar-nav { display: none; } }
+/* Below 860 the wordmark, three links and the four controls cannot share one
+   line: measured, the board scrolled sideways by 48-90px everywhere from 641
+   to 800. The nav is the part that can be reached from the footer, so it is
+   the part that goes; the feedback label follows it below 720. */
+@media (max-width: 860px) { .bar-nav { display: none; } }
+@media (max-width: 720px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 44px; } }
