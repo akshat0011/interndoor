@@ -26,6 +26,7 @@ import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
+import { searchSourceFor, buildGuestSearchUrl, fetchGuestPage, guestRequestCap, GUEST_PAGE_SIZE } from './guestsearch.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -464,7 +465,12 @@ async function main() {
     const hours = resolveWindowHours(baseline, base);
     return {
       filters: { ...base, postedWithinHours: hours },
-      coveredHorizon: (!OVERRIDES.windowHours && baseline) ? baseline - COVERED_MARGIN_MS : null,
+      /* NONE FOR THE PUBLIC SEARCH. The horizon stop assumes date order, and
+         that endpoint ignores sortBy=DD — ages are mixed on every page at every
+         depth (guestsearch.js) — so two all-old pages say nothing about the
+         next one, and stopping there would drop fresh postings sitting behind
+         them. It reads its window to the end instead. */
+      coveredHorizon: (!OVERRIDES.windowHours && baseline && searchSourceFor(search, cfg) !== 'guest') ? baseline - COVERED_MARGIN_MS : null,
       baseline,
       ownBaseline,
     };
@@ -500,6 +506,10 @@ async function main() {
   // EXIT_RETRY_SOON block at the end of the run.
   let sawNetworkFailure = false;
   let sawBlocked = false;
+  /* The public search refused us (429/999). It is rate-limited per IP, not
+     per account, so every later search in this run would be refused too:
+     they are skipped rather than walked into the same limit. */
+  let guestBlocked = false;
   /* Any search whose surface moved this run. Collected rather than alerted on
      the spot: a flip is an account-level event, so two regions noticing it in
      the same run is one thing to be told about, not two. */
@@ -646,6 +656,8 @@ async function main() {
       // last-swept times.
       const region = search.region ?? 'IN';
       const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
+      // Which collector finds this search's cards — see guestsearch.js.
+      const viaGuest = searchSourceFor(search, cfg) === 'guest';
 
       // A search may run less often than the loop ticks.
       //
@@ -684,6 +696,11 @@ async function main() {
        * already said no, which is the opposite of the goal.
        */
       if (deadRegions.has(region)) {
+        searchesDone++;
+        continue;
+      }
+      if (viaGuest && guestBlocked) {
+        log.warn(`${region}: skipped — LinkedIn's public search already refused a request this run.`);
         searchesDone++;
         continue;
       }
@@ -728,7 +745,10 @@ async function main() {
          30+ pages of ground a previous sweep already covered, and every page is
          a request against the one account the site depends on. */
       const pageCap = pageCapFor(search, cfg.limits.maxPagesPerSearch);
-      const lastPage = firstPage + pageCap;
+      /* The caps are written in LinkedIn's 25-card pages; the public search
+         serves 10 a request, so the same cap is 2.5x as many requests, and
+         never past the endpoint's 1,000-result ceiling. */
+      const lastPage = firstPage + (viaGuest ? guestRequestCap(pageCap) : pageCap);
 
       /* Opens per employer, for THIS search only.
          One employer can fill a whole sweep: P&G filed 22 copies of one
@@ -744,6 +764,9 @@ async function main() {
          employer's allowance is spent on its different roles (sweeplimits). */
       const opensByTitle = new Map();
       const titleCap = titleCapFor(search);
+      /* The all-old-page stop assumes date order, which the public search does
+         not keep (see coveredHorizon in planSweep): off for it. */
+      const pageStopCutoff = viaGuest ? null : staleCutoffFor(search);
       let cappedCompanies = 0;
       let coveredPages = 0;
       // Whether pagination reached a real end — LinkedIn said there was no
@@ -769,6 +792,10 @@ async function main() {
       // empty page is the end of the results rather than a selector break —
       // see assertListRendered.
       let renderedEarlierPage = false;
+      // Job ids this walk has already handled. The public search repeats a
+      // card now and then across pages (2 of 317 in one measured walk), and a
+      // repeat must not cost a second open.
+      const walkSeen = new Set();
 
       for (let pageIndex = firstPage; pageIndex < lastPage; pageIndex++) {
         // Checked here, before navigating, not only inside the card loop below.
@@ -788,66 +815,118 @@ async function main() {
           break searchLoop;
         }
 
-        const url = li.buildSearchUrl(search, filters, { start: pageIndex * li.RESULTS_PER_PAGE });
-        log.info(`Page ${pageIndex + 1} — ${url}`);
+        let cards;
+        let unidentified = [];
+        let spanned = 0;
+        if (viaGuest) {
+          /* THE PUBLIC SEARCH — no page load on the account, and nothing on
+             screen to fingerprint, scroll or guard: one request, parsed in
+             Node. Each failure mode ends this walk without moving its
+             baseline, so the next run re-covers the window. */
+          const url = buildGuestSearchUrl(search, filters, { start: pageIndex * GUEST_PAGE_SIZE });
+          log.info(`Page ${pageIndex + 1} — ${url}`);
+          const res = await fetchGuestPage(url);
+          if (res.networkError) {
+            sawNetworkFailure = true;
+            log.warn(`Public search request failed: ${res.error}`);
+            notes.push(`The public job search could not be reached for "${label}" page ${pageIndex + 1}; skipped the rest of it.`);
+            break;
+          }
+          if (res.blocked) {
+            // Never fast-retried, and it outranks the network flag for the
+            // exit code — same rule as a 429 on the signed-in page.
+            sawBlocked = true;
+            guestBlocked = true;
+            log.error(`LinkedIn's public job search returned HTTP ${res.status} — stopping discovery for this run.`);
+            notes.push(`LinkedIn's public job search rate-limited us (HTTP ${res.status}) on "${label}" page ${pageIndex + 1}. Discovery stopped for this run; the next run re-covers the window.`);
+            break;
+          }
+          if (res.failed) {
+            log.warn(`Public search answered HTTP ${res.status} for "${label}" page ${pageIndex + 1}.`);
+            notes.push(`The public job search answered HTTP ${res.status} for "${label}" page ${pageIndex + 1}; skipped the rest of it.`);
+            break;
+          }
+          if (res.markupChanged) {
+            // Cards were listed and none could be read. Loud, like
+            // assertListRendered: a parser that silently reads nothing is an
+            // empty board that looks like a quiet day.
+            const stamp = `guest-unparsed-${runId}.html`;
+            await writeFile(join(PATHS.screenshots, stamp), res.body ?? '', 'utf8').catch(() => {});
+            throw new Error(`LinkedIn's public job search returned cards that could not be parsed for "${label}" page ${pageIndex + 1} — its markup has changed; the response is saved as ${PATHS.screenshots}/${stamp}.`);
+          }
+          if (res.end) {
+            /* Past the last result. On page 1 that is a window with nothing in
+               it — possible on a quiet night, and also exactly what a refusal
+               dressed as an empty answer would look like — so it earns no
+               coverage claim: pagesHere stays 0 and the baseline stays put. */
+            if (pageIndex === firstPage) log.warn(`${region}: the public search returned no results at all for the ${filters.postedWithinHours}h window — baseline unchanged, the next run looks again.`);
+            else log.ok(`End of results — all ${pageIndex - firstPage} request(s) of "${label}" have been read.`);
+            walkComplete = true;
+            break;
+          }
+          cards = res.cards;
+        } else {
+          const url = li.buildSearchUrl(search, filters, { start: pageIndex * li.RESULTS_PER_PAGE });
+          log.info(`Page ${pageIndex + 1} — ${url}`);
 
-        const nav = {};
-        const navigated = await li.gotoSearch(page, url, cfg, nav);
-        // Remembered across the whole run so the exit code can tell the
-        // scheduler whether retrying in two minutes is safe.
-        if (nav.networkError) sawNetworkFailure = true;
-        if (nav.blocked) sawBlocked = true;
-        await ensureHealthy(page, cfg, { context: `search "${label}" page ${pageIndex + 1}`, remainingMs: clock.remainingMs() });
-        if (!navigated) {
-          notes.push(`The job list never finished loading for "${label}" page ${pageIndex + 1}; skipped it.`);
-          break;
-        }
+          const nav = {};
+          const navigated = await li.gotoSearch(page, url, cfg, nav);
+          // Remembered across the whole run so the exit code can tell the
+          // scheduler whether retrying in two minutes is safe.
+          if (nav.networkError) sawNetworkFailure = true;
+          if (nav.blocked) sawBlocked = true;
+          await ensureHealthy(page, cfg, { context: `search "${label}" page ${pageIndex + 1}`, remainingMs: clock.remainingMs() });
+          if (!navigated) {
+            notes.push(`The job list never finished loading for "${label}" page ${pageIndex + 1}; skipped it.`);
+            break;
+          }
 
-        /* WHICH SEARCH EXPERIENCE IS THIS? Once per search, on the first page
-           it renders. LinkedIn is retiring classic job search and moves
-           accounts between the two layouts unannounced, and a flip that
-           quietly degrades extraction reads exactly like supply drying up.
-           Reported every run, so the silence is meaningful. */
-        if (pageIndex === firstPage) {
-          const fp = await li.readVariant(page);
-          const seen = noteVariant(store, region, fp ?? {});
-          log.info(`Search surface: ${variantSummary(fp ?? {})}`);
-          if (seen.changed) {
-            const msg = `LinkedIn moved ${region} from the ${seen.previous} job search to the ${seen.variant} one. Card discovery is text-based and should survive; check the run's open count and the apply-link ratio before trusting it.`;
-            log.warn(msg);
-            notes.push(msg);
-            variantFlips.push({ region, from: seen.previous, to: seen.variant, msg });
-            /* KEEP THE PAGE. This is the only run that will ever see the moment
-               of the change, and the move has been one-way before — so the
-               choice is to capture the evidence now or to write the new
-               selectors blind. The HTML is what selectors are written against;
-               the screenshot is what a human reads. Both fail soft: losing the
-               evidence must not cost the sweep that found it. */
-            const stamp = `variant-${region}-${seen.previous}-to-${seen.variant}-${runId}`;
-            try {
-              await writeFile(join(PATHS.screenshots, `${stamp}.html`), await page.content(), 'utf8');
-              await page.screenshot({ path: join(PATHS.screenshots, `${stamp}.png`), fullPage: false });
-              log.info(`Saved the changed page to ${PATHS.screenshots}/${stamp}.{html,png}`);
-            } catch (err) {
-              log.warn(`Could not save the changed page: ${err.message}`);
+          /* WHICH SEARCH EXPERIENCE IS THIS? Once per search, on the first page
+             it renders. LinkedIn is retiring classic job search and moves
+             accounts between the two layouts unannounced, and a flip that
+             quietly degrades extraction reads exactly like supply drying up.
+             Reported every run, so the silence is meaningful. */
+          if (pageIndex === firstPage) {
+            const fp = await li.readVariant(page);
+            const seen = noteVariant(store, region, fp ?? {});
+            log.info(`Search surface: ${variantSummary(fp ?? {})}`);
+            if (seen.changed) {
+              const msg = `LinkedIn moved ${region} from the ${seen.previous} job search to the ${seen.variant} one. Card discovery is text-based and should survive; check the run's open count and the apply-link ratio before trusting it.`;
+              log.warn(msg);
+              notes.push(msg);
+              variantFlips.push({ region, from: seen.previous, to: seen.variant, msg });
+              /* KEEP THE PAGE. This is the only run that will ever see the moment
+                 of the change, and the move has been one-way before — so the
+                 choice is to capture the evidence now or to write the new
+                 selectors blind. The HTML is what selectors are written against;
+                 the screenshot is what a human reads. Both fail soft: losing the
+                 evidence must not cost the sweep that found it. */
+              const stamp = `variant-${region}-${seen.previous}-to-${seen.variant}-${runId}`;
+              try {
+                await writeFile(join(PATHS.screenshots, `${stamp}.html`), await page.content(), 'utf8');
+                await page.screenshot({ path: join(PATHS.screenshots, `${stamp}.png`), fullPage: false });
+                log.info(`Saved the changed page to ${PATHS.screenshots}/${stamp}.{html,png}`);
+              } catch (err) {
+                log.warn(`Could not save the changed page: ${err.message}`);
+              }
             }
           }
-        }
 
-        const { cards, unidentified, spanned } = await li.enumerateCards(page, cfg);
-        if (spanned) {
-          // One element holding two postings. Its id is refused rather than
-          // guessed (scanCardsInPage), so the card falls to the identity path
-          // and is re-found on a scan where the boundary is right. Warned
-          // because the failure it replaces was invisible: a real id, a pane
-          // that really shows it, and only the employer disagreeing.
-          log.warn(`${spanned} card element(s) on this page spanned more than one posting — id refused rather than guessed.`);
+          ({ cards, unidentified, spanned } = await li.enumerateCards(page, cfg));
+          if (spanned) {
+            // One element holding two postings. Its id is refused rather than
+            // guessed (scanCardsInPage), so the card falls to the identity path
+            // and is re-found on a scan where the boundary is right. Warned
+            // because the failure it replaces was invisible: a real id, a pane
+            // that really shows it, and only the employer disagreeing.
+            log.warn(`${spanned} card element(s) on this page spanned more than one posting — id refused rather than guessed.`);
+          }
+          if (unidentified?.length) {
+            counters.cardsWithoutId += unidentified.length;
+            log.warn(`${unidentified.length} card(s) on this page had no readable title and could not be processed: ${unidentified.filter(Boolean).slice(0, 3).join(' | ')}`);
+          }
+          await assertListRendered(page, cards.length, { pageIndex: pageIndex + 1, searchLabel: label, renderedEarlierPage });
         }
-        if (unidentified?.length) {
-          counters.cardsWithoutId += unidentified.length;
-          log.warn(`${unidentified.length} card(s) on this page had no readable title and could not be processed: ${unidentified.filter(Boolean).slice(0, 3).join(' | ')}`);
-        }
-        await assertListRendered(page, cards.length, { pageIndex: pageIndex + 1, searchLabel: label, renderedEarlierPage });
         if (cards.length) renderedEarlierPage = true;
         counters.pagesScanned++;
         counters.cardsSeen += cards.length;
@@ -861,6 +940,10 @@ async function main() {
         for (const card of cards) {
           if (clock.exceeded() || counters.detailsExtracted >= cfg.limits.maxDetailsPerRun) break;
           if (!card.key) continue;
+          if (card.jobId) {
+            if (walkSeen.has(card.jobId)) continue;
+            walkSeen.add(card.jobId);
+          }
 
           // --- cheap local filters, in priority order ----------------------
           // Skip records key on card.identity, NOT card.key. The key carries the
@@ -888,8 +971,20 @@ async function main() {
           // single sweep — the old keys cannot be rewritten in bulk because
           // they hold the card's location text and the jobs table holds the
           // detail pane's.
-          let known = store.jobIdForCard(card.identity);
-          if (!known) {
+          /* A CARD THAT CARRIES ITS REAL ID IS ANSWERED BY THE ID. Every card
+             from the public search does. The identity below is a stand-in for
+             an id the card does not show, and it is ambiguous by construction
+             (American Express files 41 different jobs under one), so it is
+             never consulted when the id is right there: a different id is a
+             different posting, whatever its company, title and city. */
+          if (card.jobId && store.hasJob(card.jobId)) {
+            counters.skippedKnown++;
+            store.touchJob(card.jobId);
+            if (store.backfillLogo(card.jobId, card.logoUrl)) counters.logosBackfilled++;
+            continue;
+          }
+          let known = card.jobId ? null : store.jobIdForCard(card.identity);
+          if (!known && !card.jobId) {
             const legacy = store.jobIdForCard(li.legacyCardIdentity(card));
             if (legacy) {
               store.migrateCardKey(li.legacyCardIdentity(card), card.identity, legacy.job_id, legacy.posted_at);
@@ -996,7 +1091,12 @@ async function main() {
           const postedAt = parseRelativeTime(card.postedText);
           // Only reject on a *confidently* old timestamp; unparseable text is
           // given the benefit of the doubt rather than silently dropped.
-          if (postedAt && postedAt < cutoff) {
+          //
+          // Not for the public search: it applies f_TPR itself, against the
+          // real posting time, and its "1 hour ago" is coarser than that — a
+          // card at the edge of a 1h window reads as exactly an hour old a few
+          // milliseconds after the cutoff and would be refused for nothing.
+          if (!viaGuest && postedAt && postedAt < cutoff) {
             counters.skippedStale++;
             store.noteSkippedCard(card.identity, 'older than window', card.company, card.title);
             continue;
@@ -1372,14 +1472,33 @@ async function main() {
            India sets nothing and is unaffected — it must walk to the end of its
            results, and a quiet Sunday morning there legitimately returns a first
            page of day-old cards that this rule would stop dead. */
-        if (staleCutoffFor(search) && cards.length) {
+        if (pageStopCutoff && cards.length) {
           const a = pageAgeSummary(cards, parseRelativeTime);
           log.info(`Page ${pageIndex + 1} ages: newest ${a.newest === null ? 'n/a' : a.newest.toFixed(1) + 'h'}, oldest ${a.oldest === null ? 'n/a' : a.oldest.toFixed(1) + 'h'}, ${a.undateable}/${a.count} undateable.`);
         }
-        if (pageIsAllOlderThan(cards, staleCutoffFor(search), parseRelativeTime)) {
+        if (pageIsAllOlderThan(cards, pageStopCutoff, parseRelativeTime)) {
           log.ok(`Every card on page ${pageIndex + 1} is over ${search.stopAfterPageOlderThanHours}h old — that is ground the last sweep covered, stopping "${label}" here.`);
           walkComplete = true;
           break;
+        }
+
+        /* THE PUBLIC SEARCH HAS NO NEXT CONTROL. Its end is an empty answer,
+           handled where the page is fetched. What is left to decide here is the
+           cap: reaching it means the window held more than the endpoint will
+           serve (1,000 results), and because its results are not in date order
+           the part not read is not "the oldest" — no later walk can recover it,
+           so a baseline held back here would only widen the next window into
+           the same ceiling, run after run. The walk is counted as complete and
+           the shortfall is said out loud instead. */
+        if (viaGuest) {
+          if (pageIndex === lastPage - 1) {
+            const read = (pageIndex + 1 - firstPage) * GUEST_PAGE_SIZE;
+            log.warn(`"${label}" reached the public search's limit after ${read} results in a ${filters.postedWithinHours}h window — anything past that was not reachable.`);
+            notes.push(`"${label}" had more results in its ${filters.postedWithinHours}h window than LinkedIn's public search will serve (${read} read). A shorter window — a region swept more often — avoids this.`);
+            walkComplete = true;
+          }
+          await pause(cfg.pacing.betweenGuestPages ?? [1500, 3500]);
+          continue;
         }
 
         // Keep paging until LinkedIn's own "Next" control says there is no
