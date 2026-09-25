@@ -239,7 +239,7 @@ dressAges(document);
 
   const strip = T.strip(job, {
     className: 'trk-mount-in',
-    addLabel: 'Track',
+    addLabel: 'I applied — track this',
     appsHref: d.apps || '/applications',
   });
   mount.append(strip);

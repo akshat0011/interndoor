@@ -106,7 +106,7 @@
     } catch (e) {
       lastError = (e && e.name === 'QuotaExceededError')
         ? 'There is no room left in this browser’s storage.'
-        : 'This browser is not allowing sites to save data. Private windows often block it.';
+        : 'This browser is not allowing sites to save data — private windows often block it.';
       emit();
       return false;
     }
@@ -459,7 +459,7 @@
         root.classList.toggle('is-on', !!row);
 
         if (!row) {
-          var add = el('button', 'trk-add', o.addLabel || 'Track');
+          var add = el('button', 'trk-add', o.addLabel || 'Track this application');
           add.type = 'button';
           add.addEventListener('click', function () {
             api.track(job, 'applied');
@@ -550,7 +550,7 @@
           /* Confirmed: by this point the row can carry a status history and a
              note, and this is the only copy of either. */
           if (!window.confirm('Remove this from your applications?\n\n'
-            + job.title + ' at ' + job.company)) return;
+            + job.company + ' — ' + job.title)) return;
           api.remove(job.id);
           paint();
           if (o.onChange) o.onChange();
