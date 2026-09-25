@@ -217,7 +217,7 @@ export function closableFrom(tracked, cfg, wanted) {
     /* Either the classifier/human dropped it (is_tech !== 1), OR it is a live
        tech row whose application has closed (closed_at set). Both should
        redirect a dead job URL to the employer's hub rather than 404. */
-    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null)
+    .filter(({ row, matchedNow, region }) => (row.is_tech !== 1 || row.closed_at != null || row.suppressed_reason != null)
       && !isBlockedCompany(row.company)
       && (!cfg?.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))
@@ -516,6 +516,7 @@ export async function writeJobsFile(store, cfg) {
   let droppedForeign = 0;
   let droppedNonTech = 0;
   let droppedClosed = 0;
+  let droppedSuppressed = 0;
   let droppedDeadline = 0;
   const droppedByRegion = {};
   /* His corrections from the owner controls (src/owner.js), laid over the rows
@@ -588,6 +589,16 @@ export async function writeJobsFile(store, cfg) {
       if (!techOnly) return true;
       if (row.is_tech === 1) return true;
       droppedNonTech++;
+      return false;
+    })
+    /* A ROW A PERSON SUPPRESSED NEVER PUBLISHES, whatever is_tech says. The
+       store now refuses to raise is_tech on one (saveEnrichment), but that
+       guard only covers writes made after it shipped: nine rows were already
+       tech AND suppressed on 25 Sep 2026, and a guard that is only safe
+       because of its callers is §1's trap. */
+    .filter(({ row }) => {
+      if (!row.suppressed_reason) return true;
+      droppedSuppressed++;
       return false;
     })
     /* A CLOSED posting is off the board but not gone: its URL becomes a
@@ -684,6 +695,7 @@ export async function writeJobsFile(store, cfg) {
   if (droppedNonTech) {
     log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);
   }
+  if (droppedSuppressed) log.info(`Held back ${droppedSuppressed} posting${droppedSuppressed === 1 ? '' : 's'} a person suppressed.`);
 
   if (dropped) {
     log.warn(`Held back ${dropped} stored job${dropped === 1 ? '' : 's'} whose company no longer matches the watchlist.`);
@@ -713,7 +725,7 @@ export async function writeJobsFile(store, cfg) {
   const tracked = applyJobEdits(store.recentJobs(0), edits)
     .map((row) => ({ row, matchedNow: matchCompany(row.company, cfg.watchlist), region: resolveRowRegion(row) }));
   const history = tracked
-    .filter(({ row, matchedNow, region }) => row.is_tech === 1
+    .filter(({ row, matchedNow, region }) => row.is_tech === 1 && !row.suppressed_reason
       && !isBlockedCompany(row.company)
       && (!cfg.matching?.requireCompanyMatch || matchedNow)
       && wanted.has(region))

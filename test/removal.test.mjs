@@ -102,5 +102,38 @@ check('jobsNeedingRoleVerdict cannot pick it up (is_tech IS NOT NULL)', row.is_t
 check('hasJob still finds it, so the card is never re-opened',
   !!db.prepare('SELECT 1 FROM jobs WHERE job_id = ?').get('j1'), true);
 
+console.log('\n== a suppression survives enrichment and the role verdict ==');
+/* 25 Sep 2026: an owner "Hide" on Arista (23 Sep) was live again, and 8 rows
+   pulled while a scan was running were republished by that scan's own
+   enrichment — saveEnrichment wrote is_tech = 1 over the human's 0 on any row
+   not yet enriched. Exercised on a real SQLite table through the real methods. */
+{
+  const { Store } = await import('../src/store.js');
+  const db = new DatabaseSync(':memory:');
+  db.exec(`CREATE TABLE jobs (job_id TEXT PRIMARY KEY, is_tech INTEGER, suppressed_reason TEXT, role_source TEXT,
+    bullets TEXT, role_label TEXT, degree_level TEXT, degree_text TEXT, key_skills TEXT, stipend_status TEXT, summary TEXT)`);
+  const fake = { db };
+  db.prepare('INSERT INTO jobs (job_id, is_tech, suppressed_reason) VALUES (?, ?, ?)').run('hidden', 0, 'Hidden from the site by the owner');
+  db.prepare('INSERT INTO jobs (job_id, is_tech, suppressed_reason) VALUES (?, ?, ?)').run('plain', null, null);
+  const verdict = (id) => db.prepare('SELECT is_tech FROM jobs WHERE job_id = ?').get(id).is_tech;
+  Store.prototype.saveEnrichment.call(fake, 'hidden', { isTech: true, bullets: ['x'], roleLabel: 'Automation' });
+  check('enrichment does not put a suppressed row back', verdict('hidden'), 0);
+  Store.prototype.saveEnrichment.call(fake, 'plain', { isTech: true, bullets: ['x'], roleLabel: 'Automation' });
+  check('enrichment still sets the verdict on an ordinary row', verdict('plain'), 1);
+  Store.prototype.setRoleVerdict.call(fake, 'hidden', true, 'offline');
+  check('the role verdict does not put it back either', verdict('hidden'), 0);
+  db.prepare("UPDATE jobs SET is_tech = NULL WHERE job_id = 'plain'").run();
+  Store.prototype.setRoleVerdict.call(fake, 'plain', true, 'offline');
+  check('the role verdict still sets an ordinary row', verdict('plain'), 1);
+}
+
+console.log('\n== publish holds a suppressed row back whatever is_tech says ==');
+{
+  const pub = readFileSync(join(ROOT, 'src/publish.js'), 'utf8');
+  ok('the live board drops a suppressed row', /if \(!row\.suppressed_reason\) return true;\s*droppedSuppressed\+\+;\s*return false;/.test(pub));
+  ok('its URL becomes a closed-role stub', /\(row\.is_tech !== 1 \|\| row\.closed_at != null \|\| row\.suppressed_reason != null\)/.test(pub));
+  ok('and it stays out of the hub record', /row\.is_tech === 1 && !row\.suppressed_reason/.test(pub));
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
