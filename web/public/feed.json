@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bnp-paribas-data-science-intern-4471873227",
+      "url": "https://interndoor.com/jobs/bnp-paribas-data-science-intern-4471873227",
+      "title": "Data Science Intern — BNP Paribas",
+      "content_text": "Company: BNP Paribas · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build models to predict client interests and automate market commentary\n• Use Python, TensorFlow, and PyTorch for data analysis and machine learning\n• Work on real-world projects with impact on trading and risk management",
+      "date_published": "2026-09-25T07:55:37.926Z",
+      "authors": [
+        {
+          "name": "BNP Paribas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471863448",
+      "url": "https://interndoor.com/jobs/unisys-assoc-eng-software-eng-4471863448",
+      "title": "Assoc Eng Software Eng — Unisys",
+      "content_text": "Company: Unisys · Location: Bengaluru East, Karnataka, India · Duration: 0-3 years\n• Manage windows servers and cloud infrastructure on azure and aws\n• Write automation scripts for provisioning and deployment\n• Ensure security and compliance in cloud environments",
+      "date_published": "2026-09-25T07:12:51.319Z",
+      "authors": [
+        {
+          "name": "Unisys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471857391",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-4471857391",
+      "title": "Software Engr I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Develop and maintain software systems for industrial automation\n• Use c++ and python in a team of 15 engineers\n• Work on projects with real-world impact in manufacturing",
+      "date_published": "2026-09-25T06:11:44.597Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/visa-software-engineer-1-year-exp-4471856258",
+      "url": "https://interndoor.com/jobs/visa-software-engineer-1-year-exp-4471856258",
+      "title": "Software Engineer (1 year Exp) — Visa",
+      "content_text": "Company: Visa · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable, secure solutions for internal/external systems\n• Work with product managers and stakeholders on global payment solutions\n• Use Java, Python, React, Spring Boot, and SQL in a fast-paced environment",
+      "date_published": "2026-09-25T06:11:38.547Z",
+      "authors": [
+        {
+          "name": "Visa"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4470445470",
       "url": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4470445470",
       "title": "Application Support Engineer — Accenture in India",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Macquarie Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/alphasense-join-alphasense-india-talent-community-3817619857",
-      "url": "https://interndoor.com/jobs/alphasense-join-alphasense-india-talent-community-3817619857",
-      "title": "Join AlphaSense India Talent Community — AlphaSense",
-      "content_text": "Company: AlphaSense · Location: Pune Division, Maharashtra, India\n• Build and maintain scalable backend systems using Java, Spring Boot, and Python\n• Collaborate with cross-functional teams to enhance search and AI capabilities\n• Work on cloud infrastructure with AWS, GCP, and Kubernetes",
-      "date_published": "2026-09-24T13:38:03.724Z",
-      "authors": [
-        {
-          "name": "AlphaSense"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-react-developer-4442920787",
-      "url": "https://interndoor.com/jobs/infosys-java-react-developer-4442920787",
-      "title": "Java React Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Pune Division, Maharashtra, India\n• Develop and maintain Java applications using Spring boot and Microservices\n• Collaborate on system design and database schema creation for business processes\n• Work with remote teams and troubleshoot across multiple environments",
-      "date_published": "2026-09-24T13:36:05.725Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/alphasense-join-alphasense-india-talent-community-3817623538",
-      "url": "https://interndoor.com/jobs/alphasense-join-alphasense-india-talent-community-3817623538",
-      "title": "Join AlphaSense India Talent Community — AlphaSense",
-      "content_text": "Company: AlphaSense · Location: Mumbai, Maharashtra, India\n• Build and maintain scalable backend systems using Java, Spring Boot, and Python\n• Collaborate with cross-functional teams to enhance search and AI capabilities\n• Work on cloud infrastructure with AWS, GCP, and Kubernetes",
-      "date_published": "2026-09-24T13:31:35.244Z",
-      "authors": [
-        {
-          "name": "AlphaSense"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-healthcare-graduate-engineer-trainee-4443542397",
-      "url": "https://interndoor.com/jobs/ge-healthcare-graduate-engineer-trainee-4443542397",
-      "title": "Graduate Engineer Trainee — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Bengaluru, Karnataka, India\n• Support control system design with software and hardware tasks\n• Configure hmi, manage databases, and troubleshoot commissioning issues\n• Create technical documents and manage project schedules",
-      "date_published": "2026-09-24T13:28:09.970Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
         }
       ]
     }
