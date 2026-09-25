@@ -109,15 +109,13 @@ if (!dimRule || !sumRule) { console.log('  FAIL  could not find .dim / .all-role
 check('.dim carries no opacity', /opacity/.test(dimRule), false);
 check('.all-roles > summary carries no opacity', /opacity/.test(sumRule), false);
 
-console.log('\n== the sticky rail stays solid enough to read its labels on ==');
-/* Anything behind the sticky rail composites through a translucent one: at 78%
-   the old background marks became the ground the filter labels were read
-   against (axe measured #242b09 at 1280px, 3.8:1). The rail is solid --bg now;
-   a translucent mix is still accepted as long as it stays at 90% or more. */
-const railRule = (css.match(/\n\.rail \{[\s\S]{0,700}?\}/) || [''])[0];
-const railSolid = /background: var\(--bg\);/.test(railRule);
-const railPct = railSolid ? 100 : +((railRule.match(/background: color-mix\(in oklab, var\(--bg\) (\d+)%/) || [])[1]);
-if (!railPct) { console.log('  FAIL  could not read the .rail background'); process.exit(1); }
+console.log('\n== the sticky rail stays solid enough to read 9.5px labels on ==');
+/* The .field decorative marks are lime and sit behind the rail. At 78% they
+   composited through and became the background the filter labels are read
+   against (axe measured #242b09 at 1280px, 3.8:1). Raising the rail to 92%
+   cleared every desktop violation. Pinned as a floor, not an exact value. */
+const railPct = +((css.match(/\.rail \{[\s\S]{0,700}?background: color-mix\(in oklab, var\(--bg\) (\d+)%/) || [])[1]);
+if (!railPct) { console.log('  FAIL  could not read the .rail background mix'); process.exit(1); }
 atLeast('.rail --bg mix percentage', railPct, 90);
 
 console.log('\n== light-theme tokens clear AA where they are used as text ==');

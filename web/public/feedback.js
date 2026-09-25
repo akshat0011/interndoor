@@ -181,7 +181,7 @@ function wire(form) {
            and the second one is the reader wondering whether the first
            worked. */
         row.hidden = true;
-        say('Thank you, that reached us. We read every one.', 'good');
+        say('Thank you — that reached us. We read every one.', 'good');
         return;
       }
       say(data.error || 'That did not send. Please try again.', 'bad');
@@ -192,7 +192,7 @@ function wire(form) {
          `row.hidden` is only set on success — so nothing they wrote is lost. */
       const timedOut = err?.name === 'TimeoutError' || err?.name === 'AbortError';
       say(timedOut
-        ? 'That took too long and was not sent. Your message is still here, so try again.'
+        ? 'That took too long and was not sent. Your message is still here — try again.'
         : 'No connection. Please try again.', 'bad');
     } finally {
       busy = false;

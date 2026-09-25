@@ -405,9 +405,7 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
   ok('the markers are drawn after `since` is decided', /state\.since = visit\.since;[\s\S]*?renderTabNews\(\);/.test(boot));
   ok('and again on every refresh, through renderTotal', /renderTabNews\(\);\n\}/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
   ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
-  /* Weight, not colour, since the Sept 2026 design pass: lime is kept for the
-     selected tab, and the marker on the idle tab is full ink at 700. */
-  ok('the marker is styled, full ink on the idle tab', /\.seg-new \{[^}]*font-weight: 700;[^}]*color: var\(--ink\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
+  ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
   ok('and the bar\'s link is a real control', /\.since-other \{[^}]*cursor: pointer/.test(css));
 }
 
@@ -450,14 +448,14 @@ console.log('\n== WhatsApp first — the prompt, the page\'s own links, the emai
   const usPage = renderJobPage({ ...job, location: 'Austin, TX' }, [], { region: US });
   ok('the US page keeps /alerts — no channel gets another region\'s', /class="jp-sub" href="\/us\/alerts"/.test(usPage) && !/whatsapp\.com/.test(usPage));
   const alerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'whatsapp', name: 'WhatsApp', blurb: 'y', url: WA }, { kind: 'instagram', name: 'Instagram', blurb: 'z', url: 'https://www.instagram.com/interndoorin/' }], { region: IN });
-  const waAt = alerts.indexOf('On WhatsApp: fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
+  const waAt = alerts.indexOf('On WhatsApp — fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
   ok('/alerts leads with WhatsApp, then email, then the rest', waAt > 0 && emailAt > waAt && restAt > emailAt);
   /* TELEGRAM LEADS WHERE THERE IS NO WHATSAPP (24 Sep 2026). The US board had
      a channel and led with email anyway, and its email digest is India's — so
      the one alert that delivers US roles was the one buried last. */
   const TG = 'https://t.me/interndoorusa';
   const usAlerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'telegram', name: 'Telegram', blurb: 'y', url: TG }], { region: US });
-  const tgAt = usAlerts.indexOf('On Telegram: fastest, no signup'), usEmailAt = usAlerts.indexOf('Or by email');
+  const tgAt = usAlerts.indexOf('On Telegram — fastest, no signup'), usEmailAt = usAlerts.indexOf('Or by email');
   ok('without WhatsApp, /alerts leads with Telegram, then email', tgAt > 0 && usEmailAt > tgAt && !/On WhatsApp/.test(usAlerts));
   const contact = renderContactPage({ region: IN });
   ok('the WhatsApp outro reaches every generated page through foot()', new RegExp(`class="a-1 is-wa" href="${WA}"`).test(contact));

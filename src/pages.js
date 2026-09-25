@@ -1172,7 +1172,7 @@ function regionSwitch(current, regions) {
       + `<span class="rg-name">${esc(r.name)}</span></a>`;
   }).join('\n          ');
   return `      <details class="rg" id="region-switch" data-current="${current.code}">
-        <summary aria-label="Change region, currently ${esc(current.name)}">
+        <summary aria-label="Change region — currently ${esc(current.name)}">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
           <span class="rg-cur">${esc(current.name)}</span>
           <svg class="rg-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -1263,7 +1263,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="InternDoor — new ${offerPhrase(region, { adjective: '', noun: 'roles' })}" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/page.css">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
@@ -1409,7 +1409,7 @@ function signupForm(region, { heading = true } = {}) {
      them by email" above the box says the same thing twice. The label is still
      rendered for screen readers, just visually hidden. */
   const labelText = heading
-    ? 'Or get them by email. One message, no spam.'
+    ? 'Or get them by email — one message, no spam.'
     : 'Your email address';
   return `<form class="sub" method="post" action="/api/subscribe" data-region="${esc(region.code)}">
       <label class="sub-l${heading ? '' : ' vh'}">${labelText}</label>
@@ -1439,7 +1439,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 </section>
 <footer class="foot">
   <div class="wrap">
-    <p>Every listing links back to its original posting. Always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
+    <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
     <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
          There is a single contact page for all three boards — see
          renderContactPage — so a root-relative href is what resolves from
@@ -2100,7 +2100,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
             const href = skillPages.has(slug)
               ? regionHref(`/skills/${slug}`, region)
               : regionHref(`/?q=${encodeURIComponent(sk)}`, region);
-            return `<a class="chip" href="${href}">${esc(titleCaseSkill(sk))}</a>`;
+            return `<a class="chip" href="${href}">${esc(sk)}</a>`;
           }).join('')}</div>
         </section>` : ''}
 
@@ -2111,7 +2111,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <div class="apply-band">
             <p>${apply ? '' : 'Apply through the original posting. '}${job.employmentType === FULL_TIME ? `${entryWordCap(region)} roles` : 'Internships'} ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
-          <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth, so check it before you apply.</p>
+          <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
         </section>
       </div>
 
@@ -2119,7 +2119,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <div class="jp-card">
           ${apply ? `<div class="jp-card-top">
             <span class="apply-glow">${applyBtn}</span>
-            <p class="jp-card-note">Opens ${where} in a new tab. Free: we never ask for a fee.</p>
+            <p class="jp-card-note">Opens ${where} in a new tab. Free — we never ask for a fee.</p>
           </div>` : ''}
           <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
                these attributes, because what belongs here depends entirely on
@@ -2874,7 +2874,7 @@ function qaBlock(company, live, prof, region) {
 
   const qa = [
     pay ? [`Does ${co} pay its interns?`,
-      `${paid === live.length ? 'Yes, every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.`] : null,
+      `${paid === live.length ? 'Yes — every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.`] : null,
     // "for a Old Mission Capital internship" — an employer name is as likely to
     // start with a vowel as not, and the article is wrong half the time. Naming
     // the employer with "at" sidesteps it and reads better anyway.
@@ -3424,7 +3424,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
       <div class="filter" id="filter">
         <label>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <input type="search" id="filter-input" placeholder="Filter ${rows.length} employers, for example “Qualcomm”" aria-label="Filter companies">
+          <input type="search" id="filter-input" placeholder="Filter ${rows.length} employers — try “Qualcomm”" aria-label="Filter companies">
         </label>
       </div>
     </header>
@@ -3649,11 +3649,11 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
 
     <header class="dir-hero">
       <h1>Get internship and ${esc(entryWord(region))} job alerts ${esc(region.inName)}</h1>
-      <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read. You can take more than one, and leave any time.</p>
+      <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
     </header>
 
     ${wa ? `<section class="strip">
-      <div class="strip-head"><h2>On ${esc(wa.name)}: fastest, no signup</h2></div>
+      <div class="strip-head"><h2>On ${esc(wa.name)} — fastest, no signup</h2></div>
       <div class="chans">${card(wa)}</div>
     </section>` : ''}
 
@@ -4232,7 +4232,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   const listed = homeListings(jobs);
   const rows = listed.map((j) => {
     const facts = [j.location, j.workplaceType].filter(Boolean).map((s) => esc(s)).join(' · ');
-    return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.title)} at ${esc(j.company)}</a>`
+    return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.company)} — ${esc(j.title)}</a>`
       + (facts ? `<span class="tiny"> ${facts}</span>` : '')
       + '</li>';
   }).join('\n');

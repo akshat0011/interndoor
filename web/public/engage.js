@@ -200,7 +200,7 @@
     var free = list.filter(function (c) { return c.kind !== 'email'; })
       .map(function (c) { return c.kind === 'whatsapp' ? 'WhatsApp' : 'Telegram'; });
     var base = 'Roles are listed here within minutes. Get them where you’ll actually see them';
-    return free.length ? base + ', with no signup for ' + free.join(' or ') + '.' : base + '.';
+    return free.length ? base + ' — no signup for ' + free.join(' or ') + '.' : base + '.';
   }
 
   var open = null; /* { box, veil, keydown, returnTo } while the dialog is up */
@@ -298,7 +298,7 @@
           /* The same acknowledgement the signup band gives: the subscriber is
              created as regular, nothing is sent to confirm, so this line is
              the only one the reader gets. */
-          msg.textContent = 'Done, you’re on the list. New roles will land in your inbox.';
+          msg.textContent = 'Done — you’re on the list. New roles will land in your inbox.';
           msg.className = 'nudge-msg is-good';
           input.disabled = true; btn.hidden = true;
           remember('accepted');
