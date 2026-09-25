@@ -157,10 +157,13 @@ console.log('\n== the live config: India every run, US every two hours ==');
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Read off `declaredSearches` so this keeps asserting if US is ever paused.
-check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
+/* Every 30 minutes over a 1h window since 25 Sep 2026: the public search reads
+   each window to its end and serves at most 1,000 results, and a 2h US window
+   measured ~960 (config _cadence_note). */
+check('US runs every 30 minutes', byDeclared.get('US')?.intervalMinutes, 30);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
-ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
-ok('US is due 60m after its sweep', due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
+ok('US is not due 15m after its sweep', !due(agoMin(15), byDeclared.get('US')?.intervalMinutes));
+ok('US is due 30m after its sweep', due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
 /* The due check deliberately fires a little early — ticks drift, so demanding
    the full interval turns a two-hourly search into a three-hourly one. */
 ok('and a tick that lands slightly early still counts',
@@ -192,8 +195,8 @@ check('both searches are resolvable for the window checks', [!!IN_S, !!US_S], [t
 check('India at its 30-minute cadence asks for 2h, not 3', winOf(IN_S, 0.5), 2);
 check('India never asks for less than half an hour past the gap', winOf(IN_S, 0.49), 1);
 check('India after a 6h sleep still stretches', winOf(IN_S, 6), 7);
-check('US at its hourly cadence takes 2h, not 3', winOf(US_S, 1.1), 2);
-check('US on the dot takes 2h', winOf(US_S, 1.0), 2);
+check('US at its 30-minute cadence asks for 1h — under the public search\'s ceiling', winOf(US_S, 0.5), 1);
+check('a late US run stretches to 2h', winOf(US_S, 0.8), 2);
 // The floor and the slack change; the adaptive rule does not.
 check('US after a 6h sleep still stretches', winOf(US_S, 6), 7);
 check('US is capped like everything else', winOf(US_S, 500), cfg.filters.maxWindowHours ?? 36);
@@ -249,8 +252,8 @@ console.log('\n== a search can be PAUSED without being deleted ==');
 
   check('the paused US entry is still in the file', !!us, true);
   check('with its verified geoId', us.geoId, 103644278);
-  check('its own cadence', us.intervalMinutes, 60);
-  check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [2, 0.75]);
+  check('its own cadence', us.intervalMinutes, 30);
+  check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [1, 0.75]);
 
   /* ASSERTED AS AN INVARIANT OVER WHATEVER IS PAUSED TODAY, not as a snapshot
      of it. The first version of this block hardcoded ['US'] because US happened

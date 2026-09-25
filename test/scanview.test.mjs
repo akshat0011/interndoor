@@ -141,6 +141,17 @@ console.log('\n== the wiring ==');
     /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}title lacks intern and LinkedIn tags it/.test(src), true);
   check('the three recordings sit beside their refusals',
     (src.match(/store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}/g) || []).length, 3);
+  /* A refusal is remembered only when it rests on a REAL read. 5 of 10 US opens
+     on 25 Sep read an empty page and were refused as "LinkedIn tags it
+     nothing" — remembered, that would never be retried. */
+  check('each recording requires a real read',
+    (src.match(/if \(readOk\) store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}/g) || []).length, 3);
+  check('a real read is a real description', /const readOk = \(detail\.description\?\.length \?\? 0\) >= 60;/.test(src), true);
+  check('an empty read keeps its page as evidence, a few a run',
+    /if \(!readOk && jobId && emptyReadsKept < 3\) \{[\s\S]{0,300}?page\.content\(\)[\s\S]{0,200}?page\.screenshot/.test(src), true);
+  const lk = readFileSync(new URL('../src/linkedin.js', import.meta.url), 'utf8');
+  check('an open waits for the description to carry text, not just exist',
+    /about\.id === `JobDetails_AboutTheJob_\$\{id\}` && \(about\.textContent \?\? ''\)\.trim\(\)\.length > 80/.test(lk), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
