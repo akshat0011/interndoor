@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-ai-engineer-4441090818",
+      "url": "https://interndoor.com/jobs/ust-ai-engineer-4441090818",
+      "title": "AI Engineer — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India · Duration: 3-5 years\n• Build AI agents and multi-agent systems with LangGraph and LangChain\n• Develop REST APIs and event-driven pipelines for real-time AI services\n• Automate testing and releases using Jenkins CI/CD and Git\n• Deploy AI applications in enterprise environments with security best practices",
+      "date_published": "2026-09-25T10:03:06.109Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-genai-data-scientist-4470088785",
+      "title": "GenAI Data scientist — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India\n• Develop AI agents and chatbots using LangGraph, ADK, and React JS\n• Work with LLMs, RAG, and vector databases for GenAI applications\n• Deploy and optimize models with LangChain, Python, and TypeScript",
+      "date_published": "2026-09-25T09:52:09.082Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-3d-artist-intern-4470304162",
       "url": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-3d-artist-intern-4470304162",
       "title": "3D Artist Intern — National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486",
+      "url": "https://interndoor.com/jobs/icertis-software-engineer-cloud-site-reliability-sre-4462849486",
+      "title": "Software Engineer, Cloud Site Reliability (SRE) — Icertis",
+      "content_text": "Company: Icertis · Location: Pune Division, Maharashtra, India\n• Troubleshoot and maintain cloud applications using Azure and AKS\n• Collaborate with DevOps and security teams on system improvements\n• Manage cloud environments and ensure compliance with policies",
+      "date_published": "2026-09-25T09:43:26.918Z",
+      "authors": [
+        {
+          "name": "Icertis"
         }
       ]
     },
@@ -342,6 +378,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/barry-wehmiller-graduate-engineer-software-ats-workday-barrywehmiller-wd1-bwcareers-r022929",
+      "url": "https://interndoor.com/jobs/barry-wehmiller-graduate-engineer-software-ats-workday-barrywehmiller-wd1-bwcareers-r022929",
+      "title": "Graduate Engineer, Software — Barry-Wehmiller",
+      "content_text": "Company: Barry-Wehmiller · Location: Chennai, India\n• Troubleshoot AS400 applications and support system upgrades\n• Work with RPG/COBOL and DB2/400 databases\n• Collaborate with business teams on data migrations",
+      "date_published": "2026-09-25T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Barry-Wehmiller"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/micron-technology-associate-engineer-ats-workday-micron-wd1-external-jr107841",
       "url": "https://interndoor.com/jobs/micron-technology-associate-engineer-ats-workday-micron-wd1-external-jr107841",
       "title": "Associate Engineer — Micron Technology",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Linde@India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
-      "url": "https://interndoor.com/jobs/cisco-software-engineer-4471616514",
-      "title": "Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop features for policy and vulnerability management tools\n• Work with React, Angular, or similar frameworks\n• Collaborate on agile projects with guidance from senior engineers",
-      "date_published": "2026-09-24T15:52:10.771Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
-      "url": "https://interndoor.com/jobs/icon-plc-clinical-data-science-programmer-4461663253",
-      "title": "Clinical Data Science Programmer — ICON plc",
-      "content_text": "Company: ICON plc · Location: Bengaluru, Karnataka, India\n• Develop and validate statistical programming code for clinical trial data analysis\n• Collaborate with data scientists and statisticians on analytical needs\n• Ensure compliance with regulatory standards in programming practices",
-      "date_published": "2026-09-24T15:22:10.239Z",
-      "authors": [
-        {
-          "name": "ICON plc"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
-      "url": "https://interndoor.com/jobs/qualys-software-engineer-4469687634",
-      "title": "Software Engineer — Qualys",
-      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years\n• Develop and debug security software for Windows platform\n• Use C++ and Windows internals knowledge in Visual Studio\n• Collaborate with engineers on scalable security platform",
-      "date_published": "2026-09-24T15:09:33.308Z",
-      "authors": [
-        {
-          "name": "Qualys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630",
-      "url": "https://interndoor.com/jobs/capgemini-engineering-java-backend-developer-4471497630",
-      "title": "Java Backend Developer — Capgemini Engineering",
-      "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Develops network systems and connected applications for wireless, satellite, and fixed networks\n• Works with IoT, 5G, edge computing, and Telco Cloud platforms\n• Collaborates with customers and teams to interpret needs and deliver solutions",
-      "date_published": "2026-09-24T15:02:42.584Z",
-      "authors": [
-        {
-          "name": "Capgemini Engineering"
         }
       ]
     }
