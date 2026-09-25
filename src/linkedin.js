@@ -1217,7 +1217,10 @@ export async function openAndExtract(page, card, cfg) {
       const about = document.querySelector('[id^="JobDetails_AboutTheJob_"]');
       // With a known id, wait for THAT posting's block: "different from
       // before" is true of any page at all once we have navigated away.
-      if (about && id) return about.id === `JobDetails_AboutTheJob_${id}`;
+      /* ...and for it to carry TEXT. The block is rendered before its content
+         lands: 5 of 10 US opens on 25 Sep read 0 characters because the
+         right id was already on the page with nothing in it yet. */
+      if (about && id) return about.id === `JobDetails_AboutTheJob_${id}` && (about.textContent ?? '').trim().length > 80;
       if (about) return about.id !== prevAbout;
       /* After a NAVIGATION the URL carries the id from the first byte, long
          before anything has rendered, so it proves nothing: the first open of

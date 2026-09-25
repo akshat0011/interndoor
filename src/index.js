@@ -516,6 +516,8 @@ async function main() {
      per account, so every later search in this run would be refused too:
      they are skipped rather than walked into the same limit. */
   let guestBlocked = false;
+  // Pages kept because a posting read came back empty (see readOk).
+  let emptyReadsKept = 0;
   /* Every finished page of every public-search walk this run, newest first,
      written to reports/scans/<runId>.html (and latest.html) after each page so
      the run can be checked card by card while it is still going. */
@@ -1383,6 +1385,21 @@ async function main() {
           // The click is what makes LinkedIn name the posting, so this is the
           // point where the synthetic key is exchanged for the real job id.
           const jobId = detail.jobId;
+          /* Whether the posting was actually READ. A refusal is remembered by id
+             (and the posting never reopened) only when it rests on a real read:
+             an empty page says "LinkedIn tags it nothing" about every posting,
+             and must be retried, not believed. An empty read also keeps its page
+             as evidence — a few a run — so the cause is looked at, not guessed. */
+          const readOk = (detail.description?.length ?? 0) >= 60;
+          if (!readOk && jobId && emptyReadsKept < 3) {
+            emptyReadsKept++;
+            const stamp = `empty-read-${runId}-${jobId}`;
+            try {
+              await writeFile(join(PATHS.screenshots, `${stamp}.html`), await page.content(), 'utf8');
+              await page.screenshot({ path: join(PATHS.screenshots, `${stamp}.png`), fullPage: false });
+              log.warn(`Empty read of ${jobId} kept as ${PATHS.screenshots}/${stamp}.{html,png}`);
+            } catch { /* evidence only — never costs the walk */ }
+          }
           if (!jobId) {
             counters.failedDetails++;
             if (!detail.unopenable) {
@@ -1402,7 +1419,7 @@ async function main() {
             if (!gate.admit) {
               counters.skippedCompany++;
               store.noteSkippedCard(card.identity, gate.reason, detail.company || '', card.title);
-              store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${gate.reason}`, detail.company || '', card.title);
+              if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${gate.reason}`, detail.company || '', card.title);
               continue;
             }
             matched = gate.matched;
@@ -1427,7 +1444,7 @@ async function main() {
             if (!verdict.kind) {
               counters.skippedTitle++;
               store.noteSkippedCard(card.identity, verdict.reason, card.company, card.title);
-              store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${verdict.reason}`, card.company, card.title);
+              if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${verdict.reason}`, card.company, card.title);
               continue;
             }
             employmentKind = verdict.kind;
@@ -1442,7 +1459,7 @@ async function main() {
               card.company,
               card.title,
             );
-            store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`, card.company, card.title);
+            if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`, card.company, card.title);
             continue;
           }
 
