@@ -775,7 +775,13 @@ export class Store {
     this.db.prepare(`
       UPDATE jobs SET
         bullets = ?, role_label = ?, degree_level = ?, degree_text = ?, key_skills = ?, stipend_status = ?,
-        is_tech = COALESCE(?, is_tech),
+        -- A ROW A PERSON SUPPRESSED KEEPS ITS VERDICT. Suppressing a row that
+        -- had not been enriched yet did not stick: this write set is_tech back
+        -- to 1 when the model said tech, and the row went straight back on the
+        -- site with its suppressed_reason still set. Found 25 Sep 2026: an
+        -- owner "Hide" on Arista from 23 Sep was live again, and 8 rows pulled
+        -- mid-scan were republished by that scan's own enrichment.
+        is_tech = CASE WHEN suppressed_reason IS NOT NULL THEN is_tech ELSE COALESCE(?, is_tech) END,
         -- Only replace the summary when a rewritten one was actually produced.
         -- The column already holds the extractive plain-text summary, which is
         -- what the card falls back to; overwriting it with an empty string when
@@ -1234,7 +1240,8 @@ export class Store {
 
   /** Record a role verdict once the batch classifier has run. */
   setRoleVerdict(jobId, isTech, source) {
-    this.db.prepare('UPDATE jobs SET is_tech = ?, role_source = ? WHERE job_id = ?')
+    // Never over a row a person suppressed — see saveEnrichment.
+    this.db.prepare('UPDATE jobs SET is_tech = ?, role_source = ? WHERE job_id = ? AND suppressed_reason IS NULL')
       .run(isTech ? 1 : 0, source, jobId);
   }
 
