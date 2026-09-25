@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in Canada, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/ca/jobs/marvell-technology-data-center-silicon-hardware-engineering-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604525",
+      "url": "https://interndoor.com/ca/jobs/marvell-technology-data-center-silicon-hardware-engineering-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604525",
+      "title": "Data Center Silicon Hardware Engineering Intern - BS - 2027 Co-Op — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Ottawa, Canada\n• Design and verify digital hardware blocks using Verilog/SystemVerilog\n• Collaborate on RTL, test cases, and automation tools for semiconductor products\n• Debug timing and simulation issues with cross-functional teams\n• Work on next-gen AI and networking silicon in Ottawa",
+      "date_published": "2026-09-24T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-master-s-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2603862",
       "url": "https://interndoor.com/ca/jobs/marvell-technology-analog-design-intern-master-s-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2603862",
       "title": "Analog Design Intern, Master’s - 2027 Co-Op — Marvell Technology",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Justworks"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/ca/jobs/nokia-optical-test-automation-co-op-intern-ats-oraclecloud-fa-evmr-saasfaprod1-fa-ocs-oraclecloud-com-40117",
-      "url": "https://interndoor.com/ca/jobs/nokia-optical-test-automation-co-op-intern-ats-oraclecloud-fa-evmr-saasfaprod1-fa-ocs-oraclecloud-com-40117",
-      "title": "Optical Test Automation Co-op/Intern — Nokia",
-      "content_text": "Company: Nokia · Location: Canada · Duration: 8-12 months\n• Write test scripts for optical components\n• Use python and labview tools\n• Work on 5g network testing",
-      "date_published": "2026-09-04T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Nokia"
         }
       ]
     }
