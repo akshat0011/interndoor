@@ -6,18 +6,6 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/pwc-india-in-associate-genai-and-agentic-ai-engineer-gcc-advisory-noida-4472068152",
-      "url": "https://interndoor.com/jobs/pwc-india-in-associate-genai-and-agentic-ai-engineer-gcc-advisory-noida-4472068152",
-      "title": "IN_Associate_ GenAI and Agentic AI Engineer _GCC_ Advisory_Noida — PwC India",
-      "content_text": "Company: PwC India · Location: Noida, Uttar Pradesh, India\n• Build and deploy autonomous agents using LangChain, Crew.ai, and other frameworks\n• Develop RAG systems for improved information retrieval and response generation\n• Create evaluation frameworks and monitoring systems for agent behavior",
-      "date_published": "2026-09-25T18:18:52.829Z",
-      "authors": [
-        {
-          "name": "PwC India"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470359387",
       "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470359387",
       "title": "Apprentice - Enterprise Technology Services — American Express",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Aptiv"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703",
+      "url": "https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703",
+      "title": "SOC Design Verification Assoc Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Verify soc designs using system verilog and uvm\n• Work with verification tools like vcs and synopsys vip\n• Collaborate with architects and pre-silicon teams",
+      "date_published": "2026-09-25T14:18:11.499Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
         }
       ]
     }

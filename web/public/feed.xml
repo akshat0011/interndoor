@@ -6,17 +6,7 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 25 Sep 2026 18:18:52 GMT</lastBuildDate>
-  <item>
-    <title>IN_Associate_ GenAI and Agentic AI Engineer _GCC_ Advisory_Noida — PwC India</title>
-    <link>https://interndoor.com/jobs/pwc-india-in-associate-genai-and-agentic-ai-engineer-gcc-advisory-noida-4472068152</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/pwc-india-in-associate-genai-and-agentic-ai-engineer-gcc-advisory-noida-4472068152</guid>
-    <pubDate>Fri, 25 Sep 2026 18:18:52 GMT</pubDate>
-    <description>Company: PwC India · Location: Noida, Uttar Pradesh, India
-• Build and deploy autonomous agents using LangChain, Crew.ai, and other frameworks
-• Develop RAG systems for improved information retrieval and response generation
-• Create evaluation frameworks and monitoring systems for agent behavior</description>
-  </item>
+  <lastBuildDate>Fri, 25 Sep 2026 18:17:05 GMT</lastBuildDate>
   <item>
     <title>Apprentice - Enterprise Technology Services — American Express</title>
     <link>https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470359387</link>
@@ -509,6 +499,16 @@
 • Develop embedded software for ECU reprogramming and secure OTA updates
 • Work with UDS/DoIP, CAN/CAN FD, and bootloader configurations
 • Debug timing, memory, and communication issues in real-world scenarios</description>
+  </item>
+  <item>
+    <title>SOC Design Verification Assoc Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-soc-design-verification-assoc-engineer-4470312703</guid>
+    <pubDate>Fri, 25 Sep 2026 14:18:11 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India
+• Verify soc designs using system verilog and uvm
+• Work with verification tools like vcs and synopsys vip
+• Collaborate with architects and pre-silicon teams</description>
   </item>
 </channel>
 </rss>
