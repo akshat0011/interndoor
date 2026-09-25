@@ -293,15 +293,51 @@ export function extractStipend(...texts) {
   return { min: best.min, max: best.max, currency: best.currency, period: best.period, raw: best.raw };
 }
 
+/**
+ * The period a stored figure can honestly be shown with — its own when the
+ * magnitude fits it, 'hour' for a US hourly rate labelled yearly, and false
+ * when the figure cannot be shown against any period at all.
+ *
+ * MEASURED 26 SEP 2026: 80 live US listings printed a period their figure
+ * could not be. Two shapes:
+ *
+ *  - AN HOURLY RATE LABELLED YEARLY. LinkedIn's public search writes Snowflake's
+ *    "42.00-60.00 per hour" as "$42/yr" and Charles Schwab's as "$30.50/yr";
+ *    General Dynamics' own board says "USD $29.00/Yr". Every one of the 26 USD
+ *    rows under 1,000 a "year" sat between $21 and $45. Shown per hour.
+ *  - A SALARY LABELLED HOURLY: Jacobs "$50,000 – $62,000 / hour" (its salary
+ *    text says "$47.3K/yr"), Progressive, and junk like Intel's
+ *    "$76,398 – $76,402 / hour". Not relabelled: false, and every caller then
+ *    falls back to the posting's own salary text ("$47.3K/yr"), or to nothing.
+ *
+ * ONLY US DOLLARS ARE RELABELLED. The pound and euro rows under 1,000 a year
+ * are a European thousands point read as a decimal — Levi's UK "£28.000 gross
+ * per year" stored as 28, Sentry's "€43.456" as 43.456 — so "£28 / hour" would
+ * be a confident wrong figure. They show no pay instead.
+ */
+const HOURLY_LOOKING = [7, 150];
+export function displayPeriod({ min, max, currency, period } = {}) {
+  if (!period) return period ?? null;
+  const bounds = SALARY_BOUNDS[period];
+  if (!bounds || (max >= bounds[0] && max <= bounds[1])) return period;
+  const cents = (n) => Math.abs(n * 100 - Math.round(n * 100)) < 1e-9;
+  if (period === 'year' && currency === 'USD'
+    && min >= HOURLY_LOOKING[0] && max <= HOURLY_LOOKING[1] && cents(min) && cents(max)) return 'hour';
+  return false;
+}
+
 /** Human-readable stipend string for the report. */
 export function formatStipend(stipend) {
   // Callers pass rows straight from the database, where these columns are null
   // whenever no figure was found.
   if (!stipend || stipend.min == null || stipend.max == null) return null;
+  // A figure its period cannot hold is not shown against it (displayPeriod).
+  const period = displayPeriod(stipend);
+  if (period === false) return null;
   const sym = { INR: '₹', USD: '$', EUR: '€', GBP: '£', JPY: '¥' }[stipend.currency] ?? (stipend.currency ? `${stipend.currency} ` : '');
   const fmt = (n) => n.toLocaleString('en-IN', { maximumFractionDigits: 0 });
   const amount = stipend.min === stipend.max ? `${sym}${fmt(stipend.min)}` : `${sym}${fmt(stipend.min)} – ${sym}${fmt(stipend.max)}`;
-  return stipend.period ? `${amount} / ${stipend.period}` : amount;
+  return period ? `${amount} / ${period}` : amount;
 }
 
 /**

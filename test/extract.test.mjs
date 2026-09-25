@@ -1,4 +1,4 @@
-import { extractStipend, formatStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime, jobIdFromUrl, normaliseDegree,
+import { extractStipend, formatStipend, displayPeriod, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime, jobIdFromUrl, normaliseDegree,
   statedDeadlines, groundDeadline, groundExperienceYears, groundGraduation, couldStateFacts } from '../src/extract.js';
 import { normaliseCompany, matchCompany, matchTitle, resolveWindowHours } from '../src/config.js';
 import { offlineSummary } from '../src/summarize.js';
@@ -479,6 +479,44 @@ for (const [label, text, region] of [
   ['pass-outs', '(2025 or 2026 pass-outs)', 'IN'],
 ]) check(`says yes to ${label}`, couldStateFacts(text, region), true);
 check('and no to a posting that states neither', couldStateFacts('Build APIs in Go. Summer 2027 internship in Austin.', 'US'), false);
+
+
+console.log('\n== a figure is never printed against a period it cannot be ==');
+{
+  const pay = (min, max, currency, period) => formatStipend({ min, max, currency, period });
+  // Snowflake: the posting says "42.00-60.00 per hour"; LinkedIn's card said "$42/yr".
+  check('a US hourly rate labelled yearly is shown per hour', pay(42, 42, 'USD', 'year'), '$42 / hour');
+  check('General Dynamics\' own "$29.00/Yr"', pay(29, 29, 'USD', 'year'), '$29 / hour');
+  check('a range too', pay(21, 30.45, 'USD', 'year'), '$21 – $30 / hour');
+  check('the hourly band starts at $7', [pay(7, 7, 'USD', 'year'), pay(6.99, 6.99, 'USD', 'year')], ['$7 / hour', null]);
+  check('and ends at $150', [pay(150, 150, 'USD', 'year'), pay(151, 151, 'USD', 'year')], ['$150 / hour', null]);
+  check('a figure with more than cents is not a wage', pay(43.456, 43.456, 'USD', 'year'), null);
+  // Levi's UK "£28.000 gross per year" was stored as 28; Sentry's "€43.456" as 43.456.
+  check('a pound figure is a thousands point, not an hourly rate', pay(28, 28, 'GBP', 'year'), null);
+  check('nor a euro one', pay(43.456, 43.456, 'EUR', 'year'), null);
+  // Jacobs "$47.3K/yr" stored against 'hour': the caller falls back to that text.
+  check('a salary labelled hourly is not shown against the hour', pay(50000, 62000, 'USD', 'hour'), null);
+  check('nor an impossible one', pay(20_000_000_000, 20_000_000_000, 'USD', 'hour'), null);
+  check('a monthly figure too small to be a month', pay(17.5, 17.5, 'USD', 'month'), null);
+  check('a real hourly rate is untouched', pay(24, 45, 'USD', 'hour'), '$24 – $45 / hour');
+  check('a real salary is untouched', pay(120000, 150000, 'USD', 'year'), '$1,20,000 – $1,50,000 / year');
+  check('a real stipend is untouched', pay(25000, 40000, 'INR', 'month'), '₹25,000 – ₹40,000 / month');
+  check('a figure with no period is untouched', pay(15000, 15000, 'INR', null), '₹15,000');
+  check('a period with no bounds is untouched', pay(4000, 4000, 'USD', 'total'), '$4,000 / total');
+  check('displayPeriod says which', [
+    displayPeriod({ min: 42, max: 42, currency: 'USD', period: 'year' }),
+    displayPeriod({ min: 50000, max: 62000, currency: 'USD', period: 'hour' }),
+    displayPeriod({ min: 25000, max: 40000, currency: 'INR', period: 'month' }),
+    displayPeriod({ min: 15000, max: 15000, currency: 'INR', period: null }),
+  ], ['hour', false, 'month', null]);
+  /* Returning null is only safe because every caller falls back to the
+     posting's own salary text — "$47.3K/yr" for Jacobs. Pinned where the
+     board's string is made. */
+  const { readFileSync } = await import('node:fs');
+  const pub = readFileSync(new URL('../src/publish.js', import.meta.url), 'utf8');
+  check('the board falls back to the posting\'s own salary text',
+    /const stipend = formatStipend\(\{\s*min: row\.stipend_min, max: row\.stipend_max,\s*currency: row\.stipend_currency, period: row\.stipend_period,\s*\}\) \|\| row\.salary_text \|\| null;/.test(pub), true);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
