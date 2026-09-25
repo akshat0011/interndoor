@@ -175,6 +175,12 @@ console.log('\n== a level-II-or-above title is not an entry-level job ==');
     entryLevelTitleRefusal('Campus Graduate Masters Full-Time Engineer - 2027 Software Engineer II, Enterprise Technology Services- Sunrise, FL'), null);
   check('so is a "New Grad" Engineer II', entryLevelTitleRefusal('Software Engineer II, New Grad'), null);
   check('but "Campus" alone is a place, not a programme', entryLevelTitleRefusal('Engineer 2 - Nashville Campus'), LVL);
+  // Underscores join words for \b, and PwC India writes every title with them.
+  check('PwC\'s "IN_Senior Associate_…" is senior', entryLevelTitleRefusal('IN_Senior Associate_Azure Fabric Engineer_GCC_Advisory_Bangalore'), 'entry-level: senior title');
+  check('PwC\'s "IN_Manager_…" is a manager title', entryLevelTitleRefusal('IN_Manager_Technical AI Business Analyst_GCC_Advisory_Bangalore'), 'entry-level: manager title');
+  check('"Engineer II_Engineering" is level II', entryLevelTitleRefusal('Engineer II_Engineering'), LVL);
+  check('"…_FDE_Consultant" is a consultant grade', entryLevelTitleRefusal('#ACN GN-I&E_ Industrial_FDE_Consultant'), GRADE);
+  check('an underscore in an ordinary title changes nothing', entryLevelTitleRefusal('IN_Associate_Software Engineer_Bangalore'), null);
   check('admitEntryLevel refuses it after the open too',
     admitEntryLevel({ title: 'Software Engineer II', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason, LVL);
   // The careers-board path decides by title alone (employmentType), so the rule
