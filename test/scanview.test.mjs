@@ -14,7 +14,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from '../src/scanview.js';
-import { Store } from '../src/store.js';
+import { Store, REFUSED_AFTER_OPEN } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 
 let pass = 0, fail = 0;
@@ -39,6 +39,9 @@ check('opened, then refused — said as such',
 check('already on the board from an earlier run', outcomeFor({ firstRunId: 'older-run', runId: RUN }).kind, 'held');
 check('opened and nothing recorded is a problem, not a quiet skip', outcomeFor({ opened: true, runId: RUN }).kind, 'refused');
 check('never reached is said out loud', outcomeFor({ runId: RUN }).kind, 'unchecked');
+check('refused when opened in an earlier walk, and not opened again',
+  outcomeFor({ refusedBefore: 'entry-level: asks 3+ years', runId: RUN }),
+  { kind: 'skip', text: 'refused when opened earlier (entry-level: asks 3+ years) — not opened again' });
 
 console.log('\n== every card, escaped, and nothing clickable ==');
 {
@@ -87,7 +90,19 @@ console.log('\n== the outcomes are the store\'s, not the view\'s ==');
   // An old record must not pass for this walk's decision.
   check('a refusal older than the page is not this page\'s', s.cardOutcome('card:acme|intern|delhi', null, Date.now() + 60_000).skipReason, null);
   check('the run that stored a job', s.cardOutcome('card:x', '77', 0).firstRunId, RUN);
-  check('nothing known is nothing', s.cardOutcome('card:nope', '99', 0), { skipReason: null, firstRunId: null });
+  check('nothing known is nothing', s.cardOutcome('card:nope', '99', 0), { skipReason: null, firstRunId: null, refusedBefore: null });
+
+  /* NEVER REOPEN A POSTING WE ALREADY OPENED AND TURNED AWAY — every open is a
+     page load on the account. Recorded under the posting's real id, with a
+     prefix, because 13,484 July-August rows are keyed by bare ids too and
+     carry PRE-click reasons: those must never read as "opened and refused". */
+  s.noteSkippedCard('4471000001', `${REFUSED_AFTER_OPEN}entry-level: asks 3+ years`, 'Acme', 'SDE');
+  s.noteSkippedCard('4400000002', 'company not on watchlist', 'Old Co', 'Intern');
+  check('a posting refused after opening is known by its id', s.refusedAfterOpen('4471000001'), 'entry-level: asks 3+ years');
+  check('an old id-keyed pre-click row is NOT a refusal after opening', s.refusedAfterOpen('4400000002'), null);
+  check('an unknown id is not refused', s.refusedAfterOpen('4499999999'), null);
+  check('no id, no answer', s.refusedAfterOpen(null), null);
+  check('the view reads it back', s.cardOutcome('card:acme|sde|x', '4471000001', 0).refusedBefore, 'entry-level: asks 3+ years');
 }
 
 console.log('\n== the wiring ==');
@@ -114,6 +129,18 @@ console.log('\n== the wiring ==');
     /path\.startsWith\('\/scan\/'\)[\s\S]{0,300}?join\(PATHS\.reports, 'scans', `\$\{id\}\.html`\)/.test(qs), true);
   check('behind the same id guard as the reports', /const id = decodeURIComponent\(path\.slice\('\/scan\/'\.length\)\) \|\| 'latest';\s*if \(!SAFE_ID\.test\(id\)\)/.test(qs), true);
   check('live config: watching is on', loadConfig().scanView, true);
+  // The guard: checked before any open, after the stored-id check, and
+  // written at all three places a card is refused AFTER being opened.
+  check('a posting refused after opening is not opened again',
+    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;\s*if \(refusedBefore\) \{[\s\S]{0,200}?continue;\s*\}\s*let known = /.test(src), true);
+  check('recorded where the pane names an employer off the list',
+    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{gate\.reason\}`/.test(src), true);
+  check('recorded where the entry-level gate refuses',
+    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{verdict\.reason\}`/.test(src), true);
+  check('recorded where LinkedIn\'s tag is not an internship',
+    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}title lacks intern and LinkedIn tags it/.test(src), true);
+  check('the three recordings sit beside their refusals',
+    (src.match(/store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}/g) || []).length, 3);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

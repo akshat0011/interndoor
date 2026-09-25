@@ -34,12 +34,13 @@ const esc = (s) => String(s ?? '')
  * THIS run also has a first run id, and a card refused after an open can have
  * both a reason and nothing stored.
  */
-export function outcomeFor({ pending = false, repeat = false, opened = false, skipReason = null, firstRunId = null, runId = null } = {}) {
+export function outcomeFor({ pending = false, repeat = false, opened = false, skipReason = null, firstRunId = null, runId = null, refusedBefore = null } = {}) {
   if (pending) return { kind: 'pending', text: 'checking…' };
   if (repeat) return { kind: 'skip', text: 'repeat of a card already read in this walk' };
   if (firstRunId && firstRunId === runId) return { kind: 'saved', text: 'SAVED this run — new listing' };
   if (skipReason) return { kind: opened ? 'refused' : 'skip', text: opened ? `opened, then refused: ${skipReason}` : skipReason };
   if (firstRunId) return { kind: 'held', text: 'already held — not opened again' };
+  if (refusedBefore) return { kind: 'skip', text: `refused when opened earlier (${refusedBefore}) — not opened again` };
   if (opened) return { kind: 'refused', text: 'opened, but could not be read — see the run log' };
   return { kind: 'unchecked', text: 'not checked — the walk stopped before this card' };
 }

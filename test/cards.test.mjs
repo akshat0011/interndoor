@@ -354,7 +354,8 @@ console.log('\n== the wiring in index.js ==');
     /if \(card\.company\) \{\s*const gate = li\.companyGate\(card\.company, gateRules\);\s*if \(!gate\.admit\) \{[\s\S]{0,220}?continue;/.test(src), true);
   check('no unconditional watchlist check on the card is left behind', /matchCompany\(card\.company/.test(src), false);
   const opened = src.indexOf('li.openAndExtract(page, card, cfg)');
-  const judged = src.search(/if \(!card\.company\) \{\s*const gate = li\.companyGate\(detail\.company, gateRules\);\s*if \(!gate\.admit\) \{[\s\S]{0,240}?continue;\s*\}\s*matched = gate\.matched;/);
+  // {0,400}: the refusal is also recorded under the job id (REFUSED_AFTER_OPEN).
+  const judged = src.search(/if \(!card\.company\) \{\s*const gate = li\.companyGate\(detail\.company, gateRules\);\s*if \(!gate\.admit\) \{[\s\S]{0,400}?continue;\s*\}\s*matched = gate\.matched;/);
   const stored = src.indexOf('store.mapCard(card.identity');
   check('a company-less card is judged on the pane after the click and before it is stored',
     [opened > 0, judged > opened, stored > judged], [true, true, true]);
