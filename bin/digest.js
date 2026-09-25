@@ -24,6 +24,7 @@ import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
 import { log } from '../src/logger.js';
 import { buildDigest, digestDue, dayKey, sendStatus } from '../src/digest.js';
+import { announceableIds } from '../src/rolefocus.js';
 import { regionOf, regionPath, resolveRowRegion } from '../src/regions.js';
 import { PATHS } from '../src/paths.js';
 
@@ -55,7 +56,9 @@ function publishedIds() {
   const file = join(PATHS.root, 'web', 'public', ...(prefix ? [prefix.slice(1)] : []), 'data', 'jobs.json');
   if (!existsSync(file)) return null;
   try {
-    return new Set((JSON.parse(readFileSync(file, 'utf8')).jobs ?? []).map((j) => String(j.id)));
+    /* Only what a channel may announce: a Misc role stays on the site and out
+       of the mail (his call, 25 Sep 2026; src/rolefocus.js). */
+    return announceableIds(JSON.parse(readFileSync(file, 'utf8')).jobs);
   } catch (e) {
     log.warn(`Digest: could not read ${file} (${e.message}).`);
     return null;

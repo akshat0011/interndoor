@@ -7,10 +7,10 @@
  * by a draft of the classifier or is one he named himself.
  */
 import { readFileSync } from 'node:fs';
-import { roleFamily, roleCategory, announceable, settleShelves, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
+import { roleFamily, roleCategory, announceable, announceableIds, settleShelves, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
 import { closableFrom } from '../src/publish.js';
 import { loadConfig } from '../src/config.js';
-import { entryLevelTitleRefusal, admitEntryLevel } from '../src/employment.js';
+import { entryLevelTitleRefusal, admitEntryLevel, employmentType } from '../src/employment.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -150,6 +150,52 @@ check('admitEntryLevel refuses it after the open too',
   admitEntryLevel({ title: 'Manager, Site Reliability Engineer - Data Platforms', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason,
   'entry-level: manager title');
 
+console.log('\n== a level-II-or-above title is not an entry-level job ==');
+{
+  const LVL = 'entry-level: level II+ title';
+  for (const t of ['Software Engineer II', 'SDE-2', 'SDE 3', 'Developer 3', 'Developer III - Enterprise Solutions',
+    'Platform Engineer III', 'Engineer III, Artificial Intelligence', 'Software Engr II', 'Engineer IV', 'OCI Core Infrastructure Engineer 2 - Nashville Campus']) {
+    check(`refused: ${t}`, entryLevelTitleRefusal(t), LVL);
+  }
+  for (const t of ['Software Engineer I', 'SDE-1', 'SDE 1, Expansions Tech and Product', 'Software Engineer, 2027 Batch', 'Software Engineer 2027 Batch', 'Graduate Engineer - 2026', 'Graduate Engineer Trainee 2026',
+    'Associate Software Engineer', 'Software Engineer I (New Grad)']) {
+    check(`passes: ${t}`, entryLevelTitleRefusal(t), null);
+  }
+  const GRADE = 'entry-level: consultant or architect title';
+  for (const t of ['Consultant - Application Monitoring Job', 'Cyber DT&P - IAM Okta- Consultant (CMF)', 'Ping Directory - Consultant',
+    'Associate Consultant - SAP DMC Job', 'Solution Architect', 'Cloud Architect - AWS']) {
+    check(`refused: ${t}`, entryLevelTitleRefusal(t), GRADE);
+  }
+  check('a consultant graduate programme passes', entryLevelTitleRefusal('ETIC, Oracle Technical Consultant Graduate Program'), null);
+  check('so does a fresher consultant', entryLevelTitleRefusal('Consultant - Fresher (2026 batch)'), null);
+  check('"consulting" is not a grade', entryLevelTitleRefusal('Software Engineer - Consulting Practice'), null);
+  check('"architecture" is not a grade', entryLevelTitleRefusal('Software Engineer, Platform Architecture'), null);
+  // A named graduate programme keeps its level: Amex hires masters grads as Engineer II.
+  check('Amex "Campus Graduate Masters … Software Engineer II" is a graduate programme',
+    entryLevelTitleRefusal('Campus Graduate Masters Full-Time Engineer - 2027 Software Engineer II, Enterprise Technology Services- Sunrise, FL'), null);
+  check('so is a "New Grad" Engineer II', entryLevelTitleRefusal('Software Engineer II, New Grad'), null);
+  check('but "Campus" alone is a place, not a programme', entryLevelTitleRefusal('Engineer 2 - Nashville Campus'), LVL);
+  check('admitEntryLevel refuses it after the open too',
+    admitEntryLevel({ title: 'Software Engineer II', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason, LVL);
+  // The careers-board path decides by title alone (employmentType), so the rule
+  // is there too: over 57,631 stored titles it changed exactly these shapes.
+  const isIntern = (x) => /\b(intern|internship|co-?op|trainee|apprentice)\b/i.test(x);
+  check('careers board: "BTS Associate Software Engineer II - AI" is not early-career', employmentType('BTS Associate Software Engineer II - AI', isIntern), null);
+  check('careers board: "OCI Core Infrastructure Engineer 2 - Nashville Campus" is not either', employmentType('OCI Core Infrastructure Engineer 2 - Nashville Campus', isIntern), null);
+  check('careers board: a plain "Associate Software Engineer" still is', employmentType('Associate Software Engineer', isIntern), 'fulltime');
+  check('careers board: Amex\'s masters programme still is',
+    employmentType('Campus Graduate Masters Full-Time Engineer - 2027 Software Engineer II, Enterprise Technology Services- Sunrise, FL', isIntern), 'fulltime');
+  check('careers board: an intern title with a level is still an internship', employmentType('Software Engineer Intern II', isIntern), 'intern');
+  check('an intern word still wins over a level', admitEntryLevel({ title: 'Software Engineer Intern II', employmentTag: 'Full-time', isIntern: (x) => /intern/i.test(x) }).kind, 'intern');
+}
+
+console.log('\n== misc stays off Telegram and the digest, and stays in the weekly roundup ==');
+{
+  const ids = announceableIds([{ id: 1, category: 'software' }, { id: 2, category: 'misc' }, { id: 3, category: 'hardware' }, { id: 4 }]);
+  check('the announceable ids leave misc out', [...ids], ['1', '3', '4']);
+  check('an absent file announces nothing', [...announceableIds(undefined)], []);
+}
+
 console.log('\n== the wiring ==');
 {
   const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
@@ -171,6 +217,14 @@ console.log('\n== the wiring ==');
     /for \(const id of readPending\(store, code\)\) take\(indexFor\(code\)\.get\(String\(id\)\), code, String\(id\)\);/.test(wa)
       && /const id = String\(row\.job_id \?\? row\.id\);\s*take\(indexFor\(code\)\.get\(id\), code, id\);/.test(wa), true);
   check('the reel sweep checks the shelf', /&& j\.isTech !== false\s*&& announceable\(j\.category\)/.test(qs), true);
+  const tg = read('src/telegram.js');
+  const dg = read('bin/digest.js');
+  const wk = read('src/weekly.js');
+  check('Telegram posts only what the shelf lets it announce',
+    /const public_ = onSite\.filter\(\(j\) => announceable\(j\.category\)\);/.test(tg) && /for \(const job of public_\)/.test(tg), true);
+  check('the digest composes only from announceable ids', /return announceableIds\(JSON\.parse\(readFileSync\(file, 'utf8'\)\)\.jobs\);/.test(dg), true);
+  check('the weekly roundup reads the whole published set, misc included',
+    /return new Set\(\(JSON\.parse\(readFileSync\(file, 'utf8'\)\)\.jobs \?\? \[\]\)\.map\(\(j\) => String\(j\.id\)\)\);/.test(wk) && !/announceable|\.category/.test(wk), true);
 }
 
 console.log('\n== the board ==');
