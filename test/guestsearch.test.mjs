@@ -246,6 +246,19 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /if \(id && navigated\) return false;\s*if \(id\) return location\.href\.includes\(id\);/.test(lk)
       && /navigated: !clicked/.test(lk), true);
   check('the label is stripped in Node', /detail\.description = stripExpanderLabel\(detail\.description\);/.test(lk), true);
+  /* The browser is only needed to OPEN a card. Opened up front, it sat on the
+     feed doing nothing while the walk ran elsewhere — "stuck on the Brave
+     homepage", 25 Sep. */
+  check('a public-search walk does not open its account up front',
+    /if \(viaGuest\) \{\s*if \(session && openRegion !== region\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
+  check('it opens the account at the first card worth opening',
+    /log\.ok\(`Opening:[\s\S]{0,400}?if \(viaGuest && !\(await sessionReady\(\)\)\) \{\s*signedOutMidWalk = true;\s*break;\s*\}\s*\n\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src), true);
+  check('a signed-out account found there ends the walk',
+    /if \(signedOutMidWalk\) break;/.test(src), true);
+  check('and is recorded as signed out, exactly like the up-front check',
+    /const sessionReady = async \(\) => \{[\s\S]{0,900}?deadRegions\.set\(region, err\.message\);[\s\S]{0,400}?return false;/.test(src), true);
+  check('a walk that needed no browser still counts as a region that worked',
+    /if \(viaGuest && reachedEnd && rendered && !signedOutMidWalk\) anyRegionWorked = true;/.test(src), true);
   check('the anchor href is cleaned in Node',
     /if \(detail\.applyUrl\) detail\.applyUrl = cleanApplyUrl\(detail\.applyUrl\);/.test(lk), true);
 }

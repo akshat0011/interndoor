@@ -704,22 +704,45 @@ async function main() {
         searchesDone++;
         continue;
       }
-      try {
-        await openRegionSession(region);
-      } catch (err) {
-        /* Only a LinkedIn-level refusal is survivable this way. A browser that
-           will not launch, or a machine with no network, is not a fact about
-           this region's account and must still end the run — otherwise every
-           region is tried in turn and the run reports a tidy `ok` having
-           collected nothing. */
-        if (err instanceof RunAborted && err.state === State.LOGGED_OUT) {
-          deadRegions.set(region, err.message);
-          log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
-          notes.push(`The ${region} LinkedIn account is signed out, so ${region} collected nothing this run. Run \`npm run login -- --region=${region}\`.`);
-          searchesDone++;
-          continue;
+      /* Opens this region's account, recording a signed-out one the same way
+         whether that is found here or at the first card (below). */
+      const sessionReady = async () => {
+        if (openRegion === region) return true;
+        try {
+          await openRegionSession(region);
+          return true;
+        } catch (err) {
+          /* Only a LinkedIn-level refusal is survivable this way. A browser that
+             will not launch, or a machine with no network, is not a fact about
+             this region's account and must still end the run — otherwise every
+             region is tried in turn and the run reports a tidy `ok` having
+             collected nothing. */
+          if (err instanceof RunAborted && err.state === State.LOGGED_OUT) {
+            deadRegions.set(region, err.message);
+            log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
+            notes.push(`The ${region} LinkedIn account is signed out, so ${region} collected nothing this run. Run \`npm run login -- --region=${region}\`.`);
+            return false;
+          }
+          throw err;
         }
-        throw err;
+      };
+
+      /* THE PUBLIC SEARCH FINDS CARDS WITHOUT A BROWSER — it needs one only to
+         OPEN a card. So its account is opened at the first card worth opening,
+         not here. Opened here, the window sat on the LinkedIn feed doing
+         nothing while every request went elsewhere (25 Sep: the US account for
+         2.5 minutes, then closed having opened nothing), and each such walk
+         spent a warm-up page load on the account for no reason. A window left
+         open by a DIFFERENT region is closed for the same reason. */
+      if (viaGuest) {
+        if (session && openRegion !== region) {
+          await closeBrave(session);
+          session = null;
+          openRegion = null;
+        }
+      } else if (!(await sessionReady())) {
+        searchesDone++;
+        continue;
       }
 
       windowsUsed.add(filters.postedWithinHours);
@@ -796,6 +819,9 @@ async function main() {
       // card now and then across pages (2 of 317 in one measured walk), and a
       // repeat must not cost a second open.
       const walkSeen = new Set();
+      // Set when the account behind a public-search walk is found signed out
+      // at its first open: the walk stops there, baseline unchanged.
+      let signedOutMidWalk = false;
 
       for (let pageIndex = firstPage; pageIndex < lastPage; pageIndex++) {
         // Checked here, before navigating, not only inside the card loop below.
@@ -1262,6 +1288,11 @@ async function main() {
           log.ok(`Opening: ${card.title} — ${card.company || 'no company on the card'}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
           if (!card.company) log.debug(`  no company line on this card, so the pane decides: ${(card.lines ?? []).join(' | ').slice(0, 240)}`);
 
+          if (viaGuest && !(await sessionReady())) {
+            signedOutMidWalk = true;
+            break;
+          }
+
           await pause(cfg.pacing.betweenCards);
           await idleFidget(page);
 
@@ -1430,6 +1461,7 @@ async function main() {
         }
 
         log.info(`Page ${pageIndex + 1} done — opened ${openedOnThisPage} of ${cards.length} cards.`);
+        if (signedOutMidWalk) break;
 
         /* HOW FAR BACK THIS WALK HAS GOT, tracked on every page whether or not
            any stop rule is on. Only dateable cards count: parseRelativeTime
@@ -1572,6 +1604,11 @@ async function main() {
           })
         : null;
 
+      /* A public-search walk that needed no open never launched its account,
+         and it still collected: its region WORKED. Without this, one signed-out
+         account beside a quiet one would read as "every account signed out". */
+      if (viaGuest && reachedEnd && rendered && !signedOutMidWalk) anyRegionWorked = true;
+
       if (!DRY_RUN && reachedEnd && rendered && sweepMark) {
         store.markRegionSweep(search.sweepKey ?? region, sweepMark);
         log.ok(`${region} swept — ${cardsHere} cards across ${pagesHere} page(s).`);
@@ -1628,7 +1665,7 @@ async function main() {
     // signed-out session and store whatever the guest surface returns.
     if (openRegion) {
       await backfillDescriptions(page, store, cfg, clock, counters);
-    } else if (anyRegionWorked) {
+    } else if (anyRegionWorked && deadRegions.size) {
       log.info('Skipping description backfill: the last account opened this run was signed out.');
     }
   } catch (err) {

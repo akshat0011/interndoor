@@ -129,7 +129,10 @@ console.log('\n== ONE SIGNED-OUT ACCOUNT COSTS ONE REGION, NOT THE RUN ==');
      launch is not a fact about this account, and swallowing it would report a
      tidy `ok` on a run that collected nothing. */
   check('only LOGGED_OUT is survivable', /err instanceof RunAborted && err\.state === State\.LOGGED_OUT/.test(src), true);
-  check('anything else still ends the run', /\n        throw err;\n/.test(src), true);
+  // Pinned on structure, not indentation: the check moved into sessionReady
+  // (25 Sep 2026) so a public-search walk can make it at its first open.
+  check('anything else still ends the run',
+    /err instanceof RunAborted && err\.state === State\.LOGGED_OUT\) \{[\s\S]{0,500}?return false;\s*\}\s*throw err;/.test(src), true);
 
   /* Every account down is the old whole-run outage and must still read as one,
      or the push never fires. */
