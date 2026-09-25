@@ -19,6 +19,7 @@
 import { readFileSync } from 'node:fs';
 import {
   parseGuestCards, guestCards, buildGuestSearchUrl, fetchGuestPage, guestRequestCap,
+  fetchGuestPageRetrying, retryAfterMsOf, GUEST_BLOCK_WAITS_MS, splitKeywords, rereadPlan, REREAD_TAIL_PAGES, MAX_WALK_PASSES,
   searchSourceFor, decodeEntities, GUEST_SEARCH_URL, GUEST_PAGE_SIZE, GUEST_RESULT_CEILING,
 } from '../src/guestsearch.js';
 import { buildSearchUrl, cleanApplyUrl, applyUrlFrom, stripExpanderLabel } from '../src/linkedin.js';
@@ -180,6 +181,115 @@ console.log('\n== one request, and exactly which of six things happened ==');
     (await fetchGuestPage('u', { fetchImpl: stub(200, '<div data-entity-urn="urn:li:jobPosting:123"></div>') })).markupChanged, true);
 }
 
+console.log('\n== a 429 is waited out, minutes at a time, and the same page asked for again ==');
+{
+  const PAGE_OK = PAGE;
+  // Answers in turn: each entry is [status, body, headers].
+  const seq = (answers) => {
+    const asked = [];
+    const impl = async (url) => {
+      asked.push(url);
+      const [status, body, headers = {}] = answers[Math.min(asked.length - 1, answers.length - 1)];
+      return { status, text: async () => body, headers: { get: (k) => headers[k.toLowerCase()] ?? null } };
+    };
+    return { impl, asked };
+  };
+  const slept = [];
+  const sleep = async (ms) => { slept.push(ms); };
+  check('the waits are 2, 5 and 10 minutes', GUEST_BLOCK_WAITS_MS, [120_000, 300_000, 600_000]);
+
+  let s = seq([[429, ''], [200, PAGE_OK]]);
+  let r = await fetchGuestPageRetrying('https://x/p?start=70', { fetchImpl: s.impl, sleep });
+  check('a 429 then an answer: the cards', r.cards?.length, 3);
+  check('after one wait of 2 minutes', [r.retries, r.waitedMs, slept.splice(0)], [1, 120_000, [120_000]]);
+  check('asking for the SAME page again', s.asked, ['https://x/p?start=70', 'https://x/p?start=70']);
+
+  s = seq([[429, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a 429 that outlasts every wait is still a block', [r.blocked, r.status, r.retries], [true, 429, 3]);
+  check('after 2, 5 and 10 minutes, and four asks in all', [slept.splice(0), s.asked.length], [[120_000, 300_000, 600_000], 4]);
+
+  s = seq([[999, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a 999 is never asked again', [r.blocked, r.retries, s.asked.length, slept.splice(0)], [true, 0, 1, []]);
+
+  s = seq([[429, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 100_000 });
+  check('a wait the run cannot afford is not started', [r.blocked, r.retries, slept.splice(0)], [true, 0, []]);
+  s = seq([[429, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 350_000 });
+  // 2 min fits; 2 + 5 does not, though 5 alone would.
+  check('and the budget counts every wait so far', [r.retries, slept.splice(0)], [1, [120_000]]);
+
+  s = seq([[429, '', { 'retry-after': '400' }], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a longer Retry-After is honoured', slept.splice(0), [400_000]);
+  s = seq([[429, '', { 'retry-after': '7200' }], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('up to 15 minutes', slept.splice(0), [900_000]);
+  s = seq([[429, '', { 'retry-after': '5' }], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a shorter one never shortens the planned wait', slept.splice(0), [120_000]);
+
+  const told = [];
+  s = seq([[429, ''], [429, ''], [200, PAGE_OK]]);
+  await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, onWait: (w) => told.push(w) });
+  slept.splice(0);
+  check('each wait is announced before it starts', told, [{ attempt: 1, of: 3, waitMs: 120_000 }, { attempt: 2, of: 3, waitMs: 300_000 }]);
+
+  s = seq([[200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('an ordinary answer costs no wait', [r.retries, r.waitedMs, slept.length], [0, 0, 0]);
+
+  check('Retry-After in seconds', retryAfterMsOf('120'), 120_000);
+  check('Retry-After as a date', retryAfterMsOf('Sat, 26 Sep 2026 00:05:00 GMT', Date.parse('2026-09-26T00:00:00Z')), 300_000);
+  check('no Retry-After', [retryAfterMsOf(''), retryAfterMsOf(null), retryAfterMsOf('soon')], [null, null, null]);
+  check('fetchGuestPage passes it on', (await fetchGuestPage('u', { fetchImpl: seq([[429, '', { 'retry-after': '60' }]]).impl })).retryAfterMs, 60_000);
+}
+
+console.log('\n== a search split into two that ask the same question ==');
+{
+  const terms = (k) => k.replace(/^\(|\)$/g, '').split(' OR ');
+  const cfg = loadConfig();
+  for (const search of cfg.searches) {
+    const parts = splitKeywords(search.keywords);
+    check(`live config: "${search.label ?? search.region}" splits in two`, parts?.length, 2);
+    check('  and the halves hold exactly its terms, once each',
+      parts ? [...parts.flatMap(terms)].sort() : null, [...terms(search.keywords)].sort());
+  }
+  check('odd counts put the extra term first', splitKeywords('(a OR b OR c)'), ['(a OR b)', '(c)']);
+  check('two terms, one each', splitKeywords('(intern OR internship)'), ['(intern)', '(internship)']);
+  check('brackets are optional', splitKeywords('a OR b'), ['(a)', '(b)']);
+  check('a quoted phrase is one term, OR and all', splitKeywords('("a OR b" OR c)'), ['("a OR b")', '(c)']);
+  check('ANDROID is a word, not an AND', splitKeywords('(ANDROID OR ios)'), ['(ANDROID)', '(ios)']);
+  check('one term cannot split', splitKeywords('(intern)'), null);
+  check('nested brackets are left alone', splitKeywords('(a OR (b OR c) OR d)'), null);
+  check('an AND is left alone', splitKeywords('(a OR b AND c)'), null);
+  check('a NOT is left alone', splitKeywords('(a OR NOT b)'), null);
+  check('an open quote is left alone', splitKeywords('(x OR "a OR b)'), null);
+  check('nothing is nothing', [splitKeywords(''), splitKeywords(null)], [null, null]);
+  check('an empty term is refused', splitKeywords('(a OR  OR b)'), null);
+}
+
+console.log('\n== a capped window is re-read only when its last pages still held roles ==');
+{
+  const kw = '(intern OR internship OR trainee OR "co-op" OR apprentice)';
+  const zeros = (n) => Array(n).fill(0);
+  check('the last ten pages decide', REREAD_TAIL_PAGES, 10);
+  check('nothing worth opening in them: filler, not re-read',
+    rereadPlan({ tailHits: zeros(100), keywords: kw }).reason, 'the last 10 pages held nothing worth opening, so the rest is filler');
+  check('a hit before the last ten does not count',
+    rereadPlan({ tailHits: [...zeros(89), 3, ...zeros(10)], keywords: kw }).parts, undefined);
+  check('one hit in the last ten re-reads, as the two halves',
+    rereadPlan({ tailHits: [...zeros(90), 1, ...zeros(9)], keywords: kw }), { parts: ['(intern OR internship OR trainee)', '("co-op" OR apprentice)'], hits: 1 });
+  check('and says how many it saw', rereadPlan({ tailHits: [...zeros(95), 2, 0, 3, 0, 0], keywords: kw }).hits, 5);
+  check('keywords that cannot split are not re-read',
+    /not a plain OR-list/.test(rereadPlan({ tailHits: [1], keywords: '(intern)' }).reason), true);
+  check('six passes at most', MAX_WALK_PASSES, 6);
+  check('a split that would make seven is refused', rereadPlan({ tailHits: [1], keywords: kw, passes: 5 }).parts, undefined);
+  check('one that makes exactly six is allowed', rereadPlan({ tailHits: [1], keywords: kw, passes: 4 }).parts?.length, 2);
+}
+
 console.log('\n== the Apply link is the employer\'s page, not LinkedIn\'s interstitial ==');
 {
   /* Verbatim shape of the anchor on the posting page, 25 Sep 2026: every row
@@ -210,10 +320,20 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   const lk = readFileSync(new URL('../src/linkedin.js', import.meta.url), 'utf8');
   check('the source is decided per search',
     /const viaGuest = searchSourceFor\(search, cfg\) === 'guest';/.test(src), true);
-  check('discovery fetches the public page, offset in 10s',
-    /buildGuestSearchUrl\(search, filters, \{ start: pageIndex \* GUEST_PAGE_SIZE \}\)[\s\S]{0,120}?await fetchGuestPage\(url\)/.test(src), true);
-  check('a 429 stops discovery for the rest of the run and is never fast-retried',
-    /if \(res\.blocked\) \{[\s\S]{0,200}?sawBlocked = true;\s*guestBlocked = true;[\s\S]{0,400}?break;/.test(src), true);
+  check('discovery fetches the public page, offset in 10s, for the part being read',
+    /buildGuestSearchUrl\(passSearch, filters, \{ start: pageIndex \* GUEST_PAGE_SIZE \}\)[\s\S]{0,420}?await fetchGuestPageRetrying\(url, \{/.test(src), true);
+  check('the wait never eats the end of the run\'s budget',
+    /fetchGuestPageRetrying\(url, \{\s*budgetMs: clock\.remainingMs\(\) - BLOCK_WAIT_RESERVE_MS,/.test(src), true);
+  check('a 429 waited out still counts as a block for the exit code (no fast retry)',
+    /onWait: \(\{ attempt, of, waitMs \}\) => \{\s*sawBlocked = true;/.test(src), true);
+  check('a 429 that answered again slows every later request this run',
+    /if \(res\.retries && \(res\.cards \|\| res\.end\)\) \{\s*guestPace = Math\.min\(guestPace \* 2, GUEST_MAX_SLOWDOWN\);/.test(src), true);
+  check('the public walk is paced through the slowdown',
+    /const guestPacing = \(\) => \(cfg\.pacing\.betweenGuestPages \?\? \[1500, 3500\]\)\.map\(\(ms\) => ms \* guestPace\);/.test(src)
+      && (src.match(/await pause\(guestPacing\(\)\);/g) ?? []).length === 3
+      && (src.match(/betweenGuestPages/g) ?? []).length === 1, true);
+  check('a block that outlasts the waits stops discovery for the rest of the run',
+    /if \(res\.blocked\) \{[\s\S]{0,200}?sawBlocked = true;\s*guestBlocked = true;[\s\S]{0,700}?break;/.test(src), true);
   check('and later searches are skipped rather than walked into it',
     /if \(viaGuest && guestBlocked\) \{[\s\S]{0,200}?continue;/.test(src), true);
   check('a card-shaped answer we cannot read throws',
@@ -228,9 +348,29 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('a repeated card costs no second open',
     /if \(walkSeen\.has\(card\.jobId\)\) continue;/.test(src), true);
   check('the public walk skips the Next-control logic and paces itself',
-    /if \(viaGuest\) \{[\s\S]{0,700}?await pause\(cfg\.pacing\.betweenGuestPages[^)]*\);\s*continue;\s*\}\s*\n\s*\/\/ Keep paging until LinkedIn's own "Next"/.test(src), true);
+    /if \(viaGuest\) \{\s*tailHits\.push\(relevantOnPage\);[\s\S]{0,2400}?await pause\(guestPacing\(\)\);\s*continue;\s*\}\s*\n\s*\/\/ Keep paging until LinkedIn's own "Next"/.test(src), true);
   check('reaching the ceiling completes the walk rather than freezing its baseline',
-    /pageIndex === lastPage - 1\) \{[\s\S]{0,600}?walkComplete = true;\s*\}\s*await pause\(cfg\.pacing\.betweenGuestPages/.test(src), true);
+    /pageIndex === lastPage - 1\) \{[\s\S]{0,2000}?\s*walkComplete = true;\s*\}\s*await pause\(guestPacing\(\)\);/.test(src), true);
+  // The re-read (rereadPlan): decided on the pages just before the limit, for
+  // the keywords of the part that reached it, and read before the walk ends.
+  check('each page\'s count of cards worth opening is kept before the limit is judged',
+    /tailHits\.push\(relevantOnPage\);\s*if \(pageIndex === lastPage - 1\) \{/.test(src), true);
+  check('the limit asks rereadPlan, about the part that reached it',
+    /const plan = rereadPlan\(\{ tailHits, keywords: passSearch\.keywords, passes: passNo \+ 1 \+ pendingParts\.length \}\);\s*if \(plan\.parts\) \{\s*pendingParts\.push\(\.\.\.plan\.parts\);/.test(src), true);
+  check('the end of a part moves on to the next before the walk completes',
+    /if \(pendingParts\.length\) \{\s*startPart\(\);\s*pageIndex = firstPage - 1;\s*await pause\(guestPacing\(\)\);\s*continue;\s*\}\s*walkComplete = true;\s*break;/.test(src), true);
+  check('so does the limit',
+    /if \(pendingParts\.length\) \{\s*startPart\(\);\s*pageIndex = firstPage - 1;\s*await pause\(guestPacing\(\)\);\s*continue;\s*\}\s*walkComplete = true;\s*\}/.test(src), true);
+  check('a part starts from its own first page, with its own limit and tail',
+    /const startPart = \(\) => \{[\s\S]{0,200}?passSearch = \{ \.\.\.search, keywords: pendingParts\.shift\(\) \};\s*firstPage = 0;\s*lastPage = guestRequestCap\(pageCap\);\s*tailHits = \[\];/.test(src), true);
+  check('an empty part is not read as an empty window',
+    /if \(pageIndex === firstPage && passNo === 0\) log\.warn\(`\$\{region\}: the public search returned no results at all/.test(src), true);
+  check('held, refused-before and opened cards all count toward the tail',
+    /store\.hasJob\(card\.jobId\)\) \{\s*counters\.skippedKnown\+\+;\s*relevantOnPage\+\+;/.test(src)
+      && /if \(refusedBefore\) \{\s*counters\.skippedKnown\+\+;\s*relevantOnPage\+\+;/.test(src)
+      && /openedThisWalk\.add\(card\.key\);\s*relevantOnPage\+\+;/.test(src), true);
+  check('what every re-read bought is logged',
+    /if \(passNo > 0\) \{\s*const saved = counters\.newJobs - reread\.newJobsAtStart;\s*log\.info\(`Re-read of the capped window/.test(src), true);
   // The open by id reads the posting's own page, not the pane URL that the AI
   // search redirects to "keywords=jobs" and that read 0 characters.
   check('an open by id navigates to the posting page',

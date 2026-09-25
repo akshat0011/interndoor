@@ -188,7 +188,7 @@ console.log('\n== src/index.js actually applies all three ==');
   check('imports the module',
     /import \{[^}]*pageCapFor[^}]*openCapFor[^}]*staleCutoffFor[^}]*pageIsAllOlderThan[^}]*\} from '\.\/sweeplimits\.js'/.test(src), true);
   check('the page cap bounds the walk',
-    /const lastPage = firstPage \+ \(viaGuest \? guestRequestCap\(pageCap\) : pageCap\);/.test(src) &&
+    /let lastPage = firstPage \+ \(viaGuest \? guestRequestCap\(pageCap\) : pageCap\);/.test(src) &&
     /const pageCap = pageCapFor\(search, cfg\.limits\.maxPagesPerSearch\);/.test(src), true);
   check('the open cap is resolved per search',
     /const openCap = openCapFor\(search\);/.test(src), true);

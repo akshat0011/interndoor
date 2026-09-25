@@ -26,7 +26,7 @@ import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
-import { searchSourceFor, buildGuestSearchUrl, fetchGuestPage, guestRequestCap, GUEST_PAGE_SIZE } from './guestsearch.js';
+import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -122,6 +122,13 @@ const COVERED_PAGES_BEFORE_STOP = 2;
  * whether that region's baseline may move, and once per run for the status.
  */
 const CARDS_PER_PAGE_FLOOR = 5;
+
+/* Waiting out a public-search 429 never eats into the last ten minutes of the
+   run's budget: the opens, enrichment and publish still need them. */
+const BLOCK_WAIT_RESERVE_MS = 10 * 60_000;
+/* After a 429 that was waited out, public-search requests are spaced wider for
+   the rest of the run — doubled per block, to at most this. */
+const GUEST_MAX_SLOWDOWN = 4;
 
 /** Tracks the wall-clock ceiling so a run can never sprawl unattended. */
 function budget(maxMinutes) {
@@ -512,10 +519,16 @@ async function main() {
   // EXIT_RETRY_SOON block at the end of the run.
   let sawNetworkFailure = false;
   let sawBlocked = false;
-  /* The public search refused us (429/999). It is rate-limited per IP, not
-     per account, so every later search in this run would be refused too:
-     they are skipped rather than walked into the same limit. */
+  /* The public search refused us and kept refusing through the waits (a 429
+     that outlasted GUEST_BLOCK_WAITS_MS, or a 999, which is never retried). It
+     is rate-limited per IP, not per account, so every later search in this run
+     would be refused too: they are skipped rather than walked into it. */
   let guestBlocked = false;
+  /* Spacing multiplier for public-search requests. A 429 that is waited out
+     doubles it for the rest of the run (to at most 4x): the limit has just
+     said this rate is too much, so the requests after it go slower. */
+  let guestPace = 1;
+  const guestPacing = () => (cfg.pacing.betweenGuestPages ?? [1500, 3500]).map((ms) => ms * guestPace);
   // Pages kept because a posting read came back empty (see readOk).
   let emptyReadsKept = 0;
   /* Every finished page of every public-search walk this run, newest first,
@@ -776,7 +789,7 @@ async function main() {
       // Resuming a partial backfill starts deeper into the result set. The page
       // budget counts from there, and LinkedIn's own Next control still decides
       // where the results actually end.
-      const firstPage = OVERRIDES.startPage ? OVERRIDES.startPage - 1 : 0;
+      let firstPage = OVERRIDES.startPage ? OVERRIDES.startPage - 1 : 0;
       /* A SEARCH MAY CAP ITS OWN DEPTH. India sets nothing and keeps the global
          cap, because it walks to the end of its results by design — it feeds
          ~91% of the India board and the whole promise is that nothing is
@@ -787,7 +800,7 @@ async function main() {
       /* The caps are written in LinkedIn's 25-card pages; the public search
          serves 10 a request, so the same cap is 2.5x as many requests, and
          never past the endpoint's 1,000-result ceiling. */
-      const lastPage = firstPage + (viaGuest ? guestRequestCap(pageCap) : pageCap);
+      let lastPage = firstPage + (viaGuest ? guestRequestCap(pageCap) : pageCap);
 
       /* Opens per employer, for THIS search only.
          One employer can fill a whole sweep: P&G filed 22 copies of one
@@ -841,6 +854,27 @@ async function main() {
       // Cards this walk OPENED, so the scan view can tell "opened, then
       // refused" from a card refused on its own text.
       const openedThisWalk = new Set();
+      /* THE 1,000-RESULT LIMIT, RE-READ (rereadPlan in guestsearch.js). A
+         public-search walk that reaches the limit while its last pages were
+         still turning up roles walks the same window again as two smaller
+         searches — the halves of its OR-list — and a half that reaches the
+         limit too is split again. The walk is complete only when every part
+         has ended. Cards an earlier part already handled are skipped by
+         walkSeen, so a re-read costs requests, never a second open. */
+      let passSearch = search;
+      let passNo = 0;
+      const pendingParts = [];
+      let tailHits = [];
+      const reread = { cards: 0, opened: 0, newJobsAtStart: 0 };
+      const startPart = () => {
+        if (passNo === 0) reread.newJobsAtStart = counters.newJobs;
+        passNo++;
+        passSearch = { ...search, keywords: pendingParts.shift() };
+        firstPage = 0;
+        lastPage = guestRequestCap(pageCap);
+        tailHits = [];
+        log.info(`Re-reading the ${filters.postedWithinHours}h window, part ${passNo}: ${passSearch.keywords}`);
+      };
 
       for (let pageIndex = firstPage; pageIndex < lastPage; pageIndex++) {
         // Checked here, before navigating, not only inside the card loop below.
@@ -869,10 +903,25 @@ async function main() {
              screen to fingerprint, scroll or guard: one request, parsed in
              Node. Each failure mode ends this walk without moving its
              baseline, so the next run re-covers the window. */
-          const url = buildGuestSearchUrl(search, filters, { start: pageIndex * GUEST_PAGE_SIZE });
+          const url = buildGuestSearchUrl(passSearch, filters, { start: pageIndex * GUEST_PAGE_SIZE });
           log.info(`Page ${pageIndex + 1} — ${url}`);
           pageUrl = url;
-          const res = await fetchGuestPage(url);
+          /* A 429 is waited out and the SAME page asked for again, so the walk
+             resumes where it was refused (fetchGuestPageRetrying). The wait
+             never eats into the last BLOCK_WAIT_RESERVE_MS of the run's budget,
+             which the opens and the rest of the run still need. */
+          const res = await fetchGuestPageRetrying(url, {
+            budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
+            onWait: ({ attempt, of, waitMs }) => {
+              sawBlocked = true;
+              log.warn(`LinkedIn's public job search rate-limited us (HTTP 429) on "${label}" page ${pageIndex + 1} — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
+            },
+          });
+          if (res.retries && (res.cards || res.end)) {
+            guestPace = Math.min(guestPace * 2, GUEST_MAX_SLOWDOWN);
+            log.ok(`The public search answered again after ${Math.round(res.waitedMs / 60_000)} min — carrying on from page ${pageIndex + 1}, every later request this run spaced ${guestPace}x wider.`);
+            notes.push(`LinkedIn's public search rate-limited us on "${label}" page ${pageIndex + 1}; it answered again after ${Math.round(res.waitedMs / 60_000)} min and the walk carried on.`);
+          }
           if (res.networkError) {
             sawNetworkFailure = true;
             log.warn(`Public search request failed: ${res.error}`);
@@ -884,8 +933,9 @@ async function main() {
             // exit code — same rule as a 429 on the signed-in page.
             sawBlocked = true;
             guestBlocked = true;
-            log.error(`LinkedIn's public job search returned HTTP ${res.status} — stopping discovery for this run.`);
-            notes.push(`LinkedIn's public job search rate-limited us (HTTP ${res.status}) on "${label}" page ${pageIndex + 1}. Discovery stopped for this run; the next run re-covers the window.`);
+            const waited = res.waitedMs ? ` after waiting ${Math.round(res.waitedMs / 60_000)} min` : '';
+            log.error(`LinkedIn's public job search returned HTTP ${res.status} — stopping discovery for this run${waited ? ` (still refused${waited})` : ''}.`);
+            notes.push(`LinkedIn's public job search rate-limited us (HTTP ${res.status}) on "${label}" page ${pageIndex + 1}${waited}. Discovery stopped for this run; the next run re-covers the window.`);
             break;
           }
           if (res.failed) {
@@ -906,8 +956,14 @@ async function main() {
                it — possible on a quiet night, and also exactly what a refusal
                dressed as an empty answer would look like — so it earns no
                coverage claim: pagesHere stays 0 and the baseline stays put. */
-            if (pageIndex === firstPage) log.warn(`${region}: the public search returned no results at all for the ${filters.postedWithinHours}h window — baseline unchanged, the next run looks again.`);
-            else log.ok(`End of results — all ${pageIndex - firstPage} request(s) of "${label}" have been read.`);
+            if (pageIndex === firstPage && passNo === 0) log.warn(`${region}: the public search returned no results at all for the ${filters.postedWithinHours}h window — baseline unchanged, the next run looks again.`);
+            else log.ok(`End of results — all ${pageIndex - firstPage} request(s) of "${label}"${passNo ? ` (part ${passNo})` : ''} have been read.`);
+            if (pendingParts.length) {
+              startPart();
+              pageIndex = firstPage - 1;
+              await pause(guestPacing());
+              continue;
+            }
             walkComplete = true;
             break;
           }
@@ -983,6 +1039,9 @@ async function main() {
 
         const cutoff = Date.now() - filters.postedWithinHours * 3_600_000;
         let openedOnThisPage = 0;
+        // Cards on this page worth opening — held already, opened before, or
+        // opened now. The last pages' counts decide a re-read (rereadPlan).
+        let relevantOnPage = 0;
 
         /* THE SCAN VIEW: this page's cards, on screen before they are judged,
            and again with every outcome once they have been (see below). */
@@ -1024,6 +1083,7 @@ async function main() {
           if (card.jobId) {
             if (walkSeen.has(card.jobId)) continue;
             walkSeen.add(card.jobId);
+            if (passNo > 0) reread.cards++;
           }
 
           // --- cheap local filters, in priority order ----------------------
@@ -1060,6 +1120,7 @@ async function main() {
              different posting, whatever its company, title and city. */
           if (card.jobId && store.hasJob(card.jobId)) {
             counters.skippedKnown++;
+            relevantOnPage++;
             store.touchJob(card.jobId);
             if (store.backfillLogo(card.jobId, card.logoUrl)) counters.logosBackfilled++;
             continue;
@@ -1071,6 +1132,7 @@ async function main() {
           const refusedBefore = card.jobId ? store.refusedAfterOpen(card.jobId) : null;
           if (refusedBefore) {
             counters.skippedKnown++;
+            relevantOnPage++;
             log.debug(`"${card.title}" at ${card.company} was opened and refused before (${refusedBefore}) — not opening it again.`);
             continue;
           }
@@ -1354,6 +1416,8 @@ async function main() {
           log.ok(`Opening: ${card.title} — ${card.company || 'no company on the card'}${matched ? ` [${matched}]` : ''} (${card.postedText || 'no date'})`);
           if (!card.company) log.debug(`  no company line on this card, so the pane decides: ${(card.lines ?? []).join(' | ').slice(0, 240)}`);
           openedThisWalk.add(card.key);
+          relevantOnPage++;
+          if (passNo > 0) reread.opened++;
 
           if (viaGuest && !(await sessionReady())) {
             signedOutMidWalk = true;
@@ -1607,15 +1671,31 @@ async function main() {
            the part not read is not "the oldest" — no later walk can recover it,
            so a baseline held back here would only widen the next window into
            the same ceiling, run after run. The walk is counted as complete and
-           the shortfall is said out loud instead. */
+           the shortfall is said out loud instead — unless the pages just before
+           the limit were still turning up roles, when the window is first
+           re-read as smaller searches (rereadPlan, startPart above). */
         if (viaGuest) {
+          tailHits.push(relevantOnPage);
           if (pageIndex === lastPage - 1) {
             const read = (pageIndex + 1 - firstPage) * GUEST_PAGE_SIZE;
-            log.warn(`"${label}" reached the public search's limit after ${read} results in a ${filters.postedWithinHours}h window — anything past that was not reachable.`);
-            notes.push(`"${label}" had more results in its ${filters.postedWithinHours}h window than LinkedIn's public search will serve (${read} read). A shorter window — a region swept more often — avoids this.`);
+            const part = passNo ? ` (part ${passNo})` : '';
+            const plan = rereadPlan({ tailHits, keywords: passSearch.keywords, passes: passNo + 1 + pendingParts.length });
+            if (plan.parts) {
+              pendingParts.push(...plan.parts);
+              log.warn(`"${label}"${part} reached the public search's limit after ${read} results in a ${filters.postedWithinHours}h window, and its last ${REREAD_TAIL_PAGES} pages still held ${plan.hits} card(s) worth opening — re-reading the window as ${plan.parts.length} smaller searches.`);
+            } else {
+              log.warn(`"${label}"${part} reached the public search's limit after ${read} results in a ${filters.postedWithinHours}h window — anything past that was not reachable (not re-read: ${plan.reason}).`);
+              notes.push(`"${label}"${part} had more results in its ${filters.postedWithinHours}h window than LinkedIn's public search will serve (${read} read), and was not re-read: ${plan.reason}.`);
+            }
+            if (pendingParts.length) {
+              startPart();
+              pageIndex = firstPage - 1;
+              await pause(guestPacing());
+              continue;
+            }
             walkComplete = true;
           }
-          await pause(cfg.pacing.betweenGuestPages ?? [1500, 3500]);
+          await pause(guestPacing());
           continue;
         }
 
@@ -1649,6 +1729,14 @@ async function main() {
           }
         }
         await pause(cfg.pacing.betweenPages);
+      }
+
+      /* What the re-read bought, every time one ran — the measurement that
+         says whether re-reading a capped window is worth its requests. */
+      if (passNo > 0) {
+        const saved = counters.newJobs - reread.newJobsAtStart;
+        log.info(`Re-read of the capped window: ${passNo} part(s), ${reread.cards} posting(s) the first read never reached, ${reread.opened} opened, ${saved} saved.`);
+        notes.push(`"${label}" reached the 1,000-result limit and was re-read in ${passNo} smaller searches: ${reread.cards} postings the first read missed, ${saved} saved.`);
       }
 
       if (openCap) {
