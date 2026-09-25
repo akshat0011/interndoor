@@ -7,12 +7,12 @@ import { log } from './logger.js';
 import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
-import { writeSite, cardFacts, jobSlug } from './pages.js';
+import { writeSite, cardFacts, jobSlug, deadlinePassed } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
 import { channelsFor } from './channels.js';
-import { publishedRegions, resolveRowRegion, ALL_REGIONS } from './regions.js';
+import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
 
@@ -102,6 +102,11 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     roleLabel: row.role_label || null,
     degreeLevel: row.degree_level || null,
     degreeText: row.degree_text || null,
+    /* Only what the posting states (groundFacts in src/ollama.js), and absent
+       rather than null for the same reason as `pay`: a deadline is stated on
+       a few percent of rows. */
+    ...(row.deadline ? { deadline: row.deadline } : {}),
+    ...(row.experience ? { experience: row.experience } : {}),
     keySkills: parseJsonArray(row.key_skills),
     stipendStatus: row.stipend_status || (stipend ? 'paid' : 'unknown'),
     postedText: row.posted_text || null,
@@ -510,6 +515,7 @@ export async function writeJobsFile(store, cfg) {
   let droppedForeign = 0;
   let droppedNonTech = 0;
   let droppedClosed = 0;
+  let droppedDeadline = 0;
   const droppedByRegion = {};
   /* His corrections from the owner controls (src/owner.js), laid over the rows
      before ANY gate runs — so a corrected location moves the posting to the
@@ -592,6 +598,17 @@ export async function writeJobsFile(store, cfg) {
       droppedClosed++;
       return false;
     })
+    /* PAST ITS OWN STATED DEADLINE the posting has expired, whatever its board
+       or the 30-day window says: the page becomes a closed-role stub exactly as
+       an aged-out one does, and it stays in the hub's record (history is built
+       separately below). Only a deadline the posting wrote — groundDeadline —
+       ever reaches `deadline`. Measured before shipping: 17 of 4,862 live rows,
+       Xcel Energy and Wells Fargo. */
+    .filter(({ row, region }) => {
+      if (!deadlinePassed(row, regionOf(region))) return true;
+      droppedDeadline++;
+      return false;
+    })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
   const supersededPairs = [];
@@ -646,6 +663,9 @@ export async function writeJobsFile(store, cfg) {
 
   if (droppedClosed) {
     log.info(`Held back ${droppedClosed} closed posting${droppedClosed === 1 ? '' : 's'} — application withdrawn, page redirected to the hub, still in the record.`);
+  }
+  if (droppedDeadline) {
+    log.info(`Held back ${droppedDeadline} posting${droppedDeadline === 1 ? '' : 's'} whose stated application deadline has passed — page redirected to the hub, still in the record.`);
   }
   if (droppedNonTech) {
     log.info(`Held back ${droppedNonTech} non-engineering posting${droppedNonTech === 1 ? '' : 's'} — the site is engineering-only.`);

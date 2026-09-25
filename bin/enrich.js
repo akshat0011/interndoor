@@ -11,12 +11,19 @@
  * Only rows with bullets IS NULL are sent, so repeated runs are cheap and
  * resumable: interrupt it, run it again, and it picks up where it stopped.
  *
- *   node bin/enrich.js [--limit N] [--dry-run] [--all]
+ *   node bin/enrich.js [--limit N] [--dry-run] [--all] [--facts] [--minutes N]
+ *
+ * --facts reads the application deadline and the experience requirement
+ * (extractFacts) for live enriched rows that have not had them read — the
+ * backfill; a scan does the same for new rows at its end. Leaves bullets and
+ * summary alone. Resumable the same way: a row it has looked at is marked
+ * (facts_checked_at) whether or not it found anything.
+ * --minutes overrides enrich.budgetMinutes for this run.
  */
 import { join } from 'node:path';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
-import { enrichJobs } from '../src/ollama.js';
+import { enrichJobs, extractFacts } from '../src/ollama.js';
 import { writeJobsFile } from '../src/publish.js';
 import { log } from '../src/logger.js';
 import { publishedRegions } from '../src/regions.js';
@@ -40,6 +47,13 @@ async function main() {
   const limit = Number(arg('--limit', 500));
   const dryRun = process.argv.includes('--dry-run');
   const all = process.argv.includes('--all');
+  if (arg('--minutes')) cfg.enrich = { ...cfg.enrich, budgetMinutes: Number(arg('--minutes')) };
+
+  if (process.argv.includes('--facts')) {
+    await backfillFacts(store, cfg, { limit, dryRun });
+    store.close();
+    return;
+  }
 
   if (all) {
     const n = store.db.prepare('UPDATE jobs SET bullets = NULL').run().changes;
@@ -91,6 +105,47 @@ async function main() {
   }
 
   store.close();
+}
+
+async function backfillFacts(store, cfg, { limit, dryRun }) {
+  const maxAgeDays = cfg.publish?.maxAgeDays ?? 14;
+  const pendingFacts = (n) => store.needingFacts(n, publishedRegions(cfg).map((r) => r.code), Date.now() - maxAgeDays * 86_400_000);
+  const budgetMs = (cfg.enrich?.budgetMinutes ?? 9) * 60_000;
+  const started = Date.now();
+  let checked = 0;
+  let deadlines = 0;
+  let experience = 0;
+
+  /* In batches, each saved before the next is read, so a backfill that is
+     interrupted — it runs for hours — keeps everything it has already read.
+     A dry run saves nothing, so it would re-read one batch forever: one pass. */
+  while (checked < limit && Date.now() - started < budgetMs) {
+    const pending = pendingFacts(dryRun ? limit : Math.min(40, limit - checked));
+    if (!pending.length) break;
+    const minutesLeft = (budgetMs - (Date.now() - started)) / 60_000;
+    const results = await extractFacts(pending, { ...cfg, enrich: { ...cfg.enrich, budgetMinutes: minutesLeft } });
+    for (const [i, f] of results) {
+      const row = pending[i];
+      if (f.deadline) deadlines++;
+      if (f.experience) experience++;
+      if (dryRun) {
+        if (f.deadline || f.experience) console.log(`${row.title} — ${row.company}\n  apply by: ${f.deadline || '—'} · experience: ${f.experience || '—'}`);
+      } else store.saveFacts(row.job_id, f);
+    }
+    checked += results.size;
+    if (dryRun || !results.size) break;
+    log.info(`  ${checked} checked · ${deadlines} deadline(s) · ${experience} experience requirement(s) so far`);
+  }
+
+  if (!checked) {
+    log.ok('Nothing to read — every live posting has had its deadline and experience checked.');
+    return;
+  }
+  log.ok(`Checked ${checked}: ${deadlines} stated a deadline, ${experience} an experience requirement.`);
+  if (!dryRun) {
+    const { count, path, changed } = await writeJobsFile(store, cfg);
+    log.ok(`Published ${count} job(s) → ${path}${changed ? '' : ' (unchanged)'}`);
+  }
 }
 
 main().catch((err) => {

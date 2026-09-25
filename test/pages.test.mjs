@@ -765,6 +765,33 @@ check('an explicit window is honoured',
 
 /* An ATS row is anchored to lastSeenAt so its date moves with the board. A row
    still being polled must never advertise a date in the past. */
+/* A STATED DEADLINE SHORTENS IT — and never so far that the markup expires
+   while the page is still served. */
+{
+  const { deadlinePassed } = await import('../src/pages.js');
+  const { ALL_REGIONS } = await import('../src/regions.js');
+  const isoIn = (days) => new Date(Date.now() + days * DAY).toISOString().slice(0, 10);
+  const fresh = { ...vtJob, postedAt: Date.now() - 2 * DAY, firstSeenAt: Date.now() - 2 * DAY, lastSeenAt: Date.now() - 2 * DAY };
+  const soon = isoIn(5);
+  const vtSoon = vtOf(renderJobPage({ ...fresh, deadline: soon }));
+  check('a deadline inside the window caps validThrough at the day after it',
+    vtSoon, `${new Date(Date.parse(`${soon}T00:00:00Z`) + DAY).toISOString().slice(0, 10)}T23:59:59.000Z`);
+  check('a deadline beyond the window changes nothing',
+    vtOf(renderJobPage({ ...fresh, deadline: isoIn(90) })), vtOf(renderJobPage(fresh)));
+  check('a passed deadline carries no JobPosting markup',
+    ldBlocks(renderJobPage({ ...fresh, deadline: '2026-01-02' })).some((b) => b['@type'] === 'JobPosting'), false);
+  check('and a missing one changes nothing', deadlinePassed({ deadline: null }, US), false);
+  check('an unknown region does not throw', deadlinePassed({ deadline: '2026-01-02' }, null), true);
+  /* THE INVARIANT, in every region's own time zone: by the time the claimed
+     validThrough arrives, the deadline day has ended there — so publish has
+     dropped the page — with twelve hours to spare for a late publish. */
+  const vtMs = Date.parse(vtSoon);
+  const late = ALL_REGIONS.filter((r) => !deadlinePassed({ deadline: soon }, r, vtMs - 12 * 3_600_000)).map((r) => r.code);
+  check(`every region (${ALL_REGIONS.length}) has dropped the page 12h before validThrough`, late, []);
+  check('and none drops it before the deadline day is over',
+    ALL_REGIONS.filter((r) => deadlinePassed({ deadline: soon }, r, Date.parse(`${soon}T12:00:00Z`))).map((r) => r.code), []);
+}
+
 const seen = Date.now();
 const atsLive = vtOf(renderJobPage({ ...ats, postedAt: postedMs, firstSeenAt: postedMs,
   lastSeenAt: seen, location: 'Bengaluru, Karnataka, India', bullets: ['One', 'Two'] }));
@@ -1324,6 +1351,22 @@ console.log('\n== about this listing: what InternDoor adds, and nothing it canno
   check('a field of study gets its own row', /<dt>Field<\/dt><dd>Electrical Engineering<\/dd>/.test(railOf(renderJobPage({ ...li, degreeText: 'Electrical Engineering' }, [], { region: IN }))), true);
   check('a start month from the title', /<dt>Starts<\/dt><dd>Jun 2027<\/dd>/.test(railOf(renderJobPage({ ...li, title: 'SWE Intern 2027 (June Start)' }, [], { region: IN }))), true);
   check('no start month, no row', railOf(liHtml).includes('<dt>Starts</dt>'), false);
+
+  /* THE POSTING'S OWN DEADLINE AND EXPERIENCE — each only when stated (the
+     guards are in test/extract.test.mjs), the deadline only while it is ahead. */
+  const { openDeadline } = await import('../src/pages.js');
+  check('a deadline ahead gets a row, dated the region\'s way',
+    /<dt>Apply by<\/dt><dd><time datetime="2035-10-16">16 Oct 2035<\/time><\/dd>/.test(railOf(renderJobPage({ ...li, deadline: '2035-10-16' }, [], { region: IN }))), true);
+  check('a passed deadline gets none', railOf(renderJobPage({ ...li, deadline: '2020-10-16' }, [], { region: IN })).includes('Apply by'), false);
+  check('no deadline, no row', railOf(liHtml).includes('Apply by'), false);
+  check('anything but an ISO day gets none', railOf(renderJobPage({ ...li, deadline: '<b>16/10/2035</b>' }, [], { region: IN })).includes('Apply by'), false);
+  // 23:00 on the 16th in New York is already the 17th in UTC.
+  check('still open on the day itself, where the reader is', openDeadline({ deadline: '2026-10-16' }, US, Date.UTC(2026, 9, 17, 3)), '2026-10-16');
+  // 00:30 on the 17th in Kolkata is still the 16th in UTC.
+  check('and gone the morning after', openDeadline({ deadline: '2026-10-16' }, IN, Date.UTC(2026, 9, 16, 19)), '');
+  check('experience gets a row', /<dt>Experience<\/dt><dd>Graduating 2027 · 0–1 years<\/dd>/.test(railOf(renderJobPage({ ...li, experience: 'Graduating 2027 · 0–1 years' }, [], { region: IN }))), true);
+  check('and it is escaped', railOf(renderJobPage({ ...li, experience: '<b>2 years</b>' }, [], { region: IN })).includes('<b>'), false);
+  check('no experience, no row', railOf(liHtml).includes('<dt>Experience</dt>'), false);
 
   /* THE MASTHEAD COUNTS EVERY OTHER ROLE, NOT THE SIX THE STRIP SHOWS. */
   const many = Array.from({ length: 9 }, (_, i) => ({ ...li, id: `44000001${i}`, title: `Role ${i}`, postedAt: T0 - i * HOUR }));

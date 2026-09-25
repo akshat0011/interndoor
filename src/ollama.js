@@ -25,6 +25,7 @@
 import { log } from './logger.js';
 import { classifyRole, vetoNonTech, GENERIC_POSITIVE } from './roles.js';
 import { POST_SYSTEM, POST_SCHEMA, postPrompt } from './postgen.js';
+import { groundDeadline, groundExperienceYears, groundGraduation, couldStateFacts } from './extract.js';
 
 const HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
 
@@ -170,6 +171,27 @@ export function groundEnrichment(item, description) {
   if (out.degreeLevel === 'none') out.degreeLevel = '';
 
   return { item: out, dropped };
+}
+
+/**
+ * The application deadline and the experience requirement, or '' for each.
+ *
+ * The model proposes; extract.js decides. Nothing here is ever filled in from
+ * the season, the seniority or the word "intern": a deadline is kept only when
+ * the posting writes that exact date after a deadline cue, and an experience
+ * figure only when the posting states it — see groundDeadline and friends.
+ * `experience` joins the two kinds a posting can state, graduation first:
+ * "Graduating 2027 · 0–1 years".
+ */
+export function groundFacts(value, description, region = null) {
+  const dropped = [];
+  const deadline = groundDeadline(value?.deadline, description, region);
+  if (value?.deadline && !deadline) dropped.push('deadline');
+  const grad = groundGraduation(value?.graduation, description);
+  if (value?.graduation && !grad) dropped.push('graduation');
+  const years = groundExperienceYears(value?.experienceYears, description);
+  if (value?.experienceYears && !years) dropped.push('experienceYears');
+  return { deadline, experience: [grad, years].filter(Boolean).join(' · '), dropped };
 }
 
 /**
@@ -560,6 +582,95 @@ export async function enrichJobs(items, cfg = {}) {
   if (items.length) {
     log.info(`Tech verdict: ${contested} contested${contested ? `, ${overturned} overturned by the second opinion` : ''}.`);
   }
+  return out;
+}
+
+/* ----------------------------------------------- deadline and experience */
+
+/* A CALL OF ITS OWN, not three more fields on the enrichment call. Measured
+   on 29 hand-checked live postings (15 India, 14 US), both read through the
+   same guards: inside the enrichment call the model guessed a graduation year
+   on 18 of them ("Graduating 2027" on nearly every US internship) and a
+   deadline on 5, and got 24 of 29 experience answers right; asked alone it
+   guessed a graduation year on 5 and a deadline on 2, and got all 29 — the
+   guards refused every guess either way. It also leaves the enrichment
+   prompt, and the fields measured on it, exactly as they were. */
+const FACTS_SYSTEM = `You read an internship or early-career job posting and report the application deadline and the experience it requires, only where the posting states them.
+
+deadline — the date applications close, as YYYY-MM-DD, ONLY when the posting states one with its day, month AND year: "Apply by October 7, 2026", "Posting End Date: 11 Sep 2026", "Deadline to Apply: 10/16/26". Otherwise an empty string. A date written without a year is not stated. Never work one out from a relative phrase ("40 days from the date of posting", "rolling basis", "until filled"), and never infer one from the season, the start date or the word "intern". The date the job was posted, a start date, an offer deadline, a graduation date and a date the posting stays open "until at least" are not application deadlines.
+
+experienceYears — the work experience the posting REQUIRES, as it states it in years: "0–1 years", "2 years", "1+ years". Empty string unless the posting gives a number of years of experience. Never infer it from the seniority, or from the words "intern", "fresher" or "entry-level", and never from how long the company has existed. A preferred or nice-to-have figure is not a requirement.
+
+graduation — when the applicant must graduate, in at most six words, using only the months, seasons and years the posting names: "Graduating 2027", "Graduating Dec 2027 or later", "2025 or 2026 graduates", "Graduating Fall 2027–Spring 2029". Empty string unless the posting names a graduation or pass-out year. Never infer a year from the internship's season or its start date. A preferred or desired graduation window is not a requirement.
+
+The single hard rule: state only what the posting says. An empty field is correct and useful; an invented one sends a student away from a role that is still open, or towards one they cannot get.
+
+Return only JSON.`;
+
+const FACTS_SCHEMA = {
+  type: 'object',
+  properties: { deadline: { type: 'string' }, experienceYears: { type: 'string' }, graduation: { type: 'string' } },
+  required: ['deadline', 'experienceYears', 'graduation'],
+};
+
+/**
+ * The application deadline and the experience requirement, for postings that
+ * have been enriched (store.needingFacts). Runs at the END of a scan, after the
+ * channel posts, so nothing waits on it — what it finds is published by the
+ * next run — and as the backfill (`npm run enrich -- --facts`).
+ *
+ * A posting that could not state either one (couldStateFacts) is answered
+ * without the model: the guards would refuse anything it said.
+ *
+ * @returns {Promise<Map<number, {deadline: string, experience: string}>>} keyed by index into `items`
+ */
+export async function extractFacts(items, cfg = {}) {
+  const out = new Map();
+  if (!items.length) return out;
+  if (!(await ollamaAvailable())) {
+    log.warn(`Ollama not reachable at ${HOST} — ${items.length} posting(s) keep no deadline or experience.`);
+    return out;
+  }
+
+  const model = cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
+  const timeoutMs = (cfg.ollama?.timeoutSeconds ?? 120) * 1000;
+  const budgetMs = (cfg.enrich?.budgetMinutes ?? 9) * 60_000;
+  const started = Date.now();
+  let asked = 0;
+  let guarded = 0;
+
+  for (const [i, job] of items.entries()) {
+    if (Date.now() - started > budgetMs) {
+      log.info(`Facts budget spent — ${items.length - i} posting(s) left for the next run.`);
+      break;
+    }
+    const description = String(job.description ?? '');
+    if (!couldStateFacts(description, job.region)) {
+      out.set(i, { deadline: '', experience: '' });
+      continue;
+    }
+    asked++;
+    const res = await chatJson({
+      model,
+      system: FACTS_SYSTEM,
+      user: [`Title: ${job.title}`, `Company: ${job.company ?? 'unknown'}`, `Location: ${job.location ?? 'not stated'}`, '', 'Description:', description].join('\n'),
+      schema: FACTS_SCHEMA,
+      numCtx: ctxFor(description.length),
+      timeoutMs,
+      temperature: 0,
+    });
+    if (!res.ok) {
+      log.debug(`  facts failed (${res.reason}) for "${job.title}".`);
+      continue;
+    }
+    const { deadline, experience, dropped } = groundFacts(res.value, description, job.region);
+    if (dropped.length) {
+      guarded++;
+      log.debug(`  guard dropped ${dropped.join(', ')} for "${job.title}" — not stated in the posting.`);
+    }
+    out.set(i, { deadline, experience });
+  }
+  log.info(`Facts: asked the model about ${asked} of ${out.size} posting(s); guard removed unstated values from ${guarded}.`);
   return out;
 }
 

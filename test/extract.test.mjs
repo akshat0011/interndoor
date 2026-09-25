@@ -1,4 +1,5 @@
-import { extractStipend, formatStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime, jobIdFromUrl, normaliseDegree } from '../src/extract.js';
+import { extractStipend, formatStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime, jobIdFromUrl, normaliseDegree,
+  statedDeadlines, groundDeadline, groundExperienceYears, groundGraduation, couldStateFacts } from '../src/extract.js';
 import { normaliseCompany, matchCompany, matchTitle, resolveWindowHours } from '../src/config.js';
 import { offlineSummary } from '../src/summarize.js';
 
@@ -347,6 +348,137 @@ check('the specialist terms survive it',
     .every((s) => ibm.includes(s)), true);
 check('and the generic tail is what was dropped',
   ['agile', 'figma', 'tableau', 'power bi', 'system design', 'oop'].every((s) => !ibm.includes(s)), true);
+
+console.log('\n== an application deadline is kept only when the posting states that date ==');
+/* Every shape below is a real live posting (24 Sep 2026). The model proposes a
+   deadline; statedDeadlines is the set it must come from. */
+check('Wells Fargo: "Posting End Date: 11 Sep 2026"', statedDeadlines('Posting End Date: 11 Sep 2026 Job posting may come down early', 'IN'), ['2026-09-11']);
+check('BCG: a time and a weekday between the cue and the date',
+  statedDeadlines('Applications are due at 11:59PM ET on Thursday, October 1, 2026. The application includes', 'US'), ['2026-10-01']);
+check('URBN: "p.m." and "Oct." do not end the sentence',
+  statedDeadlines('Applications will close at 5:00 p.m. EST on Oct. 30, 2026. Role Responsibilities', 'US'), ['2026-10-30']);
+check('Barclays: "closing date for applications is 25 September 2026"',
+  statedDeadlines('The closing date for applications is 25 September 2026. Please note', 'GB'), ['2026-09-25']);
+check('Entrust: an ordinal day', statedDeadlines('Application deadline: Oct 31st, 2026 You will: Collaborate', 'CA'), ['2026-10-31']);
+check('Xcel: a two-digit year, read month-first in the US', statedDeadlines('Deadline to Apply: 10/16/26 EEO is the Law', 'US'), ['2026-10-16']);
+check('ConocoPhillips states two, and both are candidates',
+  statedDeadlines('requisition closing date of October 31, 2026. Apply By: Oct 30, 2026 Sponsorship', 'US'), ['2026-10-31', '2026-10-30']);
+/* The refusals. Each would put a wrong "Apply by" on a live page. */
+check('Vertex: no year written, so none stated', statedDeadlines('The application deadline for this co-op is November 15th. Please note', 'US'), []);
+check('Nutanix: "40 days from the date of posting" is not a date', statedDeadlines('Our application deadline is 40 days from the date of posting.', 'US'), []);
+check('Principal: the posting date in the NEXT sentence is not the deadline',
+  statedDeadlines('beyond the applicable deadline. Original Posting Date 9/23/2026 Most Recently Posted', 'US'), []);
+check('a start date after "rolling." is not the deadline', statedDeadlines('Application deadline: rolling. Starts June 1, 2027', 'US'), []);
+check('GE Vernova: "open until at least" is a floor, not a deadline',
+  statedDeadlines('This role is expected to be open until at least September 30, 2026. Additional Information', 'US'), []);
+check('a posting date with no cue is nothing', statedDeadlines('Date Posted: 2026-09-14 Country: United States', 'US'), []);
+check('11/2/2026 is 2 Nov in the US', statedDeadlines('Anticipated Posting End: 11/2/2026 The Opportunity', 'US'), ['2026-11-02']);
+check('and 11 Feb in India', statedDeadlines('Last date to apply: 11/2/2026', 'IN'), ['2026-02-11']);
+check('and nothing where the convention is unknown', statedDeadlines('Anticipated Posting End: 11/2/2026 The Opportunity', 'CA'), []);
+check('an unambiguous numeric date needs no convention', statedDeadlines('Posting End: 10/30/2026 The Opportunity', 'CA'), ['2026-10-30']);
+check('an impossible date is not a date', statedDeadlines('Deadline: February 30, 2027', 'US'), []);
+check('the model\'s date is kept when stated', groundDeadline('2026-10-30', 'Apply By: Oct 30, 2026', 'US'), '2026-10-30');
+check('a date the posting never wrote is dropped', groundDeadline('2026-10-29', 'Apply By: Oct 30, 2026', 'US'), '');
+check('a month-day swap is dropped', groundDeadline('2026-02-11', 'Posting End: 11/2/2026', 'US'), '');
+check('so is anything that is not an ISO day', groundDeadline('Oct 30, 2026', 'Apply By: Oct 30, 2026', 'US'), '');
+check('and an empty answer stays empty', groundDeadline('', 'Apply By: Oct 30, 2026', 'US'), '');
+
+console.log('\n== years of experience: the employer\'s figure, beside the word "experience" ==');
+check('a range is re-read from the posting', groundExperienceYears('1-3 years', 'With at least 1 to 3 years of hands-on experience in Java'), '1–3 years');
+check('"Minimum 2 Year(s) Of Experience" is 2+', groundExperienceYears('2 years', 'Minimum 2 Year(s) Of Experience Is Required'), '2+ years');
+check('an HTML-escaped plus is a plus', groundExperienceYears('1 year', '1&#43; years of experience developing commercial'), '1+ years');
+check('a single year is singular', groundExperienceYears('1 year', '1 year of experience with one or more of the following'), '1 year');
+check('"2 years" is not inside "0-2 years"', groundExperienceYears('2 years', '0-2 years of work experience in testing'), '');
+check('a figure with no "experience" near it is not one', groundExperienceYears('3 years', 'We are a team with 3 years in the market. Must know Java.'), '');
+check('the company\'s history is not a requirement', groundExperienceYears('30+ years', 'Cyncly brings over 30 years of experience to deliver'), '');
+check('nor is schooling', groundExperienceYears('15 years', 'Minimum 2 Year(s) Of Experience Is Required. Educational Qualification : 15 years full time education'), '');
+check('a figure the posting does not state is dropped', groundExperienceYears('0-1 years', '1-3 years of experience in IT'), '');
+check('a bare range is in years, by definition of the field', groundExperienceYears('0–2', '0-2 years of work experience in testing'), '0–2 years');
+check('but a bare number the posting never gives in years is nothing', groundExperienceYears('0', 'Freshers welcome, 0 experience needed'), '');
+check('a word is not a figure', groundExperienceYears('Freshers', 'Freshers are welcome to apply. 0 experience needed'), '');
+
+console.log('\n== a graduation window: the year the graduation word governs, and its qualifiers ==');
+const RAMP = 'or a related technical field, graduating December 2027 or later Experience with Kotlin';
+check('Ramp', groundGraduation('Graduating Dec 2027 or later', RAMP), 'Graduating Dec 2027 or later');
+check('Amazon writes "or earlier"; "or later" is dropped',
+  groundGraduation('Graduating May 2027 or later', 'with a final graduation date of May 2027 or earlier - Coursework'), '');
+check('a range', groundGraduation('Graduating Fall 2027-Spring 2029', 'Must graduate between Fall 2027 and Spring 2029 Currently pursuing'), 'Graduating Fall 2027–Spring 2029');
+check('NatWest: the graduation word AFTER the years', groundGraduation('2025 or 2026 graduates', 'You’ll also need: 2025 or 2026 BE, B.Tech, or M.Tech graduates with academic, internship'), '2025 or 2026 graduates');
+check('and a year cut from that list is refused', groundGraduation('2026 graduates', 'You’ll also need: 2025 or 2026 BE, B.Tech, or M.Tech graduates with academic, internship'), '');
+check('Lennox: pass-outs', groundGraduation('2025 or 2026 graduates', 'B.Sc. / BCA (2025 or 2026 pass-outs) No prior experience required'), '2025 or 2026 graduates');
+const GOOGLE = 'anticipated graduation date in 2028 and full-time availability for a 10- to 12-week internship starting in the summer of 2027 (May/June onwards)';
+check('Google: the internship\'s year is not the graduating one', groundGraduation('Graduating 2027', GOOGLE), '');
+check('the graduating one is', groundGraduation('Graduating 2028', GOOGLE), 'Graduating 2028');
+const SUMMER = 'Summer 2027 internship for students graduating in 2028. Python required.';
+check('the same trap the other way round', groundGraduation('Graduating 2027', SUMMER), '');
+check('and its real year still passes', groundGraduation('Graduating 2028', SUMMER), 'Graduating 2028');
+check('and with no season to give it away', groundGraduation('Graduating 2027', 'The 2027 internship is for students graduating in 2028.'), '');
+check('Flow Traders: "Class of 2028, preferred" is not a requirement', groundGraduation('Class of 2028', 'Economics or related Class of 2028, preferred Demonstrable interest'), '');
+check('Lam: a "Preferred Qualifications" heading after it is not a preference',
+  groundGraduation('Graduating 2027', 'minimum 65% aggregate Graduating in 2027 without any backlogs Preferred Qualifications'), 'Graduating 2027');
+check('Barclays: "degree achieved before June 2027" is a graduation window',
+  groundGraduation('Graduating before June 2027', 'you’ll be motivated with a strong degree or expected degree achieved before June 2027. You’ll also bring'), 'Graduating before Jun 2027');
+check('Capital One: "degree will be obtained by August 2029 or earlier"',
+  groundGraduation('Graduating by Aug 2029 or earlier', 'with an expectation that the required degree will be obtained by August 2029 or earlier: A PhD in a quantitative field'), 'Graduating by Aug 2029 or earlier');
+check('a bare year is not a phrase', groundGraduation('2027', 'Graduating in 2027 without any backlogs'), '');
+/* COMPLETENESS: a phrase that leaves out what the posting attaches to the
+   year is a different requirement, not a shorter one. */
+check('a range cut to its start is refused', groundGraduation('Graduating 2027', 'Must graduate between Fall 2027 and Spring 2029 Currently pursuing'), '');
+check('so is a dropped "or later"', groundGraduation('Graduating May 2027', 'with a graduation date of May 2027 or later. Would consider'), '');
+const MICRON = 'Must be continuing academic studies through at least Fall 2027 and not graduate before Fall 2027. Coursework';
+check('Micron: dropping the "not" inverts it', groundGraduation('Graduating before Fall 2027', MICRON), '');
+/* A PREFERENCE IS NOT A REQUIREMENT. */
+const WF = (heading) => `Required Qualifications: 6+ months of work experience ${heading}: Currently pursuing a bachelor's degree in Computer Science, or related STEM field with an expected graduation: December 2027 - June 2028 Foundational knowledge`;
+check('Wells Fargo: a window under "Desired Qualifications" is refused', groundGraduation('Graduating Dec 2027 - June 2028', WF('Desired Qualifications')), '');
+check('the same window under "Basic Qualifications" is kept, months read one way',
+  groundGraduation('Graduating Dec 2027 - June 2028', WF('Basic Qualifications')), 'Graduating Dec 2027–Jun 2028');
+check('NetApp: "is preferred" after the figure', groundExperienceYears('1-2 years', 'for Bachelor’s degree holders, 1–2 years of relevant experience is preferred. This is'), '');
+check('Accenture: "Minimum … Is Required" outranks the heading before it',
+  groundExperienceYears('2 years', 'Must have skills : Java Good to have skills : NA Minimum 2 Year(s) Of Experience Is Required'), '2+ years');
+check('Pitney Bowes: the next heading is not a preference',
+  groundExperienceYears('0-2 years', 'Bachelor’s degree in IT or equivalent 0–2 years of experience (freshers with relevant certifications can be considered) Preferred Certifications (Not Mandatory)'), '0–2 years');
+check('a figure under "Preferred Qualifications" is refused',
+  groundExperienceYears('1+ years', 'Basic Qualifications: Python. Preferred Qualifications: 1+ years of experience with Go'), '');
+check('and keeping it passes', groundGraduation('Not graduating before Fall 2027', MICRON), 'Not graduating before Fall 2027');
+check('Micron: the next sentence\'s "Prior" does not qualify the year',
+  groundGraduation('Graduating after Dec 2027', 'Minimum Qualifications Currently pursuing an M.S. in Chemistry, with a graduation date after December 31, 2027. Prior academic experience in wet processing'), 'Graduating after Dec 2027');
+check('"must not graduate" reads as "Not graduating"', groundGraduation('Must not graduate before Fall 2027', MICRON), 'Not graduating before Fall 2027');
+check('"Graduation after" reads as "Graduating after"',
+  groundGraduation('Graduation after Sep 2027', 'exceptional undergraduate candidates may be considered. Graduation date after September 2027. Academic'), 'Graduating after Sep 2027');
+check('a year the posting never gives is dropped', groundGraduation('Graduating 2029', RAMP), '');
+check('so is a month and a qualifier it never gives', groundGraduation('Graduating May 2027 or later', 'Graduating in 2027 without any backlogs'), '');
+check('a year governed by the word after it, past another before it',
+  groundGraduation('2027 graduates', 'Class of 2028 students may apply; 2027 graduates are also welcome'), '2027 graduates');
+check('but not when the two years are one list', groundGraduation('2027 graduates', 'Open to the Class of 2028 or 2027 graduates with Python'), '');
+
+console.log('\n== groundFacts: what reaches the store ==');
+{
+  const { groundFacts } = await import('../src/ollama.js');
+  const POSTING = 'Must graduate between Fall 2027 and Spring 2029. 0-1 years of relevant experience. Deadline to Apply: 10/16/26.';
+  const model = { deadline: '2026-10-16', graduation: 'Graduating Fall 2027–Spring 2029', experienceYears: '0-1 years' };
+  const kept = groundFacts(model, POSTING, 'US');
+  check('a stated deadline is kept', kept.deadline, '2026-10-16');
+  check('both kinds of experience, graduation first', kept.experience, 'Graduating Fall 2027–Spring 2029 · 0–1 years');
+  check('nothing stated was dropped', kept.dropped, []);
+  const invented = groundFacts({ deadline: '2026-11-30', graduation: 'Graduating 2027', experienceYears: '2 years' }, POSTING, 'US');
+  check('an invented deadline is dropped', invented.deadline, '');
+  check('and invented experience', invented.experience, '');
+  check('and each is reported', invented.dropped, ['deadline', 'graduation', 'experienceYears']);
+  check('10/06/26 needs the region to be read at all', groundFacts(model, 'Deadline to Apply: 10/06/26.', null).deadline, '');
+  check('an empty reply is nothing, not a crash', groundFacts(null, POSTING, 'US'), { deadline: '', experience: '', dropped: [] });
+}
+
+console.log('\n== couldStateFacts is a superset of all three guards ==');
+/* The backfill skips the model when this is false, so a posting any guard
+   would accept must never read false here. */
+for (const [label, text, region] of [
+  ['a stated deadline', 'Deadline to Apply: 10/16/26', 'US'],
+  ['a years figure', 'Minimum 2 Year(s) Of Experience Is Required', 'IN'],
+  ['an escaped plus', '1&#43; years of experience', 'US'],
+  ['a graduation year', 'graduating December 2027 or later', 'US'],
+  ['pass-outs', '(2025 or 2026 pass-outs)', 'IN'],
+]) check(`says yes to ${label}`, couldStateFacts(text, region), true);
+check('and no to a posting that states neither', couldStateFacts('Build APIs in Go. Summer 2027 internship in Austin.', 'US'), false);
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
