@@ -6,6 +6,90 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864",
+      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864",
+      "title": "EPM - ARCS - Associate — PwC Acceleration Center India",
+      "content_text": "Company: PwC Acceleration Center India · Location: Bengaluru East, Karnataka, India\n• Design oracle-based solutions for budgeting and financial reporting\n• Analyze client needs to improve operational efficiency\n• Train clients on oracle tools for seamless integration",
+      "date_published": "2026-09-26T16:02:31.907Z",
+      "authors": [
+        {
+          "name": "PwC Acceleration Center India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-bangalore-4471040760",
+      "url": "https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-bangalore-4471040760",
+      "title": "End User Support - Associate Services Specialist I - Bangalore — Deloitte",
+      "content_text": "Company: Deloitte · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Support end users with hardware, software, and network issues via phone, email, or in person\n• Manage asset tracking, configure devices, and provide mobile support\n• Collaborate with vendors and internal teams on technical solutions and service level agreements",
+      "date_published": "2026-09-26T16:00:45.617Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-hyderabad-4471041749",
+      "url": "https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-hyderabad-4471041749",
+      "title": "End User Support - Associate Services Specialist I - Hyderabad — Deloitte",
+      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India · Duration: 1 to 3 years\n• Support end users with hardware, software, and network issues via phone, email, or in person\n• Manage asset tracking, configure devices, and provide mobile support\n• Collaborate with vendors and internal teams for problem resolution and system maintenance",
+      "date_published": "2026-09-26T16:00:34.659Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4415964199",
+      "url": "https://interndoor.com/jobs/cognizant-ai-customer-engineer-4415964199",
+      "title": "AI Customer Engineer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build and deploy AI agents and GenAI applications using modern frameworks\n• Develop scalable backend services and APIs with Python and FastAPI\n• Implement RAG pipelines and LLM integrations with LangChain and Hugging Face",
+      "date_published": "2026-09-26T15:35:42.642Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/telus-digital-apache-nifi-aws-administrator-4453588865",
+      "url": "https://interndoor.com/jobs/telus-digital-apache-nifi-aws-administrator-4453588865",
+      "title": "Apache Nifi + AWS Administrator — TELUS Digital",
+      "content_text": "Company: TELUS Digital · Location: Hyderabad, Telangana, India\n• Manage apache nifi and aws infrastructure for cloud solutions\n• Use terraform for iac and work with eeks and databases\n• Collaborate with data scientists and developers on cloud projects",
+      "date_published": "2026-09-26T15:19:02.651Z",
+      "authors": [
+        {
+          "name": "TELUS Digital"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069",
+      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069",
+      "title": "Java Fullstack IRC300668 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Hyderabad, Telangana, India\n• Develop and maintain Java-based microservices using Spring Boot\n• Work with AWS services like S3, EC2, and SQS/SNS for cloud infrastructure\n• Collaborate on REST APIs and integrate with Kafka for messaging",
+      "date_published": "2026-09-26T15:10:17.209Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-specialist-application-security-4454029144",
+      "url": "https://interndoor.com/jobs/linde-specialist-application-security-4454029144",
+      "title": "Specialist - Application Security — Linde",
+      "content_text": "Company: Linde · Location: Greater Kolkata Area\n• Perform web, API and mobile application security testing\n• Use Burp Suite, Qualys WAS, Kali Linux and other tools\n• Validate risks and provide remediation guidance\n• Work on global IT projects for Linde's business",
+      "date_published": "2026-09-26T15:09:57.903Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-python-developer-4444649943",
       "url": "https://interndoor.com/jobs/infosys-python-developer-4444649943",
       "title": "Python Developer — Infosys",
@@ -515,90 +599,6 @@
       "title": "Data Engineer-Data Platforms-Google — IBM",
       "content_text": "Company: IBM · Location: Chennai, Tamil Nadu, India\n• Design and build data pipelines for data warehouses and datalakes using Google Cloud services\n• Work with BigQuery, DataFlow, and Cloud Composer to manage data platforms and pipelines\n• Implement data migration solutions using Google services for seamless system transfers",
       "date_published": "2026-09-25T18:11:10.481Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/northern-trust-associate-sw-eng-4450488965",
-      "url": "https://interndoor.com/jobs/northern-trust-associate-sw-eng-4450488965",
-      "title": "Associate, SW Eng — Northern Trust",
-      "content_text": "Company: Northern Trust · Location: Pune Division, Maharashtra, India\n• Support production systems for wealth management platforms using Azure, Kafka, and Dynatrace\n• Collaborate with cross-functional teams on incident response and operational stability\n• Maintain documentation and automate tasks with Python, Git, and shell scripting",
-      "date_published": "2026-09-25T18:06:31.624Z",
-      "authors": [
-        {
-          "name": "Northern Trust"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-support-analyst-irc301800-4453204427",
-      "url": "https://interndoor.com/jobs/globallogic-support-analyst-irc301800-4453204427",
-      "title": "Support Analyst IRC301800 — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Hyderabad, Telangana, India\n• Monitor and resolve incidents across internal and external systems\n• Use Jira, New Relic, and SQL to track and analyze issues\n• Work with global teams to ensure service continuity and SLA compliance",
-      "date_published": "2026-09-25T17:55:02.476Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/goldman-sachs-the-core-risk-bengaluru-analyst-software-engineering-4453572057",
-      "url": "https://interndoor.com/jobs/goldman-sachs-the-core-risk-bengaluru-analyst-software-engineering-4453572057",
-      "title": "The Core-Risk-Bengaluru-Analyst-Software Engineering — Goldman Sachs",
-      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Build workflows for risk analytics and reporting\n• Use python and sql for data analysis and etl\n• Work on market risk metrics for financial reporting",
-      "date_published": "2026-09-25T17:50:13.877Z",
-      "authors": [
-        {
-          "name": "Goldman Sachs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/telus-digital-brightscript-developer-4416628946",
-      "url": "https://interndoor.com/jobs/telus-digital-brightscript-developer-4416628946",
-      "title": "BrightScript Developer — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Noida, Uttar Pradesh, India\n• Develop and maintain Roku applications using BrightScript\n• Integrate APIs, video streaming, DRM, and analytics SDKs\n• Optimize performance and video playback for smooth user experience",
-      "date_published": "2026-09-25T17:47:57.778Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/aditya-birla-capital-data-scientist-4463357550",
-      "url": "https://interndoor.com/jobs/aditya-birla-capital-data-scientist-4463357550",
-      "title": "Data Scientist — Aditya Birla Capital",
-      "content_text": "Company: Aditya Birla Capital · Location: Maharashtra, India\n• Build statistical models using R/Python/PySpark\n• Collaborate with credit and product teams on data-driven decisions\n• Work on bureau data and AI/ML algorithms for risk analytics",
-      "date_published": "2026-09-25T17:39:37.784Z",
-      "authors": [
-        {
-          "name": "Aditya Birla Capital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461132767",
-      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461132767",
-      "title": "Data Engineer-Data Platforms-SnowFlake — IBM",
-      "content_text": "Company: IBM · Location: Greater Kolkata Area\n• Implement data and AI use cases on Snowflake platforms\n• Use Snowflake, data engineering, and cloud computing skills\n• Work on client projects with hybrid cloud and AI focus",
-      "date_published": "2026-09-25T17:31:32.441Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4460734161",
-      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4460734161",
-      "title": "Data Engineer-Data Platforms-SnowFlake — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Implement data and ai use cases on snowflake platforms\n• Build and enhance snowflake platforms for client needs\n• Leverage snowflake, data engineering, and cloud computing",
-      "date_published": "2026-09-25T17:30:08.315Z",
       "authors": [
         {
           "name": "IBM"

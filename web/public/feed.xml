@@ -6,7 +6,78 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 26 Sep 2026 14:13:50 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 16:02:31 GMT</lastBuildDate>
+  <item>
+    <title>EPM - ARCS - Associate — PwC Acceleration Center India</title>
+    <link>https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864</guid>
+    <pubDate>Sat, 26 Sep 2026 16:02:31 GMT</pubDate>
+    <description>Company: PwC Acceleration Center India · Location: Bengaluru East, Karnataka, India
+• Design oracle-based solutions for budgeting and financial reporting
+• Analyze client needs to improve operational efficiency
+• Train clients on oracle tools for seamless integration</description>
+  </item>
+  <item>
+    <title>End User Support - Associate Services Specialist I - Bangalore — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-bangalore-4471040760</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-bangalore-4471040760</guid>
+    <pubDate>Sat, 26 Sep 2026 16:00:45 GMT</pubDate>
+    <description>Company: Deloitte · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years
+• Support end users with hardware, software, and network issues via phone, email, or in person
+• Manage asset tracking, configure devices, and provide mobile support
+• Collaborate with vendors and internal teams on technical solutions and service level agreements</description>
+  </item>
+  <item>
+    <title>End User Support - Associate Services Specialist I - Hyderabad — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-hyderabad-4471041749</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-end-user-support-associate-services-specialist-i-hyderabad-4471041749</guid>
+    <pubDate>Sat, 26 Sep 2026 16:00:34 GMT</pubDate>
+    <description>Company: Deloitte · Location: Hyderabad, Telangana, India · Duration: 1 to 3 years
+• Support end users with hardware, software, and network issues via phone, email, or in person
+• Manage asset tracking, configure devices, and provide mobile support
+• Collaborate with vendors and internal teams for problem resolution and system maintenance</description>
+  </item>
+  <item>
+    <title>AI Customer Engineer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-ai-customer-engineer-4415964199</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-ai-customer-engineer-4415964199</guid>
+    <pubDate>Sat, 26 Sep 2026 15:35:42 GMT</pubDate>
+    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
+• Build and deploy AI agents and GenAI applications using modern frameworks
+• Develop scalable backend services and APIs with Python and FastAPI
+• Implement RAG pipelines and LLM integrations with LangChain and Hugging Face</description>
+  </item>
+  <item>
+    <title>Apache Nifi + AWS Administrator — TELUS Digital</title>
+    <link>https://interndoor.com/jobs/telus-digital-apache-nifi-aws-administrator-4453588865</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/telus-digital-apache-nifi-aws-administrator-4453588865</guid>
+    <pubDate>Sat, 26 Sep 2026 15:19:02 GMT</pubDate>
+    <description>Company: TELUS Digital · Location: Hyderabad, Telangana, India
+• Manage apache nifi and aws infrastructure for cloud solutions
+• Use terraform for iac and work with eeks and databases
+• Collaborate with data scientists and developers on cloud projects</description>
+  </item>
+  <item>
+    <title>Java Fullstack IRC300668 — GlobalLogic</title>
+    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069</guid>
+    <pubDate>Sat, 26 Sep 2026 15:10:17 GMT</pubDate>
+    <description>Company: GlobalLogic · Location: Hyderabad, Telangana, India
+• Develop and maintain Java-based microservices using Spring Boot
+• Work with AWS services like S3, EC2, and SQS/SNS for cloud infrastructure
+• Collaborate on REST APIs and integrate with Kafka for messaging</description>
+  </item>
+  <item>
+    <title>Specialist - Application Security — Linde</title>
+    <link>https://interndoor.com/jobs/linde-specialist-application-security-4454029144</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/linde-specialist-application-security-4454029144</guid>
+    <pubDate>Sat, 26 Sep 2026 15:09:57 GMT</pubDate>
+    <description>Company: Linde · Location: Greater Kolkata Area
+• Perform web, API and mobile application security testing
+• Use Burp Suite, Qualys WAS, Kali Linux and other tools
+• Validate risks and provide remediation guidance
+• Work on global IT projects for Linde&#39;s business</description>
+  </item>
   <item>
     <title>Python Developer — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-python-developer-4444649943</link>
@@ -440,76 +511,6 @@
 • Design and build data pipelines for data warehouses and datalakes using Google Cloud services
 • Work with BigQuery, DataFlow, and Cloud Composer to manage data platforms and pipelines
 • Implement data migration solutions using Google services for seamless system transfers</description>
-  </item>
-  <item>
-    <title>Associate, SW Eng — Northern Trust</title>
-    <link>https://interndoor.com/jobs/northern-trust-associate-sw-eng-4450488965</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/northern-trust-associate-sw-eng-4450488965</guid>
-    <pubDate>Fri, 25 Sep 2026 18:06:31 GMT</pubDate>
-    <description>Company: Northern Trust · Location: Pune Division, Maharashtra, India
-• Support production systems for wealth management platforms using Azure, Kafka, and Dynatrace
-• Collaborate with cross-functional teams on incident response and operational stability
-• Maintain documentation and automate tasks with Python, Git, and shell scripting</description>
-  </item>
-  <item>
-    <title>Support Analyst IRC301800 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-support-analyst-irc301800-4453204427</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-support-analyst-irc301800-4453204427</guid>
-    <pubDate>Fri, 25 Sep 2026 17:55:02 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Hyderabad, Telangana, India
-• Monitor and resolve incidents across internal and external systems
-• Use Jira, New Relic, and SQL to track and analyze issues
-• Work with global teams to ensure service continuity and SLA compliance</description>
-  </item>
-  <item>
-    <title>The Core-Risk-Bengaluru-Analyst-Software Engineering — Goldman Sachs</title>
-    <link>https://interndoor.com/jobs/goldman-sachs-the-core-risk-bengaluru-analyst-software-engineering-4453572057</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/goldman-sachs-the-core-risk-bengaluru-analyst-software-engineering-4453572057</guid>
-    <pubDate>Fri, 25 Sep 2026 17:50:13 GMT</pubDate>
-    <description>Company: Goldman Sachs · Location: Bengaluru, Karnataka, India · Duration: 1-3 years
-• Build workflows for risk analytics and reporting
-• Use python and sql for data analysis and etl
-• Work on market risk metrics for financial reporting</description>
-  </item>
-  <item>
-    <title>BrightScript Developer — TELUS Digital</title>
-    <link>https://interndoor.com/jobs/telus-digital-brightscript-developer-4416628946</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/telus-digital-brightscript-developer-4416628946</guid>
-    <pubDate>Fri, 25 Sep 2026 17:47:57 GMT</pubDate>
-    <description>Company: TELUS Digital · Location: Noida, Uttar Pradesh, India
-• Develop and maintain Roku applications using BrightScript
-• Integrate APIs, video streaming, DRM, and analytics SDKs
-• Optimize performance and video playback for smooth user experience</description>
-  </item>
-  <item>
-    <title>Data Scientist — Aditya Birla Capital</title>
-    <link>https://interndoor.com/jobs/aditya-birla-capital-data-scientist-4463357550</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/aditya-birla-capital-data-scientist-4463357550</guid>
-    <pubDate>Fri, 25 Sep 2026 17:39:37 GMT</pubDate>
-    <description>Company: Aditya Birla Capital · Location: Maharashtra, India
-• Build statistical models using R/Python/PySpark
-• Collaborate with credit and product teams on data-driven decisions
-• Work on bureau data and AI/ML algorithms for risk analytics</description>
-  </item>
-  <item>
-    <title>Data Engineer-Data Platforms-SnowFlake — IBM</title>
-    <link>https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461132767</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4461132767</guid>
-    <pubDate>Fri, 25 Sep 2026 17:31:32 GMT</pubDate>
-    <description>Company: IBM · Location: Greater Kolkata Area
-• Implement data and AI use cases on Snowflake platforms
-• Use Snowflake, data engineering, and cloud computing skills
-• Work on client projects with hybrid cloud and AI focus</description>
-  </item>
-  <item>
-    <title>Data Engineer-Data Platforms-SnowFlake — IBM</title>
-    <link>https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4460734161</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-data-engineer-data-platforms-snowflake-4460734161</guid>
-    <pubDate>Fri, 25 Sep 2026 17:30:08 GMT</pubDate>
-    <description>Company: IBM · Location: Bengaluru, Karnataka, India
-• Implement data and ai use cases on snowflake platforms
-• Build and enhance snowflake platforms for client needs
-• Leverage snowflake, data engineering, and cloud computing</description>
   </item>
 </channel>
 </rss>
