@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/reliance-retail-software-engineer-4471068341",
+      "url": "https://interndoor.com/jobs/reliance-retail-software-engineer-4471068341",
+      "title": "Software Engineer — Reliance Retail",
+      "content_text": "Company: Reliance Retail · Location: Goharganj Tehsil, Madhya Pradesh, India\n• Write and maintain scalable web applications\n• Debug and improve existing software systems\n• Work with sql databases and code in multiple languages",
+      "date_published": "2026-09-26T19:49:48.314Z",
+      "authors": [
+        {
+          "name": "Reliance Retail"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/larsen-and-toubro-jr-engineer-it-mes-4456188612",
+      "url": "https://interndoor.com/jobs/larsen-and-toubro-jr-engineer-it-mes-4456188612",
+      "title": "Jr.Engineer - IT MES — Larsen & Toubro",
+      "content_text": "Company: Larsen & Toubro · Location: Coimbatore South, Tamil Nadu, India\n• Maintain real-time production tracking and data accuracy\n• Integrate mes with erp, plm, and shopfloor machines\n• Ensure system uptime and resolve mes issues quickly\n• Support barcode/rfid systems and machine connectivity",
+      "date_published": "2026-09-26T19:15:40.977Z",
+      "authors": [
+        {
+          "name": "Larsen & Toubro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781",
+      "url": "https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781",
+      "title": "Digital Engineer - IoT and AI — Larsen & Toubro",
+      "content_text": "Company: Larsen & Toubro · Location: Chorasi, Gujarat, India · Duration: 1–3 years\n• Support machine connectivity and data collection for smart manufacturing\n• Develop digital solutions for operational metrics and predictive maintenance\n• Integrate IoT systems with ERP and analytics platforms\n• Based at LMTG Hazira Plant",
+      "date_published": "2026-09-26T19:15:31.538Z",
+      "authors": [
+        {
+          "name": "Larsen & Toubro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943",
+      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943",
+      "title": "Java Fullstack IRC300668 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Noida, Uttar Pradesh, India\n• Build and maintain backend services using Java, REST APIs, and Spring Boot\n• Work with AWS infrastructure and Kafka for streaming and messaging\n• Collaborate on cloud-native applications with GitLab and JIRA tools",
+      "date_published": "2026-09-26T19:15:14.004Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nvidia-asic-verification-engineer-4434696815",
+      "url": "https://interndoor.com/jobs/nvidia-asic-verification-engineer-4434696815",
+      "title": "ASIC Verification Engineer — NVIDIA",
+      "content_text": "Company: NVIDIA · Location: Hyderabad, Telangana, India · Duration: 0-2 years\n• Build tools and test frameworks for RTL, emulation, FPGA, and silicon\n• Work with C, C++, Python, and SOC architecture\n• Develop features for silicon bringup and test re-use across platforms",
+      "date_published": "2026-09-26T19:15:01.701Z",
+      "authors": [
+        {
+          "name": "NVIDIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cognizant-developer-4462617512",
       "url": "https://interndoor.com/jobs/cognizant-developer-4462617512",
       "title": "Developer — Cognizant",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/visteon-corporation-audio-software-development-engineer-4314589485",
-      "url": "https://interndoor.com/jobs/visteon-corporation-audio-software-development-engineer-4314589485",
-      "title": "Audio Software Development Engineer — Visteon Corporation",
-      "content_text": "Company: Visteon Corporation · Location: Chennai, Tamil Nadu, India\n• Design and implement audio components for automotive use cases\n• Work with Android framework, HAL layers, and Linux drivers\n• Collaborate with global teams on car infotainment systems",
-      "date_published": "2026-09-26T09:47:35.883Z",
-      "authors": [
-        {
-          "name": "Visteon Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wipro-software-engineer-l2-4472264704",
-      "url": "https://interndoor.com/jobs/wipro-software-engineer-l2-4472264704",
-      "title": "SOFTWARE ENGINEER L2 — Wipro",
-      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Design and develop software solutions using CAD/CAE tools for client projects\n• Test models, run simulations, and ensure software updates for cost efficiency\n• Provide customer support, debug systems, and maintain project documentation",
-      "date_published": "2026-09-26T09:16:07.311Z",
-      "authors": [
-        {
-          "name": "Wipro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-engineer-ddeg-design-methodology-4461947819",
-      "url": "https://interndoor.com/jobs/micron-technology-engineer-ddeg-design-methodology-4461947819",
-      "title": "Engineer, DDEG Design Methodology — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Simulate, analyze, and debug pre-silicon designs for DRAM and emerging memory\n• Use AI tools, automation, and Verilog for test-case development and coverage analysis\n• Collaborate with global teams on verification flows for advanced memory products",
-      "date_published": "2026-09-26T09:08:00.602Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
-      "url": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
-      "title": "Gen AI Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop AI-powered automation solutions using Python and Gen AI\n• Integrate AI with enterprise systems, workflows, and APIs\n• Collaborate with cross-functional teams on AI-driven use cases",
-      "date_published": "2026-09-26T02:24:06.164Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/turtlemint-business-analytics-internship-in-mumbai-4472225129",
-      "url": "https://interndoor.com/jobs/turtlemint-business-analytics-internship-in-mumbai-4472225129",
-      "title": "Business Analytics Internship in Mumbai — Turtlemint",
-      "content_text": "Company: Turtlemint · Location: Mumbai Metropolitan Region\n• Analyze customer data to support marketing decisions\n• Use sql/python and ai tools to automate reports\n• Collaborate with cross-functional teams on data projects",
-      "date_published": "2026-09-26T00:16:22.465Z",
-      "authors": [
-        {
-          "name": "Turtlemint"
         }
       ]
     }
