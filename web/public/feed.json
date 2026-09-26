@@ -6,18 +6,6 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/boeing-experienced-software-engineer-ai-application-4470529596",
-      "url": "https://interndoor.com/jobs/boeing-experienced-software-engineer-ai-application-4470529596",
-      "title": "Experienced Software Engineer–AI Application — Boeing",
-      "content_text": "Company: Boeing · Location: Bengaluru, Karnataka, India\n• Build AI workflows grounded in enterprise documentation with explainability and citation features\n• Develop secure Azure-native applications with RBAC and auditability\n• Collaborate with Product Owner and customers in Agile sprints with travel required",
-      "date_published": "2026-09-26T04:24:52.113Z",
-      "authors": [
-        {
-          "name": "Boeing"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
       "url": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
       "title": "Gen AI Engineer — Infosys",
@@ -38,18 +26,6 @@
       "authors": [
         {
           "name": "Turtlemint"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/walmart-global-tech-india-distinguished-software-engineer-4472206148",
-      "url": "https://interndoor.com/jobs/walmart-global-tech-india-distinguished-software-engineer-4472206148",
-      "title": "DISTINGUISHED, SOFTWARE ENGINEER — Walmart Global Tech India",
-      "content_text": "Company: Walmart Global Tech India · Location: Chennai, Tamil Nadu, India\n• Design and build scalable AI systems for intelligent automation\n• Lead full software lifecycle with DevOps and CI/CD practices\n• Mentor engineers and drive operational excellence across teams",
-      "date_published": "2026-09-25T22:27:28.057Z",
-      "authors": [
-        {
-          "name": "Walmart Global Tech India"
         }
       ]
     },
@@ -602,6 +578,30 @@
       "authors": [
         {
           "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/phonepe-site-reliability-engineer-on-prem-4-to-8-years-4461157534",
+      "url": "https://interndoor.com/jobs/phonepe-site-reliability-engineer-on-prem-4-to-8-years-4461157534",
+      "title": "Site Reliability Engineer - On-Prem (4 to 8 Years) — PhonePe",
+      "content_text": "Company: PhonePe · Location: Bengaluru, Karnataka, India · Duration: 4 to 8 years\n• Maintain and optimize system reliability for high-traffic fintech infrastructure\n• Work with Linux, networking, cloud services, and open source tools\n• On-call rotation and contribute to always-up, always-available services",
+      "date_published": "2026-09-25T15:19:04.581Z",
+      "authors": [
+        {
+          "name": "PhonePe"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/instawork-it-intern-gadget-and-tech-support-operations-4436304856",
+      "url": "https://interndoor.com/jobs/instawork-it-intern-gadget-and-tech-support-operations-4436304856",
+      "title": "IT Intern – Gadget & Tech Support Operations — Instawork",
+      "content_text": "Company: Instawork · Location: Bengaluru, Karnataka, India\n• Process SD cards, upload data, and return cards to inventory daily\n• Review videos to assess data validity and track valid-data percentages\n• Maintain accurate records and report data issues promptly",
+      "date_published": "2026-09-25T15:09:05.995Z",
+      "authors": [
+        {
+          "name": "Instawork"
         }
       ]
     }
