@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790464503941,
+ "generatedAt": 1790465142421,
  "region": "US",
  "regionName": "United States",
- "count": 4321,
- "techCount": 4321,
+ "count": 4322,
+ "techCount": 4322,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1309,6 +1309,53 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4470576302",
+   "title": "Analog Design Intern",
+   "company": "Marvell Technology",
+   "matchedWatchlist": "Marvell Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/marvell-technology.jpg",
+   "location": "Santa Clara, CA",
+   "workplaceType": "Hybrid",
+   "stipend": "$38 – $76 / hour",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "physical design"
+   ],
+   "summary": "This role involves designing and refining analog circuits for semiconductor applications. You'll work with Cadence tools to simulate and test circuits, collaborating with senior engineers to refine designs. Ideal for students with a strong foundation in analog design and circuit simulation.",
+   "bullets": [
+    "Build transistor level circuits or improve existing blocks using Cadence tools",
+    "Simulate performance metrics and iterate until circuits meet requirements",
+    "Collaborate with senior designers and managers on detailed project reviews"
+   ],
+   "roleLabel": "Analog Circuit Design",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "cadence"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790461001441,
+   "firstSeenAt": 1790464601444,
+   "lastSeenAt": 1790464601444,
+   "url": "https://www.linkedin.com/jobs/view/4470576302/",
+   "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/Analog-Design-Intern_2604084?src=SNS-102&source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "3300334e04",
+   "cardFacts": [
+    "$38 – $76 / hour",
+    "Santa Clara",
+    "Hybrid"
+   ],
+   "category": "hardware",
+   "region": "US"
+  },
   {
    "id": "4470562933",
    "title": "Technology 2027 Intern - AI & CyberSecurity",
