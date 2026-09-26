@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/meta-research-scientist-intern-ai-alignment-4312023968",
+      "url": "https://interndoor.com/us/jobs/meta-research-scientist-intern-ai-alignment-4312023968",
+      "title": "Research Scientist Intern, AI Alignment — Meta",
+      "content_text": "Company: Meta · Location: Menlo Park, CA\n• Develop algorithms and systems using deep learning techniques\n• Work with Python, C++, PyTorch, and TensorFlow\n• Publish research and contribute to product development",
+      "date_published": "2026-09-26T11:22:10.348Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ads-interface-2027-summer-4462331090",
       "url": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ads-interface-2027-summer-4462331090",
       "title": "Software Engineer Intern (Ads Interface) - 2027 Summer — TikTok",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GlobalFoundries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-sys-intel-and-machine-lear-ats-greenhouse-waymo-8233746",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-sys-intel-and-machine-lear-ats-greenhouse-waymo-8233746",
-      "title": "2027 Summer Intern, MS/PhD, Software Engineer, Sys Intel & Machine Learning — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Design and implement parameter-efficient fine-tuning modules for Vision Transformers\n• Work with quantization and latency teams to optimize model performance on hardware\n• Evaluate perception metrics on large-scale autonomous driving datasets",
-      "date_published": "2026-09-25T21:01:50.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
         }
       ]
     }
