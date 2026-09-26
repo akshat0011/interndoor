@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/astranis-space-technologies-electrical-integration-intern-avionics-winter-2027-4470773326",
+      "url": "https://interndoor.com/us/jobs/astranis-space-technologies-electrical-integration-intern-avionics-winter-2027-4470773326",
+      "title": "Electrical Integration Intern - Avionics (Winter 2027) — Astranis Space Technologies",
+      "content_text": "Company: Astranis Space Technologies · Location: San Francisco Bay Area · Duration: Winter 2027\n• Design, build, and test satellite hardware and software with engineering teams\n• Use test equipment like thermal chambers and oscilloscopes to execute test plans\n• Work on complex electrical and software problems in an integrated system\n• 12-week internship with onsite 5 days a week requirement",
+      "date_published": "2026-09-26T03:08:42.417Z",
+      "authors": [
+        {
+          "name": "Astranis Space Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/caterpillar-inc-instrumentation-apprentice-4472240319",
       "url": "https://interndoor.com/us/jobs/caterpillar-inc-instrumentation-apprentice-4472240319",
       "title": "Instrumentation Apprentice — Caterpillar Inc.",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Skyworks Solutions, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-healthcare-software-engineering-intern-workflow-platform-4472076128",
-      "url": "https://interndoor.com/us/jobs/ge-healthcare-software-engineering-intern-workflow-platform-4472076128",
-      "title": "Software Engineering Intern – Workflow Platform — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Beachwood, OH\n• Write automated tests for clinical workflows\n• Work with Java and regulated medical software\n• Mentorship from experienced engineers",
-      "date_published": "2026-09-25T19:31:40.576Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
         }
       ]
     }
