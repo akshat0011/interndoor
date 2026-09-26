@@ -101,8 +101,23 @@ fi
 ATS_STATUS=$?
 echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 
-"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" >> "$LOG" 2>&1
+# TWO PHASES, THE HOME BOARD FIRST (26 Sep 2026). One scan used to walk every
+# region and publish once at the end, so India's new roles waited for the US
+# walk and its enrichment — 20-47 minutes from the start of the run to the
+# site. Now the home region is walked, enriched, published and posted to its
+# channel first, and then everything else. A home phase that found no network
+# (75) skips the rest, exactly as the whole scan used to. The rest phase's own
+# 75 is not passed on: the home board has just been reached, and a fast retry
+# would walk it again for nothing.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home >> "$LOG" 2>&1
 STATUS=$?
+echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT home $STATUS]" >> "$LOG"
+if [ "$STATUS" -ne 75 ]; then
+  "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=-home >> "$LOG" 2>&1
+  REST_STATUS=$?
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT rest $REST_STATUS]" >> "$LOG"
+  if [ "$STATUS" -eq 0 ] && [ "$REST_STATUS" -ne 75 ]; then STATUS=$REST_STATUS; fi
+fi
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 

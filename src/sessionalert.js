@@ -45,15 +45,20 @@ export const SESSION_ALERT_GAP_MS = 6 * 60 * 60 * 1000;
  */
 export async function alertOnSessionLoss(store, {
   healthy = false, sessionExpired = false, enabled = true, regions = [],
-  push = pushToPhone, now = Date.now,
+  push = pushToPhone, now = Date.now, scope = null,
 } = {}) {
+  /* ONE MARKER PER PHASE. A scheduled run is two scans since 26 Sep 2026 —
+     India, then the rest — and with one shared marker a healthy India phase
+     cleared it every half hour, so a dead US account would have pushed every
+     hour instead of every six. */
+  const KEY = scope ? `${SESSION_ALERT_KEY}:${scope}` : SESSION_ALERT_KEY;
   try {
     /* A run that got as far as collecting proves the session works again, so
        the marker is cleared and the NEXT outage alerts immediately rather than
        waiting out a stale six-hour window. */
     if (healthy) {
-      if (store.getSetting(SESSION_ALERT_KEY)) {
-        store.setSetting(SESSION_ALERT_KEY, '');
+      if (store.getSetting(KEY)) {
+        store.setSetting(KEY, '');
         log.info('LinkedIn session is healthy again — session alert re-armed.');
         return 'rearmed';
       }
@@ -62,13 +67,13 @@ export async function alertOnSessionLoss(store, {
 
     if (!sessionExpired || !enabled) return 'skipped';
 
-    const last = Number(store.getSetting(SESSION_ALERT_KEY) || 0);
+    const last = Number(store.getSetting(KEY) || 0);
     const since = now() - last;
     if (last && since < SESSION_ALERT_GAP_MS) {
       log.info(`LinkedIn session still expired — already alerted ${Math.round(since / 60000)} min ago.`);
       return 'throttled';
     }
-    store.setSetting(SESSION_ALERT_KEY, now());
+    store.setSetting(KEY, now());
 
     /**
      * NAME THE ACCOUNT, BECAUSE THE FIX IS NOW A DIFFERENT COMMAND PER REGION.

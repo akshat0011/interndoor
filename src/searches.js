@@ -96,3 +96,26 @@ export function resolveSearches(cfg) {
 
   return mode === 'both' ? [...batches, ...keywordSearches] : batches;
 }
+
+/**
+ * The searches one PHASE of a scheduled run walks (bin/run.sh, 26 Sep 2026).
+ *
+ * A run used to walk every region and publish once at the end, so India's new
+ * roles waited for the US walk — 5-9 minutes, 28-42 when a capped window is
+ * re-read — and for its enrichment: 20-47 minutes from the run's start to the
+ * site. The scheduler now runs the scan twice per tick, the home region first,
+ * and each phase publishes what it found.
+ *
+ *   null / ''      every search (a hand-run scan, unchanged)
+ *   'home'         the home region's searches only
+ *   '-home'        everything but the home region
+ *   'IN,US' / '-IN' explicit region codes, or all but them
+ */
+export function scopeSearches(searches, scope, homeRegion = 'IN') {
+  const raw = String(scope ?? '').trim();
+  if (!raw) return searches;
+  const except = raw.startsWith('-');
+  const codes = new Set(raw.replace(/^-/, '').split(',').map((c) => c.trim().toUpperCase()).filter(Boolean)
+    .map((c) => (c === 'HOME' ? String(homeRegion).toUpperCase() : c)));
+  return searches.filter((s) => codes.has(String(s.region ?? 'IN').toUpperCase()) !== except);
+}
