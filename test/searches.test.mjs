@@ -21,7 +21,10 @@ function check(label, actual, expected) {
 function ok(label, cond) { check(label, !!cond, true); }
 
 const cfg = loadConfig();
-const searches = resolveSearches(cfg);
+// DECLARED searches, paused ones included: these checks are about how each
+// search is BUILT, and a region paused in config.json (India, 26 Sep 2026, while
+// its account is flagged) must not make them stop asserting (§7 Pausing).
+const searches = resolveSearches({ ...cfg, searches: cfg.declaredSearches });
 /* THE INTERN WALK IS THE SEARCH WITH NO `employment` KEY. Since 18 Sep 2026
    India has two searches — the uncapped intern walk and a capped entry-level
    search — so a map keyed on region would silently pick whichever came last
@@ -279,10 +282,17 @@ console.log('\n== a search can be PAUSED without being deleted ==');
   check('the run warns about a paused search', /if \(cfg\.pausedSearches\?\.length\) \{/.test(idx), true);
   check('and names it', /Search paused by config: \$\{cfg\.pausedSearches\.join/.test(idx), true);
 
-  // Absent means enabled — every other search in this repo omits the flag.
-  const india = cfg.declaredSearches.find((s) => s.region === 'IN');
-  check('an entry with no flag is enabled', india.enabled, true);
-  check('and India is running', cfg.searches.some((s) => s.region === 'IN'), true);
+  // Absent means enabled. Pinned on the loader itself: no entry in the file is
+  // guaranteed to omit the flag (India carries enabled:false while paused).
+  const cfgSrc = readFileSync(new URL('../src/config.js', import.meta.url), 'utf8');
+  check('an entry with no flag is enabled', /enabled: base\.enabled !== false,/.test(cfgSrc), true);
+  /* India may be paused only ON PURPOSE, with the reason written beside the
+     flag — 26 Sep 2026, while LinkedIn had the India account flagged. A pause
+     with no note is the silent loss this block exists to catch. */
+  const indiaRaw = raw.searches.filter((e) => e.region === 'IN');
+  check('and India is running, or paused with the reason written down',
+    cfg.searches.some((s) => s.region === 'IN')
+      || (indiaRaw.length > 0 && indiaRaw.every((e) => e.enabled === false && String(e._paused_note ?? '').length > 40)), true);
 }
 
 console.log('\n== NOTHING DONE TO THE US MAY DISTURB INDIA ==');
@@ -291,8 +301,12 @@ console.log('\n== NOTHING DONE TO THE US MAY DISTURB INDIA ==');
      cannot lose. Pausing US, resuming it, capping its pages, capping its opens
      and stopping its walk early are all changes to the searches array, so these
      are asserted again after every one of them. */
-  const india = cfg.searches.find((s) => s.region === 'IN');
-  check('India is running', !!india, true);
+  // Declared, so a deliberate pause (see above) does not skip these checks.
+  const india = cfg.declaredSearches.find((s) => s.region === 'IN' && s.employment !== 'fulltime');
+  check('India is running, or paused on purpose',
+    cfg.searches.some((s) => s.region === 'IN')
+      || JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches
+        .some((e) => e.region === 'IN' && e.enabled === false && String(e._paused_note ?? '').length > 40), true);
   check('it still sends no geoId', india.geoId, null);
   check('and still runs on every tick', india.intervalMinutes ?? 0, 0);
   ok('its URL is still geoId-free', !buildSearchUrl(india, cfg.filters, { start: 0 }).includes('geoId='));
