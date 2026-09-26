@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-software-engineer-l2-4472264704",
+      "url": "https://interndoor.com/jobs/wipro-software-engineer-l2-4472264704",
+      "title": "SOFTWARE ENGINEER L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Design and develop software solutions using CAD/CAE tools for client projects\n• Test models, run simulations, and ensure software updates for cost efficiency\n• Provide customer support, debug systems, and maintain project documentation",
+      "date_published": "2026-09-26T09:16:07.311Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/micron-technology-engineer-ddeg-design-methodology-4461947819",
+      "url": "https://interndoor.com/jobs/micron-technology-engineer-ddeg-design-methodology-4461947819",
+      "title": "Engineer, DDEG Design Methodology — Micron Technology",
+      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Simulate, analyze, and debug pre-silicon designs for DRAM and emerging memory\n• Use AI tools, automation, and Verilog for test-case development and coverage analysis\n• Collaborate with global teams on verification flows for advanced memory products",
+      "date_published": "2026-09-26T09:08:00.602Z",
+      "authors": [
+        {
+          "name": "Micron Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
       "url": "https://interndoor.com/jobs/infosys-gen-ai-engineer-4470746770",
       "title": "Gen AI Engineer — Infosys",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/phonepe-site-reliability-engineer-on-prem-4-to-8-years-4461157534",
-      "url": "https://interndoor.com/jobs/phonepe-site-reliability-engineer-on-prem-4-to-8-years-4461157534",
-      "title": "Site Reliability Engineer - On-Prem (4 to 8 Years) — PhonePe",
-      "content_text": "Company: PhonePe · Location: Bengaluru, Karnataka, India · Duration: 4 to 8 years\n• Maintain and optimize system reliability for high-traffic fintech infrastructure\n• Work with Linux, networking, cloud services, and open source tools\n• On-call rotation and contribute to always-up, always-available services",
-      "date_published": "2026-09-25T15:19:04.581Z",
-      "authors": [
-        {
-          "name": "PhonePe"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/instawork-it-intern-gadget-and-tech-support-operations-4436304856",
-      "url": "https://interndoor.com/jobs/instawork-it-intern-gadget-and-tech-support-operations-4436304856",
-      "title": "IT Intern – Gadget & Tech Support Operations — Instawork",
-      "content_text": "Company: Instawork · Location: Bengaluru, Karnataka, India\n• Process SD cards, upload data, and return cards to inventory daily\n• Review videos to assess data validity and track valid-data percentages\n• Maintain accurate records and report data issues promptly",
-      "date_published": "2026-09-25T15:09:05.995Z",
-      "authors": [
-        {
-          "name": "Instawork"
         }
       ]
     }
