@@ -181,6 +181,13 @@ console.log('\n== a level-II-or-above title is not an entry-level job ==');
   check('"Engineer II_Engineering" is level II', entryLevelTitleRefusal('Engineer II_Engineering'), LVL);
   check('"…_FDE_Consultant" is a consultant grade', entryLevelTitleRefusal('#ACN GN-I&E_ Industrial_FDE_Consultant'), GRADE);
   check('an underscore in an ordinary title changes nothing', entryLevelTitleRefusal('IN_Associate_Software Engineer_Bangalore'), null);
+  // 26 Sep 2026: neither word is a seniority SENIOR knows.
+  const EXP = 'entry-level: experienced title';
+  check('Boeing\'s "Experienced Software Engineer" is not entry-level', entryLevelTitleRefusal('Experienced Software Engineer–AI Application'), EXP);
+  check('Walmart\'s "DISTINGUISHED, SOFTWARE ENGINEER" is not either', entryLevelTitleRefusal('DISTINGUISHED, SOFTWARE ENGINEER'), EXP);
+  check('a programme open to both passes', entryLevelTitleRefusal('Production Associate – Experienced or Entry-Level Training Program'), null);
+  check('so does a graduate programme that says it', entryLevelTitleRefusal('Graduate Program for Experienced Hires and Freshers'), null);
+  check('"experience" is not "experienced"', entryLevelTitleRefusal('Software Engineer - Customer Experience'), null);
   check('admitEntryLevel refuses it after the open too',
     admitEntryLevel({ title: 'Software Engineer II', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason, LVL);
   // The careers-board path decides by title alone (employmentType), so the rule
