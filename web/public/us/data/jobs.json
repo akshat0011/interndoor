@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790457332435,
+ "generatedAt": 1790457734242,
  "region": "US",
  "regionName": "United States",
  "count": 4337,
@@ -1313,6 +1313,60 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4470562933",
+   "title": "Technology 2027 Intern - AI & CyberSecurity",
+   "company": "Charles Schwab",
+   "matchedWatchlist": "Charles Schwab",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/charles-schwab.jpg",
+   "location": "Austin, TX",
+   "workplaceType": "On-site",
+   "stipend": "$63,440 / year",
+   "pay": {
+    "currency": "USD",
+    "min": 63440,
+    "max": 63440,
+    "unitText": "YEAR"
+   },
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship offers hands-on experience in cybersecurity and AI, focusing on threat analysis, system protection, and automation. Ideal for students passionate about information security and data protection, working alongside professionals in a collaborative environment.",
+   "bullets": [
+    "Analyze threats and secure systems using cybersecurity tools",
+    "Work with security professionals on risk management and automation",
+    "Based in Austin, TX for 9-week summer program"
+   ],
+   "roleLabel": "Cybersecurity Analyst",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science",
+   "keySkills": [
+    "threat analysis",
+    "security automation",
+    "risk management",
+    "data protection"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "41 minutes ago",
+   "postedAt": 1790455064785,
+   "firstSeenAt": 1790457524793,
+   "lastSeenAt": 1790457524793,
+   "url": "https://www.linkedin.com/jobs/view/4470562933/",
+   "applyUrl": "https://ad.doubleclick.net/ddm/clk/574335155;383638107;m?https://www.schwabjobs.com/job/-/-/33727/99867643616?iis=linkedin_job_wrapping&iisn=rd_linkedin_job_wrapping&utm_source=linkedin.com&utm_medium=job_posting&utm_campaign=Annual_Media&utm_content=social_media&utm_term=383638107&ss=paid",
+   "description": null,
+   "roleFingerprint": "c0daa9ef99",
+   "cardFacts": [
+    "$63,440 / year",
+    "Austin",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
   {
    "id": "4461431967",
    "title": "Firmware Engineer Intern, MS - Summer 2027",
@@ -155515,59 +155569,6 @@
    "cardFacts": [
     "$63,400 / year",
     "Phoenix",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "US"
-  },
-  {
-   "id": "4461485144",
-   "title": "Technology 2027 Intern - AI & CyberSecurity",
-   "company": "Charles Schwab",
-   "matchedWatchlist": "Charles Schwab",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/charles-schwab.jpg",
-   "location": "Austin, TX",
-   "workplaceType": "On-site",
-   "stipend": "$63,400 / year",
-   "pay": {
-    "currency": "USD",
-    "min": 63400,
-    "max": 63400,
-    "unitText": "YEAR"
-   },
-   "duration": "Summer 2027",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers hands-on experience in cybersecurity and AI, working with security teams to analyze threats and protect systems. Ideal for students interested in information security and technology risk management.",
-   "bullets": [
-    "Analyze threats and secure systems using cybersecurity tools",
-    "Work with security teams on risk management and automation",
-    "Gain hands-on experience in AI and cyber defense"
-   ],
-   "roleLabel": "Cybersecurity analyst",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "threat analysis",
-    "security automation",
-    "risk management"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "27 minutes ago",
-   "postedAt": 1788619031922,
-   "firstSeenAt": 1788620651922,
-   "lastSeenAt": 1788664678781,
-   "url": "https://www.linkedin.com/jobs/view/4461485144/",
-   "applyUrl": "https://ad.doubleclick.net/ddm/clk/574335155;383638107;m?https://www.schwabjobs.com/job/-/-/33727/99867643616?iis=linkedin_job_wrapping&iisn=rd_linkedin_job_wrapping&utm_source=linkedin.com&utm_medium=job_posting&utm_campaign=Annual_Media&utm_content=social_media&utm_term=383638107&ss=paid",
-   "description": null,
-   "roleFingerprint": "c0daa9ef99",
-   "cardFacts": [
-    "$63,400 / year",
-    "Austin",
     "On-site"
    ],
    "category": "software",
