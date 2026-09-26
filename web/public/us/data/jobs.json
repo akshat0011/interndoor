@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790418196822,
+ "generatedAt": 1790418531248,
  "region": "US",
  "regionName": "United States",
- "count": 4361,
- "techCount": 4361,
+ "count": 4362,
+ "techCount": 4362,
  "otherCount": 0,
  "companies": [
   "2025 Sanofi Device Innovation Challenge",
@@ -1323,6 +1323,57 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4462331090",
+   "title": "Software Engineer Intern (Ads Interface) - 2027 Summer",
+   "company": "TikTok",
+   "matchedWatchlist": "ByteDance",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/tiktok.jpg",
+   "location": "San Jose, CA",
+   "workplaceType": "On-site",
+   "stipend": "$45 – $60 / hour",
+   "duration": "Summer 2027",
+   "applicants": "71 applicants",
+   "easyApply": false,
+   "skills": [
+    "express",
+    "llm",
+    "data structures",
+    "algorithms"
+   ],
+   "summary": "This internship involves designing and improving TikTok's advertising interface, working on large-scale systems and AI-driven solutions. Ideal for students with a strong CS background and interest in ad tech and scalable systems.",
+   "bullets": [
+    "Design and develop TikTok's ads interface with a focus on user experience and technical scalability",
+    "Collaborate with product and engineering teams on global advertising strategies and AI-driven solutions",
+    "Work on large-scale systems and contribute to technical roadmaps for ad delivery and measurement"
+   ],
+   "roleLabel": "Ads Interface Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "ai tools",
+    "software design"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "50 minutes ago",
+   "postedAt": 1790415431405,
+   "firstSeenAt": 1790418431411,
+   "lastSeenAt": 1790418431411,
+   "url": "https://www.linkedin.com/jobs/view/4462331090/",
+   "applyUrl": "https://lifeattiktok.com/search/7669705785962727733?spread=5MWH5CQ",
+   "description": null,
+   "roleFingerprint": "89e9ffbdcb",
+   "cardFacts": [
+    "$45 – $60 / hour",
+    "San Jose",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
   {
    "id": "4472252542",
    "title": "2027 Spring Co-op Bioinformatic Digital Data Scientist - Global Immunology, Waltham, MA",
@@ -157534,7 +157585,7 @@
    "postedText": "5 minutes ago",
    "postedAt": 1788568834808,
    "firstSeenAt": 1788569134815,
-   "lastSeenAt": 1788569134815,
+   "lastSeenAt": 1790418440012,
    "url": "https://www.linkedin.com/jobs/view/4461420173/",
    "applyUrl": "https://careers.nationwide.com/summer-2027-analytic-consulting-advisor-internship/job/EDC39819F020F462123F7A4057F7F3F7?src=LinkedIn",
    "description": null,
@@ -157652,7 +157703,7 @@
    "postedText": "5 minutes ago",
    "postedAt": 1788568799298,
    "firstSeenAt": 1788569099310,
-   "lastSeenAt": 1790414682306,
+   "lastSeenAt": 1790418450272,
    "url": "https://www.linkedin.com/jobs/view/4461428029/",
    "applyUrl": "https://careers.nationwide.com/summer-2027-generative-ai-internship/job/FBB0E18DE10FC40CF26526B76022FC02?src=LinkedIn",
    "description": null,
@@ -159592,7 +159643,7 @@
    "postedText": "3 minutes ago",
    "postedAt": 1788545529263,
    "firstSeenAt": 1788545709271,
-   "lastSeenAt": 1788545709271,
+   "lastSeenAt": 1790418375086,
    "url": "https://www.linkedin.com/jobs/view/4463399861/",
    "applyUrl": "https://careers.principal.com/jobs/52513?lang=en-us&iis=Job+Board&iisn=Linkedin",
    "description": null,
