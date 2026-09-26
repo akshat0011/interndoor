@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 26 Sep 2026 12:27:20 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 13:01:58 GMT</lastBuildDate>
+  <item>
+    <title>RVCE - EBA (January, 2027) — Twilio</title>
+    <link>https://interndoor.com/jobs/twilio-rvce-eba-january-2027-4472283513</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/twilio-rvce-eba-january-2027-4472283513</guid>
+    <pubDate>Sat, 26 Sep 2026 13:01:58 GMT</pubDate>
+    <description>Company: Twilio · Location: India
+• Build and maintain communication platforms for businesses and developers
+• Work with AI and cloud technologies in a remote-first environment
+• Collaborate with global teams on product innovation and customer solutions</description>
+  </item>
+  <item>
+    <title>Scientist I, Molecular Biology — Thermo Fisher Scientific</title>
+    <link>https://interndoor.com/jobs/thermo-fisher-scientific-scientist-i-molecular-biology-4461448234</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/thermo-fisher-scientific-scientist-i-molecular-biology-4461448234</guid>
+    <pubDate>Sat, 26 Sep 2026 12:54:36 GMT</pubDate>
+    <description>Company: Thermo Fisher Scientific · Location: Bengaluru East, Karnataka, India · Duration: 0-4 years
+• Execute molecular biology techniques including PCR, cloning, and sequencing analysis
+• Work on antibody development with focus on quality and immunoassay applications
+• Collaborate in a fast-paced team with emphasis on data recording and presentation</description>
+  </item>
   <item>
     <title>Analyst, Data Management — BlackRock</title>
     <link>https://interndoor.com/jobs/blackrock-analyst-data-management-4472287122</link>
@@ -36,6 +56,16 @@
 • Build scalable apps with Java, Spring Boot, and Angular
 • Use Kafka, REST APIs, and AI tools like Gemini and LangChain
 • Write automated tests for Angular apps with Playwright</description>
+  </item>
+  <item>
+    <title>Specialist Platform Engineer - Python Developer — Novartis India</title>
+    <link>https://interndoor.com/jobs/novartis-india-specialist-platform-engineer-python-developer-4461196500</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/novartis-india-specialist-platform-engineer-python-developer-4461196500</guid>
+    <pubDate>Sat, 26 Sep 2026 12:10:05 GMT</pubDate>
+    <description>Company: Novartis India · Location: Greater Hyderabad Area
+• Design and build secure AI platforms on AWS for regulated environments
+• Work with Python, AWS services, and AI orchestration frameworks
+• Ensure compliance with HIPAA, GDPR, and other regulatory standards</description>
   </item>
   <item>
     <title>Engineer — Qualcomm</title>
@@ -478,36 +508,6 @@
 • Write and execute test cases to validate software functionality and reliability
 • Use selenium and playwright for browser automation and test automation
 • Collaborate with clients and teams to resolve defects and improve user experience</description>
-  </item>
-  <item>
-    <title>API Developer — Sanofi</title>
-    <link>https://interndoor.com/jobs/sanofi-api-developer-4472063075</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/sanofi-api-developer-4472063075</guid>
-    <pubDate>Fri, 25 Sep 2026 17:11:03 GMT</pubDate>
-    <description>Company: Sanofi · Location: Hyderabad, Telangana, India
-• Design and build APIs using Open API/Swagger, REST, GraphQL, and gRPC
-• Implement security with OAuth 2.0, JWT, and TLS across multi-cloud platforms
-• Work with Kong, Kubernetes, and GitOps for API gateways and deployment</description>
-  </item>
-  <item>
-    <title>GBM - Public Dept-Bengaluru-Associate-Quantitative Engineering — Goldman Sachs</title>
-    <link>https://interndoor.com/jobs/goldman-sachs-gbm-public-dept-bengaluru-associate-quantitative-engineering-4461947548</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/goldman-sachs-gbm-public-dept-bengaluru-associate-quantitative-engineering-4461947548</guid>
-    <pubDate>Fri, 25 Sep 2026 17:08:16 GMT</pubDate>
-    <description>Company: Goldman Sachs · Location: Bengaluru, Karnataka, India
-• Build and refine models to assess credit risk across financial products
-• Use Python and C++ to optimize capital and liquidity strategies
-• Collaborate with leaders to implement risk management solutions</description>
-  </item>
-  <item>
-    <title>Data Engineer-Data Platforms-Databricks — IBM</title>
-    <link>https://interndoor.com/jobs/ibm-data-engineer-data-platforms-databricks-4460722276</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ibm-data-engineer-data-platforms-databricks-4460722276</guid>
-    <pubDate>Fri, 25 Sep 2026 16:40:19 GMT</pubDate>
-    <description>Company: IBM · Location: Hyderabad, Telangana, India
-• Implement data and AI use cases on Databricks platform
-• Leverage cloud technologies for data processing and storage
-• Collaborate with clients to design technical solutions</description>
   </item>
 </channel>
 </rss>
