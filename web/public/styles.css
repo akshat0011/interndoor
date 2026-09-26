@@ -264,8 +264,15 @@ a, button, summary, label, [role="button"], .row {
    not free. The pill keeps its lime fill and is still the one filled control
    in the masthead, and the board's follow band and every job page's alert box
    still name the channel in words. Putting them back is deleting the
-   `.alerts span` line here. */
-@media (max-width: 480px) {
+   `.alerts span` line here.
+
+   520, NOT 480, SINCE 26 SEP 2026. At 481 the label came back and the header
+   ran 25px past its box (the page scrolled by 10); it cleared only near 505.
+   The sweep that set 480 stepped 430 -> 480 and never looked between 480 and
+   520, where almost no phone sits (upright they are 430 or less, sideways 640
+   or more), so the words cost nothing real there. Measured every pixel from
+   470 to 530 after the change. */
+@media (max-width: 520px) {
   .alerts span { display: none; }
   .alerts { padding-inline: 9px; }
 }
@@ -275,6 +282,10 @@ a, button, summary, label, [role="button"], .row {
   .brand { gap: 6px; }
   .word { font-size: 12.5px; }
   .bar-right { gap: 6px; }
+  /* The region picker made the cluster five controls, and at 320 the header ran
+     4px into the page gutter (measured 26 Sep 2026: brand 117 + gap 16 + right
+     cluster 171 in a 300px box). The gap between the two halves is the slack. */
+  .bar-in { gap: 8px; }
   /* The matching .wrap gutter override lives at the foot of this file: a later
      @media (max-width: 1024px) rule sets .wrap width at equal specificity, so
      an override here would silently lose to it. */
@@ -418,10 +429,14 @@ a, button, summary, label, [role="button"], .row {
   .rg-opt.is-on:hover { color: var(--live); }
 }
 
-/* The header runs out of room long before the listings do. Below 720px the
+/* The header runs out of room long before the listings do. Below 940px the
    globe alone carries it — the current region is still announced to a screen
-   reader through the summary's aria-label. */
-@media (max-width: 720px) {
+   reader through the summary's aria-label. Was 720px until 26 Sep 2026: from
+   721 to 909 the masthead (logo, three section links, "United States ▾",
+   "WhatsApp alerts", a labelled Feedback button, the theme toggle) ran up to
+   180px past the page on the US board, so every tablet in portrait scrolled
+   sideways. 940 leaves the US board ~30px clear where the labels return. */
+@media (max-width: 940px) {
   .rg-cur, .rg-caret { display: none; }
   .rg > summary { padding: 0 9px; }
 }
@@ -2062,9 +2077,11 @@ html.nudge-open { overflow: hidden; }
    AGAINST THE PARENT. */
 .fb-open { grid-auto-flow: column; gap: 7px; padding: 0 12px; width: auto; }
 .fb-open span { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); text-transform: uppercase; }
-/* Under 560px the word goes and the icon carries it — the header already drops
-   its nav at 640 rather than wrapping, and a two-line masthead is broken. */
-@media (max-width: 560px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 34px; } }
+/* Under 940px the word goes and the icon carries it — the header drops its nav
+   at 760 rather than wrapping, and a two-line masthead is broken. Was 560px:
+   between 641 and 909 the labelled button was part of a masthead up to 180px
+   wider than the page (26 Sep 2026). Same breakpoint as the region name. */
+@media (max-width: 940px) { .fb-open span { display: none; } .fb-open { padding: 0; width: 34px; } }
 
 /* The dialog. Fixed, centred, above everything. */
 .fb-veil {
@@ -2374,7 +2391,10 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 .bar-nav a:hover { color: var(--ink); }
 .bar-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--live); }
 
-/* Under 640 the wordmark, three links and two buttons cannot share one line,
+/* Under 760 the wordmark, three links and the controls cannot share one line,
    and a two-line masthead is broken. The nav is the part that can be reached
-   from the footer, so it is the part that goes. */
-@media (max-width: 640px) { .bar-nav { display: none; } }
+   from the footer, so it is the part that goes. Was 640 until 26 Sep 2026:
+   from 641 to ~720 the masthead was up to 129px wider than the page even with
+   every label collapsed. "WhatsApp alerts" keeps its words — it is India's one
+   channel — so the links go first. */
+@media (max-width: 760px) { .bar-nav { display: none; } }
