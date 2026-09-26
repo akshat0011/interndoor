@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 26 Sep 2026 09:16:07 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 10:20:18 GMT</lastBuildDate>
+  <item>
+    <title>Cloud Security Intern — eSec Forte® Technologies</title>
+    <link>https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4471012795</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4471012795</guid>
+    <pubDate>Sat, 26 Sep 2026 10:20:18 GMT</pubDate>
+    <description>Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India
+• Configure iam and secure cloud environments on aws azure or gcp
+• Work with devops teams to improve security posture
+• Stay updated on cybersecurity threats and tools</description>
+  </item>
+  <item>
+    <title>AI Engineer — UST</title>
+    <link>https://interndoor.com/jobs/ust-ai-engineer-4450833380</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ust-ai-engineer-4450833380</guid>
+    <pubDate>Sat, 26 Sep 2026 09:53:06 GMT</pubDate>
+    <description>Company: UST · Location: Bengaluru, Karnataka, India · Duration: 6-7 years
+• Build intelligent agents and workflows using LangGraph, LangChain, and Python
+• Deploy AI applications on AWS with Amazon Bedrock and cloud-native tools
+• Collaborate with DevOps and architecture teams on secure, scalable solutions</description>
+  </item>
+  <item>
+    <title>Audio Software Development Engineer — Visteon Corporation</title>
+    <link>https://interndoor.com/jobs/visteon-corporation-audio-software-development-engineer-4314589485</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/visteon-corporation-audio-software-development-engineer-4314589485</guid>
+    <pubDate>Sat, 26 Sep 2026 09:47:35 GMT</pubDate>
+    <description>Company: Visteon Corporation · Location: Chennai, Tamil Nadu, India
+• Design and implement audio components for automotive use cases
+• Work with Android framework, HAL layers, and Linux drivers
+• Collaborate with global teams on car infotainment systems</description>
+  </item>
   <item>
     <title>SOFTWARE ENGINEER L2 — Wipro</title>
     <link>https://interndoor.com/jobs/wipro-software-engineer-l2-4472264704</link>
@@ -479,36 +509,6 @@
 • Develop and maintain automation solutions using ASP.Net, C#, SQL/NoSQL, Python
 • Deploy applications with Docker, Kubernetes, and IIS on Windows
 • Collaborate with teams to deliver solutions and implement changes</description>
-  </item>
-  <item>
-    <title>Associate Functional Programmer — Novo Nordisk</title>
-    <link>https://interndoor.com/jobs/novo-nordisk-associate-functional-programmer-4458889228</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/novo-nordisk-associate-functional-programmer-4458889228</guid>
-    <pubDate>Fri, 25 Sep 2026 15:38:09 GMT</pubDate>
-    <description>Company: Novo Nordisk · Location: Bengaluru East, Karnataka, India · Duration: 1–3 years
-• Create monitoring reports for clinical trials using tools like SAS, SQL, and Power BI
-• Work with cross-functional teams to translate data into insights for patient safety
-• Maintain and develop reports across global trial portfolios with validation documentation</description>
-  </item>
-  <item>
-    <title>Java Fullstack IRC300668 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453515952</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453515952</guid>
-    <pubDate>Fri, 25 Sep 2026 15:37:54 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Pune City, Maharashtra, India
-• Develop and maintain Java-based microservices using Spring Boot
-• Work with AWS services like S3, EC2, and SQS/SNS
-• Collaborate on REST APIs and CI/CD pipelines with GitLab</description>
-  </item>
-  <item>
-    <title>Data Scientist - QA Automation — Barclays</title>
-    <link>https://interndoor.com/jobs/barclays-data-scientist-qa-automation-4470182063</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-data-scientist-qa-automation-4470182063</guid>
-    <pubDate>Fri, 25 Sep 2026 15:37:46 GMT</pubDate>
-    <description>Company: Barclays · Location: Gurugram, Haryana, India
-• Build and maintain data pipelines for automated data processing
-• Develop predictive models to forecast outcomes and identify risks
-• Collaborate with business teams to translate requirements into technical solutions</description>
   </item>
 </channel>
 </rss>
