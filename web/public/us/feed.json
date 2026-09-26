@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/raytheon-airborne-rf-electronics-electrical-engineer-intern-summer-2027-onsite-4463709166",
+      "url": "https://interndoor.com/us/jobs/raytheon-airborne-rf-electronics-electrical-engineer-intern-summer-2027-onsite-4463709166",
+      "title": "Airborne RF Electronics Electrical Engineer Intern (Summer 2027)(Onsite) — Raytheon",
+      "content_text": "Company: Raytheon · Location: Plano, TX · Duration: Summer 2027\n• Troubleshoot hardware and test sets at component level using MATLAB and LabVIEW\n• Analyze test data and generate technical documents and specifications\n• Work on airborne RF electronics in a production program team",
+      "date_published": "2026-09-26T16:14:38.362Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/raytheon-airborne-rf-electronics-electrical-engineer-intern-summer-2027-onsite-4463702316",
+      "url": "https://interndoor.com/us/jobs/raytheon-airborne-rf-electronics-electrical-engineer-intern-summer-2027-onsite-4463702316",
+      "title": "Airborne RF Electronics Electrical Engineer Intern (Summer 2027)(Onsite) — Raytheon",
+      "content_text": "Company: Raytheon · Location: McKinney, TX · Duration: Summer 2027\n• Troubleshoot hardware and test sets down to component level using MATLAB and LabVIEW\n• Analyze test data and generate technical documents for product specifications\n• Work on airborne RF electronics in a production program with an IPT team",
+      "date_published": "2026-09-26T16:09:27.910Z",
+      "authors": [
+        {
+          "name": "Raytheon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461448123",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461448123",
+      "title": "Physical Design Engineer Intern, BS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Boise, ID · Duration: Fall 2027\n• Perform synthesis, floor planning, and timing analysis on complex logic blocks\n• Use Python, TCL, Perl, and Shell to automate design tasks\n• Collaborate with cross-functional teams to resolve timing and congestion issues",
+      "date_published": "2026-09-26T15:40:09.798Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/saic-data-scientist-intern-4472297173",
       "url": "https://interndoor.com/us/jobs/saic-data-scientist-intern-4472297173",
       "title": "Data Scientist Intern — SAIC",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Mayo Clinic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-perception-machine-learning-ats-greenhouse-waymo-8227411",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-perception-machine-learning-ats-greenhouse-waymo-8227411",
-      "title": "2027 Summer Intern, MS/PhD, Perception, Machine Learning — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Design and implement multi-modality perception models for autonomous driving\n• Work with large-scale ML infrastructure and real-world driving data\n• Collaborate on 3D object detection, segmentation, and self-supervised learning",
-      "date_published": "2026-09-25T22:46:35.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-atlanta-ats-microsoft-india-united-states-united-kingdom-1970393557008714",
-      "url": "https://interndoor.com/us/jobs/microsoft-software-engineer-intern-opportunities-for-university-students-atlanta-ats-microsoft-india-united-states-united-kingdom-1970393557008714",
-      "title": "Software Engineer: Intern Opportunities for University Students, Atlanta — Microsoft",
-      "content_text": "Company: Microsoft · Location: Atlanta, Georgia, United States\n• Build software solutions with real-world impact\n• Work with teams on cutting-edge technology\n• Learn new tools and methods in a collaborative environment",
-      "date_published": "2026-09-25T22:03:17.000Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cencora-business-analytics-intern-4470185946",
-      "url": "https://interndoor.com/us/jobs/cencora-business-analytics-intern-4470185946",
-      "title": "Business Analytics Intern — Cencora",
-      "content_text": "Company: Cencora · Location: United, PA\n• Analyze data to find trends and support business decisions\n• Build dashboards with Tableau and Power BI for internal and customer tools\n• Support platform modernization with CI/CD and self-service frameworks",
-      "date_published": "2026-09-25T21:58:34.733Z",
-      "authors": [
-        {
-          "name": "Cencora"
         }
       ]
     }
