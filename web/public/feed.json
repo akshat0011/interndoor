@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-vapt-professional-4471048618",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-vapt-professional-4471048618",
+      "title": "VAPT Professional — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Noida, Uttar Pradesh, India\n• Analyze cloud environments for security risks\n• Manage patching and compliance across azure and aws\n• Conduct penetration tests and incident response",
+      "date_published": "2026-09-26T17:07:17.266Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/elevenlabs-enterprise-solutions-engineer-india-4396010785",
+      "url": "https://interndoor.com/jobs/elevenlabs-enterprise-solutions-engineer-india-4396010785",
+      "title": "Enterprise Solutions Engineer - India — ElevenLabs",
+      "content_text": "Company: ElevenLabs · Location: India\n• Design and implement technical solutions for enterprise clients\n• Collaborate with sales and product teams to enhance customer experiences\n• Create tools and documentation to support customer integration\n• Work remotely from India with travel for customer visits",
+      "date_published": "2026-09-26T17:03:23.571Z",
+      "authors": [
+        {
+          "name": "ElevenLabs"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864",
       "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-epm-arcs-associate-4432762864",
       "title": "EPM - ARCS - Associate — PwC Acceleration Center India",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470348671",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470348671",
-      "title": "Apprentice - Enterprise Technology Services — American Express",
-      "content_text": "Company: American Express · Location: Chennai, Tamil Nadu, India\n• Write code in java, javascript, python, or .net\n• Work on api specs, code reviews, and automation tools\n• Develop customer-facing apps for web, mobile, and social platforms",
-      "date_published": "2026-09-25T18:16:30.211Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-google-4461121886",
-      "url": "https://interndoor.com/jobs/ibm-data-engineer-data-platforms-google-4461121886",
-      "title": "Data Engineer-Data Platforms-Google — IBM",
-      "content_text": "Company: IBM · Location: Chennai, Tamil Nadu, India\n• Design and build data pipelines for data warehouses and datalakes using Google Cloud services\n• Work with BigQuery, DataFlow, and Cloud Composer to manage data platforms and pipelines\n• Implement data migration solutions using Google services for seamless system transfers",
-      "date_published": "2026-09-25T18:11:10.481Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
