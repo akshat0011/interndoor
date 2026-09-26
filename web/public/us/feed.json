@@ -6,18 +6,6 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/gap-inc-rotational-management-program-trainee-4472256741",
-      "url": "https://interndoor.com/us/jobs/gap-inc-rotational-management-program-trainee-4472256741",
-      "title": "Rotational Management Program Trainee — Gap Inc.",
-      "content_text": "Company: Gap Inc. · Location: San Francisco, CA\n• Analyze data and retail math to forecast demand and shape product decisions\n• Collaborate across teams to drive business outcomes with AI and customer insights\n• Rotate through product, merchandising, and inventory roles in San Francisco",
-      "date_published": "2026-09-26T06:56:36.394Z",
-      "authors": [
-        {
-          "name": "Gap Inc."
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/2025-sanofi-device-innovation-challenge-2027-spring-co-op-bioinformatic-digital-data-scientist-global-immunolo-4472252542",
       "url": "https://interndoor.com/us/jobs/2025-sanofi-device-innovation-challenge-2027-spring-co-op-bioinformatic-digital-data-scientist-global-immunolo-4472252542",
       "title": "2027 Spring Co-op Bioinformatic Digital Data Scientist - Global Immunology, Waltham, MA — 2025 Sanofi Device Innovation Challenge",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Waymo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/doordash-machine-learning-intern-masters-summer-2027-ats-greenhouse-doordashusa-8204111",
+      "url": "https://interndoor.com/us/jobs/doordash-machine-learning-intern-masters-summer-2027-ats-greenhouse-doordashusa-8204111",
+      "title": "Machine Learning Intern (Masters) - Summer 2027 — DoorDash",
+      "content_text": "Company: DoorDash · Location: San Francisco, CA;  Sunnyvale, CA ; New York City, NY; Seattle, WA · Duration: 16 weeks\n• Build ML models for discovery, ads, and search using NLP and computer vision\n• Work on research in auction systems, ranking, and causal inference\n• Collaborate with engineering teams to improve product experiences",
+      "date_published": "2026-09-25T20:59:04.000Z",
+      "authors": [
+        {
+          "name": "DoorDash"
         }
       ]
     }
