@@ -371,6 +371,16 @@ console.log('\n== THE HOMEPAGE MARKUP ==');
   check('the label sits BESIDE the icon, not under it', /grid-auto-flow:\s*column/.test(fbOpenRule), true);
   const alertsCollapse = css.match(/@media \(max-width: (\d+)px\) \{\s*\.alerts span \{ display: none; \}/);
   check('the WhatsApp label collapses on a phone', Number(alertsCollapse?.[1]) >= 430, true);
+  /* (3) AND ON A TABLET (26 Sep 2026). From 641 to 880px every label was
+     still showing and the masthead ran 15-129px past the page — an iPad in
+     portrait scrolled sideways. The feedback and region labels collapse to
+     their icons below 940, and the section links go below 760; "WhatsApp
+     alerts" keeps its words (above 520px). Measured every 5px, 320-1200, on eight page
+     types; the numbers below are the floor that measurement stands on. */
+  const bp = (re) => Number((css.match(re) || [])[1]);
+  check('the feedback label collapses on a tablet', bp(/@media \(max-width: (\d+)px\) \{ \.fb-open span \{ display: none; \}/) >= 940, true);
+  check('so does the region name', bp(/@media \(max-width: (\d+)px\) \{\s*\.rg-cur, \.rg-caret \{ display: none; \}/) >= 940, true);
+  check('and the section links go before the header can wrap', bp(/@media \(max-width: (\d+)px\) \{ \.bar-nav \{ display: none; \} \}/) >= 760, true);
   /* The page must not scroll behind an open dialog. */
   check('the page is locked while it is open', /html\.fb-open-modal/.test(css), true);
   check('.fb-msg shares .sub-msg\'s rules', /\.sub-msg, \.fb-msg \{/.test(css), true);
