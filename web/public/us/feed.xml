@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 26 Sep 2026 01:43:53 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 02:21:01 GMT</lastBuildDate>
+  <item>
+    <title>Instrumentation Apprentice — Caterpillar Inc.</title>
+    <link>https://interndoor.com/us/jobs/caterpillar-inc-instrumentation-apprentice-4472240319</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/caterpillar-inc-instrumentation-apprentice-4472240319</guid>
+    <pubDate>Sat, 26 Sep 2026 02:21:01 GMT</pubDate>
+    <description>Company: Caterpillar Inc. · Location: Green Valley, AZ
+• Build and repair instrumentation cables and harnesses
+• Work with sensors, data systems, and test equipment
+• Receive mentorship and hands-on training in a real-world lab</description>
+  </item>
   <item>
     <title>DevOps Intern — Keysight Technologies</title>
     <link>https://interndoor.com/us/jobs/keysight-technologies-devops-intern-4470510567</link>
@@ -500,16 +510,6 @@
 • Write automated tests for clinical workflows
 • Work with Java and regulated medical software
 • Mentorship from experienced engineers</description>
-  </item>
-  <item>
-    <title>System Software Engineering - PhD Intern — Intel</title>
-    <link>https://interndoor.com/us/jobs/intel-system-software-engineering-phd-intern-4470396067</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/intel-system-software-engineering-phd-intern-4470396067</guid>
-    <pubDate>Fri, 25 Sep 2026 19:28:21 GMT</pubDate>
-    <description>Company: Intel · Location: Hillsboro, OR · Duration: 1 year
-• Design and develop system software across firmware, drivers, and operating systems
-• Work on cross-stack optimization for Intel platforms and technologies
-• Contribute to reference platform development for specific market segments</description>
   </item>
 </channel>
 </rss>
