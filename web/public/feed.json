@@ -6,6 +6,90 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cognizant-developer-4462617512",
+      "url": "https://interndoor.com/jobs/cognizant-developer-4462617512",
+      "title": "Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Hyderabad, Telangana, India\n• Build workflow solutions with IBM BAW to automate business processes\n• Write Oracle SQL queries and optimize database structures for performance\n• Develop front end components with JavaScript for intuitive user experiences",
+      "date_published": "2026-09-26T18:48:31.353Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-cloud-engineer-4462366207",
+      "url": "https://interndoor.com/jobs/cognizant-cloud-engineer-4462366207",
+      "title": "Cloud Engineer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Noida, Uttar Pradesh, India\n• Design scalable cloud architectures for business applications\n• Use containers orchestration and automation tools daily\n• Work hybrid with rotational shifts and global traffic",
+      "date_published": "2026-09-26T18:46:13.666Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-linux-rest-api-integration-admin-4444021393",
+      "url": "https://interndoor.com/jobs/cognizant-linux-rest-api-integration-admin-4444021393",
+      "title": "Linux ,REST API integration-Admin — Cognizant",
+      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Manage linux servers, automate tasks with ansible, and ensure system security\n• Integrate rest apis for infrastructure tools and troubleshoot connectivity issues\n• Patch servers, monitor performance, and maintain compliance standards",
+      "date_published": "2026-09-26T18:26:41.577Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bloomberg-user-support-fx-advanced-specialist-4441596522",
+      "url": "https://interndoor.com/jobs/bloomberg-user-support-fx-advanced-specialist-4441596522",
+      "title": "User Support - FX Advanced Specialist — Bloomberg",
+      "content_text": "Company: Bloomberg · Location: Mumbai, Maharashtra, India\n• Support FX clients with complex queries and ensure accurate responses\n• Collaborate with sales and product teams to shape client experiences\n• Train new hires and develop advanced specialists globally",
+      "date_published": "2026-09-26T18:23:41.052Z",
+      "authors": [
+        {
+          "name": "Bloomberg"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453524950",
+      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453524950",
+      "title": "Java Fullstack IRC300668 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Develop and maintain backend services using Java, REST APIs, and Spring Boot\n• Work with AWS services like S3, EC2, and SQS/SNS for cloud infrastructure\n• Collaborate on microservices and streaming with Apache Kafka\n• Contribute to front-end development with React/Redux and JavaScript",
+      "date_published": "2026-09-26T18:10:09.384Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453532791",
+      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453532791",
+      "title": "Java Fullstack IRC300668 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Build and maintain microservices using Java and Spring Boot\n• Develop REST APIs and integrate with cloud platforms like AWS\n• Collaborate with a global team on high-tech and telecom projects",
+      "date_published": "2026-09-26T18:09:59.861Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jump-trading-hpc-systems-engineer-4453250474",
+      "url": "https://interndoor.com/jobs/jump-trading-hpc-systems-engineer-4453250474",
+      "title": "HPC Systems Engineer — Jump Trading",
+      "content_text": "Company: Jump Trading · Location: Mumbai, Maharashtra, India\n• Design, implement, and maintain high performance compute and storage systems\n• Work with Linux, Python, Go, and tools like Ansible and SaltStack\n• Collaborate with researchers to optimize HPC usage across global projects",
+      "date_published": "2026-09-26T18:08:58.091Z",
+      "authors": [
+        {
+          "name": "Jump Trading"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968",
       "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968",
       "title": "Java Fullstack IRC300668 — GlobalLogic",
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Turtlemint"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/caterpillar-inc-hil-validation-engineer-4470959443",
-      "url": "https://interndoor.com/jobs/caterpillar-inc-hil-validation-engineer-4470959443",
-      "title": "HIL Validation Engineer — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Bengaluru East, Karnataka, India\n• Develop and validate Simulink models for robotic platforms\n• Collaborate with developers and team leads on system integration\n• Set up HIL benches and document test results for internal clients",
-      "date_published": "2026-09-25T21:25:35.700Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/caterpillar-inc-embedded-software-engineer-4470945947",
-      "url": "https://interndoor.com/jobs/caterpillar-inc-embedded-software-engineer-4470945947",
-      "title": "Embedded Software Engineer — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Develops and tests embedded software for devices and systems\n• Collaborates with teams for post-production support\n• Requires engineering or computer science degree",
-      "date_published": "2026-09-25T21:23:43.620Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-4472076790",
-      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-4472076790",
-      "title": "S&C Global Network - AI - Hi Tech - Data Science Associate — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Build AI models for NLP, vision, and multimodal apps using GenAI frameworks\n• Implement data science workflows on Azure or AWS for analytics projects\n• Develop predictive models and recommendation systems with Python and SQL",
-      "date_published": "2026-09-25T20:08:04.003Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-acn-gn-industry-public-servies-gen-ai-analyst-4472086504",
-      "url": "https://interndoor.com/jobs/accenture-in-india-acn-gn-industry-public-servies-gen-ai-analyst-4472086504",
-      "title": "#ACN GN-Industry-Public Servies -Gen AI- Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Design and develop Gen AI solutions for document processing and automation\n• Collaborate with cross-functional teams on data ecosystems and cloud integration\n• Lead workshops and feasibility studies for client projects\n• Travel up to 100% for client assignments",
-      "date_published": "2026-09-25T20:07:24.085Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4472062879",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4472062879",
-      "title": "QA Engineer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Test SQL Server data models, Power BI reports, and SSAS components for accuracy and performance\n• Validate data flows, event handling, and security across integration layers using SQL and testing frameworks\n• Document test results, manage defects, and support deployment and production validation",
-      "date_published": "2026-09-25T19:30:56.611Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-qre-4463137856",
-      "url": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-qre-4463137856",
-      "title": "Quality Assurance Engineer, QRE — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Write and execute test strategies for large-scale grocery apps\n• Use Java, Python, or C# for automation and AI agent development\n• Work on critical customer-facing systems with global brand impact",
-      "date_published": "2026-09-25T19:25:38.456Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-software-engineer-terraform-iac-4451202825",
-      "url": "https://interndoor.com/jobs/harman-india-software-engineer-terraform-iac-4451202825",
-      "title": "Software Engineer - Terraform IAC — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Design and implement scalable platform solutions using Terraform and cloud infrastructure\n• Collaborate with cross-functional teams to optimize cost, security, and operational reliability\n• Mentor engineers and drive technical leadership across the team",
-      "date_published": "2026-09-25T19:24:20.164Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
         }
       ]
     }
