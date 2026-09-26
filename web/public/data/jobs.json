@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790421760769,
+ "generatedAt": 1790422128388,
  "region": "IN",
  "regionName": "India",
- "count": 594,
- "techCount": 594,
+ "count": 593,
+ "techCount": 593,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -421,6 +421,7 @@
    "roleLabel": "Application Development",
    "degreeLevel": null,
    "degreeText": null,
+   "experience": "0–1 years",
    "keySkills": [
     "c++",
     "qt",
@@ -30763,48 +30764,6 @@
    "cardFacts": [
     "Bengaluru",
     "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4458376472",
-   "title": "AI Training |Internship| Job Opportunity |2026 Graduates",
-   "company": "Krutrim Insights",
-   "matchedWatchlist": "Krutrim",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/krutrim-insights.jpg",
-   "location": "India",
-   "workplaceType": "Remote",
-   "stipend": "₹0 ",
-   "duration": null,
-   "applicants": "3 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship offers recent ai graduates hands-on training with real data and tools, leading to a paid international internship and potential job placement. Ideal for btech, be, or mca graduates in delhi ncr looking to launch their ai careers.",
-   "bullets": [
-    "Train ai models using real-world data sets",
-    "Work with python and tensorflow frameworks",
-    "Eligible for paid internship abroad"
-   ],
-   "roleLabel": "AI Training",
-   "degreeLevel": "UG",
-   "degreeText": "B.Tech/B.E./MCA",
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "42 minutes ago",
-   "postedAt": 1787827503526,
-   "firstSeenAt": 1787830023534,
-   "lastSeenAt": 1787830023534,
-   "url": "https://www.linkedin.com/jobs/view/4458376472/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4458376472/",
-   "description": null,
-   "roleFingerprint": "231cb68bc2",
-   "cardFacts": [
-    "India",
-    "Remote"
    ],
    "category": "software",
    "region": "IN"

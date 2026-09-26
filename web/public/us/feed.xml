@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 26 Sep 2026 09:37:11 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 11:22:10 GMT</lastBuildDate>
+  <item>
+    <title>Research Scientist Intern, AI Alignment — Meta</title>
+    <link>https://interndoor.com/us/jobs/meta-research-scientist-intern-ai-alignment-4312023968</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/meta-research-scientist-intern-ai-alignment-4312023968</guid>
+    <pubDate>Sat, 26 Sep 2026 11:22:10 GMT</pubDate>
+    <description>Company: Meta · Location: Menlo Park, CA
+• Develop algorithms and systems using deep learning techniques
+• Work with Python, C++, PyTorch, and TensorFlow
+• Publish research and contribute to product development</description>
+  </item>
   <item>
     <title>Software Engineer Intern (Ads Interface) - 2027 Summer — TikTok</title>
     <link>https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ads-interface-2027-summer-4462331090</link>
@@ -501,16 +511,6 @@
 • Collaborate with engineers, EDA tools, and internal experts on customer projects
 • Develop technical documentation and presentations for customer use
 • Work in a global semiconductor team with focus on AI and power-efficient solutions</description>
-  </item>
-  <item>
-    <title>2027 Summer Intern, MS/PhD, Software Engineer, Sys Intel &amp; Machine Learning — Waymo</title>
-    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-sys-intel-and-machine-lear-ats-greenhouse-waymo-8233746</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-software-engineer-sys-intel-and-machine-lear-ats-greenhouse-waymo-8233746</guid>
-    <pubDate>Fri, 25 Sep 2026 21:01:50 GMT</pubDate>
-    <description>Company: Waymo · Location: Mountain View, CA, USA
-• Design and implement parameter-efficient fine-tuning modules for Vision Transformers
-• Work with quantization and latency teams to optimize model performance on hardware
-• Evaluate perception metrics on large-scale autonomous driving datasets</description>
   </item>
 </channel>
 </rss>
