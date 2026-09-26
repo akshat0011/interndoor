@@ -26,7 +26,8 @@ import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
-import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
+import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, fetchPublicPosting, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
+import { roleCategory } from './rolefocus.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -496,7 +497,7 @@ async function main() {
   // summary — India can be on its 3h floor while a region that has just been
   // switched on is still walking its first 36h.
   const windowsUsed = new Set();
-  const counters = { pagesScanned: 0, cardsSeen: 0, detailsExtracted: 0, newJobs: 0, skippedStale: 0, skippedCompany: 0, skippedTitle: 0, techRoles: 0, nonTechRoles: 0, geminiJudged: 0, termsLearned: 0, nearMisses: 0, skippedViewed: 0, listedWithoutOpening: 0, logosBackfilled: 0, skippedKnown: 0, failedDetails: 0, descriptionsBackfilled: 0, cardsWithoutId: 0, cardKeysMigrated: 0, applyUrlsFound: 0, applyUrlsMissed: 0 };
+  const counters = { pagesScanned: 0, cardsSeen: 0, detailsExtracted: 0, newJobs: 0, skippedStale: 0, skippedCompany: 0, skippedTitle: 0, techRoles: 0, nonTechRoles: 0, geminiJudged: 0, termsLearned: 0, nearMisses: 0, skippedViewed: 0, listedWithoutOpening: 0, logosBackfilled: 0, skippedKnown: 0, failedDetails: 0, descriptionsBackfilled: 0, cardsWithoutId: 0, cardKeysMigrated: 0, applyUrlsFound: 0, applyUrlsMissed: 0, publicReads: 0, publicRefused: 0, keptWithoutOpen: 0, accountOpens: 0, rereadCards: 0 };
 
   log.section(`Run ${runId}`);
   log.info(`${cfg.watchlist.length} watchlist terms across ${cfg.uniqueCompanyCount} companies · mode "${cfg.searchMode ?? 'companies'}" · ${allSearches.length} searches · budget ${cfg.limits.maxRuntimeMinutes}m`);
@@ -569,7 +570,12 @@ async function main() {
        openRegion === null and must not be reported as a total outage. */
     let anyRegionWorked = false;
 
-    const openRegionSession = async (code) => {
+    /* Whether the open account has been SEEN signed in on a LinkedIn page. A
+       session opened without the feed (below) has only its cookie to go on
+       until its first posting is opened, and is checked there. */
+    let accountVerified = false;
+
+    const openRegionSession = async (code, { warm = true } = {}) => {
       if (openRegion === code) return;
 
       /**
@@ -599,12 +605,24 @@ async function main() {
       session = await launchBrave(cfg, { region: code });
       ({ page, context } = session);
 
-      await li.warmUp(page, cfg);
-      await ensureHealthy(page, cfg, { context: `warm-up (${code})`, remainingMs: clock.remainingMs() });
+      /* NO FEED VISIT FOR THE PUBLIC SEARCH (26 Sep 2026). Every run used to
+         open each account on the LinkedIn feed — ~45 loads a day per account of
+         the page most full of other people's profiles — two weeks before
+         LinkedIn signed the India account out for "a high volume of LinkedIn
+         profile data". A public-search walk needs the account only to open a
+         posting, so it goes straight there, and the first posting it opens is
+         the sign-in check (openOnAccount). Until then only the cookie is
+         checked: assertSignedIn on a blank page reads the cookie alone. The
+         signed-in search page still warms up, as it always did. */
+      if (warm) {
+        await li.warmUp(page, cfg);
+        await ensureHealthy(page, cfg, { context: `warm-up (${code})`, remainingMs: clock.remainingMs() });
+      }
       await assertSignedIn(page, context, cfg);
       openRegion = code;
+      accountVerified = warm;
       anyRegionWorked = true;
-      log.ok(`Signed in (${code} account).`);
+      log.ok(warm ? `Signed in (${code} account).` : `Brave ready (${code} account) — no feed visit; the sign-in is checked on the first posting it opens.`);
     };
 
     // Rotate the starting point. With a long keyword list one run cannot
@@ -738,7 +756,7 @@ async function main() {
       const sessionReady = async () => {
         if (openRegion === region) return true;
         try {
-          await openRegionSession(region);
+          await openRegionSession(region, { warm: !viaGuest });
           return true;
         } catch (err) {
           /* Only a LinkedIn-level refusal is survivable this way. A browser that
@@ -781,7 +799,7 @@ async function main() {
       // volumes: a thin region could drag a healthy run's mean under the floor
       // and have it recorded `partial`, which stretches the next window and
       // walks MORE pages — the opposite of what the floor is for.
-      const before = { pages: counters.pagesScanned, cards: counters.cardsSeen };
+      const before = { pages: counters.pagesScanned, cards: counters.cardsSeen, publicReads: counters.publicReads, publicRefused: counters.publicRefused, keptWithoutOpen: counters.keptWithoutOpen, accountOpens: counters.accountOpens };
       log.info(baseline
         ? `${region}: ${filters.postedWithinHours}h window (last swept ${((Date.now() - baseline) / 3_600_000).toFixed(1)}h ago).`
         : `${region}: ${filters.postedWithinHours}h window — never swept, so no early stop this run.`);
@@ -1033,6 +1051,7 @@ async function main() {
         if (cards.length) renderedEarlierPage = true;
         counters.pagesScanned++;
         counters.cardsSeen += cards.length;
+        if (passNo > 0) counters.rereadCards += cards.length;
         log.info(`Found ${cards.length} job cards.`);
 
         if (cards.length === 0) { walkComplete = true; break; }
@@ -1419,32 +1438,103 @@ async function main() {
           relevantOnPage++;
           if (passNo > 0) reread.opened++;
 
-          if (viaGuest && !(await sessionReady())) {
-            signedOutMidWalk = true;
-            break;
-          }
-
-          await pause(cfg.pacing.betweenCards);
-          await idleFidget(page);
-
-          // Brave can die mid-run (it crashed once under memory pressure). Say
-          // so plainly and stop, rather than failing on whatever call happened
-          // to touch the dead page next.
-          if (!(await pageAlive(page))) {
+          /* ONE ACCOUNT OPEN, as a step of its own, so the public-first read
+             below asks for it only when it adds something. Answers { detail },
+             { error }, { signedOut } or { dead }. */
+          const openOnAccount = async () => {
+            if (viaGuest && !(await sessionReady())) return { signedOut: true };
+            await pause(cfg.pacing.betweenCards);
+            await idleFidget(page);
+            // Brave can die mid-run (it crashed once under memory pressure).
+            if (!(await pageAlive(page))) return { dead: true };
+            counters.accountOpens++;
+            let got;
+            try {
+              got = { detail: await li.openAndExtract(page, card, cfg) };
+            } catch (err) {
+              got = { error: err };
+            }
+            /* A SESSION OPENED WITHOUT THE FEED IS CHECKED HERE, on the first
+               posting it opens, before that read is trusted and before a second
+               posting is opened: a signed-out or flagged account shows its wall
+               on this page exactly as on the feed, and must not be walked into
+               again and again. */
+            if (viaGuest && !accountVerified) {
+              try {
+                await assertSignedIn(page, context, cfg);
+                accountVerified = true;
+                log.ok(`Signed in (${region} account) — checked on the first posting it opened.`);
+              } catch (err) {
+                if (!(err instanceof RunAborted && err.state === State.LOGGED_OUT)) throw err;
+                deadRegions.set(region, err.message);
+                log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
+                notes.push(`The ${region} LinkedIn account is signed out, so ${region} opened nothing on it this run. Run \`npm run login -- --region=${region}\`.`);
+                return { signedOut: true };
+              }
+            }
+            return got;
+          };
+          const braveDied = () => {
             notes.push('Brave closed unexpectedly partway through the run. Everything captured before that point was kept and published.');
             log.error('Brave is no longer responding — ending the run and keeping what was collected.');
             status = 'partial';
-            break searchLoop;
+          };
+
+          /* THE POSTING'S PUBLIC PAGE FIRST (fetchPublicPosting, 26 Sep 2026).
+             It carries everything the refusals below read — the description,
+             LinkedIn's employment type and seniority, the company — at no cost
+             to the account. On 25 Sep, 343 of the India account's 766 opens were
+             refused the moment they were read; read here, none of them touches
+             the account. A page that cannot be read (not a refusal, not a
+             block) falls back to the account open, so nothing is lost. */
+          let publicRead = null;
+          if (viaGuest && card.jobId) {
+            const pub = await fetchPublicPosting(card.jobId, {
+              budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
+              onWait: ({ attempt, of, waitMs }) => {
+                sawBlocked = true;
+                log.warn(`LinkedIn's public posting page rate-limited us (HTTP 429) — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
+              },
+            });
+            await pause(guestPacing());
+            if (pub.detail) {
+              publicRead = pub.detail;
+              counters.publicReads++;
+            } else if (pub.blocked) {
+              // Per IP, like the search: everything after it would be refused too.
+              sawBlocked = true;
+              guestBlocked = true;
+              log.error(`LinkedIn's public posting page returned HTTP ${pub.status} — stopping discovery for this run.`);
+              notes.push(`LinkedIn's public posting page rate-limited us (HTTP ${pub.status}) on "${label}". Discovery stopped for this run; the next run re-covers the window.`);
+              break;
+            } else if (pub.gone) {
+              log.info(`  ${card.jobId} ${pub.closed ? 'is no longer accepting applications' : 'has been taken down'} — skipped.`);
+              continue;
+            } else {
+              log.warn(`  Could not read the public page for ${card.jobId} (${pub.error ?? `HTTP ${pub.status}`}${pub.markupChanged ? ', no description block' : ''}) — opening it on the account instead.`);
+            }
           }
 
-          let detail;
-          try {
-            detail = await li.openAndExtract(page, card, cfg);
-          } catch (err) {
-            counters.failedDetails++;
-            log.warn(`Could not read "${card.title}" — ${err.message.split('\n')[0]}`);
-            await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
-            continue;
+          let detail = publicRead;
+          let openedOnAccount = false;
+          if (!detail) {
+            const got = await openOnAccount();
+            if (got.signedOut) {
+              signedOutMidWalk = true;
+              break;
+            }
+            if (got.dead) {
+              braveDied();
+              break searchLoop;
+            }
+            if (got.error) {
+              counters.failedDetails++;
+              log.warn(`Could not read "${card.title}" — ${got.error.message.split('\n')[0]}`);
+              await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
+              continue;
+            }
+            detail = got.detail;
+            openedOnAccount = true;
           }
 
           // The click is what makes LinkedIn name the posting, so this is the
@@ -1456,7 +1546,7 @@ async function main() {
              and must be retried, not believed. An empty read also keeps its page
              as evidence — a few a run — so the cause is looked at, not guessed. */
           const readOk = (detail.description?.length ?? 0) >= 60;
-          if (!readOk && jobId && emptyReadsKept < 3) {
+          if (!readOk && jobId && openedOnAccount && emptyReadsKept < 3) {
             emptyReadsKept++;
             const stamp = `empty-read-${runId}-${jobId}`;
             try {
@@ -1485,6 +1575,7 @@ async function main() {
               counters.skippedCompany++;
               store.noteSkippedCard(card.identity, gate.reason, detail.company || '', card.title);
               if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${gate.reason}`, detail.company || '', card.title);
+              if (detail.viaPublicPage) counters.publicRefused++;
               continue;
             }
             matched = gate.matched;
@@ -1510,6 +1601,7 @@ async function main() {
               counters.skippedTitle++;
               store.noteSkippedCard(card.identity, verdict.reason, card.company, card.title);
               if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${verdict.reason}`, card.company, card.title);
+              if (detail.viaPublicPage) counters.publicRefused++;
               continue;
             }
             employmentKind = verdict.kind;
@@ -1525,10 +1617,52 @@ async function main() {
               card.title,
             );
             if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`, card.company, card.title);
+            if (detail.viaPublicPage) counters.publicRefused++;
             continue;
           }
 
-          await ensureHealthy(page, cfg, { context: `job ${jobId}`, remainingMs: clock.remainingMs() });
+          /* KEPT. The account opens it now only for what the public page hides
+             behind a sign-in — the employer's own apply link — and only when
+             there is one to find:
+               - a Misc-shelf role is kept from the public page and never opened
+                 (his call, 26 Sep 2026: the account's opens are for the
+                 software and hardware shelves);
+               - a posting taken on LinkedIn's own apply form has no employer
+                 link, so an open could only ever return LinkedIn's form.
+             Either way it is stored, published and announced exactly as before;
+             its Apply button goes to the posting on LinkedIn. An account open
+             that fails keeps the public read — the posting is never lost for
+             want of a link. */
+          if (detail.viaPublicPage) {
+            const shelf = roleCategory({ title: detail.title || card.title }, cfg.roleFocus).category;
+            if (shelf === 'misc' || detail.applyKind === 'onsite') {
+              counters.keptWithoutOpen++;
+              detail.easyApply = detail.applyKind === 'onsite';
+              log.info(`  kept from the public page — ${shelf === 'misc' ? 'a Misc-shelf role' : 'applied for on LinkedIn itself'}, so the account does not open it.`);
+            } else {
+              const got = await openOnAccount();
+              if (got.signedOut) {
+                signedOutMidWalk = true;
+                break;
+              }
+              if (got.dead) {
+                braveDied();
+                break searchLoop;
+              }
+              if (got.detail?.jobId === jobId) {
+                openedOnAccount = true;
+                detail.applyUrl = got.detail.applyUrl;
+                detail.easyApply = got.detail.easyApply;
+                detail.workplaceType = detail.workplaceType || got.detail.workplaceType;
+                detail.logoUrl = detail.logoUrl || got.detail.logoUrl;
+              } else {
+                counters.failedDetails++;
+                log.warn(`  Could not open ${jobId} on the account (${got.error ? got.error.message.split('\n')[0] : `it showed ${got.detail?.jobId ?? 'no posting'}`}) — kept from the public page without the employer's link.`);
+              }
+            }
+          }
+
+          if (openedOnAccount) await ensureHealthy(page, cfg, { context: `job ${jobId}`, remainingMs: clock.remainingMs() });
           counters.detailsExtracted++;
           openedOnThisPage++;
 
@@ -1543,7 +1677,7 @@ async function main() {
              The previous breakage ran for weeks and was found by querying the
              database months later. A ratio on the summary line makes the next
              one visible on the first run instead. */
-          if (!detail.easyApply) {
+          if (openedOnAccount && !detail.easyApply) {
             if (detail.applyUrl) counters.applyUrlsFound++;
             else counters.applyUrlsMissed++;
           }
@@ -1611,7 +1745,7 @@ async function main() {
 
         log.info(`Page ${pageIndex + 1} done — opened ${openedOnThisPage} of ${cards.length} cards.`);
         await drawPage(true);
-        if (signedOutMidWalk) break;
+        if (signedOutMidWalk || (viaGuest && guestBlocked)) break;
 
         /* HOW FAR BACK THIS WALK HAS GOT, tracked on every page whether or not
            any stop rule is on. Only dateable cards count: parseRelativeTime
@@ -1731,6 +1865,13 @@ async function main() {
         await pause(cfg.pacing.betweenPages);
       }
 
+      /* WHAT THIS WALK COST THE ACCOUNT, every walk, so the load LinkedIn
+         flagged on 26 Sep is read off the log rather than reconstructed. */
+      if (viaGuest) {
+        const d = (k) => counters[k] - before[k];
+        log.info(`${region}: ${d('publicReads')} posting(s) read on the public page — ${d('publicRefused')} refused there, ${d('keptWithoutOpen')} kept without opening; ${d('accountOpens')} opened on the ${region} account.`);
+      }
+
       /* What the re-read bought, every time one ran — the measurement that
          says whether re-reading a capped window is worth its requests. */
       if (passNo > 0) {
@@ -1837,7 +1978,7 @@ async function main() {
     // one that turned out to be signed out, `page` is still bound to that
     // browser — backfilling through it would send every request through a
     // signed-out session and store whatever the guest surface returns.
-    if (openRegion) {
+    if (openRegion && accountVerified) {
       await backfillDescriptions(page, store, cfg, clock, counters);
     } else if (anyRegionWorked && deadRegions.size) {
       log.info('Skipping description backfill: the last account opened this run was signed out.');
@@ -2003,7 +2144,9 @@ async function main() {
        flipped, or LinkedIn having moved the payload again. */
     (counters.applyUrlsFound + counters.applyUrlsMissed
       ? ` · apply links ${counters.applyUrlsFound}/${counters.applyUrlsFound + counters.applyUrlsMissed}`
-      : '');
+      : '') +
+    ` · account opens ${counters.accountOpens}` +
+    (counters.publicReads ? ` · public pages read ${counters.publicReads} (${counters.publicRefused} refused, ${counters.keptWithoutOpen} kept unopened)` : '');
 
   log.section('Summary');
   log.info(summaryLine);
@@ -2094,7 +2237,11 @@ async function main() {
      sees the same status the run was filed under, and only on `ok` — the same
      rule the sweep baselines follow. See src/intake.js for the sweep that
      chose both constants and for why yield ALONE is not usable. */
-  await noteIntake(store, { cards: counters.cardsSeen, newJobs: counters.newJobs, status });
+  /* RE-READ CARDS ARE LEFT OUT OF THE YIELD. The tripwire's floor was measured
+     on first reads; a re-read of a capped window is mostly the filler past the
+     limit, and on 26 Sep one US re-read of 4,730 cards fired "INTAKE HAS
+     COLLAPSED" while intake was fine. */
+  await noteIntake(store, { cards: counters.cardsSeen - counters.rereadCards, newJobs: counters.newJobs, status });
 
   /* An expired session is the one failure that stops every board at once, and
      guard.js only banners the Mac for it. See src/sessionalert.js. */
