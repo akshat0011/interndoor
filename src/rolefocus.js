@@ -55,7 +55,13 @@ export const ROLE_FAMILIES = [
      BI tools and reporting sit here, ABOVE data engineering, which keeps the
      pipelines, platforms and warehouses. A bare "data analyst" stays in data
      engineering / analytics, the family he kept. */
-  ['analytics', 'Reporting / BI / dashboards', /business intelligence|\bbi\b|power bi|tableau|dashboard|reporting|\bmis\b|visuali[sz]ation/],
+  /* BUSINESS-SIDE ANALYTICS IS MISC TOO (26 Sep 2026, his "why did this
+     business analytics intern make it"): Turtlemint's marketing analytics,
+     TikTok's product strategy, Seagate's marketing analytics and Ericsson's
+     people analytics all sat on Software on the word "analytics" alone. A
+     title that also says data analyst / engineer / scientist keeps its data
+     family — "keep data analyst", his call. */
+  ['analytics', 'Reporting / BI / dashboards', /business intelligence|\bbi\b|power bi|tableau|dashboard|reporting|\bmis\b|visuali[sz]ation|^(?!.*\bdata\s+(?:analy|engineer|scien)).*\b(?:business|marketing|sales|product|customer|commercial|revenue|people|hr|financial|finance|operations)\s+analytics?\b/],
   ['data_eng', 'Data engineering / analytics', /data engineer|data platform|\betl\b|big data|analytics engineer|data analy|analytics|databricks|snowflake|data warehouse|\bdata\b/],
   ['fullstack', 'Full-stack', /full ?-?stack|\bmern\b|mean stack/],
   ['frontend', 'Frontend / web', /ux engineer|user experience engineer|front ?-?end|\breact\b|angular|\bvue\b|web develop|ui developer|javascript|typescript/],

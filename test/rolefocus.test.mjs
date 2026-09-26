@@ -150,6 +150,19 @@ check('admitEntryLevel refuses it after the open too',
   admitEntryLevel({ title: 'Manager, Site Reliability Engineer - Data Platforms', employmentTag: 'Full-time', seniorityTag: 'Entry level', description: '' }).reason,
   'entry-level: manager title');
 
+console.log('\n== business-side analytics is Misc, a data analyst stays Software ==');
+{
+  const cat = (title, roleLabel = null) => roleCategory({ title, roleLabel }, FOCUS).category;
+  check('Turtlemint\'s "Business Analytics Internship" is Misc', cat('Business Analytics Internship in Mumbai', 'Business analytics'), 'misc');
+  check('Cencora\'s, even labelled "Data Analysis"', cat('Business Analytics Intern', 'Data Analysis'), 'misc');
+  check('product analytics is Misc', cat('Product Analytics Intern'), 'misc');
+  check('marketing analytics is Misc', cat('AMER Business Marketing Analytics & Recertified Storage Analytics Intern - Summer 2026', 'Market Analytics'), 'misc');
+  check('a data analyst stays Software', cat('Data Analyst Intern'), 'software');
+  check('even inside a business-analytics title', cat('Global Revenue Operations Analytics: Data Analyst Intern', 'Data Dashboard Design'), 'software');
+  check('data analytics stays Software', cat('Data Analytics Intern'), 'software');
+  check('an analytics engineer stays Software', cat('Analytics Engineer Intern'), 'software');
+}
+
 console.log('\n== a level-II-or-above title is not an entry-level job ==');
 {
   const LVL = 'entry-level: level II+ title';
