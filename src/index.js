@@ -13,7 +13,7 @@ import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
-import { resolveSearches } from './searches.js';
+import { resolveSearches, scopeSearches } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts } from './ollama.js';
 import { postNewJobs } from './telegram.js';
 import { postNewJobsWhatsApp } from './whatsapp.js';
@@ -41,6 +41,9 @@ const DRY_RUN = ARGS.has('--dry-run');
 const NO_OPEN = ARGS.has('--no-open');
 /** Set by bin/run.sh so scheduled runs can behave slightly differently. */
 const SCHEDULED = ARGS.has('--scheduled');
+/** Which regions this scan walks — see scopeSearches. bin/run.sh passes
+ *  `home` and then `-home`, so the home board publishes before the rest walk. */
+const REGION_SCOPE = [...ARGS].map((a) => a.match(/^--regions=(.+)$/)?.[1]).find(Boolean) ?? null;
 
 /**
  * One-off numeric overrides, so a deep backfill does not require editing
@@ -323,7 +326,9 @@ async function main() {
   }
 
   // Company batches or role keywords, per config.searchMode.
-  const allSearches = resolveSearches(cfg);
+  const homeScope = cfg.notifications?.homeRegion ?? 'IN';
+  const allSearches = scopeSearches(resolveSearches(cfg), REGION_SCOPE, homeScope);
+  if (REGION_SCOPE) log.info(`Phase: ${REGION_SCOPE} — ${allSearches.map((s) => s.label ?? s.region).join(', ') || 'no searches'}.`);
 
   if (DRY_RUN) {
     log.warn('DRY RUN — one search, one page, at most 3 job details.');
@@ -629,7 +634,9 @@ async function main() {
     // always reach the end, and starting from index 0 every time would mean
     // the tail never runs at all. Picking up where the last run stopped gives
     // every keyword its turn across consecutive runs.
-    const cursor = DRY_RUN ? 0 : Number(store.getSetting('search_cursor') ?? 0) % allSearches.length;
+    // A phased run walks one side of the rotation, so it neither reads nor
+    // moves the cursor (searchesPerRun 0 walks everything anyway).
+    const cursor = DRY_RUN || REGION_SCOPE ? 0 : Number(store.getSetting('search_cursor') ?? 0) % allSearches.length;
     // Recorded here rather than after the loop. A run that aborts mid-walk
     // never reaches the far side of the loop, and leaving this at 0 made the
     // next cursor `0 + searchesDone` — rewinding the rotation to searches that
@@ -2155,7 +2162,7 @@ async function main() {
   // Persist the rotation cursor on every path, including an aborted run —
   // searches that did complete should not be repeated at the expense of ones
   // that never got their turn.
-  if (!DRY_RUN && allSearches.length > 0) {
+  if (!DRY_RUN && !REGION_SCOPE && allSearches.length > 0) {
     const next = searchesDone >= allSearches.length
       ? 0
       : (searchStart + searchesDone) % allSearches.length;
@@ -2255,6 +2262,7 @@ async function main() {
     sessionExpired: abortState === State.LOGGED_OUT || deadRegions.size > 0,
     regions: [...deadRegions.keys()],
     enabled: cfg.notifications?.onError !== false,
+    scope: REGION_SCOPE,
   });
 
   /* A SEARCH-SURFACE FLIP IS THE HIGHEST-RISK CHANGE THIS SCRAPER CAN MEET, and
@@ -2395,7 +2403,15 @@ async function main() {
 
   // Push the public job list. Runs even with 0 new jobs so the site drops
   // listings that have aged out of the window.
-  const publishedIds = DRY_RUN ? null : await publish(store, cfg, newJobs.length);
+  //
+  // EXCEPT IN THE SECOND PHASE OF A SCHEDULED RUN WITH NOTHING NEW. The home
+  // phase publishes every tick, 30 minutes later at most; a second deploy for
+  // an unchanged board would spend Vercel's 100-a-day allowance (~60 a day
+  // already) on nothing.
+  const restPhase = Boolean(REGION_SCOPE) && !scopeSearches([{ region: homeScope }], REGION_SCOPE, homeScope).length;
+  const skipPublish = restPhase && newJobs.length === 0;
+  if (skipPublish) log.info('Nothing new in this phase — the next home-region run publishes the site.');
+  const publishedIds = DRY_RUN || skipPublish ? null : await publish(store, cfg, newJobs.length);
 
   /* THE CHANNEL POSTS WHAT PUBLISH PUBLISHED — not what the scan collected.
      ------------------------------------------------------------------------
