@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/2025-sanofi-device-innovation-challenge-2027-spring-co-op-bioinformatic-digital-data-scientist-global-immunolo-4472252542",
+      "url": "https://interndoor.com/us/jobs/2025-sanofi-device-innovation-challenge-2027-spring-co-op-bioinformatic-digital-data-scientist-global-immunolo-4472252542",
+      "title": "2027 Spring Co-op Bioinformatic Digital Data Scientist - Global Immunology, Waltham, MA — 2025 Sanofi Device Innovation Challenge",
+      "content_text": "Company: 2025 Sanofi Device Innovation Challenge · Location: Waltham, MA · Duration: 6 months\n• Analyze biological data from genomic sequencing and immunological assays\n• Develop computational models using Python/R and bioinformatics tools\n• Collaborate in a research team working on vaccine R&D projects",
+      "date_published": "2026-09-26T04:47:41.466Z",
+      "authors": [
+        {
+          "name": "2025 Sanofi Device Innovation Challenge"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-research-data-sciences-ai-4470788097",
+      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-research-data-sciences-ai-4470788097",
+      "title": "Intern - Research - Data Sciences - AI — Gilead Sciences",
+      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Develop AI workflows to analyze biological data for oncology research\n• Use Python and machine learning to integrate genomics and transcriptomics data\n• Collaborate with scientists to refine research questions and evaluate results",
+      "date_published": "2026-09-26T04:31:10.482Z",
+      "authors": [
+        {
+          "name": "Gilead Sciences"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/gilead-sciences-intern-research-discovery-sciences-and-technologies-ai-4470783504",
+      "url": "https://interndoor.com/us/jobs/gilead-sciences-intern-research-discovery-sciences-and-technologies-ai-4470783504",
+      "title": "Intern - Research - Discovery Sciences and Technologies - AI — Gilead Sciences",
+      "content_text": "Company: Gilead Sciences · Location: San Francisco Bay Area\n• Analyze biological data with machine learning and AI tools\n• Collaborate with scientists on therapeutic discovery projects\n• Present findings in a final presentation at internship end",
+      "date_published": "2026-09-26T04:30:48.120Z",
+      "authors": [
+        {
+          "name": "Gilead Sciences"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/northrop-grumman-2027-quality-engineering-intern-utah-4472252417",
       "url": "https://interndoor.com/us/jobs/northrop-grumman-2027-quality-engineering-intern-utah-4472252417",
       "title": "2027 Quality Engineering Intern - Utah — Northrop Grumman",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "DoorDash"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-backend-developer-intern-austin-tx-2027-4470191715",
-      "url": "https://interndoor.com/us/jobs/ibm-backend-developer-intern-austin-tx-2027-4470191715",
-      "title": "Backend Developer Intern - Austin, TX - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Austin, TX\n• Implement and automate infrastructure for IBM Cloud products\n• Work with OpenShift, Kubernetes, and CI/CD tools\n• Collaborate on security and compliance for mission-critical systems",
-      "date_published": "2026-09-25T20:35:00.079Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-back-end-developer-intern-2027-tucson-4470185831",
-      "url": "https://interndoor.com/us/jobs/ibm-back-end-developer-intern-2027-tucson-4470185831",
-      "title": "Back End Developer Intern 2027 - Tucson — IBM",
-      "content_text": "Company: IBM · Location: Tucson, AZ\n• Build and maintain backend systems for z/OS applications\n• Work with REST APIs, databases, and cloud environments\n• Collaborate with developers and product managers in Agile teams",
-      "date_published": "2026-09-25T20:34:04.747Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-systems-engineer-autonomous-vehicle-networks-ats-greenhouse-waymo-8231711",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-ms-phd-systems-engineer-autonomous-vehicle-networks-ats-greenhouse-waymo-8231711",
-      "title": "2027 Summer Intern, MS/PhD, Systems Engineer, Autonomous Vehicle Networks & Diagnostics — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Build real-time diagnostics for vehicle networks using Python\n• Leverage AI tools to prototype and scale verification software\n• Collaborate with engineers on network security and vehicle systems",
-      "date_published": "2026-09-25T20:33:28.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
         }
       ]
     }
