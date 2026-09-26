@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790426302692,
+ "generatedAt": 1790427883110,
  "region": "IN",
  "regionName": "India",
  "count": 600,
@@ -536,6 +536,7 @@
    "roleLabel": "Linux Software Engineer",
    "degreeLevel": "UG",
    "degreeText": null,
+   "experience": "1+ years",
    "keySkills": [
     "c++",
     "grpc",
@@ -591,6 +592,7 @@
    "roleLabel": "GPU Architecture Design",
    "degreeLevel": "UG/PG",
    "degreeText": null,
+   "experience": "3+ years",
    "keySkills": [
     "c++",
     "directx",
