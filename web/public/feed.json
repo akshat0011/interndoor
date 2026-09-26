@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968",
+      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968",
+      "title": "Java Fullstack IRC300668 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Nagpur, Maharashtra, India\n• Develop backend services using Java, REST APIs, and Spring Boot\n• Work with AWS, Kafka, and GitLab pipelines in a global team\n• Collaborate on high-tech projects with global brands",
+      "date_published": "2026-09-26T18:08:38.383Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nasdaq-technical-onboarding-specialist-4427935642",
+      "url": "https://interndoor.com/jobs/nasdaq-technical-onboarding-specialist-4427935642",
+      "title": "Technical Onboarding Specialist — Nasdaq",
+      "content_text": "Company: Nasdaq · Location: Bengaluru East, Karnataka, India · Duration: 2-3 weeks\n• Onboard customers onto Nasdaq Trade Surveillance SaaS with technical integration and data testing\n• Collaborate with sales, support, and development teams for smooth onboarding\n• Prepare project plans, conduct data quality tests, and manage go-live activities",
+      "date_published": "2026-09-26T18:04:21.831Z",
+      "authors": [
+        {
+          "name": "Nasdaq"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/citi-data-information-management-analyst-4305730754",
+      "url": "https://interndoor.com/jobs/citi-data-information-management-analyst-4305730754",
+      "title": "Data/Information Management Analyst — Citi",
+      "content_text": "Company: Citi · Location: Bengaluru, Karnataka, India · Duration: 1-7 years\n• Administer databases and prepare reports\n• Use python, sas, sql for data analysis\n• Work in data management team with moderate impact",
+      "date_published": "2026-09-26T17:48:06.757Z",
+      "authors": [
+        {
+          "name": "Citi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/chevron-api-developer-reservoir-management-and-forecasting-4459553251",
+      "url": "https://interndoor.com/jobs/chevron-api-developer-reservoir-management-and-forecasting-4459553251",
+      "title": "API Developer, Reservoir Management & Forecasting — Chevron",
+      "content_text": "Company: Chevron · Location: Bengaluru, Karnataka, India\n• Design and maintain backend APIs using C#, .NET, and Python\n• Work with Azure, SQL databases, and containerization tools\n• Collaborate with cross-functional teams on scalable solutions",
+      "date_published": "2026-09-26T17:34:14.656Z",
+      "authors": [
+        {
+          "name": "Chevron"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-india-specialist-java-spring-boot-full-stack-developer-4454397472",
+      "url": "https://interndoor.com/jobs/linde-india-specialist-java-spring-boot-full-stack-developer-4454397472",
+      "title": "Specialist - Java Spring Boot Full Stack Developer — Linde@India",
+      "content_text": "Company: Linde@India · Location: Greater Kolkata Area\n• Develop and maintain Java/Spring backend services and React frontend applications\n• Build REST APIs, integrations, and data-driven solutions\n• Support cloud migration and modernization of legacy systems\n• Collaborate with cross-functional teams on technical design and deployment",
+      "date_published": "2026-09-26T17:11:00.240Z",
+      "authors": [
+        {
+          "name": "Linde@India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-india-specialist-application-security-4454056309",
+      "url": "https://interndoor.com/jobs/linde-india-specialist-application-security-4454056309",
+      "title": "Specialist - Application Security — Linde@India",
+      "content_text": "Company: Linde@India · Location: Greater Kolkata Area\n• Perform web, API and mobile security testing, validate risks and provide remediation guidance\n• Use Burp Suite, Qualys WAS, Kali Linux, Nmap and sqlmap for testing\n• Document findings, retest fixes and maintain VAPT standards",
+      "date_published": "2026-09-26T17:10:46.445Z",
+      "authors": [
+        {
+          "name": "Linde@India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/esec-forte-technologies-vapt-professional-4471048618",
       "url": "https://interndoor.com/jobs/esec-forte-technologies-vapt-professional-4471048618",
       "title": "VAPT Professional — eSec Forte® Technologies",
@@ -98,18 +170,6 @@
       "authors": [
         {
           "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-specialist-application-security-4454029144",
-      "url": "https://interndoor.com/jobs/linde-specialist-application-security-4454029144",
-      "title": "Specialist - Application Security — Linde",
-      "content_text": "Company: Linde · Location: Greater Kolkata Area\n• Perform web, API and mobile application security testing\n• Use Burp Suite, Qualys WAS, Kali Linux and other tools\n• Validate risks and provide remediation guidance\n• Work on global IT projects for Linde's business",
-      "date_published": "2026-09-26T15:09:57.903Z",
-      "authors": [
-        {
-          "name": "Linde"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/aditya-birla-health-insurance-company-limited-team-member-inhouse-wellbeing-score-4463360607",
-      "url": "https://interndoor.com/jobs/aditya-birla-health-insurance-company-limited-team-member-inhouse-wellbeing-score-4463360607",
-      "title": "Team Member - Inhouse WellBeing Score — Aditya Birla Health Insurance Company Limited",
-      "content_text": "Company: Aditya Birla Health Insurance Company Limited · Location: Maharashtra, India\n• Validate and optimize statistical models for Wellbeing Scores and health analytics\n• Collaborate with cross-functional teams on data governance and model automation\n• Work on population health initiatives with focus on data quality and regulatory compliance",
-      "date_published": "2026-09-25T19:24:03.648Z",
-      "authors": [
-        {
-          "name": "Aditya Birla Health Insurance Company Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-associate-quality-services-amazon-kids-4462883573",
-      "url": "https://interndoor.com/jobs/amazon-associate-quality-services-amazon-kids-4462883573",
-      "title": "Associate, Quality Services, Amazon Kids — Amazon",
-      "content_text": "Company: Amazon · Location: Chennai, Tamil Nadu, India\n• Execute manual tests and report results accurately\n• Use QA tools and follow defined processes\n• Work on consumer device testing tasks",
-      "date_published": "2026-09-25T19:00:31.370Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470359387",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470359387",
-      "title": "Apprentice - Enterprise Technology Services — American Express",
-      "content_text": "Company: American Express · Location: Bengaluru, Karnataka, India\n• Write code in java, javascript, python, or .net\n• Work on api specs, code reviews, and automation tools\n• Develop customer-facing apps for web, mobile, and social platforms",
-      "date_published": "2026-09-25T18:17:05.747Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lenovo-systems-and-development-engineer-android-frameworks-4470373571",
-      "url": "https://interndoor.com/jobs/lenovo-systems-and-development-engineer-android-frameworks-4470373571",
-      "title": "Systems & Development Engineer – Android Frameworks — Lenovo",
-      "content_text": "Company: Lenovo · Location: Bangalore Urban, Karnataka, India\n• Design and develop android framework components and platform services\n• Work on android os bring-up and platform upgrades across global devices\n• Collaborate with cross-functional teams to deliver customer-centric solutions",
-      "date_published": "2026-09-25T18:16:53.051Z",
-      "authors": [
-        {
-          "name": "Lenovo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470355543",
-      "url": "https://interndoor.com/jobs/american-express-apprentice-enterprise-technology-services-4470355543",
-      "title": "Apprentice - Enterprise Technology Services — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Write code in Java, JavaScript, Python, or .NET\n• Work on API specs, code reviews, and automation tools\n• Develop customer-facing apps for iOS, Android, and web",
-      "date_published": "2026-09-25T18:16:37.828Z",
-      "authors": [
-        {
-          "name": "American Express"
         }
       ]
     }
