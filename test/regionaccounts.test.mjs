@@ -117,7 +117,7 @@ console.log('\n== ONE SIGNED-OUT ACCOUNT COSTS ONE REGION, NOT THE RUN ==');
      reads the source. */
   const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
 
-  check('the session is opened per region', /const openRegionSession = async \(code\) => \{/.test(src), true);
+  check('the session is opened per region', /const openRegionSession = async \(code, \{ warm = true \} = \{\}\) => \{/.test(src), true);
   check('with that region on launchBrave', /launchBrave\(cfg, \{ region: code \}\)/.test(src), true);
   check('and no run-wide launch survives', /session = await launchBrave\(cfg\);/.test(src), false);
 
@@ -146,7 +146,9 @@ console.log('\n== ONE SIGNED-OUT ACCOUNT COSTS ONE REGION, NOT THE RUN ==');
 
   /* Backfill gated on openRegion, NOT on `page`: when the last region tried was
      the signed-out one, `page` is still bound to that browser. */
-  check('backfill is gated on a live session', /if \(openRegion\) \{\n      await backfillDescriptions/.test(src), true);
+  // …and, since 26 Sep 2026, one SEEN signed in: a session opened without the
+  // feed is only a cookie until its first posting (accountVerified).
+  check('backfill is gated on a live, verified session', /if \(openRegion && accountVerified\) \{\n      await backfillDescriptions/.test(src), true);
   check('and not on the page binding', /if \(page\) \{\n      await backfillDescriptions/.test(src), false);
 
   /* A region change costs a close plus a fresh launch and sign-in, so the
@@ -206,7 +208,7 @@ console.log('\n== A DEAD REGION MUST NOT COST A LIVE ONE ITS SESSION ==');
   check('a never-signed-in region has no profile', hasSessionProfile('ZZ'), false);
   check('a bad code is not a profile either', hasSessionProfile('../..'), typeof hasSessionProfile('IN') === 'boolean' ? hasSessionProfile('IN') : false);
 
-  const helper = /const openRegionSession = async \(code\) => \{([\s\S]*?)\n    \};/.exec(src)?.[1] ?? '';
+  const helper = /const openRegionSession = async \(code, \{ warm = true \} = \{\}\) => \{([\s\S]*?)\n    \};/.exec(src)?.[1] ?? '';
   check('the helper was found', helper.length > 0, true);
 
   const preflight = helper.indexOf('hasSessionProfile(code)');

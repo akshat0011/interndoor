@@ -196,7 +196,7 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
  * nothing here retries: an immediate retry into a 429 is how a limit becomes a
  * block. fetchGuestPageRetrying waits minutes, not seconds, before asking again.
  */
-export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeoutMs = 25_000 } = {}) {
+export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeoutMs = 25_000, parse = 'cards' } = {}) {
   let res;
   let body;
   try {
@@ -215,6 +215,8 @@ export async function fetchGuestPage(url, { fetchImpl = globalThis.fetch, timeou
     return retryAfterMs == null ? { blocked: true, status } : { blocked: true, status, retryAfterMs };
   }
   if (status !== 200) return { failed: true, status };
+  // A posting page is parsed by its caller (fetchPublicPosting).
+  if (parse === 'posting') return { status, body };
 
   const { rows, listed } = parseGuestCards(body);
   if (!listed) {
@@ -273,8 +275,9 @@ export async function fetchGuestPageRetrying(url, {
   sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
   budgetMs = Infinity,
   onWait = () => {},
+  parse = 'cards',
 } = {}) {
-  let res = await fetchGuestPage(url, { fetchImpl });
+  let res = await fetchGuestPage(url, { fetchImpl, parse });
   let retries = 0;
   let waitedMs = 0;
   while (res.blocked && res.status === 429 && retries < waits.length) {
@@ -284,7 +287,7 @@ export async function fetchGuestPageRetrying(url, {
     await sleep(ms);
     waitedMs += ms;
     retries++;
-    res = await fetchGuestPage(url, { fetchImpl });
+    res = await fetchGuestPage(url, { fetchImpl, parse });
   }
   return { ...res, retries, waitedMs };
 }
@@ -349,4 +352,111 @@ export function rereadPlan({ tailHits = [], keywords, passes = 1, maxPasses = MA
   if (!parts) return { reason: 'its keywords are not a plain OR-list, so they cannot be split' };
   if (passes + parts.length > maxPasses) return { reason: `the walk has already been split into ${passes} parts` };
   return { parts, hits };
+}
+
+/* ------------------------------------------------------------------------
+ * THE POSTING'S PUBLIC PAGE — read before the account opens anything.
+ *
+ * WHY (26 Sep 2026). LinkedIn signed the India account out with "your account
+ * has accessed a high volume of LinkedIn profile data" after a day of 1,054
+ * page loads on it, 766 of them postings opened one by one. 343 of those opens
+ * were thrown away the moment they were read — 314 asked for 2+ years, 29 were
+ * tagged Full-time — and every fact those refusals rested on is on this page,
+ * which LinkedIn serves signed out: the full description, the seniority level,
+ * the employment type, the company. So the refusals run here, at no cost to
+ * the account, and the account opens a posting only when it is being KEPT and
+ * only for the one thing this page hides behind a sign-in: the employer's own
+ * apply link.
+ * ---------------------------------------------------------------------- */
+
+export const publicPostingUrl = (jobId) => `https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/${encodeURIComponent(jobId)}`;
+
+/** A block of posting markup as text with its line structure kept, the way
+ *  the account page's innerText reads — the stipend and experience readers are
+ *  line-based. */
+function blockText(fragment) {
+  return decodeEntities(String(fragment ?? '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|div|li|ul|ol|h[1-6])>/gi, '\n')
+    .replace(/<li\b[^>]*>/gi, '\n')
+    .replace(/<[^>]+>/g, ''))
+    .replace(/[ \t ]+/g, ' ')
+    .replace(/ *\n */g, '\n')
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+}
+
+/** The seniority values the account page's chip reader accepts (linkedin.js). */
+const SENIORITY_LEVEL = /^(Internship|Entry level|Associate|Mid-Senior level|Director|Executive)$/i;
+
+/**
+ * One public posting page, as the fields `openAndExtract` returns — minus the
+ * employer apply link, which this page does not carry. Null when the page holds
+ * no description block at all (a markup change, or not a posting).
+ *
+ * THE EMPLOYMENT TAG IS AN INTERNSHIP IF EITHER FIELD SAYS SO. The account
+ * page reads one chip out of a header string; this page states the employment
+ * type ("Full-time") and the seniority level ("Internship") separately, and
+ * Snowflake's Core Infrastructure intern is exactly that pair. Reading only the
+ * employment type would refuse internships the account page admitted — and a
+ * refusal here is never re-checked on the account.
+ */
+export function parsePublicPosting(html, jobId) {
+  const s = String(html ?? '');
+  const desc = inner(s, 'show-more-less-html__markup', 'div');
+  if (desc == null) return null;
+  const criteria = {};
+  for (const m of s.matchAll(/job-criteria-subheader[^>]*>([\s\S]*?)<\/h3>\s*<span[^>]*>([\s\S]*?)<\/span>/g)) {
+    criteria[textOf(m[1]).toLowerCase()] = textOf(m[2]);
+  }
+  const employment = criteria['employment type'] || null;
+  const seniority = criteria['seniority level'] || null;
+  const internship = /^internship$/i.test(employment ?? '') || /^internship$/i.test(seniority ?? '');
+  const logo = s.match(/<img\b[^>]*class="[^"]*artdeco-entity-image[^"]*"[^>]*data-delayed-url="(https:\/\/media\.licdn\.com\/[^"]+)"/)
+    || s.match(/<img\b[^>]*data-delayed-url="(https:\/\/media\.licdn\.com\/dms\/image\/[^"]+company-logo[^"]+)"/);
+  return {
+    jobId: String(jobId),
+    title: textOf(inner(s, 'topcard__title', 'h2')),
+    company: textOf(inner(s, 'topcard__org-name-link', 'a')) || textOf(inner(s, 'topcard__flavor', 'span')),
+    location: textOf(inner(s, 'topcard__flavor--bullet', 'span')),
+    description: blockText(desc),
+    employmentTag: internship ? 'Internship' : employment,
+    seniorityTag: seniority && SENIORITY_LEVEL.test(seniority) ? seniority : null,
+    jobFunction: criteria['job function'] || null,
+    applicants: textOf(inner(s, 'num-applicants__caption', 'span') ?? inner(s, 'num-applicants__caption', 'figcaption')) || null,
+    postedText: textOf(inner(s, 'posted-time-ago__text', 'span')) || '',
+    salaryText: textOf(inner(s, 'salary', 'div')) || null,
+    /* WHERE THE APPLY BUTTON GOES, off the page's own tracking names (read off
+       three real pages, 26 Sep 2026): `apply-link-offsite` is the employer's
+       own site — the one thing an account open is still worth doing for —
+       and `apply-link-onsite` is LinkedIn's own form, where an open could only
+       return LinkedIn's form. NEITHER is null, and null is treated as offsite
+       by the caller: a renamed marker must cost an account open, never an
+       employer link. */
+    applyKind: /apply-link-offsite/.test(s) ? 'offsite' : /apply-link-onsite/.test(s) ? 'onsite' : null,
+    // A closed posting's page has no apply button at all (YASH, 26 Sep 2026).
+    closed: /closed-job|No longer accepting applications/i.test(s),
+    logoUrl: logo ? decodeEntities(logo[1]) : '',
+    workplaceType: null,
+    applyUrl: null,
+    viaPublicPage: true,
+  };
+}
+
+/**
+ * Fetch and parse one public posting page. The same five answers as a search
+ * page, plus `gone` (404/410 — the posting was taken down). A 429 is waited out
+ * exactly as discovery waits it out (fetchGuestPageRetrying's schedule).
+ */
+export async function fetchPublicPosting(jobId, opts = {}) {
+  const res = await fetchGuestPageRetrying(publicPostingUrl(jobId), { ...opts, parse: 'posting' });
+  if (res.blocked || res.networkError) return res;
+  if (res.status === 404 || res.status === 410) return { gone: true, status: res.status, retries: res.retries, waitedMs: res.waitedMs };
+  if (res.failed) return res;
+  const detail = parsePublicPosting(res.body, jobId);
+  if (!detail) return { markupChanged: true, status: res.status, body: res.body, retries: res.retries, waitedMs: res.waitedMs };
+  // No longer accepting applications: as good as taken down for a job board.
+  if (detail.closed) return { gone: true, closed: true, status: res.status, retries: res.retries, waitedMs: res.waitedMs };
+  return { detail, retries: res.retries, waitedMs: res.waitedMs };
 }

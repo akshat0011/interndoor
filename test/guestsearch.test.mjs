@@ -17,9 +17,11 @@
  *   - the Apply link's /safety/go/ wrapper is unwrapped before it is stored.
  */
 import { readFileSync } from 'node:fs';
+import { admitEntryLevel } from '../src/employment.js';
 import {
   parseGuestCards, guestCards, buildGuestSearchUrl, fetchGuestPage, guestRequestCap,
   fetchGuestPageRetrying, retryAfterMsOf, GUEST_BLOCK_WAITS_MS, splitKeywords, rereadPlan, REREAD_TAIL_PAGES, MAX_WALK_PASSES,
+  parsePublicPosting, fetchPublicPosting, publicPostingUrl,
   searchSourceFor, decodeEntities, GUEST_SEARCH_URL, GUEST_PAGE_SIZE, GUEST_RESULT_CEILING,
 } from '../src/guestsearch.js';
 import { buildSearchUrl, cleanApplyUrl, applyUrlFrom, stripExpanderLabel } from '../src/linkedin.js';
@@ -290,6 +292,71 @@ console.log('\n== a capped window is re-read only when its last pages still held
   check('one that makes exactly six is allowed', rereadPlan({ tailHits: [1], keywords: kw, passes: 4 }).parts?.length, 2);
 }
 
+console.log('\n== the posting\'s public page, read before the account opens anything ==');
+{
+  /* The shape of jobs-guest/jobs/api/jobPosting/<id> as served on 26 Sep 2026
+     (Snowflake's Core Infrastructure intern), cut down to the parts read. */
+  const page = ({ employment = 'Full-time', seniority = 'Internship', apply = 'offsite', desc = true, closed = false } = {}) => `
+    <section class="top-card-layout"><h2 class="top-card-layout__title font-sans topcard__title">Software Engineer Intern (Core &amp; Security) — Spring 2027</h2>
+    <a class="topcard__org-name-link topcard__flavor--black-link" href="https://www.linkedin.com/company/snowflake">
+      Snowflake
+    </a><span class="topcard__flavor topcard__flavor--bullet">Menlo Park, CA</span>
+    <span class="posted-time-ago__text topcard__flavor--metadata">13 hours ago</span>
+    <figcaption class="num-applicants__caption">40 applicants</figcaption>
+    ${apply === 'offsite' ? '<button class="sign-up-modal__outlet top-card-layout__cta" data-tracking-control-name="public_jobs_apply-link-offsite_contextual-sign-in-modal_join-link">Apply</button>'
+      : apply === 'onsite' ? '<button class="sign-up-modal__outlet top-card-layout__cta" data-tracking-control-name="public_jobs_apply-link-onsite">Apply</button>' : ''}
+    ${closed ? '<figure class="closed-job"><figcaption class="closed-job__flavor--closed">No longer accepting applications</figcaption></figure>' : ''}
+    <img class="artdeco-entity-image" data-delayed-url="https://media.licdn.com/dms/image/v2/X/company-logo_100_100/y.png">
+    </section>
+    ${desc ? `<div class="show-more-less-html__markup relative overflow-hidden">
+      <p>At Snowflake, we build &amp; ship.</p><p>Interns own real systems.</p><ul><li>Python or Java</li><li>Minimum 3 years of experience</li></ul><br>Pay: 42.00-60.00 per hour.
+    </div>` : ''}
+    <ul class="description__job-criteria-list">
+      <li class="description__job-criteria-item"><h3 class="description__job-criteria-subheader">Seniority level</h3>
+        <span class="description__job-criteria-text description__job-criteria-text--criteria">${seniority}</span></li>
+      <li class="description__job-criteria-item"><h3 class="description__job-criteria-subheader">Employment type</h3>
+        <span class="description__job-criteria-text description__job-criteria-text--criteria">${employment}</span></li>
+      <li class="description__job-criteria-item"><h3 class="description__job-criteria-subheader">Job function</h3>
+        <span class="description__job-criteria-text description__job-criteria-text--criteria">Engineering</span></li>
+    </ul>`;
+  const d = parsePublicPosting(page(), '4471846966');
+  check('title, company and place', [d.title, d.company, d.location], ['Software Engineer Intern (Core & Security) — Spring 2027', 'Snowflake', 'Menlo Park, CA']);
+  check('the description keeps its lines', d.description, 'At Snowflake, we build & ship.\nInterns own real systems.\nPython or Java\nMinimum 3 years of experience\nPay: 42.00-60.00 per hour.');
+  check('posted, applicants, logo', [d.postedText, d.applicants, /company-logo/.test(d.logoUrl)], ['13 hours ago', '40 applicants', true]);
+  check('an employer link exists (offsite apply)', d.applyKind, 'offsite');
+  check('LinkedIn\'s own form is not an employer link', parsePublicPosting(page({ apply: 'onsite' }), '1').applyKind, 'onsite');
+  check('no marker at all is unknown, not "no link"', parsePublicPosting(page({ apply: 'none' }), '1').applyKind, null);
+  check('an open posting is not closed', d.closed, false);
+  check('a closed posting says so', parsePublicPosting(page({ apply: 'none', closed: true }), '1').closed, true);
+  check('it never claims an apply URL', d.applyUrl, null);
+  check('and says where it came from', d.viaPublicPage, true);
+  // Employment type "Full-time" with seniority "Internship" is an internship.
+  check('an internship by seniority is an internship', d.employmentTag, 'Internship');
+  check('and by employment type', parsePublicPosting(page({ employment: 'Internship', seniority: 'Not Applicable' }), '1').employmentTag, 'Internship');
+  const ft = parsePublicPosting(page({ employment: 'Full-time', seniority: 'Entry level' }), '1');
+  check('a full-time entry-level role reads as the account page\'s chips do', [ft.employmentTag, ft.seniorityTag], ['Full-time', 'Entry level']);
+  check('"Not Applicable" is no seniority at all', parsePublicPosting(page({ employment: 'Full-time', seniority: 'Not Applicable' }), '1').seniorityTag, null);
+  check('no description block is not a posting', parsePublicPosting(page({ desc: false }), '1'), null);
+  // The refusal the India account opened 314 postings a day to reach.
+  const v = admitEntryLevel({ title: 'Software Engineer', employmentTag: ft.employmentTag, seniorityTag: ft.seniorityTag, description: ft.description, isIntern: () => false });
+  check('"3 years" on the public page refuses before any open', v.reason, 'entry-level: asks 3+ years');
+  check('the public URL is the posting endpoint', publicPostingUrl('123'), 'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/123');
+
+  const seq = (answers) => { let i = 0; return async () => { const [status, body] = answers[Math.min(i++, answers.length - 1)]; return { status, text: async () => body, headers: { get: () => null } }; }; };
+  const sleep = async () => {};
+  check('a readable page is a detail', (await fetchPublicPosting('1', { fetchImpl: seq([[200, page()]]), sleep })).detail?.company, 'Snowflake');
+  check('a 404 is a posting taken down', (await fetchPublicPosting('1', { fetchImpl: seq([[404, '']]), sleep })).gone, true);
+  check('so is a 410', (await fetchPublicPosting('1', { fetchImpl: seq([[410, '']]), sleep })).gone, true);
+  const waited = await fetchPublicPosting('1', { fetchImpl: seq([[429, ''], [200, page()]]), sleep });
+  check('a 429 is waited out like the search\'s', [waited.retries, waited.detail?.company], [1, 'Snowflake']);
+  check('a 999 is a block, never retried', (await fetchPublicPosting('1', { fetchImpl: seq([[999, '']]), sleep })).blocked, true);
+  check('a 500 is a failure, not a refusal', [(await fetchPublicPosting('1', { fetchImpl: seq([[500, '']]), sleep })).failed, (await fetchPublicPosting('1', { fetchImpl: seq([[500, '']]), sleep })).gone], [true, undefined]);
+  const shut = await fetchPublicPosting('1', { fetchImpl: seq([[200, page({ apply: 'none', closed: true })]]), sleep });
+  check('a closed posting is as good as taken down', [shut.gone, shut.closed, shut.detail], [true, true, undefined]);
+  check('a page with no description is a markup change', (await fetchPublicPosting('1', { fetchImpl: seq([[200, '<html>nothing</html>']]), sleep })).markupChanged, true);
+  check('search pages still parse as cards', (await fetchGuestPage('u', { fetchImpl: seq([[200, PAGE]]) })).cards?.length, 3);
+}
+
 console.log('\n== the Apply link is the employer\'s page, not LinkedIn\'s interstitial ==');
 {
   /* Verbatim shape of the anchor on the posting page, 25 Sep 2026: every row
@@ -330,7 +397,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /if \(res\.retries && \(res\.cards \|\| res\.end\)\) \{\s*guestPace = Math\.min\(guestPace \* 2, GUEST_MAX_SLOWDOWN\);/.test(src), true);
   check('the public walk is paced through the slowdown',
     /const guestPacing = \(\) => \(cfg\.pacing\.betweenGuestPages \?\? \[1500, 3500\]\)\.map\(\(ms\) => ms \* guestPace\);/.test(src)
-      && (src.match(/await pause\(guestPacing\(\)\);/g) ?? []).length === 3
+      && (src.match(/await pause\(guestPacing\(\)\);/g) ?? []).length === 4
       && (src.match(/betweenGuestPages/g) ?? []).length === 1, true);
   check('a block that outlasts the waits stops discovery for the rest of the run',
     /if \(res\.blocked\) \{[\s\S]{0,200}?sawBlocked = true;\s*guestBlocked = true;[\s\S]{0,700}?break;/.test(src), true);
@@ -393,10 +460,37 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   // opened up front so there is something to watch.
   check('a public-search walk does not open its account up front',
     /if \(viaGuest && !showScan\) \{\s*if \(session && openRegion !== region\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
-  check('it opens the account at the first card worth opening',
-    /log\.ok\(`Opening:[\s\S]{0,400}?if \(viaGuest && !\(await sessionReady\(\)\)\) \{\s*signedOutMidWalk = true;\s*break;\s*\}\s*\n\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src), true);
+  check('the account is opened only through openOnAccount, which asks for the session first',
+    /const openOnAccount = async \(\) => \{\s*if \(viaGuest && !\(await sessionReady\(\)\)\) return \{ signedOut: true \};\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src)
+      && (src.match(/li\.openAndExtract\(page, card, cfg\)/g) ?? []).length === 1, true);
   check('a signed-out account found there ends the walk',
-    /if \(signedOutMidWalk\) break;/.test(src), true);
+    /if \(signedOutMidWalk \|\| \(viaGuest && guestBlocked\)\) break;/.test(src)
+      && (src.match(/if \(got\.signedOut\) \{\s*signedOutMidWalk = true;\s*break;\s*\}/g) ?? []).length === 2, true);
+  /* 26 Sep 2026: the public page first, the account only for a kept posting
+     that has an employer link to find, and no feed visit. */
+  check('every card worth opening is read on its public page first',
+    /let publicRead = null;\s*if \(viaGuest && card\.jobId\) \{\s*const pub = await fetchPublicPosting\(card\.jobId, \{/.test(src), true);
+  check('the account opens up front only when the public page could not be read',
+    /let detail = publicRead;\s*let openedOnAccount = false;\s*if \(!detail\) \{\s*const got = await openOnAccount\(\);/.test(src), true);
+  check('a block on the public page stops discovery, it does not fall back to the account',
+    /\} else if \(pub\.blocked\) \{[\s\S]{0,120}?sawBlocked = true;\s*guestBlocked = true;[\s\S]{0,400}?break;\s*\} else if \(pub\.gone\)/.test(src), true);
+  check('a kept Misc role, or one on LinkedIn\'s own form, is never opened — an unknown marker is',
+    /if \(shelf === 'misc' \|\| detail\.applyKind === 'onsite'\) \{\s*counters\.keptWithoutOpen\+\+;/.test(src), true);
+  check('the kept-posting open comes after every refusal',
+    src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') > 0
+      && src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') < src.indexOf('const shelf = roleCategory({ title: detail.title || card.title }, cfg.roleFocus).category;'), true);
+  check('an account that fails that open keeps the public read', /kept from the public page without the employer's link/.test(src), true);
+  check('the apply-link tripwire counts only real account opens', /if \(openedOnAccount && !detail\.easyApply\) \{/.test(src), true);
+  check('a public-search session is opened without the feed',
+    /await openRegionSession\(region, \{ warm: !viaGuest \}\);/.test(src) && /if \(warm\) \{\s*await li\.warmUp\(page, cfg\);/.test(src), true);
+  check('and checked on the first posting it opens, before that read is trusted',
+    /if \(viaGuest && !accountVerified\) \{\s*try \{\s*await assertSignedIn\(page, context, cfg\);\s*accountVerified = true;/.test(src)
+      && src.indexOf('if (viaGuest && !accountVerified)') < src.indexOf('return got;'), true);
+  check('a new session starts unverified', /openRegion = code;\s*accountVerified = warm;/.test(src), true);
+  check('the backfill opens postings only through a verified session', /if \(openRegion && accountVerified\) \{\s*await backfillDescriptions/.test(src), true);
+  check('every walk says what it cost the account', /opened on the \$\{region\} account\.`\);/.test(src), true);
+  check('re-read cards are counted apart', /if \(passNo > 0\) counters\.rereadCards \+= cards\.length;/.test(src), true);
+  check('and left out of the intake yield', /noteIntake\(store, \{ cards: counters\.cardsSeen - counters\.rereadCards,/.test(src), true);
   check('and is recorded as signed out, exactly like the up-front check',
     /const sessionReady = async \(\) => \{[\s\S]{0,900}?deadRegions\.set\(region, err\.message\);[\s\S]{0,400}?return false;/.test(src), true);
   check('a walk that needed no browser still counts as a region that worked',

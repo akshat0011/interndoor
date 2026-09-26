@@ -123,8 +123,10 @@ const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
 check('noteIntake is called', /await noteIntake\(store, \{/.test(idx), true);
 /* THE PAIRING: the real counters, not zeroes or a placeholder. Passing the
    wrong two numbers would leave every check above green and the tripwire dead. */
-check('with the run\'s own cards and new-job counts',
-  /noteIntake\(store, \{ cards: counters\.cardsSeen, newJobs: counters\.newJobs, status \}\)/.test(idx), true);
+// First-read cards only (26 Sep 2026): a re-read of a capped window is mostly
+// the filler past LinkedIn's limit and fired a false "collapsed" alarm.
+check('with the run\'s own first-read cards and new-job counts',
+  /noteIntake\(store, \{ cards: counters\.cardsSeen - counters\.rereadCards, newJobs: counters\.newJobs, status \}\)/.test(idx), true);
 check('after finishRun, so it sees the filed status',
   idx.indexOf('noteIntake(store') > idx.indexOf('store.finishRun(runId'), true);
 
