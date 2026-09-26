@@ -188,6 +188,7 @@ const NEW_GRAD_PROGRAM = /\bcampus\s+(?:graduate|undergraduate)\b|\bnew[\s-]?gra
    an early-career phrase to call anything full-time. */
 const EXPERIENCED_GRADE = /\b(?:consultant|architect)\b/i;
 const GRADUATE_WORD = /\b(?:graduate|fresher|campus|new[\s-]?grad|trainee)\b/i;
+const EXPERIENCE_WORD = /\b(?:experienced|distinguished)\b/i;
 
 /**
  * The part of the entry-level gate a TITLE alone can answer — asked before the
@@ -213,6 +214,11 @@ export function entryLevelTitleRefusal(title) {
   if (MANAGER_TITLE.test(t) && !/\bassociate\s+product\s+manager\b/i.test(t)) return 'entry-level: manager title';
   if (LEVEL_TITLE.test(t) && !NEW_GRAD_PROGRAM.test(t)) return 'entry-level: level II+ title';
   if (EXPERIENCED_GRADE.test(t) && !GRADUATE_WORD.test(t)) return 'entry-level: consultant or architect title';
+  // "Experienced Software Engineer" (Boeing) and "DISTINGUISHED, SOFTWARE
+  // ENGINEER" (Walmart) reached India's Full-time tab on 26 Sep 2026: neither
+  // word is a seniority SENIOR knows. A title that also says entry-level or
+  // graduate is a programme open to both, and passes.
+  if (EXPERIENCE_WORD.test(t) && !/\bentry[-\s]?level\b/i.test(t) && !GRADUATE_WORD.test(t)) return 'entry-level: experienced title';
   return null;
 }
 
