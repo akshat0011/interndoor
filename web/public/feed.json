@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
+      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
+      "title": "Specialist Software Engineer - IBM ACE Integration Specialist — Nationwide",
+      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Support integration applications for policy transactions and data movement across commercial lines\n• Work with ACE and CL ETL Batch to handle secure APIs, message routing, and data transformation\n• Provide production support and optimize integration jobs and data processing outcomes",
+      "date_published": "2026-09-27T11:54:48.237Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4454582094",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4454582094",
+      "title": "Z2_Python Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design scalable backend services using python\n• Develop restful apis and microservices\n• Optimize sql queries and implement async processing",
+      "date_published": "2026-09-27T11:23:36.071Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158",
       "url": "https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158",
       "title": "Guidewire PolicyCenter, Technology Analyst - India — Nationwide",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-claims-analytics-specialist-4462307684",
-      "url": "https://interndoor.com/jobs/ups-claims-analytics-specialist-4462307684",
-      "title": "Claims Analytics Specialist — UPS",
-      "content_text": "Company: UPS · Location: Pune Division, Maharashtra, India\n• Analyze global claims data to identify trends and improve processes\n• Use sql, power shell, and excel for reporting and automation\n• Work with cross-functional teams on metrics and financial analysis",
-      "date_published": "2026-09-26T13:47:24.383Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siterecon-jr-gis-cartographers-immediate-joiners-4470557593",
-      "url": "https://interndoor.com/jobs/siterecon-jr-gis-cartographers-immediate-joiners-4470557593",
-      "title": "Jr. GIS Cartographers (Immediate Joiners) — SiteRecon",
-      "content_text": "Company: SiteRecon · Location: Noida, Uttar Pradesh, India · Duration: 0–1 years\n• Create and update digital maps using qgis\n• Digitize geographic features from satellite imagery\n• Maintain geodatabases for data handling\n• Work in a startup environment with training provided",
-      "date_published": "2026-09-26T13:40:49.226Z",
-      "authors": [
-        {
-          "name": "SiteRecon"
         }
       ]
     }
