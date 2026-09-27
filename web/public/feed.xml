@@ -6,7 +6,28 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 27 Sep 2026 07:59:51 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 09:54:19 GMT</lastBuildDate>
+  <item>
+    <title>Electronic Systems Technical Specialist - Software — Cummins India</title>
+    <link>https://interndoor.com/jobs/cummins-india-electronic-systems-technical-specialist-software-4453593348</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cummins-india-electronic-systems-technical-specialist-software-4453593348</guid>
+    <pubDate>Sun, 27 Sep 2026 09:54:19 GMT</pubDate>
+    <description>Company: Cummins India · Location: Pune Division, Maharashtra, India
+• Develop and maintain automation scripts for AUTOSAR configuration workflows
+• Support software integration, CI/CD pipelines, and release management activities
+• Collaborate with global teams on product development and technical improvements</description>
+  </item>
+  <item>
+    <title>Analyst – Demand Forecasting — General Mills</title>
+    <link>https://interndoor.com/jobs/general-mills-analyst-demand-forecasting-4453573462</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/general-mills-analyst-demand-forecasting-4453573462</guid>
+    <pubDate>Sun, 27 Sep 2026 09:47:31 GMT</pubDate>
+    <description>Company: General Mills · Location: Mumbai Metropolitan Region · Duration: 1-2 years
+• Analyze forecasting models and prepare change reports for stakeholders
+• Use tableau and sql to extract data from primary and secondary sources
+• Work with technical teams to improve forecasting processes
+• Operate in 1.30 pm to 10.30 pm shift</description>
+  </item>
   <item>
     <title>Kafka Engineer — Nippon Data Systems</title>
     <link>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471088432</link>
@@ -494,26 +515,6 @@
 • Support process standardization and compliance with company policies
 • Work with Workday, Paradox, and HiredScore systems
 • Lead technical projects and design solutions for complex deployments</description>
-  </item>
-  <item>
-    <title>Java Fullstack(Angular) Developer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4453299197</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4453299197</guid>
-    <pubDate>Sat, 26 Sep 2026 12:15:32 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Build scalable apps with Java, Spring Boot, and Angular
-• Use Kafka, REST APIs, and AI tools like Gemini and LangChain
-• Write automated tests for Angular apps with Playwright</description>
-  </item>
-  <item>
-    <title>Specialist Platform Engineer - Python Developer — Novartis India</title>
-    <link>https://interndoor.com/jobs/novartis-india-specialist-platform-engineer-python-developer-4461196500</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/novartis-india-specialist-platform-engineer-python-developer-4461196500</guid>
-    <pubDate>Sat, 26 Sep 2026 12:10:05 GMT</pubDate>
-    <description>Company: Novartis India · Location: Greater Hyderabad Area
-• Design and build secure AI platforms on AWS for regulated environments
-• Work with Python, AWS services, and AI orchestration frameworks
-• Ensure compliance with HIPAA, GDPR, and other regulatory standards</description>
   </item>
 </channel>
 </rss>
