@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristlecone-specialist-cloud-and-application-engineering-4089379997",
+      "url": "https://interndoor.com/jobs/bristlecone-specialist-cloud-and-application-engineering-4089379997",
+      "title": "Specialist - Cloud & Application Engineering — Bristlecone",
+      "content_text": "Company: Bristlecone · Location: Bengaluru, Karnataka, India\n• Design and implement cloud-based solutions for supply chain applications\n• Work with AWS and Azure platforms to optimize system performance\n• Collaborate with cross-functional teams on digital transformation projects",
+      "date_published": "2026-09-27T18:32:03.491Z",
+      "authors": [
+        {
+          "name": "Bristlecone"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-backend-4-to-8-yrs-4453689431",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-backend-4-to-8-yrs-4453689431",
+      "title": "Software Engineer - Backend (4 to 8 Yrs) — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 1-5 years\n• Develop and automate features for Meraki Dashboard and Catalyst network management\n• Work with Python, Ruby on Rails, or Go in Agile/Scrum teams\n• Collaborate with product managers and cross-functional teams on customer-facing tools",
+      "date_published": "2026-09-27T18:05:26.181Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/goldman-sachs-engineering-l2-hyderabad-associate-software-engineering-4426233569",
       "url": "https://interndoor.com/jobs/goldman-sachs-engineering-l2-hyderabad-associate-software-engineering-4426233569",
       "title": "Engineering-L2-Hyderabad-Associate-Software Engineering — Goldman Sachs",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/chevron-api-developer-reservoir-management-and-forecasting-4459553251",
-      "url": "https://interndoor.com/jobs/chevron-api-developer-reservoir-management-and-forecasting-4459553251",
-      "title": "API Developer, Reservoir Management & Forecasting — Chevron",
-      "content_text": "Company: Chevron · Location: Bengaluru, Karnataka, India\n• Design and maintain backend APIs using C#, .NET, and Python\n• Work with Azure, SQL databases, and containerization tools\n• Collaborate with cross-functional teams on scalable solutions",
-      "date_published": "2026-09-26T17:34:14.656Z",
-      "authors": [
-        {
-          "name": "Chevron"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-india-specialist-java-spring-boot-full-stack-developer-4454397472",
-      "url": "https://interndoor.com/jobs/linde-india-specialist-java-spring-boot-full-stack-developer-4454397472",
-      "title": "Specialist - Java Spring Boot Full Stack Developer — Linde@India",
-      "content_text": "Company: Linde@India · Location: Greater Kolkata Area\n• Develop and maintain Java/Spring backend services and React frontend applications\n• Build REST APIs, integrations, and data-driven solutions\n• Support cloud migration and modernization of legacy systems\n• Collaborate with cross-functional teams on technical design and deployment",
-      "date_published": "2026-09-26T17:11:00.240Z",
-      "authors": [
-        {
-          "name": "Linde@India"
         }
       ]
     }
