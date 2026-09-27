@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/vecmocon-software-developer-frappe-intern-ats-keka-vecmocon-163165",
+      "url": "https://interndoor.com/jobs/vecmocon-software-developer-frappe-intern-ats-keka-vecmocon-163165",
+      "title": "Software Developer - Frappe (Intern) — Vecmocon",
+      "content_text": "Company: Vecmocon · Location: Noida, UP, India\n• Build custom apps for plm with frappe and erpnext\n• Develop python and js code for backend and frontend\n• Integrate with cad and erp tools via rest apis\n• Write tests and optimize database queries",
+      "date_published": "2026-09-27T06:02:38.133Z",
+      "authors": [
+        {
+          "name": "Vecmocon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
       "url": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
       "title": "ADMINISTRATOR L1 — Wipro",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4471012795",
-      "url": "https://interndoor.com/jobs/esec-forte-technologies-cloud-security-intern-4471012795",
-      "title": "Cloud Security Intern — eSec Forte® Technologies",
-      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India\n• Configure iam and secure cloud environments on aws azure or gcp\n• Work with devops teams to improve security posture\n• Stay updated on cybersecurity threats and tools",
-      "date_published": "2026-09-26T10:20:18.755Z",
-      "authors": [
-        {
-          "name": "eSec Forte® Technologies"
         }
       ]
     }
