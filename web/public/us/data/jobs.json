@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790524821101,
+ "generatedAt": 1790526450885,
  "region": "US",
  "regionName": "United States",
  "count": 4272,
@@ -1304,6 +1304,65 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4461412068",
+   "title": "Quantum Hardware EDA & Circuit Design Intern - 2027",
+   "company": "IBM",
+   "matchedWatchlist": "IBM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/ibm.jpg",
+   "location": "Yorktown Heights, NY",
+   "workplaceType": "On-site",
+   "stipend": "$89,280 / year",
+   "pay": {
+    "currency": "USD",
+    "min": 89280,
+    "max": 89280,
+    "unitText": "YEAR"
+   },
+   "duration": null,
+   "applicants": "98 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "git",
+    "physical design",
+    "system design"
+   ],
+   "summary": "This internship involves designing quantum circuits and using AI to improve EDA workflows. Ideal for students with a master's in electrical or computer engineering, this role offers hands-on experience with cutting-edge tools and research in quantum computing.",
+   "bullets": [
+    "Design and optimize quantum circuits for scalable systems",
+    "Use Python and EDA tools like Cadence Virtuoso",
+    "Collaborate with researchers on AI-driven design methods"
+   ],
+   "roleLabel": "Quantum Circuit Design",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "cadence virtuoso",
+    "eda tools",
+    "ai methods"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "34 minutes ago",
+   "postedAt": 1790523116005,
+   "firstSeenAt": 1790525156008,
+   "lastSeenAt": 1790525156008,
+   "url": "https://www.linkedin.com/jobs/view/4461412068/",
+   "applyUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=131901&src=SN_LinkedIn",
+   "description": null,
+   "roleFingerprint": "066d400bb6",
+   "cardFacts": [
+    "$89,280 / year",
+    "Yorktown Heights",
+    "On-site"
+   ],
+   "category": "hardware",
+   "region": "US"
+  },
   {
    "id": "4454547309",
    "title": "Year-round Intern - UX Design and Research",
@@ -161421,7 +161480,7 @@
    "postedText": "12 minutes ago",
    "postedAt": 1788545028267,
    "firstSeenAt": 1788545748270,
-   "lastSeenAt": 1788545748270,
+   "lastSeenAt": 1790525335892,
    "url": "https://www.linkedin.com/jobs/view/4463613266/",
    "applyUrl": "https://careers.bain.com/jobs/FolderDetail?folderId=109508&source=Linked-In",
    "description": null,
@@ -161476,7 +161535,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1788544991579,
    "firstSeenAt": 1788545771583,
-   "lastSeenAt": 1788545771583,
+   "lastSeenAt": 1790525335891,
    "url": "https://www.linkedin.com/jobs/view/4463614259/",
    "applyUrl": "https://careers.bain.com/jobs/FolderDetail?folderId=109508&source=Linked-In",
    "description": null,
@@ -215786,59 +215845,6 @@
    "cardFacts": [
     "$29 / hour",
     "Boston",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "US"
-  },
-  {
-   "id": "4450088594",
-   "title": "2027 Corporate Risk Development Program Summer Internship (Core Risk) - Early Careers",
-   "company": "Wells Fargo",
-   "matchedWatchlist": "Wells Fargo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/wells-fargo.jpg",
-   "location": "Charlotte, NC",
-   "workplaceType": "On-site",
-   "stipend": "$35 / hour",
-   "duration": "10 weeks",
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "sql",
-    "power bi",
-    "excel"
-   ],
-   "summary": "This internship involves analyzing risk data and supporting corporate risk initiatives through collaboration and technology. It's ideal for students with analytical skills and interest in risk management.",
-   "bullets": [
-    "Analyze risk trends using data tools like Power BI, SQL, and Python",
-    "Collaborate across teams to support risk management initiatives",
-    "Work in Charlotte, NC for 10 weeks with potential full-time offer"
-   ],
-   "roleLabel": "Risk Analysis",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "power bi",
-    "sql",
-    "python",
-    "microsoft office"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "30 minutes ago",
-   "postedAt": 1787932568354,
-   "firstSeenAt": 1787934368363,
-   "lastSeenAt": 1787934368363,
-   "url": "https://www.linkedin.com/jobs/view/4450088594/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4450088594/",
-   "description": null,
-   "roleFingerprint": "51987857c1",
-   "cardFacts": [
-    "$35 / hour",
-    "Charlotte",
     "On-site"
    ],
    "category": "software",
