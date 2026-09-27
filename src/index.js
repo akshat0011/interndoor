@@ -697,8 +697,11 @@ async function main() {
         log.info(`Walked ${walked} search${walked === 1 ? '' : 'es'} — the rest are first in the queue next run.`);
         break;
       }
+      // Only a company batch carries a count. A labelled keyword search ("IN
+      // entry-level") has none, and printed "(undefined companies)" in the log
+      // and the scan view.
       const label = search.label
-        ? `${search.label} (${search.companyCount} companies)`
+        ? `${search.label}${search.companyCount != null ? ` (${search.companyCount} companies)` : ''}`
         : `${search.keywords}${search.location ? ` @ ${search.location}` : ''}`;
       log.section(`Search: ${label} — ${searchIndex + 1}/${ordered.length}`);
 
