@@ -64,8 +64,8 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
 console.log('\n== the US carries all three, at the asked-for values ==');
 {
   check('US is declared', !!us, true);
-  // Every 30-minute tick — his instruction of 27 Sep 2026 (config _cadence_note).
-  check('every tick', us.intervalMinutes, undefined);
+  // Hourly — his instruction of 27 Sep 2026 (config _cadence_note).
+  check('hourly', us.intervalMinutes, 60);
   /* Raised 20 -> 40 on 9 Sep 2026. 15% of healthy 2h-window walks were filling
      the 20-page budget before exhausting the window, so anything past page 20 on
      those runs went unread. The cap is a ceiling, not a target — the median walk
