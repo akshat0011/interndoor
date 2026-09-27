@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
+      "url": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
+      "title": "ADMINISTRATOR L1 — Wipro",
+      "content_text": "Company: Wipro · Location: Hyderabad, Telangana, India\n• Track and resolve standard incident tickets\n• Monitor alerts and sla timelines\n• Document incidents and ensure timely resolution",
+      "date_published": "2026-09-27T00:16:34.034Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139",
       "url": "https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139",
       "title": "Engineering Apprentice — Ather Energy Ltd.",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "eSec Forte® Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/launchtrax-application-engineer-intern-c-opengl-qt-qml-4463577895",
-      "url": "https://interndoor.com/jobs/launchtrax-application-engineer-intern-c-opengl-qt-qml-4463577895",
-      "title": "Application Engineer Intern (C++, OpenGL, Qt, QML) — LaunchTrax",
-      "content_text": "Company: LaunchTrax · Location: Bengaluru, Karnataka, India · Duration: 3-6 months\n• Develop C++ applications for mission systems using Qt and QML\n• Work with 3D graphics frameworks like OpenGL and osgEarth\n• Collaborate with UX designers to create user-facing products\n• Transition to full-time role after internship completion",
-      "date_published": "2026-09-26T10:19:04.283Z",
-      "authors": [
-        {
-          "name": "LaunchTrax"
         }
       ]
     }

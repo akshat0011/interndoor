@@ -6,18 +6,6 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-analog-design-intern-4470576302",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-analog-design-intern-4470576302",
-      "title": "Analog Design Intern — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA\n• Build transistor level circuits or improve existing blocks using Cadence tools\n• Simulate performance metrics and iterate until circuits meet requirements\n• Collaborate with senior designers and managers on detailed project reviews",
-      "date_published": "2026-09-26T22:16:41.441Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4470562933",
       "url": "https://interndoor.com/us/jobs/charles-schwab-technology-2027-intern-ai-and-cybersecurity-4470562933",
       "title": "Technology 2027 Intern - AI & CyberSecurity — Charles Schwab",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Atlassian"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/clearwater-analytics-data-management-and-reporting-intern-4470548041",
+      "url": "https://interndoor.com/us/jobs/clearwater-analytics-data-management-and-reporting-intern-4470548041",
+      "title": "Data Management & Reporting Intern — Clearwater Analytics",
+      "content_text": "Company: Clearwater Analytics · Location: New York, NY\n• Maintain and clean datasets for client portfolios and market signals\n• Create reports and dashboards using Excel, SQL, or Python\n• Collaborate on data governance and compliance workflows",
+      "date_published": "2026-09-26T03:33:32.165Z",
+      "authors": [
+        {
+          "name": "Clearwater Analytics"
         }
       ]
     }

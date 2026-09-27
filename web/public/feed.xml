@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 26 Sep 2026 22:55:04 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 00:16:34 GMT</lastBuildDate>
+  <item>
+    <title>ADMINISTRATOR L1 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-administrator-l1-4472410803</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-administrator-l1-4472410803</guid>
+    <pubDate>Sun, 27 Sep 2026 00:16:34 GMT</pubDate>
+    <description>Company: Wipro · Location: Hyderabad, Telangana, India
+• Track and resolve standard incident tickets
+• Monitor alerts and sla timelines
+• Document incidents and ensure timely resolution</description>
+  </item>
   <item>
     <title>Engineering Apprentice — Ather Energy Ltd.</title>
     <link>https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139</link>
@@ -503,17 +513,6 @@
 • Configure iam and secure cloud environments on aws azure or gcp
 • Work with devops teams to improve security posture
 • Stay updated on cybersecurity threats and tools</description>
-  </item>
-  <item>
-    <title>Application Engineer Intern (C++, OpenGL, Qt, QML) — LaunchTrax</title>
-    <link>https://interndoor.com/jobs/launchtrax-application-engineer-intern-c-opengl-qt-qml-4463577895</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/launchtrax-application-engineer-intern-c-opengl-qt-qml-4463577895</guid>
-    <pubDate>Sat, 26 Sep 2026 10:19:04 GMT</pubDate>
-    <description>Company: LaunchTrax · Location: Bengaluru, Karnataka, India · Duration: 3-6 months
-• Develop C++ applications for mission systems using Qt and QML
-• Work with 3D graphics frameworks like OpenGL and osgEarth
-• Collaborate with UX designers to create user-facing products
-• Transition to full-time role after internship completion</description>
   </item>
 </channel>
 </rss>
