@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/goldman-sachs-engineering-l2-hyderabad-associate-software-engineering-4426233569",
+      "url": "https://interndoor.com/jobs/goldman-sachs-engineering-l2-hyderabad-associate-software-engineering-4426233569",
+      "title": "Engineering-L2-Hyderabad-Associate-Software Engineering — Goldman Sachs",
+      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India\n• Design and implement scalable systems for financial services\n• Work with Java, Python, and cloud platforms\n• Join a global team shaping next-gen financial solutions",
+      "date_published": "2026-09-27T15:48:13.855Z",
+      "authors": [
+        {
+          "name": "Goldman Sachs"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/valeo-discipline-design-leader-4398505002",
       "url": "https://interndoor.com/jobs/valeo-discipline-design-leader-4398505002",
       "title": "Discipline Design Leader — Valeo",
@@ -587,18 +599,6 @@
       "title": "Specialist - Java Spring Boot Full Stack Developer — Linde@India",
       "content_text": "Company: Linde@India · Location: Greater Kolkata Area\n• Develop and maintain Java/Spring backend services and React frontend applications\n• Build REST APIs, integrations, and data-driven solutions\n• Support cloud migration and modernization of legacy systems\n• Collaborate with cross-functional teams on technical design and deployment",
       "date_published": "2026-09-26T17:11:00.240Z",
-      "authors": [
-        {
-          "name": "Linde@India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-india-specialist-application-security-4454056309",
-      "url": "https://interndoor.com/jobs/linde-india-specialist-application-security-4454056309",
-      "title": "Specialist - Application Security — Linde@India",
-      "content_text": "Company: Linde@India · Location: Greater Kolkata Area\n• Perform web, API and mobile security testing, validate risks and provide remediation guidance\n• Use Burp Suite, Qualys WAS, Kali Linux, Nmap and sqlmap for testing\n• Document findings, retest fixes and maintain VAPT standards",
-      "date_published": "2026-09-26T17:10:46.445Z",
       "authors": [
         {
           "name": "Linde@India"
