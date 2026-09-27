@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 27 Sep 2026 12:51:54 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 13:27:33 GMT</lastBuildDate>
+  <item>
+    <title>Java full stack, React Developer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-java-full-stack-react-developer-4444801620</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-full-stack-react-developer-4444801620</guid>
+    <pubDate>Sun, 27 Sep 2026 13:27:33 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Develop microservices with Java 8+, Spring Boot, and REST APIs
+• Build single-page apps with ReactJS and debug front-end code
+• Use DevOps tools like Jenkins, Git, and Docker for deployment</description>
+  </item>
+  <item>
+    <title>Hire Ahead-Intermediate Application Developer- Java — UPS</title>
+    <link>https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969823</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969823</guid>
+    <pubDate>Sun, 27 Sep 2026 13:18:49 GMT</pubDate>
+    <description>Company: UPS · Location: Chennai, Tamil Nadu, India
+• Develops and maintains applications using java
+• Collaborates with teams on system design and integration
+• Monitors new technologies for application relevance</description>
+  </item>
+  <item>
+    <title>Intermediate Applications Developer - Full Stack Dot Net — UPS</title>
+    <link>https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248970772</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248970772</guid>
+    <pubDate>Sun, 27 Sep 2026 13:18:22 GMT</pubDate>
+    <description>Company: UPS · Location: Chennai, Tamil Nadu, India
+• Builds and maintains web applications using html, css, js, and angular
+• Works on full systems life cycle from design to deployment
+• Collaborates with teams on emerging technologies and integrations</description>
+  </item>
   <item>
     <title>Power Programmer Specialist Programmer .NET Full Stack(Q2-FY-27) — Infosys</title>
     <link>https://interndoor.com/jobs/infosys-power-programmer-specialist-programmer-net-full-stack-q2-fy-27-4435223027</link>
@@ -484,37 +514,6 @@
 • Manage apache nifi and aws infrastructure for cloud solutions
 • Use terraform for iac and work with eeks and databases
 • Collaborate with data scientists and developers on cloud projects</description>
-  </item>
-  <item>
-    <title>Java Fullstack IRC300668 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453534069</guid>
-    <pubDate>Sat, 26 Sep 2026 15:10:17 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Hyderabad, Telangana, India
-• Develop and maintain Java-based microservices using Spring Boot
-• Work with AWS services like S3, EC2, and SQS/SNS for cloud infrastructure
-• Collaborate on REST APIs and integrate with Kafka for messaging</description>
-  </item>
-  <item>
-    <title>Python Developer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-python-developer-4444649943</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-python-developer-4444649943</guid>
-    <pubDate>Sat, 26 Sep 2026 14:13:50 GMT</pubDate>
-    <description>Company: Infosys · Location: Chennai, Tamil Nadu, India
-• Design and deploy solutions for customer challenges
-• Work with python and java for automation testing
-• Lead small projects and contribute to organizational goals</description>
-  </item>
-  <item>
-    <title>Python Terraform Developer — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-python-terraform-developer-4453774207</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-python-terraform-developer-4453774207</guid>
-    <pubDate>Sat, 26 Sep 2026 14:07:59 GMT</pubDate>
-    <description>Company: Infosys · Location: Pune Division, Maharashtra, India
-• Design and maintain cloud software solutions using Python and Terraform
-• Work with AWS services like EC2, S3, Lambda, and CloudFormation
-• Collaborate with teams to ensure secure, scalable, and reliable code
-• Located in Pune</description>
   </item>
 </channel>
 </rss>
