@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-power-programmer-specialist-programmer-net-full-stack-q2-fy-27-4435223027",
+      "url": "https://interndoor.com/jobs/infosys-power-programmer-specialist-programmer-net-full-stack-q2-fy-27-4435223027",
+      "title": "Power Programmer Specialist Programmer .NET Full Stack(Q2-FY-27) — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and code full-stack applications using .NET\n• Work on cloud-native projects with Fortune 500 clients\n• Collaborate with senior developers on complex systems",
+      "date_published": "2026-09-27T12:51:54.654Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4462646095",
+      "url": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4462646095",
+      "title": "Java Fullstack (Angular) Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Chennai, Tamil Nadu, India\n• Build microservices with Java 17 and Spring frameworks\n• Develop responsive UIs with Angular and React JS\n• Work in Agile teams on scalable applications",
+      "date_published": "2026-09-27T12:51:45.110Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-site-reliability-engineer-4444603112",
+      "url": "https://interndoor.com/jobs/infosys-site-reliability-engineer-4444603112",
+      "title": "Site Reliability Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and deploy scalable systems handling millions of transactions and petabytes of data\n• Implement AI/ML tools for automation, anomaly detection, and predictive analytics\n• Work with AWS Bedrock, Azure OpenAI, and GCP Vertex AI for intelligent solutions",
+      "date_published": "2026-09-27T12:46:34.306Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-fullstack-developer-react-4444020040",
+      "url": "https://interndoor.com/jobs/infosys-java-fullstack-developer-react-4444020040",
+      "title": "Java Fullstack Developer (React) — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support client systems using Java and React\n• Collaborate with leads to estimate project requirements and translate specs into code\n• Write tests and scenarios based on specifications for complex programs",
+      "date_published": "2026-09-27T12:17:46.974Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
       "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
       "title": "Specialist Software Engineer - IBM ACE Integration Specialist — Nationwide",
@@ -26,6 +74,18 @@
       "authors": [
         {
           "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-ml-engineer-i-4414007529",
+      "url": "https://interndoor.com/jobs/ust-ml-engineer-i-4414007529",
+      "title": "ML Engineer I — UST",
+      "content_text": "Company: UST · Location: Hyderabad, Telangana, India\n• Build and maintain python backend services for genai systems\n• Develop rest apis for ai capabilities and observability\n• Implement agentic workflows with langchain and langgraph",
+      "date_published": "2026-09-27T10:58:21.778Z",
+      "authors": [
+        {
+          "name": "UST"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-bt-uwb-validation-and-system-integration-4471035599",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-bt-uwb-validation-and-system-integration-4471035599",
-      "title": "Engineer - BT/UWB validation and system integration — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 1-6 years\n• Test and debug hardware and firmware for Bluetooth and UWB systems\n• Work with cross-functional teams on pre-silicon and post-silicon validation\n• Develop test cases in C, Python, TCL, or similar scripting languages",
-      "date_published": "2026-09-26T14:04:38.314Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-aws-and-devops-4444003960",
-      "url": "https://interndoor.com/jobs/infosys-aws-and-devops-4444003960",
-      "title": "AWS and Devops — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and code complex programs using cloud and devops tools\n• Translate functional requirements into system specifications\n• Collaborate with leads to estimate project work and manage timelines",
-      "date_published": "2026-09-26T14:01:38.594Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/synchrony-api-engineer-1-credit-l08-4472284756",
-      "url": "https://interndoor.com/jobs/synchrony-api-engineer-1-credit-l08-4472284756",
-      "title": "API Engineer 1 - Credit (L08) — Synchrony",
-      "content_text": "Company: Synchrony · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Design and develop microservice APIs for credit systems\n• Work with Java, Spring, and RESTful services\n• Collaborate in Agile teams with cross-functional partners",
-      "date_published": "2026-09-26T14:01:33.298Z",
-      "authors": [
-        {
-          "name": "Synchrony"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434310501",
-      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-java-spring-boot-amq-wmq-sql-serve-4434310501",
-      "title": "Intermediate Applications Developer- Java, Spring Boot, AMQ, WMQ, SQL Server — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develop and maintain Java Spring Boot RESTful web services for Track Visibility applications\n• Work with Azure DevOps and GCP for CI/CD pipelines and scalable cloud solutions\n• Collaborate in SAFe Agile ceremonies with cross-functional teams on high-traffic systems",
-      "date_published": "2026-09-26T13:52:12.553Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-applications-devt-associate-4417128060",
-      "url": "https://interndoor.com/jobs/ups-applications-devt-associate-4417128060",
-      "title": "Applications Devt Associate — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Supports coding, testing, and analysis for basic applications\n• Collaborates with teams to ensure effective communication\n• Assists with documentation of requirements and defect reports",
-      "date_published": "2026-09-26T13:48:43.865Z",
-      "authors": [
-        {
-          "name": "UPS"
         }
       ]
     }
