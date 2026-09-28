@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790581912109,
+ "generatedAt": 1790582239980,
  "region": "GB",
  "regionName": "United Kingdom",
  "count": 104,
@@ -122,6 +122,8 @@
    "roleLabel": "Software Engineering",
    "degreeLevel": "UG",
    "degreeText": "Computer Science",
+   "deadline": "2026-11-13",
+   "experience": "Graduating 2028",
    "keySkills": [
     "go",
     "cassandra",
