@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790585576002,
+ "generatedAt": 1790585950247,
  "region": "US",
  "regionName": "United States",
- "count": 4183,
- "techCount": 4183,
+ "count": 4185,
+ "techCount": 4185,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1304,6 +1304,114 @@
  ],
  "jobs": [
   {
+   "id": "4472704128",
+   "title": "Summer 2027 FOX Technology Internship Program - New York, NY",
+   "company": "Fox Corporation",
+   "matchedWatchlist": "Fox Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/fox-corporation.jpg",
+   "location": "New York, NY",
+   "workplaceType": "On-site",
+   "stipend": "$20 – $30 / hour",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "sql",
+    "linux",
+    "tableau"
+   ],
+   "summary": "This internship offers students the chance to work on meaningful projects in media and technology at Fox Corporation. You'll contribute to areas like AI, data analysis, or product strategy, using tools such as Python and Tableau. Ideal for students passionate about media innovation and looking to gain practical experience in a dynamic environment.",
+   "bullets": [
+    "Work on real-world projects across AI/ML, media engineering, data analytics, or product strategy",
+    "Use Python, SQL, Tableau, Linux, and other tools relevant to your placement area",
+    "Gain hands-on experience with FOX's media and tech operations in New York"
+   ],
+   "roleLabel": "Media Technology Intern",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "sql",
+    "tableau",
+    "linux"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "1 hour ago",
+   "postedAt": 1790582217997,
+   "firstSeenAt": 1790585818003,
+   "lastSeenAt": 1790585818003,
+   "url": "https://www.linkedin.com/jobs/view/4472704128/",
+   "applyUrl": "https://www.foxcareers.com/Search/JobDetail/R50033968?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "37b928efa3",
+   "cardFacts": [
+    "$20 – $30 / hour",
+    "New York",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4472488632",
+   "title": "Summer 2027 FOX Technology Internship Program - Los Angeles, CA",
+   "company": "Fox Corporation",
+   "matchedWatchlist": "Fox Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/fox-corporation.jpg",
+   "location": "Los Angeles, CA",
+   "workplaceType": "On-site",
+   "stipend": "$20 – $30 / hour",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "sql",
+    "figma",
+    "tableau"
+   ],
+   "summary": "This summer internship offers hands-on experience in media and tech roles at Fox Corporation. Interns will work on real projects in areas like AI, cybersecurity, and data analytics, using tools such as Python and Tableau. The program runs full-time in Los Angeles, with a stipend range of $20 to $30 per hour.",
+   "bullets": [
+    "Work on real-world projects across AI/ML, cybersecurity, data, marketing, and software",
+    "Use tools like Python, SQL, Tableau, and Figma depending on placement",
+    "Full-time summer program with 32-40 hours per week in Los Angeles"
+   ],
+   "roleLabel": "Software Engineering",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "sql",
+    "tableau",
+    "figma"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790582202688,
+   "firstSeenAt": 1790585802695,
+   "lastSeenAt": 1790585802695,
+   "url": "https://www.linkedin.com/jobs/view/4472488632/",
+   "applyUrl": "https://www.foxcareers.com/Search/JobDetail/R50033966?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "a50f98a7c9",
+   "cardFacts": [
+    "$20 – $30 / hour",
+    "Los Angeles",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
    "id": "4472494507",
    "title": "Summer 2027 FOX Technology Internship Program - Tempe, AZ",
    "company": "Fox Corporation",
@@ -1344,7 +1452,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1790581539406,
    "firstSeenAt": 1790582139410,
-   "lastSeenAt": 1790582139410,
+   "lastSeenAt": 1790585764018,
    "url": "https://www.linkedin.com/jobs/view/4472494507/",
    "applyUrl": "https://www.foxcareers.com/Search/JobDetail/R50033969?source=LinkedIn",
    "description": null,
