@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 28 Sep 2026 09:19:26 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 09:26:04 GMT</lastBuildDate>
+  <item>
+    <title>Data Engineering Intern — Fam</title>
+    <link>https://interndoor.com/jobs/fam-data-engineering-intern-4472707388</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/fam-data-engineering-intern-4472707388</guid>
+    <pubDate>Mon, 28 Sep 2026 09:26:04 GMT</pubDate>
+    <description>Company: Fam · Location: Bengaluru, Karnataka, India
+• Build and maintain data pipelines for analytics and compliance reporting
+• Use SQL, Spark, and Airflow to process and validate data
+• Collaborate with analysts and engineers on data quality and pipeline improvements</description>
+  </item>
   <item>
     <title>SH Software &amp; Programming — Aditya Birla Group</title>
     <link>https://interndoor.com/jobs/aditya-birla-group-sh-software-and-programming-4472499746</link>
@@ -498,16 +508,6 @@
 • Collaborates with business and engineering teams to translate outcomes into technical requirements
 • Uses AI tools like GitHub Copilot to research and generate technical requirements
 • Works in agile environment with global teams, flexible hours, and hybrid location options</description>
-  </item>
-  <item>
-    <title>Multimedia System Performance Engineer for Automotive System Performance Team — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-multimedia-system-performance-engineer-for-automotive-system-performan-4426100225</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-multimedia-system-performance-engineer-for-automotive-system-performan-4426100225</guid>
-    <pubDate>Sun, 27 Sep 2026 10:43:23 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 3-6 years
-• Profile and optimize multimedia performance on Snapdragon Automotive chipsets
-• Proficient in Android/Linux kernel, debug tools, and bus protocols
-• Collaborate with cross-functional teams on system-level performance testing</description>
   </item>
 </channel>
 </rss>
