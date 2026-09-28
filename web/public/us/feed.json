@@ -6,11 +6,59 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-design-intern-summer-2027-4464304571",
-      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-design-intern-summer-2027-4464304571",
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-validation-intern-summer-2027-4464095621",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-validation-intern-summer-2027-4464095621",
+      "title": "Digital Validation Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Run tests, collect data, and document results under team guidance\n• Collaborate with design and software teams to resolve issues\n• Maintain validation reports and technical records for projects",
+      "date_published": "2026-09-28T10:53:06.703Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-etch-equipment-engineer-intern-summer-2027-4464310514",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-etch-equipment-engineer-intern-summer-2027-4464310514",
+      "title": "Etch Equipment Engineer Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Analyze data to improve equipment efficiency and reduce defects\n• Work on projects to boost manufacturing performance and cost savings\n• Collaborate with teams to standardize processes across facilities",
+      "date_published": "2026-09-28T10:52:35.257Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-design-intern-summer-2027-4464311134",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-design-intern-summer-2027-4464311134",
       "title": "Digital Design Intern - Summer 2027 — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Support digital design implementation, simulations, and documentation\n• Collaborate with verification and physical design teams\n• Maintain design records and technical documentation",
-      "date_published": "2026-09-28T09:48:44.751Z",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Support digital design projects with implementation, simulation, and documentation\n• Collaborate with verification and physical design teams on project execution\n• Maintain design records and technical documentation under senior guidance",
+      "date_published": "2026-09-28T10:52:02.583Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-soc-dft-intern-spring-2027-4464095626",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-soc-dft-intern-spring-2027-4464095626",
+      "title": "SOC DFT Intern - Spring 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Spring 2027\n• Implement DFT techniques like scan insertion and memory BIST\n• Use Python, Perl, TCL for automation and ATPG pattern generation\n• Collaborate with RTL and verification teams on testability\n• Work on real SoC designs with industry-standard EDA tools",
+      "date_published": "2026-09-28T10:51:34.538Z",
+      "authors": [
+        {
+          "name": "NXP Semiconductors"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/nxp-semiconductors-photo-metro-equipment-engineering-intern-summer-2027-4464088666",
+      "url": "https://interndoor.com/us/jobs/nxp-semiconductors-photo-metro-equipment-engineering-intern-summer-2027-4464088666",
+      "title": "Photo/Metro Equipment Engineering Intern - Summer 2027 — NXP Semiconductors",
+      "content_text": "Company: NXP Semiconductors · Location: Austin, TX · Duration: Summer 2027\n• Build and maintain electromechanical systems in a semiconductor fab environment\n• Work on projects with tangible impact on NXP's equipment engineering processes\n• Present findings to senior management and document learning outcomes",
+      "date_published": "2026-09-28T10:45:04.811Z",
       "authors": [
         {
           "name": "NXP Semiconductors"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461430990",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-bs-summer-2027-4461430990",
-      "title": "Physical Design Engineer Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Austin, TX · Duration: Fall 2027\n• Perform synthesis, floor planning, and timing analysis on complex logic blocks\n• Use Python, TCL, Perl, and Shell to automate design tasks\n• Collaborate with cross-functional teams to resolve timing and congestion issues",
-      "date_published": "2026-09-26T18:17:37.837Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-bs-summer-2027-4461405509",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-bs-summer-2027-4461405509",
-      "title": "Design for Test Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Westborough, MA · Duration: Fall 2027\n• Design and develop SOC using Linux, TCL, Python/Perl\n• Collaborate with global CAD teams on flow fixes and improvements\n• Analyze and debug DFT features with CAD tools and SV/UVM",
-      "date_published": "2026-09-26T18:17:27.619Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-bs-summer-2027-4461194621",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-for-test-intern-bs-summer-2027-4461194621",
-      "title": "Design for Test Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Morrisville, NC · Duration: Fall 2027\n• Design and develop SOC using Linux, TCL, Python/Perl\n• Collaborate with global CAD teams on flow fixes and improvements\n• Analyze and debug DFT features with CAD tools and SV/UVM",
-      "date_published": "2026-09-26T18:17:14.499Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/kiewit-electrical-engineer-intern-kiewit-power-engineering-summer-2027-4461997537",
-      "url": "https://interndoor.com/us/jobs/kiewit-electrical-engineer-intern-kiewit-power-engineering-summer-2027-4461997537",
-      "title": "Electrical Engineer Intern - Kiewit Power Engineering (Summer 2027) — Kiewit",
-      "content_text": "Company: Kiewit · Location: Lenexa, KS · Duration: Summer 2027\n• Review electrical schematics and prepare calculations for power systems\n• Use design software and Excel for project documentation and analysis\n• Collaborate with engineers and vendors on equipment specifications",
-      "date_published": "2026-09-26T18:16:36.042Z",
-      "authors": [
-        {
-          "name": "Kiewit"
         }
       ]
     }

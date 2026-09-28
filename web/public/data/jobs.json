@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790595769304,
+ "generatedAt": 1790596944793,
  "region": "IN",
  "regionName": "India",
- "count": 701,
- "techCount": 701,
+ "count": 700,
+ "techCount": 700,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -36360,66 +36360,6 @@
     "Remote"
    ],
    "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4440764006",
-   "title": "Interim Engineering Intern_2027_HW",
-   "company": "Qualcomm",
-   "matchedWatchlist": "Qualcomm",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/qualcomm.jpg",
-   "location": "Greater Hyderabad Area",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "Over 100 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "c++",
-    "verilog",
-    "vhdl",
-    "rtl",
-    "fpga",
-    "asic",
-    "dft",
-    "physical design",
-    "mixed signal",
-    "tcl",
-    "perl"
-   ],
-   "summary": "This internship involves simulating and verifying soc designs with embedded processors and working on rf/analog/ic design using industry tools. It suits students with strong programming and circuit design skills looking to contribute to cutting-edge semiconductor projects.",
-   "bullets": [
-    "Simulate and verify soc with embedded risc/dsp processors",
-    "Work with verilog/vhdl, c/c++, tcl/perl/shell scripting",
-    "Design rf/analog/mixed signal ic with cadence/spectrefrf"
-   ],
-   "roleLabel": "Soc verification",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "verilog",
-    "vhdl",
-    "c",
-    "tcl",
-    "cadence"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "6 minutes ago",
-   "postedAt": 1788004108107,
-   "firstSeenAt": 1788004468115,
-   "lastSeenAt": 1788004468115,
-   "url": "https://www.linkedin.com/jobs/view/4440764006/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4440764006/",
-   "description": null,
-   "roleFingerprint": "46c86c241f",
-   "cardFacts": [
-    "Greater Hyderabad Area",
-    "On-site"
-   ],
-   "category": "hardware",
    "region": "IN"
   },
   {
