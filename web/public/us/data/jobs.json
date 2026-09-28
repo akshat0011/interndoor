@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790570857106,
+ "generatedAt": 1790571296727,
  "region": "US",
  "regionName": "United States",
- "count": 4185,
- "techCount": 4185,
+ "count": 4186,
+ "techCount": 4186,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1304,6 +1304,109 @@
  ],
  "jobs": [
   {
+   "id": "4472474958",
+   "title": "AI/ML Intern - Radiation Oncology",
+   "company": "Mayo Clinic",
+   "matchedWatchlist": "Mayo Clinic",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/mayo-clinic.jpg",
+   "location": "Rochester, MN",
+   "workplaceType": "Hybrid",
+   "stipend": "$25",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "c++",
+    "sql",
+    "angular",
+    "machine learning",
+    "nlp",
+    "algorithms"
+   ],
+   "summary": "This internship involves applying data science and AI techniques to healthcare challenges, focusing on image analysis and patient care improvement. Ideal for students with a background in computer science or related fields and experience with data analysis tools.",
+   "bullets": [
+    "Analyze clinical and non-clinical data to improve patient care",
+    "Work with AI/ML tools for image analysis and pattern recognition",
+    "Collaborate with cross-functional teams on data science projects"
+   ],
+   "roleLabel": "Data Science Intern",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Computer Science/Statistics",
+   "keySkills": [
+    "machine learning",
+    "data analysis",
+    "sql"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "6 minutes ago",
+   "postedAt": 1790570875673,
+   "firstSeenAt": 1790571235687,
+   "lastSeenAt": 1790571235687,
+   "url": "https://www.linkedin.com/jobs/view/4472474958/",
+   "applyUrl": "https://jobs.mayoclinic.org/job/rochester/ai-ml-intern-radiation-oncology/33647/96924204752",
+   "description": null,
+   "roleFingerprint": "a1d48b3005",
+   "cardFacts": [
+    "$25",
+    "Rochester",
+    "Hybrid"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4472476938",
+   "title": "Bioinformatics Intern - PhD in progress",
+   "company": "Mayo Clinic",
+   "matchedWatchlist": "Mayo Clinic",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/mayo-clinic.jpg",
+   "location": "Rochester, MN",
+   "workplaceType": null,
+   "stipend": "$30 / hour",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This internship involves analyzing sequenced genome data to detect somatic mutations in blood samples. You'll use python and unix tools for next-generation sequencing analysis. The role is part-time with flexible hours over three months.",
+   "bullets": [
+    "Analyze sequenced genome data to detect somatic mutations in blood samples",
+    "Use python and unix tools for next-generation sequencing analysis",
+    "Work part-time with flexible hours over three months"
+   ],
+   "roleLabel": "Genome Analysis",
+   "degreeLevel": null,
+   "degreeText": "PhD",
+   "keySkills": [
+    "python",
+    "unix",
+    "next-generation sequencing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790570818850,
+   "firstSeenAt": 1790571238855,
+   "lastSeenAt": 1790571238855,
+   "url": "https://www.linkedin.com/jobs/view/4472476938/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472476938/",
+   "description": null,
+   "roleFingerprint": "f465c32d14",
+   "cardFacts": [
+    "$30 / hour",
+    "Rochester"
+   ],
+   "category": "misc",
+   "region": "US"
+  },
+  {
    "id": "4472470979",
    "title": "Mechanical Design Engineering Intern (Summer 2027)",
    "company": "Collins Aerospace",
@@ -1338,7 +1441,7 @@
    "postedText": "16 minutes ago",
    "postedAt": 1790566405429,
    "firstSeenAt": 1790567365436,
-   "lastSeenAt": 1790567365436,
+   "lastSeenAt": 1790570924948,
    "url": "https://www.linkedin.com/jobs/view/4472470979/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472470979/",
    "description": null,
@@ -1387,7 +1490,7 @@
    "postedText": "16 minutes ago",
    "postedAt": 1790566402553,
    "firstSeenAt": 1790567362573,
-   "lastSeenAt": 1790567362573,
+   "lastSeenAt": 1790570924948,
    "url": "https://www.linkedin.com/jobs/view/4472478822/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472478822/",
    "description": null,
@@ -1436,7 +1539,7 @@
    "postedText": "17 minutes ago",
    "postedAt": 1790566385110,
    "firstSeenAt": 1790567405116,
-   "lastSeenAt": 1790567405116,
+   "lastSeenAt": 1790570964963,
    "url": "https://www.linkedin.com/jobs/view/4472476775/",
    "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01877177EXTERNALENGLOBAL/Test-Engineering-Co-op-Summer-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
@@ -1483,7 +1586,7 @@
    "postedText": "19 minutes ago",
    "postedAt": 1790563076761,
    "firstSeenAt": 1790564216778,
-   "lastSeenAt": 1790567368735,
+   "lastSeenAt": 1790570928175,
    "url": "https://www.linkedin.com/jobs/view/4471330009/",
    "applyUrl": "https://careers.gf.com/careers/job/563980768903679?source=LinkedIn",
    "description": null,
@@ -5473,54 +5576,6 @@
     "Hybrid"
    ],
    "category": "software",
-   "region": "US"
-  },
-  {
-   "id": "4472214353",
-   "title": "Bioinformatics Intern - PhD in progress",
-   "company": "Mayo Clinic",
-   "matchedWatchlist": "Mayo Clinic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mayo-clinic.jpg",
-   "location": "Rochester, MN",
-   "workplaceType": "On-site",
-   "stipend": "$30 / hour",
-   "duration": null,
-   "applicants": "0 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This internship involves analyzing sequenced genome data to detect somatic mutations in blood samples. The role requires experience with python and unix tools for next-gen sequencing analysis. It is a part-time position for three months with the possibility of extension.",
-   "bullets": [
-    "Analyze sequenced genome data to detect somatic mutations in blood samples",
-    "Use python and unix tools for next-gen sequencing analysis",
-    "Work part-time for three months with possible extension"
-   ],
-   "roleLabel": "Genome Analysis",
-   "degreeLevel": null,
-   "degreeText": "PhD",
-   "keySkills": [
-    "python",
-    "unix"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "12 minutes ago",
-   "postedAt": 1790376404709,
-   "firstSeenAt": 1790377124710,
-   "lastSeenAt": 1790381157048,
-   "url": "https://www.linkedin.com/jobs/view/4472214353/",
-   "applyUrl": "https://jobs.mayoclinic.org/job/rochester/bioinformatics-intern-phd-in-progress/33647/100363223888",
-   "description": null,
-   "roleFingerprint": "f465c32d14",
-   "cardFacts": [
-    "$30 / hour",
-    "Rochester",
-    "On-site"
-   ],
-   "category": "misc",
    "region": "US"
   },
   {
