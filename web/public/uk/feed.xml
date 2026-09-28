@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/uk/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the UK, listed within minutes of going live.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 07:25:03 GMT</lastBuildDate>
+  <item>
+    <title>Associate Software Engineer - Intern — Monzo</title>
+    <link>https://interndoor.com/uk/jobs/monzo-associate-software-engineer-intern-ats-greenhouse-monzo-8156261</link>
+    <guid isPermaLink="true">https://interndoor.com/uk/jobs/monzo-associate-software-engineer-intern-ats-greenhouse-monzo-8156261</guid>
+    <pubDate>Mon, 28 Sep 2026 07:25:03 GMT</pubDate>
+    <description>Company: Monzo · Location: London · Duration: 16-17 years
+• Write, test and ship code for customer-facing features
+• Use Go, Cassandra, Kafka, Kubernetes, AWS and React
+• Work with product managers and data analysts on your team</description>
+  </item>
   <item>
     <title>FY27 Engineering Internship United Kingdom — Analog Devices</title>
     <link>https://interndoor.com/uk/jobs/analog-devices-fy27-engineering-internship-united-kingdom-ats-workday-analogdevices-wd1-external-r266707</link>
@@ -501,16 +511,6 @@
 • Develop prototypes and test solutions for aerospace manufacturing
 • Work on real-world projects with engineering teams in a research facility
 • Collaborate with stakeholders and present progress to senior management</description>
-  </item>
-  <item>
-    <title>Graduate AI and Software Engineer - Automotive MPUs — NXP Semiconductors</title>
-    <link>https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880</link>
-    <guid isPermaLink="true">https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880</guid>
-    <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
-    <description>Company: NXP Semiconductors · Location: Glasgow
-• Prototype AI use-cases on automotive hardware, deploying ML models for real-world applications
-• Work with Python, PyTorch, and AI toolchains to optimise and run models on S32N MPUs
-• Collaborate with global teams and customers to shape AI capabilities in automotive systems</description>
   </item>
 </channel>
 </rss>
