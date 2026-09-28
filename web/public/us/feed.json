@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/bosch-radar-sensing-ai-research-intern-ats-smartrecruiters-boschgroup-744000152219569",
+      "url": "https://interndoor.com/us/jobs/bosch-radar-sensing-ai-research-intern-ats-smartrecruiters-boschgroup-744000152219569",
+      "title": "Radar Sensing AI Research Intern — Bosch",
+      "content_text": "Company: Bosch · Location: Pittsburgh, us\n• Build radar AI models using signal processing and deep learning\n• Work with PyTorch, HuggingFace, and Hydra frameworks\n• Contribute to research papers and patent development",
+      "date_published": "2026-09-28T15:51:13.077Z",
+      "authors": [
+        {
+          "name": "Bosch"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462210682",
       "url": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462210682",
       "title": "Research Intern: Linear Algebra and Hamiltonian Simulation - 2027 — IBM",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Pratt & Whitney"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-2027-summer-fall-co-op-systems-engineering-onsite-4472700664",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-2027-summer-fall-co-op-systems-engineering-onsite-4472700664",
-      "title": "2027 Summer-Fall Co-op - Systems Engineering (Onsite) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Cedar Rapids, IA\n• Work on avionics systems from design to testing with engineering teams\n• Use Python, C/C++, MATLAB for requirements and verification\n• Collaborate on hardware-software integration in a lab environment",
-      "date_published": "2026-09-28T09:31:59.736Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
         }
       ]
     }
