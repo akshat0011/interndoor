@@ -6,6 +6,114 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristlecone-specialist-cloud-and-application-engineering-4089387001",
+      "url": "https://interndoor.com/jobs/bristlecone-specialist-cloud-and-application-engineering-4089387001",
+      "title": "Specialist - Cloud & Application Engineering — Bristlecone",
+      "content_text": "Company: Bristlecone · Location: Bengaluru, Karnataka, India\n• Develop and maintain web apps using PHP and related tech\n• Collaborate with designers and front-end teams\n• Work with MySQL and RESTful APIs\n• Based in Bengaluru",
+      "date_published": "2026-09-28T18:44:39.288Z",
+      "authors": [
+        {
+          "name": "Bristlecone"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-java-developer-4462960416",
+      "url": "https://interndoor.com/jobs/cognizant-java-developer-4462960416",
+      "title": "Java Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Mumbai Metropolitan Region\n• Debug and resolve core java issues in string mutability and concurrency\n• Work with spring mvc, hibernate, and oracle database\n• Contribute to react js frontend with minimal ui development",
+      "date_published": "2026-09-28T18:42:26.467Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-performance-testing-4462953454",
+      "url": "https://interndoor.com/jobs/cognizant-performance-testing-4462953454",
+      "title": "Performance Testing — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Design and execute performance tests under load using approved frameworks\n• Analyze system behavior with Dynatrace for root cause analysis\n• Integrate testing into CI/CD pipelines for continuous validation",
+      "date_published": "2026-09-28T18:31:12.095Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-network-engineer-4470897378",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-network-engineer-4470897378",
+      "title": "MS Network engineer — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India\n• Monitor and resolve client IT issues using tools like Palo Alto and Cisco devices\n• Support incident management and ticket resolution with ITSM processes\n• Work in a hybrid environment with global teams and client-facing responsibilities",
+      "date_published": "2026-09-28T18:25:42.453Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/flex-associate-developer-it-4471524526",
+      "url": "https://interndoor.com/jobs/flex-associate-developer-it-4471524526",
+      "title": "Associate Developer - IT — Flex",
+      "content_text": "Company: Flex · Location: Chennai, Tamil Nadu, India · Duration: 5 to 3 years\n• Design and maintain snowflake data pipelines and stored procedures\n• Develop python etl frameworks for data extraction and transformation\n• Optimize data processing workflows for enterprise analytics",
+      "date_published": "2026-09-28T18:16:18.942Z",
+      "authors": [
+        {
+          "name": "Flex"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-data-engineer-i-sps-4464059027",
+      "url": "https://interndoor.com/jobs/amazon-data-engineer-i-sps-4464059027",
+      "title": "Data Engineer I, SPS — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build scalable data pipelines on AWS for Paragon's 500M+ cases\n• Design data models for global marketplace expansion\n• Collaborate with business teams on data solutions",
+      "date_published": "2026-09-28T18:15:09.534Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mastercard-analyst-franchise-services-4452203846",
+      "url": "https://interndoor.com/jobs/mastercard-analyst-franchise-services-4452203846",
+      "title": "Analyst, Franchise Services — Mastercard",
+      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Analyze data and build dashboards to support business decisions\n• Use power bi, tableau, and sql to manage and query databases\n• Collaborate with teams to improve customer experience and operational processes",
+      "date_published": "2026-09-28T18:12:35.376Z",
+      "authors": [
+        {
+          "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-data-engineer-selling-partner-insights-and-analytics-sps-4464048098",
+      "url": "https://interndoor.com/jobs/amazon-data-engineer-selling-partner-insights-and-analytics-sps-4464048098",
+      "title": "Data Engineer, Selling Partner Insights and Analytics, SPS — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build scalable data pipelines on AWS for Paragon's 500M+ cases\n• Design data models for global marketplace expansion\n• Collaborate with business teams on data solutions",
+      "date_published": "2026-09-28T18:01:19.338Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-sysde-i-multimedia-silicon-and-systems-group-4472772790",
+      "url": "https://interndoor.com/jobs/amazon-sysde-i-multimedia-silicon-and-systems-group-4472772790",
+      "title": "SysDE I - Multimedia, Silicon and Systems Group — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Develop display kernel drivers using DRM/KMS framework for plane management and atomic modesetting\n• Work on V4L2 drivers for video processing and display pipeline integration\n• Enable HDR/SDR format conversion and color depth support across 8/10/12-bit pipelines",
+      "date_published": "2026-09-28T18:00:35.302Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
       "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
       "title": "Data Analyst Project Intern (Training & Quality) - 2026 Start (BS/MS) — ByteDance",
@@ -14,6 +122,18 @@
       "authors": [
         {
           "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/happiest-minds-technologies-data-scientist-machine-learning-4472775577",
+      "url": "https://interndoor.com/jobs/happiest-minds-technologies-data-scientist-machine-learning-4472775577",
+      "title": "DATA SCIENTIST - Machine Learning — Happiest Minds Technologies",
+      "content_text": "Company: Happiest Minds Technologies · Location: Bengaluru, Karnataka, India · Duration: 3-4 years\n• Analyze data and build predictive models using sql and python\n• Work with cross-functional teams to support data-driven decisions\n• Develop and validate machine learning algorithms for forecasting",
+      "date_published": "2026-09-28T17:45:13.992Z",
+      "authors": [
+        {
+          "name": "Happiest Minds Technologies"
         }
       ]
     },
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-modem-development-4471501146",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-modem-development-4471501146",
-      "title": "Engineer- Modem Development — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop and validate embedded and cloud edge software for products\n• Work with C/C++/Python and Git/Perforce for code management\n• Collaborate on features, testing, and documentation with cross-functional teams",
-      "date_published": "2026-09-28T14:04:53.026Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-associate-engineer-ppat-4471500200",
-      "url": "https://interndoor.com/jobs/qualcomm-associate-engineer-ppat-4471500200",
-      "title": "Associate Engineer- PPAT — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Design and develop embedded and cloud edge software for products\n• Collaborate with cross-functional teams on system-level solutions\n• Perform code reviews, testing, and debugging for quality assurance",
-      "date_published": "2026-09-28T14:04:48.509Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-4471500199",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-4471500199",
-      "title": "Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Design and develop embedded and cloud edge software for products\n• Work with c/c++/java/python and databases, apis, and version control tools\n• Collaborate with cross-functional teams on software features and testing",
-      "date_published": "2026-09-28T14:04:37.050Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-software-quality-engineer-chennai-4248976013",
-      "url": "https://interndoor.com/jobs/ups-intermediate-software-quality-engineer-chennai-4248976013",
-      "title": "Intermediate Software Quality Engineer - Chennai — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Reviews and improves testing processes for UPS systems\n• Uses agile and safe methodologies in project execution\n• Works on complex projects with cross-functional teams",
-      "date_published": "2026-09-28T13:48:42.016Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-application-developer-java-angular-oracle-4248969896",
-      "url": "https://interndoor.com/jobs/ups-application-developer-java-angular-oracle-4248969896",
-      "title": "Application Developer - Java, Angular, Oracle — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Build and maintain applications using java, oracle, and angular\n• Collaborate on system design and integration projects\n• Work with cross-functional teams on full software lifecycle",
-      "date_published": "2026-09-28T13:48:27.339Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bnp-paribas-data-scientist-associate-4472747141",
-      "url": "https://interndoor.com/jobs/bnp-paribas-data-scientist-associate-4472747141",
-      "title": "Data Scientist Associate — BNP Paribas",
-      "content_text": "Company: BNP Paribas · Location: Bengaluru, Karnataka, India\n• Develop AI models from data collection to deployment using Python and PyTorch\n• Collaborate with stakeholders to refine models and ensure alignment with business goals\n• Work on global projects across multiple time zones with teams in Mumbai, Asia, EU, and US",
-      "date_published": "2026-09-28T13:43:15.005Z",
-      "authors": [
-        {
-          "name": "BNP Paribas"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-data-scientist-4248970810",
-      "url": "https://interndoor.com/jobs/ups-data-scientist-4248970810",
-      "title": "Data Scientist — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Builds predictive models from structured and unstructured data to support business decisions\n• Uses R, SQL, Python, and cloud tools like VertexAI for analytics and ML\n• Collaborates with data engineering teams to test and deploy data pipelines",
-      "date_published": "2026-09-28T13:42:11.278Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248972605",
-      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248972605",
-      "title": "Intermediate Applications Developer - Full Stack Dot Net — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Builds and maintains web applications using html, css, js, and angular\n• Works on full systems life cycle from design to deployment\n• Collaborates with teams on emerging tech and integration projects",
-      "date_published": "2026-09-28T13:40:01.505Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-google-cloud-infrastructure-support-engineer-4248787101",
-      "url": "https://interndoor.com/jobs/ups-google-cloud-infrastructure-support-engineer-4248787101",
-      "title": "Google Cloud Infrastructure Support Engineer — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Troubleshoot and optimize GCP infrastructure for reliability and security\n• Use Terraform, BigQuery, and Vertex AI to manage cloud environments\n• Collaborate with cross-functional teams on cloud architecture and automation",
-      "date_published": "2026-09-28T13:39:43.358Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-advisor-4472729780",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-advisor-4472729780",
-      "title": "Systems Integration Advisor — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and implement scalable systems using Java, Node.js, and React\n• Work with GCP services like GKE and APIGEE Gateway\n• Collaborate on real-time data streaming and event-driven architectures",
-      "date_published": "2026-09-28T13:30:59.453Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
