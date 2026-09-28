@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480",
+      "url": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480",
+      "title": "Applied AI SRE Engineer — Deloitte",
+      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India\n• Operate high-visibility AI and cloud platforms, ensuring reliability, performance, and cost efficiency\n• Use observability tools like Prometheus and Grafana, and manage error budgets and SLOs\n• Collaborate with cross-functional teams to set production standards and ensure system resilience",
+      "date_published": "2026-09-28T10:11:45.575Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-go-programming-cloud-native-pppoe-ipoe-microservices-4472712124",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-go-programming-cloud-native-pppoe-ipoe-microservices-4472712124",
+      "title": "Software Engineer | GO Programming, Cloud-Native, PPPOE/IPOE, Microservices, DHCPV4/DHCPV6 | 8-14 Years — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 8-14 years\n• Build cloud-native microservices in Go/C/C++ for subscriber management on Kubernetes\n• Own end-to-end quality and automation for millions of subscribers across UPFs\n• Collaborate with architects and teams on release lifecycle and AI-assisted development",
+      "date_published": "2026-09-28T10:05:10.211Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/fam-data-engineering-intern-4472707388",
       "url": "https://interndoor.com/jobs/fam-data-engineering-intern-4472707388",
       "title": "Data Engineering Intern — Fam",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-ml-engineer-i-4414007529",
-      "url": "https://interndoor.com/jobs/ust-ml-engineer-i-4414007529",
-      "title": "ML Engineer I — UST",
-      "content_text": "Company: UST · Location: Hyderabad, Telangana, India\n• Build and maintain python backend services for genai systems\n• Develop rest apis for ai capabilities and observability\n• Implement agentic workflows with langchain and langgraph",
-      "date_published": "2026-09-27T10:58:21.778Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158",
-      "url": "https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158",
-      "title": "Guidewire PolicyCenter, Technology Analyst - India — Nationwide",
-      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Analyzes data mappings and dependencies across Java Spring Boot Microservices, Guidewire PolicyCenter, and other platforms\n• Collaborates with business and engineering teams to translate outcomes into technical requirements\n• Uses AI tools like GitHub Copilot to research and generate technical requirements\n• Works in agile environment with global teams, flexible hours, and hybrid location options",
-      "date_published": "2026-09-27T10:54:55.751Z",
-      "authors": [
-        {
-          "name": "Nationwide"
         }
       ]
     }
