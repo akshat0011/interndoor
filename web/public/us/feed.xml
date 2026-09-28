@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 28 Sep 2026 18:42:21 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 19:34:51 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, PhD, Perception Systems Engineering: Pedestrian Detection Precision — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-perception-systems-engineering-pedestrian-detec-ats-greenhouse-waymo-8234670</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-perception-systems-engineering-pedestrian-detec-ats-greenhouse-waymo-8234670</guid>
+    <pubDate>Mon, 28 Sep 2026 19:34:51 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, California
+• Analyze logs and tests to find false positives in pedestrian detection
+• Build evaluation tools to track model performance and guide improvements
+• Work on real-world data from autonomous vehicles in simulation and real-world tests</description>
+  </item>
+  <item>
+    <title>2027 Summer Intern, BS, Depot Automation — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-depot-automation-ats-greenhouse-waymo-8234553</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-bs-depot-automation-ats-greenhouse-waymo-8234553</guid>
+    <pubDate>Mon, 28 Sep 2026 19:34:12 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, California
+• Design and optimize low-latency data pipelines using c++ and sql
+• Build responsive frontend dashboard for operations data visualization
+• Collaborate with ops staff to create user-centric tools for real-time monitoring</description>
+  </item>
   <item>
     <title>Quality Assurance Engineering - Undergrad Internship - Summer 2027 — Lowe&#39;s Companies, Inc.</title>
     <link>https://interndoor.com/us/jobs/lowe-s-companies-inc-quality-assurance-engineering-undergrad-internship-summer-2027-4472792205</link>
@@ -487,26 +507,6 @@
 • Support electric distribution system improvements through analysis and reliability assessments
 • Use AI and digital tools to analyze power quality and outage data
 • Collaborate with engineers and project teams on capital projects and documentation</description>
-  </item>
-  <item>
-    <title>Digital Technology Co-op – US – Spring 2027 — GE Aerospace</title>
-    <link>https://interndoor.com/us/jobs/ge-aerospace-digital-technology-co-op-us-spring-2027-4455250543</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/ge-aerospace-digital-technology-co-op-us-spring-2027-4455250543</guid>
-    <pubDate>Mon, 28 Sep 2026 14:19:18 GMT</pubDate>
-    <description>Company: GE Aerospace · Location: Cincinnati, OH · Duration: Spring 2027
-• Support digital tools by developing, enhancing, or maintaining applications and systems
-• Work on dynamic projects with IT and software leaders in areas like full stack or cybersecurity
-• Gain exposure to global networks and potential full-time opportunities post-graduation</description>
-  </item>
-  <item>
-    <title>Software Engineer, Intern — Duolingo</title>
-    <link>https://interndoor.com/us/jobs/duolingo-software-engineer-intern-4472740437</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/duolingo-software-engineer-intern-4472740437</guid>
-    <pubDate>Mon, 28 Sep 2026 14:18:13 GMT</pubDate>
-    <description>Company: Duolingo · Location: Pittsburgh, PA · Duration: 12 weeks
-• Develop, test, and maintain features across full-stack projects
-• Collaborate on code reviews and cross-team projects for scalability
-• Work on impactful features for learners and internal tools</description>
   </item>
 </channel>
 </rss>
