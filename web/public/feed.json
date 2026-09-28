@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/fam-data-engineering-intern-4472707388",
+      "url": "https://interndoor.com/jobs/fam-data-engineering-intern-4472707388",
+      "title": "Data Engineering Intern — Fam",
+      "content_text": "Company: Fam · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines for analytics and compliance reporting\n• Use SQL, Spark, and Airflow to process and validate data\n• Collaborate with analysts and engineers on data quality and pipeline improvements",
+      "date_published": "2026-09-28T09:26:04.117Z",
+      "authors": [
+        {
+          "name": "Fam"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/aditya-birla-group-sh-software-and-programming-4472499746",
       "url": "https://interndoor.com/jobs/aditya-birla-group-sh-software-and-programming-4472499746",
       "title": "SH Software & Programming — Aditya Birla Group",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-multimedia-system-performance-engineer-for-automotive-system-performan-4426100225",
-      "url": "https://interndoor.com/jobs/qualcomm-multimedia-system-performance-engineer-for-automotive-system-performan-4426100225",
-      "title": "Multimedia System Performance Engineer for Automotive System Performance Team — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 3-6 years\n• Profile and optimize multimedia performance on Snapdragon Automotive chipsets\n• Proficient in Android/Linux kernel, debug tools, and bus protocols\n• Collaborate with cross-functional teams on system-level performance testing",
-      "date_published": "2026-09-27T10:43:23.533Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
