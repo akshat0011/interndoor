@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-research-ats-greenhouse-waymo-8237997",
+      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-research-ats-greenhouse-waymo-8237997",
+      "title": "2027 Summer Intern, PhD, Machine Learning Research — Waymo",
+      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Build generative models for autonomous driving planning using JAX\n• Collaborate with research and engineering teams on cutting-edge projects\n• Develop high-quality, tested code for predictive planning systems",
+      "date_published": "2026-09-28T21:05:37.000Z",
+      "authors": [
+        {
+          "name": "Waymo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/citadel-quantitative-research-analyst-intern-us-4448461208",
       "url": "https://interndoor.com/us/jobs/citadel-quantitative-research-analyst-intern-us-4448461208",
       "title": "Quantitative Research Analyst – Intern (US) — Citadel",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Kiewit"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/xcel-energy-ai-and-automation-intern-co-4464323551",
-      "url": "https://interndoor.com/us/jobs/xcel-energy-ai-and-automation-intern-co-4464323551",
-      "title": "AI & Automation Intern- CO — Xcel Energy",
-      "content_text": "Company: Xcel Energy · Location: Denver Metropolitan Area · Duration: Fall 2027\n• Develop AI agents to automate administrative tasks and improve written documents\n• Use tools like CoPilot, ChatGPT, and Claude for automation and system tracking\n• Work full-time during summer, part-time during school year in Denver",
-      "date_published": "2026-09-28T17:53:05.285Z",
-      "authors": [
-        {
-          "name": "Xcel Energy"
         }
       ]
     }
