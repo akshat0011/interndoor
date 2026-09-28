@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 27 Sep 2026 20:53:06 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 00:19:21 GMT</lastBuildDate>
+  <item>
+    <title>ADMINISTRATOR L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-administrator-l2-4472475415</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-administrator-l2-4472475415</guid>
+    <pubDate>Mon, 28 Sep 2026 00:19:21 GMT</pubDate>
+    <description>Company: Wipro · Location: Mumbai Metropolitan Region · Duration: 1-3 years
+• Support incident resolution and ticket tracking
+• Monitor and enforce service level agreements
+• Assist with change request creation and execution</description>
+  </item>
+  <item>
+    <title>DEVELOPER L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-developer-l2-4472462873</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-developer-l2-4472462873</guid>
+    <pubDate>Mon, 28 Sep 2026 00:19:18 GMT</pubDate>
+    <description>Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years
+• Write code and test units per standards, collaborate with teams
+• Python full stack experience required, 1-3 years
+• Work on client projects, maintain docs and procedures</description>
+  </item>
+  <item>
+    <title>ADMINISTRATOR L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-administrator-l2-4472461822</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-administrator-l2-4472461822</guid>
+    <pubDate>Mon, 28 Sep 2026 00:18:07 GMT</pubDate>
+    <description>Company: Wipro · Location: Hyderabad, Telangana, India · Duration: 1-3 years
+• Triage and resolve priority incident tickets with SLA tracking
+• Support software/hardware service requests with defined timelines
+• Escalate delays and create change requests for incident resolution</description>
+  </item>
   <item>
     <title>QA Test Engineer with Automation IRC302255 — GlobalLogic</title>
     <link>https://interndoor.com/jobs/globallogic-qa-test-engineer-with-automation-irc302255-4471305484</link>
@@ -482,36 +512,6 @@
 • Build and maintain microservices using Java and Spring Boot
 • Develop REST APIs and integrate with cloud platforms like AWS
 • Collaborate with a global team on high-tech and telecom projects</description>
-  </item>
-  <item>
-    <title>HPC Systems Engineer — Jump Trading</title>
-    <link>https://interndoor.com/jobs/jump-trading-hpc-systems-engineer-4453250474</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/jump-trading-hpc-systems-engineer-4453250474</guid>
-    <pubDate>Sat, 26 Sep 2026 18:08:58 GMT</pubDate>
-    <description>Company: Jump Trading · Location: Mumbai, Maharashtra, India
-• Design, implement, and maintain high performance compute and storage systems
-• Work with Linux, Python, Go, and tools like Ansible and SaltStack
-• Collaborate with researchers to optimize HPC usage across global projects</description>
-  </item>
-  <item>
-    <title>Java Fullstack IRC300668 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453520968</guid>
-    <pubDate>Sat, 26 Sep 2026 18:08:38 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Nagpur, Maharashtra, India
-• Develop backend services using Java, REST APIs, and Spring Boot
-• Work with AWS, Kafka, and GitLab pipelines in a global team
-• Collaborate on high-tech projects with global brands</description>
-  </item>
-  <item>
-    <title>Technical Onboarding Specialist — Nasdaq</title>
-    <link>https://interndoor.com/jobs/nasdaq-technical-onboarding-specialist-4427935642</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/nasdaq-technical-onboarding-specialist-4427935642</guid>
-    <pubDate>Sat, 26 Sep 2026 18:04:21 GMT</pubDate>
-    <description>Company: Nasdaq · Location: Bengaluru East, Karnataka, India · Duration: 2-3 weeks
-• Onboard customers onto Nasdaq Trade Surveillance SaaS with technical integration and data testing
-• Collaborate with sales, support, and development teams for smooth onboarding
-• Prepare project plans, conduct data quality tests, and manage go-live activities</description>
   </item>
 </channel>
 </rss>
