@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 28 Sep 2026 09:26:04 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 10:11:45 GMT</lastBuildDate>
+  <item>
+    <title>Applied AI SRE Engineer — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480</guid>
+    <pubDate>Mon, 28 Sep 2026 10:11:45 GMT</pubDate>
+    <description>Company: Deloitte · Location: Hyderabad, Telangana, India
+• Operate high-visibility AI and cloud platforms, ensuring reliability, performance, and cost efficiency
+• Use observability tools like Prometheus and Grafana, and manage error budgets and SLOs
+• Collaborate with cross-functional teams to set production standards and ensure system resilience</description>
+  </item>
+  <item>
+    <title>Software Engineer | GO Programming, Cloud-Native, PPPOE/IPOE, Microservices, DHCPV4/DHCPV6 | 8-14 Years — Cisco</title>
+    <link>https://interndoor.com/jobs/cisco-software-engineer-go-programming-cloud-native-pppoe-ipoe-microservices-4472712124</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-go-programming-cloud-native-pppoe-ipoe-microservices-4472712124</guid>
+    <pubDate>Mon, 28 Sep 2026 10:05:10 GMT</pubDate>
+    <description>Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 8-14 years
+• Build cloud-native microservices in Go/C/C++ for subscriber management on Kubernetes
+• Own end-to-end quality and automation for millions of subscribers across UPFs
+• Collaborate with architects and teams on release lifecycle and AI-assisted development</description>
+  </item>
   <item>
     <title>Data Engineering Intern — Fam</title>
     <link>https://interndoor.com/jobs/fam-data-engineering-intern-4472707388</link>
@@ -487,27 +507,6 @@
 • Design scalable backend services using python
 • Develop restful apis and microservices
 • Optimize sql queries and implement async processing</description>
-  </item>
-  <item>
-    <title>ML Engineer I — UST</title>
-    <link>https://interndoor.com/jobs/ust-ml-engineer-i-4414007529</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-ml-engineer-i-4414007529</guid>
-    <pubDate>Sun, 27 Sep 2026 10:58:21 GMT</pubDate>
-    <description>Company: UST · Location: Hyderabad, Telangana, India
-• Build and maintain python backend services for genai systems
-• Develop rest apis for ai capabilities and observability
-• Implement agentic workflows with langchain and langgraph</description>
-  </item>
-  <item>
-    <title>Guidewire PolicyCenter, Technology Analyst - India — Nationwide</title>
-    <link>https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/nationwide-guidewire-policycenter-technology-analyst-india-4461655158</guid>
-    <pubDate>Sun, 27 Sep 2026 10:54:55 GMT</pubDate>
-    <description>Company: Nationwide · Location: Hyderabad, Telangana, India
-• Analyzes data mappings and dependencies across Java Spring Boot Microservices, Guidewire PolicyCenter, and other platforms
-• Collaborates with business and engineering teams to translate outcomes into technical requirements
-• Uses AI tools like GitHub Copilot to research and generate technical requirements
-• Works in agile environment with global teams, flexible hours, and hybrid location options</description>
   </item>
 </channel>
 </rss>
