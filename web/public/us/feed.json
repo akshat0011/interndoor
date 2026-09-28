@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/keeper-security-localization-intern-brazilian-portuguese-speaking-ats-greenhouse-keepersecurity-4423148009",
+      "url": "https://interndoor.com/us/jobs/keeper-security-localization-intern-brazilian-portuguese-speaking-ats-greenhouse-keepersecurity-4423148009",
+      "title": "Localization Intern, Brazilian Portuguese Speaking — Keeper Security",
+      "content_text": "Company: Keeper Security · Location: Remote, US · Duration: 24 months\n• Translate technical and marketing content between English and Brazilian Portuguese\n• Use CAT and AI tools to maintain translation consistency and style guides\n• Collaborate with engineers and product managers on localization projects",
+      "date_published": "2026-09-28T19:56:06.000Z",
+      "authors": [
+        {
+          "name": "Keeper Security"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/clickhouse-research-intern-clickhouse-labs-ats-ashby-clickhouse-558c0c16-5fde-407a-966b-7a2255d3531b",
+      "url": "https://interndoor.com/us/jobs/clickhouse-research-intern-clickhouse-labs-ats-ashby-clickhouse-558c0c16-5fde-407a-966b-7a2255d3531b",
+      "title": "Research Intern, ClickHouse Labs — ClickHouse",
+      "content_text": "Company: ClickHouse · Location: United States\n• Work on query optimization, distributed systems, and database performance\n• Use C/C++/Rust for system-level development and benchmarking\n• Collaborate with engineers to implement research into production systems",
+      "date_published": "2026-09-28T19:52:49.552Z",
+      "authors": [
+        {
+          "name": "ClickHouse"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/western-digital-winter-2027-intern-co-op-development-engineer-ats-smartrecruiters-westerndigital-744000152261929",
+      "url": "https://interndoor.com/us/jobs/western-digital-winter-2027-intern-co-op-development-engineer-ats-smartrecruiters-westerndigital-744000152261929",
+      "title": "Winter 2027 Intern/Co-op Development Engineer — Western Digital",
+      "content_text": "Company: Western Digital · Location: Rochester, us · Duration: Winter 2027\n• Run electrical tests on pcba and hdd products\n• Write automation scripts for testing\n• Analyze data to improve processes",
+      "date_published": "2026-09-28T19:47:06.751Z",
+      "authors": [
+        {
+          "name": "Western Digital"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/keysight-technologies-process-ai-automation-intern-4471200624",
       "url": "https://interndoor.com/us/jobs/keysight-technologies-process-ai-automation-intern-4471200624",
       "title": "Process AI Automation, Intern — Keysight Technologies",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Bosch"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/globalfoundries-process-integration-intern-ulp-cmos-technology-development-summer-2027-4471503232",
-      "url": "https://interndoor.com/us/jobs/globalfoundries-process-integration-intern-ulp-cmos-technology-development-summer-2027-4471503232",
-      "title": "Process Integration Intern, ULP CMOS Technology Development (Summer 2027) — GlobalFoundries",
-      "content_text": "Company: GlobalFoundries · Location: Malta, NY · Duration: Summer 2027\n• Support process integration for advanced CMOS devices on FinFET and FDSOI technologies\n• Use DOE and FMEA for data analysis and problem-solving\n• Collaborate with cross-functional teams on new technology development",
-      "date_published": "2026-09-28T15:28:42.644Z",
-      "authors": [
-        {
-          "name": "GlobalFoundries"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462210682",
-      "url": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462210682",
-      "title": "Research Intern: Linear Algebra and Hamiltonian Simulation - 2027 — IBM",
-      "content_text": "Company: IBM · Location: San Jose, CA\n• Develop and evaluate computational methods for quantum simulation\n• Work with Python and quantum software frameworks like Qiskit\n• Collaborate on ground-state calculations and thermal-state preparation",
-      "date_published": "2026-09-28T15:24:25.975Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462216629",
-      "url": "https://interndoor.com/us/jobs/ibm-research-intern-linear-algebra-and-hamiltonian-simulation-2027-4462216629",
-      "title": "Research Intern: Linear Algebra and Hamiltonian Simulation - 2027 — IBM",
-      "content_text": "Company: IBM · Location: Yorktown Heights, NY\n• Develop and evaluate computational methods for quantum simulation\n• Work with quantum software frameworks like Qiskit and Cirq\n• Collaborate with researchers on quantum chemistry and condensed-matter physics",
-      "date_published": "2026-09-28T15:18:54.388Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
