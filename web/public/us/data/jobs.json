@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790581912032,
+ "generatedAt": 1790582239857,
  "region": "US",
  "regionName": "United States",
- "count": 4182,
- "techCount": 4182,
+ "count": 4183,
+ "techCount": 4183,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1303,6 +1303,59 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4472494507",
+   "title": "Summer 2027 FOX Technology Internship Program - Tempe, AZ",
+   "company": "Fox Corporation",
+   "matchedWatchlist": "Fox Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/fox-corporation.jpg",
+   "location": "Tempe, AZ",
+   "workplaceType": "On-site",
+   "stipend": "$20 – $30 / hour",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "sql",
+    "tableau"
+   ],
+   "summary": "This internship offers hands-on experience in media and entertainment production, with opportunities in software engineering, data analysis, and live media operations. Ideal for students with technical skills and a passion for content creation.",
+   "bullets": [
+    "Work on real-world projects in media, sports, or entertainment production",
+    "Use tools like HTML, Python, SQL, and Tableau for software and data tasks",
+    "Based in Tempe, AZ, with a 32-40 hour weekly schedule"
+   ],
+   "roleLabel": "Software Engineering",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Computer Science / Applied Mathematics",
+   "keySkills": [
+    "html",
+    "python",
+    "sql",
+    "tableau"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "10 minutes ago",
+   "postedAt": 1790581539406,
+   "firstSeenAt": 1790582139410,
+   "lastSeenAt": 1790582139410,
+   "url": "https://www.linkedin.com/jobs/view/4472494507/",
+   "applyUrl": "https://www.foxcareers.com/Search/JobDetail/R50033969?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "00c4732b3d",
+   "cardFacts": [
+    "$20 – $30 / hour",
+    "Tempe",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
   {
    "id": "4472474958",
    "title": "AI/ML Intern - Radiation Oncology",
