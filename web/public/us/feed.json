@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-mechanical-engineering-group-07-71-4472727844",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-mechanical-engineering-group-07-71-4472727844",
+      "title": "Summer Research Program Intern 2027, Mechanical Engineering (Group 07-71) — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Design and fabricate mechanical systems using CAD and prototyping tools\n• Run structural analysis and testing with finite element models\n• Work on advanced projects in opto-mechanics and high-energy lasers",
+      "date_published": "2026-09-28T13:09:44.081Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-advanced-undersea-systems-and-tech-4472725886",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-advanced-undersea-systems-and-tech-4472725886",
+      "title": "Summer Research Program Intern 2027, Advanced Undersea Systems and Technology (Group 03-37) — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Develop AI/ML applications for undersea systems\n• Work on autonomous systems and simulation tools\n• Conduct data analysis and system modeling\n• 10–12 week summer program in Lexington, MA",
+      "date_published": "2026-09-28T13:09:28.151Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-homeland-protection-systems-student-technical-assistant-fall-2026-grou-4472738236",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-homeland-protection-systems-student-technical-assistant-fall-2026-grou-4472738236",
+      "title": "Homeland Protection Systems Student Technical Assistant (Fall 2026) - Group 04-46 — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 5 years\n• Support real-time machine learning systems for radar applications\n• Develop scripts and tools for scalable machine learning deployment\n• Collaborate on data analysis and system testing with technical teams",
+      "date_published": "2026-09-28T13:09:14.965Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-systems-and-architectures-group-03-4472725884",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-intern-2027-systems-and-architectures-group-03-4472725884",
+      "title": "Summer Research Program Intern 2027, Systems & Architectures (Group 03-31) — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Model and simulate defense systems using sensors, platforms, and algorithms\n• Work on projects like object tracking, weapon assignment, and space asset scheduling\n• Present findings to diverse audiences and contribute to high-impact reports",
+      "date_published": "2026-09-28T13:09:14.233Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-microelectronics-intern-2027-advanced-imager-t-4472730780",
+      "url": "https://interndoor.com/us/jobs/mit-lincoln-laboratory-summer-research-program-microelectronics-intern-2027-advanced-imager-t-4472730780",
+      "title": "Summer Research Program Microelectronics Intern 2027, Advanced Imager Technology (Group 08-87) — MIT Lincoln Laboratory",
+      "content_text": "Company: MIT Lincoln Laboratory · Location: Lexington, MA · Duration: 10–12 weeks\n• Design and test microelectronics for advanced imaging systems\n• Use Matlab, C, Python, and Linux for data analysis and processing\n• Work on high-resolution imaging tech for defense and astronomy",
+      "date_published": "2026-09-28T13:09:07.743Z",
+      "authors": [
+        {
+          "name": "MIT Lincoln Laboratory"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-validation-intern-summer-2027-4464095621",
       "url": "https://interndoor.com/us/jobs/nxp-semiconductors-digital-validation-intern-summer-2027-4464095621",
       "title": "Digital Validation Intern - Summer 2027 — NXP Semiconductors",
@@ -539,66 +599,6 @@
       "title": "Design Verification Intern, MS - Summer 2027 — Marvell Technology",
       "content_text": "Company: Marvell Technology · Location: Westborough, MA · Duration: Fall 2027\n• Write and debug testbenches using UVM methodology for SOC designs\n• Simulate and analyze chip behavior with Synopsys, Cadence, and Mentor tools\n• Collaborate with chip architects on verification and debugging\n• Work on next-gen cloud, AI, and networking technologies",
       "date_published": "2026-09-26T18:18:52.378Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461444173",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461444173",
-      "title": "Physical Design Engineer Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Work on complex logic blocks with EDA tools for ASIC and processor designs\n• Script in Python, TCL, Perl, and Shell for design automation\n• Collaborate with teams to resolve timing and congestion issues",
-      "date_published": "2026-09-26T18:18:38.758Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461442169",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-design-verification-intern-ms-summer-2027-4461442169",
-      "title": "Design Verification Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Morrisville, NC · Duration: Fall 2027\n• Write and debug testbenches using UVM methodology for SOC designs\n• Simulate and analyze chip behavior with Synopsys, Cadence, and Mentor tools\n• Collaborate with chip architects on verification and debugging of complex systems",
-      "date_published": "2026-09-26T18:18:27.472Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461430992",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-physical-design-engineer-intern-ms-summer-2027-4461430992",
-      "title": "Physical Design Engineer Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Westborough, MA · Duration: Fall 2027\n• Perform synthesis, floor planning, and timing analysis on complex logic blocks\n• Use Python, TCL, Perl, and Shell to automate design tasks\n• Collaborate with cross-functional teams to resolve timing and congestion issues",
-      "date_published": "2026-09-26T18:18:12.307Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-ic-validation-engineer-intern-ms-summer-2027-4461443183",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-ic-validation-engineer-intern-ms-summer-2027-4461443183",
-      "title": "IC Validation Engineer Intern, MS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Irvine, CA · Duration: Fall 2027\n• Validate analog front end designs for high-speed optical systems\n• Script automation for hardware testing in Python\n• Collaborate on test development and documentation",
-      "date_published": "2026-09-26T18:18:01.783Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/marvell-technology-functional-validation-intern-bs-summer-2027-4461444171",
-      "url": "https://interndoor.com/us/jobs/marvell-technology-functional-validation-intern-bs-summer-2027-4461444171",
-      "title": "Functional Validation Intern, BS - Summer 2027 — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Boise, ID · Duration: Fall 2027\n• Execute hardware validation and debugging for high-speed interfaces like PCIe and Ethernet\n• Write automation scripts in Python to streamline silicon testing workflows\n• Collaborate with cross-functional teams on hardware and protocol issues",
-      "date_published": "2026-09-26T18:17:48.264Z",
       "authors": [
         {
           "name": "Marvell Technology"
