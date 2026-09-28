@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
+      "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
+      "title": "Data Analyst Project Intern (Training & Quality) - 2026 Start (BS/MS) — ByteDance",
+      "content_text": "Company: ByteDance · Location: Gurgaon, Haryana, India\n• Analyze data and create reports for operations teams\n• Use excel and statistical tools to support decision-making\n• Work on short-term projects with real-world impact",
+      "date_published": "2026-09-28T18:00:17.115Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472763730",
       "url": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472763730",
       "title": "Engineer - Embedded SW Development — GE Vernova",
@@ -26,6 +38,18 @@
       "authors": [
         {
           "name": "Bristol Myers Squibb"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598",
+      "url": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598",
+      "title": "Full Stack Developer — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and maintain full-stack Java applications\n• Work with Angular, Spring/Hibernate, and REST APIs\n• Collaborate in Agile teams using Git and Maven",
+      "date_published": "2026-09-28T17:13:04.692Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-software-and-application-engineering-be-developer-4472729784",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-software-and-application-engineering-be-developer-4472729784",
-      "title": "Z2_Software and application engineering / BE Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Develop and deploy backend services using Java 8+, Spring Boot, and Microservices\n• Work with PostgreSQL and MongoDB, package apps with Docker and Kubernetes\n• Deploy on Azure or AWS, focus on scalability and performance optimization",
-      "date_published": "2026-09-28T13:30:09.876Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/handshake-ai-fellowship-multimodal-ai-benchmark-creator-4470870729",
-      "url": "https://interndoor.com/jobs/handshake-ai-fellowship-multimodal-ai-benchmark-creator-4470870729",
-      "title": "Multimodal AI Benchmark Creator — Handshake AI Fellowship",
-      "content_text": "Company: Handshake AI Fellowship · Location: Srinagar, Jammu & Kashmir, India\n• Design and refine benchmarks for text, image, audio, and multimodal AI systems\n• Collaborate with researchers, data scientists, and product teams on benchmark alignment\n• Curate datasets, create prompts, and analyze model performance in Anantnag",
-      "date_published": "2026-09-28T13:30:08.883Z",
-      "authors": [
-        {
-          "name": "Handshake AI Fellowship"
         }
       ]
     }
