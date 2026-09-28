@@ -6,16 +6,16 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 28 Sep 2026 23:09:16 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 23:04:32 GMT</lastBuildDate>
   <item>
-    <title>Design Verification Intern — Renesas Electronics</title>
-    <link>https://interndoor.com/us/jobs/renesas-electronics-design-verification-intern-4473033467</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/renesas-electronics-design-verification-intern-4473033467</guid>
-    <pubDate>Mon, 28 Sep 2026 23:09:16 GMT</pubDate>
-    <description>Company: Renesas Electronics · Location: Duluth, GA
-• Verify DDR5 data buffer chips for functional and performance specs
-• Use UVM methodology for system-level and block-level testing
-• Develop reusable verification environments and testbench structures</description>
+    <title>Software Engineer Intern (2027) - Austin, TX — Cloudflare</title>
+    <link>https://interndoor.com/us/jobs/cloudflare-software-engineer-intern-2027-austin-tx-ats-greenhouse-cloudflare-8199958</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/cloudflare-software-engineer-intern-2027-austin-tx-ats-greenhouse-cloudflare-8199958</guid>
+    <pubDate>Mon, 28 Sep 2026 23:04:32 GMT</pubDate>
+    <description>Company: Cloudflare · Location: Austin, TX, United States · Duration: 12-14 weeks
+• Write and deploy code that affects millions of websites and internet services
+• Use Typescript, Go, Rust, and Python in a microservices architecture
+• Work with experienced engineers and present projects to the entire company</description>
   </item>
   <item>
     <title>Piping Engineering Intern - FY2027 — Jacobs</title>
@@ -26,6 +26,16 @@
 • Perform system design calculations and coordinate with architectural and engineering designs
 • Use Revit and 3D CADD for mechanical system design under professional guidance
 • Work on global projects for Life Sciences clients in Cincinnati, OH</description>
+  </item>
+  <item>
+    <title>Design Verification Intern — Renesas Electronics</title>
+    <link>https://interndoor.com/us/jobs/renesas-electronics-design-verification-intern-ats-smartrecruiters-renesaselectronics-744000152284789</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/renesas-electronics-design-verification-intern-ats-smartrecruiters-renesaselectronics-744000152284789</guid>
+    <pubDate>Mon, 28 Sep 2026 22:58:02 GMT</pubDate>
+    <description>Company: Renesas Electronics · Location: Duluth, us
+• Verify DDR5 data buffer chips for AI and cloud computing applications
+• Use UVM methodology for system-level and block-level testing
+• Collaborate with design teams to ensure testable and high-quality products</description>
   </item>
   <item>
     <title>2027 Summer Quantitative Analytics &amp; Data Science Intern (Baltimore, MD) — Constellation</title>
@@ -497,17 +507,6 @@
 • Analyze and prepare data from internal and external sources
 • Build and validate statistical and machine learning models
 • Collaborate with cross-functional teams on data projects</description>
-  </item>
-  <item>
-    <title>CMOS FEOL Reliability Engineering Intern (Summer 2027) — GlobalFoundries</title>
-    <link>https://interndoor.com/us/jobs/globalfoundries-cmos-feol-reliability-engineering-intern-summer-2027-4471555090</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/globalfoundries-cmos-feol-reliability-engineering-intern-summer-2027-4471555090</guid>
-    <pubDate>Mon, 28 Sep 2026 21:00:26 GMT</pubDate>
-    <description>Company: GlobalFoundries · Location: Malta, NY · Duration: Summer 2027
-• Evaluate reliability test data and investigate degradation mechanisms
-• Develop automated analysis tools and visualization dashboards
-• Collaborate with cross-functional teams on technology qualification
-• Prepare engineering reports and present findings at internship end</description>
   </item>
 </channel>
 </rss>
