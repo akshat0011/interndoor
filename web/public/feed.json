@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-java-developer-apache-spark-6-years-immediate-joiners-any-ust-location-4463836275",
+      "url": "https://interndoor.com/jobs/ust-java-developer-apache-spark-6-years-immediate-joiners-any-ust-location-4463836275",
+      "title": "Java Developer – Apache Spark | 6+ Years | Immediate Joiners | Any UST Location — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Develop and optimize large-scale data processing pipelines using Apache Spark\n• Work with Java, Spring Boot, and REST APIs in a production environment\n• Collaborate with cross-functional teams on data engineering projects",
+      "date_published": "2026-09-28T07:22:52.442Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-north-america-data-engineer-advisor-4472705070",
       "url": "https://interndoor.com/jobs/ntt-data-north-america-data-engineer-advisor-4472705070",
       "title": "Data Engineer Advisor — NTT DATA North America",
@@ -138,42 +150,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-4471313553",
-      "url": "https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-4471313553",
-      "title": "Engineering Intern – Transport Analytics — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Build web apps and APIs for analytics databases\n• Work with SQL/NoSQL and LLM frameworks like LangChain\n• Prototype AI solutions for transport logistics",
-      "date_published": "2026-09-28T02:05:26.663Z",
-      "authors": [
-        {
-          "name": "Kaleris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4471308785",
-      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4471308785",
-      "title": "Associate Software Engineer Intern — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Develop software programs to specifications\n• Design user interfaces and test cases\n• Collaborate with team across India and USA",
-      "date_published": "2026-09-28T02:05:08.816Z",
-      "authors": [
-        {
-          "name": "Kaleris"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-4471322071",
-      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-4471322071",
-      "title": "Associate Software Engineer Intern - YMS — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Prototype computer vision models for gate automation using OCR and real-world data\n• Develop backend features for yard management systems with Python and Rails\n• Work on production code with code reviews and automation improvements",
-      "date_published": "2026-09-28T02:04:59.161Z",
-      "authors": [
-        {
-          "name": "Kaleris"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/apple-apple-wte-ai-ml-phd-intern-4471098940",
       "url": "https://interndoor.com/jobs/apple-apple-wte-ai-ml-phd-intern-4471098940",
       "title": "Apple WTE - AI/ML PhD Intern — Apple",
@@ -218,6 +194,42 @@
       "authors": [
         {
           "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-ats-workday-kaleris-wd501-kaleris-careers-r-100656",
+      "url": "https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-ats-workday-kaleris-wd501-kaleris-careers-r-100656",
+      "title": "Engineering Intern – Transport Analytics — Kaleris",
+      "content_text": "Company: Kaleris · Location: Chennai\n• Build web apps and APIs for analytics databases\n• Work with SQL/NoSQL and LLM frameworks like LangChain\n• Collaborate with product teams on data-driven solutions",
+      "date_published": "2026-09-28T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Kaleris"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100658",
+      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-ats-workday-kaleris-wd501-kaleris-careers-r-100658",
+      "title": "Associate Software Engineer Intern — Kaleris",
+      "content_text": "Company: Kaleris · Location: Chennai\n• Develop software programs to specifications\n• Design user interfaces and test cases\n• Collaborate with team in india and usa",
+      "date_published": "2026-09-28T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Kaleris"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-ats-workday-kaleris-wd501-kaleris-careers-r-100657",
+      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-ats-workday-kaleris-wd501-kaleris-careers-r-100657",
+      "title": "Associate Software Engineer Intern - YMS — Kaleris",
+      "content_text": "Company: Kaleris · Location: Chennai\n• Build computer vision models for gate automation using OCR and real-world data\n• Develop backend features for shipment management and yard inventory tracking\n• Work on edge hardware deployment for detection models\n• Contribute to production YMS platform with real-world logistics impact",
+      "date_published": "2026-09-28T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Kaleris"
         }
       ]
     },
@@ -587,18 +599,6 @@
       "title": "Kafka Engineer — Nippon Data Systems",
       "content_text": "Company: Nippon Data Systems · Location: Sonipat, Haryana, India\n• Manage kafka clusters for high availability and performance\n• Troubleshoot and optimize kafka systems\n• Collaborate with dev teams on integration",
       "date_published": "2026-09-27T07:59:35.705Z",
-      "authors": [
-        {
-          "name": "Nippon Data Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082916",
-      "url": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082916",
-      "title": "Kafka Engineer — Nippon Data Systems",
-      "content_text": "Company: Nippon Data Systems · Location: Faridabad, Haryana, India\n• Manage kafka clusters for high availability and performance\n• Troubleshoot and optimize kafka systems\n• Collaborate with dev teams on integration",
-      "date_published": "2026-09-27T07:59:31.031Z",
       "authors": [
         {
           "name": "Nippon Data Systems"
