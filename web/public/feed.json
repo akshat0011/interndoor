@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bristol-myers-squibb-eu-policy-data-engineer-i-transparency-data-operations-4471209908",
+      "url": "https://interndoor.com/jobs/bristol-myers-squibb-eu-policy-data-engineer-i-transparency-data-operations-4471209908",
+      "title": "Data Engineer I - Transparency Data Operations — Bristol Myers Squibb EU Policy",
+      "content_text": "Company: Bristol Myers Squibb EU Policy · Location: Hyderabad, Telangana, India · Duration: 1-4 years\n• Build and maintain data pipelines for global transparency reporting using SQL, Python, Databricks, and AWS\n• Collaborate with Legal, Compliance, and Technology teams to implement regulatory data solutions\n• Ensure data accuracy, completeness, and timely delivery for downstream processes like MediSpend and regulatory reporting",
+      "date_published": "2026-09-28T22:23:13.490Z",
+      "authors": [
+        {
+          "name": "Bristol Myers Squibb EU Policy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-engineer-4456362964",
       "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-engineer-4456362964",
       "title": "AI / ML Engineer — Accenture in India",
@@ -314,18 +326,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bristol-myers-squibb-data-engineer-i-transparency-data-operations-4472765590",
-      "url": "https://interndoor.com/jobs/bristol-myers-squibb-data-engineer-i-transparency-data-operations-4472765590",
-      "title": "Data Engineer I - Transparency Data Operations — Bristol Myers Squibb",
-      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India · Duration: 1-4 years\n• Build and maintain data pipelines for global transparency reporting using SQL, Python, Databricks, and AWS\n• Collaborate with Legal, Compliance, and Technology teams to implement regulatory data solutions\n• Ensure data accuracy, completeness, and timely delivery for downstream processes like MediSpend and regulatory reporting",
-      "date_published": "2026-09-28T17:22:59.952Z",
-      "authors": [
-        {
-          "name": "Bristol Myers Squibb"
         }
       ]
     },
