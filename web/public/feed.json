@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-data-engineer-advisor-4472705070",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-data-engineer-advisor-4472705070",
+      "title": "Data Engineer Advisor — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build SSAS monitoring framework for cube availability, performance, and resource usage\n• Use SQL Server DMVs, Extended Events, and T-SQL for data collection and analysis\n• Develop Power BI-ready datasets and historical trend reports for operational insights",
+      "date_published": "2026-09-28T07:16:54.737Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4472491480",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4472491480",
+      "title": "AI Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Build and deploy AI models using Azure OpenAI and LLMs\n• Work with REST APIs, Docker, and Kubernetes\n• Collaborate on agentic systems and Model Context Protocol",
+      "date_published": "2026-09-28T07:16:35.781Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-platform-admin-software-development-specialist-4472499299",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-platform-admin-software-development-specialist-4472499299",
+      "title": "AI Platform Admin - Software Development Specialist — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Manage azure ai services, databricks, and ai gateway configurations\n• Monitor ai workloads with azure monitor and kql\n• Optimize costs and implement budget controls for ai platforms",
+      "date_published": "2026-09-28T07:16:33.667Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4472487627",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4472487627",
+      "title": "Systems Integration Analyst — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India · Duration: 0-3 years\n• Build and maintain web applications with front-end and back-end components\n• Use React, Node.js, Python, and databases like MySQL and MongoDB\n• Collaborate with product teams to design user-friendly interfaces",
+      "date_published": "2026-09-28T07:16:16.582Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/global-payments-inc-client-server-software-analyst-4472702152",
+      "url": "https://interndoor.com/jobs/global-payments-inc-client-server-software-analyst-4472702152",
+      "title": "Client Server Software Analyst — Global Payments Inc.",
+      "content_text": "Company: Global Payments Inc. · Location: Pune/Pimpri-Chinchwad Area\n• Tests ServiceNow functionality across forms, workflows, and integrations\n• Writes and maintains manual and automated test cases for releases and upgrades\n• Collaborates with developers and product owners on sprint and release testing",
+      "date_published": "2026-09-28T07:09:03.260Z",
+      "authors": [
+        {
+          "name": "Global Payments Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/stmicroelectronics-security-validation-engineer-4472483861",
+      "url": "https://interndoor.com/jobs/stmicroelectronics-security-validation-engineer-4472483861",
+      "title": "Security Validation Engineer — STMicroelectronics",
+      "content_text": "Company: STMicroelectronics · Location: Noida, Uttar Pradesh, India\n• Validate security features on camera image sensor SoCs including encryption, authentication, and secure boot\n• Use Python and hardware tools to test cryptographic protocols and secure firmware updates\n• Collaborate with design and firmware teams to ensure product security meets customer needs",
+      "date_published": "2026-09-28T06:34:21.977Z",
+      "authors": [
+        {
+          "name": "STMicroelectronics"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476",
       "url": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476",
       "title": "AI Software Engineer — Hitachi Solutions India Pvt Ltd",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Nippon Data Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082922",
-      "url": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082922",
-      "title": "Kafka Engineer — Nippon Data Systems",
-      "content_text": "Company: Nippon Data Systems · Location: Ghaziabad, Uttar Pradesh, India\n• Manage kafka clusters for high availability and performance\n• Troubleshoot and optimize kafka systems\n• Collaborate with dev teams on integration",
-      "date_published": "2026-09-27T07:59:21.305Z",
-      "authors": [
-        {
-          "name": "Nippon Data Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/vecmocon-software-developer-frappe-intern-ats-keka-vecmocon-163165",
-      "url": "https://interndoor.com/jobs/vecmocon-software-developer-frappe-intern-ats-keka-vecmocon-163165",
-      "title": "Software Developer - Frappe (Intern) — Vecmocon",
-      "content_text": "Company: Vecmocon · Location: Noida, UP, India\n• Build custom apps for plm with frappe and erpnext\n• Develop python and js code for backend and frontend\n• Integrate with cad and erp tools via rest apis\n• Write tests and optimize database queries",
-      "date_published": "2026-09-27T06:02:38.133Z",
-      "authors": [
-        {
-          "name": "Vecmocon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
-      "url": "https://interndoor.com/jobs/wipro-administrator-l1-4472410803",
-      "title": "ADMINISTRATOR L1 — Wipro",
-      "content_text": "Company: Wipro · Location: Hyderabad, Telangana, India\n• Track and resolve standard incident tickets\n• Monitor alerts and sla timelines\n• Document incidents and ensure timely resolution",
-      "date_published": "2026-09-27T00:16:34.034Z",
-      "authors": [
-        {
-          "name": "Wipro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139",
-      "url": "https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139",
-      "title": "Engineering Apprentice — Ather Energy Ltd.",
-      "content_text": "Company: Ather Energy Ltd. · Location: Hosur, Tamil Nadu, India\n• Support engineering teams with process setup and equipment monitoring\n• Analyze production data and prepare reports for continuous improvement\n• Collaborate on cross-functional projects with safety and quality focus",
-      "date_published": "2026-09-26T22:55:04.273Z",
-      "authors": [
-        {
-          "name": "Ather Energy Ltd."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/reliance-retail-software-engineer-4471068341",
-      "url": "https://interndoor.com/jobs/reliance-retail-software-engineer-4471068341",
-      "title": "Software Engineer — Reliance Retail",
-      "content_text": "Company: Reliance Retail · Location: Goharganj Tehsil, Madhya Pradesh, India\n• Write and maintain scalable web applications\n• Debug and improve existing software systems\n• Work with sql databases and code in multiple languages",
-      "date_published": "2026-09-26T19:49:48.314Z",
-      "authors": [
-        {
-          "name": "Reliance Retail"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-jr-engineer-it-mes-4456188612",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-jr-engineer-it-mes-4456188612",
-      "title": "Jr.Engineer - IT MES — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Coimbatore South, Tamil Nadu, India\n• Maintain real-time production tracking and data accuracy\n• Integrate mes with erp, plm, and shopfloor machines\n• Ensure system uptime and resolve mes issues quickly\n• Support barcode/rfid systems and machine connectivity",
-      "date_published": "2026-09-26T19:15:40.977Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
         }
       ]
     }
