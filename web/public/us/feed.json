@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/lowe-s-companies-inc-quality-assurance-engineering-undergrad-internship-summer-2027-4472792205",
+      "url": "https://interndoor.com/us/jobs/lowe-s-companies-inc-quality-assurance-engineering-undergrad-internship-summer-2027-4472792205",
+      "title": "Quality Assurance Engineering - Undergrad Internship - Summer 2027 — Lowe's Companies, Inc.",
+      "content_text": "Company: Lowe's Companies, Inc. · Location: Mooresville, NC · Duration: Summer 2027\n• Test products for durability and safety in QA lab, analyze results, document findings\n• Collaborate with engineers and cross-functional teams on quality protocols and standards\n• Work in a 10-week summer program at Lowe’s headquarters in Mooresville, NC",
+      "date_published": "2026-09-28T18:42:21.009Z",
+      "authors": [
+        {
+          "name": "Lowe's Companies, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/kiewit-mechanical-design-intern-kiewit-nuclear-solutions-summer-2027-4462905833",
+      "url": "https://interndoor.com/us/jobs/kiewit-mechanical-design-intern-kiewit-nuclear-solutions-summer-2027-4462905833",
+      "title": "Mechanical Design Intern - Kiewit Nuclear Solutions ( Summer 2027) — Kiewit",
+      "content_text": "Company: Kiewit · Location: Oak Ridge, TN · Duration: Summer 2027\n• Develop 3d models and create detailed drawings with guidance\n• Use microstation, autocad, and navisworks for design work\n• Work in oak ridge, tn with nuclear project teams",
+      "date_published": "2026-09-28T18:01:23.714Z",
+      "authors": [
+        {
+          "name": "Kiewit"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4472789039",
+      "url": "https://interndoor.com/us/jobs/bytedance-security-software-engineer-project-intern-network-security-2026-start--4472789039",
+      "title": "Security Software Engineer Project Intern (Network Security) - 2026 Start (BS/MS) — ByteDance",
+      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: 3 months\n• Implement intelligent security algorithms using machine learning and deep learning\n• Work with PyTorch and LLMs to develop DDoS/WAF rules and traffic models\n• Collaborate on real-world cybersecurity projects with a focus on network protection",
+      "date_published": "2026-09-28T18:00:00.256Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/kiewit-structural-design-intern-kiewit-nuclear-solutions-summer-2027-4462903851",
       "url": "https://interndoor.com/us/jobs/kiewit-structural-design-intern-kiewit-nuclear-solutions-summer-2027-4462903851",
       "title": "Structural Design Intern - Kiewit Nuclear Solutions (Summer 2027) — Kiewit",
@@ -131,6 +167,18 @@
       "title": "Plant Engineering Intern - MN — Xcel Energy",
       "content_text": "Company: Xcel Energy · Location: Greater Minneapolis-St. Paul Area\n• Support plant projects and equipment reliability improvements\n• Use technical skills in engineering analysis and project management\n• Work on emissions control and process optimization initiatives",
       "date_published": "2026-09-28T16:54:33.005Z",
+      "authors": [
+        {
+          "name": "Xcel Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/xcel-energy-distribution-modeling-and-analytics-intern-co-4464328520",
+      "url": "https://interndoor.com/us/jobs/xcel-energy-distribution-modeling-and-analytics-intern-co-4464328520",
+      "title": "Distribution Modeling and Analytics Intern- CO — Xcel Energy",
+      "content_text": "Company: Xcel Energy · Location: Denver Metropolitan Area · Duration: Fall 2027\n• Analyze scada data and improve grid models\n• Use python and data tools for analysis\n• Work on electrification and grid modernization",
+      "date_published": "2026-09-28T16:53:04.445Z",
       "authors": [
         {
           "name": "Xcel Energy"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Duolingo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/duolingo-software-engineer-intern-4472743316",
-      "url": "https://interndoor.com/us/jobs/duolingo-software-engineer-intern-4472743316",
-      "title": "Software Engineer, Intern — Duolingo",
-      "content_text": "Company: Duolingo · Location: Seattle, WA · Duration: 12 weeks\n• Develop, test, and maintain features across full-stack projects\n• Work with Java, Python, Kotlin, or Swift\n• Collaborate on impactful projects with real user impact",
-      "date_published": "2026-09-28T14:17:53.713Z",
-      "authors": [
-        {
-          "name": "Duolingo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/macom-design-engineer-intern-4472748102",
-      "url": "https://interndoor.com/us/jobs/macom-design-engineer-intern-4472748102",
-      "title": "Design Engineer Intern — MACOM",
-      "content_text": "Company: MACOM · Location: Hillsboro, OR · Duration: 12 weeks\n• Design next generation circuits for optical communications\n• Use cadence virtuoso and spectre design tools\n• Work on a well-defined project with set outcome goals",
-      "date_published": "2026-09-28T14:17:32.895Z",
-      "authors": [
-        {
-          "name": "MACOM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/interdigital-inc-intern-it-infrastructure-4472742350",
-      "url": "https://interndoor.com/us/jobs/interdigital-inc-intern-it-infrastructure-4472742350",
-      "title": "Intern, IT Infrastructure — InterDigital, Inc.",
-      "content_text": "Company: InterDigital, Inc. · Location: Greater Philadelphia\n• Support hybrid IT environment with on-premises, cloud, and automation tools\n• Use AI, scripting, and automation to improve processes and reduce manual work\n• Hybrid role requiring three days per week on-site in Conshohocken",
-      "date_published": "2026-09-28T14:17:25.985Z",
-      "authors": [
-        {
-          "name": "InterDigital, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-intern-electrical-engineering-and-computer-enginee-4455240598",
-      "url": "https://interndoor.com/us/jobs/ge-aerospace-systems-engineering-intern-electrical-engineering-and-computer-enginee-4455240598",
-      "title": "Systems Engineering Intern - Electrical Engineering & Computer Engineering/Science (Electric Power) - US - Summer 2027 — GE Aerospace",
-      "content_text": "Company: GE Aerospace · Location: Dayton, OH · Duration: Summer 2027\n• Design and test electrical power systems for aircraft engines\n• Work with simulation tools and software requirements documentation\n• Based in Dayton, OH, with potential for full-time role",
-      "date_published": "2026-09-28T14:17:15.664Z",
-      "authors": [
-        {
-          "name": "GE Aerospace"
         }
       ]
     }
