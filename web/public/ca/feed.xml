@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/ca/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in Canada, listed within minutes of going live.</description>
   <language>en-ca</language>
-  <lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 21:33:25 GMT</lastBuildDate>
+  <item>
+    <title>Business Systems Engineer Intern, Finance Technology (Summer 2027) — Lyft</title>
+    <link>https://interndoor.com/ca/jobs/lyft-business-systems-engineer-intern-finance-technology-summer-2027-ats-greenhouse-lyft-8802222002</link>
+    <guid isPermaLink="true">https://interndoor.com/ca/jobs/lyft-business-systems-engineer-intern-finance-technology-summer-2027-ats-greenhouse-lyft-8802222002</guid>
+    <pubDate>Mon, 28 Sep 2026 21:33:25 GMT</pubDate>
+    <description>Company: Lyft · Location: Toronto, Canada · Duration: Summer 2028
+• Build automation workflows with Workato, Python, and SQL for finance operations
+• Work on ERP, HCM, and FP&amp;A systems with cross-functional teams in Toronto
+• Gain hands-on experience with AI tools like LangChain and UiPath</description>
+  </item>
   <item>
     <title>Data Center Silicon Hardware Engineering Intern - BS - 2027 Co-Op — Marvell Technology</title>
     <link>https://interndoor.com/ca/jobs/marvell-technology-data-center-silicon-hardware-engineering-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604525</link>
@@ -499,16 +509,6 @@
 • Develop new features in Go and other languages
 • Work with CI/CD pipelines and cloud platforms like AWS and Kubernetes
 • Collaborate with cross-functional teams in hybrid setup</description>
-  </item>
-  <item>
-    <title>Associate Software Engineer, Expenses — Justworks</title>
-    <link>https://interndoor.com/ca/jobs/justworks-associate-software-engineer-expenses-ats-greenhouse-justworks-7957539</link>
-    <guid isPermaLink="true">https://interndoor.com/ca/jobs/justworks-associate-software-engineer-expenses-ats-greenhouse-justworks-7957539</guid>
-    <pubDate>Fri, 04 Sep 2026 14:38:42 GMT</pubDate>
-    <description>Company: Justworks · Location: Toronto, Canada
-• Build expense submission, approval, and reimbursement systems for customers
-• Work with senior engineers on Ruby to Go migration and AI features
-• Ship production code with confidence in a fast-paced, collaborative team</description>
   </item>
 </channel>
 </rss>

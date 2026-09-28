@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in Canada, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/ca/jobs/lyft-business-systems-engineer-intern-finance-technology-summer-2027-ats-greenhouse-lyft-8802222002",
+      "url": "https://interndoor.com/ca/jobs/lyft-business-systems-engineer-intern-finance-technology-summer-2027-ats-greenhouse-lyft-8802222002",
+      "title": "Business Systems Engineer Intern, Finance Technology (Summer 2027) — Lyft",
+      "content_text": "Company: Lyft · Location: Toronto, Canada · Duration: Summer 2028\n• Build automation workflows with Workato, Python, and SQL for finance operations\n• Work on ERP, HCM, and FP&A systems with cross-functional teams in Toronto\n• Gain hands-on experience with AI tools like LangChain and UiPath",
+      "date_published": "2026-09-28T21:33:25.000Z",
+      "authors": [
+        {
+          "name": "Lyft"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/ca/jobs/marvell-technology-data-center-silicon-hardware-engineering-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604525",
       "url": "https://interndoor.com/ca/jobs/marvell-technology-data-center-silicon-hardware-engineering-intern-bs-2027-co-op-ats-workday-marvell-wd1-marvellcareers-2604525",
       "title": "Data Center Silicon Hardware Engineering Intern - BS - 2027 Co-Op — Marvell Technology",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Entrust"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/ca/jobs/justworks-associate-software-engineer-expenses-ats-greenhouse-justworks-7957539",
-      "url": "https://interndoor.com/ca/jobs/justworks-associate-software-engineer-expenses-ats-greenhouse-justworks-7957539",
-      "title": "Associate Software Engineer, Expenses — Justworks",
-      "content_text": "Company: Justworks · Location: Toronto, Canada\n• Build expense submission, approval, and reimbursement systems for customers\n• Work with senior engineers on Ruby to Go migration and AI features\n• Ship production code with confidence in a fast-paced, collaborative team",
-      "date_published": "2026-09-04T14:38:42.000Z",
-      "authors": [
-        {
-          "name": "Justworks"
         }
       ]
     }
