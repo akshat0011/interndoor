@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 28 Sep 2026 04:12:27 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 05:14:47 GMT</lastBuildDate>
+  <item>
+    <title>AI Software Engineer — Hitachi Solutions India Pvt Ltd</title>
+    <link>https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476</guid>
+    <pubDate>Mon, 28 Sep 2026 05:14:47 GMT</pubDate>
+    <description>Company: Hitachi Solutions India Pvt Ltd · Location: Chennai, Tamil Nadu, India
+• Design AI-assisted migration platform with Azure cloud architecture
+• Mentor AI/automation team and manage migration risk and security
+• Develop LLM components with prompt engineering and API integration</description>
+  </item>
+  <item>
+    <title>Portfolio Researcher — Millennium</title>
+    <link>https://interndoor.com/jobs/millennium-portfolio-researcher-4471314957</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/millennium-portfolio-researcher-4471314957</guid>
+    <pubDate>Mon, 28 Sep 2026 05:13:26 GMT</pubDate>
+    <description>Company: Millennium · Location: Mumbai, Maharashtra, India · Duration: 1-4 years
+• Develop and maintain quantitative frameworks for risk measurement and portfolio optimization
+• Collaborate with technology and business teams to implement models in production
+• Work on factor models, tail risk analysis, and performance analytics tools</description>
+  </item>
   <item>
     <title>Forward Deployed Engineer - India — Cursor</title>
     <link>https://interndoor.com/jobs/cursor-forward-deployed-engineer-india-4472481672</link>
@@ -490,27 +510,6 @@
 • Integrate mes with erp, plm, and shopfloor machines
 • Ensure system uptime and resolve mes issues quickly
 • Support barcode/rfid systems and machine connectivity</description>
-  </item>
-  <item>
-    <title>Digital Engineer - IoT and AI — Larsen &amp; Toubro</title>
-    <link>https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781</guid>
-    <pubDate>Sat, 26 Sep 2026 19:15:31 GMT</pubDate>
-    <description>Company: Larsen &amp; Toubro · Location: Chorasi, Gujarat, India · Duration: 1–3 years
-• Support machine connectivity and data collection for smart manufacturing
-• Develop digital solutions for operational metrics and predictive maintenance
-• Integrate IoT systems with ERP and analytics platforms
-• Based at LMTG Hazira Plant</description>
-  </item>
-  <item>
-    <title>Java Fullstack IRC300668 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943</guid>
-    <pubDate>Sat, 26 Sep 2026 19:15:14 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Noida, Uttar Pradesh, India
-• Build and maintain backend services using Java, REST APIs, and Spring Boot
-• Work with AWS infrastructure and Kafka for streaming and messaging
-• Collaborate on cloud-native applications with GitLab and JIRA tools</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476",
+      "url": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-software-engineer-4471326476",
+      "title": "AI Software Engineer — Hitachi Solutions India Pvt Ltd",
+      "content_text": "Company: Hitachi Solutions India Pvt Ltd · Location: Chennai, Tamil Nadu, India\n• Design AI-assisted migration platform with Azure cloud architecture\n• Mentor AI/automation team and manage migration risk and security\n• Develop LLM components with prompt engineering and API integration",
+      "date_published": "2026-09-28T05:14:47.455Z",
+      "authors": [
+        {
+          "name": "Hitachi Solutions India Pvt Ltd"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-portfolio-researcher-4471314957",
+      "url": "https://interndoor.com/jobs/millennium-portfolio-researcher-4471314957",
+      "title": "Portfolio Researcher — Millennium",
+      "content_text": "Company: Millennium · Location: Mumbai, Maharashtra, India · Duration: 1-4 years\n• Develop and maintain quantitative frameworks for risk measurement and portfolio optimization\n• Collaborate with technology and business teams to implement models in production\n• Work on factor models, tail risk analysis, and performance analytics tools",
+      "date_published": "2026-09-28T05:13:26.808Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cursor-forward-deployed-engineer-india-4472481672",
       "url": "https://interndoor.com/jobs/cursor-forward-deployed-engineer-india-4472481672",
       "title": "Forward Deployed Engineer - India — Cursor",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-digital-engineer-iot-and-ai-4463708781",
-      "title": "Digital Engineer - IoT and AI — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Chorasi, Gujarat, India · Duration: 1–3 years\n• Support machine connectivity and data collection for smart manufacturing\n• Develop digital solutions for operational metrics and predictive maintenance\n• Integrate IoT systems with ERP and analytics platforms\n• Based at LMTG Hazira Plant",
-      "date_published": "2026-09-26T19:15:31.538Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943",
-      "url": "https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453527943",
-      "title": "Java Fullstack IRC300668 — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Noida, Uttar Pradesh, India\n• Build and maintain backend services using Java, REST APIs, and Spring Boot\n• Work with AWS infrastructure and Kafka for streaming and messaging\n• Collaborate on cloud-native applications with GitLab and JIRA tools",
-      "date_published": "2026-09-26T19:15:14.004Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
         }
       ]
     }
