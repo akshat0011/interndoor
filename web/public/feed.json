@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/aditya-birla-group-sh-software-and-programming-4472499746",
+      "url": "https://interndoor.com/jobs/aditya-birla-group-sh-software-and-programming-4472499746",
+      "title": "SH Software & Programming — Aditya Birla Group",
+      "content_text": "Company: Aditya Birla Group · Location: Maharashtra, India\n• Support users with sap hana, datatex-now, and erp systems\n• Develop software tools and interfaces using java, python, dot net\n• Monitor system performance and manage tape backups monthly",
+      "date_published": "2026-09-28T09:19:26.416Z",
+      "authors": [
+        {
+          "name": "Aditya Birla Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/regeneron-specialist-reporting-analytics-and-business-intelligence-4471333776",
+      "url": "https://interndoor.com/jobs/regeneron-specialist-reporting-analytics-and-business-intelligence-4471333776",
+      "title": "Specialist - Reporting Analytics & Business Intelligence — Regeneron",
+      "content_text": "Company: Regeneron · Location: Greater Hyderabad Area\n• Design and maintain Tableau and Power BI dashboards for global development analytics\n• Integrate Large Language Models to enhance reporting and decision-making capabilities\n• Collaborate with cross-functional teams to deliver data-driven insights and solutions",
+      "date_published": "2026-09-28T09:13:20.024Z",
+      "authors": [
+        {
+          "name": "Regeneron"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kla-specialist-technology-software-4470848451",
+      "url": "https://interndoor.com/jobs/kla-specialist-technology-software-4470848451",
+      "title": "Specialist, Technology - Software — KLA",
+      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Design and build scalable, high-performance software systems for semiconductor manufacturing\n• Work with C#, C++, Java, Python, and modern architectures like microservices and Kubernetes\n• Collaborate globally with engineers, architects, and stakeholders on complex technical challenges",
+      "date_published": "2026-09-28T08:59:13.716Z",
+      "authors": [
+        {
+          "name": "KLA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471324951",
       "url": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471324951",
       "title": "NLP Engineer — Zimmer Biomet",
@@ -30,11 +66,35 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471328834",
+      "url": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471328834",
+      "title": "NLP Engineer — Zimmer Biomet",
+      "content_text": "Company: Zimmer Biomet · Location: Bengaluru, Karnataka, India\n• Build NLP systems for clinical and regulatory text extraction\n• Use Python, Azure, and vector databases for production pipelines\n• Collaborate with global stakeholders on regulated use cases",
+      "date_published": "2026-09-28T08:41:24.633Z",
+      "authors": [
+        {
+          "name": "Zimmer Biomet"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471334666",
       "url": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471334666",
       "title": "NLP Engineer — Zimmer Biomet",
       "content_text": "Company: Zimmer Biomet · Location: Hyderabad, Telangana, India\n• Build NLP systems for clinical and regulatory text extraction\n• Work with Azure OpenAI and Python for production pipelines\n• Collaborate with global stakeholders on high-impact use cases",
       "date_published": "2026-09-28T08:41:12.213Z",
+      "authors": [
+        {
+          "name": "Zimmer Biomet"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471333669",
+      "url": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471333669",
+      "title": "NLP Engineer — Zimmer Biomet",
+      "content_text": "Company: Zimmer Biomet · Location: Chennai, Tamil Nadu, India\n• Build NLP systems for clinical and regulatory text extraction\n• Work with Azure OpenAI and Python for production pipelines\n• Collaborate with global stakeholders on high-impact use cases",
+      "date_published": "2026-09-28T08:41:09.404Z",
       "authors": [
         {
           "name": "Zimmer Biomet"
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-network-r-and-s-l1-mangalore-4414002052",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-network-r-and-s-l1-mangalore-4414002052",
-      "title": "Network (R&S) L1 - Mangalore — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India\n• Monitor and resolve client IT issues using ITSM tools and technical knowledge\n• Support incident management, patching, and configuration changes\n• Collaborate on process improvements and automation opportunities",
-      "date_published": "2026-09-27T10:38:43.759Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-cmt-4470598562",
-      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-cmt-4470598562",
-      "title": "Applied Scientist, CMT — Amazon Science",
-      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Develop and optimize machine learning models for product similarity and price recommendations\n• Collaborate with engineers to deploy models in production environments\n• Write maintainable code and share findings through technical writing and presentations",
-      "date_published": "2026-09-27T10:30:30.120Z",
-      "authors": [
-        {
-          "name": "Amazon Science"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cummins-india-electronic-systems-technical-specialist-software-4453593348",
-      "url": "https://interndoor.com/jobs/cummins-india-electronic-systems-technical-specialist-software-4453593348",
-      "title": "Electronic Systems Technical Specialist - Software — Cummins India",
-      "content_text": "Company: Cummins India · Location: Pune Division, Maharashtra, India\n• Develop and maintain automation scripts for AUTOSAR configuration workflows\n• Support software integration, CI/CD pipelines, and release management activities\n• Collaborate with global teams on product development and technical improvements",
-      "date_published": "2026-09-27T09:54:19.565Z",
-      "authors": [
-        {
-          "name": "Cummins India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/general-mills-analyst-demand-forecasting-4453573462",
-      "url": "https://interndoor.com/jobs/general-mills-analyst-demand-forecasting-4453573462",
-      "title": "Analyst – Demand Forecasting — General Mills",
-      "content_text": "Company: General Mills · Location: Mumbai Metropolitan Region · Duration: 1-2 years\n• Analyze forecasting models and prepare change reports for stakeholders\n• Use tableau and sql to extract data from primary and secondary sources\n• Work with technical teams to improve forecasting processes\n• Operate in 1.30 pm to 10.30 pm shift",
-      "date_published": "2026-09-27T09:47:31.323Z",
-      "authors": [
-        {
-          "name": "General Mills"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471088432",
-      "url": "https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471088432",
-      "title": "Kafka Engineer — Nippon Data Systems",
-      "content_text": "Company: Nippon Data Systems · Location: Delhi, Delhi, India\n• Manage kafka clusters for high availability and performance\n• Troubleshoot and upgrade kafka systems with development teams\n• Monitor data flow and ensure smooth integration with applications",
-      "date_published": "2026-09-27T07:59:51.883Z",
-      "authors": [
-        {
-          "name": "Nippon Data Systems"
         }
       ]
     }
