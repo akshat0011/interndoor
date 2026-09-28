@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 27 Sep 2026 15:31:56 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 02:37:56 GMT</lastBuildDate>
+  <item>
+    <title>Device Engineering Intern, ULP CMOS (Fall 2026) — GlobalFoundries</title>
+    <link>https://interndoor.com/us/jobs/globalfoundries-device-engineering-intern-ulp-cmos-fall-2026-4471330009</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/globalfoundries-device-engineering-intern-ulp-cmos-fall-2026-4471330009</guid>
+    <pubDate>Mon, 28 Sep 2026 02:37:56 GMT</pubDate>
+    <description>Company: GlobalFoundries · Location: Malta, NY · Duration: Fall 2026
+• Design and optimize silicon transistor technologies for ULP CMOS products
+• Use Python and CAD tools for test chip layout and analysis automation
+• Collaborate with global teams on device characterization and reliability testing</description>
+  </item>
   <item>
     <title>Quantum Hardware EDA &amp; Circuit Design Intern - 2027 — IBM</title>
     <link>https://interndoor.com/us/jobs/ibm-quantum-hardware-eda-and-circuit-design-intern-2027-4461412068</link>
@@ -499,16 +509,6 @@
 • Test software systems for aerospace hardware
 • Use Python and automated testing tools
 • Work on satellite and space mission projects</description>
-  </item>
-  <item>
-    <title>2027 Quality Engineering Intern - Utah — Northrop Grumman</title>
-    <link>https://interndoor.com/us/jobs/northrop-grumman-2027-quality-engineering-intern-utah-4472243737</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/northrop-grumman-2027-quality-engineering-intern-utah-4472243737</guid>
-    <pubDate>Sat, 26 Sep 2026 04:12:13 GMT</pubDate>
-    <description>Company: Northrop Grumman · Location: Salt Lake City, UT · Duration: 10 weeks
-• Test systems and software for space systems and defense applications
-• Use Python, Java, and automated testing tools
-• Work with cross-functional teams on high-impact projects</description>
   </item>
 </channel>
 </rss>

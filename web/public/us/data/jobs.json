@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790563799759,
+ "generatedAt": 1790564362983,
  "region": "US",
  "regionName": "United States",
- "count": 4181,
- "techCount": 4181,
+ "count": 4182,
+ "techCount": 4182,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1301,6 +1301,53 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4471330009",
+   "title": "Device Engineering Intern, ULP CMOS (Fall 2026)",
+   "company": "GlobalFoundries",
+   "matchedWatchlist": "GlobalFoundries",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/globalfoundries.jpg",
+   "location": "Malta, NY",
+   "workplaceType": "On-site",
+   "stipend": "$20 – $40",
+   "duration": "Fall 2026",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves designing and optimizing ultra-low power CMOS technologies for applications like IoT and automotive. You'll work on test chip layouts, analyze device performance, and collaborate with global teams to ensure manufacturability and competitiveness. Ideal for students with a strong background in semiconductor physics and fabrication processes.",
+   "bullets": [
+    "Design and optimize silicon transistor technologies for ULP CMOS products",
+    "Use Python and CAD tools for test chip layout and analysis automation",
+    "Collaborate with global teams on device characterization and reliability testing"
+   ],
+   "roleLabel": "Device Engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "cad",
+    "device characterization",
+    "test chip layout"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "19 minutes ago",
+   "postedAt": 1790563076761,
+   "firstSeenAt": 1790564216778,
+   "lastSeenAt": 1790564216778,
+   "url": "https://www.linkedin.com/jobs/view/4471330009/",
+   "applyUrl": "https://careers.gf.com/careers/job/563980768903679?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "599158c566",
+   "cardFacts": [
+    "$20 – $40",
+    "Malta",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
   {
    "id": "4461412068",
    "title": "Quantum Hardware EDA & Circuit Design Intern - 2027",
