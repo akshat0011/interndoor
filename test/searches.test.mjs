@@ -148,25 +148,25 @@ ok('never swept, no interval — due', due(null, 0));
 // A future timestamp must not wedge a search off forever.
 ok('clock skew into the future — due', due(NOW + 60 * 60_000, 60));
 
-console.log('\n== the live config: every search on every tick ==');
+console.log('\n== the live config: India every tick, US every hour ==');
 /* These pin a PRODUCT DECISION, not a gap, so they move when the decision does.
    US went 60 -> 120 minutes on 1 Sep 2026 to cut load on the single LinkedIn
    account, BACK TO 60 on 2 Sep once the three per-search limits landed (see
-   test/sweeplimits.test.mjs), and to every 30-minute tick on 27 Sep with India
-   entry-level ("both india intern and full time every 30 mins, usa every 30
-   mins too"). The hour those two waited was an hour of latency on every role
-   only they can find.
-   INDIA MUST STAY AT EVERY TICK. It feeds 91% of the India board and the
-   board's whole promise is freshness. */
+   test/sweeplimits.test.mjs), to every 30-minute tick on 27 Sep, and back to
+   hourly the same day ("switch to usa every 1 hour").
+   INDIA MUST STAY AT EVERY TICK, intern and entry-level alike (27 Sep 2026:
+   "both india intern and full time every 30 mins"). It feeds 91% of the India
+   board and the board's whole promise is freshness. */
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Declared, not active, so a paused search is still held to this.
-check('no search declares an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), []);
+check('only the US declares an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['US']);
+check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
-ok('US is due 30m after its sweep', due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
+ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
+ok('US is due 60m after its sweep', due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
 /* The due check deliberately fires a little early — ticks drift, so demanding
-   the full interval turns a two-hourly search into a three-hourly one. Pinned
-   on the mechanism, since no live search sets an interval today. */
+   the full interval turns a two-hourly search into a three-hourly one. */
 ok('and a tick that lands slightly early still counts',
   due(agoMin(Math.ceil(120 * INTERVAL_DUE_FRACTION) + 1), 120));
 
@@ -196,12 +196,8 @@ check('both searches are resolvable for the window checks', [!!IN_S, !!US_S], [t
 check('India at its 30-minute cadence asks for 2h, not 3', winOf(IN_S, 0.5), 2);
 check('India never asks for less than half an hour past the gap', winOf(IN_S, 0.49), 1);
 check('India after a 6h sleep still stretches', winOf(IN_S, 6), 7);
-/* US every 30 minutes (27 Sep 2026) on a 1h floor: a 2h floor would read the
-   same 2h window twice as often, double the requests for nothing. */
-check('US at its 30-minute cadence takes 1h, not 2', winOf(US_S, 0.5), 1);
-check('US still has half an hour past the gap', winOf(US_S, 0.5) - 0.5 >= 0.5, true);
-check('a late US tick stretches to 2h', winOf(US_S, 0.8), 2);
-check('US after an hour still takes 2h', winOf(US_S, 1.0), 2);
+check('US at its hourly cadence takes 2h, not 3', winOf(US_S, 1.1), 2);
+check('US on the dot takes 2h', winOf(US_S, 1.0), 2);
 // The floor and the slack change; the adaptive rule does not.
 check('US after a 6h sleep still stretches', winOf(US_S, 6), 7);
 check('US is capped like everything else', winOf(US_S, 500), cfg.filters.maxWindowHours ?? 36);
@@ -257,8 +253,8 @@ console.log('\n== a search can be PAUSED without being deleted ==');
 
   check('the paused US entry is still in the file', !!us, true);
   check('with its verified geoId', us.geoId, 103644278);
-  check('its own cadence (every tick since 27 Sep 2026)', us.intervalMinutes, undefined);
-  check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [1, 0.75]);
+  check('its own cadence', us.intervalMinutes, 60);
+  check('and its density-tuned window', [us.minWindowHours, us.windowMarginHours], [2, 0.75]);
 
   /* ASSERTED AS AN INVARIANT OVER WHATEVER IS PAUSED TODAY, not as a snapshot
      of it. The first version of this block hardcoded ['US'] because US happened
