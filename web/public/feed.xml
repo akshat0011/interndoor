@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 28 Sep 2026 01:00:09 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 02:05:26 GMT</lastBuildDate>
+  <item>
+    <title>Engineering Intern – Transport Analytics — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-4471313553</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-engineering-intern-transport-analytics-4471313553</guid>
+    <pubDate>Mon, 28 Sep 2026 02:05:26 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai, Tamil Nadu, India
+• Build web apps and APIs for analytics databases
+• Work with SQL/NoSQL and LLM frameworks like LangChain
+• Prototype AI solutions for transport logistics</description>
+  </item>
+  <item>
+    <title>Associate Software Engineer Intern — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4471308785</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4471308785</guid>
+    <pubDate>Mon, 28 Sep 2026 02:05:08 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai, Tamil Nadu, India
+• Develop software programs to specifications
+• Design user interfaces and test cases
+• Collaborate with team across India and USA</description>
+  </item>
+  <item>
+    <title>Associate Software Engineer Intern - YMS — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-4471322071</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-yms-4471322071</guid>
+    <pubDate>Mon, 28 Sep 2026 02:04:59 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai, Tamil Nadu, India
+• Prototype computer vision models for gate automation using OCR and real-world data
+• Develop backend features for yard management systems with Python and Rails
+• Work on production code with code reviews and automation improvements</description>
+  </item>
   <item>
     <title>Apple WTE - AI/ML PhD Intern — Apple</title>
     <link>https://interndoor.com/jobs/apple-apple-wte-ai-ml-phd-intern-4471098940</link>
@@ -481,37 +511,6 @@
 • Design scalable cloud architectures for business applications
 • Use containers orchestration and automation tools daily
 • Work hybrid with rotational shifts and global traffic</description>
-  </item>
-  <item>
-    <title>Linux ,REST API integration-Admin — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-linux-rest-api-integration-admin-4444021393</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-linux-rest-api-integration-admin-4444021393</guid>
-    <pubDate>Sat, 26 Sep 2026 18:26:41 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Manage linux servers, automate tasks with ansible, and ensure system security
-• Integrate rest apis for infrastructure tools and troubleshoot connectivity issues
-• Patch servers, monitor performance, and maintain compliance standards</description>
-  </item>
-  <item>
-    <title>User Support - FX Advanced Specialist — Bloomberg</title>
-    <link>https://interndoor.com/jobs/bloomberg-user-support-fx-advanced-specialist-4441596522</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bloomberg-user-support-fx-advanced-specialist-4441596522</guid>
-    <pubDate>Sat, 26 Sep 2026 18:23:41 GMT</pubDate>
-    <description>Company: Bloomberg · Location: Mumbai, Maharashtra, India
-• Support FX clients with complex queries and ensure accurate responses
-• Collaborate with sales and product teams to shape client experiences
-• Train new hires and develop advanced specialists globally</description>
-  </item>
-  <item>
-    <title>Java Fullstack IRC300668 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453524950</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-fullstack-irc300668-4453524950</guid>
-    <pubDate>Sat, 26 Sep 2026 18:10:09 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Bengaluru, Karnataka, India
-• Develop and maintain backend services using Java, REST APIs, and Spring Boot
-• Work with AWS services like S3, EC2, and SQS/SNS for cloud infrastructure
-• Collaborate on microservices and streaming with Apache Kafka
-• Contribute to front-end development with React/Redux and JavaScript</description>
   </item>
 </channel>
 </rss>
