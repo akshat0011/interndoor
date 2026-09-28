@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/caterpillar-inc-connectivity-specialist-condition-monitoring-4470443733",
+      "url": "https://interndoor.com/jobs/caterpillar-inc-connectivity-specialist-condition-monitoring-4470443733",
+      "title": "Connectivity Specialist - Condition Monitoring — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Connect equipment to monitor fleet health globally\n• Resolve connectivity issues with hardware and software\n• Work onsite five days a week in Chennai",
+      "date_published": "2026-09-28T20:33:10.509Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cohere-health-associate-software-engineer-4473002328",
       "url": "https://interndoor.com/jobs/cohere-health-associate-software-engineer-4473002328",
       "title": "Associate Software Engineer — Cohere Health",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4472742434",
-      "url": "https://interndoor.com/jobs/accenture-in-india-application-support-engineer-4472742434",
-      "title": "Application Support Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Design and optimize prompts for LLMs to support infrastructure and application services\n• Build Python microservices and scripts for data processing and API integration\n• Collaborate with SMEs to create GenAI workflows with chunking and token optimization",
-      "date_published": "2026-09-28T14:10:25.416Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
