@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790610853898,
+ "generatedAt": 1790611424108,
  "region": "IN",
  "regionName": "India",
- "count": 768,
- "techCount": 768,
+ "count": 767,
+ "techCount": 767,
  "otherCount": 0,
  "companies": [
   "AST SpaceMobile",
@@ -199,7 +199,6 @@
   "Observe.AI",
   "Oceaneering",
   "OpenAI",
-  "Otis Elevator Co.",
   "Outreach",
   "PTC",
   "PW (PhysicsWallah)",
@@ -472,6 +471,7 @@
    "roleLabel": "Mainframe Development",
    "degreeLevel": null,
    "degreeText": null,
+   "experience": "3+ years",
    "keySkills": [
     "cobol",
     "jcl",
@@ -2976,53 +2976,6 @@
    "roleFingerprint": "78355e6dcd",
    "cardFacts": [
     "Chennai",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4471388453",
-   "title": "Apprentice",
-   "company": "Otis Elevator Co.",
-   "matchedWatchlist": "Otis Elevator",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/otis-elevator-co.jpg",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This apprenticeship offers practical training in elevator mechanics and digital diagnostics. Ideal for students interested in hands-on technical work with IoT tools. You'll support installation and maintenance tasks while learning industry standards. The role provides mentorship and real-world experience in a global company.",
-   "bullets": [
-    "Assist in elevator installation, testing, and maintenance under expert guidance",
-    "Learn mechanical and electronic systems integration with IoT tools",
-    "Gain hands-on experience in construction, wiring, and system calibration"
-   ],
-   "roleLabel": "Elevator Mechanic Apprentice",
-   "degreeLevel": "Pursuing",
-   "degreeText": null,
-   "keySkills": [
-    "iot tools",
-    "digital diagnostics",
-    "electrical wiring",
-    "system calibration"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "20 minutes ago",
-   "postedAt": 1790601386252,
-   "firstSeenAt": 1790602586257,
-   "lastSeenAt": 1790610184159,
-   "url": "https://www.linkedin.com/jobs/view/4471388453/",
-   "applyUrl": "https://otis.wd504.myworkdayjobs.com/REC_Ext_Gateway/job/Wester-Region---9th-Floor-Magnus-Tower-Mindspace-Link-Road-Malad-West-MUMBAI-400064-India/Apprentice_20165646?source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "78a5cc152b",
-   "cardFacts": [
-    "Mumbai Metropolitan Region",
     "On-site"
    ],
    "category": "software",
