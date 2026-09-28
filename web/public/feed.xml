@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 28 Sep 2026 17:36:21 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 18:00:17 GMT</lastBuildDate>
+  <item>
+    <title>Data Analyst Project Intern (Training &amp; Quality) - 2026 Start (BS/MS) — ByteDance</title>
+    <link>https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912</guid>
+    <pubDate>Mon, 28 Sep 2026 18:00:17 GMT</pubDate>
+    <description>Company: ByteDance · Location: Gurgaon, Haryana, India
+• Analyze data and create reports for operations teams
+• Use excel and statistical tools to support decision-making
+• Work on short-term projects with real-world impact</description>
+  </item>
   <item>
     <title>Engineer - Embedded SW Development — GE Vernova</title>
     <link>https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472763730</link>
@@ -26,6 +36,16 @@
 • Build and maintain data pipelines for global transparency reporting using SQL, Python, Databricks, and AWS
 • Collaborate with Legal, Compliance, and Technology teams to implement regulatory data solutions
 • Ensure data accuracy, completeness, and timely delivery for downstream processes like MediSpend and regulatory reporting</description>
+  </item>
+  <item>
+    <title>Full Stack Developer — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598</guid>
+    <pubDate>Mon, 28 Sep 2026 17:13:04 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Build and maintain full-stack Java applications
+• Work with Angular, Spring/Hibernate, and REST APIs
+• Collaborate in Agile teams using Git and Maven</description>
   </item>
   <item>
     <title>IT Quality Assurance Analyst — Marsh</title>
@@ -489,26 +509,6 @@
 • Design and implement scalable systems using Java, Node.js, and React
 • Work with GCP services like GKE and APIGEE Gateway
 • Collaborate on real-time data streaming and event-driven architectures</description>
-  </item>
-  <item>
-    <title>Z2_Software and application engineering / BE Developer — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-z2-software-and-application-engineering-be-developer-4472729784</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-z2-software-and-application-engineering-be-developer-4472729784</guid>
-    <pubDate>Mon, 28 Sep 2026 13:30:09 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
-• Develop and deploy backend services using Java 8+, Spring Boot, and Microservices
-• Work with PostgreSQL and MongoDB, package apps with Docker and Kubernetes
-• Deploy on Azure or AWS, focus on scalability and performance optimization</description>
-  </item>
-  <item>
-    <title>Multimodal AI Benchmark Creator — Handshake AI Fellowship</title>
-    <link>https://interndoor.com/jobs/handshake-ai-fellowship-multimodal-ai-benchmark-creator-4470870729</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/handshake-ai-fellowship-multimodal-ai-benchmark-creator-4470870729</guid>
-    <pubDate>Mon, 28 Sep 2026 13:30:08 GMT</pubDate>
-    <description>Company: Handshake AI Fellowship · Location: Srinagar, Jammu &amp; Kashmir, India
-• Design and refine benchmarks for text, image, audio, and multimodal AI systems
-• Collaborate with researchers, data scientists, and product teams on benchmark alignment
-• Curate datasets, create prompts, and analyze model performance in Anantnag</description>
   </item>
 </channel>
 </rss>
