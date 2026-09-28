@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in the UK, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/uk/jobs/monzo-associate-software-engineer-intern-ats-greenhouse-monzo-8156261",
+      "url": "https://interndoor.com/uk/jobs/monzo-associate-software-engineer-intern-ats-greenhouse-monzo-8156261",
+      "title": "Associate Software Engineer - Intern — Monzo",
+      "content_text": "Company: Monzo · Location: London · Duration: 16-17 years\n• Write, test and ship code for customer-facing features\n• Use Go, Cassandra, Kafka, Kubernetes, AWS and React\n• Work with product managers and data analysts on your team",
+      "date_published": "2026-09-28T07:25:03.000Z",
+      "authors": [
+        {
+          "name": "Monzo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/uk/jobs/analog-devices-fy27-engineering-internship-united-kingdom-ats-workday-analogdevices-wd1-external-r266707",
       "url": "https://interndoor.com/uk/jobs/analog-devices-fy27-engineering-internship-united-kingdom-ats-workday-analogdevices-wd1-external-r266707",
       "title": "FY27 Engineering Internship United Kingdom — Analog Devices",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Boeing"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880",
-      "url": "https://interndoor.com/uk/jobs/nxp-semiconductors-graduate-ai-and-software-engineer-automotive-mpus-ats-workday-nxp-wd3-careers-r-10065880",
-      "title": "Graduate AI and Software Engineer - Automotive MPUs — NXP Semiconductors",
-      "content_text": "Company: NXP Semiconductors · Location: Glasgow\n• Prototype AI use-cases on automotive hardware, deploying ML models for real-world applications\n• Work with Python, PyTorch, and AI toolchains to optimise and run models on S32N MPUs\n• Collaborate with global teams and customers to shape AI capabilities in automotive systems",
-      "date_published": "2026-09-11T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "NXP Semiconductors"
         }
       ]
     }
