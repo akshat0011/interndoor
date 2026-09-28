@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790634800060,
+ "generatedAt": 1790638826340,
  "region": "GB",
  "regionName": "United Kingdom",
  "count": 111,
@@ -379,6 +379,7 @@
    "roleLabel": "RF Hardware Design",
    "degreeLevel": "UG",
    "degreeText": "BEng/BSc",
+   "experience": "Graduating 2027",
    "keySkills": [
     "network analysers",
     "excel",
@@ -427,6 +428,7 @@
    "roleLabel": "Electrical Design Engineer",
    "degreeLevel": "UG",
    "degreeText": "BEng/BSc",
+   "experience": "Graduating 2027",
    "keySkills": [
     "solid edge",
     "circuit design",
@@ -1376,7 +1378,7 @@
    "isTech": true,
    "roleSource": "model-enrich",
    "employmentType": "fulltime",
-   "logo": null,
+   "logo": "/logos/renesas-electronics.jpg",
    "location": "Edinburgh, gb",
    "workplaceType": null,
    "stipend": null,
@@ -3983,7 +3985,7 @@
    "isTech": true,
    "roleSource": "model-enrich",
    "employmentType": "fulltime",
-   "logo": null,
+   "logo": "/logos/renesas-electronics.jpg",
    "location": "Swindon, gb",
    "workplaceType": null,
    "stipend": null,
