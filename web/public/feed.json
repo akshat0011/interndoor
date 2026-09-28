@@ -6,6 +6,150 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472726179",
+      "url": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472726179",
+      "title": "Engineer - Embedded SW Development — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Greater Hyderabad Area\n• Design and develop embedded software for physical devices like motors and sensors\n• Work with real-time systems and hardware-specific requirements\n• Collaborate in a structured framework with defined operational tasks",
+      "date_published": "2026-09-28T11:23:49.851Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bnp-paribas-quantitative-analyst-gmqr-prime-strategists-4455140968",
+      "url": "https://interndoor.com/jobs/bnp-paribas-quantitative-analyst-gmqr-prime-strategists-4455140968",
+      "title": "Quantitative Analyst - GMQR Prime Strategists — BNP Paribas",
+      "content_text": "Company: BNP Paribas · Location: Mumbai, Maharashtra, India\n• Build models for stock loan pricing and inventory management\n• Work with Python, C#, and CI/CD tools\n• Collaborate with trading, sales, and IT teams",
+      "date_published": "2026-09-28T11:21:21.548Z",
+      "authors": [
+        {
+          "name": "BNP Paribas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-infra-developer-4471346447",
+      "url": "https://interndoor.com/jobs/millennium-infra-developer-4471346447",
+      "title": "Infra Developer — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Migrate airflow services to kubernetes-based architecture\n• Build ci/cd pipelines and monitoring dashboards\n• Design live-override tools with audit logging\n• Develop gui for ai-powered paper-trading platform",
+      "date_published": "2026-09-28T11:13:45.413Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-data-scientist-4471362018",
+      "url": "https://interndoor.com/jobs/millennium-data-scientist-4471362018",
+      "title": "Data Scientist — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Build AI/ML models for volatility forecasting and options pricing\n• Use JAX, PyTorch, and hardware acceleration for quantitative research\n• Collaborate with portfolio managers on decision-support tools",
+      "date_published": "2026-09-28T11:13:15.510Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-quantitative-researcher-4471351400",
+      "url": "https://interndoor.com/jobs/millennium-quantitative-researcher-4471351400",
+      "title": "Quantitative Researcher — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Build predictive models for investment strategies using statistical learning\n• Develop backtesting platforms and options datasets for volatility analysis\n• Collaborate with portfolio managers on risk-management workflows",
+      "date_published": "2026-09-28T11:13:00.378Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/hcltech-it-service-desk-4472718324",
+      "url": "https://interndoor.com/jobs/hcltech-it-service-desk-4472718324",
+      "title": "IT Service Desk — HCLTech",
+      "content_text": "Company: HCLTech · Location: Noida, Uttar Pradesh, India · Duration: 1-3 years\n• Support end-users with hardware, software, and network issues\n• Use ticketing systems to log and prioritize support requests\n• Collaborate with teams to resolve escalated technical problems",
+      "date_published": "2026-09-28T11:10:22.632Z",
+      "authors": [
+        {
+          "name": "HCLTech"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4471358082",
+      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4471358082",
+      "title": "Technical Specialist-App Development — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and deploy mulesoft integrations based on business needs\n• Collaborate with stakeholders and architects to shape solutions\n• Mentor junior developers and lead technical reviews",
+      "date_published": "2026-09-28T11:07:14.023Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-upstream-data-analyst-4471353256",
+      "url": "https://interndoor.com/jobs/quest-global-upstream-data-analyst-4471353256",
+      "title": "Upstream Data Analyst — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Validate and verify operational data from customers and field teams\n• Cross-check reports with rig activities and treatment summaries\n• Ensure accurate entry of events, fluids, and operational timelines",
+      "date_published": "2026-09-28T11:02:16.466Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4472706830",
+      "url": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4472706830",
+      "title": "Engineer - IT Systems Engineering — Marsh",
+      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Supports business critical applications and ensures monitoring is in place\n• Troubleshoots system alerts and resolves user-reported issues\n• Coordinates resources for client requests and ensures project success",
+      "date_published": "2026-09-28T11:00:25.586Z",
+      "authors": [
+        {
+          "name": "Marsh"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/broadridge-india-java-angular-full-stack-developer-4472710561",
+      "url": "https://interndoor.com/jobs/broadridge-india-java-angular-full-stack-developer-4472710561",
+      "title": "Java, Angular Full stack developer — Broadridge India",
+      "content_text": "Company: Broadridge India · Location: Hyderabad, Telangana, India\n• Build and maintain web applications using java and angular\n• Work in agile teams on scalable systems and infrastructure\n• Collaborate with stakeholders to design and implement software solutions",
+      "date_published": "2026-09-28T10:59:52.581Z",
+      "authors": [
+        {
+          "name": "Broadridge India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marsh-analyst-it-systems-engineering-4472724036",
+      "url": "https://interndoor.com/jobs/marsh-analyst-it-systems-engineering-4472724036",
+      "title": "Analyst - IT Systems Engineering — Marsh",
+      "content_text": "Company: Marsh · Location: Noida, Uttar Pradesh, India · Duration: 1–4 years\n• Support CIAM services on Okta with user access, application onboarding, and policy management\n• Work with application owners, TPMs, and support teams on identity and access issues\n• Maintain Okta branding, automations, and documentation for secure identity services",
+      "date_published": "2026-09-28T10:59:48.412Z",
+      "authors": [
+        {
+          "name": "Marsh"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marsh-analyst-it-systems-engineering-4472724034",
+      "url": "https://interndoor.com/jobs/marsh-analyst-it-systems-engineering-4472724034",
+      "title": "Analyst - IT Systems Engineering — Marsh",
+      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India · Duration: 1–4 years\n• Support CIAM services on Okta with user access, application onboarding, and policy management\n• Work with application owners, TPMs, and support teams on identity and access issues\n• Manage Okta groups, passwords, MFA, and branding elements for secure access",
+      "date_published": "2026-09-28T10:59:45.782Z",
+      "authors": [
+        {
+          "name": "Marsh"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480",
       "url": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4462929480",
       "title": "Applied AI SRE Engineer — Deloitte",
@@ -458,150 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-python-developer-4462678219",
-      "url": "https://interndoor.com/jobs/infosys-python-developer-4462678219",
-      "title": "Python Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop and optimize ETL pipelines for data ingestion and transformation\n• Write scalable Python scripts for automation and data processing\n• Design SQL queries and stored procedures for performance and accuracy",
-      "date_published": "2026-09-27T13:58:01.220Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-back-end-developer-4470810267",
-      "url": "https://interndoor.com/jobs/joveo-back-end-developer-4470810267",
-      "title": "Back End Developer — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Work with react, next.js, node.js, express, and databases\n• Collaborate directly with leadership from first week",
-      "date_published": "2026-09-27T13:57:40.409Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-frontend-developer-4470598753",
-      "url": "https://interndoor.com/jobs/joveo-frontend-developer-4470598753",
-      "title": "Frontend Developer — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Collaborate with leadership from first week",
-      "date_published": "2026-09-27T13:57:28.123Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-full-stack-react-developer-4444801620",
-      "url": "https://interndoor.com/jobs/infosys-java-full-stack-react-developer-4444801620",
-      "title": "Java full stack, React Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop microservices with Java 8+, Spring Boot, and REST APIs\n• Build single-page apps with ReactJS and debug front-end code\n• Use DevOps tools like Jenkins, Git, and Docker for deployment",
-      "date_published": "2026-09-27T13:27:33.132Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969823",
-      "url": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969823",
-      "title": "Hire Ahead-Intermediate Application Developer- Java — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develops and maintains applications using java\n• Collaborates with teams on system design and integration\n• Monitors new technologies for application relevance",
-      "date_published": "2026-09-27T13:18:49.938Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248970772",
-      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-full-stack-dot-net-4248970772",
-      "title": "Intermediate Applications Developer - Full Stack Dot Net — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Builds and maintains web applications using html, css, js, and angular\n• Works on full systems life cycle from design to deployment\n• Collaborates with teams on emerging technologies and integrations",
-      "date_published": "2026-09-27T13:18:22.686Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-power-programmer-specialist-programmer-net-full-stack-q2-fy-27-4435223027",
-      "url": "https://interndoor.com/jobs/infosys-power-programmer-specialist-programmer-net-full-stack-q2-fy-27-4435223027",
-      "title": "Power Programmer Specialist Programmer .NET Full Stack(Q2-FY-27) — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and code full-stack applications using .NET\n• Work on cloud-native projects with Fortune 500 clients\n• Collaborate with senior developers on complex systems",
-      "date_published": "2026-09-27T12:51:54.654Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4462646095",
-      "url": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4462646095",
-      "title": "Java Fullstack (Angular) Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Chennai, Tamil Nadu, India\n• Build microservices with Java 17 and Spring frameworks\n• Develop responsive UIs with Angular and React JS\n• Work in Agile teams on scalable applications",
-      "date_published": "2026-09-27T12:51:45.110Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-site-reliability-engineer-4444603112",
-      "url": "https://interndoor.com/jobs/infosys-site-reliability-engineer-4444603112",
-      "title": "Site Reliability Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and deploy scalable systems handling millions of transactions and petabytes of data\n• Implement AI/ML tools for automation, anomaly detection, and predictive analytics\n• Work with AWS Bedrock, Azure OpenAI, and GCP Vertex AI for intelligent solutions",
-      "date_published": "2026-09-27T12:46:34.306Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-fullstack-developer-react-4444020040",
-      "url": "https://interndoor.com/jobs/infosys-java-fullstack-developer-react-4444020040",
-      "title": "Java Fullstack Developer (React) — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support client systems using Java and React\n• Collaborate with leads to estimate project requirements and translate specs into code\n• Write tests and scenarios based on specifications for complex programs",
-      "date_published": "2026-09-27T12:17:46.974Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
-      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-ibm-ace-integration-specialist-4461940355",
-      "title": "Specialist Software Engineer - IBM ACE Integration Specialist — Nationwide",
-      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Support integration applications for policy transactions and data movement across commercial lines\n• Work with ACE and CL ETL Batch to handle secure APIs, message routing, and data transformation\n• Provide production support and optimize integration jobs and data processing outcomes",
-      "date_published": "2026-09-27T11:54:48.237Z",
-      "authors": [
-        {
-          "name": "Nationwide"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4454582094",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4454582094",
-      "title": "Z2_Python Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design scalable backend services using python\n• Develop restful apis and microservices\n• Optimize sql queries and implement async processing",
-      "date_published": "2026-09-27T11:23:36.071Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
