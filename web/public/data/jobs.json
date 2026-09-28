@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790624716935,
+ "generatedAt": 1790625480802,
  "region": "IN",
  "regionName": "India",
  "count": 792,
@@ -435,6 +435,7 @@
    "roleLabel": "Software Engineer",
    "degreeLevel": "UG",
    "degreeText": null,
+   "experience": "0–3 years",
    "keySkills": [
     "java",
     "python",
@@ -646,6 +647,7 @@
    "roleLabel": "Technical Consultant",
    "degreeLevel": null,
    "degreeText": null,
+   "deadline": "2026-09-30",
    "keySkills": [
     "spring boot",
     "jenkins",
