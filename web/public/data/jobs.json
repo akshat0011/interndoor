@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790689138358,
+ "generatedAt": 1790690064025,
  "region": "IN",
  "regionName": "India",
  "count": 851,
@@ -801,6 +801,7 @@
    "roleLabel": "Java Backend Developer",
    "degreeLevel": null,
    "degreeText": null,
+   "deadline": "2026-10-01",
    "keySkills": [
     "java",
     "spring boot",
@@ -855,6 +856,7 @@
    "roleLabel": "Network Engineering",
    "degreeLevel": null,
    "degreeText": null,
+   "deadline": "2026-09-30",
    "keySkills": [
     "network infrastructure",
     "firewalls",
