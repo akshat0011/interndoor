@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cognizant-react-native-developer-4454425701",
+      "url": "https://interndoor.com/jobs/cognizant-react-native-developer-4454425701",
+      "title": "React Native Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Greater Kolkata Area\n• Build mobile apps for consumer lending with react native and rest api\n• Work on secure and performant user interfaces for borrowing experiences\n• Collaborate with product teams on regulatory compliant technical designs",
+      "date_published": "2026-09-29T18:13:22.053Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-software-engineer-4463501481",
+      "url": "https://interndoor.com/jobs/cognizant-software-engineer-4463501481",
+      "title": "Software Engineer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Mumbai Metropolitan Region\n• Design and develop scalable enterprise applications using net core and ado.net\n• Optimize oracle schemas and stored procedures for query performance\n• Collaborate with product teams to refine technical requirements into solutions",
+      "date_published": "2026-09-29T18:12:07.440Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4471757752",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4471757752",
+      "title": "MS Engineer, Network — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client IT infrastructure issues using tools like Palo Alto and Cisco devices\n• Support incident resolution, ticket management, and shift handovers with ITSM tools\n• Contribute to process improvements and automation in service delivery",
+      "date_published": "2026-09-29T18:11:43.709Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deutsche-bank-backend-developer-avp-4473518128",
+      "url": "https://interndoor.com/jobs/deutsche-bank-backend-developer-avp-4473518128",
+      "title": "Backend Developer, AVP — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: Bengaluru, Karnataka, India\n• Design and implement scalable backend solutions for financial systems\n• Work with Java, Spring Boot, and cloud technologies like Kubernetes\n• Lead feature teams and contribute to architectural decisions at the bank",
+      "date_published": "2026-09-29T18:00:10.010Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deutsche-bank-cloud-engineer-avp-4473501586",
+      "url": "https://interndoor.com/jobs/deutsche-bank-cloud-engineer-avp-4473501586",
+      "title": "Cloud Engineer, AVP — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: Bengaluru, Karnataka, India\n• Design and manage secure cloud environments on GCP\n• Implement security policies and compliance standards\n• Automate deployments with Terraform and CI/CD tools",
+      "date_published": "2026-09-29T17:59:55.764Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299",
       "url": "https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299",
       "title": "Digital Ops Support Analyst — Quest Global",
@@ -539,66 +599,6 @@
       "title": "Intermediate Applications Developer - Chennai — UPS",
       "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develops and maintains applications using java\n• Works with devops and agile teams on integration builds\n• Supports production systems and monitors new technologies",
       "date_published": "2026-09-29T13:44:34.212Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-site-reliability-engineer-sre-4471914148",
-      "url": "https://interndoor.com/jobs/infosys-site-reliability-engineer-sre-4471914148",
-      "title": "Site Reliability Engineer (SRE) — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Manage cloud infrastructure on aws, azure, or gcp\n• Automate deployment and monitoring with terraform and ansible\n• Handle incident response and system reliability improvements",
-      "date_published": "2026-09-29T13:43:29.923Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-api-platform-and-devops-engineer-4471596746",
-      "url": "https://interndoor.com/jobs/infosys-api-platform-and-devops-engineer-4471596746",
-      "title": "API Platform & DevOps Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Administer ibm datapower gateways for api security and traffic management\n• Automate infrastructure with terraform and ansible on aws cloud\n• Maintain ci/cd pipelines and ensure high availability of api services",
-      "date_published": "2026-09-29T13:43:20.237Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-net-react-developer-4462999747",
-      "url": "https://interndoor.com/jobs/infosys-net-react-developer-4462999747",
-      "title": ".NET React Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Pune Division, Maharashtra, India\n• Develop .Net and React JS applications with focus on performance and scalability\n• Collaborate on system design, architecture, and database schema creation\n• Mentor teams and lead development across multiple environments",
-      "date_published": "2026-09-29T13:40:55.823Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-powerbi-developer-powerbi-dax-sql-python-r-ssas-c-net-gcp-azure-4248972463",
-      "url": "https://interndoor.com/jobs/ups-powerbi-developer-powerbi-dax-sql-python-r-ssas-c-net-gcp-azure-4248972463",
-      "title": "PowerBI developer - PowerBI, DAX, SQL, Python, R, SSAS, C#, .NET, GCP/Azure — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Build semantic models and dashboards using powerbi and ssas\n• Analyze data with sql, dax, python, and r\n• Work on data lakes and cloud platforms like gcp and azure",
-      "date_published": "2026-09-29T13:32:46.123Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969992",
-      "url": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248969992",
-      "title": "Hire Ahead-Intermediate Application Developer- Java — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develops and maintains applications using java\n• Collaborates with teams on system design and integration\n• Monitors new technologies for application use",
-      "date_published": "2026-09-29T13:32:06.174Z",
       "authors": [
         {
           "name": "UPS"
