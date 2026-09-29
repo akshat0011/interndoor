@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 29 Sep 2026 04:48:23 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 06:01:53 GMT</lastBuildDate>
+  <item>
+    <title>CTO - Robotics Research Engineer - Perception — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-cto-robotics-research-engineer-perception-4471254899</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-cto-robotics-research-engineer-perception-4471254899</guid>
+    <pubDate>Tue, 29 Sep 2026 06:01:53 GMT</pubDate>
+    <description>Company: Wipro · Location: Bengaluru, Karnataka, India
+• Develop perception systems for robotics applications
+• Work with computer vision and sensor fusion technologies
+• Collaborate on autonomous navigation and decision-making algorithms</description>
+  </item>
+  <item>
+    <title>Mechanical Design Intern — UNMANND</title>
+    <link>https://interndoor.com/jobs/unmannd-mechanical-design-intern-4473087394</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/unmannd-mechanical-design-intern-4473087394</guid>
+    <pubDate>Tue, 29 Sep 2026 05:35:26 GMT</pubDate>
+    <description>Company: UNMANND · Location: Bengaluru, Karnataka, India
+• Create 3d cad models and engineering drawings for uav systems
+• Perform structural analysis and support prototyping efforts
+• Collaborate with avionics and propulsion teams on integration</description>
+  </item>
   <item>
     <title>Solution Integrator — Ericsson</title>
     <link>https://interndoor.com/jobs/ericsson-solution-integrator-4473076481</link>
@@ -491,27 +511,6 @@
 • Design and deploy AI solutions for generative AI, RAG, and agentic systems
 • Work with AWS, Azure, or GCP using MLOps and CI/CD practices
 • Collaborate with stakeholders on technical direction and architecture</description>
-  </item>
-  <item>
-    <title>Software Engineer — NetApp</title>
-    <link>https://interndoor.com/jobs/netapp-software-engineer-4470891102</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/netapp-software-engineer-4470891102</guid>
-    <pubDate>Mon, 28 Sep 2026 14:39:46 GMT</pubDate>
-    <description>Company: NetApp · Location: Bengaluru, Karnataka, India
-• Develop and operate cloud-native services using containers, microservices, and CI/CD
-• Own features from design to production support across storage, networking, and security
-• Collaborate with product teams to translate business needs into technical solutions</description>
-  </item>
-  <item>
-    <title>AI Infra Agent Dev — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-ai-infra-agent-dev-4471509070</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-ai-infra-agent-dev-4471509070</guid>
-    <pubDate>Mon, 28 Sep 2026 14:35:15 GMT</pubDate>
-    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
-• Design ai agents to automate incident handling and workflow orchestration
-• Integrate analytics platforms with servicenow using secure scalable interfaces
-• Optimize ai performance through data analysis and algorithm refinement
-• Collaborate with cross-functional teams to improve service quality and user experience</description>
   </item>
 </channel>
 </rss>
