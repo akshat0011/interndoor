@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 29 Sep 2026 12:46:49 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 13:58:10 GMT</lastBuildDate>
+  <item>
+    <title>Firmware Engineering Co-Op (January-June 2027) — Wabtec</title>
+    <link>https://interndoor.com/us/jobs/wabtec-firmware-engineering-co-op-january-june-2027-ats-smartrecruiters-wabtec-3743990015763486</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/wabtec-firmware-engineering-co-op-january-june-2027-ats-smartrecruiters-wabtec-3743990015763486</guid>
+    <pubDate>Tue, 29 Sep 2026 13:58:10 GMT</pubDate>
+    <description>Company: Wabtec · Location: Waltham, us
+• Write embedded C/C++ for Zynq Ultrascale+ MPSoC
+• Develop APIs and Linux firmware for hardware
+• Improve CI/CD and integrate development tools</description>
+  </item>
+  <item>
+    <title>Co-Op, Test Engineer - Transducer (January-June 2027) — Wabtec</title>
+    <link>https://interndoor.com/us/jobs/wabtec-co-op-test-engineer-transducer-january-june-2027-ats-smartrecruiters-wabtec-3743990015763266</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/wabtec-co-op-test-engineer-transducer-january-june-2027-ats-smartrecruiters-wabtec-3743990015763266</guid>
+    <pubDate>Tue, 29 Sep 2026 13:56:33 GMT</pubDate>
+    <description>Company: Wabtec · Location: State College, us
+• Test and develop systems for transducer manufacturing
+• Use Excel, Power BI, LabView, Python, and C#
+• Work with production teams on process improvements</description>
+  </item>
   <item>
     <title>2027 Future Talent Program - Standardizing Automation Scripting Practices Through AI-Enabled Knowledge Repository - Intern — Merck</title>
     <link>https://interndoor.com/us/jobs/merck-2027-future-talent-program-standardizing-automation-scripting-practice-4464428975</link>
@@ -491,26 +511,6 @@
 • Develop GPU/AI benchmarks and performance optimization methods
 • Collaborate with industry groups on emerging tech standards
 • Work with partners to test new hardware and system designs</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer Intern (E-Commerce Recommendation/Search Alliance) - 2027 Start (PhD) — TikTok</title>
-    <link>https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-recommendation-search-alli-4449980492</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-recommendation-search-alli-4449980492</guid>
-    <pubDate>Tue, 29 Sep 2026 09:44:08 GMT</pubDate>
-    <description>Company: TikTok · Location: Seattle, WA
-• Design and build machine learning algorithms for e-commerce recommendation systems
-• Collaborate with cross-functional teams to deploy AI solutions in production
-• Leverage LLMs and NLP for merchant and creator business optimization</description>
-  </item>
-  <item>
-    <title>Site Reliability Engineer Intern (Data Infra) - 2027 Summer — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-site-reliability-engineer-intern-data-infra-2027-summer-4455280083</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-site-reliability-engineer-intern-data-infra-2027-summer-4455280083</guid>
-    <pubDate>Tue, 29 Sep 2026 09:38:12 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Design and implement monitoring frameworks for service-oriented architecture
-• Develop cloud-managed data infrastructure using Kubernetes, Redis, and MySQL
-• Support incident response and conduct postmortems to improve system reliability</description>
   </item>
 </channel>
 </rss>
