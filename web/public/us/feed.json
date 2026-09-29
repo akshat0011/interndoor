@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-design-co-op-june-december-20270-4473053240",
+      "url": "https://interndoor.com/us/jobs/skyworks-solutions-inc-power-amplifier-design-co-op-june-december-20270-4473053240",
+      "title": "Power Amplifier Design Co-Op (June-December 20270 — Skyworks Solutions, Inc.",
+      "content_text": "Company: Skyworks Solutions, Inc. · Location: Irvine, CA · Duration: 6 months\n• Design and test RF circuits for wireless communication systems\n• Use ADS, HFSS, and Cadence for simulation and analysis\n• Work on silicon, GaAs, and GaN IC projects with senior engineers",
+      "date_published": "2026-09-29T00:32:38.412Z",
+      "authors": [
+        {
+          "name": "Skyworks Solutions, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-firmware-engineer-intern-4473043438",
+      "url": "https://interndoor.com/us/jobs/boston-scientific-r-and-d-firmware-engineer-intern-4473043438",
+      "title": "R&D Firmware Engineer Intern — Boston Scientific",
+      "content_text": "Company: Boston Scientific · Location: Arden Hills, MN · Duration: 12 weeks\n• Develop embedded firmware for implantable cardiac devices using C++, C#, and Python\n• Collaborate with cross-functional teams on software solutions for medical technologies\n• Work on Agile projects that support diagnostics, treatment, and patient care workflows",
+      "date_published": "2026-09-29T00:17:06.625Z",
+      "authors": [
+        {
+          "name": "Boston Scientific"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/lyft-applied-scientist-intern-summer-2027-4473038616",
+      "url": "https://interndoor.com/us/jobs/lyft-applied-scientist-intern-summer-2027-4473038616",
+      "title": "Applied Scientist Intern (Summer 2027) — Lyft",
+      "content_text": "Company: Lyft · Location: San Francisco County, CA · Duration: Summer 2028\n• Build LLM-based Rider Agents to simulate real rider behavior and preferences\n• Evaluate simulation fidelity against historical experiments and human data\n• Collaborate with science, engineering, and product teams on simulation applications",
+      "date_published": "2026-09-29T00:10:24.795Z",
+      "authors": [
+        {
+          "name": "Lyft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/x-energy-systems-engineering-internship-summer-2027-4473053023",
+      "url": "https://interndoor.com/us/jobs/x-energy-systems-engineering-internship-summer-2027-4473053023",
+      "title": "Systems Engineering Internship - Summer 2027 — X-energy",
+      "content_text": "Company: X-energy · Location: Rockville, MD · Duration: 10- weeks\n• Support systems engineering lifecycle from analysis to verification using MBSE tools\n• Collaborate with engineers and scientists on projects related to system design and integration\n• Maintain documentation and manage technical risks in a fully on-site 10-week program",
+      "date_published": "2026-09-29T00:09:55.194Z",
+      "authors": [
+        {
+          "name": "X-energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-machine-learning-software-intern-summer-2027-4473040284",
       "url": "https://interndoor.com/us/jobs/ge-vernova-ge-vernova-machine-learning-software-intern-summer-2027-4473040284",
       "title": "GE Vernova - Machine Learning Software Intern - Summer 2027 — GE Vernova",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-hardware-intern-summer-2027-4473006819",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-hardware-intern-summer-2027-4473006819",
-      "title": "Electrical Engineering Hardware Intern (Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Melbourne, FL · Duration: Summer 2027\n• Troubleshoot electrical devices on production line\n• Use MATLAB, C, C++, Excel, JavaScript\n• Design electrical systems for commercial and industrial use",
-      "date_published": "2026-09-28T21:32:25.487Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/leidos-data-center-design-intern-4471204923",
-      "url": "https://interndoor.com/us/jobs/leidos-data-center-design-intern-4471204923",
-      "title": "Data Center Design Intern — Leidos",
-      "content_text": "Company: Leidos · Location: United States\n• Support data center design projects with technical documentation and network infrastructure updates\n• Collaborate on digital engineering initiatives using MBSE tools like Cameo Systems Modeler\n• Contribute to SOP development and configuration management databases for naval operations",
-      "date_published": "2026-09-28T21:15:56.263Z",
-      "authors": [
-        {
-          "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-research-ats-greenhouse-waymo-8237997",
-      "url": "https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-machine-learning-research-ats-greenhouse-waymo-8237997",
-      "title": "2027 Summer Intern, PhD, Machine Learning Research — Waymo",
-      "content_text": "Company: Waymo · Location: Mountain View, CA, USA\n• Build generative models for autonomous driving planning using JAX\n• Collaborate with research and engineering teams on cutting-edge projects\n• Develop high-quality, tested code for predictive planning systems",
-      "date_published": "2026-09-28T21:05:37.000Z",
-      "authors": [
-        {
-          "name": "Waymo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cencora-ai-intern-4471214583",
-      "url": "https://interndoor.com/us/jobs/cencora-ai-intern-4471214583",
-      "title": "AI Intern — Cencora",
-      "content_text": "Company: Cencora · Location: Conshohocken, PA · Duration: Summer 2027\n• Support AI projects with research, documentation, and process improvements\n• Collaborate with cross-functional teams on integration and enablement initiatives\n• Develop communication and change management skills through real-world projects",
-      "date_published": "2026-09-28T21:01:25.993Z",
-      "authors": [
-        {
-          "name": "Cencora"
         }
       ]
     }
