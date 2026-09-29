@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-dlp-security-engineer-4446575501",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-dlp-security-engineer-4446575501",
+      "title": "DLP - Security Engineer — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Mumbai, Maharashtra, India · Duration: 1-3 years\n• Monitor dlp platforms, respond to alerts, refine policies for data protection\n• Work with proofpoint and mimecast, use regex for content matching and policy enforcement\n• Collaborate with stakeholders to design dlp strategies and technical controls",
+      "date_published": "2026-09-29T02:12:22.374Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-aws-terraform-devops-4471577875",
+      "url": "https://interndoor.com/jobs/infosys-aws-terraform-devops-4471577875",
+      "title": "AWS + Terraform DevOps — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Design cloud infrastructure on aws using terraform\n• Build ci/cd pipelines with jenkins or github actions\n• Manage ec2, vpc, s3, and security tools on aws\n• Collaborate with dev and ops teams on release management",
+      "date_published": "2026-09-29T01:43:50.985Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-quality-assurance-analyst-l2-4471582256",
+      "url": "https://interndoor.com/jobs/wipro-quality-assurance-analyst-l2-4471582256",
+      "title": "QUALITY ASSURANCE ANALYST L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Greater Kolkata Area · Duration: 1-3 years\n• Test software and systems for defects\n• Use quality management tools\n• Work on enterprise software projects",
+      "date_published": "2026-09-29T01:15:17.526Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mckinsey-and-company-ai-solutions-analyst-banking-market-intelligence-4473041220",
       "url": "https://interndoor.com/jobs/mckinsey-and-company-ai-solutions-analyst-banking-market-intelligence-4473041220",
       "title": "AI Solutions Analyst - Banking Market Intelligence — McKinsey & Company",
@@ -366,18 +402,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/marsh-it-quality-assurance-analyst-4472761542",
-      "url": "https://interndoor.com/jobs/marsh-it-quality-assurance-analyst-4472761542",
-      "title": "IT Quality Assurance Analyst — Marsh",
-      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Implement and oversee test automation strategy across squads\n• Leverage generative AI for testing optimization and reporting\n• Lead quality metrics and dashboard design for pod leadership",
-      "date_published": "2026-09-28T16:59:36.616Z",
-      "authors": [
-        {
-          "name": "Marsh"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/standard-chartered-india-mgr-development-4471522208",
       "url": "https://interndoor.com/jobs/standard-chartered-india-mgr-development-4471522208",
       "title": "Mgr, Development — Standard Chartered India",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Zimmer Biomet"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iff-data-scientist-4472736672",
-      "url": "https://interndoor.com/jobs/iff-data-scientist-4472736672",
-      "title": "Data Scientist — IFF",
-      "content_text": "Company: IFF · Location: Greater Hyderabad Area\n• Build predictive models to improve business planning and forecasting\n• Use python and sql to analyze large datasets and create dashboards\n• Collaborate with cross-functional teams on global supply chain initiatives",
-      "date_published": "2026-09-28T14:28:04.851Z",
-      "authors": [
-        {
-          "name": "IFF"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iff-data-scientist-4472751228",
-      "url": "https://interndoor.com/jobs/iff-data-scientist-4472751228",
-      "title": "Data Scientist — IFF",
-      "content_text": "Company: IFF · Location: Gurgaon, Haryana, India\n• Build predictive models to improve demand forecasting and business outcomes\n• Use Python, R, SQL, and visualization tools to analyze complex datasets\n• Collaborate with cross-functional teams on global planning and decision-making projects",
-      "date_published": "2026-09-28T14:27:58.716Z",
-      "authors": [
-        {
-          "name": "IFF"
         }
       ]
     }
