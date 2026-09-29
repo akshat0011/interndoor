@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-cto-robotics-research-engineer-perception-4471254899",
+      "url": "https://interndoor.com/jobs/wipro-cto-robotics-research-engineer-perception-4471254899",
+      "title": "CTO - Robotics Research Engineer - Perception — Wipro",
+      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India\n• Develop perception systems for robotics applications\n• Work with computer vision and sensor fusion technologies\n• Collaborate on autonomous navigation and decision-making algorithms",
+      "date_published": "2026-09-29T06:01:53.043Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/unmannd-mechanical-design-intern-4473087394",
+      "url": "https://interndoor.com/jobs/unmannd-mechanical-design-intern-4473087394",
+      "title": "Mechanical Design Intern — UNMANND",
+      "content_text": "Company: UNMANND · Location: Bengaluru, Karnataka, India\n• Create 3d cad models and engineering drawings for uav systems\n• Perform structural analysis and support prototyping efforts\n• Collaborate with avionics and propulsion teams on integration",
+      "date_published": "2026-09-29T05:35:26.609Z",
+      "authors": [
+        {
+          "name": "UNMANND"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ericsson-solution-integrator-4473076481",
       "url": "https://interndoor.com/jobs/ericsson-solution-integrator-4473076481",
       "title": "Solution Integrator — Ericsson",
@@ -575,30 +599,6 @@
       "title": "AI Engineer — Cognizant",
       "content_text": "Company: Cognizant · Location: Gurgaon, Haryana, India\n• Design and deploy AI solutions for generative AI, RAG, and agentic systems\n• Work with AWS, Azure, or GCP using MLOps and CI/CD practices\n• Collaborate with stakeholders on technical direction and architecture",
       "date_published": "2026-09-28T14:49:10.645Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-software-engineer-4470891102",
-      "url": "https://interndoor.com/jobs/netapp-software-engineer-4470891102",
-      "title": "Software Engineer — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Develop and operate cloud-native services using containers, microservices, and CI/CD\n• Own features from design to production support across storage, networking, and security\n• Collaborate with product teams to translate business needs into technical solutions",
-      "date_published": "2026-09-28T14:39:46.523Z",
-      "authors": [
-        {
-          "name": "NetApp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-ai-infra-agent-dev-4471509070",
-      "url": "https://interndoor.com/jobs/cognizant-ai-infra-agent-dev-4471509070",
-      "title": "AI Infra Agent Dev — Cognizant",
-      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Design ai agents to automate incident handling and workflow orchestration\n• Integrate analytics platforms with servicenow using secure scalable interfaces\n• Optimize ai performance through data analysis and algorithm refinement\n• Collaborate with cross-functional teams to improve service quality and user experience",
-      "date_published": "2026-09-28T14:35:15.793Z",
       "authors": [
         {
           "name": "Cognizant"
