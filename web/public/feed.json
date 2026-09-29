@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/larsen-and-toubro-it-support-engineer-4455925377",
+      "url": "https://interndoor.com/jobs/larsen-and-toubro-it-support-engineer-4455925377",
+      "title": "IT Support Engineer — Larsen & Toubro",
+      "content_text": "Company: Larsen & Toubro · Location: Mumbai Metropolitan Region\n• Troubleshoot hardware, software, network, and system issues for employees\n• Manage setup, configuration, and inventory of IT equipment\n• Support onboarding/offboarding with device setup and account management",
+      "date_published": "2026-09-29T12:48:19.385Z",
+      "authors": [
+        {
+          "name": "Larsen & Toubro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fedex-full-stack-developer-i-4400266101",
+      "url": "https://interndoor.com/jobs/fedex-full-stack-developer-i-4400266101",
+      "title": "Full Stack Developer I — FedEx",
+      "content_text": "Company: FedEx · Location: Greater Hyderabad Area\n• Write scalable, secure code for microservices and high-performing applications\n• Mentor junior developers and lead code reviews across cross-functional teams\n• Collaborate with architects to design solutions and guide program-level decomposition",
+      "date_published": "2026-09-29T12:32:43.925Z",
+      "authors": [
+        {
+          "name": "FedEx"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/stonex-group-inc-application-engineering-services-support-4466218296",
       "url": "https://interndoor.com/jobs/stonex-group-inc-application-engineering-services-support-4466218296",
       "title": "Application Engineering Services - Support — StoneX Group Inc.",
@@ -38,6 +62,18 @@
       "authors": [
         {
           "name": "project44"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kla-devops-engineer-4462208774",
+      "url": "https://interndoor.com/jobs/kla-devops-engineer-4462208774",
+      "title": "DevOps Engineer — KLA",
+      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Design and maintain CI/CD pipelines using Jenkins, GitHub Actions, or Azure DevOps\n• Leverage AI agents for intelligent code review and deployment validation\n• Architect cloud infrastructure with AWS, Azure, or GCP using Terraform or Ansible",
+      "date_published": "2026-09-29T12:16:38.967Z",
+      "authors": [
+        {
+          "name": "KLA"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "UNMANND"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ericsson-solution-integrator-4473076481",
-      "url": "https://interndoor.com/jobs/ericsson-solution-integrator-4473076481",
-      "title": "Solution Integrator — Ericsson",
-      "content_text": "Company: Ericsson · Location: Bengaluru, Karnataka, India\n• Analyze, develop, and execute test cases for network systems\n• Manage integration and migration tasks with process frameworks\n• Ensure OS, HW, SW, and configuration data is accurate and up-to-date",
-      "date_published": "2026-09-29T04:48:23.144Z",
-      "authors": [
-        {
-          "name": "Ericsson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862",
-      "url": "https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862",
-      "title": "Product Engineer - Messaging — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and maintain messaging infrastructure using Exchange Online, SMTP gateways, and cloud security tools\n• Automate tasks with PowerShell/Python and implement secure configurations for infrastructure\n• Collaborate with product managers and architects to align IT solutions with business needs",
-      "date_published": "2026-09-29T03:25:52.120Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318",
-      "url": "https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318",
-      "title": "CCDEG Data Scientist — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and deploy machine learning models for customer-facing digital solutions\n• Work with Python, TensorFlow, PyTorch, and cloud platforms like AWS\n• Collaborate with cross-functional teams on scalable data science projects",
-      "date_published": "2026-09-29T03:25:22.637Z",
-      "authors": [
-        {
-          "name": "Barclays"
         }
       ]
     }
