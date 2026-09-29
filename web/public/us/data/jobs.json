@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790660506016,
+ "generatedAt": 1790662367956,
  "region": "US",
  "regionName": "United States",
- "count": 4370,
- "techCount": 4370,
+ "count": 4371,
+ "techCount": 4371,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1324,6 +1324,107 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4473083344",
+   "title": "Bioinformatics Intern - PhD in progress",
+   "company": "Mayo Clinic",
+   "matchedWatchlist": "Mayo Clinic",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/mayo-clinic.jpg",
+   "location": "Rochester, MN",
+   "workplaceType": null,
+   "stipend": "$30 / hour",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python"
+   ],
+   "summary": "This role involves analyzing sequenced genome data to detect somatic mutations in blood samples. The intern will work with python and unix tools for next-generation sequencing analysis. It is a part-time role with flexible hours and potential for extension.",
+   "bullets": [
+    "Analyze sequenced genome data to detect somatic mutations in blood samples",
+    "Work with python and unix tools for next-generation sequencing analysis",
+    "Part-time role with flexible hours and potential for extension"
+   ],
+   "roleLabel": "Genome Analysis",
+   "degreeLevel": null,
+   "degreeText": "PhD",
+   "keySkills": [
+    "python",
+    "unix",
+    "next-generation sequencing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "57 minutes ago",
+   "postedAt": 1790657207203,
+   "firstSeenAt": 1790660627207,
+   "lastSeenAt": 1790660627207,
+   "url": "https://www.linkedin.com/jobs/view/4473083344/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473083344/",
+   "description": null,
+   "roleFingerprint": "f465c32d14",
+   "cardFacts": [
+    "$30 / hour",
+    "Rochester"
+   ],
+   "category": "misc",
+   "region": "US"
+  },
+  {
+   "id": "4473087170",
+   "title": "2027 Intern - Electrification Engineering",
+   "company": "John Deere",
+   "matchedWatchlist": "John Deere",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/john-deere.jpg",
+   "location": "Fargo, ND",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "12 weeks",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "matlab",
+    "labview",
+    "simulink",
+    "algorithms"
+   ],
+   "summary": "This internship involves working on electric motor and power electronics systems for vehicles. Ideal for students with experience in electric machines, power electronics, or control systems. The role offers hands-on design and testing of components used in global vehicle applications.",
+   "bullets": [
+    "Design, analyze, and test electric motors and power electronics for vehicle systems",
+    "Use Simulink, Matlab, and lab equipment for motor and control system development",
+    "Work on electric drive components for global vehicle applications"
+   ],
+   "roleLabel": "Electrification Engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "simulink",
+    "matlab",
+    "oscilloscope",
+    "multimeter"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "57 minutes ago",
+   "postedAt": 1790657181111,
+   "firstSeenAt": 1790660601127,
+   "lastSeenAt": 1790660601127,
+   "url": "https://www.linkedin.com/jobs/view/4473087170/",
+   "applyUrl": "https://careers.deere.com/careers/job/137482769306?utm_source=LinkedIn&domain=johndeere.com",
+   "description": null,
+   "roleFingerprint": "a2cbfdb2a0",
+   "cardFacts": [
+    "Fargo",
+    "On-site",
+    "12 weeks"
+   ],
+   "category": "software",
+   "region": "US"
+  },
   {
    "id": "4473068633",
    "title": "Software Engineering Co-op (Summer/Fall 2027)",
@@ -3029,7 +3130,7 @@
    "postedText": "21 minutes ago",
    "postedAt": 1790634839213,
    "firstSeenAt": 1790636099223,
-   "lastSeenAt": 1790643062622,
+   "lastSeenAt": 1790660582717,
    "url": "https://www.linkedin.com/jobs/view/4471210881/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4471210881/",
    "description": null,
@@ -3274,7 +3375,7 @@
    "postedText": "3 minutes ago",
    "postedAt": 1790632330960,
    "firstSeenAt": 1790632510964,
-   "lastSeenAt": 1790655519619,
+   "lastSeenAt": 1790660610484,
    "url": "https://www.linkedin.com/jobs/view/4471563273/",
    "applyUrl": "https://gdmissionsystems.com/careers/systems-engineering-intern-tcs-manassas-manassas-va-us-2026-75141-opportunity?mode=apply&iis=LinkedIn",
    "description": null,
@@ -12351,54 +12452,6 @@
     "Hybrid"
    ],
    "category": "software",
-   "region": "US"
-  },
-  {
-   "id": "4472476938",
-   "title": "Bioinformatics Intern - PhD in progress",
-   "company": "Mayo Clinic",
-   "matchedWatchlist": "Mayo Clinic",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/mayo-clinic.jpg",
-   "location": "Rochester, MN",
-   "workplaceType": null,
-   "stipend": "$30 / hour",
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "python"
-   ],
-   "summary": "This internship involves analyzing sequenced genome data to detect somatic mutations in blood samples. You'll use python and unix tools for next-generation sequencing analysis. The role is part-time with flexible hours over three months.",
-   "bullets": [
-    "Analyze sequenced genome data to detect somatic mutations in blood samples",
-    "Use python and unix tools for next-generation sequencing analysis",
-    "Work part-time with flexible hours over three months"
-   ],
-   "roleLabel": "Genome Analysis",
-   "degreeLevel": null,
-   "degreeText": "PhD",
-   "keySkills": [
-    "python",
-    "unix",
-    "next-generation sequencing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1790570818850,
-   "firstSeenAt": 1790571238855,
-   "lastSeenAt": 1790571238855,
-   "url": "https://www.linkedin.com/jobs/view/4472476938/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4472476938/",
-   "description": null,
-   "roleFingerprint": "f465c32d14",
-   "cardFacts": [
-    "$30 / hour",
-    "Rochester"
-   ],
-   "category": "misc",
    "region": "US"
   },
   {
