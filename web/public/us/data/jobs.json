@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790671719606,
+ "generatedAt": 1790673399481,
  "region": "US",
  "regionName": "United States",
- "count": 4376,
- "techCount": 4376,
+ "count": 4381,
+ "techCount": 4381,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -658,6 +658,7 @@
   "Durham, NC",
   "East Hanover, NJ",
   "East Hartford, CT",
+  "East Peoria, IL",
   "East Windsor, NJ",
   "Eau Claire, WI",
   "Eden Prairie, MN",
@@ -1325,6 +1326,323 @@
  ],
  "jobs": [
   {
+   "id": "4462951062",
+   "title": "Intern - DRAM Test Structure Design and Layout Engineering",
+   "company": "Micron Technology",
+   "matchedWatchlist": "Micron Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/micron-technology.png",
+   "location": "Boise, ID",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "51 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "tcl",
+    "perl"
+   ],
+   "summary": "This internship involves designing and laying out semiconductor test structures for DRAM technologies. You'll work with EDA tools to verify and simulate designs, analyze data, and collaborate with teams on semiconductor development. It's ideal for students with a background in electrical or semiconductor engineering looking for hands-on experience in advanced memory development.",
+   "bullets": [
+    "Design and layout semiconductor test structures for DRAM technologies",
+    "Use EDA tools for verification, simulation, and data analysis",
+    "Collaborate with cross-functional teams on semiconductor development"
+   ],
+   "roleLabel": "DRAM Test Design",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Electrical Engineering/Computer Engineering",
+   "keySkills": [
+    "Python",
+    "Tcl",
+    "EDA tools",
+    "DRC/LVS",
+    "Semiconductor layout"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 minute ago",
+   "postedAt": 1790672901301,
+   "firstSeenAt": 1790672961311,
+   "lastSeenAt": 1790672961311,
+   "url": "https://www.linkedin.com/jobs/view/4462951062/",
+   "applyUrl": "https://careers.micron.com/careers/job/44332522?utm_source=linkedin&domain=micron.com&src=LinkedInJobs",
+   "description": null,
+   "roleFingerprint": "bbf24c722b",
+   "cardFacts": [
+    "Boise",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4471289685",
+   "title": "Data Scientist Intern",
+   "company": "SAIC",
+   "matchedWatchlist": "SAIC",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/saic.jpg",
+   "location": "Middletown, RI",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "machine learning"
+   ],
+   "summary": "This data science role involves working with complex datasets and applying analytical techniques to support mission-critical projects. Ideal for students with a background in data analysis and programming, this position offers hands-on experience with real-world data challenges.",
+   "bullets": [
+    "Analyze data from collection to visualization using tools like Python and SQL",
+    "Collaborate with cross-functional teams on mission-driven projects",
+    "Apply machine learning and statistical methods to solve real-world problems"
+   ],
+   "roleLabel": "Data Analysis",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "machine learning"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790671517112,
+   "firstSeenAt": 1790671937115,
+   "lastSeenAt": 1790671937115,
+   "url": "https://www.linkedin.com/jobs/view/4471289685/",
+   "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3284&rx_jobId=2617325&rx_url=https%3A%2F%2Fjobs.saic.com%2Fjobs%2F18287239-data-scientist-intern%3Fbid%3D370%26rx_campaign%3DLinkedin1%26rx_ch%3Djobpost%26rx_group%3D131438%26rx_id%3Da72f79bd-bb8b-11f1-be90-63ecfa9d8d17%26rx_job%3D2617325%26rx_medium%3Dpost%26rx_paid%3D1%26rx_r%3Dnone%26rx_source%3Dlinkedin%26rx_vp%3Djobslots%26tm_company%3D2520%26tm_event%3Dview%26tm_job%3D2617325",
+   "description": null,
+   "roleFingerprint": "9a934cf2a7",
+   "cardFacts": [
+    "Middletown",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4456530060",
+   "title": "IT Security Internship",
+   "company": "Procter & Gamble",
+   "matchedWatchlist": "Procter & Gamble",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/procter-and-gamble.jpg",
+   "location": "Cincinnati, OH",
+   "workplaceType": "On-site",
+   "stipend": "$29 – $50",
+   "duration": "12 weeks",
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "ci/cd"
+   ],
+   "summary": "As a security intern, you'll help protect P&G's systems from cyber threats by designing security solutions, analyzing vulnerabilities, and working with teams to improve defenses. Ideal for students with a background in computer science or cybersecurity looking to gain hands-on experience in a real-world environment.",
+   "bullets": [
+    "Design, implement, and monitor security solutions for enterprise systems",
+    "Collaborate with cross-functional teams to improve threat response and security controls",
+    "Investigate cyber incidents and recommend fixes for vulnerabilities"
+   ],
+   "roleLabel": "Security Intern",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "cybersecurity standards",
+    "security tools",
+    "incident response"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "9 minutes ago",
+   "postedAt": 1790671341284,
+   "firstSeenAt": 1790671881290,
+   "lastSeenAt": 1790671881290,
+   "url": "https://www.linkedin.com/jobs/view/4456530060/",
+   "applyUrl": "https://www.pgcareers.com/global/en/job/R000157502/IT-Security-Internship?source=RS_LINKEDIN",
+   "description": null,
+   "roleFingerprint": "12e55b21c2",
+   "cardFacts": [
+    "$29 – $50",
+    "Cincinnati",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4471293214",
+   "title": "Field Application Engineering Intern (Summer 2027)",
+   "company": "GlobalFoundries",
+   "matchedWatchlist": "GlobalFoundries",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/globalfoundries.jpg",
+   "location": "Austin, TX",
+   "workplaceType": "On-site",
+   "stipend": "$20 – $40",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "linux"
+   ],
+   "summary": "This role involves supporting customers with technical evaluations and tapeout processes, using EDA tools and Linux to create documentation. Ideal for students with a background in electrical engineering or related fields seeking hands-on experience in semiconductor technology.",
+   "bullets": [
+    "Support customers with technical evaluations and tapeout execution",
+    "Use EDA tools and Linux to create technical documentation",
+    "Collaborate with internal teams to match customer needs with GF tech"
+   ],
+   "roleLabel": "Field Application Engineering",
+   "degreeLevel": "UG",
+   "degreeText": "Electrical Engineering",
+   "keySkills": [
+    "eda tools",
+    "linux",
+    "microsoft office suite"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "13 minutes ago",
+   "postedAt": 1790671091345,
+   "firstSeenAt": 1790671871356,
+   "lastSeenAt": 1790671871356,
+   "url": "https://www.linkedin.com/jobs/view/4471293214/",
+   "applyUrl": "https://careers.gf.com/careers/job/563980770505891?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "18b5a4af69",
+   "cardFacts": [
+    "$20 – $40",
+    "Austin",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4471280806",
+   "title": "Software Developer - Spring Co-Op 2027 - Cambridge",
+   "company": "IBM",
+   "matchedWatchlist": "IBM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/ibm.jpg",
+   "location": "Cambridge, MA",
+   "workplaceType": "Hybrid",
+   "stipend": "$83,160 / year",
+   "pay": {
+    "currency": "USD",
+    "min": 83160,
+    "max": 83160,
+    "unitText": "YEAR"
+   },
+   "duration": "16 weeks",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "javascript",
+    "typescript",
+    "c++",
+    "rust",
+    "swift",
+    "kotlin",
+    "sql",
+    "react",
+    "node.js",
+    "aws",
+    "azure",
+    "gcp"
+   ],
+   "summary": "This role involves developing software for AI agents and cloud-native systems, working with tools like Python, Java, and Kubernetes. Ideal for students passionate about AI, cloud computing, and software engineering with a strong foundation in programming and computer science.",
+   "bullets": [
+    "Develop and debug software across front-end, back-end, and full-stack environments",
+    "Work with AI agents, large language models, and cloud-native systems using Python, Java, and more",
+    "Build tools for evaluating, optimizing, and debugging AI applications with Git and CI/CD"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "java",
+    "docker",
+    "kubernetes",
+    "git"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "17 minutes ago",
+   "postedAt": 1790670898085,
+   "firstSeenAt": 1790671918089,
+   "lastSeenAt": 1790671918089,
+   "url": "https://www.linkedin.com/jobs/view/4471280806/",
+   "applyUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=134974&src=SN_LinkedIn",
+   "description": null,
+   "roleFingerprint": "f89bc2a3a5",
+   "cardFacts": [
+    "$83,160 / year",
+    "Cambridge",
+    "Hybrid"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4473209541",
+   "title": "Secure Technology Apprentice (Cybersecurity Apprenticeship)",
+   "company": "Caterpillar Inc.",
+   "matchedWatchlist": "Caterpillar",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/caterpillar-inc.jpg",
+   "location": "East Peoria, IL",
+   "workplaceType": "On-site",
+   "stipend": "$29 – $43",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    ".net"
+   ],
+   "summary": "Secure Technology Apprentices at Caterpillar work on real-world cybersecurity projects, including developing customer portals, optimizing cloud systems, and creating compliance tools. Ideal for students with a passion for cybersecurity and hands-on experience.",
+   "bullets": [
+    "Contribute to cybersecurity customer portal development",
+    "Collaborate on vulnerability scan remediation with developers",
+    "Optimize cloud infrastructure and create compliance guardrails"
+   ],
+   "roleLabel": "Cybersecurity Apprentice",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "cloud infrastructure",
+    "cyber threat intelligence"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "18 minutes ago",
+   "postedAt": 1790670825745,
+   "firstSeenAt": 1790671905753,
+   "lastSeenAt": 1790671905753,
+   "url": "https://www.linkedin.com/jobs/view/4473209541/",
+   "applyUrl": "https://careers.caterpillar.com/en/jobs/r0000396195/secure-technology-apprentice-cybersecurity-apprenticeship/?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "ed906354bd",
+   "cardFacts": [
+    "$29 – $43",
+    "East Peoria",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
    "id": "4471272187",
    "title": "Summer Internship 2027 - Data Analytics - Operational Excellence",
    "company": "Airbus Aircraft",
@@ -1364,7 +1682,7 @@
    "postedText": "23 minutes ago",
    "postedAt": 1790665232496,
    "firstSeenAt": 1790666612500,
-   "lastSeenAt": 1790668726843,
+   "lastSeenAt": 1790671895331,
    "url": "https://www.linkedin.com/jobs/view/4471272187/",
    "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3702&rx_jobId=JR10442492&rx_url=https%3A%2F%2Fag.wd3.myworkdayjobs.com%2Fen-US%2FAirbus%2Fjob%2FMobile-Area-AL%2FSummer-Internship-2027---Data-Analytics---Operational-Excellence_JR10442492%3Frx_campaign%3DLinkedin1%26rx_ch%3Dconnector%26rx_group%3D464134%26rx_id%3D8b19d364-bb6a-11f1-b055-c7ee5abe6322%26rx_job%3DJR10442492%26rx_medium%3Dpost%26rx_r%3Dnone%26rx_source%3DLinkedin%26rx_vp%3Dslots%26source%3DRecruitics_Linkedin",
    "description": null,
@@ -15366,52 +15684,6 @@
     "On-site"
    ],
    "category": "hardware",
-   "region": "US"
-  },
-  {
-   "id": "4472297173",
-   "title": "Data Scientist Intern",
-   "company": "SAIC",
-   "matchedWatchlist": "SAIC",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/saic.jpg",
-   "location": "Middletown, RI",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "machine learning"
-   ],
-   "summary": "This data science role involves analyzing data to support mission needs. You'll work with cross-functional teams to process and interpret complex datasets using tools like python and sql. Ideal for students with a background in data analysis and a passion for solving real-world problems.",
-   "bullets": [
-    "Analyze data to find insights and support mission needs",
-    "Use python, sql, and visualization tools for data processing",
-    "Work with cross-functional teams on complex data projects"
-   ],
-   "roleLabel": "Data Analysis",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "machine learning"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 minute ago",
-   "postedAt": 1790433870005,
-   "firstSeenAt": 1790433930009,
-   "lastSeenAt": 1790437406856,
-   "url": "https://www.linkedin.com/jobs/view/4472297173/",
-   "applyUrl": "https://jsv3.recruitics.com/redirect?rx_cid=3284&rx_jobId=2617292&rx_url=https%3A%2F%2Fjobs.saic.com%2Fjobs%2F18282373-data-scientist-intern%3Fbid%3D370%26rx_campaign%3DLinkedin1%26rx_ch%3Djobpost%26rx_group%3D131438%26rx_id%3D25afa949-b941-11f1-ae95-b503c20d666a%26rx_job%3D2617292%26rx_medium%3Dpost%26rx_paid%3D1%26rx_r%3Dnone%26rx_source%3Dlinkedin%26rx_vp%3Djobslots%26tm_company%3D2520%26tm_event%3Dview%26tm_job%3D2617292",
-   "description": null,
-   "roleFingerprint": "f9ff931668",
-   "cardFacts": [
-    "Middletown",
-    "On-site"
-   ],
-   "category": "software",
    "region": "US"
   },
   {
@@ -96127,7 +96399,7 @@
    "postedText": "17 minutes ago",
    "postedAt": 1789495077339,
    "firstSeenAt": 1789496097343,
-   "lastSeenAt": 1789496097343,
+   "lastSeenAt": 1790671971447,
    "url": "https://www.linkedin.com/jobs/view/4456530061/",
    "applyUrl": "https://www.pgcareers.com/global/en/job/R000157499/Data--AI-Engineering-Internship?source=RS_LINKEDIN",
    "description": null,
@@ -99001,7 +99273,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1789484560912,
    "firstSeenAt": 1789485340917,
-   "lastSeenAt": 1790396201366,
+   "lastSeenAt": 1790671975005,
    "url": "https://www.linkedin.com/jobs/view/4456527163/",
    "applyUrl": "https://www.pgcareers.com/global/en/job/R000157808/Quality-Assurance-Internship?source=RS_LINKEDIN",
    "description": null,
@@ -160641,7 +160913,7 @@
    "postedText": "57 minutes ago",
    "postedAt": 1788772092790,
    "firstSeenAt": 1788775512794,
-   "lastSeenAt": 1788775512794,
+   "lastSeenAt": 1790672806066,
    "url": "https://www.linkedin.com/jobs/view/4453974886/",
    "applyUrl": "https://careers.micron.com/careers/job/43785486?utm_source=linkedin&domain=micron.com&src=LinkedInJobs",
    "description": null,
