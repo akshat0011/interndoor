@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-ai-native-development-platform-engineer-intern-ms-summer-2027-4471755147",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-ai-native-development-platform-engineer-intern-ms-summer-2027-4471755147",
+      "title": "AI-Native Development Platform Engineer Intern, MS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Build and deploy AI tools for software development lifecycle on AWS\n• Work with Python, GitHub Actions, Jenkins, and Kubernetes\n• Collaborate with engineers to automate workflows across engineering systems",
+      "date_published": "2026-09-29T15:36:39.973Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471739687",
+      "url": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471739687",
+      "title": "Data Engineer Intern, Product Analytics (Summer 2027) — Meta",
+      "content_text": "Company: Meta · Location: New York, NY · Duration: Summer 2027\n• Design and deploy data models for Meta's products\n• Collaborate with engineers and data scientists on data solutions\n• Own data quality for specific product areas",
+      "date_published": "2026-09-29T15:32:57.500Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/ibm-summer-research-intern-2027-integrated-circuit-design-for-quantum-comp-4471734704",
       "url": "https://interndoor.com/us/jobs/ibm-summer-research-intern-2027-integrated-circuit-design-for-quantum-comp-4471734704",
       "title": "Summer Research Intern 2027 - Integrated Circuit Design for Quantum Computing — IBM",
@@ -74,6 +98,54 @@
       "authors": [
         {
           "name": "Wabtec"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-drug-metabolism-and-pharmacokinetics-co-op-4464438900",
+      "url": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-drug-metabolism-and-pharmacokinetics-co-op-4464438900",
+      "title": "2027 Future Talent Program – Drug Metabolism and Pharmacokinetics – Co-op — Merck",
+      "content_text": "Company: Merck · Location: South San Francisco, CA · Duration: 6 months\n• Analyze LC-HRMS data to identify drug conjugate catabolites\n• Develop automated tools for data processing and reporting\n• Collaborate on oncology drug discovery projects with scientists",
+      "date_published": "2026-09-29T13:49:10.369Z",
+      "authors": [
+        {
+          "name": "Merck"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-drug-device-combination-products-intern-4464438893",
+      "url": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-drug-device-combination-products-intern-4464438893",
+      "title": "2027 Future Talent Program - Drug/Device Combination Products - Intern — Merck",
+      "content_text": "Company: Merck · Location: Rahway, NJ · Duration: 12 weeks\n• Develop and test inhaler devices for drug delivery, including DPI and MDI systems\n• Use 3D CAD and data analysis tools like SolidWorks, MATLAB, and Python\n• Collaborate with cross-functional teams on drug/device projects",
+      "date_published": "2026-09-29T13:48:45.482Z",
+      "authors": [
+        {
+          "name": "Merck"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-translational-sciences-and-outsourcing-inte-4464416962",
+      "url": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-translational-sciences-and-outsourcing-inte-4464416962",
+      "title": "2027 Future Talent Program – Translational Sciences and Outsourcing – Intern — Merck",
+      "content_text": "Company: Merck · Location: South San Francisco, CA · Duration: 12 weeks\n• Benchmark AI/ML models for pharmacokinetic curve prediction using internal datasets\n• Collaborate with scientists to interpret results and draft a publishable study\n• Design evaluation strategies and analyze compound novelty impact on model performance",
+      "date_published": "2026-09-29T13:47:37.718Z",
+      "authors": [
+        {
+          "name": "Merck"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-discovery-bio-analytics-intern-4464438897",
+      "url": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-discovery-bio-analytics-intern-4464438897",
+      "title": "2027 Future Talent Program - Discovery Bio-Analytics - Intern — Merck",
+      "content_text": "Company: Merck · Location: West Point, PA · Duration: 12 weeks\n• Build predictive models to streamline analytical method setup\n• Use Python and data analysis tools for compound data evaluation\n• Collaborate with scientists on model validation and workflow improvement",
+      "date_published": "2026-09-29T13:47:26.679Z",
+      "authors": [
+        {
+          "name": "Merck"
         }
       ]
     },
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-ai-perception-intern-pico-2027-start-phd-4448129834",
-      "url": "https://interndoor.com/us/jobs/bytedance-ai-perception-intern-pico-2027-start-phd-4448129834",
-      "title": "AI Perception Intern (PICO) - 2027 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build low-power camera perception systems for wearable devices\n• Work with Python, PyTorch, and edge deployment tools\n• Contribute to model optimization and test platforms",
-      "date_published": "2026-09-29T09:57:17.145Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ads-measurement-signal-and-privacy-2027-summe-4447922031",
-      "url": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ads-measurement-signal-and-privacy-2027-summe-4447922031",
-      "title": "Software Engineer Intern (Ads Measurement Signal and Privacy) - 2027 Summer — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Design and build scalable data systems for ad measurement and compliance\n• Collaborate with product, data science, and compliance teams on privacy solutions\n• Implement cutting-edge technologies for signal integration and data quality",
-      "date_published": "2026-09-29T09:55:00.923Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-foundation-platform-2027-summer-4449969504",
-      "url": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-foundation-platform-2027-summer-4449969504",
-      "title": "Software Engineer Intern (Foundation Platform) - 2027 Summer — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Build new features impacting hundreds of millions of users globally\n• Work on large-scale, complex technical challenges\n• Collaborate on product and engineering decisions with experienced engineers",
-      "date_published": "2026-09-29T09:54:49.963Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-product-designer-project-intern-tiktok-design-ux-2026-start-bs-ms-4277122877",
-      "url": "https://interndoor.com/us/jobs/tiktok-product-designer-project-intern-tiktok-design-ux-2026-start-bs-ms-4277122877",
-      "title": "Product Designer Project Intern (TikTok-Design-UX) - 2026 Start (BS/MS) — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA · Duration: 5 months\n• Design user experiences for TikTok's global short-form video products\n• Collaborate with Product Managers, Engineers, and Researchers on product features\n• Create interactive prototypes using Figma, Principle, or Adobe Creative Suite",
-      "date_published": "2026-09-29T09:54:24.534Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-research-scientist-intern-monetization-genai-2026-start-phd-4324620132",
-      "url": "https://interndoor.com/us/jobs/tiktok-research-scientist-intern-monetization-genai-2026-start-phd-4324620132",
-      "title": "Research Scientist Intern (Monetization GenAI) - 2026 Start (PhD) — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Develop and evaluate novel machine learning algorithms for generative models\n• Collaborate with applied teams to deploy models in ad production\n• Work on advancing large language model and multimodality architectures",
-      "date_published": "2026-09-29T09:54:21.527Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-data-engineering-project-intern-ads-targeting-2027-start-4449102139",
-      "url": "https://interndoor.com/us/jobs/tiktok-data-engineering-project-intern-ads-targeting-2027-start-4449102139",
-      "title": "Data Engineering Project Intern (Ads Targeting) - 2027 Start — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Build targeting data and platform capabilities for ads: gender, age, geo, device, language\n• Develop batch and streaming jobs with Hive/Spark/Flink/Kafka for data pipelines\n• Improve data quality with checks, monitoring, alerts, and remediation\n• Provide stable data services to ad delivery systems with mentorship",
-      "date_published": "2026-09-29T09:53:59.863Z",
-      "authors": [
-        {
-          "name": "TikTok"
         }
       ]
     }
