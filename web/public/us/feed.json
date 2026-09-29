@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/wabtec-firmware-engineering-co-op-january-june-2027-ats-smartrecruiters-wabtec-3743990015763486",
+      "url": "https://interndoor.com/us/jobs/wabtec-firmware-engineering-co-op-january-june-2027-ats-smartrecruiters-wabtec-3743990015763486",
+      "title": "Firmware Engineering Co-Op (January-June 2027) — Wabtec",
+      "content_text": "Company: Wabtec · Location: Waltham, us\n• Write embedded C/C++ for Zynq Ultrascale+ MPSoC\n• Develop APIs and Linux firmware for hardware\n• Improve CI/CD and integrate development tools",
+      "date_published": "2026-09-29T13:58:10.777Z",
+      "authors": [
+        {
+          "name": "Wabtec"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/wabtec-co-op-test-engineer-transducer-january-june-2027-ats-smartrecruiters-wabtec-3743990015763266",
+      "url": "https://interndoor.com/us/jobs/wabtec-co-op-test-engineer-transducer-january-june-2027-ats-smartrecruiters-wabtec-3743990015763266",
+      "title": "Co-Op, Test Engineer - Transducer (January-June 2027) — Wabtec",
+      "content_text": "Company: Wabtec · Location: State College, us\n• Test and develop systems for transducer manufacturing\n• Use Excel, Power BI, LabView, Python, and C#\n• Work with production teams on process improvements",
+      "date_published": "2026-09-29T13:56:33.306Z",
+      "authors": [
+        {
+          "name": "Wabtec"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-standardizing-automation-scripting-practice-4464428975",
       "url": "https://interndoor.com/us/jobs/merck-2027-future-talent-program-standardizing-automation-scripting-practice-4464428975",
       "title": "2027 Future Talent Program - Standardizing Automation Scripting Practices Through AI-Enabled Knowledge Repository - Intern — Merck",
@@ -575,30 +599,6 @@
       "title": "GPU/AI Application Platform Engineer Intern (Server Platform) - 2027 Start (PhD) — ByteDance",
       "content_text": "Company: ByteDance · Location: San Jose, CA\n• Develop GPU/AI benchmarks and performance optimization methods\n• Collaborate with industry groups on emerging tech standards\n• Work with partners to test new hardware and system designs",
       "date_published": "2026-09-29T09:44:21.264Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-recommendation-search-alli-4449980492",
-      "url": "https://interndoor.com/us/jobs/tiktok-machine-learning-engineer-intern-e-commerce-recommendation-search-alli-4449980492",
-      "title": "Machine Learning Engineer Intern (E-Commerce Recommendation/Search Alliance) - 2027 Start (PhD) — TikTok",
-      "content_text": "Company: TikTok · Location: Seattle, WA\n• Design and build machine learning algorithms for e-commerce recommendation systems\n• Collaborate with cross-functional teams to deploy AI solutions in production\n• Leverage LLMs and NLP for merchant and creator business optimization",
-      "date_published": "2026-09-29T09:44:08.750Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-site-reliability-engineer-intern-data-infra-2027-summer-4455280083",
-      "url": "https://interndoor.com/us/jobs/bytedance-site-reliability-engineer-intern-data-infra-2027-summer-4455280083",
-      "title": "Site Reliability Engineer Intern (Data Infra) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and implement monitoring frameworks for service-oriented architecture\n• Develop cloud-managed data infrastructure using Kubernetes, Redis, and MySQL\n• Support incident response and conduct postmortems to improve system reliability",
-      "date_published": "2026-09-29T09:38:12.040Z",
       "authors": [
         {
           "name": "ByteDance"
