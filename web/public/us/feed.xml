@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 29 Sep 2026 15:49:37 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 16:36:53 GMT</lastBuildDate>
+  <item>
+    <title>2027 Summer Intern, PhD, Planner Machine Learning — Waymo</title>
+    <link>https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-planner-machine-learning-ats-greenhouse-waymo-8234876</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/waymo-2027-summer-intern-phd-planner-machine-learning-ats-greenhouse-waymo-8234876</guid>
+    <pubDate>Tue, 29 Sep 2026 16:36:53 GMT</pubDate>
+    <description>Company: Waymo · Location: San Francisco, California
+• Design and implement deep learning models for Waymo’s Large Selection system using Python and Jax
+• Train large-scale neural networks on TPU infrastructure with focus on gradient analysis and model diagnostics
+• Evaluate models across real-world driving scenarios to align mathematical models with vehicle behavior</description>
+  </item>
   <item>
     <title>Digital IC Design Intern, MS - Summer 2027 — Marvell Technology</title>
     <link>https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4471752199</link>
@@ -499,16 +509,6 @@
 • Implement algorithms and models for foundation systems
 • Work on multimodal understanding and interaction research
 • Collaborate with team on model improvements and evaluations</description>
-  </item>
-  <item>
-    <title>Research Intern (RDMA/High Speed Network) - 2026 Start (PhD) — ByteDance</title>
-    <link>https://interndoor.com/us/jobs/bytedance-research-intern-rdma-high-speed-network-2026-start-phd-4435855074</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/bytedance-research-intern-rdma-high-speed-network-2026-start-phd-4435855074</guid>
-    <pubDate>Tue, 29 Sep 2026 10:02:49 GMT</pubDate>
-    <description>Company: ByteDance · Location: San Jose, CA
-• Design and optimize high-performance transport protocols for AI/LLM applications
-• Work on congestion control algorithms and network protocol stacks
-• Collaborate with industry experts on high-speed networking research</description>
   </item>
 </channel>
 </rss>
