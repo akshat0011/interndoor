@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-soar-automation-engineer-4471739413",
+      "url": "https://interndoor.com/jobs/ust-soar-automation-engineer-4471739413",
+      "title": "SOAR Automation Engineer — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Write and maintain security automation scripts in Python for incident response and threat detection\n• Manage SOAR platforms like Palo Alto Cortex XSOAR and Splunk Phantom for security workflows\n• Secure AI coding assistants and agentic systems with tool-permission boundaries and prompt injection defenses",
+      "date_published": "2026-09-29T14:29:41.863Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4471728628",
+      "url": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4471728628",
+      "title": "Customer Solutions Engineer Intern — Sapaad",
+      "content_text": "Company: Sapaad · Location: India\n• Support customers with technical issues via phone, email, and remote tools\n• Collaborate with product and engineering teams to resolve customer concerns\n• Create and maintain customer guides and internal documentation",
+      "date_published": "2026-09-29T14:23:23.093Z",
+      "authors": [
+        {
+          "name": "Sapaad"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/caterpillar-inc-autonomy-test-engineer-4473267647",
+      "url": "https://interndoor.com/jobs/caterpillar-inc-autonomy-test-engineer-4473267647",
+      "title": "Autonomy Test Engineer — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Design and test robotic software systems with senior engineers\n• Debug and maintain hardware and software for robotic tools\n• Create documentation for software architecture and safety protocols",
+      "date_published": "2026-09-29T14:21:33.193Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4471732780",
+      "url": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4471732780",
+      "title": "Information Technology Intern — Procter & Gamble",
+      "content_text": "Company: Procter & Gamble · Location: Mumbai Metropolitan Region\n• Write and test code for data analytics apps\n• Work with Azure cloud and DevOps tools\n• Collaborate with cross-functional teams on global projects",
+      "date_published": "2026-09-29T14:21:00.665Z",
+      "authors": [
+        {
+          "name": "Procter & Gamble"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-full-stack-associate-developer-4462986207",
+      "url": "https://interndoor.com/jobs/infosys-full-stack-associate-developer-4462986207",
+      "title": "Full Stack Associate developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build AI-powered apps with React, FastAPI, and PostgreSQL\n• Work on generative AI integrations with Azure and Gemini\n• Collaborate with stakeholders on secure, scalable solutions",
+      "date_published": "2026-09-29T14:20:07.953Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-cgn-tech-strategy-and-advisory-cloud-finops-analyst-4473275072",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-cgn-tech-strategy-and-advisory-cloud-finops-analyst-4473275072",
+      "title": "S&CGN - Tech Strategy & Advisory - Cloud Finops - Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Analyze cloud spend data to find cost savings and align with business goals\n• Work with CIOs and CFOs to design cloud financial strategies\n• Support sales by creating FinOps proposals and client pitches",
+      "date_published": "2026-09-29T14:08:12.253Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ups-software-quality-engineer-4248972536",
       "url": "https://interndoor.com/jobs/ups-software-quality-engineer-4248972536",
       "title": "Software Quality Engineer — UPS",
@@ -30,6 +102,30 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248974223",
+      "url": "https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248974223",
+      "title": "Intermediate Software Engineer- Full Stack-C#, Dotnet, MVC, Angular, Azure Cloud — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develops full-stack applications using C#, .NET, Angular and Azure\n• Collaborates with teams on system design and integration builds\n• Maintains and supports existing software applications",
+      "date_published": "2026-09-29T13:53:22.692Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-python-developer-4445422559",
+      "url": "https://interndoor.com/jobs/infosys-python-developer-4445422559",
+      "title": "Python Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Chennai, Tamil Nadu, India\n• Write scalable code using python and frameworks like django and flask\n• Design and code complex programs with test cases and scenarios\n• Collaborate on agile teams to deliver client-focused solutions",
+      "date_published": "2026-09-29T13:52:47.379Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4377696957",
       "url": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4377696957",
       "title": "Associate Software Quality Engineer — UPS",
@@ -50,6 +146,30 @@
       "authors": [
         {
           "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-site-reliability-engineer-sre-4471914148",
+      "url": "https://interndoor.com/jobs/infosys-site-reliability-engineer-sre-4471914148",
+      "title": "Site Reliability Engineer (SRE) — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Manage cloud infrastructure on aws, azure, or gcp\n• Automate deployment and monitoring with terraform and ansible\n• Handle incident response and system reliability improvements",
+      "date_published": "2026-09-29T13:43:29.923Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-api-platform-and-devops-engineer-4471596746",
+      "url": "https://interndoor.com/jobs/infosys-api-platform-and-devops-engineer-4471596746",
+      "title": "API Platform & DevOps Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Administer ibm datapower gateways for api security and traffic management\n• Automate infrastructure with terraform and ansible on aws cloud\n• Maintain ci/cd pipelines and ensure high availability of api services",
+      "date_published": "2026-09-29T13:43:20.237Z",
+      "authors": [
+        {
+          "name": "Infosys"
         }
       ]
     },
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "DP World"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iamops-growth-fanatics-devops-jr-site-reliability-engineer-4468903175",
-      "url": "https://interndoor.com/jobs/iamops-growth-fanatics-devops-jr-site-reliability-engineer-4468903175",
-      "title": "Jr. Site Reliability Engineer — IAMOPS | Growth Fanatics DevOps",
-      "content_text": "Company: IAMOPS | Growth Fanatics DevOps · Location: Surat, Gujarat, India · Duration: 0-1 years\n• Monitor and resolve production system issues during 24×7 shifts\n• Use AWS and cloud monitoring tools to track system performance\n• Collaborate with DevOps and security teams during incidents\n• Document resolutions and maintain communication during handovers",
-      "date_published": "2026-09-29T10:59:17.648Z",
-      "authors": [
-        {
-          "name": "IAMOPS | Growth Fanatics DevOps"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-windows-4462963271",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-windows-4462963271",
-      "title": "Engineer- Windows — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Analyse and optimise performance on Windows ARM platforms\n• Use tools like ETW, Vtune, and WinDbg for debugging\n• Collaborate with cross-functional teams on performance issues",
-      "date_published": "2026-09-29T10:44:51.905Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-ibm-websphere-liberty-middleware-engineer-4452578424",
-      "url": "https://interndoor.com/jobs/ust-ibm-websphere-liberty-middleware-engineer-4452578424",
-      "title": "IBM WebSphere Liberty Middleware Engineer — UST",
-      "content_text": "Company: UST · Location: Chennai, Tamil Nadu, India\n• Administer middleware for enterprise java apps on liberty servers\n• Configure ssl/tls and manage security settings\n• Support unix/linux platforms with java 8+ environments",
-      "date_published": "2026-09-29T10:29:26.841Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infineon-technologies-ygt-quality-4464337312",
-      "url": "https://interndoor.com/jobs/infineon-technologies-ygt-quality-4464337312",
-      "title": "YGT - Quality — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India\n• Review and analyze quality contracts\n• Update databases and train AI models\n• Support automation and digitalization tasks",
-      "date_published": "2026-09-29T10:26:47.169Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cloudsek-product-specialist-4471705644",
-      "url": "https://interndoor.com/jobs/cloudsek-product-specialist-4471705644",
-      "title": "Product Specialist — CloudSEK",
-      "content_text": "Company: CloudSEK · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Support customers with technical issues via email, chat, or phone\n• Monitor and document phishing sites, fake domains, and impersonation profiles\n• Triage and escalate security incidents using AI tools and protocols",
-      "date_published": "2026-09-29T10:25:35.735Z",
-      "authors": [
-        {
-          "name": "CloudSEK"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-cloud-engineer-4452263786",
-      "url": "https://interndoor.com/jobs/ust-cloud-engineer-4452263786",
-      "title": "Cloud Engineer — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and manage AWS infrastructure using Terraform and CloudFormation\n• Automate deployment with Jenkins, GitHub Actions, and Git workflows\n• Containerize apps with Docker and Kubernetes, preferably on Amazon EKS",
-      "date_published": "2026-09-29T10:23:34.571Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/copeland-engineer-embedded-software-testing-4473215888",
-      "url": "https://interndoor.com/jobs/copeland-engineer-embedded-software-testing-4473215888",
-      "title": "Engineer Embedded Software Testing — Copeland",
-      "content_text": "Company: Copeland · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years\n• Write test scenarios to verify product specs and debug issues\n• Use C/C++ and tools like Bugzilla for test automation\n• Work with global teams on HVAC systems and embedded testing",
-      "date_published": "2026-09-29T10:22:49.620Z",
-      "authors": [
-        {
-          "name": "Copeland"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-python-full-stack-4452588401",
-      "url": "https://interndoor.com/jobs/ust-python-full-stack-4452588401",
-      "title": "Python full stack — UST",
-      "content_text": "Company: UST · Location: Chennai, Tamil Nadu, India\n• Write and test code for software products from design to deployment\n• Use python (fastapi), react, and clickhouse database\n• Work in chennai with agile teams on high performance systems",
-      "date_published": "2026-09-29T10:18:17.087Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/greyorange-graduate-engineer-trainee-4464347344",
-      "url": "https://interndoor.com/jobs/greyorange-graduate-engineer-trainee-4464347344",
-      "title": "Graduate Engineer Trainee — GreyOrange",
-      "content_text": "Company: GreyOrange · Location: Gurugram, Haryana, India · Duration: 0–2 years\n• Validate firmware on robots, controllers, sensors, and VDA systems\n• Debug firmware issues using logs, diagnostic tools, and communication interfaces\n• Support FAT testing and ensure firmware is validated before customer deployment",
-      "date_published": "2026-09-29T10:13:12.115Z",
-      "authors": [
-        {
-          "name": "GreyOrange"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/brillio-tech-specialist-devops-r01571826-4473219572",
-      "url": "https://interndoor.com/jobs/brillio-tech-specialist-devops-r01571826-4473219572",
-      "title": "Tech Specialist, DevOps - R01571826 — Brillio",
-      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India\n• Deploy and manage cloud infrastructure using AWS and Azure\n• Automate workflows with Ansible and Terraform\n• Monitor systems with Splunk and Nagios",
-      "date_published": "2026-09-29T10:05:32.349Z",
-      "authors": [
-        {
-          "name": "Brillio"
         }
       ]
     }
