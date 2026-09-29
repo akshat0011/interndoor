@@ -6,6 +6,138 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infineon-technologies-ygt-quality-4464337312",
+      "url": "https://interndoor.com/jobs/infineon-technologies-ygt-quality-4464337312",
+      "title": "YGT - Quality — Infineon Technologies",
+      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India\n• Review and analyze quality contracts\n• Update databases and train AI models\n• Support automation and digitalization tasks",
+      "date_published": "2026-09-29T10:26:47.169Z",
+      "authors": [
+        {
+          "name": "Infineon Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cloudsek-product-specialist-4471705644",
+      "url": "https://interndoor.com/jobs/cloudsek-product-specialist-4471705644",
+      "title": "Product Specialist — CloudSEK",
+      "content_text": "Company: CloudSEK · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Support customers with technical issues via email, chat, or phone\n• Monitor and document phishing sites, fake domains, and impersonation profiles\n• Triage and escalate security incidents using AI tools and protocols",
+      "date_published": "2026-09-29T10:25:35.735Z",
+      "authors": [
+        {
+          "name": "CloudSEK"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-cloud-engineer-4452263786",
+      "url": "https://interndoor.com/jobs/ust-cloud-engineer-4452263786",
+      "title": "Cloud Engineer — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and manage AWS infrastructure using Terraform and CloudFormation\n• Automate deployment with Jenkins, GitHub Actions, and Git workflows\n• Containerize apps with Docker and Kubernetes, preferably on Amazon EKS",
+      "date_published": "2026-09-29T10:23:34.571Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/copeland-engineer-embedded-software-testing-4473215888",
+      "url": "https://interndoor.com/jobs/copeland-engineer-embedded-software-testing-4473215888",
+      "title": "Engineer Embedded Software Testing — Copeland",
+      "content_text": "Company: Copeland · Location: Pune Division, Maharashtra, India · Duration: 1 to 3 years\n• Write test scenarios to verify product specs and debug issues\n• Use C/C++ and tools like Bugzilla for test automation\n• Work with global teams on HVAC systems and embedded testing",
+      "date_published": "2026-09-29T10:22:49.620Z",
+      "authors": [
+        {
+          "name": "Copeland"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-python-full-stack-4452588401",
+      "url": "https://interndoor.com/jobs/ust-python-full-stack-4452588401",
+      "title": "Python full stack — UST",
+      "content_text": "Company: UST · Location: Chennai, Tamil Nadu, India\n• Write and test code for software products from design to deployment\n• Use python (fastapi), react, and clickhouse database\n• Work in chennai with agile teams on high performance systems",
+      "date_published": "2026-09-29T10:18:17.087Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/greyorange-graduate-engineer-trainee-4464347344",
+      "url": "https://interndoor.com/jobs/greyorange-graduate-engineer-trainee-4464347344",
+      "title": "Graduate Engineer Trainee — GreyOrange",
+      "content_text": "Company: GreyOrange · Location: Gurugram, Haryana, India · Duration: 0–2 years\n• Validate firmware on robots, controllers, sensors, and VDA systems\n• Debug firmware issues using logs, diagnostic tools, and communication interfaces\n• Support FAT testing and ensure firmware is validated before customer deployment",
+      "date_published": "2026-09-29T10:13:12.115Z",
+      "authors": [
+        {
+          "name": "GreyOrange"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-tech-specialist-devops-r01571826-4473219572",
+      "url": "https://interndoor.com/jobs/brillio-tech-specialist-devops-r01571826-4473219572",
+      "title": "Tech Specialist, DevOps - R01571826 — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India\n• Deploy and manage cloud infrastructure using AWS and Azure\n• Automate workflows with Ansible and Terraform\n• Monitor systems with Splunk and Nagios",
+      "date_published": "2026-09-29T10:05:32.349Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-tech-specialist-cloud-engineering-r01571828-4473224197",
+      "url": "https://interndoor.com/jobs/brillio-tech-specialist-cloud-engineering-r01571828-4473224197",
+      "title": "Tech Specialist, Cloud Engineering - R01571828 — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India\n• Deploy and manage cloud infrastructure using aws tools\n• Work with aws infrastructure and security tools\n• Collaborate on automation and provisioning projects",
+      "date_published": "2026-09-29T10:05:09.947Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-tech-specialist-cloud-engineering-r01571827-4473219569",
+      "url": "https://interndoor.com/jobs/brillio-tech-specialist-cloud-engineering-r01571827-4473219569",
+      "title": "Tech Specialist, Cloud Engineering - R01571827 — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India\n• Deploy and manage cloud infrastructure using azure services\n• Work with azure data and identity tools for integration\n• Support migration and administration of cloud platforms",
+      "date_published": "2026-09-29T10:04:30.083Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-java-go-python-automation-cloud-aws-or-gcp-or-azure--4473214748",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-java-go-python-automation-cloud-aws-or-gcp-or-azure--4473214748",
+      "title": "Software Engineer | Java/Go , Python Automation, Cloud (AWS or GCP or Azure), Kubernetes, Dockers | 7 to 10 Years | Bangalore — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 7 to 10 years\n• Develop and enhance ISE platform features on Cisco UCS and Linux\n• Debug and resolve customer issues on cloud and Kubernetes platforms\n• Collaborate with global agile teams on product development and maintenance",
+      "date_published": "2026-09-29T09:51:41.855Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-4473223436",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-4473223436",
+      "title": "Software Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Develop and maintain backend infrastructure for large-scale data workflows\n• Work with Go and Python, leveraging AI tools for code optimization\n• Collaborate on secure coding practices and review others' code for compliance",
+      "date_published": "2026-09-29T09:51:36.394Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ubs-quant-analyst-credit-portfolio-models-4463269052",
       "url": "https://interndoor.com/jobs/ubs-quant-analyst-credit-portfolio-models-4463269052",
       "title": "Quant Analyst - Credit Portfolio Models — UBS",
@@ -470,138 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/flex-associate-developer-it-4471524526",
-      "url": "https://interndoor.com/jobs/flex-associate-developer-it-4471524526",
-      "title": "Associate Developer - IT — Flex",
-      "content_text": "Company: Flex · Location: Chennai, Tamil Nadu, India · Duration: 5 to 3 years\n• Design and maintain snowflake data pipelines and stored procedures\n• Develop python etl frameworks for data extraction and transformation\n• Optimize data processing workflows for enterprise analytics",
-      "date_published": "2026-09-28T18:16:18.942Z",
-      "authors": [
-        {
-          "name": "Flex"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-data-engineer-i-sps-4464059027",
-      "url": "https://interndoor.com/jobs/amazon-data-engineer-i-sps-4464059027",
-      "title": "Data Engineer I, SPS — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build scalable data pipelines on AWS for Paragon's 500M+ cases\n• Design data models for global marketplace expansion\n• Collaborate with business teams on data solutions",
-      "date_published": "2026-09-28T18:15:09.534Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-analyst-franchise-services-4452203846",
-      "url": "https://interndoor.com/jobs/mastercard-analyst-franchise-services-4452203846",
-      "title": "Analyst, Franchise Services — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Analyze data and build dashboards to support business decisions\n• Use power bi, tableau, and sql to manage and query databases\n• Collaborate with teams to improve customer experience and operational processes",
-      "date_published": "2026-09-28T18:12:35.376Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-data-engineer-selling-partner-insights-and-analytics-sps-4464048098",
-      "url": "https://interndoor.com/jobs/amazon-data-engineer-selling-partner-insights-and-analytics-sps-4464048098",
-      "title": "Data Engineer, Selling Partner Insights and Analytics, SPS — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build scalable data pipelines on AWS for Paragon's 500M+ cases\n• Design data models for global marketplace expansion\n• Collaborate with business teams on data solutions",
-      "date_published": "2026-09-28T18:01:19.338Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-sysde-i-multimedia-silicon-and-systems-group-4472772790",
-      "url": "https://interndoor.com/jobs/amazon-sysde-i-multimedia-silicon-and-systems-group-4472772790",
-      "title": "SysDE I - Multimedia, Silicon and Systems Group — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Develop display kernel drivers using DRM/KMS framework for plane management and atomic modesetting\n• Work on V4L2 drivers for video processing and display pipeline integration\n• Enable HDR/SDR format conversion and color depth support across 8/10/12-bit pipelines",
-      "date_published": "2026-09-28T18:00:35.302Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
-      "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4472767912",
-      "title": "Data Analyst Project Intern (Training & Quality) - 2026 Start (BS/MS) — ByteDance",
-      "content_text": "Company: ByteDance · Location: Gurgaon, Haryana, India\n• Analyze data and create reports for operations teams\n• Use excel and statistical tools to support decision-making\n• Work on short-term projects with real-world impact",
-      "date_published": "2026-09-28T18:00:17.115Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/happiest-minds-technologies-data-scientist-machine-learning-4472775577",
-      "url": "https://interndoor.com/jobs/happiest-minds-technologies-data-scientist-machine-learning-4472775577",
-      "title": "DATA SCIENTIST - Machine Learning — Happiest Minds Technologies",
-      "content_text": "Company: Happiest Minds Technologies · Location: Bengaluru, Karnataka, India · Duration: 3-4 years\n• Analyze data and build predictive models using sql and python\n• Work with cross-functional teams to support data-driven decisions\n• Develop and validate machine learning algorithms for forecasting",
-      "date_published": "2026-09-28T17:45:13.992Z",
-      "authors": [
-        {
-          "name": "Happiest Minds Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472763730",
-      "url": "https://interndoor.com/jobs/ge-vernova-engineer-embedded-sw-development-4472763730",
-      "title": "Engineer - Embedded SW Development — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Greater Hyderabad Area\n• Design and develop embedded software for physical devices like motors and sensors\n• Work with real-time systems and hardware-specific requirements\n• Collaborate in a structured framework with defined operational tasks",
-      "date_published": "2026-09-28T17:36:21.252Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598",
-      "url": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4471517598",
-      "title": "Full Stack Developer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and maintain full-stack Java applications\n• Work with Angular, Spring/Hibernate, and REST APIs\n• Collaborate in Agile teams using Git and Maven",
-      "date_published": "2026-09-28T17:13:04.692Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/standard-chartered-india-mgr-development-4471522208",
-      "url": "https://interndoor.com/jobs/standard-chartered-india-mgr-development-4471522208",
-      "title": "Mgr, Development — Standard Chartered India",
-      "content_text": "Company: Standard Chartered India · Location: Chennai, Tamil Nadu, India · Duration: 20 weeks\n• Build blockchain protocols, smart contracts, and tokenization modules for financial products\n• Use Python, Golang, Solidity, and microservices for backend development\n• Deploy systems on AWS or Azure with Docker, Kubernetes, and CI/CD pipelines",
-      "date_published": "2026-09-28T16:58:55.348Z",
-      "authors": [
-        {
-          "name": "Standard Chartered India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/esec-forte-technologies-network-security-engineer-4448962085",
-      "url": "https://interndoor.com/jobs/esec-forte-technologies-network-security-engineer-4448962085",
-      "title": "Network Security Engineer — eSec Forte® Technologies",
-      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India · Duration: 1-3 years\n• Manage firewalls and microsegmentation tools for network security\n• Use platforms like Tufin and AlgoSec for policy management\n• Collaborate with clients on security solutions and incident response",
-      "date_published": "2026-09-28T16:55:25.099Z",
-      "authors": [
-        {
-          "name": "eSec Forte® Technologies"
         }
       ]
     }
