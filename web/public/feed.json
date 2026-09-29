@@ -6,35 +6,71 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-4473290099",
+      "url": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-4473290099",
+      "title": "Infrastructure Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Design and maintain cloud infrastructure for public and private environments\n• Work with AWS and other cloud platforms to build scalable data solutions\n• Collaborate across teams to develop secure, automated data products",
+      "date_published": "2026-09-29T15:34:16.092Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190",
+      "url": "https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190",
+      "title": "AIML Trainee | 6-Month Fixed-Term Contract | 2026 Graduates — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Build and maintain secure, high-performance software solutions\n• Work with Java and AI/ML tools in a feature team\n• Collaborate on full lifecycle development and API integration",
+      "date_published": "2026-09-29T15:34:04.802Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065",
+      "url": "https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065",
+      "title": "Software Engineer - Winter Intern — Rubrik",
+      "content_text": "Company: Rubrik · Location: Bengaluru, Karnataka, India\n• Design, develop, and improve software systems\n• Work with Java, C/C++, Scala, or Python\n• Collaborate on projects with flexible structure",
+      "date_published": "2026-09-29T15:31:51.775Z",
+      "authors": [
+        {
+          "name": "Rubrik"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kla-software-quality-engineer-4471740579",
+      "url": "https://interndoor.com/jobs/kla-software-quality-engineer-4471740579",
+      "title": "Software Quality Engineer — KLA",
+      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Build frameworks and tools for testing desktop, web, API, and system-level software\n• Use C#, Java, Python, and AI to improve testability and accelerate defect detection\n• Integrate automated tests into CI/CD pipelines and create quality dashboards",
+      "date_published": "2026-09-29T15:21:24.476Z",
+      "authors": [
+        {
+          "name": "KLA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kla-engineer-product-applications-4471734906",
+      "url": "https://interndoor.com/jobs/kla-engineer-product-applications-4471734906",
+      "title": "Engineer, Product Applications — KLA",
+      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Support customers with product demos, troubleshooting, and training on complex semiconductor tools\n• Collaborate with engineering teams to improve tool performance through testing and feedback\n• Travel 50% for on-site customer engagement and technical training",
+      "date_published": "2026-09-29T15:20:58.499Z",
+      "authors": [
+        {
+          "name": "KLA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282",
       "url": "https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282",
       "title": "Engr, Software QA 2 — KLA",
       "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Test software systems for semiconductor manufacturing tools\n• Use C# or Java for automation scripts and test frameworks\n• Travel to customer sites in Israel, US, and other locations",
       "date_published": "2026-09-29T15:08:41.692Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-software-quality-engineer-4471746392",
-      "url": "https://interndoor.com/jobs/kla-software-quality-engineer-4471746392",
-      "title": "Software Quality Engineer — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Build frameworks and tools for desktop, web, API, and system testing\n• Use C#, Java, Python, and AI to improve testability and quality\n• Integrate automated tests into CI/CD pipelines with Jenkins or Azure DevOps",
-      "date_published": "2026-09-29T15:08:31.127Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-engineer-product-applications-4471746342",
-      "url": "https://interndoor.com/jobs/kla-engineer-product-applications-4471746342",
-      "title": "Engineer, Product Applications — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Support customers on pcb applications and technical implementation\n• Collaborate with engineering and product teams on customer needs\n• Develop new use cases and optimize workflows for customer experience",
-      "date_published": "2026-09-29T15:00:02.152Z",
       "authors": [
         {
           "name": "KLA"
@@ -66,6 +102,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/infosys-devops-engineer-4453995475",
+      "url": "https://interndoor.com/jobs/infosys-devops-engineer-4453995475",
+      "title": "Devops Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Pune Division, Maharashtra, India\n• Interface with clients for quality assurance and issue resolution\n• Participate in project estimation and solution delivery planning\n• Lead code reviews and unit test plan reviews",
+      "date_published": "2026-09-29T14:39:07.988Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/zimmer-biomet-it-analyst-4454272708",
       "url": "https://interndoor.com/jobs/zimmer-biomet-it-analyst-4454272708",
       "title": "IT Analyst — Zimmer Biomet",
@@ -74,6 +122,18 @@
       "authors": [
         {
           "name": "Zimmer Biomet"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-net-angular-developer-4462998079",
+      "url": "https://interndoor.com/jobs/infosys-net-angular-developer-4462998079",
+      "title": ".NET Angular Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Write clean .net code and design reusable systems\n• Work with angular js and databases like sql server\n• Collaborate in team meetings and troubleshoot issues",
+      "date_published": "2026-09-29T14:36:21.429Z",
+      "authors": [
+        {
+          "name": "Infosys"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ast-spacemobile-simulation-intern-4473234664",
-      "url": "https://interndoor.com/jobs/ast-spacemobile-simulation-intern-4473234664",
-      "title": "Simulation Intern — AST SpaceMobile",
-      "content_text": "Company: AST SpaceMobile · Location: Hyderabad, Telangana, India\n• Develop models of embedded systems in matlab\n• Work with cross-functional teams on simulation projects\n• Based in hyderabad with potential for remote work",
-      "date_published": "2026-09-29T11:58:20.573Z",
-      "authors": [
-        {
-          "name": "AST SpaceMobile"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cyient-system-test-execution-4462292466",
-      "url": "https://interndoor.com/jobs/cyient-system-test-execution-4462292466",
-      "title": "System Test Execution — Cyient",
-      "content_text": "Company: Cyient · Location: Bengaluru, Karnataka, India\n• Execute system tests on embedded systems, focusing on ADAS and automotive applications\n• Use CAPL, Python, and YAML for scripting and test case development\n• Work with VTD and ROD tools for scenario creation and test specification",
-      "date_published": "2026-09-29T11:51:40.585Z",
-      "authors": [
-        {
-          "name": "Cyient"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bnp-paribas-platform-support-engineer-devops-4114508863",
-      "url": "https://interndoor.com/jobs/bnp-paribas-platform-support-engineer-devops-4114508863",
-      "title": "Platform Support Engineer - Devops — BNP Paribas",
-      "content_text": "Company: BNP Paribas · Location: Mumbai, Maharashtra, India\n• Support production systems with automation, monitoring, and incident resolution\n• Work with IIS/Apache, databases, and cloud platforms for stability and performance\n• Collaborate on capacity planning and system upgrades for scalable infrastructure",
-      "date_published": "2026-09-29T11:38:30.117Z",
-      "authors": [
-        {
-          "name": "BNP Paribas"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-and-strategy-4473225660",
-      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-and-strategy-4473225660",
-      "title": "Analyst-Data Science & Strategy — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Support PLI/RLI processes for ICS Pay Over Time with data analysis and reporting\n• Use SQL, Excel, and Python to analyze performance and drive business insights\n• Collaborate with cross-functional teams on strategy and process improvements",
-      "date_published": "2026-09-29T11:28:44.605Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-ios-developer-4473227610",
-      "url": "https://interndoor.com/jobs/quest-global-ios-developer-4473227610",
-      "title": "iOS Developer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Build high-performance iOS apps with Swift and Xcode\n• Collaborate with cross-functional teams on feature development\n• Optimize app performance and ensure smooth data handling",
-      "date_published": "2026-09-29T11:28:22.879Z",
-      "authors": [
-        {
-          "name": "Quest Global"
         }
       ]
     }
