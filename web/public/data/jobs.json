@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790685234271,
+ "generatedAt": 1790686508620,
  "region": "IN",
  "regionName": "India",
  "count": 841,
@@ -441,6 +441,7 @@
    "roleLabel": "Application Support",
    "degreeLevel": "UG",
    "degreeText": null,
+   "experience": "3–5 years",
    "keySkills": [
     "sql",
     "linux",
@@ -610,6 +611,7 @@
    "roleLabel": "Software testing",
    "degreeLevel": "UG",
    "degreeText": null,
+   "experience": "1–3 years",
    "keySkills": [
     "playwright",
     "selenium",
@@ -711,6 +713,7 @@
    "roleLabel": "Hardware Engineer",
    "degreeLevel": "UG/PG",
    "degreeText": null,
+   "experience": "2+ years",
    "keySkills": [
     "python",
     "c/c++",
@@ -761,6 +764,7 @@
    "roleLabel": "Matlab development",
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
+   "experience": "0+ years",
    "keySkills": [
     "matlab"
    ],
