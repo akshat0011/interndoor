@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 29 Sep 2026 02:12:22 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 03:25:52 GMT</lastBuildDate>
+  <item>
+    <title>Product Engineer - Messaging — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862</guid>
+    <pubDate>Tue, 29 Sep 2026 03:25:52 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Build and maintain messaging infrastructure using Exchange Online, SMTP gateways, and cloud security tools
+• Automate tasks with PowerShell/Python and implement secure configurations for infrastructure
+• Collaborate with product managers and architects to align IT solutions with business needs</description>
+  </item>
+  <item>
+    <title>CCDEG Data Scientist — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318</guid>
+    <pubDate>Tue, 29 Sep 2026 03:25:22 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Build and deploy machine learning models for customer-facing digital solutions
+• Work with Python, TensorFlow, PyTorch, and cloud platforms like AWS
+• Collaborate with cross-functional teams on scalable data science projects</description>
+  </item>
   <item>
     <title>DLP - Security Engineer — eSec Forte® Technologies</title>
     <link>https://interndoor.com/jobs/esec-forte-technologies-dlp-security-engineer-4446575501</link>
@@ -492,26 +512,6 @@
 • Design, code, and test complex reports and visualizations for strategic decisions
 • Work with technical teams on data visualization and analytics solutions
 • Collaborate with global users to resolve production reporting issues</description>
-  </item>
-  <item>
-    <title>Software Engineer — Texas Instruments India</title>
-    <link>https://interndoor.com/jobs/texas-instruments-india-software-engineer-4382496798</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/texas-instruments-india-software-engineer-4382496798</guid>
-    <pubDate>Mon, 28 Sep 2026 14:34:00 GMT</pubDate>
-    <description>Company: Texas Instruments India · Location: Bengaluru, Karnataka, India
-• Develop safety-certified firmware for mmWave radar sensors and processors
-• Work on real-time radar control and diagnostic systems
-• Collaborate with hardware teams and support safety audits</description>
-  </item>
-  <item>
-    <title>NLP Engineer — Zimmer Biomet</title>
-    <link>https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471384995</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471384995</guid>
-    <pubDate>Mon, 28 Sep 2026 14:30:13 GMT</pubDate>
-    <description>Company: Zimmer Biomet · Location: Bengaluru, Karnataka, India
-• Build systems that read and process medical documents for regulatory and quality use cases
-• Use Python, LLM frameworks, and vector databases to extract structured data from unstructured text
-• Work on production-ready NLP pipelines with measurable quality and compliance standards</description>
   </item>
 </channel>
 </rss>
