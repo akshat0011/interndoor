@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/mayo-clinic-bioinformatics-intern-phd-in-progress-4473083344",
+      "url": "https://interndoor.com/us/jobs/mayo-clinic-bioinformatics-intern-phd-in-progress-4473083344",
+      "title": "Bioinformatics Intern - PhD in progress — Mayo Clinic",
+      "content_text": "Company: Mayo Clinic · Location: Rochester, MN\n• Analyze sequenced genome data to detect somatic mutations in blood samples\n• Work with python and unix tools for next-generation sequencing analysis\n• Part-time role with flexible hours and potential for extension",
+      "date_published": "2026-09-29T04:46:47.203Z",
+      "authors": [
+        {
+          "name": "Mayo Clinic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/john-deere-2027-intern-electrification-engineering-4473087170",
+      "url": "https://interndoor.com/us/jobs/john-deere-2027-intern-electrification-engineering-4473087170",
+      "title": "2027 Intern - Electrification Engineering — John Deere",
+      "content_text": "Company: John Deere · Location: Fargo, ND · Duration: 12 weeks\n• Design, analyze, and test electric motors and power electronics for vehicle systems\n• Use Simulink, Matlab, and lab equipment for motor and control system development\n• Work on electric drive components for global vehicle applications",
+      "date_published": "2026-09-29T04:46:21.111Z",
+      "authors": [
+        {
+          "name": "John Deere"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-summer-fall-2027-4473068633",
       "url": "https://interndoor.com/us/jobs/collins-aerospace-software-engineering-co-op-summer-fall-2027-4473068633",
       "title": "Software Engineering Co-op (Summer/Fall 2027) — Collins Aerospace",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "onsemi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-pump-engineering-co-op-summer-fall-2027-4473015568",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-pump-engineering-co-op-summer-fall-2027-4473015568",
-      "title": "Pump Engineering Co-op (Summer/Fall 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Rockford, IL · Duration: Fall 2027\n• Support fuel and oil pump design with CFD analysis and field investigations\n• Lead root cause analysis and customer support for pump program issues\n• Collaborate on supplier transitions and cost-saving initiatives",
-      "date_published": "2026-09-28T21:42:19.612Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/collins-aerospace-pump-engineering-co-op-spring-summer-2027-4473014680",
-      "url": "https://interndoor.com/us/jobs/collins-aerospace-pump-engineering-co-op-spring-summer-2027-4473014680",
-      "title": "Pump Engineering Co-op (Spring/Summer 2027) — Collins Aerospace",
-      "content_text": "Company: Collins Aerospace · Location: Rockford, IL · Duration: Summer 2027\n• Support fuel and oil pump design with CFD analysis and field investigations\n• Lead root cause analysis and customer support for field failures\n• Collaborate on supplier transitions and cost-saving initiatives",
-      "date_published": "2026-09-28T21:41:52.815Z",
-      "authors": [
-        {
-          "name": "Collins Aerospace"
         }
       ]
     }
