@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 29 Sep 2026 17:04:47 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 17:10:22 GMT</lastBuildDate>
+  <item>
+    <title>Digital Ops Support Analyst — Quest Global</title>
+    <link>https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299</guid>
+    <pubDate>Tue, 29 Sep 2026 17:10:22 GMT</pubDate>
+    <description>Company: Quest Global · Location: Bengaluru, Karnataka, India
+• Fix data gaps and bugs in Helios warehouse pipelines
+• Work with teams to understand and improve data flows
+• Validate data integrity after implementing fixes</description>
+  </item>
+  <item>
+    <title>Trainee engineer — Quest Global</title>
+    <link>https://interndoor.com/jobs/quest-global-trainee-engineer-4471935322</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-trainee-engineer-4471935322</guid>
+    <pubDate>Tue, 29 Sep 2026 17:05:47 GMT</pubDate>
+    <description>Company: Quest Global · Location: Bengaluru, Karnataka, India
+• Design analog circuits using Cadence tools
+• Require analog electronics knowledge
+• Ideal for students with relevant coursework</description>
+  </item>
   <item>
     <title>Applied Scientist, CMT — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464372512</link>
@@ -487,26 +507,6 @@
 • Develops and maintains applications using java
 • Collaborates with teams on system design and integration
 • Monitors new technologies for application use</description>
-  </item>
-  <item>
-    <title>Technical Scrum Master (DevOps) — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-technical-scrum-master-devops-4471910314</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-technical-scrum-master-devops-4471910314</guid>
-    <pubDate>Tue, 29 Sep 2026 13:32:02 GMT</pubDate>
-    <description>Company: Infosys · Location: Hyderabad, Telangana, India
-• Facilitate scrum ceremonies and coordinate cross-functional teams
-• Drive devops adoption and support ci/cd pipeline implementation
-• Monitor team performance and manage audit compliance activities</description>
-  </item>
-  <item>
-    <title>Cloud Platform Engineer (Redis/GemFire) — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-cloud-platform-engineer-redis-gemfire-4471906392</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-cloud-platform-engineer-redis-gemfire-4471906392</guid>
-    <pubDate>Tue, 29 Sep 2026 13:31:45 GMT</pubDate>
-    <description>Company: Infosys · Location: Hyderabad, Telangana, India
-• Operate cloud platform for production workloads across environments
-• Administer kubernetes clusters and redis for performance and security
-• Automate provisioning and lifecycle management of platform components</description>
   </item>
 </channel>
 </rss>

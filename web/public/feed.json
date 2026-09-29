@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299",
+      "url": "https://interndoor.com/jobs/quest-global-digital-ops-support-analyst-4471936299",
+      "title": "Digital Ops Support Analyst — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Fix data gaps and bugs in Helios warehouse pipelines\n• Work with teams to understand and improve data flows\n• Validate data integrity after implementing fixes",
+      "date_published": "2026-09-29T17:10:22.505Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-trainee-engineer-4471935322",
+      "url": "https://interndoor.com/jobs/quest-global-trainee-engineer-4471935322",
+      "title": "Trainee engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Design analog circuits using Cadence tools\n• Require analog electronics knowledge\n• Ideal for students with relevant coursework",
+      "date_published": "2026-09-29T17:05:47.810Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464372512",
       "url": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464372512",
       "title": "Applied Scientist, CMT — Amazon",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-technical-scrum-master-devops-4471910314",
-      "url": "https://interndoor.com/jobs/infosys-technical-scrum-master-devops-4471910314",
-      "title": "Technical Scrum Master (DevOps) — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Facilitate scrum ceremonies and coordinate cross-functional teams\n• Drive devops adoption and support ci/cd pipeline implementation\n• Monitor team performance and manage audit compliance activities",
-      "date_published": "2026-09-29T13:32:02.150Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-cloud-platform-engineer-redis-gemfire-4471906392",
-      "url": "https://interndoor.com/jobs/infosys-cloud-platform-engineer-redis-gemfire-4471906392",
-      "title": "Cloud Platform Engineer (Redis/GemFire) — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Operate cloud platform for production workloads across environments\n• Administer kubernetes clusters and redis for performance and security\n• Automate provisioning and lifecycle management of platform components",
-      "date_published": "2026-09-29T13:31:45.452Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }
