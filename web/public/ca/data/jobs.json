@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790692703810,
+ "generatedAt": 1790693782721,
  "region": "CA",
  "regionName": "Canada",
- "count": 67,
- "techCount": 67,
+ "count": 66,
+ "techCount": 66,
  "otherCount": 0,
  "companies": [
   "Affirm",
@@ -11,7 +11,6 @@
   "Analog Devices",
   "Cerebras Systems",
   "Cresta",
-  "Dropbox",
   "Entrust",
   "Epic Games",
   "Intel",
@@ -2670,58 +2669,6 @@
     "Canada - Ottawa (Bill Leathem)"
    ],
    "category": "hardware",
-   "region": "CA"
-  },
-  {
-   "id": "ats:greenhouse:dropbox:8106224",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Dropbox",
-   "matchedWatchlist": "Dropbox",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/dropbox.png",
-   "location": "Canada",
-   "workplaceType": null,
-   "stipend": "$9,000 – $10,000",
-   "duration": "12 weeks",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "javascript",
-    "agile"
-   ],
-   "summary": "This software engineering internship involves developing impactful features for Dropbox products. You'll work on real-world projects, collaborate with teams, and contribute to major features like Dropbox Paper. Ideal for students with coding experience and a passion for software development.",
-   "bullets": [
-    "Ship high-priority projects from start to finish",
-    "Code in python, go, javascript, and use copilot",
-    "Work 40 hours/week in designated location"
-   ],
-   "roleLabel": "Software development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "go",
-    "javascript",
-    "copilot"
-   ],
-   "stipendStatus": "paid",
-   "postedText": null,
-   "postedAt": 1788794166000,
-   "firstSeenAt": 1788794195021,
-   "lastSeenAt": 1790692062794,
-   "url": "https://jobs.dropbox.com/listing/8106224?gh_jid=8106224",
-   "applyUrl": "https://jobs.dropbox.com/listing/8106224?gh_jid=8106224",
-   "description": null,
-   "roleFingerprint": "63859c96c8",
-   "cardFacts": [
-    "$9,000 – $10,000",
-    "Canada",
-    "12 weeks"
-   ],
-   "category": "software",
    "region": "CA"
   },
   {

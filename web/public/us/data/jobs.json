@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790692703753,
+ "generatedAt": 1790693782667,
  "region": "US",
  "regionName": "United States",
- "count": 4427,
- "techCount": 4427,
+ "count": 4435,
+ "techCount": 4435,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -127,6 +127,7 @@
   "Dominion Energy",
   "DoorDash",
   "Dover Corporation",
+  "Dropbox",
   "Duke Energy",
   "Duke Energy Corporation",
   "Duolingo",
@@ -155,6 +156,7 @@
   "Fintech",
   "Flex",
   "Flow Traders",
+  "Fluor Corporation",
   "Formlabs",
   "Fox Corporation",
   "Fujitsu",
@@ -855,6 +857,7 @@
   "Louisville, TN",
   "Loveland, CO",
   "Lowell, MA",
+  "Lower Gwynedd, PA",
   "Lubbock, TX",
   "Lusby, MD",
   "Lynchburg, VA",
@@ -1006,6 +1009,7 @@
   "Omaha, Nebraska",
   "Ontario, NY",
   "Orange (OH), Ohio, United States",
+  "Orchard Park, NY",
   "Orlando, FL",
   "Oswego, NY",
   "Owego, NY",
@@ -1329,6 +1333,214 @@
  ],
  "jobs": [
   {
+   "id": "4471734704",
+   "title": "Summer Research Intern 2027 - Integrated Circuit Design for Quantum Computing",
+   "company": "IBM",
+   "matchedWatchlist": "IBM",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/ibm.jpg",
+   "location": "Yorktown Heights, NY",
+   "workplaceType": "On-site",
+   "stipend": "$89,280 / year",
+   "pay": {
+    "currency": "USD",
+    "min": 89280,
+    "max": 89280,
+    "unitText": "YEAR"
+   },
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "physical design"
+   ],
+   "summary": "This summer research role involves designing integrated circuits for quantum computing, focusing on digital, mixed-signal, or RF circuits. Ideal for students with experience in CMOS design and Cadence tools, this opportunity offers hands-on work on cutting-edge projects with a research team at IBM.",
+   "bullets": [
+    "Design integrated circuits for quantum computing applications",
+    "Use Cadence tools for IC layout and verification",
+    "Work on digital, mixed-signal, or RF circuit projects"
+   ],
+   "roleLabel": "Integrated Circuit Design",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "cadence ic design",
+    "mixed-signal",
+    "rf design",
+    "digital design"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790692536825,
+   "firstSeenAt": 1790692956834,
+   "lastSeenAt": 1790692956834,
+   "url": "https://www.linkedin.com/jobs/view/4471734704/",
+   "applyUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=134473&src=SN_LinkedIn",
+   "description": null,
+   "roleFingerprint": "3da0b0f8a1",
+   "cardFacts": [
+    "$89,280 / year",
+    "Yorktown Heights",
+    "On-site"
+   ],
+   "category": "hardware",
+   "region": "US"
+  },
+  {
+   "id": "4471743240",
+   "title": "Intern - Design Engineering",
+   "company": "Eaton",
+   "matchedWatchlist": "Eaton Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/eaton.jpg",
+   "location": "Orchard Park, NY",
+   "workplaceType": null,
+   "stipend": "$22 – $27 / hour",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "matlab",
+    "altium",
+    "excel"
+   ],
+   "summary": "This design engineering internship at Eaton involves contributing to aerospace projects through design and analysis tasks. Ideal for students with a focus on mechanical or electrical engineering, the role offers hands-on experience with industry tools and collaboration with experienced engineers.",
+   "bullets": [
+    "Assist in design, analysis, and testing of aerospace systems",
+    "Use SolidWorks, MATLAB, and schematic design tools",
+    "Work on active projects with senior engineers in development"
+   ],
+   "roleLabel": "Design Engineering",
+   "degreeLevel": "UG",
+   "degreeText": "Mechanical/Electrical Engineering",
+   "keySkills": [
+    "solidworks",
+    "matlab",
+    "orcad",
+    "ltspice",
+    "arduino"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "10 minutes ago",
+   "postedAt": 1790692360080,
+   "firstSeenAt": 1790692960088,
+   "lastSeenAt": 1790692960088,
+   "url": "https://www.linkedin.com/jobs/view/4471743240/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4471743240/",
+   "description": null,
+   "roleFingerprint": "df6ba59b1e",
+   "cardFacts": [
+    "$22 – $27 / hour",
+    "Orchard Park"
+   ],
+   "category": "misc",
+   "region": "US"
+  },
+  {
+   "id": "4464391017",
+   "title": "Software Engineering Intern (Summer 2027)",
+   "company": "Dropbox",
+   "matchedWatchlist": "Dropbox",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/dropbox.png",
+   "location": "United States",
+   "workplaceType": "Remote",
+   "stipend": "$9,000 – $10,000 / month",
+   "duration": "12 weeks",
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "javascript",
+    "agile"
+   ],
+   "summary": "As a software engineering intern, you'll contribute to mission-critical projects, collaborate with multidisciplinary teams, and gain hands-on experience with cutting-edge technologies. This role is ideal for students passionate about software development and eager to grow in a supportive, mentor-driven environment.",
+   "bullets": [
+    "Ship high-priority projects from start to finish with real-world impact",
+    "Work with AI tools like Copilot to improve code quality and productivity",
+    "Join a team matching process to align with your strengths and interests"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": "UG",
+   "degreeText": "computer science",
+   "keySkills": [
+    "python",
+    "go",
+    "javascript",
+    "copilot"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "22 minutes ago",
+   "postedAt": 1790691716966,
+   "firstSeenAt": 1790693036972,
+   "lastSeenAt": 1790693036972,
+   "url": "https://www.linkedin.com/jobs/view/4464391017/",
+   "applyUrl": "https://www.dropbox.jobs/en/jobs/8106224/software-engineering-intern-summer-2027/?gh_src=aonhf1",
+   "description": null,
+   "roleFingerprint": "32d26a2a0e",
+   "cardFacts": [
+    "$9,000 – $10,000 / month",
+    "United States",
+    "Remote"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4473257904",
+   "title": "Engineering Technician I- Piping Design Intern",
+   "company": "Fluor Corporation",
+   "matchedWatchlist": "Fluor Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/fluor-corporation.jpg",
+   "location": "Houston, TX",
+   "workplaceType": "On-site",
+   "stipend": "$43,000 – $66,000",
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves supporting engineering projects through drafting, data sheet creation, and documentation. Ideal for students pursuing an Associate's in Drafting or Computer Drafting Technology. You'll work on real projects, use specialized software, and contribute to team reporting. Based in Houston, TX.",
+   "bullets": [
+    "Support engineering projects with drafting, data sheets, and specifications",
+    "Use specialized software and maintain documentation standards",
+    "Track progress and prepare status reports for teams"
+   ],
+   "roleLabel": "Piping Design Support",
+   "degreeLevel": "UG",
+   "degreeText": "Drafting/Computer Drafting Technology",
+   "keySkills": [
+    "drafting",
+    "data sheets",
+    "specifications",
+    "documentation"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "25 minutes ago",
+   "postedAt": 1790691483872,
+   "firstSeenAt": 1790692983881,
+   "lastSeenAt": 1790692983881,
+   "url": "https://www.linkedin.com/jobs/view/4473257904/",
+   "applyUrl": "https://careers.fluor.com/careers/job/1099556232728?domain=fluor.com&source=linkedin",
+   "description": null,
+   "roleFingerprint": "f9b705e6b7",
+   "cardFacts": [
+    "$43,000 – $66,000",
+    "Houston",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
    "id": "ats:smartrecruiters:Wabtec:3743990015763566",
    "title": "Co-Op, Test Engineer - Transducer (January-June 2027)",
    "company": "Wabtec",
@@ -1440,6 +1652,217 @@
     "Waltham"
    ],
    "category": "hardware",
+   "region": "US"
+  },
+  {
+   "id": "4473246705",
+   "title": "Irving V Teamer for a Day: Verizon Data Science Summer 2027 Internship",
+   "company": "Verizon",
+   "matchedWatchlist": "Verizon Communications",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/verizon.jpg",
+   "location": "Irving, TX",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "machine learning",
+    "generative ai",
+    "agile"
+   ],
+   "summary": "This data science internship involves developing predictive models and testing AI tools to improve network operations. Ideal for students with experience in AI frameworks and a passion for solving complex problems. The role offers hybrid work with office days in Irving and travel to an in-person event.",
+   "bullets": [
+    "Build predictive models and test AI tools to optimize network operations",
+    "Work with generative AI frameworks like LangChain and Google Gemini",
+    "Hybrid role with office days in Irving, TX, and travel to Basking Ridge"
+   ],
+   "roleLabel": "Data Science Intern",
+   "degreeLevel": "UG",
+   "degreeText": "Data Science/Computer Science/Statistics/Operations Research",
+   "keySkills": [
+    "predictive analytics",
+    "generative ai frameworks",
+    "data architecture",
+    "systems thinking"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790689587650,
+   "firstSeenAt": 1790693187655,
+   "lastSeenAt": 1790693187655,
+   "url": "https://www.linkedin.com/jobs/view/4473246705/",
+   "applyUrl": "https://mycareer.verizon.com/jobs/r-1101386/irving-v-teamer-for-a-day-verizon-data-science-summer-2027-internship/?source=jb-linkedin",
+   "description": null,
+   "roleFingerprint": "2355435227",
+   "cardFacts": [
+    "Irving",
+    "Hybrid",
+    "Summer 2027"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4464419979",
+   "title": "2027 Future Talent Program - Spatial Biology & Multiplex Imaging - Intern",
+   "company": "Merck",
+   "matchedWatchlist": "Merck",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/merck.png",
+   "location": "South San Francisco, CA",
+   "workplaceType": "Hybrid",
+   "stipend": "$39,108",
+   "duration": "10–12 weeks",
+   "applicants": "131 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "machine learning",
+    "computer vision"
+   ],
+   "summary": "This internship involves supporting the development of advanced spatial biology panels using cutting-edge imaging technology. Ideal for students with a background in biological sciences or related fields, the role offers hands-on experience in assay development, workflow automation, and cross-functional collaboration with immunology and data science teams.",
+   "bullets": [
+    "Support assay development and validation for high-plex immune and fibroblast spatial biology panels",
+    "Collaborate on workflow automation with platforms like Parhelia Spatial Station",
+    "Work with immunology and data science teams on image analysis and algorithm development"
+   ],
+   "roleLabel": "Spatial Biology Intern",
+   "degreeLevel": "UG/PG",
+   "degreeText": "Biology/Immunology",
+   "keySkills": [
+    "antibody conjugation",
+    "fluorescence microscopy",
+    "r",
+    "python",
+    "digital pathology"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "1 hour ago",
+   "postedAt": 1790689496972,
+   "firstSeenAt": 1790693096976,
+   "lastSeenAt": 1790693096976,
+   "url": "https://www.linkedin.com/jobs/view/4464419979/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4464419979/",
+   "description": null,
+   "roleFingerprint": "d0757e0ed0",
+   "cardFacts": [
+    "$39,108",
+    "South San Francisco",
+    "Hybrid"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4473240836",
+   "title": "Verizon Network and Technology: Business Intelligence Summer 2027 Internship",
+   "company": "Verizon",
+   "matchedWatchlist": "Verizon Communications",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/verizon.jpg",
+   "location": "Irving, TX",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "gcp",
+    "llm",
+    "generative ai",
+    "agile",
+    "tableau"
+   ],
+   "summary": "This internship involves analyzing customer data to improve AI-powered support systems within Verizon's Fiber Engineering team. Ideal for students with experience in data analysis and AI tools, this role offers hands-on work with industry applications and exposure to cross-functional projects.",
+   "bullets": [
+    "Analyze customer interaction data to optimize AI-driven support systems",
+    "Work with GECX, GCP, Looker, and Tableau to refine network operations",
+    "Embedded in Agile scrum team shaping future of customer service"
+   ],
+   "roleLabel": "Business Intelligence Analysis",
+   "degreeLevel": "UG",
+   "degreeText": "Business Intelligence",
+   "keySkills": [
+    "looker",
+    "tableau",
+    "gcp",
+    "generative ai",
+    "agile"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790689418299,
+   "firstSeenAt": 1790693018307,
+   "lastSeenAt": 1790693018307,
+   "url": "https://www.linkedin.com/jobs/view/4473240836/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473240836/",
+   "description": null,
+   "roleFingerprint": "0460ae3903",
+   "cardFacts": [
+    "Irving",
+    "Hybrid",
+    "Summer 2027"
+   ],
+   "category": "misc",
+   "region": "US"
+  },
+  {
+   "id": "4473258035",
+   "title": "Verizon Network and Technology: Data Science Summer 2027 Internship",
+   "company": "Verizon",
+   "matchedWatchlist": "Verizon Communications",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/verizon.jpg",
+   "location": "Irving, TX",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "machine learning",
+    "generative ai",
+    "agile"
+   ],
+   "summary": "This data science internship involves developing predictive models and testing AI tools to enhance Verizon's network operations. Ideal for students with experience in AI frameworks and a passion for solving complex problems. The role offers a hybrid work setup with potential for relocation assistance.",
+   "bullets": [
+    "Build predictive models and test AI tools to improve network operations",
+    "Work with generative AI frameworks like LangChain and Google Gemini",
+    "Hybrid role with office days and relocation assistance possible"
+   ],
+   "roleLabel": "Data Science Intern",
+   "degreeLevel": "UG",
+   "degreeText": "Data Science/Computer Science/Statistics/Operations Research",
+   "keySkills": [
+    "predictive analytics",
+    "generative ai frameworks",
+    "data architecture"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790689403108,
+   "firstSeenAt": 1790693003110,
+   "lastSeenAt": 1790693003110,
+   "url": "https://www.linkedin.com/jobs/view/4473258035/",
+   "applyUrl": "https://mycareer.verizon.com/jobs/r-1101384/verizon-network-and-technology-data-science-summer-2027-internship/?source=jb-linkedin",
+   "description": null,
+   "roleFingerprint": "57fac10f03",
+   "cardFacts": [
+    "Irving",
+    "Hybrid",
+    "Summer 2027"
+   ],
+   "category": "software",
    "region": "US"
   },
   {
@@ -1655,6 +2078,59 @@
     "Salt Lake City",
     "On-site",
     "12 months"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4464434881",
+   "title": "2027 Future Talent Program – Digital Transformation Conversion – Intern",
+   "company": "Merck",
+   "matchedWatchlist": "Merck",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/merck.png",
+   "location": "Lower Gwynedd, PA",
+   "workplaceType": null,
+   "stipend": "$39,108",
+   "duration": "12 weeks",
+   "applicants": "42 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "excel"
+   ],
+   "summary": "This internship involves converting scientific test methods into digital templates to improve lab efficiency and data consistency. Ideal for students with a background in data science, bioinformatics, or related fields, the role offers hands-on experience with Benchling and regulated documentation practices.",
+   "bullets": [
+    "Review test methods to create structured Benchling templates for lab workflows",
+    "Collaborate with scientists to standardize documentation and reduce manual entry",
+    "Develop user guides and present project outcomes at an intern symposium"
+   ],
+   "roleLabel": "Bioanalytical Informatics",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "benchling",
+    "excel",
+    "word",
+    "powerpoint",
+    "data structuring"
+   ],
+   "stipendStatus": "paid",
+   "postedText": "2 hours ago",
+   "postedAt": 1790685923157,
+   "firstSeenAt": 1790693123159,
+   "lastSeenAt": 1790693123159,
+   "url": "https://www.linkedin.com/jobs/view/4464434881/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4464434881/",
+   "description": null,
+   "roleFingerprint": "c6568c9a8a",
+   "cardFacts": [
+    "$39,108",
+    "Lower Gwynedd",
+    "12 weeks"
    ],
    "category": "software",
    "region": "US"
@@ -52682,62 +53158,6 @@
     "On-site"
    ],
    "category": "software",
-   "region": "US"
-  },
-  {
-   "id": "4468937265",
-   "title": "Summer Research Intern 2027 - Integrated Circuit Design for Quantum Computing",
-   "company": "IBM",
-   "matchedWatchlist": "IBM",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ibm.jpg",
-   "location": "Yorktown Heights, NY",
-   "workplaceType": "On-site",
-   "stipend": "$89,300 / year",
-   "pay": {
-    "currency": "USD",
-    "min": 89300,
-    "max": 89300,
-    "unitText": "YEAR"
-   },
-   "duration": null,
-   "applicants": "3 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "physical design"
-   ],
-   "summary": "This summer research role involves designing integrated circuits for quantum computing, with focus on cmos technology and cadence tools. Ideal for students with experience in circuit design and layout, seeking hands-on research in advanced semiconductor applications.",
-   "bullets": [
-    "Design integrated circuits for quantum computing applications",
-    "Work with cadence tools and deep submicron cmos technology",
-    "Collaborate on circuit architecture and system integration"
-   ],
-   "roleLabel": "Integrated Circuit Design",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "experience": "2 years",
-   "keySkills": [
-    "cadence ic design",
-    "cmos technology",
-    "rf design"
-   ],
-   "stipendStatus": "paid",
-   "postedText": "57 minutes ago",
-   "postedAt": 1790109173205,
-   "firstSeenAt": 1790112593209,
-   "lastSeenAt": 1790112593209,
-   "url": "https://www.linkedin.com/jobs/view/4468937265/",
-   "applyUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=133467&src=SN_LinkedIn",
-   "description": null,
-   "roleFingerprint": "3da0b0f8a1",
-   "cardFacts": [
-    "$89,300 / year",
-    "Yorktown Heights",
-    "On-site"
-   ],
-   "category": "hardware",
    "region": "US"
   },
   {
@@ -157776,7 +158196,7 @@
    "postedText": "17 minutes ago",
    "postedAt": 1788873693994,
    "firstSeenAt": 1788874713996,
-   "lastSeenAt": 1788874713996,
+   "lastSeenAt": 1790693008928,
    "url": "https://www.linkedin.com/jobs/view/4445990981/",
    "applyUrl": "https://stmicroelectronics.eightfold.ai/careers/job/563637173066707?domain=stmicroelectronics.com",
    "description": null,
@@ -162445,7 +162865,7 @@
    "postedText": "48 minutes ago",
    "postedAt": 1788800519456,
    "firstSeenAt": 1788803399460,
-   "lastSeenAt": 1788803399460,
+   "lastSeenAt": 1790692987130,
    "url": "https://www.linkedin.com/jobs/view/4437127776/",
    "applyUrl": "https://app.greenhouse.io/embed/job_app?token=8044334&gh_src=be8ebc4b1",
    "description": null,
@@ -162597,7 +163017,7 @@
    "postedText": "2 hours ago",
    "postedAt": 1788789221164,
    "firstSeenAt": 1788796421169,
-   "lastSeenAt": 1788796421169,
+   "lastSeenAt": 1790692960136,
    "url": "https://www.linkedin.com/jobs/view/4455243579/",
    "applyUrl": "https://careers.geaerospace.com/global/en/job/GAOGAYGLOBALR5030118EXTERNALENGLOBAL/Systems-Engineering-Intern-Electrical-Engineering-Computer-Engineering-Science-Avionics-US-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
@@ -162693,7 +163113,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1788789121909,
    "firstSeenAt": 1788792721910,
-   "lastSeenAt": 1788792721910,
+   "lastSeenAt": 1790693152806,
    "url": "https://www.linkedin.com/jobs/view/4455249547/",
    "applyUrl": "https://careers.geaerospace.com/global/en/job/GAOGAYGLOBALR5029637EXTERNALENGLOBAL/Engines-Engineering-Co-op-Computer-or-Software-Engineering-US-Fall-2027?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
