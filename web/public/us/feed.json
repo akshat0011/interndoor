@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in the US, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4471752199",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-ms-summer-2027-4471752199",
+      "title": "Digital IC Design Intern, MS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hudson, NY · Duration: Fall 2027\n• Simulate and verify high-performance digital circuits for next-gen chips\n• Use Synopsys, Cadence, and Mentor tools for RTL design and timing analysis\n• Collaborate with cross-functional teams on cloud and AI infrastructure projects",
+      "date_published": "2026-09-29T15:49:37.114Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471754156",
+      "url": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471754156",
+      "title": "Data Engineer Intern, Product Analytics (Summer 2027) — Meta",
+      "content_text": "Company: Meta · Location: Menlo Park, CA · Duration: Summer 2027\n• Design and deploy data models for products used by billions\n• Collaborate with engineers and data scientists on data solutions\n• Own data quality for specific product areas",
+      "date_published": "2026-09-29T15:49:14.015Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471745424",
+      "url": "https://interndoor.com/us/jobs/meta-data-engineer-intern-product-analytics-summer-2027-4471745424",
+      "title": "Data Engineer Intern, Product Analytics (Summer 2027) — Meta",
+      "content_text": "Company: Meta · Location: Seattle, WA · Duration: Summer 2027\n• Design and deploy data models for Meta's products\n• Collaborate with engineers and data scientists on data solutions\n• Own data quality for specific product areas",
+      "date_published": "2026-09-29T15:49:03.041Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-ams-validation-intern-bs-summer-2027-4471746477",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-ams-validation-intern-bs-summer-2027-4471746477",
+      "title": "AMS Validation Intern, BS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Santa Clara, CA · Duration: Fall 2027\n• Run electrical tests on analog circuits and high-speed components\n• Write Python scripts for automated data collection and analysis\n• Collaborate with team on weekly updates and data interpretation",
+      "date_published": "2026-09-29T15:48:20.564Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-cybersecurity-a-4454452194",
+      "url": "https://interndoor.com/us/jobs/american-express-campus-graduate-masters-summer-internship-program-2027-cybersecurity-a-4454452194",
+      "title": "Campus Graduate Masters Summer Internship Program - 2027 Cybersecurity Analyst, Enterprise Technology Services- Sunrise, FL — American Express",
+      "content_text": "Company: American Express · Location: Sunrise, FL\n• Monitor security systems, identify threats, and prevent operational issues\n• Use AI tools for threat detection and analysis with guidance from leaders\n• Collaborate with product and development teams on secure coding practices",
+      "date_published": "2026-09-29T15:48:08.816Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4471747380",
+      "url": "https://interndoor.com/us/jobs/marvell-technology-digital-ic-design-intern-bs-summer-2027-4471747380",
+      "title": "Digital IC Design Intern, BS - Summer 2027 — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hudson, NY · Duration: Fall 2027\n• Design and verify high-performance RTL blocks for next-gen chips\n• Use Synopsys, Cadence, and Mentor tools for synthesis and timing analysis\n• Collaborate with cross-functional teams on real chip design projects",
+      "date_published": "2026-09-29T15:47:54.148Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/marvell-technology-ai-native-development-platform-engineer-intern-ms-summer-2027-4471755147",
       "url": "https://interndoor.com/us/jobs/marvell-technology-ai-native-development-platform-engineer-intern-ms-summer-2027-4471755147",
       "title": "AI-Native Development Platform Engineer Intern, MS - Summer 2027 — Marvell Technology",
@@ -527,78 +599,6 @@
       "title": "Research Intern (RDMA/High Speed Network) - 2026 Start (PhD) — ByteDance",
       "content_text": "Company: ByteDance · Location: San Jose, CA\n• Design and optimize high-performance transport protocols for AI/LLM applications\n• Work on congestion control algorithms and network protocol stacks\n• Collaborate with industry experts on high-speed networking research",
       "date_published": "2026-09-29T10:02:49.350Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-student-researcher-seed-model-llm-2026-start-phd-4449488732",
-      "url": "https://interndoor.com/us/jobs/bytedance-student-researcher-seed-model-llm-2026-start-phd-4449488732",
-      "title": "Student Researcher - (Seed Model - LLM) - 2026 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA · Duration: Fall 2026\n• Work on foundational algorithm research for large language models and multi-modal machine learning\n• Use Python/C++ and frameworks like PyTorch/TensorFlow and Megatron/FSDP/Deepspeed\n• Contribute to publishing papers and patent applications in cutting-edge AI research",
-      "date_published": "2026-09-29T10:00:46.825Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-research-intern-sdn-traffic-intelligence-and-control-2026-start-phd-4441976359",
-      "url": "https://interndoor.com/us/jobs/bytedance-research-intern-sdn-traffic-intelligence-and-control-2026-start-phd-4441976359",
-      "title": "Research Intern (SDN Traffic Intelligence & Control) - 2026 Start (PhD) — ByteDance",
-      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Develop network verification platforms for data center networks\n• Work on traffic engineering tools for global bandwidth management\n• Collaborate with researchers on network control and security systems",
-      "date_published": "2026-09-29T10:00:23.268Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-data-lake-infrastructure-and-data-analytics-research-engineer-intern-a-4452443663",
-      "url": "https://interndoor.com/us/jobs/bytedance-data-lake-infrastructure-and-data-analytics-research-engineer-intern-a-4452443663",
-      "title": "Data Lake Infrastructure & Data Analytics Research Engineer Intern (AML-Ark-US) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: Seattle, WA\n• Design and maintain data lakes for model and agent development\n• Build batch and streaming pipelines from raw logs to analysis-ready data\n• Create analytics platforms for algorithm and product teams\n• Ensure data quality and governance across large-scale systems",
-      "date_published": "2026-09-29T09:59:43.323Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ai-agent-and-global-revenue-platform-2027-sum-4448285273",
-      "url": "https://interndoor.com/us/jobs/tiktok-software-engineer-intern-ai-agent-and-global-revenue-platform-2027-sum-4448285273",
-      "title": "Software Engineer Intern (AI Agent & Global Revenue Platform) - 2027 Summer — TikTok",
-      "content_text": "Company: TikTok · Location: San Jose, CA\n• Design AI Agent systems for ad platforms\n• Develop backend for global CRM with high performance\n• Collaborate with Product and Data Science teams",
-      "date_published": "2026-09-29T09:59:12.904Z",
-      "authors": [
-        {
-          "name": "TikTok"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4453392759",
-      "url": "https://interndoor.com/us/jobs/bytedance-self-built-engineer-intern-cdn-platform-2027-summer-4453392759",
-      "title": "Self-Built Engineer Intern (CDN Platform) - 2027 Summer — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Build data pipelines and dashboards for CDN traffic and cost analysis\n• Work with big data tools like Spark and ClickHouse\n• Support platform governance and data quality improvements",
-      "date_published": "2026-09-29T09:59:03.863Z",
-      "authors": [
-        {
-          "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/bytedance-student-researcher-seed-model-speech-2027-start-4436787041",
-      "url": "https://interndoor.com/us/jobs/bytedance-student-researcher-seed-model-speech-2027-start-4436787041",
-      "title": "Student Researcher - (Seed Model - Speech) – 2027 Start — ByteDance",
-      "content_text": "Company: ByteDance · Location: San Jose, CA\n• Implement algorithms and models for speech and audio systems\n• Work on foundation models and multimodal deep learning\n• Collaborate with researchers on speech technology projects",
-      "date_published": "2026-09-29T09:58:16.016Z",
       "authors": [
         {
           "name": "ByteDance"
