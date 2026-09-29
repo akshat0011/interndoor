@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ubs-quant-analyst-credit-portfolio-models-4463269052",
+      "url": "https://interndoor.com/jobs/ubs-quant-analyst-credit-portfolio-models-4463269052",
+      "title": "Quant Analyst - Credit Portfolio Models — UBS",
+      "content_text": "Company: UBS · Location: Mumbai, Maharashtra, India\n• Develop credit loss forecasts for economic capital and stress testing\n• Code in R and maintain existing models with cross-functional teams\n• Work in Mumbai's firmwide stress testing models team",
+      "date_published": "2026-09-29T09:48:52.768Z",
+      "authors": [
+        {
+          "name": "UBS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/arctic-wolf-threat-researcher-4471299574",
+      "url": "https://interndoor.com/jobs/arctic-wolf-threat-researcher-4471299574",
+      "title": "Threat Researcher — Arctic Wolf",
+      "content_text": "Company: Arctic Wolf · Location: Bengaluru, Karnataka, India\n• Develop and maintain Python and YAML-based detections for threat protection\n• Collaborate on detection methodologies and improve existing systems\n• Optimize detection performance across multiple security platforms",
+      "date_published": "2026-09-29T09:36:16.637Z",
+      "authors": [
+        {
+          "name": "Arctic Wolf"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/visteon-corporation-telematics-developer-4463237841",
+      "url": "https://interndoor.com/jobs/visteon-corporation-telematics-developer-4463237841",
+      "title": "Telematics Developer — Visteon Corporation",
+      "content_text": "Company: Visteon Corporation · Location: Greater Kolkata Area\n• Develop telematics software for connected vehicles including device management and OTA updates\n• Work with cloud teams using MQTT, REST APIs, and secure vehicle-to-cloud communication\n• Collaborate with cross-functional teams on vehicle integration and production issue resolution",
+      "date_published": "2026-09-29T09:32:11.735Z",
+      "authors": [
+        {
+          "name": "Visteon Corporation"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/xylem-java-backend-developer-with-basic-aws-knowledge-4260094537",
+      "url": "https://interndoor.com/jobs/xylem-java-backend-developer-with-basic-aws-knowledge-4260094537",
+      "title": "Java Backend Developer with basic AWS knowledge — Xylem",
+      "content_text": "Company: Xylem · Location: Greater Chennai Area · Duration: 1 to 4 years\n• Develop and maintain backend systems using Java and AWS services\n• Collaborate with cross-functional teams on cloud infrastructure projects\n• Work with tools like Terraform, Bitbucket, and Sonar Cloud",
+      "date_published": "2026-09-29T09:11:32.247Z",
+      "authors": [
+        {
+          "name": "Xylem"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ss-and-c-technologies-llmops-developers-pre-req-approval-id-pa26indainq3037-4473215416",
+      "url": "https://interndoor.com/jobs/ss-and-c-technologies-llmops-developers-pre-req-approval-id-pa26indainq3037-4473215416",
+      "title": "LLMOps Developers - Pre-Req Approval ID: PA26INDAINQ3037 — SS&C Technologies",
+      "content_text": "Company: SS&C Technologies · Location: Hyderabad, Telangana, India\n• Develop and maintain software solutions for financial and healthcare clients\n• Work with multiple platforms and methodologies in a complex tech environment\n• Lead small projects or complex tasks requiring high-level problem-solving",
+      "date_published": "2026-09-29T09:10:03.441Z",
+      "authors": [
+        {
+          "name": "SS&C Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualys-software-engineer-4471283918",
+      "url": "https://interndoor.com/jobs/qualys-software-engineer-4471283918",
+      "title": "Software Engineer — Qualys",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India · Duration: 0–3 years\n• Develop full-stack applications using Java and React.js\n• Work with Spring Boot, Kafka, Redis, and cloud tools\n• Collaborate on mission-critical software for global clients",
+      "date_published": "2026-09-29T09:08:06.329Z",
+      "authors": [
+        {
+          "name": "Qualys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472075800",
       "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472075800",
       "title": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS — Accenture in India",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "eSec Forte® Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-foundation-engineer-embedded-software-engineer-4470889667",
-      "url": "https://interndoor.com/jobs/harman-india-foundation-engineer-embedded-software-engineer-4470889667",
-      "title": "Foundation Engineer, Embedded Software Engineer — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Design, develop, and test complex software features for IVI and cockpit systems\n• Work with Agile and ASPICE processes on cross-functional engineering teams\n• Collaborate on architecture and integration across automotive domains",
-      "date_published": "2026-09-28T16:52:53.896Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-software-engineer-4470886739",
-      "url": "https://interndoor.com/jobs/mastercard-software-engineer-4470886739",
-      "title": "Software Engineer — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Develop and maintain mission-critical payment systems using Java and Spring-Boot\n• Collaborate with global teams on Agile (SAFe) projects and production support\n• Work on high-availability platforms with Oracle databases and TDD practices",
-      "date_published": "2026-09-28T16:52:09.567Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/abb-associate-project-engineer-cybersecurity-4472778015",
-      "url": "https://interndoor.com/jobs/abb-associate-project-engineer-cybersecurity-4472778015",
-      "title": "Associate Project Engineer - Cybersecurity — ABB",
-      "content_text": "Company: ABB · Location: Bengaluru East, Karnataka, India\n• Support control systems security with DCS strategies and standards\n• Work with firewalls, IDS/IPS, and OT environments\n• Join high-performing team in energy industry cybersecurity",
-      "date_published": "2026-09-28T16:48:26.675Z",
-      "authors": [
-        {
-          "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-platform-engineer-storage-product-platform-development-4472762494",
-      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-platform-engineer-storage-product-platform-development-4472762494",
-      "title": "Platform Engineer – Storage Product Platform Development — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Develop system software for storage arrays and platform enhancements\n• Work with C/C++/Python and Linux internals for enterprise storage solutions\n• Collaborate across hardware, firmware, and network teams on product development",
-      "date_published": "2026-09-28T16:39:04.995Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-oracle-epm-fccs-associate-4470883686",
-      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-oracle-epm-fccs-associate-4470883686",
-      "title": "Oracle EPM FCCS - Associate — PwC Acceleration Center India",
-      "content_text": "Company: PwC Acceleration Center India · Location: Bengaluru East, Karnataka, India\n• Support oracle fccs configuration for financial consolidation and close processes\n• Analyze financial reports and identify trends using oracle business intelligence\n• Assist with account reconciliation and data validation tasks\n• Work on budgeting, forecasting, and planning within oracle epm tools",
-      "date_published": "2026-09-28T16:17:06.073Z",
-      "authors": [
-        {
-          "name": "PwC Acceleration Center India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-uk-fullstack-developer-associate-4423635696",
-      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-uk-fullstack-developer-associate-4423635696",
-      "title": "UK_Fullstack developer_ Associate — PwC Acceleration Center India",
-      "content_text": "Company: PwC Acceleration Center India · Location: Greater Hyderabad Area\n• Develop tax technology solutions for compliance and reporting\n• Work with tax specialists and developers on automated systems\n• Use modern tech stacks and software skills in project tasks",
-      "date_published": "2026-09-28T16:08:56.930Z",
-      "authors": [
-        {
-          "name": "PwC Acceleration Center India"
         }
       ]
     }
