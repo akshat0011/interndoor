@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862",
+      "url": "https://interndoor.com/jobs/barclays-product-engineer-messaging-4471240862",
+      "title": "Product Engineer - Messaging — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and maintain messaging infrastructure using Exchange Online, SMTP gateways, and cloud security tools\n• Automate tasks with PowerShell/Python and implement secure configurations for infrastructure\n• Collaborate with product managers and architects to align IT solutions with business needs",
+      "date_published": "2026-09-29T03:25:52.120Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318",
+      "url": "https://interndoor.com/jobs/barclays-ccdeg-data-scientist-4471252318",
+      "title": "CCDEG Data Scientist — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and deploy machine learning models for customer-facing digital solutions\n• Work with Python, TensorFlow, PyTorch, and cloud platforms like AWS\n• Collaborate with cross-functional teams on scalable data science projects",
+      "date_published": "2026-09-29T03:25:22.637Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/esec-forte-technologies-dlp-security-engineer-4446575501",
       "url": "https://interndoor.com/jobs/esec-forte-technologies-dlp-security-engineer-4446575501",
       "title": "DLP - Security Engineer — eSec Forte® Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Texas Instruments India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/texas-instruments-india-software-engineer-4382496798",
-      "url": "https://interndoor.com/jobs/texas-instruments-india-software-engineer-4382496798",
-      "title": "Software Engineer — Texas Instruments India",
-      "content_text": "Company: Texas Instruments India · Location: Bengaluru, Karnataka, India\n• Develop safety-certified firmware for mmWave radar sensors and processors\n• Work on real-time radar control and diagnostic systems\n• Collaborate with hardware teams and support safety audits",
-      "date_published": "2026-09-28T14:34:00.172Z",
-      "authors": [
-        {
-          "name": "Texas Instruments India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471384995",
-      "url": "https://interndoor.com/jobs/zimmer-biomet-nlp-engineer-4471384995",
-      "title": "NLP Engineer — Zimmer Biomet",
-      "content_text": "Company: Zimmer Biomet · Location: Bengaluru, Karnataka, India\n• Build systems that read and process medical documents for regulatory and quality use cases\n• Use Python, LLM frameworks, and vector databases to extract structured data from unstructured text\n• Work on production-ready NLP pipelines with measurable quality and compliance standards",
-      "date_published": "2026-09-28T14:30:13.252Z",
-      "authors": [
-        {
-          "name": "Zimmer Biomet"
         }
       ]
     }
