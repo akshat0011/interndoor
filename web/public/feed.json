@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
+      "url": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
+      "title": "Frontend Developer — Joveo",
+      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield AI products from whiteboard to prototype\n• Work with React, Next.js, Node.js, and Express.js\n• Collaborate directly with leadership from first week",
+      "date_published": "2026-09-30T07:44:20.234Z",
+      "authors": [
+        {
+          "name": "Joveo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-react-js-developer-4433471833",
+      "url": "https://interndoor.com/jobs/infosys-react-js-developer-4433471833",
+      "title": "React.js Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Develop and maintain React.js applications with TypeScript\n• Collaborate with clients to deliver high-quality technical solutions\n• Troubleshoot production issues and conduct technical analysis",
+      "date_published": "2026-09-30T07:44:14.599Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/joveo-back-end-developer-4472126753",
+      "url": "https://interndoor.com/jobs/joveo-back-end-developer-4472126753",
+      "title": "Back End Developer — Joveo",
+      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Work with react, next.js, node.js, express, and databases\n• Collaborate with leadership and ship full-stack features",
+      "date_published": "2026-09-30T07:43:40.455Z",
+      "authors": [
+        {
+          "name": "Joveo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4472123836",
+      "url": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4472123836",
+      "title": "Embedded Systems Intern — Smowcode",
+      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Write and test C code for microcontrollers like ARM and AVR\n• Work with JSON and networking protocols for IoT devices\n• Debug hardware and software on development boards\n• Collaborate with team on embedded systems projects",
+      "date_published": "2026-09-30T07:33:17.970Z",
+      "authors": [
+        {
+          "name": "Smowcode"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
       "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
       "title": "Fullstack Developer- Internship — GreedyGame",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-data-engineer-pyspark-developer-4471744580",
-      "url": "https://interndoor.com/jobs/barclays-data-engineer-pyspark-developer-4471744580",
-      "title": "Data Engineer - PySpark Developer — Barclays",
-      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Build and maintain data pipelines using PySpark and AWS cloud technologies\n• Collaborate with stakeholders to design secure and scalable data solutions\n• Develop reusable frameworks and data quality controls for enterprise data",
-      "date_published": "2026-09-29T15:38:04.048Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-java-developer-4471741635",
-      "url": "https://interndoor.com/jobs/barclays-java-developer-4471741635",
-      "title": "JAVA Developer — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Develop scalable backend systems using Java and microservices\n• Work with Spring Boot, Kafka, Docker, and Kubernetes\n• Collaborate with cross-functional teams on cloud-native solutions",
-      "date_published": "2026-09-29T15:37:50.457Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-avp-4473287189",
-      "url": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-avp-4473287189",
-      "title": "Infrastructure Engineer, AVP — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Design and maintain cloud infrastructure for data transformation projects\n• Work with AWS, Kafka, and DevOps tools to build scalable solutions\n• Collaborate across teams to develop secure and automated data products",
-      "date_published": "2026-09-29T15:34:30.570Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-4473290099",
-      "url": "https://interndoor.com/jobs/natwest-group-infrastructure-engineer-4473290099",
-      "title": "Infrastructure Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Design and maintain cloud infrastructure for public and private environments\n• Work with AWS and other cloud platforms to build scalable data solutions\n• Collaborate across teams to develop secure, automated data products",
-      "date_published": "2026-09-29T15:34:16.092Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
         }
       ]
     }
