@@ -649,17 +649,22 @@ export async function writeJobsFile(store, cfg) {
        Misc posting is still a live page, still in every sitemap and feed — it
        is only kept off the WhatsApp channel and the reels, which read it here
        rather than re-deriving it. */
-    .map(({ row, matchedNow, region }) => ({
-      ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
-      /* A Software-shelf role the model reads as non-software work, AND whose
-         title names such a discipline, moves to Misc (shelfMove — two signals,
-         never Software from Misc). */
-      category: (() => {
-        const shelf = roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus).category;
-        return (cfg.titles?.moveToMisc ? shelfMove(shelf, row.discipline, row.title) : null) ?? shelf;
-      })(),
-      region,
-    }));
+    .map(({ row, matchedNow, region }) => {
+      const rc = roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus);
+      return {
+        ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
+        /* A Software-shelf role the model reads as non-software work, AND whose
+           title names such a discipline, moves to Misc (shelfMove — two signals,
+           never Software from Misc). */
+        category: (cfg.titles?.moveToMisc ? shelfMove(rc.category, row.discipline, row.title) : null) ?? rc.category,
+        /* THE ROLE FAMILY, from the same call that decides the shelf, so the
+           role pages (src/rolepages.js) and the shelves cannot disagree about
+           what a posting is. Decided once here, like the shelf, and read by
+           every page rather than re-derived. */
+        family: rc.family,
+        region,
+      };
+    });
   /* One role, one shelf: city copies labelled differently must not put the
      same card under two tabs (settleShelves). */
   const publicJobs = settleShelves(shelved)
@@ -1000,6 +1005,10 @@ export function publishedPaths() {
        those trees are allowlisted by directory. */
     'web/public/skills',
     'web/public/locations',
+    /* India's role pages, /roles and /roles/<role>[-in-<city>] (1 Oct 2026) —
+       the same root-level trap as the facets: missing here they are written
+       every run and pushed never. */
+    'web/public/roles',
     /* InternDoor's own opening at /careers/. Hand-written rather than
        generated, and it has to be listed here for the same reason /alerts and
        /report are: a file missing from this list is written once and pushed

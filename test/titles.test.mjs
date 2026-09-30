@@ -129,7 +129,7 @@ console.log('\n== wired where it counts ==');
   check('and carries the original as slugTitle whenever they differ',
     (pub.match(/\.\.\.\(publishedTitle\(row\) !== row\.title \? \{ slugTitle: row\.title \} : \{\}\)/g) ?? []).length, 2);
   check('a Misc move happens only behind titles.moveToMisc',
-    /cfg\.titles\?\.moveToMisc \? shelfMove\(shelf, row\.discipline, row\.title\) : null/.test(pub), true);
+    /cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title\) : null/.test(pub), true);
   const idx = strip('../src/index.js');
   const at = (s) => idx.indexOf(s);
   check('each scan reads titles after enrichment and before the publish',

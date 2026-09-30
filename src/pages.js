@@ -26,6 +26,7 @@ import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity } from './facets.js';
+import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
 
 export const SITE = 'https://interndoor.com';
 
@@ -369,9 +370,17 @@ function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VAL
      expired posting is the manual-action case. publish already drops such a
      row (deadlinePassed); this keeps the page safe without relying on that. */
   if (deadlinePassed(job, region)) return null;
-  const description = `<p>${esc(job.roleLabel || job.title)}</p><ul>${
-    (job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')
-  }</ul>`;
+  /* OUR OWN SUMMARY, THEN THE DUTIES, THEN THE SKILLS — never the employer's
+     text (rule 1 at the top of this file). It used to be the role label and the
+     bullets alone, a dozen words on most pages, against Google's ask that the
+     description be the job's full description; the summary and the skills are
+     already on the page, so this states nothing the reader cannot see. */
+  const skills = (job.keySkills ?? []).length ? job.keySkills : (job.skills ?? []);
+  const description = [
+    `<p>${esc(job.summary || job.roleLabel || job.title)}</p>`,
+    `<ul>${(job.bullets ?? []).map((b) => `<li>${esc(b)}</li>`).join('')}</ul>`,
+    skills.length ? `<p>Skills: ${esc(skills.slice(0, 10).join(', '))}</p>` : '',
+  ].join('');
 
   const ld = {
     '@context': 'https://schema.org/',
@@ -1487,7 +1496,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -1779,7 +1788,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set(), cityPages = new Set(), past = null } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set(), cityPages = new Set(), past = null, role = null, similar = [] } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = jobPageIndexable(job, region);
@@ -1973,6 +1982,10 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
     // Stored on every row, and the JSON-LD already states it to Google; a
     // reader arriving from search had to infer it from the title.
     ['Type', job.employmentType === FULL_TIME ? `Full-time, ${esc(entryWord(region))}` : 'Internship'],
+    /* The role page this posting is listed on (src/rolepages.js), when one is
+       written. `role` is only passed for a page that exists, so this can never
+       link a /roles/ URL that 404s. */
+    role ? ['Role type', `<a href="${regionHref(`/roles/${role.slug}`, region)}">${esc(role.name)}</a>`] : null,
     job.roleLabel ? ['Focus', esc(job.roleLabel)] : null,
     // Level and field as two rows, in words — see eligibilityOf. This row used
     // to print the enricher's codes: "UG/PG · Computer Science".
@@ -2238,6 +2251,14 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <a class="strip-more" href="${hub}">All ${esc(job.company)} roles →</a>
       </div>
       <div class="tiles">${others.map((j) => tile(j, { showCompany: false, region })).join('')}</div>
+    </section>` : ''}
+
+    ${similar.length ? `<section class="strip">
+      <div class="strip-head">
+        <h2>Similar roles at other companies</h2>
+        ${role ? `<a class="strip-more" href="${regionHref(`/roles/${role.slug}`, region)}">All ${esc(lcFirst(role.name))} roles →</a>` : ''}
+      </div>
+      <div class="tiles">${similar.map((j) => tile(j, { region })).join('')}</div>
     </section>` : ''}
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
@@ -3154,7 +3175,7 @@ export function hiringRecord(company, rows, region = DEFAULT_REGION, record = nu
     </section>`;
 }
 
-export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], skillPages = new Set(), record = null } = {}) {
+export function renderCompanyPage(company, jobs, past = [], logo = '', { region = DEFAULT_REGION, alsoIn = [], skillPages = new Set(), record = null, roleLinks = [] } = {}) {
   const url = regionUrl(`/companies/${companySlug(company)}`, region);
 
   /**
@@ -3371,6 +3392,12 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     ${profileSections(company, profile, region, { skipDegrees: true, lede })}
 
     ${hiringRecord(company, internRows, region, record, { fullTime: fullTimeTracked })}
+
+    ${roleLinks.length ? `<section class="strip">
+      <div class="strip-head"><h2>More roles like these</h2></div>
+      <p class="cp-note">Other employers hiring for the kinds of role ${esc(company)} posts.</p>
+      <ul class="cp-chips">${roleLinks.map((r) => `<li><a href="${regionHref(r.href, region)}">${esc(r.label)}</a></li>`).join('')}</ul>
+    </section>` : ''}
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>
@@ -4260,7 +4287,7 @@ function fillMarker(html, name, contents) {
  * `/_vercel/…`, none of which are per-region and all of which would 404 under a
  * prefix. Job links are generated below and already carry theirs.
  */
-const REGION_LINKS = ['/companies', '/skills', '/alerts', '/applications', '/feed.xml', '/feed.json', '/data/jobs.json'];
+const REGION_LINKS = ['/companies', '/roles', '/skills', '/alerts', '/applications', '/feed.xml', '/feed.json', '/data/jobs.json'];
 
 function localiseLinks(html, region) {
   const prefix = regionPath(region.code);
@@ -4372,7 +4399,7 @@ export function homeHubs(jobs, limit = HOME_HUBS) {
   return out.sort((a, b) => b.roles - a.roles || a.name.localeCompare(b.name)).slice(0, limit);
 }
 
-function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null, channels = []) {
+function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = null, channels = [], browse = { roles: [], cities: [] }) {
   const templatePath = join(publicDir, 'index.html');
   if (!existsSync(templatePath)) return 0;
   const template = readFileSync(templatePath, 'utf8');
@@ -4399,9 +4426,20 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
      own. The non-breaking spaces keep each dot with the name before it and the
      arrow with its words, so a wrapped line never starts with "·" or "→". */
   const hubs = homeHubs(jobs);
+  /* The role and city pages beside the employers — 1 Oct 2026. The homepage
+     is the one page every crawl starts from, and it linked the hubs and none of
+     the pages written for the queries people type ("devops jobs",
+     "internships in pune"). Same markup and marker as the employers line, so
+     no template edit and no CSS. */
+  const roleLine = (browse.roles ?? []).length
+    ? `<p class="dim home-hubs"><b>By role:</b> ${browse.roles.map((r) => `<a href="${regionHref(`/roles/${r.slug}`, region)}">${esc(r.def.name)}</a>&nbsp;·`).join(' ')} <a href="${regionHref('/roles/', region)}">All&nbsp;roles&nbsp;→</a></p>`
+    : '';
+  const cityLine = (browse.cities ?? []).length
+    ? `<p class="dim home-hubs"><b>By city:</b> ${browse.cities.map((c) => `<a href="${regionHref(`/locations/${c.slug}`, region)}">${esc(c.label)}</a>&nbsp;·`).join(' ')} <a href="${regionHref('/locations/', region)}">All&nbsp;cities&nbsp;→</a></p>`
+    : '';
   html = fillMarker(html, 'HUBS', `<p class="dim home-hubs">${hubs.length
     ? `<b>Hiring now:</b> ${hubs.map((h) => `<a href="${regionHref(`/companies/${h.slug}`, region)}">${esc(h.name)}</a>&nbsp;·`).join(' ')} `
-    : ''}<a href="/companies">All&nbsp;companies&nbsp;→</a></p>`) ?? html;
+    : ''}<a href="/companies">All&nbsp;companies&nbsp;→</a></p>${roleLine}${cityLine}`) ?? html;
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
   html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs)) ?? html;
@@ -4620,7 +4658,7 @@ export function facetInsights(kind, rows) {
  * only from its index, which is exactly the problem the company hubs had until
  * they were taught to link sideways.
  */
-export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_REGION, otherPages = new Set() } = {}) {
+export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_REGION, otherPages = new Set(), roleLinks = [] } = {}) {
   const k = FACET_KINDS[kind];
   if (!k) throw new Error(`renderFacetPage: unknown kind ${kind}`);
   const path = `/${k.dir}/${facet.slug}`;
@@ -4655,13 +4693,20 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
       <span>${esc(kind === 'skill' ? titleCaseSkill(facet.label) : facet.label)}</span>
     </nav>
     <h1>${esc(k.heading(facet.label, region, both))}</h1>
-    <p class="summary">${esc(lede)} Every listing links to the employer's own posting.</p>
+    <p class="summary">${esc(lede)} Every listing links to the original posting.</p>
     ${ins.payLine ? `<p class="dim">${esc(ins.payLine)}</p>` : ''}
 
     ${ins.employers.length ? `<section class="strip">
       <div class="strip-head"><h2>Who is hiring</h2></div>
       <ul class="cp-chips">
         ${ins.employers.map((e) => `<li><a href="${regionHref(`/companies/${e.slug}`, region)}">${esc(e.name)} · ${e.n}</a></li>`).join('\n        ')}
+      </ul>
+    </section>` : ''}
+
+    ${roleLinks.length ? `<section class="strip">
+      <div class="strip-head"><h2>By role</h2></div>
+      <ul class="cp-chips">
+        ${roleLinks.map((r) => `<li><a href="${regionHref(r.href, region)}">${esc(r.label)} · ${r.n}</a></li>`).join('\n        ')}
       </ul>
     </section>` : ''}
 
@@ -4730,6 +4775,392 @@ export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } 
   </div>
 </main>
 ${foot({ headline: 'Get new roles as they open', sub: 'One email when something matching lands.', region })}`;
+}
+
+/* ------------------------------------------------------------------ roles
+   /roles, /roles/<role> and /roles/<role>-in-<city> — 1 Oct 2026. Which pages
+   exist, and why the thresholds are what they are, is src/rolepages.js. Every
+   number on these pages is counted from the live rows behind them; the one
+   hand-written paragraph per role (`about`) describes the field and claims no
+   figure. */
+
+/** Tiles per kind on a role page; the rest is an honest count and a link. */
+const ROLE_TILES = 30;
+
+/**
+ * What a role page counts over its own live rows. Every list is ordered by
+ * count and then by name — facetInsights' rule — so a publish of the same rows
+ * writes the same bytes (§10).
+ */
+export function roleInsights(rows = []) {
+  const withCities = facetInsights('skill', rows);
+  const withSkills = facetInsights('city', rows);
+  const titles = new Map();
+  for (const j of rows) {
+    const t = String(j.title ?? '').replace(/\s+/g, ' ').trim();
+    if (!t) continue;
+    const e = titles.get(t.toLowerCase()) ?? { name: t, n: 0 };
+    e.n++;
+    titles.set(t.toLowerCase(), e);
+  }
+  const interns = rows.filter((j) => j.employmentType !== FULL_TIME);
+  const fullTime = rows.filter((j) => j.employmentType === FULL_TIME);
+  return {
+    employers: withCities.employers,
+    cities: withCities.other,
+    skills: withSkills.other,
+    /* A title seen once is one employer's wording, not a common title. */
+    titles: [...titles.values()].filter((t) => t.n >= 2).sort((a, b) => b.n - a.n || a.name.localeCompare(b.name)).slice(0, 8),
+    interns,
+    fullTime,
+    companies: new Set(rows.map((j) => companySlug(j.company ?? ''))).size,
+    paidInterns: interns.filter((j) => stipendText(j)).length,
+    paidFullTime: fullTime.filter((j) => stipendText(j)).length,
+  };
+}
+
+/** "Software engineering" -> "software engineering", but "DevOps", "AI", "IT" and "SAP" keep their capitals. */
+function lcFirst(s) {
+  const first = String(s).split(/[\s,(]/)[0];
+  return /[A-Z]/.test(first.slice(1)) ? s : s.charAt(0).toLowerCase() + s.slice(1);
+}
+
+/** The <title>: the full phrase where it fits in 60 characters, a shorter one where it does not. */
+function roleTitle(def, where, kinds, region) {
+  const tries = kinds.interns && kinds.fullTime
+    ? [`${def.title} Internships & ${entryWordTitle(region)} Jobs ${where}`, `${def.title} Internships & Jobs ${where}`]
+    : kinds.interns
+      ? [`${def.title} Internships ${where}`]
+      : [`${entryWordTitle(region)} ${def.title} Jobs ${where}`];
+  return buildTitle([tries.find((t) => t.length <= TITLE_MAX) ?? tries[tries.length - 1]]);
+}
+
+/**
+ * The meta description. It names "fresher" where the page carries full-time
+ * roles: that is the word India searches with ("fresher jobs"), while the
+ * site's own word, in every heading and title, stays "entry-level" (his call,
+ * 19 Sep 2026). A description is where a searcher's word belongs.
+ */
+function roleDescription(def, where, rows, ins, region) {
+  const kind = ins.fullTime.length
+    ? (ins.interns.length ? `internships and ${entryWord(region)} (fresher) jobs` : `${entryWord(region)} (fresher) jobs`)
+    : 'internships';
+  return clampWords(`${def.name} ${kind} ${where}: ${countedOffer(rows, region, { adjective: '' })} from ${ins.companies} compan${ins.companies === 1 ? 'y' : 'ies'}, updated every 30 minutes.`, 155);
+}
+
+function roleHeading(def, where, kinds, region) {
+  if (kinds.interns && kinds.fullTime) return `${def.name} internships and ${entryWord(region)} jobs ${where}`;
+  if (kinds.interns) return `${def.name} internships ${where}`;
+  return `${def.name} ${entryWord(region)} jobs ${where}`;
+}
+
+/** One tile per ROLE, newest first, each saying how many cities it runs in. */
+function roleTiles(rows, region) {
+  const count = new Map();
+  for (const j of rows) count.set(roleKey(j), (count.get(roleKey(j)) ?? 0) + 1);
+  const seen = new Set();
+  const one = newestFirst(rows).filter((j) => {
+    const k = roleKey(j);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+  return {
+    total: one.length,
+    html: one.slice(0, ROLE_TILES).map((j) => `<li>${tile(j, { region, locations: count.get(roleKey(j)) ?? 1 })}</li>`).join('\n      '),
+    shown: Math.min(one.length, ROLE_TILES),
+  };
+}
+
+/** A chip list; an item whose `href` returns '' is plain text, never a link to a page that does not exist. */
+function chipList(items, href) {
+  return `<ul class="cp-chips">
+        ${items.map((e) => {
+          const h = href(e);
+          return `<li>${h ? `<a href="${h}">${esc(e.name)} · ${e.n}</a>` : `<span>${esc(e.name)} · ${e.n}</span>`}</li>`;
+        }).join('\n        ')}
+      </ul>`;
+}
+
+/**
+ * The questions a student searching "<role> jobs" is asking, answered from the
+ * rows. Same markup as the company hub's (qaBlock), so no new CSS. Plain
+ * content, deliberately NOT FAQPage markup: Google has shown FAQ rich results
+ * only for government and health sites since 2023, and markup that earns
+ * nothing is just more to get wrong.
+ */
+function roleQa(def, ins, region, where, { byCity = true } = {}) {
+  const phrase = esc(lcFirst(def.name));
+  const top = (list, n) => andList(list.slice(0, n).map((e) => `<b>${esc(e.name)}</b> (${e.n})`));
+  const total = ins.interns.length + ins.fullTime.length;
+  const qa = [];
+  if (ins.employers.length) {
+    qa.push([`Which companies are hiring for ${phrase} roles ${esc(where)}?`,
+      `${top(ins.employers, 3)} ${ins.employers.length === 1 ? 'has' : 'have'} the most open right now, out of ${ins.companies} compan${ins.companies === 1 ? 'y' : 'ies'} hiring.`]);
+  }
+  if (byCity && ins.cities.length >= 2) {
+    const [first, ...rest] = ins.cities;
+    qa.push([`Which city has the most ${phrase} roles?`,
+      `<b>${esc(first.name)}</b>, with ${first.n} of the ${total} open, then ${andList(rest.slice(0, 2).map((e) => `${esc(e.name)} (${e.n})`))}.`]);
+  }
+  if (ins.skills.length >= 3) {
+    qa.push([`What skills do ${phrase} roles ask for?`,
+      `The skills these postings name most often are ${top(ins.skills, 5)}. Each posting lists its own; the job pages show them.`]);
+  }
+  if (ins.interns.length && ins.fullTime.length) {
+    qa.push([`Are these internships or full-time jobs?`,
+      `Both: <b>${ins.interns.length}</b> internship${ins.interns.length === 1 ? '' : 's'} and <b>${ins.fullTime.length}</b> ${esc(entryWord(region))} full-time job${ins.fullTime.length === 1 ? '' : 's'} for freshers and recent graduates.`]);
+  }
+  const pay = [
+    ins.interns.length ? `${ins.paidInterns ? `${ins.paidInterns} of the ${ins.interns.length}` : `None of the ${ins.interns.length}`} internship${ins.interns.length === 1 ? '' : 's'} state${ins.paidInterns === 1 ? 's' : ''} a stipend` : '',
+    ins.fullTime.length ? `${ins.paidFullTime ? `${ins.paidFullTime} of the ${ins.fullTime.length}` : `none of the ${ins.fullTime.length}`} ${esc(entryWord(region))} job${ins.fullTime.length === 1 ? '' : 's'} state${ins.paidFullTime === 1 ? 's' : ''} a salary` : '',
+  ].filter(Boolean);
+  if (pay.length) {
+    qa.push([`Do ${phrase} roles state the pay?`,
+      `${pay.join('; ').replace(/^./, (c) => c.toUpperCase())}. Where a posting says nothing, its original listing is the place to check.`]);
+  }
+  if (qa.length < 2) return '';
+  return `<section class="strip">
+      <div class="strip-head"><h2>Questions students ask</h2></div>
+      <div class="qa">${qa.map(([q, a]) => `<div><h3>${q}</h3><p>${a}</p></div>`).join('')}</div>
+    </section>`;
+}
+
+/** The body every role page shares; the caller supplies what differs. */
+function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHref, skillPages, links = '', related = '', byCity = true }) {
+  const internTiles = roleTiles(ins.interns, region);
+  const fullTiles = roleTiles(ins.fullTime, region);
+  const facts = [
+    ['Open now', String(rows.length)],
+    ins.interns.length ? ['Internships', String(ins.interns.length)] : null,
+    ins.fullTime.length ? [`${entryWordCap(region)} jobs`, String(ins.fullTime.length)] : null,
+    ['Companies hiring', String(ins.companies)],
+    byCity && ins.cities[0] ? ['Top city', esc(ins.cities[0].name)] : null,
+  ].filter(Boolean);
+  const list = (label, t) => (t.total ? `<section class="strip">
+      <div class="strip-head"><h2>${esc(label)}</h2></div>
+      <ul class="feed">
+      ${t.html}
+      </ul>
+      ${t.total > t.shown ? `<p class="dim">Showing the ${t.shown} newest of ${t.total}. <a href="${regionHref('/', region)}">See every live role on the board</a>.</p>` : ''}
+    </section>` : '');
+
+  return `<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      ${crumbs}
+    </nav>
+    <h1>${esc(heading)}</h1>
+    <p class="summary">${esc(lede)} Every listing links to the original posting.</p>
+    <dl class="cp-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
+    ${links}
+
+    <section class="strip">
+      <div class="strip-head"><h2>What the work is</h2></div>
+      <p class="cp-note">${esc(def.about)}</p>
+    </section>
+
+    ${ins.employers.length ? `<section class="strip">
+      <div class="strip-head"><h2>Who is hiring</h2></div>
+      ${chipList(ins.employers, (e) => regionHref(`/companies/${e.slug}`, region))}
+    </section>` : ''}
+
+    ${byCity && ins.cities.length ? `<section class="strip">
+      <div class="strip-head"><h2>Where these roles are</h2></div>
+      ${chipList(ins.cities, cityHref)}
+    </section>` : ''}
+
+    ${ins.skills.length ? `<section class="strip">
+      <div class="strip-head"><h2>Skills these roles ask for</h2></div>
+      ${chipList(ins.skills, (e) => (skillPages.has(e.slug) ? regionHref(`/skills/${e.slug}`, region) : ''))}
+    </section>` : ''}
+
+    ${ins.titles.length >= 3 ? `<section class="strip">
+      <div class="strip-head"><h2>Common job titles</h2></div>
+      ${chipList(ins.titles, () => '')}
+    </section>` : ''}
+
+    ${list('Internships', internTiles)}
+    ${list(`${entryWordCap(region)} jobs`, fullTiles)}
+
+    ${roleQa(def, ins, region, where, { byCity })}
+
+    ${related}
+  </div>
+</main>`;
+}
+
+function roleCrumbLd(items) {
+  return `<script type="application/ld+json">${jsonLd({
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, ...(item ? { item } : {}) })),
+  })}</script>\n`;
+}
+
+/**
+ * One role page, /roles/<role>. `roles` is every role page on the board and
+ * `combos` every role-in-a-city page, so this page links sideways to both —
+ * without them it is a crawl dead end reachable only from its index.
+ */
+export function renderRolePage(group, { region = DEFAULT_REGION, roles = [], combos = [], skillPages = new Set(), cityPages = new Set() } = {}) {
+  const { def } = group;
+  const rows = group.jobs;
+  const ins = roleInsights(rows);
+  const kinds = { interns: ins.interns.length, fullTime: ins.fullTime.length };
+  const where = region.inName;
+  const path = `/roles/${group.slug}`;
+  const mine = new Map(combos.filter((c) => c.roleSlug === group.slug).map((c) => [c.citySlug, c]));
+  const cityHref = (e) => (mine.has(e.slug)
+    ? regionHref(`/roles/${mine.get(e.slug).slug}`, region)
+    : cityPages.has(e.slug) ? regionHref(`/locations/${e.slug}`, region) : '');
+  const lede = `${countedOffer(rows, region, { live: true, adjective: '' })} in ${lcFirst(def.name)} ${where}, from ${ins.companies} compan${ins.companies === 1 ? 'y' : 'ies'}.`;
+  const others = roles.filter((r) => r.slug !== group.slug);
+
+  const links = mine.size ? `<p class="dim">${[...mine.values()].map((c) =>
+    `<a href="${regionHref(`/roles/${c.slug}`, region)}">${esc(def.name)} in ${esc(c.city)}</a>`).join(' · ')}</p>` : '';
+  const related = others.length ? `<section class="strip">
+      <div class="strip-head"><h2>Other roles</h2><a class="strip-more" href="${regionHref('/roles/', region)}">All roles →</a></div>
+      ${chipList(others.map((r) => ({ name: r.def.name, n: r.jobs.length, slug: r.slug })), (r) => regionHref(`/roles/${r.slug}`, region))}
+    </section>` : '';
+
+  return `${head({
+    title: roleTitle(def, where, kinds, region),
+    description: roleDescription(def, where, rows, ins, region),
+    canonical: regionUrl(path, region),
+    indexable: true,
+    region,
+    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)], [def.name, null]]),
+  })}
+${roleBody({
+    rows, ins, def, region, where, lede, cityHref, skillPages, links, related,
+    heading: roleHeading(def, where, kinds, region),
+    crumbs: `<a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span>
+      <a href="${regionHref('/roles/', region)}">Roles</a> <span aria-hidden="true">/</span>
+      <span>${esc(def.name)}</span>`,
+  })}
+${foot({ headline: 'Get these as they open', sub: `New ${lcFirst(def.name)} roles, the minute they are listed.`, region })}`;
+}
+
+/** One role in one city, /roles/<role>-in-<city>. */
+export function renderRoleCityPage(combo, { region = DEFAULT_REGION, combos = [], skillPages = new Set(), cityPages = new Set() } = {}) {
+  const { def, city } = combo;
+  const rows = combo.jobs;
+  const ins = roleInsights(rows);
+  const kinds = { interns: ins.interns.length, fullTime: ins.fullTime.length };
+  const where = `in ${city}`;
+  const path = `/roles/${combo.slug}`;
+  const lede = `${countedOffer(rows, region, { live: true, adjective: '' })} in ${lcFirst(def.name)} ${where}, from ${ins.companies} compan${ins.companies === 1 ? 'y' : 'ies'}.`;
+  const sameCity = combos.filter((c) => c.citySlug === combo.citySlug && c.slug !== combo.slug);
+  const sameRole = combos.filter((c) => c.roleSlug === combo.roleSlug && c.slug !== combo.slug);
+
+  const links = `<p class="dim"><a href="${regionHref(`/roles/${combo.roleSlug}`, region)}">All ${esc(lcFirst(def.name))} roles ${esc(region.inName)}</a>${cityPages.has(combo.citySlug)
+    ? ` · <a href="${regionHref(`/locations/${combo.citySlug}`, region)}">Every role in ${esc(city)}</a>` : ''}</p>`;
+  const related = [
+    sameCity.length ? `<section class="strip">
+      <div class="strip-head"><h2>Other roles in ${esc(city)}</h2></div>
+      ${chipList(sameCity.map((c) => ({ name: c.def.name, n: c.jobs.length, slug: c.slug })), (c) => regionHref(`/roles/${c.slug}`, region))}
+    </section>` : '',
+    sameRole.length ? `<section class="strip">
+      <div class="strip-head"><h2>${esc(def.name)} in other cities</h2></div>
+      ${chipList(sameRole.map((c) => ({ name: c.city, n: c.jobs.length, slug: c.slug })), (c) => regionHref(`/roles/${c.slug}`, region))}
+    </section>` : '',
+  ].join('\n    ');
+
+  return `${head({
+    title: roleTitle(def, where, kinds, region),
+    description: roleDescription(def, where, rows, ins, region),
+    canonical: regionUrl(path, region),
+    indexable: true,
+    region,
+    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)],
+      [def.name, regionUrl(`/roles/${combo.roleSlug}`, region)], [city, null]]),
+  })}
+${roleBody({
+    rows, ins, def, region, where, lede, skillPages, links, related, byCity: false, cityHref: () => '',
+    heading: roleHeading(def, where, kinds, region),
+    crumbs: `<a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span>
+      <a href="${regionHref('/roles/', region)}">Roles</a> <span aria-hidden="true">/</span>
+      <a href="${regionHref(`/roles/${combo.roleSlug}`, region)}">${esc(def.name)}</a> <span aria-hidden="true">/</span>
+      <span>${esc(city)}</span>`,
+  })}
+${foot({ headline: 'Get these as they open', sub: `New ${lcFirst(def.name)} roles in ${city}, the minute they are listed.`, region })}`;
+}
+
+/** /roles — the crawl path to every role page, as /companies is to the hubs. */
+export function renderRoleIndex(roles = [], combos = [], { region = DEFAULT_REGION } = {}) {
+  const total = roles.reduce((n, r) => n + r.jobs.length, 0);
+  const lede = `Browse live ${offerPhrase(region)} ${region.inName} by the kind of work: ${roles.length} role${roles.length === 1 ? '' : 's'} across ${total} listings, updated every 30 minutes.`;
+  return `${head({
+    title: buildTitle([`Internships & ${entryWordTitle(region)} Jobs by Role ${region.inName}`]),
+    description: clampWords(lede, 155),
+    canonical: regionUrl('/roles/', region),
+    /* Thin until there is something to browse, like the facet indexes. */
+    indexable: roles.length >= 3,
+    region,
+    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', null]]),
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span> <span>Roles</span>
+    </nav>
+    <h1>Internships and ${esc(entryWord(region))} jobs ${esc(region.inName)} by role</h1>
+    <p class="summary">${esc(lede)}</p>
+    <div class="dir">
+      ${roles.map((r) => `<a class="dir-card" href="${regionHref(`/roles/${r.slug}`, region)}">
+        <span class="dir-t">
+          <span class="dir-name">${esc(r.def.name)}</span>
+          <span class="dir-n">${r.jobs.length} open role${r.jobs.length === 1 ? '' : 's'}</span>
+        </span>
+      </a>`).join('\n      ')}
+    </div>
+    ${combos.length ? `<section class="strip">
+      <div class="strip-head"><h2>By role and city</h2></div>
+      ${chipList(combos.map((c) => ({ name: `${c.def.name} in ${c.city}`, n: c.jobs.length, slug: c.slug })), (c) => regionHref(`/roles/${c.slug}`, region))}
+    </section>` : ''}
+  </div>
+</main>
+${foot({ headline: 'Get new roles as they open', sub: 'One message the minute something lands.', region })}`;
+}
+
+/**
+ * The job page's "Similar roles at other companies" strip — 1 Oct 2026.
+ *
+ * WHY. Google had 238 India job pages in "Discovered – currently not indexed"
+ * on 30 Sep: it knew the URLs and had not crawled them. A job page was linked
+ * from its hub, the sitemap and, for fifty of them, the homepage — and from no
+ * other job page, because its only sideways strip was its own employer's. This
+ * gives every indexable job page links FROM about six others in its field.
+ *
+ * WHICH SIX. Same role page (or, where the posting has none, the same shelf);
+ * another employer (the employer's own roles have their strip already); an
+ * indexable page (a link to a noindex page spends crawl on nothing); one per
+ * role; the same city first. Within that, ordered by stableRank — never newest
+ * first, which would rewrite every job page in the family on every new posting
+ * (see stableRank in rolepages.js).
+ */
+export const SIMILAR_MAX = 6;
+export function similarRoles(job, candidates = [], n = SIMILAR_MAX) {
+  const mine = companySlug(job.company ?? '');
+  const here = canonicalCity(job.location);
+  const seen = new Set([roleKey(job)]);
+  const ranked = candidates
+    /* The employer check also excludes the posting itself — it is at its own
+       employer — so no separate id check (one was tried and no test could
+       tell it apart). */
+    .filter((c) => companySlug(c.company ?? '') !== mine && isIndexable(c))
+    .map((c) => ({ c, near: here && canonicalCity(c.location) === here ? 0 : 1, r: stableRank(job.id, c.id) }))
+    .sort((a, b) => a.near - b.near || a.r - b.r || String(a.c.id).localeCompare(String(b.c.id)));
+  const out = [];
+  for (const { c } of ranked) {
+    const k = roleKey(c);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(c);
+    if (out.length >= n) break;
+  }
+  return out;
 }
 
 /* A REPOSTED ROLE'S OLD URL, POINTED AT THE ONE THAT REPLACED IT.
@@ -4964,6 +5395,40 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   const skillPages = new Set(facets.skills.map((f) => f.slug));
   const cityPages = new Set(facets.cities.map((f) => f.slug));
 
+  /* Role pages (src/rolepages.js), from the same indexable rows the facets use.
+     Computed before the job pages, which link their role page and draw their
+     "similar roles" from the same grouping. */
+  const roleSet = roleGroups(jobs.filter(isIndexable));
+  const rolePageBySlug = new Map(roleSet.roles.map((r) => [r.slug, r.def]));
+  const comboBySlug = new Map(roleSet.combos.map((c) => [c.slug, c]));
+  /* Every live posting by role page and by shelf, whether or not the role page
+     itself is written — similarRoles filters to indexable pages on its own. */
+  const rolePool = new Map();
+  const shelfPool = new Map();
+  for (const j of jobs) {
+    const d = rolePageOf(j);
+    if (d) { if (!rolePool.has(d.slug)) rolePool.set(d.slug, []); rolePool.get(d.slug).push(j); }
+    const shelf = j.category ?? 'software';
+    if (!shelfPool.has(shelf)) shelfPool.set(shelf, []);
+    shelfPool.get(shelf).push(j);
+  }
+  /* The role pages a set of rows falls on, biggest first, each linked to its
+     role-in-this-city page where one exists. Only pages that are written. */
+  const rolesFor = (rows, citySlug = '') => {
+    const t = new Map();
+    for (const j of rows ?? []) {
+      const d = rolePageOf(j);
+      if (!d || !rolePageBySlug.has(d.slug)) continue;
+      const e = t.get(d.slug) ?? { slug: d.slug, name: d.name, n: 0 };
+      e.n++;
+      t.set(d.slug, e);
+    }
+    return [...t.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name)).slice(0, 8).map((e) => {
+      const combo = citySlug ? comboBySlug.get(roleCitySlug(e.slug, citySlug)) : null;
+      return { ...e, href: `/roles/${combo ? combo.slug : e.slug}`, label: combo ? `${e.name} in ${combo.city}` : e.name };
+    });
+  };
+
   /* Written BEFORE the real pages so a live page always wins the name: if a
      slug is somehow both a redirect source and a real posting, the loop below
      overwrites the stub rather than the stub replacing a listing. */
@@ -4995,9 +5460,12 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   for (const job of jobs) {
     const name = `${jobSlug(job)}.html`;
     wanted.add(join(jobsDir, name));
+    const def = rolePageOf(job);
+    const role = def && rolePageBySlug.has(def.slug) ? { slug: def.slug, name: def.name } : null;
+    const similar = similarRoles(job, def ? (rolePool.get(def.slug) ?? []) : (shelfPool.get(job.category ?? 'software') ?? []));
     trackJob(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages, cityPages, past: pastByCompany.get(job.company) ?? null })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages, cityPages, past: pastByCompany.get(job.company) ?? null, role, similar })),
       `/jobs/${jobSlug(job)}`);
   }
 
@@ -5033,6 +5501,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
           alsoIn: [...new Map((foreign.get(company) ?? []).map((e) => [e.region.code, e.region])).values()],
           skillPages,
           record: recordFor(company),
+          roleLinks: rolesFor(employerRows(byCompany.get(company), pastByCompany.get(company))),
         })),
       `/companies/${companySlug(company)}`);
   }
@@ -5066,7 +5535,11 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     for (const f of list) {
       const name = `${f.slug}.html`;
       wanted.add(join(dir, name));
-      trackFacet(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region, otherPages: kind === 'skill' ? cityPages : skillPages })),
+      trackFacet(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, {
+        region,
+        otherPages: kind === 'skill' ? cityPages : skillPages,
+        roleLinks: rolesFor(f.jobs, kind === 'city' ? f.slug : ''),
+      })),
         `/${seg}/${f.slug}`);
     }
     // The index is the crawl path to every facet page, exactly as /companies/
@@ -5074,6 +5547,27 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     // each facet page resolves; renderFacetIndex noindexes a thin one itself.
     wanted.add(join(dir, 'index.html'));
     trackFacet(writeIfChanged(join(dir, 'index.html'), renderFacetIndex(kind, list, { region })), `/${seg}`);
+  }
+
+  /* Role pages — /roles, /roles/<role> and /roles/<role>-in-<city>. Pruned
+     by the same sweep as the facets (facetDirs), so a role that falls below
+     its bar loses its page on the next publish rather than going stale. */
+  {
+    const dir = join(root, 'roles');
+    mkdirSync(dir, { recursive: true });
+    facetDirs.push([dir, 'roles']);
+    for (const r of roleSet.roles) {
+      wanted.add(join(dir, `${r.slug}.html`));
+      track(writeIfChanged(join(dir, `${r.slug}.html`),
+        renderRolePage(r, { region, roles: roleSet.roles, combos: roleSet.combos, skillPages, cityPages })), `/roles/${r.slug}`);
+    }
+    for (const c of roleSet.combos) {
+      wanted.add(join(dir, `${c.slug}.html`));
+      track(writeIfChanged(join(dir, `${c.slug}.html`),
+        renderRoleCityPage(c, { region, combos: roleSet.combos, skillPages, cityPages })), `/roles/${c.slug}`);
+    }
+    wanted.add(join(dir, 'index.html'));
+    track(writeIfChanged(join(dir, 'index.html'), renderRoleIndex(roleSet.roles, roleSet.combos, { region })), '/roles');
   }
 
   /* /alerts — every way to follow this board. A flat file rather than a
@@ -5214,9 +5708,9 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      so a page cannot be announced to Google that the sitemap does not also
      list. Kept beside the count above rather than recomputed by the caller. */
   const indexUrls = jobs.filter((j) => jobPageIndexable(j, region)).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
-  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets });
+  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets, roles: roleSet });
   const feedItems = writeFeeds(jobs, root, region);
-  const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels);
+  const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels, { roles: roleSet.roles, cities: facets.cities });
 
   return {
     jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks,
@@ -5320,7 +5814,7 @@ function removeUnpublishedRegions(publicDir, regions) {
 }
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
-function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false, facets = { skills: [], cities: [] } } = {}) {
+function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false, facets = { skills: [], cities: [] }, roles = { roles: [], combos: [] } } = {}) {
   /* LASTMOD IS A CONTENT DATE, NEVER THE CLOCK, and it is day-granular.
    *
    * It was `new Date().toISOString()` for the board, /companies, /alerts,
@@ -5378,6 +5872,11 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     ...(FACETS_INDEXABLE ? facets.cities : []).map((f) => ({
       loc: regionUrl(`/locations/${f.slug}`, region), priority: '0.6', lastmod: day(newest(f.jobs)),
     })),
+    /* Role pages (src/rolepages.js). The index only when renderRoleIndex makes
+       it indexable (3+ roles) — a sitemap may never list a noindex URL. */
+    ...(roles.roles.length >= 3 ? [{ loc: regionUrl('/roles/', region), priority: '0.7', lastmod: boardDay }] : []),
+    ...roles.roles.map((r) => ({ loc: regionUrl(`/roles/${r.slug}`, region), priority: '0.7', lastmod: day(newest(r.jobs)) })),
+    ...roles.combos.map((c) => ({ loc: regionUrl(`/roles/${c.slug}`, region), priority: '0.6', lastmod: day(newest(c.jobs)) })),
     /* Only pages that may be indexed: a sitemap may never list a noindex URL,
        and a whole board's job pages can be noindex (NOINDEX_JOB_BOARDS). */
     ...jobs.filter((j) => jobPageIndexable(j, region)).map((j) => ({

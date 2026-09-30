@@ -1,5 +1,5 @@
 import { reelScript } from '../src/reelscript.js';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -75,9 +75,14 @@ check('the cap does not leave a trailing "Job"',
 
 console.log('\n== every published title, against the real boards ==');
 const all = [];
+/* India only since 30 Sep 2026: the US tree is deleted and /us answers 410, so
+   its file is read only while it exists. India's must. */
 for (const f of ['web/public/data/jobs.json', 'web/public/us/data/jobs.json']) {
-  all.push(...JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url), 'utf8')).jobs);
+  const url = new URL(`../${f}`, import.meta.url);
+  if (f.includes('/us/') && !existsSync(url)) continue;
+  all.push(...JSON.parse(readFileSync(url, 'utf8')).jobs);
 }
+check('the India board is read', all.length > 100, true);
 // The one that would actually hurt: a title clamped away to nothing, so the
 // reel says "and the role is ." out loud.
 const emptied = all.filter((j) => {
