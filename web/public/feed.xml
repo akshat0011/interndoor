@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 30 Sep 2026 20:06:23 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 20:58:12 GMT</lastBuildDate>
+  <item>
+    <title>AI Research Intern — Lexsi Labs</title>
+    <link>https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688</guid>
+    <pubDate>Wed, 30 Sep 2026 20:58:12 GMT</pubDate>
+    <description>Company: Lexsi Labs · Location: India · Duration: 6 months
+• Implement post-training alignment methods for foundation models
+• Work on agentic systems for automation and safety mechanisms
+• Contribute to tabular foundation models and inference optimization</description>
+  </item>
   <item>
     <title>Vulnerability Management Analyst — Northern Trust</title>
     <link>https://interndoor.com/jobs/northern-trust-analyst-vulnerability-management-qualys-vmdr-wiz-aqua-4472628634</link>
@@ -501,16 +511,6 @@
 • Execute qa processes for software systems
 • Collaborate with developers and testers
 • Document testing progress and outcomes</description>
-  </item>
-  <item>
-    <title>Java Developer Fullstack — UPS</title>
-    <link>https://interndoor.com/jobs/ups-returnship-opportunity-java-angular-fullstack-developer-4248973350</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ups-returnship-opportunity-java-angular-fullstack-developer-4248973350</guid>
-    <pubDate>Wed, 30 Sep 2026 13:40:48 GMT</pubDate>
-    <description>Company: UPS · Location: Chennai, Tamil Nadu, India
-• Develop full-stack applications using Java, Angular, and frontend technologies
-• Work with CI/CD tools like Jenkins, Azure DevOps, and Git
-• Collaborate on secure systems with compliance and testing requirements</description>
   </item>
 </channel>
 </rss>
