@@ -971,6 +971,8 @@
     {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "IN",
+      "searchSource": "browser",
+      "_searchSource_note": "TRIAL, his call 30 Sep 2026: India on LinkedIn’s signed-in AI search with location India, to compare against the public search. The AI search shows a 2h window as \"Past 24 hours\" in relevance order (no sort), so every walk pages the whole day on the ACCOUNT. First run failed because the pane was read wrongly (title as company); fixed by resolvePaneIdentity. To end the trial, delete this key and _searchSource_note.",
       "enabled": true,
       "_account_note": "PAUSED 26 Sep 2026 10:45-11:25 IST after LinkedIn signed the India account out for \"a high volume of LinkedIn profile data\" (1,054 page loads on 25 Sep: 766 opens, 245 search pages, ~45 feed visits). Resumed once he had signed it back in and the account stopped doing that: postings are read on their public page first, the account opens only a kept posting with an employer link to find, and there is no feed visit (58d777f466). Each walk logs its account opens.",
       "minWindowHours": 1,
@@ -979,6 +981,8 @@
     },
     {
       "region": "IN",
+      "searchSource": "browser",
+      "_searchSource_note": "TRIAL, his call 30 Sep 2026: India on LinkedIn’s signed-in AI search with location India, to compare against the public search. The AI search shows a 2h window as \"Past 24 hours\" in relevance order (no sort), so every walk pages the whole day on the ACCOUNT. First run failed because the pane was read wrongly (title as company); fixed by resolvePaneIdentity. To end the trial, delete this key and _searchSource_note.",
       "label": "IN entry-level",
       "sweepKey": "IN:entry",
       "employment": "fulltime",

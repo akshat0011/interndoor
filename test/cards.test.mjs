@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 /**
  * The search-card parser.
  *
@@ -8,7 +9,7 @@
  * from LinkedIn to the site, so it is checked against the real shapes rather
  * than against invented ones.
  */
-import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity, paneMismatch, companyGate, enumerateCards } from '../src/linkedin.js';
+import { parseCardLines, cardKey, cardIdentity, legacyCardIdentity, parseCardIdentity, paneMismatch, settlePaneCompany, resolvePaneIdentity, companyGate, enumerateCards } from '../src/linkedin.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -255,6 +256,88 @@ check('empty card company proceeds', mism('', 'R360 Group'), null);
 const msg = mism('State Street', 'R360 Group');
 check('the warning names both employers',
   [msg.includes('State Street'), msg.includes('R360 Group')], [true, true]);
+
+console.log('\n== the pane header: title first on the AI search, company first on classic ==');
+{
+  /* VERBATIM from the live AI-search pane, 30 Sep 2026 (header lines after the
+     furniture filter, and the pane's company links as the page reads them). */
+  const vantlogix = resolvePaneIdentity({
+    headerFacts: ['Full Stack Engineer ASP.NET Core, React', 'Vantlogix • Kochi, Kerala, India (On-site)', 'Full Stack Engineer ASP.NET Core, React'],
+    companyLinks: ['Vantlogix\n\n920 followers', 'Vantlogix'],
+  });
+  check('AI search: the company comes from the link, not the first line', vantlogix.company, 'Vantlogix');
+  check('AI search: the title is the line ABOVE the company line', vantlogix.title, 'Full Stack Engineer ASP.NET Core, React');
+  const couponpin = resolvePaneIdentity({
+    headerFacts: ['Software Engineer', 'CouponPin • Pune Division, Maharashtra, India (On-site)', 'Software Engineer'],
+    companyLinks: ['CouponPin\n\n59 followers', 'CouponPin'],
+  });
+  check('AI search, second card', [couponpin.company, couponpin.title], ['CouponPin', 'Software Engineer']);
+  check('and the card it came from is no longer refused',
+    paneMismatch({ company: 'CouponPin', title: 'Software Engineer' }, couponpin), null);
+
+  // Classic: company line, then the title.
+  const classic = resolvePaneIdentity({ headerFacts: ['IQVIA', 'Data Science Intern'], companyLinks: ['IQVIA'] });
+  check('classic: company first, title below it', [classic.company, classic.title], ['IQVIA', 'Data Science Intern']);
+  check('classic with no link still reads company then title',
+    [resolvePaneIdentity({ headerFacts: ['IQVIA', 'Data Science Intern'] }).company, resolvePaneIdentity({ headerFacts: ['IQVIA', 'Data Science Intern'] }).title],
+    ['IQVIA', 'Data Science Intern']);
+  // The named top-card element and an h1 outrank everything.
+  check('a named company element wins', resolvePaneIdentity({ namedCompany: 'Siemens', headerFacts: ['X', 'Y'], companyLinks: ['Other'] }).company, 'Siemens');
+  check('an h1 title wins', resolvePaneIdentity({ h1Title: 'Real Title', headerFacts: ['Acme', 'Wrong'], companyLinks: ['Acme'] }).title, 'Real Title');
+  // A link that is only a follower count or "Show more" is not a name.
+  check('a follower-count link is skipped',
+    resolvePaneIdentity({ companyLinks: ['2,678,778 followers', 'Show more', 'IQVIA'], headerFacts: ['IQVIA', 'Intern'] }).company, 'IQVIA');
+  // "Acme Robotics" must not be mistaken for the line of a company called "Acme".
+  check('a company name that is a PREFIX of another word is not its line',
+    resolvePaneIdentity({ companyLinks: ['Acme'], headerFacts: ['Acme Robotics Intern', 'Acme · Pune'] }).title, 'Acme Robotics Intern');
+  check('nothing readable gives empty strings', resolvePaneIdentity({}), { company: '', title: '' });
+}
+
+console.log('\n== the AI search pane reads its TITLE as the company (30 Sep 2026) ==');
+/* The trial's opens, verbatim: every pane "company" was the job title, so
+   every one failed paneMismatch and ~17 opens saved nothing. */
+{
+  const card = { company: 'Nippon Data Systems', title: 'Java Developer', jobId: '4472130001' };
+  const read = { company: 'Java Developer', title: 'Java Developer', description: 'x' };
+  check('the old read refused a correct open', !!paneMismatch(card, read), true);
+  const settled = settlePaneCompany(read, card);
+  check('a company equal to the title is cleared', settled.company, '');
+  check('and the rest of the read survives', [settled.title, settled.description], ['Java Developer', 'x']);
+  check('so the open now proceeds', paneMismatch(card, settled), null);
+  // Equal to the CARD's title even when the pane title was read differently.
+  check('equal to the card title is cleared too',
+    settlePaneCompany({ company: 'Back End Developer', title: '' }, { title: 'Back End Developer' }).company, '');
+  // Case and punctuation do not make it a company.
+  check('case and punctuation are not a difference',
+    settlePaneCompany({ company: 'software engineer (aws)', title: 'Software Engineer (AWS)' }, card).company, '');
+  // A real company is never cleared.
+  check('a real company is kept',
+    settlePaneCompany({ company: 'Joveo', title: 'Back End Developer' }, { title: 'Back End Developer' }).company, 'Joveo');
+  check('no company is left alone', settlePaneCompany({ company: '', title: 'X' }, card).company, '');
+}
+{
+  /* WITH NO PANE COMPANY THE TITLES DECIDE — the one real swap of the trial:
+     Fujitsu's "Full-Stack Developer" card, pane showing another posting. */
+  const fujitsu = { company: 'Fujitsu', title: 'Full-Stack Developer', jobId: '4472130002' };
+  const swapped = paneMismatch(fujitsu, { company: '', title: 'Tech Specialist, Cloud Engineering - R01571827' });
+  check('a different title with no company is a swap', !!swapped, true);
+  check('and the warning names the pane\'s title', /Tech Specialist, Cloud Engineering/.test(swapped ?? ''), true);
+  check('the same title with no company proceeds', paneMismatch(fujitsu, { company: '', title: 'Full-Stack Developer' }), null);
+  check('a pane title with a suffix still agrees',
+    paneMismatch(fujitsu, { company: '', title: 'Full-Stack Developer (Hybrid)' }), null);
+  check('a pane with neither company nor title proceeds', paneMismatch(fujitsu, { company: '', title: '' }), null);
+  check('a real pane company still decides first',
+    paneMismatch(fujitsu, { company: 'Fujitsu', title: 'Something Else Entirely' }), null);
+}
+{
+  /* Wired where the pane is judged: settled BEFORE paneMismatch, in the code
+     path that runs on every open. Comments stripped so a mention cannot pass. */
+  const src = readFileSync(new URL('../src/linkedin.js', import.meta.url), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  const settleAt = src.indexOf('Object.assign(detail, settlePaneCompany(detail, card));');
+  const judgeAt = src.indexOf('const mismatch = paneMismatch(card, detail);');
+  check('openAndExtract settles the company before judging the pane', settleAt > 0 && judgeAt > settleAt, true);
+}
 
 console.log('\n== a card with no company line (11 Sep 2026) ==');
 // Merck's US "Future Talent Program" cards carry no company line, so the

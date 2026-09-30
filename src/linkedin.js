@@ -733,16 +733,89 @@ export function parseCardLines(lines) {
  *
  * Returns the warning to log, or null to proceed.
  */
+/** A title reduced to lower-case letters and digits, for comparing a card's with its pane's. */
+function titleKeyOf(t) {
+  return String(t ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/**
+ * A pane "company" that is really its TITLE is no company at all.
+ *
+ * LinkedIn's AI search (the India account since 25 Sep 2026) lays its split
+ * pane out so the first header line the extractor keeps is the job title: on
+ * the 30 Sep trial every open read "Java Developer" as the company of Nippon
+ * Data Systems' "Java Developer", failed paneMismatch, and was thrown away —
+ * ~17 opens, 0 saved. A company equal to the pane's title or the card's title
+ * is cleared, so the row keeps the card's employer and paneMismatch falls back
+ * to comparing titles. Pure, and tested by name.
+ */
+/**
+ * The pane's company and title, from what the page could read.
+ *
+ * TWO LAYOUTS, TWO ORDERS. Classic's header reads the company, then the title.
+ * The AI search's split pane (India's account since 25 Sep 2026) reads the
+ * TITLE first and then "Company • Place (Workplace)", with a `•` — measured on
+ * the live pane 30 Sep 2026:
+ *   ["Full Stack Engineer ASP.NET Core, React",
+ *    "Vantlogix • Kochi, Kerala, India (On-site)", …]
+ * Taking the first header line as the company read the TITLE there, and every
+ * open was refused as the wrong employer. The pane's company LINK names the
+ * employer on both layouts, so it is preferred to any header position; the
+ * title is then the line beside the company's own line — above it on the AI
+ * search, below it on classic. Pure, and tested by name.
+ */
+export function resolvePaneIdentity({ namedCompany = '', companyLinks = [], h1Title = '', headerFacts = [] } = {}) {
+  const firstLine = (s) => String(s ?? '').split('\n').map((l) => l.trim()).find(Boolean) ?? '';
+  // "IQVIA\n\n2,678,778 followers" is the same link with the count after it,
+  // and "Show more" is a link to the company page too.
+  const linkName = (companyLinks ?? []).map(firstLine)
+    .find((n) => n && n.length < 80 && !/\d[\d,]*\s+(followers?|employees?)$/i.test(n) && !/^(show|see)\b/i.test(n)) ?? '';
+  const lines = (headerFacts ?? []).map((l) => String(l ?? '').trim()).filter(Boolean);
+  const company = firstLine(namedCompany) || linkName || lines[0] || '';
+
+  let title = firstLine(h1Title);
+  if (!title) {
+    const key = company.toLowerCase();
+    const isCompanyLine = (l) => {
+      const x = l.toLowerCase();
+      if (!key || !x.startsWith(key)) return false;
+      const rest = l.slice(company.length);
+      return rest.trim() === '' || /^\s*[•·|,–-]/.test(rest);
+    };
+    const at = lines.findIndex(isCompanyLine);
+    if (at > 0) title = lines[at - 1];
+    else if (at === 0) title = lines[1] ?? '';
+    else title = lines.find((l) => l !== company) ?? '';
+  }
+  return { company, title };
+}
+
+export function settlePaneCompany(detail, card) {
+  const co = titleKeyOf(detail?.company);
+  if (co && (co === titleKeyOf(detail?.title) || co === titleKeyOf(card?.title))) return { ...detail, company: '' };
+  return detail;
+}
+
 export function paneMismatch(card, detail) {
   const cardCo = normaliseCompany(card?.company ?? '');
   const paneCo = normaliseCompany(detail?.company ?? '');
-  /* Nothing to compare is not a mismatch — a pane whose header had not painted
-     yet must not cost us the open — and no separate blank check is needed to
-     get that: `x.includes('')` is true, so an empty side agrees with anything.
-     An explicit `if (!cardCo || !paneCo) return null` above this line is dead
-     code, and its test passes against its own removal. */
-  if (paneCo.includes(cardCo) || cardCo.includes(paneCo)) return null;
-  return `Opened "${card.title}" at ${card.company} but the pane is showing ${detail.company} — skipping rather than filing it under the wrong employer.`;
+  if (paneCo) {
+    /* An empty CARD company agrees with any pane (`x.includes('')` is true):
+       a card with no company line is judged on the pane's company instead. */
+    if (paneCo.includes(cardCo) || cardCo.includes(paneCo)) return null;
+    return `Opened "${card.title}" at ${card.company} but the pane is showing ${detail.company} — skipping rather than filing it under the wrong employer.`;
+  }
+  /* NO COMPANY IN THE PANE. It used to agree with anything — a header not yet
+     painted must not cost the open — but on the AI search layout it is the
+     normal case (settlePaneCompany), and "agree with anything" would file
+     whatever posting the pane happened to show. The TITLE is compared instead:
+     on the 30 Sep trial the one real swap was Fujitsu's "Full-Stack Developer"
+     card showing "Tech Specialist, Cloud Engineering". A pane with no title
+     either is still not evidence of a swap. */
+  const ct = titleKeyOf(card?.title);
+  const pt = titleKeyOf(detail?.title);
+  if (!ct || !pt || ct.includes(pt) || pt.includes(ct)) return null;
+  return `Opened "${card.title}" at ${card.company} but the pane is showing "${detail.title}" — skipping rather than filing another posting under it.`;
 }
 
 /**
@@ -1329,22 +1402,13 @@ export async function openAndExtract(page, card, cfg) {
     // the furniture has been removed, never a raw line number.
     const headerFacts = headerLines.filter((l) => !isChrome(l) && l.length < 200);
 
-    let company = text(pane.querySelector('.jobs-unified-top-card__company-name, .job-details-jobs-unified-top-card__company-name'))
-      || headerFacts[0] || '';
-    if (!company) {
-      for (const a of pane.querySelectorAll('a[href*="/company/"]')) {
-        const name = text(a);
-        // "IQVIA 2,678,778 followers" is the same link with the count appended,
-        // and "Show more" is a link to the company page too.
-        if (name && name.length < 80 && !/followers?$/i.test(name) && !isChrome(name)) { company = name; break; }
-      }
-    }
-
-    let title = text(pane.querySelector('h1, .jobs-unified-top-card__job-title, [class*="top-card"] h1'));
-    if (!title) {
-      const after = headerFacts.indexOf(company);
-      title = (after >= 0 ? headerFacts.slice(after + 1) : headerFacts.slice(1))[0] ?? '';
-    }
+    /* Company and title are DECIDED IN NODE (resolvePaneIdentity) from these
+       raw readings: the two layouts order the header differently — classic
+       reads "company, title", the AI search reads "title, Company • Place" —
+       and that decision is the part most worth testing. */
+    const namedCompany = text(pane.querySelector('.jobs-unified-top-card__company-name, .job-details-jobs-unified-top-card__company-name'));
+    const companyLinks = [...pane.querySelectorAll('a[href*="/company/"]')].map((a) => text(a)).filter((n) => n && !isChrome(n));
+    const h1Title = text(pane.querySelector('h1, .jobs-unified-top-card__job-title, [class*="top-card"] h1'));
 
     const applicants =
       (factsTail.match(/(\d[\d,]*\s+applicants?|Over \d+\s+(?:applicants?|people clicked apply)|Be among the first \d+ applicants?|\d[\d,]*\s+people clicked apply)/i) || [])[1]
@@ -1447,9 +1511,12 @@ export async function openAndExtract(page, card, cfg) {
 
     const detailLogo = pane.querySelector('img[src*="licdn.com"]')?.getAttribute('src') ?? '';
 
-    return { jobId, title, company, location: locationText, workplaceType, employmentTag, seniorityTag, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
+    return { jobId, namedCompany, companyLinks, h1Title, headerFacts, location: locationText, workplaceType, employmentTag, seniorityTag, applicants, postedText, salaryText, description, easyApply, applyUrl, applyBlob, applyLabel,
              logoUrl: /^https?:\/\//.test(detailLogo) ? detailLogo : '' };
   }, DESCRIPTION_SELECTORS);
+
+  Object.assign(detail, resolvePaneIdentity(detail));
+  for (const k of ['namedCompany', 'companyLinks', 'h1Title', 'headerFacts']) delete detail[k];
 
   // The posting page renders its expander INSIDE the description, so its
   // "… more" label is read as the last line of the posting.
@@ -1466,7 +1533,9 @@ export async function openAndExtract(page, card, cfg) {
   }
   delete detail.applyBlob;
 
-  // Is the pane actually showing the card we clicked?
+  // Is the pane actually showing the card we clicked? A company that is
+  // really the title is cleared first (settlePaneCompany).
+  Object.assign(detail, settlePaneCompany(detail, card));
   const mismatch = paneMismatch(card, detail);
   if (mismatch) {
     log.warn(mismatch);
