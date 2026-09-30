@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790729694128,
+ "generatedAt": 1790731024713,
  "region": "IN",
  "regionName": "India",
  "count": 900,
@@ -746,7 +746,7 @@
    "company": "Accenture in India",
    "matchedWatchlist": "Accenture",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "fulltime",
    "logo": "/logos/accenture-in-india.jpg",
    "location": "Mumbai Metropolitan Region",
@@ -756,12 +756,20 @@
    "applicants": "Be among the first 25 applicants",
    "easyApply": false,
    "skills": [],
-   "summary": "Skill required: Marketing Operations - Web Application Development Designation: Web Developer Associate Qualifications:Any Graduation Accenture is a global professional services company with leading capabilities in digital, cloud and security.Combining unmatched experience and specialized skills across more than 40 industries, we offer Strategy and Consulting, Technology and Operations services, and Accenture Song— all powered by the world’s largest network of Advanced Technology and Intelligent Operations centers.",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
+   "summary": "This role involves developing web applications to support digital marketing efforts. You'll work with databases and server-side code to create tools that enhance customer engagement. Ideal for someone with web development skills looking to contribute to marketing solutions.",
+   "bullets": [
+    "Build and maintain web applications using modern technologies",
+    "Work with databases and server-side code to handle HTTP requests",
+    "Collaborate in a team focused on digital marketing and customer engagement"
+   ],
+   "roleLabel": "Web Application Development",
+   "degreeLevel": "UG",
    "degreeText": null,
-   "keySkills": [],
+   "keySkills": [
+    "web application development",
+    "server side application",
+    "client side application"
+   ],
    "stipendStatus": "unknown",
    "postedText": "1 hour ago",
    "postedAt": 1790722053986,
@@ -784,7 +792,7 @@
    "company": "Citi",
    "matchedWatchlist": "Citi",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "fulltime",
    "logo": "/logos/citi.jpg",
    "location": "Pune Division, Maharashtra, India",
@@ -799,12 +807,22 @@
     "linux",
     "agile"
    ],
-   "summary": "We are seeking an experienced technology professional with strong expertise in Python scripting, automation engineering, ETL platforms, and large-scale data processing environments. The candidate will be responsible for leading automation initiatives, building scalable validation frameworks, supporting enterprise data platforms, and driving quality engineering practices across Banking and Financial Services applications. The ideal candidate should possess strong hands-on experience in Python, Unix/Linux, SQL, Oracle, ETL technologies, and automation framework development. The role requires close engagement with…",
-   "bullets": [],
-   "roleLabel": null,
+   "summary": "This role involves designing automation frameworks for data validation and supporting enterprise data platforms. It suits candidates with Python and SQL expertise, experience in ETL testing, and a background in financial services. The work includes collaborating with cross-functional teams and using JIRA and Confluence for project management.",
+   "bullets": [
+    "Build and maintain automation frameworks for data validation and reconciliation",
+    "Support Ab Initio and Big Data platforms with Python and SQL",
+    "Collaborate with Scrum teams and stakeholders on Agile delivery"
+   ],
+   "roleLabel": "Data automation engineer",
    "degreeLevel": null,
    "degreeText": null,
-   "keySkills": [],
+   "keySkills": [
+    "python",
+    "sql",
+    "ab initio",
+    "jira",
+    "confluence"
+   ],
    "stipendStatus": "unknown",
    "postedText": "1 hour ago",
    "postedAt": 1790721944758,
@@ -827,7 +845,7 @@
    "company": "Accenture in India",
    "matchedWatchlist": "Accenture",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "fulltime",
    "logo": "/logos/accenture-in-india.jpg",
    "location": "Bengaluru, Karnataka, India",
@@ -839,9 +857,13 @@
    "skills": [
     "algorithms"
    ],
-   "summary": "Entity: - Accenture Strategy & Consulting Team: - Global Network - Data & AI Job location: - Hyderabad/Bangalore As part of our Data & AI practice, you will join a worldwide network of smart and driven colleagues experienced in leading statistical tools, methods, and applications.",
-   "bullets": [],
-   "roleLabel": null,
+   "summary": "This role involves developing AI solutions to tackle business challenges, working with data pipelines and databases. It suits students interested in applying analytics to real-world problems with a focus on data-driven decision-making.",
+   "bullets": [
+    "Analyze data to solve complex business problems using AI",
+    "Work with databases and data pipelines for efficient insights",
+    "Collaborate with teams to deliver client projects remotely"
+   ],
+   "roleLabel": "AI Analyst",
    "degreeLevel": null,
    "degreeText": null,
    "keySkills": [],
@@ -867,7 +889,7 @@
    "company": "American Express Global Business Travel",
    "matchedWatchlist": "American Express",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "fulltime",
    "logo": "/logos/american-express-global-business-travel.jpg",
    "location": "Bengaluru East, Karnataka, India",
@@ -882,12 +904,22 @@
     "rest api",
     "microservices"
    ],
-   "summary": "Amex GBT is a place where colleagues find inspiration in travel as a force for good and – through their work – can make an impact on our industry. What You’ll Do on a Typical Day : Support and maintain customers who have implemented the Customer Identity SaaS solution, resolving technical and non-technical customer issues in a timely fashion. Use your business and technical analysis skills and knowledge of the Development lifecycle to solve complex issues and promote best practices.",
-   "bullets": [],
-   "roleLabel": null,
+   "summary": "This role involves supporting customers with technical and non-technical issues on a SaaS platform, collaborating with teams to resolve API and product issues, and maintaining high customer satisfaction through proactive problem-solving and communication. It suits those with experience in NodeJS, ReactJS, and customer support.",
+   "bullets": [
+    "Support customers with technical and non-technical issues on the Customer Identity SaaS platform",
+    "Collaborate with teams to resolve API and product issues with documentation and root cause analysis",
+    "Maintain high customer satisfaction through proactive problem-solving and communication"
+   ],
+   "roleLabel": "Customer Support Engineer",
    "degreeLevel": null,
    "degreeText": null,
-   "keySkills": [],
+   "keySkills": [
+    "nodejs",
+    "reactjs",
+    "nextjs",
+    "rest api",
+    "mongodb"
+   ],
    "stipendStatus": "unknown",
    "postedText": "2 hours ago",
    "postedAt": 1790718465728,
@@ -910,7 +942,7 @@
    "company": "NatWest Group",
    "matchedWatchlist": "NatWest",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/natwest-group.jpg",
    "location": "Bengaluru, Karnataka, India",
@@ -923,12 +955,21 @@
     "java",
     "agile"
    ],
-   "summary": "This is an opportunity for a driven Software Engineer to take on an exciting new career challenge Day-to-day, you'll build a wide network of stakeholders of varying levels of seniority It’s a chance to hone your existing technical skills and advance your career The Skills You'll Need",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
+   "summary": "As a software engineer, you'll design and maintain robust systems for customer-focused platforms. You'll work with Java and AI/ML tools, contributing to full lifecycle development and API integration. Ideal for graduates with technical experience and a passion for complex problem-solving.",
+   "bullets": [
+    "Build secure, high-performance software solutions for customer-centric platforms",
+    "Work with Java, AI/ML technologies, and DevOps tools in agile teams",
+    "Collaborate on full lifecycle development and API integration projects"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech/M.Tech",
+   "keySkills": [
+    "java",
+    "ai/ml",
+    "devops",
+    "agile"
+   ],
    "stipendStatus": "unknown",
    "postedText": "2 hours ago",
    "postedAt": 1790718190624,
@@ -951,7 +992,7 @@
    "company": "NatWest Group",
    "matchedWatchlist": "NatWest",
    "isTech": true,
-   "roleSource": "offline",
+   "roleSource": "model-enrich",
    "employmentType": "intern",
    "logo": "/logos/natwest-group.jpg",
    "location": "Chennai, Tamil Nadu, India",
@@ -964,12 +1005,21 @@
     "java",
     "agile"
    ],
-   "summary": "This is an opportunity for a driven Software Engineer to take on an exciting new career challenge Day-to-day, you'll build a wide network of stakeholders of varying levels of seniority It’s a chance to hone your existing technical skills and advance your career The Skills You'll Need",
-   "bullets": [],
-   "roleLabel": null,
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
+   "summary": "As a software engineer, you'll design and maintain robust systems for customer-focused platforms. You'll work with Java and AI/ML technologies, contributing to full lifecycle development and API integration. Ideal for graduates with technical experience and a passion for complex problem-solving.",
+   "bullets": [
+    "Build secure, high-performance software solutions for customer-centric platforms",
+    "Work with Java, AI/ML tools, and DevOps practices in agile teams",
+    "Collaborate on full lifecycle development and API integration projects"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech/M.Tech",
+   "keySkills": [
+    "java",
+    "ai/ml",
+    "devops",
+    "agile"
+   ],
    "stipendStatus": "unknown",
    "postedText": "2 hours ago",
    "postedAt": 1790718180908,
