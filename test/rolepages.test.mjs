@@ -154,6 +154,8 @@ console.log('\n== the JobPosting description is our own words ==');
   const ft = titleOf(renderJobPage(job({ company: 'Cisco', title: 'Site Reliability Engineer', employmentType: 'fulltime' }), [], { region }));
   check('a full-time role is never titled an internship', /internship/i.test(ft), false);
   check('it is titled a job', /Cisco Site Reliability Engineer Job\b/.test(ft), true);
+  const ftHtml = renderJobPage(job({ company: 'Cisco', title: 'Site Reliability Engineer', employmentType: 'fulltime' }), [], { region });
+  check('and its snippet says what it is', /<meta name="description" content="Site Reliability Engineer at Cisco in India\. Full-time entry-level role/.test(ftHtml), true);
   const it = titleOf(renderJobPage(job({ company: 'Cisco', title: 'Software Engineer', employmentType: 'internship' }), [], { region }));
   check('an internship whose title lacks the word still gains it', /Cisco Software Engineer Internship\b/.test(it), true);
 }
