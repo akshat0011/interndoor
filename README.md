@@ -72,12 +72,12 @@ Two rules it won't break:
   claim is stripped out. A tool that quietly adds Kubernetes because the job mentions Kubernetes
   is handing you a false document to send to a real employer.
 - **It never stores your resume.** Your PDF is read inside your own browser — the file itself
-  never leaves your device. The text is held for the length of one request, then discarded.
-  Nothing is written down, nothing is logged.
+  never leaves your device, and the text goes from your browser straight to Google under your own
+  key. It never passes through InternDoor. Nothing is written down, nothing is logged.
 
-The rewriting runs on Google's Gemini free tier, which permits Google to use submitted data to
-improve their models. You're told that on the upload screen before you choose a file, because you
-should get to decide it with the facts in front of you.
+The rewriting runs on Google's Gemini with your own free API key, added once in the browser and
+kept there. Google's free tier permits Google to use submitted data to improve its models — worth
+knowing before you add a key.
 
 ## Right now
 
@@ -97,8 +97,9 @@ site is for.
 
 ## Built with
 
-Node.js, SQLite, Playwright and the Gemini API, on a static site hosted by Vercel — with a single
-production dependency.
+Node.js, SQLite and Playwright, a local model (Qwen via Ollama) for the summaries, and the Gemini
+API from the reader's own browser for the resume tool — on a static site hosted by Vercel, with a
+single production dependency.
 
 ## A note on the data
 
