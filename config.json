@@ -971,8 +971,6 @@
     {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "IN",
-      "searchSource": "browser",
-      "_searchSource_note": "TRIAL, his call 30 Sep 2026: \"temporarily switch to the ai search with india location for now i will check how is it going and if its good we will stay else we switch back to public search\". India’s account is on LinkedIn’s AI search (the classic one was retired for it on 25 Sep). Probed the same day: location=India now sticks (no more \"Greater Delhi Area\"), but the 2h f_TPR is shown as \"Past 24 hours\" (results up to 23h old) in RELEVANCE order with no sort control, 99+ results — so the covered-ground stop cannot fire and every walk pages the whole 24h on the ACCOUNT, the load that preceded the 26 Sep flag. Watch account page loads per walk and any sign-in challenge. To end the trial, delete this key and _searchSource_note: the config-wide \"guest\" takes over again.",
       "enabled": true,
       "_account_note": "PAUSED 26 Sep 2026 10:45-11:25 IST after LinkedIn signed the India account out for \"a high volume of LinkedIn profile data\" (1,054 page loads on 25 Sep: 766 opens, 245 search pages, ~45 feed visits). Resumed once he had signed it back in and the account stopped doing that: postings are read on their public page first, the account opens only a kept posting with an employer link to find, and there is no feed visit (58d777f466). Each walk logs its account opens.",
       "minWindowHours": 1,
@@ -981,8 +979,6 @@
     },
     {
       "region": "IN",
-      "searchSource": "browser",
-      "_searchSource_note": "TRIAL, his call 30 Sep 2026: \"temporarily switch to the ai search with india location for now i will check how is it going and if its good we will stay else we switch back to public search\". India’s account is on LinkedIn’s AI search (the classic one was retired for it on 25 Sep). Probed the same day: location=India now sticks (no more \"Greater Delhi Area\"), but the 2h f_TPR is shown as \"Past 24 hours\" (results up to 23h old) in RELEVANCE order with no sort control, 99+ results — so the covered-ground stop cannot fire and every walk pages the whole 24h on the ACCOUNT, the load that preceded the 26 Sep flag. Watch account page loads per walk and any sign-in challenge. To end the trial, delete this key and _searchSource_note: the config-wide \"guest\" takes over again.",
       "label": "IN entry-level",
       "sweepKey": "IN:entry",
       "employment": "fulltime",
