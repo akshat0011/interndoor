@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-development-intern-4473709429",
+      "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-development-intern-4473709429",
+      "title": "Full Stack Development Intern — D Square Consulting Services Pvt Ltd",
+      "content_text": "Company: D Square Consulting Services Pvt Ltd · Location: Bengaluru, Karnataka, India · Duration: 0–6 months\n• Build front-end components with Angular and back-end services with Java and Spring Boot\n• Work on scalable web apps using HTML5, CSS3, JavaScript, and RESTful APIs\n• Deploy applications on AWS or Google Cloud and participate in code reviews",
+      "date_published": "2026-09-30T09:42:42.169Z",
+      "authors": [
+        {
+          "name": "D Square Consulting Services Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
       "url": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
       "title": "GenAI Developer — Infosys",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-financial-analytics-4473285873",
-      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-financial-analytics-4473285873",
-      "title": "Data Scientist - Financial Analytics — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Analyzes financial data to influence business decisions and drive initiatives\n• Uses Python, R, and analytics tools to build and validate data models\n• Collaborates on metadata management and EDA for client solutions",
-      "date_published": "2026-09-29T16:38:39.657Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
         }
       ]
     }
