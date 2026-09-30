@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/northern-trust-analyst-vulnerability-management-qualys-vmdr-wiz-aqua-4472628634",
+      "url": "https://interndoor.com/jobs/northern-trust-analyst-vulnerability-management-qualys-vmdr-wiz-aqua-4472628634",
+      "title": "Vulnerability Management Analyst — Northern Trust",
+      "content_text": "Company: Northern Trust · Location: Pune Division, Maharashtra, India · Duration: 1-3 years\n• Manage vulnerability assignments, notifications, and ticket resolution\n• Use Qualys VMDR, Wiz, Aqua, PowerBI, and ServiceNow\n• Collaborate with stakeholders and maintain monthly KPIs",
+      "date_published": "2026-09-30T20:06:23.141Z",
+      "authors": [
+        {
+          "name": "Northern Trust"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/deutsche-bank-sql-developer-as-4473934241",
       "url": "https://interndoor.com/jobs/deutsche-bank-sql-developer-as-4473934241",
       "title": "SQL Developer, AS — Deutsche Bank",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/imc-trading-site-reliablity-engineer-4472303261",
-      "url": "https://interndoor.com/jobs/imc-trading-site-reliablity-engineer-4472303261",
-      "title": "Site Reliablity Engineer — IMC Trading",
-      "content_text": "Company: IMC Trading · Location: Mumbai Metropolitan Region\n• Operate and maintain trading systems for stability and continuity\n• Use linux, kubernetes, and python for automation and performance\n• Collaborate with traders and engineers on high-performance applications",
-      "date_published": "2026-09-30T13:37:52.007Z",
-      "authors": [
-        {
-          "name": "IMC Trading"
         }
       ]
     }

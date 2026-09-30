@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 30 Sep 2026 18:31:31 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 20:06:23 GMT</lastBuildDate>
+  <item>
+    <title>Vulnerability Management Analyst — Northern Trust</title>
+    <link>https://interndoor.com/jobs/northern-trust-analyst-vulnerability-management-qualys-vmdr-wiz-aqua-4472628634</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/northern-trust-analyst-vulnerability-management-qualys-vmdr-wiz-aqua-4472628634</guid>
+    <pubDate>Wed, 30 Sep 2026 20:06:23 GMT</pubDate>
+    <description>Company: Northern Trust · Location: Pune Division, Maharashtra, India · Duration: 1-3 years
+• Manage vulnerability assignments, notifications, and ticket resolution
+• Use Qualys VMDR, Wiz, Aqua, PowerBI, and ServiceNow
+• Collaborate with stakeholders and maintain monthly KPIs</description>
+  </item>
   <item>
     <title>SQL Developer, AS — Deutsche Bank</title>
     <link>https://interndoor.com/jobs/deutsche-bank-sql-developer-as-4473934241</link>
@@ -501,16 +511,6 @@
 • Develop full-stack applications using Java, Angular, and frontend technologies
 • Work with CI/CD tools like Jenkins, Azure DevOps, and Git
 • Collaborate on secure systems with compliance and testing requirements</description>
-  </item>
-  <item>
-    <title>Site Reliablity Engineer — IMC Trading</title>
-    <link>https://interndoor.com/jobs/imc-trading-site-reliablity-engineer-4472303261</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/imc-trading-site-reliablity-engineer-4472303261</guid>
-    <pubDate>Wed, 30 Sep 2026 13:37:52 GMT</pubDate>
-    <description>Company: IMC Trading · Location: Mumbai Metropolitan Region
-• Operate and maintain trading systems for stability and continuity
-• Use linux, kubernetes, and python for automation and performance
-• Collaborate with traders and engineers on high-performance applications</description>
   </item>
 </channel>
 </rss>
