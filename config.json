@@ -1263,8 +1263,7 @@
     "_openReportWhenDone_note": "Auto-open the HTML report in your default browser when new jobs are found IN THE HOME REGION - see homeRegion below.",
     "_reportRegions_note": "Which boards the LOCAL RUN REPORT shows, behind a toggle. Separate from homeRegion on purpose: homeRegion decides what INTERRUPTS him (banner, phone push, auto-opening the report) and is about roles he will apply to himself, while the report is also where LinkedIn posts are written for the InternDoor page, which targets the US. A US role belongs in the report and does not belong on his phone at 2am. The boards are kept apart by a toggle rather than merged, because every counter on that page - companies, stipend listed, easy apply - means nothing across two countries at once.",
     "reportRegions": [
-      "IN",
-      "US"
+      "IN"
     ],
     "homeRegion": "IN",
     "_homeRegion_note": "The only region whose new listings interrupt HIM: the Mac banner, the phone push, and auto-opening the report. Everything that serves READERS is unaffected - every region is still collected, still published, and still posted to its own Telegram channel. He applies to internships in India, so a US listing is worth all of those things and worth nothing as a banner on his Mac at 2am. Left unscoped this got much worse the moment US collection went live: one run produced 86 new listings, 76 of them American, so an alert meant to say 'apply in the first hour' would mostly announce roles he will never open. Set to 'all' to be alerted about every region, or to another ISO code if he ever moves. The report itself still contains every region and is still written every run - only the decision to OPEN it is scoped, because its post-queue buttons are useful for a role he would post about but not apply to.",
@@ -1308,11 +1307,9 @@
     "collect": "all",
     "_collect_note": "'all' (default) collects every region src/regions.js knows, plus 'unknown'. A location the gazetteer cannot read is STORED and never published, so a better gazetteer reads it later without re-collecting anything. An array of ISO codes narrows it, e.g. [\"IN\",\"US\"].",
     "publish": [
-      "IN",
-      "US",
-      "GB",
-      "CA"
+      "IN"
     ],
+    "_india_only_note": "INDIA ONLY SINCE 30 SEP 2026, his call: US, UK and Canada were taken offline. Their trees are deleted by the next publish (removeUnpublishedRegions) and web/vercel.json rewrites /us, /uk and /ca to web/api/gone.js, which answers 410 Gone. Collection is untouched (collect: all), so a board can come back by adding its code here and restoring the vercel.json geo rule and removing its rewrite.",
     "_publish_note": "ISO codes, in the order the region switch lists them. India is served at the site ROOT and every other region at /<slug>/ - the slugs are in src/regions.js, and GB is served at /uk/. Add a code here only once that region's board holds enough live roles to be worth a visit: node -e \"import('./src/store.js').then(m=>console.log(new m.Store().regionCounts({sinceMs:Date.now()-14*86400000})))\"",
     "_urls_note": "India stays at the ROOT permanently. Its ~130 job pages and 125 company hubs are already indexed at /jobs/... and /companies/...; moving them under /in/ to make the scheme tidy would 404 every one of them at once. This repo has already paid that bill - 198 company hubs were deleted and rebuilt by an earlier bug, and the churn suppressed them for weeks."
   },
@@ -1423,8 +1420,7 @@
     "model": "qwen3:14b",
     "_regions_note": "WHICH BOARDS MAY BE POSTED TO LINKEDIN. Gates the report's 'Add to post queue' buttons, the queue endpoint and the combined post from one place - four independent checks is how one of them silently keeps queueing rows after the others stop. US ENABLED 6 Sep 2026 at his request, reversing the India-only default. What that default was protecting is still true and still measured: he posts from his own personal account, which is Indian, its audience is 84% India across the top four locations with NO US location appearing at all, and the one US role posted to the @interndoorhq page took 7 impressions against 22 for a generic roundup. So a US draft reaches people who cannot apply. It is enabled because he asked, not because the reach argument changed - if US reach is the goal, Google organic is the lever, not this. weekly.regions stays ['IN'] and is separate, so the weekly roundup is unaffected. DELIBERATELY SEPARATE from reels: Instagram has a live US account and that is reels.auto.regions, which says something different.",
     "regions": [
-      "IN",
-      "US"
+      "IN"
     ],
     "_model_note": "Ollama tag. 14b rather than the 8b the enricher uses, deliberately: the enricher runs inside a scan on a wall-clock budget and 14b measured slower AND less accurate at EXTRACTING fields, while this call is asked to WRITE and nobody is waiting on a listing. Drop to qwen3:8b if a batch feels slow.",
     "timeoutSeconds": 180,
@@ -1573,10 +1569,9 @@
     "auto": {
       "enabled": true,
       "regions": [
-        "IN",
-        "US"
+        "IN"
       ],
-      "_regions_note": "US RESTORED 31 Aug after a read-only probe of {user-id}?fields=username returned @interndoorusa (0 followers, 25 media) instead of the OAuthException code 200 it had been answering since 28 Aug. India was probed the same way and also returned normally. The rule that put it back is the one the previous note set: probe read-only and require the ACCOUNT, never flip this to test, because a failing burst is the signal that caused the block - reelCountSince does not count `failed`, so every failure frees a cap slot and the 60-second sweep queues a replacement that fails too. THE US CAP CAME BACK AT 12, NOT 20. The block followed 30 fully-automated reels a day across two brand-new accounts from one IP, which this file's own post-mortem named as the likeliest cause; 12 + 10 is 22, still well under Instagram's documented 100/day per account, and it can be raised once both accounts have history.",
+      "_regions_note": "INDIA ONLY SINCE 30 SEP 2026 with the site (regions._india_only_note): a US reel would link a board that answers 410. Before that: US RESTORED 31 Aug after a read-only probe of {user-id}?fields=username returned @interndoorusa (0 followers, 25 media) instead of the OAuthException code 200 it had been answering since 28 Aug. India was probed the same way and also returned normally. The rule that put it back is the one the previous note set: probe read-only and require the ACCOUNT, never flip this to test, because a failing burst is the signal that caused the block - reelCountSince does not count `failed`, so every failure frees a cap slot and the 60-second sweep queues a replacement that fails too. THE US CAP CAME BACK AT 12, NOT 20. The block followed 30 fully-automated reels a day across two brand-new accounts from one IP, which this file's own post-mortem named as the likeliest cause; 12 + 10 is 22, still well under Instagram's documented 100/day per account, and it can be raised once both accounts have history.",
       "dailyCap": 8,
       "dailyCapByRegion": {
         "US": 8,

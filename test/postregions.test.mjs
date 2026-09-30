@@ -28,9 +28,11 @@ console.log('\n== the live config: India AND the US, the UK still not ==');
      account, whose audience is 84% India across the top four locations with NO
      US location appearing, so a US draft reaches people who cannot apply. It is
      on because he asked, not because the reach argument moved. */
-  check('postQueue.regions', postRegions(cfg), ['IN', 'US']);
+  /* INDIA ONLY AGAIN SINCE 30 SEP 2026: the site went India only and the US
+     board answers 410, so a US draft would link a dead page. */
+  check('postQueue.regions', postRegions(cfg), ['IN']);
   check('India is postable', postableRegion(cfg, 'IN'), true);
-  check('and now the US', postableRegion(cfg, 'US'), true);
+  check('and the US is not (its board is retired)', postableRegion(cfg, 'US'), false);
   /* GB has no Telegram, no WhatsApp and no Instagram either — enabling one
      board is not enabling the concept. */
   check('the UK is still NOT', postableRegion(cfg, 'GB'), false);
@@ -55,8 +57,9 @@ console.log('\n== filtering rows ==');
   const rows = [{ region: 'IN' }, { region: 'US' }, { __reportRegion: 'US' }, { region: 'GB' }, {}];
   /* A row with no region is KEPT: everything predating regions is Indian, and
      dropping it would silently empty the queue for older postings. */
-  check('keeps India, the US and the region-less',
-    postableJobs(cfg, rows), [{ region: 'IN' }, { region: 'US' }, { __reportRegion: 'US' }, {}]);
+  check('keeps India and the region-less',
+    postableJobs(cfg, rows), [{ region: 'IN' }, {}]);
+  check('and drops the US, however it is tagged', postableJobs(cfg, rows).some((j) => j.region === 'US' || j.__reportRegion === 'US'), false);
   // GB is still dropped, which is what proves the filter is doing anything.
   check('and still drops the UK', postableJobs(cfg, rows).some((j) => j.region === 'GB'), false);
   check('an empty list is fine', postableJobs(cfg, []), []);
@@ -70,20 +73,20 @@ console.log('\n== THE REPORT SHOWS THE BUTTON WHERE THE BOARD IS POSTABLE ==');
      different. */
   const mk = (r) => ({ job_id: 'j' + r, company: 'X', title: 'Intern', job_url: 'https://x', __reportRegion: r, skills: [] });
   const html = buildReport({ jobs: [mk('IN'), mk('US'), mk('GB')], run: { runId: 'r' }, stats: {}, cfg });
-  check('India and the US get one each, the UK none', (html.match(/class="qbtn"/g) || []).length, 2);
+  check('India gets one, the US and the UK none', (html.match(/class="qbtn"/g) || []).length, 1);
   check('the India card has one', /data-id="jIN"[^>]*aria-pressed/.test(html), true);
-  check('and so does the US card', /data-id="jUS"[^>]*aria-pressed/.test(html), true);
+  check('the US card does not', /data-id="jUS"[^>]*aria-pressed/.test(html), false);
   check('the UK card does not', /data-id="jGB"[^>]*aria-pressed/.test(html), false);
   check('ALL THREE keep the reel button', (html.match(/class="rbtn"/g) || []).length, 3);
 
-  /* THE CONTROL, and it has to move the other way now: restricting to India
-     must take the US button away. Without it the assertions above would keep
-     passing if the gate were removed entirely. */
-  const shut = buildReport({
+  /* THE CONTROL, pointing the other way again: WIDENING to the US must add
+     its button. Without it the assertions above would keep passing if the
+     gate were removed and the button hidden some other way. */
+  const open = buildReport({
     jobs: [mk('IN'), mk('US'), mk('GB')], run: { runId: 'r' }, stats: {},
-    cfg: { ...cfg, postQueue: { ...cfg.postQueue, regions: ['IN'] } },
+    cfg: { ...cfg, postQueue: { ...cfg.postQueue, regions: ['IN', 'US'] } },
   });
-  check('control: India-only gives exactly one', (shut.match(/class="qbtn"/g) || []).length, 1);
+  check('control: adding the US gives two', (open.match(/class="qbtn"/g) || []).length, 2);
 }
 
 console.log('\n== the endpoint refuses it too ==');

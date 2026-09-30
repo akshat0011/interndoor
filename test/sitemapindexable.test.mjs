@@ -269,13 +269,16 @@ console.log('\n== robots.txt advertises only the boards in ADVERTISED_SITEMAP_BO
   writeSite(new Map(), dir, new Map(), live);
   const robots = existsSync(join(dir, 'robots.txt')) ? readFileSync(join(dir, 'robots.txt'), 'utf8') : '';
   const named = [...robots.matchAll(/^Sitemap: (\S+)$/gm)].map((m) => m[1]);
-  check('the harness rendered more than one board', live.length > 1, true);
+  check('India is the only published board (30 Sep 2026)', live.map((r) => r.code), ['IN']);
   check('the set is India alone', [...ADVERTISED_SITEMAP_BOARDS], ['IN']);
   check('robots.txt names exactly India\'s sitemap', named, ['https://interndoor.com/sitemap.xml']);
   check('and still allows everything', /^User-agent: \*\nAllow: \/$/m.test(robots), true);
-  const others = live.filter((r) => r.slug);
-  check('every other board\'s sitemap file is still written',
-    others.length > 0 && others.every((r) => existsSync(join(dir, r.slug, 'sitemap.xml'))), true);
+  /* The only thing kept from crawlers is Vercel Analytics' beacon. Blocking
+     /jobs, /companies or the retired boards would stop Google SEEING their
+     pages or their 410s; blocking /api would blind LinkedIn's preview bot to
+     /api/og. The disallow list is pinned whole so neither can creep in. */
+  check('robots.txt disallows exactly the analytics beacon', [...robots.matchAll(/^Disallow: (\S+)$/gm)].map((m) => m[1]), ['/_vercel/']);
+  check('no retired board tree is written', ['us', 'uk', 'ca'].filter((slug) => existsSync(join(dir, slug))), []);
 }
 
 for (const d of dirs) rmSync(d, { recursive: true, force: true });

@@ -45,68 +45,45 @@ console.log('\n== every page tells the script which board it is ==');
 ok('the region meta is in head()', multi.includes('<meta name="interndoor-region" content="IN">'));
 ok('…on job pages too', jp.includes('<meta name="interndoor-region" content="IN">'));
 
-console.log('\n== the edge redirect cannot hurt indexing ==');
+console.log('\n== INDIA ONLY SINCE 30 SEP 2026: nobody is bounced, the retired boards answer 410 ==');
 const vercel = JSON.parse(readFileSync('web/vercel.json', 'utf8'));
-const geo = vercel.redirects.filter((r) => (r.has ?? []).some((h) => h.key === 'x-vercel-ip-country'));
-ok('there are geo redirects', geo.length >= 2);
+/* The geo nudge sent an American typing the apex to /us. With /us retired that
+   redirect would land every one of them on a 410, so it must be gone — and
+   with it the boardpick cookie it read, which nothing consults any more. */
+const geo = vercel.redirects.filter((r) => JSON.stringify(r.has ?? []).includes('x-vercel-ip-country'));
+check('no geo redirect remains', geo.length, 0);
+check('no redirect points into a retired board', vercel.redirects.filter((r) => /^\/(us|uk|ca)(\/|$)/.test(r.destination)).map((r) => r.source), []);
 
-/* A 308 on the apex would hand the India board's ranking to /us permanently.
-   This is a nudge, not a move. */
-ok('every geo redirect is TEMPORARY', geo.every((r) => r.permanent === false));
-
-/* The apex only. A deep link into any region must never be bounced — an
-   American opening an India job page asked for that page. */
-check('they apply to the apex alone', [...new Set(geo.map((r) => r.source))], ['/']);
-
-/* THE LOAD-BEARING ONE. Googlebot crawls from US IPs; redirecting it means the
-   India homepage may never be indexed. */
-for (const r of geo) {
-  const uaRule = (r.missing ?? []).find((m) => m.key === 'user-agent');
-  ok(`${r.destination} exempts crawlers`, !!uaRule);
-  for (const bot of ['googlebot', 'bingbot', 'crawler', 'spider']) {
-    ok(`  …including ${bot}`, new RegExp(uaRule.value).test(`Mozilla/5.0 (compatible; ${bot}/2.1)`));
-  }
-  ok(`${r.destination} respects a chosen board`, (r.missing ?? []).some((m) => m.type === 'cookie'));
+/* Vercel's own matching for a `/x/:path*` source: zero or more segments, so the
+   bare /us matches too (the /Jobs/:path* lesson in vercelredirects). */
+const rewrites = vercel.rewrites ?? [];
+const toRegex = (src) => new RegExp('^' + src.replace(/\/:path\*$/, '(?:/.*)?') + '$');
+const rewritten = (path) => rewrites.find((r) => toRegex(r.source).test(path))?.destination ?? null;
+for (const path of ['/us', '/us/jobs/salesforce-intern-1', '/us/companies/ibm', '/us/sitemap.xml', '/uk', '/uk/skills/python', '/ca', '/ca/jobs/x-1']) {
+  check(`${path} is answered by the 410 function`, rewritten(path), '/api/gone');
 }
-
-/* A real browser must still be nudged, or the exemption is too broad. */
-const ua = geo[0].missing.find((m) => m.key === 'user-agent').value;
-ok('an ordinary browser is NOT exempt',
-  !new RegExp(ua).test('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/140 Safari/537.36'));
-
-console.log('\n== the legacy /in redirects are untouched ==');
-ok('/in still folds into the root', vercel.redirects.some((r) => r.source === '/in' && r.destination === '/' && r.permanent === true));
-
-console.log('\n== the cookie records a CHOICE, not a page view ==');
-/* THE BUG THIS BLOCK EXISTS FOR. The first version set the cookie on load from
-   the page's own region meta, so the first India page anyone opened pinned them
-   to India for a year and the edge redirect never fired again. A US reader
-   typing the apex landed on the India board and stayed there. The redirect was
-   correct throughout; the script was disarming it. */
-/* Read defensively: with the cookie rule deleted this is undefined, and a bare
-   `.key` would THROW — which stops the whole `npm test` chain instead of failing
-   one file. The assertion below is the one that should report it. */
-const cookieRule = (geo[0].missing ?? []).find((m) => m.type === 'cookie');
-ok('vercel.json names a cookie the script can set', !!cookieRule);
-const COOKIE = cookieRule ? cookieRule.key : '\u0000none';
-for (const f of ['web/public/app.js', 'web/public/page.js']) {
-  const src = readFileSync(f, 'utf8');
-  /* THE PAIRING, and it is the whole point of reading the name out of
-     vercel.json rather than hardcoding it here: the script that WRITES the
-     cookie and the rule that READS it are in different languages, in different
-     files, and a rename of either alone silently re-breaks this. */
-  ok(`${f} writes the cookie vercel.json reads (${COOKIE})`, src.includes(`'${COOKIE}=' +`));
-  /* Written on a REGION SWITCH click and nowhere else. */
-  ok(`${f} writes it from a click handler`, /addEventListener\('click'/.test(src));
-  ok(`${f} keys it to the region switcher`, src.includes(".rg-opt[data-region]"));
-  /* And NEVER on load. The old shape read the meta tag and wrote unconditionally
-     at the top level; if that ever comes back the redirect dies again. */
-  ok(`${f} does NOT write it from the region meta`, !/document\.cookie\s*=\s*'[a-z]+=' \+ __board/.test(src));
-  ok(`${f} has dropped the old cookie name`, !src.includes("'board=' +"));
+/* And nothing India owns is caught. A rule written as /us:path* would swallow
+   an India slug that merely starts with those letters. */
+for (const path of ['/', '/jobs/usb-intern-1', '/companies/us-foods', '/companies/ukg', '/companies/canva', '/skills/python', '/careers', '/contact']) {
+  check(`${path} is left alone`, rewritten(path), null);
 }
-/* The switcher must actually emit what the handler hooks, or the cookie is
-   never written and a deliberate choice does not stick. */
-ok('the switcher emits .rg-opt with data-region', /class="rg-opt[^"]*"[^>]*data-region="/.test(multi));
+check('/in still folds into the root', vercel.redirects.some((r) => r.source === '/in' && r.destination === '/' && r.permanent === true), true);
+
+console.log('\n== the 410 function ==');
+{
+  const { default: gone } = await import('../web/api/gone.js');
+  const mk = () => { const r = { h: {}, code: 0, body: '' }; r.setHeader = (k, v) => { r.h[k.toLowerCase()] = v; }; r.status = (c) => { r.code = c; return r; }; r.send = (b) => { r.body = b; return r; }; r.end = () => r; return r; };
+  const res = mk(); gone({ method: 'GET' }, res);
+  check('answers 410 Gone, not 404 and not a redirect', res.code, 410);
+  check('tells crawlers not to index the notice', res.h['x-robots-tag'], 'noindex');
+  ok('links the reader to the India board', res.body.includes('href="https://interndoor.com/"'));
+  /* The production CSP blocks inline script and style (vercel.json); a notice
+     that needed either would render broken only in production. */
+  ok('carries no inline script or style', !/<script|<style|\sstyle=/.test(res.body));
+  const head = mk(); gone({ method: 'HEAD' }, head);
+  check('HEAD is 410 too, with no body', [head.code, head.body], [410, '']);
+  ok('web/serve.js routes it locally', readFileSync('web/serve.js', 'utf8').includes("'/api/gone': './api/gone.js'"));
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

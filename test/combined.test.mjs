@@ -83,13 +83,25 @@ console.log('\n== the footer follows the rows, not rows[0] ==');
     row('6', 'SpaceX', 'Intern', 'Hawthorne, CA'),
     row('7', 'Stripe', 'Intern', 'South San Francisco, CA'),
   ];
-  const text = composeCombined(facts(mixed));
+  /* composeCombined's MAJORITY rule is what this block tests, so it runs on a
+     config that still publishes the US. Since 30 Sep 2026 the live site is
+     India only, and the block after this one pins what that does to a US row. */
+  const multiCfg = { ...cfg, regions: { ...cfg.regions, publish: ['IN', 'US', 'GB'] } };
+  const text = composeCombined(mixed.map((r) => jobFacts(r, multiCfg, 'combined')));
   /* Two of the three are American, so the board link and the channel are the
      US ones even though the first row is Indian — the same mistake the
      Telegram routing is careful about, from a different direction. */
   ok('the US board is linked', /interndoor\.com\/us\//.test(text));
   ok('and the US channel is named', text.includes('@interndoorusa'));
   ok('but the India row keeps its own link', text.includes('/jobs/qualcomm-'));
+}
+
+console.log('\n== India only on the live config: a US row links no page ==');
+{
+  const us = jobFacts(row('8', 'Stripe', 'Intern', 'South San Francisco, CA'), cfg, 'combined');
+  const inRow = jobFacts(row('9', 'Qualcomm', 'Intern', 'Bengaluru, Karnataka, India'), cfg, 'combined');
+  check('the US row has no site link (its board answers 410)', us.siteUrl ?? null, null);
+  ok('the India row still does', /interndoor\.com\/jobs\/qualcomm-/.test(inRow.siteUrl ?? ''));
 }
 
 console.log('\n== the report keeps the boards apart ==');
