@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790740927610,
+ "generatedAt": 1790741401541,
  "region": "US",
  "regionName": "United States",
- "count": 4525,
- "techCount": 4525,
+ "count": 4527,
+ "techCount": 4527,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -1338,6 +1338,180 @@
   "Ypsilanti, MI"
  ],
  "jobs": [
+  {
+   "id": "4473705222",
+   "title": "Software Engineering Intern (Summer 2027)",
+   "company": "Collins Aerospace",
+   "matchedWatchlist": "Collins Aerospace",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/collins-aerospace.jpg",
+   "location": "Cedar Rapids, IA",
+   "workplaceType": "On-site",
+   "stipend": "$37,000",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "linux",
+    "git",
+    "embedded c",
+    "agile"
+   ],
+   "summary": "This role involves developing embedded Linux systems for defense applications, working with C/C++, Bash, and Git. Ideal for students with experience in embedded systems and Linux development.",
+   "bullets": [
+    "Develop and maintain embedded Linux systems for defense applications",
+    "Work with C/C++, Bash, Python, and version control tools like Git",
+    "Collaborate on hardware-software integration and system reliability"
+   ],
+   "roleLabel": "Embedded Linux Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c",
+    "c++",
+    "bash",
+    "python",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "36 minutes ago",
+   "postedAt": 1790739111794,
+   "firstSeenAt": 1790741271805,
+   "lastSeenAt": 1790741271805,
+   "url": "https://www.linkedin.com/jobs/view/4473705222/",
+   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01876388EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "1e970a1d95",
+   "cardFacts": [
+    "$37,000",
+    "Cedar Rapids",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "US"
+  },
+  {
+   "id": "4473704283",
+   "title": "FPGA Engineering Co-op (Spring/Summer 2027)",
+   "company": "Collins Aerospace",
+   "matchedWatchlist": "Collins Aerospace",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/collins-aerospace.jpg",
+   "location": "Cedar Rapids, IA",
+   "workplaceType": "On-site",
+   "stipend": "$37,000",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "matlab",
+    "git",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "asic",
+    "simulink"
+   ],
+   "summary": "This co-op involves designing and implementing high-performance FPGA and ASIC solutions for defense applications. You'll work with experienced engineers on real-world projects, using tools like Vivado and Quartus. Ideal for students with experience in RTL coding and digital design.",
+   "bullets": [
+    "Design and implement digital FPGA/ASIC architectures using RTL",
+    "Use tools like Vivado, Quartus, and Modelsim for verification",
+    "Work with experienced engineers on defense-focused projects"
+   ],
+   "roleLabel": "FPGA Design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "vhdl",
+    "verilog",
+    "systemverilog",
+    "quartus",
+    "vivado"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "35 minutes ago",
+   "postedAt": 1790739106416,
+   "firstSeenAt": 1790741206421,
+   "lastSeenAt": 1790741206421,
+   "url": "https://www.linkedin.com/jobs/view/4473704283/",
+   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01878678EXTERNALENGLOBAL/FPGA-Engineering-Co-op-Spring-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "73a3c84100",
+   "cardFacts": [
+    "$37,000",
+    "Cedar Rapids",
+    "On-site"
+   ],
+   "category": "hardware",
+   "region": "US"
+  },
+  {
+   "id": "4473700448",
+   "title": "Electrical Engineering Intern (Summer 2027)",
+   "company": "Collins Aerospace",
+   "matchedWatchlist": "Collins Aerospace",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/collins-aerospace.jpg",
+   "location": "Cedar Rapids, IA",
+   "workplaceType": "Hybrid",
+   "stipend": "$37,000",
+   "duration": "Summer 2027",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "matlab",
+    "git",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "rtl",
+    "fpga",
+    "asic",
+    "simulink"
+   ],
+   "summary": "This role involves supporting the design and implementation of ASIC and FPGA solutions for communications and security applications. Ideal for students with a background in digital circuit design and experience with hardware simulation tools.",
+   "bullets": [
+    "Support ASIC/FPGA design using RTL and simulation tools",
+    "Work with cutting-edge technologies in communications and security",
+    "Collaborate with engineers on complex hardware projects"
+   ],
+   "roleLabel": "ASIC Design Support",
+   "degreeLevel": "UG",
+   "degreeText": "Electrical Engineering",
+   "keySkills": [
+    "vhdl",
+    "verilog",
+    "systemverilog",
+    "modelsim",
+    "quartus"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "35 minutes ago",
+   "postedAt": 1790739083299,
+   "firstSeenAt": 1790741183319,
+   "lastSeenAt": 1790741183319,
+   "url": "https://www.linkedin.com/jobs/view/4473700448/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473700448/",
+   "description": null,
+   "roleFingerprint": "288142a66b",
+   "cardFacts": [
+    "$37,000",
+    "Cedar Rapids",
+    "Hybrid"
+   ],
+   "category": "hardware",
+   "region": "US"
+  },
   {
    "id": "4471787638",
    "title": "R&D Software Engineer Intern",
@@ -12578,60 +12752,6 @@
    "region": "US"
   },
   {
-   "id": "4473073402",
-   "title": "Software Engineering Intern (Summer 2027)",
-   "company": "Collins Aerospace",
-   "matchedWatchlist": "Collins Aerospace",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/collins-aerospace.jpg",
-   "location": "Cedar Rapids, IA",
-   "workplaceType": "On-site",
-   "stipend": "$37,000",
-   "duration": "Summer 2027",
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "rust",
-    "linux",
-    "git"
-   ],
-   "summary": "This summer internship involves developing embedded software for tactical communication systems. You'll work with C/C++, Python, and Linux, contributing to projects that influence product performance. Ideal for students with a background in software engineering or computer science seeking hands-on experience in a secure, collaborative environment.",
-   "bullets": [
-    "Develop embedded software for tactical radios and communication systems",
-    "Work with C/C++, Python, Rust, and Linux development environments",
-    "Collaborate on projects impacting cost, schedule, and technical performance"
-   ],
-   "roleLabel": "Embedded Software Development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "c/c++",
-    "python",
-    "rust",
-    "linux"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1790652818885,
-   "firstSeenAt": 1790652938888,
-   "lastSeenAt": 1790668852887,
-   "url": "https://www.linkedin.com/jobs/view/4473073402/",
-   "applyUrl": "https://careers.rtx.com/global/en/job/RAYTGLOBAL01877155EXTERNALENGLOBAL/Software-Engineering-Intern-Summer-2027?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "2dda9ecd43",
-   "cardFacts": [
-    "$37,000",
-    "Cedar Rapids",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "US"
-  },
-  {
    "id": "4473057924",
    "title": "Thermal Analysis Intern (Summer 2027)",
    "company": "Raytheon",
@@ -13720,6 +13840,7 @@
    "roleLabel": "AI infrastructure engineering",
    "degreeLevel": "UG/PG",
    "degreeText": null,
+   "experience": "Graduating Fall 2027–Summer 2028",
    "keySkills": [
     "python",
     "cuda",
@@ -13784,6 +13905,7 @@
    "roleLabel": "AI Platform Engineer",
    "degreeLevel": "UG/PG",
    "degreeText": "Computer Science/Engineering",
+   "experience": "Graduating Fall 2027–Summer 2028",
    "keySkills": [
     "python",
     "github actions",
@@ -13836,6 +13958,7 @@
    "roleLabel": "Hardware Validation",
    "degreeLevel": "UG",
    "degreeText": null,
+   "experience": "Graduating Fall 2027–Summer 2028",
    "keySkills": [
     "python",
     "git",
@@ -49113,7 +49236,7 @@
    "postedText": "3 minutes ago",
    "postedAt": 1790198373565,
    "firstSeenAt": 1790198553572,
-   "lastSeenAt": 1790198553572,
+   "lastSeenAt": 1790741231644,
    "url": "https://www.linkedin.com/jobs/view/4469348749/",
    "applyUrl": "https://seagatecareers.com/job/AMER-Business-Marketing-Analytics-&-Recertified-Storage-Analytics-Intern-Summer-2026/1433152600/?feedId=326100&utm_source=LinkedInJobPostings&utm_campaign=Seagate_LinkedIn&source=APPLICANT_SOURCE-3-387",
    "description": null,
