@@ -68,6 +68,9 @@ check('a Salesforce administrator moves', shelfMove('software', 'erp_crm_functio
 check('a Google Cloud infrastructure support engineer stays', shelfMove('software', 'it_support_helpdesk', 'Google Cloud Infrastructure Support Engineer'), null);
 check('a business analyst in data analytics stays', shelfMove('software', 'business_sales_marketing_ops', 'Business Analyst-Data Analytics'), null);
 check('a cloud FinOps strategy analyst still moves', shelfMove('software', 'consulting_strategy', 'S&CGN - Tech Strategy & Advisory - Cloud Finops - Analyst'), 'misc');
+// And two the full India read would have moved wrongly, 30 Sep.
+check('a DevSecOps apprentice stays, SAP or not', shelfMove('software', 'erp_crm_functional', 'Apprentice - IT ERP, SAP AI & DEVSECOPS'), null);
+check('an integration-platform administrator stays', shelfMove('software', 'it_support_helpdesk', 'Integration Technology Administrator'), null);
 // Real India titles the first word list let stay on Software, 30 Sep.
 check('an IT administrator moves', shelfMove('software', 'it_support_helpdesk', 'ADMINISTRATOR L2'), 'misc');
 check('a managed-services engineer moves', shelfMove('software', 'it_support_helpdesk', 'Cross Technology Managed Services Engineer (L1)'), 'misc');

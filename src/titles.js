@@ -145,7 +145,7 @@ export function groundTitle(clean, raw, company = '') {
 // "data analyst" and "data analytics" stay, by his rule ("keep data analyst");
 // cloud platform work is DevOps, which is Software — a UPS "Google Cloud
 // Infrastructure Support Engineer" runs GCP reliability, not a helpdesk.
-const SOFTWARE_WORD = /\b(developer|development|software|sde|sdet|programmer|full[\s-]?stack|back[\s-]?end|front[\s-]?end|etl|data engineer|data analy(?:st|sts|tics)|data scien(?:ce|tist)|devops|sre|site reliability|machine learning|ml|ai engineer|cloud engineer|cloud infrastructure|automation|java|python|react|node|\.net|golang|middleware|microservices?|api|database|sql)\b/i;
+const SOFTWARE_WORD = /\b(developer|development|software|sde|sdet|programmer|full[\s-]?stack|back[\s-]?end|front[\s-]?end|etl|data engineer|data analy(?:st|sts|tics)|data scien(?:ce|tist)|devops|devsecops|integration|sre|site reliability|machine learning|ml|ai engineer|cloud engineer|cloud infrastructure|automation|java|python|react|node|\.net|golang|middleware|microservices?|api|database|sql)\b/i;
 /** A word in the title that names a non-software discipline — the second signal. */
 const MISC_TITLE_WORD = /\b(strategy|strategic|advisory|consult(?:ing|ant)?|support|helpdesk|help desk|service desk|desktop|mba|business|sales|marketing|finance|financial|accounting|hr|human resources|operations|bioinformatics|biology|biotech|clinical|pharma|genomics|chemistry|chemical|mechanical|civil|electrical|manufacturing|scrum|sap|salesforce|servicenow|erp|crm|epm|functional|administrator|managed services|onboarding|forecasting|claims|e-?commerce|ux|ui|graphic|recruit(?:er|ing|ment)?)\b/i;
 
