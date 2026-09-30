@@ -150,6 +150,12 @@ console.log('\n== the JobPosting description is our own words ==');
   const withRole = renderJobPage(j, [], { region, role: { slug: 'software-engineering', name: 'Software engineering' } });
   check('a job page links its role page when one is passed', withRole.includes('<dt>Role type</dt><dd><a href="/roles/software-engineering">'), true);
   check('and not when none is', html.includes('Role type'), false);
+  /* 587 of 703 live full-time pages were titled "... Internship" until 1 Oct 2026. */
+  const ft = titleOf(renderJobPage(job({ company: 'Cisco', title: 'Site Reliability Engineer', employmentType: 'fulltime' }), [], { region }));
+  check('a full-time role is never titled an internship', /internship/i.test(ft), false);
+  check('it is titled a job', /Cisco Site Reliability Engineer Job\b/.test(ft), true);
+  const it = titleOf(renderJobPage(job({ company: 'Cisco', title: 'Software Engineer', employmentType: 'internship' }), [], { region }));
+  check('an internship whose title lacks the word still gains it', /Cisco Software Engineer Internship\b/.test(it), true);
 }
 
 console.log('\n== the real board, rendered ==');

@@ -1862,7 +1862,14 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
    */
   const candidates = (j, r = region) => {
     const rh = `${j.company} ${j.title}`.replace(/\s+/g, ' ').trim();
-    const base = saysIntern(j.title) ? rh : `${rh} Internship`;
+    /* A FULL-TIME ROLE IS NEVER TITLED AN INTERNSHIP. Until 1 Oct 2026 every
+       title lacking an intern word gained " Internship", and 587 of India's 703
+       live full-time pages read "Cisco Site Reliability Engineer Internship
+       2026" in the search result — while the page's own JobPosting said
+       FULL_TIME. A full-time role gains " Job" instead, unless it says so. */
+    const base = j.employmentType === FULL_TIME
+      ? (/\bjobs?\b/i.test(j.title) ? rh : `${rh} Job`)
+      : (saysIntern(j.title) ? rh : `${rh} Internship`);
     // The FIRST city only. A board that advertises one role in two offices
     // writes them into one string — "Chicago; New York", "London; Amsterdam" —
     // and 19 characters of second city is room the role text needs more:
