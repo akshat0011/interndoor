@@ -265,7 +265,7 @@ function jobPageSlug(job) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, max) || 'role';
-  return `${part(job.company, 70)}-${part(job.title, 70)}-${part(job.id, Infinity)}`;
+  return `${part(job.company, 70)}-${part(job.slugTitle ?? job.title, 70)}-${part(job.id, Infinity)}`;
 }
 
 function esc(s) {

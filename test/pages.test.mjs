@@ -68,6 +68,11 @@ for (const file of ['app.js', 'page.js']) {
   for (const job of [ats, linkedin, { id: 'x', company: 'Ford & Co', title: 'Intern — Data' }]) {
     check(`parity ${file}: ${job.company}`, browserSlug(job), jobSlug(job));
   }
+  /* A CLEANED TITLE MUST NOT MOVE THE URL (src/titles.js): every copy builds
+     from slugTitle when it is there, so the published title can change freely. */
+  const cleaned = { id: '4473528697', company: 'Accenture in India', title: 'AI Analyst', slugTitle: 'S&C Global Network - AI - Software & Platform - Gen AI - Analyst' };
+  check(`parity ${file}: a cleaned title keeps its URL`, browserSlug(cleaned), jobSlug(cleaned));
+  check(`${file}: the URL is the original title's`, browserSlug(cleaned), jobSlug({ ...cleaned, title: cleaned.slugTitle, slugTitle: undefined }));
 }
 
 /* applications.js IS THE FOURTH COPY and was not pinned here.
@@ -95,6 +100,10 @@ for (const job of [ats, linkedin, { id: 'x', company: 'Ford & Co', title: 'Inter
   check(`parity applications.js: ${job.company || '(empty)'}`, appsSlug(job), jobSlug(job));
 }
 // The id must survive whole here too, or a Workday pair collides on the tracker.
+{
+  const cleaned = { id: '4473528697', company: 'Accenture in India', title: 'AI Analyst', slugTitle: 'S&C Global Network - AI - Software & Platform - Gen AI - Analyst' };
+  check('parity applications.js: a cleaned title keeps its URL', appsSlug(cleaned), jobSlug(cleaned));
+}
 check('parity applications.js: long id not truncated',
   appsSlug(wd(2)) !== appsSlug(wd(3)), true);
 check('parity applications.js: and matches the server slug',

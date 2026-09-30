@@ -61,7 +61,7 @@
      test/tracker.test.mjs pins this copy against the others — a drift here
      links a tracked application to a 404. */
   function jobPageSlug(row) {
-    return slugPart(row.company, 70) + '-' + slugPart(row.title, 70) + '-' + slugPart(row.id, Infinity);
+    return slugPart(row.company, 70) + '-' + slugPart(row.slugTitle != null ? row.slugTitle : row.title, 70) + '-' + slugPart(row.id, Infinity);
   }
 
   /* The InternDoor page for a tracked role, or null.

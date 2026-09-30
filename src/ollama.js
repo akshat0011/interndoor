@@ -26,6 +26,7 @@ import { log } from './logger.js';
 import { classifyRole, vetoNonTech, GENERIC_POSITIVE } from './roles.js';
 import { POST_SYSTEM, POST_SCHEMA, postPrompt } from './postgen.js';
 import { groundDeadline, groundExperienceYears, groundGraduation, couldStateFacts } from './extract.js';
+import { TITLE_SYSTEM, TITLE_SCHEMA, titleUserPrompt, groundTitle, DISCIPLINES } from './titles.js';
 
 const HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
 
@@ -671,6 +672,53 @@ export async function extractFacts(items, cfg = {}) {
     out.set(i, { deadline, experience });
   }
   log.info(`Facts: asked the model about ${asked} of ${out.size} posting(s); guard removed unstated values from ${guarded}.`);
+  return out;
+}
+
+/* ------------------------------------------------------------ clean titles */
+
+/**
+ * A clean title and a discipline for each posting — see src/titles.js for what
+ * is done with them and why the title is grounded.
+ *
+ * Its own small call, like extractFacts, and for the same measured reason: a
+ * field bolted onto the enrichment prompt is answered worse than one asked on
+ * its own. ~1.5 s a posting on this Mac. A posting the model could not answer
+ * is left out of the map and asked again next run; one whose title failed the
+ * grounding comes back with displayTitle null, so the original title stays.
+ *
+ * @returns {Promise<Map<number, {displayTitle: string|null, discipline: string}>>} keyed by index into `items`
+ */
+export async function cleanTitles(items, cfg = {}, { budgetMinutes = cfg.titles?.budgetMinutes ?? 1.5 } = {}) {
+  const out = new Map();
+  if (!items.length) return out;
+  if (!(await ollamaAvailable())) {
+    log.warn(`Ollama not reachable at ${HOST} — ${items.length} title(s) left as they are for now.`);
+    return out;
+  }
+  const model = cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
+  const timeoutMs = (cfg.ollama?.timeoutSeconds ?? 120) * 1000;
+  const budgetMs = budgetMinutes * 60_000;
+  const started = Date.now();
+  let cleaned = 0;
+  let refused = 0;
+  for (const [i, job] of items.entries()) {
+    if (Date.now() - started > budgetMs) {
+      log.info(`Titles budget spent — ${items.length - i} posting(s) left for the next run.`);
+      break;
+    }
+    const res = await chatJson({ model, system: TITLE_SYSTEM, user: titleUserPrompt(job), schema: TITLE_SCHEMA, numCtx: 4096, timeoutMs, temperature: 0 });
+    if (!res.ok) {
+      log.debug(`  title reading failed (${res.reason}) for "${job.title}".`);
+      continue;
+    }
+    const discipline = DISCIPLINES.includes(res.value.discipline) ? res.value.discipline : 'unclear';
+    const grounded = groundTitle(res.value.title, job.title, job.company);
+    if (grounded && grounded !== job.title) cleaned++;
+    if (!grounded) refused++;
+    out.set(i, { displayTitle: grounded && grounded !== job.title ? grounded : null, discipline });
+  }
+  log.info(`Titles: read ${out.size} posting(s) — ${cleaned} cleaned, ${refused} kept as posted because the model added words.`);
   return out;
 }
 
