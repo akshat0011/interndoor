@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/lowe-s-india-analyst-customer-insights-4472371028",
+      "url": "https://interndoor.com/jobs/lowe-s-india-analyst-customer-insights-4472371028",
+      "title": "Customer Insights Analyst — Lowe's India",
+      "content_text": "Company: Lowe's India · Location: Bengaluru, Karnataka, India · Duration: 1–3 years\n• Analyze market share and competitor data to inform business decisions\n• Use sql, power bi, and excel to process large datasets\n• Collaborate with cross-functional teams and external vendors",
+      "date_published": "2026-09-30T22:29:32.557Z",
+      "authors": [
+        {
+          "name": "Lowe's India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-buyer-risk-prevention-brp-4472648273",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-buyer-risk-prevention-brp-4472648273",
+      "title": "Applied Scientist I, Buyer Risk Prevention (BRP) — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Build and improve risk management models using machine learning and statistics\n• Work with senior scientists and engineers on real-world fraud detection systems\n• Develop scalable pipelines for data analysis and model deployment\n• Collaborate with business teams to refine risk policies and operational efficiency",
+      "date_published": "2026-09-30T22:28:31.307Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-worldwide-returns-and-recommerce-science-4472648272",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-worldwide-returns-and-recommerce-science-4472648272",
+      "title": "Applied Scientist I, Science — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Hyderabad, Telangana, India\n• Build and deploy machine learning models for returns and re-commerce\n• Use Python, SQL, and PyTorch to analyze and optimize large datasets\n• Collaborate with data and software teams to scale ML solutions\n• Mentor interns and contribute to production systems at large scale",
+      "date_published": "2026-09-30T22:27:55.180Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-4472634911",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-4472634911",
+      "title": "Applied Scientist I — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Hyderabad, Telangana, India\n• Build machine learning models to solve business problems with real-world impact\n• Write production code in python, java, or c++ with strong software engineering practices\n• Collaborate with scientists and engineers on research and development projects",
+      "date_published": "2026-09-30T22:27:20.206Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/pwc-acceleration-center-india-associate-onestream-implementation-finance-solutions-4472646244",
+      "url": "https://interndoor.com/jobs/pwc-acceleration-center-india-associate-onestream-implementation-finance-solutions-4472646244",
+      "title": "Finance Solutions OneStream Associate — PwC Acceleration Center India",
+      "content_text": "Company: PwC Acceleration Center India · Location: Andhra Pradesh, India\n• Support finance consulting projects with oneStream implementation\n• Analyze financial workflows and improve controls\n• Document requirements and assist with system configuration",
+      "date_published": "2026-09-30T22:18:16.487Z",
+      "authors": [
+        {
+          "name": "PwC Acceleration Center India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-data-engineer-4469765146",
+      "url": "https://interndoor.com/jobs/barclays-data-engineer-4469765146",
+      "title": "Data Engineer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and manage scalable data pipelines using Databricks, Snowflake, and Spark\n• Automate operational processes with GitLab, Airflow, and AWS tools\n• Collaborate with teams to ensure system reliability and performance",
+      "date_published": "2026-09-30T21:38:16.661Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688",
       "url": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688",
       "title": "AI Research Intern — Lexsi Labs",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-angular-java-springboot-4472308207",
-      "url": "https://interndoor.com/jobs/infosys-angular-java-springboot-4472308207",
-      "title": "Angular, Java, Springboot — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Develop responsive web apps with Angular and backend services using Java and Spring Boot\n• Collaborate with stakeholders to design and integrate frontend with backend and third-party APIs\n• Perform code reviews, testing, and performance optimization in Agile teams",
-      "date_published": "2026-09-30T13:45:20.230Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-ai-application-engineer-4472313103",
-      "url": "https://interndoor.com/jobs/infosys-ai-application-engineer-4472313103",
-      "title": "AI Application Engineer — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Build AI agents and copilots for SAP and enterprise platforms\n• Use LangChain, LlamaIndex, and vector databases for RAG systems\n• Develop scalable backend services and integrate with SAP systems",
-      "date_published": "2026-09-30T13:45:04.534Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-angular-genai-developer-4436811045",
-      "url": "https://interndoor.com/jobs/infosys-angular-genai-developer-4436811045",
-      "title": "GenAI Angular Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, and support Gen AI applications using Angular frameworks\n• Collaborate on system architecture and database schema design\n• Troubleshoot cross-platform issues and implement automated testing",
-      "date_published": "2026-09-30T13:44:58.844Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-genai-developer-4472300579",
-      "url": "https://interndoor.com/jobs/infosys-genai-developer-4472300579",
-      "title": "GenAI Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India · Duration: 1-2 years\n• Design, develop, and deploy AI models using Python and Gen AI frameworks\n• Collaborate with cross-functional teams to build AI-powered solutions\n• Work with large datasets and optimize AI model performance\n• Troubleshoot AI systems and contribute to code reviews",
-      "date_published": "2026-09-30T13:44:55.168Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-react-native-developer-4433474771",
-      "url": "https://interndoor.com/jobs/infosys-react-native-developer-4433474771",
-      "title": "React Native Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Trivandrum, Kerala, India\n• Design, develop, validate and support mobile apps using React Native\n• Translate client requirements into system specs and project estimates\n• Collaborate with leads to deliver efficient programs for digital transformation",
-      "date_published": "2026-09-30T13:44:48.382Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4378232890",
-      "url": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4378232890",
-      "title": "Software Quality Engineer Associate — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Execute qa processes for software systems\n• Collaborate with developers and testers\n• Document testing progress and outcomes",
-      "date_published": "2026-09-30T13:41:34.438Z",
-      "authors": [
-        {
-          "name": "UPS"
         }
       ]
     }
