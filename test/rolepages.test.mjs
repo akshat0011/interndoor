@@ -216,6 +216,9 @@ try {
   check('the Organization logo is at least 112px (logo-512)', org.logo, 'https://interndoor.com/logo-512.png');
   check('its sameAs names the LinkedIn company page', org.sameAs.includes('https://www.linkedin.com/company/interndoorhq/'), true);
   check('and never a personal LinkedIn profile', org.sameAs.some((u) => /linkedin\.com\/in\//.test(u)), false);
+  check('the homepage allows a large image preview', home.includes('<meta name="robots" content="max-image-preview:large">'), true);
+  const sample = readFileSync(join(roleDir, `${[...written].find((x) => x !== 'index')}.html`), 'utf8');
+  check('so does an indexable page', sample.includes('<meta name="robots" content="max-image-preview:large">'), true);
   check('published: web/public/roles is in the allowlist', publishedPaths().includes('web/public/roles'), true);
 
   const jobFiles = readdirSync(join(dir, 'jobs')).filter((f) => !readFileSync(join(dir, 'jobs', f), 'utf8').includes('http-equiv="refresh"'));
