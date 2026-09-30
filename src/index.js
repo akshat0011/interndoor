@@ -14,7 +14,8 @@ import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } fr
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches, scopeSearches } from './searches.js';
-import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts } from './ollama.js';
+import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts, cleanTitles } from './ollama.js';
+import { titleTargets, saveTitleReading } from './titles.js';
 import { postNewJobs } from './telegram.js';
 import { postNewJobsWhatsApp } from './whatsapp.js';
 import { atsToAnnounce, TWIN_WINDOW_MS } from './announce.js';
@@ -243,6 +244,19 @@ async function backfillDescriptions(page, store, cfg, clock, counters) {
  * would leave the next few runs with nothing. Anything skipped is picked up next
  * time, because needingEnrichment only ever returns rows that have no bullets yet.
  */
+/**
+ * A clean title and a discipline for postings not yet read (src/titles.js),
+ * newest first, on a short budget BEFORE the publish, so a new listing goes
+ * live under its clean title. Whatever the budget leaves is read next run;
+ * the rest of the store is read by bin/clean-titles.js.
+ */
+async function cleanNewTitles(store, cfg) {
+  const rows = titleTargets(store.db, publishedRegions(cfg).map((r) => r.code), cfg.titles?.perRunLimit ?? 40);
+  if (!rows.length) return;
+  const results = await cleanTitles(rows, cfg);
+  for (const [i, r] of results) saveTitleReading(store.db, rows[i].job_id, r);
+}
+
 async function enrichNewJobs(store, cfg) {
   const limit = cfg.enrich?.perRunLimit ?? 24;
   const pending = store.needingEnrichment(limit, publishedRegions(cfg).map((r) => r.code));
@@ -2293,6 +2307,7 @@ async function main() {
   // meant every freshly scraped job appeared as a boilerplate paragraph until the next
   // manual run — the newest listings, which are the ones anyone actually looks at.
   if (!DRY_RUN) await enrichNewJobs(store, cfg);
+  if (!DRY_RUN) await cleanNewTitles(store, cfg);
 
   const newJobs = store.jobsForRun(runId);
 

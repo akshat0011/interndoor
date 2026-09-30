@@ -229,8 +229,11 @@ console.log('\n== the wiring ==');
   const idx = read('src/index.js');
   const wa = read('src/whatsapp.js');
   const qs = read('bin/queue-server.js');
+  /* The shelf is roleCategory's; since 30 Sep 2026 a Software role may then
+     move to Misc behind titles.moveToMisc (src/titles.js shelfMove). */
   check('publish writes the shelf onto every row',
-    /category: roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\)\.category,/.test(pub), true);
+    /const shelf = roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\)\.category;/.test(pub)
+      && /return \(cfg\.titles\?\.moveToMisc \? shelfMove\(shelf, row\.discipline, row\.title\) : null\) \?\? shelf;/.test(pub), true);
   check('publish settles one shelf per role before anything reads it',
     /const publicJobs = settleShelves\(shelved\)/.test(pub), true);
   check('publish no longer holds anything back for its discipline', /roleFocusVerdict|droppedOffFocus/.test(pub), false);

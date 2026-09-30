@@ -16,6 +16,7 @@ import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './reg
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
 import { roleCategory, settleShelves } from './rolefocus.js';
+import { shelfMove, publishedTitle } from './titles.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -71,7 +72,11 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     id: row.job_id,
     // The company shown publicly is the one on the posting, not our watchlist
     // label. A mislabelled employer on a public site is worse than no label.
-    title: row.title,
+    /* THE CLEAN TITLE IS DISPLAY ONLY (src/titles.js). Every page URL is built
+       from the ORIGINAL title, which travels as slugTitle whenever the two
+       differ, so a cleaned title never moves a link. */
+    title: publishedTitle(row),
+    ...(publishedTitle(row) !== row.title ? { slugTitle: row.title } : {}),
     company: row.company || matchedNow || 'Unknown',
     matchedWatchlist: matchedNow,
     // null means the verdict pass has not run for this row yet; the site treats
@@ -646,7 +651,13 @@ export async function writeJobsFile(store, cfg) {
        rather than re-deriving it. */
     .map(({ row, matchedNow, region }) => ({
       ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
-      category: roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus).category,
+      /* A Software-shelf role the model reads as non-software work, AND whose
+         title names such a discipline, moves to Misc (shelfMove — two signals,
+         never Software from Misc). */
+      category: (() => {
+        const shelf = roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus).category;
+        return (cfg.titles?.moveToMisc ? shelfMove(shelf, row.discipline, row.title) : null) ?? shelf;
+      })(),
       region,
     }));
   /* One role, one shelf: city copies labelled differently must not put the
@@ -744,7 +755,8 @@ export async function writeJobsFile(store, cfg) {
          whose hub should inherit it. §10's rule: anything the hub has to know
          must be on this projection. */
       id: row.job_id,
-      title: row.title,
+      title: publishedTitle(row),
+      ...(publishedTitle(row) !== row.title ? { slugTitle: row.title } : {}),
       roleLabel: row.role_label ?? '',
       postedAt: row.posted_at || row.first_seen_at || 0,
       /* When WE first saw it, as distinct from when it was posted. The hub's

@@ -991,7 +991,8 @@ function jobPageSlug(job) {
     .replace(/^-+|-+$/g, '')
     .slice(0, max) || 'role';
   // The id is never truncated — see the note on jobSlug in src/pages.js.
-  return `${slug(job.company)}-${slug(job.title)}-${slug(job.id, Infinity)}`;
+  // slugTitle: the ORIGINAL title when the shown one was cleaned — see jobSlug.
+  return `${slug(job.company)}-${slug(job.slugTitle ?? job.title)}-${slug(job.id, Infinity)}`;
 }
 
 /**

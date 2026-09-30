@@ -392,6 +392,14 @@ export class Store {
       ['deadline', 'TEXT'],
       ['experience', 'TEXT'],
       ['facts_checked_at', 'INTEGER'],
+      /* A CLEAN TITLE AND A DISCIPLINE, read by the local model (src/titles.js).
+       * `display_title` is published in place of the title when it passed the
+       * grounding; the page URL is still built from `title`, so no link moves.
+       * `discipline` can move a Software-shelf role to Misc (shelfMove).
+       * `title_checked_at` records the reading RAN — NULL to read again. */
+      ['display_title', 'TEXT'],
+      ['discipline', 'TEXT'],
+      ['title_checked_at', 'INTEGER'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);

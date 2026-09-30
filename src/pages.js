@@ -150,7 +150,9 @@ export function jobSlug(job) {
   if (id === undefined || id === null || String(id).trim() === '') {
     throw new Error(`jobSlug: no id for ${JSON.stringify(job?.company ?? '')} — ${JSON.stringify(job?.title ?? '')}`);
   }
-  return `${slugify(job.company)}-${slugify(job.title)}-${slugify(id, Infinity)}`;
+  /* slugTitle: the ORIGINAL title, carried when the published title is a
+     cleaned one (src/titles.js) — a URL never moves because a title was tidied. */
+  return `${slugify(job.company)}-${slugify(job.slugTitle ?? job.title)}-${slugify(id, Infinity)}`;
 }
 
 export function companySlug(company) {
@@ -1308,7 +1310,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/page.css">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/track.js"></script>
-<script defer src="/page.js"></script>
+<script defer src="/page.js?v=2"></script>
 ${scripts}<script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
