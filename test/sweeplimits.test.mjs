@@ -83,7 +83,13 @@ console.log('\n== the US carries all three, at the asked-for values ==');
   check('12 openings per employer', us.maxOpensPerCompany, 12);
   check('5 copies of one title', us.maxOpensPerTitle, 5);
   check('stops on a page that is entirely 2h old', us.stopAfterPageOlderThanHours, 2);
-  check('and it is running', us.enabled, true);
+  /* Paused 30 Sep 2026 after LinkedIn's edge rate-limited the IP. A pause is
+     allowed only with the reason written beside the flag — read off the raw
+     file, because declaredSearches drops the underscore keys. */
+  const usRaw = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'))
+    .searches.find((e) => e.region === 'US');
+  check('and it is running, or paused with the reason written down',
+    us.enabled === true || (us.enabled === false && String(usRaw?._paused_note ?? '').length > 40), true);
 
   /* The override still has to be observable now that the US's own cap and the
      global one are both 40. Probe with a DIFFERENT global, or this asserts

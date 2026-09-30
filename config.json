@@ -1000,7 +1000,8 @@
     {
       "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "US",
-      "enabled": true,
+      "enabled": false,
+      "_paused_note": "PAUSED 30 Sep 2026, his instruction (\"pause us linkedin scrapes for now\"). At 09:38 IST the US walk opened a posting on the US account and got LinkedIn’s Cloudflare edge page — Error 1200, \"Too many requests for www.linkedin.com\" (screenshots/rate-limited-2026-09-30T04-08-40-552Z.png) — which is per IP, so guard.js put BOTH boards into its 24h cooldown. US had become the heavier load: 202 and 265 account opens on 28 and 29 Sep against India’s 161 and 133, plus most of the day’s public-search 429s. The US board keeps its careers-board (ATS) supply. BEFORE RESUMING: reset sweep_ok_at:US to now, or the first walk asks the public search for the whole pause and hits its 1,000-result ceiling.",
       "_enabled_note": "Set to false to pause this board without deleting the entry. Pausing leaves sweep_ok_at:US where it is, so the first run after resuming stretches its window across the whole pause exactly the way it would after an outage — expect one deep catch-up sweep, then steady state.",
       "location": "United States",
       "geoId": 103644278,
