@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_vercel/
 
 Sitemap: https://interndoor.com/sitemap.xml
