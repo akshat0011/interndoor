@@ -1779,7 +1779,7 @@ export function saysIntern(title) {
  *   at this employer" strip stays regional, because a role in another country
  *   is not a second click a reader of this board wants.
  */
-export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set(), past = null } = {}) {
+export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alternates = null, foreign = [], validDays = DEFAULT_VALID_DAYS, skillPages = new Set(), cityPages = new Set(), past = null } = {}) {
   const url = regionUrl(`/jobs/${jobSlug(job)}`, region);
   const apply = safeUrl(job.applyUrl);
   const indexable = jobPageIndexable(job, region);
@@ -1960,7 +1960,15 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   const elig = eligibilityOf(job);
   const deadline = openDeadline(job, region);
   const facts = [
-    job.location ? ['Location', esc(job.location)] : null,
+    // Linked to the city's page when it has one (30 Sep 2026): job -> location
+    // was the one direction of the internal-link graph that did not exist.
+    job.location ? ['Location', (() => {
+      const c = canonicalCity(job.location);
+      const slug = c ? facetSlug(c) : '';
+      return cityPages.has(slug)
+        ? `<a href="${regionHref(`/locations/${slug}`, region)}">${esc(job.location)}</a>`
+        : esc(job.location);
+    })()] : null,
     modeText(job) ? ['Mode', esc(modeText(job))] : null,
     // Stored on every row, and the JSON-LD already states it to Google; a
     // reader arriving from search had to infer it from the title.
@@ -4412,7 +4420,11 @@ const FACET_TILES = 50;
    So they stay reachable — job pages and hubs link to them, and a link that
    404s is worse — but carry `noindex,follow`, are left out of the sitemap and
    are not announced to IndexNow. Flipping this back is the whole reversal. */
-export const FACETS_INDEXABLE = false;
+/* INDEXABLE AGAIN SINCE 30 SEP 2026, his call with the India-only switch.
+   The US board — most of the scaled footprint — is gone, and the pages now
+   carry what the board does not: who is hiring for the skill or in the city,
+   the other axis, and how many state pay (facetInsights). */
+export const FACETS_INDEXABLE = true;
 
 /* THE US BOARD'S JOB PAGES ARE noindex — his call, 19 Sep 2026.
    Search Console, all data, the seven days to 19 Sep: USA 4 clicks on 2,126
@@ -4478,6 +4490,36 @@ const FACET_KINDS = {
 };
 
 /**
+ * What a facet page says that the board does not — 30 Sep 2026.
+ *
+ * Counted over the page's own live rows. Every list is ordered by count and
+ * then by name, so two publishes of the same rows are byte-identical (§10).
+ *   employers  the top 12 employers, merged by hub slug, for "Who is hiring"
+ *   other      cities (on a skill page) or skills (on a city page), top 12
+ *   payLine    how many of the rows state pay; omitted when none do, because
+ *              "0 state a stipend" on every page is noise, not information
+ */
+export function facetInsights(kind, rows) {
+  const tally = (pairs) => {
+    const m = new Map();
+    for (const [slug, name] of pairs) {
+      if (!slug) continue;
+      const e = m.get(slug) ?? { slug, name, n: 0 };
+      e.n++;
+      m.set(slug, e);
+    }
+    return [...m.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name)).slice(0, 12);
+  };
+  const employers = tally(rows.map((j) => [companySlug(j.company ?? ''), j.company ?? '']));
+  const other = kind === 'skill'
+    ? tally(rows.map((j) => { const c = canonicalCity(j.location); return [c ? facetSlug(c) : '', c]; }))
+    : tally(rows.flatMap((j) => [...new Map((j.skills ?? []).map((sk) => [facetSlug(sk), titleCaseSkill(String(sk))])).entries()]));
+  const paid = rows.filter((j) => stipendText(j)).length;
+  const payLine = paid ? `${paid} of these ${rows.length} postings state the pay; the rest leave it to the employer's own listing.` : '';
+  return { employers, other, payLine };
+}
+
+/**
  * One facet page.
  *
  * `siblings` is every other facet of the same kind, and passing it is the point
@@ -4485,7 +4527,7 @@ const FACET_KINDS = {
  * only from its index, which is exactly the problem the company hubs had until
  * they were taught to link sideways.
  */
-export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_REGION } = {}) {
+export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_REGION, otherPages = new Set() } = {}) {
   const k = FACET_KINDS[kind];
   if (!k) throw new Error(`renderFacetPage: unknown kind ${kind}`);
   const path = `/${k.dir}/${facet.slug}`;
@@ -4501,6 +4543,8 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
   const lede = k.lede(facet.label, rows, companies, region);
 
   const also = siblings.filter((s) => s.slug !== facet.slug).slice(0, 14);
+  const ins = facetInsights(kind, rows);
+  const otherDir = kind === 'skill' ? 'locations' : 'skills';
 
   return `${head({
     title: buildTitle(k.title(facet.label, region, both)),
@@ -4519,6 +4563,23 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     </nav>
     <h1>${esc(k.heading(facet.label, region, both))}</h1>
     <p class="summary">${esc(lede)} Every listing links to the employer's own posting.</p>
+    ${ins.payLine ? `<p class="dim">${esc(ins.payLine)}</p>` : ''}
+
+    ${ins.employers.length ? `<section class="strip">
+      <div class="strip-head"><h2>Who is hiring</h2></div>
+      <ul class="cp-chips">
+        ${ins.employers.map((e) => `<li><a href="${regionHref(`/companies/${e.slug}`, region)}">${esc(e.name)} · ${e.n}</a></li>`).join('\n        ')}
+      </ul>
+    </section>` : ''}
+
+    ${ins.other.length ? `<section class="strip">
+      <div class="strip-head"><h2>${kind === 'skill' ? 'Where these roles are' : 'Skills these roles ask for'}</h2></div>
+      <ul class="cp-chips">
+        ${ins.other.map((o) => `<li>${otherPages.has(o.slug)
+          ? `<a href="${regionHref(`/${otherDir}/${o.slug}`, region)}">${esc(o.name)} · ${o.n}</a>`
+          : `<span>${esc(o.name)} · ${o.n}</span>`}</li>`).join('\n        ')}
+      </ul>
+    </section>` : ''}
 
     <ul class="feed">
       ${shown.map((j) => `<li>${tile(j, { region })}</li>`).join('\n      ')}
@@ -4808,6 +4869,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      when it does not. */
   const facets = facetGroups(jobs.filter(isIndexable));
   const skillPages = new Set(facets.skills.map((f) => f.slug));
+  const cityPages = new Set(facets.cities.map((f) => f.slug));
 
   /* Written BEFORE the real pages so a live page always wins the name: if a
      slug is somehow both a redirect source and a real posting, the loop below
@@ -4842,7 +4904,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     wanted.add(join(jobsDir, name));
     trackJob(writeIfChanged(join(jobsDir, name),
       renderJobPage(job, byCompany.get(job.company) ?? [],
-        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages, past: pastByCompany.get(job.company) ?? null })),
+        { region, alternates, foreign: foreign.get(job.company) ?? [], validDays, skillPages, cityPages, past: pastByCompany.get(job.company) ?? null })),
       `/jobs/${jobSlug(job)}`);
   }
 
@@ -4911,7 +4973,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     for (const f of list) {
       const name = `${f.slug}.html`;
       wanted.add(join(dir, name));
-      trackFacet(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region })),
+      trackFacet(writeIfChanged(join(dir, name), renderFacetPage(kind, f, list, { region, otherPages: kind === 'skill' ? cityPages : skillPages })),
         `/${seg}/${f.slug}`);
     }
     // The index is the crawl path to every facet page, exactly as /companies/
