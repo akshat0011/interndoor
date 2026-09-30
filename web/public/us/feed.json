@@ -176,7 +176,7 @@
     {
       "id": "https://interndoor.com/us/jobs/stmicroelectronics-software-algorithm-embedded-intern-4473568575",
       "url": "https://interndoor.com/us/jobs/stmicroelectronics-software-algorithm-embedded-intern-4473568575",
-      "title": "Software Algorithm Embedded Intern — STMicroelectronics",
+      "title": "Embedded Software Algorithm Intern — STMicroelectronics",
       "content_text": "Company: STMicroelectronics · Location: Santa Clara, CA · Duration: Fall 2026\n• Implement algorithms on embedded platforms using C and C++\n• Develop sensor software drivers for mobile and automotive systems\n• Work on activity recognition using sensor data and ML tools",
       "date_published": "2026-09-30T00:34:38.946Z",
       "authors": [
@@ -200,7 +200,7 @@
     {
       "id": "https://interndoor.com/us/jobs/stmicroelectronics-hardware-and-software-design-intern-4473577246",
       "url": "https://interndoor.com/us/jobs/stmicroelectronics-hardware-and-software-design-intern-4473577246",
-      "title": "Hardware and Software Design Intern — STMicroelectronics",
+      "title": "Hardware Design Intern — STMicroelectronics",
       "content_text": "Company: STMicroelectronics · Location: Santa Clara, CA\n• Design and build hardware boards using pcb tools\n• Develop software to interface with microcontrollers and power devices\n• Work with lab equipment and debug electronics systems",
       "date_published": "2026-09-30T00:33:52.223Z",
       "authors": [
@@ -450,9 +450,21 @@
       ]
     },
     {
+      "id": "https://interndoor.com/us/jobs/trane-technologies-systems-engineer-intern-ats-workday-tranetechnologies-wd12-trane-technologies-careers-jr-16745",
+      "url": "https://interndoor.com/us/jobs/trane-technologies-systems-engineer-intern-ats-workday-tranetechnologies-wd12-trane-technologies-careers-jr-16745",
+      "title": "Systems Engineer Intern — Trane Technologies",
+      "content_text": "Company: Trane Technologies · Location: St Paul, Minnesota\n• Design HVAC controllers and digital tools for sustainable climate solutions\n• Use BACnet, Modbus, and systems engineering principles in product development\n• Collaborate with cross-functional teams on new product design and testing",
+      "date_published": "2026-09-30T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Trane Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-ai-accelerator-design-and-vlsi-2027-4471968763",
       "url": "https://interndoor.com/us/jobs/nvidia-phd-research-intern-ai-accelerator-design-and-vlsi-2027-4471968763",
-      "title": "PhD Research Intern, AI Accelerator Design and VLSI - 2027 — NVIDIA",
+      "title": "PhD Intern AI VLSI Accelerator Design — NVIDIA",
       "content_text": "Company: NVIDIA · Location: Santa Clara, CA\n• Design AI accelerators and VLSI circuits using Python/PyTorch and SystemVerilog\n• Collaborate on testchip development and research with AI and hardware teams\n• Publish original research and present at leading ML and VLSI conferences",
       "date_published": "2026-09-29T23:50:39.961Z",
       "authors": [
@@ -560,7 +572,7 @@
     {
       "id": "https://interndoor.com/us/jobs/cisco-firmware-engineer-ii-co-op-united-states-4473559121",
       "url": "https://interndoor.com/us/jobs/cisco-firmware-engineer-ii-co-op-united-states-4473559121",
-      "title": "Firmware Engineer II (Co-op) - United States — Cisco",
+      "title": "Firmware Engineer II Co-op — Cisco",
       "content_text": "Company: Cisco · Location: Maynard, MA\n• Design and validate firmware for electro-optical modules\n• Collaborate with hardware and software teams on system integration\n• Troubleshoot technical issues to ensure product stability",
       "date_published": "2026-09-29T23:03:03.603Z",
       "authors": [
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/us/jobs/cisco-associate-applications-engineer-i-co-op-united-states-4473561019",
-      "url": "https://interndoor.com/us/jobs/cisco-associate-applications-engineer-i-co-op-united-states-4473561019",
-      "title": "Associate Applications Engineer I (Co-op) - United States — Cisco",
-      "content_text": "Company: Cisco · Location: Maynard, MA\n• Recreate real-world application environments to verify and troubleshoot customer issues\n• Develop Python scripts to manage system features and integrate products into customer networks\n• Collaborate with cross-functional teams to solve product limitations and support network integration",
-      "date_published": "2026-09-29T23:00:15.054Z",
-      "authors": [
-        {
-          "name": "Cisco"
         }
       ]
     }

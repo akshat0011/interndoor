@@ -6,14 +6,194 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/pwc-india-in-associate-data-science-gen-ai-gcc-advisory-bangalore-4463341867",
-      "url": "https://interndoor.com/jobs/pwc-india-in-associate-data-science-gen-ai-gcc-advisory-bangalore-4463341867",
-      "title": "Data Science Gen AI Associate — PwC India",
-      "content_text": "Company: PwC India · Location: Bengaluru, Karnataka, India\n• Build and deploy AI pipelines for text, image, audio, and video generation\n• Integrate AI models into systems using APIs like OpenAI and Hugging Face\n• Design Gen AI apps with LLMs and optimize model outputs for accuracy",
-      "date_published": "2026-09-30T12:39:52.535Z",
+      "id": "https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821",
+      "url": "https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821",
+      "title": "Quality Assurance Intermediate — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Reviews and documents software applications\n• Uses test automation tools like selenium\n• Works on system integration and maintenance",
+      "date_published": "2026-09-30T13:49:28.922Z",
       "authors": [
         {
-          "name": "PwC India"
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243",
+      "url": "https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243",
+      "title": "Java Springboot Microservices — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Support consulting teams in project phases from problem definition to deployment\n• Build POCs and create requirement specs from business needs\n• Collaborate with clients to identify challenges and deliverable solutions",
+      "date_published": "2026-09-30T13:45:40.127Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4433631162",
+      "url": "https://interndoor.com/jobs/infosys-java-fullstack-angular-developer-4433631162",
+      "title": "Java Fullstack Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support client systems using Java and AngularJS2\n• Translate functional/non-functional requirements into system specifications\n• Estimate project work and collaborate with leads and managers",
+      "date_published": "2026-09-30T13:45:36.828Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-ai-application-engineer-4471992967",
+      "url": "https://interndoor.com/jobs/infosys-ai-application-engineer-4471992967",
+      "title": "AI Application Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build AI agents and copilots for SAP and enterprise platforms\n• Use LangChain, LlamaIndex, and vector databases for RAG systems\n• Develop scalable backend services and integrate with SAP systems",
+      "date_published": "2026-09-30T13:45:36.114Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-angular-developer-4436589842",
+      "url": "https://interndoor.com/jobs/infosys-java-angular-developer-4436589842",
+      "title": "Java Developer Angular — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop and maintain microservices using Java and Spring Boot\n• Collaborate on system design and troubleshoot cross-platform issues\n• Implement automated testing and database schemas for business processes",
+      "date_published": "2026-09-30T13:45:26.924Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-angular-java-springboot-4472308207",
+      "url": "https://interndoor.com/jobs/infosys-angular-java-springboot-4472308207",
+      "title": "Angular, Java, Springboot — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Develop responsive web apps with Angular and backend services using Java and Spring Boot\n• Collaborate with stakeholders to design and integrate frontend with backend and third-party APIs\n• Perform code reviews, testing, and performance optimization in Agile teams",
+      "date_published": "2026-09-30T13:45:20.230Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-ai-application-engineer-4472313103",
+      "url": "https://interndoor.com/jobs/infosys-ai-application-engineer-4472313103",
+      "title": "AI Application Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Build AI agents and copilots for SAP and enterprise platforms\n• Use LangChain, LlamaIndex, and vector databases for RAG systems\n• Develop scalable backend services and integrate with SAP systems",
+      "date_published": "2026-09-30T13:45:04.534Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-angular-genai-developer-4436811045",
+      "url": "https://interndoor.com/jobs/infosys-angular-genai-developer-4436811045",
+      "title": "GenAI Angular Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, and support Gen AI applications using Angular frameworks\n• Collaborate on system architecture and database schema design\n• Troubleshoot cross-platform issues and implement automated testing",
+      "date_published": "2026-09-30T13:44:58.844Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-genai-developer-4472300579",
+      "url": "https://interndoor.com/jobs/infosys-genai-developer-4472300579",
+      "title": "GenAI Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India · Duration: 1-2 years\n• Design, develop, and deploy AI models using Python and Gen AI frameworks\n• Collaborate with cross-functional teams to build AI-powered solutions\n• Work with large datasets and optimize AI model performance\n• Troubleshoot AI systems and contribute to code reviews",
+      "date_published": "2026-09-30T13:44:55.168Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-react-native-developer-4433474771",
+      "url": "https://interndoor.com/jobs/infosys-react-native-developer-4433474771",
+      "title": "React Native Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Trivandrum, Kerala, India\n• Design, develop, validate and support mobile apps using React Native\n• Translate client requirements into system specs and project estimates\n• Collaborate with leads to deliver efficient programs for digital transformation",
+      "date_published": "2026-09-30T13:44:48.382Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4378232890",
+      "url": "https://interndoor.com/jobs/ups-associate-software-quality-engineer-4378232890",
+      "title": "Software Quality Engineer Associate — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Execute qa processes for software systems\n• Collaborate with developers and testers\n• Document testing progress and outcomes",
+      "date_published": "2026-09-30T13:41:34.438Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-returnship-opportunity-java-angular-fullstack-developer-4248973350",
+      "url": "https://interndoor.com/jobs/ups-returnship-opportunity-java-angular-fullstack-developer-4248973350",
+      "title": "Java Developer Fullstack — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develop full-stack applications using Java, Angular, and frontend technologies\n• Work with CI/CD tools like Jenkins, Azure DevOps, and Git\n• Collaborate on secure systems with compliance and testing requirements",
+      "date_published": "2026-09-30T13:40:48.169Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4473770796",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4473770796",
+      "title": "Software Development Analyst — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build and maintain enterprise apps using Java and Spring Boot\n• Develop RESTful APIs and microservices for scalable systems\n• Collaborate with architects and DevOps on deployment and monitoring",
+      "date_published": "2026-09-30T13:30:12.690Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4473781616",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4473781616",
+      "title": "Systems Integration Analyst — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Support internet-facing web applications and debug java code\n• Work with aws services and unix systems\n• Collaborate on sql databases and cloudwatch monitoring",
+      "date_published": "2026-09-30T13:30:03.475Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/esse-india-canada-immigration-consultants-in-delhi-visa-consultant-del-artificial-intelligence-engineer-4472128313",
+      "url": "https://interndoor.com/jobs/esse-india-canada-immigration-consultants-in-delhi-visa-consultant-del-artificial-intelligence-engineer-4472128313",
+      "title": "Artificial Intelligence Engineer — Esse India | Canada immigration consultants in delhi | visa consultant delhi",
+      "content_text": "Company: Esse India | Canada immigration consultants in delhi | visa consultant delhi · Location: Bengaluru, Karnataka, India\n• Build and optimize machine learning algorithms for immigration data\n• Use nlp to analyze client documents and communications\n• Collaborate with software and consulting teams on ai integration\n• Based in bengaluru, on-site full-time role",
+      "date_published": "2026-09-30T13:11:46.928Z",
+      "authors": [
+        {
+          "name": "Esse India | Canada immigration consultants in delhi | visa consultant delhi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-systems-engr-i-4473752958",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-systems-engr-i-4473752958",
+      "title": "Systems Engr I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement control systems for industrial automation\n• Use c++ and python for real-time data processing\n• Work on projects with global impact in smart manufacturing",
+      "date_published": "2026-09-30T12:49:20.588Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
         }
       ]
     },
@@ -90,6 +270,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4473756501",
+      "url": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4473756501",
+      "title": "DE&A - IPA - Power Platform — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and deploy power automate solutions for client projects\n• Use power platform tools for automation and integration tasks\n• Work on real-world digital transformation initiatives",
+      "date_published": "2026-09-30T11:55:09.602Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
       "url": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
       "title": "Camera Systems Engineer — Qualcomm",
@@ -98,6 +290,30 @@
       "authors": [
         {
           "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-windows-4473761375",
+      "url": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-windows-4473761375",
+      "title": "C++ Desktop Application Development (Windows) — Quest Global",
+      "content_text": "Company: Quest Global · Location: Chennai, Tamil Nadu, India\n• Develop and deploy software components in Windows software stack using C++\n• Write clean, reusable code and perform unit testing and validation\n• Create technical documentation for application design and code\n• Work independently on complex project tasks aligned with customer needs",
+      "date_published": "2026-09-30T11:48:12.985Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4473743742",
+      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4473743742",
+      "title": "App Development Technical Specialist — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Integrate generative ai models into full-stack applications\n• Work with tensorflow, pytorch, and hugging face transformers\n• Collaborate in cross-functional teams on ai/ml projects",
+      "date_published": "2026-09-30T11:45:13.313Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
         }
       ]
     },
@@ -366,18 +582,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
-      "url": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
-      "title": "GenAI Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build generative ai models to solve complex problems\n• Work with cross-functional teams on ai integration\n• Mentor junior developers and share knowledge",
-      "date_published": "2026-09-30T08:45:49.774Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472128993",
       "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472128993",
       "title": "Custom Software Engineer — Accenture in India",
@@ -398,210 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473720720",
-      "url": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473720720",
-      "title": "Java Developer — Nippon Data Systems",
-      "content_text": "Company: Nippon Data Systems · Location: Kerala, India\n• Develop and maintain java-based applications using j2ee and spring boot\n• Collaborate with cross-functional teams to design and ship new features\n• Implement restful apis and conduct code reviews for team feedback",
-      "date_published": "2026-09-30T07:59:36.722Z",
-      "authors": [
-        {
-          "name": "Nippon Data Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473738294",
-      "url": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473738294",
-      "title": "Java Developer — Nippon Data Systems",
-      "content_text": "Company: Nippon Data Systems · Location: Idukki, Kerala, India\n• Develop and maintain java-based applications using j2ee and spring boot\n• Collaborate with cross-functional teams to design and ship new features\n• Implement restful apis and conduct code reviews for team feedback",
-      "date_published": "2026-09-30T07:59:02.001Z",
-      "authors": [
-        {
-          "name": "Nippon Data Systems"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
-      "url": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
-      "title": "Frontend Developer — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield AI products from whiteboard to prototype\n• Work with React, Next.js, Node.js, and Express.js\n• Collaborate directly with leadership from first week",
-      "date_published": "2026-09-30T07:44:20.234Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-react-js-developer-4433471833",
-      "url": "https://interndoor.com/jobs/infosys-react-js-developer-4433471833",
-      "title": "React Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Develop and maintain React.js applications with TypeScript\n• Collaborate with clients to deliver high-quality technical solutions\n• Troubleshoot production issues and conduct technical analysis",
-      "date_published": "2026-09-30T07:44:14.599Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/joveo-back-end-developer-4472126753",
-      "url": "https://interndoor.com/jobs/joveo-back-end-developer-4472126753",
-      "title": "Back End Developer — Joveo",
-      "content_text": "Company: Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Work with react, next.js, node.js, express, and databases\n• Collaborate with leadership and ship full-stack features",
-      "date_published": "2026-09-30T07:43:40.455Z",
-      "authors": [
-        {
-          "name": "Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4472123836",
-      "url": "https://interndoor.com/jobs/smowcode-embedded-systems-intern-4472123836",
-      "title": "Embedded Systems Intern — Smowcode",
-      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Write and test C code for microcontrollers like ARM and AVR\n• Work with JSON and networking protocols for IoT devices\n• Debug hardware and software on development boards\n• Collaborate with team on embedded systems projects",
-      "date_published": "2026-09-30T07:33:17.970Z",
-      "authors": [
-        {
-          "name": "Smowcode"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-consultancy-services-automation-test-analyst-4472134064",
-      "url": "https://interndoor.com/jobs/tata-consultancy-services-automation-test-analyst-4472134064",
-      "title": "Automation Test Analyst — Tata Consultancy Services",
-      "content_text": "Company: Tata Consultancy Services · Location: Greater Chennai Area\n• Write and execute test scripts for web and client-server apps using selenium and jUnit\n• Automate api testing with postman and implement ci/cd pipelines\n• Collaborate in agile teams to design and debug test cases",
-      "date_published": "2026-09-30T06:49:09.058Z",
-      "authors": [
-        {
-          "name": "Tata Consultancy Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
-      "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
-      "title": "Fullstack Developer Intern — GreedyGame",
-      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years\n• Build backend services for Google Ad Manager and third-party ad networks\n• Develop React dashboards for ad unit management and operational workflows\n• Work with MySQL, PostgreSQL, and MongoDB on large ad datasets\n• Collaborate with senior engineers on feature design and production deployment",
-      "date_published": "2026-09-30T06:45:16.654Z",
-      "authors": [
-        {
-          "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987",
-      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987",
-      "title": "Site Reliability Engineering Specialist — BT Group",
-      "content_text": "Company: BT Group · Location: Bengaluru South, Karnataka, India\n• Ensure reliability and performance of global platforms through automation and observability\n• Use Dynatrace, Ansible, and GitOps to improve service stability and reduce toil\n• Manage incidents and escalate complex issues using ServiceNow and Jira",
-      "date_published": "2026-09-30T06:03:46.145Z",
-      "authors": [
-        {
-          "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802",
-      "url": "https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802",
-      "title": "BigData-Hadoop/Scala Engineer, AVP — Deutsche Bank",
-      "content_text": "Company: Deutsche Bank · Location: Pune Division, Maharashtra, India\n• Design and build data pipelines using Hadoop and Spark\n• Work with cloud platforms like GCP for data processing\n• Collaborate with data scientists and analysts on business solutions",
-      "date_published": "2026-09-30T06:03:31.978Z",
-      "authors": [
-        {
-          "name": "Deutsche Bank"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312",
-      "url": "https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312",
-      "title": "Windows MacOS Ubuntu Linux Support Engineer — Icon Infoline Pvt. Ltd.",
-      "content_text": "Company: Icon Infoline Pvt. Ltd. · Location: Pune/Pimpri-Chinchwad Area · Duration: 2-3 years\n• Troubleshoot hardware and software issues across Windows, MacOS, and Linux systems\n• Manage user accounts, permissions, and system access on Linux and MacOS\n• Support endpoint security, compliance, and IT asset inventory management",
-      "date_published": "2026-09-30T06:02:37.256Z",
-      "authors": [
-        {
-          "name": "Icon Infoline Pvt. Ltd."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543",
-      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543",
-      "title": "Java API Developer — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and build secure RESTful APIs with Spring Boot and Java 11+\n• Implement API security, caching, and observability with OpenTelemetry\n• Collaborate in Agile teams and own services from design to deployment",
-      "date_published": "2026-09-30T06:00:52.334Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775",
-      "url": "https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775",
-      "title": "Machine Learning Engineer — Poshmark",
-      "content_text": "Company: Poshmark · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years\n• Build tools to make machine learning accessible across the company\n• Work with data science and engineering teams to deploy models\n• Maintain platforms and upgrade to new tech stacks",
-      "date_published": "2026-09-30T06:00:19.455Z",
-      "authors": [
-        {
-          "name": "Poshmark"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553",
-      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553",
-      "title": "Data Scientist — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Analyze financial data to influence business decisions\n• Use python and analytics tools like r or sas\n• Work on data models and visualization for client solutions",
-      "date_published": "2026-09-30T05:01:01.900Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825",
-      "url": "https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825",
-      "title": "Generative AI Intern — Adfluence Hub",
-      "content_text": "Company: Adfluence Hub · Location: Noida, Uttar Pradesh, India · Duration: 3–6 months\n• Build ai-powered apps using llms and ai apis\n• Collaborate with product and engineering teams\n• Experiment with prompt engineering and rag solutions",
-      "date_published": "2026-09-30T04:55:45.918Z",
-      "authors": [
-        {
-          "name": "Adfluence Hub"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472093013",
-      "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472093013",
-      "title": "Enterprise AI Strategy Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Analyze supply chain processes to identify AI use cases across demand planning, procurement, and fulfillment\n• Develop business and functional requirements for AI-enabled supply chain solutions\n• Create AI value cases and support client workshops on future-ready supply chain strategies",
-      "date_published": "2026-09-30T03:27:43.713Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/syngene-international-limited-bioinformatics-analyst-4471987703",
-      "url": "https://interndoor.com/jobs/syngene-international-limited-bioinformatics-analyst-4471987703",
-      "title": "Bioinformatics Analyst — Syngene International Limited",
-      "content_text": "Company: Syngene International Limited · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Analyze genomic, phenotypic, and clinical data from biobanks\n• Use r and python for reproducible data analysis workflows\n• Collaborate with biologists and data scientists on research projects",
-      "date_published": "2026-09-30T03:06:27.049Z",
-      "authors": [
-        {
-          "name": "Syngene International Limited"
         }
       ]
     }
