@@ -1241,7 +1241,8 @@ console.log('\n== every surface names both kinds — internships & entry-level j
   const trk = renderApplicationsPage({ region: IN });
   check('the tracker', /Every internship and entry-level role you have applied to/.test(trk) && /Browse live roles<\/a>/.test(trk), true);
   const contact = renderContactPage({ region: IN });
-  check('the contact page is region-neutral and names both', /engineering internships and entry-level full-time roles in India, the United States and the United Kingdom/.test(contact), true);
+  // India only since 30 Sep 2026: the Organization no longer claims the retired boards.
+  check('the contact page names both kinds, in India alone', /engineering internships and entry-level full-time roles in India\.'?/.test(contact) && !/United States|United Kingdom/.test(contact), true);
   const report = renderReportPage([], { region: IN, asOf: Date.UTC(2026, 8, 19) });
   check('the report says its figures are internships only', /These figures cover every <strong>internship<\/strong> we recorded in India/.test(report) && /entry-level roles on the board's Full-time tab are not counted here/.test(report), true);
 

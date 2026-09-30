@@ -1487,7 +1487,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
   </div>
 </footer>
 </body>
@@ -3978,6 +3978,99 @@ ${foot({
 }
 
 /**
+ * /about — how InternDoor works. 30 Sep 2026.
+ *
+ * The brand query ("interndoor") is most of the site's organic clicks, and a
+ * page that says plainly what the site is, how listings are chosen and how
+ * they expire is what a reader, a placement cell or a crawler checks before
+ * trusting it. Written ONCE at the root, exactly like /contact (same traps:
+ * publishedPaths, root sitemap only, foot() links it root-relative).
+ *
+ * WHAT IT MUST NOT SAY: the sources. The site stopped naming where listings
+ * come from on 10 Aug 2026 (§11, the /report methodology rule), so the method
+ * is described without naming a platform or an ATS. No figure that moves with
+ * the board either — every publish would rewrite it for nothing (§10).
+ */
+export function renderAboutPage({ region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = `${SITE}/about`;
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    url,
+    name: 'How InternDoor works',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'InternDoor',
+      url: `${SITE}/`,
+      email: CONTACT_EMAIL,
+      logo: `${SITE}/logo-512.png`,
+      description: 'A job board for engineering internships and entry-level full-time roles in India.',
+    },
+  };
+
+  return `${head({
+    title: buildTitle(['How InternDoor Works']),
+    description: 'InternDoor lists engineering internships and entry-level jobs in India from a vetted list of employers, checked every 30 minutes. How listings are chosen, how they expire and how to apply.',
+    canonical: url,
+    indexable: true,
+    region,
+    alternates,
+    alternatePath: null,
+    extraLd: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <i aria-hidden="true">&rsaquo;</i>
+      <span>About</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>How InternDoor works</h1>
+      <p class="hub-lede">A free board of engineering internships and entry-level jobs in India, for students and fresh graduates who keep finding the good postings two days late.</p>
+    </header>
+
+    <section class="strip">
+      <div class="strip-head"><h2>Where the listings come from</h2></div>
+      <ul class="do-list">
+        <li><b>A vetted list of employers.</b> InternDoor watches the openings of a fixed list of real companies &mdash; product companies, banks, chip makers, research labs and funded startups. A posting from any employer not on the list never appears, which is how course sellers and unpaid &ldquo;internship&rdquo; schemes stay off the board. <a href="/report">The numbers page</a> shows how many listings were turned away.</li>
+        <li><b>Engineering roles only.</b> Software, data, AI and machine learning, hardware and embedded roles, with other engineering-adjacent roles filed under Misc. Sales, marketing and operations internships are left out.</li>
+        <li><b>Internships and entry-level full-time jobs.</b> An entry-level role that asks for two or more years of experience, or is titled senior, lead or manager, is refused.</li>
+      </ul>
+    </section>
+
+    <section class="strip">
+      <div class="strip-head"><h2>How fresh it is</h2></div>
+      <ul class="do-list">
+        <li><b>Checked every 30 minutes,</b> day and night. Each listing shows when the employer posted it, so you can see how early you are.</li>
+        <li><b>Listings expire after 30 days,</b> or sooner when the employer&rsquo;s own page stops accepting applications. An expired role&rsquo;s page points to the company&rsquo;s other open roles instead of vanishing.</li>
+        <li><b>Links are checked.</b> An apply link that has stopped working takes the listing off the board the next day.</li>
+      </ul>
+    </section>
+
+    <section class="strip">
+      <div class="strip-head"><h2>How to apply</h2></div>
+      <ul class="do-list">
+        <li><b>Always on the employer&rsquo;s own posting.</b> Every listing links to it, and that posting is where you apply and the source of truth. InternDoor never takes applications, never forwards resumes and never charges anyone.</li>
+        <li><b>What InternDoor writes.</b> The short summary, the duties and the skills on each listing are InternDoor&rsquo;s own reading of the posting. Pay, dates and experience are shown only when the posting states them, and never guessed.</li>
+        <li><b>No signup.</b> Nothing on the site is tied to a person. Saved applications live in your own browser.</li>
+      </ul>
+    </section>
+
+    <section class="trk-priv">
+      <h2>Get new roles as they open</h2>
+      <p>Join the <a href="/alerts">WhatsApp channel or the daily email</a> to hear about new listings the day they appear. For anything else &mdash; a wrong listing, a removal, a placement cell &mdash; <a href="/contact">write to InternDoor</a>.</p>
+    </section>
+  </div>
+</main>
+${foot({
+    headline: 'Start with the board',
+    sub: 'Every engineering internship and entry-level role in India, newest first.',
+    region,
+  })}`;
+}
+
+/**
  * Write only when the bytes actually differ, and SAY whether they did.
  *
  * The name was aspirational: it wrote unconditionally. That was survivable —
@@ -5018,6 +5111,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      a day. */
   if (!region.slug) {
     track(writeIfChanged(join(root, 'contact.html'), renderContactPage({ region, alternates })), '/contact');
+    track(writeIfChanged(join(root, 'about.html'), renderAboutPage({ region, alternates })), '/about');
   }
 
   let removed = 0;
@@ -5265,6 +5359,7 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        rather than the file's mtime, which would otherwise move this URL on
        every deploy that touched nothing. */
     ...(region.slug ? [] : [{ loc: `${SITE}/contact`, priority: '0.3', lastmod: boardDay }]),
+    ...(region.slug ? [] : [{ loc: `${SITE}/about`, priority: '0.4', lastmod: boardDay }]),
     /* /report is the only page here that does not expire, so it is the only one
        that can accumulate links over years. Listed above the hubs for that
        reason — and omitted entirely when it is noindex, because submitting a

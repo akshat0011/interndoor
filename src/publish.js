@@ -974,6 +974,9 @@ export function publishedPaths() {
        pages at once and no sitemap report would flag it, exactly as
        /applications would. */
     'web/public/contact.html',
+    /* /about — the same single root page as /contact, and the same trap: not
+       listed here it is written every run and pushed never. */
+    'web/public/about.html',
     /* The daily digest's masthead radar. Email cannot render the site's inline
        SVG (src/digestmail.js), so the mark is a PNG served from here — and
        every subscriber's client fetches it from the live domain. Missing from
