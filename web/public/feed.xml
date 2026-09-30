@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 30 Sep 2026 22:29:32 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 22:49:25 GMT</lastBuildDate>
+  <item>
+    <title>Intern — IQVIA</title>
+    <link>https://interndoor.com/jobs/iqvia-intern-4472356798</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-intern-4472356798</guid>
+    <pubDate>Wed, 30 Sep 2026 22:49:25 GMT</pubDate>
+    <description>Company: IQVIA · Location: Bengaluru, Karnataka, India
+• Develop and test software components using Python and modern frameworks
+• Build and validate REST APIs and integrations across enterprise systems
+• Design automated test frameworks for functional and end-to-end testing
+• Collaborate with global teams on AI-powered solutions and cloud platforms</description>
+  </item>
   <item>
     <title>Customer Insights Analyst — Lowe&#39;s India</title>
     <link>https://interndoor.com/jobs/lowe-s-india-analyst-customer-insights-4472371028</link>
@@ -502,16 +513,6 @@
 • Develop and maintain mobile applications using React Native
 • Collaborate with clients to deliver high-quality technical solutions
 • Troubleshoot production issues and conduct technical analysis</description>
-  </item>
-  <item>
-    <title>Java Developer Angular — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-java-angular-developer-4436589842</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-angular-developer-4436589842</guid>
-    <pubDate>Wed, 30 Sep 2026 13:45:26 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Develop and maintain microservices using Java and Spring Boot
-• Collaborate on system design and troubleshoot cross-platform issues
-• Implement automated testing and database schemas for business processes</description>
   </item>
 </channel>
 </rss>
