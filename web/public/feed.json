@@ -6,6 +6,90 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pwc-india-in-associate-data-science-gen-ai-gcc-advisory-bangalore-4463341867",
+      "url": "https://interndoor.com/jobs/pwc-india-in-associate-data-science-gen-ai-gcc-advisory-bangalore-4463341867",
+      "title": "Data Science Gen AI Associate — PwC India",
+      "content_text": "Company: PwC India · Location: Bengaluru, Karnataka, India\n• Build and deploy AI pipelines for text, image, audio, and video generation\n• Integrate AI models into systems using APIs like OpenAI and Hugging Face\n• Design Gen AI apps with LLMs and optimize model outputs for accuracy",
+      "date_published": "2026-09-30T12:39:52.535Z",
+      "authors": [
+        {
+          "name": "PwC India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-java-fullstack-engineer-4463524436",
+      "url": "https://interndoor.com/jobs/zensar-technologies-java-fullstack-engineer-4463524436",
+      "title": "Java FullStack Engineer — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Chennai, Tamil Nadu, India\n• Build and deploy full-stack applications using Java, Spring Boot, and Angular\n• Work with Kafka, Oracle, and Git for backend systems and API development\n• Collaborate on microservices and security frameworks like OAuth2/JWT",
+      "date_published": "2026-09-30T12:36:43.920Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-java-full-stack-developer-with-react-and-nodejs-4445173427",
+      "url": "https://interndoor.com/jobs/infosys-java-full-stack-developer-with-react-and-nodejs-4445173427",
+      "title": "Java Full Stack developer — Infosys",
+      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Design, develop, validate and support client systems using Java and NodeJS\n• Translate functional/non-functional requirements into system specifications\n• Collaborate with leads to estimate project work and ensure quality processes",
+      "date_published": "2026-09-30T12:27:10.440Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/dream11-intern-4473775183",
+      "url": "https://interndoor.com/jobs/dream11-intern-4473775183",
+      "title": "Intern — Dream11",
+      "content_text": "Company: Dream11 · Location: Mumbai, Maharashtra, India\n• Build products used by millions of sports fans\n• Use ai tools and coding copilots for development\n• Work on live sports, highlights, and contests",
+      "date_published": "2026-09-30T12:25:41.411Z",
+      "authors": [
+        {
+          "name": "Dream11"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-qa-automation-with-bdd-selenium-java-chennai-4248975312",
+      "url": "https://interndoor.com/jobs/ups-qa-automation-with-bdd-selenium-java-chennai-4248975312",
+      "title": "QA - Automation with BDD, Selenium, Java - Chennai — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Write test cases for automation using BDD, Selenium, and Java\n• Work with QA team and developers on testing small to medium projects\n• Document testing progress and ensure quality standards are met",
+      "date_published": "2026-09-30T12:17:40.969Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-business-applied-scientist-i-buyer-risk-prevention-brp-4472173551",
+      "url": "https://interndoor.com/jobs/amazon-business-applied-scientist-i-buyer-risk-prevention-brp-4472173551",
+      "title": "Applied Scientist I, Buyer Risk Prevention (BRP) — Amazon Business",
+      "content_text": "Company: Amazon Business · Location: Bengaluru, Karnataka, India\n• Build and improve risk management models using machine learning and statistics\n• Collaborate with engineers to deploy models in real-time systems\n• Experiment with GenAI and LLMs to enhance risk evaluation\n• Analyze large datasets to identify fraud and risk patterns",
+      "date_published": "2026-09-30T12:14:46.283Z",
+      "authors": [
+        {
+          "name": "Amazon Business"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kla-devops-engineer-4460730313",
+      "url": "https://interndoor.com/jobs/kla-devops-engineer-4460730313",
+      "title": "DevOps Engineer — KLA",
+      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Design and maintain CI/CD pipelines using Jenkins, GitHub Actions, or Azure DevOps\n• Leverage AI agents for intelligent code review and deployment validation\n• Architect cloud infrastructure with AWS, Azure, or GCP using Terraform and Ansible",
+      "date_published": "2026-09-30T12:07:39.691Z",
+      "authors": [
+        {
+          "name": "KLA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
       "url": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
       "title": "Camera Systems Engineer — Qualcomm",
@@ -20,7 +104,7 @@
     {
       "id": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4473743973",
       "url": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4473743973",
-      "title": "Software Development Associate — State Street",
+      "title": "Software Engineering & Development, Associate 2 — State Street",
       "content_text": "Company: State Street · Location: Hyderabad, Telangana, India\n• Implementing application design, development, testing, and deployment across SDLC\n• Working with AWS, Azure, Jenkins, Git, and DevOps tools for cloud and automation\n• Collaborating with internal teams and managing production system issues",
       "date_published": "2026-09-30T11:40:58.231Z",
       "authors": [
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Syngene International Limited"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-developer-intern-4471936018",
-      "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-developer-intern-4471936018",
-      "title": "Full Stack Developer Intern — D Square Consulting Services Pvt Ltd",
-      "content_text": "Company: D Square Consulting Services Pvt Ltd · Location: Bengaluru, Karnataka, India · Duration: 0 to 1 years\n• Build front-end components with Angular and back-end features with Node.js and Express.js\n• Write clean code for scalable web apps and interact with RESTful APIs\n• Deploy applications on AWS or Google Cloud and troubleshoot software issues",
-      "date_published": "2026-09-30T02:41:49.874Z",
-      "authors": [
-        {
-          "name": "D Square Consulting Services Pvt Ltd"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-angular-developer-4433479541",
-      "url": "https://interndoor.com/jobs/infosys-java-angular-developer-4433479541",
-      "title": "Java developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design, develop, validate and support systems for client projects\n• Java and AngularJS2 for building efficient programs and systems\n• Collaborate with leads and managers on project estimations and requirements",
-      "date_published": "2026-09-30T01:44:35.311Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/revvity-intern-ecommerce-4473560924",
-      "url": "https://interndoor.com/jobs/revvity-intern-ecommerce-4473560924",
-      "title": "Ecommerce Intern — Revvity",
-      "content_text": "Company: Revvity · Location: Thane, Maharashtra, India\n• Maintain and update e-commerce platform\n• Troubleshoot website technical issues\n• Optimize site performance and loading speeds",
-      "date_published": "2026-09-30T00:26:26.755Z",
-      "authors": [
-        {
-          "name": "Revvity"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/gokwik-software-development-engineer-i-4471975502",
-      "url": "https://interndoor.com/jobs/gokwik-software-development-engineer-i-4471975502",
-      "title": "Software Development Engineer I — GoKwik",
-      "content_text": "Company: GoKwik · Location: Bengaluru, Karnataka, India\n• Build and optimize backend services using Node.js, NestJS, and Go\n• Develop scalable APIs with PostgreSQL, MongoDB, and Redis\n• Ship end-to-end features including frontend work with React and Svelte",
-      "date_published": "2026-09-30T00:19:48.112Z",
-      "authors": [
-        {
-          "name": "GoKwik"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-testing-services-4471967444",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-testing-services-4471967444",
-      "title": "Technical Specialist-Testing Services — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Test d365 and web apps with selenium and java\n• Manage defects in jira and azure devops\n• Automate regression with playwright and ci/cd tools",
-      "date_published": "2026-09-29T23:44:42.171Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/applied-materials-india-business-intelligence-analyst-4471791104",
-      "url": "https://interndoor.com/jobs/applied-materials-india-business-intelligence-analyst-4471791104",
-      "title": "Business Intelligence Analyst — Applied Materials India",
-      "content_text": "Company: Applied Materials India · Location: Bengaluru, Karnataka, India\n• Coordinate scv operations between suppliers, buyers, and it teams\n• Track and resolve scv incidents via servicenow with sla compliance\n• Maintain cip tracker and drive closure of open initiatives",
-      "date_published": "2026-09-29T23:44:21.126Z",
-      "authors": [
-        {
-          "name": "Applied Materials India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472077694",
-      "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472077694",
-      "title": "Enterprise AI Strategy Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Analyze supply chain processes to identify AI use cases in demand planning, procurement, and fulfillment\n• Develop business and functional requirements for AI-enabled supply chain solutions\n• Create AI value cases and support client workshops on future-ready supply chains",
-      "date_published": "2026-09-29T22:48:00.336Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
