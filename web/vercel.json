@@ -77,75 +77,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "US"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "boardpick"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*([Bb][Oo][Tt]|[Cc][Rr][Aa][Ww][Ll]|[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss][Ll][Uu][Rr][Pp]|facebookexternalhit|WhatsApp|Embedly|Quora Link Preview).*"
-        }
-      ],
-      "destination": "/us",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "GB"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "boardpick"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*([Bb][Oo][Tt]|[Cc][Rr][Aa][Ww][Ll]|[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss][Ll][Uu][Rr][Pp]|facebookexternalhit|WhatsApp|Embedly|Quora Link Preview).*"
-        }
-      ],
-      "destination": "/uk",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "CA"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "boardpick"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*([Bb][Oo][Tt]|[Cc][Rr][Aa][Ww][Ll]|[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss][Ll][Uu][Rr][Pp]|facebookexternalhit|WhatsApp|Embedly|Quora Link Preview).*"
-        }
-      ],
-      "destination": "/ca",
-      "permanent": false
-    },
-    {
       "source": "/in",
       "destination": "/",
       "permanent": true
@@ -191,20 +122,15 @@
       "permanent": true
     },
     {
-      "source": "/us/companies/boeing-india",
-      "destination": "/us/companies/boeing",
-      "permanent": true
-    },
-    {
-      "source": "/uk/companies/boeing-india",
-      "destination": "/uk/companies/boeing",
-      "permanent": true
-    },
-    {
       "source": "/companies/s-and-p-global",
       "has": [{ "type": "query", "key": "utm_campaign", "value": "data-posts" }],
       "destination": "/?utm_source=linkedin&utm_medium=social&utm_campaign=data-posts&utm_content=top10",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    { "source": "/us/:path*", "destination": "/api/gone" },
+    { "source": "/uk/:path*", "destination": "/api/gone" },
+    { "source": "/ca/:path*", "destination": "/api/gone" }
   ]
 }

@@ -102,9 +102,14 @@ console.log('\n== only published regions are worth spending requests on ==');
 // Collecting a region we do not publish is not wrong, but a LinkedIn search is
 // the expensive collector — unlike an ATS board, whose requests are already
 // being made. Anything here that is not published is worth a second look.
+// A PAUSED search may stay declared for a board that is not published — the US
+// search since 30 Sep 2026, when the site went India only — so its verified
+// geoId and tuned window survive for a restart. An ACTIVE one may not.
 const published = new Set((cfg.regions?.publish ?? []).map(String));
-for (const s of searches) {
-  ok(`${s.region} is published`, published.has(s.region));
+const active = resolveSearches(cfg);
+ok('there is at least one active search', active.length > 0);
+for (const s of active) {
+  ok(`${s.region} (active) is published`, published.has(s.region));
 }
 
 console.log('\n== the request-budget dial exists and defaults to "all" ==');

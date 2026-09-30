@@ -74,6 +74,7 @@ const server = createServer(async (req, res) => {
     '/api/apply': './api/apply.js',
     '/api/count': './api/count.js',
     '/api/feedback': './api/feedback.js',
+    '/api/gone': './api/gone.js',
   };
   if (API[url.pathname]) {
     try {

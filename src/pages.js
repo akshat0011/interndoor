@@ -5288,8 +5288,14 @@ export const ADVERTISED_SITEMAP_BOARDS = new Set(['IN']);
 function writeRobots(publicDir, regions = [DEFAULT_REGION]) {
   const sitemaps = regions.filter((r) => ADVERTISED_SITEMAP_BOARDS.has(r.code))
     .map((r) => `Sitemap: ${regionUrl('/sitemap.xml', r)}`).join('\n');
+  /* /_vercel/ is Vercel Analytics: rendering a page makes Googlebot fire its
+     beacon, and on 30 Sep 2026 the beacon was the single largest JSON URL in
+     Search Console's crawl stats (27% of all requests were JSON). Nothing there
+     is a page. /api/ is NOT blocked: /api/og is every job's link-preview image
+     and LinkedIn's preview bot obeys robots.txt. */
   writeFileSync(join(publicDir, 'robots.txt'), `User-agent: *
 Allow: /
+Disallow: /_vercel/
 
 ${sitemaps}
 `);

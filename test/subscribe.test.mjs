@@ -70,7 +70,9 @@ check('an unknown board is refused', normaliseRegion('FR'), null);
   const { publishedRegions, regionPath } = await import('../src/regions.js');
   const cfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
   const published = publishedRegions(cfg).map((r) => r.code);
-  check('found the published boards', published.length >= 3, true);
+  // India only since 30 Sep 2026; the lists may keep retired boards, but must
+  // never be missing a live one.
+  check('found the published boards, India among them', published.length >= 1 && published.includes('IN'), true);
   check('the signup accepts every published board', published.filter((c) => !REGIONS.includes(c)), []);
   const count = await import('../web/api/count.js');
   check('the counter files every published board under itself', published.filter((c) => !count.REGIONS.has(c)), []);
