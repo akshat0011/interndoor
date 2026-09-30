@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-firmware-validation-bios-bmc-and-python-automation-engineer-4463017453",
+      "url": "https://interndoor.com/jobs/ust-firmware-validation-bios-bmc-and-python-automation-engineer-4463017453",
+      "title": "Firmware validation (BIOS / BMC) & Python Automation Engineer — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and maintain automation frameworks for firmware validation\n• Work with firmware teams to debug and analyze system issues\n• Use Python, PyTest, and Linux tools for testing and reporting",
+      "date_published": "2026-09-30T10:13:59.024Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-software-developer-4472148711",
+      "url": "https://interndoor.com/jobs/ibm-software-developer-4472148711",
+      "title": "Software Developer — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Build and maintain full-stack applications using React, Node.js, and Python\n• Work on automation and AI projects with tools like LangChain and FastAPI\n• Contribute to DevOps and CI/CD pipelines with Ansible and GitHub",
+      "date_published": "2026-09-30T10:09:08.337Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-telemetry-sw-developer-4463016501",
+      "url": "https://interndoor.com/jobs/ust-telemetry-sw-developer-4463016501",
+      "title": "Telemetry SW Developer — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Build telemetry frameworks and data collection tools for system monitoring\n• Work with cloud platforms and analytics tools for data processing and insights\n• Collaborate with cross-functional teams to define and improve observability solutions",
+      "date_published": "2026-09-30T09:54:35.971Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-development-intern-4473709429",
       "url": "https://interndoor.com/jobs/d-square-consulting-services-pvt-ltd-full-stack-development-intern-4473709429",
       "title": "Full Stack Development Intern — D Square Consulting Services Pvt Ltd",
@@ -14,6 +50,18 @@
       "authors": [
         {
           "name": "D Square Consulting Services Pvt Ltd"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/trane-technologies-test-engineer-4454272529",
+      "url": "https://interndoor.com/jobs/trane-technologies-test-engineer-4454272529",
+      "title": "Test Engineer — Trane Technologies",
+      "content_text": "Company: Trane Technologies · Location: Chennai, Tamil Nadu, India · Duration: 1-5 years\n• Create test cases and scripts from user stories using JIRA tools\n• Execute manual and automated tests, debug scripts, and analyze results\n• Work with engineering and product teams on HVAC software quality\n• Flexible work schedule with onsite days Monday-Thursday",
+      "date_published": "2026-09-30T09:39:29.902Z",
+      "authors": [
+        {
+          "name": "Trane Technologies"
         }
       ]
     },
@@ -122,6 +170,18 @@
       "authors": [
         {
           "name": "Smowcode"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-automation-test-analyst-4472134064",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-automation-test-analyst-4472134064",
+      "title": "Automation Test Analyst — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Greater Chennai Area\n• Write and execute test scripts for web and client-server apps using selenium and jUnit\n• Automate api testing with postman and implement ci/cd pipelines\n• Collaborate in agile teams to design and debug test cases",
+      "date_published": "2026-09-30T06:49:09.058Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464372512",
-      "url": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464372512",
-      "title": "Applied Scientist, CMT — Amazon",
-      "content_text": "Company: Amazon · Location: Chennai, Tamil Nadu, India\n• Build and optimize machine learning models for product similarity and price recommendations\n• Collaborate with engineers to deploy models in production environments\n• Write maintainable code and share findings through technical writing and presentations",
-      "date_published": "2026-09-29T17:04:47.196Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-mainframe-sre-4471927537",
-      "url": "https://interndoor.com/jobs/zensar-technologies-mainframe-sre-4471927537",
-      "title": "Mainframe SRE — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Gurgaon, Haryana, India\n• Administer IMS v15 and DB2 z/OS databases for mission critical systems\n• Use BMC and IBM tools for automation and cross-platform database tasks\n• Mentor junior DBAs and lead modernization of mainframe databases",
-      "date_published": "2026-09-29T17:00:52.533Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464370570",
-      "url": "https://interndoor.com/jobs/amazon-applied-scientist-cmt-4464370570",
-      "title": "Applied Scientist, CMT — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Develop and optimize machine learning models for product similarity and price recommendations\n• Collaborate with engineers to deploy models in production environments\n• Write maintainable code and share findings through technical writing and presentations",
-      "date_published": "2026-09-29T16:54:27.856Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4471918889",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4471918889",
-      "title": "Technical Specialist-App Development — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Build responsive web interfaces using react js and css\n• Translate design mockups into functional components\n• Work with cross-functional teams on user experience improvements",
-      "date_published": "2026-09-29T16:54:13.221Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-sde-1-ftc-4464370566",
-      "url": "https://interndoor.com/jobs/amazon-sde-1-ftc-4464370566",
-      "title": "SDE-1 (FTC) — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Design and develop software systems for cross-border tech stacks\n• Work on large-scale computing and distributed systems\n• Build mission-critical applications for global expansion",
-      "date_published": "2026-09-29T16:42:12.965Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }
