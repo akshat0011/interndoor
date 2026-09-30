@@ -6,6 +6,126 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/microsoft-post-doc-researcher-4456193567",
+      "url": "https://interndoor.com/jobs/microsoft-post-doc-researcher-4456193567",
+      "title": "Post Doc Researcher — Microsoft",
+      "content_text": "Company: Microsoft · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Design and implement tools for analyzing and transforming large codebases\n• Collaborate with Microsoft researchers and product teams on AI and formal methods\n• Work on real-world software engineering challenges with high-quality outcomes",
+      "date_published": "2026-09-30T17:19:28.483Z",
+      "authors": [
+        {
+          "name": "Microsoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-4472321596",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-4472321596",
+      "title": "Data Science Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India · Duration: 0–2 years\n• Assess AI/ML models for risk, bias, and compliance across marketing, credit, and fraud\n• Use Python, PySpark, SQL for analysis and model validation\n• Collaborate with cross-functional teams on risk governance and documentation",
+      "date_published": "2026-09-30T17:19:07.900Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/icon-strategic-solutions-systems-support-specialist-4473930092",
+      "url": "https://interndoor.com/jobs/icon-strategic-solutions-systems-support-specialist-4473930092",
+      "title": "Systems Support Specialist — ICON Strategic Solutions",
+      "content_text": "Company: ICON Strategic Solutions · Location: Chennai, Tamil Nadu, India\n• Support end-users with hardware and software issues, ensuring efficient solutions\n• Maintain system documentation and monitor operations to prevent disruptions\n• Collaborate with IT to improve systems and support upgrades",
+      "date_published": "2026-09-30T17:17:35.912Z",
+      "authors": [
+        {
+          "name": "ICON Strategic Solutions"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sanofi-automation-engineer-4473908970",
+      "url": "https://interndoor.com/jobs/sanofi-automation-engineer-4473908970",
+      "title": "Automation Engineer — Sanofi",
+      "content_text": "Company: Sanofi · Location: Hyderabad, Telangana, India\n• Build automation for cloud and on-premises infrastructure using Ansible and Terraform\n• Reduce manual tasks with self-service tools and event-driven remediation\n• Work in agile teams with senior engineers on production systems",
+      "date_published": "2026-09-30T17:14:35.179Z",
+      "authors": [
+        {
+          "name": "Sanofi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sanofi-devops-platform-engineer-4473926117",
+      "url": "https://interndoor.com/jobs/sanofi-devops-platform-engineer-4473926117",
+      "title": "DevOps Platform Engineer — Sanofi",
+      "content_text": "Company: Sanofi · Location: Hyderabad, Telangana, India\n• Design and maintain CI/CD pipelines using GitHub Actions and Azure DevOps\n• Build Terraform modules and Ansible content for cloud infrastructure\n• Operate Kubernetes platforms and support containerized applications",
+      "date_published": "2026-09-30T17:14:20.850Z",
+      "authors": [
+        {
+          "name": "Sanofi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055",
+      "url": "https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055",
+      "title": "Technology Solution Engineer — Sanofi",
+      "content_text": "Company: Sanofi · Location: Hyderabad, Telangana, India\n• Design and build cloud solutions using Azure, AWS, Terraform, and Ansible\n• Mentor junior engineers and lead cross-team technical delivery\n• Ensure operational readiness with monitoring, security, and compliance",
+      "date_published": "2026-09-30T17:13:57.262Z",
+      "authors": [
+        {
+          "name": "Sanofi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028",
+      "url": "https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028",
+      "title": "Software Engineer — Broadridge India",
+      "content_text": "Company: Broadridge India · Location: Hyderabad, Telangana, India\n• Develop and maintain software solutions using COBOL, JCL, DB2, VSAM, and CICS\n• Collaborate in agile environments to implement system improvements and troubleshoot issues\n• Work flexible UK shifts in a team focused on technology and business process optimization",
+      "date_published": "2026-09-30T17:00:48.940Z",
+      "authors": [
+        {
+          "name": "Broadridge India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-4455917616",
+      "url": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-4455917616",
+      "title": "Network Development Engineer — Amazon Web Services (AWS)",
+      "content_text": "Company: Amazon Web Services (AWS) · Location: Au, Rajasthan, India\n• Support and maintain next-generation networks\n• Work with BGP, OSPF, Cisco IOS, and Junos\n• Design alerts, troubleshoot issues, and create scripts",
+      "date_published": "2026-09-30T16:48:37.384Z",
+      "authors": [
+        {
+          "name": "Amazon Web Services (AWS)"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wiz-solutions-engineer-west-inida-4453428209",
+      "url": "https://interndoor.com/jobs/wiz-solutions-engineer-west-inida-4453428209",
+      "title": "Solutions Engineer - West Inida — Wiz",
+      "content_text": "Company: Wiz · Location: Mumbai Metropolitan Region\n• Support mid-market enterprise customers with cloud security solutions across AWS, Azure, and GCP\n• Collaborate with sales teams to deliver technical demos and proof of value outcomes\n• Represent Wiz at technical events and contribute to product knowledge development",
+      "date_published": "2026-09-30T16:35:02.645Z",
+      "authors": [
+        {
+          "name": "Wiz"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-sde-1-ftc-4465036237",
+      "url": "https://interndoor.com/jobs/amazon-sde-1-ftc-4465036237",
+      "title": "SDE-1 (FTC) — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Design and develop software systems for cross-border tech stacks\n• Work on large-scale computing and distributed systems\n• Contribute to global platform evolution and security compliance",
+      "date_published": "2026-09-30T16:32:22.410Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/valeo-junior-system-engineer-engineer-m-f-d-4473903935",
       "url": "https://interndoor.com/jobs/valeo-junior-system-engineer-engineer-m-f-d-4473903935",
       "title": "Junior System Engineer — Valeo",
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-business-applied-scientist-i-buyer-risk-prevention-brp-4472173551",
-      "url": "https://interndoor.com/jobs/amazon-business-applied-scientist-i-buyer-risk-prevention-brp-4472173551",
-      "title": "Applied Scientist I, Buyer Risk Prevention (BRP) — Amazon Business",
-      "content_text": "Company: Amazon Business · Location: Bengaluru, Karnataka, India\n• Build and improve risk management models using machine learning and statistics\n• Collaborate with engineers to deploy models in real-time systems\n• Experiment with GenAI and LLMs to enhance risk evaluation\n• Analyze large datasets to identify fraud and risk patterns",
-      "date_published": "2026-09-30T12:14:46.283Z",
-      "authors": [
-        {
-          "name": "Amazon Business"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-devops-engineer-4460730313",
-      "url": "https://interndoor.com/jobs/kla-devops-engineer-4460730313",
-      "title": "DevOps Engineer — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Design and maintain CI/CD pipelines using Jenkins, GitHub Actions, or Azure DevOps\n• Leverage AI agents for intelligent code review and deployment validation\n• Architect cloud infrastructure with AWS, Azure, or GCP using Terraform and Ansible",
-      "date_published": "2026-09-30T12:07:39.691Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4473756501",
-      "url": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4473756501",
-      "title": "DE&A - IPA - Power Platform — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and deploy power automate solutions for client projects\n• Use power platform tools for automation and integration tasks\n• Work on real-world digital transformation initiatives",
-      "date_published": "2026-09-30T11:55:09.602Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-camera-systems-3a-4445130861",
-      "title": "Camera Systems Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area · Duration: 0-2 years\n• Design and optimize image processing algorithms for hardware acceleration\n• Work with C/C++ and Python on real-time embedded systems\n• Collaborate with product teams on performance benchmarking and optimization",
-      "date_published": "2026-09-30T11:53:16.261Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-windows-4473761375",
-      "url": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-windows-4473761375",
-      "title": "C++ Desktop Application Development (Windows) — Quest Global",
-      "content_text": "Company: Quest Global · Location: Chennai, Tamil Nadu, India\n• Develop and deploy software components in Windows software stack using C++\n• Write clean, reusable code and perform unit testing and validation\n• Create technical documentation for application design and code\n• Work independently on complex project tasks aligned with customer needs",
-      "date_published": "2026-09-30T11:48:12.985Z",
-      "authors": [
-        {
-          "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4473743742",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4473743742",
-      "title": "App Development Technical Specialist — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Integrate generative ai models into full-stack applications\n• Work with tensorflow, pytorch, and hugging face transformers\n• Collaborate in cross-functional teams on ai/ml projects",
-      "date_published": "2026-09-30T11:45:13.313Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4473743973",
-      "url": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4473743973",
-      "title": "Software Engineering & Development, Associate 2 — State Street",
-      "content_text": "Company: State Street · Location: Hyderabad, Telangana, India\n• Implementing application design, development, testing, and deployment across SDLC\n• Working with AWS, Azure, Jenkins, Git, and DevOps tools for cloud and automation\n• Collaborating with internal teams and managing production system issues",
-      "date_published": "2026-09-30T11:40:58.231Z",
-      "authors": [
-        {
-          "name": "State Street"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-gen-ai-4464492732",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-gen-ai-4464492732",
-      "title": "Gen AI — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Greater Hyderabad Area\n• Build and deploy generative ai models for enterprise clients\n• Use python and agentic ai frameworks for ai engineering\n• Work on ai applications with reliability and devops automation",
-      "date_published": "2026-09-30T11:40:20.571Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kuku-ios-developer-4473761659",
-      "url": "https://interndoor.com/jobs/kuku-ios-developer-4473761659",
-      "title": "iOS Developer — Kuku",
-      "content_text": "Company: Kuku · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Develop features for iOS apps with millions of users\n• Use Swift and SwiftUI with UIKit/Core Data\n• Collaborate with product and design teams",
-      "date_published": "2026-09-30T11:32:30.580Z",
-      "authors": [
-        {
-          "name": "Kuku"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/secondwind-by-joveo-ai-agent-engineer-4473764295",
-      "url": "https://interndoor.com/jobs/secondwind-by-joveo-ai-agent-engineer-4473764295",
-      "title": "AI Agent Engineer — SecondWind by Joveo",
-      "content_text": "Company: SecondWind by Joveo · Location: Pune District, Maharashtra, India\n• Build AI agents that automate workflows via APIs and real systems\n• Use Python, LLMs, and frameworks like LangChain for agent logic\n• Collaborate with product to design high-impact agent use cases",
-      "date_published": "2026-09-30T11:32:06.784Z",
-      "authors": [
-        {
-          "name": "SecondWind by Joveo"
         }
       ]
     }
