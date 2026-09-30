@@ -4,7 +4,7 @@
 
 ### 🔗 [interndoor.com](https://interndoor.com)
 
-A free job board for engineering internships and entry-level jobs in India, the US and the UK,
+A free job board for engineering internships and entry-level jobs in India,
 built for students and fresh graduates who keep finding the good postings two days late.
 
 ---
@@ -81,15 +81,16 @@ should get to decide it with the facts in front of you.
 
 ## Right now
 
-| | India | United States | United Kingdom |
-|---|---|---|---|
-| Live engineering internships | ~275 | ~3,370 | ~60 |
-| Live entry-level jobs | ~30 | ~160 | ~50 |
-| Companies hiring right now | ~170 | ~400 | ~35 |
-| Refreshed | every 30 minutes | every 30 minutes | every 30 minutes |
-| Listings expire after | 30 days | 30 days | 30 days |
+| | India |
+|---|---|
+| Live engineering internships | ~260 |
+| Live entry-level jobs | ~690 |
+| Companies hiring right now | ~330 |
+| Refreshed | every 30 minutes |
+| Listings expire after | 30 days |
 
-Counts are from 19 September 2026 and move every half hour. Postings drop off after 30 days, or
+Counts are from 30 September 2026 and move every half hour. InternDoor listed the US, the UK and
+Canada too until 30 September 2026; it is India only now. Postings drop off after 30 days, or
 sooner when the employer's own page says the role has closed. A posting older than that is usually
 closed or already has hundreds of applicants, and showing it would work against the one thing this
 site is for.

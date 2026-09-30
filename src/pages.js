@@ -3902,7 +3902,7 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
     url: `${SITE}/`,
     email: CONTACT_EMAIL,
     logo: `${SITE}/logo-512.png`,
-    description: 'A job board for engineering internships and entry-level full-time roles in India, the United States and the United Kingdom.',
+    description: 'A job board for engineering internships and entry-level full-time roles in India.',
   };
 
   const mail = (subject) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
