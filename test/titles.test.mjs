@@ -38,6 +38,14 @@ check('the original spelling comes back: Macos -> MacOS, Powerbi -> PowerBI',
 console.log('\n== what the check refuses ==');
 check('an internship that stops saying so', groundTitle('Full Stack Developer', 'Full Stack Developer - Intern'), null);
 check('a role that stops saying what it is', groundTitle('Application', 'Application Engineering Services - Support'), null);
+// Real India titles, 30 Sep: a grade of two or higher must survive.
+check('a level 2 kept by digit', groundTitle('Software Development Associate', 'Software Engineering & Development, Associate 2'), null);
+check('a level 2 kept by L-code', groundTitle('Software Engineering Associate', 'Engineering-L2-Hyderabad-Associate-Software Engineering'), null);
+check('a roman II kept', groundTitle('Platform Engineer', 'Platform Engineer II'), null);
+check('the level may stay', groundTitle('Software Development Associate 2', 'Software Engineering & Development, Associate 2'), 'Software Development Associate 2');
+check('level 1 may go', groundTitle('API Engineer', 'API Engineer 1 - Credit (L08)'), 'API Engineer');
+check('the level is a word of its own, not the end of another number', groundTitle('Associate Team 42', 'Associate 2 - Team 42'), null);
+check('a year is not a level', groundTitle('Software Engineer Intern', 'Software Engineer Intern 2027'), 'Software Engineer Intern');
 check('the company name alone', groundTitle('Accenture', 'Accenture Analyst', 'Accenture'), null);
 check('too short', groundTitle('AI', 'AI Analyst'), null);
 check(`longer than ${TITLE_MAX}`, groundTitle('Intermediate Software Engineer Full Stack C# Dotnet MVC Angular Azure', 'Intermediate Software Engineer- Full Stack-C#, Dotnet, MVC, Angular, Azure DevOps'), null);
@@ -55,6 +63,20 @@ check('an ETL developer stays whatever the model says', shelfMove('software', 'c
 // writes Salesforce or SAP code stays on Software even when read as ERP work.
 check('a Salesforce DEVELOPER stays', shelfMove('software', 'erp_crm_functional', 'Salesforce Developer'), null);
 check('a Salesforce administrator moves', shelfMove('software', 'erp_crm_functional', 'Salesforce Administrator'), 'misc');
+// Both measured on the India board, 30 Sep: the model read a GCP reliability
+// role as helpdesk and a data-analytics analyst as business.
+check('a Google Cloud infrastructure support engineer stays', shelfMove('software', 'it_support_helpdesk', 'Google Cloud Infrastructure Support Engineer'), null);
+check('a business analyst in data analytics stays', shelfMove('software', 'business_sales_marketing_ops', 'Business Analyst-Data Analytics'), null);
+check('a cloud FinOps strategy analyst still moves', shelfMove('software', 'consulting_strategy', 'S&CGN - Tech Strategy & Advisory - Cloud Finops - Analyst'), 'misc');
+// Real India titles the first word list let stay on Software, 30 Sep.
+check('an IT administrator moves', shelfMove('software', 'it_support_helpdesk', 'ADMINISTRATOR L2'), 'misc');
+check('a managed-services engineer moves', shelfMove('software', 'it_support_helpdesk', 'Cross Technology Managed Services Engineer (L1)'), 'misc');
+check('an onboarding specialist moves', shelfMove('software', 'it_support_helpdesk', 'Technical Onboarding Specialist'), 'misc');
+check('a demand-forecasting analyst moves', shelfMove('software', 'business_sales_marketing_ops', 'Analyst – Demand Forecasting'), 'misc');
+check('a claims analyst moves', shelfMove('software', 'business_sales_marketing_ops', 'Claims Analytics Specialist'), 'misc');
+check('an ecommerce intern moves', shelfMove('software', 'business_sales_marketing_ops', 'Intern - Ecommerce'), 'misc');
+check('an Oracle EPM associate moves', shelfMove('software', 'erp_crm_functional', 'EPM - ARCS - Associate'), 'misc');
+check('a database administrator stays', shelfMove('software', 'it_support_helpdesk', 'Database Administrator'), null);
 check('a software discipline never moves', shelfMove('software', 'data_science_analytics', 'Data Analyst - Business Operations'), null);
 check('hardware is never moved', shelfMove('hardware', 'business_sales_marketing_ops', 'Sales Engineer - VLSI'), null);
 check('misc is never promoted', shelfMove('misc', 'software_development', 'Business Analyst'), null);
