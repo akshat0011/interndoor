@@ -1405,8 +1405,8 @@
   "titles": {
     "budgetMinutes": 1.5,
     "perRunLimit": 40,
-    "moveToMisc": false,
-    "_note": "Clean titles and disciplines from the local model (src/titles.js), his ask 30 Sep 2026. Each scan reads up to perRunLimit new postings within budgetMinutes BEFORE the publish; bin/clean-titles.js reads the rest of the store. A title is only ever the original's own words (groundTitle) and the page URL keeps the original title. moveToMisc lets a Software-shelf role move to Misc on two signals (shelfMove); off until the backfill's full list of moves has been reviewed."
+    "moveToMisc": true,
+    "_note": "Clean titles and disciplines from the local model (src/titles.js), his ask 30 Sep 2026. Each scan reads up to perRunLimit new postings within budgetMinutes BEFORE the publish; bin/clean-titles.js reads the rest of the store. A title is only ever the original's own words (groundTitle) and the page URL keeps the original title. moveToMisc lets a Software-shelf role move to Misc on two signals (shelfMove). Turned on 30 Sep 2026 after the full India read: 32 of 931 live India roles move (IT/app support, SAP/EPM functional, strategy consulting, MBA, bioinformatics, ops); 0 on the US and UK. Set false to put every one back on Software at the next publish."
   },
   "enrich": {
     "model": "qwen3:8b",
