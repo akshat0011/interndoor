@@ -1961,6 +1961,10 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   // than a generic "is hiring" opener. The first bullet is kept as the tail
   // because it is the only sentence that says what the work actually is.
   const descFacts = [
+    /* The kind, on a full-time role only — its title no longer says
+       "Internship" (1 Oct 2026) and nothing else in the snippet said what it
+       is. An internship's title already says so. */
+    job.employmentType === FULL_TIME ? `Full-time ${entryWord(region)} role` : null,
     job.location || null,
     modeText(job) || null,
     stipendText(job) ? `stipend ${stipendText(job)}` : null,
