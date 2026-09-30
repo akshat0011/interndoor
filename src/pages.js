@@ -365,6 +365,14 @@ export function postalAddressFor(location, countryCode) {
   return { locality: parts[0], region: null };
 }
 
+/** The stated minimum years, in months: "0–1 years" -> 0, "2+ years" -> 24, "1 year" -> 12; anything else -> null. */
+export function experienceMonths(text) {
+  const m = /(?:^|·\s*)(\d{1,2})\s*(?:[–-]\s*\d{1,2}\s*|\+\s*)?years?\b/i.exec(String(text ?? ''));
+  if (!m) return null;
+  const years = Number(m[1]);
+  return Number.isFinite(years) && years <= 10 ? years * 12 : null;
+}
+
 function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
   /* Past its own stated deadline a posting has expired, and marking up an
      expired posting is the manual-action case. publish already drops such a
@@ -412,6 +420,15 @@ function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VAL
      the posting rather than the employer's prose, which is the same line the
      rest of this file draws. Emitted only where the extractor found any. */
   if (Array.isArray(job.skills) && job.skills.length) ld.skills = job.skills.join(', ');
+
+  /* EXPERIENCE, ONLY WHERE THE POSTING STATED IT — 1 Oct 2026. Google Jobs
+     filters on it, and `experience` is set only by groundFacts (src/extract.js),
+     which keeps a figure the posting's own words carry and nothing inferred. The
+     MINIMUM of the stated range is the requirement ("0–1 years" is none, "2+
+     years" is 24 months). A graduation year says nothing about experience and
+     emits nothing. */
+  const months = experienceMonths(job.experience);
+  if (months != null) ld.experienceRequirements = { '@type': 'OccupationalExperienceRequirements', monthsOfExperience: months };
 
   if (job.pay) {
     ld.baseSalary = {

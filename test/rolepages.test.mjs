@@ -18,7 +18,7 @@ import { mkdtempSync, rmSync, readFileSync, readdirSync, existsSync, copyFileSyn
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { ROLE_PAGES, ROLE_MIN, ROLE_CITY_MIN, rolePageOf, roleGroups, stableRank, roleCitySlug } from '../src/rolepages.js';
-import { writePages, renderRolePage, renderRoleCityPage, renderRoleIndex, similarRoles, roleInsights, isIndexable, jobSlug, SIMILAR_MAX, renderJobPage } from '../src/pages.js';
+import { writePages, renderRolePage, renderRoleCityPage, renderRoleIndex, similarRoles, roleInsights, isIndexable, jobSlug, SIMILAR_MAX, renderJobPage, experienceMonths } from '../src/pages.js';
 import { publishedPaths } from '../src/publish.js';
 import { regionOf } from '../src/regions.js';
 
@@ -147,6 +147,12 @@ console.log('\n== the JobPosting description is our own words ==');
   check('it lists the duties', ld.description.includes('<li>Build services</li>'), true);
   check('it names the skills', ld.description.includes('Skills: Python, SQL'), true);
   check('it never carries the employer\'s text', ld.description.includes('EMPLOYER-OWN-TEXT'), false);
+  check('no stated experience: no experienceRequirements', 'experienceRequirements' in ld, false);
+  const ldOf = (o) => JSON.parse(renderJobPage(job(o), [], { region }).match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  check('a stated "0–1 years" is no experience required', ldOf({ experience: 'Graduating 2027 · 0–1 years' }).experienceRequirements?.monthsOfExperience, 0);
+  check('"2+ years" is 24 months', ldOf({ experience: '2+ years' }).experienceRequirements?.monthsOfExperience, 24);
+  check('a graduation year alone states no experience', 'experienceRequirements' in ldOf({ experience: 'Graduating 2026' }), false);
+  check('experienceMonths reads the minimum', ['1–3 years', '1 year', '2025 or 2026 graduates'].map(experienceMonths), [12, 12, null]);
   const withRole = renderJobPage(j, [], { region, role: { slug: 'software-engineering', name: 'Software engineering' } });
   check('a job page links its role page when one is passed', withRole.includes('<dt>Role type</dt><dd><a href="/roles/software-engineering">'), true);
   check('and not when none is', html.includes('Role type'), false);
