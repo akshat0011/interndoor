@@ -62,10 +62,32 @@ export function canonicalCity(location) {
     }
     if (s === before) break;
   }
+  /* ONE NAME PER CITY — 30 Sep 2026. LinkedIn writes the same place five ways
+     (Bengaluru, Bangalore, Bangalore Urban, Greater Bengaluru Area,
+     Bengaluru East), and without this the India board had four location pages
+     for one city. "Greater X" is X; the rest is the alias table. */
+  s = s.replace(/^greater\s+/i, '').trim();
+  s = CITY_FOLD[s.toLowerCase()] ?? s;
   if (!s || s.length < 3) return '';
   if (NOT_A_CITY.has(s.toLowerCase())) return '';
   if (/^\d/.test(s)) return '';                       // "2 Locations"
   return s;
+}
+
+/* The spellings the store actually holds, each to the name its city page uses.
+   Moved here from src/datapost.js so the data posts and the city pages cannot
+   disagree about what a city is. */
+const CITY_FOLD = {
+  bangalore: 'Bengaluru', 'bangalore urban': 'Bengaluru', 'bengaluru urban': 'Bengaluru', 'bangalore rural': 'Bengaluru',
+  gurgaon: 'Gurugram', 'new delhi': 'Delhi', bombay: 'Mumbai', 'navi mumbai': 'Mumbai', thane: 'Mumbai',
+  secunderabad: 'Hyderabad', 'pune/pimpri-chinchwad': 'Pune', 'pimpri-chinchwad': 'Pune', 'pimpri chinchwad': 'Pune',
+  'pune city': 'Pune', calcutta: 'Kolkata', madras: 'Chennai',
+};
+
+/** One display name per city, for a count or a heading. */
+export function foldCity(city) {
+  const k = String(city ?? '').trim().toLowerCase();
+  return CITY_FOLD[k] ?? String(city ?? '').trim();
 }
 
 /** URL slug for a facet. Shared by the writer and every link to it. */

@@ -35,7 +35,7 @@ import { isFullTimeRole, stipendText, companySlug, RECORD_MIN_POSTINGS, SITE } f
 import { formatStipend } from './extract.js';
 import { boldSans, utmUrl } from './postgen.js';
 import { applicantCount } from './telegram.js';
-import { canonicalCity } from './facets.js';
+import { canonicalCity, foldCity } from './facets.js';
 import { whatsappFor, telegramFor } from './channels.js';
 import { weekKey } from './weekly.js';
 
@@ -95,11 +95,7 @@ export function dataRows(store, cfg, { region = 'IN', now = Date.now(), days = W
    facet slug and deliberately leaves the spelling alone; a ranked list that
    shows Bengaluru and Bangalore as two entries is wrong in a way a reader
    spots at once. Only the spellings the store actually holds. */
-const CITY_FOLD = { bangalore: 'Bengaluru', 'bangalore urban': 'Bengaluru', 'bengaluru urban': 'Bengaluru', 'bangalore rural': 'Bengaluru', gurgaon: 'Gurugram', 'new delhi': 'Delhi', bombay: 'Mumbai', 'navi mumbai': 'Mumbai', 'greater noida': 'Noida', 'thane': 'Mumbai', 'secunderabad': 'Hyderabad' };
-export function foldCity(city) {
-  const k = String(city ?? '').trim().toLowerCase();
-  return CITY_FOLD[k] ?? String(city ?? '').trim();
-}
+export { foldCity };
 
 function safeList(json) {
   try { const v = JSON.parse(json || '[]'); return Array.isArray(v) ? v.map(String) : []; } catch { return []; }

@@ -1,23 +1,24 @@
 /**
- * SKILL AND LOCATION PAGES ARE WRITTEN BUT KEPT OUT OF THE INDEX — 14 SEP 2026.
+ * SKILL AND LOCATION PAGES — INDEXABLE AGAIN SINCE 30 SEP 2026.
  *
- * His decision after Google stopped ranking the site on 11 Sep: a /skills/ or
- * /locations/ page is a template over rows the board already shows, the purest
- * scaled-content page here, and it drew ~1,300 impressions and 2 clicks over
- * 1-10 Sep. Three places have to agree, and each one alone is a half-fix:
+ * Noindexed on 14 Sep (a template over rows the board already shows, ~1,300
+ * impressions and 2 clicks over 1-10 Sep), and turned back on with the India-
+ * only switch, once each page carried what the board does not (facetInsights):
+ * who is hiring, the other axis, and how many state pay. Three places still
+ * have to agree, now in the other direction:
  *
- *   - the page's own `noindex`, or Google keeps it;
- *   - the sitemap, which may never list a noindex URL;
- *   - IndexNow's changed-URL list, or Bing is asked to fetch what it must ignore.
+ *   - the page carries no noindex and names itself canonical;
+ *   - the sitemap lists every facet page written, and nothing else under them;
+ *   - IndexNow hears about them.
  *
- * AND WHAT MUST NOT MOVE: the pages still exist (job pages and hubs link to
- * them), and every indexable job page — US included, which he chose to keep —
- * is still in its sitemap.
+ * And the two things that made re-indexing safe: one page per city (Bengaluru,
+ * Bangalore, Bangalore Urban and Greater Bengaluru were four pages), and every
+ * link a facet page adds resolves to a page that was written.
  */
 import { mkdtempSync, rmSync, readFileSync, existsSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { writePages, renderFacetPage, renderFacetIndex, isIndexable, FACETS_INDEXABLE, NOINDEX_JOB_BOARDS, jobPageIndexable } from '../src/pages.js';
+import { writePages, renderFacetPage, renderFacetIndex, isIndexable, FACETS_INDEXABLE, NOINDEX_JOB_BOARDS, jobPageIndexable, facetInsights } from '../src/pages.js';
 import { facetGroups } from '../src/facets.js';
 import { regionOf } from '../src/regions.js';
 
@@ -30,62 +31,92 @@ function check(label, actual, expected) {
 
 const NOINDEX = /<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i;
 const FACET_URL = /\/(?:skills|locations)(?:\/|$)/;
-const liveJobs = (slug) => {
-  const f = join('web', 'public', ...(slug ? [slug] : []), 'data', 'jobs.json');
-  return existsSync(f) ? (JSON.parse(readFileSync(f, 'utf8')).jobs ?? []) : [];
-};
+const jobs = existsSync('web/public/data/jobs.json') ? (JSON.parse(readFileSync('web/public/data/jobs.json', 'utf8')).jobs ?? []) : [];
+const region = regionOf('IN');
 
-check('the switch is off', FACETS_INDEXABLE, false);
+check('the switch is on', FACETS_INDEXABLE, true);
 
-console.log('\n== the pages say noindex ==');
+console.log('\n== the pages are indexable ==');
+const facets = facetGroups(jobs.filter(isIndexable));
+/* Without facets to render every assertion below passes vacuously. */
+check('India has skill and city facets to test against', [facets.skills.length >= 3, facets.cities.length >= 3], [true, true]);
 {
-  const region = regionOf('US');
-  const facets = facetGroups(liveJobs('us').filter(isIndexable));
-  /* Without facets to render every assertion below passes vacuously. */
-  check('the US board has skill and city facets to test against', [facets.skills.length >= 3, facets.cities.length >= 3], [true, true]);
   const skill = renderFacetPage('skill', facets.skills[0], facets.skills, { region });
   const city = renderFacetPage('city', facets.cities[0], facets.cities, { region });
-  check('a skill page is noindex', NOINDEX.test(skill), true);
-  check('a location page is noindex', NOINDEX.test(city), true);
-  check('and still follow — the links on it count', /content=["']noindex,follow["']/.test(skill), true);
-  check('the skills index is noindex even with plenty of skills', NOINDEX.test(renderFacetIndex('skill', facets.skills, { region })), true);
-  check('the locations index likewise', NOINDEX.test(renderFacetIndex('city', facets.cities, { region })), true);
+  check('a skill page carries no noindex', NOINDEX.test(skill), false);
+  check('a location page carries no noindex', NOINDEX.test(city), false);
+  check('a skill page names itself canonical', skill.includes(`<link rel="canonical" href="https://interndoor.com/skills/${facets.skills[0].slug}">`), true);
+  check('the skills index is indexable', NOINDEX.test(renderFacetIndex('skill', facets.skills, { region })), false);
+  check('the locations index likewise', NOINDEX.test(renderFacetIndex('city', facets.cities, { region })), false);
 }
 
-console.log('\n== written, but not in a sitemap and not announced ==');
+console.log('\n== ONE page per city ==');
+{
+  const slugs = facets.cities.map((c) => c.slug);
+  const aliases = ['bangalore', 'bangalore-urban', 'greater-bengaluru', 'gurgaon', 'greater-hyderabad', 'pune-pimpri-chinchwad', 'pune-city', 'greater-kolkata', 'greater-chennai', 'new-delhi', 'navi-mumbai'];
+  check('no alias spelling gets a page of its own', slugs.filter((x) => aliases.includes(x)), []);
+  check('Bengaluru has one page and it is the big one', facets.cities[0]?.slug, 'bengaluru');
+}
+
+console.log('\n== what a facet page adds, and that it is stable ==');
+{
+  const f = facets.skills[0];
+  const ins = facetInsights('skill', f.jobs);
+  check('it names who is hiring', ins.employers.length > 0, true);
+  check('ordered by count, then name', ins.employers.every((e, i, a) => i === 0 || a[i - 1].n > e.n || (a[i - 1].n === e.n && a[i - 1].name.localeCompare(e.name) <= 0)), true);
+  check('at most twelve of each', [ins.employers.length <= 12, ins.other.length <= 12], [true, true]);
+  const a = renderFacetPage('skill', f, facets.skills, { region, otherPages: new Set(facets.cities.map((c) => c.slug)) });
+  const b = renderFacetPage('skill', f, facets.skills, { region, otherPages: new Set(facets.cities.map((c) => c.slug)) });
+  check('two renders are byte-identical', a === b, true);
+  const none = facetInsights('skill', [{ company: 'Acme', location: 'Pune', skills: [] }]);
+  check('no pay line when nothing states pay', none.payLine, '');
+}
+
+console.log('\n== rendered: in the sitemap, announced, and every link resolves ==');
 const dirs = [];
-for (const [code, slug] of [['IN', ''], ['US', 'us']]) {
-  const jobs = liveJobs(slug);
-  if (!jobs.length) { check(`${code} has a built board to render`, false, true); continue; }
-  const region = regionOf(code);
-  const dir = mkdtempSync(join(tmpdir(), `interndoor-facets-${code}-`));
+if (!jobs.length) check('India has a built board to render', false, true);
+else {
+  const dir = mkdtempSync(join(tmpdir(), 'interndoor-facets-IN-'));
   dirs.push(dir);
-  /* An EMPTY directory, so every file written is a changed file and would be in
-     changedUrls if it were tracked. */
+  /* An EMPTY directory, so every file written is a changed file. */
   const res = writePages(jobs, dir, [], { region });
-  const root = join(dir, ...(slug ? [slug] : []));
+  const list = (d) => existsSync(join(dir, d)) ? readdirSync(join(dir, d)).filter((f) => f.endsWith('.html') && f !== 'index.html') : [];
+  const skillFiles = list('skills');
+  const cityFiles = list('locations');
+  check('skill pages are written', skillFiles.length > 0, true);
+  check('location pages are written', cityFiles.length > 0, true);
 
-  const skillFiles = existsSync(join(root, 'skills')) ? readdirSync(join(root, 'skills')).filter((f) => f !== 'index.html') : [];
-  check(`${code}: skill pages are still written`, skillFiles.length > 0, true);
-  check(`${code}: and the skills index`, existsSync(join(root, 'skills', 'index.html')), true);
+  const locs = [...readFileSync(join(dir, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+  const facetLocs = locs.filter((l) => FACET_URL.test(l)).sort();
+  const want = [...skillFiles.map((f) => `/skills/${f.slice(0, -5)}`), ...cityFiles.map((f) => `/locations/${f.slice(0, -5)}`), '/skills', '/locations'].sort();
+  check('the sitemap lists exactly the facet pages written', facetLocs, want);
+  check('IndexNow hears about them', (res.changedUrls ?? []).some((u) => FACET_URL.test(new URL(u).pathname)), true);
 
-  const locs = [...readFileSync(join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  check(`${code}: no skill or location URL in the sitemap`, locs.filter((l) => FACET_URL.test(new URL(l).pathname)), []);
-  check(`${code}: none announced to IndexNow`, (res.changedUrls ?? []).filter((u) => FACET_URL.test(new URL(u).pathname)), []);
-  /* NO BOARD'S JOB PAGES ARE noindex any more. The US board was, from 19 Sep
-     2026 until the reversal on 22 Sep; NOINDEX_JOB_BOARDS is now empty, so
-     every board is asserted the SAME way and there is no per-board branch left
-     to rot. The facets keep their three-way treatment — that is what this file
-     is really about, and it is unchanged. */
-  const jobLocs = locs.filter((l) => new URL(l).pathname.includes('/jobs/')).length;
-  check(`${code}: IndexNow hears about its job pages`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/jobs/')), true);
-  check(`${code}: and about its hubs`, (res.changedUrls ?? []).some((u) => new URL(u).pathname.includes('/companies/')), true);
-  check(`${code}: every indexable job page is in the sitemap`, jobLocs, jobs.filter(isIndexable).length);
-  check(`${code}: and offered to the Indexing API`, (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
-  check(`${code}: no job page is noindex`, (() => {
-    const f = readdirSync(join(root, 'jobs')).find((x) => x.endsWith('.html'));
-    return f ? /<meta name="robots" content="noindex/.test(readFileSync(join(root, 'jobs', f), 'utf8')) : null;
-  })(), false);
+  const hrefs = (html, re) => [...html.matchAll(re)].map((m) => m[1]);
+  const broken = [];
+  for (const [d, files] of [['skills', skillFiles], ['locations', cityFiles]]) {
+    for (const f of files) {
+      const html = readFileSync(join(dir, d, f), 'utf8');
+      for (const h of hrefs(html, /href="\/companies\/([^"]+)"/g)) if (!existsSync(join(dir, 'companies', `${h}.html`))) broken.push(`${d}/${f} -> /companies/${h}`);
+      for (const [dd, re] of [['skills', /href="\/skills\/([^"\/]+)"/g], ['locations', /href="\/locations\/([^"\/]+)"/g]]) {
+        for (const h of hrefs(html, re)) if (!existsSync(join(dir, dd, `${h}.html`))) broken.push(`${d}/${f} -> /${dd}/${h}`);
+      }
+    }
+  }
+  check('every link a facet page adds resolves', broken.slice(0, 5), []);
+
+  const jobFiles = readdirSync(join(dir, 'jobs')).filter((f) => f.endsWith('.html'));
+  let linked = 0; const deadCity = [];
+  for (const f of jobFiles) {
+    const html = readFileSync(join(dir, 'jobs', f), 'utf8');
+    for (const h of hrefs(html, /href="\/locations\/([^"\/]+)"/g)) { linked++; if (!existsSync(join(dir, 'locations', `${h}.html`))) deadCity.push(h); }
+  }
+  check('job pages link their city page', linked > 0, true);
+  check('and every such link resolves', [...new Set(deadCity)], []);
+
+  const jobLocs = locs.filter((l) => l.includes('/jobs/')).length;
+  check('every indexable job page is in the sitemap', jobLocs, jobs.filter(isIndexable).length);
+  check('and offered to the Indexing API', (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
 }
 
 console.log('\n== the per-board switch still exists, and is deliberately empty ==');
