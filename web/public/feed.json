@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/deutsche-bank-sql-developer-as-4473934241",
+      "url": "https://interndoor.com/jobs/deutsche-bank-sql-developer-as-4473934241",
+      "title": "SQL Developer, AS — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: Pune Division, Maharashtra, India\n• Design and optimize SQL/PL/SQL queries for data extraction and transformation\n• Work with business teams to translate reporting needs into technical solutions\n• Build ETL pipelines for Tableau and SAP BO, with cloud migration experience",
+      "date_published": "2026-09-30T18:31:31.390Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-annotation-ops-analyst-4464488136",
+      "url": "https://interndoor.com/jobs/amazon-science-annotation-ops-analyst-4464488136",
+      "title": "Science Annotation Analyst — Amazon",
+      "content_text": "Company: Amazon · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build data pipelines to extract and validate annotation metrics from AWS and SageMaker\n• Create dashboards and custom annotation interfaces using Python and web frameworks\n• Automate workflows and manage secure cross-account AWS integrations with IAM and Lambda",
+      "date_published": "2026-09-30T18:30:55.117Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-site-reliability-engineer-4465015599",
+      "url": "https://interndoor.com/jobs/cisco-site-reliability-engineer-4465015599",
+      "title": "Site Reliability Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Build and optimize cloud infrastructure for high availability and scalability\n• Use Python, Bash, Go, and Kubernetes for automation and system management\n• Collaborate with cross-functional teams on secure, scalable solutions\n• Monitor systems, troubleshoot issues, and contribute to postmortem reviews",
+      "date_published": "2026-09-30T18:30:45.837Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-ftc-iesp-merchant-tech-4464637843",
+      "url": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-ftc-iesp-merchant-tech-4464637843",
+      "title": "Software Dev Engineer I, L4 FTC, IESP Merchant Tech — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Write secure, stable, testable code for product features\n• Use data structures and algorithms to solve real-world problems\n• Collaborate on test plans and design discussions with senior engineers",
+      "date_published": "2026-09-30T18:30:35.870Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cisco-software-consulting-engineer-5-years-java-pyhton-orchestration-and-or--4446334139",
       "url": "https://interndoor.com/jobs/cisco-software-consulting-engineer-5-years-java-pyhton-orchestration-and-or--4446334139",
       "title": "Software Engineer Consulting — Cisco",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "IMC Trading"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4473770796",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-software-development-analyst-4473770796",
-      "title": "Software Development Analyst — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build and maintain enterprise apps using Java and Spring Boot\n• Develop RESTful APIs and microservices for scalable systems\n• Collaborate with architects and DevOps on deployment and monitoring",
-      "date_published": "2026-09-30T13:30:12.690Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4473781616",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-analyst-4473781616",
-      "title": "Systems Integration Analyst — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Support internet-facing web applications and debug java code\n• Work with aws services and unix systems\n• Collaborate on sql databases and cloudwatch monitoring",
-      "date_published": "2026-09-30T13:30:03.475Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-systems-engr-i-4473752958",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-systems-engr-i-4473752958",
-      "title": "Systems Engr I — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement control systems for industrial automation\n• Use c++ and python for real-time data processing\n• Work on projects with global impact in smart manufacturing",
-      "date_published": "2026-09-30T12:49:20.588Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-java-fullstack-engineer-4463524436",
-      "url": "https://interndoor.com/jobs/zensar-technologies-java-fullstack-engineer-4463524436",
-      "title": "Java FullStack Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Chennai, Tamil Nadu, India\n• Build and deploy full-stack applications using Java, Spring Boot, and Angular\n• Work with Kafka, Oracle, and Git for backend systems and API development\n• Collaborate on microservices and security frameworks like OAuth2/JWT",
-      "date_published": "2026-09-30T12:36:43.920Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
         }
       ]
     }
