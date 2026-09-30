@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
+      "url": "https://interndoor.com/jobs/infosys-genai-developer-4441348368",
+      "title": "GenAI Developer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build generative ai models to solve complex problems\n• Work with cross-functional teams on ai integration\n• Mentor junior developers and share knowledge",
+      "date_published": "2026-09-30T08:45:49.774Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472128993",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472128993",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Build agentic systems that plan, reason, and execute workflows with minimal human input\n• Use Google ADK, LangChain, CrewAI, and other frameworks to integrate LLMs with APIs and databases\n• Collaborate with product and domain experts to translate business needs into agent capabilities",
+      "date_published": "2026-09-30T08:42:48.262Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472148097",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472148097",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Hyderabad, Telangana, India\n• Configure security, implement access controls, setup saml/sso, manage certificates\n• Profile metadata, scan data catalogs, define quality rules, ensure compliance\n• Setup aws ecs/eks clusters, manage profiling workloads, automate reporting\n• Work with infra teams, coordinate with business units, support governance",
+      "date_published": "2026-09-30T08:42:47.755Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473720720",
+      "url": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473720720",
+      "title": "Java Developer — Nippon Data Systems",
+      "content_text": "Company: Nippon Data Systems · Location: Kerala, India\n• Develop and maintain java-based applications using j2ee and spring boot\n• Collaborate with cross-functional teams to design and ship new features\n• Implement restful apis and conduct code reviews for team feedback",
+      "date_published": "2026-09-30T07:59:36.722Z",
+      "authors": [
+        {
+          "name": "Nippon Data Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473738294",
+      "url": "https://interndoor.com/jobs/nippon-data-systems-java-developer-4473738294",
+      "title": "Java Developer — Nippon Data Systems",
+      "content_text": "Company: Nippon Data Systems · Location: Idukki, Kerala, India\n• Develop and maintain java-based applications using j2ee and spring boot\n• Collaborate with cross-functional teams to design and ship new features\n• Implement restful apis and conduct code reviews for team feedback",
+      "date_published": "2026-09-30T07:59:02.001Z",
+      "authors": [
+        {
+          "name": "Nippon Data Systems"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
       "url": "https://interndoor.com/jobs/joveo-frontend-developer-4472136351",
       "title": "Frontend Developer — Joveo",
@@ -242,18 +302,6 @@
       "authors": [
         {
           "name": "Applied Materials India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4473548149",
-      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4473548149",
-      "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop custom software solutions using Python and Node JS on Lambda\n• Work on API integrations between cloud platforms and AWS environment\n• Provide SME support for new business proposals and backend development",
-      "date_published": "2026-09-29T22:49:15.128Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     },
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Hewlett Packard Enterprise"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/warner-bros-discovery-integration-technology-administrator-4473290485",
-      "url": "https://interndoor.com/jobs/warner-bros-discovery-integration-technology-administrator-4473290485",
-      "title": "Integration Technology Administrator — Warner Bros. Discovery",
-      "content_text": "Company: Warner Bros. Discovery · Location: Greater Hyderabad Area\n• Configure and develop informatica platforms for sap, salesforce, and data warehouses\n• Implement devops practices and automate backup, purge, and build scripts\n• Provide 24*7 support and manage disaster recovery across multi regions",
-      "date_published": "2026-09-29T16:28:17.426Z",
-      "authors": [
-        {
-          "name": "Warner Bros. Discovery"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-team-leader-4473278681",
-      "url": "https://interndoor.com/jobs/bank-of-america-team-leader-4473278681",
-      "title": "Team Leader — Bank of America",
-      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region · Duration: 0-3 years\n• Perform daily/monthly data checks and reconciliations for regulatory reports\n• Use SQL and Alteryx to build and test data controls and validations\n• Collaborate with onshore teams to improve data quality and reporting processes",
-      "date_published": "2026-09-29T16:20:36.152Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472072871",
-      "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472072871",
-      "title": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Mumbai Metropolitan Region\n• Analyze supply chain processes to identify AI use cases in demand planning, procurement, and fulfillment\n• Develop business and functional requirements for AI-enabled supply chain solutions\n• Create AI value cases and support client workshops on future-ready supply chains",
-      "date_published": "2026-09-29T15:54:34.201Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-cms-full-stack-developer-4471750296",
-      "url": "https://interndoor.com/jobs/barclays-cms-full-stack-developer-4471750296",
-      "title": "CMS - Full Stack Developer — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Analyze business problems and design solutions for internal systems\n• Work with Java, Spring Boot, and DevOps tools like Docker and Kubernetes\n• Collaborate with stakeholders to shape technical and business requirements",
-      "date_published": "2026-09-29T15:38:05.501Z",
-      "authors": [
-        {
-          "name": "Barclays"
         }
       ]
     }
