@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790773717187,
+ "generatedAt": 1790776877561,
  "region": "IN",
  "regionName": "India",
- "count": 938,
- "techCount": 938,
+ "count": 945,
+ "techCount": 945,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -98,6 +98,7 @@
   "Emerson",
   "Entegris",
   "Ericsson",
+  "Esse India | Canada immigration consultants in delhi | visa consultant delhi",
   "Everllence",
   "Exponent Energy",
   "F5",
@@ -239,7 +240,6 @@
   "Poshmark",
   "Procter & Gamble",
   "PwC Acceleration Center India",
-  "PwC India",
   "Qualcomm",
   "Qualys",
   "Quest Global",
@@ -429,6 +429,7 @@
   "Telangana, India",
   "Thane, Maharashtra, India",
   "Thiruvananthapuram, Kerala, India",
+  "Trivandrum, Kerala, India",
   "Vadodara, Gujarat, India",
   "West Bengal, India",
   "Wester Region - 9th Floor, Magnus Tower, Mindspace, Link Road, Malad (West), MUMBAI-400064, India",
@@ -436,57 +437,854 @@
  ],
  "jobs": [
   {
-   "id": "4463341867",
-   "title": "Data Science Gen AI Associate",
-   "slugTitle": "IN-Associate_ Data Science + Gen AI_ GCC_ Advisory_Bangalore",
-   "company": "PwC India",
-   "matchedWatchlist": "PwC",
+   "id": "4248969821",
+   "title": "Quality Assurance Intermediate",
+   "slugTitle": "Intermediate Quality Assurance - Chennai",
+   "company": "UPS",
+   "matchedWatchlist": "UPS",
    "isTech": true,
    "roleSource": "model-enrich",
    "employmentType": "fulltime",
-   "logo": "/logos/pwc-india.jpg",
+   "logo": "/logos/ups.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves testing and maintaining software applications, contributing to system design and integration. Ideal for students with a background in computer science or related fields looking to develop technical skills in application support and testing.",
+   "bullets": [
+    "Reviews and documents software applications",
+    "Uses test automation tools like selenium",
+    "Works on system integration and maintenance"
+   ],
+   "roleLabel": "Software Testing",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "selenium",
+    "ui path",
+    "data analytics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1790776168922,
+   "firstSeenAt": 1790776468926,
+   "lastSeenAt": 1790776468926,
+   "url": "https://www.linkedin.com/jobs/view/4248969821/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4248969821/",
+   "description": null,
+   "roleFingerprint": "188e47df1e",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4435259243",
+   "title": "Java Springboot Microservices",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "microservices",
+    "spring boot"
+   ],
+   "summary": "This role involves supporting consulting teams in digital transformation projects by analyzing business needs, building prototypes, and delivering client-focused solutions. It suits students with technical skills and an interest in client collaboration.",
+   "bullets": [
+    "Support consulting teams in project phases from problem definition to deployment",
+    "Build POCs and create requirement specs from business needs",
+    "Collaborate with clients to identify challenges and deliverable solutions"
+   ],
+   "roleLabel": "Consulting Support",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "springboot",
+    "microservices"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790775940127,
+   "firstSeenAt": 1790776360130,
+   "lastSeenAt": 1790776360130,
+   "url": "https://www.linkedin.com/jobs/view/4435259243/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4435259243/",
+   "description": null,
+   "roleFingerprint": "24895dbcdf",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4433631162",
+   "title": "Java Fullstack Developer",
+   "slugTitle": "Java Fullstack (Angular) Developer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java"
+   ],
+   "summary": "This role involves designing and developing client systems using Java and AngularJS2. You will translate requirements into specifications and estimate project work. It suits students with a strong grasp of programming and system design.",
+   "bullets": [
+    "Design, develop, validate and support client systems using Java and AngularJS2",
+    "Translate functional/non-functional requirements into system specifications",
+    "Estimate project work and collaborate with leads and managers"
+   ],
+   "roleLabel": "Java Fullstack Developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "angularjs2",
+    "project estimation"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "8 minutes ago",
+   "postedAt": 1790775936828,
+   "firstSeenAt": 1790776416830,
+   "lastSeenAt": 1790776416830,
+   "url": "https://www.linkedin.com/jobs/view/4433631162/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4433631162/",
+   "description": null,
+   "roleFingerprint": "4f3752a016",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4471992967",
+   "title": "AI Application Engineer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": null,
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "javascript",
+    "typescript",
+    "node.js",
+    "aws",
+    "azure",
+    "gcp",
+    "docker",
+    "kubernetes",
+    "ci/cd",
+    "rag",
+    "microservices"
+   ],
+   "summary": "This role involves designing and implementing AI-powered applications and agents for enterprise platforms. You'll work with LLMs, vector databases, and cloud tools to build scalable solutions. Ideal for someone with experience in AI frameworks and a passion for enterprise-grade AI development.",
+   "bullets": [
+    "Build AI agents and copilots for SAP and enterprise platforms",
+    "Use LangChain, LlamaIndex, and vector databases for RAG systems",
+    "Develop scalable backend services and integrate with SAP systems"
+   ],
+   "roleLabel": "AI application development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "typescript",
+    "llms",
+    "langchain",
+    "vector databases"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "6 minutes ago",
+   "postedAt": 1790775936114,
+   "firstSeenAt": 1790776296117,
+   "lastSeenAt": 1790776296117,
+   "url": "https://www.linkedin.com/jobs/view/4471992967/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4471992967/",
+   "description": null,
+   "roleFingerprint": "c2c97aa6b2",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4436589842",
+   "title": "Java Developer Angular",
+   "slugTitle": "Java Angular Developer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "angular",
+    "spring boot",
+    "microservices"
+   ],
+   "summary": "This full-time role involves developing microservices with Java and Spring Boot, collaborating on system design, and implementing automated testing. It suits students with strong programming skills and an interest in full-stack development.",
+   "bullets": [
+    "Develop and maintain microservices using Java and Spring Boot",
+    "Collaborate on system design and troubleshoot cross-platform issues",
+    "Implement automated testing and database schemas for business processes"
+   ],
+   "roleLabel": "Java Microservices Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "spring boot",
+    "microservices",
+    "angular",
+    "database schemas"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "8 minutes ago",
+   "postedAt": 1790775926924,
+   "firstSeenAt": 1790776406926,
+   "lastSeenAt": 1790776406926,
+   "url": "https://www.linkedin.com/jobs/view/4436589842/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4436589842/",
+   "description": null,
+   "roleFingerprint": "e5822d19ac",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4472308207",
+   "title": "Angular, Java, Springboot",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "12 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "angular",
+    "spring boot",
+    "aws",
+    "azure",
+    "docker",
+    "kubernetes",
+    "microservices",
+    "agile"
+   ],
+   "summary": "This role involves building and maintaining web applications using Angular and Java, working closely with stakeholders to design and integrate systems. Ideal for someone interested in full-stack development and Agile practices.",
+   "bullets": [
+    "Develop responsive web apps with Angular and backend services using Java and Spring Boot",
+    "Collaborate with stakeholders to design and integrate frontend with backend and third-party APIs",
+    "Perform code reviews, testing, and performance optimization in Agile teams"
+   ],
+   "roleLabel": "Full-stack development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "angular",
+    "java",
+    "docker",
+    "azure",
+    "aws",
+    "kubernetes"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790775920230,
+   "firstSeenAt": 1790776340233,
+   "lastSeenAt": 1790776340233,
+   "url": "https://www.linkedin.com/jobs/view/4472308207/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472308207/",
+   "description": null,
+   "roleFingerprint": "427e2dc687",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4472313103",
+   "title": "AI Application Engineer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "5 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "javascript",
+    "typescript",
+    "node.js",
+    "aws",
+    "azure",
+    "gcp",
+    "docker",
+    "kubernetes",
+    "ci/cd",
+    "rag",
+    "microservices"
+   ],
+   "summary": "This role involves designing and implementing AI-powered applications and agents for enterprise platforms. You'll work with cutting-edge frameworks and integrate AI solutions with SAP systems. Ideal for someone with a background in AI engineering and a passion for building scalable, secure AI systems.",
+   "bullets": [
+    "Build AI agents and copilots for SAP and enterprise platforms",
+    "Use LangChain, LlamaIndex, and vector databases for RAG systems",
+    "Develop scalable backend services and integrate with SAP systems"
+   ],
+   "roleLabel": "AI application development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "typescript",
+    "llms",
+    "langchain",
+    "vector databases"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1790775904534,
+   "firstSeenAt": 1790776204537,
+   "lastSeenAt": 1790776204537,
+   "url": "https://www.linkedin.com/jobs/view/4472313103/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472313103/",
+   "description": null,
+   "roleFingerprint": "c2c97aa6b2",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4436811045",
+   "title": "GenAI Angular Developer",
+   "slugTitle": "Angular GenAI Developer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "angular"
+   ],
+   "summary": "This role involves building and maintaining Gen AI applications with Angular, working on system architecture and database design. It suits students with strong programming skills and an interest in AI integration.",
+   "bullets": [
+    "Design, develop, and support Gen AI applications using Angular frameworks",
+    "Collaborate on system architecture and database schema design",
+    "Troubleshoot cross-platform issues and implement automated testing"
+   ],
+   "roleLabel": "Gen AI Application Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "angular",
+    "gen ai",
+    "database schema",
+    "automated testing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "9 minutes ago",
+   "postedAt": 1790775898844,
+   "firstSeenAt": 1790776438846,
+   "lastSeenAt": 1790776438846,
+   "url": "https://www.linkedin.com/jobs/view/4436811045/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4436811045/",
+   "description": null,
+   "roleFingerprint": "d456ff3d91",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4472300579",
+   "title": "GenAI Developer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "1-2 years",
+   "applicants": "5 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "aws",
+    "azure",
+    "gcp",
+    "docker",
+    "kubernetes",
+    "git",
+    "pytorch",
+    "tensorflow",
+    "agile"
+   ],
+   "summary": "This role involves building and deploying AI models using Python and Gen AI frameworks. You'll work with cross-functional teams to create AI-powered solutions and optimize model performance. Ideal for someone with 1-2 years of software development experience and a background in computer science or engineering.",
+   "bullets": [
+    "Design, develop, and deploy AI models using Python and Gen AI frameworks",
+    "Collaborate with cross-functional teams to build AI-powered solutions",
+    "Work with large datasets and optimize AI model performance",
+    "Troubleshoot AI systems and contribute to code reviews"
+   ],
+   "roleLabel": "AI model development",
+   "degreeLevel": "PG",
+   "degreeText": "B.E/B.Tech/M.E/M.Tech/MCA",
+   "keySkills": [
+    "python",
+    "langchain",
+    "prompt engineering",
+    "docker",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "5 minutes ago",
+   "postedAt": 1790775895168,
+   "firstSeenAt": 1790776195171,
+   "lastSeenAt": 1790776195171,
+   "url": "https://www.linkedin.com/jobs/view/4472300579/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472300579/",
+   "description": null,
+   "roleFingerprint": "f41c71782d",
+   "cardFacts": [
+    "Bengaluru East",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4433474771",
+   "title": "React Native Developer",
+   "company": "Infosys",
+   "matchedWatchlist": "Infosys",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/infosys.jpg",
+   "location": "Trivandrum, Kerala, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "react native"
+   ],
+   "summary": "This role involves developing mobile applications using React Native, translating client needs into technical specifications, and contributing to project estimates. It suits students with a strong grasp of software development principles and an interest in digital transformation projects.",
+   "bullets": [
+    "Design, develop, validate and support mobile apps using React Native",
+    "Translate client requirements into system specs and project estimates",
+    "Collaborate with leads to deliver efficient programs for digital transformation"
+   ],
+   "roleLabel": "React Native Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "react native",
+    "project estimation",
+    "system requirements"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "7 minutes ago",
+   "postedAt": 1790775888382,
+   "firstSeenAt": 1790776308388,
+   "lastSeenAt": 1790776331643,
+   "url": "https://www.linkedin.com/jobs/view/4433474771/",
+   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-247932&sourceId=4003",
+   "description": null,
+   "roleFingerprint": "f364301823",
+   "cardFacts": [
+    "Trivandrum",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4378232890",
+   "title": "Software Quality Engineer Associate",
+   "slugTitle": "Associate Software Quality Engineer",
+   "company": "UPS",
+   "matchedWatchlist": "UPS",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ups.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves testing and ensuring the quality of software systems. You will work closely with developers and testers to identify issues and improve processes. It suits students interested in software quality and testing.",
+   "bullets": [
+    "Execute qa processes for software systems",
+    "Collaborate with developers and testers",
+    "Document testing progress and outcomes"
+   ],
+   "roleLabel": "Software Quality Testing",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "qa processes"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "9 minutes ago",
+   "postedAt": 1790775694438,
+   "firstSeenAt": 1790776234440,
+   "lastSeenAt": 1790776260657,
+   "url": "https://www.linkedin.com/jobs/view/4378232890/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4378232890/",
+   "description": null,
+   "roleFingerprint": "6d82fd5a08",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4248973350",
+   "title": "Java Developer Fullstack",
+   "slugTitle": "Returnship Opportunity - Java / Angular(Fullstack) - Developer",
+   "company": "UPS",
+   "matchedWatchlist": "UPS",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ups.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "javascript",
+    "angular",
+    "azure",
+    "jenkins",
+    "ci/cd",
+    "git",
+    "agile"
+   ],
+   "summary": "This full-time role involves building and maintaining full-stack applications using Java and Angular. You'll work with CI/CD tools and contribute to secure systems. Ideal for someone with 2 years of development experience and a bachelor's in computer science or related field.",
+   "bullets": [
+    "Develop full-stack applications using Java, Angular, and frontend technologies",
+    "Work with CI/CD tools like Jenkins, Azure DevOps, and Git",
+    "Collaborate on secure systems with compliance and testing requirements"
+   ],
+   "roleLabel": "Full-stack development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "angular",
+    "jenkins",
+    "azure devops",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "13 minutes ago",
+   "postedAt": 1790775648169,
+   "firstSeenAt": 1790776428172,
+   "lastSeenAt": 1790776428172,
+   "url": "https://www.linkedin.com/jobs/view/4248973350/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4248973350/",
+   "description": null,
+   "roleFingerprint": "6f9f20ee94",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4473770796",
+   "title": "Software Development Analyst",
+   "company": "NTT DATA North America",
+   "matchedWatchlist": "NTT DATA",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ntt-data-north-america.jpg",
+   "location": "Bangalore Urban, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": "$30",
+   "duration": null,
+   "applicants": "18 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "javascript",
+    "typescript",
+    "react",
+    "angular",
+    "spring boot",
+    "microservices"
+   ],
+   "summary": "This role involves designing and maintaining enterprise applications using Java and Spring Boot, with a focus on building scalable APIs and microservices. The candidate will work closely with architects and DevOps teams to ensure smooth deployment and performance optimization. It suits someone with a strong background in Java technologies and a passion for enterprise software development.",
+   "bullets": [
+    "Build and maintain enterprise apps using Java and Spring Boot",
+    "Develop RESTful APIs and microservices for scalable systems",
+    "Collaborate with architects and DevOps on deployment and monitoring"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "spring boot",
+    "restful apis",
+    "microservices",
+    "jboss eap"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "3 minutes ago",
+   "postedAt": 1790775012690,
+   "firstSeenAt": 1790775192703,
+   "lastSeenAt": 1790775192703,
+   "url": "https://www.linkedin.com/jobs/view/4473770796/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473770796/",
+   "description": null,
+   "roleFingerprint": "12925aa8a3",
+   "cardFacts": [
+    "$30",
+    "Bangalore Urban",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4473781616",
+   "title": "Systems Integration Analyst",
+   "company": "NTT DATA North America",
+   "matchedWatchlist": "NTT DATA",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ntt-data-north-america.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": "$30",
+   "duration": "1 to 3 years",
+   "applicants": "4 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "sql",
+    "aws"
+   ],
+   "summary": "This role involves supporting web applications and debugging java code, working with aws services and unix systems, and collaborating on sql databases and cloudwatch monitoring. It suits students with technical skills and experience in software development.",
+   "bullets": [
+    "Support internet-facing web applications and debug java code",
+    "Work with aws services and unix systems",
+    "Collaborate on sql databases and cloudwatch monitoring"
+   ],
+   "roleLabel": "Systems Integration",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "aws",
+    "sql",
+    "unix"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "14 minutes ago",
+   "postedAt": 1790775003475,
+   "firstSeenAt": 1790775843487,
+   "lastSeenAt": 1790775843487,
+   "url": "https://www.linkedin.com/jobs/view/4473781616/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473781616/",
+   "description": null,
+   "roleFingerprint": "e57e89892d",
+   "cardFacts": [
+    "$30",
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4472128313",
+   "title": "Artificial Intelligence Engineer",
+   "company": "Esse India | Canada immigration consultants in delhi | visa consultant delhi",
+   "matchedWatchlist": "Visa",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/esse-india-canada-immigration-consultants-in-delhi-visa-cons.jpg",
    "location": "Bengaluru, Karnataka, India",
    "workplaceType": "On-site",
    "stipend": null,
    "duration": null,
-   "applicants": "53 people clicked apply",
-   "easyApply": false,
+   "applicants": "18 applicants",
+   "easyApply": true,
    "skills": [
     "python",
+    "machine learning",
+    "nlp",
     "pytorch",
     "tensorflow",
-    "llm",
-    "generative ai",
-    "rag"
+    "algorithms"
    ],
-   "summary": "This role involves developing generative AI applications using large language models and multimodal systems. You will build and deploy AI pipelines for various media types and integrate models into existing systems. The work requires strong Python and machine learning experience, with a focus on practical AI implementation.",
+   "summary": "The artificial intelligence engineer will develop ai models to enhance immigration consulting services. Tasks include building machine learning algorithms, applying nlp to analyze client data, and integrating ai tools into workflows. The role suits candidates with a strong computer science background and experience in ai technologies.",
    "bullets": [
-    "Build and deploy AI pipelines for text, image, audio, and video generation",
-    "Integrate AI models into systems using APIs like OpenAI and Hugging Face",
-    "Design Gen AI apps with LLMs and optimize model outputs for accuracy"
+    "Build and optimize machine learning algorithms for immigration data",
+    "Use nlp to analyze client documents and communications",
+    "Collaborate with software and consulting teams on ai integration",
+    "Based in bengaluru, on-site full-time role"
    ],
-   "roleLabel": "Generative AI Development",
-   "degreeLevel": "UG/PG",
-   "degreeText": "B.Tech/M.Tech",
+   "roleLabel": "Ai model development",
+   "degreeLevel": "UG",
+   "degreeText": null,
    "keySkills": [
     "python",
+    "tensorflow",
     "pytorch",
-    "transformers",
-    "llms",
-    "rag"
+    "natural language processing",
+    "machine learning"
    ],
    "stipendStatus": "unknown",
-   "postedText": "15 minutes ago",
-   "postedAt": 1790771992535,
-   "firstSeenAt": 1790772892541,
-   "lastSeenAt": 1790772892541,
-   "url": "https://www.linkedin.com/jobs/view/4463341867/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4463341867/",
+   "postedText": "18 minutes ago",
+   "postedAt": 1790773906928,
+   "firstSeenAt": 1790774986941,
+   "lastSeenAt": 1790774986941,
+   "url": "https://www.linkedin.com/jobs/view/4472128313/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472128313/",
    "description": null,
-   "roleFingerprint": "d3c8a8ee74",
+   "roleFingerprint": "1a2a8b735e",
    "cardFacts": [
     "Bengaluru",
     "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4473752958",
+   "title": "Systems Engr I",
+   "company": "Honeywell Technologies",
+   "matchedWatchlist": "Honeywell",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/honeywell-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "37 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves designing control systems for industrial automation, using c++ and python to process real-time data. It suits students interested in smart manufacturing and global impact projects.",
+   "bullets": [
+    "Design and implement control systems for industrial automation",
+    "Use c++ and python for real-time data processing",
+    "Work on projects with global impact in smart manufacturing"
+   ],
+   "roleLabel": "Control systems engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "c++"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790772560588,
+   "firstSeenAt": 1790776160589,
+   "lastSeenAt": 1790776160589,
+   "url": "https://www.linkedin.com/jobs/view/4473752958/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473752958/",
+   "description": null,
+   "roleFingerprint": "99b06c0f45",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid"
    ],
    "category": "software",
    "region": "IN"
@@ -543,7 +1341,7 @@
    "postedText": "15 minutes ago",
    "postedAt": 1790771803920,
    "firstSeenAt": 1790772703927,
-   "lastSeenAt": 1790772703927,
+   "lastSeenAt": 1790775220149,
    "url": "https://www.linkedin.com/jobs/view/4463524436/",
    "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/150098_4/?utm_medium=jobboard&utm_source=linkedIn",
    "description": null,
@@ -592,7 +1390,7 @@
    "postedText": "28 minutes ago",
    "postedAt": 1790771230440,
    "firstSeenAt": 1790772910447,
-   "lastSeenAt": 1790772910447,
+   "lastSeenAt": 1790775258291,
    "url": "https://www.linkedin.com/jobs/view/4445173427/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4445173427/",
    "description": null,
@@ -679,7 +1477,7 @@
    "postedText": "41 minutes ago",
    "postedAt": 1790770660969,
    "firstSeenAt": 1790773120971,
-   "lastSeenAt": 1790773120971,
+   "lastSeenAt": 1790776286470,
    "url": "https://www.linkedin.com/jobs/view/4248975312/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4248975312/",
    "description": null,
@@ -737,7 +1535,7 @@
    "postedText": "43 minutes ago",
    "postedAt": 1790770486283,
    "firstSeenAt": 1790773066286,
-   "lastSeenAt": 1790773066286,
+   "lastSeenAt": 1790775529831,
    "url": "https://www.linkedin.com/jobs/view/4472173551/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472173551/",
    "description": null,
@@ -797,7 +1595,7 @@
    "postedText": "49 minutes ago",
    "postedAt": 1790770059691,
    "firstSeenAt": 1790772999696,
-   "lastSeenAt": 1790772999696,
+   "lastSeenAt": 1790775491192,
    "url": "https://www.linkedin.com/jobs/view/4460730313/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4460730313/",
    "description": null,
@@ -807,6 +1605,50 @@
     "On-site"
    ],
    "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4473756501",
+   "title": "DE&A - IPA - Power Platform",
+   "company": "Zensar Technologies",
+   "matchedWatchlist": "Zensar Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/zensar-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "10 people clicked apply",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves developing automation solutions using power platform tools. Ideal for students with technical skills looking to contribute to digital transformation projects. The work is hands-on and impactful.",
+   "bullets": [
+    "Build and deploy power automate solutions for client projects",
+    "Use power platform tools for automation and integration tasks",
+    "Work on real-world digital transformation initiatives"
+   ],
+   "roleLabel": "Power Platform Automation",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "power automate"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1790769309602,
+   "firstSeenAt": 1790776509604,
+   "lastSeenAt": 1790776509604,
+   "url": "https://www.linkedin.com/jobs/view/4473756501/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473756501/",
+   "description": null,
+   "roleFingerprint": "de41e94d9e",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -855,7 +1697,7 @@
    "postedText": "9 minutes ago",
    "postedAt": 1790769196261,
    "firstSeenAt": 1790769736263,
-   "lastSeenAt": 1790772883167,
+   "lastSeenAt": 1790775258284,
    "url": "https://www.linkedin.com/jobs/view/4445130861/",
    "applyUrl": "https://careers.qualcomm.com/careers/job/446717819532?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2",
    "description": null,
@@ -865,6 +1707,117 @@
     "On-site"
    ],
    "category": "misc",
+   "region": "IN"
+  },
+  {
+   "id": "4473761375",
+   "title": "C++ Desktop Application Development (Windows)",
+   "company": "Quest Global",
+   "matchedWatchlist": "Quest Global",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/quest-global.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "8 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "c++",
+    "data structures",
+    "algorithms"
+   ],
+   "summary": "This role involves developing and maintaining Windows-based applications using C++. You will write efficient code, perform testing, and document your work. It suits students with strong programming skills and an interest in software development.",
+   "bullets": [
+    "Develop and deploy software components in Windows software stack using C++",
+    "Write clean, reusable code and perform unit testing and validation",
+    "Create technical documentation for application design and code",
+    "Work independently on complex project tasks aligned with customer needs"
+   ],
+   "roleLabel": "C++ Application Developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "c++",
+    "object-oriented design",
+    "data structures",
+    "multi-threaded programming",
+    "unit testing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1790768892985,
+   "firstSeenAt": 1790776092994,
+   "lastSeenAt": 1790776092994,
+   "url": "https://www.linkedin.com/jobs/view/4473761375/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473761375/",
+   "description": null,
+   "roleFingerprint": "8bce41882d",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "region": "IN"
+  },
+  {
+   "id": "4473743742",
+   "title": "App Development Technical Specialist",
+   "slugTitle": "Technical Specialist-App Development",
+   "company": "Birlasoft",
+   "matchedWatchlist": "Birlasoft",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/birlasoft.jpg",
+   "location": "Greater Hyderabad Area",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "14 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "aws",
+    "azure",
+    "machine learning",
+    "nlp",
+    "pytorch",
+    "tensorflow",
+    "generative ai"
+   ],
+   "summary": "This role involves integrating generative ai models into software applications using frameworks like tensorflow and pytorch. Ideal for students with experience in ai/ml projects and a strong grasp of nlp technologies.",
+   "bullets": [
+    "Integrate generative ai models into full-stack applications",
+    "Work with tensorflow, pytorch, and hugging face transformers",
+    "Collaborate in cross-functional teams on ai/ml projects"
+   ],
+   "roleLabel": "Ai integration engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "tensorflow",
+    "pytorch",
+    "hugging face transformers",
+    "gpt",
+    "dall·e"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1790768713313,
+   "firstSeenAt": 1790775913318,
+   "lastSeenAt": 1790775913318,
+   "url": "https://www.linkedin.com/jobs/view/4473743742/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4473743742/",
+   "description": null,
+   "roleFingerprint": "216ed93d57",
+   "cardFacts": [
+    "Greater Hyderabad Area",
+    "On-site"
+   ],
+   "category": "software",
    "region": "IN"
   },
   {
@@ -918,7 +1871,7 @@
    "postedText": "18 minutes ago",
    "postedAt": 1790768458231,
    "firstSeenAt": 1790769538245,
-   "lastSeenAt": 1790772714880,
+   "lastSeenAt": 1790775181663,
    "url": "https://www.linkedin.com/jobs/view/4473743973/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473743973/",
    "description": null,
@@ -971,7 +1924,7 @@
    "postedText": "20 minutes ago",
    "postedAt": 1790768420571,
    "firstSeenAt": 1790769620579,
-   "lastSeenAt": 1790772838302,
+   "lastSeenAt": 1790775277686,
    "url": "https://www.linkedin.com/jobs/view/4464492732/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4464492732/",
    "description": null,
@@ -1025,7 +1978,7 @@
    "postedText": "27 minutes ago",
    "postedAt": 1790767950580,
    "firstSeenAt": 1790769570586,
-   "lastSeenAt": 1790772791507,
+   "lastSeenAt": 1790775248824,
    "url": "https://www.linkedin.com/jobs/view/4473761659/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473761659/",
    "description": null,
@@ -1076,7 +2029,7 @@
    "postedText": "26 minutes ago",
    "postedAt": 1790767926784,
    "firstSeenAt": 1790769486801,
-   "lastSeenAt": 1790772703931,
+   "lastSeenAt": 1790775229680,
    "url": "https://www.linkedin.com/jobs/view/4473764295/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473764295/",
    "description": null,
@@ -1134,7 +2087,7 @@
    "postedText": "31 minutes ago",
    "postedAt": 1790767858298,
    "firstSeenAt": 1790769718303,
-   "lastSeenAt": 1790772855111,
+   "lastSeenAt": 1790775529833,
    "url": "https://www.linkedin.com/jobs/view/4473756712/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473756712/",
    "description": null,
@@ -1227,7 +2180,7 @@
    "postedText": "56 minutes ago",
    "postedAt": 1790766733910,
    "firstSeenAt": 1790770093913,
-   "lastSeenAt": 1790773341325,
+   "lastSeenAt": 1790775805325,
    "url": "https://www.linkedin.com/jobs/view/4472172257/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472172257/",
    "description": null,
@@ -1322,7 +2275,7 @@
    "postedText": "55 minutes ago",
    "postedAt": 1790766557381,
    "firstSeenAt": 1790769857385,
-   "lastSeenAt": 1790773085659,
+   "lastSeenAt": 1790775548234,
    "url": "https://www.linkedin.com/jobs/view/4438389604/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4438389604/",
    "description": null,
@@ -1375,7 +2328,7 @@
    "postedText": "59 minutes ago",
    "postedAt": 1790766365141,
    "firstSeenAt": 1790769905145,
-   "lastSeenAt": 1790773085661,
+   "lastSeenAt": 1790775548244,
    "url": "https://www.linkedin.com/jobs/view/4473748565/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473748565/",
    "description": null,
@@ -1427,7 +2380,7 @@
    "postedText": "52 minutes ago",
    "postedAt": 1790766217743,
    "firstSeenAt": 1790769337751,
-   "lastSeenAt": 1790772541147,
+   "lastSeenAt": 1790774999387,
    "url": "https://www.linkedin.com/jobs/view/4473747613/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473747613/",
    "description": null,
@@ -1533,7 +2486,7 @@
    "postedText": "29 minutes ago",
    "postedAt": 1790765060353,
    "firstSeenAt": 1790766800359,
-   "lastSeenAt": 1790772199221,
+   "lastSeenAt": 1790775913323,
    "url": "https://www.linkedin.com/jobs/view/4472153913/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472153913/",
    "description": null,
@@ -1696,7 +2649,7 @@
    "postedText": "40 minutes ago",
    "postedAt": 1790764208239,
    "firstSeenAt": 1790766608248,
-   "lastSeenAt": 1790772015581,
+   "lastSeenAt": 1790774791259,
    "url": "https://www.linkedin.com/jobs/view/4472169098/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472169098/",
    "description": null,
@@ -1705,7 +2658,7 @@
     "Noida",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -1755,7 +2708,7 @@
    "postedText": "26 minutes ago",
    "postedAt": 1790763239024,
    "firstSeenAt": 1790764799030,
-   "lastSeenAt": 1790772921159,
+   "lastSeenAt": 1790775315597,
    "url": "https://www.linkedin.com/jobs/view/4463017453/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4463017453/",
    "description": null,
@@ -1818,7 +2771,7 @@
    "postedText": "28 minutes ago",
    "postedAt": 1790762948337,
    "firstSeenAt": 1790764628348,
-   "lastSeenAt": 1790773341312,
+   "lastSeenAt": 1790776529921,
    "url": "https://www.linkedin.com/jobs/view/4472148711/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472148711/",
    "description": null,
@@ -1873,7 +2826,7 @@
    "postedText": "2 hours ago",
    "postedAt": 1790762674710,
    "firstSeenAt": 1790769874717,
-   "lastSeenAt": 1790773094295,
+   "lastSeenAt": 1790775548245,
    "url": "https://www.linkedin.com/jobs/view/4462508761/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4462508761/",
    "description": null,
@@ -1929,7 +2882,7 @@
    "postedText": "58 minutes ago",
    "postedAt": 1790762075971,
    "firstSeenAt": 1790765555977,
-   "lastSeenAt": 1790765555977,
+   "lastSeenAt": 1790775976796,
    "url": "https://www.linkedin.com/jobs/view/4463016501/",
    "applyUrl": "https://usource.ripplehire.com/candidate/?token=8YxWjpwDhdL62DFYUIcQ&lang=en&source=USTLINKEDIN&ref=USTLINKEDIN#detail/job/64700",
    "description": null,
@@ -2049,66 +3002,13 @@
    "postedText": "1 hour ago",
    "postedAt": 1790761169902,
    "firstSeenAt": 1790764769911,
-   "lastSeenAt": 1790772703938,
+   "lastSeenAt": 1790775192705,
    "url": "https://www.linkedin.com/jobs/view/4454272529/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4454272529/",
    "description": null,
    "roleFingerprint": "98b483e219",
    "cardFacts": [
     "Chennai",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4441348368",
-   "title": "GenAI Developer",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "machine learning",
-    "deep learning",
-    "nlp",
-    "generative ai",
-    "algorithms"
-   ],
-   "summary": "Primary skills: Machine Learning->Generative AI-> Agentic AI-> Large Language Models-> NLP-> Artificial Intelligence Good to have skills: Machine Learning, Data Analysis, Deep Learning, Python Programming, Cloud Computing",
-   "bullets": [
-    "Build generative ai models to solve complex problems",
-    "Work with cross-functional teams on ai integration",
-    "Mentor junior developers and share knowledge"
-   ],
-   "roleLabel": "Generative AI Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "machine learning",
-    "python programming",
-    "cloud computing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1790757949774,
-   "firstSeenAt": 1790758369779,
-   "lastSeenAt": 1790758369779,
-   "url": "https://www.linkedin.com/jobs/view/4441348368/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-247432&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "2edb27df3d",
-   "cardFacts": [
-    "Bengaluru East",
     "On-site"
    ],
    "category": "software",
@@ -2269,7 +3169,7 @@
    "postedText": "48 minutes ago",
    "postedAt": 1790755176722,
    "firstSeenAt": 1790758056729,
-   "lastSeenAt": 1790772838281,
+   "lastSeenAt": 1790775305435,
    "url": "https://www.linkedin.com/jobs/view/4473720720/",
    "applyUrl": "https://www.shine.com/jobs/java-developer/nippon-data-systems-ltd/19637861/?utm_source=linkedin-feed&amp;utm_medium=referral&amp;utm_campaign=linkedin-feed&amp;auto_apply=true",
    "description": null,
@@ -2321,7 +3221,7 @@
    "postedText": "51 minutes ago",
    "postedAt": 1790755142001,
    "firstSeenAt": 1790758202005,
-   "lastSeenAt": 1790772656430,
+   "lastSeenAt": 1790775154647,
    "url": "https://www.linkedin.com/jobs/view/4473738294/",
    "applyUrl": "https://www.shine.com/jobs/java-developer/nippon-data-systems-ltd/19637861/?utm_source=linkedin-feed&amp;utm_medium=referral&amp;utm_campaign=linkedin-feed&amp;auto_apply=true",
    "description": null,
@@ -2378,7 +3278,7 @@
    "postedText": "7 minutes ago",
    "postedAt": 1790754260234,
    "firstSeenAt": 1790754680238,
-   "lastSeenAt": 1790773177312,
+   "lastSeenAt": 1790775627344,
    "url": "https://www.linkedin.com/jobs/view/4472136351/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472136351/",
    "description": null,
@@ -2428,7 +3328,7 @@
    "postedText": "8 minutes ago",
    "postedAt": 1790754254599,
    "firstSeenAt": 1790754734606,
-   "lastSeenAt": 1790772589608,
+   "lastSeenAt": 1790775026100,
    "url": "https://www.linkedin.com/jobs/view/4433471833/",
    "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-247889&sourceId=4003",
    "description": null,
@@ -2485,7 +3385,7 @@
    "postedText": "8 minutes ago",
    "postedAt": 1790754220455,
    "firstSeenAt": 1790754700458,
-   "lastSeenAt": 1790772883162,
+   "lastSeenAt": 1790775404192,
    "url": "https://www.linkedin.com/jobs/view/4472126753/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472126753/",
    "description": null,
@@ -2592,7 +3492,7 @@
    "postedText": "4 hours ago",
    "postedAt": 1790750949058,
    "firstSeenAt": 1790765349063,
-   "lastSeenAt": 1790765349063,
+   "lastSeenAt": 1790775864739,
    "url": "https://www.linkedin.com/jobs/view/4472134064/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4472134064/",
    "description": null,
@@ -2651,7 +3551,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1790750716654,
    "firstSeenAt": 1790751316668,
-   "lastSeenAt": 1790773299689,
+   "lastSeenAt": 1790775774511,
    "url": "https://www.linkedin.com/jobs/view/4473724223/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4473724223/",
    "description": null,
@@ -2829,7 +3729,7 @@
     "Pune/Pimpri-Chinchwad Area",
     "Remote"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -2883,7 +3783,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1790748052334,
    "firstSeenAt": 1790751652337,
-   "lastSeenAt": 1790765464886,
+   "lastSeenAt": 1790776055524,
    "url": "https://www.linkedin.com/jobs/view/4473710543/",
    "applyUrl": "https://jobs.birlasoft.com/job/Bengaluru-Java-API-Developer-INDI/60230344/",
    "description": null,
@@ -3003,7 +3903,7 @@
    "postedText": "2 hours ago",
    "postedAt": 1790744461900,
    "firstSeenAt": 1790751661907,
-   "lastSeenAt": 1790772667368,
+   "lastSeenAt": 1790775087984,
    "url": "https://www.linkedin.com/jobs/view/4473706553/",
    "applyUrl": "https://careers.hpe.com/us/en/job/1215895/Data-Scientist?utm_source=linkedin",
    "description": null,
@@ -3114,7 +4014,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -3168,7 +4068,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -3237,54 +4137,6 @@
    "region": "IN"
   },
   {
-   "id": "4433479541",
-   "title": "Java developer",
-   "slugTitle": "Java Angular developer",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "java"
-   ],
-   "summary": "This role involves designing and developing systems using Java and AngularJS2 to meet client needs. You'll work closely with leads and managers to estimate project requirements and ensure high-quality deliverables. Ideal for someone with a strong grasp of software development principles and a passion for solving complex problems.",
-   "bullets": [
-    "Design, develop, validate and support systems for client projects",
-    "Java and AngularJS2 for building efficient programs and systems",
-    "Collaborate with leads and managers on project estimations and requirements"
-   ],
-   "roleLabel": "Java Developer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "angularjs2"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1790732675311,
-   "firstSeenAt": 1790733215322,
-   "lastSeenAt": 1790738796295,
-   "url": "https://www.linkedin.com/jobs/view/4433479541/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-247837&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "09eaa7b4ca",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "4473560924",
    "title": "Ecommerce Intern",
    "slugTitle": "Intern - Ecommerce",
@@ -3332,7 +4184,7 @@
     "Thane",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -3432,6 +4284,7 @@
    "roleLabel": "Embedded software testing",
    "degreeLevel": "PG",
    "degreeText": "B.E./M.Sc./M.E./M.Tech",
+   "experience": "1–3 years",
    "keySkills": [
     "c",
     "c++",
@@ -3609,7 +4462,7 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -4258,7 +5111,7 @@
    "postedText": "Just now",
    "postedAt": 1790705527440,
    "firstSeenAt": 1790705527445,
-   "lastSeenAt": 1790773233088,
+   "lastSeenAt": 1790775724072,
    "url": "https://www.linkedin.com/jobs/view/4463501481/",
    "applyUrl": "https://careers.cognizant.com/global-en/jobs/00070047351/software-engineer/?source=JB-11500",
    "description": null,
@@ -4693,57 +5546,6 @@
    "region": "IN"
   },
   {
-   "id": "4471918889",
-   "title": "App Development Technical Specialist",
-   "slugTitle": "Technical Specialist-App Development",
-   "company": "Birlasoft",
-   "matchedWatchlist": "Birlasoft",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/birlasoft.jpg",
-   "location": "Greater Hyderabad Area",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "javascript",
-    "react"
-   ],
-   "summary": "This role involves developing web interfaces using react js and css. You will translate design mockups into functional components and work with cross-functional teams to improve user experience. It suits students with strong front-end development skills.",
-   "bullets": [
-    "Build responsive web interfaces using react js and css",
-    "Translate design mockups into functional components",
-    "Work with cross-functional teams on user experience improvements"
-   ],
-   "roleLabel": "Front-end Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "react js",
-    "javascript es6",
-    "css",
-    "ux/ui"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "12 minutes ago",
-   "postedAt": 1790700853221,
-   "firstSeenAt": 1790701573224,
-   "lastSeenAt": 1790705614488,
-   "url": "https://www.linkedin.com/jobs/view/4471918889/",
-   "applyUrl": "https://jobs.birlasoft.com/job/Hyderabad-Technical-Specialist-App-Development-INDI/60211344/",
-   "description": null,
-   "roleFingerprint": "54b21b2130",
-   "cardFacts": [
-    "Greater Hyderabad Area",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "4464370566",
    "title": "SDE-1 (FTC)",
    "company": "Amazon",
@@ -4993,7 +5795,7 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -6178,69 +6980,6 @@
    "region": "IN"
   },
   {
-   "id": "4444852609",
-   "title": "AI Application Engineer",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "javascript",
-    "typescript",
-    "node.js",
-    "aws",
-    "azure",
-    "gcp",
-    "docker",
-    "kubernetes",
-    "ci/cd",
-    "rag",
-    "microservices"
-   ],
-   "summary": "This role involves designing and implementing AI-powered applications and agents for enterprise platforms. You'll work on scalable backend systems, integrate AI with SAP and ERP systems, and ensure security and compliance. Ideal for someone with experience in AI frameworks and a passion for enterprise solutions.",
-   "bullets": [
-    "Develop AI agents and copilots for SAP and enterprise platforms",
-    "Build scalable backend services with REST APIs and microservices",
-    "Integrate AI with SAP systems and ERP data sources",
-    "Ensure security and compliance for AI solutions"
-   ],
-   "roleLabel": "AI Application Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "typescript",
-    "llms",
-    "langchain",
-    "vector databases"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "52 minutes ago",
-   "postedAt": 1790691260232,
-   "firstSeenAt": 1790694380237,
-   "lastSeenAt": 1790698548586,
-   "url": "https://www.linkedin.com/jobs/view/4444852609/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-250099&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "c2c97aa6b2",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "4473275072",
    "title": "Cloud Finops Analyst",
    "slugTitle": "S&CGN - Tech Strategy & Advisory - Cloud Finops - Analyst",
@@ -6290,7 +7029,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -6602,51 +7341,6 @@
    "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-248389&sourceId=4003",
    "description": null,
    "roleFingerprint": "1bc4da5034",
-   "cardFacts": [
-    "Chennai",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4377696957",
-   "title": "Software Quality Engineer Associate",
-   "slugTitle": "Associate Software Quality Engineer",
-   "company": "UPS",
-   "matchedWatchlist": "UPS",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ups.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves performing quality assurance tasks for software systems, working closely with developers and testers to ensure testing processes are followed and documented. It is suitable for students interested in software testing and quality assurance.",
-   "bullets": [
-    "Execute qa processes for software systems",
-    "Collaborate with developers and testers",
-    "Document testing progress and outcomes"
-   ],
-   "roleLabel": "Software Quality Assurance",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "testing procedures"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "30 minutes ago",
-   "postedAt": 1790689493618,
-   "firstSeenAt": 1790691293621,
-   "lastSeenAt": 1790698424815,
-   "url": "https://www.linkedin.com/jobs/view/4377696957/",
-   "applyUrl": "https://www.jobs-ups.com/imea/en/job/UPBUPSGLOBALR25030096EXTERNALENIMEA/Associate-Software-Quality-Engineer?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "6d82fd5a08",
    "cardFacts": [
     "Chennai",
     "On-site"
@@ -7597,7 +8291,7 @@
     "Bengaluru",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -8617,7 +9311,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -8676,7 +9370,7 @@
     "Hyderabad",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -13272,7 +13966,7 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -13424,7 +14118,7 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -13475,7 +14169,7 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -13527,7 +14221,7 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -13578,7 +14272,7 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -14184,64 +14878,6 @@
    "cardFacts": [
     "Srinagar",
     "Remote"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4248972535",
-   "title": "Java Fullstack Developer",
-   "slugTitle": "Returnship Opportunity - Java / Angular(Fullstack) - Developer",
-   "company": "UPS",
-   "matchedWatchlist": "UPS",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ups.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "java",
-    "javascript",
-    "angular",
-    "azure",
-    "jenkins",
-    "ci/cd",
-    "git",
-    "agile"
-   ],
-   "summary": "This role involves building and maintaining full-stack applications using Java and Angular. You'll work on secure systems with RESTful services and CI/CD pipelines. Ideal for someone with Java and frontend experience looking to contribute to scalable systems.",
-   "bullets": [
-    "Develop full-stack applications using Java, Angular, and frontend technologies",
-    "Work with CI/CD tools like Azure DevOps, Jenkins, and SonarQube",
-    "Collaborate on secure systems with RESTful services and compliance standards"
-   ],
-   "roleLabel": "Full-stack development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "angular",
-    "azure devops",
-    "jenkins",
-    "sonarqube"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "12 minutes ago",
-   "postedAt": 1790602125483,
-   "firstSeenAt": 1790602845604,
-   "lastSeenAt": 1790615295316,
-   "url": "https://www.linkedin.com/jobs/view/4248972535/",
-   "applyUrl": "https://www.jobs-ups.com/global/en/job/UPBUPSGLOBALR24001380EXTERNALENGLOBAL/Returnship-Opportunity-Java-Angular-Fullstack-Developer?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "6f9f20ee94",
-   "cardFacts": [
-    "Chennai",
-    "On-site"
    ],
    "category": "software",
    "region": "IN"
@@ -15364,7 +16000,7 @@
     "Gurugram",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -16888,73 +17524,6 @@
    "region": "IN"
   },
   {
-   "id": "4472487627",
-   "title": "Systems Integration Analyst",
-   "company": "NTT DATA North America",
-   "matchedWatchlist": "NTT DATA",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": "$30",
-   "duration": "0-3 years",
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "javascript",
-    "ruby",
-    "php",
-    "react",
-    "vue",
-    "angular",
-    "node.js",
-    "aws",
-    "docker",
-    "git",
-    "mongodb",
-    "postgresql",
-    "mysql"
-   ],
-   "summary": "This role involves developing and maintaining web applications using modern technologies. You'll work with React, Node.js, and databases to create user-friendly interfaces. Ideal for someone with 3+ years of full-stack experience and a passion for building scalable solutions.",
-   "bullets": [
-    "Build and maintain web applications with front-end and back-end components",
-    "Use React, Node.js, Python, and databases like MySQL and MongoDB",
-    "Collaborate with product teams to design user-friendly interfaces"
-   ],
-   "roleLabel": "Full Stack Developer",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "experience": "0–3 years",
-   "keySkills": [
-    "javascript",
-    "react",
-    "node.js",
-    "mysql",
-    "postgresql",
-    "mongodb",
-    "git"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "2 minutes ago",
-   "postedAt": 1790579776582,
-   "firstSeenAt": 1790579896597,
-   "lastSeenAt": 1790587131988,
-   "url": "https://www.linkedin.com/jobs/view/4472487627/",
-   "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBAL391781EXTERNALENGLOBAL/Systems-Integration-Analyst?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "7e4c6aa7a5",
-   "cardFacts": [
-    "$30",
-    "Bengaluru",
-    "Hybrid"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "4472702152",
    "title": "Client Server Software Analyst",
    "company": "Global Payments Inc.",
@@ -17419,7 +17988,7 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -17513,7 +18082,7 @@
     "Hyderabad",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -18794,7 +19363,7 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -19117,7 +19686,7 @@
    "postedText": null,
    "postedAt": 1790488958133,
    "firstSeenAt": 1790490316215,
-   "lastSeenAt": 1790771522268,
+   "lastSeenAt": 1790774371149,
    "url": "https://vecmocon.keka.com/careers/jobdetails/163165",
    "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/163165",
    "description": null,
@@ -19171,7 +19740,7 @@
     "Hyderabad",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -19304,7 +19873,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1790450140977,
    "firstSeenAt": 1790453740979,
-   "lastSeenAt": 1790765384218,
+   "lastSeenAt": 1790775959433,
    "url": "https://www.linkedin.com/jobs/view/4456188612/",
    "applyUrl": "https://larsentoubrocareers.peoplestrong.com/portal/job/detail/LNT_-IM_1684884?Source=Linkedin",
    "description": null,
@@ -19679,7 +20248,7 @@
     "Mumbai",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -19953,7 +20522,7 @@
     "On-site",
     "2-3 weeks"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -20319,7 +20888,7 @@
     "Bengaluru East",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -20371,7 +20940,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -20423,7 +20992,7 @@
     "Hyderabad",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -20970,7 +21539,7 @@
     "Pune Division",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -21215,70 +21784,6 @@
    "cardFacts": [
     "Mumbai Metropolitan Region",
     "Hybrid"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4453299197",
-   "title": "Java Fullstack Angular Developer",
-   "slugTitle": "Java Fullstack(Angular) Developer",
-   "company": "Infosys",
-   "matchedWatchlist": "Infosys",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/infosys.jpg",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "139 applicants",
-   "easyApply": false,
-   "skills": [
-    "java",
-    "javascript",
-    "typescript",
-    "angular",
-    "spring boot",
-    "azure",
-    "docker",
-    "kubernetes",
-    "jenkins",
-    "ci/cd",
-    "git",
-    "generative ai",
-    "rag",
-    "mongodb"
-   ],
-   "summary": "This full-time role involves developing scalable applications using Java and Angular, integrating AI tools like Gemini and LangChain, and creating automated tests for Angular apps with Playwright. It suits students with strong coding skills and interest in AI integration.",
-   "bullets": [
-    "Build scalable apps with Java, Spring Boot, and Angular",
-    "Use Kafka, REST APIs, and AI tools like Gemini and LangChain",
-    "Write automated tests for Angular apps with Playwright"
-   ],
-   "roleLabel": "Java Fullstack Developer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "spring boot",
-    "angular",
-    "kafka",
-    "playwright"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "12 minutes ago",
-   "postedAt": 1790424932022,
-   "firstSeenAt": 1790425652023,
-   "lastSeenAt": 1790431757396,
-   "url": "https://www.linkedin.com/jobs/view/4453299197/",
-   "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-251101&sourceId=4003",
-   "description": null,
-   "roleFingerprint": "2035a5f8a2",
-   "cardFacts": [
-    "Bengaluru East",
-    "On-site"
    ],
    "category": "software",
    "region": "IN"
@@ -21558,7 +22063,7 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -22868,7 +23373,7 @@
     "Hyderabad",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -23791,7 +24296,7 @@
     "Greater Kolkata Area",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -25452,7 +25957,7 @@
     "Sonipat",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -25933,7 +26438,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1790340025196,
    "firstSeenAt": 1790343625198,
-   "lastSeenAt": 1790346404424,
+   "lastSeenAt": 1790776267831,
    "url": "https://www.linkedin.com/jobs/view/4435529529/",
    "applyUrl": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-248351&sourceId=4003",
    "description": null,
@@ -29323,50 +29828,6 @@
    "region": "IN"
   },
   {
-   "id": "4469698620",
-   "title": "DE&A - IPA - Power Platform",
-   "company": "Zensar Technologies",
-   "matchedWatchlist": "Zensar Technologies",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/zensar-technologies.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves developing Power Automate solutions to streamline business processes. Ideal for students with experience in Microsoft Power Platform tools. Work on enterprise projects with a focus on client outcomes.",
-   "bullets": [
-    "Build and maintain Power Automate solutions for business processes",
-    "Use Microsoft Power Platform tools for automation and integration",
-    "Work on enterprise-scale projects with a focus on client outcomes"
-   ],
-   "roleLabel": "Power Automate Developer",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "power automate"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "9 minutes ago",
-   "postedAt": 1790269248321,
-   "firstSeenAt": 1790269788324,
-   "lastSeenAt": 1790269788324,
-   "url": "https://www.linkedin.com/jobs/view/4469698620/",
-   "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/151594/?utm_medium=jobboard&utm_source=linkedIn",
-   "description": null,
-   "roleFingerprint": "44d950c598",
-   "cardFacts": [
-    "Pune Division",
-    "On-site"
-   ],
-   "category": "misc",
-   "region": "IN"
-  },
-  {
    "id": "4470016107",
    "title": "Intern",
    "company": "IQVIA",
@@ -30470,70 +30931,6 @@
    "region": "IN"
   },
   {
-   "id": "4471476754",
-   "title": "Software Development Analyst",
-   "company": "NTT DATA North America",
-   "matchedWatchlist": "NTT DATA",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": "$30",
-   "duration": null,
-   "applicants": "15 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "kotlin",
-    "react",
-    "vue",
-    "angular",
-    "spring boot",
-    "aws",
-    "azure",
-    "docker",
-    "git",
-    "pytorch",
-    "tensorflow",
-    "llm"
-   ],
-   "summary": "This role involves building AI applications and chatbots, with a focus on Java, Spring Boot, and Python. You'll lead system migrations and work on AI orchestration layers. Ideal for someone with experience in AI, microservices, and full-stack development.",
-   "bullets": [
-    "Develop AI applications, chatbots, and multi-agent systems",
-    "Use Java, Spring Boot, Vue.js, and Python for backend and frontend",
-    "Lead migration of legacy systems to microservices and AI solutions"
-   ],
-   "roleLabel": "AI application development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "spring boot",
-    "vue.js",
-    "python",
-    "ml"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "30 minutes ago",
-   "postedAt": 1790256134633,
-   "firstSeenAt": 1790257934635,
-   "lastSeenAt": 1790257934635,
-   "url": "https://www.linkedin.com/jobs/view/4471476754/",
-   "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBAL388084EXTERNALENGLOBAL/Software-Development-Analyst?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "68a45ac592",
-   "cardFacts": [
-    "$30",
-    "Bangalore Urban",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "4471463956",
    "title": "Java Developer (Spring boot, Rest API)_2-4 Yrs_Indore",
    "company": "Global Payments Inc.",
@@ -31094,7 +31491,7 @@
    "postedText": null,
    "postedAt": 1790249783303,
    "firstSeenAt": 1790249962661,
-   "lastSeenAt": 1790771522269,
+   "lastSeenAt": 1790774371153,
    "url": "https://vecmocon.keka.com/careers/jobdetails/162869",
    "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/162869",
    "description": null,
@@ -32164,7 +32561,7 @@
    "postedText": null,
    "postedAt": 1790228220000,
    "firstSeenAt": 1790233697140,
-   "lastSeenAt": 1790771563428,
+   "lastSeenAt": 1790774355804,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
    "description": null,
@@ -37449,7 +37846,7 @@
    "postedText": null,
    "postedAt": 1790035200000,
    "firstSeenAt": 1790058709595,
-   "lastSeenAt": 1790771487390,
+   "lastSeenAt": 1790774332909,
    "url": "https://apply.workable.com/j/E90732EE8A",
    "applyUrl": "https://apply.workable.com/j/E90732EE8A",
    "description": null,
@@ -39236,7 +39633,7 @@
    "postedText": null,
    "postedAt": 1789948800000,
    "firstSeenAt": 1790012371567,
-   "lastSeenAt": 1790693993901,
+   "lastSeenAt": 1790774394922,
    "url": "https://monotype.wd1.myworkdayjobs.com/en-US/Monotype/job/Noida/Information-Security-Trainee_R0004875",
    "applyUrl": "https://monotype.wd1.myworkdayjobs.com/en-US/Monotype/job/Noida/Information-Security-Trainee_R0004875",
    "description": null,
@@ -40692,7 +41089,7 @@
     "Remote",
     "26 weeks"
    ],
-   "category": "software",
+   "category": "misc",
    "region": "IN"
   },
   {
@@ -42000,7 +42397,7 @@
    "postedText": null,
    "postedAt": 1789669800000,
    "firstSeenAt": 1789748332331,
-   "lastSeenAt": 1790771478764,
+   "lastSeenAt": 1790774325352,
    "url": "https://www.amazon.jobs/en/jobs/10553343/sde-1-expansions-tech-and-product",
    "applyUrl": "https://www.amazon.jobs/en/jobs/10553343/sde-1-expansions-tech-and-product",
    "description": null,
@@ -43486,7 +43883,7 @@
    "postedText": null,
    "postedAt": 1789446171000,
    "firstSeenAt": 1789486731397,
-   "lastSeenAt": 1790771494872,
+   "lastSeenAt": 1790774340734,
    "url": "https://job-boards.greenhouse.io/instawork/jobs/4712960006",
    "applyUrl": "https://job-boards.greenhouse.io/instawork/jobs/4712960006",
    "description": null,
@@ -43742,7 +44139,7 @@
    "postedText": null,
    "postedAt": 1789373285000,
    "firstSeenAt": 1789380549425,
-   "lastSeenAt": 1790771563428,
+   "lastSeenAt": 1790774355806,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556997800",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556997800",
    "description": null,
@@ -45555,7 +45952,7 @@
    "postedText": null,
    "postedAt": 1788942345000,
    "firstSeenAt": 1789748339867,
-   "lastSeenAt": 1790771480819,
+   "lastSeenAt": 1790774326217,
    "url": "https://job-boards.greenhouse.io/celonis/jobs/7791267003?gh_jid=7791267003",
    "applyUrl": "https://job-boards.greenhouse.io/celonis/jobs/7791267003?gh_jid=7791267003",
    "description": null,
@@ -45805,7 +46202,7 @@
    "postedText": null,
    "postedAt": 1788890401000,
    "firstSeenAt": 1789748393353,
-   "lastSeenAt": 1790771525111,
+   "lastSeenAt": 1790774375320,
    "url": "https://www.zoominfo.com/careers?gh_jid=8759684002",
    "applyUrl": "https://www.zoominfo.com/careers?gh_jid=8759684002",
    "description": null,
@@ -47108,7 +47505,7 @@
    "postedText": null,
    "postedAt": 1788775856000,
    "firstSeenAt": 1788776934222,
-   "lastSeenAt": 1790771519737,
+   "lastSeenAt": 1790774369275,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8184771",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8184771",
    "description": null,
@@ -47424,7 +47821,7 @@
    "postedText": null,
    "postedAt": 1788698958000,
    "firstSeenAt": 1788699526701,
-   "lastSeenAt": 1790771511732,
+   "lastSeenAt": 1790774359701,
    "url": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
    "applyUrl": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
    "description": null,
@@ -48696,7 +49093,7 @@
    "postedText": null,
    "postedAt": 1788338321000,
    "firstSeenAt": 1788339822162,
-   "lastSeenAt": 1790771472159,
+   "lastSeenAt": 1790774316154,
    "url": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "applyUrl": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "description": null,
@@ -48963,7 +49360,7 @@
    "postedText": null,
    "postedAt": 1788268250000,
    "firstSeenAt": 1789748352273,
-   "lastSeenAt": 1790771491627,
+   "lastSeenAt": 1790774336898,
    "url": "https://boards.greenhouse.io/gravitonresearchcapital/jobs/8768396002?gh_jid=8768396002",
    "applyUrl": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8768396002",
    "description": null,
@@ -49015,7 +49412,7 @@
    "postedText": null,
    "postedAt": 1788268223000,
    "firstSeenAt": 1789748352280,
-   "lastSeenAt": 1790771491628,
+   "lastSeenAt": 1790774336899,
    "url": "https://boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
    "applyUrl": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002",
    "description": null,
@@ -49248,66 +49645,6 @@
    "region": "IN"
   },
   {
-   "id": "4461088583",
-   "title": "AI Research Intern",
-   "slugTitle": "Research Intern - AI",
-   "company": "GE HealthCare",
-   "matchedWatchlist": "GE HealthCare",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ge-healthcare.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": "₹0",
-   "duration": null,
-   "applicants": "5 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "c++",
-    "machine learning",
-    "deep learning",
-    "computer vision",
-    "pytorch",
-    "tensorflow",
-    "generative ai",
-    "rag",
-    "algorithms"
-   ],
-   "summary": "This PhD-level research role focuses on applying generative AI to medical imaging challenges. You'll work on image reconstruction, segmentation, and workflow automation using deep learning frameworks. Ideal for students with strong AI expertise and experience in computer vision.",
-   "bullets": [
-    "Develop AI algorithms for medical imaging tasks like image reconstruction and segmentation",
-    "Work with TensorFlow, PyTorch, and HuggingFace on generative models and vision-language systems",
-    "Collaborate on clinical workflow automation and data augmentation for healthcare applications"
-   ],
-   "roleLabel": "AI Research",
-   "degreeLevel": "PG",
-   "degreeText": "PhD",
-   "keySkills": [
-    "tensorflow",
-    "pytorch",
-    "huggingface",
-    "generative ai",
-    "vision-language models"
-   ],
-   "stipendStatus": "unpaid",
-   "postedText": "7 minutes ago",
-   "postedAt": 1788181797895,
-   "firstSeenAt": 1788182217904,
-   "lastSeenAt": 1788182217904,
-   "url": "https://www.linkedin.com/jobs/view/4461088583/",
-   "applyUrl": "https://careers.gehealthcare.com/global/en/job/GEVGHLGLOBALR4043882EXTERNALENGLOBAL/Research-Intern-AI?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "2c16dccb91",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "region": "IN"
-  },
-  {
    "id": "ats:workday:micron:wd1:External:JR109268",
    "title": "Intern - FDV/PCV, NAND Product Engineering",
    "company": "Micron Technology",
@@ -49451,7 +49788,7 @@
    "postedText": null,
    "postedAt": 1787910803000,
    "firstSeenAt": 1788742998639,
-   "lastSeenAt": 1790771563427,
+   "lastSeenAt": 1790774355808,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556911730",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556911730",
    "description": null,
@@ -49500,7 +49837,7 @@
    "postedText": null,
    "postedAt": 1787806869000,
    "firstSeenAt": 1789486731389,
-   "lastSeenAt": 1790771494866,
+   "lastSeenAt": 1790774340725,
    "url": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
    "applyUrl": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
    "description": null,
@@ -49559,7 +49896,7 @@
    "postedText": null,
    "postedAt": 1787230662000,
    "firstSeenAt": 1787231465482,
-   "lastSeenAt": 1790771519738,
+   "lastSeenAt": 1790774369276,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "description": null,
@@ -49663,7 +50000,7 @@
    "postedText": null,
    "postedAt": 1786949726423,
    "firstSeenAt": 1788737813135,
-   "lastSeenAt": 1790771513314,
+   "lastSeenAt": 1790774361546,
    "url": "https://signzy.keka.com/careers/jobdetails/133832",
    "applyUrl": "https://signzy.keka.com/careers/jobdetails/133832",
    "description": null,
@@ -49715,7 +50052,7 @@
    "postedText": null,
    "postedAt": 1786949579110,
    "firstSeenAt": 1789748382323,
-   "lastSeenAt": 1790771513315,
+   "lastSeenAt": 1790774361547,
    "url": "https://signzy.keka.com/careers/jobdetails/131773",
    "applyUrl": "https://signzy.keka.com/careers/jobdetails/131773",
    "description": null,
@@ -49864,7 +50201,7 @@
    "postedText": null,
    "postedAt": 1785135502493,
    "firstSeenAt": 1789748355871,
-   "lastSeenAt": 1790771495578,
+   "lastSeenAt": 1790774340946,
    "url": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
    "applyUrl": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
    "description": null,
@@ -49919,7 +50256,7 @@
    "postedText": null,
    "postedAt": 1784741141000,
    "firstSeenAt": 1785541864449,
-   "lastSeenAt": 1790771516956,
+   "lastSeenAt": 1790774367624,
    "url": "https://stripe.com/jobs/search?gh_jid=8031833",
    "applyUrl": "https://stripe.com/jobs/search?gh_jid=8031833",
    "description": null,
@@ -49968,7 +50305,7 @@
    "postedText": null,
    "postedAt": 1784036805000,
    "firstSeenAt": 1787508855196,
-   "lastSeenAt": 1790771481847,
+   "lastSeenAt": 1790774326707,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "description": null,
@@ -50015,7 +50352,7 @@
    "postedText": null,
    "postedAt": 1783504077452,
    "firstSeenAt": 1787501660414,
-   "lastSeenAt": 1790771495578,
+   "lastSeenAt": 1790774340949,
    "url": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
    "applyUrl": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
    "description": null,
@@ -50059,7 +50396,7 @@
    "postedText": null,
    "postedAt": 1783296000000,
    "firstSeenAt": 1789288764701,
-   "lastSeenAt": 1790771526938,
+   "lastSeenAt": 1790774376285,
    "url": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "applyUrl": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "description": null,
@@ -50105,7 +50442,7 @@
    "postedText": null,
    "postedAt": 1782218042000,
    "firstSeenAt": 1785940207500,
-   "lastSeenAt": 1790771491523,
+   "lastSeenAt": 1790774336511,
    "url": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "applyUrl": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "description": null,
