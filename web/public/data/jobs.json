@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790803755897,
+ "generatedAt": 1790805612995,
  "region": "IN",
  "regionName": "India",
  "count": 966,
@@ -441,6 +441,65 @@
  ],
  "jobs": [
   {
+   "id": "4473952688",
+   "title": "AI Research Intern",
+   "slugTitle": "AI Research Internship",
+   "company": "Lexsi Labs",
+   "matchedWatchlist": "Lexsi Labs",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/lexsi-labs.jpg",
+   "location": "India",
+   "workplaceType": "Remote",
+   "stipend": null,
+   "duration": "6 months",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "ci/cd",
+    "git",
+    "machine learning",
+    "deep learning",
+    "pytorch",
+    "agile"
+   ],
+   "summary": "This internship involves working on cutting-edge AI research projects focused on alignment, safety, and deployment of foundation models. You will collaborate on real-world challenges in AI safety, interpretability, and inference systems, with opportunities to contribute to open-source tools and research publications.",
+   "bullets": [
+    "Implement post-training alignment methods for foundation models",
+    "Work on agentic systems for automation and safety mechanisms",
+    "Contribute to tabular foundation models and inference optimization"
+   ],
+   "roleLabel": "AI Research",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "pytorch",
+    "transformer architectures",
+    "git",
+    "ci/cd"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790801892600,
+   "firstSeenAt": 1790805492609,
+   "lastSeenAt": 1790805492609,
+   "url": "https://www.linkedin.com/jobs/view/4473952688/",
+   "applyUrl": "https://app.screenloop.com/careers/aryaxai/job_posts/6659?tab=overview",
+   "description": null,
+   "roleFingerprint": "f8ac47138e",
+   "cardFacts": [
+    "India",
+    "Remote",
+    "6 months"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN"
+  },
+  {
    "id": "4472628634",
    "title": "Vulnerability Management Analyst",
    "slugTitle": "Analyst - Vulnerability Management, Qualys VMDR/Wiz/Aqua",
@@ -492,6 +551,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -549,6 +609,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -609,6 +670,7 @@
     "12 months"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -668,6 +730,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -718,6 +781,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -776,6 +840,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -829,6 +894,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -874,6 +940,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -923,6 +990,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -979,6 +1047,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -1025,6 +1094,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -1083,6 +1153,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -1141,6 +1212,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -1198,6 +1270,7 @@
     "Hyderabad"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -1249,6 +1322,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -1301,6 +1375,7 @@
     "Au"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -1353,6 +1428,7 @@
     "Mumbai Metropolitan Region"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -1403,6 +1479,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -1450,6 +1527,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -1502,6 +1580,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -1564,6 +1643,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -1617,6 +1697,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -1663,6 +1744,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -1716,6 +1798,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -1770,6 +1853,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -1825,6 +1909,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -1874,6 +1959,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -1935,6 +2021,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -1995,6 +2082,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -2062,6 +2150,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -2119,6 +2208,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -2167,6 +2257,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -2220,6 +2311,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -2268,6 +2360,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -2316,6 +2409,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -2366,6 +2460,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -2428,6 +2523,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -2475,6 +2571,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -2525,6 +2622,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -2574,6 +2672,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -2636,6 +2735,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -2680,6 +2780,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -2734,6 +2835,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -2793,6 +2895,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -2855,6 +2958,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -2905,6 +3009,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -2966,6 +3071,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -3014,6 +3120,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -3059,6 +3166,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -3117,6 +3225,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -3173,6 +3282,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -3230,6 +3340,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -3283,6 +3394,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -3327,6 +3439,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -3391,6 +3504,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -3440,6 +3554,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -3485,6 +3600,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -3527,6 +3643,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -3585,6 +3702,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -3645,6 +3763,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -3689,6 +3808,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -3747,6 +3867,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -3800,6 +3921,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -3858,6 +3980,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -3921,6 +4044,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -3975,6 +4099,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -4028,6 +4153,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -4079,6 +4205,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -4137,6 +4264,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -4185,6 +4313,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -4230,6 +4359,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -4275,6 +4405,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -4325,6 +4456,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -4378,6 +4510,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -4430,6 +4563,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -4479,6 +4613,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -4537,6 +4672,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -4587,6 +4723,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -4647,6 +4784,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -4699,6 +4837,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -4758,6 +4897,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -4821,6 +4961,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -4876,6 +5017,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -4932,6 +5074,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -4999,6 +5142,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -5052,6 +5196,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -5114,6 +5259,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -5167,6 +5313,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -5219,6 +5366,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -5271,6 +5419,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -5328,6 +5477,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -5378,6 +5528,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -5435,6 +5586,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -5491,6 +5643,7 @@
     "6 months"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -5542,6 +5695,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -5600,6 +5754,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -5653,6 +5808,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -5709,6 +5865,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -5772,6 +5929,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -5842,6 +6000,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -5892,6 +6051,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -5947,6 +6107,7 @@
     "3–6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -5994,6 +6155,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -6048,6 +6210,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -6113,6 +6276,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -6164,6 +6328,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -6230,6 +6395,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -6288,6 +6454,7 @@
     "Pune"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -6343,6 +6510,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -6392,6 +6560,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -6442,6 +6611,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -6489,6 +6659,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -6543,6 +6714,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -6597,6 +6769,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -6648,6 +6821,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -6699,6 +6873,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -6738,6 +6913,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -6788,6 +6964,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -6844,6 +7021,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -6896,6 +7074,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -6955,6 +7134,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -7006,6 +7186,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -7054,6 +7235,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -7105,6 +7287,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -7149,6 +7332,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -7206,6 +7390,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -7252,6 +7437,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -7308,6 +7494,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -7360,6 +7547,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -7413,6 +7601,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -7460,6 +7649,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -7517,6 +7707,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -7572,6 +7763,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -7631,6 +7823,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -7684,6 +7877,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -7736,6 +7930,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -7790,6 +7985,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -7840,6 +8036,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -7904,6 +8101,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -7957,6 +8155,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -8007,6 +8206,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -8058,6 +8258,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -8123,6 +8324,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -8172,6 +8374,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -8213,6 +8416,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -8262,6 +8466,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -8321,6 +8526,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -8367,6 +8573,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -8416,6 +8623,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -8478,6 +8686,7 @@
     "Mumbai Metropolitan Region"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -8538,6 +8747,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -8587,6 +8797,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -8640,6 +8851,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -8696,6 +8908,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -8747,6 +8960,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -8795,6 +9009,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -8844,6 +9059,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -8901,6 +9117,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -8956,6 +9173,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -9007,6 +9225,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -9062,6 +9281,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9115,6 +9335,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9168,6 +9389,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -9227,6 +9449,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -9270,6 +9493,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -9322,6 +9546,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9375,6 +9600,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9431,6 +9657,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -9481,6 +9708,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9533,6 +9761,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -9601,6 +9830,7 @@
     "Greater Bengaluru Area"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -9652,6 +9882,7 @@
     "26 weeks"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -9704,6 +9935,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -9751,6 +9983,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -9799,6 +10032,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -9852,6 +10086,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -9908,6 +10143,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -9962,6 +10198,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -10023,6 +10260,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -10071,6 +10309,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -10127,6 +10366,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -10174,6 +10414,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -10225,6 +10466,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -10284,6 +10526,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -10337,6 +10580,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -10388,6 +10632,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -10443,6 +10688,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -10495,6 +10741,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -10543,6 +10790,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -10596,6 +10844,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -10651,6 +10900,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -10704,6 +10954,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -10761,6 +11012,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -10813,6 +11065,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -10872,6 +11125,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -10931,6 +11185,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -10984,6 +11239,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11033,6 +11289,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -11085,6 +11342,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -11128,6 +11386,7 @@
     "Bengaluru East"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -11181,6 +11440,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -11239,6 +11499,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11296,6 +11557,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -11349,6 +11611,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -11403,6 +11666,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -11461,6 +11725,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11509,6 +11774,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11560,6 +11826,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11618,6 +11885,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -11670,6 +11938,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -11718,6 +11987,7 @@
     "Mumbai"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -11771,6 +12041,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -11823,6 +12094,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -11878,6 +12150,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -11926,6 +12199,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -11988,6 +12262,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -12038,6 +12313,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -12090,6 +12366,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -12133,6 +12410,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -12179,6 +12457,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -12223,6 +12502,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -12274,6 +12554,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -12338,6 +12619,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -12389,6 +12671,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -12446,6 +12729,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -12489,6 +12773,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -12542,6 +12827,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -12589,6 +12875,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -12648,6 +12935,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -12704,6 +12992,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -12767,6 +13056,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -12826,6 +13116,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -12888,6 +13179,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -12936,6 +13228,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -12997,6 +13290,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -13044,6 +13338,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -13099,6 +13394,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -13156,6 +13452,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -13210,6 +13507,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -13267,6 +13565,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -13321,6 +13620,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -13368,6 +13668,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -13416,6 +13717,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -13476,6 +13778,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -13532,6 +13835,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -13583,6 +13887,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -13638,6 +13943,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -13689,6 +13995,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -13739,6 +14046,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -13798,6 +14106,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -13840,6 +14149,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -13894,6 +14204,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -13954,6 +14265,7 @@
     "20 weeks"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -14000,6 +14312,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -14051,6 +14364,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14105,6 +14419,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14154,6 +14469,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -14210,6 +14526,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -14258,6 +14575,7 @@
     "Bengaluru East"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -14309,6 +14627,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -14364,6 +14683,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14412,6 +14732,7 @@
     "Chennai"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -14461,6 +14782,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14517,6 +14839,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14579,6 +14902,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14628,6 +14952,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14686,6 +15011,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14741,6 +15067,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -14800,6 +15127,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14851,6 +15179,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14903,6 +15232,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -14954,6 +15284,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15006,6 +15337,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15057,6 +15389,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15109,6 +15442,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15161,6 +15495,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15213,6 +15548,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15263,6 +15599,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15315,6 +15652,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -15368,6 +15706,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15419,6 +15758,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -15476,6 +15816,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -15520,6 +15861,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -15571,6 +15913,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -15622,6 +15965,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -15674,6 +16018,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -15725,6 +16070,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -15779,6 +16125,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -15834,6 +16181,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -15886,6 +16234,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -15944,6 +16293,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -16002,6 +16352,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -16054,6 +16405,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -16109,6 +16461,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -16168,6 +16521,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -16228,6 +16582,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -16277,6 +16632,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -16333,6 +16689,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -16383,6 +16740,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -16441,6 +16799,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -16498,6 +16857,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -16555,6 +16915,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -16615,6 +16976,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -16658,6 +17020,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -16705,6 +17068,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -16762,6 +17126,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -16815,6 +17180,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -16853,6 +17219,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -16902,6 +17269,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -16957,6 +17325,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -17015,6 +17384,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -17066,6 +17436,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -17119,6 +17490,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -17174,6 +17546,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -17227,6 +17600,7 @@
     "Hyderabad"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -17277,6 +17651,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -17330,6 +17705,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -17395,6 +17771,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -17450,6 +17827,7 @@
     "Mumbai"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -17508,6 +17886,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -17567,6 +17946,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -17625,6 +18005,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -17677,6 +18058,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -17728,6 +18110,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -17778,6 +18161,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -17826,6 +18210,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -17874,6 +18259,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -17923,6 +18309,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -17972,6 +18359,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -18036,6 +18424,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -18103,6 +18492,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -18161,6 +18551,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -18211,6 +18602,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -18263,6 +18655,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -18326,6 +18719,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -18388,6 +18782,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18448,6 +18843,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18510,6 +18906,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18570,6 +18967,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18634,6 +19032,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -18687,6 +19086,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -18741,6 +19141,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18797,6 +19198,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -18844,6 +19246,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -18900,6 +19303,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -18959,6 +19363,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -19009,6 +19414,7 @@
     "Mumbai"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -19061,6 +19467,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -19112,6 +19519,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -19163,6 +19571,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -19220,6 +19629,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -19265,6 +19675,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -19312,6 +19723,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -19359,6 +19771,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -19405,6 +19818,7 @@
     "Wester Region - 9th Floor"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -19453,7 +19867,7 @@
    "postedText": null,
    "postedAt": 1790553600000,
    "firstSeenAt": 1790583355173,
-   "lastSeenAt": 1790738679654,
+   "lastSeenAt": 1790805431088,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Engineering-Intern---Transport-Analytics_R-100656",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Engineering-Intern---Transport-Analytics_R-100656",
    "description": null,
@@ -19462,6 +19876,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -19504,7 +19919,7 @@
    "postedText": null,
    "postedAt": 1790553600000,
    "firstSeenAt": 1790583351666,
-   "lastSeenAt": 1790738679653,
+   "lastSeenAt": 1790805431087,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Software-Engineer-Intern_R-100658",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Software-Engineer-Intern_R-100658",
    "description": null,
@@ -19513,6 +19928,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -19564,7 +19980,7 @@
    "postedText": null,
    "postedAt": 1790553600000,
    "firstSeenAt": 1790583350624,
-   "lastSeenAt": 1790738679649,
+   "lastSeenAt": 1790805431085,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Software-Engineer-Intern---YMS_R-100657",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Software-Engineer-Intern---YMS_R-100657",
    "description": null,
@@ -19573,6 +19989,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -19626,6 +20043,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -19683,6 +20101,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -19727,6 +20146,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -19775,6 +20195,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -19823,6 +20244,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -19871,6 +20293,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -19929,6 +20352,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -19993,6 +20417,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -20041,6 +20466,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -20097,6 +20523,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -20148,6 +20575,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -20204,6 +20632,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -20256,6 +20685,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -20313,6 +20743,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -20369,6 +20800,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -20422,6 +20854,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20471,6 +20904,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -20526,6 +20960,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -20586,6 +21021,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20635,6 +21071,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20679,6 +21116,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20723,6 +21161,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20767,6 +21206,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20811,6 +21251,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20859,6 +21300,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -20908,7 +21350,7 @@
    "postedText": null,
    "postedAt": 1790488958133,
    "firstSeenAt": 1790490316215,
-   "lastSeenAt": 1790803577315,
+   "lastSeenAt": 1790805393666,
    "url": "https://vecmocon.keka.com/careers/jobdetails/163165",
    "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/163165",
    "description": null,
@@ -20917,6 +21359,7 @@
     "Noida"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -20963,6 +21406,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -21009,6 +21453,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -21055,6 +21500,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -21105,6 +21551,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -21159,6 +21606,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -21216,6 +21664,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -21272,6 +21721,7 @@
     "Hybrid"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -21322,6 +21772,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -21376,6 +21827,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -21429,6 +21881,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -21471,6 +21924,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -21529,6 +21983,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -21586,6 +22041,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -21638,6 +22094,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -21695,6 +22152,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -21745,6 +22203,7 @@
     "2-3 weeks"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -21798,6 +22257,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -21858,6 +22318,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -21911,6 +22372,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -21963,6 +22425,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -22012,6 +22475,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -22063,6 +22527,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -22111,6 +22576,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -22163,6 +22629,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -22215,6 +22682,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -22272,6 +22740,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -22326,6 +22795,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -22383,6 +22853,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -22442,6 +22913,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -22499,6 +22971,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -22549,6 +23022,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -22606,6 +23080,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -22667,6 +23142,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -22713,6 +23189,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -22762,6 +23239,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -22811,6 +23289,7 @@
     "Noida"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -22855,6 +23334,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -22906,6 +23386,7 @@
     "Bengaluru East"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -22959,6 +23440,7 @@
     "18 months"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -23008,6 +23490,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -23062,6 +23545,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -23118,6 +23602,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -23174,6 +23659,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "game_graphics",
    "region": "IN"
   },
   {
@@ -23239,6 +23725,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -23286,6 +23773,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -23334,6 +23822,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -23385,6 +23874,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -23437,6 +23927,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -23490,6 +23981,7 @@
     "3-6 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -23546,6 +24038,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -23597,6 +24090,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -23645,6 +24139,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -23695,6 +24190,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -23745,6 +24241,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -23793,6 +24290,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -23838,6 +24336,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -23899,6 +24398,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -23954,6 +24454,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -24006,6 +24507,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -24062,6 +24564,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -24118,6 +24621,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -24166,6 +24670,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -24213,6 +24718,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -24269,6 +24775,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -24323,6 +24830,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -24378,6 +24886,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -24434,6 +24943,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -24486,6 +24996,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -24544,6 +25055,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -24596,6 +25108,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -24651,6 +25164,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -24701,6 +25215,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -24752,6 +25267,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -24799,6 +25315,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -24846,6 +25363,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -24893,6 +25411,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -24940,6 +25459,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -24993,6 +25513,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -25045,6 +25566,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -25093,6 +25615,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -25142,6 +25665,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -25195,6 +25719,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -25251,6 +25776,7 @@
     "Hybrid"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -25310,6 +25836,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -25372,6 +25899,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -25422,6 +25950,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -25469,6 +25998,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -25519,6 +26049,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -25563,6 +26094,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -25615,6 +26147,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -25674,6 +26207,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -25721,6 +26255,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -25778,6 +26313,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -25835,6 +26371,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -25895,6 +26432,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -25966,6 +26504,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -26020,6 +26559,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26077,6 +26617,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -26132,6 +26673,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -26193,6 +26735,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -26240,6 +26783,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -26296,6 +26840,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26352,6 +26897,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26404,6 +26950,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -26458,6 +27005,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -26507,6 +27055,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -26557,6 +27106,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26611,6 +27161,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -26669,6 +27220,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26725,6 +27277,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -26776,6 +27329,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -26831,6 +27385,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26887,6 +27442,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -26934,6 +27490,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -26985,6 +27542,7 @@
     "26 weeks"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -27029,6 +27587,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -27078,6 +27637,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -27125,6 +27685,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -27180,6 +27741,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -27235,6 +27797,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -27289,6 +27852,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -27340,6 +27904,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -27385,6 +27950,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -27433,6 +27999,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -27482,6 +28049,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -27543,6 +28111,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -27612,6 +28181,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -27673,6 +28243,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -27721,6 +28292,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -27780,6 +28352,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -27830,6 +28403,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -27885,6 +28459,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -27939,6 +28514,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -27994,6 +28570,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -28054,6 +28631,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -28111,6 +28689,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -28168,6 +28747,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -28210,6 +28790,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -28269,6 +28850,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -28329,6 +28911,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -28382,6 +28965,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -28436,6 +29020,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -28486,6 +29071,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -28539,6 +29125,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -28587,6 +29174,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -28642,6 +29230,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -28702,6 +29291,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -28750,6 +29340,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "game_graphics",
    "region": "IN"
   },
   {
@@ -28804,6 +29395,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -28856,6 +29448,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -28909,6 +29502,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -28964,6 +29558,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -29019,6 +29614,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -29071,6 +29667,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -29127,6 +29724,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -29179,6 +29777,7 @@
     "8 weeks"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -29230,6 +29829,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -29282,6 +29882,7 @@
     "8 weeks"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -29334,6 +29935,7 @@
     "8 weeks"
    ],
    "category": "misc",
+   "family": "ai_training",
    "region": "IN"
   },
   {
@@ -29389,6 +29991,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -29454,6 +30057,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -29519,6 +30123,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -29577,6 +30182,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -29632,6 +30238,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -29683,6 +30290,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -29736,6 +30344,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -29797,6 +30406,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -29853,6 +30463,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -29913,6 +30524,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -29968,6 +30580,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -30015,6 +30628,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30061,6 +30675,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30120,6 +30735,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30179,6 +30795,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30233,6 +30850,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30284,6 +30902,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -30333,6 +30952,7 @@
     "6 months"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -30383,6 +31003,7 @@
     "India - Haryana - Gurgaon"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30430,6 +31051,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -30478,6 +31100,7 @@
     "Hyderabad - Phoenix Aquila"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -30530,6 +31153,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -30578,6 +31202,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -30641,6 +31266,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -30689,6 +31315,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -30734,6 +31361,7 @@
     "Remote"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -30792,6 +31420,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -30839,6 +31468,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -30892,6 +31522,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -30945,6 +31576,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -30989,6 +31621,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -31048,6 +31681,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -31111,6 +31745,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -31166,6 +31801,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -31214,6 +31850,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -31261,6 +31898,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -31307,6 +31945,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -31350,6 +31989,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -31409,6 +32049,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -31468,6 +32109,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -31525,6 +32167,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -31577,6 +32220,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -31623,6 +32267,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -31668,6 +32313,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -31716,6 +32362,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -31768,6 +32415,7 @@
     "26 weeks"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -31831,6 +32479,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -31885,6 +32534,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -31948,6 +32598,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -31995,6 +32646,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -32044,6 +32696,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -32092,6 +32745,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -32150,6 +32804,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -32208,6 +32863,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -32266,6 +32922,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -32319,6 +32976,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -32362,6 +33020,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -32410,6 +33069,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -32463,6 +33123,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -32511,6 +33172,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -32561,6 +33223,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "game_graphics",
    "region": "IN"
   },
   {
@@ -32613,6 +33276,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -32655,7 +33319,7 @@
    "postedText": null,
    "postedAt": 1790249783303,
    "firstSeenAt": 1790249962661,
-   "lastSeenAt": 1790803577317,
+   "lastSeenAt": 1790805393669,
    "url": "https://vecmocon.keka.com/careers/jobdetails/162869",
    "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/162869",
    "description": null,
@@ -32664,6 +33328,7 @@
     "Noida"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -32720,6 +33385,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -32776,6 +33442,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -32838,6 +33505,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -32885,6 +33553,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -32933,6 +33602,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -32981,6 +33651,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33025,6 +33696,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -33083,6 +33755,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -33141,6 +33814,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -33191,6 +33865,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33241,6 +33916,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33306,6 +33982,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -33354,6 +34031,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "systems",
    "region": "IN"
   },
   {
@@ -33403,6 +34081,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -33468,6 +34147,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33522,6 +34202,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33574,6 +34255,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -33633,6 +34315,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -33687,6 +34370,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -33725,7 +34409,7 @@
    "postedText": null,
    "postedAt": 1790228220000,
    "firstSeenAt": 1790233697140,
-   "lastSeenAt": 1790803554730,
+   "lastSeenAt": 1790805380477,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
    "description": null,
@@ -33735,6 +34419,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -33781,6 +34466,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ux",
    "region": "IN"
   },
   {
@@ -33824,6 +34510,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33867,6 +34554,7 @@
     "Hyderabad"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -33911,6 +34599,7 @@
     "Bengaluru"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -33974,6 +34663,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -34025,6 +34715,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -34075,6 +34766,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -34125,6 +34817,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -34187,6 +34880,7 @@
     "Hybrid"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -34241,6 +34935,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -34300,6 +34995,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -34352,6 +35048,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -34413,6 +35110,7 @@
     "Hybrid"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -34460,6 +35158,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -34513,6 +35212,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -34558,6 +35258,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -34607,6 +35308,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -34656,6 +35358,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -34704,6 +35407,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -34752,6 +35456,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -34799,6 +35504,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -34846,6 +35552,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -34909,6 +35616,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -34963,6 +35671,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -35018,6 +35727,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -35083,6 +35793,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35139,6 +35850,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35195,6 +35907,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35244,6 +35957,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "game_graphics",
    "region": "IN"
   },
   {
@@ -35291,6 +36005,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -35336,6 +36051,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -35392,6 +36108,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -35430,6 +36147,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35487,6 +36205,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -35537,6 +36256,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35589,6 +36309,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -35636,6 +36357,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -35688,6 +36410,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -35741,6 +36464,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -35799,6 +36523,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -35852,6 +36577,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -35903,6 +36629,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -35953,6 +36680,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -36008,6 +36736,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -36059,6 +36788,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -36111,6 +36841,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36167,6 +36898,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -36219,6 +36951,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -36271,6 +37004,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -36321,6 +37055,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -36366,6 +37101,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36412,6 +37148,7 @@
     "36 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -36475,6 +37212,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36527,6 +37265,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36574,6 +37313,7 @@
     "9 to 11 weeks"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -36636,6 +37376,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36689,6 +37430,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -36735,6 +37477,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -36802,6 +37545,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36865,6 +37609,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36932,6 +37677,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -36975,6 +37721,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37025,6 +37772,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -37067,6 +37815,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37119,6 +37868,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37167,6 +37917,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37210,6 +37961,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -37266,6 +38018,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -37333,6 +38086,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -37398,6 +38152,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -37444,6 +38199,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37497,6 +38253,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -37564,6 +38321,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -37624,6 +38382,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -37669,6 +38428,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -37720,6 +38480,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37777,6 +38538,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -37840,6 +38602,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -37887,6 +38650,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -37942,6 +38706,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -37989,6 +38754,7 @@
     "4-6 months"
    ],
    "category": "misc",
+   "family": "ux",
    "region": "IN"
   },
   {
@@ -38048,6 +38814,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -38101,6 +38868,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -38143,6 +38911,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -38186,6 +38955,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -38249,6 +39019,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -38298,6 +39069,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -38351,6 +39123,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -38403,6 +39176,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -38451,6 +39225,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -38501,6 +39276,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -38555,6 +39331,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -38603,6 +39380,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -38651,6 +39429,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -38701,6 +39480,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -38758,6 +39538,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -38806,6 +39587,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -38865,6 +39647,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -38916,6 +39699,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -38971,6 +39755,7 @@
     "Pune - Tower 6"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -39010,7 +39795,7 @@
    "postedText": null,
    "postedAt": 1790035200000,
    "firstSeenAt": 1790058709595,
-   "lastSeenAt": 1790803536240,
+   "lastSeenAt": 1790805343379,
    "url": "https://apply.workable.com/j/E90732EE8A",
    "applyUrl": "https://apply.workable.com/j/E90732EE8A",
    "description": null,
@@ -39019,6 +39804,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -39075,6 +39861,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -39129,6 +39916,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -39177,6 +39965,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -39221,6 +40010,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -39278,6 +40068,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -39334,6 +40125,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -39395,6 +40187,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -39442,6 +40235,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "robotics",
    "region": "IN"
   },
   {
@@ -39489,6 +40283,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -39535,6 +40330,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -39586,6 +40382,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -39646,6 +40443,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -39692,6 +40490,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -39756,6 +40555,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -39811,6 +40611,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -39865,6 +40666,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -39914,6 +40716,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -39964,6 +40767,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -40014,6 +40818,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -40079,6 +40884,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40129,6 +40935,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -40181,6 +40988,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -40244,6 +41052,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -40306,6 +41115,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40365,6 +41175,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -40414,6 +41225,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -40479,6 +41291,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -40533,6 +41346,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40588,6 +41402,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -40650,6 +41465,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40697,7 +41513,7 @@
    "postedText": null,
    "postedAt": 1789948800000,
    "firstSeenAt": 1790040772898,
-   "lastSeenAt": 1790738679655,
+   "lastSeenAt": 1790805431089,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/CloudOps-Intern_R-100650",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/CloudOps-Intern_R-100650",
    "description": null,
@@ -40706,6 +41522,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -40760,6 +41577,7 @@
     "Mumbai"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40806,6 +41624,7 @@
     "Noida"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -40847,6 +41666,7 @@
     "Mahad"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -40909,6 +41729,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -40958,6 +41779,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -41021,6 +41843,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -41070,6 +41893,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "other",
    "region": "IN"
   },
   {
@@ -41126,6 +41950,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -41180,6 +42005,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -41231,6 +42057,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -41290,6 +42117,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -41338,6 +42166,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -41387,6 +42216,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -41437,6 +42267,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -41493,6 +42324,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -41538,6 +42370,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -41594,6 +42427,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -41639,6 +42473,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -41693,6 +42528,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -41743,6 +42579,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -41800,6 +42637,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -41850,6 +42688,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -41900,6 +42739,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -41952,6 +42792,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -42003,6 +42844,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -42053,6 +42895,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -42111,6 +42954,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "frontend",
    "region": "IN"
   },
   {
@@ -42159,6 +43003,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -42207,6 +43052,7 @@
     "26 weeks"
    ],
    "category": "misc",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -42256,6 +43102,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -42305,6 +43152,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -42352,6 +43200,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -42400,6 +43249,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -42466,6 +43316,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -42520,6 +43371,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -42579,6 +43431,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -42628,6 +43481,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -42681,6 +43535,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -42731,6 +43586,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -42780,6 +43636,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -42844,6 +43701,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -42895,6 +43753,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -42946,6 +43805,7 @@
     "6 months"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -42984,6 +43844,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -43043,6 +43904,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -43095,6 +43957,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -43154,6 +44017,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -43209,6 +44073,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -43261,6 +44126,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -43314,6 +44180,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -43371,6 +44238,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -43436,6 +44304,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -43475,6 +44344,7 @@
     "ORA_HYBRID"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -43514,7 +44384,7 @@
    "postedText": null,
    "postedAt": 1789669800000,
    "firstSeenAt": 1789748332331,
-   "lastSeenAt": 1790803528789,
+   "lastSeenAt": 1790805329550,
    "url": "https://www.amazon.jobs/en/jobs/10553343/sde-1-expansions-tech-and-product",
    "applyUrl": "https://www.amazon.jobs/en/jobs/10553343/sde-1-expansions-tech-and-product",
    "description": null,
@@ -43523,65 +44393,7 @@
     "Hyderabad"
    ],
    "category": "software",
-   "region": "IN"
-  },
-  {
-   "id": "4467568511",
-   "title": "AI Research Intern",
-   "slugTitle": "AI Research Internship",
-   "company": "Lexsi Labs",
-   "matchedWatchlist": "Lexsi Labs",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/lexsi-labs.jpg",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "Remote",
-   "stipend": null,
-   "duration": "6 months",
-   "applicants": "21 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "ci/cd",
-    "git",
-    "machine learning",
-    "deep learning",
-    "pytorch",
-    "llm",
-    "agile"
-   ],
-   "summary": "This research internship involves working on advanced AI projects focused on alignment, interpretability, and foundational models. You'll contribute to open-source tooling, explore new methodologies, and collaborate with a team of researchers. Ideal for students passionate about pushing the boundaries of AI safety and transparency.",
-   "bullets": [
-    "Develop open-source tools for AI alignment, explainability, and model robustness",
-    "Work on cutting-edge research in tabular models, uncertainty estimation, and reinforcement learning",
-    "Collaborate with research and engineering teams on real-world industry challenges"
-   ],
-   "roleLabel": "AI Research",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "pytorch",
-    "transformer",
-    "git",
-    "xai"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "50 minutes ago",
-   "postedAt": 1789664495342,
-   "firstSeenAt": 1789667495350,
-   "lastSeenAt": 1789667495350,
-   "url": "https://www.linkedin.com/jobs/view/4467568511/",
-   "applyUrl": "https://easyapply.jobs/r/QFwV3gQ27fDiOQ1xFSCt",
-   "description": null,
-   "roleFingerprint": "8dfc5603d7",
-   "cardFacts": [
-    "Mumbai Metropolitan Region",
-    "Remote",
-    "6 months"
-   ],
-   "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -43640,6 +44452,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -43694,6 +44507,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -43753,6 +44567,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -43800,6 +44615,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -43847,6 +44663,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -43893,6 +44710,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -43949,6 +44767,7 @@
     "Remote"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -44000,6 +44819,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44048,6 +44868,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -44097,6 +44918,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -44148,6 +44970,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "mobile",
    "region": "IN"
   },
   {
@@ -44201,6 +45024,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -44253,6 +45077,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -44302,6 +45127,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -44361,6 +45187,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -44416,6 +45243,7 @@
     "India"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -44466,6 +45294,7 @@
     "India - Haryana - Gurgaon"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44523,6 +45352,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44574,6 +45404,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44625,6 +45456,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -44674,6 +45506,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44724,6 +45557,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -44792,6 +45626,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -44856,6 +45691,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -44907,6 +45743,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -44965,6 +45802,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -45000,7 +45838,7 @@
    "postedText": null,
    "postedAt": 1789446171000,
    "firstSeenAt": 1789486731397,
-   "lastSeenAt": 1790803544289,
+   "lastSeenAt": 1790805358072,
    "url": "https://job-boards.greenhouse.io/instawork/jobs/4712960006",
    "applyUrl": "https://job-boards.greenhouse.io/instawork/jobs/4712960006",
    "description": null,
@@ -45009,6 +45847,7 @@
     "Bengaluru"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -45056,6 +45895,7 @@
     "1 month"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -45110,6 +45950,7 @@
     "India-Pune"
    ],
    "category": "misc",
+   "family": "it_support",
    "region": "IN"
   },
   {
@@ -45157,6 +45998,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -45209,6 +46051,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -45256,7 +46099,7 @@
    "postedText": null,
    "postedAt": 1789373285000,
    "firstSeenAt": 1789380549425,
-   "lastSeenAt": 1790803554728,
+   "lastSeenAt": 1790805380477,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556997800",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556997800",
    "description": null,
@@ -45266,6 +46109,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -45316,6 +46160,7 @@
     "Bangalore"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -45359,7 +46204,7 @@
    "postedText": null,
    "postedAt": 1789171200000,
    "firstSeenAt": 1789294182624,
-   "lastSeenAt": 1790738679661,
+   "lastSeenAt": 1790805431094,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Quality-Assurance-Engineer---Intern_R-100637",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Quality-Assurance-Engineer---Intern_R-100637",
    "description": null,
@@ -45368,6 +46213,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -45417,7 +46263,7 @@
    "postedText": null,
    "postedAt": 1789171200000,
    "firstSeenAt": 1789294179503,
-   "lastSeenAt": 1790738679657,
+   "lastSeenAt": 1790805431093,
    "url": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Cloud-Ops-Engineer---Intern_R-100647",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/en-US/kaleris_careers/job/Chennai/Associate-Cloud-Ops-Engineer---Intern_R-100647",
    "description": null,
@@ -45426,6 +46272,7 @@
     "Chennai"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -45481,6 +46328,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -45525,6 +46373,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -45573,6 +46422,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -45622,6 +46472,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -45670,6 +46521,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "data_eng",
    "region": "IN"
   },
   {
@@ -45728,6 +46580,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -45782,6 +46635,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -45824,6 +46678,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -45878,6 +46733,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -45931,6 +46787,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -45976,6 +46833,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -46014,6 +46872,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46071,6 +46930,7 @@
     "12 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -46124,6 +46984,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -46182,6 +47043,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46240,6 +47102,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46293,6 +47156,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46330,6 +47194,7 @@
     "Chennai"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -46380,6 +47245,7 @@
     "Kochi"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -46419,6 +47285,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -46474,6 +47341,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -46535,6 +47403,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -46598,6 +47467,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46647,6 +47517,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -46696,6 +47567,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -46756,6 +47628,7 @@
     "6 months"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -46808,6 +47681,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -46857,6 +47731,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -46919,6 +47794,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -46971,6 +47847,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -47023,6 +47900,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -47069,7 +47947,7 @@
    "postedText": null,
    "postedAt": 1788942345000,
    "firstSeenAt": 1789748339867,
-   "lastSeenAt": 1790803530138,
+   "lastSeenAt": 1790805332272,
    "url": "https://job-boards.greenhouse.io/celonis/jobs/7791267003?gh_jid=7791267003",
    "applyUrl": "https://job-boards.greenhouse.io/celonis/jobs/7791267003?gh_jid=7791267003",
    "description": null,
@@ -47078,6 +47956,7 @@
     "Bangalore"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47132,6 +48011,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47193,6 +48073,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -47236,6 +48117,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -47281,6 +48163,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47319,7 +48202,7 @@
    "postedText": null,
    "postedAt": 1788890401000,
    "firstSeenAt": 1789748393353,
-   "lastSeenAt": 1790803579746,
+   "lastSeenAt": 1790805396956,
    "url": "https://www.zoominfo.com/careers?gh_jid=8759684002",
    "applyUrl": "https://www.zoominfo.com/careers?gh_jid=8759684002",
    "description": null,
@@ -47328,6 +48211,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47381,6 +48265,7 @@
     "Bengaluru"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -47434,6 +48319,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -47492,6 +48378,7 @@
     "10-12 weeks"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47550,6 +48437,7 @@
     "26 weeks"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -47600,6 +48488,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -47657,6 +48546,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -47715,6 +48605,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -47765,6 +48656,7 @@
     "6 months"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -47819,6 +48711,7 @@
     "6 months"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -47866,6 +48759,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -47915,6 +48809,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -47964,6 +48859,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -48017,6 +48913,7 @@
     "IN-Maharashtra-Pune-7th Floor"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -48072,6 +48969,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -48118,6 +49016,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -48177,6 +49076,7 @@
     "3-6 months"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -48225,6 +49125,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -48276,6 +49177,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ux",
    "region": "IN"
   },
   {
@@ -48337,6 +49239,7 @@
     "Summer 2027"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -48398,6 +49301,7 @@
     "Summer 2027"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -48458,6 +49362,7 @@
     "12 weeks"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -48519,6 +49424,7 @@
     "Summer 2027"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -48579,6 +49485,7 @@
     "12 weeks"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -48622,7 +49529,7 @@
    "postedText": null,
    "postedAt": 1788775856000,
    "firstSeenAt": 1788776934222,
-   "lastSeenAt": 1790803575720,
+   "lastSeenAt": 1790805391497,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8184771",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8184771",
    "description": null,
@@ -48631,6 +49538,7 @@
     "Gift City"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -48674,6 +49582,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -48720,6 +49629,7 @@
     "Pune"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -48779,6 +49689,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -48838,6 +49749,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -48895,6 +49807,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -48938,7 +49851,7 @@
    "postedText": null,
    "postedAt": 1788698958000,
    "firstSeenAt": 1788699526701,
-   "lastSeenAt": 1790803565089,
+   "lastSeenAt": 1790805376951,
    "url": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
    "applyUrl": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
    "description": null,
@@ -48947,6 +49860,7 @@
     "Pune"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -48995,6 +49909,7 @@
     "Hybrid"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49048,6 +49963,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49108,6 +50024,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "backend",
    "region": "IN"
   },
   {
@@ -49163,6 +50080,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -49217,6 +50135,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "embedded",
    "region": "IN"
   },
   {
@@ -49270,6 +50189,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -49327,6 +50247,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -49377,6 +50298,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -49430,6 +50352,7 @@
     "6 months"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -49478,6 +50401,7 @@
     "Chennai"
    ],
    "category": "misc",
+   "family": "robotics",
    "region": "IN"
   },
   {
@@ -49524,6 +50448,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -49568,6 +50493,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -49622,6 +50548,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -49661,6 +50588,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49713,6 +50641,7 @@
     "6-9 months"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49763,6 +50692,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -49816,6 +50746,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49865,6 +50796,7 @@
     "10-12 weeks"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -49915,6 +50847,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -49961,6 +50894,7 @@
     "Hybrid"
    ],
    "category": "misc",
+   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -50014,6 +50948,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -50063,6 +50998,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -50107,6 +51043,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -50164,6 +51101,7 @@
     "12 months"
    ],
    "category": "misc",
+   "family": "product",
    "region": "IN"
   },
   {
@@ -50210,7 +51148,7 @@
    "postedText": null,
    "postedAt": 1788338321000,
    "firstSeenAt": 1788339822162,
-   "lastSeenAt": 1790803522467,
+   "lastSeenAt": 1790805322106,
    "url": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "applyUrl": "https://job-boards.greenhouse.io/alphagrepsecurities/jobs/8769725002",
    "description": null,
@@ -50219,6 +51157,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -50276,6 +51215,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "enterprise",
    "region": "IN"
   },
   {
@@ -50325,6 +51265,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -50379,6 +51320,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -50435,6 +51377,7 @@
     "9 months"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -50477,7 +51420,7 @@
    "postedText": null,
    "postedAt": 1788268250000,
    "firstSeenAt": 1789748352273,
-   "lastSeenAt": 1790803540135,
+   "lastSeenAt": 1790805351941,
    "url": "https://boards.greenhouse.io/gravitonresearchcapital/jobs/8768396002?gh_jid=8768396002",
    "applyUrl": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8768396002",
    "description": null,
@@ -50486,6 +51429,7 @@
     "Gurugram"
    ],
    "category": "misc",
+   "family": "research",
    "region": "IN"
   },
   {
@@ -50529,7 +51473,7 @@
    "postedText": null,
    "postedAt": 1788268223000,
    "firstSeenAt": 1789748352280,
-   "lastSeenAt": 1790803540139,
+   "lastSeenAt": 1790805351944,
    "url": "https://boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
    "applyUrl": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002",
    "description": null,
@@ -50538,6 +51482,7 @@
     "Gurugram"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -50592,6 +51537,7 @@
     "On-site"
    ],
    "category": "hardware",
+   "family": "hardware",
    "region": "IN"
   },
   {
@@ -50643,6 +51589,7 @@
     "Remote"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -50691,6 +51638,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "qa",
    "region": "IN"
   },
   {
@@ -50753,6 +51701,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -50813,6 +51762,7 @@
     "Mumbai"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -50868,6 +51818,7 @@
     "6 months"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -50906,7 +51857,7 @@
    "postedText": null,
    "postedAt": 1787910803000,
    "firstSeenAt": 1788742998639,
-   "lastSeenAt": 1790803554729,
+   "lastSeenAt": 1790805380477,
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556911730",
    "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556911730",
    "description": null,
@@ -50916,6 +51867,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -50955,7 +51907,7 @@
    "postedText": null,
    "postedAt": 1787806869000,
    "firstSeenAt": 1789486731389,
-   "lastSeenAt": 1790803544283,
+   "lastSeenAt": 1790805358068,
    "url": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
    "applyUrl": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
    "description": null,
@@ -50964,6 +51916,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -51014,7 +51967,7 @@
    "postedText": null,
    "postedAt": 1787230662000,
    "firstSeenAt": 1787231465482,
-   "lastSeenAt": 1790803575722,
+   "lastSeenAt": 1790805391498,
    "url": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "applyUrl": "https://www.tower-research.com/open-positions/?gh_jid=8143756",
    "description": null,
@@ -51023,6 +51976,7 @@
     "gurgaon"
    ],
    "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -51069,6 +52023,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51118,7 +52073,7 @@
    "postedText": null,
    "postedAt": 1786949726423,
    "firstSeenAt": 1788737813135,
-   "lastSeenAt": 1790803568264,
+   "lastSeenAt": 1790805378907,
    "url": "https://signzy.keka.com/careers/jobdetails/133832",
    "applyUrl": "https://signzy.keka.com/careers/jobdetails/133832",
    "description": null,
@@ -51128,6 +52083,7 @@
     "3–6 months"
    ],
    "category": "software",
+   "family": "devops",
    "region": "IN"
   },
   {
@@ -51170,7 +52126,7 @@
    "postedText": null,
    "postedAt": 1786949579110,
    "firstSeenAt": 1789748382323,
-   "lastSeenAt": 1790803568266,
+   "lastSeenAt": 1790805378909,
    "url": "https://signzy.keka.com/careers/jobdetails/131773",
    "applyUrl": "https://signzy.keka.com/careers/jobdetails/131773",
    "description": null,
@@ -51179,6 +52135,7 @@
     "Bangalore"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51230,6 +52187,7 @@
     "BANGALORE"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51274,6 +52232,7 @@
     "India"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51319,7 +52278,7 @@
    "postedText": null,
    "postedAt": 1785135502493,
    "firstSeenAt": 1789748355871,
-   "lastSeenAt": 1790803544689,
+   "lastSeenAt": 1790805356374,
    "url": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
    "applyUrl": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
    "description": null,
@@ -51329,6 +52288,7 @@
     "On-site"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51374,7 +52334,7 @@
    "postedText": null,
    "postedAt": 1784741141000,
    "firstSeenAt": 1785541864449,
-   "lastSeenAt": 1790803574194,
+   "lastSeenAt": 1790805384507,
    "url": "https://stripe.com/jobs/search?gh_jid=8031833",
    "applyUrl": "https://stripe.com/jobs/search?gh_jid=8031833",
    "description": null,
@@ -51383,6 +52343,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "swe",
    "region": "IN"
   },
   {
@@ -51423,7 +52384,7 @@
    "postedText": null,
    "postedAt": 1784036805000,
    "firstSeenAt": 1787508855196,
-   "lastSeenAt": 1790803530466,
+   "lastSeenAt": 1790805333409,
    "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "applyUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
    "description": null,
@@ -51432,6 +52393,7 @@
     "Bengaluru"
    ],
    "category": "software",
+   "family": "security",
    "region": "IN"
   },
   {
@@ -51470,7 +52432,7 @@
    "postedText": null,
    "postedAt": 1783504077452,
    "firstSeenAt": 1787501660414,
-   "lastSeenAt": 1790803544694,
+   "lastSeenAt": 1790805356378,
    "url": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
    "applyUrl": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
    "description": null,
@@ -51480,6 +52442,7 @@
     "On-site"
    ],
    "category": "misc",
+   "family": "ux",
    "region": "IN"
   },
   {
@@ -51514,7 +52477,7 @@
    "postedText": null,
    "postedAt": 1783296000000,
    "firstSeenAt": 1789288764701,
-   "lastSeenAt": 1790803581503,
+   "lastSeenAt": 1790805399499,
    "url": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "applyUrl": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/81650",
    "description": null,
@@ -51523,6 +52486,7 @@
     "Mumbai"
    ],
    "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
@@ -51560,7 +52524,7 @@
    "postedText": null,
    "postedAt": 1782218042000,
    "firstSeenAt": 1785940207500,
-   "lastSeenAt": 1790803539834,
+   "lastSeenAt": 1790805350110,
    "url": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "applyUrl": "https://job-boards.greenhouse.io/glance/jobs/7916115",
    "description": null,
@@ -51569,6 +52533,7 @@
     "Bengaluru"
    ],
    "category": "misc",
+   "family": "ux",
    "region": "IN"
   }
  ]
