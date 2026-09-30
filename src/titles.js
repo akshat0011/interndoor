@@ -92,6 +92,18 @@ const CONNECTORS = new Set(['and', 'of', 'for', 'in', 'the', 'a', 'to', 'with', 
 const INTERN_WORD = /\b(intern|internship|trainee|apprentice|apprenticeship|co-?op)\b/i;
 const ROLE_WORD = /\b(engineer|engineering|developer|development|analyst|analytics|scientist|intern|internship|trainee|specialist|consultant|architect|designer|programmer|tester|administrator|associate|manager|lead|apprentice|researcher|sde|sdet|technician|executive|officer)\b/i;
 export const TITLE_MAX = 60;
+/**
+ * A grade of two or higher: roman II-IV, L2-L4, or 2-4 straight after a role
+ * noun ("Associate 2", "SDE-2"). Dropping it makes a level-2 role read as an
+ * entry-level one, so the clean title must keep it. Level 1 may go.
+ */
+const LEVEL_UP = /\b(II|III|IV)\b|\b(L[2-4])\b|\b(?:engineer|developer|associate|analyst|sde|executive|specialist|consultant)[\s-]*([2-4])\b/i;
+function keepsLevel(clean, raw) {
+  const m = String(raw ?? '').match(LEVEL_UP);
+  if (!m) return true;
+  const token = m[1] ?? m[2] ?? m[3];
+  return new RegExp(`(^|[^A-Za-z0-9])${token}(?=$|[^A-Za-z0-9])`, 'i').test(clean);
+}
 
 /**
  * The model's title, if it is safe to publish, else null.
@@ -117,6 +129,7 @@ export function groundTitle(clean, raw, company = '') {
   }
   if (INTERN_WORD.test(String(raw)) && !INTERN_WORD.test(c)) return null;
   if (ROLE_WORD.test(String(raw)) && !ROLE_WORD.test(c)) return null;
+  if (!keepsLevel(c, raw)) return null;
   if (company && c.toLowerCase() === String(company).trim().toLowerCase()) return null;
   let title = c;
   for (const [w, spelled] of respell) {
@@ -129,9 +142,12 @@ export function groundTitle(clean, raw, company = '') {
 }
 
 /** A word in the title that says the work IS software, whatever the model thinks. */
-const SOFTWARE_WORD = /\b(developer|development|software|sde|sdet|programmer|full[\s-]?stack|back[\s-]?end|front[\s-]?end|etl|data engineer|devops|sre|site reliability|machine learning|ml|ai engineer|cloud engineer|automation|java|python|react|node|\.net|golang|middleware|microservices?|api|database|sql)\b/i;
+// "data analyst" and "data analytics" stay, by his rule ("keep data analyst");
+// cloud platform work is DevOps, which is Software — a UPS "Google Cloud
+// Infrastructure Support Engineer" runs GCP reliability, not a helpdesk.
+const SOFTWARE_WORD = /\b(developer|development|software|sde|sdet|programmer|full[\s-]?stack|back[\s-]?end|front[\s-]?end|etl|data engineer|data analy(?:st|sts|tics)|data scien(?:ce|tist)|devops|sre|site reliability|machine learning|ml|ai engineer|cloud engineer|cloud infrastructure|automation|java|python|react|node|\.net|golang|middleware|microservices?|api|database|sql)\b/i;
 /** A word in the title that names a non-software discipline — the second signal. */
-const MISC_TITLE_WORD = /\b(strategy|strategic|advisory|consult(?:ing|ant)?|support|helpdesk|help desk|service desk|desktop|mba|business|sales|marketing|finance|financial|accounting|hr|human resources|operations|bioinformatics|biology|biotech|clinical|pharma|genomics|chemistry|chemical|mechanical|civil|electrical|manufacturing|scrum|sap|salesforce|servicenow|erp|crm|functional|ux|ui|graphic|recruit(?:er|ing|ment)?)\b/i;
+const MISC_TITLE_WORD = /\b(strategy|strategic|advisory|consult(?:ing|ant)?|support|helpdesk|help desk|service desk|desktop|mba|business|sales|marketing|finance|financial|accounting|hr|human resources|operations|bioinformatics|biology|biotech|clinical|pharma|genomics|chemistry|chemical|mechanical|civil|electrical|manufacturing|scrum|sap|salesforce|servicenow|erp|crm|epm|functional|administrator|managed services|onboarding|forecasting|claims|e-?commerce|ux|ui|graphic|recruit(?:er|ing|ment)?)\b/i;
 
 /**
  * 'misc' when a Software-shelf role should move to Misc, else null.
