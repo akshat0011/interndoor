@@ -23,7 +23,7 @@
 import { mkdtempSync, rmSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { writePages } from '../src/pages.js';
+import { writePages, writeSite, ADVERTISED_SITEMAP_BOARDS } from '../src/pages.js';
 import { regionOf, publishedRegions } from '../src/regions.js';
 import { loadConfig } from '../src/config.js';
 
@@ -255,6 +255,28 @@ const bar = /\.length > 0 \|\|[^;\n]*\.length >= 2/g;
 check('the bar appears once in the whole file', (src.match(bar) ?? []).length, 1);
 check('and that one occurrence is inside hubIndexable',
   (body.slice(0, body.indexOf('\n}')).match(bar) ?? []).length, 1);
+
+/* INDIA ONLY IN robots.txt SINCE 30 SEP 2026 (his call). Search Console's
+   copy of a sitemap was deleted, and robots.txt is the other place Google reads
+   one from — so every other published board must be ABSENT here while its
+   sitemap file is still written. Rendered through writeSite, the function
+   production calls, with every live board, into a scratch directory. */
+console.log('\n== robots.txt advertises only the boards in ADVERTISED_SITEMAP_BOARDS ==');
+{
+  const live = publishedRegions(loadConfig());
+  const dir = mkdtempSync(join(tmpdir(), 'interndoor-robots-'));
+  dirs.push(dir);
+  writeSite(new Map(), dir, new Map(), live);
+  const robots = existsSync(join(dir, 'robots.txt')) ? readFileSync(join(dir, 'robots.txt'), 'utf8') : '';
+  const named = [...robots.matchAll(/^Sitemap: (\S+)$/gm)].map((m) => m[1]);
+  check('the harness rendered more than one board', live.length > 1, true);
+  check('the set is India alone', [...ADVERTISED_SITEMAP_BOARDS], ['IN']);
+  check('robots.txt names exactly India\'s sitemap', named, ['https://interndoor.com/sitemap.xml']);
+  check('and still allows everything', /^User-agent: \*\nAllow: \/$/m.test(robots), true);
+  const others = live.filter((r) => r.slug);
+  check('every other board\'s sitemap file is still written',
+    others.length > 0 && others.every((r) => existsSync(join(dir, r.slug, 'sitemap.xml'))), true);
+}
 
 for (const d of dirs) rmSync(d, { recursive: true, force: true });
 console.log(`\n${pass} passed, ${fail} failed`);
