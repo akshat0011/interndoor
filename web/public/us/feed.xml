@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 30 Sep 2026 01:49:48 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 03:31:51 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineering Intern (Summer 2027) — Collins Aerospace</title>
+    <link>https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4473705222</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4473705222</guid>
+    <pubDate>Wed, 30 Sep 2026 03:31:51 GMT</pubDate>
+    <description>Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027
+• Develop and maintain embedded Linux systems for defense applications
+• Work with C/C++, Bash, Python, and version control tools like Git
+• Collaborate on hardware-software integration and system reliability</description>
+  </item>
+  <item>
+    <title>FPGA Engineering Co-op (Spring/Summer 2027) — Collins Aerospace</title>
+    <link>https://interndoor.com/us/jobs/collins-aerospace-fpga-engineering-co-op-spring-summer-2027-4473704283</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/collins-aerospace-fpga-engineering-co-op-spring-summer-2027-4473704283</guid>
+    <pubDate>Wed, 30 Sep 2026 03:31:46 GMT</pubDate>
+    <description>Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027
+• Design and implement digital FPGA/ASIC architectures using RTL
+• Use tools like Vivado, Quartus, and Modelsim for verification
+• Work with experienced engineers on defense-focused projects</description>
+  </item>
+  <item>
+    <title>Electrical Engineering Intern (Summer 2027) — Collins Aerospace</title>
+    <link>https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-intern-summer-2027-4473700448</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/collins-aerospace-electrical-engineering-intern-summer-2027-4473700448</guid>
+    <pubDate>Wed, 30 Sep 2026 03:31:23 GMT</pubDate>
+    <description>Company: Collins Aerospace · Location: Cedar Rapids, IA · Duration: Summer 2027
+• Support ASIC/FPGA design using RTL and simulation tools
+• Work with cutting-edge technologies in communications and security
+• Collaborate with engineers on complex hardware projects</description>
+  </item>
   <item>
     <title>R&amp;D Software Engineer Intern — Keysight Technologies</title>
     <link>https://interndoor.com/us/jobs/keysight-technologies-r-and-d-software-engineer-intern-4471787638</link>
@@ -476,36 +506,6 @@
 • Design and verify high-performance communications processors and ASICs for Cisco products
 • Work with top industry talent on system architecture, network processors, and Ethernet processing
 • Use VHDL/Verilog, EDA tools, and VLSI techniques in deep submicron silicon processes</description>
-  </item>
-  <item>
-    <title>Systems Engineering Co-Op — Valeo</title>
-    <link>https://interndoor.com/us/jobs/valeo-systems-engineering-co-op-4473552508</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/valeo-systems-engineering-co-op-4473552508</guid>
-    <pubDate>Tue, 29 Sep 2026 22:57:37 GMT</pubDate>
-    <description>Company: Valeo · Location: Troy, MI
-• Support integration of adas/vision/access systems into test vehicles
-• Work with engineers on problem resolution and change management
-• Assist in requirement allocation and traceability for system projects</description>
-  </item>
-  <item>
-    <title>Systems Automation Co-op — Johnson &amp; Johnson Innovative Medicine</title>
-    <link>https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-systems-automation-co-op-4473556110</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/johnson-and-johnson-innovative-medicine-systems-automation-co-op-4473556110</guid>
-    <pubDate>Tue, 29 Sep 2026 22:57:08 GMT</pubDate>
-    <description>Company: Johnson &amp; Johnson Innovative Medicine · Location: Raritan, NJ
-• Support automation systems like Delta-V and OSI-Pi in manufacturing
-• Work with engineers on equipment integration and process control
-• Contribute to data visibility and digital manufacturing projects</description>
-  </item>
-  <item>
-    <title>Optics Engineer II (Co-op) - United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-optics-engineer-ii-co-op-united-states-4473545458</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-optics-engineer-ii-co-op-united-states-4473545458</guid>
-    <pubDate>Tue, 29 Sep 2026 22:56:58 GMT</pubDate>
-    <description>Company: Cisco · Location: Maynard, MA
-• Verify performance of coherent transceivers across environments
-• Develop test procedures and software for optical components
-• Monitor power and signal metrics during testing</description>
   </item>
 </channel>
 </rss>
