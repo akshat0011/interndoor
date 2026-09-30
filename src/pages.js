@@ -1315,7 +1315,7 @@ function head({ title, description, canonical, indexable, extraLd = '', region =
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
 <meta name="interndoor-region" content="${region.code}">
-${alternateLinks(alternatePath, alternates)}${indexable ? '' : '<meta name="robots" content="noindex,follow">\n'}<meta name="color-scheme" content="dark light">
+${alternateLinks(alternatePath, alternates)}${indexable ? '<meta name="robots" content="max-image-preview:large">\n' : '<meta name="robots" content="noindex,follow">\n'}<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="article">
@@ -4271,6 +4271,7 @@ function homeHead(region, alternates, channels = [], live = []) {
 
   return `<title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="${esc(url)}">
 ${alternateLinks('/', alternates)}<!-- Read by app.js to pick the board it loads. The region is in the URL, but
      a rewrite can serve this file from more than one path, so the page states
