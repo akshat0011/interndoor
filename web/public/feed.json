@@ -6,10 +6,58 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/revvity-intern-ecommerce-4473560924",
+      "url": "https://interndoor.com/jobs/revvity-intern-ecommerce-4473560924",
+      "title": "Intern - Ecommerce — Revvity",
+      "content_text": "Company: Revvity · Location: Thane, Maharashtra, India\n• Maintain and update e-commerce platform\n• Troubleshoot website technical issues\n• Optimize site performance and loading speeds",
+      "date_published": "2026-09-30T00:26:26.755Z",
+      "authors": [
+        {
+          "name": "Revvity"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/gokwik-software-development-engineer-i-4471975502",
+      "url": "https://interndoor.com/jobs/gokwik-software-development-engineer-i-4471975502",
+      "title": "Software Development Engineer - I — GoKwik",
+      "content_text": "Company: GoKwik · Location: Bengaluru, Karnataka, India\n• Build and optimize backend services using Node.js, NestJS, and Go\n• Develop scalable APIs with PostgreSQL, MongoDB, and Redis\n• Ship end-to-end features including frontend work with React and Svelte",
+      "date_published": "2026-09-30T00:19:48.112Z",
+      "authors": [
+        {
+          "name": "GoKwik"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-testing-services-4471967444",
+      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-testing-services-4471967444",
+      "title": "Technical Specialist-Testing Services — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Test d365 and web apps with selenium and java\n• Manage defects in jira and azure devops\n• Automate regression with playwright and ci/cd tools",
+      "date_published": "2026-09-29T23:44:42.171Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/applied-materials-india-business-intelligence-analyst-4471791104",
+      "url": "https://interndoor.com/jobs/applied-materials-india-business-intelligence-analyst-4471791104",
+      "title": "Business Intelligence Analyst — Applied Materials India",
+      "content_text": "Company: Applied Materials India · Location: Bengaluru, Karnataka, India\n• Coordinate scv operations between suppliers, buyers, and it teams\n• Track and resolve scv incidents via servicenow with sla compliance\n• Maintain cip tracker and drive closure of open initiatives",
+      "date_published": "2026-09-29T23:44:21.126Z",
+      "authors": [
+        {
+          "name": "Applied Materials India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4473548149",
       "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4473548149",
       "title": "Custom Software Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop custom software solutions using Python and Node JS on Lambda\n• Work on API integrations between cloud platforms and AWS environment\n• Provide SME support for new business proposals and backend development",
       "date_published": "2026-09-29T22:49:15.128Z",
       "authors": [
         {
@@ -21,7 +69,7 @@
       "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472077694",
       "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472077694",
       "title": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India",
+      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Analyze supply chain processes to identify AI use cases in demand planning, procurement, and fulfillment\n• Develop business and functional requirements for AI-enabled supply chain solutions\n• Create AI value cases and support client workshops on future-ready supply chains",
       "date_published": "2026-09-29T22:48:00.336Z",
       "authors": [
         {
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4471728628",
-      "url": "https://interndoor.com/jobs/sapaad-customer-solutions-engineer-intern-4471728628",
-      "title": "Customer Solutions Engineer Intern — Sapaad",
-      "content_text": "Company: Sapaad · Location: India\n• Support customers with technical issues via phone, email, and remote tools\n• Collaborate with product and engineering teams to resolve customer concerns\n• Create and maintain customer guides and internal documentation",
-      "date_published": "2026-09-29T14:23:23.093Z",
-      "authors": [
-        {
-          "name": "Sapaad"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/caterpillar-inc-autonomy-test-engineer-4473267647",
-      "url": "https://interndoor.com/jobs/caterpillar-inc-autonomy-test-engineer-4473267647",
-      "title": "Autonomy Test Engineer — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Design and test robotic software systems with senior engineers\n• Debug and maintain hardware and software for robotic tools\n• Create documentation for software architecture and safety protocols",
-      "date_published": "2026-09-29T14:21:33.193Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4471732780",
-      "url": "https://interndoor.com/jobs/procter-and-gamble-information-technology-intern-4471732780",
-      "title": "Information Technology Intern — Procter & Gamble",
-      "content_text": "Company: Procter & Gamble · Location: Mumbai Metropolitan Region\n• Write and test code for data analytics apps\n• Work with Azure cloud and DevOps tools\n• Collaborate with cross-functional teams on global projects",
-      "date_published": "2026-09-29T14:21:00.665Z",
-      "authors": [
-        {
-          "name": "Procter & Gamble"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-full-stack-associate-developer-4462986207",
-      "url": "https://interndoor.com/jobs/infosys-full-stack-associate-developer-4462986207",
-      "title": "Full Stack Associate developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build AI-powered apps with React, FastAPI, and PostgreSQL\n• Work on generative AI integrations with Azure and Gemini\n• Collaborate with stakeholders on secure, scalable solutions",
-      "date_published": "2026-09-29T14:20:07.953Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }
