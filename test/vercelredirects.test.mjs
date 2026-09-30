@@ -20,6 +20,7 @@ import { join } from 'node:path';
    Support", and pathname percent-encodes the space, so every existsSync missed
    and the check reported six healthy destinations as dead 404s. */
 import { fileURLToPath } from 'node:url';
+import { canonicalCity, facetSlug } from '../src/facets.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -114,6 +115,20 @@ console.log('\n== they are permanent ==');
 const caseFixes = redirects.filter((r) => /^\/[A-Z]/.test(r.source));
 check('every capital-path redirect is a 301', caseFixes.every((r) => r.permanent === true), true);
 check('and there are several', caseFixes.length >= 5, true);
+
+/* OLD CITY SPELLINGS -> THE ONE CITY PAGE (1 Oct 2026). These pages were
+   written and committed before canonicalCity folded the aliases (30 Sep), so
+   Google holds their URLs; each 301s to the page its spelling now folds to. */
+console.log('\n== retired city spellings redirect to their folded page ==');
+const cityAliases = redirects.filter((r) => /^\/locations\/[a-z-]+$/.test(r.source));
+check('there are several', cityAliases.length >= 5, true);
+/* The spelling each slug was made from, as LinkedIn wrote it. */
+const SPELLED = { 'bangalore': 'Bangalore', 'bangalore-urban': 'Bangalore Urban', 'greater-bengaluru': 'Greater Bengaluru Area',
+  'gurgaon': 'Gurgaon', 'greater-hyderabad': 'Greater Hyderabad Area', 'pune-pimpri-chinchwad': 'Pune/Pimpri-Chinchwad Area' };
+check('every alias redirect has its spelling on record', cityAliases.filter((r) => !SPELLED[r.source.split('/').pop()]).map((r) => r.source), []);
+check('each goes where canonicalCity folds its spelling',
+  cityAliases.filter((r) => `/locations/${facetSlug(canonicalCity(SPELLED[r.source.split('/').pop()] ?? ''))}` !== r.destination).map((r) => r.source), []);
+check('each is permanent', cityAliases.every((r) => r.permanent === true), true);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
