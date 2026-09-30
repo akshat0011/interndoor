@@ -5261,8 +5261,17 @@ ${urls.map((u) => `  <url><loc>${esc(u.loc)}</loc><lastmod>${u.lastmod}</lastmod
   writeFileSync(join(publicDir, 'sitemap.xml'), xml);
 }
 
+/* WHICH BOARDS' SITEMAPS robots.txt ADVERTISES — India only since 30 Sep 2026,
+   his call: "remove usa and uk sitemaps from google search console, we will
+   focus purely on india for now". Deleting a sitemap in Search Console alone
+   changes nothing: robots.txt names it too, and Google reads what robots.txt
+   names. The other boards' sitemaps are still WRITTEN and still served, so
+   advertising one again is one code here plus a resubmit in Search Console. */
+export const ADVERTISED_SITEMAP_BOARDS = new Set(['IN']);
+
 /**
- * robots.txt, listing one sitemap per published region.
+ * robots.txt, listing the sitemap of each published region in
+ * ADVERTISED_SITEMAP_BOARDS.
  *
  * Deliberately NOT a sitemap index. India's sitemap is already submitted in
  * Search Console at /sitemap.xml, and turning that URL into an index — or
@@ -5275,7 +5284,8 @@ ${urls.map((u) => `  <url><loc>${esc(u.loc)}</loc><lastmod>${u.lastmod}</lastmod
  * rendered.
  */
 function writeRobots(publicDir, regions = [DEFAULT_REGION]) {
-  const sitemaps = regions.map((r) => `Sitemap: ${regionUrl('/sitemap.xml', r)}`).join('\n');
+  const sitemaps = regions.filter((r) => ADVERTISED_SITEMAP_BOARDS.has(r.code))
+    .map((r) => `Sitemap: ${regionUrl('/sitemap.xml', r)}`).join('\n');
   writeFileSync(join(publicDir, 'robots.txt'), `User-agent: *
 Allow: /
 
