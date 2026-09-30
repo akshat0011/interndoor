@@ -148,8 +148,14 @@ check('a search may override it', searchSourceFor({ searchSource: 'browser' }, {
 check('an unknown value is the signed-in page, not a guess', searchSourceFor({}, { searchSource: 'publik' }), 'browser');
 {
   const cfg = loadConfig();
-  check('live config: every search goes through the public search',
-    cfg.searches.map((s) => searchSourceFor(s, cfg)), cfg.searches.map(() => 'guest'));
+  /* The public search is the config-wide default. A search may be put back
+     on the signed-in page only ON PURPOSE, with the reason beside the flag —
+     India's AI-search trial of 30 Sep 2026 is the one that does. Read off the
+     raw file, because declaredSearches drops the underscore keys. */
+  const rawSearches = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches;
+  check('live config: the default is the public search', cfg.searchSource, 'guest');
+  check('live config: any search on the signed-in page says why',
+    rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
   check('with its own pacing, a real range', Array.isArray(p) && p.length === 2 && p[0] > 0 && p[1] >= p[0], true);
 }
