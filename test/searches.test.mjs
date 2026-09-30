@@ -86,9 +86,11 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
     check(`${s.label ?? 'entry'}: no page cap`, s.maxPages ?? null, null);
     check(`${s.label ?? 'entry'}: no per-employer open cap`, s.maxOpensPerCompany ?? null, null);
     check(`${s.label ?? 'entry'}: no age stop`, s.stopAfterPageOlderThanHours ?? null, null);
-    /* ...and cadence: every 30-minute tick, intern and full-time alike (27 Sep
-       2026: "both india intern and full time every 30 mins"). */
-    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, null);
+    /* ...and cadence: the intern walk every 30-minute tick; the entry-level
+       walk hourly since 30 Sep 2026 ("should we move internships every 30
+       mins but full time to every 1 hour"), after LinkedIn's edge rate-limited
+       the IP — see its _interval_note in config.json. */
+    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 60 : null);
   } else {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
   }
@@ -154,13 +156,13 @@ console.log('\n== the live config: India every tick, US every hour ==');
    account, BACK TO 60 on 2 Sep once the three per-search limits landed (see
    test/sweeplimits.test.mjs), to every 30-minute tick on 27 Sep, and back to
    hourly the same day ("switch to usa every 1 hour").
-   INDIA MUST STAY AT EVERY TICK, intern and entry-level alike (27 Sep 2026:
-   "both india intern and full time every 30 mins"). It feeds 91% of the India
+   THE INDIA INTERN WALK STAYS AT EVERY TICK; entry-level went hourly on
+   30 Sep 2026 (his call, after LinkedIn's edge rate-limited the IP). It feeds 91% of the India
    board and the board's whole promise is freshness. */
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Declared, not active, so a paused search is still held to this.
-check('only the US declares an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['US']);
+check('only India entry-level and the US declare an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['IN entry-level', 'US']);
 check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));

@@ -53,9 +53,9 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('entry: no page cap of its own', entry?.maxPages, undefined);
   check('entry: no per-employer open cap', entry?.maxOpensPerCompany, undefined);
   check('entry: no all-old page stop', entry?.stopAfterPageOlderThanHours, undefined);
-  // Every 30-minute tick since 27 Sep 2026 — his instruction ("both india
-  // intern and full time every 30 mins"); it ran hourly 25-27 Sep.
-  check('entry: no interval, so it runs on every 30-minute tick', entry?.intervalMinutes, undefined);
+  // Hourly since 30 Sep 2026, his call after LinkedIn's edge rate-limited the
+  // IP (every tick 27-30 Sep, hourly 25-27 Sep). The intern walk stays every tick.
+  check('entry: hourly', entry?.intervalMinutes, 60);
   check('entry: walks to the global safety cap', pageCapFor(entry ?? {}, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
   check('entry: opens every card its gates approve', openCapFor(entry ?? {}), 0);
   check('and no page age can stop it early', staleCutoffFor(india), null);
