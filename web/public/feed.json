@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nk-securities-research-data-engineer-4473797277",
+      "url": "https://interndoor.com/jobs/nk-securities-research-data-engineer-4473797277",
+      "title": "Data Engineer — NK Securities Research",
+      "content_text": "Company: NK Securities Research · Location: Gurugram, Haryana, India · Duration: 1-3 years\n• Build pipelines to ingest and clean data from external sources\n• Design data quality checks and statistical analysis reports\n• Maintain databases and ensure data reliability for trading teams",
+      "date_published": "2026-09-30T14:33:10.340Z",
+      "authors": [
+        {
+          "name": "NK Securities Research"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/aptiv-data-engineer-4473783931",
       "url": "https://interndoor.com/jobs/aptiv-data-engineer-4473783931",
       "title": "Data Engineer — Aptiv",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-l2-l3-protocol-test-engineer-4473748565",
-      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-l2-l3-protocol-test-engineer-4473748565",
-      "title": "Protocol Test Engineer L2 L3 — Hewlett Packard Enterprise",
-      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Develop and automate tests for Layer 2/3 protocols like STP, BGP, and MACSEC\n• Use Python and networking tools to create test scripts and validate performance\n• Troubleshoot complex issues and resolve customer escalations quickly",
-      "date_published": "2026-09-30T11:06:05.141Z",
-      "authors": [
-        {
-          "name": "Hewlett Packard Enterprise"
         }
       ]
     }

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 30 Sep 2026 14:23:36 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 14:33:10 GMT</lastBuildDate>
+  <item>
+    <title>Data Engineer — NK Securities Research</title>
+    <link>https://interndoor.com/jobs/nk-securities-research-data-engineer-4473797277</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nk-securities-research-data-engineer-4473797277</guid>
+    <pubDate>Wed, 30 Sep 2026 14:33:10 GMT</pubDate>
+    <description>Company: NK Securities Research · Location: Gurugram, Haryana, India · Duration: 1-3 years
+• Build pipelines to ingest and clean data from external sources
+• Design data quality checks and statistical analysis reports
+• Maintain databases and ensure data reliability for trading teams</description>
+  </item>
   <item>
     <title>Data Engineer — Aptiv</title>
     <link>https://interndoor.com/jobs/aptiv-data-engineer-4473783931</link>
@@ -502,16 +512,6 @@
 • Build and deploy ML models using Python for business problems
 • Work on NLP tasks like text classification and semantic search
 • Collaborate with stakeholders to define data science goals</description>
-  </item>
-  <item>
-    <title>Protocol Test Engineer L2 L3 — Hewlett Packard Enterprise</title>
-    <link>https://interndoor.com/jobs/hewlett-packard-enterprise-l2-l3-protocol-test-engineer-4473748565</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/hewlett-packard-enterprise-l2-l3-protocol-test-engineer-4473748565</guid>
-    <pubDate>Wed, 30 Sep 2026 11:06:05 GMT</pubDate>
-    <description>Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India · Duration: 1-3 years
-• Develop and automate tests for Layer 2/3 protocols like STP, BGP, and MACSEC
-• Use Python and networking tools to create test scripts and validate performance
-• Troubleshoot complex issues and resolve customer escalations quickly</description>
   </item>
 </channel>
 </rss>
