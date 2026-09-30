@@ -297,6 +297,18 @@ check('saved in finally, so an early return still saves', /finally \{[\s\S]*writ
    not a state that exists. */
 check('only a proven send clears ids', /if \(r\.sent\) \{\s*sent \+= group\.items\.length;\s*for \(const i of group\.items\) posted\.add\(i\.id\);/.test(wa), true);
 check('nothing outside that guard adds to posted', (wa.match(/posted\.add\(/g) ?? []).length, 1);
+/* EVERY POST IS ITS CARD since 30 Sep 2026: WhatsApp stopped building link
+   previews for this device (any URL, headless or not), so a text post went out
+   as a bare "interndoor.com" box. His call: a listing with no card waits. */
+check('every post is sent as its card, never as bare text',
+  /await sendCard\(page, /.test(wa) && !/\bsendOne\(/.test(wa), true);
+check('a group with no card waits on the queue rather than going out bare',
+  /card\s*\?\s*await sendCard\([^;]*:\s*\{ sent: false, error: /.test(wa), true);
+check('the cards come from the renderer Telegram uses, into the same directory',
+  /renderCards\(batch\.map\(\(g\) => g\.items\[0\]\.job\), PATHS\.ogCards\)/.test(wa), true);
+/* The caption box keeps ~1,024 characters and drops the rest silently —
+   measured 30 Sep 2026 — which would cut off the footer link. */
+check('a message fits under the photo caption cap', MAX_MESSAGE < 1024, true);
 const idx = readFileSync(join(ROOT, 'src', 'index.js'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 check('and it is called even when the run found nothing',
