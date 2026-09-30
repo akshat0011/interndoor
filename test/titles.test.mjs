@@ -4,6 +4,8 @@
  */
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
+import { jobParts, composeJob } from '../src/telegram.js';
+import { readdirSync } from 'node:fs';
 import { groundTitle, shelfMove, publishedTitle, titleTargets, saveTitleReading, MISC_DISCIPLINES, DISCIPLINES, TITLE_SCHEMA, TITLE_MAX } from '../src/titles.js';
 
 let pass = 0, fail = 0;
@@ -135,6 +137,35 @@ console.log('\n== wired where it counts ==');
       && at('await cleanNewTitles(store, cfg);') > at('await enrichNewJobs(store, cfg);')
       && at('await publish(store, cfg') > at('await cleanNewTitles(store, cfg);'), true);
   check('the server slug builds from slugTitle', /slugify\(job\.slugTitle \?\? job\.title\)/.test(strip('../src/pages.js')), true);
+}
+
+console.log('\n== every link built from a published row keeps the ORIGINAL title in its URL ==');
+{
+  // WhatsApp and Telegram compose from jobs.json, where `title` is the clean
+  // title since 30 Sep; the page lives at the original slug (slugTitle). Built
+  // from `title` alone, every cleaned listing posted a link to a 404.
+  const row = { id: '4472154980', company: 'Volody', title: 'Tester Intern', slugTitle: 'Tester Intern (Mumbai based only)', location: 'Mumbai' };
+  const want = '/jobs/volody-tester-intern-mumbai-based-only-4472154980';
+  check('the WhatsApp / Telegram parts link the page that exists', jobParts(row).page.endsWith(want), true);
+  check('the Telegram caption links it too', composeJob(row).includes(want), true);
+  check('and a row with no clean title is unchanged', jobParts({ id: '1', company: 'A', title: 'Java Intern' }).page.endsWith('/jobs/a-java-intern-1'), true);
+  // Every jobSlug built from named fields must pass slugTitle, bar the two
+  // files that are handed STORE rows (whose title is still the original).
+  const STORE_ROWS = new Set(['postgen.js', 'weekly.js']);
+  const offenders = [];
+  for (const dir of ['../src/', '../bin/']) {
+    for (const f of readdirSync(new URL(dir, import.meta.url))) {
+      if (!f.endsWith('.js') || STORE_ROWS.has(f)) continue;
+      const src = readFileSync(new URL(dir + f, import.meta.url), 'utf8');
+      for (const m of src.matchAll(/jobSlug\(\{[^}]*\}\)/g)) if (/\btitle:/.test(m[0]) && !/slugTitle/.test(m[0])) offenders.push(`${f}: ${m[0]}`);
+    }
+  }
+  check('no jobSlug({ title: … }) call drops slugTitle', offenders, []);
+  // Links already posted from the clean title cannot be edited, so publish
+  // writes a redirect stub at every live clean-title slug.
+  const pubSrc = readFileSync(new URL('../src/publish.js', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+  check('publish redirects every clean-title slug to the real page',
+    /for \(const job of publicJobs\) \{\s*if \(!job\.slugTitle\) continue;[\s\S]{0,200}slug = jobSlug\(\{ \.\.\.job, slugTitle: undefined \}\); target = jobSlug\(job\);[\s\S]{0,200}redirectsByRegion\.get\(job\.region\)\.push\(\{ slug, target \}\)/.test(pubSrc), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

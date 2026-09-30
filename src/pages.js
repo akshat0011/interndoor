@@ -4986,7 +4986,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   for (const past of [...(history ?? []), ...(closable ?? [])]) {
     if (!past?.company || !(past.id ?? past.job_id)) continue;
     let slug;
-    try { slug = jobSlug({ company: past.company, title: past.title, id: past.id ?? past.job_id }); } catch { continue; }
+    try { slug = jobSlug({ company: past.company, title: past.title, slugTitle: past.slugTitle, id: past.id ?? past.job_id }); } catch { continue; }
     hubForSlug.set(slug, companySlug(past.company));
   }
   const closedOn = new Date().toISOString().slice(0, 10);

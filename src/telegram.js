@@ -189,7 +189,7 @@ export function applicantCount(text) {
  */
 export function jobParts(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
-  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
+  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, slugTitle: job.slugTitle, id: job.id ?? job.job_id })}`;
   const title = clampWords(String(job.title ?? ''), 110);
 
   const facts = [];
@@ -217,7 +217,7 @@ export function jobParts(job, region = regionOf('IN')) {
 
 export function composeJob(job, region = regionOf('IN')) {
   const prefix = regionPath(region.code);
-  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, id: job.id ?? job.job_id })}`;
+  const page = `${SITE}${prefix}/jobs/${jobSlug({ company: job.company, title: job.title, slugTitle: job.slugTitle, id: job.id ?? job.job_id })}`;
 
   /* THE TITLE IS CLAMPED FIRST, and dropping fact lines is only a backstop.
      Real titles run to 172 characters — one employer names fifteen cities in

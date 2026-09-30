@@ -686,6 +686,20 @@ export async function writeJobsFile(store, cfg) {
     if (!redirectsByRegion.has(region)) redirectsByRegion.set(region, []);
     redirectsByRegion.get(region).push({ slug, target });
   }
+  /* A CLEAN TITLE (src/titles.js) IS DISPLAY ONLY — the page lives at the
+     ORIGINAL title's slug. On 30 Sep 2026 WhatsApp built its links from the
+     clean title for a day and posted them to the channel, where they cannot be
+     edited, so every clean-title slug gets the same redirect stub a reposted
+     role gets, pointing at the real page. Live rows only: when the posting
+     expires its stub goes with it, like any other link to an expired role. */
+  for (const job of publicJobs) {
+    if (!job.slugTitle) continue;
+    let slug; let target;
+    try { slug = jobSlug({ ...job, slugTitle: undefined }); target = jobSlug(job); } catch { continue; }
+    if (slug === target) continue;
+    if (!redirectsByRegion.has(job.region)) redirectsByRegion.set(job.region, []);
+    redirectsByRegion.get(job.region).push({ slug, target });
+  }
   if (redirectsByRegion.size) {
     const n = [...redirectsByRegion.values()].reduce((a, v) => a + v.length, 0);
     log.info(`Redirecting ${n} superseded posting URL${n === 1 ? '' : 's'} to the reposted role.`);
