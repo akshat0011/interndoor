@@ -72,7 +72,11 @@ const ZERO_EXP_RE = /\b0\s*(?:-|–|to)\s*[12]\s*\+?\s*(?:years?|yrs?)\b/i;
 // role, and product management is an ordinary destination for one. The words
 // here are people-leadership and recruiting, which is what actually
 // disqualifies a title.
-const SENIOR = /\b(senior|sr\.?|staff|principal|lead|head\s+of|director|vp|vice\s+president|recruiter|recruiting|talent\s+acquisition)\b/i;
+/* `avp` and the named "… leader" grades added 30 Sep 2026: NatWest and Deutsche
+   Bank "Engineer, AVP" and Bank of America "Team Leader" reached India's
+   Full-time tab. A bare `leader` is NOT here — Mu Sigma's "Apprentice Leader"
+   is its fresher programme. */
+const SENIOR = /\b(senior|sr\.?|staff|principal|lead|head\s+of|director|vp|avp|vice\s+president|team\s+leader|project\s+leader|design\s+leader|recruiter|recruiting|talent\s+acquisition)\b/i;
 
 // A space in a phrase matches a space OR a hyphen, because the same role is
 // written "new grad", "new-grad" and "newgrad" on different boards.
