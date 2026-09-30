@@ -6,6 +6,102 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
+      "url": "https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223",
+      "title": "Fullstack Developer- Internship — GreedyGame",
+      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years\n• Build backend services for Google Ad Manager and third-party ad networks\n• Develop React dashboards for ad unit management and operational workflows\n• Work with MySQL, PostgreSQL, and MongoDB on large ad datasets\n• Collaborate with senior engineers on feature design and production deployment",
+      "date_published": "2026-09-30T06:45:16.654Z",
+      "authors": [
+        {
+          "name": "GreedyGame"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987",
+      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987",
+      "title": "Site Reliability Engineering Specialist — BT Group",
+      "content_text": "Company: BT Group · Location: Bengaluru South, Karnataka, India\n• Ensure reliability and performance of global platforms through automation and observability\n• Use Dynatrace, Ansible, and GitOps to improve service stability and reduce toil\n• Manage incidents and escalate complex issues using ServiceNow and Jira",
+      "date_published": "2026-09-30T06:03:46.145Z",
+      "authors": [
+        {
+          "name": "BT Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802",
+      "url": "https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802",
+      "title": "BigData-Hadoop/Scala Engineer, AVP — Deutsche Bank",
+      "content_text": "Company: Deutsche Bank · Location: Pune Division, Maharashtra, India\n• Design and build data pipelines using Hadoop and Spark\n• Work with cloud platforms like GCP for data processing\n• Collaborate with data scientists and analysts on business solutions",
+      "date_published": "2026-09-30T06:03:31.978Z",
+      "authors": [
+        {
+          "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312",
+      "url": "https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312",
+      "title": "Support Engineer- Windows, MacOS & Ubuntu/Linux — Icon Infoline Pvt. Ltd.",
+      "content_text": "Company: Icon Infoline Pvt. Ltd. · Location: Pune/Pimpri-Chinchwad Area · Duration: 2-3 years\n• Troubleshoot hardware and software issues across Windows, MacOS, and Linux systems\n• Manage user accounts, permissions, and system access on Linux and MacOS\n• Support endpoint security, compliance, and IT asset inventory management",
+      "date_published": "2026-09-30T06:02:37.256Z",
+      "authors": [
+        {
+          "name": "Icon Infoline Pvt. Ltd."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543",
+      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543",
+      "title": "Java API Developer — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and build secure RESTful APIs with Spring Boot and Java 11+\n• Implement API security, caching, and observability with OpenTelemetry\n• Collaborate in Agile teams and own services from design to deployment",
+      "date_published": "2026-09-30T06:00:52.334Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775",
+      "url": "https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775",
+      "title": "Machine Learning Engineer — Poshmark",
+      "content_text": "Company: Poshmark · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years\n• Build tools to make machine learning accessible across the company\n• Work with data science and engineering teams to deploy models\n• Maintain platforms and upgrade to new tech stacks",
+      "date_published": "2026-09-30T06:00:19.455Z",
+      "authors": [
+        {
+          "name": "Poshmark"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553",
+      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553",
+      "title": "Data Scientist — Hewlett Packard Enterprise",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Analyze financial data to influence business decisions\n• Use python and analytics tools like r or sas\n• Work on data models and visualization for client solutions",
+      "date_published": "2026-09-30T05:01:01.900Z",
+      "authors": [
+        {
+          "name": "Hewlett Packard Enterprise"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825",
+      "url": "https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825",
+      "title": "Generative AI Intern — Adfluence Hub",
+      "content_text": "Company: Adfluence Hub · Location: Noida, Uttar Pradesh, India · Duration: 3–6 months\n• Build ai-powered apps using llms and ai apis\n• Collaborate with product and engineering teams\n• Experiment with prompt engineering and rag solutions",
+      "date_published": "2026-09-30T04:55:45.918Z",
+      "authors": [
+        {
+          "name": "Adfluence Hub"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472093013",
       "url": "https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472093013",
       "title": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS — Accenture in India",
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190",
-      "url": "https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190",
-      "title": "AIML Trainee | 6-Month Fixed-Term Contract | 2026 Graduates — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Build and maintain secure, high-performance software solutions\n• Work with Java and AI/ML tools in a feature team\n• Collaborate on full lifecycle development and API integration",
-      "date_published": "2026-09-29T15:34:04.802Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065",
-      "url": "https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065",
-      "title": "Software Engineer - Winter Intern — Rubrik",
-      "content_text": "Company: Rubrik · Location: Bengaluru, Karnataka, India\n• Design, develop, and improve software systems\n• Work with Java, C/C++, Scala, or Python\n• Collaborate on projects with flexible structure",
-      "date_published": "2026-09-29T15:31:51.775Z",
-      "authors": [
-        {
-          "name": "Rubrik"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-cybersecurity-specialist-iam-4463508377",
-      "url": "https://interndoor.com/jobs/cognizant-cybersecurity-specialist-iam-4463508377",
-      "title": "CyberSecurity Specialist - IAM — Cognizant",
-      "content_text": "Company: Cognizant · Location: Hyderabad, Telangana, India\n• Secure payment systems with Java and IAM platforms\n• Work on hybrid environments and day shift operations\n• Collaborate with security and operations teams",
-      "date_published": "2026-09-29T15:27:51.511Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-software-quality-engineer-4471740579",
-      "url": "https://interndoor.com/jobs/kla-software-quality-engineer-4471740579",
-      "title": "Software Quality Engineer — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Build frameworks and tools for testing desktop, web, API, and system-level software\n• Use C#, Java, Python, and AI to improve testability and accelerate defect detection\n• Integrate automated tests into CI/CD pipelines and create quality dashboards",
-      "date_published": "2026-09-29T15:21:24.476Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-engineer-product-applications-4471734906",
-      "url": "https://interndoor.com/jobs/kla-engineer-product-applications-4471734906",
-      "title": "Engineer, Product Applications — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Support customers with product demos, troubleshooting, and training on complex semiconductor tools\n• Collaborate with engineering teams to improve tool performance through testing and feedback\n• Travel 50% for on-site customer engagement and technical training",
-      "date_published": "2026-09-29T15:20:58.499Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282",
-      "url": "https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282",
-      "title": "Engr, Software QA 2 — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Test software systems for semiconductor manufacturing tools\n• Use C# or Java for automation scripts and test frameworks\n• Travel to customer sites in Israel, US, and other locations",
-      "date_published": "2026-09-29T15:08:41.692Z",
-      "authors": [
-        {
-          "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/s-and-p-global-data-analyst-4471913420",
-      "url": "https://interndoor.com/jobs/s-and-p-global-data-analyst-4471913420",
-      "title": "Data Analyst — S&P Global",
-      "content_text": "Company: S&P Global · Location: Bengaluru, Karnataka, India · Duration: 1–3 years\n• Analyze m&a transactions and capital market events to generate structured datasets\n• Use sql/excel for data querying and work with ai tools for automation\n• Collaborate with data teams and contribute to process improvements",
-      "date_published": "2026-09-29T14:55:08.160Z",
-      "authors": [
-        {
-          "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-healthineers-ui-frontend-developer-4471752045",
-      "url": "https://interndoor.com/jobs/siemens-healthineers-ui-frontend-developer-4471752045",
-      "title": "UI Frontend Developer — Siemens Healthineers",
-      "content_text": "Company: Siemens Healthineers · Location: Bengaluru, Karnataka, India\n• Build responsive ui components with html5, css3, javascript, and typescript\n• Develop micro frontend apps using module federation and integrate with platform\n• Collaborate with designers and backend teams on cross-browser, accessible applications",
-      "date_published": "2026-09-29T14:53:18.136Z",
-      "authors": [
-        {
-          "name": "Siemens Healthineers"
         }
       ]
     }

@@ -6,7 +6,88 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 30 Sep 2026 03:27:43 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 06:45:16 GMT</lastBuildDate>
+  <item>
+    <title>Fullstack Developer- Internship — GreedyGame</title>
+    <link>https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223</guid>
+    <pubDate>Wed, 30 Sep 2026 06:45:16 GMT</pubDate>
+    <description>Company: GreedyGame · Location: Bengaluru, Karnataka, India · Duration: 0-1 years
+• Build backend services for Google Ad Manager and third-party ad networks
+• Develop React dashboards for ad unit management and operational workflows
+• Work with MySQL, PostgreSQL, and MongoDB on large ad datasets
+• Collaborate with senior engineers on feature design and production deployment</description>
+  </item>
+  <item>
+    <title>Site Reliability Engineering Specialist — BT Group</title>
+    <link>https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987</guid>
+    <pubDate>Wed, 30 Sep 2026 06:03:46 GMT</pubDate>
+    <description>Company: BT Group · Location: Bengaluru South, Karnataka, India
+• Ensure reliability and performance of global platforms through automation and observability
+• Use Dynatrace, Ansible, and GitOps to improve service stability and reduce toil
+• Manage incidents and escalate complex issues using ServiceNow and Jira</description>
+  </item>
+  <item>
+    <title>BigData-Hadoop/Scala Engineer, AVP — Deutsche Bank</title>
+    <link>https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deutsche-bank-bigdata-hadoop-scala-engineer-avp-4472111802</guid>
+    <pubDate>Wed, 30 Sep 2026 06:03:31 GMT</pubDate>
+    <description>Company: Deutsche Bank · Location: Pune Division, Maharashtra, India
+• Design and build data pipelines using Hadoop and Spark
+• Work with cloud platforms like GCP for data processing
+• Collaborate with data scientists and analysts on business solutions</description>
+  </item>
+  <item>
+    <title>Support Engineer- Windows, MacOS &amp; Ubuntu/Linux — Icon Infoline Pvt. Ltd.</title>
+    <link>https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312</guid>
+    <pubDate>Wed, 30 Sep 2026 06:02:37 GMT</pubDate>
+    <description>Company: Icon Infoline Pvt. Ltd. · Location: Pune/Pimpri-Chinchwad Area · Duration: 2-3 years
+• Troubleshoot hardware and software issues across Windows, MacOS, and Linux systems
+• Manage user accounts, permissions, and system access on Linux and MacOS
+• Support endpoint security, compliance, and IT asset inventory management</description>
+  </item>
+  <item>
+    <title>Java API Developer — Birlasoft</title>
+    <link>https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-java-api-developer-4473710543</guid>
+    <pubDate>Wed, 30 Sep 2026 06:00:52 GMT</pubDate>
+    <description>Company: Birlasoft · Location: Greater Bengaluru Area
+• Design and build secure RESTful APIs with Spring Boot and Java 11+
+• Implement API security, caching, and observability with OpenTelemetry
+• Collaborate in Agile teams and own services from design to deployment</description>
+  </item>
+  <item>
+    <title>Machine Learning Engineer — Poshmark</title>
+    <link>https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775</guid>
+    <pubDate>Wed, 30 Sep 2026 06:00:19 GMT</pubDate>
+    <description>Company: Poshmark · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years
+• Build tools to make machine learning accessible across the company
+• Work with data science and engineering teams to deploy models
+• Maintain platforms and upgrade to new tech stacks</description>
+  </item>
+  <item>
+    <title>Data Scientist — Hewlett Packard Enterprise</title>
+    <link>https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553</guid>
+    <pubDate>Wed, 30 Sep 2026 05:01:01 GMT</pubDate>
+    <description>Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India
+• Analyze financial data to influence business decisions
+• Use python and analytics tools like r or sas
+• Work on data models and visualization for client solutions</description>
+  </item>
+  <item>
+    <title>Generative AI Intern — Adfluence Hub</title>
+    <link>https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/adfluence-hub-generative-ai-intern-4473599825</guid>
+    <pubDate>Wed, 30 Sep 2026 04:55:45 GMT</pubDate>
+    <description>Company: Adfluence Hub · Location: Noida, Uttar Pradesh, India · Duration: 3–6 months
+• Build ai-powered apps using llms and ai apis
+• Collaborate with product and engineering teams
+• Experiment with prompt engineering and rag solutions</description>
+  </item>
   <item>
     <title>I&amp;P GN - SC&amp;E – Analyst - Enterprise AI Value Strategy-EVS — Accenture in India</title>
     <link>https://interndoor.com/jobs/accenture-in-india-i-and-p-gn-sc-and-e-analyst-enterprise-ai-value-strategy-evs-4472093013</link>
@@ -423,86 +504,6 @@
 • Design and maintain cloud infrastructure for public and private environments
 • Work with AWS and other cloud platforms to build scalable data solutions
 • Collaborate across teams to develop secure, automated data products</description>
-  </item>
-  <item>
-    <title>AIML Trainee | 6-Month Fixed-Term Contract | 2026 Graduates — NatWest Group</title>
-    <link>https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/natwest-group-aiml-trainee-6-month-fixed-term-contract-2026-graduates-4473287190</guid>
-    <pubDate>Tue, 29 Sep 2026 15:34:04 GMT</pubDate>
-    <description>Company: NatWest Group · Location: Bengaluru, Karnataka, India
-• Build and maintain secure, high-performance software solutions
-• Work with Java and AI/ML tools in a feature team
-• Collaborate on full lifecycle development and API integration</description>
-  </item>
-  <item>
-    <title>Software Engineer - Winter Intern — Rubrik</title>
-    <link>https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/rubrik-software-engineer-winter-intern-4464049065</guid>
-    <pubDate>Tue, 29 Sep 2026 15:31:51 GMT</pubDate>
-    <description>Company: Rubrik · Location: Bengaluru, Karnataka, India
-• Design, develop, and improve software systems
-• Work with Java, C/C++, Scala, or Python
-• Collaborate on projects with flexible structure</description>
-  </item>
-  <item>
-    <title>CyberSecurity Specialist - IAM — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-cybersecurity-specialist-iam-4463508377</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-cybersecurity-specialist-iam-4463508377</guid>
-    <pubDate>Tue, 29 Sep 2026 15:27:51 GMT</pubDate>
-    <description>Company: Cognizant · Location: Hyderabad, Telangana, India
-• Secure payment systems with Java and IAM platforms
-• Work on hybrid environments and day shift operations
-• Collaborate with security and operations teams</description>
-  </item>
-  <item>
-    <title>Software Quality Engineer — KLA</title>
-    <link>https://interndoor.com/jobs/kla-software-quality-engineer-4471740579</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kla-software-quality-engineer-4471740579</guid>
-    <pubDate>Tue, 29 Sep 2026 15:21:24 GMT</pubDate>
-    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
-• Build frameworks and tools for testing desktop, web, API, and system-level software
-• Use C#, Java, Python, and AI to improve testability and accelerate defect detection
-• Integrate automated tests into CI/CD pipelines and create quality dashboards</description>
-  </item>
-  <item>
-    <title>Engineer, Product Applications — KLA</title>
-    <link>https://interndoor.com/jobs/kla-engineer-product-applications-4471734906</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kla-engineer-product-applications-4471734906</guid>
-    <pubDate>Tue, 29 Sep 2026 15:20:58 GMT</pubDate>
-    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
-• Support customers with product demos, troubleshooting, and training on complex semiconductor tools
-• Collaborate with engineering teams to improve tool performance through testing and feedback
-• Travel 50% for on-site customer engagement and technical training</description>
-  </item>
-  <item>
-    <title>Engr, Software QA 2 — KLA</title>
-    <link>https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kla-engr-software-qa-2-4471749282</guid>
-    <pubDate>Tue, 29 Sep 2026 15:08:41 GMT</pubDate>
-    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
-• Test software systems for semiconductor manufacturing tools
-• Use C# or Java for automation scripts and test frameworks
-• Travel to customer sites in Israel, US, and other locations</description>
-  </item>
-  <item>
-    <title>Data Analyst — S&amp;P Global</title>
-    <link>https://interndoor.com/jobs/s-and-p-global-data-analyst-4471913420</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/s-and-p-global-data-analyst-4471913420</guid>
-    <pubDate>Tue, 29 Sep 2026 14:55:08 GMT</pubDate>
-    <description>Company: S&amp;P Global · Location: Bengaluru, Karnataka, India · Duration: 1–3 years
-• Analyze m&amp;a transactions and capital market events to generate structured datasets
-• Use sql/excel for data querying and work with ai tools for automation
-• Collaborate with data teams and contribute to process improvements</description>
-  </item>
-  <item>
-    <title>UI Frontend Developer — Siemens Healthineers</title>
-    <link>https://interndoor.com/jobs/siemens-healthineers-ui-frontend-developer-4471752045</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-healthineers-ui-frontend-developer-4471752045</guid>
-    <pubDate>Tue, 29 Sep 2026 14:53:18 GMT</pubDate>
-    <description>Company: Siemens Healthineers · Location: Bengaluru, Karnataka, India
-• Build responsive ui components with html5, css3, javascript, and typescript
-• Develop micro frontend apps using module federation and integrate with platform
-• Collaborate with designers and backend teams on cross-browser, accessible applications</description>
   </item>
 </channel>
 </rss>
