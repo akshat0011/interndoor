@@ -27,9 +27,12 @@ import { log } from './logger.js';
 import { releaseProfileLock } from './browser.js';
 import { entryWord } from './employment.js';
 import { announceable } from './rolefocus.js';
+import { renderCards } from './ogcard.js';
 
-/** WhatsApp's own cap is far higher, but a wall of text is not read. */
-export const MAX_MESSAGE = 1400;
+/** Under the photo CAPTION's cap, which is what every post now is: measured
+    30 Sep 2026, the caption box keeps about 1,024 characters and drops the
+    rest silently — which would cut off the footer link. */
+export const MAX_MESSAGE = 1000;
 
 /** Brave, wherever it is. Nothing here falls back to Chrome: the user logged
  *  the number in on Brave and a different browser is a different profile. */
@@ -94,10 +97,9 @@ export const MAX_GROUP_ROLES = 5;
  * for, and it is strictly better than a lower cap: nothing is dropped, the same
  * listings go out, they simply arrive as one message.
  *
- * THE FIRST URL IS STILL A JOB PAGE, which is what WhatsApp builds the preview
- * card from — so a grouped message gets the first role's card, exactly as a
- * single one would. Putting the board link first would render the board's card
- * for every grouped post and throw that away.
+ * THE FIRST ROLE'S CARD IS THE ONE ATTACHED (postNewJobsWhatsApp), so the
+ * first URL is that role's job page too — the picture and the first link
+ * name the same posting.
  *
  * Facts are deliberately thinner than a single-role message: when the employer
  * is already in the heading, the thing that tells two of their roles apart is
@@ -615,78 +617,26 @@ export async function findTarget(page, name) {
 }
 
 /**
- * Type one message and send it.
- *
- * ENTER SENDS IN WHATSAPP, so a multi-line message cannot simply be typed: the
- * first newline would post a half-written listing. Every line is typed and
- * joined with Shift+Enter, and Enter is pressed exactly once, at the end.
- */
-/**
- * Wait for WhatsApp to build the link preview.
- *
- * THIS IS WHY THE FIRST POSTS HAD NO CARD. WhatsApp fetches the URL and
- * renders the preview CLIENT-SIDE, into the composer, and it is not instant:
- * measured against the live client, the image appears at about five seconds —
- * while sendOne was pressing Enter after roughly one. The message went out
- * before the card existed, every time, and nothing about it looked wrong.
- *
- * Our own /api/og takes 1.1-2.4s to answer on top of whatever WhatsApp spends,
- * which is most of that five seconds.
- *
- * Returns whether it appeared. A post with no card still beats no post, so a
- * timeout sends anyway rather than dropping the listing.
- */
-/**
- * Wait for the link preview to actually resolve, before Enter sends the message.
- *
- * WhatsApp builds the card CLIENT-SIDE, and a message sent before it lands goes
- * out as bare text — which on a channel of job listings is the difference
- * between the employer's OG card and a line of grey link.
- *
- * WATCH `compose-box-link-preview` FOR AN `img`, and nothing else. Two earlier
- * guesses were both wrong in ways that looked right:
- *
- *  - `footer img` never becomes non-zero AT ALL, so it timed out on every
- *    single post and reported no card while the card was sitting there.
- *  - The container's mere PRESENCE is not enough either. Measured on a real
- *    listing, it appears at t=1s holding only the bare domain ("interndoor.com")
- *    and does not fill in until t=3s, when the title, the description and the
- *    thumbnail arrive together. Sending on presence sends the skeleton, which
- *    attaches no card — the same outcome as not waiting.
- *
- * The `img` is the last thing to arrive, so it is the honest signal that the
- * card is complete.
- */
-/**
- * How long to wait for the card before sending anyway.
- *
- * Was 15s. Raised after 16 Sep 2026, when 6 of 8 posts went out bare: the
- * warm-up below removes most of the wait, and the extra ceiling costs nothing
- * on a post whose card resolves in three seconds — `waitForPreview` returns the
- * moment the image appears, so this is a deadline, not a delay.
- */
-export const PREVIEW_MS = 25_000;
-
-/**
  * How long to wait for a just-published page to exist before posting anyway.
  *
  * Measured 16 Sep 2026: the scan posts to WhatsApp ~40s after it publishes, and
  * Vercel's deploy takes about a minute — so the page is typically live a few
- * seconds later. 90s covers a slow deploy; past that the listing goes out with
- * a bare link, which still beats not posting it.
+ * seconds later. 90s covers a slow deploy; past that the listing goes out
+ * anyway, which still beats not posting it.
  */
 export const LIVE_MS = 90_000;
 
 /**
- * Ask Vercel for the page and its card image before WhatsApp does.
+ * Wait for the job page to exist, and ask Vercel for its card image once.
  *
- * WhatsApp fetches the URL itself to build the preview, and it is the FIRST
- * fetch that is slow: `/api/og` renders the card on demand (2.7s, `x-vercel-cache:
- * MISS`) and is then immutable and instant. Doing it here means WhatsApp's
- * fetch is the second one.
+ * WHY IT STILL RUNS NOW THAT THE CARD IS ATTACHED. It was written for the link
+ * preview, which WhatsApp built from its own fetch of the page — a 404 there
+ * meant a bare card. The preview is gone (see sendCard), but the reason to wait
+ * is not: a follower taps the link the moment the notification lands, and the
+ * page is typically seconds away from existing when this runs. The card fetch
+ * leaves `/api/og` warm for anyone who shares the link later.
  *
- * Everything is swallowed. A warm-up is an optimisation; a listing must post
- * whether or not it worked.
+ * Everything is swallowed. A listing must post whether or not this worked.
  */
 export async function warmPreview(text, {
   fetchImpl = fetch, timeoutMs = 8000, liveMs = LIVE_MS, pause = (ms) => new Promise((r) => setTimeout(r, ms)),
@@ -713,41 +663,27 @@ export async function warmPreview(text, {
   try {
     const html = await page.text();
     const card = (html.match(/<meta property="og:image" content="([^"]+)"/) ?? [])[1];
-    // The HTML escapes the query separator; WhatsApp unescapes it before fetching.
+    // The HTML escapes the query separator; a fetch of the raw value 404s.
     if (card) await get(card.replace(/&amp;/g, '&'));
   } catch { /* the page was warmed, which is the half that matters */ }
   return true;
 }
 
-async function waitForPreview(page, ms) {
-  const deadline = Date.now() + ms;
-  while (Date.now() < deadline) {
-    const ready = await page.evaluate(() => {
-      const c = document.querySelector('[data-testid="compose-box-link-preview"]');
-      return !!c && c.querySelectorAll('img').length > 0;
-    });
-    if (ready) return true;
-    await page.waitForTimeout(400);
-  }
-  return false;
-}
-
-/** Is anything selected? Guards the Backspace in clearComposer. */
+/** Is anything selected? Guards the Backspace in clearBox. */
 async function hasSelection(page) {
   return page.evaluate(() => (window.getSelection()?.toString() ?? '').length > 0);
 }
 
-/** Whatever is sitting in the composer right now. */
-async function composerText(page) {
-  const box = composer(page);
+/** Whatever is sitting in a box right now. */
+async function boxText(box) {
   if (!await box.count()) return '';
   return (await box.innerText()).trim();
 }
 
 /**
- * Empty the composer, and prove it is empty.
+ * Empty a box, and prove it is empty.
  *
- * THIS IS THE ONE THAT CORRUPTED A LIVE CHANNEL. `sendOne` used to click the
+ * THIS IS THE ONE THAT CORRUPTED A LIVE CHANNEL. The send used to click the
  * box and start typing, and a click puts the caret WHERE IT LANDS — so with
  * anything already in the box the new message is typed into the MIDDLE of it.
  * WhatsApp Web persists a draft, so a run that dies between typing and Enter
@@ -760,23 +696,26 @@ async function composerText(page) {
  * inserted between the halves, and its own footer link welded to the tail. Two
  * unusable links in one message, on a public channel.
  *
+ * IT MATTERS MORE WITH A PHOTO, NOT LESS: WhatsApp carries whatever is in the
+ * composer into the photo's caption when the photo is attached. So the
+ * composer is cleared before attaching, and the caption is checked again
+ * before typing into it.
+ *
  * Select-all is scoped to the focused contenteditable, so it cannot reach the
  * rest of the page. The read-back is not belt-and-braces: if the box will not
  * empty, typing into it produces exactly the spliced message above, and NOT
  * sending is unambiguously better than sending that.
  */
-async function clearComposer(page) {
-  const box = composer(page);
+async function clearBox(page, box) {
   await box.click({ timeout: 10_000 });
-  if (!(await composerText(page))) return { ok: true };
+  if (!(await boxText(box))) return { ok: true };
 
   /* Select-all is tried three ways before giving up. The box is a
      framework-controlled contenteditable, so a single keystroke is not
      guaranteed to register, and this is not a place to find out by writing a
-     spliced message to a public channel. Select-all is scoped to the focused
-     element and cannot reach the rest of the page. */
+     spliced message to a public channel. */
   for (const combo of ['ControlOrMeta+A', 'Meta+A', 'Control+A']) {
-    if (!(await composerText(page))) break;
+    if (!(await boxText(box))) break;
     await box.click({ timeout: 10_000 });
     await page.keyboard.press(combo);
     /* Only delete if something is actually selected. A bare Backspace after a
@@ -790,63 +729,138 @@ async function clearComposer(page) {
     await page.waitForTimeout(250);
   }
 
-  const left = await composerText(page);
-  if (left) return { ok: false, error: `composer would not clear — ${JSON.stringify(left.slice(0, 60))} still in it` };
+  const left = await boxText(box);
+  if (left) return { ok: false, error: `the box would not clear — ${JSON.stringify(left.slice(0, 60))} still in it` };
   return { ok: true };
 }
 
 /**
- * Type one message and send it.
- *
  * ENTER SENDS IN WHATSAPP, so a multi-line message cannot simply be typed: the
  * first newline would post a half-written listing. Every line is typed and
- * joined with Shift+Enter, and Enter is pressed exactly once, at the end —
- * after the preview has had its chance.
- *
- * The box is CLEARED first and checked EMPTY afterwards. The clear stops a
- * stranded draft being spliced into (see clearComposer); the check afterwards
- * is how a failed send is noticed at all — Enter silently doing nothing leaves
- * the whole message sitting there, which is both a listing that never went out
- * and the draft that corrupts the next one. Either way the text is removed, so
- * a bad send costs one message instead of two.
+ * joined with Shift+Enter, and the caller presses Enter exactly once.
  */
-export async function sendOne(page, text, { previewMs = PREVIEW_MS, warm = warmPreview } = {}) {
-  const cleared = await clearComposer(page);
-  if (!cleared.ok) return { sent: false, carded: false, error: cleared.error };
-
-  /* BEFORE THE URL IS TYPED, NOT ALONGSIDE IT — and this is the whole fix.
-     WhatsApp fetches the link the moment it lands in the composer and does not
-     retry within that compose; a 404 then means no card however long Enter
-     waits. The scan posts ~40s after `Published to the site`, and Vercel's
-     deploy takes about a minute, so the page WhatsApp asked for did not exist
-     yet: on 16 Sep the first attempt waited the full 25s and still went out
-     bare. `warmPreview` polls until the page answers, then renders the card, so
-     by the time the URL is typed both are live and hot. Bounded, and every
-     failure is swallowed: a listing must post whether or not this worked. */
-  try { await warm(text); } catch { /* an optimisation must never cost a post */ }
-
+async function typeLines(page, text) {
   const lines = String(text).split('\n');
   for (const [i, line] of lines.entries()) {
     if (line) await page.keyboard.type(line, { delay: 8 });
     if (i < lines.length - 1) await page.keyboard.press('Shift+Enter');
   }
+}
 
-  const waitedFrom = Date.now();
-  const carded = /https?:\/\//.test(text) ? await waitForPreview(page, previewMs) : true;
-  const cardMs = Date.now() - waitedFrom;
-  await page.keyboard.press('Enter');
-  await page.waitForTimeout(1500);
+/**
+ * What WhatsApp says about one of our messages, read off its bubble.
+ *
+ * Measured on the live channel 30 Sep 2026: an attached card carries
+ * aria-label " Pending " while it uploads and " Sent " once WhatsApp has it —
+ * three seconds after Enter — and a message WhatsApp gave up on carries
+ * "Something went wrong. Click to learn more.", whose dialog reads "Your
+ * message was not sent". Pure, and tested by name. A failure outranks
+ * anything else on the bubble.
+ */
+export function bubbleStatus(labels = []) {
+  const ls = (labels ?? []).map((l) => String(l ?? '').trim());
+  if (ls.some((l) => /^Something went wrong/i.test(l))) return 'failed';
+  if (ls.some((l) => /^(Sent|Delivered|Read)$/i.test(l))) return 'sent';
+  if (ls.some((l) => /^Pending$/i.test(l))) return 'pending';
+  return 'unknown';
+}
 
-  const leftover = await composerText(page);
-  if (leftover) {
-    /* Enter did not send. Clear it rather than leave a draft for the next
-       message to be spliced into — the listing is lost either way, and a lost
-       listing is recoverable where a corrupted channel post is not. */
-    await page.keyboard.press('ControlOrMeta+A');
-    await page.keyboard.press('Backspace');
-    return { sent: false, carded, cardMs, error: 'Enter did not send — the message was still in the box afterwards' };
+/** The newest message in the open conversation: its id and its labels. */
+async function newestMessage(page) {
+  return page.evaluate(() => {
+    const all = document.querySelectorAll('#main [data-testid^="conv-msg-"]');
+    const last = all[all.length - 1];
+    if (!last) return { id: null, labels: [] };
+    return {
+      id: last.getAttribute('data-testid'),
+      labels: [...last.querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label')),
+    };
+  });
+}
+
+/** Close the photo editor without sending what is in it. */
+async function discardEditor(page) {
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(800);
+  const discard = page.getByRole('button', { name: /^Discard$/i });
+  if (await discard.count()) await discard.first().click({ timeout: 10_000 });
+}
+
+/** How long the photo editor gets to open, and to close after Enter. */
+export const CARD_EDITOR_MS = 15_000;
+/** How long an attached card gets to reach "Sent". Measured at ~3s. */
+export const DELIVER_MS = 60_000;
+export const DELIVER_POLL_MS = 500;
+
+/**
+ * Post one message as its card, uploaded as a photo, with the message as the
+ * caption — the way Telegram's sendPhoto does.
+ *
+ * WHY NOT THE LINK PREVIEW ANY MORE. From the evening of 29 Sep 2026 WhatsApp
+ * stopped building previews for this linked device: github.com and vercel.com
+ * came back as the same bare "domain / url / domain" box as a job page, in a
+ * headless window and a visible one, with "Turn off link previews" OFF and no
+ * request blocked. The preview is fetched over WhatsApp's own websocket, so
+ * nothing on our side can fix it — and every post went out bare. The card is
+ * ours; attaching it cannot be refused by a preview service.
+ *
+ * ONLY A MESSAGE THAT REACHES "Sent" COUNTS. The old send counted a box that
+ * emptied after Enter and closed the browser 1.5s later; on 30 Sep that
+ * reported posts that WhatsApp marked "not sent". Here the newest bubble must
+ * be a NEW one and must say Sent before this returns, so closing the browser
+ * afterwards cannot cut an upload short. Failed or still pending at the
+ * deadline is reported as not sent, and the listing goes back on the queue.
+ */
+export async function sendCard(page, text, cardPath, {
+  warm = warmPreview, deliverMs = DELIVER_MS, editorMs = CARD_EDITOR_MS,
+} = {}) {
+  if (!cardPath || !existsSync(cardPath)) return { sent: false, error: 'no card image to attach' };
+
+  const cleared = await clearBox(page, composer(page));
+  if (!cleared.ok) return { sent: false, error: cleared.error };
+
+  /* The page must exist before a follower taps the link — see warmPreview.
+     Every failure is swallowed: a listing must post whether or not it worked. */
+  try { await warm(text); } catch { /* an optimisation must never cost a post */ }
+
+  const before = (await newestMessage(page)).id;
+  await page.locator('[aria-label="Attach"]').first().click({ timeout: 10_000 });
+  const chooser = page.waitForEvent('filechooser', { timeout: 10_000 });
+  await page.getByText(/^Photos (&|and) videos$/i).first().click({ timeout: 10_000 });
+  await (await chooser).setFiles(cardPath);
+
+  const editor = page.locator('[aria-label="Remove attachment"]').first();
+  await editor.waitFor({ state: 'visible', timeout: editorMs });
+  /* The caption box is the contenteditable that is NOT the composer. */
+  const caption = page.locator('div[contenteditable="true"]:not([data-tab="10"])').first();
+  const clean = await clearBox(page, caption);
+  if (!clean.ok) {
+    await discardEditor(page);
+    return { sent: false, error: `caption: ${clean.error}` };
   }
-  return { sent: true, carded, cardMs };
+  await typeLines(page, text);
+  await page.keyboard.press('Enter');
+
+  const shutBy = Date.now() + editorMs;
+  while (await editor.count() && Date.now() < shutBy) await page.waitForTimeout(DELIVER_POLL_MS);
+  if (await editor.count()) {
+    await discardEditor(page);
+    return { sent: false, error: 'Enter did not send — the photo editor was still open' };
+  }
+
+  const deadline = Date.now() + deliverMs;
+  let status;
+  for (;;) {
+    const m = await newestMessage(page);
+    status = m.id && m.id !== before ? bubbleStatus(m.labels) : 'not shown';
+    if (status === 'sent' || status === 'failed' || Date.now() >= deadline) break;
+    await page.waitForTimeout(DELIVER_POLL_MS);
+  }
+  if (status === 'sent') return { sent: true };
+  return {
+    sent: false,
+    error: status === 'failed' ? 'WhatsApp marked it "not sent"' : `still ${status} after ${Math.round(deliverMs / 1000)}s`,
+  };
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -973,6 +987,13 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   const batch = groups.slice(0, cap);
   const gap = Math.max(1500, Number(conf.sendGapMs ?? 6000));
 
+  /* EVERY POST IS ITS CARD. Drawn before WhatsApp is opened, with the same
+     renderer and into the same directory Telegram uses, so a card drawn for
+     one channel is reused by the other. A group is posted with its FIRST
+     role's card — the role its first link names. A group with no card is not
+     posted bare: it waits on the queue (his call, 30 Sep 2026). */
+  const cards = await renderCards(batch.map((g) => g.items[0].job), PATHS.ogCards).catch(() => new Map());
+
   let ctx = null;
   let sent = 0;
   /* EVERY EXIT PATH SAVES WHAT DID NOT GO OUT, which is why this is computed in
@@ -1005,16 +1026,19 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
       return { sent: 0, reason: 'target not found' };
     }
 
-    let carded = 0;
     let tried = 0;
+    let delivered = 0;
     for (const group of batch) {
       const region = regionOf(group.code);
-      const r = await sendOne(page, composeWhatsAppGroup(group.items.map((i) => i.job), region));
+      const card = cards.get(String(group.items[0].id));
+      const r = card
+        ? await sendCard(page, composeWhatsAppGroup(group.items.map((i) => i.job), region), card)
+        : { sent: false, error: 'no card could be drawn, so it waits rather than going out bare' };
       tried += 1;
-      /* Only a send that was PROVEN to leave the box counts. It used to be
-         counted unconditionally, so a listing that never went out was reported
-         as posted — and the run that stranded it went on to corrupt the next
-         message with the draft it left behind.
+      /* Only a send that was PROVEN to reach "Sent" counts (see sendCard). It
+         used to be counted unconditionally, so a listing that never went out
+         was reported as posted — and the run that stranded it went on to
+         corrupt the next message with the draft it left behind.
 
          ONE MESSAGE CARRIES THE WHOLE GROUP, so every id in it is settled
          together: the message either left the composer or it did not, and a
@@ -1024,10 +1048,7 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
       if (r.sent) {
         sent += group.items.length;
         for (const i of group.items) posted.add(i.id);
-        if (r.carded) carded += 1;
-        /* How long the card was waited for, so a preview that is merely slow
-           can be told apart from one that never arrives. */
-        else log.debug(`WhatsApp: no preview card for ${group.company || 'a listing'} after ${Math.round((r.cardMs ?? 0) / 1000)}s.`);
+        delivered += 1;
       }
       else log.warn(`WhatsApp: ${group.company || 'a listing'} was not posted — ${r.error}`);
       if (tried < batch.length) await sleep(gap);
@@ -1035,11 +1056,10 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
     /* Counted in LISTINGS, not groups — it is what the reader of the log wants
        to know, and it is what goes back on the queue. */
     const held = mine.length - batch.reduce((n, g) => n + g.items.length, 0);
-    /* The card count is reported even when every one worked. A preview that
-       silently stops appearing is invisible otherwise — which is exactly how
-       the first posts went out bare — and the same reason the apply-link
-       tripwire prints its ratio on every run. */
-    log.ok(`WhatsApp: posted ${sent} listing(s) in ${tried} message(s) to "${conf.target}" (${carded}/${tried} with a preview card)`
+    /* Delivered out of tried, even when every one worked — a send that
+       silently stops arriving is invisible otherwise, the same reason the
+       apply-link tripwire prints its ratio on every run. */
+    log.ok(`WhatsApp: posted ${sent} listing(s) in ${delivered} of ${tried} message(s) to "${conf.target}", each with its card`
       + `${held ? ` — ${held} held for the next run` : ''}.`);
   } catch (err) {
     log.warn(`WhatsApp: ${err.message.split('\n')[0]} — ${sent} posted before it stopped.`);
