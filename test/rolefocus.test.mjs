@@ -142,6 +142,15 @@ console.log('\n== nothing is taken off the site for its discipline ==');
 
 console.log('\n== a manager title is not an entry-level job ==');
 check('Amgen\'s manager role', entryLevelTitleRefusal('Manager, Agentic AI Business Solutions, Neural Nexus'), 'entry-level: manager title');
+// 30 Sep 2026: bank grades that reached India's Full-time tab.
+check('an AVP grade is senior', entryLevelTitleRefusal('Infrastructure Engineer, AVP'), 'entry-level: senior title');
+check('spelled out too', entryLevelTitleRefusal('Assistant Vice President - Backend'), 'entry-level: senior title');
+check('a Team Leader is senior', entryLevelTitleRefusal('Team Leader'), 'entry-level: senior title');
+check('so is a Project Leader', entryLevelTitleRefusal('Project Leader'), 'entry-level: senior title');
+check('and a Discipline Design Leader', entryLevelTitleRefusal('Discipline Design Leader'), 'entry-level: senior title');
+// Mu Sigma's fresher programme is called "Apprentice Leader": not a grade.
+check('an Apprentice Leader is NOT refused', entryLevelTitleRefusal('Apprentice Leader'), null);
+check('nor is a word that merely contains avp', entryLevelTitleRefusal('Javpro Developer'), null);
 check('an Indian IT "Assistant Manager"', entryLevelTitleRefusal('Assistant Manager - Data Engineering'), 'entry-level: manager title');
 check('a senior title still says senior', entryLevelTitleRefusal('Senior Software Engineer'), 'entry-level: senior title');
 check('an associate product manager is a graduate role', entryLevelTitleRefusal('Associate Product Manager'), null);
