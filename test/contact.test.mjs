@@ -22,7 +22,7 @@ import { mkdtempSync, rmSync, existsSync, readFileSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { renderContactPage, writePages, CONTACT_EMAIL } from '../src/pages.js';
+import { renderContactPage, renderAboutPage, writePages, CONTACT_EMAIL } from '../src/pages.js';
 import { publishedPaths } from '../src/publish.js';
 import { regionOf } from '../src/regions.js';
 
@@ -186,6 +186,30 @@ console.log('\n== THE MARKUP SAYS WHO WE ARE ==');
      inventing one is the same class of error as an invented stipend. */
   check('and inventing no phone', ld.telephone, undefined);
   check('nor an office', ld.address, undefined);
+}
+
+console.log('\n== /about: the same single root page, 30 Sep 2026 ==');
+{
+  const IN_ = regionOf('IN');
+  const about = renderAboutPage({ region: IN_ });
+  ok('it is indexable', !/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(about));
+  ok('it names itself canonical at the root', about.includes('<link rel="canonical" href="https://interndoor.com/about">'));
+  const ld = JSON.parse(about.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? 'null');
+  check('its markup is an AboutPage about InternDoor', [ld?.['@type'], ld?.mainEntity?.name, ld?.mainEntity?.email], ['AboutPage', 'InternDoor', CONTACT_EMAIL]);
+  check('and invents no phone or office', [ld?.mainEntity?.telephone, ld?.mainEntity?.address], [undefined, undefined]);
+  /* The site does not name where listings come from (§11). Read the VISIBLE
+     text only: a comment naming a source to warn against it is not a leak. */
+  const visible = about.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ');
+  check('it names no listing source', ['LinkedIn', 'Greenhouse', 'Lever', 'Ashby', 'Workday', 'SmartRecruiters', 'scrape'].filter((w) => new RegExp(`\\b${w}`, 'i').test(visible)), []);
+  ok('it is in publishedPaths', publishedPaths().includes('web/public/about.html'));
+  const dir = mkdtempSync(join(tmpdir(), 'interndoor-about-'));
+  writePages([], dir, [], { region: IN_ });
+  ok('the root render writes it', existsSync(join(dir, 'about.html')));
+  const sm = existsSync(join(dir, 'sitemap.xml')) ? readFileSync(join(dir, 'sitemap.xml'), 'utf8') : '';
+  ok('and lists it in the root sitemap', sm.includes('<loc>https://interndoor.com/about</loc>'));
+  const any = existsSync(join(dir, 'alerts.html')) ? readFileSync(join(dir, 'alerts.html'), 'utf8') : '';
+  ok('generated pages link it root-relative in the footer', any.includes('<a href="/about">About</a>'));
+  rmSync(dir, { recursive: true, force: true });
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
