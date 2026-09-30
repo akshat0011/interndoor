@@ -212,6 +212,10 @@ try {
   check('the homepage links the role pages', home.includes('<b>By role:</b>'), true);
   check('the homepage links the city pages', home.includes('<b>By city:</b>'), true);
   check('and the role index', home.includes('<a href="/roles">All&nbsp;roles&nbsp;→</a>'), true);
+  const org = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'].find((x) => x['@type'] === 'Organization');
+  check('the Organization logo is at least 112px (logo-512)', org.logo, 'https://interndoor.com/logo-512.png');
+  check('its sameAs names the LinkedIn company page', org.sameAs.includes('https://www.linkedin.com/company/interndoorhq/'), true);
+  check('and never a personal LinkedIn profile', org.sameAs.some((u) => /linkedin\.com\/in\//.test(u)), false);
   check('published: web/public/roles is in the allowlist', publishedPaths().includes('web/public/roles'), true);
 
   const jobFiles = readdirSync(join(dir, 'jobs')).filter((f) => !readFileSync(join(dir, 'jobs', f), 'utf8').includes('http-equiv="refresh"'));

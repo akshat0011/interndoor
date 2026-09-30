@@ -3913,6 +3913,8 @@ ${foot({
  * domain. A second spelling of it anywhere is a mailbox nobody reads.
  */
 export const CONTACT_EMAIL = 'akshat@interndoor.com';
+/** The brand's LinkedIn company page (vanity `interndoorhq`), for Organization sameAs. */
+export const ORG_LINKEDIN = 'https://www.linkedin.com/company/interndoorhq/';
 
 /**
  * /contact — the one page that says a person is behind this.
@@ -4239,10 +4241,16 @@ function homeHead(region, alternates, channels = [], live = []) {
         '@id': `${SITE}/#organization`,
         name: 'InternDoor',
         url: `${SITE}/`,
-        logo: `${SITE}/favicon-96.png`,
+        /* 512px: Google wants an organization logo of at least 112px, and
+           favicon-96 was under it. */
+        logo: `${SITE}/logo-512.png`,
         description: `InternDoor lists engineering internships and ${fw} jobs ${region.inName} within minutes of them going live.`,
         areaServed: { '@type': 'Country', name: region.name },
-        sameAs: channels.filter((c) => c.url).map((c) => c.url),
+        /* The channels, plus the LinkedIn company page — the one profile that
+           is the brand's own on every board (never his personal account).
+           engage.js reads this list for channels through an anchored host
+           test, so a linkedin.com entry is ignored there. */
+        sameAs: [...channels.filter((c) => c.url).map((c) => c.url), ORG_LINKEDIN],
       },
       {
         '@type': 'WebSite',
