@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/us/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in the US, listed within minutes of going live.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 30 Sep 2026 03:31:51 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 08:46:18 GMT</lastBuildDate>
+  <item>
+    <title>Knowledge Management and Training Project Intern — Graphcore</title>
+    <link>https://interndoor.com/us/jobs/graphcore-knowledge-management-and-training-project-intern-ats-greenhouse-graphcore-8857642002</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/graphcore-knowledge-management-and-training-project-intern-ats-greenhouse-graphcore-8857642002</guid>
+    <pubDate>Wed, 30 Sep 2026 08:46:18 GMT</pubDate>
+    <description>Company: Graphcore · Location: Austin, Texas, United States
+• Organize technical documentation and training materials for data center teams
+• Use collaboration tools to maintain and improve knowledge resources
+• Work with engineers and experts to translate complex info into clear content</description>
+  </item>
+  <item>
+    <title>Digital Twin Engineering Intern — Graphcore</title>
+    <link>https://interndoor.com/us/jobs/graphcore-digital-twin-engineering-intern-ats-greenhouse-graphcore-8857640002</link>
+    <guid isPermaLink="true">https://interndoor.com/us/jobs/graphcore-digital-twin-engineering-intern-ats-greenhouse-graphcore-8857640002</guid>
+    <pubDate>Wed, 30 Sep 2026 08:43:24 GMT</pubDate>
+    <description>Company: Graphcore · Location: Austin, Texas, United States
+• Build 3d models of labs and equipment using omniverse and openusd
+• Organize engineering data into reusable 3d assets and structured scenes
+• Compare digital models with physical environments to find discrepancies</description>
+  </item>
   <item>
     <title>Software Engineering Intern (Summer 2027) — Collins Aerospace</title>
     <link>https://interndoor.com/us/jobs/collins-aerospace-software-engineering-intern-summer-2027-4473705222</link>
@@ -486,26 +506,6 @@
 • Recreate real-world application environments to verify and troubleshoot customer issues
 • Develop Python scripts to manage system features and integrate products into customer networks
 • Collaborate with cross-functional teams to solve product limitations and support network integration</description>
-  </item>
-  <item>
-    <title>Systems Quality Engineer II (Co-op) - United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-systems-quality-engineer-ii-co-op-united-states-4473550359</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-systems-quality-engineer-ii-co-op-united-states-4473550359</guid>
-    <pubDate>Tue, 29 Sep 2026 22:59:12 GMT</pubDate>
-    <description>Company: Cisco · Location: Maynard, MA
-• Design and verify high-performance communications processors and ASICs
-• Work with VLSI techniques and deep submicron silicon processes
-• Collaborate with cross-functional teams on next-gen silicon designs</description>
-  </item>
-  <item>
-    <title>Systems Quality Engineer I (Co-op) - United States — Cisco</title>
-    <link>https://interndoor.com/us/jobs/cisco-systems-quality-engineer-i-co-op-united-states-4473553226</link>
-    <guid isPermaLink="true">https://interndoor.com/us/jobs/cisco-systems-quality-engineer-i-co-op-united-states-4473553226</guid>
-    <pubDate>Tue, 29 Sep 2026 22:58:28 GMT</pubDate>
-    <description>Company: Cisco · Location: Maynard, MA
-• Design and verify high-performance communications processors and ASICs for Cisco products
-• Work with top industry talent on system architecture, network processors, and Ethernet processing
-• Use VHDL/Verilog, EDA tools, and VLSI techniques in deep submicron silicon processes</description>
   </item>
 </channel>
 </rss>
