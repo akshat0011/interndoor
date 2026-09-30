@@ -241,8 +241,10 @@ console.log('\n== the wiring ==');
   /* The shelf is roleCategory's; since 30 Sep 2026 a Software role may then
      move to Misc behind titles.moveToMisc (src/titles.js shelfMove). */
   check('publish writes the shelf onto every row',
-    /const shelf = roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\)\.category;/.test(pub)
-      && /return \(cfg\.titles\?\.moveToMisc \? shelfMove\(shelf, row\.discipline, row\.title\) : null\) \?\? shelf;/.test(pub), true);
+    /const rc = roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\);/.test(pub)
+      && /category: \(cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title\) : null\) \?\? rc\.category,/.test(pub), true);
+  /* The role pages (src/rolepages.js) read the family decided in the SAME call. */
+  check('and the family, from the same roleCategory call', /family: rc\.family,/.test(pub), true);
   check('publish settles one shelf per role before anything reads it',
     /const publicJobs = settleShelves\(shelved\)/.test(pub), true);
   check('publish no longer holds anything back for its discipline', /roleFocusVerdict|droppedOffFocus/.test(pub), false);
