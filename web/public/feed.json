@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honasa-consumer-ltd-ai-intern-4472919251",
+      "url": "https://interndoor.com/jobs/honasa-consumer-ltd-ai-intern-4472919251",
+      "title": "AI Intern — Honasa Consumer Ltd.",
+      "content_text": "Company: Honasa Consumer Ltd. · Location: Gurugram, Haryana, India\n• Build ai-powered automations and workflows to reduce manual tasks\n• Use python and sql to prepare and analyze data for ai applications\n• Work with apis and data pipelines to connect ai solutions to business processes",
+      "date_published": "2026-10-01T10:32:51.547Z",
+      "authors": [
+        {
+          "name": "Honasa Consumer Ltd."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4472524934",
       "url": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4472524934",
       "title": "Data Engineer — Dentsu Global Services",
@@ -26,6 +38,18 @@
       "authors": [
         {
           "name": "Fractal"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synopsys-inc-high-speed-serial-links-design-and-verification-apprenticeship-4474144684",
+      "url": "https://interndoor.com/jobs/synopsys-inc-high-speed-serial-links-design-and-verification-apprenticeship-4474144684",
+      "title": "High-Speed Serial Links Design Apprentice — Synopsys Inc",
+      "content_text": "Company: Synopsys Inc · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Design and verify high-speed serial links for data transfer in consumer and enterprise products\n• Use Verilog/SystemVerilog for digital/analog design in sub-micron fabrication\n• Collaborate on inter-chip and intra-chip communication systems with global teams",
+      "date_published": "2026-10-01T10:22:13.707Z",
+      "authors": [
+        {
+          "name": "Synopsys Inc"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Sanofi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055",
-      "url": "https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055",
-      "title": "Technology Solution Engineer — Sanofi",
-      "content_text": "Company: Sanofi · Location: Hyderabad, Telangana, India\n• Design and build cloud solutions using Azure, AWS, Terraform, and Ansible\n• Mentor junior engineers and lead cross-team technical delivery\n• Ensure operational readiness with monitoring, security, and compliance",
-      "date_published": "2026-09-30T17:13:57.262Z",
-      "authors": [
-        {
-          "name": "Sanofi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028",
-      "url": "https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028",
-      "title": "Software Engineer — Broadridge India",
-      "content_text": "Company: Broadridge India · Location: Hyderabad, Telangana, India\n• Develop and maintain software solutions using COBOL, JCL, DB2, VSAM, and CICS\n• Collaborate in agile environments to implement system improvements and troubleshoot issues\n• Work flexible UK shifts in a team focused on technology and business process optimization",
-      "date_published": "2026-09-30T17:00:48.940Z",
-      "authors": [
-        {
-          "name": "Broadridge India"
         }
       ]
     }
