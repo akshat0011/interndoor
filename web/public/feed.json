@@ -18,30 +18,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/accenture-services-pvt-ltd-app-automation-eng-analyst-4472526699",
-      "url": "https://interndoor.com/jobs/accenture-services-pvt-ltd-app-automation-eng-analyst-4472526699",
-      "title": "App Automation Eng Analyst — Accenture services Pvt Ltd",
-      "content_text": "Company: Accenture services Pvt Ltd · Location: Gurugram, Haryana, India\n• Design and test automation workflows using RPA tools\n• Develop bots and code in C, VB.NET, Python for process automation\n• Collaborate with teams to implement and support RPA solutions",
-      "date_published": "2026-10-01T09:36:37.872Z",
-      "authors": [
-        {
-          "name": "Accenture services Pvt Ltd"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-services-pvt-ltd-forward-deployed-engineer-4472542125",
-      "url": "https://interndoor.com/jobs/accenture-services-pvt-ltd-forward-deployed-engineer-4472542125",
-      "title": "Forward Deployed Engineer — Accenture services Pvt Ltd",
-      "content_text": "Company: Accenture services Pvt Ltd · Location: Gurugram, Haryana, India · Duration: 3 to 5 years\n• Design and deploy AI infrastructure across cloud and hybrid platforms\n• Leverage Python for automation, data pipelines, and AI agent development\n• Collaborate with client teams to modernize legacy systems and enable AI scalability",
-      "date_published": "2026-10-01T09:35:25.003Z",
-      "authors": [
-        {
-          "name": "Accenture services Pvt Ltd"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/numerator-qa-engineer-1-mywp-core-sit-4474140561",
       "url": "https://interndoor.com/jobs/numerator-qa-engineer-1-mywp-core-sit-4474140561",
       "title": "QA Engineer 1 - MyWP Core SIT — Numerator",
@@ -599,6 +575,30 @@
       "title": "Science Annotation Analyst — Amazon",
       "content_text": "Company: Amazon · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build data pipelines to extract and validate annotation metrics from AWS and SageMaker\n• Create dashboards and custom annotation interfaces using Python and web frameworks\n• Automate workflows and manage secure cross-account AWS integrations with IAM and Lambda",
       "date_published": "2026-09-30T18:30:55.117Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-site-reliability-engineer-4465015599",
+      "url": "https://interndoor.com/jobs/cisco-site-reliability-engineer-4465015599",
+      "title": "Site Reliability Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Build and optimize cloud infrastructure for high availability and scalability\n• Use Python, Bash, Go, and Kubernetes for automation and system management\n• Collaborate with cross-functional teams on secure, scalable solutions\n• Monitor systems, troubleshoot issues, and contribute to postmortem reviews",
+      "date_published": "2026-09-30T18:30:45.837Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-ftc-iesp-merchant-tech-4464637843",
+      "url": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-ftc-iesp-merchant-tech-4464637843",
+      "title": "Software Dev Engineer I, L4 FTC, IESP Merchant Tech — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 1 to 3 years\n• Write secure, stable, testable code for product features\n• Use data structures and algorithms to solve real-world problems\n• Collaborate on test plans and design discussions with senior engineers",
+      "date_published": "2026-09-30T18:30:35.870Z",
       "authors": [
         {
           "name": "Amazon"
