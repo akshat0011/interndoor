@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 19:09:32 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 19:45:14 GMT</lastBuildDate>
+  <item>
+    <title>Trainee Engineer — GE HealthCare</title>
+    <link>https://interndoor.com/jobs/ge-healthcare-trainee-engineer-4474392982</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ge-healthcare-trainee-engineer-4474392982</guid>
+    <pubDate>Thu, 01 Oct 2026 19:45:14 GMT</pubDate>
+    <description>Company: GE HealthCare · Location: Bengaluru, Karnataka, India
+• Develop embedded software for X-ray generators using C and C++
+• Use MATLAB/Simulink for control application simulation
+• Work with MCUs/DSPs and RTOS in hardware integration</description>
+  </item>
   <item>
     <title>Solution Engineer — Etraveli Group</title>
     <link>https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716</link>
@@ -499,17 +509,6 @@
 • Troubleshoot hardware and software issues in fulfillment centers
 • Support network engineering, data cabling, and telecom systems
 • Mentor technical support technicians and manage daily operations</description>
-  </item>
-  <item>
-    <title>Cloud Platform Engineer — Dyson</title>
-    <link>https://interndoor.com/jobs/dyson-platform-engineer-google-cloud-platform-4474330231</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/dyson-platform-engineer-google-cloud-platform-4474330231</guid>
-    <pubDate>Thu, 01 Oct 2026 15:15:00 GMT</pubDate>
-    <description>Company: Dyson · Location: Bengaluru, Karnataka, India
-• Design cloud infrastructure and shared platform services on gcp
-• Build ci/cd pipelines and automate deployment with terraform
-• Collaborate with security teams on compliance and governance
-• Support cloud networking and operational tooling</description>
   </item>
 </channel>
 </rss>
