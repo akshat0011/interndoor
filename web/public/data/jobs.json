@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790896524683,
+ "generatedAt": 1790896693467,
  "region": "IN",
  "regionName": "India",
- "count": 1012,
- "techCount": 1012,
+ "count": 1013,
+ "techCount": 1013,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -488,7 +488,7 @@
    "postedText": "12 minutes ago",
    "postedAt": 1790893983003,
    "firstSeenAt": 1790894703010,
-   "lastSeenAt": 1790896477651,
+   "lastSeenAt": 1790896575637,
    "url": "https://www.linkedin.com/jobs/view/4472821905/",
    "applyUrl": "https://easyapply.jobs/r/HGXtFFH27l3JrHzZoG3",
    "description": null,
@@ -499,6 +499,58 @@
    ],
    "category": "software",
    "family": "ai_ml",
+   "region": "IN"
+  },
+  {
+   "id": "4472838012",
+   "title": "Data Reporting SQL Tableau",
+   "slugTitle": "Data Reporting- SQL/Tableau",
+   "company": "Citi",
+   "matchedWatchlist": "Citi",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/citi.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "tableau"
+   ],
+   "summary": "This role involves analyzing operational data to support business decisions, building dashboards and reports using SQL and Tableau, and collaborating with cross-functional teams to improve processes and automate workflows. It suits students with a background in data analysis and a strong interest in business operations.",
+   "bullets": [
+    "Analyze operational data to identify trends and support business decisions",
+    "Build dashboards and reports using SQL and Tableau for stakeholder insights",
+    "Collaborate with cross-functional teams to improve processes and automate workflows"
+   ],
+   "roleLabel": "Business Analytics",
+   "degreeLevel": "UG",
+   "degreeText": "Bachelors",
+   "keySkills": [
+    "sql",
+    "tableau",
+    "python",
+    "ssis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790892992137,
+   "firstSeenAt": 1790896592150,
+   "lastSeenAt": 1790896592150,
+   "url": "https://www.linkedin.com/jobs/view/4472838012/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4472838012/",
+   "description": null,
+   "roleFingerprint": "13417c17cd",
+   "cardFacts": [
+    "Chennai"
+   ],
+   "category": "misc",
+   "family": "analytics",
    "region": "IN"
   },
   {
@@ -547,7 +599,7 @@
    "postedText": "21 minutes ago",
    "postedAt": 1790891584183,
    "firstSeenAt": 1790892844193,
-   "lastSeenAt": 1790894693150,
+   "lastSeenAt": 1790896575637,
    "url": "https://www.linkedin.com/jobs/view/4472820817/",
    "applyUrl": "https://easyapply.jobs/r/KFwV3gK27l35aK4UkNEP",
    "description": null,
@@ -33670,7 +33722,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1790885856170,
+   "lastSeenAt": 1790896614101,
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
    "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/496914?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
    "description": null,
