@@ -22,7 +22,7 @@ import { mkdtempSync, rmSync, existsSync, readFileSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { renderContactPage, renderAboutPage, writePages, CONTACT_EMAIL } from '../src/pages.js';
+import { renderContactPage, renderAboutPage, writePages, CONTACT_EMAIL, PREFERRED_SOURCE_URL } from '../src/pages.js';
 import { publishedPaths } from '../src/publish.js';
 import { regionOf } from '../src/regions.js';
 
@@ -236,6 +236,27 @@ console.log('\n== about, contact and the theme sit in one header menu (1 Oct 202
     check(`${f} closes the menu on a click outside it`, /details\.bar-menu\[open\][\s\S]{0,120}!open\.contains\(e\.target\)/.test(js), true);
     check(`${f} closes it on Escape`, /e\.key !== 'Escape'[\s\S]{0,160}details\.bar-menu\[open\]/.test(js), true);
   }
+}
+
+console.log('\n== the "preferred source on Google" badge (1 Oct 2026) ==');
+{
+  const WANT = 'https://www.google.com/preferences/source?q=interndoor.com';
+  check('the deeplink is Google\'s documented form, for this domain', PREFERRED_SOURCE_URL, WANT);
+  const board = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const page = renderAboutPage({ region: regionOf('IN') });
+  for (const [name, html] of [['the board', board], ['a generated page', page]]) {
+    const footAt = html.lastIndexOf('<footer class="foot">');
+    const footer = footAt < 0 ? '' : html.slice(footAt, html.indexOf('</footer>', footAt));
+    check(`${name}: the footer carries the badge`, footer.includes(`<p class="pref-src"><a href="${WANT}" target="_blank" rel="noopener">`), true);
+    check(`${name}: exactly once`, html.split('/preferences/source?q=').length - 1, 1);
+    check(`${name}: no UTM on Google's URL`, /preferences\/source\?q=[^"]*utm_/.test(html), false);
+    check(`${name}: and Google's button script is NOT loaded (CSP is self + hashes)`, /news\.google\.com\/swg/.test(html), false);
+  }
+  const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
+  check('the pill rule is in the stylesheet', /\.pref-src a \{[^}]*border-radius: 999px/.test(css), true);
+  check('its star has no spoken text', css.includes(".pref-src a::before { content: '\\2605' / '';"), true);
+  check('the board loads the stylesheet version that has the rule', board.includes('/styles.css?v=16'), true);
+  check('and so do generated pages', page.includes('/styles.css?v=16'), true);
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);

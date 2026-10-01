@@ -92,7 +92,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=15">
+<link rel="stylesheet" href="/styles.css?v=16">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -402,6 +402,10 @@ Engineering internships &amp; entry-level jobs
            and no prefixed copy is written or ever will be. See
            renderContactPage in src/pages.js. -->
       <p class="dim"><a href="/about">How InternDoor works</a> · <a href="/contact">Contact InternDoor</a></p>
+      <!-- Google's preferred-source deeplink as a plain link, never Google's
+           button script (CSP is self + hashes). Kept byte-identical to
+           foot() in src/pages.js — test/contact.test.mjs pins both. -->
+      <p class="pref-src"><a href="https://www.google.com/preferences/source?q=interndoor.com" target="_blank" rel="noopener">Add InternDoor as a preferred source on Google</a></p>
       <!-- Static, in the HTML, deliberately. The listings above are built by
            JavaScript from jobs.json, so a crawler that does not run scripts finds
            no links to follow and the whole site is a dead end. The employers
