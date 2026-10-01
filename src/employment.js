@@ -223,7 +223,24 @@ export function entryLevelTitleRefusal(title) {
   // word is a seniority SENIOR knows. A title that also says entry-level or
   // graduate is a programme open to both, and passes.
   if (EXPERIENCE_WORD.test(t) && !/\bentry[-\s]?level\b/i.test(t) && !GRADUATE_WORD.test(t)) return 'entry-level: experienced title';
+  /* YEARS IN THE TITLE (1 Oct 2026). Cisco's "… | 7 to 10 Years | Bangalore",
+     "… 8-14 Years", "(4 to 8 Yrs)", UST's "6+ Years" and PhonePe's "(4 to 8
+     Years)" were live on the Full-time tab: the prose read missed them, and the
+     title says it outright. The MINIMUM decides, against the same
+     ENTRY_MAX_YEARS the prose uses, so "0-2 years" and "1-3 years" pass. */
+  const min = titleMinYears(t);
+  if (min != null && min >= ENTRY_MAX_YEARS) return `entry-level: asks ${min}+ years in the title`;
   return null;
+}
+
+/** The smallest number of years a title states ("5+ years", "4 to 8 Yrs"), or null. A 4-digit year is never one. */
+export function titleMinYears(title) {
+  let min = null;
+  for (const m of String(title ?? '').matchAll(/(?<![\d.])(\d{1,2})\s*(?:\+|(?:to|-|–)\s*\d{1,2})?\s*(?:years?|yrs?)\b/gi)) {
+    const n = Number(m[1]);
+    if (min == null || n < min) min = n;
+  }
+  return min;
 }
 
 /**
