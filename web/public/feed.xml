@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 12:22:15 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 12:44:58 GMT</lastBuildDate>
+  <item>
+    <title>Hardware Intern — Robotics — Instawork</title>
+    <link>https://interndoor.com/jobs/instawork-hardware-intern-robotics-and-ai-4456198009</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/instawork-hardware-intern-robotics-and-ai-4456198009</guid>
+    <pubDate>Thu, 01 Oct 2026 12:44:58 GMT</pubDate>
+    <description>Company: Instawork · Location: Bengaluru, Karnataka, India
+• Maintain and troubleshoot hundreds of Instacore units capturing real-world data
+• Work with robotics team on hardware prototyping and field deployments
+• Travel across India and APAC to set up and support hardware hubs</description>
+  </item>
   <item>
     <title>Data Scientist — UPS</title>
     <link>https://interndoor.com/jobs/ups-data-scientist-4248975118</link>
@@ -505,16 +515,6 @@
 • Build and manage scalable data pipelines using Databricks, Snowflake, and Spark
 • Automate operational processes with GitLab, Airflow, and AWS tools
 • Collaborate with teams to ensure system reliability and performance</description>
-  </item>
-  <item>
-    <title>AI Research Intern — Lexsi Labs</title>
-    <link>https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688</guid>
-    <pubDate>Wed, 30 Sep 2026 20:58:12 GMT</pubDate>
-    <description>Company: Lexsi Labs · Location: India · Duration: 6 months
-• Implement post-training alignment methods for foundation models
-• Work on agentic systems for automation and safety mechanisms
-• Contribute to tabular foundation models and inference optimization</description>
   </item>
 </channel>
 </rss>
