@@ -212,5 +212,31 @@ console.log('\n== /about: the same single root page, 30 Sep 2026 ==');
   rmSync(dir, { recursive: true, force: true });
 }
 
+console.log('\n== about, contact and the theme sit in one header menu (1 Oct 2026) ==');
+{
+  const menuOf = (html) => {
+    const at = html.indexOf('<details class="bar-menu">');
+    return at < 0 ? '' : html.slice(at, html.indexOf('</details>', at));
+  };
+  const board = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const page = renderAboutPage({ region: regionOf('IN') });
+  for (const [name, html] of [['the board', board], ['a generated page', page]]) {
+    const m = menuOf(html);
+    check(`${name}: the menu is in the header`, m.length > 200 && html.indexOf('<details class="bar-menu">') < html.indexOf('</header>'), true);
+    check(`${name}: it links /about, root-relative`, m.includes('href="/about"'), true);
+    check(`${name}: it links /contact, root-relative`, m.includes('href="/contact"'), true);
+    check(`${name}: the theme switch is inside it`, m.includes('id="theme-toggle"'), true);
+    check(`${name}: and there is no second theme switch`, (html.match(/id="theme-toggle"/g) ?? []).length, 1);
+    check(`${name}: no inline script in it`, /<script/.test(m), false);
+  }
+  const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
+  check('the summary marker is hidden (both engines)', css.includes('.bar-menu > summary::-webkit-details-marker { display: none; }') && css.includes(".bar-menu > summary::marker { content: ''; }"), true);
+  for (const f of ['app.js', 'page.js']) {
+    const js = readFileSync(new URL(`../web/public/${f}`, import.meta.url), 'utf8');
+    check(`${f} closes the menu on a click outside it`, /details\.bar-menu\[open\][\s\S]{0,120}!open\.contains\(e\.target\)/.test(js), true);
+    check(`${f} closes it on Escape`, /e\.key !== 'Escape'[\s\S]{0,160}details\.bar-menu\[open\]/.test(js), true);
+  }
+}
+
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
 process.exit(fail === 0 ? 0 : 1);

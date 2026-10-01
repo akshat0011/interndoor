@@ -14,6 +14,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { publishedPaths } from '../src/publish.js';
+import { CONTACT_EMAIL } from '../src/pages.js';
 import {
   parseFeedback, cleanMessage, cleanPath, rateLimited, save, store,
   LIST_KEY, KEEP, MIN_MESSAGE, MAX_MESSAGE, REGIONS, STORE_TIMEOUT_MS,
@@ -309,25 +310,12 @@ console.log('\n== THE HOMEPAGE MARKUP ==');
      allowlist, which is why the scheduler has to be stopped to edit it. */
   const home = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
 
-  check('the board carries the feedback form', /<form class="fb" hidden>/.test(home), true);
-  /* SHIPS HIDDEN. Without the attribute a reader with no JavaScript sees a box
-     whose button does nothing — the form has no action to fall back to. */
-  check('the form ships hidden', /class="fb"[^>]*\shidden/.test(home), true);
+  /* JUST THE ADDRESS SINCE 1 OCT 2026 (his call): the dialog's form is gone and
+     it gives the mailbox, spelled exactly as /contact spells it. */
+  check('the board carries no feedback form any more', /<form class="fb"/.test(home), false);
+  check('the dialog gives the address as a mailto link', home.includes(`href="mailto:${CONTACT_EMAIL}?subject=`), true);
   check('the client is loaded', /<script defer src="\/feedback\.js"><\/script>/.test(home), true);
   check('the honeypot is present and aria-hidden', /class="sub-hp" aria-hidden="true"/.test(home), true);
-  check('the reply is a live region', /class="fb-msg" role="status" aria-live="polite"/.test(home), true);
-  /* type=button, not submit: the form has no action, and a submit would be a
-     navigation. feedback.js binds the click. */
-  check('the send control is type=button', /class="fb-b" type="button"/.test(home), true);
-  check('the textarea is labelled', /class="fb-t" aria-label="Your feedback"/.test(home), true);
-  check('the email input is labelled', /class="fb-e"[^>]*aria-label=/.test(home), true);
-
-  /* THE CAP IS WRITTEN IN TWO PLACES — the endpoint and the markup — and this
-     is what stops them drifting. A maxlength above MAX_MESSAGE lets a reader
-     type a message the server will then refuse, after they have written it. */
-  const ml = home.match(/class="fb-t"[^>]*maxlength="(\d+)"/);
-  check('the textarea declares a maxlength', !!ml, true);
-  check('the maxlength equals MAX_MESSAGE', ml && Number(ml[1]), MAX_MESSAGE);
 
   /* THE ENTRY POINT IS IN THE MASTHEAD, NOT A BAND AT THE BOTTOM. His call,
      22 Sep 2026. ONE implementation: a button that opens the dialog, and no
@@ -398,7 +386,7 @@ console.log('\n== THE HOMEPAGE MARKUP ==');
   const dialogAt = home.indexOf('<div class="fb-veil"');
   const dialog = home.slice(dialogAt, home.indexOf('<footer class="foot">', dialogAt));
   check('the dialog block is non-empty', dialog.length > 400, true);
-  check('and really contains the form', /<form class="fb"/.test(dialog), true);
+  check('and really contains the mail link', /class="fb-b fb-go" href="mailto:/.test(dialog), true);
   check('it carries no inline script', /<script/.test(dialog), false);
   check('it carries no style attribute', /\sstyle="/.test(dialog), false);
 }
@@ -420,7 +408,8 @@ console.log('\n== THE CLIENT OPENS AND CLOSES IT ==');
      precedes the form in the DOM, so `focusable()[0]` focused Close — a reader
      who opened the box and pressed Space would have shut it again. Found by
      reading document.activeElement after a real click; the markup looked fine. */
-  check('focus lands in the textarea, not on Close', /querySelector\('\.fb-t'\) \?\? focusable\(\)\[0\]/.test(client), true);
+  check('focus lands on the mail link, not on Close', /querySelector\('\.fb-t'\) \?\? modal\.querySelector\('\.fb-go'\) \?\? focusable\(\)\[0\]/.test(client), true);
+  check('and the trap includes links', /querySelectorAll\('textarea, input, button, a\[href\]'\)/.test(client), true);
   check('the page is locked while open', /classList\.add\('fb-open-modal'\)/.test(client), true);
   check('and unlocked on close', /classList\.remove\('fb-open-modal'\)/.test(client), true);
 }

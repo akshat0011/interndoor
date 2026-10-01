@@ -93,6 +93,23 @@ document.addEventListener('click', function (e) {
   });
 }());
 
+/* ---------------- the header menu ---------------- */
+
+/* About, contact and the theme sit in a native <details> (1 Oct 2026), which
+   opens and closes with no script. This only closes it when the reader clicks
+   elsewhere or presses Escape, which <details> does not do by itself. */
+document.addEventListener('click', (e) => {
+  const open = document.querySelector('details.bar-menu[open]');
+  if (open && !open.contains(e.target)) open.open = false;
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const open = document.querySelector('details.bar-menu[open]');
+  if (!open) return;
+  open.open = false;
+  open.querySelector('summary')?.focus();
+});
+
 /* ---------------- relative time ---------------- */
 
 /* The markup carries an absolute date and a data-ago timestamp. The absolute

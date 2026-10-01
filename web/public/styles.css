@@ -348,6 +348,35 @@ a, button, summary, label, [role="button"], .row {
 :root:not([data-theme="light"]) .i-sun { display: none; }
 :root:not([data-theme="light"]) .i-moon { display: block; }
 
+/* ---------- the header menu: about, contact, theme (1 Oct 2026) ----------
+   Same disclosure as the region switch above — native <details>, no script to
+   open it — and the summary is a .ghost-btn, so it occupies exactly the slot
+   the theme button had and the masthead's measured width budget holds. */
+.bar-menu { position: relative; }
+.bar-menu > summary { list-style: none; }
+.bar-menu > summary::-webkit-details-marker { display: none; }
+.bar-menu > summary::marker { content: ''; }
+.bar-menu > summary:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+.bar-menu[open] > summary { color: var(--ink); border-color: color-mix(in oklab, var(--ink) 35%, transparent); }
+.bar-menu-list {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+  min-width: 190px; padding: 5px;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  box-shadow: 0 18px 40px -12px rgb(0 0 0 / .55);
+  display: flex; flex-direction: column; gap: 1px;
+  transform-origin: top right;
+  animation: rg-open .16s var(--snap) both;
+}
+.bar-menu-item {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 9px 10px; border: 0; border-radius: 3px; background: none;
+  color: var(--ink-2); text-decoration: none; text-align: left; cursor: pointer;
+  font: inherit; font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
+  transition: background .14s, color .14s;
+}
+.bar-menu-item:hover, .bar-menu-item:focus-visible { background: var(--card-2); color: var(--ink); outline: none; }
+.bar-menu-item svg { flex: none; }
+
 /* ---------- region switch ---------- */
 /* Upgraded from a plain dropdown once more than one region shipped: it is the
    control that changes WHICH BOARD you are on, so it should read as heavier
@@ -2120,6 +2149,11 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    local copy would be strictly weaker than an !important it can never beat, so
    no mutation could tell it from its own absence: surface, not coverage. */
 .fb-row { margin-top: 14px; }
+/* The address, since the form went (1 Oct 2026). A link carrying .fb-b is
+   inline by default and sat on top of the line above it; block + margin. */
+.fb-mail { margin-top: 16px; }
+.fb-mail .fb-b { display: inline-block; text-decoration: none; }
+.fb-sub a { color: var(--ink); }
 .fb-t {
   display: block; width: 100%; min-width: 0; box-sizing: border-box;
   min-height: 84px; resize: vertical;
