@@ -1332,7 +1332,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="InternDoor — new ${offerPhrase(region, { adjective: '', noun: 'roles' })}" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=15">
+<link rel="stylesheet" href="/styles.css?v=16">
 <link rel="stylesheet" href="/page.css">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/track.js"></script>
@@ -1507,6 +1507,22 @@ function signupForm(region, { heading = true } = {}) {
     </form>`;
 }
 
+/**
+ * Google's "preferred source" deeplink (1 Oct 2026). A reader who adds the
+ * site sees more of it in Top Stories and gets a "preferred" mark on it in AI
+ * Overviews and AI Mode — for that reader only, so it is a loyalty lever, not
+ * a ranking one. interndoor.com was checked in the tool and is listed.
+ *
+ * THE PLAIN LINK, NEVER GOOGLE'S BUTTON SCRIPT. The documented button is
+ * `news.google.com/swg/js/v1/publisher.js`, a third-party script on every
+ * page, and script-src here is 'self' plus hashes (§5): it would need a CSP
+ * change and still cost a request per page. This deeplink is the other form
+ * Google documents, and it needs nothing. No UTM: it is Google's URL.
+ */
+export const PREFERRED_SOURCE_URL = `https://www.google.com/preferences/source?q=${new URL(SITE).hostname}`;
+const preferredSourceLink = () =>
+  `<p class="pref-src"><a href="${PREFERRED_SOURCE_URL}" target="_blank" rel="noopener">Add InternDoor as a preferred source on Google</a></p>`;
+
 function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
   return `
 <section class="outro">
@@ -1529,6 +1545,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
     <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    ${preferredSourceLink()}
   </div>
 </footer>
 </body>

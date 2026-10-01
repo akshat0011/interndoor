@@ -1202,6 +1202,15 @@ html[data-boot] .boot-part {
    anti-pattern: it multiplies the contrast down invisibly, and the colour
    the design already chose was fine. */
 .dim { margin-top: 8px; }
+/* "Add InternDoor as a preferred source on Google" — a pill, so it reads as
+   the badge it is, but a plain link to Google's own page (src/pages.js,
+   PREFERRED_SOURCE_URL). The star is decoration: `/ ''` gives it no spoken
+   text, and an engine that does not know the syntax drops the star, not the
+   link. Without this stylesheet it is an ordinary footer link. */
+.pref-src { margin-top: 14px; }
+.pref-src a { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid var(--rule-2); border-radius: 999px; color: var(--ink); font-weight: 600; text-decoration: none; }
+.pref-src a::before { content: '\2605' / ''; color: var(--live); }
+.pref-src a:hover, .pref-src a:focus-visible { border-color: var(--live); }
 
 /* ---------- modal ---------- */
 
