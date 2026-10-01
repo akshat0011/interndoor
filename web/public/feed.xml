@@ -6,7 +6,29 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 00:34:04 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 01:26:02 GMT</lastBuildDate>
+  <item>
+    <title>MLOps/DevOps/CloudOps — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149</guid>
+    <pubDate>Thu, 01 Oct 2026 01:26:02 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Design and deploy ML models on AWS with CI/CD pipelines
+• Use Docker, Kubernetes, and IaC tools for scalable infrastructure
+• Collaborate with data scientists and engineers on ML workflows
+• Monitor and optimize cloud resources for security and reliability</description>
+  </item>
+  <item>
+    <title>Generative AI Engineer — Infosys</title>
+    <link>https://interndoor.com/jobs/infosys-ai-ml-engineer-generative-ai-ml-aws-4472392193</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-ai-ml-engineer-generative-ai-ml-aws-4472392193</guid>
+    <pubDate>Thu, 01 Oct 2026 01:25:57 GMT</pubDate>
+    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
+• Build RAG systems and integrate LLM APIs with AWS Bedrock and SageMaker
+• Develop ML models for churn and recommendation using MLOps practices
+• Work with vector databases and prompt engineering for generative AI
+• Collaborate on agentic AI projects with LangGraph and AWS services</description>
+  </item>
   <item>
     <title>Digital Associate, Ring Data Engineering Services — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4473974946</link>
@@ -493,26 +515,6 @@
 • Build AI apps with AWS Bedrock and Python frameworks like FastAPI
 • Design cloud systems using AWS services and optimize performance
 • Collaborate with data scientists and product teams on AI projects</description>
-  </item>
-  <item>
-    <title>Quality Assurance Intermediate — UPS</title>
-    <link>https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821</guid>
-    <pubDate>Wed, 30 Sep 2026 13:49:28 GMT</pubDate>
-    <description>Company: UPS · Location: Chennai, Tamil Nadu, India
-• Reviews and documents software applications
-• Uses test automation tools like selenium
-• Works on system integration and maintenance</description>
-  </item>
-  <item>
-    <title>Java Springboot Microservices — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243</guid>
-    <pubDate>Wed, 30 Sep 2026 13:45:40 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Support consulting teams in project phases from problem definition to deployment
-• Build POCs and create requirement specs from business needs
-• Collaborate with clients to identify challenges and deliverable solutions</description>
   </item>
 </channel>
 </rss>
