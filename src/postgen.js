@@ -19,7 +19,7 @@
  * codepoints; a local 8b model asked to emit them produces mojibake about half
  * the time, and it has no way to know which spans should be bold anyway.
  */
-import { jobSlug, SITE } from './pages.js';
+import { jobSlug, SITE, durationText } from './pages.js';
 import { publishedTitle } from './titles.js';
 import { resolveRowRegion, regionPath, publishedRegions, regionOf } from './regions.js';
 import { formatStipend } from './extract.js';
@@ -676,8 +676,9 @@ export function composePost(facts, ai) {
   if (facts.batch) factLines.push(`🎓 ${B('Batch')}: ${facts.batch}`);
   if (facts.degreeText) factLines.push(`📜 ${B('Degree')}: ${facts.degreeText}`);
   if (facts.experience) factLines.push(`🧭 ${B('Experience')}: ${facts.experience}`);
-  // "0–6 months" is a posting saying "up to six months" (the card reads it the same way).
-  if (facts.duration) factLines.push(`⏳ ${B('Duration')}: ${String(facts.duration).replace(/^0\s*[–-]\s*/, 'Up to ')}`);
+  // The site's filter: the column also holds experience ranges ("1–4 years").
+  const duration = durationText({ duration: facts.duration });
+  if (duration) factLines.push(`⏳ ${B('Duration')}: ${duration}`);
   if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${dayOnly(facts.postedLabel)}`);
 
   /* ONE link in the body, the job page; the board and the channel go in the

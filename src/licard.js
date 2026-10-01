@@ -21,6 +21,9 @@ import { chromiumPath } from './ogcard.js';
 import { log } from './logger.js';
 import { tidyTech, cityOf as postCity } from './postgen.js';
 import { canonicalCity } from './facets.js';
+/* THE SITE'S DURATION FILTER, never a copy (CLAUDE.md §11): the column holds
+   experience ranges ("1–4 years", "0 to 3 years") as well as lengths. */
+import { durationText } from './pages.js';
 
 const TEMPLATE = join(ROOT, 'web', 'li-card.html');
 export const CARD_W = 1080;
@@ -61,9 +64,7 @@ const parseList = (v) => {
  *  folding; "India, Pune" -> "Pune" through the post's country-first rule. */
 const cityOf = (loc) => canonicalCity(loc) || postCity(String(loc ?? '').split(';')[0]);
 /** "Thu, 1 Oct, 8:36 am" -> "1 Oct": the day is what a reader weighs. */
-/* "0–6 months" is the posting saying "up to six months"; on a card it reads as
-   a typo. Only a range that starts at zero changes. */
-const durationText = (d) => String(d ?? '').replace(/^0\s*[–-]\s*/, 'Up to ');
+
 /* ATS titles join their parts with underscores ("DX S2R_Full Stack Developer_
    FY27Q2"). The words stay; only the joins become spaces. */
 const cardTitle = (t) => String(t ?? '').replace(/_+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -83,7 +84,7 @@ export function liCardModel(job) {
   const facts = [];
   const city = cityOf(f.location ?? job.location);
   if (city) facts.push({ label: 'Location', value: city, small: f.workplaceType ?? '' });
-  facts.push({ label: 'Type', value: fullTime ? 'Full-time' : 'Internship', small: fullTime ? 'Freshers' : durationText(f.duration) });
+  facts.push({ label: 'Type', value: fullTime ? 'Full-time' : 'Internship', small: fullTime ? 'Freshers' : durationText({ duration: f.duration }) });
   if (f.stipend) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: f.stipend, pay: true });
   else if (snap?.payRange) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not stated', small: `Other ${company} roles state ${snap.payRange.text}` });
   else facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not disclosed' });
