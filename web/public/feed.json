@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/instawork-hardware-intern-robotics-and-ai-4456198009",
+      "url": "https://interndoor.com/jobs/instawork-hardware-intern-robotics-and-ai-4456198009",
+      "title": "Hardware Intern — Robotics — Instawork",
+      "content_text": "Company: Instawork · Location: Bengaluru, Karnataka, India\n• Maintain and troubleshoot hundreds of Instacore units capturing real-world data\n• Work with robotics team on hardware prototyping and field deployments\n• Travel across India and APAC to set up and support hardware hubs",
+      "date_published": "2026-10-01T12:44:58.710Z",
+      "authors": [
+        {
+          "name": "Instawork"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ups-data-scientist-4248975118",
       "url": "https://interndoor.com/jobs/ups-data-scientist-4248975118",
       "title": "Data Scientist — UPS",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688",
-      "url": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4473952688",
-      "title": "AI Research Intern — Lexsi Labs",
-      "content_text": "Company: Lexsi Labs · Location: India · Duration: 6 months\n• Implement post-training alignment methods for foundation models\n• Work on agentic systems for automation and safety mechanisms\n• Contribute to tabular foundation models and inference optimization",
-      "date_published": "2026-09-30T20:58:12.600Z",
-      "authors": [
-        {
-          "name": "Lexsi Labs"
         }
       ]
     }
