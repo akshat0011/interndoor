@@ -1612,7 +1612,7 @@ export class Store {
      * that rows stamped in the SAME millisecond have a defined order, which the
      * LIMIT boundary needs, rather than oscillating between runs. */
     return this.db.prepare(`
-      SELECT job_id, company, title, apply_url FROM jobs
+      SELECT job_id, company, title, apply_url, location, region FROM jobs
       WHERE is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL
         AND first_seen_at >= ?
         AND apply_url IS NOT NULL AND apply_url <> ''

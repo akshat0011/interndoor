@@ -18,7 +18,9 @@
  */
 import { Store } from '../src/store.js';
 import { log } from '../src/logger.js';
-import { sweepApplyLinks, PER_RUN } from '../src/linksweep.js';
+import { sweepApplyLinks, sweepCandidates, PER_RUN } from '../src/linksweep.js';
+import { loadConfig } from '../src/config.js';
+import { resolveRowRegion, publishedRegions } from '../src/regions.js';
 
 const has = (f) => process.argv.includes(f);
 const DRY_RUN = has('--dry-run');
@@ -34,7 +36,11 @@ if (DAILY && Date.now() - Number(store.getSetting(KEY) ?? 0) < DAY_MS) {
   process.exit(0);
 }
 
-const rows = store.applyLinksToCheck(Date.now() - WINDOW_DAYS * DAY_MS, { limit: PER_RUN });
+/* Published boards only (sweepCandidates): every candidate is read, filtered,
+   then capped, or the cap is spent before the filter sees India's rows. */
+const rows = sweepCandidates(
+  store.applyLinksToCheck(Date.now() - WINDOW_DAYS * DAY_MS, { limit: 1_000_000 }),
+  publishedRegions(loadConfig()).map((r) => r.code), resolveRowRegion, PER_RUN);
 if (!rows.length) {
   if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
   store.close();
