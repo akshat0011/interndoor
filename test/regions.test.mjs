@@ -138,6 +138,8 @@ check('unknown is never published', isPublishedRegion({ regions: { publish: ['IN
 check('collect defaults to everything', collectsRegion({}, 'US'), true);
 check('collect covers unknown too', collectsRegion({}, UNKNOWN), true);
 check('an explicit collect list', collectsRegion({ regions: { collect: ['IN'] } }, 'US'), false);
+check('an explicit list still collects unplaced rows (a Workday "2 Locations" may be India)', collectsRegion({ regions: { collect: ['IN'] } }, UNKNOWN), true);
+check('and the listed board itself', collectsRegion({ regions: { collect: ['IN'] } }, 'IN'), true);
 check('publishing without collecting is possible to express', collectsRegion({ regions: { collect: ['IN', 'US'] } }, 'US'), true);
 
 console.log('\n== a shared city name loses to an explicit state code ==');

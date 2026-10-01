@@ -1360,19 +1360,16 @@ export function postingCompany(boardCompany, region) {
 }
 
 export const FIRST_PARTY_BOARDS = {
-  // The three PUBLISHED boards, not every country these employers hire in.
-  // Collecting is cheap (§6) but not free — each country is three more requests
-  // a poll — and a row in a region `regions.publish` does not list is stored and
-  // never shown. Add a country here when its board goes live, not before.
-  Amazon: ['amazon', 'IND,USA,GBR'],
-  Microsoft: ['microsoft', 'India,United States,United Kingdom'],
-  // UBER'S ENDPOINT IS GONE, AND THE TOKEN IS NOT WHY. `loadSearchJobsResults`
-  // answered 404 on every shape tried on 7 Sep 2026 (and 403 on jobs.uber.com,
-  // 406 on the careers page), so this board has been returning null rather than
-  // an empty list. It is left at one country deliberately: widening a token on a
-  // dead endpoint would dress a broken adapter up as a working one. Reviving it
-  // needs the browser trick again, and the token can widen then.
-  Uber: ['uber', 'IND'],
+  // The PUBLISHED boards, not every country these employers hire in — India
+  // only since 1 Oct 2026 (US and UK went offline 30 Sep). Each country is
+  // more requests a poll, and a row in a region `regions.collect` does not list
+  // is thrown away after fetching. Add a country here when its board goes live.
+  Amazon: ['amazon', 'IND'],
+  Microsoft: ['microsoft', 'India'],
+  // UBER IS GONE (1 Oct 2026). Its endpoint answered 404 on every shape since
+  // 7 Sep and jobs.uber.com sits behind a Cloudflare challenge, so it failed
+  // every poll for three weeks. Unseeded here and set to a miss in company_ats;
+  // the adapter is kept for the day a real endpoint turns up.
   Netflix: ['eightfold', 'explore.jobs.netflix.net'],
 };
 
