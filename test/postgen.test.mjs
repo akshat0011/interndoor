@@ -196,8 +196,11 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   ok('the model hook is not printed', !plainText(b.text).includes(b.ai.hook));
   const dup = buildPost(row(), CFG, { hook: 'x', tip: 'y', hashtags: ['NoBroker', 'nobroker', 'internship'] });
   ok('a hashtag repeated in another case is printed once', plainText(dup.text).split(/\s+/).filter((w) => /^#nobroker$/i.test(w)).length === 1);
-  const zero = buildPost(row({ duration: '0–6 months' }), CFG, null);
-  ok('"0–6 months" reads "Up to 6 months"', plainText(zero.text).includes('Duration: Up to 6 months'));
+  /* The duration column also holds experience ranges; the site's own filter
+     decides what is a duration, so the post never prints "Duration: 1–4 years". */
+  ok('an experience range is not printed as a duration', !/Duration:/.test(plainText(buildPost(row({ duration: '1–4 years' }), CFG, null).text)));
+  ok('nor a zero-start range', !/Duration:/.test(plainText(buildPost(row({ duration: '0–6 months' }), CFG, null).text)));
+  ok('a real length is', plainText(buildPost(row({ duration: '6 months' }), CFG, null).text).includes('Duration: 6 months'));
   const { cityOf } = await import('../src/postgen.js');
   ok('a country-first location names the city ("India, Pune" is Pune)', cityOf('India, Pune') === 'Pune');
   ok('a city-first one is unchanged', cityOf('Bengaluru, Karnataka, India') === 'Bengaluru');
