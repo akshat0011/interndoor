@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 18:21:47 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 19:09:32 GMT</lastBuildDate>
+  <item>
+    <title>Solution Engineer — Etraveli Group</title>
+    <link>https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716</guid>
+    <pubDate>Thu, 01 Oct 2026 19:09:32 GMT</pubDate>
+    <description>Company: Etraveli Group · Location: Mumbai, Maharashtra, India
+• Design, develop, and deploy system configurations, integrations, and custom scripts using Python, Go, or JavaScript
+• Manage Customer Services tech stack including Genesys, Zendesk, Teramind, and cloud platforms like AWS
+• Collaborate with cross-functional teams to ensure system stability, compliance, and operational efficiency</description>
+  </item>
   <item>
     <title>Machine Learning Scientist — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-applied-scientist-international-machine-learning-4455935268</link>
@@ -500,16 +510,6 @@
 • Build ci/cd pipelines and automate deployment with terraform
 • Collaborate with security teams on compliance and governance
 • Support cloud networking and operational tooling</description>
-  </item>
-  <item>
-    <title>SysDev I - Multimedia, Amazon Devices — Amazon Lab126</title>
-    <link>https://interndoor.com/jobs/amazon-lab126-sysdev-i-multimedia-amazon-devices-4455794424</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-lab126-sysdev-i-multimedia-amazon-devices-4455794424</guid>
-    <pubDate>Thu, 01 Oct 2026 15:14:35 GMT</pubDate>
-    <description>Company: Amazon Lab126 · Location: Chennai, Tamil Nadu, India
-• Design and develop multimedia features for FireOS and media players
-• Work with Linux, GStreamer, and Android to build streaming frameworks
-• Collaborate with product teams on next-gen devices like FireTV and Echo</description>
   </item>
 </channel>
 </rss>
