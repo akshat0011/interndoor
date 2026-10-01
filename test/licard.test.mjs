@@ -172,6 +172,7 @@ check('the caller passes the employer snapshot', /snapshot: companySnapshot\(row
 check('the caller hands over the site\'s title, not the stored one', /\n\s*title: publishedTitle\(row\),\n/.test(qs), true);
 check('and the post\'s facts, skills, experience and tip', /\n\s*facts,\n\s*skills: row\.skills,\n\s*experience: row\.experience,\n\s*tip: meta\?\.tip \?\? facts\.tipFallback,/.test(qs), true);
 check('the draft saves its tip for the card', /saveDraft\([^)]*tip: built\.ai\.tip[,}]/.test(qs), true);
+check('the posts a batch just wrote are drawn again (a Rewrite changes the tip)', /redraw: new Set\(rows\.map\(\(r\) => String\(r\.job_id\)\)\)/.test(call), true);
 check('and the company\'s LinkedIn page for the @mention step', /saveDraft\([^)]*companyUrl \}\)/.test(qs) && /const companyUrl = await companyPageFor\(row\);/.test(qs), true);
 
 console.log('\n== logoOnDisk reads the logo directory, with no network ==');
@@ -351,6 +352,13 @@ if (exe) {
     const again = await renderLiCards(jobs, dir);
     check('a file on disk is not drawn again', statSync(join(dir, cardFile(jobs[0].id, 3))).mtimeMs, before);
     check('and is still returned as that posting\'s #1', [...again.entries()].map(([k, v]) => [k, v.endsWith(cardFile(k, 1))]), jobs.map((j) => [j.id, true]));
+    /* A Rewrite changes the tip the card carries: the posts just written are
+       drawn again, the rest left alone. */
+    const other = statSync(join(dir, cardFile(jobs[1].id, 2))).mtimeMs;
+    await new Promise((r) => setTimeout(r, 20));
+    await renderLiCards(jobs, dir, { redraw: new Set([jobs[0].id]) });
+    check('a posting in `redraw` is drawn again', statSync(join(dir, cardFile(jobs[0].id, 3))).mtimeMs > before, true);
+    check('and only that one', statSync(join(dir, cardFile(jobs[1].id, 2))).mtimeMs, other);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

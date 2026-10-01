@@ -350,7 +350,12 @@ async function generate(jobIds) {
         /* THE EMPLOYER'S TWO FACTS (src/companysnapshot.js): its roles open
            right now, and the pay range its other postings state. */
         snapshot: companySnapshot(row, employerRows(row), publishedJobs().filter((j) => j.company === row.company)),
-      })));
+      })), undefined, {
+        /* The posts this batch just wrote are drawn again even with files on
+           disk: a Rewrite changes the tip the card carries, and four designs
+           added later must not leave an older post on an older #1. */
+        redraw: new Set(rows.map((r) => String(r.job_id))),
+      });
     } catch (err) {
       log.warn(`LinkedIn card images failed: ${err.message}`);
     }
