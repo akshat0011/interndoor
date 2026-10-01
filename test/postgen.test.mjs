@@ -2,6 +2,7 @@ import {
   boldSans, plainText, batchYears, sourceLabel, applyProvider, providerTip,
   jobFacts, groundPost, buildPost, tidyTech, utmUrl, telegramFor,
   postedLabel, applicantCount, composeComment, MAX_POST_CHARS, MAX_COMMENT_CHARS,
+  POST_SYSTEM, postPrompt,
 } from '../src/postgen.js';
 import { buildPostsPage } from '../src/postpage.js';
 import { buildReport } from '../src/report.js';
@@ -123,29 +124,44 @@ ok('the posted line is the day, not the clock', /Posted: 16 Sept?\n/.test(crowde
 console.log('\n== the model is not trusted with facts ==');
 const facts = jobFacts(row(), CFG);
 
-const money = groundPost({ hook: 'A backend role paying ₹45 LPA for the right student.', tip: '', hashtags: [] }, facts);
+const money = groundPost({ hook: 'If you want a backend role paying ₹45 LPA, this is the right student role.', tip: '', hashtags: [] }, facts);
 ok('a stipend the row does not have is dropped', !money.hook.includes('45'));
 ok('and the fallback hook takes its place', money.hook.length > 40);
 ok('the drop is reported, not silent', money.dropped.some((d) => d.includes('money')));
 
-const wrongYear = groundPost({ hook: `Open to ${Y + 4} graduates who like distributed systems.`, tip: '', hashtags: [] }, facts);
-ok('a graduation year the posting never named is dropped', !wrongYear.hook.includes(String(Y + 4)));
-const rightYear = groundPost({ hook: `Open to ${Y + 1} graduates who like distributed systems.`, tip: '', hashtags: [] }, facts);
-ok('the year the posting DID name survives', rightYear.hook.includes(String(Y + 1)));
+const wrongYear = groundPost({ hook: `If you're a ${Y + 4} graduate who likes distributed systems, look here.`, tip: '', hashtags: [] }, facts);
+ok('a graduation year the posting never named is dropped', !wrongYear.hook.includes(String(Y + 4)) && wrongYear.dropped.some((d) => d.includes(String(Y + 4))));
+const rightYear = groundPost({ hook: `If you're a ${Y + 1} graduate who likes distributed systems, look here.`, tip: '', hashtags: [] }, facts);
+/* "distributed systems" is the model's own words: the fallback names the batch
+   year too, so the year alone could not tell the two apart. */
+ok('the year the posting DID name survives', rightYear.hook.includes(String(Y + 1)) && rightYear.hook.includes('distributed systems'));
 
-const hype = groundPost({ hook: 'An exciting opportunity in a fast-paced environment!', tip: '', hashtags: [] }, facts);
-ok('marketing language is refused', !/exciting opportunity/i.test(hype.hook));
+const hype = groundPost({ hook: 'If you want an exciting opportunity in a fast-paced environment, apply!', tip: '', hashtags: [] }, facts);
+ok('marketing language is refused', !/exciting opportunity/i.test(hype.hook) && hype.dropped.some((d) => d.includes('marketing')));
 
-const decorated = groundPost({ hook: '🚀 **Backend** work on payments #hiring', tip: 'Attach a PDF 📎', hashtags: ['#Python', 'no spaces here', 'ok'] }, facts);
-ok('emoji are stripped from the hook', !/🚀/.test(decorated.hook));
+const decorated = groundPost({ hook: '🚀 If you like **Backend** work on payments #hiring', tip: 'Attach a PDF 📎', hashtags: ['#Python', 'no spaces here', 'ok'] }, facts);
+ok('emoji are stripped from the hook, and the hook itself kept', !/🚀/.test(decorated.hook) && decorated.hook.includes('Backend work on payments'));
 ok('markdown is stripped', !decorated.hook.includes('**'));
 ok('hash marks are stripped from prose', !decorated.hook.includes('#'));
 ok('a hash in a tag is stripped, not kept', decorated.hashtags.includes('Python'));
 ok('a short list is topped up rather than thrown away', decorated.hashtags.length >= 3);
 ok('a tag with spaces is collapsed, not dropped mid-post', decorated.hashtags.every((t) => !t.includes(' ')));
 
+/* HIS LINE (1 Oct 2026): the post opens, under the company line, by naming who
+   it is for — "if you are a student or something". */
+const student = groundPost({ hook: "If you're a final-year student who enjoys backend work, you'll build payment services in Python.", tip: '', hashtags: [] }, facts);
+ok('a hook that names who it is for is kept as written', student.hook.startsWith("If you're a final-year student") && !student.dropped.length);
+const notWho = groundPost({ hook: "You'll build payment services in Python for millions of users every day.", tip: '', hashtags: [] }, facts);
+ok('a hook that does not open with "If you" is replaced', /^If you\b/.test(notWho.hook) && !notWho.hook.includes('millions'));
+ok('and the replacement is reported', notWho.dropped.some((d) => d.includes('who it is for')));
+ok('"If your" is not "If you"', groundPost({ hook: 'If yours is a backend heart, you will love building payment services here today.', tip: '', hashtags: [] }, facts).dropped.some((d) => d.includes('who it is for')));
+ok('the prompt asks for it', POST_SYSTEM.includes('Begin with "If you\'re"'));
+ok('and tells the model which kind the role is', postPrompt(facts, '').includes('Kind: an internship')
+  && postPrompt({ ...facts, fullTime: true }, '').includes('Kind: an entry-level full-time job, for freshers'));
+
 const empty = groundPost({}, facts);
 ok('no model answer still yields a hook', empty.hook.length > 40);
+ok('and it too opens by naming who it is for', /^If you\b/.test(empty.hook));
 ok('no model answer still yields a tip', empty.tip === facts.tipFallback);
 ok('no model answer still yields hashtags', empty.hashtags.length >= 3);
 
@@ -193,7 +209,7 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   ok('there is no separate referral comment any more', !('referral' in b));
   ok('the "work at X? say so" ask is gone', !/If you can refer for this role/.test(plainText(b.text)));
   ok('the urgency filler is gone', !/openings like this close within days/i.test(plainText(b.text)));
-  ok('the model hook is not printed', !plainText(b.text).includes(b.ai.hook));
+  ok('the "If you…" line sits straight under the company line', b.text.split('\n\n')[1] === b.ai.hook && /^If you\b/.test(b.ai.hook));
   const dup = buildPost(row(), CFG, { hook: 'x', tip: 'y', hashtags: ['NoBroker', 'nobroker', 'internship'] });
   ok('a hashtag repeated in another case is printed once', plainText(dup.text).split(/\s+/).filter((w) => /^#nobroker$/i.test(w)).length === 1);
   /* The duration column also holds experience ranges; the site's own filter
@@ -322,6 +338,8 @@ console.log('\n== an entry-level role is not an internship, and the post says wh
   /* The hook written from the facts alone, the model being down. */
   const { fallbackHook } = await import('../src/postgen.js');
   ok('the fallback hook names the kind', fallbackHook(ft.facts).includes('entry-level listings like this close fast') && fallbackHook(one.facts).includes('internship listings like this close fast'));
+  ok('with no batch it speaks to a fresher or a student by kind',
+    fallbackHook({ ...ft.facts, batch: null }).startsWith('If you are a fresher') && fallbackHook({ ...one.facts, batch: null }).startsWith('If you are a student'));
 }
 
 console.log('\n== the page hands back exactly the post, and nothing else ==');
@@ -378,6 +396,25 @@ const offSite = buildPost(row({ location: 'Warsaw, Poland' }), CFG);
 const offPage = buildPostsPage([{ row: row({ location: 'Warsaw, Poland' }), facts: offSite.facts, text: offSite.text, meta: {} }],
   { batchId: 'test', model: 'm', generatedAt: Date.now() });
 ok('an off-site post is flagged on the page', offPage.includes('no page on InternDoor'));
+
+console.log('\n== he picks the image: four designs per post (1 Oct 2026) ==');
+{
+  const { DESIGNS, cardFile } = await import('../src/licard.js');
+  const ats = 'ats:workday:nvidia:wd5:NVIDIAExternalCareerSite:JR2025833';
+  const two = buildPostsPage([
+    { row: row(), facts: built.facts, text: built.text, meta: {} },
+    { row: row({ job_id: ats }), facts: built.facts, text: built.text, meta: {} },
+  ], { batchId: 'test', model: 'm', generatedAt: Date.now() });
+  const opts = [...two.matchAll(/<button type="button" class="dsg-opt" data-n="(\d)" data-src="([^"]+)" data-file="([^"]+)"/g)];
+  ok('four choices on every post', opts.length === 8 && opts.slice(0, 4).map((o) => o[1]).join('') === '1234');
+  ok('each named for him, #1 to #4', DESIGNS.every((d) => two.includes(`#${d.n} ${d.name}`)));
+  ok('each points at the file the renderer writes', opts.every((o, i) => o[2] === `/li/${cardFile(i < 4 ? '4449259269' : ats, Number(o[1]))}`));
+  ok('a careers-board id is never put in the image URL raw', !two.includes(`/li/${ats}`) && !two.includes('/li/ats:'));
+  ok('Save image has no address until a design is chosen', /<a class="link shot-dl" hidden>Save image/.test(two));
+  ok('the choice is remembered as the default', two.includes("'interndoor-li-design'"));
+  ok('a thumbnail [hidden] is not overridden by the display rule', two.includes('.dsg-opt[hidden]{display:none}'));
+  ok('the page\'s one inline script still parses', (() => { try { new Function(two.match(/<script>([\s\S]*?)<\/script>/)[1]); return true; } catch { return false; } })());
+}
 
 console.log('\n== the run report offers the queue ==');
 const report = buildReport({

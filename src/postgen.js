@@ -445,9 +445,9 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
 
 /* ---------------------------------------------------------------- the model */
 
-export const POST_SYSTEM = `You write two short pieces of text for a LinkedIn post about ONE internship. Somebody else writes the rest of the post; you never see it and must not try to reproduce it.
+export const POST_SYSTEM = `You write two short pieces of text for a LinkedIn post about ONE internship or entry-level job. Somebody else writes the rest of the post; you never see it and must not try to reproduce it.
 
-hook — one or two sentences, 30 to 45 words, addressed to a student deciding whether to apply. Say who this suits and what they would actually work on. Lead with the work, not with the company's reputation. Plain sentences, no emoji, no hashtags, no asterisks, no bold, no line breaks. Never open with "Exciting opportunity", "Great news", "Calling all" or any variant. Never say "dream job", "don't miss out", "fast-paced" or "dynamic".
+hook — one or two sentences, 30 to 45 words, addressed to the reader deciding whether to apply. Begin with "If you're" and name who this suits: for an internship a student ("If you're a final-year student who enjoys backend work…"), for an entry-level job a fresher or recent graduate ("If you're a fresher who wants to build data pipelines…"). Then say what they would actually work on. Lead with the work, not with the company's reputation. Plain sentences, no emoji, no hashtags, no asterisks, no bold, no line breaks. Never open with "Exciting opportunity", "Great news", "Calling all" or any variant. Never say "dream job", "don't miss out", "fast-paced" or "dynamic".
 
 tip — one sentence, at most 200 characters, of genuinely useful advice about APPLYING to this specific posting. You are given the tip that will be used if yours is not better; beat it by naming something concrete from this posting — a named skill worth putting at the top of the resume, a portfolio or project the description asks for, an assessment or a test that is mentioned. If the posting gives you nothing concrete, return an empty string and the fallback is used.
 
@@ -472,6 +472,7 @@ export function postPrompt(facts, description) {
   return [
     `Company: ${facts.company}`,
     `Role: ${facts.title}`,
+    `Kind: ${facts.fullTime ? 'an entry-level full-time job, for freshers' : 'an internship'}`,
     `What the work is: ${facts.roleLabel ?? 'not stated'}`,
     `Location: ${facts.location ?? 'not stated'}`,
     `Skills named: ${facts.keySkills.length ? facts.keySkills.join(', ') : 'none captured'}`,
@@ -519,6 +520,11 @@ export function groundPost(raw, facts) {
   if (hook.length > 400) { hook = ''; dropped.push('hook: too long'); }
   if (hook && HYPE.test(hook)) { hook = ''; dropped.push('hook: marketing language'); }
   if (hook && MONEY.test(hook)) { hook = ''; dropped.push('hook: named money the facts do not'); }
+  /* HIS LINE (1 Oct 2026): the post opens, under the company line, by naming
+     who it is for — "if you are a student or something … that will motivate
+     freshers or students to click". A hook that does not is replaced by the
+     fallback, which always does. */
+  if (hook && !/^if you\b/i.test(hook)) { hook = ''; dropped.push('hook: did not open with who it is for'); }
 
   // A year in the prose is an eligibility claim. It may only stand if the
   // posting named that exact year, which is the same test the facts block uses.
@@ -557,7 +563,7 @@ export function groundPost(raw, facts) {
 
 /** Written from the facts alone, so a post always has an opening line. */
 export function fallbackHook(facts) {
-  const who = facts.batch ? `If you graduate in ${facts.batch}` : 'If you are a student';
+  const who = facts.batch ? `If you graduate in ${facts.batch}` : (facts.fullTime ? 'If you are a fresher' : 'If you are a student');
   const what = facts.roleLabel ? `${facts.roleLabel.toLowerCase()} work` : 'engineering work';
   const where = facts.location ? ` in ${cityOf(facts.location)}` : '';
   return `${who} and you want ${what}${where}, this one is worth a look — ${facts.company} has just opened applications and ${facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship'} listings like this close fast.`;
@@ -701,6 +707,10 @@ export function composePost(facts, ai) {
 
   const build = (drop) => [
     head,
+    /* THE "IF YOU'RE A STUDENT…" LINE, straight under the company line (his
+       ask, 1 Oct 2026): it is what makes a student or fresher open the post.
+       groundPost guarantees it opens with "If you". */
+    ai.hook,
     drop.has('bullets') ? '' : section.bullets,
     factLines.join('\n'),
     `👉 ${B('Apply here')}: ${facts.link}`,

@@ -15,6 +15,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 import { chromium } from 'playwright-core';
 import { ROOT, PATHS } from './paths.js';
 import { chromiumPath } from './ogcard.js';
@@ -25,9 +26,43 @@ import { canonicalCity } from './facets.js';
    experience ranges ("1–4 years", "0 to 3 years") as well as lengths. */
 import { durationText } from './pages.js';
 
-const TEMPLATE = join(ROOT, 'web', 'li-card.html');
 export const CARD_W = 1080;
 export const CARD_H = 1350;
+
+/**
+ * THE FOUR DESIGNS HE CHOOSES BETWEEN, per post, on the posts page (1 Oct
+ * 2026: "the current one is #1, others are #2, #3 and #4, i should have the
+ * full authority to choose anyone"). Every queued posting gets all four.
+ */
+export const DESIGNS = [
+  { n: 1, name: 'Cheat sheet', template: 'li-card.html' },
+  { n: 2, name: 'Notes', template: 'li-card-notes.html' },
+  { n: 3, name: 'Clipping', template: 'li-card-clipping.html' },
+  { n: 4, name: 'Marked up', template: 'li-card-marked.html' },
+];
+
+/**
+ * The image's file name, shared by the renderer and the posts page.
+ *
+ * A LinkedIn id is digits and stays itself (design #1 keeps the name every
+ * card has had). Anything else is HASHED: careers-board ids carry colons,
+ * spaces, commas and even slashes ("ats:workday:nvidia:wd5:…"), which the
+ * queue server's /li/ route refuses and a slash turns into a directory — so a
+ * careers-board post never showed its image at all.
+ */
+export function cardFile(id, n = 1) {
+  const s = String(id ?? '');
+  const key = /^\d{1,30}$/.test(s) ? s : `j${createHash('sha1').update(s).digest('hex').slice(0, 20)}`;
+  return `${key}${n > 1 ? `-${n}` : ''}.png`;
+}
+
+/** "1 Oct" in India's own calendar day, for a card whose posting date is unknown.
+ *  en-US for the month: en-GB writes "Sept". */
+export function cardDay(now = Date.now()) {
+  const parts = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }).formatToParts(now);
+  const get = (t) => parts.find((p) => p.type === t)?.value ?? '';
+  return `${get('day')} ${get('month')}`;
+}
 
 const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'apis', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'etl', 'llm', 'llms', 'ci/cd', 'qa', 'os', 'iot', 'rtl', 'fpga', 'vlsi', 'oops', 'dsa', 'rest', 'sap', 'gpu']);
 /* What the post's tidyTech table does not cover, cased the way the projects themselves write it. */
@@ -68,7 +103,9 @@ const cityOf = (loc) => canonicalCity(loc) || postCity(String(loc ?? '').split('
 /* ATS titles join their parts with underscores ("DX S2R_Full Stack Developer_
    FY27Q2"). The words stay; only the joins become spaces. */
 const cardTitle = (t) => String(t ?? '').replace(/_+/g, ' ').replace(/\s+/g, ' ').trim();
-const dayOf = (label) => (String(label ?? '').match(/\b(\d{1,2} [A-Z][a-z]{2})\b/) ?? [])[1] ?? '';
+/* {2,4}, not {2}: India's labels write "30 Sept", and a three-letter pattern
+   found no word boundary after "Sep" — every September posting lost its day. */
+const dayOf = (label) => (String(label ?? '').match(/\b(\d{1,2} [A-Z][a-z]{2,4})\b/) ?? [])[1] ?? '';
 
 /**
  * What the card says. `job.facts` is postgen's jobFacts for the posting;
@@ -103,6 +140,7 @@ export function liCardModel(job) {
   const skills = named.filter((s) => !named.some((o) => o !== s && o.length > s.length && words(o).includes(s.toLowerCase()))).slice(0, 8);
 
   const open = Number(snap?.openNow ?? 0);
+  const posted = dayOf(f.postedLabel);
   return {
     company,
     pill: fullTime ? 'Hiring freshers' : 'Hiring interns',
@@ -115,6 +153,12 @@ export function liCardModel(job) {
     does: (f.bullets ?? []).slice(0, 3),
     tip: job.tip || f.tipFallback || '',
     more: open > 1 ? `${open - 1} more open at ${company}` : '',
+    /* The plain facts designs #2-#4 lay out in their own way. */
+    info: {
+      city, mode: f.workplaceType ?? '', kind: fullTime ? 'Full-time' : 'Internship', fullTime: !!fullTime,
+      batch: f.batch ?? '', degree: f.degreeText ?? '', experience: job.experience ?? '',
+      stipend: f.stipend ?? '', posted,
+    },
   };
 }
 
@@ -221,45 +265,75 @@ export async function drawCard(page, html, m, logoSrc = '') {
   });
 }
 
-export async function renderLiCards(jobs, outDir = PATHS.liCards, { force = false } = {}) {
+/**
+ * Designs #2-#4: fill, let the fonts the new text asks for load, THEN fit — the
+ * order drawCard keeps, because a fit measured in a fallback font overflows
+ * once the real one arrives. Returns whether the card fits.
+ */
+export async function drawDesign(page, html, m, { today = cardDay() } = {}) {
+  await page.setContent(html, { waitUntil: 'networkidle' });
+  const data = { ...m, date: m.info.posted || today, dateLabel: m.info.posted ? 'posted' : 'saved' };
+  await page.evaluate((d) => window.fill(d), data);
+  await page.evaluate(() => document.fonts.ready);
+  return page.evaluate(() => window.fit());
+}
+
+/**
+ * Every design for every posting, skipping a file already on disk unless
+ * `force`. Returns posting id -> design #1's path.
+ */
+export async function renderLiCards(jobs, outDir = PATHS.liCards, { force = false, designs = DESIGNS, now = Date.now() } = {}) {
   const out = new Map();
   if (!jobs.length) return out;
   mkdirSync(outDir, { recursive: true });
 
-  const todo = jobs.filter((j) => force || !existsSync(join(outDir, `${j.id}.png`)));
-  for (const j of jobs) {
-    const p = join(outDir, `${j.id}.png`);
-    if (existsSync(p)) out.set(String(j.id), p);
+  const todo = [];
+  for (const job of jobs) {
+    for (const design of designs) {
+      const file = join(outDir, cardFile(job.id, design.n));
+      if (!force && existsSync(file)) { if (design.n === 1) out.set(String(job.id), file); }
+      else todo.push({ job, design, file });
+    }
   }
   if (!todo.length) return out;
 
   const exe = chromiumPath();
   if (!exe) { log.warn('No Playwright Chromium — skipping LinkedIn card images.'); return out; }
 
-  const html = readFileSync(TEMPLATE, 'utf8');
+  const templates = new Map(designs.map((d) => [d.n, readFileSync(join(ROOT, 'web', d.template), 'utf8')]));
+  const today = cardDay(now);
+  let done = 0;
   const browser = await chromium.launch({ executablePath: exe, headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: CARD_W, height: CARD_H }, deviceScaleFactor: 2 });
-    for (const job of todo) {
-      const m = liCardModel(job);
-      let logoSrc = '';
-      if (job.logo) {
-        const f = join(ROOT, 'web', 'public', job.logo.replace(/^\//, ''));
-        if (existsSync(f)) {
-          const ext = f.toLowerCase().endsWith('.png') ? 'png' : 'jpeg';
-          logoSrc = `data:image/${ext};base64,${readFileSync(f).toString('base64')}`;
+    for (const { job, design, file } of todo) {
+      /* One design failing must not cost the post its other three. */
+      try {
+        const m = liCardModel(job);
+        if (design.n === 1) {
+          let logoSrc = '';
+          if (job.logo) {
+            const f = join(ROOT, 'web', 'public', job.logo.replace(/^\//, ''));
+            if (existsSync(f)) {
+              const ext = f.toLowerCase().endsWith('.png') ? 'png' : 'jpeg';
+              logoSrc = `data:image/${ext};base64,${readFileSync(f).toString('base64')}`;
+            }
+          }
+          await drawCard(page, templates.get(1), m, logoSrc);
+        } else if (!(await drawDesign(page, templates.get(design.n), m, { today }))) {
+          log.warn(`LinkedIn card #${design.n} for "${m.title}" still overflows after fitting.`);
         }
+        await page.waitForTimeout(60);
+        writeFileSync(file, await page.locator('#card').screenshot({ type: 'png' }));
+        if (design.n === 1) out.set(String(job.id), file);
+        done += 1;
+      } catch (err) {
+        log.warn(`LinkedIn card #${design.n} for ${job.id} failed: ${err.message}`);
       }
-      await drawCard(page, html, m, logoSrc);
-      await page.waitForTimeout(60);
-
-      const file = join(outDir, `${job.id}.png`);
-      writeFileSync(file, await page.locator('#card').screenshot({ type: 'png' }));
-      out.set(String(job.id), file);
     }
   } finally {
     await browser.close();
   }
-  log.info(`LinkedIn card image${todo.length === 1 ? '' : 's'}: ${todo.length} rendered.`);
+  log.info(`LinkedIn card image${done === 1 ? '' : 's'}: ${done} rendered.`);
   return out;
 }
