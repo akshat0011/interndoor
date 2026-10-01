@@ -12,7 +12,7 @@
 import { writeFileSync, readdirSync, statSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
-import { plainText, composeComment, composeReferral, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
+import { plainText, composeComment, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -106,6 +106,11 @@ button.second{border-color:var(--accent);color:var(--accent)}
 button:hover,.link:hover{border-color:var(--accent)}
 button.done{background:var(--good-bg);border-color:var(--good);color:var(--good);font-weight:600}
 .notes{padding:0 18px 13px;font-size:12.5px;color:var(--ink-2)}
+/* THE @MENTION STEP. The company name only turns blue on LinkedIn when it is
+   picked from LinkedIn's own list while typing; a pasted name stays plain. */
+.mention{margin:12px 18px 13px;padding:11px 13px;border-radius:8px;background:var(--chip);font-size:13px;line-height:1.55}
+.mention b{color:var(--accent)}
+.mention a{color:var(--accent)}
 .flag{background:var(--warn-bg);color:var(--warn);border-radius:7px;padding:9px 12px;margin:0 18px 13px;font-size:12.5px}
 .empty{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:40px 20px;text-align:center;color:var(--ink-2)}
 footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-2);font-size:12.5px}
@@ -295,9 +300,16 @@ function withFold(text) {
 
 function card(draft) {
   const { row, text, facts, meta } = draft;
-  const plain = plainText(text);
   const comment = draft.comment ?? composeComment(facts);
-  const referral = draft.referral ?? composeReferral(facts);
+  /* WHAT THE COPY BUTTONS HAND OVER STARTS AFTER THE COMPANY NAME. He types
+     "@" and picks the company from LinkedIn's list first — the only way the
+     name turns blue and links their page — then pastes this straight after
+     it. A draft from before 1 Oct that does not open with the name copies
+     whole. */
+  const lead = text.startsWith(facts.company) ? facts.company : '';
+  const rest = text.slice(lead.length);
+  const pageUrl = meta?.companyUrl
+    || `https://www.linkedin.com/search/results/companies/?keywords=${encodeURIComponent(facts.company)}`;
   const over = text.length > MAX_POST_CHARS;
 
   const flags = [];
@@ -335,16 +347,16 @@ function card(draft) {
     </div>
     <div class="count${over ? ' over' : ''}">${text.length} / ${MAX_POST_CHARS}</div>
   </div>
+  ${lead ? `<div class="mention">① In LinkedIn's post box type <b>@</b> and the first letters of <b>${esc(lead)}</b>, then pick <b>${esc(lead)}</b> from the list — that makes the name blue and links their page (<a href="${esc(pageUrl)}" target="_blank" rel="noreferrer">${meta?.companyUrl ? 'their LinkedIn page' : 'find their page'} ↗</a> to check it is the right one).<br>② Press <b>Copy post</b> and paste straight after the name — the copy starts just after it.</div>` : ''}
   <pre class="post">${withFold(text)}</pre>
-  <pre class="plain" hidden>${esc(plain)}</pre>
+  <pre class="rest" hidden>${esc(rest)}</pre>
+  <pre class="plain" hidden>${esc(plainText(rest))}</pre>
   <pre class="comment" hidden>${esc(comment)}</pre>
-  <pre class="referral" hidden>${esc(referral)}</pre>
-  <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after. Then the referral thread as a second comment: people at the company reply with referrals, and a real reply thread is what LinkedIn spreads.</div>
+  <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after.</div>
   <img class="shot" src="/li/${esc(row.job_id)}.png" alt="" loading="lazy">
   <div class="actions">
-    <button class="primary" data-copy="post">Copy post</button>
+    <button class="primary" data-copy="rest">Copy post</button>
     <button class="second" data-copy="comment" title="Post this as the first comment, straight after the post itself">Copy 1st comment</button>
-    <button class="second" data-copy="referral" title="Post this as the second comment: a referral thread for people who work at the company">Copy referral comment</button>
     <button data-copy="plain" title="Same post with the bold letters as ordinary text — screen readers read the bold codepoints one character at a time">Copy without bold</button>
     <button data-regen="${esc(row.job_id)}">Rewrite</button>
     <a class="link shot-dl" href="/li/${esc(row.job_id)}.png" download="${esc(row.job_id)}.png" hidden>Save image ↓</a>

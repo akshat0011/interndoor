@@ -21,7 +21,7 @@ import { admitEntryLevel } from '../src/employment.js';
 import {
   parseGuestCards, guestCards, buildGuestSearchUrl, fetchGuestPage, guestRequestCap,
   fetchGuestPageRetrying, retryAfterMsOf, GUEST_BLOCK_WAITS_MS, splitKeywords, rereadPlan, REREAD_TAIL_PAGES, MAX_WALK_PASSES,
-  parsePublicPosting, fetchPublicPosting, publicPostingUrl,
+  parsePublicPosting, fetchPublicPosting, publicPostingUrl, linkedinCompanyUrl,
   searchSourceFor, decodeEntities, GUEST_SEARCH_URL, GUEST_PAGE_SIZE, GUEST_RESULT_CEILING,
 } from '../src/guestsearch.js';
 import { buildSearchUrl, cleanApplyUrl, applyUrlFrom, stripExpanderLabel } from '../src/linkedin.js';
@@ -343,6 +343,18 @@ console.log('\n== the posting\'s public page, read before the account opens anyt
   check('a full-time entry-level role reads as the account page\'s chips do', [ft.employmentTag, ft.seniorityTag], ['Full-time', 'Entry level']);
   check('"Not Applicable" is no seniority at all', parsePublicPosting(page({ employment: 'Full-time', seniority: 'Not Applicable' }), '1').seniorityTag, null);
   check('no description block is not a posting', parsePublicPosting(page({ desc: false }), '1'), null);
+  /* THE EMPLOYER'S LINKEDIN PAGE (1 Oct 2026), for the LinkedIn post's
+     @mention check. Real attribute order: class, two tracking attributes,
+     THEN href — and a tracking query and a country host to drop. */
+  check('the company page is read off the org link', d.companyUrl, 'https://www.linkedin.com/company/snowflake/');
+  const real = page().replace('<a class="topcard__org-name-link topcard__flavor--black-link" href="https://www.linkedin.com/company/snowflake">',
+    '<a class="topcard__org-name-link topcard__flavor--black-link" data-tracking-control-name="public_jobs_topcard-org-name" data-tracking-will-navigate href="https://in.linkedin.com/company/ustglobal?trk=public_jobs_topcard-org-name" rel="noopener" target="_blank">');
+  check('with the real attribute order, a country host and a tracking query', parsePublicPosting(real, '1').companyUrl, 'https://www.linkedin.com/company/ustglobal/');
+  check('no org link, no page', parsePublicPosting(page().replace(/<a class="topcard__org-name-link[^>]*>/, '<span>'), '1').companyUrl, '');
+  check('a lookalike host is refused', linkedinCompanyUrl('https://www.linkedin.com.evil.example/company/x'), '');
+  check('a page that is not a company page is refused', linkedinCompanyUrl('https://www.linkedin.com/school/iit-delhi'), '');
+  check('another host entirely is refused', linkedinCompanyUrl('https://evil.example/company/x'), '');
+  check('a company URL embedded later in a foreign link is refused', linkedinCompanyUrl('https://evil.example/go?u=https://www.linkedin.com/company/x'), '');
   // The refusal the India account opened 314 postings a day to reach.
   const v = admitEntryLevel({ title: 'Software Engineer', employmentTag: ft.employmentTag, seniorityTag: ft.seniorityTag, description: ft.description, isIntern: () => false });
   check('"3 years" on the public page refuses before any open', v.reason, 'entry-level: asks 3+ years');

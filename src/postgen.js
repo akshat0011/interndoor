@@ -20,6 +20,7 @@
  * the time, and it has no way to know which spans should be bold anyway.
  */
 import { jobSlug, SITE } from './pages.js';
+import { publishedTitle } from './titles.js';
 import { resolveRowRegion, regionPath, publishedRegions, regionOf } from './regions.js';
 import { formatStipend } from './extract.js';
 import { entryWord, countedOffer } from './employment.js';
@@ -410,7 +411,12 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
     // Where the post actually sends people: WhatsApp if the region has one.
     follow: followChannel(cfg, region),
     company: row.company || row.company_matched || 'Unknown company',
+    // The STORED title builds the job-page slug (siteUrl above); the post shows
+    // the site's own clean title ("System Software Intern", not "… 2027
+    // (Evergreen)") — the same split the board and the card image make.
     title: row.title,
+    displayTitle: publishedTitle(row),
+    experience: row.experience || null,
     // An entry-level role is not an internship, and the post's own lines say
     // which it is ("entry-level openings like this close within days").
     fullTime: row.employment_type === 'fulltime',
@@ -534,7 +540,12 @@ export function groundPost(raw, facts) {
   // Topped up rather than replaced. The model's tags are the specific ones —
   // the company, the stack — and discarding a short list outright threw away
   // exactly the tags worth having in order to reach a count.
-  const hashtags = [...new Set([...tags, ...fallbackHashtags(facts)])].slice(0, 5);
+  // Case-blind: "Nvidia" and "nvidia" from the model are one tag, and a
+  // duplicate must not take one of the five slots.
+  const seen = new Set();
+  const hashtags = [...tags, ...fallbackHashtags(facts)]
+    .filter((t) => !seen.has(t.toLowerCase()) && seen.add(t.toLowerCase()))
+    .slice(0, 5);
 
   return {
     hook: hook || fallbackHook(facts),
@@ -560,9 +571,17 @@ function fallbackHashtags(facts) {
   ].filter((t) => t.length >= 3 && t.length <= 28))].slice(0, 8);
 }
 
-/** "Bengaluru, Karnataka, India" -> "Bengaluru". */
+/**
+ * "Bengaluru, Karnataka, India" -> "Bengaluru"; "India, Pune" -> "Pune".
+ * Workday and Microsoft write the country FIRST, and taking the first part
+ * read "in India" for a role in Pune. Only a bare country name in front moves
+ * the pick to the last part — a state is never the first part in the store.
+ */
+const COUNTRY_FIRST = /^(india|united states|usa|united kingdom|uk|canada)$/i;
 export function cityOf(location) {
-  return String(location ?? '').split(',')[0].trim() || String(location ?? '');
+  const parts = String(location ?? '').split(',').map((p) => p.trim()).filter(Boolean);
+  if (parts.length > 1 && COUNTRY_FIRST.test(parts[0])) return parts[parts.length - 1];
+  return parts[0] || String(location ?? '');
 }
 
 /**
@@ -624,53 +643,53 @@ const B = boldSans;
  * important end, rather than slicing the string and leaving half a URL.
  */
 /**
- * Above this the applicant count is left out of the post entirely.
- *
- * 25 is the board's own threshold for the same field, and the two must not
- * drift: a card that stays silent about a crowded queue while the post about
- * it announces one is the site arguing with itself.
+ * HIS LINE, VERBATIM (1 Oct 2026): "add the exact line 'comment ur resume link
+ * for a refferal'". Spelling and case are his and are not to be "fixed".
  */
-const APPLICANTS_SHOW_MAX = 25;
+export const REFERRAL_ASK = 'comment ur resume link for a refferal';
+
+/** "Wed, 16 Sept, 5:30 am" -> "16 Sept": the day is the fact, the clock is noise. */
+const dayOnly = (label) => (String(label ?? '').match(/\b\d{1,2} [A-Z][a-z]{2,4}\b/) ?? [label])[0];
 
 export function composePost(facts, ai) {
-  const role = facts.title;
-  /* THE FIRST LINE IS THE POST — 1 Oct 2026. LinkedIn shows roughly the first
-     two lines before "…see more", and the old opener spent them on
-     "🚨 Company is Hiring Role! 💻🔥", the line every job-spam account writes.
-     Now: who is hiring, whom (interns, or freshers — India's own word), the
-     role and the city, and the one hard fact worth stopping for when the
-     posting states it: the pay. The model's hook follows as line two. */
+  const role = facts.displayTitle || facts.title;
+  /* THE FIRST LINE IS THE POST. LinkedIn shows roughly the first two lines
+     before "…see more": who is hiring, whom (interns, or freshers — India's
+     own word), the role, the city and work mode, and the pay when the posting
+     states it.
+
+     THE COMPANY OPENS IT, IN PLAIN LETTERS — he makes it an @mention (1 Oct
+     2026: "the company name on the top line should appear blue and open the
+     official linkedin page"). A mention cannot be pasted; it is picked from
+     LinkedIn's own list while typing, so the posts page has him type it and
+     copies the post from just AFTER the name (src/postpage.js). Bold letters
+     here would make the name unpickable. */
   const who = facts.fullTime ? (facts.region === 'IN' ? 'freshers' : `${facts.entryWord ?? 'entry-level'} engineers`) : 'interns';
   const city = facts.location ? cityOf(facts.location) : '';
-  const head = `${B(facts.company)} is hiring ${who}: ${B(role)}${city ? ` in ${city}` : ''}${facts.stipend ? ` — ${facts.stipend}` : ''}`;
+  const mode = facts.workplaceType ? ` (${facts.workplaceType})` : '';
+  const head = `${facts.company} is hiring ${who}: ${B(role)}${city ? ` in ${city}${mode}` : ''}${facts.stipend ? ` — ${facts.stipend}` : ''}`;
 
+  /* ONLY WHAT A READER DECIDES ON (1 Oct 2026, "remove any useless info").
+     The place, mode and pay are on the first line already; the applicant
+     count was a stale snapshot; the clock time of the posting was noise. */
   const factLines = [];
-  if (facts.location) {
-    const mode = facts.workplaceType ? ` (${facts.workplaceType})` : '';
-    factLines.push(`📍 ${facts.location}${mode}`);
-  }
   if (facts.batch) factLines.push(`🎓 ${B('Batch')}: ${facts.batch}`);
   if (facts.degreeText) factLines.push(`📜 ${B('Degree')}: ${facts.degreeText}`);
-  if (facts.stipend) factLines.push(`💰 ${B('Stipend')}: ${facts.stipend}`);
-  if (facts.duration) factLines.push(`⏳ ${B('Duration')}: ${facts.duration}`);
-  if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${facts.postedLabel}`);
-  /* ONLY WHILE THE QUEUE IS SHORT — the board's own threshold. On a crowded
-     role the number argues against clicking, so it is withheld, and it is
-     scoped to when it was read so it cannot go stale. */
-  if (facts.applicants != null && facts.applicants < APPLICANTS_SHOW_MAX) {
-    factLines.push(`👥 ${B('Applicants')}: ${facts.applicants} when this was listed`);
-  }
+  if (facts.experience) factLines.push(`🧭 ${B('Experience')}: ${facts.experience}`);
+  // "0–6 months" is a posting saying "up to six months" (the card reads it the same way).
+  if (facts.duration) factLines.push(`⏳ ${B('Duration')}: ${String(facts.duration).replace(/^0\s*[–-]\s*/, 'Up to ')}`);
+  if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${dayOnly(facts.postedLabel)}`);
 
   /* ONE link in the body, the job page; the board and the channel go in the
-     first comment (composeComment), where they cost the post nothing. The
-     channel is NAMED here without a link — a handle is not an outbound link. */
+     first comment (composeComment). The channel is NAMED here without a
+     link — a handle is not an outbound link. */
+  const kinds = `internships and ${facts.entryWord ?? 'entry-level'} roles`;
   const follow = facts.follow
     ? (facts.follow.handle
-      ? `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
-      : `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens — our ${facts.follow.name} channel, link in the comments.`)
+      ? `📢 New ${kinds} daily: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
+      : `📢 New ${kinds} daily on our ${facts.follow.name} channel — link in the comments.`)
     : '';
 
-  const kindWord = facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship';
   const section = {
     bullets: facts.bullets.length
       ? [`${B("What you'd work on")}:`, ...facts.bullets.map((b) => `→ ${tidyTech(b).replace(/\.$/, '')}`)].join('\n')
@@ -679,25 +698,15 @@ export function composePost(facts, ai) {
     hashtags: ai.hashtags.length ? ai.hashtags.map((t) => `#${t}`).join(' ') : '',
   };
 
-  /* THE ASKS, in the order that earns reach: a share to someone it suits, and
-     a REFERRAL from someone who works there — a real reply thread is the
-     strongest signal LinkedIn reads, and "comment YES" bait is demoted. The
-     referral thread itself is the second comment (composeReferral). */
-  const asks = [
-    `⚡ ${kindWord.replace(/^./, (c) => c.toUpperCase())} openings like this close within days. Know someone who'd fit? ${B('Send this to them')}.`,
-    `🤝 Work at ${facts.company}? If you can refer for this role, ${B('say so in the comments')} — it helps more than you'd think.`,
-  ].join('\n');
-
   const build = (drop) => [
     head,
-    ai.hook,
     drop.has('bullets') ? '' : section.bullets,
     factLines.join('\n'),
     `👉 ${B('Apply here')}: ${facts.link}`,
     drop.has('tip') ? '' : section.tip,
-    asks,
+    REFERRAL_ASK,
     follow,
-    `🔎 ${B('Source')}: ${facts.source} · not affiliated with ${facts.company}.`,
+    `Source: ${facts.source} · not affiliated with ${facts.company}.`,
     drop.has('hashtags') ? '' : section.hashtags,
   ].filter(Boolean).join('\n\n');
 
@@ -813,22 +822,6 @@ export function composeComment(facts) {
 }
 
 /**
- * The second comment: a REFERRAL THREAD (1 Oct 2026, his ask "add a comment for
- * refer"). People who work at the company offer referrals as replies and
- * applicants find them there. A reply thread is real engagement, which is what
- * LinkedIn distributes; asking for "YES" in the comments is bait it demotes.
- * Contact details stay out of public comments — a phone number under his post
- * is a scraper's harvest.
- */
-export function composeReferral(facts) {
-  return [
-    `🤝 Referral thread for ${facts.title} at ${facts.company}.`,
-    `Work at ${facts.company}? Reply here if you can refer for this role.`,
-    'Applying? Reply too, so referrers can find you — and keep phone numbers and emails out of public comments; use DMs.',
-  ].join('\n\n').slice(0, MAX_COMMENT_CHARS);
-}
-
-/**
  * The whole post for one row, given whatever the model returned (or nothing).
  *
  * `ai` may be null: a run with Ollama down still produces a complete, correct
@@ -838,5 +831,5 @@ export function composeReferral(facts) {
 export function buildPost(row, cfg, ai = null, campaign = 'post') {
   const facts = jobFacts(row, cfg, campaign);
   const grounded = groundPost(ai ?? {}, facts);
-  return { facts, ai: grounded, text: composePost(facts, grounded), comment: composeComment(facts), referral: composeReferral(facts) };
+  return { facts, ai: grounded, text: composePost(facts, grounded), comment: composeComment(facts) };
 }

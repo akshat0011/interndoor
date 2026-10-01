@@ -19,7 +19,7 @@ import { chromium } from 'playwright-core';
 import { ROOT, PATHS } from './paths.js';
 import { chromiumPath } from './ogcard.js';
 import { log } from './logger.js';
-import { tidyTech } from './postgen.js';
+import { tidyTech, cityOf as postCity } from './postgen.js';
 import { canonicalCity } from './facets.js';
 
 const TEMPLATE = join(ROOT, 'web', 'li-card.html');
@@ -57,8 +57,9 @@ const parseList = (v) => {
   try { const a = JSON.parse(v ?? '[]'); return Array.isArray(a) ? a : []; } catch { return []; }
 };
 
-/** "Bengaluru East, Karnataka, India" -> "Bengaluru": the city pages' own folding. */
-const cityOf = (loc) => canonicalCity(loc) || String(loc ?? '').split(/[;,]/)[0].trim();
+/** "Bengaluru East, Karnataka, India" -> "Bengaluru": the city pages' own
+ *  folding; "India, Pune" -> "Pune" through the post's country-first rule. */
+const cityOf = (loc) => canonicalCity(loc) || postCity(String(loc ?? '').split(';')[0]);
 /** "Thu, 1 Oct, 8:36 am" -> "1 Oct": the day is what a reader weighs. */
 /* "0–6 months" is the posting saying "up to six months"; on a card it reads as
    a typo. Only a range that starts at zero changes. */

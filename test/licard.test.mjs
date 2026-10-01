@@ -62,6 +62,7 @@ const facts = { company: 'Acme Labs', title: 'Backend Engineer Intern', location
 const m = liCardModel({ facts, skills: '["linux","css3","nodejs"]', tip: 'Lead with a Go project.', snapshot: { openNow: 5, payRange: null } });
 check('interns pill', m.pill, 'Hiring interns');
 check('the city is folded (Bengaluru East is Bengaluru)', m.facts[0], { label: 'Location', value: 'Bengaluru', small: 'Hybrid' });
+check('a country-first location names the city', liCardModel({ facts: { ...facts, location: 'India, Pune' } }).facts[0].value, 'Pune');
 check('the kind, with the duration', m.facts[1], { label: 'Type', value: 'Internship', small: '6 months' });
 check('no stated pay says so — never "unpaid"', m.facts[2], { label: 'Stipend', value: 'Not disclosed' });
 check('the posted day, not the clock', m.facts.find((f) => f.label === 'Posted')?.value, '1 Oct');
@@ -136,7 +137,8 @@ check('the fallback is keyed on the company, not the job id',
 check('the caller passes the employer snapshot', /snapshot: companySnapshot\(row, employerRows\(row\), publishedJobs\(\)\.filter\(\(j\) => j\.company === row\.company\)\)/.test(qs), true);
 check('the caller hands over the site\'s title, not the stored one', /\n\s*title: publishedTitle\(row\),\n/.test(qs), true);
 check('and the post\'s facts, skills, experience and tip', /\n\s*facts,\n\s*skills: row\.skills,\n\s*experience: row\.experience,\n\s*tip: meta\?\.tip \?\? facts\.tipFallback,/.test(qs), true);
-check('the draft saves its tip for the card', /saveDraft\([^)]*tip: built\.ai\.tip \}\)/.test(qs), true);
+check('the draft saves its tip for the card', /saveDraft\([^)]*tip: built\.ai\.tip[,}]/.test(qs), true);
+check('and the company\'s LinkedIn page for the @mention step', /saveDraft\([^)]*companyUrl \}\)/.test(qs) && /const companyUrl = await companyPageFor\(row\);/.test(qs), true);
 
 console.log('\n== logoOnDisk reads the logo directory, with no network ==');
 // Real files in web/public/logos, so a rename of the slug rule fails here.
