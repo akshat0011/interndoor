@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149",
+      "url": "https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149",
+      "title": "MLOps/DevOps/CloudOps — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Design and deploy ML models on AWS with CI/CD pipelines\n• Use Docker, Kubernetes, and IaC tools for scalable infrastructure\n• Collaborate with data scientists and engineers on ML workflows\n• Monitor and optimize cloud resources for security and reliability",
+      "date_published": "2026-10-01T01:26:02.339Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/infosys-ai-ml-engineer-generative-ai-ml-aws-4472392193",
+      "url": "https://interndoor.com/jobs/infosys-ai-ml-engineer-generative-ai-ml-aws-4472392193",
+      "title": "Generative AI Engineer — Infosys",
+      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Build RAG systems and integrate LLM APIs with AWS Bedrock and SageMaker\n• Develop ML models for churn and recommendation using MLOps practices\n• Work with vector databases and prompt engineering for generative AI\n• Collaborate on agentic AI projects with LangGraph and AWS services",
+      "date_published": "2026-10-01T01:25:57.379Z",
+      "authors": [
+        {
+          "name": "Infosys"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4473974946",
       "url": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4473974946",
       "title": "Digital Associate, Ring Data Engineering Services — Amazon",
@@ -575,30 +599,6 @@
       "title": "AWS Bedrock Developer+Python — Infosys",
       "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Build AI apps with AWS Bedrock and Python frameworks like FastAPI\n• Design cloud systems using AWS services and optimize performance\n• Collaborate with data scientists and product teams on AI projects",
       "date_published": "2026-09-30T14:03:00.128Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821",
-      "url": "https://interndoor.com/jobs/ups-intermediate-quality-assurance-chennai-4248969821",
-      "title": "Quality Assurance Intermediate — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Reviews and documents software applications\n• Uses test automation tools like selenium\n• Works on system integration and maintenance",
-      "date_published": "2026-09-30T13:49:28.922Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243",
-      "url": "https://interndoor.com/jobs/infosys-java-springboot-microservices-4435259243",
-      "title": "Java Springboot Microservices — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Support consulting teams in project phases from problem definition to deployment\n• Build POCs and create requirement specs from business needs\n• Collaborate with clients to identify challenges and deliverable solutions",
-      "date_published": "2026-09-30T13:45:40.127Z",
       "authors": [
         {
           "name": "Infosys"
