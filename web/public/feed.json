@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/happiest-minds-technologies-ai-engineering-specialist-python-4472691351",
+      "url": "https://interndoor.com/jobs/happiest-minds-technologies-ai-engineering-specialist-python-4472691351",
+      "title": "AI ENGINEERING SPECIALIST Python — Happiest Minds Technologies",
+      "content_text": "Company: Happiest Minds Technologies · Location: Bengaluru, Karnataka, India\n• Build generative AI solutions with Python and LangChain\n• Integrate LLMs into business apps using FastAPI or Flask\n• Optimize AI systems for scalability and cost efficiency",
+      "date_published": "2026-10-01T05:10:18.830Z",
+      "authors": [
+        {
+          "name": "Happiest Minds Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-mulesoft-technical-specialist-app-development-4472389940",
+      "url": "https://interndoor.com/jobs/birlasoft-mulesoft-technical-specialist-app-development-4472389940",
+      "title": "MuleSoft App Development Specialist — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and deploy MuleSoft integrations based on business needs\n• Use Anypoint Platform tools for API-led connectivity\n• Mentor junior developers and support teams",
+      "date_published": "2026-10-01T05:06:47.208Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ericsson-data-scientist-4472506252",
+      "url": "https://interndoor.com/jobs/ericsson-data-scientist-4472506252",
+      "title": "Data Scientist — Ericsson",
+      "content_text": "Company: Ericsson · Location: Greater Kolkata Area\n• Build predictive models and anomaly detection systems\n• Work with python, pyspark, and sql\n• Collaborate with business leaders on ml solutions",
+      "date_published": "2026-10-01T04:48:41.008Z",
+      "authors": [
+        {
+          "name": "Ericsson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-scrum-master-4472686308",
       "url": "https://interndoor.com/jobs/barclays-scrum-master-4472686308",
       "title": "Scrum Master — Barclays",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-wlan-engineer-4472306435",
-      "url": "https://interndoor.com/jobs/qualcomm-wlan-engineer-4472306435",
-      "title": "WLAN- Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Design and develop protocol layer features for IEEE 802.11 devices\n• Collaborate with firmware and test teams to resolve system issues\n• Work on low power Wi-Fi solutions for multiple market segments",
-      "date_published": "2026-09-30T14:18:36.514Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-full-stack-development-angular-net-with-ai-tools-4445783969",
-      "url": "https://interndoor.com/jobs/infosys-full-stack-development-angular-net-with-ai-tools-4445783969",
-      "title": "Full Stack Development (Angular,.Net) with AI tools — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop full-stack applications using Angular and .NET Core\n• Work with databases and operate systems in a production environment\n• Collaborate with clients to deliver high-quality software solutions",
-      "date_published": "2026-09-30T14:18:04.311Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-4473799072",
-      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-4473799072",
-      "title": "S&C Global Network - AI - Software & Platform - Gen AI - Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop and test ai algorithms for complex business problems\n• Manage large databases and conduct exploratory data analysis\n• Collaborate with internal and external teams on project delivery\n• Build data pipelines to improve information flow and efficiency",
-      "date_published": "2026-09-30T14:15:15.156Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
         }
       ]
     }
