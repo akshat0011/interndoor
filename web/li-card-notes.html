@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  LINKEDIN POST IMAGE, DESIGN #2 — "NOTES" (1 Oct 2026).
+
+  His brief: the image "shouldnt look like an ad or ai slop … the people should
+  stop and read it". This one reads like somebody's own phone note about the
+  role: plain system type, no logo, no colour, no badges. He picks between the
+  four designs per post on the posts page (src/postpage.js).
+
+  Rendered by src/licard.js (drawDesign) into PATHS.liCards — never the repo.
+  1080x1350, LinkedIn's 4:5 portrait. window.fill(m) puts every scraped string
+  in through textContent; window.fit() runs after the fonts have loaded and
+  returns whether the card fits.
+-->
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#ddd}
+  #card{width:1080px;height:1350px;overflow:hidden;background:#fffefb;color:#1c1c1e;
+        font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,sans-serif;
+        padding:76px 92px 64px;position:relative;display:flex;flex-direction:column;--k:1;overflow-wrap:anywhere}
+  #card > *{flex:none}
+  .date{font-size:24px;color:#8e8e93;text-align:center;letter-spacing:.01em;margin-bottom:46px}
+  h1{font-size:calc(64px * var(--k));font-weight:700;letter-spacing:-.025em;line-height:1.08;margin-bottom:16px}
+  .sub{font-size:31px;color:#48484a;line-height:1.35;margin-bottom:46px}
+  h2{font-size:29px;font-weight:600;color:#8e8e93;margin-bottom:16px}
+  ul{list-style:none;padding:0;margin-bottom:42px}
+  li{font-size:calc(34px * var(--k));line-height:1.36;margin-bottom:12px;padding-left:42px;position:relative}
+  li::before{content:'–';position:absolute;left:4px;color:#8e8e93}
+  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 30px;margin-bottom:44px}
+  .check{display:flex;align-items:center;gap:16px;font-size:calc(34px * var(--k));min-width:0}
+  .check i{flex:none;width:32px;height:32px;border-radius:50%;border:3px solid #c7c7cc}
+  .check em{font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tip{font-size:calc(34px * var(--k));line-height:1.38}
+  .foot{margin-top:auto;padding-top:28px;font-size:30px;color:#48484a}
+</style>
+<div id="card">
+  <div class="date" id="date"></div>
+  <h1 id="h1"></h1>
+  <div class="sub" id="sub"></div>
+  <section id="does-sec"><h2>what you'd actually do</h2><ul id="does"></ul></section>
+  <section id="skills-sec"><h2>put these on your resume</h2><div class="checks" id="checks"></div></section>
+  <section id="tip-sec"><h2>how to stand out</h2><p class="tip" id="tip"></p></section>
+  <div class="foot">apply → link in the post</div>
+</div>
+<script>
+window.fill = (m) => {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const i = m.info || {};
+  $('date').textContent = m.date || '';
+  $('h1').textContent = m.title ? m.company + ' — ' + m.title : m.company;
+  const place = i.city ? i.city + (i.mode ? ' (' + i.mode.toLowerCase() + ')' : '') : '';
+  $('sub').textContent = [
+    place, (i.kind || '').toLowerCase(), i.batch ? 'batch ' + i.batch : '', i.degree,
+    i.experience ? i.experience + ' experience' : '', i.stipend || 'pay not disclosed',
+  ].filter(Boolean).join(' · ');
+  if (m.does.length) for (const t of m.does.slice(0, 3)) $('does').append(el('li', '', t));
+  else $('does-sec').remove();
+  if (m.skills.length) for (const s of m.skills.slice(0, 8)) { const c = el('div', 'check'); c.append(el('i'), el('em', '', s)); $('checks').append(c); }
+  else $('skills-sec').remove();
+  if (m.tip) $('tip').textContent = m.tip; else $('tip-sec').remove();
+};
+/* FIT: shrink the text, then drop the third duty, then the tip, then the
+   heading — never clip. Measured against the card, whose height is fixed. */
+window.fit = () => {
+  const card = document.getElementById('card');
+  const fits = () => card.scrollHeight <= card.clientHeight + 0.5;
+  for (let k = 1; k >= 0.82 && !fits(); k -= 0.03) card.style.setProperty('--k', k.toFixed(2));
+  const list = document.getElementById('does');
+  if (!fits() && list && list.children.length > 2) list.lastElementChild.remove();
+  if (!fits()) document.getElementById('tip-sec')?.remove();
+  const h1 = document.getElementById('h1');
+  let size = parseFloat(getComputedStyle(h1).fontSize);
+  while (!fits() && size > 40) { size -= 2; h1.style.fontSize = size + 'px'; }
+  return fits();
+};
+</script>

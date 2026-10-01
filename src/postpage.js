@@ -13,6 +13,7 @@ import { writeFileSync, readdirSync, statSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
 import { plainText, composeComment, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
+import { DESIGNS, cardFile } from './licard.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -51,6 +52,16 @@ h1{font-size:23px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px}
    broken-image glyph beside a finished post reads as a fault. */
 .shot{display:none;width:100%;border-radius:10px;border:1px solid var(--line);margin:12px 0 2px}
 .shot.ok{display:block}
+/* THE DESIGN PICKER (1 Oct 2026): every post has four images, #1 to #4, and
+   he chooses. The big image and Save image follow the outlined thumbnail. A
+   thumbnail shows only once its file has loaded. [hidden] is restated because
+   the display rule below would otherwise beat it. */
+.dsg{padding:12px 18px 0}
+.dsg-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dsg-opt{display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:9px;text-align:left;font-size:12px}
+.dsg-opt[hidden]{display:none}
+.dsg-opt img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:5px}
+.dsg-opt.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent);font-weight:600}
 /* THE PICKER. He chooses which employers the post features and the card shows;
    the automatic six are pre-ticked so doing nothing keeps the old behaviour. */
 .pick{background:var(--panel);border:1px solid var(--line);border-radius:12px;
@@ -128,6 +139,45 @@ for (const img of document.querySelectorAll('.shot')) {
   };
   if (img.complete && img.naturalWidth) show();
   else img.addEventListener('load', show, { once: true });
+}
+
+/* THE DESIGN PICKER. Four images per post; the one he clicks is the big image
+   and what Save image downloads. The last design he picked is the default for
+   every post he has not picked for himself — on this page and the next. A post
+   with only some files on disk offers only those. */
+{
+  const KEY = 'interndoor-li-design';
+  let pref = 1;
+  try { pref = Number(localStorage.getItem(KEY)) || 1; } catch (e) { /* private window */ }
+  const boxes = [...document.querySelectorAll('.dsg')];
+  const choose = (box, opt) => {
+    for (const o of box.querySelectorAll('.dsg-opt')) o.classList.toggle('on', o === opt);
+    box.querySelector('.shot').src = opt.dataset.src;
+    const dl = box.closest('.card')?.querySelector('.shot-dl');
+    if (dl) { dl.href = opt.dataset.src; dl.download = opt.dataset.file; }
+    box.dataset.shown = opt.dataset.n;
+  };
+  const settle = (box) => {
+    if (box.dataset.mine) return;
+    const want = box.querySelector('.dsg-opt[data-n="' + pref + '"]:not([hidden])');
+    const pick = want || (box.dataset.shown ? null : box.querySelector('.dsg-opt:not([hidden])'));
+    if (pick && pick.dataset.n !== box.dataset.shown) choose(box, pick);
+  };
+  for (const box of boxes) {
+    for (const opt of box.querySelectorAll('.dsg-opt')) {
+      const img = opt.querySelector('img');
+      const ready = () => { opt.hidden = false; box.hidden = false; settle(box); };
+      if (img.complete && img.naturalWidth) ready();
+      else img.addEventListener('load', ready, { once: true });
+      opt.addEventListener('click', () => {
+        box.dataset.mine = '1';
+        choose(box, opt);
+        pref = Number(opt.dataset.n);
+        try { localStorage.setItem(KEY, String(pref)); } catch (e) { /* private window */ }
+        boxes.forEach(settle);
+      });
+    }
+  }
 }
 
 /**
@@ -353,13 +403,19 @@ function card(draft) {
   <pre class="plain" hidden>${esc(plainText(rest))}</pre>
   <pre class="comment" hidden>${esc(comment)}</pre>
   <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after.</div>
-  <img class="shot" src="/li/${esc(row.job_id)}.png" alt="" loading="lazy">
+  <div class="dsg" hidden>
+    <div class="dsg-opts">${DESIGNS.map((d) => {
+    const file = cardFile(row.job_id, d.n);
+    return `<button type="button" class="dsg-opt" data-n="${d.n}" data-src="/li/${esc(file)}" data-file="${esc(file)}" title="Use design #${d.n} for this post" hidden><img src="/li/${esc(file)}" alt=""><span>#${d.n} ${esc(d.name)}</span></button>`;
+  }).join('')}</div>
+    <img class="shot" alt="">
+  </div>
   <div class="actions">
     <button class="primary" data-copy="rest">Copy post</button>
     <button class="second" data-copy="comment" title="Post this as the first comment, straight after the post itself">Copy 1st comment</button>
     <button data-copy="plain" title="Same post with the bold letters as ordinary text — screen readers read the bold codepoints one character at a time">Copy without bold</button>
     <button data-regen="${esc(row.job_id)}">Rewrite</button>
-    <a class="link shot-dl" href="/li/${esc(row.job_id)}.png" download="${esc(row.job_id)}.png" hidden>Save image ↓</a>
+    <a class="link shot-dl" hidden>Save image ↓</a>
     <a class="link" href="https://www.linkedin.com/feed/?shareActive=true" target="_blank" rel="noreferrer">Open LinkedIn ↗</a>
     ${facts.siteUrl ? `<a class="link" href="${esc(facts.siteUrl)}" target="_blank" rel="noreferrer">Job page ↗</a>` : ''}
     ${facts.applyUrl ? `<a class="link" href="${esc(facts.applyUrl)}" target="_blank" rel="noreferrer">Original ↗</a>` : ''}

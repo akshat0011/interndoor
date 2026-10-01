@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  LINKEDIN POST IMAGE, DESIGN #4 — "MARKED UP" (1 Oct 2026).
+
+  The role as a printed sheet somebody went over with a highlighter and a pen:
+  the parts that decide whether to apply are marked, with a note in the margin
+  beside each. No logo, no InternDoor anything. He picks between the four
+  designs per post on the posts page (src/postpage.js).
+
+  THE MARGIN NOTES CLAIM ONLY WHAT IS TRUE OF EVERY CARD: a stated stipend was
+  stated by the posting; an unstated one is ringed with no note, because "not
+  in the posting" would be a claim about text we may simply not have parsed.
+
+  Rendered by src/licard.js (drawDesign) into PATHS.liCards — never the repo.
+  1080x1350. window.fill(m) uses textContent only; window.fit() runs after the
+  fonts load and returns whether the card fits.
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#ddd}
+  #card{width:1080px;height:1350px;overflow:hidden;background:#fdfdfb;color:#1a1a1a;padding:64px 0 56px 80px;position:relative;display:flex;flex-direction:column;--k:1;
+        font-family:'IBM Plex Sans',system-ui,sans-serif;overflow-wrap:anywhere}
+  #card > *{flex:none}
+  .hdr{font-family:'IBM Plex Mono',monospace;font-size:20px;letter-spacing:.06em;color:#6b6b6b;text-transform:uppercase;margin-bottom:30px}
+  .row{display:grid;grid-template-columns:600px minmax(0,1fr);align-items:start;column-gap:22px}
+  .co{font-size:54px;font-weight:700;letter-spacing:-.02em;line-height:1.05;max-width:900px}
+  .role{font-size:44px;font-weight:500;line-height:1.12;margin-top:8px;letter-spacing:-.01em;max-width:900px}
+  .meta{font-size:28px;color:#555;margin:14px 0 30px}
+  .rule{width:600px;border-top:2px solid #1a1a1a;margin:6px 0 24px}
+  .rule.lower{margin-top:26px}
+  .k{font-size:30px;line-height:1.5}
+  .k b{font-weight:600}
+  .h{font-size:22px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:4px 0 12px}
+  ul{list-style:none;padding:0;margin:0 0 22px}
+  li{font-size:calc(29px * var(--k));line-height:1.38;margin-bottom:10px;padding-left:28px;position:relative}
+  li::before{content:'•';position:absolute;left:4px}
+  .sk{white-space:nowrap}
+  .skills{font-size:calc(30px * var(--k));line-height:1.75;word-spacing:6px}
+  /* highlighter: a flat, slightly uneven band behind the words */
+  .hl{background:linear-gradient(100deg,transparent 0 1%,rgba(255,226,64,.85) 2% 97%,transparent 98%);
+      padding:0 6px;margin:0 -2px;border-radius:3px 8px 4px 9px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  /* a pen circle round a word */
+  .ring{position:relative;display:inline-block;padding:0 10px}
+  .ring::after{content:'';position:absolute;left:-6px;right:-8px;top:-6px;bottom:-8px;border:3px solid #d0342c;
+               border-radius:52% 46% 55% 44% / 60% 52% 48% 56%;transform:rotate(-2.5deg)}
+  .note{font-family:'Caveat',cursive;font-weight:700;color:#d0342c;font-size:40px;line-height:1.02;padding-top:2px}
+  .note.blue{color:#1f4fd8;padding-top:44px}
+  .tip{width:880px;font-family:'Caveat',cursive;font-weight:600;color:#1f4fd8;font-size:calc(42px * var(--k));line-height:1.12;margin-top:6px}
+  .foot{margin-top:auto;padding-top:24px;font-family:'IBM Plex Mono',monospace;font-size:22px;color:#6b6b6b;letter-spacing:.04em}
+</style>
+<div id="card">
+  <div class="hdr" id="hdr"></div>
+  <div class="co" id="co"></div>
+  <div class="role" id="role"></div>
+  <div class="meta" id="meta"></div>
+  <div class="rule"></div>
+  <div id="rows"></div>
+  <div class="rule lower"></div>
+  <div class="row" id="does-sec"><div><div class="h">What you'd do</div><ul id="does"></ul></div><div></div></div>
+  <div class="row" id="skills-sec"><div><div class="h">Skills</div><div class="skills" id="skills"></div></div><div class="note blue">← lead your resume with these</div></div>
+  <div class="tip" id="tip"></div>
+  <div class="foot">apply → link in the post</div>
+</div>
+<script>
+window.fill = (m) => {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const i = m.info || {};
+  $('hdr').textContent = 'Job description' + (m.date ? ' · ' + (m.dateLabel || 'saved') + ' ' + m.date : '');
+  $('co').textContent = m.company;
+  $('role').textContent = m.title || '';
+  $('meta').textContent = [i.city ? i.city + (i.mode ? ' · ' + i.mode : '') : '', i.kind].filter(Boolean).join(' · ');
+  /* One line per fact, a marked value and an optional note in the margin. */
+  const line = (label, value, note) => {
+    const r = el('div', 'row'), k = el('div', 'k');
+    k.append(el('b', '', label + ':'), ' ', value);
+    r.append(k, el('div', 'note', note || ''));
+    $('rows').append(r);
+  };
+  line('Batch', i.batch ? el('span', 'hl', i.batch) : 'not stated', i.batch ? '← ' + i.batch + ' grads' : '');
+  line('Degree', i.degree || 'not stated');
+  if (i.experience) line('Experience', el('span', 'hl', i.experience));
+  line(i.fullTime ? 'Salary' : 'Pay', i.stipend ? el('span', 'hl', i.stipend) : el('span', 'ring', 'not disclosed'), i.stipend ? '← stated in the posting' : '');
+  if (m.does.length) for (const t of m.does.slice(0, 3)) $('does').append(el('li', '', t));
+  else $('does-sec').remove();
+  const list = m.skills.slice(0, 8);
+  if (list.length) list.forEach((s, n) => {
+    const w = el('span', 'sk');
+    w.append(n < 3 ? el('span', 'hl', s) : s, n < list.length - 1 ? ',' : '');
+    $('skills').append(w, ' ');
+  });
+  else $('skills-sec').remove();
+  if (m.tip) $('tip').textContent = 'tip: ' + m.tip; else $('tip').remove();
+};
+/* FIT: shrink the body, then drop the third duty, then the tip, then the
+   duties — never clip. */
+window.fit = () => {
+  const card = document.getElementById('card');
+  const fits = () => card.scrollHeight <= card.clientHeight + 0.5;
+  for (let k = 1; k >= 0.84 && !fits(); k -= 0.04) card.style.setProperty('--k', k.toFixed(2));
+  const list = document.getElementById('does');
+  if (!fits() && list && list.children.length > 2) list.lastElementChild.remove();
+  if (!fits()) document.getElementById('tip')?.remove();
+  if (!fits()) document.getElementById('does-sec')?.remove();
+  return fits();
+};
+</script>

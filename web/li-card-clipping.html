@@ -1,0 +1,99 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  LINKEDIN POST IMAGE, DESIGN #3 — "CLIPPING" (1 Oct 2026).
+
+  A newspaper item: one big serif sentence readable in the feed without a tap,
+  then the facts in small type. No logo, no InternDoor anything. He picks
+  between the four designs per post on the posts page (src/postpage.js).
+
+  Rendered by src/licard.js (drawDesign) into PATHS.liCards — never the repo.
+  1080x1350. window.fill(m) uses textContent only; window.fit() runs after the
+  fonts load and returns whether the card fits.
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{margin:0;background:#ddd}
+  #card{width:1080px;height:1350px;overflow:hidden;background:#f4f0e6;color:#141414;padding:70px 84px 60px;position:relative;display:flex;flex-direction:column;--k:1;
+        font-family:'Newsreader',Georgia,serif;overflow-wrap:anywhere}
+  #card > *{flex:none}
+  .mast{display:flex;justify-content:space-between;align-items:baseline;border-top:6px solid #141414;border-bottom:1.5px solid #141414;padding:14px 0 12px;
+        font-family:'Inter',sans-serif;font-size:21px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .mast span:last-child{font-weight:500;letter-spacing:.08em}
+  .kicker{font-family:'Inter',sans-serif;font-size:22px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a3260f;margin:46px 0 18px}
+  h1{font-size:96px;font-weight:600;line-height:1.02;letter-spacing:-.02em;margin-bottom:30px}
+  .dek{font-size:calc(38px * var(--k));font-style:italic;line-height:1.3;color:#333;margin-bottom:40px;max-width:880px}
+  .cols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 48px;border-top:1.5px solid #141414;padding-top:26px}
+  .cols.one{grid-template-columns:minmax(0,1fr)}
+  .col h2{font-family:'Inter',sans-serif;font-size:19px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  .col p,.col li{font-size:calc(30px * var(--k));line-height:1.36}
+  .col ul{list-style:none;padding:0}
+  .col li{margin-bottom:10px;padding-left:24px;position:relative}
+  .col li::before{content:'■';position:absolute;left:0;top:2px;font-size:14px;color:#a3260f}
+  .col + .col{border-left:1.5px solid #141414;padding-left:40px;margin-left:-8px}
+  .stand{margin-top:34px;border-top:1.5px solid #141414;padding-top:22px}
+  .stand h2{font-family:'Inter',sans-serif;font-size:19px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;color:#a3260f}
+  .stand p{font-size:calc(34px * var(--k));line-height:1.32}
+  .foot{margin-top:auto;border-top:1.5px solid #141414;padding-top:16px;
+        display:flex;justify-content:space-between;gap:24px;font-family:'Inter',sans-serif;font-size:22px;font-weight:500;color:#333}
+  .foot b{font-weight:700;color:#141414;flex:none}
+</style>
+<div id="card">
+  <div class="mast"><span id="desk"></span><span id="date"></span></div>
+  <div class="kicker" id="kicker"></div>
+  <h1 id="h1"></h1>
+  <p class="dek" id="dek"></p>
+  <div class="cols" id="cols">
+    <div class="col" id="work-col"><h2>The work</h2><ul id="does"></ul></div>
+    <div class="col" id="bring-col"><h2>Bring</h2><p id="skills"></p></div>
+  </div>
+  <div class="stand" id="stand"><h2>How to stand out</h2><p id="tip"></p></div>
+  <div class="foot"><span id="facts"></span><b>Apply: link in the post</b></div>
+</div>
+<script>
+/* "an SDE", "an ML engineer", "a JJT intern": an all-capitals first word is
+   read letter by letter. */
+window.article = (w) => {
+  const first = (String(w).match(/^[A-Za-z0-9]+/) || [''])[0];
+  if (/^[A-Z]{2,}$/.test(first)) return /^[AEFHILMNORSX]/.test(first) ? 'an' : 'a';
+  if (/^(uni|use|usu|eu)/i.test(first)) return 'a';
+  return /^[aeiou]/i.test(first) ? 'an' : 'a';
+};
+window.fill = (m) => {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, text) => { const e = document.createElement(tag); e.textContent = text; return e; };
+  const i = m.info || {};
+  $('desk').textContent = i.fullTime ? 'Fresher jobs desk' : 'Internship desk';
+  $('date').textContent = m.date || '';
+  $('kicker').textContent = [i.kind, i.city, i.batch ? 'Batch ' + i.batch : ''].filter(Boolean).join(' · ');
+  const role = String(m.title || '').replace(/\.+$/, '');
+  $('h1').textContent = role
+    ? m.company + ' is hiring ' + window.article(role) + ' ' + role + (i.city ? ' in ' + i.city : '') + '.'
+    : m.company + ' is hiring' + (i.city ? ' in ' + i.city : '') + '.';
+  const does = m.does.slice(0, 3);
+  if (does.length) $('dek').textContent = does[0]; else $('dek').remove();
+  if (does.length > 1) for (const t of does.slice(1)) $('does').append(el('li', t));
+  else $('work-col').remove();
+  if (m.skills.length) $('skills').textContent = m.skills.slice(0, 8).join(' · ');
+  else $('bring-col').remove();
+  const cols = $('cols');
+  if (!cols.children.length) cols.remove(); else if (cols.children.length === 1) cols.classList.add('one');
+  if (m.tip) $('tip').textContent = m.tip; else $('stand').remove();
+  $('facts').textContent = [i.stipend ? 'Pay: ' + i.stipend : 'Pay: not disclosed', i.experience ? i.experience + ' experience' : '', i.degree].filter(Boolean).join(' · ');
+};
+/* FIT: the headline is the design, so it shrinks first; then the body; then
+   the tip goes; then the headline again, then the work list — never clip. */
+window.fit = () => {
+  const card = document.getElementById('card'), h1 = document.getElementById('h1');
+  const fits = () => card.scrollHeight <= card.clientHeight + 0.5;
+  let px = 96;
+  for (; px >= 64 && !fits(); px -= 4) h1.style.fontSize = px + 'px';
+  for (let k = 1; k >= 0.84 && !fits(); k -= 0.04) card.style.setProperty('--k', k.toFixed(2));
+  if (!fits()) document.getElementById('stand')?.remove();
+  for (px = parseFloat(getComputedStyle(h1).fontSize); px > 48 && !fits(); px -= 2) h1.style.fontSize = (px - 2) + 'px';
+  if (!fits()) { document.getElementById('work-col')?.remove(); document.getElementById('cols')?.classList.add('one'); }
+  return fits();
+};
+</script>

@@ -21,10 +21,11 @@
    employer's own colour, with no InternDoor theme or element on
    it — his brief, after a branded first design.
    ============================================================ */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
-import { liCardModel, drawCard, CARD_W, CARD_H } from '../src/licard.js';
+import { liCardModel, drawCard, drawDesign, renderLiCards, cardFile, cardDay, DESIGNS, CARD_W, CARD_H } from '../src/licard.js';
 import { companySnapshot, statedPay } from '../src/companysnapshot.js';
 import { logoOnDisk } from '../src/logos.js';
 import { chromiumPath } from '../src/ogcard.js';
@@ -90,6 +91,38 @@ check('spaced and dotted skill names are one name each',
   liCardModel({ facts: { ...facts, keySkills: ['React js', 'Next Js', 'Node.JS', 'AWS lambdas'] }, skills: '[]' }).skills,
   ['React', 'Next.js', 'Node.js', 'AWS Lambda']);
 check('at most six facts', liCardModel({ facts: { ...facts, batch: '2027' }, experience: '0–1 years' }).facts.length <= 6, true);
+/* India's labels write "30 Sept"; a three-letter month pattern dropped every
+   September posting's day — the card said nothing and design #4 said "saved". */
+check('a September posting keeps its day', liCardModel({ facts: { ...facts, postedLabel: 'Wed, 30 Sept, 11:14 pm' } }).facts.find((f) => f.label === 'Posted')?.value, '30 Sept');
+check('the plain facts the other designs lay out', m.info,
+  { city: 'Bengaluru', mode: 'Hybrid', kind: 'Internship', fullTime: false, batch: '', degree: '', experience: '', stipend: '', posted: '1 Oct' });
+check('a card day in India\'s calendar, en-US month', cardDay(Date.UTC(2026, 8, 30, 20)), '1 Oct');
+
+console.log('\n== four designs, and a file name the image route accepts ==');
+/* 1 Oct 2026: "the current one is #1, others are #2, #3 and #4, i should have
+   the full authority to choose anyone in the post generator page". */
+check('four designs, numbered 1 to 4', DESIGNS.map((d) => d.n), [1, 2, 3, 4]);
+check('the current cheat sheet is #1', DESIGNS[0].template, 'li-card.html');
+check('every template is on disk', DESIGNS.every((d) => existsSync(join(ROOT, 'web', d.template))), true);
+check('#1 keeps the name every card has had', cardFile('4474154255'), '4474154255.png');
+check('the others take a suffix', [cardFile('4474154255', 2), cardFile('4474154255', 4)], ['4474154255-2.png', '4474154255-4.png']);
+/* Careers-board ids carry colons, spaces, commas and even slashes, which the
+   route refused and a filename cannot hold — so those posts showed no image. */
+const routeGuard = new RegExp((readFileSync(join(ROOT, 'bin', 'queue-server.js'), 'utf8').match(/const SAFE_ID = \/(.+)\/;/) ?? [])[1] ?? '^$');
+const odd = ['ats:workday:nvidia:wd5:NVIDIAExternalCareerSite:JR2025833', 'ats:x:Bengaluru, India (Hybrid)/12', '4474154255'];
+check('the route guard was read out of the server', routeGuard.source.length > 3, true);
+check('every name passes the /li/ route guard', odd.flatMap((id) => DESIGNS.map((d) => cardFile(id, d.n))).every((f) => routeGuard.test(f.replace(/\.png$/, ''))), true);
+check('no name holds a slash', odd.every((id) => !cardFile(id, 3).includes('/')), true);
+check('two ids never share a name', cardFile(odd[0], 2) !== cardFile(odd[1], 2), true);
+check('and one id always gets the same one', cardFile(odd[0], 2) === cardFile(odd[0], 2), true);
+for (const d of DESIGNS.slice(1)) {
+  const t = readFileSync(join(ROOT, 'web', d.template), 'utf8');
+  const mk = t.replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  check(`#${d.n} ${d.name}: LinkedIn portrait 1080x1350`, /width:1080px;height:1350px/.test(mk.replace(/\s/g, '')), true);
+  check(`#${d.n} ${d.name}: no InternDoor name, lime, radar or dark board`, /interndoor|#c8ff00|radar|#0a0a0b/i.test(mk), false);
+  check(`#${d.n} ${d.name}: scraped text never goes in as HTML`, /innerHTML|insertAdjacentHTML|outerHTML/.test(mk), false);
+  check(`#${d.n} ${d.name}: fill and fit are separate steps`, /window\.fill = /.test(mk) && /window\.fit = /.test(mk), true);
+}
 
 console.log('\n== the employer\'s pay range is honest ==');
 const rows = [
@@ -197,6 +230,101 @@ if (!exe) {
       sections: ['skills-sec', 'does-sec', 'tip-sec'].filter((id) => document.getElementById(id)),
     };
   });
+
+  console.log('\n== designs #2-#4, drawn by the REAL drawDesign ==');
+  const plain = liCardModel({ facts, tip: 'Lead with a Go project.' });
+  const worstAll = liCardModel({
+    facts: { ...facts, company: 'Jupiter Business Systems FZC International Private Limited',
+      title: 'Interim Engineering Intern — Systems Software, Platform Reliability and Developer Productivity, Summer 2027',
+      stipend: '₹1,25,000 – ₹1,75,000 / month', batch: '2026 / 2027', degreeText: 'B.Tech/M.Tech/MCA/M.Sc', bullets: [long, long, long],
+      keySkills: ['Distributed Systems', 'Kubernetes', 'Infrastructure as Code', 'Observability', 'Python', 'Golang', 'Terraform', 'PostgreSQL'] },
+    experience: '0–1 years',
+    tip: 'A long tip that takes three lines: lead with the one project that shows the exact stack this posting names, and put its link in the first line of the resume.',
+  });
+  const measure = () => page.evaluate(() => {
+    const card = document.getElementById('card');
+    const right = card.getBoundingClientRect().right;
+    return {
+      fits: card.scrollHeight <= card.clientHeight + 0.5,
+      wide: [...card.querySelectorAll('*')].filter((e) => e.getBoundingClientRect().right > right + 1).map((e) => e.id || e.className || e.tagName),
+      /* Marked has no #h1: "?." alone gives undefined, which is !== '' and
+         reported every #4 card as shrunk. */
+      shrank: card.style.getPropertyValue('--k') !== '' || (document.getElementById('h1')?.style.fontSize ?? '') !== '',
+      sections: [...card.querySelectorAll('[id$="-sec"], #tip, #stand, #does')].map((e) => e.id),
+      duties: card.querySelectorAll('#does li, #dek').length,
+      k: parseFloat(card.style.getPropertyValue('--k') || '1'),
+      tip: !!(document.getElementById('tip-sec') || document.getElementById('stand') || document.getElementById('tip')),
+      imgs: card.querySelectorAll('img').length,
+      text: card.textContent,
+    };
+  });
+  for (const d of DESIGNS.slice(1)) {
+    const t = readFileSync(join(ROOT, 'web', d.template), 'utf8');
+    const okPlain = await drawDesign(page, t, plain, { today: '1 Oct' });
+    const p = await measure();
+    check(`#${d.n} an ordinary posting fits, and says it does`, [okPlain, p.fits, p.wide], [true, true, []]);
+    check(`#${d.n} and keeps every section — nothing dropped that did not need to be`, p.shrank === false && /Lead with a Go project/.test(p.text), true);
+    check(`#${d.n} all three duties are on it`, p.duties, 3);
+    const okWorst = await drawDesign(page, t, worstAll, { today: '1 Oct' });
+    const w = await measure();
+    check(`#${d.n} the worst case fits, nothing past the edge`, [okWorst, w.fits, w.wide], [true, true, []]);
+    check(`#${d.n} and the fixture actually REACHED the cap`, w.shrank || !/three lines/.test(w.text), true);
+    check(`#${d.n} the employer and the role are still on it`, w.text.includes('Jupiter Business Systems') && w.text.includes('Interim Engineering Intern'), true);
+    /* THE ORDER OF WHAT A CARD GIVES UP, which "it fits" alone never pinned:
+       the text shrinks first, then the tip goes, and the work stays longest.
+       Without these, deleting any one fit step still "fit" by giving up
+       something else. */
+    const longish = liCardModel({ facts: { ...facts, company: worstAll.company, title: 'Platform Reliability Engineering Intern',
+      stipend: '₹1,25,000 – ₹1,75,000 / month', batch: '2026 / 2027', degreeText: 'B.Tech/M.Tech/MCA/M.Sc', bullets: [long, long, long],
+      keySkills: ['Distributed Systems', 'Kubernetes', 'Infrastructure as Code', 'Observability', 'Python', 'Golang', 'Terraform', 'PostgreSQL'] },
+      experience: '0–1 years', tip: 'Lead with a Go project that shows the exact stack this posting names.' });
+    await drawDesign(page, t, longish, { today: '1 Oct' });
+    const lg = await measure();
+    check(`#${d.n} a long posting shrinks its text and keeps the tip`, [lg.fits, lg.k < 1, lg.tip], [true, true, true]);
+    check(`#${d.n} the worst case gives up the tip before the work`, [w.tip, w.duties >= 2], [false, true]);
+    const extreme = liCardModel({ facts: { ...facts, company: worstAll.company,
+      title: 'Intern Software development engineering (AI/ML/NLP & Cybersecurity), Graduation Year (2027) — Platform Reliability, Developer Productivity and Infrastructure Tools',
+      stipend: '₹1,25,000 – ₹1,75,000 / month', batch: '2026 / 2027', degreeText: 'B.Tech/M.Tech/MCA/M.Sc', bullets: [1, 2, 3].map(() => long + ' and then some more words about it'),
+      keySkills: ['Distributed Systems', 'Kubernetes', 'Infrastructure as Code', 'Observability', 'Python', 'Golang', 'Terraform', 'PostgreSQL'] },
+      experience: '0–1 years', tip: 'A long tip that takes three lines: lead with the one project that shows the exact stack this posting names, and put its link in the first line of the resume.' });
+    const okX = await drawDesign(page, t, extreme, { today: '1 Oct' });
+    const x = await measure();
+    /* The 172-character title the store really holds drives #2 and #3 to their
+       last headline step; #4 gives up its duties instead (measured). */
+    check(`#${d.n} the extreme case (a 170-character title) still fits`, [okX, x.fits, x.wide], [true, true, []]);
+    if (d.n !== 4) check(`#${d.n} and still says what the work is`, x.duties >= 2, true);
+    await drawDesign(page, t, liCardModel({ facts: { ...facts, company: '<img src=x onerror=alert(1)>' } }), { today: '1 Oct' });
+    const h = await measure();
+    check(`#${d.n} a hostile employer name is text, never markup`, [h.imgs, h.text.includes('<img src=x')], [0, true]);
+  }
+  /* A posting with no duties, no skills and no tip loses those HEADINGS too:
+     a bare "what you'd actually do" over nothing reads as a broken card. */
+  const bare = liCardModel({ facts: { ...facts, bullets: [], keySkills: [], tipFallback: '' }, skills: '[]', tip: '' });
+  for (const d of DESIGNS.slice(1)) {
+    await drawDesign(page, readFileSync(join(ROOT, 'web', d.template), 'utf8'), bare, { today: '1 Oct' });
+    const left = await page.evaluate(() => document.getElementById('card').textContent.toLowerCase());
+    check(`#${d.n} an empty section leaves no heading behind`, /what you.d|the work|put these|bring|skills|stand out|tip:/.test(left), false);
+  }
+  /* #4 claims only what is true of every card: a stated stipend was stated; an
+     unstated one is ringed with no note — "not in the posting" would be a claim
+     about text we may simply not have parsed. */
+  const marked = readFileSync(join(ROOT, 'web', 'li-card-marked.html'), 'utf8');
+  await drawDesign(page, marked, plain, { today: '1 Oct' });
+  const unpaid = await page.evaluate(() => ({ ring: document.querySelector('.ring')?.textContent, notes: [...document.querySelectorAll('.note')].map((n) => n.textContent).join('|') }));
+  check('#4 unstated pay is ringed "not disclosed"', unpaid.ring, 'not disclosed');
+  check('#4 and carries no note claiming the posting omits it', /posting/.test(unpaid.notes), false);
+  await drawDesign(page, marked, liCardModel({ facts: { ...facts, stipend: '₹25,000 / month' } }), { today: '1 Oct' });
+  check('#4 stated pay is marked as stated', await page.evaluate(() => [...document.querySelectorAll('.note')].some((n) => n.textContent === '← stated in the posting')), true);
+  check('#4 a posting date says "posted", a card with none says "saved"', [
+    await page.evaluate(() => document.getElementById('hdr').textContent),
+    (await drawDesign(page, marked, liCardModel({ facts: { ...facts, postedLabel: '' } }), { today: '3 Oct' }), await page.evaluate(() => document.getElementById('hdr').textContent)),
+  ], ['Job description · posted 1 Oct', 'Job description · saved 3 Oct']);
+  const clip = readFileSync(join(ROOT, 'web', 'li-card-clipping.html'), 'utf8');
+  await drawDesign(page, clip, plain, { today: '1 Oct' });
+  check('#3 reads an all-capitals word letter by letter', await page.evaluate(() => ['SDE Intern', 'JJT Intern', 'AI Engineer', 'Intern', 'University Intern', 'Backend Intern'].map((w) => window.article(w))),
+    ['an', 'a', 'an', 'an', 'a', 'a']);
+  check('#3 the headline is one sentence', await page.evaluate(() => document.getElementById('h1').textContent), 'Acme Labs is hiring a Backend Engineer Intern in Bengaluru.');
+
   await browser.close();
   check('the whole card fits — nothing past its foot', r.fits, true);
   check('the long employer name fits its line', r.nameFits, true);
@@ -207,6 +335,25 @@ if (!exe) {
   check('and a yellow logo still gives readable text (4.5:1)', r.textContrast >= 4.5, true);
   check('the skills checklist survives', r.checks >= 4, true);
   check('what did not fit was DROPPED as whole sections', r.sections.includes('skills-sec'), true);
+}
+
+if (exe) {
+  console.log('\n== renderLiCards writes every design, under the names the page asks for ==');
+  const dir = mkdtempSync(join(tmpdir(), 'licards-'));
+  try {
+    const jobs = [{ id: '4470000001', facts }, { id: 'ats:workday:acme:wd1:Careers:JR1', facts }];
+    const first = await renderLiCards(jobs, dir, { now: Date.UTC(2026, 9, 1, 6) });
+    const want = jobs.flatMap((j) => DESIGNS.map((d) => cardFile(j.id, d.n))).sort();
+    check('eight files, named by cardFile', readdirSync(dir).sort(), want);
+    check('it returns each posting\'s #1', [...first.keys()], jobs.map((j) => j.id));
+    const before = statSync(join(dir, cardFile(jobs[0].id, 3))).mtimeMs;
+    await new Promise((r) => setTimeout(r, 20));
+    const again = await renderLiCards(jobs, dir);
+    check('a file on disk is not drawn again', statSync(join(dir, cardFile(jobs[0].id, 3))).mtimeMs, before);
+    check('and is still returned as that posting\'s #1', [...again.entries()].map(([k, v]) => [k, v.endsWith(cardFile(k, 1))]), jobs.map((j) => [j.id, true]));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
