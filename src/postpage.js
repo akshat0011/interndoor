@@ -12,7 +12,7 @@
 import { writeFileSync, readdirSync, statSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { PATHS, ensureDirs } from './paths.js';
-import { plainText, composeComment, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
+import { plainText, composeComment, composeReferral, MAX_POST_CHARS, MAX_COMMENT_CHARS, FOLD_CHARS } from './postgen.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -297,6 +297,7 @@ function card(draft) {
   const { row, text, facts, meta } = draft;
   const plain = plainText(text);
   const comment = draft.comment ?? composeComment(facts);
+  const referral = draft.referral ?? composeReferral(facts);
   const over = text.length > MAX_POST_CHARS;
 
   const flags = [];
@@ -337,11 +338,13 @@ function card(draft) {
   <pre class="post">${withFold(text)}</pre>
   <pre class="plain" hidden>${esc(plain)}</pre>
   <pre class="comment" hidden>${esc(comment)}</pre>
-  <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after.</div>
+  <pre class="referral" hidden>${esc(referral)}</pre>
+  <div class="notes">First comment (${comment.length}/${MAX_COMMENT_CHARS}) — the board and the channel live here, not in the post: two links competing for one click is strictly worse than one. Post it straight after. Then the referral thread as a second comment: people at the company reply with referrals, and a real reply thread is what LinkedIn spreads.</div>
   <img class="shot" src="/li/${esc(row.job_id)}.png" alt="" loading="lazy">
   <div class="actions">
     <button class="primary" data-copy="post">Copy post</button>
     <button class="second" data-copy="comment" title="Post this as the first comment, straight after the post itself">Copy 1st comment</button>
+    <button class="second" data-copy="referral" title="Post this as the second comment: a referral thread for people who work at the company">Copy referral comment</button>
     <button data-copy="plain" title="Same post with the bold letters as ordinary text — screen readers read the bold codepoints one character at a time">Copy without bold</button>
     <button data-regen="${esc(row.job_id)}">Rewrite</button>
     <a class="link shot-dl" href="/li/${esc(row.job_id)}.png" download="${esc(row.job_id)}.png" hidden>Save image ↓</a>

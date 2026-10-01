@@ -35,6 +35,7 @@ import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage, prunePostPages } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
+import { companySnapshot } from '../src/companysnapshot.js';
 import { weeklyRoundup, publishedIdsFor } from '../src/weekly.js';
 import { renderWeeklyCard, MAX_LOGOS } from '../src/weeklycard.js';
 import { logoOnDisk } from '../src/logos.js';
@@ -312,6 +313,10 @@ async function generate(jobIds) {
            empty plate for an employer whose logo had been on disk since July.
            logoOnDisk keys on the company and needs no network. */
         logo: publicJob(row.job_id)?.logo ?? logoOnDisk(facts.company ?? row.company),
+        /* THE COMPANY SNAPSHOT (1 Oct 2026): the employer's own record on this
+           board — its postings by month, what pay they state, its skills and
+           cities — and its roles open right now. src/companysnapshot.js. */
+        snapshot: companySnapshot(row, employerRows(row), publishedJobs().filter((j) => j.company === row.company)),
       })));
     } catch (err) {
       log.warn(`LinkedIn card images failed: ${err.message}`);
@@ -450,6 +455,15 @@ function publishedJobs() {
  * which account to post to, which board to render, and whose daily cap it
  * spends.
  */
+/** The employer's stored engineering rows on the same board as `row`, for the post image. */
+function employerRows(row) {
+  const region = resolveRowRegion(row);
+  return store.db.prepare(`SELECT job_id, company, title, posted_at, first_seen_at, key_skills, location, region,
+      stipend_min, stipend_max, stipend_currency, stipend_period, salary_text, employment_type
+    FROM jobs WHERE company = ? AND is_tech = 1 AND suppressed_reason IS NULL`).all(row.company)
+    .filter((r) => resolveRowRegion(r) === region);
+}
+
 function publicJob(jobId) {
   return publishedJobs().find((j) => String(j.id) === String(jobId)) ?? null;
 }

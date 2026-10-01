@@ -445,7 +445,7 @@ hook — one or two sentences, 30 to 45 words, addressed to a student deciding w
 
 tip — one sentence, at most 200 characters, of genuinely useful advice about APPLYING to this specific posting. You are given the tip that will be used if yours is not better; beat it by naming something concrete from this posting — a named skill worth putting at the top of the resume, a portfolio or project the description asks for, an assessment or a test that is mentioned. If the posting gives you nothing concrete, return an empty string and the fallback is used.
 
-hashtags — 5 to 8 tags, lowercase, no "#" and no spaces inside a tag. Mix the specific (the company, the stack) with the broad (internship, hiring). No more than eight.
+hashtags — 3 to 5 tags, lowercase, no "#" and no spaces inside a tag. Mix the specific (the company, the stack) with the broad (internship, hiring). No more than five: a long tag tail reads as spam.
 
 THE HARD RULE: state only what the posting supports. Do not name a stipend, a salary, a graduation year, a batch, a duration, a degree, a location or a deadline anywhere in your answer — those are filled in from structured data by the caller, and a number you invent here contradicts them in the same post. Do not repeat the job title back word for word.
 
@@ -534,7 +534,7 @@ export function groundPost(raw, facts) {
   // Topped up rather than replaced. The model's tags are the specific ones —
   // the company, the stack — and discarding a short list outright threw away
   // exactly the tags worth having in order to reach a count.
-  const hashtags = [...new Set([...tags, ...fallbackHashtags(facts)])].slice(0, 8);
+  const hashtags = [...new Set([...tags, ...fallbackHashtags(facts)])].slice(0, 5);
 
   return {
     hook: hook || fallbackHook(facts),
@@ -555,7 +555,7 @@ export function fallbackHook(facts) {
 function fallbackHashtags(facts) {
   const slug = (s) => String(s).replace(/[^A-Za-z0-9]/g, '');
   return [...new Set([
-    slug(facts.company), 'internship', 'hiring', 'techjobs', 'interndoor',
+    slug(facts.company), facts.fullTime ? 'freshers' : 'internship', 'hiring', 'techjobs', 'interndoor',
     ...facts.keySkills.map(slug),
   ].filter((t) => t.length >= 3 && t.length <= 28))].slice(0, 8);
 }
@@ -634,97 +634,77 @@ const APPLICANTS_SHOW_MAX = 25;
 
 export function composePost(facts, ai) {
   const role = facts.title;
-  const head = `🚨 ${B(facts.company)} ${B('is Hiring')} ${B(role)}! 💻🔥`;
+  /* THE FIRST LINE IS THE POST — 1 Oct 2026. LinkedIn shows roughly the first
+     two lines before "…see more", and the old opener spent them on
+     "🚨 Company is Hiring Role! 💻🔥", the line every job-spam account writes.
+     Now: who is hiring, whom (interns, or freshers — India's own word), the
+     role and the city, and the one hard fact worth stopping for when the
+     posting states it: the pay. The model's hook follows as line two. */
+  const who = facts.fullTime ? (facts.region === 'IN' ? 'freshers' : `${facts.entryWord ?? 'entry-level'} engineers`) : 'interns';
+  const city = facts.location ? cityOf(facts.location) : '';
+  const head = `${B(facts.company)} is hiring ${who}: ${B(role)}${city ? ` in ${city}` : ''}${facts.stipend ? ` — ${facts.stipend}` : ''}`;
 
-  const factLines = [
-    `🎯 ${B('Company')}: ${facts.company}`,
-    `💼 ${B('Role')}: ${role}`,
-  ];
-  if (facts.batch) factLines.push(`🎓 ${B('Batch')}: ${facts.batch}`);
-  if (facts.degreeText) factLines.push(`📜 ${B('Degree')}: ${facts.degreeText}`);
+  const factLines = [];
   if (facts.location) {
     const mode = facts.workplaceType ? ` (${facts.workplaceType})` : '';
-    factLines.push(`📍 ${B('Location')}: ${facts.location}${mode}`);
+    factLines.push(`📍 ${facts.location}${mode}`);
   }
+  if (facts.batch) factLines.push(`🎓 ${B('Batch')}: ${facts.batch}`);
+  if (facts.degreeText) factLines.push(`📜 ${B('Degree')}: ${facts.degreeText}`);
   if (facts.stipend) factLines.push(`💰 ${B('Stipend')}: ${facts.stipend}`);
   if (facts.duration) factLines.push(`⏳ ${B('Duration')}: ${facts.duration}`);
-
-  // Being early is the site's whole promise, and on most postings there is no
-  // stipend and no batch year to lead with — measured over a fortnight of India
-  // tech rows, 16 of 168 carried a stipend and 26 named a year. These two are
-  // there: 143 of 168 carried an applicant count, and every row knows when it
-  // was posted. They are also the only facts that say "you are ahead of the
-  // queue", which is the reason to click today rather than bookmark it.
   if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${facts.postedLabel}`);
-  /* ONLY WHILE THE QUEUE IS SHORT, which is the same call the board already
-     makes and for the same reason. This number exists to prove the reader is
-     early. On a crowded role it proves the opposite — "Applicants: 100 when
-     this was listed", printed directly above an apply link, is an argument
-     against clicking it, and it was going out on every such post.
-     Withholding it is not hiding anything: the posting is one click away and
-     shows its own count, and the "Posted" timestamp still carries freshness.
-     STRICTLY under, so LinkedIn's own "Be among the first 25 applicants"
-     prompt could never be read as a real count of 25 — no row in the store
-     carries that phrasing today, so this costs a character rather than a
-     branch. */
+  /* ONLY WHILE THE QUEUE IS SHORT — the board's own threshold. On a crowded
+     role the number argues against clicking, so it is withheld, and it is
+     scoped to when it was read so it cannot go stale. */
   if (facts.applicants != null && facts.applicants < APPLICANTS_SHOW_MAX) {
     factLines.push(`👥 ${B('Applicants')}: ${facts.applicants} when this was listed`);
   }
 
-  const share = facts.batch
-    ? `Know a ${facts.batch} graduate who would be right for this? ${B('Share it with them')} 🚀`
-    : `Know a junior who would be right for this? ${B('Share it with them')} 🚀`;
-
-  // ONE link in the body, and it is the job page.
-  //
-  // There used to be two — the job page and the board — competing for the same
-  // click. Whatever LinkedIn's ranking really does with outbound links, and the
-  // evidence for a penalty is far softer than the folklore, two is strictly
-  // worse than one. The board and the channel moved to composeComment, where
-  // they cost the post nothing and are read by people already interested.
-  //
-  // The channel is still NAMED here without a link. A handle is not an outbound
-  // link, so it costs nothing, and a subscriber is worth more than a click: it
-  // is the only thing on this site anybody can follow.
-  /* Telegram's handle is naming a channel, not linking one, so it costs the
-     post nothing. A WhatsApp channel has no handle at all, so it is named in
-     words instead — the link is in the first comment either way. */
+  /* ONE link in the body, the job page; the board and the channel go in the
+     first comment (composeComment), where they cost the post nothing. The
+     channel is NAMED here without a link — a handle is not an outbound link. */
   const follow = facts.follow
     ? (facts.follow.handle
       ? `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
       : `📢 Every new internship and ${facts.entryWord ?? 'entry-level'} role, the minute it opens — our ${facts.follow.name} channel, link in the comments.`)
     : '';
 
+  const kindWord = facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship';
   const section = {
     bullets: facts.bullets.length
-      ? [`⚙️ ${B('What you would work on')}:`, ...facts.bullets.map((b) => `• ${tidyTech(b).replace(/\.$/, '')}`)].join('\n')
+      ? [`${B("What you'd work on")}:`, ...facts.bullets.map((b) => `→ ${tidyTech(b).replace(/\.$/, '')}`)].join('\n')
       : '',
-    tip: `📝 ${B('Applying tip')}: ${ai.tip}`,
+    tip: `💡 ${B('Tip')}: ${ai.tip}`,
     hashtags: ai.hashtags.length ? ai.hashtags.map((t) => `#${t}`).join(' ') : '',
-    disclaimer: `⚠️ ${B('Disclaimer')}: the logo and links belong to their respective owners. I am only sharing this opportunity and have no affiliation with ${facts.company}.`,
   };
+
+  /* THE ASKS, in the order that earns reach: a share to someone it suits, and
+     a REFERRAL from someone who works there — a real reply thread is the
+     strongest signal LinkedIn reads, and "comment YES" bait is demoted. The
+     referral thread itself is the second comment (composeReferral). */
+  const asks = [
+    `⚡ ${kindWord.replace(/^./, (c) => c.toUpperCase())} openings like this close within days. Know someone who'd fit? ${B('Send this to them')}.`,
+    `🤝 Work at ${facts.company}? If you can refer for this role, ${B('say so in the comments')} — it helps more than you'd think.`,
+  ].join('\n');
 
   const build = (drop) => [
     head,
     ai.hook,
-    factLines.join('\n'),
     drop.has('bullets') ? '' : section.bullets,
-    `🔎 ${B('Source')}: ${facts.source}`,
-    `⚡ ${B('Important')}: apply as soon as you can — ${facts.fullTime ? `${facts.entryWord ?? 'entry-level'}` : 'internship'} openings like this close within days.`,
-    drop.has('tip') ? '' : section.tip,
+    factLines.join('\n'),
     `👉 ${B('Apply here')}: ${facts.link}`,
-    share,
+    drop.has('tip') ? '' : section.tip,
+    asks,
     follow,
-    `Follow me for more ${B('Jobs')}, ${B('Internships')} & ${B('Career Opportunities')} 🔥`,
+    `🔎 ${B('Source')}: ${facts.source} · not affiliated with ${facts.company}.`,
     drop.has('hashtags') ? '' : section.hashtags,
-    drop.has('disclaimer') ? '' : section.disclaimer,
   ].filter(Boolean).join('\n\n');
 
-  // Shed the least valuable sections first if the post is over LinkedIn's limit.
-  // The disclaimer is courtesy and the hashtags are reach; the bullets are the
-  // only part that says what the job actually involves, so they go last.
+  // Shed the least valuable sections first if the post is over LinkedIn's
+  // limit; the bullets say what the job is, so they go last.
   const drop = new Set();
-  for (const next of ['disclaimer', 'hashtags', 'tip', 'bullets']) {
+  for (const next of ['hashtags', 'tip', 'bullets']) {
     const text = build(drop);
     if (text.length <= MAX_POST_CHARS) return text;
     drop.add(next);
@@ -833,6 +813,22 @@ export function composeComment(facts) {
 }
 
 /**
+ * The second comment: a REFERRAL THREAD (1 Oct 2026, his ask "add a comment for
+ * refer"). People who work at the company offer referrals as replies and
+ * applicants find them there. A reply thread is real engagement, which is what
+ * LinkedIn distributes; asking for "YES" in the comments is bait it demotes.
+ * Contact details stay out of public comments — a phone number under his post
+ * is a scraper's harvest.
+ */
+export function composeReferral(facts) {
+  return [
+    `🤝 Referral thread for ${facts.title} at ${facts.company}.`,
+    `Work at ${facts.company}? Reply here if you can refer for this role.`,
+    'Applying? Reply too, so referrers can find you — and keep phone numbers and emails out of public comments; use DMs.',
+  ].join('\n\n').slice(0, MAX_COMMENT_CHARS);
+}
+
+/**
  * The whole post for one row, given whatever the model returned (or nothing).
  *
  * `ai` may be null: a run with Ollama down still produces a complete, correct
@@ -842,5 +838,5 @@ export function composeComment(facts) {
 export function buildPost(row, cfg, ai = null, campaign = 'post') {
   const facts = jobFacts(row, cfg, campaign);
   const grounded = groundPost(ai ?? {}, facts);
-  return { facts, ai: grounded, text: composePost(facts, grounded), comment: composeComment(facts) };
+  return { facts, ai: grounded, text: composePost(facts, grounded), comment: composeComment(facts), referral: composeReferral(facts) };
 }

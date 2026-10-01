@@ -12,14 +12,20 @@
        "fits" while the employer name was clipped by the lime
        band, because the left column is 531px of a 627px card.
 
-   So the render assertion below uses the LONGEST employer name
-   and title in the store. A fit test whose fixture never
-   reaches the cap tests nothing.
+   So the render assertion below draws the worst case through
+   the REAL drawCard (src/licard.js) — not a copy of its loop —
+   and checks the fixture actually shrank. A fit test whose
+   fixture never reaches the cap tests nothing.
+
+   Since 1 Oct 2026 the card is a COMPANY SNAPSHOT (portrait,
+   src/companysnapshot.js): every figure on it is counted from
+   the employer's own tracked postings.
    ============================================================ */
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { liCardModel } from '../src/licard.js';
+import { liCardModel, drawCard, CARD_W, CARD_H } from '../src/licard.js';
+import { companySnapshot, statedPay } from '../src/companysnapshot.js';
 import { logoOnDisk } from '../src/logos.js';
 import { chromiumPath } from '../src/ogcard.js';
 
@@ -33,29 +39,48 @@ function check(label, actual, expected) {
 
 const tpl = readFileSync(join(ROOT, 'web', 'li-card.html'), 'utf8');
 
-console.log('\n== the template holds the design decisions that cost something ==');
-check('it is LinkedIn landscape, 1200x627',
-  /width:1200px;height:627px/.test(tpl.replace(/\s/g, '')), true);
-// A cropped trademark is simply wrong, and 462 logo files come in every shape.
-check('the logo is CONTAINED, never cover',
-  /object-fit:contain/.test(tpl.replace(/\s/g, '')), true);
+console.log('\n== the template ==');
+const flat = tpl.replace(/\s/g, '');
+check('LinkedIn portrait 4:5, 1080x1350', /width:1080px;height:1350px/.test(flat) && [CARD_W, CARD_H].join('x') === '1080x1350', true);
+check('the logo is CONTAINED, never cover', /object-fit:contain/.test(flat), true);
 check('and cover appears nowhere', /object-fit:\s*cover/.test(tpl), false);
-check('the lime band carries the shout', /IS HIRING/.test(tpl), true);
-check('the band uses the live token, not a literal',
-  /\.band\{[^}]*background:var\(--live\)/.test(tpl.replace(/\s+/g, '')), true);
-// The renderer inlines the logo as a data URI; a site-relative src would never
-// resolve from a file:// render and every card would ship an empty plate.
+check('the band carries the call to action', /APPLY FREE/.test(tpl), true);
+check('the band uses the live token, not a literal', /\.band\{[^}]*background:var\(--live\)/.test(flat), true);
 check('the template ships no logo src of its own', /<img[^>]*src=/.test(tpl), false);
+const src = readFileSync(join(ROOT, 'src', 'licard.js'), 'utf8');
+/* Scraped employer names and titles go into a real browser: textContent only. */
+check('the renderer never writes innerHTML', /innerHTML/.test(src), false);
 
-console.log('\n== the model is the OG card model, deliberately ==');
-const job = { company: 'Pixxel', title: 'AI & Data Engineering Intern',
-              location: 'Bengaluru, Karnataka, India' };
-const m = liCardModel(job);
-check('company', m.company, 'Pixxel');
-check('title', m.title, 'AI & Data Engineering Intern');
-check('the city is first among the facts', m.facts[0], 'Bengaluru');
-check('a job with nothing still yields a shape',
-  Object.keys(liCardModel({})).sort(), ['company', 'facts', 'title']);
+console.log('\n== the snapshot counts the employer, and only what it stated ==');
+const NOW = Date.UTC(2026, 9, 1, 6, 0);          // 1 Oct 2026, 11:30 IST
+const rows = [
+  { posted_at: Date.UTC(2026, 7, 20), key_skills: '["python","sql"]', location: 'Bangalore, Karnataka, India', stipend_min: 20000, stipend_max: 20000, stipend_currency: 'INR', stipend_period: 'month' },
+  { posted_at: Date.UTC(2026, 8, 5), key_skills: '["python","aws"]', location: 'Bengaluru, Karnataka, India', stipend_min: 30000, stipend_max: 40000, stipend_currency: 'INR', stipend_period: 'month' },
+  { posted_at: Date.UTC(2026, 8, 25), key_skills: '["python"]', location: 'Pune, Maharashtra, India', stipend_min: 900000, stipend_max: 900000, stipend_currency: 'INR', stipend_period: 'year' },
+  { posted_at: NOW - 2 * 3_600_000, key_skills: '["sql"]', location: 'Bengaluru, Karnataka, India', salary_text: '₹0' },
+];
+const job = { company: 'Acme', title: 'Data Engineer Intern', location: 'Bengaluru, Karnataka, India', employment_type: 'internship' };
+const snap = companySnapshot(job, rows, [{}, {}], NOW);
+check('months run from the first one seen, zeros kept', snap.months.map((m) => `${m.label}${m.n}`), ['Aug1', 'Sep2', 'Oct1']);
+check('the current month is marked', snap.months.at(-1).current, true);
+check('tracked and open now', [snap.tracked, snap.openNow], [4, 2]);
+check('skills ranked by how many postings name them', snap.skills.slice(0, 2), ['Python', 'SQL']);
+check('cities are folded (Bangalore is Bengaluru)', snap.cities[0], { name: 'Bengaluru', n: 3 });
+check('a ₹0 is never stated pay', statedPay(rows[3]), '');
+check('the pay range uses ONE currency and period, never mixing month and year', snap.payRange?.text, '₹20,000 – ₹40,000 / month');
+check('and says how many postings it rests on', snap.payRange?.n, 2);
+check('one stating posting is no range', companySnapshot(job, [rows[0], rows[3]], [], NOW).payRange, null);
+check('this role states nothing, so no pay of its own', snap.pay, '');
+
+console.log('\n== the model picks the strongest true fact first ==');
+const first = (o) => liCardModel({ snapshot: { ...snap, ...o } }).stats[0];
+check('this role\'s own pay leads when stated', first({ pay: '₹25,000 / month' }).value, '₹25,000 / month');
+check('else the employer\'s stated range', first({}).value, '₹20,000 – ₹40,000 / month');
+check('else where most of its roles are', first({ payRange: null }).value, 'Bengaluru');
+check('never a "0 of N state pay" tile', liCardModel({ snapshot: { ...snap, payRange: null, paid: 0 } }).stats.some((t) => /^0 of/.test(t.value)), false);
+check('interns or freshers, by the posting\'s kind', [liCardModel({ snapshot: snap }).kicker.split(' · ')[0], liCardModel({ snapshot: { ...snap, kind: 'fulltime' } }).kicker.split(' · ')[0]], ['IS HIRING INTERNS', 'IS HIRING FRESHERS']);
+check('a first-ever posting gets a sentence, not a one-bar chart', [liCardModel({ snapshot: { ...snap, tracked: 1 } }).months.length, /^The first Acme role/.test(liCardModel({ snapshot: { ...snap, tracked: 1 } }).first)], [0, true]);
+check('a job with nothing still draws', Object.keys(liCardModel({ company: 'X', title: 'Y' })).includes('stats'), true);
 
 console.log('\n== the caller resolves the logo from the PUBLISHED projection ==');
 /* The first version built `/logos/${row.logo_url}`. That column holds the
@@ -88,6 +113,8 @@ check('it falls back to the logo on disk', /logoOnDisk\(/.test(logoLine), true);
 check('the fallback is keyed on the company, not the job id',
   /logoOnDisk\(\s*[^)]*compan/i.test(logoLine), true);
 
+check('the caller passes the employer snapshot', /snapshot: companySnapshot\(row, employerRows\(row\), publishedJobs\(\)\.filter\(\(j\) => j\.company === row\.company\)\)/.test(qs), true);
+
 console.log('\n== logoOnDisk reads the logo directory, with no network ==');
 // Real files in web/public/logos, so a rename of the slug rule fails here.
 check('resolves a company that has one', logoOnDisk('HARMAN India'), '/logos/harman-india.jpg');
@@ -100,60 +127,54 @@ const exe = chromiumPath();
 if (!exe) {
   console.log('\n  (no Playwright Chromium — render assertions skipped)');
 } else {
-  console.log('\n== a LONG name and title still fit inside the card ==');
+  console.log('\n== the worst case, drawn by the REAL drawCard, still fits ==');
   const { chromium } = await import('playwright-core');
   const browser = await chromium.launch({ executablePath: exe, headless: true });
-  const page = await browser.newPage({ viewport: { width: 1200, height: 627 } });
-  await page.setContent(tpl, { waitUntil: 'networkidle' });
-  await page.evaluate(() => {
-    document.getElementById('co').textContent = 'Jupiter Business Systems FZC';
-    document.getElementById('ttl').textContent =
-      'Interim Engineering Intern — Systems Software, Summer 2027';
-    document.getElementById('facts').innerHTML =
-      '<div class="chip">Greater Hyderabad Area</div><div class="chip">On-site</div><div class="chip">6 months</div>';
-  });
-  await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(() => {
-    for (const el of document.querySelectorAll('.fit')) {
-      const box = el.parentElement;
-      const room = () => {
-        if (el.scrollWidth > el.clientWidth + 0.5) return false;
-        const bs = getComputedStyle(box);
-        const cap = box.clientHeight - parseFloat(bs.paddingTop) - parseFloat(bs.paddingBottom);
-        if (!(cap > 0)) return true;
-        const gap = parseFloat(bs.rowGap) || 0;
-        let used = -gap;
-        for (const sib of box.children) used += sib.getBoundingClientRect().height + gap;
-        return used <= cap + 0.5;
-      };
-      let size = parseFloat(getComputedStyle(el).fontSize);
-      while (size > 22 && !room()) { size -= 2; el.style.fontSize = `${size}px`; }
-    }
-  });
-
+  const page = await browser.newPage({ viewport: { width: CARD_W, height: CARD_H } });
+  const worst = liCardModel({ snapshot: {
+    ...snap,
+    company: 'Jupiter Business Systems FZC International',
+    title: 'Interim Engineering Intern — Systems Software, Platform Reliability and Developer Productivity, Summer 2027',
+    city: 'Thiruvananthapuram', mode: 'Hybrid',
+    pay: '₹1,25,000 – ₹1,75,000 / month',
+    skills: ['Distributed Systems', 'Kubernetes', 'Infrastructure as Code', 'Observability', 'Python', 'Golang'],
+  } });
+  await drawCard(page, tpl, worst, '');
   const r = await page.evaluate(() => {
-    const band = document.querySelector('.band').getBoundingClientRect();
-    const co = document.getElementById('co').getBoundingClientRect();
-    const ttl = document.getElementById('ttl').getBoundingClientRect();
-    const px = (el) => Math.round(parseFloat(getComputedStyle(el).fontSize));
+    const box = (el) => el.getBoundingClientRect();
+    const band = box(document.querySelector('.band'));
+    const co = document.getElementById('co');
+    const ttl = document.getElementById('ttl');
+    const chips = [...document.querySelectorAll('.skills .chip')];
     return {
-      nameClearsBand: co.bottom <= band.top + 0.5,
-      titleClearsBand: ttl.bottom <= band.top + 0.5,
-      nameInside: co.right <= 1200.5 && co.top >= 0,
-      titleInside: ttl.right <= 1200.5 && ttl.top >= 0,
-      nameShrank: px(document.getElementById('co')) < 58,
-      titleSize: px(document.getElementById('ttl')),
+      nameFits: co.scrollWidth <= co.clientWidth + 0.5,
+      nameShrank: parseFloat(getComputedStyle(co).fontSize) < 76,
+      titleFits: ttl.scrollHeight <= ttl.parentElement.clientHeight + 0.5,
+      statsFit: [...document.querySelectorAll('.stat b')].every((b) => b.scrollWidth <= b.clientWidth + 0.5),
+      oneChipRow: chips.length > 0 && chips.every((c) => c.offsetTop === chips[0].offsetTop),
+      chipsKept: chips.length,
+      clearsBand: box(document.querySelector('.main')).bottom <= band.top + 0.5
+        && [...document.querySelectorAll('.main > *')].every((el) => box(el).bottom <= band.top + 0.5),
     };
   });
+  /* A figure that fits only once SHRUNK. The pay range above wraps whether or
+     not the tile shrinks, so it cannot tell the shrink from its absence. */
+  const city = liCardModel({ snapshot: { ...snap, pay: '', payRange: null, cities: [{ name: 'Visakhapatnam', n: 3 }] } });
+  await drawCard(page, tpl, city, '');
+  const t = await page.evaluate(() => {
+    const b = document.querySelector('.stat b');
+    return { text: b.textContent, size: parseFloat(getComputedStyle(b).fontSize), wrapped: b.style.whiteSpace === 'normal', fits: b.scrollWidth <= b.clientWidth + 0.5 };
+  });
   await browser.close();
-
-  check('the long employer name clears the lime band', r.nameClearsBand, true);
-  check('so does the long title', r.titleClearsBand, true);
-  check('the name stays inside the card', r.nameInside, true);
-  check('the title stays inside the card', r.titleInside, true);
-  // The point of the fixture: if it did not shrink, the cap was never reached
-  // and every assertion above would pass against a broken loop.
-  check('and the fixture actually REACHED the cap', r.nameShrank, true);
+  check('a long city shrinks to its tile', [t.text, t.size < 46, t.fits], ['Visakhapatnam', true, true]);
+  check('and stays on one line', t.wrapped, false);
+  check('the long employer name fits its line', r.nameFits, true);
+  check('and the fixture actually REACHED the cap (it shrank)', r.nameShrank, true);
+  check('the long title fits its box', r.titleFits, true);
+  check('every stat figure fits its tile', r.statsFit, true);
+  check('skills are one row, never clipped', r.oneChipRow, true);
+  check('and some survive', r.chipsKept > 0, true);
+  check('nothing runs into the lime band', r.clearsBand, true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
