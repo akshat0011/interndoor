@@ -111,6 +111,26 @@ export function resolveSearches(cfg) {
  *   '-home'        everything but the home region
  *   'IN,US' / '-IN' explicit region codes, or all but them
  */
+/**
+ * One KIND of search per phase — 1 Oct 2026, his call: "india internship -
+ * enrich - publish, then india full time - enrich - publish, every 30 mins".
+ * Each phase walks, enriches and publishes on its own, so the internships
+ * reach the site without waiting for the full-time walk.
+ *
+ *   null / ''    every kind (a hand-run scan, unchanged)
+ *   'intern'     every search that is not full-time
+ *   'fulltime'   the entry-level (full-time) searches
+ * Anything else selects nothing rather than everything: a typo must not walk
+ * the whole rotation twice in one slot.
+ */
+export function scopeKind(searches, kind) {
+  const k = String(kind ?? '').trim().toLowerCase();
+  if (!k) return searches;
+  if (k === 'fulltime') return searches.filter((s) => s.employment === 'fulltime');
+  if (k === 'intern') return searches.filter((s) => s.employment !== 'fulltime');
+  return [];
+}
+
 export function scopeSearches(searches, scope, homeRegion = 'IN') {
   const raw = String(scope ?? '').trim();
   if (!raw) return searches;

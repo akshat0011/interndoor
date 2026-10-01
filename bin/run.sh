@@ -102,14 +102,22 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 # (75) skips the rest, exactly as the whole scan used to. The rest phase's own
 # 75 is not passed on: the home board has just been reached, and a fast retry
 # would walk it again for nothing.
-"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home >> "$LOG" 2>&1
+# INTERNSHIPS, THEN FULL-TIME, EACH PUBLISHED ON ITS OWN (1 Oct 2026, his
+# call: "india internship - enrich - publish, then india full time - enrich -
+# publish, every 30 mins"). The internship walk is enriched and published
+# before the full-time walk starts, so it never waits on it. The full-time
+# phase deploys only when it found something new (src/index.js, laterPhase).
+# THE REST-OF-WORLD PHASE (--regions=-home) IS GONE: India is the only board
+# since 30 Sep, and that phase only ever wrote an empty run row for the paused
+# US search. A US/UK/CA search back on needs it back.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=intern >> "$LOG" 2>&1
 STATUS=$?
-echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT home $STATUS]" >> "$LOG"
+echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT intern $STATUS]" >> "$LOG"
 if [ "$STATUS" -ne 75 ]; then
-  "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=-home >> "$LOG" 2>&1
-  REST_STATUS=$?
-  echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT rest $REST_STATUS]" >> "$LOG"
-  if [ "$STATUS" -eq 0 ] && [ "$REST_STATUS" -ne 75 ]; then STATUS=$REST_STATUS; fi
+  "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=fulltime >> "$LOG" 2>&1
+  FT_STATUS=$?
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT fulltime $FT_STATUS]" >> "$LOG"
+  if [ "$STATUS" -eq 0 ] && [ "$FT_STATUS" -ne 75 ]; then STATUS=$FT_STATUS; fi
 fi
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"

@@ -736,6 +736,11 @@ export function isPublishedRegion(cfg, code) {
 export function collectsRegion(cfg, code) {
   const want = cfg?.regions?.collect ?? 'all';
   if (want === 'all') return true;
+  /* UNPLACED IS ALWAYS COLLECTED, whatever the list (1 Oct 2026, collect went
+     to ["IN"]). A Workday "2 Locations" row is unknown until its detail fetch
+     places it, and refusing it at list time would drop India roles at
+     multi-office employers before anyone looked. It is never published. */
+  if (code === UNKNOWN) return true;
   if (!Array.isArray(want)) return true;
   return want.includes(code);
 }

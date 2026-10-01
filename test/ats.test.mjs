@@ -635,9 +635,10 @@ console.log('\n== Uber filters to the SET of wanted countries ==');
 }
 
 console.log('\n== the tokens actually configured ==');
-check('Amazon covers the three published boards', FIRST_PARTY_BOARDS.Amazon, ['amazon', 'IND,USA,GBR']);
-check('Microsoft covers the same three',
-  FIRST_PARTY_BOARDS.Microsoft, ['microsoft', 'India,United States,United Kingdom']);
+/* India only since 1 Oct 2026 — the US and UK boards are offline. */
+check('Amazon covers the published board', FIRST_PARTY_BOARDS.Amazon, ['amazon', 'IND']);
+check('Microsoft likewise', FIRST_PARTY_BOARDS.Microsoft, ['microsoft', 'India']);
+check('Uber is no longer seeded (dead endpoint, failed every poll)', 'Uber' in FIRST_PARTY_BOARDS, false);
 /* ISO-3166 ALPHA-3, and this is not pedantry: `US` and `GB` answer 200 with
    zero jobs, so a two-letter code is an empty board and never an error. */
 check('no two-letter country code slipped into Amazon\'s token',

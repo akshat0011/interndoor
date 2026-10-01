@@ -13,7 +13,7 @@ import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
 import * as li from './linkedin.js';
-import { resolveSearches, scopeSearches } from './searches.js';
+import { resolveSearches, scopeSearches, scopeKind } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts, cleanTitles } from './ollama.js';
 import { titleTargets, saveTitleReading } from './titles.js';
 import { postNewJobs } from './telegram.js';
@@ -45,6 +45,9 @@ const SCHEDULED = ARGS.has('--scheduled');
 /** Which regions this scan walks — see scopeSearches. bin/run.sh passes
  *  `home` and then `-home`, so the home board publishes before the rest walk. */
 const REGION_SCOPE = [...ARGS].map((a) => a.match(/^--regions=(.+)$/)?.[1]).find(Boolean) ?? null;
+/** Which kind of search this scan walks — see scopeKind. bin/run.sh passes
+ *  `intern` and then `fulltime`, so the internships publish first. */
+const KIND_SCOPE = [...ARGS].map((a) => a.match(/^--kind=(.+)$/)?.[1]).find(Boolean) ?? null;
 
 /**
  * One-off numeric overrides, so a deep backfill does not require editing
@@ -341,7 +344,7 @@ async function main() {
 
   // Company batches or role keywords, per config.searchMode.
   const homeScope = cfg.notifications?.homeRegion ?? 'IN';
-  const allSearches = scopeSearches(resolveSearches(cfg), REGION_SCOPE, homeScope);
+  const allSearches = scopeKind(scopeSearches(resolveSearches(cfg), REGION_SCOPE, homeScope), KIND_SCOPE);
   if (REGION_SCOPE) log.info(`Phase: ${REGION_SCOPE} — ${allSearches.map((s) => s.label ?? s.region).join(', ') || 'no searches'}.`);
 
   if (DRY_RUN) {
@@ -2427,8 +2430,12 @@ async function main() {
   // an unchanged board would spend Vercel's 100-a-day allowance (~60 a day
   // already) on nothing.
   const restPhase = Boolean(REGION_SCOPE) && !scopeSearches([{ region: homeScope }], REGION_SCOPE, homeScope).length;
-  const skipPublish = restPhase && newJobs.length === 0;
-  if (skipPublish) log.info('Nothing new in this phase — the next home-region run publishes the site.');
+  /* THE FULL-TIME PHASE IS A LATER PHASE TOO (1 Oct 2026): the internship phase
+     published a minute ago, so with nothing new this deploy would only spend
+     Vercel's 100-a-day allowance. */
+  const laterPhase = restPhase || KIND_SCOPE === 'fulltime';
+  const skipPublish = laterPhase && newJobs.length === 0;
+  if (skipPublish) log.info('Nothing new in this phase — the site was published by the phase before it.');
   const publishedIds = DRY_RUN || skipPublish ? null : await publish(store, cfg, newJobs.length);
 
   /* THE CHANNEL POSTS WHAT PUBLISH PUBLISHED — not what the scan collected.
