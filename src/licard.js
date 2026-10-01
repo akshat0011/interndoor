@@ -280,9 +280,12 @@ export async function drawDesign(page, html, m, { today = cardDay() } = {}) {
 
 /**
  * Every design for every posting, skipping a file already on disk unless
- * `force`. Returns posting id -> design #1's path.
+ * `force`, or unless the posting is in `redraw` — the posts just (re)written:
+ * the card carries the post's own tip, so a Rewrite that kept the old image
+ * would show the old advice beside the new post. Returns posting id -> design
+ * #1's path.
  */
-export async function renderLiCards(jobs, outDir = PATHS.liCards, { force = false, designs = DESIGNS, now = Date.now() } = {}) {
+export async function renderLiCards(jobs, outDir = PATHS.liCards, { force = false, redraw = null, designs = DESIGNS, now = Date.now() } = {}) {
   const out = new Map();
   if (!jobs.length) return out;
   mkdirSync(outDir, { recursive: true });
@@ -291,7 +294,7 @@ export async function renderLiCards(jobs, outDir = PATHS.liCards, { force = fals
   for (const job of jobs) {
     for (const design of designs) {
       const file = join(outDir, cardFile(job.id, design.n));
-      if (!force && existsSync(file)) { if (design.n === 1) out.set(String(job.id), file); }
+      if (!force && !redraw?.has(String(job.id)) && existsSync(file)) { if (design.n === 1) out.set(String(job.id), file); }
       else todo.push({ job, design, file });
     }
   }
