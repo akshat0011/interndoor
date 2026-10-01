@@ -276,7 +276,7 @@ async function generate(jobIds) {
     for (const [i, row] of rows.entries()) {
       const raw = drafts.get(i) ?? null;
       const built = buildPost(row, cfg, raw);
-      store.saveDraft(row.job_id, batchId, built.text, { fromModel: !!raw, dropped: built.ai.dropped, model });
+      store.saveDraft(row.job_id, batchId, built.text, { fromModel: !!raw, dropped: built.ai.dropped, model, tip: built.ai.tip });
     }
 
     // The page holds the whole queue, not just this batch: he asked for one
@@ -294,11 +294,19 @@ async function generate(jobIds) {
        paste, and a card that fails to render must not lose the post — hence the
        try/catch rather than letting it reject the batch. */
     try {
-      await renderLiCards(all.map(({ row, facts }) => ({
+      await renderLiCards(all.map(({ row, facts, meta }) => ({
         id: row.job_id,
         company: facts.company ?? row.company,
         title: row.title,
         location: row.location,
+        /* THE CHEAT SHEET'S INPUTS (src/licard.js): the post's facts, the
+           posting's own skills and stated experience, and the post's own tip —
+           saved with the draft, so the image and the text give the same
+           advice. An older draft has none and takes the provider tip. */
+        facts,
+        skills: row.skills,
+        experience: row.experience,
+        tip: meta?.tip ?? facts.tipFallback,
         /* The PUBLISHED projection's logo, which is a site path like
            /logos/nvidia.jpg. NOT row.logo_url — that column holds the REMOTE
            LinkedIn CDN URL it was fetched from, and building /logos/<that>
@@ -313,9 +321,8 @@ async function generate(jobIds) {
            empty plate for an employer whose logo had been on disk since July.
            logoOnDisk keys on the company and needs no network. */
         logo: publicJob(row.job_id)?.logo ?? logoOnDisk(facts.company ?? row.company),
-        /* THE COMPANY SNAPSHOT (1 Oct 2026): the employer's own record on this
-           board — its postings by month, what pay they state, its skills and
-           cities — and its roles open right now. src/companysnapshot.js. */
+        /* THE EMPLOYER'S TWO FACTS (src/companysnapshot.js): its roles open
+           right now, and the pay range its other postings state. */
         snapshot: companySnapshot(row, employerRows(row), publishedJobs().filter((j) => j.company === row.company)),
       })));
     } catch (err) {
@@ -458,8 +465,8 @@ function publishedJobs() {
 /** The employer's stored engineering rows on the same board as `row`, for the post image. */
 function employerRows(row) {
   const region = resolveRowRegion(row);
-  return store.db.prepare(`SELECT job_id, company, title, posted_at, first_seen_at, key_skills, location, region,
-      stipend_min, stipend_max, stipend_currency, stipend_period, salary_text, employment_type
+  return store.db.prepare(`SELECT job_id, company, location, region,
+      stipend_min, stipend_max, stipend_currency, stipend_period, salary_text
     FROM jobs WHERE company = ? AND is_tech = 1 AND suppressed_reason IS NULL`).all(row.company)
     .filter((r) => resolveRowRegion(r) === region);
 }

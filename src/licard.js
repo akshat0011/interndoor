@@ -1,149 +1,208 @@
 /**
- * The LinkedIn post image — one per queued posting, a COMPANY SNAPSHOT since
- * 1 Oct 2026 (web/li-card.html, src/companysnapshot.js).
+ * The LinkedIn post image — one per queued posting.
  *
- * NOT web/og-card.html's job. That renders the LINK PREVIEW a crawler fetches
- * when the post carries a URL. This is an image he ATTACHES, and attaching one
- * REPLACES that preview card — trading a large clickable target for a picture
- * that is not a link at all. Both exist because he wants the choice per post;
- * neither is a copy of the other and they are not kept in step.
+ * A JOB CHEAT SHEET since 1 Oct 2026 (web/li-card.html), after his brief: "not
+ * a interndoor product but something genuinely useful for which the user will
+ * stop scrolling … dont use interndoor theme or elements". Light, in the
+ * employer's own colour (read off its logo here), carrying the facts, the
+ * skills to put on a resume as a checklist, what the work is and one way to
+ * stand out — everything from the posting and its post, nothing invented.
  *
- * Output goes to PATHS.liCards in the state directory, never the repo: one file
- * per queued posting and `app/` is public.
+ * NOT web/og-card.html's job. That is the LINK PREVIEW a crawler fetches; this
+ * is an image he ATTACHES, which replaces that preview.
+ *
+ * Output goes to PATHS.liCards in the state directory, never the repo.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { ROOT, PATHS } from './paths.js';
 import { chromiumPath } from './ogcard.js';
-import { companySnapshot } from './companysnapshot.js';
 import { log } from './logger.js';
+import { tidyTech } from './postgen.js';
+import { canonicalCity } from './facets.js';
 
 const TEMPLATE = join(ROOT, 'web', 'li-card.html');
 export const CARD_W = 1080;
 export const CARD_H = 1350;
 
+const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'apis', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'etl', 'llm', 'llms', 'ci/cd', 'qa', 'os', 'iot', 'rtl', 'fpga', 'vlsi', 'oops', 'dsa', 'rest', 'sap', 'gpu']);
+/* What the post's tidyTech table does not cover, cased the way the projects themselves write it. */
+const SKILL_CASE = new Map(Object.entries({
+  html5: 'HTML5', css3: 'CSS3', nodejs: 'Node.js', reactjs: 'React', 'react.js': 'React', nextjs: 'Next.js', 'next.js': 'Next.js',
+  vuejs: 'Vue.js', 'vue.js': 'Vue.js', expressjs: 'Express.js', 'express.js': 'Express.js', '.net': '.NET', 'c#': 'C#', 'c++': 'C++',
+  ios: 'iOS', devops: 'DevOps', mlops: 'MLOps', pytorch: 'PyTorch', tensorflow: 'TensorFlow', numpy: 'NumPy', 'scikit-learn': 'scikit-learn',
+  fastapi: 'FastAPI', jquery: 'jQuery', powerbi: 'Power BI', 'power bi': 'Power BI', jira: 'Jira', gitlab: 'GitLab', kotlin: 'Kotlin',
+}));
+function skillName(raw) {
+  const s = String(raw ?? '').trim();
+  if (!s) return '';
+  if (SKILL_CASE.has(s.toLowerCase())) return SKILL_CASE.get(s.toLowerCase());
+  if (SKILL_UPPER.has(s.toLowerCase())) return s.toUpperCase();
+  if (/[A-Z]/.test(s.slice(1))) return s;           // already cased: "PyTorch", "C++"
+  /* The post's own casing table first (JavaScript, HTML5, Node.js, MongoDB…),
+     then plain title case: "Html5" and "Javascript" read as typos on a card
+     whose whole point is a list of skills. */
+  const cased = tidyTech(s);
+  if (cased !== s) return cased.replace(/^./, (c) => c.toUpperCase());
+  return s.replace(/(^|[\s/-])([a-z])/g, (m, sep, c) => sep + c.toUpperCase());
+}
+const parseList = (v) => {
+  if (Array.isArray(v)) return v;
+  try { const a = JSON.parse(v ?? '[]'); return Array.isArray(a) ? a : []; } catch { return []; }
+};
+
+/** "Bengaluru East, Karnataka, India" -> "Bengaluru": the city pages' own folding. */
+const cityOf = (loc) => canonicalCity(loc) || String(loc ?? '').split(/[;,]/)[0].trim();
+/** "Thu, 1 Oct, 8:36 am" -> "1 Oct": the day is what a reader weighs. */
+const dayOf = (label) => (String(label ?? '').match(/\b(\d{1,2} [A-Z][a-z]{2})\b/) ?? [])[1] ?? '';
+
 /**
- * What the card says. `job.snapshot` is the caller's companySnapshot (the
- * employer's rows); without one the card still draws, from the posting alone.
+ * What the card says. `job.facts` is postgen's jobFacts for the posting;
+ * `job.tip` the post's own tip; `job.skills` the posting's skills; `job.snapshot`
+ * the employer's record (src/companysnapshot.js) for the roles-open line and
+ * the pay its other postings state.
  */
 export function liCardModel(job) {
-  const snap = job.snapshot ?? companySnapshot({
-    company: job.company, title: job.title, location: job.location,
-    employment_type: job.employment_type ?? job.employmentType,
-  }, [], []);
-  const kind = snap.kind === 'fulltime' ? 'IS HIRING FRESHERS' : 'IS HIRING INTERNS';
-  const where = [snap.city, snap.mode].filter(Boolean).join(' · ');
-  /* The first tile is the most useful fact the data has: this role's pay; else
-     the pay range the employer's postings state (the "salary breakdown"); else
-     where most of its roles are. Never "0 of 108 state pay" — true, and not a
-     reason to stop scrolling. */
-  const topCity = snap.cities[0];
-  const first = snap.pay
-    ? { value: snap.pay, label: snap.kind === 'fulltime' ? 'Salary, as stated' : 'Stipend, as stated', pay: true }
-    : snap.payRange
-      ? { value: snap.payRange.text, label: `Pay stated in ${snap.payRange.n} of its postings`, pay: true }
-      : topCity
-        ? { value: topCity.name, label: snap.tracked === 1 ? 'Where this role is' : `${topCity.n} of its ${snap.tracked} roles are here` }
-        : { value: '—', label: 'Location not stated' };
-  const stats = [
-    first,
-    { value: String(snap.openNow), label: snap.openNow === 1 ? 'Role open now' : 'Roles open now' },
-    { value: String(snap.tracked), label: snap.since ? `Posted since ${snap.since}` : 'Postings tracked' },
-  ];
+  const f = job.facts ?? {};
+  const snap = job.snapshot ?? null;
+  const company = f.company ?? job.company ?? '';
+  const fullTime = f.fullTime ?? (job.employment_type === 'fulltime');
+  const facts = [];
+  const city = cityOf(f.location ?? job.location);
+  if (city) facts.push({ label: 'Location', value: city, small: f.workplaceType ?? '' });
+  facts.push({ label: 'Type', value: fullTime ? 'Full-time' : 'Internship', small: fullTime ? 'Freshers' : (f.duration ?? '') });
+  if (f.stipend) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: f.stipend, pay: true });
+  else if (snap?.payRange) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not stated', small: `Other ${company} roles state ${snap.payRange.text}` });
+  else facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not disclosed' });
+  if (job.experience) facts.push({ label: 'Experience', value: job.experience });
+  if (f.batch) facts.push({ label: 'Batch', value: f.batch });
+  if (dayOf(f.postedLabel)) facts.push({ label: 'Posted', value: dayOf(f.postedLabel) });
+
+  /* The posting's own skills, the model's pick first, then the extractor's —
+     the same words a recruiter's search will look for on a resume. */
+  const seen = new Set();
+  const named = [...(f.keySkills ?? []), ...parseList(job.skills)]
+    .map(skillName).filter((s) => s && !seen.has(s.toLowerCase()) && seen.add(s.toLowerCase()));
+  /* "Linux" beside "Unix/Linux" is one skill twice: drop a skill that another
+     one already names as a whole word. */
+  const words = (s) => s.toLowerCase().split(/[^a-z0-9+#.]+/).filter(Boolean);
+  const skills = named.filter((s) => !named.some((o) => o !== s && o.length > s.length && words(o).includes(s.toLowerCase()))).slice(0, 8);
+
+  const open = Number(snap?.openNow ?? 0);
   return {
-    company: snap.company,
-    kicker: where ? `${kind} · ${where}` : kind,
-    title: snap.title,
-    stats,
-    chartTitle: `${snap.company} postings we tracked, by month`,
-    months: snap.tracked >= 3 ? snap.months : [],
-    first: snap.tracked >= 3 ? '' : snap.tracked <= 1
-      ? `The first ${snap.company} role we have tracked.`
-      : `${snap.tracked} ${snap.company} roles tracked so far.`,
-    skills: snap.skills,
+    company,
+    pill: fullTime ? 'Hiring freshers' : 'Hiring interns',
+    title: f.title ?? job.title ?? '',
+    facts: facts.slice(0, 6),
+    skillsHeading: 'Skills to have on your resume',
+    skills,
+    does: (f.bullets ?? []).slice(0, 3),
+    tip: job.tip || f.tipFallback || '',
+    more: open > 1 ? `${open - 1} more open at ${company}` : '',
   };
 }
 
 /**
- * Fill the template with a model and fit its type — the whole drawing, in one
- * function the renderer AND test/licard.test.mjs call, so the test measures
- * the real fit rather than a copy of it.
+ * Fill the template with a model, colour it from the logo and fit it — the
+ * whole drawing, shared by the renderer and test/licard.test.mjs so the test
+ * measures the real thing.
  */
 export async function drawCard(page, html, m, logoSrc = '') {
   await page.setContent(html, { waitUntil: 'networkidle' });
-  /* Everything goes in through textContent. Employer names and titles are
-     scraped text, and this page is rendered by a real browser. */
+  /* Everything goes in through textContent: employer names, titles and skills
+     are scraped text, and this page is rendered by a real browser. */
   await page.evaluate(({ m, logoSrc }) => {
     const $ = (id) => document.getElementById(id);
     const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
     $('co').textContent = m.company;
-    $('kicker').textContent = m.kicker;
+    $('pill').textContent = m.pill;
     $('ttl').textContent = m.title;
-    for (const s of m.stats) {
-      const d = el('div', s.pay ? 'stat is-pay' : 'stat');
-      d.append(el('b', '', s.value), el('span', '', s.label));
-      $('stats').append(d);
-    }
-    if (m.months.length) {
-      $('chart-h').textContent = m.chartTitle;
-      const max = Math.max(1, ...m.months.map((x) => x.n));
-      for (const mo of m.months) {
-        const b = el('div', `bar${mo.n ? '' : ' is-zero'}${mo.current ? ' is-now' : ''}`);
-        const bar = el('i');
-        bar.dataset.h = String(Math.round((mo.n / max) * 100));
-        b.append(el('em', '', String(mo.n)), bar, el('small', '', mo.current ? `${mo.label} so far` : mo.label));
-        $('bars').append(b);
-      }
-    } else {
-      $('chart-h').remove();
-      $('bars').replaceWith(el('div', 'first', m.first));
-      $('chart').classList.add('is-short');
-      document.querySelector('.main').classList.add('is-spread');
+    for (const f of m.facts) {
+      const d = el('div', f.pay ? 'fact is-pay' : 'fact');
+      d.append(el('span', '', f.label), el('b', '', f.value));
+      if (f.small) d.append(el('small', '', f.small));
+      $('facts').append(d);
     }
     if (m.skills.length) {
-      $('skills').append(el('div', 'lab', 'What they ask for'));
-      for (const s of m.skills) $('skills').append(el('div', 'chip', s));
-    } else {
-      $('skills').remove();
-    }
-    const img = $('logo');
-    if (logoSrc) img.src = logoSrc; else $('plate').remove();
+      $('skills-h').textContent = m.skillsHeading;
+      for (const s of m.skills) { const c = el('div', 'check'); c.append(el('i'), el('em', '', s)); $('checks').append(c); }
+    } else $('skills-sec').remove();
+    if (m.does.length) for (const d of m.does) $('does').append(el('div', 'do', d));
+    else $('does-sec').remove();
+    if (m.tip) $('tip').textContent = m.tip; else $('tip-sec').remove();
+    $('more').textContent = m.more;
+    if (logoSrc) $('logo').src = logoSrc; else $('plate').remove();
   }, { m, logoSrc });
 
   await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(() => {
-    /* Bars in PIXELS of the space left once the count and month label are
-       laid out; a percentage of an auto-height flex child resolves to 0. */
-    for (const b of document.querySelectorAll('.bar')) {
-      const i = b.querySelector('i');
-      const room = b.clientHeight - b.querySelector('em').offsetHeight - b.querySelector('small').offsetHeight - 16;
-      i.style.height = `${Math.max(6, Math.round((Number(i.dataset.h) / 100) * room))}px`;
+  await page.evaluate(async () => {
+    /* THE EMPLOYER'S COLOUR, read off its own logo: the most common saturated
+       hue, averaged. A monochrome logo keeps the default blue. Darkened until
+       it holds 4.5:1 as text on the paper, so a yellow logo cannot produce an
+       unreadable heading. */
+    const img = document.getElementById('logo');
+    let rgb = null;
+    if (img && img.src) {
+      await img.decode().catch(() => {});
+      const c = document.createElement('canvas'); c.width = 64; c.height = 64;
+      const x = c.getContext('2d'); x.drawImage(img, 0, 0, 64, 64);
+      const d = x.getImageData(0, 0, 64, 64).data;
+      const buckets = new Map();
+      for (let i = 0; i < d.length; i += 4) {
+        const [r, g, b, a] = [d[i], d[i + 1], d[i + 2], d[i + 3]];
+        if (a < 200) continue;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        const l = (max + min) / 510, s = max === min ? 0 : (max - min) / (255 - Math.abs(max + min - 255));
+        if (s < 0.35 || l < 0.12 || l > 0.88) continue;
+        let h = 0;
+        if (max === r) h = ((g - b) / (max - min)) % 6; else if (max === g) h = (b - r) / (max - min) + 2; else h = (r - g) / (max - min) + 4;
+        const key = Math.round(((h * 60 + 360) % 360) / 24);
+        const e = buckets.get(key) ?? { n: 0, r: 0, g: 0, b: 0 };
+        e.n++; e.r += r; e.g += g; e.b += b; buckets.set(key, e);
+      }
+      const best = [...buckets.values()].sort((a, b) => b.n - a.n)[0];
+      if (best && best.n > 20) rgb = [best.r / best.n, best.g / best.n, best.b / best.n].map(Math.round);
     }
-    /* Shrink the employer name to its line and the title to its box. Each
-       is measured against ITS OWN box — the third way this repo has got a
-       fit loop wrong was measuring against the card. */
+    const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+    const contrast = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+    const paper = [251, 250, 247];
+    if (rgb) {
+      let text = rgb.slice();
+      while (contrast(text, paper) < 4.5 && text.some((v) => v > 0)) text = text.map((v) => Math.max(0, Math.round(v * 0.9)));
+      const css = (a) => `rgb(${a.join(',')})`;
+      const root = document.documentElement.style;
+      root.setProperty('--accent', css(rgb));
+      root.setProperty('--accent-text', css(text));
+      root.setProperty('--accent-ink', contrast(rgb, [255, 255, 255]) >= 3 ? '#ffffff' : '#111318');
+      root.setProperty('--accent-soft', css(rgb.map((v) => Math.round(v * 0.1 + 255 * 0.9))));
+    }
+
+    /* FIT. The name to its line, the title to its box, each fact to two lines;
+       then, while the page still overflows, drop whole sections in order of
+       least use — never clip one. */
     const shrink = (el, fits, floor) => {
       let size = parseFloat(getComputedStyle(el).fontSize);
       while (size > floor && !fits()) { size -= 2; el.style.fontSize = `${size}px`; }
     };
-    /* One row of skill chips: anything that wrapped is dropped, never clipped. */
-    const chips = [...document.querySelectorAll('.skills .chip')];
-    if (chips.length) {
-      const row = chips[0].offsetTop;
-      for (const c of chips) if (c.offsetTop > row + 2) c.remove();
-    }
-    /* A tile's figure shrinks to its tile — a city or a pay range is far
-       wider than a count — and wraps only once it reaches the floor. */
-    for (const b of document.querySelectorAll('.stat b')) {
-      shrink(b, () => b.scrollWidth <= b.clientWidth + 0.5, 26);
-      if (b.scrollWidth > b.clientWidth + 0.5) b.style.whiteSpace = 'normal';
-    }
     const co = document.getElementById('co');
-    shrink(co, () => co.scrollWidth <= co.clientWidth + 0.5, 34);
+    shrink(co, () => co.scrollWidth <= co.clientWidth + 0.5, 26);
+    /* AGAINST THE BOX'S CAP, NOT THE BOX. The box is as tall as the title up to
+       its max-height, so measuring the title against the box compared it with
+       itself, and a few pixels of glyph overhang shrank every multi-line
+       title to the floor — this repo's fit-loop tautology, a fourth time. */
     const ttl = document.getElementById('ttl');
-    const box = ttl.parentElement;
-    shrink(ttl, () => ttl.scrollHeight <= box.clientHeight + 0.5 && ttl.scrollWidth <= box.clientWidth + 0.5, 30);
+    const cap = parseFloat(getComputedStyle(ttl.parentElement).maxHeight);
+    shrink(ttl, () => ttl.getBoundingClientRect().height <= cap + 0.5, 40);
+    for (const b of document.querySelectorAll('.fact b')) shrink(b, () => b.scrollHeight <= parseFloat(getComputedStyle(b).lineHeight) * 2 + 1, 22);
+    const main = document.getElementById('main');
+    const over = () => main.scrollHeight > main.clientHeight + 0.5;
+    const does = [...document.querySelectorAll('.do')];
+    while (over() && does.length > 1) does.pop().remove();
+    for (const id of ['does-sec', 'tip-sec']) if (over()) document.getElementById(id)?.remove();
+    /* No third step: with the duties and the tip gone, even a 120-character
+       title, six two-line facts and eight skills fit (measured), so trimming
+       the checklist could never run and no test could see it. */
   });
 }
 

@@ -1,4 +1,4 @@
-import { employmentType, isSeniorTitle, experienceFloor, admitEntryLevel, ENTRY_MAX_YEARS, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME } from '../src/employment.js';
+import { employmentType, isSeniorTitle, experienceFloor, admitEntryLevel, ENTRY_MAX_YEARS, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME, entryLevelTitleRefusal, titleMinYears } from '../src/employment.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -262,6 +262,28 @@ console.log('\n== the one phrase every surface uses for the two kinds ==');
   check('the digest headline, mixed', newCountHeadline({ interns: 16, fullTime: 33 }, 'India'), '16 new engineering internships and 33 entry-level engineering roles in India');
   check('the digest headline, entry-level only', newCountHeadline({ interns: 0, fullTime: 1 }, 'the US'), '1 new entry-level engineering role in the US');
   check('the digest headline, internships only', newCountHeadline({ interns: 2, fullTime: 0 }, 'the UK'), '2 new engineering internships in the UK');
+}
+
+console.log('\n== years stated in the TITLE (1 Oct 2026) ==');
+{
+  /* Seven of these were live on India's Full-time tab: the prose read missed
+     them and the title says it outright. The minimum decides, against the same
+     ENTRY_MAX_YEARS the prose uses. */
+  for (const t of [
+    'Software Engineer | Java/Go , Python Automation, Cloud (AWS or GCP or Azure), Kubernetes, Dockers | 7 to 10 Years | Bangalore',
+    'Software Engineer - Backend (4 to 8 Yrs)',
+    'Java Developer – Apache Spark | 6+ Years | Immediate Joiners | Any UST Location',
+    'Site Reliability Engineer - On-Prem (4 to 8 Years)',
+    'Software Engineer: Python, Automation, Networking | 7+ Yrs | BLR',
+  ]) check(`refused: ${t.slice(0, 48)}`, /^entry-level: asks \d+\+ years in the title$/.test(entryLevelTitleRefusal(t) ?? ''), true);
+  check('a range starting under 2 years passes (1-3)', entryLevelTitleRefusal('Associate Engineer (C,C++&OpenGL,1-3 years,Hyderabad)'), null);
+  check('so does 0-2 years', entryLevelTitleRefusal('Software Engineer (0-2 years)'), null);
+  check('and "1 year Exp"', entryLevelTitleRefusal('Software Engineer (1 year Exp)'), null);
+  check('exactly ENTRY_MAX_YEARS is refused', /asks 2\+ years/.test(entryLevelTitleRefusal('Engineer, 2 yrs exp') ?? ''), true);
+  check('a 4-digit year is never experience', titleMinYears('Software Engineer 2027 Batch'), null);
+  check('nor a version or a decimal', titleMinYears('Engineer for Python 3.12 years-long project'), null);
+  check('the smallest stated figure decides', titleMinYears('Engineer (8-14 Years), 2+ years Go'), 2);
+  check('admitEntryLevel refuses it before anything else is read', admitEntryLevel({ title: 'Software Engineer - Backend (4 to 8 Yrs)', employmentTag: 'Full-time', description: '' }).reason, 'entry-level: asks 4+ years in the title');
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
