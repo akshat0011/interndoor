@@ -90,8 +90,9 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
        walk hourly since 30 Sep 2026 ("should we move internships every 30
        mins but full time to every 1 hour"), after LinkedIn's edge rate-limited
        the IP — see its _interval_note in config.json. */
-    /* Both walks every tick again since 1 Oct 2026 — each its own phase (his call). */
-    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, null);
+    /* The intern walk every tick; the full-time walk hourly (his call, 1 Oct
+       2026, after a day at every tick), in its own phase. */
+    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 60 : null);
   } else {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
   }
@@ -168,7 +169,7 @@ console.log('\n== the live config: India every tick, US every hour ==');
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
 check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Declared, not active, so a paused search is still held to this.
-check('only the (paused) US declares an interval — both India walks run every tick since 1 Oct 2026', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['US']);
+check('only India entry-level and the US declare an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['IN entry-level', 'US']);
 check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
 ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
