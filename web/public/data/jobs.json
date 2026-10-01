@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790892889801,
+ "generatedAt": 1790893140792,
  "region": "IN",
  "regionName": "India",
- "count": 1010,
- "techCount": 1010,
+ "count": 1011,
+ "techCount": 1011,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -497,7 +497,7 @@
    "postedText": "21 minutes ago",
    "postedAt": 1790891584183,
    "firstSeenAt": 1790892844193,
-   "lastSeenAt": 1790892844193,
+   "lastSeenAt": 1790892956306,
    "url": "https://www.linkedin.com/jobs/view/4472820817/",
    "applyUrl": "https://easyapply.jobs/r/KFwV3gK27l35aK4UkNEP",
    "description": null,
@@ -509,6 +509,63 @@
    ],
    "category": "software",
    "family": "ai_ml",
+   "region": "IN"
+  },
+  {
+   "id": "4472957890",
+   "title": "Amazon Connect Engineer",
+   "company": "UST",
+   "matchedWatchlist": "UST",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/ust.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "node.js",
+    "aws",
+    "ci/cd",
+    "postgresql",
+    "agile"
+   ],
+   "summary": "This role involves designing and deploying contact center solutions using amazon connect and aws services. The candidate will integrate with lambda, lex, and dynamodb to handle real-time data and optimize contact flows while ensuring compliance with security standards. It suits those with experience in aws and contact center solutions.",
+   "bullets": [
+    "Design and deploy contact center solutions using amazon connect and aws services",
+    "Integrate with lambda, lex, dynamodb, and s3 for real-time data handling",
+    "Optimize contact flows and ensure compliance with security standards"
+   ],
+   "roleLabel": "Contact center engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "amazon connect",
+    "aws lambda",
+    "postgresql",
+    "aws glue",
+    "sql"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1790889410274,
+   "firstSeenAt": 1790893010286,
+   "lastSeenAt": 1790893010286,
+   "url": "https://www.linkedin.com/jobs/view/4472957890/",
+   "applyUrl": "https://usource.ripplehire.com/candidate/?token=8YxWjpwDhdL62DFYUIcQ&lang=en&source=USTLINKEDIN&ref=USTLINKEDIN#detail/job/65909",
+   "description": null,
+   "roleFingerprint": "d2bd312ab5",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "generic",
    "region": "IN"
   },
   {
