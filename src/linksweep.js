@@ -145,6 +145,22 @@ export async function checkLink(url, { fetchImpl = fetch, timeoutMs = TIMEOUT_MS
  *
  * Returns { checked, closed, alive, unknown, closures: [{job_id, note}] }.
  */
+/**
+ * The rows a run checks: on a PUBLISHED board only, least recently checked
+ * first (the order applyLinksToCheck returns), at most `perRun`.
+ *
+ * 1 Oct 2026. The sweep's own header always said "published-region", and the
+ * query never filtered: after India-only, 5,461 of the 6,440 candidates were
+ * on boards nobody can see (US 4,638), so the daily 800 went mostly on them —
+ * ~36 minutes run BEFORE the scan, which held the site's publish back for an
+ * hour ("checked 55m ago"). `regionOf` re-derives the board from the location,
+ * as publish does (resolveRowRegion), never trusting the stored column.
+ */
+export function sweepCandidates(rows, liveCodes, regionOf, perRun = PER_RUN) {
+  const live = new Set(liveCodes);
+  return (rows ?? []).filter((r) => live.has(regionOf(r))).slice(0, perRun);
+}
+
 export async function sweepApplyLinks(rows, {
   check = (url) => checkLink(url),
   onClose = () => {},

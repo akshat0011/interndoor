@@ -6,7 +6,8 @@
 import { readFileSync } from 'node:fs';
 import { Store } from '../src/store.js';
 import { loadConfig } from '../src/config.js';
-import { deadFromStatus, hostOf, checkLink, sweepApplyLinks, CONFIRM, redirectedAway, postingToken, HOST_CLOSE_CAP } from '../src/linksweep.js';
+import { deadFromStatus, hostOf, checkLink, sweepApplyLinks, CONFIRM, redirectedAway, postingToken, HOST_CLOSE_CAP, sweepCandidates } from '../src/linksweep.js';
+import { resolveRowRegion } from '../src/regions.js';
 import { closableFrom } from '../src/publish.js';
 
 let pass = 0, fail = 0;
@@ -279,6 +280,29 @@ console.log('\n== a whole host dying at once is held for a human, not closed =='
   ok('the default cap is a real number the daily run uses', Number.isInteger(HOST_CLOSE_CAP) && HOST_CLOSE_CAP >= 5);
   const runner = read('bin/link-sweep.js');
   ok('the runner reports held rows', /held \(per-host cap\)/.test(runner));
+}
+
+console.log('\n== published boards only, and AFTER the scan (1 Oct 2026) ==');
+{
+  const rows = [
+    { job_id: 'in-1', location: 'Bengaluru, Karnataka, India' },
+    { job_id: 'us-1', location: 'Seattle, WA' },
+    { job_id: 'in-2', location: 'Pune, Maharashtra, India' },
+    { job_id: 'us-2', location: 'Austin, TX', region: 'US' },
+    { job_id: 'in-3', location: 'Hyderabad, Telangana, India' },
+  ];
+  ok('only rows on a published board', sweepCandidates(rows, ['IN'], resolveRowRegion).map((r) => r.job_id).join() === 'in-1,in-2,in-3');
+  ok('filtered BEFORE the cap, so a foreign row never spends a slot', sweepCandidates(rows, ['IN'], resolveRowRegion, 2).map((r) => r.job_id).join() === 'in-1,in-2');
+  ok('the order it was handed is kept (least recently checked first)', sweepCandidates([...rows].reverse(), ['IN'], resolveRowRegion).map((r) => r.job_id).join() === 'in-3,in-2,in-1');
+  /* A stale stored region must not decide: publish re-derives from the location. */
+  ok('the board is re-derived from the location, not the stored column',
+    sweepCandidates([{ job_id: 'x', location: 'Seattle, WA', region: 'IN' }], ['IN'], resolveRowRegion).length === 0);
+  const runner = readFileSync(new URL('../bin/link-sweep.js', import.meta.url), 'utf8');
+  ok('the runner filters through sweepCandidates', /sweepCandidates\(\s*store\.applyLinksToCheck\(/.test(runner));
+  const runSh = readFileSync(new URL('../bin/run.sh', import.meta.url), 'utf8');
+  const at = (re) => runSh.search(re);
+  ok('run.sh runs the sweep AFTER the scan, not before it',
+    at(/bin\/link-sweep\.js" --daily/) > at(/src\/index\.js" "\$@" --regions=home/) && at(/src\/index\.js" "\$@" --regions=home/) > 0);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
