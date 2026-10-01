@@ -54,6 +54,7 @@ import { formatStipend } from '../src/extract.js';
 import { resolveRowRegion } from '../src/regions.js';
 import { utmUrl } from '../src/postgen.js';
 import { announceable } from '../src/rolefocus.js';
+import { publishedTitle } from '../src/titles.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -297,7 +298,7 @@ async function generate(jobIds) {
       await renderLiCards(all.map(({ row, facts, meta }) => ({
         id: row.job_id,
         company: facts.company ?? row.company,
-        title: row.title,
+        title: publishedTitle(row),
         location: row.location,
         /* THE CHEAT SHEET'S INPUTS (src/licard.js): the post's facts, the
            posting's own skills and stated experience, and the post's own tip —
