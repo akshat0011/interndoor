@@ -175,9 +175,6 @@
       ]
     },
     {
-      "name": "Nippon Data Systems"
-    },
-    {
       "name": "Picktime"
     },
     {
@@ -950,8 +947,23 @@
   "searchSource": "guest",
   "_searchSource_note": "'guest' (25 Sep 2026) = find cards through LinkedIn's PUBLIC job search, signed out, and open only the ones that pass the gates on the signed-in account; 'browser' = the old signed-in search page. WHY: that morning LinkedIn moved both scraper accounts to its AI-powered search, which rewrote our URL into a sentence, replaced location=India with the account's own 'Greater Delhi Area', dropped the date sort, and gave the US account an empty onboarding page. The public endpoint still honours keywords, location, geoId, f_E and f_TPR exactly and every card carries its real job id — but it IGNORES sortBy=DD and serves 10 cards a request, so each walk reads its window to the end. Its requests cost the scraper accounts nothing (the budget LinkedIn warned about); it is rate-limited per IP instead, and a 429 stops discovery for that run. See src/guestsearch.js. A search may override this with its own searchSource.",
   "roleFocus": {
-    "software": ["swe", "ai_ml", "data_eng", "backend", "frontend", "fullstack", "mobile", "devops", "qa", "security", "game_graphics"],
-    "hardware": ["hardware", "embedded"],
+    "software": [
+      "swe",
+      "ai_ml",
+      "data_eng",
+      "backend",
+      "frontend",
+      "fullstack",
+      "mobile",
+      "devops",
+      "qa",
+      "security",
+      "game_graphics"
+    ],
+    "hardware": [
+      "hardware",
+      "embedded"
+    ],
     "_note": "THE SHELVES — Software, Hardware, Misc, on both the Internships and Full-time tabs (src/rolefocus.js). His call, 25 Sep 2026, reversing the morning's removal: nothing is dropped and nothing stops being scraped; every engineering posting stays on the site, and a Misc one is only kept off the WhatsApp channel and the reels. The families listed here are the ones he kept from the menu, split into the two shelves; every other family is Misc (core engineering, research/quant, robotics/controls, IT support, reporting/BI dashboards, SAP/Salesforce/ServiceNow, UX design, product/consulting, AI-training gigs). A title naming no discipline — \"Apprentice Hiring for 2026-2027\", \"2027 Technology Program Intern\", \"Systems Intern\" — is Software (his instruction); its label can move it to Hardware, or to Misc only when it names a core-engineering discipline. Measured on the boards as they stood before the removal: software 3,307, hardware 583, misc 1,103."
   },
   "scanView": true,
@@ -1128,7 +1140,8 @@
       "immigration",
       "primex visa",
       "visa pro migration",
-      "btw visa"
+      "btw visa",
+      "Nippon Data Systems"
     ],
     "_blocklist_visa_note": "30 Sep 2026: the watchlist entry Visa (the payments company) matched eight visa and immigration consultancies by containment, and two had live tech rows on the India board (Esse India's 'Artificial Intelligence Engineer', PRIMEX VISA's 'Web Developer'). Measured over all 35,619 employer names ever seen: these six entries catch exactly those consultancies plus other immigration agencies, and Visa itself still matches (normalised 'visa' contains none of them).",
     "_blocklist_note": "Employers never published, whatever the watchlist says. Checked before any watchlist term, so a fuzzy match cannot resurrect one. Matching is containment on the normalised name, so \"MedTourEasy\" also covers \"MedTourEasy Navi Mumbai\". MedTourEasy is here because it was reported as a scam; it only ever reached the site because \"MedTourEasy Navi Mumbai\" contains the city Navi Mumbai, which the matcher read as the fintech Navi.",
@@ -1311,7 +1324,9 @@
   },
   "regions": {
     "_note": "Where postings are collected from, and where they are shown. Collecting a region and publishing one are separate settings on purpose: collection is cheap and reversible - an ATS board is read once whatever its rows turn out to be - while publishing a region is a public commitment to a board that has to look worth visiting. Keeping them apart is what lets a region fill up quietly for a month before anyone is shown it.",
-    "collect": ["IN"],
+    "collect": [
+      "IN"
+    ],
     "_collect_note": "INDIA ONLY SINCE 1 OCT 2026, his call (\"remove any stale usa/uk/canada scrape\"). Was \"all\": the careers-board poll stored ~175 non-India rows a day (US 90) that were enriched and never shown. Unplaced rows are still collected (collectsRegion) so a Workday \"2 Locations\" row can be placed in India by its detail fetch. Reversible: \"all\" again, nothing deleted. WAS: 'all' (default) collects every region src/regions.js knows, plus 'unknown'. A location the gazetteer cannot read is STORED and never published, so a better gazetteer reads it later without re-collecting anything. An array of ISO codes narrows it, e.g. [\"IN\",\"US\"].",
     "publish": [
       "IN"
