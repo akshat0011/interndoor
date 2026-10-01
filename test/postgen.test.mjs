@@ -108,31 +108,17 @@ const paid = jobFacts(row({ stipend_min: 50000, stipend_max: 50000, stipend_curr
 ok('formatted from the columns', paid.stipend === '₹50,000 / month');
 ok('absent when nothing was captured', jobFacts(row(), CFG).stipend === null);
 
-console.log('\n== the applicant count is only stated while the queue is short ==');
-/* THE PROBLEM. This number exists to prove the reader is EARLY. On a crowded
-   role it proves the opposite, and it was being printed directly above the
-   apply link on every post — "Applicants: 100 when this was listed" is an
-   argument against clicking. The board already withholds it above 25; the post
-   did not, so the site was arguing with itself about the same field. */
+console.log('\n== the applicant count is never in the post (1 Oct 2026) ==');
+/* A snapshot from the moment the card was read, stale by the time anyone
+   reads the post — his "remove any useless info". The posted DAY stays: it is
+   what tells a reader the role is new. */
 const AI = { hook: 'A backend role on payments.', tip: 'Lead with Python.', hashtags: [] };
-const shownAt = (n) => plainText(buildPost(row({ applicants: `${n} applicants` }), CFG, AI).text)
-  .includes(`Applicants: ${n} when this was listed`);
-
-ok('a short queue is stated — it is the reason to hurry', shownAt(3));
-ok('and zero is stated, not treated as missing', shownAt(0));
-ok('a crowded queue is left out entirely', !shownAt(100));
-ok('and so is one just over the line', !shownAt(40));
-// Strictly under, so LinkedIn's own "Be among the first 25 applicants" prompt
-// could never be read as a real count of 25.
-ok('25 itself is not stated', !shownAt(25));
-ok('24 is', shownAt(24));
-
-/* Withholding it must not take the freshness signal with it: "Posted" is what
-   still tells a reader the role is new when the count is gone. */
+for (const n of [0, 3, 24, 100]) {
+  ok(`no applicant line at ${n}`, !/Applicants:/.test(plainText(buildPost(row({ applicants: `${n} applicants` }), CFG, AI).text)));
+}
 const crowded = plainText(buildPost(
-  row({ applicants: '100 applicants', posted_at: Date.now() - 3600_000 }), CFG, AI).text);
-ok('the posted line survives a withheld count', /Posted:/.test(crowded));
-ok('and no applicant line is left behind', !/Applicants:/.test(crowded));
+  row({ applicants: '100 applicants', posted_at: Date.UTC(2026, 8, 16, 0, 0) }), CFG, AI).text);
+ok('the posted line is the day, not the clock', /Posted: 16 Sept?\n/.test(crowded + '\n') && !/Posted: [^\n]*(am|pm)/.test(crowded));
 
 console.log('\n== the model is not trusted with facts ==');
 const facts = jobFacts(row(), CFG);
@@ -168,7 +154,7 @@ const { text } = buildPost(row(), CFG, { hook: 'You would be on the payments bac
 
 ok('names the company', text.includes('NoBroker.com'));
 ok('names the role', plainText(text).includes('Software Engineering Intern'));
-ok('carries the location', text.includes('Bengaluru, Karnataka, India'));
+ok('carries the city on the first line', plainText(text).split('\n')[0].includes(' in Bengaluru'));
 ok('carries the batch', text.includes(String(Y + 1)));
 ok('links to the job page on the site', text.includes('https://interndoor.com/jobs/nobroker-com-software-engineering-intern-4449259269'));
 ok('links to the board', text.includes('https://interndoor.com/'));
@@ -182,7 +168,10 @@ ok('under the LinkedIn limit', text.length <= MAX_POST_CHARS, `${text.length} ch
 /* THE OPENER, 1 Oct 2026: who is hiring, whom and where — not the job-spam
    "🚨 … is Hiring … 💻🔥" every other account writes. */
 const firstLine = plainText(text).split('\n')[0];
-ok('the first line is "<company> is hiring interns: <role> in <city>"', firstLine === 'NoBroker.com is hiring interns: Software Engineering Intern in Bengaluru', firstLine);
+ok('the first line is "<company> is hiring interns: <role> in <city> (<mode>)"', firstLine === 'NoBroker.com is hiring interns: Software Engineering Intern in Bengaluru (On-site)', firstLine);
+/* THE COMPANY IS PLAIN so he can turn it into an @mention (1 Oct 2026): bold
+   letters are different characters and LinkedIn's picker would not match. */
+ok('the post opens with the company in plain letters', text.startsWith('NoBroker.com is hiring'));
 ok('no siren opener', !text.includes('🚨'));
 ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <= 5);
 {
@@ -193,17 +182,31 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   ok('no stated stipend, no money on the first line', !/[₹$]/.test(firstLine));
 }
 
-/* THE REFERRAL THREAD — the second comment. */
+/* HIS LINE, VERBATIM (1 Oct 2026), spelling and all — and the separate
+   referral comment it replaced is gone. */
 {
-  const { composeReferral } = await import('../src/postgen.js');
+  const { REFERRAL_ASK } = await import('../src/postgen.js');
   const b = buildPost(row(), CFG, null);
-  ok('a referral comment comes with every post', b.referral === composeReferral(b.facts));
-  ok('it names the company and the role', b.referral.includes('NoBroker.com') && b.referral.includes('Software Engineering Intern'));
-  ok('it asks people at the company to reply', /Reply here if you can refer/.test(b.referral));
-  ok('it keeps contact details out of public comments', /keep phone numbers and emails out of public comments/.test(b.referral));
-  ok('it carries no link', !/https?:\/\//.test(b.referral));
-  ok('it fits a comment', b.referral.length <= MAX_COMMENT_CHARS);
-  ok('the post invites the referral', /Work at NoBroker\.com\? If you can refer for this role/.test(plainText(b.text)));
+  ok('the exact line is the one he gave', REFERRAL_ASK === 'comment ur resume link for a refferal');
+  ok('it is in the post, on a line of its own', b.text.split('\n').includes(REFERRAL_ASK));
+  ok('and it sits after the apply link', b.text.indexOf(REFERRAL_ASK) > b.text.indexOf('Apply here'));
+  ok('there is no separate referral comment any more', !('referral' in b));
+  ok('the "work at X? say so" ask is gone', !/If you can refer for this role/.test(plainText(b.text)));
+  ok('the urgency filler is gone', !/openings like this close within days/i.test(plainText(b.text)));
+  ok('the model hook is not printed', !plainText(b.text).includes(b.ai.hook));
+  const dup = buildPost(row(), CFG, { hook: 'x', tip: 'y', hashtags: ['NoBroker', 'nobroker', 'internship'] });
+  ok('a hashtag repeated in another case is printed once', plainText(dup.text).split(/\s+/).filter((w) => /^#nobroker$/i.test(w)).length === 1);
+  const zero = buildPost(row({ duration: '0–6 months' }), CFG, null);
+  ok('"0–6 months" reads "Up to 6 months"', plainText(zero.text).includes('Duration: Up to 6 months'));
+  const { cityOf } = await import('../src/postgen.js');
+  ok('a country-first location names the city ("India, Pune" is Pune)', cityOf('India, Pune') === 'Pune');
+  ok('a city-first one is unchanged', cityOf('Bengaluru, Karnataka, India') === 'Bengaluru');
+  ok('a bare country stays the country', cityOf('India') === 'India');
+  /* The site's clean title is what the post SHOWS; the stored one still
+     builds the job-page link, or every cleaned listing would 404. */
+  const clean = buildPost(row({ title: 'Software Engineering Intern 2027 (Evergreen)', display_title: 'Software Engineering Intern' }), CFG, null);
+  ok('the post shows the clean title', plainText(clean.text).split('\n')[0].includes('interns: Software Engineering Intern in'));
+  ok('and links the page at the stored title', clean.text.includes('/jobs/nobroker-com-software-engineering-intern-2027-evergreen-4449259269?'));
 }
 
 // LinkedIn cuts at ~210 characters, so the company and the role have to be in
@@ -292,7 +295,6 @@ ok('the posted stamp is in the facts', /Posted:/.test(plainText(one.text)));
 // A row with no timestamp claims no timestamp, rather than stamping "now".
 ok('no posted time means no posted line', !/Posted:/.test(plainText(buildPost(row(), CFG).text)));
 ok('no applicant count means no applicant line', !/Applicants:/.test(plainText(buildPost(row(), CFG).text)));
-ok('the applicant count is scoped so it cannot go stale', one.text.includes('4 when this was listed'));
 
 ok('the comment carries the board', one.comment.includes('interndoor.com/?utm_'));
 ok('and the channel link', one.comment.includes('https://t.me/interndoor'));
@@ -305,10 +307,9 @@ console.log('\n== an entry-level role is not an internship, and the post says wh
     { hook: 'A backend role.', tip: 'Bring a resume.', hashtags: [] });
   const ftText = plainText(ft.text);
   ok('the facts carry the kind', ft.facts.fullTime === true && jobFacts(row(), CFG).fullTime === false);
-  ok('the urgency line names entry-level openings', ftText.includes('Entry-level openings like this close within days'));
-  ok('and never internship openings', !/internship openings like this/i.test(ftText));
-  ok('an internship still says internship', plainText(one.text).includes('Internship openings like this close within days'));
-  ok('the follow line covers both kinds', plainText(one.text).includes('Every new internship and entry-level role, the minute it opens'));
+  ok('a full-time role hires freshers on the first line', ftText.split('\n')[0].includes('is hiring freshers'));
+  ok('an internship hires interns', plainText(one.text).split('\n')[0].includes('is hiring interns'));
+  ok('the follow line covers both kinds', plainText(one.text).includes('New internships and entry-level roles daily'));
   ok('the comment covers both kinds', one.comment.includes('Every live engineering internship and entry-level role, updated as they open'));
   const { composeCombined } = await import('../src/postgen.js');
   const combined = plainText(composeCombined([one.facts, ft.facts]));
@@ -336,12 +337,27 @@ const shown = unesc(page.match(/<pre class="post">([\s\S]*?)<\/pre>/)[1]);
 ok('the fold marker is drawn', page.includes('<i class="fold">'));
 ok('but contributes no text', shown === built.text, `${shown.length} vs ${built.text.length}`);
 ok('no replacement character at the fold', !shown.includes('\uFFFD'));
-/* The referral thread is the second comment, with its own copy button. */
-ok('the page carries the referral comment', unesc((page.match(/<pre class="referral" hidden>([\s\S]*?)<\/pre>/) ?? [])[1] ?? '') === built.referral);
-ok('and a button that copies it', page.includes('data-copy="referral"'));
+/* THE @MENTION STEP (1 Oct 2026). The copy starts AFTER the company name: he
+   types "@" and picks the company from LinkedIn's list first (the only way it
+   turns blue and links their page), then pastes straight after it. */
+const restShown = unesc((page.match(/<pre class="rest" hidden>([\s\S]*?)<\/pre>/) ?? [])[1] ?? '');
+ok('the copied post starts just after the company name', restShown === built.text.slice('NoBroker.com'.length) && restShown.startsWith(' is hiring'));
+ok('Copy post copies that, not the whole post', page.includes('<button class="primary" data-copy="rest">Copy post</button>'));
+ok('the page says how to make the name blue', /type <b>@<\/b> and the first letters of <b>NoBroker\.com<\/b>/.test(page));
+ok('with no stored page it offers a LinkedIn company search', page.includes('https://www.linkedin.com/search/results/companies/?keywords=NoBroker.com'));
+ok('the separate referral comment is gone from the page', !page.includes('data-copy="referral"') && !page.includes('class="referral"'));
+{
+  const withPage = buildPostsPage([{ row: row(), facts: built.facts, text: built.text, meta: { companyUrl: 'https://www.linkedin.com/company/nobroker/' } }],
+    { batchId: 'test', model: 'qwen3:14b', generatedAt: Date.now() });
+  ok('a stored company page is linked instead', withPage.includes('href="https://www.linkedin.com/company/nobroker/"') && withPage.includes('their LinkedIn page ↗'));
+  const old = buildPostsPage([{ row: row(), facts: built.facts, text: 'An older draft that opens some other way.', meta: {} }],
+    { batchId: 'test', model: 'qwen3:14b', generatedAt: Date.now() });
+  ok('an older draft that does not open with the name copies whole, with no mention step',
+    unesc((old.match(/<pre class="rest" hidden>([\s\S]*?)<\/pre>/) ?? [])[1] ?? '') === 'An older draft that opens some other way.' && !old.includes('class="mention"'));
+}
 
 const plainShown = unesc(page.match(/<pre class="plain" hidden>([\s\S]*?)<\/pre>/)[1]);
-ok('the plain copy is the same post without the bold', plainShown === plainText(built.text));
+ok('the plain copy is the same post without the bold, from after the name too', plainShown === plainText(built.text.slice('NoBroker.com'.length)));
 ok('and carries no astral characters', [...plainShown].every((c) => c.codePointAt(0) < 0x10000 || /\p{Extended_Pictographic}/u.test(c)));
 
 // A draft written on Friday and pasted on Monday still carries Friday's real

@@ -26,6 +26,7 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { Store } from '../src/store.js';
+import { fetchGuestPage, parsePublicPosting, publicPostingUrl } from '../src/guestsearch.js';
 import { loadConfig } from '../src/config.js';
 import { PATHS, storygastedRoot } from '../src/paths.js';
 import { readdirSync, unlinkSync } from 'node:fs';
@@ -253,6 +254,29 @@ function prunePosts(now = Date.now()) {
  * read. The Rewrite button on a card passes that job's id explicitly, which is
  * the only way an existing draft is replaced.
  */
+/**
+ * THE EMPLOYER'S OWN LINKEDIN PAGE, for the @mention step on the posts page
+ * (1 Oct 2026). One signed-out read of the posting's public page — the same
+ * request the scan makes for every card it judges — cached per employer in
+ * settings, so a second post about the same company costs nothing. A
+ * careers-board row has no LinkedIn posting to read; the page then offers a
+ * LinkedIn company search instead. Never throws: a draft must not wait on it.
+ */
+async function companyPageFor(row) {
+  try {
+    const key = `liCompanyPage:${row.company}`;
+    const cached = store.getSetting(key);
+    if (cached) return cached;
+    if (!/^\d+$/.test(String(row.job_id))) return '';
+    const res = await fetchGuestPage(publicPostingUrl(row.job_id), { timeoutMs: 8000, parse: 'posting' });
+    const url = res.body ? (parsePublicPosting(res.body, row.job_id)?.companyUrl ?? '') : '';
+    if (url) store.setSetting(key, url);
+    return url;
+  } catch {
+    return '';
+  }
+}
+
 async function generate(jobIds) {
   prunePosts();
   const rows = jobIds?.length
@@ -277,7 +301,8 @@ async function generate(jobIds) {
     for (const [i, row] of rows.entries()) {
       const raw = drafts.get(i) ?? null;
       const built = buildPost(row, cfg, raw);
-      store.saveDraft(row.job_id, batchId, built.text, { fromModel: !!raw, dropped: built.ai.dropped, model, tip: built.ai.tip });
+      const companyUrl = await companyPageFor(row);
+      store.saveDraft(row.job_id, batchId, built.text, { fromModel: !!raw, dropped: built.ai.dropped, model, tip: built.ai.tip, companyUrl });
     }
 
     // The page holds the whole queue, not just this batch: he asked for one

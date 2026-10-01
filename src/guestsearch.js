@@ -387,6 +387,19 @@ function blockText(fragment) {
     .trim();
 }
 
+/**
+ * The employer's own LinkedIn page, off the posting's company link, as
+ * `https://www.linkedin.com/company/<slug>/` — or '' when there is none.
+ * Real markup (1 Oct 2026): `<a class="topcard__org-name-link …" … href=
+ * "https://www.linkedin.com/company/ustglobal?trk=…">`; a country host
+ * (`in.linkedin.com`) and the tracking query are both dropped. Anything that
+ * is not a linkedin.com/company/ address is refused, never passed through.
+ */
+export function linkedinCompanyUrl(href) {
+  const m = String(href ?? '').match(/^https:\/\/(?:[a-z]{2,3}\.|www\.)?linkedin\.com\/company\/([A-Za-z0-9%._-]+)\/?(?:[?#].*)?$/);
+  return m ? `https://www.linkedin.com/company/${m[1]}/` : '';
+}
+
 /** The seniority values the account page's chip reader accepts (linkedin.js). */
 const SENIORITY_LEVEL = /^(Internship|Entry level|Associate|Mid-Senior level|Director|Executive)$/i;
 
@@ -413,12 +426,16 @@ export function parsePublicPosting(html, jobId) {
   const employment = criteria['employment type'] || null;
   const seniority = criteria['seniority level'] || null;
   const internship = /^internship$/i.test(employment ?? '') || /^internship$/i.test(seniority ?? '');
+  const orgLink = (s.match(/<a\b[^>]*\btopcard__org-name-link\b[^>]*>/) ?? [''])[0];
+  const companyHref = (orgLink.match(/\bhref="([^"]+)"/) ?? [])[1];
   const logo = s.match(/<img\b[^>]*class="[^"]*artdeco-entity-image[^"]*"[^>]*data-delayed-url="(https:\/\/media\.licdn\.com\/[^"]+)"/)
     || s.match(/<img\b[^>]*data-delayed-url="(https:\/\/media\.licdn\.com\/dms\/image\/[^"]+company-logo[^"]+)"/);
   return {
     jobId: String(jobId),
     title: textOf(inner(s, 'topcard__title', 'h2')),
     company: textOf(inner(s, 'topcard__org-name-link', 'a')) || textOf(inner(s, 'topcard__flavor', 'span')),
+    // The LinkedIn post's @mention is checked against this (src/postpage.js).
+    companyUrl: linkedinCompanyUrl(decodeEntities(companyHref ?? '')),
     location: textOf(inner(s, 'topcard__flavor--bullet', 'span')),
     description: blockText(desc),
     employmentTag: internship ? 'Internship' : employment,
