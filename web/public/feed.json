@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/electronic-arts-ea-ai-full-stack-intern-4472657639",
+      "url": "https://interndoor.com/jobs/electronic-arts-ea-ai-full-stack-intern-4472657639",
+      "title": "AI Full Stack Intern — Electronic Arts (EA)",
+      "content_text": "Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India\n• Implement agentic workflows and LLM integrations with Lang Chain and OpenAI APIs\n• Develop front-end components in React/TypeScript and back-end APIs in Node.js/Python\n• Work on AI-driven tools and generative AI model optimization techniques",
+      "date_published": "2026-10-01T02:19:10.508Z",
+      "authors": [
+        {
+          "name": "Electronic Arts (EA)"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/yash-technologies-middle-east-software-engineer-fortran-job-4472661332",
+      "url": "https://interndoor.com/jobs/yash-technologies-middle-east-software-engineer-fortran-job-4472661332",
+      "title": "Software Engineer Fortran — YASH Technologies Middle East",
+      "content_text": "Company: YASH Technologies Middle East · Location: Hyderabad, Telangana, India\n• Optimize code for speed and memory with large datasets and complex math\n• Refactor and modernize legacy Fortran codebases with Git\n• Work on numerical simulations and physics-based algorithms",
+      "date_published": "2026-10-01T01:35:32.049Z",
+      "authors": [
+        {
+          "name": "YASH Technologies Middle East"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149",
       "url": "https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149",
       "title": "MLOps/DevOps/CloudOps — Infosys",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-java-fullstack-developer-4445425244",
-      "url": "https://interndoor.com/jobs/infosys-java-fullstack-developer-4445425244",
-      "title": "Java Fullstack Developer — Infosys",
-      "content_text": "Company: Infosys · Location: Bengaluru East, Karnataka, India\n• Develop full-stack applications using Java and React JS\n• Collaborate with clients to deliver high-quality systems\n• Contribute to production support and technical analysis",
-      "date_published": "2026-09-30T14:13:47.156Z",
-      "authors": [
-        {
-          "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infosys-aws-bedrock-developer-python-4445441090",
-      "url": "https://interndoor.com/jobs/infosys-aws-bedrock-developer-python-4445441090",
-      "title": "AWS Bedrock Developer+Python — Infosys",
-      "content_text": "Company: Infosys · Location: Hyderabad, Telangana, India\n• Build AI apps with AWS Bedrock and Python frameworks like FastAPI\n• Design cloud systems using AWS services and optimize performance\n• Collaborate with data scientists and product teams on AI projects",
-      "date_published": "2026-09-30T14:03:00.128Z",
-      "authors": [
-        {
-          "name": "Infosys"
         }
       ]
     }
