@@ -9,10 +9,10 @@
   <url><loc>https://interndoor.com/skills</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/locations</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/skills/python</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/java</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/sql</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/java</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/agile</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/aws</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ci-cd</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/git</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/azure</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
@@ -25,10 +25,10 @@
   <url><loc>https://interndoor.com/skills/kubernetes</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/docker</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/microservices</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/spring-boot</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/gcp</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/llm</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/spring-boot</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/excel</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/data-structures</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/angular</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
@@ -36,24 +36,24 @@
   <url><loc>https://interndoor.com/skills/rag</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/c-sharp</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/power-bi</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/kafka</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pytorch</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/terraform</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tensorflow</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/kafka</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/mongodb</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/nlp</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tableau</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rest-api</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/system-design</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/computer-vision</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/fastapi</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/mongodb</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/flask</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
@@ -83,16 +83,15 @@
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/kochi</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/kochi</loc><lastmod>2026-09-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/kolkata</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/delhi</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/backend-development</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development</loc><lastmod>2026-09-30</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/backend-development</loc><lastmod>2026-09-30</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/cybersecurity</loc><lastmod>2026-10-01</lastmod><priority>0.7</priority></url>
@@ -105,9 +104,9 @@
   <url><loc>https://interndoor.com/roles/software-engineering-in-bengaluru</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-bengaluru</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-bengaluru</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/software-engineering-in-hyderabad</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware-in-bengaluru</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development-in-bengaluru</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/software-engineering-in-hyderabad</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-gurugram</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud-in-bengaluru</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-bengaluru</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
@@ -122,6 +121,7 @@
   <url><loc>https://interndoor.com/roles/frontend-development-in-bengaluru</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-chennai</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware-in-hyderabad</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/johnson-and-johnson-innovative-medicine-jjt-intern-4474154255</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ust-edi-implementation-specialist-i-4453421433</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/numerator-qa-engineer-1-mywp-core-sit-4474140561</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marvell-technology-research-intern-physical-ai-and-gpu-phd-4472914265</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
@@ -131,18 +131,6 @@
   <url><loc>https://interndoor.com/jobs/ust-gcp-devops-terraform-and-docker-4472903614</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ust-desktop-support-engineer-4472695752</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ibm-software-engineer-4472912071</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472531125</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472522405</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472528253</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472511929</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472526289</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-database-administrator-4472523377</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472512914</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472511934</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472511937</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472517830</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472530184</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472512887</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/river-graduate-engineering-trainee-electrical-electronics-4472906300</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/providence-india-cybersecurity-product-engineer-4474114807</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/esec-forte-technologies-application-security-trainee-4472517115</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
@@ -152,7 +140,6 @@
   <url><loc>https://interndoor.com/jobs/ericsson-data-scientist-4472506252</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/barclays-scrum-master-4472686308</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/electronic-arts-ea-ai-full-stack-intern-4472657639</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/yash-technologies-middle-east-software-engineer-fortran-job-4472661332</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/infosys-mlops-devops-cloudops-4472394149</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/infosys-ai-ml-engineer-generative-ai-ml-aws-4472392193</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4473974946</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
@@ -253,8 +240,6 @@
   <url><loc>https://interndoor.com/jobs/trane-technologies-test-engineer-4454272529</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472128993</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4472148097</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4473720720</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-java-developer-4473738294</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/joveo-frontend-developer-4472136351</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/infosys-react-js-developer-4433471833</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/joveo-back-end-developer-4472126753</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
@@ -536,12 +521,6 @@
   <url><loc>https://interndoor.com/jobs/ntt-data-inc-network-r-and-s-l1-mangalore-4414002052</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/cummins-india-electronic-systems-technical-specialist-software-4453593348</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/general-mills-analyst-demand-forecasting-4453573462</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471088432</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082888</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471086511</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471091325</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082916</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/nippon-data-systems-kafka-engineer-4471082922</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/vecmocon-software-developer-frappe-intern-ats-keka-vecmocon-163165</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/wipro-administrator-l1-4472410803</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ather-energy-ltd-engineering-apprentice-4471071139</loc><lastmod>2026-09-26</lastmod><priority>0.8</priority></url>
@@ -1102,13 +1081,13 @@
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/johnson-and-johnson-innovative-medicine</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ust</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/numerator</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/marvell-technology</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/micron-technology</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/capgemini-engineering</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ibm</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/nippon-data-systems</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/river</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/providence-india</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/esec-forte-technologies</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
@@ -1118,7 +1097,6 @@
   <url><loc>https://interndoor.com/companies/ericsson</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/barclays</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/electronic-arts-ea</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/yash-technologies-middle-east</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/infosys</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/amazon</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/flex</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
