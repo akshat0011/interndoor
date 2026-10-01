@@ -6,6 +6,126 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-4472588722",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-4472588722",
+      "title": "Data Science Analyst — American Express",
+      "content_text": "Company: American Express · Location: Bengaluru, Karnataka, India · Duration: 0-30 months\n• Build and deploy predictive models to support risk, fraud and marketing decisions\n• Use Python, R, SQL, Spark and machine learning to analyze large datasets\n• Collaborate with global teams to improve customer experience and business outcomes",
+      "date_published": "2026-10-01T17:19:01.402Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/state-street-telemetry-e2e-analyst-officer-4474358262",
+      "url": "https://interndoor.com/jobs/state-street-telemetry-e2e-analyst-officer-4474358262",
+      "title": "Telemetry Analyst, E2E Officer — State Street",
+      "content_text": "Company: State Street · Location: Hyderabad, Telangana, India\n• Monitor QA environments for health and stability using Azure, Dynatrace, and Grafana\n• Investigate incidents, validate deployments, and improve telemetry dashboards\n• Collaborate with deployment teams to ensure clean, stable software releases",
+      "date_published": "2026-10-01T17:17:45.172Z",
+      "authors": [
+        {
+          "name": "State Street"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-associate-engineer-digital-technology-4425628844",
+      "url": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-associate-engineer-digital-technology-4425628844",
+      "title": "Digital Technology Associate Engineer — United Airlines India Knowledge Center",
+      "content_text": "Company: United Airlines India Knowledge Center · Location: Gurugram, Haryana, India\n• Design and develop scalable software for United's platforms including mobile and web apps\n• Work in Agile/DevOps environment with focus on performance and security\n• Collaborate with cross-functional teams on complex architecture challenges",
+      "date_published": "2026-10-01T17:15:46.057Z",
+      "authors": [
+        {
+          "name": "United Airlines India Knowledge Center"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-software-engineer-post-trade-platform-java-angular-4472590509",
+      "url": "https://interndoor.com/jobs/millennium-software-engineer-post-trade-platform-java-angular-4472590509",
+      "title": "Software Engineer, Post-Trade Platform (Java/Angular) — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Build Java services and Angular interfaces for post-trade operations\n• Use Spring Boot, Kubernetes, and AWS for cloud-native development\n• Collaborate with global teams on AI-driven automation tools",
+      "date_published": "2026-10-01T17:12:46.337Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-cis-oracle-dba-4472588572",
+      "url": "https://interndoor.com/jobs/zensar-technologies-cis-oracle-dba-4472588572",
+      "title": "Oracle DBA — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Bengaluru, Karnataka, India\n• Manage couchbase clusters through installation, configuration, and maintenance\n• Use scripting and iac tools to automate operational tasks\n• Support production environments with devops and application teams",
+      "date_published": "2026-10-01T17:12:34.434Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-4472587715",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-4472587715",
+      "title": "Data Science Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India · Duration: 0-30 months\n• Build and deploy predictive models to support risk, fraud and marketing decisions\n• Use Python, R, SQL, Spark and machine learning to analyze large datasets\n• Collaborate with global teams to improve customer experience and business outcomes",
+      "date_published": "2026-10-01T17:07:44.124Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-contractor-4472802030",
+      "url": "https://interndoor.com/jobs/birlasoft-contractor-4472802030",
+      "title": "Contractor — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area\n• Manage azure resources and storage accounts\n• Support application deployment and maintenance\n• Troubleshoot cloud networking and container apps",
+      "date_published": "2026-10-01T17:06:14.159Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fis-plsql-engineer-4474336904",
+      "url": "https://interndoor.com/jobs/fis-plsql-engineer-4474336904",
+      "title": "PLSQL Engineer — FIS",
+      "content_text": "Company: FIS · Location: Noida, Uttar Pradesh, India\n• Support critical applications with Level 3 production support\n• Use Oracle PL/SQL, collections, and modernization tools\n• Work 24/7 with clients, troubleshoot issues, and deliver solutions",
+      "date_published": "2026-10-01T16:58:27.956Z",
+      "authors": [
+        {
+          "name": "FIS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ericsson-alarm-monitoring-engineer-4472584620",
+      "url": "https://interndoor.com/jobs/ericsson-alarm-monitoring-engineer-4472584620",
+      "title": "Alarm Monitoring Engineer — Ericsson",
+      "content_text": "Company: Ericsson · Location: Noida, Uttar Pradesh, India · Duration: 1–3 years\n• Monitor alarms and analyze network faults across multiple technologies\n• Use Ericsson and multi-vendor tools for fault detection and escalation\n• Work 24x7 in a global team with rotational shifts and SLA-driven processes",
+      "date_published": "2026-10-01T16:48:48.613Z",
+      "authors": [
+        {
+          "name": "Ericsson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nvidia-asic-cad-engineer-clocks-methodology-4464133778",
+      "url": "https://interndoor.com/jobs/nvidia-asic-cad-engineer-clocks-methodology-4464133778",
+      "title": "Clocks Methodology Engineer — NVIDIA",
+      "content_text": "Company: NVIDIA · Location: Bengaluru, Karnataka, India\n• Validate clocking solutions across multiple product lines\n• Develop tools in C++, Python, Perl, and Tcl\n• Collaborate with global engineering teams",
+      "date_published": "2026-10-01T16:44:44.109Z",
+      "authors": [
+        {
+          "name": "NVIDIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-software-engineer-business-insights-platform-4472579820",
       "url": "https://interndoor.com/jobs/google-software-engineer-business-insights-platform-4472579820",
       "title": "Business Insights Platform Software Engineer — Google",
@@ -14,6 +134,42 @@
       "authors": [
         {
           "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/aditya-birla-capital-cloud-infra-engineer-4465384926",
+      "url": "https://interndoor.com/jobs/aditya-birla-capital-cloud-infra-engineer-4465384926",
+      "title": "Cloud Infra Engineer — Aditya Birla Capital",
+      "content_text": "Company: Aditya Birla Capital · Location: Maharashtra, India\n• Design, implement, and manage scalable cloud infrastructure for consumer finance systems\n• Collaborate with software teams to build DevOps processes and automate AWS resource management\n• Lead projects from requirement gathering to deployment with cross-functional teams\n• Mentor junior engineers and manage vendor relationships for cloud solutions",
+      "date_published": "2026-10-01T16:25:51.701Z",
+      "authors": [
+        {
+          "name": "Aditya Birla Capital"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-dotnet-fullstack-developer-4464198631",
+      "url": "https://interndoor.com/jobs/cognizant-dotnet-fullstack-developer-4464198631",
+      "title": "Fullstack Dotnet Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Design and implement scalable media platforms using ruby on rails microservices\n• Mentor engineers on testable ruby on rails and python practices\n• Ensure secure data handling for global content distribution",
+      "date_published": "2026-10-01T16:24:05.657Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-systems-engineer-control-m-4474332587",
+      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-systems-engineer-control-m-4474332587",
+      "title": "Control M Systems Engineer — Societe Generale Global Solution Centre",
+      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Manage control-m infrastructure and automate tasks with shell/python scripts\n• Support production environments 24/7 and resolve critical issues\n• Work with cross-functional teams on complex scheduling systems",
+      "date_published": "2026-10-01T16:22:48.566Z",
+      "authors": [
+        {
+          "name": "Societe Generale Global Solution Centre"
         }
       ]
     },
@@ -270,6 +426,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/amazon-it-support-associate-4455920343",
+      "url": "https://interndoor.com/jobs/amazon-it-support-associate-4455920343",
+      "title": "IT Support Associate — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Resolve technical issues for end-user devices like desktops and printers\n• Support Windows and Linux systems with troubleshooting skills\n• Work rotational shifts at Amazon's Bangalore office",
+      "date_published": "2026-10-01T15:26:50.338Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4474328515",
       "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4474328515",
       "title": "Software Engineer — NatWest Group",
@@ -434,174 +602,6 @@
       "authors": [
         {
           "name": "Baker Hughes"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/baker-hughes-intern-engineering-and-technology-2027-opportunities-4474322510",
-      "url": "https://interndoor.com/jobs/baker-hughes-intern-engineering-and-technology-2027-opportunities-4474322510",
-      "title": "Engineering Technology Intern — Baker Hughes",
-      "content_text": "Company: Baker Hughes · Location: Pune/Pimpri-Chinchwad Area\n• Working on projects to deliver customer outcomes and identify business improvements\n• Using internal software to complete tasks and support project delivery\n• Collaborating with cross-functional teams and global business leaders",
-      "date_published": "2026-10-01T14:37:39.306Z",
-      "authors": [
-        {
-          "name": "Baker Hughes"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cargill-network-devops-engineer-4441838011",
-      "url": "https://interndoor.com/jobs/cargill-network-devops-engineer-4441838011",
-      "title": "Network DevOps Engineer — Cargill",
-      "content_text": "Company: Cargill · Location: Bengaluru, Karnataka, India\n• Design and operate global sd-wan infrastructure using versas platform\n• Automate network workflows with python, ansible, terraform, and rest apis\n• Build resilient wan solutions with bgp, ospf, ipsec, and qos\n• Improve observability with datadog, telemetry, and alerting tools",
-      "date_published": "2026-10-01T14:35:49.426Z",
-      "authors": [
-        {
-          "name": "Cargill"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-data-engineer-i-cmt-4455916247",
-      "url": "https://interndoor.com/jobs/amazon-data-engineer-i-cmt-4455916247",
-      "title": "Data Engineer I — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build real-time data processing systems for ai/ml workloads\n• Manage aws resources and deploy infrastructure-as-code\n• Own end-to-end data products with clear slas and governance",
-      "date_published": "2026-10-01T14:35:23.066Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-research-fellow-4456718319",
-      "url": "https://interndoor.com/jobs/microsoft-research-fellow-4456718319",
-      "title": "Research Fellow — Microsoft",
-      "content_text": "Company: Microsoft · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Build tools for large codebases using AI and formal methods\n• Collaborate with researchers and product teams on real-world problems\n• Based in Bengaluru, works with Microsoft Research India",
-      "date_published": "2026-10-01T14:32:09.256Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-applied-scientist-international-machine-learning-4455927387",
-      "url": "https://interndoor.com/jobs/amazon-applied-scientist-international-machine-learning-4455927387",
-      "title": "Machine Learning Scientist — Amazon",
-      "content_text": "Company: Amazon · Location: Greater Hyderabad Area\n• Build and deploy ML models to optimize millions of transactions daily\n• Work with Java, Python, SQL, and large-scale data systems\n• Collaborate with engineering and business teams on real-world impact",
-      "date_published": "2026-10-01T14:27:50.731Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-esaas-oracle-technical-saas-technical-4463893653",
-      "url": "https://interndoor.com/jobs/zensar-technologies-esaas-oracle-technical-saas-technical-4463893653",
-      "title": "ESaaS - Oracle - Technical - SaaS Technical — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement integrations with Oracle Fusion Cloud Applications\n• Use REST APIs, JSON/XML for data orchestration across cloud platforms\n• Collaborate with clients to deliver scalable technical solutions",
-      "date_published": "2026-10-01T14:19:22.493Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-powerbi-developer-powerbi-dax-sql-python-r-ssas-c-net-gcp-azure-4248973275",
-      "url": "https://interndoor.com/jobs/ups-powerbi-developer-powerbi-dax-sql-python-r-ssas-c-net-gcp-azure-4248973275",
-      "title": "PowerBI developer — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Build semantic models and dashboards using powerbi and ssas\n• Analyze data with sql, dax, python, and r\n• Work on data lakes and cloud platforms like gcp and azure",
-      "date_published": "2026-10-01T14:05:40.838Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248975294",
-      "url": "https://interndoor.com/jobs/ups-hire-ahead-intermediate-application-developer-java-4248975294",
-      "title": "Intermediate Java Application Developer — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develops and maintains applications using java\n• Works on systems analysis and integration builds\n• Collaborates with teams on full systems life cycle",
-      "date_published": "2026-10-01T14:04:55.994Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-app-developer-dev-ops-4248969898",
-      "url": "https://interndoor.com/jobs/ups-intermediate-app-developer-dev-ops-4248969898",
-      "title": "Dev ops Intermediate App Developer — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Write and maintain applications for systems life cycle\n• Use dev ops tools like gcp, jenkins, ci cd pipelines\n• Work with cross-functional teams on complex projects",
-      "date_published": "2026-10-01T14:04:50.393Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-cpu-performance-engineer-4472549990",
-      "url": "https://interndoor.com/jobs/qualcomm-cpu-performance-engineer-4472549990",
-      "title": "CPU Performance Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Support development and validation of embedded and cloud edge software\n• Work with C/C++/Python and Git/Perforce for code management\n• Collaborate on small features, testing, and documentation",
-      "date_published": "2026-10-01T14:04:41.799Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-soc-performance-4472563471",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-soc-performance-4472563471",
-      "title": "SoC Performance Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Validate and debug performance metrics across multimedia IPs and system components\n• Work with cross-functional teams on pre-silicon and post-silicon platforms\n• Analyze bandwidth, latency, and QoS data for compute and mobile SoCs",
-      "date_published": "2026-10-01T14:04:36.775Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-chennai-4248970804",
-      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-chennai-4248970804",
-      "title": "Applications Developer Intermediate — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Configure workday security policies across modules\n• Develop integrations using eib and workday studio\n• Support workday releases and system optimizations",
-      "date_published": "2026-10-01T14:04:36.652Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-4472567384",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-4472567384",
-      "title": "Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Write and modify test cases for embedded and cloud software\n• Use c c++ java python for test automation and scripting\n• Collaborate with teams to improve product quality",
-      "date_published": "2026-10-01T14:04:28.899Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-data-scientist-4248968949",
-      "url": "https://interndoor.com/jobs/ups-data-scientist-4248968949",
-      "title": "Data Scientist — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Builds predictive models from structured and unstructured data\n• Uses R, SQL, Python, and cloud AI tools\n• Works on production-scale analytics projects",
-      "date_published": "2026-10-01T14:04:13.132Z",
-      "authors": [
-        {
-          "name": "UPS"
         }
       ]
     }
