@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4472524934",
+      "url": "https://interndoor.com/jobs/dentsu-global-services-data-engineer-4472524934",
+      "title": "Data Engineer — Dentsu Global Services",
+      "content_text": "Company: Dentsu Global Services · Location: Greater Bengaluru Area\n• Manage and optimize data pipelines for 150+ tables and 2 SSAS cubes\n• Use SQL Server, PySpark, Airflow, and Iceberg for scalable data solutions\n• Collaborate with stakeholders to build AI/LLM tools and chatbot enhancements",
+      "date_published": "2026-10-01T10:30:37.941Z",
+      "authors": [
+        {
+          "name": "Dentsu Global Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fractal-fullstack-developer-3631867155",
+      "url": "https://interndoor.com/jobs/fractal-fullstack-developer-3631867155",
+      "title": "Fullstack Developer — Fractal",
+      "content_text": "Company: Fractal · Location: Bengaluru, Karnataka, India\n• Build and maintain chatbots using AWS Lex\n• Integrate with backend systems via APIs\n• Use Jenkins and AWS for DevOps practices",
+      "date_published": "2026-10-01T10:23:28.694Z",
+      "authors": [
+        {
+          "name": "Fractal"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-test-engineer-l2-4474145676",
+      "url": "https://interndoor.com/jobs/wipro-test-engineer-l2-4474145676",
+      "title": "TEST ENGINEER L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Execute tests, record results in tool, validate data via backend checks\n• Create test cases, document requirements, track data dependencies\n• Work with test management tool, support environment setup\n• Based in bengaluru",
+      "date_published": "2026-10-01T10:18:24.471Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/johnson-and-johnson-innovative-medicine-jjt-intern-4474154255",
       "url": "https://interndoor.com/jobs/johnson-and-johnson-innovative-medicine-jjt-intern-4474154255",
       "title": "JJT Intern — Johnson & Johnson Innovative Medicine",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Broadridge India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-4455917616",
-      "url": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-4455917616",
-      "title": "Network Development Engineer — Amazon Web Services (AWS)",
-      "content_text": "Company: Amazon Web Services (AWS) · Location: Au, Rajasthan, India\n• Support and maintain next-generation networks\n• Work with BGP, OSPF, Cisco IOS, and Junos\n• Design alerts, troubleshoot issues, and create scripts",
-      "date_published": "2026-09-30T16:48:37.384Z",
-      "authors": [
-        {
-          "name": "Amazon Web Services (AWS)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wiz-solutions-engineer-west-inida-4453428209",
-      "url": "https://interndoor.com/jobs/wiz-solutions-engineer-west-inida-4453428209",
-      "title": "Solutions Engineer - West Inida — Wiz",
-      "content_text": "Company: Wiz · Location: Mumbai Metropolitan Region\n• Support mid-market enterprise customers with cloud security solutions across AWS, Azure, and GCP\n• Collaborate with sales teams to deliver technical demos and proof of value outcomes\n• Represent Wiz at technical events and contribute to product knowledge development",
-      "date_published": "2026-09-30T16:35:02.645Z",
-      "authors": [
-        {
-          "name": "Wiz"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-sde-1-ftc-4465036237",
-      "url": "https://interndoor.com/jobs/amazon-sde-1-ftc-4465036237",
-      "title": "SDE-1 (FTC) — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Design and develop software systems for cross-border tech stacks\n• Work on large-scale computing and distributed systems\n• Contribute to global platform evolution and security compliance",
-      "date_published": "2026-09-30T16:32:22.410Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }
